@@ -1,0 +1,21 @@
+{
+  "status": "passed_compaction_preparation_audit_only",
+  "native_queries": 0,
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "independently_reconstructed_definitions": 822,
+      "commands": 11513,
+      "native_authority": "not established"
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "independently_reconstructed_definitions": 1273,
+      "commands": 17733,
+      "native_authority": "not established"
+    }
+  ],
+  "seconds": 7.661852333000001,
+  "peak_rss_bytes": 444956672,
+  "scope": "Every local proof independently shared/sliced and fully logically replayed within its unchanged premise context. Complete rules, basis, theory, target and interfaces preserved. Native admission still required."
+}

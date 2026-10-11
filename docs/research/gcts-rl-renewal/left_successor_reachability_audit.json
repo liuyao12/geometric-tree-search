@@ -1,0 +1,32 @@
+{
+  "status": "passed_finite_grammar_structural_pruning",
+  "native_queries": 0,
+  "target_searches": 0,
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "full_edges": 2097,
+      "retained_edges": 39,
+      "removed_edges": 2058,
+      "reachable_formulas": 32,
+      "all_unreachable_rules_have_an_explicit_unreachable_premise": true,
+      "all_full_zero_input_roots_retained": true,
+      "all_full_edges_participated": true,
+      "retained_definitions": 17
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "full_edges": 2548,
+      "retained_edges": 48,
+      "removed_edges": 2500,
+      "reachable_formulas": 37,
+      "all_unreachable_rules_have_an_explicit_unreachable_premise": true,
+      "all_full_zero_input_roots_retained": true,
+      "all_full_edges_participated": true,
+      "retained_definitions": 24
+    }
+  ],
+  "seconds": 0.947216666,
+  "peak_rss_bytes": 288849920,
+  "safety": "Induct over strict-prior finite proof positions: zero-input outputs belong to the fixed point; every later output follows an included full edge with earlier reachable inputs. Every removed edge has an input outside this closed set, hence cannot occur in any full-grammar word. All retained alternatives remain. This is structural pruning of the declared finite grammar, not full-FOL nonprovability or native authority."
+}

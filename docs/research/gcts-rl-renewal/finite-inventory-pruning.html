@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Safe structural pruning of a finite proof inventory</title>
+  <link rel="stylesheet" href="report.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    main{max-width:1120px;padding:30px 24px 60px}h1{font-size:clamp(34px,5vw,58px)}
+    h2{margin-top:36px}nav{display:flex;flex-wrap:wrap;gap:16px;margin:24px 0}
+    p,li{max-width:950px}section{margin:40px 0}.lemma{padding:24px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:5px}
+    .dependency-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+    .formula-node{border:1px solid #8c9e94;border-radius:7px;padding:20px;background:#f0f4ed;text-align:center}
+    .formula-node[data-state="unreachable"]{background:#f6e9e8;border-color:#bf7b7d}
+    .formula-node[data-state="seed"]{background:#e7eff8;border-color:#6993ba}
+    .formula-node .formula{font-size:1.5rem}.formula-node .rank{font-size:13px;margin:12px 0 0}
+    #closure-summary{padding:14px;background:#eef3e9;border-radius:5px}
+    .pruned{background:#f6e9e8}.table-scroll{margin-top:20px}.toy-controls{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+    .toy-controls label{font-size:15px;color:var(--ink)}th,td{font-size:14px}code{overflow-wrap:anywhere}
+    @media(max-width:650px){.dependency-grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body><main>
+<p><a href="index.html#parallel-research">Research program</a> · <a href="induction_receptors.html#reader">Searched arithmetic proof</a></p>
+<p class="eyebrow">FORMAL SEARCH LEMMA · FINITE DECLARED GRAMMARS</p>
+<h1>Certify what cannot start.</h1>
+<p class="deck">A complete dependency inventory can prove that some inference interfaces are unusable, before paying to admit each one. This retains every accepted proof in the declared grammar. It supplies no target proof sequence.</p>
+<nav><a href="#lemma">Safety lemma</a><a href="#illustration">Inspect a small example</a><a href="#certificate">Checkable witness</a><a href="#measured">Audited arithmetic reduction</a><a href="#scope">Scope and GCTS integration</a></nav>
+
+<section id="lemma">
+<h2>The finite dependency model</h2>
+<p>Fix a finite formula-state set \(\mathcal F\) and the complete declared inference-template set \(\mathcal R\). A template \(r\) records its ordered input states \(P(r)\) and output state \(q(r)\). A formula state includes any context or scope information needed by the searched language. In the arithmetic specialization, conditional contexts are explicit in formulas. Ignoring an extra guard during this calculation is safe only when doing so adds possible edges.</p>
+<p>Every searched proof is a finite sequence. Its line may use a zero-input template, or a template whose inputs are outputs of strict-earlier lines. Include every declared zero-input option: axioms, reflexivity, allowed tautologies, and any reusable closed theorem. Include all templates even if their native admission is still unknown; treating them as potentially valid enlarges the approximation.</p>
+<div class="equation">\[
+  S_0=\{q(r):r\in\mathcal R,\ P(r)=\varnothing\},\qquad
+  S_{k+1}=S_k\cup\{q(r):r\in\mathcal R,\ P(r)\subseteq S_k\}.
+\]</div>
+<p>Here containment means that every ordered input state belongs to the set; repeated inputs are retained in the template but do not change this membership test. The finite increasing chain reaches a least fixed point \(S_\ast\).</p>
+<div class="lemma">
+<h3>Structural unreachability is safe pruning</h3>
+<p>Every output appearing in an accepted proof belongs to \(S_\ast\). Consequently, every template with an input outside \(S_\ast\) can be removed without removing any accepted proof word in the full declared grammar.</p>
+<p><strong>Proof.</strong> Induct on the position of a line in a proof word. A zero-input line has its output in \(S_0\). Otherwise, all inputs occur at earlier positions and belong to \(S_\ast\) by the induction hypothesis. The fixed-point condition then places the output in \(S_\ast\). A removed template would require an earlier output outside \(S_\ast\), contradicting the same argument. This preserves each original proof word, including its line count and reference choices. \(\square\)</p>
+</div>
+<p>A reachable output need not be a theorem. The closure ignores ordering costs, finite row budgets, native validity and some placement constraints. It is a necessary condition. If a requested output lies outside the closure, the result is impossibility in this finite grammar, provided its completeness certificate is correct. It says nothing about unrestricted first-order provability.</p>
+<div class="lemma">
+<h3>The same ranks constrain early proof rows</h3>
+<p>For a reachable state, define \(d(f)=\min\{k:f\in S_k\}\). Number proof rows from \(0\). An accepted output on row \(j\) has \(d(f)\le j\); a required input read from source row \(s\) must have rank at most \(s\). Thus a candidate violating either inequality is impossible at that position.</p>
+<p><strong>Proof.</strong> A zero-input output has rank \(0\). Otherwise, by induction each earlier input has rank at most its source row, hence at most \(j-1\). Applying its template puts the output in closure layer at most \(j\). This argument holds for every declared proof word and supplies no selected derivation. \(\square\)</p>
+<p>The closure rank and chronological proof-row index are distinct from GCTS frontier generations. A positional implementation must certify its projection of the complete candidate universe and keep the reference scheduler unchanged. This note supplies the safety argument; it does not report a measured positional-search result.</p>
+</div>
+</section>
+
+<section id="illustration">
+<h2>A cycle cannot supply its own first premise</h2>
+<p>This is an authored illustration of the lemma. The symbols denote formula states, and the boxes are dependency nodes. They are not measured Wang tiles or a discovered theorem.</p>
+<div class="toy-controls"><label><input id="cycle-seed" type="checkbox"> Supply an additional zero-input seed to the cycle</label><button id="reset-example" type="button">Reset example</button></div>
+<div class="dependency-grid" aria-label="Formula states and fixed-point ranks">
+<div class="formula-node" data-node="a"><div class="formula">\(\alpha\)</div><p class="rank"></p></div>
+<div class="formula-node" data-node="b"><div class="formula">\(\beta\)</div><p class="rank"></p></div>
+<div class="formula-node" data-node="c"><div class="formula">\(\gamma\)</div><p class="rank"></p></div>
+<div class="formula-node" data-node="d"><div class="formula">\(\delta\)</div><p class="rank"></p></div>
+<div class="formula-node" data-node="u"><div class="formula">\(\upsilon\)</div><p class="rank"></p></div>
+<div class="formula-node" data-node="v"><div class="formula">\(\nu\)</div><p class="rank"></p></div>
+</div>
+<p id="closure-summary" role="status" aria-live="polite"></p>
+<div class="table-scroll"><table>
+<thead><tr><th>Template</th><th>Inputs</th><th>Output</th><th>Structural status</th></tr></thead>
+<tbody>
+<tr data-rule="seed-a"><td>First seed</td><td>None</td><td>\(\alpha\)</td><td class="rule-status"></td></tr>
+<tr data-rule="seed-c"><td>Second seed</td><td>None</td><td>\(\gamma\)</td><td class="rule-status"></td></tr>
+<tr data-rule="a-b"><td>One input</td><td>\(\alpha\)</td><td>\(\beta\)</td><td class="rule-status"></td></tr>
+<tr data-rule="bc-d"><td>Two inputs</td><td>\(\beta,\gamma\)</td><td>\(\delta\)</td><td class="rule-status"></td></tr>
+<tr data-rule="u-v"><td>First cycle link</td><td>\(\upsilon\)</td><td>\(\nu\)</td><td class="rule-status"></td></tr>
+<tr data-rule="v-u"><td>Second cycle link</td><td>\(\nu\)</td><td>\(\upsilon\)</td><td class="rule-status"></td></tr>
+<tr data-rule="seed-u" hidden><td>Additional seed</td><td>None</td><td>\(\upsilon\)</td><td class="rule-status"></td></tr>
+</tbody></table></div>
+<p class="caption">Blue denotes seeds, green denotes outputs reached through other templates, and red denotes states without a finite starting derivation. The displayed rank is the first closure layer. A newly supplied axiom changes the grammar and requires a new closure.</p>
+</section>
+
+<section id="certificate">
+<h2>A witness small enough to inspect</h2>
+<p>An auditor should reconstruct the entire original template set from the declared syntax bounds, rather than accept a supplied shortlist. It then checks the original formula identities, input order, output, scope guards and inventory version. Native-unknown edges remain in this original set during closure.</p>
+<ol>
+<li>Every zero-input output appears in the claimed reachable set.</li>
+<li>Every reachable state has a finite rank and either a zero-input witness, or a template whose inputs have strictly lower ranks.</li>
+<li>For every original template, if all its inputs are reachable, its output is reachable.</li>
+<li>Every excluded template names at least one input outside the reachable set. The retained inventory contains every other template.</li>
+</ol>
+<p>The rank witnesses prove that the claimed set is contained in the least fixed point. The seed and closure checks prove the reverse containment. Together they identify \(S_\ast\) exactly. For pruning alone, a certified larger closed set is also safe: it can miss useful exclusions, but it cannot remove a valid proof.</p>
+<p>The calculation uses a reverse dependency index and a queue of newly reached states. It is ordinary finite graph analysis. It has no dependence on the requested conclusion, a saved target proof or a policy prediction. Source and inventory changes invalidate the witness; adding a new zero-input theorem can make a previously unreachable cycle usable.</p>
+</section>
+
+<section id="measured">
+<h2>The complete arithmetic inventory becomes smaller</h2>
+<p>The fresh left-successor addition experiment declares all terms with at most five syntax nodes, its full contextual formula grammar, and all inference templates. Its prospective target is \(\forall x\forall y,\;S(x)+y=S(x+y)\). Neither the producer nor the independent pruning auditor receives a target proof sequence. The second language also admits the previously searched theorem \(\forall n,\;0+n=n\); adding that reusable theorem changes the language.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Declared language</th><th>All interfaces</th><th>Retained interfaces</th><th>Reachable formulas</th><th>Local definitions retained</th></tr></thead>
+<tbody>
+<tr><td>Without theorem transfer</td><td>\(2097\)</td><td>\(39\)</td><td>\(32\) of \(2067\)</td><td>\(17\) of \(822\)</td></tr>
+<tr><td>With the searched left-zero theorem</td><td>\(2548\)</td><td>\(48\)</td><td>\(37\) of \(2068\)</td><td>\(24\) of \(1273\)</td></tr>
+</tbody></table></div>
+<p>A separate implementation reconstructs the full grammar and computes the closure using a different worklist. It verifies every original edge, all zero-input roots, the complete retained projection, ranks, layers and an explicit unreachable premise for each removed interface. This audit passes in \(0.947\) seconds with \(288.85\) MB peak resident memory. It performs no native computation or target search. All native-unknown interfaces participated in the full closure, so an unknown admission cannot create a false structural exclusion.</p>
+<p>The complete grammar preparation audit costs \(33.280\) seconds and \(433.5\) MB; local certificate compaction has its own \(7.662\)-second audit and a preserved earlier memory-limited attempt. Those preparations are charged separately. The projected smaller candidate counts still require admitted definitions and a constructed, audited point model. Reduction counts alone do not establish a faster checked proof, a new theorem or an RL advantage.</p>
+<p>The exported producer summary retains its historical status, “not yet independently audited.” The later independent audit below supplies the passed gate; neither file is rewritten to conceal chronology. Target searching and whole-certificate validation are separate subsequent experiments.</p>
+<ul>
+<li><a href="left_successor_reachability_audit.json">Passed independent structural audit</a> · <a href="left_successor_reachability_audit_plan.json">Frozen audit plan</a> · <a href="left_successor_reachability_summary.json">Original producer summary</a></li>
+<li>Without transfer: <a href="left_successor_without_transfer_core.json.gz">complete original core</a>, <a href="left_successor_without_transfer_reachability.json.gz">all edges, ranks and exclusions</a>, <a href="left_successor_without_transfer_reachable_core.json.gz">complete retained core</a>.</li>
+<li>With theorem transfer: <a href="left_successor_with_searched_zero_left_core.json.gz">complete original core</a>, <a href="left_successor_with_searched_zero_left_reachability.json.gz">all edges, ranks and exclusions</a>, <a href="left_successor_with_searched_zero_left_reachable_core.json.gz">complete retained core</a>.</li>
+<li><a href="left_successor_plan.json">Full grammar plan</a> · <a href="left_successor_audit.json">Complete preparation audit</a> · <a href="left_successor_compaction_preparation_audit.json">Compaction audit</a> · <a href="left_successor_pruning_sources.zip">Frozen sources and complete evidence, including the memory-limited attempt</a>.</li>
+</ul>
+</section>
+
+<section id="scope">
+<h2>What this contributes to the search program</h2>
+<p>The five-node arithmetic preparation exposed a practical bottleneck: the complete specialized inventory grows sharply, and native admission of a single larger local definition can take tens of seconds. Structural pruning reduces the declared interfaces while preserving the full successful proof language. The independently audited reduction above is established; a target-search result and total time to its checked proof require separate evidence.</p>
+<p>After the witness is checked, retained interfaces still need the declared native admission. GCTS must maintain the complete retained frontier-point/candidate graph, global dead and forced checks, earliest-generation branching and exact rollback. Unreachable templates are removed globally under a proved redundant constraint; this is distinct from learning a marking restriction from samples. A marking implementation must expose its actual point values and dependencies. The fixed-point computation itself is not RL or a learned marking.</p>
+<p>This analysis may benefit other proof-search engines too. The research question is whether certified inventory reduction, reusable receptor families and learned proposals together reduce total time to a checked proof, charging construction, admission, search and checking. No GCTS-specific speed advantage follows from the lemma alone.</p>
+<p><a href="../../../docs/basic-tiling-algorithm.md">Shared algorithm contract</a> · <a href="induction_receptors.html#costs">Arithmetic preparation and checking costs</a> · <a href="hilbert_receptors.html#reader">Symbolic incidence proof</a></p>
+</section>
+</main>
+<script>
+(() => {
+  'use strict';
+  const rules=[
+    {id:'seed-a',inputs:[],output:'a'}, {id:'seed-c',inputs:[],output:'c'},
+    {id:'a-b',inputs:['a'],output:'b'}, {id:'bc-d',inputs:['b','c'],output:'d'},
+    {id:'u-v',inputs:['u'],output:'v'}, {id:'v-u',inputs:['v'],output:'u'}
+  ];
+  const toggle=document.querySelector('#cycle-seed');
+  function update(){
+    const active=toggle.checked?[...rules,{id:'seed-u',inputs:[],output:'u'}]:rules;
+    const ranks=new Map(active.filter(r=>r.inputs.length===0).map(r=>[r.output,0]));
+    let previous=-1;
+    while(previous!==ranks.size){
+      previous=ranks.size;
+      const next=new Map(ranks);
+      for(const rule of active){
+        if(!ranks.has(rule.output)&&rule.inputs.every(p=>ranks.has(p)))
+          next.set(rule.output,1+Math.max(...rule.inputs.map(p=>ranks.get(p))));
+      }
+      for(const [state,rank] of next)ranks.set(state,rank);
+    }
+    for(const node of document.querySelectorAll('[data-node]')){
+      const rank=ranks.get(node.dataset.node);
+      node.dataset.state=rank===undefined?'unreachable':rank===0?'seed':'reachable';
+      node.querySelector('.rank').textContent=rank===undefined?'Unreachable':'Closure layer '+rank;
+    }
+    let excluded=0;
+    for(const rule of active){
+      const unreachable=rule.inputs.some(p=>!ranks.has(p));
+      const row=document.querySelector('[data-rule="'+rule.id+'"]');
+      row.classList.toggle('pruned',unreachable);
+      row.querySelector('.rule-status').textContent=unreachable?'Excluded: unreachable input':'Retained: inputs reachable';
+      if(unreachable)excluded++;
+    }
+    document.querySelector('[data-rule="seed-u"]').hidden=!toggle.checked;
+    document.querySelector('#closure-summary').textContent=toggle.checked?
+      'All six states are reachable. The extra seed starts the cycle; no template is structurally excluded.':
+      'Four states are reachable. Both cycle templates are safely excluded because neither can supply its first premise.';
+  }
+  toggle.addEventListener('change',update);
+  document.querySelector('#reset-example').addEventListener('click',()=>{toggle.checked=false;update();});
+  update();
+})();
+</script>
+</body></html>

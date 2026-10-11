@@ -1,0 +1,21 @@
+{
+  "status": "declared_before_search",
+  "declared_utc": "2026-10-11T13:01:56.270544Z",
+  "original_plan_sha256": "fe46d9c347ca977491fcc09f491fad1d4192abb9acb6fe0c8e700597625078cb",
+  "defect_sha256": "71907b9e898f247e7c62092fcf0ec4461fb755454672f0f0599677b3a431e9ac",
+  "tests_sha256": "1686476e71d2b0fc28fbff8cd91d7d7117ce944b6b83994cab65f0987bdddf57",
+  "completed_observations_at_declaration": 0,
+  "native_queries_at_declaration": 63,
+  "promoted_admissions_at_declaration": 34,
+  "normalization": {
+    "expanded": "expanded-word"
+  },
+  "versioned_sources": {
+    "research/gcts-rl-renewal/hilbert_promotion_family_worker_v2.py": "bd5c8fc7e42fcea1811da952aaea24c88cbcc0d72c4f9419ee80d1803bb1ab21",
+    "research/gcts-rl-renewal/hilbert_promotion_family_run_v2.py": "8b2c01e3558e4ab5b6c96f04e1df9267196f2c8506012eca9d74ca1efbfd6ed5",
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit_v2.py": "ea9a0a69d80e6901f93f0fdc9d3b89fb996d6a3b5720ccb2b664c5a149bbf56b"
+  },
+  "preserved_scientific_settings": "Every original binding, rule, finite boundary, 64-run schedule, deterministic seed, frozen weight, search budget, native gate, original heap and cost ceiling unchanged. Only the shorthand API token is normalized.",
+  "continuation_protocol": "Unchanged v1 admits all rules and guards, then preserves its API failure after the first three unaffected short-boundary trials. V2 pins exact v1 native/progress/audit bytes, resumes the remaining 61 runs, and retains all three original trial trees. A complete independently replayed native prefix may be reused only by exact receipt binding. Full model/tree audits are fresh for all 64 trials.",
+  "cost_accounting": "Original failed-worker cost remains in v1 elapsed wall time. V2 preparation/search/native costs are added. Independent native replay reuses only an exactly pinned complete v1 audit and charges its full recorded costs, plus every fresh whole-certificate replay. Continuation waiting time is recorded separately."
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "scope": "API wiring only using dummy model/search; no GCTS search or proof oracle",
+  "unchanged_physical_lane": true,
+  "expanded_shorthand_normalized": true,
+  "original_API_rejection_confirmed": true,
+  "weights_seed_limits_and_inventory_settings_preserved": true,
+  "completed_observations": 0
+}

@@ -1,0 +1,87 @@
+{
+  "status": "passed_preparation_audit_only",
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "terms": 159,
+      "contexts": [
+        {
+          "kind": "direct",
+          "variable": null,
+          "moves": 162
+        },
+        {
+          "kind": "base",
+          "variable": "x",
+          "moves": 162
+        },
+        {
+          "kind": "step",
+          "variable": "x",
+          "moves": 166
+        },
+        {
+          "kind": "base",
+          "variable": "y",
+          "moves": 162
+        },
+        {
+          "kind": "step",
+          "variable": "y",
+          "moves": 166
+        }
+      ],
+      "definitions": 822,
+      "interfaces": 2097,
+      "primitive_counts": {
+        "instantiate": 202248,
+        "induction": 2
+      },
+      "primitive_bytes": 192164811,
+      "prospective_points": "independently counted; not a native-authorized/search model"
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "terms": 159,
+      "contexts": [
+        {
+          "kind": "direct",
+          "variable": null,
+          "moves": 252
+        },
+        {
+          "kind": "base",
+          "variable": "x",
+          "moves": 252
+        },
+        {
+          "kind": "step",
+          "variable": "x",
+          "moves": 256
+        },
+        {
+          "kind": "base",
+          "variable": "y",
+          "moves": 252
+        },
+        {
+          "kind": "step",
+          "variable": "y",
+          "moves": 256
+        }
+      ],
+      "definitions": 1273,
+      "interfaces": 2548,
+      "primitive_counts": {
+        "instantiate": 202407,
+        "induction": 2
+      },
+      "primitive_bytes": 192238269,
+      "prospective_points": "independently counted; not a native-authorized/search model"
+    }
+  ],
+  "native_queries": 0,
+  "seconds": 33.280393542,
+  "peak_rss_bytes": 433487872,
+  "scope": "Complete five-node grammar, all equation occurrences/directions/substitutions, all context/generalization/induction/reuse interfaces, every streamed primitive instance and prospective placement counts independently reconstructed. No native admission, target search, learned66-interface claim or speed claim."
+}

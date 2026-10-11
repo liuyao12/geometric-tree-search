@@ -1,0 +1,125 @@
+{
+  "status": "prepared_fixed_point_not_yet_independently_audited",
+  "native_queries": 0,
+  "target_searches": 0,
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "full_formulas": 2067,
+      "reachable_formulas": 32,
+      "rounds": 6,
+      "full_interfaces": 2097,
+      "retained_interfaces": 39,
+      "removed_interfaces": 2058,
+      "full_definitions": 822,
+      "retained_definitions": 17,
+      "retained_local_commands": 216,
+      "retained_max_commands": 27,
+      "retained_operation_counts": {
+        "generalize": 19,
+        "induction": 1,
+        "reflexivity": 3,
+        "rewrite": 6,
+        "conditional-reflexivity": 2,
+        "conditional-rewrite": 8
+      },
+      "point_counts": [
+        {
+          "length": 12,
+          "roots": 48,
+          "placements": 3590,
+          "inference_templates": 39,
+          "one_input_templates": 33,
+          "two_input_templates": 1,
+          "last_row_alternatives": 1,
+          "complete_words": 317475837322472439,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 14,
+          "roots": 56,
+          "placements": 4691,
+          "inference_templates": 39,
+          "one_input_templates": 33,
+          "two_input_templates": 1,
+          "last_row_alternatives": 1,
+          "complete_words": 482880748567480579719,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 16,
+          "roots": 64,
+          "placements": 5932,
+          "inference_templates": 39,
+          "one_input_templates": 33,
+          "two_input_templates": 1,
+          "last_row_alternatives": 1,
+          "complete_words": 734461618571137961752599,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        }
+      ],
+      "closure_and_export_seconds": 0.09807833300000002
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "full_formulas": 2068,
+      "reachable_formulas": 37,
+      "rounds": 6,
+      "full_interfaces": 2548,
+      "retained_interfaces": 48,
+      "removed_interfaces": 2500,
+      "full_definitions": 1273,
+      "retained_definitions": 24,
+      "retained_local_commands": 312,
+      "retained_max_commands": 30,
+      "retained_operation_counts": {
+        "transferred-searched-theorem": 1,
+        "generalize": 21,
+        "induction": 1,
+        "reflexivity": 3,
+        "rewrite": 12,
+        "conditional-reflexivity": 2,
+        "conditional-rewrite": 8
+      },
+      "point_counts": [
+        {
+          "length": 12,
+          "roots": 48,
+          "placements": 4628,
+          "inference_templates": 48,
+          "one_input_templates": 37,
+          "two_input_templates": 5,
+          "last_row_alternatives": 1,
+          "complete_words": 3116402981210161152,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 14,
+          "roots": 56,
+          "placements": 6073,
+          "inference_templates": 48,
+          "one_input_templates": 37,
+          "two_input_templates": 5,
+          "last_row_alternatives": 1,
+          "complete_words": 7180192468708211294208,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 16,
+          "roots": 64,
+          "placements": 7706,
+          "inference_templates": 48,
+          "one_input_templates": 37,
+          "two_input_templates": 5,
+          "last_row_alternatives": 1,
+          "complete_words": 16543163447903718821855232,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        }
+      ],
+      "closure_and_export_seconds": 0.11496620800000001
+    }
+  ],
+  "seconds": 0.9283180830000001,
+  "peak_rss_bytes": 278986752,
+  "native_authority": "not established; all retained local definitions must be natively admitted before a model exists"
+}

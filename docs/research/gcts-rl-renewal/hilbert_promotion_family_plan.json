@@ -1,0 +1,2060 @@
+{
+  "status": "predeclared",
+  "id": "hilbert-searched-family-fresh-recipients-001",
+  "created_utc": "2026-10-11 12:36:32 UTC",
+  "parameter_order": [
+    "A",
+    "B",
+    "C",
+    "u",
+    "v"
+  ],
+  "parameter_domains": {
+    "A": [
+      "P",
+      "Q"
+    ],
+    "B": [
+      "P",
+      "Q"
+    ],
+    "C": [
+      "P",
+      "Q",
+      "R"
+    ],
+    "u": [
+      "l",
+      "m"
+    ],
+    "v": [
+      "l",
+      "m"
+    ]
+  },
+  "bindings": 48,
+  "deduplication": "Exact canonical decorated-interface identity only; full domain retained in binding_records even if duplicate interfaces occur. Structural preflight found 48 distinct interfaces.",
+  "cases": [
+    {
+      "id": "fresh-direct-short",
+      "group": "direct",
+      "boundary": "short",
+      "length": 3,
+      "title": "Fresh direct incidence: 3 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "common-distinct-points": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "extra-incidence": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "scope": "Fresh uninterpreted constants in the guarded incidence fragment; no coordinates. No proof sequence supplied."
+    },
+    {
+      "id": "fresh-direct-sufficient",
+      "group": "direct",
+      "boundary": "sufficient",
+      "length": 4,
+      "title": "Fresh direct incidence: 4 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "common-distinct-points": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "extra-incidence": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "scope": "Fresh uninterpreted constants in the guarded incidence fragment; no coordinates. No proof sequence supplied."
+    },
+    {
+      "id": "fresh-composed-short",
+      "group": "composed",
+      "boundary": "short",
+      "length": 4,
+      "title": "Fresh composed incidence: 4 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "common-distinct-points": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "extra-incidence-trigger": [
+            "imp",
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "l",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ],
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "scope": "Fresh uninterpreted constants in the guarded incidence fragment; no coordinates. No proof sequence supplied."
+    },
+    {
+      "id": "fresh-composed-sufficient",
+      "group": "composed",
+      "boundary": "sufficient",
+      "length": 5,
+      "title": "Fresh composed incidence: 5 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "common-distinct-points": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "extra-incidence-trigger": [
+            "imp",
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "l",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ],
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "scope": "Fresh uninterpreted constants in the guarded incidence fragment; no coordinates. No proof sequence supplied."
+    }
+  ],
+  "methods": {
+    "level1-base": {
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "physical"
+    },
+    "level1-fixed-physical": {
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "physical"
+    },
+    "level1-learned-physical": {
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "physical"
+    },
+    "level1-learned-expanded": {
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded"
+    },
+    "promoted-base": {
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "physical"
+    },
+    "promoted-fixed-physical": {
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "physical"
+    },
+    "promoted-learned-physical": {
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "physical"
+    },
+    "promoted-learned-expanded": {
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded"
+    }
+  },
+  "repetitions": [
+    1,
+    2
+  ],
+  "schedules": {
+    "1": [
+      "level1-base",
+      "level1-fixed-physical",
+      "level1-learned-physical",
+      "level1-learned-expanded",
+      "promoted-base",
+      "promoted-fixed-physical",
+      "promoted-learned-physical",
+      "promoted-learned-expanded"
+    ],
+    "2": [
+      "level1-fixed-physical",
+      "level1-learned-physical",
+      "level1-learned-expanded",
+      "promoted-base",
+      "promoted-fixed-physical",
+      "promoted-learned-physical",
+      "promoted-learned-expanded",
+      "level1-base"
+    ]
+  },
+  "seed": 72000,
+  "weights": [
+    0.08369591640330343,
+    0.32087673760981406,
+    0.3725408993356053,
+    0.0017991124824526783,
+    -0.04857183708459727,
+    0.09966264113455951,
+    0.12427667535659201,
+    0.4360516896718667,
+    0.0073986385637367005,
+    -0.11940479670205117
+  ],
+  "weight_scope": "Frozen Notebook 68 transfer weights, no new RL training. Physical/expanded counts are separately declared ordering features. Timing repetitions use one deterministic seed.",
+  "limits": {
+    "attempts": 2000,
+    "seconds": 30,
+    "proposal_limit": 24,
+    "proposal_checks": 2048
+  },
+  "admission_native_steps": 5000000000,
+  "whole_native_steps": 10000000000,
+  "admission_seconds_ceiling": 3600,
+  "cost_ceiling_scope": "Production complete-theory and 28+48 interface admission wall time only. Independent replay, recipient guard compilation, search and whole certification are additionally charged separately. Ceiling is checked before the next admission and may overshoot by one in-flight query. Incomplete promoted admission stops before any expanded search.",
+  "source_native_record": ".gcts-active/hilbert-receptors-20261011/promotion-admission-native.json.gz",
+  "source_native_audit": ".gcts-active/hilbert-receptors-20261011/promotion-admission-audit.json",
+  "sources": {
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit.py": "8684cab05d2a52def70ef703fd81a3ce036be429ca7327637cf16a9a76cab9a0",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/audit_catalog_receptors.py": "8eeaf74087b962dd144587589ae9d167e15b843a70d82dcc56af0cd506aa951f",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_first_order_families.py": "ea0e915f7b6c37186df6294f27827608bef8cbe1bd49adb9162c7f2f9cc7fcc7",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/hilbert_receptors_audit.py": "c3a807cfbedcf8332a43a53ad5caf46dbef4586a8fba825e9f6f97e2c54a1bef",
+    "research/gcts-rl-renewal/hilbert_promotion_family_run.py": "28b7f6bb2e2c2aa1cdbbda23314e8ff0777a20db19fb967ff83555dfd7d1f024",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/hilbert_promotion_family_catalog.py": "4c25b6b20c392071490a3184126a3a8e26a3265d66a79970ccb89141320e069a",
+    "research/gcts-rl-renewal/hilbert_receptors_catalog.py": "d22ecfecc6e737130a67730666cf383b68088b66df10fdd170c1b9dab34fb772",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/hilbert_promotion_family_worker.py": "65b860c07aeede481ebc2eb0ae414b15fe8caef3ae3100749620b866fe9df8e3",
+    "research/gcts-rl-renewal/catalog_receptor_search.py": "85cd20942159ad8459a1d30ecd3b8bcec45d5826f04bd61d74df307535b00df6",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af"
+  },
+  "data_dependencies": {
+    ".gcts-active/hilbert-receptors-20261011/promotion-admission-native.json.gz": {
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    ".gcts-active/hilbert-receptors-20261011/promotion-admission-audit.json": {
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    ".gcts-active/hilbert-receptors-20261011/ground-accepted-request.json": {
+      "sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+      "bytes": 126804
+    },
+    ".gcts-active/hilbert-receptors-20261011/audit.json": {
+      "sha256": "e4c3868e5a7f65786c11860080c0ed2e18bf79f67c7925cc69c62d8537308f2c",
+      "bytes": 12014
+    },
+    ".gcts-active/hilbert-receptors-20261011/plan.json": {
+      "sha256": "826d9177f1b6b6ac9141c1f5df87d7cd96caa773da06f533061de8d87332ec32",
+      "bytes": 37111
+    },
+    "docs/research/gcts-rl-renewal/first-order-families-reader-001.json": {
+      "sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391",
+      "bytes": 4531912
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz": {
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "bytes": 1114802
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-001.json": {
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "bytes": 1494417
+    }
+  },
+  "inventory_semantics": "Level1 is the complete same 28 authored ground logical interfaces, not literal native-square placements. Promoted adds all 48 actual searched receptor specializations. This language change is separate from base/fixed/learned ordering within an exactly equal inventory.",
+  "pipeline_scope": "Independent whole-native replay may overlap production on the same host. All elapsed times are hardware/workload observations, not statistical speed evidence. Every exact search tree is saved before whole certification. No host logical oracle enters search, no binding sample supplies graph counts, and all fallbacks/rollback remain unchanged.",
+  "compilation_gate": "High-level point adaptation; an occupancy-preserving expansion to primitive Wang squares remains open. No universal-closure claim or explicit coordinate geometry."
+}

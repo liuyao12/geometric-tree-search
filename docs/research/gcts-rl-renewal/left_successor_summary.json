@@ -1,0 +1,135 @@
+{
+  "status": "complete_preflight_not_native_admitted",
+  "native_queries": 0,
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "terms": 159,
+      "basis_formulas": 2067,
+      "interfaces": 2097,
+      "local_definitions": 822,
+      "local_commands": 11602,
+      "max_local_commands": 33,
+      "local_definition_json_bytes": 5116503,
+      "max_local_definition_json_bytes": 21893,
+      "core_gzip_bytes": 265351,
+      "primitive_counts": {
+        "instantiate": 202248,
+        "induction": 2
+      },
+      "primitive_uncompressed_bytes": 192164811,
+      "primitive_gzip_bytes": 3270955,
+      "primitive_stream_sha256": "940bda22d0eda92a22382a51d16c16d4e1f0e691d67920c21229ec3f9c8c228c",
+      "core_seconds": 0.9797049999999999,
+      "primitive_stream_seconds": 11.344634958,
+      "host_definition_audit_seconds": 1.2387177089999994,
+      "whole_preflight_seconds": 13.789127125,
+      "prospective_point_counts": [
+        {
+          "length": 12,
+          "roots": 48,
+          "placements": 209448,
+          "inference_templates": 2097,
+          "one_input_templates": 2090,
+          "two_input_templates": 2,
+          "last_row_alternatives": 3,
+          "complete_words": 10344368659840543663042297772151614259,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 14,
+          "roots": 56,
+          "placements": 274370,
+          "inference_templates": 2097,
+          "one_input_templates": 2090,
+          "two_input_templates": 2,
+          "last_row_alternatives": 3,
+          "complete_words": 45488419844100745268755167603939457907054931,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 16,
+          "roots": 64,
+          "placements": 347668,
+          "inference_templates": 2097,
+          "one_input_templates": 2090,
+          "two_input_templates": 2,
+          "last_row_alternatives": 3,
+          "complete_words": 200031186818227214151531392818071807655604517073779,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        }
+      ],
+      "peak_rss_bytes": 130793472,
+      "authority": "host-audit-only; native admission not performed"
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "terms": 159,
+      "basis_formulas": 2068,
+      "interfaces": 2548,
+      "local_definitions": 1273,
+      "local_commands": 17842,
+      "max_local_commands": 33,
+      "local_definition_json_bytes": 7690885,
+      "max_local_definition_json_bytes": 21893,
+      "core_gzip_bytes": 392772,
+      "primitive_counts": {
+        "instantiate": 202407,
+        "induction": 2
+      },
+      "primitive_uncompressed_bytes": 192238269,
+      "primitive_gzip_bytes": 3272946,
+      "primitive_stream_sha256": "2968559f9f19c5793a9135d2712c9bfad19a4b6cb6526dd252ceaf587641d6c6",
+      "core_seconds": 2.2400541669999985,
+      "primitive_stream_seconds": 11.836732999999999,
+      "host_definition_audit_seconds": 2.2703398750000012,
+      "whole_preflight_seconds": 16.66403975,
+      "prospective_point_counts": [
+        {
+          "length": 12,
+          "roots": 48,
+          "placements": 278770,
+          "inference_templates": 2548,
+          "one_input_templates": 2090,
+          "two_input_templates": 452,
+          "last_row_alternatives": 3,
+          "complete_words": 88168796963483662510916551170594963456,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 14,
+          "roots": 56,
+          "placements": 367996,
+          "inference_templates": 2548,
+          "one_input_templates": 2090,
+          "two_input_templates": 452,
+          "last_row_alternatives": 3,
+          "complete_words": 572418633201212836054273568831058363625242624,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        },
+        {
+          "length": 16,
+          "roots": 64,
+          "placements": 469198,
+          "inference_templates": 2548,
+          "one_input_templates": 2090,
+          "two_input_templates": 452,
+          "last_row_alternatives": 3,
+          "complete_words": 3716315782006766900366504508016155538397617188765696,
+          "status": "prospective complete inventory count; no model constructed before native admission"
+        }
+      ],
+      "peak_rss_bytes": 268140544,
+      "authority": "host-audit-only; native admission not performed"
+    }
+  ],
+  "transfer": {
+    "request_sha256": "fb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+    "proof_commands": 30,
+    "theory_unchanged": true,
+    "all_original_audits": "passed",
+    "historical_full_cost_ledger": ".gcts-active/induction-receptors-20261011/integration.json"
+  },
+  "seconds": 30.470453209000002,
+  "scope": "Complete declared five-node contextual grammar and every exposed primitive instance were generated, no top-k or sampled catalog. No native model or target search is authorized until complete local admission. Two semantic inventories are explicit; they are not an equal-inventory speed comparison. Future cached-vs-fresh admission controls must use the same transferred inventory."
+}

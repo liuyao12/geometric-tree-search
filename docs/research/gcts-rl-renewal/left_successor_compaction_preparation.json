@@ -1,0 +1,33 @@
+{
+  "status": "prepared_host_audit_only",
+  "native_queries": 0,
+  "variants": [
+    {
+      "lane": "without-transfer",
+      "definitions": 822,
+      "old_commands": 11602,
+      "new_commands": 11513,
+      "old_definition_json_bytes": 5116503,
+      "new_definition_json_bytes": 5072519,
+      "max_commands": 27,
+      "max_definition_json_bytes": 17807,
+      "changed_definitions": 32,
+      "seconds": 3.001837333
+    },
+    {
+      "lane": "with-searched-zero-left",
+      "definitions": 1273,
+      "old_commands": 17842,
+      "new_commands": 17733,
+      "old_definition_json_bytes": 7690885,
+      "new_definition_json_bytes": 7644261,
+      "max_commands": 30,
+      "max_definition_json_bytes": 17807,
+      "changed_definitions": 52,
+      "seconds": 4.478022542000001
+    }
+  ],
+  "seconds": 8.167510292,
+  "peak_rss_bytes": 452132864,
+  "scope": "Same complete logical interfaces/theory/target. All compact local command lists pass full host replay; no native admission or theorem search yet."
+}
