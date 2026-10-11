@@ -1,0 +1,65 @@
+{
+  "version": "native-receptor-points-validation-001",
+  "status": "passed",
+  "producer_sha256": "e9d61dc3fd8c6ac9061307f59efd51ab99938dae0c09f6c20e1e217a8a9ba4cd",
+  "audit_sha256": "ddfb833f2f01dfecbf57c9f84584248dda9ebc88ad138fb72e154a87a6d51b2e",
+  "reader_sha256": "e4425c9024ab13f18966718dea6b04e74de2c5536f9e3cdcafd2ead21055df64",
+  "reader_source_sha256": "43f67d6303c7a0c13e0a5d39e6d78a1c4662f1eb4d78fbda0071c474aad39295",
+  "html_sha256": "a81f2c8b2f45ade53c3494c87533de98fdb9a31825f3cf1dde8a933e3616bb11",
+  "outcomes": {
+    "native_proof_discovered": 10,
+    "exhausted_finite_marked_region": 2,
+    "exhausted_finite_certificate_grammar": 2,
+    "unknown_search_budget": 5,
+    "unknown_native_compilation": 1
+  },
+  "reader_checks": {
+    "status": "passed",
+    "checks": {
+      "proofs": 6,
+      "lines": 21,
+      "tiles": 567,
+      "queries": 360,
+      "observations": 20
+    },
+    "mutations_rejected": [
+      "palette fingerprint",
+      "missing observation",
+      "original assertion",
+      "native acceptance",
+      "full operation count",
+      "final target role",
+      "source proof",
+      "root rollback",
+      "line formula",
+      "earlier facts",
+      "pending commands",
+      "new fact",
+      "open premise",
+      "context theory",
+      "native entry",
+      "crop timeline",
+      "crop count",
+      "original tile",
+      "seam",
+      "horizontal receptor",
+      "duplicate occupancy",
+      "missing original command",
+      "removed distant value",
+      "changed complete graph",
+      "changed generation",
+      "invented native guard",
+      "native guard query status",
+      "missing original alternative",
+      "false guard occupancy",
+      "missing untouched root",
+      "changed position identity"
+    ]
+  },
+  "seconds": 2.230333375,
+  "sources": {
+    "validate_native_receptor_points.py": "bb9eacdeb11d5e74a27e5d9fcac342f43a5e7344f679d95410f7bc6c8579b145",
+    "test_native_receptor_reader.cjs": "f566718cdce06e223dc1365bd66929f84dbe8422c7612287bed1b303a1e80705",
+    "export_native_receptor_points.py": "369d8f7656d3ab1cf09fce91b7d2e8093bb684548d9ca37dec4f7ae3f813b9f6"
+  }
+}
