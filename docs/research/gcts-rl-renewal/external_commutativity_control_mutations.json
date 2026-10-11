@@ -1,0 +1,1504 @@
+{
+  "status": "passed_actual_certificate_corruption_audit",
+  "proof_census": {
+    "lines": 223,
+    "boundaries": 22,
+    "focused_trees": 97
+  },
+  "corruptions": [
+    {
+      "name": "setup-0:c_0_4:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-0:c_0_4:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-0:c_0_4:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "setup-0:c_0_4:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "setup-0:c_0_6:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_6:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:c_0_9:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_9:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:c_0_12:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_12:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:c_0_13:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-0:c_0_13:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-0:c_0_13:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "setup-0:c_0_13:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "setup-0:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:c_0_15:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_15:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:c_0_17:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_17:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-0:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-0:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "setup-0:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "setup-1:c_0_4:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-1:c_0_4:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-1:c_0_4:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "setup-1:c_0_4:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "setup-1:c_0_6:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-1:c_0_6:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-1:c_0_10:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-1:c_0_10:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-1:c_0_11:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-1:c_0_11:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "setup-1:c_0_11:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "setup-1:c_0_11:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "setup-1:c_0_12:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-1:c_0_12:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-1:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-1:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-1:c_0_16:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-1:c_0_16:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-1:c_0_17:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "setup-1:c_0_17:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "setup-1:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "setup-1:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_6:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_6:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_6:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_6:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_8:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_8:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_11:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_11:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_12:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_12:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_12:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_12:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_15:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_15:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_16:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_16:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_16:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_16:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_17:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_17:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_19:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_19:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_20:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_20:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_21:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_21:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_22:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_23:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_23:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_25:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_25:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_26:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_26:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_27:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_27:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_28:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_28:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_29:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_29:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_29:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_29:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_30:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_30:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_31:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_31:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_32:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_32:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_34:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_34:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_35:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r1:c_0_35:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r1:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "commutativity-theory-r1:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_6:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_6:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_6:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_6:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_9:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_9:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_12:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_12:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_12:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_12:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_15:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_15:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_17:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_17:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_20:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_20:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_21:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_21:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_22:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_23:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_23:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_24:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_24:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_24:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_24:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_25:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_25:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_26:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_26:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_27:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_27:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_29:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_29:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_30:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:c_0_30:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "commutativity-zero-left-r1:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_6:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_6:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_6:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_6:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_9:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_9:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_19:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_19:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_19:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_19:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_20:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_20:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_21:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_21:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_22:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_24:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_24:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_25:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r1:c_0_25:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r1:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "commutativity-both-r1:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_6:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_6:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_6:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_6:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_9:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_9:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_19:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_19:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_19:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_19:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_20:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_20:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_21:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_21:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_22:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_24:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_24:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_25:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-both-r2:c_0_25:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-both-r2:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "commutativity-both-r2:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_6:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_6:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_6:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_6:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_9:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_9:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_12:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_12:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_12:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_12:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_15:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_15:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_17:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_17:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_20:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_20:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_21:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_21:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_22:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_23:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_23:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_24:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_24:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_24:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_24:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_25:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_25:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_26:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_26:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_27:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_27:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_29:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_29:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_30:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:c_0_30:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "commutativity-zero-left-r2:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_6:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_6:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_6:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_6:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_8:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_8:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_11:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_11:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_12:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_12:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_12:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_12:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_14:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_14:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_15:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_15:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_16:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_16:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_16:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_16:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_17:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_17:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_18:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_18:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_19:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_19:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_20:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_20:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_21:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_21:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_22:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_22:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_23:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_23:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_25:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_25:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_26:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_26:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_27:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_27:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_28:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_28:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_29:context_after_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_29:registry_before_sha256",
+      "status": "rejected",
+      "error": "ValueError('saved shared-context certificate mismatch')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_29:symbol",
+      "status": "rejected",
+      "error": "ValueError('compact introduced-function census')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_29:dependencies",
+      "status": "rejected",
+      "error": "ValueError('wrong scope/dependency order')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_30:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_30:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_31:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_31:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_32:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_32:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_34:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_34:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_35:altered refutation",
+      "status": "rejected",
+      "error": "ValueError('invalid equality conflict')"
+    },
+    {
+      "name": "commutativity-theory-r2:c_0_35:missing universal substitution",
+      "status": "rejected",
+      "error": "ValueError('independent complete substitution domain')"
+    },
+    {
+      "name": "commutativity-theory-r2:missing final parents",
+      "status": "rejected",
+      "error": "ValueError('saved local consequence identity')"
+    },
+    {
+      "name": "commutativity-theory-r2:wrong input file",
+      "status": "rejected",
+      "error": "ValueError('input file/name identity')"
+    }
+  ],
+  "seconds": 19.553876959,
+  "summary_sha256": "b0bee1101b6df6c7b23c5d6d5bf9c1a1c3bbf1a335fce93d9ba3f385e6d13e11",
+  "complete_audit_sha256": "87652a2007642b66e0e91c403b51a30f02af115f2f116d33a703e5ada89caa4d",
+  "mutation_plan_sha256": "da161bef3864dc9b982faec8569143cf7ef72914c497eab10dae9828d6f82fc9"
+}

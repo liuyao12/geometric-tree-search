@@ -1,0 +1,21 @@
+{
+  "status": "passed_streamrepair_all94_gate",
+  "producer_seconds": 9.709090957999999,
+  "producer_rss": 185729024,
+  "independent_seconds": 5.790290000000001,
+  "independent_rss": 194232320,
+  "prior_pilot_bytes_matched": 8,
+  "prior_full_bytes_matched": 37,
+  "complete_encodings": 94,
+  "original_full_memory_unknown_preserved": true,
+  "native_queries": 0,
+  "target_searches": 0,
+  "sha256": {
+    ".gcts-active/commutativity-receptors-20261011/capacity-stream/plan.json": "5d33d824fa30f1a474ee70787c7b50f275688c592d27bfcfed2f2edf44e619ae",
+    ".gcts-active/commutativity-receptors-20261011/capacity-stream/summary.json": "164f9fa8732b815cd5d4e64e8ffe8b59a0c4dcdc9b026ee471584ea4e561cc5f",
+    ".gcts-active/commutativity-receptors-20261011/capacity-stream/audit-plan.json": "8d420d489713de921c756c9a5b010d822d317aab9b6640d6669c7cd6c145b5de",
+    ".gcts-active/commutativity-receptors-20261011/capacity-stream/audit.json": "5dc1875b3eeb5463d79cf94a0943023a5f3f4e3109753999b6977656fc16f8e7",
+    ".gcts-active/commutativity-receptors-20261011/capacity-full/summary.json": "f0fee3c0aebfb702bc120062469b9fe3a4703a6fbe1b46177a2218cae9527230",
+    ".gcts-active/commutativity-receptors-20261011/capacity-full/partial-audit/audit.json": "23ac8c09bdaebdcade703f92efb2056cd845de0c9fd30c7148d36b05dc77c6e3"
+  }
+}

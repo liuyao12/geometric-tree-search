@@ -1,0 +1,41 @@
+{
+  "scope": "Post-trial historical cost accounting only, never read by search or native preparation. Original source-ground discovery is additional inherited work. Aggregate stage clocks overlap component clocks; no sum of disjoint cold costs is claimed. Source authoring/planning/declaration time has no experiment timer; production starts at the frozen-plan producer.",
+  "original_ground_source": {
+    "production_seconds": 1244.400301583,
+    "native_production_seconds": 1196.9541409210005,
+    "audit_seconds": 1226.864408166,
+    "native_queries": 152,
+    "native_micro_steps": 161640839510,
+    "source_query": 56,
+    "source_request_sha256": "669061a7a9036c7621a6ff0bcc7a7dbdfb2d9392e03c6dc1c4ccb914cd52c697",
+    "positive_preparation_elapsed_seconds": 546.814270001
+  },
+  "original_quantified_closure": {
+    "status": "unknown_space_budget",
+    "native_production_seconds": 73.363009042,
+    "audit_seconds": 74.156863875,
+    "scope": "Unchanged original heap unknown; ground receptor transfer does not resolve it."
+  },
+  "source_evidence": [
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_receptors_reader_001.json",
+      "sha256": "6998034f7c5a3bfd78083a7cb6beecb4c1d0f9e126ab2403ffe6cf83d7c3df1c",
+      "bytes": 1756178
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_receptors_native.json.gz",
+      "sha256": "00c180e1373895fe92a49794b1aff7f2f43403935c3290eb79c3ea5707e8ae67",
+      "bytes": 155554
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_receptors_audit.json",
+      "sha256": "e4c3868e5a7f65786c11860080c0ed2e18bf79f67c7925cc69c62d8537308f2c",
+      "bytes": 12014
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_ground.json",
+      "sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+      "bytes": 126804
+    }
+  ]
+}

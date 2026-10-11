@@ -1,0 +1,355 @@
+{
+  "status": "immutable_verified_final",
+  "file_count": 49,
+  "total_bytes": 24133974,
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_plan.json",
+      "sha256": "d58a66f35a4afeffec47fb22b8bd57010f3ade8be8fbbe0ea1afc80a71258c82",
+      "bytes": 109335
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_prior_export.json",
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_progress.json",
+      "sha256": "27f8877003203dfa1e251dcec4227dd2084cd9fda41d50425bc04e72dddacf20",
+      "bytes": 16939
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_audit.json",
+      "sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+      "bytes": 23260
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_native.json.gz",
+      "sha256": "c4f5b5359f45b70c29814a82de08dd1a912d721419e8a20b1ee88f1caf655dff",
+      "bytes": 9002
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_native_audit_progress.json",
+      "sha256": "338e7a85163a80e159eca69040d0e9f2e874455da2a4cdabe2f9a0214c725d95",
+      "bytes": 981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1.json.gz",
+      "sha256": "c51cebd7adbf368fb6a618c3400cc256deb7f5ffebcf8077f341a6fafe99f114",
+      "bytes": 131273
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "fb7eee2af1efbe00e50873cb8b76688d16ee4c9e5e986f0dac7bdb8ef23b5cf0",
+      "bytes": 131352
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "100ad7497e9ac3c395cab3b5f85b5e9cd93f9a06362a3264486d851f6b3850d4",
+      "bytes": 608510
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "82c1c970e89fce818e30497bace63f239ea753049e65c5b2a20f4a58a2e0e420",
+      "bytes": 608659
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "522ace177a118436bfffb260b4e527d33cf0aa4e586364c056b311e5d25493b6",
+      "bytes": 608502
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "e5730fe30f118757fe59fe6e51967cb7ceda528bea23ecd86e3649e11bdd923c",
+      "bytes": 608655
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2.json.gz",
+      "sha256": "5fde01246cd2c2615d8e0ea097b7d94fb4ddc60e63a0ac61ae95623a758e426a",
+      "bytes": 131268
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "8640dda93c5a0dbf0a1fdcf68962e449e1ad647551d54af5ace8a2047b4af3f9",
+      "bytes": 131346
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1.json.gz",
+      "sha256": "3a57e1ea5913f44f69f305f95b60fe82265b30a700d7cbca0371c96c39e172e9",
+      "bytes": 167248
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "9ba5b761f0a8a6d517aae9fa6695254fa0ea5713540cced50a26a40c374bd29c",
+      "bytes": 167422
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "5475c8d15b7f769e492ef037c25bf8b2ae93c6f7dfc9a95a88a8edfab756bd9a",
+      "bytes": 857153
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "ba16a0ff8bb9ab195810c567163aa2e15c520795072661fec98b4e7a5b5811a6",
+      "bytes": 857297
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "6d5d73b8d9a005fad6d5f8ec0cadf28d08d1128a7e82a10db256e3b6ec05a0bb",
+      "bytes": 857160
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "872f97fcd1591dd853654f56e6398147a23ba5a6006f3932c4bb5e596afdf21d",
+      "bytes": 857368
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2.json.gz",
+      "sha256": "78b2eae5ec467625ff6ba9230b69da25943cb826566774fa9212a2a9467121bc",
+      "bytes": 167246
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "df68373aea6aeaa3231c1c2b9d293247839eb2001a7b5c88f498243e7b7535a7",
+      "bytes": 167423
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1.json.gz",
+      "sha256": "b5435c13a64dd2c12f4c839ff8b2a4a2ce5e7378c57ad560487a5cdff7f40fed",
+      "bytes": 199905
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "7c3d02901a2f47a1096b51b4124bfa65754b688c34deddd54e7474937b6e8805",
+      "bytes": 199980
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "7ae48a1b31a56e714cc1df1516fe8ca39713479f8215adec446a44a7f17c89b4",
+      "bytes": 1266902
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "da9ab528e6a6ffe2cd4990f4da759eba0fff0514fb48d7dc5cfda939d3728ae3",
+      "bytes": 1267051
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "0f15555e7e258bcfa6c2f19683c07b5edf70bc1835cc3722b586e164d59092a9",
+      "bytes": 1266899
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "89b50c47fee771a3c02b3dd6a8a11690315250a7b6570da72fd2be52bcbe7c91",
+      "bytes": 1267050
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2.json.gz",
+      "sha256": "1641455f74021235389a37fe44027e0dd421957ec331a64529129800901f63c2",
+      "bytes": 199904
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "d83eeb4c3ac0baf6905f354329b34ed1e8a570efa8d6c68989fdce8242014f70",
+      "bytes": 199981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1.json.gz",
+      "sha256": "e705f1875d2c8ebc8532e7b9b0c9745490ff5b0c0bdf88a94404aa87b55980a7",
+      "bytes": 275977
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "da91687cca7f98631b2d06df9f6c5df63ac95c91558e49be9be7130abcc3d879",
+      "bytes": 276130
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "11eb809c2ba0f2ed92ed9b65813a96658077f7f4aec8c4e539165fe0a31be9f6",
+      "bytes": 2103861
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "961e1d85dbb535836b3a5a02f98de2f78e0deb16a8441e67f1799cffbd6a731e",
+      "bytes": 2104010
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "cf4012d8a0b489682b2df1b3ea5ffb6428cb1567681f384fa0611395c43ac4fb",
+      "bytes": 2103873
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "c6e765bf68a0fff1ebd2c96033eb6a8ca687ff4e55a4710d4d7d24a4061a210e",
+      "bytes": 2104085
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2.json.gz",
+      "sha256": "57c772b7e81cbbdc438dc34ccc05efcf0eb693a385aaf7a1df452295719dbb4e",
+      "bytes": 275982
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "590688c6494f8392580f32a59fe10d356a348892a224c89a16719f874ab3662c",
+      "bytes": 276135
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control.html",
+      "sha256": "483392daac15081c01b055ce017e73e65cef9a25929a44db10caf547c01dbb7d",
+      "bytes": 8110
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control.js",
+      "sha256": "0d57f04dd75d42a9cbfd251bbe32477a5ea9b5f90e81b771dd69b39ff97c85ab",
+      "bytes": 10808
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_reader_001.json",
+      "sha256": "27aed648a41cc642e7f2139fcd9ecfedb1c5f5074a99a3201d98d5a5bca373e0",
+      "bytes": 1410465
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_summary.json",
+      "sha256": "895d1be7ddad10db6f67844f58f0464d5ba30fa9058f41914796dcddef079da8",
+      "bytes": 3026
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_reader_checks.json",
+      "sha256": "2c338f41956ae05a76933635113443ae84b09159de112282e6911ce8e714a0cb",
+      "bytes": 1611
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_browser_qa.json",
+      "sha256": "c70778c417d970367d2642890a448b445d1933cf9a31771c9c8730ad3318e1a2",
+      "bytes": 913
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_declare.py",
+      "sha256": "bd700149586a7c4b7963df8beaa05ece705264302f7fe982d02e13999aeb62e3",
+      "bytes": 4520
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_run.py",
+      "sha256": "56d0c897a063e92337ce04137b98317ef3f68516daaaf666ea25de2b1342346a",
+      "bytes": 7755
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_audit.py",
+      "sha256": "a4cac7efaee1271e0b3bf789d74b2aa10939afdf3680a2a8f3792eb38aacff68",
+      "bytes": 17114
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_export.py",
+      "sha256": "c8e02a9adb89a9bfa35f374db7011c0c38b06595fbba9e5b26beb424fd37624c",
+      "bytes": 9046
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_check.py",
+      "sha256": "36f40df997225822cd15bbdcd1b6430ca9c56ce5fe6786d72e0bec6fa1b5cc60",
+      "bytes": 10803
+    }
+  ],
+  "public_url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/hilbert_expanded_control.html?v=20261011-hec1#reader",
+  "comparison_anchor": "#comparison",
+  "reader_version": "hilbert-expanded-control-001",
+  "plan_sha256": "d58a66f35a4afeffec47fb22b8bd57010f3ade8be8fbbe0ea1afc80a71258c82",
+  "audit_sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+  "reader_checks_sha256": "2c338f41956ae05a76933635113443ae84b09159de112282e6911ce8e714a0cb",
+  "prior_export_sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+  "all_prior_167_export_files_preserved": true,
+  "private_dependency_exports": {
+    ".gcts-active/hilbert-expanded-control-20261011/prior-export.json": "docs/research/gcts-rl-renewal/hilbert_expanded_control_prior_export.json"
+  },
+  "summary": {
+    "status": "complete_independently_audited",
+    "observations": 16,
+    "deterministic_pairs": 8,
+    "directions": {
+      "learned_fewer": 8,
+      "equal": 8,
+      "learned_more": 0
+    },
+    "proof_observations": 12,
+    "finite_exhaustions": 4,
+    "search_unknowns": 0,
+    "native_whole_unknowns": 0,
+    "fixed_attempts": 4508,
+    "learned_attempts": 1374,
+    "incremental_costs": {
+      "production_seconds": 185.252416625,
+      "preparation_seconds": 2.902052458,
+      "native_setup_seconds": 2.713810958,
+      "fixed_search_seconds": 23.015567376000003,
+      "fixed_model_setup_seconds": 3.1955025409999998,
+      "fixed_worker_wall_seconds": 39.732398794,
+      "certification_wall_seconds": 132.85406599700005,
+      "fresh_native_production_seconds": 70.280849292,
+      "fresh_native_micro_steps": 9595090328,
+      "fresh_native_queries": 2,
+      "independent_audit_seconds": 256.410989208,
+      "independent_fresh_native_replay_seconds": 71.19155512399999,
+      "independent_prior_input_binding_seconds": 0.5342582910000004,
+      "peak_worker_rss_bytes": 88178688
+    },
+    "frozen_paired_costs": {
+      "search_seconds": 7.9650810409999995,
+      "model_setup_seconds": 3.2051197100000004,
+      "worker_wall_seconds": 22.626257959999933
+    },
+    "historical_shared_costs": {
+      "production_seconds": 2620.4898026250003,
+      "native_production_seconds": 2409.827071827999,
+      "native_micro_steps": 329196372761,
+      "native_replay_seconds": 2411.9622285859996,
+      "full_native_queries": 142
+    },
+    "native_prior_reuse_observations": 8,
+    "native_new_reuse_observations": 2,
+    "feature_cost_accounting": {
+      "fixed_proposal_seconds": 6.096653619000002,
+      "paired_learned_proposal_seconds": 2.5373185850000004,
+      "fixed_feature_vectors": 3750,
+      "paired_learned_feature_vectors": 1600,
+      "fixed_expanded_mark_positions": 1047502,
+      "paired_learned_expanded_mark_positions": 542116,
+      "scope": "Expanded-word feature work is included in search and proposal elapsed times. The unchanged engine has one inclusive proposal timer covering generation, validation, feature construction and scoring; no separate feature-only time is inferred. Position and vector counts cover every scored proposal, including repeated work at different search states."
+    },
+    "audit": {
+      "complete_models": 8,
+      "nodes": 4524,
+      "events": 504,
+      "hints": 504,
+      "sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe"
+    },
+    "assessment": "This isolates fixed versus frozen learned ordering weights on exactly equal word-expanded point models. The four recipients are two hypothesis configurations at two finite boundary lengths, not four independent mathematical theorems. Any observed attempt difference is specific to these deterministic recipients; two same-seed timing repetitions are not independent samples. No new RL training, universal superiority, or total-cost speed claim. Prior cold preparation and full replay costs remain visible; new certificate verification costs and overlapping audit wait are charged separately."
+  },
+  "browser_qa": {
+    "status": "passed_local_browser",
+    "browser": "Chrome via cua_repl",
+    "url": "http://127.0.0.1:8841/hilbert_expanded_control.html?v=20261011-hec1#reader",
+    "options_verified": 16,
+    "comparison_rows": 16,
+    "proof_rows_across_options": 50,
+    "actual_tiles_across_options": 200,
+    "math_errors_across_options": 0,
+    "document_width_max": 1849,
+    "viewport_width": 1864,
+    "expanded_native_blocks_verified": 3,
+    "expanded_native_math_errors": 0,
+    "renderer": "CHTML",
+    "initial_selected_observation_matches_displayed_proof": true,
+    "live_verified": false,
+    "source_pins": {
+      "hilbert_expanded_control.html": "483392daac15081c01b055ce017e73e65cef9a25929a44db10caf547c01dbb7d",
+      "hilbert_expanded_control.js": "0d57f04dd75d42a9cbfd251bbe32477a5ea9b5f90e81b771dd69b39ff97c85ab",
+      "hilbert_expanded_control_reader_001.json": "27aed648a41cc642e7f2139fcd9ecfedb1c5f5074a99a3201d98d5a5bca373e0"
+    }
+  },
+  "producer_exit_code": 0,
+  "auditor_exit_code": 0,
+  "export_exit_code": 0,
+  "reader_checker_exit_code": 0,
+  "source_scope": "Three control declaration/producer/auditor sources were frozen before all 16 searches. Export and reader checker are separate post-result reporting sources. All unchanged shared code and 167 earlier export files remain pinned through the original plan and exact prior-export receipt.",
+  "publication_owner": "root",
+  "published_by_child": false
+}

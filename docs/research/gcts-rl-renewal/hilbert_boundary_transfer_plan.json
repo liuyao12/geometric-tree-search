@@ -1,0 +1,3786 @@
+{
+  "version": "hilbert-boundary-transfer-plan-1",
+  "completed_observations_at_declaration": 0,
+  "cases": [
+    {
+      "id": "transfer-delayed-common-short",
+      "group": "delayed-common",
+      "boundary": "short",
+      "length": 5,
+      "title": "delayed-common derived-premise incidence: 5 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "readiness": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ]
+            ]
+          ],
+          "common-from-readiness": [
+            "imp",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "l",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "extra-incidence": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "receptor_common": [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "m",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "P",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "P",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "receptor_incidence": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ],
+      "required_derivation": "common input is derived by MP",
+      "scope": "Unchanged symbolic signature and admitted receptors; changed closed hypothesis dependencies, no supplied target proof or pure-renaming difficulty claim."
+    },
+    {
+      "id": "transfer-delayed-common-sufficient",
+      "group": "delayed-common",
+      "boundary": "sufficient",
+      "length": 6,
+      "title": "delayed-common derived-premise incidence: 6 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "readiness": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ]
+            ]
+          ],
+          "common-from-readiness": [
+            "imp",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "l",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "m",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "extra-incidence": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "receptor_common": [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "m",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "P",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "P",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "receptor_incidence": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ],
+      "required_derivation": "common input is derived by MP",
+      "scope": "Unchanged symbolic signature and admitted receptors; changed closed hypothesis dependencies, no supplied target proof or pure-renaming difficulty claim."
+    },
+    {
+      "id": "transfer-coupled-reverse-short",
+      "group": "coupled-reverse",
+      "boundary": "short",
+      "length": 6,
+      "title": "coupled-reverse derived-premise incidence: 6 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "readiness": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ]
+            ]
+          ],
+          "common-from-readiness": [
+            "imp",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "m",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "incidence-from-common": [
+            "imp",
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "m",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ],
+                [
+                  "fun",
+                  "m",
+                  []
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ],
+      "receptor_common": [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "m",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "l",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "P",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "P",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "receptor_incidence": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "required_derivation": "both inputs are derived in sequence; reversed line receptor",
+      "scope": "Unchanged symbolic signature and admitted receptors; changed closed hypothesis dependencies, no supplied target proof or pure-renaming difficulty claim."
+    },
+    {
+      "id": "transfer-coupled-reverse-sufficient",
+      "group": "coupled-reverse",
+      "boundary": "sufficient",
+      "length": 7,
+      "title": "coupled-reverse derived-premise incidence: 7 rows",
+      "theory": {
+        "functions": {
+          "P": 0,
+          "Q": 0,
+          "R": 0,
+          "l": 0,
+          "m": 0
+        },
+        "predicates": {
+          "Point": 1,
+          "Line": 1,
+          "Incident": 2
+        },
+        "schemas": [],
+        "axioms": {
+          "I.2-uniqueness": [
+            "all",
+            "point0",
+            [
+              "all",
+              "point1",
+              [
+                "all",
+                "line0",
+                [
+                  "all",
+                  "line1",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "point0"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "point1"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "line0"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "line1"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "var",
+                                    "point0"
+                                  ],
+                                  [
+                                    "var",
+                                    "point1"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "point0"
+                                    ],
+                                    [
+                                      "var",
+                                      "line0"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "point1"
+                                      ],
+                                      [
+                                        "var",
+                                        "line0"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point0"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "point1"
+                                        ],
+                                        [
+                                          "var",
+                                          "line1"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "line0"
+                      ],
+                      [
+                        "var",
+                        "line1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "readiness": [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ]
+            ]
+          ],
+          "common-from-readiness": [
+            "imp",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "m",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "incidence-from-common": [
+            "imp",
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "P",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "P",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "m",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "P",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "Q",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "l",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "R",
+                  []
+                ],
+                [
+                  "fun",
+                  "m",
+                  []
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "sorts": {
+        "point": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "line": [
+          "l",
+          "m"
+        ]
+      },
+      "uniqueness_points": [
+        "P",
+        "Q"
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ],
+      "receptor_common": [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "m",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "l",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "P",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "P",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "receptor_incidence": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "m",
+            []
+          ]
+        ]
+      ],
+      "required_derivation": "both inputs are derived in sequence; reversed line receptor",
+      "scope": "Unchanged symbolic signature and admitted receptors; changed closed hypothesis dependencies, no supplied target proof or pure-renaming difficulty claim."
+    }
+  ],
+  "schedule": [
+    {
+      "tag": "transfer-delayed-common-short-level1-base-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-short-level1-fixed-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-short-level1-learned-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-short-promoted-base-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-short-promoted-fixed-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-short-promoted-learned-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-level1-fixed-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-level1-learned-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-promoted-base-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-promoted-fixed-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-promoted-learned-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-level1-base-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-level1-learned-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-promoted-base-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-promoted-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-promoted-learned-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-level1-base-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-level1-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-promoted-base-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-promoted-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-promoted-learned-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-level1-base-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-level1-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word"
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-level1-learned-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    }
+  ],
+  "seed": 72000,
+  "fixed_weights": [
+    0.7,
+    0.3,
+    1.0,
+    0.8,
+    0.2,
+    -0.1,
+    0.2,
+    0.2,
+    0.4,
+    0.0
+  ],
+  "weights": [
+    0.08369591640330343,
+    0.32087673760981406,
+    0.3725408993356053,
+    0.0017991124824526783,
+    -0.04857183708459727,
+    0.09966264113455951,
+    0.12427667535659201,
+    0.4360516896718667,
+    0.0073986385637367005,
+    -0.11940479670205117
+  ],
+  "limits": {
+    "attempts": 600,
+    "seconds": 15,
+    "proposal_limit": 24,
+    "proposal_checks": 2048
+  },
+  "guard_native_steps": 20000000000,
+  "whole_native_steps": 10000000000,
+  "native_production_seconds_ceiling": 1200,
+  "budget_scope": "All new theory, complete guard and whole queries; cumulative actual native request elapsed time, checked before the next query. Record prior total, current query and any overshoot explicitly. An unresolved/incomplete guard catalog stops before any search. Whole-query ceiling means unknown native certification; retain all remaining bounded point trials and every checkpoint.",
+  "hypothesis": "A searched two-input receptor can transfer to inputs derived by primitive MP; a deeper coupled pattern exercises the reverse line receptor. No pure-renaming difficulty or new mathematical axiom.",
+  "prior_prefix": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_",
+  "prior_control_prefix": "docs/research/gcts-rl-renewal/hilbert_expanded_control_",
+  "prior_exports": {
+    "family": {
+      "path": ".gcts-active/hilbert-boundary-transfer-20261011/prior-family-export.json",
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "files": 167
+    },
+    "control": {
+      "path": ".gcts-active/hilbert-boundary-transfer-20261011/prior-control-export.json",
+      "sha256": "804447877980b53b72674aecda384cc2e7b8d79b43d9801a0ae9871710df221e",
+      "files": 49
+    }
+  },
+  "sources": {
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit.py": "8684cab05d2a52def70ef703fd81a3ce036be429ca7327637cf16a9a76cab9a0",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/audit_catalog_receptors.py": "8eeaf74087b962dd144587589ae9d167e15b843a70d82dcc56af0cd506aa951f",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_first_order_families.py": "ea0e915f7b6c37186df6294f27827608bef8cbe1bd49adb9162c7f2f9cc7fcc7",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/hilbert_receptors_audit.py": "c3a807cfbedcf8332a43a53ad5caf46dbef4586a8fba825e9f6f97e2c54a1bef",
+    "research/gcts-rl-renewal/hilbert_promotion_family_run.py": "28b7f6bb2e2c2aa1cdbbda23314e8ff0777a20db19fb967ff83555dfd7d1f024",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/hilbert_promotion_family_catalog.py": "4c25b6b20c392071490a3184126a3a8e26a3265d66a79970ccb89141320e069a",
+    "research/gcts-rl-renewal/hilbert_receptors_catalog.py": "d22ecfecc6e737130a67730666cf383b68088b66df10fdd170c1b9dab34fb772",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/hilbert_promotion_family_worker.py": "65b860c07aeede481ebc2eb0ae414b15fe8caef3ae3100749620b866fe9df8e3",
+    "research/gcts-rl-renewal/catalog_receptor_search.py": "85cd20942159ad8459a1d30ecd3b8bcec45d5826f04bd61d74df307535b00df6",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+    "research/gcts-rl-renewal/hilbert_promotion_family_worker_v2.py": "bd5c8fc7e42fcea1811da952aaea24c88cbcc0d72c4f9419ee80d1803bb1ab21",
+    "research/gcts-rl-renewal/hilbert_promotion_family_run_v2.py": "8b2c01e3558e4ab5b6c96f04e1df9267196f2c8506012eca9d74ca1efbfd6ed5",
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit_v2.py": "ea9a0a69d80e6901f93f0fdc9d3b89fb996d6a3b5720ccb2b664c5a149bbf56b",
+    "research/gcts-rl-renewal/hilbert_promotion_family_run_v3.py": "beac75b50c334e5502066a0633cf05ac2948f27720e6752522db9a3092e8f47a",
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit_v3.py": "6649829adf38bc04abb3128f7f78afe93b8fe34b1515e708ea2766778cfbd587",
+    "research/gcts-rl-renewal/hilbert_expanded_control_declare.py": "bd700149586a7c4b7963df8beaa05ece705264302f7fe982d02e13999aeb62e3",
+    "research/gcts-rl-renewal/hilbert_expanded_control_run.py": "56d0c897a063e92337ce04137b98317ef3f68516daaaf666ea25de2b1342346a",
+    "research/gcts-rl-renewal/hilbert_expanded_control_audit.py": "a4cac7efaee1271e0b3bf789d74b2aa10939afdf3680a2a8f3792eb38aacff68",
+    "research/gcts-rl-renewal/hilbert_boundary_transfer_catalog.py": "e9975c03c127ff6f9fbd0963e59101525161bea3aa919a4c15d250119e897793",
+    "research/gcts-rl-renewal/hilbert_boundary_transfer_declare.py": "e2c0e0c9733e50590c65530ea2eb13639eeaf2bf0a778e72f3bf6df4707bc5c6",
+    "research/gcts-rl-renewal/hilbert_boundary_transfer_run.py": "4b87841dc4267867998f6e78d3dd0ef98467cab99c1e838a5236cb96ea87f77d",
+    "research/gcts-rl-renewal/hilbert_boundary_transfer_audit.py": "0eedd8301faafb80990d1de82015472d1008fe3d0485aee37af33ddbe46c9a80"
+  },
+  "data_dependencies": {
+    ".gcts-active/hilbert-boundary-transfer-20261011/prior-family-export.json": {
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_plan.json": {
+      "sha256": "fe46d9c347ca977491fcc09f491fad1d4192abb9acb6fe0c8e700597625078cb",
+      "bytes": 65286
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_progress.json": {
+      "sha256": "09c60bc5404f2801b6579c974703c5d268d95891735a10f412c884c45ba62623",
+      "bytes": 44497
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_catalog.json.gz": {
+      "sha256": "fe27a777dd30000c366527e2aec42ee01df7375204b2c119adf492ae22ca5580",
+      "bytes": 30558
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_native.json.gz": {
+      "sha256": "376e11974ccfefb4e9fb41fda056f4e97bbbefb385c8bd1616a6ccdda78bb26b",
+      "bytes": 295943
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_native_audit_progress.json": {
+      "sha256": "4206ba8f97becfdc19e61414faf83af9e9b9fde40a9e1f120039c9d9019f2a12",
+      "bytes": 248
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_audit.json": {
+      "sha256": "d21b31af5331453f21028217317322156900d3ef511bdfefff5e92b2161a55d6",
+      "bytes": 26961
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_inventories.json.gz": {
+      "sha256": "e3b87f46c6285c260243edc75ac55e233a9090519b7fe7ac78546a4e6402d174",
+      "bytes": 30932
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_compiled.json.gz": {
+      "sha256": "906100209c924c25fff58316b6fcbcbf9eb43de7a16e142b430819d4fa676da5",
+      "bytes": 1064
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_feature_label_defect.json": {
+      "sha256": "71907b9e898f247e7c62092fcf0ec4461fb755454672f0f0599677b3a431e9ac",
+      "bytes": 1280
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_api_token_amendment.json": {
+      "sha256": "1e5c0ee8774db7d7bfa038548142485a8c7ce3968dd9046e4f524a42fbd49612",
+      "bytes": 1994
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_api_token_tests.json": {
+      "sha256": "1686476e71d2b0fc28fbff8cd91d7d7117ce944b6b83994cab65f0987bdddf57",
+      "bytes": 327
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_guard_resource_plan.json": {
+      "sha256": "27ae0bfdb7d40fa1c51055dc0a8e290eb027c1d0896effe89c2ec437febc7066",
+      "bytes": 3163
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_v2_resource_refusal.json": {
+      "sha256": "e45f8762eac63830d1453cfd4fb1dd2c1ccf75216d557c4a7c1f6dad482b7e97",
+      "bytes": 476
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_native.json.gz": {
+      "sha256": "71765c6a3f13713b3ea24d67a0aba5292c22415b9a1aefe72a574d8cb5d35e61",
+      "bytes": 262411
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_progress.json": {
+      "sha256": "01718958230a5dbe0ad8917c0e996a6ef92f5591139b0be6911fae9a8c0dabcd",
+      "bytes": 12202
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_audit.json": {
+      "sha256": "b496b51cae14404b50b21492db489f3ad40cfa4c72876e41a8c9d80e0e0fd243",
+      "bytes": 316
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_compiled.json.gz": {
+      "sha256": "664875c46b5ec96ddeff115adda7d2fb1dffd3f6dccd789d97978085364710f4",
+      "bytes": 801
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_resource_v1_inventories.json.gz": {
+      "sha256": "e3b87f46c6285c260243edc75ac55e233a9090519b7fe7ac78546a4e6402d174",
+      "bytes": 30932
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r1.json.gz": {
+      "sha256": "2bc5d18a20cda5e688336c69266080ab0f0ce36ef0bcd9b02da4bc1c323f091c",
+      "bytes": 128711
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r1_final.json.gz": {
+      "sha256": "f72a769cc9fdee8e319f9344eea7876c41393b24e8b23d01ac129ef52103cb09",
+      "bytes": 128777
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r1.json.gz": {
+      "sha256": "7d9ee4a2b866deb2f996b194fcc9a79e3b6a723c0eba1cb3af627437dbbfb5ae",
+      "bytes": 131144
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r1_final.json.gz": {
+      "sha256": "040a5d182c5ff96801632cab0bd01e66198216d9a30fc7a79b2811f09ba4f6f1",
+      "bytes": 131211
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r1.json.gz": {
+      "sha256": "52132123dc00045bb932d53a1bcbdb71d02e1c1da865ba8f2b1db9bd203d84fe",
+      "bytes": 131332
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r1_final.json.gz": {
+      "sha256": "234b3c5737246a4019950bd27297e6dfc057a94696edd049043bed2766922ed1",
+      "bytes": 131396
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r1.json.gz": {
+      "sha256": "24b31c88e8305f2958af25c23cf42521ecb36cc9f98a1cba033745838ff5c84b",
+      "bytes": 131373
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r1_final.json.gz": {
+      "sha256": "89a8e11a4ddbb0995683b6c40b4d88604106299902bd23fad514559a0061f7cd",
+      "bytes": 131438
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r1.json.gz": {
+      "sha256": "d4e2f87bb2562cf987a412a2ed603b8a81b5f79de7a43aad5a4eda1afe3c0b70",
+      "bytes": 589979
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r1_final.json.gz": {
+      "sha256": "ac8186dd27ccc2e0a6af0d19ce850b0ef922b7028fdbc739f1ec8a9efd14617d",
+      "bytes": 590033
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r1.json.gz": {
+      "sha256": "e6eeff7ddec2e157cc4ee1edfc8c204fb573f858a76a02d66b41af75f39eed3e",
+      "bytes": 595587
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r1_final.json.gz": {
+      "sha256": "3b90a4024381af6a9177bb2a32476771fcbc5c37121554cdb6c74d146dd5f9a9",
+      "bytes": 595645
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r1.json.gz": {
+      "sha256": "60d50a0f53c8680b21b7ff87b5ecac6de30674a0cba68595c45461296491d62b",
+      "bytes": 595815
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r1_final.json.gz": {
+      "sha256": "cbd6b8df734e764419eaefd6018d6f0e6ac0d1dede89082342642d545e052bc8",
+      "bytes": 595874
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r1.json.gz": {
+      "sha256": "4b9b3d6f0639338feabda4321887ba83101c2f2cafade6520229de8e533cdaf9",
+      "bytes": 594726
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r1_final.json.gz": {
+      "sha256": "b2fa2e8709f27469b6fad389acfb3d4fea9f585b167186c3b86681ba342d155c",
+      "bytes": 594781
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r2.json.gz": {
+      "sha256": "4adafe2c8d3173b48f2ac9918afcda0d2a2c7b80bfea996fdcfe25e9353fa02a",
+      "bytes": 131143
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_fixed_physical_r2_final.json.gz": {
+      "sha256": "40df1632e53124802e5a34d07281ec07708abbf682f2ed808d2fc993c3d08338",
+      "bytes": 131210
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r2.json.gz": {
+      "sha256": "09443cb9e9eb7b83cdc207cc5713407f10d5fdf58f0eeaa4e54ce0608611bb92",
+      "bytes": 131341
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_physical_r2_final.json.gz": {
+      "sha256": "812af8923d4d1fea93e953ce393c4a2251c8b7a22236657f78aa486124b474c9",
+      "bytes": 131406
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r2.json.gz": {
+      "sha256": "cc98562e983d8164c41ca9b67c8d8ce1bb35cffc1f7a77b319a1049014f85933",
+      "bytes": 131372
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_learned_expanded_r2_final.json.gz": {
+      "sha256": "60ea5b00db12f21ab7a318cdf4c17ff00008aaca29c3d143d4b3a5435264d029",
+      "bytes": 131438
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r2.json.gz": {
+      "sha256": "ef198727f133a42c679bc16741b121b71006ed15321b06c6a4fa8d9698e7d5ec",
+      "bytes": 589979
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_base_r2_final.json.gz": {
+      "sha256": "8877cf60d11d41310cbaef5fcc28b3269a899e515f0bdf30c5cfaa49431e8011",
+      "bytes": 590035
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r2.json.gz": {
+      "sha256": "fc9ff038430b0a726a78de5438a0fec5ad6b343a28cdf4d9d3a0114310335ca0",
+      "bytes": 595593
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_fixed_physical_r2_final.json.gz": {
+      "sha256": "1e80110c816a0b86946e7fab87d2dbf2e6311385fd1e1911f23ad9caef79bc8e",
+      "bytes": 595653
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r2.json.gz": {
+      "sha256": "6121861b97cd82c06c329f0373657ae3f80bad78e0ad7353788da94f2496336e",
+      "bytes": 595819
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_physical_r2_final.json.gz": {
+      "sha256": "3e55b3b150381c4382c564d89677975f141d73f0eb72aeafd29bbb512231ebbf",
+      "bytes": 595875
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r2.json.gz": {
+      "sha256": "538263e4b9b719a1781d5660ab373cce891f9238b95f1234914154887d761b50",
+      "bytes": 594723
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_promoted_learned_expanded_r2_final.json.gz": {
+      "sha256": "05efa1c1ad6e176664f8f30e727520f5aac6157a01d5e1ed873e67a18ca4933f",
+      "bytes": 594778
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r2.json.gz": {
+      "sha256": "b29f1cdbdfbff5f2f0c87b2dccca743055e5bd2d654b5783c957cbfadafc9e10",
+      "bytes": 128714
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_short_level1_base_r2_final.json.gz": {
+      "sha256": "d0b20042d8c77081b0c1e551dd34b6f89a10009244bb727bf20160ce8c08f1c5",
+      "bytes": 128780
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r1.json.gz": {
+      "sha256": "bc92b2f1a65fc231e85b02904d418d7f1afd66261cfe2b0eb378dc1239be8f57",
+      "bytes": 164890
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r1_final.json.gz": {
+      "sha256": "9e95b791ba5634f05c2f72ce1ba5b70fbd088d5b809d4ce941d01e566f946074",
+      "bytes": 164947
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r1.json.gz": {
+      "sha256": "17ebbfeb92ffd5431372da1d5766c01d432b24ee0bc35ca80451b6993b9a868c",
+      "bytes": 167115
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r1_final.json.gz": {
+      "sha256": "29dcdd45b1a1581ad2db44a1ffe773dbd299fdc264c7f1ad9cb7b00d62db6272",
+      "bytes": 167186
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r1.json.gz": {
+      "sha256": "0b3c572d13b701fa904424a7e7e41360875a890d30284b8c6be227134ffda8bb",
+      "bytes": 167283
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r1_final.json.gz": {
+      "sha256": "22f840415349dc8fa02fc53be1ce1cd89363842caac0c90d7ab78f36d1890873",
+      "bytes": 167350
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r1.json.gz": {
+      "sha256": "5589c933e52b293584cb5bdbd2ec6d8c688ca1082b2288a3a2b2cd3d8ccf6717",
+      "bytes": 167334
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r1_final.json.gz": {
+      "sha256": "1987f7fddca4ec43226d53b477b3eee25a20eaa0304f495ff9aeaf8cf7e043ef",
+      "bytes": 167400
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r1.json.gz": {
+      "sha256": "939dd4ed6e2dbe19929e6456b46cb44fa47e74567f5be58aa8f23d989f176852",
+      "bytes": 827127
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r1_final.json.gz": {
+      "sha256": "a8eb17f6b0822db1f0777df868fc509ed86afa80aa64d1bf9f28d6ac7230fade",
+      "bytes": 827184
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r1.json.gz": {
+      "sha256": "c1d0c5c8aa47b5a54479cd4fef4e60b45ee65e1ff0171c9c04d0e51f14648607",
+      "bytes": 815392
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r1_final.json.gz": {
+      "sha256": "10f1f1f24ac5903e359fc8abe46392ba9720021cfd5833bd78f0882355be492f",
+      "bytes": 815446
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r1.json.gz": {
+      "sha256": "5c3e69c4a6eeafbf1dd252bfa2db00f2b40b3476d629e146777273e56932184d",
+      "bytes": 815723
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r1_final.json.gz": {
+      "sha256": "0c4787ca60b470cc1ec4f76d426eb4f0d04e3766ca590d2b7b8ac57b1bbb8afd",
+      "bytes": 815779
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r1.json.gz": {
+      "sha256": "59c56edf5e3dc2ddb6b02f1900b03735271af9332bbe1201b8b089cfb03ab6d8",
+      "bytes": 816208
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r1_final.json.gz": {
+      "sha256": "c292c38bad0fc52500b302bf4f8db4e9b44f0a42069fcc8a758a758d81a35aae",
+      "bytes": 816264
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r2.json.gz": {
+      "sha256": "6399c790b9e43b4813766f5fd57bd320b614a0376116625cb6e0509f87f676d9",
+      "bytes": 167130
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_fixed_physical_r2_final.json.gz": {
+      "sha256": "d93399b297422b565dc87b7c3b1a25b063a155bd08b6b9bed581e87dae322281",
+      "bytes": 167200
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r2.json.gz": {
+      "sha256": "ff77b3fa6b81e14632b9761b7aca6476da7aef48905c431aeeb2f3966ca31db3",
+      "bytes": 167276
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_physical_r2_final.json.gz": {
+      "sha256": "8c7754e7b53862ab1e692fc7e4c8c9586a8dc3cbe6d69b346421b834e681b372",
+      "bytes": 167343
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r2.json.gz": {
+      "sha256": "1a59805791e6e9c0e7cf3d6e8bc1246c02357b91c827fb90e388cc996839d858",
+      "bytes": 167351
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_learned_expanded_r2_final.json.gz": {
+      "sha256": "70ddefce42529931fa728d78da371a10867bf3c77d213161eeb92488730bc50b",
+      "bytes": 167415
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r2.json.gz": {
+      "sha256": "b8e0704174c71e508bde153788fe04dd844e023f2cb902a30cdeb0427ba30d65",
+      "bytes": 827133
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_base_r2_final.json.gz": {
+      "sha256": "98bef099570cc9f54ecfad8e65233226e2031fce7fa9b5c174853c94970cc6d9",
+      "bytes": 827190
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r2.json.gz": {
+      "sha256": "f9b19da715e2d086bb6466de2067180146712f28a75c5d20a29755a7bc10246e",
+      "bytes": 815389
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_fixed_physical_r2_final.json.gz": {
+      "sha256": "7d7ca98fab2942cc37cb376724519e0bdf784df015760e27d3f958ba86282d50",
+      "bytes": 815444
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r2.json.gz": {
+      "sha256": "5a376f0c6ab8dd52f0e2e344ecc79ad608ea9336b0ba6d1b06dbaf8cba530ac8",
+      "bytes": 815723
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_physical_r2_final.json.gz": {
+      "sha256": "7d7d2e56c86b1a251fff799e9640937a46c653098f6097665fc2760cda7225e6",
+      "bytes": 815781
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r2.json.gz": {
+      "sha256": "7ba9d8a032018e5f33adcaefd9a2f2ef9bb32f160d46fec6fd256440dec4c0b9",
+      "bytes": 816211
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_promoted_learned_expanded_r2_final.json.gz": {
+      "sha256": "872e449caa5ad7b7b4e78e20ff47094c799750eb94108275d40e92c206271c0d",
+      "bytes": 816265
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r2.json.gz": {
+      "sha256": "7ad9a6e92ca1fc2cfef5b4ab06520a1d5f9a3ad3ecb10ffdef7b0e379f659c0e",
+      "bytes": 164891
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_direct_sufficient_level1_base_r2_final.json.gz": {
+      "sha256": "b2bac11f665933030bd6dab14f77322274e5fac5cec05dc3ed99a58cdd57a990",
+      "bytes": 164947
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r1.json.gz": {
+      "sha256": "a6cf8b47364d4abc7d1402ed11d8277d8116a32a14191cc8dd509ef4f7774a3d",
+      "bytes": 193549
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r1_final.json.gz": {
+      "sha256": "ba05ea43c9bfa0515c3c1cc8522417364817c34081752ac6cb649173541a3b2b",
+      "bytes": 193610
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r1.json.gz": {
+      "sha256": "d5a1903dacd7846371b5f539a249640dd35a0f3c21f2c0478f79cdb4b7fae13e",
+      "bytes": 199452
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r1_final.json.gz": {
+      "sha256": "85f9f0f966e7ac077d45a8b868c8519bf282044bb455c86d84b38fa2ace96b35",
+      "bytes": 199516
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r1.json.gz": {
+      "sha256": "05d4ec4ad1e11fd0ef9ee0ecb3dddd4ae88ef1aef159f2c12f4b3745cb2581af",
+      "bytes": 199706
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r1_final.json.gz": {
+      "sha256": "86c0cb2edcd66bda7911c09d99d393ffaffab239fcb7049528cdfffa75f6992d",
+      "bytes": 199770
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r1.json.gz": {
+      "sha256": "6a3fc6f1896c7ffb512eee569b177b80797ffbdd4399750542abea3ddd0c065d",
+      "bytes": 200171
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r1_final.json.gz": {
+      "sha256": "d53750658384ba33f09d04e8af93ab9472864a1731b07b5a871944a18b104dbc",
+      "bytes": 200235
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r1.json.gz": {
+      "sha256": "9973a00fbe29e7f45f8a7a1878ee165217560217595fc517761d8db4e72be143",
+      "bytes": 1023449
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r1_final.json.gz": {
+      "sha256": "5bb1802bbc39f29424eca438efb0f08ed0d28fa4a357724797ff9ae35be25486",
+      "bytes": 1023507
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r1.json.gz": {
+      "sha256": "9f9e54db3c6cabdf4e55078a704b31b5d36dbb27288b250767287b314754d19f",
+      "bytes": 1074695
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r1_final.json.gz": {
+      "sha256": "7c41bd5d5442a220402b23c338a969eb6766bae13199f197c91bf06b051b96e3",
+      "bytes": 1074750
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r1.json.gz": {
+      "sha256": "c660f0fb91273c35e459c851881f82fdb62a1558ba5671361fc7fc828495b9b8",
+      "bytes": 1074587
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r1_final.json.gz": {
+      "sha256": "889b5370b05c8c76e94ff48475752f8b447106fe2d8575fe0b3f6e80f2db88c2",
+      "bytes": 1074642
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r1.json.gz": {
+      "sha256": "c81c6dd49248cb889c17a820d0641e9979899d2d8a4310791b76bb0cef36efa5",
+      "bytes": 1037754
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r1_final.json.gz": {
+      "sha256": "4824226dc2fdbe9e2f9cd77bc1809a3f622818d8f7fd3cd277e333e84d206f5c",
+      "bytes": 1037808
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r2.json.gz": {
+      "sha256": "47101e455565c2bd6b568c066d9d77320a6049808b8f2b49f22762a235cd67b2",
+      "bytes": 199450
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_fixed_physical_r2_final.json.gz": {
+      "sha256": "78fc83a346ecc298fbcafef215534dc579cd83151c9e2ef82f32c45f717d21e3",
+      "bytes": 199515
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r2.json.gz": {
+      "sha256": "c6be2f5f8046bc7288e4307baa1e48b63b0da5ee90c13f33065419c2b4df09e9",
+      "bytes": 199714
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_physical_r2_final.json.gz": {
+      "sha256": "01d62b26c3134ffe2e30156043ca98d572d8f24cb8858986f15ca3caa1cc6d8b",
+      "bytes": 199779
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r2.json.gz": {
+      "sha256": "df9268fd34c9e2b3a4e69233377255ca5eae1af1d275b5c31300e674467d597b",
+      "bytes": 200185
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_learned_expanded_r2_final.json.gz": {
+      "sha256": "26ce10087c12788bb1015e96d4cfda852edee02c4ec9139a44544f39326a2623",
+      "bytes": 200248
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r2.json.gz": {
+      "sha256": "600dad1a81997c85a06bc4472113d8642f7125afa14307f0001022805fd6ef6a",
+      "bytes": 1023454
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_base_r2_final.json.gz": {
+      "sha256": "b63c4d7921ac3ac5cb03f930cc1c5b4a5471bdc702e2ce48af83c2802de1218b",
+      "bytes": 1023508
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r2.json.gz": {
+      "sha256": "1a352526161c2a036f44b67945bdade7654eda26183a84b26188ce80c209f757",
+      "bytes": 1074680
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_fixed_physical_r2_final.json.gz": {
+      "sha256": "43f9c7dae1327f5b42e669354af5a1b9da33b716b8457d002a65c4dfc4594676",
+      "bytes": 1074735
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r2.json.gz": {
+      "sha256": "29d5b64cb1ce2f6271613376f28c6ce51cce604a35f77a6b2c098cafe8b8abb1",
+      "bytes": 1074577
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_physical_r2_final.json.gz": {
+      "sha256": "f6458707664c879e0f3ee870aee94fd108ac887b55c38d9350a9c44a9a63606c",
+      "bytes": 1074632
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r2.json.gz": {
+      "sha256": "3501795513cb660bca5ecf4ab5ddd8ff14ca5d4cbfaef042df7de28e707339e2",
+      "bytes": 1037765
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_promoted_learned_expanded_r2_final.json.gz": {
+      "sha256": "7cc67ffa4d8bec2d1da0d93d390b6729819eefbebcd380643becd9bfbf48004d",
+      "bytes": 1037820
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r2.json.gz": {
+      "sha256": "b90394238078d8522b9b201108dd82c616303abb3ca0389af224d2707d858a13",
+      "bytes": 193541
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_short_level1_base_r2_final.json.gz": {
+      "sha256": "d6641aaf5c2e0e7070a3bbf8fc5bdd06aae3316472010c87526923a75d54bab3",
+      "bytes": 193605
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r1.json.gz": {
+      "sha256": "c32747b0b8cbf06e74b55d0f8d0d30c63eff3def7096593011c38bec6bd11a13",
+      "bytes": 272126
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r1_final.json.gz": {
+      "sha256": "a2160450e91ec1f255b7f428321723498c83636e47ea3e0095c0c599add1e330",
+      "bytes": 272179
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r1.json.gz": {
+      "sha256": "d93c9a9dc167342c2a6628542f74c28fb0fc14b9a640e7694bdec6c9b7d1b513",
+      "bytes": 275787
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r1_final.json.gz": {
+      "sha256": "7675f08c013270cb0f641d918c4d68294942ab6a5f6194671f24a101a2a9a6a3",
+      "bytes": 275844
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r1.json.gz": {
+      "sha256": "573a260e699551c4f5e5bb252e143f0bfb9578051aef087e61587ba234da319e",
+      "bytes": 276005
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r1_final.json.gz": {
+      "sha256": "ff487e4688c6cc0853d09284ed868dfaa93d5d9d11060353d3b8b8219b875722",
+      "bytes": 276061
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r1.json.gz": {
+      "sha256": "936979484d2d46b71c97f027360702f05991774b6f6005402377aa7496695dcd",
+      "bytes": 276183
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r1_final.json.gz": {
+      "sha256": "aa2b2ad90ece0e5c0ed9d8b25f02a307860f0cb2c13991158d8584e5270be31e",
+      "bytes": 276238
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r1.json.gz": {
+      "sha256": "fd4b917b9a37f8e7fc646273898df520c39b2dd438249c2921253703b746823c",
+      "bytes": 1303325
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r1_final.json.gz": {
+      "sha256": "0f6db717761df8246f69bc59778d0e598adfa5eedd279ea32f425596469898d7",
+      "bytes": 1303379
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r1.json.gz": {
+      "sha256": "b5ddaaf866e8ee6af6cc86dc4c074ebee34af97ab635d100a9884fdbccbb86c1",
+      "bytes": 1168373
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r1_final.json.gz": {
+      "sha256": "dc4eebaf9a83c8585c8a8cef4e30c5589b1fdc7fcddfbe169242d61ab7563075",
+      "bytes": 1168427
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r1.json.gz": {
+      "sha256": "b88794b3369c4666dcfb0bea62ab967279fc74310efd20f63f4b652a963d6d88",
+      "bytes": 1168365
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r1_final.json.gz": {
+      "sha256": "18b2e1069db435e4616ab312ad30ceb747682c4787f21f870348d7822da23b74",
+      "bytes": 1168418
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r1.json.gz": {
+      "sha256": "ad74c439733da2c12dbbb91e548a83e31dee126b8af6618e757f1e19e5c96410",
+      "bytes": 1131152
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r1_final.json.gz": {
+      "sha256": "ecf1f9870b97ad3360a935f3daa6dd6a04b2f4a82f8507c5f24fc3c3a915047c",
+      "bytes": 1131206
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r2.json.gz": {
+      "sha256": "1153c595520a6b8467b185cdac5d0a6f568ad3c0f283f50dd75a194969dba8f4",
+      "bytes": 275789
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_fixed_physical_r2_final.json.gz": {
+      "sha256": "534e3ad65ff48127d4aed7564858d985a91d1cd1aa3f8ae0d4e08e428656acc8",
+      "bytes": 275848
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r2.json.gz": {
+      "sha256": "4d3ab27cf7ba13846aa3dabc35df5179eea54d76b3c398e75e0cd85df906bbf8",
+      "bytes": 276016
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_physical_r2_final.json.gz": {
+      "sha256": "f61e0a70a975c875d715e96262b29a2057066c04e3fd4ec0d3d994212b320b5d",
+      "bytes": 276072
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r2.json.gz": {
+      "sha256": "c41888a2823b6e1711e3595e84db85fda16efdb3ab63020e1c2b132b355ed3f9",
+      "bytes": 276177
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_learned_expanded_r2_final.json.gz": {
+      "sha256": "0aed7cb28af16e4d300428cc7ddd9dbcfb36c32aaca4eb1578210d65d632b563",
+      "bytes": 276234
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r2.json.gz": {
+      "sha256": "0dab77d415d67aed3ea69e45739a0491f47d79faf7a76d8d10f849b21bb28dac",
+      "bytes": 1303326
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_base_r2_final.json.gz": {
+      "sha256": "82afb8d5e71c48159068df2e4345c031b71f50fa736160062523629ade2544b9",
+      "bytes": 1303381
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r2.json.gz": {
+      "sha256": "d8342dc6c3ab1eb4855f8b1e09ec5b4c6f03f56a45fb8e4a8062842f0511dd5e",
+      "bytes": 1168380
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_fixed_physical_r2_final.json.gz": {
+      "sha256": "32a75919c2009d60f22d696b6dc6c52a5fafe25dd04fdaa1b10343287484ad2a",
+      "bytes": 1168436
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r2.json.gz": {
+      "sha256": "a997bc8a48b0d3c137aff52b65fe86cfbb0926eead35e43de2c5104c799b7bb2",
+      "bytes": 1168369
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_physical_r2_final.json.gz": {
+      "sha256": "84d338b4e5dfec790d84dc3c3b9bb717573e23920255ecf62f56b8e62d518de7",
+      "bytes": 1168424
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r2.json.gz": {
+      "sha256": "2df41d000f2c59363204668beb07304c6630c19d3b01e8b7cb5ec060fb8a6cd5",
+      "bytes": 1131149
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_promoted_learned_expanded_r2_final.json.gz": {
+      "sha256": "147b098f8eaf5ce81dd50dd218bdd0dcd48effff41e90aa0942b618b860202c2",
+      "bytes": 1131202
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r2.json.gz": {
+      "sha256": "9de16e9a54d7c9f809e09c9ba90256c46bcbc14c3ce68ff546384d5a7b7ecff5",
+      "bytes": 272135
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_fresh_composed_sufficient_level1_base_r2_final.json.gz": {
+      "sha256": "719a1af2621d9ef0964d09d70912fdae7592560120bdd7f55f979bfa3e4ac35f",
+      "bytes": 272194
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz": {
+      "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877",
+      "bytes": 4157
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json": {
+      "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187",
+      "bytes": 592
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_ground.json": {
+      "sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+      "bytes": 126804
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3.html": {
+      "sha256": "cbc8ea88460904e9553ed8df27145260f9758ef84ec3a44d15138f128830c5d5",
+      "bytes": 7684
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3.js": {
+      "sha256": "77388ff1b69b26e7a0f9626dcd8cccde95f48c35c0888e5ff6682397972f2c29",
+      "bytes": 11728
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_reader_001.json": {
+      "sha256": "92f76036705793c887f9ba65d8e0d6fab64ac2c8ef9a84d6307eba88fad7532a",
+      "bytes": 3498171
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_summary.json": {
+      "sha256": "7e819f91251ffd6b33d155b16f00736525de83c1d162c4a8a910ecbaad386968",
+      "bytes": 47259
+    },
+    "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_reader_checks.json": {
+      "sha256": "aee9f13c6e5be6a23936e16e2e5698821c056e3dc380020a5fc2dd497e1cd823",
+      "bytes": 603
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_catalog.py": {
+      "sha256": "4c25b6b20c392071490a3184126a3a8e26a3265d66a79970ccb89141320e069a",
+      "bytes": 4954
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_worker.py": {
+      "sha256": "65b860c07aeede481ebc2eb0ae414b15fe8caef3ae3100749620b866fe9df8e3",
+      "bytes": 958
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_run.py": {
+      "sha256": "28b7f6bb2e2c2aa1cdbbda23314e8ff0777a20db19fb967ff83555dfd7d1f024",
+      "bytes": 10211
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit.py": {
+      "sha256": "8684cab05d2a52def70ef703fd81a3ce036be429ca7327637cf16a9a76cab9a0",
+      "bytes": 18584
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_worker_v2.py": {
+      "sha256": "bd5c8fc7e42fcea1811da952aaea24c88cbcc0d72c4f9419ee80d1803bb1ab21",
+      "bytes": 1106
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_run_v2.py": {
+      "sha256": "8b2c01e3558e4ab5b6c96f04e1df9267196f2c8506012eca9d74ca1efbfd6ed5",
+      "bytes": 8088
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit_v2.py": {
+      "sha256": "ea9a0a69d80e6901f93f0fdc9d3b89fb996d6a3b5720ccb2b664c5a149bbf56b",
+      "bytes": 21201
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_run_v3.py": {
+      "sha256": "beac75b50c334e5502066a0633cf05ac2948f27720e6752522db9a3092e8f47a",
+      "bytes": 10002
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_audit_v3.py": {
+      "sha256": "6649829adf38bc04abb3128f7f78afe93b8fe34b1515e708ea2766778cfbd587",
+      "bytes": 22351
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_export_v3.py": {
+      "sha256": "f7ee911da620342a02b61819684459f78dd2a0a5c2bc82c280420779f69d1981",
+      "bytes": 6006
+    },
+    "research/gcts-rl-renewal/hilbert_promotion_family_check_v3.js": {
+      "sha256": "a5a489225434ce50b54bd924d13b0493c2b03441daf5b6a287fb4e5575b0c5be",
+      "bytes": 10194
+    },
+    "research/gcts-rl-renewal/hilbert_receptors_promotion_admission.py": {
+      "sha256": "33a111dadbc2ef64100c4e6ff44492fe6a382ee2a17e6f20b3e6d03bc214de0b",
+      "bytes": 4459
+    },
+    "research/gcts-rl-renewal/hilbert_receptors_promotion_audit.py": {
+      "sha256": "0236d33e28bbfcbd01bd52281660982b0f0a2b196d546518e59d46a6e489cc7f",
+      "bytes": 4150
+    },
+    ".gcts-active/hilbert-boundary-transfer-20261011/prior-control-export.json": {
+      "sha256": "804447877980b53b72674aecda384cc2e7b8d79b43d9801a0ae9871710df221e",
+      "bytes": 16988
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_plan.json": {
+      "sha256": "d58a66f35a4afeffec47fb22b8bd57010f3ade8be8fbbe0ea1afc80a71258c82",
+      "bytes": 109335
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_prior_export.json": {
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_progress.json": {
+      "sha256": "27f8877003203dfa1e251dcec4227dd2084cd9fda41d50425bc04e72dddacf20",
+      "bytes": 16939
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_audit.json": {
+      "sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+      "bytes": 23260
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_native.json.gz": {
+      "sha256": "c4f5b5359f45b70c29814a82de08dd1a912d721419e8a20b1ee88f1caf655dff",
+      "bytes": 9002
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_native_audit_progress.json": {
+      "sha256": "338e7a85163a80e159eca69040d0e9f2e874455da2a4cdabe2f9a0214c725d95",
+      "bytes": 981
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1.json.gz": {
+      "sha256": "c51cebd7adbf368fb6a618c3400cc256deb7f5ffebcf8077f341a6fafe99f114",
+      "bytes": 131273
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1_final.json.gz": {
+      "sha256": "fb7eee2af1efbe00e50873cb8b76688d16ee4c9e5e986f0dac7bdb8ef23b5cf0",
+      "bytes": 131352
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1.json.gz": {
+      "sha256": "100ad7497e9ac3c395cab3b5f85b5e9cd93f9a06362a3264486d851f6b3850d4",
+      "bytes": 608510
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1_final.json.gz": {
+      "sha256": "82c1c970e89fce818e30497bace63f239ea753049e65c5b2a20f4a58a2e0e420",
+      "bytes": 608659
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2.json.gz": {
+      "sha256": "522ace177a118436bfffb260b4e527d33cf0aa4e586364c056b311e5d25493b6",
+      "bytes": 608502
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2_final.json.gz": {
+      "sha256": "e5730fe30f118757fe59fe6e51967cb7ceda528bea23ecd86e3649e11bdd923c",
+      "bytes": 608655
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2.json.gz": {
+      "sha256": "5fde01246cd2c2615d8e0ea097b7d94fb4ddc60e63a0ac61ae95623a758e426a",
+      "bytes": 131268
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2_final.json.gz": {
+      "sha256": "8640dda93c5a0dbf0a1fdcf68962e449e1ad647551d54af5ace8a2047b4af3f9",
+      "bytes": 131346
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1.json.gz": {
+      "sha256": "3a57e1ea5913f44f69f305f95b60fe82265b30a700d7cbca0371c96c39e172e9",
+      "bytes": 167248
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1_final.json.gz": {
+      "sha256": "9ba5b761f0a8a6d517aae9fa6695254fa0ea5713540cced50a26a40c374bd29c",
+      "bytes": 167422
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1.json.gz": {
+      "sha256": "5475c8d15b7f769e492ef037c25bf8b2ae93c6f7dfc9a95a88a8edfab756bd9a",
+      "bytes": 857153
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1_final.json.gz": {
+      "sha256": "ba16a0ff8bb9ab195810c567163aa2e15c520795072661fec98b4e7a5b5811a6",
+      "bytes": 857297
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2.json.gz": {
+      "sha256": "6d5d73b8d9a005fad6d5f8ec0cadf28d08d1128a7e82a10db256e3b6ec05a0bb",
+      "bytes": 857160
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2_final.json.gz": {
+      "sha256": "872f97fcd1591dd853654f56e6398147a23ba5a6006f3932c4bb5e596afdf21d",
+      "bytes": 857368
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2.json.gz": {
+      "sha256": "78b2eae5ec467625ff6ba9230b69da25943cb826566774fa9212a2a9467121bc",
+      "bytes": 167246
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2_final.json.gz": {
+      "sha256": "df68373aea6aeaa3231c1c2b9d293247839eb2001a7b5c88f498243e7b7535a7",
+      "bytes": 167423
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1.json.gz": {
+      "sha256": "b5435c13a64dd2c12f4c839ff8b2a4a2ce5e7378c57ad560487a5cdff7f40fed",
+      "bytes": 199905
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1_final.json.gz": {
+      "sha256": "7c3d02901a2f47a1096b51b4124bfa65754b688c34deddd54e7474937b6e8805",
+      "bytes": 199980
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1.json.gz": {
+      "sha256": "7ae48a1b31a56e714cc1df1516fe8ca39713479f8215adec446a44a7f17c89b4",
+      "bytes": 1266902
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1_final.json.gz": {
+      "sha256": "da9ab528e6a6ffe2cd4990f4da759eba0fff0514fb48d7dc5cfda939d3728ae3",
+      "bytes": 1267051
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2.json.gz": {
+      "sha256": "0f15555e7e258bcfa6c2f19683c07b5edf70bc1835cc3722b586e164d59092a9",
+      "bytes": 1266899
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2_final.json.gz": {
+      "sha256": "89b50c47fee771a3c02b3dd6a8a11690315250a7b6570da72fd2be52bcbe7c91",
+      "bytes": 1267050
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2.json.gz": {
+      "sha256": "1641455f74021235389a37fe44027e0dd421957ec331a64529129800901f63c2",
+      "bytes": 199904
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2_final.json.gz": {
+      "sha256": "d83eeb4c3ac0baf6905f354329b34ed1e8a570efa8d6c68989fdce8242014f70",
+      "bytes": 199981
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1.json.gz": {
+      "sha256": "e705f1875d2c8ebc8532e7b9b0c9745490ff5b0c0bdf88a94404aa87b55980a7",
+      "bytes": 275977
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1_final.json.gz": {
+      "sha256": "da91687cca7f98631b2d06df9f6c5df63ac95c91558e49be9be7130abcc3d879",
+      "bytes": 276130
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1.json.gz": {
+      "sha256": "11eb809c2ba0f2ed92ed9b65813a96658077f7f4aec8c4e539165fe0a31be9f6",
+      "bytes": 2103861
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1_final.json.gz": {
+      "sha256": "961e1d85dbb535836b3a5a02f98de2f78e0deb16a8441e67f1799cffbd6a731e",
+      "bytes": 2104010
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2.json.gz": {
+      "sha256": "cf4012d8a0b489682b2df1b3ea5ffb6428cb1567681f384fa0611395c43ac4fb",
+      "bytes": 2103873
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2_final.json.gz": {
+      "sha256": "c6e765bf68a0fff1ebd2c96033eb6a8ca687ff4e55a4710d4d7d24a4061a210e",
+      "bytes": 2104085
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2.json.gz": {
+      "sha256": "57c772b7e81cbbdc438dc34ccc05efcf0eb693a385aaf7a1df452295719dbb4e",
+      "bytes": 275982
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2_final.json.gz": {
+      "sha256": "590688c6494f8392580f32a59fe10d356a348892a224c89a16719f874ab3662c",
+      "bytes": 276135
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control.html": {
+      "sha256": "483392daac15081c01b055ce017e73e65cef9a25929a44db10caf547c01dbb7d",
+      "bytes": 8110
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control.js": {
+      "sha256": "0d57f04dd75d42a9cbfd251bbe32477a5ea9b5f90e81b771dd69b39ff97c85ab",
+      "bytes": 10808
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_reader_001.json": {
+      "sha256": "27aed648a41cc642e7f2139fcd9ecfedb1c5f5074a99a3201d98d5a5bca373e0",
+      "bytes": 1410465
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_summary.json": {
+      "sha256": "895d1be7ddad10db6f67844f58f0464d5ba30fa9058f41914796dcddef079da8",
+      "bytes": 3026
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_reader_checks.json": {
+      "sha256": "2c338f41956ae05a76933635113443ae84b09159de112282e6911ce8e714a0cb",
+      "bytes": 1611
+    },
+    "docs/research/gcts-rl-renewal/hilbert_expanded_control_browser_qa.json": {
+      "sha256": "c70778c417d970367d2642890a448b445d1933cf9a31771c9c8730ad3318e1a2",
+      "bytes": 913
+    },
+    "research/gcts-rl-renewal/hilbert_expanded_control_declare.py": {
+      "sha256": "bd700149586a7c4b7963df8beaa05ece705264302f7fe982d02e13999aeb62e3",
+      "bytes": 4520
+    },
+    "research/gcts-rl-renewal/hilbert_expanded_control_run.py": {
+      "sha256": "56d0c897a063e92337ce04137b98317ef3f68516daaaf666ea25de2b1342346a",
+      "bytes": 7755
+    },
+    "research/gcts-rl-renewal/hilbert_expanded_control_audit.py": {
+      "sha256": "a4cac7efaee1271e0b3bf789d74b2aa10939afdf3680a2a8f3792eb38aacff68",
+      "bytes": 17114
+    },
+    "research/gcts-rl-renewal/hilbert_expanded_control_export.py": {
+      "sha256": "c8e02a9adb89a9bfa35f374db7011c0c38b06595fbba9e5b26beb424fd37624c",
+      "bytes": 9046
+    },
+    "research/gcts-rl-renewal/hilbert_expanded_control_check.py": {
+      "sha256": "36f40df997225822cd15bbdcd1b6430ca9c56ce5fe6786d72e0bec6fa1b5cc60",
+      "bytes": 10803
+    },
+    "docs/research/gcts-rl-renewal/first-order-families-reader-001.json": {
+      "sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391",
+      "bytes": 4531912
+    },
+    "docs/research/gcts-rl-renewal/first-order-families-audit-001.json": {
+      "sha256": "c943516168a939897d68c874233b4cdddb52d3c23f746ddd96d22fd25bda9666",
+      "bytes": 1401
+    }
+  },
+  "prior_cost_provenance": {
+    "library_native_queries": 77,
+    "library_native_production_seconds": 1901.8498027470002,
+    "library_native_micro_steps": 261070027826,
+    "source_promotion_native_seconds": 31.310553125,
+    "source_promotion_replay_seconds": 33.958145583,
+    "inherited_policy_discovery_and_matching_seconds": 192.696318209,
+    "inherited_policy_training_seconds": 91.71764754200001,
+    "inherited_policy_full_pilot_seconds": 4558.422118125,
+    "inherited_policy_full_audit_seconds": 2224.253906875,
+    "inherited_policy_episodes": 12,
+    "scope": "Inherited stages are disclosed separately; their aggregate and component clocks overlap and must not be summed as disjoint cold costs. No new donor discovery, receptor admission or policy training is performed."
+  },
+  "library_scope": "The exact 28/76 definitions and all 48 bindings retain only the identical closed I.2 axiom and unchanged signature. Every prior admission is bound to its actual full native replay. Added recipient hypotheses are closed; definitions contain no generalization over new free axioms. Whole certification freshly checks all used definitions under the actual recipient theory.",
+  "measurement": "All 24 runs, equal-inventory base/fixed/learned controls, every complete graph/proposal/fallback/rollback tree, fresh native outputs and exact audited reuse; model setup, inclusive feature cost, worker memory, serialization, preparation, prior stages, production and independent replay costs. One deterministic seed, no significance or general speed claim.",
+  "scope": "Finite marked high-level proof adaptation in a guarded Hilbert incidence fragment. No primitive-square compiler equivalence, full Euclidean geometry, or quantified closure claim."
+}

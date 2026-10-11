@@ -1,0 +1,779 @@
+{
+  "status": "frozen_exact_sources_inputs_budgets_before_all_E",
+  "source_sha256": {
+    "research/gcts-rl-renewal/external_left_successor_inputs.py": "d7cb74f3422a0dbb07a724da6938aa28fe264e0ffb45c484527d0afd47e5abe8",
+    "research/gcts-rl-renewal/external_left_successor_run.py": "a283babd78c10f828bd2926bfb5c0bb9fe533cc247f62ae8fe85bbbf9f36fcc4",
+    "research/gcts-rl-renewal/external_left_successor_audit.py": "3088d1b1810dd09375d4d45d91115a38a186a88ccb10dcf3b2c5266f77498928",
+    "research/gcts-rl-renewal/external_left_successor_tests.py": "0f42cda94e74641dc8d2e2494acf35baacf92aec5a17a9f3e59aa1003a1ca0c6",
+    "research/gcts-rl-renewal/external_induction_tstp_check.py": "5ad7a472f385fdbb32b72a1515ee7dd703a4b7440c64f9ecc10f634ff24dcc0a",
+    "research/gcts-rl-renewal/external_induction_tstp_worker.py": "7cf8a2e36f3c84b65777794071e65277304b5ed82db3b66bef2414e73db046f5",
+    "research/gcts-rl-renewal/external_induction_tstp_run.py": "fb17acf36861fe074a989784d357186f15aa87ee8c3d26a15e84a339c8a2ba86",
+    "research/gcts-rl-renewal/external_induction_tstp_audit.py": "4065b10f4387fb93300d27f75d7e9c4983361cb7d287a5ee3ced625f01fc7c19",
+    "research/gcts-rl-renewal/external_induction_skolem.py": "a71db3bd3f7739eea9575f32b7f1675c64f0ada38c4586541d427c88d04259e6",
+    "research/gcts-rl-renewal/external_prover_check.py": "76c95c28d9cddbb5d18b4ce32ab7f2d23cd964e6420250d73efa97baa210835a",
+    "research/gcts-rl-renewal/external_prover_inputs.py": "ea06a78b47671d17c5ca72da3b7d0389bb7230e2d5c6b6c302d79547f7cceed5",
+    "research/gcts-rl-renewal/external_prover_run.py": "382e31ea9b512b36a0475a0ecbff37814bf8a0a961405440d7380962ab7e8637",
+    "research/gcts-rl-renewal/external_prover_worker.py": "ac11123b515ab3d54b679daf1d0281e238a570671f06b0eaa473eccca239b48b",
+    "research/gcts-rl-renewal/external_left_successor_focus.py": "94707b5a184f8cdc2f390405800749602545f0fac8dc283a1a726ef1d46b3592",
+    "research/gcts-rl-renewal/external_left_successor_focus_tests.py": "d838bdc705ed5d1ea3ac333cf0e1e19bc2a4a104eb783742ee30b7896bd04cbe",
+    "research/gcts-rl-renewal/external_left_successor_focus_worker.py": "6b102313dcce6299e976e0e4e826600057ab15f94b2bb5f43a7fbbe02968c902",
+    "research/gcts-rl-renewal/external_left_successor_focus_run.py": "b0b050dbae7ccf338b3265de4b6a93652ec0120382ddf0dacefec8dfb149d8bc",
+    "research/gcts-rl-renewal/external_left_successor_focus_audit.py": "249b857b56d695b562b449e8fda1abce3a9c894dc1d1a80e8959ee8278c4e4db",
+    "research/gcts-rl-renewal/external_left_successor_focus_context_tests.py": "32940dba1a5ab5627d1a7d6b49923c245e6ea4f29d26b7b77fa70ad1eca72728",
+    "research/gcts-rl-renewal/external_induction_tstp_tests.py": "51318463204e56de9d035786e640dcab35986d32645cc4effcc73c54e835d9f4",
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/induction_receptors_points.py": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/induction_receptors_tests.py": "0305ade26584fb27cd148b82c9892e2c73a65ea59130ac081cab81ee702f476e",
+    "research/gcts-rl-renewal/serialized_kernel.py": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4",
+    "research/gcts-rl-renewal/induction_receptors_catalog.py": "052e32e03f7a9fe414af301d99179007c75a8a48ce8ff5a6719a6fea5b36477c",
+    "research/gcts-rl-renewal/induction_receptors_runner.py": "70efcb1d61de66ea91e286369a815ff776eb3466e6a66a3f85e7d5d8bf8df0e0",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+    "research/gcts-rl-renewal/induction_receptors_export.py": "d391767ffe502621729d6378a19554856d9757d35080ea5eac67cd105c4589c2",
+    "research/gcts-rl-renewal/left_successor_catalog.py": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+    "research/gcts-rl-renewal/left_successor_preflight.py": "897b3ac663b0a2278b7a22d3b8fadac128a968f6fe3959afc6687238530a2910",
+    "research/gcts-rl-renewal/left_successor_compact.py": "e9aebecbdd9fd861042c9bc328040b1c2390b55a849ccd74077b7d43e5c45fc4",
+    "research/gcts-rl-renewal/left_successor_reachability.py": "d71fb8eb9668a89444b4abbd96082f6fdb38544038d15d2a0d3bb8a5dfbfce4c",
+    "research/gcts-rl-renewal/commutativity_catalog.py": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+    "research/gcts-rl-renewal/commutativity_points.py": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+    "research/gcts-rl-renewal/commutativity_preflight.py": "1c7c1a93125f4fc9804c70ceb4096607890f1c5ab13a2537b2e06f11fc958c0f",
+    "research/gcts-rl-renewal/commutativity_audit.py": "b3f66403243b0be96fc1087aa0372b540df269458702cb3f4970b2ceeca6552d",
+    "research/gcts-rl-renewal/commutativity_preflight_retry.py": "492bdcc6b698b82d47b63785e80c9330f3891b100d68a2bba9df4a70f49d0faf",
+    "research/gcts-rl-renewal/commutativity_audit_retry.py": "da1cd60ec5cb81033f76ca57551526f0a19d55d384c88c8f9306af02175b7093",
+    "research/gcts-rl-renewal/external_commutativity_inputs.py": "6cf1e3290c400a570fc7b41f0f0e197410229a52a24d7766170784f1015ba7f3",
+    "research/gcts-rl-renewal/external_commutativity_control.py": "95c2178337eff8d12da1d36fa180c263575480ae9a9c12c6f29ac4c56685fcf0",
+    "research/gcts-rl-renewal/external_commutativity_audit.py": "5dca7232968ffe37d833373aa0aee9be32992345c7f34ea515208d3857ccd59d"
+  },
+  "data_dependencies": {
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/preflight.log": {
+      "sha256": "40703091ae5553f1eb233db0da144b85d2622db79bf0de9dd39f0480a852dd04",
+      "bytes": 8318
+    },
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/sources.zip": {
+      "sha256": "c7bfae84b43d5e06b58690cb9b945a6bbcb4288a04cac301f19a9a2daa2ae52a",
+      "bytes": 210145
+    },
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/summary.json": {
+      "sha256": "0163cf8ca3d0e1f99287336aeb8af694aaf50e38a803c84c33363632ec74cffc",
+      "bytes": 11472
+    },
+    ".gcts-active/commutativity-receptors-20261011/attempt-01/unknown-receipt.json": {
+      "sha256": "db1c5448932ccc620ec86d390b9e0794af7814f64f105930d409b7183249e1e2",
+      "bytes": 4882
+    },
+    ".gcts-active/external-left-successor-20261011/inventory.json": {
+      "sha256": "e80110ea699e87c996cafaae52642b0171f2e9fd0df0f61fd0796cbe31369e29",
+      "bytes": 1292010
+    },
+    ".gcts-active/external-left-successor-20261011/plan.json": {
+      "sha256": "b739d7b8dea347a90e31b55e478496ded361591c0d42113048b162ad9abb1b3f",
+      "bytes": 11948
+    },
+    ".gcts-active/external-left-successor-focus-20261011/attempt-03/audit.json": {
+      "sha256": "8f4337e7ace0943526925586a3fd1da83c05ef274c0c1b37bb632a7f6e39296d",
+      "bytes": 7647763
+    },
+    ".gcts-active/induction-receptors-20261011/compaction-audit.json": {
+      "sha256": "715b2b2464d78083dad1372a311e92ab46fb7836d253f99a9a5d68e007534b10",
+      "bytes": 1065
+    },
+    ".gcts-active/induction-receptors-20261011/compaction-native.json.gz": {
+      "sha256": "cc937e156c5bb7b6a6a424cb7c23b2aad7804c151596cae1e9d04eae74149f20",
+      "bytes": 7376
+    },
+    ".gcts-active/induction-receptors-20261011/recovery-audit.json": {
+      "sha256": "509e12e9f39f5e2c702f02afbe8c634ccf62ab4c59e998227a0088080484bcfe",
+      "bytes": 9900
+    },
+    ".gcts-active/left-successor-20261011/admission-audit.json": {
+      "sha256": "0accfbfb3cfc363e4a6d2af89d86380dab1ad6937470cb609d5ab908f68c1f04",
+      "bytes": 3713
+    },
+    ".gcts-active/left-successor-20261011/admission-native.json.gz": {
+      "sha256": "b5e603419c48a5d1a19e9d655c0d5c865f1a51561bba12f1402f7c736a722dcf",
+      "bytes": 40027
+    },
+    ".gcts-active/left-successor-20261011/forward-control/audit.json": {
+      "sha256": "b91abf9681005b50aef96698944f72265cecd771f74bafc3b87c56dfb9c3c77d",
+      "bytes": 1680
+    },
+    ".gcts-active/left-successor-20261011/pilot-audit.json": {
+      "sha256": "51c732aad3e8952e804654cc403cb841d87d7e65e70e702210057f5d4bbc2c32",
+      "bytes": 4800
+    },
+    ".gcts-active/left-successor-20261011/pilot-native.json.gz": {
+      "sha256": "cf11562d76d83bafbfa5aa0f4192315e3d62962b115a39be03055520067bc7ea",
+      "bytes": 43791
+    },
+    ".gcts-active/left-successor-20261011/workspace-native/audit.json": {
+      "sha256": "64cb405065973eea0ef711a4cb292753ea5cd632e1596907e06ad6d990875f11",
+      "bytes": 1642
+    },
+    ".gcts-active/left-successor-20261011/workspace-native/native.json.gz": {
+      "sha256": "edc22d5e4043d3af7afd5c2b7863f6c5f0c4598faad600328426e4128c4d3772",
+      "bytes": 4253
+    },
+    "docs/research/gcts-rl-renewal/commutativity_audit.json": {
+      "sha256": "a75e90fec0425f2aedd207697afe1cbe0051df8ece7a48cff2b0cd720e9cf343",
+      "bytes": 1367
+    },
+    "docs/research/gcts-rl-renewal/commutativity_no_transfer_full_core.json.gz": {
+      "sha256": "0278c510b21b517b872800feea744d9dba471ac5fe71a79fba19db6f5efe1b7f",
+      "bytes": 273801
+    },
+    "docs/research/gcts-rl-renewal/commutativity_plan.json": {
+      "sha256": "105ff0cd30fbc9a57064285043d8a37772418ff22f79539831d8cfd3118ebac9",
+      "bytes": 37302
+    },
+    "docs/research/gcts-rl-renewal/commutativity_two_lemmas_full_core.json.gz": {
+      "sha256": "2ca0fb18e5c9d489df1dc3ba9ada1b6d2d88823b33298c5221d77aa4e203cf4c",
+      "bytes": 517304
+    },
+    "docs/research/gcts-rl-renewal/commutativity_zero_left_full_core.json.gz": {
+      "sha256": "754ca04f97a7d5f72ae8b74bfd3e8b807379c131600efe3068e98f2e5539e52f",
+      "bytes": 400365
+    }
+  },
+  "total_producer_cap_seconds": 180,
+  "preparation_cap_seconds": 60,
+  "setup_order": [
+    "setup-0",
+    "setup-1"
+  ],
+  "target_order": [
+    {
+      "kind": "theory",
+      "repetition": 1
+    },
+    {
+      "kind": "zero-left",
+      "repetition": 1
+    },
+    {
+      "kind": "both",
+      "repetition": 1
+    },
+    {
+      "kind": "both",
+      "repetition": 2
+    },
+    {
+      "kind": "zero-left",
+      "repetition": 2
+    },
+    {
+      "kind": "theory",
+      "repetition": 2
+    }
+  ],
+  "prover_wall_seconds": 12,
+  "certificate_wall_seconds": 20,
+  "options": [
+    "--auto",
+    "--proof-object",
+    "--tstp-format",
+    "--cpu-limit=10",
+    "--memory-limit=1024",
+    "--resources-info",
+    "--print-statistics"
+  ],
+  "stop_policy": "Preserve every returned output/check. First unsupported or budget-unknown setup/target proof halts target execution; all remaining scheduled runs are explicitly unexecuted unknowns. No adapter changes, status-only proof acceptance or supplied target proof.",
+  "scope": "All target lanes receive the full five-instance union, not full PA or exactly the native finite search grammar. E uses broader unbounded first-order instantiation and a different independently replayed certificate language. No native Wang acceptance or fair speed ratio is claimed.",
+  "cost_policy": "Freeze/input preparation, existing fixture reruns, two fresh E lemma setup proofs with complete checking/replay, independent input/native-provenance gate, six fresh target E/check/replay runs and final audit are separate. The 180-second cap covers the producer including setup, fixtures and pre-run gate. Historical primitive theorem discovery/native/full replay are reused inherited costs, not free cold work.",
+  "preserved_exports": [
+    {
+      "path": "docs/research/gcts-rl-renewal/external_left_successor_control.html",
+      "sha256": "a09d048f99f4f9c1aaa084bea9d36cdab0abf65ed93a8bfd712ce87bd1171d23",
+      "bytes": 7820744
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_left_successor_control_audit.json",
+      "sha256": "a1aa7525565791273c26270e67b8b0260660bec3ddc89dbe0dd877553088beea",
+      "bytes": 8097038
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_left_successor_control_data.json.gz",
+      "sha256": "b93ee0845ae435e8ec28124be20b4d23de63b41ba621ed5d0fc27b9c2f521c9a",
+      "bytes": 10751616
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_left_successor_control_plan.json",
+      "sha256": "eb03e6e41c1dbdc928c7b2c29528e0f6a2da70b9f373ab64552be98f8e370ac1",
+      "bytes": 15299
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/external_left_successor_control_summary.json",
+      "sha256": "9809cb8bd437797f7024bdd6106a5718a5d4e9a29cba01d61529948e82b63a79",
+      "bytes": 6824
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_audit.py",
+      "sha256": "3088d1b1810dd09375d4d45d91115a38a186a88ccb10dcf3b2c5266f77498928",
+      "bytes": 10704
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_export.py",
+      "sha256": "02554d1b9a209d68101b66fc780d227c211b870925939eccf413c71ceb65662c",
+      "bytes": 32415
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_focus.py",
+      "sha256": "94707b5a184f8cdc2f390405800749602545f0fac8dc283a1a726ef1d46b3592",
+      "bytes": 10425
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_focus_audit.py",
+      "sha256": "249b857b56d695b562b449e8fda1abce3a9c894dc1d1a80e8959ee8278c4e4db",
+      "bytes": 6498
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_focus_context_tests.py",
+      "sha256": "32940dba1a5ab5627d1a7d6b49923c245e6ea4f29d26b7b77fa70ad1eca72728",
+      "bytes": 13933
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_focus_run.py",
+      "sha256": "b0b050dbae7ccf338b3265de4b6a93652ec0120382ddf0dacefec8dfb149d8bc",
+      "bytes": 7965
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_focus_tests.py",
+      "sha256": "d838bdc705ed5d1ea3ac333cf0e1e19bc2a4a104eb783742ee30b7896bd04cbe",
+      "bytes": 5048
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_focus_worker.py",
+      "sha256": "6b102313dcce6299e976e0e4e826600057ab15f94b2bb5f43a7fbbe02968c902",
+      "bytes": 2335
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_inputs.py",
+      "sha256": "d7cb74f3422a0dbb07a724da6938aa28fe264e0ffb45c484527d0afd47e5abe8",
+      "bytes": 14821
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_reproduce.py",
+      "sha256": "9d87067c136d39f697f247cafc6b769d29a58747c676de43ecb3860ebfb3d935",
+      "bytes": 4324
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_run.py",
+      "sha256": "a283babd78c10f828bd2926bfb5c0bb9fe533cc247f62ae8fe85bbbf9f36fcc4",
+      "bytes": 9006
+    },
+    {
+      "path": "research/gcts-rl-renewal/external_left_successor_tests.py",
+      "sha256": "0f42cda94e74641dc8d2e2494acf35baacf92aec5a17a9f3e59aa1003a1ca0c6",
+      "bytes": 3252
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_plan.json",
+      "sha256": "d58a66f35a4afeffec47fb22b8bd57010f3ade8be8fbbe0ea1afc80a71258c82",
+      "bytes": 109335
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_prior_export.json",
+      "sha256": "8681b1523d4a223d374d601be654dd43b6b2c8ff80c38559b7cd0b150890bb2d",
+      "bytes": 44679
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_progress.json",
+      "sha256": "27f8877003203dfa1e251dcec4227dd2084cd9fda41d50425bc04e72dddacf20",
+      "bytes": 16939
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_audit.json",
+      "sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+      "bytes": 23260
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_native.json.gz",
+      "sha256": "c4f5b5359f45b70c29814a82de08dd1a912d721419e8a20b1ee88f1caf655dff",
+      "bytes": 9002
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_native_audit_progress.json",
+      "sha256": "338e7a85163a80e159eca69040d0e9f2e874455da2a4cdabe2f9a0214c725d95",
+      "bytes": 981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1.json.gz",
+      "sha256": "c51cebd7adbf368fb6a618c3400cc256deb7f5ffebcf8077f341a6fafe99f114",
+      "bytes": 131273
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "fb7eee2af1efbe00e50873cb8b76688d16ee4c9e5e986f0dac7bdb8ef23b5cf0",
+      "bytes": 131352
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "100ad7497e9ac3c395cab3b5f85b5e9cd93f9a06362a3264486d851f6b3850d4",
+      "bytes": 608510
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "82c1c970e89fce818e30497bace63f239ea753049e65c5b2a20f4a58a2e0e420",
+      "bytes": 608659
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "522ace177a118436bfffb260b4e527d33cf0aa4e586364c056b311e5d25493b6",
+      "bytes": 608502
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "e5730fe30f118757fe59fe6e51967cb7ceda528bea23ecd86e3649e11bdd923c",
+      "bytes": 608655
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2.json.gz",
+      "sha256": "5fde01246cd2c2615d8e0ea097b7d94fb4ddc60e63a0ac61ae95623a758e426a",
+      "bytes": 131268
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_short_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "8640dda93c5a0dbf0a1fdcf68962e449e1ad647551d54af5ace8a2047b4af3f9",
+      "bytes": 131346
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1.json.gz",
+      "sha256": "3a57e1ea5913f44f69f305f95b60fe82265b30a700d7cbca0371c96c39e172e9",
+      "bytes": 167248
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "9ba5b761f0a8a6d517aae9fa6695254fa0ea5713540cced50a26a40c374bd29c",
+      "bytes": 167422
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "5475c8d15b7f769e492ef037c25bf8b2ae93c6f7dfc9a95a88a8edfab756bd9a",
+      "bytes": 857153
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "ba16a0ff8bb9ab195810c567163aa2e15c520795072661fec98b4e7a5b5811a6",
+      "bytes": 857297
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "6d5d73b8d9a005fad6d5f8ec0cadf28d08d1128a7e82a10db256e3b6ec05a0bb",
+      "bytes": 857160
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "872f97fcd1591dd853654f56e6398147a23ba5a6006f3932c4bb5e596afdf21d",
+      "bytes": 857368
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2.json.gz",
+      "sha256": "78b2eae5ec467625ff6ba9230b69da25943cb826566774fa9212a2a9467121bc",
+      "bytes": 167246
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_direct_sufficient_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "df68373aea6aeaa3231c1c2b9d293247839eb2001a7b5c88f498243e7b7535a7",
+      "bytes": 167423
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1.json.gz",
+      "sha256": "b5435c13a64dd2c12f4c839ff8b2a4a2ce5e7378c57ad560487a5cdff7f40fed",
+      "bytes": 199905
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "7c3d02901a2f47a1096b51b4124bfa65754b688c34deddd54e7474937b6e8805",
+      "bytes": 199980
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "7ae48a1b31a56e714cc1df1516fe8ca39713479f8215adec446a44a7f17c89b4",
+      "bytes": 1266902
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "da9ab528e6a6ffe2cd4990f4da759eba0fff0514fb48d7dc5cfda939d3728ae3",
+      "bytes": 1267051
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "0f15555e7e258bcfa6c2f19683c07b5edf70bc1835cc3722b586e164d59092a9",
+      "bytes": 1266899
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "89b50c47fee771a3c02b3dd6a8a11690315250a7b6570da72fd2be52bcbe7c91",
+      "bytes": 1267050
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2.json.gz",
+      "sha256": "1641455f74021235389a37fe44027e0dd421957ec331a64529129800901f63c2",
+      "bytes": 199904
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_short_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "d83eeb4c3ac0baf6905f354329b34ed1e8a570efa8d6c68989fdce8242014f70",
+      "bytes": 199981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1.json.gz",
+      "sha256": "e705f1875d2c8ebc8532e7b9b0c9745490ff5b0c0bdf88a94404aa87b55980a7",
+      "bytes": 275977
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r1_final.json.gz",
+      "sha256": "da91687cca7f98631b2d06df9f6c5df63ac95c91558e49be9be7130abcc3d879",
+      "bytes": 276130
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1.json.gz",
+      "sha256": "11eb809c2ba0f2ed92ed9b65813a96658077f7f4aec8c4e539165fe0a31be9f6",
+      "bytes": 2103861
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r1_final.json.gz",
+      "sha256": "961e1d85dbb535836b3a5a02f98de2f78e0deb16a8441e67f1799cffbd6a731e",
+      "bytes": 2104010
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2.json.gz",
+      "sha256": "cf4012d8a0b489682b2df1b3ea5ffb6428cb1567681f384fa0611395c43ac4fb",
+      "bytes": 2103873
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_promoted_fixed_expanded_r2_final.json.gz",
+      "sha256": "c6e765bf68a0fff1ebd2c96033eb6a8ca687ff4e55a4710d4d7d24a4061a210e",
+      "bytes": 2104085
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2.json.gz",
+      "sha256": "57c772b7e81cbbdc438dc34ccc05efcf0eb693a385aaf7a1df452295719dbb4e",
+      "bytes": 275982
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_fresh_composed_sufficient_level1_fixed_expanded_r2_final.json.gz",
+      "sha256": "590688c6494f8392580f32a59fe10d356a348892a224c89a16719f874ab3662c",
+      "bytes": 276135
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control.html",
+      "sha256": "483392daac15081c01b055ce017e73e65cef9a25929a44db10caf547c01dbb7d",
+      "bytes": 8110
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control.js",
+      "sha256": "0d57f04dd75d42a9cbfd251bbe32477a5ea9b5f90e81b771dd69b39ff97c85ab",
+      "bytes": 10808
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_reader_001.json",
+      "sha256": "27aed648a41cc642e7f2139fcd9ecfedb1c5f5074a99a3201d98d5a5bca373e0",
+      "bytes": 1410465
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_summary.json",
+      "sha256": "895d1be7ddad10db6f67844f58f0464d5ba30fa9058f41914796dcddef079da8",
+      "bytes": 3026
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_reader_checks.json",
+      "sha256": "2c338f41956ae05a76933635113443ae84b09159de112282e6911ce8e714a0cb",
+      "bytes": 1611
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/hilbert_expanded_control_browser_qa.json",
+      "sha256": "c70778c417d970367d2642890a448b445d1933cf9a31771c9c8730ad3318e1a2",
+      "bytes": 913
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_declare.py",
+      "sha256": "bd700149586a7c4b7963df8beaa05ece705264302f7fe982d02e13999aeb62e3",
+      "bytes": 4520
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_run.py",
+      "sha256": "56d0c897a063e92337ce04137b98317ef3f68516daaaf666ea25de2b1342346a",
+      "bytes": 7755
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_audit.py",
+      "sha256": "a4cac7efaee1271e0b3bf789d74b2aa10939afdf3680a2a8f3792eb38aacff68",
+      "bytes": 17114
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_export.py",
+      "sha256": "c8e02a9adb89a9bfa35f374db7011c0c38b06595fbba9e5b26beb424fd37624c",
+      "bytes": 9046
+    },
+    {
+      "path": "research/gcts-rl-renewal/hilbert_expanded_control_check.py",
+      "sha256": "36f40df997225822cd15bbdcd1b6430ca9c56ce5fe6786d72e0bec6fa1b5cc60",
+      "bytes": 10803
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_feasibility.html",
+      "bytes": 341105,
+      "sha256": "8a48a1244b2df0a54f215be44cf01aad0fb632c7fdb4305e615cf9ae67304a34"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_admission_requirements.json.gz",
+      "bytes": 27729,
+      "sha256": "263735a03605679e84909ee32a8752e65c875354b2467ada2cdd6576cb0ded59"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_audit_plan.json",
+      "bytes": 7787,
+      "sha256": "bc7ceb41507ee15267e65bd9d533bcbe034165212094f8b74f3b0d2593ed920a"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_audit.json",
+      "bytes": 1367,
+      "sha256": "a75e90fec0425f2aedd207697afe1cbe0051df8ece7a48cff2b0cd720e9cf343"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_audit.log",
+      "bytes": 1217,
+      "sha256": "30d3886c6a1a7860b93dbcc2d59fc366aab0ec350272d03882f2cef63253d635"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_inventory.json",
+      "bytes": 319082,
+      "sha256": "b5bd2a9cfffa233fdfcc0dbd6be46f5d11e215438da5dab9fb07e9b54059cece"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_no_transfer_closure.json.gz",
+      "bytes": 28248,
+      "sha256": "c3f132b2840c6357ea0eddbe421210b438aed53c24b73b77a56628cc989f6ed3"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_no_transfer_compact_core.json.gz",
+      "bytes": 269890,
+      "sha256": "da1276a46746b113b2625742eac5241128e9442cfe84ab6ef93f0a8fb8fb254c"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_no_transfer_full_core.json.gz",
+      "bytes": 273801,
+      "sha256": "0278c510b21b517b872800feea744d9dba471ac5fe71a79fba19db6f5efe1b7f"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_no_transfer_motif_pilot_6.json.gz",
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_no_transfer_points_6.json.gz",
+      "bytes": 64308,
+      "sha256": "72e99aebc9c50f4ddca6894608a8adce77f6379b25e6e87a2c76b359bb20417a"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_no_transfer_retained_core.json.gz",
+      "bytes": 17538,
+      "sha256": "17702583021f3ce0921d7eb1814fa7eed9ec6edb8ff383dce43f04fda1d7469f"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_plan.json",
+      "bytes": 37302,
+      "sha256": "105ff0cd30fbc9a57064285043d8a37772418ff22f79539831d8cfd3118ebac9"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_preflight.log",
+      "bytes": 11469,
+      "sha256": "0e049b9223d8018014f38637e3a35a8dc11f27ce8b66ed714caac3acf37b20eb"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_sources.zip",
+      "bytes": 219617,
+      "sha256": "2cfc035202bd64824fbe0b18c477211e1a52b08ef6f82a827933813afa6dddb4"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_summary.json",
+      "bytes": 17428,
+      "sha256": "2d220133bd536d23746730306a76c5e67553b0f69c0e7a0634cadf9c09b543f2"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_two_lemmas_closure.json.gz",
+      "bytes": 37508,
+      "sha256": "e00daabfd991f2dc725b977658009d183665597d94cde4325ea22695ddecfaac"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_two_lemmas_compact_core.json.gz",
+      "bytes": 513478,
+      "sha256": "0a3a2fdb0f2a1e01fc1391cede8c4d2b537726c6baf180e382c6d5bd6b8d747b"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_two_lemmas_full_core.json.gz",
+      "bytes": 517304,
+      "sha256": "2ca0fb18e5c9d489df1dc3ba9ada1b6d2d88823b33298c5221d77aa4e203cf4c"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_two_lemmas_motif_pilot_6.json.gz",
+      "bytes": 1449,
+      "sha256": "855316f2437401aac1038346cb283608bd690f7fb07575d2761d79b99108e8d3"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_two_lemmas_points_6.json.gz",
+      "bytes": 187388,
+      "sha256": "d2d681c40640729fc431348b07e0c3dc395d136fb18cd88f9cd0a4f730e63f65"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_two_lemmas_retained_core.json.gz",
+      "bytes": 36682,
+      "sha256": "d7a9d389e741bbbb2b4d5089a467fcf1f405b9d9554a813972899019d13cbe31"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_zero_left_closure.json.gz",
+      "bytes": 32874,
+      "sha256": "c99294d4b3e8ec9632a207288210f55f7da7caec26f4df2e02adc783a9e7cfa8"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_zero_left_compact_core.json.gz",
+      "bytes": 396549,
+      "sha256": "e74b83bf920eb37a82144545ebb40218e607756f73150d4e467c95c174666daf"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_zero_left_full_core.json.gz",
+      "bytes": 400365,
+      "sha256": "754ca04f97a7d5f72ae8b74bfd3e8b807379c131600efe3068e98f2e5539e52f"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_zero_left_motif_pilot_6.json.gz",
+      "bytes": 1208,
+      "sha256": "bf533e447b74a746969bbc64e6d133c3234f7aa621275f6ae87042f8a0ee19e8"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_zero_left_points_6.json.gz",
+      "bytes": 139199,
+      "sha256": "2d8f23546999794443998b7efbb6752304592b880abcdc6757e28f2f828f0add"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_zero_left_retained_core.json.gz",
+      "bytes": 28868,
+      "sha256": "0d0a300fb534a37efb3486836f491c7e8d3e684aac4856c309795184a7637852"
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/commutativity_preserved_first_unknown.zip",
+      "bytes": 3062160,
+      "sha256": "48e4f130fffe1d60578eb38d28bac636d8ceedd9a3c2a39f597fb64a707bd80f"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_audit.py",
+      "bytes": 15420,
+      "sha256": "b3f66403243b0be96fc1087aa0372b540df269458702cb3f4970b2ceeca6552d"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_audit_retry.py",
+      "bytes": 15711,
+      "sha256": "da1cd60ec5cb81033f76ca57551526f0a19d55d384c88c8f9306af02175b7093"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_catalog.py",
+      "bytes": 3157,
+      "sha256": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_points.py",
+      "bytes": 4737,
+      "sha256": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_preflight.py",
+      "bytes": 10065,
+      "sha256": "1c7c1a93125f4fc9804c70ceb4096607890f1c5ab13a2537b2e06f11fc958c0f"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_preflight_retry.py",
+      "bytes": 10479,
+      "sha256": "492bdcc6b698b82d47b63785e80c9330f3891b100d68a2bba9df4a70f49d0faf"
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_report.py",
+      "bytes": 21596,
+      "sha256": "73f7a8caf19371478b66671d3dc4f0396cb54f725d8dde79249aa2d3daa005b7"
+    }
+  ],
+  "prover_binary_sha256": "a2fc18a82ed1dbdcdd37eefeb5c71ccad1e8fc48662466f61372fc0be5947f21",
+  "prover_source_commit": "3b7afc70fe77d3118bb95144c4735ca45f5f31cf",
+  "target_runs": 0,
+  "inputs": [
+    {
+      "kind": "setup-0",
+      "name": "commutativity-setup-0.p",
+      "input_sha256": "b2f467803f60400394e07a0cea913dfb42db788fd166a9ac3c7e0381fd715407",
+      "mapping_sha256": "c0034245398207ce567f10d0959a6185887ec43ddcf66dd9bd9738d10cfa5d06",
+      "entries": 4
+    },
+    {
+      "kind": "setup-1",
+      "name": "commutativity-setup-1.p",
+      "input_sha256": "1ddc2d890199d68d0a7127eac623fe42d2c03fbe1ba3049aebf4662b25615a44",
+      "mapping_sha256": "89fcd1dc687b579dfa6b6868e2c394561aba780381380b76759281d8f1abf570",
+      "entries": 4
+    },
+    {
+      "kind": "theory",
+      "name": "commutativity-theory.p",
+      "input_sha256": "64b5015e60c368e387657375ad4e749793e5b1013adbb27c157e0adb76cbfcfe",
+      "mapping_sha256": "0b70a4b681b7c8db4c4f9c32cca5c7e03a0b6d525a66d58fae8bc2783d7262e9",
+      "entries": 8
+    },
+    {
+      "kind": "zero-left",
+      "name": "commutativity-zero-left.p",
+      "input_sha256": "91ea729199164c5d1eaf9dfad64d7ff071f0ef4640d20264663e84d09df07515",
+      "mapping_sha256": "6f8683ffe137516e449928bcb624e609d6f4132cb20c32add88e02ad0b2b7c90",
+      "entries": 9
+    },
+    {
+      "kind": "both",
+      "name": "commutativity-both.p",
+      "input_sha256": "7a44487253efb9398436ba90582eccf5f4da9fb465a76da9f7dd64bc3836528e",
+      "mapping_sha256": "6005186b2ec2b3e1dc22ac2b02ba7a7b22d26e3a5eb6be98ab09b435d655b155",
+      "entries": 10
+    }
+  ],
+  "inventory_sha256": "61c3f750e564f71d45727a7accc5993c506e607acec8d0fcea9615a61d2252c1",
+  "preparation_seconds": 1.643015083,
+  "induction_instances": 5,
+  "optional_theorem_inputs": 2,
+  "unadmitted_interface_inputs": 0
+}

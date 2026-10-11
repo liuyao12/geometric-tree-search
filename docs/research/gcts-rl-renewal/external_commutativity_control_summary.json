@@ -1,0 +1,199 @@
+{
+  "status": "passed_complete_six_target_external_control",
+  "scope": "All target lanes receive the full five-instance union, not full PA or exactly the native finite search grammar. E uses broader unbounded first-order instantiation and a different independently replayed certificate language. No native Wang acceptance or fair speed ratio is claimed.",
+  "plan_sha256": "eff7c468dd3b068962b387b4344426d33e05e65b586edcbf4e6df18f91280ce2",
+  "producer_seconds": 8.405204958999999,
+  "preparation_seconds": 1.643015083,
+  "input_audit_seconds": 1.9390056249999998,
+  "complete_audit_seconds": 2.565205625,
+  "mutation_audit_seconds": 19.553876959,
+  "proof_census": {
+    "lines": 223,
+    "boundaries": 22,
+    "focused_trees": 97
+  },
+  "actual_corruptions": 298,
+  "instances": 5,
+  "input_entries": [
+    8,
+    9,
+    10
+  ],
+  "setup_proofs": 2,
+  "target_proofs": 6,
+  "unknowns": 0,
+  "costs": [
+    [
+      "Source/input preparation",
+      1.643015083
+    ],
+    [
+      "Pre-E independent input/native-boundary binding",
+      1.9390056249999998
+    ],
+    [
+      "Fresh fixture reruns",
+      0.018153290999999988
+    ],
+    [
+      "Two fresh setup E binaries",
+      0.009833790999999996
+    ],
+    [
+      "Two setup complete-check workers",
+      0.273572083
+    ],
+    [
+      "Two setup full-replay workers",
+      0.24560062500000002
+    ],
+    [
+      "Independent complete pre-target gate",
+      2.3327726670000004
+    ],
+    [
+      "Six target E binaries",
+      0.05012971
+    ],
+    [
+      "Six target complete-check workers",
+      1.3437510000000001
+    ],
+    [
+      "Six target full-replay workers",
+      1.338990667
+    ],
+    [
+      "Whole capped producer, including setup and orchestration",
+      8.405204958999999
+    ],
+    [
+      "Independent post-result complete replay/source audit",
+      2.565205625
+    ],
+    [
+      "Post-result actual-certificate corruption audit",
+      19.553876959
+    ],
+    [
+      "Additional fresh-directory reproduction producer",
+      7.515573458999999
+    ],
+    [
+      "Additional reproduction independent replay audit",
+      2.454647958999999
+    ],
+    [
+      "Additional reproduction actual-certificate corruption audit",
+      20.766299125
+    ]
+  ],
+  "observations": [
+    {
+      "kind": "theory",
+      "repetition": 1,
+      "proof_steps": 36,
+      "used_lemma_inputs": [],
+      "e_seconds": 0.009768167000000001,
+      "check_seconds": 0.26906862500000006,
+      "replay_seconds": 0.24385504099999977,
+      "e_peak_rss_bytes": 5718016,
+      "checker_peak_rss_bytes": 15794176,
+      "output_sha256": "45b720017dbac6c4efb2002b15ab33d018a90f319a068c743b02967b76f2e553"
+    },
+    {
+      "kind": "zero-left",
+      "repetition": 1,
+      "proof_steps": 31,
+      "used_lemma_inputs": [
+        "l0"
+      ],
+      "e_seconds": 0.007987999999999999,
+      "check_seconds": 0.2601385839999999,
+      "replay_seconds": 0.188594084,
+      "e_peak_rss_bytes": 5718016,
+      "checker_peak_rss_bytes": 15745024,
+      "output_sha256": "2b74531d3056bbc46b4142c24dcf2943c9207caafee728ab4d4c1f0f521b1314"
+    },
+    {
+      "kind": "both",
+      "repetition": 1,
+      "proof_steps": 26,
+      "used_lemma_inputs": [
+        "l0",
+        "l1"
+      ],
+      "e_seconds": 0.0073397919999999995,
+      "check_seconds": 0.15001725000000032,
+      "replay_seconds": 0.17095712500000015,
+      "e_peak_rss_bytes": 5505024,
+      "checker_peak_rss_bytes": 15007744,
+      "output_sha256": "f5d21c143f74d4c453c1c292c6a4f9496b66d691e662dcd0d226cee70b677457"
+    },
+    {
+      "kind": "both",
+      "repetition": 2,
+      "proof_steps": 26,
+      "used_lemma_inputs": [
+        "l0",
+        "l1"
+      ],
+      "e_seconds": 0.006969582999999998,
+      "check_seconds": 0.14279375000000005,
+      "replay_seconds": 0.16052954199999991,
+      "e_peak_rss_bytes": 5505024,
+      "checker_peak_rss_bytes": 14942208,
+      "output_sha256": "b421ffeb462237bcca643753adcf72d855d24fe110b276905f4db2b90733039c"
+    },
+    {
+      "kind": "zero-left",
+      "repetition": 2,
+      "proof_steps": 31,
+      "used_lemma_inputs": [
+        "l0"
+      ],
+      "e_seconds": 0.010167209,
+      "check_seconds": 0.2682453330000003,
+      "replay_seconds": 0.3326712089999999,
+      "e_peak_rss_bytes": 5701632,
+      "checker_peak_rss_bytes": 15630336,
+      "output_sha256": "436560e33c518304dbe975c357ccd20b70c6099fd23aa57d9a0d824f5d32984b"
+    },
+    {
+      "kind": "theory",
+      "repetition": 2,
+      "proof_steps": 36,
+      "used_lemma_inputs": [],
+      "e_seconds": 0.007896959,
+      "check_seconds": 0.2534874579999995,
+      "replay_seconds": 0.24238366600000028,
+      "e_peak_rss_bytes": 5701632,
+      "checker_peak_rss_bytes": 15794176,
+      "output_sha256": "05d30bbe3c77939c884df138bc5016c31a82b8f3e0923125853e143e09eb9ecd"
+    },
+    {
+      "kind": "setup-0",
+      "repetition": null,
+      "proof_steps": 19,
+      "used_lemma_inputs": [],
+      "e_seconds": 0.005614749999999998,
+      "check_seconds": 0.075861125,
+      "replay_seconds": 0.07980074999999998,
+      "e_peak_rss_bytes": 4947968,
+      "checker_peak_rss_bytes": 14139392,
+      "output_sha256": "6f2e6d3905b573ac7201624a9511cd0e9eb79f1e53fcbc433f680eb18536347e"
+    },
+    {
+      "kind": "setup-1",
+      "repetition": null,
+      "proof_steps": 18,
+      "used_lemma_inputs": [],
+      "e_seconds": 0.004219040999999998,
+      "check_seconds": 0.19771095800000005,
+      "replay_seconds": 0.16579987500000004,
+      "e_peak_rss_bytes": 4931584,
+      "checker_peak_rss_bytes": 14876672,
+      "output_sha256": "d4b18d1a9ec68605fb2febb88708aabc3d6a2f41fdbd150a1822d322f642c500"
+    }
+  ]
+}

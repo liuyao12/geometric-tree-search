@@ -1,0 +1,748 @@
+{
+  "status": "passed_all94heap_and37encoding_partial_replay",
+  "native_queries": 0,
+  "target_searches": 0,
+  "observations": [
+    {
+      "definition_name": "commutativityReceptor01086f44f4a81ab925edc9f8ab3ec05cccdc6b39d6c5283500fd35bd861f1a59",
+      "request_sha256": "86acfefb9c5e272c7f87a860a5294d41e7b1c465aa89fdc6d438536ce9187d2b",
+      "tree_steps": 61358,
+      "heap_nodes": 595,
+      "required_heap_capacity": 17299,
+      "seconds": 0.14420274999999994
+    },
+    {
+      "definition_name": "commutativityReceptor09f28498aec66ef1ae55f73f5ff57ec614c3d2700f184c47f7c3c37db78142e7",
+      "request_sha256": "98468eea2a769e6b920d1f19fae84bf6bd9b434ae301fe366be361a81fbda05a",
+      "tree_steps": 970014,
+      "heap_nodes": 1157,
+      "required_heap_capacity": 35836,
+      "seconds": 2.097657666
+    },
+    {
+      "definition_name": "commutativityReceptor0a2b9b49efc9438f779756588f9b966986a0b47d893bb59a61fbfefb91dbb0bd",
+      "request_sha256": "0ec2e28bd4ccbb1aa7b10cd365b95386e82caa24a600d73ceb1b8653e83d6722",
+      "tree_steps": 155083,
+      "heap_nodes": 751,
+      "required_heap_capacity": 22201,
+      "seconds": 0.36792708299999966
+    },
+    {
+      "definition_name": "commutativityReceptor0ae6f8828757b18488fd7c5cdc21a6a8a9693a31b62f17e87806d880aed86ef2",
+      "request_sha256": "3e8c46c7a3010f15ee0e8443068dd6a6d6692fb435300eb95ae93dc0810fadbd",
+      "tree_steps": 281882,
+      "heap_nodes": 886,
+      "required_heap_capacity": 26618,
+      "seconds": 0.652142542
+    },
+    {
+      "definition_name": "commutativityReceptor0e9d7c1ece36bd71136d58962c570f965fb83ac549fec075fb28270250dfa54b",
+      "request_sha256": "38c7e915afaf38edb449123965daaa59270331bc72325c462e281ab381ed9df2",
+      "tree_steps": 278088,
+      "heap_nodes": 880,
+      "required_heap_capacity": 26430,
+      "seconds": 0.6036751250000005
+    },
+    {
+      "definition_name": "commutativityReceptor107fe764e3d76567bc61e24bd3d8cfeeddf835c03681882e9a2d6d186cf4b5c0",
+      "request_sha256": "c52f7ae3cfe09f23f3346feb4983608255275cb921535aac7aa2b68c5f626ce6",
+      "tree_steps": 278088,
+      "heap_nodes": 879,
+      "required_heap_capacity": 26402,
+      "seconds": 0.6014901249999998
+    },
+    {
+      "definition_name": "commutativityReceptor15e46b3f16b6e8eb3a61cc154093be115a9547e81d922be38a3d80c4848520df",
+      "request_sha256": "d730d80ef4ea0998bdaf06158ddd6e8eb947b0ff20331616f6db07eb2a4f15b3",
+      "tree_steps": 188980,
+      "heap_nodes": 744,
+      "required_heap_capacity": 21991,
+      "seconds": 0.4121179159999997
+    },
+    {
+      "definition_name": "commutativityReceptor166946605227867b9fba77ba1da2d1796448ed9ecb8105c2dc4ecda20a4dec77",
+      "request_sha256": "fa4c958c564bb5712c9b0b84e58e9741b8312c51e4d08a040f0ee786acfee2f7",
+      "tree_steps": 274098,
+      "heap_nodes": 865,
+      "required_heap_capacity": 25957,
+      "seconds": 0.5914761659999996
+    },
+    {
+      "definition_name": "commutativityReceptor173447656a69ad2f95c77fae239c7e4899623bdc462dc817b4d6a326122374ae",
+      "request_sha256": "802d92a82b785af3ba0ffca993bec1feb9bb5c057b8a829e9ab230a9f4a37a75",
+      "tree_steps": 123628,
+      "heap_nodes": 630,
+      "required_heap_capacity": 18382,
+      "seconds": 0.27300554199999993
+    },
+    {
+      "definition_name": "commutativityReceptor1779016fa859d343f8b0d845252c57c47a069f608a5b0bf5bda0f0d65465b115",
+      "request_sha256": "37c04b218ca4d07e1d3299b7fdf133fc2f344b11f67cdfa19aa7802b91414411",
+      "tree_steps": 250788,
+      "heap_nodes": 881,
+      "required_heap_capacity": 26460,
+      "seconds": 0.5501217909999996
+    },
+    {
+      "definition_name": "commutativityReceptor2141972a28e3b9c464db197c5b9407bc3cf1baf03a2678379dfc68cdef05d078",
+      "request_sha256": "b9986ebe0525dce1630317c3017e605b8abb46cc2dddc1b48a9484efce9ca694",
+      "tree_steps": 185530,
+      "heap_nodes": 744,
+      "required_heap_capacity": 21991,
+      "seconds": 0.40209462500000015
+    },
+    {
+      "definition_name": "commutativityReceptor220168d6fd86b787ae30f254cd8b482fc4f456de89968a2fcdd2cab621f01ca0",
+      "request_sha256": "c692e98d13da86dbcd8e0f4e765d64899521ebab30c282e03a835b645e546950",
+      "tree_steps": 281882,
+      "heap_nodes": 892,
+      "required_heap_capacity": 26815,
+      "seconds": 0.6180695409999997
+    },
+    {
+      "definition_name": "commutativityReceptor2232f604a938753ef5fde4950c6c2f65d4d4ef887301dcb7fdb7f371b36d909a",
+      "request_sha256": "8feda456392abca9e04de0318814e25a4ac48026c2f7826e344366428d6a4283",
+      "tree_steps": 277892,
+      "heap_nodes": 873,
+      "required_heap_capacity": 26209,
+      "seconds": 0.7970209159999992
+    },
+    {
+      "definition_name": "commutativityReceptor2745d77554941659a1cc2038b41958dad2f417d4649f5c1ee674661293505b84",
+      "request_sha256": "cdf4f41052fc0a3b5e28c803861b1fdc57333f79d8ba7f6414e074dd6884eb45",
+      "tree_steps": 250218,
+      "heap_nodes": 717,
+      "required_heap_capacity": 21139,
+      "seconds": 0.5475579169999989
+    },
+    {
+      "definition_name": "commutativityReceptor28f74e6ac7c426456dbc1d70831fc382f0a009b42bfd3e34fe5a38e4fa7d30cd",
+      "request_sha256": "d091b9a27f16a57f66ad5ac2a5c1652afe2e5b6c198c5dc104cf8fb6bb07f2d1",
+      "tree_steps": 891854,
+      "heap_nodes": 1115,
+      "required_heap_capacity": 34246,
+      "seconds": 1.9179058340000008
+    },
+    {
+      "definition_name": "commutativityReceptor2c4dd007e0b7f0ca2f7150ba628474f81f1f7638d2412988d939c09612943060",
+      "request_sha256": "beb80c9ed2a938bbc6d806af2c6eb1344d633caa985e3088b71ba7482c5811d7",
+      "tree_steps": 999618,
+      "heap_nodes": 1255,
+      "required_heap_capacity": 39005,
+      "seconds": 2.1515632080000007
+    },
+    {
+      "definition_name": "commutativityReceptor2f4792cae68eb2dcdaf3081a3577659ac983b5e953eb84cb46bdbe0eb7321b42",
+      "request_sha256": "67b761abfe0063b3091c7226261da6401cf16f7ec9a721e8ebb7513a70ef6c4b",
+      "tree_steps": 295638,
+      "heap_nodes": 873,
+      "required_heap_capacity": 26210,
+      "seconds": 0.6452335829999996
+    },
+    {
+      "definition_name": "commutativityReceptor333a02db9c68628b950d5d64d38c0e1592be416da3fd94dc8664ad851a95b082",
+      "request_sha256": "f708548b8fd7b8385f0b1b5dcbadcf4e0c6e39ab07dd028597bcb871564b54c8",
+      "tree_steps": 189520,
+      "heap_nodes": 756,
+      "required_heap_capacity": 22349,
+      "seconds": 0.41616887499999855
+    },
+    {
+      "definition_name": "commutativityReceptor33ae83de48baa4adcc113672fa07796a350ddd04f8f3f5e7db8d3761e0640f82",
+      "request_sha256": "cefc3b1e9bf96d49043adbe7662e5c04d667620fa4589c2e41238afb3ebe7cdc",
+      "tree_steps": 237803,
+      "heap_nodes": 879,
+      "required_heap_capacity": 26398,
+      "seconds": 0.5195240830000003
+    },
+    {
+      "definition_name": "commutativityReceptor35523252475816bef34c0a130689f59c43b576feaf46cda0e2cc88c012ae71f3",
+      "request_sha256": "3afff732c20f2185dc0ad2f3038341a8f3282b85f43dab98af224954970b8bff",
+      "tree_steps": 233813,
+      "heap_nodes": 857,
+      "required_heap_capacity": 25699,
+      "seconds": 0.5128396669999997
+    },
+    {
+      "definition_name": "commutativityReceptor36b70c309562b6bdb42e3c0289945168f68d904c124544ad2414358641082a90",
+      "request_sha256": "09c38d709845575276ddd0186908d070f4ffa49f80ddfc465c70299d9f20139a",
+      "tree_steps": 967144,
+      "heap_nodes": 1171,
+      "required_heap_capacity": 36280,
+      "seconds": 2.122431249999998
+    },
+    {
+      "definition_name": "commutativityReceptor3b7316d65dd305028c67638b90f9b65b6c58fd188db5d34e3554d05991885643",
+      "request_sha256": "95cfddd5e725c7789635b7f60ea5b99242d87d1bb62e6368cefd0afa3cd7de36",
+      "tree_steps": 319188,
+      "heap_nodes": 976,
+      "required_heap_capacity": 29647,
+      "seconds": 0.7053656249999989
+    },
+    {
+      "definition_name": "commutativityReceptor3d785d74a14d04703e5c3fa926dcb5b36e7b71f3b3366dd5a65bb432f02aed01",
+      "request_sha256": "61d4d82056a70ab72a35e6e348e09ed2a1f9a6b5ff2b34a4b61c4a4b55b4685a",
+      "tree_steps": 85518,
+      "heap_nodes": 617,
+      "required_heap_capacity": 18034,
+      "seconds": 0.18766595900000027
+    },
+    {
+      "definition_name": "commutativityReceptor3ec32710bfaf6b6088a60cb3de8c811ad0d31b40e27f70c2205b9e517d1f044b",
+      "request_sha256": "15d77b4792c6c2a05e40612844c938d88b85f1a0d55ef3a0bb81550bbcd52aa1",
+      "tree_steps": 202733,
+      "heap_nodes": 742,
+      "required_heap_capacity": 21918,
+      "seconds": 0.44413779199999937
+    },
+    {
+      "definition_name": "commutativityReceptor427fac7d4b56f66e1c2ae14940bceb9ca2547ebade6ef0715680b06ca5e143eb",
+      "request_sha256": "c8eccdd0b831fe0f41a85b035508b6b5db92c6245520b5ff634c0214d22fb831",
+      "tree_steps": 192970,
+      "heap_nodes": 763,
+      "required_heap_capacity": 22567,
+      "seconds": 0.4260087079999977
+    },
+    {
+      "definition_name": "commutativityReceptor47f3bd09c782b4425e784002bbb5a8d0b6945e0ddf6f61f723b1aff496c744b8",
+      "request_sha256": "7285c605e75a17daa5f705f5cdd7e055ae5b1a44a50ffa6453a295f0ba6066ea",
+      "tree_steps": 250788,
+      "heap_nodes": 886,
+      "required_heap_capacity": 26619,
+      "seconds": 0.5502427499999989
+    },
+    {
+      "definition_name": "commutativityReceptor4e8197be504aed4285e69df406215dbb2e8d1f5da34c6e2643d021cefbeaa739",
+      "request_sha256": "4b95e23bbecbfc97259d0b7adc636b5a30006952efb3266bf8b2fa9362b63da4",
+      "tree_steps": 227914,
+      "heap_nodes": 831,
+      "required_heap_capacity": 24849,
+      "seconds": 0.4977022909999995
+    },
+    {
+      "definition_name": "commutativityReceptor4ecfa514e9084586a34105ab1acda34eaef551e638098b63e6e56a3be097d173",
+      "request_sha256": "4cf4a1365db1ddacca1f62c9dc141671d18a3d4edbc9760fa4bc0fec0ad992ec",
+      "tree_steps": 231904,
+      "heap_nodes": 854,
+      "required_heap_capacity": 25577,
+      "seconds": 0.5031058329999993
+    },
+    {
+      "definition_name": "commutativityReceptor508e42b458155bd005ee0f47435b057d7923337e9ba925299cd3587c0ddecc98",
+      "request_sha256": "3ce0d22b677293ca3dfda7462645c77ad0bf437e795ce6a78b0b0d5af061fc4d",
+      "tree_steps": 192970,
+      "heap_nodes": 757,
+      "required_heap_capacity": 22379,
+      "seconds": 0.4209009999999971
+    },
+    {
+      "definition_name": "commutativityReceptor5886ce7fe062d802360d0d43cd4efb0f63750ef0b558113f319dc337336d5b99",
+      "request_sha256": "8c7e9ec3eeca9f1847eff883344e8e50540d8bf0d4a995931ec7e984adfc1ec6",
+      "tree_steps": 214919,
+      "heap_nodes": 860,
+      "required_heap_capacity": 25792,
+      "seconds": 0.4712146250000018
+    },
+    {
+      "definition_name": "commutativityReceptor5a7b0eadd6036bb488232bc25d6cb5495895b7325d3756ba39226c2f83b6daf6",
+      "request_sha256": "d27294db6b43a15af2655d28d7dfad6474fc0b517d3d42938842ee98386a312a",
+      "tree_steps": 274098,
+      "heap_nodes": 875,
+      "required_heap_capacity": 26272,
+      "seconds": 0.5943480000000001
+    },
+    {
+      "definition_name": "commutativityReceptor5ba648a57ad0f0e924342b5593dd8e5376eba5b295e7a71bbada4c1d47ff0c2e",
+      "request_sha256": "e925c8bf4db3a9b14f800574e2b3c0e2356d288bd12f227dc5cd339b6cdc9dea",
+      "tree_steps": 903760,
+      "heap_nodes": 1033,
+      "required_heap_capacity": 31632,
+      "seconds": 1.9429425840000007
+    },
+    {
+      "definition_name": "commutativityReceptor5c0efbdfdb406b127eb4e6dcaef4adf597e0b5d8829636610c4b9bbc41d13701",
+      "request_sha256": "6c3029718bbfef1fc6c0d30dbea7d681fb64519643bdd8e40c32fd6452ebb80e",
+      "tree_steps": 291648,
+      "heap_nodes": 866,
+      "required_heap_capacity": 25992,
+      "seconds": 0.6279735829999993
+    },
+    {
+      "definition_name": "commutativityReceptor5cd0405819252029260ee04a3b9fc8bc98487bf0a2e58daebdd3866ba0d96e93",
+      "request_sha256": "d8db4bf067cbb5996d3dd7fa936afd0981322869b4c2d5214c66609e022e5dc1",
+      "tree_steps": 985488,
+      "heap_nodes": 1253,
+      "required_heap_capacity": 38931,
+      "seconds": 2.130131542000001
+    },
+    {
+      "definition_name": "commutativityReceptor5e14de35ef35ea4d9012302733ca8656ac1063db0738bcd92003128fbe4c5e0f",
+      "request_sha256": "d73be846abfa658e4868066626aca84bdb88dd964a5614091762af797d3d5bcb",
+      "tree_steps": 1023831,
+      "heap_nodes": 1054,
+      "required_heap_capacity": 32327,
+      "seconds": 2.205506749999998
+    },
+    {
+      "definition_name": "commutativityReceptor649f384fb312ec8620d2bed35ad21fe92c5dcf7094ce5893bc4a835fe122af26",
+      "request_sha256": "ae9e1df6f2271f34ef54f7b1eb697ef9fd9de8323b1bcd1a458c2925daff41a8",
+      "tree_steps": 315198,
+      "heap_nodes": 970,
+      "required_heap_capacity": 29463,
+      "seconds": 0.6872745840000007
+    },
+    {
+      "definition_name": "commutativityReceptor6566f67c5fb10a53487f1a3381549bd84fa794aa6ee795192150c28829151a71",
+      "request_sha256": "e9439c9297b413248feec5552502a1645604df5772ac2750dc97275fb4011889",
+      "tree_steps": 880130,
+      "heap_nodes": 1033,
+      "required_heap_capacity": 31616,
+      "seconds": 1.8788339589999978
+    },
+    {
+      "definition_name": "commutativityReceptor65bac46fe2d20ecb8861bc9017732237470e5de14481ae75549c0315f5183063",
+      "request_sha256": "0306d6255b7ba437b4dbd7bd6cf592f9c2942d1972873fd0ef74630dcb63daeb",
+      "tree_steps": 268919,
+      "heap_nodes": 879,
+      "required_heap_capacity": 26390,
+      "seconds": 0.5797469590000048
+    },
+    {
+      "definition_name": "commutativityReceptor6622260341cb5dd087cd92b533a8c3c5e5a1a418d7e8a9ca8a60184c4fd93eb4",
+      "request_sha256": "01a4b714f3f7fdd311d4276d7165f7339587f85abefd024a22bccf08a6a771cc",
+      "tree_steps": 192970,
+      "heap_nodes": 769,
+      "required_heap_capacity": 22743,
+      "seconds": 0.424391583000002
+    },
+    {
+      "definition_name": "commutativityReceptor665f8a15b164ea4ea37da6b00dffdc3879e0005bceda30876f3236f65feab49b",
+      "request_sha256": "45a491d7020e6b9aefb51469346d70339cba8c41c1972bd950d2de88d0dfec5b",
+      "tree_steps": 202733,
+      "heap_nodes": 748,
+      "required_heap_capacity": 22100,
+      "seconds": 0.4474174580000039
+    },
+    {
+      "definition_name": "commutativityReceptor681730a3cecc18157c652e622ae751b1912bd2837f012a578077f33c723a57dd",
+      "request_sha256": "c30e0c29e338cd66f27f6c058f1ad16dde4ed3b0c2d1bb32c317d0455fb39301",
+      "tree_steps": 334122,
+      "heap_nodes": 997,
+      "required_heap_capacity": 30366,
+      "seconds": 0.7307452090000055
+    },
+    {
+      "definition_name": "commutativityReceptor6aee6eaeaf757a72abc428bd076920a73f30def93f36f259ce7315b9b8ad8f4c",
+      "request_sha256": "6143cfa6f5654401d7bf05e0db4129f5dd2e3e601f248b722a0eb4acfa2b63a5",
+      "tree_steps": 188980,
+      "heap_nodes": 756,
+      "required_heap_capacity": 22356,
+      "seconds": 0.4189875839999999
+    },
+    {
+      "definition_name": "commutativityReceptor6be8289470eba6b3a9197a9a460433b4d5058c77066fb17cc6c9008b27579a30",
+      "request_sha256": "9c93b8e465455ebd6d9ae4fc6c910385efe78ac3ebfc7b44b31fd48da3a84517",
+      "tree_steps": 278088,
+      "heap_nodes": 885,
+      "required_heap_capacity": 26585,
+      "seconds": 0.661899708
+    },
+    {
+      "definition_name": "commutativityReceptor6fe5d08f88157ab3097fd2e814ba4311ff4ee1902fa93fa1db9d35b6f7d96cfd",
+      "request_sha256": "7bc90877b7923c6e46edd6a354d4c282bb85bd98d11b177bf99c9971beee2430",
+      "tree_steps": 281882,
+      "heap_nodes": 880,
+      "required_heap_capacity": 26436,
+      "seconds": 0.6401239160000003
+    },
+    {
+      "definition_name": "commutativityReceptor71b92c287e39968a970247224676bc6fa282943bfc371fdf26aa9f0c0ab49f76",
+      "request_sha256": "af639e35433737a6fde1bb315cdd6e967a517aff25d4cb42a9beba8a7214f9d9",
+      "tree_steps": 57585,
+      "heap_nodes": 565,
+      "required_heap_capacity": 16392,
+      "seconds": 0.1301559999999995
+    },
+    {
+      "definition_name": "commutativityReceptor7340c329440412984d849f7bd5286400f8d2dd2dd0dfb014483a5ad4d11f9b4a",
+      "request_sha256": "c9756b3a2f79b7f7481dabf11adda9bc713d8715b50843640f59610af2a9d9df",
+      "tree_steps": 322422,
+      "heap_nodes": 988,
+      "required_heap_capacity": 30078,
+      "seconds": 0.7063414579999971
+    },
+    {
+      "definition_name": "commutativityReceptor817164e33ff6c92e8af054a41729e426d5cdff119877306eede9a569a7400e60",
+      "request_sha256": "28337c24a1e735ee9ef0238cdd479fd6a654575010b928831723405fe9875094",
+      "tree_steps": 151093,
+      "heap_nodes": 749,
+      "required_heap_capacity": 22139,
+      "seconds": 0.34352891700000043
+    },
+    {
+      "definition_name": "commutativityReceptor86ad95c6c737b808a7832347de33f34dfd3443a78b624872f5e3da086bb6b51d",
+      "request_sha256": "4906d6ca6c3c1e0bd392705ee38954cd5294ad759d7c005bfb247c1408a9f4d4",
+      "tree_steps": 277892,
+      "heap_nodes": 868,
+      "required_heap_capacity": 26052,
+      "seconds": 0.6026728750000032
+    },
+    {
+      "definition_name": "commutativityReceptor8791620013e8dac4059421452d54ce7b9862610599f5268475ef1cd7ee0ae756",
+      "request_sha256": "52d2dce58693cc74dfe854a0992f6fcea686d66ed9f9188e63dd154f1678c5fe",
+      "tree_steps": 295638,
+      "heap_nodes": 879,
+      "required_heap_capacity": 26389,
+      "seconds": 0.6449387499999943
+    },
+    {
+      "definition_name": "commutativityReceptor8f9aa121b6e395a45fcc2f07e327e3e83d00296a33f1ce870026e972fd075446",
+      "request_sha256": "c9f618e79de66ec7a95407c157b57db760680741a29c43f68c3ffed4257bb327",
+      "tree_steps": 89508,
+      "heap_nodes": 646,
+      "required_heap_capacity": 18906,
+      "seconds": 0.1949138330000011
+    },
+    {
+      "definition_name": "commutativityReceptor9209c4e7a1d1316ec22a8a97ca692f4af68ab653c6598b5a2a5a90f436449613",
+      "request_sha256": "04ffaddd88beb4b916784dd173264aabec3356f48b7d0d7bfcd68d06dee6297f",
+      "tree_steps": 264929,
+      "heap_nodes": 857,
+      "required_heap_capacity": 25698,
+      "seconds": 0.5815656249999961
+    },
+    {
+      "definition_name": "commutativityReceptor95116b4ed3fd0f36c362a59e75141b88c3943a0293bd9806022bfcc6aa975d49",
+      "request_sha256": "8ff1ad1e6e50d89694eef9955675db772b7edc943ac69b8d808ef2f6a5e53f18",
+      "tree_steps": 206723,
+      "heap_nodes": 766,
+      "required_heap_capacity": 22639,
+      "seconds": 0.45536524999999983
+    },
+    {
+      "definition_name": "commutativityReceptor9a10a40015f066e14459ae6739d8fa2a7fed822911c11c0f865450ba7372605a",
+      "request_sha256": "b10716395c73eee021058dd9520403c94d004600649aa698ae96688bf3415b5d",
+      "tree_steps": 239088,
+      "heap_nodes": 879,
+      "required_heap_capacity": 26393,
+      "seconds": 0.5178069170000015
+    },
+    {
+      "definition_name": "commutativityReceptor9ab07090cc02eb980b66575ce5c04035455663fac240a1b140877dc111d2bc4e",
+      "request_sha256": "31b68e2514ea7c65482ada9a53611203c69343c573fe3d73eebdb05e817657f4",
+      "tree_steps": 268919,
+      "heap_nodes": 879,
+      "required_heap_capacity": 26395,
+      "seconds": 0.5875389170000034
+    },
+    {
+      "definition_name": "commutativityReceptor9bbfd170bc8c0e7f483bac72349bc7d1848e663c08fa0371aaf71d166035f3d8",
+      "request_sha256": "a5dd1c9306f10e5117a199700b9525d6529c778b4df126db15d61ccc15cfbb7f",
+      "tree_steps": 953014,
+      "heap_nodes": 1177,
+      "required_heap_capacity": 36479,
+      "seconds": 2.041864208
+    },
+    {
+      "definition_name": "commutativityReceptora32a689a635bb5cdabf26eb841e4c071491dff11d224cc9323fe18b93d539765",
+      "request_sha256": "7e69e3785654e9b5dfd3f6e814ca965669064149292085b7378e1be1e874b277",
+      "tree_steps": 206723,
+      "heap_nodes": 760,
+      "required_heap_capacity": 22463,
+      "seconds": 0.4531499169999975
+    },
+    {
+      "definition_name": "commutativityReceptorb11f9d3c1688b5eba2f3237c6a9160d1125a0faaa14402a37adb4bcb57dc2ef5",
+      "request_sha256": "cc85fc21b71479b5b662662263ce7ba56e1ea3cb6949ed292014b5b1f1500361",
+      "tree_steps": 277892,
+      "heap_nodes": 874,
+      "required_heap_capacity": 26244,
+      "seconds": 0.5979252079999995
+    },
+    {
+      "definition_name": "commutativityReceptorb3e94ffa6db454f536d0907f44bf4d23975dd10151f9c0ffd51836c336ee504f",
+      "request_sha256": "4ae87abcf16594e907589e833f085ba586188fde824acbbaa6d8555e5002821c",
+      "tree_steps": 264929,
+      "heap_nodes": 867,
+      "required_heap_capacity": 26020,
+      "seconds": 0.5734158329999985
+    },
+    {
+      "definition_name": "commutativityReceptorb62f640e6a5bb4081dab180d7db49dd239765089425d4fea1df285b4ba9d04ef",
+      "request_sha256": "2b62a1772821bbf50e9ee6af8773e93388a7bf2a6cad1abdf239206903abfeae",
+      "tree_steps": 188980,
+      "heap_nodes": 750,
+      "required_heap_capacity": 22174,
+      "seconds": 0.4128812080000017
+    },
+    {
+      "definition_name": "commutativityReceptorbe2a96617fa984dc0334cf84d8e81f7b1fed1a77a5cffd4bd60876f649e50528",
+      "request_sha256": "24077a7d2cef38d634d4874c981271796694598e65ba53d7ef22369e9c10e5d9",
+      "tree_steps": 192970,
+      "heap_nodes": 763,
+      "required_heap_capacity": 22564,
+      "seconds": 0.4215105829999999
+    },
+    {
+      "definition_name": "commutativityReceptorbf816dcbacdac7595b3d4ef6010ea2954406d6a96da089d1ef6b4a10822d20d5",
+      "request_sha256": "6ce71f9dd7d3222c31ffee892634dbbbeb0a095aa48f9fe3ac06ea182a418176",
+      "tree_steps": 246798,
+      "heap_nodes": 874,
+      "required_heap_capacity": 26243,
+      "seconds": 0.5351752499999947
+    },
+    {
+      "definition_name": "commutativityReceptorc1b887a7cd27d9fa0e37b24befdd655525a787894baaa2cee2d7e2eb7a502c79",
+      "request_sha256": "f23052a79ab8d2739fdfdeb02601dc68dc1c849056dbb1665904646c9a81352a",
+      "tree_steps": 237803,
+      "heap_nodes": 880,
+      "required_heap_capacity": 26435,
+      "seconds": 0.5173237910000026
+    },
+    {
+      "definition_name": "commutativityReceptorcff01552edde2a374d1d60f2c2b7bbd8a8b3d7d2771a9d8213f204fb65849564",
+      "request_sha256": "dd3415ddcf4c22664a4af5f59c8a45b7539c30606edf18bd03c6f48171a11cca",
+      "tree_steps": 218909,
+      "heap_nodes": 862,
+      "required_heap_capacity": 25858,
+      "seconds": 0.47560204199999845
+    },
+    {
+      "definition_name": "commutativityReceptord0e82361596f5f39cab46072372d2c529e47b627def7cb6e6d06b25be08802e6",
+      "request_sha256": "cad5a340aaba63ed209af9cc11b2dd462f7fa47ad8c4e29511eb2e8e02664ad8",
+      "tree_steps": 188980,
+      "heap_nodes": 751,
+      "required_heap_capacity": 22200,
+      "seconds": 0.41209483399999414
+    },
+    {
+      "definition_name": "commutativityReceptord148efea349f18755e424a4dca678efc1869fd46019df2fa663b5a2759f74d79",
+      "request_sha256": "56626440ddc13855481565bba3e096533d770a19bd1e56d0855d40af535805ef",
+      "tree_steps": 291648,
+      "heap_nodes": 861,
+      "required_heap_capacity": 25828,
+      "seconds": 0.6354542079999987
+    },
+    {
+      "definition_name": "commutativityReceptord14f435bbd5d349d8fbea33f172395ceb28276b96abf24838d809e47ebe07ef7",
+      "request_sha256": "2bcbcd18ee29048e9e26187f90015693d890e6b182e6f0cdee07ad71914e0dd1",
+      "tree_steps": 911794,
+      "heap_nodes": 1113,
+      "required_heap_capacity": 34191,
+      "seconds": 1.9597947079999969
+    },
+    {
+      "definition_name": "commutativityReceptord2da57cff70e9705e86bb2dccc6485769bd2d2107c839aa2316e7e0b70c7bb18",
+      "request_sha256": "065d107e059a517096f673611ff1063c206607d9b8f1c4d7672c2d94ffc153a6",
+      "tree_steps": 274098,
+      "heap_nodes": 858,
+      "required_heap_capacity": 25736,
+      "seconds": 0.5898584159999984
+    },
+    {
+      "definition_name": "commutativityReceptord3fa00544a38641d2d132faec4c8f05978c6da9f7966df7799bc364ad52d2531",
+      "request_sha256": "9aa848348e03cffbf48dc0c51651e86e3b54549722bbd59d9e4acfc1056957d8",
+      "tree_steps": 589875,
+      "heap_nodes": 946,
+      "required_heap_capacity": 28655,
+      "seconds": 1.276273500000002
+    },
+    {
+      "definition_name": "commutativityReceptord475051b8fd64ee2a6070bbfe84db361e48d288575c94a391c3ba491576807eb",
+      "request_sha256": "ec6002b1a5bf1920d612a4ab770f529de9ad411b15db35083a090f92b7c4d51d",
+      "tree_steps": 1006831,
+      "heap_nodes": 1070,
+      "required_heap_capacity": 32839,
+      "seconds": 2.1698407499999988
+    },
+    {
+      "definition_name": "commutativityReceptord6a4b7548bff25e6b0ea1bb4078620fec7402ff17424c07514d1c766239a10ad",
+      "request_sha256": "69487a1972dc43933e5169778b5a47bc9d203e1cc71edf704c3b3ff36459b28c",
+      "tree_steps": 263348,
+      "heap_nodes": 737,
+      "required_heap_capacity": 21755,
+      "seconds": 0.5705430410000005
+    },
+    {
+      "definition_name": "commutativityReceptord9e7d37b19c7413d0e3e9ed8089ddba76fcdadbcd45020bdf34ca1b4cde7e022",
+      "request_sha256": "02007acd6c233a78e00679dc0674cbde5db8621926ecd48f1b8931767541acf0",
+      "tree_steps": 326412,
+      "heap_nodes": 1011,
+      "required_heap_capacity": 30832,
+      "seconds": 0.7150555830000016
+    },
+    {
+      "definition_name": "commutativityReceptordbbac98a8ec0744339837a5c08402a06483ea900a41ba2fe0b2b2587606a4f13",
+      "request_sha256": "5d14f8b3cf53d29d9ff93681fda73e7500e71d4568aa551b455e7bb4b9320da0",
+      "tree_steps": 197757,
+      "heap_nodes": 741,
+      "required_heap_capacity": 21883,
+      "seconds": 0.4357599999999948
+    },
+    {
+      "definition_name": "commutativityReceptordd7ddec078298c34a0faded8c0637c886b780daebb4cb572d94b6e12204ef803",
+      "request_sha256": "80e64e1e46c21277b98d019715f7925973ebc6cd688a30b073cb701561ce66e5",
+      "tree_steps": 201747,
+      "heap_nodes": 759,
+      "required_heap_capacity": 22435,
+      "seconds": 0.4415567920000001
+    },
+    {
+      "definition_name": "commutativityReceptore0e544453a8347e0c23e1f38a6559f1129667ba994d09dc2414a24b0e00ac375",
+      "request_sha256": "8297988a091e07f84889a5088942257b80ff2d79ab4869b6fd56c923b99263cf",
+      "tree_steps": 1863886,
+      "heap_nodes": 1600,
+      "required_heap_capacity": 50999,
+      "seconds": 4.070060708
+    },
+    {
+      "definition_name": "commutativityReceptore42612b0acf5c11e4d94fdb2f63bd07750eb43e73c4eb1019a17053d389e9fa4",
+      "request_sha256": "01b4f2bca71889173182f890a558ef6a0564c3ca58777e9f16c876711ee3c971",
+      "tree_steps": 338112,
+      "heap_nodes": 1017,
+      "required_heap_capacity": 31017,
+      "seconds": 0.7460831249999984
+    },
+    {
+      "definition_name": "commutativityReceptoref784b97d5067edfae582c88ca3c615f267115521e6ad82e1d437b5cf23442e2",
+      "request_sha256": "21e8c5b4fc381efd2d7755a066a11a6234a367d221ac566b7a4265314ade5152",
+      "tree_steps": 281882,
+      "heap_nodes": 886,
+      "required_heap_capacity": 26618,
+      "seconds": 0.617957834000002
+    },
+    {
+      "definition_name": "commutativityReceptorf27fb961a12eb29c313596c2930a99d954f1d76fe4179df28d029c2e9b1452f5",
+      "request_sha256": "253f1f5ff909e5ed0a94a717756091f8d88aa89c08d923fd5b9d9034260d86ec",
+      "tree_steps": 277892,
+      "heap_nodes": 881,
+      "required_heap_capacity": 26459,
+      "seconds": 0.6080140840000041
+    },
+    {
+      "definition_name": "commutativityReceptorf38c860cb1edd81700f27c372878613d94bb74cf02c5dac653d1f597c7782c15",
+      "request_sha256": "2d3dd4f9aeae351ce96e73c82036544aa93c12c5f8c0224e91ec530e7c4e0be4",
+      "tree_steps": 278088,
+      "heap_nodes": 880,
+      "required_heap_capacity": 26428,
+      "seconds": 0.620777333999996
+    },
+    {
+      "definition_name": "commutativityReceptorf46ce2887a7f42eac8675577717818942d9a4b3bd9125980b9f73f3bea79532c",
+      "request_sha256": "0c5ffc09732f19da3bb23c2a6475d1fbe12aa844b7015e61efa84044acbf917a",
+      "tree_steps": 274098,
+      "heap_nodes": 873,
+      "required_heap_capacity": 26205,
+      "seconds": 0.6077894159999886
+    },
+    {
+      "definition_name": "commutativityReceptorf75f30c155539b5d26ea800d38497948b81f36008845edf00344e86d0184add2",
+      "request_sha256": "7becb92d5b7934ce00d48a922aade61c1a56b71fc7c143cc25ec77f3799016de",
+      "tree_steps": 919234,
+      "heap_nodes": 1113,
+      "required_heap_capacity": 34183,
+      "seconds": 1.9990113750000091
+    },
+    {
+      "definition_name": "commutativityReceptorf7f8e7e77213edc49f6987cce0375988354a2c59349457123a2e6e004d78d541",
+      "request_sha256": "bbaa5638bb7f7866f6d3fa42fd86163c3178ad91e3e01c2835480e67a022503c",
+      "tree_steps": 984144,
+      "heap_nodes": 1176,
+      "required_heap_capacity": 36449,
+      "seconds": 2.1405684169999972
+    },
+    {
+      "definition_name": "commutativityReceptorf80765a59193bbd0fcebe982c89b3b4a0065f3b8f11c0c53a4d2f387e86ad7bd",
+      "request_sha256": "e01638a6bfe5da13656d9b4060c99f8e9ab691a2521e93456e2ebca47c848304",
+      "tree_steps": 911354,
+      "heap_nodes": 1109,
+      "required_heap_capacity": 34055,
+      "seconds": 1.9695255000000031
+    },
+    {
+      "definition_name": "commutativityReceptorf868c23105d19a8375f5b0b04622ec544780710337150958519a8fe1866024c2",
+      "request_sha256": "260d34e414e300302c5278f02a468d8c04a12a25bc2d79013e192b5d76ee7855",
+      "tree_steps": 246798,
+      "heap_nodes": 869,
+      "required_heap_capacity": 26075,
+      "seconds": 0.5436745839999872
+    },
+    {
+      "definition_name": "commutativityReceptorf8dc390272b120f0614dd9d9cff9d75a6f86187a89d5b27d9bd03377583e5aa5",
+      "request_sha256": "7ec8f48c7b3a62a8bbe8a55c8410622093b48d3a8c9c7600d57bce4b552de860",
+      "tree_steps": 235098,
+      "heap_nodes": 875,
+      "required_heap_capacity": 26272,
+      "seconds": 0.5223136660000023
+    },
+    {
+      "definition_name": "commutativityReceptorfe99f21c54afc356753cddfc37afd0bdd71d63775a9c05c3003cf27b2f177a67",
+      "request_sha256": "44944ba2a772817bcf53f1900da5c1daab69e341ea9333073ad602d169ac3a70",
+      "tree_steps": 233813,
+      "heap_nodes": 868,
+      "required_heap_capacity": 26055,
+      "seconds": 0.5213749170000028
+    },
+    {
+      "definition_name": "searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+      "request_sha256": "c76a2af1ffdbfd5e84aa7b1d1d076ce9601709062ecdfc1bd3dd3e3ffbfce42c",
+      "tree_steps": 1306000,
+      "heap_nodes": 1711,
+      "required_heap_capacity": 54656,
+      "seconds": 2.8418953329999965
+    }
+  ],
+  "encoded_requests": 37,
+  "full_capacity_encoding_gate": "unknown_memory_budget;57proposedencodingsunresolved",
+  "complete_heap_estimates": 94,
+  "new_heap_replays": 86,
+  "prior_audited_heap_estimates": 8,
+  "common_heap_capacity": 262144,
+  "maximum_required_heap_capacity": 146733,
+  "proposed_encodings_checked": 37,
+  "proposed_encodings_unresolved": 57,
+  "native_admissions_fresh_unresolved": 93,
+  "fresh_native_local_commands": 1112,
+  "fresh_native_request_json_bytes": 465428,
+  "fresh_native_fixed_tree_instructions": 40780155,
+  "calibration": [
+    {
+      "request_sha256": "676c57d3861dfc20660fc7de368d1fc794350e83b5549064dd54ac327a70dd5f",
+      "tree_steps": 4250381,
+      "native_micro_steps": 17018800196,
+      "native_seconds": 129.846502958,
+      "ratio": 4004.0646229126282,
+      "rate": 131068606.4568476
+    },
+    {
+      "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "tree_steps": 3431081,
+      "native_micro_steps": 13499468074,
+      "native_seconds": 108.779356917,
+      "ratio": 3934.464990479677,
+      "rate": 124099539.25633392
+    }
+  ],
+  "heuristic_native_bill": {
+    "status": "nominal_linear_extrapolation_only_not_bound_or_confidence_interval",
+    "micro_steps_range": [
+      160448092153.83475,
+      163286375952.39352
+    ],
+    "native_seconds_range": [
+      1224.153490993741,
+      1315.769397137867
+    ],
+    "native_plus_equal_cost_replay_seconds_range": [
+      2448.306981987482,
+      2631.538794275734
+    ],
+    "uncertainty": "Localinterfaces/heaps differ from two historicalsamechecker fullcertificates; actual93nativebill unmeasured."
+  },
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "micro_code_bytes_sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+  "scope": "All94heapestimates independently audited, exactly37recorded proposedencodings matched. Originalfullproducer memoryunknown and57missingencodings preserved. Typed-array auditencoder is independentlydeclared infrastructure, not a producerretry or nativecheck. No nativepilot authorized until encodinggap resolved.",
+  "seconds": 78.158248958,
+  "peak_rss_bytes": 293339136
+}

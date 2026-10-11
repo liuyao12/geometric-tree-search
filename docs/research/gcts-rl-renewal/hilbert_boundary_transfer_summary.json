@@ -1,0 +1,185 @@
+{
+  "status": "complete",
+  "planned_runs": 24,
+  "observations": 24,
+  "native_accepted": 5,
+  "point_proof_observations": 5,
+  "search_unknowns": 13,
+  "finite_exhaustions": 6,
+  "native_whole_unknowns": 0,
+  "native_whole_rejections": 0,
+  "exact_recipient_receptor_observations": 2,
+  "policies": {
+    "level1-base": {
+      "observations": 4,
+      "attempts": 1675,
+      "native_accepted": 1,
+      "search_seconds": 7.139150043,
+      "model_setup_seconds": 1.070392209,
+      "proposal_seconds": 0,
+      "feature_vectors": 0,
+      "expanded_mark_positions": 0
+    },
+    "level1-fixed": {
+      "observations": 4,
+      "attempts": 1675,
+      "native_accepted": 1,
+      "search_seconds": 11.380408040999999,
+      "model_setup_seconds": 1.121839792,
+      "proposal_seconds": 4.254619919000001,
+      "feature_vectors": 2710,
+      "expanded_mark_positions": 1139896
+    },
+    "level1-learned": {
+      "observations": 4,
+      "attempts": 1675,
+      "native_accepted": 1,
+      "search_seconds": 10.6489205,
+      "model_setup_seconds": 1.1034903759999999,
+      "proposal_seconds": 3.912284780000001,
+      "feature_vectors": 2553,
+      "expanded_mark_positions": 1058645
+    },
+    "promoted-base": {
+      "observations": 4,
+      "attempts": 2400,
+      "native_accepted": 0,
+      "search_seconds": 12.109267999,
+      "model_setup_seconds": 2.088389083,
+      "proposal_seconds": 0,
+      "feature_vectors": 0,
+      "expanded_mark_positions": 0
+    },
+    "promoted-fixed": {
+      "observations": 4,
+      "attempts": 2400,
+      "native_accepted": 0,
+      "search_seconds": 16.019093416,
+      "model_setup_seconds": 2.0937512910000002,
+      "proposal_seconds": 4.941634573999998,
+      "feature_vectors": 1846,
+      "expanded_mark_positions": 448656
+    },
+    "promoted-learned": {
+      "observations": 4,
+      "attempts": 1264,
+      "native_accepted": 2,
+      "search_seconds": 9.535559333,
+      "model_setup_seconds": 2.0735215399999998,
+      "proposal_seconds": 2.874996034999998,
+      "feature_vectors": 1465,
+      "expanded_mark_positions": 528407
+    }
+  },
+  "native_preparation": {
+    "planned_queries": 61,
+    "actual_queries": 61,
+    "complete": true,
+    "outcome": null,
+    "unresolved_group": null,
+    "unresolved_basis_index": null
+  },
+  "incremental_costs": {
+    "production_seconds": 579.8030052080001,
+    "initial_setup_seconds": 4.3394721249999995,
+    "native_setup_seconds": 4.047683334,
+    "preparation_seconds": 248.051811958,
+    "search_seconds": 66.832399332,
+    "model_setup_seconds": 9.551384291,
+    "worker_wall_seconds": 136.54393712300023,
+    "certification_wall_seconds": 134.25926391699994,
+    "fresh_native_queries": 64,
+    "fresh_native_production_seconds": 347.707261127,
+    "fresh_native_micro_steps": 47577686424,
+    "native_preparation_seconds": 241.97399854400007,
+    "native_whole_seconds": 105.73326258299994,
+    "independent_audit_seconds": 720.89069925,
+    "independent_native_replay_seconds": 349.48987525000024,
+    "independent_prior_input_binding_seconds": 8.851044708,
+    "independent_native_setup_seconds": 0.5642645000000002,
+    "peak_worker_rss_bytes": 148176896
+  },
+  "inherited_costs": {
+    "library_native_queries": 77,
+    "library_native_production_seconds": 1901.8498027470002,
+    "library_native_micro_steps": 261070027826,
+    "source_promotion_native_seconds": 31.310553125,
+    "source_promotion_replay_seconds": 33.958145583,
+    "inherited_policy_discovery_and_matching_seconds": 192.696318209,
+    "inherited_policy_training_seconds": 91.71764754200001,
+    "inherited_policy_full_pilot_seconds": 4558.422118125,
+    "inherited_policy_full_audit_seconds": 2224.253906875,
+    "inherited_policy_episodes": 12,
+    "scope": "Inherited stages are disclosed separately; their aggregate and component clocks overlap and must not be summed as disjoint cold costs. No new donor discovery, receptor admission or policy training is performed."
+  },
+  "historical_reporting": {
+    "scope": "Post-trial historical cost accounting only, never read by search or native preparation. Original source-ground discovery is additional inherited work. Aggregate stage clocks overlap component clocks; no sum of disjoint cold costs is claimed. Source authoring/planning/declaration time has no experiment timer; production starts at the frozen-plan producer.",
+    "original_ground_source": {
+      "production_seconds": 1244.400301583,
+      "native_production_seconds": 1196.9541409210005,
+      "audit_seconds": 1226.864408166,
+      "native_queries": 152,
+      "native_micro_steps": 161640839510,
+      "source_query": 56,
+      "source_request_sha256": "669061a7a9036c7621a6ff0bcc7a7dbdfb2d9392e03c6dc1c4ccb914cd52c697",
+      "positive_preparation_elapsed_seconds": 546.814270001
+    },
+    "original_quantified_closure": {
+      "status": "unknown_space_budget",
+      "native_production_seconds": 73.363009042,
+      "audit_seconds": 74.156863875,
+      "scope": "Unchanged original heap unknown; ground receptor transfer does not resolve it."
+    },
+    "source_evidence": [
+      {
+        "path": "docs/research/gcts-rl-renewal/hilbert_receptors_reader_001.json",
+        "sha256": "6998034f7c5a3bfd78083a7cb6beecb4c1d0f9e126ab2403ffe6cf83d7c3df1c",
+        "bytes": 1756178
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/hilbert_receptors_native.json.gz",
+        "sha256": "00c180e1373895fe92a49794b1aff7f2f43403935c3290eb79c3ea5707e8ae67",
+        "bytes": 155554
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/hilbert_receptors_audit.json",
+        "sha256": "e4c3868e5a7f65786c11860080c0ed2e18bf79f67c7925cc69c62d8537308f2c",
+        "bytes": 12014
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_ground.json",
+        "sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+        "bytes": 126804
+      }
+    ]
+  },
+  "prior_full_replay_binding": {
+    "family_ledger_sha256": "376e11974ccfefb4e9fb41fda056f4e97bbbefb385c8bd1616a6ccdda78bb26b",
+    "family_audit_sha256": "d21b31af5331453f21028217317322156900d3ef511bdfefff5e92b2161a55d6",
+    "family_native_queries": 142,
+    "family_native_micro_steps": 329196372761,
+    "family_native_replay_seconds": 2411.9622285859996,
+    "control_ledger_sha256": "c4f5b5359f45b70c29814a82de08dd1a912d721419e8a20b1ee88f1caf655dff",
+    "control_audit_sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+    "control_native_queries": 2,
+    "control_native_micro_steps": 9595090328,
+    "control_native_replay_seconds": 71.19155512399999
+  },
+  "native_budget_overshoots": [],
+  "native_budget_blocks": [],
+  "native_observation_origins": {
+    "fresh": 5
+  },
+  "fresh_native_whole_queries": 3,
+  "fresh_native_acceptance_reuse_observations": 2,
+  "prior_native_acceptance_reuse_observations": 0,
+  "feature_scope": "Expanded marking positions and vectors count every scored proposal, including repeated state-dependent work. Inclusive proposal elapsed time includes proposal generation, validation, feature construction and scoring; no feature-only timer is inferred from the unchanged engine.",
+  "audit": {
+    "complete_models": 8,
+    "nodes": 11113,
+    "events": 998,
+    "hints": 998,
+    "sha256": "f87d64db2e695654e1686c893ae65dc77bbb2483e7674d5fd7dee7a11c81b944"
+  },
+  "assessment": "The two new hypothesis patterns require actual premise derivation and one reverses line receptor roles. They are ground incidence consequences, with four finite recipient boundaries and one deterministic seed. Inventory expansion is distinct from policy ordering; all comparisons within a language use equal complete inventories. Frozen learned weights transfer with no new training. Native preparation and certification unknowns remain unknown, separate from point search results. No renamed-case difficulty, statistical significance, general speed, primitive Wang compiler equivalence, full Hilbert geometry or quantified closure claim."
+}

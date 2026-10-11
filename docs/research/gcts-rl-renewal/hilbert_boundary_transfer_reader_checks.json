@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "terminal_outcome": "complete",
+  "observations": 24,
+  "proof_rows": 31,
+  "actual_tiles": 124,
+  "mutations": [
+    {
+      "label": "changed planned guard limit",
+      "status": "rejected"
+    },
+    {
+      "label": "changed hypothesis dependencies",
+      "status": "rejected"
+    },
+    {
+      "label": "omitted higher receptor",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden preparation outcome",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden native bill",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden inherited training",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden source-ground discovery",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden exact new acceptance reuse",
+      "status": "rejected"
+    },
+    {
+      "label": "counterfeit prior replay",
+      "status": "rejected"
+    },
+    {
+      "label": "false acceptance count",
+      "status": "rejected"
+    },
+    {
+      "label": "missing guard outcome",
+      "status": "rejected"
+    },
+    {
+      "label": "hidden feature work",
+      "status": "rejected"
+    },
+    {
+      "label": "missing observation",
+      "status": "rejected"
+    },
+    {
+      "label": "missing checkpoint artifact",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong marking",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong occupancy",
+      "status": "rejected"
+    },
+    {
+      "label": "wrong row formula",
+      "status": "rejected"
+    },
+    {
+      "label": "missing proof row",
+      "status": "rejected"
+    },
+    {
+      "label": "counterfeit native whole proof",
+      "status": "rejected"
+    },
+    {
+      "label": "invented native origin",
+      "status": "rejected"
+    }
+  ],
+  "reader_sha256": "e59d94101f2ad2c0c292a0172bc99ed9f7690d36b163b9f075c583029e8f120d",
+  "plan_sha256": "7c8a4890e41b4eb52b7e41b36767557347751551dfa6c9e22507c74b6f8621c3",
+  "audit_sha256": "f87d64db2e695654e1686c893ae65dc77bbb2483e7674d5fd7dee7a11c81b944"
+}

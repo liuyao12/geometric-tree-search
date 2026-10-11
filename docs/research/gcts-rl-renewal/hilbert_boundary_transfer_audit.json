@@ -1,0 +1,815 @@
+{
+  "status": "passed",
+  "version": "hilbert-boundary-transfer-audit-1",
+  "plan_sha256": "7c8a4890e41b4eb52b7e41b36767557347751551dfa6c9e22507c74b6f8621c3",
+  "production_outcome": "complete",
+  "observations": [
+    {
+      "tag": "transfer-delayed-common-short-level1-base-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "exhausted_finite_marked_region",
+      "certification": "no_proof",
+      "attempts": 442,
+      "model": {
+        "status": "passed",
+        "placements": 5036,
+        "full_mark_assignments": 3186630,
+        "compact_mark_assignments": 15034
+      },
+      "tree": {
+        "nodes": 443,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-short-level1-fixed-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "exhausted_finite_marked_region",
+      "certification": "no_proof",
+      "attempts": 442,
+      "model": {
+        "status": "passed",
+        "placements": 5036,
+        "full_mark_assignments": 3186630,
+        "compact_mark_assignments": 15034
+      },
+      "tree": {
+        "nodes": 443,
+        "events": 69,
+        "hints": 69
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-short-level1-learned-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "exhausted_finite_marked_region",
+      "certification": "no_proof",
+      "attempts": 442,
+      "model": {
+        "status": "passed",
+        "placements": 5036,
+        "full_mark_assignments": 3186630,
+        "compact_mark_assignments": 15034
+      },
+      "tree": {
+        "nodes": 443,
+        "events": 69,
+        "hints": 69
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-short-promoted-base-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 11812,
+        "full_mark_assignments": 7522862,
+        "compact_mark_assignments": 35362
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-short-promoted-fixed-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 11812,
+        "full_mark_assignments": 7522862,
+        "compact_mark_assignments": 35362
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 62,
+        "hints": 62
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-short-promoted-learned-expanded",
+      "case_id": "transfer-delayed-common-short",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 11812,
+        "full_mark_assignments": 7522862,
+        "compact_mark_assignments": 35362
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 77,
+        "hints": 77
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-level1-fixed-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "finite_marked_proof_region",
+      "certification": "accepted",
+      "attempts": 79,
+      "model": {
+        "status": "passed",
+        "placements": 6759,
+        "full_mark_assignments": 4258035,
+        "compact_mark_assignments": 20209
+      },
+      "tree": {
+        "nodes": 80,
+        "events": 12,
+        "hints": 12
+      },
+      "derived_receptors": [],
+      "native_binding": {
+        "origin": "fresh",
+        "query": 61,
+        "request_sha256": "2209f670d94c9791936a76b4f01a462ae4878b476365919a61d8c3f7738ffbdb"
+      }
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-level1-learned-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "finite_marked_proof_region",
+      "certification": "accepted",
+      "attempts": 79,
+      "model": {
+        "status": "passed",
+        "placements": 6759,
+        "full_mark_assignments": 4258035,
+        "compact_mark_assignments": 20209
+      },
+      "tree": {
+        "nodes": 80,
+        "events": 12,
+        "hints": 12
+      },
+      "derived_receptors": [],
+      "native_binding": {
+        "origin": "fresh",
+        "query": 61,
+        "request_sha256": "2209f670d94c9791936a76b4f01a462ae4878b476365919a61d8c3f7738ffbdb",
+        "independent_replayed_record_sha256": "18b24552c30fef688e4a561698474d32d7b386fd1467128b7c7aae265dc1d490"
+      }
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-promoted-base-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 15455,
+        "full_mark_assignments": 9736043,
+        "compact_mark_assignments": 46297
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-promoted-fixed-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 15455,
+        "full_mark_assignments": 9736043,
+        "compact_mark_assignments": 46297
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 69,
+        "hints": 69
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-promoted-learned-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "finite_marked_proof_region",
+      "certification": "accepted",
+      "attempts": 24,
+      "model": {
+        "status": "passed",
+        "placements": 15455,
+        "full_mark_assignments": 9736043,
+        "compact_mark_assignments": 46297
+      },
+      "tree": {
+        "nodes": 25,
+        "events": 6,
+        "hints": 6
+      },
+      "derived_receptors": [
+        {
+          "row": 5,
+          "name": "hilbert-promoted-289efa4bc5d127bd09632d92b4440f621a9b6958b30ad3855d2668a40c301af3",
+          "arguments": [
+            "P",
+            "Q",
+            "R",
+            "l",
+            "m"
+          ],
+          "inputs": [
+            4,
+            2
+          ],
+          "exact_recipient_receptor": true,
+          "input_derivations": [
+            {
+              "row": 4,
+              "rule": "mp",
+              "ancestor_rows": [
+                1,
+                3,
+                4
+              ]
+            },
+            {
+              "row": 2,
+              "rule": "axiom",
+              "ancestor_rows": [
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "native_binding": {
+        "origin": "fresh",
+        "query": 62,
+        "request_sha256": "4412556500dd67e7935c3b620be8fab208f9330897a5a08ab0c8e8971af1c272"
+      }
+    },
+    {
+      "tag": "transfer-delayed-common-sufficient-level1-base-expanded",
+      "case_id": "transfer-delayed-common-sufficient",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "finite_marked_proof_region",
+      "certification": "accepted",
+      "attempts": 79,
+      "model": {
+        "status": "passed",
+        "placements": 6759,
+        "full_mark_assignments": 4258035,
+        "compact_mark_assignments": 20209
+      },
+      "tree": {
+        "nodes": 80,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": {
+        "origin": "fresh",
+        "query": 61,
+        "request_sha256": "2209f670d94c9791936a76b4f01a462ae4878b476365919a61d8c3f7738ffbdb",
+        "independent_replayed_record_sha256": "18b24552c30fef688e4a561698474d32d7b386fd1467128b7c7aae265dc1d490"
+      }
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-level1-learned-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "exhausted_finite_marked_region",
+      "certification": "no_proof",
+      "attempts": 554,
+      "model": {
+        "status": "passed",
+        "placements": 6979,
+        "full_mark_assignments": 4508831,
+        "compact_mark_assignments": 20909
+      },
+      "tree": {
+        "nodes": 555,
+        "events": 91,
+        "hints": 91
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-promoted-base-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 15915,
+        "full_mark_assignments": 10260679,
+        "compact_mark_assignments": 47717
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-promoted-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 15915,
+        "full_mark_assignments": 10260679,
+        "compact_mark_assignments": 47717
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 61,
+        "hints": 61
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-promoted-learned-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 15915,
+        "full_mark_assignments": 10260679,
+        "compact_mark_assignments": 47717
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 78,
+        "hints": 78
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-level1-base-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "exhausted_finite_marked_region",
+      "certification": "no_proof",
+      "attempts": 554,
+      "model": {
+        "status": "passed",
+        "placements": 6979,
+        "full_mark_assignments": 4508831,
+        "compact_mark_assignments": 20909
+      },
+      "tree": {
+        "nodes": 555,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-short-level1-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-short",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "exhausted_finite_marked_region",
+      "certification": "no_proof",
+      "attempts": 554,
+      "model": {
+        "status": "passed",
+        "placements": 6979,
+        "full_mark_assignments": 4508831,
+        "compact_mark_assignments": 20909
+      },
+      "tree": {
+        "nodes": 555,
+        "events": 101,
+        "hints": 101
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-promoted-base-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "promoted",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 20092,
+        "full_mark_assignments": 12834938,
+        "compact_mark_assignments": 60310
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-promoted-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "promoted",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 20092,
+        "full_mark_assignments": 12834938,
+        "compact_mark_assignments": 60310
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 63,
+        "hints": 63
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-promoted-learned-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "promoted",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "finite_marked_proof_region",
+      "certification": "accepted",
+      "attempts": 40,
+      "model": {
+        "status": "passed",
+        "placements": 20092,
+        "full_mark_assignments": 12834938,
+        "compact_mark_assignments": 60310
+      },
+      "tree": {
+        "nodes": 41,
+        "events": 9,
+        "hints": 9
+      },
+      "derived_receptors": [
+        {
+          "row": 6,
+          "name": "hilbert-promoted-d7c9a45c2a04b55b11ce0c576005ba8760029e751a94007c8cee58c831b66fac",
+          "arguments": [
+            "P",
+            "Q",
+            "R",
+            "m",
+            "l"
+          ],
+          "inputs": [
+            4,
+            5
+          ],
+          "exact_recipient_receptor": true,
+          "input_derivations": [
+            {
+              "row": 4,
+              "rule": "mp",
+              "ancestor_rows": [
+                2,
+                3,
+                4
+              ]
+            },
+            {
+              "row": 5,
+              "rule": "mp",
+              "ancestor_rows": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            }
+          ]
+        }
+      ],
+      "native_binding": {
+        "origin": "fresh",
+        "query": 63,
+        "request_sha256": "add4f941ad10afecfc84963c100ca18b6f71d544e4115f2b79b9a481f9f614a2"
+      }
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-level1-base-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "level1",
+      "mode": "base",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 9092,
+        "full_mark_assignments": 5862210,
+        "compact_mark_assignments": 27310
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 0,
+        "hints": 0
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-level1-fixed-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "level1",
+      "mode": "fixed",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 9092,
+        "full_mark_assignments": 5862210,
+        "compact_mark_assignments": 27310
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 119,
+        "hints": 119
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    },
+    {
+      "tag": "transfer-coupled-reverse-sufficient-level1-learned-expanded",
+      "case_id": "transfer-coupled-reverse-sufficient",
+      "language": "level1",
+      "mode": "learned",
+      "feature_semantics": "expanded-word",
+      "status": "unknown_search_budget",
+      "certification": "no_proof",
+      "attempts": 600,
+      "model": {
+        "status": "passed",
+        "placements": 9092,
+        "full_mark_assignments": 5862210,
+        "compact_mark_assignments": 27310
+      },
+      "tree": {
+        "nodes": 601,
+        "events": 100,
+        "hints": 100
+      },
+      "derived_receptors": [],
+      "native_binding": null
+    }
+  ],
+  "complete_models": 8,
+  "bindings": 48,
+  "base_interfaces": 28,
+  "promoted_interfaces": 76,
+  "complete_guard_queries": 61,
+  "fresh_native_queries": 64,
+  "fresh_native_micro_steps": 47577686424,
+  "fresh_native_production_seconds": 347.707261127,
+  "native_budget_overshoots": [],
+  "fresh_native_replay_seconds": 349.48987525000024,
+  "audit_only_logical_crosscheck_seconds": 0.06749183100014022,
+  "native_setup_seconds": 0.5642645000000002,
+  "prior_input_binding_seconds": 8.851044708,
+  "prior_cost_provenance": {
+    "library_native_queries": 77,
+    "library_native_production_seconds": 1901.8498027470002,
+    "library_native_micro_steps": 261070027826,
+    "source_promotion_native_seconds": 31.310553125,
+    "source_promotion_replay_seconds": 33.958145583,
+    "inherited_policy_discovery_and_matching_seconds": 192.696318209,
+    "inherited_policy_training_seconds": 91.71764754200001,
+    "inherited_policy_full_pilot_seconds": 4558.422118125,
+    "inherited_policy_full_audit_seconds": 2224.253906875,
+    "inherited_policy_episodes": 12,
+    "scope": "Inherited stages are disclosed separately; their aggregate and component clocks overlap and must not be summed as disjoint cold costs. No new donor discovery, receptor admission or policy training is performed."
+  },
+  "native_observation_origins": {
+    "fresh": 5
+  },
+  "prior_full_replay_binding": {
+    "family_ledger_sha256": "376e11974ccfefb4e9fb41fda056f4e97bbbefb385c8bd1616a6ccdda78bb26b",
+    "family_audit_sha256": "d21b31af5331453f21028217317322156900d3ef511bdfefff5e92b2161a55d6",
+    "family_native_queries": 142,
+    "family_native_micro_steps": 329196372761,
+    "family_native_replay_seconds": 2411.9622285859996,
+    "control_ledger_sha256": "c4f5b5359f45b70c29814a82de08dd1a912d721419e8a20b1ee88f1caf655dff",
+    "control_audit_sha256": "311d8e5cd20bcfea43c6eb03bf59db361ddad7a4e6648e882a6be013eaae36fe",
+    "control_native_queries": 2,
+    "control_native_micro_steps": 9595090328,
+    "control_native_replay_seconds": 71.19155512399999
+  },
+  "removed_I2_countermodels": {
+    "delayed-common": {
+      "status": "passed",
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "constants": {
+        "P": 0,
+        "Q": 1,
+        "R": 2,
+        "l": 3,
+        "m": 4
+      },
+      "Point": [
+        0,
+        1,
+        2
+      ],
+      "Line": [
+        3,
+        4
+      ],
+      "Incident": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "axiom_values": {
+        "I.2-uniqueness": false,
+        "readiness": true,
+        "common-from-readiness": true,
+        "extra-incidence": true
+      },
+      "target": false,
+      "scope": "Audit-only removed-I.2 interpretation; no negative search or altered inventory."
+    },
+    "coupled-reverse": {
+      "status": "passed",
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "constants": {
+        "P": 0,
+        "Q": 1,
+        "R": 2,
+        "l": 3,
+        "m": 4
+      },
+      "Point": [
+        0,
+        1,
+        2
+      ],
+      "Line": [
+        3,
+        4
+      ],
+      "Incident": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "axiom_values": {
+        "I.2-uniqueness": false,
+        "readiness": true,
+        "common-from-readiness": true,
+        "incidence-from-common": true
+      },
+      "target": false,
+      "scope": "Audit-only removed-I.2 interpretation; no negative search or altered inventory."
+    }
+  },
+  "seconds": 720.89069925,
+  "nodes": 11113,
+  "events": 998,
+  "hints": 998
+}

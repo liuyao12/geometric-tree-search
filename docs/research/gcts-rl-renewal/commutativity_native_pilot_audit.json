@@ -1,0 +1,153 @@
+{
+  "status": "passed_complete_frozen_eight_native_pilot_replay",
+  "observations": [
+    {
+      "query": 0,
+      "definition_name": "commutativityReceptoreed94566a74e4da295f66b7f2e0ed6864d983bc83d0cd22a59074d220dc8f7b7",
+      "request_sha256": "a813bbfefa1a97a4cbb5dfab1f927bdfa1caea5789a086de84caf7ad1b15ff7f",
+      "stratum": [
+        "conditional-reflexivity",
+        "none"
+      ],
+      "status": "accepted",
+      "micro_steps": 310343153,
+      "physical_steps": 4138622423364,
+      "micro_fnv64": "10026298589505329144",
+      "seconds": 2.33711,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 1,
+      "definition_name": "commutativityReceptorfb0733fda63792251697334901f0764b4ba5b9e97030e0e8bf5a5a554385c82f",
+      "request_sha256": "13a75d1413ca77f307bc858ab3dc28f4fd6a7d2fa87af08670757135409e7ff9",
+      "stratum": [
+        "conditional-rewrite",
+        "assumption"
+      ],
+      "status": "accepted",
+      "micro_steps": 5618341514,
+      "physical_steps": 88916992042528,
+      "micro_fnv64": "16826828522865953835",
+      "seconds": 41.1512,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 2,
+      "definition_name": "commutativityReceptor77152f26a507c116628e0dad7fb948bff44361ade9f0266c9505ebf6e713f154",
+      "request_sha256": "e232aa2ae66358dfd7e8c53b6b40b68c08d210d8b47cc9553400f0a3ccbfd6ec",
+      "stratum": [
+        "conditional-rewrite",
+        "axiom"
+      ],
+      "status": "accepted",
+      "micro_steps": 2968251337,
+      "physical_steps": 47221883194500,
+      "micro_fnv64": "1337525942087936740",
+      "seconds": 21.5757,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 3,
+      "definition_name": "commutativityReceptorbf58ee526baae84d3a9856739d9ebb246e6123046433f0270053cbf8a1f59d93",
+      "request_sha256": "35525f8bf80810afcb815a6515043b990cf5b502acca3a8ba52de969039e6a05",
+      "stratum": [
+        "conditional-rewrite",
+        "discovered-lemma"
+      ],
+      "status": "accepted",
+      "micro_steps": 2970799347,
+      "physical_steps": 47134788451890,
+      "micro_fnv64": "16987616724583700795",
+      "seconds": 21.6306,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 4,
+      "definition_name": "commutativityReceptor7b5130ffe9248d2f5d577b3abbd6d4de28fc0a5ec05b9a1137c48eb7d79ed58b",
+      "request_sha256": "f48aabca40c86328d5b0c95d8c31b1796465af6e1e220c82d622d6f9dde7e2bc",
+      "stratum": [
+        "induction",
+        "none"
+      ],
+      "status": "accepted",
+      "micro_steps": 1832385800,
+      "physical_steps": 28096750169330,
+      "micro_fnv64": "17182365754634050287",
+      "seconds": 14.48,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 5,
+      "definition_name": "commutativityReceptor76fb1013f1e9ab1cbf7009caf1f9ba9e16057834a36ab28cd7f5d2203db407dd",
+      "request_sha256": "4b2d2e27e1eb34e05a68adac7bcf9a89c18865cded83a1244540ac57b3f60b15",
+      "stratum": [
+        "rewrite",
+        "axiom"
+      ],
+      "status": "accepted",
+      "micro_steps": 1012936177,
+      "physical_steps": 15537554469398,
+      "micro_fnv64": "6535216295661652296",
+      "seconds": 7.4099,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 6,
+      "definition_name": "commutativityReceptorf195db1c821888afb4f3be86cc4c5a104e166c106f738554a9345d0d0ddd792f",
+      "request_sha256": "83aff2fb7a5b62fe96fe6212034ca81157018b8c1d0ec75596d349852e324d13",
+      "stratum": [
+        "rewrite",
+        "discovered-lemma"
+      ],
+      "status": "accepted",
+      "micro_steps": 1035281944,
+      "physical_steps": 15989177579160,
+      "micro_fnv64": "8195782269638902905",
+      "seconds": 7.4083,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    },
+    {
+      "query": 7,
+      "definition_name": "searchedLeftSuccessor9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "request_sha256": "7a5be2049ad56f450ae8f812ef156d3804cdd7f73a656e9a98f74db325cb3b48",
+      "stratum": [
+        "transferred-searched-theorem",
+        "none"
+      ],
+      "status": "accepted",
+      "micro_steps": 14378785083,
+      "physical_steps": 475482567131030,
+      "micro_fnv64": "12078730600580438651",
+      "seconds": 104.068,
+      "all_input_output_matched": true,
+      "out_of_frame_bands": [],
+      "one_query_replay_overshoot_seconds": 0
+    }
+  ],
+  "micro_steps": 30127124355,
+  "native_admissions": 8,
+  "target_searches": 0,
+  "compile_and_audit_setup_seconds": 1.073579,
+  "seconds": 223.965301875,
+  "unknown_queries": 0,
+  "rejected_queries": 0,
+  "remaining_fresh_native_admissions": 85,
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "scope": "Every actual complete local-interface query independently replayed attrueparserstart88986, matching full requests, all input/output, micro/physical steps and FNV, including unknowns. Only acceptedreplayed exactinterfaces admitted; no commutativityproof/search, no93-requestbatch, all earlierunknowns/costs retained.",
+  "peak_rss_bytes": 271613952
+}

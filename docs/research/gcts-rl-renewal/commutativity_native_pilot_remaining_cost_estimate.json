@@ -1,0 +1,151 @@
+{
+  "status": "postpilot_nominal_stratum_extrapolation_only",
+  "remaining_fresh_native_requests": 85,
+  "accepted_fresh_native_requests": 8,
+  "exact_prior_accepted_request_reusable": 1,
+  "remaining_tree_steps": 32072374,
+  "nominal_remaining_native_micro_steps": 97288614167.39836,
+  "nominal_remaining_native_seconds": 706.295112116298,
+  "nominal_remaining_independent_replay_seconds": 707.5595474030974,
+  "nominal_combined_remaining_seconds": 1413.8546595193955,
+  "strata": [
+    {
+      "stratum": [
+        "conditional-reflexivity",
+        "none"
+      ],
+      "remaining_requests": 1,
+      "remaining_tree_steps": 123628,
+      "calibration_request_sha256": "a813bbfefa1a97a4cbb5dfab1f927bdfa1caea5789a086de84caf7ad1b15ff7f",
+      "calibration_tree_steps": 124628,
+      "calibration_native_steps": 310343153,
+      "calibration_native_seconds": 2.2626980420000002,
+      "calibration_replay_seconds": 2.33711,
+      "microsteps_per_tree_instruction": 2490.1559280418523,
+      "nominal_remaining_native_steps": 307852997.0719581,
+      "nominal_remaining_native_seconds": 2.244542426552428,
+      "nominal_remaining_replay_seconds": 2.3183573120005136
+    },
+    {
+      "stratum": [
+        "conditional-rewrite",
+        "assumption"
+      ],
+      "remaining_requests": 3,
+      "remaining_tree_steps": 3894548,
+      "calibration_request_sha256": "13a75d1413ca77f307bc858ab3dc28f4fd6a7d2fa87af08670757135409e7ff9",
+      "calibration_tree_steps": 1880886,
+      "calibration_native_steps": 5618341514,
+      "calibration_native_seconds": 41.16229575,
+      "calibration_replay_seconds": 41.1512,
+      "microsteps_per_tree_instruction": 2987.071791698168,
+      "nominal_remaining_native_steps": 11633294472.214518,
+      "nominal_remaining_native_seconds": 85.23033112510329,
+      "nominal_remaining_replay_seconds": 85.2073563509963
+    },
+    {
+      "stratum": [
+        "conditional-rewrite",
+        "axiom"
+      ],
+      "remaining_requests": 7,
+      "remaining_tree_steps": 5842072,
+      "calibration_request_sha256": "e232aa2ae66358dfd7e8c53b6b40b68c08d210d8b47cc9553400f0a3ccbfd6ec",
+      "calibration_tree_steps": 968488,
+      "calibration_native_steps": 2968251337,
+      "calibration_native_seconds": 21.682760917000003,
+      "calibration_replay_seconds": 21.5757,
+      "microsteps_per_tree_instruction": 3064.8302684184005,
+      "nominal_remaining_native_steps": 17904959095.879623,
+      "nominal_remaining_native_seconds": 130.79382546391906,
+      "nominal_remaining_replay_seconds": 130.14801716737847
+    },
+    {
+      "stratum": [
+        "conditional-rewrite",
+        "discovered-lemma"
+      ],
+      "remaining_requests": 7,
+      "remaining_tree_steps": 5949042,
+      "calibration_request_sha256": "35525f8bf80810afcb815a6515043b990cf5b502acca3a8ba52de969039e6a05",
+      "calibration_tree_steps": 982618,
+      "calibration_native_steps": 2970799347,
+      "calibration_native_seconds": 21.507738624999988,
+      "calibration_replay_seconds": 21.6306,
+      "microsteps_per_tree_instruction": 3023.3512382227887,
+      "nominal_remaining_native_steps": 17986043496.939377,
+      "nominal_remaining_native_seconds": 130.21381697175016,
+      "nominal_remaining_replay_seconds": 130.95765382396823
+    },
+    {
+      "stratum": [
+        "induction",
+        "none"
+      ],
+      "remaining_requests": 1,
+      "remaining_tree_steps": 589875,
+      "calibration_request_sha256": "f48aabca40c86328d5b0c95d8c31b1796465af6e1e220c82d622d6f9dde7e2bc",
+      "calibration_tree_steps": 635268,
+      "calibration_native_steps": 1832385800,
+      "calibration_native_seconds": 13.407752541000008,
+      "calibration_replay_seconds": 14.48,
+      "microsteps_per_tree_instruction": 2884.429563585762,
+      "nominal_remaining_native_steps": 1701452888.8201513,
+      "nominal_remaining_native_seconds": 12.449703164841264,
+      "nominal_remaining_replay_seconds": 13.445333308147113
+    },
+    {
+      "stratum": [
+        "rewrite",
+        "axiom"
+      ],
+      "remaining_requests": 33,
+      "remaining_tree_steps": 7770878,
+      "calibration_request_sha256": "4b2d2e27e1eb34e05a68adac7bcf9a89c18865cded83a1244540ac57b3f60b15",
+      "calibration_tree_steps": 334122,
+      "calibration_native_steps": 1012936177,
+      "calibration_native_seconds": 7.3110957080000105,
+      "calibration_replay_seconds": 7.4099,
+      "microsteps_per_tree_instruction": 3031.635680978804,
+      "nominal_remaining_native_steps": 23558471017.333206,
+      "nominal_remaining_native_seconds": 170.03858708253782,
+      "nominal_remaining_replay_seconds": 172.33653842668247
+    },
+    {
+      "stratum": [
+        "rewrite",
+        "discovered-lemma"
+      ],
+      "remaining_requests": 33,
+      "remaining_tree_steps": 7902331,
+      "calibration_request_sha256": "83aff2fb7a5b62fe96fe6212034ca81157018b8c1d0ec75596d349852e324d13",
+      "calibration_tree_steps": 338112,
+      "calibration_native_steps": 1035281944,
+      "calibration_native_seconds": 7.501489333999999,
+      "calibration_replay_seconds": 7.4083,
+      "microsteps_per_tree_instruction": 3061.949720802574,
+      "nominal_remaining_native_steps": 24196540199.139526,
+      "nominal_remaining_native_seconds": 175.32430588159406,
+      "nominal_remaining_replay_seconds": 173.14629101392438
+    },
+    {
+      "stratum": [
+        "transferred-searched-theorem",
+        "none"
+      ],
+      "remaining_requests": 0,
+      "remaining_tree_steps": 0,
+      "calibration_request_sha256": "7a5be2049ad56f450ae8f812ef156d3804cdd7f73a656e9a98f74db325cb3b48",
+      "calibration_tree_steps": 3443659,
+      "calibration_native_steps": 14378785083,
+      "calibration_native_seconds": 105.07650245800001,
+      "calibration_replay_seconds": 104.068,
+      "microsteps_per_tree_instruction": 4175.438126423087,
+      "nominal_remaining_native_steps": 0.0,
+      "nominal_remaining_native_seconds": 0.0,
+      "nominal_remaining_replay_seconds": 0.0
+    }
+  ],
+  "uncertainty": "One deterministic size winner perstratum, no random sample/confidence interval or rigorous upperbound. Nonlinear parser/heap/comparison behavior and shared-host throughput can change. Every85actualrequest needs complete native admission and exact independent replay. No newbatch executed.",
+  "recommendation": "Predeclare remaining85 exactrequests in ascending definitionname order as two deterministic chunks43+42; use unchanged audited262144geometry/palette,20Bmicrosteps/query,900s production cap perchunk checked between queries with onequery overshoot disclosed; independently replay each completedchunk before it enters inventory. Preserve all unknowns and stop admission/trust for any gap. Only after full94registry passes, freeze equal-inventory completegraph GCTS versus conforming clusterproposal controls, with ordinaryforward extraction separately labeled. This is a recommendation requiringparentphaseauthorization, not execution."
+}

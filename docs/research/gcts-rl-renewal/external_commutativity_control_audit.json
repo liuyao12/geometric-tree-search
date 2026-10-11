@@ -1,0 +1,128 @@
+{
+  "status": "passed_complete_result_source_input_replay_audit",
+  "binding": {
+    "status": "passed_exact_instance_union_inputs_native_provenance",
+    "seconds": 2.0348085,
+    "plan_sha256": "eff7c468dd3b068962b387b4344426d33e05e65b586edcbf4e6df18f91280ce2",
+    "native_bindings": [
+      {
+        "request_sha256": "fb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+        "input_sha256": "c8ec58866ffe316496d32dc4b581909827d7721b4e86549b725d5b1106c3f29b",
+        "output_sha256": "32b39adfb308efb2b03298e81b558ada55338b085b0e0e7b8ba6a3bd2fa5a48f",
+        "micro_steps": 4026598098,
+        "native_production_seconds": 29.363403041999995,
+        "native_audit_seconds": 29.1032,
+        "native_authority_sha256": "026800bdbbfbd9bc6ae4ea2ea6d2b0ac467d9c88563995afce631bf2426166b6"
+      },
+      {
+        "request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+        "input_sha256": "730099b14fdced76e2640e2e68090d38da2057ad5feee29f0bdbdb01a88030e5",
+        "output_sha256": "79ea60a3adeb0e6e3fc655b4624319e024339fd41445c8104b6de38dccc7b493",
+        "micro_steps": 13499468074,
+        "native_production_seconds": 108.779356917,
+        "native_audit_seconds": 96.3125,
+        "native_authority_sha256": "924c2b97ee00d1bcbbe9d09aa7936d57f864190d74a5985b859d8b9aacfde820"
+      }
+    ],
+    "target_variable_inventory": [
+      {
+        "lane": "no-transfer",
+        "variables": [
+          "x",
+          "y"
+        ]
+      },
+      {
+        "lane": "zero-left",
+        "variables": [
+          "x",
+          "y"
+        ]
+      },
+      {
+        "lane": "two-lemmas",
+        "variables": [
+          "x",
+          "y"
+        ]
+      }
+    ],
+    "instances": 5,
+    "unadmitted_interface_inputs": 0
+  },
+  "producer_status": "complete_six_checked_targets_pending_final_audit",
+  "completed_setup": 2,
+  "completed_targets": 6,
+  "checked_replays": [
+    {
+      "kind": "setup-0",
+      "stem": "setup-0",
+      "steps": 19,
+      "used_lemma_inputs": [],
+      "output_sha256": "6f2e6d3905b573ac7201624a9511cd0e9eb79f1e53fcbc433f680eb18536347e"
+    },
+    {
+      "kind": "setup-1",
+      "stem": "setup-1",
+      "steps": 18,
+      "used_lemma_inputs": [],
+      "output_sha256": "d4b18d1a9ec68605fb2febb88708aabc3d6a2f41fdbd150a1822d322f642c500"
+    },
+    {
+      "kind": "theory",
+      "stem": "commutativity-theory-r1",
+      "steps": 36,
+      "used_lemma_inputs": [],
+      "output_sha256": "45b720017dbac6c4efb2002b15ab33d018a90f319a068c743b02967b76f2e553"
+    },
+    {
+      "kind": "zero-left",
+      "stem": "commutativity-zero-left-r1",
+      "steps": 31,
+      "used_lemma_inputs": [
+        "l0"
+      ],
+      "output_sha256": "2b74531d3056bbc46b4142c24dcf2943c9207caafee728ab4d4c1f0f521b1314"
+    },
+    {
+      "kind": "both",
+      "stem": "commutativity-both-r1",
+      "steps": 26,
+      "used_lemma_inputs": [
+        "l0",
+        "l1"
+      ],
+      "output_sha256": "f5d21c143f74d4c453c1c292c6a4f9496b66d691e662dcd0d226cee70b677457"
+    },
+    {
+      "kind": "both",
+      "stem": "commutativity-both-r2",
+      "steps": 26,
+      "used_lemma_inputs": [
+        "l0",
+        "l1"
+      ],
+      "output_sha256": "b421ffeb462237bcca643753adcf72d855d24fe110b276905f4db2b90733039c"
+    },
+    {
+      "kind": "zero-left",
+      "stem": "commutativity-zero-left-r2",
+      "steps": 31,
+      "used_lemma_inputs": [
+        "l0"
+      ],
+      "output_sha256": "436560e33c518304dbe975c357ccd20b70c6099fd23aa57d9a0d824f5d32984b"
+    },
+    {
+      "kind": "theory",
+      "stem": "commutativity-theory-r2",
+      "steps": 36,
+      "used_lemma_inputs": [],
+      "output_sha256": "05d30bbe3c77939c884df138bc5016c31a82b8f3e0923125853e143e09eb9ecd"
+    }
+  ],
+  "unknowns": [],
+  "unexecuted": [],
+  "seconds": 2.565205625,
+  "scope": "Independent full serialized certificate replay under unchanged external checkers; no new native Wang acceptance. Unknowns remain unknown and unexecuted schedules do not count as searches."
+}
