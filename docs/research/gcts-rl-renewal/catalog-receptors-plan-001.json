@@ -1,0 +1,206 @@
+{
+  "version": "catalog-receptors-plan-001",
+  "status": "predeclared",
+  "created_utc": "2026-10-11T11:15:47.920386+00:00",
+  "published_base": "752a17c42e6a064750bbf98d2d44b4f029d25efc",
+  "input_reader": "docs/research/gcts-rl-renewal/first-order-families-reader-001.json",
+  "prior_native": "docs/research/gcts-rl-renewal/first-order-families-native-001.json.gz",
+  "prior_audit": "docs/research/gcts-rl-renewal/first-order-families-audit-001.json",
+  "cases": [
+    "two-equalities-five",
+    "two-equalities-nine",
+    "three-equalities-seven",
+    "quantifier-equality-five"
+  ],
+  "lanes": {
+    "word-base": {
+      "representation": "word",
+      "mode": "base",
+      "feature_semantics": "physical"
+    },
+    "compact-base": {
+      "representation": "compact",
+      "mode": "base",
+      "feature_semantics": "physical"
+    },
+    "word-learned": {
+      "representation": "word",
+      "mode": "learned",
+      "feature_semantics": "physical"
+    },
+    "compact-expanded": {
+      "representation": "compact",
+      "mode": "learned",
+      "feature_semantics": "expanded-word"
+    },
+    "compact-physical": {
+      "representation": "compact",
+      "mode": "learned",
+      "feature_semantics": "physical"
+    }
+  },
+  "repetitions": [
+    1,
+    2
+  ],
+  "schedules": {
+    "1": [
+      "word-base",
+      "compact-base",
+      "word-learned",
+      "compact-expanded",
+      "compact-physical"
+    ],
+    "2": [
+      "compact-physical",
+      "compact-expanded",
+      "word-learned",
+      "compact-base",
+      "word-base"
+    ]
+  },
+  "seed": 68000,
+  "weights": [
+    0.08369591640330343,
+    0.32087673760981406,
+    0.3725408993356053,
+    0.0017991124824526783,
+    -0.04857183708459727,
+    0.09966264113455951,
+    0.12427667535659201,
+    0.4360516896718667,
+    0.0073986385637367005,
+    -0.11940479670205117
+  ],
+  "limits": {
+    "attempts": 2000,
+    "seconds": 60,
+    "proposal_limit": 24,
+    "proposal_checks": 2048
+  },
+  "native_steps": 5000000000,
+  "sources": {
+    "docs/research/gcts-rl-renewal/boundary-reuse.js": "4a8b089ca4a39ce00632c4b1c4b2e230e9d863b6b77fe773fb159ce22ee05f26",
+    "research/gcts-rl-renewal/audit_boundary_reuse.py": "6c962843f70a8c2e13063aed35b8382895efd89425789f142706902b4913a062",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_conditional_failure_markings.py": "7f3adba53fa74d503680eff30b2cabdbdaed74fe9c61cf59751c82438e9e197b",
+    "research/gcts-rl-renewal/audit_conditional_pilot.py": "0b6bf146aac3ff96ec6d27edc18304cda8f178377f87bf2d2851b3178ad32615",
+    "research/gcts-rl-renewal/audit_logical_wang_clusters.py": "4a5af61875eb4f9b4edac9b08f66b925885d7ad8ef4135313bd95376e6f261ea",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_prefix_failure_markings.py": "b48cb31dd84529a881706f00111192e8adb9e92d9dfe585bfdeec2ce2576ffb6",
+    "research/gcts-rl-renewal/audit_proof_boundary.py": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+    "research/gcts-rl-renewal/audit_proof_compaction.py": "5d471dadabf93aa3e596f33c22aedd7d401c58a71c00f11ea8f765041207b41b",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_semantic_proofs.py": "c2e97f1f9dfe70ea95658bdad54e16f7f6aeac66927f495b5ed9008236ffcbe3",
+    "research/gcts-rl-renewal/audit_serialized_kernel.py": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c",
+    "research/gcts-rl-renewal/audit_tape_kernel.py": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/boundary_reuse_constraints.py": "8f0b49b31e354818e9d302a15534e124ecfb4ac98a21369dbf822af805ab5351",
+    "research/gcts-rl-renewal/boundary_reuse_worker.py": "1a076934e3e5c9308febb9ce43a1a6d6705b0337b340f05625256574ee3d9fcc",
+    "research/gcts-rl-renewal/certificate_boundary_cases.py": "05dcffd13d8d881b03b154bdf6b4d40a158efe62f43ef409312f09b4888df1f6",
+    "research/gcts-rl-renewal/certificate_boundary_search.py": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+    "research/gcts-rl-renewal/computation_blocks.py": "9c9eefa3b523be53e35ecdf271eeedd23294012eef319757b6c00534ea9eef12",
+    "research/gcts-rl-renewal/conditional_failure_markings.py": "89aa25dba1411b0411781700b9a7b4dabe4f2dd7323924ee0a510e898eda67c9",
+    "research/gcts-rl-renewal/conditional_provenance_001/audit_conditional_failure_markings.py": "8f5fa6a1a6f75b9a11ab936eadc245439ad000595f349aa50c7875e5a30bf3b5",
+    "research/gcts-rl-renewal/conditional_provenance_001/audit_conditional_pilot.py": "988296506b716034a1dff88066a507f5141a2b851916897c160843d92c8b02af",
+    "research/gcts-rl-renewal/export_boundary_reuse.py": "32ae2e8bfa1a48a8d6967d13c2785138212b547c6c1804ad0b823cc002f703c7",
+    "research/gcts-rl-renewal/export_conditional_pilot.py": "3ac9a0affd21c85f076a86eefdf17755d48d2591035ca16917ef189f064831e4",
+    "research/gcts-rl-renewal/logic.py": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+    "research/gcts-rl-renewal/micro_cert.py": "6c5f34e4a8c18a1242bf2be84fe44670026c50004afac8b8fd5168557a984eef",
+    "research/gcts-rl-renewal/native_inference_inventory.py": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+    "research/gcts-rl-renewal/native_inventory_cases.py": "2ecf6651ff20450e40984e52d66cba11dfeecb4093a035ea987cd374c25c4539",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/native_receptor_cases.py": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+    "research/gcts-rl-renewal/native_receptor_points.py": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+    "research/gcts-rl-renewal/prefix_failure_differential.py": "42662cdcba382aaf24240217ecbb4be443f535215df75ea9760c252a0087a86e",
+    "research/gcts-rl-renewal/prefix_failure_markings.py": "8c3879a7daba33cf8613fe4bdb8aac359b40ece0d22d08810cb49eb6d3d9b790",
+    "research/gcts-rl-renewal/proof_boundary.py": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+    "research/gcts-rl-renewal/run_boundary_reuse.py": "15be1047bf950d098b30a166310ff275f3dd32c8c61cb28352b32b2fca90848e",
+    "research/gcts-rl-renewal/run_conditional_failure_pilot.py": "732b5ef400aa0ab91027d9c728dff31aec8010b136e790f6e13896dbc3107ab8",
+    "research/gcts-rl-renewal/semantic_inventory_cases.py": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+    "research/gcts-rl-renewal/semantic_inventory_guidance.py": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+    "research/gcts-rl-renewal/semantic_inventory_oracle.py": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+    "research/gcts-rl-renewal/semantic_inventory_policy.py": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+    "research/gcts-rl-renewal/semantic_inventory_search.py": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+    "research/gcts-rl-renewal/semantic_inventory_worker.py": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+    "research/gcts-rl-renewal/semantic_lemma_inventory.py": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+    "research/gcts-rl-renewal/semantic_point_smt.py": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+    "research/gcts-rl-renewal/semantic_receptor_points.py": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+    "research/gcts-rl-renewal/tape_binary.py": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+    "research/gcts-rl-renewal/tape_tree_machine.py": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+    "research/gcts-rl-renewal/test_boundary_reuse.py": "bd444224959e254edf2e8e3d4eb6f4f932aad976e6608a895fe368e3a85b8662",
+    "research/gcts-rl-renewal/test_boundary_reuse_reader.js": "c6f0283abb312b2a2948d17341902acb809fa9ecc57d5fc960a464d758b7abbf",
+    "research/gcts-rl-renewal/test_conditional_failure_markings.py": "19af2ab778eb1d2bed496a2b0af9714259494f5a1ee9e94891f239e144c265d7",
+    "research/gcts-rl-renewal/test_conditional_provenance.py": "122d09eb1973d8c7adcd2490bcc47a8659ae2593bcc5b88c989738edf85f505c",
+    "research/gcts-rl-renewal/tree_machine.py": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    "research/gcts-rl-renewal/first_order_receptors.py": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+    "research/gcts-rl-renewal/run_first_order.py": "c1e4f707aa47c49a90011e806db1d396139d260f9a56bf42faa7fff2f7dc5f6b",
+    "research/gcts-rl-renewal/test_first_order.py": "f1b9a7241fd1261362a932da5a3987f9ddf5660bd2d3cdb6c51be3f971fe2b6d",
+    "research/gcts-rl-renewal/audit_first_order.py": "43ffc7e5e45ac24c831bdfecf53cfcc80ec1198a2a06a1b2809a0e566c335daf",
+    "research/gcts-rl-renewal/first_order_worker.py": "25f3d8352e5a2037e42e16700da6cc0c6e46aefb6e353e3da0486a4b3182d5aa",
+    "research/gcts-rl-renewal/first_order_cases.py": "ab16dd5558d2d0d00ef8c205694b6548d940bd931f8d3abd4edcc1c3bb256451",
+    "research/gcts-rl-renewal/export_first_order.py": "6d8744d406972dbf0bd89bac93153e829126a13952eae65ed85f856e7ccd16c5",
+    "research/gcts-rl-renewal/test_first_order_reader.js": "32b3e3d30b726f3866c0d15e195fef920c08996b446944232001a78982193667",
+    "docs/research/gcts-rl-renewal/first-order.js": "386c7aa5bd6658f1c99bb7a467c5713d60f0a30d3da750c80c06e9458c4a108a",
+    "research/gcts-rl-renewal/first_order_families.py": "4f3a58bed036ecac7e342fb794ef926fe5d5e0616e5c3a6a373d850c7ea131b1",
+    "research/gcts-rl-renewal/first_order_family_points.py": "54c87bd5886c40cffd5ee8b5235c5f74ef124a5c03693c68bd0b7c193187eb3d",
+    "research/gcts-rl-renewal/first_order_family_cases.py": "b6531e9a67cf4376113dbbdeab82c4b4321e278950dff9a10d6fbfd80302d94f",
+    "research/gcts-rl-renewal/first_order_family_worker.py": "41c05b8320ff3666b206ac32be19ca26f369a5826f7a0a55fe379d766dc01a02",
+    "research/gcts-rl-renewal/run_first_order_families.py": "d4af5c362ef5bb1366314218179dbe987585f57d1a601b630e28e03f5a0e2b6e",
+    "research/gcts-rl-renewal/audit_first_order_families.py": "ea0e915f7b6c37186df6294f27827608bef8cbe1bd49adb9162c7f2f9cc7fcc7",
+    "research/gcts-rl-renewal/test_first_order_families.py": "71dda2008233688b1f083a2884c64cff4d550600549f12201e5f57a531d15516",
+    "research/gcts-rl-renewal/export_first_order_families.py": "8d4eb20fff8a6b58b0b7c46b00407e2f036daeecc9c626d04f22332cd0a52216",
+    "research/gcts-rl-renewal/test_first_order_families_reader.js": "f5d6d2ca362fc63629a0b4996eecc668b20cf177bf1b5d90f58ebf4ed736aabb",
+    "docs/research/gcts-rl-renewal/first-order-families.js": "011e7f6976b4f522989366a0a0c0118d763f8ea00cdbb70d02a2c1d8e2c9fd8a",
+    "research/gcts-rl-renewal/catalog_receptor_points.py": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+    "research/gcts-rl-renewal/catalog_receptor_search.py": "85cd20942159ad8459a1d30ecd3b8bcec45d5826f04bd61d74df307535b00df6",
+    "research/gcts-rl-renewal/catalog_receptor_worker.py": "0f17cc57f822585028fbdf9a161f6b441a29be1b8b4553693d05df00099c963e",
+    "research/gcts-rl-renewal/audit_catalog_receptors.py": "8eeaf74087b962dd144587589ae9d167e15b843a70d82dcc56af0cd506aa951f",
+    "research/gcts-rl-renewal/run_catalog_receptors.py": "ba936e62caf213c2252b57a842a0309eff1a0c9ae02547c65841ac0a5a74a5a3",
+    "research/gcts-rl-renewal/test_catalog_receptors.py": "982cb1906a237da0d38842a9a33ecab6a2b16d011d426d57fa0b33c31b7f00a5"
+  },
+  "data_dependencies": {
+    "docs/research/gcts-rl-renewal/first-order-families-reader-001.json": {
+      "bytes": 4531912,
+      "sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391"
+    },
+    "docs/research/gcts-rl-renewal/first-order-families-native-001.json.gz": {
+      "bytes": 374348,
+      "sha256": "28ffc7e9a8ba4af58b01567c8bae31b39f67515d7e557f9f9a1f874355d3802d"
+    },
+    "docs/research/gcts-rl-renewal/first-order-families-audit-001.json": {
+      "bytes": 1401,
+      "sha256": "c943516168a939897d68c874233b4cdddb52d3c23f746ddd96d22fd25bda9666"
+    },
+    "docs/research/gcts-rl-renewal/first-order-families-plan-001.json": {
+      "bytes": 31201,
+      "sha256": "ed6c20babf0cd931505658536e486ef5d662e2e9fb1baf2ce5bb74bfeda83524"
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz": {
+      "bytes": 1114802,
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-001.json": {
+      "bytes": 1494417,
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-machine-001.bin.gz": {
+      "bytes": 7250851,
+      "sha256": "7e695d5d357a290cae02d8e09cd8c49f964b1a10680d0a7b9d4a2a61748eada3"
+    }
+  },
+  "reuse": "Frozen Notebook 68 theories, complete admitted syntax/ground families and its freshly trained weights are reused. No new training or held-out generalization claim. Native whole proof checks and all search workers are fresh; current-study exact whole acceptance cache is disclosed.",
+  "correspondence": "Every entire canonical word plus terminator is replaced by a sequential exact catalog ID. Dictionary injectivity and all original field writers are independently reconstructed. Positive occupancy, roots, mode/source assignments, all candidate identities and metadata are unchanged. This preserves pairwise conflicts and hence arbitrary partial-state legality, complete graph domains and the finite certificate language.",
+  "feature_controls": "word-learned and compact-expanded have identical virtual full-word new-mark features. compact-physical deliberately uses fewer physical marks with the same reused weights; it is a changed-policy representation diagnostic, not a matched search-speed lane.",
+  "budgets": "Soft wall-clock limit checked before placements; proposal and graph operations may overrun. Attempt cap and same traversal prefix give the paired correspondence control. Counterbalanced repetitions are timing observations, not independent training samples.",
+  "costs": "Search, fresh setup including catalog creation, model reporting/serialization, full worker wall time, peak RSS, whole native checking and independent audit are reported. Prior discovery/training/admission costs are disclosed as reuse, never silently free.",
+  "gaps": [
+    "Finite catalog-specific scalar values are above the unchanged primitive native palette; no occupancy-preserving primitive-square quotient or universal completeness claim.",
+    "No new induction, Hilbert incidence, external prover comparison or plane-tiling result in this representation experiment.",
+    "No old failure restrictions, target proof sequence or native oracle is used to choose search moves."
+  ]
+}

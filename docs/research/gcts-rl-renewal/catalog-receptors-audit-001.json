@@ -1,0 +1,539 @@
+{
+  "status": "passed",
+  "version": "catalog-receptors-audit-001",
+  "cases": [
+    {
+      "id": "two-equalities-five",
+      "bindings": {
+        "word": {
+          "status": "passed",
+          "placements": 5956
+        },
+        "compact": {
+          "status": "passed",
+          "placements": 5956,
+          "full_mark_assignments": 1322140,
+          "compact_mark_assignments": 18157,
+          "formula_values": 31,
+          "command_values": 1350
+        }
+      },
+      "observations": [
+        {
+          "lane": "word-base",
+          "repetition": 1,
+          "nodes": 348,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 1,
+          "nodes": 348,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 1,
+          "nodes": 557,
+          "events": 38,
+          "hints": 38
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 1,
+          "nodes": 557,
+          "events": 38,
+          "hints": 38
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 1,
+          "nodes": 26,
+          "events": 3,
+          "hints": 3
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 2,
+          "nodes": 26,
+          "events": 3,
+          "hints": 3
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 2,
+          "nodes": 557,
+          "events": 38,
+          "hints": 38
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 2,
+          "nodes": 557,
+          "events": 38,
+          "hints": 38
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 2,
+          "nodes": 348,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-base",
+          "repetition": 2,
+          "nodes": 348,
+          "events": 0,
+          "hints": 0
+        }
+      ],
+      "pairs": [
+        {
+          "repetition": 1,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 348,
+          "word_nodes": 348,
+          "compact_nodes": 348,
+          "both_terminal": true
+        },
+        {
+          "repetition": 1,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 557,
+          "word_nodes": 557,
+          "compact_nodes": 557,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 348,
+          "word_nodes": 348,
+          "compact_nodes": 348,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 557,
+          "word_nodes": 557,
+          "compact_nodes": 557,
+          "both_terminal": true
+        }
+      ]
+    },
+    {
+      "id": "two-equalities-nine",
+      "bindings": {
+        "word": {
+          "status": "passed",
+          "placements": 18576
+        },
+        "compact": {
+          "status": "passed",
+          "placements": 18576,
+          "full_mark_assignments": 4043792,
+          "compact_mark_assignments": 60221,
+          "formula_values": 31,
+          "command_values": 2598
+        }
+      },
+      "observations": [
+        {
+          "lane": "word-base",
+          "repetition": 1,
+          "nodes": 367,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 1,
+          "nodes": 367,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 1,
+          "nodes": 577,
+          "events": 42,
+          "hints": 42
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 1,
+          "nodes": 577,
+          "events": 42,
+          "hints": 42
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 1,
+          "nodes": 46,
+          "events": 9,
+          "hints": 9
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 2,
+          "nodes": 46,
+          "events": 9,
+          "hints": 9
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 2,
+          "nodes": 577,
+          "events": 42,
+          "hints": 42
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 2,
+          "nodes": 577,
+          "events": 42,
+          "hints": 42
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 2,
+          "nodes": 367,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-base",
+          "repetition": 2,
+          "nodes": 367,
+          "events": 0,
+          "hints": 0
+        }
+      ],
+      "pairs": [
+        {
+          "repetition": 1,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 367,
+          "word_nodes": 367,
+          "compact_nodes": 367,
+          "both_terminal": true
+        },
+        {
+          "repetition": 1,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 577,
+          "word_nodes": 577,
+          "compact_nodes": 577,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 367,
+          "word_nodes": 367,
+          "compact_nodes": 367,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 577,
+          "word_nodes": 577,
+          "compact_nodes": 577,
+          "both_terminal": true
+        }
+      ]
+    },
+    {
+      "id": "three-equalities-seven",
+      "bindings": {
+        "word": {
+          "status": "passed",
+          "placements": 38407
+        },
+        "compact": {
+          "status": "passed",
+          "placements": 38407,
+          "full_mark_assignments": 9465178,
+          "compact_mark_assignments": 118515,
+          "formula_values": 61,
+          "command_values": 6254
+        }
+      },
+      "observations": [
+        {
+          "lane": "word-base",
+          "repetition": 1,
+          "nodes": 184,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 1,
+          "nodes": 184,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 1,
+          "nodes": 1335,
+          "events": 72,
+          "hints": 72
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 1,
+          "nodes": 2001,
+          "events": 106,
+          "hints": 106
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 1,
+          "nodes": 41,
+          "events": 7,
+          "hints": 7
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 2,
+          "nodes": 41,
+          "events": 7,
+          "hints": 7
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 2,
+          "nodes": 2001,
+          "events": 106,
+          "hints": 106
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 2,
+          "nodes": 1684,
+          "events": 84,
+          "hints": 84
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 2,
+          "nodes": 184,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-base",
+          "repetition": 2,
+          "nodes": 184,
+          "events": 0,
+          "hints": 0
+        }
+      ],
+      "pairs": [
+        {
+          "repetition": 1,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 184,
+          "word_nodes": 184,
+          "compact_nodes": 184,
+          "both_terminal": true
+        },
+        {
+          "repetition": 1,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 1335,
+          "word_nodes": 1335,
+          "compact_nodes": 2001,
+          "both_terminal": false
+        },
+        {
+          "repetition": 2,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 184,
+          "word_nodes": 184,
+          "compact_nodes": 184,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 1684,
+          "word_nodes": 1684,
+          "compact_nodes": 2001,
+          "both_terminal": false
+        }
+      ]
+    },
+    {
+      "id": "quantifier-equality-five",
+      "bindings": {
+        "word": {
+          "status": "passed",
+          "placements": 3164
+        },
+        "compact": {
+          "status": "passed",
+          "placements": 3164,
+          "full_mark_assignments": 672835,
+          "compact_mark_assignments": 9699,
+          "formula_values": 23,
+          "command_values": 773
+        }
+      },
+      "observations": [
+        {
+          "lane": "word-base",
+          "repetition": 1,
+          "nodes": 162,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 1,
+          "nodes": 162,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 1,
+          "nodes": 1533,
+          "events": 108,
+          "hints": 108
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 1,
+          "nodes": 1533,
+          "events": 108,
+          "hints": 108
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 1,
+          "nodes": 35,
+          "events": 6,
+          "hints": 6
+        },
+        {
+          "lane": "compact-physical",
+          "repetition": 2,
+          "nodes": 35,
+          "events": 6,
+          "hints": 6
+        },
+        {
+          "lane": "compact-expanded",
+          "repetition": 2,
+          "nodes": 1533,
+          "events": 108,
+          "hints": 108
+        },
+        {
+          "lane": "word-learned",
+          "repetition": 2,
+          "nodes": 1533,
+          "events": 108,
+          "hints": 108
+        },
+        {
+          "lane": "compact-base",
+          "repetition": 2,
+          "nodes": 162,
+          "events": 0,
+          "hints": 0
+        },
+        {
+          "lane": "word-base",
+          "repetition": 2,
+          "nodes": 162,
+          "events": 0,
+          "hints": 0
+        }
+      ],
+      "pairs": [
+        {
+          "repetition": 1,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 162,
+          "word_nodes": 162,
+          "compact_nodes": 162,
+          "both_terminal": true
+        },
+        {
+          "repetition": 1,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 1533,
+          "word_nodes": 1533,
+          "compact_nodes": 1533,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-base",
+          "compact": "compact-base",
+          "status": "passed",
+          "common_nodes": 162,
+          "word_nodes": 162,
+          "compact_nodes": 162,
+          "both_terminal": true
+        },
+        {
+          "repetition": 2,
+          "word": "word-learned",
+          "compact": "compact-expanded",
+          "status": "passed",
+          "common_nodes": 1533,
+          "word_nodes": 1533,
+          "compact_nodes": 1533,
+          "both_terminal": true
+        }
+      ]
+    }
+  ],
+  "seconds": 460.235025917,
+  "native_queries": 9,
+  "micro_steps": 8087182982,
+  "accepted_requests": 9,
+  "prior_native_queries_reused": 780,
+  "nodes": 22229,
+  "events": 1170,
+  "hints": 1170,
+  "proof_observations": 36
+}

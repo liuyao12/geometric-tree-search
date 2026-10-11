@@ -1,0 +1,443 @@
+{
+  "status": "passed",
+  "successful_derivations": 24,
+  "proof_steps": 328,
+  "rejected_recipient_trace_corruptions": 72,
+  "rejected_local_refutation_corruptions": 204,
+  "mutations": [
+    {
+      "observation": "two-equalities-five-theory-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-five-theory-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-five-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-five-library-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-five-library-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-five-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-nine-theory-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-nine-theory-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-nine-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-nine-library-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-nine-library-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-nine-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "compound-terms-five-theory-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "compound-terms-five-theory-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "compound-terms-five-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "compound-terms-five-library-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "compound-terms-five-library-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "compound-terms-five-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "symbolic-points-five-theory-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "symbolic-points-five-theory-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "symbolic-points-five-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "symbolic-points-five-library-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "symbolic-points-five-library-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "symbolic-points-five-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "three-equalities-seven-theory-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "three-equalities-seven-theory-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_15 cn"
+    },
+    {
+      "observation": "three-equalities-seven-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "three-equalities-seven-library-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "three-equalities-seven-library-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_15 cn"
+    },
+    {
+      "observation": "three-equalities-seven-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "quantifier-equality-five-theory-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "quantifier-equality-five-theory-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_13 cn"
+    },
+    {
+      "observation": "quantifier-equality-five-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "quantifier-equality-five-library-r1",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "quantifier-equality-five-library-r1",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_13 cn"
+    },
+    {
+      "observation": "quantifier-equality-five-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-five-library-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-five-library-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-five-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-five-theory-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-five-theory-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-five-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-nine-library-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-nine-library-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-nine-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "two-equalities-nine-theory-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "two-equalities-nine-theory-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "two-equalities-nine-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "compound-terms-five-library-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "compound-terms-five-library-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "compound-terms-five-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "compound-terms-five-theory-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "compound-terms-five-theory-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "compound-terms-five-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "symbolic-points-five-library-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "symbolic-points-five-library-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "symbolic-points-five-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "symbolic-points-five-theory-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "symbolic-points-five-theory-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_12 cn"
+    },
+    {
+      "observation": "symbolic-points-five-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "three-equalities-seven-library-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "three-equalities-seven-library-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_15 cn"
+    },
+    {
+      "observation": "three-equalities-seven-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "three-equalities-seven-theory-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "three-equalities-seven-theory-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_15 cn"
+    },
+    {
+      "observation": "three-equalities-seven-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "quantifier-equality-five-library-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "quantifier-equality-five-library-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_13 cn"
+    },
+    {
+      "observation": "quantifier-equality-five-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "quantifier-equality-five-theory-r2",
+      "mutation": "input-formula",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "quantifier-equality-five-theory-r2",
+      "mutation": "unsupported-empty-parent",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_13 cn"
+    },
+    {
+      "observation": "quantifier-equality-five-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    }
+  ],
+  "seconds": 0.206160125,
+  "scope": "Fresh logical replay of every successful external trace and exact input/source/hash binding. The prior native ground admissions are reused, not reexecuted. This validator remains a separate first-order certificate checker rather than the native Wang checker."
+}

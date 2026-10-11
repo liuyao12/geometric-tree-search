@@ -1,0 +1,45 @@
+{
+  "version": "external-prover-plan-1",
+  "status": "frozen_before_recipient_measurement",
+  "case_ids": [
+    "two-equalities-five",
+    "two-equalities-nine",
+    "compound-terms-five",
+    "symbolic-points-five",
+    "three-equalities-seven",
+    "quantifier-equality-five",
+    "disconnected-premise-five"
+  ],
+  "lanes": [
+    "theory-only",
+    "theory-and-all-admitted-ground-lemmas"
+  ],
+  "repetitions": 2,
+  "order": "case order in frozen reader, theory-only then library; reverse lanes in repetition 2",
+  "prover": "official E source commit 3b7afc70fe77d3118bb95144c4735ca45f5f31cf",
+  "command_options": [
+    "--auto",
+    "--proof-object",
+    "--tstp-format",
+    "--cpu-limit=60",
+    "--memory-limit=1024",
+    "--resources-info",
+    "--print-statistics"
+  ],
+  "wall_timeout_seconds": 65,
+  "memory_limit_MiB": 1024,
+  "certificate_policy": "Every reported successful derivation must have every input and local entailment checked, including all formula-to-clause preprocessing. Bundled checkproof does not suffice. Unsupported proof steps mean certificate unknown. Inputs contain only original axioms/target or complete already admitted ground lemma interfaces; never target proof commands.",
+  "comparison_limits": "External E calculus is not the finite GCTS command/catalog language and has no fixed row boundary; CPU/wall limits differ from GCTS soft wall cutoff. Equal theory/library means semantic inputs only, not matched candidate grammar.",
+  "new_sources_prefix": "external_prover_",
+  "preparation": "clone/build separate from prover run costs",
+  "validator_predeclared": "Independent local entailment refutations: parse every TSTP formula, bind each input exactly to the frozen TPTP mapping, check assume_negation explicitly, normalize each parent conjunction with negated child via polarity-correct NNF and fresh scoped Skolem symbols, generate finitely many universal ground instances, and certify unsatisfiability with exhaustive binary propositional proof trees and equality/congruence conflict leaves. Incomplete instantiation can only yield unknown. Reject opaque preprocessing/introduced symbols that are not accounted for; no skipped proof lines.",
+  "gcts_reference": "Notebook 68, 70 frozen recipient observations; reused, not rerun with E. Concurrent research workloads and different algorithms/checkers prevent strict speed-ratio attribution.",
+  "reader_sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391",
+  "source_sha256": {
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_check.py": "76c95c28d9cddbb5d18b4ce32ab7f2d23cd964e6420250d73efa97baa210835a",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_inputs.py": "ea06a78b47671d17c5ca72da3b7d0389bb7230e2d5c6b6c302d79547f7cceed5",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_run.py": "382e31ea9b512b36a0475a0ecbff37814bf8a0a961405440d7380962ab7e8637",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_tests.py": "f65f3887c11e1998ce2388d56c728b2fefe65aca01144316c018d2d6e594296b",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_worker.py": "ac11123b515ab3d54b679daf1d0281e238a570671f06b0eaa473eccca239b48b"
+  }
+}
