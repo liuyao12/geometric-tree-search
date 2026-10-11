@@ -1,0 +1,63 @@
+{
+  "status": "completed_bounded_automatic_primitive_geometry_observations_pending_independent_audit",
+  "observations": [
+    {
+      "id": "base-complete-primitives",
+      "mode": "base",
+      "status": "unknown_search_budget",
+      "result": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/base-complete-primitives-result-v1.json.gz",
+        "sha256": "bc12cc76ebbc204ab6d322b1679826ec7cf322726b902c7d9a4113ee6312addf",
+        "bytes": 373027
+      },
+      "attempts": 128,
+      "seconds": 1.4452754589999999,
+      "events": 1280,
+      "serialization_seconds": 2.005260709,
+      "preparation_costs": {
+        "cold_model_seconds": 0.11352516700000001,
+        "full_family_registry_seconds": 0.06502658299999997
+      },
+      "decoded_certificate": false
+    },
+    {
+      "id": "fixed-forward-novelty",
+      "mode": "fixed-forward",
+      "status": "unknown_search_budget",
+      "result": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/fixed-forward-novelty-result-v1.json.gz",
+        "sha256": "88cb47e9a8694419b475add355fdf999ae82addd293d202f32f3f8edf84ded59",
+        "bytes": 376481
+      },
+      "attempts": 128,
+      "seconds": 1.296331542,
+      "events": 1168,
+      "serialization_seconds": 1.9670027499999998,
+      "preparation_costs": {
+        "cold_model_seconds": 0.1714092079999996,
+        "full_family_registry_seconds": 0.06252408400000053
+      },
+      "decoded_certificate": false
+    }
+  ],
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+    "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+    "bytes": 219919
+  },
+  "root_activation": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/root-activation-v1.json",
+    "sha256": "5fcef8eb6ed5805af97817f9c52059854426b6f39aa0edd3876f2a8a2e8455c5",
+    "bytes": 2169
+  },
+  "worker_seconds_before_final_receipt_write": 7.519140166,
+  "initial_pin_verification_seconds": 0.17239200000000002,
+  "final_pin_verification_seconds": 0.1704572079999993,
+  "frozen_engine_import_seconds": 0.008397666999999998,
+  "target_search_observations": 2,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "new_RL_training": false,
+  "authored_words_used_as_hints": 0,
+  "claim": "Search observations only; exact theorem acceptance requires the separately owned symbolic/trace audit."
+}

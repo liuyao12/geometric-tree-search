@@ -1,0 +1,44 @@
+{
+  "status": "root_authorized_bounded_automatic_primitive_geometry_search",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "source_manifest": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-manifest-v1.json",
+    "sha256": "99ac91b5db68cfe4e01f7b4dfd28056e34feccd9fb30c7c523c2ac8cf9c6ed27",
+    "bytes": 2396
+  },
+  "source_reviews": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-root-review-20261011/source-review-v1.json",
+      "sha256": "1a26ada4953ed9a623513a924413a6a8d551f2581d0f4f8bc0fa482d4547e7b7",
+      "bytes": 4911
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/source-review-v1.json",
+      "sha256": "17559920f8fb46beae26b8471b44cc2274454410b08b92bf4cb4896d3c83bbf2",
+      "bytes": 8537
+    }
+  ],
+  "sole_owner": "root",
+  "attempt": 1,
+  "allowed_geometry_searches": 2,
+  "allowed_native_queries": 0,
+  "new_RL_training": false,
+  "active_cluster_descriptors": 0,
+  "scope": "Unchanged full229recipe/217formula/24row scalar-point geometry model; generic fixed-order control vs completebase, no authoredproofword hints. Mathematical/trace/nativeacceptance remain separate.",
+  "owned_limits": {
+    "owner_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "maximum_searches": 2,
+    "each_attempts": 128,
+    "each_search_seconds": 20,
+    "each_trace_event_ceiling": 2000,
+    "independent_audit_proposal_seconds": 180,
+    "independent_audit_proposal_bytes": 536870912
+  }
+}

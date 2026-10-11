@@ -1,0 +1,51 @@
+{
+  "status": "root_authorized_bounded_automatic_primitive_geometry_search",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+    "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+    "bytes": 219919
+  },
+  "source_manifest": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/source-manifest-v2.json",
+    "sha256": "e14ba2fc84e67cfbc3cd510faa32a667ae4cdcc0907156e33da159a7460d5fca",
+    "bytes": 2917
+  },
+  "source_reviews": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-root-review-v2-20261011/source-review-v2.json",
+      "sha256": "e376980f4354cff94c396573df1fcafeb901f72a8f7e2e5de752497d3260fed1",
+      "bytes": 2227
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-v2-independent-20261011/source-review-v2.json",
+      "sha256": "f758a7e44846a9fb037caaa9a696ffa1210b6965fcd5c35aa0ff5c0506defe93",
+      "bytes": 11570
+    }
+  ],
+  "sole_owner": "root",
+  "attempt": 2,
+  "allowed_geometry_searches": 2,
+  "allowed_native_queries": 0,
+  "new_RL_training": false,
+  "active_cluster_descriptors": 0,
+  "scope": "Full229recipe/217formula/24row scalar-point geometry model; generic fixed-order control vs completebase; no authored proof-word hints. Original 56-input body authority plan with expanded phase provenance unchanged. Independent trace/certificate acceptance separate.",
+  "owned_limits": {
+    "owner_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "maximum_searches": 2,
+    "each_attempts": 128,
+    "each_search_seconds": 20,
+    "each_trace_event_ceiling": 2000,
+    "independent_audit_proposal_seconds": 180,
+    "independent_audit_proposal_bytes": 536870912
+  },
+  "prior_failed_v1_terminal": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v1-terminal.json",
+    "sha256": "4408940fe31fffc12e94851494568439a47dcb4badfa76cc4907c9ea5ddcb0f0",
+    "bytes": 2582
+  },
+  "prior_failed_owned_seconds_additional": 0.935204458,
+  "combined_phases_claimed_within_single_180_second_gate": false
+}

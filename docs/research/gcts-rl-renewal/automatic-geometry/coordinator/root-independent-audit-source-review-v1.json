@@ -1,0 +1,30 @@
+{
+  "status": "root_source_review_passed_independent_zero_certificate_complete_trace_audit",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+    "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+    "bytes": 198422
+  },
+  "manifest": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/source-manifest-v1.json",
+    "sha256": "de59992bc31beac38b3e4f9c6886baf158f145e9244a6e44b4a4a054635d8b3f",
+    "bytes": 2140
+  },
+  "new_source_files_fully_read": 5,
+  "unchanged_prior_independent_library_pins_verified": 4,
+  "source_ASTs": 9,
+  "unique_paths_verified": 703,
+  "producer_search_controller_ranker_decoder_acceptance_imports": 0,
+  "independent_scope": "Own literal full-domain and order census, decorated visited identities, recursively checked recorded exhausted subtrees, exact whole UNKNOWN rollback. No theorem certificate or shared native acceptance.",
+  "bounds": {
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "enforcement": "Owned direct-child wait4/alarm/deadline kill-reap; retrospective combined kernel peak, no live RSS or hard OS memory cap claim.",
+  "mutations_scope": "48 actual event payloads compared to independent replay-derived expected event hashes; three independent logical negatives. Not 48 whole mutated-tape replays.",
+  "graph_cache_scope": "Mutable totals/marks/refcounts/order/selected generations/exclusions all included; initial roots/model/recipes immutable throughout independent transaction state.",
+  "scientific_imports_by_review": 0,
+  "scientific_executions_by_review": 0,
+  "review_seconds_before_write": 0.448390041
+}

@@ -1,0 +1,56 @@
+{
+  "status": "immutable_source_only_package_pending_two_source_reviews_and_root_dispatch",
+  "files": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "eddf441a1c895b5b552050d3a38c3817532f8733a179320f98c0043327bcfc33",
+      "bytes": 16355
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_bridge_decode_v1.py",
+      "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+      "bytes": 6052
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_run_v1.py",
+      "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+      "bytes": 7394
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_outer_v1.py",
+      "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+      "bytes": 3889
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_freeze_v1.py",
+      "sha256": "b31218de38dd9992e6b90a7972e3fc00e23e4cf68b17984d82673bc827238382",
+      "bytes": 19911
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+      "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+      "bytes": 212097
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-freeze-v1.json",
+      "sha256": "a5097e74eb92d40dad39262ac0377d6a0d283348b429ce5bc7c58c820258d3dc",
+      "bytes": 861
+    }
+  ],
+  "total_files": 8,
+  "total_bytes": 270257,
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "scientific_executions": 0,
+  "native_queries": 0,
+  "publication_owner": "root",
+  "claim": "Executable authored infrastructure and prospective bounded gate only; no proof discovery or model execution."
+}

@@ -1,0 +1,26 @@
+{
+  "status": "frozen_source_only_automatic_geometry_implementation_no_scientific_execution",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "new_sources": 6,
+  "source_closure_count": 8,
+  "inputs": 118,
+  "preserved_files": 656,
+  "unique_verified_paths": 662,
+  "ast_parse_sources": 8,
+  "mismatches": 0,
+  "freeze_seconds_before_receipt_write": 0.822186791,
+  "source_authoring_seconds": null,
+  "actual_geometry_model_loads": 0,
+  "geometry_searches": 0,
+  "native_queries": 0,
+  "compiler_activations": 0,
+  "training": false,
+  "active_cluster_descriptors": 0,
+  "authored_words_used_as_hints": 0,
+  "root_and_independent_source_reviews": "pending",
+  "execution_authorized": false
+}

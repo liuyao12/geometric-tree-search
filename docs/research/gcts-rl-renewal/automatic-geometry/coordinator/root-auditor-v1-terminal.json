@@ -1,0 +1,62 @@
+{
+  "status": "root_authoritative_owned_independent_complete_geometry_trace_audit_pass",
+  "exec_session": 19431,
+  "exec_terminal_return_code": 0,
+  "same_handle_polled_to_terminal": true,
+  "owned_child_pid": 44976,
+  "owned_child_terminal_and_reaped": true,
+  "result": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+    "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+    "bytes": 5218918
+  },
+  "lifetime": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+    "sha256": "8f2928261f7ab5405b5cda0eba79947eb1128a748768666cfd020ead7ca2eadd",
+    "bytes": 1492
+  },
+  "observations": [
+    {
+      "id": "base-complete-primitives",
+      "status": "unknown_search_budget",
+      "events": 1280,
+      "nodes": 107,
+      "attempts": 128,
+      "forced": 22,
+      "branches": 106,
+      "distinct_graph_states": 219,
+      "complete_base_binding_checks": 1921839,
+      "complete_legal_binding_checks": 1921374,
+      "altered_first_choices": 0,
+      "altered_permutations": 0,
+      "root_restored": true,
+      "proved_child_exclusions": 90
+    },
+    {
+      "id": "fixed-forward-novelty",
+      "status": "unknown_search_budget",
+      "events": 1168,
+      "nodes": 95,
+      "attempts": 128,
+      "forced": 34,
+      "branches": 94,
+      "distinct_graph_states": 206,
+      "complete_base_binding_checks": 1878935,
+      "complete_legal_binding_checks": 1878567,
+      "altered_first_choices": 14,
+      "altered_permutations": 17,
+      "root_restored": true,
+      "proved_child_exclusions": 77
+    }
+  ],
+  "actual_events": 2448,
+  "event_hash_mutations": 48,
+  "point_consistent_logical_mutations": 3,
+  "whole_target_logical_checks": 0,
+  "point_certificates": 0,
+  "native": 0,
+  "training": false,
+  "independent_owned_seconds": 41.361476959,
+  "independent_peak_bytes": 378011648,
+  "scope": "Complete recorded unknown searches and exhausted children checked; zero theorem certificates. Generic rank differs but no proof-search superiority."
+}

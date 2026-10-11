@@ -1,0 +1,32 @@
+{
+  "status": "frozen_source_only_v2_body_authority_caller_repair_no_scientific_execution",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+    "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+    "bytes": 219919
+  },
+  "causal_amendment": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/failure-causal-amendment-v2.json",
+    "sha256": "8627390f47347bb2fe7e365d58019e5fd4dd1d690c8a85029ff9f0806184e7be",
+    "bytes": 3710
+  },
+  "sources": 8,
+  "new_sources": 6,
+  "inputs": 118,
+  "body_source_unique_paths": 56,
+  "preserved_files": 677,
+  "unique_verified_paths": 683,
+  "mismatches": 0,
+  "ast_parsed_sources": 8,
+  "freeze_seconds_before_receipt_write": 0.7232406659999999,
+  "retained_failed_v1_owner_seconds": 0.935204458,
+  "source_authoring_seconds": null,
+  "actual_geometry_model_loads_by_this_freeze": 0,
+  "geometry_searches_by_this_freeze": 0,
+  "native_queries": 0,
+  "compiler_activations": 0,
+  "training": false,
+  "active_cluster_descriptors": 0,
+  "root_and_independent_source_reviews": "pending",
+  "execution_authorized": false
+}

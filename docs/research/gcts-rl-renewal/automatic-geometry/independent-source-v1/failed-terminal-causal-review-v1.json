@@ -1,0 +1,223 @@
+{
+  "status": "passed_read_only_failed_v1_causal_and_terminal_reconciliation",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "source_manifest": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-manifest-v1.json",
+    "sha256": "99ac91b5db68cfe4e01f7b4dfd28056e34feccd9fb30c7c523c2ac8cf9c6ed27",
+    "bytes": 2396
+  },
+  "activation": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/root-activation-v1.json",
+    "sha256": "c54beee19c0b9f652e7818c7bfa989eab713fda2286bb859b900cd2aa9546a7d",
+    "bytes": 1731
+  },
+  "lifetime": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-lifetime-v1.json",
+    "sha256": "2e2fd09a03c3907d7d9cf47fe560f16191fb02852531f58f04936a52f99d9be4",
+    "bytes": 1359
+  },
+  "supervision": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-supervision-v1.json",
+    "sha256": "51912ec32ca8e21b4cb80788d9ca260a267808c4cb1fa710721326afa0aa1ee6",
+    "bytes": 3072
+  },
+  "launch": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-launch-v1.json",
+    "sha256": "1569c3ef270edd0c1d510de7a6b4208e2d8ee5fe18c218145f456ecfb7cc1f68",
+    "bytes": 484
+  },
+  "stderr": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-stderr-v1.txt",
+    "sha256": "f511e068be60c7a4c91ab05688649febff0c7c738c660e1b9160ec6302223c23",
+    "bytes": 965
+  },
+  "preserved_independent_source_review": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/source-review-v1.json",
+    "sha256": "17559920f8fb46beae26b8471b44cc2274454410b08b92bf4cb4896d3c83bbf2",
+    "bytes": 8537
+  },
+  "caller_source": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py",
+    "sha256": "eddf441a1c895b5b552050d3a38c3817532f8733a179320f98c0043327bcfc33",
+    "bytes": 16355
+  },
+  "callee_source": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+    "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+    "bytes": 30989
+  },
+  "cause": {
+    "input_entries": 118,
+    "unique_input_paths": 104,
+    "identical_path_alias_groups": 14,
+    "aliases": [
+      {
+        "path": "docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657,
+        "roles": [
+          "master_contract",
+          "shared_machine_artifact_01"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+        "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+        "bytes": 291858,
+        "roles": [
+          "primitive_model",
+          "shared_machine_artifact_10"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+        "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+        "bytes": 1647196,
+        "roles": [
+          "primitive_logical_audit",
+          "shared_machine_artifact_12"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+        "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+        "bytes": 1253326,
+        "roles": [
+          "complete_family_template_projection",
+          "shared_machine_artifact_11"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+        "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+        "bytes": 31300,
+        "roles": [
+          "frozen_primitive_core",
+          "shared_machine_source_24"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+        "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+        "bytes": 119923,
+        "roles": [
+          "prior_full_model_plan",
+          "shared_machine_artifact_13"
+        ]
+      },
+      {
+        "path": ".gcts-active/stochastic-replay-review-20261011/geometry-full-independent-result-v1.json",
+        "sha256": "3857e7ec140afe3c93dad2897bbefca897f686f5b72410ad0965ea72f2808aa1",
+        "bytes": 1421897,
+        "roles": [
+          "prior_full_model_independent_result",
+          "shared_machine_artifact_14"
+        ]
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+        "bytes": 1518,
+        "roles": [
+          "repository_contract",
+          "shared_machine_artifact_00"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+        "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+        "bytes": 30989,
+        "roles": [
+          "frozen_lifecycle_kernel",
+          "shared_machine_source_23"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+        "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+        "bytes": 158160,
+        "roles": [
+          "passed_full_lifecycle_producer_plan",
+          "shared_machine_artifact_15"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-outcome-v3.json",
+        "sha256": "a13ac25272a23d4b89cf2bab2b1e6f297c8a0fa4533c81e1729bc0d995b8953b",
+        "bytes": 19973006,
+        "roles": [
+          "passed_full_lifecycle_producer_outcome",
+          "shared_machine_artifact_17"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-lifetime-v3.json",
+        "sha256": "b5f926cfe25fd162589ad96dbe613141f9bca6b0d1424a798b30e490cb6a10a3",
+        "bytes": 873,
+        "roles": [
+          "passed_full_lifecycle_producer_lifetime",
+          "shared_machine_artifact_18"
+        ]
+      },
+      {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-supervision-v3.json",
+        "sha256": "20a9cd0ed172dc09b74eb4ae51b4a7fce41d4663f3eea9e57faa504fa1b97cf9",
+        "bytes": 157128,
+        "roles": [
+          "passed_full_lifecycle_producer_supervision",
+          "shared_machine_artifact_19"
+        ]
+      },
+      {
+        "path": ".gcts-active/shared-symbolic-native-bridge-20261011/freeze_source_inspection_v1.py",
+        "sha256": "9d38c3c29c301b1631ac7c2c9b52c6ba514138d497d96afc58e050848c4ee295",
+        "bytes": 22499,
+        "roles": [
+          "prior_bridge_source_inspection_freezer",
+          "shared_machine_source_22"
+        ]
+      }
+    ],
+    "caller": "main line256 passes expanded phase plan to frozen_family_authority; this helper converts every role input into a source pin without deduplicating.",
+    "callee": "BodyAuthority.build lines139-148 sorts full source pins then rejects duplicate paths. Role aliases have identical bytes, but caller interface requires unique paths.",
+    "review_gap": "Both source reviews missed this caller/callee uniqueness precondition. The prior source receipt remains immutable and is not promoted to actual model/registry acceptance."
+  },
+  "actual_scope": {
+    "source_bound_point_model_constructions_before_failure": 1,
+    "automatic_search_entries": 0,
+    "new_search_result_files": 0,
+    "new_outcome_file": 0,
+    "new_native_queries": 0,
+    "new_training": 0,
+    "new_math_proofs": 0,
+    "new_body_authority_acceptance": false,
+    "interpretation": "The broad actual_geometry_model_execution flag is true because a point model was built; maximum2 search counters in launch/lifetime are ceilings, not performed searches. Failure occurs before automatic_search."
+  },
+  "resource_accounting": {
+    "new_owned_seconds": 0.935204458,
+    "conservative_peak_bytes": 92700672,
+    "supervisor_seconds_nested_not_additive": 0.5723898749999999,
+    "worker_pid": 40713,
+    "worker_exit_code": 1,
+    "worker_wait_reaped": true,
+    "supervisor_pid": 40712,
+    "supervisor_wait_reaped": true,
+    "wall_overshoot_seconds": 0,
+    "memory_overshoot_bytes": 0,
+    "unmeasured_setup_split": "No completed worker receipt; source verification/model/family setup components have no separate authoritative duration. Source authoring unmeasured."
+  },
+  "successor_requirement": "Separately frozen source-only sibling may supply the accepted56-unique-input full lifecycle producer plan to this body-registry factory while retaining complete118-entry phase verification, immutable source model/ranker/decoder/limits. Exact diff/pin/source review and fresh root activation required; no rerun authorized by this receipt.",
+  "queries_by_review": {
+    "scientific_imports": 0,
+    "model_constructions": 0,
+    "searches": 0,
+    "auditor_runs": 0,
+    "native_queries": 0,
+    "process_polls": 0
+  },
+  "review_seconds_before_receipt_write": 0.431308125
+}

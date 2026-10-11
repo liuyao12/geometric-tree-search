@@ -1,0 +1,128 @@
+{
+  "schema": "automatic-geometry-browser-reader-readiness-v2",
+  "status": "frozen_source_only_synthetic_controls_passed",
+  "files": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/build-v2.py",
+      "sha256": "4aea951be53151150040f399582ade4065835c470f04f560db8e16600b89111b",
+      "bytes": 13795
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/freeze-readiness.py",
+      "sha256": "06cdb7b617dd8cfbd91a6384d2983d2f340029d02c91fd1753fce76c49289527",
+      "bytes": 6982
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/reader-source-controls.js",
+      "sha256": "a99e71649fbcbc6cb7ba60a7849e540fda40bb1e7764f3abe8cfa2d2f719cab8",
+      "bytes": 9698
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-controls-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-controls-stdout.txt",
+      "sha256": "acbe46934ac70667ec7621ab34f0d0091c124d02652c87ffcde98e677c859bb3",
+      "bytes": 551
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-controls.json",
+      "sha256": "93cf97a421140cb597837217f499cec37cae490a6b579436bf30f64c271a6ec3",
+      "bytes": 980
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema.json",
+      "sha256": "bc2e56aafa459d8f3c5c8ca216722309cb3081970a52308ab08483844341cda0",
+      "bytes": 8799
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-syntax-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/viewer.js",
+      "sha256": "76fd411e50c3ae94356be9cb5f5eb7df679d9e27750188066ac7d21e83fc06aa",
+      "bytes": 34030
+    }
+  ],
+  "preserved_v1": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/viewer.js",
+      "sha256": "685864ea4173d72c2d694b55978706a3fca1ac632a4746c1af7af6c19cb727a6",
+      "bytes": 22919
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/source-schema.json",
+      "sha256": "12ea811afbe93513429c6ae8d23ad77f253a83af79f47c4929de35e633aea44a",
+      "bytes": 5978
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/readiness-receipt.json",
+      "sha256": "a030208433eafd46d8993bd18cf02108bcf32099635b9a6f7948737eff48601c",
+      "bytes": 2712
+    }
+  ],
+  "read_only_semantic_sources": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+      "bytes": 16449
+    }
+  ],
+  "verification": {
+    "bundled_node": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "node_check_exit": 0,
+    "controls_exit": 0,
+    "source_check_seconds": 0.052999709000000006,
+    "controls": {
+      "status": "passed_bounded_display_only_v2_controls",
+      "formula_examples": 7,
+      "ast_tags_covered": 9,
+      "malformed_or_metadata_mutants_rejected": 20,
+      "zero_assignment_preserved": true,
+      "pending_unselected_prior_source_preserved": true,
+      "insertion_and_numeric_order_distinguished": true,
+      "all_snapshot_marks_retained": true,
+      "deepest_first_tie": true,
+      "layer_toggles_keep_selected_event": true,
+      "exact_core_certificate_semantics_fixture": true,
+      "synthetic_dom_only": true,
+      "actual_results_loaded": 0,
+      "scientific_imports": 0,
+      "searches": 0,
+      "training": 0,
+      "native_queries": 0,
+      "replays": 0
+    }
+  },
+  "authoring_preparation_cost": {
+    "source_authoring_seconds": null,
+    "reason": "Source authoring elapsed/CPU not instrumented; no scientific budget charged.",
+    "earlier_successful_manual_node_checks": "One earlier syntax+controls run was also performed before final freeze; source checking only."
+  },
+  "science": {
+    "actual_results_loaded": 0,
+    "model_loaded": 0,
+    "scientific_imports": 0,
+    "searches": 0,
+    "training_episodes": 0,
+    "native_queries": 0,
+    "scientific_replays": 0
+  },
+  "scope": "Display-source readiness only. Root integrates actual original results and supplies literal independent boolean flags; no logical/native/RL/speedup/actual-browser acceptance inferred.",
+  "source_correction": "The initial root-supplied v1 mark schema was incorrect. Frozen core point_data assigns blue formula constraints at (1,outputRow) and (1,sourceRow), and purple ordered offsets at (2+input,currentRow). V2 corrects display checks; frozen v1 remains history. Current root-reported null certificates do not exercise actual certificate DOM.",
+  "immutable_after_readiness": true
+}

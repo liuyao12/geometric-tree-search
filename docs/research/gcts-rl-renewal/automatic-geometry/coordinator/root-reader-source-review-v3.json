@@ -1,0 +1,36 @@
+{
+  "status": "root_reviewed_minimal_reader_v3_exterior_sentinel_successor_pending_real_data_DOM_QA",
+  "viewer": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/viewer.js",
+    "sha256": "617245c70393217e1a822f2720709a048215ef74a2f619c35b667980b97fbb47",
+    "bytes": 34430
+  },
+  "manifest": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/integration.json",
+    "sha256": "78d425ba113fd26470b4a86aeae5319b9732b44523c38e338f2f8204b92ebcf4",
+    "bytes": 2599
+  },
+  "exact_diff": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/viewer-v2-to-v3.diff",
+    "sha256": "aa4e9e9cea4a11322c162b71a762ed30da2443c67c1eab4e5a0bd6bbe1ed904c",
+    "bytes": 2414
+  },
+  "preserved_v2_review": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v2.json",
+    "sha256": "c001914bf418782b76ce5f246bdabb4b1bad0bdc718baae5046f9ad9f92ef078",
+    "bytes": 1492
+  },
+  "precondition_clarification": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/reader-v2-exterior-precondition-clarification.json",
+    "sha256": "178e542c9620e67277729b5c07ca371de2169f1ec2c62ae4bb58787aca8e1f14",
+    "bytes": 1426
+  },
+  "manifest_files_verified": 11,
+  "exact_minimal_diff_verified": true,
+  "new_display_branches_fully_read": true,
+  "mark_semantics": "Retain literal exterior x1 negative-row assigned-1/refcount marks; no registry lookup. All interior output/source formula constraints and purple ordered offsets retain v2 checks.",
+  "scientific_reruns": 0,
+  "actual_certificates": 0,
+  "actual_certificate_DOM": "unexecuted",
+  "actual_partial_data_QA": "next before publication"
+}

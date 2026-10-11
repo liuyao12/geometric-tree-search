@@ -1,0 +1,82 @@
+{
+  "status": "prospective_architecture_only_no_actual_trace_bound_or_auditor_execution",
+  "libraries": [
+    {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    }
+  ],
+  "inputs_before_any_actual_trace_binding": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+      "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+      "bytes": 212097
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/failed-terminal-causal-review-v1.json",
+      "sha256": "c0957fd8aea0d28ae0e4cbfbb49f5f0adb1a14c84366c733cbba02df53662f53",
+      "bytes": 9295
+    }
+  ],
+  "acceptance_boundary": "Independent recipe/registry/point/logical libraries only. No producer/controller/search/ranker/decoder imports or acceptance calls. Actual immutable source/output plan follows a terminal producer, root source review then separate owner dispatch.",
+  "methods": {
+    "inventory": "Reconstruct all217 formulas/229 exact recipes/171 literal bodies and old fixed24row point epoch from source schemas/static transport certificate. Context includes only original guardedI.2 and ordered three ground hypotheses; registry closure uses its declared unique body-source pins, phase provenance keeps all role aliases. Canonical family example may decode then discard, never hints or acceptance authority.",
+    "state": "New independently authored finite state semantic adapter extends our accepted literal State to correctly retain excluded keys and distinguish excluded_legal under changing markings. Independently derive complete factors for exact state hashes, with every row degree checked against direct raw negative-offset t/m enumeration. Exact initial reference counts/seedgeneration0/absent versus assigned0.",
+    "cache": "Cache only already independently checked immutable complete graph semantic snapshots; lifecycle revisions remain separately checked. Key uses exact totals/marks/refcounts/order/generations/roots/exclusions, never a producer domain count. Every distinct graph state gets full raw candidate enumeration; repeated unchanged graph events compare exact cached state. No candidate shortlist.",
+    "ordering": "Recompute chosen full key stream from raw inventory order and independently implement generic readiness/novelty/AST-size ranking. Compare complete base and ordered key stream SHA and exact selected first key. Forced singleton remains sole base key; complete set/permutation verified.",
+    "transactions": "Event-driven stack validator follows recorded choices rather than searching. Require legal global dead/forced/earliest decision, exact graph/hint checkpoint and revision, complete step point/ref updates, paired rollback, branch parent/child links and verified node-return grammar. Reconstruct source command interface for every selected primitive. No complete theorem inferred from a partial marked state.",
+    "exhaustion": "A dead node must have independently exhausted zero legal candidates. Parent exclusion permitted only after a complete reconstructed child returns finite exhaustion, all its alternatives accounted for, and exact parent restoration. Resource/attempt/deadline/trace unknown propagates without exclusion. Whole finite exhaustion never means theorem nonprovability.",
+    "partial_trace": "TraceLimit may happen after an operation but before its event. Accept only the recorded valid prefix and exact terminal initial root restoration; no claim that omitted suffix operations were independently replayed or that such a trace proves exhaustion. Preserve checked20s deadline overshoot as separate from170/175/180 owned limits.",
+    "certificate": "If a complete point certificate exists, independently reconstruct every full placement/preimage/id, t/m union, strict-prior ordered references and24commands. Check each command in exact original guardedI.2/ordered hypotheses, final original target and every row. Derive flat retained-hypothesis axiom request independently, blocks=[], exact ASCII compactsortedjson; sameGamma-relative ground sequent, no discharge/universal closure/native invocation."
+  },
+  "planned_counterexamples_not_executed": [
+    "omitted legal domain candidate/count",
+    "false singleton/dead/complete decision",
+    "seed generation changed from0",
+    "assignedbool versus integer0 and absent versus assigned0",
+    "hidden distant mark conflict/refcount change",
+    "same formula false full-identity sharing/ordered ports",
+    "false exhausted child or UNKNOWN mislabeled exhausted",
+    "parent-local exclusion without complete reconstructed child",
+    "changed rollback/checkpoint/state revision",
+    "dropped/duplicated fallback key or wrong first fixed-order key",
+    "trace-cutoff status falsely finite exhausted",
+    "stale registry/body/source/authority epoch",
+    "point-consistent invalid primitive inference",
+    "changed guardedI.2/hypothesis/target",
+    "dropped/rebased command or swapped ordered MPrefs",
+    "native acceptance flag altered"
+  ],
+  "prospective_resources": "Separate owner<=180seconds/child<=170seconds/512MiB conservative fresh child+owner kernel gate, all setup/sourcepins/complete parsing/raw census/order/certificate/mutations/result serialization inside phase; original actual producer and failedV1bill additional. Unknown rather than weakened validation if full audit cannot fit. Exact immutable plan/activation needed.",
+  "executed": {
+    "architecture_metadata_hashing_only": true,
+    "scientific_imports": 0,
+    "model_constructions": 0,
+    "fixtures": 0,
+    "searches": 0,
+    "auditors": 0,
+    "native_queries": 0,
+    "process_polls": 0
+  }
+}

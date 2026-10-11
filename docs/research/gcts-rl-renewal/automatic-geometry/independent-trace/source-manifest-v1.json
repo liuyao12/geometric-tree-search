@@ -1,0 +1,49 @@
+{
+  "status": "immutable_source_only_independent_geometry_trace_audit",
+  "files": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+      "bytes": 9091
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+      "sha256": "0fc35c2dacb2266ee587843f715e848ae6839b00220a01bb00d61eb74d65be44",
+      "bytes": 2291
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_audit_v1.py",
+      "sha256": "85c3b09724fb44161efc65a55afe9df2b1865298cd3d7b17db268a54fa834ca9",
+      "bytes": 26613
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_owner_v1.py",
+      "sha256": "3f4142f53115bcdca3097a7061ca3ca52d37dc5d3f09d9466ac7428b44893f6a",
+      "bytes": 5246
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_freeze_v1.py",
+      "sha256": "3404130f828ed438aac6bd596d77ecbe30105776bd223a22517d321bef7d1de1",
+      "bytes": 9849
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+      "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+      "bytes": 198422
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/source-freeze-v1.json",
+      "sha256": "3fe3cd2bb14a79b921556cd2e86d051050c0d02ce8a8e19c38682c08c8a58ea9",
+      "bytes": 628
+    }
+  ],
+  "total_files": 7,
+  "total_bytes": 252140,
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+    "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+    "bytes": 198422
+  },
+  "root_command": "python3 /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_owner_v1.py",
+  "scientific_execution": false
+}

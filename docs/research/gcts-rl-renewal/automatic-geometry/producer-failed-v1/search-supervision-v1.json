@@ -1,0 +1,100 @@
+{
+  "status": "unknown_or_failed",
+  "pid": 40713,
+  "exit_code": 1,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 0.5723898749999999,
+  "wall_ceiling_seconds": 175,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 64749568,
+  "supervisor_peak_bytes": 14106624,
+  "conservative_host_peak_bytes": 78856192,
+  "rss_samples": [
+    {
+      "seconds": 0.171264042,
+      "child_rss_bytes": 1622016,
+      "supervisor_peak_bytes": 14041088
+    },
+    {
+      "seconds": 0.20367425,
+      "child_rss_bytes": 15433728,
+      "supervisor_peak_bytes": 14041088
+    },
+    {
+      "seconds": 0.23029770900000002,
+      "child_rss_bytes": 15646720,
+      "supervisor_peak_bytes": 14041088
+    },
+    {
+      "seconds": 0.263133667,
+      "child_rss_bytes": 15712256,
+      "supervisor_peak_bytes": 14090240
+    },
+    {
+      "seconds": 0.295879375,
+      "child_rss_bytes": 15745024,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.31937275,
+      "child_rss_bytes": 15745024,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.346982292,
+      "child_rss_bytes": 15745024,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.379376375,
+      "child_rss_bytes": 23691264,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.411783,
+      "child_rss_bytes": 62259200,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.44434275,
+      "child_rss_bytes": 64684032,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.47676075,
+      "child_rss_bytes": 64749568,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.5090904589999999,
+      "child_rss_bytes": 59506688,
+      "supervisor_peak_bytes": 14106624
+    },
+    {
+      "seconds": 0.540470209,
+      "child_rss_bytes": 59719680,
+      "supervisor_peak_bytes": 14106624
+    }
+  ],
+  "resource_reason": "missing_or_invalid_child_receipt",
+  "watchdog_error": "[Errno 2] No such file or directory: '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-search-source-20261011/search-outcome-v1.json'",
+  "enforcement": "task-owned external sampled RSS/time watchdog, child SIGALRM, final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "root_activation": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/root-activation-v1.json",
+    "sha256": "c54beee19c0b9f652e7818c7bfa989eab713fda2286bb859b900cd2aa9546a7d",
+    "bytes": 1731
+  },
+  "outcome": null,
+  "actual_geometry_model_execution": true,
+  "maximum_geometry_target_searches": 2,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "new_training": false,
+  "mathematical_acceptance": "pending separately owned complete trace and symbolic certificate audit"
+}

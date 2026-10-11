@@ -1,0 +1,32 @@
+{
+  "status": "passed_owned_independent_geometry_trace_audit",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+    "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+    "bytes": 198422
+  },
+  "result": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+    "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+    "bytes": 5218918
+  },
+  "child_pid": 44976,
+  "child_exit_code": 0,
+  "owned_child_terminal_and_reaped": true,
+  "failure": null,
+  "full_owner_and_worker_seconds_before_receipt_write": 41.361476959,
+  "fresh_child_kernel_peak_bytes": 344850432,
+  "owner_kernel_peak_bytes": 33161216,
+  "conservative_combined_peak_bytes": 378011648,
+  "whole_ceiling_seconds": 180,
+  "peak_ceiling_bytes": 536870912,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "enforcement": "Owned wait4 direct child, worker SIGALRM, owner deadline kill/wait/reap; retrospective fresh child plus owner kernel peak. No hard OS memory cap or live RSS sampling.",
+  "clock_scope": "Owner verification/activation, child source-family setup, both complete trace audits, mutations, serialization/reap and receipt assembly; own final receipt write and source authoring excluded.",
+  "audit_observations": 2,
+  "searches_run_by_owner": 0,
+  "native_queries": 0,
+  "whole_target_logical_checks": 0,
+  "positive_certificates": 0
+}

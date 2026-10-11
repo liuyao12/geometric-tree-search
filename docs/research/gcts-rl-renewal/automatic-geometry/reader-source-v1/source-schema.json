@@ -1,0 +1,82 @@
+{
+  "schema": "automatic-geometry-browser-reader-source-v1",
+  "scope": "Source/UI only. No actual result/model loaded by author, and no scientific imports, searches, training, native queries or replays.",
+  "entry": "viewer.js autostarts once DOM is ready and #reader exists. Fetches visual-data.json unless #reader.dataset.visualUrl supplies a URL. To mount supplied data manually, set window.GCTS_GEOMETRY_READER_NO_AUTOSTART=true before script load, then call GCTSGeometryReader.mount(data).",
+  "required_dom": {
+    "observation": "select",
+    "trace-event": "select",
+    "proof-view": "container",
+    "trace-view": "container",
+    "formula-layer": "checkbox (checked initially)",
+    "reference-layer": "checkbox (checked initially)",
+    "reader": "ancestor containing proof/trace views"
+  },
+  "math_renderer": "Root supplies established MathJax with typesetPromise; waits for startup.promise and clears earlier typeset state. Only displayed hypotheses/target/selected certificate formulas are converted or typeset, never the complete formula registry. Every mathematical expression uses LaTeX.",
+  "ast": {
+    "var": ["var", "name"],
+    "fun": ["fun", "name", "argument AST array"],
+    "pred": ["pred", "name", "term AST array"],
+    "eq": ["eq", "term AST", "term AST"],
+    "not": ["not", "formula AST"],
+    "all": ["all", "binder name", "formula AST"],
+    "and": ["and", "formula AST", "formula AST"],
+    "imp": ["imp", "formula AST", "formula AST"],
+    "bot": ["bot"],
+    "unknown_tag": "Throws explicitly; terms are not accepted as formulas. Function and predicate arguments use the frozen third-field array convention."
+  },
+  "data": {
+    "formula_codes": "Exact zero-indexed formula AST registry. Only needed entries are read.",
+    "recipes": "Original ordered recipe array; each recipe has id, primitive_witness and ordered_premise_formulas.",
+    "hypotheses": "Original formula AST array.",
+    "target": "Original formula AST.",
+    "scope": "Optional root-authored human text rendered using textContent.",
+    "observations": "Original source observations plus root id and independent flags; no inference of success from mode, metrics, decoded word or training status."
+  },
+  "observation": {
+    "id": "Root stable label",
+    "mode": "Saved source mode",
+    "status": "Saved source status",
+    "attempts": "Saved actual attempts; missing means explicitly not supplied",
+    "seconds": "Original numeric/object time field displayed verbatim",
+    "graph_metrics": "Original metrics object displayed verbatim",
+    "node_count": "Original saved node count displayed verbatim",
+    "limits": "Original source limit object displayed verbatim",
+    "events": "Original saved producer event array",
+    "initial_state": "Optional original state projection",
+    "terminal_state": "Optional original state projection",
+    "point_certificate": "null or original decorated placement certificate",
+    "decoded_certificate": "null or original decoded certificate; local_certificate.proof commands are separately inspectable without guessing their expansion correspondence",
+    "independent_certificate_accepted": "boolean; only literal true displays root independent certificate acceptance, default pending",
+    "independent_trace_accepted": "boolean; only literal true displays root independent trace acceptance, default pending",
+    "independent_scope": "Optional root human text displayed verbatim"
+  },
+  "placement": {
+    "id": "Original exact placement identity",
+    "key": ["recipe index", "zero-based row", "ordered source rows array"],
+    "command": "Original primitive_command with formula AST",
+    "t": "Original absolute [x,y,value] array",
+    "m": "Original absolute [x,y,value] array",
+    "identity_preimage": {
+      "prototype_preimage": "Original prototype: recipe_id, primitive_witness, ordered_premise_formulas, relative_ordered_input_offsets, orientation identity, relative t/m supports",
+      "transform": [0, "row"],
+      "ordered_input_rows": "Exact ordered source rows",
+      "primitive_command": "Exact saved command",
+      "t": "Absolute t supports, byte-value correspondence checked for display",
+      "m": "Absolute m supports, byte-value correspondence checked for display"
+    }
+  },
+  "display_checks": [
+    "Sort placements by exact saved row; reject duplicate/negative rows.",
+    "Recipe index/id/witness/ordered premise prototype correspondence.",
+    "Identity orientation and exact translation [0,row].",
+    "Top command/t/m equal identity_preimage counterparts; absolute supports equal shifted prototype supports.",
+    "Output mark at (1,row) references formula_codes[code] equal command.formula.",
+    "Each ordered source strictly precedes row and its prior output equals ordered premise.",
+    "Relative offsets equal source-row; purple source mark at (2+input,source) carries that premise code.",
+    "These UI integrity checks are not independent mathematical/native proof checking."
+  ],
+  "visual": "One fixed-orientation physical square per saved placement, sorted by row, with blue output and purple ordered negative-reference layer toggles. Full formula and faithful rule/source-ref English appear beside it. All actual t/m/key/id data remain inspectable.",
+  "missing_certificate": "Display original status, metrics, hypotheses/target and selected saved initial/event/terminal state projection. Show full keys/totals/marks/refcounts/selected generations/roots/exclusions/domains, hint state and complete event. Never synthesize proof rows from a trace.",
+  "safety": "Native DOM creation and textContent only; no innerHTML, eval, scientific engine, checker or policy import. Fetch is data loading for root-integrated browser only. No dependencies beyond root-established MathJax.",
+  "actual_data_qa": "Pending root integration of actual terminal data and browser QA; no author claim actual tile layout, formula rendering, certificate acceptance or trace validity has passed."
+}

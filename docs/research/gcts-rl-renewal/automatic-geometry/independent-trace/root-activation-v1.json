@@ -1,0 +1,14 @@
+{
+  "status": "authorized_by_root_after_independent_source_review",
+  "plan_sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+  "prerequisite_sha256": {
+    ".gcts-active/automatic-geometry-progress-20261011/root-independent-audit-source-review-v1.json": "fddec199f6a4782ad8b4a384521db3961cee6cff5920cd0139000d0d5a288649",
+    ".gcts-active/automatic-geometry-progress-20261011/root-producer-v2-terminal.json": "157a67194f9c93307e65ec69bef74305ccf31559ae4e258716752d6565c70870"
+  },
+  "sole_owner": "root",
+  "searches": 0,
+  "native_queries": 0,
+  "training": false,
+  "positive_certificates": 0,
+  "scope": "One bounded independent complete returned-tape audit; scientific work and mutations entirely inside owner."
+}

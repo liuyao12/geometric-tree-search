@@ -1,0 +1,686 @@
+[
+  {
+    "origin": ".gcts-active/shared-symbolic-native-bridge-20261011/bridge-design-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/bridge/bridge-design-v1.json",
+    "sha256": "2e12df043fc62d07d736f4b18fd557f54e60b003842d749a48b9ad81ac455341",
+    "bytes": 12671
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-native-bridge-20261011/freeze_source_inspection_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/bridge/freeze_source_inspection_v1.py",
+    "sha256": "9d38c3c29c301b1631ac7c2c9b52c6ba514138d497d96afc58e050848c4ee295",
+    "bytes": 22499
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-native-bridge-20261011/manifest-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/bridge/manifest-v1.json",
+    "sha256": "c19000cc7cfad4f81d043f3c6e1c88c11880416a92406343d1d1077c7215cc6a",
+    "bytes": 1255
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-native-bridge-20261011/prospective-search-gate-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/bridge/prospective-search-gate-v1.json",
+    "sha256": "53abed2c91ce5a6073a53b30f5b60f0c8ccab8778a8764c6669338b728c3a9d8",
+    "bytes": 28695
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-native-bridge-20261011/static-source-inspection-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/bridge/static-source-inspection-v1.json",
+    "sha256": "52fbf55a950017c0ed045a212ab3f2b0b98873aa8c701a0a06a799de9c8b1dc4",
+    "bytes": 166284
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/root-activation-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/root-activation-v1.json",
+    "sha256": "c54beee19c0b9f652e7818c7bfa989eab713fda2286bb859b900cd2aa9546a7d",
+    "bytes": 1731
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-launch-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/search-launch-v1.json",
+    "sha256": "1569c3ef270edd0c1d510de7a6b4208e2d8ee5fe18c218145f456ecfb7cc1f68",
+    "bytes": 484
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/search-lifetime-v1.json",
+    "sha256": "2e2fd09a03c3907d7d9cf47fe560f16191fb02852531f58f04936a52f99d9be4",
+    "bytes": 1359
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/search-stderr-v1.txt",
+    "sha256": "f511e068be60c7a4c91ab05688649febff0c7c738c660e1b9160ec6302223c23",
+    "bytes": 965
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/search-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-supervision-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/search-supervision-v1.json",
+    "sha256": "51912ec32ca8e21b4cb80788d9ca260a267808c4cb1fa710721326afa0aa1ee6",
+    "bytes": 3072
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_bridge_decode_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/shared_symbolic_bridge_decode_v1.py",
+    "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+    "bytes": 6052
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_forward_order_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/shared_symbolic_forward_order_v1.py",
+    "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+    "bytes": 3698
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/shared_symbolic_geometry_search_v1.py",
+    "sha256": "eddf441a1c895b5b552050d3a38c3817532f8733a179320f98c0043327bcfc33",
+    "bytes": 16355
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_freeze_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/shared_symbolic_search_freeze_v1.py",
+    "sha256": "b31218de38dd9992e6b90a7972e3fc00e23e4cf68b17984d82673bc827238382",
+    "bytes": 19911
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_outer_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/shared_symbolic_search_outer_v1.py",
+    "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+    "bytes": 3889
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_run_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/shared_symbolic_search_run_v1.py",
+    "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+    "bytes": 7394
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-freeze-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/source-freeze-v1.json",
+    "sha256": "a5097e74eb92d40dad39262ac0377d6a0d283348b429ce5bc7c58c820258d3dc",
+    "bytes": 861
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-manifest-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-failed-v1/source-manifest-v1.json",
+    "sha256": "99ac91b5db68cfe4e01f7b4dfd28056e34feccd9fb30c7c523c2ac8cf9c6ed27",
+    "bytes": 2396
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-root-review-20261011/source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/root-source-v1/source-review-v1.json",
+    "sha256": "1a26ada4953ed9a623513a924413a6a8d551f2581d0f4f8bc0fa482d4547e7b7",
+    "bytes": 4911
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/failed-terminal-causal-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-source-v1/failed-terminal-causal-review-v1.json",
+    "sha256": "c0957fd8aea0d28ae0e4cbfbb49f5f0adb1a14c84366c733cbba02df53662f53",
+    "bytes": 9295
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-source-v1/source-review-v1.json",
+    "sha256": "17559920f8fb46beae26b8471b44cc2274454410b08b92bf4cb4896d3c83bbf2",
+    "bytes": 8537
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/failure-causal-amendment-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/failure-causal-amendment-v2.json",
+    "sha256": "8627390f47347bb2fe7e365d58019e5fd4dd1d690c8a85029ff9f0806184e7be",
+    "bytes": 3710
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/root-activation-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/root-activation-v1.json",
+    "sha256": "5fcef8eb6ed5805af97817f9c52059854426b6f39aa0edd3876f2a8a2e8455c5",
+    "bytes": 2169
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-launch-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-launch-v1.json",
+    "sha256": "9c8b3c89ff84cd251034103dcef391fbad62245422565403551010c9f9c43d8a",
+    "bytes": 487
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-lifetime-v1.json",
+    "sha256": "f16f7f900988f13f625060f74ee3e7fb307d42384675ba83c5bf1ee824dcbf61",
+    "bytes": 1399
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-outcome-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-outcome-v1.json",
+    "sha256": "4f5581e6ce8557cb0383e4a1fabfe7dcae3c17a6dded30f367e2add9cb9b1149",
+    "bytes": 2467
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-plan-v1.json",
+    "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+    "bytes": 219919
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-stdout-v1.txt",
+    "sha256": "da750507d98b72677c772887034429d4391ab8fe7505a89a2c993ab4df90d1ab",
+    "bytes": 3275
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-supervision-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/search-supervision-v1.json",
+    "sha256": "b3f3c94edab341b1d643e804d7ea19960baba47d0ded0792f2a663d67fd10d40",
+    "bytes": 31521
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_bridge_decode_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/shared_symbolic_bridge_decode_v1.py",
+    "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+    "bytes": 6052
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/shared_symbolic_forward_order_v1.py",
+    "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+    "bytes": 3698
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/shared_symbolic_geometry_search_v1.py",
+    "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+    "bytes": 16449
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_search_freeze_v2.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/shared_symbolic_search_freeze_v2.py",
+    "sha256": "54df27641e42583aea57418768cb571597c109d01529f17c7b1c4fe3897888d1",
+    "bytes": 15106
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_search_outer_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/shared_symbolic_search_outer_v1.py",
+    "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+    "bytes": 3889
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_search_run_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/shared_symbolic_search_run_v1.py",
+    "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+    "bytes": 7394
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/source-freeze-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/source-freeze-v2.json",
+    "sha256": "c28506822317f947799cc1aa5da64745eb0e096a57175ea4e81022d2dc012685",
+    "bytes": 1176
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/source-manifest-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/producer-v2/source-manifest-v2.json",
+    "sha256": "e14ba2fc84e67cfbc3cd510faa32a667ae4cdcc0907156e33da159a7460d5fca",
+    "bytes": 2917
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-root-review-v2-20261011/source-review-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/root-source-v2/source-review-v2.json",
+    "sha256": "e376980f4354cff94c396573df1fcafeb901f72a8f7e2e5de752497d3260fed1",
+    "bytes": 2227
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-search-v2-independent-20261011/source-review-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-source-v2/source-review-v2.json",
+    "sha256": "f758a7e44846a9fb037caaa9a696ffa1210b6965fcd5c35aa0ff5c0506defe93",
+    "bytes": 11570
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/architecture-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/architecture-v1.json",
+    "sha256": "a9c65fbfe184ab5dd40521820208de4eed01f939215e876106812af4c5b253c5",
+    "bytes": 6680
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/audit-lifetime-v1.json",
+    "sha256": "8f2928261f7ab5405b5cda0eba79947eb1128a748768666cfd020ead7ca2eadd",
+    "bytes": 1492
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/audit-plan-v1.json",
+    "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+    "bytes": 198422
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/audit-result-v1.json",
+    "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+    "bytes": 5218918
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/audit-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/audit-stdout-v1.txt",
+    "sha256": "54a1b7c4b868d2f02e036d3410ff1f47548d8dde1b560ca7cd1f44e303ddc571",
+    "bytes": 180
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_audit_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/geometry_trace_audit_v1.py",
+    "sha256": "85c3b09724fb44161efc65a55afe9df2b1865298cd3d7b17db268a54fa834ca9",
+    "bytes": 26613
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_freeze_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/geometry_trace_freeze_v1.py",
+    "sha256": "3404130f828ed438aac6bd596d77ecbe30105776bd223a22517d321bef7d1de1",
+    "bytes": 9849
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/geometry_trace_order_v1.py",
+    "sha256": "0fc35c2dacb2266ee587843f715e848ae6839b00220a01bb00d61eb74d65be44",
+    "bytes": 2291
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_owner_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/geometry_trace_owner_v1.py",
+    "sha256": "3f4142f53115bcdca3097a7061ca3ca52d37dc5d3f09d9466ac7428b44893f6a",
+    "bytes": 5246
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/geometry_trace_point_v1.py",
+    "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+    "bytes": 9091
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/root-activation-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/root-activation-v1.json",
+    "sha256": "dbb2951242117bdae9cb2c825c51b60e57a662c9bb85b02a9b3a8d0221c248be",
+    "bytes": 747
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/source-freeze-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/source-freeze-v1.json",
+    "sha256": "3fe3cd2bb14a79b921556cd2e86d051050c0d02ce8a8e19c38682c08c8a58ea9",
+    "bytes": 628
+  },
+  {
+    "origin": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/source-manifest-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/independent-trace/source-manifest-v1.json",
+    "sha256": "de59992bc31beac38b3e4f9c6886baf158f145e9244a6e44b4a4a054635d8b3f",
+    "bytes": 2140
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-20261011/readiness-receipt.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v1/readiness-receipt.json",
+    "sha256": "a030208433eafd46d8993bd18cf02108bcf32099635b9a6f7948737eff48601c",
+    "bytes": 2712
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-20261011/source-controls-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v1/source-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-20261011/source-controls.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v1/source-controls.json",
+    "sha256": "d04de9d879e71d2f18fc2fac9fbb9fa44fafdd0f7e36c5ef694f7adaf8b31d02",
+    "bytes": 318
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-20261011/source-schema.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v1/source-schema.json",
+    "sha256": "12ea811afbe93513429c6ae8d23ad77f253a83af79f47c4929de35e633aea44a",
+    "bytes": 5978
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-20261011/source-syntax-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v1/source-syntax-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/build-v2.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/build-v2.py",
+    "sha256": "4aea951be53151150040f399582ade4065835c470f04f560db8e16600b89111b",
+    "bytes": 13795
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/freeze-readiness.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/freeze-readiness.py",
+    "sha256": "06cdb7b617dd8cfbd91a6384d2983d2f340029d02c91fd1753fce76c49289527",
+    "bytes": 6982
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/integration.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/integration.json",
+    "sha256": "182e56ad330d5023ed396c70c6c9a7678ca728390d5f050bdc0603cd33767062",
+    "bytes": 2899
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/readiness-receipt.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/readiness-receipt.json",
+    "sha256": "944fd9678f0d28c0e3dbee414226d63ebccfcc53a762c709a70f4a9d3c257828",
+    "bytes": 5411
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/readiness-schema-clarification.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/readiness-schema-clarification.json",
+    "sha256": "25380ae41beb6a89b84c82265cf90b9bb9cf19be27c22e4a6fb531288f2a7021",
+    "bytes": 1309
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-controls-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/source-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-controls-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/source-controls-stdout.txt",
+    "sha256": "acbe46934ac70667ec7621ab34f0d0091c124d02652c87ffcde98e677c859bb3",
+    "bytes": 551
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-controls.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/source-controls.json",
+    "sha256": "93cf97a421140cb597837217f499cec37cae490a6b579436bf30f64c271a6ec3",
+    "bytes": 980
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema-clarified.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/source-schema-clarified.json",
+    "sha256": "19d53dd522dcd4902634f0027f917548a57cb59ced409052c49394837525ffc1",
+    "bytes": 8820
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/source-schema.json",
+    "sha256": "bc2e56aafa459d8f3c5c8ca216722309cb3081970a52308ab08483844341cda0",
+    "bytes": 8799
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-syntax-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v2/source-syntax-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-search-diagnosis-20261011/diagnosis-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/diagnosis/diagnosis-v1.json",
+    "sha256": "ee513f5588c3c42e53cdf5c22149d5daf91e96302a4a58534fc8fceff015352a",
+    "bytes": 183399
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-search-diagnosis-20261011/manifest-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/diagnosis/manifest-v1.json",
+    "sha256": "ee2faaa8294379fdc0cf7e9c9c2d354897d13fe23f234189a973830de7eb5578",
+    "bytes": 1035
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/diagnosis/next-gate-plan-v1.json",
+    "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+    "bytes": 7007
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-search-diagnosis-20261011/trace_metadata_v1.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/diagnosis/trace_metadata_v1.py",
+    "sha256": "7e0dd06cd33849aab4501beebbfbbafed3e9a22bf4650f5cc5db6e6fa13143c6",
+    "bytes": 18704
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-actual-independent-review-20261011/terminal-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/actual-review/terminal-review-v1.json",
+    "sha256": "659587800de30271bca0a172d044be8724aebe8220b4b3ab16cda60c01f4d8d6",
+    "bytes": 9775
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/build-v3.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/build-v3.py",
+    "sha256": "10741b11a7be5e5b680691f67c8a16f1d1c1306373b2ed7e5a635f2cd9f041f9",
+    "bytes": 4880
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/freeze-readiness.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/freeze-readiness.py",
+    "sha256": "2cc262d76150f34730fa08c7ab44f62be64413b1a6e82b27fbe0aa68d01b0ac9",
+    "bytes": 4945
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/integration.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/integration.json",
+    "sha256": "78d425ba113fd26470b4a86aeae5319b9732b44523c38e338f2f8204b92ebcf4",
+    "bytes": 2599
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/readiness-receipt.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/readiness-receipt.json",
+    "sha256": "74049f41a3ae86c989944d0db791ac1b6e29f3fb5bf5531c132b7b6574e2c425",
+    "bytes": 5168
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-controls-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/source-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-controls-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/source-controls-stdout.txt",
+    "sha256": "ae93f28bfd44f38917bfd5ae645442f86359e2601c37a2aacc3c2ef2978b9c8d",
+    "bytes": 653
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-controls.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/source-controls.json",
+    "sha256": "2178f439d3f2744b22bb1f24b6c10f29c8c69ca27bdc75d067eedc66c81305fc",
+    "bytes": 1063
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-schema.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/source-schema.json",
+    "sha256": "f27b58b9ebe2ba63a908d676d8d1dc18f8f98c63afa34f420c3d553553773eaa",
+    "bytes": 9693
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-syntax-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v3/source-syntax-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/build-v4.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/build-v4.py",
+    "sha256": "66f7e3249affdbe46291b0d9aeb50730c01ba94034ad647202f6cb2bbd1760bf",
+    "bytes": 3146
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/freeze-readiness.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/freeze-readiness.py",
+    "sha256": "dee17bd49e092d29a82e10c45e76d9180caa310bf28b379835be60c204ec5341",
+    "bytes": 5056
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/integration.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/integration.json",
+    "sha256": "a1969cc46e5477b991e275752a691c6b5940872ccdd6421e92f6714c557b0604",
+    "bytes": 2603
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/readiness-receipt.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/readiness-receipt.json",
+    "sha256": "8f65b07b17fe0286777279d22c6db87b2a16e0ccbdc33fc340519aeeb224bcb6",
+    "bytes": 5249
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-controls-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/source-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-controls-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/source-controls-stdout.txt",
+    "sha256": "544866b2a775725a744b2c6d2285230998c83d58b329f9db00a68603569ea822",
+    "bytes": 715
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-controls.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/source-controls.json",
+    "sha256": "154a5f3120802a62b9f9e39deb9f4078f910e51b014c9a25d14592ce7967decf",
+    "bytes": 1134
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-schema.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/source-schema.json",
+    "sha256": "b4243265fc38c6300deab8a0a09a6d4874c579042f14b7888a1e87c475c47222",
+    "bytes": 10696
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-syntax-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/reader-source-v4/source-syntax-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/actual-display-data-validation-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/actual-display-data-validation-v2.json",
+    "sha256": "afe96c31b567dc0078f9536cb6415b433a1f52a923ae330a32d3cfbc5c87d6cf",
+    "bytes": 2282
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/prepare_report.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/prepare_report.py",
+    "sha256": "5764289d8765768ac792e3d75746a605b9b7257260214c0ee594cca47541414f",
+    "bytes": 19214
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/reader-v2-exterior-precondition-clarification.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/reader-v2-exterior-precondition-clarification.json",
+    "sha256": "178e542c9620e67277729b5c07ca371de2169f1ec2c62ae4bb58787aca8e1f14",
+    "bytes": 1426
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/report-plan.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/report-plan.json",
+    "sha256": "b7180537e9c973e35a8226a5c429df20320e2de1cf8f7fe6481143604933e9e7",
+    "bytes": 1015
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/report_evidence.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/report_evidence.py",
+    "sha256": "0e9a4721a04108e1e16e094e11a4219ac19df5e81ebfa9fde7e4b5e3ab49774a",
+    "bytes": 6766
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-auditor-v1-terminal.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-auditor-v1-terminal.json",
+    "sha256": "0d424cf89c7bf7db460e17609b90421db5db071800de6361dc143e435499ba55",
+    "bytes": 2103
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-diagnosis-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-diagnosis-source-review-v1.json",
+    "sha256": "8d701a9e03ae78fd2dfe00cb91774912953913b3bbcc7e9bfca10c44b465a49d",
+    "bytes": 1256
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-independent-audit-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-independent-audit-source-review-v1.json",
+    "sha256": "fddec199f6a4782ad8b4a384521db3961cee6cff5920cd0139000d0d5a288649",
+    "bytes": 1723
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v1-terminal.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-producer-v1-terminal.json",
+    "sha256": "4408940fe31fffc12e94851494568439a47dcb4badfa76cc4907c9ea5ddcb0f0",
+    "bytes": 2582
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v2-terminal.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-producer-v2-terminal.json",
+    "sha256": "157a67194f9c93307e65ec69bef74305ccf31559ae4e258716752d6565c70870",
+    "bytes": 1509
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-reader-source-review-v2.json",
+    "sha256": "c001914bf418782b76ce5f246bdabb4b1bad0bdc718baae5046f9ad9f92ef078",
+    "bytes": 1492
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v3.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-reader-source-review-v3.json",
+    "sha256": "5a0071a11f19d9df01cec86183d3b6ccdca064ee9b584504b969381b7c0ab4da",
+    "bytes": 1688
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v4.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/root-reader-source-review-v4.json",
+    "sha256": "a666f540c3057fe9f5e3b57ce25bd1f24dfd7581100e146e88d17503d819a411",
+    "bytes": 1346
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/terminal-selection-v2.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/terminal-selection-v2.json",
+    "sha256": "bb5ced00e967626826fe9ef3263d030857995a442b03c5fa01960fb9665a52e9",
+    "bytes": 6733
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/terminal-selection-v3.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/terminal-selection-v3.json",
+    "sha256": "5723e84ffe74ce78bc61b19d3df88a287283f2feff1f774e0da4d0006776febc",
+    "bytes": 7269
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/terminal-selection.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/terminal-selection.json",
+    "sha256": "a9d8dd8420cd92dc5d336995a572e7754d0a96cd4173703b4736314dec8d55f4",
+    "bytes": 5790
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/turn-audit.json",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/turn-audit.json",
+    "sha256": "d06985249b9a255bd0caaf7a414752f0a57bf0e02210302ed6fb380e1a449168",
+    "bytes": 1357
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-progress-20261011/validate_report.py",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/coordinator/validate_report.py",
+    "sha256": "7f8ad042dccb2cdd40769186696c4fb4da01efd569045b5b99cca2e010c69af0",
+    "bytes": 6370
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer.js",
+    "path": "docs/research/gcts-rl-renewal/automatic-geometry/viewer.js",
+    "sha256": "f51afb1b3609d985d7f1d0b21e1dc3febf20a0316618cdb21534e8c8555be02e",
+    "bytes": 34758
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "status": "source_ready_browser_reader_pending_root_actual_data_dom_qa",
+  "files": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/viewer.js",
+      "sha256": "685864ea4173d72c2d694b55978706a3fca1ac632a4746c1af7af6c19cb727a6",
+      "bytes": 22919
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/source-schema.json",
+      "sha256": "12ea811afbe93513429c6ae8d23ad77f253a83af79f47c4929de35e633aea44a",
+      "bytes": 5978
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/reader-source-controls.js",
+      "sha256": "9e6894224b98bec441ecb25012dc92c8c6eab461a21bab85bd3b6b1e4f140fd4",
+      "bytes": 3723
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/source-controls.json",
+      "sha256": "d04de9d879e71d2f18fc2fac9fbb9fa44fafdd0f7e36c5ef694f7adaf8b31d02",
+      "bytes": 318
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/source-controls-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-20261011/source-syntax-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "syntax_exit_code": 0,
+  "display_controls_exit_code": 0,
+  "source_controls": {
+    "status": "passed_bounded_display_only_source_controls",
+    "formula_tag_examples": 7,
+    "malformed_or_metadata_mutants_rejected": 11,
+    "acceptance_default_pending": true,
+    "original_results_loaded": 0,
+    "scientific_imports": 0,
+    "searches": 0,
+    "training_episodes": 0,
+    "native_queries": 0,
+    "replays": 0
+  },
+  "source_check_seconds": 0.150191458,
+  "source_authoring_cost": "Uninstrumented and unknown; no scientific budget charge or claim.",
+  "initial_missing_node_command_exit": 127,
+  "initial_missing_node_command_scope": "Shell PATH had no node executable; syntax/control commands did not execute. Bundled node path then used.",
+  "actual_results_loaded": 0,
+  "actual_models_loaded": 0,
+  "scientific_imports": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "replays": 0,
+  "math": "Root-established MathJax needed; actual math layout/renderer QA remains root-owned.",
+  "entry": "Autoload visual-data.json after DOM ready, or disable autostart and call GCTSGeometryReader.mount(data).",
+  "accepted_scope": "Only observation.independent_certificate_accepted===true / independent_trace_accepted===true, default pending. Display metadata checks do not certify mathematical proofs, native kernels or RL performance."
+}

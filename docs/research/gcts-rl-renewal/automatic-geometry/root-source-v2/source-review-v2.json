@@ -1,0 +1,45 @@
+{
+  "status": "root_source_reviewed_minimal_v2_body_authority_adapter_no_dispatch",
+  "inputs": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+      "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+      "bytes": 219919
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/source-manifest-v2.json",
+      "sha256": "e14ba2fc84e67cfbc3cd510faa32a667ae4cdcc0907156e33da159a7460d5fca",
+      "bytes": 2917
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/failure-causal-amendment-v2.json",
+      "sha256": "8627390f47347bb2fe7e365d58019e5fd4dd1d690c8a85029ff9f0806184e7be",
+      "bytes": 3710
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v1-terminal.json",
+      "sha256": "4408940fe31fffc12e94851494568439a47dcb4badfa76cc4907c9ea5ddcb0f0",
+      "bytes": 2582
+    }
+  ],
+  "new_freezer_fully_read": true,
+  "worker_diff_fully_read_and_exact": true,
+  "four_owner_order_decoder_copies_byte_identical": true,
+  "unchanged_phase_inputs": 118,
+  "unchanged_unique_phase_paths": 104,
+  "body_authority_exact_accepted_unique_paths": 56,
+  "all_source_bodies": 171,
+  "closure_unique_paths": 683,
+  "sources_AST_parsed": 8,
+  "search_model_scheduler_rollback_trace_decoder_limits_unchanged": true,
+  "scientific_imports": 0,
+  "model_loads": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "training": 0,
+  "source_review_gap": "Prior root and independent source reviews missed expanded-role list vs unique-source registry factory; failed actual gate retained.",
+  "prior_failed_owned_seconds": 0.935204458,
+  "gate": "Fresh V2 180/175/170 and512MiB per-phase gates unchanged; prior failureadditional, not claimedjoint180gate. Require independent V2source review and exact rootactivation before soleactualdispatch. Complete trace/certificate checks remain separately owned; no target proof or native claim.",
+  "read_scope": "New V2freezer and exact callerhunk fully read; unchanged fourcopies and old kernels were already fully read with exact matchinghashes.",
+  "review_seconds_before_receipt_write": 0.170351458
+}

@@ -1,0 +1,62 @@
+{
+  "status": "frozen_source_only_minimal_body_authority_caller_amendment",
+  "failed_v1_root_terminal": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v1-terminal.json",
+    "sha256": "4408940fe31fffc12e94851494568439a47dcb4badfa76cc4907c9ea5ddcb0f0",
+    "bytes": 2582
+  },
+  "failed_v1_lifetime": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-lifetime-v1.json",
+    "sha256": "2e2fd09a03c3907d7d9cf47fe560f16191fb02852531f58f04936a52f99d9be4",
+    "bytes": 1359
+  },
+  "failed_v1_supervision": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-supervision-v1.json",
+    "sha256": "51912ec32ca8e21b4cb80788d9ca260a267808c4cb1fa710721326afa0aa1ee6",
+    "bytes": 3072
+  },
+  "failed_v1_stderr": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-stderr-v1.txt",
+    "sha256": "f511e068be60c7a4c91ab05688649febff0c7c738c660e1b9160ec6302223c23",
+    "bytes": 965
+  },
+  "failed_v1_activation": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/root-activation-v1.json",
+    "sha256": "c54beee19c0b9f652e7818c7bfa989eab713fda2286bb859b900cd2aa9546a7d",
+    "bytes": 1731
+  },
+  "failed_v1_root_source_review": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-root-review-20261011/source-review-v1.json",
+    "sha256": "1a26ada4953ed9a623513a924413a6a8d551f2581d0f4f8bc0fa482d4547e7b7",
+    "bytes": 4911
+  },
+  "failed_v1_independent_source_review": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/source-review-v1.json",
+    "sha256": "17559920f8fb46beae26b8471b44cc2274454410b08b92bf4cb4896d3c83bbf2",
+    "bytes": 8537
+  },
+  "failed_v1_independent_causal_review": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/failed-terminal-causal-review-v1.json",
+    "sha256": "c0957fd8aea0d28ae0e4cbfbb49f5f0adb1a14c84366c733cbba02df53662f53",
+    "bytes": 9295
+  },
+  "worker_diff": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/worker-adapter-v1-to-v2.diff",
+    "sha256": "d40cd6ca4e192783c0aba4894c9a357b0af2c84e1f7169afa8df0c5f52468d45",
+    "bytes": 740
+  },
+  "cause": "The authored V1 caller gave the full 118-role phase metadata to a source-body authority factory requiring unique file paths; 14 repeated-path aliases were rejected after model construction, before automatic_search.",
+  "review_gap": "The author and both prior source reviews missed this caller-interface uniqueness precondition. The actual failure is preserved; it was neither proof rejection nor a completed target-search result.",
+  "repair": "Use exact accepted original full-language-plan-v3.json and its 56 unique input pins for frozen_family_authority. Keep all 118 broader phase prerequisites and complete preservation verification unchanged.",
+  "not_a_proof_deduplication": "No proof row, ordered premise, receptor port, primitive recipe, mapped source body, dependency or fallback candidate is removed or merged.",
+  "all_other_scientific_code": "Byte-identical forward order/decoder and unchanged DFS except this one caller hunk; unchanged primitive core/lifecycle kernel, model context/epoch, boundary, budgets and empty descriptors.",
+  "naming": "Sibling V2 folder retains source/output basenames used by byte-identical owners. Exact paths and plan bytes differ; old V1 files are never overwritten.",
+  "prior_failed_owner_seconds": 0.935204458,
+  "prior_failed_peak_bytes": 92700672,
+  "prior_target_searches_started": 0,
+  "prior_proofs": 0,
+  "prior_native_queries": 0,
+  "v2_scientific_executions": 0,
+  "v2_native_queries": 0,
+  "v2_training": false
+}

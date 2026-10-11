@@ -1,0 +1,63 @@
+{
+  "schema": "task-only-reader-v4-frozen-manifest",
+  "scope": "Native display-source only. Earlier v1/v2/v3 unchanged. Root owns actual-data integration/browser QA/publication.",
+  "entry": "viewer.js",
+  "source_schema": "source-schema.json",
+  "files": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/build-v4.py",
+      "sha256": "66f7e3249affdbe46291b0d9aeb50730c01ba94034ad647202f6cb2bbd1760bf",
+      "bytes": 3146
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/freeze-readiness.py",
+      "sha256": "dee17bd49e092d29a82e10c45e76d9180caa310bf28b379835be60c204ec5341",
+      "bytes": 5056
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/reader-source-controls.js",
+      "sha256": "0cd94ee6ebeeac9f593b4b8a1ae0131d6ce3d1bf9f2fc3fdc4983c8ab9909364",
+      "bytes": 12141
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/readiness-receipt.json",
+      "sha256": "8f65b07b17fe0286777279d22c6db87b2a16e0ccbdc33fc340519aeeb224bcb6",
+      "bytes": 5249
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-controls-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-controls-stdout.txt",
+      "sha256": "544866b2a775725a744b2c6d2285230998c83d58b329f9db00a68603569ea822",
+      "bytes": 715
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-controls.json",
+      "sha256": "154a5f3120802a62b9f9e39deb9f4078f910e51b014c9a25d14592ce7967decf",
+      "bytes": 1134
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-schema.json",
+      "sha256": "b4243265fc38c6300deab8a0a09a6d4874c579042f14b7888a1e87c475c47222",
+      "bytes": 10696
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/source-syntax-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer-v3-to-v4.diff",
+      "sha256": "b83e9f1515b9ede92a2f571f79e37f8d33ef6cb5ffc9fe4641826507ae5bf00b",
+      "bytes": 3954
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer.js",
+      "sha256": "f51afb1b3609d985d7f1d0b21e1dc3febf20a0316618cdb21534e8c8555be02e",
+      "bytes": 34758
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "pid": 40713,
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "scope": "two bounded automatic primitive geometry searches; complete inventory; no cluster hints",
+  "wall_ceiling_seconds": 175,
+  "host_ceiling_bytes": 536870912,
+  "maximum_geometry_searches": 2,
+  "native_queries": 0,
+  "new_training": false
+}

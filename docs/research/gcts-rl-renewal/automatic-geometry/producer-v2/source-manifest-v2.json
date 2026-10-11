@@ -1,0 +1,67 @@
+{
+  "status": "immutable_source_only_v2_caller_repair_pending_two_reviews_and_root_dispatch",
+  "files": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+      "bytes": 16449
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_bridge_decode_v1.py",
+      "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+      "bytes": 6052
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_search_run_v1.py",
+      "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+      "bytes": 7394
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_search_outer_v1.py",
+      "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+      "bytes": 3889
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_search_freeze_v2.py",
+      "sha256": "54df27641e42583aea57418768cb571597c109d01529f17c7b1c4fe3897888d1",
+      "bytes": 15106
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/worker-adapter-v1-to-v2.diff",
+      "sha256": "d40cd6ca4e192783c0aba4894c9a357b0af2c84e1f7169afa8df0c5f52468d45",
+      "bytes": 740
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/failure-causal-amendment-v2.json",
+      "sha256": "8627390f47347bb2fe7e365d58019e5fd4dd1d690c8a85029ff9f0806184e7be",
+      "bytes": 3710
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+      "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+      "bytes": 219919
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/source-freeze-v2.json",
+      "sha256": "c28506822317f947799cc1aa5da64745eb0e096a57175ea4e81022d2dc012685",
+      "bytes": 1176
+    }
+  ],
+  "total_files": 10,
+  "total_bytes": 278133,
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+    "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+    "bytes": 219919
+  },
+  "retained_v1_failed_owner_seconds": 0.935204458,
+  "scientific_executions": 0,
+  "native_queries": 0,
+  "publication_owner": "root",
+  "claim": "Minimal source-body plan adapter repair only, no proof discovery or fresh model execution."
+}

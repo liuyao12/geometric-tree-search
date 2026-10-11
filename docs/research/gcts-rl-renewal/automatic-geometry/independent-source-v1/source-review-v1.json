@@ -1,0 +1,126 @@
+{
+  "status": "passed_independent_read_only_source_readiness_with_resource_scope_caveats",
+  "manifest": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-manifest-v1.json",
+    "sha256": "99ac91b5db68cfe4e01f7b4dfd28056e34feccd9fb30c7c523c2ac8cf9c6ed27",
+    "bytes": 2396
+  },
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "source_freeze": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-freeze-v1.json",
+    "sha256": "a5097e74eb92d40dad39262ac0377d6a0d283348b429ce5bc7c58c820258d3dc",
+    "bytes": 861
+  },
+  "verified": {
+    "source_pins": 8,
+    "input_pins": 118,
+    "preserved_entries": 656,
+    "unique_frozen_closure_paths": 662,
+    "manifest_files": 8,
+    "all_sha_and_byte_bindings_match": true,
+    "all8sources_parse_without_import": true,
+    "activation_and_all_proposed_outputs_absent": true
+  },
+  "sources": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "eddf441a1c895b5b552050d3a38c3817532f8733a179320f98c0043327bcfc33",
+      "bytes": 16355
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_bridge_decode_v1.py",
+      "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+      "bytes": 6052
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_run_v1.py",
+      "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+      "bytes": 7394
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_outer_v1.py",
+      "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+      "bytes": 3889
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_freeze_v1.py",
+      "sha256": "b31218de38dd9992e6b90a7972e3fc00e23e4cf68b17984d82673bc827238382",
+      "bytes": 19911
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    }
+  ],
+  "prerequisites": {
+    "full_actual_independent_result": {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-result-v1.json",
+      "sha256": "a4867213a9af514ca2fdd2ae6307e7cfbb3ab0280e87bcc4008b1def63e5ada3",
+      "bytes": 1390044
+    },
+    "full_actual_independent_lifetime": {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/audit-lifetime-v1.json",
+      "sha256": "7fbee930e46cd576770e9d293ea3d96d7a15932718714e54d2555679ecf84560",
+      "bytes": 1443
+    },
+    "root_terminal": {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/root-full-independent-terminal-v1.json",
+      "sha256": "e4886266fb7abc9bf6d852c867dca3bd88e0e8be72e38b57820d523a56b312b0",
+      "bytes": 873
+    },
+    "read_hint_scope_clarification": {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/scope-clarification-v1.json",
+      "sha256": "c89f8b7bce266f7d362feb988e2c2ea17443ff0fc65dae43b636c56d1c82f500",
+      "bytes": 4821
+    }
+  },
+  "static_control_review": {
+    "language": "Unchanged229recipes/217formulas/24rows and exact old model epoch;171 bodies validated, zero active descriptors. Three exact global seed assumptions only.",
+    "ranking": "Complete chosen branch domain permutation, readiness/novelty/AST-size features only; no target/theory/context/geometry-constant lookup. Forced singleton never reordered. An authored fixed order, not RL or pruning.",
+    "scheduler": "Old primitive Executor.step rechecks global dead/forced/earliest decision and exact selected row, legality and forced key.",
+    "DFS": "At each parent, choose first key of complete order; only returned exhausted finite child permits exclusion after paired parent restoration. Unknown children restore whole local checkpoint and return unknown without exclusion. Dead proves only finite marked subtree failure; complete point tiling remains independent-check pending.",
+    "trace": "Every recorded node/decision/order/step/exclusion/rollback has complete semantic SHA and reconstructible totals/marks/reference counts/order/generations/exclusions/hints/domain counts. Omitted factor tables require independent raw reconstruction before acceptance; chosen full key-set/permutation stream hashes must be independently recomputed.",
+    "trace_cutoff": "TraceLimit aborts whole solve, retains possibly incomplete final operation prefix, restores exact paired root and labels unknown_trace_budget. Such truncated trace cannot certify exhaustion or full unrecorded-operation audit.",
+    "decoder": "Preserves all24row commands and ordered strict-prior MP references, reconstructs complete decorated identities and exact occupancy/mark union, checks final original target. Ground assumptions map to exact retained fresh named hypothesis axioms in flat gcts-fol-1 with blocks=[]; same Gamma-relative ground sequent only. Logical checks and shared native acceptance remain separate.",
+    "authored_word_scope": "Canonical family projection may decode example then discard it. No authored24 word used as active descriptor/order hint or acceptance authority.",
+    "owner": "Root-only exact-plan activation;180s outer/175s supervisor/170s alarm and512MiB conservative retrospective peak. Watchdog metadata failure/absent sample/missing child receipt/resource overshoot are unknown; kill/wait-reap path retained. No OS hard memory-cap guarantee. Outer unresponsive supervisor outcome explicitly cannot confirm worker reap."
+  },
+  "resource_caveats": [
+    "Per-lane20seconds is a checked deadline, not a dedicated alarm. In-flight ordering/state serialization/step/decision/rollback can complete past deadline; actual lane elapsed/overshoot must remain disclosed, and a result over a claimed strict20s matched gate must be qualified unknown for that gate. Whole170/175/180 gates remain separate.",
+    "Complete domain listing/order hashing/state hashing incurs preparation and search overhead; setup timers and serialization are separately billed, overlapping subphase clocks are not additive. One observation per order establishes no statistical or general speed claim.",
+    "Receipt writes excluded from respective prewrite clocks as declared; source-authoring/cold historical registry cost additional and unmeasured."
+  ],
+  "required_actual_next_gate": [
+    "Root must independently source-review and explicitly bind this exact plan before any producer dispatch. This receipt dispatches nothing.",
+    "After terminal producer, independently reconstruct complete raw domains, all state/transaction and chosen ordering hashes; establish every exhausted child before exclusion. Preserve trace/time/attempt/resource unknowns.",
+    "Independently validate every used primitive command against exact guarded I.2 and ordered hypotheses; check whole point certificate, final target and flat retained-hypothesis request. Point consistency alone is not logical acceptance.",
+    "No shared native query until a separately authorized first independently accepted discovered certificate and exact fixed-table/capacity/input plan. No automatic heap resize or changed theorem."
+  ],
+  "findings": [],
+  "disposition": "Ready for root source review of the frozen prospective producer, with checked-deadline and partial-trace scope made explicit. No scientific activation or theorem/certificate acceptance is granted by this source receipt.",
+  "queries_by_review": {
+    "model_constructions": 0,
+    "scientific_imports": 0,
+    "fixtures": 0,
+    "searches": 0,
+    "native_queries": 0,
+    "replays": 0,
+    "process_polls": 0
+  },
+  "review_seconds_before_receipt_write": 0.37577154199999996
+}

@@ -1,0 +1,45 @@
+{
+  "status": "root_authoritative_terminal_v2_producer_passed_pending_independent_trace_and_logical_audit",
+  "exec_session": 81060,
+  "exec_terminal_return_code": 0,
+  "same_handle_polled_to_terminal": true,
+  "worker_pid": 43108,
+  "supervisor_pid": 43107,
+  "worker_and_supervisor_reaped": true,
+  "lifetime": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-lifetime-v1.json",
+    "sha256": "f16f7f900988f13f625060f74ee3e7fb307d42384675ba83c5bf1ee824dcbf61",
+    "bytes": 1399
+  },
+  "supervision": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-supervision-v1.json",
+    "sha256": "b3f3c94edab341b1d643e804d7ea19960baba47d0ded0792f2a663d67fd10d40",
+    "bytes": 31521
+  },
+  "outcome": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-outcome-v1.json",
+    "sha256": "4f5581e6ce8557cb0383e4a1fabfe7dcae3c17a6dded30f367e2add9cb9b1149",
+    "bytes": 2467
+  },
+  "observations": [
+    {
+      "id": "base-complete-primitives",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "seconds": 1.4452754589999999,
+      "events": 1280,
+      "point_certificate": false
+    },
+    {
+      "id": "fixed-forward-novelty",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "seconds": 1.296331542,
+      "events": 1168,
+      "point_certificate": false
+    }
+  ],
+  "native_queries": 0,
+  "training": false,
+  "prior_failed_owned_seconds_additional": 0.935204458
+}

@@ -1,0 +1,30 @@
+{
+  "status": "root_reviewed_minimal_reader_v4_English_LaTeX_successor_pending_actual_DOM_QA",
+  "viewer": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer.js",
+    "sha256": "f51afb1b3609d985d7f1d0b21e1dc3febf20a0316618cdb21534e8c8555be02e",
+    "bytes": 34758
+  },
+  "manifest": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/integration.json",
+    "sha256": "a1969cc46e5477b991e275752a691c6b5940872ccdd6421e92f6714c557b0604",
+    "bytes": 2603
+  },
+  "exact_diff": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer-v3-to-v4.diff",
+    "sha256": "b83e9f1515b9ede92a2f571f79e37f8d33ef6cb5ffc9fe4641826507ae5bf00b",
+    "bytes": 3954
+  },
+  "preserved_v3_review": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v3.json",
+    "sha256": "5a0071a11f19d9df01cec86183d3b6ccdca064ee9b584504b969381b7c0ab4da",
+    "bytes": 1688
+  },
+  "manifest_files_verified": 11,
+  "exact_minimal_diff_verified": true,
+  "new_display_branches_fully_read": true,
+  "scope": "Only English identifier notation changes; all snapshot, candidate, sentinel and certificate semantics unchanged. DOM textContent and MathJax typesetting retained.",
+  "scientific_reruns": 0,
+  "actual_certificates": 0,
+  "actual_certificate_DOM": "unexecuted"
+}

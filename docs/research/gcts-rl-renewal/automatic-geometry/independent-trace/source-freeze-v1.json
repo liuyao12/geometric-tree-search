@@ -1,0 +1,21 @@
+{
+  "status": "frozen_independent_source_only_trace_audit_pending_root_dispatch",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+    "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+    "bytes": 198422
+  },
+  "sources": 5,
+  "libraries": 4,
+  "inputs": 135,
+  "preserved": 696,
+  "unique_verified_paths": 703,
+  "ASTs_parsed": 9,
+  "mismatches": 0,
+  "metadata_freeze_seconds_before_receipt_write": 0.737927208,
+  "source_authoring": "unmeasured",
+  "scientific_loads": 0,
+  "fixture_runs": 0,
+  "searches": 0,
+  "native_queries": 0
+}

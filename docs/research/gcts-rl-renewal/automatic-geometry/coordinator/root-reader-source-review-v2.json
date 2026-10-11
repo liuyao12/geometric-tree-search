@@ -1,0 +1,30 @@
+{
+  "status": "root_reviewed_frozen_reader_v2_source_no_actual_browser_qa_yet",
+  "viewer": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/viewer.js",
+    "sha256": "76fd411e50c3ae94356be9cb5f5eb7df679d9e27750188066ac7d21e83fc06aa",
+    "bytes": 34030
+  },
+  "manifest": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/integration.json",
+    "sha256": "182e56ad330d5023ed396c70c6c9a7678ca728390d5f050bdc0603cd33767062",
+    "bytes": 2899
+  },
+  "clarified_schema": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema-clarified.json",
+    "sha256": "19d53dd522dcd4902634f0027f917548a57cb59ced409052c49394837525ffc1",
+    "bytes": 8820
+  },
+  "source_files_verified": 12,
+  "new_blocks_fully_read": true,
+  "unchanged_AST_renderer_prefix_byte_equal_reviewed_v1": true,
+  "mark_schema_correction": "Blue x1 formula output/source constraints; purple x2plus offsets at current row. Root supplied earlier wrong display schema; corrected successor and immutable v1 retained.",
+  "partial_scope": "Sorted numeric snapshot rows; pending earlier source may be unselected; all saved marks and zero assigned values preserved; exact graph and event details. No proof command invented.",
+  "actual_certificates_in_data": 0,
+  "actual_certificate_DOM_qa": "unexecuted",
+  "actual_browser_qa": "pending",
+  "scientific_imports": 0,
+  "searches": 0,
+  "native": 0,
+  "review_seconds_before_receipt": 0.003376083000000002
+}

@@ -1,0 +1,32 @@
+{
+  "status": "unknown_or_failed",
+  "full_supervisor_process_seconds_including_receipt_write": 0.935204458,
+  "process_return_code": 1,
+  "supervisor_pid": 40712,
+  "supervisor_wait_reaped": true,
+  "outer_cleanup_reason": null,
+  "worker_terminal_reaped_confirmed": true,
+  "outer_own_peak_bytes": 13844480,
+  "outer_children_kernel_peak_bytes": 64749568,
+  "conservative_host_peak_bytes": 92700672,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 180,
+  "actual_wall_overshoot_seconds": 0,
+  "actual_memory_overshoot_bytes": 0,
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+    "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+    "bytes": 212097
+  },
+  "supervision": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-supervision-v1.json",
+    "sha256": "51912ec32ca8e21b4cb80788d9ca260a267808c4cb1fa710721326afa0aa1ee6",
+    "bytes": 3072
+  },
+  "own_receipt_serialization": "outside pre-write measurement; all worker/supervisor serialization included",
+  "actual_geometry_model_execution": true,
+  "maximum_geometry_target_searches": 2,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "mathematical_acceptance": "pending separately owned trace/symbolic audit; no shared native query in this phase"
+}

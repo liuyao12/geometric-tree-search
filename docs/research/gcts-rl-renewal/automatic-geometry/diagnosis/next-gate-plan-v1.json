@@ -1,0 +1,91 @@
+{
+  "status": "prospective_source_only_receptor_match_ranking_gate_no_implementation_or_dispatch",
+  "diagnosis": {
+    "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/diagnosis-v1.json",
+    "sha256": "ee513f5588c3c42e53cdf5c22149d5daf91e96302a4a58534fc8fceff015352a",
+    "bytes": 183399
+  },
+  "exact_predecessor_plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+    "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+    "bytes": 219919
+  },
+  "recommended_small_next_step": "Add generic literal partial-guard matching as an ordering feature, then compare the unchanged fixed-forward control against this new ordering on the same full problem. Keep all candidate alternatives.",
+  "hypothesis": "Available hypothesis receptors resolve early quantifier specialization ties more usefully than formula size/witness text alone, reducing tail exploration under an unusable prefix. This is untested.",
+  "fixed_scope": {
+    "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+    "recipes": 229,
+    "formulas": 217,
+    "rows": 24,
+    "validated_source_bodies": 171,
+    "body_authority_plan": {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+      "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+      "bytes": 158160
+    },
+    "active_cluster_descriptors": 0,
+    "authored_target_words_as_hints": 0,
+    "same_theory_hypotheses_target_and_point_boundary": true
+  },
+  "matching_feature_specification": [
+    "Use only exact formula ASTs of already selected primitive placements, including original hypothesis seeds. A marking on an unoccupied row is not an available hypothesis.",
+    "For an instantiation witness, inspect its consequent AST; peel its leading universal binders and, when present, read the immediate implication antecedent as a receptor pattern. Its corresponding MP consequence may use the same pattern feature.",
+    "Only variables bound by that peeled universal prefix are pattern variables. Match to whole already selected quantifier-free antecedent formulas by literal AST constructor, symbol, arity, polarity, ordered argument and closed-constant equality.",
+    "The first bounded matcher admits images that are closed zero-arity function terms only; repeated occurrences of a pattern variable require the exact same term. Constants introduced by completed instantiations cannot be rebound. Unsupported/nested quantified patterns receive a neutral score rather than a rejection.",
+    "Do not solve satisfiability, invoke a host logical prover, infer a new hypothesis, merge conjunctions or rewrite commands. This is structural pattern matching for ranking only.",
+    "Keep the original readiness tiers; within relevant ties prefer a pattern matching an available receptor over a nonmatching specialization, then apply the original AST size/witness/recipe/reference tie order. Specify neutral versus match versus nonmatch exactly before implementation.",
+    "Compute a complete permutation at the graph-selected point. No failed match removes a candidate or changes degrees, dead/forced decisions, earliest-generation choice, remote markings or parent exclusions.",
+    "No predicate names, geometry constants, target formula code, theorem ID, authored proof word or preselected family pair may be embedded in the matching code."
+  ],
+  "prospective_controls": [
+    {
+      "mode": "same frozen fixed-forward ordering",
+      "attempts": 128,
+      "seconds": 20,
+      "trace_events": 2000
+    },
+    {
+      "mode": "fixed-forward plus generic receptor-match feature",
+      "attempts": 128,
+      "seconds": 20,
+      "trace_events": 2000
+    }
+  ],
+  "source_and_resource_gate": {
+    "before_execution": "New versioned source/input/preservation/feature plan plus root and independent source review; this note authorizes no implementation run.",
+    "owner_seconds": 180,
+    "supervisor_seconds": 175,
+    "worker_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "independent_seconds": 180,
+    "independent_host_bytes": 536870912,
+    "unchanged_child_unknown_behavior": "Unknown restores paired state without excluding the child; exact finite exhaustion is the only parent-exclusion cause.",
+    "costs": "Charge frozen old preparation/failure costs, fresh model/body setup, matcher feature preparation/per-candidate time, complete permutation/trace/rollback/serialization and separate full audit."
+  },
+  "prospective_adversarial_cases": [
+    "Literal repeated variable matched inconsistently",
+    "Already instantiated constant rebound",
+    "Predicate/constructor/arity/polarity mismatch",
+    "Binder shadowing or quantified recipient mistaken for a free pattern",
+    "Same-formula different primitive reference/identity",
+    "Ordered duplicate premises merged",
+    "Nonmatch prunes a legal fallback key",
+    "Unsupported AST treated as a logical rejection",
+    "Forced move bypassed or late-generation receptor selected",
+    "Budget-unknown child excluded",
+    "Source/body authority alias regression"
+  ],
+  "certificate_goal": "Only a newly returned full point certificate and independently checked all-24-row symbolic proof count as discovery. All unknowns remain unknown. Any later shared-machine native gate is separately frozen after exact input-byte/capacity review.",
+  "interpretation": "No new RL training. One finite deterministic problem, two order controls; no significance, universal-palette correspondence or general speed claim.",
+  "alternate_next_hierarchy_route": {
+    "proposal": "A generic proposer scans every one of the 171 validated family interfaces and every ordered selected-row premise match. It suggests source-body embeddings using exact primitive identities and shared members, then validates aggregates against the same graph.",
+    "new_receptors": "Newly selected outputs can become inputs for later attachments. The proposer must compute those matches at runtime, never receive a manually selected target-proof family chain.",
+    "completeness": "Proposal enumeration may be bounded as advice, but sampled/limited proposals never supply candidate counts, forced/dead claims or pruning; every primitive fallback remains available.",
+    "implementation_gap": "The accepted lifecycle has root-fixed immutable descriptors. Dynamic descriptor additions, absorbing retirement across updates, source/body bindings, versioned authority and paired rollback require a separately designed and checked protocol before activation.",
+    "why_not_immediate": "The smaller guard-match ordering gate isolates the observed early-prefix defect without changing that registry protocol. Its success is not guaranteed; no automatic budget increase or authored witness insertion on failure."
+  },
+  "executed_scientific_trials": 0,
+  "new_policy_implemented": false,
+  "native_queries": 0,
+  "publication_owner": "root"
+}

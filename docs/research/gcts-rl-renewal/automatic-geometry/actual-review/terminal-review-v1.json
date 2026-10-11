@@ -1,0 +1,221 @@
+{
+  "status": "passed_read_only_terminal_reconciliation_of_owned_independent_geometry_trace_audit",
+  "method": "Stream hash exact plan/source/input/preserved/activation bindings; reconcile saved result/lifetime/root terminal/census/cost records and hash every already-produced expected event payload and decorated identity preimage. No model reconstruction, scientific import, replay, search, solver or native invocation.",
+  "plan": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+    "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+    "bytes": 198422
+  },
+  "source_manifest": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/source-manifest-v1.json",
+    "sha256": "de59992bc31beac38b3e4f9c6886baf158f145e9244a6e44b4a4a054635d8b3f",
+    "bytes": 2140
+  },
+  "source_freeze": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/source-freeze-v1.json",
+    "sha256": "3fe3cd2bb14a79b921556cd2e86d051050c0d02ce8a8e19c38682c08c8a58ea9",
+    "bytes": 628
+  },
+  "actual_result": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+    "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+    "bytes": 5218918
+  },
+  "actual_lifetime": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+    "sha256": "8f2928261f7ab5405b5cda0eba79947eb1128a748768666cfd020ead7ca2eadd",
+    "bytes": 1492
+  },
+  "root_terminal": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-auditor-v1-terminal.json",
+    "sha256": "0d424cf89c7bf7db460e17609b90421db5db071800de6361dc143e435499ba55",
+    "bytes": 2103
+  },
+  "root_activation": {
+    "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/root-activation-v1.json",
+    "sha256": "dbb2951242117bdae9cb2c825c51b60e57a662c9bb85b02a9b3a8d0221c248be",
+    "bytes": 747
+  },
+  "root_source_review": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-independent-audit-source-review-v1.json",
+    "sha256": "fddec199f6a4782ad8b4a384521db3961cee6cff5920cd0139000d0d5a288649",
+    "bytes": 1723
+  },
+  "pins": {
+    "sources": 5,
+    "libraries": 4,
+    "inputs": 135,
+    "preserved": 696,
+    "unique_verified_paths": 703,
+    "mismatches": 0,
+    "canonical_verified_pin_ledger_sha256": "f59e816e8622f467be8f7502a67ef9973511f8d727913624cbfcd304d55286bb"
+  },
+  "source_pins": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+      "bytes": 9091
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+      "sha256": "0fc35c2dacb2266ee587843f715e848ae6839b00220a01bb00d61eb74d65be44",
+      "bytes": 2291
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_audit_v1.py",
+      "sha256": "85c3b09724fb44161efc65a55afe9df2b1865298cd3d7b17db268a54fa834ca9",
+      "bytes": 26613
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_owner_v1.py",
+      "sha256": "3f4142f53115bcdca3097a7061ca3ca52d37dc5d3f09d9466ac7428b44893f6a",
+      "bytes": 5246
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_freeze_v1.py",
+      "sha256": "3404130f828ed438aac6bd596d77ecbe30105776bd223a22517d321bef7d1de1",
+      "bytes": 9849
+    }
+  ],
+  "library_pins": [
+    {
+      "role": "independent_point",
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    {
+      "role": "independent_families",
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198,
+      "role": "symbolic_checker"
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577,
+      "role": "expansion_checker"
+    }
+  ],
+  "observations": [
+    {
+      "id": "base-complete-primitives",
+      "status": "unknown_search_budget",
+      "events": 1280,
+      "nodes": 107,
+      "attempts": 128,
+      "forced": 22,
+      "branches": 106,
+      "distinct_graph_states": 219,
+      "complete_base_binding_checks": 1921839,
+      "complete_legal_binding_checks": 1921374,
+      "altered_first_choices": 0,
+      "altered_permutations": 0,
+      "root_restored": true,
+      "proved_child_exclusions": 90,
+      "full_decorated_step_identities": 128,
+      "producer_seconds": 1.4452754589999999,
+      "expected_event_payload_hashes_matched": 1280
+    },
+    {
+      "id": "fixed-forward-novelty",
+      "status": "unknown_search_budget",
+      "events": 1168,
+      "nodes": 95,
+      "attempts": 128,
+      "forced": 34,
+      "branches": 94,
+      "distinct_graph_states": 206,
+      "complete_base_binding_checks": 1878935,
+      "complete_legal_binding_checks": 1878567,
+      "altered_first_choices": 14,
+      "altered_permutations": 17,
+      "root_restored": true,
+      "proved_child_exclusions": 77,
+      "full_decorated_step_identities": 128,
+      "producer_seconds": 1.296331542,
+      "expected_event_payload_hashes_matched": 1168
+    }
+  ],
+  "census": {
+    "events": 2448,
+    "nodes": 202,
+    "attempts": 256,
+    "distinct_graph_states": 425,
+    "complete_base_binding_checks": 3800774,
+    "complete_legal_binding_checks": 3799941,
+    "proved_child_exclusions": 167,
+    "selected_full_decorated_identities": 256,
+    "source_bodies": 171,
+    "source_leaves": 1845,
+    "source_assumption_aliases": 630,
+    "source_recursive_calls": 216,
+    "recipes": 229,
+    "formulas": 217,
+    "rows": 24
+  },
+  "controls": {
+    "expected_event_hash_mismatch_controls": 48,
+    "scope": "Mutated actual event payloads are rejected against independently reconstructed expected event hashes; not 48 complete mutated-tape reruns.",
+    "logical_rejection_controls": 3,
+    "logical_labels": [
+      "consistent_points_invalid_instantiate",
+      "consistent_points_invalid_eq_subst",
+      "reversed_ordered_MP_ports"
+    ],
+    "point_consistent_invalid_inference_controls": 2
+  },
+  "authority": {
+    "actual_audit_passed": true,
+    "whole_observations_unknown": true,
+    "root_restored": true,
+    "point_certificates": 0,
+    "decoded_certificates": 0,
+    "whole_target_logical_checks": 0,
+    "native_queries": 0,
+    "trained_policy": false,
+    "new_training": 0,
+    "proof_discovery": false,
+    "searches_run_by_reviewer": 0
+  },
+  "terminal": {
+    "root_exec_session": 19431,
+    "root_exec_exit_code": 0,
+    "owned_child_pid": 44976,
+    "owned_child_exit_code": 0,
+    "owned_child_wait_reaped": true,
+    "active_handles": 0
+  },
+  "costs": {
+    "actual_independent_owned_seconds": 41.361476959,
+    "actual_independent_conservative_peak_bytes": 378011648,
+    "actual_child_peak_bytes": 344850432,
+    "actual_owner_peak_bytes": 33161216,
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_bytes": 536870912,
+    "resource_overshoots": 0,
+    "prior_failed_producer_seconds": 0.935204458,
+    "fresh_producer_owned_seconds": 8.109092125,
+    "separately_recorded_producer_and_audit_timers_sum_seconds": 50.405773542,
+    "scope": "These three separately recorded nonoverlapping owner timers exclude each own final receipt write and unmeasured source authoring; prior native/source/preparation and metadata/review/publication work remain additional. Do not sum nested timing components or claim an overall research-program wall time.",
+    "enforcement": "Owned wait4 direct child, worker SIGALRM, owner deadline kill/wait/reap; retrospective fresh child plus owner kernel peak. No hard OS memory cap or live RSS sampling."
+  },
+  "limitations": [
+    "Two fully reconstructed returned UNKNOWN tapes; the independently exhausted marked child regions justify only their specific parent exclusions, not full-boundary impossibility or mathematical nonprovability.",
+    "Fixed ordering changes14 first choices and17 full permutations at its visited states but is not RL, and both observations have no proof; there is no demonstrated proof-search superiority.",
+    "Registered primitive inference interfaces and all171 source bodies are independently checked in the guarded incidence fragment. No full-target certificate exists and no native/Wang/compiler correspondence was activated.",
+    "Complete direct key binding census and full omitted-factor semantic hashes are owned-audit results; this terminal receipt does not independently rerun them. Domain-refresh implementation counts and detailed saved clocks remain producer provenance.",
+    "Family projection example was decoded then discarded; no authored target witness supplies hints or acceptance authority.",
+    "Actual tapes are below2000 events and returned normally; no truncated-prefix or checked20-second deadline exhaustion claim is made."
+  ],
+  "metadata_review_seconds_before_receipt_write": 0.794289167,
+  "reviewer_scientific_executions": 0,
+  "findings": []
+}

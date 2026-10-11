@@ -1,0 +1,123 @@
+{
+  "schema": "automatic-geometry-reader-v3-source-readiness",
+  "status": "frozen_source_only_synthetic_controls_passed",
+  "files": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/build-v3.py",
+      "sha256": "10741b11a7be5e5b680691f67c8a16f1d1c1306373b2ed7e5a635f2cd9f041f9",
+      "bytes": 4880
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/freeze-readiness.py",
+      "sha256": "2cc262d76150f34730fa08c7ab44f62be64413b1a6e82b27fbe0aa68d01b0ac9",
+      "bytes": 4945
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/reader-source-controls.js",
+      "sha256": "4de85f0d28024bfeb0c62f5e0972e3a3951fc6f519403683dcb065aaf8476aa9",
+      "bytes": 11019
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-controls-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-controls-stdout.txt",
+      "sha256": "ae93f28bfd44f38917bfd5ae645442f86359e2601c37a2aacc3c2ef2978b9c8d",
+      "bytes": 653
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-controls.json",
+      "sha256": "2178f439d3f2744b22bb1f24b6c10f29c8c69ca27bdc75d067eedc66c81305fc",
+      "bytes": 1063
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-schema.json",
+      "sha256": "f27b58b9ebe2ba63a908d676d8d1dc18f8f98c63afa34f420c3d553553773eaa",
+      "bytes": 9693
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/source-syntax-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/viewer-v2-to-v3.diff",
+      "sha256": "aa4e9e9cea4a11322c162b71a762ed30da2443c67c1eab4e5a0bd6bbe1ed904c",
+      "bytes": 2414
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v3-20261011/viewer.js",
+      "sha256": "617245c70393217e1a822f2720709a048215ef74a2f619c35b667980b97fbb47",
+      "bytes": 34430
+    }
+  ],
+  "preserved_v2": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/viewer.js",
+      "sha256": "76fd411e50c3ae94356be9cb5f5eb7df679d9e27750188066ac7d21e83fc06aa",
+      "bytes": 34030
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema-clarified.json",
+      "sha256": "19d53dd522dcd4902634f0027f917548a57cb59ced409052c49394837525ffc1",
+      "bytes": 8820
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/readiness-receipt.json",
+      "sha256": "944fd9678f0d28c0e3dbee414226d63ebccfcc53a762c709a70f4a9d3c257828",
+      "bytes": 5411
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/integration.json",
+      "sha256": "182e56ad330d5023ed396c70c6c9a7678ca728390d5f050bdc0603cd33767062",
+      "bytes": 2899
+    }
+  ],
+  "verification": {
+    "bundled_node": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "node_check_exit": 0,
+    "controls_exit": 0,
+    "source_check_seconds": 0.16544066699999999,
+    "controls": {
+      "status": "passed_bounded_display_only_v3_controls",
+      "formula_examples": 7,
+      "ast_tags_covered": 9,
+      "malformed_or_metadata_mutants_rejected": 23,
+      "zero_assignment_preserved": true,
+      "pending_unselected_prior_source_preserved": true,
+      "insertion_and_numeric_order_distinguished": true,
+      "all_snapshot_marks_retained": true,
+      "deepest_first_tie": true,
+      "layer_toggles_keep_selected_event": true,
+      "exact_core_certificate_semantics_fixture": true,
+      "exterior_sentinels_preserved": 23,
+      "exterior_invalid_variants_rejected": 3,
+      "sentinel_formula_decodes": 0,
+      "synthetic_dom_only": true,
+      "actual_results_loaded": 0,
+      "scientific_imports": 0,
+      "searches": 0,
+      "training": 0,
+      "native_queries": 0,
+      "replays": 0
+    }
+  },
+  "minimal_change": "Two display branches distinguish literal exterior exclusion sentinels from registered formula codes, and reference counts now use explicit LaTeX. Exact diff supplied. All snapshot/certificate/policy/scientific conditions otherwise preserved.",
+  "authoring_cost": {
+    "source_authoring_seconds": null,
+    "reason": "Source authoring/debug elapsed/CPU not instrumented; earlier successful manual Node checks retained as source-only preparation, not scientific replay cost."
+  },
+  "actual_data_or_browser_qa": "Unexecuted by author; root integrates original data, independence flags and actual MathJax/browser checks. Current root-reported null certificates leave actual certificate DOM unexercised.",
+  "science": {
+    "actual_results_loaded": 0,
+    "models_loaded": 0,
+    "scientific_imports": 0,
+    "searches": 0,
+    "training": 0,
+    "native_queries": 0,
+    "scientific_replays": 0
+  },
+  "immutable_after_readiness": true
+}

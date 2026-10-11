@@ -1,0 +1,84 @@
+{
+  "status": "root_completed_prospective_source_review_no_dispatch",
+  "inputs": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+      "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+      "bytes": 212097
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/source-manifest-v1.json",
+      "sha256": "99ac91b5db68cfe4e01f7b4dfd28056e34feccd9fb30c7c523c2ac8cf9c6ed27",
+      "bytes": 2396
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-independent-20261011/source-review-v1.json",
+      "sha256": "17559920f8fb46beae26b8471b44cc2274454410b08b92bf4cb4896d3c83bbf2",
+      "bytes": 8537
+    }
+  ],
+  "source_files_fully_read": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "eddf441a1c895b5b552050d3a38c3817532f8733a179320f98c0043327bcfc33",
+      "bytes": 16355
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_bridge_decode_v1.py",
+      "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+      "bytes": 6052
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_run_v1.py",
+      "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+      "bytes": 7394
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_outer_v1.py",
+      "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+      "bytes": 3889
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_search_freeze_v1.py",
+      "sha256": "b31218de38dd9992e6b90a7972e3fc00e23e4cf68b17984d82673bc827238382",
+      "bytes": 19911
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    }
+  ],
+  "closure_unique_paths": 662,
+  "exact_source_input_preservation_checked": true,
+  "scientific_model_loads": 0,
+  "scientific_imports": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "training": 0,
+  "activation_created": false,
+  "scope": "Six new sources fully read; frozen lifecycle and primitive graph fully read earlier this turn. Metadata hashes and AST parsing only; no scientific code executed.",
+  "contract": [
+    "Complete unchanged229/217/24 finite scalar-point adaptation, all171 source bodies validated, empty active descriptors, original three seed assumptions.",
+    "Global dead/forced/earliest decision remains frozen primitive authority; fixed generic order is complete domain permutation and not RL.",
+    "Exhaustion-only child exclusions in restored parent, exact paired rollback and root restoration for UNKNOWN; trace cutoff is UNKNOWN and cannot certify exhaustion.",
+    "Decoder preserves all24 commands and ordered references; hypotheses retained as named axioms for same ground sequent; no discharge/universalclosure/native acceptance."
+  ],
+  "resource_caveats": [
+    "Per-lane20seconds is a checked deadline, not a dedicated alarm. In-flight ordering/state serialization/step/decision/rollback can complete past deadline; actual lane elapsed/overshoot must remain disclosed, and a result over a claimed strict20s matched gate must be qualified unknown for that gate. Whole170/175/180 gates remain separate.",
+    "Complete domain listing/order hashing/state hashing incurs preparation and search overhead; setup timers and serialization are separately billed, overlapping subphase clocks are not additive. One observation per order establishes no statistical or general speed claim.",
+    "Receipt writes excluded from respective prewrite clocks as declared; source-authoring/cold historical registry cost additional and unmeasured."
+  ],
+  "next_gate": "Root explicit exact-plan activation and sole producer ownership in a subsequent checkpoint; separately owned raw-domain/transaction/logical reconstruction required after terminal producer before theorem acceptance. Strict20-second overshoot qualifies UNKNOWN for that matched gate; supervisor/worker unknown-reap outcome must be resolved before any later scientific job.",
+  "review_seconds_before_receipt_write": 0.789897292
+}

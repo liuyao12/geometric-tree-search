@@ -1,0 +1,128 @@
+{
+  "all_owned_handles_terminal": true,
+  "producer_folder": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011",
+  "independent_result": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+  "independent_result_status": "passed_independent_complete_geometry_trace_audit_zero_certificates",
+  "independent_lifetime": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+  "main_baseline_sha256": "45266978f464e72046acc8e4ecfeaa69812edc613091c910afb008c360354046",
+  "frozen_folders": [
+    [
+      ".gcts-active/shared-symbolic-native-bridge-20261011",
+      "bridge",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-search-source-20261011",
+      "producer-failed-v1",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-search-root-review-20261011",
+      "root-source-v1",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-search-independent-20261011",
+      "independent-source-v1",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011",
+      "producer-v2",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-search-root-review-v2-20261011",
+      "root-source-v2",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-search-v2-independent-20261011",
+      "independent-source-v2",
+      []
+    ],
+    [
+      ".gcts-active/shared-symbolic-geometry-trace-independent-20261011",
+      "independent-trace",
+      []
+    ],
+    [
+      ".gcts-active/automatic-geometry-reader-source-20261011",
+      "reader-source-v1",
+      []
+    ],
+    [
+      ".gcts-active/automatic-geometry-reader-source-v2-20261011",
+      "reader-source-v2",
+      []
+    ],
+    [
+      ".gcts-active/automatic-geometry-search-diagnosis-20261011",
+      "diagnosis",
+      []
+    ],
+    [
+      ".gcts-active/automatic-geometry-actual-independent-review-20261011",
+      "actual-review",
+      []
+    ]
+  ],
+  "viewer_source": ".gcts-active/automatic-geometry-reader-source-v2-20261011/viewer.js",
+  "observation_verdicts": {
+    "base-complete-primitives": {
+      "certificate_accepted": false,
+      "trace_accepted": true,
+      "scope": "Complete recorded trace independently checked: literal domains, global scheduler, complete order, justified child exclusions and exact UNKNOWN rollback. No theorem certificate."
+    },
+    "fixed-forward-novelty": {
+      "certificate_accepted": false,
+      "trace_accepted": true,
+      "scope": "Complete recorded trace independently checked: literal domains, global scheduler, complete order, justified child exclusions and exact UNKNOWN rollback. No theorem certificate."
+    }
+  },
+  "independent_owned_seconds": 41.361476959,
+  "independent_peak_bytes": 378011648,
+  "independent_gate_scope": "Both whole recorded UNKNOWN traces, full source/recipe checks and negative controls; no target proof check.",
+  "assessment": "Both searches reached their 128-attempt ceilings without a certificate. Independent reconstruction accepted their complete recorded traces and rollback. This establishes a working finite constraint-search experiment; it supplies no new theorem, RL advantage or evidence of superiority to existing proof search.",
+  "main_assessment": "Both controls remain UNKNOWN after 128 attempts. All 2,448 events passed independent domain, ordering and rollback reconstruction; no theorem certificate, native acceptance or RL advantage is claimed.",
+  "diagnosis_result": ".gcts-active/automatic-geometry-search-diagnosis-20261011/diagnosis-v1.json",
+  "next_search_plan": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+  "diagnosis_summary": "Both controls keep their first fifteen choices and spend the remaining attempts repairing the tail. Base repeats the incidence axiom; the fixed order instead specializes both point variables to the same object and explores guards that do not match the supplied hypotheses. The proposed next score compares partially specialized conditions with available hypothesis receptors. A later experiment would propose reusable family attachments from the complete inventory. Neither proposal has been implemented or run.",
+  "inputs": [
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v1-terminal.json",
+      "sha256": "4408940fe31fffc12e94851494568439a47dcb4badfa76cc4907c9ea5ddcb0f0",
+      "bytes": 2582
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v2-terminal.json",
+      "sha256": "157a67194f9c93307e65ec69bef74305ccf31559ae4e258716752d6565c70870",
+      "bytes": 1509
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-auditor-v1-terminal.json",
+      "sha256": "0d424cf89c7bf7db460e17609b90421db5db071800de6361dc143e435499ba55",
+      "bytes": 2103
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v2.json",
+      "sha256": "c001914bf418782b76ce5f246bdabb4b1bad0bdc718baae5046f9ad9f92ef078",
+      "bytes": 1492
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-diagnosis-source-review-v1.json",
+      "sha256": "8d701a9e03ae78fd2dfe00cb91774912953913b3bbcc7e9bfca10c44b465a49d",
+      "bytes": 1256
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+      "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+      "bytes": 5218918
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+      "sha256": "8f2928261f7ab5405b5cda0eba79947eb1128a748768666cfd020ead7ca2eadd",
+      "bytes": 1492
+    }
+  ]
+}

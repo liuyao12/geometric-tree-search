@@ -1,0 +1,26 @@
+{
+  "status": "frozen_source_bound_metadata_diagnosis_and_unexecuted_next_gate",
+  "files": [
+    {
+      "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/trace_metadata_v1.py",
+      "sha256": "7e0dd06cd33849aab4501beebbfbbafed3e9a22bf4650f5cc5db6e6fa13143c6",
+      "bytes": 18704
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/diagnosis-v1.json",
+      "sha256": "ee513f5588c3c42e53cdf5c22149d5daf91e96302a4a58534fc8fceff015352a",
+      "bytes": 183399
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+      "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+      "bytes": 7007
+    }
+  ],
+  "total_files": 3,
+  "total_bytes": 209110,
+  "current_search_independent_audit": "pending",
+  "new_scientific_execution": false,
+  "claim": "Read-only saved-artifact counts and source diagnosis; future matching/proposal gates are unimplemented and unexecuted.",
+  "publication_owner": "root"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "root_identified_ui_only_exterior_sentinel_precondition_before_projection_or_publication",
+  "preserved_review": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/root-reader-source-review-v2.json",
+    "sha256": "c001914bf418782b76ce5f246bdabb4b1bad0bdc718baae5046f9ad9f92ef078",
+    "bytes": 1492
+  },
+  "preserved_viewer": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/viewer.js",
+    "sha256": "76fd411e50c3ae94356be9cb5f5eb7df679d9e27750188066ac7d21e83fc06aa",
+    "bytes": 34030
+  },
+  "preserved_selection": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/terminal-selection.json",
+    "sha256": "a9d8dd8420cd92dc5d336995a572e7754d0a96cd4173703b4736314dec8d55f4",
+    "bytes": 5790
+  },
+  "cause": "V2 snapshotRows treated every x1 marking as a nonnegative formula code. Actual model retains x1 negative-row exterior exclusion sentinels of value-1, so those need literal boundary display and cannot index the formula registry.",
+  "scientific_model_or_outputs_modified": false,
+  "scientific_reruns": 0,
+  "actual_published_reader_v2": false,
+  "repair": "Minimal immutable source-only v3 successor; preserve all exterior markings/reference counts, decode only formula marks, then actual UI-data and browser checks.",
+  "acceptance_scope": "Completed producer and independent trace gates remain exact unchanged. No theorem certificate exists."
+}

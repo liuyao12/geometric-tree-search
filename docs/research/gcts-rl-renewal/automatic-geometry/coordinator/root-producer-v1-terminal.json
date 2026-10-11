@@ -1,0 +1,53 @@
+{
+  "status": "root_reconciled_failed_adapter_before_target_search",
+  "owner_tool_exit_code": 1,
+  "all_owned_handles_terminal": true,
+  "inputs": [
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-plan-v1.json",
+      "sha256": "cb5b419992cdd6d2b9c11959df493d83d19be19daff0c0fd1bddc2b25de0f3cc",
+      "bytes": 212097
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/root-activation-v1.json",
+      "sha256": "c54beee19c0b9f652e7818c7bfa989eab713fda2286bb859b900cd2aa9546a7d",
+      "bytes": 1731
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-launch-v1.json",
+      "sha256": "1569c3ef270edd0c1d510de7a6b4208e2d8ee5fe18c218145f456ecfb7cc1f68",
+      "bytes": 484
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-supervision-v1.json",
+      "sha256": "51912ec32ca8e21b4cb80788d9ca260a267808c4cb1fa710721326afa0aa1ee6",
+      "bytes": 3072
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-lifetime-v1.json",
+      "sha256": "2e2fd09a03c3907d7d9cf47fe560f16191fb02852531f58f04936a52f99d9be4",
+      "bytes": 1359
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-stderr-v1.txt",
+      "sha256": "f511e068be60c7a4c91ab05688649febff0c7c738c660e1b9160ec6302223c23",
+      "bytes": 965
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/search-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "actual_worker_launched": true,
+  "model_construction_started": true,
+  "target_searches_started": 0,
+  "target_searches_completed": 0,
+  "new_proofs": 0,
+  "native_queries": 0,
+  "full_failed_owned_seconds": 0.935204458,
+  "conservative_owned_peak_bytes": 92700672,
+  "cause": "Caller gave expanded phase metadata with role aliases to a source-body registry requiring unique file paths. BodyAuthority rejected duplicates after model construction and before automatic_search.",
+  "scope_correction": "Generic lifetime field actual_geometry_model_execution means worker launched, not that either target search ran.",
+  "next_action": "Separately versioned caller adapter must use exact accepted56-input full-lifecycleproducer source-body plan; complete broader prerequisite closure retained; two new source reviews and sole root activation required before next actual worker. No rerun on old filenames."
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py", line 296, in <module>
+    main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-search-source-20261011/shared_symbolic_geometry_search_v1.py", line 256, in main
+    family = life.frozen_family_authority(g, plan)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py", line 566, in frozen_family_authority
+    return BodyAuthority.build(graph, pins, bodies)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py", line 148, in build
+    raise ValueError('duplicate source pin')
+ValueError: duplicate source pin

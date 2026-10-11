@@ -1,0 +1,35 @@
+{
+  "previous_turn_classification": "progress",
+  "evidence": [
+    {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/turn-result.json",
+      "sha256": "21eedf02ee5f967f914addee4d5b5eb92daa90a7edacb45ffd7b33bf0c9e57a0",
+      "bytes": 4750
+    },
+    {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/publication.json",
+      "sha256": "52b3c205bbf6f24bb9051e930ad12fd086b7e42f75f3c88395f9968c1ddbfdfb",
+      "bytes": 2000
+    },
+    {
+      "path": ".gcts-active/full-model-cluster-progress-20261011/live-hash-checks.json",
+      "sha256": "0147127f92868b9b883497dbfc7e781bf505b7142b7b16f4b78b61503669d5d0",
+      "bytes": 132709
+    }
+  ],
+  "no_progress_streak": 0,
+  "goal_status": "active",
+  "full_objective_complete": false,
+  "new_phase_activation": {
+    "path": ".gcts-active/shared-symbolic-geometry-search-source-20261011/root-activation-v1.json",
+    "sha256": "c54beee19c0b9f652e7818c7bfa989eab713fda2286bb859b900cd2aa9546a7d",
+    "bytes": 1731
+  },
+  "main_baseline_commit": "f41da478a4a16b4c91eabe20aa8255ebdfc30830",
+  "main_baseline": {
+    "path": "docs/research/gcts-rl-renewal/index.html",
+    "sha256": "45266978f464e72046acc8e4ecfeaa69812edc613091c910afb008c360354046",
+    "bytes": 348548
+  },
+  "scientific_dispatch": "root alone, first exact bounded outer; no retries on observation timeout"
+}

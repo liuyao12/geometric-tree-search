@@ -1,0 +1,383 @@
+{
+  "status": "prospective_exact_certificate_bridge_no_implementation_or_activation",
+  "static_inspection": {
+    "path": ".gcts-active/shared-symbolic-native-bridge-20261011/static-source-inspection-v1.json",
+    "sha256": "52fbf55a950017c0ed045a212ab3f2b0b98873aa8c701a0a06a799de9c8b1dc4",
+    "bytes": 166284
+  },
+  "problem_latex": "\\Gamma=\\{H(P,Q,l,m),H(P,Q,m,n),\\operatorname{Incident}(R,l)\\},\\qquad I.2,\\Gamma\\vdash\\operatorname{Incident}(R,n)",
+  "guard_latex": "H(A,B,u,v)=\\operatorname{Point}(A)\\land\\operatorname{Point}(B)\\land\\operatorname{Line}(u)\\land\\operatorname{Line}(v)\\land\\neg(A=B)\\land\\operatorname{Incident}(A,u)\\land\\operatorname{Incident}(B,u)\\land\\operatorname{Incident}(A,v)\\land\\operatorname{Incident}(B,v)",
+  "logical_scope": "Closed-constant ground sequent in one-sorted symbolic guarded incidence fragment; Point/Line/Incident are arbitrary predicates. No coordinates, existential line construction, full Hilbert Euclidean theory or universal closure is claimed.",
+  "gap": "The finite recipe tiles are proof-command placements, not the common machine Wang squares. There is no one-square-to-one-square isomorphism: a primitive inference needs serialized ASTs, interpreter workspace and many physical transition rows.",
+  "forward_map": [
+    {
+      "step": 1,
+      "object": "Exact point certificate",
+      "obligation": "One selected primitive key per row; reconstruct all t/m from recipe witness and ordered reference offsets; exact target/color, absent versus assigned zero, roots and seeds, full IDs/epochs. Placement execution order is not logical line order."
+    },
+    {
+      "step": 2,
+      "object": "Canonical 24-line local symbolic certificate",
+      "obligation": "Sort by row, retain every row including padding/repeated premises. Copy zero-port witnesses literally. For MP, set antecedent/ref[0] and implication/ref[1] to exact row numbers; independently check both precede the row and source formulas match exact implication shape."
+    },
+    {
+      "step": 3,
+      "object": "Flat gcts-fol-1 request",
+      "obligation": "Top-level proof has no local assumptions. Retain I.2 and add three explicitly named closed ground axioms hypothesis-0/1/2 equal to Gamma. Translate every assumption(index=i) command to axiom(name=hypothesis-i), retaining formula/row/references. blocks=[]; schemas=[]; target exact code54 AST. This is the same ground sequent relative to Gamma, not a theorem without Gamma."
+    },
+    {
+      "step": 4,
+      "object": "Independently checked symbolic/request certificate",
+      "obligation": "Independent checker revalidates all selected axiom/instantiate/eq_subst/ordered-MP instances, capture conditions, field types and signature; never infers validity from matching colors. Validate the local certificate under Gamma and the flat request under I.2+Gamma separately."
+    },
+    {
+      "step": 5,
+      "object": "Fixed and free postfix boundary words",
+      "obligation": "Fixed word serializes protocol,theory,target in that order. Free word serializes empty blocks then all 24 proof commands. Tagged byte trees use nine little-endian bits per atom0..256 and one cons bit. All object ordering is frozen and retained; do not change nested order or drop commands while claiming exact wire-byte identity."
+    },
+    {
+      "step": 6,
+      "object": "Shared machine input",
+      "obligation": "Use exact boot nodes, current fixed microtable and literal table, true parser start, exact43-band framing/heads. Independently reconstruct full boundary/input bytes and problem hash. Only separately declared blank resources may change; no target-specific transition compilation."
+    },
+    {
+      "step": 7,
+      "object": "Native response / symbolic Wang computation certificate",
+      "obligation": "A later explicitly authorized fresh native request and full independent replay establish acceptance or resource unknown. Compact response hierarchy may encode the physical transition computation, but a cropped/local diagram is not a complete accepting rectangle."
+    }
+  ],
+  "inverse_scope": "Any independently valid 24-row certificate maps to one request-boundary payload in the fixed shared encoding. The converse only holds for payloads obeying the explicit finite geometry recipe/row grammar; arbitrary shared-palette accepted proofs can use formulas/rules outside this envelope. No bijection or shared-palette GCTS-search equivalence claim.",
+  "assumption_map": {
+    "source": [
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "l",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "m",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "P",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "P",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "l",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "l",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "P",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "Q",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "m",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "n",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "P",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "Q",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "P",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "m",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "n",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "Q",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "n",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ]
+    ],
+    "recipient_names": [
+      "hypothesis-0",
+      "hypothesis-1",
+      "hypothesis-2"
+    ],
+    "preserve_order_and_duplicate_multiplicity": true,
+    "closed_signature": {
+      "P": 0,
+      "Q": 0,
+      "R": 0,
+      "l": 0,
+      "m": 0,
+      "n": 0
+    },
+    "no_implicit_discharge": "A universally quantified conditional theorem requires a separate deduction/eigenvariable closure and resource gate, previously unknown; it is not produced by adding ground hypothesis axioms."
+  },
+  "full_palette_cost_obstacle": "The published reflexivity control uses229147579770 literal physical transitions. A dense rectangle has one row per literal transition and full input width per row, far beyond a bounded host search. Do not promise free-boundary proof search over the complete physical rectangle in this pilot.",
+  "recommended_role": "Use the exact complete finite primitive graph for search and the unchanged common checker palette for eventual certificate validation. The first bridge gate tests this concrete specialization; it does not prove the specialization universal or beneficial."
+}

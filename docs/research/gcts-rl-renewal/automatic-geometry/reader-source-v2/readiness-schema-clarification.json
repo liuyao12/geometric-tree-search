@@ -1,0 +1,27 @@
+{
+  "schema": "automatic-geometry-reader-v2-additive-schema-clarification",
+  "scope": "Presentation metadata only; viewer.js and all earlier frozen files untouched.",
+  "reason": "The first v2 schema generation replaced display_checks index7 instead of index6, retaining one obsolete v1 prose item. This additive clarified schema supplies the exact source checks and restores the independent-check scope warning.",
+  "preserved_original": [
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema.json",
+      "sha256": "bc2e56aafa459d8f3c5c8ca216722309cb3081970a52308ab08483844341cda0",
+      "bytes": 8799
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/readiness-receipt.json",
+      "sha256": "944fd9678f0d28c0e3dbee414226d63ebccfcc53a762c709a70f4a9d3c257828",
+      "bytes": 5411
+    }
+  ],
+  "integration_schema": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/source-schema-clarified.json",
+    "sha256": "19d53dd522dcd4902634f0027f917548a57cb59ced409052c49394837525ffc1",
+    "bytes": 8820
+  },
+  "viewer": {
+    "path": ".gcts-active/automatic-geometry-reader-source-v2-20261011/viewer.js",
+    "sha256": "76fd411e50c3ae94356be9cb5f5eb7df679d9e27750188066ac7d21e83fc06aa",
+    "bytes": 34030
+  }
+}

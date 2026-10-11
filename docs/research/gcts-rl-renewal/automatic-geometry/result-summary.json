@@ -1,0 +1,29 @@
+{
+  "goal_status": "active",
+  "accepted_ground_certificates": [],
+  "assessment": "Both searches reached their 128-attempt ceilings without a certificate. Independent reconstruction accepted their complete recorded traces and rollback. This establishes a working finite constraint-search experiment; it supplies no new theorem, RL advantage or evidence of superiority to existing proof search.",
+  "controls": [
+    {
+      "id": "base-complete-primitives",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "seconds": 1.4452754589999999,
+      "independent_certificate_accepted": false,
+      "independent_trace_accepted": true
+    },
+    {
+      "id": "fixed-forward-novelty",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "seconds": 1.296331542,
+      "independent_certificate_accepted": false,
+      "independent_trace_accepted": true
+    }
+  ],
+  "source_authored_target_hints": 0,
+  "active_cluster_descriptors": 0,
+  "new_native_queries": 0,
+  "new_RL_training": false,
+  "additional_owned_seconds": "50.405773542",
+  "scope": "Finite symbolic ground-sequent search; full proof and whole-search trace scope remain distinct."
+}

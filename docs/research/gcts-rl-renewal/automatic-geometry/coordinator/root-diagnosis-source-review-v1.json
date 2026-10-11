@@ -1,0 +1,25 @@
+{
+  "status": "root_reviewed_metadata_only_diagnosis_and_unexecuted_next_plan",
+  "manifest": {
+    "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/manifest-v1.json",
+    "sha256": "ee2faaa8294379fdc0cf7e9c9c2d354897d13fe23f234189a973830de7eb5578",
+    "bytes": 1035
+  },
+  "diagnosis": {
+    "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/diagnosis-v1.json",
+    "sha256": "ee513f5588c3c42e53cdf5c22149d5daf91e96302a4a58534fc8fceff015352a",
+    "bytes": 183399
+  },
+  "next_plan": {
+    "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+    "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+    "bytes": 7007
+  },
+  "metadata_source_fully_read": true,
+  "preserved_paths": 696,
+  "candidate_regeneration_or_state_replay": 0,
+  "logical_acceptance": 0,
+  "new_searches": 0,
+  "scope": "Recorded prefix and tail counts; literal AST binder metadata. Structural receptor matching is proposed generic ranking only, no pruning or target-proof hints. Metadata status remains frozen pending audit at authoring, later actual audit separately linked.",
+  "claim": "Neither partial depth nor forced counts establishes a theorem or performance advantage."
+}
