@@ -1,0 +1,719 @@
+{
+  "schema": "arithmetic-next-discovery-benchmark-source-only-v1",
+  "status": "immutable_prospective_design_only_not_an_experiment_activation",
+  "scope": "Arithmetic addition fragment with exact scalar point markings and the existing native first-order proof protocol, not full Peano arithmetic. No engine imports, scientific load/census/helper/replay/search/training/native execution or V6 loader implementation.",
+  "current_evidence": {
+    "terminal_receipt": {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+      "sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+      "bytes": 14968
+    },
+    "status": "unknown_loading_phase_resource_budget",
+    "qualified_complete_owned_replays": [
+      "base-r1"
+    ],
+    "semantic_complete_but_owned_memory_unknown": [
+      "untrained-r1"
+    ],
+    "unexecuted_audits": [
+      "trained-r1",
+      "trained-r2",
+      "untrained-r2",
+      "base-r2"
+    ],
+    "base_owned_peak_bytes": 441925632,
+    "untrained_owned_peak_bytes": 626147328,
+    "cumulative_original_audit_seconds": 354.124656251,
+    "original_audit_seconds": 780,
+    "remaining_original_audit_seconds": 425.875343749,
+    "interpretation": "Full six-run evaluation remains UNKNOWN. The validated effect/training trajectories demonstrate a working action/update mechanism; current incomplete evaluation supports no comparative search-gain or held-out generalization claim."
+  },
+  "language": {
+    "protocol": "gcts-fol-1",
+    "theory": {
+      "functions": {
+        "zero": 0,
+        "succ": 1,
+        "add": 2
+      },
+      "predicates": {},
+      "axioms": {
+        "AZ": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "AS": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "schemas": [
+        "nat-induction"
+      ]
+    },
+    "human_axioms_latex": [
+      "\\(\\forall x\\;x+0=x\\)",
+      "\\(\\forall x\\,\\forall y\\;x+S(y)=S(x+y)\\)"
+    ],
+    "induction_scope": "Unchanged native nat-induction with complete prospectively declared finite predicate/term/quantifier instances, hygienic eigenvariables and all alternative induction variables retained. Finite catalog completeness is distinct from unrestricted first-order/induction completeness.",
+    "inventory_origin": "The already automatically discovered and independently checked zero-left and left-successor lemmas may be reused equally in every lane; their earlier search/admission/native costs and discovery provenance remain visible. Authored generic logical interfaces are infrastructure, not learned lemmas.",
+    "excluded": "Cancellation/injectivity and multiplication benchmarks are outside this initial theory: no successor injectivity/nonzero-successor or multiplication axioms are declared. Additions to the theory need a separate explicit gate."
+  },
+  "targets": [
+    {
+      "id": "right-zero-calibration",
+      "family": "defining-equations",
+      "tier": 0,
+      "role": "donor/calibration",
+      "latex": "\\(\\forall x\\;x+0=x\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "discovery_scope": "An existing axiom, so solving it is a parser/admission/control calibration, not a new discovery."
+    },
+    {
+      "id": "right-successor-calibration",
+      "family": "defining-equations",
+      "tier": 0,
+      "role": "donor/calibration",
+      "latex": "\\(\\forall x\\,\\forall y\\;x+S(y)=S(x+y)\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "An existing axiom; does not establish transfer."
+    },
+    {
+      "id": "one-left",
+      "family": "identity-successor-composition",
+      "tier": 1,
+      "role": "donor/calibration",
+      "latex": "\\(\\forall x\\;S(0)+x=S(x)\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "Search a consequence using the already checked zero-left/left-successor inventory; no target derivation supplied."
+    },
+    {
+      "id": "double-successor",
+      "family": "identity-successor-composition",
+      "tier": 1,
+      "role": "donor/calibration",
+      "latex": "\\(\\forall x\\,\\forall y\\;S(x)+S(y)=S(S(x+y))\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "A composition/binding task; success alone is not held-out-family transfer."
+    },
+    {
+      "id": "addition-commutativity",
+      "family": "commutativity-exposed",
+      "tier": 2,
+      "role": "continuation evaluation; exposed target",
+      "latex": "\\(\\forall x\\,\\forall y\\;x+y=y+x\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "y"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "Previously searched and has an ordinary forward-produced word. That word/witness is forbidden as a GCTS proposal, seed, ordering or training datum; this target cannot be called historically unseen."
+    },
+    {
+      "id": "addition-associativity",
+      "family": "associativity",
+      "tier": 3,
+      "role": "prospectively held-out family",
+      "latex": "\\(\\forall x\\,\\forall y\\,\\forall z\\;(x+y)+z=x+(y+z)\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "all",
+            "z",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "var",
+                    "z"
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ],
+                      [
+                        "var",
+                        "z"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "Exclude this family and equivalent syntactic variants from donors/rewards/proposals/teacher proofs before corpus/model generation."
+    },
+    {
+      "id": "three-term-swap",
+      "family": "three-term-permutation",
+      "tier": 4,
+      "role": "prospectively held-out family",
+      "latex": "\\(\\forall x\\,\\forall y\\,\\forall z\\;(x+y)+z=(x+z)+y\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "all",
+            "z",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "var",
+                    "z"
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "z"
+                      ]
+                    ]
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "Evaluate initially with the same frozen source inventory; a later learned-lemma promotion ladder is a separate inventory-changing experiment."
+    },
+    {
+      "id": "three-term-cycle",
+      "family": "three-term-permutation",
+      "tier": 4,
+      "role": "prospectively held-out family",
+      "latex": "\\(\\forall x\\,\\forall y\\,\\forall z\\;(x+y)+z=(y+z)+x\\)",
+      "ast": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "all",
+            "z",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "var",
+                    "z"
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ],
+                      [
+                        "var",
+                        "z"
+                      ]
+                    ]
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "discovery_scope": "Same held-out family as three-term-swap; do not count alpha-renamed variants as independent theorems."
+    }
+  ],
+  "model_gate": {
+    "current_model": {
+      "semantic_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+      "rows": 13,
+      "placements": 19848,
+      "required_points": 52,
+      "interfaces": 153,
+      "native_definitions": 94,
+      "scope": "Only the current commutativity boundary, not a ready-made model for all listed targets."
+    },
+    "future_models": "Compile a separate complete target-specific point model from the unchanged generic syntax/inference compiler. Start with the same five-node term bound and13-row boundary where meaningful; all listed target terms fit that syntax bound, but completeness and proof fit remain unmeasured. A failure within13rows is a finite-boundary result. Any larger row/grammar bound is a separately frozen model experiment, never relabeled as the current model.",
+    "preflight": [
+      "Freeze family split, statements, theory, term/quantifier catalogs, rule source pins and resource budgets BEFORE generating proposals/teacher proofs or running search.",
+      "Enumerate every primitive/macro interface, induction predicate/variable alternative and port binding; count full points, placements, extended marking dependencies, definition requests and projected certificate capacity. Audit exact canonical full-model hashes independently.",
+      "Native-admit every retained interface, retaining unadmitted/unknown accounting; structural pruning may use only the audited complete-grammar safety argument. Charge compilation/admission/replay, not only online search.",
+      "Run small independent legality/scheduler/hint-waiting/failed-child rollback/action-effect mutation controls before any target measurements. No ordinary forward witness or authored target path may enter the policy."
+    ]
+  },
+  "training_split": {
+    "fresh_policy_required": true,
+    "donor_families": [
+      "defining-equations",
+      "identity-successor-composition"
+    ],
+    "initial_prospective_schedule": "Eight fresh engine-generated donor episodes cycling the four tier0/1 statements twice,500attempts/10s search each, seed41001 through41008; no proof supervision or known successful seed. Exact corpus/grammar/policy feature/reward/update source and seed map must be frozen in a later execution plan.",
+    "held_out_families": [
+      "associativity",
+      "three-term-permutation"
+    ],
+    "leakage_gate": "Independently inspect donor targets, theory additions, reused lemma inventory, training observations and exact feature/policy metadata for held-out formulas/equivalent variants. Discussion of a theorem is not a trained trajectory; an already exposed commutativity result must still be labeled exposed. Same-instance old commutativity weights are not a held-out-transfer policy.",
+    "feature_transfer": "Use the prospectively frozen compatible feature schema. Existing command/formula SHA features are target-specific and may be unseen; unseen weights remain zero. Any alpha normalization or replacement with structural features needs a separately reviewed feature version, not an outcome-aware remapping.",
+    "calibration_limit": "Identity/recurrence donor solves verify the pipeline and bindings; they do not establish useful family transfer."
+  },
+  "matched_controls": {
+    "lanes": [
+      "base reference GCTS",
+      "fixed cluster ordering",
+      "untrained stochastic cluster ordering",
+      "trained stochastic cluster ordering"
+    ],
+    "common": "For each target all lanes share exactly the same complete point model, admitted inventory, mandatory global dead/forced/earliest-generation scheduler, complete candidate graph, hint-waiting semantics and exact rollback. Proposed clusters may be arbitrary validated1\u20133placement shapes with full base fallback; no learned exclusion removes a legal candidate. Fixed/untrained/trained use identical bounded pools/features/action space; baseline intentionally skips policy work and its cheaper setup must be charged honestly.",
+    "fixed_lane": "Predeclare the existing9legacy coefficients[0.7,0.3,1.0,0.8,0.2,-0.1,0.2,0.2,0.0], all additional feature weights zero, deterministic maximum-score then canonical index ties. This is a fixed heuristic, not RL. Adapter conformance must be reviewed before measurement.",
+    "stochastic_lanes": "Identical epsilon0.1/temperature1 mixture and one RNG draw per event; untrained weights zero, trained weights from the audited donor policy only. Pair each replicate seed across stochastic lanes, e.g.51001/51002.",
+    "balanced_order": [
+      "base-r1",
+      "fixed-r1",
+      "untrained-r1",
+      "trained-r1",
+      "trained-r2",
+      "untrained-r2",
+      "fixed-r2",
+      "base-r2"
+    ],
+    "initial_observation_budget": "5000attempts/60s search,100s full producer lifetime,512MiB per run. Same caps/model across all four lanes; mixed wall/attempt censoring remains visible. Freeze cold/warm cache policy and the deterministic order before results.",
+    "ordinary_control": "Separately bounded ordinary forward chaining or an external proof search may use the same declared language/inventory as a diagnostic. Its result is never fed into GCTS proposals/training/order and is labeled ordinary discovery, not GCTS."
+  },
+  "cost_and_claim_gates": {
+    "costs": [
+      "Full model/catalog/inventory preparation and every native-admission/capacity attempt.",
+      "Feature/proposer/cache initialization, every donor trajectory, policy update and training independent replay.",
+      "Each target run import/setup/proposal/feature/search/checkpoint/serialization/owner cleanup/receipt cost; record attempts and wall censoring, RSS and overshoots.",
+      "Every complete trace-value/semantic replay, failed resource gate, certificate expansion/compaction/capacity check and unchanged primitive/native whole-proof check.",
+      "Separate cold end-to-end cost from amortized inventory reuse; compute the reuse break-even point before claiming practical savings."
+    ],
+    "solved": "Count a theorem solved only after an automatically selected proof, independent full graph/tree/event/RNG/policy replay, independent primitive certificate validation, fresh unchanged native whole acceptance and independent native replay under frozen resources. Formula-level or semantic completion outside a resource gate remains UNKNOWN.",
+    "policy_effect": "First demonstrate actual changed legal first branches with complete fallback, not merely unequal scores; distinguish fixed-cluster benefit from RL benefit.",
+    "RL_help": "Across matched independently validated runs, trained versus identical untrained must improve predeclared success-within-budget or charged work to independently accepted proof. Base and fixed controls show whether the gain is merely cluster ordering. Two replicas are a pilot, not a reliable general conclusion. If the pilot shows a useful effect, prospectively freeze a larger seed sample and report paired results/censoring.",
+    "transfer": "Require results on prospectively held-out families under frozen donor policy and equal inventory. Same-target adaptation, known-lemma retrieval and alpha-renamed statements do not establish theorem-family generalization.",
+    "no_success_case": "If all runs remain unknown, report exact budget reasons and independently validated progress metrics separately. Maximum satisfied points alone is not a proof or a practical speedup."
+  },
+  "streaming_replay_future_prerequisite": {
+    "status": "prospective design only; no V6 or dispatch",
+    "reason": "V5 qualifies base-r1 but retains too much data for the untrained trace under512MiB; phase peaks do not establish which allocation dominates. Further whole-trace inflation is not the proposed route.",
+    "route": [
+      "Freeze a bounded read-only gzip/token first pass that spools every node core, child edge, event, hint and metadata record to task-owned indexed temporary storage, retaining original field order, scalar types, byte offsets/hashes and source scopes. No field/census or duplicate-key semantics may be silently dropped.",
+      "Stream the complete original compact JSON byte gate across every exact evaluation payload, then replay DFS from one materialized node/event at a time. Keep only the immutable model, independent live graph, bounded ancestry/rollback frames and necessary current policy data in memory. Every full candidate census, distant marking dependency, scheduler decision, branch alternative, hint and seeded RNG transition must still be independently reconstructed.",
+      "Disk-backed or lazy sequence adapters need explicit type/identity/nonmutation review. If the current audit API cannot consume them faithfully, a separately versioned streaming auditor must reproduce the exact existing checks and returned metrics; do not call a changed semantic auditor a loading-only fix.",
+      "Before actual evaluation, compare all complete checks/bytes/metrics on the passed effect and eight training traces and qualified base trace, with field/node/event/census/RNG/rollback/alias mutation controls. Preserve every historical memory unknown and verify deterministic state hashes at every node.",
+      "Actual full evaluation still requires all six exact original traces,115s internal/120s owned per job,512MiB conservative owner+worker peak and the remaining425.875343749s of the original780s envelope minus future helper phases. Root review/explicit dispatch precedes any helper/census/replay. If this cannot complete, retain UNKNOWN; a later fresh benchmark budget must be separately authorized, not a hidden reset."
+    ]
+  },
+  "execution_authority": "This note authorizes nothing. Root must separately freeze and approve producer/training/audit/native plans and ceilings. No new experiments, sources, budget increases or native queries are included here.",
+  "evidence_pins": [
+    {
+      "path": ".gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json",
+      "sha256": "2ea5acdecba5e2935e7d02ed44cf5771df41d976e7fbcc724bdf8f9e4508dfbf",
+      "bytes": 26781
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+      "sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+      "bytes": 14968
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json",
+      "sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+      "bytes": 1214
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-v5-independent-20261011/actual-terminal-review-v5.json",
+      "sha256": "bb09ba7a2632dc2023f8c3a2afd757ca491eba67ad2e31069a32d228e5795c31",
+      "bytes": 4528
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/review-package-v5.json",
+      "sha256": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+      "bytes": 26162
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "preparation_seconds_before_note_write": 0.002005375,
+  "authoring_cost_scope": "Pure statement/JSON note authoring and small plan/terminal metadata reads. Earlier design/inspection time not instrumented and unknown; no scientific engine/model/trace import or execution."
+}

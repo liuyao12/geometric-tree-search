@@ -1,0 +1,14 @@
+{
+  "status": "root_authorized_one_reviewed_fixture_baseline_correction",
+  "plan_sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+  "independent_review_sha256": "a32e6a962c7326ce5f4a6422b1f02123b37e6876b77c2b13bcabb84b9c7bae7d",
+  "kernel_unchanged": true,
+  "exact_call_entry_restoration_assertion_preserved": true,
+  "prior_failed_seconds_charged": 0.5955343319999999,
+  "outer_cumulative_seconds": 60,
+  "supervisor_seconds": 55,
+  "child_seconds": 50,
+  "memory_bytes": 536870912,
+  "actual_geometry_model_execution": false,
+  "native_queries": 0
+}

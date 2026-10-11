@@ -1,0 +1,91 @@
+{
+  "status": "prospective_v2_body_transport_and_seed_semantics_no_execution",
+  "version": "lifecycle-independent-design-v2",
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/cluster-continuation-plan-v1.json",
+      "sha256": "ca310fd6b962959541784243251728aeb709ada6c0296aa2101888ee66d84d2c",
+      "bytes": 11218
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/conformance-scope-v1.json",
+      "sha256": "1d6a0f42969b437af41a2b5ba29955db5d963eddbfb1105245998ad263b7a9cb",
+      "bytes": 1926
+    },
+    {
+      "path": ".gcts-active/cluster-lifecycle-progress-20261011/ordering-invariant-note.json",
+      "sha256": "05da42d08eee982f1010805d81fe1dc7b0360c534b19ec391d50722a5862bd86",
+      "bytes": 2909
+    }
+  ],
+  "source": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_oracle_v2.py",
+    "sha256": "1292a934540cb173919546b6a157580530f479791e36218ca6924739099a7680",
+    "bytes": 11245
+  },
+  "bounds_proposed": {
+    "whole_seconds": 60,
+    "memory_bytes": 536870912
+  },
+  "activation": "Source-only. Exact new producer package, prospective adapter freeze and root dispatch required before any fixture/engine/audit execution.",
+  "method": [
+    "Independently enumerate tiny unit-row t/m domains without producer factors.",
+    "Rebuild full selected-state occupancy, assigned marking reference counts, scheduler and parent exclusions.",
+    "Bind descriptor body to independently reconstructed exact registry, not its own hash alone.",
+    "Compare whole status, eligible preferences and full fallback permutation.",
+    "Check paired nested rollback and independently justified exhausted-child exclusion.",
+    "Registry entries must carry independently instantiated ordered_member_keys and ordered receptor rows; descriptor valid-key substitutions/reordering/deletion reject even with valid identities and recomputed hashes.",
+    "Fixed seed key prefix remains present in every reconstructed state, independently assigned generation zero."
+  ],
+  "controls_planned": [
+    "valid hint waits at earlier-generation ineligible point",
+    "global forced move outranks preference and may invalidate distant whole hint",
+    "one invalid member removes all sibling preferences",
+    "rollback revives exact waiting/ready state and complete domains",
+    "selected exact shared member contributes zero additional occupancy",
+    "same-formula different decorated identity invalidates pending member",
+    "two hints share exact member but retire independently",
+    "ordered repeated-premise ports are not deduplicated",
+    "assigned zero differs from absent",
+    "stale model/context/registry/authority/body binding rejects entire descriptor",
+    "recomputed self-hash cannot authorize altered source body",
+    "exhausted child excludes only in restored parent; rollback removes exclusion",
+    "budget/resource/cancelled child preserves exact parent exclusions and hints",
+    "forced-chain unknown rolls back all graph/hint deltas",
+    "preferred plus fallback is exact complete domain permutation",
+    "complete graph and scheduler identical with and without hints"
+  ],
+  "limitations": [
+    "Tiny oracle supports unit one-row occupancy only.",
+    "No native/compiler/Wang authority or discovery claim.",
+    "No actual full-language graph or target search.",
+    "First-success DFS preserves solution existence; same visited solution set requires exhaustive enumeration.",
+    "No tests or engines have executed in this new phase.",
+    "The future adapter must reconstruct instantiated body members from frozen literal source expansion plus explicit role/row transport; no producer descriptor self-assertion is registry authority."
+  ],
+  "prior_design": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/design-v1.json",
+    "sha256": "765ae6426d83059e6f7a9f737dc8befbe74dcf498888014dedd6e1adc1a453e4",
+    "bytes": 3732
+  },
+  "prior_source": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_oracle_v1.py",
+    "sha256": "5c23ff32e11906fd728b2a5b7b27860c232409e7cd4f131fe045be6f236d7f01",
+    "bytes": 10075
+  }
+}

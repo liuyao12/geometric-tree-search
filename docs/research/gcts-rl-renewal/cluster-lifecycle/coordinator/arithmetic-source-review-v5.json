@@ -1,0 +1,16 @@
+{
+  "status": "passed_root_static_v5_source_pin_type_scope_and_budget_review",
+  "package_sha256": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+  "helper_plan_sha256": "6c9323fe02dfdc5f2f47c98f7b6a7402645a7bb2155e932350f820091ac6add8",
+  "evaluation_plan_sha256": "efc1bff7635f42b758ac6a5c29bebf94de0ea792e2685864cfbfda72d4f2add8",
+  "source_pins": 52,
+  "input_pins": 62,
+  "manifest_files": 19,
+  "zip_sources_and_argument": 53,
+  "scope": "Complete byte/pin review, new loader/fixture/owner source inspection, worker two-line diff and pinned consumer-use argument; no scientific decode/replay. Independent source disposition and helper acceptance still required.",
+  "alias_scope": "Plain-list sharing only in read-only saved observations; other loads retain V2; mutating alias control deliberately distinguishes unsupported consumers.",
+  "mathematical_checks": "Unchanged full six original evaluations and complete graph/math/RNG/learning/hints/rollback checks.",
+  "history_seconds": 226.66065275,
+  "remaining_seconds_before_helpers": 553.33934725,
+  "seconds_before_write": 0.081225791
+}

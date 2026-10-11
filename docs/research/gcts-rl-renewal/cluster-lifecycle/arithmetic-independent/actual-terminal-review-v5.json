@@ -1,0 +1,95 @@
+{
+  "status": "passed_independent_v5_terminal_reconciliation_partial_resource_unknown",
+  "phase": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+    "bytes": 14968,
+    "sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979"
+  },
+  "plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5-attempt-02.json",
+    "bytes": 22892,
+    "sha256": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16"
+  },
+  "activation": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/activation-attempt-02-v5.json",
+    "bytes": 1247,
+    "sha256": "4746cccd731d87e8dcbdacd1d21dd7913785199181495d505e27ddd29c9e7a81"
+  },
+  "exact_receipt_pins": [
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-audit.json",
+      "bytes": 5034,
+      "sha256": "6a1cb37303a079e887b997a004dddd3b3ee66fc4bda168c66bf7ffdee9437d33"
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-lifetime.json",
+      "bytes": 887,
+      "sha256": "62c79c9f4f16076e7a07a6eae6153ca46ab076b5cade9ad7cc870ad427f7f543"
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-audit.json",
+      "bytes": 5570,
+      "sha256": "cb0ac4219a5da7472c77335e016cdaa3793e0f8f8db62adf88234c64b777ac3c"
+    },
+    {
+      "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-lifetime.json",
+      "bytes": 910,
+      "sha256": "ab77e4c88e0fd71fd6fdb5578b5298633c0c76e8026dd57e58a6c8f0a1e35db7"
+    }
+  ],
+  "prior_activation_failure": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json",
+    "bytes": 1214,
+    "sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99"
+  },
+  "source_pins_verified": 52,
+  "input_pins_verified": 64,
+  "observations": [
+    {
+      "job": "base-r1",
+      "worker_status": "passed_complete_actual_graph_rng_and_policy_replay",
+      "lifetime_status": "passed_owned_loading_worker_lifetime",
+      "full_original_bytes": 124903546,
+      "original_sha256": "35325a229b8282ba22e0cceea66128641a037f166de2335af890d53eafbb005d",
+      "nodes": 5001,
+      "recorded_policy_events": 0,
+      "recorded_hints": 0,
+      "recorded_changed_first_branches": 0,
+      "owned_seconds": 41.546152584,
+      "conservative_peak_bytes": 441925632,
+      "resource_qualification": true
+    },
+    {
+      "job": "untrained-r1",
+      "worker_status": "unknown_independent_replay_resource_budget",
+      "lifetime_status": "unknown_or_failed_owned_loading_worker_lifetime",
+      "full_original_bytes": 130293777,
+      "original_sha256": "cf9c119d426e0b3bac2cd1e286dcac9431053da4304c1b8e1ede86ec7c0cf29f",
+      "nodes": 5001,
+      "recorded_policy_events": 411,
+      "recorded_hints": 357,
+      "recorded_changed_first_branches": 221,
+      "owned_seconds": 74.300080375,
+      "conservative_peak_bytes": 626147328,
+      "resource_qualification": false
+    }
+  ],
+  "phase_seconds": 115.89094675,
+  "cumulative_audit_seconds": 354.124656251,
+  "remaining_original_seconds": 425.875343749,
+  "whole_phase_resource_status": "unknown; second worker exceeds unchanged 512 MiB, remaining four unexecuted",
+  "conclusions": [
+    "Base-r1 all 5001 nodes and complete original-byte/semantic checks are qualified by its passed 441925632-byte owned gate.",
+    "Untrained-r1 full byte and semantic records remain inspectable but resource qualification fails at 626147328 bytes; its 221 recorded changed branches are not a passed whole evaluation audit.",
+    "Both original searches remain unknown after 5000 attempts; this phase performs replay only, not search/training/native proof discovery.",
+    "Four actual audits remain unexecuted, although all six original search producers completed previously.",
+    "Missing-activation launch remains separate immutable infrastructure evidence and its 0.078432542 seconds remains charged.",
+    "Resource memory gate is retrospective after wait4; no hard OS cap, RSS sampling, descendants or full mathematical proof-gain claim.",
+    "Source preparation/manual review and final receipt writes are excluded from measured owner clocks and not represented as total research cost."
+  ],
+  "metadata_review_seconds_before_receipt_write": 0.083081166,
+  "engine_imports": 0,
+  "loads_or_replays_executed": 0,
+  "searches": 0,
+  "native_queries": 0
+}

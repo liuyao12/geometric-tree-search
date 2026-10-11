@@ -1,0 +1,29 @@
+--- hilbert_cluster_run_attempt02_v1.py
++++ hilbert_cluster_run_attempt03_v1.py
+@@ -8,7 +8,7 @@
+ from pathlib import Path
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parent.parent
+-OUT=HERE/'attempt-02'
++OUT=HERE/'attempt-03'
+ SECONDS, BYTES = 55, 536870912
+ 
+ 
+@@ -24,7 +24,7 @@
+ 
+ def main():
+     started = time.perf_counter()
+-    planpath = HERE / 'plan-attempt-02.json'; plan = json.loads(planpath.read_text())
++    planpath = HERE / 'plan-attempt-03.json'; plan = json.loads(planpath.read_text())
+     for p in plan['sources'] + plan['inputs'] + plan['preserved_files']:
+         path = ROOT / p['path']; h = hashlib.sha256()
+         with path.open('rb') as stream:
+@@ -37,7 +37,7 @@
+     child, terminal, reason, error, samples = None, None, None, None, []
+     try:
+         with (OUT/'fixtures-stdout-v1.txt').open('xb') as out, (OUT/'fixtures-stderr-v1.txt').open('xb') as err:
+-            child = subprocess.Popen([sys.executable, str(HERE/'hilbert_cluster_fixtures_attempt02_v1.py'), '--output-directory', str(OUT)],
++            child = subprocess.Popen([sys.executable, str(HERE/'hilbert_cluster_fixtures_attempt03_v1.py'), '--output-directory', str(OUT)],
+                                      cwd=HERE, stdout=out, stderr=err)
+             save('fixtures-launch-v1.json', {'pid': child.pid, 'scope':'synthetic lifecycle only',
+                  'wall_ceiling_seconds':SECONDS, 'host_ceiling_bytes':BYTES,

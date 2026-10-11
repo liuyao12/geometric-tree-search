@@ -1,0 +1,13 @@
+{
+  "status": "actual_terminal_assertion_failure_not_accepted_conformance",
+  "exec_exit_code": 1,
+  "lifetime_path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-lifetime-v1.json",
+  "lifetime_sha256": "f36dd7f964b64101d40f9744c7e1da6e20c5eba873e3f1212f7eeb5bbff60434",
+  "stderr_sha256": "4e78317f9df6baeda5a504091b4f72ac0ba61423e746eb3573859e68fd0f5987",
+  "completed_fixture_outcome": false,
+  "failed_assertion": "max_attempts=1 unknown return and parent semantic snapshot equality",
+  "whole_seconds": 0.32272041599999995,
+  "cumulative_seconds": 0.5955343319999999,
+  "native_queries": 0,
+  "actual_geometry_model_execution": false
+}

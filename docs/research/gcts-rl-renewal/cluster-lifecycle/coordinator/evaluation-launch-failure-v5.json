@@ -1,0 +1,30 @@
+{
+  "status": "terminal_preserved_owner_start_failure_successor_plan_awaiting_independent_review",
+  "failed_phase": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json",
+    "sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+    "bytes": 1214
+  },
+  "failed_seconds": 0.078432542,
+  "exec_exit_code": 0,
+  "attempted_jobs": [],
+  "unexecuted_jobs": [
+    "base-r1",
+    "untrained-r1",
+    "trained-r1",
+    "trained-r2",
+    "untrained-r2",
+    "base-r2"
+  ],
+  "helper_seconds": 11.494624209,
+  "cumulative_actual_seconds_including_helpers_and_failure": 238.233709501,
+  "remaining_seconds": 541.766290499,
+  "new_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5-attempt-02.json",
+    "sha256": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16",
+    "bytes": 22892
+  },
+  "source_modifications": false,
+  "job_plan_modifications": false,
+  "old_activation_preserved": true
+}

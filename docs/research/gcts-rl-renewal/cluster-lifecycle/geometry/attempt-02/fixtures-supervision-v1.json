@@ -1,0 +1,39 @@
+{
+  "status": "unknown_or_failed",
+  "pid": 22569,
+  "exit_code": 1,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 0.194979333,
+  "wall_ceiling_seconds": 55,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 20791296,
+  "supervisor_peak_bytes": 13828096,
+  "conservative_host_peak_bytes": 34619392,
+  "rss_samples": [
+    {
+      "seconds": 0.104738208,
+      "child_rss_bytes": 1556480,
+      "supervisor_peak_bytes": 13828096
+    },
+    {
+      "seconds": 0.1299525,
+      "child_rss_bytes": 16973824,
+      "supervisor_peak_bytes": 13828096
+    },
+    {
+      "seconds": 0.162531167,
+      "child_rss_bytes": 20512768,
+      "supervisor_peak_bytes": 13828096
+    }
+  ],
+  "resource_reason": "missing_or_invalid_child_receipt",
+  "watchdog_error": "[Errno 2] No such file or directory: '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-outcome-v1.json'",
+  "enforcement": "task-owned external sampled RSS/time watchdog, child SIGALRM, final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan_sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_lifecycle_audit": "not_run"
+}

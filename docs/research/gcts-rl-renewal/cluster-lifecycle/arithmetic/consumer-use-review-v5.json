@@ -1,0 +1,547 @@
+{
+  "status": "source_only_read_only_trace_sharing_argument_awaiting_independent_review",
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v2.py": "7060f912207e7db17712996dd5de2f9b7df27d804c978b3a2d5046ead56993ab",
+    "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py": "bec43697c2fdfe799d3ca22980f1edefcdf2723236cf31b0a082791850486302",
+    "research/gcts-rl-renewal/commutativity_cluster_audit.py": "a0467bfcce40a2020812d53f4269e29818ed379a01eacf2f125ced23016daa9d",
+    "research/gcts-rl-renewal/induction_receptors_audit.py": "c50957dcff5ae2e244b99f36efb6dcafaca9491bd56c19f8fa814965127696dc",
+    "research/gcts-rl-renewal/audit_semantic_inventory.py": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+    "research/gcts-rl-renewal/audit_native_inventory_policy.py": "78341915a39d582235fa4a920de4442e67ae7461d874989492906f8145eb08a6",
+    "research/gcts-rl-renewal/audit_native_receptor_points.py": "d389176b8d3e3ef983f0aaab18efab738c0dfb7d56b1a88f72ef69982840bac0",
+    "research/gcts-rl-renewal/audit_certificate_boundary.py": "32bba04b76dc7be2382afd4919f7e7f3f964639108e0ae2fff892c16f42cab7f",
+    "research/gcts-rl-renewal/audit_tree_kernel.py": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a",
+    "research/gcts-rl-renewal/stochastic_policy_math_audit.py": "bb852fbf8bb8719e3bd2f5c456f772c50985741526eb83aee2181454bedba341",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5"
+  },
+  "inspected_function_spans": [
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_worker_replay_memory_v2.py",
+      "function_or_class": "main",
+      "start_line": 22,
+      "end_line": 102,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 96,
+          "code": "result.update(seconds_before_receipt_write=time.perf_counter() - began,\n                      kernel_peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,\n                      loading_only_repair_statistics=statistics())"
+        },
+        {
+          "line": 93,
+          "code": "result.update(status='failed_or_unknown_independent_replay', failure_type=type(exc).__name__, failure=str(exc))"
+        }
+      ],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "function_or_class": "encoded",
+      "start_line": 30,
+      "end_line": 31,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "function_or_class": "sha",
+      "start_line": 34,
+      "end_line": 35,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "function_or_class": "near",
+      "start_line": 43,
+      "end_line": 56,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": [
+        {
+          "line": 52,
+          "code": "type(expected) is float"
+        }
+      ]
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "function_or_class": "LiteralFeatures",
+      "start_line": 59,
+      "end_line": 140,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 134,
+          "code": "v.update(mark_conflicting_candidate_fraction=len(disagree) / max(1, len(legal_keys)),\n                     mark_agreeing_candidate_fraction=len(agree) / max(1, len(legal_keys)),\n                     mark_impacted_frontier_fraction=len(touched) / max(1, len(state['roots'])),\n                     mark_remote_support_fraction=remote / max(1, len(marking)),\n                     mark_already_assigned_fraction=sum(p in state['marks'] for p in marking) / max(1, len(marking)))"
+        },
+        {
+          "line": 139,
+          "code": "out.append(dict(sorted(v.items())))"
+        },
+        {
+          "line": 68,
+          "code": "self.support.setdefault(p, set()).add(key)"
+        },
+        {
+          "line": 69,
+          "code": "self.values.setdefault((p, value), set()).add(key)"
+        },
+        {
+          "line": 80,
+          "code": "out.append(dict(sorted(v.items())))"
+        },
+        {
+          "line": 68,
+          "code": "self.support.setdefault(p, set())"
+        },
+        {
+          "line": 69,
+          "code": "self.values.setdefault((p, value), set())"
+        },
+        {
+          "line": 108,
+          "code": "sources.append(source_values)"
+        }
+      ],
+      "identity_comparisons_for_manual_review": [
+        {
+          "line": 79,
+          "code": "item is None"
+        },
+        {
+          "line": 100,
+          "code": "source is not None"
+        },
+        {
+          "line": 97,
+          "code": "source is None"
+        }
+      ]
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "function_or_class": "tree",
+      "start_line": 143,
+      "end_line": 300,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 231,
+          "code": "metrics.update(work)"
+        },
+        {
+          "line": 232,
+          "code": "metrics.update({'features:' + k: v for k, v in feature_work.items()})"
+        },
+        {
+          "line": 297,
+          "code": "proof.append(command)"
+        }
+      ],
+      "identity_comparisons_for_manual_review": [
+        {
+          "line": 161,
+          "code": "hint is None"
+        },
+        {
+          "line": 205,
+          "code": "active is None"
+        },
+        {
+          "line": 235,
+          "code": "item is not None"
+        },
+        {
+          "line": 260,
+          "code": "answer is not False"
+        },
+        {
+          "line": 276,
+          "code": "answer is None"
+        },
+        {
+          "line": 290,
+          "code": "required is not None"
+        },
+        {
+          "line": 241,
+          "code": "active is not None"
+        }
+      ]
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_independent_audit.py",
+      "function_or_class": "learning_update",
+      "start_line": 303,
+      "end_line": 337,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "same",
+      "start_line": 32,
+      "end_line": 33,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "initial",
+      "start_line": 36,
+      "end_line": 39,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "families",
+      "start_line": 42,
+      "end_line": 53,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 50,
+          "code": "result.append(dict(root_rule=roots[packed(r['premises'][1])], rewrite_rule=i,\n                               lemma_premise=1, external_premise=0,\n                               scope='Proof-backed deterministic cluster family, not RL or a learned exclusion.'))"
+        }
+      ],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "row",
+      "start_line": 56,
+      "end_line": 59,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "refs",
+      "start_line": 62,
+      "end_line": 83,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 80,
+          "code": "result.append((port['source'], premises[i]))"
+        }
+      ],
+      "identity_comparisons_for_manual_review": [
+        {
+          "line": 81,
+          "code": "port['source'] is not None"
+        },
+        {
+          "line": 78,
+          "code": "port['source'] is None"
+        }
+      ]
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "features",
+      "start_line": 86,
+      "end_line": 108,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 93,
+          "code": "known.add(slot)"
+        },
+        {
+          "line": 95,
+          "code": "facts.add(packed(inventory[guard]['command']['formula']))"
+        }
+      ],
+      "identity_comparisons_for_manual_review": [
+        {
+          "line": 87,
+          "code": "item is None"
+        },
+        {
+          "line": 92,
+          "code": "required is not None"
+        },
+        {
+          "line": 108,
+          "code": "refs(inventory, rules, members, slot) is not None"
+        }
+      ]
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_audit.py",
+      "function_or_class": "proposals",
+      "start_line": 111,
+      "end_line": 200,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 126,
+          "code": "seen.add(key)"
+        },
+        {
+          "line": 127,
+          "code": "item.update(kind=kind, level=0)"
+        },
+        {
+          "line": 128,
+          "code": "pool.append(item)"
+        },
+        {
+          "line": 154,
+          "code": "at[tuple(tile['occupancy'][0][0])].append(key)"
+        },
+        {
+          "line": 170,
+          "code": "fields.append([k for k in keys if inventory[k]['mode'] == mode and (k in state['selected'] or legal(inventory[k], state)) and (anchor[1] != role or k == anchor)])"
+        },
+        {
+          "line": 192,
+          "code": "chosen.append(key)"
+        }
+      ],
+      "identity_comparisons_for_manual_review": [
+        {
+          "line": 121,
+          "code": "item is None"
+        }
+      ]
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_audit.py",
+      "function_or_class": "packed",
+      "start_line": 19,
+      "end_line": 19,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_audit.py",
+      "function_or_class": "model_binding",
+      "start_line": 131,
+      "end_line": 158,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 140,
+          "code": "placements.append(dict(key=key,occupancy=[((4*key[0],key[1]),12)],marks=sorted(mark.items()),slot=key[0],kind=kind,command=command,requirements=requirements,**extra))"
+        },
+        {
+          "line": 142,
+          "code": "domains.append(rows)"
+        }
+      ],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_semantic_inventory.py",
+      "function_or_class": "advance",
+      "start_line": 197,
+      "end_line": 205,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 204,
+          "code": "out['selected'].add(tuple(c['key']))"
+        },
+        {
+          "line": 204,
+          "code": "out['order'].append(tuple(c['key']))"
+        },
+        {
+          "line": 205,
+          "code": "out['tile_generations'].append(generation)"
+        }
+      ],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_semantic_inventory.py",
+      "function_or_class": "LiteralDomains",
+      "start_line": 308,
+      "end_line": 334,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 332,
+          "code": "keys.append(self.keys[bit.bit_length()-1])"
+        }
+      ],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_inventory_policy.py",
+      "function_or_class": "cluster",
+      "start_line": 45,
+      "end_line": 56,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_receptor_points.py",
+      "function_or_class": "state_pin",
+      "start_line": 37,
+      "end_line": 38,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_native_receptor_points.py",
+      "function_or_class": "legal",
+      "start_line": 41,
+      "end_line": 41,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_certificate_boundary.py",
+      "function_or_class": "pin",
+      "start_line": 16,
+      "end_line": 16,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "function_or_class": "packed",
+      "start_line": 14,
+      "end_line": 14,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "function_or_class": "need",
+      "start_line": 16,
+      "end_line": 17,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/stochastic_policy_math_audit.py",
+      "function_or_class": "probabilities",
+      "start_line": 15,
+      "end_line": 25,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/stochastic_policy_math_audit.py",
+      "function_or_class": "log_gradient",
+      "start_line": 28,
+      "end_line": 34,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "_encoded",
+      "start_line": 15,
+      "end_line": 16,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "_mapping",
+      "start_line": 19,
+      "end_line": 37,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "_children",
+      "start_line": 40,
+      "end_line": 46,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "_node",
+      "start_line": 49,
+      "end_line": 50,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "_search",
+      "start_line": 53,
+      "end_line": 54,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "segments",
+      "start_line": 57,
+      "end_line": 59,
+      "mutation_method_calls_for_manual_review": [],
+      "identity_comparisons_for_manual_review": []
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py",
+      "function_or_class": "exact_compact_bytes",
+      "start_line": 62,
+      "end_line": 75,
+      "mutation_method_calls_for_manual_review": [
+        {
+          "line": 66,
+          "code": "a.update(actual)"
+        },
+        {
+          "line": 66,
+          "code": "b.update(emitted)"
+        }
+      ],
+      "identity_comparisons_for_manual_review": []
+    }
+  ],
+  "representation": {
+    "replacement": "repeated exact literal integer pairs become shared plain Python lists ONLY in load_trace(saved_observation)",
+    "four_arrays": "existing V2 shared tuple4 behavior retained",
+    "not_a_coordinate_claim": true,
+    "unshared_artifacts": [
+      "complete model",
+      "catalog",
+      "native registry",
+      "experiment plan",
+      "producer lifetimes",
+      "training transition",
+      "policy",
+      "training audit"
+    ],
+    "ordinary_pair_types_preserved": [
+      "float-containing arrays",
+      "boolean-containing arrays",
+      "mixed noninteger arrays",
+      "all pairs in non-trace loads"
+    ]
+  },
+  "dataflow_argument": [
+    "Worker passes raw.case as spec to model_binding/tree and raw.search as result to tree/learning_update. It compares remaining raw scalars/maps directly. It never assigns into raw, any raw descendant, or a list obtained from raw. New result is a separate receipt dictionary.",
+    "model_binding reads spec.length/spec.target; reconstructed placements and domains are fresh objects. No spec mutation or element identity check.",
+    "tree obtains saved events/hints/weights and visits saved tree children by iteration. Saved node fields/census/event items/features/point/keys/reviews/hints are used only in equality, near, hashing, length, indexing, iteration or scalar decisions. These operations have unchanged values and pair list types.",
+    "Active branch hint.item is taken from independently reconstructed proposals, after saved hints/events are compared; it is not an alias to the saved hint.item. Those proposals and independent graph state are fresh containers from the separately loaded unchanged model.",
+    "LiteralDomains, initial, advance and cluster read model supports and create/copy independent dictionaries, lists and sets for mutations. Their candidate/model inputs do not use new pair sharing.",
+    "LiteralFeatures/features reads spec.target and independent model/state/proposals; its mutation sites concern newly constructed feature dictionaries, sets, counters and lists, not saved trace values.",
+    "RNG policy functions and near/packed/sha read saved weights/features/values. learning_update constructs a new gradient, scaled gradient and weight dictionaries; the trace result/transition are not mutated.",
+    "Success decoding deep-copies inventory command from the unchanged separately loaded model, not saved trace proof. Assignments inputs/source affect the fresh command dictionary. The saved proof is compared by ordinary equality.",
+    "Exact V2 serializer groups field references into a new pending dictionary and C-json encodes them; it neither mutates input values nor observes pair identity. Complete original byte gate is unchanged and occurs before semantic replay.",
+    "Identity tests in the actual consumer closure are comparisons with None/False or type checks on scalars; none compares object identities of saved trace pairs. The documented mutator inventory is a mechanical source aid, not a sound automated alias analyzer.",
+    "Under this pinned consumer call graph, sharing two equal read-only plain lists cannot change any observed value, type, comparison, iteration, serialization, numerical calculation, scheduler branch or audit result. This is a scoped source-level argument requiring independent review, not a universal JSON/alias equivalence claim."
+  ],
+  "negative_controls_prospective": [
+    "type-sensitive list-versus-tuple equality mutant must be distinguished",
+    "mutating one shared pair changes another equal shared pair, unlike ordinary reference; fixture must expose this mismatch and restrict such consumers",
+    "non-trace load must retain distinct ordinary pair lists",
+    "changed assigned zero must fail complete byte gate",
+    "reserved-reference/string collisions, escaped keys, strict leading-zero pairs, and lexical normalizations fail closed"
+  ],
+  "limits_of_argument": [
+    "No scientific payload has been decoded or counted under V5. Actual two-array occurrences/unique values and peak savings are unknown.",
+    "Arity alone supplies no geometric meaning. Sharing is justified by whole trace nonmutation, not coordinate classification.",
+    "Any new consumer callback, mutation or pair identity observation requires a new source review and invalidates this argument.",
+    "All six original complete byte gates and unchanged full semantic replays are still required within original resource limits."
+  ],
+  "source_inspection_only": {
+    "scientific_loads": 0,
+    "censuses": 0,
+    "helpers": 0,
+    "graph_replays": 0,
+    "searches": 0,
+    "training_episodes": 0,
+    "native_queries": 0
+  }
+}

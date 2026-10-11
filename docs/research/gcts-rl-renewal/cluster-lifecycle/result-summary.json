@@ -1,0 +1,15 @@
+{
+  "goal_status": "active",
+  "arithmetic_full_six_replay_pass": false,
+  "arithmetic_all_original_searches": "unknown; no proof",
+  "arithmetic_terminal_phase": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+  "arithmetic_cumulative_audit_seconds": 354.124656251,
+  "geometry_tiny_producer_pass": true,
+  "geometry_tiny_independent_pass": true,
+  "geometry_full_actual_lifecycle_execution": false,
+  "geometry_new_target_searches": 0,
+  "new_RL_training": false,
+  "new_native_queries": 0,
+  "proof_search_gain": "not demonstrated",
+  "scope": "Cluster lifecycle conformance and unchanged-trace arithmetic verification; neither is new mathematical theorem discovery."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed_source_only_ast_pins_and_exact_worker_diff",
+  "parsed_sources": 52,
+  "verified_input_pins": 62,
+  "consumer_source_pins": 11,
+  "worker_diff": "Only V5 loader import and raw=load_trace(...); every other worker byte unchanged from V2.",
+  "exact_original_byte_gate_sha256": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+  "fixtures_executed": 0,
+  "scientific_loads": 0,
+  "censuses": 0,
+  "semantic_replays": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "scope": "Static syntax and exact source/input hash validation only. Nonmutation argument and prospective controls require independent review; this does not pass a decoder/semantic/resource gate."
+}

@@ -1,0 +1,94 @@
+{
+  "status": "frozen_actual_full_language_source_checkpoint_no_plan_or_execution",
+  "version": "full-language-lifecycle-source-ready-v2",
+  "sources": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2.py",
+      "sha256": "ff840a11b33f1328cb56aed79425614aa08293d05dccce1360d57da83d9e09ed",
+      "bytes": 20433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v2.py",
+      "sha256": "7426c0de6f51cd7e7d30ccfbeb358c704c3a67027d9433eebcb8b8cac86e9e16",
+      "bytes": 5630
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v2.py",
+      "sha256": "6fff15ad9e95c3ac829a27ee29e27f678f69a1780f86874dec89c2e5c512d4ba",
+      "bytes": 2723
+    }
+  ],
+  "diffs": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v2-diff.txt",
+      "sha256": "10122624ee12593de8fade830f7adcc307309b8048cb8284d47805d4b9dd798e",
+      "bytes": 1484
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v2-diff.txt",
+      "sha256": "c44409b8cef42fd37a255b14b7561f074c4dfc3696ae79f699a7670c4265a5b5",
+      "bytes": 3289
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2-diff.txt",
+      "sha256": "c23ffb7dc8c5fe77b25049e6219c646f448f3ac58007c79451a3d1915eeda8ae",
+      "bytes": 2870
+    }
+  ],
+  "preserved_draft_snapshot": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-design-v1.json",
+    "sha256": "c7897295e54d0ca5cd1be2c4db7827deeb53504181e404d2472db0a2d78e784b",
+    "bytes": 3987
+  },
+  "frozen_kernel": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+    "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+    "bytes": 30989
+  },
+  "prior_point_plan": {
+    "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-plan-v1.json",
+    "sha256": "212a9bed4753d88a00588e304ee66eb4d92d9198f4f3f4f38ac2270e000b7b7f",
+    "bytes": 119923
+  },
+  "prior_point_outcome": {
+    "path": ".gcts-active/hilbert-primitive-executor-20261011/full-model-outcome-v1.json",
+    "sha256": "d571cdc13f8fc4c3566a11739301c30eb03e131e6d0c31e089d63dfb254929d6",
+    "bytes": 1423687
+  },
+  "model_epoch_preservation": "Load the exact old point-plan inputs so epoch06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c stays identical. New lifecycle source/proof/evidence provenance belongs only to immutable BodyAuthority binding; no primitive model changes.",
+  "point_inventory": [
+    229,
+    217,
+    24
+  ],
+  "all_family_bodies": 171,
+  "additional_fixed_primitive_proposal_bodies": 4,
+  "predicted_controlled_states": 11,
+  "state_ceiling": 12,
+  "counts_are_predictions": true,
+  "gates": {
+    "actual_outer_seconds": 180,
+    "actual_supervisor_seconds": 175,
+    "actual_child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "independent_gate": "separately owned/frozen/reviewed; no dispatch from this checkpoint"
+  },
+  "prerequisites": [
+    "one complete tiny producer outcome and full lifetime within cumulative60s512MiB",
+    "independently frozen/accepted tiny body/graph/hint checks",
+    "full-language-plan-v2.json binds those exact receipts and all sources/input/preservation bytes",
+    "root and independent full-source review before explicit actual dispatch"
+  ],
+  "timers": "Actual source exports family preparation, descriptor/controller preparation and all cumulative graph/controller scan/order/rollback counters; tiny earlier counter omission remains a report caveat.",
+  "zero_claims": {
+    "actual_model_execution": 0,
+    "native_queries": 0,
+    "target_DFS_searches": 0,
+    "new_RL_training": false,
+    "authored24_input_to_hints": false,
+    "authority_activation": false
+  },
+  "source_checks": "AST syntax/read-only hash extraction only, no scientific imports",
+  "remaining_scope": "Controlled transactions first; not proof discovery, compiler/native correspondence or arbitrary mutable graph version protocol.",
+  "saved_utc": "2026-10-11T21:28:33.768711+00:00"
+}

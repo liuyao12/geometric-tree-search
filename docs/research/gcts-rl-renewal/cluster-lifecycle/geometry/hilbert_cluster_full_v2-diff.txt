@@ -1,0 +1,43 @@
+--- hilbert_cluster_full_v1.py
++++ hilbert_cluster_full_v2.py
+@@ -147,7 +147,7 @@
+     started=time.perf_counter()
+     signal.signal(signal.SIGALRM,lambda *_:(_ for _ in ()).throw(TimeoutError('actual lifecycle conformance alarm')))
+     signal.alarm(170)
+-    planpath=HERE/'full-language-plan-v1.json'
++    planpath=HERE/'full-language-plan-v2.json'
+     plan=json.loads(planpath.read_text())
+     for p in plan['sources']+plan['inputs']+plan['preserved_files']:
+         if core.pin(ROOT/p['path'])!={k:p[k] for k in ('sha256','bytes')}:
+@@ -160,7 +160,11 @@
+     if tiny_independent['status']!=plan['tiny_independent_accepted_status']:
+         raise ValueError('tiny independent prerequisite incomplete')
+     data=core.read_json(roles['primitive_model']); inventory=raw_inventory(data)
+-    g=core.frozen_model(ROOT,plan)
++    old_point_plan=core.read_json(roles['prior_full_model_plan'])
++    g=core.frozen_model(ROOT,old_point_plan)
++    old_point_outcome=core.read_json(roles['prior_full_model_outcome'])
++    if g.model_epoch!=old_point_outcome['model_epoch']:
++        raise ValueError('exact prior point-model epoch must be preserved')
+     if len(g.recipes)!=229 or len(g.formulas)!=217 or g.height!=24:
+         raise ValueError('full unchanged language is mandatory')
+     if len(g.initial_selected)!=3 or any(g.selected[k]!=0 for k in g.initial_selected):
+@@ -314,7 +318,8 @@
+                 'bodies':[[n,json.loads(t)] for n,t in authority.bodies],'epoch':authority.epoch},
+             'descriptors':descriptors,'rejected_corruptions':rejected,'identities':identities,
+             'full_source_bodies':len(family.bodies),'complete_primitive_recipes':len(g.recipes),
+-            'formula_values':len(g.formulas),'required_rows':g.height,
++            'formula_values':len(g.formulas),'required_rows':g.height,'exact_prior_point_model_epoch':g.model_epoch,
++            'lifecycle_source_relation_epoch':authority.epoch,
+             'controlled_states':len(comparisons),
+             'all_state_candidate_key_t_m_comparisons':sum(v['candidate_nodes'] for v in comparisons),
+             'graph_metrics':g.metrics,'lifecycle_metrics':c.metrics,
+@@ -325,7 +330,7 @@
+             'actual_target_DFS_searches':0,'authored24_words_used_as_hints':0,'native_queries':0,
+             'new_RL_training':False,'native_authority_activated':False,
+             'scope':'controlled graph/hint transactions, not proof discovery or native/compiler correspondence'}
+-    path=HERE/'full-language-outcome-v1.json'
++    path=HERE/'full-language-outcome-v2.json'
+     if path.exists():raise ValueError('immutable actual outcome exists')
+     path.write_text(json.dumps(result,indent=2)+'\n')
+     print(json.dumps({k:v for k,v in result.items() if k not in ('comparisons','states','controlled_operations','authority_registry','descriptors','identities')}),flush=True)

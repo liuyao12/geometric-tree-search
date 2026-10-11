@@ -1,0 +1,22 @@
+{
+  "status": "authorized_one_metadata_successor_with_owned_process_monitor",
+  "plan_sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+  "sources": 5,
+  "inputs": 39,
+  "preserved": 509,
+  "prerequisites": {
+    ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt02-source-review-v1.json": "8a0fc0696841908376cddd3a596a73eb30b1d97fc94dfc44db5988d41721aade",
+    ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-lifetime-v1.json": "e0bfe919d46c42800c507976e580b1d2ee8315fd137b38f4a8475128e72ae776"
+  },
+  "root_static_pin_seconds": 0.106258333,
+  "root_source_diff_review": "same scientific fixture and kernel, isolated immutable outputs, prior unknown cost charged",
+  "cumulative_outer_seconds": 60,
+  "prior_failed_outer_seconds": 0.272813916,
+  "supervisor_seconds": 55,
+  "child_seconds": 50,
+  "memory_bytes": 536870912,
+  "requires_permitted_own_child_ps_monitor": true,
+  "actual_geometry_model_execution": false,
+  "new_RL_training": false,
+  "native_queries": 0
+}

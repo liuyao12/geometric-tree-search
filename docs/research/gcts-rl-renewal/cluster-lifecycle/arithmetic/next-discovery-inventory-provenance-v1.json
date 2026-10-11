@@ -1,0 +1,380 @@
+{
+  "schema": "arithmetic-discovery-inventory-provenance-clarification-v1",
+  "status": "immutable_source_only_historical_binding_clarification",
+  "original_plan": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-benchmark-source-only-v1.json",
+    "sha256": "675caf25cd7010b7e31bf6f1e544f27b7fa86d4f6e89c693f0b31470822ac7c7",
+    "bytes": 26574,
+    "role": "Original source-only benchmark note; preserved without changes"
+  },
+  "clarification": "The existing inventory contains two automatically obtained and independently checked theorem certificates with DIFFERENT discovery methods: zero-left came from GCTS; left-successor came from ordinary forward chaining while eight GCTS searches stayed unknown. Neither is evidence that RL discovered a theorem or improved search. The v1 phrase automatically discovered must be read with these method/resource/unknown qualifications.",
+  "lemmas": [
+    {
+      "id": "zero-left",
+      "name": "searchedZeroLeftfb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+      "latex": "\\(\\forall n\\;0+n=n\\)",
+      "exact_inventory_word_artifact": {
+        "path": ".gcts-active/commutativity-receptors-20261011/inventory.json",
+        "sha256": "b5bd2a9cfffa233fdfcc0dbd6be46f5d11e215438da5dab9fb07e9b54059cece",
+        "bytes": 319082,
+        "role": "Exact promoted inventory: contains both complete30/67primitive discovered words, targets and original theory"
+      },
+      "inventory_index": 0,
+      "primitive_commands": 30,
+      "primitive_word_canonical_sha256": "ea5c66c5913a43562d0990cee77fabd5ef91450cf756b1f2d0a5b8134dab437f",
+      "whole_closed_request_sha256": "fb61173ed66261d476a54f6d749beae99b4bc9f9e9a1e075dea8f488094705b3",
+      "checked_promotion_definition_sha256": "67a8250268bee847b63eb01b17f47277c7242320d51fbfe8441ef15fc40289be",
+      "promotion_admission_request_sha256": "c76a2af1ffdbfd5e84aa7b1d1d076ce9601709062ecdfc1bd3dd3e3ffbfce42c",
+      "same_current_original_theory": true,
+      "authoring_scope": "Only exact request/certificate identity hashes checked here; no derivation, search or native replay executed.",
+      "discovery_method": "GCTS reference graph/search automatically selected seven high-level rows; not RL. The recovered deterministic trace is bound to original native query74.",
+      "selected_rows": 7,
+      "search_attempts": 949,
+      "original_searched_request_sha256": "ffdc00dbe47c68855e652645a26a4f781ab449a3c630f33ea4496ad1ae254666",
+      "retained_limitations": [
+        "Original whole query74 was unknown_space_budget, independently replayed as unknown.",
+        "Original target search time was not saved; remains unknown. Recovery reran exactly the frozen model/search order and saved950nodes/949attempts; its time is additional preparation/recovery cost.",
+        "Generic expansion produced53primitive commands. The53command backward-slice remained native unknown; the30command exact-formula DAG-sharing-and-slice was accepted. No authored target proof path or new proof search was substituted."
+      ],
+      "acceptance": {
+        "query": 1,
+        "native_status": "accepted",
+        "micro_steps": 4026598098,
+        "native_seconds": 29.363403041999995,
+        "independent_native_input_output_matched": true
+      },
+      "current_admission": {
+        "source": "historical exact request reuse in current94registry",
+        "query": 5,
+        "request_sha256": "c76a2af1ffdbfd5e84aa7b1d1d076ce9601709062ecdfc1bd3dd3e3ffbfce42c",
+        "micro_steps": 4479690987,
+        "independent_prior_replay_status": "passed_preparation_native_replay_only"
+      },
+      "evidence": [
+        {
+          "path": ".gcts-active/induction-receptors-20261011/attempt-02/plan.json",
+          "sha256": "c5060ec1180e9b5733703b22776594d7fcb03c415ad0a6e0674733c87ec9ae3d",
+          "bytes": 10852,
+          "role": "Frozen complete catalog/source/search plan"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/recovery-plan.json",
+          "sha256": "a9368834cbf9a616d4f6278da56d2a5060e7bf7347087cc0797b713cefbbbb2a",
+          "bytes": 980,
+          "role": "Predeclared deterministic trace recovery and original-query binding"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/recovered-left-zero-seven.json.gz",
+          "sha256": "7ceafdf38ecf4eea7f9806d3cd39774b0779570eb9d89171732c734f6dad1f9d",
+          "bytes": 391408,
+          "role": "Exact recovered selected word, complete model and950node searched trace; pinned without inflation"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/recovery-summary.json",
+          "sha256": "0079324568ced559ca9801ab05b4bd7fddb51c45fda9aab3635878540e327642",
+          "bytes": 608,
+          "role": "Discovery/attempt/native-unknown and lost-time receipt"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/recovery-audit.json",
+          "sha256": "509e12e9f39f5e2c702f02afbe8c634ccf62ab4c59e998227a0088080484bcfe",
+          "bytes": 9900,
+          "role": "Complete independently reconstructed catalog/model/tree and75native replays"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/attempt-02/admission.json.gz",
+          "sha256": "d4fc41f80ceb43675d6fb5fd0bd6c9fc164382da9e6920385409dd0a8217b11a",
+          "bytes": 3343,
+          "role": "Original66local-interface admission registry; pinned without inflation"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/attempt-02/native-records.json.gz",
+          "sha256": "56caa3324624ac26e577bd1483186508f0c58bc8e6ff64998fb3028f4a5815b7",
+          "bytes": 138830,
+          "role": "Original native admissions/whole query74 records; pinned without inflation"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/compaction-plan.json",
+          "sha256": "3c550fed0dbd46f79c76cb750a4aebc94c8cbdf3eab6e7c6bef20234b9c34273",
+          "bytes": 7149,
+          "role": "Predeclared generic compaction-only intervention"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/compaction-summary.json",
+          "sha256": "c871150af3fb600adfacdf0ea89b6c4a37ad41684078c6e4d13f265bbdb1a4b8",
+          "bytes": 795,
+          "role": "Both53unknown and30accepted whole variants"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/compaction-native.json.gz",
+          "sha256": "cc937e156c5bb7b6a6a424cb7c23b2aad7804c151596cae1e9d04eae74149f20",
+          "bytes": 7376,
+          "role": "Exact compact whole request/response/word records; query1accepted"
+        },
+        {
+          "path": ".gcts-active/induction-receptors-20261011/compaction-audit.json",
+          "sha256": "715b2b2464d78083dad1372a311e92ab46fb7836d253f99a9a5d68e007534b10",
+          "bytes": 1065,
+          "role": "Independent generic transformation and full native parser-start replay"
+        },
+        {
+          "path": "docs/research/gcts-rl-renewal/induction_receptors_frozen_sources.zip",
+          "sha256": "05b3da18ade7674bc4ebd87c9c99e48663cefc976c613ed0d7fbeb491dc16f44",
+          "bytes": 506989,
+          "role": "Archived original catalog/search/recovery/closure/compaction and independent-audit source closure"
+        },
+        {
+          "path": "docs/research/gcts-rl-renewal/induction_receptors_costs.json",
+          "sha256": "9c91b3ffdfbd00d5a5927824b4c39e5830c8152b2f453b11be3704b7432e3b0c",
+          "bytes": 15193,
+          "role": "Original/recovery/admission/checking cost ledger with unknown retained"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/pilot-summary.json",
+          "sha256": "c5d9a9be54e176a00328061e080e6d77e3e10c8e9c8408ec7f27b2f66beabb6d",
+          "bytes": 7960,
+          "role": "Promoted zero-left block accepted as exact requestc76a2af1...query5"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/pilot-audit.json",
+          "sha256": "51c732aad3e8952e804654cc403cb841d87d7e65e70e702210057f5d4bbc2c32",
+          "bytes": 4800,
+          "role": "Full prior promoted-block native replay used for exact registry credit"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/pilot-native.json.gz",
+          "sha256": "cf11562d76d83bafbfa5aa0f4192315e3d62962b115a39be03055520067bc7ea",
+          "bytes": 43791,
+          "role": "Exact historical query5request/input/output/native record; pinned without inflation"
+        }
+      ]
+    },
+    {
+      "id": "left-successor",
+      "name": "searchedLeftSuccessor9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "latex": "\\(\\forall x\\,\\forall y\\;S(x)+y=S(x+y)\\)",
+      "exact_inventory_word_artifact": {
+        "path": ".gcts-active/commutativity-receptors-20261011/inventory.json",
+        "sha256": "b5bd2a9cfffa233fdfcc0dbd6be46f5d11e215438da5dab9fb07e9b54059cece",
+        "bytes": 319082,
+        "role": "Exact promoted inventory: contains both complete30/67primitive discovered words, targets and original theory"
+      },
+      "inventory_index": 1,
+      "primitive_commands": 67,
+      "primitive_word_canonical_sha256": "62d36a0e7df1f03d92f2b9d255f5ed67a820586134bef0181da5c8bb076d46a8",
+      "whole_closed_request_sha256": "9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "checked_promotion_definition_sha256": "ae5b396cbe570e08dc95d54e5419a1adac146675a9c2c4f8ef1f386fdfcb8001",
+      "promotion_admission_request_sha256": "7a5be2049ad56f450ae8f812ef156d3804cdd7f73a656e9a98f74db325cb3b48",
+      "same_current_original_theory": true,
+      "authoring_scope": "Only exact request/certificate identity hashes checked here; no derivation, search or native replay executed.",
+      "discovery_method": "Ordinary deterministic complete retained-hyperedge forward chaining automatically selected11high-level rows; not GCTS and not RL.",
+      "selected_rows": 11,
+      "search_scope": "Generic full closure and deterministic witness/DAG extraction, no supplied target-proof word or chosen induction variable. Without/with-zero-left lanes produced the same selected word.",
+      "retained_limitations": [
+        "All eight original/rank-bounded GCTS searches remained unknown_search_budget at5000attempts; this theorem must not be called a GCTS discovery.",
+        "Original11row and expanded67command whole requests were independently replayed unknown_space_budget at the original73178cell native heap boundary.",
+        "A separately frozen enlarged262144cell physical heap boundary accepted the exact same11/67request pair with unchanged checker/parser/palette. This is a disclosed resource intervention, not acceptance at the earlier boundary.",
+        "Generic expansion79commands then exact-formula sharing67commands preserves the same original theory and target; authored infrastructure is separate from automatically selected theorem words."
+      ],
+      "acceptance": {
+        "query": 1,
+        "native_status": "accepted",
+        "micro_steps": 13499468074,
+        "native_seconds": 108.779356917,
+        "heap_capacity": 262144,
+        "independent_native_input_output_matched": true
+      },
+      "current_admission": {
+        "source": "fresh current eight-stratum native pilot",
+        "query": 7,
+        "request_sha256": "7a5be2049ad56f450ae8f812ef156d3804cdd7f73a656e9a98f74db325cb3b48",
+        "micro_steps": 14378785083,
+        "independent_replay_status": "passed_complete_frozen_eight_native_pilot_replay"
+      },
+      "evidence": [
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/plan.json",
+          "sha256": "0766d8a0cec1b132a04cdc498166d249ad65e9b375c6d54c0e0f30eec5fc8a1c",
+          "bytes": 11001,
+          "role": "Frozen ordinary forward-control algorithm/grammar/source/input/budget plan"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/without-transfer.json.gz",
+          "sha256": "426cbc2f4df67ff1981a6e92b6cc3e1ded44067b81d61e04e5e9580ead12005f",
+          "bytes": 4778,
+          "role": "Exact11row automatic word/DAG/full closure with no transferred lemma; pinned without inflation"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/with-searched-zero-left.json.gz",
+          "sha256": "b85920ed0180c73662e5fbc744a8c70822d571c02f3444679aabc85a2aed0675",
+          "bytes": 4883,
+          "role": "Equal automatic word in transferred-inventory control; pinned without inflation"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/summary.json",
+          "sha256": "34e35640a9f8c6650091f19f710719b029139c68766ff25014f0ad1bc4cd8293",
+          "bytes": 2986,
+          "role": "Ordinary word lengths/costs and earlier native unknowns"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/audit.json",
+          "sha256": "b91abf9681005b50aef96698944f72265cecd771f74bafc3b87c56dfb9c3c77d",
+          "bytes": 1680,
+          "role": "Independent full closure/witness/word/compaction and native unknown replay"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/sources.zip",
+          "sha256": "065c0ba840043ac794bf96b87d593c22731348713c4bc620844b536dce9cdc2e",
+          "bytes": 231870,
+          "role": "Frozen forward producer/source closure"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/forward-control/audit-sources.zip",
+          "sha256": "392739bcb8131d54314171da4c2ce74ff494cce69a52c004918f12120e373a93",
+          "bytes": 238196,
+          "role": "Frozen independent forward auditor/source closure"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/admission-audit.json",
+          "sha256": "0accfbfb3cfc363e4a6d2af89d86380dab1ad6937470cb609d5ab908f68c1f04",
+          "bytes": 3713,
+          "role": "Independent complete retained generic-interface admission gate"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/search-summary.json",
+          "sha256": "dcf646891dc99c7cf17e644ebfce8cd24b87af439772c85bb537805f7693cc40",
+          "bytes": 2031,
+          "role": "Four preserved original GCTS unknowns"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/rank-search/search-summary.json",
+          "sha256": "cc656c50032ed45d252e1b9b7767ee1384dc4b8d8ab625c8dd66341d1903d3ce",
+          "bytes": 2072,
+          "role": "Four preserved positional-rank GCTS unknowns"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/plan.json",
+          "sha256": "bdc6603ee1ef2b77c554ba0732ed31eac5d48ed1fa79251ff91ab0c4c84c539d",
+          "bytes": 11377,
+          "role": "Separate prospective262144heap native-resource plan for exact11/67requests"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/summary.json",
+          "sha256": "3bc1342a349415c75f638aac68379f7ef05180b616aa229463b601bc58059d06",
+          "bytes": 1429,
+          "role": "Both fresh whole native acceptances and production cost"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/native.json.gz",
+          "sha256": "edc22d5e4043d3af7afd5c2b7863f6c5f0c4598faad600328426e4128c4d3772",
+          "bytes": 4253,
+          "role": "Exact whole accepted request pair with native input/output/fingerprint records; pinned without inflation"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/audit.json",
+          "sha256": "64cb405065973eea0ef711a4cb292753ea5cd632e1596907e06ad6d990875f11",
+          "bytes": 1642,
+          "role": "Complete independent native replay from parser start88986 matching all input/output"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/sources.zip",
+          "sha256": "3c94c286058b6e2f21e78648562e0ed01d228918fe710b719e8831e9622e6e09",
+          "bytes": 249185,
+          "role": "Frozen enlarged-boundary native producer/checker source closure"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/query-001-input.bin.gz",
+          "sha256": "861f3dc2c93f5679f994138da01dde3ed835fa8cf6a1dbc074ad9675a9b3cd69",
+          "bytes": 17011,
+          "role": "Exact accepted67command enlarged-boundary input tape"
+        },
+        {
+          "path": ".gcts-active/left-successor-20261011/workspace-native/query-001-output.bin.gz",
+          "sha256": "4a31dd8f6b6a3598d4f71291da087b7a4e87055f4e5538f0bf59a8f481361cd7",
+          "bytes": 45544,
+          "role": "Exact accepted67command output tape"
+        },
+        {
+          "path": ".gcts-active/commutativity-receptors-20261011/native-pilot/summary.json",
+          "sha256": "562030e94cb360d7cf4958e10cc853d844ad070b81d5881bfc1e3126aaac0f2b",
+          "bytes": 4981,
+          "role": "Current promoted left-successor block query7acceptance"
+        },
+        {
+          "path": ".gcts-active/commutativity-receptors-20261011/native-pilot/audit.json",
+          "sha256": "55b955527023445b5243a99baa1fa14a940d74499eaec1abde5c971ce471738f",
+          "bytes": 5685,
+          "role": "Independent full current promoted-block replay"
+        },
+        {
+          "path": ".gcts-active/commutativity-receptors-20261011/native-pilot/native.json.gz",
+          "sha256": "a1d11787870549a4785167b5d378982ea8c7426ca0731363fbb6ba3819bfc4c0",
+          "bytes": 6065,
+          "role": "Exact promoted current block whole requests/tapes; pinned without inflation"
+        }
+      ]
+    }
+  ],
+  "current_inventory_evidence": [
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/plan.json",
+      "sha256": "105ff0cd30fbc9a57064285043d8a37772418ff22f79539831d8cfd3118ebac9",
+      "bytes": 37302,
+      "role": "Frozen two-lemma sources/request identities and original theory"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/audit.json",
+      "sha256": "a75e90fec0425f2aedd207697afe1cbe0051df8ece7a48cff2b0cd720e9cf343",
+      "bytes": 1367,
+      "role": "Independent complete promotion/grammar/pruning and native requirements construction"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/sources.zip",
+      "sha256": "2cfc035202bd64824fbe0b18c477211e1a52b08ef6f82a827933813afa6dddb4",
+      "bytes": 219617,
+      "role": "Frozen generic promotion compiler/preflight and independent grammar source closure"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/attempt-02/admission-requirements.json.gz",
+      "sha256": "263735a03605679e84909ee32a8752e65c875354b2467ada2cdd6576cb0ded59",
+      "bytes": 27729,
+      "role": "Complete94exact native-admission requests with promoted certificates; pinned without inflation"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/registry-plan.json",
+      "sha256": "476eecb6de91f9dac54a6ebd10f0d7813f1c8f6e70c1e66f9d77ce39e805cce9",
+      "bytes": 99563,
+      "role": "Frozen full94registry reconciliation source/input request mapping"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz",
+      "sha256": "18e164d65c9f0bf20c488a2391d389791b07460a779c44d8b8a90764897d8247",
+      "bytes": 37521,
+      "role": "Exact current94native-admitted definitions and original theory; pinned without inflation"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/registry-audit.json",
+      "sha256": "4a9300ae8780fffb4b6291745a6475fd69595b7244dc44efff7c56e3a993c8c0",
+      "bytes": 938,
+      "role": "Independent93fresh+1historical exact native binding reconciliation"
+    },
+    {
+      "path": ".gcts-active/commutativity-receptors-20261011/native-complete/sources.zip",
+      "sha256": "f264fe9ede3c6f8ff3378cc8eccd6b2f0697dd820554805b1be456385472546d",
+      "bytes": 257042,
+      "role": "Complete frozen registry producer/auditor source closure"
+    }
+  ],
+  "binding_checks": "Regular inventoryJSON proof/theory/target canonical request hashes exactly equal the historical accepted-request IDs. Mechanically constructed promoted-block definitions and whole admission requests exactly match the prior/current acceptance observations. Historical passed audit receipts and all evidence file bytes are pinned; no compressed scientific artifact was inflated or native/search/audit computation rerun here.",
+  "inventory_use": "Future controls may reuse these same closed checked certificates equally, with full original search/preparation/admission/native/resource costs and method provenance disclosed. They remain theorem blocks, not newly asserted axioms. Generic rewrite/induction/local-interface construction is authored infrastructure, not learned inventory discovery.",
+  "source_only": {
+    "engine_imports": 0,
+    "scientific_gzip_inflations": 0,
+    "searches": 0,
+    "training_episodes": 0,
+    "native_queries": 0,
+    "replays": 0
+  },
+  "preparation_seconds_before_note_write": 0.018328000000000004,
+  "inspection_design_time": "Earlier manual source/metadata inspection uninstrumented and unknown."
+}

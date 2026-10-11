@@ -1,0 +1,32 @@
+{
+  "status": "passed_owned_independent_tiny_lifecycle_audit",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v2.json",
+    "sha256": "77b958fec81ef720abc47063fda162e25400a81a2adcf38a851bbdc2afa2c656",
+    "bytes": 131791
+  },
+  "result_pin": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+    "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25",
+    "bytes": 3962
+  },
+  "child_pid": 25500,
+  "child_exit_code": 0,
+  "owned_child_terminal_and_reaped": true,
+  "failure": null,
+  "full_owner_and_worker_seconds_before_receipt_write": 0.314626667,
+  "fresh_child_kernel_peak_bytes": 24477696,
+  "owner_kernel_peak_bytes": 13795328,
+  "conservative_combined_peak_bytes": 38273024,
+  "whole_ceiling_seconds": 60,
+  "peak_ceiling_bytes": 536870912,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "enforcement": "Sole wait4 direct-child owner, worker SIGALRM and owned wall kill/reap; retrospective fresh-child plus owner kernel peak gate. No hard OS limit or live RSS-sampling claim.",
+  "clock_scope": "Includes owner hashing/activation, entire child/result serialization/reap and assembly; excludes final own receipt write and unmeasured source authoring.",
+  "actual_geometry_model_loads": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "compiler_activations": 0,
+  "training_episodes": 0
+}

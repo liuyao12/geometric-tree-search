@@ -1,0 +1,75 @@
+{
+  "status": "passed_independent_fixture_baseline_successor_source_readiness",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-03.json",
+    "sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+    "bytes": 135346
+  },
+  "source_entries": 5,
+  "input_entries": 43,
+  "preserved_entries": 527,
+  "verified_unique_paths": 535,
+  "sources": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1.py",
+      "sha256": "eb8e5b5305ae7b78c15c1e867cd12bcf07f58bebeda0a204cc14d41a8d5365d5",
+      "bytes": 20615
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_attempt03_v1.py",
+      "sha256": "8f737823e0185581920f09da274ecbb2e2c1af1c7aded69b59105cf2dd823252",
+      "bytes": 7522
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt03_v1.py",
+      "sha256": "dde646c033bb6b087185d91e2a4b8d7241e9c428fc25b8a1893f1278e7da2a47",
+      "bytes": 2892
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt03_v1.py",
+      "sha256": "b8913e2228156f8d3100bea9f07b00e3f018613d78e4ec711e2d790521504a5a",
+      "bytes": 5580
+    }
+  ],
+  "diffs": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1-diff.txt",
+      "sha256": "c75f3f3cd2af5823d0ed6f04e9b1b98fe6f86f500f58c9efc3ec0a1680ae4a5d",
+      "bytes": 2373
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt03_v1-diff.txt",
+      "sha256": "924db5f5aa5cf2e9304f1226f3638f223a0e09e11ae5b8e65d9c4be5380a16ae",
+      "bytes": 1433
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt03_v1-diff.txt",
+      "sha256": "9310b69f0db0b87b1e03efa8a387fa34f07f34f38ae29e2eb8724e460875dbcd",
+      "bytes": 1430
+    }
+  ],
+  "previous_diagnosis": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt02-failure-diagnosis-v1.json",
+    "sha256": "9c8f68f30fc3996dcfe429775ff0e490e8b1221232a5a7bf8cb68c84c3c9001d",
+    "bytes": 2829
+  },
+  "conclusions": [
+    "Only expected fixture baseline moves past the inspecting snapshot, whose ordered-domain call resynchronizes hint revision. Exact restoration assertion retained; status and restoration now checked separately with failure payload.",
+    "Every remaining scientific fixture assertion text-identical to attempt-02. Logical kernel byte-identical. Output/argv/supervisor plan/source identities versioned to isolated attempt-03.",
+    "Same 50-second child alarm, 55-second owned watchdog, cumulative 60-second outer and 512 MiB limits; both failed prior lifetimes charged 0.595534332 seconds.",
+    "No failed outcome relabeled; actual whole producer and independently frozen future adapter remain separate gates."
+  ],
+  "scope": "Source readiness for root-owned tiny retry only. No scientific import, fixture execution, actual model, target search, native or compiler activation.",
+  "cost_caveats": [
+    "Authoring calendar interval is not CPU effort; old invalid cross-process timer preserved.",
+    "Unexported controller metrics cannot support separate scan/order/rollback cost claims.",
+    "Final outer receipt writes excluded from timer; actual resource success remains unestablished."
+  ],
+  "metadata_review_seconds_before_receipt_write": 0.131824,
+  "manual_source_review_time": "unmeasured"
+}

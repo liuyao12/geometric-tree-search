@@ -1,0 +1,27 @@
+{
+  "status": "actual_terminal_resource_unknown",
+  "session_id": 75287,
+  "exit_code": 0,
+  "phase_path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+  "phase_sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+  "attempted": [
+    "base-r1",
+    "untrained-r1"
+  ],
+  "failed": [
+    "untrained-r1"
+  ],
+  "unexecuted": [
+    "trained-r1",
+    "trained-r2",
+    "untrained-r2",
+    "base-r2"
+  ],
+  "phase_seconds": 115.89094675,
+  "cumulative_seconds": 354.124656251,
+  "remaining_audit_seconds": 425.875343749,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "same_handle_completed": true
+}

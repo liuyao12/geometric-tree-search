@@ -1,0 +1,23 @@
+{
+  "status": "unknown_or_failed",
+  "pid": 21752,
+  "exit_code": -9,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 0.127153167,
+  "wall_ceiling_seconds": 55,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 1327104,
+  "supervisor_peak_bytes": 13484032,
+  "conservative_host_peak_bytes": 14811136,
+  "rss_samples": [],
+  "resource_reason": "watchdog_failure",
+  "watchdog_error": "PermissionError: [Errno 1] Operation not permitted: '/bin/ps'",
+  "enforcement": "task-owned external sampled RSS/time watchdog, child SIGALRM, final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan_sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+  "actual_geometry_model_execution": false,
+  "geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "independent_lifecycle_audit": "not_run"
+}

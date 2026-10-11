@@ -1,0 +1,13 @@
+{
+  "status": "terminal_infrastructure_unknown_before_completed_fixtures",
+  "exec_exit_code": 1,
+  "scientific_outcome_exists": false,
+  "full_owned_seconds": 0.27281391600000005,
+  "resource_failure": "Sandbox forbids /bin/ps; monitor failed closed, killed/reaped own child, no RSS samples",
+  "pins": {
+    ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-lifetime-v1.json": "e0bfe919d46c42800c507976e580b1d2ee8315fd137b38f4a8475128e72ae776",
+    ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-supervision-v1.json": "cee05e4948cdd2a9b238415ad2aa934d01ab824f17edab249e229f90815de9e3"
+  },
+  "unknown_not_logical_failure": true,
+  "successor_policy": "Fresh immutable outputs and exact reviewed source/limits before permitted process metadata dispatch"
+}

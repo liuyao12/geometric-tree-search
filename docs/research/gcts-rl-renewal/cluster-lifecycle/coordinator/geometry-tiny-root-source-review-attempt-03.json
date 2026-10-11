@@ -1,0 +1,10 @@
+{
+  "status": "passed_root_static_successor_pins_and_diff_scope",
+  "plan_sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+  "sources": 5,
+  "inputs": 43,
+  "preserved": 527,
+  "pin_verifier_seconds": 0.1993395,
+  "source_scope": "Baseline is refreshed after inspection resync; exact call-entry restoration still required; logical kernel unchanged",
+  "actual_execution": false
+}

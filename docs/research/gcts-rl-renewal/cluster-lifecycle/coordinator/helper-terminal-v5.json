@@ -1,0 +1,20 @@
+{
+  "status": "passed_root_terminal_only_full_v5_helper_receipt_reconciliation",
+  "exec_session_id": 28701,
+  "exec_exit_code": 0,
+  "receipt": {
+    "path": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json",
+    "sha256": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+    "bytes": 58086
+  },
+  "seven_owned_jobs_terminal_reaped": true,
+  "positive_values": 9,
+  "malformed_scope_controls": 13,
+  "lexical_byte_mutants": 4,
+  "three_full_501_node_reference_repaired_pairs": true,
+  "phase_seconds": 11.494624209,
+  "peak_bytes": 247808000,
+  "original_cumulative_seconds": 238.155276959,
+  "remaining_seconds": 541.844723041,
+  "full_evaluation_activation": "not yet; independent terminal helper review required"
+}

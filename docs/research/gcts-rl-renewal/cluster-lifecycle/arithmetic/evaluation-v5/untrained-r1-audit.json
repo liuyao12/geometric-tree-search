@@ -1,0 +1,112 @@
+{
+  "status": "unknown_independent_replay_resource_budget",
+  "job": "untrained-r1",
+  "plan_sha256": "fcafb771a5331d7b42f574aede4c90f964e03d109642f26ecaf3d1e07a01aaa3",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_json_byte_correspondence",
+    "seconds": 2.6405662089999993,
+    "bytes": 130293777,
+    "chunks": 61149,
+    "largest_emitted_chunk_bytes": 5311276,
+    "original_uncompressed_sha256": "cf9c119d426e0b3bac2cd1e286dcac9431053da4304c1b8e1ede86ec7c0cf29f",
+    "emitted_sha256": "cf9c119d426e0b3bac2cd1e286dcac9431053da4304c1b8e1ede86ec7c0cf29f",
+    "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+  },
+  "tree": {
+    "status": "unknown_search_budget",
+    "nodes": 5001,
+    "policy_events": 411,
+    "hints": 357,
+    "executed_changed_first_branches": 221,
+    "metrics": {
+      "nodes": 5001,
+      "max_satisfied_points": 45,
+      "forced": 3249,
+      "attempts": 5000,
+      "branch": 620,
+      "family_pool": 108,
+      "validation_checks": 5581,
+      "row_pool": 1200,
+      "sample_pair_tests": 6342,
+      "items": 3486,
+      "features:source_port_queries": 5019,
+      "features:mark_neighborhood_queries": 17493,
+      "features:mark_dependency_memberships_examined": 24617527,
+      "hints_started": 357,
+      "hint_eligible": 18,
+      "hint_waiting": 1232,
+      "hint_invalid": 1087,
+      "changed_first_branches": 221,
+      "executed_changed_first_branches": 221,
+      "dead": 1132,
+      "backtracks": 4964,
+      "hint_completed": 223
+    }
+  },
+  "scope": "Every actual node/full universe/census/scheduler/base fallback/hint/rollback/feature/RNG/action and applicable complete learning update. No native acceptance or held-out theorem evidence.",
+  "seconds_before_receipt_write": 73.63316775,
+  "kernel_peak_rss_bytes": 609271808,
+  "loading_only_repair_statistics": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/experiment-plan-v2.json",
+      "seconds": 0.00012324999999999142,
+      "kind": "ordinary_small_object_json",
+      "shared_arrays": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-lifetime.json",
+      "seconds": 0.00016112499999999808,
+      "kind": "ordinary_small_object_json",
+      "shared_arrays": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/commutativity13-20261011/model13.json.gz",
+      "kind": "streamed_reversible_four_integer_array_sharing",
+      "seconds": 2.5982477499999987,
+      "original_uncompressed_bytes": 9145417,
+      "reduced_temporary_json_bytes": 9079863,
+      "shared_arrays": 19848,
+      "array_occurrences": 19848,
+      "quoted_strings_checked": 773281,
+      "scope": "Complete JSON value preserved, tuple/list JSON equivalence; Python json duplicate-key last-wins semantics unchanged. No original field/census/event omitted."
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/commutativity-receptors-20261011/attempt-02/two-lemmas-retained-core.json.gz",
+      "kind": "streamed_reversible_four_integer_array_sharing",
+      "seconds": 0.29094704100000257,
+      "original_uncompressed_bytes": 1009441,
+      "reduced_temporary_json_bytes": 1009441,
+      "shared_arrays": 0,
+      "array_occurrences": 0,
+      "quoted_strings_checked": 132219,
+      "scope": "Complete JSON value preserved, tuple/list JSON equivalence; Python json duplicate-key last-wins semantics unchanged. No original field/census/event omitted."
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/commutativity-receptors-20261011/native-complete/registry.json.gz",
+      "kind": "streamed_reversible_four_integer_array_sharing",
+      "seconds": 0.11913175000000109,
+      "original_uncompressed_bytes": 488134,
+      "reduced_temporary_json_bytes": 488134,
+      "shared_arrays": 0,
+      "array_occurrences": 0,
+      "quoted_strings_checked": 57236,
+      "scope": "Complete JSON value preserved, tuple/list JSON equivalence; Python json duplicate-key last-wins semantics unchanged. No original field/census/event omitted."
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/evaluation/untrained-r1-search.json.gz",
+      "kind": "v2_trace_only_four_tuple_two_plain_list_sharing",
+      "seconds": 20.094142833,
+      "original_uncompressed_bytes": 130293777,
+      "reduced_temporary_json_bytes": 117778686,
+      "shared_four_arrays": 19848,
+      "four_array_occurrences": 10343189,
+      "shared_two_integer_lists": 52,
+      "two_integer_list_occurrences": 78834,
+      "quoted_strings_checked": 458936,
+      "scope": "Complete saved observation only; every two-integer replacement is a plain list read-only by the pinned consumers. Generic value sharing, not coordinate semantics. Other artifacts retain V2 loader. Full original-byte and unchanged semantic gates remain required."
+    }
+  ]
+}

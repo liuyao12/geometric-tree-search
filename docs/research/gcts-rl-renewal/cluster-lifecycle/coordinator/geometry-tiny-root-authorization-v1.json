@@ -1,0 +1,21 @@
+{
+  "status": "root_authorized_one_reviewed_bounded_authored_tiny_lifecycle",
+  "plan_sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+  "verified_source_entries": 5,
+  "verified_input_entries": 35,
+  "preserved_entries": 489,
+  "prerequisites": {
+    ".gcts-active/hilbert-cluster-independent-20261011/tiny-source-review-v1.json": "4c32dbd2d49593cdb817711b5d0f58dbde2c2bf117a49025ffb411c1685ff557",
+    ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-cost-clarification-v1.json": "be1e7085126c27e4d6b172c141c517f85e67aee0e41222a1b179e1a4dae96c79"
+  },
+  "pin_verifier_seconds": 0.32738745799999996,
+  "manual_reading_time": "unmeasured",
+  "outer_seconds": 60,
+  "supervisor_seconds": 55,
+  "child_seconds": 50,
+  "memory_bytes": 536870912,
+  "actual_geometry_model_execution": false,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "cost_scope": "Whole owned lifetime only; v1 has no saved compile/scan/order/rollback subphase counter breakdown."
+}

@@ -1,0 +1,35 @@
+{
+  "status": "host_mathematical_ordering_argument_pending_new_source_execution",
+  "not_discovered_by_tile_search": true,
+  "hypotheses": [
+    "finite declared primitive candidate universe and exact complete point/candidate graph",
+    "same global dead, forced and earliest-generation scheduler",
+    "hints change ordering only; every domain member retained in stable fallback",
+    "branch-local exclusions only after complete exhausted child; unknown is never exclusion",
+    "exact graph and hint rollback; full identity and aggregate markings preserve shared placements"
+  ],
+  "claims": [
+    {
+      "name": "Hint ordering preserves one-step domain",
+      "statement": "For the selected point \\(p\\), the preferred-plus-fallback sequence is a permutation of \\(D_p(S,X)\\).",
+      "argument": "Take eligible legal preferred keys once; then enumerate every base-domain key not already seen. No hint mutates graph domains. Hence no illegal, duplicate or omitted key enters the resulting sequence."
+    },
+    {
+      "name": "Hints preserve reference point and propagation",
+      "statement": "The chosen point and dead/forced/branch kind depend on the unchanged complete graph, before hint ordering.",
+      "argument": "Compute graph decision first. Forced moves use the graph singleton, even if a hint is waiting or retired. Branch hints can only reorder the selected domain."
+    },
+    {
+      "name": "Whole-hint retirement preserves base alternatives",
+      "statement": "Retirement removes continuation preferences, without proving any constituent impossible.",
+      "argument": "An invalid pending cluster may have legal siblings. Retire its whole preference contribution while the unchanged graph continues to expose those siblings through complete fallback."
+    },
+    {
+      "name": "Finite search preserves existence and exhaustion",
+      "statement": "Subject to the hypotheses and no budget cutoff, first-success DFS preserves existence of a finite exact solution and the soundness of finite exhaustion. Exhaustive enumeration would retain the same exact solution set.",
+      "argument": "Every branch domain is fully available, point legality is unchanged, and an excluded child has been completely exhausted in that exact parent state. Induct on finite remaining occupancy/placements; rollback restores the parent. First-success DFS may return a different solution and does not enumerate every solution. A budget cutoff establishes unknown only."
+    }
+  ],
+  "scope": "These are host arguments about ordering infrastructure, not native proof certificates, universal theorem-language completeness, an infinite-plane tiling theorem, measured speedup, or a theorem discovered by the new executor.",
+  "independent_wording_correction": "Clarified that first-success DFS does not literally visit the entire solution set; exact exhaustive enumeration is a distinct algorithm."
+}

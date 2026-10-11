@@ -1,0 +1,1148 @@
+[
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-launch-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-02/fixtures-launch-v1.json",
+    "sha256": "f778fdcb9745d5d3895f8961a3959d5cc668d7b95b7d5fd73ebd8c73f3cb8124",
+    "bytes": 173
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-02/fixtures-lifetime-v1.json",
+    "sha256": "f36dd7f964b64101d40f9744c7e1da6e20c5eba873e3f1212f7eeb5bbff60434",
+    "bytes": 939
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-02/fixtures-stderr-v1.txt",
+    "sha256": "4e78317f9df6baeda5a504091b4f72ac0ba61423e746eb3573859e68fd0f5987",
+    "bytes": 531
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-02/fixtures-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-supervision-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-02/fixtures-supervision-v1.json",
+    "sha256": "f342c726a71e6554034771c835d4a68e3397bf5567b2cf2fdd77f0856f18a316",
+    "bytes": 1406
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-launch-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-03/fixtures-launch-v1.json",
+    "sha256": "c256e5907295a1e3954516f47c0a072b37aaabed54a8a487d0fb19c3cb920249",
+    "bytes": 173
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-03/fixtures-lifetime-v1.json",
+    "sha256": "4ec2ec039bd56f73ef5d0631807865b2052c48e40fc960c37b9b54a0fee4e6ba",
+    "bytes": 958
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-outcome-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-03/fixtures-outcome-v1.json",
+    "sha256": "66f613cfcea3ac2d51623ef7a2459d5bcaf865d74cc442cc578334e15d5b5dbf",
+    "bytes": 1547376
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-03/fixtures-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-03/fixtures-stdout-v1.txt",
+    "sha256": "ccd1ec29b1585a6f3d1d324285589a8eba97353ed9842b8ca4976e628e1e73cd",
+    "bytes": 523
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-supervision-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt-03/fixtures-supervision-v1.json",
+    "sha256": "d7d9387e6b8f2fff8c52966ee43f41bac498268d9ad7993f1095ec6c282f994b",
+    "bytes": 1587
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt02-causal-diagnosis-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/attempt02-causal-diagnosis-v1.json",
+    "sha256": "540988fe194ca9b36b55633445a44c5ac606774b9eeb2b89c6f30164f8f427ee",
+    "bytes": 1740
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-cost-clarification-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/authoring-cost-clarification-v1.json",
+    "sha256": "be1e7085126c27e4d6b172c141c517f85e67aee0e41222a1b179e1a4dae96c79",
+    "bytes": 1483
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-start-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/authoring-start-v1.json",
+    "sha256": "dab35db2858fc4d3e793af445959badd95c3e33dfbda0ebc792404d6f34516a9",
+    "bytes": 349
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-launch-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/fixtures-launch-v1.json",
+    "sha256": "fa9ba2a3cacdc535fab232d4a89cc15cbc7f50543f4f74e1a19d09b0b0bea10d",
+    "bytes": 173
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/fixtures-lifetime-v1.json",
+    "sha256": "e0bfe919d46c42800c507976e580b1d2ee8315fd137b38f4a8475128e72ae776",
+    "bytes": 843
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/fixtures-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/fixtures-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-supervision-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/fixtures-supervision-v1.json",
+    "sha256": "cee05e4948cdd2a9b238415ad2aa934d01ab824f17edab249e229f90815de9e3",
+    "bytes": 915
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/freeze-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/freeze-attempt-02.json",
+    "sha256": "aa84c260fb9fd6f7422ca983382938e084c5e8d3c13b1252fd6d1e849004d6bd",
+    "bytes": 468
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/freeze-attempt-03.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/freeze-attempt-03.json",
+    "sha256": "49a000bb49849d46b32f99d12f1434970f19b1f7eb0ecb49d3b92f14dfa93ebb",
+    "bytes": 407
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/freeze-receipt-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/freeze-receipt-v1.json",
+    "sha256": "9998896e50cb3e185ee2cd841fbbc8e65a74836822a74c5e63c84cb40cab846c",
+    "bytes": 570
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-design-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/full-language-design-v1.json",
+    "sha256": "c7897295e54d0ca5cd1be2c4db7827deeb53504181e404d2472db0a2d78e784b",
+    "bytes": 3987
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/full-language-source-ready-v2.json",
+    "sha256": "cc41dc8968d49952c1628a2753f95862fc494e5e57f6a012404a54ac8c133a3b",
+    "bytes": 4202
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v3.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/full-language-source-ready-v3.json",
+    "sha256": "19320157d1c5122981fee7aaab3ad6b40060698e2d97dbda7393e036f4aad878",
+    "bytes": 4840
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-v2-source-causal-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/full-v2-source-causal-review-v1.json",
+    "sha256": "f895368fc8191236a4d4dccb0ab2b5699590cfabdd0b38571646fffaa5519ef4",
+    "bytes": 1436
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_fixtures_attempt02_v1-diff.txt",
+    "sha256": "5e57db97e5c7ee9e63cc144f71ecba31407d25d5c31456eb422d55c713f03ee4",
+    "bytes": 2222
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_fixtures_attempt02_v1.py",
+    "sha256": "8f7a52dc9c966a43ee4532c27d88f0c55282a3f45c67641dff01008fdfdbbe4d",
+    "bytes": 19913
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_fixtures_attempt03_v1-diff.txt",
+    "sha256": "c75f3f3cd2af5823d0ed6f04e9b1b98fe6f86f500f58c9efc3ec0a1680ae4a5d",
+    "bytes": 2373
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_fixtures_attempt03_v1.py",
+    "sha256": "eb8e5b5305ae7b78c15c1e867cd12bcf07f58bebeda0a204cc14d41a8d5365d5",
+    "bytes": 20615
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_fixtures_v1.py",
+    "sha256": "0c1cc0304a59c307e273f8033a40385a10b80a4c44e1ff4491eb221b4ca60acd",
+    "bytes": 19623
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_attempt02_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_freeze_attempt02_v1.py",
+    "sha256": "8855e242ddc2f19c1197684275d266677359bbdf014b142ec9cddd73b6d09492",
+    "bytes": 5869
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_attempt03_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_freeze_attempt03_v1.py",
+    "sha256": "8f737823e0185581920f09da274ecbb2e2c1af1c7aded69b59105cf2dd823252",
+    "bytes": 7522
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_freeze_v1.py",
+    "sha256": "04d05542fe428ba705d4400a44d74173b6abf772e666aace33f99c64be39dcfb",
+    "bytes": 10539
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_outer_v1.py",
+    "sha256": "018e0ee6bc94ec680d2e056e1343387c97f8c7339347d148b8a872b133f4e189",
+    "bytes": 2723
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v2-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_outer_v2-diff.txt",
+    "sha256": "10122624ee12593de8fade830f7adcc307309b8048cb8284d47805d4b9dd798e",
+    "bytes": 1484
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_outer_v2.py",
+    "sha256": "6fff15ad9e95c3ac829a27ee29e27f678f69a1780f86874dec89c2e5c512d4ba",
+    "bytes": 2723
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_outer_v3-diff.txt",
+    "sha256": "4406b5409a28744157aa05612c62d1b2110e55ed25648157fae4f7eae0f1de69",
+    "bytes": 1484
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_outer_v3.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_outer_v3.py",
+    "sha256": "af0238ed5d5cd571c413a325a99c5e2301e9c5a4055411a3422ec8fc381059fe",
+    "bytes": 2723
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_run_v1.py",
+    "sha256": "5d75dc054b40f6e1744a224add748a4894d525950e567767560a9d3aab4d17c5",
+    "bytes": 5630
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v2-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_run_v2-diff.txt",
+    "sha256": "c44409b8cef42fd37a255b14b7561f074c4dfc3696ae79f699a7670c4265a5b5",
+    "bytes": 3289
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_run_v2.py",
+    "sha256": "7426c0de6f51cd7e7d30ccfbeb358c704c3a67027d9433eebcb8b8cac86e9e16",
+    "bytes": 5630
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v3-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_run_v3-diff.txt",
+    "sha256": "0365d3462443d4cd83e2eb728c4fb03acfc926182cf7a8da15757ac127937787",
+    "bytes": 3289
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_run_v3.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_run_v3.py",
+    "sha256": "f74c3d71764cc1e37278cab1306c03f0a7682bdbe5a46c384c86809441f96fb2",
+    "bytes": 5630
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_v1.py",
+    "sha256": "4e19f257e5d6678cab8b49ae76e364f4d0738854c1e8eaa232d8999284de9612",
+    "bytes": 20044
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_v2-diff.txt",
+    "sha256": "c23ffb7dc8c5fe77b25049e6219c646f448f3ac58007c79451a3d1915eeda8ae",
+    "bytes": 2870
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_v2.py",
+    "sha256": "ff840a11b33f1328cb56aed79425614aa08293d05dccce1360d57da83d9e09ed",
+    "bytes": 20433
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v3-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_v3-diff.txt",
+    "sha256": "8bf99af3154d5075cc81d11b5af09faee52359b933987df21b5909a14f2c0bdb",
+    "bytes": 2928
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v3.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_full_v3.py",
+    "sha256": "86600aab547f6cc1ca05838a7eda8e4ff1042795715e6c549fb41db4c36b864c",
+    "bytes": 20433
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_lifecycle_v1.py",
+    "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+    "bytes": 30989
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt02_v1-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_outer_attempt02_v1-diff.txt",
+    "sha256": "98f1046d91a7be5e1376705570be15f1040cb94fdeb8642917a79d7c7b6b0345",
+    "bytes": 2873
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt02_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_outer_attempt02_v1.py",
+    "sha256": "393c8eea66eef43fbe7375f79294149819e5f725881dea609b46ad8d1785b882",
+    "bytes": 2885
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt03_v1-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_outer_attempt03_v1-diff.txt",
+    "sha256": "9310b69f0db0b87b1e03efa8a387fa34f07f34f38ae29e2eb8724e460875dbcd",
+    "bytes": 1430
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt03_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_outer_attempt03_v1.py",
+    "sha256": "dde646c033bb6b087185d91e2a4b8d7241e9c428fc25b8a1893f1278e7da2a47",
+    "bytes": 2892
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_outer_v1.py",
+    "sha256": "9d86185f082b866352894ea9905a6da756d397264da50854e680fe57dec09fa6",
+    "bytes": 2675
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt02_v1-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_run_attempt02_v1-diff.txt",
+    "sha256": "36b84c7647dd2d1e5a3f19bd753d62fe8ba0eba1d98fb220a5d6cb157a3f677b",
+    "bytes": 2582
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt02_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_run_attempt02_v1.py",
+    "sha256": "bf3a657c17d377a247bcf79ce82af5a71918f4f814ed0e0a6dbb887df10aabba",
+    "bytes": 5580
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt03_v1-diff.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_run_attempt03_v1-diff.txt",
+    "sha256": "924db5f5aa5cf2e9304f1226f3638f223a0e09e11ae5b8e65d9c4be5380a16ae",
+    "bytes": 1433
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt03_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_run_attempt03_v1.py",
+    "sha256": "b8913e2228156f8d3100bea9f07b00e3f018613d78e4ec711e2d790521504a5a",
+    "bytes": 5580
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/hilbert_cluster_run_v1.py",
+    "sha256": "d76188b6e1c1ef341ac43f0a63931aba7f8828051e605f0491229e85ae08469d",
+    "bytes": 5513
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/plan-attempt-02.json",
+    "sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+    "bytes": 130356
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-03.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/plan-attempt-03.json",
+    "sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+    "bytes": 135346
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/plan-v1.json",
+    "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+    "bytes": 128708
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-lifecycle-20261011/producer-conformance-note-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry/producer-conformance-note-v1.json",
+    "sha256": "b4569e2e7a315f4c051c6fe866921cb2781af1e4f3f0f93af9467ec2b0d34526",
+    "bytes": 4612
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/activation-attempt-02-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/activation-attempt-02-v5.json",
+    "sha256": "4746cccd731d87e8dcbdacd1d21dd7913785199181495d505e27ddd29c9e7a81",
+    "bytes": 1247
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/authoring-start.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/authoring-start.json",
+    "sha256": "fdb2910e7e7881635c92fb69e305228b9aef87c199c8d1d4c17db7217c9c92c3",
+    "bytes": 197
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/consumer-use-review-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/consumer-use-review-v5.json",
+    "sha256": "031cce13e89708a7a2d3912c750d69f19c71a5bf10072a64a85534d1eea90b8d",
+    "bytes": 21301
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-activation-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-activation-v5.json",
+    "sha256": "a7f256fc49a68c22545a7cf1286c915bdbc0f5f8afec150e4475849490062282",
+    "bytes": 1565
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-plan-v5-attempt-02.json",
+    "sha256": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16",
+    "bytes": 22892
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-plan-v5.json",
+    "sha256": "efc1bff7635f42b758ac6a5c29bebf94de0ea792e2685864cfbfda72d4f2add8",
+    "bytes": 21859
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-audit.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/base-r1-audit.json",
+    "sha256": "6a1cb37303a079e887b997a004dddd3b3ee66fc4bda168c66bf7ffdee9437d33",
+    "bytes": 5034
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/base-r1-lifetime.json",
+    "sha256": "62c79c9f4f16076e7a07a6eae6153ca46ab076b5cade9ad7cc870ad427f7f543",
+    "bytes": 887
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/base-r1-plan.json",
+    "sha256": "3f6943c59803055bbc94732c2d8ca87d6864512c79286f45914114b8d51d99d5",
+    "bytes": 9647
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/base-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r1-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/base-r1-stdout.txt",
+    "sha256": "1884a8462cdeda5ee4a38c0095c886b108dc9775ad714e7ce40a827a5c14c01b",
+    "bytes": 4556
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/base-r2-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/base-r2-plan.json",
+    "sha256": "9bed604f2951644dff1515ff8f733f0a15e20f5a5b3c16d79060376c7e4f6eda",
+    "bytes": 9647
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/phase-receipt-attempt-02.json",
+    "sha256": "3389853a909552e8b5e28b8644199432c173a96b7b538c3e47388eea11170979",
+    "bytes": 14968
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/phase-receipt.json",
+    "sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+    "bytes": 1214
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/trained-r1-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/trained-r1-plan.json",
+    "sha256": "0049f294a8b5b3bba9c9e0590aa824d36851788a7a98a47df08def6f3e589786",
+    "bytes": 10248
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/trained-r2-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/trained-r2-plan.json",
+    "sha256": "379f438b1072f3effcb885c430a5f7008c3603e064651bb6be4a78cb30500d70",
+    "bytes": 10248
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-audit.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/untrained-r1-audit.json",
+    "sha256": "cb0ac4219a5da7472c77335e016cdaa3793e0f8f8db62adf88234c64b777ac3c",
+    "bytes": 5570
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/untrained-r1-lifetime.json",
+    "sha256": "ab77e4c88e0fd71fd6fdb5578b5298633c0c76e8026dd57e58a6c8f0a1e35db7",
+    "bytes": 910
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/untrained-r1-plan.json",
+    "sha256": "fcafb771a5331d7b42f574aede4c90f964e03d109642f26ecaf3d1e07a01aaa3",
+    "bytes": 9682
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/untrained-r1-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r1-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/untrained-r1-stdout.txt",
+    "sha256": "7ef2c6835c33b96be27fd81f8efe658fa033239dc3b59e4ead77a5a816d13d96",
+    "bytes": 5002
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/untrained-r2-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/evaluation-v5/untrained-r2-plan.json",
+    "sha256": "c3ebe518a9a8232195bed9bdbaca03275c8943cf1dc8ea40022a883776b3bc51",
+    "bytes": 9682
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helper-activation-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helper-activation-v5.json",
+    "sha256": "e004414699ff032a15f23b0c207a428940260bc1fa1a5bb294400ebf489e1222",
+    "bytes": 1197
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helper-plan-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helper-plan-v5.json",
+    "sha256": "6c9323fe02dfdc5f2f47c98f7b6a7402645a7bb2155e932350f820091ac6add8",
+    "bytes": 5917
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-reference-lifetime.json",
+    "sha256": "86a997a4a547db9272ee4d3eb1f208fe71468c5e878864c270b384ae951a59ab",
+    "bytes": 901
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-reference-plan.json",
+    "sha256": "398ca914f7fac68e9cbe5bc05dc9c4567cfc7def95acf53601537e629a556073",
+    "bytes": 1672
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-reference-stdout.txt",
+    "sha256": "ca6c0da574b266b4a6581bf78586e02f8243fbaf4b1377dd88ce640e65bf2794",
+    "bytes": 1570
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-reference.json",
+    "sha256": "ba89b87b7b858405cee73a867ab78a8829e5f9a9efb1c97008b3011af4bd4820",
+    "bytes": 1690
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-repaired-lifetime.json",
+    "sha256": "7385b0982751c33b1f164bbf94ce4d80550a4bbceee90956a3bb708c2e04399b",
+    "bytes": 898
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-repaired-plan.json",
+    "sha256": "ebdd87a5ad1d6b301c13a0746fb6c7430dd35dcc03d8738288c88c3850e82cb5",
+    "bytes": 1669
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-repaired-stdout.txt",
+    "sha256": "e29b06f2998bc182e874ef7cdf21501f0f7007a5c11cf8c34656f2e5d9d139ef",
+    "bytes": 2348
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/effect-pilot-repaired.json",
+    "sha256": "daa8bfe3c3ed714f8868297530badb49da727ff886391721cbcf882ed1fed688",
+    "bytes": 2548
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/phase-receipt.json",
+    "sha256": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+    "bytes": 58086
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/synthetic-controls-lifetime.json",
+    "sha256": "f747557410444320b507c74f091b6119af65860fe1f298b1f9298ae0d08c5a77",
+    "bytes": 905
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/synthetic-controls-plan.json",
+    "sha256": "5484b4cf9256102a39260454debc7fcccff4f111ab42df1e98e6b8e633a3a0dc",
+    "bytes": 1367
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/synthetic-controls-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/synthetic-controls-stdout.txt",
+    "sha256": "9f7ed779b91cdbde6fd57b096bf62b473d5ae33b1790d5c8e6fb498f1132fc87",
+    "bytes": 28164
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/synthetic-controls.json",
+    "sha256": "f751267bd2ae85d0fe426129c9052c8730be6a2a5e803989e0bd9e7f924b7101",
+    "bytes": 31924
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-reference-lifetime.json",
+    "sha256": "504ff9e46acbe2f7dac82b1bfbb709e32394a631b8195e76c48ca7921ad02cd8",
+    "bytes": 904
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-reference-plan.json",
+    "sha256": "becaf060fa6142c88d2f6d9bbc776d1804cffb45a936920a2c88b55d877cc568",
+    "bytes": 1660
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-reference-stdout.txt",
+    "sha256": "8b6eeff76cc9d24f27d7fab3990cb125a72b9ea353028d3c3da2b03615ae3924",
+    "bytes": 1578
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-reference.json",
+    "sha256": "68719ab51b0ad097e3efd1ff1cf69f2137226e3fa5fa293545b69729f7a6171a",
+    "bytes": 1702
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-repaired-lifetime.json",
+    "sha256": "288844ae30ed18a72f4ce7d2652e70d1f387d1daf3ca0d3bc4ded5209ee1a5f9",
+    "bytes": 901
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-repaired-plan.json",
+    "sha256": "1ecf7ee560b91bf888ffd3a93fe6d5f51172cfc43c251130127e95c6644bc56c",
+    "bytes": 1657
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-repaired-stdout.txt",
+    "sha256": "e2d5c2ed95e0ecc96333d7e45701763d5c26f358c3b9853c85872db0652e8219",
+    "bytes": 2353
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-01-repaired.json",
+    "sha256": "4aa00a93894b2bdf337c25d14242c8fd282de3922f9b1d34f9816bf1ad6442e0",
+    "bytes": 2557
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-reference-lifetime.json",
+    "sha256": "ea00dd189056a02926d89b1bf0ee9bb53765f968755413239639388797e632fe",
+    "bytes": 904
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-reference-plan.json",
+    "sha256": "5e2313ffc4684c9949e84d2768503d875e82f3fd2eb7cd69bbb6bffd8ac88d5e",
+    "bytes": 1660
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-reference-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-reference-stdout.txt",
+    "sha256": "41827d10b92eb1b16bfe3161eb0ecbb8bd87fa0f2e3d5bcd87a4b2be52101725",
+    "bytes": 1578
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-reference.json",
+    "sha256": "61cdb68542754bcd4ab0afad58f2ed855cb5904cb9659cb5c3e0088b0951561f",
+    "bytes": 1702
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired-lifetime.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-repaired-lifetime.json",
+    "sha256": "09416b7b4f7d42c68ec2b0aad767d59e8f4e2337b2c18d4de3a5a1227f271e53",
+    "bytes": 894
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-repaired-plan.json",
+    "sha256": "97ea0a18bc382747765ada4de35516af120c9ebdf0c430f513e19aec2e069e01",
+    "bytes": 1657
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired-stderr.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-repaired-stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired-stdout.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-repaired-stdout.txt",
+    "sha256": "6698da548353688a951c4cefb4ebf763260719f8a2f89423eeb3e8a24031f0b7",
+    "bytes": 2359
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/helpers-v5/train-08-repaired.json",
+    "sha256": "9f08341d08ec08228c0a6c5e0347e153d225360d5b7da2b7b354022a509e55e6",
+    "bytes": 2563
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-benchmark-source-only-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/next-discovery-benchmark-source-only-v1.json",
+    "sha256": "675caf25cd7010b7e31bf6f1e544f27b7fa86d4f6e89c693f0b31470822ac7c7",
+    "bytes": 26574
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/next-discovery-inventory-provenance-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/next-discovery-inventory-provenance-v1.json",
+    "sha256": "14f1fe92d1020bd7e9c99c2ec8a253ce26483a33c0d87978a043bd569c642b2d",
+    "bytes": 21473
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/review-package-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/review-package-v5.json",
+    "sha256": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+    "bytes": 26162
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/source-snapshot-v5.zip",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/source-snapshot-v5.zip",
+    "sha256": "d37ceac3d2d94886bc745280d7d7c372622ee5b2521ae536b70290e380c69ff7",
+    "bytes": 221581
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-memory-v5-20261011/source-verification-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic/source-verification-v5.json",
+    "sha256": "e8c2cf64693fe8fa7b0c7edf8c454ac896e593a3a04b7d198ebd691252955bdc",
+    "bytes": 725
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-lifetime-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-audit-lifetime-v2.json",
+    "sha256": "48cb310b20ed922c84180aa722efda0240460932ea2e5c44ed69a79643f04a6d",
+    "bytes": 1431
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-audit-plan-v1.json",
+    "sha256": "fabe7a2a59d1156e3026ec8c148fa52b9c98a5e1c0f445b491836e8eecb302cc",
+    "bytes": 130905
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-audit-plan-v2.json",
+    "sha256": "77b958fec81ef720abc47063fda162e25400a81a2adcf38a851bbdc2afa2c656",
+    "bytes": 131791
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-audit-result-v2.json",
+    "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25",
+    "bytes": 3962
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-stderr-v2.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-audit-stderr-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-stdout-v2.txt",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-audit-stdout-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/actual-terminal-review-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/actual-terminal-review-v2.json",
+    "sha256": "5f76420525d6d17fa747e8da25ca229f30efd7264970bb1de93942582ca0ecb7",
+    "bytes": 2567
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/design-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/design-v1.json",
+    "sha256": "765ae6426d83059e6f7a9f737dc8befbe74dcf498888014dedd6e1adc1a453e4",
+    "bytes": 3732
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/design-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/design-v2.json",
+    "sha256": "c4ef8c49786a4e465fcb52654cfb82f7b22d5b69e84e8a466a51b59429d34f4c",
+    "bytes": 4699
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/freeze_actual_audit_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/freeze_actual_audit_v1.py",
+    "sha256": "be0678fdd280127301dd25f61f7380556ebf054293dbb2c8800b44cbb824c347",
+    "bytes": 5314
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/freeze_actual_audit_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/freeze_actual_audit_v2.py",
+    "sha256": "69093f0bb0277b2ef01be86aecba70761199f1932267f4c40fa1503585f6c8f9",
+    "bytes": 5487
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/independent_lifecycle_records_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/independent_lifecycle_records_v1.py",
+    "sha256": "510a1185ef7e19c63c230925ed0c8561e056a5bdc31fc6aac23a908edd57fe3c",
+    "bytes": 16581
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/independent_lifecycle_replay_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/independent_lifecycle_replay_v2.py",
+    "sha256": "b5fb1d7a131a88116071269835055818c71e8b1b99febbf7ab27fa75081891db",
+    "bytes": 11309
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_audit_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/lifecycle_actual_audit_v1.py",
+    "sha256": "a132ba895c35e03a844257c4f2349f69d89cae454c9b8105e0157af04b4a14e3",
+    "bytes": 18851
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_audit_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/lifecycle_actual_audit_v2.py",
+    "sha256": "581055225238fc1bf2a6aa15074cbe25638d2b922889f79ac0ce25041dfebdde",
+    "bytes": 19510
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_owner_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/lifecycle_actual_owner_v1.py",
+    "sha256": "f196ea1703503af994f841f920c3a914ec97c694e73b378d1da90385e338329e",
+    "bytes": 4828
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_actual_owner_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/lifecycle_actual_owner_v2.py",
+    "sha256": "3845a26c593745236d6088fafa8cbfc5dd6089cb33b98175ebfbbc96d92f3c94",
+    "bytes": 4828
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_oracle_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/lifecycle_oracle_v1.py",
+    "sha256": "5c23ff32e11906fd728b2a5b7b27860c232409e7cd4f131fe045be6f236d7f01",
+    "bytes": 10075
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/lifecycle_oracle_v2.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/lifecycle_oracle_v2.py",
+    "sha256": "1292a934540cb173919546b6a157580530f479791e36218ca6924739099a7680",
+    "bytes": 11245
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/review_attempt02_source_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/review_attempt02_source_v1.py",
+    "sha256": "34854162934f2655c0339aa8df96ec95c34d582d2450f2cbdb656ac3b73f7706",
+    "bytes": 6975
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/review_attempt03_source_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/review_attempt03_source_v1.py",
+    "sha256": "c9de61614b0b9023c527fc0ce68a1edb64945d0ae1b928b84c7721d8afae204b",
+    "bytes": 6305
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/review_tiny_source_v1.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/review_tiny_source_v1.py",
+    "sha256": "b1e3892058c32488aadd7cb7c40134e3de90b3b1d15487106e150270b65e8665",
+    "bytes": 8624
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/root-activation-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/root-activation-v2.json",
+    "sha256": "4d7d8bac11ca5b70d8613f023b32891836609412d3acd963a9f55264cde99270",
+    "bytes": 657
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt02-failure-diagnosis-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/tiny-attempt02-failure-diagnosis-v1.json",
+    "sha256": "9c8f68f30fc3996dcfe429775ff0e490e8b1221232a5a7bf8cb68c84c3c9001d",
+    "bytes": 2829
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt02-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/tiny-attempt02-source-review-v1.json",
+    "sha256": "8a0fc0696841908376cddd3a596a73eb30b1d97fc94dfc44db5988d41721aade",
+    "bytes": 4730
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/tiny-attempt03-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/tiny-attempt03-source-review-v1.json",
+    "sha256": "a32e6a962c7326ce5f4a6422b1f02123b37e6876b77c2b13bcabb84b9c7bae7d",
+    "bytes": 3764
+  },
+  {
+    "origin": ".gcts-active/hilbert-cluster-independent-20261011/tiny-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/geometry-independent/tiny-source-review-v1.json",
+    "sha256": "4c32dbd2d49593cdb817711b5d0f58dbde2c2bf117a49025ffb411c1685ff557",
+    "bytes": 6004
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/actual-terminal-review-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/actual-terminal-review-v5.json",
+    "sha256": "bb09ba7a2632dc2023f8c3a2afd757ca491eba67ad2e31069a32d228e5795c31",
+    "bytes": 4528
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/helper-terminal-review-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/helper-terminal-review-v5.json",
+    "sha256": "e56c60f61e727f9d68a9b831ca7658ebb7f96c6d5a6ee345894851885b9703f0",
+    "bytes": 4388
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/review_actual_terminal_v5.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/review_actual_terminal_v5.py",
+    "sha256": "9a872918ed72471e7cac9d23124fade76c7402ff9da57c75b6d11e4a23444c95",
+    "bytes": 7484
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/review_helpers_v5.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/review_helpers_v5.py",
+    "sha256": "fd3fee9b57b8b6e5981cc86085c2acd44e34e66d7731849be2d0b6a00fdd31dd",
+    "bytes": 7654
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/review_source_v5.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/review_source_v5.py",
+    "sha256": "ec3d50defc144fa2b27adf66c32e9434e8208b2247d62c797b9df48f1eaa04e8",
+    "bytes": 9393
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/source-ready-review-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/source-ready-review-v5.json",
+    "sha256": "f358c0b38a663a9868ee079c7367ca443ef792e5ee4f365c83edc9e4aa389cc3",
+    "bytes": 5746
+  },
+  {
+    "origin": ".gcts-active/stochastic-replay-v5-independent-20261011/successor-plan-review-v5-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/arithmetic-independent/successor-plan-review-v5-attempt-02.json",
+    "sha256": "2837b473df760780f59267640addd85b6a3b11eacdd713f0f6e53bda0f8c94e8",
+    "bytes": 949
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/arithmetic-source-review-attempt-01.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/arithmetic-source-review-attempt-01.json",
+    "sha256": "63b0e9c28b589aa93906acfd0832eb30d6ee9147b75f68f2f9159fe2856954e6",
+    "bytes": 568
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/arithmetic-source-review-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/arithmetic-source-review-v5.json",
+    "sha256": "1fe40ea41177a41b41981c3ec4b87663e4129ab5d5fdb601c3dae617068233bf",
+    "bytes": 1119
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/evaluation-authorization-attempt-02-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/evaluation-authorization-attempt-02-v5.json",
+    "sha256": "0578d3f25d57b7ca92d5194e5ca3c9f4551a1fc9d5a9319c8f39ba9fb3a4cd70",
+    "bytes": 1282
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/evaluation-authorization-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/evaluation-authorization-v5.json",
+    "sha256": "a7f256fc49a68c22545a7cf1286c915bdbc0f5f8afec150e4475849490062282",
+    "bytes": 1565
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/evaluation-dispatch-attempt-02-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/evaluation-dispatch-attempt-02-v5.json",
+    "sha256": "cd65678e2ce4b9011ddf5cf84ad2444c4b59f84ca86eb135df0dc124bc433fc9",
+    "bytes": 330
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/evaluation-launch-failure-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/evaluation-launch-failure-v5.json",
+    "sha256": "8bb1ed03114274b7d7856af5cdeb64891031518f9e6c5230e41f9607f8add783",
+    "bytes": 1010
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/evaluation-terminal-attempt-02-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/evaluation-terminal-attempt-02-v5.json",
+    "sha256": "586249b78718c49b0cc953eb1d358952b0739175fde15af94265b8f1e860b38c",
+    "bytes": 693
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-full-v2-static-gap-note.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-full-v2-static-gap-note.json",
+    "sha256": "3b15d601409e2ed955eed7530a116741b0a59a4aae6e7c3692bec43d728a8378",
+    "bytes": 1090
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-independent-root-source-review-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-independent-root-source-review-v2.json",
+    "sha256": "f323458cf3c508bcba593cc282b89c4c1bc43a795159fda6111d9aded1bbc5f0",
+    "bytes": 1494
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-independent-terminal-v2.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-independent-terminal-v2.json",
+    "sha256": "9ab870b9173c103c38cfa20468230987f6cef0e655a86c09228ff5559a7ec6c6",
+    "bytes": 608
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-root-authorization-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-root-authorization-attempt-02.json",
+    "sha256": "756cb8b584feea864c5a1581fea0d1bdd76b2513000cd92aa3647d10bd104193",
+    "bytes": 1022
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-root-authorization-attempt-03.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-root-authorization-attempt-03.json",
+    "sha256": "97cd87d1d94427cb3777597db55ee762eca678c57fedc27c525535a498c8ff32",
+    "bytes": 582
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-root-authorization-v1.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-root-authorization-v1.json",
+    "sha256": "7dc522dddf28191bd0d870b8b9c09ce96a2c57bfca0bc23aecf938b9d1ba1eda",
+    "bytes": 995
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-root-source-review-attempt-03.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-root-source-review-attempt-03.json",
+    "sha256": "b4bd320df08a77c31d7583c61708ee2dea42aceaf8702880e862d53515fab9c7",
+    "bytes": 408
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-terminal-attempt-01.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-terminal-attempt-01.json",
+    "sha256": "54f477541355f32f753312438160ab77d402938adc05bdc3e08a620799ea889d",
+    "bytes": 776
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-terminal-attempt-02.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-terminal-attempt-02.json",
+    "sha256": "3b9a07c3ec452b8ec8721bbd0eb6d9d5626187a3fc0a6d823f4a932ca6890cd8",
+    "bytes": 665
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/geometry-tiny-terminal-attempt-03.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/geometry-tiny-terminal-attempt-03.json",
+    "sha256": "19750e0715798f839e2580a1f4b4df889aad5a1335e15cddfe2d3d82c86fd74c",
+    "bytes": 601
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/helper-authorization-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/helper-authorization-v5.json",
+    "sha256": "e004414699ff032a15f23b0c207a428940260bc1fa1a5bb294400ebf489e1222",
+    "bytes": 1197
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/helper-dispatch-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/helper-dispatch-v5.json",
+    "sha256": "2bf39515961e2f64fc82c26e1f9fdcc744c9f794587b81410cbb64bbc5700c5e",
+    "bytes": 366
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/helper-terminal-v5.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/helper-terminal-v5.json",
+    "sha256": "9f93d75d139c3b7f3e1f5cc326b5093cfbf4feb2f8d9079d349dfd56cb4a623b",
+    "bytes": 770
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/ordering-invariant-note.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/ordering-invariant-note.json",
+    "sha256": "05da42d08eee982f1010805d81fe1dc7b0360c534b19ec391d50722a5862bd86",
+    "bytes": 2909
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/prepare_report.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/prepare_report.py",
+    "sha256": "d2d92460cad05f068b350996df8d4bc977bbbeba3fda46981ebb8a476c426fc1",
+    "bytes": 29619
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/report-plan.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/report-plan.json",
+    "sha256": "1afd2e2f88d06a7d4a5eb25a23906b5fb3f5a90ae78f9e2d5b2b04a8e3f6aa44",
+    "bytes": 1280
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/report_evidence.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/report_evidence.py",
+    "sha256": "658beae1cb24e5e52cad725204bf3d8251ff1fca280a9f3b8735733e1f2b5dbd",
+    "bytes": 6265
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/review_arithmetic_v5.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/review_arithmetic_v5.py",
+    "sha256": "6a1996c97077222dc44cc1f9344dc858564ac7b8a057255c312c85ff6548ed73",
+    "bytes": 3786
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/terminal-selection.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/terminal-selection.json",
+    "sha256": "19740516d3cf5af505d1659487920d22543f5bcd0ef6ee383df1181920538f81",
+    "bytes": 1097
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/turn-audit.json",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/turn-audit.json",
+    "sha256": "604f7c395c4c1faa3e8d9b516ef81ab3680ca702b8131ad0abff95ffd4a5d9aa",
+    "bytes": 1871
+  },
+  {
+    "origin": ".gcts-active/cluster-lifecycle-progress-20261011/validate_report.py",
+    "path": "docs/research/gcts-rl-renewal/cluster-lifecycle/coordinator/validate_report.py",
+    "sha256": "d898b955b2b14fd1a23654f96d2f46eb4cccdcbc50e716047c4765bab9d1380d",
+    "bytes": 4774
+  }
+]

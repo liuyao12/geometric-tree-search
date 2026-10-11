@@ -1,0 +1,62 @@
+{
+  "status": "passed_independent_v5_terminal_helper_receipt_and_full_byte_pair_review",
+  "helper_phase_sha256": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+  "helper_plan_sha256": "6c9323fe02dfdc5f2f47c98f7b6a7402645a7bb2155e932350f820091ac6add8",
+  "root_activation_sha256": "e004414699ff032a15f23b0c207a428940260bc1fa1a5bb294400ebf489e1222",
+  "exact_per_job_receipt_pins": {
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls.json": "f751267bd2ae85d0fe426129c9052c8730be6a2a5e803989e0bd9e7f924b7101",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/synthetic-controls-lifetime.json": "f747557410444320b507c74f091b6119af65860fe1f298b1f9298ae0d08c5a77",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference.json": "ba89b87b7b858405cee73a867ab78a8829e5f9a9efb1c97008b3011af4bd4820",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-reference-lifetime.json": "86a997a4a547db9272ee4d3eb1f208fe71468c5e878864c270b384ae951a59ab",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired.json": "daa8bfe3c3ed714f8868297530badb49da727ff886391721cbcf882ed1fed688",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/effect-pilot-repaired-lifetime.json": "7385b0982751c33b1f164bbf94ce4d80550a4bbceee90956a3bb708c2e04399b",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference.json": "68719ab51b0ad097e3efd1ff1cf69f2137226e3fa5fa293545b69729f7a6171a",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-reference-lifetime.json": "504ff9e46acbe2f7dac82b1bfbb709e32394a631b8195e76c48ca7921ad02cd8",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired.json": "4aa00a93894b2bdf337c25d14242c8fd282de3922f9b1d34f9816bf1ad6442e0",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired-lifetime.json": "288844ae30ed18a72f4ce7d2652e70d1f387d1daf3ca0d3bc4ded5209ee1a5f9",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference.json": "61cdb68542754bcd4ab0afad58f2ed855cb5904cb9659cb5c3e0088b0951561f",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-reference-lifetime.json": "ea00dd189056a02926d89b1bf0ee9bb53765f968755413239639388797e632fe",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired.json": "9f08341d08ec08228c0a6c5e0347e153d225360d5b7da2b7b354022a509e55e6",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-08-repaired-lifetime.json": "09416b7b4f7d42c68ec2b0aad767d59e8f4e2337b2c18d4de3a5a1227f271e53"
+  },
+  "complete_pairs": [
+    {
+      "reference": "effect-pilot-reference",
+      "repaired": "effect-pilot-repaired",
+      "bytes": 16922271,
+      "uncompressed_sha256": "7ca7507338f5ab5db2036556a76a0487305f4ed8dad2b0496bacc93fa6c357e5",
+      "nodes": 501,
+      "events": 41
+    },
+    {
+      "reference": "train-01-reference",
+      "repaired": "train-01-repaired",
+      "bytes": 17013409,
+      "uncompressed_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+      "nodes": 501,
+      "events": 51
+    },
+    {
+      "reference": "train-08-reference",
+      "repaired": "train-08-repaired",
+      "bytes": 17286616,
+      "uncompressed_sha256": "f5cb7920e4a029b29b5471f618cb237ad4b33e090ed38416e094206d4e9b24ed",
+      "nodes": 501,
+      "events": 62
+    }
+  ],
+  "synthetic_positive_values": 9,
+  "parser_scope_rejections": 13,
+  "lexical_rejections": 4,
+  "altered_zero_rejected": true,
+  "plain_list_type_retained": true,
+  "unsupported_alias_mutating_consumer_exposed": true,
+  "all_owned_children_terminal_and_reaped": true,
+  "helper_seconds": 11.494624209,
+  "helper_conservative_peak_bytes": 247808000,
+  "cumulative_audit_seconds": 238.155276959,
+  "original_cumulative_remaining_seconds": 541.844723041,
+  "disposition": "Root may independently authorize the separately frozen actual six-replay owner phase. This review grants no dispatch and no actual evaluation acceptance.",
+  "scope": "Terminal artifact reconciliation only. No loaders/helpers/graph replays/training/search/native reruns; producer helper checks are not a full semantic evaluation gate.",
+  "review_seconds_before_receipt_write": 0.005069041999999999
+}

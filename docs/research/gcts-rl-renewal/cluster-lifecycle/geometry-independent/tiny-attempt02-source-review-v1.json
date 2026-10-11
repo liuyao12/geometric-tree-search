@@ -1,0 +1,97 @@
+{
+  "status": "passed_independent_metadata_only_tiny_retry_readiness",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-02.json",
+    "sha256": "bfb5fedc926c0bbccf45ffd1f9e13bb6a64f9cdbcfc511333554852542639abd",
+    "bytes": 130356
+  },
+  "original_plan": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+    "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+    "bytes": 128708
+  },
+  "source_entries": 5,
+  "input_entries": 39,
+  "preserved_entries": 509,
+  "unique_verified_paths": 516,
+  "sources": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1.py",
+      "sha256": "8f7a52dc9c966a43ee4532c27d88f0c55282a3f45c67641dff01008fdfdbbe4d",
+      "bytes": 19913
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_freeze_attempt02_v1.py",
+      "sha256": "8855e242ddc2f19c1197684275d266677359bbdf014b142ec9cddd73b6d09492",
+      "bytes": 5869
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt02_v1.py",
+      "sha256": "393c8eea66eef43fbe7375f79294149819e5f725881dea609b46ad8d1785b882",
+      "bytes": 2885
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt02_v1.py",
+      "sha256": "bf3a657c17d377a247bcf79ce82af5a71918f4f814ed0e0a6dbb887df10aabba",
+      "bytes": 5580
+    }
+  ],
+  "diffs": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1-diff.txt",
+      "sha256": "5e57db97e5c7ee9e63cc144f71ecba31407d25d5c31456eb422d55c713f03ee4",
+      "bytes": 2222
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_run_attempt02_v1-diff.txt",
+      "sha256": "36b84c7647dd2d1e5a3f19bd753d62fe8ba0eba1d98fb220a5d6cb157a3f677b",
+      "bytes": 2582
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_outer_attempt02_v1-diff.txt",
+      "sha256": "98f1046d91a7be5e1376705570be15f1040cb94fdeb8642917a79d7c7b6b0345",
+      "bytes": 2873
+    }
+  ],
+  "previous_source_review": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/tiny-source-review-v1.json",
+    "sha256": "4c32dbd2d49593cdb817711b5d0f58dbde2c2bf117a49025ffb411c1685ff557",
+    "bytes": 6004
+  },
+  "prior_failure_lifetime": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-lifetime-v1.json",
+    "sha256": "e0bfe919d46c42800c507976e580b1d2ee8315fd137b38f4a8475128e72ae776",
+    "bytes": 843
+  },
+  "prior_failure_supervision": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/fixtures-supervision-v1.json",
+    "sha256": "cee05e4948cdd2a9b238415ad2aa934d01ab824f17edab249e229f90815de9e3",
+    "bytes": 915
+  },
+  "conclusions": [
+    "Logical lifecycle kernel byte-identical; every scientific fixture assertion byte-identical after exactly declared metadata/output transformations.",
+    "Isolated attempt-02 output and runtime source pin identify the retry; no prior file is overwritten.",
+    "Same fail-closed own-child ps/RSS/time watchdog, kill/wait/reap and final kernel peak rejection. Escalated dispatch changes metadata permission only.",
+    "Prior 0.272813916-second infrastructure failure charged against original cumulative 60-second wall gate; same 50/55 seconds child/supervisor and 512 MiB cap.",
+    "Prior child killed/reaped; no outcome or RSS sample. Prior unknown remains a preserved metadata failure, not logical acceptance or rejection."
+  ],
+  "caveats": [
+    "Allows only root-owned bounded synthetic retry after root approval; no execution in this review.",
+    "Independent actual lifecycle audit requires its own future frozen source/output gate and explicit root dispatch.",
+    "No actual guarded-incidence model load, theorem search, native/compiler/authority activation or RL claim.",
+    "Cross-process authoring timer remains invalid with explicit cost clarification; total owned duration charges work, saved separate controller scan/order/rollback metrics remain absent.",
+    "Outer final receipt writing excluded from pre-write clock; actual resource qualification remains pending."
+  ],
+  "metadata_review_seconds_before_receipt_write": 0.10785629099999999,
+  "manual_source_inspection_time": "unmeasured",
+  "engine_imports": 0,
+  "fixtures_executed": 0,
+  "actual_models_loaded": 0,
+  "searches": 0,
+  "native_queries": 0
+}

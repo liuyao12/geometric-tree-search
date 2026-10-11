@@ -1,0 +1,15 @@
+{
+  "status": "passed_independent_v5_successor_plan_launch_only_correction_review",
+  "prior_plan_sha256": "efc1bff7635f42b758ac6a5c29bebf94de0ea792e2685864cfbfda72d4f2add8",
+  "new_plan_sha256": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16",
+  "failed_owner_phase_sha256": "407362a7bc3811e953ed4a1da940f060be8fd2ef4934737bb83b45eaaa906f99",
+  "unchanged_six_job_plan_entries": true,
+  "unchanged_all_sources_and_prior_inputs": true,
+  "added_input_pins": 2,
+  "failed_owner_cost_seconds": 0.078432542,
+  "failed_owner_children": 0,
+  "remaining_after_passed_helpers_seconds": 541.766290499,
+  "cumulative_charged_seconds": 238.23370950100002,
+  "scope": "Source and receipt review only. Original missing-activation owner failure retained; no loader/replay failed or ran. New output/activation/phase ledger only. Root activation still required; no execution by reviewer.",
+  "review_seconds_before_receipt_write": 0.094245209
+}

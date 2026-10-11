@@ -1,0 +1,21 @@
+{
+  "status": "prospective_checkpoint_projection_plan",
+  "notebook": 104,
+  "existing_destination_only": true,
+  "target": "docs/research/gcts-rl-renewal/cluster-lifecycle/reader.html",
+  "main_baseline_sha256": "a3126b44453b9824c1f2db44856a519c758c9fed953b0e6e7bb86126801a0863",
+  "main_base_commit": "b7f0a566d6c022ff0a6711d70ce148da5f0fcc22",
+  "source_paths": [
+    ".gcts-active/hilbert-cluster-lifecycle-20261011",
+    ".gcts-active/hilbert-cluster-independent-20261011",
+    ".gcts-active/stochastic-replay-memory-v5-20261011",
+    ".gcts-active/cluster-lifecycle-progress-20261011"
+  ],
+  "evidence": "Only exact terminal owned results and independent reviews; prospective sources remain explicitly unexecuted. Historical immutable sources use their already published exact routes.",
+  "visuals": [
+    "color-coded whole-hint status transition trace from actual fixture or actual-language transactions",
+    "complete domain comparison and proof-discovery status kept separate"
+  ],
+  "publishing": "Root-only exact task manifest; clean publication checkout; preserve all unrelated current working-tree changes. Validate source routes/math/links and independent claims before existing Pages publication and exact live hash/UI verification.",
+  "goal_status": "active"
+}

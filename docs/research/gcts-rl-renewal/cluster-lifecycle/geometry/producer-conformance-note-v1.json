@@ -1,0 +1,84 @@
+{
+  "status": "read_only_reconciliation_of_authored_tiny_pass_independent_gate_pending",
+  "bindings": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-attempt-03.json",
+      "sha256": "2636005736ad4a90290db3994aa35a341a9ce7ca0c12eab82ba18d5675782707",
+      "bytes": 135346
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-outcome-v1.json",
+      "sha256": "66f613cfcea3ac2d51623ef7a2459d5bcaf865d74cc442cc578334e15d5b5dbf",
+      "bytes": 1547376
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-supervision-v1.json",
+      "sha256": "d7d9387e6b8f2fff8c52966ee43f41bac498268d9ad7993f1095ec6c282f994b",
+      "bytes": 1587
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-lifetime-v1.json",
+      "sha256": "4ec2ec039bd56f73ef5d0631807865b2052c48e40fc960c37b9b54a0fee4e6ba",
+      "bytes": 958
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt02-causal-diagnosis-v1.json",
+      "sha256": "540988fe194ca9b36b55633445a44c5ac606774b9eeb2b89c6f30164f8f427ee",
+      "bytes": 1740
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/authoring-cost-clarification-v1.json",
+      "sha256": "be1e7085126c27e4d6b172c141c517f85e67aee0e41222a1b179e1a4dae96c79",
+      "bytes": 1483
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v2.json",
+      "sha256": "cc41dc8968d49952c1628a2753f95862fc494e5e57f6a012404a54ac8c133a3b",
+      "bytes": 4202
+    }
+  ],
+  "post_terminal_pin_check": {
+    "sources": 5,
+    "inputs": 43,
+    "preserved": 527,
+    "mismatches": 0,
+    "seconds_before_note_write": 0.276398917
+  },
+  "actual_authored_counts": {
+    "fixture_groups": 11,
+    "controlled_states": 81,
+    "complete_raw_key_t_m_comparisons": 694,
+    "exhaustive_formula_patterns": 64,
+    "fixed_body_authorities": 73,
+    "controlled_operation_records": 15,
+    "synthetic_DFS_events": 31,
+    "fully_exhausted_child_exclusions": 1,
+    "zero_and_one_attempt_unknown_controls": 2
+  },
+  "intended_gap_exercised": "Old v2 preference-set infrastructure did not retire entire invalid hints. New authored tiny cases exercise whole descriptor/body validation, waiting/ready/consumed/retired, exact sharing, forced-first resync and paired graph/hint restoration.",
+  "candidate_completeness": "At each recorded tiny state, direct raw offsets compare every recipe key/t/m and degree; preferred plus fallback is a full chosen-point permutation. Opaque equal-port fixture is explicitly point-only, not a mathematical inference rule.",
+  "exhaustion_scope": "One actual fully dead synthetic child excluded key[0,1,[]] only after restored parent context; both budget controls restore actual call-entry graph/hints and create no exclusion. No geometry target was searched.",
+  "costs": {
+    "attempt01_failed_seconds": 0.272813916,
+    "attempt02_failed_seconds": 0.322720416,
+    "attempt03_pass_seconds": 0.424369625,
+    "charged_cumulative_tiny_seconds": 1.019903957,
+    "attempt03_conservative_host_peak_bytes": 63078400,
+    "authoring": "Invalid cross-process monotonic field preserved and separately corrected by bound calendar619.829093s interval; not CPU effort.",
+    "counter_gap": "Tiny worker internally computes scan/order/rollback counters but does not export them. Whole worker/supervisor measured lifetime is charged; no component speedup claim.",
+    "outer_receipt_write": "Not included in its own pre-write lifetime field; worker and supervisor final serialization included."
+  },
+  "gaps": [
+    "Independent tiny implementation/audit pending; authored pass alone does not establish accepted lifecycle conformance.",
+    "No lifecycle execution on the actual229-recipe/217-formula/24-row geometry graph yet.",
+    "Native/compiler correspondence, arbitrary rule-update replay and universal proof language remain open.",
+    "No new geometry proof discovery, learned policy or RL training; root-fixed ordering controls only.",
+    "No unbounded/reachable-state universal conformance theorem from81 controlled tiny snapshots."
+  ],
+  "full_source_checkpoint": "v2 exact prior point epoch preserved; new lifecycle source provenance only in BodyAuthority. Full plan is still absent and requires successful independent tiny receipt and further root review.",
+  "native_queries": 0,
+  "actual_geometry_model_executions": 0,
+  "actual_geometry_target_searches": 0,
+  "new_RL_training": false,
+  "native_authority_activation": false
+}

@@ -1,0 +1,8 @@
+{
+  "status": "running_confirmed_owned_exec",
+  "session_id": 28701,
+  "command": "arithmetic_stochastic_owner_replay_memory_v5.py --plan helper-plan-v5.json",
+  "scope": "one authorized seven-job pure helper phase only",
+  "started_utc": "2026-10-11T21:11:02.863756+00:00",
+  "restart_policy": "poll same28701 until terminal; observation timeout is not terminal"
+}

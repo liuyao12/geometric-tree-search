@@ -1,0 +1,18 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "kind": "evaluation",
+  "plan_sha256": "efc1bff7635f42b758ac6a5c29bebf94de0ea792e2685864cfbfda72d4f2add8",
+  "prerequisite_sha256": {
+    ".gcts-active/stochastic-replay-v5-independent-20261011/helper-terminal-review-v5.json": "e56c60f61e727f9d68a9b831ca7658ebb7f96c6d5a6ee345894851885b9703f0",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/source-ready-review-v5.json": "f358c0b38a663a9868ee079c7367ca443ef792e5ee4f365c83edc9e4aa389cc3",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/review-package-v5.json": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+    ".gcts-active/cluster-lifecycle-progress-20261011/arithmetic-source-review-v5.json": "1fe40ea41177a41b41981c3ec4b87663e4129ab5d5fdb601c3dae617068233bf",
+    ".gcts-active/cluster-lifecycle-progress-20261011/helper-terminal-v5.json": "9f93d75d139c3b7f3e1f5cc326b5093cfbf4feb2f8d9079d349dfd56cb4a623b"
+  },
+  "scope": "One owned six-original-evaluation phase, complete every-byte and unchanged full domain/node/event/RNG/policy/hint/fallback/rollback replays. No new searches, training, native calls, smaller model or widened budget. Stop at any unknown/failure with unexecuted preserved.",
+  "historical_seconds": 226.66065275,
+  "helper_seconds": 11.494624209,
+  "remaining_seconds_before_phase": 541.844723041,
+  "memory_bytes": 536870912
+}

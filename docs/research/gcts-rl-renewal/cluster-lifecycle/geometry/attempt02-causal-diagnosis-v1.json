@@ -1,0 +1,32 @@
+{
+  "status": "source_only_causal_diagnosis_of_attempt02_combined_assertion",
+  "bindings": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt02_v1.py",
+      "sha256": "8f7a52dc9c966a43ee4532c27d88f0c55282a3f45c67641dff01008fdfdbbe4d",
+      "bytes": 19913
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-02/fixtures-stderr-v1.txt",
+      "sha256": "4e78317f9df6baeda5a504091b4f72ac0ba61423e746eb3573859e68fd0f5987",
+      "bytes": 531
+    }
+  ],
+  "observed": "Combined status/restoration assertion at fixture line280 failed; no actual unknown result or partial fixture outcome was serialized.",
+  "source_chain": [
+    "initial snapshot saved at line275; zero-budget result comparison passes before line277",
+    "snapshot(line277) calls compare(control)",
+    "compare exhausts control.ordered(decision)",
+    "ordered calls control.resync and increments trailed hint revision",
+    "the next solve checkpoints that new call-entry state, yet old assertion compared to earlier initial revision"
+  ],
+  "repair": "Refresh initial after the inspection snapshot; separately assert unknown status and exact actual call-entry restoration. Save before/after/result/events on either failure.",
+  "kernel_semantics_changed": false,
+  "runtime_diagnostic_executed": false,
+  "remaining_test": "Fresh bounded run and separate independent audit must determine actual status/restoration; source diagnosis is not a successful fixture receipt."
+}

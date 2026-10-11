@@ -1,0 +1,49 @@
+--- hilbert_cluster_full_run_v2.py
++++ hilbert_cluster_full_run_v3.py
+@@ -23,22 +23,22 @@
+ 
+ def main():
+     started = time.perf_counter()
+-    planpath = HERE / 'full-language-plan-v2.json'; plan = json.loads(planpath.read_text())
++    planpath = HERE / 'full-language-plan-v3.json'; plan = json.loads(planpath.read_text())
+     for p in plan['sources'] + plan['inputs'] + plan['preserved_files']:
+         path = ROOT / p['path']; h = hashlib.sha256()
+         with path.open('rb') as stream:
+             for block in iter(lambda: stream.read(65536), b''): h.update(block)
+         if path.stat().st_size != p['bytes'] or h.hexdigest() != p['sha256']:
+             raise ValueError('frozen source/input changed: ' + p['path'])
+-    for name in ('full-language-outcome-v2.json', 'full-language-launch-v2.json', 'full-language-supervision-v2.json',
+-                 'full-language-stdout-v2.txt', 'full-language-stderr-v2.txt'):
++    for name in ('full-language-outcome-v3.json', 'full-language-launch-v3.json', 'full-language-supervision-v3.json',
++                 'full-language-stdout-v3.txt', 'full-language-stderr-v3.txt'):
+         if (HERE/name).exists(): raise ValueError('immutable prior execution exists')
+     child, terminal, reason, error, samples = None, None, None, None, []
+     try:
+-        with (HERE/'full-language-stdout-v2.txt').open('xb') as out, (HERE/'full-language-stderr-v2.txt').open('xb') as err:
+-            child = subprocess.Popen([sys.executable, str(HERE/'hilbert_cluster_full_v2.py')],
++        with (HERE/'full-language-stdout-v3.txt').open('xb') as out, (HERE/'full-language-stderr-v3.txt').open('xb') as err:
++            child = subprocess.Popen([sys.executable, str(HERE/'hilbert_cluster_full_v3.py')],
+                                      cwd=HERE, stdout=out, stderr=err)
+-            save('full-language-launch-v2.json', {'pid': child.pid, 'scope':'actual full-language controlled transactions; no target DFS',
++            save('full-language-launch-v3.json', {'pid': child.pid, 'scope':'actual full-language controlled transactions; no target DFS',
+                  'wall_ceiling_seconds':SECONDS, 'host_ceiling_bytes':BYTES,
+                  'actual_model_loads':1, 'native_queries':0})
+             try:
+@@ -68,7 +68,7 @@
+             if child.poll() is None: child.kill()
+             terminal=child.wait()
+     outcome=None
+-    try: outcome=json.loads((HERE/'full-language-outcome-v2.json').read_text())
++    try: outcome=json.loads((HERE/'full-language-outcome-v3.json').read_text())
+     except BaseException as exc:
+         reason=reason or 'missing_or_invalid_child_receipt'; error=error or str(exc)
+     own,childpeak=peak(resource.RUSAGE_SELF),peak(resource.RUSAGE_CHILDREN)
+@@ -90,7 +90,7 @@
+              'OS_soft_limit_claim':'none','plan_sha256':hashlib.sha256(planpath.read_bytes()).hexdigest(),
+              'actual_geometry_model_execution':True,'geometry_target_searches':0,'native_queries':0,
+              'native_authority_activated':False,'independent_lifecycle_audit':'not_run'}
+-    save('full-language-supervision-v2.json',receipt)
++    save('full-language-supervision-v3.json',receipt)
+     print(json.dumps({k:v for k,v in receipt.items() if k!='rss_samples'}),flush=True)
+     return 0 if passed else 1
+ 

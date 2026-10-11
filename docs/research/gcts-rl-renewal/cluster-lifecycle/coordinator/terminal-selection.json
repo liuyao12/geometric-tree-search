@@ -1,0 +1,13 @@
+{
+  "status": "root_selected_terminal_actuals_for_report_projection",
+  "all_owned_handles_terminal": true,
+  "main_baseline_sha256": "a3126b44453b9824c1f2db44856a519c758c9fed953b0e6e7bb86126801a0863",
+  "arithmetic_phase": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-v5/phase-receipt-attempt-02.json",
+  "arithmetic_terminal_review": ".gcts-active/stochastic-replay-v5-independent-20261011/actual-terminal-review-v5.json",
+  "geometry_lifetime": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-lifetime-v1.json",
+  "geometry_outcome": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-outcome-v1.json",
+  "geometry_independent_result": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+  "geometry_independent_lifetime": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-lifetime-v2.json",
+  "full_actual_lifecycle_execution": false,
+  "report_scope": "Tiny actual independent conformance, unchanged arithmetic partial replay and source-only next gates; no discovery or new RL/native claim"
+}

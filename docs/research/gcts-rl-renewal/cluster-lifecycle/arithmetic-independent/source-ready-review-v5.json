@@ -1,0 +1,76 @@
+{
+  "status": "passed_source_ready_v5_scoped_read_only_alias_and_pin_review",
+  "package_sha256": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+  "verified_sources": 52,
+  "verified_inputs": 62,
+  "verified_package_files": 19,
+  "verified_zip_sources": 52,
+  "exact_worker_diff": "Only V5 loader import and raw=load_trace(saved observation); all other worker text identical to V2.",
+  "complete_original_byte_gate_sha256": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+  "job_comparisons": [
+    {
+      "job": "base-r1",
+      "plan_sha256": "3f6943c59803055bbc94732c2d8ca87d6864512c79286f45914114b8d51d99d5",
+      "scientific_fields_identical_to_v2": true,
+      "descriptive_loading_only_field": "V2 loader retained for all nontrace artifacts; trace-only plain-list pair sharing plus existing tuple4 sharing; unchanged complete V2 original byte gate and all independent semantic replay checks."
+    },
+    {
+      "job": "untrained-r1",
+      "plan_sha256": "fcafb771a5331d7b42f574aede4c90f964e03d109642f26ecaf3d1e07a01aaa3",
+      "scientific_fields_identical_to_v2": true,
+      "descriptive_loading_only_field": "V2 loader retained for all nontrace artifacts; trace-only plain-list pair sharing plus existing tuple4 sharing; unchanged complete V2 original byte gate and all independent semantic replay checks."
+    },
+    {
+      "job": "trained-r1",
+      "plan_sha256": "0049f294a8b5b3bba9c9e0590aa824d36851788a7a98a47df08def6f3e589786",
+      "scientific_fields_identical_to_v2": true,
+      "descriptive_loading_only_field": "V2 loader retained for all nontrace artifacts; trace-only plain-list pair sharing plus existing tuple4 sharing; unchanged complete V2 original byte gate and all independent semantic replay checks."
+    },
+    {
+      "job": "trained-r2",
+      "plan_sha256": "379f438b1072f3effcb885c430a5f7008c3603e064651bb6be4a78cb30500d70",
+      "scientific_fields_identical_to_v2": true,
+      "descriptive_loading_only_field": "V2 loader retained for all nontrace artifacts; trace-only plain-list pair sharing plus existing tuple4 sharing; unchanged complete V2 original byte gate and all independent semantic replay checks."
+    },
+    {
+      "job": "untrained-r2",
+      "plan_sha256": "c3ebe518a9a8232195bed9bdbaca03275c8943cf1dc8ea40022a883776b3bc51",
+      "scientific_fields_identical_to_v2": true,
+      "descriptive_loading_only_field": "V2 loader retained for all nontrace artifacts; trace-only plain-list pair sharing plus existing tuple4 sharing; unchanged complete V2 original byte gate and all independent semantic replay checks."
+    },
+    {
+      "job": "base-r2",
+      "plan_sha256": "9bed604f2951644dff1515ff8f733f0a15e20f5a5b3c16d79060376c7e4f6eda",
+      "scientific_fields_identical_to_v2": true,
+      "descriptive_loading_only_field": "V2 loader retained for all nontrace artifacts; trace-only plain-list pair sharing plus existing tuple4 sharing; unchanged complete V2 original byte gate and all independent semantic replay checks."
+    }
+  ],
+  "independent_dataflow_disposition": [
+    "load_trace is used only for raw saved observation. Separate model/catalog/registry/plan/lifetime/transition/policy loads use unchanged V1/V2 load.",
+    "Shared integer pairs remain plain lists; float/bool/mixed pairs remain ordinary arrays. Four-integer tuple sharing is historical.",
+    "Worker passes raw.case/raw.search only into pinned read-only semantic consumers; mutations target fresh state/proposals/features/decoded model proof or result receipt.",
+    "tree uses saved census/children/events/hints in comparison, indexing, iteration, hashing and scalar numerical decisions. Its active hint comes from fresh independent proposals.",
+    "model_binding reads case and constructs new model placements/domains. Its assignments do not mutate case arrays.",
+    "learning_update reads saved weights/features/metrics and constructs new gradient/update dictionaries. No saved pair mutation or pair-identity observation exists in reviewed closure.",
+    "Unchanged C-json byte serializer reads full field values and insertion order, emitting every original byte before semantic replay.",
+    "Plain-list sharing is observably different under mutation or identity-sensitive consumers; prospective negative controls expose this limitation. It is not general JSON alias equivalence."
+  ],
+  "scope_caveats": [
+    "Disposition permits root to launch only the bounded helper phase; actual six replay requires fresh passed helper and root terminal activation.",
+    "Complete byte equality is necessary but does not alone prove alias safety; manual pinned call-graph read-only argument is the additional condition.",
+    "No claim that integer pairs are coordinates; sharing is generic trace-value reuse.",
+    "No loader, synthetic helper, actual scientific JSON payload, graph, RNG or policy replay executed by this review.",
+    "Resource success and all-six completion remain unknown. Six worst-case 120-second lifecycles do not fit current remainder; owner reserves full next lifecycle.",
+    "Owned memory gate is retrospective fresh-worker plus owner kernel peaks, not a hard OS/RSS ceiling.",
+    "Direct worker CLI is technically callable; root activation is the controlled owner workflow, not a security boundary.",
+    "Old failures remain unchanged and helper lifetime will be charged once under original 780 seconds."
+  ],
+  "source_review_clock_seconds_before_receipt_write": 0.15090941700000002,
+  "authoring_and_manual_inspection_seconds": "uninstrumented; not included in static verifier clock",
+  "scientific_payload_loads": 0,
+  "fixture_executions": 0,
+  "graph_replays": 0,
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0
+}

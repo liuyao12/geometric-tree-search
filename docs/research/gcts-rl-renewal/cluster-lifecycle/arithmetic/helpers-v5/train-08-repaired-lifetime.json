@@ -1,0 +1,17 @@
+{
+  "job": "train-08-repaired",
+  "status": "passed_owned_loading_worker_lifetime",
+  "worker_pid": 20064,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 2.892483084,
+  "kernel_fresh_worker_peak_bytes": 73891840,
+  "kernel_owner_peak_bytes": 16891904,
+  "conservative_owner_plus_worker_peak_bytes": 90783744,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "receipt_sha256": "9f08341d08ec08228c0a6c5e0347e153d225360d5b7da2b7b354022a509e55e6",
+  "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+  "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+}

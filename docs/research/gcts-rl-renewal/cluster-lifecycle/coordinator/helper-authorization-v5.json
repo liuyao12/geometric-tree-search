@@ -1,0 +1,14 @@
+{
+  "status": "authorized_by_root_after_independent_review",
+  "kind": "helpers_only",
+  "plan_sha256": "6c9323fe02dfdc5f2f47c98f7b6a7402645a7bb2155e932350f820091ac6add8",
+  "prerequisite_sha256": {
+    ".gcts-active/stochastic-replay-v5-independent-20261011/source-ready-review-v5.json": "f358c0b38a663a9868ee079c7367ca443ef792e5ee4f365c83edc9e4aa389cc3",
+    ".gcts-active/cluster-lifecycle-progress-20261011/arithmetic-source-review-v5.json": "1fe40ea41177a41b41981c3ec4b87663e4129ab5d5fdb601c3dae617068233bf",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/review-package-v5.json": "ff67751d41c6c136dbc8190c15e48ff899ea3806c5a9e4d9cbd2ece996b69c30",
+    ".gcts-active/stochastic-replay-memory-v5-20261011/consumer-use-review-v5.json": "031cce13e89708a7a2d3912c750d69f19c71a5bf10072a64a85534d1eea90b8d"
+  },
+  "scope": "One owned pure helper phase only, all seven planned jobs and unchanged type/alias/value/full-byte/resource gates. No model/graph/evaluation replay, search, training or native query; future evaluation activation requires terminal helper and independent acceptance.",
+  "historical_seconds": 226.66065275,
+  "original_remaining_seconds_before_helpers": 553.33934725
+}

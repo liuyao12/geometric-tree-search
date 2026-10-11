@@ -1,0 +1,30 @@
+--- hilbert_cluster_outer_attempt02_v1.py
++++ hilbert_cluster_outer_attempt03_v1.py
+@@ -8,8 +8,8 @@
+ from pathlib import Path
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parent.parent
+-OUT=HERE/'attempt-02'
+-PRIOR_FAILED_SECONDS=0.272813916
++OUT=HERE/'attempt-03'
++PRIOR_FAILED_SECONDS=0.5955343319999999
+ 
+ 
+ def peak(kind):
+@@ -19,14 +19,14 @@
+ def main():
+     start=time.perf_counter(); path=OUT/'fixtures-lifetime-v1.json'
+     if path.exists(): raise ValueError('immutable outer lifetime exists')
+-    planpath=HERE/'plan-attempt-02.json'; plan=json.loads(planpath.read_text())
++    planpath=HERE/'plan-attempt-03.json'; plan=json.loads(planpath.read_text())
+     for p in plan['sources']+plan['inputs']+plan['preserved_files']:
+         source=ROOT/p['path']; h=hashlib.sha256()
+         with source.open('rb') as stream:
+             for block in iter(lambda:stream.read(65536),b''): h.update(block)
+         if source.stat().st_size!=p['bytes'] or h.hexdigest()!=p['sha256']:
+             raise ValueError('frozen pin mismatch: '+p['path'])
+-    child=subprocess.run([sys.executable,str(HERE/'hilbert_cluster_run_attempt02_v1.py')],check=False)
++    child=subprocess.run([sys.executable,str(HERE/'hilbert_cluster_run_attempt03_v1.py')],check=False)
+     wall=time.perf_counter()-start
+     innerpath=OUT/'fixtures-supervision-v1.json'
+     inner=json.loads(innerpath.read_text()) if innerpath.exists() else None

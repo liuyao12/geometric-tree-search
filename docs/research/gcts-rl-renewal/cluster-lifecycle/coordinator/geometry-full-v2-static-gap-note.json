@@ -1,0 +1,24 @@
+{
+  "status": "source_only_full_draft_requires_expectation_fix_before_any_dispatch",
+  "checkpoint_path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-source-ready-v2.json",
+  "checkpoint_sha256": "cc41dc8968d49952c1628a2753f95862fc494e5e57f6a012404a54ac8c133a3b",
+  "source_path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_full_v2.py",
+  "source_sha256": "ff840a11b33f1328cb56aed79425614aa08293d05dccce1360d57da83d9e09ed",
+  "diagnosis": "Each of three parent rollback exact-state assertions follows an inspection snapshot that calls Controller.ordered/resync and advances hint revision. Assert restoration before inspection; keep actual graph/hint equality and all scientific comparisons.",
+  "locations": [
+    "full_parent_graph_and_hints_revived",
+    "remote_forced_parent_revived",
+    "distant_hint_revived_exact_shared_state"
+  ],
+  "actual_full_model_execution": false,
+  "source_review_not_conformance_pass": true,
+  "predictions_only": [
+    229,
+    217,
+    24,
+    171,
+    11
+  ],
+  "proof_discovery": false,
+  "native_queries": 0
+}

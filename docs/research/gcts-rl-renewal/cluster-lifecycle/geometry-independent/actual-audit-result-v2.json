@@ -1,0 +1,96 @@
+{
+  "status": "passed_independent_tiny_whole_lifecycle_point_body_and_finite_dfs_audit",
+  "plan_sha256": "77b958fec81ef720abc47063fda162e25400a81a2adcf38a851bbdc2afa2c656",
+  "outcome_pin": {
+    "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/attempt-03/fixtures-outcome-v1.json",
+    "sha256": "66f613cfcea3ac2d51623ef7a2459d5bcaf865d74cc442cc578334e15d5b5dbf",
+    "bytes": 1547376
+  },
+  "complete_states": 81,
+  "complete_candidate_comparisons": 694,
+  "authority_registries": 73,
+  "exact_source_bindings": [
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/plan-v1.json",
+      "sha256": "2ef134101482864f87b95bfdfd7a2a03e1152536f59bca298ca0028f1d322043",
+      "bytes": 128708
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_fixtures_attempt03_v1.py",
+      "sha256": "eb8e5b5305ae7b78c15c1e867cd12bcf07f58bebeda0a204cc14d41a8d5365d5",
+      "bytes": 20615
+    }
+  ],
+  "controlled_transactions": 15,
+  "complete_dfs_series": [
+    {
+      "max_attempts": 0,
+      "result": "unknown_budget",
+      "events": 4,
+      "attempts": 0,
+      "independently_exhausted_children": 0
+    },
+    {
+      "max_attempts": 1,
+      "result": "unknown_budget",
+      "events": 8,
+      "attempts": 1,
+      "independently_exhausted_children": 0
+    },
+    {
+      "max_attempts": 100,
+      "result": "finite_exact_point_tiling",
+      "events": 16,
+      "attempts": 5,
+      "independently_exhausted_children": 1
+    }
+  ],
+  "actual_corruptions": {
+    "actual_corruptions_rejected": [
+      "stale-model_epoch",
+      "stale-context_id",
+      "stale-formula_registry_sha256",
+      "stale-authority_epoch",
+      "stale-primitive_palette_sha256",
+      "stale-boundary_sha256",
+      "stale-source_bindings_sha256",
+      "altered-source_body_sha256",
+      "altered-mapped_body_sha256",
+      "altered-body_sha256",
+      "altered-body_authority_epoch",
+      "valid-altered-recipe-fresh-full-identity",
+      "valid-altered-row-fresh-full-identity",
+      "altered-command",
+      "overcount-t",
+      "bool-assigned-zero",
+      "hidden-mark-conflict",
+      "missing-body",
+      "missing-dependency",
+      "altered-valid-ordered-refs-with-fresh-identities",
+      "point-consistent-invalid-literal-mp",
+      "boolean-mark-reference-count",
+      "boolean-occupancy",
+      "dropped-complete-fallback-candidate"
+    ],
+    "positive_semantic_controls": [
+      "noninjective-two-ordered-ports-retained",
+      "branch-retirement-absorbing",
+      "paired-rollback-fresh-state-distinguished",
+      "all-unknown-kinds-preserve-parent"
+    ],
+    "scope": "Independent adapters exercised on mutated in-memory tiny records. These are separate checks, not reruns of producer fixture tests or production search."
+  },
+  "producer_total_cumulative_seconds": 1.019903957,
+  "audit_seconds_before_receipt_write": 0.17092837500000002,
+  "scope": [
+    "All recorded tiny point domains/body transports/ordered ports/full identities/assigned-zero/generations/graph-hint paired rollback reconstructed independently.",
+    "Finite DFS event replay independently establishes every actual excluded child exhaustion; unknown restores parent without exclusion. Retirement is branch-absorbing until explicit paired rollback.",
+    "Source registries are authored toy infrastructure. Synthetic zero and opaque-pair rules are nonlogical; this is no searched mathematical theorem or Hilbert/native/Wang/compiler acceptance.",
+    "The producer nonfinite-budget and untracked-metadata negative groups have pass records only; source review plus our explicit binding/byte/type corruptions, not independent replay of those unsaved failing calls, is the scope.",
+    "No actual geometry model load, target DFS, learned policy/training or native query. Full-language lifecycle remains future gated work."
+  ],
+  "searches": 0,
+  "native_queries": 0,
+  "actual_geometry_models": 0,
+  "training_episodes": 0
+}

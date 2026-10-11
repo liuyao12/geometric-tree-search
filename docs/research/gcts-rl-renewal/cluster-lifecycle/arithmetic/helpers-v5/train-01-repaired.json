@@ -1,0 +1,55 @@
+{
+  "status": "passed_complete_loading_value_helper",
+  "job": "train-01-repaired",
+  "mode": "repaired",
+  "plan_sha256": "1ecf7ee560b91bf888ffd3a93fe6d5f51172cfc43c251130127e95c6644bc56c",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "complete_original_trace_byte_correspondence": {
+    "status": "passed_complete_original_compact_json_byte_correspondence",
+    "seconds": 0.33162483300000023,
+    "bytes": 17013409,
+    "chunks": 6130,
+    "largest_emitted_chunk_bytes": 693155,
+    "original_uncompressed_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+    "emitted_sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+    "scope": "Every original byte compared against independent full insertion-order C-json grouped fields plus exact nested search/tree/children stream. All fields emitted once, tuple/list arrays JSON equivalent. No complete original inflation, full tree copy or complete output string; chunk size is measured, not a claimed hard cap."
+  },
+  "canonical": {
+    "sha256": "b9670306501356bb717a20d3e7e375b4accb17b7d30a4e97d22bcabbd84b05f2",
+    "bytes": 17013409,
+    "protocol": "full_original_compact_JSON_fingerprint_v2_not_sorted_canonical"
+  },
+  "observation": {
+    "id": "train-01",
+    "phase": "training",
+    "mode": "training",
+    "episode": 1,
+    "seed": 17001,
+    "attempts": 500,
+    "search_seconds": 10,
+    "lifecycle_seconds": 30
+  },
+  "nodes": 501,
+  "events": 51,
+  "weights_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "seconds_before_receipt_write": 2.814074709,
+  "kernel_peak_rss_bytes": 72024064,
+  "loading": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz",
+      "kind": "v2_trace_only_four_tuple_two_plain_list_sharing",
+      "seconds": 2.481081208,
+      "original_uncompressed_bytes": 17013409,
+      "reduced_temporary_json_bytes": 15432650,
+      "shared_four_arrays": 19848,
+      "four_array_occurrences": 1355219,
+      "shared_two_integer_lists": 52,
+      "two_integer_list_occurrences": 8578,
+      "quoted_strings_checked": 52240,
+      "scope": "Complete saved observation only; every two-integer replacement is a plain list read-only by the pinned consumers. Generic value sharing, not coordinate semantics. Other artifacts retain V2 loader. Full original-byte and unchanged semantic gates remain required."
+    }
+  ]
+}

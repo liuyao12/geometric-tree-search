@@ -1,0 +1,24 @@
+{
+  "job": "train-01-repaired",
+  "mode": "repaired",
+  "seconds": 25,
+  "rss_bytes": 536870912,
+  "source_sha256": {
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v1.py": "1deda99d946bf1de63de3744385336ff32b3ad98c4fa0634f81f1eca41a68a1f",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v2.py": "e7a3ebac55a2d6c1a8fb367711b8e9a98497df66b84a6f74d78a85a6761655b5",
+    "research/gcts-rl-renewal/arithmetic_stochastic_replay_memory_v5.py": "78976683a231796acd0ab199d4e672981cfeb3676e5b7d00a27f636056a01a68",
+    "research/gcts-rl-renewal/arithmetic_stochastic_fixture_replay_memory_v5.py": "57e19ef40ed89f08ea362d26ee3e431d4b9bbc47aa29188e1f5c263ab02d8fd9",
+    "research/gcts-rl-renewal/arithmetic_stochastic_owner_replay_memory_v5.py": "386c68eb9eff05a6b836e411d85a1e9f1328088383bcf369b79e471c7773df54",
+    "research/gcts-rl-renewal/arithmetic_stochastic_freeze_replay_memory_v5.py": "a26c9483b565504dbe7fdff1a2d808cb94dcfbf6943a74975f1c4475e401668b"
+  },
+  "input_sha256": {
+    ".gcts-active/stochastic-replay-memory-v5-20261011/consumer-use-review-v5.json": "031cce13e89708a7a2d3912c750d69f19c71a5bf10072a64a85534d1eea90b8d",
+    ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz": "8d4a43c6b432624bcf8d5798e0e3e83d9792fee2b131b1830b016eb3a27d8a97"
+  },
+  "output_path": ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/train-01-repaired.json",
+  "searches": 0,
+  "training_episodes": 0,
+  "native_queries": 0,
+  "graph_replays": 0,
+  "trace_path": ".gcts-active/arithmetic-stochastic-clusters-20261011/execution-v2/training/train-01-search.json.gz"
+}

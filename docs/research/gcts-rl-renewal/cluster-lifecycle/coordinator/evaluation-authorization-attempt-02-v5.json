@@ -1,0 +1,14 @@
+{
+  "status": "root_authorized_exact_corrected_activation_path",
+  "plan_path": ".gcts-active/stochastic-replay-memory-v5-20261011/evaluation-plan-v5-attempt-02.json",
+  "plan_sha256": "db72ddcfb4c4bd9174298307e3d914b1644771e39a28c0bff8e3b2b9af2cdc16",
+  "activation_path": ".gcts-active/stochastic-replay-memory-v5-20261011/activation-attempt-02-v5.json",
+  "activation_sha256": "4746cccd731d87e8dcbdacd1d21dd7913785199181495d505e27ddd29c9e7a81",
+  "prerequisite_sha256": {
+    ".gcts-active/stochastic-replay-memory-v5-20261011/helpers-v5/phase-receipt.json": "acc4497ed9d5bda85a7085d4d78df0e10e3f891707e9084e46214f9c442cd4df",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/source-ready-review-v5.json": "f358c0b38a663a9868ee079c7367ca443ef792e5ee4f365c83edc9e4aa389cc3",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/helper-terminal-review-v5.json": "e56c60f61e727f9d68a9b831ca7658ebb7f96c6d5a6ee345894851885b9703f0",
+    ".gcts-active/stochastic-replay-v5-independent-20261011/successor-plan-review-v5-attempt-02.json": "2837b473df760780f59267640addd85b6a3b11eacdd713f0f6e53bda0f8c94e8",
+    ".gcts-active/cluster-lifecycle-progress-20261011/arithmetic-source-review-v5.json": "1fe40ea41177a41b41981c3ec4b87663e4129ab5d5fdb601c3dae617068233bf"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "job": "synthetic-controls",
+  "status": "passed_owned_loading_worker_lifetime",
+  "worker_pid": 20056,
+  "exit_code": 0,
+  "terminal_and_reaped": true,
+  "failure": null,
+  "full_worker_seconds": 0.45983462499999994,
+  "kernel_fresh_worker_peak_bytes": 144572416,
+  "kernel_owner_peak_bytes": 16711680,
+  "conservative_owner_plus_worker_peak_bytes": 161284096,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "receipt_sha256": "f751267bd2ae85d0fe426129c9052c8730be6a2a5e803989e0bd9e7f924b7101",
+  "enforcement": "Sole wait4 owner of fresh pure worker; bounded wall then kill/reap only unreaped direct child, stdout/stderr preserved. Independent fresh-child kernel and owner peaks after exit; retrospective512MiB, no hard OS cap or RSS sampler claim.",
+  "scope": "Workers have no subprocess/engine/training/native execution path; temporary files only, no descendant process claim."
+}

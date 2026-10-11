@@ -1,0 +1,55 @@
+{
+  "status": "passed_read_only_terminal_independent_tiny_gate_reconciliation",
+  "plan": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-plan-v2.json",
+    "bytes": 131791,
+    "sha256": "77b958fec81ef720abc47063fda162e25400a81a2adcf38a851bbdc2afa2c656"
+  },
+  "activation": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/root-activation-v2.json",
+    "bytes": 657,
+    "sha256": "4d7d8bac11ca5b70d8613f023b32891836609412d3acd963a9f55264cde99270"
+  },
+  "result": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-result-v2.json",
+    "bytes": 3962,
+    "sha256": "3b83ecf44211742b82e4969ce99c1aae1d4b5042f6c5d31cf591ad836ecfeb25"
+  },
+  "lifetime": {
+    "path": ".gcts-active/hilbert-cluster-independent-20261011/actual-audit-lifetime-v2.json",
+    "bytes": 1431,
+    "sha256": "48cb310b20ed922c84180aa722efda0240460932ea2e5c44ed69a79643f04a6d"
+  },
+  "entry_counts": {
+    "sources": 6,
+    "inputs": 29,
+    "preserved_files": 532
+  },
+  "unique_verified_paths": 555,
+  "census": {
+    "controlled_states": 81,
+    "candidate_comparisons": 694,
+    "authority_registries": 73,
+    "transactions": 15,
+    "recorded_dfs_events": 31,
+    "independently_exhausted_children": 1,
+    "unknown_controls": 2,
+    "actual_corruptions_rejected": 24,
+    "separate_positive_controls": 4
+  },
+  "costs": {
+    "producer_cumulative_seconds_including_two_failures": 1.019903957,
+    "independent_owned_seconds": 0.314626667,
+    "independent_conservative_peak_bytes": 38273024,
+    "source_authoring": "unmeasured",
+    "final_owner_receipt_write": "excluded"
+  },
+  "limitations": [
+    "Tiny source-bound symbols, palettes, unit-row placements and authored proposal bodies only; no actual Hilbert model/search/compiler/native/Wang authority acceptance.",
+    "Full snapshot reconstruction and finite DFS independently check all recorded events and justify the single child exclusion. Retirement remains branch-absorbing until paired rollback.",
+    "Twenty-four independent record corruptions actually ran, distinct from four positive controls. Producer unsaved nonfinite-budget and public-metadata negative calls receive source review only.",
+    "Root owned the actual child; this terminal reconciliation does not rerun any loader/engine/audit/native query.",
+    "Audit v1 source-only freeze was never executed; cache-transaction correction v2 froze before actual dispatch; all old producer failures remain charged."
+  ],
+  "metadata_reconciliation_seconds_before_receipt_write": 0.134897458
+}
