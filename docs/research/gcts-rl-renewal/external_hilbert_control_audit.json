@@ -1,0 +1,400 @@
+{
+  "status": "passed",
+  "successful_derivations": 4,
+  "proof_lines": 102,
+  "independent_lemma_checks": 40,
+  "admissions": [
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-f6b693e1e52c50f7300e8dc5e1f0bd921ddd8fee7bfc9581e27e265380e792e9",
+      "native_query": 28,
+      "native_request_sha256": "589e01cb06e9f52df20021373bd99050177f5a8f57b604160ee65f374e4e20be",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-1314f975f131addfb098b65077cf564bcbffe3586baf2d69c2f8acfeefd04bbc",
+      "native_query": 29,
+      "native_request_sha256": "e15f03f1e6291e3cfb074343ef9da1b6ad85276ac53dd4dc80d1b51431ad3f23",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-96d37614d344ea1f0c241412d8944d4272b82596cd158ff3cfa6ee9a51a5b7b9",
+      "native_query": 30,
+      "native_request_sha256": "09e56c6adb50773d3b9c494594e0403015180c14dbcee8247574f32d12ba7952",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-a52262bff26da399103893acd61cd55e05112e01f33eb3c77f4e09a5b71f7fd6",
+      "native_query": 31,
+      "native_request_sha256": "716ede1fb4e8d6649a98da42c94e7cf88d90c93d2c80c1f6d9fcb65f29bca93e",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-a4653a6409ecfaf1a9038afc65a2e59d6f21399f7b7918a7830334cef98316eb",
+      "native_query": 32,
+      "native_request_sha256": "8fe57672c6a945451294d7ef643b8a780daf588bdeeafd163187e50aa53419f6",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-c5fb56d2660bc436ad926cced602abc69a7383210af2929d915464f2e74646d9",
+      "native_query": 33,
+      "native_request_sha256": "a1b482e389fb0d6840074b1a800a3b70169a993455a39697fb555c9db7e7ab50",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-0ea5ef0e33d43fc8c455de19365fd83fd2b5d0ddcf2112cb0f79de523ab3446b",
+      "native_query": 34,
+      "native_request_sha256": "e92402cfdd727c62b7248584cadc7de0c4a2d3a10f81d4d75755506847291147",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-3e7d5d4aa520b7fc898796bd81eb605e21727815becb3af696a0ee9748d608e8",
+      "native_query": 35,
+      "native_request_sha256": "f330fb4170b3600287a955daf7e8b7b7db21847b2325f0b868e3de82b3017367",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-9df6449176384958e08b4649f35aefbb8d771842161d2a6ebefec96463a094f3",
+      "native_query": 36,
+      "native_request_sha256": "059b219d54c30116e66723742991048edd39968298423d3d11d02d679112052d",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-6692165a91ce7ad2416694f57c9f79d57ac4e8d6b3acebf29d323dbd1a32484d",
+      "native_query": 37,
+      "native_request_sha256": "6c449b535736fb6cd44b54b6d6ba473744cb0b914b100465cee82e6c686ea8e4",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-84c71e5779f32c53edcaab9663c8ad28fed39e9403b2dd156d76e16996ffa834",
+      "native_query": 38,
+      "native_request_sha256": "d9f14962e170d7e1e22affd353494d650008f18356b2f1affa90eeefbe649561",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-c994d8e429f31c20ca3964715015e5639e3b7d33a057e660e38305cddf7a4ffa",
+      "native_query": 39,
+      "native_request_sha256": "4a8619ebc90a09b959b9a48f9a8d9ef8a58b1b7aa35d9a7ed0d0b85f58ae42ba",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-5db61523cb2a4bb47cd728b4e0c912bd3c1005dfea54b4ab110f573fbdf4b2ce",
+      "native_query": 40,
+      "native_request_sha256": "c0500dbf5faae66b7d08307743464d740ec0b75716f7aa083c6dac5bdb2a72a5",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-046c67906035feeb70d064a9fe86efcd7ed5c13e77398449d51bf45904052d1f",
+      "native_query": 41,
+      "native_request_sha256": "2a79cc9992a114098c09fdbb0f88e9ea65c44d7122266c3730b235ffb4aedae1",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-867277d76eb8d8384de656a27947959a6b9b2329e34e3b52de747e5a1ab8b25b",
+      "native_query": 42,
+      "native_request_sha256": "66be0a00e104e465482dac7fb31f349ca4c11b8a33d4c5f38cd77f9b7a8a6dac",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-5d3649051e8224ca45b2ca54359c63c9020d266c9178a4b366f0145d405c1bb9",
+      "native_query": 43,
+      "native_request_sha256": "5dcc6aaef86eb099fc2d30dca9911164c99e1e453c9c7b72f01499bf7406a4ac",
+      "dependencies": [
+        "I.2-uniqueness"
+      ]
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-824c2890747ae8cd9a62c462a7dbde88a93e17ebc3015e8a188b97e381852f5a",
+      "native_query": 44,
+      "native_request_sha256": "bf913fa0c5caf8cd1dee1a02f8c8fab23c3151697dacf0093ed80016d9d911c3",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-812d09f0d99f9b6e0ec6b9e48052740877fbf7c8c149b560a24bf239bcb041b2",
+      "native_query": 45,
+      "native_request_sha256": "82e7f58d6bf0b4e8fa2a73bbaefc4c9e63af25697c54317227e01bf420a28aef",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-e7f2fb5a5b6b1471ff699c219c3d8c8576da9c8189e4ea4edccb187fdbc84efd",
+      "native_query": 46,
+      "native_request_sha256": "913536dcac4e386755b4327c2bd705384f25fad2d7826c6f4b0f0f87a62cc0bc",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-96920890c6fdecd6b7dbb4f1e3165f620569076402960cfe702abedb0d998b82",
+      "native_query": 47,
+      "native_request_sha256": "4874d264543b2f726d2d700d70f462f6e536b570d3cdaa10cf754b8b2f39be30",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-9d297ddf97b8dbe8534313f918b86db10aad27ffc28518d48fdc67e91ab44132",
+      "native_query": 48,
+      "native_request_sha256": "508ab987874de61100dc31d69d46dabb202f1d7ab123d195c742d58ae6045408",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-954919205d8074a26870beae109807de7d4c052156b3a7b012ddd28ffe99c6e1",
+      "native_query": 49,
+      "native_request_sha256": "8deb993bac26be7c252881eb306e4c8109acbe3750f0bd4babccefe839bcc47d",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-261c102d32c4a4189be80cca2b1d321bdf6b5aa4f683d8cd905fc9924c5665d5",
+      "native_query": 50,
+      "native_request_sha256": "a537a0dffcb1ba38926142697e47b0be88b5f7281a00fbfd49eb4fc30405f821",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-baed63b522b76fbe34ec4485ab682235be7b45d80944418213455bf74b6e38c1",
+      "native_query": 51,
+      "native_request_sha256": "bd84637ef2ccf16403a6c1885965f4ee1542b64ed1adbb8313a1b80382f8ed03",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-4f43eb24e869c39d194f3cf8931ea9fff2a1830c5df22bf92819c75485957a9e",
+      "native_query": 52,
+      "native_request_sha256": "9dbddbc709ad6eb4ecc2f0b7f5ce09ce6a143e3c6592bf1845e8d45d59802a72",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-84adb8017322ddfa2b7653cbfacecb733f032793d553391ebdb74735b8842a38",
+      "native_query": 53,
+      "native_request_sha256": "4914bcba5afe3cfa909d38b7bd129d173958081f2930a703aa3906dc4ec42ff2",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-e5057e1d35e62357b03999828afd95baf1757b94706caee080343f9fc75473cc",
+      "native_query": 54,
+      "native_request_sha256": "dcca5c7adad42b5deb3c6642e0a0ebaf280aed7b1209953d0f4b63856135dcb9",
+      "dependencies": []
+    },
+    {
+      "case": "incidence-transport",
+      "name": "hilbert-f4f9a83f38b498f84aa0accb3909f9e34ad15f47b0f6cd5f53820e8f557e483c",
+      "native_query": 55,
+      "native_request_sha256": "7c50b6fad1499534802e1c7a0b47379ae21077ec7a3ea8f804052ab17640fae9",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-824c2890747ae8cd9a62c462a7dbde88a93e17ebc3015e8a188b97e381852f5a",
+      "native_query": 84,
+      "native_request_sha256": "e4fda85f34994ede6d9373dbc3e57bb6ce372bce5a8850f3f8633225b32500ac",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-812d09f0d99f9b6e0ec6b9e48052740877fbf7c8c149b560a24bf239bcb041b2",
+      "native_query": 85,
+      "native_request_sha256": "1d21e7f7164a6a05773d33cd3e06dce94e7c3d4844d5c351e36c7a252f0909e0",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-e7f2fb5a5b6b1471ff699c219c3d8c8576da9c8189e4ea4edccb187fdbc84efd",
+      "native_query": 86,
+      "native_request_sha256": "883329d7d0410a2236772ec877e4e1a76fc3816d499b4d3a5ae5172582c402e7",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-96920890c6fdecd6b7dbb4f1e3165f620569076402960cfe702abedb0d998b82",
+      "native_query": 87,
+      "native_request_sha256": "ea4d2ab5cdacb452c4f4431ffa18ba580b31d91cd5eb8cb7b1348d49acbf2cbe",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-9d297ddf97b8dbe8534313f918b86db10aad27ffc28518d48fdc67e91ab44132",
+      "native_query": 88,
+      "native_request_sha256": "c8791294a057f2cfd0c1e5794e0e5adc10993964c493ccc8a1708a5fe8f8c4e8",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-954919205d8074a26870beae109807de7d4c052156b3a7b012ddd28ffe99c6e1",
+      "native_query": 89,
+      "native_request_sha256": "d62786efb7012cce9e258173d76d40329d27bd9d84ea4ccac8fc8897a40c1f7c",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-261c102d32c4a4189be80cca2b1d321bdf6b5aa4f683d8cd905fc9924c5665d5",
+      "native_query": 90,
+      "native_request_sha256": "f638849f7a558e1c3d89099fe3ca182f54f03d38a41f22a8f2bd9b3ec48e3801",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-baed63b522b76fbe34ec4485ab682235be7b45d80944418213455bf74b6e38c1",
+      "native_query": 91,
+      "native_request_sha256": "ee201383d35a9145cf5fef25797229c555df4e1bf0b4db1fee4a06f3293c70e4",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-4f43eb24e869c39d194f3cf8931ea9fff2a1830c5df22bf92819c75485957a9e",
+      "native_query": 92,
+      "native_request_sha256": "ca8090d2c784fa96384ce044853aa7222a60b2f5c0c6164e70c9853f471ba859",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-84adb8017322ddfa2b7653cbfacecb733f032793d553391ebdb74735b8842a38",
+      "native_query": 93,
+      "native_request_sha256": "3388dab2d9b45d1c085dc97f49d076ab30250000e07af9b73f8136d97c40723d",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-e5057e1d35e62357b03999828afd95baf1757b94706caee080343f9fc75473cc",
+      "native_query": 94,
+      "native_request_sha256": "b9c2f7aa5c589ce6dd5e9b18ab319d4f33ff41edcf87aa9f7d1da029c039a0a7",
+      "dependencies": []
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "name": "hilbert-f4f9a83f38b498f84aa0accb3909f9e34ad15f47b0f6cd5f53820e8f557e483c",
+      "native_query": 95,
+      "native_request_sha256": "da08a194ac0565be9c63f9286dc9227dbd993a9d8698dbc898ee9d6603a96a70",
+      "dependencies": []
+    }
+  ],
+  "countermodel_replays": 2,
+  "rejected_trace_corruptions": 12,
+  "rejected_local_refutation_corruptions": 82,
+  "rejected_unexported_theory_features": 2,
+  "mutations": [
+    {
+      "observation": "incidence-transport-theory-r1",
+      "mutation": "changed-input",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "incidence-transport-theory-r1",
+      "mutation": "empty-contradiction-parents",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_25 cn"
+    },
+    {
+      "observation": "incidence-transport-theory-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "incidence-transport-library-r1",
+      "mutation": "changed-input",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "incidence-transport-library-r1",
+      "mutation": "empty-contradiction-parents",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_24 cn"
+    },
+    {
+      "observation": "incidence-transport-library-r1",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "incidence-transport-library-r2",
+      "mutation": "changed-input",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "incidence-transport-library-r2",
+      "mutation": "empty-contradiction-parents",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_24 cn"
+    },
+    {
+      "observation": "incidence-transport-library-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    },
+    {
+      "observation": "incidence-transport-theory-r2",
+      "mutation": "changed-input",
+      "status": "rejected",
+      "reason": "input formula/role mismatch"
+    },
+    {
+      "observation": "incidence-transport-theory-r2",
+      "mutation": "empty-contradiction-parents",
+      "status": "rejected",
+      "reason": "unverified entailment c_0_25 cn"
+    },
+    {
+      "observation": "incidence-transport-theory-r2",
+      "mutation": "missing-negated-goal",
+      "status": "rejected",
+      "reason": "incorrect conjecture negation"
+    }
+  ],
+  "seconds": 30.720442834,
+  "scope": "Exact statement/library/source/output binding, fresh complete logical checks and corrupted-proof rejection. Reused geometry native acceptances are bound to exact requests; native computations and GCTS graphs are not reexecuted here."
+}

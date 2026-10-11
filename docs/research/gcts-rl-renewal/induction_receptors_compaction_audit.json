@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "expanded_commands": 53,
+  "variants": [
+    {
+      "mode": "backward-slice",
+      "commands": 53,
+      "native_status": "unknown_space_budget",
+      "native_micro_steps": 6793027947,
+      "native_replay_seconds": 49.2044,
+      "logical_audit_only": "accepted",
+      "whole_input_output_sha256_matched": true
+    },
+    {
+      "mode": "formula-dag-and-slice",
+      "commands": 30,
+      "native_status": "accepted",
+      "native_micro_steps": 4026598098,
+      "native_replay_seconds": 29.1032,
+      "logical_audit_only": "accepted",
+      "whole_input_output_sha256_matched": true
+    }
+  ],
+  "native_micro_steps": 10819626045,
+  "seconds": 81.08328095799999,
+  "scope": "Original searched proof mechanically expanded, both generic transformations independently reconstructed, exact unchanged theory/target, strict prior dependencies, and both whole native computations independently replayed from true parser state88986 with full input/output hashes and execution fingerprint. No new proof search or native heap increase."
+}

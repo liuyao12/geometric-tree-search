@@ -1,0 +1,70 @@
+{
+  "version": "external-hilbert-plan-1",
+  "status": "frozen_before_recipient_measurement",
+  "source_snapshot_sha256": {
+    "external-inputs.json": "fbd5dfd7490b251f062e0c9b4a02d650ffdab93d1cbf8ccdc9e83358bf68040e",
+    "external-negative-inputs.json": "3b9c26b13449831d5abf7f87b557fc12edb8c089eff9249400d3ff8b1591e894"
+  },
+  "source_sha256": {
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_hilbert_run.py": "8481558bfb645e502c412161a12408d1363ede9b5c5a4d6d432472789997eede",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_inputs.py": "ea06a78b47671d17c5ca72da3b7d0389bb7230e2d5c6b6c302d79547f7cceed5",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_check.py": "76c95c28d9cddbb5d18b4ce32ab7f2d23cd964e6420250d73efa97baa210835a",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_run.py": "382e31ea9b512b36a0475a0ecbff37814bf8a0a961405440d7380962ab7e8637",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/external_prover_worker.py": "ac11123b515ab3d54b679daf1d0281e238a570671f06b0eaa473eccca239b48b"
+  },
+  "inputs": [
+    {
+      "case": "incidence-transport",
+      "lane": "theory-only",
+      "input_path": ".gcts-active/external-hilbert-20261011/incidence-transport-theory.p",
+      "input_sha256": "40ab11f962664c592387d85788e0ac7df0f6f6c4652df94070cd8b8e38f61da6",
+      "mapping_sha256": "6db9874a61aecc0af05098c8a603611f007d76a691528ac82f3cb1de6671abc7",
+      "lemma_count": 0
+    },
+    {
+      "case": "incidence-transport",
+      "lane": "theory-and-all-admitted-ground-lemmas",
+      "input_path": ".gcts-active/external-hilbert-20261011/incidence-transport-library.p",
+      "input_sha256": "c6e79a72369db61a71f4cf51019a21437b6b5f82c45c6d79992d266539986f85",
+      "mapping_sha256": "cb0f00b7804f4d880f282e7ce4f91742f49fb4cd6420e6c9ca06b867d0e618a1",
+      "lemma_count": 28
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "lane": "theory-only",
+      "input_path": ".gcts-active/external-hilbert-20261011/transport-no-uniqueness-theory.p",
+      "input_sha256": "ad4efd050497a8074e77098a9c087544932ea10edc3a9fbacb4173bc67785e75",
+      "mapping_sha256": "57087ad3e3743cdf6d3cb60bc37a8fb3026ce380f8b7f2ac00089feb327fac28",
+      "lemma_count": 0
+    },
+    {
+      "case": "transport-no-uniqueness",
+      "lane": "theory-and-all-admitted-ground-lemmas",
+      "input_path": ".gcts-active/external-hilbert-20261011/transport-no-uniqueness-library.p",
+      "input_sha256": "c43840657a86d25e7976cbca059dbc869710879355d31e99bd313832db4ae0ce",
+      "mapping_sha256": "e9e343d2d47059b824e151af3ef783edd5bd7302b1d7c2f1d5d0492c2cd1f793",
+      "lemma_count": 12
+    }
+  ],
+  "source_commit": "3b7afc70fe77d3118bb95144c4735ca45f5f31cf",
+  "prover_version": "E 3.5.1-DEBUG Countess Grey (25808ee34733f8641fc5962acc203d453d9dbf1a)",
+  "prover_binary_sha256": "a2fc18a82ed1dbdcdd37eefeb5c71ccad1e8fc48662466f61372fc0be5947f21",
+  "command_options": [
+    "--auto",
+    "--proof-object",
+    "--tstp-format",
+    "--cpu-limit=60",
+    "--memory-limit=1024",
+    "--resources-info",
+    "--print-statistics"
+  ],
+  "repetitions": 2,
+  "order": "Positive then removed-I.2 control; theory then library in repetition 1, reverse lanes in repetition 2",
+  "wall_timeout_seconds": 65,
+  "memory_limit_MiB": 1024,
+  "theory_policy": "Only explicit first-order axioms, exact guarded I.2 with all four quantifiers retained, ordinary constants and uninterpreted predicates. Nonempty schemas and unsupported theory fields fail closed. Full ground library, not the blocks used by a selected proof.",
+  "verification_policy": "Every returned input and preprocessing/inference checked by existing independent finite Herbrand/EUF refutation validator. New scoped witness transformations are required before any unsupported E-introduced symbol can pass; no skipped steps or SZS-only success.",
+  "comparison_scope": "Same first-order assertions and admitted lemma interfaces, different search calculus/certificate language. E has no fixed 4-row boundary and no restriction to GCTS finite point/line ground catalog. Short 3-row geometry is the same logical assertion and is not another logical control.",
+  "native_context": "all-native-admissions-and-whole-request-accepted; full-independent-native-replay-pending",
+  "cost_policy": "Preparation and interface checking, fresh E binary and worker timing/RSS, returned-proof checking, audit costs reported separately. Pinned E source/build costs are disclosed reuse from completed external_prover experiment; no fresh build. Geometry native admission is reused, with full native replay provenance supplied by its separately completed audit."
+}

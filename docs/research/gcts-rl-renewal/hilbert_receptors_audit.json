@@ -1,0 +1,496 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "id": "incidence-transport",
+      "types": 28,
+      "formulas": 27,
+      "observations": [
+        {
+          "lane": "base",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 0,
+            "hints": 0
+          }
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 4,
+            "hints": 4
+          }
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 4,
+            "hints": 4
+          }
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 4,
+            "hints": 4
+          }
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 4,
+            "hints": 4
+          }
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 4,
+            "hints": 4
+          }
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 4,
+            "hints": 4
+          }
+        },
+        {
+          "lane": "base",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 3263,
+            "full_mark_assignments": 2076783,
+            "compact_mark_assignments": 9717,
+            "formula_values": 27,
+            "command_values": 1004
+          },
+          "tree": {
+            "nodes": 31,
+            "events": 0,
+            "hints": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "transport-no-uniqueness",
+      "types": 12,
+      "formulas": 26,
+      "observations": [
+        {
+          "lane": "base",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 0,
+            "hints": 0
+          }
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 7,
+            "hints": 7
+          }
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 7,
+            "hints": 7
+          }
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 7,
+            "hints": 7
+          }
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 7,
+            "hints": 7
+          }
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 7,
+            "hints": 7
+          }
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 7,
+            "hints": 7
+          }
+        },
+        {
+          "lane": "base",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 1605,
+            "full_mark_assignments": 960715,
+            "compact_mark_assignments": 4807,
+            "formula_values": 26,
+            "command_values": 525
+          },
+          "tree": {
+            "nodes": 49,
+            "events": 0,
+            "hints": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "transport-short",
+      "types": 28,
+      "formulas": 27,
+      "observations": [
+        {
+          "lane": "base",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 0,
+            "hints": 0
+          }
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 3,
+            "hints": 3
+          }
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 3,
+            "hints": 3
+          }
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 1,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 3,
+            "hints": 3
+          }
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 3,
+            "hints": 3
+          }
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 3,
+            "hints": 3
+          }
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 3,
+            "hints": 3
+          }
+        },
+        {
+          "lane": "base",
+          "repetition": 2,
+          "model": {
+            "status": "passed",
+            "placements": 2088,
+            "full_mark_assignments": 1336154,
+            "compact_mark_assignments": 6210,
+            "formula_values": 27,
+            "command_values": 921
+          },
+          "tree": {
+            "nodes": 21,
+            "events": 0,
+            "hints": 0
+          }
+        }
+      ]
+    }
+  ],
+  "seconds": 1226.864408166,
+  "native_queries": 152,
+  "native_micro_steps": 161640839510,
+  "distinct_native_acceptances": 43,
+  "countermodel": {
+    "status": "passed",
+    "domain": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "constants": {
+      "A": 0,
+      "B": 1,
+      "C": 2,
+      "u": 3,
+      "v": 4
+    },
+    "Point": [
+      0,
+      1,
+      2
+    ],
+    "Line": [
+      3,
+      4
+    ],
+    "Incident": [
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "axioms": {
+      "common-distinct-points": true,
+      "extra-incidence": true
+    },
+    "target": false,
+    "scope": "Used only by independent audit. Not read by candidate generation or search."
+  },
+  "nodes": 808,
+  "events": 84,
+  "hints": 84,
+  "accepted_observations": 8
+}

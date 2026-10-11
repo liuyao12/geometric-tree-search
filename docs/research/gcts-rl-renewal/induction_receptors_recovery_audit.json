@@ -1,0 +1,497 @@
+{
+  "status": "passed",
+  "catalog": {
+    "terms": 24,
+    "contexts": [
+      {
+        "kind": "direct",
+        "moves": 20
+      },
+      {
+        "kind": "base",
+        "moves": 20
+      },
+      {
+        "kind": "step",
+        "moves": 24
+      }
+    ],
+    "definitions": 66,
+    "rules": 116,
+    "primitive_schemes": 1153
+  },
+  "tree": {
+    "nodes": 950,
+    "forced": 483,
+    "attempts": 949,
+    "branch": 187,
+    "dead": 279,
+    "backtracks": 921
+  },
+  "native_replays": [
+    {
+      "query": 74,
+      "status": "unknown_space_budget",
+      "seconds": 53.9668,
+      "micro_steps": 7253092401
+    },
+    {
+      "query": 0,
+      "status": "accepted",
+      "seconds": 3.31588,
+      "micro_steps": 434281478
+    },
+    {
+      "query": 1,
+      "status": "accepted",
+      "seconds": 5.66874,
+      "micro_steps": 764635824
+    },
+    {
+      "query": 2,
+      "status": "accepted",
+      "seconds": 2.53184,
+      "micro_steps": 340740511
+    },
+    {
+      "query": 3,
+      "status": "accepted",
+      "seconds": 8.1801,
+      "micro_steps": 1093252018
+    },
+    {
+      "query": 4,
+      "status": "accepted",
+      "seconds": 7.21267,
+      "micro_steps": 942827073
+    },
+    {
+      "query": 5,
+      "status": "accepted",
+      "seconds": 18.6479,
+      "micro_steps": 2542827374
+    },
+    {
+      "query": 6,
+      "status": "accepted",
+      "seconds": 7.74025,
+      "micro_steps": 1069633566
+    },
+    {
+      "query": 7,
+      "status": "accepted",
+      "seconds": 4.8441,
+      "micro_steps": 658947174
+    },
+    {
+      "query": 8,
+      "status": "accepted",
+      "seconds": 5.81586,
+      "micro_steps": 785188977
+    },
+    {
+      "query": 9,
+      "status": "accepted",
+      "seconds": 3.10892,
+      "micro_steps": 429876307
+    },
+    {
+      "query": 10,
+      "status": "accepted",
+      "seconds": 5.38301,
+      "micro_steps": 742361979
+    },
+    {
+      "query": 11,
+      "status": "accepted",
+      "seconds": 5.59393,
+      "micro_steps": 773417342
+    },
+    {
+      "query": 12,
+      "status": "accepted",
+      "seconds": 15.2168,
+      "micro_steps": 2093601556
+    },
+    {
+      "query": 13,
+      "status": "accepted",
+      "seconds": 3.57716,
+      "micro_steps": 490795868
+    },
+    {
+      "query": 14,
+      "status": "accepted",
+      "seconds": 7.8947,
+      "micro_steps": 1087793501
+    },
+    {
+      "query": 15,
+      "status": "accepted",
+      "seconds": 6.96907,
+      "micro_steps": 960290659
+    },
+    {
+      "query": 16,
+      "status": "accepted",
+      "seconds": 16.4083,
+      "micro_steps": 2267589162
+    },
+    {
+      "query": 17,
+      "status": "accepted",
+      "seconds": 5.26412,
+      "micro_steps": 730724921
+    },
+    {
+      "query": 18,
+      "status": "accepted",
+      "seconds": 18.7511,
+      "micro_steps": 2590484334
+    },
+    {
+      "query": 19,
+      "status": "accepted",
+      "seconds": 18.6134,
+      "micro_steps": 2570860960
+    },
+    {
+      "query": 20,
+      "status": "accepted",
+      "seconds": 5.43787,
+      "micro_steps": 752428042
+    },
+    {
+      "query": 21,
+      "status": "accepted",
+      "seconds": 3.56795,
+      "micro_steps": 493630664
+    },
+    {
+      "query": 22,
+      "status": "accepted",
+      "seconds": 5.39372,
+      "micro_steps": 742670688
+    },
+    {
+      "query": 23,
+      "status": "accepted",
+      "seconds": 5.57179,
+      "micro_steps": 768256963
+    },
+    {
+      "query": 24,
+      "status": "accepted",
+      "seconds": 20.0118,
+      "micro_steps": 2763197145
+    },
+    {
+      "query": 25,
+      "status": "accepted",
+      "seconds": 7.71224,
+      "micro_steps": 1072401906
+    },
+    {
+      "query": 26,
+      "status": "accepted",
+      "seconds": 6.69427,
+      "micro_steps": 937408482
+    },
+    {
+      "query": 27,
+      "status": "accepted",
+      "seconds": 5.58023,
+      "micro_steps": 762678096
+    },
+    {
+      "query": 28,
+      "status": "accepted",
+      "seconds": 6.86011,
+      "micro_steps": 965937473
+    },
+    {
+      "query": 29,
+      "status": "accepted",
+      "seconds": 5.23136,
+      "micro_steps": 735859602
+    },
+    {
+      "query": 30,
+      "status": "accepted",
+      "seconds": 3.02171,
+      "micro_steps": 425869329
+    },
+    {
+      "query": 31,
+      "status": "accepted",
+      "seconds": 3.46001,
+      "micro_steps": 486187085
+    },
+    {
+      "query": 32,
+      "status": "accepted",
+      "seconds": 18.2143,
+      "micro_steps": 2531885156
+    },
+    {
+      "query": 33,
+      "status": "accepted",
+      "seconds": 7.7422,
+      "micro_steps": 1081568853
+    },
+    {
+      "query": 34,
+      "status": "accepted",
+      "seconds": 15.8691,
+      "micro_steps": 2216380454
+    },
+    {
+      "query": 35,
+      "status": "accepted",
+      "seconds": 21.4182,
+      "micro_steps": 3011535448
+    },
+    {
+      "query": 36,
+      "status": "accepted",
+      "seconds": 29.1444,
+      "micro_steps": 4109852028
+    },
+    {
+      "query": 37,
+      "status": "accepted",
+      "seconds": 20.1006,
+      "micro_steps": 2824113619
+    },
+    {
+      "query": 38,
+      "status": "accepted",
+      "seconds": 5.55681,
+      "micro_steps": 783909725
+    },
+    {
+      "query": 39,
+      "status": "accepted",
+      "seconds": 5.89227,
+      "micro_steps": 830941975
+    },
+    {
+      "query": 40,
+      "status": "accepted",
+      "seconds": 3.51778,
+      "micro_steps": 495957176
+    },
+    {
+      "query": 41,
+      "status": "accepted",
+      "seconds": 5.32605,
+      "micro_steps": 751670239
+    },
+    {
+      "query": 42,
+      "status": "accepted",
+      "seconds": 21.7025,
+      "micro_steps": 3059745838
+    },
+    {
+      "query": 43,
+      "status": "accepted",
+      "seconds": 7.49071,
+      "micro_steps": 1057467587
+    },
+    {
+      "query": 44,
+      "status": "accepted",
+      "seconds": 10.2554,
+      "micro_steps": 1448156301
+    },
+    {
+      "query": 45,
+      "status": "accepted",
+      "seconds": 16.3,
+      "micro_steps": 2299834098
+    },
+    {
+      "query": 46,
+      "status": "accepted",
+      "seconds": 19.2506,
+      "micro_steps": 2711859990
+    },
+    {
+      "query": 47,
+      "status": "accepted",
+      "seconds": 25.4092,
+      "micro_steps": 3585247508
+    },
+    {
+      "query": 48,
+      "status": "accepted",
+      "seconds": 5.31887,
+      "micro_steps": 750239574
+    },
+    {
+      "query": 49,
+      "status": "accepted",
+      "seconds": 3.07804,
+      "micro_steps": 433735733
+    },
+    {
+      "query": 50,
+      "status": "accepted",
+      "seconds": 14.3626,
+      "micro_steps": 2020397769
+    },
+    {
+      "query": 51,
+      "status": "accepted",
+      "seconds": 16.9022,
+      "micro_steps": 2352954483
+    },
+    {
+      "query": 52,
+      "status": "accepted",
+      "seconds": 44.7981,
+      "micro_steps": 6301319037
+    },
+    {
+      "query": 53,
+      "status": "accepted",
+      "seconds": 20.1295,
+      "micro_steps": 2808108331
+    },
+    {
+      "query": 54,
+      "status": "accepted",
+      "seconds": 4.74579,
+      "micro_steps": 664619978
+    },
+    {
+      "query": 55,
+      "status": "accepted",
+      "seconds": 5.32414,
+      "micro_steps": 739252138
+    },
+    {
+      "query": 56,
+      "status": "accepted",
+      "seconds": 5.31791,
+      "micro_steps": 747377839
+    },
+    {
+      "query": 57,
+      "status": "accepted",
+      "seconds": 19.0545,
+      "micro_steps": 2683479253
+    },
+    {
+      "query": 58,
+      "status": "accepted",
+      "seconds": 22.0884,
+      "micro_steps": 3097985035
+    },
+    {
+      "query": 59,
+      "status": "accepted",
+      "seconds": 16.6214,
+      "micro_steps": 2272675392
+    },
+    {
+      "query": 60,
+      "status": "accepted",
+      "seconds": 8.36597,
+      "micro_steps": 1053383931
+    },
+    {
+      "query": 61,
+      "status": "accepted",
+      "seconds": 4.82473,
+      "micro_steps": 649064681
+    },
+    {
+      "query": 62,
+      "status": "accepted",
+      "seconds": 22.4036,
+      "micro_steps": 3030905635
+    },
+    {
+      "query": 63,
+      "status": "accepted",
+      "seconds": 5.58161,
+      "micro_steps": 750512411
+    },
+    {
+      "query": 64,
+      "status": "accepted",
+      "seconds": 4.76471,
+      "micro_steps": 644814805
+    },
+    {
+      "query": 65,
+      "status": "accepted",
+      "seconds": 7.97554,
+      "micro_steps": 1071919986
+    },
+    {
+      "query": 66,
+      "status": "accepted",
+      "seconds": 1.45563,
+      "micro_steps": 198251744
+    },
+    {
+      "query": 67,
+      "status": "accepted",
+      "seconds": 1.44599,
+      "micro_steps": 196736783
+    },
+    {
+      "query": 68,
+      "status": "accepted",
+      "seconds": 1.45356,
+      "micro_steps": 197306808
+    },
+    {
+      "query": 69,
+      "status": "accepted",
+      "seconds": 1.43454,
+      "micro_steps": 195164008
+    },
+    {
+      "query": 70,
+      "status": "accepted",
+      "seconds": 1.5514,
+      "micro_steps": 212112608
+    },
+    {
+      "query": 71,
+      "status": "rejected",
+      "seconds": 0.845149,
+      "micro_steps": 114134692
+    },
+    {
+      "query": 72,
+      "status": "rejected",
+      "seconds": 0.779825,
+      "micro_steps": 106422157
+    },
+    {
+      "query": 73,
+      "status": "rejected",
+      "seconds": 0.831881,
+      "micro_steps": 111158678
+    }
+  ],
+  "whole_unknown_diagnosis": {
+    "state": 2,
+    "out_of_frame_bands": [
+      {
+        "band": 26,
+        "head": 73178,
+        "capacity": 73178
+      }
+    ]
+  },
+  "whole_unknown_logical_audit_only": "accepted",
+  "native_micro_steps": 107733907944,
+  "seconds": 785.266901958,
+  "scope": "Entire finite catalog, point inventory and recovered tree independently reconstructed; all 75 original native computations independently replayed from parser start, including exact heap-budget unknown. Native theorem acceptance remains unknown; separate host logical acceptance is audit-only."
+}

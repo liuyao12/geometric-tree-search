@@ -1,0 +1,17 @@
+{
+  "status": "unknown_space_budget",
+  "native_seconds": 73.363009042,
+  "total_seconds": 75.878734416,
+  "native_limit": 50000000000,
+  "micro_steps": 10042321373,
+  "source_native_query": 56,
+  "commands": 41,
+  "eigen_binding": {
+    "A": "eigen0",
+    "B": "eigen1",
+    "C": "eigen2",
+    "u": "eigen3",
+    "v": "eigen4"
+  },
+  "scope": "Mechanical universal closure of an actually discovered ground sequent, not a new target search or an authored theorem proof. Full independent native replay pending."
+}

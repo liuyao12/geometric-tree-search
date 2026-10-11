@@ -1,0 +1,16 @@
+{
+  "status": "observed-native-frame-limit",
+  "result": "unknown_space_budget",
+  "state": 2,
+  "out_of_frame_bands": [
+    {
+      "band": 26,
+      "head": 73178,
+      "capacity": 73178
+    }
+  ],
+  "heap_band": 26,
+  "heap_capacity": 73178,
+  "heap_final_head": 73178,
+  "scope": "Read directly from complete production output bands and independently reconstructed input capacities; independent complete native replay pending. No heap/palette change."
+}

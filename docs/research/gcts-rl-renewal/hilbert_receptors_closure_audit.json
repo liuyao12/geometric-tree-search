@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "native_outcome": "unknown_space_budget",
+  "micro_steps": 10042321373,
+  "seconds": 74.156863875,
+  "request_sha256": "51654879503af1932a77293ab812d1d9f157e2099caaa38bc5a7cbd82eb2903c",
+  "input_sha256": "e71694e6b031f155da3e8914a6111175dbbcad4f7e4fe6fe78e341c4d6fde8b7",
+  "output_sha256": "283d8156d661bb416808caaa1a1a3f2f9e1f83b639a0084b5c9baea6ca19284a",
+  "source_program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "source_artifact_sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+  "scope": "Independent whole native replay; an unknown outcome remains unknown. The generic transformation itself belongs to the arithmetic agent\u2019s separately tested infrastructure."
+}

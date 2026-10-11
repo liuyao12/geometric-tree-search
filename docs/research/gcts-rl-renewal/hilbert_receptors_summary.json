@@ -1,0 +1,298 @@
+{
+  "status": "complete",
+  "cases": [
+    {
+      "id": "incidence-transport",
+      "construction_seconds": 0.006641291000000216,
+      "compile_seconds": 82.208525959,
+      "admission_seconds": 464.60574404199997,
+      "interfaces": 28,
+      "observations": [
+        {
+          "lane": "base",
+          "repetition": 1,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.07324995800000003,
+          "setup_seconds": 0.13126695900000002,
+          "worker_wall_seconds": 0.7063493749999452,
+          "peak_rss_bytes": 37978112,
+          "native_query": 56
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 1,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.09001716600000001,
+          "setup_seconds": 0.117747084,
+          "worker_wall_seconds": 0.5926988749999964,
+          "peak_rss_bytes": 38944768,
+          "native_query": 56
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 1,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.091092708,
+          "setup_seconds": 0.11762758300000001,
+          "worker_wall_seconds": 0.5729573340000798,
+          "peak_rss_bytes": 39010304,
+          "native_query": 56
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 1,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.08821820799999999,
+          "setup_seconds": 0.116895083,
+          "worker_wall_seconds": 0.6328115830000343,
+          "peak_rss_bytes": 38944768,
+          "native_query": 56
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 2,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.089729334,
+          "setup_seconds": 0.11564520799999999,
+          "worker_wall_seconds": 0.6774759590000485,
+          "peak_rss_bytes": 38977536,
+          "native_query": 56
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 2,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.280752125,
+          "setup_seconds": 0.12245908400000001,
+          "worker_wall_seconds": 0.6268173750000869,
+          "peak_rss_bytes": 39780352,
+          "native_query": 56
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 2,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.08821395800000001,
+          "setup_seconds": 0.11740233300000001,
+          "worker_wall_seconds": 0.7853984999999284,
+          "peak_rss_bytes": 38961152,
+          "native_query": 56
+        },
+        {
+          "lane": "base",
+          "repetition": 2,
+          "status": "finite_marked_proof_region",
+          "attempts": 30,
+          "search_seconds": 0.063301833,
+          "setup_seconds": 0.117458292,
+          "worker_wall_seconds": 0.3635034159999577,
+          "peak_rss_bytes": 38371328,
+          "native_query": 56
+        }
+      ]
+    },
+    {
+      "id": "transport-no-uniqueness",
+      "construction_seconds": 0.0011902500000360305,
+      "compile_seconds": 48.53217033399994,
+      "admission_seconds": 35.83536837500003,
+      "interfaces": 12,
+      "observations": [
+        {
+          "lane": "base",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.05299258300000001,
+          "setup_seconds": 0.05787312500000001,
+          "worker_wall_seconds": 0.23485870899992278,
+          "peak_rss_bytes": 25509888,
+          "native_query": null
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.07779091700000001,
+          "setup_seconds": 0.05911316600000001,
+          "worker_wall_seconds": 0.36652875000004315,
+          "peak_rss_bytes": 25640960,
+          "native_query": null
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.077378666,
+          "setup_seconds": 0.05885825,
+          "worker_wall_seconds": 0.3922894999999471,
+          "peak_rss_bytes": 25640960,
+          "native_query": null
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.078437,
+          "setup_seconds": 0.058586000000000006,
+          "worker_wall_seconds": 0.25142491700000846,
+          "peak_rss_bytes": 25722880,
+          "native_query": null
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.07814800000000001,
+          "setup_seconds": 0.058648917,
+          "worker_wall_seconds": 0.41867008299993813,
+          "peak_rss_bytes": 25608192,
+          "native_query": null
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.07862158300000001,
+          "setup_seconds": 0.05828583300000001,
+          "worker_wall_seconds": 0.24969824999993762,
+          "peak_rss_bytes": 25673728,
+          "native_query": null
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.076789541,
+          "setup_seconds": 0.057658584,
+          "worker_wall_seconds": 0.45505258299999696,
+          "peak_rss_bytes": 25673728,
+          "native_query": null
+        },
+        {
+          "lane": "base",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 48,
+          "search_seconds": 0.0531085,
+          "setup_seconds": 0.058500832999999995,
+          "worker_wall_seconds": 0.22465499999998428,
+          "peak_rss_bytes": 25493504,
+          "native_query": null
+        }
+      ]
+    },
+    {
+      "id": "transport-short",
+      "construction_seconds": 0.006717792000017653,
+      "compile_seconds": 88.62110570900006,
+      "admission_seconds": 464.48341504100006,
+      "interfaces": 28,
+      "observations": [
+        {
+          "lane": "base",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.04154079100000001,
+          "setup_seconds": 0.072272917,
+          "worker_wall_seconds": 0.4459330829999999,
+          "peak_rss_bytes": 34701312,
+          "native_query": null
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.055290500000000006,
+          "setup_seconds": 0.07837125,
+          "worker_wall_seconds": 0.2753077499999108,
+          "peak_rss_bytes": 35405824,
+          "native_query": null
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.056042790999999995,
+          "setup_seconds": 0.07447062500000001,
+          "worker_wall_seconds": 0.41227729199999885,
+          "peak_rss_bytes": 35569664,
+          "native_query": null
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 1,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.055746583000000016,
+          "setup_seconds": 0.072626833,
+          "worker_wall_seconds": 0.45312712500003727,
+          "peak_rss_bytes": 35471360,
+          "native_query": null
+        },
+        {
+          "lane": "fixed-physical",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.05719641700000001,
+          "setup_seconds": 0.074226083,
+          "worker_wall_seconds": 0.49408520799988764,
+          "peak_rss_bytes": 35422208,
+          "native_query": null
+        },
+        {
+          "lane": "learned-physical",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.055522167,
+          "setup_seconds": 0.07227708299999999,
+          "worker_wall_seconds": 0.26317370800006756,
+          "peak_rss_bytes": 35373056,
+          "native_query": null
+        },
+        {
+          "lane": "learned-expanded",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.05548333300000001,
+          "setup_seconds": 0.073193916,
+          "worker_wall_seconds": 0.27410029199995734,
+          "peak_rss_bytes": 35471360,
+          "native_query": null
+        },
+        {
+          "lane": "base",
+          "repetition": 2,
+          "status": "exhausted_finite_marked_region",
+          "attempts": 20,
+          "search_seconds": 0.042347542000000016,
+          "setup_seconds": 0.074898875,
+          "worker_wall_seconds": 0.5377321659998415,
+          "peak_rss_bytes": 34717696,
+          "native_query": null
+        }
+      ]
+    }
+  ],
+  "native_queries": 152,
+  "seconds": 1244.400301583
+}

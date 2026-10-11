@@ -1,0 +1,32 @@
+{
+  "status": "predeclared",
+  "created_utc": "2026-10-11T11:51:02.091221+00:00",
+  "id": "hilbert-mechanical-closure-diagnostic-001",
+  "native_steps": 50000000000,
+  "sources": {
+    "research/gcts-rl-renewal/induction_receptors_closure.py": "277d555df9e347a7a7e7e0649d71162a8532bf05757943b482d9d6c6f10f9bdb",
+    "research/gcts-rl-renewal/induction_receptors_catalog.py": "052e32e03f7a9fe414af301d99179007c75a8a48ce8ff5a6719a6fea5b36477c",
+    "research/gcts-rl-renewal/hilbert_receptors_closure.py": "114fdc923550bc1068443ab9008044ad594a700b70d148d17f3d7d17c893d6ce",
+    "research/gcts-rl-renewal/boundary_oracle.cpp": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+    "research/gcts-rl-renewal/audit_tape_micro.cpp": "66e835de5607f8ffd35d62b7dbe714c4a2d7c16cc67ac4dc58b7ac967efaa5af"
+  },
+  "data_dependencies": {
+    ".gcts-active/hilbert-receptors-20261011/closure-input.json": {
+      "sha256": "d6a71e0f14d641f08a13b63d354ac8fb6024c21932b89d6fe1c549d142b2a776",
+      "bytes": 444418
+    },
+    ".gcts-active/hilbert-receptors-20261011/ground-accepted-request.json": {
+      "sha256": "0a9c353e4f44aacfdfa8b0721c5669f8126cc4c4e4666792110821bf00fb1b59",
+      "bytes": 126804
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-001.json": {
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "bytes": 1494417
+    },
+    "docs/research/gcts-rl-renewal/proof-boundary-microcode-001.json.gz": {
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "bytes": 1114802
+    }
+  },
+  "scope": "Separate whole-native validation of the arithmetic agent\u2019s mechanically transformed41-command primitive proof. No new target proof is manually written. Under I.2 alone, H and extra incidence are discharged into a conjunction antecedent; five fresh eigenvariables universally quantified; constants removed from signature. Not part of the frozen ground recipient/ordering matrix. Independent actual native replay required before any validity claim. Same frozen bounded heap and program; step budget is separately increased and predeclared."
+}
