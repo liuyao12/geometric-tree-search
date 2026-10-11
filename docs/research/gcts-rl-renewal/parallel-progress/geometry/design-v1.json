@@ -1,0 +1,546 @@
+{
+  "version": "hilbert-aggregate-cluster-design-1",
+  "status": "frozen_private_design_and_static_example_only",
+  "purpose": "Close the aggregate-cluster representation gap in the declared symbolic incidence fragment; no new proof search, experiment, native query or authority activation.",
+  "source_generator": {
+    "path": ".gcts-active/hilbert-aggregate-design-20261011/hilbert_aggregate_note_v1.py",
+    "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03",
+    "bytes": 13333
+  },
+  "example_binding": {
+    "path": ".gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+    "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105",
+    "bytes": 660358
+  },
+  "master_reference": {
+    "path": "docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "source_scope": {
+    "logical_language": "Closed constants \\(P,Q,R,\\ell,m,n\\), unary predicates \\(\\operatorname{Point},\\operatorname{Line}\\), binary predicate \\(\\operatorname{Incident}\\), and equality. Geometry remains symbolic; row coordinates encode a proof, not geometric coordinates of these objects.",
+    "theory": "Only the exact guarded universal I.2 uniqueness axiom from the frozen recipient theory; no additional Euclidean, order, congruence or continuity axiom.",
+    "guard_latex": "H(P,Q,\\ell,m):=\\operatorname{Point}(P)\\land\\operatorname{Point}(Q)\\land\\operatorname{Line}(\\ell)\\land\\operatorname{Line}(m)\\land\\neg(P=Q)\\land\\operatorname{Incident}(P,\\ell)\\land\\operatorname{Incident}(Q,\\ell)\\land\\operatorname{Incident}(P,m)\\land\\operatorname{Incident}(Q,m)",
+    "guard_association": "The AST preserves the frozen right-associated nine-part conjunction exactly; the displayed shorthand suppresses only parentheses.",
+    "sequent_latex": "H(P,Q,\\ell,m),\\ H(P,Q,m,n),\\ \\operatorname{Incident}(R,\\ell)\\ \\vdash\\ \\operatorname{Incident}(R,n)",
+    "example_authoring": "The two source family instances and their composition are selected by this author to illustrate representation. This chained assertion has not been automatically searched or freshly native-accepted. The donor receptor was previously searched; its mapped bodies are only structurally certified.",
+    "local_context": "The three premises are fixed ordered local assumptions of one recipient context; they are not silently promoted to axiom-free root facts or universal theorems.",
+    "rules": "The six source rules are assumption, axiom, instantiate, eq_subst, mp, block. Recursive expansion leaves only axiom/instantiate/eq_subst/mp; boundary assumptions alias their supplied rows.",
+    "native_and_compiler_correspondence": "open"
+  },
+  "construction": [
+    {
+      "step": 1,
+      "operation": "Pin the exact source body, its full earlier block dependency bodies, constant map, theory/axiom image, structural certificate, argument and native donor receipt. Retain every source declaration identity and ordered local premise occurrence."
+    },
+    {
+      "step": 2,
+      "operation": "Replace a local assumption command by an alias to the supplied input placement. It contributes no new occupancy. Check the ordered input formula, source assumption index, recipient context and earlier-use condition; keep repeated occurrences in the port manifest even when they attach to one row."
+    },
+    {
+      "step": 3,
+      "operation": "Expand every block call recursively through its complete dependency DAG. Each surviving primitive command becomes a base placement at an explicitly embedded row; rebase every ordered local command reference to its actual recipient row. Do not add a new primitive inference."
+    },
+    {
+      "step": 4,
+      "operation": "Compile a primitive placement with \\(t(0,r)=1\\), conclusion marking at \\((1,r)\\), each earlier input formula marking at \\((1,s_k)\\), and ordered port value \\(m(2+k,r)=s_k-r\\). Formula codes are injective exact integers, including assigned zero; missing remains absent."
+    },
+    {
+      "step": 5,
+      "operation": "Define a cluster by the set of its distinct full primitive placement identities. Identity binds embedded row, command/template/axiom, ordered references, recipient context, source authority and marking version. Equal formulas alone never identify placements."
+    },
+    {
+      "step": 6,
+      "operation": "For the distinct constituent set \\(C\\), define \\(t_C(p)=\\sum_{c\\in C}t_c(p)\\) and \\(m_C=\\bigcup_{c\\in C}m_c\\). Reject internal capacity overflow or conflicting marking values; preserve all mark-only and exterior supports. No aggregate-only occupancy or marking is added."
+    },
+    {
+      "step": 7,
+      "operation": "Project each ordered high-level receptor onto the primitive reader sites that consume its assumption alias. The external ordered vector is inspectable metadata derived from the expansion, not a replacement rule or new point constraint."
+    },
+    {
+      "step": 8,
+      "operation": "Composition takes the set union of constituent identities. Already selected exact shared constituents are borrowed once; a state with a different placement at that row cannot borrow it merely because the formula agrees. The second output attachment is the first output marking at its actual physical row."
+    }
+  ],
+  "translation_only_family": {
+    "domain_latex": "L=\\mathbb{Z}^{2},\\qquad G=\\{(x,y)\\mapsto(x,y+a):a\\in\\mathbb{Z}\\}",
+    "orientation": "identity only; no rotations or reflections",
+    "embedding": "Each concrete family member declares a finite embedding of primitive DAG nodes and all ordered receptor attachments. Reference predecessors must lie at smaller rows; external inputs need precede their actual reader, not necessarily every unrelated cluster row.",
+    "shape_variation": "Different admitted embeddings, port offsets and shared members yield different family members. A member is then translated rigidly; changing its shape is not called a translation or an unvalidated geometric symmetry.",
+    "finite_enumeration_obligation": "For a future boundary enumerate the full declared embedding domain and every base placement alignment before any dead/forced claim. A sampled cluster pool can only supply preferences; it never defines base candidate counts."
+  },
+  "exact_example": {
+    "first_cluster": {
+      "rows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "units": 13,
+      "ordered_inputs": [
+        0,
+        2
+      ],
+      "output_row": 15,
+      "receptor_ports": [
+        {
+          "high_level_port": 0,
+          "input_row": 0,
+          "reader_row": 12,
+          "primitive_input_port": 0,
+          "formula_code": 11,
+          "receptor_mark_point": [
+            1,
+            0
+          ],
+          "reader_port_point": [
+            2,
+            12
+          ],
+          "reader_port_value": -12
+        },
+        {
+          "high_level_port": 1,
+          "input_row": 2,
+          "reader_row": 15,
+          "primitive_input_port": 0,
+          "formula_code": 52,
+          "receptor_mark_point": [
+            1,
+            2
+          ],
+          "reader_port_point": [
+            2,
+            15
+          ],
+          "reader_port_value": -13
+        }
+      ]
+    },
+    "second_cluster": {
+      "rows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "units": 13,
+      "ordered_inputs": [
+        1,
+        15
+      ],
+      "output_row": 23,
+      "receptor_ports": [
+        {
+          "high_level_port": 0,
+          "input_row": 1,
+          "reader_row": 20,
+          "primitive_input_port": 0,
+          "formula_code": 15,
+          "receptor_mark_point": [
+            1,
+            1
+          ],
+          "reader_port_point": [
+            2,
+            20
+          ],
+          "reader_port_value": -19
+        },
+        {
+          "high_level_port": 1,
+          "input_row": 15,
+          "reader_row": 23,
+          "primitive_input_port": 0,
+          "formula_code": 53,
+          "receptor_mark_point": [
+            1,
+            15
+          ],
+          "reader_port_point": [
+            2,
+            23
+          ],
+          "reader_port_value": -8
+        }
+      ]
+    },
+    "shared_rows": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "shared_meaning": "The \\(\\mathrm{I.2}\\) axiom row, its instantiation at \\(P\\), the resulting modus ponens, its instantiation at \\(Q\\), and the resulting modus ponens. All five commands, references, contexts and point markings agree exactly.",
+    "first_output_is_second_input": {
+      "first_output_row": 15,
+      "second_input_port": 1,
+      "second_reader_row": 23,
+      "primitive_reader_input_port": 0,
+      "offset": -8
+    },
+    "union_units": 21,
+    "naive_sum_units": 26,
+    "second_fresh_units_after_first": 8,
+    "premise_seed_units": 3,
+    "whole_example_units": 24,
+    "duplicated_t_warning": "Adding the two cluster aggregate functions would give \\(T(0,r)=2\\) at the five shared rows. Taking their distinct constituent union gives \\(T(0,r)=1\\).",
+    "macro_port_warning": "The former macro port-0 marking at the final row would stand for the guard, whereas primitive final MP port-0 reads the incidence. Adding that marking would conflict with the primitive union. Use the reader-site projection already recorded.",
+    "code_extension": {
+      "preserved_frozen_prefix": 55,
+      "added_internal_formula_codes": 16,
+      "old_catalog_modified": false
+    },
+    "proof_rows": [
+      {
+        "row": 0,
+        "rule": "assumption",
+        "formula_latex": "\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\ell\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\operatorname{Incident}\\!\\left(Q,m\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)",
+        "ordered_references": [],
+        "owners": []
+      },
+      {
+        "row": 1,
+        "rule": "assumption",
+        "formula_latex": "\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\operatorname{Line}\\!\\left(n\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,n\\right)\\land\\operatorname{Incident}\\!\\left(Q,n\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)",
+        "ordered_references": [],
+        "owners": []
+      },
+      {
+        "row": 2,
+        "rule": "assumption",
+        "formula_latex": "\\operatorname{Incident}\\!\\left(R,\\ell\\right)",
+        "ordered_references": [],
+        "owners": []
+      },
+      {
+        "row": 3,
+        "rule": "axiom",
+        "formula_latex": "\\forall \\mathsf{point0}\\;\\forall \\mathsf{point1}\\;\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(\\mathsf{point0}\\right)\\land\\left(\\operatorname{Point}\\!\\left(\\mathsf{point1}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(\\mathsf{point0}=\\mathsf{point1}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point0},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point0},\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)",
+        "ordered_references": [],
+        "owners": [
+          "l-to-m",
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 4,
+        "rule": "instantiate",
+        "formula_latex": "\\left(\\forall \\mathsf{point0}\\;\\forall \\mathsf{point1}\\;\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(\\mathsf{point0}\\right)\\land\\left(\\operatorname{Point}\\!\\left(\\mathsf{point1}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(\\mathsf{point0}=\\mathsf{point1}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point0},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point0},\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)\\to\\forall \\mathsf{point1}\\;\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(\\mathsf{point1}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=\\mathsf{point1}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "l-to-m",
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 5,
+        "rule": "mp",
+        "formula_latex": "\\forall \\mathsf{point1}\\;\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(\\mathsf{point1}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=\\mathsf{point1}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)",
+        "ordered_references": [
+          3,
+          4
+        ],
+        "owners": [
+          "l-to-m",
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 6,
+        "rule": "instantiate",
+        "formula_latex": "\\left(\\forall \\mathsf{point1}\\;\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(\\mathsf{point1}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=\\mathsf{point1}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(\\mathsf{point1},\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)\\to\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "l-to-m",
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 7,
+        "rule": "mp",
+        "formula_latex": "\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)",
+        "ordered_references": [
+          5,
+          6
+        ],
+        "owners": [
+          "l-to-m",
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 8,
+        "rule": "instantiate",
+        "formula_latex": "\\left(\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)\\to\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\ell\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\ell=\\mathsf{line1}\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 9,
+        "rule": "mp",
+        "formula_latex": "\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\ell\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\ell=\\mathsf{line1}\\right)",
+        "ordered_references": [
+          7,
+          8
+        ],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 10,
+        "rule": "instantiate",
+        "formula_latex": "\\left(\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\ell\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\ell=\\mathsf{line1}\\right)\\to\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\ell\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\operatorname{Incident}\\!\\left(Q,m\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\ell=m\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 11,
+        "rule": "mp",
+        "formula_latex": "\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\ell\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\ell\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\operatorname{Incident}\\!\\left(Q,m\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\ell=m\\right)",
+        "ordered_references": [
+          9,
+          10
+        ],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 12,
+        "rule": "mp",
+        "formula_latex": "\\ell=m",
+        "ordered_references": [
+          0,
+          11
+        ],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 13,
+        "rule": "eq_subst",
+        "formula_latex": "\\left(\\ell=m\\to\\left(\\operatorname{Incident}\\!\\left(R,\\ell\\right)\\to\\operatorname{Incident}\\!\\left(R,m\\right)\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 14,
+        "rule": "mp",
+        "formula_latex": "\\left(\\operatorname{Incident}\\!\\left(R,\\ell\\right)\\to\\operatorname{Incident}\\!\\left(R,m\\right)\\right)",
+        "ordered_references": [
+          12,
+          13
+        ],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 15,
+        "rule": "mp",
+        "formula_latex": "\\operatorname{Incident}\\!\\left(R,m\\right)",
+        "ordered_references": [
+          2,
+          14
+        ],
+        "owners": [
+          "l-to-m"
+        ]
+      },
+      {
+        "row": 16,
+        "rule": "instantiate",
+        "formula_latex": "\\left(\\forall \\mathsf{line0}\\;\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line0}\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,\\mathsf{line0}\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\to\\mathsf{line0}=\\mathsf{line1}\\right)\\to\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\tom=\\mathsf{line1}\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 17,
+        "rule": "mp",
+        "formula_latex": "\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\tom=\\mathsf{line1}\\right)",
+        "ordered_references": [
+          7,
+          16
+        ],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 18,
+        "rule": "instantiate",
+        "formula_latex": "\\left(\\forall \\mathsf{line1}\\;\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\operatorname{Line}\\!\\left(\\mathsf{line1}\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,\\mathsf{line1}\\right)\\land\\operatorname{Incident}\\!\\left(Q,\\mathsf{line1}\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\tom=\\mathsf{line1}\\right)\\to\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\operatorname{Line}\\!\\left(n\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,n\\right)\\land\\operatorname{Incident}\\!\\left(Q,n\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\tom=n\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 19,
+        "rule": "mp",
+        "formula_latex": "\\left(\\left(\\operatorname{Point}\\!\\left(P\\right)\\land\\left(\\operatorname{Point}\\!\\left(Q\\right)\\land\\left(\\operatorname{Line}\\!\\left(m\\right)\\land\\left(\\operatorname{Line}\\!\\left(n\\right)\\land\\left(\\neg\\!\\left(P=Q\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(Q,m\\right)\\land\\left(\\operatorname{Incident}\\!\\left(P,n\\right)\\land\\operatorname{Incident}\\!\\left(Q,n\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\right)\\tom=n\\right)",
+        "ordered_references": [
+          17,
+          18
+        ],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 20,
+        "rule": "mp",
+        "formula_latex": "m=n",
+        "ordered_references": [
+          1,
+          19
+        ],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 21,
+        "rule": "eq_subst",
+        "formula_latex": "\\left(m=n\\to\\left(\\operatorname{Incident}\\!\\left(R,m\\right)\\to\\operatorname{Incident}\\!\\left(R,n\\right)\\right)\\right)",
+        "ordered_references": [],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 22,
+        "rule": "mp",
+        "formula_latex": "\\left(\\operatorname{Incident}\\!\\left(R,m\\right)\\to\\operatorname{Incident}\\!\\left(R,n\\right)\\right)",
+        "ordered_references": [
+          20,
+          21
+        ],
+        "owners": [
+          "m-to-n"
+        ]
+      },
+      {
+        "row": 23,
+        "rule": "mp",
+        "formula_latex": "\\operatorname{Incident}\\!\\left(R,n\\right)",
+        "ordered_references": [
+          15,
+          22
+        ],
+        "owners": [
+          "m-to-n"
+        ]
+      }
+    ],
+    "point_data": "Every primitive placement, full aggregate t/m, ordered port projection, source body and expansion alias is in example-v1.json.",
+    "validation_scope": "Static source traversal, exact AST/reference correspondence and point-function union checks only. No independent runtime audit, point-candidate catalog, theorem search or native computation in this design phase."
+  },
+  "boundary_semantics": {
+    "old_five_row_macro_board": "Its unit block rows are symbolic inference tiles. They are not aggregates of primitive rows, and cannot be replaced in place by the proposed larger clusters while claiming unchanged finite tilings.",
+    "small_example": "The authored 24-row board has three fixed premise seed placements, all required points activated with generation zero, and final target marking at row 23. It demonstrates the two-cluster shared union only; it does not preserve every old five-row search solution.",
+    "conservative_lift": {
+      "source_count_analysis": {
+        "universal_uniqueness": {
+          "definitions": 36,
+          "non_assumption_leaves_each": 10
+        },
+        "equality_transport": {
+          "definitions": 27,
+          "non_assumption_leaves_each": 3
+        },
+        "searched_transport": {
+          "definitions": 108,
+          "non_assumption_leaves_each": 13
+        },
+        "analysis_kind": "Read-only recursive source-body length arithmetic, not an engine execution or experiment"
+      },
+      "upper_bound_latex": "5\\cdot 13=65",
+      "conditional_argument": "Every old five-row word expands without sharing into at most 65 primitive rows; seeds use one row each, assumptions within a called lemma alias its existing earlier inputs. The included I.2 axiom is a valid zero-input primitive tile and can pad unused rows before the final target. Rebase all references and compile full negative-offset domains at the new boundary.",
+      "scope": "A source-level one-way lift of old bounded words to a conservative primitive boundary, conditional on the complete primitive catalog and expansion checks. It is not an exact bijection: the larger primitive language may admit recombinations absent from the old five-row grammar.",
+      "conditions": [
+        "Preserve the exact recipient context and all old rule/template instances.",
+        "The primitive inventory must include the existing I.2 axiom at all allowed rows, including unused but valid padding.",
+        "The final logical target remains the final physical formula marking; padding is inserted before it.",
+        "All finite reference offsets after insertion are enumerated and compiled, and every inserted row is checked.",
+        "This note does not claim the lift has passed a complete model, scheduler or native audit."
+      ]
+    },
+    "comparison_rule": "Compare base/fixed/learned cluster preferences only within one identical primitive boundary, complete primitive inventory and source authority. The 24-row example versus a 65-row preservation control is a workspace/language comparison, not an RL speedup."
+  },
+  "fallback_and_scheduler": {
+    "preserved_by_preferences": true,
+    "required_method": [
+      "Construct the entire primitive point/candidate graph for the chosen finite boundary. Include all primitive leaf recipes of all 171 full definitions and all declared seed/axiom placements; enumerate every allowed ordered earlier-row reference tuple. Resolve any recipe deduplication only by a checked full decorated-identity correspondence.",
+      "At each step inspect all frontier points for degree zero, then all singleton domains. After propagation, choose the earliest-generation frontier point, using degree only for generation ties. Degree counts include primitive candidates only.",
+      "A cluster proposal may prefer a still-unselected constituent only when that exact candidate is legal and incident on the scheduler-selected point. It must also conform to a forced decision. If a forced placement lies outside the proposed cluster, place it through the base rule and revalidate or suspend the proposal.",
+      "After each placement recompute complete t/m dependencies, including distant mark-only contacts and shared rows, and return to global dead/forced checks. Continue constituent preferences only while still compatible.",
+      "Retain and eventually try every primitive alternative at the chosen point. Missing, failed or incomplete cluster proposals never remove a base candidate or supply an untileability result.",
+      "Use the standard base trail for totals, markings/reference counts, selected placement identities, candidate validity/incidences, generations and branch-local exclusions. Trail proposal state and shared-member ownership separately; do not increment t for a borrowed selected identity.",
+      "On backtracking restore the exact base state and proposal state. Failed cluster completion is not a permanent global exclusion, and the remaining base alternatives still run. Reward newly placed base units or satisfied obligations, not the number of cluster calls."
+    ],
+    "atomic_macro_not_justified": "A single placement of the aggregate that bypasses constituent scheduling would skip possible distant dead/forced decisions. Aggregate compatibility alone does not prove scheduler equivalence. No atomic executor is proposed for activation here.",
+    "generation": "All finite required rows start at generation zero; premise seed tiles are generation zero. Each newly executed constituent uses one plus the minimum existing point generation on its positive support. A macro does not allocate one generation to its whole shape; borrowed members retain their prior generation.",
+    "solution_preservation_argument": "With complete base domains, unchanged base markings and eventual base fallback, preferences change traversal order but not the finite primitive model solution set. This argument needs an executor/audit gate; the frozen adapter Graph.place legality checks alone do not establish it."
+  },
+  "remaining_gates": [
+    "Freeze a complete primitive-recipe quotient or retain all identities and source aliases; independently expand all 171 mapped definitions and verify exact source/template/context/order/reference correspondence.",
+    "Construct and independently enumerate every primitive placement for the declared boundary, including exterior negative references, absent-versus-zero markings, repeated ordered premise ports and full t/m reverse indexes.",
+    "Check static constituent aggregation, exact shared identity union, noninjective maps and distinct same-formula placements; reject formula-only sharing, dropped premise multiplicity, invalid reader-port projections and stale authority.",
+    "Independently replay tiny complete graph decisions and every scheduler/rollback transition with and without cluster preferences. Explicitly test distant dead/forced precedence and interruption by a forced nonmember.",
+    "Retain the current certified_transport source authority label; do not mark transformed interfaces native_accepted. A new whole native primitive certificate, with exact context and all used dependencies, needs its own prospective gate and independent full replay.",
+    "Formal native/parser/compiler correctness remains open even if the future finite correspondence and whole native query pass."
+  ],
+  "recommended_smallest_next_step": {
+    "scope": "A separate bounded static expansion/aggregation correspondence phase, no searches or authority activation: all 171 source bodies, exact leaf recipes/ordered ports and all two-cluster shared-union corruptions in a small declared recipient boundary.",
+    "bounded_proposal": {
+      "production_seconds": 180,
+      "independent_audit_seconds": 180,
+      "rss_bytes": 536870912,
+      "native_queries": 0,
+      "searches": 0
+    },
+    "after_review_only": "Freeze new source/input/complete enumeration counts before execution; root must authorize this separate phase. Keep the present design/example immutable."
+  },
+  "accounting": {
+    "static_example_construction_seconds": 0.0743605,
+    "note_generation_seconds_before_write": 0.0027062500000000003,
+    "costs_unmeasured": "Human/source inspection wall time and earlier donor preparation are not newly measured here; donor native acceptance/replay remain prior costs, not free discovery. No benchmark speed claim.",
+    "new_native_queries": 0,
+    "new_searches": 0,
+    "existing_experiment_reruns": 0,
+    "existing_engine_activation": false
+  },
+  "prior_evidence": "All frozen prior exports and raw readers remain unchanged. This new private source/note/example does not publish or amend their authority, results or counts."
+}

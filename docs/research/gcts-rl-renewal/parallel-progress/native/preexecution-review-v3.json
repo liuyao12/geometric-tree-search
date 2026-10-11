@@ -1,0 +1,77 @@
+{
+  "status": "passed_read_only_whole_native_gate_source_and_provenance_review",
+  "reviewer": "/root/arithmetic_induction",
+  "reviewed_at": "2026-10-11T17:59:58.972487+00:00",
+  "four_source_sha256": {
+    "research/gcts-rl-renewal/native_certificate_transport.py": "b10a61237c5ec29b0f31075fc50b286fb808aab72e3bd880ff451c937e445a2f",
+    "research/gcts-rl-renewal/native_certificate_stage.py": "1b5fca2388bed472ae9c566a3f308f14dee085a245e101fb139868d7802371d2",
+    "research/gcts-rl-renewal/hierarchical_certificate_native.py": "8c7b2a5f8afaf89e4ddb3e2962260a74603ff9d2cd7ee6bb549f3f446bb1d163",
+    "research/gcts-rl-renewal/hierarchical_certificate_native_audit.py": "648faae6245b3c0f0d6d97c4c2e6ff032e27f0652d137fe8e3d7c07db0f79cd4"
+  },
+  "draft_plan_sha256": "79771b9a7c0b3444c35d55145529472cdd2b93fe67b38ab3f52e66963bbd00f1",
+  "source_pins_checked": 113,
+  "input_pins_checked": 24,
+  "all_pins_match": true,
+  "all_four_python_sources_syntax_parsed": true,
+  "native_queries": 0,
+  "native_replays": 0,
+  "native_compilations": 0,
+  "target_searches": 0,
+  "prior_reviews_retained": [
+    {
+      "path": ".gcts-active/hierarchical-native-review-20261011/review-v1.json",
+      "sha256": "61f93d3962340b82f99884876765afca3639be69a991da01c89c47db66825ef1",
+      "status": "blocked_pre_execution_source_review"
+    },
+    {
+      "path": ".gcts-active/hierarchical-native-review-20261011/review-v2.json",
+      "sha256": "9cafa9d9b130141b395d989995cbf468ecd0aa9526050941278aaab026230c79",
+      "status": "blocked_pre_execution_repaired_source_review"
+    }
+  ],
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "resolution": "Observer runs bounded two-second process preflight before worker creation. Parent confirms /bin/ps succeeds under intended authorized require_escalated environment. Observation failure marks unknown, offers bounded worker cleanup, then kills/reaps an unreaped owned child even when observation fails."
+    },
+    {
+      "id": "R2",
+      "resolution": "Final identity-matched leftovers are actively cleaned. Any supervisor orphan cleanup makes the resource gate unknown."
+    },
+    {
+      "id": "R3",
+      "resolution": "Post-wait4 orphan cleanup uses grow=False. It no longer expands ownership from a reaped numeric leader; only previously recorded PID/birth matches can be signaled."
+    },
+    {
+      "id": "R4",
+      "resolution": "stop_owned returns full communicate output. Command finally persists both streams for every compiler/native command, including signal interrupts and nonzero exits, after cleanup and before alarm rearming. Subprocess.TimeoutExpired partial bytes are separately retained."
+    }
+  ],
+  "confirmed_controls": [
+    "One producer query and at most one separate full replay; fresh work directories; no retry or target search.",
+    "Exact previously byte-audited input is consumed, not regenerated from sorted request JSON. Original request/theory/target/hierarchy pins are retained.",
+    "Only explicitly audited heap boundary changes from 262144 to 266240; parser state 88986, program, table and palette remain unchanged.",
+    "Producer validates exact handshake, one response, native status/state/count boundaries and all 4433656 output bytes including 43 capacities, alphabet, final state and accepted heads.",
+    "Independent replay reencodes full table independently, decodes all original input symbols/heads/capacities, and matches step counts, FNV, state and complete output bytes.",
+    "Observer owns worker wait4; sampler peak is captured before worker reaping without subtracting cumulative child ru_maxrss. Instantaneous RSS includes observer descendants; conservative supervisor+sampler+worker+worker-child peaks are retrospectively gated.",
+    "Task-owned subprocess sessions, bounded process snapshots/cleanup, alarm rearming and outer full-worker-lifecycle wall gate are present.",
+    "50B microsteps, 600s full worker lifecycle and 512MiB retrospective kernel/sample ceilings are explicitly prospective. Eight prior calibration ratios remain an extrapolation rather than a bound."
+  ],
+  "owner_activation_and_certification_requirements": [
+    "Run the observer only in the already capability-checked authorized escalated environment; managed ps denial remains preserved in v1.",
+    "Freeze this review and exact source/input bytes into the production plan before execution.",
+    "Activate replay only after the producer inner receipt is complete and its separate full lifetime resource gate passes; freeze all producer result/output/lifetime bytes into the replay plan.",
+    "Final proof certification requires native_status accepted, independent replay passed with all bytes matched, and both lifetime gates passed. A resource gate alone is not logical acceptance.",
+    "A reproduced space/step/wall/memory unknown remains an unknown; preserve all prior boundaries and costs.",
+    "No claim of a GCTS or RL discovery: this certifies the already ordinary-discovered certificate."
+  ],
+  "remaining_scope_limitations": [
+    "This is static/read-only review plus syntax parsing and exact hash checks; no new subprocess fixture, native compilation or native execution was performed.",
+    "PID lstart identity has one-second resolution; no historical process groups are signaled, and post-reap cleanup cannot grow ownership.",
+    "Memory enforcement is sampled/retrospective, not an OS hard cap. Absent resource/ownership evidence must remain unknown.",
+    "Observer imports and frozen-pin checking precede its worker timer; preflight timing is separately recorded. Observer final receipt write is explicitly outside that timer.",
+    "Exceptional cleanup can itself fail or be killed by the owner; such paths cannot receive completed/all-reaped certification.",
+    "Compiler/native execution results remain entirely unmeasured at this review stage."
+  ]
+}

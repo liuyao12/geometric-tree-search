@@ -1,0 +1,307 @@
+{
+  "schema": "read-only-cluster-action-effect-diagnostic-v1",
+  "status": "passed_saved_trace_source_and_action_reconciliation",
+  "scope": "Artifact diagnostic, not a search/checker/model execution or new scientific outcome. No original file was modified.",
+  "original_complete_model_sha256": "b131949034b0e396ab885a5a94b870f12d1443e2bdc5df0550963ec0e0698c11",
+  "original_shared_structural_sha256": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+  "source_input_sha256": {
+    "research/gcts-rl-renewal/commutativity13_guidance.py": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+    "research/gcts-rl-renewal/commutativity13_executor_search.py": "2aa38b09de5f0845f9fed3bbb069a7a7badc275cca22806a4867047ad538ee0a",
+    "research/gcts-rl-renewal/commutativity_cluster_guidance.py": "7fdc2ea45de1f4a83ccc9694a1627020a89b430c239cd1a6915ba05ddcc6a9dc",
+    "research/gcts-rl-renewal/native_inventory_policy.py": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+    "research/gcts-rl-renewal/commutativity13_structure.py": "4b5e623fabecf7e0f75cf3028de7eab016606f90550cb5c39fb2e6ab681ba39a",
+    "research/gcts-rl-renewal/commutativity13_json.py": "48ef3a6538208f02a6e01bf682a38fd903e259a05a7a12927774b987b0873978",
+    "research/gcts-rl-renewal/turtle.py": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+    ".gcts-active/commutativity13-20261011/execution-freeze.json": "cc6e9eca78e49218acf1fd570a08970bdf9f9bd7d97b8ed76c9b5a37dbd76e4b",
+    ".gcts-active/commutativity13-20261011/tree-audit-plan-stream.json": "b7d7dfa2550fb8b416ba9bac85809aa61a2b3968ba13c746052fff7718f37a6d",
+    ".gcts-active/commutativity13-20261011/tree-audit-stream.json": "c00613729bed831dff0339eaad746cc1d9794762a650f188ef098c78072cffc4",
+    ".gcts-active/commutativity13-20261011/integration-v2.json": "5c521c8406c5dfafdb8eb29d58129f0e885e4ab09fbd4634e8b9cf54a4e72dc5",
+    ".gcts-active/commutativity13-20261011/binding13.json.gz": "940939cc4053ed94932bf9d95e258102a6187033c8702120d72b070544a521ae",
+    ".gcts-active/commutativity13-20261011/base-r1-structure.jsonl": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+    ".gcts-active/commutativity13-20261011/base-r2-structure.jsonl": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+    ".gcts-active/commutativity13-20261011/fixed-r1-structure.jsonl": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+    ".gcts-active/commutativity13-20261011/fixed-r2-structure.jsonl": "12b0cb0cfd13a90e0a6830293b507dd2d7cc4e97ec7586f5df1831b8fdbddb13",
+    ".gcts-active/commutativity13-20261011/fixed-r1-search.json.gz": "499d1b6aa2589fbdfdc21a3cf84a0c434477a7195a72f1baee23f7907c20d012",
+    ".gcts-active/commutativity13-20261011/fixed-r2-search.json.gz": "34341d97afe8fae978259ab50a7d6ca2a0aa851819aa010e71eb97437d45f188",
+    ".gcts-active/commutativity13-20261011/fixed-r1-summary.json": "59c9660d5708b5f48c3b44b1d69bd455d32b46d1e15b77381b44aa5f64933ebc",
+    ".gcts-active/commutativity13-20261011/fixed-r2-summary.json": "139c1b4dbf74f38277859069a8e59d3e31482aed9f80482e11849ea475523e0b"
+  },
+  "additional_source_sha256": {
+    "docs/basic-tiling-algorithm.md": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "diagnostic_files_sha256": {
+    "diagnose.py": "81fc958debdccc82dec05d72ff6ecb24947994c5ff61e0aec35ebca8ed90cb04",
+    "build_receipt.py": "3997d832fef7b16d463ac9b2936878d4366a8f0596597c83e833ad2a5962ecbe",
+    "diagnostic.json": "c1eaaa351d3d9ff46b417d71e6bb940587d1c5c38dddc3f64eea4fe5b3208fd9",
+    "fixed-r1-diagnostic.json": "fc76d57884bd50aabb4e4fdd20c2cb82a2b65c740aee70d01f1f8b7ccf41bd43",
+    "fixed-r2-diagnostic.json": "baee435da7d32eb1135a0938abce73287b72bde4cc591558cc1b7b68cde01b14"
+  },
+  "consumed_authority": "Pinned tree-audit-stream.json: prior independent complete point graph, scheduler, every proposal and hint replay. This task rechecks all saved scores/probabilities/ties, node summaries and exact structural digests; it intentionally does not rerun legality or native computations.",
+  "census_handling": "The reader skips only each census field. All 5,001 node structural projections exactly match saved structure JSONL bytes, and every other original field is retained before counting. Prior complete independent audit supplies omitted census legality authority.",
+  "projection_warning": "fixed-r1-events.json.gz and fixed-r2-events.json.gz in the input directory project prior 12-row traces. They are excluded; this receipt uses actual current 13-row full search JSON.",
+  "per_fixed_run": {
+    "nodes": 5001,
+    "attempts": 5000,
+    "branches": 620,
+    "forced_nodes": 3249,
+    "dead_nodes": 1132,
+    "new_policy_events": 527,
+    "new_valid_eligible_hints": 527,
+    "chosen_eligible_set_sizes": {
+      "1": 527
+    },
+    "nonnull_pool_items": 4380,
+    "pool_kinds": {
+      "complete-row": 1486,
+      "open-shape": 2774,
+      "defer": 527,
+      "promoted-family": 120
+    },
+    "selected_kinds": {
+      "complete-row": 472,
+      "promoted-family": 10,
+      "open-shape": 45
+    },
+    "fresh_selected_first_is_base": 527,
+    "fresh_changed_alternative_order": 0,
+    "fresh_pools_with_different_eligible_first": 527,
+    "different_first_pool_items": 2635,
+    "fresh_pools_with_different_first_at_maximum_score": 474,
+    "fresh_pools_with_different_first_same_feature_vector_as_winner": 474,
+    "fresh_events_with_any_feature_class_ambiguous_between_first_candidates": 521,
+    "deterministic_maximum_tie_events": 481,
+    "selected_first_pool_item": 485,
+    "selected_second_pool_item": 42,
+    "selected_input_port_points": 477,
+    "scheduler_role_counts": {
+      "0": 50,
+      "3": 129,
+      "2": 348
+    },
+    "selected_known_source_fraction_zero": 514,
+    "promoted_family_available_events": 10,
+    "waiting_hint_blocks_new_proposal_at_branch": 93,
+    "inherited_hint_reviews": {
+      "eligible": {
+        "visits": 11,
+        "distinct_hint_ids": 11
+      },
+      "waiting": {
+        "visits": 355,
+        "distinct_hint_ids": 67
+      },
+      "invalid": {
+        "visits": 1143,
+        "distinct_hint_ids": 527
+      },
+      "completed": {
+        "visits": 460,
+        "distinct_hint_ids": 460
+      }
+    },
+    "phases_by_node_kind": {
+      "branch/absent": 405,
+      "branch/completed": 21,
+      "branch/invalid": 101,
+      "branch/waiting": 93,
+      "dead/absent": 677,
+      "dead/completed": 216,
+      "dead/invalid": 183,
+      "dead/waiting": 56,
+      "forced/absent": 1950,
+      "forced/completed": 223,
+      "forced/eligible": 11,
+      "forced/invalid": 859,
+      "forced/waiting": 206
+    },
+    "inherited_eligible_at_branch": 0,
+    "inherited_eligible_at_forced": 11,
+    "visited_children_labeled_member": 538,
+    "visited_children_labeled_base": 4462,
+    "actual_alternative_reorder_anywhere": 0,
+    "logical_semantic_event_and_review_sha256": "e9415810c2218bf54d7ab3a92c90d8438e2f8c417a487659b36f5979b6460d30"
+  },
+  "interpretation": [
+    "Every fresh non-null proposal is valid and touches the scheduler point: ineligibility at launch explains none of the 527 no-ops.",
+    "At all fresh branch starts the preferred singleton is already the first base candidate; the complete fallback list is unchanged. At 474 starts a different first candidate has the exact same features and maximum score, but the first-index tie rule favors the base-first landing.",
+    "The nine features measure coarse row completion/novelty/known-source fraction and omit distinctions between many input source bindings. Any linear weights give an identical score to an identical feature pair; this does not mean all possible weight choices leave every other action unchanged.",
+    "At the other 53 starts a changing action exists but is below the maximum. The first event illustrates the complete-row prefix using all 20 row entries for one landing while other landings appear only as lower-scoring open shapes.",
+    "The mandatory scheduler explains continuation no-ops: 93 branch visits keep waiting hints and do not ask for a new proposal; the 11 inherited eligible visits are forced nodes with no choice. The 355 waiting, 1,143 invalid and 460 completed counts are visits, not disjoint outcomes of 527 unique clusters.",
+    "Hints are re-reviewed separately on different DFS descendants/siblings. Distinct-ID counts can overlap; all 527 hints become invalid on at least one visited descendant, and 460 complete on at least one descendant. This does not certify a completed theorem.",
+    "Both fixed runs are deterministic: stochastic=False, identical fixed weights and deterministic pool/tie order. The repetition seed affects no sampled choice. Repetitions measure costs, not independently randomized policy trajectories.",
+    "The exact fixed-run structural identity to both base runs follows from all alternative orders remaining base order, and is confirmed by the complete saved projection hashes. Policy annotations and proposal costs still differ from base."
+  ],
+  "eligible_effect_witness": {
+    "kind": "saved valid-pool ordering counterfactual; no successor execution",
+    "event_id": 4,
+    "preorder_node": 39,
+    "point": [
+      48,
+      3
+    ],
+    "selected_prefix_size": 33,
+    "base_first": [
+      12,
+      3,
+      10,
+      7
+    ],
+    "alternative_first": [
+      12,
+      3,
+      10,
+      10
+    ],
+    "winner_pool_index": 0,
+    "alternative_pool_index": 1,
+    "exact_equal_features": [
+      0.0,
+      0.25,
+      1.0,
+      0.0,
+      1.0,
+      0.002,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "exact_saved_score": 1.6747999999999998,
+    "source_rows": [
+      6,
+      9
+    ],
+    "source_role_state": {
+      "6": [
+        [
+          6,
+          2,
+          0,
+          0
+        ],
+        [
+          6,
+          3,
+          0,
+          0
+        ]
+      ],
+      "9": []
+    },
+    "new_order_if_alternative": [
+      [
+        12,
+        3,
+        10,
+        10
+      ],
+      [
+        12,
+        3,
+        10,
+        7
+      ],
+      [
+        12,
+        3,
+        10,
+        11
+      ],
+      [
+        12,
+        3,
+        10,
+        12
+      ]
+    ],
+    "original_complete_domain": [
+      [
+        12,
+        3,
+        10,
+        7
+      ],
+      [
+        12,
+        3,
+        10,
+        10
+      ],
+      [
+        12,
+        3,
+        10,
+        11
+      ],
+      [
+        12,
+        3,
+        10,
+        12
+      ]
+    ],
+    "interpretation": "The two legal bindings select different strict-prior source rows. Row 6 has two unused input ports occupied; row 9 is untouched. Those different partial states have been collapsed by the current feature vector. The preference only reorders the existing domain; it does not remove any candidate or alter scheduler point."
+  },
+  "stochastic_feasibility": {
+    "kind": "conditional mass computed from already saved, unused softmax probabilities",
+    "observed_contexts": 527,
+    "minimum_different_first_mass": 0.01927497223783517,
+    "maximum_different_first_mass": 0.7664717359669435,
+    "mean_different_first_mass_over_saved_contexts": 0.5480967721191868,
+    "caveat": "Not sampled; not an estimated future action frequency or success rate. A changed action changes subsequent contexts. Pool duplicates can bias sampling mass toward one landing."
+  },
+  "proposed_next_experiment": {
+    "status": "design_only_not_authorized_or_executed_by_this_receipt",
+    "objective": "Test whether genuinely learned cluster selection improves on stochastic exploration after establishing that the policy changes eligible branch order.",
+    "unchanged": "Exact 13-row point model/target/theory, 153 interfaces, 94 admitted definitions, all 19,848 placements and required points/marks, reference dead/forced/earliest-generation scheduler, exact rollback and every base fallback alternative.",
+    "policy": "Stochastic cluster softmax with on-policy learning. Include action-specific source-row occupancy and formula-assignment status, complete source frontier domain counts, and the distant marking dependency neighborhoods from the same graph. Parameterize shared graph/AST features rather than assigning a preferred induction variable, proof line or successful source index.",
+    "proposal_control": "Keep the existing validated pool initially, including irregular open shapes and promoted families. Uniform and learned controls use the identical pool and feature pipeline. Any later stratification by eligible landing to remove duplicate-mass bias is separately frozen and applied to both controls; it must never replace the complete base graph.",
+    "training": "Fresh on-policy rollouts on this assertion, without target proof words, ordinary witness, solver witness, correct-next-action labels or failure-as-unprovability labels. Use all resolved rollouts for RL; retain unknowns. This is per-instance adaptation. Evaluation on fresh seeds is not a held-out-theorem generalization test.",
+    "learning_signal": "Verified satisfied obligations and growth per attempted base placement; penalties for dead-end/backtrack/proposal-validation costs. Never reward the number of macro labels or speculate that an unknown branch is impossible.",
+    "suggested_initial_training_gate": {
+      "episodes": 8,
+      "attempt_ceiling_per_episode": 500,
+      "search_seconds_per_episode": 10,
+      "total_training_producer_seconds": 180,
+      "rss_bytes": 536870912
+    },
+    "frozen_evaluation_lanes": [
+      "base",
+      "untrained_stochastic",
+      "trained_stochastic"
+    ],
+    "suggested_balanced_order": [
+      "base-r1",
+      "untrained-r1",
+      "trained-r1",
+      "trained-r2",
+      "untrained-r2",
+      "base-r2"
+    ],
+    "matched_evaluation_limits": {
+      "attempts_per_run": 5000,
+      "search_seconds_per_run": 60,
+      "rss_bytes": 536870912,
+      "proposal_items": 24,
+      "proposal_validation_checks": 2048
+    },
+    "effect_gate": "Independently replay at least one valid preference that changes the selected-point first alternative. Saved event 4 is a minimal conformance fixture only, not a supplied theorem proof or a choice of winning induction variable. Prove fallback/scheduler/rollback equivalence on changed trajectories.",
+    "scientific_gate": "A changed branch establishes policy action, not acceleration. Compare trained versus untrained stochastic seeds and base for independently checked identical result semantics, report all unknowns and full training/setup/proposal/search/serialization/audit costs. No RL-superiority or theorem-native-acceptance claim follows from this diagnostic.",
+    "continuation_control": "Keep waiting-hint persistence unchanged in the first experiment so representation/exploration effects are identifiable. A later replan-while-waiting variant must be a separate policy experiment, with the same mandatory scheduler and complete fallback."
+  },
+  "costs": {
+    "read_only_parser_and_count_pass_seconds": 18.937416292,
+    "peak_rss_bytes": 107675648,
+    "earlier_read_only_pass_seconds": 18.769499958,
+    "earlier_source_pin_lookup_error": "Immediate read-only KeyError before trace parsing: structure source was in the independent audit freeze, not the execution freeze. No engine/solver/query/training ran.",
+    "costs_are": "Diagnostic stage timers; exclude editing, source inspection, final receipt serialization and this assembler. Original producer/setup/proposal/checking costs are preserved verbatim in diagnostic.json observations.",
+    "scientific_searches": 0,
+    "solver_calls": 0,
+    "native_queries": 0,
+    "model_training_episodes": 0
+  },
+  "limitations": [
+    "This receipt deliberately consumes the already passed independent full graph/event replay for legality. It is not a replacement checker or fresh native acceptance.",
+    "Saved-pool counterfactual order and probability are exact, but counterfactual successors, outcome quality and learned weights were not measured.",
+    "All original four searches remain attempt-budget unknown; no new target proof has been discovered."
+  ]
+}

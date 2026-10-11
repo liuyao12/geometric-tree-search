@@ -1,0 +1,263 @@
+{
+  "status": "passed_narrow_geometry_prose_source_review_frozen_snapshot",
+  "reviewer": "/root/hilbert_incidence",
+  "review_time_utc": "2026-10-11T18:06:07.903585+00:00",
+  "draft_source": {
+    "path": ".gcts-active/hierarchical-native-20261011/prepare_report.py",
+    "bytes": 24496,
+    "sha256": "6483a49bbf8a1d1c2e4c85dd1a667ef00ac71f3aaa7aaec57b0ef7ad62c431a3"
+  },
+  "design_bindings": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/manifest-v1.json",
+      "bytes": 812,
+      "sha256": "47d0e1e0731bbc02c25024bd49c67f28c1398dcd5217fdc72175966561c16d5d"
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/design-v1.json",
+      "bytes": 38142,
+      "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28"
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+      "bytes": 660358,
+      "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105"
+    }
+  ],
+  "explicit_geometry_source_pin_checks": {
+    "occurrences": 13,
+    "mismatches": [],
+    "bindings": [
+      {
+        "path": ".gcts-active/hilbert-aggregate-design-20261011/hilbert_aggregate_note_v1.py",
+        "bytes": 13333,
+        "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03"
+      },
+      {
+        "path": ".gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+        "bytes": 660358,
+        "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105"
+      },
+      {
+        "path": ".gcts-active/hilbert-aggregate-design-20261011/design-v1.json",
+        "bytes": 38142,
+        "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28"
+      },
+      {
+        "path": "docs/basic-tiling-algorithm.md",
+        "bytes": 21657,
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      {
+        "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+        "bytes": 142981,
+        "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141"
+      },
+      {
+        "path": ".gcts-active/hilbert-constant-certificates-20261011/audit-v3.json",
+        "bytes": 1708,
+        "sha256": "03a0cac547da1b3634ce0c1535098ca3883077ca46bad18e8bf8a68dc8eaca2f"
+      },
+      {
+        "path": ".gcts-active/hilbert-transport-catalog-20261011/catalog-v1.json.gz",
+        "bytes": 557111,
+        "sha256": "4109d05399941b4e0adcf2832430fd540ff4ba0fb696c1cb29e8ca30ab257c04"
+      },
+      {
+        "path": ".gcts-active/hilbert-transport-catalog-20261011/audit-v2.json",
+        "bytes": 1951,
+        "sha256": "13cdaa136ba4593cc16d95b68fbcdb525542ca0c94ea0bfec84d53fe3b04d21c"
+      },
+      {
+        "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+        "bytes": 120875,
+        "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66"
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_native.json.gz",
+        "bytes": 4157,
+        "sha256": "20f4f2c607891dd37ac5acc32a91538a3e3bfc3e36bc7e09a439c09a27895877"
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/hilbert_promotion_family_v3_source_audit.json",
+        "bytes": 592,
+        "sha256": "ca1bcbd09e364ee869d3572fb5be786d3ae673566ce4f6fde0762897e1554187"
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/constant-transport-argument.html",
+        "bytes": 7148,
+        "sha256": "bd0708aefb105de6ffac0e4a0b097b7d99ce295ed790535f52d0678efa76504b"
+      },
+      {
+        "path": "docs/research/gcts-rl-renewal/constant-transport-review.json",
+        "bytes": 1388,
+        "sha256": "43e2bb727943c7ba0f66b4d139e47b507228016c12392e17f500065fa16173f6"
+      }
+    ]
+  },
+  "scope": "Read-only prose/source inspection plus JSON/hash/tag/port data inspection. No report-generator execution, search, native query/replay, prior auditor or point engine execution. This does not upgrade the authored aggregate construction or its certified_transport authority.",
+  "resolved_findings": [
+    {
+      "issue": "Partial replacement left the incidence constant rendered as plain l while the guard used ell.",
+      "resolution": "The top-level sequent now uses the already pinned design source_scope.sequent_latex directly."
+    },
+    {
+      "issue": "Figure arrows omitted required H hypotheses and could imply unconditional incidence transport.",
+      "resolution": "Both instance figures now display their precise guarded local sequents."
+    },
+    {
+      "issue": "Prose could confuse physical input row 15 with the primitive reader row 23.",
+      "resolution": "It now identifies row 15 as the second instance input, read by the row-23 MP port with offset -8."
+    }
+  ],
+  "guard_abbreviation_review": {
+    "exact_nine_part_right_associated_AST_match": true,
+    "matches_roles": "Point(A), Point(B), Line(C), Line(E), not Eq(A,B), Incident(A,C), Incident(B,C), Incident(A,E), Incident(B,E).",
+    "syntax_only": "Formatting abbreviates only this complete AST; it does not add an inference, change association in the AST or identify other conjunctions.",
+    "formula_branch_coverage": [
+      "pred",
+      "eq",
+      "not",
+      "all",
+      "and",
+      "imp"
+    ],
+    "term_branch_coverage": [
+      "fun",
+      "var"
+    ],
+    "actual_bound_variables": [
+      "point0",
+      "point1",
+      "line0",
+      "line1"
+    ],
+    "variable_rendering": "p_0,p_1,ell_0,ell_1 preserve binder/reference identity; all actual constant l occurrences map to ell in row formulas."
+  },
+  "colors_and_actual_ports": {
+    "rows": 24,
+    "background_counts": {
+      "seed_gray": 3,
+      "shared_gold": 5,
+      "first_blue_exclusive": 8,
+      "second_violet_exclusive": 8
+    },
+    "tag_rule": "x=1 receives formula-mark blue; actual x=2/3 ordered-offset markings receive reference-mark purple. Tags are copied from the real m list, including distant formula points.",
+    "ordered_receptors": [
+      {
+        "instance": "l-to-m",
+        "ports": [
+          {
+            "high_level_port": 0,
+            "input_row": 0,
+            "reader_row": 12,
+            "primitive_input_port": 0,
+            "formula_code": 11,
+            "receptor_mark_point": [
+              1,
+              0
+            ],
+            "reader_port_point": [
+              2,
+              12
+            ],
+            "reader_port_value": -12
+          },
+          {
+            "high_level_port": 1,
+            "input_row": 2,
+            "reader_row": 15,
+            "primitive_input_port": 0,
+            "formula_code": 52,
+            "receptor_mark_point": [
+              1,
+              2
+            ],
+            "reader_port_point": [
+              2,
+              15
+            ],
+            "reader_port_value": -13
+          }
+        ]
+      },
+      {
+        "instance": "m-to-n",
+        "ports": [
+          {
+            "high_level_port": 0,
+            "input_row": 1,
+            "reader_row": 20,
+            "primitive_input_port": 0,
+            "formula_code": 15,
+            "receptor_mark_point": [
+              1,
+              1
+            ],
+            "reader_port_point": [
+              2,
+              20
+            ],
+            "reader_port_value": -19
+          },
+          {
+            "high_level_port": 1,
+            "input_row": 15,
+            "reader_row": 23,
+            "primitive_input_port": 0,
+            "formula_code": 53,
+            "receptor_mark_point": [
+              1,
+              15
+            ],
+            "reader_port_point": [
+              2,
+              23
+            ],
+            "reader_port_value": -8
+          }
+        ]
+      }
+    ],
+    "sharing": "Each instance owns 13 actual members including shared rows 3 through 7. Their union owns 21 distinct inference rows plus 3 seed rows; exact constituent identities, not equal formulas alone, justify sharing."
+  },
+  "source_closure_review": {
+    "explicit_geometry_inputs_verified": 10,
+    "exporter_checks_manifest_file_bytes_and_hashes": true,
+    "source_generator_imports": "copy,gzip,hashlib,json,time,pathlib only; no project checker, engine, policy or native imports.",
+    "complete_dependency_body_data": "The copied example includes the four lower mapped dependency bodies and both named promoted instance bodies with their exact source bindings; names are retained and primitive sharing does not merge declarations.",
+    "publication_archive_not_reviewed": "The report has not been generated by this reviewer. Exact new/previous-public source closure must be reconciled against the final files/sources.zip after generation. The draft walker recursively opens JSON references but not compressed JSON; a generic complete compressed-artifact closure claim requires a separate root reconciliation receipt.",
+    "status": "provisional_until_root_post_generation_archive_reconciliation"
+  },
+  "scope_statements_match_design": [
+    "Authored design, not a discovered chained theorem.",
+    "Three given premises remain local hypotheses of the displayed sequent; they are not root facts independent of assumptions.",
+    "The 24-row primitive boundary differs from the old five-row unit macro board.",
+    "Independent complete aggregate/model/graph audit and formal compiler/native correspondence remain open.",
+    "Scheduler preservation is conditional on constituent preferences with complete base fallback and global checks after each step; atomic cluster execution is not credited.",
+    "The source-level primitive point adaptation is distinct from the native computational Wang palette."
+  ],
+  "optional_presentation_suggestions": [],
+  "outside_scope_notice": "Native progress, acceptance/replay and resource-gate receipts were not polled or reviewed. Root now rejects rendering success unless all requisite statuses pass before any file is created; a resource unknown would require separate prose.",
+  "gaps": [
+    "Actual generated HTML, MathJax, responsive colors, link targets and browser behavior were not executed or reviewed.",
+    "Final archive closure, native acceptance/replay and resource gates were not audited by this geometry review.",
+    "Static design point-function checks remain authored evidence; this receipt is not an independent aggregate audit or a formal native/compiler correspondence proof."
+  ],
+  "immutable_source_snapshot": {
+    "path": ".gcts-active/hilbert-aggregate-design-20261011/prepare_report-reviewed-v2.snapshot",
+    "bytes": 24496,
+    "sha256": "6483a49bbf8a1d1c2e4c85dd1a667ef00ac71f3aaa7aaec57b0ef7ad62c431a3"
+  },
+  "additional_resolved_findings": [
+    {
+      "issue": "Formula identifier semantics and given-input context needed clearer wording.",
+      "resolution": "Reader now identifies injective formula identifiers and absent versus assigned zero; composition prose calls seeds ordered local hypotheses."
+    },
+    {
+      "issue": "Native success prose would be unconditional if a failed gate were rendered.",
+      "resolution": "Draft now asserts accepted, complete replay and both lifetime gates before copying or creating any files. This is source inspection only, not a finding that those live gates have passed."
+    }
+  ],
+  "immutability": "This snapshot/receipt is a separate narrow source review. Original design manifest and its three files remain byte-for-byte unchanged. The earlier preliminary v1 review remains private history and is not the final review authority."
+}

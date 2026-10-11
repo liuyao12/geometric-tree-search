@@ -1,0 +1,21 @@
+{
+  "status": "frozen_private_aggregate_design",
+  "files": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/hilbert_aggregate_note_v1.py",
+      "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03",
+      "bytes": 13333
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/example-v1.json",
+      "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105",
+      "bytes": 660358
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-design-20261011/design-v1.json",
+      "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28",
+      "bytes": 38142
+    }
+  ],
+  "scope": "Design/evidence only; no native queries, experiments, search or activation. Root owns any future authorization/publication."
+}

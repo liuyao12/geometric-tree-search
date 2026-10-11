@@ -1,0 +1,106 @@
+{
+  "status": "prospective_budget_calibration_before_new_native_execution",
+  "candidate_tree_steps": 7974306,
+  "prior_measurements": [
+    {
+      "definition_name": "commutativityReceptoreed94566a74e4da295f66b7f2e0ed6864d983bc83d0cd22a59074d220dc8f7b7",
+      "stratum": [
+        "conditional-reflexivity",
+        "none"
+      ],
+      "tree_steps": 124628,
+      "micro_steps": 310343153,
+      "subprocess_seconds": 2.2626980420000002,
+      "micro_per_tree": 2490.1559280418523
+    },
+    {
+      "definition_name": "commutativityReceptorfb0733fda63792251697334901f0764b4ba5b9e97030e0e8bf5a5a554385c82f",
+      "stratum": [
+        "conditional-rewrite",
+        "assumption"
+      ],
+      "tree_steps": 1880886,
+      "micro_steps": 5618341514,
+      "subprocess_seconds": 41.16229575,
+      "micro_per_tree": 2987.071791698168
+    },
+    {
+      "definition_name": "commutativityReceptor77152f26a507c116628e0dad7fb948bff44361ade9f0266c9505ebf6e713f154",
+      "stratum": [
+        "conditional-rewrite",
+        "axiom"
+      ],
+      "tree_steps": 968488,
+      "micro_steps": 2968251337,
+      "subprocess_seconds": 21.682760917000003,
+      "micro_per_tree": 3064.8302684184005
+    },
+    {
+      "definition_name": "commutativityReceptorbf58ee526baae84d3a9856739d9ebb246e6123046433f0270053cbf8a1f59d93",
+      "stratum": [
+        "conditional-rewrite",
+        "discovered-lemma"
+      ],
+      "tree_steps": 982618,
+      "micro_steps": 2970799347,
+      "subprocess_seconds": 21.507738624999988,
+      "micro_per_tree": 3023.3512382227887
+    },
+    {
+      "definition_name": "commutativityReceptor7b5130ffe9248d2f5d577b3abbd6d4de28fc0a5ec05b9a1137c48eb7d79ed58b",
+      "stratum": [
+        "induction",
+        "none"
+      ],
+      "tree_steps": 635268,
+      "micro_steps": 1832385800,
+      "subprocess_seconds": 13.407752541000008,
+      "micro_per_tree": 2884.429563585762
+    },
+    {
+      "definition_name": "commutativityReceptor76fb1013f1e9ab1cbf7009caf1f9ba9e16057834a36ab28cd7f5d2203db407dd",
+      "stratum": [
+        "rewrite",
+        "axiom"
+      ],
+      "tree_steps": 334122,
+      "micro_steps": 1012936177,
+      "subprocess_seconds": 7.3110957080000105,
+      "micro_per_tree": 3031.635680978804
+    },
+    {
+      "definition_name": "commutativityReceptorf195db1c821888afb4f3be86cc4c5a104e166c106f738554a9345d0d0ddd792f",
+      "stratum": [
+        "rewrite",
+        "discovered-lemma"
+      ],
+      "tree_steps": 338112,
+      "micro_steps": 1035281944,
+      "subprocess_seconds": 7.501489333999999,
+      "micro_per_tree": 3061.949720802574
+    },
+    {
+      "definition_name": "searchedLeftSuccessor9b189016eea3c3948f76b17ac4ef0bb35c52226551cfece3ec6ea5c7597f7cfa",
+      "stratum": [
+        "transferred-searched-theorem",
+        "none"
+      ],
+      "tree_steps": 3443659,
+      "micro_steps": 14378785083,
+      "subprocess_seconds": 105.07650245800001,
+      "micro_per_tree": 4175.438126423087
+    }
+  ],
+  "nominal_micro_range": [
+    19857265357.919712,
+    33296221304.16438
+  ],
+  "limitation": "Eight earlier local certificates only. Ratios are an extrapolation, not a bound or confidence interval; whole hierarchy may have different costs. No result-dependent retry.",
+  "chosen_limit": 50000000000,
+  "chosen_worker_lifetime_seconds": 600,
+  "chosen_rss_bytes": 536870912,
+  "source_sha256": {
+    ".gcts-active/commutativity-receptors-20261011/native-pilot/native.json.gz": "a1d11787870549a4785167b5d378982ea8c7426ca0731363fbb6ba3819bfc4c0",
+    ".gcts-active/commutativity-receptors-20261011/capacity-full/partial-audit/all94-metrics.json.gz": "e64362b778c4d9fb2dc0ae03d71533aa504e51af05459182d7f46b693722f519"
+  }
+}

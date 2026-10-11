@@ -1,0 +1,141 @@
+"""Integrate frozen new evidence only; never execute an experiment."""
+import gzip,hashlib,html,json,shutil,zipfile,io
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];O=Path(__file__).resolve().parent;D=R/'docs/research/gcts-rl-renewal';P=Path('/private/tmp/gcts-family-router-publish-20261010')
+PRIOR=R/'.gcts-active/proof-program-matched-boundaries-20261011/publication.json'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+paths=set()
+def write(name,text):
+ p=D/name;p.parent.mkdir(parents=True,exist_ok=True);assert not p.exists(),p;p.write_text(text);paths.add(str(p.relative_to(R)))
+def copy(src,name):
+ p=D/name;p.parent.mkdir(parents=True,exist_ok=True);assert not p.exists(),p;shutil.copyfile(src,p);paths.add(str(p.relative_to(R)))
+def math(s):return r'\('+html.escape(str(s))+r'\)'
+def j(p):return json.loads(p.read_text())
+def gz(p):return json.loads(gzip.decompress(p.read_bytes()))
+def pinrows(manifest):
+ for row in j(manifest)['files']:
+  p=R/row['path'];assert sha(p)==row['sha256'] and p.stat().st_size==row['bytes']
+geo=R/'.gcts-active/hilbert-aggregate-design-20261011';diag=R/'.gcts-active/external-cluster-effect-diagnostic-20261011'
+pinrows(geo/'manifest-v1.json');g=j(geo/'example-v1.json');design=j(geo/'design-v1.json');diagnostic=j(diag/'receipt.json')
+assert diagnostic['status']=='passed_saved_trace_source_and_action_reconciliation'
+for name,pin in diagnostic['diagnostic_files_sha256'].items():assert sha(diag/name)==pin
+for name,pin in {**diagnostic['source_input_sha256'],**diagnostic['additional_source_sha256']}.items():assert sha(R/name)==pin
+production=j(O/'summary.json');audit=j(O/'audit.json');plife=j(O/'produce-lifetime.json');alife=j(O/'audit-lifetime.json')
+accepted=(production['native_status']=='accepted' and audit['status']=='passed_complete_whole_native_replay' and audit['native_status']=='accepted' and all(x['status']=='passed_complete_worker_lifetime_resource_gate' for x in [plife,alife]))
+assert accepted, 'Success presentation requires native acceptance, complete replay and both lifetime gates.'
+# Export task-owned frozen science. Source paths embedded in receipts are reconciled below.
+for name in ['plan.json','budget-calibration.json','summary.json','produce-lifetime.json','native.json.gz','output.bin.gz','audit-plan.json','audit.json','audit-lifetime.json','producer-stdout.txt','producer-stderr.txt','audit-stdout.txt','audit-stderr.txt','compile-stderr.txt','audit-compile-stderr.txt']:
+ copy(O/name,'parallel-progress/native/'+name)
+for name in ['example-v1.json','design-v1.json','manifest-v1.json','hilbert_aggregate_note_v1.py']:copy(geo/name,'parallel-progress/geometry/'+name)
+for name in ['receipt.json','diagnostic.json','fixed-r1-diagnostic.json','fixed-r2-diagnostic.json','diagnose.py','build_receipt.py']:copy(diag/name,'parallel-progress/diagnostic/'+name)
+review=R/'.gcts-active/hierarchical-native-review-20261011';copy(review/'review-v3.json','parallel-progress/native/preexecution-review-v3.json')
+# Collect every new JSON's referenced frozen source/data. Reuse verified exact
+# locations in earlier public bundles, then archive only genuinely new bindings.
+prior=j(PRIOR);locations=set(prior['expected_live_sha256'].values())
+for name,pin in prior['expected_live_sha256'].items():assert sha(P/name)==pin,name
+for f in [R/'.gcts-active/proof-program-native-registry-20261011/bindings.json',R/'.gcts-active/proof-program-search-transport-20261011/artifact-validation.json',PRIOR.parent/'artifact-validation.json']:
+ b=j(f);assert b['status']=='passed'
+ for row in b.get('rows',b.get('bindings',[])):
+  if any(loc.split('!',1)[0] in prior['expected_live_sha256'] for loc in row['public_matches']):locations.add(row['sha256'])
+locations.update(sha(R/name) for name in paths)
+needed={}
+def binding(name,pin):
+ p=R/name
+ if sha(p)!=pin:
+  # Superseded pre-execution source versions are retained as exact snapshots.
+  candidates=[x for x in review.glob(p.name+'.review-*.snapshot') if sha(x)==pin]
+  assert name.startswith('research/gcts-rl-renewal/') and p.name in ['native_certificate_transport.py','native_certificate_stage.py','hierarchical_certificate_native.py','hierarchical_certificate_native_audit.py'] and candidates,('new binding',name)
+  for alias in candidates:needed[str(alias.relative_to(R))]=pin
+  return
+ needed[name]=pin
+ if p.suffix=='.json':walk(j(p))
+visited=set()
+def walk(value):
+ if isinstance(value,dict):
+  if isinstance(value.get('path'),str) and value['path'].startswith(('docs/','research/','.gcts-active/')) and isinstance(value.get('sha256'),str):
+   n=value['path'];h=value['sha256']
+   if (n,h) not in visited:visited.add((n,h));binding(n,h)
+  for k,v in value.items():
+   pin=v.get('sha256') if isinstance(v,dict) else v
+   if k.startswith(('docs/','research/','.gcts-active/')) and isinstance(pin,str) and len(pin)==64:
+    if (k,pin) not in visited:visited.add((k,pin));binding(k,pin)
+   else:walk(v)
+ elif isinstance(value,list):
+  for v in value:walk(v)
+for name in list(paths):
+ if name.endswith('.json'):walk(j(R/name))
+# The two review snapshots are part of reproducible integration provenance.
+for p in review.glob('*'):
+ if p.is_file() and p.suffix in ('.py','.json','.snapshot'):needed[str(p.relative_to(R))]=sha(p)
+for name in ['prepare_plan.py','prepare_report.py','validate_report.py','verify_live.py','observer-ownership-fixture.json']:needed[str((O/name).relative_to(R))]=sha(O/name)
+archive=D/'parallel-progress/sources.zip'
+with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
+ for name,pin in sorted(needed.items()):
+  if pin not in locations:
+   assert sha(R/name)==pin;z.write(R/name,name);locations.add(pin)
+paths.add(str(archive.relative_to(R)))
+# Compact guarded incidence notation is a defined abbreviation, not a new rule.
+def term(v):
+ if v[0]=='var':
+  names={'point0':'p_0','point1':'p_1','line0':r'\ell_0','line1':r'\ell_1','incidenceHole':'u'};return names.get(v[1],v[1])
+ if v[0]=='fun':return (r'\ell' if v[1]=='l' else v[1])+(r'('+','.join(map(term,v[2]))+')' if v[2] else '')
+ raise ValueError(v)
+def guard(v):
+ leaves=[];x=v
+ while x[0]=='and':leaves.append(x[1]);x=x[2]
+ leaves.append(x)
+ if len(leaves)==9 and [a[0] for a in leaves]==['pred']*4+['not']+['pred']*4:
+  a,b,c,d=[term(x[2][0]) for x in leaves[:4]]
+  expected=[['pred','Point',[leaves[0][2][0]]],['pred','Point',[leaves[1][2][0]]]]
+  # Full guard match from its exact point/line positions.
+  A,B,C,E=[x[2][0] for x in leaves[:4]]
+  full=['and',['pred','Point',[A]],['and',['pred','Point',[B]],['and',['pred','Line',[C]],['and',['pred','Line',[E]],['and',['not',['eq',A,B]],['and',['pred','Incident',[A,C]],['and',['pred','Incident',[B,C]],['and',['pred','Incident',[A,E]],['pred','Incident',[B,E]]]]]]]]]]
+  if v==full:return 'H('+','.join([a,b,c,d])+')'
+ return None
+def formula(v):
+ abbreviated=guard(v) if v[0]=='and' else None
+ if abbreviated:return abbreviated
+ if v[0]=='pred':return r'\operatorname{'+v[1]+'}('+','.join(map(term,v[2]))+')'
+ if v[0]=='eq':return term(v[1])+'='+term(v[2])
+ if v[0]=='not':return r'\neg('+formula(v[1])+')'
+ if v[0]=='all':return r'\forall '+term(['var',v[1]])+r'\,('+formula(v[2])+')'
+ if v[0] in ['and','imp']:return '('+formula(v[1])+({'and':r'\land ','imp':r'\rightarrow '}[v[0]])+formula(v[2])+')'
+ raise ValueError(v)
+rowhtml=[]
+for p in g['primitive_placements']:
+ row=p['row'];command=p['command'];rule=command['rule'];owners=p['cluster_owners'];kind='shared' if len(owners)==2 else ('first' if owners==['l-to-m'] else ('second' if owners else 'seed'))
+ explanation={'assumption':'Given premise.','axiom':'Use the guarded uniqueness axiom.','instantiate':'Instantiate a universal statement.','eq_subst':'Use equality substitution for incidence.','mp':'Apply modus ponens to the two cited rows.'}[rule]
+ refs=' '.join('<a href="#proof-row-'+str(i)+'">'+math(i)+'</a>' for i in p['ordered_inputs']) or 'None'
+ marks=' '.join('<span class="mark '+('formula-mark' if x==1 else 'reference-mark')+'">'+math(r'm('+str(x)+','+str(y)+')='+str(v))+'</span>' for x,y,v in p['m'])
+ rowhtml.append('<article class="proof-row '+kind+'" id="proof-row-'+str(row)+'"><div class="tile"><span>'+math(row)+'</span><small>'+html.escape(rule)+'</small></div><div><p class="row-formula">'+math(formula(command['formula']))+'</p><p>'+explanation+' Ordered source rows: '+refs+'.</p><p class="marks">'+marks+'</p><details><summary>Exact command and point values</summary><pre>'+html.escape(json.dumps(p,indent=2))+'</pre></details></div></article>')
+header=r'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Parallel GCTS research · native checking and cluster design</title><link rel="stylesheet" href="../report.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','style','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style>main{max-width:1200px}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}.metric{padding:18px;background:#eef4f7;border-radius:12px}.metric strong{display:block;font-size:1.5rem;margin-bottom:8px}.figure{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}.figure div{padding:22px;border-radius:10px;text-align:center}.first{background:#edf4fe}.shared{background:#fff1d4}.second{background:#f0ebfb}.seed{background:#eff2f3}.proof-row{display:grid;grid-template-columns:85px,minmax(0,1fr);gap:18px;padding:18px;margin:8px 0;border-radius:10px;scroll-margin-top:25px}.tile{aspect-ratio:1;max-height:85px;background:#fff;border:2px solid #64748b;display:flex;flex-direction:column;justify-content:center;align-items:center}.tile small{font-size:10px}.row-formula{overflow:auto;padding:10px 0}.marks{display:flex;flex-wrap:wrap;gap:6px}.mark{padding:5px 8px;border-radius:6px;font-size:.85em}.formula-mark{background:#d7e9ff;color:#173b78}.reference-mark{background:#e6d9ff;color:#503180}pre{overflow:auto;max-height:320px;font-size:12px}.hide-formulas .formula-mark,.hide-references .reference-mark{display:none}table{width:100%;border-collapse:collapse}td,th{padding:12px;text-align:left;border-bottom:1px solid #dbe2e8}input{margin-right:8px}details{margin:12px 0}h2{scroll-margin-top:25px}.note{border-left:4px solid #a66b1e;padding:12px 18px;background:#fff5e6}@media(max-width:650px){.proof-row{grid-template-columns:60px,minmax(0,1fr);gap:10px;padding:10px}.figure{grid-template-columns:1fr}}</style></head><body><header class="masthead"><a href="../#parallel-research">Research report</a><span>RESEARCH NOTEBOOK · 97–99</span><a href="#reader">Primitive proof rows</a></header><main>'''
+content='<section class="intro"><p class="eyebrow">THREE PARALLEL INVESTIGATIONS · INDEPENDENT CHECKING</p><h1>What the parallel work resolved.</h1><p class="deck">Native certificate checking, an explanation of the policy’s unchanged search trees, and a concrete design for sharing primitive geometry tiles.</p><p><a href="#native">Native result</a> · <a href="#policy">Policy diagnosis</a> · <a href="#geometry">Cluster composition</a> · <a href="#next">Next research gates</a></p></section>'
+content+='<section class="panel" id="native"><p class="eyebrow">NOTEBOOK 97 · ONE WHOLE QUERY · ONE COMPLETE INDEPENDENT REPLAY</p><h2>'+('The preserved arithmetic hierarchy passes native checking.' if accepted else 'The native certificate gate remains unresolved.')+'</h2>'
+content+='<p>The candidate for '+math(r'\forall x\,\forall y\,(x+y=y+x)')+' was previously found by ordinary forward search. Its '+math(13)+' root commands and '+math(9)+' local blocks preserve all '+math(185)+' stored commands. This phase checks the entire certificate through the unchanged native machine, then replays it with a separate interpreter. It performs no theorem search or RL training.</p>'
+content+='<div class="metrics"><div class="metric"><strong>'+html.escape(production['native_status'])+'</strong>Producer native outcome</div><div class="metric"><strong>'+html.escape(audit['native_status'])+'</strong>Independent replay outcome</div><div class="metric"><strong>'+math(production['micro_steps'])+'</strong>Machine microsteps</div></div>'
+content+='<p>The exact '+math(4433652)+' initial bytes, unchanged parser start '+math(88986)+', complete microtable and all '+math(4433656)+' final bytes are pinned. The replay matches status, final state, microsteps, physical-step count, trace digest and every output byte. Both full worker lifecycle resource gates pass.</p>'
+content+='<p class="note">This acceptance uses the separately declared '+math(266240)+'-cell heap. The original '+math(262144)+'-cell unknown remains. Identifier shortening and preserving lemma blocks are post-search representation changes; this is native validation of an ordinary discovery, with no new GCTS/RL proof-discovery claim.</p>'
+content+='<table><thead><tr><th>Charged stage</th><th>Full worker lifetime</th><th>Conservative kernel memory</th></tr></thead><tbody>'
+for name,v in [('Producer',plife),('Independent replay',alife)]:content+='<tr><td>'+name+'</td><td>'+math(round(v['worker_lifetime_seconds_including_imports_and_final_receipt_write'],3))+r' seconds</td><td>'+math(round(v['conservative_total_peak_bytes']/1048576,3))+' MiB</td></tr>'
+content+='</tbody></table><p>Each prospective gate allowed '+math(50000000000)+' microsteps, '+math(600)+' seconds and '+math(512)+' MiB. The estimate from eight earlier certificates was an extrapolation, not a bound. Compilation, startup and the worker’s final receipt writes are included; the observer’s final receipt write is excluded. Memory is sampled and checked against kernel peaks retrospectively, with no OS hard limit claimed. Earlier preparation, audits, search and failed bounds remain in the preceding notebooks.</p><p><a href="../certificate-hierarchy/reader.html#reader">Read the discovered arithmetic proof line by line</a> · <a href="native/plan.json">Frozen producer plan</a> · <a href="native/audit.json">Complete replay</a> · <a href="native/produce-lifetime.json">Producer lifetime</a> · <a href="native/audit-lifetime.json">Replay lifetime</a> · <a href="native/preexecution-review-v3.json">Independent pre-execution review</a></p></section>'
+content+=r'''<section class="panel" id="policy"><p class="eyebrow">NOTEBOOK 98 · SAVED ACTUAL THIRTEEN-ROW TRACES · NO NEW SEARCH</p><h2>The policy sees different choices as the same action.</h2><p>Each fixed run made \(527\) fresh eligible cluster proposals. Every one preferred the baseline’s first candidate, so none changed branch order. In \(474\) decisions, another eligible first candidate had identical nine features and the same maximum score; it lost the deterministic tie break. All \(527\) saved pools contained a different eligible first action.</p><div class="metrics"><div class="metric"><strong>\(527\)</strong>Fresh eligible proposals</div><div class="metric"><strong>\(474\)</strong>Decisions with feature-identical tied alternatives</div><div class="metric"><strong>\(0\)</strong>Changed branch orders</div></div><p>At saved event \(4\), node \(39\), selected point \((48,3)\), the preferred landing \((12,3,10,7)\) and alternative \((12,3,10,10)\) both score \(1.6748\). Their source rows differ: one already has its unused port placements selected, the other is untouched. The current features omit that distinction. The alternative is a saved legal candidate; no successor trajectory was executed.</p><p>Another \(93\) of the \(620\) branches retained waiting hints and suppressed a fresh proposal. The \(11\) later eligible hint continuations all occurred at forced points. These continuation counts are separate from the \(527\) fresh eligible choices. The mandatory scheduler is therefore not the main reason those fresh choices were ineffective.</p><p>The stored softmax distribution gives a different first action positive mass in every saved context, averaging \(0.5481\). That is a property of these saved pools, not a predicted future success rate. Duplicate pool items can bias this mass. The diagnosis consumes the prior complete independent graph audit; it rechecks saved scores, ties and structural projections without rerunning the engine.</p><p>The next policy experiment should add source-row and distant marking-neighborhood features, then compare stochastic learned selection with an identical untrained stochastic control. Keep waiting persistence, the global dead/forced/earliest-generation scheduler, exact rollback and all base fallback alternatives. First independently verify changed legal branch orders; only then measure outcome and total cost. No RL gain follows from this diagnosis.</p><p><a href="diagnostic/receipt.json">Frozen detailed diagnostic</a> · <a href="diagnostic/fixed-r1-diagnostic.json">Every saved first-run action</a> · <a href="../commutativity13_v2.html#result">Original matched trials and unknowns</a></p></section>'''
+content+=r'''<section class="panel" id="geometry"><p class="eyebrow">NOTEBOOK 99 · AUTHORED AGGREGATE DESIGN · NOT A DISCOVERED THEOREM</p><h2>Two lemma families can share actual primitive tiles.</h2><p>The symbolic incidence example assumes that two distinct points lie on each pair of lines. Write \(H(P,Q,\ell,m)\) for the conjunction that \(P,Q\) are points, \(\ell,m\) are lines, \(P\ne Q\), and both points are incident with both lines. Only the guarded Hilbert uniqueness axiom I.2 and ordinary logical rules are used.</p>'''
+content+='<p>'+math(design['source_scope']['sequent_latex'])+ '</p>'
+content+=r'''<div class="figure"><div class="first"><strong>First lemma instance</strong><p>\(13\) primitive inference placements</p><p>\(H(P,Q,\ell,m),\ \operatorname{Incident}(R,\ell)\vdash\operatorname{Incident}(R,m)\)</p></div><div class="shared"><strong>Shared prefix</strong><p>\(5\) identical placements</p><p>Uniqueness axiom and instantiation at the two points</p></div><div class="second"><strong>Second lemma instance</strong><p>\(13\) primitive inference placements</p><p>\(H(P,Q,m,n),\ \operatorname{Incident}(R,m)\vdash\operatorname{Incident}(R,n)\)</p></div></div><p>The union contains \(13+13-5=21\) inference placements, plus three seeds for the ordered local hypotheses. Reuse means the exact same decorated primitive placement, counted once; equal formulas alone do not authorize sharing. Local assumption commands alias their input rows and add no occupancy.</p><p>The first output at row \(15\) is the second instance’s incidence input, read by its row-\(23\) modus-ponens port with offset \(-8\). High-level receptors project to those primitive reader ports. Adding the old unit-macro offsets at the final row would conflict with existing primitive ports.</p><p class="note">This is a frozen authored construction, with no independent aggregate audit yet. It changes the finite boundary to \(24\) primitive rows; it is not a drop-in replacement for the old five-row macro board. Full primitive graph enumeration, compiler/native correspondence, and atomic cluster execution remain open. Constituent preferences can preserve complete fallback and mandatory scheduling, provided the global graph checks run after every primitive placement.</p><p><a href="geometry/design-v1.json">Complete design and proof obligations</a> · <a href="geometry/example-v1.json">Exact primitive point data</a></p></section>'''
+content+=r'''<section class="panel" id="reader"><p class="eyebrow">TRANSLATION-ONLY PRIMITIVE POINT TILES · SYMBOLIC GEOMETRY</p><h2>Read each primitive row and its colored markings.</h2><p>The square depicts the unit occupancy \(t(0,r)=1\). Blue tags show exact injective formula identifiers; purple tags show ordered reference offsets. An absent marking differs from an assigned zero. Blue, gold and violet row backgrounds indicate the first instance, shared prefix and second instance. Coordinates encode proof rows, not the geometry of points or lines. These primitive row tiles are a source-level adaptation; they are separate from the native computational Wang palette.</p><p><label><input id="formula-layer" type="checkbox" checked>Formula markings</label> <label><input id="reference-layer" type="checkbox" checked>Reference markings</label></p>'''+''.join(rowhtml)+'</section>'
+content+=r'''<section class="panel" id="next"><h2>Separate the next research gates.</h2><p>The arithmetic lane should test stochastic policy action and learning with matched controls. The geometry lane should independently audit full source-body expansion, exact aggregate sharing and ordered receptors before activating an executor. Native checking has now resolved the moved-boundary certificate, while the GCTS search-quality question remains open. Parallel agents can work on these independent gates with frozen inputs and a separate reviewer, then integrate only completed evidence.</p><p><a href="sources.zip">Exact new source and input closure</a> · <a href="../#parallel-research">Main progress report</a></p></section></main><script>for(const [id,cls] of [['formula-layer','hide-formulas'],['reference-layer','hide-references']])document.getElementById(id).addEventListener('change',e=>document.getElementById('reader').classList.toggle(cls,!e.target.checked));</script></body></html>'''
+write('parallel-progress/reader.html',header+content)
+main=D/'index.html';s=main.read_text();assert 'RESEARCH NOTEBOOK · 96' in s;s=s.replace('RESEARCH NOTEBOOK · 96','RESEARCH NOTEBOOK · 99',1)
+section=r'''  <section class="panel" id="parallel-progress"><p class="eyebrow">NOTEBOOKS 97–99 · THREE PARALLEL INVESTIGATIONS</p><h2>Native acceptance, policy diagnosis, and shared primitive clusters.</h2><p>The preserved ordinary commutativity certificate passes the unchanged native checker at its separately declared \(266240\)-cell boundary, followed by one whole independent replay matching every output byte. Both complete worker lifecycle resource gates pass. This validates an ordinary search discovery; the original fixed-boundary unknown and the four GCTS search unknowns remain.</p><p>The policy diagnosis explains the identical arithmetic trees: all \(527\) fresh eligible proposals retain baseline order, and \(474\) decisions have a different eligible candidate with identical features and tied score. The geometry design expands two lemma instances into primitive tiles, sharing five placements in a \(21\)-placement inference union. That authored aggregate design still needs independent checking and execution correspondence.</p><p><a class="button" href="parallel-progress/reader.html#native">Inspect the new parallel results</a> <a href="parallel-progress/reader.html#reader">Read primitive geometry rows and markings</a> <a href="parallel-progress/reader.html#policy">See why the policy changed nothing</a></p></section>
+'''
+assert s.count('  <section class="panel" id="certificate-hierarchy">')==1;s=s.replace('  <section class="panel" id="certificate-hierarchy">',section+'\n  <section class="panel" id="certificate-hierarchy">')
+s=s.replace('The coordinator preserves proof blocks in the previously found ordinary candidate and checks an explicitly enlarged machine input.','The coordinator preserves proof blocks in the previously found ordinary candidate and completes native checking and independent replay at the explicitly enlarged boundary. The new diagnostics identify feature aliasing in arithmetic and exact shared primitive placements in geometry.')
+main.write_text(s);paths.add(str(main.relative_to(R)))
+for name in sorted(paths):
+ dst=P/name
+ if dst.exists():assert name=='docs/research/gcts-rl-renewal/index.html' and sha(dst)==prior['expected_live_sha256'][name]
+ dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(R/name,dst)
+files=[dict(path=n,sha256=sha(R/n),bytes=(R/n).stat().st_size) for n in sorted(paths)]
+manifest=dict(previous_commit=prior['commit'],files=files,total_bytes=sum(v['bytes'] for v in files),scope='Whole native validation plus independent replay of an ordinary commutativity discovery at the explicitly moved boundary; saved arithmetic feature/tie diagnosis; authored primitive geometry aggregate design. No new GCTS theorem discovery or RL training/advantage.')
+(O/'publication-files.json').write_text(json.dumps(manifest,indent=2)+'\n')
+print(json.dumps({'status':'prepared','files':len(files),'bytes':manifest['total_bytes'],'accepted':accepted}))

@@ -1,0 +1,244 @@
+{
+  "previous_commit": "7b594d6090d769ea52f0538adfa5a594c553f096",
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "c7bd671865304d0704be10d20e92f1954eb2f81fc618b436e59c70a310d6ed70",
+      "bytes": 345117
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/diagnostic/build_receipt.py",
+      "sha256": "3997d832fef7b16d463ac9b2936878d4366a8f0596597c83e833ad2a5962ecbe",
+      "bytes": 13996
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/diagnostic/diagnose.py",
+      "sha256": "81fc958debdccc82dec05d72ff6ecb24947994c5ff61e0aec35ebca8ed90cb04",
+      "bytes": 15559
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/diagnostic/diagnostic.json",
+      "sha256": "c1eaaa351d3d9ff46b417d71e6bb940587d1c5c38dddc3f64eea4fe5b3208fd9",
+      "bytes": 12200
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/diagnostic/fixed-r1-diagnostic.json",
+      "sha256": "fc76d57884bd50aabb4e4fdd20c2cb82a2b65c740aee70d01f1f8b7ccf41bd43",
+      "bytes": 8193903
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/diagnostic/fixed-r2-diagnostic.json",
+      "sha256": "baee435da7d32eb1135a0938abce73287b72bde4cc591558cc1b7b68cde01b14",
+      "bytes": 8193900
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/diagnostic/receipt.json",
+      "sha256": "1447f95f61e94a567dd080056761327ac9249efa2c39c9eab45832a9afdc9c9d",
+      "bytes": 16139
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/geometry/design-v1.json",
+      "sha256": "6493f5ff9be11daa2d856500af4210d76a483a4a74b6754a2ca58694ee1c4f28",
+      "bytes": 38142
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/geometry/example-v1.json",
+      "sha256": "2d48019ec7df7afd76b099cefaac221ed20bb2edb8793b9cfc639415987cf105",
+      "bytes": 660358
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/geometry/hilbert_aggregate_note_v1.py",
+      "sha256": "ce9551f7dcd512cb4343fb8f4e72ed26a44c703d9f2e484312b5ba4161f8af03",
+      "bytes": 13333
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/geometry/manifest-v1.json",
+      "sha256": "47d0e1e0731bbc02c25024bd49c67f28c1398dcd5217fdc72175966561c16d5d",
+      "bytes": 812
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/geometry/prepare_report-reviewed-v2.snapshot",
+      "sha256": "6483a49bbf8a1d1c2e4c85dd1a667ef00ac71f3aaa7aaec57b0ef7ad62c431a3",
+      "bytes": 24496
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/geometry/root-report-review-v2.json",
+      "sha256": "e9c05b91c1d82059b729b0a4dc0ff1ef687f044dfa98b7406df00947b69c20e7",
+      "bytes": 11593
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/integration-validator.py",
+      "sha256": "aa4c4bc1b2b14283637c205defb240232abe5630f54c056a33b1049a4eaa5ff5",
+      "bytes": 7884
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-compile-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-lifetime.json",
+      "sha256": "255f527f94eec76ddbd8df1b2c40900579b11d5cadf2295c6b2ee9ad93d97e50",
+      "bytes": 186171
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-owner.json",
+      "sha256": "7bf2b4f88bb7d12ec1f7b99513af94be723bc5ba331bb8275ce6838945127be1",
+      "bytes": 115
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-plan.json",
+      "sha256": "5245588f8b3819ecd63211300cdecc1c3ececc64a86fb725816edaee4114afc4",
+      "bytes": 23762
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-stdout.txt",
+      "sha256": "ed7d8b9c94122edea972861b335e5e2866951bf84e5f5399e119d3173a5937d1",
+      "bytes": 137
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-worker-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit-worker-stdout.txt",
+      "sha256": "b77c9aa998036ce40c7ae6e4c4c087d7b36d9e1c70a3c502e4703734c7feb067",
+      "bytes": 1527
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/audit.json",
+      "sha256": "18908ccd0692a39752e758d7c01f0d4ba3b9043d1b860defc786af230451f4a4",
+      "bytes": 1589
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/budget-calibration.json",
+      "sha256": "adc82fb3716043796ff5f10366dedf4b8de29867ef47df22b6ba2e94bfdaa42d",
+      "bytes": 3686
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/compile-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/native.json.gz",
+      "sha256": "34eb6f00b8bc34a01d44e43e9714ec3ceca46402b05986ca9fe65a6dce102896",
+      "bytes": 438
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/observer-ownership-fixture.json",
+      "sha256": "445f828bf7f137d3129144d1d85d8c2c79f3ec4819f910c7c26868d38c7cf016",
+      "bytes": 257
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/output.bin.gz",
+      "sha256": "651d7e7be0f9ec27c71b80c997d1c29038c90b4f6cb9b5b832cb80bef5e3204c",
+      "bytes": 86455
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/plan.json",
+      "sha256": "8d5c39253eb1b1823f43daf4d5bc3446e55a2878fc78e2fad930a0e7bb1bb42f",
+      "bytes": 21070
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/preexecution-review-v3.json",
+      "sha256": "4b05ca74230fd659f28898547d0c6aeb4ecae98d0861aed177e293a9d4ec2fbb",
+      "bytes": 5895
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/produce-lifetime.json",
+      "sha256": "eaf46ab5b3b695913a2a45d21e12b1f73df56af142933485a71baa12fb3a0553",
+      "bytes": 192160
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/produce-owner.json",
+      "sha256": "c7ce61f3e6a3b93c4504251784a525b3da28e832120ea72d596fcc4e58b1cbd6",
+      "bytes": 117
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/produce-worker-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/produce-worker-stdout.txt",
+      "sha256": "b1d6ad3b1c1e08a85d3285876e4ed373fa8a4917db6ff2a2d7b3471b200f25b5",
+      "bytes": 1378
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/producer-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/producer-stdout.txt",
+      "sha256": "8f912fc3c095f4258fa2cfffec93eef1dbeea336caa63fe2990721d56c149a8f",
+      "bytes": 242
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-85823-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-85823-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-85831-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-85831-stdout.txt",
+      "sha256": "8f912fc3c095f4258fa2cfffec93eef1dbeea336caa63fe2990721d56c149a8f",
+      "bytes": 242
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-88113-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-88113-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-88126-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/subprocess-88126-stdout.txt",
+      "sha256": "ed7d8b9c94122edea972861b335e5e2866951bf84e5f5399e119d3173a5937d1",
+      "bytes": 137
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/native/summary.json",
+      "sha256": "8e64353bc98b6b7294c3521a74adffa059f013f000edc91babc045e37fab765f",
+      "bytes": 1432
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/reader.html",
+      "sha256": "5283c4091de2688644d1491b201367a5a790a8185735fc8696443259bfb38ae3",
+      "bytes": 187098
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/parallel-progress/sources.zip",
+      "sha256": "f6d1cbb89f2224c3d9e530470dd4d0ded4918983f4e33272ed449dbe5e2fdab5",
+      "bytes": 4512867
+    }
+  ],
+  "total_bytes": 22774207,
+  "scope": "Whole native validation plus independent replay of an ordinary commutativity discovery at the explicitly moved boundary; saved arithmetic feature/tie diagnosis; authored primitive geometry aggregate design. No new GCTS theorem discovery or RL training/advantage.",
+  "presentation_revision": "Only two guarded sequents split across visual lines after browser QA; exact formula tokens and science are unchanged.",
+  "publication_validator_revision": "Historical superseded native helpers require one of four exact blocked review/review-receipt origins plus the allowlisted source path and an exact archived SHA; all current bindings still match current root bytes."
+}
