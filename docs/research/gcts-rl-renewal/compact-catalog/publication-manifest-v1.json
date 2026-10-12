@@ -1,0 +1,115 @@
+{
+  "schema": "notebook123-exact-task-owned-publication-manifest-v1",
+  "notebook": 123,
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293",
+      "bytes": 14720
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/compact_declaration_compiler_v1.py",
+      "sha256": "8135dd3000559c44ce29bafc82445a62ce4eae5246ac5bf28a5ab66efd1640d8",
+      "bytes": 27743
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/compact_point_graph_v1.py",
+      "sha256": "d638f7152ec7fa8293adbd8915b79de60f95d0756952bdc6bf0e40b15f549ca0",
+      "bytes": 20787
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/compact_prepare_worker_v1.py",
+      "sha256": "b58a70b35cde392a6d0f056787e2389c0c256334de641624442b632586287bcd",
+      "bytes": 14511
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/fixtures-v2.json",
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+      "bytes": 24474
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/freeze_compact_phase_v1.py",
+      "sha256": "3533fd8fb1d0f436912df2fa9afa62ccf12a29f7c4c31b8dde73c74aa2a156fb",
+      "bytes": 2755
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/fresh_catalog_oracle_v1.py",
+      "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+      "bytes": 23504
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/independent-review-view-v1.json",
+      "sha256": "829f0d4cfc4f4b4acc4546b9a79a1eb0d97366249d6d2fed72aa949a81ed4f8b",
+      "bytes": 6613
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/independent_compact_audit_worker_v1.py",
+      "sha256": "e6a8e56226dd5501b315b5f6685002b5e52554fbb625637f76d0328862ba3445",
+      "bytes": 20823
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/independent_compact_catalog_audit_v1.py",
+      "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8",
+      "bytes": 15171
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/independent_compact_domains_v1.py",
+      "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34",
+      "bytes": 7441
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/independent_compact_grammar_v1.py",
+      "sha256": "86b8c916344c34629450bc12a0251b8ec9a0c29ce1542d1e039966879fb3278e",
+      "bytes": 13588
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/partial-output-metadata-v1.json",
+      "sha256": "d3faecdfcc7f541dc8559de991aa64c40920325bc176e2f834178b7896bcd907",
+      "bytes": 6584
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/reader.css",
+      "sha256": "89e445a1552e41baf404838396c6e689f4b68d07af68027576f0edcee8cfc36c",
+      "bytes": 1937
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/reader.html",
+      "sha256": "2c8a442ea321d0b76dd5e4e4e6ef57b82883edf7b4b0c747c684a06e60c07b87",
+      "bytes": 114370
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compact-catalog/saved-progress-view-v1.json",
+      "sha256": "0b06b2a597bbd345cff181c45a69fb840408c38d133b8bf2d0c9246fcfe4d088",
+      "bytes": 94705
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "575812105dcf5bfd7854d056de9cd06acbbaae472001494310bc03a3bce33791",
+      "bytes": 364926
+    }
+  ],
+  "scope": "Exact new compact-catalog files and one parent panel/counter update; unrelated workspace changes excluded. Manifest itself separately live-pinned by ROOT.",
+  "scientific_calls": 0,
+  "old_UNKNOWN_preserved": true,
+  "goal_remains_active": true
+}

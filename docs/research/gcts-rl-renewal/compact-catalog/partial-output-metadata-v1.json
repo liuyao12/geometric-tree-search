@@ -1,0 +1,181 @@
+{
+  "schema": "notebook123-partial-output-metadata-public-view-v1",
+  "original": {
+    "path": ".gcts-active/cluster-transfer-compact-progress-20261012/ROOT-partial-output-metadata-v1.json",
+    "sha256": "eeef74f98bc66b7686d29c32425e6f363ef9efe244c54163367ae453199ab81e",
+    "bytes": 9412
+  },
+  "scope": "After terminal/reap metadata-only read; file bytes and lengths do not license a recipe or count as whole catalog preparation. No scientific function, import, audit or parsing of partial records.",
+  "file_count": 33,
+  "total_bytes": 141343496,
+  "complete_catalog_header_exists": false,
+  "worker_receipt_exists": false,
+  "full_evidence_exists": false,
+  "files": [
+    {
+      "name": "catalog-v1/formulas-v1.u64le.bin",
+      "sha256": "64c4bd1cc8ff9a1a700105cdba36ad14c65bd08c8f4a456a9d65dee2d696b667",
+      "bytes": 907248
+    },
+    {
+      "name": "catalog-v1/recipes-v1.bin",
+      "sha256": "760ae94c7c3d55d46fc54d178ec89c534921e3bd69318b90f4d019c80f9eb716",
+      "bytes": 14353664
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-0.txt",
+      "sha256": "54c8ae67d7d1c3a0a61f81cc85f047e0409a6a6035b49d2a7f964e8033f6d1dd",
+      "bytes": 4194776
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-1.txt",
+      "sha256": "cce52e8ed8b74145e69c18e3e01804e23edff46f9c14dee56fed27b50b9e8e73",
+      "bytes": 4194438
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-10.txt",
+      "sha256": "925241d3839cf552bfdb3266d42f1910ffdf594d27f11d74d9174f3555b36c74",
+      "bytes": 4194681
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-11.txt",
+      "sha256": "56184e5dc3fee37482bc1a278f7987f4d26be73ffdb8c3b467a41ad65cf8053a",
+      "bytes": 4195120
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-12.txt",
+      "sha256": "306a81858fb73556b02ec171106b3e06b7c354c16412bc38992f6ec7aeb8fd8a",
+      "bytes": 4194602
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-13.txt",
+      "sha256": "5478d30da9e460542600382e8b42f7e165dc2216756706510a5bda8a0c4bca55",
+      "bytes": 4195056
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-14.txt",
+      "sha256": "3ceb32260eab68ded320622f70b57f61702ea74a3fe028d32a98633f4f5962aa",
+      "bytes": 4194882
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-15.txt",
+      "sha256": "dee2018befd187f2b99d603bf9af42a718c69a411bb27e2bb65830029347769a",
+      "bytes": 4195017
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-16.txt",
+      "sha256": "a9439c7c0e7657acec2e1b501d9bb159701fc856eb8049f6b540b4410a93f36c",
+      "bytes": 4194533
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-17.txt",
+      "sha256": "1cfafd2471fe20acdf80de74a020bfa43f4e0a73f3e08614a7be36508bd438a2",
+      "bytes": 4195586
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-18.txt",
+      "sha256": "f5479ff45bdeb51f969cb90a8f94751a9115eee078bf409474a8d22dc775c58b",
+      "bytes": 4195651
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-19.txt",
+      "sha256": "1adfac72ed8835e2682d1a0f629971e70468911fbbf6ec86e6299cf570ac6604",
+      "bytes": 4195041
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-2.txt",
+      "sha256": "72d7e0228b3f9997c43cdb80ab6be40f23b9d60913c79ec354b8a2ec3434d41c",
+      "bytes": 4194589
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-20.txt",
+      "sha256": "e7cb1dc7dd9d41b09ac366d99d032f3f916675e0007923afc4a194726e971fb3",
+      "bytes": 4194471
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-21.txt",
+      "sha256": "d833a9b78cb9398bfddd65a8ba457eea82d79942e358f684ea1b5b5bfc1429da",
+      "bytes": 4194461
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-22.txt",
+      "sha256": "c9b84d4b010f823db623614be2a3a5b747fd2bb00d4bc501b422b162c1214d27",
+      "bytes": 4194535
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-23.txt",
+      "sha256": "a4af59a649a153cac3dda173bb2363dfe8a400326718b02bbe78cff47fad0c5a",
+      "bytes": 4194794
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-24.txt",
+      "sha256": "23ce129cee5d9672c391c900356013c696eae38fa6b16e2daa8ed6ef75feb0ab",
+      "bytes": 4195209
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-25.txt",
+      "sha256": "e20a4168c6c50a1d279b49983bae04eb129f0729183919355c05a22c7e68f16e",
+      "bytes": 4195083
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-26.txt",
+      "sha256": "03d02ace42f6010a416c5b8b1534b41def139aa94caee1b7fec1e6cbde7cc583",
+      "bytes": 4194417
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-27.txt",
+      "sha256": "c864e92cbfad6a0c913331c94d82f687889a5e033e95ea2fd77458ff79fdab35",
+      "bytes": 4194881
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-28.txt",
+      "sha256": "9a485babd084fbb1f8eaecdbcf251517102367d4f5e2e7c54e1fc6ccc574c8d1",
+      "bytes": 4195047
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-29.txt",
+      "sha256": "698c2061c0f838b766934db2f699395fe13f8ffe2af52947d772e7b21f276c35",
+      "bytes": 4194366
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-3.txt",
+      "sha256": "3c8b4fa3c4664b50a463f6d16a5faa208457a2f5443f361a3962cce3698cd21d",
+      "bytes": 4194660
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-30.txt",
+      "sha256": "4b7b3938d2fb6b91bf2bd227b51ae3692cd7a6410bafb400ef8a47088deb38d9",
+      "bytes": 238410
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-4.txt",
+      "sha256": "bb2dd0efee7f43898123d39c68154446caba0e48034cd35a60787855fd495e1e",
+      "bytes": 4194327
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-5.txt",
+      "sha256": "41101c0139132d9d5009a619258adf34f8e014e9e336f0690cee3168008c9161",
+      "bytes": 4195060
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-6.txt",
+      "sha256": "49b2b4d07da0d51cb03e14c86d2e59702582fbfde922472f3c7fec527001ebc6",
+      "bytes": 4195041
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-7.txt",
+      "sha256": "e9dfed4f204b92d1420f7096c9c27328a928fe20ffd46bfba334c904024cd44d",
+      "bytes": 4194744
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-8.txt",
+      "sha256": "100b304a93aa4879b0350b5757a396b40f8a5c251cf8b16d33584da196ed4537",
+      "bytes": 4194585
+    },
+    {
+      "name": "catalog-v1/sort-scratch/recipes-run-9.txt",
+      "sha256": "e9c45cd3ec8b7110b70d0876b717a21e552da39920cdc8efbc48c5cae8672c9d",
+      "bytes": 4194521
+    }
+  ]
+}
