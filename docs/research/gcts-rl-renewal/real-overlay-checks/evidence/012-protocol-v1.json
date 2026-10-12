@@ -1,0 +1,43 @@
+{
+  "schema": "real-Controller-overlay-fixture-protocol-v1",
+  "status": "SOURCE_ONLY_UNEXECUTED",
+  "question": "Does the repaired whole-proposal selection overlay respect the unchanged point graph and Controller on explicit bounded positive and negative transaction cases?",
+  "source_repair": {
+    "predecessor": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+    "successor": "family_learned_overlay_v2.py",
+    "diff": "overlay-v1-to-v2.diff",
+    "reason": "Prospective source review found V1 trusts mutable prepared menu vectors/action IDs and needs_one_draw after only checking a graph/Controller/overlay state hash. This is an unexecuted V1 source gap, not an observed runtime failure.",
+    "repair": "V2 rederives the canonical complete feature menu and literal draw requirement from the exact verified current immutable inputs/hints, compares the whole transport value, and uses the rederived menu. It does not resync at choice time or change state before validation.",
+    "preserved": "31 features, mathV2, zero initialization, epsilon0.1, temperature1.0, source pools, curriculum/split/seeds, rewards/updates and all earlier frozen sources. Recalculation cost is charged by actual owner clocks.",
+    "no_tuning": "Changed-context search outcomes supply no parameter, feature or fixture expectation tuning. Only the prepared input authenticity gap is repaired."
+  },
+  "fixture_model": {
+    "language": "Explicit6-row/8-recipe/4-formula synthetic PointGraph fixture=True, translation only, unit occupancy, exact integer point marks and two ordered strict-prior ports.",
+    "authority": "Unchanged BodyAuthority recompiles each exact authored body/identity. A fixture-only wrapper rederives component metadata and every full record before unchanged Controller registration. This wrapper is distinct from actual171-body GroupAuthority and grants no theorem admission.",
+    "allowed_synthetic_rules": "fixture_zero and opaque_pair are explicitly nonlogical test infrastructure. Assumption P is the single exact fixture context premise. No full Hilbert model or original scientific proof witness is loaded.",
+    "execution": "Every intentional primitive fixture placement uses unchanged core.Executor.step and current global decision. Controller resync and overlay after_resync are separately recorded. Zero-attempt unchanged lifecycle.Executor.solve tests actual UNKNOWN/no-exclusion with nested raw events; it is a fixture call, not a theorem search benchmark.",
+    "determinism": "No RNG. Explicit midpoint draws select named fixture actions from a canonical zero-weight uniform menu. They test control behavior, not learned action effect or favorable seeds.",
+    "complete_domains": "Every recorded snapshot includes all row candidates in exact original order, complete point graph state, mark refcounts, generations, exclusions, hints, active proposal/revision, three trail depths, immutable registry and cumulative work metrics. No shortened tape accepted."
+  },
+  "coverage": {
+    "scenario_count": 24,
+    "whole_registration_mutations": 5,
+    "positive_controls": "NULL/full primitive fallback; non-NULL changed first primitive/full permutation; global distant dead before forced; forced before advice; active waiting forced interruption/no draw; earliest broad generation before later smaller degree; dependency-pending selected MP is no fact; completion unlocks reward potential; repeated ordered read ports and both offset marks; remote assigned zero versus missing; whole retirement/consumption and waiting; nested exact paired rollback preserving cumulative history; actual zero-attempt UNKNOWN with no exclusion.",
+    "negative_controls": "Whole member/full ID/remote mark/component/authority registration corruption; stale prepared state/pool/weight; changed menu vector/action; changed draw flag and integer-as-bool; extra forced/continuation draw; missing new-selection draw; direct immutable episode weight mutation.",
+    "future_independent_gate": "Independent source/replay must reconstruct all constructor/authority/descriptor identities, complete literal domains, scheduler/step effects/hints/overlay/trails, canonical features/distributions/draw choice and error paths from raw inputs/operations. Producer assertions never authorize acceptance."
+  },
+  "resource_contract": {
+    "child_seconds": 25,
+    "supervisor_seconds": 30,
+    "whole_ROOT_phase_seconds": 60,
+    "memory_bytes": 536870912,
+    "artifact_bytes_each": 33554432,
+    "scope": "Exact ROOT process clock must include owner startup/source hashing, one worker/imports/all real fixtures/trace serialization, every ps observer, cleanup, result decoding, final owner receipt, exit and reaping. Worker/supervisor subclocks overlap enclosing ROOT clock and are not added again.",
+    "memory": "Byte-valued macOS owner+worker+maximum observer kernel peaks conservatively summed, plus sampled descendant RSS. This is a measured gate, not an OS hard cap.",
+    "failure": "One attempt only. Preserve exceptions, incomplete outputs, terminal ownership and UNKNOWN. Observation expiry is not terminal and must poll the same handle. No retry from timeout, no pool trim or memory increase."
+  },
+  "remaining_gaps": "No actual donor/heldout registry, complete171-body/full pool acceptance, scientific DFS event adapter, seeded chronological RNG, learned updates/returns, independently accepted mathematical proof, native/compiler universal Wang correspondence, fractional occupancy, multi-point positive support, symmetry action, learned geometric pruning or arbitrary cluster synthesis.",
+  "actual_scientific_calls_by_author": 0,
+  "ROOT_only_execution": true,
+  "execution_authorized": false
+}

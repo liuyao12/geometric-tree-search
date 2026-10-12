@@ -1,0 +1,45 @@
+{
+  "schema": "real-Controller-overlay-fixture-corpus-v1",
+  "scope": "Small explicit synthetic point language run through unchanged PointGraph, primitive Executor and Controller. Fixture-only descriptor wrapper rechecks exact authored BodyAuthority records. No actual Hilbert model, complete171-family census, theorem acceptance, RNG stream, learning update or native query.",
+  "height": 6,
+  "formulas": [["pred", "P", []], ["pred", "Q", []], ["imp", ["pred", "P", []], ["pred", "Q", []]], ["pred", "C", []]],
+  "context": {"ordered_local_premises": [["pred", "P", []]], "fixture_scope": "Synthetic point-contract-only source language"},
+  "recipes": [
+    {"id": "fixture-assumption-P", "primitive_witness": {"rule": "assumption", "index": 0, "formula": ["pred", "P", []]}, "ordered_premise_formulas": []},
+    {"id": "fixture-zero-P", "primitive_witness": {"rule": "fixture_zero", "formula": ["pred", "P", []]}, "ordered_premise_formulas": []},
+    {"id": "fixture-zero-imp", "primitive_witness": {"rule": "fixture_zero", "formula": ["imp", ["pred", "P", []], ["pred", "Q", []]]}, "ordered_premise_formulas": []},
+    {"id": "fixture-zero-Q", "primitive_witness": {"rule": "fixture_zero", "formula": ["pred", "Q", []]}, "ordered_premise_formulas": []},
+    {"id": "fixture-mp-PQ", "primitive_witness": {"rule": "mp", "formula": ["pred", "Q", []]}, "ordered_premise_formulas": [["pred", "P", []], ["imp", ["pred", "P", []], ["pred", "Q", []]]]},
+    {"id": "fixture-zero-C", "primitive_witness": {"rule": "fixture_zero", "formula": ["pred", "C", []]}, "ordered_premise_formulas": []},
+    {"id": "fixture-opaque-equal-ports", "primitive_witness": {"rule": "opaque_pair", "formula": ["pred", "Q", []]}, "ordered_premise_formulas": [["pred", "P", []], ["pred", "P", []]]},
+    {"id": "fixture-zero-P-copy", "primitive_witness": {"rule": "fixture_zero", "formula": ["pred", "P", []]}, "ordered_premise_formulas": []}
+  ],
+  "authority_body": {"activated": false, "native_accepted": false, "scope": "Explicit synthetic fixture authority; no inference admission"},
+  "models": {
+    "ordinary": {"roots": [0, 0, 0, 0, 0, 0], "fixed_marks": [], "seed_keys": [[0, 0, []]]},
+    "forced": {"roots": [0, 0, 0, 0, 0, 0], "fixed_marks": [[1, 5, 3]], "seed_keys": [[0, 0, []]]},
+    "dead_and_forced": {"roots": [0, 0, 0, 0, 0, 0], "fixed_marks": [[1, 4, 99], [1, 5, 3]], "seed_keys": [[0, 0, []]]},
+    "early_wide": {"roots": [0, 0, 2, 2, 2, 2], "fixed_marks": [[1, 2, 0]], "seed_keys": [[0, 0, []]]},
+    "pending_source": {"roots": [0, 2, 2, 0, 2, 2], "fixed_marks": [], "seed_keys": [[0, 0, []]]}
+  },
+  "proposal_specs": {
+    "ready-Q": {"members": [[3, 1, []]], "priority": 0},
+    "waiting-conditional": {"members": [[2, 3, []], [4, 4, [1, 3]]], "priority": 0},
+    "pending-then-future": {"members": [[4, 3, [1, 2]], [3, 5, []]], "priority": 0},
+    "remote-zero": {"members": [[4, 4, [1, 2]]], "priority": 0},
+    "repeated-source": {"members": [[6, 3, [0, 0]]], "priority": 0},
+    "same-formula-other-key": {"members": [[7, 1, []]], "priority": 0}
+  },
+  "scenario_order": [
+    "null-full-fallback", "nonnull-whole-preference", "registration-whole-mutations",
+    "global-distant-dead", "global-forced-no-draw", "forced-active-no-draw",
+    "earlier-generation", "pending-source-not-fact", "repeated-ports",
+    "assigned-zero-remote-retirement", "waiting-persistence", "paired-rollback",
+    "unknown-no-exclusion", "stale-prepared-state", "stale-prepared-pool",
+    "stale-prepared-weight", "mutated-prepared-vector", "mutated-prepared-action",
+    "mutated-draw-requirement", "mutated-draw-bool-type", "forced-extra-draw",
+    "continuation-extra-draw", "missing-new-selection-draw", "immutable-weight-mutation"
+  ],
+  "preserved_protocol": {"feature_count": 31, "epsilon": 0.1, "temperature": 1.0, "maximum_descriptors": 64, "weights": "All31 zero weights, no update, no RNG. Explicit deterministic per-choice draw picked from the actual complete canonical uniform menu; this does not select a favorable training seed."},
+  "uncovered": ["Actual recipient and donor licenses", "all171 source bodies and complete prospective pools", "full scientific DFS event adapter", "chronological seeded RNG", "trained return or update", "actual proof certificate", "native/Wang compiler correspondence", "fractional t-values and multi-point candidate incidence", "general transformations", "learned geometric pruning", "unrestricted cluster synthesis"]
+}

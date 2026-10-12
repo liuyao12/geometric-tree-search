@@ -1,0 +1,406 @@
+{
+  "schema": "independent-real-Controller-overlay-fixture-replay-v1",
+  "status": "complete_synthetic_fixture_point_and_overlay_replay_passed",
+  "scenarios": [
+    {
+      "id": "null-full-fallback",
+      "complete_events": 3,
+      "ordered_choices": 1,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "nonnull-whole-preference",
+      "complete_events": 3,
+      "ordered_choices": 1,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "registration-whole-mutations",
+      "complete_events": 6,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 12,
+      "literal_candidate_keys": 1380,
+      "rejected_preparations": 0,
+      "rejected_registrations": 5,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "global-distant-dead",
+      "complete_events": 2,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 4,
+      "literal_candidate_keys": 152,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "global-forced-no-draw",
+      "complete_events": 3,
+      "ordered_choices": 1,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 414,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "forced-active-no-draw",
+      "complete_events": 11,
+      "ordered_choices": 2,
+      "primitive_steps": 2,
+      "exact_graph_states": 22,
+      "literal_candidate_keys": 1260,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "earlier-generation",
+      "complete_events": 3,
+      "ordered_choices": 1,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 588,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "pending-source-not-fact",
+      "complete_events": 12,
+      "ordered_choices": 0,
+      "primitive_steps": 3,
+      "exact_graph_states": 24,
+      "literal_candidate_keys": 984,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "repeated-ports",
+      "complete_events": 3,
+      "ordered_choices": 1,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "assigned-zero-remote-retirement",
+      "complete_events": 7,
+      "ordered_choices": 1,
+      "primitive_steps": 1,
+      "exact_graph_states": 14,
+      "literal_candidate_keys": 1234,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "waiting-persistence",
+      "complete_events": 21,
+      "ordered_choices": 4,
+      "primitive_steps": 4,
+      "exact_graph_states": 42,
+      "literal_candidate_keys": 3038,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "paired-rollback",
+      "complete_events": 10,
+      "ordered_choices": 1,
+      "primitive_steps": 1,
+      "exact_graph_states": 20,
+      "literal_candidate_keys": 2018,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "unknown-no-exclusion",
+      "complete_events": 2,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 4,
+      "literal_candidate_keys": 460,
+      "rejected_preparations": 0,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "stale-prepared-state",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "stale-prepared-pool",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "stale-prepared-weight",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "mutated-prepared-vector",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "mutated-prepared-action",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "mutated-draw-requirement",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "mutated-draw-bool-type",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "forced-extra-draw",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 414,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "continuation-extra-draw",
+      "complete_events": 5,
+      "ordered_choices": 1,
+      "primitive_steps": 0,
+      "exact_graph_states": 10,
+      "literal_candidate_keys": 1150,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "missing-new-selection-draw",
+      "complete_events": 3,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 6,
+      "literal_candidate_keys": 690,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    },
+    {
+      "id": "immutable-weight-mutation",
+      "complete_events": 4,
+      "ordered_choices": 0,
+      "primitive_steps": 0,
+      "exact_graph_states": 8,
+      "literal_candidate_keys": 920,
+      "rejected_preparations": 1,
+      "rejected_registrations": 0,
+      "synthetic_point_and_overlay_accepted": true,
+      "primitive_certificate_accepted": false
+    }
+  ],
+  "complete_trace_accepted": true,
+  "feature_policy_replay_accepted": true,
+  "primitive_certificate_accepted": false,
+  "actual_RNG_replay_accepted": false,
+  "training_update_accepted": false,
+  "actual_donor_heldout_DFS_accepted": false,
+  "covered": "Every observed synthetic fixture operation, full domain, state, hint, feature, policy and paired rollback",
+  "uncovered": [
+    "Actual recipient and donor licenses",
+    "all171 source bodies and complete prospective pools",
+    "full scientific DFS event adapter",
+    "chronological seeded RNG",
+    "trained return or update",
+    "actual proof certificate",
+    "native/Wang compiler correspondence",
+    "fractional t-values and multi-point candidate incidence",
+    "general transformations",
+    "learned geometric pruning",
+    "unrestricted cluster synthesis"
+  ],
+  "scope": "An activated actual invocation is still required; source author has run none of these functions.",
+  "actual_mutation_controls": [
+    {
+      "id": "missing-scenario",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: all 24 frozen scenarios in order"
+    },
+    {
+      "id": "missing-terminal-operation",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: entire frozen scenario operation grammar"
+    },
+    {
+      "id": "wrong-whole-aggregate",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: complete independently rebuilt descriptors"
+    },
+    {
+      "id": "lost-complete-domain-key",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: initial:complete_domains"
+    },
+    {
+      "id": "changed-controller-hint",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: initial:overlay"
+    },
+    {
+      "id": "changed-menu-vector",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: complete raw operation result:menu:feature_vectors:0:bias"
+    },
+    {
+      "id": "disabled-draw-flag",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: exact current or predeclared mutated prepared transport"
+    },
+    {
+      "id": "wrong-policy-probability",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: complete raw operation result:1:policy:distribution:probabilities:0"
+    },
+    {
+      "id": "wrong-mixture-gradient",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: complete raw operation result:1:policy:score_gradient:gradient:null"
+    },
+    {
+      "id": "pending-output-as-fact",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: complete raw operation result:fact_potential"
+    },
+    {
+      "id": "broken-paired-overlay-rollback",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: terminal:overlay"
+    },
+    {
+      "id": "unknown-creates-exclusion",
+      "actual_independent_rejection": true,
+      "reason": "ValueError: terminal:overlay"
+    }
+  ],
+  "actual_result_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-result-v1.json",
+    "sha256": "3ae1f8d299e4168168dbe9b4b4d5b01e8330895a56dc3baf78c5412373956d6f",
+    "bytes": 9464240
+  },
+  "actual_resource_inputs": {
+    "owned_lifetime": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-lifetime-v1.json",
+      "sha256": "dd71ee6f728db27b853ee66ca7ced080ef8893b813b882df62d7a62023caf3ee",
+      "bytes": 10508
+    },
+    "ROOT_terminal": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-terminal-v2.json",
+      "sha256": "539c2248c30a7b3d425e997c240a1ab9fdffc184f8bd1aaa409a6057e4c7fccf",
+      "bytes": 2622
+    },
+    "complete_producer_resource_accepted": true,
+    "own_replay_full_ROOT_resource_acceptance_still_required": true
+  },
+  "owned_resource_accepted": false,
+  "full_ROOT_outer_clock_qualified": false,
+  "worker_pid": 45916,
+  "worker_compute_before_final_serialization_seconds": 3.876786291,
+  "plan_pin": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json",
+    "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+    "bytes": 200523
+  },
+  "execution_owner": "ROOT"
+}

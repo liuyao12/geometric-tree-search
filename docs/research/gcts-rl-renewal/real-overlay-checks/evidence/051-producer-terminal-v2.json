@@ -1,0 +1,58 @@
+{
+  "schema": "ROOT-actual-real-Controller-overlay-fixture-terminal-v1",
+  "status": "passed_ROOT_full_owned_lifetime",
+  "source_plan_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v2.json",
+    "sha256": "e179fbbaec47518d3661c5faee24417c590cbd73ea0d52364f7e6e387298ae27",
+    "bytes": 198372
+  },
+  "source_review_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-source-review-v2.json",
+    "sha256": "23f1d44f6bcddd293f85af9a6bd5840f1c3a775fa10f9733120350e4f668be1a",
+    "bytes": 4333
+  },
+  "activation_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/root-fixture-activation-v2.json",
+    "sha256": "1774f17f3f78de8157a0099b5eeb0422b4bbb1b23256da02351eca91ac7702b5",
+    "bytes": 625
+  },
+  "result_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-result-v1.json",
+    "sha256": "3ae1f8d299e4168168dbe9b4b4d5b01e8330895a56dc3baf78c5412373956d6f",
+    "bytes": 9464240
+  },
+  "owned_lifetime_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-lifetime-v1.json",
+    "sha256": "dd71ee6f728db27b853ee66ca7ced080ef8893b813b882df62d7a62023caf3ee",
+    "bytes": 10508
+  },
+  "owner_pid": 45815,
+  "owner_exit_code": 0,
+  "owner_terminal_reaped": true,
+  "worker_terminal_reaped": true,
+  "full_owner_lifetime_seconds": 0.968946792,
+  "conservative_combined_peak_bytes": 231587840,
+  "full_resource_accepted": true,
+  "cancelled": false,
+  "forced_kill": false,
+  "memory_scope": "ROOT peak plus max direct owner peak or owned owner/worker/observer estimate; retrospective gate, not hard OS cap",
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-real-overlay-source-20261012/owned_real_overlay_fixture_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v2.json"
+  ],
+  "stdout_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-v2-outer-stdout.bin",
+    "sha256": "55f591e22dc12f49ae33b2a02eb1829f5a64a3a86b8a968e8384073e0f296bf6",
+    "bytes": 1580
+  },
+  "stderr_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-v2-outer-stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "mathematical_proofs_accepted": 0,
+  "training_runs": 0,
+  "native_queries": 0
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "owned-real-Controller-overlay-fixture-lifetime-v1",
+  "status": "UNKNOWN_or_failed_fixture",
+  "plan": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v1.json",
+    "sha256": "d0a55fbd9a3c50b16a578edbc46150921c0e28141002b5989cd82f28a597844c",
+    "bytes": 196105
+  },
+  "worker_created": false,
+  "worker_pid": null,
+  "worker_terminal_reaped": false,
+  "worker_exit_code": null,
+  "child_lifetime_including_imports_serialization_and_reaping_seconds": null,
+  "supervisor_seconds_before_final_receipt": 0.149239167,
+  "kernel_owner_peak_bytes": 61669376,
+  "kernel_worker_peak_bytes": 0,
+  "kernel_observer_max_peak_bytes": 0,
+  "conservative_combined_peak_bytes": 61669376,
+  "sampled_aggregate_peak_bytes": 0,
+  "memory_scope": "Sum of macOS kernel peaks including observer; sampled owned RSS; measurement, not hard OS cap",
+  "final_receipt_scope": "ROOT separately measures full owner exit/reap and final serialization; required for qualification",
+  "resource_gate_before_final_receipt": false,
+  "producer_data_gate": false,
+  "failure": "PermissionError: [Errno 1] Operation not permitted: '/bin/ps'; final observer: PermissionError: [Errno 1] Operation not permitted: '/bin/ps'",
+  "forced_kill": false,
+  "streams_open_after_reap": false,
+  "remaining_owned_pids": null,
+  "result": null,
+  "observer_receipts": [],
+  "resource_samples": [],
+  "independent_acceptance": false,
+  "full_ROOT_outer_clock_qualified": false
+}

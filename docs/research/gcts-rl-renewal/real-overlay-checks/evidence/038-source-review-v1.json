@@ -1,0 +1,96 @@
+{
+  "schema": "independent-family-RL-prospective-source-review-v1",
+  "status": "V1_BLOCKER_RECORDED_V2_SOURCE_REPAIR_REVIEWED_RUNTIME_GATES_UNEXECUTED",
+  "reviewed_sources": [
+    {
+      "role": "fixture_worker_source",
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/real_overlay_fixture_worker_v1.py",
+      "sha256": "ad4855ecf3e2a9835fe8b9785f6a44dc0fc961ead2a64f08017beb59868426c7",
+      "bytes": 24768
+    },
+    {
+      "role": "fixture_owner_source",
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned_real_overlay_fixture_v1.py",
+      "sha256": "bc4411a7bf447f7e912c2a057250ea9a79e536f1d5e7d357c630600238db2725",
+      "bytes": 10718
+    },
+    {
+      "role": "overlay_v2",
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/family_learned_overlay_v2.py",
+      "sha256": "9a15caf82affdcfb359eb1ffdc9c6c635b861ca53cb5eeb59de86dea7f82c956",
+      "bytes": 13208
+    },
+    {
+      "role": "overlay_diff",
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/overlay-v1-to-v2.diff",
+      "sha256": "a3fa093755e9037542907286443b5b991b4063b4d97fa57a24133531dea5147b",
+      "bytes": 2168
+    },
+    {
+      "role": "frozen_feature_source",
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+      "bytes": 12386
+    },
+    {
+      "role": "frozen_update_source",
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_episode_learning_v1.py",
+      "sha256": "25a78303ae0b839973ab5ef9735ef928b9ca90f5dc1ac816934fb52c65c6ab01",
+      "bytes": 3722
+    },
+    {
+      "role": "frozen_RL_protocol",
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813
+    },
+    {
+      "role": "frozen_split",
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811
+    }
+  ],
+  "frozen_feature_count": 31,
+  "fixture_scenarios": 24,
+  "predecessor_blocker": {
+    "id": "prepared-menu-authenticity",
+    "source": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+    "finding": "Graph semantic SHA alone does not bind mutable prepared menu/action IDs/draw flag; choose_prepared V1 accepts caller payload without rederiving it.",
+    "scope": "Prospective source finding. V1 mutant was never executed by this reviewer."
+  },
+  "successor_disposition": "Minimal V2 rederives exact menu and literal draw bool from same frozen/current graph, recipes, registry, hints and active state; comparison precedes any choice mutation. The complete source diff preserves feature schema/math/split/hyperparameters.",
+  "positive_source_evidence": [
+    "Complete original base stream remains a full permutation with NULL suppressing fixed advice",
+    "Global graph decision is checked before advice; forced consumes no draw",
+    "Whole Controller resync includes all pending members/full IDs/distant assigned marks; no partial proposal salvage",
+    "Waiting persists; retired/consumed clears active ID; paired checkpoint restores graph/hints/overlay",
+    "Dependency-complete selected strict-prior closure supplies potential; missing/zero/pending marks alone are not facts",
+    "31 feature names use structural values, constructor heads and code equality only; no proof word/name/value lookup",
+    "Fixed eight donor updates use old baseline advantage before clipping; fixed held-out split and evaluation do not update"
+  ],
+  "required_driver_obligations": [
+    "Bind each raw trajectory/result/resource receipt to exact complete independently rebuilt policy choices and gradients before qualified_update",
+    "Enforce frozen donor order/seeds and final eighth checkpoint without selection",
+    "Use chronological unique non-NULL commit IDs; restore active origin on rollback and count each commit retirement at most once",
+    "Count Fmax over every actual primitive state including forced/failed branches, never accumulated rediscovery",
+    "No update from resource UNKNOWN, partial tape, failure or unexecuted suffix",
+    "Actual donor/held-out compiler/pool static gate and full scientific DFS/RNG/reward/update replay still required"
+  ],
+  "conformance_gaps": [
+    "Actual recipient and donor licenses",
+    "all171 source bodies and complete prospective pools",
+    "full scientific DFS event adapter",
+    "chronological seeded RNG",
+    "trained return or update",
+    "actual proof certificate",
+    "native/Wang compiler correspondence",
+    "fractional t-values and multi-point candidate incidence",
+    "general transformations",
+    "learned geometric pruning",
+    "unrestricted cluster synthesis"
+  ],
+  "actual_scientific_imports_functions_fixtures_models_searches_RNG_training_replays_checkers_native": 0,
+  "source_authoring_manual_review_seconds": null,
+  "execution_authorized": false
+}

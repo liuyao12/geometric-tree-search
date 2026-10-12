@@ -1,0 +1,15 @@
+{
+  "schema": "ROOT-independent-real-Controller-overlay-replay-activation-v1",
+  "authorized": true,
+  "plan": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json",
+    "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+    "bytes": 200523
+  },
+  "ROOT_source_review": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-source-review-v2.json",
+    "sha256": "87b012fa23525d16efcd59d2bee6a81002c1f4fc1c76d3fb89b6d6f6991d2910",
+    "bytes": 4045
+  },
+  "scope": "One frozen bounded fixture phase; no theorem search, training or native query"
+}

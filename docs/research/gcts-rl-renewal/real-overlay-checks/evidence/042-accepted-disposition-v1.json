@@ -1,0 +1,63 @@
+{
+  "status": "accepted_complete_real_engine_synthetic_overlay_gate",
+  "producer_terminal": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-terminal-v2.json",
+    "sha256": "539c2248c30a7b3d425e997c240a1ab9fdffc184f8bd1aaa409a6057e4c7fccf",
+    "bytes": 2622
+  },
+  "independent_terminal": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-terminal-v2.json",
+    "sha256": "bb6193b591c702f6cbeffae228c143a2cb870a9f9fb8ef3cc1ba4606bf4f1b3a",
+    "bytes": 2637
+  },
+  "raw_result": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-result-v1.json",
+    "sha256": "3ae1f8d299e4168168dbe9b4b4d5b01e8330895a56dc3baf78c5412373956d6f",
+    "bytes": 9464240
+  },
+  "independent_result": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/owned-output-v1/independent-result-v1.json",
+    "sha256": "d99a8bb2aa1aebbdfb96c0441abfdc7cf4e6aba16b4e227593c35d96fe9993c5",
+    "bytes": 13316
+  },
+  "scenario_count": 24,
+  "complete_events": 122,
+  "ordered_choices": 14,
+  "primitive_steps": 11,
+  "exact_graph_states": 244,
+  "literal_candidate_keys": 21602,
+  "rejected_preparations": 12,
+  "rejected_registrations": 5,
+  "successful_new_policy_selections": 9,
+  "actual_saved_transcript_mutants_rejected": 12,
+  "graph_snapshot_scope": "244 snapshot observations including repeated before/after/terminal states; not distinct graphs. 21602 candidate-key observations across snapshots, not distinct inventory.",
+  "producer_full_owned_seconds": 0.968946792,
+  "independent_full_owned_seconds": 4.4946878329999995,
+  "actual_phase_subtotal_seconds": 5.463634624999999,
+  "pre_scientific_environment_failure_seconds": 0.373626625,
+  "cost_scope": "Actual owned dispatch/import/observer/decoding/final serialization/exit/reap. Metadata review, source authoring, report/publication and preserved pre-scientific failure are additional.",
+  "producer_peak_estimate_bytes": 231587840,
+  "independent_peak_estimate_bytes": 247365632,
+  "memory_scope": "Conservative owned kernel/sample estimates, retrospective gates, not OS hard caps",
+  "source_V1_gap_observed_in_runtime": false,
+  "V2_mutation_rejections_observed": true,
+  "mathematical_proofs_accepted": 0,
+  "training_runs": 0,
+  "actual_RNG_draws": 0,
+  "native_queries": 0,
+  "broad_goal_complete": false,
+  "uncovered": [
+    "Actual recipient and donor licenses",
+    "all171 source bodies and complete prospective pools",
+    "full scientific DFS event adapter",
+    "chronological seeded RNG",
+    "trained return or update",
+    "actual proof certificate",
+    "native/Wang compiler correspondence",
+    "fractional t-values and multi-point candidate incidence",
+    "general transformations",
+    "learned geometric pruning",
+    "unrestricted cluster synthesis"
+  ],
+  "next_gate": "Independent per-context compiler/pool gate; complete scientific DFS/RNG/return/update adapter and audit before donor learning"
+}

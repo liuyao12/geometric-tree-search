@@ -1,0 +1,88 @@
+{
+  "schema": "ROOT-independent-real-Controller-overlay-replay-source-review-v1",
+  "status": "passed_ROOT_full_independent_replay_source_and_exact_actual_input_review",
+  "plan_pin": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json",
+    "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+    "bytes": 200523
+  },
+  "source_review_passed": true,
+  "full_sources_reviewed": true,
+  "fully_read_sources": [
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_features_v1.py",
+      "sha256": "97a00b7670ae7936e0478f405c8e4eaab4c62be8fe5a89d59258e3c5e96f0c49",
+      "bytes": 11901
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_policy_v1.py",
+      "sha256": "2123f4e764149d9638e59a8b783644e874ff35d135cc5266d4260c776987dadc",
+      "bytes": 8907
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_points_v1.py",
+      "sha256": "fede5baf7f2e14ffccfb57802c9a770edc57ee2771f1e1a1bfa24959b30bc419",
+      "bytes": 12501
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_whole_v1.py",
+      "sha256": "23e5a8385f753515e7a9f610761ea71999cc05f91bb406b47a518620e05e476b",
+      "bytes": 12024
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_replay_v1.py",
+      "sha256": "d1d50ec6d1f53a4d04374a795701ceff7f3acc8bf0f696e8fefdb8696a725f28",
+      "bytes": 28915
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_worker_v1.py",
+      "sha256": "f9a474ecdc7e31376d08858a843d9fbf342b942f7a6622e629c72b09351c1781",
+      "bytes": 8714
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/owned_independent_fixture_replay_v1.py",
+      "sha256": "bc157dcc95558b359db835c4aaff457a7e2cf84f6d47d212112e523943cc5a43",
+      "bytes": 11068
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/finalize_actual_fixture_replay_plan_v1.py",
+      "sha256": "353bc037477e4f6f95a5d2796ef042874337db2d6cda2efb8bcbaf67c193f549",
+      "bytes": 6107
+    },
+    {
+      "path": ".gcts-active/family-rl-independent-review-20261012/freeze_independent_source_v1.py",
+      "sha256": "09a8fc265c68e7de0a9b0186d7f1a30b2ce0107424da44e66e59b617f21d4c34",
+      "bytes": 11406
+    }
+  ],
+  "metadata_finalizer_successor": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/finalize_actual_fixture_replay_plan_v2.py",
+    "sha256": "e4677b1d13689697cf54da1de7fa1b57d3e78abaeee636bdb03aa5371f5785a7",
+    "bytes": 7439
+  },
+  "ROOT_wrapper": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/run_owned_once_v2.py",
+    "sha256": "d30eb0003b24b97b410931638294abe32d8300d1ae775d374b3d9b45eed09dd6",
+    "bytes": 7125
+  },
+  "unique_exact_pins": 876,
+  "byte_exact_archive_members": [
+    "independent_features_v1.py",
+    "independent_policy_v1.py",
+    "independent_fixture_points_v1.py",
+    "independent_fixture_whole_v1.py",
+    "independent_fixture_replay_v1.py",
+    "independent_fixture_worker_v1.py",
+    "owned_independent_fixture_replay_v1.py",
+    "finalize_actual_fixture_replay_plan_v1.py",
+    "freeze_independent_source_v1.py",
+    "protocol-v1.json",
+    "owner-fixture-to-independent.diff",
+    "source-review-v1.json",
+    "source-plan-v1.json"
+  ],
+  "acceptance_authority": "Independent literal enumeration from original frozen corpus; no producer graph/body/Controller/features/math/decoder imports. Full24 scenario operation grammar prevents prefix acceptance. All raw before/result/after/terminal fields rebuilt; measured timings finite only;12 altered saved records actually re-audited.",
+  "claim_scope": "Synthetic 6-row point/mark/overlay interface gate only; no positive mathematical certificate, actual seeded RNG, donor DFS, training or speedup acceptance.",
+  "scientific_calls_in_preflight": 0,
+  "one_shot_no_retry": true
+}

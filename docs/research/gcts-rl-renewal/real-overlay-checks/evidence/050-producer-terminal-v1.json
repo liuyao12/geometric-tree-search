@@ -1,0 +1,54 @@
+{
+  "schema": "ROOT-actual-real-Controller-overlay-fixture-terminal-v1",
+  "status": "unknown_or_failed_ROOT_full_owned_lifetime",
+  "source_plan_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v1.json",
+    "sha256": "d0a55fbd9a3c50b16a578edbc46150921c0e28141002b5989cd82f28a597844c",
+    "bytes": 196105
+  },
+  "source_review_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-source-review-v1.json",
+    "sha256": "87813c75adf8e2ce23b339659026cbc6a0346351b0e2b6041545968bea7ec038",
+    "bytes": 3885
+  },
+  "activation_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/root-fixture-activation-v1.json",
+    "sha256": "308bc114e902eb10e5ee836eb3f1ab798692074708acdc713a7384077e9d458d",
+    "bytes": 625
+  },
+  "result_pin": null,
+  "owned_lifetime_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v1/fixture-lifetime-v1.json",
+    "sha256": "9c1a0b8216354633c5042dbcfb149da835fe939de388ea245282121d468a89bb",
+    "bytes": 1484
+  },
+  "owner_pid": 45647,
+  "owner_exit_code": 2,
+  "owner_terminal_reaped": true,
+  "worker_terminal_reaped": false,
+  "full_owner_lifetime_seconds": 0.373626625,
+  "conservative_combined_peak_bytes": 120930304,
+  "full_resource_accepted": false,
+  "cancelled": false,
+  "forced_kill": false,
+  "memory_scope": "ROOT peak plus max direct owner peak or owned owner/worker/observer estimate; retrospective gate, not hard OS cap",
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-real-overlay-source-20261012/owned_real_overlay_fixture_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v1.json"
+  ],
+  "stdout_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-outer-stdout.bin",
+    "sha256": "5e473cf20803f2e9ea317596d4554f060c7e72dca2be4d10bec52ee1b9b3e256",
+    "bytes": 1432
+  },
+  "stderr_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-outer-stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "mathematical_proofs_accepted": 0,
+  "training_runs": 0,
+  "native_queries": 0
+}

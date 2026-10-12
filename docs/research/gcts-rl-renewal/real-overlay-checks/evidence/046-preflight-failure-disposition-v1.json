@@ -1,0 +1,19 @@
+{
+  "status": "verified_environment_preflight_failure_before_any_scientific_worker",
+  "failure": "PermissionError: [Errno 1] Operation not permitted: '/bin/ps'; final observer: PermissionError: [Errno 1] Operation not permitted: '/bin/ps'",
+  "owned_lifetime": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v1/fixture-lifetime-v1.json",
+    "sha256": "9c1a0b8216354633c5042dbcfb149da835fe939de388ea245282121d468a89bb",
+    "bytes": 1484
+  },
+  "ROOT_terminal": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-terminal-v1.json",
+    "sha256": "ab7810aa634441a52baa911ffc4a50a007e2f19997dc3ee5d245299360f47fa2",
+    "bytes": 2412
+  },
+  "scientific_worker_created": false,
+  "scientific_calls": 0,
+  "owner_terminal_reaped": true,
+  "correction": "Request authorized unsandboxed process accounting for a fresh one-shot plan successor. Preserve original immutable plan, activation and output. No scientific result or expectation was observed; no budgets/features/scenario/source changes.",
+  "scientific_retry": false
+}

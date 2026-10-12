@@ -1,0 +1,674 @@
+[
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/000-family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+      "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+      "bytes": 21491
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/001-owned_numeric_gate_v1.py",
+      "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+      "bytes": 21491
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/family_learned_overlay_v2.py",
+      "sha256": "9a15caf82affdcfb359eb1ffdc9c6c635b861ca53cb5eeb59de86dea7f82c956",
+      "bytes": 13208
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/002-family_learned_overlay_v2.py",
+      "sha256": "9a15caf82affdcfb359eb1ffdc9c6c635b861ca53cb5eeb59de86dea7f82c956",
+      "bytes": 13208
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v1.json",
+      "sha256": "d0a55fbd9a3c50b16a578edbc46150921c0e28141002b5989cd82f28a597844c",
+      "bytes": 196105
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/003-fixture-plan-v1.json",
+      "sha256": "d0a55fbd9a3c50b16a578edbc46150921c0e28141002b5989cd82f28a597844c",
+      "bytes": 196105
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v2.json",
+      "sha256": "e179fbbaec47518d3661c5faee24417c590cbd73ea0d52364f7e6e387298ae27",
+      "bytes": 198372
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/004-fixture-plan-v2.json",
+      "sha256": "e179fbbaec47518d3661c5faee24417c590cbd73ea0d52364f7e6e387298ae27",
+      "bytes": 198372
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/freeze_real_overlay_fixture_v1.py",
+      "sha256": "e6a6a715adea46f59d364ea7c8ef890cc938a8d1f07af96c24b62a7844ac9727",
+      "bytes": 7953
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/005-freeze_real_overlay_fixture_v1.py",
+      "sha256": "e6a6a715adea46f59d364ea7c8ef890cc938a8d1f07af96c24b62a7844ac9727",
+      "bytes": 7953
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/overlay-v1-to-v2.diff",
+      "sha256": "a3fa093755e9037542907286443b5b991b4063b4d97fa57a24133531dea5147b",
+      "bytes": 2168
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/006-overlay-v1-to-v2.diff",
+      "sha256": "a3fa093755e9037542907286443b5b991b4063b4d97fa57a24133531dea5147b",
+      "bytes": 2168
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/overlay_successor_author_v2.py",
+      "sha256": "5f62c23e6c8be0baccc2a194cc2ae68ba03e463c35118b4387adb1c6e46fe0e1",
+      "bytes": 2280
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/007-overlay_successor_author_v2.py",
+      "sha256": "5f62c23e6c8be0baccc2a194cc2ae68ba03e463c35118b4387adb1c6e46fe0e1",
+      "bytes": 2280
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v1/fixture-lifetime-v1.json",
+      "sha256": "9c1a0b8216354633c5042dbcfb149da835fe939de388ea245282121d468a89bb",
+      "bytes": 1484
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/008-fixture-lifetime-v1.json",
+      "sha256": "9c1a0b8216354633c5042dbcfb149da835fe939de388ea245282121d468a89bb",
+      "bytes": 1484
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-lifetime-v1.json",
+      "sha256": "dd71ee6f728db27b853ee66ca7ced080ef8893b813b882df62d7a62023caf3ee",
+      "bytes": 10508
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/009-fixture-lifetime-v1.json",
+      "sha256": "dd71ee6f728db27b853ee66ca7ced080ef8893b813b882df62d7a62023caf3ee",
+      "bytes": 10508
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-result-v1.json",
+      "sha256": "3ae1f8d299e4168168dbe9b4b4d5b01e8330895a56dc3baf78c5412373956d6f",
+      "bytes": 9464240
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/010-fixture-result-v1.json",
+      "sha256": "3ae1f8d299e4168168dbe9b4b4d5b01e8330895a56dc3baf78c5412373956d6f",
+      "bytes": 9464240
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned_real_overlay_fixture_v1.py",
+      "sha256": "bc4411a7bf447f7e912c2a057250ea9a79e536f1d5e7d357c630600238db2725",
+      "bytes": 10718
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/011-owned_real_overlay_fixture_v1.py",
+      "sha256": "bc4411a7bf447f7e912c2a057250ea9a79e536f1d5e7d357c630600238db2725",
+      "bytes": 10718
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/protocol-v1.json",
+      "sha256": "a3f4c492244c3439fb32a3a1fb22079ff1320dc54c99e433bfc0282a6c575a6c",
+      "bytes": 5739
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/012-protocol-v1.json",
+      "sha256": "a3f4c492244c3439fb32a3a1fb22079ff1320dc54c99e433bfc0282a6c575a6c",
+      "bytes": 5739
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/real_overlay_fixture_corpus_v1.json",
+      "sha256": "68fc7ab0d61a908f2fa80269a75455a0887f4fde649bae2c7c1be1a0eb8d8b30",
+      "bytes": 4453
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/013-real_overlay_fixture_corpus_v1.json",
+      "sha256": "68fc7ab0d61a908f2fa80269a75455a0887f4fde649bae2c7c1be1a0eb8d8b30",
+      "bytes": 4453
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/real_overlay_fixture_worker_v1.py",
+      "sha256": "ad4855ecf3e2a9835fe8b9785f6a44dc0fc961ead2a64f08017beb59868426c7",
+      "bytes": 24768
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/014-real_overlay_fixture_worker_v1.py",
+      "sha256": "ad4855ecf3e2a9835fe8b9785f6a44dc0fc961ead2a64f08017beb59868426c7",
+      "bytes": 24768
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/root-fixture-activation-v1.json",
+      "sha256": "308bc114e902eb10e5ee836eb3f1ab798692074708acdc713a7384077e9d458d",
+      "bytes": 625
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/015-root-fixture-activation-v1.json",
+      "sha256": "308bc114e902eb10e5ee836eb3f1ab798692074708acdc713a7384077e9d458d",
+      "bytes": 625
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/root-fixture-activation-v2.json",
+      "sha256": "1774f17f3f78de8157a0099b5eeb0422b4bbb1b23256da02351eca91ac7702b5",
+      "bytes": 625
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/016-root-fixture-activation-v2.json",
+      "sha256": "1774f17f3f78de8157a0099b5eeb0422b4bbb1b23256da02351eca91ac7702b5",
+      "bytes": 625
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/source-archive-v1.zip",
+      "sha256": "bca13e7cd4556cca25672cf80c4b810606a1081a71f37739d4ad71a3cbd00326",
+      "bytes": 72373
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/017-source-archive-v1.zip",
+      "sha256": "bca13e7cd4556cca25672cf80c4b810606a1081a71f37739d4ad71a3cbd00326",
+      "bytes": 72373
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/018-donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+      "bytes": 12386
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/019-family_graph_features_v1.py",
+      "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+      "bytes": 12386
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+      "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+      "bytes": 12156
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/020-family_learned_overlay_v1.py",
+      "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+      "bytes": 12156
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/021-protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json",
+      "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+      "bytes": 200523
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/022-actual-replay-plan-v1.json",
+      "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+      "bytes": 200523
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/finalize_actual_fixture_replay_plan_v1.py",
+      "sha256": "353bc037477e4f6f95a5d2796ef042874337db2d6cda2efb8bcbaf67c193f549",
+      "bytes": 6107
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/023-finalize_actual_fixture_replay_plan_v1.py",
+      "sha256": "353bc037477e4f6f95a5d2796ef042874337db2d6cda2efb8bcbaf67c193f549",
+      "bytes": 6107
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/finalize_actual_fixture_replay_plan_v2.py",
+      "sha256": "e4677b1d13689697cf54da1de7fa1b57d3e78abaeee636bdb03aa5371f5785a7",
+      "bytes": 7439
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/024-finalize_actual_fixture_replay_plan_v2.py",
+      "sha256": "e4677b1d13689697cf54da1de7fa1b57d3e78abaeee636bdb03aa5371f5785a7",
+      "bytes": 7439
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/freeze_independent_source_v1.py",
+      "sha256": "09a8fc265c68e7de0a9b0186d7f1a30b2ce0107424da44e66e59b617f21d4c34",
+      "bytes": 11406
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/025-freeze_independent_source_v1.py",
+      "sha256": "09a8fc265c68e7de0a9b0186d7f1a30b2ce0107424da44e66e59b617f21d4c34",
+      "bytes": 11406
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_features_v1.py",
+      "sha256": "97a00b7670ae7936e0478f405c8e4eaab4c62be8fe5a89d59258e3c5e96f0c49",
+      "bytes": 11901
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/026-independent_features_v1.py",
+      "sha256": "97a00b7670ae7936e0478f405c8e4eaab4c62be8fe5a89d59258e3c5e96f0c49",
+      "bytes": 11901
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_points_v1.py",
+      "sha256": "fede5baf7f2e14ffccfb57802c9a770edc57ee2771f1e1a1bfa24959b30bc419",
+      "bytes": 12501
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/027-independent_fixture_points_v1.py",
+      "sha256": "fede5baf7f2e14ffccfb57802c9a770edc57ee2771f1e1a1bfa24959b30bc419",
+      "bytes": 12501
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_replay_v1.py",
+      "sha256": "d1d50ec6d1f53a4d04374a795701ceff7f3acc8bf0f696e8fefdb8696a725f28",
+      "bytes": 28915
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/028-independent_fixture_replay_v1.py",
+      "sha256": "d1d50ec6d1f53a4d04374a795701ceff7f3acc8bf0f696e8fefdb8696a725f28",
+      "bytes": 28915
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_whole_v1.py",
+      "sha256": "23e5a8385f753515e7a9f610761ea71999cc05f91bb406b47a518620e05e476b",
+      "bytes": 12024
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/029-independent_fixture_whole_v1.py",
+      "sha256": "23e5a8385f753515e7a9f610761ea71999cc05f91bb406b47a518620e05e476b",
+      "bytes": 12024
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_fixture_worker_v1.py",
+      "sha256": "f9a474ecdc7e31376d08858a843d9fbf342b942f7a6622e629c72b09351c1781",
+      "bytes": 8714
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/030-independent_fixture_worker_v1.py",
+      "sha256": "f9a474ecdc7e31376d08858a843d9fbf342b942f7a6622e629c72b09351c1781",
+      "bytes": 8714
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/independent_policy_v1.py",
+      "sha256": "2123f4e764149d9638e59a8b783644e874ff35d135cc5266d4260c776987dadc",
+      "bytes": 8907
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/031-independent_policy_v1.py",
+      "sha256": "2123f4e764149d9638e59a8b783644e874ff35d135cc5266d4260c776987dadc",
+      "bytes": 8907
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/owned-output-v1/independent-lifetime-v1.json",
+      "sha256": "33441190cbd3ee75358ef981077871f78531de8804a89231120d4ccd5ea02a11",
+      "bytes": 56745
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/032-independent-lifetime-v1.json",
+      "sha256": "33441190cbd3ee75358ef981077871f78531de8804a89231120d4ccd5ea02a11",
+      "bytes": 56745
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/owned-output-v1/independent-result-v1.json",
+      "sha256": "d99a8bb2aa1aebbdfb96c0441abfdc7cf4e6aba16b4e227593c35d96fe9993c5",
+      "bytes": 13316
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/033-independent-result-v1.json",
+      "sha256": "d99a8bb2aa1aebbdfb96c0441abfdc7cf4e6aba16b4e227593c35d96fe9993c5",
+      "bytes": 13316
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/owned_independent_fixture_replay_v1.py",
+      "sha256": "bc157dcc95558b359db835c4aaff457a7e2cf84f6d47d212112e523943cc5a43",
+      "bytes": 11068
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/034-owned_independent_fixture_replay_v1.py",
+      "sha256": "bc157dcc95558b359db835c4aaff457a7e2cf84f6d47d212112e523943cc5a43",
+      "bytes": 11068
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/protocol-v1.json",
+      "sha256": "55261122057f7184eaba1400a3b5137dc383fc173c33c2661178ee1d9ce79fc4",
+      "bytes": 7097
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/035-protocol-v1.json",
+      "sha256": "55261122057f7184eaba1400a3b5137dc383fc173c33c2661178ee1d9ce79fc4",
+      "bytes": 7097
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/root-actual-replay-activation-v1.json",
+      "sha256": "0ad8185e8bfb5a0ca5bf07966f06a6825598c67dd3ba34b716024c3d16b8eb21",
+      "bytes": 638
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/036-root-actual-replay-activation-v1.json",
+      "sha256": "0ad8185e8bfb5a0ca5bf07966f06a6825598c67dd3ba34b716024c3d16b8eb21",
+      "bytes": 638
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/source-plan-v1.json",
+      "sha256": "66655bf5e1514784fefeca3011cfdeae56006a6c1e65d0ba9b2c00acac2621a0",
+      "bytes": 198280
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/037-source-plan-v1.json",
+      "sha256": "66655bf5e1514784fefeca3011cfdeae56006a6c1e65d0ba9b2c00acac2621a0",
+      "bytes": 198280
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/source-review-v1.json",
+      "sha256": "e257177626a59084963e0a662c880b16e4923b1caf0a01c7640da0f66ece4cd3",
+      "bytes": 5165
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/038-source-review-v1.json",
+      "sha256": "e257177626a59084963e0a662c880b16e4923b1caf0a01c7640da0f66ece4cd3",
+      "bytes": 5165
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/family-rl-independent-review-20261012/source-v1.zip",
+      "sha256": "7b8c57e8e4dba46ad424401c9fdfa420cb1fc9e328308a7a41673006906ac854",
+      "bytes": 89724
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/039-source-v1.zip",
+      "sha256": "7b8c57e8e4dba46ad424401c9fdfa420cb1fc9e328308a7a41673006906ac854",
+      "bytes": 89724
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/040-hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/041-hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/accepted-disposition-v1.json",
+      "sha256": "51ac4f9d7ca7d4c041e70fcf438da582bd44eb3d63c0acf831ac4d98e110926d",
+      "bytes": 2976
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/042-accepted-disposition-v1.json",
+      "sha256": "51ac4f9d7ca7d4c041e70fcf438da582bd44eb3d63c0acf831ac4d98e110926d",
+      "bytes": 2976
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-source-review-v2.json",
+      "sha256": "87b012fa23525d16efcd59d2bee6a81002c1f4fc1c76d3fb89b6d6f6991d2910",
+      "bytes": 4045
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/043-independent-source-review-v2.json",
+      "sha256": "87b012fa23525d16efcd59d2bee6a81002c1f4fc1c76d3fb89b6d6f6991d2910",
+      "bytes": 4045
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-terminal-v2.json",
+      "sha256": "bb6193b591c702f6cbeffae228c143a2cb870a9f9fb8ef3cc1ba4606bf4f1b3a",
+      "bytes": 2637
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/044-independent-terminal-v2.json",
+      "sha256": "bb6193b591c702f6cbeffae228c143a2cb870a9f9fb8ef3cc1ba4606bf4f1b3a",
+      "bytes": 2637
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/metadata-preflight-failure-v1.json",
+      "sha256": "ccab574fe98c611e67cdea368afe17ce81058b0145e2e5fa764e8e185d916de0",
+      "bytes": 362
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/045-metadata-preflight-failure-v1.json",
+      "sha256": "ccab574fe98c611e67cdea368afe17ce81058b0145e2e5fa764e8e185d916de0",
+      "bytes": 362
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/preflight-failure-disposition-v1.json",
+      "sha256": "96df212b655594b2b0315ff2472ed5e854858e1db0319a1e4864998f01fc8044",
+      "bytes": 1086
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/046-preflight-failure-disposition-v1.json",
+      "sha256": "96df212b655594b2b0315ff2472ed5e854858e1db0319a1e4864998f01fc8044",
+      "bytes": 1086
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/prepare_report_v1.py",
+      "sha256": "05cf21c00b83e17c644ff37bddb3904b7447296c4a48ac25f8ea6ab95470ca38",
+      "bytes": 20381
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/047-prepare_report_v1.py",
+      "sha256": "05cf21c00b83e17c644ff37bddb3904b7447296c4a48ac25f8ea6ab95470ca38",
+      "bytes": 20381
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-source-review-v1.json",
+      "sha256": "87813c75adf8e2ce23b339659026cbc6a0346351b0e2b6041545968bea7ec038",
+      "bytes": 3885
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/048-producer-source-review-v1.json",
+      "sha256": "87813c75adf8e2ce23b339659026cbc6a0346351b0e2b6041545968bea7ec038",
+      "bytes": 3885
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-source-review-v2.json",
+      "sha256": "23f1d44f6bcddd293f85af9a6bd5840f1c3a775fa10f9733120350e4f668be1a",
+      "bytes": 4333
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/049-producer-source-review-v2.json",
+      "sha256": "23f1d44f6bcddd293f85af9a6bd5840f1c3a775fa10f9733120350e4f668be1a",
+      "bytes": 4333
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-terminal-v1.json",
+      "sha256": "ab7810aa634441a52baa911ffc4a50a007e2f19997dc3ee5d245299360f47fa2",
+      "bytes": 2412
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/050-producer-terminal-v1.json",
+      "sha256": "ab7810aa634441a52baa911ffc4a50a007e2f19997dc3ee5d245299360f47fa2",
+      "bytes": 2412
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-terminal-v2.json",
+      "sha256": "539c2248c30a7b3d425e997c240a1ab9fdffc184f8bd1aaa409a6057e4c7fccf",
+      "bytes": 2622
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/051-producer-terminal-v2.json",
+      "sha256": "539c2248c30a7b3d425e997c240a1ab9fdffc184f8bd1aaa409a6057e4c7fccf",
+      "bytes": 2622
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/run_owned_once_v1.py",
+      "sha256": "ea6b8b1415a832223de28a4a27c71ff132943e83ae2d18414a2291bea1c7cb83",
+      "bytes": 7119
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/052-run_owned_once_v1.py",
+      "sha256": "ea6b8b1415a832223de28a4a27c71ff132943e83ae2d18414a2291bea1c7cb83",
+      "bytes": 7119
+    }
+  },
+  {
+    "origin": {
+      "path": ".gcts-active/real-overlay-fixture-progress-20261012/run_owned_once_v2.py",
+      "sha256": "d30eb0003b24b97b410931638294abe32d8300d1ae775d374b3d9b45eed09dd6",
+      "bytes": 7125
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/053-run_owned_once_v2.py",
+      "sha256": "d30eb0003b24b97b410931638294abe32d8300d1ae775d374b3d9b45eed09dd6",
+      "bytes": 7125
+    }
+  },
+  {
+    "origin": {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/054-AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    }
+  },
+  {
+    "origin": {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "published": {
+      "path": "docs/research/gcts-rl-renewal/real-overlay-checks/evidence/055-basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  }
+]

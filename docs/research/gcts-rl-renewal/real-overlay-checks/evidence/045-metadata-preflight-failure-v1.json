@@ -1,0 +1,7 @@
+{
+  "status": "preserved_metadata_only_path_serialization_failure_corrected",
+  "error": "ValueError attempting project-relative external Python runtime path",
+  "scientific_calls": 0,
+  "successor_plan_and_wrapper_already_written_and_preserved": true,
+  "correction": "External paths remain absolute; compare declared path identity separately from byte pin."
+}

@@ -1,0 +1,415 @@
+{
+  "schema": "owned-real-Controller-overlay-fixture-lifetime-v1",
+  "status": "completed_owned_producer_fixture_pending_ROOT_clock_and_independent_replay",
+  "plan": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v2.json",
+    "sha256": "e179fbbaec47518d3661c5faee24417c590cbd73ea0d52364f7e6e387298ae27",
+    "bytes": 198372
+  },
+  "worker_created": true,
+  "worker_pid": 45817,
+  "worker_terminal_reaped": true,
+  "worker_exit_code": 0,
+  "child_lifetime_including_imports_serialization_and_reaping_seconds": 0.554187875,
+  "supervisor_seconds_before_final_receipt": 0.756689292,
+  "kernel_owner_peak_bytes": 95059968,
+  "kernel_worker_peak_bytes": 74645504,
+  "kernel_observer_max_peak_bytes": 2572288,
+  "conservative_combined_peak_bytes": 172277760,
+  "sampled_aggregate_peak_bytes": 138985472,
+  "memory_scope": "Sum of macOS kernel peaks including observer; sampled owned RSS; measurement, not hard OS cap",
+  "final_receipt_scope": "ROOT separately measures full owner exit/reap and final serialization; required for qualification",
+  "resource_gate_before_final_receipt": true,
+  "producer_data_gate": true,
+  "failure": null,
+  "forced_kill": false,
+  "streams_open_after_reap": false,
+  "remaining_owned_pids": [],
+  "result": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned-output-v2/fixture-result-v1.json",
+    "sha256": "3ae1f8d299e4168168dbe9b4b4d5b01e8330895a56dc3baf78c5412373956d6f",
+    "bytes": 9464240
+  },
+  "observer_receipts": [
+    {
+      "pid": 45816,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011366625000000019,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27378,
+          "retained_bytes": 27378
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45818,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011817582999999993,
+      "kernel_peak_bytes": 2572288,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45819,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01152016699999997,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45820,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011691583000000005,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45821,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012921541000000036,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45822,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011557166000000008,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45823,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010940541999999998,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45824,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01166804199999999,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45825,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011244916999999965,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45826,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011283708000000003,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45827,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012120165999999988,
+      "kernel_peak_bytes": 2572288,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45828,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011329749999999916,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27432,
+          "retained_bytes": 27432
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45829,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010991959000000051,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27378,
+          "retained_bytes": 27378
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    }
+  ],
+  "resource_samples": [
+    {
+      "seconds": 0.18200683299999998,
+      "aggregate_rss_bytes": 71270400,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.23452079200000003,
+      "aggregate_rss_bytes": 114917376,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.280603833,
+      "aggregate_rss_bytes": 117407744,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.333365833,
+      "aggregate_rss_bytes": 117276672,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.38683833300000003,
+      "aggregate_rss_bytes": 129564672,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.43336975,
+      "aggregate_rss_bytes": 133988352,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.48409325000000003,
+      "aggregate_rss_bytes": 137658368,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.533612083,
+      "aggregate_rss_bytes": 138936320,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.586839083,
+      "aggregate_rss_bytes": 138969088,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.634613042,
+      "aggregate_rss_bytes": 138969088,
+      "worker_pids": [
+        45817
+      ]
+    },
+    {
+      "seconds": 0.683769208,
+      "aggregate_rss_bytes": 138985472,
+      "worker_pids": [
+        45817
+      ]
+    }
+  ],
+  "independent_acceptance": false,
+  "full_ROOT_outer_clock_qualified": false
+}

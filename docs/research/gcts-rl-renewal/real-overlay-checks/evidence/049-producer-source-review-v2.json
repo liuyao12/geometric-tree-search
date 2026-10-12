@@ -1,0 +1,91 @@
+{
+  "schema": "ROOT-real-Controller-overlay-fixture-source-review-v1",
+  "status": "passed_ROOT_full_producer_source_review_and_exact_preflight",
+  "fixture_plan": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v2.json",
+    "sha256": "e179fbbaec47518d3661c5faee24417c590cbd73ea0d52364f7e6e387298ae27",
+    "bytes": 198372
+  },
+  "plan_pin": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v2.json",
+    "sha256": "e179fbbaec47518d3661c5faee24417c590cbd73ea0d52364f7e6e387298ae27",
+    "bytes": 198372
+  },
+  "source_review_passed": true,
+  "full_sources_reviewed": true,
+  "fully_read_current_sources": [
+    {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/overlay_successor_author_v2.py",
+      "sha256": "5f62c23e6c8be0baccc2a194cc2ae68ba03e463c35118b4387adb1c6e46fe0e1",
+      "bytes": 2280
+    },
+    {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/family_learned_overlay_v2.py",
+      "sha256": "9a15caf82affdcfb359eb1ffdc9c6c635b861ca53cb5eeb59de86dea7f82c956",
+      "bytes": 13208
+    },
+    {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/real_overlay_fixture_worker_v1.py",
+      "sha256": "ad4855ecf3e2a9835fe8b9785f6a44dc0fc961ead2a64f08017beb59868426c7",
+      "bytes": 24768
+    },
+    {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/owned_real_overlay_fixture_v1.py",
+      "sha256": "bc4411a7bf447f7e912c2a057250ea9a79e536f1d5e7d357c630600238db2725",
+      "bytes": 10718
+    },
+    {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/freeze_real_overlay_fixture_v1.py",
+      "sha256": "e6a6a715adea46f59d364ea7c8ef890cc938a8d1f07af96c24b62a7844ac9727",
+      "bytes": 7953
+    }
+  ],
+  "fully_read_current_inputs": [
+    "family_graph_features_v1.py",
+    "family_policy_math_v2.py",
+    "owned_numeric_gate_v1.py:1-189",
+    "protocol-v1.json",
+    "real_overlay_fixture_corpus_v1.json",
+    "overlay-v1-to-v2.diff"
+  ],
+  "unchanged_engine_authority": "Previously ROOT fully reviewed point graph/primitive Executor and BodyAuthority/Controller source; exact original core and lifecycle pins revalidated. Existing code is not permission to vary scheduler.",
+  "unique_exact_pins": 861,
+  "python39_source_asts": [
+    ".gcts-active/family-proposal-real-overlay-source-20261012/overlay_successor_author_v2.py",
+    ".gcts-active/family-proposal-real-overlay-source-20261012/family_learned_overlay_v2.py",
+    ".gcts-active/family-proposal-real-overlay-source-20261012/real_overlay_fixture_worker_v1.py",
+    ".gcts-active/family-proposal-real-overlay-source-20261012/owned_real_overlay_fixture_v1.py",
+    ".gcts-active/family-proposal-real-overlay-source-20261012/freeze_real_overlay_fixture_v1.py"
+  ],
+  "byte_exact_archive_members": [
+    "overlay_successor_author_v2.py",
+    "family_learned_overlay_v2.py",
+    "real_overlay_fixture_worker_v1.py",
+    "owned_real_overlay_fixture_v1.py",
+    "freeze_real_overlay_fixture_v1.py",
+    "real_overlay_fixture_corpus_v1.json",
+    "protocol-v1.json",
+    "overlay-v1-to-v2.diff"
+  ],
+  "wrapper": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/run_owned_once_v2.py",
+    "sha256": "d30eb0003b24b97b410931638294abe32d8300d1ae775d374b3d9b45eed09dd6",
+    "bytes": 7125
+  },
+  "independent_prospective_source_review": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/source-review-v1.json",
+    "sha256": "e257177626a59084963e0a662c880b16e4923b1caf0a01c7640da0f66ece4cd3",
+    "bytes": 5165
+  },
+  "scientific_calls_in_preflight": 0,
+  "claim_scope": "Real unchanged engine; synthetic fixture language. No inference admission, donor/heldout training, RNG or performance/proof claim.",
+  "whole_phase_seconds": 60,
+  "memory_bytes": 536870912,
+  "one_shot_no_retry": true,
+  "successor_preflight_disposition": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/preflight-failure-disposition-v1.json",
+    "sha256": "96df212b655594b2b0315ff2472ed5e854858e1db0319a1e4864998f01fc8044",
+    "bytes": 1086
+  },
+  "source_scope": "Original producer/core/lifecycle/overlay/feature/math/owner sources byte-identical. Only fresh plan/output/activation paths and exact preserved no-worker failure evidence added."
+}

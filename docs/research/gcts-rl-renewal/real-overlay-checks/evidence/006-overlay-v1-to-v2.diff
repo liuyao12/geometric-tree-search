@@ -1,0 +1,39 @@
+--- .gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py
++++ .gcts-active/family-proposal-real-overlay-source-20261012/family_learned_overlay_v2.py
+@@ -11,7 +11,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'paired-learned-whole-family-overlay-v1'
++VERSION = 'paired-learned-whole-family-overlay-v2'
+ 
+ 
+ class LearnedFamilyOverlay:
+@@ -139,11 +139,25 @@
+         base = prepared['base']
+         if base != tuple(self.graph.candidates(current.row)):
+             raise ValueError('every current primitive alternative retained in original order')
++        # The prepared object is a caller-owned transport value, not authority.
++        # Rebuild the complete canonical menu from the SAME verified state and
++        # immutable inputs; neither a supplied hash nor a draw flag can make
++        # altered features/action IDs authoritative. No resync occurs here,
++        # because that would change the exact state being checked.
++        expected_needs_one_draw = current.kind == 'branch' and self.active_id is None
++        expected_menu = (self.features.menu_features(
++            self._feature_graph(), self.recipes, self.graph.formulas,
++            self.records, [hint.data() for hint in self.control.states],
++            [current.kind, current.row, current.count, current.generation])
++            if expected_needs_one_draw else None)
++        if (prepared['needs_one_draw'] is not expected_needs_one_draw
++                or self.core.canonical(prepared['menu']) != self.core.canonical(expected_menu)):
++            raise ValueError('prepared complete menu or draw requirement differs from verified state')
+         policy = None
+-        if prepared['needs_one_draw']:
++        if expected_needs_one_draw:
+             if draw is None:
+                 raise ValueError('exact caller-supplied saved draw required')
+-            menu = prepared['menu']
++            menu = expected_menu
+             distribution = self.math.distribution(menu['action_ids'], menu['feature_vectors'], self.weights,
+                 epsilon=self.epsilon, temperature=self.temperature)
+             choice = self.math.choose(distribution, draw)

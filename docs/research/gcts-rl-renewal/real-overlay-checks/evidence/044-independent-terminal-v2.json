@@ -1,0 +1,58 @@
+{
+  "schema": "ROOT-actual-independent-real-Controller-overlay-replay-terminal-v1",
+  "status": "passed_ROOT_full_owned_lifetime",
+  "source_plan_pin": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json",
+    "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+    "bytes": 200523
+  },
+  "source_review_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-source-review-v2.json",
+    "sha256": "87b012fa23525d16efcd59d2bee6a81002c1f4fc1c76d3fb89b6d6f6991d2910",
+    "bytes": 4045
+  },
+  "activation_pin": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/root-actual-replay-activation-v1.json",
+    "sha256": "0ad8185e8bfb5a0ca5bf07966f06a6825598c67dd3ba34b716024c3d16b8eb21",
+    "bytes": 638
+  },
+  "result_pin": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/owned-output-v1/independent-result-v1.json",
+    "sha256": "d99a8bb2aa1aebbdfb96c0441abfdc7cf4e6aba16b4e227593c35d96fe9993c5",
+    "bytes": 13316
+  },
+  "owned_lifetime_pin": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/owned-output-v1/independent-lifetime-v1.json",
+    "sha256": "33441190cbd3ee75358ef981077871f78531de8804a89231120d4ccd5ea02a11",
+    "bytes": 56745
+  },
+  "owner_pid": 45914,
+  "owner_exit_code": 0,
+  "owner_terminal_reaped": true,
+  "worker_terminal_reaped": true,
+  "full_owner_lifetime_seconds": 4.4946878329999995,
+  "conservative_combined_peak_bytes": 247365632,
+  "full_resource_accepted": true,
+  "cancelled": false,
+  "forced_kill": false,
+  "memory_scope": "ROOT peak plus max direct owner peak or owned owner/worker/observer estimate; retrospective gate, not hard OS cap",
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-rl-independent-review-20261012/owned_independent_fixture_replay_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json"
+  ],
+  "stdout_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-v2-outer-stdout.bin",
+    "sha256": "2a0e1d16e0f3058f9fe9a28301f826f253f40df73a7e23dea95ffc2e772e139e",
+    "bytes": 1580
+  },
+  "stderr_pin": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/independent-v2-outer-stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "mathematical_proofs_accepted": 0,
+  "training_runs": 0,
+  "native_queries": 0
+}

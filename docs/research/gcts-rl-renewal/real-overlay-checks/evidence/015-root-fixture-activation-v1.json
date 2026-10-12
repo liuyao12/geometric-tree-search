@@ -1,0 +1,15 @@
+{
+  "schema": "ROOT-real-Controller-overlay-fixture-activation-v1",
+  "authorized": true,
+  "plan": {
+    "path": ".gcts-active/family-proposal-real-overlay-source-20261012/fixture-plan-v1.json",
+    "sha256": "d0a55fbd9a3c50b16a578edbc46150921c0e28141002b5989cd82f28a597844c",
+    "bytes": 196105
+  },
+  "ROOT_source_review": {
+    "path": ".gcts-active/real-overlay-fixture-progress-20261012/producer-source-review-v1.json",
+    "sha256": "87813c75adf8e2ce23b339659026cbc6a0346351b0e2b6041545968bea7ec038",
+    "bytes": 3885
+  },
+  "scope": "One frozen bounded fixture phase; no theorem search, training or native query"
+}

@@ -1,0 +1,2395 @@
+{
+  "schema": "owned-independent-real-Controller-overlay-replay-lifetime-v1",
+  "status": "completed_owned_independent_replay_pending_ROOT_outer_clock",
+  "plan": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/actual-replay-plan-v1.json",
+    "sha256": "f6d6ff8b1c788593dcb274036f799296187193b8c29b387de5b1e7add8e72ad8",
+    "bytes": 200523
+  },
+  "worker_created": true,
+  "worker_pid": 45916,
+  "worker_terminal_reaped": true,
+  "worker_exit_code": 0,
+  "child_lifetime_including_imports_serialization_and_reaping_seconds": 4.107624875,
+  "supervisor_seconds_before_final_receipt": 4.2818327499999995,
+  "kernel_owner_peak_bytes": 64602112,
+  "kernel_worker_peak_bytes": 120799232,
+  "kernel_observer_max_peak_bytes": 2555904,
+  "conservative_combined_peak_bytes": 187957248,
+  "sampled_aggregate_peak_bytes": 187006976,
+  "memory_scope": "Sum of macOS kernel peaks including observer; sampled owned RSS; measurement, not hard OS cap",
+  "final_receipt_scope": "ROOT separately measures full owner exit/reap and final serialization; required for qualification",
+  "resource_gate_before_final_receipt": true,
+  "independent_data_gate": true,
+  "failure": null,
+  "forced_kill": false,
+  "streams_open_after_reap": false,
+  "remaining_owned_pids": [],
+  "result": {
+    "path": ".gcts-active/family-rl-independent-review-20261012/owned-output-v1/independent-result-v1.json",
+    "sha256": "d99a8bb2aa1aebbdfb96c0441abfdc7cf4e6aba16b4e227593c35d96fe9993c5",
+    "bytes": 13316
+  },
+  "observer_receipts": [
+    {
+      "pid": 45915,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010800250000000011,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27162,
+          "retained_bytes": 27162
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45917,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011071749999999991,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45918,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011573374999999997,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45919,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012158457999999983,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45920,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011236249999999948,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45921,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.023446833,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45922,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010810582999999985,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45923,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011058082999999996,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45924,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011140708,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45925,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011203959000000041,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45926,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011571917000000043,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45927,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010523791999999976,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45928,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010894999999999988,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45929,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010961459000000007,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45930,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01199179100000003,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45931,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011021999999999976,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45932,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012608167000000003,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45933,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011668625000000099,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45934,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01132366600000001,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45935,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01088870899999983,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45936,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010656124999999905,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45937,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010400709000000008,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45938,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010754374999999872,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45939,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.040443958,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45940,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010878833000000032,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45941,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.030482792000000147,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45942,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.02618512500000003,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45943,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01540941699999987,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45944,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011325374999999971,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45945,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010814000000000101,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45946,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.05043008400000004,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45947,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01095075000000012,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45948,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.0112824170000001,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45949,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011520333000000216,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45950,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.05561020900000013,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45951,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011341916999999757,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45952,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010759041000000025,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45953,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010776082999999659,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45954,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011761833,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45955,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.017225124999999952,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45956,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011354124999999993,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45957,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012143333000000034,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45958,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011524875000000101,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45959,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011408916999999796,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45960,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011926624999999635,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45961,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011020042000000174,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45965,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.013958040999999977,
+      "kernel_peak_bytes": 2555904,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27378,
+          "retained_bytes": 27378
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45966,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.0116992090000001,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45967,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010834749999999893,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45968,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011410582999999974,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45969,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010684958000000133,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45970,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01174458300000003,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45971,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.03923841599999989,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45972,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011065750000000207,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45973,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011065082999999643,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45974,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011061250000000022,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45975,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010896374999999736,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45976,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011021625000000146,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45977,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01065516699999991,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45978,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.013181499999999957,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45979,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.0116008329999997,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45980,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010925833999999579,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45981,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011630333999999909,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45982,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01147425000000002,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45983,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01178083299999999,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45984,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01125666599999997,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45985,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011134750000000082,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45986,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01115304100000003,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45987,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011676249999999833,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45988,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011614000000000235,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45989,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01176608400000001,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45990,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012779082999999858,
+      "kernel_peak_bytes": 2506752,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45991,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.012683208000000334,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45992,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011784875000000028,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45993,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.011500875000000299,
+      "kernel_peak_bytes": 2539520,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45994,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010857208000000007,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45995,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.01056287499999975,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45996,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010911874999999682,
+      "kernel_peak_bytes": 2523136,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27216,
+          "retained_bytes": 27216
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 45997,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.010217665999999959,
+      "kernel_peak_bytes": 2490368,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27162,
+          "retained_bytes": 27162
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    }
+  ],
+  "resource_samples": [
+    {
+      "seconds": 0.182623416,
+      "aggregate_rss_bytes": 73547776,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.23618083300000003,
+      "aggregate_rss_bytes": 115228672,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.29026050000000003,
+      "aggregate_rss_bytes": 115245056,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.338132791,
+      "aggregate_rss_bytes": 117719040,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.40132491600000003,
+      "aggregate_rss_bytes": 152764416,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.454080041,
+      "aggregate_rss_bytes": 161710080,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.507037208,
+      "aggregate_rss_bytes": 161759232,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.555580666,
+      "aggregate_rss_bytes": 161857536,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.605620083,
+      "aggregate_rss_bytes": 161906688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.655976958,
+      "aggregate_rss_bytes": 161906688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.698759958,
+      "aggregate_rss_bytes": 161906688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.751637666,
+      "aggregate_rss_bytes": 161906688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.799150375,
+      "aggregate_rss_bytes": 161939456,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.844757083,
+      "aggregate_rss_bytes": 161955840,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.897826333,
+      "aggregate_rss_bytes": 161955840,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.945247958,
+      "aggregate_rss_bytes": 161955840,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 0.989464375,
+      "aggregate_rss_bytes": 161955840,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.042902791,
+      "aggregate_rss_bytes": 161988608,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.092459208,
+      "aggregate_rss_bytes": 161988608,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.143566291,
+      "aggregate_rss_bytes": 161988608,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.1960137499999999,
+      "aggregate_rss_bytes": 161988608,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.2488239579999998,
+      "aggregate_rss_bytes": 162004992,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.3314980829999998,
+      "aggregate_rss_bytes": 161988608,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.3844772079999998,
+      "aggregate_rss_bytes": 168083456,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.457089458,
+      "aggregate_rss_bytes": 176635904,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.5245970409999998,
+      "aggregate_rss_bytes": 184254464,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.582166083,
+      "aggregate_rss_bytes": 186368000,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.6356713749999998,
+      "aggregate_rss_bytes": 186368000,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.688555833,
+      "aggregate_rss_bytes": 183238656,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.7782275829999998,
+      "aggregate_rss_bytes": 186695680,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.8219989159999999,
+      "aggregate_rss_bytes": 186695680,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.872412,
+      "aggregate_rss_bytes": 183812096,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 1.922687166,
+      "aggregate_rss_bytes": 183812096,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.018345666,
+      "aggregate_rss_bytes": 186204160,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.0681974160000003,
+      "aggregate_rss_bytes": 186695680,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.121313791,
+      "aggregate_rss_bytes": 186695680,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.174339541,
+      "aggregate_rss_bytes": 184614912,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.222844625,
+      "aggregate_rss_bytes": 184631296,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.278316083,
+      "aggregate_rss_bytes": 186712064,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.322421208,
+      "aggregate_rss_bytes": 186728448,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.3768836660000003,
+      "aggregate_rss_bytes": 186728448,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.422649208,
+      "aggregate_rss_bytes": 185417728,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.4726285000000003,
+      "aggregate_rss_bytes": 185417728,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.523014291,
+      "aggregate_rss_bytes": 186859520,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.572664833,
+      "aggregate_rss_bytes": 186875904,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.625151166,
+      "aggregate_rss_bytes": 186892288,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.6792685,
+      "aggregate_rss_bytes": 186875904,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.732444291,
+      "aggregate_rss_bytes": 186875904,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.782892333,
+      "aggregate_rss_bytes": 186875904,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.833764625,
+      "aggregate_rss_bytes": 187006976,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.882414208,
+      "aggregate_rss_bytes": 187006976,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 2.960418416,
+      "aggregate_rss_bytes": 186482688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.013921791,
+      "aggregate_rss_bytes": 186482688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.0675702080000002,
+      "aggregate_rss_bytes": 186482688,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.114586375,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.1679795,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.2214515830000003,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.271772583,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.324212875,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.372418333,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.422191541,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.472768041,
+      "aggregate_rss_bytes": 186499072,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.522547125,
+      "aggregate_rss_bytes": 186515456,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.572324333,
+      "aggregate_rss_bytes": 186515456,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.6223262910000003,
+      "aggregate_rss_bytes": 186777600,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.676074458,
+      "aggregate_rss_bytes": 186777600,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.722214,
+      "aggregate_rss_bytes": 186777600,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.7728037910000003,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.827121083,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.881573833,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.937073958,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 3.9905559160000004,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 4.037642416,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 4.089223708,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 4.133873583,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 4.187022958,
+      "aggregate_rss_bytes": 186793984,
+      "worker_pids": [
+        45916
+      ]
+    },
+    {
+      "seconds": 4.23873725,
+      "aggregate_rss_bytes": 186810368,
+      "worker_pids": [
+        45916
+      ]
+    }
+  ],
+  "independent_acceptance": true,
+  "full_ROOT_outer_clock_qualified": false
+}
