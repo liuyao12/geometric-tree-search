@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reidemeister Tile Lab · GCTS</title><meta name="description" content="A finite knot-equivalence pilot with Reidemeister tiles, exact diagram seams, learned failure markings and validated RL proposals.">
+<link rel="stylesheet" href="style.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="module" src="app.mjs"></script></head>
+<body><main>
+<header><a href="../../">GCTS / research laboratory</a><span class="badge">FINITE PILOT · v1</span>
+<h1>Knots as movies.<br><em>Moves as tiles.</em></h1>
+<p class="intro">Match diagram seams, assemble Reidemeister tiles, and verify every move. Learn where a bounded movie cannot continue.</p></header>
+<div class="thesis"><strong>Two views of one cell.</strong> A spatial cube times a time interval lives in \(\mathbb{R}^3\times[0,1]\). Its spatial projection along \((1,1,1)\) is a hexagonal prism in diagram space-time. Keep depth and strand connections in the markings.</div>
+<section class="workbench"><div class="controls">
+<h2>Choose a knot</h2><label>Example<select id="example"><option value="curl">Lattice unknot with one curl</option><option value="double">Lattice unknot with two curls</option><option value="trefoil">Lattice trefoil</option><option value="bigon">Type-II diagram</option><option value="triangle">Type-III diagram</option><option value="custom">Custom signed Gauss word</option></select></label>
+<label>Source diagram<textarea id="source" rows="3" spellcheck="false"></textarea></label>
+<label>Target diagram (empty means unknot)<textarea id="target" rows="2" spellcheck="false"></textarea></label>
+<p class="hint">Use <code>O1+</code> for the overpass of crossing 1 with positive sign; <code>U1+</code> for its underpass. Every crossing appears twice. Nonplanar words are rejected.</p>
+<div class="bounds"><label>Time slots<input id="depth" type="number" min="1" max="4" value="2"></label><label>Crossing cap<input id="cap" type="number" min="1" max="8" value="3"></label></div>
+<label>Search lane<select id="lane"><option value="gcts">Exact seam markings</option><option value="baseline">Unmarked baseline</option><option value="gcts+rl">Seam markings + RL clusters</option></select></label>
+<button id="run">Search for a verified movie</button><button id="compare" class="secondary">Compare all three lanes</button>
+<label class="import">Import axis-aligned loop JSON<input id="import" type="file" accept=".json,application/json"></label>
+</div><div class="stage"><div class="stage-head"><h2 id="result-title">A lattice knot, projected</h2><span id="status" role="status" aria-live="polite">Ready</span></div>
+<div class="canvases"><figure><canvas id="projection" width="680" height="440" aria-label="Projected source lattice knot"></canvas><figcaption id="projection-caption">Source projection with explicit overpasses.</figcaption></figure>
+<figure><canvas id="seam" width="680" height="440" aria-label="Current signed ribbon diagram"></canvas><figcaption>Movie seam: a signed ribbon graph. Connecting curves are schematic; crossings occur only at the numbered disks.</figcaption></figure></div>
+<div class="movie"><button id="play" class="secondary" disabled>Play seams</button><input id="frame" aria-label="Movie frame" type="range" min="0" max="0" value="0"><span id="frame-label">Source</span><button id="download" class="secondary" disabled>Export certificate</button></div>
+<div id="tiles" class="tiles"></div><pre id="summary">Run a search to inspect its graph, learning cost, and certificate.</pre>
+</div></section>
+<section class="limits"><h2>What this pilot establishes</h2><p>A successful movie proves equivalence by Reidemeister replay. Different Fox coloring dimensions prove inequivalence. Exhausting the crossing and time bounds leaves general knot equivalence <strong>unknown</strong>. All legal base candidates remain available to the RL lane.</p>
+<p>The current tiles carry entire diagram seams. Failure labels come from exhaustive bounded reachability and become ordinary point-marking mismatches. This is a specialized seam control, with the same point solver in every lane. Local hexagonal marking synthesis, spatial realization of every movie frame, and a full classifier remain research goals.</p></section>
+<section class="roadmap"><h2>Subgoals and gates</h2><div class="goals">
+<article><span>01 / IMPLEMENTED</span><h3>Exact diagrams and tiles</h3><p>Signed planar ribbon diagrams; types I, II and III; inverse moves; cyclic canonicalization; independent certificate replay.</p></article>
+<article><span>02 / IMPLEMENTED</span><h3>Point search and failure guards</h3><p>Time-slot point values, seam equality, complete finite catalogs, global dead and forced checks, exact rollback, bounded proof scope.</p></article>
+<article><span>03 / PILOT</span><h3>RL cluster proposals</h3><p>Cold tabular Q-learning on legal scrambles; validated move sequences; ordering only. Measure total cost against exhaustive controls.</p></article>
+<article><span>04 / NEXT</span><h3>Local hexagonal tile language</h3><p>Ports, depth order, boundary collars and stationary tiles. Prove a faithful local reduction, then synthesize sparse failure markings.</p></article>
+<article><span>05 / NEXT</span><h3>A geometric untangling movie</h3><p>Planar drawing and collision-free rectilinear lifts for every tile; space-time certificates; smooth playback without changing crossings.</p></article>
+<article><span>06 / RESEARCH</span><h3>Classifier and benchmark corpus</h3><p>Invariants for negative proofs, expanding positive search, classical solver comparisons, chiral and composite knots, same-invariant pairs.</p></article>
+</div><p><a href="../../research/knot-classifier/plan.html">Full mathematical plan, scope, and reproducible commands ↗</a></p></section>
+<footer>Reidemeister Tile Lab · No pretrained failure markings · Browser-local computation · <a href="https://arxiv.org/abs/math/0307077">Isotopy and concordance</a></footer>
+</main></body></html>
