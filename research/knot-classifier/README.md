@@ -1,8 +1,10 @@
+> **Lattice classifier implementation:** `lattice-moves.mjs` and `lattice-search.mjs` now connect lattice Reidemeister tiles to the opaque brute-force point engine with cold online failure markings. The [current lattice results](lattice-classifier.html) supersede the diagram-control status below. A trefoil identification exercises all three move types, independent spatial replay, and two proved learned guards. The declared square-face inventory and whole-state seam model are finite adaptations; no recognition coverage through 12 crossings or search acceleration is claimed. Run `node tests/test_knot_lattice_search.mjs` and `node scripts/benchmark-lattice-knots.mjs`.
+
 # Knots as Reidemeister tiles: GCTS + RL research plan
 
 > **Research target:** classify exact cubic-lattice knots using lattice realizations of Reidemeister tiles and generic brute force helped by online GCTS. The viewer is only a certificate presentation tool. See the [current lattice classifier subgoals](lattice-classifier.html). A validated reference corpus now covers 2,977 prime types through 12 crossings plus the unknot; classification and local lattice tile integration are not yet implemented. The diagram pilot below is a separate control.
 
-> Current viewer: the search now uses **brute force + online GCTS**, with no knot-specific search hints. See the [online search contract](online-search.html). The implementation below documents the earlier specialized control, retained as `solveSpecialized`; its offline seam learner, coloring shortcut, and RL policy are not used by the current viewer.
+> Historical diagram viewer: the search now uses **brute force + online GCTS**, with no knot-specific search hints. See the [online search contract](online-search.html). The implementation below documents the earlier specialized control, retained as `solveSpecialized`; its offline seam learner, coloring shortcut, and RL policy are not used by the current viewer.
 
 The search object is a movie assembled from **Reidemeister-move tiles**. Input
 knots are piecewise-linear embedded circles with edges parallel to coordinate

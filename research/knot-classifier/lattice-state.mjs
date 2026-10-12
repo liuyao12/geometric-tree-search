@@ -60,3 +60,9 @@ export function bounds(input) {
 export function searchInput(record,mirrored=false) {
   return {vertices:mirrored?mirror(record.vertices):unitLoop(record.vertices)};
 }
+// Exact spatial seams: traversal root/orientation are immaterial, but the
+// coordinate frame is fixed. Bounds therefore describe one physical region.
+export function embeddingKey(input) {
+  const p=unitLoop(input),mins=[0,1,2].map(k=>Math.min(...p.map(x=>x[k])));
+  return JSON.stringify(JSON.parse(translationKey(p)).map(x=>x.map((v,k)=>v+mins[k])));
+}

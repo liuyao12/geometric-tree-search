@@ -1,0 +1,42 @@
+{
+  "version": "lattice-face-reidemeister-v1",
+  "formulation": "Finite whole-lattice-state seam adaptation; not a local spatial point tiler.",
+  "pointDomain": "One exact integer-capacity root point per time slot; marking-only adjacent seam points; source/target boundary; new learned marking-only guard points.",
+  "arithmetic": "Integer lattice coordinates and exact 0/1 t-values; rational integer-determinant projection with BigInt crossing order. Fixed positive integer direction components <=41, coordinates |x|<=100 and <=2000 unit edges for the projection grammar.",
+  "inventory": "All unit coordinate faces incident to an occupied edge; a connected 1-, 2-, or 3-edge boundary arc is replaced by its complementary arc. Exact self-avoidance, unchanged exterior and empty unit disk. Optional fixed support region and edge cap. Keep only routing or a single signed Reidemeister endpoint change. Degenerate projected endpoints and multi-move changes excluded.",
+  "transforms": "Every integer face alignment meeting the knot, all coordinate planes and both sides, without reflection quotient. Exact coordinate frame retained in seam keys; cyclic root and traversal orientation removed.",
+  "coverage": "Every time slot root must sum to one; before/after opaque complete embedding values agree at neighboring seams. One selected path iff a legal movie in this complete finite catalog exists. Holds fill unused slots.",
+  "scheduler": "Complete forward/reverse point-candidate incidence reconstructed each step; global dead first, global forced next, then minimum degree among equal generation-zero roots. Neutral seeded ID permutation, seed 31.",
+  "rollback": "Immutable selected prefix, full graph reconstruction. Guard activation increments version and replays the whole prefix and graph.",
+  "learning": "Cold online candidate-specific failure guards. A fresh unmarked complete point probe with only that candidate fixed supplies proof. Exhaustion activates boundary value 0 versus candidate value 1. Unknown probes add no assignments. Context-only failures stay branch-local.",
+  "proofScope": "Exact finite catalog, horizon, fixed coordinate frame, target, direction, face region and edge cap only. No transfer, no saved prior import, no global inequivalence conclusion.",
+  "independentVerification": "Python reconstructs unit loops, unchanged edge exterior and face complement, validates arc/collar paths, exact Fraction projection, independent signed-ribbon Reidemeister checks and literal spatial endpoint. Tests separately enumerate all faces as edge-set toggles and validate guards with layered reachability.",
+  "conformanceEvidence": [
+    "tests/test_knot_lattice_search.mjs",
+    "tests/test_knot_online.mjs",
+    "fixtures/trefoil-source-provenance.json",
+    "lattice-search-benchmark.json"
+  ],
+  "completed": [
+    "Exact lattice RI/II/III-labelled tile instances and inverses",
+    "Opaque generic point solver integration",
+    "Cold online proved guards activated through m-values",
+    "Nontrivial trefoil identification with independent spatial certificate",
+    "Positive-only reference classification entry point"
+  ],
+  "gaps": [
+    "Completeness of this restricted face grammar for arbitrary lattice isotopy is not established",
+    "No proof that a continuous projection has exactly one event per tile",
+    "Local spatial t/m functions and neighboring-pair corona synthesis not implemented",
+    "Eager reachable-state catalog remains the scaling bottleneck; no lazy complete generator",
+    "No transferable GCTS constraints or RL cluster proposer",
+    "12-crossing corpus remains reference data; no broad recognition benchmark or composite coverage",
+    "No certified negative classification lane"
+  ],
+  "nextSubgoals": [
+    "Broaden local lattice templates and refinement with verified boundary action",
+    "Replace eager whole-state catalog with complete lazy local candidate domains",
+    "Learn local pair/cluster markings with explicit scopes and independent unmarked labels",
+    "Benchmark many independent scrambles of prime references, mirrors and composites before increasing crossing ranges"
+  ]
+}
