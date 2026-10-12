@@ -1,0 +1,39 @@
+{
+  "schema": "gcts-notebook128-publication-manifest-v1",
+  "notebook": 128,
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/consumer-costs/reader.css",
+      "sha256": "e78db801d2b355f7b6e21a7c331cd7621b02efb0aa8eef96ce607334bea69e89",
+      "bytes": 2952
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/consumer-costs/reader.html",
+      "sha256": "963fc2945823fa3d1291c7e147a35cf54bbfc8caac6216520863455f3efc95ca",
+      "bytes": 77628
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/consumer-costs/reader.js",
+      "sha256": "d9a6fba720846aa08136ef67a062313095b6e3c0bbcb063f32832420a9cb7671",
+      "bytes": 3264
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/consumer-costs/result-view-v1.json",
+      "sha256": "aebcb5dfac447233986c8db70a0767047ad7234ee11e8b47074399d8d295448c",
+      "bytes": 101761
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "d51e7a64a5039b4fda064f357cc23c3bc5a9b5ed56b6b60092291e4188be958b",
+      "bytes": 369449
+    }
+  ],
+  "live_base": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/consumer-costs/",
+  "publication_scope": "Public scalar evidence projection and browser display, no scientific code dispatched; exact task files only.",
+  "actual_result": "UNKNOWN_complete_stage_qualification",
+  "new_proofs": 0,
+  "RL_updates": 0,
+  "prior_notebook127_preserved": true,
+  "parent_inverse_before_sha256": "03f364408d82fd79ca344021181a3411e27638c1dfabb758185949aad15a81ee",
+  "private_process_or_host_data_published": false
+}
