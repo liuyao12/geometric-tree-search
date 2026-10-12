@@ -1,0 +1,25 @@
+{
+  "version": "lattice-adaptive-path-search-v1",
+  "master": "../../docs/basic-tiling-algorithm.md",
+  "status": "Explicit finite graph-path adaptation. Space-time exact tiling and the reference pair-corona learner are optional future formulations; their conformance is not claimed by this engine.",
+  "objective": "Find a verified path between two exact lattice embeddings under the declared reversible move inventory. A positive spatial certificate proves equivalence. Exhaustion of finite budgets leaves knot equivalence unknown.",
+  "points": "At each complete state domain there is one choice obligation. Every base move assigns unit t there; the current and next opaque embedding keys are seam m-values. Capacity and extension-budget m channels remove candidates by equality mismatch through a complete forward/reverse candidate graph. This is a local constraint-candidate representation of a graph path, not a global volume tiling.",
+  "inventory": "All unit faces incident to occupied edges throughout the knot, with the existing exact lattice and fixed-projection Reidemeister endpoint grammar. No patch restriction. Intermediate edge count and projection arithmetic remain explicit finite bounds. The generic scheduler never parses vertices, move labels, knot names or proof geometry.",
+  "scheduler": "Two breadth-first waves over opaque keys. Balanced scheduling expands the shallower wave. Adaptive scheduling instead expands the wave with fewer pending keys, with shallower depth breaking ties. Each selected wave exhausts its whole current layer before increasing its radius. Neutral seeded candidate permutation is unchanged. Stop on a meeting whose two parent paths fit the move horizon; stop finite search once the sum of completed discovery radii reaches that horizon.",
+  "boundedCompleteness": "For any allowed path of length at most the horizon, its prefixes on each side survive every sound necessary marking. A BFS wave records shortest discovered prefixes. Once the radii sum to the path length, those two retained balls share a path vertex. Changing the side order therefore preserves bounded path existence. If one complete filtered layer has no successors before a meeting, no such bounded path can cross that frontier. Interrupted enumeration is never exhaustion.",
+  "rollbackAndVersions": "Parent records and BFS distance dominance replace recursive rollback. Raw domains are cached once per opaque state. Capacity-rule versions replay every retained point graph. Immutable extension profiles are learned before constructing the full candidate incidence in that target/budget context; their alphabet and stencil cannot change later. No weakened rule or stale branch-local failure is imported.",
+  "gcts": "Online local extension failures supply proved redundant markings, following lattice-extension-contract.json. The provider authors relaxed covers; the scheduler sees only t/m maps and candidate IDs. No heuristic knot invariant or construction history guides search. This local failed-budget synthesis remains distinct from neighboring-tile one-corona synthesis.",
+  "comparison": "Two unchanged independent five-move endpoint pairs from the previous benchmark: trefoil seed 0 and eight-crossing seed 1. Four sequential fresh workers compare balanced/adaptive scheduling crossed with markings/no markings. Matched horizons, node/state/time/edge limits, exact memoization and neutral seed. Each marked worker starts empty and reuses only its own newly validated immutable catalog across the two types. No case replacement. All construction, probes, activation validation, cache warmup and JS movie verification count in query time; independent artifact replay is separately reported.",
+  "evidence": [
+    "../../tests/test_knot_path_schedules.mjs: 1536 exhaustive comparisons against independent shortest-path reachability, plus an asymmetric control and budget stops",
+    "lattice-path-schedules-benchmark.json: per-lane positive certificates and total costs",
+    "../../scripts/verify-knot-path-schedules.py: independent spatial, proof-label and aggregate-accounting replay"
+  ],
+  "gaps": [
+    "Full reference-bank recognition, negative-pair termination, mirrors and composites",
+    "All prime types at larger budgets and deeper non-construction scrambles",
+    "General lattice-isotopy inventory completeness and continuous projected-event analysis",
+    "RL or learned cluster proposals",
+    "Full reference point-tiling generation/rollback and pair-corona conformance"
+  ]
+}

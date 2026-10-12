@@ -47,7 +47,7 @@ export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DI
  };
 }
 const inverseKind=k=>({'I+':'I−','I−':'I+','II+':'II−','II−':'II+','III':'III',routing:'routing'})[k];
-export function solveLatticeLazy(source,target,{learn=true,model=null,probeNodeCap=64,extensionLearn=false,extensionModel=null,extensionProbeNodeCap=10000,maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,maxMs=Infinity,maxEdges=200,direction=DEFAULT_DIRECTION,region=null}={}){
+export function solveLatticeLazy(source,target,{learn=true,model=null,probeNodeCap=64,extensionLearn=false,extensionModel=null,extensionProbeNodeCap=10000,maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,maxMs=Infinity,maxEdges=200,direction=DEFAULT_DIRECTION,region=null,pathSchedule='balanced'}={}){
  if(!(maxMs>=0))throw Error("Invalid time budget.");
  const started=performance.now(),shouldStop=()=>performance.now()-started>=maxMs;unitLoop(source);unitLoop(target);
  if(unitLoop(source).length>maxEdges||unitLoop(target).length>maxEdges)return{status:'unknown',knotEquivalence:'unknown',reason:'endpoint-edge-budget'};
@@ -59,7 +59,7 @@ export function solveLatticeLazy(source,target,{learn=true,model=null,probeNodeC
  const extensions=extensionModel||(extensionLearn?new LocalExtensionMarkings({probeNodeCap:extensionProbeNodeCap}):null),extensionInitial=extensions?.report(),extensionInitialEventCount=extensions?.events.length;
  if(extensionModel)extensions.validateTransfer({shouldStop});
  const provider=latticeProvider(source,target,{maxEdges,direction,region,model:marks,extensionModel:extensions,shouldStop});
- const result=lazyPointPath(provider,{maxDepth,nodeCap,stateCap,seed,shouldStop});let certificate=null,verificationMs=0;
+ const result=lazyPointPath(provider,{maxDepth,nodeCap,stateCap,seed,shouldStop,schedule:pathSchedule});let certificate=null,verificationMs=0;
  if(result.status==='equivalent'){
   const left=result.leftPath.map(id=>{const move=provider.entries.get(id).move;return{...move,vertices:JSON.parse(move.key)};});
   const right=[...result.rightPath].reverse().map(id=>{

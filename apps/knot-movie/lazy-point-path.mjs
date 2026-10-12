@@ -2,9 +2,10 @@
 // This is a graph-path adaptation, not the eager all-time-slot CSP scheduler.
 // A provider must exhaust the raw domain and resolve every unfiltered candidate
 // before degree zero/one is reported. No state value is parsed here.
-export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,shouldStop=()=>false}={}){
+export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,shouldStop=()=>false,schedule='balanced'}={}){
  if(!Number.isInteger(maxDepth)||maxDepth<0||!Number.isInteger(nodeCap)||nodeCap<0||!Number.isInteger(stateCap)||stateCap<2)throw Error('Invalid lazy search bounds.');
  if(provider.reversible!==true)throw Error('Bidirectional search requires a verified reversible provider.');
+ if(!['balanced','smaller-frontier'].includes(schedule))throw Error('Unknown path scheduler.');
  const stats={nodes:0,attempts:0,forced:0,branches:0,graphBuilds:0,peakIncidences:0,generatedStates:2,generatedEdges:0,domainCacheHits:0,rawCandidates:0,markingEliminations:0,authorRejections:0,markingVersions:0,replayedDomains:0,peakFrontier:2,extensionEliminations:0,extensionGraphBuilds:0,extensionVersions:0,extensionCandidateCount:0,deadEnds:0,baseLegalCandidates:0,availableCandidates:0,branchOptions:0};
  const domains=new Map();let version=provider.version(),randomState=seed>>>0;
  function mismatch(c,boundary){return [...c.m].some(([p,v])=>boundary.has(p)&&boundary.get(p)!==v);}
@@ -46,7 +47,10 @@ export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000
  }
  if(provider.sourceKey===provider.targetKey)return answer(provider.sourceKey);
  while(levels[0]+levels[1]<maxDepth){
-  const side=levels[0]<=levels[1]?0:1,other=1-side,next=[];
+  // Each side remains breadth-first. Unequal depths are safe: any path within
+  // the horizon crosses the two complete balls once their radii sum to it.
+  // Choose by opaque frontier cardinality; depth breaks a cardinality tie.
+  const side=schedule==='smaller-frontier'&&frontiers[0].length!==frontiers[1].length?(frontiers[0].length<frontiers[1].length?0:1):(levels[0]<=levels[1]?0:1),other=1-side,next=[];
   for(const key of frontiers[side]){
    if(shouldStop())return{status:'unknown',reason:'search-time-budget',stats};
    if(stats.nodes>=nodeCap)return{status:'unknown',reason:'search-node-budget',stats};
