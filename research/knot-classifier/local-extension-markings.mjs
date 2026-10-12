@@ -74,9 +74,13 @@ export function coverProbe(width,masks,horizon,{nodeCap=10000,shouldStop=()=>fal
  const witness=visit(full,horizon,[]);
  return{outcome:witness?'positive':unknown?'unresolved':'negative',nodes,witness,complete:!unknown};
 }
+const freezeTree=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freezeTree(child);Object.freeze(value);}return value;};
+const readonlyMap=map=>Object.freeze({get size(){return map.size;},get:key=>map.get(key),has:key=>map.has(key),values:()=>map.values(),entries:()=>map.entries(),keys:()=>map.keys(),[Symbol.iterator]:()=>map[Symbol.iterator](),set(){throw Error('Immutable proof catalog');},delete(){throw Error('Immutable proof catalog');},clear(){throw Error('Immutable proof catalog');}});
 export class LocalExtensionMarkings{
+ #rules=new Map();#events=[];#version=0;#assigned=0;
+ get version(){return this.#version;}
  constructor({enabled=true,probeNodeCap=10000,maxComponentEdges=48}={}){
-  this.system='face-edge-cover-extension-v1';this.enabled=enabled;this.probeNodeCap=probeNodeCap;this.maxComponentEdges=maxComponentEdges;this.rules=new Map();this.events=[];this.version=0;this.nodes=0;this.probeMs=0;this.transferredApplications=0;this.cacheHits=0;this.transferValidationNodes=0;this.transferValidationMs=0;
+  Object.defineProperties(this,{system:{value:'face-edge-cover-extension-v1',enumerable:true},enabled:{value:enabled,enumerable:true},probeNodeCap:{value:probeNodeCap,enumerable:true},maxComponentEdges:{value:maxComponentEdges,enumerable:true},rules:{value:readonlyMap(this.#rules),enumerable:true},events:{value:new Proxy(this.#events,{set(){throw Error('Immutable proof evidence');},deleteProperty(){throw Error('Immutable proof evidence');},defineProperty(){throw Error('Immutable proof evidence');},setPrototypeOf(){throw Error('Immutable proof evidence');},preventExtensions(){throw Error('Immutable proof evidence');}}),enumerable:true}});this.activationValidationNodes=0;this.activationValidationMs=0;this.cachedTransferChecks=0;this.fullAudits=0;this.nodes=0;this.probeMs=0;this.transferredApplications=0;this.cacheHits=0;this.transferValidationNodes=0;this.transferValidationMs=0;Object.seal(this);
  }
  learn(component,{shouldStop=()=>false}={}){
   const old=this.rules.get(component.signature);
@@ -93,10 +97,11 @@ export class LocalExtensionMarkings{
   // Explicit point stencil: boundary is 0, proven failed budgets carry 1;
   // positive and unresolved budgets are absent. No learned model is imported.
   const values=samples.filter(s=>s.outcome==='negative').map(s=>[s.horizon,1]);
-  const rule={signature:component.signature,origin:component.origin,lower,values,masks:component.masks.map(m=>m.toString(16)),samples};
+  const rule={signature:component.signature,origin:[...component.origin],lower,values,masks:component.masks.map(m=>m.toString(16)),samples};
   const elapsed=performance.now()-start;this.probeMs+=elapsed;
-  this.events.push({...rule,width:component.edges.length,probeMs:elapsed,activated:values.length>0,validation:{positive:samples.filter(s=>s.outcome==='positive').length,negative:samples.filter(s=>s.outcome==='negative').length,unresolved:samples.filter(s=>s.outcome==='unresolved').length,allResolvedLabelsUsed:true}});
-  this.rules.set(component.signature,rule);if(values.length)this.version++;
+  const validationStart=performance.now();this.#validateRule(rule);this.activationValidationMs+=performance.now()-validationStart;freezeTree(rule);
+  this.#events.push(freezeTree({...rule,width:component.edges.length,probeMs:elapsed,activated:values.length>0,validation:{positive:samples.filter(s=>s.outcome==='positive').length,negative:samples.filter(s=>s.outcome==='negative').length,unresolved:samples.filter(s=>s.outcome==='unresolved').length,allResolvedLabelsUsed:true}}));
+  this.#rules.set(component.signature,rule);this.#assigned+=values.length;if(values.length)this.#version++;
   return rule;
  }
  compile(source,target,remaining,{shouldStop=()=>false}={}){
@@ -107,25 +112,34 @@ export class LocalExtensionMarkings{
   if(lower>remaining)m.set(point,1);
   return{boundary,m,lower,remaining,version:this.version,components:components.map((c,i)=>({signature:c.signature,origin:c.origin,lower:rules[i].lower}))};
  }
- validateTransfer({shouldStop=()=>false}={}){
-  const start=performance.now(),events=new Map(this.events.map(e=>[e.signature,e]));
-  const stopped=()=>{this.transferValidationMs+=performance.now()-start;return false;};
-  for(const [signature,r]of this.rules){
-   if(shouldStop())return stopped();
-   const event=events.get(signature);if(!event)throw Error('Unproven extension import.');
-   if(JSON.stringify(r.masks.slice().sort())!==JSON.stringify(projectedAlphabet(JSON.parse(signature)).map(m=>m.toString(16)).sort()))throw Error('Incomplete extension alphabet.');
-   let lower=0;
-   for(const sample of r.samples){
-    if(sample.outcome==='unresolved')continue; // No exclusion was learned from this sample.
-    if(shouldStop())return stopped();
-    const replay=coverProbe(JSON.parse(signature).length,r.masks.map(m=>BigInt('0x'+m)),sample.horizon,{nodeCap:this.probeNodeCap,shouldStop});this.transferValidationNodes+=replay.nodes;
-    if(shouldStop())return stopped();
-    if(replay.outcome!==sample.outcome)throw Error('Extension transfer proof failed.');
-    if(replay.outcome==='negative')lower=sample.horizon+1;
-   }
-   if(r.lower!==lower||JSON.stringify(r.values)!==JSON.stringify(r.samples.filter(s=>s.outcome==='negative').map(s=>[s.horizon,1])))throw Error('Extension stencil differs from proof.');
+ #validateRule(r,{shouldStop=()=>false,activation=true}={}){
+  const edges=JSON.parse(r.signature),masks=r.masks.map(m=>BigInt('0x'+m));
+  if(JSON.stringify(r.masks.slice().sort())!==JSON.stringify(projectedAlphabet(edges).map(m=>m.toString(16)).sort()))throw Error('Incomplete extension alphabet.');
+  let lower=0;
+  for(const sample of r.samples){
+   if(sample.outcome==='unresolved')continue;
+   if(shouldStop())return false;
+   const replay=coverProbe(edges.length,masks,sample.horizon,{nodeCap:this.probeNodeCap,shouldStop});
+   if(activation)this.activationValidationNodes+=replay.nodes;else this.transferValidationNodes+=replay.nodes;
+   if(shouldStop())return false;
+   if(replay.outcome!==sample.outcome)throw Error('Extension transfer proof failed.');
+   if(replay.outcome==='negative')lower=sample.horizon+1;
+   else {let cover=0n;for(const id of sample.witness||[])cover|=masks[id];if(cover!==(1n<<BigInt(edges.length))-1n||sample.witness.length>sample.horizon)throw Error('Invalid extension witness.');}
   }
+  if(r.lower!==lower||JSON.stringify(r.values)!==JSON.stringify(r.samples.filter(s=>s.outcome==='negative').map(s=>[s.horizon,1])))throw Error('Extension stencil differs from proof.');
+  return true;
+ }
+ validateTransfer({shouldStop=()=>false,forceReplay=false}={}){
+  const start=performance.now();
+  if(shouldStop()){this.transferValidationMs+=performance.now()-start;return false;}
+  // Only this instance can insert rules. Each insertion verifies its complete
+  // alphabet and resolved labels, then recursively freezes its evidence. Public
+  // views cannot replace rules, evidence, or proof-system configuration.
+  if(forceReplay){
+   this.fullAudits++;
+   for(const r of this.#rules.values())if(!this.#validateRule(r,{shouldStop,activation:false})){this.transferValidationMs+=performance.now()-start;return false;}
+  }else this.cachedTransferChecks++;
   this.transferValidationMs+=performance.now()-start;return true;
  }
- report(){return{transferValidationNodes:this.transferValidationNodes,transferValidationMs:this.transferValidationMs,system:this.system,version:this.version,prototypes:this.rules.size,assignedComponents:[...this.rules.values()].reduce((n,r)=>n+r.values.length,0),nodes:this.nodes,probeMs:this.probeMs,transferredApplications:this.transferredApplications,cacheHits:this.cacheHits,events:this.events,scope:'Translation only; full incident-face alphabet; target discrepancy window, finite remaining budget. Negative relaxed cover proofs are redundant constraints. No projection, knot label, invariant, or scramble provenance enters probes. Not the reference neighboring-pair/corona learner.'};}
+ report(){return{validationMode:'immutable-native-proof-cache-v1',activationValidationNodes:this.activationValidationNodes,activationValidationMs:this.activationValidationMs,cachedTransferChecks:this.cachedTransferChecks,fullAudits:this.fullAudits,transferValidationNodes:this.transferValidationNodes,transferValidationMs:this.transferValidationMs,system:this.system,version:this.version,prototypes:this.rules.size,assignedComponents:this.#assigned,nodes:this.nodes,probeMs:this.probeMs,transferredApplications:this.transferredApplications,cacheHits:this.cacheHits,events:this.events,scope:'Translation only; full incident-face alphabet; target discrepancy window, finite remaining budget. Negative relaxed cover proofs are redundant constraints. No projection, knot label, invariant, or scramble provenance enters probes. Not the reference neighboring-pair/corona learner.'};}
 }

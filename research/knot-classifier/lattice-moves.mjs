@@ -50,9 +50,15 @@ export function rawFaceSweeps(input,{maxEdges=200,region=null}={}){
 export function faceSweeps(input,options={}){
  const out=[];for(const m of rawFaceSweeps(input,options)){try{unitLoop(m.vertices);out.push({...m,key:embeddingKey(m.vertices)});}catch{}}return out;
 }
+function legalDiagramMoves(projection,cache){
+ const key=projection.canonical;
+ if(cache?.has(key)){cache.hits=(cache.hits||0)+1;return cache.get(key);}
+ const legal=new Map(moves(projection.word,projection.word.length/2).map(m=>[m.key,m.kind]));
+ if(cache){cache.misses=(cache.misses||0)+1;cache.set(key,legal);}return legal;
+}
 export function moveContext(input,options={}){
  const direction=options.direction||DEFAULT_DIRECTION,before=diagram(input,direction);
- return{direction,before,legal:new Map(moves(before.word,before.word.length/2).map(m=>[m.key,m.kind])),inputKey:embeddingKey(input)};
+ return{direction,before,legal:legalDiagramMoves(before,options.diagramMoveCache),legalFor:projection=>legalDiagramMoves(projection,options.diagramMoveCache),inputKey:embeddingKey(input)};
 }
 export function resolveSweep(sweep,context){
  let after;try{unitLoop(sweep.vertices);after=diagram(sweep.vertices,context.direction);}catch{return null;}
@@ -61,7 +67,7 @@ export function resolveSweep(sweep,context){
  const delta=(after.word.length-before.word.length)/2;
  if(!kind&&(delta===1||delta===2)){
   const inverse=delta===1?'I−':'II−';
-  if(moves(after.word,after.word.length/2).some(m=>m.kind===inverse&&m.key===before.canonical))kind=delta===1?'I+':'II+';
+  if(context.legalFor(after).get(before.canonical)===inverse)kind=delta===1?'I+':'II+';
  }
  const key=embeddingKey(sweep.vertices);
  if(!kind||key===context.inputKey)return null;

@@ -29,8 +29,14 @@ const moved=first[0].vertices,translate=p=>p.map(v=>v.map((x,i)=>x+[13,-9,7][i])
 assert.deepEqual(extensionComponents(moved,trefoil.vertices).map(c=>c.signature),extensionComponents(translate(moved),translate(trefoil.vertices)).map(c=>c.signature));
 model.compile(translate(moved),translate(trefoil.vertices),1);assert.ok(model.transferredApplications>0);model.validateTransfer();
 const unknown=new LocalExtensionMarkings({probeNodeCap:0});assert.equal(unknown.compile(moved,trefoil.vertices,0).m.size,0);assert.equal(unknown.report().assignedComponents,0);
-const rule=model.rules.values().next().value,lower=rule.lower;rule.lower++;assert.throws(()=>model.validateTransfer(),/stencil/);rule.lower=lower;
-const masks=rule.masks;rule.masks=[];assert.throws(()=>model.validateTransfer(),/alphabet/);rule.masks=masks;
+const rule=model.rules.values().next().value;
+assert.throws(()=>{rule.lower++;},TypeError);assert.throws(()=>{rule.masks=[];},TypeError);
+assert.throws(()=>{rule.values[0][1]=0;},TypeError);assert.throws(()=>model.rules.set('counterfeit',rule),/Immutable/);
+assert.throws(()=>{model.rules=new Map();},TypeError);assert.throws(()=>model.events.pop(),/Immutable/);
+const validationNodes=model.transferValidationNodes;
+for(let i=0;i<10;i++)assert.equal(model.validateTransfer(),true);
+assert.equal(model.transferValidationNodes,validationNodes);assert.ok(model.cachedTransferChecks>=10);
+assert.equal(model.validateTransfer({forceReplay:true}),true);assert.ok(model.transferValidationNodes>validationNodes);
 const a=scrambleLattice(trefoil.vertices,{steps:3,seed:43,maxEdges:220}),b=scrambleLattice(trefoil.vertices,{steps:3,seed:901,maxEdges:220});
 const run=solveLatticeLazy(a.vertices,b.vertices,{maxDepth:6,maxEdges:220,extensionLearn:true});assert.equal(run.status,'equivalent');assert.ok(run.stats.extensionEliminations>0);assert.ok(run.extensions.eventsThisRun.length>0);
 const verify=spawnSync('python3',['-c',"import sys,json;sys.path.insert(0,'research/knot-classifier');from verify_lattice_movie import verify;print(json.dumps(verify(json.load(sys.stdin))))"],{input:JSON.stringify(run.certificate),encoding:'utf8'});assert.equal(verify.status,0,verify.stderr);

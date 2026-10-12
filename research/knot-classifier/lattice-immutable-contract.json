@@ -1,0 +1,36 @@
+{
+  "version": "lattice-immutable-iterative-escalation-v1",
+  "master": "../../docs/basic-tiling-algorithm.md",
+  "proof": "lattice-extension-contract.json",
+  "status": "Declared finite graph-path and relaxed-cover marking adaptation. Reference neighboring-pair/corona conformance is not claimed.",
+  "trustBoundary": "Only a native LocalExtensionMarkings instance can supply the cache. Private maps own the proof catalog. Public map views and evidence arrays reject mutation; every rule, nested sample, stencil, mask array and origin is recursively frozen. Proof-system configuration is read-only; the instance is sealed. No archived JSON assignments can be imported through this API.",
+  "activation": "Each new profile is checked against the full incident-face alphabet. Its resolved unmarked labels are replayed and its lower bound, failed-budget values and positive witnesses are checked before the rule is frozen and inserted. Unknown samples add no new exclusion. This once-only activation validation is paid in total query time and reported separately from original probes.",
+  "reuse": "Since only validated immutable native rules can enter the private catalog, ordinary transfer checks do not scan or replay the catalog. They check cancellation and retain the native proof scope. Exact normalized profile identity is required at lookup. An explicit forceReplay audit rechecks the entire catalog independently of normal query reuse. Any change to a proof, stencil, alphabet or system configuration requires a different validated object; mutable rules cannot invalidate an accepted prefix.",
+  "inventoryMemoization": "Both lanes use query-local memoization of complete Reidemeister endpoint maps by exact canonical signed diagram. It retains all allowed face placements and move types. Complete cached and uncached inventories are compared on all 35 prime references through eight crossings. No invariant or knot label enters the algorithm.",
+  "schedule": "Both lanes try horizons zero through ten with the same opaque bidirectional BFS at each horizon, same neutral permutation and complete point/candidate graph. A smaller finite horizon is advanced only after complete exhaustion. A time, node, live-state or enumeration limit remains unknown and stops that query. Time and expanded-node budgets cover all attempts; live-state capacity applies to each attempt, with repeated construction and warmup costs charged.",
+  "experiment": "Same saved five-move independent endpoint scrambles from the prior 105-pair benchmark. First prime reference type at each minimal crossing count three through eight, all three original seed pairs: 18 representative larger-budget queries. No endpoint replacement, simplified patch, supplied construction route or imported model. This is not a larger-budget recognition score for all 35 types.",
+  "bounds": {
+    "maxDepth": 10,
+    "maxEdges": 240,
+    "nodeCap": 5000,
+    "stateCap": 200000,
+    "maxMs": 60000,
+    "extensionProbeNodeCap": 512,
+    "region": null,
+    "direction": [
+      11,
+      13,
+      17
+    ],
+    "seed": 31
+  },
+  "scope": "All unit faces incident to occupied edges throughout both embeddings. The existing fixed regular projection and single-Reidemeister endpoint grammar remains restricted. Positive movies identify supplied equivalent pairs; finite exhaustion does not establish inequivalence, reference-bank recognition, mirror/composite coverage or a complete eight-crossing classifier.",
+  "verification": [
+    "Immutable evidence and configuration, forbidden import/mutation, constant transfer proof-node counts, explicit full-audit replay",
+    "Cached-versus-uncached complete move inventories",
+    "Identical increasing-horizon schedules on small positive controls and aggregate budget stops",
+    "Independent Python replay of every scramble provenance and discovered spatial movie",
+    "Independent complete-face alphabet and resolved local cover-label replay"
+  ],
+  "retryPolicy": "All four marked unknowns after the initial paired stage receive matched 120-second query budgets in both lanes. Each stage starts a fresh empty native model, transferring within its selected queries. Cumulative reporting retains every earlier failed query and all repeated-horizon work."
+}
