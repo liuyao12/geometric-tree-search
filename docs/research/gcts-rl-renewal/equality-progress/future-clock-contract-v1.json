@@ -1,0 +1,121 @@
+{
+  "accounting_adapter": {
+    "clock_algorithm_change_required_for_this_defect": false,
+    "note": "Existing elapsed comparisons and unchanged external 0.001-second cover tolerance are retained. No clock tolerance enlargement.",
+    "pin": {
+      "bytes": 21195,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d"
+    }
+  },
+  "applies_to": "Only a separately authorized still-unexecuted future phase; never repair/reclassify/rerun either historical UNKNOWN attempt.",
+  "author": "/root/rl_engine_fixture",
+  "clock_domain": {
+    "absolute_reference": "process local and untrusted across processes",
+    "duration_unit": "seconds as exact bound runtime clock contract; review rate/resolution conditions without changing caps",
+    "identity": [
+      "emitter_PID",
+      "exact_runtime_binding",
+      "time.perf_counter"
+    ]
+  },
+  "current_missing_evidence": [
+    "Owner successful closed SELF/lifetime/frame and complete provisional replay absent for current equality attempt.",
+    "No all-five context qualification and no authorized RL trajectory activation."
+  ],
+  "current_or_historical_qualification_produced": false,
+  "findings_pin": {
+    "bytes": 12595,
+    "path": ".gcts-active/equality-clock-interface-source-review-20261012/findings-v1.json",
+    "sha256": "39ca415c65b11745fe60a64f876b91cd310eb0629c7d366e7a36011dd83e8f55"
+  },
+  "frame_contract": {
+    "bytes": 52,
+    "checks": [
+      "exact role/PID/exit/reserved/magic/raw-buffer hash",
+      "finite nonnegative local readings, closed >= start",
+      "elapsed exactly equals closed minus start within the existing transport semantics",
+      "all raw source/plan/activation/platform/artifact bindings unchanged"
+    ],
+    "last_three_fields": [
+      "elapsed",
+      "start",
+      "closed"
+    ],
+    "struct": "!8sBBHQQddd"
+  },
+  "new_activation_authorized": false,
+  "prohibited_comparisons": [
+    "worker absolute start/close versus owner absolute start/create/reap/close",
+    "owner absolute start/close versus ROOT absolute start/create/reap/close",
+    "cross-process absolute timestamp alignment by inferred offsets"
+  ],
+  "prospective_ROOT_entry_successor": {
+    "comparisons": [
+      "Order ROOT fields only within ROOT.",
+      "Owner closed-frame elapsed <= ROOT-observed owner creation-through-reap/stream-close elapsed <= unchanged 175-second bound.",
+      "Worker elapsed <= exact owner-observed child duration, reconstructed from the added same-owner raw clocks.",
+      "Owner-emitted observer/sample/append clocks remain compared only against owner-local entry/close."
+    ],
+    "minimal_change": "Replace cross-role absolute inequalities with authenticated durations; retain complete raw accounting replay and every same-owner/local-order check.",
+    "same_process_fields": [
+      "ROOT_entry",
+      "owner_creation_before_Popen",
+      "owner_terminal_reap",
+      "owner_streams_closed",
+      "ROOT_closed_frame"
+    ]
+  },
+  "prospective_external_finalizer_successor": {
+    "comparisons": [
+      "ROOT elapsed <= actual trusted complete tool boundary <= unchanged 180-second bound.",
+      "Tool wall time and enclosing window remain externally observed values, not a fabricated external wait4.",
+      "Do not replay full audit/JSONL a second time; preserve exact entry replay receipt/pins and authenticate the small raw frames."
+    ],
+    "minimal_change": "Replace one cross-role absolute chain with separate local ROOT/owner/worker coherence checks and elapsed nesting. Preserve source/plan/activation/artifact pins and no-failure flag requirements."
+  },
+  "prospective_owner_successor": {
+    "cleanup": "Existing cancellation flags, exact live handles, direct reaping, containment latch and one-shot ROOT group cleanup retained.",
+    "comparisons": [
+      "Order these clocks only within the owner process.",
+      "Worker frame elapsed <= owner-observed creation-through-terminal-reap seconds <= unchanged 170-second bound.",
+      "Retain creation-through-stream-close seconds separately; charge all stream/receipt/SELF/postlude work to unchanged complete owner and ROOT bounds."
+    ],
+    "minimal_change": "Replace only cross-process absolute comparisons with duration checks; add explicit owner-local raw child creation/reap/stream-close clock fields and emitting owner PID for independent reconstruction.",
+    "same_process_fields": [
+      "owner_entry",
+      "worker_creation_before_Popen",
+      "worker_terminal_reap_after_wait4_bookkeeping",
+      "worker_streams_closed_after_context_close",
+      "owner_closed_frame"
+    ]
+  },
+  "required_before_execution": [
+    "ROOT review/freeze source successors and every exact delta; original activated sources remain immutable.",
+    "Independent source review of per-emitter domain identities, duration coverage, closure sequence and exact output schemas.",
+    "Exact runtime binding and existing unit/rate/resolution/topology/postlude conditions reviewed; no universal native/build claim.",
+    "Fresh prospective plan/activation/output namespace for an explicitly authorized still-unexecuted phase; ROOT is sole dispatcher."
+  ],
+  "schema": "source-only-future-process-local-clock-contract-v1",
+  "status": "PROSPECTIVE_DESIGN_ONLY_NOT_IMPLEMENTED_REVIEWED_OR_ACTIVATED",
+  "unchanged_limits": {
+    "ROOT_seconds": 180,
+    "descriptor_cap": 64,
+    "features": 31,
+    "grammar_split_seeds_rewards": "unchanged",
+    "memory_bytes": 536870912,
+    "owner_seconds": 175,
+    "postlude_reserve_bytes": 33554432,
+    "worker_seconds": 170
+  },
+  "unchanged_science": {
+    "bytes": 13759,
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+    "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3"
+  },
+  "unchanged_transport": {
+    "bytes": 13756,
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+    "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schema": "ROOT-compact-static-pending-terminal-tool-v2",
+  "status": "UNKNOWN",
+  "ROOT_pid": 96998,
+  "selector": "donor-two-equalities",
+  "freeze": {
+    "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-entry-activation-v2.json",
+    "sha256": "53e1a9d90823a8b19472897fa1203506ef04bf27cd7dbc1777ec155d6183f1e6",
+    "bytes": 297258
+  },
+  "plan": {
+    "path": ".gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json",
+    "sha256": "02c14aba30566f976cb5903e3278a499882da567841a2192f35a4b0bf240948d",
+    "bytes": 295189
+  },
+  "activation": {
+    "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-donor-two-equalities-activation-v1.json",
+    "sha256": "551f9ed160baed168ed485afd8b2d66072574bedfe8df65c9f4b38152a189ebf",
+    "bytes": 718
+  },
+  "entry_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+    "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90",
+    "bytes": 44014
+  },
+  "entry_source_manifest": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-root-entry-v2.json",
+    "sha256": "73a7da1644d5b44fd14803267a5047798075166b9172f7d9423fbf60f3ada580",
+    "bytes": 288229
+  },
+  "owner_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+    "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+    "bytes": 26105
+  },
+  "owner_source_manifest": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+    "sha256": "6af1f60af074b9030ce312d6003d797484c2f4ba6749cda8e3a66f6bf55d16ca",
+    "bytes": 3108
+  },
+  "adapter_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+    "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+    "bytes": 21195
+  },
+  "platform_evidence": {
+    "path": ".gcts-active/equality-context-progress-20261012/platform-accounting-evidence-v1.json",
+    "sha256": "4837684657f9fda9e8ffbb4d9585b7f1e13604619b73852c7788017f081901a3",
+    "bytes": 2657
+  },
+  "owner_pid": 96999,
+  "owner_group": 96999,
+  "owner_reaped": true,
+  "owner_exit": -9,
+  "owner_terminal_wait4_raw": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 416,
+    "ru_maxrss": 298303488,
+    "ru_minflt": 448069,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 5103,
+    "ru_nsignals": 1,
+    "ru_nswap": 0,
+    "ru_nvcsw": 2856,
+    "ru_oublock": 0,
+    "ru_stime": 3.135054,
+    "ru_utime": 13.016357
+  },
+  "owner_creation_clock": 0.569069791,
+  "owner_terminal_reap_clock": 12.960251208,
+  "owner_streams_closed_clock": 12.960316958,
+  "owner_creation_through_reap_and_stream_close_seconds": 12.391247167,
+  "owner_closed_SELF": null,
+  "provisional": null,
+  "closed_accounting_replay": null,
+  "closed_artifacts": {},
+  "containment_record": {
+    "pin": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-containment-v1.json",
+      "sha256": "fab9aeb86a911af81e8964fcf33d37da75077452ef6b599d7eb18f44b5bafb6a",
+      "bytes": 1518
+    },
+    "value": {
+      "schema": "compact-owner-V3-live-group-containment-v1",
+      "status": "UNKNOWN_REQUIRES_ROOT_LIVE_GROUP_TERMINATION",
+      "selector": "donor-two-equalities",
+      "owner": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+        "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+        "bytes": 26105
+      },
+      "group": {
+        "owner_pid": 96999,
+        "owner_pgid": 96999,
+        "owner_sid": 96999,
+        "ROOT_parent_pid": 96998
+      },
+      "reason": "post-spawn failure or cancellation",
+      "detail": {
+        "failure": {
+          "type": "ValueError",
+          "message": "same verified cross-process monotone clock and complete child lifetime"
+        },
+        "cancellation_signum": 0,
+        "child_pid": 97000,
+        "child_reaped": true,
+        "child_exit": 0,
+        "observer_count": 290,
+        "observer_detail": {
+          "pin": {
+            "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-observers-v1.jsonl",
+            "sha256": "00cdebc84cca93fc68e6dc5a95077e8754e850e914556aeb97f0e23669ee89f2",
+            "bytes": 443941
+          },
+          "records": 290
+        },
+        "sample_detail": {
+          "pin": {
+            "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-samples-v1.jsonl",
+            "sha256": "ab1ea8744e3c8713d53782f132f81681c25a7835c51438d6a21e6742f1ad29d9",
+            "bytes": 156911
+          },
+          "records": 290
+        }
+      },
+      "clock_before_containment_serialization": 12.368117416,
+      "direct_owner_leader_retained": true,
+      "grandchildren_reaped_claim": false,
+      "success_SELF_frame_emitted": false,
+      "full_resource_accepted": false,
+      "all_five_qualification": false,
+      "whole_seconds": 180,
+      "supervisor_seconds": 175,
+      "child_seconds": 170,
+      "peak_bytes": 536870912
+    }
+  },
+  "ROOT_SELF_before_final_receipt_write_raw": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 36,
+    "ru_maxrss": 19283968,
+    "ru_minflt": 2572,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 950,
+    "ru_nsignals": 0,
+    "ru_nswap": 0,
+    "ru_nvcsw": 3401,
+    "ru_oublock": 0,
+    "ru_stime": 0.101523,
+    "ru_utime": 0.17429699999999998
+  },
+  "ROOT_seconds_before_final_receipt_write": 12.948297792,
+  "cancellation_signum": 0,
+  "emergency_group_kill": true,
+  "group_kill_attempted_once": true,
+  "group_kill_error": null,
+  "cooperative_stop": true,
+  "containment_latched": true,
+  "failure": null,
+  "semantic_candidate": false,
+  "resource_accepted": false,
+  "all_five_qualification": false,
+  "known_topology_only": true,
+  "no_grandchild_reap_claim": true,
+  "remaining": "Closed receipt, raw ROOT SELF, fixed52byte ROOT frame file, hard exit; separate trusted external terminal/full tool clock/topology/reserve gate required."
+}

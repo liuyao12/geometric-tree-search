@@ -1,0 +1,129 @@
+{
+  "schema": "existing-frozen-target-natural-reading-v1",
+  "status": "GOAL_TRANSLATION_ONLY_NOT_A_RETURNED_PROOF",
+  "selector": "donor-two-equalities",
+  "exact_theory_source": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+  "source_view": "docs/research/gcts-rl-renewal/curriculum-contexts/view.json",
+  "sequent_latex": "\\Gamma_0:\\ell=m,\\quad\\Gamma_1:m=n,\\quad\\Gamma_2:\\operatorname{Incident}(R,\\ell)\\;\\vdash\\;\\operatorname{Incident}(R,n)",
+  "occurrences": [
+    {
+      "index": 0,
+      "formula_ast": [
+        "eq",
+        [
+          "fun",
+          "l",
+          []
+        ],
+        [
+          "fun",
+          "m",
+          []
+        ]
+      ],
+      "latex": "\\ell=m",
+      "duplicate_of_index": null,
+      "formula_code": 38,
+      "english_latex": "\\(\\ell\\) and \\(m\\) denote the same object."
+    },
+    {
+      "index": 1,
+      "formula_ast": [
+        "eq",
+        [
+          "fun",
+          "m",
+          []
+        ],
+        [
+          "fun",
+          "n",
+          []
+        ]
+      ],
+      "latex": "m=n",
+      "duplicate_of_index": null,
+      "formula_code": 42,
+      "english_latex": "\\(m\\) and \\(n\\) denote the same object."
+    },
+    {
+      "index": 2,
+      "formula_ast": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "R",
+            []
+          ],
+          [
+            "fun",
+            "l",
+            []
+          ]
+        ]
+      ],
+      "latex": "\\operatorname{Incident}(R,\\ell)",
+      "duplicate_of_index": null,
+      "formula_code": 52,
+      "english_latex": "\\(R\\) is incident with \\(\\ell\\)."
+    }
+  ],
+  "target": {
+    "formula_ast": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "R",
+          []
+        ],
+        [
+          "fun",
+          "n",
+          []
+        ]
+      ]
+    ],
+    "latex": "\\operatorname{Incident}(R,n)",
+    "formula_code": 54,
+    "english_latex": "\\(R\\) is incident with \\(n\\)."
+  },
+  "natural_question_latex": "Assuming the three stated hypotheses, can the search establish that \\(R\\) is incident with \\(n\\)?",
+  "logical_scope": "Precisely the retained ground incidence/equality sequent under the common theory. No additional Point/Line hypotheses, universal closure, assumption discharge or authored derivation route.",
+  "current_preparation_update_from_ROOT_message": {
+    "status": "Actual fresh preparation reported; independent static audit follows",
+    "hypothesis_codes": [
+      38,
+      42,
+      52
+    ],
+    "target_code": 54,
+    "complete_groups": 2,
+    "complete_initial_candidates": 332890,
+    "single_types_visited": 171,
+    "pair_types_visited": 29241,
+    "internal_receipt_seconds": 5.0016845,
+    "external_bound_seconds": 10.457,
+    "full_scoped_resource_estimate_bytes": 377896960,
+    "target_searches": 0,
+    "RNG_draws": 0,
+    "training_runs": 0,
+    "evidence_binding": "ROOT-reported exact facts; await ROOT-supplied saved metadata receipt path before any independently pinned report claim.",
+    "new_proof_or_static_acceptance": false
+  },
+  "recommended_reader_update": {
+    "where": "Add a stage row to ROOT-assembled parallel-research/view.json; preserve the fixed historical original-version baseline and frozen reader source.",
+    "stage": "Fresh donor-two-equalities preparation",
+    "scope": "Actual complete context/body/pool preparation only",
+    "disposition": "Prepared; pending independent static audit",
+    "note": "Complete frozen context and two cluster groups prepared. Target proof search, RNG and training have not run. Independent static qualification is pending.",
+    "target_caption_latex": "The target is \\(\\ell=m,\\;m=n,\\;\\operatorname{Incident}(R,\\ell)\\vdash\\operatorname{Incident}(R,n)\\): transport incidence across the two equality premises.",
+    "cost_scope": "Use the saved internal receipt and externally owned time as distinct scopes. The scoped memory estimate is not a simultaneous physical peak or OS hard cap.",
+    "publishing_owner": "ROOT"
+  },
+  "functional_calls": 0,
+  "qualification_issued": false
+}

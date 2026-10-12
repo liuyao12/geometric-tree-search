@@ -1,0 +1,283 @@
+{
+  "additional_prospective_corrections": [
+    {
+      "finding": "Owner absolute entry/close compared to ROOT absolute creation/terminal; worker absolute entry/close compared to owner entry/close. Both require a shared origin not provided by this runtime.",
+      "lines": [
+        282,
+        321,
+        322,
+        323
+      ],
+      "source": {
+        "bytes": 44014,
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+        "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90"
+      }
+    },
+    {
+      "finding": "Unexecuted finalizer chains absolute ROOT, owner, and worker readings. Split into per-emitter local order and authenticated duration comparisons in a future source successor.",
+      "lines": [
+        365,
+        366,
+        367,
+        368
+      ],
+      "source": {
+        "bytes": 33619,
+        "path": ".gcts-active/equality-context-progress-20261012/external_terminal_finalize_v1.py",
+        "sha256": "953c2c58a0d9a9f2d8ac6afef04431c54086f7c9954c08a7fb3d52b5c67bba86"
+      }
+    }
+  ],
+  "already_usable_clock_checks": [
+    "The exact transport frame elapsed equals its own closed minus its own start; this is coherent in both saved frames.",
+    "Owner child_start through worker_terminal_clock is a same-owner duration.",
+    "Owner observer/sample/append clocks and owner-frame entry/close share one emitting owner; their within-owner sequencing remains usable when PID/runtime bindings are exact.",
+    "ROOT owner_creation/reap/streams_close clocks and ROOT-frame entry/close share ROOT; their within-ROOT sequencing remains usable.",
+    "Adapter V4 leaf/owner/ROOT/tool comparisons use elapsed seconds and do not require a shared absolute origin. Existing clock tolerances and resource arithmetic need no change for this defect."
+  ],
+  "author": "/root/rl_engine_fixture",
+  "certain_positive_path_blocker": {
+    "conclusion": "The owner compares absolute readings generated in distinct processes. The saved worker entry is below even the inferred owner entry, so it is below child_start measured later in that owner; the first predicate rejects this actual run.",
+    "expression": "worker entry >= owner child_start, worker closed <= owner worker_terminal_clock",
+    "failure_message": "same verified cross-process monotone clock and complete child lifetime",
+    "lines": [
+      342,
+      343,
+      344
+    ],
+    "source": {
+      "bytes": 26105,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23"
+    }
+  },
+  "current_disposition": {
+    "ROOT_exit_code": 1,
+    "actual_invocations": 1,
+    "all_five_qualification": false,
+    "external_finalizer_invoked": false,
+    "owner_exit_code": -9,
+    "owner_reaped": true,
+    "owner_success_frame_absent": true,
+    "raw_semantic_status": "PASS_RAW_WORKER_OUTPUT_ONLY",
+    "resource_status": "UNKNOWN",
+    "scientific_rerun": false,
+    "worker_exit_code": 0,
+    "worker_reaped": true
+  },
+  "date": "2026-10-12",
+  "owner_entry_inference": {
+    "first_record_bytes": 1514,
+    "first_record_index": 0,
+    "first_record_sha256": "960bf5cbc432fcb0bbdba641c045c27296427e790c16d2a7bc66ad6c3ccc7428",
+    "inferred_owner_local_entry": 0.183421833,
+    "owner_local_seconds_from_entry": 0.162240458,
+    "owner_local_terminal_clock": 0.345662291,
+    "owner_pid": 96999,
+    "scope": "Only first saved JSONL record decoded. Same-owner subtraction identifies owner-local entry; no common epoch asserted, no PS stream parsing or complete replay.",
+    "source_table_pin": {
+      "bytes": 443941,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-observers-v1.jsonl",
+      "sha256": "00cdebc84cca93fc68e6dc5a95077e8754e850e914556aeb97f0e23669ee89f2"
+    },
+    "worker_local_entry": 0.013869583,
+    "worker_local_entry_less_than_owner_local_entry": true
+  },
+  "preservation": {
+    "current_equality_UNKNOWN_preserved": true,
+    "existing_files_changed": false,
+    "new_executable_repair_authored": false,
+    "no_theorem_learning_or_qualification_claim": true,
+    "old_donor_UNKNOWN_preserved": true,
+    "original_worker_and_transport_pins_preserved": true
+  },
+  "raw_frame_layout": {
+    "bytes": 52,
+    "fields": [
+      "magic",
+      "role",
+      "exit_code",
+      "reserved",
+      "PID",
+      "SELF_ru_maxrss_raw",
+      "elapsed",
+      "start",
+      "closed"
+    ],
+    "frame_change_proposed": false,
+    "last_three_order": "elapsed, start, closed",
+    "struct_format": "!8sBBHQQddd"
+  },
+  "reference_source_support": {
+    "ROOT_saved_reference": {
+      "bytes": 1389,
+      "path": ".gcts-active/equality-context-progress-20261012/primary-clock-source-reference-v1.json",
+      "sha256": "cf1851d2af06df856b342d58943768389084ee3db548b8f07168203db3dda536"
+    },
+    "installed_header": {
+      "bytes": 8926,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Headers/pytime.h",
+      "sha256": "637e9ffebbd2d486079e1531a372da39e55f004a74492bbb5eb8aaf52d8af80b"
+    },
+    "installed_header_contract": "Monotonic reference point is undefined; differences between calls are the usable quantity. No shared process epoch promised.",
+    "local_C_implementation_available": false,
+    "scope": "ROOT browsed official reference pages. Upstream CPython 3.9.6 explanation is not byte-identical attestation of running Apple-built Python. Exact saved frames independently demonstrate failed common-origin assumption.",
+    "sources": [
+      {
+        "line_ranges": [
+          "771-821",
+          "964-970"
+        ],
+        "paraphrase": "The Apple monotonic implementation subtracts a process-local static reference; the non-Windows performance-counter implementation delegates to this clock.",
+        "short_excerpts": [
+          "static uint64_t t0 = 0;",
+          "t0 = mach_absolute_time();",
+          "ticks -= t0;",
+          "return _PyTime_GetMonotonicClockWithInfo(t, info);"
+        ],
+        "title": "CPython 3.9.6 clock implementation",
+        "url": "https://raw.githubusercontent.com/python/cpython/v3.9.6/Python/pytime.c"
+      },
+      {
+        "paraphrase": "The documentation records a macOS change in Python 3.10 making the clock the same for all processes.",
+        "title": "Python time.monotonic documentation",
+        "url": "https://docs.python.org/3/library/time.html#time.monotonic"
+      }
+    ]
+  },
+  "runtime_limits": [
+    "Runtime binding is Apple Python 3.9.6; official Python documentation records macOS common-origin change in 3.10. No runtime upgrade is proposed.",
+    "No get_clock_info/native probe or calibration was invoked by this audit. Unit/rate/resolution and complete postlude/topology conditions remain subject to exact runtime/source review.",
+    "No retrospective timestamp offset alignment, historical discount, inferred owner SELF, reconstructed missing successful owner receipt, or exact total memory claim."
+  ],
+  "saved_evidence_pins": [
+    {
+      "bytes": 1389,
+      "path": ".gcts-active/equality-context-progress-20261012/primary-clock-source-reference-v1.json",
+      "sha256": "cf1851d2af06df856b342d58943768389084ee3db548b8f07168203db3dda536"
+    },
+    {
+      "bytes": 4333,
+      "path": ".gcts-active/equality-context-progress-20261012/static-unknown-disposition-v1.json",
+      "sha256": "b4de54df8babeb0888d7d916aaeb09492c32f2b5a822ad33b9cb442d6b9011b3"
+    },
+    {
+      "bytes": 1674,
+      "path": ".gcts-active/equality-context-progress-20261012/runtime-binding-v1.json",
+      "sha256": "17246b9adfc9d7c3717b5cbe3e80bb8d758d432aa32376a35eafb647b9cad61e"
+    },
+    {
+      "bytes": 1007,
+      "path": ".gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+      "sha256": "b6458de654d84569672e72ff426d97cf13b5d01d10ee85bb7d3c8c00202fac8c"
+    },
+    {
+      "bytes": 6394,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-pending-receipt-v1.json",
+      "sha256": "9373b6e86654a2e3832c524e792e3233df6b625c5cbf733d25454724c650b0c7"
+    },
+    {
+      "bytes": 1518,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-containment-v1.json",
+      "sha256": "fab9aeb86a911af81e8964fcf33d37da75077452ef6b599d7eb18f44b5bafb6a"
+    },
+    {
+      "bytes": 3121,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-compact-v1.json",
+      "sha256": "a3872fa49cc1646482cf6acf18e02359bd81d8d5020b0cf3ef54a1c37d2234de"
+    },
+    {
+      "bytes": 15919244,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-result-v1.json",
+      "sha256": "08e99eed16de138b3acf4c09c9de8f82e410a429edc40b64ac79f1bf355140df"
+    },
+    {
+      "bytes": 0,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/owner-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "saved_frames": {
+    "ROOT": {
+      "SELF_ru_maxrss_raw": 19283968,
+      "cross_process_epoch_authenticated": false,
+      "elapsed_seconds": 12.948679042,
+      "exact_same_process_elapsed_equality": true,
+      "exit_code": 1,
+      "magic": "GCTSCMP1",
+      "pid": 96998,
+      "pin": {
+        "bytes": 52,
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-closed-SELF-v1.bin",
+        "sha256": "fd3054cecd4ae1ccb4bb9300aaaf92cc9d64a3a16afa99662f86cd0f963e301c"
+      },
+      "process_local_closed": 12.961345625,
+      "process_local_started": 0.012666583,
+      "reserved": 0,
+      "role": 3
+    },
+    "worker": {
+      "SELF_ru_maxrss_raw": 298303488,
+      "cross_process_epoch_authenticated": false,
+      "elapsed_seconds": 11.991321417,
+      "exact_same_process_elapsed_equality": true,
+      "exit_code": 0,
+      "magic": "GCTSCMP1",
+      "pid": 97000,
+      "pin": {
+        "bytes": 52,
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-stdout-v1.txt",
+        "sha256": "06cf0d3c8f635d48e5b8c6d30ee1566b34e78fb247be70687929ed66871c4512"
+      },
+      "process_local_closed": 12.005191,
+      "process_local_started": 0.013869583,
+      "reserved": 0,
+      "role": 1
+    }
+  },
+  "schema": "source-only-equality-clock-interface-findings-v1",
+  "scope": "Saved small metadata/source AST/hash and two 52-byte struct decodes only. No project imports/functions, processes, native calls, RNG, science, calibration, browser, or activation.",
+  "source_pins": {
+    "ROOT_entry_V2": {
+      "bytes": 44014,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+      "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90"
+    },
+    "accounting_adapter_V4": {
+      "bytes": 21195,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d"
+    },
+    "external_finalizer_V1": {
+      "bytes": 33619,
+      "path": ".gcts-active/equality-context-progress-20261012/external_terminal_finalize_v1.py",
+      "sha256": "953c2c58a0d9a9f2d8ac6afef04431c54086f7c9954c08a7fb3d52b5c67bba86"
+    },
+    "original_transport_V1": {
+      "bytes": 13756,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+    },
+    "original_worker_V1": {
+      "bytes": 13759,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3"
+    },
+    "owner_V4": {
+      "bytes": 26105,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23"
+    }
+  },
+  "unchanged_settings": {
+    "ROOT_seconds": 180,
+    "descriptor_cap": 64,
+    "features": 31,
+    "grammar_split_seeds_rewards": "unchanged",
+    "memory_bytes": 536870912,
+    "owner_seconds": 175,
+    "postlude_reserve_bytes": 33554432,
+    "worker_seconds": 170
+  }
+}

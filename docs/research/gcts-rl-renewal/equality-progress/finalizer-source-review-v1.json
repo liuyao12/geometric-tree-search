@@ -1,0 +1,163 @@
+{
+  "checks": [
+    {
+      "detail": "Full33619-byte source read and Python3.9 AST parsed; source/handoff/source constants and current activation/plan/library pins reconcile.",
+      "id": "frozen_source_and_handoff",
+      "result": "PASS"
+    },
+    {
+      "detail": "Entry V2 emitted receipt keyword set equals finalizer fixed_pending plus pending_variable exactly; no source function was called.",
+      "id": "exact_pending_grammar",
+      "result": "PASS_AST"
+    },
+    {
+      "detail": "Actual frozen planV2/owner status, eight reviewed source records, entry/worker activation, complete runtime/native paths and normalized literal five-argument command are required. Loaded native paths are checked only in future ROOT finalizer invocation; none imported by reviewer.",
+      "id": "runtime_and_command",
+      "result": "PASS_SOURCE_AND_METADATA"
+    },
+    {
+      "detail": "Requires real terminal exit0/empty output/no session, exact prior contract pin and one actual invocation; Date.now interval plus original1-second margin covers tool wait time and authenticated ROOT closed clock, all<=180. Prospective files must predate actual begin.",
+      "id": "external_terminal_and_clock",
+      "result": "PASS_SOURCE"
+    },
+    {
+      "detail": "All three roles independently decode same pinned52-byte buffers with magic/code/reserved/PID/positive raw SELF/finite exact clocks. Cross-role worker/owner/create/reap/stream-close chain and saved ROOT before/after receipt peaks are checked.",
+      "id": "raw_frame_identity_and_clocks",
+      "result": "PASS_SOURCE"
+    },
+    {
+      "detail": "Owner/worker/ROOT flags, exact artifacts, compact context/census, complete paired table hashes and trusted entry replay are rebound. Full audit and JSONL semantic/rawPS replay are not repeated. Provisional matches owner receipt and leaf/owner raw fields before exact adapter math.",
+      "id": "bindings_without_science_rerun",
+      "result": "PASS_SOURCE"
+    },
+    {
+      "detail": "Exact deferred adapterV4.finish_root_ledger requires saved ROOT SELF; sums disjoint role peaks, max sequential PS, one32MiB prospective postlude reserve; rolled owner peak is corroboration/residual guard only. Unchanged180/175/170/512MiB thresholds; no host/OS hardcap.",
+      "id": "resource_rule_and_limits",
+      "result": "PASS_CONDITIONAL_SOURCE"
+    },
+    {
+      "detail": "Exclusive bounded output can report only conditional known-topology static resource qualification; all-five/proof/trace/training remainfalse. Capacity64 flag and complete groups preserved. Gate cost explicitly additional to observed static phase.",
+      "id": "no_scope_escalation",
+      "result": "PASS_SOURCE"
+    },
+    {
+      "detail": "Actual planV2, worker/owner activation and outer activation now exist and exact-pin match. Prospective tool contract, real terminal, disposition and every science/ROOT output remain absent at review.",
+      "id": "current_frozen_inputs",
+      "result": "PASS_METADATA"
+    }
+  ],
+  "concrete_findings": [],
+  "exact_input_pins": [
+    {
+      "bytes": 9413,
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-plan-v2-metadata-review-v1.json",
+      "sha256": "53ec18a9a540934088114c7bde33828598c5b20d7881f8c2995337be7d2a6e1d"
+    },
+    {
+      "bytes": 13953,
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/root-entry-v2-complete-source-review-v1.json",
+      "sha256": "546c81e1d09165c78e5b59001ae4939d27862fa3ab72a812493279a95755f3c2"
+    },
+    {
+      "bytes": 26105,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23"
+    },
+    {
+      "bytes": 21195,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d"
+    },
+    {
+      "bytes": 44014,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+      "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90"
+    },
+    {
+      "bytes": 3108,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+      "sha256": "6af1f60af074b9030ce312d6003d797484c2f4ba6749cda8e3a66f6bf55d16ca"
+    },
+    {
+      "bytes": 288229,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-root-entry-v2.json",
+      "sha256": "73a7da1644d5b44fd14803267a5047798075166b9172f7d9423fbf60f3ada580"
+    },
+    {
+      "bytes": 13756,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+    },
+    {
+      "bytes": 13759,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3"
+    },
+    {
+      "bytes": 295189,
+      "path": ".gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json",
+      "sha256": "02c14aba30566f976cb5903e3278a499882da567841a2192f35a4b0bf240948d"
+    },
+    {
+      "bytes": 8562,
+      "path": ".gcts-active/equality-context-progress-20261012/external-terminal-finalizer-handoff-v1.json",
+      "sha256": "37aa99c09417f89279d23a97504d1ad853fa13b4dd38b3377a76e6ab74368cdd"
+    },
+    {
+      "bytes": 33619,
+      "path": ".gcts-active/equality-context-progress-20261012/external_terminal_finalize_v1.py",
+      "sha256": "953c2c58a0d9a9f2d8ac6afef04431c54086f7c9954c08a7fb3d52b5c67bba86"
+    },
+    {
+      "bytes": 2657,
+      "path": ".gcts-active/equality-context-progress-20261012/platform-accounting-evidence-v1.json",
+      "sha256": "4837684657f9fda9e8ffbb4d9585b7f1e13604619b73852c7788017f081901a3"
+    },
+    {
+      "bytes": 718,
+      "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-donor-two-equalities-activation-v1.json",
+      "sha256": "551f9ed160baed168ed485afd8b2d66072574bedfe8df65c9f4b38152a189ebf"
+    },
+    {
+      "bytes": 297258,
+      "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-entry-activation-v2.json",
+      "sha256": "53e1a9d90823a8b19472897fa1203506ef04bf27cd7dbc1777ec155d6183f1e6"
+    },
+    {
+      "bytes": 1674,
+      "path": ".gcts-active/equality-context-progress-20261012/runtime-binding-v1.json",
+      "sha256": "17246b9adfc9d7c3717b5cbe3e80bb8d758d432aa32376a35eafb647b9cad61e"
+    }
+  ],
+  "execution_authorized_by_review": false,
+  "new_execution_or_resource_acceptance": false,
+  "qualification_issued": false,
+  "remaining_conditions": [
+    "ROOT must freeze exact prospective contract and aggregate source-review record with all8 mandatory source/manifest/finalizer pins before the single actual command. Populate exact absolute terminal/result paths and complete runtime from activation.",
+    "Saved terminal record must retain the exact real tool object, actual Date.now begin/close/elapsed+1, no live session, prior contract pin and actual invocation count1. No external raw wait4 should be invented.",
+    "Malformed inputs or nonzero/interrupted/partial lifecycle remain unqualifiedUNKNOWN; validation exception without disposition is not permission to rerun scientific phase.",
+    "Finalizer trusts actual execution of exact entry raw accounting replay and the pinned complete tables. It does not independently re-read every nested rawPS file or redo full audit/JSONL semantics; this limit is explicit in handoff and source scope.",
+    "Trusted source/tool/activation provenance and finite known-leaf topology are required; not cryptographic OS attestation, escape-free containment or exact121.10 kernel source equivalence.",
+    "32MiB remains the original prospective reviewed fixed-frame postlude allowance, not an observed final peak or historical discount. Metadata finalization/report/publication costs remain additional.",
+    "Original first donor resourceUNKNOWN and global curriculum/trajectory/learner gaps unchanged."
+  ],
+  "schema": "independent-external-terminal-finalizer-v1-complete-source-review-v1",
+  "scope": {
+    "complete_source_read_AST_and_saved_small_metadata_only": true,
+    "process_PS_native_browser_calibration_RNG_training_publication_calls": 0,
+    "project_imports_or_functions_or_source_scripts_executed": 0,
+    "science_or_gzip_model_payload_decode": 0
+  },
+  "source_specific_gate_inputs": {
+    "contract_file": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/static-prospective-tool-contract-v1.json",
+    "contract_schema": "ROOT-compact-static-external-tool-contract-v1",
+    "disposition_exists": false,
+    "prospective_contract_exists": false,
+    "real_terminal_exists": false,
+    "result_file": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/static-resource-disposition-v1.json",
+    "review_schema": "ROOT-compact-static-source-review-for-terminal-gate-v1",
+    "terminal_file": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+    "terminal_schema": "ROOT-compact-static-actual-terminal-tool-v1"
+  },
+  "status": "SOURCE_PASS_FOR_NARROW_TRUSTED_TERMINAL_CONDITIONAL_RESOURCE_GATE_PENDING_REAL_CONTRACT_AND_TERMINAL"
+}

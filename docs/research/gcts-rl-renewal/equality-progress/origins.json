@@ -1,0 +1,467 @@
+{
+  "schema": "ROOT-notebook117-selected-evidence-origins-v1",
+  "created_utc": "2026-10-12T11:09:27.858445+00:00",
+  "records": [
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/preparation-qualified-owned-scope-terminal-v1.json",
+        "sha256": "80c4f22ed241843cba0ae57a68e9a749cf760bdfdb3221696d045de8e7e931ca",
+        "bytes": 34300
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/preparation-qualified-owned-scope-terminal-v1.json",
+        "sha256": "80c4f22ed241843cba0ae57a68e9a749cf760bdfdb3221696d045de8e7e931ca",
+        "bytes": 34300
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/preparation-tool-terminal-v1.json",
+        "sha256": "0838d20242da3efdcf0ad5dfdf4016e5c8f73a7cb7ee7383f182ef96a7fa24fe",
+        "bytes": 2021
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/preparation-tool-terminal-v1.json",
+        "sha256": "0838d20242da3efdcf0ad5dfdf4016e5c8f73a7cb7ee7383f182ef96a7fa24fe",
+        "bytes": 2021
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-preparation-actual-metadata-review-v1.json",
+        "sha256": "2b65beefcbee24ac032e52105d7a0ae55b2d03489cc94f1bf42f1910783d8be1",
+        "bytes": 9523
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/preparation-actual-review-v1.json",
+        "sha256": "2b65beefcbee24ac032e52105d7a0ae55b2d03489cc94f1bf42f1910783d8be1",
+        "bytes": 9523
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/static-unknown-disposition-v1.json",
+        "sha256": "b4de54df8babeb0888d7d916aaeb09492c32f2b5a822ad33b9cb442d6b9011b3",
+        "bytes": 4333
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/static-unknown-disposition-v1.json",
+        "sha256": "b4de54df8babeb0888d7d916aaeb09492c32f2b5a822ad33b9cb442d6b9011b3",
+        "bytes": 4333
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+        "sha256": "b6458de654d84569672e72ff426d97cf13b5d01d10ee85bb7d3c8c00202fac8c",
+        "bytes": 1007
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/static-tool-terminal-v1.json",
+        "sha256": "b6458de654d84569672e72ff426d97cf13b5d01d10ee85bb7d3c8c00202fac8c",
+        "bytes": 1007
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/static-prospective-tool-contract-v1.json",
+        "sha256": "8ed8429532b028a604b1560a4b4a3fc6caf71518b47363df4db3de4231afaa21",
+        "bytes": 3281
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/static-prospective-tool-contract-v1.json",
+        "sha256": "8ed8429532b028a604b1560a4b4a3fc6caf71518b47363df4db3de4231afaa21",
+        "bytes": 3281
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-compact-v1.json",
+        "sha256": "a3872fa49cc1646482cf6acf18e02359bd81d8d5020b0cf3ef54a1c37d2234de",
+        "bytes": 3121
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/static-compact-v1.json",
+        "sha256": "a3872fa49cc1646482cf6acf18e02359bd81d8d5020b0cf3ef54a1c37d2234de",
+        "bytes": 3121
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-containment-v1.json",
+        "sha256": "fab9aeb86a911af81e8964fcf33d37da75077452ef6b599d7eb18f44b5bafb6a",
+        "bytes": 1518
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/static-containment-v1.json",
+        "sha256": "fab9aeb86a911af81e8964fcf33d37da75077452ef6b599d7eb18f44b5bafb6a",
+        "bytes": 1518
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-pending-receipt-v1.json",
+        "sha256": "9373b6e86654a2e3832c524e792e3233df6b625c5cbf733d25454724c650b0c7",
+        "bytes": 6394
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/ROOT-pending-receipt-v1.json",
+        "sha256": "9373b6e86654a2e3832c524e792e3233df6b625c5cbf733d25454724c650b0c7",
+        "bytes": 6394
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-closed-SELF-v1.bin",
+        "sha256": "fd3054cecd4ae1ccb4bb9300aaaf92cc9d64a3a16afa99662f86cd0f963e301c",
+        "bytes": 52
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/ROOT-closed-SELF-v1.bin",
+        "sha256": "fd3054cecd4ae1ccb4bb9300aaaf92cc9d64a3a16afa99662f86cd0f963e301c",
+        "bytes": 52
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-stdout-v1.txt",
+        "sha256": "06cf0d3c8f635d48e5b8c6d30ee1566b34e78fb247be70687929ed66871c4512",
+        "bytes": 52
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/worker-closed-SELF-v1.bin",
+        "sha256": "06cf0d3c8f635d48e5b8c6d30ee1566b34e78fb247be70687929ed66871c4512",
+        "bytes": 52
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/primary-clock-source-reference-v1.json",
+        "sha256": "cf1851d2af06df856b342d58943768389084ee3db548b8f07168203db3dda536",
+        "bytes": 1389
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/primary-clock-source-reference-v1.json",
+        "sha256": "cf1851d2af06df856b342d58943768389084ee3db548b8f07168203db3dda536",
+        "bytes": 1389
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-actual-clock-failure-metadata-review-v1.json",
+        "sha256": "21f27c845aa753a97855eeb0efe847206dadeeb15a8e29b491dd7a9c71a72a4d",
+        "bytes": 11028
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/clock-failure-review-v1.json",
+        "sha256": "21f27c845aa753a97855eeb0efe847206dadeeb15a8e29b491dd7a9c71a72a4d",
+        "bytes": 11028
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json",
+        "sha256": "02c14aba30566f976cb5903e3278a499882da567841a2192f35a4b0bf240948d",
+        "bytes": 295189
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/actual-static-plan-v2.json",
+        "sha256": "02c14aba30566f976cb5903e3278a499882da567841a2192f35a4b0bf240948d",
+        "bytes": 295189
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-entry-activation-v2.json",
+        "sha256": "53e1a9d90823a8b19472897fa1203506ef04bf27cd7dbc1777ec155d6183f1e6",
+        "bytes": 297258
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/entry-activation-v2.json",
+        "sha256": "53e1a9d90823a8b19472897fa1203506ef04bf27cd7dbc1777ec155d6183f1e6",
+        "bytes": 297258
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+        "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90",
+        "bytes": 44014
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/root_compact_entry_v2.py",
+        "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90",
+        "bytes": 44014
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+        "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+        "bytes": 26105
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/curriculum_compact_owner_v4.py",
+        "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+        "bytes": 26105
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+        "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+        "bytes": 21195
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/root_accounting_adapter_v4.py",
+        "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+        "bytes": 21195
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+        "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+        "bytes": 13759
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/curriculum_compact_worker_v1.py",
+        "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+        "bytes": 13759
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+        "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+        "bytes": 13756
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/compact_static_transport_v1.py",
+        "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+        "bytes": 13756
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-context-progress-20261012/external_terminal_finalize_v1.py",
+        "sha256": "953c2c58a0d9a9f2d8ac6afef04431c54086f7c9954c08a7fb3d52b5c67bba86",
+        "bytes": 33619
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/external_terminal_finalize_v1.py",
+        "sha256": "953c2c58a0d9a9f2d8ac6afef04431c54086f7c9954c08a7fb3d52b5c67bba86",
+        "bytes": 33619
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/external-terminal-finalizer-v1-source-review-v1.json",
+        "sha256": "fc4a63dc9bef3721788202859370f90c94585fdcde6311940b2af916dfb858a4",
+        "bytes": 9629
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/finalizer-source-review-v1.json",
+        "sha256": "fc4a63dc9bef3721788202859370f90c94585fdcde6311940b2af916dfb858a4",
+        "bytes": 9629
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/audit-v1.json",
+        "sha256": "b2db21ed09b6acda2d7456970531003388b38e0d7b97544fd54f5d7d345b88d1",
+        "bytes": 89098
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/mathematical-audit-v1.json",
+        "sha256": "b2db21ed09b6acda2d7456970531003388b38e0d7b97544fd54f5d7d345b88d1",
+        "bytes": 89098
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/target-reading-v1.json",
+        "sha256": "eeec04b2d8ff11a0b59e4511c7553403a87f7adc21738cc6c633d1f96f133391",
+        "bytes": 4154
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/target-reading-v1.json",
+        "sha256": "eeec04b2d8ff11a0b59e4511c7553403a87f7adc21738cc6c633d1f96f133391",
+        "bytes": 4154
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/one-context-proof-feasibility-source-audit-20261012/audit-v1.json",
+        "sha256": "236888243bddb3291cbdca97c69efd35eb43a834da5e71f4f9a23ee66f4c459a",
+        "bytes": 45767
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/one-context-audit-v1.json",
+        "sha256": "236888243bddb3291cbdca97c69efd35eb43a834da5e71f4f9a23ee66f4c459a",
+        "bytes": 45767
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/one-context-proof-feasibility-source-audit-20261012/handoff-v1.json",
+        "sha256": "05f2ae5f264e99eb828d015c276152f83d3c5f1b65bda170660b367453d7faed",
+        "bytes": 19318
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/one-context-handoff-v1.json",
+        "sha256": "05f2ae5f264e99eb828d015c276152f83d3c5f1b65bda170660b367453d7faed",
+        "bytes": 19318
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/one-context-proof-feasibility-source-audit-20261012/static-resource-UNKNOWN-supplement-v1.json",
+        "sha256": "b96f251293965c9a46f437c0c4e58b6f1c830f78634af2e29b9dd9b87723eee9",
+        "bytes": 4352
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/one-context-static-UNKNOWN-supplement-v1.json",
+        "sha256": "b96f251293965c9a46f437c0c4e58b6f1c830f78634af2e29b9dd9b87723eee9",
+        "bytes": 4352
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/compiled-context-v1.json.gz",
+        "sha256": "12218e75ea855b1643e06b9ac07ccee64ecf74773f6adde70c0ba805bf7daacd",
+        "bytes": 311208
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/compiled-context-v1.json.gz",
+        "sha256": "12218e75ea855b1643e06b9ac07ccee64ecf74773f6adde70c0ba805bf7daacd",
+        "bytes": 311208
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-evidence-v1.json.gz",
+        "sha256": "a92d2fd739752e065d48088d827b04fe463fb65a9cf6ad08063cf99fde69f9ed",
+        "bytes": 1380481
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/preparation-evidence-v1.json.gz",
+        "sha256": "a92d2fd739752e065d48088d827b04fe463fb65a9cf6ad08063cf99fde69f9ed",
+        "bytes": 1380481
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-result-v1.json",
+        "sha256": "08e99eed16de138b3acf4c09c9de8f82e410a429edc40b64ac79f1bf355140df",
+        "bytes": 15919244
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/static-result-v1.json.gz",
+        "sha256": "79dfe3313071a64e679bdf66ace663e40c74f7ee490d84ad1867f675ee4bcecc",
+        "bytes": 2431813
+      },
+      "transform": "gzip,mtime=0; decompressed SHA and bytes verified"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/report-v1.html",
+        "sha256": "12451e05e8ddb3e21ac33ec1bc7d2c11b6961137b2cf381dbdabf3b5d9dde088",
+        "bytes": 13919
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/mathematical-scope.html",
+        "sha256": "1ec4301e0fde389f8d632ed8093115e0f4d2b2b24c0fcd5639e0c5e46d1e10db",
+        "bytes": 14410
+      },
+      "transform": "presentation links/CSS and explicit later-snapshot notice; source assessment preserved"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/one-context-proof-feasibility-source-audit-20261012/report-v1.html",
+        "sha256": "917a272e8493763f05557717744453055c31c3e171834f9c7c3259e2786e7629",
+        "bytes": 6834
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/one-context-design.html",
+        "sha256": "445c44c343c8fb77c7429eec6ed4611fd5ebc6b60792ff78d672e6378663eaa6",
+        "bytes": 7013
+      },
+      "transform": "presentation links/CSS and actual-status notice; proposed settings not activated; normalized EOF newline"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/handoff-v1.json",
+        "sha256": "794504c485183475a9747bb3f5350fbdd83cc226e5e119b75c28f737dd8e7dbd",
+        "bytes": 8554
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/mathematical-handoff-v1.json",
+        "sha256": "794504c485183475a9747bb3f5350fbdd83cc226e5e119b75c28f737dd8e7dbd",
+        "bytes": 8554
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-clock-interface-source-review-20261012/findings-v1.json",
+        "sha256": "39ca415c65b11745fe60a64f876b91cd310eb0629c7d366e7a36011dd83e8f55",
+        "bytes": 12595
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/clock-source-findings-v1.json",
+        "sha256": "39ca415c65b11745fe60a64f876b91cd310eb0629c7d366e7a36011dd83e8f55",
+        "bytes": 12595
+      },
+      "transform": "exact byte copy"
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json",
+        "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b",
+        "bytes": 6153
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/equality-progress/future-clock-contract-v1.json",
+        "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b",
+        "bytes": 6153
+      },
+      "transform": "exact byte copy"
+    }
+  ],
+  "scope": "Selected task-only exact byte evidence, two presentation derivatives and verified compressed raw audit; not complete portable dependency closure. All scientific outcomes preserved. No raw whole-host PS rows copied.",
+  "root_assembled_conformance": {
+    "path": "docs/research/gcts-rl-renewal/equality-progress/algorithm-conformance-v1.json",
+    "sha256": "224cbf2b6b8e6d22197e0f3bf33129fccf5446c9d4220750d2db36dc683f178d",
+    "bytes": 1696
+  }
+}

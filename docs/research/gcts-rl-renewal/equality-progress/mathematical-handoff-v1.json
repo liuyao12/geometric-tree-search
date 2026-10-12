@@ -1,0 +1,181 @@
+{
+  "schema": "curriculum-mathematical-audit-immutable-source-handoff-v1",
+  "status": "SOURCE_METADATA_READY_NO_NEW_THEOREM_ACCEPTANCE",
+  "artifacts": [
+    {
+      "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/audit-v1.json",
+      "sha256": "b2db21ed09b6acda2d7456970531003388b38e0d7b97544fd54f5d7d345b88d1",
+      "bytes": 89098
+    },
+    {
+      "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/report-v1.html",
+      "sha256": "12451e05e8ddb3e21ac33ec1bc7d2c11b6961137b2cf381dbdabf3b5d9dde088",
+      "bytes": 13919
+    },
+    {
+      "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/target-reading-v1.json",
+      "sha256": "eeec04b2d8ff11a0b59e4511c7553403a87f7adc21738cc6c633d1f96f133391",
+      "bytes": 4154
+    }
+  ],
+  "validation": {
+    "path": ".gcts-active/curriculum-mathematical-audit-source-20261012/source-validation-v1.json",
+    "sha256": "352d6db245f642eb2c2fcbd70c224e0c221963e5c23cdbe04f4d7cc471b6643f",
+    "bytes": 5448
+  },
+  "exact_input_pins": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+      "sha256": "f2f8c25b21dfee4966bdcfd6fe93d0dcaa4c4caf194a3a83462474cf9db5f24b",
+      "bytes": 25906
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/view.json",
+      "sha256": "95d4c473b887c5ef4acb11a138596951b7cf4034d93e4ca85f22fbe69acbb2bb",
+      "bytes": 38075
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_selection_v1.py",
+      "sha256": "7d5e4ab83f266d9d08e916cd5c76c1f953750d594e02cbd41ddc4c0d853147fd",
+      "bytes": 6433
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+      "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb",
+      "bytes": 14954
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_prepare_worker_v1.py",
+      "sha256": "84b64117a605fecd756c15e4e71513c8f71b1ec875f4dcf0746c7e0ee1204b69",
+      "bytes": 8948
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+      "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+      "bytes": 22693
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+      "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+      "bytes": 12156
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+      "bytes": 9020
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/hilbert_aggregate_expand_v2.py",
+      "sha256": "39554293d667c48db05c53dea4086cbe3b7fc398eaf6e1d707e339d713b58c36",
+      "bytes": 33077
+    },
+    {
+      "path": "research/gcts-rl-renewal/first_order_families.py",
+      "sha256": "4f3a58bed036ecac7e342fb794ef926fe5d5e0616e5c3a6a373d850c7ea131b1",
+      "bytes": 8801
+    },
+    {
+      "path": "research/gcts-rl-renewal/first_order_family_cases.py",
+      "sha256": "b6531e9a67cf4376113dbbdeab82c4b4321e278950dff9a10d6fbfd80302d94f",
+      "bytes": 2449
+    },
+    {
+      "path": "research/gcts-rl-renewal/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "bytes": 7196
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/first-order-families-audit-001.json",
+      "sha256": "c943516168a939897d68c874233b4cdddb52d3c23f746ddd96d22fd25bda9666",
+      "bytes": 1401
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/first-order-families-reader-001.json",
+      "sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391",
+      "bytes": 4531912
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/semantic-inventory-reader-001.json",
+      "sha256": "edbab285b9c2535957ff3dcc2ea03dff169458e2c36f358d3d666b71406fbb96",
+      "bytes": 2227026
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/semantic-inventory-policy-001.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+      "bytes": 4502
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/semantic-inventory-validation-001.json",
+      "sha256": "8e5192e980c0f083234721f6c76c1cdf2d89696e76586257c2b9f70731e421fe",
+      "bytes": 2995
+    }
+  ],
+  "checks": 18,
+  "parsed_Python_sources_without_execution": 13,
+  "preserved_contexts": [
+    "donor-two-guards",
+    "donor-two-equalities",
+    "donor-repeated-guard",
+    "donor-repeated-equality",
+    "heldout-mixed-guard-equality"
+  ],
+  "findings_summary": [
+    "The focal targets are exact closed ground consequences under the retained I.2/equality theory and three ordered local hypotheses.",
+    "Complete point completion plus independent all-row symbolic proof checking can establish the target; preparation/static/body/pool accounting alone does not.",
+    "Repeated identical premises retain distinct licenses/seed occupancy but add no classical logical strength; full context retained, not each premise obligatorily used in the target dependency slice.",
+    "Authored171-body single/pair inventory reuse is distinct from new lemma-body discovery.",
+    "Frozen trained/untrained and fixed/base comparisons test advice/learning on a shared GCTS graph; they do not isolate the GCTS marking representation itself.",
+    "Older native semantic/first-order-family proof-search evidence is a checked mechanism precedent with different grammar/cost scopes; historical semantic learned controls do not beat fixed long-chain controls."
+  ],
+  "ROOT_target_reading_delivery": {
+    "file": ".gcts-active/curriculum-mathematical-audit-source-20261012/target-reading-v1.json",
+    "scope": "Exact occurrence-indexed LaTeX/English goal translation and concise current-reader update recommendation; no proof line or teacher route.",
+    "actual_preparation_counts": "ROOT-reported new preparation facts are explicitly labeled unbound awaiting saved metadata receipt. No independent static or resource qualification inferred.",
+    "public_reader_edits_by_this_agent": 0
+  },
+  "ROOT_requirements": [
+    "Read source assessment and exact declarations as metadata, not a new scientific acceptance or activation.",
+    "Supply and pin the fresh preparation raw saved disposition before making an independently bound new-stage report claim.",
+    "Integrate target caption/stage evidence through a reviewed ROOT display successor; do not rewrite frozen baseline or unrelated historical panel.",
+    "Keep existing contexts/theory/full inventories/boundaries/schedules/budgets unchanged; no simpler targets or expected proof words supplied.",
+    "ROOT owns actual gates, trajectories, positive certificate validation, experiments, browser verification and publication."
+  ],
+  "source_only_census": {
+    "functional_project_imports_calls": 0,
+    "models_pools_constructed": 0,
+    "proof_check_search_replay_fixtures_RNG_training": 0,
+    "PS_native_calibration_browser_activation_publication": 0
+  },
+  "qualification_issued": false,
+  "publication_performed": false
+}

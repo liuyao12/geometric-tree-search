@@ -1,0 +1,70 @@
+{
+  "schema": "exact-bound-independent-static-worker-compact-v1",
+  "plan": {
+    "path": ".gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json",
+    "sha256": "02c14aba30566f976cb5903e3278a499882da567841a2192f35a4b0bf240948d",
+    "bytes": 295189
+  },
+  "worker": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+    "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+    "bytes": 13759
+  },
+  "transport": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+    "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+    "bytes": 13756
+  },
+  "activation": {
+    "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-donor-two-equalities-activation-v1.json",
+    "sha256": "551f9ed160baed168ed485afd8b2d66072574bedfe8df65c9f4b38152a189ebf",
+    "bytes": 718
+  },
+  "source_manifest": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+    "sha256": "6af1f60af074b9030ce312d6003d797484c2f4ba6749cda8e3a66f6bf55d16ca",
+    "bytes": 3108
+  },
+  "full_audit": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-result-v1.json",
+    "sha256": "08e99eed16de138b3acf4c09c9de8f82e410a429edc40b64ac79f1bf355140df",
+    "bytes": 15919244
+  },
+  "projection": {
+    "status": "passed_independent_frozen_curriculum_context_family_pool_audit",
+    "static_context_pool_accepted": true,
+    "trace_accepted": false,
+    "certificate_accepted": false,
+    "selector": "donor-two-equalities",
+    "partition": "donor",
+    "model_epoch": "975fbaadab8f8e6fb8663fec1000225ca9026ca2853bc39eabc716ca02075148",
+    "context_id": "cd18459ece4c6cf0e02ac68b65745245597e3f2f4c9912adbfa836f4a25a229a",
+    "compiled_context_pin": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/compiled-context-v1.json.gz",
+      "sha256": "12218e75ea855b1643e06b9ac07ccee64ecf74773f6adde70c0ba805bf7daacd",
+      "bytes": 311208
+    },
+    "preparation_evidence_pin": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-evidence-v1.json.gz",
+      "sha256": "a92d2fd739752e065d48088d827b04fe463fb65a9cf6ad08063cf99fde69f9ed",
+      "bytes": 1380481
+    },
+    "RL_full_pool_capacity": 64,
+    "RL_full_pool_capacity_satisfied": true,
+    "primitive_license_count": 229,
+    "non_assumption_witness_count": 226,
+    "source_body_count": 171,
+    "single_types": 171,
+    "pair_types": 29241,
+    "whole_target_logical_checks": 0,
+    "native_queries": 0,
+    "native_accepted": false,
+    "searches": 0,
+    "training": 0
+  },
+  "complete_group_count": 2,
+  "worker_seconds_before_compact_status_serialization": 11.991113625,
+  "semantic_scope": "Projection of same unchanged full static audit; no trace/proof/RL qualification",
+  "full_resource_accepted": false,
+  "all_five_qualification": false
+}

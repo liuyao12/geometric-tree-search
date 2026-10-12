@@ -1,0 +1,38 @@
+{
+  "schema": "ROOT-equality-phase-algorithm-conformance-v1",
+  "master_reference": {
+    "path": "docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "scope": "Preparation/static validation of an unchanged finite proof-point constraint-candidate adaptation; no new scientific search-engine implementation in this phase",
+  "evidence": {
+    "full_initial_candidates": 332890,
+    "required_points": 24,
+    "complete_groups": 2,
+    "all_single_types_visited": 171,
+    "all_ordered_pairs_visited": 29241,
+    "pool_capacity": 64,
+    "no_pool_trimming": true,
+    "actual_target_searches": 0,
+    "actual_RL_training": 0,
+    "source_libraries_preserved": true
+  },
+  "search_contract_for_next_phase": [
+    "complete frontier-point/candidate graph",
+    "global dead ends then global forced moves",
+    "earliest-generation branch; minimum domain count only ties",
+    "clusters enter as legal primitive hints with complete base fallback",
+    "exact paired rollback",
+    "proof-defined exclusions require checked exhausted children; learned advice alone cannot prune",
+    "budget UNKNOWN never mathematical impossibility"
+  ],
+  "gaps": [
+    "Constraint-candidate adaptation is not literal geometric tiling or a universal Wang compiler",
+    "No new target trace, proof certificate or RL policy",
+    "Raw static worker semantic pass has failed enclosing resource qualification",
+    "Cross-role absolute-clock assumption falsified; all three validation layers require prospective correction",
+    "Historical first-donor unknown and all-five gate preserved"
+  ],
+  "all_five_qualification": false
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "one-context-proof-feasibility-post-audit-status-supplement-v1",
+  "status": "ACTUAL_STATIC_SEMANTIC_RECORD_PRESENT_RESOURCE_UNKNOWN_NO_SEARCH",
+  "appends_to": {
+    "path": ".gcts-active/one-context-proof-feasibility-source-audit-20261012/audit-v1.json",
+    "sha256": "236888243bddb3291cbdca97c69efd35eb43a834da5e71f4f9a23ee66f4c459a",
+    "bytes": 45767
+  },
+  "raw_inputs": [
+    {
+      "bytes": 1007,
+      "path": ".gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+      "sha256": "b6458de654d84569672e72ff426d97cf13b5d01d10ee85bb7d3c8c00202fac8c"
+    },
+    {
+      "bytes": 15919244,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-result-v1.json",
+      "sha256": "08e99eed16de138b3acf4c09c9de8f82e410a429edc40b64ac79f1bf355140df"
+    }
+  ],
+  "raw_small_terminal": {
+    "actual_invocations": 1,
+    "all_five_qualification": false,
+    "external_wait4_claim": false,
+    "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py entry .gcts-active/equality-context-progress-20261012/root-compact-static-entry-activation-v2.json",
+    "prospective_plan": {
+      "bytes": 3281,
+      "path": ".gcts-active/equality-context-progress-20261012/static-prospective-tool-contract-v1.json",
+      "sha256": "8ed8429532b028a604b1560a4b4a3fc6caf71518b47363df4db3de4231afaa21"
+    },
+    "schema": "ROOT-compact-static-actual-terminal-tool-v1",
+    "terminal": true,
+    "terminal_tool_result": {
+      "began_ms": 1791802893867,
+      "enclosing_bound_seconds": 25.126,
+      "enclosing_seconds": 24.126,
+      "observed_ms": 1791802917993,
+      "result": {
+        "chunk_id": "a5cc11",
+        "exit_code": 1,
+        "original_token_count": 0,
+        "output": "",
+        "wall_time_seconds": 0.000017083
+      }
+    }
+  },
+  "raw_static_result_projection": {
+    "certificate_accepted": false,
+    "hypothesis_codes": [
+      38,
+      42,
+      52
+    ],
+    "native_queries": 0,
+    "non_assumption_witness_count": 226,
+    "pair_types": 29241,
+    "primitive_license_count": 229,
+    "searches": 0,
+    "selector": "donor-two-equalities",
+    "single_types": 171,
+    "source_body_count": 171,
+    "static_context_pool_accepted": true,
+    "status": "passed_independent_frozen_curriculum_context_family_pool_audit",
+    "target_code": 54,
+    "trace_accepted": false,
+    "training": 0,
+    "whole_target_logical_checks": 0
+  },
+  "ROOT_reported_failure": {
+    "raw_semantic_checks": "PASS",
+    "enclosing_clock_check": "FAILED",
+    "lifetime_owner_frame": "Not saved",
+    "external_exit_code": 1,
+    "full_resource_qualification": "UNKNOWN",
+    "rerun": "Not permitted under the frozen version; none performed by this agent."
+  },
+  "evidence_distinction": "The exact terminal artifact itself records terminal exit1 with empty output and conservative external bound25.126s. The exact static-result artifact records a raw semantic PASS. The clock-check failure mechanism and absent owner frame are reported by ROOT; no exception log or lifetime was invented, and no independent resource reconstruction was performed here.",
+  "source_only_observation": "The static-result size was discovered to be15,919,244 bytes during metadata inspection. It was read/hash-bound and projected as JSON data only, not imported or functionally checked. This is not an additional static audit invocation.",
+  "effects": {
+    "required_accepted_context_resource_prerequisite": false,
+    "execution_ready": false,
+    "actual_proof_search_jobs": 0,
+    "new_target_certificates": 0,
+    "new_RL_training": false,
+    "all_five_qualification": false,
+    "original_first_donor_UNKNOWN_preserved": true,
+    "conditional_comparison_remains_source_only": true
+  },
+  "ROOT_next_step": "Preserve this once-only failure and publish semantic/resource dispositions separately. A future distinct reviewed ownership/clock interface and accepted context prerequisite are needed before proof control activation; do not rerun the same frozen static phase.",
+  "author_calls": {
+    "functional_imports_engine_science_checker_search_replay_RNG_training": 0,
+    "PS_native_calibration_browser_activation_publication": 0
+  },
+  "qualification_issued": false
+}

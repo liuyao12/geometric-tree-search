@@ -1,0 +1,23 @@
+{
+  "schema": "ROOT-equality-preparation-actual-terminal-tool-v1",
+  "prospective_plan": ".gcts-active/equality-context-progress-20261012/preparation-prospective-tool-plan-v1.json",
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py preparation donor-two-equalities",
+  "terminal_tool_result": {
+    "began_ms": 1791801422821,
+    "observed_ms": 1791801432278,
+    "enclosing_seconds": 9.457,
+    "enclosing_bound_seconds": 10.457,
+    "result": {
+      "chunk_id": "d22b2e",
+      "wall_time_seconds": 4.907621833,
+      "exit_code": 0,
+      "original_token_count": 236,
+      "output": "{\"phase\": \"preparation\", \"selector\": \"donor-two-equalities\", \"accepted\": true, \"owner_exit\": 0, \"actual_seconds_through_ROOT_terminal_write\": 5.0016845, \"conservative_combined_peak_bytes\": 377896960, \"terminal\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-ROOT-terminal-v1.json\", \"sha256\": \"7537d49807419e83ad04a3802fab3095e72a316fcfb233f2adb3f9c10403421b\", \"bytes\": 32544}, \"provisional_terminal\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-provisional-ROOT-terminal-v1.json\", \"sha256\": \"7537d49807419e83ad04a3802fab3095e72a316fcfb233f2adb3f9c10403421b\", \"bytes\": 32544}, \"post_write_observation\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-post-write-observation-v1.json\", \"sha256\": \"317e08cf45a8c6812c8a8dc056c6f3dc356f8f34765b8c817772417fcb645f6f\", \"bytes\": 1249}, \"failure\": null, \"error\": null}\n"
+    }
+  },
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "scope": "Actual trusted tool terminal result and conservative enclosing wall-clock observation; no independent static audit, proof, RL training, host-wide resource or external raw wait4 claim.",
+  "all_five_qualification": false
+}

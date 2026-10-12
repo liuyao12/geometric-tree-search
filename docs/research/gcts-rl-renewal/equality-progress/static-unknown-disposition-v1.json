@@ -1,0 +1,104 @@
+{
+  "schema": "ROOT-equality-static-actual-unknown-disposition-v1",
+  "saved_utc": "2026-10-12T11:05:03.456084+00:00",
+  "selector": "donor-two-equalities",
+  "actual_invocations": 1,
+  "new_semantic_projection": "PASS_RAW_WORKER_OUTPUT_ONLY",
+  "full_resource_status": "UNKNOWN",
+  "full_resource_accepted": false,
+  "terminal_exit_code": 1,
+  "external_clock_bound_seconds": 25.126,
+  "failure": {
+    "type": "ValueError",
+    "message": "same verified cross-process monotone clock and complete child lifetime"
+  },
+  "owner_reaped": true,
+  "owner_exit": -9,
+  "worker_reaped": true,
+  "worker_exit": 0,
+  "observer_receipts": 290,
+  "worker_closed_frames": [
+    {
+      "pin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-stdout-v1.txt",
+        "sha256": "06cf0d3c8f635d48e5b8c6d30ee1566b34e78fb247be70687929ed66871c4512",
+        "bytes": 52
+      },
+      "role": 1,
+      "exit_code": 0,
+      "pid": 97000,
+      "SELF_ru_maxrss_raw": 298303488,
+      "elapsed_seconds": 11.991321417,
+      "process_local_started": 0.013869583,
+      "process_local_closed": 12.005191,
+      "cross_process_absolute_comparison_accepted": false
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-closed-SELF-v1.bin",
+        "sha256": "fd3054cecd4ae1ccb4bb9300aaaf92cc9d64a3a16afa99662f86cd0f963e301c",
+        "bytes": 52
+      },
+      "role": 3,
+      "exit_code": 1,
+      "pid": 96998,
+      "SELF_ru_maxrss_raw": 19283968,
+      "elapsed_seconds": 12.948679042,
+      "process_local_started": 0.012666583,
+      "process_local_closed": 12.961345625,
+      "cross_process_absolute_comparison_accepted": false
+    }
+  ],
+  "complete_group_count": 2,
+  "scientific_searches": 0,
+  "new_target_proofs": 0,
+  "new_training_episodes": 0,
+  "all_five_qualification": false,
+  "historical_first_donor_UNKNOWN_preserved": true,
+  "scientific_rerun": false,
+  "external_finalizer_invoked": false,
+  "missing_owner_lifetime_and_SELF": true,
+  "evidence": [
+    {
+      "path": ".gcts-active/equality-context-progress-20261012/static-prospective-tool-contract-v1.json",
+      "sha256": "8ed8429532b028a604b1560a4b4a3fc6caf71518b47363df4db3de4231afaa21",
+      "bytes": 3281
+    },
+    {
+      "path": ".gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+      "sha256": "b6458de654d84569672e72ff426d97cf13b5d01d10ee85bb7d3c8c00202fac8c",
+      "bytes": 1007
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-pending-receipt-v1.json",
+      "sha256": "9373b6e86654a2e3832c524e792e3233df6b625c5cbf733d25454724c650b0c7",
+      "bytes": 6394
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-compact-v1.json",
+      "sha256": "a3872fa49cc1646482cf6acf18e02359bd81d8d5020b0cf3ef54a1c37d2234de",
+      "bytes": 3121
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-containment-v1.json",
+      "sha256": "fab9aeb86a911af81e8964fcf33d37da75077452ef6b599d7eb18f44b5bafb6a",
+      "bytes": 1518
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-result-v1.json",
+      "sha256": "08e99eed16de138b3acf4c09c9de8f82e410a429edc40b64ac79f1bf355140df",
+      "bytes": 15919244
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-observers-v1.jsonl",
+      "sha256": "00cdebc84cca93fc68e6dc5a95077e8754e850e914556aeb97f0e23669ee89f2",
+      "bytes": 443941
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-samples-v1.jsonl",
+      "sha256": "ab1ea8744e3c8713d53782f132f81681c25a7835c51438d6a21e6742f1ad29d9",
+      "bytes": 156911
+    }
+  ],
+  "limits": "Raw successful audit worker is not full resource qualification; terminated owner emitted no closed lifetime/SELF and complete accounting replay did not finish. No exact memory total is inferred. Trusted external clock includes first dispatch and subsequent same-handle poll; no external wait4 claim."
+}

@@ -1,0 +1,198 @@
+{
+  "actual_terminal": {
+    "actual_invocations": 1,
+    "enclosing_bound_seconds": 10.457,
+    "enclosing_seconds": 9.457,
+    "external_wait4_claim": false,
+    "full_phase_limit_seconds": 60,
+    "internal_prospective_clock_bound_seconds": 6.000673957999999,
+    "internal_receipt_write_seconds": 5.0016845,
+    "no_live_session_in_terminal_result": true,
+    "tool_wall_seconds": 4.907621833,
+    "trusted_saved_tool_exit": 0
+  },
+  "additional_cost_scope": "This metadata-only review/closure hashing and any later finalizer/report/publication costs are separate from the recorded preparation.",
+  "all_five_qualification": false,
+  "checks": [
+    {
+      "id": "small_receipt_and_compressed_output_pins",
+      "result": "PASS_HASH_ONLY"
+    },
+    {
+      "id": "896_path_frozen_closure",
+      "result": "PASS_HASH_ONLY"
+    },
+    {
+      "id": "same_one_shot_plan_activation_command",
+      "result": "PASS_SAVED_METADATA"
+    },
+    {
+      "id": "terminal_exit_and_external_clock",
+      "result": "PASS_SAVED_METADATA"
+    },
+    {
+      "id": "owner_supervisor_worker_reap_receipt_chain",
+      "result": "PASS_SAVED_METADATA_NO_NEW_OS_ATTESTATION"
+    },
+    {
+      "id": "complete_pool_count_and_capacity",
+      "result": "PASS_REPORTED_METADATA_PENDING_INDEPENDENT_STATIC"
+    },
+    {
+      "id": "no_proof_trajectory_learning_claim",
+      "result": "PASS_SCOPE"
+    }
+  ],
+  "exact_input_pins": [
+    {
+      "bytes": 5740,
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879"
+    },
+    {
+      "bytes": 866,
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-ROOT-launch-v1.json",
+      "sha256": "1a0c70612faff62c03d4a5ebfe56d16e87e0fae6277509053db7f3aa1f3bdfef"
+    },
+    {
+      "bytes": 32544,
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-ROOT-terminal-v1.json",
+      "sha256": "7537d49807419e83ad04a3802fab3095e72a316fcfb233f2adb3f9c10403421b"
+    },
+    {
+      "bytes": 1249,
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-post-write-observation-v1.json",
+      "sha256": "317e08cf45a8c6812c8a8dc056c6f3dc356f8f34765b8c817772417fcb645f6f"
+    },
+    {
+      "bytes": 32544,
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-equalities-provisional-ROOT-terminal-v1.json",
+      "sha256": "7537d49807419e83ad04a3802fab3095e72a316fcfb233f2adb3f9c10403421b"
+    },
+    {
+      "bytes": 18749,
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397"
+    },
+    {
+      "bytes": 9513,
+      "path": ".gcts-active/curriculum-preparation-equalities-source-review-20261012/review-v1.json",
+      "sha256": "230cf1594079e59767b7b3cdad428ce8e765ef6086c0797a03c1efab66581b34"
+    },
+    {
+      "bytes": 2437,
+      "path": ".gcts-active/equality-context-progress-20261012/preparation-prospective-tool-plan-v1.json",
+      "sha256": "fe916b6808785f080ffb419f77f58c433f1a57231326bebba8078d3be92ec3d6"
+    },
+    {
+      "bytes": 2021,
+      "path": ".gcts-active/equality-context-progress-20261012/preparation-tool-terminal-v1.json",
+      "sha256": "0838d20242da3efdcf0ad5dfdf4016e5c8f73a7cb7ee7383f182ef96a7fa24fe"
+    },
+    {
+      "bytes": 568,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-launch-v1.json",
+      "sha256": "02e0d465d7f300a9bfa6879d27552b5f0a26a06907c5d3a91339210e5d35504a"
+    },
+    {
+      "bytes": 1324,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-lifetime-v1.json",
+      "sha256": "891ea8bb72400b5985261f27871a680e834dbdfbed77277429156e67e34515f6"
+    },
+    {
+      "bytes": 3700,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-outcome-v1.json",
+      "sha256": "f735e245856b833942edb782b8be4a029216021ed41f3fdb4eefe051398ef0f1"
+    },
+    {
+      "bytes": 0,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3298,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-stdout-v1.txt",
+      "sha256": "56a0d3246e6c37c603b108db3ecc99bb04ab4e05387d74cc9986a7545f443203"
+    },
+    {
+      "bytes": 18553,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-supervision-v1.json",
+      "sha256": "ad4bb9d8a4962524ea96f297a07ed4fcf7642da5b7936f24f05e7e87b03e9cdc"
+    },
+    {
+      "bytes": 209305,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-equalities-plan-v1.json",
+      "sha256": "f3cdff421d5cb88a42abdb44052ed326272a0462e0f9dff6eddec9c143b7b04a"
+    },
+    {
+      "bytes": 885,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/root-preparation-donor-two-equalities-activation-v1.json",
+      "sha256": "5a5ae1ff0eb8a841c6e51452ca0acb69dc6a1ca65fcaf21793cb8c0919778f04"
+    },
+    {
+      "bytes": 311208,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/compiled-context-v1.json.gz",
+      "sha256": "12218e75ea855b1643e06b9ac07ccee64ecf74773f6adde70c0ba805bf7daacd"
+    },
+    {
+      "bytes": 1380481,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-equalities/preparation-evidence-v1.json.gz",
+      "sha256": "a92d2fd739752e065d48088d827b04fe463fb65a9cf6ad08063cf99fde69f9ed"
+    }
+  ],
+  "frozen_closure": {
+    "binding": "Exact selected preparation plan binds all sources/inputs/preserved_files; exact runtime binary and PS pins included. Every unique file streamed and matched, without decoding scientific payloads.",
+    "ordered_canonical_pin_records_sha256": "b8927d86b32b62e36589ff991ed2835710a8b584043bdd8733041aff8447b7a6",
+    "total_closed_bytes": 311298550,
+    "unique_declared_paths": 896
+  },
+  "historical_first_donor_UNKNOWN_unchanged": true,
+  "new_proof_or_search_RNG_training_acceptance": false,
+  "next_gate_conditions": [
+    "Independent static audit must reconstruct the actual context/bodies/complete domains/pool from the bound artifacts before mathematical or RL acceptance.",
+    "Fresh static plan/activation and reviewed compact outer/external finalizer must retain full180/175/170 and512MiB limits plus exact runtime/platform/terminal bindings.",
+    "All-five qualification remains false because original first donor resource UNKNOWN is preserved and remaining contexts are unrun."
+  ],
+  "qualification_issued": false,
+  "reported_preparation": {
+    "candidate_count": 332890,
+    "complete_pool_groups": 2,
+    "frozen_capacity": 64,
+    "hypothesis_codes": [
+      38,
+      42,
+      52
+    ],
+    "independent_static_acceptance": "pending; census is exact saved producer report, not independent functional replay",
+    "model_constructions": 1,
+    "ordered_pair_type_visits": 29241,
+    "partition": "donor",
+    "proof_or_trajectory_acceptance": false,
+    "reported_capacity_satisfied": true,
+    "selector": "donor-two-equalities",
+    "single_type_visits": 171,
+    "target_code": 54
+  },
+  "resource_reconciliation": {
+    "checks": "Saved sample sums, monotone clocks, supervisor SELF+child peak, reserve/write bounds, terminal/provisional equality and exact output pins reconcile. Saved receipts report all owner/supervisor/worker terminals reaped with no survivors/failure.",
+    "inner_observer_upper_bound_bytes": 98729984,
+    "limit_bytes": 536870912,
+    "post_write_conservative_bytes": 344391680,
+    "postlude_condition": "External10.457-second bound includes complete direct tool invocation/exit. Source post-write hard-link/observation/hash/print/exit is metadata only; remaining memory uses the already-reviewed32MiB prospective reserve and limited known topology. Any stronger resource scope needs new evidence, not retrospective discount.",
+    "remaining_terminal_memory_limit": "Legacy receipt does not save all final individual ROOT/owner/observer raw resource components or a final postlude SELF frame; this review does not reconstruct missing raw observations. Tool terminal closes time/exit scope, not an independent terminal peak.",
+    "reported_conservative_peak_bytes": 377896960,
+    "reserve_bytes": 33554432,
+    "samples": 110,
+    "scope": "Existing dispatcher source-described retrospective owned-process/observer estimate plus prospective32MiB receipt/postlude allowance; no OS hard cap, host-wide bound or independently remeasured terminal memory."
+  },
+  "review_scope": {
+    "experiments_process_launch_PS_native_browser_calibration_RNG_training": 0,
+    "gzip_files_stream_hashed_only": true,
+    "gzip_payloads_decoded": false,
+    "project_imports_function_calls_or_scripts": 0,
+    "saved_small_metadata_and_source_hash_AST_only": true,
+    "science_reruns": 0
+  },
+  "schema": "independent-equality-preparation-saved-small-metadata-review-v1",
+  "status": "ACCEPTED_SAVED_ONE_SHOT_PREPARATION_COMPLETION_AND_REPORTED_ESTIMATE_BINDINGS_PENDING_INDEPENDENT_STATIC"
+}

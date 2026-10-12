@@ -1,0 +1,28 @@
+{
+  "schema": "ROOT-primary-reference-clock-source-evidence-v1",
+  "read_via": "web tool; no native or calibration calls",
+  "saved_utc": "2026-10-12T11:05:31.193239+00:00",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.9.6/Python/pytime.c",
+      "title": "CPython 3.9.6 clock implementation",
+      "line_ranges": [
+        "771-821",
+        "964-970"
+      ],
+      "short_excerpts": [
+        "static uint64_t t0 = 0;",
+        "t0 = mach_absolute_time();",
+        "ticks -= t0;",
+        "return _PyTime_GetMonotonicClockWithInfo(t, info);"
+      ],
+      "paraphrase": "The Apple monotonic implementation subtracts a process-local static reference; the non-Windows performance-counter implementation delegates to this clock."
+    },
+    {
+      "url": "https://docs.python.org/3/library/time.html#time.monotonic",
+      "title": "Python time.monotonic documentation",
+      "paraphrase": "The documentation records a macOS change in Python 3.10 making the clock the same for all processes."
+    }
+  ],
+  "scope": "Reference-source support for the explanation; not attestation that the running Apple Python binary is byte-identical to upstream CPython. Actual saved frame and owner observer clocks independently show the failed common-origin assumption. Per-process clock differences remain usable. No historical result reclassification."
+}

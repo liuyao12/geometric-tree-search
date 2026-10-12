@@ -1,0 +1,225 @@
+{
+  "actual_attempt": {
+    "ROOT_frame_code": 1,
+    "ROOT_pid": 96998,
+    "external_bound_seconds": 25.126,
+    "external_enclosing_seconds": 24.126,
+    "finalizer_invoked": false,
+    "invocations": 1,
+    "no_live_session_in_saved_terminal": true,
+    "owner_exit": -9,
+    "owner_pid": 96999,
+    "owner_reaped_in_ROOT_receipt": true,
+    "science_rerun": false,
+    "tool_terminal_exit": 1,
+    "worker_exit": 0,
+    "worker_pid": 97000,
+    "worker_reaped_in_owner_receipt": true
+  },
+  "additional_cost_scope": "This saved metadata/source review is additional; no scientific phase was remeasured or rerun.",
+  "all_five_qualification": false,
+  "closed_metadata_census": {
+    "indices_complete_and_paired": true,
+    "individual_nested_PS_files_replayed_by_reviewer": false,
+    "observer_receipts": 290,
+    "raw_PS_queries_by_reviewer": 0,
+    "sample_receipts": 290,
+    "saved_observer_exit0_and_reaped": true
+  },
+  "exact_input_pins": [
+    {
+      "bytes": 9629,
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/external-terminal-finalizer-v1-source-review-v1.json",
+      "sha256": "fc4a63dc9bef3721788202859370f90c94585fdcde6311940b2af916dfb858a4"
+    },
+    {
+      "bytes": 13953,
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/root-entry-v2-complete-source-review-v1.json",
+      "sha256": "546c81e1d09165c78e5b59001ae4939d27862fa3ab72a812493279a95755f3c2"
+    },
+    {
+      "bytes": 26105,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23"
+    },
+    {
+      "bytes": 52,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-closed-SELF-v1.bin",
+      "sha256": "fd3054cecd4ae1ccb4bb9300aaaf92cc9d64a3a16afa99662f86cd0f963e301c"
+    },
+    {
+      "bytes": 6394,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/ROOT-pending-receipt-v1.json",
+      "sha256": "9373b6e86654a2e3832c524e792e3233df6b625c5cbf733d25454724c650b0c7"
+    },
+    {
+      "bytes": 0,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/owner-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/outputs/donor-two-equalities/owner-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 44014,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+      "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90"
+    },
+    {
+      "bytes": 13756,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+    },
+    {
+      "bytes": 13759,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3"
+    },
+    {
+      "bytes": 3121,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-compact-v1.json",
+      "sha256": "a3872fa49cc1646482cf6acf18e02359bd81d8d5020b0cf3ef54a1c37d2234de"
+    },
+    {
+      "bytes": 1518,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-containment-v1.json",
+      "sha256": "fab9aeb86a911af81e8964fcf33d37da75077452ef6b599d7eb18f44b5bafb6a"
+    },
+    {
+      "bytes": 443941,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-observers-v1.jsonl",
+      "sha256": "00cdebc84cca93fc68e6dc5a95077e8754e850e914556aeb97f0e23669ee89f2"
+    },
+    {
+      "bytes": 156911,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-samples-v1.jsonl",
+      "sha256": "ab1ea8744e3c8713d53782f132f81681c25a7835c51438d6a21e6742f1ad29d9"
+    },
+    {
+      "bytes": 0,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 52,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-stdout-v1.txt",
+      "sha256": "06cf0d3c8f635d48e5b8c6d30ee1566b34e78fb247be70687929ed66871c4512"
+    },
+    {
+      "bytes": 295189,
+      "path": ".gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json",
+      "sha256": "02c14aba30566f976cb5903e3278a499882da567841a2192f35a4b0bf240948d"
+    },
+    {
+      "bytes": 1389,
+      "path": ".gcts-active/equality-context-progress-20261012/primary-clock-source-reference-v1.json",
+      "sha256": "cf1851d2af06df856b342d58943768389084ee3db548b8f07168203db3dda536"
+    },
+    {
+      "bytes": 297258,
+      "path": ".gcts-active/equality-context-progress-20261012/root-compact-static-entry-activation-v2.json",
+      "sha256": "53e1a9d90823a8b19472897fa1203506ef04bf27cd7dbc1777ec155d6183f1e6"
+    },
+    {
+      "bytes": 3281,
+      "path": ".gcts-active/equality-context-progress-20261012/static-prospective-tool-contract-v1.json",
+      "sha256": "8ed8429532b028a604b1560a4b4a3fc6caf71518b47363df4db3de4231afaa21"
+    },
+    {
+      "bytes": 1007,
+      "path": ".gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+      "sha256": "b6458de654d84569672e72ff426d97cf13b5d01d10ee85bb7d3c8c00202fac8c"
+    },
+    {
+      "bytes": 4333,
+      "path": ".gcts-active/equality-context-progress-20261012/static-unknown-disposition-v1.json",
+      "sha256": "b4de54df8babeb0888d7d916aaeb09492c32f2b5a822ad33b9cb442d6b9011b3"
+    },
+    {
+      "bytes": 15919244,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-two-equalities/static-result-v1.json",
+      "sha256": "08e99eed16de138b3acf4c09c9de8f82e410a429edc40b64ac79f1bf355140df"
+    }
+  ],
+  "historical_first_donor_UNKNOWN_preserved": true,
+  "observed_failure": {
+    "ROOT_owner_creation_local_clock": 0.569069791,
+    "derivation": "Every owner observer stores its terminal local reading and seconds_from_owner_entry; subtraction consistently recovers owner started. Owner source sets child_start after its own started. Worker frame start is smaller than owner started, therefore necessarily smaller than child_start under the attempted shared-origin comparison. This alone forces rejection; no missing child_start value is invented.",
+    "inference": "The actual clocks do not support the common-origin assumption. Their within-process differences remain coherent. Saved data plus ROOT primary source reference support process-local clock origins as explanation, not a failed semantic proof or OS/kernel defect.",
+    "maximum_rederived_owner_entry_spread_seconds": 8.881784197001252e-16,
+    "message": "same verified cross-process monotone clock and complete child lifetime",
+    "native_binary_attestation_claim": false,
+    "owner_entry_rederived_from_each_observer": 0.183421833,
+    "primary_reference_authority": "Exact saved ROOT web-read reference pin; upstream CPythonv3.9.6 Apple process-local t0 and Python3.10 same-process-clock change. Reviewer did not independently browse/native-attest Apple binary.",
+    "source_location": "curriculum_compact_owner_v4.py:341",
+    "type": "ValueError",
+    "worker_entry_minus_rederived_owner_entry_seconds": -0.16955225000000002
+  },
+  "qualification_issued": false,
+  "raw_frames": {
+    "ROOT": {
+      "SELF_ru_maxrss_raw": 19283968,
+      "code": 1,
+      "elapsed_seconds": 12.948679042,
+      "pid": 96998,
+      "process_local_close": 12.961345625,
+      "process_local_start": 0.012666583,
+      "role": 3
+    },
+    "worker": {
+      "SELF_ru_maxrss_raw": 298303488,
+      "code": 0,
+      "elapsed_seconds": 11.991321417,
+      "pid": 97000,
+      "process_local_close": 12.005191,
+      "process_local_start": 0.013869583,
+      "role": 1
+    }
+  },
+  "resource_disposition": {
+    "ROOT_closed_SELF_exists": true,
+    "ROOT_terminal_raw_owner_peak_recorded": 298303488,
+    "accepted": false,
+    "closed_accounting_replay_completed": false,
+    "exact_complete_envelope_inferred": false,
+    "final_provisional_exists": false,
+    "owner_closed_SELF_exists": false,
+    "owner_lifetime_exists": false,
+    "reason": "Owner published containment after worker semantic PASS, before final SELF/lifetime/provisional; ROOT killed retained group and reaped owner. Source/readiness review never conferred runtime or resource acceptance.",
+    "status": "UNKNOWN"
+  },
+  "review_operations": {
+    "process_launch_PS_native_calibration_browser_RNG_training_publication": 0,
+    "project_imports_calls_or_scripts": 0,
+    "science_checker_or_gzip_object_decode": 0,
+    "small_saved_JSON_JSONL_source_read_hash_AST_binary_struct_arithmetic_only": true
+  },
+  "schema": "independent-equality-static-actual-clock-failure-small-metadata-review-v1",
+  "semantic_scope": {
+    "capacity64_satisfied": true,
+    "certificate_accepted": false,
+    "complete_pool_groups": 2,
+    "full_audit_stream_hashed_only": true,
+    "full_resource_or_curriculum_qualification": false,
+    "full_scientific_JSON_decoded": false,
+    "new_target_proofs": 0,
+    "nonassumption_witnesses": 226,
+    "ordered_pair_visits": 29241,
+    "primitive_licenses": 229,
+    "reported_worker_static_status": "passed_independent_frozen_curriculum_context_family_pool_audit",
+    "searches": 0,
+    "semantic_PASS_raw_worker_output_only": true,
+    "single_type_visits": 171,
+    "source_bodies": 171,
+    "trace_accepted": false,
+    "training": 0
+  },
+  "source_readiness_correction": {
+    "future_source_repair_only": "For still-unexecuted phases, replace absolute comparisons across owner/worker/ROOT clocks consistently in owner, entry replay and finalizer with justified local elapsed/lifetime bounds or a separately verified shared-origin clock. Changing only the first owner condition would leave the later entry/finalizer cross-role chain defective. No retrospective reinterpretation, current retry or cap change is authorized.",
+    "prior_reviews_immutable": true,
+    "scope": "Prior PASS was source/interface readiness subject to verified cross-process clock compatibility and external terminal conditions. Actual execution now falsifies that clock compatibility prerequisite for these sources/runtime; do not advertise them as ready for another mathematical phase unchanged."
+  },
+  "status": "RECONCILED_ONE_SHOT_SEMANTIC_WORKER_PASS_WITH_CLOCK_COMPATIBILITY_FAILURE_RESOURCE_UNKNOWN"
+}
