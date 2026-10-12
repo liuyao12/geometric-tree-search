@@ -1,0 +1,45 @@
+{
+  "status": "passed_complete_numeric_fixture_lifecycle",
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+    "--plan",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+    "--activation",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json"
+  ],
+  "pid": 19026,
+  "same_PID_terminal_and_reaped": true,
+  "exit_code": 0,
+  "forced_kill": false,
+  "full_seconds_including_owner_final_serialization_and_reaping": 0.24595837499999998,
+  "phase_limit_seconds": 30.0,
+  "outer_kernel_peak_bytes": 12402688,
+  "owner_wait4_kernel_peak_bytes": 17907712,
+  "conservative_combined_peak_bytes": 50888704,
+  "memory_limit_bytes": 536870912,
+  "owner_receipt": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1/owned-lifetime.json",
+    "sha256": "5f00f090c3ee26ecc3f8ae30a984c7b69eb1ab05a8b87320324177cd0af98ff7",
+    "bytes": 5350
+  },
+  "activation": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json",
+    "sha256": "42fa4d25d7f05bcd1a329d0ea2957a455478628df1b37662cf611eba645e6c27",
+    "bytes": 2620
+  },
+  "streams": [
+    {
+      "path": ".gcts-active/family-numeric-actual-progress-20261012/owner-stdout.bin",
+      "sha256": "7b12f490d6a9e72f3b22fb3087cee9b70236d395730b312b8b082b71c87f9e8a",
+      "bytes": 3151
+    },
+    {
+      "path": ".gcts-active/family-numeric-actual-progress-20261012/owner-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "scope": "Numeric and abstract API controls only; no production engine, policy training, theorem search or RL benefit."
+}

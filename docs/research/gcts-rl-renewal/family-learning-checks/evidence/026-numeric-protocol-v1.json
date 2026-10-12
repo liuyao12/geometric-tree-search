@@ -1,0 +1,108 @@
+{
+  "schema": "family_learning_numeric_fixture_protocol_v1",
+  "status": "prospective_source_only_no_fixture_execution",
+  "math": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+    "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+    "bytes": 11607
+  },
+  "bridge_API": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+    "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+    "bytes": 3612
+  },
+  "scope": "Numeric functions and abstract API selection-overlay contract only. No geometry Controller, graph scheduler, whole-cluster validation, fact counter, runtime adapter, theorem proof, training trajectory or policy-effect gate is certified.",
+  "prospective_checks": [
+    {
+      "group": "Python3.9_import",
+      "count": 1,
+      "claim": "Future annotation strings survive actual pinned Python3.9 dataclass/API import."
+    },
+    {
+      "group": "stable_mixture",
+      "case_count": 6,
+      "finite_difference_derivatives": 36,
+      "draw_checks": 24,
+      "epsilons": [
+        0.0,
+        0.1,
+        0.35,
+        1.0,
+        0.1,
+        0.2
+      ],
+      "temperatures": [
+        0.5,
+        1.0,
+        2.0,
+        0.5,
+        1.0,
+        1.0
+      ],
+      "special_cases": [
+        "zero weights uniform",
+        "duplicate vectors"
+      ],
+      "reference_tolerance": 2e-12,
+      "derivative_tolerance": 2e-07,
+      "derivative_step": 1e-06
+    },
+    {
+      "group": "incorrect_score_mutant",
+      "count": 1,
+      "claim": "At nonzero epsilon, plain-softmax gradient must disagree with mixture gradient."
+    },
+    {
+      "group": "extreme_finite_logits",
+      "count": 2,
+      "epsilons": [
+        0.0,
+        0.2
+      ],
+      "claim": "Stable shifted exponentials, underflow zero tails and finite normalized mixture; zero-mass tails are not selected."
+    },
+    {
+      "group": "synthetic_roundoff_fallback",
+      "count": 1,
+      "claim": "Explicit rounded probability record validates last-positive fallback; not labeled a generated distribution."
+    },
+    {
+      "group": "malformed_probability_rejections",
+      "count": 9,
+      "cases": [
+        "negative normalized sum",
+        "NaN",
+        "positive infinity",
+        "negative infinity",
+        "boolean",
+        "string",
+        "empty",
+        "nonsequence",
+        "unnormalized"
+      ]
+    },
+    {
+      "group": "update_and_baseline",
+      "count": 4,
+      "claim": "Advantage multiplication precedes norm clipping; pre-episode baseline precedes update then EMA; empty executed changes only EMA; unexecuted cannot update. Clip-before-advantage and EMA-first mutants distinguished."
+    },
+    {
+      "group": "reward_counter_arithmetic",
+      "count": 1,
+      "claim": "Pure arithmetic of supplied source-count counters; availability/completeness/pending-input semantics remain unimplemented and uncertified."
+    },
+    {
+      "group": "abstract_overlay",
+      "count": 1,
+      "claim": "Original tuple IDs/priorities immutable; NULL suppresses fixed preferences; selected overlay plus view/state restores; every supplied legal base key remains. No actual Controller/graph/hint rollback is tested."
+    }
+  ],
+  "prospective_control_records": 26,
+  "reference_scope": "Separately coded mathematical reference inside this authored fixture runner; independent ROOT source/numeric review still required. No claim of a preexisting independent scientific audit.",
+  "score_gradient_LaTeX": "\\(\\nabla\\log p_i=\\frac{(1-\\varepsilon)q_i}{p_iT}\\left(f_i-\\sum_j q_jf_j\\right)\\)",
+  "mixture_LaTeX": "\\(p_i=(1-\\varepsilon)q_i+\\varepsilon/N\\)",
+  "baseline_LaTeX": "\\(A=R-b_{\\mathrm{old}},\\quad b_{\\mathrm{new}}=(1-\\alpha)b_{\\mathrm{old}}+\\alpha R\\)",
+  "learning_scope": "Episode-averaging/clipping remains an explicit heuristic; no unbiased-gradient, transfer, proposal construction, solved theorem or speedup claim.",
+  "RNG": "No RNG instantiated or called. All prospective choose controls use literal supplied deterministic draws.",
+  "consumer_mutation_scope": "Overlay records contain literal tuples/strings/integers only. Frozen API dataclasses do not provide deep immutability for arbitrary later witnesses; real adapter must bind/copy and trail them independently."
+}

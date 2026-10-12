@@ -1,0 +1,38 @@
+--- .gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py
++++ .gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py
+@@ -6,7 +6,7 @@
+ """
+ import math
+ 
+-VERSION = 'family-epsilon-mixture-policy-math-v1'
++VERSION = 'family-epsilon-mixture-policy-math-v2'
+ 
+ 
+ def finite_number(value, label):
+@@ -64,12 +64,23 @@
+ 
+ 
+ def choose(distribution_record, draw):
+-    """Consume the caller's ONE saved RNG draw; never create or reseed an RNG."""
++    """Consume the caller's ONE saved RNG draw; never create or reseed an RNG.
++
++The record must be the unchanged output of distribution(), with its aligned
++canonical action IDs, softmax values and full probability sequence. This entry
++point separately rejects malformed/nonfinite/negative mixture probabilities;
++other record fields retain that exact-generated-record precondition.
++"""
+     draw = finite_number(draw, 'draw')
+     if not 0.0 <= draw < 1.0:
+         raise ValueError('RNG draw in half-open unit interval required')
+-    p = distribution_record['probabilities']
+-    if not p or not math.isclose(math.fsum(p), 1.0, rel_tol=0.0, abs_tol=2e-12):
++    probabilities = distribution_record['probabilities']
++    if not isinstance(probabilities, (list, tuple)) or not probabilities:
++        raise ValueError('nonempty literal recorded probability sequence required')
++    p = [finite_number(item, 'recorded probability') for item in probabilities]
++    if any(item < 0.0 for item in p):
++        raise ValueError('nonnegative recorded probabilities required')
++    if not math.isclose(math.fsum(p), 1.0, rel_tol=0.0, abs_tol=2e-12):
+         raise ValueError('normalized exact recorded mixture required')
+     cumulative = 0.0
+     chosen = None

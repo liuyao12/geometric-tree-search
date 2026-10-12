@@ -1,0 +1,31 @@
+{
+  "status": "immutable_source_only_numeric_gate_package",
+  "files": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+      "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+      "bytes": 17445
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-protocol-v1.json",
+      "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+      "bytes": 4375
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v1.json",
+      "sha256": "d794892e2ebe2ee7b96c50fe853157aa5b4c40abc8fe5dd1f781c5963f0787a1",
+      "bytes": 4955
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/readiness-v1.json",
+      "sha256": "d88137763efb3679d310816e68297dff37d36c555015006796c87df6730fb4af",
+      "bytes": 1503
+    }
+  ],
+  "total_files": 4,
+  "total_bytes": 28278,
+  "source_only": true,
+  "scientific_executions": 0,
+  "no_old_source_report_PUB_mutation": true,
+  "publication_and_execution_owner": "root"
+}

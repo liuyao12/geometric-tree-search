@@ -1,0 +1,305 @@
+{
+  "status": "PASS_source_only_prospective_numeric_review",
+  "review_plan": {
+    "path": ".gcts-active/family-numeric-source-review-20261012/review-plan-v1.json",
+    "sha256": "4e3be476e7271cfb05c0a261a068bf3ab04917793c953322572f10601c4780f5",
+    "bytes": 11573
+  },
+  "review_source": {
+    "path": ".gcts-active/family-numeric-source-review-20261012/review_metadata_v1.py",
+    "sha256": "eb0916adfcd30010929cd40da78fa32226401dbe4feccac13935fa973a39e463",
+    "bytes": 3842
+  },
+  "pin_occurrences": 45,
+  "unique_pins": 32,
+  "verified_pins": [
+    {
+      "path": ".gcts-active/family-numeric-source-review-20261012/review_metadata_v1.py",
+      "sha256": "eb0916adfcd30010929cd40da78fa32226401dbe4feccac13935fa973a39e463",
+      "bytes": 3842
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/compatibility-repair-plan-v2.json",
+      "sha256": "c1bd8fe742b45fd959bc07dd8da2ed3863f900a500fecfb73ac2c97e2a967227",
+      "bytes": 3618
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/design-v1.json",
+      "sha256": "e8008c6ea8d921740cc7d9c07c9cd00f5fb97cce10d35fc28235cceed00df19f",
+      "bytes": 19911
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py",
+      "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+      "bytes": 10953
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.diff",
+      "sha256": "5275f7dec9ff01977a4a57e99d7db1ba6a7917d01a77ce53e17ba03089d97962",
+      "bytes": 1737
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py",
+      "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+      "bytes": 3576
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.diff",
+      "sha256": "32d6324186a891e25ef8b2f961a79b5dbe4a6a1bf2716f208d97076b760a7bbb",
+      "bytes": 438
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/integration-v2.json",
+      "sha256": "38be6f2b927ca02751847a0f8912aff7cef4eb5e57410fa1bcb8f957b820177e",
+      "bytes": 1701
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+      "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+      "bytes": 1246
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+      "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+      "bytes": 9905
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/readiness-v1.json",
+      "sha256": "3e824c93b79903773877c083095f7375e867e9cc20f36940e6afedba83104661",
+      "bytes": 1179
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/readiness-v2.json",
+      "sha256": "2e45fc085daaf7ed06d288fe540e87c77021c5870c20607d57995ba83717981b",
+      "bytes": 1598
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+      "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+      "bytes": 10176
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/integration-owned-v1.json",
+      "sha256": "0c3af6945f1d61ec847b767526c09a08c1a65cf3cd89e2310d52cfdfc739ff39",
+      "bytes": 2013
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/integration-v1.json",
+      "sha256": "5f9e7aa3c77b7d92f4c3479042e565cfc4f8d02ac1e97cd39b7f920c1b956e92",
+      "bytes": 1133
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v1.json",
+      "sha256": "d794892e2ebe2ee7b96c50fe853157aa5b4c40abc8fe5dd1f781c5963f0787a1",
+      "bytes": 4955
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+      "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+      "bytes": 5548
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-protocol-v1.json",
+      "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+      "bytes": 4375
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+      "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+      "bytes": 17445
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.diff",
+      "sha256": "f3a887f393a7e4b9079a2e103229406046a8c3e00a2ac077eba9a82e11b7ad89",
+      "bytes": 2453
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+      "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+      "bytes": 17769
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+      "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+      "bytes": 21491
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+      "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+      "bytes": 8405
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-readiness-v1.json",
+      "sha256": "93a895207298e3be57f3992100060b3999f3c391cf6576a65bb0b38898afc78b",
+      "bytes": 2541
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/readiness-v1.json",
+      "sha256": "d88137763efb3679d310816e68297dff37d36c555015006796c87df6730fb4af",
+      "bytes": 1503
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "AST_sources": [
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+        "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+        "bytes": 17769
+      },
+      "nodes": 3164,
+      "executed_or_imported": false
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+        "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+        "bytes": 11607
+      },
+      "nodes": 1795,
+      "executed_or_imported": false
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+        "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+        "bytes": 3612
+      },
+      "nodes": 384,
+      "executed_or_imported": false
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+        "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+        "bytes": 21491
+      },
+      "nodes": 3681,
+      "executed_or_imported": false
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+        "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+        "bytes": 10176
+      },
+      "nodes": 970,
+      "executed_or_imported": false
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+        "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+        "bytes": 17445
+      },
+      "nodes": 3140,
+      "executed_or_imported": false
+    }
+  ],
+  "prospective_activation_and_output_absent": {
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json": true,
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v2": true,
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1": true
+  },
+  "manual_full_source_coverage": [
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+    ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+    ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py"
+  ],
+  "findings": [
+    {
+      "disposition": "PASS",
+      "aspect": "Mixture-score algebra",
+      "statement": "With q the temperature-softmax and p=(1-epsilon)q+epsilon/N, score_gradient implements \\\\(\\\\nabla_w \\\\log p_i=((1-\\\\varepsilon)q_i/(p_i T))(f_i-\\\\sum_j q_j f_j)\\\\). The expectation is under q. The planned finite difference mutant distinguishes an incorrect plain-softmax derivative at nonzero epsilon."
+    },
+    {
+      "disposition": "PASS",
+      "aspect": "Update order",
+      "statement": "Uses reward minus old EMA baseline; averages saved score gradients; multiplies by that advantage before L2 direction clipping; updates weights and then baseline. This clipped episode-averaged heuristic is not an unbiased REINFORCE estimator."
+    },
+    {
+      "disposition": "PASS",
+      "aspect": "Numerical fixture scope",
+      "statement": "26 planned ordered control IDs cover six mixtures/36 finite differences/24 deterministic draws, uniform and zero-feature cases, literal malformed probabilities, last-positive rounding, extreme bounded logits, update/baseline/reward arithmetic, and an abstract overlay test double. No RNG and no actual engine/Controller or learned policy result."
+    },
+    {
+      "disposition": "PASS",
+      "aspect": "Owned lifecycle",
+      "statement": "Exact activation/source/runtime pins and exclusive outputs precede one functional child; bounded owned ps observers use exact wait4; ps/streams failures force unknown. Both pre-freeze cleanup findings are repaired: Streams construction is covered by finally and cleanup drain errors cannot prevent child kill/reaping. Terminal and stream/resource errors are retained."
+    },
+    {
+      "disposition": "scope_caveat",
+      "aspect": "Runtime gates",
+      "statement": "10-second numeric alarm, 15-second functional lifecycle and 30-second whole owner gate/512 MiB are prospective. Sampled process-tree RSS and conservative fresh kernel peaks enforce the host gate; no OS soft-limit claim. Final owner receipt serialization is outside pre-write timer and requires ROOT outer charge."
+    },
+    {
+      "disposition": "scope_caveat",
+      "aspect": "API contract",
+      "statement": "Distribution/choose records are trusted exact API products, not general external-schema validation. NULL inclusion and deep immutability of frozen dataclasses/Any witness objects remain future runtime adapter obligations. Reward function checks supplied counters only, not fact derivation."
+    },
+    {
+      "disposition": "scope_caveat",
+      "aspect": "Finite arithmetic robustness",
+      "statement": "Finite-input checks and stable softmax cover the declared bounded fixtures. Extreme intermediate products/fsum/norm may overflow and reject; this review does not establish universal floating-point numerical stability."
+    },
+    {
+      "disposition": "nonblocking_wording",
+      "aspect": "V1 descriptions retained",
+      "statement": "Owner docstring names a V1 numeric runner, and numeric-plan-v2 required_activation_schema description says numeric-plan-v1. Exact actual owner/worker activation pins and command use V2; advisory text does not alter executable dispatch."
+    },
+    {
+      "disposition": "PASS",
+      "aspect": "Historical preservation",
+      "statement": "Original V1/V2 policy/source/protocol/manifest bytes and limits remain; no old outcomes reset. The metadata freezer only hashes/AST/JSON and cannot authorize an actual owner."
+    }
+  ],
+  "blocking_defects": [],
+  "scope": "Prospective source/byte/AST review only; no reviewed import, numerical call, fixture, graph, symbolic certificate, owner, search, replay, native or training execution. Independent derivation is algebraic source reasoning, not a numerical result.",
+  "numeric_actual_acceptance": false,
+  "review_metadata_seconds_before_receipt_write": 0.026936750000000002,
+  "review_kernel_peak_bytes": 15253504,
+  "source_authoring_seconds": null,
+  "scientific_program_imports": 0,
+  "numeric_function_invocations": 0,
+  "fixture_runs": 0,
+  "RNG_calls": 0,
+  "model_engine_search_replay_native_training_runs": 0,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

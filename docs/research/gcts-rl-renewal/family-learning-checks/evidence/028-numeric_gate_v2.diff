@@ -1,0 +1,49 @@
+--- .gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py
++++ .gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py
+@@ -101,7 +101,7 @@
+         self.view_checkpoint = view
+ 
+ 
+-def run_controls(policy, bridge, record_control):
++def run_controls(policy, bridge, record_control, mark_numeric_invocation):
+     annotations = bridge.PairedPoolCheckpoint.__annotations__
+     assert isinstance(annotations['active_descriptor_id'], str)
+     assert isinstance(annotations['active_controller_view_checkpoint'], str)
+@@ -121,6 +121,7 @@
+     derivative_count = 0
+     changed_gradient_mutant = False
+     for name, features, weights, epsilon, temperature in cases:
++        mark_numeric_invocation()
+         distribution = policy.distribution(ids, features, weights,
+                                            epsilon=epsilon, temperature=temperature)
+         expected_q, expected_p = reference_probabilities(features, weights, epsilon, temperature)
+@@ -298,7 +299,9 @@
+     controls = []
+     result = {'status': 'unknown_before_controls', 'scope': plan['scope'],
+               'plan': plan_record, 'activation': activation_record,
+-              'controls': controls, 'scientific_executions': 0,
++              'controls': controls, 'numeric_fixture_worker_runs': 1,
++              'policy_numeric_functions_executed': False,
++              'production_engine_runs': 0, 'search_runs': 0, 'training_runs': 0,
+               'random_draws_generated': 0, 'runtime_adapter_implemented': False}
+ 
+     def checkpoint():
+@@ -309,6 +312,9 @@
+     def record_control(identifier, detail):
+         controls.append({'id': identifier, 'status': 'passed', 'detail': detail})
+         checkpoint()
++
++    def mark_numeric_invocation():
++        result['policy_numeric_functions_executed'] = True
+ 
+     def timeout(signum, frame):
+         raise TimeoutError('numeric worker internal time budget')
+@@ -323,7 +329,7 @@
+     try:
+         policy = load_source(plan['math_source'], '_family_policy_math_v2_numeric_gate')
+         bridge = load_source(plan['bridge_source'], '_family_pool_bridge_v2_numeric_gate')
+-        run_controls(policy, bridge, record_control)
++        run_controls(policy, bridge, record_control, mark_numeric_invocation)
+         result['status'] = 'passed_numeric_and_abstract_API_controls_only'
+     except TimeoutError as error:
+         result['status'] = 'unknown_internal_time_budget'

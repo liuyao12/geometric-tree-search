@@ -1,0 +1,121 @@
+{
+  "schema": "small-source-family-RL-protocol-v1",
+  "status": "SOURCE_ONLY_POLICY_IMPLEMENTATION_AND_PROTOCOL_UNEXECUTED",
+  "scientific_question": "Does a donor-trained whole-family proposal selector help on the frozen mixed guard/equality recipient relative to the same zero-weight stochastic selector and fixed/base controls?",
+  "implementation_scope": {
+    "implemented_libraries": ["family_graph_features_v1.py", "family_learned_overlay_v1.py", "family_episode_learning_v1.py", "family_curriculum_resolver_v1.py"],
+    "existing_math": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+    "existing_API": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+    "ROOT_numeric_result": "ROOT reported26 numeric/abstract-overlay controls passed on20261012. This is arithmetic of the policy and an abstract test double, not real Controller conformance or training. Exact raw artifact pins are in the source freeze; no actual result payload is loaded here.",
+    "missing_scientific_dispatch": "Owned context compiler/generalized complete-pool registrar, search event adapter, chronological RNG owner, donor/evaluation owner and independent feature/overlay/update full-tape replay are NOT implemented in this package. They require separate frozen source review/activation. Library methods are callable but no dispatch or execution is authorized.",
+    "concrete_existing_gaps": "fixed_family_pool_registration_v1.py and fixed_pool_search both require exactly five descriptors from the original context. They cannot silently register a donor/new-recipient pool. The context compiler/body transport/fresh static gate and generalized registrar must preserve the full measured pool before this overlay may be called; new ROOT-owned driver source remains a distinct required freeze.",
+    "no_source_training_calls": true
+  },
+  "proposal_language": {
+    "inventory": "Preserve complete217 formula values,226 non-assumption witnesses,three fresh context-bound assumption licenses,171 authored checked conditional families,171 singles and29241 ordered pair types. All newly feasible canonical root/output bindings and full-key shared unions are generated and independently validated for each context.",
+    "RL_action": "At a fresh global branch, choose exactly one validated pending whole single/pair descriptor or explicit NULL. This selects an automatically receptor-bound/composed cluster proposal rather than ranking primitive tiles independently.",
+    "restricted_scope": "Single/pair union structure is authored checked infrastructure. Learning selects/composes its already generated instances; it does not discover new lemma bodies, arbitrary topology, unrestricted primitive clusters or a substitution rule.",
+    "pool_capacity": "At most64 total registered whole descriptors per context before training. This is a practical prospective preparation gate, not trimming: if any full pool exceeds it, stop with unresolved RL feasibility and preserve all records. The unchanged fixed/base transfer experiment remains separate.",
+    "waiting_continuation": "NULL plus every waiting/ready whole hint enters the canonical sorted-ID pool. Consumed/retired hints stay in the immutable registry but not the selectable menu. Active waiting or ready descriptor persists until consumption/retirement; waiting yields base-only continuation. NULL yields exactly base order for the operation and a fresh selection at the next branch.",
+    "primitive_execution": "Preference is only currently eligible exact members at the globally selected row, followed by EVERY remaining base candidate in original order. One primitive step, then graph/global propagation and whole resync. No atomic macro, extra hypothesis, new marking/pruning rule, graph-degree shortlist or new proof tactic.",
+    "scheduler": "Global dead then global forced then earliest generation; only generation ties may use complete degree/row order. Every24 row is an explicit root obligation at generation0; forced singleton consumes no policy draw.",
+    "immutability_and_rollback": "Original root-fixed Controller descriptors/IDs/priorities/authority remain unchanged. New paired selection overlay trails active_descriptor_id and overlay revision alongside Controller graph/hint checkpoint and complete semantic SHA. Both roll back exactly; whole retirement is absorbing only within the branch. Only independently exhausted child permits parent exclusion. Cumulative trace/cost/policy-choice history and chronological RNG draws never rewind and are never pruning authority.",
+    "validation": "All whole descriptor bodies, source dependencies, ordered repeated receptors, external inputs, transforms, full primitive identities, shared members, aggregate occupancy/marking union and distant assigned marks must be independently reconstructed before registration and at continuation. Pending source outputs remain structural obligations, never accepted premises."
+  },
+  "features": {
+    "schema_source": "family_graph_features_v1.py:FEATURE_NAMES",
+    "count": 31,
+    "bounded": "All features are literal finite values in[0,1]; fractional ratios are ordering advice only, never exact checking. Numerical rejection means infrastructure UNKNOWN, not pruning.",
+    "fields": "Whole size/shared occurrences/eligible-domain fraction, selected versus pending members, ordered receptor repetition and component bindings, strict source-offset spans, completed source dependencies, every assigned aggregate mark versus absence including zero, distant support, pending constrained output fraction, component output novelty among completed facts, receptor AST root tag fractions, frontier interactions and branch degree inverse.",
+    "available_fact_definition": "Physically selected zero-port license or MP placement with every exact ordered strict-earlier source physically selected and dependency-complete with matching recipe input code. Check every repeated source. A selected MP with pending source, empty-row mark, exterior sentinel or missing value is unavailable. Distinct nonroot reward potential excludes all initial hypothesis formula codes and repeated formula copies.",
+    "forbidden_inputs": "No target proof word, saved successful trajectory, ordinary proof witness, rule/theory/lemma/descriptor/recipe/symbol name, formula-code numeric value, target backward cone or authored proof-step sequence as learned features. Codes/IDs are exact matching/order/provenance only. Fixed-target point marks may be read as graph constraints; they are never a target-success reward until full certificate acceptance.",
+    "feature_and_validation_cost": "Charge construction/cache setup, full mark scan, source dependency closure, all vectors, score/normalizer/gradient, identity checks and payload/hash/trace serialization. Do not infer feasibility from source bounds alone."
+  },
+  "policy": {
+    "weights_initial": "Zero for each of the31 exact feature names; NULL and duplicate vectors are kept.",
+    "epsilon": 0.1,
+    "temperature": 1.0,
+    "distribution_latex": "q_i=\\frac{\\exp(w\\cdot f_i/T)}{\\sum_j\\exp(w\\cdot f_j/T)},\\quad p_i=(1-\\varepsilon)q_i+\\varepsilon/N",
+    "choice_semantics": "Exactly frozen mathV2 stable max-subtracted softmax/fsum and literal left-to-right CDF, strict draw<cumulative, last-positive roundoff fallback. Caller owns one Random(seed).random draw per NEW selection only, never a success-seed scan or reseeding.",
+    "gradient_latex": "\\nabla_w\\log p_i=\\frac{(1-\\varepsilon)q_i}{p_iT}\\left(f_i-\\sum_jq_jf_j\\right)",
+    "weights_per_episode": "Frozen throughout each episode. Every new policy distribution/action/full feature vector/RNG draw/score gradient is recorded, including subsequently failed branches. No gradient for waiting continuation or forced moves.",
+    "update": "Exactly mathV2: episode mean score gradient, return minus OLD EMA baseline, multiply advantage before L2 norm clipping1, learning rate0.05, then baseline EMA alpha0.2. Explicit episode averaging/clipping heuristic; no unbiased-gradient claim.",
+    "learning_rate": 0.05,
+    "ema_alpha": 0.2,
+    "direction_norm_ceiling": 1.0,
+    "learning_qualification": "A donor trace and its resource envelope must independently pass every event/node/graph/hint/fallback/overlay/feature/RNG/reward check before its update may feed the next donor. A complete budget-UNKNOWN may teach verified costs/fact potential with terminal bonus0; resource-UNKNOWN, trace prefix, failed or unexecuted episodes cause no update. Any missing qualification stops and records later episodes unexecuted.",
+    "final_weights": "Exactly the eighth qualified checkpoint, no best-checkpoint selection; all weights/update and audit receipts pinned before held-out evaluation. Evaluation never updates weights or baseline."
+  },
+  "reward": {
+    "formula_latex": "R=\\mathbf{1}_{\\text{independently accepted primitive certificate}}+0.05\\frac{F_{\\max}}{24}-0.10\\min(1,A/A_{\\max})-0.05\\min(1,V/10000)-0.01\\frac{C_{\\mathrm{retired}}}{\\max(1,C)}",
+    "counters": "Fmax maximum per-state number of distinct dependency-complete nonroot formula codes, never accumulated rediscoveries; A actual primitive attempts including forced/failed placements; V whole member plus aggregate-mark validation checks after registration, counter delta includes preparation separately in cost; C selected non-NULL commits; Cretired committed active descriptors that retire before consumption. NULL consumes no commit bonus and receives no invented growth.",
+    "terminal_bonus": "Only after complete exact24-point/mark/refcount/full-identity and all24 original-theory/Gamma primitive rows independently pass. Native/Wang compiler acceptance remains separate and unclaimed.",
+    "gaming_scope": "Potential shaping can reward irrelevant licensed formulas; coefficients and no-goal-names are fixed, but shaping improvement is not proof-search usefulness. Actual independently accepted same-target outcomes and total pipeline cost decide the research question. No bonus for pending constraints, macro counts, proof padding, sampled lookahead, unoccupied marks or invented hypotheses.",
+    "construction_check_ceiling": 10000
+  },
+  "curriculum": {
+    "split_file": "donor-split-v1.json",
+    "training_episodes": [
+      {"id": "d1-r1", "donor": "donor-two-guards", "seed": 1201201},
+      {"id": "d2-r1", "donor": "donor-two-equalities", "seed": 1201202},
+      {"id": "d3-r1", "donor": "donor-repeated-guard", "seed": 1201203},
+      {"id": "d4-r1", "donor": "donor-repeated-equality", "seed": 1201204},
+      {"id": "d4-r2", "donor": "donor-repeated-equality", "seed": 1201214},
+      {"id": "d3-r2", "donor": "donor-repeated-guard", "seed": 1201213},
+      {"id": "d2-r2", "donor": "donor-two-equalities", "seed": 1201212},
+      {"id": "d1-r2", "donor": "donor-two-guards", "seed": 1201211}
+    ],
+    "heldout": "Exactly mixed_guard_and_equality_incidence_transfer pinned before outcomes by next-experiment-v1.json. Heterogeneous guard+equality composition occurs in no donor context. Formulas/lemma families/constants/theory do occur in the library: context-held-out only, not unseen-theorem generalization.",
+    "outcome_firewall": "Freeze these sources/split/seed/reward/features/update before changed-context control outcomes. Later outcomes may not tune this version. No target-proofword teacher, successful-trajectory seed or search for a favorable training/evaluation seed."
+  },
+  "evaluation": {
+    "lanes": [
+      {"id": "base", "order": "Original complete primitive candidate stream; full pool preparation charged but no preference or RNG."},
+      {"id": "fixed", "order": "Entire newly generated independently checked pool, unchanged largest-first fixed Controller advice and full fallback; no RNG."},
+      {"id": "untrained", "order": "Same overlay/menu/features/epsilon/temperature as trained;31 zero weights; one declared RNG stream."},
+      {"id": "trained", "order": "Same overlay/menu/features/epsilon/temperature;exact final qualified donor weights, frozen; one declared RNG stream."}
+    ],
+    "schedule": [
+      {"lane": "base", "repeat": 1, "seed": null},
+      {"lane": "fixed", "repeat": 1, "seed": null},
+      {"lane": "untrained", "repeat": 1, "seed": 1201291},
+      {"lane": "trained", "repeat": 1, "seed": 1201291},
+      {"lane": "trained", "repeat": 2, "seed": 1201292},
+      {"lane": "untrained", "repeat": 2, "seed": 1201292},
+      {"lane": "fixed", "repeat": 2, "seed": null},
+      {"lane": "base", "repeat": 2, "seed": null}
+    ],
+    "comparability": "Same exact compiled held-out model/root/target/full primitive and cluster inventory/marking version/scheduler/limits in every lane. Two cold owned processes per lane; identical untrained/trained seeds are common random numbers, not equal visited states or work. No per-lane heap increase, menu trim, target simplification or padding script.",
+    "counts": "Eight fresh evaluations, not old controls reused as trials. All unknown/failed/unexecuted jobs retained, no selective repeat. This tiny pilot can show policy effect/feasibility on one context but cannot establish broad generalization or statistical superiority."
+  },
+  "prospective_gates": {
+    "source": "ROOT plus independent source review; fresh exact compiler/body/pool/model/source/runtime pins and complete donor/heldout registry audits before actual trajectories. This package cannot authorize execution.",
+    "numeric": "Reuse only byte-identical ROOT-qualified mathV2 numeric receipt; no new numerical claims from source inspection. New feature/real-Controller overlay controls require a separately frozen ROOT owned gate.",
+    "real_overlay_controls": ["NULL suppresses fixed preference while preserving every legal key", "forced interrupts ready/waiting active proposal without RNG", "global distant dead precedes every hint", "earlier generation beats later smaller degree", "pending earlier source output is no available fact", "ordered repeated receptors and full-key sharing preserved", "assigned zero conflicts and remote marks retire whole hint", "active waiting survives base continuation", "paired failed-child rollback restores graph/hints/active ID/revision", "UNKNOWN child creates no parent exclusion", "stale pool/feature/weight/prepared state rejects", "one draw per fresh proposal and none for continuation", "full-data feature and math mutation controls"],
+    "action_effect": "First predeclared donor episode d1-r1 is the effect gate and may be reused as training episode1 only after its exact full independent replay passes. It must execute at least one non-NULL legal proposal whose first primitive key differs from base. If not, stop this version and report no executed proposal effect; never scan seeds. This is advice effect, not proof success or transfer.",
+    "training_effect": "All eight qualified donor updates, finite weights, at least one nonzero coefficient change and exact replayable nonzero mixture-gradient direction. Failure stops evaluation. Numeric weight change alone is not a gain claim.",
+    "all_actual_replays": "Independently reconstruct every actual event/node/complete graph/domain/fallback stream, scheduler/generations, selected full IDs/t/m/refcounts, whole hints and paired selection overlay, canonical menus/features, mixture probabilities, RNG indices/draws, gradients/old-baseline/clipping/EMA and actual counters. Positive outputs additionally recheck all24 primitive rows, exact target and all three retained Gamma occurrences; flat blocks remain empty.",
+    "positive_scope": "Exact finite point tiling and ground consequence of the original retained hypotheses after independent symbolic acceptance. No native/compiler or universal Wang-palette claim.",
+    "no_partial_acceptance": "Any incomplete value correspondence/event prefix/resource failure/alias or source mismatch is UNKNOWN. No censuses/nodes/fields dropped and no source reset/retry from a timeout."
+  },
+  "prospective_limits": {
+    "preparation_per_context": "Fresh complete compiler/pool preparation60s owned and independent static audit180s owned,512MiB; five contexts,full preparation/audit phase1260s including60s coordinator allowance. Capacity unknown stops without trimming.",
+    "training_each": {"attempts": 64, "checked_search_seconds": 10, "events": 1200, "whole_lifecycle_seconds": 180, "supervisor_seconds": 175, "child_seconds": 170, "peak_bytes": 536870912},
+    "training_phase": "Eight producer plus eight independent replay/update owned jobs,each180s,whole2940s including60s coordinator overhead; next donor only after prior full qualification. Full reservation before each job, preserving unexecuted suffix.",
+    "evaluation_each": {"attempts": 128, "checked_search_seconds": 20, "events": 2000, "whole_lifecycle_seconds": 180, "supervisor_seconds": 175, "child_seconds": 170, "peak_bytes": 536870912},
+    "evaluation_phase": "Eight producer plus eight independent replay owned jobs,each180s,whole2940s including60s coordinator overhead; preserve every observed failure/UNKNOWN/unexecuted status.",
+    "new_overlay_fixture": "Prospective real-Controller/source feature fixture owned30s/child25s/phase60s/512MiB, after its own source freeze; not authored or executed here.",
+    "all_phases_prospective_upper_seconds": 7200,
+    "resource_scope": "Inclusive owned setup/import/model registration/proposal feature/learning computation/trace serialization/cleanup/reap/final receipt+ROOT process lifetime must be charged. Sampled/kernel resource gates are measurements, not an OS hard-cap theorem. Native/microstep/heap increases0."
+  },
+  "cost_and_claims": {
+    "primary_comparison": "Count a solved case only after complete independent primitive proof acceptance and owned resource qualification. Compare total wall/cold peak to reach that same accepted target, retaining attempt/forced/branch/backtrack and policy validation/serialization costs. Training+donor preparation+all audits are included in a cold learned total, with a separate explicitly amortized reused-policy total only for a declared number of future contexts.",
+    "no_additive_overlaps": "Per-phase subclocks overlap enclosing lifetimes; do not sum them twice. Preparation/audit/source authoring and every failed run remain visible. Report warm reuse and immutable pin credit explicitly.",
+    "RL_vs_fixed": "Genuine prospective RL means trajectory-derived donor returns plus replayed weight updates alter whole-proposal selection probabilities. Fixed largest-first and zero-weight stochastic lanes are controls. No math fixture or policy source constitutes actual training.",
+    "positive_evidence_needed": "Actual legal proposal effect, qualified learned weights, all fresh heldout traces independently accepted, and same-target outcomes/total cost compared with matched controls. Fewer branches, greater shaping or changed scores alone do not establish that RL helps.",
+    "current_status": "Source-only implementation/protocol; no new import/function/fixture/RNG/graph/checker/search/training/replay/native call by the author. Source authoring/manual inspection cost is unmeasured and additional."
+  },
+  "arithmetic_scope": "The sparse policy math is domain-neutral; this concrete overlay is for the existing geometry Key/recipe/Controller API only. Arithmetic searched grammar has C/G/I1/I2-style guard/source roles and native block/refl/generalize actions but no primitive instantiate actions. An arithmetic adapter must discover complete role/guard/source dependencies with its own type/interface audit. General FOL syntax fixtures do not activate arithmetic quantifier guidance, and this program does not claim full PA.",
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

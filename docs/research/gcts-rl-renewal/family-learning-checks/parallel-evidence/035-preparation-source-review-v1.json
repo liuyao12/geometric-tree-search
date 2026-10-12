@@ -1,0 +1,34 @@
+{
+  "status": "passed_ROOT_independent_complete_source_and_metadata_preparation_review",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "source_count": 10,
+  "input_roles": 76,
+  "preserved_pin_records": 741,
+  "unique_pin_paths": 821,
+  "source_coverage": "Full compiler, preparation, runtime, register, DFS, search worker, finalizer, both owners and metadata freezer read. Master contract reread this turn.",
+  "conformance": "Fresh assumption licenses and identities;226 unchanged logical witnesses;171 retained bodies; full initial domains/single-pair census; original24-row/global scheduler/complete fallback; independent fresh static validation mandatory before search.",
+  "gaps": [
+    "Finite palette, restricted single/pair canonical embeddings, fixed24-row boundary; not universal machine encoding.",
+    "No learnt failure markings or training. Old conditional source bodies are known infrastructure.",
+    "Inherited sampled monitor omits observer RSS; memory figure is not aggregate host upper bound or OS hard cap.",
+    "Cold serialization and cleanup included by ROOT outer clock; source authoring remains unmeasured."
+  ],
+  "scientific_calls": 0,
+  "metadata_seconds_before_final_write": 0.270051,
+  "output_paths_confirmed_absent": [
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/root-preparation-activation-v1.json",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/compiled-context-v1.json.gz",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-evidence-v1.json.gz",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-stdout-v1.txt",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-stderr-v1.txt",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-launch-v1.json",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-outcome-v1.json",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-supervision-v1.json",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-lifetime-v1.json",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/search-plan-v1.json"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "status": "PASS_prospective_source_only_fresh_transfer_preparation_review",
+  "preparation_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "source_archive": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/sources-v1.zip",
+    "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+    "bytes": 77772
+  },
+  "source_coverage": "All10 functional/metadata sources read in full; changed-context/compiler, full preparation and deferred search/register/finalizer contracts inspected without executing helpers.",
+  "parsed_sources": [
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/context_compiler_v1.py",
+        "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+        "bytes": 11045
+      },
+      "AST_nodes": 1855
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/finalize_search_plan_v1.py",
+        "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+        "bytes": 5816
+      },
+      "AST_nodes": 1090
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/freeze_source_v1.py",
+        "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+        "bytes": 14891
+      },
+      "AST_nodes": 1882
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+        "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+        "bytes": 11866
+      },
+      "AST_nodes": 1829
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+        "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+        "bytes": 3043
+      },
+      "AST_nodes": 606
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_prepare_worker_v1.py",
+        "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+        "bytes": 6758
+      },
+      "AST_nodes": 1162
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+        "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+        "bytes": 4186
+      },
+      "AST_nodes": 748
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_runtime_v1.py",
+        "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+        "bytes": 2898
+      },
+      "AST_nodes": 685
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_search_worker_v1.py",
+        "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+        "bytes": 5317
+      },
+      "AST_nodes": 913
+    },
+    {
+      "source": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_supervisor_v1.py",
+        "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+        "bytes": 5644
+      },
+      "AST_nodes": 1220
+    }
+  ],
+  "archive_members": [
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/context_compiler_v1.py",
+      "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+      "bytes": 11045
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/finalize_search_plan_v1.py",
+      "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+      "bytes": 5816
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/freeze_source_v1.py",
+      "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+      "bytes": 14891
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+      "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+      "bytes": 11866
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+      "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+      "bytes": 3043
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_prepare_worker_v1.py",
+      "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+      "bytes": 6758
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+      "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+      "bytes": 4186
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_runtime_v1.py",
+      "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+      "bytes": 2898
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_search_worker_v1.py",
+      "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+      "bytes": 5317
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_supervisor_v1.py",
+      "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+      "bytes": 5644
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/context-spec-v1.json",
+      "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+      "bytes": 16345
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-protocol-v1.json",
+      "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+      "bytes": 4636
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+      "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+      "bytes": 191756
+    },
+    {
+      "name": ".gcts-active/fixed-family-transfer-source-v1-20261012/fixed-pool-source-diff-v1.txt",
+      "sha256": "090ecb3fc372a7d528536523776e8a54eedd64ef9f2470282d0887ada53805dd",
+      "bytes": 4659
+    }
+  ],
+  "unique_raw_byte_pins": 821,
+  "mismatches": 0,
+  "no_blocking_source_defect_found": true,
+  "findings": [
+    "Complete217formula/229recipe palette and exact original/new Gamma are source-checked; all226 non-assumption records retain identity and provenance. All3 assumption recipe preimages/IDs bind fresh context, even unchanged formulas.",
+    "Source primitive authority is inactive and theory-bound; Gamma does not occur in that authority payload. Fresh graph context/source epoch and full-placement/body/group identities are reconstructed. Prior positive audit is provenance, not new acceptance.",
+    "All171 source bodies are transported from complete compact projection; canonical local aliases never become recipient seeds. Whole171+29241 grammar uses all root/output Cartesian bindings and retains ordered multiplicity, explicit possibly non-last conclusions, exact full-key sharing and immutable priority epoch.",
+    "Preparation emits the complete compiled payload, full conditional body registry, all group records, whole24-row initial-domain hashes and complete census; no Controller/Executor/target search/checker/native/training call in preparation worker.",
+    "Three future lanes share the generalized literal DFS and one Controller resync; base/fixed have empty descriptors, whole pool uses complete fresh groups. Graph degrees, forced/dead/earliest ordering and full fallback remain primitive. UNKNOWN children restore without exclusion; fully exhausted children alone authorize parent exclusions.",
+    "Future metadata-only search finalizer requires separately accepted fresh static result/lifetime and exact ROOT terminal receipts; no placeholder gate pins. Separate search review/activation and trace/logical positive acceptance remain required.",
+    "Source output paths are exclusive and versioned; owner refuses prior outputs, monitors own child, kills/waits on supervisory failure and preserves missing-result/partial gates as UNKNOWN. Complete prep60/55/50s and512MiB producer estimates are prospective."
+  ],
+  "caveats": [
+    "Source review is not new model/license/body/pool runtime acceptance. New independent static checking must pass before search.",
+    "Preparation and search owner peak estimates omit simultaneous ps RSS and use retrospective child peaks; no OS hard cap or strict aggregate host upper bound. Root full outer-process timing/receipt serialization is additional.",
+    "Canonical single/pair embeddings are incomplete advice; the full primitive universe is the complete fallback. Existing171 authored/certified source interfaces are not newly discovered lemmas.",
+    "This is within-library changed-premise recipient transfer only. Native/compiler/shared request-independent universal Wang correspondence remains open."
+  ],
+  "metadata_review_seconds_before_receipt_write": 0.6387275419999999,
+  "metadata_kernel_peak_bytes": 18022400,
+  "scientific_imports_model_helpers_checkers_fixtures_search_native_training": 0,
+  "activation_written": false,
+  "owner_run": false,
+  "ROOT_sole_actual_owner": true
+}

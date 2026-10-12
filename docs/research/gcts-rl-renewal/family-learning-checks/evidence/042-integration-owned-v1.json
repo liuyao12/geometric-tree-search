@@ -1,0 +1,50 @@
+{
+  "status": "immutable_source_only_owned_numeric_gate_successor",
+  "files": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+      "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+      "bytes": 17769
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.diff",
+      "sha256": "f3a887f393a7e4b9079a2e103229406046a8c3e00a2ac077eba9a82e11b7ad89",
+      "bytes": 2453
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+      "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+      "bytes": 21491
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+      "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+      "bytes": 10176
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+      "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+      "bytes": 5548
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+      "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+      "bytes": 8405
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-readiness-v1.json",
+      "sha256": "93a895207298e3be57f3992100060b3999f3c391cf6576a65bb0b38898afc78b",
+      "bytes": 2541
+    }
+  ],
+  "total_files": 7,
+  "total_bytes": 68383,
+  "preserved_V1_manifest": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/integration-v1.json",
+    "sha256": "5f9e7aa3c77b7d92f4c3479042e565cfc4f8d02ac1e97cd39b7f920c1b956e92",
+    "bytes": 1133
+  },
+  "numeric_fixture_runs": 0,
+  "root_sole_actual_owner_and_publisher": true,
+  "no_old_source_report_PUB_changes": true
+}

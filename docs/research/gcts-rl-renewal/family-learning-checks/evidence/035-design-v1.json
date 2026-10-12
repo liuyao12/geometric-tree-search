@@ -1,0 +1,186 @@
+{
+  "schema": "source-only-receptor-family-proposal-learning-v1",
+  "status": "immutable_design_for_ROOT_decision_no_experiment_activation",
+  "sources_read": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_literal_match_v1.py",
+      "sha256": "d3384a838d9a5c6cbd2b549b5a4b5e00b753be64a5e26d65421e916a72c86a3c",
+      "bytes": 15139
+    },
+    {
+      "path": "research/gcts-rl-renewal/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "bytes": 10594
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_guidance.py",
+      "sha256": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+      "bytes": 9034
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_search_v2.py",
+      "sha256": "16d6adeb2516ad8f96751e5bbb74239673c2d581cae15eebec991f001659ade2",
+      "bytes": 8563
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_points.py",
+      "sha256": "b213bc019a220af7f0aea82d6191f1aca6b2ff4c2c39e8c1e5fb20bf6041f7d0",
+      "bytes": 1509
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_points.py",
+      "sha256": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+      "bytes": 4737
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_catalog.py",
+      "sha256": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+      "bytes": 3157
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_catalog.py",
+      "sha256": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+      "bytes": 9374
+    }
+  ],
+  "purpose": "Learn construction and selection of a small family instance with an ordered receptor interface, then test its primitive continuations on the untouched held-out24-row incidence goal. This is a proposal/control experiment, not failure-marking learning or a proof claim.",
+  "current_geometry": {
+    "declared_frozen_model": {
+      "recipes": 229,
+      "formulas": 217,
+      "rows": 24,
+      "source_bodies": 171
+    },
+    "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+    "counts_scope": "Source-declared only; no model was loaded or recounted for this note.",
+    "primitive_graph": "Unchanged complete scalar-point graph and mandatory global dead/forced/earliest-generation scheduler.",
+    "authority": "All171 source bodies retain their existing exact structural relation, native_accepted=false; this does not manufacture native authority."
+  },
+  "architecture": {
+    "unchanged": "Keep existing root-fixed Controller and BodyAuthority source/descriptor relation unchanged.",
+    "new_paired_pool_adapter": "A separate episode-local immutable proposal pool plus one active whole-hint descriptor, trail and pool revision. A checkpoint records graph/controller checkpoint, active ID, immutable pool snapshot/version, every hint status and construction RNG/event index. Pair restore at child rollback; unknown never excludes.",
+    "pool_storage": "Immutable descriptor records once per episode by exact ID; event references plus complete replayable payloads. No unbounded root materialization of all row bindings; no whole trace inflation required by acceptance.",
+    "registration": "A newly generated instance receives a fresh small child Controller view with authority-compiled descriptor(s), without editing the root Controller registry. The wrapper tracks/restores those views; no state may disappear from the paired checkpoint.",
+    "continuation": "One physical primitive placement at a time through core.Executor.step; resync whole descriptor after every forced/branch effect. If no member touches the current branch, retain waiting state and use complete base fallback. Invalid whole descriptor retires until paired rollback. Never skip a forced move to execute a cluster."
+  },
+  "construction_actions": {
+    "when": "Only at an actual graph branch with no active nonretired hint; dead/forced checks first.",
+    "sequence": [
+      "Choose NULL or a generically typed family prototype/open-builder mode.",
+      "Choose an anchor from the complete scheduler-selected base domain; no later-generation point becomes an anchor.",
+      "Bind ordered exterior ports and internal node/row occurrences from source-compatible literal graph candidates. Alternatively append a legal arbitrary constituent; maximum3logical nodes for the initial pilot.",
+      "STOP/COMMIT or append, with a fixed maximum construction horizon. Exact aggregate/interface validation required before commit."
+    ],
+    "not_just_ranking": "The actor chooses topology/row attachment/ordered port bindings and membership, not a weight on a pre-authored target word. A true cluster-use observation requires at least2distinct constituent placements to be executed from one active descriptor; a singleton-only or never-consumed proposal is reported as such.",
+    "prototype_provenance": "Root-declared generic rule/ordered-port skeletons are authored infrastructure. Additional reusable skeletons may be mined only from engine-generated donor trajectories and only from dependency-complete connected fragments of1–3logical rows. No donor formula word, theorem name, source coordinate or target proof is a template feature. Mined topology and learned policy are separately labeled.",
+    "existing_families": "The171 checked source-body registry remains available as validation infrastructure. A source-body interface may enter the proposal vocabulary only through an explicitly frozen generic adapter/provenance gate; target-equivalent authored complete proof words and discarded example fields are forbidden as proposals/seeds. Large-body use outside the declared3-node pilot is deferred, not silently counted as active.",
+    "open_fallback_shapes": "Arbitrary internally valid1–3base-placement clusters remain eligible alongside typed families; their absence never removes a base candidate. The full legal primitive fallback is always present.",
+    "arithmetic_role_extent": "A logical arithmetic row is4physical C/G/I1/I2 placements. A3logical-row family can therefore have12base placements; open-shape1–3base clusters remain a separate mode. Budgets/reward count primitive work, not macro count."
+  },
+  "state_features": {
+    "generic_only": "Structural AST/rule/arity/ordered-port topology, distinct/repeated-slot patterns, closed/nullary term status, row gaps, per-port source completion, pending/selected constituent counts, assigned-zero/absence and remote marking/support work. No hardcoded theorem/predicate/constant names, raw target code, family ID weight, winning seed or proof-word lookup.",
+    "ordered_source_features": "Separate each port, not averaged aliases: source-row relation, exact expected-formula agreement, full source-row completeness, repeated-source alias and remaining ordered readers.",
+    "available_formulas": "Only dependency-complete selected inference rows count as facts. Physically selected outputs with pending sources and marks on unoccupied rows are constraints, never available facts/reward or installed hypotheses. They may remain explicit pending shape features.",
+    "goal": "Initial pilot uses terminal goal reward; no direct goal-code or target-name feature. A generic goal-AST feature is a possible separately frozen successor, not hidden in this plan.",
+    "legality": "The complete graph is queried for candidate legality and scheduler decision. Policy features cannot mutate domains, marks, degree counts, exclusions or authority."
+  },
+  "completion_predicate": {
+    "geometry": "Row physically selected, command licensed by the fixed context/palette, every ordered source strictly prior and itself dependency-complete with the exact required formula. Recursively close all selected rows in numerical order.",
+    "arithmetic": "All4C/G/I1/I2 roles selected; exact C/G command+inference match, modes and all ordered source fields match the current rule, unused ports literal, every required source strictly prior and dependency-complete. A guard/output marking alone is insufficient.",
+    "root_assumptions": "Only original declared hypotheses/theory axioms and licensed closed roots; exterior ports never become extra assumptions.",
+    "checking": "Producer uses a pinned deterministic predicate; independent audit must reconstruct it from the full primitive state and original rule/context checks before training updates become usable."
+  },
+  "policy_math": {
+    "actor": "Linear sparse epsilon-mixture softmax at each construction choice over its exact canonical finite action pool. Initial weights zero; epsilon0.1, temperature1.0, one random.Random.random draw per choice and literal CDF order. No success-seed search.",
+    "probability": "q_i=exp(w·f_i)/sum_j exp(w·f_j); p_i=(1-epsilon)q_i+epsilon/N.",
+    "score_gradient": "(1-epsilon)*q_chosen/p_chosen*(f_chosen-sum_i q_i*f_i)/temperature.",
+    "episode_update": "Mean of saved choice score-gradients, multiply by advantage R-baseline, then clip actual L2 update direction to1; learning rate0.05. Log preclip norm/clip factor/final increment/all weight hashes. This episode averaging/clipping is an explicit learning heuristic, not an unbiased-gradient claim.",
+    "baseline": "EMA initial0, alpha0.2; advantage uses pre-episode baseline, then baseline updates after the episode. No update for an unexecuted episode. Weights frozen during each complete search.",
+    "normalizers": "Exact rational feature definitions and deterministic float conversion/fsum order must be frozen in implementation before any action/math fixture or execution. Generic API/design is not that implementation."
+  },
+  "reward": {
+    "terminal": "Plus1 only for a producer-checked complete finite primitive certificate, provisional until independent full primitive/graph audit. No final solved-theorem count until independent whole primitive/native acceptance.",
+    "bounded_shaping": "Plus0.05 times maximum number of distinct dependency-complete nonroot formulas seen in the episode divided by declared logical-row count, capped at1. Formula duplicates and repeated rollback rediscovery receive no extra credit; pending outputs/marks receive zero.",
+    "costs": "Minus0.10*primitive_attempts/attempt_limit; minus0.05*construction_and_validation_checks/check_ceiling; minus0.01*retired_commits/max(1,commits). Each normalized term capped at1. Full wall/preparation/serialization costs remain separately reported; reward is not a speedup certificate.",
+    "anti_gaming": "No reward for number of proposals/macros, active markings, source-body name, branch depth, unsupported match label or unverified apparent conclusion. All new occupancy and repeated identities validated. Partial shaping is at most0.05 and cannot count as a discovered theorem.",
+    "reward_uncertainty": "If full donor audit fails or is resource-unknown, its weights are unqualified; stop before trained evaluation, preserve all artifacts and costs."
+  },
+  "curriculum": {
+    "freeze_order": "Freeze all donor definitions, target split, complete finite grammar/model recipes, family provenance and seeds before proposal mining/training/search. No authored proofs or ordinary target candidate/witness is input.",
+    "preferred_donors": [
+      {
+        "family": "guarded-universal-consequence",
+        "problem_latex": "\\forall x\\,(P(x)\\to Q(x)),\\ P(a)\\ \\vdash\\ Q(a)"
+      },
+      {
+        "family": "single-equality-transport",
+        "problem_latex": "a=b,\\ P(a)\\ \\vdash\\ P(b)"
+      }
+    ],
+    "donor_count": "4declared cases(2per family) ×4predeclared seeds =16episodes. Constant/predicate renaming variants are balancing controls, not independent transfer evidence. All syntax choices must be generated generically, not by a supplied derivation.",
+    "seed_formula": "training seed104729+episode_index; separate evaluation seeds271828 and314159 shared by all stochastic lanes; no outcome-based replacements.",
+    "first_held_out": "Existing frozen24-row incidence target and original context/model; never a donor, weight-tuning case, reward-adaptation run or successful-prefix source. Its existing finite grammar/source inventory is disclosed, so this first test is transfer to a frozen recipient within declared FOL rules, not unrestricted mathematics.",
+    "future_family_holdouts": [
+      {
+        "family": "unseen guard-chain composition",
+        "problem_latex": "\\forall x(P(x)\\to Q(x)),\\ \\forall x(Q(x)\\to R(x)),\\ P(a)\\ \\vdash\\ R(a)",
+        "scope": "Composition-depth holdout; components overlap donors, so not disjoint primitive-rule transfer."
+      },
+      {
+        "family": "addition-associativity",
+        "problem_latex": "\\forall x\\,\\forall y\\,\\forall z\\,((x+y)+z=x+(y+z))",
+        "scope": "Separate arithmetic complete grammar/model/native inventory needed; fragment is current recursively-defined-addition+declared induction, not full PA."
+      }
+    ],
+    "model_preparation_gap": "New donor models are not prepared or counted here. Before any training, root must freeze a complete bounded primitive inventory/compiler and independently audit each donor context, formula/command/port census and body rebind. If a donor cannot be encoded/checked within ceilings, stop as preparation-unknown; do not supply its proof or silently drop it.",
+    "alternative": "If generic donor preparation is not yet practical, a separately labeled same-theory alternative-goal pilot can test construction/action effect first; it must not be called held-out theorem-family transfer or replace the untouched24-row evaluation."
+  },
+  "prospective_resource_gates": {
+    "source_only_now": true,
+    "activation": "No actual source/fixture/model/search/training/native/replay command authorized by this design. ROOT must review exact implementation and independent auditor then issue plan-bound activation.",
+    "preparation": "Prospective donor compile/full graph/authority gate:120seconds and512MiB total per donor model;50,000distinct placements ceiling as a feasibility stop, never a reason to shortlist the base universe. Exact counts/serialization bytes/work ceilings fixed before actual compilation. All prep/admission uncertainty/cost retained.",
+    "construction": "At most24proposal instances and2048construction+aggregate checks per branch, maximum3logical nodes or3base open-shape members. Truncation is a proposal budget only; no graph-domain restriction.",
+    "action_effect_gate": "2fresh128-attempt/20-second/2000-event observations of the untouched24-row model, identical untrained stochastic policy seeds; full owned75seconds per job/180seconds phase,512MiB. Mandatory independently replayed legal-order effect AND multi-constituent execution before calling the interface actual cluster construction. No proof-success seed.",
+    "training": "16fresh donor episodes,250primitive attempts/10search seconds/2500events each,40seconds full owned job,720seconds phase,512MiB including model/pool/trace/serialization/lifecycle. Phase budget checked before each job; unknown/unexecuted explicit. No native calls in learning producer.",
+    "training_audit": "16full independent donor graph/action/RNG/reward/weight/rollback replays,45seconds each/780seconds phase/512MiB; use bounded stream/disk-backed trace protocol from inception. Training weights cannot qualify without whole phase passed.",
+    "evaluation": "8fresh observations: base,fixed-family,untrained-construction,trained-construction ×2seeds on same frozen24-row model and inventory,128attempts/20search seconds/2000events;75seconds whole owned job/660seconds phase/512MiB. Balanced order r1 base,fixed,untrained,trained; r2 trained,untrained,fixed,base.",
+    "evaluation_audit": "All8complete primitive graph/scheduler/whole-hint/pool/RNG/features/reward-source/rollback/census replays,75seconds per job/660seconds phase/512MiB. Preserve every event/node; no whole-tree inflation requirement or evidence reduction.",
+    "native": "No native budget granted here. Any automatically found candidate first needs independent whole primitive/point acceptance, exact original request/decoder/capacity preflight, then ROOT separately authorizes unchanged-palette native checking; unknown is not solved.",
+    "ceilings_scope": "Prospective upper bounds, not measured feasibility or cost predictions. All worker+owner cleanup, imports, cache prep, feature/construction work, full data serialization, storage/cleanup and auditing included. Source authoring/preparation/reference controls/publication are additional."
+  },
+  "controls_and_claim_gates": {
+    "matched": "Same model/context/base inventory/boundary/scheduler/legal candidates/checking semantics and budgets; fixed-family and stochastic lanes use identical learned-template+authored generic inventory. Base lacks proposal overhead by definition, disclosed.",
+    "ablation": "Uniform construction versus learned weights isolates policy effect. Fixed-family uses explicitly authored generic ordering, never called RL. Prototype-source and adapter costs charged separately.",
+    "proof_count": "Only whole independently primitive/native-accepted exact original-theory/target certificates count as solved; region-found or partial fact shaping is not a theorem.",
+    "help_claim": "Actual multi-constituent proposal effect, qualified updates, held-out accepted proof or reliable matched success/cost comparison; matched node counts alone cannot establish practical gain. One recipient/two seeds is a pilot, not statistical superiority.",
+    "honest_unknowns": "Preserve107UNKNOWNs and every older arithmetic/geometry failure. New adapter/training audit resource unknown blocks trained lane; no capped trace is reclassified exhausted or invalid."
+  },
+  "source_findings": {
+    "geometry_fixed_registry_gap": "Controller.checkpoint hashes its immutable descriptor registry. Dynamic proposal insertion into it would violate rollback; new wrapper pool/view semantics require independently inspected new source and full rollback/mutation controls.",
+    "formula_rebinding_gap": "BodyAuthority.expected binds rows, not substitutions of formula constants/binders. New family schematic transfer must compile/revalidate in the recipient exact palette/context; literal matching advice cannot establish a new inference.",
+    "arithmetic_instantiation_gap": "Current arithmetic searched contextual rules expose block/refl/generalize, not direct primitive instantiate. The declared primitive_stream contains instantiate schemes outside that searched grammar. Future FOL quantifier advice is not silently enabled in arithmetic.",
+    "inventory_origin": "Checked body infrastructure, mined reusable topology and RL-learned weights are3different provenances; none is automatically a discovered target proof."
+  },
+  "authoring_and_evidence": {
+    "source_authoring_seconds": null,
+    "scope": "Source reads/hash/literal JSON authoring only. No model/result blob loads, imports of scientific sources, fixtures, engine/checker calls, mining, training/search/native/replay or UI/publication.",
+    "scientific_executions": 0,
+    "root_reports_or_PUB_changed": false,
+    "publication_owner": "root"
+  }
+}

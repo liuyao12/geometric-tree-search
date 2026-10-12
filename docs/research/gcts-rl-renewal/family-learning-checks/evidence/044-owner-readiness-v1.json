@@ -1,0 +1,62 @@
+{
+  "status": "immutable_owned_numeric_entrypoint_source_ready_not_executed",
+  "owner_plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+    "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+    "bytes": 8405
+  },
+  "worker_plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+    "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+    "bytes": 5548
+  },
+  "owner_source": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+    "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+    "bytes": 21491
+  },
+  "worker_source": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+    "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+    "bytes": 17769
+  },
+  "metadata_freezer": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+    "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+    "bytes": 10176
+  },
+  "runtime": {
+    "alias_pin": {
+      "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "resolved_pin": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "observer_pin": {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    "expected_version": [
+      3,
+      9
+    ],
+    "platform": "darwin",
+    "kernel_ru_maxrss_unit": "bytes"
+  },
+  "Python39_AST_parsed_sources": 3,
+  "policy_functions_imported_or_executed": 0,
+  "numeric_fixture_runs": 0,
+  "RNG_calls": 0,
+  "engine_search_training_native_replay_runs": 0,
+  "source_authoring_seconds": null,
+  "metadata_helper_interval_seconds": 0.011470000000000001,
+  "metadata_helper_interval_scope": "Preserved pins/runtime hashes/three ASTs and exclusive worker/owner plan serialization; excludes interpreter startup and final readiness/manifest writes.",
+  "metadata_helper_kernel_peak_bytes": 14778368,
+  "runtime_adapter_implemented": false,
+  "actual_owner_started": false
+}

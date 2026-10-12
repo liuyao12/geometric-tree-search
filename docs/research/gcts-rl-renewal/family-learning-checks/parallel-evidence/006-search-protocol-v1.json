@@ -1,0 +1,117 @@
+{
+  "status": "source_only_prospective_search_protocol_uninstantiated_actual_gate_pins",
+  "schema": "fresh-context-three-lane-handoff-v1",
+  "search_plan_template": {
+    "schema": "fresh-context-three-lane-search-plan-v1",
+    "status": "uninstantiated_no_actual_gate_pins",
+    "observations": [
+      {
+        "id": "complete-primitive-base",
+        "mode": "base",
+        "attempts": 128,
+        "seconds": 20,
+        "event_ceiling": 2000
+      },
+      {
+        "id": "unchanged-fixed-forward",
+        "mode": "fixed-forward",
+        "attempts": 128,
+        "seconds": 20,
+        "event_ceiling": 2000
+      },
+      {
+        "id": "same-inventory-fixed-whole-pool",
+        "mode": "fixed-whole-family-pool",
+        "attempts": 128,
+        "seconds": 20,
+        "event_ceiling": 2000
+      }
+    ],
+    "phase": {
+      "kind": "search",
+      "worker": "transfer_search_worker_v1.py",
+      "child_seconds": 170,
+      "supervisor_seconds": 175,
+      "outer_seconds": 180,
+      "bytes": 536870912,
+      "stdout": "search-stdout-v1.txt",
+      "stderr": "search-stderr-v1.txt",
+      "launch": "search-launch-v1.json",
+      "outcome": "search-outcome-v1.json",
+      "supervision": "search-supervision-v1.json",
+      "lifetime": "search-lifetime-v1.json"
+    },
+    "lane_reservation_seconds": 25,
+    "activation_basename": "root-search-activation-v1.json",
+    "activation_status": "ROOT_authorized_fresh_context_three_lane_search_v1",
+    "runtime": {
+      "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "platform": "darwin",
+      "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+      "binary": {
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+        "bytes": 102352
+      },
+      "process_metadata": {
+        "path": "/bin/ps",
+        "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+        "bytes": 170816
+      }
+    },
+    "proposed_outputs": [
+      "complete-primitive-base-result-v1.json.gz",
+      "unchanged-fixed-forward-result-v1.json.gz",
+      "same-inventory-fixed-whole-pool-result-v1.json.gz",
+      "search-stdout-v1.txt",
+      "search-stderr-v1.txt",
+      "search-launch-v1.json",
+      "search-outcome-v1.json",
+      "search-supervision-v1.json",
+      "search-lifetime-v1.json"
+    ],
+    "execution_authorized_by_source_freeze": false,
+    "native_queries": 0,
+    "training_runs": 0,
+    "comparison": "Within-library changed-premise recipient, one repeat per fixed lane; no statistical or balanced speed-ratio claim.",
+    "costs": "All new context/preparation/independent static checking, cold per-lane graph/body/pool loading/registration/order/search/serialization/reaping and independent trace checking must be charged; prior bills retained."
+  },
+  "required_actual_static_result": {
+    "status": "passed_independent_fresh_context_family_pool_audit",
+    "fields": [
+      "plan",
+      "compiled_context_pin",
+      "preparation_evidence_pin",
+      "model_epoch",
+      "original_body_authority_epoch",
+      "group_authority_epoch",
+      "groups_checked"
+    ],
+    "counts": {
+      "primitive_license_count": 229,
+      "non_assumption_witness_count": 226,
+      "source_body_count": 171,
+      "single_types": 171,
+      "pair_types": 29241
+    }
+  },
+  "required_actual_static_lifetime": {
+    "status": "passed_owned_independent_fresh_context_family_pool_audit",
+    "child_exit": 0,
+    "child_reaped": true,
+    "exact_fields": [
+      "plan",
+      "result"
+    ]
+  },
+  "ROOT_terminal_metadata_contract": {
+    "owner_exit_code": 0,
+    "owner_process_terminal_reaped": true,
+    "worker_reaped": true,
+    "lifetime": "exact corresponding pinned lifetime"
+  },
+  "handoff": "ROOT invokes metadata-only finalize_search_plan_v1.py after actual preparation and separately accepted fresh static gate; no dummy pins. New search source/plan review and exact root-search activation remain mandatory.",
+  "future_trace_gate": "Separate 180/175/170 seconds/512MiB complete literal graph/order/hint/rollback/exhaustion and guarded new-Gamma symbolic certificate audit; raw count/status does not imply acceptance. TraceLimit prefixes may be refused/qualified UNKNOWN.",
+  "positive_scope": "All24 primitive rows/strict-prior refs/new3retained hypotheses/Incident(R,n), exact t/m and flattened blocks=[] request. No native activation, theorem-wide or universal claim.",
+  "source_authoring_seconds": null
+}

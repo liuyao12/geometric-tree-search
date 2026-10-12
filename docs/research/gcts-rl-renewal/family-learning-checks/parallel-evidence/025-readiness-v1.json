@@ -1,0 +1,106 @@
+{
+  "status": "source_only_implementation_ready_for_review_NOT_EXECUTION",
+  "source_plan": {
+    "path": ".gcts-active/family-proposal-rl-small-source-20261012/source-plan-v1.json",
+    "sha256": "ade44bbe5330846cc2fd21e43c1dec56a74de045ad9a8ea7918e3a63af275501",
+    "bytes": 192471
+  },
+  "protocol": {
+    "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+    "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+    "bytes": 19813
+  },
+  "split": {
+    "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+    "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+    "bytes": 4811
+  },
+  "archive": {
+    "path": ".gcts-active/family-proposal-rl-small-source-20261012/source-v1.zip",
+    "sha256": "9c3146f63fb2e287e0df0f62b4ffeefccc3b7b016d65812d21ad7714b429882b",
+    "bytes": 68707
+  },
+  "new_sources": 5,
+  "inherited_unique_paths": 832,
+  "relevant_inputs": 17,
+  "ASTs": [
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+        "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+        "bytes": 12386
+      },
+      "AST_nodes": 2272,
+      "imports": [
+        "__future__"
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+        "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+        "bytes": 12156
+      },
+      "AST_nodes": 1930,
+      "imports": [
+        "__future__",
+        "copy",
+        "hashlib",
+        "json"
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_episode_learning_v1.py",
+        "sha256": "25a78303ae0b839973ab5ef9735ef928b9ca90f5dc1ac816934fb52c65c6ab01",
+        "bytes": 3722
+      },
+      "AST_nodes": 387,
+      "imports": [
+        "__future__",
+        "copy"
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_curriculum_resolver_v1.py",
+        "sha256": "76daca703af2d11d764c98f7b5f33d9c67509391c57b4594360a174e46ebdc2c",
+        "bytes": 2285
+      },
+      "AST_nodes": 338,
+      "imports": [
+        "__future__",
+        "copy",
+        "json"
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/freeze_source_v1.py",
+        "sha256": "b82bb2b72bf7068d883a983ff1422a1e4c04ab03f8f0a522a1c5e966e042a844",
+        "bytes": 8850
+      },
+      "AST_nodes": 1115,
+      "imports": [
+        "ast",
+        "hashlib",
+        "json",
+        "pathlib",
+        "resource",
+        "sys",
+        "time",
+        "zipfile"
+      ]
+    }
+  ],
+  "metadata_seconds_before_readiness_write": 0.194633666,
+  "metadata_kernel_peak_bytes": 18087936,
+  "scope": "Metadata/helper work only; source authoring/manual inspection unmeasured and additional. No policy import or function invocation, AST construction from source functions, fixture, RNG, scientific payload decode, model/checker/training/search/replay/native/owner launch.",
+  "missing_gates": [
+    "Complete donor and heldout compiler/pool static source+actual independent gate",
+    "New real-Controller overlay/features controls",
+    "Owned driver and complete independent new-policy actual replay freeze",
+    "ROOT exact phase activation"
+  ],
+  "execution_authorized": false
+}

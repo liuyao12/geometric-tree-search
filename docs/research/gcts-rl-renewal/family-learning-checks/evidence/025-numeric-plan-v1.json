@@ -1,0 +1,94 @@
+{
+  "schema": "family_learning_numeric_gate_plan_v1",
+  "status": "source_only_not_activated",
+  "scope": "One numeric/API-contract fixture worker only. No training, engine, model, scientific graph, certificate, native, search, replay, UI or publication execution.",
+  "protocol": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-protocol-v1.json",
+    "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+    "bytes": 4375
+  },
+  "sources": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+      "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+      "bytes": 17445
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "math_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+    "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+    "bytes": 11607
+  },
+  "bridge_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+    "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+    "bytes": 3612
+  },
+  "preserved_protocol": {
+    "path": ".gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+    "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+    "bytes": 9905
+  },
+  "preserved_manifests": [
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+      "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+      "bytes": 1246
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/integration-v2.json",
+      "sha256": "38be6f2b927ca02751847a0f8912aff7cef4eb5e57410fa1bcb8f957b820177e",
+      "bytes": 1701
+    }
+  ],
+  "limits": {
+    "workers": 1,
+    "no_retry": true,
+    "internal_seconds": 10.0,
+    "owned_lifecycle_seconds": 15.0,
+    "whole_owner_phase_seconds": 30.0,
+    "memory_bytes": 536870912,
+    "expected_output_maximum_bytes": 1048576
+  },
+  "prospective_output": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v1",
+  "required_outer_owner": "ROOT must freeze/activate one owned worker lifecycle with timeout/reap, kernel+sample combined512MiB memory accounting, bounded streams and retained failed/partial output. Runner internal seconds exclude final serialization; outer owned receipt includes import/hash/setup, serialization/cleanup and every child. No owner has been authored or activated here.",
+  "authorization": "No dispatch authorization is provided by this source package. ROOT separately reviews source and writes exact activation including plan, source pins and Python executable pin, then alone owns execution.",
+  "required_activation_schema": {
+    "scope": "root_authorized_numeric_fixture_only",
+    "plan": "exact path/SHA/bytes of numeric-plan-v1.json",
+    "source_pins": "exact ordered plan.sources records",
+    "runtime_pin": "exact path/SHA/bytes of actual sys.executable, chosen and pinned by ROOT before execution"
+  },
+  "prospective_command": [
+    "<ROOT-pinned-Python-3.9>",
+    "-B",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+    "--plan",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v1.json",
+    "--activation",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/activation-v1.json",
+    "--output",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v1"
+  ],
+  "acceptance": "Exact source/runtime/activation pins; all26 prospective control records; worker status passed_numeric_and_abstract_API_controls_only; independent ROOT numeric/source disposition; outer lifecycle/memory gates pass. An outer timeout/resource failure remains unknown even if internal controls passed.",
+  "failure_retention": "Output directory exclusive; no reuse/retry. Partial-controls/result/owned stdout/stderr/lifetime and exact activation retained. Pre-output activation/source failures recorded by ROOT owned receipt, not treated unexecuted success.",
+  "prior_history": "All earlier scientific and numeric-source V1/V2 bytes unchanged; no old budget, phase or outcome is overwritten or reset.",
+  "authoring_seconds": null,
+  "scientific_executions": 0,
+  "root_sole_execution_and_publication_owner": true
+}

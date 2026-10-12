@@ -1,0 +1,95 @@
+{
+  "schema": "source-only-family-learning-pool-protocol-v2",
+  "status": "immutable_source_ready_for_ROOT_and_independent_review_no_fixture_or_scientific_activation",
+  "preserves_v1": {
+    "path": ".gcts-active/family-proposal-learning-20261012/design-v1.json",
+    "sha256": "e8008c6ea8d921740cc7d9c07c9cd00f5fb97cce10d35fc28235cceed00df19f",
+    "bytes": 19911
+  },
+  "math_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py",
+    "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+    "bytes": 10953
+  },
+  "API_contract_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py",
+    "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+    "bytes": 3576
+  },
+  "ROOT_decision": "First ROOT-owned preparatory control will use the separately authored fixed pre-search all171 source-body single/pair composition wrapper. Our learner does not implement or mutate it. Hand-authored checked171 infrastructure is an allowed common inventory baseline, not newly discovered lemmas.",
+  "stage_order": [
+    "ROOT/Hilbert wrapper source freeze and independent source/actual pool/expansion/lifecycle audits.",
+    "Separate numeric source fixtures for the prospective pure learner, independently reimplemented and ROOT-owned.",
+    "Uniform versus trained WHOLE-CLUSTER SELECTOR over the exact same audited generated family menu.",
+    "Only a later separate source/actual gate adds open irregular primitive construction actions."
+  ],
+  "first_learning_semantics": {
+    "action": "Choose NULL or one exact ready whole-cluster instance from the same fixed generated single/pair pool. Family ID only provenance/order, never a weight feature.",
+    "label": "RL whole-cluster selection and continuation preference; not RL discovery of new topology, not new lemma discovery, not failure-marking synthesis.",
+    "family_adaptation": "The fixed wrapper has already generically bound/composed source interfaces. The policy learns which bound instance to activate; source-origin/fixed composition costs stay visible.",
+    "pool": "Canonical sorted distinct action IDs plus explicit NULL; preserve every exact descriptor expansion, ordered port/repeated alias and authority binding. Any proposal menu ceiling is shared/frozen for all proposal lanes, never a primitive-domain cap. Full legal graph/base fallback remains complete.",
+    "features": "Adapter must freeze structural/rule/port/binding/source-completion/extended-mark neighborhood features and exact rational normalizers. Math source computes no features and cannot assert source completion. No target code, theorem name, source-body ID weight or authored proof word.",
+    "controller": "Existing root-fixed Controller unchanged. An independently audited wrapper pairs all pool/view/active waiting/retired states with graph rollback. No dynamic insertion into the old immutable registry.",
+    "actual_use_gate": "Report singleton/unused hints honestly. Genuine cluster execution requires at least2distinct constituent primitive placements from one active descriptor under the global scheduler. Selector probability changes alone are not that gate."
+  },
+  "deferred_open_constructor": {
+    "different_action_space": "Autoregressive anchor/append/ordered external-port binding/STOP/COMMIT. It changes membership and topology; it is not the initial pool selector.",
+    "requirements": [
+      "Fresh construction action grammar, canonical complete menu/order/IDs/RNG logs and capacity/work ceilings before any execution.",
+      "Exact aggregate validation of every distinct constituent, original ordered port/source roles, remote marks including assigned0, inventory/authority/context and scheduler-point eligibility.",
+      "Generic arbitrary1–3base-placement clusters alongside typed1–3logical-node families; arithmetic logical nodes expand to4roles. No known tiling strategy/teacher path restriction.",
+      "New paired episode pool/state journal and complete independent rollback/dead/forced/earliest/fallback replay.",
+      "Donor-only mining of reusable typed topology from engine-generated dependency-complete fragments, with all authored versus mined provenance kept separate. No discarded examples, ordinary candidate, target proof/seed or held-out trajectory is read."
+    ],
+    "run_authorized": false
+  },
+  "math_and_update": {
+    "q_latex": "q_i=\\frac{\\exp(\\langle w,f_i\\rangle/T)}{\\sum_j\\exp(\\langle w,f_j\\rangle/T)}",
+    "p_latex": "p_i=(1-\\varepsilon)q_i+\\frac{\\varepsilon}{N}",
+    "gradient_latex": "\\nabla_w\\log p_i=\\frac{(1-\\varepsilon)q_i}{p_iT}\\left(f_i-\\sum_jq_jf_j\\right)",
+    "epsilon": 0.1,
+    "temperature": 1.0,
+    "learning_rate": 0.05,
+    "EMA_alpha": 0.2,
+    "advantage_direction_L2_cap": 1.0,
+    "counter_semantics": "Mean saved score gradients, multiply return minus PRE-episode baseline, then clip actual direction; EMA afterwards. Episode averaging/clipping is an explicit heuristic, not unbiased REINFORCE. Weights frozen within each episode.",
+    "RNG": "Caller owns random.Random(seed), exactly1saved draw per selector/construction choice. Pure source choose() consumes draw and never creates/reseeds an RNG. Literal left-to-right CDF addition with strict draw<cumulative; final-positive roundoff fallback declared.",
+    "ordering": "Lexicographically sorted exact action IDs and sorted sparse feature names; fsum specified in source for dot/normalizer/expected features/update. Assigned zeros retained.",
+    "numeric_scope": "AST parse only to date. No source fixture, derivative control, sample, update, RNG or training function has been executed. Root independent numeric controls required before adoption."
+  },
+  "reward_clarification": {
+    "potential": "Maximum OVER STATES of distinct dependency-complete nonroot formulas divided by logical row count, bounded by1; not cumulative union across rollback branches. No pending outputs, missing roles, empty-row markings or receptor aliases receive any credit.",
+    "source_precondition": "Geometry all strict-prior selected exact sources; arithmetic all4C/G/I1/I2 and exact command/guard/modes/ordered sources. Original context only; no proposal input becomes a hypothesis.",
+    "terminal": "Producer primitive-check bonus stays provisional until full independent donor audit; solved proof count additionally requires whole unchanged native acceptance. No native calls in learning producer.",
+    "coefficients": "Source implements terminal1, capped potential0.05, normalized primitive cost0.10, construction/validation cost0.05, retirement0.01. Rewards are not proof or speedup claims.",
+    "anti_gaming": "No macro/proposal/mark/name/unsupported-match/branch-depth count reward. Formula duplicates and rollback rediscovery do not raise per-state potential. Invalid or unknown donor audit blocks trained evaluation."
+  },
+  "donor_and_transfer_scope": {
+    "donors": "V1preferred generic guarded-universal consequence and one-edge equality-transport problems;4cases×4predeclared seeds=16fresh episodes. New complete donor inventories/contexts are not built here.",
+    "holdout": "Frozen24-row incidence model/context remains untouched and excluded from donor trajectories/mining/tuning. Underlying primitive rule/source-inventory overlap must be disclosed; first recipient is a transfer pilot, not unrestricted theorem-family generalization.",
+    "fallback_option": "Same-theory alternative-goal training is only a separately labeled feasibility option if generic donor preparation is not ready; it is NOT held-out theorem-family evidence and cannot silently replace the stated donors.",
+    "future": "Held-out composition-depth and addition-associativity tasks are separate prepared complete models. Arithmetic currently lacks searched primitive instantiate, so no first-order quantifier guidance is activated there. No full-PA claim."
+  },
+  "prospective_bounds": "Keep V1separately declared preparation/action-effect/16episode training/independent replay/8balanced evaluation bounds as upper proposals. No actual job/phase authorized. Before any run freeze exact donor models/corpus/features/pool counts/source versions/native authority/seed/reward/work budgets and full lifetime/cold-versus-reuse accounting; ROOT may revise prospectively based on wrapper feasibility, never silently widen active caps.",
+  "independent_controls_required": [
+    "Finite-difference log-mixture derivatives includingepsilon0/1, temperature0.5/2, duplicate vectors, zero weights; reject plain-softmax mutant.",
+    "Exact numeric distributions/CDF/RNGchosenindex and updateweight/EMA replay; advantage>1 clipping verified AFTER advantage.",
+    "Raw counters/source-completion negative controls for missing role, pending source, unoccupied mark, ordered-port swap/repetition, silent inserted hypothesis, duplicate member/remote conflict.",
+    "All actual root/pool/controller checkpoints, all nodes/events/censuses/member expansions/whole retirements/waiting continuations, forced bypass/global priorities/base fallback reimplemented independently.",
+    "Source byte/pool/model/context/authority/training split and final policy provenance; no trained target evaluation before donor audit qualifies weights."
+  ],
+  "costs_and_readiness": {
+    "source_authoring_seconds": null,
+    "source_ASTs_parsed": 2,
+    "actual_numeric_fixtures": 0,
+    "models_loaded": 0,
+    "scientific_engine_imports": 0,
+    "searches": 0,
+    "training": 0,
+    "native": 0,
+    "replay": 0,
+    "UI_or_publication": 0,
+    "implemented": "Pure numerical functions and typed Protocol/data records only. Runtime feature extractor/owner/adapter/trainer/auditor/donor compiler are absent or independently authored future gates; no claim of ready executable experiment.",
+    "publication_owner": "root"
+  }
+}

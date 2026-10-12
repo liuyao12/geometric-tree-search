@@ -1,0 +1,57 @@
+{
+  "status": "immutable_small_whole_family_RL_SOURCE_ONLY_package",
+  "files": [
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+      "bytes": 12386
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+      "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+      "bytes": 12156
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_episode_learning_v1.py",
+      "sha256": "25a78303ae0b839973ab5ef9735ef928b9ca90f5dc1ac816934fb52c65c6ab01",
+      "bytes": 3722
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_curriculum_resolver_v1.py",
+      "sha256": "76daca703af2d11d764c98f7b5f33d9c67509391c57b4594360a174e46ebdc2c",
+      "bytes": 2285
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/freeze_source_v1.py",
+      "sha256": "b82bb2b72bf7068d883a983ff1422a1e4c04ab03f8f0a522a1c5e966e042a844",
+      "bytes": 8850
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/source-plan-v1.json",
+      "sha256": "ade44bbe5330846cc2fd21e43c1dec56a74de045ad9a8ea7918e3a63af275501",
+      "bytes": 192471
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/readiness-v1.json",
+      "sha256": "db639d01e49fc0d09cf12e63584b25faacd98704d406bb20cb400d5908668783",
+      "bytes": 3522
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/source-v1.zip",
+      "sha256": "9c3146f63fb2e287e0df0f62b4ffeefccc3b7b016d65812d21ad7714b429882b",
+      "bytes": 68707
+    }
+  ],
+  "actual_scientific_execution": false,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

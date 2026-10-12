@@ -1,0 +1,37 @@
+{
+  "status": "immutable_source_only_V2_compatibility_repair_ready_for_review",
+  "plan": {
+    "path": ".gcts-active/family-proposal-learning-20261012/compatibility-repair-plan-v2.json",
+    "sha256": "c1bd8fe742b45fd959bc07dd8da2ed3863f900a500fecfb73ac2c97e2a967227",
+    "bytes": 3618
+  },
+  "API_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+    "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+    "bytes": 3612
+  },
+  "math_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+    "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+    "bytes": 11607
+  },
+  "preserved_V1_manifest": {
+    "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+    "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+    "bytes": 1246
+  },
+  "AST_only_scope": {
+    "Python_3_9_syntax_parse": 2,
+    "API_only_future_import": true,
+    "math_functions_unchanged_except_choose": true
+  },
+  "executed_functions_or_imports": 0,
+  "numeric_fixtures": 0,
+  "scientific_executions": 0,
+  "runtime_adapter_implemented": false,
+  "source_authoring_seconds": null,
+  "helper_interval_seconds": 0.0085405,
+  "helper_interval_scope": "Includes old five-file pin verification, exclusive new-source/diff/plan authoring and AST checks; excludes interpreter startup and final readiness/manifest writes. Not source-authoring lifetime.",
+  "helper_kernel_peak_bytes": 14680064,
+  "root_owns_execution_and_publication": true
+}

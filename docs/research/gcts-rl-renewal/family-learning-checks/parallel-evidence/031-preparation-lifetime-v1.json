@@ -1,0 +1,30 @@
+{
+  "status": "passed_full_fresh_context_preparation_lifetime",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "phase_kind": "preparation",
+  "supervision": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-supervision-v1.json",
+    "sha256": "524af758ac9f33a44ea3a8e3124af8402cc9f46e1b95835cc8eff0e09ed71846",
+    "bytes": 21697
+  },
+  "supervisor_pid": 20539,
+  "supervisor_exit": 0,
+  "supervisor_reaped": true,
+  "worker_reaped_confirmed": true,
+  "full_supervisor_seconds_including_receipt_write": 5.868411500000001,
+  "outer_receipt_write": "outside pre-write interval; ROOT should also time full outer process",
+  "conservative_host_peak_bytes": 130777088,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 60,
+  "cleanup_reason": null,
+  "actual_memory_overshoot_bytes": 0,
+  "actual_wall_overshoot_seconds": 0,
+  "memory_scope": "retrospective owned-process peak estimate; no OS hard cap or strict aggregate host upper bound",
+  "native_queries": 0,
+  "training_runs": 0,
+  "scope": "producer resource receipt only; no mathematical acceptance"
+}

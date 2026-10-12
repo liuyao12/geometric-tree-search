@@ -1,0 +1,500 @@
+{
+  "status": "exact_new_preparation_and_frozen_policy_sources",
+  "files": [
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context-spec-v1.json",
+        "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+        "bytes": 16345
+      },
+      "public": "parallel-evidence/000-context-spec-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/000-context-spec-v1.json",
+        "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+        "bytes": 16345
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context_compiler_v1.py",
+        "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+        "bytes": 11045
+      },
+      "public": "parallel-evidence/001-context_compiler_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/001-context_compiler_v1.py",
+        "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+        "bytes": 11045
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/finalize_search_plan_v1.py",
+        "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+        "bytes": 5816
+      },
+      "public": "parallel-evidence/002-finalize_search_plan_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/002-finalize_search_plan_v1.py",
+        "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+        "bytes": 5816
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/fixed-pool-source-diff-v1.txt",
+        "sha256": "090ecb3fc372a7d528536523776e8a54eedd64ef9f2470282d0887ada53805dd",
+        "bytes": 4659
+      },
+      "public": "parallel-evidence/003-fixed-pool-source-diff-v1.txt",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/003-fixed-pool-source-diff-v1.txt",
+        "sha256": "090ecb3fc372a7d528536523776e8a54eedd64ef9f2470282d0887ada53805dd",
+        "bytes": 4659
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/freeze_source_v1.py",
+        "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+        "bytes": 14891
+      },
+      "public": "parallel-evidence/004-freeze_source_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/004-freeze_source_v1.py",
+        "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+        "bytes": 14891
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+        "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+        "bytes": 191756
+      },
+      "public": "parallel-evidence/005-preparation-plan-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/005-preparation-plan-v1.json",
+        "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+        "bytes": 191756
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-protocol-v1.json",
+        "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+        "bytes": 4636
+      },
+      "public": "parallel-evidence/006-search-protocol-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/006-search-protocol-v1.json",
+        "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+        "bytes": 4636
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/source-ready-v1.json",
+        "sha256": "07f53a6966cefc8fbac58a15704f671aa09fd2126077816a9dada2018c964dea",
+        "bytes": 2688
+      },
+      "public": "parallel-evidence/007-source-ready-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/007-source-ready-v1.json",
+        "sha256": "07f53a6966cefc8fbac58a15704f671aa09fd2126077816a9dada2018c964dea",
+        "bytes": 2688
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/sources-v1.zip",
+        "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+        "bytes": 77772
+      },
+      "public": "parallel-evidence/008-sources-v1.zip",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/008-sources-v1.zip",
+        "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+        "bytes": 77772
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+        "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+        "bytes": 11866
+      },
+      "public": "parallel-evidence/009-transfer_fixed_pool_search_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/009-transfer_fixed_pool_search_v1.py",
+        "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+        "bytes": 11866
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+        "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+        "bytes": 3043
+      },
+      "public": "parallel-evidence/010-transfer_outer_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/010-transfer_outer_v1.py",
+        "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+        "bytes": 3043
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_prepare_worker_v1.py",
+        "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+        "bytes": 6758
+      },
+      "public": "parallel-evidence/011-transfer_prepare_worker_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/011-transfer_prepare_worker_v1.py",
+        "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+        "bytes": 6758
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+        "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+        "bytes": 4186
+      },
+      "public": "parallel-evidence/012-transfer_register_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/012-transfer_register_v1.py",
+        "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+        "bytes": 4186
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_runtime_v1.py",
+        "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+        "bytes": 2898
+      },
+      "public": "parallel-evidence/013-transfer_runtime_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/013-transfer_runtime_v1.py",
+        "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+        "bytes": 2898
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_search_worker_v1.py",
+        "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+        "bytes": 5317
+      },
+      "public": "parallel-evidence/014-transfer_search_worker_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/014-transfer_search_worker_v1.py",
+        "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+        "bytes": 5317
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_supervisor_v1.py",
+        "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+        "bytes": 5644
+      },
+      "public": "parallel-evidence/015-transfer_supervisor_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/015-transfer_supervisor_v1.py",
+        "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+        "bytes": 5644
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/integration-v1.json",
+        "sha256": "f239cdc4bf10a0d809de372cd19a54debf0931497ee01255208332159e999519",
+        "bytes": 3977
+      },
+      "public": "parallel-evidence/016-integration-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/016-integration-v1.json",
+        "sha256": "f239cdc4bf10a0d809de372cd19a54debf0931497ee01255208332159e999519",
+        "bytes": 3977
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+        "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+        "bytes": 12386
+      },
+      "public": "parallel-evidence/017-family_graph_features_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/017-family_graph_features_v1.py",
+        "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+        "bytes": 12386
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_learned_overlay_v1.py",
+        "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+        "bytes": 12156
+      },
+      "public": "parallel-evidence/018-family_learned_overlay_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/018-family_learned_overlay_v1.py",
+        "sha256": "f11ca5a1113c66108af4d61995463b2525dd9b4f6f2ac469c6d514eaa3dca2f6",
+        "bytes": 12156
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_episode_learning_v1.py",
+        "sha256": "25a78303ae0b839973ab5ef9735ef928b9ca90f5dc1ac816934fb52c65c6ab01",
+        "bytes": 3722
+      },
+      "public": "parallel-evidence/019-family_episode_learning_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/019-family_episode_learning_v1.py",
+        "sha256": "25a78303ae0b839973ab5ef9735ef928b9ca90f5dc1ac816934fb52c65c6ab01",
+        "bytes": 3722
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_curriculum_resolver_v1.py",
+        "sha256": "76daca703af2d11d764c98f7b5f33d9c67509391c57b4594360a174e46ebdc2c",
+        "bytes": 2285
+      },
+      "public": "parallel-evidence/020-family_curriculum_resolver_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/020-family_curriculum_resolver_v1.py",
+        "sha256": "76daca703af2d11d764c98f7b5f33d9c67509391c57b4594360a174e46ebdc2c",
+        "bytes": 2285
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/freeze_source_v1.py",
+        "sha256": "b82bb2b72bf7068d883a983ff1422a1e4c04ab03f8f0a522a1c5e966e042a844",
+        "bytes": 8850
+      },
+      "public": "parallel-evidence/021-freeze_source_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/021-freeze_source_v1.py",
+        "sha256": "b82bb2b72bf7068d883a983ff1422a1e4c04ab03f8f0a522a1c5e966e042a844",
+        "bytes": 8850
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+        "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+        "bytes": 19813
+      },
+      "public": "parallel-evidence/022-protocol-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/022-protocol-v1.json",
+        "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+        "bytes": 19813
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+        "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+        "bytes": 4811
+      },
+      "public": "parallel-evidence/023-donor-split-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/023-donor-split-v1.json",
+        "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+        "bytes": 4811
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/source-plan-v1.json",
+        "sha256": "ade44bbe5330846cc2fd21e43c1dec56a74de045ad9a8ea7918e3a63af275501",
+        "bytes": 192471
+      },
+      "public": "parallel-evidence/024-source-plan-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/024-source-plan-v1.json",
+        "sha256": "ade44bbe5330846cc2fd21e43c1dec56a74de045ad9a8ea7918e3a63af275501",
+        "bytes": 192471
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/readiness-v1.json",
+        "sha256": "db639d01e49fc0d09cf12e63584b25faacd98704d406bb20cb400d5908668783",
+        "bytes": 3522
+      },
+      "public": "parallel-evidence/025-readiness-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/025-readiness-v1.json",
+        "sha256": "db639d01e49fc0d09cf12e63584b25faacd98704d406bb20cb400d5908668783",
+        "bytes": 3522
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/source-v1.zip",
+        "sha256": "9c3146f63fb2e287e0df0f62b4ffeefccc3b7b016d65812d21ad7714b429882b",
+        "bytes": 68707
+      },
+      "public": "parallel-evidence/026-source-v1.zip",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/026-source-v1.zip",
+        "sha256": "9c3146f63fb2e287e0df0f62b4ffeefccc3b7b016d65812d21ad7714b429882b",
+        "bytes": 68707
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/integration-v1.json",
+        "sha256": "0b4c1aad659dde05aa80bdf407ea1ddba81405388d057b48f2ecf03bff22c046",
+        "bytes": 2290
+      },
+      "public": "parallel-evidence/027-integration-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/027-integration-v1.json",
+        "sha256": "0b4c1aad659dde05aa80bdf407ea1ddba81405388d057b48f2ecf03bff22c046",
+        "bytes": 2290
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/compiled-context-v1.json.gz",
+        "sha256": "becbfcd43350f725b18a54256ad560f12bde15d1527b151a3092b9f1b08a8db7",
+        "bytes": 310563
+      },
+      "public": "parallel-evidence/028-compiled-context-v1.json.gz",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/028-compiled-context-v1.json.gz",
+        "sha256": "becbfcd43350f725b18a54256ad560f12bde15d1527b151a3092b9f1b08a8db7",
+        "bytes": 310563
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-evidence-v1.json.gz",
+        "sha256": "d2458ebaa05688aeba560c10a6911295dfa4866a7badd9101ed3c05f8e9a8c38",
+        "bytes": 1381796
+      },
+      "public": "parallel-evidence/029-preparation-evidence-v1.json.gz",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/029-preparation-evidence-v1.json.gz",
+        "sha256": "d2458ebaa05688aeba560c10a6911295dfa4866a7badd9101ed3c05f8e9a8c38",
+        "bytes": 1381796
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-outcome-v1.json",
+        "sha256": "321069a46c4d833606060e0c1ee2dc046751db800fa587c2f7aeb0fcc04198a6",
+        "bytes": 1652
+      },
+      "public": "parallel-evidence/030-preparation-outcome-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/030-preparation-outcome-v1.json",
+        "sha256": "321069a46c4d833606060e0c1ee2dc046751db800fa587c2f7aeb0fcc04198a6",
+        "bytes": 1652
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-lifetime-v1.json",
+        "sha256": "9eff89dc1250d5a4677cd0065ab9de9bc2b60fb78b48ea3d6eaf80ac9d035c68",
+        "bytes": 1265
+      },
+      "public": "parallel-evidence/031-preparation-lifetime-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/031-preparation-lifetime-v1.json",
+        "sha256": "9eff89dc1250d5a4677cd0065ab9de9bc2b60fb78b48ea3d6eaf80ac9d035c68",
+        "bytes": 1265
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-supervision-v1.json",
+        "sha256": "524af758ac9f33a44ea3a8e3124af8402cc9f46e1b95835cc8eff0e09ed71846",
+        "bytes": 21697
+      },
+      "public": "parallel-evidence/032-preparation-supervision-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/032-preparation-supervision-v1.json",
+        "sha256": "524af758ac9f33a44ea3a8e3124af8402cc9f46e1b95835cc8eff0e09ed71846",
+        "bytes": 21697
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/root-preparation-activation-v1.json",
+        "sha256": "8c81fca9cd8db5f76b053d82cce92a06d97125cdbef8051b9bfefe73042ca878",
+        "bytes": 663
+      },
+      "public": "parallel-evidence/033-root-preparation-activation-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/033-root-preparation-activation-v1.json",
+        "sha256": "8c81fca9cd8db5f76b053d82cce92a06d97125cdbef8051b9bfefe73042ca878",
+        "bytes": 663
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/preparation-terminal-v1.json",
+        "sha256": "58146667880d9a15e921e03f0f29f429f52ecd873df8ad23c704d1e8e7a383d5",
+        "bytes": 1981
+      },
+      "public": "parallel-evidence/034-preparation-terminal-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/034-preparation-terminal-v1.json",
+        "sha256": "58146667880d9a15e921e03f0f29f429f52ecd873df8ad23c704d1e8e7a383d5",
+        "bytes": 1981
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/preparation-source-review-v1.json",
+        "sha256": "b86e8362a48bc263065508ef970729f8bcc514be7def25e2f1a7b55a3182f2f6",
+        "bytes": 2321
+      },
+      "public": "parallel-evidence/035-preparation-source-review-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/035-preparation-source-review-v1.json",
+        "sha256": "b86e8362a48bc263065508ef970729f8bcc514be7def25e2f1a7b55a3182f2f6",
+        "bytes": 2321
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/preparation-source-review-v1.json",
+        "sha256": "8734876c26218990355f1e37033b97d82250989ee7a0a23ef45cafd7428d0d23",
+        "bytes": 10271
+      },
+      "public": "parallel-evidence/036-preparation-source-review-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/036-preparation-source-review-v1.json",
+        "sha256": "8734876c26218990355f1e37033b97d82250989ee7a0a23ef45cafd7428d0d23",
+        "bytes": 10271
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/add_parallel_progress.py",
+        "sha256": "b611aef5d71561abdd9ee9d23b3cad2ce6d95a8224456a4f52180e432d726645",
+        "bytes": 6426
+      },
+      "public": "parallel-evidence/037-add_parallel_progress.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/parallel-evidence/037-add_parallel_progress.py",
+        "sha256": "b611aef5d71561abdd9ee9d23b3cad2ce6d95a8224456a4f52180e432d726645",
+        "bytes": 6426
+      }
+    }
+  ],
+  "scope": "One actually executed preparation; all RL scientific execution remains unexecuted. Earlier prerequisite bytes stay in their historical notebooks, not recopied here."
+}

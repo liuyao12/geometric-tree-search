@@ -1,0 +1,34 @@
+{
+  "status": "passed_ROOT_independent_saved_numeric_result_inspection",
+  "inputs": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v2/result.json",
+      "sha256": "ab8ecb1382459f05128badb0ced2fa5336c820bc3bc6c6c5259665d56b237638",
+      "bytes": 20229
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1/owned-lifetime.json",
+      "sha256": "5f00f090c3ee26ecc3f8ae30a984c7b69eb1ab05a8b87320324177cd0af98ff7",
+      "bytes": 5350
+    },
+    {
+      "path": ".gcts-active/family-numeric-actual-progress-20261012/outer-terminal-v1.json",
+      "sha256": "42ca5b27cb0c7a7df6a20653c963c558375ac5449e8083eca7c8ddc5f5574172",
+      "bytes": 1852
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+      "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+      "bytes": 8405
+    }
+  ],
+  "ordered_controls": 26,
+  "independently_recomputed_mixtures": 6,
+  "independently_recomputed_gradient_components": 36,
+  "worker_reported_finite_differences": 36,
+  "worker_reported_deterministic_draws": 24,
+  "scope": "Saved scalar outputs and ownership inspected; no policy reimport, new fixture run, engine, actual Controller, training or search.",
+  "inspection_seconds_before_serialization": 0.006754541999999995,
+  "actual_numeric_fixture_accepted": true,
+  "actual_RL_training_runs": 0
+}

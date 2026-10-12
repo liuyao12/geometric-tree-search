@@ -1,0 +1,42 @@
+{
+  "status": "source_only_numeric_gate_ready_for_ROOT_review_not_execution",
+  "plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v1.json",
+    "sha256": "d794892e2ebe2ee7b96c50fe853157aa5b4c40abc8fe5dd1f781c5963f0787a1",
+    "bytes": 4955
+  },
+  "protocol": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-protocol-v1.json",
+    "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+    "bytes": 4375
+  },
+  "runner": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+    "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+    "bytes": 17445
+  },
+  "Python3_9_AST_parse_count": 1,
+  "static_import_allowlist": [
+    "__future__",
+    "argparse",
+    "hashlib",
+    "importlib.util",
+    "json",
+    "math",
+    "pathlib",
+    "resource",
+    "signal",
+    "sys",
+    "time"
+  ],
+  "learning_function_imports_or_calls": 0,
+  "RNG_calls": 0,
+  "fixtures_executed": 0,
+  "scientific_executions": 0,
+  "runtime_adapter_implemented": false,
+  "outer_owner_implemented": false,
+  "source_authoring_seconds": null,
+  "helper_interval_seconds": 0.009725791999999999,
+  "helper_interval_scope": "Old V1/V2 file pin checks, runner AST/static import allowlist and exclusive protocol/plan writes; excludes prior source authoring, interpreter startup and final readiness/manifest writes.",
+  "helper_kernel_peak_bytes": 14352384
+}

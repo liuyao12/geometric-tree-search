@@ -1,0 +1,11 @@
+--- .gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py
++++ .gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py
+@@ -4,6 +4,8 @@
+ single/pair wrapper supplies these immutable records and paired checkpoints.
+ Opaque keys are the original exact geometry/arithmetic candidate identities.
+ """
++from __future__ import annotations
++
+ from dataclasses import dataclass
+ from typing import Any, Protocol
+ 

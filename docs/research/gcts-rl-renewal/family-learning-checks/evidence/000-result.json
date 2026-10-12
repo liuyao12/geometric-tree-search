@@ -1,0 +1,812 @@
+{
+  "status": "passed_numeric_and_abstract_API_controls_only",
+  "scope": "One numeric/API-contract fixture worker only. No training, engine, model, scientific graph, certificate, native, search, replay, UI or publication execution.",
+  "plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+    "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+    "bytes": 5548
+  },
+  "activation": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1/worker-activation.json",
+    "sha256": "9d7855e05c76516328348d4abfe37b5e6c34037b3edb0a87a780d31dd48e78b6",
+    "bytes": 1512
+  },
+  "controls": [
+    {
+      "id": "python39_deferred_annotation_import",
+      "status": "passed",
+      "detail": {
+        "runtime": [
+          3,
+          9,
+          6
+        ]
+      }
+    },
+    {
+      "id": "mixture_case:epsilon0_temp05",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": 0.2,
+              "b": -1.0
+            },
+            {
+              "a": 1.5,
+              "b": 0.1
+            }
+          ],
+          "weights": {
+            "a": 0.35,
+            "b": -0.2
+          },
+          "epsilon": 0.0,
+          "temperature": 0.5,
+          "feature_names": [
+            "a",
+            "b"
+          ],
+          "logits": [
+            -0.8999999999999999,
+            0.54,
+            1.0099999999999998
+          ],
+          "softmax": [
+            0.08351578319716729,
+            0.352494716793475,
+            0.5639895000093577
+          ],
+          "probabilities": [
+            0.08351578319716729,
+            0.352494716793475,
+            0.5639895000093577
+          ],
+          "normalizer": 1.7730826548781635,
+          "probability_sum": 1.0
+        },
+        "gradients": [
+          {
+            "a": -3.6659348203511284,
+            "b": 1.5086757503879111
+          },
+          {
+            "a": -1.2659348203511285,
+            "b": -1.4913242496120889
+          },
+          {
+            "a": 1.3340651796488716,
+            "b": 0.7086757503879111
+          }
+        ],
+        "finite_derivatives": 6,
+        "draws_per_case": 4,
+        "scalar_reference_tolerance": 2e-12,
+        "derivative_tolerance": 2e-07
+      }
+    },
+    {
+      "id": "mixture_case:epsilon01_temp1",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": 0.2,
+              "b": -1.0
+            },
+            {
+              "a": 1.5,
+              "b": 0.1
+            }
+          ],
+          "weights": {
+            "a": 0.35,
+            "b": -0.2
+          },
+          "epsilon": 0.1,
+          "temperature": 1.0,
+          "feature_names": [
+            "a",
+            "b"
+          ],
+          "logits": [
+            -0.44999999999999996,
+            0.27,
+            0.5049999999999999
+          ],
+          "softmax": [
+            0.17689397479993102,
+            0.36341685659178125,
+            0.4596891686082878
+          ],
+          "probabilities": [
+            0.19253791065327125,
+            0.36040850426593646,
+            0.44705358508079235
+          ],
+          "normalizer": 2.175382994181714,
+          "probability_sum": 1.0
+        },
+        "gradients": [
+          {
+            "a": -1.3108623702433648,
+            "b": 0.6027918766122494
+          },
+          {
+            "a": -0.3496855192722988,
+            "b": -0.6996911624458875
+          },
+          {
+            "a": 0.8464764616900454,
+            "b": 0.3044698921247457
+          }
+        ],
+        "finite_derivatives": 6,
+        "draws_per_case": 4,
+        "scalar_reference_tolerance": 2e-12,
+        "derivative_tolerance": 2e-07
+      }
+    },
+    {
+      "id": "mixture_case:epsilon035_temp2",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": 0.2,
+              "b": -1.0
+            },
+            {
+              "a": 1.5,
+              "b": 0.1
+            }
+          ],
+          "weights": {
+            "a": 0.35,
+            "b": -0.2
+          },
+          "epsilon": 0.35,
+          "temperature": 2.0,
+          "feature_names": [
+            "a",
+            "b"
+          ],
+          "logits": [
+            -0.22499999999999998,
+            0.135,
+            0.25249999999999995
+          ],
+          "softmax": [
+            0.24719625821529972,
+            0.35431366806924225,
+            0.3984900737154581
+          ],
+          "probabilities": [
+            0.2773442345066115,
+            0.3469705509116741,
+            0.3756852145817144
+          ],
+          "normalizer": 2.5094727973426263,
+          "probability_sum": 1.0
+        },
+        "gradients": [
+          {
+            "a": -0.4117398549208607,
+            "b": 0.20012450266973345
+          },
+          {
+            "a": -0.07347834721609532,
+            "b": -0.2685337129589483
+          },
+          {
+            "a": 0.3718232500793664,
+            "b": 0.10026988516625965
+          }
+        ],
+        "finite_derivatives": 6,
+        "draws_per_case": 4,
+        "scalar_reference_tolerance": 2e-12,
+        "derivative_tolerance": 2e-07
+      }
+    },
+    {
+      "id": "mixture_case:epsilon1_uniform",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": 0.2,
+              "b": -1.0
+            },
+            {
+              "a": 1.5,
+              "b": 0.1
+            }
+          ],
+          "weights": {
+            "a": 0.35,
+            "b": -0.2
+          },
+          "epsilon": 1.0,
+          "temperature": 0.5,
+          "feature_names": [
+            "a",
+            "b"
+          ],
+          "logits": [
+            -0.8999999999999999,
+            0.54,
+            1.0099999999999998
+          ],
+          "softmax": [
+            0.08351578319716729,
+            0.352494716793475,
+            0.5639895000093577
+          ],
+          "probabilities": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "normalizer": 1.7730826548781635,
+          "probability_sum": 1.0
+        },
+        "gradients": [
+          {
+            "a": -0.0,
+            "b": 0.0
+          },
+          {
+            "a": -0.0,
+            "b": -0.0
+          },
+          {
+            "a": 0.0,
+            "b": 0.0
+          }
+        ],
+        "finite_derivatives": 6,
+        "draws_per_case": 4,
+        "scalar_reference_tolerance": 2e-12,
+        "derivative_tolerance": 2e-07
+      }
+    },
+    {
+      "id": "mixture_case:zero_weights",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": 0.2,
+              "b": -1.0
+            },
+            {
+              "a": 1.5,
+              "b": 0.1
+            }
+          ],
+          "weights": {
+            "a": 0.0,
+            "b": 0.0
+          },
+          "epsilon": 0.1,
+          "temperature": 1.0,
+          "feature_names": [
+            "a",
+            "b"
+          ],
+          "logits": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "softmax": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "probabilities": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "normalizer": 3.0,
+          "probability_sum": 1.0
+        },
+        "gradients": [
+          {
+            "a": -1.11,
+            "b": 0.57
+          },
+          {
+            "a": -0.029999999999999995,
+            "b": -0.78
+          },
+          {
+            "a": 1.14,
+            "b": 0.21000000000000002
+          }
+        ],
+        "finite_derivatives": 6,
+        "draws_per_case": 4,
+        "scalar_reference_tolerance": 2e-12,
+        "derivative_tolerance": 2e-07
+      }
+    },
+    {
+      "id": "mixture_case:duplicate_vectors",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": -1.0,
+              "b": 0.5
+            },
+            {
+              "a": 1.5,
+              "b": 0.1
+            }
+          ],
+          "weights": {
+            "a": 0.35,
+            "b": -0.2
+          },
+          "epsilon": 0.2,
+          "temperature": 1.0,
+          "feature_names": [
+            "a",
+            "b"
+          ],
+          "logits": [
+            -0.44999999999999996,
+            -0.44999999999999996,
+            0.5049999999999999
+          ],
+          "softmax": [
+            0.21745414940444333,
+            0.21745414940444333,
+            0.5650917011911134
+          ],
+          "probabilities": [
+            0.24062998619022136,
+            0.24062998619022136,
+            0.5187400276195574
+          ],
+          "normalizer": 1.7696242891059573,
+          "probability_sum": 1.0
+        },
+        "gradients": [
+          {
+            "a": -1.0213318561293843,
+            "b": 0.16341309698070144
+          },
+          {
+            "a": -1.0213318561293843,
+            "b": 0.16341309698070144
+          },
+          {
+            "a": 0.9475384869134826,
+            "b": -0.15160615790615725
+          }
+        ],
+        "finite_derivatives": 6,
+        "draws_per_case": 4,
+        "scalar_reference_tolerance": 2e-12,
+        "derivative_tolerance": 2e-07
+      }
+    },
+    {
+      "id": "plain_softmax_gradient_mutant_detected",
+      "status": "passed",
+      "detail": {
+        "detected": true
+      }
+    },
+    {
+      "id": "stable_extreme_logits:0.0",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": 1.0
+            },
+            {
+              "a": 0.0
+            },
+            {
+              "a": -1.0
+            }
+          ],
+          "weights": {
+            "a": 1000.0
+          },
+          "epsilon": 0.0,
+          "temperature": 0.5,
+          "feature_names": [
+            "a"
+          ],
+          "logits": [
+            2000.0,
+            0.0,
+            -2000.0
+          ],
+          "softmax": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "probabilities": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "normalizer": 1.0,
+          "probability_sum": 1.0
+        },
+        "choice": {
+          "chosen_index": 0,
+          "chosen_id": "A",
+          "draw": 0.9999999999999999,
+          "chosen_probability": 1.0,
+          "chosen_softmax_probability": 1.0,
+          "CDF_arithmetic": "literal left-to-right +=; strict draw<cumulative; last-positive roundoff fallback"
+        }
+      }
+    },
+    {
+      "id": "stable_extreme_logits:0.2",
+      "status": "passed",
+      "detail": {
+        "distribution": {
+          "version": "family-epsilon-mixture-policy-math-v2",
+          "action_ids": [
+            "A",
+            "B",
+            "NULL"
+          ],
+          "features": [
+            {
+              "a": 1.0
+            },
+            {
+              "a": 0.0
+            },
+            {
+              "a": -1.0
+            }
+          ],
+          "weights": {
+            "a": 1000.0
+          },
+          "epsilon": 0.2,
+          "temperature": 0.5,
+          "feature_names": [
+            "a"
+          ],
+          "logits": [
+            2000.0,
+            0.0,
+            -2000.0
+          ],
+          "softmax": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "probabilities": [
+            0.8666666666666667,
+            0.06666666666666667,
+            0.06666666666666667
+          ],
+          "normalizer": 1.0,
+          "probability_sum": 1.0
+        },
+        "choice": {
+          "chosen_index": 2,
+          "chosen_id": "NULL",
+          "draw": 0.9999999999999999,
+          "chosen_probability": 0.06666666666666667,
+          "chosen_softmax_probability": 0.0,
+          "CDF_arithmetic": "literal left-to-right +=; strict draw<cumulative; last-positive roundoff fallback"
+        }
+      }
+    },
+    {
+      "id": "synthetic_last_positive_roundoff_fallback",
+      "status": "passed",
+      "detail": {
+        "zero_tail_not_selected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:negative_normalized",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:nan",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:plus_infinity",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:minus_infinity",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:bool",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:string",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:empty",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:nonsequence",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "malformed_probability_rejected:unnormalized",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "advantage_before_direction_clip",
+      "status": "passed",
+      "detail": {
+        "version": "family-epsilon-mixture-policy-math-v2",
+        "old_weights": {
+          "a": 0.0,
+          "b": 0.0
+        },
+        "weights": {
+          "a": 0.030000000000000006,
+          "b": 0.04000000000000001
+        },
+        "old_baseline": 0.0,
+        "baseline": 0.4,
+        "return": 2.0,
+        "advantage": 2.0,
+        "choice_count": 1,
+        "mean_score_gradient": {
+          "a": 3.0,
+          "b": 4.0
+        },
+        "score_gradient_L2": 5.0,
+        "advantage_direction_L2_before_clip": 10.0,
+        "clip_scale": 0.1,
+        "direction_L2_after_clip": 1.0,
+        "increment": {
+          "a": 0.030000000000000006,
+          "b": 0.04000000000000001
+        },
+        "learning_rate": 0.05,
+        "ema_alpha": 0.2,
+        "direction_norm_ceiling": 1.0,
+        "scope": "Episode-averaged/clipped heuristic, not an unbiased expected-return gradient claim."
+      }
+    },
+    {
+      "id": "old_baseline_before_update_then_EMA",
+      "status": "passed",
+      "detail": {
+        "version": "family-epsilon-mixture-policy-math-v2",
+        "old_weights": {
+          "a": 0.0
+        },
+        "weights": {
+          "a": 0.015000000000000003
+        },
+        "old_baseline": 0.5,
+        "baseline": 0.8,
+        "return": 2.0,
+        "advantage": 1.5,
+        "choice_count": 1,
+        "mean_score_gradient": {
+          "a": 0.2
+        },
+        "score_gradient_L2": 0.2,
+        "advantage_direction_L2_before_clip": 0.30000000000000004,
+        "clip_scale": 1.0,
+        "direction_L2_after_clip": 0.30000000000000004,
+        "increment": {
+          "a": 0.015000000000000003
+        },
+        "learning_rate": 0.05,
+        "ema_alpha": 0.2,
+        "direction_norm_ceiling": 1.0,
+        "scope": "Episode-averaged/clipped heuristic, not an unbiased expected-return gradient claim."
+      }
+    },
+    {
+      "id": "empty_executed_episode_changes_only_EMA",
+      "status": "passed",
+      "detail": {
+        "version": "family-epsilon-mixture-policy-math-v2",
+        "old_weights": {
+          "a": 0.3
+        },
+        "weights": {
+          "a": 0.3
+        },
+        "old_baseline": 0.0,
+        "baseline": 0.1,
+        "return": 0.5,
+        "advantage": 0.5,
+        "choice_count": 0,
+        "mean_score_gradient": {
+          "a": 0.0
+        },
+        "score_gradient_L2": 0.0,
+        "advantage_direction_L2_before_clip": 0.0,
+        "clip_scale": 1.0,
+        "direction_L2_after_clip": 0.0,
+        "increment": {
+          "a": 0.0
+        },
+        "learning_rate": 0.05,
+        "ema_alpha": 0.2,
+        "direction_norm_ceiling": 1.0,
+        "scope": "Episode-averaged/clipped heuristic, not an unbiased expected-return gradient claim."
+      }
+    },
+    {
+      "id": "unexecuted_episode_cannot_update",
+      "status": "passed",
+      "detail": {
+        "rejected": true
+      }
+    },
+    {
+      "id": "reward_counter_arithmetic_only",
+      "status": "passed",
+      "detail": {
+        "no_facts": {
+          "return": -0.004,
+          "terminal": 0.0,
+          "shaping": 0.0,
+          "attempt_cost": 0.004,
+          "construction_cost": 0.0,
+          "retirement_cost": 0.0,
+          "scope": "Source-verified counters required; provisional certificate reward is not a solved-theorem count."
+        },
+        "some_facts": {
+          "return": 0.021000000000000005,
+          "terminal": 0.0,
+          "shaping": 0.025000000000000005,
+          "attempt_cost": 0.004,
+          "construction_cost": 0.0,
+          "retirement_cost": 0.0,
+          "scope": "Source-verified counters required; provisional certificate reward is not a solved-theorem count."
+        },
+        "scope": "No engine fact counter exists here; this is not pending-input reward certification."
+      }
+    },
+    {
+      "id": "abstract_overlay_contract_not_engine_conformance",
+      "status": "passed",
+      "detail": {
+        "NULL_suppresses_fixed_priority": true,
+        "complete_fallback_preserved": true,
+        "paired_active_and_view_restored": true,
+        "original_catalog_unchanged": true,
+        "two_contract_mutants_distinguished": true,
+        "scope": "Test-double contract only; actual Controller/graph/hint rollback remains unimplemented."
+      }
+    }
+  ],
+  "numeric_fixture_worker_runs": 1,
+  "policy_numeric_functions_executed": true,
+  "production_engine_runs": 0,
+  "search_runs": 0,
+  "training_runs": 0,
+  "random_draws_generated": 0,
+  "runtime_adapter_implemented": false,
+  "worker_seconds_before_final_serialization": 0.037535792,
+  "worker_kernel_peak_bytes": 17874944,
+  "scope_warning": "Outer owned lifetime/resource receipt is additionally required; no scientific Controller, fact counter, trajectory, training or learned-policy claim."
+}

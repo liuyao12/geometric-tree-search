@@ -1,0 +1,40 @@
+{
+  "scope": "root_authorized_numeric_fixture_only",
+  "plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+    "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+    "bytes": 5548
+  },
+  "source_pins": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+      "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+      "bytes": 17769
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "runtime_pin": {
+    "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+    "bytes": 102352
+  },
+  "parent_activation": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json",
+    "sha256": "42fa4d25d7f05bcd1a329d0ea2957a455478628df1b37662cf611eba645e6c27",
+    "bytes": 2620
+  }
+}

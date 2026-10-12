@@ -1,0 +1,68 @@
+--- .gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_adapter_v1.py
++++ .gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py
+@@ -3,7 +3,7 @@
+ No scientific imports or dispatch at module load. The caller passes exact pinned
+ unchanged lifecycle/core/search/proposal modules after owning all input gates.
+ This sibling preserves prior automatic DFS and event/UNKNOWN/child-exclusion
+-semantics while using Controller.ordered's five validated whole-union hints.
++semantics while using Controller.ordered's all newly validated whole-union hints.
+ No target-word lookup, new proof tactic, atomic macro move or RL operation.
+ """
+ import copy
+@@ -30,10 +30,13 @@
+         advice_scope='Pending structural source-body obligations, not newly proved premises or a completed proof')
+ 
+ 
+-def fixed_pool_search(graph, authority, descriptors, life, prior_search, *, attempts, seconds, event_ceiling):
++def fixed_pool_search(graph, authority, descriptors, life, prior_search, *, mode, attempts, seconds, event_ceiling):
+     setup_started = time.perf_counter()
+     core = life.core
+-    mode = 'fixed-whole-family-pool'
++    if mode not in ('base','fixed-forward','fixed-whole-family-pool'):
++        raise ValueError('exact three frozen controls')
++    if mode!='fixed-whole-family-pool' and descriptors:
++        raise ValueError('primitive controls have no active descriptor')
+     TraceLimit = prior_search.TraceLimit
+     compact_state = prior_search.compact_state
+     compact_state_from_saved = prior_search.compact_state_from_saved
+@@ -41,12 +44,13 @@
+     if (attempts < 0 or event_ceiling < 1 or isinstance(seconds, bool)
+             or not isinstance(seconds, (int, float)) or not math.isfinite(seconds) or seconds < 0):
+         raise ValueError('finite nonnegative search bounds required')
+-    if len(descriptors) != 5:
+-        raise ValueError('all five independently audited immutable proposals required')
++    if not isinstance(descriptors, list):
++        raise ValueError('literal entire freshly audited pool required')
+     control = life.Controller(graph, authority, descriptors)
+-    if len(control.descriptors) != 5 or json.loads(control.root_rejected_text):
++    if len(control.descriptors) != len(descriptors) or json.loads(control.root_rejected_text):
+         raise ValueError('whole immutable proposal registration failed; no partial active pool')
+     primitive = core.Executor(graph)
++    ordering = prior_search.ForwardOrder(graph) if mode=='fixed-forward' else None
+     setup_seconds = time.perf_counter() - setup_started
+     graph_metrics_at_search_entry = dict(graph.metrics)
+     begin = time.perf_counter(); deadline = begin + seconds
+@@ -78,6 +82,8 @@
+         if len(keys) != decision.count or len(set(keys)) != len(keys):
+             raise AssertionError('entire chosen point domain cardinality differs')
+         ordered = list(control.ordered(decision))  # One whole resync, full base fallback.
++        if ordering is not None and decision.kind=='branch':
++            ordered=ordering.order(ordered)  # Literal unchanged generic forward comparator.
+         if len(ordered) != len(keys) or set(ordered) != set(keys):
+             raise AssertionError('complete base fallback permutation required')
+         if decision.kind == 'forced' and ordered != keys:
+@@ -180,12 +186,12 @@
+             'graph_metrics_at_search_entry': graph_metrics_at_search_entry,
+             'lifecycle_metrics': dict(control.metrics), 'ordering_metrics': metrics,
+             'controller_and_ordering_setup_seconds': setup_seconds,
+-            'fixed_forward_metrics': None,
++            'fixed_forward_metrics': dict(ordering.metrics) if ordering is not None else None,
+             'fixed_pool_descriptor_ids': [d.identifier for d in control.descriptors],
+             'fixed_pool_priorities': [d.priority for d in control.descriptors],
+             'search_clock_scope': 'Complete order, hint revalidation, step, trace and rollback work; finite operation boundary checks, possible overshoot',
+             'checked_search_deadline_overshoot_seconds': max(0.0, time.perf_counter() - begin - seconds),
+             'limits': {'attempts': attempts, 'seconds': seconds, 'events': event_ceiling},
+-            'active_cluster_descriptors': 5, 'authored_words_used_as_hints': 0, 'native_queries': 0,
++            'active_cluster_descriptors': len(descriptors), 'authored_words_used_as_hints': 0, 'native_queries': 0,
+             'new_RL_training': False, 'atomic_macro_moves': 0,
+             'mathematical_acceptance': 'pending independent complete trace and symbolic certificate audit'}

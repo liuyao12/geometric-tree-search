@@ -1,0 +1,38 @@
+{
+  "status": "completed_fresh_context_preparation_pending_independent_gate",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "compiled_context": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/compiled-context-v1.json.gz",
+    "sha256": "becbfcd43350f725b18a54256ad560f12bde15d1527b151a3092b9f1b08a8db7",
+    "bytes": 310563
+  },
+  "preparation_evidence": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-evidence-v1.json.gz",
+    "sha256": "d2458ebaa05688aeba560c10a6911295dfa4866a7badd9101ed3c05f8e9a8c38",
+    "bytes": 1381796
+  },
+  "model_epoch": "e6e6954444657f5aab65b5406c91386b26fd8f1bf3c1b1db871b7396a37488f6",
+  "group_authority_epoch": "1beed33c2fe1a9348a46d59253754535991b9bc1bc105565580b9f84ae1ead8b",
+  "original_body_authority_epoch": "306a701b9e89f2a7aadf514c889e871bacf0ff4651c7d5cc159980c9b5bc3211",
+  "complete_pool_group_count": 4,
+  "single_types": 171,
+  "pair_types": 29241,
+  "candidate_count": 332510,
+  "model_constructions": 1,
+  "target_searches": 0,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "worker_seconds_before_outcome_write": 5.199588417,
+  "costs": {
+    "context_compilation_seconds": 0.10009170899999997,
+    "scientific_import_seconds": 0.017695917000000005,
+    "graph_construction_seconds": 0.090253792,
+    "all_body_registration_seconds": 0.07958462499999996,
+    "complete_pool_preparation_seconds": 1.152917833,
+    "complete_initial_domain_census_seconds": 2.149977667
+  }
+}

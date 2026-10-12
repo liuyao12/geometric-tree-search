@@ -1,0 +1,659 @@
+{
+  "status": "exact_task_owned_evidence_copies",
+  "files": [
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v2/result.json",
+        "sha256": "ab8ecb1382459f05128badb0ced2fa5336c820bc3bc6c6c5259665d56b237638",
+        "bytes": 20229
+      },
+      "public": "evidence/000-result.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/000-result.json",
+        "sha256": "ab8ecb1382459f05128badb0ced2fa5336c820bc3bc6c6c5259665d56b237638",
+        "bytes": 20229
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1/owned-lifetime.json",
+        "sha256": "5f00f090c3ee26ecc3f8ae30a984c7b69eb1ab05a8b87320324177cd0af98ff7",
+        "bytes": 5350
+      },
+      "public": "evidence/001-owned-lifetime.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/001-owned-lifetime.json",
+        "sha256": "5f00f090c3ee26ecc3f8ae30a984c7b69eb1ab05a8b87320324177cd0af98ff7",
+        "bytes": 5350
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/outer-terminal-v1.json",
+        "sha256": "42ca5b27cb0c7a7df6a20653c963c558375ac5449e8083eca7c8ddc5f5574172",
+        "bytes": 1852
+      },
+      "public": "evidence/002-outer-terminal-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/002-outer-terminal-v1.json",
+        "sha256": "42ca5b27cb0c7a7df6a20653c963c558375ac5449e8083eca7c8ddc5f5574172",
+        "bytes": 1852
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/actual-numeric-disposition-v1.json",
+        "sha256": "d7b690df2805e85a7f792770c561929381e2021272b0b3681b2080d0576b8aab",
+        "bytes": 1473
+      },
+      "public": "evidence/003-actual-numeric-disposition-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/003-actual-numeric-disposition-v1.json",
+        "sha256": "d7b690df2805e85a7f792770c561929381e2021272b0b3681b2080d0576b8aab",
+        "bytes": 1473
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/source-review-v1.json",
+        "sha256": "809c2e94c8c46521b755bc57bc45348e26c27644e3e3606ed3d420c6f4fddeca",
+        "bytes": 5052
+      },
+      "public": "evidence/004-source-review-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/004-source-review-v1.json",
+        "sha256": "809c2e94c8c46521b755bc57bc45348e26c27644e3e3606ed3d420c6f4fddeca",
+        "bytes": 5052
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-source-review-20261012/source-review-v1.json",
+        "sha256": "659b267fdf4e2e8dea1e8751fc119358ffa64a07895c0ae4c8868d832e688cee",
+        "bytes": 14045
+      },
+      "public": "evidence/005-source-review-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/005-source-review-v1.json",
+        "sha256": "659b267fdf4e2e8dea1e8751fc119358ffa64a07895c0ae4c8868d832e688cee",
+        "bytes": 14045
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+        "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+        "bytes": 8405
+      },
+      "public": "evidence/006-owner-plan-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/006-owner-plan-v1.json",
+        "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+        "bytes": 8405
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json",
+        "sha256": "42fa4d25d7f05bcd1a329d0ea2957a455478628df1b37662cf611eba645e6c27",
+        "bytes": 2620
+      },
+      "public": "evidence/007-owner-activation-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/007-owner-activation-v1.json",
+        "sha256": "42fa4d25d7f05bcd1a329d0ea2957a455478628df1b37662cf611eba645e6c27",
+        "bytes": 2620
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/review_and_activate.py",
+        "sha256": "2ec5c8e7f1cd8102acf53393425bba1791960016f1953f6183616c1d2b72bcbb",
+        "bytes": 3171
+      },
+      "public": "evidence/008-review_and_activate.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/008-review_and_activate.py",
+        "sha256": "2ec5c8e7f1cd8102acf53393425bba1791960016f1953f6183616c1d2b72bcbb",
+        "bytes": 3171
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/run_owned_once.py",
+        "sha256": "85e5dc2f4cd143e3c084f6810de8156077455ca2289aebd3a2a1b6b0abe4d979",
+        "bytes": 4116
+      },
+      "public": "evidence/009-run_owned_once.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/009-run_owned_once.py",
+        "sha256": "85e5dc2f4cd143e3c084f6810de8156077455ca2289aebd3a2a1b6b0abe4d979",
+        "bytes": 4116
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/inspect_actual_result.py",
+        "sha256": "56c5ccd8bec8ca8da36cbf8de8b418b240d7bc1be8125956d6a44b4d9e281c07",
+        "bytes": 4850
+      },
+      "public": "evidence/010-inspect_actual_result.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/010-inspect_actual_result.py",
+        "sha256": "56c5ccd8bec8ca8da36cbf8de8b418b240d7bc1be8125956d6a44b4d9e281c07",
+        "bytes": 4850
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-actual-progress-20261012/prepare_report_v5.py",
+        "sha256": "d09b7ebf36b505d9c83d80e0d2132eafd9e6255d937ce89d0f9b4e95781058a0",
+        "bytes": 15852
+      },
+      "public": "evidence/011-prepare_report_v5.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/011-prepare_report_v5.py",
+        "sha256": "d09b7ebf36b505d9c83d80e0d2132eafd9e6255d937ce89d0f9b4e95781058a0",
+        "bytes": 15852
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+        "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+        "bytes": 5548
+      },
+      "public": "evidence/012-numeric-plan-v2.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/012-numeric-plan-v2.json",
+        "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+        "bytes": 5548
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1/worker-activation.json",
+        "sha256": "9d7855e05c76516328348d4abfe37b5e6c34037b3edb0a87a780d31dd48e78b6",
+        "bytes": 1512
+      },
+      "public": "evidence/013-worker-activation.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/013-worker-activation.json",
+        "sha256": "9d7855e05c76516328348d4abfe37b5e6c34037b3edb0a87a780d31dd48e78b6",
+        "bytes": 1512
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+        "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+        "bytes": 17769
+      },
+      "public": "evidence/019-numeric_gate_v2.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/019-numeric_gate_v2.py",
+        "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+        "bytes": 17769
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+        "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+        "bytes": 11607
+      },
+      "public": "evidence/020-family_policy_math_v2.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/020-family_policy_math_v2.py",
+        "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+        "bytes": 11607
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+        "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+        "bytes": 3612
+      },
+      "public": "evidence/021-family_pool_bridge_v2.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/021-family_pool_bridge_v2.py",
+        "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+        "bytes": 3612
+      }
+    },
+    {
+      "origin": {
+        "path": "docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657
+      },
+      "public": "evidence/022-basic-tiling-algorithm.md",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/022-basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+        "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+        "bytes": 21491
+      },
+      "public": "evidence/023-owned_numeric_gate_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/023-owned_numeric_gate_v1.py",
+        "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+        "bytes": 21491
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+        "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+        "bytes": 10176
+      },
+      "public": "evidence/024-freeze_numeric_owner_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/024-freeze_numeric_owner_v1.py",
+        "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+        "bytes": 10176
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v1.json",
+        "sha256": "d794892e2ebe2ee7b96c50fe853157aa5b4c40abc8fe5dd1f781c5963f0787a1",
+        "bytes": 4955
+      },
+      "public": "evidence/025-numeric-plan-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/025-numeric-plan-v1.json",
+        "sha256": "d794892e2ebe2ee7b96c50fe853157aa5b4c40abc8fe5dd1f781c5963f0787a1",
+        "bytes": 4955
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-protocol-v1.json",
+        "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+        "bytes": 4375
+      },
+      "public": "evidence/026-numeric-protocol-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/026-numeric-protocol-v1.json",
+        "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+        "bytes": 4375
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/integration-v1.json",
+        "sha256": "5f9e7aa3c77b7d92f4c3479042e565cfc4f8d02ac1e97cd39b7f920c1b956e92",
+        "bytes": 1133
+      },
+      "public": "evidence/027-integration-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/027-integration-v1.json",
+        "sha256": "5f9e7aa3c77b7d92f4c3479042e565cfc4f8d02ac1e97cd39b7f920c1b956e92",
+        "bytes": 1133
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.diff",
+        "sha256": "f3a887f393a7e4b9079a2e103229406046a8c3e00a2ac077eba9a82e11b7ad89",
+        "bytes": 2453
+      },
+      "public": "evidence/028-numeric_gate_v2.diff",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/028-numeric_gate_v2.diff",
+        "sha256": "f3a887f393a7e4b9079a2e103229406046a8c3e00a2ac077eba9a82e11b7ad89",
+        "bytes": 2453
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+        "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+        "bytes": 9905
+      },
+      "public": "evidence/029-protocol-v2.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/029-protocol-v2.json",
+        "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+        "bytes": 9905
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+        "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+        "bytes": 1246
+      },
+      "public": "evidence/030-integration.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/030-integration.json",
+        "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+        "bytes": 1246
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/integration-v2.json",
+        "sha256": "38be6f2b927ca02751847a0f8912aff7cef4eb5e57410fa1bcb8f957b820177e",
+        "bytes": 1701
+      },
+      "public": "evidence/031-integration-v2.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/031-integration-v2.json",
+        "sha256": "38be6f2b927ca02751847a0f8912aff7cef4eb5e57410fa1bcb8f957b820177e",
+        "bytes": 1701
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-source-review-20261012/review-plan-v1.json",
+        "sha256": "4e3be476e7271cfb05c0a261a068bf3ab04917793c953322572f10601c4780f5",
+        "bytes": 11573
+      },
+      "public": "evidence/032-review-plan-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/032-review-plan-v1.json",
+        "sha256": "4e3be476e7271cfb05c0a261a068bf3ab04917793c953322572f10601c4780f5",
+        "bytes": 11573
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-numeric-source-review-20261012/review_metadata_v1.py",
+        "sha256": "eb0916adfcd30010929cd40da78fa32226401dbe4feccac13935fa973a39e463",
+        "bytes": 3842
+      },
+      "public": "evidence/033-review_metadata_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/033-review_metadata_v1.py",
+        "sha256": "eb0916adfcd30010929cd40da78fa32226401dbe4feccac13935fa973a39e463",
+        "bytes": 3842
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/compatibility-repair-plan-v2.json",
+        "sha256": "c1bd8fe742b45fd959bc07dd8da2ed3863f900a500fecfb73ac2c97e2a967227",
+        "bytes": 3618
+      },
+      "public": "evidence/034-compatibility-repair-plan-v2.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/034-compatibility-repair-plan-v2.json",
+        "sha256": "c1bd8fe742b45fd959bc07dd8da2ed3863f900a500fecfb73ac2c97e2a967227",
+        "bytes": 3618
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/design-v1.json",
+        "sha256": "e8008c6ea8d921740cc7d9c07c9cd00f5fb97cce10d35fc28235cceed00df19f",
+        "bytes": 19911
+      },
+      "public": "evidence/035-design-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/035-design-v1.json",
+        "sha256": "e8008c6ea8d921740cc7d9c07c9cd00f5fb97cce10d35fc28235cceed00df19f",
+        "bytes": 19911
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py",
+        "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+        "bytes": 10953
+      },
+      "public": "evidence/036-family_policy_math_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/036-family_policy_math_v1.py",
+        "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+        "bytes": 10953
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.diff",
+        "sha256": "5275f7dec9ff01977a4a57e99d7db1ba6a7917d01a77ce53e17ba03089d97962",
+        "bytes": 1737
+      },
+      "public": "evidence/037-family_policy_math_v2.diff",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/037-family_policy_math_v2.diff",
+        "sha256": "5275f7dec9ff01977a4a57e99d7db1ba6a7917d01a77ce53e17ba03089d97962",
+        "bytes": 1737
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py",
+        "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+        "bytes": 3576
+      },
+      "public": "evidence/038-family_pool_bridge_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/038-family_pool_bridge_v1.py",
+        "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+        "bytes": 3576
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.diff",
+        "sha256": "32d6324186a891e25ef8b2f961a79b5dbe4a6a1bf2716f208d97076b760a7bbb",
+        "bytes": 438
+      },
+      "public": "evidence/039-family_pool_bridge_v2.diff",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/039-family_pool_bridge_v2.diff",
+        "sha256": "32d6324186a891e25ef8b2f961a79b5dbe4a6a1bf2716f208d97076b760a7bbb",
+        "bytes": 438
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/readiness-v1.json",
+        "sha256": "3e824c93b79903773877c083095f7375e867e9cc20f36940e6afedba83104661",
+        "bytes": 1179
+      },
+      "public": "evidence/040-readiness-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/040-readiness-v1.json",
+        "sha256": "3e824c93b79903773877c083095f7375e867e9cc20f36940e6afedba83104661",
+        "bytes": 1179
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-20261012/readiness-v2.json",
+        "sha256": "2e45fc085daaf7ed06d288fe540e87c77021c5870c20607d57995ba83717981b",
+        "bytes": 1598
+      },
+      "public": "evidence/041-readiness-v2.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/041-readiness-v2.json",
+        "sha256": "2e45fc085daaf7ed06d288fe540e87c77021c5870c20607d57995ba83717981b",
+        "bytes": 1598
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/integration-owned-v1.json",
+        "sha256": "0c3af6945f1d61ec847b767526c09a08c1a65cf3cd89e2310d52cfdfc739ff39",
+        "bytes": 2013
+      },
+      "public": "evidence/042-integration-owned-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/042-integration-owned-v1.json",
+        "sha256": "0c3af6945f1d61ec847b767526c09a08c1a65cf3cd89e2310d52cfdfc739ff39",
+        "bytes": 2013
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v1.py",
+        "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+        "bytes": 17445
+      },
+      "public": "evidence/043-numeric_gate_v1.py",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/043-numeric_gate_v1.py",
+        "sha256": "b46b94881243c7bfe211c8f3114d239cb905d0ebd8efcee712a897d83ac17c54",
+        "bytes": 17445
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-readiness-v1.json",
+        "sha256": "93a895207298e3be57f3992100060b3999f3c391cf6576a65bb0b38898afc78b",
+        "bytes": 2541
+      },
+      "public": "evidence/044-owner-readiness-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/044-owner-readiness-v1.json",
+        "sha256": "93a895207298e3be57f3992100060b3999f3c391cf6576a65bb0b38898afc78b",
+        "bytes": 2541
+      }
+    },
+    {
+      "origin": {
+        "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/readiness-v1.json",
+        "sha256": "d88137763efb3679d310816e68297dff37d36c555015006796c87df6730fb4af",
+        "bytes": 1503
+      },
+      "public": "evidence/045-readiness-v1.json",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/045-readiness-v1.json",
+        "sha256": "d88137763efb3679d310816e68297dff37d36c555015006796c87df6730fb4af",
+        "bytes": 1503
+      }
+    },
+    {
+      "origin": {
+        "path": "AGENTS.md",
+        "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+        "bytes": 1518
+      },
+      "public": "evidence/046-AGENTS.md",
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/family-learning-checks/evidence/046-AGENTS.md",
+        "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+        "bytes": 1518
+      }
+    }
+  ],
+  "external_runtime_binaries_not_published": [
+    {
+      "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  ],
+  "excluded_private_streams": [
+    {
+      "path": ".gcts-active/family-numeric-actual-progress-20261012/owner-stdout.bin",
+      "sha256": "7b12f490d6a9e72f3b22fb3087cee9b70236d395730b312b8b082b71c87f9e8a",
+      "bytes": 3151
+    },
+    {
+      "path": ".gcts-active/family-numeric-actual-progress-20261012/owner-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "existing_historical_prerequisite_routes": [
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300,
+      "published_path": "docs/research/gcts-rl-renewal/parallel-execution/geometry/hilbert_primitive_graph_v2.py",
+      "archive_member": null
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989,
+      "published_path": "docs/research/gcts-rl-renewal/full-cluster-model/geometry/hilbert_cluster_lifecycle_v1.py",
+      "archive_member": null
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_literal_match_v1.py",
+      "sha256": "d3384a838d9a5c6cbd2b549b5a4b5e00b753be64a5e26d65421e916a72c86a3c",
+      "bytes": 15139,
+      "published_path": "docs/research/gcts-rl-renewal/receptor-matching/producer/receptor_literal_match_v1.py",
+      "archive_member": null
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+        "bytes": 10594
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/commutativity13_guidance.py",
+        "sha256": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+        "bytes": 9034
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/arithmetic_stochastic_search_v2.py",
+        "sha256": "16d6adeb2516ad8f96751e5bbb74239673c2d581cae15eebec991f001659ade2",
+        "bytes": 8563
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/commutativity_cluster_points.py",
+        "sha256": "b213bc019a220af7f0aea82d6191f1aca6b2ff4c2c39e8c1e5fb20bf6041f7d0",
+        "bytes": 1509
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/commutativity_points.py",
+        "sha256": "54264103e7bbdfd6d8a9ddf716c4e01f99e682d6d17ad92d746f9e79bf551e9a",
+        "bytes": 4737
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/commutativity_catalog.py",
+        "sha256": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+        "bytes": 3157
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    },
+    {
+      "origin": {
+        "path": "research/gcts-rl-renewal/left_successor_catalog.py",
+        "sha256": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+        "bytes": 9374
+      },
+      "scope": "Related prospective research provenance; not a functional numeric fixture dependency; not newly published."
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "status": "passed_owned_numeric_and_abstract_API_controls_only",
+  "plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+    "sha256": "a9c41c98a38a9e03b658f27a9390fe14f66a261d94ceb5fc4e1ef033aa2fb5af",
+    "bytes": 8405
+  },
+  "activation": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json",
+    "sha256": "42fa4d25d7f05bcd1a329d0ea2957a455478628df1b37662cf611eba645e6c27",
+    "bytes": 2620
+  },
+  "runtime": {
+    "alias_pin": {
+      "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "resolved_pin": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "observer_pin": {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    "expected_version": [
+      3,
+      9
+    ],
+    "platform": "darwin",
+    "kernel_ru_maxrss_unit": "bytes"
+  },
+  "worker_attempted": true,
+  "unexecuted": false,
+  "functional_worker_created": true,
+  "worker_pid": 19028,
+  "worker_terminal_and_reaped_same_PID": true,
+  "worker_exit_code": 0,
+  "worker_lifetime_seconds_including_imports_output_and_reaping": 0.087281,
+  "whole_phase_seconds_before_final_receipt": 0.143051375,
+  "owned_overshoot_seconds": 0.0,
+  "phase_overshoot_seconds": 0.0,
+  "kernel_owner_peak_bytes": 15810560,
+  "kernel_worker_peak_bytes": 17907712,
+  "kernel_observer_maximum_peak_bytes": 2670592,
+  "conservative_combined_peak_bytes": 36388864,
+  "sampled_combined_peak_bytes": 22544384,
+  "memory_overshoot_bytes": 0,
+  "violation": null,
+  "error": null,
+  "forced_kill": false,
+  "streams_still_open_after_reap": false,
+  "streams": {
+    "stdout": {
+      "read_bytes": 0,
+      "retained_bytes": 0
+    },
+    "stderr": {
+      "read_bytes": 0,
+      "retained_bytes": 0
+    }
+  },
+  "stream_finish_errors": [],
+  "worker_cleanup_errors": [],
+  "remaining_owned_pids": [],
+  "cleaned_verified_orphan_pids": [],
+  "worker_result": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v2/result.json",
+    "sha256": "ab8ecb1382459f05128badb0ced2fa5336c820bc3bc6c6c5259665d56b237638",
+    "bytes": 20229
+  },
+  "worker_status": "passed_numeric_and_abstract_API_controls_only",
+  "ordered_control_ids_match": true,
+  "resource_gate_passed": true,
+  "numeric_and_abstract_contract_gate_passed": true,
+  "observer_receipts": [
+    {
+      "pid": 19027,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.025886000000000006,
+      "kernel_peak_bytes": 2637824,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27379,
+          "retained_bytes": 27379
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 19029,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.018069792,
+      "kernel_peak_bytes": 2670592,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27433,
+          "retained_bytes": 27433
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    },
+    {
+      "pid": 19030,
+      "exit_code": 0,
+      "terminal_and_reaped": true,
+      "seconds": 0.014366583999999988,
+      "kernel_peak_bytes": 2605056,
+      "streams": {
+        "stdout": {
+          "read_bytes": 27379,
+          "retained_bytes": 27379
+        },
+        "stderr": {
+          "read_bytes": 0,
+          "retained_bytes": 0
+        }
+      },
+      "stream_ceiling_exceeded": false,
+      "streams_still_open_after_reap": false,
+      "stream_finish_errors": [],
+      "cleanup_errors": [],
+      "forced_kill": false,
+      "error": null
+    }
+  ],
+  "resource_samples": [
+    {
+      "seconds": 0.06787262499999999,
+      "aggregate_rss_bytes": 22544384,
+      "worker_pids": [
+        19028
+      ]
+    }
+  ],
+  "numeric_fixture_worker_runs": 1,
+  "policy_numeric_functions_executed": true,
+  "production_engine_runs": 0,
+  "search_runs": 0,
+  "training_runs": 0,
+  "scope": "One actual numeric fixture worker when separately ROOT activated; abstract selection-overlay contract only. No production graph/engine/search/training/native/replay/UI; no learned policy or Controller conformance claim.",
+  "memory_scope": "macOS byte-valued kernel peaks summed conservatively; bounded /bin/ps RSS includes owner/functional worker/current descendants/observer. No hard OS memory limit claimed.",
+  "final_receipt_write_scope": "Final owner receipt serialization is outside reported whole-phase timer; worker receipt serialization and cleanup are included."
+}

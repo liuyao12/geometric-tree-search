@@ -1,0 +1,173 @@
+{
+  "schema": "owned_family_learning_numeric_gate_plan_v1",
+  "status": "immutable_source_only_not_activated",
+  "scope": "One actual numeric fixture worker when separately ROOT activated; abstract selection-overlay contract only. No production graph/engine/search/training/native/replay/UI; no learned policy or Controller conformance claim.",
+  "worker": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+  "worker_plan": {
+    "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+    "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+    "bytes": 5548
+  },
+  "sources": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.py",
+      "sha256": "c67fc85aef61d88091a8eb3542723a1b4bd305737e57f68e7f0273837a635e57",
+      "bytes": 17769
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+      "sha256": "e123c7e9272058bdd2c0842aebe80a0287c5d7ee235e0fe645b9110a2445b89a",
+      "bytes": 21491
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/freeze_numeric_owner_v1.py",
+      "sha256": "963ed6897dcc9a36ebfdc5d88d78f95ed18a81d0003593aec407e8617c8dda8f",
+      "bytes": 10176
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v2.json",
+      "sha256": "f210ede4626e1206334fe4bc70fe20fa207f1715dc77b8b198c9dd7e0a8ab6c4",
+      "bytes": 5548
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-plan-v1.json",
+      "sha256": "d794892e2ebe2ee7b96c50fe853157aa5b4c40abc8fe5dd1f781c5963f0787a1",
+      "bytes": 4955
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-protocol-v1.json",
+      "sha256": "0930dff9c56d17fab58a60c1fa5850a1e587ffc90a289619a7687077c5a36c27",
+      "bytes": 4375
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/integration-v1.json",
+      "sha256": "5f9e7aa3c77b7d92f4c3479042e565cfc4f8d02ac1e97cd39b7f920c1b956e92",
+      "bytes": 1133
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric_gate_v2.diff",
+      "sha256": "f3a887f393a7e4b9079a2e103229406046a8c3e00a2ac077eba9a82e11b7ad89",
+      "bytes": 2453
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+      "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+      "bytes": 9905
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+      "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+      "bytes": 1246
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/integration-v2.json",
+      "sha256": "38be6f2b927ca02751847a0f8912aff7cef4eb5e57410fa1bcb8f957b820177e",
+      "bytes": 1701
+    }
+  ],
+  "runtime": {
+    "alias_pin": {
+      "path": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "resolved_pin": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "observer_pin": {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    "expected_version": [
+      3,
+      9
+    ],
+    "platform": "darwin",
+    "kernel_ru_maxrss_unit": "bytes"
+  },
+  "limits": {
+    "functional_workers": 1,
+    "no_retry": true,
+    "internal_seconds": 10.0,
+    "owned_seconds": 15.0,
+    "whole_phase_seconds": 30.0,
+    "memory_bytes": 536870912,
+    "worker_stream_bytes": 65536,
+    "observer_seconds": 0.5,
+    "observer_stream_bytes": 262144,
+    "maximum_observer_commands": 256,
+    "artifact_bytes": 1048576
+  },
+  "numeric_output": ".gcts-active/family-proposal-learning-numeric-source-20261012/numeric-output-v2",
+  "owned_output": ".gcts-active/family-proposal-learning-numeric-source-20261012/owned-output-v1",
+  "expected_control_ids": [
+    "python39_deferred_annotation_import",
+    "mixture_case:epsilon0_temp05",
+    "mixture_case:epsilon01_temp1",
+    "mixture_case:epsilon035_temp2",
+    "mixture_case:epsilon1_uniform",
+    "mixture_case:zero_weights",
+    "mixture_case:duplicate_vectors",
+    "plain_softmax_gradient_mutant_detected",
+    "stable_extreme_logits:0.0",
+    "stable_extreme_logits:0.2",
+    "synthetic_last_positive_roundoff_fallback",
+    "malformed_probability_rejected:negative_normalized",
+    "malformed_probability_rejected:nan",
+    "malformed_probability_rejected:plus_infinity",
+    "malformed_probability_rejected:minus_infinity",
+    "malformed_probability_rejected:bool",
+    "malformed_probability_rejected:string",
+    "malformed_probability_rejected:empty",
+    "malformed_probability_rejected:nonsequence",
+    "malformed_probability_rejected:unnormalized",
+    "advantage_before_direction_clip",
+    "old_baseline_before_update_then_EMA",
+    "empty_executed_episode_changes_only_EMA",
+    "unexecuted_episode_cannot_update",
+    "reward_counter_arithmetic_only",
+    "abstract_overlay_contract_not_engine_conformance"
+  ],
+  "required_activation": {
+    "scope": "root_authorized_owned_numeric_fixture_only",
+    "plan": "Exact owner-plan-v1.json path/SHA/bytes",
+    "source_pins": "Exact ordered owner plan.sources records",
+    "runtime": "Exact owner plan.runtime object"
+  },
+  "prospective_command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owned_numeric_gate_v1.py",
+    "--plan",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-plan-v1.json",
+    "--activation",
+    ".gcts-active/family-proposal-learning-numeric-source-20261012/owner-activation-v1.json"
+  ],
+  "ownership": "Only the one owned unreaped functional child session may be signaled. Every ps observer has its own PID wait4/reaping/streams. After functional leader reaping, orphan cleanup is limited to saved PID plus observed birth matches; no historical group/growth.",
+  "resource_accounting": "Full functional lifecycle includes import/hash/setup/final result serialization/cleanup/reaping. MacOS kernel owner+worker+maximum observer peaks conservatively summed; complete process-tree RSS samples include current observer. Unexpected worker descendants or observer failures force unknown. Final owner receipt writing excluded and disclosed.",
+  "output_and_failure_scope": "Exclusive functional and owned outputs; bounded stdout/stderr retained on nonzero/signal/timeout. Numeric partial/result files bounded before loading. Malformed/missing worker result, stream overflow, failed observation/cleanup/resource gate retain an unknown/failed owned receipt. Before-activation/pin errors launch no child and remain ROOT external terminal metadata; no restart.",
+  "acceptance": "Same owned PID terminal/reaped, exit0; exact ordered26 control IDs passed; actual numeric invocation reported; no engine/search/training; source/runtime pins exact; every owned/phase/memory/stream gate passes; independent source/numeric review. Abstract overlay remains not actual Controller conformance.",
+  "preparation_scope": "This freezer performs hashes, AST and JSON only. No policy function/import, numeric fixture, RNG, model, engine, training, search, replay or native execution.",
+  "authoring_seconds": null,
+  "root_sole_dispatch_and_publication": true
+}
