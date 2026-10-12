@@ -7,6 +7,6 @@ const input=JSON.parse(readFileSync(get('input'))),data=JSON.parse(readFileSync(
 const bounds=get('bounds')?JSON.parse(readFileSync(get('bounds'))):{};
 if(bounds.maxDepth===undefined&&bounds.depth!==undefined)bounds.maxDepth=bounds.depth;
 const classifier=get('engine')==='eager'?classifyLattice:classifyLatticeLazy;
-const result=classifier(input,references,{...bounds,comparisonCap:Number(get('comparison-cap')||references.length)});
+const result=classifier(input,references,{extensionLearn:bounds.learn!==false,...bounds,comparisonCap:Number(get('comparison-cap')||references.length)});
 if(get('output'))writeFileSync(get('output'),JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({status:result.status,label:result.label,reason:result.reason,comparisons:result.attempts.length}));

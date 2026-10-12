@@ -5,7 +5,7 @@
 export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000,seed=31}={}){
  if(!Number.isInteger(maxDepth)||maxDepth<0||!Number.isInteger(nodeCap)||nodeCap<0||!Number.isInteger(stateCap)||stateCap<2)throw Error('Invalid lazy search bounds.');
  if(provider.reversible!==true)throw Error('Bidirectional search requires a verified reversible provider.');
- const stats={nodes:0,attempts:0,forced:0,branches:0,graphBuilds:0,peakIncidences:0,generatedStates:2,generatedEdges:0,domainCacheHits:0,rawCandidates:0,markingEliminations:0,authorRejections:0,markingVersions:0,replayedDomains:0,peakFrontier:2};
+ const stats={nodes:0,attempts:0,forced:0,branches:0,graphBuilds:0,peakIncidences:0,generatedStates:2,generatedEdges:0,domainCacheHits:0,rawCandidates:0,markingEliminations:0,authorRejections:0,markingVersions:0,replayedDomains:0,peakFrontier:2,extensionEliminations:0,extensionGraphBuilds:0,extensionVersions:0,extensionCandidateCount:0,deadEnds:0,baseLegalCandidates:0,availableCandidates:0,branchOptions:0};
  const domains=new Map();let version=provider.version(),randomState=seed>>>0;
  function mismatch(c,boundary){return [...c.m].some(([p,v])=>boundary.has(p)&&boundary.get(p)!==v);}
  function refresh(domain){
@@ -48,7 +48,23 @@ export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000
   for(const key of frontiers[side]){
    if(stats.nodes>=nodeCap)return{status:'unknown',reason:'search-node-budget',stats};
    stats.nodes++;const d=domain(key);if(d.unknown)return{status:'unknown',reason:d.reason,stats};
-   const options=[...d.accepted];
+   let options=[...d.accepted];stats.baseLegalCandidates+=options.length;
+   if(provider.extensionDomain){
+    const marked=provider.extensionDomain(options,{targetKey:other===0?provider.sourceKey:provider.targetKey,remaining:maxDepth-levels[side]-1});
+    if(marked.complete!==true)return{status:'unknown',reason:'incomplete-extension-domain',stats};
+    const baseEdges=new Map(options.map(e=>[e.id,e])),ids=new Set(baseEdges.keys());
+    if(marked.candidates.length!==options.length||new Set(marked.candidates.map(c=>c.id)).size!==ids.size||marked.candidates.some(c=>!ids.has(c.id)||c.t.size!==1||c.t.get(d.point)!==1))throw Error('Extension markings changed the complete base candidate universe.');
+    const forward=new Map([[d.point,[]]]),reverse=new Map(),kept=[];
+    for(const candidate of marked.candidates){
+     stats.extensionCandidateCount++;
+     if(mismatch(candidate,marked.boundary)){stats.extensionEliminations++;continue;}
+     forward.get(d.point).push(candidate.id);reverse.set(candidate.id,[d.point]);kept.push(baseEdges.get(candidate.id));
+    }
+    stats.extensionGraphBuilds++;stats.extensionVersions=marked.version;
+    stats.peakIncidences=Math.max(stats.peakIncidences,reverse.size);options=kept;
+   }
+   stats.availableCandidates+=options.length;if(options.length>1)stats.branchOptions+=options.length;
+   if(!options.length)stats.deadEnds++;
    if(options.length===1)stats.forced++;else if(options.length>1)stats.branches++;
    // Seeded neutral candidate permutation; no geometry or type preference.
    for(let i=options.length-1;i>0;i--){randomState=(1664525*randomState+1013904223)>>>0;const j=Math.floor(randomState/4294967296*(i+1));[options[i],options[j]]=[options[j],options[i]];}
