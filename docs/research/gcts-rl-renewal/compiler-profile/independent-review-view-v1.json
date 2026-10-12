@@ -1,0 +1,582 @@
+{
+  "schema": "public-independent-saved-telemetry-UNKNOWN-review-privacy-view-v1",
+  "status": "PASS_saved_metadata_reconciliation_UNKNOWN_preserved",
+  "source_only": true,
+  "saved_metadata_only": true,
+  "scientific_acceptance": false,
+  "execution_ready": false,
+  "scientific_functions_invoked": 0,
+  "catalog_decoded": false,
+  "catalog_licensed": false,
+  "new_process_ownership_calls": 0,
+  "scope": "Saved scalar diagnostic prefix,all ownership samples,current exact source/plan/raw pins and ROOT14gate arithmetic only. No scientific,project,compiler,checker,model,search,RNG,PS,native,browser or network invocation.",
+  "checks": [
+    "Unchanged 60-second,512-MiB,90-second caller limits",
+    "Every one of 41 frozen closure pins still matches exact bytes",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/ROOT-source-review-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-prospective-spec-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-plan-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/run_owned_bridge_v2.py",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-plan-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/provisional-terminal-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-plan-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-actual-tool-observations-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/provisional-terminal-v1.json",
+    "Saved exact source/plan/raw receipt pin .gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/post-write-observation-v1.json",
+    "Launch record binds one frozen argv and literal limits",
+    "Lexical runtime,worker and worker-plan argv match",
+    "Exact single selected declaration and telemetry worker schema",
+    "Six absolute source roles and absolute fixture input match independent readiness",
+    "Worker roles,input and source-review raw pins rechecked without functional imports",
+    "Closed ownership ledger exact metadata grammar",
+    "All 464 ownership samples retained",
+    "One retained worker identity in this saved ledger",
+    "All 464 samples exact keys,stable retained birth/parent/worker-led group,finite monotone owner times,sum and byte arithmetic",
+    "Saved kernel peak and post-reap no-leftover/no-cleanup-error correspondence",
+    "Terminal conservative maximum reconstructed from separate peak sum and all sampled combined values",
+    "Terminal peaks protect every saved sample; unavailable worker child receipt adds no invented facts",
+    "Saved worker SIGTERM/reap and absent completed worker receipt",
+    "Exact cutoff error and failed owner gate preserved",
+    "Prospective receipt reserve and local owner cutoff timing consistent",
+    "Postwrite UNKNOWN exact elapsed,peak and no terminal promotion",
+    "Entire raw trace is a bounded 86-record newline-complete flushed prefix",
+    "Every diagnostic record canonical,strict keys,exact sequential index,one retained emitter,finite monotone local elapsed,bounded ASCII,uint64 scalar counters and line size",
+    "Observed 62 compiler events (27 major,35 progress) and 24 partial worker events within frozen caps",
+    "Every recorded progress interval is at least one second on the same worker clock",
+    "Exact source-declared compiler major milestone order and four instantiation rounds reached",
+    "Worker prefix reaches exactly 15 contiguous row-close observations and no evidence/receipt closure event",
+    "Every factor-row scalar uses exact contiguous row number and 33-byte record arithmetic; no license credit inferred",
+    "First three seeded rows reported empty scalar factor streams",
+    "Producer equality-product scalar arithmetic consistent,not independently licensed",
+    "Compiler and graph observed census scalar values matched literally",
+    "Saved one-dispatch caller schema and stage",
+    "All 13 caller observations monotone in one Date.now interval",
+    "Single retained running session then exact terminal0 with no live session",
+    "Exact caller enclosing clock+one-second margin passes90s; not combined with owner clock",
+    "Recorded finite tool wall intervals fit conservative Date.now enclosure",
+    "Final printed UNKNOWN/cancellation and postwrite facts exactly match saved tool output",
+    "No promoted accepted owner terminal or completed workerV2 receipt exists",
+    "All 14 final ROOT predicates independently reconstructed from saved metadata with UNKNOWN preserved",
+    "No proof-search/native/RL/global/compiler qualification promoted",
+    "Saved worker preparation-owner-v1/stdout-v1.txt contains no hidden completed receipt output",
+    "Saved worker preparation-owner-v1/stderr-v1.txt contains no hidden completed receipt output",
+    "Earlier compact deadline and eager-memory UNKNOWN reviews remain byte immutable"
+  ],
+  "inputs": [
+    {
+      "sha256": "53ecef83a91ac8c6b12138fc61c971dc883e97dba6d4c0dec44e666782281b20",
+      "bytes": 11118,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-plan-v1.json"
+    },
+    {
+      "sha256": "49dcb4da9f0c55199c7efb52772899816027f7a0a7e3ce9bdce050592718481f",
+      "bytes": 2789,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/ROOT-worker-preparation-plan-v2.json"
+    },
+    {
+      "sha256": "6981a5687a8eac585968423dfaca0c92a83a58f5d546159923315c860a7aa7c0",
+      "bytes": 3268,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/ROOT-source-review-v1.json"
+    },
+    {
+      "sha256": "e6e3e41639baca0d70921f1a24a907bd6d238bf2daaf0d14ccfdf50f129ba1c6",
+      "bytes": 1031,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/launch-v1.json"
+    },
+    {
+      "sha256": "a45bbd104e26670958e800fa7a1f3de23dcaefc6abebe086e0d52e1db04df25b",
+      "bytes": 1580,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/provisional-terminal-v1.json"
+    },
+    {
+      "sha256": "84d3793c497a1ccf9183ace36b82b821f022fcf4f1c41c57f1cff3a8defb0adb",
+      "bytes": 557,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/post-write-observation-v1.json"
+    },
+    {
+      "sha256": "f6c43f04bef30637248ed42de52bb3226a3c85947622736e48273ccc2a6b78b4",
+      "bytes": 2601,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "sha256": "83830420db8a32c5072ea8f36a7d5a4b8cd03525d0eb4f3f4626a5479474e500",
+      "bytes": 4139,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-actual-tool-observations-v1.json"
+    },
+    {
+      "sha256": "d638f7152ec7fa8293adbd8915b79de60f95d0756952bdc6bf0e40b15f549ca0",
+      "bytes": 20787,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py"
+    },
+    {
+      "sha256": "6627a6f3a8bafc1fa8bc09b5b43821308305bd3f671a8a3b9eda3eaf5447aecc",
+      "bytes": 35942,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/compact_declaration_compiler_v2.py",
+      "public_source_alias": "compact_declaration_compiler_v2.py",
+      "exact_public_copy": true
+    },
+    {
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293",
+      "bytes": 14720,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py"
+    },
+    {
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657,
+      "repository_relative_origin": "docs/basic-tiling-algorithm.md"
+    },
+    {
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300,
+      "repository_relative_origin": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py"
+    },
+    {
+      "sha256": "767a227ac0ea6a3726ec66550d35484c42ac4df1374519ada7a1c1ebb8dbeac5",
+      "bytes": 22207,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-engine-source-20261012/compact_prepare_worker_v2.py",
+      "public_source_alias": "compact_prepare_worker_v2.py",
+      "exact_public_copy": true
+    },
+    {
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+      "bytes": 24474,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json"
+    },
+    {
+      "sha256": "ee397ae8898f9f9901f4e1f7d2163022d27782ed7b2d4d8e6dfdadd29703d99f",
+      "bytes": 26590,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-independent-source-20261012/preparation-source-readiness-review-v1.json"
+    },
+    {
+      "sha256": "e04fd0962bc5668888e25524e36eca78e0285d2aae45525ed94bd247a6415c20",
+      "bytes": 6262,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/prepare_telemetry_phase_v1.py",
+      "public_source_alias": "prepare_telemetry_phase_v1.py",
+      "exact_public_copy": true
+    },
+    {
+      "sha256": "08a812f6cefb0c28466044866494fd0cde351fa9fc0f3b970c17b6616888e63c",
+      "bytes": 10606,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-engine-source-20261012/handoff-v1.json"
+    },
+    {
+      "sha256": "dfc678316321e821116ca99f1fffbf4a43c36bbcdf4ad4ec62628bcd7f63898f",
+      "bytes": 11487,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-engine-source-20261012/source-protocol-v1.json"
+    },
+    {
+      "sha256": "7a39c7f3782d5ead653824c75bd533467dc7ac2da7762e0cda871a6ee092d46b",
+      "bytes": 3478,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-engine-source-20261012/source-metadata-review-v1.json"
+    },
+    {
+      "sha256": "76bb27a0bfbffa6910b658c399f292997a6fc4f28951774fa841c628ae2f7346",
+      "bytes": 6948,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/handoff-v1.json"
+    },
+    {
+      "sha256": "91a8106f129aa73999b2ac0194903e47dfc8e87026b3a71c2f241ab5363419b5",
+      "bytes": 8892,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/source-protocol-v1.json"
+    },
+    {
+      "sha256": "eeeaea6a199338412cb8cbdcf033567f31bd2aaac7c5bb46d80d618c2aac0941",
+      "bytes": 2034,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/source-metadata-review-v1.json"
+    },
+    {
+      "sha256": "0d0178e7f027a3079ed126b3b261939ee21c3bfdf61f646e63dcec478eb594b9",
+      "bytes": 15092,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/instrumentation-diff-v2.patch"
+    },
+    {
+      "sha256": "3724f0f3aac7e3a5d471c87d18fba485aa45bfe1700b7f1e9f12623cd71c83b2",
+      "bytes": 16566,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-engine-source-20261012/instrumentation-diff-v1.patch"
+    },
+    {
+      "sha256": "eb627372845cce5a19da8802f930d9352d13c5d5ddcee26021ff6df5798210fa",
+      "bytes": 6971,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-progress-20261012/ROOT-final-progress-decision-v1.json"
+    },
+    {
+      "sha256": "75986bee3e2346fc5e8312a00e9db3accb8369979dd4b6695d7eb60f7487b038",
+      "bytes": 2559,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-progress-20261012/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "sha256": "b35666e4402df82c7845695f9d73f03fa8bb5105731f85ecfa84361435dcd45d",
+      "bytes": 35478,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/before-sort-breadcrumbs-compiler-v2.py"
+    },
+    {
+      "sha256": "422cae518ff8b5a02dacdb73db37d7172729405ecf731d428d51c0549f749812",
+      "bytes": 14361,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/instrumentation-diff-v1.patch"
+    },
+    {
+      "sha256": "8135dd3000559c44ce29bafc82445a62ce4eae5246ac5bf28a5ab66efd1640d8",
+      "bytes": 27743,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_declaration_compiler_v1.py"
+    },
+    {
+      "sha256": "287091bffe8566fc9ff748536897485dee9e989e59e3a8c40e65ffc983f1f7e4",
+      "bytes": 5076,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/handoff-v1.json"
+    },
+    {
+      "sha256": "a5aa34b62c07c59e0c54f9079da6bf01f736e7b05bb81917ea7d521ecb95a7a2",
+      "bytes": 10609,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/source-protocol-v1.json"
+    },
+    {
+      "sha256": "eeef74f98bc66b7686d29c32425e6f363ef9efe244c54163367ae453199ab81e",
+      "bytes": 9412,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-progress-20261012/ROOT-partial-output-metadata-v1.json"
+    },
+    {
+      "sha256": "b58a70b35cde392a6d0f056787e2389c0c256334de641624442b632586287bcd",
+      "bytes": 14511,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-engine-source-20261012/compact_prepare_worker_v1.py"
+    },
+    {
+      "sha256": "ae78d24fc30e861c99f62dc95056e0c1d9cc2edb9ae25f0810fe890324c3dbc7",
+      "bytes": 9198,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-engine-source-20261012/handoff-v1.json"
+    },
+    {
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518,
+      "repository_relative_origin": "AGENTS.md"
+    },
+    {
+      "sha256": "e6a8e56226dd5501b315b5f6685002b5e52554fbb625637f76d0328862ba3445",
+      "bytes": 20823,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_audit_worker_v1.py"
+    },
+    {
+      "sha256": "0db61f3fb7b976c7c31d5b89364cab18529a8498c1810178f69e6b28d4efc12d",
+      "bytes": 10087,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-independent-source-20261012/actual-compact-preparation-deadline-UNKNOWN-metadata-review-v1.json"
+    },
+    {
+      "sha256": "c776b20e7bbcf7bc13cabd65b99996d737a7fcf1429c4cadfe019c94a99c3891",
+      "bytes": 4867,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-independent-source-20261012/owner-v2-source-review-v2.json"
+    },
+    {
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-progress-20261012/run_owned_bridge_v2.py",
+      "public_source_alias": "run_owned_bridge_v2.py",
+      "exact_public_copy": true
+    },
+    {
+      "sha256": "d9abcb6325f3380c01d9e6b22afee27938189cf653af278989e9c21241f84a53",
+      "bytes": 5350,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-independent-source-20261012/source-protocol-v1.json"
+    },
+    {
+      "sha256": "7d18e95e49051e26ba5caa5596631fd31ba5c4c8b64949dfbbf5dead16bfa488",
+      "bytes": 3667,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-independent-source-20261012/handoff-v1.json"
+    },
+    {
+      "sha256": "3533fd8fb1d0f436912df2fa9afa62ccf12a29f7c4c31b8dde73c74aa2a156fb",
+      "bytes": 2755,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/freeze_compact_phase_v1.py",
+      "public_source_alias": "freeze_compact_phase_v1.py",
+      "exact_public_copy": true
+    },
+    {
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/run_owned_bridge_v2.py",
+      "public_source_alias": "run_owned_bridge_v2.py",
+      "exact_public_copy": true
+    },
+    {
+      "sha256": "f4a4fdd731b1d879881eca1b0e97b51df96ac0d548aafde1526a043a0535e911",
+      "bytes": 9018,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-prospective-spec-v1.json"
+    },
+    {
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352,
+      "source_role": "pinned_runtime_python3",
+      "absolute_host_path_omitted": true
+    },
+    {
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816,
+      "source_role": "pinned_observer_ps",
+      "absolute_host_path_omitted": true
+    },
+    {
+      "sha256": "51ab43654aeb91de3b5b2bbaa5ad83d2b5aaa4c1c6913e642fc0e793a7afaf0d",
+      "bytes": 5661,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/owned-ownership-ledger-v1.json.gz"
+    },
+    {
+      "sha256": "91000eeaf345200208013bc2ee5810abc5cfe6eea8520ebecc1f52e9f5d46b9c",
+      "bytes": 23172,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/train-pa-right-zero-preparation-v1/producer-diagnostics-v1.jsonl"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/stdout-v1.txt"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/preparation-owner-v1/stderr-v1.txt"
+    },
+    {
+      "sha256": "9ee7ddd37d63c9d4f75588c5623e9322867ef6b4030c07a2e064c5e2fc7d0541",
+      "bytes": 7380,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-independent-review-20261012/first-PA-compiler-memory-UNKNOWN-metadata-review-v1.json"
+    }
+  ],
+  "closure": {
+    "declared_pins": 41,
+    "bytes": 781548,
+    "current_exact_match": true
+  },
+  "diagnostics": {
+    "trace": {
+      "sha256": "91000eeaf345200208013bc2ee5810abc5cfe6eea8520ebecc1f52e9f5d46b9c",
+      "bytes": 23172,
+      "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/train-pa-right-zero-preparation-v1/producer-diagnostics-v1.jsonl"
+    },
+    "records": 86,
+    "compiler_records": 62,
+    "compiler_major_records": 27,
+    "compiler_progress_records": 35,
+    "worker_records": 24,
+    "raw_prefix_newline_complete": true,
+    "receipt_bound_trace_completed": false,
+    "retained_worker_identity_matches_all_samples": true,
+    "emitter_identity_private_raw_only": true,
+    "first_worker_elapsed_seconds": 0.0016553750000000006,
+    "last_worker_elapsed_seconds": 57.84172075,
+    "last_record_index": 85,
+    "last_phase": "worker",
+    "last_milestone": "factor_row_closed",
+    "closed_row_prefix": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "remaining_rows_not_observed": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "max_record_bytes": 315,
+    "producer_reported_counts_only": {
+      "formulas": 113406,
+      "nodes": 132511,
+      "recipes": 119633
+    },
+    "independent_census_credit": false,
+    "factor_bytes_scalar_sum": 42186210,
+    "factor_license_credit": false,
+    "fixed_poll_stride_verification": "Source-pinned4096 cadence; raw prefix does not expose poll counts, so stride is not independently dynamically proven.",
+    "phase_durations": [
+      {
+        "label": "worker_compiler_observational_bracket",
+        "begin_record": 2,
+        "end_record": 65,
+        "worker_local_seconds": "49.384094958999996"
+      },
+      {
+        "label": "syntax",
+        "begin_record": 3,
+        "end_record": 4,
+        "worker_local_seconds": "0.000474749999999996"
+      },
+      {
+        "label": "four_instantiation_rounds",
+        "begin_record": 5,
+        "end_record": 12,
+        "worker_local_seconds": "0.006782041000000002"
+      },
+      {
+        "label": "templates",
+        "begin_record": 13,
+        "end_record": 14,
+        "worker_local_seconds": "0.002187125000000004"
+      },
+      {
+        "label": "equality_product",
+        "begin_record": 15,
+        "end_record": 18,
+        "worker_local_seconds": "2.6268170000000002"
+      },
+      {
+        "label": "formula_sort_to_keys_complete",
+        "begin_record": 20,
+        "end_record": 23,
+        "worker_local_seconds": "2.5446428749999997"
+      },
+      {
+        "label": "formula_registry_broad_overlapping_sort",
+        "begin_record": 19,
+        "end_record": 31,
+        "worker_local_seconds": "11.5933985000000007"
+      },
+      {
+        "label": "formula_registry_after_keys_complete",
+        "begin_record": 23,
+        "end_record": 31,
+        "worker_local_seconds": "9.048735042000001"
+      },
+      {
+        "label": "recipe_identity_broad",
+        "begin_record": 32,
+        "end_record": 59,
+        "worker_local_seconds": "34.399983792"
+      },
+      {
+        "label": "recipe_sort_to_first_record_ready",
+        "begin_record": 33,
+        "end_record": 34,
+        "worker_local_seconds": "0.002820458999999"
+      },
+      {
+        "label": "recipe_first_record_ready_to_identity_complete",
+        "begin_record": 34,
+        "end_record": 59,
+        "worker_local_seconds": "34.397140708"
+      },
+      {
+        "label": "recipe_sort_broad_overlapping_identity",
+        "begin_record": 33,
+        "end_record": 58,
+        "worker_local_seconds": "34.399924833999999"
+      },
+      {
+        "label": "nodes",
+        "begin_record": 60,
+        "end_record": 62,
+        "worker_local_seconds": "0.737623707999996"
+      },
+      {
+        "label": "header_to_ready_for_serialization",
+        "begin_record": 63,
+        "end_record": 64,
+        "worker_local_seconds": "0.014532000000004"
+      },
+      {
+        "label": "decoder",
+        "begin_record": 66,
+        "end_record": 67,
+        "worker_local_seconds": "0.348125291999999"
+      },
+      {
+        "label": "graph",
+        "begin_record": 68,
+        "end_record": 69,
+        "worker_local_seconds": "1.675446833000004"
+      },
+      {
+        "label": "partial_factor_prefix_rows_0_to_14",
+        "begin_record": 70,
+        "end_record": 85,
+        "worker_local_seconds": "6.412322084"
+      }
+    ],
+    "overlap_warning": "Broad formula-sort/registry and recipe-sort/identity brackets overlap. First-record-ready to identity-complete combines sorting iteration,canonical identity generation,hashing and writes; it is not isolated sort time. No worker/owner clock origins were combined."
+  },
+  "owned_resources": {
+    "samples": 464,
+    "every_sample_checked": true,
+    "sample_scope": "Saved source-trusted owned-row projection,not independent whole-host capture.",
+    "first_owner_sample_seconds": 0.02849020800000001,
+    "last_owner_sample_seconds": 57.995257,
+    "max_sampled_owned_rss_bytes": 68845568,
+    "max_sampled_combined_bytes": 86851584,
+    "ROOT_self_peak_bytes": 15532032,
+    "worker_wait4_peak_bytes": 68861952,
+    "observer_separate_wait4_max_bytes": 2473984,
+    "worker_declared_direct_child_peak_sum_bytes": 0,
+    "conservative_peak_bytes": 86867968,
+    "conservative_peak_MiB": "82.84375",
+    "peak_scope": "Conservative maximum of separate owner-self,worker-kernel and observer maxima sum versus every sampled combined value; not a simultaneous RSS measurement and no OS hard cap.",
+    "owner_elapsed_before_write_seconds": 58.170145208,
+    "owner_elapsed_postwrite_seconds": 58.172382125,
+    "caller_enclosure_seconds": 60.598,
+    "caller_with_finish_margin_seconds": 61.598,
+    "worker_returncode": -15,
+    "saved_worker_reaped": true,
+    "saved_owned_leftovers": [],
+    "cleanup_errors": [],
+    "worker_child_closure_unknown_without_receipt": true,
+    "caller_terminal_exit0_scope": "Owner completed UNKNOWN disposition,not worker completion or scientific success.",
+    "literal_exec_command_in_caller_json": false,
+    "command_binding": "Launch record and exact ownerplan argv bind worker/runtime; caller retains one dispatch/session and terminal objects. No external raw wait4/OS attestation is invented."
+  },
+  "ROOT_predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": false,
+    "owner_gate": false,
+    "post_write_gate": false,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": false,
+    "stage_identity": false,
+    "worker_complete": false,
+    "all_worker_direct_children_closed": false,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": false
+  },
+  "conclusion": {
+    "whole_producer_gate": "UNKNOWN",
+    "reason": "Deadline before the fixed2-second receipt reserve; worker SIGTERM and reaped; complete evidence/receipt and9remaining factor-row close events absent.",
+    "complete_catalog_files_do_not_qualify_attempt": true,
+    "independent_audit_ineligible": true,
+    "no_salvage_or_retry_performed": true,
+    "old_UNKNOWN_unchanged": true,
+    "no_license_proof_search_RL_native_or_dynamic_qualification": true,
+    "possible_future_action_scope": "Any identity-emission optimization requires a distinct frozen source-equivalence and whole owned-runtime phase review; diagnostics suggest an interleaved identity/output bottleneck without attributing isolated CPU cost or guaranteeing a60s fit."
+  },
+  "private_review_binding": {
+    "repository_relative_origin": ".gcts-active/cluster-transfer-compact-telemetry-independent-source-20261012/actual-telemetry-preparation-deadline-UNKNOWN-metadata-review-v1.json",
+    "sha256": "efd32ed2cbe49c7900e8c29d979c8a37f35311338830c72770900467baca2880",
+    "bytes": 25259,
+    "public_raw_copy": false
+  },
+  "projection_scope": "Source-only saved-metadata reconciliation. All51 original checks,14 ROOT predicates,scalar conclusions and exact content hashes/sizes are retained. No scientific acceptance. Original private receipts and process identity records are not published.",
+  "projection_notes": {
+    "checks_exact_original": true,
+    "ROOT_predicates_exact_original": true,
+    "scalar_conclusions_exact_original": true,
+    "private_emitter_PID_and_birth_values_present": false,
+    "absolute_host_paths_removed": true,
+    "runtime_paths_replaced_by_role_labels": true,
+    "exact_public_source_aliases_used_where_available": true,
+    "private_receipts_and_binary_artifacts_copied": false
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "schema": "notebook124-publication-manifest-v1",
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/collect_telemetry_metadata_v1.py",
+      "sha256": "6854c1c5c30a7848a2ca5361ddbf9b08eb59c789e4a37ad16ac6524526eb8b9f",
+      "bytes": 8806
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/compact_declaration_compiler_v2.py",
+      "sha256": "6627a6f3a8bafc1fa8bc09b5b43821308305bd3f671a8a3b9eda3eaf5447aecc",
+      "bytes": 35942
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/compact_prepare_worker_v2.py",
+      "sha256": "767a227ac0ea6a3726ec66550d35484c42ac4df1374519ada7a1c1ebb8dbeac5",
+      "bytes": 22207
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/freeze_compact_phase_v1.py",
+      "sha256": "3533fd8fb1d0f436912df2fa9afa62ccf12a29f7c4c31b8dde73c74aa2a156fb",
+      "bytes": 2755
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/independent-review-view-v1.json",
+      "sha256": "9fda34bc5431c6a6ae263aecac5def4faf28178c8cc8b6898c305cc008da7527",
+      "bytes": 28068
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/prepare_telemetry_phase_v1.py",
+      "sha256": "e04fd0962bc5668888e25524e36eca78e0285d2aae45525ed94bd247a6415c20",
+      "bytes": 6262
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/reader.css",
+      "sha256": "60055b695ee909e87dbabd9b79ba29591ad8a6f3333a77ef890f75411b7c9445",
+      "bytes": 2188
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/reader.html",
+      "sha256": "f827b1b7a34b4c21b44a7b10ebbd34dc0ae0005c1a7e1a5256b3ecb35c05ddb8",
+      "bytes": 53112
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/reader.js",
+      "sha256": "37b87d03c6d48f2972a5e0eeae17448bc8dfbd73f70dbab9771f34368eb85d38",
+      "bytes": 1191
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/compiler-profile/saved-progress-view-v1.json",
+      "sha256": "f4c15e1e1feb775406a62f3ec0be00ff2910a9c8dca8a82c30a25a1c7ab9d472",
+      "bytes": 119231
+    }
+  ],
+  "parent_report": {
+    "path": "docs/research/gcts-rl-renewal/index.html",
+    "sha256": "a86665723691d51ae32795d1edf60023af39cd81063591901851607b17c4f5f6",
+    "bytes": 365993
+  },
+  "source_aliases": [
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-compiler-source-20261012/compact_declaration_compiler_v2.py",
+        "sha256": "6627a6f3a8bafc1fa8bc09b5b43821308305bd3f671a8a3b9eda3eaf5447aecc",
+        "bytes": 35942
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/compact_declaration_compiler_v2.py",
+        "sha256": "6627a6f3a8bafc1fa8bc09b5b43821308305bd3f671a8a3b9eda3eaf5447aecc",
+        "bytes": 35942
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-engine-source-20261012/compact_prepare_worker_v2.py",
+        "sha256": "767a227ac0ea6a3726ec66550d35484c42ac4df1374519ada7a1c1ebb8dbeac5",
+        "bytes": 22207
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/compact_prepare_worker_v2.py",
+        "sha256": "767a227ac0ea6a3726ec66550d35484c42ac4df1374519ada7a1c1ebb8dbeac5",
+        "bytes": 22207
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/run_owned_bridge_v2.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+        "bytes": 14639
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/run_owned_bridge_v2.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+        "bytes": 14639
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/prepare_telemetry_phase_v1.py",
+        "sha256": "e04fd0962bc5668888e25524e36eca78e0285d2aae45525ed94bd247a6415c20",
+        "bytes": 6262
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/prepare_telemetry_phase_v1.py",
+        "sha256": "e04fd0962bc5668888e25524e36eca78e0285d2aae45525ed94bd247a6415c20",
+        "bytes": 6262
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/freeze_compact_phase_v1.py",
+        "sha256": "3533fd8fb1d0f436912df2fa9afa62ccf12a29f7c4c31b8dde73c74aa2a156fb",
+        "bytes": 2755
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/freeze_compact_phase_v1.py",
+        "sha256": "3533fd8fb1d0f436912df2fa9afa62ccf12a29f7c4c31b8dde73c74aa2a156fb",
+        "bytes": 2755
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/close_stage_decision_v1.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+        "bytes": 4752
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/close_stage_decision_v1.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+        "bytes": 4752
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-compact-telemetry-progress-20261012/collect_telemetry_metadata_v1.py",
+        "sha256": "6854c1c5c30a7848a2ca5361ddbf9b08eb59c789e4a37ad16ac6524526eb8b9f",
+        "bytes": 8806
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/compiler-profile/collect_telemetry_metadata_v1.py",
+        "sha256": "6854c1c5c30a7848a2ca5361ddbf9b08eb59c789e4a37ad16ac6524526eb8b9f",
+        "bytes": 8806
+      }
+    }
+  ],
+  "independent_saved_review": {
+    "path": ".gcts-active/cluster-transfer-compact-telemetry-independent-source-20261012/actual-telemetry-preparation-deadline-UNKNOWN-metadata-review-v1.json",
+    "sha256": "efd32ed2cbe49c7900e8c29d979c8a37f35311338830c72770900467baca2880",
+    "bytes": 25259
+  },
+  "scientific_calls_by_renderer": 0,
+  "parent_inverse_exact": true
+}
