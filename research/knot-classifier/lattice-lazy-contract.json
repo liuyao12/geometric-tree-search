@@ -1,0 +1,70 @@
+{
+  "version": "lazy-lattice-classifier-v1",
+  "algorithm": "Generic lazy bidirectional breadth-first bounded path search over opaque point-valued transitions. Separate adaptation, not the all-time-slot reference scheduler.",
+  "pointDomain": "A single generation-zero expansion obligation at each visited embedding; each raw transition t=1 there. Current/destination opaque embedding seam values; learned occupancy components at actual internal lattice vertices. Complete forward/reverse candidate incidence per resolved domain.",
+  "completeness": "Author exhausts every unit coordinate face incident to an occupied edge, in all planes/both sides. No small support region in benchmarks. Degree zero/one is not reported until all raw candidates are filtered by point markings or resolved by the author. Unexpanded domains and budget-interrupted enumeration remain unknown. Bidirectional provider is reversible.",
+  "coordinateIdentity": "Absolute spatial frame with cyclic root and unoriented traversal identified. No reflection, scaling or translation quotient in the search key.",
+  "learnedSystem": "unit-cubic-face-internal-vertex-capacity-v1",
+  "localLabels": "Complete unmarked point-cover probes for all binary exterior occupancy profiles of the replacement arc internal vertices. Candidate and fixed exterior contributions exceeding capacity prove incompatibility. This is a local capacity-cover adaptation, not the full capacity-legal neighboring-pair corona protocol.",
+  "synthesis": "Exhaustive finite search over 0/1/absent components. All positives must agree, every negative must mismatch, all profiles resolved. Fit is rechecked before activation. Unknown supplies no learned constraint. No known guard or corpus witness seeds the model.",
+  "markingUse": "Candidate components and current-knot occupancy values meet at actual spatial vertex points. Normal assigned-value comparison removes incompatible raw candidates before author resolution. There is no failure-clause scanner or learned predictor outside the marking graph.",
+  "proofAndTransfer": "The local point model depends only on new internal vertices and their exterior occupancy. Translations and signed coordinate permutations preserve t sums; traversal reversal permutes components. The full profile catalog is independently checked in every reused model and 4608 transformed raw placements are tested under 48 signed coordinate permutations. Does not transfer any failed target route or general knot inequivalence label.",
+  "rollbackAndRuleChanges": "BFS parent records and resolved domains retain immutable histories. Every model version change replays every retained candidate graph and accepted prefix edge, plus the currently enumerated domain; any invalidated accepted edge is an error. No unresolved degree claim uses a partial list.",
+  "budgets": "maxDepth, nodeCap and stateCap for search; probeNodeCap for labeling. All stops unknown; complete finite exhaustion also leaves general knot equivalence unknown. Numeric projection domain |coordinate|<=100 and <=2000 unit edges; benchmark cap220. Projection regularity and endpoint RI/II/III/routing filter remain declared grammar restrictions.",
+  "benchmark": {
+    "referenceTypes": [
+      "3_1",
+      "4_1",
+      "5_1"
+    ],
+    "sourceSeeds": [
+      43,
+      144,
+      245
+    ],
+    "targetSeeds": [
+      901,
+      1004,
+      1107
+    ],
+    "scrambleStepsPerEndpoint": 2,
+    "searchDepth": 4,
+    "region": null,
+    "lanes": [
+      "unmarked",
+      "gcts-cold",
+      "gcts-transfer"
+    ],
+    "independentSpatialMovies": 27,
+    "provenancePassedToSolver": false,
+    "searchNodeCounts": [
+      87,
+      97,
+      119
+    ],
+    "transferMarkingEliminations": [
+      3127,
+      4947,
+      6404
+    ],
+    "localProfiles": 6,
+    "assignedPrototypeComponents": 3,
+    "scope": "Short independently seeded scrambles from known references. No deep-scramble or 12-crossing coverage claim."
+  },
+  "measurements": "Each lane runs in a fresh Node worker. Transfer lane explicitly shares an in-memory model across its three tests and reports initial marking versions, per-run probes, replay costs, and cumulative application counts including graph replays. TotalMs includes search, synthesis, transfer validation and JS replay, excluding separately measured Python replay and worker startup. Peak RSS includes startup and all retained evidence in the worker.",
+  "conformanceEvidence": [
+    "tests/test_knot_lattice_lazy.mjs",
+    "tests/test_knot_lattice_search.mjs",
+    "tests/test_knot_online.mjs",
+    "lattice-lazy-benchmark.json"
+  ],
+  "gaps": [
+    "No demonstrated branching reduction or speedup from local capacity guards",
+    "No full neighboring-pair corona learner or transferable topological dead-end rules",
+    "General completeness of projection-filtered unit-face grammar remains unproved",
+    "Single-event continuous projection per tile not analyzed",
+    "No local spatial tiling of the whole space-time movie or nontrivial growth generations",
+    "Benchmark uses short scrambles and only three prime reference types; deeper scrambling, mirrors, composites and 12-crossing evaluation remain pending",
+    "No certified negative knot classifier or RL cluster proposer"
+  ]
+}

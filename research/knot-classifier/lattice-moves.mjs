@@ -13,7 +13,7 @@ export function diagram(input,direction=DEFAULT_DIRECTION){
 }
 // Every unit square meeting an edge is enumerated, in all three planes and
 // both sides. The intersection with the loop must be one boundary arc.
-export function faceSweeps(input,{maxEdges=200,region=null}={}){
+export function rawFaceSweeps(input,{maxEdges=200,region=null}={}){
  const p=unitLoop(input),n=p.length,edges=new Map(p.map((a,i)=>[ek(a,p[(i+1)%n]),i])),faces=new Map(),out=[];
  for(let i=0;i<n;i++){
   const a=p[i],b=p[(i+1)%n],axis=a.findIndex((x,k)=>x!==b[k]);
@@ -38,29 +38,39 @@ export function faceSweeps(input,{maxEdges=200,region=null}={}){
   if(!replacement||n+4-2*len>maxEdges)continue;
   const rotated=Array.from({length:n},(_,k)=>p[(start+k)%n]);
   const after=[...replacement.slice(0,-1),...rotated.slice(len)];
-  try{unitLoop(after);}catch{continue;}
   // A unit cubic face has no lattice points in its relative interior. All
   // transverse lattice edges meet its plane at lattice points. New boundary
   // vertices are vacant, so the disk is disjoint from the unchanged knot.
-  out.push({face:face.map(x=>[...x]),old:old.map(x=>[...x]),replacement:replacement.map(x=>[...x]),vertices:after,key:embeddingKey(after)});
+  out.push({face:face.map(x=>[...x]),old:old.map(x=>[...x]),replacement:replacement.map(x=>[...x]),vertices:after});
  }
  return out;
 }
-export function latticeMoves(input,options={}){
- const direction=options.direction||DEFAULT_DIRECTION,before=diagram(input,direction),out=[],unique=new Set();
- const legal=new Map(moves(before.word,before.word.length/2).map(m=>[m.key,m.kind]));
- for(const sweep of faceSweeps(input,options)){
-  let after;try{after=diagram(sweep.vertices,direction);}catch{continue;}
-  let kind=after.canonical===before.canonical?'routing':legal.get(after.canonical);
-  const delta=(after.word.length-before.word.length)/2;
-  if(!kind&&(delta===1||delta===2)){
-   const inverse=delta===1?'I−':'II−';
-   if(moves(after.word,after.word.length/2).some(m=>m.kind===inverse&&m.key===before.canonical))kind=delta===1?'I+':'II+';
-  }
-  if(!kind||unique.has(sweep.key)||sweep.key===embeddingKey(input))continue;
-  unique.add(sweep.key);out.push({...sweep,kind,beforeDiagram:before.canonical,afterDiagram:after.canonical,direction});
+// The raw domain deliberately includes capacity failures so an independently
+// learned marking can reject them before expensive spatial/projection work.
+export function faceSweeps(input,options={}){
+ const out=[];for(const m of rawFaceSweeps(input,options)){try{unitLoop(m.vertices);out.push({...m,key:embeddingKey(m.vertices)});}catch{}}return out;
+}
+export function moveContext(input,options={}){
+ const direction=options.direction||DEFAULT_DIRECTION,before=diagram(input,direction);
+ return{direction,before,legal:new Map(moves(before.word,before.word.length/2).map(m=>[m.key,m.kind])),inputKey:embeddingKey(input)};
+}
+export function resolveSweep(sweep,context){
+ let after;try{unitLoop(sweep.vertices);after=diagram(sweep.vertices,context.direction);}catch{return null;}
+ const {before,legal,direction}=context;
+ let kind=after.canonical===before.canonical?'routing':legal.get(after.canonical);
+ const delta=(after.word.length-before.word.length)/2;
+ if(!kind&&(delta===1||delta===2)){
+  const inverse=delta===1?'I−':'II−';
+  if(moves(after.word,after.word.length/2).some(m=>m.kind===inverse&&m.key===before.canonical))kind=delta===1?'I+':'II+';
  }
- return out;
+ const key=embeddingKey(sweep.vertices);
+ if(!kind||key===context.inputKey)return null;
+ return{...sweep,key,kind,beforeDiagram:before.canonical,afterDiagram:after.canonical,direction};
+}
+export function latticeMoves(input,options={}){
+ const context=moveContext(input,options),unique=new Map();
+ for(const sweep of rawFaceSweeps(input,options)){const m=resolveSweep(sweep,context);if(m&&!unique.has(m.key))unique.set(m.key,m);}
+ return [...unique.values()];
 }
 export function verifyStep(input,step,options={}){
  const found=latticeMoves(input,options).find(m=>m.key===embeddingKey(step.vertices)&&m.kind===step.kind&&JSON.stringify(m.face.map(pk).sort())===JSON.stringify(step.face.map(pk).sort()));

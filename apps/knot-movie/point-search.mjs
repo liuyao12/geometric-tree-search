@@ -28,7 +28,7 @@ export function pointSearch(cat, { learned = null, nodeCap = 10000, order = null
     let selected = [...prefix];
     while (true) {
       const g = graph(selected);
-      if ([...g.forward.values()].some(x => !x.length)) return { status: 'exhausted-finite-search' };
+      if (g.totals.some(x => x > 1) || [...g.forward.values()].some(x => !x.length)) return { status: 'exhausted-finite-search' };
       if (!g.forward.size) return { status: 'equivalent', selected };
       const singleton = [...g.forward].find(([, x]) => x.length === 1);
       if (singleton) { selected.push(singleton[1][0]); stats.forced++; continue; }
