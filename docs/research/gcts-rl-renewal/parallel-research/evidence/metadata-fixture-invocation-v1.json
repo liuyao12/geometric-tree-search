@@ -1,0 +1,41 @@
+{
+  "schema": "ROOT-one-shot-synthetic-metadata-invocation-v1",
+  "status": "terminal_0_38_of_38_pass",
+  "recorded_at": "2026-10-12T09:54:15.971595+00:00",
+  "plan": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixture-plan-v1.json",
+    "sha256": "5de82e2a94de32faa48bbc45759ee909ccd5c88ed6b92e91c3935b42166c061d",
+    "bytes": 1041
+  },
+  "result": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/result-v1.json",
+    "sha256": "c1b8e7ed6a4d7aa3d7e06f21341e47c99cdde8e43f09503c253d57afd1a5bffe",
+    "bytes": 10947
+  },
+  "fixture_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+    "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+    "bytes": 11161
+  },
+  "adapter_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+    "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+    "bytes": 21195
+  },
+  "tool_terminal": {
+    "exit_code": 0,
+    "chunk_id": "1611d0",
+    "complete_tool_boundary_ms": 104,
+    "scope": "External API invocation through reported completion; not a resource measurement"
+  },
+  "one_actual_invocation": true,
+  "fixture_internal_seconds": 0.008029874999999999,
+  "cases": 38,
+  "passed": 38,
+  "synthetic": true,
+  "scientific_calls": 0,
+  "owner_PS_native_RNG_calls": 0,
+  "actual_resource_qualification": false,
+  "all_five_qualification": false,
+  "historical_first_resource_UNKNOWN_preserved": true
+}

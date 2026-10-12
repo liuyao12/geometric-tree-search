@@ -1,0 +1,87 @@
+{
+  "schema": "source-only-compact-owner-root-binding-protocol-v3",
+  "status": "SOURCE_ONLY_SAME_GROUP_CONTAINMENT_AWAITING_ROOT_ACTUAL_BINDING",
+  "predecessor": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v2.json",
+    "sha256": "e58e4439aeabd8e39fe0206071b97b569d5bb7367f0e68193a8fc46eca1ff794",
+    "bytes": 282404
+  },
+  "preservation": "Every V1/V2 predecessor file remains unchanged. Original donor-two-guards semantic PASS/resource UNKNOWN is immutable; this path permanently excludes its rerun or reclassification. No all-five qualification.",
+  "reused_import_directory": ".gcts-active/curriculum-compact-wrapper-source-20261012",
+  "reused_sources": [
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    }
+  ],
+  "unchanged_science": "All eight original pre-main worker scientific/guard functions, complete scientific prefix, seven original V3 semantic libraries, full audit procedure/census/controls and full result JSON remain exact byte-identical. Grammar/pools/64-cap/split/features/seeds/rewards and no-trimming rule are unchanged.",
+  "unchanged_bounds": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912,
+    "observer_timeout_seconds": 1
+  },
+  "future_ROOT_entry": {
+    "signature": "run_owner(planpath, accounting)",
+    "CLI": "Unconditionally SOURCE ONLY; no adapter or actual activation is supplied in this source package.",
+    "actual_plan_and_activation": "Original compact V1 schema and all original frozen source/input/library/runtime/activation contracts stay exact. The owner pin names V3 and wrapper source manifest pin names the new V3 source manifest.",
+    "supplemental_compact_contract_fields": {
+      "fresh_ROOT_owned_owner_group_required": true,
+      "containment_output": "ROOT freezes one absolute supplemental file path, distinct from all original seven outputs, sharing their original compact fresh selector directory. No placeholder or actual path is instantiated here."
+    },
+    "seven_outputs": "Exactly result/compact/lifetime/observers/samples/stdout/stderr remain in the unchanged original compact source prefix outputs/selector. ROOT's own owner-frame stdout/stderr and outer records must live separately; ROOT must not precreate the owner's fresh selector directory.",
+    "adapter": "Same add_observer/add_sample/add_leaf_worker/add_SELF_before_receipt/rejects_current_caps/finish_provisional interface and exact source/platform pins. ROOT supplies and reviews a metadata-only, childless adapter and its fully closed artifact scope separately. No final counting rule is authored here."
+  },
+  "process_group": {
+    "ROOT": "ROOT launches one retained direct owner using a fresh session/process group, owns its PID/birth/PGID/SID and full complete clocks, and may signal the group only while that exact direct leader has not been terminal-reaped.",
+    "owner": "V3 checks PID=PGID=SID before starting children. No process group or session is created by this source. The retained root-parent PID is observed metadata, not authorization.",
+    "children": "Worker and every PS use Popen without start_new_session/process_group/preexec_fn. Both inherit the fresh owner's process group. Every direct handle is registered before cancellation can raise; direct wait4 bookkeeping precedes safe checks. No historical reaped PID/group signal is sent.",
+    "signals": "SIGINT/SIGTERM/SIGALRM all use the same non-raising cancelled_signum assignment. No ignore/restore discards cancellation. Observe and run_owner only raise at explicitly checked safe boundaries.",
+    "descendants": "Observer raw rows retain unexpected transitive worker/observer descendants and unexpected members of the fresh group. Any such evidence, uncertain direct cleanup, post-spawn failure or cancellation enters containment. Known descendants are never called reaped by this Darwin parent."
+  },
+  "containment_latch": {
+    "schema": "compact-owner-V3-live-group-containment-v1",
+    "status": "UNKNOWN_REQUIRES_ROOT_LIVE_GROUP_TERMINATION",
+    "publication": "Build bounded JSON under the existing compact_maximum_bytes envelope; exclusively create a temporary file, write and close it, then exclusive hard-link the closed inode to containment_output and remove the temporary name. ROOT polls only the final published name. No partial JSON publication or overwrite.",
+    "fields": ["selector", "owner", "group", "reason", "detail", "clock_before_containment_serialization", "direct_owner_leader_retained", "grandchildren_reaped_claim=false", "success_SELF_frame_emitted=false", "full_resource_accepted=false", "all_five_qualification=false", "unchanged bounds"],
+    "closed_evidence": "Where close/hash succeeds, detail pins complete observer/sample JSONL tables and their count plus direct worker cleanup/cancellation status. Unexpected descendant/group rows remain in the raw observer table. If close/hash fails, latch records that gap; no qualification.",
+    "owner_liveness": "Containment never returns and never emits a final SELF frame or exits voluntarily. Only a fixed sleep loop remains with non-raising flags. ROOT must promptly mark UNKNOWN, terminate the still-live exact owned group, and close/reap its direct owner within the complete outer gate.",
+    "publication_failure": "If bounded metadata serialization, exclusive write/link or source pin fails, the owner still stays alive; it makes no retry or success claim. ROOT's retained direct leader and unchanged outer deadline own group termination. A missing final frame cannot qualify.",
+    "emergency": "Any external group termination, containment, failed/unknown reaping, truncated/missing/nonzero frame or cancellation is UNKNOWN and cannot qualify complete resources or semantic acceptance."
+  },
+  "finite_SELF_frames": {
+    "wire": "Original fixed 52-byte !8sBBHQQddd frame remains byte-identical; magic/role/pid/code/reserved/length checks stay unchanged.",
+    "worker_decode": "V3 additionally requires all three clock fields to be finite floats, exact elapsed=closed-entry, nonnegative elapsed and raw integer peak. Worker entry/closed times must lie inside the owner's observed full child spawn-to-terminal-reap lifetime.",
+    "owner_decode": "ROOT must independently apply the same finite/time relation and source/role/pid/exit checks to its fully closed owner-frame stream. A signal after the final frame argument is sampled remains rejected by ROOT's external cancellation provenance.",
+    "assumption": "Cross-process perf_counter clock compatibility on the exact pinned interpreter/host must be independently verified by ROOT. No generic cross-platform timing/unit semantics are assumed.",
+    "remaining_scope": "All successful artifact files close before original raw SELF getrusage, fixed frame pack/write and os._exit. The unchanged terminal helper's remaining allocations, writes, close-on-exit and complete outer shutdown require ROOT's reviewed preserved reserve."
+  },
+  "raw_accounting": "SELF and direct leaf worker/observer wait4 remain raw, separately scoped. Nested wrapper terminal wait4 may contain reaped descendant max roll-up and is never subtracted or added as a disjoint peak by V3. No old outcome is discounted.",
+  "precise_lifecycle_gaps": [
+    "No actual ownership, signal, observer, containment, calibration or frame fixture was executed",
+    "Blocking exact wait4 after direct SIGKILL has no kernel-independent bounded return; ROOT outer ownership, timing and failure cleanup are mandatory",
+    "Darwin parent cannot wait4-reap grandchildren; containment records them and keeps the group leader alive for ROOT, without a reaped or empty-group claim",
+    "A descendant that escapes the fresh process group/session, snapshot races or PID birth ambiguity remain unresolved external lifecycle evidence; fresh-group termination alone cannot certify their absence",
+    "Exact import source pins/directory and cache identity are checked; cached bytecode, standard-library/native/runtime/import-hook behavior still require separately pinned ROOT runtime scope, not adversarial Python certification",
+    "Metadata publication and cleanup may fail; owner liveness plus ROOT's retained live-group deadline is the failure backstop, not accepted accounting",
+    "ROOT must review/freeze the actual adapter, verified platform evidence, cross-process clocks, sole outer runner, activation and complete terminal reap before any actual phase",
+    "Original first donor resource UNKNOWN still prevents all-five curriculum qualification"
+  ],
+  "conformance_scope": "This metadata wrapper does not change point-domain/candidate incidence, scheduler, markings, rollback, proof semantics or the scientific audit. Master contract result reporting is preserved: resource/cancellation uncertainty is UNKNOWN, never a theorem, non-tiling or learning claim.",
+  "source_only": true,
+  "functional_project_imports_or_invocations": 0,
+  "scientific_calls": 0,
+  "process_PS_browser_native_calibration_calls": 0,
+  "activations_created": 0,
+  "publication_actions": 0,
+  "qualification_issued": false,
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner": true
+}

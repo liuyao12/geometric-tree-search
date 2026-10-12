@@ -1,0 +1,67 @@
+{
+  "schema": "ROOT-accounting-source-manifest-v4",
+  "status": "SOURCE_ONLY_UNEXECUTED_REVIEW_PENDING",
+  "pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v1.py",
+      "sha256": "600cea97c9ed961fcfa44ff22015fe2d16360fda2171d80c8fb99091e3f9494b",
+      "bytes": 14273
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v2.py",
+      "sha256": "85b30eeb820ee35887c8c7bf19fa15f0e3bc200a20095ae51bd1d82e62e48f54",
+      "bytes": 20053
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v3.py",
+      "sha256": "821397eeb6e8efde19380024f2edd2181d9c12e21ee007aa1f2e327d01754f53",
+      "bytes": 21094
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+      "bytes": 21195
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v1.py",
+      "sha256": "ecc96980c2c5e0178a56c8e47b04495d2543426fea1503013339f0c9ad6fc13d",
+      "bytes": 11161
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+      "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+      "bytes": 11161
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py",
+      "sha256": "aa3202d7a0b2e6bad423b6fc6faffc66d1cc5489444c8a215768fc385f9b964e",
+      "bytes": 26097
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+      "bytes": 26105
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+      "sha256": "6af1f60af074b9030ce312d6003d797484c2f4ba6749cda8e3a66f6bf55d16ca",
+      "bytes": 3108
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/owner-v3-to-v4.diff",
+      "sha256": "bd1a9677f8e1dfad04dfa672fbc63575bc9bb2d8695cdf0d2857e3d1943e6c70",
+      "bytes": 793
+    }
+  ],
+  "counts": {
+    "scientific_calls": 0,
+    "functional_adapter_calls": 0,
+    "process_PS_calls": 0,
+    "RNG_draws": 0
+  },
+  "execution_authorized": false,
+  "actual_resource_qualification": false,
+  "all_five_qualification": false,
+  "historical_first_resource_UNKNOWN_preserved": true,
+  "scope": "Immutable source and AST checks only. No platform qualification or proof/search result. Exact external terminal provenance, closed raw replay, prospective residual reserve and actual activation remain separate requirements."
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "parallel-research-display-source-schema-v1",
+  "expected_view_schema": "ROOT-assembled-parallel-research-reader-v1",
+  "purpose": "ROOT supplies literal saved stage dispositions and local evidence links. No outcomes, source freeze, actual run or qualification are fabricated by this source schema.",
+  "eventual_target": "docs/research/gcts-rl-renewal/parallel-research/reader.html",
+  "required_view_fields": {
+    "schema": "ROOT-assembled-parallel-research-reader-v1",
+    "status_note": "String with actual source/experiment status and explicit claim scope.",
+    "stages": [
+      {
+        "stage": "Saved stage and exact version identity, supplied by ROOT.",
+        "scope": "source-only / metadata review / actual fixture / context preparation / independent static / proof search / training, as supported by the record.",
+        "disposition": "Literal saved disposition; unknown and not_run must remain distinct from acceptance.",
+        "note": "Actual observation, limitations, costs with ownership scope, or missing prerequisite.",
+        "evidence_label": "Human-readable name of the saved record.",
+        "evidence": "Relative evidence/ path to an exact copied saved record. No traversal or external URL."
+      }
+    ],
+    "evidence": [
+      {
+        "label": "Saved evidence name.",
+        "href": "Relative evidence/ path to exact copied saved evidence."
+      }
+    ]
+  },
+  "ROOT_assembly_requirements": [
+    "Assemble actual data and pin every exact copied evidence origin; no draft example is a result.",
+    "Supply exact successor source bindings and review dispositions only after ROOT owns those pins. Source filenames alone cannot establish freeze, review, acceptance or execution.",
+    "Preserve the original first donor resource UNKNOWN and four remaining unexecuted frozen contexts; all-five qualification stays false unless a separately supported later claim explicitly states its version and scope.",
+    "Keep non-scientific calibration and synthetic metadata fixtures separate from actual proof search, semantic context qualification and learning.",
+    "The source-only diagram and HTML baseline are not a new experimental milestone. New stage rows require actual saved evidence of their declared scope.",
+    "Keep phase clocks, outer ownership, source-only review costs and publication costs labeled separately; missing costs remain unavailable.",
+    "Any changed baseline or new theorem/proof/training claim requires a separately reviewed reader successor rather than silently changing the fixed Notebook 115 paragraph.",
+    "The two formula panels reproduce existing goals from curriculum-contexts/view.json; they do not specify or disclose a human-authored proof route.",
+    "Publish only through ROOT after evidence assembly, independent review and live rendering checks. This draft contains no publication action."
+  ],
+  "source_only_census": {
+    "functional_project_imports_or_calls": 0,
+    "science_search_proof_checks_training_RNG": 0,
+    "PS_calibration_native_calls": 0,
+    "browser_activation_publication_actions": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "ROOT-one-shot-synthetic-metadata-fixture-plan-v1",
+  "status": "frozen_invented_record_controls_only",
+  "fixture_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+    "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+    "bytes": 11161
+  },
+  "adapter": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+    "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+    "bytes": 21195
+  },
+  "output_directory": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1",
+  "expected_cases": 38,
+  "one_shot": true,
+  "ROOT_sole_actual_owner": true,
+  "science_owner_PS_native_RNG_calls_authorized": false,
+  "scope": "Only ROOT may invoke the synthetic fixture source once. Invented scopes are parser/arithmetic controls, never actual resource acceptance or proof/search progress.",
+  "all_five_qualification": false
+}

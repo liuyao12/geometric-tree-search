@@ -1,0 +1,13 @@
+--- .gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py
++++ .gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py
+@@ -265,8 +265,8 @@
+         raise ValueError('same pinned actual runtime')
+     verify_pin(plan['runtime']['binary']);verify_pin(plan['runtime']['observer'])
+     checked={}
+-    for group in ('sources','libraries','inputs','preserved'):
+-        for record in plan[group]:
++    for pin_group in ('sources','libraries','inputs','preserved'):
++        for record in plan[pin_group]:
+             exact={k:record[k] for k in ('path','sha256','bytes')}
+             if record['path'] in checked and checked[record['path']]!=exact:
+                 raise ValueError('conflicting immutable pin spelling')

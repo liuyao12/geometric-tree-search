@@ -1,0 +1,77 @@
+{
+  "schema": "source-only-compact-owner-manifest-v4",
+  "status": "SOURCE_ONLY_EXACT_GROUP_RENAME_SUCCESSOR_ROOT_BINDING_PENDING",
+  "predecessor": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-v3.json",
+    "sha256": "a62fc7eb5370ce863e3d4a5790f374da26f3c673cdad6e336d7490e06d9ec741",
+    "bytes": 285210
+  },
+  "sources": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+      "bytes": 26105
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/freeze_compact_owner_v4.py",
+      "sha256": "f1e710645ee511e5518d1f5f2ad196fa35f9a185ba77cac55aeea096291290b2",
+      "bytes": 5975
+    }
+  ],
+  "archive": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-owner-v4.zip",
+    "sha256": "5d560cc8c5113823399e55959e7c9a85ebf9898b44789595b6478b87302ef0ee",
+    "bytes": 36005
+  },
+  "byte_evidence": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/owner-v4-byte-evidence.json",
+    "sha256": "d11b8b46a3c97de0766980f7e134970ba177759b8aa6f27057e0afe440594df7",
+    "bytes": 1767
+  },
+  "source_review_blocker": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-review-blocker-owner-v3.json",
+    "sha256": "0b65f3cb939287877efb0fa5d47c3f66a0df51754b44822acd51479ada5c8935",
+    "bytes": 689
+  },
+  "source_diff": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/owner-v3-to-v4.diff",
+    "sha256": "bd1a9677f8e1dfad04dfa672fbc63575bc9bb2d8695cdf0d2857e3d1943e6c70",
+    "bytes": 793
+  },
+  "inherited_protocol": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/protocol-v3.json",
+    "sha256": "489754394cbedcf2793af2d62e9d97aa7563591c170b5d63c4b442a179228eec",
+    "bytes": 9589
+  },
+  "inherited_scientific_evidence": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/unchanged-science-evidence-v3.json",
+    "sha256": "f24ef67babd3d4bbcba55f8c1f88d9616483426bed2db5da73ab69b5cd8c1542",
+    "bytes": 5482
+  },
+  "reused_sources": {
+    "worker": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    "transport": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    }
+  },
+  "exact_limits": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "owner_CLI_dispatch_blocked": true,
+  "actual_plan_exists": false,
+  "actual_activation_exists": false,
+  "execution_authorized": false,
+  "scientific_calls": 0,
+  "process_calls": 0,
+  "historical_donor_UNKNOWN_preserved": true,
+  "all_five_qualification": false
+}

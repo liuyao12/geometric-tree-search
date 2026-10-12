@@ -1,0 +1,341 @@
+{
+  "schema": "independent-prospective-accounting-adapter-v2-source-review-v1",
+  "status": "STRUCTURAL_GUARDS_IMPROVED_WITH_CONFIRMED_FRAME_INTEGRATION_BLOCKER_AND_OUTER_PREREQUISITES",
+  "scope": "Exact source text/Python3.9 AST/saved JSON/hash/arithmetic reasoning only. No source imports/function calls or actual fixture, project science, process/PS/RNG/native/calibration/browser/activation/publication.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v2.py",
+      "sha256": "85b30eeb820ee35887c8c7bf19fa15f0e3bc200a20095ae51bd1d82e62e48f54",
+      "bytes": 20053
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v1.py",
+      "sha256": "600cea97c9ed961fcfa44ff22015fe2d16360fda2171d80c8fb99091e3f9494b",
+      "bytes": 14273
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v1-source-review-v1.json",
+      "sha256": "1825a1746b2ebb081842a04ccb8533edb2624211c55fea7277770345f157a9a1",
+      "bytes": 14770
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py",
+      "sha256": "aa3202d7a0b2e6bad423b6fc6faffc66d1cc5489444c8a215768fc385f9b964e",
+      "bytes": 26097
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-v3.json",
+      "sha256": "a62fc7eb5370ce863e3d4a5790f374da26f3c673cdad6e336d7490e06d9ec741",
+      "bytes": 285210
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/protocol-v3.json",
+      "sha256": "489754394cbedcf2793af2d62e9d97aa7563591c170b5d63c4b442a179228eec",
+      "bytes": 9589
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py",
+      "sha256": "a31524a879f28650e8f57507d304b939ae634c1e509fa9a663a13a4b686dd55f",
+      "bytes": 16884
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/actual-review-v1.json",
+      "sha256": "9dcf8863cb1cb60d23e88fd6bd175874e35590294657b9f4186089609af450ad",
+      "bytes": 64734
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/conclusions-v1.json",
+      "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+      "bytes": 9398
+    }
+  ],
+  "source_checks_count": 21,
+  "source_checks": [
+    {
+      "check": "exact requested V2 hash/length",
+      "passed": true
+    },
+    {
+      "check": "V1 source/review immutable",
+      "passed": true
+    },
+    {
+      "check": "metadata stdlib imports only",
+      "passed": true
+    },
+    {
+      "check": "unchanged numeric limits",
+      "passed": true
+    },
+    {
+      "check": "strict closed pin type/path/lowercase digest/count",
+      "passed": true
+    },
+    {
+      "check": "pinned file identity stable across open/read/path stat",
+      "passed": true
+    },
+    {
+      "check": "strict exact frame dict/tag integer types",
+      "passed": true
+    },
+    {
+      "check": "finite coherent frame clocks",
+      "passed": true
+    },
+    {
+      "check": "observer/sample numeric strict IDs and monotone paired state",
+      "passed": true
+    },
+    {
+      "check": "closed one-to-one terminal census",
+      "passed": true
+    },
+    {
+      "check": "distinct no-sample leaf and optional registered PID guard",
+      "passed": true
+    },
+    {
+      "check": "complete provisional closed fields and nested leaf schema",
+      "passed": true
+    },
+    {
+      "check": "provisional rederives types/census/sample maxima/subtotal",
+      "passed": true
+    },
+    {
+      "check": "worker lifetime bounded by owner",
+      "passed": true
+    },
+    {
+      "check": "rolled peak lower and residual upper guard",
+      "passed": true
+    },
+    {
+      "check": "disjoint peak sum remains owner rolled-free",
+      "passed": true
+    },
+    {
+      "check": "mandatory saved raw ROOT SELF",
+      "passed": true
+    },
+    {
+      "check": "strict external execution flags and UNKNOWN rejection",
+      "passed": true
+    },
+    {
+      "check": "reserve/historical/qualification labels preserved",
+      "passed": true
+    },
+    {
+      "check": "source-derived exact seven-versus-nine frame blocker",
+      "passed": true
+    },
+    {
+      "check": "saved finite evidence and platform version limitation preserved",
+      "passed": true
+    }
+  ],
+  "function_lines": {
+    "need": 17,
+    "integer": 22,
+    "clock": 27,
+    "peak": 32,
+    "exact_pin": 37,
+    "frame": 61,
+    "validate_provisional": 209,
+    "finish_root_ledger": 254,
+    "__init__": 88,
+    "add_observer": 106,
+    "add_sample": 126,
+    "add_leaf_worker": 158,
+    "add_SELF_before_receipt": 173,
+    "rejects_current_caps": 179,
+    "finish_provisional": 188
+  },
+  "V1_findings_reconciliation": [
+    {
+      "V1": "F1-provisional-reconstruction",
+      "V2": "Structural guard substantially repaired: closed field sets/types, identities, leaf peak/time relation, paired census/sample maxima, reserve/subtotal and pending declaration. Authentic independent raw reconstruction still belongs to the separately reviewed outer gate."
+    },
+    {
+      "V1": "F2-frame-tag-types",
+      "V2": "Strict integer tags repaired, but exact seven-field schema newly conflicts with the nine-field decoded transport. Concrete successful-path blocker."
+    },
+    {
+      "V1": "F3-distinct-leaf-without-samples",
+      "V2": "Distinct owner/leaf PID repaired. Optional expected_pid check added; integration must actually pass or otherwise prove the registered direct handle."
+    },
+    {
+      "V1": "F4-observer-sample-state",
+      "V2": "One-to-one census and prior-sample monotone clock relations repaired. Full raw record/schema/group/leaf authority remains with source-bound owner and independent outer replay."
+    },
+    {
+      "V1": "F5-pins-closed-stream-scope",
+      "V2": "Strict pin shape/types/digest plus stream/path identity checks repaired. Platform evidence parsing and exact import/cache/runtime provenance remain external binding prerequisites."
+    },
+    {
+      "V1": "F6-V2-V3-topology-binding",
+      "V2": "Clarified fresh owner-led group remains correct for repaired V3-or-later source; V2 worker/PS separate sessions are never an accepted integration. ROOT separately found V3 group-variable shadowing and requested immutable V4."
+    },
+    {
+      "V1": "F7-final-clock-failure-gate",
+      "V2": "Worker lifetime containment and residual rolled-peak consistency guards added. Trusted terminal tool receipt/owned reap/cancellation handling and exception-to-UNKNOWN remain outer prerequisites."
+    },
+    {
+      "V1": "F8-prospective-reserve",
+      "V2": "Conditions unchanged: reserve prospective only and no OS/whole-host cap. Exact residual metadata and postlude scope still require source review plus actual saved ROOT SELF/terminal evidence."
+    }
+  ],
+  "findings": [
+    {
+      "id": "V2-B1-raw-frame-schema-integration",
+      "severity": "BLOCKS_SUCCESSFUL_OWNER_PATH_BEFORE_EXECUTION",
+      "adapter_line": 61,
+      "owner_line": 340,
+      "finding": "frame() requires exactly seven keys. Frozen V3 owner retains and passes all nine read_closed_SELF fields. remaining_postlude/terminal_frame are therefore rejected. Every otherwise successful worker would enter UNKNOWN containment, without a successful owner frame.",
+      "minimal_repair": "Keep raw nine-field evidence intact. Author an immutable adapter normalization/validation successor or repaired owner successor that validates the complete nine-field transport (including exact stream pin/scope) and supplies the exact seven-field ledger projection. Bind registered child.pid even when no samples. Update outer replay and source pins consistently; do not mutate V2/V3."
+    },
+    {
+      "id": "V2-B2-external-authenticity-gate",
+      "severity": "REQUIRED_SEPARATE_OUTER_SOURCE_PREREQUISITE",
+      "adapter_line": 254,
+      "finding": "validate_provisional checks structural consistency; it cannot authenticate that those peaks/counts/costs came from the actual owned raw records. execution_provenance is still a supplied metadata object. Neither coherent values nor caller booleans qualify actual resource/topology/terminal evidence.",
+      "minimal_repair": "The independent outer gate must rebuild observer/sample/leaf/SELF state from exact raw pinned streams, compare complete provisional payload, independently decode both raw frames, bind sources/platform/activation/owner direct handle/status/reap and true external tool terminal time, and preserve malformed/missing/cancelled/partial inputs as UNKNOWN."
+    },
+    {
+      "id": "V2-B3-prospective-residual-scope",
+      "severity": "REVIEWED_BOUNDED_POSTLUDE_REQUIRED",
+      "adapter_line": 254,
+      "finding": "Residual rolled-peak difference <=32MiB is a consistency guard; it is neither proof of absence of additional descendants nor a direct measurement of ROOT remaining serialization/exit allocations. The reserve can cover a prospective fixed/bounded reviewed residual path only.",
+      "minimal_repair": "Freeze exact remaining compact metadata/frame/hash/serialization/close/exit operations and explicit size limits. Keep actual saved ROOT SELF mandatory. A failed/uncertain topology or tool terminal observation cannot be repaired by the reserve. No historical donor UNKNOWN discount or cap change."
+    }
+  ],
+  "frame_schema_evidence": {
+    "adapter_exact_fields": [
+      "SELF_ru_maxrss_raw",
+      "entry_monotone_clock",
+      "exit_code",
+      "last_closed_monotone_clock",
+      "pid",
+      "role",
+      "seconds_after_all_artifact_close_before_fixed_postlude"
+    ],
+    "transport_decoded_fields": [
+      "SELF_ru_maxrss_raw",
+      "entry_monotone_clock",
+      "exit_code",
+      "last_closed_monotone_clock",
+      "pid",
+      "remaining_postlude",
+      "role",
+      "seconds_after_all_artifact_close_before_fixed_postlude",
+      "terminal_frame"
+    ],
+    "extra_authentic_transport_fields": [
+      "remaining_postlude",
+      "terminal_frame"
+    ],
+    "owner_passes_unprojected_raw_frame": true
+  },
+  "ROOT_metadata_only_fixture_matrix": [
+    {
+      "id": "M1-valid-no-sample",
+      "target": "adapter state/provisional/final ledger",
+      "cases": "One positive scalar-only fixture with no PS/sample, distinct explicitly bound direct worker PID, positive raw own/leaf peaks and coherent finite clocks; preserve no-observer zero census.",
+      "expected": "Provisional stays false; final resource candidate may be true only for synthetic trusted provenance within caps. Never a real-context qualification."
+    },
+    {
+      "id": "M2-valid-sequential-observers",
+      "target": "max/sample/subtotal arithmetic",
+      "cases": "One positive scalar-only fixture with two sequential direct leaf observer records and exactly one sample each; different observer peaks and sample maxima.",
+      "expected": "Observer max, not sum; exact PS1024 conversion; final terms are ROOT SELF+owner SELF+leaf wait4+maxPS+reserve. Rolled owner is corroboration only."
+    },
+    {
+      "id": "M3-pin-guards",
+      "target": "exact_pin",
+      "cases": "Fixed copies of reviewer-owned metadata bytes; one field at a time: missing/extra field, empty/nonstring path, bool/negative byte count, uppercase/invalid/short digest, byte/hash mismatch.",
+      "expected": "Reject malformed/mismatched pins. Any in-place concurrent replacement test would need a separately ROOT-reviewed ownership fixture; no concurrency is required for this minimal matrix."
+    },
+    {
+      "id": "M4-frame-closed-wire",
+      "target": "frame and repaired normalization",
+      "cases": "Mutate each role/exit/PID/peak type with bool or float; missing/extra frame fields; NaN/Inf/negative clocks; incoherent duration; nonzero exit; role/PID mismatch. Include authentic nine-field decoded transport and exact seven-field projection compatibility controls.",
+      "expected": "Malformed records reject; repaired interface accepts its declared authenticated wire only and retains exact raw evidence."
+    },
+    {
+      "id": "M5-observer-order-and-failure",
+      "target": "add_observer/add_sample",
+      "cases": "Duplicate/skipped/reversed observer ID; duplicate/missing sample; clock regression/parse before reap/over1s; nonreaped/nonzero/failed observer; same owner/observer PID.",
+      "expected": "Reject and preserve incomplete/failed state as UNKNOWN; no retry or positive qualification."
+    },
+    {
+      "id": "M6-leaf-identity-and-bounds",
+      "target": "add_leaf_worker",
+      "cases": "Owner==leaf PID without samples; wrong expected PID; second leaf call; terminal below SELF/sample; >170s leaf; elapsed beyond full leaf clock.",
+      "expected": "Reject identity/leaf/time violations; preserve no-sample distinct valid leaf."
+    },
+    {
+      "id": "M7-provisional-mutations",
+      "target": "validate_provisional",
+      "cases": "One-field mutations across missing/extra dict/leaf fields, strict bool flags, negative/bool counts/peaks, mismatched observer/sample census, zero-observer nonzero max, impossible combined sample max, wrong reserve/subtotal/missing list/scope.",
+      "expected": "Every mutated malformed structure rejects. Independently reconstructed exact raw ledger must additionally be compared by outer gate."
+    },
+    {
+      "id": "M8-rolled-max-and-root-SELF",
+      "target": "finish_root_ledger",
+      "cases": "Owner terminal max below any known own/leaf/PS peak; above known max+reserve by1byte; missing/zero/bool ROOT SELF; owner postclose SELF below preclose.",
+      "expected": "Reject. Boundary max+reserve is only structurally coherent; it does not establish complete topology."
+    },
+    {
+      "id": "M9-caps-and-complete-clocks",
+      "target": "partial/final bounds",
+      "cases": "One-byte below/equal/above512MiB envelope; bounds170/175/180 and just-over; worker full clock exceeds owner; owner exceeds ROOT; ROOT closed time exceeds trusted terminal time.",
+      "expected": "Above cap/time/invalid nesting is UNKNOWN or validation rejection, never acceptance; exact cap can be a synthetic candidate. Partial absence of rejection is always pending."
+    },
+    {
+      "id": "M10-terminal-provenance",
+      "target": "external provenance/UNKNOWN",
+      "cases": "Each required terminal/cancelled/emergency/containment/topology boolean wrong or missing/nonbool; nonzero/bool exit; missing/untrusted/nonfinite tool clock.",
+      "expected": "Malformed fields reject; unsuccessful/cancelled/contained/incomplete topology yields UNKNOWN. Actual external authority remains separate from this synthetic metadata-only control."
+    }
+  ],
+  "fixture_matrix_scope": "Ten small control families proposed only; ROOT must author/freeze actual scalar/metadata fixtures and source pins before any invocation. No actual or synthetic fixture data is generated by this review, and no context/search/model/RNG/calibration functions are needed.",
+  "reserve_conditions": {
+    "bytes": 33554432,
+    "prospective_only": true,
+    "OS_or_whole_host_cap": false,
+    "historical_discount": false,
+    "not_proven_by_five_calibration_cases": true,
+    "actual_ROOT_SELF_mandatory": true,
+    "raw_record_topology_and_terminal_reconstruction_required": true,
+    "residual_operations_need_frozen_size_and_source_scope": true
+  },
+  "preserved_history": {
+    "original_donor_two_guards": "UNKNOWN",
+    "historical_static_complete_bytes": 1023344640,
+    "all_five_qualification": false,
+    "rerun": false,
+    "downward_reclassification": false,
+    "V1_review_immutable": true,
+    "V2_source_immutable": true,
+    "ROOT_separate_V3_owner_finding": "for group pin loop shadows validated group dict; ROOT requested immutable V4 before outer binding. This report does not approve V3 execution."
+  },
+  "call_census": {
+    "project_or_adapter_imports_and_function_calls": 0,
+    "fixture_invocations": 0,
+    "science": 0,
+    "process_PS": 0,
+    "RNG": 0,
+    "native_calibration_browser": 0,
+    "activation_publication": 0
+  },
+  "qualification_issued": false,
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner": true
+}

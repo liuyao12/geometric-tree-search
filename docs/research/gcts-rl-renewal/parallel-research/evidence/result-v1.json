@@ -1,0 +1,386 @@
+{
+  "schema": "ROOT-synthetic-accounting-record-fixtures-v1",
+  "status": "PASS_SYNTHETIC_METADATA_ONLY",
+  "adapter": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+    "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+    "bytes": 21195
+  },
+  "fixture_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+    "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+    "bytes": 11161
+  },
+  "synthetic_evidence": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/synthetic-evidence.json",
+    "sha256": "942c663b2dd06d38fb1db2918893b3da71c9bb1dc788a284732e972359cf49ec",
+    "bytes": 68
+  },
+  "synthetic_frame": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/synthetic-worker-frame.bin",
+    "sha256": "a5080cfab532c52bbe067bdb4aec9ca1a915a416911d9ce056b9f75016739cbb",
+    "bytes": 52
+  },
+  "cases": 38,
+  "passed": 38,
+  "results": [
+    {
+      "name": "coherent invented scopes give expected conditional arithmetic",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "fast leaf without samples remains representable",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "original nine-field authenticated wire format accepted",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "decoded value differing from pinned binary rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "decoded values equal the independently pinned terminal binary"
+      }
+    },
+    {
+      "name": "unknown frame field rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "boolean role rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "floating exit tag rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "nonfinite clock rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "frame entry"
+      }
+    },
+    {
+      "name": "missing frame field rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "same owner and leaf PID without samples rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "distinct direct leaf even without samples"
+      }
+    },
+    {
+      "name": "leaf frame differing from registered direct PID rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "frame matches registered direct leaf"
+      }
+    },
+    {
+      "name": "boolean pin byte count rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "exact pin byte count"
+      }
+    },
+    {
+      "name": "malformed hash rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "exact lowercase SHA256 pin"
+      }
+    },
+    {
+      "name": "empty pin path rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "nonempty declared pin path"
+      }
+    },
+    {
+      "name": "duplicate sample for one observer rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "one sample per just-owned observer"
+      }
+    },
+    {
+      "name": "sample before observer rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "one sample per just-owned observer"
+      }
+    },
+    {
+      "name": "boolean observer ID rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "observer ID"
+      }
+    },
+    {
+      "name": "observer over complete one-second bound rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "unchanged full observer one-second bound"
+      }
+    },
+    {
+      "name": "missing sample in observer census rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "complete one-to-one observer/sample census"
+      }
+    },
+    {
+      "name": "sample clock preceding closed detail rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "monotone sample follows closed observer detail"
+      }
+    },
+    {
+      "name": "false transported subtotal rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "reconstructed provisional subtotal"
+      }
+    },
+    {
+      "name": "false transported sample census rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "transported paired observer census/maximum"
+      }
+    },
+    {
+      "name": "false missing-scope declaration rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "complete pending missing-scope declaration"
+      }
+    },
+    {
+      "name": "transport grants itself acceptance rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "strict pending provisional scope"
+      }
+    },
+    {
+      "name": "transport claims all-five acceptance rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "strict pending provisional scope"
+      }
+    },
+    {
+      "name": "unknown transported ledger field rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "exact complete provisional projection"
+      }
+    },
+    {
+      "name": "missing raw ROOT SELF rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "saved raw ROOT SELF after metadata raw usage"
+      }
+    },
+    {
+      "name": "owner roll-up below known leaf scope rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "raw owner terminal maximum covers each individually measured child scope"
+      }
+    },
+    {
+      "name": "unexplained owner roll-up over residual reserve rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "unexplained terminal roll-up exceeds reviewed residual reserve"
+      }
+    },
+    {
+      "name": "leaf full lifetime outside owner lifetime rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "direct leaf creation/reap lifetime lies inside owned owner lifetime"
+      }
+    },
+    {
+      "name": "boolean external terminal code rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "integer ROOT exit code"
+      }
+    },
+    {
+      "name": "cancelled terminal remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "emergency kill remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "containment latch remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "missing terminal remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "unknown topology remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "whole boundary over 180 seconds remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "over-cap distinct envelope remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    }
+  ],
+  "fixture_seconds": 0.008029874999999999,
+  "scope": "Invented IDs/clocks/peaks and two local synthetic files; actual wrapper/PS/science not invoked. Positive conditional arithmetic is not actual resource acceptance.",
+  "scientific_calls": 0,
+  "owner_or_process_PS_calls": 0,
+  "RNG_draws": 0,
+  "actual_platform_or_curriculum_qualification": false,
+  "all_five_qualification": false,
+  "historical_first_resource_UNKNOWN_preserved": true
+}

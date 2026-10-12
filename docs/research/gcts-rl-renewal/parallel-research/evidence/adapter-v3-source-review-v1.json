@@ -1,0 +1,222 @@
+{
+  "schema": "independent-accounting-adapter-v3-frame-successor-source-review-v1",
+  "status": "V2_FRAME_INTERFACE_BLOCKER_FIXED_WITH_REMAINING_SAME_BUFFER_PIN_BINDING_GAP",
+  "scope": "Full exact V3 text/Python3.9 AST/byte reverse delta, V4 source interface and saved JSON/hash only; no project or adapter/owner imports/functions, fixtures/processes/PS/science/RNG/native/calibration/browser/activation/publication.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v3.py",
+      "sha256": "821397eeb6e8efde19380024f2edd2181d9c12e21ee007aa1f2e327d01754f53",
+      "bytes": 21094
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v2.py",
+      "sha256": "85b30eeb820ee35887c8c7bf19fa15f0e3bc200a20095ae51bd1d82e62e48f54",
+      "bytes": 20053
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v2-source-review-v1.json",
+      "sha256": "c21a49ed9afdc0d71ed524c33d61cc0e2e23761d9abb6584f10887e7c527aba5",
+      "bytes": 16552
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+      "bytes": 26105
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py",
+      "sha256": "aa3202d7a0b2e6bad423b6fc6faffc66d1cc5489444c8a215768fc385f9b964e",
+      "bytes": 26097
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+      "sha256": "6af1f60af074b9030ce312d6003d797484c2f4ba6749cda8e3a66f6bf55d16ca",
+      "bytes": 3108
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/actual-review-v1.json",
+      "sha256": "9dcf8863cb1cb60d23e88fd6bd175874e35590294657b9f4186089609af450ad",
+      "bytes": 64734
+    }
+  ],
+  "source_checks_count": 13,
+  "source_checks": [
+    {
+      "check": "exact requested V3 source",
+      "passed": true
+    },
+    {
+      "check": "V2 review/source immutable",
+      "passed": true
+    },
+    {
+      "check": "exact frozen owner V4 source",
+      "passed": true
+    },
+    {
+      "check": "V3 changes only struct import and frame body",
+      "passed": true
+    },
+    {
+      "check": "V4 owner only pin loop rename",
+      "passed": true
+    },
+    {
+      "check": "authentic seven projection or nine transport exact field sets",
+      "passed": true
+    },
+    {
+      "check": "raw nine-field wire exact postlude scope retained",
+      "passed": true
+    },
+    {
+      "check": "original network binary format matches transport pack/unpack",
+      "passed": true
+    },
+    {
+      "check": "raw frame exact 52 length and no trailing byte",
+      "passed": true
+    },
+    {
+      "check": "magic and reserved check plus complete decoded value comparison",
+      "passed": true
+    },
+    {
+      "check": "owner V4 now compatible unprojected nine-field source interface",
+      "passed": true
+    },
+    {
+      "check": "V2 structural limits and arithmetic byte preserved outside frame",
+      "passed": true
+    },
+    {
+      "check": "exact pin and second raw read are separate source opens",
+      "passed": true
+    }
+  ],
+  "resolved": {
+    "V2_raw_frame_schema_mismatch": true,
+    "V3_decode_format_matches_original_transport": true,
+    "strict_closed_7_or_9_fields": true,
+    "owner_V4_group_variable_shadowing_repaired_by_exact_rename": true,
+    "V2_guards_units_limits_arithmetic_unchanged": true
+  },
+  "finding": {
+    "id": "V3-F1-pin-read-buffer-gap",
+    "severity": "MINIMAL_SAME_BUFFER_BINDING_REPAIR_REQUIRED_FOR_EXACT_FRAME_AUTHORITY",
+    "adapter_line": 62,
+    "description": "The nine-field branch verifies a pin using exact_pin() and then independently reopens the path to decode a second bounded raw buffer. The second buffer is compared semantically with metadata but is not SHA256-bound to the declared terminal_frame pin. A between-open path/content change can make the hash observation and decoded fields refer to different byte snapshots. No race fixture was executed.",
+    "minimal_repair": "In an immutable successor, require len(raw)==terminal_frame.bytes and hashlib.sha256(raw).hexdigest()==terminal_frame.sha256 for the actual bounded buffer passed to struct.unpack; preferably obtain stable identity and bounded bytes in a single verification/read scope. Keep V1/V2/V3 files and findings unchanged."
+  },
+  "external_prerequisites": [
+    {
+      "id": "V2-B2-external-authenticity-gate",
+      "severity": "REQUIRED_SEPARATE_OUTER_SOURCE_PREREQUISITE",
+      "adapter_line": 254,
+      "finding": "validate_provisional checks structural consistency; it cannot authenticate that those peaks/counts/costs came from the actual owned raw records. execution_provenance is still a supplied metadata object. Neither coherent values nor caller booleans qualify actual resource/topology/terminal evidence.",
+      "minimal_repair": "The independent outer gate must rebuild observer/sample/leaf/SELF state from exact raw pinned streams, compare complete provisional payload, independently decode both raw frames, bind sources/platform/activation/owner direct handle/status/reap and true external tool terminal time, and preserve malformed/missing/cancelled/partial inputs as UNKNOWN."
+    },
+    {
+      "id": "V2-B3-prospective-residual-scope",
+      "severity": "REVIEWED_BOUNDED_POSTLUDE_REQUIRED",
+      "adapter_line": 254,
+      "finding": "Residual rolled-peak difference <=32MiB is a consistency guard; it is neither proof of absence of additional descendants nor a direct measurement of ROOT remaining serialization/exit allocations. The reserve can cover a prospective fixed/bounded reviewed residual path only.",
+      "minimal_repair": "Freeze exact remaining compact metadata/frame/hash/serialization/close/exit operations and explicit size limits. Keep actual saved ROOT SELF mandatory. A failed/uncertain topology or tool terminal observation cannot be repaired by the reserve. No historical donor UNKNOWN discount or cap change."
+    }
+  ],
+  "ROOT_metadata_only_fixture_matrix": [
+    {
+      "id": "M1-valid-no-sample",
+      "target": "adapter state/provisional/final ledger",
+      "cases": "One positive scalar-only fixture with no PS/sample, distinct explicitly bound direct worker PID, positive raw own/leaf peaks and coherent finite clocks; preserve no-observer zero census.",
+      "expected": "Provisional stays false; final resource candidate may be true only for synthetic trusted provenance within caps. Never a real-context qualification."
+    },
+    {
+      "id": "M2-valid-sequential-observers",
+      "target": "max/sample/subtotal arithmetic",
+      "cases": "One positive scalar-only fixture with two sequential direct leaf observer records and exactly one sample each; different observer peaks and sample maxima.",
+      "expected": "Observer max, not sum; exact PS1024 conversion; final terms are ROOT SELF+owner SELF+leaf wait4+maxPS+reserve. Rolled owner is corroboration only."
+    },
+    {
+      "id": "M3-pin-guards",
+      "target": "exact_pin",
+      "cases": "Fixed copies of reviewer-owned metadata bytes; one field at a time: missing/extra field, empty/nonstring path, bool/negative byte count, uppercase/invalid/short digest, byte/hash mismatch.",
+      "expected": "Reject malformed/mismatched pins. Any in-place concurrent replacement test would need a separately ROOT-reviewed ownership fixture; no concurrency is required for this minimal matrix."
+    },
+    {
+      "id": "M4-frame-closed-wire",
+      "target": "frame and repaired normalization",
+      "cases": "Mutate each role/exit/PID/peak type with bool or float; missing/extra frame fields; NaN/Inf/negative clocks; incoherent duration; nonzero exit; role/PID mismatch. Include authentic nine-field decoded transport and exact seven-field projection compatibility controls. For V3 add raw binary 51/53-byte lengths, wrong magic/reserved, each decoded value mismatch, wrong remaining_postlude string and terminal stream pin mutation. Preserve positive nine-field authenticated transport and seven-field projection.",
+      "expected": "Malformed records reject; repaired interface accepts its declared authenticated wire only and retains exact raw evidence."
+    },
+    {
+      "id": "M5-observer-order-and-failure",
+      "target": "add_observer/add_sample",
+      "cases": "Duplicate/skipped/reversed observer ID; duplicate/missing sample; clock regression/parse before reap/over1s; nonreaped/nonzero/failed observer; same owner/observer PID.",
+      "expected": "Reject and preserve incomplete/failed state as UNKNOWN; no retry or positive qualification."
+    },
+    {
+      "id": "M6-leaf-identity-and-bounds",
+      "target": "add_leaf_worker",
+      "cases": "Owner==leaf PID without samples; wrong expected PID; second leaf call; terminal below SELF/sample; >170s leaf; elapsed beyond full leaf clock.",
+      "expected": "Reject identity/leaf/time violations; preserve no-sample distinct valid leaf."
+    },
+    {
+      "id": "M7-provisional-mutations",
+      "target": "validate_provisional",
+      "cases": "One-field mutations across missing/extra dict/leaf fields, strict bool flags, negative/bool counts/peaks, mismatched observer/sample census, zero-observer nonzero max, impossible combined sample max, wrong reserve/subtotal/missing list/scope.",
+      "expected": "Every mutated malformed structure rejects. Independently reconstructed exact raw ledger must additionally be compared by outer gate."
+    },
+    {
+      "id": "M8-rolled-max-and-root-SELF",
+      "target": "finish_root_ledger",
+      "cases": "Owner terminal max below any known own/leaf/PS peak; above known max+reserve by1byte; missing/zero/bool ROOT SELF; owner postclose SELF below preclose.",
+      "expected": "Reject. Boundary max+reserve is only structurally coherent; it does not establish complete topology."
+    },
+    {
+      "id": "M9-caps-and-complete-clocks",
+      "target": "partial/final bounds",
+      "cases": "One-byte below/equal/above512MiB envelope; bounds170/175/180 and just-over; worker full clock exceeds owner; owner exceeds ROOT; ROOT closed time exceeds trusted terminal time.",
+      "expected": "Above cap/time/invalid nesting is UNKNOWN or validation rejection, never acceptance; exact cap can be a synthetic candidate. Partial absence of rejection is always pending."
+    },
+    {
+      "id": "M10-terminal-provenance",
+      "target": "external provenance/UNKNOWN",
+      "cases": "Each required terminal/cancelled/emergency/containment/topology boolean wrong or missing/nonbool; nonzero/bool exit; missing/untrusted/nonfinite tool clock.",
+      "expected": "Malformed fields reject; unsuccessful/cancelled/contained/incomplete topology yields UNKNOWN. Actual external authority remains separate from this synthetic metadata-only control."
+    },
+    {
+      "id": "M11-same-byte-pin-and-decode",
+      "target": "repaired nine-field authentication",
+      "cases": "ROOT may source-freeze a metadata-only hook/control that replaces the reviewer-owned frame file between the first exact_pin verification and the subsequent bounded raw read, with a separately authored changed buffer and declared projection. Never mutate historical artifacts.",
+      "expected": "Reject unless the exact raw buffer decoded is itself SHA256/length-bound to the declared pin. This control is proposed only; no file/replacement/fixture is authored or invoked here."
+    }
+  ],
+  "fixture_matrix_scope": "Eleven proposed control families only; ROOT must author/freeze fixture code/inputs before invocation. Scalar/stdlib metadata controls do not qualify any actual context or learner.",
+  "reserve_conditions": {
+    "bytes": 33554432,
+    "prospective_only": true,
+    "OS_or_whole_host_cap": false,
+    "historical_discount": false,
+    "not_proven_by_five_calibration_cases": true,
+    "actual_ROOT_SELF_mandatory": true,
+    "raw_record_topology_and_terminal_reconstruction_required": true,
+    "residual_operations_need_frozen_size_and_source_scope": true
+  },
+  "preserved_history": {
+    "original_donor_two_guards": "UNKNOWN",
+    "all_five_qualification": false,
+    "rerun_or_downward_reclassification": false,
+    "V2_review_immutable": true
+  },
+  "functional_calls": 0,
+  "actual_fixture_data_authored_or_invoked": false,
+  "execution_authorized": false,
+  "qualification_issued": false,
+  "ROOT_sole_actual_owner": true
+}

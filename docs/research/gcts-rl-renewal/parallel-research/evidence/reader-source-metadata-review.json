@@ -1,0 +1,223 @@
+{
+  "schema": "parallel-research-reader-source-metadata-review-v2",
+  "status": "SOURCE_METADATA_PASS",
+  "scope": "SOURCE/METADATA ONLY. V1 checks retained for exact unchanged JS/schema and HTML apart from one masthead href. Four new hash/exact-byte-delta checks validate preserved V1 archive and final parent-link successor. No JS execution, browser, experiment, project functional import/call, PS, RNG, fixture invocation, activation or publication.",
+  "source_pins": [
+    {
+      "path": ".gcts-active/parallel-research-reader-source-20261012/reader.html",
+      "sha256": "fbc2a0cb8b547f89f6763818de737a50220129db14b0192deded8fc7d631098c",
+      "bytes": 15069
+    },
+    {
+      "path": ".gcts-active/parallel-research-reader-source-20261012/reader.js",
+      "sha256": "b8756eaf1665b953c762de4387f19c2de455cc1912090858c6edb34113b321b7",
+      "bytes": 2774
+    },
+    {
+      "path": ".gcts-active/parallel-research-reader-source-20261012/view-schema-v1.json",
+      "sha256": "a9e7fcb13011a3f4f0e8f0fb89dcf4b022e932ec8c0e3d4f4f6b4f40839b3b87",
+      "bytes": 3106
+    }
+  ],
+  "input_pins": [
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/view.json",
+      "sha256": "b08e719a53cdd466fd24156662c78c428fd01c960e0d95e4de515d6363226ff1",
+      "bytes": 20981
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/reader.html",
+      "sha256": "f446213e9e9b8ea5453172639809ddfb97cec681fcc3cd0a75c7ad4339b8a0b6",
+      "bytes": 11360
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/goal-progress-notebook115-v1.json",
+      "sha256": "c1c73dd5e294d3ac4ca63875a009dcc56766c36cfe15ebc80359c1fcc2956cf5",
+      "bytes": 1406
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/integration-v3.json",
+      "sha256": "55ef3dd0e1502cca0bc2174f5d2f7a7a9e8f80adabf0e4125ffc07145b7f4d99",
+      "bytes": 3860
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v1-source-review-v1.json",
+      "sha256": "1825a1746b2ebb081842a04ccb8533edb2624211c55fea7277770345f157a9a1",
+      "bytes": 14770
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v2-source-review-v1.json",
+      "sha256": "c21a49ed9afdc0d71ed524c33d61cc0e2e23761d9abb6584f10887e7c527aba5",
+      "bytes": 16552
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v3-source-review-v1.json",
+      "sha256": "e8492c116382dfd05db2a18a7b167441303713484750280b31d31a3af9a95f30",
+      "bytes": 12874
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/result-v1.json",
+      "sha256": "c1b8e7ed6a4d7aa3d7e06f21341e47c99cdde8e43f09503c253d57afd1a5bffe",
+      "bytes": 10947
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+      "bytes": 21195
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/view.json",
+      "sha256": "95d4c473b887c5ef4acb11a138596951b7cf4034d93e4ca85f22fbe69acbb2bb",
+      "bytes": 38075
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/report.css",
+      "sha256": "197778de751b8533761054d8b69c0ce7070205b58c593191e6105599a23418e2",
+      "bytes": 9993
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "checks_count": 28,
+  "checks": [
+    {
+      "check": "HTML IDs unique",
+      "passed": true
+    },
+    {
+      "check": "all literal DOM lookup IDs exist",
+      "passed": true
+    },
+    {
+      "check": "all local section fragment links resolve",
+      "passed": true
+    },
+    {
+      "check": "shared report CSS and established MathJax version",
+      "passed": true
+    },
+    {
+      "check": "MathJax delimiter strings retain two source backslashes",
+      "passed": true
+    },
+    {
+      "check": "body inline LaTeX delimiters balanced",
+      "passed": true
+    },
+    {
+      "check": "no Unicode mathematical glyphs or HTML superscripts",
+      "passed": true
+    },
+    {
+      "check": "literal source/API identifiers use code elements",
+      "passed": true
+    },
+    {
+      "check": "ROOT display view and source schema names agree",
+      "passed": true
+    },
+    {
+      "check": "future view is not fabricated or authored",
+      "passed": true
+    },
+    {
+      "check": "reader uses text nodes rather than dynamic markup",
+      "passed": true
+    },
+    {
+      "check": "reader has only fixed saved-view fetch",
+      "passed": true
+    },
+    {
+      "check": "evidence path lexical guard restricts to local evidence",
+      "passed": true
+    },
+    {
+      "check": "reader contains no code evaluation or project execution interfaces",
+      "passed": true
+    },
+    {
+      "check": "baseline preserves original full resource UNKNOWN",
+      "passed": true
+    },
+    {
+      "check": "baseline preserves four unrun and all-five false",
+      "passed": true
+    },
+    {
+      "check": "finite calibration and missing SELF scope explicit",
+      "passed": true
+    },
+    {
+      "check": "program-level planned split does not invent active theory agents",
+      "passed": true
+    },
+    {
+      "check": "saved fixture count and non-scientific scope match displayed claim",
+      "passed": true
+    },
+    {
+      "check": "saved adapter fixture identity matches raw source bytes",
+      "passed": true
+    },
+    {
+      "check": "no new mathematical/search-speed advantage claimed",
+      "passed": true
+    },
+    {
+      "check": "equality-family panels match existing frozen goal formulas",
+      "passed": true
+    },
+    {
+      "check": "third frame finding retains no race experiment claim",
+      "passed": true
+    },
+    {
+      "check": "source-only stage table cannot confer acceptance",
+      "passed": true
+    },
+    {
+      "check": "old HTML archive preserves exact V1 byte hash and length",
+      "passed": true
+    },
+    {
+      "check": "HTML changes only one masthead parent anchor with exact reverse delta",
+      "passed": true
+    },
+    {
+      "check": "JavaScript and schema exact V1 bytes unchanged",
+      "passed": true
+    },
+    {
+      "check": "new parent panel anchor matches ROOT supplied collision resolution",
+      "passed": true
+    }
+  ],
+  "actual_saved_fixture_observation": {
+    "cases": 38,
+    "passed": 38,
+    "fixture_seconds": 0.008029874999999999,
+    "scope": "Invented IDs/clocks/peaks and two local synthetic files; actual wrapper/PS/science not invoked. Positive conditional arithmetic is not actual resource acceptance.",
+    "qualification": false
+  },
+  "call_census": {
+    "project_functional_imports_or_calls": 0,
+    "new_actual_fixture_invocations": 0,
+    "science_search_proof_training_RNG": 0,
+    "PS_native_calibration_browser_activation_publication": 0
+  },
+  "ROOT_required": "Assemble exact saved view and origins; independently reconcile actual synthetic records and source binding; verify JavaScript syntax and live rendering/publication. This draft does not freeze or execute a new outer context experiment.",
+  "predecessor_review": {
+    "path": ".gcts-active/parallel-research-reader-source-20261012/source-metadata-review-v1.json",
+    "sha256": "0b28866e5faccab58177c533608a886c64a51c9ae9a7ec288952effa7eabef2b",
+    "bytes": 6924
+  },
+  "preserved_predecessor_html": {
+    "path": ".gcts-active/parallel-research-reader-source-20261012/before-parent-anchor-update-reader.html",
+    "sha256": "2443e7110103dd8e33118bd1e23f44b0816c26fea6dc511a6a1e1c3a3104c8cd",
+    "bytes": 15062
+  }
+}

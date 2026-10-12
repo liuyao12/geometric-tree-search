@@ -1,0 +1,334 @@
+{
+  "schema": "independent-adapter-v4-and-metadata-fixture-v2-source-review-v1",
+  "status": "SOURCE_PASS_FOR_NARROW_ONE_SHOT_SYNTHETIC_METADATA_CONTROLS_ONLY",
+  "scope": "Full exact source/Python3.9 AST/hash/reverse-delta/static arithmetic only. No adapter/fixture/owner import or function invocation, project science, process/PS/RNG/native/calibration/browser/activation/publication.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+      "bytes": 21195
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v3.py",
+      "sha256": "821397eeb6e8efde19380024f2edd2181d9c12e21ee007aa1f2e327d01754f53",
+      "bytes": 21094
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+      "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+      "bytes": 11161
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v3-source-review-v1.json",
+      "sha256": "e8492c116382dfd05db2a18a7b167441303713484750280b31d31a3af9a95f30",
+      "bytes": 12874
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+      "bytes": 26105
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    }
+  ],
+  "source_checks_count": 19,
+  "source_checks": [
+    {
+      "check": "exact adapter V4 pin",
+      "passed": true
+    },
+    {
+      "check": "exact fixture V2 pin",
+      "passed": true
+    },
+    {
+      "check": "preserved V3 source/review exact pins",
+      "passed": true
+    },
+    {
+      "check": "exact reverse V4 minimal fix recovers V3",
+      "passed": true
+    },
+    {
+      "check": "actual decoded buffer hash and length verified before struct unpack",
+      "passed": true
+    },
+    {
+      "check": "original 7-or-9 field transport unchanged",
+      "passed": true
+    },
+    {
+      "check": "fixture stdlib-only imports",
+      "passed": true
+    },
+    {
+      "check": "fixture no exact process/PS/RNG/science call identifiers",
+      "passed": true
+    },
+    {
+      "check": "fixture dynamic load names only exact pinned metadata adapter",
+      "passed": true
+    },
+    {
+      "check": "exclusive one-shot synthetic namespace and files",
+      "passed": true
+    },
+    {
+      "check": "expected coherent envelope independently arithmetic-correct",
+      "passed": true
+    },
+    {
+      "check": "positive identity/peak/sample clocks source coherent",
+      "passed": true
+    },
+    {
+      "check": "nine-field positive raw binary format correct",
+      "passed": true
+    },
+    {
+      "check": "fixture positive statuses explicitly assert no all-five qualification",
+      "passed": true
+    },
+    {
+      "check": "fixture UNKNOWN controls assert false resource and UNKNOWN disposition",
+      "passed": true
+    },
+    {
+      "check": "38 source-derived controls,28 rejection and10 accepted-call controls",
+      "passed": true
+    },
+    {
+      "check": "distinct static control labels",
+      "passed": true
+    },
+    {
+      "check": "fixture driver preserves failure/no-rerun semantics",
+      "passed": true
+    },
+    {
+      "check": "fixture exact source/frame/evidence pins and invented scope",
+      "passed": true
+    }
+  ],
+  "V3_finding_resolution": {
+    "same_decoded_buffer_hash_verified": true,
+    "raw_buffer_length": 52,
+    "bounded_raw_read": 53,
+    "original_network_format": "!8sBBHQQddd",
+    "minimal_change_only": true,
+    "V3_source_and_review_preserved": true
+  },
+  "fixture_source_assessment": {
+    "planned_controls_count": 38,
+    "planned_rejection_controls": 28,
+    "planned_accepted_call_controls": 10,
+    "conditional_expected_envelope_bytes": 33694432,
+    "arithmetic_terms_bytes": {
+      "ROOT_SELF": 40000,
+      "owner_SELF": 35000,
+      "leaf_worker_terminal": 60000,
+      "one_observer_terminal": 5000,
+      "prospective_reserve": 33554432
+    },
+    "planned_controls": [
+      {
+        "label": "coherent invented scopes give expected conditional arithmetic",
+        "expected_rejection": false
+      },
+      {
+        "label": "fast leaf without samples remains representable",
+        "expected_rejection": false
+      },
+      {
+        "label": "original nine-field authenticated wire format accepted",
+        "expected_rejection": false
+      },
+      {
+        "label": "decoded value differing from pinned binary rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "unknown frame field rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "boolean role rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "floating exit tag rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "nonfinite clock rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "missing frame field rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "same owner and leaf PID without samples rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "leaf frame differing from registered direct PID rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "boolean pin byte count rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "malformed hash rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "empty pin path rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "duplicate sample for one observer rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "sample before observer rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "boolean observer ID rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "observer over complete one-second bound rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "missing sample in observer census rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "sample clock preceding closed detail rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "false transported subtotal rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "false transported sample census rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "false missing-scope declaration rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "transport grants itself acceptance rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "transport claims all-five acceptance rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "unknown transported ledger field rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "missing raw ROOT SELF rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "owner roll-up below known leaf scope rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "unexplained owner roll-up over residual reserve rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "leaf full lifetime outside owner lifetime rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "boolean external terminal code rejected",
+        "expected_rejection": true
+      },
+      {
+        "label": "cancelled terminal remains UNKNOWN",
+        "expected_rejection": false
+      },
+      {
+        "label": "emergency kill remains UNKNOWN",
+        "expected_rejection": false
+      },
+      {
+        "label": "containment latch remains UNKNOWN",
+        "expected_rejection": false
+      },
+      {
+        "label": "missing terminal remains UNKNOWN",
+        "expected_rejection": false
+      },
+      {
+        "label": "unknown topology remains UNKNOWN",
+        "expected_rejection": false
+      },
+      {
+        "label": "whole boundary over 180 seconds remains UNKNOWN",
+        "expected_rejection": false
+      },
+      {
+        "label": "over-cap distinct envelope remains UNKNOWN",
+        "expected_rejection": false
+      }
+    ],
+    "seven_and_nine_field_positive_paths": true,
+    "actual_inputs": "Invented scalar PID/clock/peak records plus two fresh private synthetic files. No actual resource/topology proof.",
+    "failure_behavior": "Expected validation exceptions become recorded rejection rows. Assertion/unexpected exceptions can abort with a preserved partial synthetic namespace and no PASS receipt; ROOT must not retry or infer missing success.",
+    "timing_scope": "fixture_seconds ends before result receipt serialization/close/print/exit; actual ROOT tool duration and later review/publication costs remain separate metadata costs."
+  },
+  "ROOT_one_shot_source_conditions": [
+    "Bind exact adapter V4 and fixture V2 source/review pins before the sole invocation.",
+    "Use fresh exclusive metadata-fixtures-v1 namespace; any collision/error is a preserved failed or incomplete metadata observation, never a retry.",
+    "Only the stdlib metadata adapter is dynamically loaded; use the pinned interpreter with bytecode writes disabled and no project scientific modules.",
+    "Record exact resulting synthetic artifact pins, terminal status and full actual tool timing; independently reconcile actual rows rather than assuming source-planned counts imply executed success.",
+    "Synthetic resource_accepted=true is conditional arithmetic on invented records only, never an actual wrapper/context/platform/learner qualification."
+  ],
+  "known_fixture_coverage_limits": [
+    "No fixture with two sequential observers; maximum-versus-sum rule remains directly visible in reviewed adapter source.",
+    "No exact cap-equality or170/175/180 boundary matrix beyond over-cap/over180 synthetic controls.",
+    "No actual race/path replacement, cancellation/containment cleanup, runtime/import/native/topology or process lifetime is exercised.",
+    "No malformed raw magic/reserved/51-or53-byte frame control in this initial38-case fixture, despite corresponding source guard review.",
+    "Fixture results cannot close independent outer raw replay/external terminal/ROOT SELF or prospective bounded postlude obligations."
+  ],
+  "reserve_conditions": {
+    "fixed_bytes": 33554432,
+    "prospective_only": true,
+    "no_historical_discount": true,
+    "no_OS_or_whole_host_hardcap": true,
+    "requires_frozen_bounded_residual_operations": true,
+    "actual_ROOT_SELF_and_external_terminal_evidence_mandatory": true
+  },
+  "preserved_history": {
+    "original_donor_two_guards": "UNKNOWN",
+    "historical_static_complete_bytes": 1023344640,
+    "rerun_or_reclassification": false,
+    "all_five_qualification": false
+  },
+  "metadata_review_event_note": "An initial exact-identifier scan used substring solve and falsely matched Path.resolve. The stdlib AST check stopped before any report write/import/invocation; inspected identifier was Path(__file__).resolve only. Corrected exact call-identifier scan passed. No fixture or source function ran.",
+  "reviewer_call_census": {
+    "adapter_fixture_owner_imports_or_function_invocations": 0,
+    "fixtures_executed": 0,
+    "project_science": 0,
+    "process_PS": 0,
+    "RNG_native_calibration_browser": 0,
+    "activation_publication": 0
+  },
+  "actual_context_or_platform_qualification_issued": false,
+  "ROOT_sole_actual_owner": true
+}

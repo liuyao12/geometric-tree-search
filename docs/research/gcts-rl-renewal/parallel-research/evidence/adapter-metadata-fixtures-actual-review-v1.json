@@ -1,0 +1,527 @@
+{
+  "schema": "independent-saved-synthetic-adapter-fixture-metadata-review-v1",
+  "status": "ACCEPTED_38_EXECUTED_SYNTHETIC_RECORD_CONTROLS_ONLY",
+  "scope": "Saved source/JSON/hash/52-byte binary decode/static AST+arithmetic only. No adapter/fixture/owner/project import/function invocation, rerun, model/search/checker/PS/process ownership/RNG/native/calibration/browser/activation/publication.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v4-fixture-v2-source-review-v1.json",
+      "sha256": "0bff3d46088284e4687192f324640e91f7701a32198c80a28324e4fd54472df8",
+      "bytes": 12003
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixture-invocation-v1.json",
+      "sha256": "9087c04aee1fe422650a78c5f6d412ad8158ebea8072e20446df94a5d09f354e",
+      "bytes": 1621
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixture-plan-v1.json",
+      "sha256": "5de82e2a94de32faa48bbc45759ee909ccd5c88ed6b92e91c3935b42166c061d",
+      "bytes": 1041
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/result-v1.json",
+      "sha256": "c1b8e7ed6a4d7aa3d7e06f21341e47c99cdde8e43f09503c253d57afd1a5bffe",
+      "bytes": 10947
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/synthetic-evidence.json",
+      "sha256": "942c663b2dd06d38fb1db2918893b3da71c9bb1dc788a284732e972359cf49ec",
+      "bytes": 68
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/synthetic-worker-frame.bin",
+      "sha256": "a5080cfab532c52bbe067bdb4aec9ca1a915a416911d9ce056b9f75016739cbb",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+      "bytes": 21195
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+      "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+      "bytes": 11161
+    }
+  ],
+  "metadata_checks_count": 106,
+  "metadata_checks": [
+    {
+      "check": "closed actual plan status and one-shot scope",
+      "passed": true
+    },
+    {
+      "check": "plan expected38 and no all-five qualification",
+      "passed": true
+    },
+    {
+      "check": "plan exact adapter source bytes",
+      "passed": true
+    },
+    {
+      "check": "plan exact fixture_source source bytes",
+      "passed": true
+    },
+    {
+      "check": "invocation exact plan pin",
+      "passed": true
+    },
+    {
+      "check": "invocation exact result pin",
+      "passed": true
+    },
+    {
+      "check": "invocation exact fixture_source pin",
+      "passed": true
+    },
+    {
+      "check": "invocation exact adapter_source pin",
+      "passed": true
+    },
+    {
+      "check": "result exact adapter pin",
+      "passed": true
+    },
+    {
+      "check": "result exact fixture_source pin",
+      "passed": true
+    },
+    {
+      "check": "result exact synthetic_evidence pin",
+      "passed": true
+    },
+    {
+      "check": "result exact synthetic_frame pin",
+      "passed": true
+    },
+    {
+      "check": "invocation/result source pins equal declared plan despite absolute spelling",
+      "passed": true
+    },
+    {
+      "check": "result status actual synthetic-only PASS",
+      "passed": true
+    },
+    {
+      "check": "ROOT saved terminal0/one invocation",
+      "passed": true
+    },
+    {
+      "check": "counts actual38 of38",
+      "passed": true
+    },
+    {
+      "check": "source ASTplanned labels equal previous source review",
+      "passed": true
+    },
+    {
+      "check": "row 0 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 0 no error",
+      "passed": true
+    },
+    {
+      "check": "row 1 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 1 no error",
+      "passed": true
+    },
+    {
+      "check": "row 2 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 2 no error",
+      "passed": true
+    },
+    {
+      "check": "row 3 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 3 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 4 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 4 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 5 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 5 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 6 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 6 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 7 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 7 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 8 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 8 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 9 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 9 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 10 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 10 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 11 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 11 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 12 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 12 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 13 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 13 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 14 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 14 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 15 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 15 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 16 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 16 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 17 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 17 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 18 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 18 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 19 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 19 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 20 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 20 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 21 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 21 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 22 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 22 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 23 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 23 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 24 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 24 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 25 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 25 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 26 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 26 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 27 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 27 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 28 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 28 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 29 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 29 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 30 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 30 saved targeted validation error",
+      "passed": true
+    },
+    {
+      "check": "row 31 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 31 no error",
+      "passed": true
+    },
+    {
+      "check": "row 32 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 32 no error",
+      "passed": true
+    },
+    {
+      "check": "row 33 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 33 no error",
+      "passed": true
+    },
+    {
+      "check": "row 34 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 34 no error",
+      "passed": true
+    },
+    {
+      "check": "row 35 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 35 no error",
+      "passed": true
+    },
+    {
+      "check": "row 36 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 36 no error",
+      "passed": true
+    },
+    {
+      "check": "row 37 exact label/result/types",
+      "passed": true
+    },
+    {
+      "check": "row 37 no error",
+      "passed": true
+    },
+    {
+      "check": "28 rejection/10 accepted-call controls",
+      "passed": true
+    },
+    {
+      "check": "3 positive controls and7 synthetic UNKNOWN controls",
+      "passed": true
+    },
+    {
+      "check": "positive conditional envelope independently rederived",
+      "passed": true
+    },
+    {
+      "check": "evidence exact synthetic-only marker",
+      "passed": true
+    },
+    {
+      "check": "raw synthetic wire independently decoded all fields",
+      "passed": true
+    },
+    {
+      "check": "binary clocks finite/coherent",
+      "passed": true
+    },
+    {
+      "check": "only three synthetic output files",
+      "passed": true
+    },
+    {
+      "check": "internal saved timing finite/consistent",
+      "passed": true
+    },
+    {
+      "check": "external saved conservative timing104ms",
+      "passed": true
+    },
+    {
+      "check": "source flags no science/owner/PS/RNG",
+      "passed": true
+    },
+    {
+      "check": "actual platform/curriculum/resource qualification false",
+      "passed": true
+    },
+    {
+      "check": "historical UNKNOWN preserved",
+      "passed": true
+    },
+    {
+      "check": "plan runtime/review artifact binding absence explicit",
+      "passed": true
+    }
+  ],
+  "actual_record_observations": {
+    "controls": 38,
+    "passed": 38,
+    "validation_rejections": 28,
+    "successful_calls_with_expected_conditional_arithmetic": 3,
+    "successful_calls_asserting_UNKNOWN": 7,
+    "conditional_expected_envelope_bytes": 33694432,
+    "binary_frame_fields": {
+      "magic": "GCTSCMP1",
+      "role": 1,
+      "exit_code": 0,
+      "reserved": 0,
+      "invented_pid": 102,
+      "invented_peak_bytes": 50000,
+      "invented_elapsed": 8.0,
+      "invented_entry": 0.0,
+      "invented_close": 8.0
+    },
+    "synthetic_data_files": 2,
+    "terminal_scope": "Saved ROOT invocation receipt reports exit0 and one actual invocation; no live/session/process query by this reviewer.",
+    "fixture_internal_seconds": 0.008029874999999999,
+    "saved_conservative_external_tool_boundary_ms": 104
+  },
+  "traceability_limits": [
+    "ROOT confirms source-pass message and source hashes/fresh namespace were checked before invocation; the later immutable source-review JSON was not pinned into the pre-invocation plan. This saved review does not retroactively repair that binding.",
+    "Actual command was python3 -B as trusted ROOT coordination, but this new invocation plan has no exact resolved interpreter binary/version pin. Prior installed runtime pins cannot prove which binary resolved for this invocation.",
+    "Source/adapter/plan/result/evidence/wire content pins match, but this narrow reconciliation does not certify arbitrary import/native/interpreter behavior or actual process topology.",
+    "fixture_seconds excludes final result serialization/close/print/exit. ROOT104ms is recorded conservative external API completion scope, not a resource measurement. Later metadata review/publication costs are additional."
+  ],
+  "coverage_limits": [
+    "No fixture with two sequential observers; maximum-versus-sum rule remains directly visible in reviewed adapter source.",
+    "No exact cap-equality or170/175/180 boundary matrix beyond over-cap/over180 synthetic controls.",
+    "No actual race/path replacement, cancellation/containment cleanup, runtime/import/native/topology or process lifetime is exercised.",
+    "No malformed raw magic/reserved/51-or53-byte frame control in this initial38-case fixture, despite corresponding source guard review.",
+    "Fixture results cannot close independent outer raw replay/external terminal/ROOT SELF or prospective bounded postlude obligations."
+  ],
+  "conclusions": {
+    "metadata_guard_observation_only": true,
+    "actual_resource_or_platform_qualification": false,
+    "actual_context_or_learner_qualification": false,
+    "all_five_qualification": false,
+    "historical_donor_two_guards": "UNKNOWN",
+    "historical_rerun_or_discount": false
+  },
+  "reviewer_call_census": {
+    "functional_imports_or_invocations": 0,
+    "fixtures_rerun": 0,
+    "scientific_calls": 0,
+    "PS_or_process_ownership": 0,
+    "RNG_native_calibration_browser": 0,
+    "activation_publication": 0
+  },
+  "ROOT_sole_actual_owner": true
+}

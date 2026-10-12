@@ -1,0 +1,88 @@
+{
+  "schema": "ROOT-notebook115-publication-complete-v2",
+  "status": "published_and_live_byte_and_browser_verified",
+  "recorded_at": "2026-10-12T09:13:21.171674+00:00",
+  "commit": "add602d77d8d060dd92e1190c7ab58c0abded896",
+  "base": "b98a664ce7341cdde85a4cc8ee0e05bdd5178116",
+  "url": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/curriculum-platform/reader.html?v=add602d77d8d060dd92e1190c7ab58c0abded896#calibration",
+  "deployment": {
+    "id": 38227560909,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "add602d77d8d060dd92e1190c7ab58c0abded896",
+    "html_url": "https://github.com/liuyao12/geometric-tree-search/actions/runs/38227560909"
+  },
+  "task_files": 121,
+  "total_bytes": 1981544,
+  "exact_origin_copies": 118,
+  "display_clarification_delta_files": 5,
+  "clean_publication_checkout": true,
+  "unrelated_publication_changes": 0,
+  "checks": [
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/task-files-v2.json",
+      "sha256": "71c741beab4e37bc69cfd421a96552abe52b5665b2422cfd93dec65d38603495",
+      "bytes": 28604
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/live-hash-checks-v2.json",
+      "sha256": "56b8f852a55829d4d248e245a61ee1a4efb3addb7405ee1f03b919725ce279c1",
+      "bytes": 59390
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/browser-validation-v2.json",
+      "sha256": "30cac08a0dee0d5dda7c5065ed461d64eca069b5c7e5be8de8133823e70d743b",
+      "bytes": 5542
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/reader-clock-scope-clarification-v1.json",
+      "sha256": "7801565c282f33b7e20583ea09c8ef2492044dae23c6cdc3ae5e67dbb752174b",
+      "bytes": 1427
+    }
+  ],
+  "independent_reviews": [
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v4-source-pass-v1.json",
+      "sha256": "fe6f949eb7f6789733f74e62c3259958432d4174ff59e5cc2f3e2c9b12ca9919",
+      "bytes": 9357
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/actual-review-v1.json",
+      "sha256": "9dcf8863cb1cb60d23e88fd6bd175874e35590294657b9f4186089609af450ad",
+      "bytes": 64734
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/reader-reconciliation-v1.json",
+      "sha256": "d5e02965057c3a8116d77e3dbf5eb4fe5c79854f29e815e4cf66fb2be5d8474d",
+      "bytes": 100487
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/reader-clock-scope-clarification-review-v1.json",
+      "sha256": "7502b51e30b030a1dfef2824a34df1965af6d110d5ef813ceaac5999c95ac87e",
+      "bytes": 7558
+    }
+  ],
+  "screenshot": {
+    "path": ".gcts-active/curriculum-platform-calibration-20261012/live-notebook115-v2.jpg",
+    "sha256": "a39e258aea007b15c5ab26f78f1923d12da7790709bf37294f161c778a3f44e1",
+    "bytes": 177151
+  },
+  "outcome_scope": {
+    "five_fresh_non_scientific_cases_completed": true,
+    "six_owned_ps_observers_completed": true,
+    "finite_unit_and_max_rollup_observations_accepted": true,
+    "independently_complete_calibration_resource_recomputation": false,
+    "original_first_donor_resource": "UNKNOWN",
+    "remaining_original_contexts_unrun": 4,
+    "all_five_qualification": false,
+    "new_proofs_in_this_phase": 0,
+    "learner_or_rng_in_this_phase": false,
+    "rl_advantage_established": false
+  },
+  "calibration_rerun_for_display_change": false,
+  "scientific_calls_for_display_change": 0,
+  "additional_costs": "Entry-runner final receipt/exit, metadata review, source correction, browser inspection and deployment are additional costs; no new end-to-end resource qualification is claimed.",
+  "console": "One browser asynchronous message-channel entry was retained verbatim. No claim of an error-free console is made; visible report, counts, case values and MathJax were verified.",
+  "codex_panel_open_status": "queued",
+  "goal_status": "active"
+}

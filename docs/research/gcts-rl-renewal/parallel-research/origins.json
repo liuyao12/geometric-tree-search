@@ -1,0 +1,261 @@
+{
+  "schema": "ROOT-parallel-reader-exact-origins-v1",
+  "exact_copies": [
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/reader.html",
+      "origin": {
+        "path": ".gcts-active/parallel-research-reader-source-20261012/reader.html",
+        "sha256": "fbc2a0cb8b547f89f6763818de737a50220129db14b0192deded8fc7d631098c",
+        "bytes": 15069
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/reader.js",
+      "origin": {
+        "path": ".gcts-active/parallel-research-reader-source-20261012/reader.js",
+        "sha256": "b8756eaf1665b953c762de4387f19c2de455cc1912090858c6edb34113b321b7",
+        "bytes": 2774
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/view-schema-v1.json",
+      "origin": {
+        "path": ".gcts-active/parallel-research-reader-source-20261012/view-schema-v1.json",
+        "sha256": "a9e7fcb13011a3f4f0e8f0fb89dcf4b022e932ec8c0e3d4f4f6b4f40839b3b87",
+        "bytes": 3106
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/handoff-v2.json",
+      "origin": {
+        "path": ".gcts-active/parallel-research-reader-source-20261012/handoff-v2.json",
+        "sha256": "698449cb8ba68635daac0de5399a31a584a8116bb625bf02d1ea93a36eabef64",
+        "bytes": 6953
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/reader-source-metadata-review.json",
+      "origin": {
+        "path": ".gcts-active/parallel-research-reader-source-20261012/source-metadata-review-v2.json",
+        "sha256": "5b1c9e92378ea25cad78b37fae9ce30acf021dec9f9d114ed796b30fa0e40ea9",
+        "bytes": 7863
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/root_accounting_adapter_v1.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v1.py",
+        "sha256": "600cea97c9ed961fcfa44ff22015fe2d16360fda2171d80c8fb99091e3f9494b",
+        "bytes": 14273
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/root_accounting_adapter_v2.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v2.py",
+        "sha256": "85b30eeb820ee35887c8c7bf19fa15f0e3bc200a20095ae51bd1d82e62e48f54",
+        "bytes": 20053
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/root_accounting_adapter_v3.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v3.py",
+        "sha256": "821397eeb6e8efde19380024f2edd2181d9c12e21ee007aa1f2e327d01754f53",
+        "bytes": 21094
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/root_accounting_adapter_v4.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+        "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+        "bytes": 21195
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/root_adapter_metadata_fixtures_v1.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v1.py",
+        "sha256": "ecc96980c2c5e0178a56c8e47b04495d2543426fea1503013339f0c9ad6fc13d",
+        "bytes": 11161
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/root_adapter_metadata_fixtures_v2.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_adapter_metadata_fixtures_v2.py",
+        "sha256": "795a84a2522079f57eddab99e05f50ac8be9980efff4d2cb78ffd4555d6c0343",
+        "bytes": 11161
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/source-plan-root-adapter-v4.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-root-adapter-v4.json",
+        "sha256": "665f2c9e67fd4042ad56deefe1f20fa8eb323f2388bf9df9ca4a098bae02fd06",
+        "bytes": 2911
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/metadata-fixture-plan-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixture-plan-v1.json",
+        "sha256": "5de82e2a94de32faa48bbc45759ee909ccd5c88ed6b92e91c3935b42166c061d",
+        "bytes": 1041
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/metadata-fixture-invocation-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixture-invocation-v1.json",
+        "sha256": "9087c04aee1fe422650a78c5f6d412ad8158ebea8072e20446df94a5d09f354e",
+        "bytes": 1621
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/curriculum_compact_owner_v3.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py",
+        "sha256": "aa3202d7a0b2e6bad423b6fc6faffc66d1cc5489444c8a215768fc385f9b964e",
+        "bytes": 26097
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/curriculum_compact_owner_v4.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+        "sha256": "7223dbf017d42f47d7ad6fceaa97c457a51a6288614a1700f40c7098c4ccdd23",
+        "bytes": 26105
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/source-plan-owner-v4.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+        "sha256": "6af1f60af074b9030ce312d6003d797484c2f4ba6749cda8e3a66f6bf55d16ca",
+        "bytes": 3108
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/owner-v3-to-v4.diff",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/owner-v3-to-v4.diff",
+        "sha256": "bd1a9677f8e1dfad04dfa672fbc63575bc9bb2d8695cdf0d2857e3d1943e6c70",
+        "bytes": 793
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/source-review-blocker-owner-v3.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-review-blocker-owner-v3.json",
+        "sha256": "0b65f3cb939287877efb0fa5d47c3f66a0df51754b44822acd51479ada5c8935",
+        "bytes": 689
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/protocol-v3.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/protocol-v3.json",
+        "sha256": "489754394cbedcf2793af2d62e9d97aa7563591c170b5d63c4b442a179228eec",
+        "bytes": 9589
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/unchanged-science-evidence-v3.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/unchanged-science-evidence-v3.json",
+        "sha256": "f24ef67babd3d4bbcba55f8c1f88d9616483426bed2db5da73ab69b5cd8c1542",
+        "bytes": 5482
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/result-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/result-v1.json",
+        "sha256": "c1b8e7ed6a4d7aa3d7e06f21341e47c99cdde8e43f09503c253d57afd1a5bffe",
+        "bytes": 10947
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/synthetic-worker-frame.bin",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/synthetic-worker-frame.bin",
+        "sha256": "a5080cfab532c52bbe067bdb4aec9ca1a915a416911d9ce056b9f75016739cbb",
+        "bytes": 52
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/synthetic-evidence.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/metadata-fixtures-v1/synthetic-evidence.json",
+        "sha256": "942c663b2dd06d38fb1db2918893b3da71c9bb1dc788a284732e972359cf49ec",
+        "bytes": 68
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/adapter-v1-source-review-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v1-source-review-v1.json",
+        "sha256": "1825a1746b2ebb081842a04ccb8533edb2624211c55fea7277770345f157a9a1",
+        "bytes": 14770
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/adapter-v2-source-review-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v2-source-review-v1.json",
+        "sha256": "c21a49ed9afdc0d71ed524c33d61cc0e2e23761d9abb6584f10887e7c527aba5",
+        "bytes": 16552
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/adapter-v3-source-review-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v3-source-review-v1.json",
+        "sha256": "e8492c116382dfd05db2a18a7b167441303713484750280b31d31a3af9a95f30",
+        "bytes": 12874
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/adapter-v4-fixture-v2-source-review-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-v4-fixture-v2-source-review-v1.json",
+        "sha256": "0bff3d46088284e4687192f324640e91f7701a32198c80a28324e4fd54472df8",
+        "bytes": 12003
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/adapter-metadata-fixtures-actual-review-v1.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/adapter-metadata-fixtures-actual-review-v1.json",
+        "sha256": "c2c7014cb1ac0739307c51cfd0aed513ce6c31cb4b86bd9da1b2dfffdeed9e89",
+        "bytes": 14535
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/compact_static_transport_v1.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+        "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+        "bytes": 13756
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/curriculum_compact_worker_v1.py",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+        "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+        "bytes": 13759
+      }
+    },
+    {
+      "destination": "docs/research/gcts-rl-renewal/parallel-research/evidence/notebook115-publication.json",
+      "origin": {
+        "path": ".gcts-active/curriculum-platform-calibration-20261012/publication-v2.json",
+        "sha256": "fd0cda175a34052227eea261cf2d4e731127e471de75c3d417fa2a6862c612e8",
+        "bytes": 4064
+      }
+    }
+  ]
+}

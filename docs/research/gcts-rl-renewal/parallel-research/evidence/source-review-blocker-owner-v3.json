@@ -1,0 +1,13 @@
+{
+  "status": "SOURCE_V3_GROUP_SHADOWING_BLOCKER_PRESERVED_NOT_EXECUTED",
+  "owner": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py",
+    "sha256": "aa3202d7a0b2e6bad423b6fc6faffc66d1cc5489444c8a215768fc385f9b964e",
+    "bytes": 26097
+  },
+  "finding": "run_owner pin loop overwrites group identity dict with final string preserved; observe/sample/receipt/containment would receive wrong type.",
+  "correction": "Only rename loop target group to pin_group and corresponding plan[group] to plan[pin_group]. No other owner/source/scientific delta.",
+  "functional_execution": false,
+  "scientific_calls": 0,
+  "process_calls": 0
+}

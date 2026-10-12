@@ -1,0 +1,539 @@
+{
+  "schema": "ROOT-assembled-parallel-research-reader-v1",
+  "status_note": "Parallel source authoring and independent review found three integration gaps before a mathematical run. ROOT then ran 38 invented-record controls once; all passed. The original mathematical resource outcome and global qualification remain open.",
+  "stages": [
+    {
+      "stage": "Owner V3 group record",
+      "scope": "source review",
+      "disposition": "SOURCE_V3_GROUP_SHADOWING_BLOCKER_PRESERVED_NOT_EXECUTED",
+      "note": "A pin loop overwrote the validated group record. No actual owner invocation occurred.",
+      "evidence_label": "source-review-blocker-owner-v3.json",
+      "evidence": "evidence/source-review-blocker-owner-v3.json"
+    },
+    {
+      "stage": "Owner V4",
+      "scope": "immutable source successor",
+      "disposition": "SOURCE_ONLY_EXACT_GROUP_RENAME_SUCCESSOR_ROOT_BINDING_PENDING",
+      "note": "Only the two loop-variable references change. The mathematical worker remains unchanged.",
+      "evidence_label": "source-plan-owner-v4.json",
+      "evidence": "evidence/source-plan-owner-v4.json"
+    },
+    {
+      "stage": "Adapter V2",
+      "scope": "independent source review",
+      "disposition": "STRUCTURAL_GUARDS_IMPROVED_WITH_CONFIRMED_FRAME_INTEGRATION_BLOCKER_AND_OUTER_PREREQUISITES",
+      "note": "Seven-field strict validation did not accept the actual nine-field transport object.",
+      "evidence_label": "adapter-v2-source-review-v1.json",
+      "evidence": "evidence/adapter-v2-source-review-v1.json"
+    },
+    {
+      "stage": "Adapter V3",
+      "scope": "independent source review",
+      "disposition": "V2_FRAME_INTERFACE_BLOCKER_FIXED_WITH_REMAINING_SAME_BUFFER_PIN_BINDING_GAP",
+      "note": "Original wire format restored; the buffer decoded after a second read still needed its own hash binding.",
+      "evidence_label": "adapter-v3-source-review-v1.json",
+      "evidence": "evidence/adapter-v3-source-review-v1.json"
+    },
+    {
+      "stage": "Adapter V4 and fixture V2",
+      "scope": "independent source review",
+      "disposition": "SOURCE_PASS_FOR_NARROW_ONE_SHOT_SYNTHETIC_METADATA_CONTROLS_ONLY",
+      "note": "Decoded buffer hash is bound. Outer raw replay, actual terminal evidence and the bounded residual reserve remain separate requirements.",
+      "evidence_label": "adapter-v4-fixture-v2-source-review-v1.json",
+      "evidence": "evidence/adapter-v4-fixture-v2-source-review-v1.json"
+    },
+    {
+      "stage": "ROOT metadata fixtures",
+      "scope": "one actual synthetic metadata invocation",
+      "disposition": "terminal_0_38_of_38_pass",
+      "note": "Invented identifiers, clocks and peaks. Internal fixture clock 0.008029875 seconds excludes final receipt/exit; complete tool boundary 104 milliseconds. No owner, observer, theorem search or RNG stream.",
+      "evidence_label": "metadata-fixture-invocation-v1.json",
+      "evidence": "evidence/metadata-fixture-invocation-v1.json"
+    },
+    {
+      "stage": "Saved fixture reconciliation",
+      "scope": "independent saved-record review",
+      "disposition": "ACCEPTED_38_EXECUTED_SYNTHETIC_RECORD_CONTROLS_ONLY",
+      "note": "Source-derived labels and exact synthetic binary values are reconciled independently. The invocation plan did not bind the later review JSON or an actual interpreter binary pin; these traceability gaps remain.",
+      "evidence_label": "adapter-metadata-fixtures-actual-review-v1.json",
+      "evidence": "evidence/adapter-metadata-fixtures-actual-review-v1.json"
+    },
+    {
+      "stage": "Notebook 115 scientific baseline",
+      "scope": "saved publication checkpoint",
+      "disposition": "published_and_live_byte_and_browser_verified",
+      "note": "First donor resource UNKNOWN; remaining four unexecuted in the frozen original. No new proof, training, learner activation or RL advantage is established by this phase.",
+      "evidence_label": "notebook115-publication.json",
+      "evidence": "evidence/notebook115-publication.json"
+    }
+  ],
+  "fixture_cases": [
+    {
+      "name": "coherent invented scopes give expected conditional arithmetic",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "fast leaf without samples remains representable",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "original nine-field authenticated wire format accepted",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "decoded value differing from pinned binary rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "decoded values equal the independently pinned terminal binary"
+      }
+    },
+    {
+      "name": "unknown frame field rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "boolean role rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "floating exit tag rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "nonfinite clock rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "frame entry"
+      }
+    },
+    {
+      "name": "missing frame field rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "successful exact-role closed SELF frame"
+      }
+    },
+    {
+      "name": "same owner and leaf PID without samples rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "distinct direct leaf even without samples"
+      }
+    },
+    {
+      "name": "leaf frame differing from registered direct PID rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "frame matches registered direct leaf"
+      }
+    },
+    {
+      "name": "boolean pin byte count rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "exact pin byte count"
+      }
+    },
+    {
+      "name": "malformed hash rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "exact lowercase SHA256 pin"
+      }
+    },
+    {
+      "name": "empty pin path rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "nonempty declared pin path"
+      }
+    },
+    {
+      "name": "duplicate sample for one observer rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "one sample per just-owned observer"
+      }
+    },
+    {
+      "name": "sample before observer rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "one sample per just-owned observer"
+      }
+    },
+    {
+      "name": "boolean observer ID rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "observer ID"
+      }
+    },
+    {
+      "name": "observer over complete one-second bound rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "unchanged full observer one-second bound"
+      }
+    },
+    {
+      "name": "missing sample in observer census rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "complete one-to-one observer/sample census"
+      }
+    },
+    {
+      "name": "sample clock preceding closed detail rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "monotone sample follows closed observer detail"
+      }
+    },
+    {
+      "name": "false transported subtotal rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "reconstructed provisional subtotal"
+      }
+    },
+    {
+      "name": "false transported sample census rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "transported paired observer census/maximum"
+      }
+    },
+    {
+      "name": "false missing-scope declaration rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "complete pending missing-scope declaration"
+      }
+    },
+    {
+      "name": "transport grants itself acceptance rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "strict pending provisional scope"
+      }
+    },
+    {
+      "name": "transport claims all-five acceptance rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "strict pending provisional scope"
+      }
+    },
+    {
+      "name": "unknown transported ledger field rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "exact complete provisional projection"
+      }
+    },
+    {
+      "name": "missing raw ROOT SELF rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "saved raw ROOT SELF after metadata raw usage"
+      }
+    },
+    {
+      "name": "owner roll-up below known leaf scope rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "raw owner terminal maximum covers each individually measured child scope"
+      }
+    },
+    {
+      "name": "unexplained owner roll-up over residual reserve rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "unexplained terminal roll-up exceeds reviewed residual reserve"
+      }
+    },
+    {
+      "name": "leaf full lifetime outside owner lifetime rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "direct leaf creation/reap lifetime lies inside owned owner lifetime"
+      }
+    },
+    {
+      "name": "boolean external terminal code rejected",
+      "expected_rejection": true,
+      "rejected": true,
+      "passed": true,
+      "error": {
+        "type": "ValueError",
+        "message": "integer ROOT exit code"
+      }
+    },
+    {
+      "name": "cancelled terminal remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "emergency kill remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "containment latch remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "missing terminal remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "unknown topology remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "whole boundary over 180 seconds remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "over-cap distinct envelope remains UNKNOWN",
+      "expected_rejection": false,
+      "rejected": false,
+      "passed": true,
+      "error": null
+    }
+  ],
+  "evidence": [
+    {
+      "label": "root_accounting_adapter_v1.py",
+      "href": "evidence/root_accounting_adapter_v1.py"
+    },
+    {
+      "label": "root_accounting_adapter_v2.py",
+      "href": "evidence/root_accounting_adapter_v2.py"
+    },
+    {
+      "label": "root_accounting_adapter_v3.py",
+      "href": "evidence/root_accounting_adapter_v3.py"
+    },
+    {
+      "label": "root_accounting_adapter_v4.py",
+      "href": "evidence/root_accounting_adapter_v4.py"
+    },
+    {
+      "label": "root_adapter_metadata_fixtures_v1.py",
+      "href": "evidence/root_adapter_metadata_fixtures_v1.py"
+    },
+    {
+      "label": "root_adapter_metadata_fixtures_v2.py",
+      "href": "evidence/root_adapter_metadata_fixtures_v2.py"
+    },
+    {
+      "label": "source-plan-root-adapter-v4.json",
+      "href": "evidence/source-plan-root-adapter-v4.json"
+    },
+    {
+      "label": "metadata-fixture-plan-v1.json",
+      "href": "evidence/metadata-fixture-plan-v1.json"
+    },
+    {
+      "label": "metadata-fixture-invocation-v1.json",
+      "href": "evidence/metadata-fixture-invocation-v1.json"
+    },
+    {
+      "label": "curriculum_compact_owner_v3.py",
+      "href": "evidence/curriculum_compact_owner_v3.py"
+    },
+    {
+      "label": "curriculum_compact_owner_v4.py",
+      "href": "evidence/curriculum_compact_owner_v4.py"
+    },
+    {
+      "label": "source-plan-owner-v4.json",
+      "href": "evidence/source-plan-owner-v4.json"
+    },
+    {
+      "label": "owner-v3-to-v4.diff",
+      "href": "evidence/owner-v3-to-v4.diff"
+    },
+    {
+      "label": "source-review-blocker-owner-v3.json",
+      "href": "evidence/source-review-blocker-owner-v3.json"
+    },
+    {
+      "label": "protocol-v3.json",
+      "href": "evidence/protocol-v3.json"
+    },
+    {
+      "label": "unchanged-science-evidence-v3.json",
+      "href": "evidence/unchanged-science-evidence-v3.json"
+    },
+    {
+      "label": "result-v1.json",
+      "href": "evidence/result-v1.json"
+    },
+    {
+      "label": "synthetic-worker-frame.bin",
+      "href": "evidence/synthetic-worker-frame.bin"
+    },
+    {
+      "label": "synthetic-evidence.json",
+      "href": "evidence/synthetic-evidence.json"
+    },
+    {
+      "label": "adapter-v1-source-review-v1.json",
+      "href": "evidence/adapter-v1-source-review-v1.json"
+    },
+    {
+      "label": "adapter-v2-source-review-v1.json",
+      "href": "evidence/adapter-v2-source-review-v1.json"
+    },
+    {
+      "label": "adapter-v3-source-review-v1.json",
+      "href": "evidence/adapter-v3-source-review-v1.json"
+    },
+    {
+      "label": "adapter-v4-fixture-v2-source-review-v1.json",
+      "href": "evidence/adapter-v4-fixture-v2-source-review-v1.json"
+    },
+    {
+      "label": "adapter-metadata-fixtures-actual-review-v1.json",
+      "href": "evidence/adapter-metadata-fixtures-actual-review-v1.json"
+    },
+    {
+      "label": "compact_static_transport_v1.py",
+      "href": "evidence/compact_static_transport_v1.py"
+    },
+    {
+      "label": "curriculum_compact_worker_v1.py",
+      "href": "evidence/curriculum_compact_worker_v1.py"
+    },
+    {
+      "label": "notebook115-publication.json",
+      "href": "evidence/notebook115-publication.json"
+    }
+  ],
+  "scientific_calls_in_this_phase": 0,
+  "newly_discovered_proofs_in_this_phase": 0,
+  "training_or_RNG_in_this_phase": false,
+  "all_five_qualification": false,
+  "source_wrappers_executed": false,
+  "resource_qualification": false,
+  "note": "Source successors and synthetic parser/arithmetic controls only. Actual wrapper/topology/terminal/postlude coverage is still open. Review/report/deployment are additional costs; no whole-program resource measurement is claimed."
+}

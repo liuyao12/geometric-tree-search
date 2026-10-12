@@ -1,0 +1,242 @@
+{
+  "schema": "independent-prospective-compact-root-accounting-adapter-source-review-v1",
+  "status": "SOURCE_FINDINGS_REQUIRE_REPAIR_OR_EXPLICIT_INDEPENDENT_OUTER_GATES_BEFORE_ACCEPTANCE",
+  "scope": "Exact source text/Python3.9 AST/saved JSON/streamed hashes only. No adapter/owner/transport import or function invocation, project science, process/PS, RNG/calibration/native/browser, activation or publication.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v1.py",
+      "sha256": "600cea97c9ed961fcfa44ff22015fe2d16360fda2171d80c8fb99091e3f9494b",
+      "bytes": 14273
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py",
+      "sha256": "a31524a879f28650e8f57507d304b939ae634c1e509fa9a663a13a4b686dd55f",
+      "bytes": 16884
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v2.json",
+      "sha256": "b996797baec3986f9b9dfcd4aa0a095486ce1cb77eae81d759696ccb0cc35daf",
+      "bytes": 6646
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/protocol-v3.json",
+      "sha256": "489754394cbedcf2793af2d62e9d97aa7563591c170b5d63c4b442a179228eec",
+      "bytes": 9589
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/actual-review-v1.json",
+      "sha256": "9dcf8863cb1cb60d23e88fd6bd175874e35590294657b9f4186089609af450ad",
+      "bytes": 64734
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/conclusions-v1.json",
+      "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+      "bytes": 9398
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "source_checks_count": 18,
+  "source_checks": [
+    {
+      "check": "exact requested adapter V1 pin",
+      "passed": true
+    },
+    {
+      "check": "adapter standard-library metadata imports only",
+      "passed": true
+    },
+    {
+      "check": "complete owner V2 interface names exist",
+      "passed": true
+    },
+    {
+      "check": "unchanged numeric resource constants",
+      "passed": true
+    },
+    {
+      "check": "unchanged worker-owner-whole clock bounds",
+      "passed": true
+    },
+    {
+      "check": "strict nonnegative finite numeric clock validator",
+      "passed": true
+    },
+    {
+      "check": "strict positive integer peak validator",
+      "passed": true
+    },
+    {
+      "check": "sequential observer interval ordering and full one-second bound",
+      "passed": true
+    },
+    {
+      "check": "observer maximum not sum",
+      "passed": true
+    },
+    {
+      "check": "PS sampled raw explicit 1024-byte conversion",
+      "passed": true
+    },
+    {
+      "check": "pending provisional refuses resource and global acceptance",
+      "passed": true
+    },
+    {
+      "check": "mandatory raw ROOT SELF final ledger term",
+      "passed": true
+    },
+    {
+      "check": "owner rolled peak corroboration not summand",
+      "passed": true
+    },
+    {
+      "check": "strict execution provenance booleans and cancellation UNKNOWN",
+      "passed": true
+    },
+    {
+      "check": "no OS or whole-host memory-cap claim",
+      "passed": true
+    },
+    {
+      "check": "historical UNKNOWN and all-five false retained",
+      "passed": true
+    },
+    {
+      "check": "known finite platform observation independently accepted only within saved scope",
+      "passed": true
+    },
+    {
+      "check": "V3 explicitly requires fresh owner-led session/group",
+      "passed": true
+    }
+  ],
+  "adapter_function_lines": {
+    "need": 17,
+    "integer": 22,
+    "clock": 27,
+    "peak": 32,
+    "exact_pin": 37,
+    "frame": 52,
+    "finish_root_ledger": 182,
+    "__init__": 74,
+    "add_observer": 91,
+    "add_sample": 109,
+    "add_leaf_worker": 135,
+    "add_SELF_before_receipt": 147,
+    "rejects_current_caps": 153,
+    "finish_provisional": 162
+  },
+  "findings": [
+    {
+      "id": "F1-provisional-reconstruction",
+      "severity": "blocker_before_acceptance_unless_external_gate_closes_it",
+      "source_function": "finish_root_ledger",
+      "line": 182,
+      "finding": "The final function accepts a transported provisional dict after checking its schema and resource_accepted=False, but does not rederive the leaf worker, observer/sample census, sample maxima, pending missing list or subtotal from exact raw records. It does not check leaf_worker.pid distinctness or leaf_worker.full_seconds <= full_owner_seconds, and most provisional fields are ignored. The class internally emits coherent fields on the expected successful path, but that does not validate a malformed transported ledger.",
+      "required_resolution": "Either a minimal immutable adapter successor validates every provisional identity/type/census/subtotal/clock relation, or the sole outer gate independently reconstructs the complete provisional from pinned owner records and rejects exact discrepancies before this resource decision. Bind raw worker and owner frame streams, direct handle terminal statuses, observer/sample JSONL streams, source/plan/platform/activation pins and no-retry ownership; do not trust a caller-supplied hash or expected ledger."
+    },
+    {
+      "id": "F2-frame-tag-types",
+      "severity": "repair_or_external_raw_frame_authority_required",
+      "source_function": "frame",
+      "line": 52,
+      "finding": "Role and exit_code are compared by equality without strict integer-type checks. Python bool or float values can compare equal to the required role/zero exit value. The unchanged binary frame reader produces integer tags, but the adapter alone is not a closed validator for arbitrary decoded metadata.",
+      "required_resolution": "Require type(role) is int and type(exit_code) is int with exact allowed values; independently decode the pinned 52-byte raw frame and compare the complete decoded object. Missing/truncated/nonfinite/nonzero frames stay UNKNOWN."
+    },
+    {
+      "id": "F3-distinct-leaf-without-samples",
+      "severity": "repair_or_external_direct_handle_binding_required",
+      "source_function": "add_leaf_worker",
+      "line": 135,
+      "finding": "When a fast worker is terminal-reaped before any sample, sample_worker_pid is None. frame() then has no expected direct worker PID and add_leaf_worker does not explicitly reject pid == owner_pid. Genuine read_closed_SELF is called with the owned Popen child PID in owner V2, but the adapter should not itself label arbitrary same-PID records disjoint.",
+      "required_resolution": "Bind the immutable retained direct worker handle PID explicitly and require worker PID distinct from owner and any currently live observer; retain exact no-sample success support without fabricating observations."
+    },
+    {
+      "id": "F4-observer-sample-state",
+      "severity": "record_replay_guard_required",
+      "source_function": "add_sample",
+      "line": 109,
+      "finding": "add_sample checks that the sample refers to the most recent observer, but does not prohibit multiple samples for that observer or require sample clocks to advance past the prior sample. add_observer IDs and owners use equality without closed record/type checks. The real owner emits exactly one sample per successful observer and monotone perf_counter clocks, so source-bound generation can supply this property; malformed record replay needs its own checks.",
+      "required_resolution": "Keep the latest completed observer/sample identity and clock, require the intended one-to-one count, validate strict field types/known roles and complete record shape, and preserve actual missing samples/failed observers as UNKNOWN."
+    },
+    {
+      "id": "F5-pins-closed-stream-scope",
+      "severity": "external_immutable_binding_prerequisite",
+      "source_function": "exact_pin",
+      "line": 37,
+      "finding": "exact_pin streams a digest and compares length/hash, but has no fstat/path-identity stability checks or strict path/hash/byte field types. It verifies platform evidence bytes without parsing their reviewed status, unit/topology scope or adapter identity. Owner require_contract separately parses the platform contract and stream_pin supplies stronger immutable stream checks; the outer source must bind these responsibilities explicitly.",
+      "required_resolution": "Use the existing exact declared-path stream identity contract or equally strong metadata-only checks, require strict three-field pin types, recheck all before accepted publication, and pin the finite evidence/version limits plus a reviewed topology/postlude statement. Source hashing alone is not platform qualification."
+    },
+    {
+      "id": "F6-V2-V3-topology-binding",
+      "severity": "integration_prerequisite_not_a_V3_PGID_conflict",
+      "source_function": "add_sample",
+      "line": 109,
+      "finding": "The owner_pid==PGID checks match ROOT launching a fresh owner session/group leader and V3 worker/PS inheritance. They do not match owner V2 worker/PS start_new_session=True. ROOT clarified that ROOT entry stays outside this owner-led experiment group, while retaining the direct leader handle. The tentative interpretation that ROOT own entry PGID had to be used was withdrawn.",
+      "required_resolution": "Freeze and independently review exact V3 owner plus sole outer source/activation with Popen(start_new_session=True) only for the owner, inherited group for worker/PS, containment/cancellation latch and birth-safe unreaped-leader ownership. V2 remains unexecuted and is not the accepted topology."
+    },
+    {
+      "id": "F7-final-clock-failure-gate",
+      "severity": "external_terminal_receipt_prerequisite",
+      "source_function": "finish_root_ledger",
+      "line": 182,
+      "finding": "The final function properly rejects nonfinite clocks and requires the trusted complete external tool clock, but execution_provenance is a caller-supplied dict here, not an independently pinned terminal receipt. It has no owner reaped/nonzero/failure record argument beyond the decoded owner frame and rolled rusage. The function raises for some malformed/over-budget observations rather than returning UNKNOWN; outer handling must preserve those failures without retry.",
+      "required_resolution": "The independently source-reviewed sole outer must reconstruct exact terminal/exit/reap, cancellation, emergency, containment and complete topology evidence from owned handles and saved raw receipts; preserve exceptions as UNKNOWN and no accepted terminal. Ensure full ROOT import/preflight/hash/serialization/close/exit/reap clock is genuinely covered, including post-candidate writes. Do not rely on arbitrary caller booleans or on internal duration alone."
+    },
+    {
+      "id": "F8-prospective-reserve",
+      "severity": "prospective_source_scope_prerequisite_not_historical_discount",
+      "source_function": "finish_root_ledger",
+      "line": 182,
+      "finding": "The 33554432-byte reserve is clearly added prospectively and the source expressly disclaims an OS hard cap and whole-host bound. The five finite calibration cases support byte/max semantics, but do not establish this reserve for arbitrary ROOT ledger/pin serialization or a new scientific wrapper. The raw ROOT SELF argument must be measured after the declared metadata workload and before a tightly bounded residual postlude.",
+      "required_resolution": "Freeze exact residual operations and metadata/frame/stream size limits under the reviewed reserve, label the envelope conditional on this known bounded topology and postlude, and obtain actual saved ROOT SELF/terminal costs. Historical donor-two-guards UNKNOWN and failed caps remain immutable; no missing measurement can be inferred into acceptance."
+    }
+  ],
+  "positive_assessment": {
+    "resource_terms": "ROOT own SELF + owner own SELF + one verified leaf worker terminal wait4 + max of sequential individually reaped leaf PS terminal wait4 + fixed prospective postlude reserve. No owner rolled-peak subtraction/addition.",
+    "strict_numeric_units": "Darwin peaks are strictly positive ints in bytes; PS RSS is multiplied by1024. Numeric clocks exclude bool and require finite nonnegative values.",
+    "pending_scope": "Class provisional is always resource_accepted=false/all_five_qualification=false; partial sample rejection never establishes acceptance.",
+    "bounds": "180 ROOT /175 owner /170 worker /1 observer seconds,512MiB cap,32MiB declared reserve remain literal and unchanged.",
+    "failure_scope": "Explicit terminal booleans, cancellation/emergency/containment false and complete topology required for positive final decision; actual handling remains a sole outer obligation.",
+    "platform_scope": "Pinned saved finite evidence supports installed byte/max semantics only; exact running XNU121.10 versus reviewed121.6 gap remains preserved."
+  },
+  "reserve_assessment": {
+    "prospective": true,
+    "historical_discount": false,
+    "OS_hard_cap": false,
+    "empirically_established_for_new_wrapper": false,
+    "review_condition": "Exact ROOT/owner frame closure, fixed postludes and bounded metadata residual operations must be separately frozen/reviewed and actual ROOT SELF must be saved."
+  },
+  "required_handoff": "ROOT may author immutable successors/outer gate sources. This review supplies no permission, actual context qualification or learner qualification; all actual activation/execution remains ROOT-owned.",
+  "preserved_history": {
+    "donor_two_guards": "UNKNOWN",
+    "historical_static_complete_bytes": 1023344640,
+    "historical_frozen_cap_bytes": 536870912,
+    "rerun": false,
+    "downward_reclassification": false,
+    "all_five_qualification": false
+  },
+  "scientific_calls": 0,
+  "functional_imports_or_calls": 0,
+  "process_PS_native_browser_calibration_calls": 0,
+  "RNG_draws": 0,
+  "activations": 0,
+  "publication_actions": 0,
+  "qualification_issued": false,
+  "actual_fixtures_authored_or_executed": false,
+  "review_note": "Initial tentative V3 PGID conflict was withdrawn following explicit ROOT/engine clarification: ROOT owns a fresh owner-led group outside ROOT entry group. Full V3/outer source freeze remains required."
+}
