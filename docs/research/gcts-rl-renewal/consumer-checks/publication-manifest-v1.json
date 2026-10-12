@@ -1,0 +1,130 @@
+{
+  "schema": "notebook127-publication-manifest-v1",
+  "notebook": 127,
+  "scope": "UNKNOWN actual synthetic consumer qualification, public saved incomplete pool and source readiness; no accepted case/proof/RL/feature result",
+  "destination": "Existing GitHub Pages geometric-tree-search research report",
+  "task_files": [
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/compact_cluster_proposal_v2.py",
+      "sha256": "1d094e7f51c7607cc121a48e0bc55f4daf2cc7801701eea34a2bb552f1505b38",
+      "bytes": 25358
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/compact_learned_overlay_v3.py",
+      "sha256": "62dbe8bc5d58685206661b96e8f3e3b994c39c8c0a847a82fa09475cdadc1a6e",
+      "bytes": 17630
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/compact_scientific_dfs_v3.py",
+      "sha256": "ada3505323cd3063758d43bc9baa63651d095c3d21186dcf53c4a664c784b80d",
+      "bytes": 29365
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/fixture-v1.json",
+      "sha256": "fe4d11a3449709393cc975ea12c8d8092d5a16c3382a05375b874797913631a7",
+      "bytes": 7197
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/independent_tiny_reference_v1.py",
+      "sha256": "df8b9f852caaa01ee2ad2f6cf8f1cf2ad1259c776b03f415781c40e00d4ff3cf",
+      "bytes": 43297
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/reader.css",
+      "sha256": "c6fe2aeaac16ec65045a68d20290688008c0d45a0f455f0b2ea1ca6576c99fd1",
+      "bytes": 4540
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/reader.html",
+      "sha256": "7e1fe5a266ecb173a56db9f2c8deaae5875f35ba52a0f3af5742378d4f68d35f",
+      "bytes": 31213
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/reader.js",
+      "sha256": "5d455c260ba6b70b68685fed82a3929c3fb78da4e19e2a518a9c0e76680b2e21",
+      "bytes": 4098
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/result-view-v1.json",
+      "sha256": "9a42ddb2b1bb0388927b6017b1bed503d17a8ddfd784737edca7da4c67dc5e31",
+      "bytes": 35463
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/tiny_codec_materializer_v1.py",
+      "sha256": "8ac4f35b2899e566b23c45aaada3dd2c486ed1b8b584b431bc3fc97ff20ac442",
+      "bytes": 14242
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/tiny_consumer_harness_v1.py",
+      "sha256": "4abb13391970e26e8d9e662cdb39504d9d6ce04b84f62c4195eb6a353c968e8d",
+      "bytes": 36518
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/consumer-checks/tiny_consumer_worker_v2.py",
+      "sha256": "8730e005d2c2dd0be4b201f3e7a009b64e5fd47dda1d327d80bf4539df0f58d5",
+      "bytes": 37416
+    },
+    {
+      "file": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "03f364408d82fd79ca344021181a3411e27638c1dfabb758185949aad15a81ee",
+      "bytes": 368653
+    }
+  ],
+  "parent_inverse_sha256": "5b3f16e32036bfcb5e2ba00c0341c0da6325641bb5a8f99b8efbd05b5238c921",
+  "private_source_fingerprints": [
+    {
+      "file": "event-000.json",
+      "sha256": "be1c40c449a595fe2c7a31c90a81475654cc6812a60c87f9741a39b3ab92433f",
+      "bytes": 394
+    },
+    {
+      "file": "catalog-header-v1.json",
+      "sha256": "9363708c301664bd8406bd5792799f513122baeb44ac96243773968210b6ed68",
+      "bytes": 24374
+    },
+    {
+      "file": "formulas-v1.bin",
+      "sha256": "5f68893d22e2943044c0c26d25861a7315806e372dd35f0e8525df9852dd1ec4",
+      "bytes": 96
+    },
+    {
+      "file": "nodes-v1.jsonl.gz",
+      "sha256": "da3d921a8fa74c7459335b8c3d05d8eb94ee92faa5f8c7eea7450a2b6928d5e4",
+      "bytes": 158
+    },
+    {
+      "file": "recipes-v1.bin",
+      "sha256": "1ca80aea8c553e06447c4fcf1ba832ef7e675365b2be76a6fb6e6d80b30f1f61",
+      "bytes": 2736
+    },
+    {
+      "file": "tiny-pred-branch-independent-raw-relation-v1.json",
+      "sha256": "f6ef1c637ce8490e05bcec78ab2ca192bb0c8d4a692cf3d93ade8e2e36c1c59d",
+      "bytes": 1997
+    },
+    {
+      "file": "tiny-pred-branch-ports-and-sharing-mechanical-checkpoint-v1.json",
+      "sha256": "57028cd66bfc864da7f4a6fd55a0c8dc8eeca1da78a842442487bf668911ddf0",
+      "bytes": 14831
+    },
+    {
+      "file": "tiny-pred-branch-ports-and-sharing-whole-bodies-v1.json",
+      "sha256": "5cbd57c1bf5587669bf890700eb868ca93d629b7b523f267438be15b6dfec353",
+      "bytes": 7402
+    },
+    {
+      "file": "tiny-pred-branch-ports-and-sharing-whole-pool-v1.json",
+      "sha256": "dccc1c56eb540ab0f66d4a8c8b4e5623d4ef969a49fbd677d8d2513f643e8507",
+      "bytes": 62330
+    }
+  ],
+  "owner_error": {
+    "type": "ValueError",
+    "message": "whole phase deadline before receipt reserve"
+  },
+  "new_proofs": 0,
+  "RL_updates": 0,
+  "completed_cases": 0,
+  "whole19_qualified": false,
+  "runtime_resource_accepted": false
+}

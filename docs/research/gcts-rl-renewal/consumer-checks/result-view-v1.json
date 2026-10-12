@@ -1,0 +1,1404 @@
+{
+  "schema": "notebook127-public-incomplete-consumer-check-view-v1",
+  "qualification": "UNKNOWN",
+  "completed_cases": 0,
+  "declared_cases": 12,
+  "resource": {
+    "seconds": 58.127426082999996,
+    "peak_bytes": 44204032,
+    "caller_seconds": 60.648,
+    "limits": {
+      "caller_seconds": 90,
+      "peak_bytes": 536870912,
+      "whole_seconds": 60
+    },
+    "gates": {
+      "actual_tool_terminal": true,
+      "caller_clock_bound": true,
+      "owner_terminal_link_present": false,
+      "owner_gate": false,
+      "post_write_gate": false,
+      "cancelled_at_final_print_false": true,
+      "final_print_gate": false,
+      "stage_identity": false,
+      "worker_complete": false,
+      "all_worker_direct_children_closed": false,
+      "all_owner_direct_children_closed": true,
+      "no_owned_leftovers": true,
+      "complete_post_closure_unchanged": true,
+      "post_write_exact_terminal": false
+    },
+    "owner_children_closed": true,
+    "owned_leftovers": 0
+  },
+  "partial_case": {
+    "case_id": "tiny-pred-branch",
+    "formulas": {
+      "9": [
+        "pred",
+        "ControlP",
+        []
+      ],
+      "7": [
+        "pred",
+        "ControlB",
+        []
+      ],
+      "6": [
+        "imp",
+        [
+          "pred",
+          "ControlP",
+          []
+        ],
+        [
+          "pred",
+          "ControlB",
+          []
+        ]
+      ]
+    },
+    "groups": [
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            0,
+            9
+          ],
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            1,
+            3,
+            7
+          ],
+          [
+            2,
+            3,
+            -3
+          ],
+          [
+            3,
+            3,
+            -1
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-MP",
+            "ordered_inputs": [
+              {
+                "index": 0,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ]
+          }
+        ],
+        "descriptor_id": "whole-family-group-8ab764b49ee9d769d83e757a99fa8f27499507b2ab69fa66e0b18487d76f0f62",
+        "component_member_occurrences": 1,
+        "distinct_member_count": 1,
+        "shared_member_count": 0,
+        "members": [
+          [
+            12,
+            3,
+            [
+              0,
+              2
+            ]
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-a0e79b544356d2f7ff78b4bdbefc8979c19d5501f9d2a4a2240e290bfca8dc31"
+        ],
+        "full_identity_preimage_sha256": [
+          "a0e79b544356d2f7ff78b4bdbefc8979c19d5501f9d2a4a2240e290bfca8dc31"
+        ],
+        "components": [
+          {
+            "name": "control-MP",
+            "conclusion_code": 7,
+            "conclusion_row": 3,
+            "members": [
+              [
+                12,
+                3,
+                [
+                  0,
+                  2
+                ]
+              ]
+            ],
+            "ordered_input_bindings": [
+              {
+                "index": 0,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ],
+            "ordered_input_rows": [
+              0,
+              2
+            ],
+            "ordered_member_rows": [
+              3
+            ],
+            "ordered_receptor_ports": [
+              {
+                "formula_code": 9,
+                "high_level_port": 0,
+                "input_row": 0,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 9,
+                    "offset_value": -3,
+                    "primitive_input_port": 0,
+                    "reader_row": 3
+                  }
+                ]
+              },
+              {
+                "formula_code": 6,
+                "high_level_port": 1,
+                "input_row": 2,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 6,
+                    "offset_value": -1,
+                    "primitive_input_port": 1,
+                    "reader_row": 3
+                  }
+                ]
+              }
+            ],
+            "full_member_ids": [
+              "aggregate-primitive-a0e79b544356d2f7ff78b4bdbefc8979c19d5501f9d2a4a2240e290bfca8dc31"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 7,
+            "words": "Proposed modus ponens reading \\(r=0\\), \\(r=2\\)."
+          }
+        ]
+      },
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            1,
+            9
+          ],
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            1,
+            3,
+            7
+          ],
+          [
+            2,
+            3,
+            -2
+          ],
+          [
+            3,
+            3,
+            -1
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-MP",
+            "ordered_inputs": [
+              {
+                "index": 1,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ]
+          }
+        ],
+        "descriptor_id": "whole-family-group-2edda1c968f799f4b45540bcd1661322dffefb3c7fb19a7be57f7425642768a1",
+        "component_member_occurrences": 1,
+        "distinct_member_count": 1,
+        "shared_member_count": 0,
+        "members": [
+          [
+            12,
+            3,
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-41b40a5d6ab6fc892202110c680191af368fd3f551480b6d32d43aef4a66ead5"
+        ],
+        "full_identity_preimage_sha256": [
+          "41b40a5d6ab6fc892202110c680191af368fd3f551480b6d32d43aef4a66ead5"
+        ],
+        "components": [
+          {
+            "name": "control-MP",
+            "conclusion_code": 7,
+            "conclusion_row": 3,
+            "members": [
+              [
+                12,
+                3,
+                [
+                  1,
+                  2
+                ]
+              ]
+            ],
+            "ordered_input_bindings": [
+              {
+                "index": 1,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ],
+            "ordered_input_rows": [
+              1,
+              2
+            ],
+            "ordered_member_rows": [
+              3
+            ],
+            "ordered_receptor_ports": [
+              {
+                "formula_code": 9,
+                "high_level_port": 0,
+                "input_row": 1,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 9,
+                    "offset_value": -2,
+                    "primitive_input_port": 0,
+                    "reader_row": 3
+                  }
+                ]
+              },
+              {
+                "formula_code": 6,
+                "high_level_port": 1,
+                "input_row": 2,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 6,
+                    "offset_value": -1,
+                    "primitive_input_port": 1,
+                    "reader_row": 3
+                  }
+                ]
+              }
+            ],
+            "full_member_ids": [
+              "aggregate-primitive-41b40a5d6ab6fc892202110c680191af368fd3f551480b6d32d43aef4a66ead5"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 7,
+            "words": "Proposed modus ponens reading \\(r=1\\), \\(r=2\\)."
+          }
+        ]
+      },
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            0,
+            9
+          ],
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            1,
+            3,
+            9
+          ],
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            4,
+            -4
+          ],
+          [
+            3,
+            4,
+            -2
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-redundant-share",
+            "ordered_inputs": [
+              {
+                "index": 0,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ]
+          }
+        ],
+        "descriptor_id": "whole-family-group-e6aa7b4201c17cba087fc229e2c8a104a74a6502a8415408445e35b20313616b",
+        "component_member_occurrences": 2,
+        "distinct_member_count": 2,
+        "shared_member_count": 0,
+        "members": [
+          [
+            12,
+            4,
+            [
+              0,
+              2
+            ]
+          ],
+          [
+            17,
+            3,
+            []
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-04d84acd5417c6179641ed971f16b8167a63c0918332d55bf74fe9d06ca0282d",
+          "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "full_identity_preimage_sha256": [
+          "04d84acd5417c6179641ed971f16b8167a63c0918332d55bf74fe9d06ca0282d",
+          "e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "components": [
+          {
+            "name": "control-redundant-share",
+            "conclusion_code": 7,
+            "conclusion_row": 4,
+            "members": [
+              [
+                17,
+                3,
+                []
+              ],
+              [
+                12,
+                4,
+                [
+                  0,
+                  2
+                ]
+              ]
+            ],
+            "ordered_input_bindings": [
+              {
+                "index": 0,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ],
+            "ordered_input_rows": [
+              0,
+              2
+            ],
+            "ordered_member_rows": [
+              3,
+              4
+            ],
+            "ordered_receptor_ports": [
+              {
+                "formula_code": 9,
+                "high_level_port": 0,
+                "input_row": 0,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 9,
+                    "offset_value": -4,
+                    "primitive_input_port": 0,
+                    "reader_row": 4
+                  }
+                ]
+              },
+              {
+                "formula_code": 6,
+                "high_level_port": 1,
+                "input_row": 2,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 6,
+                    "offset_value": -2,
+                    "primitive_input_port": 1,
+                    "reader_row": 4
+                  }
+                ]
+              }
+            ],
+            "full_member_ids": [
+              "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922",
+              "aggregate-primitive-04d84acd5417c6179641ed971f16b8167a63c0918332d55bf74fe9d06ca0282d"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 9,
+            "words": "Proposed named synthetic axiom output."
+          },
+          {
+            "row": 4,
+            "formula_code": 7,
+            "words": "Proposed modus ponens reading \\(r=0\\), \\(r=2\\)."
+          }
+        ]
+      },
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            1,
+            9
+          ],
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            1,
+            3,
+            9
+          ],
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            4,
+            -3
+          ],
+          [
+            3,
+            4,
+            -2
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-redundant-share",
+            "ordered_inputs": [
+              {
+                "index": 1,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ]
+          }
+        ],
+        "descriptor_id": "whole-family-group-16053187360d649d61da7669b282b0bdf291b7769cb714ce2e72bda20859da6a",
+        "component_member_occurrences": 2,
+        "distinct_member_count": 2,
+        "shared_member_count": 0,
+        "members": [
+          [
+            12,
+            4,
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            17,
+            3,
+            []
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-767f2e0c6b21f2aa61b5eef534d2b9575e1c4ebeb71a054ca002437c69e33aca",
+          "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "full_identity_preimage_sha256": [
+          "767f2e0c6b21f2aa61b5eef534d2b9575e1c4ebeb71a054ca002437c69e33aca",
+          "e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "components": [
+          {
+            "name": "control-redundant-share",
+            "conclusion_code": 7,
+            "conclusion_row": 4,
+            "members": [
+              [
+                17,
+                3,
+                []
+              ],
+              [
+                12,
+                4,
+                [
+                  1,
+                  2
+                ]
+              ]
+            ],
+            "ordered_input_bindings": [
+              {
+                "index": 1,
+                "kind": "root_anchor"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ],
+            "ordered_input_rows": [
+              1,
+              2
+            ],
+            "ordered_member_rows": [
+              3,
+              4
+            ],
+            "ordered_receptor_ports": [
+              {
+                "formula_code": 9,
+                "high_level_port": 0,
+                "input_row": 1,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 9,
+                    "offset_value": -3,
+                    "primitive_input_port": 0,
+                    "reader_row": 4
+                  }
+                ]
+              },
+              {
+                "formula_code": 6,
+                "high_level_port": 1,
+                "input_row": 2,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 6,
+                    "offset_value": -2,
+                    "primitive_input_port": 1,
+                    "reader_row": 4
+                  }
+                ]
+              }
+            ],
+            "full_member_ids": [
+              "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922",
+              "aggregate-primitive-767f2e0c6b21f2aa61b5eef534d2b9575e1c4ebeb71a054ca002437c69e33aca"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 9,
+            "words": "Proposed named synthetic axiom output."
+          },
+          {
+            "row": 4,
+            "formula_code": 7,
+            "words": "Proposed modus ponens reading \\(r=1\\), \\(r=2\\)."
+          }
+        ]
+      },
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            3,
+            9
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-replenish",
+            "ordered_inputs": []
+          }
+        ],
+        "descriptor_id": "whole-family-group-4196258e3b46025b789beb8f18d87e095d7c2fba86c193ebdae774332666457e",
+        "component_member_occurrences": 1,
+        "distinct_member_count": 1,
+        "shared_member_count": 0,
+        "members": [
+          [
+            17,
+            3,
+            []
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "full_identity_preimage_sha256": [
+          "e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "components": [
+          {
+            "name": "control-replenish",
+            "conclusion_code": 9,
+            "conclusion_row": 3,
+            "members": [
+              [
+                17,
+                3,
+                []
+              ]
+            ],
+            "ordered_input_bindings": [],
+            "ordered_input_rows": [],
+            "ordered_member_rows": [
+              3
+            ],
+            "ordered_receptor_ports": [],
+            "full_member_ids": [
+              "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 9,
+            "words": "Proposed named synthetic axiom output."
+          }
+        ]
+      },
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            1,
+            3,
+            9
+          ],
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            4,
+            -1
+          ],
+          [
+            3,
+            4,
+            -2
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-replenish",
+            "ordered_inputs": []
+          },
+          {
+            "name": "control-MP",
+            "ordered_inputs": [
+              {
+                "index": 0,
+                "kind": "earlier_component_output"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ]
+          }
+        ],
+        "descriptor_id": "whole-family-group-6f92349439518dd758221bab1b345ed9600e8fc25dc30eb08817bafeb38e99e8",
+        "component_member_occurrences": 2,
+        "distinct_member_count": 2,
+        "shared_member_count": 0,
+        "members": [
+          [
+            12,
+            4,
+            [
+              3,
+              2
+            ]
+          ],
+          [
+            17,
+            3,
+            []
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-ffecc438287627d1ee3e395c9c078fadf384e38e5f7114fdd5a30c5106a5677e",
+          "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "full_identity_preimage_sha256": [
+          "ffecc438287627d1ee3e395c9c078fadf384e38e5f7114fdd5a30c5106a5677e",
+          "e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "components": [
+          {
+            "name": "control-replenish",
+            "conclusion_code": 9,
+            "conclusion_row": 3,
+            "members": [
+              [
+                17,
+                3,
+                []
+              ]
+            ],
+            "ordered_input_bindings": [],
+            "ordered_input_rows": [],
+            "ordered_member_rows": [
+              3
+            ],
+            "ordered_receptor_ports": [],
+            "full_member_ids": [
+              "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+            ]
+          },
+          {
+            "name": "control-MP",
+            "conclusion_code": 7,
+            "conclusion_row": 4,
+            "members": [
+              [
+                12,
+                4,
+                [
+                  3,
+                  2
+                ]
+              ]
+            ],
+            "ordered_input_bindings": [
+              {
+                "index": 0,
+                "kind": "earlier_component_output"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ],
+            "ordered_input_rows": [
+              3,
+              2
+            ],
+            "ordered_member_rows": [
+              4
+            ],
+            "ordered_receptor_ports": [
+              {
+                "formula_code": 9,
+                "high_level_port": 0,
+                "input_row": 3,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 9,
+                    "offset_value": -1,
+                    "primitive_input_port": 0,
+                    "reader_row": 4
+                  }
+                ]
+              },
+              {
+                "formula_code": 6,
+                "high_level_port": 1,
+                "input_row": 2,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 6,
+                    "offset_value": -2,
+                    "primitive_input_port": 1,
+                    "reader_row": 4
+                  }
+                ]
+              }
+            ],
+            "full_member_ids": [
+              "aggregate-primitive-ffecc438287627d1ee3e395c9c078fadf384e38e5f7114fdd5a30c5106a5677e"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 9,
+            "words": "Proposed named synthetic axiom output."
+          },
+          {
+            "row": 4,
+            "formula_code": 7,
+            "words": "Proposed modus ponens reading \\(r=3\\), \\(r=2\\)."
+          }
+        ]
+      },
+      {
+        "aggregate_t": [
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ]
+        ],
+        "aggregate_m": [
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            1,
+            3,
+            9
+          ],
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            4,
+            -1
+          ],
+          [
+            3,
+            4,
+            -2
+          ]
+        ],
+        "binding_specification": [
+          {
+            "name": "control-replenish",
+            "ordered_inputs": []
+          },
+          {
+            "name": "control-redundant-share",
+            "ordered_inputs": [
+              {
+                "index": 0,
+                "kind": "earlier_component_output"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ]
+          }
+        ],
+        "descriptor_id": "whole-family-group-d7fa0294af6c226d249ddbc9aa39185963cd6788938a7cfa36a26e3935ab5d0f",
+        "component_member_occurrences": 3,
+        "distinct_member_count": 2,
+        "shared_member_count": 1,
+        "members": [
+          [
+            12,
+            4,
+            [
+              3,
+              2
+            ]
+          ],
+          [
+            17,
+            3,
+            []
+          ]
+        ],
+        "full_member_ids": [
+          "aggregate-primitive-ffecc438287627d1ee3e395c9c078fadf384e38e5f7114fdd5a30c5106a5677e",
+          "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "full_identity_preimage_sha256": [
+          "ffecc438287627d1ee3e395c9c078fadf384e38e5f7114fdd5a30c5106a5677e",
+          "e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+        ],
+        "components": [
+          {
+            "name": "control-replenish",
+            "conclusion_code": 9,
+            "conclusion_row": 3,
+            "members": [
+              [
+                17,
+                3,
+                []
+              ]
+            ],
+            "ordered_input_bindings": [],
+            "ordered_input_rows": [],
+            "ordered_member_rows": [
+              3
+            ],
+            "ordered_receptor_ports": [],
+            "full_member_ids": [
+              "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922"
+            ]
+          },
+          {
+            "name": "control-redundant-share",
+            "conclusion_code": 7,
+            "conclusion_row": 4,
+            "members": [
+              [
+                17,
+                3,
+                []
+              ],
+              [
+                12,
+                4,
+                [
+                  3,
+                  2
+                ]
+              ]
+            ],
+            "ordered_input_bindings": [
+              {
+                "index": 0,
+                "kind": "earlier_component_output"
+              },
+              {
+                "index": 2,
+                "kind": "root_anchor"
+              }
+            ],
+            "ordered_input_rows": [
+              3,
+              2
+            ],
+            "ordered_member_rows": [
+              3,
+              4
+            ],
+            "ordered_receptor_ports": [
+              {
+                "formula_code": 9,
+                "high_level_port": 0,
+                "input_row": 3,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 9,
+                    "offset_value": -1,
+                    "primitive_input_port": 0,
+                    "reader_row": 4
+                  }
+                ]
+              },
+              {
+                "formula_code": 6,
+                "high_level_port": 1,
+                "input_row": 2,
+                "new_occupancy": 0,
+                "readers": [
+                  {
+                    "formula_code": 6,
+                    "offset_value": -2,
+                    "primitive_input_port": 1,
+                    "reader_row": 4
+                  }
+                ]
+              }
+            ],
+            "full_member_ids": [
+              "aggregate-primitive-e8757d06547ac79eb0b36fd851a946c6a6255f6f2e0e2b831185e686f3df7922",
+              "aggregate-primitive-ffecc438287627d1ee3e395c9c078fadf384e38e5f7114fdd5a30c5106a5677e"
+            ]
+          }
+        ],
+        "translation_rows": [
+          {
+            "row": 0,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence zero."
+          },
+          {
+            "row": 1,
+            "formula_code": 9,
+            "words": "Original hypothesis occurrence one; same formula, separately indexed."
+          },
+          {
+            "row": 2,
+            "formula_code": 6,
+            "words": "Original implication hypothesis, occurrence two."
+          },
+          {
+            "row": 3,
+            "formula_code": 9,
+            "words": "Proposed named synthetic axiom output."
+          },
+          {
+            "row": 4,
+            "formula_code": 7,
+            "words": "Proposed modus ponens reading \\(r=3\\), \\(r=2\\)."
+          }
+        ]
+      }
+    ],
+    "raw_dimensions": {
+      "formula_count": 12,
+      "logical_rows": 24,
+      "non_assumption_witness_count": 15,
+      "primitive_license_count": 18,
+      "source_body_count": 0
+    },
+    "raw_relation_saved_pass": true,
+    "whole_pool_saved_pass": true,
+    "enclosing_resource_accepted": false,
+    "automatically_discovered": false,
+    "closed_lemma": false
+  },
+  "pool_counts": {
+    "single_types_visited": 3,
+    "pair_types_visited": 9,
+    "binding_tuples_visited": 7,
+    "registered_groups": 7,
+    "source_member_occurrences": 12,
+    "group_distinct_members": 11,
+    "group_shared_members": 1
+  },
+  "case_outcomes": [
+    {
+      "case_id": "tiny-pred-branch",
+      "head": "pred",
+      "boundary": "branch",
+      "outcome": "started; no completed receipt"
+    },
+    {
+      "case_id": "tiny-pred-forced",
+      "head": "pred",
+      "boundary": "forced",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-pred-dead",
+      "head": "pred",
+      "boundary": "dead",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-eq-branch",
+      "head": "eq",
+      "boundary": "branch",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-eq-forced",
+      "head": "eq",
+      "boundary": "forced",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-eq-dead",
+      "head": "eq",
+      "boundary": "dead",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-and-branch",
+      "head": "and",
+      "boundary": "branch",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-and-forced",
+      "head": "and",
+      "boundary": "forced",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-and-dead",
+      "head": "and",
+      "boundary": "dead",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-all-branch",
+      "head": "all",
+      "boundary": "branch",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-all-forced",
+      "head": "all",
+      "boundary": "forced",
+      "outcome": "not started"
+    },
+    {
+      "case_id": "tiny-all-dead",
+      "head": "all",
+      "boundary": "dead",
+      "outcome": "not started"
+    }
+  ],
+  "artifact_fingerprints": [
+    {
+      "file": "event-000.json",
+      "sha256": "be1c40c449a595fe2c7a31c90a81475654cc6812a60c87f9741a39b3ab92433f",
+      "bytes": 394
+    },
+    {
+      "file": "catalog-header-v1.json",
+      "sha256": "9363708c301664bd8406bd5792799f513122baeb44ac96243773968210b6ed68",
+      "bytes": 24374
+    },
+    {
+      "file": "formulas-v1.bin",
+      "sha256": "5f68893d22e2943044c0c26d25861a7315806e372dd35f0e8525df9852dd1ec4",
+      "bytes": 96
+    },
+    {
+      "file": "nodes-v1.jsonl.gz",
+      "sha256": "da3d921a8fa74c7459335b8c3d05d8eb94ee92faa5f8c7eea7450a2b6928d5e4",
+      "bytes": 158
+    },
+    {
+      "file": "recipes-v1.bin",
+      "sha256": "1ca80aea8c553e06447c4fcf1ba832ef7e675365b2be76a6fb6e6d80b30f1f61",
+      "bytes": 2736
+    },
+    {
+      "file": "tiny-pred-branch-independent-raw-relation-v1.json",
+      "sha256": "f6ef1c637ce8490e05bcec78ab2ca192bb0c8d4a692cf3d93ade8e2e36c1c59d",
+      "bytes": 1997
+    },
+    {
+      "file": "tiny-pred-branch-ports-and-sharing-mechanical-checkpoint-v1.json",
+      "sha256": "57028cd66bfc864da7f4a6fd55a0c8dc8eeca1da78a842442487bf668911ddf0",
+      "bytes": 14831
+    },
+    {
+      "file": "tiny-pred-branch-ports-and-sharing-whole-bodies-v1.json",
+      "sha256": "5cbd57c1bf5587669bf890700eb868ca93d629b7b523f267438be15b6dfec353",
+      "bytes": 7402
+    },
+    {
+      "file": "tiny-pred-branch-ports-and-sharing-whole-pool-v1.json",
+      "sha256": "dccc1c56eb540ab0f66d4a8c8b4e5623d4ef969a49fbd677d8d2513f643e8507",
+      "bytes": 62330
+    }
+  ],
+  "feature_vectors_saved": 0,
+  "complete_original19_qualified": false,
+  "new_proofs": 0,
+  "RL_updates": 0,
+  "publication_scope": "Display projection of incomplete saved artifacts, not a runnable proof/checker or accepted experiment. No runtime states or feature values are reconstructed."
+}

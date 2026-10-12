@@ -1,0 +1,217 @@
+{
+  "authored_mechanism_body_specs": [
+    {
+      "closed_lemma": false,
+      "external_ports": [],
+      "members": [
+        "one head-k named axiom at source member row2"
+      ],
+      "name": "control-replenish"
+    },
+    {
+      "closed_lemma": false,
+      "external_ports": [
+        "head at source row0",
+        "implication(head,B) at source row1"
+      ],
+      "members": [
+        "one genuine MP(head,implication(head,B)) at source member row2"
+      ],
+      "name": "control-MP"
+    },
+    {
+      "closed_lemma": false,
+      "external_ports": [
+        "head at source row0",
+        "implication(head,B) at source row1"
+      ],
+      "members": [
+        "head-k named axiom at source member row2",
+        "same genuine MP using both external ports at source member row3"
+      ],
+      "name": "control-redundant-share",
+      "note": "Unused first member is intentional arbitrary-proposal sharing control, outside automatic connected mining grammar. It cannot be a mined or closed lemma."
+    }
+  ],
+  "boundary_target": [
+    "pred",
+    "ControlGoal",
+    []
+  ],
+  "capacity_inventory": "Separate explicitly authored synthetic control inventories contain64 or65 distinct names for the same zero-port head axiom body. Full single/pair root grammar must enumerate all bodies and n squared pair types; zero-port second bodies are disconnected and outside pair grammar.64 accepted groups are not a reduced production inventory;65 must be refused, never trimmed.",
+  "case_product": {
+    "goal_axiom_counts": [
+      2,
+      1,
+      0
+    ],
+    "heads": [
+      "pred",
+      "eq",
+      "and",
+      "all"
+    ]
+  },
+  "cases": [
+    {
+      "boundary_control": "branch-capable target boundary",
+      "goal_axiom_count": 2,
+      "head": "pred",
+      "id": "tiny-pred-branch"
+    },
+    {
+      "boundary_control": "distant unique target-row singleton",
+      "goal_axiom_count": 1,
+      "head": "pred",
+      "id": "tiny-pred-forced"
+    },
+    {
+      "boundary_control": "distant target-row degree zero",
+      "goal_axiom_count": 0,
+      "head": "pred",
+      "id": "tiny-pred-dead"
+    },
+    {
+      "boundary_control": "branch-capable target boundary",
+      "goal_axiom_count": 2,
+      "head": "eq",
+      "id": "tiny-eq-branch"
+    },
+    {
+      "boundary_control": "distant unique target-row singleton",
+      "goal_axiom_count": 1,
+      "head": "eq",
+      "id": "tiny-eq-forced"
+    },
+    {
+      "boundary_control": "distant target-row degree zero",
+      "goal_axiom_count": 0,
+      "head": "eq",
+      "id": "tiny-eq-dead"
+    },
+    {
+      "boundary_control": "branch-capable target boundary",
+      "goal_axiom_count": 2,
+      "head": "and",
+      "id": "tiny-and-branch"
+    },
+    {
+      "boundary_control": "distant unique target-row singleton",
+      "goal_axiom_count": 1,
+      "head": "and",
+      "id": "tiny-and-forced"
+    },
+    {
+      "boundary_control": "distant target-row degree zero",
+      "goal_axiom_count": 0,
+      "head": "and",
+      "id": "tiny-and-dead"
+    },
+    {
+      "boundary_control": "branch-capable target boundary",
+      "goal_axiom_count": 2,
+      "head": "all",
+      "id": "tiny-all-branch"
+    },
+    {
+      "boundary_control": "distant unique target-row singleton",
+      "goal_axiom_count": 1,
+      "head": "all",
+      "id": "tiny-all-forced"
+    },
+    {
+      "boundary_control": "distant target-row degree zero",
+      "goal_axiom_count": 0,
+      "head": "all",
+      "id": "tiny-all-dead"
+    }
+  ],
+  "complete_tiny_grammar": {
+    "DAG": "Unique exact term/formula nodes; strictly prior child node insertion in canonical registry traversal, left-to-right children. Immutable complete node stream.",
+    "axioms": "For each head name k: named head-k is head_forms[k], named implication-k is head_forms[k] implies conclusion_form. Named body-output is conclusion_form. Exactly goal-0 through goal-(n-1) are boundary_target for the selected n. No other axioms.",
+    "boundary": "All24 required/root-generation-zero points, exterior formula marks -23 through -1 assigned value-1, target formula code at row23, exact occurrence seed rows0,1,2.",
+    "formula_registry": "All formula subterms of every named axiom, all3 hypotheses and target; formula ASTs only, not term nodes. Unique exact ASTs, sorted by canonical UTF8 JSON.",
+    "ordered_hypotheses": "Exactly [selected head, selected head, implication(selected head,conclusion_form)] with separately indexed assumption commands0,1,2. Duplicate formulas do not merge occurrences.",
+    "ordered_recipes": "Canonical UTF8 JSON of [complete witness,ordered premise formulas], sorted lexicographically; distinct named axioms and assumption occurrence commands are never deduplicated by t/m data.",
+    "primitive_inventory": "Every named axiom; every literal implication subformula licenses ordered MP with distinct antecedent and implication formula codes; exactly3 indexed assumptions. There are no universal-instantiation or equality-substitution recipes in this explicitly synthetic grammar.",
+    "wire": "Unchanged decoder v1: nodes JSONL gzip with mtime0, formula u64le, recipe152-byte <11Q32s32s and all original identity/record preimages; borrowed schema strings serve codec compatibility only, never production-catalog qualification."
+  },
+  "conclusion_form": [
+    "pred",
+    "ControlB",
+    []
+  ],
+  "generic_equal_code_aliases": {
+    "logical_or_Graph_admission": false,
+    "separate_fixture": "Existing tiny-literal-controls-v1.json or a separately declared raw FactorStream mechanism test. Equal-code synthetic ports do not form genuine MP and must not be inserted into this DynamicGraph raw catalog."
+  },
+  "head_forms": {
+    "all": [
+      "all",
+      "x",
+      [
+        "pred",
+        "ControlU",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "and",
+      [
+        "pred",
+        "ControlP",
+        []
+      ],
+      [
+        "pred",
+        "ControlQ",
+        []
+      ]
+    ],
+    "eq": [
+      "eq",
+      [
+        "fun",
+        "a",
+        []
+      ],
+      [
+        "fun",
+        "b",
+        []
+      ]
+    ],
+    "pred": [
+      "pred",
+      "ControlP",
+      []
+    ]
+  },
+  "height": 24,
+  "marking_version": "injective-formula-ordered-mp-offset-v1",
+  "native_admission": false,
+  "no_target_route": "No command sequence or tactic to reach boundary_target is supplied. Authored proposal mechanisms involve head/B only. Target axioms are boundary degree controls and are never presented as newly discovered mathematical proofs.",
+  "orientation": "identity",
+  "production_theorem_admission": false,
+  "proof_search_authorized": false,
+  "schema": "synthetic-24row-three-occurrence-consumer-mechanism-fixture-v1",
+  "scope": "Tiny authored mechanism controls only. This is not the production nine-context catalog grammar, a discovered proof, a mined library, a closed lemma or a training/evaluation example.",
+  "signature": {
+    "functions": {
+      "a": 0,
+      "b": 0
+    },
+    "predicates": {
+      "ControlB": 0,
+      "ControlGoal": 0,
+      "ControlP": 0,
+      "ControlQ": 0,
+      "ControlU": 1
+    }
+  }
+}
