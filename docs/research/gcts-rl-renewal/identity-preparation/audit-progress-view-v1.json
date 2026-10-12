@@ -1,0 +1,72 @@
+{
+  "schema": "public-identity-independent-audit-metadata-v1",
+  "ROOT_final_accepted": true,
+  "status": "accepted_complete_owned_stage",
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": true,
+    "owner_gate": true,
+    "post_write_gate": true,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": true,
+    "stage_identity": true,
+    "worker_complete": true,
+    "all_worker_direct_children_closed": true,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": true
+  },
+  "limits": {
+    "whole_seconds": 60,
+    "peak_bytes": 536870912,
+    "caller_seconds": 90
+  },
+  "caller_elapsed_seconds": 40.273,
+  "owner_elapsed_seconds": 34.339196666,
+  "conservative_peak_bytes": 264568832,
+  "worker_returncode": 0,
+  "owned_leftovers": [],
+  "cancelled": false,
+  "cleanup_errors": [],
+  "receipt_present": true,
+  "complete_catalog_licensed": true,
+  "independent_audit_attempts": 1,
+  "target_searches": 0,
+  "proof_certificates": 0,
+  "new_RL_training": false,
+  "dynamic_search_conformance": false,
+  "all_five_qualification": false,
+  "ROOT_decision_pin": {
+    "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/replay-ROOT-final-decision-v1.json",
+    "sha256": "09010b9ebc3f4f06359a2eaed4ea61ba6aabb4e02c4d1e177784ba677892249e",
+    "bytes": 2792
+  },
+  "scope": "Saved resource/receipt metadata projection; no scientific reexecution. Catalog/static audit only, not theorem proof replay.",
+  "dimensions": {
+    "formula_count": 113406,
+    "logical_rows": 24,
+    "non_assumption_witness_count": 119630,
+    "primitive_license_count": 119633,
+    "source_body_count": 0
+  },
+  "primitive_license_checks": 119633,
+  "complete_initial_candidate_count": 181506740,
+  "initial_static_point_accepted": true,
+  "audit_receipt_pin": {
+    "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/train-pa-right-zero-independent-audit-v1/audit-result-v3.json",
+    "sha256": "f59eb7472cdddcbce15797703db0c71833f36a260f8e6bb18d9cb5591db49c6e",
+    "bytes": 2275
+  },
+  "complete_evidence_pin": {
+    "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/train-pa-right-zero-independent-audit-v1/complete-independent-static-evidence-v1.json.gz",
+    "sha256": "1e628c979fd50b4ae3c5db7f33f325331ab146602e8356c130321fe61c7f4491",
+    "bytes": 4566
+  },
+  "complete_licenses_pin": {
+    "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/train-pa-right-zero-independent-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+    "sha256": "295df691ed6553a7c3c5ca0e5c0d0b89bfe1c569399022fd797fb2d63eacdf84",
+    "bytes": 10040283
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "schema": "notebook125-publication-manifest-v1",
+  "files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/audit-progress-view-v1.json",
+      "sha256": "42c847475c4463c8552c97e68e89b342d2c23746daa0cda0516545ce4da6e0c0",
+      "bytes": 2799
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/benchmark-proposals-v1.json",
+      "sha256": "43ce6bc324f662362445b62dd7872e10e016f91bd5c4d099bef65eedc3c018ee",
+      "bytes": 6857
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/reader.css",
+      "sha256": "60055b695ee909e87dbabd9b79ba29591ad8a6f3333a77ef890f75411b7c9445",
+      "bytes": 2188
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/reader.html",
+      "sha256": "11675329154b8e97f42f0f0cda58e52a9e7825eab34ecf05da92315a703eaeec",
+      "bytes": 40891
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/reader.js",
+      "sha256": "37b87d03c6d48f2972a5e0eeae17448bc8dfbd73f70dbab9771f34368eb85d38",
+      "bytes": 1191
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/saved-progress-view-v1.json",
+      "sha256": "8854046472ae2bd8a4184a02bd59e5936e7db54182abf9d5dd235bb56b1edfd5",
+      "bytes": 76653
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/audit-worker.py",
+      "sha256": "2256ca596ff4f432e12479e7006c04f0cc21f85999680d0c5b8844931515ae81",
+      "bytes": 36646
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/compiler.py",
+      "sha256": "be5d6fdf80a28effaefb1e0fa69bfce32dd262d05db8a7a0eed377d51e72481c",
+      "bytes": 44888
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/independent-catalog-audit.py",
+      "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8",
+      "bytes": 15171
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/independent-domains.py",
+      "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34",
+      "bytes": 7441
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/independent-grammar.py",
+      "sha256": "86b8c916344c34629450bc12a0251b8ec9a0c29ce1542d1e039966879fb3278e",
+      "bytes": 13588
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/logical-oracle.py",
+      "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+      "bytes": 23504
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/metadata-closer.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/metadata-collector.py",
+      "sha256": "a7b9400f84e03aa13bfee73dea2c93901a19790dc0dea607c9250264d054ad7e",
+      "bytes": 9360
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/owner.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/preparation-worker.py",
+      "sha256": "db4f65b1ac6a21410707eb6c31f20de4c96672327b1aa7a6dcc40085bd932236",
+      "bytes": 22203
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "e25bcdebc019ac03bf48777f375e9026953f457af34a8961ccb2409fb5e0ae2c",
+      "bytes": 366912
+    }
+  ],
+  "exact_source_aliases": [
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+        "sha256": "be5d6fdf80a28effaefb1e0fa69bfce32dd262d05db8a7a0eed377d51e72481c",
+        "bytes": 44888
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/compiler.py",
+        "sha256": "be5d6fdf80a28effaefb1e0fa69bfce32dd262d05db8a7a0eed377d51e72481c",
+        "bytes": 44888
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+        "sha256": "db4f65b1ac6a21410707eb6c31f20de4c96672327b1aa7a6dcc40085bd932236",
+        "bytes": 22203
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/preparation-worker.py",
+        "sha256": "db4f65b1ac6a21410707eb6c31f20de4c96672327b1aa7a6dcc40085bd932236",
+        "bytes": 22203
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+        "sha256": "2256ca596ff4f432e12479e7006c04f0cc21f85999680d0c5b8844931515ae81",
+        "bytes": 36646
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/audit-worker.py",
+        "sha256": "2256ca596ff4f432e12479e7006c04f0cc21f85999680d0c5b8844931515ae81",
+        "bytes": 36646
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+        "sha256": "86b8c916344c34629450bc12a0251b8ec9a0c29ce1542d1e039966879fb3278e",
+        "bytes": 13588
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/independent-grammar.py",
+        "sha256": "86b8c916344c34629450bc12a0251b8ec9a0c29ce1542d1e039966879fb3278e",
+        "bytes": 13588
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+        "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8",
+        "bytes": 15171
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/independent-catalog-audit.py",
+        "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8",
+        "bytes": 15171
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+        "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34",
+        "bytes": 7441
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/independent-domains.py",
+        "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34",
+        "bytes": 7441
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+        "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+        "bytes": 23504
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/logical-oracle.py",
+        "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+        "bytes": 23504
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/run_owned_bridge_v2.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+        "bytes": 14639
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/owner.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+        "bytes": 14639
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/collect_identity_metadata_v1.py",
+        "sha256": "a7b9400f84e03aa13bfee73dea2c93901a19790dc0dea607c9250264d054ad7e",
+        "bytes": 9360
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/metadata-collector.py",
+        "sha256": "a7b9400f84e03aa13bfee73dea2c93901a19790dc0dea607c9250264d054ad7e",
+        "bytes": 9360
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/close_stage_decision_v1.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+        "bytes": 4752
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/identity-preparation/sources/metadata-closer.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+        "bytes": 4752
+      }
+    }
+  ],
+  "parent_before": {
+    "path": ".gcts-active/cluster-transfer-compact-identity-progress-20261012/ROOT-parent-before-notebook125.html",
+    "sha256": "a86665723691d51ae32795d1edf60023af39cd81063591901851607b17c4f5f6",
+    "bytes": 365993
+  },
+  "parent_panel": "<section class=\"panel\" id=\"identity-preparation\"><p class=\"eyebrow\">NOTEBOOK125 \u00b7 COMPLETE PREPARATION \u00b7 INDEPENDENT STATIC AUDIT ACCEPTED</p><h2>The complete arithmetic catalog now fits the existing limits</h2><p>Bounded reuse of exact syntax bytes preserves the whole declared grammar while completing all \\(24\\) initial row domains. Preparation closed in \\(30.652\\,\\mathrm{s}\\) with conservative peak \\(108.3125\\,\\mathrm{MiB}\\). The independent whole catalog and initial domains passed semantic checking and all resource gates. Cluster interfaces, independent checking and theorem benchmarks proceed in parallel. No new proof or RL benefit is claimed.</p><p><a href=\"identity-preparation/reader.html#profile\">Measured improvement</a> \u00b7 <a href=\"identity-preparation/reader.html#audit\">Independent audit outcome</a> \u00b7 <a href=\"identity-preparation/reader.html#parallel\">Parallel research tracks</a></p></section>\n",
+  "compiler_attempts": 1,
+  "independent_catalog_audit_attempts": 1,
+  "complete_preparation": true,
+  "independently_licensed_static_catalog": true,
+  "target_searches": 0,
+  "new_proofs": 0,
+  "new_RL_training": false,
+  "dynamic_search_conformance": false,
+  "all_five_qualification": false,
+  "source_authority": "Reviewed exact source aliases; runtime/input/publication pins are evidence of this specific bounded experiment, not universal soundness.",
+  "scope": "Task files only; prior outcomes preserved. No private process identifiers, birth identities, absolute host paths or catalog/expanded-license payloads published."
+}
