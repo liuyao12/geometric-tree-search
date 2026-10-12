@@ -1,0 +1,35 @@
+{
+  "schema": "metadata-only-reader-clock-scope-clarification-v1",
+  "previous_publication": "b98a664ce7341cdde85a4cc8ee0e05bdd5178116",
+  "exact_text_replacements": [
+    {
+      "before": "No learner, theorem search, RNG stream or global qualification has been established.",
+      "after": "No learner, new theorem search or RNG stream has run in this curriculum qualification phase; global qualification remains open."
+    },
+    {
+      "before": "<th>Full ROOT owned seconds</th>",
+      "after": "<th>Saved phase seconds (scope below)</th>"
+    }
+  ],
+  "before": {
+    "path": ".gcts-active/curriculum-platform-calibration-20261012/reader-before-clock-scope-clarification-v1.html",
+    "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
+    "bytes": 11307
+  },
+  "after": {
+    "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.html",
+    "sha256": "f446213e9e9b8ea5453172639809ddfb97cec681fcc3cd0a75c7ad4339b8a0b6",
+    "bytes": 11360
+  },
+  "unchanged_view": {
+    "path": "docs/research/gcts-rl-renewal/curriculum-platform/view.json",
+    "sha256": "b08e719a53cdd466fd24156662c78c428fd01c960e0d95e4de515d6363226ff1",
+    "bytes": 20981
+  },
+  "exact_reverse_delta_passed": true,
+  "calibration_rerun": false,
+  "scientific_calls": 0,
+  "semantic_or_resource_outcomes_changed": false,
+  "original_resource_unknown_preserved": true,
+  "all_five_qualification": false
+}

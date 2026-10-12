@@ -1264,13 +1264,13 @@
     {
       "source": {
         "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.html",
-        "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
-        "bytes": 11307
+        "sha256": "f446213e9e9b8ea5453172639809ddfb97cec681fcc3cd0a75c7ad4339b8a0b6",
+        "bytes": 11360
       },
       "public": {
         "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader.html",
-        "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
-        "bytes": 11307
+        "sha256": "f446213e9e9b8ea5453172639809ddfb97cec681fcc3cd0a75c7ad4339b8a0b6",
+        "bytes": 11360
       }
     },
     {
@@ -1300,13 +1300,13 @@
     {
       "source": {
         "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.html",
-        "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
-        "bytes": 11307
+        "sha256": "f446213e9e9b8ea5453172639809ddfb97cec681fcc3cd0a75c7ad4339b8a0b6",
+        "bytes": 11360
       },
       "public": {
         "path": "docs/research/gcts-rl-renewal/curriculum-platform/reader.html",
-        "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
-        "bytes": 11307
+        "sha256": "f446213e9e9b8ea5453172639809ddfb97cec681fcc3cd0a75c7ad4339b8a0b6",
+        "bytes": 11360
       }
     },
     {
@@ -1391,6 +1391,30 @@
         "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/report/reader-origins-before-review-supplement-v1.json",
         "sha256": "ab1bd85ae3879005647a5834c149b55ade94dabe8c69cff35740f9654f90a230",
         "bytes": 56534
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/curriculum-platform-calibration-20261012/reader-before-clock-scope-clarification-v1.html",
+        "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
+        "bytes": 11307
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/report/reader-before-clock-scope-clarification-v1.html",
+        "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
+        "bytes": 11307
+      }
+    },
+    {
+      "source": {
+        "path": ".gcts-active/curriculum-platform-calibration-20261012/reader-clock-scope-clarification-v1.json",
+        "sha256": "7801565c282f33b7e20583ea09c8ef2492044dae23c6cdc3ae5e67dbb752174b",
+        "bytes": 1427
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/report/reader-clock-scope-clarification-v1.json",
+        "sha256": "7801565c282f33b7e20583ea09c8ef2492044dae23c6cdc3ae5e67dbb752174b",
+        "bytes": 1427
       }
     }
   ]
