@@ -1,0 +1,33 @@
+{
+  "schema": "ROOT-mixed-preparation-actual-tool-observations-v1",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py preparation heldout-mixed-guard-equality",
+  "one_time_invocation": true,
+  "started_ms": 1791814608995,
+  "initial_observed_ms": 1791814613620,
+  "final_tool_observed_ms": 1791814892095,
+  "initial": {
+    "chunk_id": "15c637",
+    "wall_time_seconds": 1.002720375,
+    "session_id": 17183,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "polls": [
+    {
+      "chunk_id": "d1710e",
+      "wall_time_seconds": 0.000015458,
+      "exit_code": 0,
+      "original_token_count": 245,
+      "output": "{\"phase\": \"preparation\", \"selector\": \"heldout-mixed-guard-equality\", \"accepted\": true, \"owner_exit\": 0, \"actual_seconds_through_ROOT_terminal_write\": 5.478969667, \"conservative_combined_peak_bytes\": 379830272, \"terminal\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-ROOT-terminal-v1.json\", \"sha256\": \"5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6\", \"bytes\": 35013}, \"provisional_terminal\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-provisional-ROOT-terminal-v1.json\", \"sha256\": \"5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6\", \"bytes\": 35013}, \"post_write_observation\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-post-write-observation-v1.json\", \"sha256\": \"c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a\", \"bytes\": 1269}, \"failure\": null, \"error\": null}\n"
+    }
+  ],
+  "conservative_caller_enclosure_seconds": 283.1,
+  "margin_seconds": 1,
+  "frozen_outer_seconds": 60,
+  "caller_gate": "UNKNOWN_observation_window_exceeded",
+  "worker_duration_not_equal_caller_enclosure": true,
+  "scientific_retry": false,
+  "static_activation": false,
+  "proof_search_activation": false,
+  "current_RL_activation": false
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "notebook120-ROOT-preparation-only-final-disposition-v1",
+  "selector": "heldout-mixed-guard-equality",
+  "status": "PREPARATION_COMPLETED_INTERNAL_EXTERNAL_CALLER_GATE_UNKNOWN",
+  "hypothesis_codes": [
+    11,
+    42,
+    52
+  ],
+  "target_code": 54,
+  "actual_preparation_invocations": 1,
+  "tool_exit_code": 0,
+  "internal_terminal_write_seconds": 5.478969667,
+  "internal_conservative_peak_bytes": 379830272,
+  "initial_nonterminal_tool_observation_seconds": 4.625,
+  "final_tool_observation_seconds": 283.1,
+  "caller_margin_seconds": 1,
+  "conservative_caller_bound_seconds": 284.1,
+  "frozen_caller_seconds": 60,
+  "ROOT_full_resource_accepted": false,
+  "worker_runtime_not_inferred_from_caller_interval": true,
+  "producer_reported_counts": {
+    "complete_groups": 4,
+    "initial_candidates": 332510,
+    "model_constructions": 1
+  },
+  "independent_static_accepted": false,
+  "static_activated": false,
+  "proof_searches": 0,
+  "independent_proof_replays": 0,
+  "accepted_proof": false,
+  "new_RL_training": false,
+  "all_five_qualification": false,
+  "native_accepted": false,
+  "universal_Wang_compiler_correspondence": "open",
+  "scientific_retry": false,
+  "previous_UNKNOWN_outcomes_preserved": true,
+  "checked_donor119_preserved": true,
+  "whole_goal_complete": false,
+  "meaning": "This is not a failed proof search or impossibility claim. No speed comparison is qualified. Four groups and the candidate census are preparation outputs without independent semantic acceptance.",
+  "closed_scope": {
+    "path": ".gcts-active/mixed-guard-progress-20261012/preparation-closed-unqualified-ROOT-scope-v1.json",
+    "sha256": "b430a988267a255972cbd9b576688506e1d9b5f7f565f15387dbd6bdbe61ce36",
+    "bytes": 5012
+  },
+  "independent_reviews": [
+    {
+      "path": ".gcts-active/mixed-guard-independent-review-20261012/preparation-caller-gate-UNKNOWN-saved-metadata-review-v1.json",
+      "sha256": "6c259908d8a3bede1626587b2f8a6a949a1466202471caa06e723c03b6d70e76",
+      "bytes": 10105
+    },
+    {
+      "path": ".gcts-active/mixed-guard-independent-review-20261012/preparation-closed-unqualified-ROOT-scope-record-review-v1.json",
+      "sha256": "429c746aad8803e82de998d174bef0dca0671fba1c199fd338f72593e600ee24",
+      "bytes": 5930
+    }
+  ],
+  "frozen_reader_source_handoff": {
+    "path": ".gcts-active/mixed-guard-notebook-source-20261012/v2/handoff-v2.json",
+    "sha256": "e5c5dc0bae34eeb64bdb476794215569c3c1c4398207ab9d6f45ea126f074c76",
+    "bytes": 8585
+  },
+  "next_execution_practice": "For future separately authorized fresh runs, await terminal tool output before moving to independent work or a context transition; preserve this executed UNKNOWN unchanged.",
+  "metadata_scope": "Standard-library assembly, byte hashing and display changes only; no project function, proof search or checker executed."
+}

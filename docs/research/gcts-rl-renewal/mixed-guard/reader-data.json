@@ -1,0 +1,245 @@
+{
+  "schema": "notebook120-reader-data-v2",
+  "status": "INTERNAL_PREPARATION_COMPLETE_EXTERNAL_RESOURCE_UNKNOWN_NO_PROOF_PHASES",
+  "selector": "heldout-mixed-guard-equality",
+  "checkpoint_scope": "One fresh held-out preparation attempt completed internally, but enclosing caller observation exceeded the frozen60s bound. ResourceUNKNOWN; no static/search/replay/RL phases.",
+  "all_five_qualification": false,
+  "new_RL_training": false,
+  "native_accepted": false,
+  "compiler_correspondence": "open",
+  "statement": {
+    "sequent_latex": "H(P,Q,\\ell,m),\\ m=n,\\ \\operatorname{Incident}(R,\\ell)\\vdash_{\\mathcal T}\\operatorname{Incident}(R,n)",
+    "guard_latex": "H(P,Q,\\ell,m):=\\operatorname{Point}(P)\\land\\operatorname{Point}(Q)\\land\\operatorname{Line}(\\ell)\\land\\operatorname{Line}(m)\\land\\neg(P=Q)\\land\\operatorname{Incident}(P,\\ell)\\land\\operatorname{Incident}(Q,\\ell)\\land\\operatorname{Incident}(P,m)\\land\\operatorname{Incident}(Q,m)",
+    "guard_association": "right-associated nine-part conjunction",
+    "H_is_display_shorthand": true,
+    "theory_scope": "Closed symbolic I.2 incidence/equality fragment; not full Hilbert geometry.",
+    "hypothesis_codes": [
+      11,
+      42,
+      52
+    ],
+    "occurrence_indices": [
+      0,
+      1,
+      2
+    ],
+    "target_code": 54,
+    "seed_rows": [
+      0,
+      1,
+      2
+    ],
+    "target_row": 23,
+    "orientation": "identity; translation only"
+  },
+  "frozen_inventory": {
+    "rows": 24,
+    "formula_values": 217,
+    "primitive_licenses": 229,
+    "non_assumption_witnesses": 226,
+    "context_assumption_occurrences": 3,
+    "source_bodies": 171,
+    "single_types": 171,
+    "ordered_pair_types": 29241,
+    "complete_group_capacity": 64,
+    "fresh_acceptance_required": true
+  },
+  "preparation": {
+    "status": "internal_complete_external_resource_UNKNOWN",
+    "accepted": false,
+    "receipt_pin": {
+      "path": ".gcts-active/mixed-guard-progress-20261012/preparation-closed-unqualified-ROOT-scope-v1.json",
+      "sha256": "b430a988267a255972cbd9b576688506e1d9b5f7f565f15387dbd6bdbe61ce36",
+      "bytes": 5012
+    },
+    "receipt_url": "preparation-closed-unqualified-ROOT-scope-v1.json",
+    "whole_tool_bound_seconds": null,
+    "internal_complete": true,
+    "internal_seconds": 5.478969667,
+    "internal_scoped_estimate_bytes": 379830272,
+    "caller_observation_seconds": 283.1,
+    "frozen_bound_seconds": 60,
+    "caller_began_ms": 1791814608995,
+    "caller_final_poll_observed_ms": 1791814892095,
+    "reported_exit_code": 0,
+    "actual_invocations": 1,
+    "exact_receipt_binding": "Exact saved ROOT preparation outcome, caller observations and closedunqualifiedscope pinned from bytes; not accepted resources.",
+    "external_resource_accepted": false,
+    "retrospective_acceptance": false,
+    "retry": false,
+    "outcome_pin": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-outcome-v1.json",
+      "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+      "bytes": 3735
+    },
+    "outcome_url": "preparation-outcome-v1.json",
+    "actual_observations_pin": {
+      "path": ".gcts-active/mixed-guard-progress-20261012/preparation-actual-tool-observations-v1.json",
+      "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+      "bytes": 2111
+    },
+    "actual_observations_url": "preparation-actual-tool-observations-v1.json",
+    "initial_nonterminal_observation_seconds": 4.625,
+    "conservative_caller_bound_seconds": 284.1,
+    "caller_margin_seconds": 1,
+    "worker_duration_not_equal_caller_enclosure": true,
+    "producer_reported_counts": {
+      "model_constructions": 1,
+      "initial_candidates": 332510,
+      "complete_groups": 4,
+      "independent_static_accepted": false,
+      "target_searches": 0
+    }
+  },
+  "static": {
+    "status": "not_activated_after_preparation_resource_UNKNOWN",
+    "accepted": false,
+    "resource_accepted": false,
+    "initial_candidates": null,
+    "complete_groups": null,
+    "complete_distinct_role_envelope_bytes": null,
+    "whole_static_tool_bound_seconds": null,
+    "additional_static_finalizer_bound_seconds": null,
+    "semantic_receipt_pin": null,
+    "resource_receipt_pin": null,
+    "semantic_receipt_url": null,
+    "resource_receipt_url": null,
+    "conditional_scope": "Pinned runtime and reviewed known individually owned topology; no universal OS or whole-host cap.",
+    "owned_limits": {
+      "whole_seconds": 180,
+      "owner_seconds": 175,
+      "worker_seconds": 170,
+      "peak_bytes": 536870912
+    },
+    "postlude_reserve_bytes": 33554432
+  },
+  "search_bounds": {
+    "attempts": 128,
+    "seconds": 20,
+    "events": 2000
+  },
+  "lanes": {
+    "base": {
+      "producer": {
+        "status": "not_activated_after_preparation_resource_UNKNOWN",
+        "job_resource_accepted": false,
+        "trace_accepted": false,
+        "result_pin": null,
+        "resource_pin": null,
+        "result_url": null,
+        "resource_url": null,
+        "search_seconds": null,
+        "full_tool_seconds": null,
+        "additional_finalizer_seconds": null,
+        "attempts": null,
+        "events": null,
+        "owner_complete_seconds": null,
+        "worker_complete_seconds": null,
+        "scoped_estimate_bytes": null
+      },
+      "replay": {
+        "status": "not_activated_no_producer_result",
+        "job_resource_accepted": false,
+        "trace_accepted": false,
+        "result_pin": null,
+        "resource_pin": null,
+        "result_url": null,
+        "resource_url": null,
+        "search_seconds": null,
+        "full_tool_seconds": null,
+        "additional_finalizer_seconds": null,
+        "attempts": null,
+        "events": null,
+        "owner_complete_seconds": null,
+        "worker_complete_seconds": null,
+        "scoped_estimate_bytes": null
+      },
+      "proof": null,
+      "rows": [],
+      "summary": null,
+      "performance": {
+        "ROOT_complete_paired_costs_accepted": false,
+        "complete_total_seconds": null,
+        "source": "Pending complete ROOT cost reconciliation; no speed ratio inferred by the reader."
+      }
+    },
+    "fixed-whole-family-pool": {
+      "producer": {
+        "status": "not_activated_after_preparation_resource_UNKNOWN",
+        "job_resource_accepted": false,
+        "trace_accepted": false,
+        "result_pin": null,
+        "resource_pin": null,
+        "result_url": null,
+        "resource_url": null,
+        "search_seconds": null,
+        "full_tool_seconds": null,
+        "additional_finalizer_seconds": null,
+        "attempts": null,
+        "events": null,
+        "owner_complete_seconds": null,
+        "worker_complete_seconds": null,
+        "scoped_estimate_bytes": null
+      },
+      "replay": {
+        "status": "not_activated_no_producer_result",
+        "job_resource_accepted": false,
+        "trace_accepted": false,
+        "result_pin": null,
+        "resource_pin": null,
+        "result_url": null,
+        "resource_url": null,
+        "search_seconds": null,
+        "full_tool_seconds": null,
+        "additional_finalizer_seconds": null,
+        "attempts": null,
+        "events": null,
+        "owner_complete_seconds": null,
+        "worker_complete_seconds": null,
+        "scoped_estimate_bytes": null
+      },
+      "proof": null,
+      "rows": [],
+      "summary": null,
+      "performance": {
+        "ROOT_complete_paired_costs_accepted": false,
+        "complete_total_seconds": null,
+        "source": "Pending complete ROOT cost reconciliation; no speed ratio inferred by the reader."
+      }
+    }
+  },
+  "donor119": {
+    "selector": "donor-repeated-guard",
+    "hypothesis_codes": [
+      11,
+      11,
+      52
+    ],
+    "target_code": 53,
+    "base": {
+      "status": "checked_budget_UNKNOWN",
+      "attempts": 128,
+      "events": 1208,
+      "trace_accepted": true,
+      "ROOT_final_accepted": false
+    },
+    "fixed": {
+      "status": "accepted_ground_point_and_symbolic_certificate",
+      "attempts": 21,
+      "events": 130,
+      "trace_accepted": true,
+      "ROOT_final_accepted": true
+    },
+    "comparison_scope": "Saved donor outcomes only; not mixed predictions and no complete speed ratio."
+  },
+  "holdout_scope": "Context composition only; formulas/constants/primitive/source-family overlap retained.",
+  "outcome_firewall": "No feature/split/inventory/grammar/seed/reward/budget tuning or retries from held-out outcomes.",
+  "display_scope": "Browser schema and pin-shape checks are display gates only, not proof checking or cryptographic artifact authentication. ROOT supplies accepted exact artifacts.",
+  "comparison_scope": "Fixed cluster ordering inside GCTS; no learned RL or external-prover comparison.",
+  "ROOT_decision_pin": {
+    "path": "docs/research/gcts-rl-renewal/mixed-guard/closed-ROOT-decision-v1.json",
+    "sha256": "b1c0084ed3094a72ee7c8137e11796be55e0a9ebf6ebc670f50dd96470b0bfb0",
+    "bytes": 2852
+  },
+  "ROOT_decision_url": "closed-ROOT-decision-v1.json"
+}

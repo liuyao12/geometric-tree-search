@@ -1,0 +1,85 @@
+{
+  "status": "completed_fresh_context_preparation_pending_independent_gate",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-heldout-mixed-guard-equality-plan-v1.json",
+    "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e",
+    "bytes": 209459
+  },
+  "selector": "heldout-mixed-guard-equality",
+  "partition": "heldout",
+  "compiled_context": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/compiled-context-v1.json.gz",
+    "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+    "bytes": 311732
+  },
+  "preparation_evidence": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-evidence-v1.json.gz",
+    "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+    "bytes": 1384139
+  },
+  "model_epoch": "ceac4b858f182c48569ef8ac354c60653543b3f14c6d251d5fe1cb32ab928b7e",
+  "group_authority_epoch": "c5266ac783b136cfda86815918df396263d402a6b688eb22414e6023d3e01f87",
+  "original_body_authority_epoch": "c3a6869f75e1e215a4e8303a4082eaa44ff9ea1508667e4b0437496e68bb6059",
+  "complete_pool_group_count": 4,
+  "single_types": 171,
+  "pair_types": 29241,
+  "candidate_count": 332510,
+  "model_constructions": 1,
+  "target_searches": 0,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "RL_full_pool_capacity_satisfied": true,
+  "RL_feasibility_status": "pending_independent_static_acceptance",
+  "curriculum_binding": {
+    "schema": "frozen-five-context-selection-v1",
+    "selector": "heldout-mixed-guard-equality",
+    "partition": "heldout",
+    "rows": 24,
+    "document_bindings": {
+      "reference": {
+        "raw_pin": {
+          "path": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+          "sha256": "f2f8c25b21dfee4966bdcfd6fe93d0dcaa4c4caf194a3a83462474cf9db5f24b",
+          "bytes": 25906
+        },
+        "canonical_sha256": "866af9ba7ef1befe0197be0241377d58d7cd042b06673f88f55bb9705b2b63b4"
+      },
+      "split": {
+        "raw_pin": {
+          "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+          "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+          "bytes": 4811
+        },
+        "canonical_sha256": "80031da3781bd100c2b9a5dc0daf4f13e04a02b8d7cffff3e5ed00187c6de0a3"
+      },
+      "protocol": {
+        "raw_pin": {
+          "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+          "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+          "bytes": 19813
+        },
+        "canonical_sha256": "fd5554888ed03de13bb48aa663b6e841fbfa05a0e6baacbd5a62f546e771dd46"
+      }
+    },
+    "resolved_context_sha256": "2821679227bbdfede9af9b231eace47ae0273f4a984a186e96ef9ff946becc40",
+    "ordered_hypotheses_sha256": "372a351d8ee7746c3436e1855068ee6e9ba6c788408e7f135a8eccb99229132c",
+    "target_sha256": "872fe034960ea789ab404617761d1134dbe04d9996d6353222645b5a26cdbc3e",
+    "holdout_scope": "Context composition only; formula/primitive/source-family overlap retained.",
+    "source_only_selection": true
+  },
+  "hypothesis_codes": [
+    11,
+    42,
+    52
+  ],
+  "target_code": 54,
+  "worker_seconds_before_outcome_write": 4.6307494579999995,
+  "costs": {
+    "context_compilation_seconds": 0.09152237499999999,
+    "scientific_import_seconds": 0.021388458,
+    "graph_construction_seconds": 0.07350099999999998,
+    "all_body_registration_seconds": 0.061888583,
+    "complete_pool_preparation_seconds": 1.023192208,
+    "complete_initial_domain_census_seconds": 1.932317542
+  }
+}

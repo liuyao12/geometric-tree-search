@@ -1,0 +1,30 @@
+{
+  "status": "passed_full_fresh_context_preparation_lifetime",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-heldout-mixed-guard-equality-plan-v1.json",
+    "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e",
+    "bytes": 209459
+  },
+  "phase_kind": "preparation",
+  "supervision": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-supervision-v1.json",
+    "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+    "bytes": 20700
+  },
+  "supervisor_pid": 14246,
+  "supervisor_exit": 0,
+  "supervisor_reaped": true,
+  "worker_reaped_confirmed": true,
+  "full_supervisor_seconds_including_receipt_write": 5.030963666,
+  "outer_receipt_write": "outside pre-write interval; ROOT should also time full outer process",
+  "conservative_host_peak_bytes": 130973696,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 60,
+  "cleanup_reason": null,
+  "actual_memory_overshoot_bytes": 0,
+  "actual_wall_overshoot_seconds": 0,
+  "memory_scope": "retrospective owned-process peak estimate; no OS hard cap or strict aggregate host upper bound",
+  "native_queries": 0,
+  "training_runs": 0,
+  "scope": "producer resource receipt only; no mathematical acceptance"
+}

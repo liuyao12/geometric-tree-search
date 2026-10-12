@@ -1,0 +1,105 @@
+{
+  "schema": "independent-mixed-preparation-closed-unqualified-scope-record-review-v1",
+  "status": "MATCHES_SAVED_CALLER_UNKNOWN_NO_DEPENDENT_ADMISSION",
+  "review_utc": "2026-10-12T14:28:39.291653+00:00",
+  "scope": "Bounded saved JSON/source raw hash and arithmetic only. No project/helper functions/imports, gzip object decoding, scientific/search/replay/checker/RNG/training/process/PS/native/browser/network/activation/publication.",
+  "reviewed_record": {
+    "path": ".gcts-active/mixed-guard-progress-20261012/preparation-closed-unqualified-ROOT-scope-v1.json",
+    "sha256": "b430a988267a255972cbd9b576688506e1d9b5f7f565f15387dbd6bdbe61ce36",
+    "bytes": 5012
+  },
+  "prior_independent_review": {
+    "path": ".gcts-active/mixed-guard-independent-review-20261012/preparation-caller-gate-UNKNOWN-saved-metadata-review-v1.json",
+    "sha256": "6c259908d8a3bede1626587b2f8a6a949a1466202471caa06e723c03b6d70e76",
+    "bytes": 10105
+  },
+  "exact_bound_input_observations": [
+    {
+      "path": ".gcts-active/mixed-guard-progress-20261012/preparation-actual-tool-observations-v1.json",
+      "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+      "bytes": 2111
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-ROOT-terminal-v1.json",
+      "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+      "bytes": 35013
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-post-write-observation-v1.json",
+      "sha256": "c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a",
+      "bytes": 1269
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/compiled-context-v1.json.gz",
+      "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+      "bytes": 311732
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-evidence-v1.json.gz",
+      "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+      "bytes": 1384139
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-outcome-v1.json",
+      "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+      "bytes": 3735
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-lifetime-v1.json",
+      "sha256": "e4adac2ecdddb82a71daeaa2ae47a2a2addb5916ec04c9f7a8bbd0b41f7c94c8",
+      "bytes": 1333
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-supervision-v1.json",
+      "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+      "bytes": 20700
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/root-preparation-heldout-mixed-guard-equality-activation-v1.json",
+      "sha256": "0820cdf4aeba6b6f85bdf93eb311baa471b916b811f164c398e059567254bc8b",
+      "bytes": 901
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-heldout-mixed-guard-equality-plan-v1.json",
+      "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e",
+      "bytes": 209459
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    }
+  ],
+  "checks": {
+    "all_nested_exact_raw_pins_matched": true,
+    "nested_pin_observation_count": 12,
+    "separate_record_preserves_internal_true_but_ROOT_full_false": true,
+    "terminal0_and_reaping_fields_match_saved_receipts_not_new_wait4_observation": true,
+    "caller283_1_plus_frozen1_equals284_1_above60": true,
+    "internal5_478969667_and379830272_remain_distinct_recorded_scope": true,
+    "producer_gzip_bytes_hashed_only_not_decoded": true,
+    "all_dependent_static_search_replay_RL_qualification_flags_false_or0": true,
+    "prior_UNKNOWNs_and_accepted_guard119_preserved": true,
+    "consistent_with_prior_independent_gate_review": true
+  },
+  "current_stdlib_path_presence_observations": {
+    ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/heldout-mixed-guard-equality": false,
+    ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/heldout-mixed-guard-equality": false,
+    ".gcts-active/one-context-proof-owned-source-20261012/outputs/heldout-mixed-guard-equality": false
+  },
+  "conclusion": "The closed separate ROOT record is accurate for publication. Fresh preparation completed within its recorded internal scope, but the frozen external caller gate is UNKNOWN. No semantic static/resource/proof/RL/global qualification follows, no mixed proof search or mathematical impossibility is claimed, and no retry or retrospective time-origin/cap adjustment is permitted. Preserve the original internal terminal and new unqualified record as distinct immutable receipts.",
+  "source_helper_review_scope": "Three metadata helper draft sources exist, but no immutable handoff exists at this observation. They are not part of this closed disposition review; future source-only review will append another artifact.",
+  "qualifications_issued": {
+    "full_caller_resource": false,
+    "fresh_static_semantic": false,
+    "fresh_static_resource": false,
+    "proof_or_replay": false,
+    "RL_or_training": false,
+    "all_five": false
+  }
+}

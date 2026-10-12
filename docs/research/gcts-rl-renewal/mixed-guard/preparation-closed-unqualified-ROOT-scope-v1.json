@@ -1,0 +1,95 @@
+{
+  "schema": "ROOT-mixed-preparation-closed-unqualified-scope-v1",
+  "selector": "heldout-mixed-guard-equality",
+  "status": "UNKNOWN_caller_observation_window_exceeded",
+  "fresh_preparation_completed": true,
+  "internal_dispatcher_resource_claim": true,
+  "ROOT_full_resource_accepted": false,
+  "terminal_tool_exit_code": 0,
+  "caller_enclosure_seconds": 283.1,
+  "caller_margin_seconds": 1,
+  "conservative_caller_bound_seconds": 284.1,
+  "frozen_caller_maximum_seconds": 60,
+  "internal_seconds_through_terminal_write": 5.478969667,
+  "internal_elapsed_plus_reserve_bound_seconds": 6.477619583,
+  "internal_conservative_peak_bytes": 379830272,
+  "frozen_maximum_bytes": 536870912,
+  "worker_duration_not_equal_caller_enclosure": true,
+  "timing_explanation": "The first tool observation was nonterminal. Final tool observation followed after the caller time budget. Internal local duration does not close the frozen external tool-observation boundary. Actual work may have completed earlier; this decision does not assert a 283.1 second worker duration.",
+  "owner_terminal_reaped": true,
+  "worker_terminal_reaped": true,
+  "live_owned_descendants_after_owner_reap": [],
+  "actual_tool_observations": {
+    "path": ".gcts-active/mixed-guard-progress-20261012/preparation-actual-tool-observations-v1.json",
+    "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+    "bytes": 2111
+  },
+  "original_internal_terminal": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-ROOT-terminal-v1.json",
+    "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+    "bytes": 35013
+  },
+  "original_internal_post_write_observation": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-post-write-observation-v1.json",
+    "sha256": "c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a",
+    "bytes": 1269
+  },
+  "original_references": {
+    "compiled_context": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/compiled-context-v1.json.gz",
+      "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+      "bytes": 311732
+    },
+    "preparation_evidence": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-evidence-v1.json.gz",
+      "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+      "bytes": 1384139
+    },
+    "outcome": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-outcome-v1.json",
+      "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+      "bytes": 3735
+    },
+    "lifetime": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-lifetime-v1.json",
+      "sha256": "e4adac2ecdddb82a71daeaa2ae47a2a2addb5916ec04c9f7a8bbd0b41f7c94c8",
+      "bytes": 1333
+    },
+    "supervision": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-supervision-v1.json",
+      "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+      "bytes": 20700
+    },
+    "activation": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/root-preparation-heldout-mixed-guard-equality-activation-v1.json",
+      "sha256": "0820cdf4aeba6b6f85bdf93eb311baa471b916b811f164c398e059567254bc8b",
+      "bytes": 901
+    },
+    "preparation_plan": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-heldout-mixed-guard-equality-plan-v1.json",
+      "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e",
+      "bytes": 209459
+    },
+    "dispatcher": {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    "ROOT_source_review": {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    }
+  },
+  "new_static_admission_activated": false,
+  "new_proof_searches": 0,
+  "new_independent_replays": 0,
+  "new_RL_training": false,
+  "scientific_retry": false,
+  "all_five_qualification": false,
+  "whole_goal_complete": false,
+  "previous_UNKNOWN_outcomes_preserved": true,
+  "accepted_guard119_preserved": true,
+  "interpretation": "Preparation-only evidence; no failed proof search, no impossibility claim, no mixed proof, no speed claim.",
+  "metadata_scope": "This separate standard-library receipt reading/hash binding/serialization occurs outside the original charged phase; no scientific function was imported or executed."
+}

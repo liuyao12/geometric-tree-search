@@ -1,0 +1,275 @@
+{
+  "schema": "notebook120-public-evidence-alias-manifest-v1",
+  "scope": "Preparation-only; no scientific replay, theorem or resource qualification inferred from these downloads.",
+  "original_public_aliases": [
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-notebook-source-20261012/v2/style.css",
+        "sha256": "b465191a84299aae8f403d58829943d9bcccc32321b3c55ac8fc741b5982c3c9",
+        "bytes": 6064
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/style.css",
+        "sha256": "b465191a84299aae8f403d58829943d9bcccc32321b3c55ac8fc741b5982c3c9",
+        "bytes": 6064
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-outcome-v1.json",
+        "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+        "bytes": 3735
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-outcome-v1.json",
+        "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+        "bytes": 3735
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/compiled-context-v1.json.gz",
+        "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+        "bytes": 311732
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/compiled-context-v1.json.gz",
+        "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+        "bytes": 311732
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-evidence-v1.json.gz",
+        "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+        "bytes": 1384139
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-evidence-v1.json.gz",
+        "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+        "bytes": 1384139
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-lifetime-v1.json",
+        "sha256": "e4adac2ecdddb82a71daeaa2ae47a2a2addb5916ec04c9f7a8bbd0b41f7c94c8",
+        "bytes": 1333
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-lifetime-v1.json",
+        "sha256": "e4adac2ecdddb82a71daeaa2ae47a2a2addb5916ec04c9f7a8bbd0b41f7c94c8",
+        "bytes": 1333
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-supervision-v1.json",
+        "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+        "bytes": 20700
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-supervision-v1.json",
+        "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+        "bytes": 20700
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-progress-20261012/preparation-actual-tool-observations-v1.json",
+        "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+        "bytes": 2111
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-actual-tool-observations-v1.json",
+        "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+        "bytes": 2111
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-progress-20261012/preparation-closed-unqualified-ROOT-scope-v1.json",
+        "sha256": "b430a988267a255972cbd9b576688506e1d9b5f7f565f15387dbd6bdbe61ce36",
+        "bytes": 5012
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-closed-unqualified-ROOT-scope-v1.json",
+        "sha256": "b430a988267a255972cbd9b576688506e1d9b5f7f565f15387dbd6bdbe61ce36",
+        "bytes": 5012
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-ROOT-terminal-v1.json",
+        "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+        "bytes": 35013
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/internal-dispatcher-terminal-v1.json",
+        "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+        "bytes": 35013
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-post-write-observation-v1.json",
+        "sha256": "c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a",
+        "bytes": 1269
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/internal-post-write-observation-v1.json",
+        "sha256": "c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a",
+        "bytes": 1269
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-independent-review-20261012/preparation-caller-gate-UNKNOWN-saved-metadata-review-v1.json",
+        "sha256": "6c259908d8a3bede1626587b2f8a6a949a1466202471caa06e723c03b6d70e76",
+        "bytes": 10105
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-caller-gate-UNKNOWN-saved-metadata-review-v1.json",
+        "sha256": "6c259908d8a3bede1626587b2f8a6a949a1466202471caa06e723c03b6d70e76",
+        "bytes": 10105
+      }
+    },
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-independent-review-20261012/preparation-closed-unqualified-ROOT-scope-record-review-v1.json",
+        "sha256": "429c746aad8803e82de998d174bef0dca0671fba1c199fd338f72593e600ee24",
+        "bytes": 5930
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-closed-unqualified-ROOT-scope-record-review-v1.json",
+        "sha256": "429c746aad8803e82de998d174bef0dca0671fba1c199fd338f72593e600ee24",
+        "bytes": 5930
+      }
+    }
+  ],
+  "public_files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/app.js",
+      "sha256": "e645e42a117ecc339d3c38a234e56a4f45cccda352dc9ebb7b2fba760f5e923b",
+      "bytes": 17050
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/closed-ROOT-decision-v1.json",
+      "sha256": "b1c0084ed3094a72ee7c8137e11796be55e0a9ebf6ebc670f50dd96470b0bfb0",
+      "bytes": 2852
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/compiled-context-v1.json.gz",
+      "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+      "bytes": 311732
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/internal-dispatcher-terminal-v1.json",
+      "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+      "bytes": 35013
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/internal-post-write-observation-v1.json",
+      "sha256": "c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a",
+      "bytes": 1269
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-actual-tool-observations-v1.json",
+      "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+      "bytes": 2111
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-caller-gate-UNKNOWN-saved-metadata-review-v1.json",
+      "sha256": "6c259908d8a3bede1626587b2f8a6a949a1466202471caa06e723c03b6d70e76",
+      "bytes": 10105
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-closed-unqualified-ROOT-scope-record-review-v1.json",
+      "sha256": "429c746aad8803e82de998d174bef0dca0671fba1c199fd338f72593e600ee24",
+      "bytes": 5930
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-closed-unqualified-ROOT-scope-v1.json",
+      "sha256": "b430a988267a255972cbd9b576688506e1d9b5f7f565f15387dbd6bdbe61ce36",
+      "bytes": 5012
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-evidence-v1.json.gz",
+      "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+      "bytes": 1384139
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-lifetime-v1.json",
+      "sha256": "e4adac2ecdddb82a71daeaa2ae47a2a2addb5916ec04c9f7a8bbd0b41f7c94c8",
+      "bytes": 1333
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-outcome-v1.json",
+      "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+      "bytes": 3735
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/preparation-supervision-v1.json",
+      "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+      "bytes": 20700
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/reader-data.json",
+      "sha256": "071aaa96133d0cd10db77f864245af0b79345535058e364bcd0329a6702451cc",
+      "bytes": 9084
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/reader.html",
+      "sha256": "5897f5ed8ac494b4e76b2af630abacd8ec1f27614fbd136cfea5427dd3732a50",
+      "bytes": 23749
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/mixed-guard/style.css",
+      "sha256": "b465191a84299aae8f403d58829943d9bcccc32321b3c55ac8fc741b5982c3c9",
+      "bytes": 6064
+    }
+  ],
+  "self_hash_excluded": true,
+  "private_whole_host_process_tables_published": false,
+  "display_source_transformations": [
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-notebook-source-20261012/v2/reader.html",
+        "sha256": "6a9f422d1ea1c893f0a93b0d67229c4ccf9e8b8bbae69f9769fe67c350baf1dc",
+        "bytes": 22964
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/reader.html",
+        "sha256": "5897f5ed8ac494b4e76b2af630abacd8ec1f27614fbd136cfea5427dd3732a50",
+        "bytes": 23749
+      },
+      "scope": "Display-only source transformation; not an exact byte alias."
+    },
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-notebook-source-20261012/v2/app.js",
+        "sha256": "886ccde2b4e0206a431100e87f8a4a0df34a1aabbdab005cfcf6e0af5fbb0160",
+        "bytes": 16786
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/app.js",
+        "sha256": "e645e42a117ecc339d3c38a234e56a4f45cccda352dc9ebb7b2fba760f5e923b",
+        "bytes": 17050
+      },
+      "scope": "Display-only source transformation; not an exact byte alias."
+    },
+    {
+      "original": {
+        "path": ".gcts-active/mixed-guard-notebook-source-20261012/v2/reader-data.json",
+        "sha256": "c2c26fae29ff13629e0535d1a26907fe610fbbdcc35ec7fc360bcaab1e470db6",
+        "bytes": 8871
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/mixed-guard/reader-data.json",
+        "sha256": "071aaa96133d0cd10db77f864245af0b79345535058e364bcd0329a6702451cc",
+        "bytes": 9084
+      },
+      "scope": "Only add exact ROOT decision pin and URL; original scientific data unchanged."
+    }
+  ]
+}

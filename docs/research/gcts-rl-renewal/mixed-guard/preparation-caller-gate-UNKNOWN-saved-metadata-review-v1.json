@@ -1,0 +1,195 @@
+{
+  "schema": "independent-mixed-preparation-saved-terminal-and-caller-gate-review-v1",
+  "status": "UNKNOWN_EXTERNAL_CALLER_OBSERVATION_ENCLOSURE_EXCEEDS_FROZEN_60_SECONDS",
+  "review_utc": "2026-10-12T14:25:27.731072+00:00",
+  "scope": "Saved JSON/source/AST/raw-stream-hash/arithmetic only; no helper or scientific imports/calls, gzip object decode, search/replay/checker/RNG/training/PS/native/process observation/network/browser/activation/publication.",
+  "exact_inputs": [
+    {
+      "path": ".gcts-active/mixed-guard-progress-20261012/preparation-prospective-tool-plan-v1.json",
+      "sha256": "5290519a00473884acee561590d7840442291b4df5f03cb215ae3bac723e6fd7",
+      "bytes": 5244
+    },
+    {
+      "path": ".gcts-active/mixed-guard-progress-20261012/preparation-actual-tool-observations-v1.json",
+      "sha256": "65dc774d04d5301d9ee937d341777d4d5f630863c87d7043e70573a69f68113c",
+      "bytes": 2111
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-ROOT-launch-v1.json",
+      "sha256": "4570261f68155c24b2906ef2147f83b06dd504edb760e976129cd3ee0f1668ac",
+      "bytes": 890
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-ROOT-terminal-v1.json",
+      "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+      "bytes": 35013
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-provisional-ROOT-terminal-v1.json",
+      "sha256": "5755764dbd44f08c96b6ecec5591c9a634f843221aceff4099c0324b7d9880d6",
+      "bytes": 35013
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-heldout-mixed-guard-equality-post-write-observation-v1.json",
+      "sha256": "c42b68cbf8feca2ff8916c99f5c590f42a0ef613b04e47ca8e1b17f594654e2a",
+      "bytes": 1269
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-heldout-mixed-guard-equality-plan-v1.json",
+      "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e",
+      "bytes": 209459
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_prepare_worker_v1.py",
+      "sha256": "84b64117a605fecd756c15e4e71513c8f71b1ec875f4dcf0746c7e0ee1204b69",
+      "bytes": 8948
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_outer_v1.py",
+      "sha256": "cbc1430be5821cbea3d2cd716bbb9e0533e1c493b234a476046c2c3e499b31e9",
+      "bytes": 2978
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_supervisor_v1.py",
+      "sha256": "d6f4e68a889ebdbc08655abdbc09a98271f96cb61c2a7d6d9fce3eada7d5b273",
+      "bytes": 5413
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/root-preparation-heldout-mixed-guard-equality-activation-v1.json",
+      "sha256": "0820cdf4aeba6b6f85bdf93eb311baa471b916b811f164c398e059567254bc8b",
+      "bytes": 901
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-outcome-v1.json",
+      "sha256": "d099fcacae12b4d16768b832e98493e23c5e0eab9d404916c755fb6a5c70caf0",
+      "bytes": 3735
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-lifetime-v1.json",
+      "sha256": "e4adac2ecdddb82a71daeaa2ae47a2a2addb5916ec04c9f7a8bbd0b41f7c94c8",
+      "bytes": 1333
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-supervision-v1.json",
+      "sha256": "d32d54914b5d5f34aed71c238bdded227e087e92ee47faa14ba8ddb044610774",
+      "bytes": 20700
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/compiled-context-v1.json.gz",
+      "sha256": "cf8a0248f469ba0b2f8b8a584f75233a12b3c5a04a4c1d369016c9f6d8387269",
+      "bytes": 311732
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/heldout-mixed-guard-equality/preparation-evidence-v1.json.gz",
+      "sha256": "85935e6e96016c3290e44079a8996dd2671bebb9957591be2320f67e7fba34c7",
+      "bytes": 1384139
+    },
+    {
+      "path": ".gcts-active/mixed-guard-independent-review-20261012/frozen-context-and-reused-interface-source-review-v1.json",
+      "sha256": "33b51ffb4ecb83e9580b1e46b8b35dd74f33d592badae8108542c00a9e1d7138",
+      "bytes": 27240
+    }
+  ],
+  "saved_terminal_provenance": {
+    "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py preparation heldout-mixed-guard-equality",
+    "actual_invocations": 1,
+    "initial_tool_session_id": 17183,
+    "initial_tool_wall_seconds": 1.002720375,
+    "initial_exit_code_present": false,
+    "final_tool_exit_code": 0,
+    "final_tool_live_session_present": false,
+    "final_poll_count": 1,
+    "tool_stdout_closed_terminal_and_postwrite_pins_match": true,
+    "no_external_raw_wait4_or_kernel_attestation_claim": true
+  },
+  "clock_reconstruction": {
+    "started_ms": 1791814608995,
+    "initial_observed_ms": 1791814613620,
+    "final_tool_observed_ms": 1791814892095,
+    "initial_nonterminal_observation_interval_seconds": 4.625,
+    "caller_observation_enclosure_seconds": 283.1,
+    "frozen_margin_seconds": 1,
+    "required_caller_bound_seconds": 284.1,
+    "frozen_limit_seconds": 60,
+    "caller_gate_accepted": false,
+    "internal_actual_seconds_through_receipt_write": 5.478969667,
+    "internal_elapsed_plus_reserve_seconds": 6.477619583,
+    "separate_clock_scope": "The internal process duration and late caller observation have different scopes. No terminal tool evidence was observed at the initial return, so that return cannot end the caller interval. A long polling/agent observation gap does not establish a283.1-second worker runtime, and it also cannot be removed after observing the result under the frozen caller clock rule."
+  },
+  "saved_internal_preparation": {
+    "dispatcher_owner_exit": 0,
+    "dispatcher_owner_reaped_claim": true,
+    "worker_reaped_claim": true,
+    "supervisor_exit": 0,
+    "supervisor_reaped_claim": true,
+    "worker_exit": 0,
+    "recorded_live_owned_descendants_after_owner_reap": [],
+    "internal_failure": null,
+    "internal_postwrite_reserve_validated": true,
+    "internal_memory_reserve_validated": true,
+    "internal_scoped_estimate_bytes": 379830272,
+    "internal_postwrite_peak_envelope_without_reserve_bytes": 346324992,
+    "frozen_peak_bytes": 536870912,
+    "interpretation": "Saved internal dispatcher/producer receipts passed their own bounded retrospective scope. This is preserved as recorded evidence; its full_resource_accepted=true does not authorize the external caller gate or fresh mathematical/static admission."
+  },
+  "producer_recorded_preparation_not_independent_acceptance": {
+    "hypothesis_codes": [
+      11,
+      42,
+      52
+    ],
+    "target_code": 54,
+    "complete_pool_group_count": 4,
+    "candidate_count": 332510,
+    "single_types": 171,
+    "ordered_pair_types": 29241,
+    "full_pool_capacity_satisfied_recorded": true,
+    "raw_gzip_bytes_hash_matched_without_decoding": true,
+    "independent_semantic_static_audit_performed_by_reviewer": false,
+    "target_searches_recorded": 0,
+    "native_queries_recorded": 0,
+    "new_RL_training_recorded": false
+  },
+  "conclusions": [
+    {
+      "id": "external-clock-UNKNOWN",
+      "finding": "The closed ROOT preparation gate must remain UNKNOWN_observation_window_exceeded. Its exact prospective caller Date.now boundary plus1second is284.1seconds, above frozen60. Exited0 establishes eventual completion, not a timely terminal observation."
+    },
+    {
+      "id": "preserve-internal-records",
+      "finding": "Preserve original internal terminal/provisional/postwrite/producer outputs unchanged. Issue a separate closed ROOT UNKNOWN disposition binding these bytes and the trusted caller observation; do not overwrite or retrospectively qualify the original green internal receipt as the whole caller gate."
+    },
+    {
+      "id": "no-dependent-admission",
+      "finding": "Do not issue accepted scoped preparation qualification, activate static/search/proof/RL, or reuse a donor accepted receipt to admit this mixed context. Metadata-only selector/path source successors may still be reviewed but cannot manufacture the missing timely external acceptance."
+    },
+    {
+      "id": "no-retry-or-retuning",
+      "finding": "No scientific retry, cap increase, changed time origin, removal of the late interval, winning descriptor selection or held-out feedback tuning is authorized by this failure. Existing outcomes and frozen split remain unchanged."
+    },
+    {
+      "id": "research-meaning",
+      "finding": "Internally completed preparation is a useful saved artifact and recorded full-pool census, with fresh independent static acceptance still absent. The failure is the external observation/clock gate, not evidence of a mathematical dead end or a long worker runtime."
+    }
+  ],
+  "qualification": {
+    "full_caller_preparation_resource_accepted": false,
+    "fresh_static_semantic_accepted": false,
+    "fresh_static_resource_accepted": false,
+    "fresh_proof_or_trace_accepted": false,
+    "new_RL_or_training_accepted": false,
+    "all_five_qualification": false
+  },
+  "historical_outcomes_preserved": true,
+  "actual_retry_or_dependent_dispatch_by_reviewer": false
+}
