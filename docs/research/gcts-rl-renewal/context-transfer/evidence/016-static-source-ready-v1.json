@@ -1,0 +1,94 @@
+{
+  "status": "exact_static_actual_input_source_ready_not_activated",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-plan-v1.json",
+    "sha256": "43d8ae0fd11ff5616885b77d975dc6d9c85fadf9d4a5125e82ce710779e3bba6",
+    "bytes": 255813
+  },
+  "sources": 7,
+  "libraries": 12,
+  "inputs": 24,
+  "preserved": 835,
+  "unique_raw_pins": 855,
+  "AST_checks": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "AST_nodes": 6208
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/freeze_transfer_audit_v1.py",
+      "AST_nodes": 2609
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/preparation_source_review_v1.py",
+      "AST_nodes": 645
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_context_oracle_v1.py",
+      "AST_nodes": 4051
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+      "AST_nodes": 1729
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_worker_v1.py",
+      "AST_nodes": 2138
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+      "AST_nodes": 7227
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+      "AST_nodes": 1824
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "AST_nodes": 8608
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "AST_nodes": 8817
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "AST_nodes": 2535
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "AST_nodes": 3606
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "AST_nodes": 1433
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+      "AST_nodes": 653
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "AST_nodes": 2015
+    }
+  ],
+  "metadata_seconds_before_receipt_write": 0.6345344159999999,
+  "metadata_kernel_peak_bytes": 21135360,
+  "scientific_imports_or_functions": 0,
+  "new_model_or_context_or_pool_validity": "pending ROOT-owned independent execution",
+  "source_authoring_seconds": null,
+  "activation_written": false,
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-plan-v1.json"
+  ],
+  "preceding_unpersisted_metadata_note_failure": {
+    "type": "SyntaxError",
+    "token": "else1024",
+    "scope": "parse failure before any imports/reads/writes or scientific work; source/plan unchanged",
+    "exact_failure_output_in_thread_tool_chunk": "1c76d9",
+    "elapsed_cost_unmeasured": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "status": "completed_three_context_transfer_observations_pending_independent_trace_audit",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-plan-v1.json",
+    "sha256": "2204c91256eccca62ff9c032f4ef1eb420b01fa2f6a3319c74cf16ba6dc889d7",
+    "bytes": 195242
+  },
+  "observations": [
+    {
+      "id": "complete-primitive-base",
+      "mode": "base",
+      "status": "unknown_search_budget",
+      "result": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/complete-primitive-base-result-v1.json.gz",
+        "sha256": "748a14617b4deba31dd4534c2246699e155bcd06ee56eca6065b053a8158acdd",
+        "bytes": 394711
+      },
+      "attempts": 128,
+      "events": 1280,
+      "search_seconds": 4.152043417,
+      "serialization_seconds": 4.49114525,
+      "cold_setup_seconds": 1.7965302910000003,
+      "decoded_candidate": false
+    },
+    {
+      "id": "unchanged-fixed-forward",
+      "mode": "fixed-forward",
+      "status": "unknown_search_budget",
+      "result": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/unchanged-fixed-forward-result-v1.json.gz",
+        "sha256": "fb715dbe90146807a1f00a761ac6c6ae0f742de0b4f3d82c543d3de4b493b56f",
+        "bytes": 397934
+      },
+      "attempts": 128,
+      "events": 1168,
+      "search_seconds": 2.7336167909999993,
+      "serialization_seconds": 3.225134458000003,
+      "cold_setup_seconds": 2.528487084,
+      "decoded_candidate": false
+    },
+    {
+      "id": "same-inventory-fixed-whole-pool",
+      "mode": "fixed-whole-family-pool",
+      "status": "unknown_search_budget",
+      "result": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/same-inventory-fixed-whole-pool-result-v1.json.gz",
+        "sha256": "3d41e76a35e59a6cd6de6a567a177790268830774d6888ad466f8625515b09b3",
+        "bytes": 67462
+      },
+      "attempts": 22,
+      "events": 197,
+      "search_seconds": 22.051667541999997,
+      "serialization_seconds": 0.7692075420000037,
+      "cold_setup_seconds": 1.496253750000001,
+      "decoded_candidate": false
+    }
+  ],
+  "unexecuted": [],
+  "scientific_import_seconds": 0.015418916000000005,
+  "worker_seconds_before_outcome_write": 45.287490958999996,
+  "model_epoch": "e6e6954444657f5aab65b5406c91386b26fd8f1bf3c1b1db871b7396a37488f6",
+  "target_search_observations": 3,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "new_RL_training": false,
+  "scope": "One within-library changed-premise recipient, three fixed order controls. Returned candidates need separate complete trace and exact new Gamma/ground symbolic proof acceptance; no native query."
+}

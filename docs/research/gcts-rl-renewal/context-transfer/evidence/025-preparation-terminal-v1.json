@@ -1,0 +1,46 @@
+{
+  "status": "passed_ROOT_complete_fresh_context_preparation",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+    "preparation-plan-v1.json"
+  ],
+  "owner_pid": 20538,
+  "owner_exit_code": 0,
+  "owner_process_terminal_reaped": true,
+  "worker_reaped": true,
+  "forced_kill": false,
+  "full_phase_seconds_including_outer_final_write_and_reaping": 5.907957208,
+  "outer_time_gate_seconds": 60,
+  "conservative_owned_peak_estimate_bytes": 143933440,
+  "memory_scope": "Inherited sampled and retrospective estimate omits observer RSS; not strict aggregate host upper bound or hard OS memory cap.",
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-lifetime-v1.json",
+    "sha256": "9eff89dc1250d5a4677cd0065ab9de9bc2b60fb78b48ea3d6eaf80ac9d035c68",
+    "bytes": 1265
+  },
+  "stdout": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/preparation-outer-stdout.bin",
+    "sha256": "68b6c012c5460dadce040e96367a98c4571a01cef8dd37bec2b2690d2274024f",
+    "bytes": 2539
+  },
+  "stderr": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/preparation-outer-stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "native_queries": 0,
+  "training_runs": 0,
+  "mathematical_acceptance": "Pending independent new-context static gate or full trace/certificate audit.",
+  "independent_source_review": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/preparation-source-review-v1.json",
+    "sha256": "8734876c26218990355f1e37033b97d82250989ee7a0a23ef45cafd7428d0d23",
+    "bytes": 10271
+  }
+}

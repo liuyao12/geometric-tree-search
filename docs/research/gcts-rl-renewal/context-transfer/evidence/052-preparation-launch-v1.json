@@ -1,0 +1,15 @@
+{
+  "pid": 20540,
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "phase_kind": "preparation",
+  "ROOT_activation": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/root-preparation-activation-v1.json",
+    "sha256": "8c81fca9cd8db5f76b053d82cce92a06d97125cdbef8051b9bfefe73042ca878",
+    "bytes": 663
+  },
+  "native_queries": 0
+}

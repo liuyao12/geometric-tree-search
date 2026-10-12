@@ -1,0 +1,72 @@
+{
+  "status": "source_only_ready_for_ROOT_and_independent_review_not_execution",
+  "files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/freeze_transfer_audit_v1.py",
+      "sha256": "98ed479b5435024a257e74fa933ca5fe1dc2a08220580dcc6f8834edb924141e",
+      "bytes": 18458
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/preparation_source_review_v1.py",
+      "sha256": "944ab9415ea91b24769f8e85842c5f9ec0a3ca786d1b055016a48f68d140361a",
+      "bytes": 5827
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_context_oracle_v1.py",
+      "sha256": "849ab87370197223bfbe3bb6fd08c2163755df20c5feab43f65ba52887be5771",
+      "bytes": 21263
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+      "sha256": "77cee0a47aa35dd0027ec0f92e92b5850d9f2cdc19372d4509faa3257d80976f",
+      "bytes": 9431
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_worker_v1.py",
+      "sha256": "0341591b1e90c6c8930c4c1ed5e1e49ad280f8891a99f70ef45799ad93e4dcde",
+      "bytes": 11620
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+      "sha256": "dfa8fcac99e5bf299b92e2876b8b308cd0fdd76dc8d7d5dfdf299f15e2ab1d51",
+      "bytes": 37597
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+      "sha256": "1d3e0dd94ac5290dfa7520e6f62f865757da39ac6ee9b9b4b2b2037fb594abe4",
+      "bytes": 8544
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/source-plan-v1.json",
+      "sha256": "2464c74daf435432e49726ee74ac241092dc32c2aad45e3d8692ceb8ab33ca5a",
+      "bytes": 248525
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/prospective-protocol-v1.json",
+      "sha256": "570ca10d430f8140107af918866e95c1c61e7b2bf8420c3f15913bdd359940a8",
+      "bytes": 9689
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/preparation-source-review-v1.json",
+      "sha256": "8734876c26218990355f1e37033b97d82250989ee7a0a23ef45cafd7428d0d23",
+      "bytes": 10271
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/source-ready-v1.json",
+      "sha256": "39009b26c1f3b61009d5ae94d80500737a8129df1e4965393e8f5a29bb093599",
+      "bytes": 4400
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/sources-v1.zip",
+      "sha256": "7d122155f2ca2c5e1d06098485482f643f77d7c9f4859c6756c0cb5163f2c4ab",
+      "bytes": 87195
+    }
+  ],
+  "source_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/source-plan-v1.json",
+    "sha256": "2464c74daf435432e49726ee74ac241092dc32c2aad45e3d8692ceb8ab33ca5a",
+    "bytes": 248525
+  },
+  "scientific_execution": false,
+  "actual_input_plans_uninstantiated": true
+}

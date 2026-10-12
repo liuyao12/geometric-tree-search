@@ -1,0 +1,26 @@
+{
+  "status": "passed_ROOT_exact_trace_phase_source_and_actual_input_review",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-plan-v1.json",
+    "sha256": "7a77214de586221ca1bee2f725a86b75dd1fb7b38e1cecc06d3bf8c3633373f6",
+    "bytes": 258063
+  },
+  "unique_pins": 863,
+  "complete_new_source_reads": [
+    "transfer_context_oracle_v1.py",
+    "transfer_independent_worker_v1.py",
+    "transfer_independent_owner_v1.py",
+    "freeze_transfer_audit_v1.py",
+    "transfer_trace_oracle_v1.py",
+    "transfer_transactions_oracle_v1.py"
+  ],
+  "scope": "Independently reconstruct every complete returned event, raw domain, hint and parent-local proved-exhausted exclusion for all three fixed lanes. UNKNOWN remains UNKNOWN; no positive certificate is present in producer observations. Per-event controls are changed payload vs expected template, not full mutated replay.",
+  "resource_contract": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "scientific_functions_in_preflight": 0,
+  "metadata_seconds_before_write": 0.641528334
+}

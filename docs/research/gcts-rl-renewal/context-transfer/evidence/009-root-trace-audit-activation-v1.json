@@ -1,0 +1,15 @@
+{
+  "schema": "ROOT-independent-fresh-context-trace-activation-v1",
+  "authorized": true,
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-plan-v1.json",
+    "sha256": "7a77214de586221ca1bee2f725a86b75dd1fb7b38e1cecc06d3bf8c3633373f6",
+    "bytes": 258063
+  },
+  "source_review": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-source-review-v1.json",
+    "sha256": "11b7cebea408a8df9128dc6aaf01acb754362108343e77145c51a3cd29f6cb33",
+    "bytes": 1152
+  },
+  "scope": "One complete returned trace audit only; no search, training, native query or positive target present."
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "ROOT-independent-fresh-context-static-activation-v1",
+  "authorized": true,
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-plan-v1.json",
+    "sha256": "43d8ae0fd11ff5616885b77d975dc6d9c85fadf9d4a5125e82ce710779e3bba6",
+    "bytes": 255813
+  },
+  "source_review": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-source-review-v1.json",
+    "sha256": "65ac1a5bce68f4bbd553a74700d527f0cbab9084f6561dd586504f39f40c6175",
+    "bytes": 4912
+  },
+  "scope": "One static audit only; no search, training or target-proof acceptance."
+}

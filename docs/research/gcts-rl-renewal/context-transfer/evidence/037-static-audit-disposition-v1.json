@@ -1,0 +1,47 @@
+{
+  "status": "passed_ROOT_saved_static_audit_receipt_inspection",
+  "result": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-result-v1.json",
+    "sha256": "31da6caa54f94c89ca279264ed474b7a4204c82a4b23b72f2d02f2b520f4eae5",
+    "bytes": 15922415
+  },
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-lifetime-v1.json",
+    "sha256": "c173e7c53bd3804409567b782a1d8cdb51d3adea4a335638fbfbe9c4087967a5",
+    "bytes": 2184
+  },
+  "terminal": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-terminal-v1.json",
+    "sha256": "001a6545a0f685e577b67c338023b40601bce102e2b5c19d5ed41d1dc3cf0798",
+    "bytes": 2633
+  },
+  "primitive_licenses": 229,
+  "source_bodies": 171,
+  "census": {
+    "interfaces_checked": 171,
+    "single_types_visited": 171,
+    "pair_types_visited": 29241,
+    "binding_tuples_visited": 4,
+    "accepted_binding_specs": 4,
+    "registered_groups": 4,
+    "disconnected_second_bindings_outside_grammar": 4,
+    "source_member_occurrences": 52,
+    "group_distinct_members": 52,
+    "group_shared_members": 0
+  },
+  "groups": 4,
+  "initial_complete_candidates": 332510,
+  "context_mutation_calls": 14,
+  "per_group_payload_controls": 17,
+  "all_controls_rejected": true,
+  "full_seconds": 23.139077584,
+  "conservative_owned_peak_bytes": 360595456,
+  "target_proof_accepted": false,
+  "scope": [
+    "Static acceptance of finite context/bodies/all initial primitive candidates/complete canonical proposal grammar only; no target search or returned proof acceptance.",
+    "All171 bodies are existing authored/certified conditional interfaces; this is within-library transfer, not unseen theorem-family generalization.",
+    "Native/shared request-independent Wang compiler correspondence remains open.",
+    "Payload mutations are actual context-gate calls and per-group comparisons, not full altered-file/process replays; duplicate-key adversarial parser theorem is not claimed."
+  ],
+  "independent_checker_rerun": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "metadata_preflight_failed_before_activation",
+  "source": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/run_static_once.py",
+    "sha256": "802dbb9e7be571519ca13d253e325b50eb17afc583d6369879124c3cb48c972b",
+    "bytes": 5799
+  },
+  "failure": "ROOT pin helper attempted project-relative runtime-binary path outside project. Corrected only path representation in preserved successor V2.",
+  "activation_written": false,
+  "scientific_imports_or_calls": 0,
+  "owner_dispatched": false,
+  "command_exit": 1,
+  "observed_wall_seconds": 0.453587625
+}

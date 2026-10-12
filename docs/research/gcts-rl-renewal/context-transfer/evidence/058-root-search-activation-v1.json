@@ -1,0 +1,14 @@
+{
+  "status": "ROOT_authorized_fresh_context_three_lane_search_v1",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-plan-v1.json",
+    "sha256": "2204c91256eccca62ff9c032f4ef1eb420b01fa2f6a3319c74cf16ba6dc889d7",
+    "bytes": 195242
+  },
+  "source_review": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/search-source-review-v1.json",
+    "sha256": "4cc50deb2853b972f1e9b98f03e2da626677ebc36497f7b2579170e0c7008455",
+    "bytes": 2085
+  },
+  "scope": "One exact fresh three-lane cold observation only; independent trace acceptance required."
+}

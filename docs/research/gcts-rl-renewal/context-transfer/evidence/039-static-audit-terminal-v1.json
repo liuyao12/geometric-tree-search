@@ -1,0 +1,58 @@
+{
+  "status": "passed_ROOT_full_static_audit_lifetime",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-plan-v1.json",
+    "sha256": "43d8ae0fd11ff5616885b77d975dc6d9c85fadf9d4a5125e82ce710779e3bba6",
+    "bytes": 255813
+  },
+  "activation": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/root-static-audit-activation-v1.json",
+    "sha256": "2626d978cb8e17f41a41a729ac72f4408b4723a0a38854402e2831a4dd1549d3",
+    "bytes": 629
+  },
+  "source_review": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-source-review-v1.json",
+    "sha256": "65ac1a5bce68f4bbd553a74700d527f0cbab9084f6561dd586504f39f40c6175",
+    "bytes": 4912
+  },
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-plan-v1.json"
+  ],
+  "owner_pid": 28791,
+  "owner_exit_code": 0,
+  "owner_process_terminal_reaped": true,
+  "worker_reaped": true,
+  "forced_kill": false,
+  "full_phase_seconds_including_owner_final_write_and_reaping": 23.139077584,
+  "outer_time_gate_seconds": 180,
+  "conservative_owned_peak_bytes": 360595456,
+  "memory_scope": "ROOT peak plus maximum direct-owner kernel peak or owner conservative child/observer estimate; retrospective gate, no hard OS cap.",
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-lifetime-v1.json",
+    "sha256": "c173e7c53bd3804409567b782a1d8cdb51d3adea4a335638fbfbe9c4087967a5",
+    "bytes": 2184
+  },
+  "result": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-result-v1.json",
+    "sha256": "31da6caa54f94c89ca279264ed474b7a4204c82a4b23b72f2d02f2b520f4eae5",
+    "bytes": 15922415
+  },
+  "stdout": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-outer-stdout.bin",
+    "sha256": "944e7c41282dba77c210a9a2514c0b193090a4de4b0cb7a776c813fd3bc9fc27",
+    "bytes": 331
+  },
+  "stderr": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-outer-stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "static_context_pool_accepted": true,
+  "target_proof_accepted": false,
+  "theorem_searches": 0,
+  "training_runs": 0,
+  "native_queries": 0
+}

@@ -1,0 +1,15 @@
+{
+  "pid": 30955,
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-plan-v1.json",
+    "sha256": "2204c91256eccca62ff9c032f4ef1eb420b01fa2f6a3319c74cf16ba6dc889d7",
+    "bytes": 195242
+  },
+  "phase_kind": "search",
+  "ROOT_activation": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/root-search-activation-v1.json",
+    "sha256": "dfc607ac49c219f9b257f8eef5251c136b314a54b0defb83f8150fa99bac1a38",
+    "bytes": 603
+  },
+  "native_queries": 0
+}

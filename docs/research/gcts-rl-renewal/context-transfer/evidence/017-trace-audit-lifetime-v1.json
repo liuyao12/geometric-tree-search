@@ -1,0 +1,46 @@
+{
+  "status": "passed_owned_independent_fresh_context_complete_trace_audit",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-plan-v1.json",
+    "sha256": "7a77214de586221ca1bee2f725a86b75dd1fb7b38e1cecc06d3bf8c3633373f6",
+    "bytes": 258063
+  },
+  "child_pid": 33399,
+  "child_exit": 0,
+  "child_reaped": true,
+  "maximum_whole_seconds": 180,
+  "maximum_peak_bytes": 536870912,
+  "sampled_combined_peak_bytes": 357253120,
+  "kernel_conservative_peak_bytes": 416120832,
+  "metadata_child_peak_bytes": 1441792,
+  "trace_accepted": true,
+  "certificate_accepted": false,
+  "static_context_pool_accepted": true,
+  "searches_run_by_owner": 0,
+  "native_queries": 0,
+  "training_runs": 0,
+  "activation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/root-trace-audit-activation-v1.json",
+    "sha256": "ad8b1b420023d42903a276a18240e073c8c7c75bda998c4d8c10682c2495761e",
+    "bytes": 657
+  },
+  "whole_target_logical_checks": 0,
+  "owner_seconds_before_final_receipt_write": 150.714529584,
+  "stdout": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "result": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-result-v1.json",
+    "sha256": "21362e32dc490d46f91ab0485e8c1359819dd6775402a31eeeca45ba6fc21867",
+    "bytes": 13972564
+  },
+  "enforcement": "One owned wait4 child, worker SIGALRM, owned sampled RSS/time and fresh kernel peaks with retrospective rejection. No hard OS cap.",
+  "cost_scope": "Setup, body/model reconstruction, complete tape/proof controls, worker serialization and reaping included. Own final receipt serialization and source authoring excluded; ROOT external process lifetime additional."
+}

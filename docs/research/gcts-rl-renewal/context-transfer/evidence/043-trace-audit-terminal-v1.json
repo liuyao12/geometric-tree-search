@@ -1,0 +1,58 @@
+{
+  "status": "passed_ROOT_full_trace_audit_lifetime",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-plan-v1.json",
+    "sha256": "7a77214de586221ca1bee2f725a86b75dd1fb7b38e1cecc06d3bf8c3633373f6",
+    "bytes": 258063
+  },
+  "activation": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/root-trace-audit-activation-v1.json",
+    "sha256": "ad8b1b420023d42903a276a18240e073c8c7c75bda998c4d8c10682c2495761e",
+    "bytes": 657
+  },
+  "source_review": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-source-review-v1.json",
+    "sha256": "11b7cebea408a8df9128dc6aaf01acb754362108343e77145c51a3cd29f6cb33",
+    "bytes": 1152
+  },
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-plan-v1.json"
+  ],
+  "owner_pid": 33398,
+  "owner_exit_code": 0,
+  "owner_process_terminal_reaped": true,
+  "worker_reaped": true,
+  "forced_kill": false,
+  "full_phase_seconds_including_owner_final_write_and_reaping": 151.091299167,
+  "outer_time_gate_seconds": 180,
+  "conservative_owned_peak_bytes": 479232000,
+  "memory_scope": "ROOT peak plus maximum direct-owner kernel peak or owner conservative child/observer estimate; retrospective gate, no hard OS cap.",
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-lifetime-v1.json",
+    "sha256": "9a05efb8fe8b85334ffd272081781924b066f4d1f988b4897f83b5e950a809ac",
+    "bytes": 2182
+  },
+  "result": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-result-v1.json",
+    "sha256": "21362e32dc490d46f91ab0485e8c1359819dd6775402a31eeeca45ba6fc21867",
+    "bytes": 13972564
+  },
+  "stdout": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-outer-stdout.bin",
+    "sha256": "fa26a52e546dfbd5d1de8b19515be8fda00c3b3c2e5d0ba29acd3b324ffeb22f",
+    "bytes": 334
+  },
+  "stderr": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-outer-stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "trace_accepted": true,
+  "target_proof_accepted": false,
+  "theorem_searches": 0,
+  "training_runs": 0,
+  "native_queries": 0
+}

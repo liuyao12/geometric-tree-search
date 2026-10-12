@@ -1,0 +1,14 @@
+{
+  "status": "ROOT_authorized_fresh_context_preparation_v1",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "ROOT_source_review": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/preparation-source-review-v1.json",
+    "sha256": "b86e8362a48bc263065508ef970729f8bcc514be7def25e2f1a7b55a3182f2f6",
+    "bytes": 2321
+  },
+  "scope": "One full new-context/model/domain/family-pool preparation. No search, training or logical/native acceptance; independently gated afterward."
+}

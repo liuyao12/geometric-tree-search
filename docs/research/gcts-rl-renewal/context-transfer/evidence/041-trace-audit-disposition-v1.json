@@ -1,0 +1,140 @@
+{
+  "status": "passed_ROOT_saved_complete_three_lane_trace_receipt_inspection",
+  "result": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-result-v1.json",
+    "sha256": "21362e32dc490d46f91ab0485e8c1359819dd6775402a31eeeca45ba6fc21867",
+    "bytes": 13972564
+  },
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-lifetime-v1.json",
+    "sha256": "9a05efb8fe8b85334ffd272081781924b066f4d1f988b4897f83b5e950a809ac",
+    "bytes": 2182
+  },
+  "terminal": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-terminal-v1.json",
+    "sha256": "2e596c51fdc6cfe5ccce664cfc6e1e18eb893f32b01cfe56a4d4e68c5e574aa6",
+    "bytes": 2611
+  },
+  "observations": [
+    {
+      "id": "complete-primitive-base",
+      "mode": "base",
+      "status": "unknown_search_budget",
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "root_restored": true,
+      "events": 1280,
+      "nodes": 107,
+      "attempts": 128,
+      "forced": 22,
+      "branches": 106,
+      "distinct_graph_states": 219,
+      "complete_base_binding_checks": 1925521,
+      "complete_legal_binding_checks": 1925056,
+      "changed_first_choices": 0,
+      "changed_permutations": 0,
+      "proved_child_exclusions": 90,
+      "reconstructed_hint_counts": {
+        "whole_scans": 0,
+        "members_checked": 0,
+        "mark_checks": 0,
+        "status_updates": 0,
+        "whole_retirements": 0,
+        "resynchronizations": 347,
+        "ordering_calls": 128,
+        "root_rejections": 0,
+        "selected_identity_reads": 0
+      }
+    },
+    {
+      "id": "unchanged-fixed-forward",
+      "mode": "fixed-forward",
+      "status": "unknown_search_budget",
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "root_restored": true,
+      "events": 1168,
+      "nodes": 95,
+      "attempts": 128,
+      "forced": 34,
+      "branches": 94,
+      "distinct_graph_states": 206,
+      "complete_base_binding_checks": 1882353,
+      "complete_legal_binding_checks": 1881985,
+      "changed_first_choices": 14,
+      "changed_permutations": 17,
+      "proved_child_exclusions": 77,
+      "reconstructed_hint_counts": {
+        "whole_scans": 0,
+        "members_checked": 0,
+        "mark_checks": 0,
+        "status_updates": 0,
+        "whole_retirements": 0,
+        "resynchronizations": 334,
+        "ordering_calls": 128,
+        "root_rejections": 0,
+        "selected_identity_reads": 0
+      }
+    },
+    {
+      "id": "same-inventory-fixed-whole-pool",
+      "mode": "fixed-whole-family-pool",
+      "status": "unknown_search_budget",
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "root_restored": true,
+      "events": 197,
+      "nodes": 22,
+      "attempts": 22,
+      "forced": 1,
+      "branches": 21,
+      "distinct_graph_states": 28,
+      "complete_base_binding_checks": 1789477,
+      "complete_legal_binding_checks": 1789469,
+      "changed_first_choices": 12,
+      "changed_permutations": 12,
+      "proved_child_exclusions": 5,
+      "reconstructed_hint_counts": {
+        "whole_scans": 200,
+        "members_checked": 2572,
+        "mark_checks": 5652,
+        "status_updates": 200,
+        "whole_retirements": 4,
+        "resynchronizations": 50,
+        "ordering_calls": 22,
+        "root_rejections": 0,
+        "selected_identity_reads": 1808
+      }
+    }
+  ],
+  "actual_event_template_controls": [
+    {
+      "id": "complete-primitive-base",
+      "count": 16,
+      "all_rejected": true
+    },
+    {
+      "id": "unchanged-fixed-forward",
+      "count": 16,
+      "all_rejected": true
+    },
+    {
+      "id": "same-inventory-fixed-whole-pool",
+      "count": 21,
+      "all_rejected": true
+    }
+  ],
+  "actual_positive_certificate_controls": 0,
+  "full_seconds": 151.091299167,
+  "conservative_owned_peak_bytes": 479232000,
+  "target_proof_accepted": false,
+  "scope": [
+    "UNKNOWN remains UNKNOWN; no theorem nonprovability or infinite tiling claim.",
+    "Truncated TraceLimit prefixes fail closed for complete trace acceptance; no invented continuation/exhaustion.",
+    "All171 conditional source bodies are prior authored/certified inventory, not newly mined lemmas. No authored target-word guidance or new RL.",
+    "Exact ground Gamma is retained in flat blocks=[] request; no native/shared machine/compiler or universal closure acceptance.",
+    "Per-event payload mutations use rebuilt expected templates; positive certificate/primitive logical mutants actually rerun the independent checker. Not full mutated-tape/owner replays.",
+    "Saved implementation timers/registration baseline and checked deadline overshoot are provenance. New full audit lifetime charged separately."
+  ],
+  "checker_rerun_by_this_inspection": false
+}

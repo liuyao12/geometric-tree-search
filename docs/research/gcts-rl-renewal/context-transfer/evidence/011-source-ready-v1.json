@@ -1,0 +1,91 @@
+{
+  "status": "source_only_ready_for_ROOT_and_independent_review_not_execution",
+  "source_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/source-plan-v1.json",
+    "sha256": "2464c74daf435432e49726ee74ac241092dc32c2aad45e3d8692ceb8ab33ca5a",
+    "bytes": 248525
+  },
+  "protocol": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/prospective-protocol-v1.json",
+    "sha256": "570ca10d430f8140107af918866e95c1c61e7b2bf8420c3f15913bdd359940a8",
+    "bytes": 9689
+  },
+  "archive": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/sources-v1.zip",
+    "sha256": "7d122155f2ca2c5e1d06098485482f643f77d7c9f4859c6756c0cb5163f2c4ab",
+    "bytes": 87195
+  },
+  "source_count": 7,
+  "library_roles": 12,
+  "input_roles": 14,
+  "preserved_paths": 835,
+  "unique_bound_paths": 846,
+  "AST_checks": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/freeze_transfer_audit_v1.py",
+      "AST_nodes": 2609
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/preparation_source_review_v1.py",
+      "AST_nodes": 645
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_context_oracle_v1.py",
+      "AST_nodes": 4051
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+      "AST_nodes": 1729
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_worker_v1.py",
+      "AST_nodes": 2138
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+      "AST_nodes": 7227
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+      "AST_nodes": 1824
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "AST_nodes": 3606
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "AST_nodes": 2535
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "AST_nodes": 8608
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "AST_nodes": 8817
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "AST_nodes": 2015
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "AST_nodes": 6208
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+      "AST_nodes": 653
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "AST_nodes": 1433
+    }
+  ],
+  "metadata_seconds_before_readiness_write": 0.755987125,
+  "metadata_kernel_peak_bytes": 25247744,
+  "actual_inputs_pinned": false,
+  "activation_written": false,
+  "scientific_imports_or_functions": 0,
+  "ROOT_sole_actual_owner": true
+}

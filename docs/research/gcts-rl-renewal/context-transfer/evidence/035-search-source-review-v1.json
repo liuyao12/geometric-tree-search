@@ -1,0 +1,58 @@
+{
+  "status": "passed_ROOT_exact_three_lane_search_source_and_actual_gate_review",
+  "plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-plan-v1.json",
+    "sha256": "2204c91256eccca62ff9c032f4ef1eb420b01fa2f6a3319c74cf16ba6dc889d7",
+    "bytes": 195242
+  },
+  "source_execution_surface": "Prior complete review of compiler/graph/body constructor and exact pinned unchanged core; current full reread of search worker/runtime/register/full-pool DFS/outer/supervisor/finalizer. No functional import or calls in preflight.",
+  "source_count": 10,
+  "unique_verified_paths": 831,
+  "fresh_static_disposition": {
+    "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-disposition-v1.json",
+    "sha256": "71079e81e35f6ee57fdb1960599df3a9fb655b0c246206c530f0fa06662a7bc5",
+    "bytes": 2074
+  },
+  "observations": [
+    {
+      "id": "complete-primitive-base",
+      "mode": "base",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    },
+    {
+      "id": "unchanged-fixed-forward",
+      "mode": "fixed-forward",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    },
+    {
+      "id": "same-inventory-fixed-whole-pool",
+      "mode": "fixed-whole-family-pool",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    }
+  ],
+  "resource_phase": {
+    "kind": "search",
+    "worker": "transfer_search_worker_v1.py",
+    "child_seconds": 170,
+    "supervisor_seconds": 175,
+    "outer_seconds": 180,
+    "bytes": 536870912,
+    "stdout": "search-stdout-v1.txt",
+    "stderr": "search-stderr-v1.txt",
+    "launch": "search-launch-v1.json",
+    "outcome": "search-outcome-v1.json",
+    "supervision": "search-supervision-v1.json",
+    "lifetime": "search-lifetime-v1.json"
+  },
+  "full_pool_count": 4,
+  "authored_proof_words": 0,
+  "RL_training": false,
+  "scope": "Restricted within-library context transfer, one fixed observation per lane; actual returned traces/proofs remain unaudited until next independent stage.",
+  "metadata_seconds_before_write": 0.55845925
+}

@@ -1,0 +1,96 @@
+{
+  "status": "source_only_ready_for_independent_source_review_not_execution",
+  "files": [
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context-spec-v1.json",
+      "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+      "bytes": 16345
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context_compiler_v1.py",
+      "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+      "bytes": 11045
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/finalize_search_plan_v1.py",
+      "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+      "bytes": 5816
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/fixed-pool-source-diff-v1.txt",
+      "sha256": "090ecb3fc372a7d528536523776e8a54eedd64ef9f2470282d0887ada53805dd",
+      "bytes": 4659
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/freeze_source_v1.py",
+      "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+      "bytes": 14891
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+      "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+      "bytes": 191756
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-protocol-v1.json",
+      "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+      "bytes": 4636
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/source-ready-v1.json",
+      "sha256": "07f53a6966cefc8fbac58a15704f671aa09fd2126077816a9dada2018c964dea",
+      "bytes": 2688
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/sources-v1.zip",
+      "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+      "bytes": 77772
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+      "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+      "bytes": 11866
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+      "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+      "bytes": 3043
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_prepare_worker_v1.py",
+      "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+      "bytes": 6758
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+      "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+      "bytes": 4186
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_runtime_v1.py",
+      "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+      "bytes": 2898
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_search_worker_v1.py",
+      "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+      "bytes": 5317
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_supervisor_v1.py",
+      "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+      "bytes": 5644
+    }
+  ],
+  "source_ready": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/source-ready-v1.json",
+    "sha256": "07f53a6966cefc8fbac58a15704f671aa09fd2126077816a9dada2018c964dea",
+    "bytes": 2688
+  },
+  "preparation_plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "scientific_execution": false
+}

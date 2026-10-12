@@ -1,0 +1,52 @@
+{
+  "status": "source_only_ready_for_independent_source_review_not_execution",
+  "preparation_plan": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+    "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+    "bytes": 191756
+  },
+  "search_protocol": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-protocol-v1.json",
+    "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+    "bytes": 4636
+  },
+  "context_spec": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context-spec-v1.json",
+    "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+    "bytes": 16345
+  },
+  "source_archive": {
+    "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/sources-v1.zip",
+    "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+    "bytes": 77772
+  },
+  "source_count": 10,
+  "input_roles": 76,
+  "preserved_paths": 741,
+  "unique_existing_paths": 821,
+  "static_checks": "AST and exact source/input/runtime hash reconciliation only; no compiler/helper/scientific imports or functions executed.",
+  "preparation_ROOT_command_after_source_review_only": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+    "preparation-plan-v1.json"
+  ],
+  "preparation_activation_basename": "root-preparation-activation-v1.json",
+  "preparation_activation_status": "ROOT_authorized_fresh_context_preparation_v1",
+  "future_search_activation_basename": "root-search-activation-v1.json",
+  "future_search_activation_status": "ROOT_authorized_fresh_context_three_lane_search_v1",
+  "limitations": [
+    "New model/license/body/domain/pool counts and epochs are predictions, not acceptance.",
+    "Three-lane actual plan cannot be frozen until actual fresh preparation/static gates and reaped ROOT receipts exist.",
+    "Source authority remains inactive and finite/contextual; native/compiler/universal Wang correspondence stays open.",
+    "Canonical single/pair embeddings remain incomplete advice over complete primitive fallback; no winning subset or authored proof supplied.",
+    "Source authoring unmeasured; owned clocks exclude their own final receipt write unless ROOT separately records full process.",
+    "External RSS and final kernel peak estimates are not OS hard or aggregate host limits."
+  ],
+  "scientific_execution": false,
+  "models": 0,
+  "checkers": 0,
+  "fixtures": 0,
+  "searches": 0,
+  "training": 0,
+  "native_queries": 0
+}

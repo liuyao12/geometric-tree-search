@@ -1,0 +1,257 @@
+{
+  "schema": "fresh_transfer_independent_two_stage_protocol_v1",
+  "status": "source_only_prospective_gate_no_actual_inputs_or_activation",
+  "stages": {
+    "static": {
+      "limits": {
+        "whole_seconds": 180,
+        "supervisor_seconds": 175,
+        "child_seconds": 170,
+        "peak_bytes": 536870912
+      },
+      "terminal_contract": {
+        "required_fields": {
+          "producer_outcome": {
+            "status": "completed_fresh_context_preparation_pending_independent_gate",
+            "native_queries": 0,
+            "new_RL_training": false
+          },
+          "producer_lifetime": {
+            "status": "passed_full_fresh_context_preparation_lifetime",
+            "phase_kind": "preparation",
+            "supervisor_exit": 0,
+            "supervisor_reaped": true,
+            "worker_reaped_confirmed": true
+          },
+          "producer_supervision": {
+            "status": "passed_owned_fresh_context_preparation",
+            "phase_kind": "preparation",
+            "child_exit": 0,
+            "child_reaped": true
+          },
+          "producer_activation": {
+            "status": "ROOT_authorized_fresh_context_preparation_v1"
+          },
+          "root_terminal": {
+            "owner_exit_code": 0,
+            "owner_process_terminal_reaped": true,
+            "worker_reaped": true
+          }
+        },
+        "nested_pin_bindings": [
+          {
+            "record": "producer_outcome",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_lifetime",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_supervision",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_activation",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_lifetime",
+            "field": "supervision",
+            "role": "producer_supervision",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_supervision",
+            "field": "outcome",
+            "role": "producer_outcome",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_supervision",
+            "field": "root_activation",
+            "role": "producer_activation",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "root_terminal",
+            "field": "lifetime",
+            "role": "producer_lifetime",
+            "path_encoding": "relative"
+          }
+        ],
+        "ceilings": {
+          "producer_lifetime": {
+            "full_supervisor_seconds_including_receipt_write": 60,
+            "conservative_host_peak_bytes": 536870912
+          }
+        }
+      },
+      "expected_result_status": "passed_independent_fresh_context_family_pool_audit",
+      "expected_owner_status": "passed_owned_independent_fresh_context_family_pool_audit",
+      "activation_schema": "ROOT-independent-fresh-context-static-activation-v1"
+    },
+    "trace": {
+      "limits": {
+        "whole_seconds": 180,
+        "supervisor_seconds": 175,
+        "child_seconds": 170,
+        "peak_bytes": 536870912
+      },
+      "terminal_contract": {
+        "required_fields": {
+          "producer_outcome": {
+            "status": "completed_three_context_transfer_observations_pending_independent_trace_audit",
+            "native_queries": 0,
+            "new_RL_training": false
+          },
+          "producer_lifetime": {
+            "status": "passed_full_fresh_context_search_lifetime",
+            "phase_kind": "search",
+            "supervisor_exit": 0,
+            "supervisor_reaped": true,
+            "worker_reaped_confirmed": true
+          },
+          "producer_supervision": {
+            "status": "passed_owned_fresh_context_search",
+            "phase_kind": "search",
+            "child_exit": 0,
+            "child_reaped": true
+          },
+          "producer_activation": {
+            "status": "ROOT_authorized_fresh_context_three_lane_search_v1"
+          },
+          "root_terminal": {
+            "owner_exit_code": 0,
+            "owner_process_terminal_reaped": true,
+            "worker_reaped": true
+          }
+        },
+        "nested_pin_bindings": [
+          {
+            "record": "producer_outcome",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_lifetime",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_supervision",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_activation",
+            "field": "plan",
+            "role": "producer_plan",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_lifetime",
+            "field": "supervision",
+            "role": "producer_supervision",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_supervision",
+            "field": "outcome",
+            "role": "producer_outcome",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "producer_supervision",
+            "field": "root_activation",
+            "role": "producer_activation",
+            "path_encoding": "relative"
+          },
+          {
+            "record": "root_terminal",
+            "field": "lifetime",
+            "role": "producer_lifetime",
+            "path_encoding": "relative"
+          }
+        ],
+        "ceilings": {
+          "producer_lifetime": {
+            "full_supervisor_seconds_including_receipt_write": 180,
+            "conservative_host_peak_bytes": 536870912
+          }
+        }
+      },
+      "expected_result_status": "passed_independent_fresh_context_complete_trace_audit",
+      "expected_owner_status": "passed_owned_independent_fresh_context_complete_trace_audit",
+      "activation_schema": "ROOT-independent-fresh-context-trace-activation-v1"
+    }
+  },
+  "grammar": {
+    "rows": 24,
+    "formulas": 217,
+    "licenses": 229,
+    "non_assumption_witnesses": 226,
+    "fresh_context_assumptions": 3,
+    "source_bodies": 171,
+    "single_types": 171,
+    "ordered_pair_types": 29241
+  },
+  "static_scope": "Independent exact new Gamma/context/license identity reconstruction and logical229-rule licensing; recursive all171 conditional source proofs; complete canonical pool; every initial raw primitive candidate/point/mark in all24 rows.",
+  "trace_scope": "Three recorded complete DFS tapes; all reached raw candidate graphs/order permutations/scheduler/whole hints/paired rollback/exhaustion. Any positive: all24 primitive lines/full IDs/new original Gamma/target/flat blocks=[] exact symbolic check.",
+  "expected_observations": [
+    {
+      "id": "complete-primitive-base",
+      "mode": "base",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    },
+    {
+      "id": "unchanged-fixed-forward",
+      "mode": "fixed-forward",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    },
+    {
+      "id": "same-inventory-fixed-whole-pool",
+      "mode": "fixed-whole-family-pool",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    }
+  ],
+  "actual_inputs": "Root-owned complete preparation plus separate fresh static PASS; later separate three-lane actual producer. No missing-file or old receipt stand-in; immutable actual-input plans frozen after real bytes supplied.",
+  "authority_scope": "Retained inactive theory-only primitive authority. All new context/model/body/pool/full-placement bindings checked; structurally certified source bodies, no fresh native acceptance.",
+  "test_scope": "14 prospective changed context payloads; per-group controls from independent pool oracle; later actual per-event templates and positive certificate/logical mutants. Counts are source predictions until actual gates run.",
+  "costs": "Source authoring unmeasured; metadata freeze clock separate. Fresh production/preparation/static audit, cold lane setup/search, and full trace audit/import/domain/body/serialization/reap clocks all additional. Prior failures/unknowns retained.",
+  "limitations": [
+    "Within-library recipient/premise-pattern transfer only, not unseen theorem-family generalization.",
+    "Canonical single/pair proposal grammar is bounded incomplete advice; complete primitive universe supplies graph degrees/exhaustion/fallback.",
+    "No target proof word or authored example acceptance; compact example decoded then discarded.",
+    "Known pinned standard JSON only; no adversarial strict-parser theorem.",
+    "Owner sampled RSS plus child/kernel peaks is retrospective enforcement, not an OS hard cap; ROOT outer final process/receipt lifetime additional.",
+    "UNKNOWN/unexecuted/truncated evidence never becomes exhaustion or a mathematical rejection; native/shared universal palette remains open."
+  ],
+  "execution_authorized": false,
+  "actual_static_runs": 0,
+  "actual_trace_runs": 0,
+  "models": 0,
+  "fixtures": 0,
+  "checkers": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "training": 0,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

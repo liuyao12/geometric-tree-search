@@ -1,0 +1,1215 @@
+{
+  "schema": "context-transfer-exact-publication-origins-v1",
+  "files": [
+    {
+      "original": {
+        "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+        "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+        "bytes": 31396
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/000-family_pool_independent_v1.py",
+        "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+        "bytes": 31396
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+        "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+        "bytes": 22693
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/001-family_proposal_v2.py",
+        "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+        "bytes": 22693
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/freeze_transfer_audit_v1.py",
+        "sha256": "98ed479b5435024a257e74fa933ca5fe1dc2a08220580dcc6f8834edb924141e",
+        "bytes": 18458
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/002-freeze_transfer_audit_v1.py",
+        "sha256": "98ed479b5435024a257e74fa933ca5fe1dc2a08220580dcc6f8834edb924141e",
+        "bytes": 18458
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/integration-static-inputs-v1.json",
+        "sha256": "4c00ee7cd74e06a8ce8917e13a177f5c24269161b331f591fc501c3b1b9069b7",
+        "bytes": 2576
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/003-integration-static-inputs-v1.json",
+        "sha256": "4c00ee7cd74e06a8ce8917e13a177f5c24269161b331f591fc501c3b1b9069b7",
+        "bytes": 2576
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/integration-v1.json",
+        "sha256": "230819425a3886fb4a9ef7604cd8f1c8fff11da1bc93d16bd4b7e878e6be066c",
+        "bytes": 3905
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/004-integration-v1.json",
+        "sha256": "230819425a3886fb4a9ef7604cd8f1c8fff11da1bc93d16bd4b7e878e6be066c",
+        "bytes": 3905
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/preparation-source-review-v1.json",
+        "sha256": "8734876c26218990355f1e37033b97d82250989ee7a0a23ef45cafd7428d0d23",
+        "bytes": 10271
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/005-preparation-source-review-v1.json",
+        "sha256": "8734876c26218990355f1e37033b97d82250989ee7a0a23ef45cafd7428d0d23",
+        "bytes": 10271
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/preparation_source_review_v1.py",
+        "sha256": "944ab9415ea91b24769f8e85842c5f9ec0a3ca786d1b055016a48f68d140361a",
+        "bytes": 5827
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/006-preparation_source_review_v1.py",
+        "sha256": "944ab9415ea91b24769f8e85842c5f9ec0a3ca786d1b055016a48f68d140361a",
+        "bytes": 5827
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/prospective-protocol-v1.json",
+        "sha256": "570ca10d430f8140107af918866e95c1c61e7b2bf8420c3f15913bdd359940a8",
+        "bytes": 9689
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/007-prospective-protocol-v1.json",
+        "sha256": "570ca10d430f8140107af918866e95c1c61e7b2bf8420c3f15913bdd359940a8",
+        "bytes": 9689
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/root-static-audit-activation-v1.json",
+        "sha256": "2626d978cb8e17f41a41a729ac72f4408b4723a0a38854402e2831a4dd1549d3",
+        "bytes": 629
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/008-root-static-audit-activation-v1.json",
+        "sha256": "2626d978cb8e17f41a41a729ac72f4408b4723a0a38854402e2831a4dd1549d3",
+        "bytes": 629
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/root-trace-audit-activation-v1.json",
+        "sha256": "ad8b1b420023d42903a276a18240e073c8c7c75bda998c4d8c10682c2495761e",
+        "bytes": 657
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/009-root-trace-audit-activation-v1.json",
+        "sha256": "ad8b1b420023d42903a276a18240e073c8c7c75bda998c4d8c10682c2495761e",
+        "bytes": 657
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/source-plan-v1.json",
+        "sha256": "2464c74daf435432e49726ee74ac241092dc32c2aad45e3d8692ceb8ab33ca5a",
+        "bytes": 248525
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/010-source-plan-v1.json",
+        "sha256": "2464c74daf435432e49726ee74ac241092dc32c2aad45e3d8692ceb8ab33ca5a",
+        "bytes": 248525
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/source-ready-v1.json",
+        "sha256": "39009b26c1f3b61009d5ae94d80500737a8129df1e4965393e8f5a29bb093599",
+        "bytes": 4400
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/011-source-ready-v1.json",
+        "sha256": "39009b26c1f3b61009d5ae94d80500737a8129df1e4965393e8f5a29bb093599",
+        "bytes": 4400
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/sources-v1.zip",
+        "sha256": "7d122155f2ca2c5e1d06098485482f643f77d7c9f4859c6756c0cb5163f2c4ab",
+        "bytes": 87195
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/012-sources-v1.zip",
+        "sha256": "7d122155f2ca2c5e1d06098485482f643f77d7c9f4859c6756c0cb5163f2c4ab",
+        "bytes": 87195
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-lifetime-v1.json",
+        "sha256": "c173e7c53bd3804409567b782a1d8cdb51d3adea4a335638fbfbe9c4087967a5",
+        "bytes": 2184
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/013-static-audit-lifetime-v1.json",
+        "sha256": "c173e7c53bd3804409567b782a1d8cdb51d3adea4a335638fbfbe9c4087967a5",
+        "bytes": 2184
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-plan-v1.json",
+        "sha256": "43d8ae0fd11ff5616885b77d975dc6d9c85fadf9d4a5125e82ce710779e3bba6",
+        "bytes": 255813
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/014-static-audit-plan-v1.json",
+        "sha256": "43d8ae0fd11ff5616885b77d975dc6d9c85fadf9d4a5125e82ce710779e3bba6",
+        "bytes": 255813
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-audit-result-v1.json",
+        "sha256": "31da6caa54f94c89ca279264ed474b7a4204c82a4b23b72f2d02f2b520f4eae5",
+        "bytes": 15922415
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/015-static-audit-result-v1.json",
+        "sha256": "31da6caa54f94c89ca279264ed474b7a4204c82a4b23b72f2d02f2b520f4eae5",
+        "bytes": 15922415
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/static-source-ready-v1.json",
+        "sha256": "f1d6ee021f045606a4445b3be0ef6fb9776f8ec05bee1deb3e9180e40267eec4",
+        "bytes": 4578
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/016-static-source-ready-v1.json",
+        "sha256": "f1d6ee021f045606a4445b3be0ef6fb9776f8ec05bee1deb3e9180e40267eec4",
+        "bytes": 4578
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-lifetime-v1.json",
+        "sha256": "9a05efb8fe8b85334ffd272081781924b066f4d1f988b4897f83b5e950a809ac",
+        "bytes": 2182
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/017-trace-audit-lifetime-v1.json",
+        "sha256": "9a05efb8fe8b85334ffd272081781924b066f4d1f988b4897f83b5e950a809ac",
+        "bytes": 2182
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-plan-v1.json",
+        "sha256": "7a77214de586221ca1bee2f725a86b75dd1fb7b38e1cecc06d3bf8c3633373f6",
+        "bytes": 258063
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/018-trace-audit-plan-v1.json",
+        "sha256": "7a77214de586221ca1bee2f725a86b75dd1fb7b38e1cecc06d3bf8c3633373f6",
+        "bytes": 258063
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/trace-audit-result-v1.json",
+        "sha256": "21362e32dc490d46f91ab0485e8c1359819dd6775402a31eeeca45ba6fc21867",
+        "bytes": 13972564
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/019-trace-audit-result-v1.json",
+        "sha256": "21362e32dc490d46f91ab0485e8c1359819dd6775402a31eeeca45ba6fc21867",
+        "bytes": 13972564
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_context_oracle_v1.py",
+        "sha256": "849ab87370197223bfbe3bb6fd08c2163755df20c5feab43f65ba52887be5771",
+        "bytes": 21263
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/020-transfer_context_oracle_v1.py",
+        "sha256": "849ab87370197223bfbe3bb6fd08c2163755df20c5feab43f65ba52887be5771",
+        "bytes": 21263
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_owner_v1.py",
+        "sha256": "77cee0a47aa35dd0027ec0f92e92b5850d9f2cdc19372d4509faa3257d80976f",
+        "bytes": 9431
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/021-transfer_independent_owner_v1.py",
+        "sha256": "77cee0a47aa35dd0027ec0f92e92b5850d9f2cdc19372d4509faa3257d80976f",
+        "bytes": 9431
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_independent_worker_v1.py",
+        "sha256": "0341591b1e90c6c8930c4c1ed5e1e49ad280f8891a99f70ef45799ad93e4dcde",
+        "bytes": 11620
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/022-transfer_independent_worker_v1.py",
+        "sha256": "0341591b1e90c6c8930c4c1ed5e1e49ad280f8891a99f70ef45799ad93e4dcde",
+        "bytes": 11620
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+        "sha256": "dfa8fcac99e5bf299b92e2876b8b308cd0fdd76dc8d7d5dfdf299f15e2ab1d51",
+        "bytes": 37597
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/023-transfer_trace_oracle_v1.py",
+        "sha256": "dfa8fcac99e5bf299b92e2876b8b308cd0fdd76dc8d7d5dfdf299f15e2ab1d51",
+        "bytes": 37597
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+        "sha256": "1d3e0dd94ac5290dfa7520e6f62f865757da39ac6ee9b9b4b2b2037fb594abe4",
+        "bytes": 8544
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/024-transfer_transactions_oracle_v1.py",
+        "sha256": "1d3e0dd94ac5290dfa7520e6f62f865757da39ac6ee9b9b4b2b2037fb594abe4",
+        "bytes": 8544
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/preparation-terminal-v1.json",
+        "sha256": "58146667880d9a15e921e03f0f29f429f52ecd873df8ad23c704d1e8e7a383d5",
+        "bytes": 1981
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/025-preparation-terminal-v1.json",
+        "sha256": "58146667880d9a15e921e03f0f29f429f52ecd873df8ad23c704d1e8e7a383d5",
+        "bytes": 1981
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/prepare_report_v1.py",
+        "sha256": "d6d1b94399afa9cf9233ea53068b1c3627e444f5eb7dac0357266623d5654e23",
+        "bytes": 22378
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/026-prepare_report_v1.py",
+        "sha256": "d6d1b94399afa9cf9233ea53068b1c3627e444f5eb7dac0357266623d5654e23",
+        "bytes": 22378
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/prepare_report_v2.py",
+        "sha256": "769150123007c3bf907059c57a664de45b26fb4a7513502e77e7d4e231dd79ba",
+        "bytes": 21945
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/027-prepare_report_v2.py",
+        "sha256": "769150123007c3bf907059c57a664de45b26fb4a7513502e77e7d4e231dd79ba",
+        "bytes": 21945
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/prepare_report_v3.py",
+        "sha256": "91bf87f7caa27d0239c14e6fa382d2b5db78875d041f62c4b50b65fbdde89b17",
+        "bytes": 22162
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/028-prepare_report_v3.py",
+        "sha256": "91bf87f7caa27d0239c14e6fa382d2b5db78875d041f62c4b50b65fbdde89b17",
+        "bytes": 22162
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/review_prepare.py",
+        "sha256": "134132c53fab79167d9f435965560c4f92de3133e5deba34900bb84e39533e02",
+        "bytes": 3652
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/029-review_prepare.py",
+        "sha256": "134132c53fab79167d9f435965560c4f92de3133e5deba34900bb84e39533e02",
+        "bytes": 3652
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/review_static_audit.py",
+        "sha256": "6cb8555f11a60cd1f77084a9fc66ae6822efd5b04b04465f0c470a7384840ee3",
+        "bytes": 3633
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/030-review_static_audit.py",
+        "sha256": "6cb8555f11a60cd1f77084a9fc66ae6822efd5b04b04465f0c470a7384840ee3",
+        "bytes": 3633
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/run_phase_once.py",
+        "sha256": "4441f38c3f99571e753d1557386f2b362c3ee2a1d1ea07d1603368449fab5685",
+        "bytes": 3716
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/031-run_phase_once.py",
+        "sha256": "4441f38c3f99571e753d1557386f2b362c3ee2a1d1ea07d1603368449fab5685",
+        "bytes": 3716
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/run_static_once.py",
+        "sha256": "802dbb9e7be571519ca13d253e325b50eb17afc583d6369879124c3cb48c972b",
+        "bytes": 5799
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/032-run_static_once.py",
+        "sha256": "802dbb9e7be571519ca13d253e325b50eb17afc583d6369879124c3cb48c972b",
+        "bytes": 5799
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/run_static_once_v2.py",
+        "sha256": "0b011b6f14191cf50a9f8269216bc23736cf6ada025875afed5ec24ba0468dc5",
+        "bytes": 5843
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/033-run_static_once_v2.py",
+        "sha256": "0b011b6f14191cf50a9f8269216bc23736cf6ada025875afed5ec24ba0468dc5",
+        "bytes": 5843
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/run_trace_once.py",
+        "sha256": "78499f7820a2ca488006bf08cc35f51998fbbc3c240cc2635c259b8fcee86ab6",
+        "bytes": 5832
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/034-run_trace_once.py",
+        "sha256": "78499f7820a2ca488006bf08cc35f51998fbbc3c240cc2635c259b8fcee86ab6",
+        "bytes": 5832
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/search-source-review-v1.json",
+        "sha256": "4cc50deb2853b972f1e9b98f03e2da626677ebc36497f7b2579170e0c7008455",
+        "bytes": 2085
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/035-search-source-review-v1.json",
+        "sha256": "4cc50deb2853b972f1e9b98f03e2da626677ebc36497f7b2579170e0c7008455",
+        "bytes": 2085
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/search-terminal-v1.json",
+        "sha256": "8d1eef68b13ff3fb8cfcc217c9b87504a9608dede06cc501a6ecc0655fbc7a48",
+        "bytes": 1701
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/036-search-terminal-v1.json",
+        "sha256": "8d1eef68b13ff3fb8cfcc217c9b87504a9608dede06cc501a6ecc0655fbc7a48",
+        "bytes": 1701
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-disposition-v1.json",
+        "sha256": "71079e81e35f6ee57fdb1960599df3a9fb655b0c246206c530f0fa06662a7bc5",
+        "bytes": 2074
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/037-static-audit-disposition-v1.json",
+        "sha256": "71079e81e35f6ee57fdb1960599df3a9fb655b0c246206c530f0fa06662a7bc5",
+        "bytes": 2074
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-source-review-v1.json",
+        "sha256": "65ac1a5bce68f4bbd553a74700d527f0cbab9084f6561dd586504f39f40c6175",
+        "bytes": 4912
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/038-static-audit-source-review-v1.json",
+        "sha256": "65ac1a5bce68f4bbd553a74700d527f0cbab9084f6561dd586504f39f40c6175",
+        "bytes": 4912
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-audit-terminal-v1.json",
+        "sha256": "001a6545a0f685e577b67c338023b40601bce102e2b5c19d5ed41d1dc3cf0798",
+        "bytes": 2633
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/039-static-audit-terminal-v1.json",
+        "sha256": "001a6545a0f685e577b67c338023b40601bce102e2b5c19d5ed41d1dc3cf0798",
+        "bytes": 2633
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/static-wrapper-preflight-failure-v1.json",
+        "sha256": "6e580774ef5a83c442ff1e8281de75da73e98ac788a0ce719c7858869b1764a0",
+        "bytes": 583
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/040-static-wrapper-preflight-failure-v1.json",
+        "sha256": "6e580774ef5a83c442ff1e8281de75da73e98ac788a0ce719c7858869b1764a0",
+        "bytes": 583
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-disposition-v1.json",
+        "sha256": "0ce17ad3ad30ec0955aaf4b0ed04c390df140d9e88d6decd6d3f3877e9e63159",
+        "bytes": 4830
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/041-trace-audit-disposition-v1.json",
+        "sha256": "0ce17ad3ad30ec0955aaf4b0ed04c390df140d9e88d6decd6d3f3877e9e63159",
+        "bytes": 4830
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-source-review-v1.json",
+        "sha256": "11b7cebea408a8df9128dc6aaf01acb754362108343e77145c51a3cd29f6cb33",
+        "bytes": 1152
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/042-trace-audit-source-review-v1.json",
+        "sha256": "11b7cebea408a8df9128dc6aaf01acb754362108343e77145c51a3cd29f6cb33",
+        "bytes": 1152
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-progress-20261012/trace-audit-terminal-v1.json",
+        "sha256": "2e596c51fdc6cfe5ccce664cfc6e1e18eb893f32b01cfe56a4d4e68c5e574aa6",
+        "bytes": 2611
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/043-trace-audit-terminal-v1.json",
+        "sha256": "2e596c51fdc6cfe5ccce664cfc6e1e18eb893f32b01cfe56a4d4e68c5e574aa6",
+        "bytes": 2611
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/compiled-context-v1.json.gz",
+        "sha256": "becbfcd43350f725b18a54256ad560f12bde15d1527b151a3092b9f1b08a8db7",
+        "bytes": 310563
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/044-compiled-context-v1.json.gz",
+        "sha256": "becbfcd43350f725b18a54256ad560f12bde15d1527b151a3092b9f1b08a8db7",
+        "bytes": 310563
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/complete-primitive-base-result-v1.json.gz",
+        "sha256": "748a14617b4deba31dd4534c2246699e155bcd06ee56eca6065b053a8158acdd",
+        "bytes": 394711
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/045-complete-primitive-base-result-v1.json.gz",
+        "sha256": "748a14617b4deba31dd4534c2246699e155bcd06ee56eca6065b053a8158acdd",
+        "bytes": 394711
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context-spec-v1.json",
+        "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+        "bytes": 16345
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/046-context-spec-v1.json",
+        "sha256": "80c572e134d7546890da5a257065f443219447b36ed2b7afdff0ee9b9253f68e",
+        "bytes": 16345
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/context_compiler_v1.py",
+        "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+        "bytes": 11045
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/047-context_compiler_v1.py",
+        "sha256": "9e682e80d285e9acab36d30810beebd72d0b8b0fb9837bfe2008b22a1c392a1b",
+        "bytes": 11045
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/finalize_search_plan_v1.py",
+        "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+        "bytes": 5816
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/048-finalize_search_plan_v1.py",
+        "sha256": "ac45b8260a3b1fae10353951c34d616331fd22b4bea338d252f4a8c117e809c2",
+        "bytes": 5816
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/freeze_source_v1.py",
+        "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+        "bytes": 14891
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/049-freeze_source_v1.py",
+        "sha256": "052731b5558e5d51b2d1eb1438f04ec3013d794436d2fda698c007c72b849834",
+        "bytes": 14891
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/integration-v1.json",
+        "sha256": "f239cdc4bf10a0d809de372cd19a54debf0931497ee01255208332159e999519",
+        "bytes": 3977
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/050-integration-v1.json",
+        "sha256": "f239cdc4bf10a0d809de372cd19a54debf0931497ee01255208332159e999519",
+        "bytes": 3977
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-evidence-v1.json.gz",
+        "sha256": "d2458ebaa05688aeba560c10a6911295dfa4866a7badd9101ed3c05f8e9a8c38",
+        "bytes": 1381796
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/051-preparation-evidence-v1.json.gz",
+        "sha256": "d2458ebaa05688aeba560c10a6911295dfa4866a7badd9101ed3c05f8e9a8c38",
+        "bytes": 1381796
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-launch-v1.json",
+        "sha256": "ee4e7928e48d670096611cffaa42614647a8b39bc73fbc06333753d54e04c5da",
+        "bytes": 518
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/052-preparation-launch-v1.json",
+        "sha256": "ee4e7928e48d670096611cffaa42614647a8b39bc73fbc06333753d54e04c5da",
+        "bytes": 518
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-lifetime-v1.json",
+        "sha256": "9eff89dc1250d5a4677cd0065ab9de9bc2b60fb78b48ea3d6eaf80ac9d035c68",
+        "bytes": 1265
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/053-preparation-lifetime-v1.json",
+        "sha256": "9eff89dc1250d5a4677cd0065ab9de9bc2b60fb78b48ea3d6eaf80ac9d035c68",
+        "bytes": 1265
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-outcome-v1.json",
+        "sha256": "321069a46c4d833606060e0c1ee2dc046751db800fa587c2f7aeb0fcc04198a6",
+        "bytes": 1652
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/054-preparation-outcome-v1.json",
+        "sha256": "321069a46c4d833606060e0c1ee2dc046751db800fa587c2f7aeb0fcc04198a6",
+        "bytes": 1652
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-plan-v1.json",
+        "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+        "bytes": 191756
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/055-preparation-plan-v1.json",
+        "sha256": "126f5a25751b8f25074ed6f7506b30f5f692cabe4c84c28a23597b0aa40d9ac3",
+        "bytes": 191756
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/preparation-supervision-v1.json",
+        "sha256": "524af758ac9f33a44ea3a8e3124af8402cc9f46e1b95835cc8eff0e09ed71846",
+        "bytes": 21697
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/056-preparation-supervision-v1.json",
+        "sha256": "524af758ac9f33a44ea3a8e3124af8402cc9f46e1b95835cc8eff0e09ed71846",
+        "bytes": 21697
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/root-preparation-activation-v1.json",
+        "sha256": "8c81fca9cd8db5f76b053d82cce92a06d97125cdbef8051b9bfefe73042ca878",
+        "bytes": 663
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/057-root-preparation-activation-v1.json",
+        "sha256": "8c81fca9cd8db5f76b053d82cce92a06d97125cdbef8051b9bfefe73042ca878",
+        "bytes": 663
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/root-search-activation-v1.json",
+        "sha256": "dfc607ac49c219f9b257f8eef5251c136b314a54b0defb83f8150fa99bac1a38",
+        "bytes": 603
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/058-root-search-activation-v1.json",
+        "sha256": "dfc607ac49c219f9b257f8eef5251c136b314a54b0defb83f8150fa99bac1a38",
+        "bytes": 603
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/same-inventory-fixed-whole-pool-result-v1.json.gz",
+        "sha256": "3d41e76a35e59a6cd6de6a567a177790268830774d6888ad466f8625515b09b3",
+        "bytes": 67462
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/059-same-inventory-fixed-whole-pool-result-v1.json.gz",
+        "sha256": "3d41e76a35e59a6cd6de6a567a177790268830774d6888ad466f8625515b09b3",
+        "bytes": 67462
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-launch-v1.json",
+        "sha256": "ba3a2ccfc15bdf26dc5f2a435150be858764aad2a42e580f36b8c63b330c71ac",
+        "bytes": 503
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/060-search-launch-v1.json",
+        "sha256": "ba3a2ccfc15bdf26dc5f2a435150be858764aad2a42e580f36b8c63b330c71ac",
+        "bytes": 503
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-lifetime-v1.json",
+        "sha256": "c2fc2b5035bb39ebb146a14a4e0f360f9e6b7e5b0b248f33c978010d4f1ba2bf",
+        "bytes": 1248
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/061-search-lifetime-v1.json",
+        "sha256": "c2fc2b5035bb39ebb146a14a4e0f360f9e6b7e5b0b248f33c978010d4f1ba2bf",
+        "bytes": 1248
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-outcome-v1.json",
+        "sha256": "d3dcff38a99908b1500645ff699b2ba33c6ad6fe418f3b3b6c5f5b06f0a6e391",
+        "bytes": 2661
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/062-search-outcome-v1.json",
+        "sha256": "d3dcff38a99908b1500645ff699b2ba33c6ad6fe418f3b3b6c5f5b06f0a6e391",
+        "bytes": 2661
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-plan-v1.json",
+        "sha256": "2204c91256eccca62ff9c032f4ef1eb420b01fa2f6a3319c74cf16ba6dc889d7",
+        "bytes": 195242
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/063-search-plan-v1.json",
+        "sha256": "2204c91256eccca62ff9c032f4ef1eb420b01fa2f6a3319c74cf16ba6dc889d7",
+        "bytes": 195242
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-protocol-v1.json",
+        "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+        "bytes": 4636
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/064-search-protocol-v1.json",
+        "sha256": "454882fc917463dba512a96b14825c17d678bac8fb09581068518d8ab332da1b",
+        "bytes": 4636
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/search-supervision-v1.json",
+        "sha256": "6908b6addc71ebe2ae417f74051cafb882f8892aa2a0e3a8bc31e03f4798e559",
+        "bytes": 164626
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/065-search-supervision-v1.json",
+        "sha256": "6908b6addc71ebe2ae417f74051cafb882f8892aa2a0e3a8bc31e03f4798e559",
+        "bytes": 164626
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/source-ready-v1.json",
+        "sha256": "07f53a6966cefc8fbac58a15704f671aa09fd2126077816a9dada2018c964dea",
+        "bytes": 2688
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/066-source-ready-v1.json",
+        "sha256": "07f53a6966cefc8fbac58a15704f671aa09fd2126077816a9dada2018c964dea",
+        "bytes": 2688
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/sources-v1.zip",
+        "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+        "bytes": 77772
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/067-sources-v1.zip",
+        "sha256": "23b88120df15d71a80c079865ba077a2c32d98d50a87837847a8cc86b5b1ebbd",
+        "bytes": 77772
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+        "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+        "bytes": 11866
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/068-transfer_fixed_pool_search_v1.py",
+        "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+        "bytes": 11866
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_outer_v1.py",
+        "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+        "bytes": 3043
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/069-transfer_outer_v1.py",
+        "sha256": "8aafee86143c6a1afceee3888416edccc2dda7b601b86e339039a2c172b4227f",
+        "bytes": 3043
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_prepare_worker_v1.py",
+        "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+        "bytes": 6758
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/070-transfer_prepare_worker_v1.py",
+        "sha256": "de2290835619ab9ad41eb3ab6854ba5ec4b0afc9da23579acf117bf1af599a44",
+        "bytes": 6758
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+        "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+        "bytes": 4186
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/071-transfer_register_v1.py",
+        "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+        "bytes": 4186
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_runtime_v1.py",
+        "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+        "bytes": 2898
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/072-transfer_runtime_v1.py",
+        "sha256": "ac715c137ba012f8db4b1db589a21b36bc164ead02829714f83040e92d1afbb4",
+        "bytes": 2898
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_search_worker_v1.py",
+        "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+        "bytes": 5317
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/073-transfer_search_worker_v1.py",
+        "sha256": "1af7048619ac1d5e5ec03948168f398aa7c0a97a0c7c220fdee89380572c06e3",
+        "bytes": 5317
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_supervisor_v1.py",
+        "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+        "bytes": 5644
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/074-transfer_supervisor_v1.py",
+        "sha256": "54e900ea23f3a950f6e8cbe74df5ec0edcf0cc9c67492adff782d8c43f5a7887",
+        "bytes": 5644
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/unchanged-fixed-forward-result-v1.json.gz",
+        "sha256": "fb715dbe90146807a1f00a761ac6c6ae0f742de0b4f3d82c543d3de4b493b56f",
+        "bytes": 397934
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/075-unchanged-fixed-forward-result-v1.json.gz",
+        "sha256": "fb715dbe90146807a1f00a761ac6c6ae0f742de0b4f3d82c543d3de4b493b56f",
+        "bytes": 397934
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+        "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+        "bytes": 291858
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/076-model-v2.json.gz",
+        "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+        "bytes": 291858
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+        "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+        "bytes": 1253326
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/077-reader-data-v2.json",
+        "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+        "bytes": 1253326
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+        "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+        "bytes": 44198
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/078-independent_aggregate_audit_v1.py",
+        "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+        "bytes": 44198
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+        "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+        "bytes": 51577
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/079-independent_aggregate_full_v2.py",
+        "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+        "bytes": 51577
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+        "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+        "bytes": 120875
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/080-source-schemas-v1.json",
+        "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+        "bytes": 120875
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+        "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+        "bytes": 12212
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/081-full_family_registry_v1.py",
+        "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+        "bytes": 12212
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+        "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+        "bytes": 14401
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/082-full_point_oracle_v1.py",
+        "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+        "bytes": 14401
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+        "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+        "bytes": 158160
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/083-full-language-plan-v3.json",
+        "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+        "bytes": 158160
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+        "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+        "bytes": 30989
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/084-hilbert_cluster_lifecycle_v1.py",
+        "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+        "bytes": 30989
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+        "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+        "bytes": 142981
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/085-certificate-v3.json.gz",
+        "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+        "bytes": 142981
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+        "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+        "bytes": 31300
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/086-hilbert_primitive_graph_v2.py",
+        "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+        "bytes": 31300
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+        "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+        "bytes": 9020
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/087-positive_certificate_oracle_v1.py",
+        "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+        "bytes": 9020
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_bridge_decode_v1.py",
+        "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+        "bytes": 6052
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/088-shared_symbolic_bridge_decode_v1.py",
+        "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+        "bytes": 6052
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+        "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+        "bytes": 3698
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/089-shared_symbolic_forward_order_v1.py",
+        "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+        "bytes": 3698
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+        "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+        "bytes": 16449
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/090-shared_symbolic_geometry_search_v1.py",
+        "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+        "bytes": 16449
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+        "sha256": "0fc35c2dacb2266ee587843f715e848ae6839b00220a01bb00d61eb74d65be44",
+        "bytes": 2291
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/091-geometry_trace_order_v1.py",
+        "sha256": "0fc35c2dacb2266ee587843f715e848ae6839b00220a01bb00d61eb74d65be44",
+        "bytes": 2291
+      },
+      "byte_exact": true
+    },
+    {
+      "original": {
+        "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+        "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+        "bytes": 9091
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/context-transfer/evidence/092-geometry_trace_point_v1.py",
+        "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+        "bytes": 9091
+      },
+      "byte_exact": true
+    }
+  ],
+  "scope": "Current-stage sources, actual inputs, full raw results and receipts. Retained historical provenance is identified in exact plans and linked lineage; runtime binaries and process streams are excluded."
+}
