@@ -1,0 +1,28 @@
+{
+  "schema": "independent-literal-point-product-controls-v1",
+  "scope": "Synthetic factor mechanism only; no theorem, production catalog or full dynamic engine admission.",
+  "recipes": [
+    {"output": 0, "inputs": []},
+    {"output": 0, "inputs": []},
+    {"output": 1, "inputs": []},
+    {"output": 0, "inputs": [0, 0]},
+    {"output": 1, "inputs": [0, 1]}
+  ],
+  "rows": [0, 1, 2, 3, 4],
+  "formula_point_values": [null, 0, 1],
+  "total_values": [0, 1],
+  "offset_values_by_row": [
+    [null, -1, 0],
+    [null, -2, -1, 0],
+    [null, -3, -2, -1, 0],
+    [null, -4, -3, -2, -1, 0],
+    [null, -5, -4, -3, -2, -1, 0]
+  ],
+  "all_formula_points": "Every (1,r) with 0 <= r <= tested row, including absent and assigned zero.",
+  "all_offsets": "Both ordered input-port points at tested row; Cartesian product of all declared values.",
+  "complete_product_state_count": 31338,
+  "candidate_identity": "Recipe index, row and ordered references; duplicate-looking zero-port records remain distinct.",
+  "equal_code_alias_pair_is_synthetic": true,
+  "logical_qualification": false,
+  "search_calls": 0
+}

@@ -1,0 +1,609 @@
+{
+  "RL_updates": 0,
+  "RNG_draws": 0,
+  "accepted_incremental_scope": true,
+  "blanket_dynamic_qualification": false,
+  "caller_seconds": 7.896,
+  "checks": [
+    {
+      "evidence": {
+        "complete_state_stream_sha256": "f32322dca6f32d8636f9de2e9752ed17370e33ed87e93aade87417431acc246a",
+        "literal_key_occurrences": 41802,
+        "recipe_factor_comparisons": 156690,
+        "states": 31338
+      },
+      "name": "all_predeclared_tiny_products_complete",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "whole_original_catalog_retained",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "initial_whole_point_union",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "initial_all24_full_catalog_counts",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "initial_global_decision",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "catalog_header_accessor_is_detached",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "ordinary_catalog_mutation_rejected",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "lazy_order_first_matches_base_traversal",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "one_transaction_whole_point_union",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "one_transaction_all24_full_catalog_counts",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "one_transaction_global_decision",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "suspended_candidate_stream_stale_after_placement",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "ordered_domain_stale_after_placement",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "restored_whole_point_union",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "restored_all24_full_catalog_counts",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "restored_global_decision",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "exact_paired_rollback",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "zero_budget_unknown_no_pruning",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "untracked_context_change_rejected",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "untracked_point_change_rejected",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "complete_source_input_closure_unchanged",
+      "passed": true
+    }
+  ],
+  "deferred": [
+    "whole cluster pool and receptors",
+    "all31 feature values",
+    "streamed proposal/overlay/DFS and trajectory replay",
+    "distant dead/forced fixtures",
+    "nonzero generation, fractional residual and shared-positive-support scope controls"
+  ],
+  "events": [
+    {
+      "name": "tiny_product_begin",
+      "worker_seconds": 0.035271084
+    },
+    {
+      "cumulative_states": 54,
+      "name": "tiny_row_closed",
+      "row": 0,
+      "worker_seconds": 0.035918000000000005
+    },
+    {
+      "cumulative_states": 342,
+      "name": "tiny_row_closed",
+      "row": 1,
+      "worker_seconds": 0.038778417
+    },
+    {
+      "cumulative_states": 1692,
+      "name": "tiny_row_closed",
+      "row": 2,
+      "worker_seconds": 0.05603975
+    },
+    {
+      "cumulative_states": 7524,
+      "name": "tiny_row_closed",
+      "row": 3,
+      "worker_seconds": 0.15903816699999998
+    },
+    {
+      "cumulative_states": 31338,
+      "name": "tiny_row_closed",
+      "row": 4,
+      "worker_seconds": 0.74095175
+    },
+    {
+      "name": "production_whole_catalog_load_begin",
+      "worker_seconds": 0.741646167
+    },
+    {
+      "formulas": 113406,
+      "name": "production_whole_catalog_loaded",
+      "recipes": 119633,
+      "worker_seconds": 2.606437709
+    },
+    {
+      "name": "initial_state_closed",
+      "worker_seconds": 2.709331875
+    },
+    {
+      "name": "one_transaction_state_closed",
+      "worker_seconds": 2.9669952090000002
+    },
+    {
+      "name": "restored_state_closed",
+      "worker_seconds": 3.219919292
+    }
+  ],
+  "gates": {
+    "actual_tool_terminal": true,
+    "all_owner_direct_children_closed": true,
+    "all_worker_direct_children_closed": true,
+    "caller_clock_bound": true,
+    "cancelled_at_final_print_false": true,
+    "complete_post_closure_unchanged": true,
+    "final_print_gate": true,
+    "no_owned_leftovers": true,
+    "owner_gate": true,
+    "owner_terminal_link_present": true,
+    "post_write_exact_terminal": true,
+    "post_write_gate": true,
+    "stage_identity": true,
+    "worker_complete": true
+  },
+  "general_tiling_conformance": false,
+  "limits": {
+    "caller_seconds": 90,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "outcome": "Incremental checks accepted",
+  "owned_leftover_count": 0,
+  "owner": {
+    "ROOT_peak_bytes": 15761408,
+    "all_direct_children_terminal_and_reaped": true,
+    "observer_peak_bytes": 2490368,
+    "sampled_observations": 27,
+    "worker_kernel_peak_bytes": 120176640
+  },
+  "post": {
+    "elapsed_seconds": 3.444861875,
+    "peak_bytes": 138493952,
+    "resource_gate_accepted": true
+  },
+  "production_states": [
+    {
+      "decision": [
+        "branch",
+        23,
+        12540,
+        0
+      ],
+      "full_counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          40476,
+          40476
+        ],
+        [
+          41564,
+          41564
+        ],
+        [
+          200966,
+          200966
+        ],
+        [
+          518682,
+          518682
+        ],
+        [
+          994712,
+          994712
+        ],
+        [
+          1629056,
+          1629056
+        ],
+        [
+          2421714,
+          2421714
+        ],
+        [
+          3372686,
+          3372686
+        ],
+        [
+          4481972,
+          4481972
+        ],
+        [
+          5749572,
+          5749572
+        ],
+        [
+          7175486,
+          7175486
+        ],
+        [
+          8759714,
+          8759714
+        ],
+        [
+          10502256,
+          10502256
+        ],
+        [
+          12403112,
+          12403112
+        ],
+        [
+          14462282,
+          14462282
+        ],
+        [
+          16679766,
+          16679766
+        ],
+        [
+          19055564,
+          19055564
+        ],
+        [
+          21589676,
+          21589676
+        ],
+        [
+          24282102,
+          24282102
+        ],
+        [
+          27132842,
+          27132842
+        ],
+        [
+          12540,
+          12540
+        ]
+      ],
+      "name": "initial",
+      "selected_keys": [
+        [
+          85,
+          0,
+          []
+        ],
+        [
+          16079,
+          1,
+          []
+        ],
+        [
+          16454,
+          2,
+          []
+        ]
+      ],
+      "state_sha256": "0d7a06e433a52ac439d1c53a71eb14767bda3b06ff6efa20519ff216f1200b1e"
+    },
+    {
+      "decision": [
+        "dead",
+        3,
+        0,
+        0
+      ],
+      "full_counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          40477,
+          40477
+        ],
+        [
+          41569,
+          41569
+        ],
+        [
+          200975,
+          200975
+        ],
+        [
+          518695,
+          518695
+        ],
+        [
+          994729,
+          994729
+        ],
+        [
+          1629077,
+          1629077
+        ],
+        [
+          2421739,
+          2421739
+        ],
+        [
+          3372715,
+          3372715
+        ],
+        [
+          4482005,
+          4482005
+        ],
+        [
+          5749609,
+          5749609
+        ],
+        [
+          7175527,
+          7175527
+        ],
+        [
+          8759759,
+          8759759
+        ],
+        [
+          10502305,
+          10502305
+        ],
+        [
+          12403165,
+          12403165
+        ],
+        [
+          14462339,
+          14462339
+        ],
+        [
+          16679827,
+          16679827
+        ],
+        [
+          19055629,
+          19055629
+        ],
+        [
+          21589745,
+          21589745
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "name": "one_transaction",
+      "selected_keys": [
+        [
+          85,
+          0,
+          []
+        ],
+        [
+          16079,
+          1,
+          []
+        ],
+        [
+          16454,
+          2,
+          []
+        ],
+        [
+          2109,
+          23,
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "state_sha256": "c530a7d4d90e8671124cc7cbc1178f60a53b6a8ae0769d28dfda5029de18427e"
+    },
+    {
+      "decision": [
+        "branch",
+        23,
+        12540,
+        0
+      ],
+      "full_counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          40476,
+          40476
+        ],
+        [
+          41564,
+          41564
+        ],
+        [
+          200966,
+          200966
+        ],
+        [
+          518682,
+          518682
+        ],
+        [
+          994712,
+          994712
+        ],
+        [
+          1629056,
+          1629056
+        ],
+        [
+          2421714,
+          2421714
+        ],
+        [
+          3372686,
+          3372686
+        ],
+        [
+          4481972,
+          4481972
+        ],
+        [
+          5749572,
+          5749572
+        ],
+        [
+          7175486,
+          7175486
+        ],
+        [
+          8759714,
+          8759714
+        ],
+        [
+          10502256,
+          10502256
+        ],
+        [
+          12403112,
+          12403112
+        ],
+        [
+          14462282,
+          14462282
+        ],
+        [
+          16679766,
+          16679766
+        ],
+        [
+          19055564,
+          19055564
+        ],
+        [
+          21589676,
+          21589676
+        ],
+        [
+          24282102,
+          24282102
+        ],
+        [
+          27132842,
+          27132842
+        ],
+        [
+          12540,
+          12540
+        ]
+      ],
+      "name": "restored",
+      "selected_keys": [
+        [
+          85,
+          0,
+          []
+        ],
+        [
+          16079,
+          1,
+          []
+        ],
+        [
+          16454,
+          2,
+          []
+        ]
+      ],
+      "state_sha256": "0d7a06e433a52ac439d1c53a71eb14767bda3b06ff6efa20519ff216f1200b1e"
+    }
+  ],
+  "proof_certificates": 0,
+  "schema": "notebook126-public-dynamic-transaction-view-v1",
+  "target_searches": 0,
+  "zero_budget_search_protocol_control_calls": 1
+}

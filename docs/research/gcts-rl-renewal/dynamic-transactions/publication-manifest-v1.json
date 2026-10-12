@@ -1,0 +1,99 @@
+{
+  "actual_ROOT_decision": {
+    "bytes": 2821,
+    "path": ".gcts-active/compact-dynamic-transaction-qualification-progress-20261012/replay-ROOT-final-decision-v1.json",
+    "sha256": "f50d76a25954287aa7768f42af8a57443d80edc9535edd54f0610e8a2a7ed438"
+  },
+  "actual_receipt": {
+    "bytes": 782,
+    "path": ".gcts-active/compact-dynamic-transaction-qualification-progress-20261012/qualification-output-v1/qualification-result-v1.json",
+    "sha256": "92401604fc1dba8aaceedb0b34aed81c9e2815c4bdf83cea474a2cb5a58f3955"
+  },
+  "exact_source_aliases": {
+    "compact_cluster_lifecycle_v2.py": {
+      "bytes": 29230,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+    },
+    "compact_dynamic_graph_v2.py": {
+      "bytes": 24958,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_dynamic_graph_v2.py",
+      "sha256": "878c22589292e4e83f5c5b869ccb2ef40bb572a9e5ca2d1861bef4ee7a77c532"
+    },
+    "dynamic_transaction_worker_v2.py": {
+      "bytes": 16280,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-dynamic-transaction-qualification-source-20261012/dynamic_transaction_worker_v2.py",
+      "sha256": "4d79ac9029a269fda7e9c019722a1bc6c066675bb465c18092ff5ba2bda8ab01"
+    },
+    "literal_point_oracle_v1.py": {
+      "bytes": 7378,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-dynamic-transaction-qualification-source-20261012/literal_point_oracle_v1.py",
+      "sha256": "ad09b0018b16c4d06d8f31687e74c27c994acc1cc3a78eb68a009beb164fa522"
+    }
+  },
+  "files": [
+    {
+      "bytes": 367808,
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "5b3f16e32036bfcb5e2ba00c0341c0da6325641bb5a8f99b8efbd05b5238c921"
+    },
+    {
+      "bytes": 7902,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/cohort-statements-v1.json",
+      "sha256": "d51db816d4711812d1b0d41356b131b4d5154cb3d16683b31a5ec3e0dc6cbb56"
+    },
+    {
+      "bytes": 29230,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/compact_cluster_lifecycle_v2.py",
+      "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+    },
+    {
+      "bytes": 24958,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/compact_dynamic_graph_v2.py",
+      "sha256": "878c22589292e4e83f5c5b869ccb2ef40bb572a9e5ca2d1861bef4ee7a77c532"
+    },
+    {
+      "bytes": 16280,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/dynamic_transaction_worker_v2.py",
+      "sha256": "4d79ac9029a269fda7e9c019722a1bc6c066675bb465c18092ff5ba2bda8ab01"
+    },
+    {
+      "bytes": 7378,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/literal_point_oracle_v1.py",
+      "sha256": "ad09b0018b16c4d06d8f31687e74c27c994acc1cc3a78eb68a009beb164fa522"
+    },
+    {
+      "bytes": 2671,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/reader.css",
+      "sha256": "7e8dfb5d936541cdc30981dee34c81d93d5a68762f4a65823adaf519712d2c58"
+    },
+    {
+      "bytes": 18991,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/reader.html",
+      "sha256": "85b863e7e8057173026391077b397bd60e62f94d06d4dd5a24106fff82668a5a"
+    },
+    {
+      "bytes": 1544,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/reader.js",
+      "sha256": "3a3e41d1be0e52bd341481bb9580c221825b25add21d2436e0aad45e6b1ac01a"
+    },
+    {
+      "bytes": 10976,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/result-view-v1.json",
+      "sha256": "4ac29ffd586b8ed15e039fb12625525718b4307af79958b9b9b401e435724910"
+    },
+    {
+      "bytes": 1102,
+      "path": "docs/research/gcts-rl-renewal/dynamic-transactions/tiny-literal-controls-v1.json",
+      "sha256": "ebc6b5c57afe310aa57404e968592a57c023ae0ee7db60efb3885a37bd00b158"
+    }
+  ],
+  "parent_before": {
+    "bytes": 366912,
+    "path": ".gcts-active/compact-dynamic-transaction-qualification-progress-20261012/ROOT-parent-before-notebook126.html",
+    "sha256": "e25bcdebc019ac03bf48777f375e9026953f457af34a8961ccb2409fb5e0ae2c"
+  },
+  "parent_panel": "<section class=\"panel\" id=\"dynamic-transactions\"><p class=\"eyebrow\">NOTEBOOK126 \u00b7 DYNAMIC TRANSACTIONS</p><h2>Independent point controls and exact rollback</h2><p>The complete declared tiny product passed, and the production graph retained all \\(119633\\) primitive licenses. Independent counts and marking reference counts agree before and after one legal transaction; paired rollback restores the saved state. Whole owned phase: \\(3.445\\,\\mathrm{s}\\); conservative peak: \\(132.0781\\,\\mathrm{MiB}\\). Cluster search, theorem declarations and independent validation advance in parallel; no new proof or RL advantage is claimed.</p><p><a href=\"dynamic-transactions/reader.html#states\">Inspect actual transaction counts</a> \u00b7 <a href=\"dynamic-transactions/reader.html#parallel\">Parallel work</a> \u00b7 <a href=\"dynamic-transactions/reader.html#benchmarks\">Prospective theorem cohort</a></p></section>\n",
+  "schema": "notebook126-publication-manifest-v1",
+  "scope": "Saved metadata display only. Incremental mechanism acceptance is separate from proof discovery, complete cluster/learned dynamic qualification and comparative speedup."
+}
