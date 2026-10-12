@@ -1,0 +1,24 @@
+{
+  "status": "passed_ROOT_owned_static_pool_dispatch",
+  "argv": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json"
+  ],
+  "owner_exit_code": 0,
+  "owner_process_terminal_reaped": true,
+  "worker_reaped": true,
+  "full_owner_process_seconds_including_startup_and_receipt": 4.4812343750000005,
+  "lifetime": {
+    "path": ".gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+    "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+    "bytes": 2168
+  },
+  "plan": {
+    "path": ".gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+    "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+    "bytes": 228513
+  },
+  "scientific_scope": "Static independent body/initial-state/pool reconstruction; no target search or training",
+  "outer_receipt_serialization_scope": "ROOT terminal receipt serialization additional to full child-process clock"
+}

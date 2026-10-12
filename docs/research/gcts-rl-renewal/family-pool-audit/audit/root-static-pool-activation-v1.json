@@ -1,0 +1,12 @@
+{
+  "schema": "root-independent-static-family-pool-activation-v1",
+  "authorized": true,
+  "plan_sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+  "ROOT_review": ".gcts-active/family-pool-audit-progress-20261012/root-source-review-v1.json",
+  "independent_source_review": {
+    "path": ".gcts-active/family-pool-source-review-20261012/source-review-v1.json",
+    "sha256": "1b11416e79856cbf9a0b728e158ef4a3d766ee5ad257354d055b43b4bd53d385",
+    "bytes": 252996
+  },
+  "scope": "One bounded independent static pool audit only; no search, training, native query or completed-recipient proof acceptance."
+}

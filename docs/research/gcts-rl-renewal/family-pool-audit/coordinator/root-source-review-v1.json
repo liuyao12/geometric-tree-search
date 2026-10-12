@@ -1,0 +1,63 @@
+{
+  "status": "ROOT_source_review_pass_pending_independent_review",
+  "plan": {
+    "path": ".gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+    "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+    "bytes": 228513
+  },
+  "coverage": [
+    {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+      "bytes": 31396,
+      "coverage": "full source"
+    },
+    {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_owner_v1.py",
+      "sha256": "d752bbe6bb4cc6cf66afb87da59f45579dd61f347ada07e7d7574b14599f2455",
+      "bytes": 7949,
+      "coverage": "full source"
+    },
+    {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_freeze_v1.py",
+      "sha256": "c3112977b4187aecb61f585be38d453e28612c40fefa279cb1c3a8ea0a428406",
+      "bytes": 13490,
+      "coverage": "full source"
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401,
+      "coverage": "full source"
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212,
+      "coverage": "full source"
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198,
+      "coverage": "SymbolicChecker and all called substitution/validation helpers, lines 1-237,249-335"
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577,
+      "coverage": "module initialization, symbolic_source_gate/literal_expansion/transport helpers/recipe_key/placed_identity/point_union/receptor_ports/canonical_embedding, lines 1-40,92-264,314-423"
+    }
+  ],
+  "findings": [
+    "Independent reconstruction uses frozen conditional source bodies and declared output rows, including non-last outputs.",
+    "Original root anchors retain independently applied seed insertion order.",
+    "Complete finite single/pair type and ordered binding census; exact sharing and whole union point compatibility.",
+    "All producer descriptor fields and priority authority are compared against fresh independent reconstruction.",
+    "Seventeen altered per-group payloads are compared against reconstructed groups; no whole mutant file replay claim.",
+    "One owned child, exclusive outputs, same runtime identity, unchanged prospective resource ceilings, kill/wait4 reaping."
+  ],
+  "scope": "Static finite pool acceptance only; candidate-degree scheduling, completed proof search, native universal Wang semantics and RL performance are outside this gate.",
+  "new_actual_runs": 0,
+  "activation_written": false
+}

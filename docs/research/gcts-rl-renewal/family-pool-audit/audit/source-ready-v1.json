@@ -1,0 +1,174 @@
+{
+  "status": "source_ready_for_ROOT_review_only_unexecuted",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+    "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+    "bytes": 228513
+  },
+  "design": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/design-v1.json",
+    "sha256": "bfda7b2d3a71169fd28cbbf9667afe6a4f031456a15359f8b4b8cd7e4ab1bddf",
+    "bytes": 3897
+  },
+  "source_archive": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-sources-v1.zip",
+    "sha256": "54682b477a8ab529170260cb1d018050001e3f112d819ee2367cc386436b960c",
+    "bytes": 51353
+  },
+  "source_count": 3,
+  "independent_library_count": 4,
+  "input_roles": 23,
+  "preserved_count": 760,
+  "exact_unique_path_count": 790,
+  "AST": [
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+        "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+        "bytes": 31396
+      },
+      "imports": [
+        "copy",
+        "gzip",
+        "hashlib",
+        "importlib.util",
+        "itertools",
+        "json",
+        "pathlib",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    },
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_owner_v1.py",
+        "sha256": "d752bbe6bb4cc6cf66afb87da59f45579dd61f347ada07e7d7574b14599f2455",
+        "bytes": 7949
+      },
+      "imports": [
+        "hashlib",
+        "json",
+        "os",
+        "pathlib",
+        "resource",
+        "signal",
+        "subprocess",
+        "sys",
+        "time"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    },
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_freeze_v1.py",
+        "sha256": "c3112977b4187aecb61f585be38d453e28612c40fefa279cb1c3a8ea0a428406",
+        "bytes": 13490
+      },
+      "imports": [
+        "ast",
+        "hashlib",
+        "json",
+        "pathlib",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    },
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+        "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+        "bytes": 14401,
+        "role": "independent_point"
+      },
+      "imports": [
+        "copy",
+        "gzip",
+        "hashlib",
+        "itertools",
+        "json",
+        "pathlib"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    },
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+        "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+        "bytes": 12212,
+        "role": "independent_body"
+      },
+      "imports": [
+        "copy",
+        "full_point_oracle_v1"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    },
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+        "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+        "bytes": 44198,
+        "role": "independent_symbolic"
+      },
+      "imports": [
+        "argparse",
+        "copy",
+        "hashlib",
+        "json",
+        "pathlib",
+        "platform",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    },
+    {
+      "pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+        "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+        "bytes": 51577,
+        "role": "independent_expansion"
+      },
+      "imports": [
+        "argparse",
+        "collections",
+        "copy",
+        "gc",
+        "gzip",
+        "hashlib",
+        "independent_aggregate_audit_v1",
+        "json",
+        "pathlib",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "ast_parsed": true,
+      "executed": false
+    }
+  ],
+  "ROOT_command_argv_after_separate_authorization": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json"
+  ],
+  "activation_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/root-static-pool-activation-v1.json",
+  "activation_schema": "root-independent-static-family-pool-activation-v1",
+  "execution_authorized": false,
+  "scientific_function_calls_by_freeze": 0,
+  "actual_audit_runs": 0
+}

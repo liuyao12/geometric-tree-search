@@ -1,0 +1,45 @@
+{
+  "status": "passed_owned_independent_static_family_pool_audit",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+    "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+    "bytes": 228513
+  },
+  "child_pid": 87457,
+  "child_exit": 0,
+  "child_reaped": true,
+  "sampled_combined_peak_bytes": 126386176,
+  "kernel_conservative_peak_bytes": 138493952,
+  "metadata_child_peak_bytes": 1441792,
+  "maximum_whole_seconds": 180,
+  "maximum_peak_bytes": 536870912,
+  "independent_literal_model_reconstruction": true,
+  "production_engine_runs": 0,
+  "controller_runs": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "whole_target_proof_checks": 0,
+  "scope": "Independent source-body/initial point-state/binding/identity/aggregate reconstruction only",
+  "activation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/root-static-pool-activation-v1.json",
+    "sha256": "90e33041e97ce4623374ce15a7e0da7748a5a25e056ad0d5e9e2694ec64d9414",
+    "bytes": 633
+  },
+  "owner_seconds_before_final_receipt_write": 4.355809875,
+  "stdout": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+    "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+    "bytes": 7941076
+  },
+  "cost_scope": "Worker/result serialization and owner validation included; own final receipt serialization outside pre-write timer"
+}
