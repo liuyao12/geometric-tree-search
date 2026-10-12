@@ -2,7 +2,7 @@
 // This is a graph-path adaptation, not the eager all-time-slot CSP scheduler.
 // A provider must exhaust the raw domain and resolve every unfiltered candidate
 // before degree zero/one is reported. No state value is parsed here.
-export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000,seed=31}={}){
+export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,shouldStop=()=>false}={}){
  if(!Number.isInteger(maxDepth)||maxDepth<0||!Number.isInteger(nodeCap)||nodeCap<0||!Number.isInteger(stateCap)||stateCap<2)throw Error('Invalid lazy search bounds.');
  if(provider.reversible!==true)throw Error('Bidirectional search requires a verified reversible provider.');
  const stats={nodes:0,attempts:0,forced:0,branches:0,graphBuilds:0,peakIncidences:0,generatedStates:2,generatedEdges:0,domainCacheHits:0,rawCandidates:0,markingEliminations:0,authorRejections:0,markingVersions:0,replayedDomains:0,peakFrontier:2,extensionEliminations:0,extensionGraphBuilds:0,extensionVersions:0,extensionCandidateCount:0,deadEnds:0,baseLegalCandidates:0,availableCandidates:0,branchOptions:0};
@@ -20,10 +20,12 @@ export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000
  }
  function domain(key){
   if(domains.has(key)){stats.domainCacheHits++;return domains.get(key);}
+  if(shouldStop())return {unknown:true,reason:"search-time-budget"};
   const raw=provider.domain(key);
   if(raw.complete!==true)return {unknown:true,reason:raw.reason||'incomplete-candidate-domain'};
   const d={point:raw.point,boundary:raw.boundary,accepted:[]};stats.rawCandidates+=raw.candidates.length;
   for(const entry of raw.candidates){
+   if(shouldStop())return {unknown:true,reason:"search-time-budget"};
    const c=provider.decorate(entry);
    if(mismatch(c,d.boundary)){stats.markingEliminations++;continue;}
    // Authors resolve geometry; the algorithm sees only opaque destinations.
@@ -46,12 +48,13 @@ export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000
  while(levels[0]+levels[1]<maxDepth){
   const side=levels[0]<=levels[1]?0:1,other=1-side,next=[];
   for(const key of frontiers[side]){
+   if(shouldStop())return{status:'unknown',reason:'search-time-budget',stats};
    if(stats.nodes>=nodeCap)return{status:'unknown',reason:'search-node-budget',stats};
    stats.nodes++;const d=domain(key);if(d.unknown)return{status:'unknown',reason:d.reason,stats};
    let options=[...d.accepted];stats.baseLegalCandidates+=options.length;
    if(provider.extensionDomain){
     const marked=provider.extensionDomain(options,{targetKey:other===0?provider.sourceKey:provider.targetKey,remaining:maxDepth-levels[side]-1});
-    if(marked.complete!==true)return{status:'unknown',reason:'incomplete-extension-domain',stats};
+    if(marked.complete!==true)return{status:'unknown',reason:marked.reason||'incomplete-extension-domain',stats};
     const baseEdges=new Map(options.map(e=>[e.id,e])),ids=new Set(baseEdges.keys());
     if(marked.candidates.length!==options.length||new Set(marked.candidates.map(c=>c.id)).size!==ids.size||marked.candidates.some(c=>!ids.has(c.id)||c.t.size!==1||c.t.get(d.point)!==1))throw Error('Extension markings changed the complete base candidate universe.');
     const forward=new Map([[d.point,[]]]),reverse=new Map(),kept=[];
@@ -63,6 +66,7 @@ export function lazyPointPath(provider,{maxDepth=4,nodeCap=20000,stateCap=200000
     stats.extensionGraphBuilds++;stats.extensionVersions=marked.version;
     stats.peakIncidences=Math.max(stats.peakIncidences,reverse.size);options=kept;
    }
+   if(shouldStop())return{status:'unknown',reason:'search-time-budget',stats};
    stats.availableCandidates+=options.length;if(options.length>1)stats.branchOptions+=options.length;
    if(!options.length)stats.deadEnds++;
    if(options.length===1)stats.forced++;else if(options.length>1)stats.branches++;

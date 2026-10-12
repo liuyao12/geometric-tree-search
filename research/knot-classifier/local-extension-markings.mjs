@@ -47,11 +47,12 @@ const count=x=>{let n=0;while(x){x&=x-1n;n++;}return n;};
 // Generic unmarked finite cover probe: opaque bit points and exhaustive masks.
 // Covering a discrepancy is necessary; double flips, exterior, and embedding
 // restrictions are relaxed. A positive cover is NOT a knot-move witness.
-export function coverProbe(width,masks,horizon,{nodeCap=10000}={}){
+export function coverProbe(width,masks,horizon,{nodeCap=10000,shouldStop=()=>false}={}){
  if(!Number.isInteger(width)||width<1||!Number.isInteger(horizon)||horizon<0||!Number.isInteger(nodeCap)||nodeCap<0)throw Error('Invalid extension probe.');
  const full=(1n<<BigInt(width))-1n;if(masks.some(m=>m<=0n||(m&full)!==m))throw Error('Invalid cover alphabet.');
  const memo=new Set();let nodes=0,unknown=false;
  function visit(uncovered,left,path){
+  if(shouldStop()){unknown=true;return null;}
   if(!uncovered)return path;
   if(nodes>=nodeCap){unknown=true;return null;}nodes++;
   if(!left)return null;
@@ -77,7 +78,7 @@ export class LocalExtensionMarkings{
  constructor({enabled=true,probeNodeCap=10000,maxComponentEdges=48}={}){
   this.system='face-edge-cover-extension-v1';this.enabled=enabled;this.probeNodeCap=probeNodeCap;this.maxComponentEdges=maxComponentEdges;this.rules=new Map();this.events=[];this.version=0;this.nodes=0;this.probeMs=0;this.transferredApplications=0;this.cacheHits=0;this.transferValidationNodes=0;this.transferValidationMs=0;
  }
- learn(component){
+ learn(component,{shouldStop=()=>false}={}){
   const old=this.rules.get(component.signature);
   if(old){this.cacheHits++;if(old.origin.join(',')!==component.origin.join(','))this.transferredApplications++;return old;}
   if(!this.enabled||component.edges.length>this.maxComponentEdges)return{lower:0};
@@ -85,7 +86,7 @@ export class LocalExtensionMarkings{
   const start=performance.now(),samples=[];let lower=0;
   // Probe every smaller budget, then the first positive; unknowns never exclude.
   for(let h=0;h<=component.edges.length;h++){
-   const sample={horizon:h,...coverProbe(component.edges.length,component.masks,h,{nodeCap:this.probeNodeCap})};samples.push(sample);this.nodes+=sample.nodes;
+   const sample={horizon:h,...coverProbe(component.edges.length,component.masks,h,{nodeCap:this.probeNodeCap,shouldStop})};samples.push(sample);this.nodes+=sample.nodes;
    if(sample.outcome==='unresolved')break;
    if(sample.outcome==='negative')lower=h+1;else break;
   }
@@ -98,28 +99,33 @@ export class LocalExtensionMarkings{
   this.rules.set(component.signature,rule);if(values.length)this.version++;
   return rule;
  }
- compile(source,target,remaining){
-  const components=extensionComponents(source,target),rules=components.map(c=>this.learn(c)),lower=rules.reduce((n,r)=>n+r.lower,0);
+ compile(source,target,remaining,{shouldStop=()=>false}={}){
+  const components=extensionComponents(source,target),rules=components.map(c=>this.learn(c,{shouldStop})),lower=rules.reduce((n,r)=>n+r.lower,0);
   // Disconnected projected alphabets are independent: one real face affects at
   // most one component. Sum the proved requirements, then compile a budget seam.
   const point='extension-budget',boundary=new Map([[point,0]]),m=new Map();
   if(lower>remaining)m.set(point,1);
   return{boundary,m,lower,remaining,version:this.version,components:components.map((c,i)=>({signature:c.signature,origin:c.origin,lower:rules[i].lower}))};
  }
- validateTransfer(){
-  const start=performance.now();
+ validateTransfer({shouldStop=()=>false}={}){
+  const start=performance.now(),events=new Map(this.events.map(e=>[e.signature,e]));
+  const stopped=()=>{this.transferValidationMs+=performance.now()-start;return false;};
   for(const [signature,r]of this.rules){
-   const event=this.events.find(e=>e.signature===signature);if(!event)throw Error('Unproven extension import.');
+   if(shouldStop())return stopped();
+   const event=events.get(signature);if(!event)throw Error('Unproven extension import.');
    if(JSON.stringify(r.masks.slice().sort())!==JSON.stringify(projectedAlphabet(JSON.parse(signature)).map(m=>m.toString(16)).sort()))throw Error('Incomplete extension alphabet.');
    let lower=0;
    for(const sample of r.samples){
-    const replay=coverProbe(JSON.parse(signature).length,r.masks.map(m=>BigInt('0x'+m)),sample.horizon,{nodeCap:this.probeNodeCap});this.transferValidationNodes+=replay.nodes;
+    if(sample.outcome==='unresolved')continue; // No exclusion was learned from this sample.
+    if(shouldStop())return stopped();
+    const replay=coverProbe(JSON.parse(signature).length,r.masks.map(m=>BigInt('0x'+m)),sample.horizon,{nodeCap:this.probeNodeCap,shouldStop});this.transferValidationNodes+=replay.nodes;
+    if(shouldStop())return stopped();
     if(replay.outcome!==sample.outcome)throw Error('Extension transfer proof failed.');
     if(replay.outcome==='negative')lower=sample.horizon+1;
    }
    if(r.lower!==lower||JSON.stringify(r.values)!==JSON.stringify(r.samples.filter(s=>s.outcome==='negative').map(s=>[s.horizon,1])))throw Error('Extension stencil differs from proof.');
   }
-  this.transferValidationMs+=performance.now()-start;
+  this.transferValidationMs+=performance.now()-start;return true;
  }
  report(){return{transferValidationNodes:this.transferValidationNodes,transferValidationMs:this.transferValidationMs,system:this.system,version:this.version,prototypes:this.rules.size,assignedComponents:[...this.rules.values()].reduce((n,r)=>n+r.values.length,0),nodes:this.nodes,probeMs:this.probeMs,transferredApplications:this.transferredApplications,cacheHits:this.cacheHits,events:this.events,scope:'Translation only; full incident-face alphabet; target discrepancy window, finite remaining budget. Negative relaxed cover proofs are redundant constraints. No projection, knot label, invariant, or scramble provenance enters probes. Not the reference neighboring-pair/corona learner.'};}
 }

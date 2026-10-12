@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {lazyPointPath} from '../apps/knot-movie/lazy-point-path.mjs';
+import {LocalExtensionMarkings,coverProbe,extensionComponents} from '../research/knot-classifier/local-extension-markings.mjs';
+import {solveLatticeLazy} from '../research/knot-classifier/lattice-lazy-search.mjs';
+import {latticeMoves} from '../research/knot-classifier/lattice-moves.mjs';
+let resolves=0;
+const provider={sourceKey:'a',targetKey:'b',reversible:true,version:()=>0,domain:()=>({complete:true,point:'q',boundary:new Map(),candidates:[{id:1},{id:2}]}),decorate:c=>({...c,t:new Map([['q',1]]),m:new Map()}),resolve:()=>{resolves++;return{key:'b'};}};
+const partial=lazyPointPath(provider,{shouldStop:()=>resolves>=1});
+assert.equal(partial.status,'unknown');assert.equal(partial.reason,'search-time-budget');
+for(const field of ['forced','branches','generatedEdges','deadEnds'])assert.equal(partial.stats[field],0);
+assert.equal(coverProbe(2,[1n,2n],1,{shouldStop:()=>true}).outcome,'unresolved');
+const corpus=JSON.parse(readFileSync(new URL('../research/knot-classifier/lattice-corpus-12.json',import.meta.url)));
+const p=corpus.records.find(r=>r.id==='3_1').vertices,q=latticeMoves(p)[0].vertices;
+const model=new LocalExtensionMarkings();
+for(const c of extensionComponents(p,q))model.learn(c,{shouldStop:()=>true});
+assert.equal(model.report().assignedComponents,0);
+// A time-interrupted sample is unconstrained, and may become solvable later.
+assert.equal(model.validateTransfer(),true);
+assert.equal(model.validateTransfer({shouldStop:()=>true}),false);
+const r=solveLatticeLazy(p,q,{maxMs:0,extensionLearn:true,extensionModel:model});
+assert.equal(r.knotEquivalence,'unknown');assert.equal(r.reason,'search-time-budget');assert.equal(r.certificate,null);
+assert.equal(r.stats.nodes,0);
+console.log('Passed: partial domains, interrupted probes, and transfer validation remain unknown.');

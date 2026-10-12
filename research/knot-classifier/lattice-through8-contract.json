@@ -1,0 +1,40 @@
+{
+  "version": "lattice-through8-multiseed-v1",
+  "master": "../../docs/basic-tiling-algorithm.md",
+  "extensionProofContract": "lattice-extension-contract.json",
+  "status": "Finite graph-path adaptation and empirical identification benchmark, not reference tiling/corona conformance or a complete classifier.",
+  "coverage": "All 35 corpus prime types with minimal crossing numbers 3 through 8, three predetermined seed pairs per type. Composite types, separate mirror cases and the unknot are outside this experiment.",
+  "sampling": "Each endpoint is an independent five-step seeded self-avoiding walk in embedding-state space. Every legal face placement throughout the embedding is available. No seed, endpoint, unchanged diagram or failed run is discarded. Walk length is not minimum move distance. Corpus labels and scramble histories remain evaluator metadata and never enter search.",
+  "bounds": {
+    "moveHorizon": 10,
+    "unitEdges": 240,
+    "expandedNodes": 200,
+    "storedStates": 30000,
+    "totalQueryMilliseconds": 6000,
+    "localProbeNodes": 512,
+    "localComponentEdges": 48,
+    "region": null,
+    "projectionDirection": [
+      11,
+      13,
+      17
+    ],
+    "searchSeed": 31
+  },
+  "fairness": "Identical endpoint inputs, base move grammar, bounds, neutral permutation and graph scheduler in both lanes. Fresh sequential Node worker per lane. Transfer lane shares one initially empty capacity model and one initially empty local extension model across all cases. No saved assignments imported. Common scramble-generation cost reported separately.",
+  "timeBudget": "Measured from query entry, including endpoint checks, local learning, transfer validation, geometry, graph construction and JavaScript verification. Deadline checked during raw-domain resolution, between extension candidates, at every local probe node and between transfer-proof samples. Atomic geometry construction, accounting and final positive-certificate replay can overrun the nominal deadline; actual wall time is reported. An interrupted domain never supplies a degree-zero/one or success claim. An interrupted local probe is unresolved and supplies no new failed-budget value.",
+  "transfer": "Every reused profile retains exact normalized geometry, full incident-face alphabet and resolved unmarked proof labels. Validation replays all resolved samples and checks stencils before search; interrupted validation leaves the entire query unknown. Unresolved samples have no exclusion to replay. Provenance lookup uses an index, avoiding the earlier quadratic scan without skipping proof replay.",
+  "costs": "Report successes and unknowns by knot and seed, reasons, wall time, expanded nodes, branch decisions, generated states, candidate eliminations, local probe time, transfer-validation time, positive verification time and peak resident memory. Marked-versus-unmarked branch counts at a fixed time budget measure work completed, not an equal-success speedup. Actual extension elimination is measured against the complete legal candidate sets of the marked states. Equal-success timing comparisons require both lanes to produce certificates on that same case.",
+  "verification": "Independent Python replay of every scramble provenance and every discovered spatial movie, and independent exhaustive replay of all resolved local cover labels and complete alphabets. Saved proof catalogs are inspection evidence, not model priors.",
+  "gaps": [
+    "Positive pair identification against supplied geometry does not test reference-bank selection or negative pairs.",
+    "Prime type crossing labels do not bound the number of crossings in projected intermediate diagrams.",
+    "Fixed regular projection and single-Reidemeister endpoint filtering remain a restricted move grammar; no move-support patch is imposed.",
+    "Full neighboring-pair corona learning, RL clusters, continuous projected event analysis, general lattice-isotopy completeness, mirrors, composites and scaling through twelve crossings remain open."
+  ],
+  "verificationTests": [
+    "../../tests/test_knot_lattice_budgets.mjs",
+    "../../tests/test_knot_lattice_lazy.mjs",
+    "../../tests/test_knot_lattice_extensions.mjs"
+  ]
+}

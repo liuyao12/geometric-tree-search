@@ -5,17 +5,18 @@ import {LocalExtensionMarkings} from './local-extension-markings.mjs';
 import {LocalPointMarkings} from './local-point-markings.mjs';
 import {lazyPointPath} from '../../apps/knot-movie/lazy-point-path.mjs';
 const pk=p=>p.join(',');
-export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DIRECTION,region=null,model=new LocalPointMarkings(),extensionModel=null}={}){
+export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DIRECTION,region=null,model=new LocalPointMarkings(),extensionModel=null,shouldStop=()=>false}={}){
  if(extensionModel&&extensionModel.system!=='face-edge-cover-extension-v1')throw Error('Extension system does not match face grammar.');
  if(model.system!=='unit-cubic-face-internal-vertex-capacity-v1')throw Error('Marking system does not match face grammar.');
  const sourceKey=embeddingKey(source),targetKey=embeddingKey(target),entries=new Map();let nextId=0;
  return{
   sourceKey,targetKey,entries,model,reversible:true,version:()=>model.version,
   ...(extensionModel?{extensionDomain(accepted,{targetKey:goal,remaining}){
-   const candidates=accepted.map(edge=>{
-    const compiled=extensionModel.compile(JSON.parse(edge.destination),JSON.parse(goal),remaining);
-    return{id:edge.id,edge,t:new Map([[edge.raw.point,1]]),m:compiled.m};
-   });
+   const candidates=[];for(const edge of accepted){
+    if(shouldStop())return{complete:false,reason:"search-time-budget"};
+    const compiled=extensionModel.compile(JSON.parse(edge.destination),JSON.parse(goal),remaining,{shouldStop});
+    candidates.push({id:edge.id,edge,t:new Map([[edge.raw.point,1]]),m:compiled.m});
+   }
    // All candidate stencils are frozen before this complete incidence is built.
    // New prototypes cannot alter old contexts: every component in them was
    // already resolved or permanently left unresolved. No mutable prefix trail.
@@ -45,8 +46,9 @@ export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DI
  };
 }
 const inverseKind=k=>({'I+':'I−','I−':'I+','II+':'II−','II−':'II+','III':'III',routing:'routing'})[k];
-export function solveLatticeLazy(source,target,{learn=true,model=null,probeNodeCap=64,extensionLearn=false,extensionModel=null,extensionProbeNodeCap=10000,maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,maxEdges=200,direction=DEFAULT_DIRECTION,region=null}={}){
- const started=performance.now();unitLoop(source);unitLoop(target);
+export function solveLatticeLazy(source,target,{learn=true,model=null,probeNodeCap=64,extensionLearn=false,extensionModel=null,extensionProbeNodeCap=10000,maxDepth=4,nodeCap=20000,stateCap=200000,seed=31,maxMs=Infinity,maxEdges=200,direction=DEFAULT_DIRECTION,region=null}={}){
+ if(!(maxMs>=0))throw Error("Invalid time budget.");
+ const started=performance.now(),shouldStop=()=>performance.now()-started>=maxMs;unitLoop(source);unitLoop(target);
  if(unitLoop(source).length>maxEdges||unitLoop(target).length>maxEdges)return{status:'unknown',knotEquivalence:'unknown',reason:'endpoint-edge-budget'};
  try{diagram(source,direction);diagram(target,direction);}catch{return{status:'unknown',knotEquivalence:'unknown',reason:'projection-grammar-not-regular-or-outside-arithmetic-scope'};}
  const marks=model||new LocalPointMarkings({enabled:learn,probeNodeCap}),initial=marks.report(),initialVersion=marks.version,initialEventCount=marks.events.length;
@@ -54,9 +56,9 @@ export function solveLatticeLazy(source,target,{learn=true,model=null,probeNodeC
  if(model)marks.validateTransfer();
  if(!learn&&(extensionLearn||extensionModel))throw Error('Unmarked baseline cannot enable extension markings.');
  const extensions=extensionModel||(extensionLearn?new LocalExtensionMarkings({probeNodeCap:extensionProbeNodeCap}):null),extensionInitial=extensions?.report(),extensionInitialEventCount=extensions?.events.length;
- if(extensionModel)extensions.validateTransfer();
- const provider=latticeProvider(source,target,{maxEdges,direction,region,model:marks,extensionModel:extensions});
- const result=lazyPointPath(provider,{maxDepth,nodeCap,stateCap,seed});let certificate=null,verificationMs=0;
+ if(extensionModel)extensions.validateTransfer({shouldStop});
+ const provider=latticeProvider(source,target,{maxEdges,direction,region,model:marks,extensionModel:extensions,shouldStop});
+ const result=lazyPointPath(provider,{maxDepth,nodeCap,stateCap,seed,shouldStop});let certificate=null,verificationMs=0;
  if(result.status==='equivalent'){
   const left=result.leftPath.map(id=>{const move=provider.entries.get(id).move;return{...move,vertices:JSON.parse(move.key)};});
   const right=[...result.rightPath].reverse().map(id=>{

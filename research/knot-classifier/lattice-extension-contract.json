@@ -18,7 +18,7 @@
   ],
   "learning": {
     "initial": "Empty model in cold lanes; no saved benchmark assignments imported.",
-    "labels": "Unmarked finite cover probes for budgets 0 through the first witnessed positive or unresolved result. All resolved labels are used; node-limit results remain unresolved.",
+    "labels": "Unmarked finite cover probes for budgets 0 through the first witnessed positive or unresolved result. All resolved labels are used; node-limit and time-interrupted results remain unresolved.",
     "scheduler": "Probe obligations are generation zero, complete forward/reverse mask incidence, dead first, then singleton, minimum degree only ties at generation zero. Exact immutable uncovered bit sets and failed memo contexts. A generic capacity bound supplements the finite proof search. This is relaxed cover search, not pair-corona exact tiling.",
     "synthesis": "One assigned failed-budget stencil value per negative label, with absent entries for positive/unknown labels. The resource composition is an additional proved constraint, not an RL policy or generic universal GCTS theorem.",
     "gate": "Replay every resolved label and compare full local alphabet before transfer. The standard full neighboring-pair catalog activation gate is not claimed: profile-specific exhaustions supply redundant constraints by the relaxation proof.",
@@ -28,8 +28,8 @@
     "baseline": "Same lazy bidirectional BFS, move grammar, seeds, edge/node/state/depth bounds and point data, without extra markings. Capacity-only lane is a separate control.",
     "enumeration": "All occupied edges, all incident unit squares in all coordinate planes and both directions, throughout the knot. No move support patch.",
     "opaque": "Generic engine receives only keys, candidate identifiers, t/m maps and complete domains. Lattice/projection/cover alphabets belong to the author adapter.",
-    "versions": "Capacity changes replay retained graphs as before. Extension profiles are immutable after their first local probe catalog, including unresolved outcomes. Every candidate component is learned before its context graph is constructed. Later new profiles cannot affect earlier frozen contexts; no mutable failure trail or previously compiled context is reused at another target/budget. Reused models replay all original proof samples and complete alphabets.",
-    "budgets": "Finite exhaustion, state/node/probe limits and restricted grammar never prove knot inequivalence. Only independently verified movies identify a reference.",
+    "versions": "Capacity changes replay retained graphs as before. Extension profiles are immutable after their first local probe catalog, including unresolved outcomes. Every candidate component is learned before its context graph is constructed. Later new profiles cannot affect earlier frozen contexts; no mutable failure trail or previously compiled context is reused at another target/budget. Reused models replay all resolved original proof samples and complete alphabets.",
+    "budgets": "Finite exhaustion, state/node/time/probe limits and restricted grammar never prove knot inequivalence. Interrupted enumeration remains incomplete and cannot justify dead/forced decisions. Only independently verified movies identify a reference.",
     "memory": "Provider retains compact verified edge records, reconstructing endpoint vertices from opaque keys only for the certificate; unneeded raw sweeps and projection contexts are released."
   },
   "verification": {
@@ -45,7 +45,8 @@
     ],
     "benchmark": "lattice-extension-benchmark.json",
     "independentProofVerifier": "verify_extension_proofs.py",
-    "costAccounting": "Per-lane total includes model construction, local probes, transfer replay, all geometry, search and JavaScript certificate verification. Independent Python artifact verification is recorded separately after the timed runs. Four-move exploratory marked-only trials have no equal-success unmarked timing comparison."
+    "costAccounting": "Per-lane total includes model construction, local probes, transfer replay, all geometry, search and JavaScript certificate verification. Independent Python artifact verification is recorded separately after the timed runs. Four-move exploratory marked-only trials have no equal-success unmarked timing comparison.",
+    "multiSeedBenchmark": "lattice-through8-benchmark.json"
   },
   "remainingGaps": [
     "Full reference neighboring-pair/one-corona GCTS learner",
