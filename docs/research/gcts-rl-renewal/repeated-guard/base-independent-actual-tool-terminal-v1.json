@@ -1,0 +1,33 @@
+{
+  "schema": "ROOT-proof-control-actual-tool-terminal-v1",
+  "prospective_contract": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/prospective-tool-contract-v1.json",
+    "sha256": "5301dffe057dde0d2fba576af1e0cdc78f58ec9e67e6ec50495984c36318d5f2",
+    "bytes": 2395
+  },
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/proof_owned_runner_v1.py root /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/owned-plan-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/phase-activation-v1.json",
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "terminal_tool_result": {
+    "began_ms": 1791810925207,
+    "observed_ms": 1791810997389,
+    "enclosing_seconds": 72.182,
+    "enclosing_bound_seconds": 73.182,
+    "result": {
+      "chunk_id": "b6b83c",
+      "wall_time_seconds": 0.000005875,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  },
+  "initial_tool_result": {
+    "chunk_id": "977a4c",
+    "wall_time_seconds": 10.001629208,
+    "session_id": 16458,
+    "original_token_count": 0,
+    "output": ""
+  }
+}
+

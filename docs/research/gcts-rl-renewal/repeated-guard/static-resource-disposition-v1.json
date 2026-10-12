@@ -1,0 +1,208 @@
+{
+  "schema": "ROOT-compact-static-external-resource-disposition-v1",
+  "status": "accepted_conditional_known_topology_static_resource_envelope",
+  "selector": "donor-repeated-guard",
+  "prospective_contract": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-guard/static-prospective-tool-contract-v1.json",
+    "sha256": "8bb26d94a4d20dc494eca36bd5f70b5b6af8637ed12d6a38f37e34f748cac32e",
+    "bytes": 3651
+  },
+  "terminal_tool_result": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-guard/static-tool-terminal-v1.json",
+    "sha256": "95bae5b18824c08f35b1152a40d20ec1201c2bf4e7f48e0ec125d52917727684",
+    "bytes": 1064
+  },
+  "finalizer": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+    "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30",
+    "bytes": 39085
+  },
+  "entry_activation": {
+    "path": ".gcts-active/repeated-guard-progress-20261012/absolute-root-compact-entry-donor-repeated-guard-v1.json",
+    "sha256": "1293e7603aa7c4ea6e47cb8d1b21db83b3943339ea222ec8ed8af772b8c2efb0",
+    "bytes": 337800
+  },
+  "plan": {
+    "path": ".gcts-active/repeated-guard-progress-20261012/absolute-compact-static-donor-repeated-guard-plan-v1.json",
+    "sha256": "055ec3041b952ccb028cd68fb17c1dde0390ad995593f40f77cbf0a4423f1fc9",
+    "bytes": 333919
+  },
+  "activation": {
+    "path": ".gcts-active/repeated-guard-progress-20261012/absolute-compact-static-donor-repeated-guard-activation-v1.json",
+    "sha256": "c819304821c3371aa1b7aaa9123d061e903c1b28233f361bcfe3eebc0552a80b",
+    "bytes": 449
+  },
+  "source_review": {
+    "path": ".gcts-active/repeated-guard-progress-20261012/ROOT-static-terminal-gate-source-review-v1.json",
+    "sha256": "f4ca695acf546326bf687fc8b8a8ba6f22631ae5104322cb774bc96dda865853",
+    "bytes": 4044
+  },
+  "platform_evidence": {
+    "path": ".gcts-active/repeated-guard-progress-20261012/platform-accounting-evidence-v1.json",
+    "sha256": "13c68b873ec0805bec2e82bfc55f98035d299f2555605bd8a13f2be4110ee893",
+    "bytes": 3457
+  },
+  "pending_receipt": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-guard/ROOT-pending-receipt-v1.json",
+    "sha256": "03eeb24367d68562e7a9fa3aa659ebb34b67a517e7d19ee71206a1e40cc165a1",
+    "bytes": 11319
+  },
+  "ROOT_raw_frame": {
+    "role": 3,
+    "pid": 5353,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 21037056,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 14.3582715,
+    "entry_monotone_clock": 0.008062541,
+    "last_closed_monotone_clock": 14.366334041,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-guard/ROOT-closed-SELF-v1.bin",
+      "sha256": "50a7de6bb015b446c30a2cbf55e1c32f30cdc1a5e7802157f9411cac49ca2be2",
+      "bytes": 52
+    }
+  },
+  "owner_raw_frame": {
+    "role": 2,
+    "pid": 5354,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 22937600,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 13.143526083,
+    "entry_monotone_clock": 0.220584833,
+    "last_closed_monotone_clock": 13.364110916,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-guard/owner-stdout-v1.txt",
+      "sha256": "31e6db041867acb7abb98ee13d3a7a545e9697d816f34e13332baac09025a1c1",
+      "bytes": 52
+    }
+  },
+  "worker_raw_frame": {
+    "role": 1,
+    "pid": 5355,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 305070080,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 12.923225082999998,
+    "entry_monotone_clock": 0.015393208,
+    "last_closed_monotone_clock": 12.938618291,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-stdout-v1.txt",
+      "sha256": "934821a9b14d4288d4490cf2d03b0df85ba9d69c38cc27f56d060f2ff9690c8f",
+      "bytes": 52
+    }
+  },
+  "closed_artifacts": {
+    "owner_result": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-result-v1.json",
+      "sha256": "48fe1b359714fdbbcd584978f0be4a1dd552d1c5ec4f4bddf46addf1c36def91",
+      "bytes": 15933153
+    },
+    "owner_compact": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-compact-v1.json",
+      "sha256": "aa8f1cffd29e5c248b76dbaff32a2be19b87e50d31e2ebfda3ed99e660898834",
+      "bytes": 3127
+    },
+    "owner_lifetime": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-lifetime-v1.json",
+      "sha256": "0db66d3f2020cfe6566a7375e51a6c0ab92ae641f03caffb93e8e4f5e7a9009c",
+      "bytes": 7272
+    },
+    "owner_observers": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-observers-v1.jsonl",
+      "sha256": "989f1b47d80894a1d73ae7752eb30fd1ad7fd96672761c5f329d4048a621c5f4",
+      "bytes": 469538
+    },
+    "owner_samples": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-samples-v1.jsonl",
+      "sha256": "c42ffb6a580d1a97b4e59b1244d2e70ac3eb81b5e4525db121e91ad2f270546b",
+      "bytes": 163296
+    },
+    "owner_stdout": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-stdout-v1.txt",
+      "sha256": "934821a9b14d4288d4490cf2d03b0df85ba9d69c38cc27f56d060f2ff9690c8f",
+      "bytes": 52
+    },
+    "owner_stderr": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-guard/static-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "owner_frame_stdout": {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-guard/owner-stdout-v1.txt",
+      "sha256": "31e6db041867acb7abb98ee13d3a7a545e9697d816f34e13332baac09025a1c1",
+      "bytes": 52
+    },
+    "owner_frame_stderr": {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-guard/owner-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "resource_ledger": {
+    "schema": "prospective-distinct-owned-Darwin-ROOT-ledger-v1",
+    "terms_bytes": {
+      "ROOT_SELF_after_metadata": 21037056,
+      "owner_SELF_after_receipt_close": 22937600,
+      "leaf_worker_terminal_wait4": 305070080,
+      "sequential_leaf_observer_terminal_max": 2719744,
+      "reviewed_fixed_postlude_reserve": 33554432
+    },
+    "complete_distinct_role_envelope_bytes": 385318912,
+    "maximum_peak_bytes": 536870912,
+    "owner_terminal_descendant_inclusive_peak_bytes": 305070080,
+    "owner_terminal_peak_is_not_an_additional_summand": true,
+    "full_owner_seconds": 13.379025666999999,
+    "ROOT_closed_metadata_seconds": 14.3582715,
+    "full_tool_boundary_seconds": 22.565,
+    "maximum_whole_seconds": 180,
+    "resource_accepted": true,
+    "disposition": "accepted_known_topology_envelope",
+    "execution_provenance": {
+      "terminal": true,
+      "exit_code": 0,
+      "cancelled": false,
+      "emergency_group_kill": false,
+      "containment_latched": false,
+      "complete_known_topology": true,
+      "full_tool_boundary_seconds": 22.565,
+      "terminal_tool_result": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-guard/static-tool-terminal-v1.json",
+        "sha256": "95bae5b18824c08f35b1152a40d20ec1201c2bf4e7f48e0ec125d52917727684",
+        "bytes": 1064
+      },
+      "prospective_contract": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-guard/static-prospective-tool-contract-v1.json",
+        "sha256": "8bb26d94a4d20dc494eca36bd5f70b5b6af8637ed12d6a38f37e34f748cac32e",
+        "bytes": 3651
+      },
+      "ROOT_raw_closed_frame": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-guard/ROOT-closed-SELF-v1.bin",
+        "sha256": "50a7de6bb015b446c30a2cbf55e1c32f30cdc1a5e7802157f9411cac49ca2be2",
+        "bytes": 52
+      },
+      "external_wait4_claim": false,
+      "topology_scope": "Conditional exact pinned one-leaf/sequential-observer topology; source and sampled record scope, not an escape-free OS guarantee"
+    },
+    "all_five_qualification": false,
+    "OS_hard_cap_claim": false,
+    "whole_host_cap_claim": false,
+    "historical_donor_two_guards_UNKNOWN_preserved": true,
+    "scope": "Prospective known pinned topology and individually saved scopes only; no mathematical/search/RL acceptance."
+  },
+  "resource_accepted": true,
+  "semantic_static_candidate": true,
+  "static_context_pool_resource_qualified": true,
+  "RL_full_pool_capacity": 64,
+  "RL_full_pool_capacity_satisfied": true,
+  "complete_group_count": 6,
+  "all_five_qualification": false,
+  "target_proof_accepted": false,
+  "trace_accepted": false,
+  "new_training": false,
+  "external_wait4_claim": false,
+  "OS_hard_cap_claim": false,
+  "whole_host_cap_claim": false,
+  "historical_donor_two_guards_UNKNOWN_preserved": true,
+  "finalization_scope": "Additional post-terminal metadata-only cost; no dispatcher/PS/scientific calls or full audit/JSONL semantic replay. Trusted tool completion plus conditional known topology and source-reviewed reserve only."
+}

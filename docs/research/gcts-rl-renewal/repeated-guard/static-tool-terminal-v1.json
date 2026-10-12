@@ -1,0 +1,26 @@
+{
+  "schema": "ROOT-compact-static-actual-terminal-tool-v1",
+  "prospective_plan": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-guard/static-prospective-tool-contract-v1.json",
+    "sha256": "8bb26d94a4d20dc494eca36bd5f70b5b6af8637ed12d6a38f37e34f748cac32e",
+    "bytes": 3651
+  },
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py entry .gcts-active/repeated-guard-progress-20261012/absolute-root-compact-entry-donor-repeated-guard-v1.json",
+  "actual_invocations": 1,
+  "terminal": true,
+  "external_wait4_claim": false,
+  "all_five_qualification": false,
+  "terminal_tool_result": {
+    "began_ms": 1791809119929,
+    "observed_ms": 1791809141494,
+    "enclosing_seconds": 21.565,
+    "enclosing_bound_seconds": 22.565,
+    "result": {
+      "chunk_id": "677e92",
+      "wall_time_seconds": 14.231522708,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  }
+}

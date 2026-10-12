@@ -1,0 +1,49 @@
+{
+  "schema": "ROOT-one-context-proof-control-final-decision-v1",
+  "selector": "donor-repeated-guard",
+  "mode": "base",
+  "status": "checked_budget_UNKNOWN",
+  "producer_result": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/result-v1.json",
+    "sha256": "5aa00eb8169a26a1191ab1f0e4437563b49c242517a87cad17f4e360aa101d52",
+    "bytes": 3975277
+  },
+  "producer_resource": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-resource-disposition-v1.json",
+    "sha256": "31d530213d47e65d844a8cc031c2e3f9a9e6e950f30a7ae54ebef3fd5e3c6f89",
+    "bytes": 11816
+  },
+  "independent_result": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/result-v1.json",
+    "sha256": "4c412f38544ba4a69c2f3a62e23c1a2a5334947bdb72aa3a6e7797b142f17127",
+    "bytes": 6313371
+  },
+  "independent_resource": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/owned-resource-disposition-v1.json",
+    "sha256": "47c9486885f0944b77fd34e0cf489effa9a469aa88b2b2a84506354a78744dee",
+    "bytes": 11903
+  },
+  "producer_finalizer_terminal": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/finalizer-actual-tool-terminal-v1.json",
+    "sha256": "15e4b8d081f54b408b620124ea0d9e0e80a0077d864aeeefbabb9dbd8ea5141f",
+    "bytes": 2346
+  },
+  "independent_finalizer_terminal": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/finalizer-actual-tool-terminal-v1.json",
+    "sha256": "8485ae725f732833ad97dac78846dcbc30ed6034e2ce514c4f57047e4aba0b5f",
+    "bytes": 2367
+  },
+  "ROOT_final_accepted": false,
+  "point_symbolic_accepted": false,
+  "trace_accepted": true,
+  "native_accepted": false,
+  "new_RL_training": false,
+  "all_five_qualification": false,
+  "compiler_correspondence": "open",
+  "proof_scope": "Exact original ground incidence sequent with all three ordered hypotheses, relative to the restricted I.2 theory. No full Hilbert, universal Wang, native or learned-policy acceptance.",
+  "complete_search_tape": 1208,
+  "attempts": 128,
+  "nodes": 99,
+  "changed_first_choices": 0,
+  "backtracks": 82
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "ROOT-proof-control-finalizer-actual-tool-terminal-v1",
+  "job": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-plan-v1.json",
+    "sha256": "7d4d4441eb167bbc923fb037c0b63437c58378e56ef430928bac21e58b50543b",
+    "bytes": 697616
+  },
+  "disposition": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-resource-disposition-v1.json",
+    "sha256": "d360512513b9d0c1a25b66def1083340db1ccf511c218cfeb1b749b270691b51",
+    "bytes": 12292
+  },
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/proof_owned_runner_v1.py finalize /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-plan-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/phase-activation-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/prospective-tool-contract-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/actual-tool-terminal-v1.json",
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "terminal_tool_result": {
+    "began_ms": 1791811132398,
+    "observed_ms": 1791811133467,
+    "enclosing_seconds": 1.069,
+    "enclosing_bound_seconds": 2.069,
+    "result": {
+      "chunk_id": "699cd7",
+      "wall_time_seconds": 0.911041333,
+      "exit_code": 0,
+      "original_token_count": 85,
+      "output": "{\"disposition\": {\"path\": \".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-resource-disposition-v1.json\", \"sha256\": \"d360512513b9d0c1a25b66def1083340db1ccf511c218cfeb1b749b270691b51\", \"bytes\": 12292}, \"resource_accepted\": true, \"all_five_qualification\": false}\n"
+    }
+  }
+}
+

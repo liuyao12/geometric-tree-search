@@ -1,0 +1,18 @@
+{
+  "schema": "ROOT-static-finalizer-actual-external-terminal-v1",
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "began_ms": 1791809186398,
+  "observed_ms": 1791809186509,
+  "enclosing_seconds": 0.111,
+  "enclosing_bound_seconds": 1.111,
+  "result": {
+    "chunk_id": "c5fcda",
+    "wall_time_seconds": 0.000007708,
+    "exit_code": 0,
+    "original_token_count": 79,
+    "output": "{\"disposition\": {\"path\": \".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-guard/static-resource-disposition-v1.json\", \"sha256\": \"896a7028732dffc018ea7b0bfba7a433b54342fe8b96cc09dac24b60a8783f79\", \"bytes\": 9936}, \"resource_accepted\": true, \"all_five_qualification\": false}\n"
+  },
+  "additional_to_static_phase": true
+}

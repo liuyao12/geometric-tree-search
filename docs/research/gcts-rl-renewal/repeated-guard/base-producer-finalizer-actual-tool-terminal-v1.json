@@ -1,0 +1,31 @@
+{
+  "schema": "ROOT-proof-control-finalizer-actual-tool-terminal-v1",
+  "job": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-plan-v1.json",
+    "sha256": "f9187a353d6534c47c83881d0c70fa0b54e35936dea8c395e078edd676ec35b4",
+    "bytes": 697255
+  },
+  "disposition": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-resource-disposition-v1.json",
+    "sha256": "31d530213d47e65d844a8cc031c2e3f9a9e6e950f30a7ae54ebef3fd5e3c6f89",
+    "bytes": 11816
+  },
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/proof_owned_runner_v1.py finalize /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-plan-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/phase-activation-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/prospective-tool-contract-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/actual-tool-terminal-v1.json",
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "terminal_tool_result": {
+    "began_ms": 1791810779434,
+    "observed_ms": 1791810780158,
+    "enclosing_seconds": 0.724,
+    "enclosing_bound_seconds": 1.724,
+    "result": {
+      "chunk_id": "a86ea3",
+      "wall_time_seconds": 0.566904125,
+      "exit_code": 0,
+      "original_token_count": 81,
+      "output": "{\"disposition\": {\"path\": \".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-resource-disposition-v1.json\", \"sha256\": \"31d530213d47e65d844a8cc031c2e3f9a9e6e950f30a7ae54ebef3fd5e3c6f89\", \"bytes\": 11816}, \"resource_accepted\": true, \"all_five_qualification\": false}\n"
+    }
+  }
+}
+

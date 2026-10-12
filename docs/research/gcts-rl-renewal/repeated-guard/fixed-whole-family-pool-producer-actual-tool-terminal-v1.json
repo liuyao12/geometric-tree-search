@@ -1,0 +1,33 @@
+{
+  "schema": "ROOT-proof-control-actual-tool-terminal-v1",
+  "prospective_contract": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/prospective-tool-contract-v1.json",
+    "sha256": "ef2d056e60f66c5298a6a58a3fc3d91f09c76cab06d0e77a169594fd7bc900e5",
+    "bytes": 2475
+  },
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/proof_owned_runner_v1.py root /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-plan-v1.json /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/phase-activation-v1.json",
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "terminal_tool_result": {
+    "began_ms": 1791811078423,
+    "observed_ms": 1791811115817,
+    "enclosing_seconds": 37.394,
+    "enclosing_bound_seconds": 38.394,
+    "result": {
+      "chunk_id": "6ef365",
+      "wall_time_seconds": 0.000004541,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  },
+  "initial_tool_result": {
+    "chunk_id": "c8292e",
+    "wall_time_seconds": 10.001907167,
+    "session_id": 53893,
+    "original_token_count": 0,
+    "output": ""
+  }
+}
+

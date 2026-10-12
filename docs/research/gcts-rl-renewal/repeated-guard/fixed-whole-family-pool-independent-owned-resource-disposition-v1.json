@@ -1,0 +1,264 @@
+{
+  "schema": "ROOT-one-context-proof-control-owned-resource-disposition-v1",
+  "status": "accepted_conditional_known_topology_proof_control_resource_envelope",
+  "phase": "independent",
+  "selector": "donor-repeated-guard",
+  "mode": "fixed-whole-family-pool",
+  "result": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/result-v1.json",
+    "sha256": "e55eb7956d6278782489491a941688d3e57a8612395ed4407195f386768818ad",
+    "bytes": 5973376
+  },
+  "source_contract": {
+    "path": ".gcts-active/repeated-guard-proof-progress-20261012/independent-source-contract-v1.json",
+    "sha256": "35b3e20df7bfea9f88af05d929715403cd31d8e78891a77051b60b84a8f69daf",
+    "bytes": 5876
+  },
+  "activation": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/phase-activation-v1.json",
+    "sha256": "a85a02f085c33bab20b065acaa6e737252a0068b5375cadebc627229d7fb8afa",
+    "bytes": 19521
+  },
+  "job": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/owned-plan-v1.json",
+    "sha256": "3fb3ff88f6f0ef98e960ba652708e2483ae59eda80241999593c351ca3244fb3",
+    "bytes": 718843
+  },
+  "owned_limits": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "resource_accepted": true,
+  "all_five_qualification": false,
+  "new_training": false,
+  "OS_hard_cap_claim": false,
+  "whole_host_cap_claim": false,
+  "external_wait4_claim": false,
+  "resource_clock_rule": "process_local_no_cross_process_absolute_comparison",
+  "postlude_reserve_bytes": 33554432,
+  "whole_tool_bound_seconds": 44.756,
+  "owner_complete_seconds": 12.782002666,
+  "worker_complete_seconds": 12.071617084,
+  "scoped_estimate_bytes": 495616000,
+  "trusted_tool_terminal": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/actual-tool-terminal-v1.json",
+    "sha256": "f577c48aec959932b6432650138cf909e49f1516f01b14b8130ed66ba81b25ec",
+    "bytes": 1592
+  },
+  "ROOT_SELF": {
+    "ru_maxrss": 23117824
+  },
+  "ROOT_raw_frame": {
+    "role": 3,
+    "pid": 10821,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 23117824,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 14.1974115,
+    "entry_monotone_clock": 0.007645583,
+    "last_closed_monotone_clock": 14.205057083,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/ROOT-closed-SELF-v1.bin",
+      "sha256": "4fc833f4633b24f6d39482d8f098ca198fdae432e1ed44deec003fc9be16737a",
+      "bytes": 52
+    }
+  },
+  "owner_raw_frame": {
+    "role": 2,
+    "pid": 10822,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 23838720,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 12.759353625000001,
+    "entry_monotone_clock": 0.007159708,
+    "last_closed_monotone_clock": 12.766513333,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/owner-stdout-v1.bin",
+      "sha256": "48ea8e745c4a2f82966f2c01e3f5cad20c74a63263e7c6385fe0766a383c28d0",
+      "bytes": 52
+    }
+  },
+  "worker_raw_frame": {
+    "role": 1,
+    "pid": 10823,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 412336128,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 12.023242667,
+    "entry_monotone_clock": 0.005244708,
+    "last_closed_monotone_clock": 12.028487375,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/stdout-v1.bin",
+      "sha256": "4b7a91fe1372f76e0a3ad63e0c1ec95106e956ad5e4e6b977b65a76baec4bf03",
+      "bytes": 52
+    }
+  },
+  "owner_lifetime": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/lifetime-v1.json",
+    "sha256": "dff01472900351b6a8c45552dc86a9be8013ab5ac228f797dbb8f3c52bef2505",
+    "bytes": 6549
+  },
+  "observer_tables": {
+    "observers": {
+      "pin": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/observers-v1.jsonl",
+        "sha256": "72c08d88c2f8baac5b15139239de41b126bb064d0f1401df727cd460d17b7d34",
+        "bytes": 454381
+      },
+      "records": 282
+    },
+    "samples": {
+      "pin": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/samples-v1.jsonl",
+        "sha256": "6820330e95c1dbc46042c0e76d7d1f80f32af11d346a931e59da772dd79b5ead",
+        "bytes": 152554
+      },
+      "records": 282
+    }
+  },
+  "closed_artifacts": {
+    "result": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/result-v1.json",
+      "sha256": "e55eb7956d6278782489491a941688d3e57a8612395ed4407195f386768818ad",
+      "bytes": 5973376
+    },
+    "compact": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/compact-v1.json",
+      "sha256": "5ae4c84d5164b67121b1aa961e785aa4da7f1779f15ad80b75d53134a2d18caf",
+      "bytes": 25355
+    },
+    "lifetime": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/lifetime-v1.json",
+      "sha256": "dff01472900351b6a8c45552dc86a9be8013ab5ac228f797dbb8f3c52bef2505",
+      "bytes": 6549
+    },
+    "observers": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/observers-v1.jsonl",
+      "sha256": "72c08d88c2f8baac5b15139239de41b126bb064d0f1401df727cd460d17b7d34",
+      "bytes": 454381
+    },
+    "samples": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/samples-v1.jsonl",
+      "sha256": "6820330e95c1dbc46042c0e76d7d1f80f32af11d346a931e59da772dd79b5ead",
+      "bytes": 152554
+    },
+    "stdout": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/stdout-v1.bin",
+      "sha256": "4b7a91fe1372f76e0a3ad63e0c1ec95106e956ad5e4e6b977b65a76baec4bf03",
+      "bytes": 52
+    },
+    "stderr": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "owner_stdout": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/owner-stdout-v1.bin",
+      "sha256": "48ea8e745c4a2f82966f2c01e3f5cad20c74a63263e7c6385fe0766a383c28d0",
+      "bytes": 52
+    },
+    "owner_stderr": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/owner-stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "source_review": {
+    "path": ".gcts-active/repeated-guard-proof-progress-20261012/ROOT-proof-owned-source-review-v1.json",
+    "sha256": "eba809e7618f7a783b6e18d6faad01bf3e599fba87fd5ba926a9ef43a58bd640",
+    "bytes": 11356
+  },
+  "platform_evidence": {
+    "path": ".gcts-active/repeated-guard-proof-progress-20261012/proof-platform-accounting-evidence-v1.json",
+    "sha256": "3efe707b1f6a43c3aa9ac04955b66853fc86c6b8b5516e1129f48e6433edacc8",
+    "bytes": 4125
+  },
+  "wrapper_manifest": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/source-plan-v1.json",
+    "sha256": "adf2c05703a1dc00b815f9dfcf9d1471d2d125ee378feb34b337032d328424ad",
+    "bytes": 13968
+  },
+  "pending_receipt": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/ROOT-pending-receipt-v1.json",
+    "sha256": "a0d9b86aab2df13f918bc8fbbdeab429c90f6e2cd93d6e54e963587a18a969b9",
+    "bytes": 10436
+  },
+  "resource_ledger": {
+    "schema": "prospective-distinct-owned-Darwin-ROOT-ledger-v1",
+    "terms_bytes": {
+      "ROOT_SELF_after_metadata": 23117824,
+      "owner_SELF_after_receipt_close": 23838720,
+      "leaf_worker_terminal_wait4": 412336128,
+      "sequential_leaf_observer_terminal_max": 2768896,
+      "reviewed_fixed_postlude_reserve": 33554432
+    },
+    "complete_distinct_role_envelope_bytes": 495616000,
+    "maximum_peak_bytes": 536870912,
+    "owner_terminal_descendant_inclusive_peak_bytes": 412336128,
+    "owner_terminal_peak_is_not_an_additional_summand": true,
+    "full_owner_seconds": 12.782002666,
+    "ROOT_closed_metadata_seconds": 14.1974115,
+    "full_tool_boundary_seconds": 44.756,
+    "maximum_whole_seconds": 180,
+    "resource_accepted": true,
+    "disposition": "accepted_known_topology_envelope",
+    "execution_provenance": {
+      "terminal": true,
+      "exit_code": 0,
+      "cancelled": false,
+      "emergency_group_kill": false,
+      "containment_latched": false,
+      "complete_known_topology": true,
+      "full_tool_boundary_seconds": 44.756,
+      "trusted_terminal": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/actual-tool-terminal-v1.json",
+        "sha256": "f577c48aec959932b6432650138cf909e49f1516f01b14b8130ed66ba81b25ec",
+        "bytes": 1592
+      },
+      "prospective_contract": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/prospective-tool-contract-v1.json",
+        "sha256": "1b66c67c9137b4d967405a1edfd38033e4661acbe2fb6bf0ec284b32b94d07e2",
+        "bytes": 2490
+      },
+      "external_wait4_claim": false
+    },
+    "all_five_qualification": false,
+    "OS_hard_cap_claim": false,
+    "whole_host_cap_claim": false,
+    "historical_donor_two_guards_UNKNOWN_preserved": true,
+    "scope": "Prospective known pinned topology and individually saved scopes only; no mathematical/search/RL acceptance."
+  },
+  "target_proof_accepted": false,
+  "fully_qualified_proof_accepted": false,
+  "trace_accepted": false,
+  "executed_UNKNOWN_preserved": [
+    "donor-two-guards",
+    "donor-two-equalities",
+    "donor-repeated-equality"
+  ],
+  "post_terminal_finalizer_seconds_before_disposition_write": 1.1912412079999999,
+  "post_terminal_finalizer_SELF_before_write": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 46,
+    "ru_maxrss": 23609344,
+    "ru_minflt": 2811,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 1659,
+    "ru_nsignals": 0,
+    "ru_nswap": 0,
+    "ru_nvcsw": 1521,
+    "ru_oublock": 0,
+    "ru_stime": 0.23263799999999998,
+    "ru_utime": 0.543532
+  },
+  "finalizer_external_terminal_interval_required_for_paired_totals": true,
+  "required_future_finalizer_terminal_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/finalizer-actual-tool-terminal-v1.json",
+  "finalizer_terminal_self_certified": false,
+  "scope": "One cold proof producer or independent replay phase, conditional known topology and unchanged reserve. Post-terminal finalizer completion is additional externally observed work; no proof, RL or end-to-end speedup acceptance."
+}

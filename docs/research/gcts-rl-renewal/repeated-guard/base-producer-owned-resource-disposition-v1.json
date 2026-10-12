@@ -1,0 +1,264 @@
+{
+  "schema": "ROOT-one-context-proof-control-owned-resource-disposition-v1",
+  "status": "accepted_conditional_known_topology_proof_control_resource_envelope",
+  "phase": "producer",
+  "selector": "donor-repeated-guard",
+  "mode": "base",
+  "result": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/result-v1.json",
+    "sha256": "5aa00eb8169a26a1191ab1f0e4437563b49c242517a87cad17f4e360aa101d52",
+    "bytes": 3975277
+  },
+  "source_contract": {
+    "path": ".gcts-active/repeated-guard-proof-progress-20261012/producer-source-contract-v1.json",
+    "sha256": "67c4686da9fa15d87893e963d7f55a56fff4972bba75ad2b4b738e34b4e416fb",
+    "bytes": 4028
+  },
+  "activation": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/phase-activation-v1.json",
+    "sha256": "83bd96b95e23a19c9320917c5913771eef93da39666162fd72e1eca364d8ec6e",
+    "bytes": 10609
+  },
+  "job": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-plan-v1.json",
+    "sha256": "f9187a353d6534c47c83881d0c70fa0b54e35936dea8c395e078edd676ec35b4",
+    "bytes": 697255
+  },
+  "owned_limits": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "resource_accepted": true,
+  "all_five_qualification": false,
+  "new_training": false,
+  "OS_hard_cap_claim": false,
+  "whole_host_cap_claim": false,
+  "external_wait4_claim": false,
+  "resource_clock_rule": "process_local_no_cross_process_absolute_comparison",
+  "postlude_reserve_bytes": 33554432,
+  "whole_tool_bound_seconds": 14.816,
+  "owner_complete_seconds": 5.377278083,
+  "worker_complete_seconds": 4.6709133750000005,
+  "scoped_estimate_bytes": 324812800,
+  "trusted_tool_terminal": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/actual-tool-terminal-v1.json",
+    "sha256": "7b2bc5b270315e64b3b083e9f719da7dd25d612f074e778336a5480b610abfd6",
+    "bytes": 1356
+  },
+  "ROOT_SELF": {
+    "ru_maxrss": 23560192
+  },
+  "ROOT_raw_frame": {
+    "role": 3,
+    "pid": 8430,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 23560192,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 6.631097458,
+    "entry_monotone_clock": 0.00932625,
+    "last_closed_monotone_clock": 6.640423708,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/ROOT-closed-SELF-v1.bin",
+      "sha256": "cbad325297db6fefcd5361104232e4ca3dabd7aa43e3aeca0a7d92a2b93ffa22",
+      "bytes": 52
+    }
+  },
+  "owner_raw_frame": {
+    "role": 2,
+    "pid": 8431,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 23674880,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 5.355360625,
+    "entry_monotone_clock": 0.007318583,
+    "last_closed_monotone_clock": 5.362679208,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/owner-stdout-v1.bin",
+      "sha256": "b5ba6b5938d05f67527789df46c254744d1d13b09a142065c9977c0439c83adb",
+      "bytes": 52
+    }
+  },
+  "worker_raw_frame": {
+    "role": 1,
+    "pid": 8434,
+    "exit_code": 0,
+    "SELF_ru_maxrss_raw": 241303552,
+    "seconds_after_all_artifact_close_before_fixed_postlude": 4.6217911250000006,
+    "entry_monotone_clock": 0.004802291,
+    "last_closed_monotone_clock": 4.626593416,
+    "remaining_postlude": "Fixed52-byte pack/write then os._exit; separately ROOT-reviewed reserve required",
+    "terminal_frame": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/stdout-v1.bin",
+      "sha256": "f50bfa896f9aaa590e2e49c434e8258e652126eeef241100eb200df190d371fe",
+      "bytes": 52
+    }
+  },
+  "owner_lifetime": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/lifetime-v1.json",
+    "sha256": "2b27279d8328d2672311e028def69cefe3674c26377c29211ef1df5c23e23864",
+    "bytes": 6355
+  },
+  "observer_tables": {
+    "observers": {
+      "pin": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/observers-v1.jsonl",
+        "sha256": "ec6f02fef3cedb59b43a2533d0960d027f46ef047af0a8d7b5fe94593b4901b4",
+        "bytes": 186699
+      },
+      "records": 120
+    },
+    "samples": {
+      "pin": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/samples-v1.jsonl",
+        "sha256": "8e7362dcde09acadc24cc7ea2756641d1ede0d94bb2a949571218ff1d133676e",
+        "bytes": 63416
+      },
+      "records": 120
+    }
+  },
+  "closed_artifacts": {
+    "result": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/result-v1.json",
+      "sha256": "5aa00eb8169a26a1191ab1f0e4437563b49c242517a87cad17f4e360aa101d52",
+      "bytes": 3975277
+    },
+    "compact": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/compact-v1.json",
+      "sha256": "4525837667f529c433a4250b12da049cab40e220aeeecf296b87c8168c993217",
+      "bytes": 14553
+    },
+    "lifetime": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/lifetime-v1.json",
+      "sha256": "2b27279d8328d2672311e028def69cefe3674c26377c29211ef1df5c23e23864",
+      "bytes": 6355
+    },
+    "observers": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/observers-v1.jsonl",
+      "sha256": "ec6f02fef3cedb59b43a2533d0960d027f46ef047af0a8d7b5fe94593b4901b4",
+      "bytes": 186699
+    },
+    "samples": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/samples-v1.jsonl",
+      "sha256": "8e7362dcde09acadc24cc7ea2756641d1ede0d94bb2a949571218ff1d133676e",
+      "bytes": 63416
+    },
+    "stdout": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/stdout-v1.bin",
+      "sha256": "f50bfa896f9aaa590e2e49c434e8258e652126eeef241100eb200df190d371fe",
+      "bytes": 52
+    },
+    "stderr": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "owner_stdout": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/owner-stdout-v1.bin",
+      "sha256": "b5ba6b5938d05f67527789df46c254744d1d13b09a142065c9977c0439c83adb",
+      "bytes": 52
+    },
+    "owner_stderr": {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/owner-stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "source_review": {
+    "path": ".gcts-active/repeated-guard-proof-progress-20261012/ROOT-proof-owned-source-review-v1.json",
+    "sha256": "eba809e7618f7a783b6e18d6faad01bf3e599fba87fd5ba926a9ef43a58bd640",
+    "bytes": 11356
+  },
+  "platform_evidence": {
+    "path": ".gcts-active/repeated-guard-proof-progress-20261012/proof-platform-accounting-evidence-v1.json",
+    "sha256": "3efe707b1f6a43c3aa9ac04955b66853fc86c6b8b5516e1129f48e6433edacc8",
+    "bytes": 4125
+  },
+  "wrapper_manifest": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/source-plan-v1.json",
+    "sha256": "adf2c05703a1dc00b815f9dfcf9d1471d2d125ee378feb34b337032d328424ad",
+    "bytes": 13968
+  },
+  "pending_receipt": {
+    "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/ROOT-pending-receipt-v1.json",
+    "sha256": "a9467799bdbd7cea384f588e4edeff0ec5cd973be138c59ed68209103e28cbb0",
+    "bytes": 10035
+  },
+  "resource_ledger": {
+    "schema": "prospective-distinct-owned-Darwin-ROOT-ledger-v1",
+    "terms_bytes": {
+      "ROOT_SELF_after_metadata": 23560192,
+      "owner_SELF_after_receipt_close": 23674880,
+      "leaf_worker_terminal_wait4": 241303552,
+      "sequential_leaf_observer_terminal_max": 2719744,
+      "reviewed_fixed_postlude_reserve": 33554432
+    },
+    "complete_distinct_role_envelope_bytes": 324812800,
+    "maximum_peak_bytes": 536870912,
+    "owner_terminal_descendant_inclusive_peak_bytes": 241303552,
+    "owner_terminal_peak_is_not_an_additional_summand": true,
+    "full_owner_seconds": 5.377278083,
+    "ROOT_closed_metadata_seconds": 6.631097458,
+    "full_tool_boundary_seconds": 14.816,
+    "maximum_whole_seconds": 180,
+    "resource_accepted": true,
+    "disposition": "accepted_known_topology_envelope",
+    "execution_provenance": {
+      "terminal": true,
+      "exit_code": 0,
+      "cancelled": false,
+      "emergency_group_kill": false,
+      "containment_latched": false,
+      "complete_known_topology": true,
+      "full_tool_boundary_seconds": 14.816,
+      "trusted_terminal": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/actual-tool-terminal-v1.json",
+        "sha256": "7b2bc5b270315e64b3b083e9f719da7dd25d612f074e778336a5480b610abfd6",
+        "bytes": 1356
+      },
+      "prospective_contract": {
+        "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/prospective-tool-contract-v1.json",
+        "sha256": "74637d807bc4a87d326c6f814bc99df8d1f5109046065d4c2b491724f54e411b",
+        "bytes": 2380
+      },
+      "external_wait4_claim": false
+    },
+    "all_five_qualification": false,
+    "OS_hard_cap_claim": false,
+    "whole_host_cap_claim": false,
+    "historical_donor_two_guards_UNKNOWN_preserved": true,
+    "scope": "Prospective known pinned topology and individually saved scopes only; no mathematical/search/RL acceptance."
+  },
+  "target_proof_accepted": false,
+  "fully_qualified_proof_accepted": false,
+  "trace_accepted": false,
+  "executed_UNKNOWN_preserved": [
+    "donor-two-guards",
+    "donor-two-equalities",
+    "donor-repeated-equality"
+  ],
+  "post_terminal_finalizer_seconds_before_disposition_write": 0.668645583,
+  "post_terminal_finalizer_SELF_before_write": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 77,
+    "ru_maxrss": 23592960,
+    "ru_minflt": 2778,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 207,
+    "ru_nsignals": 0,
+    "ru_nswap": 0,
+    "ru_nvcsw": 8,
+    "ru_oublock": 0,
+    "ru_stime": 0.179995,
+    "ru_utime": 0.5291089999999999
+  },
+  "finalizer_external_terminal_interval_required_for_paired_totals": true,
+  "required_future_finalizer_terminal_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/finalizer-actual-tool-terminal-v1.json",
+  "finalizer_terminal_self_certified": false,
+  "scope": "One cold proof producer or independent replay phase, conditional known topology and unchanged reserve. Post-terminal finalizer completion is additional externally observed work; no proof, RL or end-to-end speedup acceptance."
+}

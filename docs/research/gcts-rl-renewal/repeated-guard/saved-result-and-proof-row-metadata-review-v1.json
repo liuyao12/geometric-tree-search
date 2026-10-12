@@ -1,0 +1,593 @@
+{
+  "schema": "independent-repeated-guard-saved-results-and-proof-row-metadata-review-v1",
+  "status": "PASSED_BOUNDED_SAVED_BINDING_AND_DISPLAY_ROW_RECONCILIATION",
+  "input_pins": [
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/reader-data.json",
+      "sha256": "88a06bd99b13a8bee03821b052bcfcf93d88e2f9211eaf12e336462498bf17f0",
+      "bytes": 305278
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/point-certificate-v1.json",
+      "sha256": "acda2e222a55df5fd58d2bf900e5b9efa50d0d88abb44cd746592438fbd90fcc",
+      "bytes": 696169
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/symbolic-certificate-v1.json",
+      "sha256": "e09adfd5e030c225729375101de074b4daaed631642a978a1f857bad548bd120",
+      "bytes": 132277
+    },
+    {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/initial-display-reader-data-v1.json",
+      "sha256": "e1d2389b88a667765ae3053321964e4638948c376543a79d2f7a5930c798b700",
+      "bytes": 305270
+    },
+    {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/display-LaTex-correction-v1.json",
+      "sha256": "53f99d99e5d0c7be5c15d25297c2f352bc55438a6d0fd4848c20e9aec295b842",
+      "bytes": 356
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811
+    },
+    {
+      "path": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+      "sha256": "f2f8c25b21dfee4966bdcfd6fe93d0dcaa4c4caf194a3a83462474cf9db5f24b",
+      "bytes": 25906
+    },
+    {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/base-ROOT-final-decision-v1.json",
+      "sha256": "cb73e335fe6ef978db588643b97c0fddc80376600fff3e8635f8909bf86a0eac",
+      "bytes": 2411
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-ROOT-final-decision-v1.json",
+      "sha256": "cb73e335fe6ef978db588643b97c0fddc80376600fff3e8635f8909bf86a0eac",
+      "bytes": 2411
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/result-v1.json",
+      "sha256": "5aa00eb8169a26a1191ab1f0e4437563b49c242517a87cad17f4e360aa101d52",
+      "bytes": 3975277
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-resource-disposition-v1.json",
+      "sha256": "31d530213d47e65d844a8cc031c2e3f9a9e6e950f30a7ae54ebef3fd5e3c6f89",
+      "bytes": 11816
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/actual-tool-terminal-v1.json",
+      "sha256": "7b2bc5b270315e64b3b083e9f719da7dd25d612f074e778336a5480b610abfd6",
+      "bytes": 1356
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/finalizer-actual-tool-terminal-v1.json",
+      "sha256": "15e4b8d081f54b408b620124ea0d9e0e80a0077d864aeeefbabb9dbd8ea5141f",
+      "bytes": 2346
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/owned-plan-v1.json",
+      "sha256": "f9187a353d6534c47c83881d0c70fa0b54e35936dea8c395e078edd676ec35b4",
+      "bytes": 697255
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/producer/phase-activation-v1.json",
+      "sha256": "83bd96b95e23a19c9320917c5913771eef93da39666162fd72e1eca364d8ec6e",
+      "bytes": 10609
+    },
+    {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/ROOT-proof-owned-source-review-v1.json",
+      "sha256": "eba809e7618f7a783b6e18d6faad01bf3e599fba87fd5ba926a9ef43a58bd640",
+      "bytes": 11356
+    },
+    {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/proof-platform-accounting-evidence-v1.json",
+      "sha256": "3efe707b1f6a43c3aa9ac04955b66853fc86c6b8b5516e1129f48e6433edacc8",
+      "bytes": 4125
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/source-plan-v1.json",
+      "sha256": "adf2c05703a1dc00b815f9dfcf9d1471d2d125ee378feb34b337032d328424ad",
+      "bytes": 13968
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/ROOT-pending-receipt-v1.json",
+      "sha256": "a9467799bdbd7cea384f588e4edeff0ec5cd973be138c59ed68209103e28cbb0",
+      "bytes": 10035
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/compact-v1.json",
+      "sha256": "4525837667f529c433a4250b12da049cab40e220aeeecf296b87c8168c993217",
+      "bytes": 14553
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/lifetime-v1.json",
+      "sha256": "2b27279d8328d2672311e028def69cefe3674c26377c29211ef1df5c23e23864",
+      "bytes": 6355
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/observers-v1.jsonl",
+      "sha256": "ec6f02fef3cedb59b43a2533d0960d027f46ef047af0a8d7b5fe94593b4901b4",
+      "bytes": 186699
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/samples-v1.jsonl",
+      "sha256": "8e7362dcde09acadc24cc7ea2756641d1ede0d94bb2a949571218ff1d133676e",
+      "bytes": 63416
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/stdout-v1.bin",
+      "sha256": "f50bfa896f9aaa590e2e49c434e8258e652126eeef241100eb200df190d371fe",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/worker/stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/owner-stdout-v1.bin",
+      "sha256": "b5ba6b5938d05f67527789df46c254744d1d13b09a142065c9977c0439c83adb",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/producer/ROOT/owner-stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-producer-owned-resource-disposition-v1.json",
+      "sha256": "31d530213d47e65d844a8cc031c2e3f9a9e6e950f30a7ae54ebef3fd5e3c6f89",
+      "bytes": 11816
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-producer-actual-tool-terminal-v1.json",
+      "sha256": "7b2bc5b270315e64b3b083e9f719da7dd25d612f074e778336a5480b610abfd6",
+      "bytes": 1356
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-producer-finalizer-actual-tool-terminal-v1.json",
+      "sha256": "15e4b8d081f54b408b620124ea0d9e0e80a0077d864aeeefbabb9dbd8ea5141f",
+      "bytes": 2346
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-producer-result-v1.json.gz",
+      "sha256": "de8c7cad33fa4a4af68b2e6dfcaa8a241bc5cef89dd6d7a23c7b3a3c03b0a191",
+      "bytes": 100574
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/result-v1.json",
+      "sha256": "4c412f38544ba4a69c2f3a62e23c1a2a5334947bdb72aa3a6e7797b142f17127",
+      "bytes": 6313371
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/owned-resource-disposition-v1.json",
+      "sha256": "47c9486885f0944b77fd34e0cf489effa9a469aa88b2b2a84506354a78744dee",
+      "bytes": 11903
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/actual-tool-terminal-v1.json",
+      "sha256": "a5d3919f848079d7dfc615b43921cd777701a3c737c83306006e2c24737353c8",
+      "bytes": 1535
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/finalizer-actual-tool-terminal-v1.json",
+      "sha256": "8485ae725f732833ad97dac78846dcbc30ed6034e2ce514c4f57047e4aba0b5f",
+      "bytes": 2367
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/owned-plan-v1.json",
+      "sha256": "dccc25958b93c540f03b66cde94e8cd6fb8691c105cceae414d12c2351ac286d",
+      "bytes": 717173
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/base/independent/phase-activation-v1.json",
+      "sha256": "f6ba676455cb805e49c7ec0e65b22776cb0eba81849ce83303d133de8b3c7b5a",
+      "bytes": 18838
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/ROOT/ROOT-pending-receipt-v1.json",
+      "sha256": "39e6d97a26e5ed31a58e1938ecaefcc18d6a586001c02ea258ff01957b0c6f61",
+      "bytes": 10119
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/compact-v1.json",
+      "sha256": "8c8f82ccabc404b208ba1b39ce301dbd382f38279b4b7b1ac8865b49da925cae",
+      "bytes": 24634
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/lifetime-v1.json",
+      "sha256": "fabf9836c5ca651fb9162476f89bbc41779d3956eb93313ba6d14c434e8169bf",
+      "bytes": 6397
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/observers-v1.jsonl",
+      "sha256": "afca95721400fb53b23511cff2210c72a9d4c0279a964ad70c89545eec0d50ce",
+      "bytes": 1326789
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/samples-v1.jsonl",
+      "sha256": "7e26ffd3b7c5adacf5bbf6092ff9c9274b4a2609621e551ad755fe44f5d04a63",
+      "bytes": 449242
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/stdout-v1.bin",
+      "sha256": "6435d0e7c12f14ac31c5902b3b20f7f8704d7f2fb147c3e9c0e46d0ba0ff6ab5",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/worker/stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/ROOT/owner-stdout-v1.bin",
+      "sha256": "323674b16a02c2dd502131ee835df28fce50950e1f1c09b0f0255f30135a711f",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/base/independent/ROOT/owner-stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-independent-owned-resource-disposition-v1.json",
+      "sha256": "47c9486885f0944b77fd34e0cf489effa9a469aa88b2b2a84506354a78744dee",
+      "bytes": 11903
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-independent-actual-tool-terminal-v1.json",
+      "sha256": "a5d3919f848079d7dfc615b43921cd777701a3c737c83306006e2c24737353c8",
+      "bytes": 1535
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-independent-finalizer-actual-tool-terminal-v1.json",
+      "sha256": "8485ae725f732833ad97dac78846dcbc30ed6034e2ce514c4f57047e4aba0b5f",
+      "bytes": 2367
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/base-independent-result-v1.json.gz",
+      "sha256": "c449b260767a6468564c511ff9a6efc6569cb1fd28ec2311c70bef3588b53a0f",
+      "bytes": 889723
+    },
+    {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/fixed-whole-family-pool-ROOT-final-decision-v1.json",
+      "sha256": "156eacc550a54c137401b1209c6dfdfae77a4531c269546b7c604bde2646f5d3",
+      "bytes": 3033
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-ROOT-final-decision-v1.json",
+      "sha256": "156eacc550a54c137401b1209c6dfdfae77a4531c269546b7c604bde2646f5d3",
+      "bytes": 3033
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/result-v1.json",
+      "sha256": "3b2c0565dbf9657bb44a544e0aa89da72631163c089f3336aa57afc7a7d3be21",
+      "bytes": 889647
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-resource-disposition-v1.json",
+      "sha256": "d360512513b9d0c1a25b66def1083340db1ccf511c218cfeb1b749b270691b51",
+      "bytes": 12292
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/actual-tool-terminal-v1.json",
+      "sha256": "c886c4331cac76bf8e036174ca0662158dd25ef525890079c12bac6614dca442",
+      "bytes": 1583
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/finalizer-actual-tool-terminal-v1.json",
+      "sha256": "c727bc357b92fb5daaea9b4d57bf69a251d5ad9de8db5219331504b1e69128d9",
+      "bytes": 2479
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/owned-plan-v1.json",
+      "sha256": "7d4d4441eb167bbc923fb037c0b63437c58378e56ef430928bac21e58b50543b",
+      "bytes": 697616
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/producer/phase-activation-v1.json",
+      "sha256": "928cab6b6074ece26012c66bd71a5d673571b323289f45242ad8e81219366b65",
+      "bytes": 10647
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/ROOT/ROOT-pending-receipt-v1.json",
+      "sha256": "f9e0ef1d76a92b255187ef03591b6850df533632b1d29609af4be8617a80817e",
+      "bytes": 10390
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/compact-v1.json",
+      "sha256": "817c1f80ed612a107784b7e51c2a028acd8a1a8ba2955f2f6a6dd6783e7c46fc",
+      "bytes": 14635
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/lifetime-v1.json",
+      "sha256": "ea46046b83f6b0572cc0e445f4d8d321b837f248e8dbe11f4fe83f44e75f862b",
+      "bytes": 6523
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/observers-v1.jsonl",
+      "sha256": "dc1723d84243fb5077042e77984ad68847cd776e8c845cf4238d9a9922fd669c",
+      "bytes": 547810
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/samples-v1.jsonl",
+      "sha256": "788ad715c4cce5eeecc35c26a204d4510d6cde00f86d417199768dfaadcd8c1e",
+      "bytes": 184662
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/stdout-v1.bin",
+      "sha256": "881fdbc0e6dc967a205fde034833342777c072717982cf6a73ce6c9d4286e919",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/worker/stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/ROOT/owner-stdout-v1.bin",
+      "sha256": "a41c79b12cb8a43865e6c0948deb8fb656a38143396897399cfb3b559cbefd4f",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/producer/ROOT/owner-stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-producer-owned-resource-disposition-v1.json",
+      "sha256": "d360512513b9d0c1a25b66def1083340db1ccf511c218cfeb1b749b270691b51",
+      "bytes": 12292
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-producer-actual-tool-terminal-v1.json",
+      "sha256": "c886c4331cac76bf8e036174ca0662158dd25ef525890079c12bac6614dca442",
+      "bytes": 1583
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-producer-finalizer-actual-tool-terminal-v1.json",
+      "sha256": "c727bc357b92fb5daaea9b4d57bf69a251d5ad9de8db5219331504b1e69128d9",
+      "bytes": 2479
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-producer-result-v1.json.gz",
+      "sha256": "ab5efd6cc59fa1b714031df597f3e09f3c0b35b73771b08e57ce92d27d5d7b10",
+      "bytes": 46468
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/result-v1.json",
+      "sha256": "e55eb7956d6278782489491a941688d3e57a8612395ed4407195f386768818ad",
+      "bytes": 5973376
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/owned-resource-disposition-v1.json",
+      "sha256": "4ad4d27c08efb2644c2e325adf2674956c33eaab71f06270f583a3b9362ef1db",
+      "bytes": 12363
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/actual-tool-terminal-v1.json",
+      "sha256": "f577c48aec959932b6432650138cf909e49f1516f01b14b8130ed66ba81b25ec",
+      "bytes": 1592
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/finalizer-actual-tool-terminal-v1.json",
+      "sha256": "d84a8a26756265e5ea0d52aba31035c810f8a4ad101484a97f3b8a9e1f12b909",
+      "bytes": 2513
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/owned-plan-v1.json",
+      "sha256": "3fb3ff88f6f0ef98e960ba652708e2483ae59eda80241999593c351ca3244fb3",
+      "bytes": 718843
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/terminal-gates/donor-repeated-guard/fixed-whole-family-pool/independent/phase-activation-v1.json",
+      "sha256": "a85a02f085c33bab20b065acaa6e737252a0068b5375cadebc627229d7fb8afa",
+      "bytes": 19521
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/ROOT-pending-receipt-v1.json",
+      "sha256": "a0d9b86aab2df13f918bc8fbbdeab429c90f6e2cd93d6e54e963587a18a969b9",
+      "bytes": 10436
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/compact-v1.json",
+      "sha256": "5ae4c84d5164b67121b1aa961e785aa4da7f1779f15ad80b75d53134a2d18caf",
+      "bytes": 25355
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/lifetime-v1.json",
+      "sha256": "dff01472900351b6a8c45552dc86a9be8013ab5ac228f797dbb8f3c52bef2505",
+      "bytes": 6549
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/observers-v1.jsonl",
+      "sha256": "72c08d88c2f8baac5b15139239de41b126bb064d0f1401df727cd460d17b7d34",
+      "bytes": 454381
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/samples-v1.jsonl",
+      "sha256": "6820330e95c1dbc46042c0e76d7d1f80f32af11d346a931e59da772dd79b5ead",
+      "bytes": 152554
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/stdout-v1.bin",
+      "sha256": "4b7a91fe1372f76e0a3ad63e0c1ec95106e956ad5e4e6b977b65a76baec4bf03",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/worker/stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/owner-stdout-v1.bin",
+      "sha256": "48ea8e745c4a2f82966f2c01e3f5cad20c74a63263e7c6385fe0766a383c28d0",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/one-context-proof-owned-source-20261012/outputs/donor-repeated-guard/fixed-whole-family-pool/independent/ROOT/owner-stderr-v1.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-independent-owned-resource-disposition-v1.json",
+      "sha256": "4ad4d27c08efb2644c2e325adf2674956c33eaab71f06270f583a3b9362ef1db",
+      "bytes": 12363
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-independent-actual-tool-terminal-v1.json",
+      "sha256": "f577c48aec959932b6432650138cf909e49f1516f01b14b8130ed66ba81b25ec",
+      "bytes": 1592
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-independent-finalizer-actual-tool-terminal-v1.json",
+      "sha256": "d84a8a26756265e5ea0d52aba31035c810f8a4ad101484a97f3b8a9e1f12b909",
+      "bytes": 2513
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-independent-result-v1.json.gz",
+      "sha256": "45e75b97fb0af941864bab9f9d301aca7aa864010212de314e7c1d463ae038d1",
+      "bytes": 831850
+    }
+  ],
+  "scope": "Saved JSON/AST/command/t/m and raw stream hash comparison only. No proof search, semantic replay/checker, project import/function, processes/PS/native/calibration/browser or publication.",
+  "actual_saved_lane_observations": {
+    "base": {
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "nodes": 99,
+      "events": 1208,
+      "backtracks": 82,
+      "search_seconds": 1.3972193749999997,
+      "changed_first_choices": 0,
+      "ROOT_final_accepted_in_record": false,
+      "phases": {
+        "producer": {
+          "resource_accepted_in_ROOT_record": true,
+          "scoped_estimate_bytes": 324812800,
+          "whole_tool_bound_seconds": 14.816,
+          "additional_finalizer_bound_seconds": 1.724
+        },
+        "independent": {
+          "resource_accepted_in_ROOT_record": true,
+          "scoped_estimate_bytes": 530792448,
+          "whole_tool_bound_seconds": 73.182,
+          "additional_finalizer_bound_seconds": 2.209
+        }
+      }
+    },
+    "fixed-whole-family-pool": {
+      "status": "finite_exact_point_tiling",
+      "attempts": 21,
+      "nodes": 22,
+      "events": 130,
+      "backtracks": 0,
+      "search_seconds": 10.900568834,
+      "changed_first_choices": 10,
+      "ROOT_final_accepted_in_record": true,
+      "phases": {
+        "producer": {
+          "resource_accepted_in_ROOT_record": true,
+          "scoped_estimate_bytes": 297811968,
+          "whole_tool_bound_seconds": 38.394,
+          "additional_finalizer_bound_seconds": 2.069
+        },
+        "independent": {
+          "resource_accepted_in_ROOT_record": true,
+          "scoped_estimate_bytes": 495616000,
+          "whole_tool_bound_seconds": 44.756,
+          "additional_finalizer_bound_seconds": 2.2560000000000002
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "four_owned_phase_and_finalizer_bindings",
+      "result": "pass_saved_metadata",
+      "detail": "All four resource records bind exact result/job/activation/artifacts, all actual tools and all four finalizers have coherent once-only terminal exit0 records. Distinct saved resource terms sum within frozen512MiB. Native/wholehost/hardcap claims remain false. This does not independently replay observer accounting or qualify runtime."
+    },
+    {
+      "name": "public_actual_copies",
+      "result": "pass",
+      "detail": "All four resource/tool/finalizer and both ROOT decision copies equal original JSON; four public gzip result streams decompress to the exact raw producer/auditor bytes."
+    },
+    {
+      "name": "complete_proof_rows",
+      "result": "pass",
+      "rows": 24,
+      "detail": "Every published row index, full command/formula AST, placement ID, recipe license, dependencies, formula code, and complete t/m lists exactly matches original producer point placement and independently saved symbolic local certificate."
+    },
+    {
+      "name": "Gamma_and_target",
+      "result": "pass",
+      "detail": "Original three ordered premises match frozen reference/split and independently saved Gamma/target. Identical guard formulas at indices0/1 retain distinct licenses. Shorthand H expands to the right-associated nine-atom typed incidence guard; English rows follow those symbolic formulas and command references."
+    },
+    {
+      "name": "target_and_filler_rows",
+      "result": "pass",
+      "first_target_row": 15,
+      "boundary_target_row": 23,
+      "repeated_rows": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "detail": "Target occurs at15 and23. Rows16–22 repeat the row9 consequence, reflecting complete24-row boundary tiling; no shortest-proof claim is warranted."
+    },
+    {
+      "name": "cluster_ordering_evidence",
+      "result": "pass_saved_metadata",
+      "changed_order_hashes": 10,
+      "saved_independent_changed_first_choices": 10,
+      "detail": "Ten complete saved order stream hashes differ; saved full independent tape explicitly reconstructs ten changed first choices. This review does not re-enumerate candidate domains. Base hits frozen128-attempt budget; fixed authored pool finds certificate. No RL or general/external-prover speedup follows."
+    },
+    {
+      "name": "LaTex_correction",
+      "result": "pass_exact_derivative_delta",
+      "old_display_sha256": "e1d2389b88a667765ae3053321964e4638948c376543a79d2f7a5930c798b700",
+      "new_display_sha256": "88a06bd99b13a8bee03821b052bcfcf93d88e2f9211eaf12e336462498bf17f0",
+      "changed_rows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "changed_tokens": 8,
+      "detail": "Only eight control-word delimiter insertions in formula_latex rows3–8. Initial display preserved; formula ASTs, English, commands and scientific certificates unchanged. Zero reruns."
+    },
+    {
+      "name": "scope_labels",
+      "result": "pass_data_only",
+      "detail": "Ground I.2 incidence/equality fragment, prior authored inventory and cluster ordering only. All-fivefalse, RNG0, no newRL, nativefalse/compiler correspondenceopen, no full Hilbert geometry/universal Wang/compiler correctness or end-to-end performance acceptance. Final HTML/JS manifest remains a separate pending presentation review."
+    }
+  ],
+  "confirmed_current_saved_result_or_data_blockers": [],
+  "native_tile_compiler_correspondence_gap": "open",
+  "independent_runtime_qualification_issued": false,
+  "independent_semantic_replay_rerun": false,
+  "ROOT_saved_ground_certificate_acceptance_bound": true,
+  "all_five_qualification": false,
+  "new_RL_training": false,
+  "historical_UNKNOWNs_preserved": true,
+  "reviewer_helper_notes": [
+    "A first inspection assumed lanes was a list; saved schema has a dict. Corrected iteration only, no scientific function call.",
+    "A later inspection assumed decoded_certificate.rows was a row list; saved field is the integer24. Corrected to actual local_certificate/point placements."
+  ],
+  "operations": {
+    "project_imports": 0,
+    "project_functions_called": 0,
+    "science_model_search_checker_replay_RNG_training": 0,
+    "process_PS_native_calibration_browser_publication": 0,
+    "stdlib_saved_reads_AST_shape_and_stream_hashes_only": true
+  }
+}
