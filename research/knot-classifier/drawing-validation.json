@@ -1,0 +1,38 @@
+{
+  "version": "readable-knot-movies-v1",
+  "scope": "Presentation only; engine.mjs and the complete search candidate universe are unchanged.",
+  "pointEngineConformance": "Existing tests/test_knot_movie.mjs remain the shared scheduler, incidence and rollback evidence. Existing seam-marking specialization and RL semantics are preserved.",
+  "genericRenderer": {
+    "method": "Four-port crossing expansion; edge subdivision and bounded-face triangulation; barycentric coordinates with a convex fixed outer boundary.",
+    "arithmetic": "Floating point for rendering only. Signed ribbon diagrams and move certificates remain the combinatorial verification authority.",
+    "audit": "No collapsed edges or unintended proper intersections; alternating crossing ports and prescribed crossing signs."
+  },
+  "trefoilRenderer": {
+    "method": "Authored annular braid closure with fixed angular sectors and radii. The presentation is matched to each computed certificate, not used to guide or restrict search.",
+    "verification": "Every pictured move passes an exact labeled face mutation check, every frame matches the certificate canonical diagram, and each drawing passes routing and crossing-sign audits.",
+    "highlighting": "Amber segments are geometric differences; common segment coordinates remain fixed.",
+    "testedLanes": [
+      "baseline",
+      "gcts",
+      "gcts+rl"
+    ],
+    "outsideStability": "More than half the segments remain fixed in each before/after panel of all three movies."
+  },
+  "checks": {
+    "planarDiagrams": 223,
+    "moveReplayChecks": 688,
+    "typeIIIChecks": 18,
+    "trefoilLaneMovies": 3,
+    "mirrorAndCollapsedDrawingRejected": true
+  },
+  "tests": [
+    "tests/test_knot_drawing.mjs",
+    "tests/test_knot_movie.mjs"
+  ],
+  "limitations": [
+    "Discrete before-and-after playback; no continuous geometric isotopy.",
+    "Generic planar drawings can change their exterior routing between steps.",
+    "No collision-free spatial lift or four-dimensional movie certificate."
+  ],
+  "reference": "https://www.maths.tcd.ie/report_series/tcdmath/tcdm0510.pdf"
+}
