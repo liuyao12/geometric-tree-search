@@ -1,0 +1,21 @@
+{
+  "status": "independently_accepted_cluster_assisted_ground_incidence_proof",
+  "trace_accepted": true,
+  "proof_accepted": true,
+  "attempts": 21,
+  "proof_rows": 24,
+  "original_hypotheses": 3,
+  "events": 121,
+  "forced": 3,
+  "branches": 18,
+  "backtracks": 0,
+  "search_seconds": 7.5203545,
+  "full_search_process_seconds": "10.970053208",
+  "full_audit_process_seconds": "8.848758625",
+  "retained_owned_inventory_experiment_seconds": "28.052507041",
+  "new_RL_training": 0,
+  "native_queries": 0,
+  "new_source_lemma_discovery": false,
+  "goal_status": "active",
+  "report_scientific_execution": false
+}

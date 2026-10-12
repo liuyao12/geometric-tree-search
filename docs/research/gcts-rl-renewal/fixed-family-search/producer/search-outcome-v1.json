@@ -1,0 +1,66 @@
+{
+  "status": "completed_bounded_fixed_whole_family_pool_geometry_observation_pending_independent_audit",
+  "observations": [
+    {
+      "id": "fixed-whole-family-pool",
+      "mode": "fixed-whole-family-pool",
+      "status": "finite_exact_point_tiling",
+      "result": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed-whole-family-pool-result-v1.json.gz",
+        "sha256": "32efc494dfc68b037598673b9549009d365ec9198b0acb403fa2076e8e858b1d",
+        "bytes": 112624
+      },
+      "attempts": 21,
+      "seconds": 7.5203545,
+      "events": 121,
+      "serialization_seconds": 0.31821191700000107,
+      "preparation_costs": {
+        "full_point_model_body_pool_decode_and_registration_seconds": 1.22824775,
+        "registration_seconds": 0.9745731249999999,
+        "immutable_descriptor_count": 5,
+        "conditional_source_family_count": 171,
+        "static_gate_pins": {
+          "plan": {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+            "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+            "bytes": 228513
+          },
+          "result": {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+            "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+            "bytes": 7941076
+          },
+          "lifetime": {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+            "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+            "bytes": 2168
+          }
+        },
+        "group_authority_epoch": "f4fa317c172f7aa92642c3c75479090f867a481a1bf94453659a8fb951f313c0",
+        "authored_words_used_as_hints": 0,
+        "new_premise_seeds": 0,
+        "new_RL_training": false,
+        "scope": "All fixed source-body union proposals registered; pending members remain structural obligations, not newly proved premises"
+      },
+      "decoded_certificate": true
+    }
+  ],
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "root_activation": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/root-activation-v1.json",
+    "sha256": "19d636af408c0c9333ca303f00d529c342b2b38eeac269386291fef8e65d3fe4",
+    "bytes": 893
+  },
+  "worker_seconds_before_final_receipt_write": 10.077318583,
+  "scientific_import_seconds": 0.03489858400000004,
+  "target_search_observations": 1,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "new_RL_training": false,
+  "authored_words_used_as_hints": 0,
+  "claim": "Automatic recomposition of checked conditional source bodies and fixed whole-union hints; returned tape and any proof require separate independent acceptance."
+}

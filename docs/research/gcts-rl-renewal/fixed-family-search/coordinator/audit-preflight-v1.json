@@ -1,0 +1,106 @@
+{
+  "status": "passed_ROOT_independent_actual_audit_metadata_preflight",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+    "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+    "bytes": 242837
+  },
+  "unique_bound_paths": 817,
+  "sources": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_audit_v1.py",
+      "sha256": "8874e08f45db1f224ede4e15ec22c130ffae2e6db3bd241effdf8e126e01d234",
+      "bytes": 37320
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_owner_v1.py",
+      "sha256": "84325e925bb9492b98842848271017c197851e548f429840db031e9323391d3e",
+      "bytes": 9070
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_freeze_v1.py",
+      "sha256": "7cbb2d4a859a2187dc84678dda9dff9b9599dc22fcbcfc7d936f30450ecfda49",
+      "bytes": 11068
+    }
+  ],
+  "libraries": [
+    {
+      "role": "independent_point",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    {
+      "role": "independent_families",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212
+    },
+    {
+      "role": "independent_symbolic",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "role": "independent_expansion",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "role": "independent_transactions",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+      "bytes": 9091
+    },
+    {
+      "role": "independent_static_pool",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+      "bytes": 31396
+    },
+    {
+      "role": "independent_pool_transactions",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_trace_oracle_v1.py",
+      "sha256": "ddb8da376d036d075bf39948b3eb55afa36a238a256e30472fa854ccac47d949",
+      "bytes": 8047
+    },
+    {
+      "role": "independent_positive_certificate",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+      "bytes": 9020
+    }
+  ],
+  "source_archive": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-source-v1.zip",
+    "sha256": "16f69ac7404539cef25eecb7caee7c5d560be4e5389f1f5314d2b2e0af423914",
+    "bytes": 65787
+  },
+  "archive_members": [
+    "fixed_pool_trace_audit_v1.py",
+    "fixed_pool_trace_owner_v1.py",
+    "fixed_pool_trace_freeze_v1.py",
+    "source-plan-v1.json",
+    "audit-plan-v1.json"
+  ],
+  "runtime": {
+    "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "platform": "darwin",
+    "binary": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "observer": {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  },
+  "activation_and_outputs_absent": true,
+  "scientific_imports_models_checkers_searches": 0,
+  "metadata_seconds": 0.5283059170000001,
+  "metadata_peak_bytes": 65388544
+}

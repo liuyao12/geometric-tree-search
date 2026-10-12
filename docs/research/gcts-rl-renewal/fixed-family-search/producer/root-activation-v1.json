@@ -1,0 +1,19 @@
+{
+  "status": "root_authorized_bounded_fixed_whole_family_pool_geometry_search",
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "root_source_review": {
+    "path": ".gcts-active/fixed-family-pool-search-progress-20261012/root-source-review-v1.json",
+    "sha256": "388cd0a728ade957a7c041ac3e669c0d1ed7400d1519e6a0d40f31e805edda9f",
+    "bytes": 4228
+  },
+  "independent_source_review": {
+    "path": ".gcts-active/fixed-family-pool-search-arithmetic-source-review-20261012/source-review-v1.json",
+    "sha256": "2f0ccbcebac2e5b9fc0c632a07340b6f50ecde9e079f82d257216302809c1876",
+    "bytes": 8419
+  },
+  "execution_scope": "One fixed whole-family-pool observation only; new RL0/native0; separate actual audit before acceptance"
+}

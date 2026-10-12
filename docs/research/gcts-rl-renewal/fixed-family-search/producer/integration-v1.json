@@ -1,0 +1,68 @@
+{
+  "status": "immutable_source_only_adapter_and_prospective_audit_package",
+  "files": [
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_adapter_v1.py",
+      "sha256": "bfb168dc77436304aa0ee8e51153eff7b4d15b412c068a2445d280bb3701c3c2",
+      "bytes": 11320
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_registration_v1.py",
+      "sha256": "953e1fb0bfdbb7816a87828de661850415a9e52cb6b13c79f6b63e28056f7ad8",
+      "bytes": 7034
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_worker_v1.py",
+      "sha256": "25ec9d7f97247c2155f5c70b3c54b56943dc0612ada3d7373430e3567f047000",
+      "bytes": 6874
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_supervisor_v1.py",
+      "sha256": "d02e54e94f705e75626121baeaee19570172057f9125d8aeb2ab1b1034f23464",
+      "bytes": 7407
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_outer_v1.py",
+      "sha256": "093f87b0742a854a15f2084938d752d99c3d5a2530710767d69edc18ff5fb1f0",
+      "bytes": 3898
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_trace_oracle_v1.py",
+      "sha256": "ddb8da376d036d075bf39948b3eb55afa36a238a256e30472fa854ccac47d949",
+      "bytes": 8047
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_freeze_v1.py",
+      "sha256": "82c7d6f9a4eff43892d2f111a535e8f363d41826f1c4006161da876e606dbbf7",
+      "bytes": 15650
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-function-source-diff-v1.txt",
+      "sha256": "d48798599ad90506e9cc89ebdcb1608a7e7c2b5c9bb76e2ca1209fe31e05a6a2",
+      "bytes": 4916
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/prospective-audit-protocol-v1.json",
+      "sha256": "49ac58ef66814e80792006ea3fa9300814da0d4d516b55c7b89643d8d1efe87a",
+      "bytes": 5643
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+      "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+      "bytes": 183845
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/source-only-v1.zip",
+      "sha256": "de38bdc6c8bbf28625bf1cf57d9b13a5b2fb7cf8b282699e739c7f94d63ec634",
+      "bytes": 69957
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/source-ready-v1.json",
+      "sha256": "c20c3fcd42eba62ab5307273d70ccc4e7a2ce54465fec95a066d64f1dc414745",
+      "bytes": 8830
+    }
+  ],
+  "execution_authorized": false,
+  "searches": 0,
+  "native_queries": 0
+}

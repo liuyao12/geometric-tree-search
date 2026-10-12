@@ -1,0 +1,96 @@
+{
+  "status": "passed_ROOT_full_independent_actual_audit_source_review",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+    "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+    "bytes": 242837
+  },
+  "independent_source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/source-review-v1.json",
+    "sha256": "d3487737d061eb92a154344b866f18b7ae203e44cb70b985c9abbaa6606ddbbd",
+    "bytes": 10436
+  },
+  "root_preflight": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-progress-20261012/audit-preflight-v1.json",
+    "sha256": "7ea3faab1c9e62778bbd3574cff1a7062626802489852e8eb4d68431003595cc",
+    "bytes": 5024
+  },
+  "new_sources_fully_read": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_audit_v1.py",
+      "sha256": "8874e08f45db1f224ede4e15ec22c130ffae2e6db3bd241effdf8e126e01d234",
+      "bytes": 37320
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_owner_v1.py",
+      "sha256": "84325e925bb9492b98842848271017c197851e548f429840db031e9323391d3e",
+      "bytes": 9070
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_freeze_v1.py",
+      "sha256": "7cbb2d4a859a2187dc84678dda9dff9b9599dc22fcbcfc7d936f30450ecfda49",
+      "bytes": 11068
+    }
+  ],
+  "eight_library_coverage": "Prior exact full source reviews of unchanged point/body/symbolic/expansion/static-pool libraries retained; fresh full reading of transaction, whole-hint oracle and positive certificate library",
+  "libraries": [
+    {
+      "role": "independent_point",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    {
+      "role": "independent_families",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212
+    },
+    {
+      "role": "independent_symbolic",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "role": "independent_expansion",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "role": "independent_transactions",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51",
+      "bytes": 9091
+    },
+    {
+      "role": "independent_static_pool",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+      "bytes": 31396
+    },
+    {
+      "role": "independent_pool_transactions",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_trace_oracle_v1.py",
+      "sha256": "ddb8da376d036d075bf39948b3eb55afa36a238a256e30472fa854ccac47d949",
+      "bytes": 8047
+    },
+    {
+      "role": "independent_positive_certificate",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+      "bytes": 9020
+    }
+  ],
+  "actual_only_dispatch_wrapper": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-progress-20261012/audit_dispatch.py",
+    "sha256": "b17e32a770ae734e069042bb4cd3c67b2da4608c482699581659fa2153cc94ee",
+    "bytes": 2266
+  },
+  "prospective_scope": "One independent whole-pool reconstruction,complete121-event audit and24-row originalGamma symboliccertificate with empty flatblocks; individual negative controls scoped; no producergraph/controller/search/decoder acceptance imports",
+  "zero_new_search_or_training_or_native": true,
+  "resource_scope": "Retain original producer estimate caveat; audit own direct-child wait4 observer accounting and fullROOT external process clock; no OS cap claim",
+  "execution_authorized": "One actual verifier dispatch only",
+  "metadata_only_earlier_attempt": "An initial ROOT metadata helper used plan instead of audit_plan for the review schema; KeyError before any receipt,activation or scientific call. Correct key verified here; not an actual verifier failure."
+}

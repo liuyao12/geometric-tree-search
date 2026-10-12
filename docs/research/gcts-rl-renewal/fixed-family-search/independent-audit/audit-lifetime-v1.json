@@ -1,0 +1,45 @@
+{
+  "status": "passed_owned_independent_fixed_family_trace_audit",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+    "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+    "bytes": 242837
+  },
+  "child_pid": 1320,
+  "child_exit": 0,
+  "child_reaped": true,
+  "maximum_whole_seconds": 180,
+  "maximum_peak_bytes": 536870912,
+  "sampled_combined_peak_bytes": 227901440,
+  "kernel_conservative_peak_bytes": 272809984,
+  "metadata_child_peak_bytes": 1409024,
+  "trace_accepted": true,
+  "certificate_accepted": true,
+  "searches_run_by_owner": 0,
+  "native_queries": 0,
+  "training_runs": 0,
+  "activation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/root-activation-v1.json",
+    "sha256": "1322f3c51f9840e873cb14d3386b2c2b7d22d084e1076e87047f7b6739681b60",
+    "bytes": 1095
+  },
+  "whole_target_logical_checks": 1,
+  "owner_seconds_before_final_receipt_write": 8.757536374999999,
+  "stdout": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-result-v1.json",
+    "sha256": "b4690b8fccd4c6eecdd8e5a33181ec66e9b99c182a8780e40ff78423bf83eb1e",
+    "bytes": 9795889
+  },
+  "enforcement": "One owned wait4 child, worker SIGALRM, owned sampled RSS/time and fresh kernel peaks with retrospective rejection. No hard OS cap.",
+  "cost_scope": "Setup, body/model reconstruction, complete tape/proof controls, worker serialization and reaping included. Own final receipt serialization and source authoring excluded; ROOT external process lifetime additional."
+}

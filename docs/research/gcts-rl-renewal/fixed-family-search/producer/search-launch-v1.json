@@ -1,0 +1,14 @@
+{
+  "pid": 95948,
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "scope": "one bounded primitive geometry search with five independently checked immutable whole-union hints",
+  "wall_ceiling_seconds": 175,
+  "host_ceiling_bytes": 536870912,
+  "maximum_geometry_searches": 1,
+  "native_queries": 0,
+  "new_training": false
+}

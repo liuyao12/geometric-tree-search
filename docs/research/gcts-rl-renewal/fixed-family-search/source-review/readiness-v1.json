@@ -1,0 +1,17 @@
+{
+  "status": "immutable_source_only_review_complete",
+  "review": {
+    "path": ".gcts-active/fixed-family-pool-search-arithmetic-source-review-20261012/source-review-v1.json",
+    "sha256": "2f0ccbcebac2e5b9fc0c632a07340b6f50ecde9e079f82d257216302809c1876",
+    "bytes": 8419
+  },
+  "reviewed_plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "strict_aggregate_host_RSS_claim_supported": false,
+  "algorithm_source_bindings_gate_passed": true,
+  "actual_engine_or_activation_calls": 0,
+  "root_sole_actual_owner_and_publisher": true
+}

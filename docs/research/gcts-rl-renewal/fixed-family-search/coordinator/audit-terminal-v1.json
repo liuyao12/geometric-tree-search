@@ -1,0 +1,26 @@
+{
+  "status": "passed_ROOT_owned_independent_fixed_pool_audit_dispatch",
+  "argv": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json"
+  ],
+  "owner_pid": 1319,
+  "owner_exit_code": 0,
+  "owner_process_terminal_reaped": true,
+  "worker_reaped": true,
+  "cleanup_reason": null,
+  "full_audit_process_seconds_including_startup_and_receipt": 8.848758625,
+  "lifetime": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-lifetime-v1.json",
+    "sha256": "5da643b7a7df26139ad99f4747a390bef33c267c68e0de5ab0a75cd6ca58f47c",
+    "bytes": 2317
+  },
+  "trace_accepted": true,
+  "proof_accepted": true,
+  "ROOT_terminal_write_outside_process_clock": true,
+  "new_searches": 0,
+  "new_training": 0,
+  "native_queries": 0
+}

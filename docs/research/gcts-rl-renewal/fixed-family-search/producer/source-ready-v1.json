@@ -1,0 +1,386 @@
+{
+  "status": "source_ready_unexecuted_no_activation",
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "source_archive": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/source-only-v1.zip",
+    "sha256": "de38bdc6c8bbf28625bf1cf57d9b13a5b2fb7cf8b282699e739c7f94d63ec634",
+    "bytes": 69957
+  },
+  "source_count": 7,
+  "input_roles": 22,
+  "preserved_count": 774,
+  "unique_exact_paths": 803,
+  "AST": [
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_adapter_v1.py",
+        "sha256": "bfb168dc77436304aa0ee8e51153eff7b4d15b412c068a2445d280bb3701c3c2",
+        "bytes": 11320
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "copy"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "hashlib"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "json"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "math"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "time"
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_registration_v1.py",
+        "sha256": "953e1fb0bfdbb7816a87828de661850415a9e52cb6b13c79f6b63e28056f7ad8",
+        "bytes": 7034
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "copy"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "json"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "time"
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_worker_v1.py",
+        "sha256": "25ec9d7f97247c2155f5c70b3c54b56943dc0612ada3d7373430e3567f047000",
+        "bytes": 6874
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "hashlib"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "gzip"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "importlib.util"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "json"
+          ]
+        },
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "signal"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "sys"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "time"
+          ]
+        },
+        {
+          "module": "fixed_family_pool_adapter_v1",
+          "names": [
+            "fixed_pool_search"
+          ]
+        },
+        {
+          "module": "fixed_family_pool_registration_v1",
+          "names": [
+            "fixed_pool_registration"
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_supervisor_v1.py",
+        "sha256": "d02e54e94f705e75626121baeaee19570172057f9125d8aeb2ab1b1034f23464",
+        "bytes": 7407
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "hashlib"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "json"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "resource"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "signal"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "subprocess"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "sys"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "time"
+          ]
+        },
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_outer_v1.py",
+        "sha256": "093f87b0742a854a15f2084938d752d99c3d5a2530710767d69edc18ff5fb1f0",
+        "bytes": 3898
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "hashlib"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "json"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "resource"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "subprocess"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "sys"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "time"
+          ]
+        },
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_trace_oracle_v1.py",
+        "sha256": "ddb8da376d036d075bf39948b3eb55afa36a238a256e30472fa854ccac47d949",
+        "bytes": 8047
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "copy"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "hashlib"
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_freeze_v1.py",
+        "sha256": "82c7d6f9a4eff43892d2f111a535e8f363d41826f1c4006161da876e606dbbf7",
+        "bytes": 15650
+      },
+      "ast_parsed": true,
+      "executed": false,
+      "imports": [
+        {
+          "module": null,
+          "names": [
+            "ast"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "difflib"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "hashlib"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "json"
+          ]
+        },
+        {
+          "module": "pathlib",
+          "names": [
+            "Path"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "sys"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "time"
+          ]
+        },
+        {
+          "module": null,
+          "names": [
+            "zipfile"
+          ]
+        }
+      ]
+    }
+  ],
+  "prospective_ROOT_command_argv": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_outer_v1.py"
+  ],
+  "activation_basename": "root-activation-v1.json",
+  "activation_status": "root_authorized_bounded_fixed_whole_family_pool_geometry_search",
+  "search_limits": {
+    "attempts": 128,
+    "seconds": 20,
+    "event_ceiling": 2000
+  },
+  "actual_static_gate": {
+    "plan": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+      "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+      "bytes": 228513
+    },
+    "result": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+      "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+      "bytes": 7941076
+    },
+    "lifetime": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+      "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+      "bytes": 2168
+    }
+  },
+  "actual_target_searches": 0,
+  "actual_trace_audits": 0,
+  "native_queries": 0,
+  "ROOT_separate_source_review_and_dispatch_required": true
+}

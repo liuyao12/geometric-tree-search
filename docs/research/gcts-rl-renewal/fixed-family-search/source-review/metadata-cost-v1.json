@@ -1,0 +1,10 @@
+{
+  "status": "passed_source_hash_AST_ZIP_metadata_checks_only",
+  "seconds_before_cost_receipt_write": 1.273712959,
+  "kernel_helper_peak_bytes": 20447232,
+  "raw_pinned_bytes_hashed": 298268696,
+  "metadata_decoding_scope": "Search/source plans and manifests only; no model, trace, pool descriptor/result, scientific fixture or checker data decoded.",
+  "scientific_import_model_fixture_search_owner_activation_RNG_native_replay_calls": 0,
+  "runtime_executed_for_science": false,
+  "cost_scope": "Raw byte hashes/13 ASTs/source ZIP/metadata serialization; excludes startup, human source review, final cost receipt writing."
+}

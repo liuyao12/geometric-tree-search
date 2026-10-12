@@ -1,0 +1,44 @@
+{
+  "status": "accepted_actual_complete_trace_and_guarded_ground_incidence_certificate",
+  "audit_executed": true,
+  "trace_accepted": true,
+  "proof_accepted": true,
+  "full_audit_process_seconds": 8.848758625,
+  "result": {
+    "path": ".gcts-active/fixed-family-pool-trace-independent-20261012/audit-result-v1.json",
+    "sha256": "b4690b8fccd4c6eecdd8e5a33181ec66e9b99c182a8780e40ff78423bf83eb1e",
+    "bytes": 9795889
+  },
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-pool-trace-independent-20261012/audit-lifetime-v1.json",
+    "sha256": "5da643b7a7df26139ad99f4747a390bef33c267c68e0de5ab0a75cd6ca58f47c",
+    "bytes": 2317
+  },
+  "terminal": {
+    "path": ".gcts-active/fixed-family-pool-search-progress-20261012/audit-terminal-v1.json",
+    "sha256": "a8f956ec18c5ab50cf6f49f661554ccc97bfeda09d0d7a24bf7a24df90b79788",
+    "bytes": 1119
+  },
+  "independent_review_folder": ".gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012",
+  "events": 121,
+  "primitive_rows": 24,
+  "original_hypotheses_retained": 3,
+  "flat_blocks": 0,
+  "actual_payload_controls_rejected": 15,
+  "actual_mutated_certificate_or_symbolic_controls_rejected": 13,
+  "changed_first_choices": 15,
+  "complete_graph_states": 22,
+  "base_binding_checks": 1766822,
+  "proof_hashes": {
+    "point_certificate_sha256": "d4fc32067201f59263c938866aa2a7bd067ee3f7b5e8ad04f18b31d9f5428f37",
+    "request_sha256": "7a2e2bc43c580fd769bf6b0e1ab337cc1236db69c5ecc74ad861e7223bfdf7f0",
+    "local_certificate_sha256": "c56fba9b9ddb7d002f0f04c2e7663526f3fbdbe28180e887c57bedc11ed71032",
+    "row_proof_sha256": "61c9341200cf5f6f7e1e09a3c565d7d947c0c7ae63b68a4898deda7ca02efc85",
+    "problem_sha256": "d9b0ae163c83fe126233d3533a7306fe6c87b367e9e8bb368f5877cc3a15f0fa"
+  },
+  "viewer_all24_placements_exact_independent_match": true,
+  "native_queries": 0,
+  "RL_training": 0,
+  "new_lemma_discovery": false,
+  "human_summary": "The independent run reconstructs all 121 events, all 22 reached complete point graphs and 1,766,822 literal candidate bindings. It verifies the 24-row primitive proof and the original Gamma-retaining flat request with no lemma blocks. All 15 altered event payloads differ from independently reconstructed templates; all 13 mutated complete certificates or symbolic proofs are actually rejected by independent checker calls. Event controls are not full mutated-tape replays. This positive tape has no failed branch or rollback event."
+}

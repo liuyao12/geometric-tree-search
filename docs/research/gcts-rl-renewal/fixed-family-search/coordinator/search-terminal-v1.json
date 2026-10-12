@@ -1,0 +1,22 @@
+{
+  "status": "passed_ROOT_owned_fixed_family_pool_dispatch",
+  "argv": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_outer_v1.py"
+  ],
+  "outer_pid": 95946,
+  "outer_return_code": 0,
+  "owner_process_terminal_reaped": true,
+  "full_owner_process_seconds_including_startup_and_receipt": 10.970053208000001,
+  "cleanup_reason": null,
+  "lifetime": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-lifetime-v1.json",
+    "sha256": "be45e220d4afd83313c6b042be15e3083fb391ec1f76c6cddbe50fd2e7024926",
+    "bytes": 1385
+  },
+  "worker_terminal_reaped_confirmed": true,
+  "ROOT_terminal_write_outside_process_clock": true,
+  "search_acceptance": "pending independent tape audit",
+  "proof_acceptance": "pending independent certificate audit",
+  "resource_scope": "Retained owner peak estimate and time guards; observer RSS is not included in a strict aggregate host upper bound"
+}

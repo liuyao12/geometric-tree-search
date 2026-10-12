@@ -1,0 +1,37 @@
+{
+  "status": "immutable_independent_source_only_positive_trace_auditor_review",
+  "files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/review_metadata_v1.py",
+      "sha256": "94a41141de25f66e3d4d851e50c7df42c6e44c5903b41e2ad11066c38e70e0bd",
+      "bytes": 7001
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/bindings-v1.json",
+      "sha256": "c09d22299a5ebd2215718592593d046968ba2f18d238f0d711ff18d4b6eeb531",
+      "bytes": 430185
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/metadata-cost-v1.json",
+      "sha256": "28639f8a342ca3bdaaad7415ecd7c00056b337c689d5f6abab4a4ac06c17a60f",
+      "bytes": 727
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/source-review-v1.json",
+      "sha256": "d3487737d061eb92a154344b866f18b7ae203e44cb70b985c9abbaa6606ddbbd",
+      "bytes": 10436
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/readiness-v1.json",
+      "sha256": "b288f2779de49bd4f5581d5aa2f171feb3c57916b5465e1e802b39e77cec3dfb",
+      "bytes": 741
+    }
+  ],
+  "audit_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+    "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+    "bytes": 242837
+  },
+  "actual_scientific_execution": false,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

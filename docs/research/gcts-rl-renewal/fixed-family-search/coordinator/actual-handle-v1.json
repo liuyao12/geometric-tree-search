@@ -1,0 +1,17 @@
+{
+  "session_id": 14016,
+  "terminal_chunk": "5f99ef",
+  "exit_code": 0,
+  "outer_process_reaped": true,
+  "worker_reaped": true,
+  "terminal": {
+    "path": ".gcts-active/fixed-family-pool-search-progress-20261012/search-terminal-v1.json",
+    "sha256": "eb3f37b16cf398a7c52859f73ea373f8d045833e79b25d327bb5f8d786f35de8",
+    "bytes": 1055
+  },
+  "actual_search_result": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed-whole-family-pool-result-v1.json.gz",
+    "sha256": "32efc494dfc68b037598673b9549009d365ec9198b0acb403fa2076e8e858b1d",
+    "bytes": 112624
+  }
+}

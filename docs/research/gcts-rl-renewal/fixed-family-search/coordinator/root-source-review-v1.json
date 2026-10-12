@@ -1,0 +1,82 @@
+{
+  "status": "passed_ROOT_full_source_gate_with_scoped_resource_reporting",
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "independent_review": {
+    "path": ".gcts-active/fixed-family-pool-search-arithmetic-source-review-20261012/source-review-v1.json",
+    "sha256": "2f0ccbcebac2e5b9fc0c632a07340b6f50ecde9e079f82d257216302809c1876",
+    "bytes": 8419
+  },
+  "preflight": {
+    "path": ".gcts-active/fixed-family-pool-search-progress-20261012/preflight-v1.json",
+    "sha256": "4d40fcf55582ba16e3257ffe6651bd65d4225261e2a6a4794020d2c0bb1e2e3a",
+    "bytes": 3736
+  },
+  "sources_fully_read": [
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_adapter_v1.py",
+      "sha256": "bfb168dc77436304aa0ee8e51153eff7b4d15b412c068a2445d280bb3701c3c2",
+      "bytes": 11320
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_registration_v1.py",
+      "sha256": "953e1fb0bfdbb7816a87828de661850415a9e52cb6b13c79f6b63e28056f7ad8",
+      "bytes": 7034
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_worker_v1.py",
+      "sha256": "25ec9d7f97247c2155f5c70b3c54b56943dc0612ada3d7373430e3567f047000",
+      "bytes": 6874
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_supervisor_v1.py",
+      "sha256": "d02e54e94f705e75626121baeaee19570172057f9125d8aeb2ab1b1034f23464",
+      "bytes": 7407
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_outer_v1.py",
+      "sha256": "093f87b0742a854a15f2084938d752d99c3d5a2530710767d69edc18ff5fb1f0",
+      "bytes": 3898
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_trace_oracle_v1.py",
+      "sha256": "ddb8da376d036d075bf39948b3eb55afa36a238a256e30472fa854ccac47d949",
+      "bytes": 8047
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_freeze_v1.py",
+      "sha256": "82c7d6f9a4eff43892d2f111a535e8f363d41826f1c4006161da876e606dbbf7",
+      "bytes": 15650
+    }
+  ],
+  "diff_and_protocol_fully_read": true,
+  "unchanged_core_lifecycle_proposal_and_helper_API_review": true,
+  "dispatch_wrapper": {
+    "path": ".gcts-active/fixed-family-pool-search-progress-20261012/dispatch.py",
+    "sha256": "83c89aa86214ef8d1d7fafa645c286a5a9aa974aebbaceb74f1662cb9885571d",
+    "bytes": 2380
+  },
+  "decision": "Execute exactly one unchanged128attempt20second2000event lane; do not assert strict aggregate512MiB host bound",
+  "resource_caveats": [
+    {
+      "id": "observer_RSS_not_strict_aggregate_upper_bound",
+      "severity": "resource accounting gap; ROOT decision needed for stronger claim",
+      "detail": "Inherited supervisor conservative_host_peak_bytes is supervisor_peak + RUSAGE_CHILDREN maximum over worker/ps, not supervisor+worker+observer peak sum. Sample uses worker RSS + supervisor peak, excluding simultaneous ps RSS. Outer adds its own peak. This preserves historical gate semantics but cannot certify a strict512MiB aggregate host upper bound. Do not claim that stronger bound; ROOT may require a separately frozen repair before actual dispatch."
+    },
+    {
+      "id": "worker_launch_not_model_entry",
+      "severity": "reporting advisory",
+      "detail": "actual_geometry_model_execution is derived from child existence in supervisor, so it denotes launched worker, including a worker that fails before scientific loader. Actual model/search entry must come from terminal outcome/trace evidence; do not infer it from this bool alone."
+    },
+    {
+      "id": "prospective_oracle_only",
+      "severity": "scope advisory",
+      "detail": "Future full tape runner is not yet authored or activated. Source oracle/protocol are not actual conformance evidence. A trace-limit prefix cannot be labeled fully audited trace."
+    }
+  ],
+  "scientific_execution_in_this_review": 0,
+  "independent_actual_tape_and_positive_certificate_acceptance_required": true
+}

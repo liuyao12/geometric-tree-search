@@ -1,0 +1,123 @@
+{
+  "status": "passed_source_algorithm_bindings_and_unchanged_guard_review_with_resource_scope_caveat",
+  "scope": "Independent read-only source/metadata review. Not an actual model, fixture, search, runtime resource qualification, complete trace replay, mathematical proof acceptance or ROOT dispatch authorization.",
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "producer_integration": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/integration-v1.json",
+    "sha256": "890f11627fa5e611f923fc72030c4f5be739fb6459e73d52815a1fd99460cd87",
+    "bytes": 2792
+  },
+  "metadata_bindings": {
+    "path": ".gcts-active/fixed-family-pool-search-arithmetic-source-review-20261012/bindings-v1.json",
+    "sha256": "e9eac6d699041fbc13ec91828384ffe3f48d4f97023fc706eca01379d4e73fc8",
+    "bytes": 186850
+  },
+  "metadata_cost": {
+    "path": ".gcts-active/fixed-family-pool-search-arithmetic-source-review-20261012/metadata-cost-v1.json",
+    "sha256": "0fede671d0d128c20a26f2cf279cd15922af5c5db58cc24bac3e7fec18f78374",
+    "bytes": 629
+  },
+  "source_only_helpers": [
+    {
+      "path": ".gcts-active/fixed-family-pool-search-arithmetic-source-review-20261012/review_metadata_v1.py",
+      "sha256": "6398b909a05b4c23ff99ea4d336f2f2501bb53e65c11198d223c9860dd6f9af2",
+      "bytes": 7071
+    }
+  ],
+  "source_count": 7,
+  "verified_plan_pins": 803,
+  "source_zip_members": 10,
+  "Python39_AST_sources": 13,
+  "DFS_AST_unchanged_nested_functions": [
+    "event",
+    "rollback",
+    "step",
+    "walk"
+  ],
+  "findings": [
+    {
+      "topic": "Complete primitive language and authority",
+      "disposition": "passed source preservation",
+      "evidence": "Exact original model epoch; frozen_model retains229 recipes/217 formulas/24 generation-zero required rows/23 exterior sentinels/three original hypothesis seeds. Body factory receives exact original56-input plan; all171 conditional source bodies checked. No renamed/added global hypothesis, formula-code shortcut or target proof word supplies proposals."
+    },
+    {
+      "topic": "Static registration",
+      "disposition": "passed source bindings",
+      "evidence": "All five groups bound to exact audited plan/result/lifetime, full interface projection and root anchors; source/mapped/projection/descriptor hashes, full member identities, occurrences/shared counts, priorities and group epoch reconstructed. No partial pool: rejected descriptor or count mismatch aborts."
+    },
+    {
+      "topic": "Fixed group semantics",
+      "disposition": "passed source invariants",
+      "evidence": "GroupAuthority wraps unchanged BodyAuthority. Each single/pair embedding carries source-ordered strict-prior read ports and exact shared keys. Members/union must satisfy original point constraints; receptor aliases constrain marks only and install no premises. Root-fixed immutable descriptor tuple; no dynamic insertion or atomic macro moves."
+    },
+    {
+      "topic": "Scheduler and fallback",
+      "disposition": "passed source preservation",
+      "evidence": "Unchanged PointGraph checks global degree-zero then global forced singleton then earliest generation/count/row tie. Executor.step rechecks chosen point/forced key. Controller.ordered resyncs whole hints and emits ready exact keys followed by every remaining base key; adapter independently asserts count/set equality and forced order."
+    },
+    {
+      "topic": "Forced interruption and whole retirement",
+      "disposition": "passed source preservation",
+      "evidence": "Forced decisions have no hint preference; every primitive step is followed by whole resync. One illegal pending member, capacity overflow, stale full authority or remote mark conflict retires the whole group, absorbing until paired parent rollback. Waiting outputs are structural obligations, never asserted facts/reward."
+    },
+    {
+      "topic": "DFS/UNKNOWN/rollback",
+      "disposition": "passed source preservation",
+      "evidence": "Nested event, rollback, step and walk ASTs byte-semantically identical to old automatic DFS. Paired checkpoints contain graph trail, full hint trail/revision, immutable descriptor-ID digest and full semantic SHA. Only recursively exhausted finite child permits parent-local exclusion. UNKNOWN propagates without exclusion; trace-limit becomes unknown and terminal full root rollback is separately verified."
+    },
+    {
+      "topic": "Positive certificate and prospective independent oracle",
+      "disposition": "source ready only",
+      "evidence": "Solved complete state retained, point certificate and old exact decoder called only after actual complete. Independent FixedPoolTransactions reconstructs exact sharing/aggregate legality/priority ordering/waiting/retirement/revision/rollback; full actual tape adapter/owned audit still future. Protocol explicitly demands all nodes/events/full census, positive primitive-row/source/flat request oracle and prohibits producer Controller/decoder as acceptance."
+    },
+    {
+      "topic": "Runtime and time caps",
+      "disposition": "passed preserved source guards",
+      "evidence": "Pinned CLT Python alias resolves to bdea5901.../102352B, with worker alias/platform/binary checks before model load. Exact128attempt/20second/2000event lane; unchanged170worker alarm/175supervisor/180outer guards and512MiB threshold. Preparation, pool decode/registration, source checks, order, trace, decoder, serialization and cleanup are charged; finite-operation search-clock overshoot explicitly reported."
+    },
+    {
+      "topic": "Owned terminal/reaping/failure scope",
+      "disposition": "passed preserved source paths, qualified",
+      "evidence": "Supervisor polls/waits the one task-owned worker and kills/waits it on watchdog failure; ps observers are subprocess.run-owned timeout commands. Outer waits/reaps the same supervisor PID. Outer unresponsive-supervisor cleanup cannot confirm worker terminal and is explicitly unknown. Exclusive seven-output guards prevent retry/overwrite; worker stdout/stderr retained. Preflight or malformed outer supervision JSON may fail before an outer receipt; ROOT external same-handle terminal remains necessary."
+    }
+  ],
+  "resource_scope_caveats": [
+    {
+      "id": "observer_RSS_not_strict_aggregate_upper_bound",
+      "severity": "resource accounting gap; ROOT decision needed for stronger claim",
+      "detail": "Inherited supervisor conservative_host_peak_bytes is supervisor_peak + RUSAGE_CHILDREN maximum over worker/ps, not supervisor+worker+observer peak sum. Sample uses worker RSS + supervisor peak, excluding simultaneous ps RSS. Outer adds its own peak. This preserves historical gate semantics but cannot certify a strict512MiB aggregate host upper bound. Do not claim that stronger bound; ROOT may require a separately frozen repair before actual dispatch."
+    },
+    {
+      "id": "worker_launch_not_model_entry",
+      "severity": "reporting advisory",
+      "detail": "actual_geometry_model_execution is derived from child existence in supervisor, so it denotes launched worker, including a worker that fails before scientific loader. Actual model/search entry must come from terminal outcome/trace evidence; do not infer it from this bool alone."
+    },
+    {
+      "id": "prospective_oracle_only",
+      "severity": "scope advisory",
+      "detail": "Future full tape runner is not yet authored or activated. Source oracle/protocol are not actual conformance evidence. A trace-limit prefix cannot be labeled fully audited trace."
+    }
+  ],
+  "algorithm_or_authority_blockers": [],
+  "execution_decision_owner": "ROOT; this disposition does not create activation or authorize a run",
+  "actual_calls": {
+    "scientific_imports": 0,
+    "models_loaded": 0,
+    "pool_results_decoded": 0,
+    "fixtures": 0,
+    "searches": 0,
+    "owners": 0,
+    "activations": 0,
+    "RNG": 0,
+    "native": 0,
+    "replays": 0,
+    "publication": 0
+  },
+  "raw_evidence_scope": "All803 files and10 source-ZIP members hashed as raw bytes; no gzip/model/trace/pool-result inflation. Source plans/manifests only decoded. Existing static gate is pinned, not re-audited.",
+  "authoring_and_human_review_seconds": null,
+  "no_frozen_source_or_result_or_report_or_PUB_mutation": true
+}

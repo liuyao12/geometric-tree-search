@@ -1,0 +1,20 @@
+{
+  "schema": "ROOT-independent-fixed-family-trace-activation-v1",
+  "authorized": true,
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+    "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+    "bytes": 242837
+  },
+  "root_source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-search-progress-20261012/audit-root-source-review-v1.json",
+    "sha256": "94e3b9a3d733459edcb184f06ad32be1f4459daabf084a191f96ee7bf461603b",
+    "bytes": 5735
+  },
+  "independent_source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/source-review-v1.json",
+    "sha256": "d3487737d061eb92a154344b866f18b7ae203e44cb70b985c9abbaa6606ddbbd",
+    "bytes": 10436
+  },
+  "scope": "One bounded independent verifier; no search/training/native; resultacceptance only after terminal fullownerreceipt"
+}

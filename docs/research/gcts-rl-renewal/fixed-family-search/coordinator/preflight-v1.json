@@ -1,0 +1,95 @@
+{
+  "status": "passed_ROOT_metadata_preflight",
+  "plan": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+    "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+    "bytes": 183845
+  },
+  "unique_exact_paths": 803,
+  "pin_occurrences": 803,
+  "sources_AST_parsed": [
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_adapter_v1.py",
+      "sha256": "bfb168dc77436304aa0ee8e51153eff7b4d15b412c068a2445d280bb3701c3c2",
+      "bytes": 11320
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_registration_v1.py",
+      "sha256": "953e1fb0bfdbb7816a87828de661850415a9e52cb6b13c79f6b63e28056f7ad8",
+      "bytes": 7034
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_worker_v1.py",
+      "sha256": "25ec9d7f97247c2155f5c70b3c54b56943dc0612ada3d7373430e3567f047000",
+      "bytes": 6874
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_supervisor_v1.py",
+      "sha256": "d02e54e94f705e75626121baeaee19570172057f9125d8aeb2ab1b1034f23464",
+      "bytes": 7407
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_outer_v1.py",
+      "sha256": "093f87b0742a854a15f2084938d752d99c3d5a2530710767d69edc18ff5fb1f0",
+      "bytes": 3898
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_trace_oracle_v1.py",
+      "sha256": "ddb8da376d036d075bf39948b3eb55afa36a238a256e30472fa854ccac47d949",
+      "bytes": 8047
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed_family_pool_freeze_v1.py",
+      "sha256": "82c7d6f9a4eff43892d2f111a535e8f363d41826f1c4006161da876e606dbbf7",
+      "bytes": 15650
+    }
+  ],
+  "archive": {
+    "path": ".gcts-active/fixed-family-pool-search-source-20261012/source-only-v1.zip",
+    "sha256": "de38bdc6c8bbf28625bf1cf57d9b13a5b2fb7cf8b282699e739c7f94d63ec634",
+    "bytes": 69957
+  },
+  "archive_members": [
+    "fixed_family_pool_adapter_v1.py",
+    "fixed_family_pool_registration_v1.py",
+    "fixed_family_pool_worker_v1.py",
+    "fixed_family_pool_supervisor_v1.py",
+    "fixed_family_pool_outer_v1.py",
+    "fixed_family_pool_trace_oracle_v1.py",
+    "fixed_family_pool_freeze_v1.py",
+    "search-function-source-diff-v1.txt",
+    "prospective-audit-protocol-v1.json",
+    "search-plan-v1.json"
+  ],
+  "runtime": {
+    "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "platform": "darwin",
+    "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "binary": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    }
+  },
+  "all_outputs_and_activation_absent": [
+    "fixed-whole-family-pool-result-v1.json.gz",
+    "search-outcome-v1.json",
+    "search-launch-v1.json",
+    "search-supervision-v1.json",
+    "search-lifetime-v1.json",
+    "search-stdout-v1.txt",
+    "search-stderr-v1.txt",
+    "root-activation-v1.json"
+  ],
+  "public_baseline_commit": "9490fab924508700d8fbb7133227b956fa6db818",
+  "main_baseline": {
+    "path": ".gcts-active/fixed-family-pool-search-progress-20261012/baseline-index.html",
+    "sha256": "84ad625fcf7be93a26babc4c83c546d7960d2d5f2230b916d25190a6a324d924",
+    "bytes": 351537
+  },
+  "scientific_modules_imported": 0,
+  "scientific_functions_called": 0,
+  "searches": 0,
+  "metadata_seconds": 0.540004583,
+  "metadata_peak_bytes": 61849600
+}

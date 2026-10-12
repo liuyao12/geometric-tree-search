@@ -1,0 +1,21 @@
+{
+  "status": "frozen_saved_evidence_comparison_metadata_only",
+  "files": [
+    {
+      "path": ".gcts-active/fixed-family-pool-comparison-20261012/comparison-v1.json",
+      "sha256": "33e3449a5add4b09f651bf548f1521eec5b18061d6c91ac19c222ebcc112f375",
+      "bytes": 51940
+    }
+  ],
+  "observations": [
+    "base-complete-primitives",
+    "fixed-forward-novelty",
+    "fixed-forward-receptor",
+    "fixed-whole-family-pool"
+  ],
+  "input_count": 44,
+  "actual_searches_by_this_task": 0,
+  "actual_scientific_checks_by_this_task": 0,
+  "new_positive_certificate_acceptance": "pending separately owned independent tape/logical audit",
+  "publication_owner": "ROOT"
+}

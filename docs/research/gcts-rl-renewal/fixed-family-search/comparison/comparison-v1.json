@@ -1,0 +1,1070 @@
+{
+  "schema": "exact_saved_finite_geometry_control_comparison_v1",
+  "status": "completed_saved_evidence_metadata_extraction_with_candidate_positive_pending_independent_acceptance",
+  "task_scope": "Standard-library hash/JSON/gzip extraction only. No scientific module imports, model or registry construction, matching, fixtures, engine/search execution, activation, proof checking, native calls or training by this task. Existing audit conclusions are quoted with their exact pins.",
+  "observations": [
+    {
+      "id": "base-complete-primitives",
+      "phase_id": "historical-base-and-novelty",
+      "raw_result": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/base-complete-primitives-result-v1.json.gz",
+        "sha256": "bc12cc76ebbc204ab6d322b1679826ec7cf322726b902c7d9a4113ee6312addf",
+        "bytes": 373027
+      },
+      "producer_terminal_status": "unknown_search_budget",
+      "metadata_interpretation": "budget UNKNOWN with accepted historical trace, no proof certificate",
+      "mode": "base",
+      "original_limits": {
+        "attempts": 128,
+        "seconds": 20,
+        "events": 2000
+      },
+      "attempts": 128,
+      "node_count": 107,
+      "event_count": 1280,
+      "root_restored_reported": true,
+      "point_certificate_reported_present": false,
+      "decoded_certificate_reported_present": false,
+      "existing_acceptance": {
+        "trace_accepted": true,
+        "certificate_accepted": false,
+        "status": "unknown_search_budget",
+        "existing_audit_result": {
+          "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+          "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+          "bytes": 5218918
+        },
+        "proved_child_exclusions": 90
+      },
+      "initial_graph_projection_sha256": "b7a54c45edd7503467cdaee53a0168fd3d5e195da06786a33f32d948a344cb93",
+      "graph_projection_hash_encoding": "JSON of saved initial_state.projection.graph, sort_keys=True, separators=(comma, colon), ensure_ascii=False; UTF-8 SHA-256. This is a metadata projection hash, not independent graph reconstruction.",
+      "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+      "body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "original_conditional_body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "validated_source_body_count_reported": 171,
+      "active_cluster_descriptors": 0,
+      "graph_metric_totals_reported": {
+        "domain_refreshes": 1755,
+        "placements": 131,
+        "forced": 22,
+        "branches": 106,
+        "backtracks": 90,
+        "attempts": 128,
+        "lazy_id_constructions": 0,
+        "proposal_validations": 0,
+        "proposal_rejections": 0
+      },
+      "search_metric_deltas": {
+        "placements": 128,
+        "forced": 22,
+        "branches": 106,
+        "backtracks": 90,
+        "attempts": 128
+      },
+      "metric_entry_baseline": {
+        "placements": 3,
+        "forced": 0,
+        "branches": 0,
+        "backtracks": 0,
+        "attempts": 0
+      },
+      "metric_entry_baseline_provenance": "Literal pinned PointGraph constructor initializes forced/branches/backtracks/attempts to zero and applies exactly three generation-zero assumption seeds; placements therefore include three setup operations.",
+      "metric_scope": "Cumulative executed placement operations include later undone branches; these counts are not net retained placements or a shortest-proof bound.",
+      "search_elapsed_seconds_reported": 1.4452754589999999,
+      "controller_and_ordering_setup_seconds": 0.012286416999999994,
+      "saved_preparation_costs": {
+        "cold_model_seconds": 0.11352516700000001,
+        "full_family_registry_seconds": 0.06502658299999997
+      },
+      "result_serialization_seconds": 2.005260709,
+      "ordering_metrics_reported": {
+        "complete_order_calls": 128,
+        "complete_order_keys": 2781,
+        "order_seconds": 0.004966708000001097,
+        "order_stream_hash_seconds": 0.00943241500000025,
+        "trace_seconds": 0.4599868119999975,
+        "primitive_step_seconds": 0.2644502490000002,
+        "rollback_seconds": 0.6080312399999996,
+        "exclusion_seconds": 0.006805884000000595
+      },
+      "lifecycle_metrics_reported": {
+        "whole_scans": 0,
+        "members_checked": 0,
+        "mark_checks": 0,
+        "status_updates": 0,
+        "whole_retirements": 0,
+        "resynchronizations": 347,
+        "validation_seconds": 0.001976954999998559,
+        "ordering_seconds": 0.0,
+        "rollback_seconds": 0.6078657010000005,
+        "ordering_calls": 0,
+        "root_rejections": 0
+      },
+      "fixed_forward_metrics_reported": null,
+      "clock_scope": "Cold model/body setup and controller/order construction are separate from the saved search elapsed clock. Nested ordering/lifecycle/primitive/trace/rollback clocks overlap and must not be summed. Owner clocks and independent gates are additional, and source authoring is unmeasured.",
+      "native_queries_reported": 0,
+      "authored_words_used_as_hints_reported": 0,
+      "new_RL_training_reported": false
+    },
+    {
+      "id": "fixed-forward-novelty",
+      "phase_id": "historical-base-and-novelty",
+      "raw_result": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/fixed-forward-novelty-result-v1.json.gz",
+        "sha256": "88cb47e9a8694419b475add355fdf999ae82addd293d202f32f3f8edf84ded59",
+        "bytes": 376481
+      },
+      "producer_terminal_status": "unknown_search_budget",
+      "metadata_interpretation": "budget UNKNOWN with accepted historical trace, no proof certificate",
+      "mode": "fixed-forward",
+      "original_limits": {
+        "attempts": 128,
+        "seconds": 20,
+        "events": 2000
+      },
+      "attempts": 128,
+      "node_count": 95,
+      "event_count": 1168,
+      "root_restored_reported": true,
+      "point_certificate_reported_present": false,
+      "decoded_certificate_reported_present": false,
+      "existing_acceptance": {
+        "trace_accepted": true,
+        "certificate_accepted": false,
+        "status": "unknown_search_budget",
+        "existing_audit_result": {
+          "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+          "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+          "bytes": 5218918
+        },
+        "proved_child_exclusions": 77
+      },
+      "initial_graph_projection_sha256": "b7a54c45edd7503467cdaee53a0168fd3d5e195da06786a33f32d948a344cb93",
+      "graph_projection_hash_encoding": "JSON of saved initial_state.projection.graph, sort_keys=True, separators=(comma, colon), ensure_ascii=False; UTF-8 SHA-256. This is a metadata projection hash, not independent graph reconstruction.",
+      "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+      "body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "original_conditional_body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "validated_source_body_count_reported": 171,
+      "active_cluster_descriptors": 0,
+      "graph_metric_totals_reported": {
+        "domain_refreshes": 1677,
+        "placements": 131,
+        "forced": 34,
+        "branches": 94,
+        "backtracks": 77,
+        "attempts": 128,
+        "lazy_id_constructions": 0,
+        "proposal_validations": 0,
+        "proposal_rejections": 0
+      },
+      "search_metric_deltas": {
+        "placements": 128,
+        "forced": 34,
+        "branches": 94,
+        "backtracks": 77,
+        "attempts": 128
+      },
+      "metric_entry_baseline": {
+        "placements": 3,
+        "forced": 0,
+        "branches": 0,
+        "backtracks": 0,
+        "attempts": 0
+      },
+      "metric_entry_baseline_provenance": "Literal pinned PointGraph constructor initializes forced/branches/backtracks/attempts to zero and applies exactly three generation-zero assumption seeds; placements therefore include three setup operations.",
+      "metric_scope": "Cumulative executed placement operations include later undone branches; these counts are not net retained placements or a shortest-proof bound.",
+      "search_elapsed_seconds_reported": 1.296331542,
+      "controller_and_ordering_setup_seconds": 0.02284170899999971,
+      "saved_preparation_costs": {
+        "cold_model_seconds": 0.1714092079999996,
+        "full_family_registry_seconds": 0.06252408400000053
+      },
+      "result_serialization_seconds": 1.9670027499999998,
+      "ordering_metrics_reported": {
+        "complete_order_calls": 128,
+        "complete_order_keys": 2486,
+        "order_seconds": 0.008618712000005857,
+        "order_stream_hash_seconds": 0.00908811999999859,
+        "trace_seconds": 0.4545178419999907,
+        "primitive_step_seconds": 0.24095762600000015,
+        "rollback_seconds": 0.4877010800000061,
+        "exclusion_seconds": 0.005936169999997354
+      },
+      "lifecycle_metrics_reported": {
+        "whole_scans": 0,
+        "members_checked": 0,
+        "mark_checks": 0,
+        "status_updates": 0,
+        "whole_retirements": 0,
+        "resynchronizations": 334,
+        "validation_seconds": 0.0017724010000117474,
+        "ordering_seconds": 0.0,
+        "rollback_seconds": 0.48757241700000087,
+        "ordering_calls": 0,
+        "root_rejections": 0
+      },
+      "fixed_forward_metrics_reported": {
+        "feature_preparation_seconds": 0.006999125000000106,
+        "feature_seconds": 0.0021460760000060475,
+        "sort_seconds": 0.0004907489999963488,
+        "permutation_check_seconds": 0.0009991209999977713,
+        "calls": 94,
+        "complete_keys_ranked": 2452
+      },
+      "clock_scope": "Cold model/body setup and controller/order construction are separate from the saved search elapsed clock. Nested ordering/lifecycle/primitive/trace/rollback clocks overlap and must not be summed. Owner clocks and independent gates are additional, and source authoring is unmeasured.",
+      "native_queries_reported": 0,
+      "authored_words_used_as_hints_reported": 0,
+      "new_RL_training_reported": false
+    },
+    {
+      "id": "fixed-forward-receptor",
+      "phase_id": "historical-forward-and-receptor",
+      "raw_result": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/fixed-forward-receptor-result-v1.json.gz",
+        "sha256": "9403c6375807e1348eca16859cd24904dd973f1b7111cd0cab2df79ed38eb8c3",
+        "bytes": 551531
+      },
+      "producer_terminal_status": "unknown_search_budget",
+      "metadata_interpretation": "budget UNKNOWN with accepted historical trace, no proof certificate",
+      "mode": "fixed-forward-receptor",
+      "original_limits": {
+        "attempts": 128,
+        "seconds": 20,
+        "events": 2000
+      },
+      "attempts": 128,
+      "node_count": 107,
+      "event_count": 1280,
+      "root_restored_reported": true,
+      "point_certificate_reported_present": false,
+      "decoded_certificate_reported_present": false,
+      "existing_acceptance": {
+        "trace_accepted": true,
+        "certificate_accepted": false,
+        "status": "unknown_search_budget",
+        "existing_audit_result": {
+          "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+          "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+          "bytes": 7156588
+        },
+        "proved_child_exclusions": 90
+      },
+      "initial_graph_projection_sha256": "b7a54c45edd7503467cdaee53a0168fd3d5e195da06786a33f32d948a344cb93",
+      "graph_projection_hash_encoding": "JSON of saved initial_state.projection.graph, sort_keys=True, separators=(comma, colon), ensure_ascii=False; UTF-8 SHA-256. This is a metadata projection hash, not independent graph reconstruction.",
+      "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+      "body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "original_conditional_body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "validated_source_body_count_reported": 171,
+      "active_cluster_descriptors": 0,
+      "graph_metric_totals_reported": {
+        "domain_refreshes": 1755,
+        "placements": 131,
+        "forced": 22,
+        "branches": 106,
+        "backtracks": 90,
+        "attempts": 128,
+        "lazy_id_constructions": 0,
+        "proposal_validations": 0,
+        "proposal_rejections": 0
+      },
+      "search_metric_deltas": {
+        "placements": 128,
+        "forced": 22,
+        "branches": 106,
+        "backtracks": 90,
+        "attempts": 128
+      },
+      "metric_entry_baseline": {
+        "placements": 3,
+        "forced": 0,
+        "branches": 0,
+        "backtracks": 0,
+        "attempts": 0
+      },
+      "metric_entry_baseline_provenance": "Literal pinned PointGraph constructor initializes forced/branches/backtracks/attempts to zero and applies exactly three generation-zero assumption seeds; placements therefore include three setup operations.",
+      "metric_scope": "Cumulative executed placement operations include later undone branches; these counts are not net retained placements or a shortest-proof bound.",
+      "search_elapsed_seconds_reported": 1.9502715840000002,
+      "controller_and_ordering_setup_seconds": 0.02852850000000018,
+      "saved_preparation_costs": {
+        "cold_model_seconds": 0.15903008399999985,
+        "full_family_registry_seconds": 0.06458087499999987
+      },
+      "result_serialization_seconds": 2.4490222499999996,
+      "ordering_metrics_reported": {
+        "complete_order_calls": 128,
+        "complete_order_keys": 2834,
+        "order_seconds": 0.5437124979999948,
+        "order_stream_hash_seconds": 0.009510207999995579,
+        "trace_seconds": 0.47644967700000196,
+        "primitive_step_seconds": 0.25518795399999883,
+        "rollback_seconds": 0.5295816620000062,
+        "exclusion_seconds": 0.006278284000000411
+      },
+      "lifecycle_metrics_reported": {
+        "whole_scans": 0,
+        "members_checked": 0,
+        "mark_checks": 0,
+        "status_updates": 0,
+        "whole_retirements": 0,
+        "resynchronizations": 347,
+        "validation_seconds": 0.001744424000006184,
+        "ordering_seconds": 0.0,
+        "rollback_seconds": 0.5294677039999902,
+        "ordering_calls": 0,
+        "root_rejections": 0
+      },
+      "fixed_forward_metrics_reported": {
+        "feature_preparation_seconds": 0.007175874999999721,
+        "feature_seconds": 0.00252708399999646,
+        "sort_seconds": 0.0004910440000034377,
+        "permutation_check_seconds": 0.0011422049999993966,
+        "calls": 106,
+        "complete_keys_ranked": 2812,
+        "pattern_preparation_seconds": 0.009023083999999848,
+        "selected_constraint_collection_seconds": 0.0007474540000047547,
+        "literal_matching_seconds": 0.4993546759999936,
+        "feature_payload_hash_seconds": 0.03308595200000086,
+        "recipe_features_evaluated": 1511,
+        "selected_constraint_comparisons": 11744
+      },
+      "clock_scope": "Cold model/body setup and controller/order construction are separate from the saved search elapsed clock. Nested ordering/lifecycle/primitive/trace/rollback clocks overlap and must not be summed. Owner clocks and independent gates are additional, and source authoring is unmeasured.",
+      "native_queries_reported": 0,
+      "authored_words_used_as_hints_reported": 0,
+      "new_RL_training_reported": false
+    },
+    {
+      "id": "fixed-whole-family-pool",
+      "phase_id": "current-fixed-whole-pool",
+      "raw_result": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed-whole-family-pool-result-v1.json.gz",
+        "sha256": "32efc494dfc68b037598673b9549009d365ec9198b0acb403fa2076e8e858b1d",
+        "bytes": 112624
+      },
+      "producer_terminal_status": "finite_exact_point_tiling",
+      "metadata_interpretation": "producer-reported finite exact point certificate candidate, independent acceptance pending",
+      "mode": "fixed-whole-family-pool",
+      "original_limits": {
+        "attempts": 128,
+        "seconds": 20,
+        "events": 2000
+      },
+      "attempts": 21,
+      "node_count": 19,
+      "event_count": 121,
+      "root_restored_reported": false,
+      "point_certificate_reported_present": true,
+      "decoded_certificate_reported_present": true,
+      "existing_acceptance": {
+        "trace_accepted": null,
+        "certificate_accepted": null,
+        "scope": "Pending separate complete independent tape and positive certificate acceptance; this extraction supplies neither."
+      },
+      "initial_graph_projection_sha256": "b7a54c45edd7503467cdaee53a0168fd3d5e195da06786a33f32d948a344cb93",
+      "graph_projection_hash_encoding": "JSON of saved initial_state.projection.graph, sort_keys=True, separators=(comma, colon), ensure_ascii=False; UTF-8 SHA-256. This is a metadata projection hash, not independent graph reconstruction.",
+      "model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+      "body_authority_epoch": "f4fa317c172f7aa92642c3c75479090f867a481a1bf94453659a8fb951f313c0",
+      "original_conditional_body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+      "validated_source_body_count_reported": 171,
+      "active_cluster_descriptors": 5,
+      "graph_metric_totals_reported": {
+        "domain_refreshes": 322,
+        "placements": 24,
+        "forced": 3,
+        "branches": 18,
+        "backtracks": 0,
+        "attempts": 21,
+        "lazy_id_constructions": 2262,
+        "proposal_validations": 15,
+        "proposal_rejections": 0
+      },
+      "search_metric_deltas": {
+        "placements": 21,
+        "forced": 3,
+        "branches": 18,
+        "backtracks": 0,
+        "attempts": 21
+      },
+      "metric_entry_baseline": {
+        "domain_refreshes": 93,
+        "placements": 3,
+        "forced": 0,
+        "branches": 0,
+        "backtracks": 0,
+        "attempts": 0,
+        "lazy_id_constructions": 636,
+        "proposal_validations": 15,
+        "proposal_rejections": 0
+      },
+      "metric_entry_baseline_provenance": "Explicit saved graph_metrics_at_search_entry",
+      "metric_scope": "Cumulative executed placement operations include later undone branches; these counts are not net retained placements or a shortest-proof bound.",
+      "search_elapsed_seconds_reported": 7.5203545,
+      "controller_and_ordering_setup_seconds": 0.647397333,
+      "saved_preparation_costs": {
+        "full_point_model_body_pool_decode_and_registration_seconds": 1.22824775,
+        "registration_seconds": 0.9745731249999999,
+        "immutable_descriptor_count": 5,
+        "conditional_source_family_count": 171,
+        "static_gate_pins": {
+          "plan": {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+            "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+            "bytes": 228513
+          },
+          "result": {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+            "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+            "bytes": 7941076
+          },
+          "lifetime": {
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+            "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+            "bytes": 2168
+          }
+        },
+        "group_authority_epoch": "f4fa317c172f7aa92642c3c75479090f867a481a1bf94453659a8fb951f313c0",
+        "authored_words_used_as_hints": 0,
+        "new_premise_seeds": 0,
+        "new_RL_training": false,
+        "scope": "All fixed source-body union proposals registered; pending members remain structural obligations, not newly proved premises"
+      },
+      "result_serialization_seconds": 0.31821191700000107,
+      "ordering_metrics_reported": {
+        "complete_order_calls": 21,
+        "complete_order_keys": 1424,
+        "order_seconds": 3.366223624000003,
+        "order_stream_hash_seconds": 0.004620703999996145,
+        "trace_seconds": 0.1475363679999937,
+        "primitive_step_seconds": 3.7664117459999993,
+        "rollback_seconds": 0.0,
+        "exclusion_seconds": 0.0
+      },
+      "lifecycle_metrics_reported": {
+        "whole_scans": 189,
+        "members_checked": 2629,
+        "mark_checks": 5840,
+        "status_updates": 220,
+        "whole_retirements": 1,
+        "resynchronizations": 44,
+        "validation_seconds": 7.3351232029999975,
+        "ordering_seconds": 3.3639197029999868,
+        "rollback_seconds": 0.0,
+        "ordering_calls": 21,
+        "root_rejections": 0
+      },
+      "fixed_forward_metrics_reported": null,
+      "clock_scope": "Cold model/body setup and controller/order construction are separate from the saved search elapsed clock. Nested ordering/lifecycle/primitive/trace/rollback clocks overlap and must not be summed. Owner clocks and independent gates are additional, and source authoring is unmeasured.",
+      "native_queries_reported": 0,
+      "authored_words_used_as_hints_reported": 0,
+      "new_RL_training_reported": false,
+      "search_clock_scope_reported": "Complete order, hint revalidation, step, trace and rollback work; finite operation boundary checks, possible overshoot",
+      "checked_search_deadline_overshoot_seconds_reported": 0.0,
+      "fixed_pool_descriptor_ids": [
+        "whole-family-group-d304b48f89ba3bcdf4d20bf170c74cd0abba2ec6bc38c536433f0565743b4443",
+        "whole-family-group-6f7229a4bdb063ef26366dd06b9d677f4a36ca2eb560d380b846f8b341b1844a",
+        "whole-family-group-0713bd6249a6b7abb394f100fb0b68878d646a0d43dbf2a6c85d1ecf5835bf53",
+        "whole-family-group-020361b90f46b80228c1d330ece66e52d0299e81f40d9d1604793d3c49d1e58c",
+        "whole-family-group-a134cdcec96232aa24e0dcf1a67b5569561669e140e8c355e325b0508501daf7"
+      ],
+      "fixed_pool_priorities": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "static_pool_gate": {
+        "plan": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+          "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+          "bytes": 228513
+        },
+        "result": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+          "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+          "bytes": 7941076
+        },
+        "lifetime": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+          "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+          "bytes": 2168
+        }
+      }
+    }
+  ],
+  "owned_historical_phases": [
+    {
+      "plan": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+        "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+        "bytes": 219919
+      },
+      "outcome": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-outcome-v1.json",
+        "sha256": "4f5581e6ce8557cb0383e4a1fabfe7dcae3c17a6dded30f367e2add9cb9b1149",
+        "bytes": 2467
+      },
+      "owned_lifetime": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-lifetime-v1.json",
+        "sha256": "f16f7f900988f13f625060f74ee3e7fb307d42384675ba83c5bf1ee824dcbf61",
+        "bytes": 1399
+      },
+      "supervision": {
+        "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-supervision-v1.json",
+        "sha256": "b3f3c94edab341b1d643e804d7ea19960baba47d0ded0792f2a663d67fd10d40",
+        "bytes": 31521
+      },
+      "ROOT_terminal": {
+        "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v2-terminal.json",
+        "sha256": "157a67194f9c93307e65ec69bef74305ccf31559ae4e258716752d6565c70870",
+        "bytes": 1509
+      },
+      "saved_observation_order": [
+        "base-complete-primitives",
+        "fixed-forward-novelty"
+      ],
+      "producer_owned_seconds": 8.109092125,
+      "producer_owned_clock_scope": "outside pre-write measurement; all worker/supervisor serialization included",
+      "producer_peak_bytes": 118095872,
+      "worker_seconds_before_final_receipt_write": 7.519140166,
+      "worker_import_seconds": 0.008397666999999998,
+      "initial_pin_verification_seconds": 0.17239200000000002,
+      "final_pin_verification_seconds": 0.1704572079999993,
+      "worker_and_supervisor_terminal_reaped": true,
+      "whole_owner_wall_ceiling_seconds": 180,
+      "host_ceiling_bytes": 536870912,
+      "target_engine_observations_in_phase": 2,
+      "native_queries": 0,
+      "new_RL_training": false,
+      "per_observation_owned_time_apportionment": null,
+      "apportionment_scope": "The owned process clock covers every observation in this phase plus shared imports, verification, serialization, and supervision; it is not a per-lane time.",
+      "existing_independent_trace_gate": {
+        "ROOT_terminal": {
+          "path": ".gcts-active/automatic-geometry-progress-20261011/root-auditor-v1-terminal.json",
+          "sha256": "0d424cf89c7bf7db460e17609b90421db5db071800de6361dc143e435499ba55",
+          "bytes": 2103
+        },
+        "result": {
+          "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+          "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+          "bytes": 5218918
+        },
+        "lifetime": {
+          "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+          "sha256": "8f2928261f7ab5405b5cda0eba79947eb1128a748768666cfd020ead7ca2eadd",
+          "bytes": 1492
+        },
+        "plan": {
+          "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+          "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+          "bytes": 198422
+        },
+        "status": "passed_independent_complete_geometry_trace_audit_zero_certificates",
+        "owned_seconds": 41.361476959,
+        "peak_bytes": 378011648,
+        "clock_scope": "Owner verification/activation, child source-family setup, both complete trace audits, mutations, serialization/reap and receipt assembly; own final receipt write and source authoring excluded.",
+        "covers_observation_ids": [
+          "base-complete-primitives",
+          "fixed-forward-novelty"
+        ],
+        "target_certificates": 0,
+        "whole_target_logical_checks": 0,
+        "metadata_only_copy_not_new_replay": true
+      }
+    },
+    {
+      "plan": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+        "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+        "bytes": 243262
+      },
+      "outcome": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-outcome-v1.json",
+        "sha256": "7639c157efbe8583cbdee1878376d26e70b3bc48a8124e37e252a05bedbee241",
+        "bytes": 2458
+      },
+      "owned_lifetime": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-lifetime-v1.json",
+        "sha256": "000e74607ab723093eba8548bc5f1ece88c03d326a7a613f616b27b1720f80c6",
+        "bytes": 1383
+      },
+      "supervision": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-supervision-v1.json",
+        "sha256": "75a61cf3113e7e9b3a78e3bb0f8c95c4b9f3222c3e5047309d77792b6906abfc",
+        "bytes": 36471
+      },
+      "ROOT_terminal": {
+        "path": ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json",
+        "sha256": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e",
+        "bytes": 1755
+      },
+      "saved_observation_order": [
+        "fixed-forward-reference",
+        "fixed-forward-receptor"
+      ],
+      "producer_owned_seconds": 9.340212875,
+      "producer_owned_clock_scope": "outside pre-write measurement; all worker/supervisor serialization included",
+      "producer_peak_bytes": 128057344,
+      "worker_seconds_before_final_receipt_write": 8.487295125000001,
+      "worker_import_seconds": 0.009316708000000007,
+      "initial_pin_verification_seconds": 0.175351334,
+      "final_pin_verification_seconds": 0.17587437500000114,
+      "worker_and_supervisor_terminal_reaped": true,
+      "whole_owner_wall_ceiling_seconds": 180,
+      "host_ceiling_bytes": 536870912,
+      "target_engine_observations_in_phase": 2,
+      "native_queries": 0,
+      "new_RL_training": false,
+      "per_observation_owned_time_apportionment": null,
+      "apportionment_scope": "The owned process clock covers every observation in this phase plus shared imports, verification, serialization, and supervision; it is not a per-lane time.",
+      "existing_independent_trace_gate": {
+        "ROOT_terminal": {
+          "path": ".gcts-active/receptor-matching-progress-20261011/root-independent-terminal-v3.json",
+          "sha256": "0acaac94418599c66c804432ac50abe71787fe694a6d50fd710750c952266ce7",
+          "bytes": 975
+        },
+        "result": {
+          "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+          "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+          "bytes": 7156588
+        },
+        "lifetime": {
+          "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+          "sha256": "ed8d8e4cf6dd30501da3c8afc8aea36a9cf70abf117689b235550e896fec060b",
+          "bytes": 1483
+        },
+        "plan": {
+          "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v3.json",
+          "sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+          "bytes": 222574
+        },
+        "status": "passed_independent_complete_receptor_geometry_trace_audit",
+        "owned_seconds": 40.93156975,
+        "peak_bytes": 421298176,
+        "clock_scope": "Owner verification/activation, child source-family setup, both complete trace audits, mutations, serialization/reap and receipt assembly; own final receipt write and source authoring excluded.",
+        "covers_observation_ids": [
+          "fixed-forward-reference",
+          "fixed-forward-receptor"
+        ],
+        "target_certificates": 0,
+        "whole_target_logical_checks": 0,
+        "metadata_only_copy_not_new_replay": true
+      }
+    },
+    {
+      "plan": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+        "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+        "bytes": 183845
+      },
+      "outcome": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-outcome-v1.json",
+        "sha256": "58f4dd6cbba2f9277b73f0faa8c44781c21271a448c46ef97a1d65554887b2e6",
+        "bytes": 3136
+      },
+      "owned_lifetime": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-lifetime-v1.json",
+        "sha256": "be45e220d4afd83313c6b042be15e3083fb391ec1f76c6cddbe50fd2e7024926",
+        "bytes": 1385
+      },
+      "supervision": {
+        "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-supervision-v1.json",
+        "sha256": "d60f9daca1f34be8b537b019b00bcf91e1ae032b2b3942d2a236c1aec66c079b",
+        "bytes": 40563
+      },
+      "ROOT_terminal": {
+        "path": ".gcts-active/fixed-family-pool-search-progress-20261012/search-terminal-v1.json",
+        "sha256": "eb3f37b16cf398a7c52859f73ea373f8d045833e79b25d327bb5f8d786f35de8",
+        "bytes": 1055
+      },
+      "saved_observation_order": [
+        "fixed-whole-family-pool"
+      ],
+      "producer_owned_seconds": 10.894472959,
+      "producer_owned_clock_scope": "outside pre-write measurement; all worker/supervisor serialization included",
+      "producer_peak_bytes": 146161664,
+      "worker_seconds_before_final_receipt_write": 10.077318583,
+      "worker_import_seconds": 0.03489858400000004,
+      "initial_pin_verification_seconds": null,
+      "final_pin_verification_seconds": null,
+      "worker_and_supervisor_terminal_reaped": true,
+      "whole_owner_wall_ceiling_seconds": 180,
+      "host_ceiling_bytes": 536870912,
+      "target_engine_observations_in_phase": 1,
+      "native_queries": 0,
+      "new_RL_training": false,
+      "per_observation_owned_time_apportionment": null,
+      "apportionment_scope": "The owned process clock covers every observation in this phase plus shared imports, verification, serialization, and supervision; it is not a per-lane time.",
+      "ROOT_measured_full_owner_process_seconds_including_startup_and_receipt": 10.970053208000001,
+      "ROOT_full_process_clock_scope": "Actual outer process execution including its startup and receipt write; ROOT terminal JSON serialization additional.",
+      "existing_independent_trace_gate": null
+    }
+  ],
+  "same_boundary_metadata_checks": {
+    "same_initial_graph_projection_sha256": "b7a54c45edd7503467cdaee53a0168fd3d5e195da06786a33f32d948a344cb93",
+    "same_point_model_epoch": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+    "same_original_conditional_body_authority_epoch": "f9eb3e301d223f5427afe3c65874b299505e95c04acfb4ab8979beaf563b90d4",
+    "same_required_row_count": 24,
+    "same_initial_seed_placements": 3,
+    "same_recipe_count_declared": 229,
+    "same_formula_count_declared": 217,
+    "same_source_body_count_declared": 171,
+    "same_raw_attempt_limit": 128,
+    "same_raw_search_seconds_limit": 20,
+    "same_raw_event_limit": 2000,
+    "complete_constraint_reconstruction_run_by_this_task": false,
+    "common_source_pins": [
+      {
+        "role": "primitive_model",
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+        "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+        "bytes": 291858
+      },
+      {
+        "role": "complete_family_template_projection",
+        "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+        "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+        "bytes": 1253326
+      },
+      {
+        "role": "primitive_logical_audit",
+        "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+        "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+        "bytes": 1647196
+      },
+      {
+        "role": "source_constant_transport_certificate",
+        "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+        "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+        "bytes": 142981
+      },
+      {
+        "role": "exact_three_source_schemas",
+        "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+        "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+        "bytes": 120875
+      },
+      {
+        "role": "passed_full_lifecycle_producer_plan",
+        "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+        "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+        "bytes": 158160
+      }
+    ],
+    "baseline_metric_source": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    "historical_search_source": {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+      "bytes": 16449
+    }
+  },
+  "comparison_caveats": [
+    "No balanced speed-ratio experiment: distinct historical phases, one selected observation per method, no balanced method order/repetition, no verified same-result time for the three UNKNOWN controls, and the new positive certificate is pending independent acceptance. No speed ratio is computed.",
+    "Restricted finite nullary symbolic guarded Hilbert-incidence fragment with fixed boundary and declared formula/recipe universe; no unrestricted Hilbert theorem, universal first-order system, plane tiling or theorem nonprovability claim.",
+    "Every lane uses overlapping conditional source-family inventory; the pool automatically recomposes this shared inventory into fixed proposals. This is neither held-out transfer, new lemma discovery nor reinforcement learning. The primitive model is unchanged; five new cluster descriptors alter only the declared ordering layer.",
+    "The source projection may decode an authored display example before discarding it. The historical and current source-bound contract excludes that word as a hint or acceptance authority; this metadata task does not independently test that I/O claim.",
+    "Forced/branch/backtrack differences are intermediate outcomes. No new proof or native acceptance follows from those counters, a launch flag, marking consistency, or the producer status alone.",
+    "The old trace audits accepted complete UNKNOWN tapes and justified local child exclusions; they did not prove whole-boundary exhaustion.",
+    "Search elapsed clocks include the actual finite engine call, snapshots and associated work according to their recorded scopes; static preparation, full registration, result serialization and independent audit costs remain separately identified. Overlapping nested timers are not added.",
+    "Historical source native admissions, prior failed gates and broader source/audit/authoring costs are additional dependencies. This is a scoped saved-receipt comparison, not a complete cumulative research-cost ledger. Source authoring is unmeasured."
+  ],
+  "context_repeated_reference": {
+    "id": "fixed-forward-reference",
+    "phase_id": "historical-forward-and-receptor",
+    "raw_result": {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/fixed-forward-reference-result-v1.json.gz",
+      "sha256": "57134c83c1a38ae43c9d97227ecfab2e9d472d99ddc6b498a7af95e3c782fb13",
+      "bytes": 379129
+    },
+    "status": "unknown_search_budget",
+    "attempts": 128,
+    "nodes": 95,
+    "events": 1168,
+    "forced": 34,
+    "branches": 94,
+    "backtracks": 77,
+    "search_seconds": 1.2529412500000001,
+    "preparation_costs": {
+      "cold_model_seconds": 0.11538520800000002,
+      "full_family_registry_seconds": 0.06192037499999997
+    },
+    "serialization_seconds": 2.0127135,
+    "scope": "A later repeat of the novelty ordering paired with receptor ordering, not an interleaved balanced repeat of all four methods."
+  },
+  "new_pool_additional_prior_preparation_and_gate": {
+    "preparation_ROOT_terminal": {
+      "path": ".gcts-active/family-proposal-progress-20261012/preparation-terminal-v2.json",
+      "sha256": "9a63593d235865d1acebadc8ce36f97ddc87e6cf148330d2c340e9d7dd12ab7c",
+      "bytes": 2589
+    },
+    "preparation_owned_seconds_reported": 3.611774,
+    "preparation_peak_bytes_reported": 112361472,
+    "evidence": {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-evidence-v2.json.gz",
+      "sha256": "93ca9e3b3c7949c8ba9bdf9c61093d4ebf6b83b0607f2646852aa3eed728fc36",
+      "bytes": 841526
+    },
+    "preparation_lifetime": {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-lifetime-v2.json",
+      "sha256": "76f1bd4ab10ccc5afbb7b6b87d336cccfa74f0f200724645aa68f444b1ccf686",
+      "bytes": 1496
+    },
+    "static_ROOT_terminal": {
+      "path": ".gcts-active/family-pool-audit-progress-20261012/audit-terminal-v1.json",
+      "sha256": "1bc35d98f81fac3e76ab5bd622f24de9f6757084ea2744930cd7f1cc19997d29",
+      "bytes": 1233
+    },
+    "static_gate_plan": {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+      "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+      "bytes": 228513
+    },
+    "static_gate_result": {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+      "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+      "bytes": 7941076
+    },
+    "static_gate_lifetime": {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+      "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+      "bytes": 2168
+    },
+    "static_gate_full_process_seconds_reported": 4.4812343750000005,
+    "static_gate_prewrite_seconds_reported": 4.355809875,
+    "static_gate_peak_bytes_reported": 138493952,
+    "scope": "Pool preparation and independent static reconstruction occurred before the fresh search lane. Fresh registration setup is already inside that lane owner clock. These receipts are not free, not a target proof, and not a whole search audit."
+  },
+  "speed_ratios": null,
+  "complete_new_trace_acceptance": null,
+  "complete_new_logical_certificate_acceptance": null,
+  "new_native_acceptance": false,
+  "new_actual_searches_by_this_metadata_task": 0,
+  "new_model_constructions_by_this_metadata_task": 0,
+  "new_scientific_checks_by_this_metadata_task": 0,
+  "input_pins": [
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-auditor-v1-terminal.json",
+      "sha256": "0d424cf89c7bf7db460e17609b90421db5db071800de6361dc143e435499ba55",
+      "bytes": 2103
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-progress-20261011/root-producer-v2-terminal.json",
+      "sha256": "157a67194f9c93307e65ec69bef74305ccf31559ae4e258716752d6565c70870",
+      "bytes": 1509
+    },
+    {
+      "path": ".gcts-active/family-pool-audit-progress-20261012/audit-terminal-v1.json",
+      "sha256": "1bc35d98f81fac3e76ab5bd622f24de9f6757084ea2744930cd7f1cc19997d29",
+      "bytes": 1233
+    },
+    {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/audit-lifetime-v1.json",
+      "sha256": "73a119a9afa28155232c20dfb1c46d61c31eed0fe93c393051b2446d1489b267",
+      "bytes": 2168
+    },
+    {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/audit-plan-v1.json",
+      "sha256": "74c8b4c70746c1993d736aa0eeb8a0ef6dd693c5fb538d831af91611aff2e97c",
+      "bytes": 228513
+    },
+    {
+      "path": ".gcts-active/family-pool-independent-audit-20261012/audit-result-v1.json",
+      "sha256": "3ace11c166dd0eb80616615b46d0d725c6d694c3a7ae6505de3ec56c34f8ab22",
+      "bytes": 7941076
+    },
+    {
+      "path": ".gcts-active/family-proposal-progress-20261012/preparation-terminal-v2.json",
+      "sha256": "9a63593d235865d1acebadc8ce36f97ddc87e6cf148330d2c340e9d7dd12ab7c",
+      "bytes": 2589
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-evidence-v2.json.gz",
+      "sha256": "93ca9e3b3c7949c8ba9bdf9c61093d4ebf6b83b0607f2646852aa3eed728fc36",
+      "bytes": 841526
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-lifetime-v2.json",
+      "sha256": "76f1bd4ab10ccc5afbb7b6b87d336cccfa74f0f200724645aa68f444b1ccf686",
+      "bytes": 1496
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-outcome-v2.json",
+      "sha256": "84ea34990d28aa1c97523cab01e8f149d0a42c88526de32743c1c61fc757783c",
+      "bytes": 1111
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-progress-20261012/search-terminal-v1.json",
+      "sha256": "eb3f37b16cf398a7c52859f73ea373f8d045833e79b25d327bb5f8d786f35de8",
+      "bytes": 1055
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/fixed-whole-family-pool-result-v1.json.gz",
+      "sha256": "32efc494dfc68b037598673b9549009d365ec9198b0acb403fa2076e8e858b1d",
+      "bytes": 112624
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-lifetime-v1.json",
+      "sha256": "be45e220d4afd83313c6b042be15e3083fb391ec1f76c6cddbe50fd2e7024926",
+      "bytes": 1385
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-outcome-v1.json",
+      "sha256": "58f4dd6cbba2f9277b73f0faa8c44781c21271a448c46ef97a1d65554887b2e6",
+      "bytes": 3136
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-plan-v1.json",
+      "sha256": "f63c9e804e67848100c513048452e16a2e00e16b5b21864ebb457c6d39d8ea4f",
+      "bytes": 183845
+    },
+    {
+      "path": ".gcts-active/fixed-family-pool-search-source-20261012/search-supervision-v1.json",
+      "sha256": "d60f9daca1f34be8b537b019b00bcf91e1ae032b2b3942d2a236c1aec66c079b",
+      "bytes": 40563
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/model-v2.json.gz",
+      "sha256": "3b1d796a6f9531b21d7fc0ecc8b378af8231b240dfb7cb54e776cf8d8584e4aa",
+      "bytes": 291858
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+      "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+      "bytes": 1253326
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/audit-full-v2.json",
+      "sha256": "9777cf1a7f08ce7091afc0a1c8cf2b593e10f967ce39362919607f2abfcd4594",
+      "bytes": 1647196
+    },
+    {
+      "path": ".gcts-active/hilbert-chain-composition-plan-20261011/source-schemas-v1.json",
+      "sha256": "f4555f17e5a6fb779f036b8d694d72b4ce155c3d3ff002656de544e668ce0d66",
+      "bytes": 120875
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+      "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+      "bytes": 158160
+    },
+    {
+      "path": ".gcts-active/hilbert-constant-certificates-20261011/certificate-v3.json.gz",
+      "sha256": "8f27361e9301e3fb651757f5c7d50d7625667dd64a6ff09884205d62c8e10141",
+      "bytes": 142981
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+      "sha256": "ed8d8e4cf6dd30501da3c8afc8aea36a9cf70abf117689b235550e896fec060b",
+      "bytes": 1483
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v3.json",
+      "sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+      "bytes": 222574
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+      "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+      "bytes": 7156588
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/fixed-forward-receptor-result-v1.json.gz",
+      "sha256": "9403c6375807e1348eca16859cd24904dd973f1b7111cd0cab2df79ed38eb8c3",
+      "bytes": 551531
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/fixed-forward-reference-result-v1.json.gz",
+      "sha256": "57134c83c1a38ae43c9d97227ecfab2e9d472d99ddc6b498a7af95e3c782fb13",
+      "bytes": 379129
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-lifetime-v1.json",
+      "sha256": "000e74607ab723093eba8548bc5f1ece88c03d326a7a613f616b27b1720f80c6",
+      "bytes": 1383
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-outcome-v1.json",
+      "sha256": "7639c157efbe8583cbdee1878376d26e70b3bc48a8124e37e252a05bedbee241",
+      "bytes": 2458
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+      "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+      "bytes": 243262
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-supervision-v1.json",
+      "sha256": "75a61cf3113e7e9b3a78e3bb0f8c95c4b9f3222c3e5047309d77792b6906abfc",
+      "bytes": 36471
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-independent-terminal-v3.json",
+      "sha256": "0acaac94418599c66c804432ac50abe71787fe694a6d50fd710750c952266ce7",
+      "bytes": 975
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json",
+      "sha256": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e",
+      "bytes": 1755
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/base-complete-primitives-result-v1.json.gz",
+      "sha256": "bc12cc76ebbc204ab6d322b1679826ec7cf322726b902c7d9a4113ee6312addf",
+      "bytes": 373027
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/fixed-forward-novelty-result-v1.json.gz",
+      "sha256": "88cb47e9a8694419b475add355fdf999ae82addd293d202f32f3f8edf84ded59",
+      "bytes": 376481
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-lifetime-v1.json",
+      "sha256": "f16f7f900988f13f625060f74ee3e7fb307d42384675ba83c5bf1ee824dcbf61",
+      "bytes": 1399
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-outcome-v1.json",
+      "sha256": "4f5581e6ce8557cb0383e4a1fabfe7dcae3c17a6dded30f367e2add9cb9b1149",
+      "bytes": 2467
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+      "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+      "bytes": 219919
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-supervision-v1.json",
+      "sha256": "b3f3c94edab341b1d643e804d7ea19960baba47d0ded0792f2a663d67fd10d40",
+      "bytes": 31521
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+      "bytes": 16449
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-lifetime-v1.json",
+      "sha256": "8f2928261f7ab5405b5cda0eba79947eb1128a748768666cfd020ead7ca2eadd",
+      "bytes": 1492
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-plan-v1.json",
+      "sha256": "58d168f03a5dd480219f88d2de0557adc7784216ff53fd7e70db324913aeaf5e",
+      "bytes": 198422
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/audit-result-v1.json",
+      "sha256": "84ff54967d8c2897dcb78ecc5637f8cbb1c3b875a11c0a36e2024f40f316364e",
+      "bytes": 5218918
+    }
+  ],
+  "metadata_extraction_seconds_before_output_write": 0.849147083
+}

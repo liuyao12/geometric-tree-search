@@ -1,0 +1,43 @@
+{
+  "status": "immutable_source_only_complete_positive_tape_auditor_ready",
+  "files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_audit_v1.py",
+      "sha256": "8874e08f45db1f224ede4e15ec22c130ffae2e6db3bd241effdf8e126e01d234",
+      "bytes": 37320
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_owner_v1.py",
+      "sha256": "84325e925bb9492b98842848271017c197851e548f429840db031e9323391d3e",
+      "bytes": 9070
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_freeze_v1.py",
+      "sha256": "7cbb2d4a859a2187dc84678dda9dff9b9599dc22fcbcfc7d936f30450ecfda49",
+      "bytes": 11068
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/source-plan-v1.json",
+      "sha256": "69b9e79771afc98414a6ac55f8e529f549f0f2c3309bc0bf6c99b8cc739bad5b",
+      "bytes": 11656
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+      "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+      "bytes": 242837
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/source-ready-v1.json",
+      "sha256": "c6a2be46064c1c3ed1ca8e0d61e71512a7802e7020405487995f250753a05ec2",
+      "bytes": 3897
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-source-v1.zip",
+      "sha256": "16f69ac7404539cef25eecb7caee7c5d560be4e5389f1f5314d2b2e0af423914",
+      "bytes": 65787
+    }
+  ],
+  "actual_audits": 0,
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

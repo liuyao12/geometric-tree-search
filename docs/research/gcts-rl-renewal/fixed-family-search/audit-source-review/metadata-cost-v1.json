@@ -1,0 +1,11 @@
+{
+  "status": "completed_source_only_hash_AST_metadata_helper",
+  "helper": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/review_metadata_v1.py",
+    "sha256": "94a41141de25f66e3d4d851e50c7df42c6e44c5903b41e2ad11066c38e70e0bd",
+    "bytes": 7001
+  },
+  "seconds_before_cost_receipt_write": 0.576628333,
+  "kernel_peak_bytes": 24461312,
+  "scope": "Hashing all raw pinned files, source-plan/manifest JSON and five source-ZIP entries; 11 source ASTs. No project imports or scientific payload decoding. Helper cost ends before final cost receipt serialization; source authoring/manual inspection is unmeasured and additional."
+}

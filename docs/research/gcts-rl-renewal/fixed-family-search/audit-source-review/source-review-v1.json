@@ -1,0 +1,128 @@
+{
+  "schema": "independent_source_only_fixed_family_positive_trace_review_v1",
+  "status": "PASS_SOURCE_ONLY_PROSPECTIVE_AUDITOR_DISPOSITION",
+  "reviewer": "/root/arithmetic_induction",
+  "package_integration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/integration-v1.json",
+    "sha256": "f0d7e73e234f2284ca3a718f2e2a24575b56768782be99362a75bab8c5d239d9",
+    "bytes": 2142
+  },
+  "audit_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/audit-plan-v1.json",
+    "sha256": "60efcf293e9c1163a846560dbb610bae030d240336ead10b0caf08c6063f469a",
+    "bytes": 242837
+  },
+  "metadata_reconciliation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/bindings-v1.json",
+    "sha256": "c09d22299a5ebd2215718592593d046968ba2f18d238f0d711ff18d4b6eeb531",
+    "bytes": 430185
+  },
+  "metadata_cost": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-arithmetic-source-review-20261012/metadata-cost-v1.json",
+    "sha256": "28639f8a342ca3bdaaad7415ecd7c00056b337c689d5f6abab4a4ac06c17a60f",
+    "bytes": 727
+  },
+  "exact_sources": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_audit_v1.py",
+      "sha256": "8874e08f45db1f224ede4e15ec22c130ffae2e6db3bd241effdf8e126e01d234",
+      "bytes": 37320
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_owner_v1.py",
+      "sha256": "84325e925bb9492b98842848271017c197851e548f429840db031e9323391d3e",
+      "bytes": 9070
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-pool-trace-independent-20261012/fixed_pool_trace_freeze_v1.py",
+      "sha256": "7cbb2d4a859a2187dc84678dda9dff9b9599dc22fcbcfc7d936f30450ecfda49",
+      "bytes": 11068
+    }
+  ],
+  "master_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "checks": [
+    {
+      "id": "exact_frozen_package",
+      "disposition": "PASS",
+      "evidence": "All 817 unique source/input/preserved path pins, seven integration files, five source ZIP members, 11 Python 3.9 ASTs and exact runtime/observer alias/bytes reconcile. No activation/output existed during this review."
+    },
+    {
+      "id": "independent_authority_and_static_pool",
+      "disposition": "PASS",
+      "evidence": "Only eight explicitly pinned independent libraries are loaded inside run; no producer graph/controller/search/ranker/decoder is an acceptance import. Fresh validate_model checks 229 recipes, 217 closed formulas, all original boundary/seeds, primitive witnesses, complete alignment grammar and injective identities. IndependentPool reconstructs all 171 declared bodies, all single/pair types and ordered receptor bindings, source expansions, canonical embeddings, full-key sharing, aggregate t/m and epoch-bound priorities, then compares complete static evidence. Original 56 unique body input closure remains authoritative."
+    },
+    {
+      "id": "complete_graph_scheduler_and_fallback",
+      "disposition": "PASS",
+      "evidence": "Independent PointState derives every legal ordered source binding from literal point/mark agreement including exterior -1 and assigned zero; TransactionState cross-checks every row complete base/legal census and factors for each reached distinct graph. decision checks all dead rows before all forced rows, then earliest generation with degree/row tie. FixedPoolTransactions order preserves every complete base candidate, forced singleton bypass and full permutation. Each actual primitive placement is checked again against the current complete scheduler/domain."
+    },
+    {
+      "id": "whole_hint_transactions",
+      "disposition": "PASS",
+      "evidence": "Independent five-group registry uses complete decorated identities, pending constituent legality, aggregate occupancy and remote marking agreement. Waiting/ready/consumed/retired semantics and branch-retired absorption are reconstructed. A hint supplies one primitive continuation preference only. Paired snapshots restore graph, exclusions, generations, marking refcounts, descriptor IDs, revision and hint state; successful child propagation keeps the positive state, only an independently exhausted child permits parent exclusion, and UNKNOWN never does."
+    },
+    {
+      "id": "entire_actual_event_tape",
+      "disposition": "PASS_SOURCE_DESIGN",
+      "evidence": "Tape.consume compares the entire event dictionary including full semantic SHA and every compact projection field; walk reconstructs every node/event/order/counter, source-key streams, hints, returns, termination, terminal graph and whole tape suffix exhaustion. Independent reconstruction starts from exact original seeds, never a saved proof word. This prospective review does not execute the 121-event tape or certify its acceptance."
+    },
+    {
+      "id": "complete_positive_primitive_certificate",
+      "disposition": "PASS_SOURCE_DESIGN",
+      "evidence": "Positive oracle derives all selected keys independently and requires exactly one placement in each of 24 rows including three roots. It rebuilds every full identity/preimage, ordered port, command and t/m assignment; whole exact t-union, fixed exterior/target marks, assigned zero and all refcounts are checked. All 24 logical primitive commands are rechecked with strict prior references and original theory/Gamma; final formula must be the independently supplied original target. Returned local certificate, flat request, ASCII bytes/SHA, retained hypotheses and problem binding are independently compared."
+    },
+    {
+      "id": "original_ground_scope",
+      "disposition": "PASS",
+      "evidence": "Flat translation retains each original ordered hypothesis as a fresh exact hypothesis-i axiom and replaces only assumption rows, then rechecks every flat primitive command with blocks empty. It does not discharge Gamma, universally close the statement, invoke native acceptance, or supply new premise seeds from pending outputs. Native/compiler correspondence remains open; authored checked body infrastructure is not newly discovered lemmas or RL."
+    },
+    {
+      "id": "mutation_controls",
+      "disposition": "PASS_PROSPECTIVE_SCOPE",
+      "evidence": "Event controls alter actual payload copies and compare them to independently reconstructed exact event templates, rather than claiming full mutated-tape execution. Positive controls actually rerun the independent certificate or symbolic checker on changed complete certificate/command/Gamma/target copies only in the future ROOT-owned worker. Controls tied to absent event kinds are explicitly skipped. Source coverage of rollback is not executed failed-branch evidence for a positive tape with zero backtracks."
+    },
+    {
+      "id": "owned_runtime_lifecycle",
+      "disposition": "PASS_WITH_SCOPED_RESOURCE_ENFORCEMENT",
+      "evidence": "One direct worker, no retry, exclusive outputs, exact ROOT plan activation, runtime and ps pins; wait4 same-child terminal/reap, worker 170-second alarm, owner 175-second sampled deadline/180-second signal, owned RSS and kernel-peak retrospective rejection. Exceptions retain status/failure and existing stdout/stderr/result hashes. Unreaped owned child session is killed and waited; no historical reaped PID group is targeted. Final owner peak refresh includes result JSON decoding. No scientific worker or owner was launched in this review."
+    },
+    {
+      "id": "source_freezer_scope",
+      "disposition": "PASS",
+      "evidence": "Freezer uses stdlib hash/JSON metadata/AST/ZIP only; it does not activate, import project modules or decode the gz scientific tape/model. It binds actual delivered bytes and refuses existing source plans/activation/scientific outputs. Source-ready flags remain prospective until ROOT dispatch."
+    }
+  ],
+  "blockers": [],
+  "advisory_limits": [
+    "PASS is source/provenance readiness only; no independent actual trace or mathematical certificate acceptance has occurred in this review.",
+    "Saved checked deadline seconds are provenance and can allow in-flight overshoot; complete returned tape must still pass the separate fresh owned lifetime gate. An incomplete TraceLimit prefix is not accepted by this complete-tape verifier.",
+    "Original producer RSS estimate omits simultaneous ps RSS; this audit preserves that caveat rather than upgrading the producer to a strict aggregate host memory-cap claim. The new auditor has sampled and retrospective resource gates, not an OS hard-cap guarantee.",
+    "Worker result timing ends before result serialization. Owner includes worker serialization/reaping and result decoding, but its final receipt serialization and external ROOT process startup/full terminal lifetime are additional. Source authoring/manual source inspection costs are unmeasured and additional.",
+    "Runtime exception/disk/stream cleanup artifacts can be partial; any nonzero/missing/malformed or resource outcome remains UNKNOWN and does not count as partial trace/proof acceptance.",
+    "No new unrestricted cluster grammar, newly learned policy, general arithmetic/geometry transfer, universal closure, native or universal-Wang-palette acceptance is implied."
+  ],
+  "actual_execution_counts": {
+    "project_imports": 0,
+    "scientific_model_loads": 0,
+    "scientific_payload_decodes": 0,
+    "numeric_fixtures": 0,
+    "actual_trace_replays": 0,
+    "symbolic_checker_calls": 0,
+    "searches": 0,
+    "training": 0,
+    "native_queries": 0,
+    "owners_dispatched": 0
+  },
+  "cost_scope": {
+    "metadata_helper_seconds_before_cost_receipt": 0.576628333,
+    "metadata_helper_kernel_peak_bytes": 24461312,
+    "source_authoring_and_manual_inspection_seconds": null,
+    "source_authoring_cost_is_additional": true
+  },
+  "ROOT_sole_actual_owner": true,
+  "execution_authorized_by_this_receipt": false
+}
