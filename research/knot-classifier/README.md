@@ -1,5 +1,7 @@
 # Knots as Reidemeister tiles: GCTS + RL research plan
 
+> **Research target:** classify exact cubic-lattice knots using lattice realizations of Reidemeister tiles and generic brute force helped by online GCTS. The viewer is only a certificate presentation tool. See the [current lattice classifier subgoals](lattice-classifier.html). A validated reference corpus now covers 2,977 prime types through 12 crossings plus the unknot; classification and local lattice tile integration are not yet implemented. The diagram pilot below is a separate control.
+
 > Current viewer: the search now uses **brute force + online GCTS**, with no knot-specific search hints. See the [online search contract](online-search.html). The implementation below documents the earlier specialized control, retained as `solveSpecialized`; its offline seam learner, coloring shortcut, and RL policy are not used by the current viewer.
 
 The search object is a movie assembled from **Reidemeister-move tiles**. Input

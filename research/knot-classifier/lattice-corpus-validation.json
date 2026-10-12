@@ -1,0 +1,49 @@
+{
+  "version": "cubic-lattice-reference-v1",
+  "source": {
+    "url": "https://raw.githubusercontent.com/knotinfo-org/assets/main/knotinfo_data_complete.xls.zip",
+    "documentation": "https://linkinfo.knotinfo.org/descriptions/grid_notation.html",
+    "workbookSha256": "f4de747845b6432636c49e2dfa84b1c8d3bab681ee12b27402898cb3e4883be0",
+    "sheet": "sample_dat",
+    "columnsRead": {
+      "name": 0,
+      "crossing_number": 28,
+      "grid_notation": 230
+    },
+    "labelRole": "reference/evaluation metadata only; never search features"
+  },
+  "scope": "Unknot and prime reference types through 12 crossings; composite coverage deferred; mirrors generated separately.",
+  "records": 2978,
+  "primeRecords": 2977,
+  "counts": {
+    "0": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 3,
+    "7": 7,
+    "8": 21,
+    "9": 49,
+    "10": 165,
+    "11": 552,
+    "12": 2176
+  },
+  "geometry": "Exact closed self-avoiding integer polygons; vertical grid strands lifted one lattice unit above horizontal strands.",
+  "edgeRange": [
+    4,
+    200
+  ],
+  "allEmbedded": true,
+  "allMirrorsEmbedded": true,
+  "searchLabelsRemoved": true,
+  "uniqueLiteralEmbeddings": 2978,
+  "classificationResults": 0,
+  "claim": "A validated reference corpus, not successful classification.",
+  "inputLimit": "Crossing label bounds the reference knot type, not lattice edge count or intermediate projection complexity.",
+  "independentAudit": {
+    "verified": true,
+    "references": 2978,
+    "unitEdgesAudited": 424684,
+    "method": "Python exact pairwise intersections of nonadjacent long-axis segments"
+  }
+}
