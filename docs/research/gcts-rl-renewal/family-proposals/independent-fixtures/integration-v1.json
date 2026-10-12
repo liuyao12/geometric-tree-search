@@ -1,0 +1,23 @@
+{
+  "status": "immutable_independent_family_proposal_source_design_only",
+  "files": [
+    {
+      "path": ".gcts-active/family-proposal-independent-20261012/design-v1.json",
+      "sha256": "93cb2b75f810790fafe47baf4f07b8f88ef8475e53307cc32b995f7c6ee89328",
+      "bytes": 12244
+    },
+    {
+      "path": ".gcts-active/family-proposal-independent-20261012/family_binding_oracle_v1.py",
+      "sha256": "9624db0931d722cd9d04574e0b8705892a3e580c0e779e0726e4b0406f7ad317",
+      "bytes": 10072
+    },
+    {
+      "path": ".gcts-active/family-proposal-independent-20261012/source-readiness-v1.json",
+      "sha256": "160ec9a8b1a847a9580cc72cd11b74aaa57d981e6f4cfd3bb08ddf3d784767a6",
+      "bytes": 1844
+    }
+  ],
+  "total_bytes": 24160,
+  "ROOT_scientific_dispatch_required": true,
+  "scientific_execution": false
+}

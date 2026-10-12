@@ -1,0 +1,32 @@
+{
+  "status": "ROOT_passed_full_source_and_bound_input_review_before_preparation_activation",
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "independent_source_review": {
+    "path": ".gcts-active/family-preparation-source-independent-review-20261012/source-review-v2.json",
+    "sha256": "3c4420f2beaf867f7a017da078cef940e4d4d09964c0dac3855adcf122eac8fe",
+    "bytes": 182490
+  },
+  "pure_fixture_terminal": {
+    "path": ".gcts-active/family-proposal-progress-20261012/fixture-terminal.json",
+    "sha256": "4cb6b2d7b915e740ae72c40f4e849e88fc6746aced6d0c4be692b900fe6fc4f2",
+    "bytes": 971
+  },
+  "verified_version_pins": 780,
+  "source_read_coverage": "Original module/worker drafts read in full plus exact verified final diffs; final supervisor/outer/freezer read in full; original point graph/lifecycle/search source reviewed; all five sources AST parsed without import.",
+  "limits": {
+    "preparation_seconds_including_model_and_original_body_setup": 30,
+    "child_seconds": 60,
+    "supervisor_seconds": 65,
+    "ROOT_outer_seconds": 70,
+    "conservative_host_peak_bytes": 536870912,
+    "enforcement": "child SIGALRM; owned external ps RSS/time watchdog; final kernel peak plus outer validation; no OS soft limit claim",
+    "in_flight": "deadline checked between finite operations; overshoot retained; owner gates still apply",
+    "unknown": "incomplete preparation exports partial visit/rejection accounting but no partial active pool"
+  },
+  "scope": "One cold bounded model/body/pool preparation only; no Controller, Executor, search, logical certificate, native query or learning. Full actual-pool audit separate.",
+  "scientific_execution_by_review": 0
+}

@@ -1,0 +1,29 @@
+{
+  "status": "complete_declared_proposal_grammar_prepared_pending_independent_audit",
+  "reason": null,
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "evidence": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-evidence-v2.json.gz",
+    "sha256": "93ca9e3b3c7949c8ba9bdf9c61093d4ebf6b83b0607f2646852aa3eed728fc36",
+    "bytes": 841526
+  },
+  "worker_seconds_before_receipt_write": 2.371938208,
+  "child_wall_ceiling_seconds": 60,
+  "preparation_deadline_seconds": 30,
+  "preparation_seconds_including_model_and_body_setup": 1.502037334,
+  "source_verification_seconds": 0.22767312499999998,
+  "peak_bytes": 75087872,
+  "complete_registered_groups": 5,
+  "target_searches": 0,
+  "logical_checker_runs": 0,
+  "point_certificates": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "new_RL_training": false,
+  "independent_pool_audit": "pending separate source/actual gate",
+  "mathematical_acceptance": "none"
+}

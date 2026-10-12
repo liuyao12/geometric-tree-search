@@ -1,0 +1,120 @@
+{
+  "status": "source_only_protocol_assessment_no_runtime_acceptance",
+  "geometry_protocol_snapshots": [
+    {
+      "origin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-source-20261012/protocol-v1.md",
+        "sha256": "25359692ee0d3f9226760a7ca523e04633f27e350e4be0e904c376708847dc54",
+        "bytes": 9386
+      },
+      "saved_exact_snapshot": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/assessed-protocol-v1.md",
+        "sha256": "25359692ee0d3f9226760a7ca523e04633f27e350e4be0e904c376708847dc54",
+        "bytes": 9386
+      }
+    },
+    {
+      "origin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-source-20261012/family_proposal_api_v1.py",
+        "sha256": "098fad009ce4ebab66964c432984217edc1f6ab9ac6858c5c83242851c2297b7",
+        "bytes": 5440
+      },
+      "saved_exact_snapshot": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/assessed-family-proposal-api-v1.py",
+        "sha256": "098fad009ce4ebab66964c432984217edc1f6ab9ac6858c5c83242851c2297b7",
+        "bytes": 5440
+      }
+    }
+  ],
+  "learning_bindings": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/integration.json",
+      "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+      "bytes": 1246
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/integration-v2.json",
+      "sha256": "38be6f2b927ca02751847a0f8912aff7cef4eb5e57410fa1bcb8f957b820177e",
+      "bytes": 1701
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+      "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+      "bytes": 9905
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py",
+      "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+      "bytes": 10953
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py",
+      "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+      "bytes": 3576
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    }
+  ],
+  "fixture_successor": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v2.json",
+    "sha256": "1425bd366a68e3e71dfcfa7b4198c6127cb04c3526494daf348316682602f0d3",
+    "bytes": 10612
+  },
+  "inspection": {
+    "source_AST_and_hash_only": true,
+    "unchanged_policy_function_ASTs": [
+      "finite_number",
+      "vector",
+      "distribution",
+      "score_gradient",
+      "reward",
+      "update"
+    ],
+    "changed_policy_function_ASTs": [
+      "choose"
+    ],
+    "function_calls": 0,
+    "scientific_imports": 0,
+    "models_loaded": 0,
+    "fixture_executions": 0,
+    "numeric_tests": 0
+  },
+  "geometry_disposition": "Fixed pre-search single/pair whole-union proposal pool is a coherent restricted proposal bridge. It requires new independently audited composition authority; original root-fixed Controller and primitive graph stay unchanged. No implementation/actual acceptance follows from this API assessment.",
+  "geometry_conditions": [
+    "Bind every declared conclusion through complete frozen projection digest and exact source member/output code; non-last conclusions must map explicitly.",
+    "Preserve original ordered root seed insertion semantics or normalize both producer and independent binding tokens by full keys; do not compare mismatched integer indices.",
+    "All first receptors bind actual original selected roots. Second receptors bind those roots or included first declared output with at least one explicit link. Pending included output is an obligation, never a new hypothesis.",
+    "Complete all declared type and formula-filtered ordered binding visits before searching; preparation budget abort remains UNKNOWN, never a silently truncated pool.",
+    "One canonical increasing embedding per binding is a limited DAG transport, not rigid atomic translation and not all embeddings or all proofs.",
+    "Reconstruct original body transport, full primitive recipe/ref/context/epoch identities, every occurrence alias and exact shared unit t/m union. Formula equality alone cannot share occupancy.",
+    "Compile each pair as one whole immutable descriptor; retirement, waiting/consumed state, forced interruption and paired rollback remain independently checked.",
+    "Pool absence and whole retirement never alter complete graph domain degrees or justify parent exclusions."
+  ],
+  "learning_disposition": "The pure epsilon-mixture score/update design is mathematically consistent for its stated fixed finite feature/action records, with separate numeric and actual gates still required. Initial learned action is selection of automatically recomposed authored source families, not topology or lemma discovery.",
+  "learning_conditions": [
+    "Numerical fixtures must independently verify softmax/mixture/CDF, mixture log-gradient, advantage-before-norm clipping and post-update EMA; no numerical functions have been executed in this review.",
+    "Future executable bridge must trail active_descriptor_id and policy selection overlay. NULL must actually suppress proposal preference; original immutable descriptor IDs/priorities cannot be mutated per node.",
+    "Recompute each ready menu and every feature from full graph/source semantics; pending marked output constraints and unselected receptor rows are not source-complete facts.",
+    "Reward uses maximum per-state distinct dependency-complete nonroot formulas, not accumulated rollback rediscovery; completion bonus stays provisional until full independent logical/native gates.",
+    "Baseline/untrained/trained lanes share exact proposal availability, primitive universe, original context, scheduler, resources and solved semantics. Charge preparation/validation/scanning/training/audit costs.",
+    "Declare donor models/seeds/menu/features before execution and keep held-out target trajectories out of tuning/mining; disclose primitive/source inventory overlap.",
+    "The fixed all171 single/pair pool is restricted proposal selection infrastructure. Generic arbitrary compatible clusters and new mined reusable families remain separate unimplemented actions."
+  ],
+  "numeric_scope": "No distribution, RNG draw, gradient, reward, update, fixture, engine, replay, proof or training executed.",
+  "claim_scope": {
+    "new_lemma_discovery": false,
+    "new_mathematical_proof": false,
+    "engine_conformance": false,
+    "native_acceptance": false,
+    "proposal_implementation_accepted": false
+  },
+  "source_authoring_seconds": null
+}

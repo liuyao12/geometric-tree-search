@@ -1,0 +1,153 @@
+{
+  "status": "complete_declared_proposal_grammar_prepared_pending_independent_audit",
+  "goal_status": "active",
+  "counters": {
+    "interfaces_checked": 171,
+    "single_types_visited": 171,
+    "pair_types_visited": 29241,
+    "binding_tuples_visited": 5,
+    "accepted_binding_specs": 5,
+    "rejections": {},
+    "disconnected_second_bindings_outside_grammar": 9,
+    "interface_validation_seconds": 0.043995000000000006,
+    "root_anchor_validation_seconds": 0.00017216700000000085,
+    "binding_embedding_and_validation_seconds": 0.29378354000000007,
+    "complete_type_and_binding_enumeration_seconds": 0.321898542,
+    "registered_groups": 5,
+    "source_member_occurrences": 72,
+    "group_distinct_members": 67,
+    "group_shared_members": 5,
+    "preparation_seconds": 1.2657172499999998,
+    "immutable_group_registration_seconds": 0.8978599170000001,
+    "graph_metrics_before": {
+      "domain_refreshes": 93,
+      "placements": 3,
+      "forced": 0,
+      "branches": 0,
+      "backtracks": 0,
+      "attempts": 0,
+      "lazy_id_constructions": 0,
+      "proposal_validations": 0,
+      "proposal_rejections": 0
+    },
+    "graph_metrics_after": {
+      "domain_refreshes": 93,
+      "placements": 3,
+      "forced": 0,
+      "branches": 0,
+      "backtracks": 0,
+      "attempts": 0,
+      "lazy_id_constructions": 636,
+      "proposal_validations": 15,
+      "proposal_rejections": 0
+    },
+    "initial_final_graph_semantic_sha256": "abb7abf34b85668a04c154768e90598b7169a5efe1a86eb51ceb5dae72633de2"
+  },
+  "groups": [
+    {
+      "pool_index": 0,
+      "fixed_priority": 3,
+      "distinct_member_count": 10,
+      "component_member_occurrences": 10,
+      "shared_member_count": 0
+    },
+    {
+      "pool_index": 1,
+      "fixed_priority": 4,
+      "distinct_member_count": 10,
+      "component_member_occurrences": 10,
+      "shared_member_count": 0
+    },
+    {
+      "pool_index": 2,
+      "fixed_priority": 2,
+      "distinct_member_count": 13,
+      "component_member_occurrences": 13,
+      "shared_member_count": 0
+    },
+    {
+      "pool_index": 3,
+      "fixed_priority": 1,
+      "distinct_member_count": 13,
+      "component_member_occurrences": 13,
+      "shared_member_count": 0
+    },
+    {
+      "pool_index": 4,
+      "fixed_priority": 0,
+      "distinct_member_count": 21,
+      "component_member_occurrences": 26,
+      "shared_member_count": 5
+    }
+  ],
+  "single_groups": 3,
+  "pair_groups": 2,
+  "new_owned_seconds": "3.752460833",
+  "preparation_lifetime": {
+    "status": "passed_family_preparation_full_lifetime_resource_phase",
+    "full_supervisor_process_seconds_including_receipt_write": 3.611774,
+    "process_return_code": 0,
+    "supervisor_pid": 77026,
+    "supervisor_wait_reaped": true,
+    "outer_cleanup_reason": null,
+    "worker_terminal_reaped_confirmed": true,
+    "outer_own_peak_bytes": 18448384,
+    "outer_children_kernel_peak_bytes": 75087872,
+    "conservative_host_peak_bytes": 112361472,
+    "host_ceiling_bytes": 536870912,
+    "wall_ceiling_seconds": 70,
+    "actual_wall_overshoot_seconds": 0,
+    "actual_memory_overshoot_bytes": 0,
+    "plan": {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+      "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+      "bytes": 215210
+    },
+    "supervision": {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-supervision-v2.json",
+      "sha256": "ef8eaf325b5737c6f2d64e92ed26f36be552815aa8c999cfbafe15de1c801a9e",
+      "bytes": 12278
+    },
+    "own_receipt_serialization": "outside pre-write measurement; all worker/supervisor serialization included",
+    "actual_geometry_model_execution": true,
+    "maximum_geometry_target_searches": 0,
+    "native_queries": 0,
+    "native_authority_activated": false,
+    "preparation_status": "complete_declared_proposal_grammar_prepared_pending_independent_audit",
+    "preparation_complete": true,
+    "mathematical_acceptance": "none; independent proposal-pool audit separate; no search/native in this phase"
+  },
+  "fixture_terminal": {
+    "status": "passed_ROOT_owned_pure_fixture_gate",
+    "owner_terminal": {
+      "chunk": "140490",
+      "exit_code": 0,
+      "running_session": null
+    },
+    "child_pid": 72582,
+    "child_reaped": true,
+    "child_exit": 0,
+    "owner_seconds_before_final_receipt_write": 0.140686833,
+    "conservative_peak_bytes": 38191104,
+    "controls": 52,
+    "positive_controls": 18,
+    "negative_controls": 34,
+    "result": {
+      "path": ".gcts-active/family-proposal-independent-20261012/fixture-result-v2.json",
+      "sha256": "994edd42c5d2d62f060d3aa15fe8820bd2add05e2c863f83d5a2e3c0dd1e15d5",
+      "bytes": 11356
+    },
+    "lifetime": {
+      "path": ".gcts-active/family-proposal-independent-20261012/fixture-lifetime-v2.json",
+      "sha256": "fe5dad1d3df508ad9561991720f2a5f3bc651eb037de597ebe56ae3b17338230",
+      "bytes": 1889
+    },
+    "scope": "Synthetic projection/ports/identity/embedding controls only; no actual graph/model, producer correspondence, proof acceptance, RL or native execution."
+  },
+  "actual_pool_audit": "pending",
+  "new_target_searches": 0,
+  "new_accepted_proofs": 0,
+  "new_training": false,
+  "source_authoring_seconds": null,
+  "report_scientific_execution": false
+}

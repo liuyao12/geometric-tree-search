@@ -1,0 +1,31 @@
+{
+  "previous_goal_turn_classification": "PROGRESS",
+  "evidence": "Notebook107 actual two-control experiment, independent complete trace audit, exact127-file publication and live checks changed authoritative state. Current ROOT/PUB committed bytes verified again. No new proof/RL claim.",
+  "baseline_commit": "94aa6e1fd87b09dae6651385bb661cfc802dd42e",
+  "baseline_main": {
+    "path": "docs/research/gcts-rl-renewal/index.html",
+    "sha256": "f5016110fa3b9cbe6cf660ff15bddb2454607acdebcb0dae0abcd12dffb4c5de",
+    "bytes": 350007
+  },
+  "previous_turn_receipt": {
+    "path": ".gcts-active/receptor-matching-progress-20261011/turn-result.json",
+    "sha256": "c77afa538ddda503f0797d6259232576c60343064afc1fc9aced383f50da967b",
+    "bytes": 2590
+  },
+  "previous_publication": {
+    "path": ".gcts-active/receptor-matching-progress-20261011/publication.json",
+    "sha256": "54cccec62083423690fd4cd06736195dbfc44f74a722351f6466589317208384",
+    "bytes": 2307
+  },
+  "verified_task_files": 127,
+  "consecutive_no_progress_turns": 0,
+  "goal_status": "active",
+  "current_scientific_runs_started": 0,
+  "current_native_queries": 0,
+  "current_training_runs": 0,
+  "unrelated_root_status_snapshot_sha256": "31cdc0ffef47561b1135345dd4599ea937ffd13a82a0300041f53ea71b5bba44",
+  "root_status_records": 1468,
+  "sole_actual_owner_and_publisher": "root",
+  "parallel_agents": "Reuse existing three, user explicitly authorized. Source-only work now.",
+  "next_phase_intent": "Automatic receptor-adapted cluster-family proposals and learned selection, full primitive fallback/scheduler/rollback, independent conditional-lemma/point/logical gate and held-out learning protocol. No authored target-proof words."
+}

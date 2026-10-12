@@ -1,0 +1,41 @@
+{
+  "status": "passed_owned_pure_family_fixtures",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v2.json",
+    "sha256": "1425bd366a68e3e71dfcfa7b4198c6127cb04c3526494daf348316682602f0d3",
+    "bytes": 10612
+  },
+  "child_pid": 72582,
+  "child_exit": 0,
+  "child_reaped": true,
+  "stdout": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-stdout-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-stderr-v2.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-result-v2.json",
+    "sha256": "994edd42c5d2d62f060d3aa15fe8820bd2add05e2c863f83d5a2e3c0dd1e15d5",
+    "bytes": 11356
+  },
+  "sampled_combined_peak_bytes": 38092800,
+  "kernel_conservative_peak_bytes": 38191104,
+  "metadata_child_peak_bytes": 1409024,
+  "max_whole_seconds": 30,
+  "max_peak_bytes": 134217728,
+  "execution_scope": "pure synthetic source projection/port/interface/embedding/aggregate controls only",
+  "native_queries": 0,
+  "actual_model_loads": 0,
+  "engine_or_scheduler_runs": 0,
+  "activation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-activation-v2.json",
+    "sha256": "34e0e319d0ec1ee778b9e4fc1fcf49febc79a3b4744f25ec0313279809c56da4",
+    "bytes": 279
+  },
+  "owner_seconds_before_final_receipt_write": 0.140686833
+}

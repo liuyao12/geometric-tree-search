@@ -1,0 +1,37 @@
+{
+  "status": "source_only_pre_freeze_review_corrections_no_actual_execution",
+  "worker_loader": "ROOT identified frozen_model(root,plan); preserved draft called one argument. Corrected to exact old accepted convention.",
+  "fixed_priority": "ROOT identified caller-adjustable priority. Immutable computed priority tuple now belongs to pool epoch; expected requires exact indexed value.",
+  "additional_metadata": "Resolved ordered input full-key/full-ID provenance and preparation/registration/graph metric counters added before freeze.",
+  "drafts": [
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_source_review_draft_v2.py",
+      "sha256": "9e03d34604b6d112aa0eec4ccb7143f79cbd8d3e110aeab130990bc4980b4bf7",
+      "bytes": 7243
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_source_review_draft_v2.py",
+      "sha256": "5e6d48810b877a46131cfeaa4b0c167a96ce148b628ecf214f16fe2435da70be",
+      "bytes": 20102
+    }
+  ],
+  "diffs": [
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_v2-source-review.diff",
+      "sha256": "10dd432c11be4c346a4fdf905ac53bfae85d46645b7bd45c77bf2fb2f629e9ce",
+      "bytes": 3962
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2-source-review.diff",
+      "sha256": "1f3369ba803094cfaa679b60d84642038b8e34d25c483f56b4d60471cd930424",
+      "bytes": 9713
+    }
+  ],
+  "scientific_imports": 0,
+  "model_constructions": 0,
+  "registry_factories": 0,
+  "fixtures": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "training": 0
+}

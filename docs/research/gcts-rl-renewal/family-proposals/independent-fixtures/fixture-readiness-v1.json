@@ -1,0 +1,56 @@
+{
+  "status": "source_ready_pure_fixture_plan_not_executed",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v1.json",
+    "sha256": "9c94ae0f2be988a63acf275fd5f11c2cb670a63c1f1a90d9ff855d4b9e0b2ac1",
+    "bytes": 7318
+  },
+  "source_import_ast": {
+    "family_binding_oracle_v1.py": [
+      "import copy",
+      "import hashlib",
+      "import json"
+    ],
+    "family_embedding_oracle_v1.py": [
+      "import copy",
+      "import itertools",
+      "from family_binding_oracle_v1 import canonical, digest, integer, project_binding, require"
+    ],
+    "family_fixture_runner_v1.py": [
+      "import copy",
+      "import hashlib",
+      "import json",
+      "import os",
+      "from pathlib import Path",
+      "import resource",
+      "import signal",
+      "import sys",
+      "import time",
+      "import family_binding_oracle_v1 as binding",
+      "import family_embedding_oracle_v1 as embedding"
+    ],
+    "family_fixture_owner_v1.py": [
+      "import hashlib",
+      "import json",
+      "import os",
+      "from pathlib import Path",
+      "import resource",
+      "import signal",
+      "import subprocess",
+      "import sys",
+      "import time"
+    ]
+  },
+  "syntax_checks": "AST/JSON parse only; no module imports, fixtures, model, scheduler, engine, logical checker or native calls",
+  "protocol_disposition": "Fixed root single/pair pool can reuse paired controller only through a separately verified immutable union authority. This fixture gate does not implement or activate that authority.",
+  "limitations": [
+    "Synthetic equal-input binary primitive is deliberately not a logical inference.",
+    "Selected-root entries and already-selected keys are API prerequisites, not independently certified actual roots here.",
+    "Full projection digest/body fields require independently pinned actual source registry in a later production adapter.",
+    "Synthetic identity covers its declared fixture-only preimage; actual production full point preimages remain a separate audit.",
+    "Canonical DAG row adaptation regenerates offsets, not a rigid translation of an atomic macro.",
+    "Single/pair grammar and one embedding per binding do not exhaust arbitrary clusters, embeddings or proofs.",
+    "Synthetic roots sort full keys. Producer graph.order token indices must be reconstructed separately or normalized on both sides by full keys; this gate does not establish their ordering equality.",
+    "No actual rule/controller/epoch/pool/rollback/degree or inference validity tested."
+  ]
+}

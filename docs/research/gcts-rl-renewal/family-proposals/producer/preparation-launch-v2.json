@@ -1,0 +1,14 @@
+{
+  "pid": 77027,
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "scope": "complete bounded single/pair proposal preparation only; no controller/executor/search",
+  "wall_ceiling_seconds": 65,
+  "host_ceiling_bytes": 536870912,
+  "maximum_geometry_searches": 0,
+  "native_queries": 0,
+  "new_training": false
+}

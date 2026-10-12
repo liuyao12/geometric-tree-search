@@ -1,0 +1,34 @@
+{
+  "status": "passed_family_preparation_full_lifetime_resource_phase",
+  "full_supervisor_process_seconds_including_receipt_write": 3.611774,
+  "process_return_code": 0,
+  "supervisor_pid": 77026,
+  "supervisor_wait_reaped": true,
+  "outer_cleanup_reason": null,
+  "worker_terminal_reaped_confirmed": true,
+  "outer_own_peak_bytes": 18448384,
+  "outer_children_kernel_peak_bytes": 75087872,
+  "conservative_host_peak_bytes": 112361472,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 70,
+  "actual_wall_overshoot_seconds": 0,
+  "actual_memory_overshoot_bytes": 0,
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "supervision": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-supervision-v2.json",
+    "sha256": "ef8eaf325b5737c6f2d64e92ed26f36be552815aa8c999cfbafe15de1c801a9e",
+    "bytes": 12278
+  },
+  "own_receipt_serialization": "outside pre-write measurement; all worker/supervisor serialization included",
+  "actual_geometry_model_execution": true,
+  "maximum_geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "preparation_status": "complete_declared_proposal_grammar_prepared_pending_independent_audit",
+  "preparation_complete": true,
+  "mathematical_acceptance": "none; independent proposal-pool audit separate; no search/native in this phase"
+}

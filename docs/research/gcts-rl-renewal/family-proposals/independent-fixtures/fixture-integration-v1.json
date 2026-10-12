@@ -1,0 +1,49 @@
+{
+  "status": "immutable_unexecuted_pure_fixture_package",
+  "files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_embedding_oracle_v1.py",
+      "sha256": "8a44b7c31f034926d1f7d967547495f55741b93a33a10c05eb206accb283e687",
+      "bytes": 11430
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_runner_v1.py",
+      "sha256": "a8bd9bc592154ed734e5a9d28f506603912856219620f6598d09d155042966c6",
+      "bytes": 22901
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v1.py",
+      "sha256": "45bb14ae44abb4eb6de3ce60e46dcee57d95249b8519e5028d2231ab6b020cb8",
+      "bytes": 7868
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_freeze_v1.py",
+      "sha256": "85bf19152cdd7d712fcc50208ae5759af117d83dd1893afb85ea88a92c5df3d2",
+      "bytes": 7010
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family-fixture-corpus-v1.json",
+      "sha256": "184934894b82adcbea3e61285b9a4853948aac2fb3de8003f1bc893159fd800e",
+      "bytes": 6753
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v1.json",
+      "sha256": "9c94ae0f2be988a63acf275fd5f11c2cb670a63c1f1a90d9ff855d4b9e0b2ac1",
+      "bytes": 7318
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-readiness-v1.json",
+      "sha256": "3e2b925e1f9df8daf9e62e76a43b5eee04b873ab9b61a0d4a03095cde79bd69b",
+      "bytes": 2613
+    }
+  ],
+  "total_bytes": 65893,
+  "original_design_bundle": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/integration-v1.json",
+    "sha256": "744fa3a7ce452e2d7b87cd9ac335b60b112875fd3926bcbf3d9f690e5118b5ac",
+    "bytes": 816
+  },
+  "root_dispatch_required": true,
+  "activation_basename": "fixture-activation-v1.json",
+  "scientific_or_fixture_execution": false
+}

@@ -1,0 +1,140 @@
+--- family_proposal_source_review_draft_v2.py
++++ family_proposal_v2.py
+@@ -118,7 +118,7 @@
+         bindings = component['ordered_inputs']
+         if len(bindings) != len(body['premise_codes']):
+             raise ValueError('incomplete ordered component receptor map')
+-        input_rows = []
++        input_rows, input_provenance = [], []
+         for binding, code in zip(bindings, body['premise_codes']):
+             if set(binding) != {'kind', 'index'} or type(binding['index']) is not int:
+                 raise ValueError('literal ordered binding token required')
+@@ -127,10 +127,20 @@
+                 if not 0 <= index < len(anchors) or anchors[index]['formula_code'] != code:
+                     raise ValueError('root anchor token has wrong actual formula')
+                 input_rows.append(root_keys[index].row)
++                input_provenance.append({'binding': copy.deepcopy(binding), 'formula_code': code,
++                                         'row': root_keys[index].row, 'key': anchors[index]['key'],
++                                         'full_id': anchors[index]['full_id'], 'logical_role': 'original recipient hypothesis'})
+             elif binding['kind'] == 'earlier_component_output':
+                 if component_index != 1 or index != 0 or records_by_spec(records, spec[0])['conclusion_code'] != code:
+                     raise ValueError('not an exact prior declared output-to-receptor link')
+                 input_rows.append(prior_components[index]['conclusion_row'])
++                prior = prior_components[index]
++                occurrence = next(i for i, k in enumerate(prior['members']) if k[1] == prior['conclusion_row'])
++                input_provenance.append({'binding': copy.deepcopy(binding), 'formula_code': code,
++                                         'row': prior['conclusion_row'], 'key': prior['members'][occurrence],
++                                         'full_id': prior['full_member_ids'][occurrence],
++                                         'prior_component_body_sha256': prior['body_sha256'],
++                                         'logical_role': 'included conditional output obligation; not a seeded premise'})
+             else:
+                 raise ValueError('unsupported invented receptor token')
+         if component_index == 1 and not any(b['kind'] == 'earlier_component_output' for b in bindings):
+@@ -165,6 +175,7 @@
+             'full_projection_sha256': record['full_projection_sha256'],
+             'dependency_bindings': body['dependency_bindings'], 'earlier_expansion_closure': body['earlier_expansion_closure'],
+             'ordered_input_bindings': copy.deepcopy(bindings), 'ordered_input_rows': input_rows,
++            'resolved_ordered_input_provenance': input_provenance,
+             'ordered_member_rows': member_rows, 'conclusion_code': record['conclusion_code'],
+             'conclusion_row': mapping[record['conclusion_row']],
+             'ordered_receptor_ports': expected['ordered_receptor_ports'],
+@@ -225,12 +236,14 @@
+     interface_text: str
+     anchor_text: str
+     spec_texts: tuple[str, ...]
++    fixed_priorities: tuple[int, ...]
+     source_text: str
+ 
+     def epoch_payload(self):
+         return {'version': VERSION, 'grammar': GRAMMAR, 'graph': json.loads(self.graph_text),
+                 'original_authority_epoch': self.original.epoch, 'interfaces': self.life.core.digest(json.loads(self.interface_text)),
+                 'root_anchors': json.loads(self.anchor_text), 'pool_specs': [json.loads(t) for t in self.spec_texts],
++                'fixed_priorities': list(self.fixed_priorities),
+                 'source_bindings': json.loads(self.source_text)}
+ 
+     def check_graph(self, graph):
+@@ -241,8 +254,9 @@
+     def expected(self, graph, index, priority, deadline=float('inf')):
+         self.check_graph(graph)
+         core = self.life.core; core.integer(index); core.integer(priority)
+-        if not 0 <= index < len(self.spec_texts) or priority < 0:
+-            raise ValueError('exact registered group index and nonnegative priority required')
++        if (not 0 <= index < len(self.spec_texts) or priority < 0
++                or priority != self.fixed_priorities[index]):
++            raise ValueError('exact registered group index and frozen priority required')
+         spec = json.loads(self.spec_texts[index])
+         data = canonical_embedding(graph, self.original, tuple(json.loads(self.interface_text)),
+                                    tuple(json.loads(self.anchor_text)), spec, self.life, deadline)
+@@ -271,24 +285,35 @@
+ 
+ def prepare(graph, original, projection, life, source_bindings, deadline, counters):
+     core = life.core; start = time.perf_counter(); initial = core.digest(graph.semantic_state())
++    metrics_before = copy.deepcopy(graph.metrics)
++    interface_start = time.perf_counter()
+     records = interfaces(graph, original, projection, core); check_deadline(deadline)
++    interface_seconds = time.perf_counter() - interface_start
++    anchor_start = time.perf_counter()
+     anchors = root_anchors(graph, core); check_deadline(deadline)
+     counters.update({'interfaces_checked': len(records), 'single_types_visited': 0, 'pair_types_visited': 0,
+                      'binding_tuples_visited': 0, 'accepted_binding_specs': 0, 'rejections': {},
+-                     'rejected_binding_records': [], 'type_visits': [], 'disconnected_second_bindings_outside_grammar': 0})
++                     'rejected_binding_records': [], 'type_visits': [], 'disconnected_second_bindings_outside_grammar': 0,
++                     'interface_validation_seconds': interface_seconds,
++                     'root_anchor_validation_seconds': time.perf_counter() - anchor_start,
++                     'binding_embedding_and_validation_seconds': 0.0})
+     accepted, preliminary = [], []
+ 
+     def visit(spec):
+         check_deadline(deadline); counters['binding_tuples_visited'] += 1
++        embedding_start = time.perf_counter()
+         try:
+             group = canonical_embedding(graph, original, records, anchors, spec, life, deadline)
+         except ProposalRejected as exc:
+             reason = str(exc); counters['rejections'][reason] = counters['rejections'].get(reason, 0) + 1
+             counters['rejected_binding_records'].append({'specification': copy.deepcopy(spec), 'reason': reason})
+             return
++        finally:
++            counters['binding_embedding_and_validation_seconds'] += time.perf_counter() - embedding_start
+         accepted.append(core.canonical(spec)); preliminary.append(group['distinct_member_count'])
+         counters['accepted_binding_specs'] += 1
+ 
++    enumeration_start = time.perf_counter()
+     for first in records:
+         check_deadline(deadline); counters['single_types_visited'] += 1
+         counters['type_visits'].append({'names': [first['name']], 'binding_tuples': 0})
+@@ -311,13 +336,16 @@
+         raise AssertionError('entire declared family type domain not visited')
+     if len(set(accepted)) != len(accepted):
+         raise AssertionError('enumerator must preserve occurrence identity and avoid repeated literal specs')
++    counters['complete_type_and_binding_enumeration_seconds'] = time.perf_counter() - enumeration_start
++    registration_start = time.perf_counter()
+     text, anchors_text = core.canonical(records), core.canonical(anchors)
+-    authority = GroupAuthority(original.graph_text, '', original, life, text, anchors_text,
+-                               tuple(accepted), core.canonical(source_bindings))
+-    authority = GroupAuthority(authority.graph_text, core.digest(authority.epoch_payload()), original, life,
+-                               text, anchors_text, tuple(accepted), authority.source_text)
+     priorities = {index: rank for rank, index in enumerate(sorted(range(len(accepted)),
+                   key=lambda i: (-preliminary[i], accepted[i])))}
++    priority_tuple = tuple(priorities[i] for i in range(len(accepted)))
++    authority = GroupAuthority(original.graph_text, '', original, life, text, anchors_text,
++                               tuple(accepted), priority_tuple, core.canonical(source_bindings))
++    authority = GroupAuthority(authority.graph_text, core.digest(authority.epoch_payload()), original, life,
++                               text, anchors_text, tuple(accepted), priority_tuple, authority.source_text)
+     groups = []
+     for index in range(len(accepted)):
+         check_deadline(deadline)
+@@ -327,9 +355,14 @@
+     # This is construction/validation only: Controller and Executor are not run.
+     if core.digest(graph.semantic_state()) != initial:
+         raise AssertionError('preparation mutated primitive graph semantics')
++    for field in ('placements', 'attempts', 'forced', 'branches', 'backtracks'):
++        if graph.metrics[field] != metrics_before[field]:
++            raise AssertionError('preparation executed a primitive search/placement action')
+     counters.update({'registered_groups': len(groups), 'source_member_occurrences': sum(g['component_member_occurrences'] for g in groups),
+                      'group_distinct_members': sum(g['distinct_member_count'] for g in groups),
+                      'group_shared_members': sum(g['shared_member_count'] for g in groups),
+                      'preparation_seconds': time.perf_counter() - start,
++                     'immutable_group_registration_seconds': time.perf_counter() - registration_start,
++                     'graph_metrics_before': metrics_before, 'graph_metrics_after': copy.deepcopy(graph.metrics),
+                      'initial_final_graph_semantic_sha256': initial})
+     return authority, groups, anchors, records

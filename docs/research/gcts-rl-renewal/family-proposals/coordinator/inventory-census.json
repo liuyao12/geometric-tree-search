@@ -1,0 +1,43 @@
+{
+  "status": "metadata_projection_of_existing_checked_inventory_no_engine_or_lemma_execution",
+  "source": {
+    "path": ".gcts-active/hilbert-aggregate-expansion-20261011/reader-data-v2.json",
+    "sha256": "82bc2befb36b52476055d67fcb3b1dc9a8ea63a045fa50ec619da5742fc50550",
+    "bytes": 1253326
+  },
+  "named_definitions": 171,
+  "family_counts": {
+    "universal-uniqueness": 36,
+    "incidence-equality-transport": 27,
+    "searched-incidence-transport": 108
+  },
+  "body_leaf_sizes": {
+    "incidence-equality-transport": [
+      3
+    ],
+    "searched-incidence-transport": [
+      13
+    ],
+    "universal-uniqueness": [
+      10
+    ]
+  },
+  "ordered_premise_arities": {
+    "1": 36,
+    "2": 135
+  },
+  "recipe_rules": {
+    "mp": 144,
+    "axiom": 1,
+    "assumption": 3,
+    "instantiate": 54,
+    "eq_subst": 27
+  },
+  "formula_codes": 217,
+  "total_source_leaf_occurrences": 1845,
+  "prospective_single_type_domain": 171,
+  "prospective_ordered_pair_type_domain": 29241,
+  "actual_proposal_bindings": null,
+  "actual_generated_groups": null,
+  "scope": "Static inventory census only. Prospective type counts are not executed binding or proposal counts. No target example read or used."
+}

@@ -1,0 +1,34 @@
+{
+  "status": "ROOT_source_review_passed_for_pure_synthetic_fixture_dispatch_only",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v2.json",
+    "sha256": "1425bd366a68e3e71dfcfa7b4198c6127cb04c3526494daf348316682602f0d3",
+    "bytes": 10612
+  },
+  "sources_reviewed_full": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_binding_oracle_v1.py",
+      "sha256": "9624db0931d722cd9d04574e0b8705892a3e580c0e779e0726e4b0406f7ad317",
+      "bytes": 10072
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_embedding_oracle_v1.py",
+      "sha256": "8a44b7c31f034926d1f7d967547495f55741b93a33a10c05eb206accb283e687",
+      "bytes": 11430
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_runner_v1.py",
+      "sha256": "a8bd9bc592154ed734e5a9d28f506603912856219620f6598d09d155042966c6",
+      "bytes": 22901
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v2.py",
+      "sha256": "2f9c0fc5802d2ba62a0cda49127d6f9cfa8429419e95d521feb0905bbea2f800",
+      "bytes": 7884
+    }
+  ],
+  "source_unchanged_after_review": true,
+  "controls": "Port transport, declared non-last conclusion, aliases, exact identity sharing, canonical embedding; no actual model/producer correspondence or proof acceptance.",
+  "source_correction": "V1 executable-alias pin mismatch caught before dispatch; V2 changes reviewed. V1 unexecuted.",
+  "scope": "No functions, fixture calls, engine/model/training/search/native execution in this review."
+}

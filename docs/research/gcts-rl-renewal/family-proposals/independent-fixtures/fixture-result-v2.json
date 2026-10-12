@@ -1,0 +1,342 @@
+{
+  "status": "passed_pure_synthetic_family_binding_controls",
+  "controls": [
+    {
+      "name": "conditional-explicit-keys-ports-offsets",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "330c137dd07ddae159b3e3fe9ae86414bfcebe5f9e2ff7a71978dd03f955fb76"
+    },
+    {
+      "name": "conditional-explicit-point-union-assigned-zero",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "f538a13ff61daff653865d66db34711a547b9ef1636c27b3e636ebb20da19689"
+    },
+    {
+      "name": "equal-code-noninjective-aliases-ordered-readers",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "2051840e2c9babccdd6516e7e424c176bca34a1dfea2d879ab39e09e88027a6a"
+    },
+    {
+      "name": "equal-code-ports-point-union",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "bc65e54e2410fe590831e1f34031a8a1c3b6b53d89e6d64995fe1490460dfc82"
+    },
+    {
+      "name": "unequal-code-alias-collision",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "noninjective receptor formula conflict"
+    },
+    {
+      "name": "reused-output-row",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "nonempty strictly ordered member embedding"
+    },
+    {
+      "name": "descending-member-rows",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "nonempty strictly ordered member embedding"
+    },
+    {
+      "name": "forward-receptor-read",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "recipient strict-prior reads, no cycles/forward dependencies"
+    },
+    {
+      "name": "bool-receptor-row",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "bool-output-row",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "bool-source-premise-code",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "bool-source-output-code",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "ordered-source-ports-swapped",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "source body exact strict-prior formula dependency"
+    },
+    {
+      "name": "cyclic-source-reference",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "source body exact strict-prior formula dependency"
+    },
+    {
+      "name": "unknown-recipe",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "member belongs to original checked primitive palette"
+    },
+    {
+      "name": "receptor-output-mark-conflict",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "receptor/internal output collision"
+    },
+    {
+      "name": "identical-body-shared-identities-provenance",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "b5a5f7c64518f70e9b1970acfa68a520a48ebf9b6e6f66ba6317d3e9cfb3c0d9"
+    },
+    {
+      "name": "selected-all-shared-zero-additional-occupancy",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "receptor-no-new-t-seed",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "same-formula-different-recipe-cannot-share-occupancy",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "distinct placements overfill composed physical aggregate"
+    },
+    {
+      "name": "same-formula-different-ordered-refs-different-full-identity",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+    },
+    {
+      "name": "same-formula-different-refs-cannot-share-occupancy",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "distinct placements overfill composed physical aggregate"
+    },
+    {
+      "name": "hidden-receptor-assigned-zero-conflict",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "composed receptor formula conflict"
+    },
+    {
+      "name": "receptor-primitive-remote-mark-conflict",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "receptor/body aggregate marking conflict"
+    },
+    {
+      "name": "identity-mutant-hash",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "full identity hash"
+    },
+    {
+      "name": "identity-mutant-key",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "independent identity preserves exact member key"
+    },
+    {
+      "name": "identity-mutant-support",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "full identity support binding"
+    },
+    {
+      "name": "identity-mutant-command",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "full identity logical command binding"
+    },
+    {
+      "name": "assigned-bool-mark-with-fresh-self-hash",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "shared-key-different-full-authority-preimage",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "shared key needs exact full decorated identity"
+    },
+    {
+      "name": "different-member-keys-cannot-share-claimed-id",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "different keys may not share an identity"
+    },
+    {
+      "name": "full-projection-nonlast-declared-interface",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "ab3a730aec1acaa97179b9fafa7a6327784debc20cd41e92ed7caa202ac9f8c3"
+    },
+    {
+      "name": "nonlast-conclusion-transport-no-default-leak",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "414c0c2a3aca6bab6d6528b1017007aa19b659f1a83b9e8ed0810627375978a2"
+    },
+    {
+      "name": "whole-projection-digest-not-just-conclusion",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "complete declared projection binding"
+    },
+    {
+      "name": "fresh-self-hash-wrong-declared-output",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "declared member output code"
+    },
+    {
+      "name": "fresh-self-hash-conclusion-is-receptor-not-member",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "declared conclusion is one actual source member"
+    },
+    {
+      "name": "bool-declared-conclusion-code",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "fresh-self-hash-valid-member-change-not-registered-body",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact projection/body member transport"
+    },
+    {
+      "name": "fresh-self-hash-alternative-valid-recipe-not-source-body",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact projection/body member transport"
+    },
+    {
+      "name": "canonical-earliest-available-embedding",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "84516dfe470642c1f98b77d79485002f85e7a2b8746c75220919e21e4a668071"
+    },
+    {
+      "name": "canonical-exact-recipe-reference-reuse",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "b8df7042141e70a55a4f9e6f6711fac16e12800ce560ddc3896182c63607d817"
+    },
+    {
+      "name": "canonical-earliest-of-two-exact-reuses",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "d07d3dd3cc0af0c84ffe2ac1fcc0443fe236844dc42f1992c8fba00c21f0bb86"
+    },
+    {
+      "name": "within-component-later-occurrence-not-erased",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "605d6e76a860d027f1dc399790466ec6b1c31665aedd1792535330c4e7f2335a"
+    },
+    {
+      "name": "canonical-boundary-exhaustion",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "canonical row exhaustion"
+    },
+    {
+      "name": "same-formula-different-root-full-key-no-reuse",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "canonical row exhaustion"
+    },
+    {
+      "name": "complete-single-pair-binding-grammar",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "a9d9ef48906dd68ee8c9261b2e35e20e592f33a7eb0f4020fe07e9bf570eb1cb"
+    },
+    {
+      "name": "all-repeated-ordered-Cartesian-bindings",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "9ccbf7765fd79333dd6874fda4fa6cc99898591670a865ca28c3500c78283915"
+    },
+    {
+      "name": "synthetic-root-full-key-order-normalization",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "9ccbf7765fd79333dd6874fda4fa6cc99898591670a865ca28c3500c78283915"
+    },
+    {
+      "name": "empty-Cartesian-product-no-unlinked-pair",
+      "expected": "pass",
+      "actual": "pass",
+      "evidence_sha256": "52f8aab6e144f6e6a173f64dbe5b6a4cfc6fd4eacee187a954b512bdd0f6bce7"
+    },
+    {
+      "name": "unselected-marked-row-not-anchor",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "explicit selected root only"
+    },
+    {
+      "name": "bool-anchor-generation",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "exact integer; bool is not a row/code/priority"
+    },
+    {
+      "name": "root-code-differs-from-full-key",
+      "expected": "reject",
+      "actual": "reject",
+      "reason": "selected root formula identity"
+    }
+  ],
+  "control_count": 52,
+  "positive_count": 18,
+  "negative_count": 34,
+  "corpus_unchanged_sha256": "6cd0a9c21ddfb8070089d98d7839f7d9f10dbdefe4759bbaae807602c9d11051",
+  "fixed_type_binding_census": {
+    "two_interface_single_types": 2,
+    "two_interface_pair_types": 4,
+    "two_interface_bindings": 2,
+    "repeated_equal_port_bindings": 4,
+    "zero_input_bindings": 1
+  },
+  "all_expected_values_hand_declared": true,
+  "fixture_identity_scope": "independently reconstructed synthetic full witnesses/ordered refs/t/m/context/authority only",
+  "root_ordering_scope": "Synthetic oracle sorts full (recipe,row,refs) keys. It does not assert equality of producer graph.order indices; actual correspondence must preserve producer insertion order or independently normalize tokens by full keys.",
+  "engine_conformance": false,
+  "logical_proof_accepted": false,
+  "actual_model_loaded": false,
+  "producer_imports": false,
+  "scheduler_executed": false,
+  "native_queries": 0,
+  "training_updates": 0,
+  "scope": "Hand-derived finite synthetic projection, declared-interface, binding, embedding, identity and aggregate controls only. No engine, scheduler, inference validity, actual-model, proof, native or trained-policy acceptance.",
+  "fixture_seconds_including_result_preparation": 0.005471250000000011,
+  "kernel_peak_bytes": 18497536,
+  "plan_sha256": "1425bd366a68e3e71dfcfa7b4198c6127cb04c3526494daf348316682602f0d3"
+}

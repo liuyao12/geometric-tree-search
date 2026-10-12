@@ -1,0 +1,144 @@
+{
+  "status": "immutable_source_ready_prospective_preparation_only_no_scientific_execution",
+  "files": [
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/early-assessment-manifest-v1.json",
+      "sha256": "5b11f683efcecf8755529791e9cbc07526a848c622a479fcac0b732e549bb0bf",
+      "bytes": 1086
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_freeze_v2.py",
+      "sha256": "99e0fb6df8e9f48fbd5c23a4554a6e1e3ec1566b537d30f614ec639763f7f2aa",
+      "bytes": 12069
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_outer_v2.py",
+      "sha256": "da9d3cdcb2a8a5bc65afa3c8115e860d2b213cd217b5584427e9ae16ce2cbf79",
+      "bytes": 4044
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_supervisor_v2.py",
+      "sha256": "a409be109591d9b3cdc99d4da1bb3cc76be473e603e0ed8a8fa42da3298ead4d",
+      "bytes": 7711
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_source_review_draft_v2.py",
+      "sha256": "9e03d34604b6d112aa0eec4ccb7143f79cbd8d3e110aeab130990bc4980b4bf7",
+      "bytes": 7243
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_v2-source-review.diff",
+      "sha256": "10dd432c11be4c346a4fdf905ac53bfae85d46645b7bd45c77bf2fb2f629e9ce",
+      "bytes": 3962
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_v2.py",
+      "sha256": "1bce9f63806b3a1372550005f52f8cd51472131eb895f1853328b90fe4bd9576",
+      "bytes": 7865
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_api_v1.py",
+      "sha256": "098fad009ce4ebab66964c432984217edc1f6ab9ac6858c5c83242851c2297b7",
+      "bytes": 5440
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_source_review_draft_v2.py",
+      "sha256": "5e6d48810b877a46131cfeaa4b0c167a96ce148b628ecf214f16fe2435da70be",
+      "bytes": 20102
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2-source-review.diff",
+      "sha256": "1f3369ba803094cfaa679b60d84642038b8e34d25c483f56b4d60471cd930424",
+      "bytes": 9713
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+      "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+      "bytes": 22693
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+      "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+      "bytes": 215210
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/protocol-v1.md",
+      "sha256": "25359692ee0d3f9226760a7ca523e04633f27e350e4be0e904c376708847dc54",
+      "bytes": 9386
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/source-freeze-v2.json",
+      "sha256": "2825ebd816fdd1e1e05af3b48c75544f0c1abd2bf3c88d89088d4276442d403f",
+      "bytes": 3873
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/source-review-corrections-v2.json",
+      "sha256": "cceca69de3198dba36e7168222be9e476ef7fd113528d2be5f37eb2115af9044",
+      "bytes": 1637
+    }
+  ],
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "freeze": {
+    "path": ".gcts-active/family-proposal-source-20261012/source-freeze-v2.json",
+    "sha256": "2825ebd816fdd1e1e05af3b48c75544f0c1abd2bf3c88d89088d4276442d403f",
+    "bytes": 3873
+  },
+  "source_files": [
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+      "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+      "bytes": 22693
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_v2.py",
+      "sha256": "1bce9f63806b3a1372550005f52f8cd51472131eb895f1853328b90fe4bd9576",
+      "bytes": 7865
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_supervisor_v2.py",
+      "sha256": "a409be109591d9b3cdc99d4da1bb3cc76be473e603e0ed8a8fa42da3298ead4d",
+      "bytes": 7711
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_outer_v2.py",
+      "sha256": "da9d3cdcb2a8a5bc65afa3c8115e860d2b213cd217b5584427e9ae16ce2cbf79",
+      "bytes": 4044
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_freeze_v2.py",
+      "sha256": "99e0fb6df8e9f48fbd5c23a4554a6e1e3ec1566b537d30f614ec639763f7f2aa",
+      "bytes": 12069
+    }
+  ],
+  "closure_counts": {
+    "sources": 5,
+    "input_roles": 151,
+    "preserved": 770,
+    "unique_verified_paths": 776
+  },
+  "prospective_gate": {
+    "preparation_seconds_including_model_and_original_body_setup": 30,
+    "child_seconds": 60,
+    "supervisor_seconds": 65,
+    "ROOT_outer_seconds": 70,
+    "conservative_host_peak_bytes": 536870912,
+    "enforcement": "child SIGALRM; owned external ps RSS/time watchdog; final kernel peak plus outer validation; no OS soft limit claim",
+    "in_flight": "deadline checked between finite operations; overshoot retained; owner gates still apply",
+    "unknown": "incomplete preparation exports partial visit/rejection accounting but no partial active pool"
+  },
+  "scientific_imports": 0,
+  "model_constructions": 0,
+  "registry_factories": 0,
+  "fixtures": 0,
+  "target_searches": 0,
+  "native_queries": 0,
+  "training": 0,
+  "source_authoring_cost": "unmeasured; source-only hash/AST freeze separately0.9239769999999999seconds17,481,728bytes",
+  "pool_count": "unmeasured; complete grammar counts are planned type domain only",
+  "next": "ROOT and independent source review then exact ROOT activation for one preparation-only owner; pool audit/search/native/learning separate",
+  "root_command": "python3 .gcts-active/family-proposal-source-20261012/family_preparation_outer_v2.py"
+}

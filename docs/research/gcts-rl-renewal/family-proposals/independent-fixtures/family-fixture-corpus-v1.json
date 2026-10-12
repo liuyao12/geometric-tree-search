@@ -1,0 +1,65 @@
+{
+  "schema": "pure-family-binding-fixtures-v1",
+  "scope": "Hand-derived finite synthetic projection, declared-interface, binding, embedding, identity and aggregate controls only. No engine, scheduler, inference validity, actual-model, proof, native or trained-policy acceptance.",
+  "height": 12,
+  "formula_values": [["pred", "P", []], ["pred", "Q", []], ["imp", ["pred", "P", []], ["pred", "Q", []]]],
+  "inventory": [
+    {"id": "fixture-imp", "output": 2, "inputs": [], "witness": {"rule": "axiom", "name": "fixture-imp", "formula": ["imp", ["pred", "P", []], ["pred", "Q", []]]}},
+    {"id": "fixture-mp", "output": 1, "inputs": [0, 2], "witness": {"rule": "mp", "formula": ["pred", "Q", []]}},
+    {"id": "fixture-p", "output": 0, "inputs": [], "witness": {"rule": "axiom", "name": "fixture-p", "formula": ["pred", "P", []]}},
+    {"id": "fixture-same-ports", "output": 1, "inputs": [0, 0], "witness": {"rule": "synthetic_binary_not_logical_inference", "formula": ["pred", "Q", []]}},
+    {"id": "fixture-imp-copy", "output": 2, "inputs": [], "witness": {"rule": "axiom", "name": "fixture-imp-copy", "formula": ["imp", ["pred", "P", []], ["pred", "Q", []]]}}
+  ],
+  "bodies": {
+    "conditional": {"name": "fixture-conditional", "canonical_input_rows": [0], "premise_codes": [0], "primitive_members": [{"row": 1, "recipe_id": "fixture-imp", "formula_code": 2, "ordered_inputs": []}, {"row": 2, "recipe_id": "fixture-mp", "formula_code": 1, "ordered_inputs": [0, 1]}], "native_accepted": false},
+    "equal_aliases": {"name": "fixture-equal-aliases", "canonical_input_rows": [0, 1], "premise_codes": [0, 0], "primitive_members": [{"row": 2, "recipe_id": "fixture-same-ports", "formula_code": 1, "ordered_inputs": [0, 1]}], "native_accepted": false},
+    "different_aliases": {"name": "fixture-different-aliases", "canonical_input_rows": [0, 1], "premise_codes": [0, 2], "primitive_members": [{"row": 2, "recipe_id": "fixture-mp", "formula_code": 1, "ordered_inputs": [0, 1]}], "native_accepted": false},
+    "unused_receptor": {"name": "fixture-unused-receptor", "canonical_input_rows": [0], "premise_codes": [2], "primitive_members": [{"row": 1, "recipe_id": "fixture-p", "formula_code": 0, "ordered_inputs": []}], "native_accepted": false},
+    "return_p": {"name": "fixture-return-p", "canonical_input_rows": [0], "premise_codes": [1], "primitive_members": [{"row": 1, "recipe_id": "fixture-p", "formula_code": 0, "ordered_inputs": []}], "native_accepted": false},
+    "closed_imp": {"name": "fixture-closed-imp", "canonical_input_rows": [], "premise_codes": [], "primitive_members": [{"row": 0, "recipe_id": "fixture-imp", "formula_code": 2, "ordered_inputs": []}], "native_accepted": false}
+  },
+  "expected": {
+    "conditional_binding": {
+      "members": [[0, 3, []], [1, 8, [1, 3]]],
+      "ordered_receptor_ports": [{"high_level_port": 0, "input_row": 1, "formula_code": 0, "new_occupancy": 0, "readers": [{"reader_row": 8, "primitive_input_port": 0, "formula_code": 0, "offset_value": -7}]}],
+      "receptor_only_assignments": [[1, 1, 0]],
+      "aggregate_t": [[0, 3, 1], [0, 8, 1]],
+      "aggregate_m": [[1, 1, 0], [1, 3, 2], [1, 8, 1], [2, 8, -7], [3, 8, -5]],
+      "conclusion_row": 8,
+      "conclusion_formula_code": 1
+    },
+    "equal_alias_binding": {
+      "members": [[3, 4, [0, 0]]],
+      "ordered_receptor_ports": [
+        {"high_level_port": 0, "input_row": 0, "formula_code": 0, "new_occupancy": 0, "readers": [{"reader_row": 4, "primitive_input_port": 0, "formula_code": 0, "offset_value": -4}]},
+        {"high_level_port": 1, "input_row": 0, "formula_code": 0, "new_occupancy": 0, "readers": [{"reader_row": 4, "primitive_input_port": 1, "formula_code": 0, "offset_value": -4}]}
+      ],
+      "receptor_only_assignments": [[1, 0, 0]],
+      "aggregate_t": [[0, 4, 1]],
+      "aggregate_m": [[1, 0, 0], [1, 4, 1], [2, 4, -4], [3, 4, -4]]
+    },
+    "identical_composition": {"distinct_members": [[0, 3, []], [1, 8, [1, 3]]], "occurrence_provenance_count": 4, "component_member_occurrences": [[0, 0], [0, 1], [1, 0], [1, 1]], "aggregate_t": [[0, 3, 1], [0, 8, 1]], "additional_t_selected_all": []},
+    "canonical_conditional": {"ordered_member_rows": [0, 2], "members": [[0, 0, []], [1, 2, [1, 0]]]},
+    "canonical_reuse": {"ordered_member_rows": [3, 8], "members": [[0, 3, []], [1, 8, [1, 3]]]},
+    "canonical_earliest_reuse": {"ordered_member_rows": [3, 4], "members": [[0, 3, []], [1, 4, [1, 3]]]},
+    "canonical_occurrence_preserved": {"ordered_member_rows": [3, 4], "members": [[0, 3, []], [0, 4, []]]},
+    "nonlast_declared_conclusion": {"conclusion_row": 3, "conclusion_formula_code": 2, "declared_conclusion_member_index": 0},
+    "grammar_conditional_return_p": {
+      "ordered_single_types": [0, 1],
+      "ordered_pair_types": [[0, 0], [0, 1], [1, 0], [1, 1]],
+      "binding_count": 2,
+      "binding_kind_indices": [["single", [0]], ["pair", [0, 1]]],
+      "single_members": [[0, 0, []], [1, 2, [1, 0]]],
+      "pair_second_inputs": [{"kind": "earlier_component_output", "index": 0}],
+      "pair_second_members": [[2, 1, []]],
+      "pair_second_conclusion_row": 1,
+      "pair_joint_t": [[0, 0, 1], [0, 1, 1], [0, 2, 1]],
+      "pair_additional_t_selected_root": [[0, 0, 1], [0, 2, 1]]
+    },
+    "grammar_repeated_roots": {"ordered_single_types": [0], "ordered_pair_types": [[0, 0]], "binding_count": 4, "ordered_input_rows": [[0, 0], [0, 1], [1, 0], [1, 1]], "all_input_multiplicities": 2},
+    "grammar_closed_body": {"ordered_single_types": [0], "ordered_pair_types": [[0, 0]], "binding_count": 1, "member_keys": [[0, 0, []]]}
+  },
+  "proposed_controls": ["hand-derived projection and signed offsets", "assigned zero preserved", "same-code aliases with repeated port multiplicity", "different-code aliases rejected", "reused output row rejected", "nonincreasing member rows rejected", "forward/cyclic reads rejected", "wrong recipe/code/member transport rejected", "bool row/code rejected", "complete declared projection digest", "valid non-last conclusion", "wrong/absent conclusion rejected", "canonical earliest allocation", "earliest eligible exact reuse", "within-body occurrence preservation", "canonical row exhaustion", "same-formula different recipe identity no sharing", "exact shared aggregate counted once", "all component provenance retained", "selected member has no additional occupancy", "hidden receptor/body/remote mark conflict", "independent identity hash/preimage/key binding", "complete single/pair type iteration", "complete repeated ordered root Cartesian bindings", "included output links but no new premise seeds", "zero-port product and no unlinked pairs", "binding corruption/empty mark unavailable"],
+  "ROOT_execution_required": true,
+  "executed": false
+}

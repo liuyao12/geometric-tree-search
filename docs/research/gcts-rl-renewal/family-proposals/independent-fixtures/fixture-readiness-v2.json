@@ -1,0 +1,38 @@
+{
+  "status": "source_ready_runtime_alias_successor_not_executed",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v2.json",
+    "sha256": "1425bd366a68e3e71dfcfa7b4198c6127cb04c3526494daf348316682602f0d3",
+    "bytes": 10612
+  },
+  "owner": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v2.py",
+    "sha256": "2f9c0fc5802d2ba62a0cda49127d6f9cfa8429419e95d521feb0905bbea2f800",
+    "bytes": 7884
+  },
+  "diff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v2.diff",
+    "sha256": "82129cb369c5923488f1a784f071d8a3c2e90cb4e75c7c2266d4ee4d0c828bba",
+    "bytes": 1933
+  },
+  "previous_readiness": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-readiness-v1.json",
+    "sha256": "3e2b925e1f9df8daf9e62e76a43b5eee04b873ab9b61a0d4a03095cde79bd69b",
+    "bytes": 2613
+  },
+  "unchanged_limit": {
+    "whole_seconds": 30,
+    "supervisor_seconds": 28,
+    "child_seconds": 25,
+    "peak_bytes": 134217728
+  },
+  "precise_activation_basename": "fixture-activation-v2.json",
+  "precise_activation_schema": "root-pure-family-fixture-activation-v2",
+  "runtime_path_rule": "Runtime executable alias remains explicit; binary comparison resolves the alias before path+hash+length comparison.",
+  "fixture_results": 0,
+  "fixture_failure_claim": false,
+  "owner_dispatches": 0,
+  "syntax_scope": "Owner AST and JSON/pins only; no module imports, functions, fixtures or science execution",
+  "all_V1_scope_limitations_preserved": true,
+  "root_dispatch_required": true
+}

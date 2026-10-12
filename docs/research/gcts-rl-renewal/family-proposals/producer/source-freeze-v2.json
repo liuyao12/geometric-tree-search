@@ -1,0 +1,148 @@
+{
+  "status": "static_source_pin_AST_freeze_only_no_scientific_execution",
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "sources": [
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+      "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+      "bytes": 22693
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_worker_v2.py",
+      "sha256": "1bce9f63806b3a1372550005f52f8cd51472131eb895f1853328b90fe4bd9576",
+      "bytes": 7865
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_supervisor_v2.py",
+      "sha256": "a409be109591d9b3cdc99d4da1bb3cc76be473e603e0ed8a8fa42da3298ead4d",
+      "bytes": 7711
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_outer_v2.py",
+      "sha256": "da9d3cdcb2a8a5bc65afa3c8115e860d2b213cd217b5584427e9ae16ce2cbf79",
+      "bytes": 4044
+    },
+    {
+      "path": ".gcts-active/family-proposal-source-20261012/family_preparation_freeze_v2.py",
+      "sha256": "99e0fb6df8e9f48fbd5c23a4554a6e1e3ec1566b537d30f614ec639763f7f2aa",
+      "bytes": 12069
+    }
+  ],
+  "AST_metadata": [
+    {
+      "name": "family_proposal_v2.py",
+      "top_level_functions": [
+        "check_deadline",
+        "interfaces",
+        "root_anchors",
+        "binding_choices",
+        "canonical_embedding",
+        "records_by_spec",
+        "prepare"
+      ],
+      "imports": [
+        "import copy",
+        "import itertools",
+        "import json",
+        "import time",
+        "from dataclasses import dataclass"
+      ]
+    },
+    {
+      "name": "family_preparation_worker_v2.py",
+      "top_level_functions": [
+        "pin",
+        "verify",
+        "load_lifecycle",
+        "save",
+        "main"
+      ],
+      "imports": [
+        "import gzip",
+        "import hashlib",
+        "import importlib.util",
+        "import json",
+        "import resource",
+        "import signal",
+        "import sys",
+        "import time",
+        "from pathlib import Path",
+        "import family_proposal_v2 as proposals"
+      ]
+    },
+    {
+      "name": "family_preparation_supervisor_v2.py",
+      "top_level_functions": [
+        "peak",
+        "pin",
+        "save",
+        "alarm",
+        "main"
+      ],
+      "imports": [
+        "import hashlib",
+        "import json",
+        "import resource",
+        "import signal",
+        "import subprocess",
+        "import sys",
+        "import time",
+        "from pathlib import Path"
+      ]
+    },
+    {
+      "name": "family_preparation_outer_v2.py",
+      "top_level_functions": [
+        "peak",
+        "pin",
+        "main"
+      ],
+      "imports": [
+        "import hashlib",
+        "import json",
+        "import resource",
+        "import subprocess",
+        "import sys",
+        "import time",
+        "from pathlib import Path"
+      ]
+    },
+    {
+      "name": "family_preparation_freeze_v2.py",
+      "top_level_functions": [
+        "pin",
+        "save",
+        "main"
+      ],
+      "imports": [
+        "import ast",
+        "import datetime",
+        "import difflib",
+        "import hashlib",
+        "import json",
+        "import resource",
+        "import sys",
+        "import time",
+        "from pathlib import Path"
+      ]
+    }
+  ],
+  "input_roles": 151,
+  "preserved_files": 770,
+  "unique_source_closure_paths": 776,
+  "mismatches": 0,
+  "elapsed_seconds": 0.9239769999999999,
+  "peak_bytes": 17481728,
+  "scientific_imports": 0,
+  "model_constructions": 0,
+  "registry_factories": 0,
+  "fixtures": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "execution_authorized": false
+}

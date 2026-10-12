@@ -1,0 +1,45 @@
+{
+  "status": "immutable_source_only_family_learning_compatibility_repair_V2",
+  "files": [
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.diff",
+      "sha256": "32d6324186a891e25ef8b2f961a79b5dbe4a6a1bf2716f208d97076b760a7bbb",
+      "bytes": 438
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.diff",
+      "sha256": "5275f7dec9ff01977a4a57e99d7db1ba6a7917d01a77ce53e17ba03089d97962",
+      "bytes": 1737
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/compatibility-repair-plan-v2.json",
+      "sha256": "c1bd8fe742b45fd959bc07dd8da2ed3863f900a500fecfb73ac2c97e2a967227",
+      "bytes": 3618
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/readiness-v2.json",
+      "sha256": "2e45fc085daaf7ed06d288fe540e87c77021c5870c20607d57995ba83717981b",
+      "bytes": 1598
+    }
+  ],
+  "total_files": 6,
+  "total_bytes": 22610,
+  "preserved_V1_manifest": {
+    "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+    "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+    "bytes": 1246
+  },
+  "scientific_executions": 0,
+  "publication_owner": "root",
+  "no_current_report_or_PUB_changes": true
+}

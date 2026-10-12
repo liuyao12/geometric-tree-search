@@ -1,0 +1,127 @@
+{
+  "schema": "root-owned-pure-family-fixture-plan-v1",
+  "status": "frozen_prospective_unexecuted",
+  "sources": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_binding_oracle_v1.py",
+      "sha256": "9624db0931d722cd9d04574e0b8705892a3e580c0e779e0726e4b0406f7ad317",
+      "bytes": 10072
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_embedding_oracle_v1.py",
+      "sha256": "8a44b7c31f034926d1f7d967547495f55741b93a33a10c05eb206accb283e687",
+      "bytes": 11430
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_runner_v1.py",
+      "sha256": "a8bd9bc592154ed734e5a9d28f506603912856219620f6598d09d155042966c6",
+      "bytes": 22901
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v1.py",
+      "sha256": "45bb14ae44abb4eb6de3ce60e46dcee57d95249b8519e5028d2231ab6b020cb8",
+      "bytes": 7868
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family-fixture-corpus-v1.json",
+      "sha256": "184934894b82adcbea3e61285b9a4853948aac2fb3de8003f1bc893159fd800e",
+      "bytes": 6753
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "preserved": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/design-v1.json",
+      "sha256": "93cb2b75f810790fafe47baf4f07b8f88ef8475e53307cc32b995f7c6ee89328",
+      "bytes": 12244
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_binding_oracle_v1.py",
+      "sha256": "9624db0931d722cd9d04574e0b8705892a3e580c0e779e0726e4b0406f7ad317",
+      "bytes": 10072
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/source-readiness-v1.json",
+      "sha256": "160ec9a8b1a847a9580cc72cd11b74aaa57d981e6f4cfd3bb08ddf3d784767a6",
+      "bytes": 1844
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/integration-v1.json",
+      "sha256": "744fa3a7ce452e2d7b87cd9ac335b60b112875fd3926bcbf3d9f690e5118b5ac",
+      "bytes": 816
+    }
+  ],
+  "metadata_freezer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_freeze_v1.py",
+    "sha256": "85bf19152cdd7d712fcc50208ae5759af117d83dd1893afb85ea88a92c5df3d2",
+    "bytes": 7010
+  },
+  "runtime": {
+    "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "platform": "darwin",
+    "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "binary": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    }
+  },
+  "worker_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_runner_v1.py",
+  "owner_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v1.py",
+  "corpus_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family-fixture-corpus-v1.json",
+  "activation_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-activation-v1.json",
+  "required_activation": {
+    "schema": "root-pure-family-fixture-activation-v1",
+    "authorized": true,
+    "plan_sha256": "exact fixture-plan-v1.json hash"
+  },
+  "limits": {
+    "whole_seconds": 30,
+    "supervisor_seconds": 28,
+    "child_seconds": 25,
+    "peak_bytes": 134217728
+  },
+  "outputs": {
+    "result": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-result-v1.json",
+    "lifetime": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-lifetime-v1.json",
+    "stdout": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-stdout-v1.txt",
+    "stderr": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-stderr-v1.txt"
+  },
+  "root_command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/family_fixture_owner_v1.py",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-independent-20261012/fixture-plan-v1.json"
+  ],
+  "root_owned_process_metadata": "/bin/ps -o rss= -p OWNED_PID only; require permitted process metadata; missing live metadata UNKNOWN with kill/wait-reap",
+  "method": [
+    "Hand-derived literal keys, ordered ports, signed offsets, point unions and occurrence counts in corpus.",
+    "Independent synthetic identity preimages bind literal witnesses, refs, recipe, t/m, synthetic context/epoch/registry.",
+    "Original V1 binding/aggregate oracle preserved; additive declaration/embedding adapter verifies exact declared member instead of last-member convention.",
+    "Canonical single/pair enumeration visits full tiny type and filtered ordered-root Cartesian products; one increasing DAG embedding per binding.",
+    "Embedding acceptance alone does not imply compatible joint aggregate; joint point union checked separately.",
+    "Same-code receptor aliases preserve each ordered read port without adding premise t; distinct identities may not share occupancy."
+  ],
+  "expected_scope": {
+    "pure_synthetic_only": true,
+    "actual_graph_or_model": false,
+    "scheduler": false,
+    "logical_inference_validity": false,
+    "actual_body_registry_certification": false,
+    "native_queries": 0,
+    "training_or_search": false,
+    "fixture_results_unexecuted": true
+  },
+  "accounting": "Fixture source authoring unmeasured. Owned timers include runtime source verification, fixture calls, result preparation/serialization and process metadata; final lifetime receipt write follows its recorded timer. Pure fixture phase separate from future preparation/search/audit costs.",
+  "no_execution_by_freezer": true
+}

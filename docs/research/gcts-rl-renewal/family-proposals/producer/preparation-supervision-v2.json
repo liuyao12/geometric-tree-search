@@ -1,0 +1,486 @@
+{
+  "status": "passed_bounded_family_preparation_resource_phase",
+  "pid": 77027,
+  "exit_code": 0,
+  "owned_child_terminal_wait_reaped": true,
+  "supervisor_seconds_before_receipt_write": 2.768808,
+  "wall_ceiling_seconds": 65,
+  "host_ceiling_bytes": 536870912,
+  "kernel_child_peak_bytes": 75087872,
+  "supervisor_peak_bytes": 18825216,
+  "conservative_host_peak_bytes": 93913088,
+  "rss_samples": [
+    {
+      "seconds": 0.24594404200000003,
+      "child_rss_bytes": 1998848,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.271886459,
+      "child_rss_bytes": 11812864,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.299686542,
+      "child_rss_bytes": 16728064,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.327039375,
+      "child_rss_bytes": 18399232,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.354707834,
+      "child_rss_bytes": 21594112,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.382566709,
+      "child_rss_bytes": 22085632,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.409891084,
+      "child_rss_bytes": 22118400,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.43643395900000004,
+      "child_rss_bytes": 22151168,
+      "supervisor_peak_bytes": 18808832
+    },
+    {
+      "seconds": 0.46318899999999996,
+      "child_rss_bytes": 22151168,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.49186245900000003,
+      "child_rss_bytes": 22167552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.518380625,
+      "child_rss_bytes": 22167552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.547724792,
+      "child_rss_bytes": 22167552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.575921084,
+      "child_rss_bytes": 22167552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.603407875,
+      "child_rss_bytes": 23019520,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.631409584,
+      "child_rss_bytes": 61128704,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.656168375,
+      "child_rss_bytes": 63127552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.686383834,
+      "child_rss_bytes": 63979520,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.7105585,
+      "child_rss_bytes": 63979520,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.736726,
+      "child_rss_bytes": 62930944,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.761697167,
+      "child_rss_bytes": 59916288,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.786729792,
+      "child_rss_bytes": 61652992,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.815099875,
+      "child_rss_bytes": 63012864,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.843292042,
+      "child_rss_bytes": 63324160,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.871006459,
+      "child_rss_bytes": 63324160,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.898675959,
+      "child_rss_bytes": 63750144,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.926793,
+      "child_rss_bytes": 64274432,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.9542775419999999,
+      "child_rss_bytes": 62488576,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 0.9862011249999999,
+      "child_rss_bytes": 63324160,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.013886334,
+      "child_rss_bytes": 63160320,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.038306334,
+      "child_rss_bytes": 66650112,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.0659831249999998,
+      "child_rss_bytes": 65142784,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.0939815419999999,
+      "child_rss_bytes": 66879488,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.148886,
+      "child_rss_bytes": 67174400,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.1774417499999998,
+      "child_rss_bytes": 67207168,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.2034091670000002,
+      "child_rss_bytes": 67305472,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.236413459,
+      "child_rss_bytes": 68452352,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.264864292,
+      "child_rss_bytes": 71565312,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.296271542,
+      "child_rss_bytes": 71450624,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.3238237499999999,
+      "child_rss_bytes": 61915136,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.3533912090000002,
+      "child_rss_bytes": 58228736,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.381115334,
+      "child_rss_bytes": 56442880,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.408745917,
+      "child_rss_bytes": 58589184,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.4367390000000002,
+      "child_rss_bytes": 57966592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.4654869590000001,
+      "child_rss_bytes": 58245120,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.488991,
+      "child_rss_bytes": 57868288,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.513465042,
+      "child_rss_bytes": 57344000,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.538852667,
+      "child_rss_bytes": 57901056,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.567210292,
+      "child_rss_bytes": 57638912,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.596759917,
+      "child_rss_bytes": 58408960,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.6278531250000001,
+      "child_rss_bytes": 58425344,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.655799042,
+      "child_rss_bytes": 58163200,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.6807076250000001,
+      "child_rss_bytes": 58064896,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.708600375,
+      "child_rss_bytes": 58638336,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.736722125,
+      "child_rss_bytes": 59244544,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.765422167,
+      "child_rss_bytes": 58736640,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.7932566250000002,
+      "child_rss_bytes": 58933248,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.817146042,
+      "child_rss_bytes": 58884096,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.846622334,
+      "child_rss_bytes": 59441152,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.8756415839999998,
+      "child_rss_bytes": 59179008,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.9033994170000001,
+      "child_rss_bytes": 59424768,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.9283565,
+      "child_rss_bytes": 59621376,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.956090375,
+      "child_rss_bytes": 59899904,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 1.980239209,
+      "child_rss_bytes": 59670528,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.0080185839999998,
+      "child_rss_bytes": 59670528,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.0315113339999997,
+      "child_rss_bytes": 59965440,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.059199375,
+      "child_rss_bytes": 59719680,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.083291375,
+      "child_rss_bytes": 60260352,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.1108988749999997,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.136732334,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.165110667,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.1914288749999997,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.220726167,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.278843084,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.303417959,
+      "child_rss_bytes": 60014592,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.3277425839999997,
+      "child_rss_bytes": 59031552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.367437292,
+      "child_rss_bytes": 58966016,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.420063125,
+      "child_rss_bytes": 58966016,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.449177084,
+      "child_rss_bytes": 58966016,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.477723792,
+      "child_rss_bytes": 58966016,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.5033924169999997,
+      "child_rss_bytes": 58966016,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.5278942499999997,
+      "child_rss_bytes": 58998784,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.553398542,
+      "child_rss_bytes": 59031552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.577882959,
+      "child_rss_bytes": 59031552,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.603390542,
+      "child_rss_bytes": 59097088,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.631366542,
+      "child_rss_bytes": 59113472,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.656264125,
+      "child_rss_bytes": 59113472,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.68429775,
+      "child_rss_bytes": 59113472,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.712666917,
+      "child_rss_bytes": 59113472,
+      "supervisor_peak_bytes": 18825216
+    },
+    {
+      "seconds": 2.740806042,
+      "child_rss_bytes": 37814272,
+      "supervisor_peak_bytes": 18825216
+    }
+  ],
+  "resource_reason": null,
+  "watchdog_error": null,
+  "enforcement": "task-owned external sampled RSS/time watchdog, child SIGALRM, final kernel peak rejection",
+  "OS_soft_limit_claim": "none",
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "root_activation": {
+    "path": ".gcts-active/family-proposal-source-20261012/root-preparation-activation-v2.json",
+    "sha256": "4a6bd46da2e542c7b9184cdac42cef9d043efe70d79a1ce2fe533c656dac8ad8",
+    "bytes": 741
+  },
+  "outcome": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-outcome-v2.json",
+    "sha256": "84ea34990d28aa1c97523cab01e8f149d0a42c88526de32743c1c61fc757783c",
+    "bytes": 1111
+  },
+  "actual_geometry_model_execution": true,
+  "maximum_geometry_target_searches": 0,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "new_training": false,
+  "preparation_status": "complete_declared_proposal_grammar_prepared_pending_independent_audit",
+  "preparation_complete": true,
+  "mathematical_acceptance": "none; independent pool audit pending"
+}

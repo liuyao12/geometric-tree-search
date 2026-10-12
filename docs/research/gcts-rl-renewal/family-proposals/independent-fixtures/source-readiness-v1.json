@@ -1,0 +1,30 @@
+{
+  "status": "prospective_source_only_independent_family_binding_projection",
+  "source": {
+    "path": ".gcts-active/family-proposal-independent-20261012/family_binding_oracle_v1.py",
+    "sha256": "9624db0931d722cd9d04574e0b8705892a3e580c0e779e0726e4b0406f7ad317",
+    "bytes": 10072
+  },
+  "design": {
+    "path": ".gcts-active/family-proposal-independent-20261012/design-v1.json",
+    "sha256": "93cb2b75f810790fafe47baf4f07b8f88ef8475e53307cc32b995f7c6ee89328",
+    "bytes": 12244
+  },
+  "imports": [
+    "import copy",
+    "import hashlib",
+    "import json"
+  ],
+  "AST_parse_passed": true,
+  "functions_executed": 0,
+  "registry_or_model_loads": 0,
+  "proposed_execution_owner": "ROOT",
+  "remaining_gates": [
+    "No fixture or actual family binding has been run by this preparation. Source body/primitive logical validity depends on separately pinned independent accepted libraries, not this projection alone.",
+    "The composed union is an explicit current unit-row point adaptation and checks exact sharing/internal agreement only; it does not check complete live graph domains, state legality, scheduler, pool lifecycle or proof closure.",
+    "No body authority changes, mutable proposal pools or policy updates are implemented by this source. Those require separately frozen full protocols and owned tests.",
+    "All171 library bodies are available authored/certified infrastructure; learned selection/composition does not retroactively make their derivations machine-discovered.",
+    "A bounded generic proposal pool may be incomplete. Its limitations do not alter the complete primitive graph or justify an exhaustion/pruning claim."
+  ],
+  "scope_statement": "Every future proposal/audit phase must freeze exact source/input/model/body/pool epochs and limits before ROOT activation. No scientific dispatch occurs here."
+}

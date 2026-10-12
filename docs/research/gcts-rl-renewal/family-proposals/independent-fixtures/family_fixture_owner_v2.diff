@@ -1,0 +1,25 @@
+--- family_fixture_owner_v1.py
++++ family_fixture_owner_v2.py
+@@ -1,7 +1,7 @@
+ """ROOT-owned prospective pure fixture lifetime supervisor, exclusive outputs.
+ 
+ No graph/producer/controller/model/scientific imports. ROOT must create exact
+-fixture-activation-v1.json and dispatch this owner once after source review.
++fixture-activation-v2.json and dispatch this owner once after source review.
+ Owned PID metadata needs permitted /bin/ps; missing metadata is UNKNOWN and the
+ child is killed/wait-reaped. No retry or cap adjustment is performed here.
+ """
+@@ -58,11 +58,11 @@
+         for item in plan['sources'] + plan['inputs'] + plan['preserved']:
+             if pin(item['path']) != item:
+                 raise ValueError('exact frozen input/source pin mismatch: ' + item['path'])
+-        if plan['runtime']['executable'] != sys.executable or plan['runtime']['platform'] != sys.platform or pin(sys.executable) != plan['runtime']['binary']:
++        if plan['runtime']['executable'] != sys.executable or plan['runtime']['platform'] != sys.platform or pin(Path(sys.executable).resolve()) != plan['runtime']['binary']:
+             raise ValueError('exact Python runtime binary')
+         activation_path = Path(plan['activation_path'])
+         activation = json.loads(activation_path.read_text())
+-        if activation.get('schema') != 'root-pure-family-fixture-activation-v1' or activation.get('authorized') is not True or activation.get('plan_sha256') != receipt['plan']['sha256']:
++        if activation.get('schema') != 'root-pure-family-fixture-activation-v2' or activation.get('authorized') is not True or activation.get('plan_sha256') != receipt['plan']['sha256']:
+             raise ValueError('exact ROOT-only fixture activation required')
+         receipt['activation'] = pin(activation_path)
+         with Path(plan['outputs']['stdout']).open('xb') as stdout, Path(plan['outputs']['stderr']).open('xb') as stderr:

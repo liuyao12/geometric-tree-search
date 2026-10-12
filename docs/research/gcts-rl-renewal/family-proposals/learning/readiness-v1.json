@@ -1,0 +1,30 @@
+{
+  "status": "immutable_source_only_family_learning_protocol_and_pure_math_ready_for_review",
+  "design": {
+    "path": ".gcts-active/family-proposal-learning-20261012/design-v1.json",
+    "sha256": "e8008c6ea8d921740cc7d9c07c9cd00f5fb97cce10d35fc28235cceed00df19f",
+    "bytes": 19911
+  },
+  "protocol": {
+    "path": ".gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+    "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+    "bytes": 9905
+  },
+  "math_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py",
+    "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+    "bytes": 10953
+  },
+  "API_source": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py",
+    "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+    "bytes": 3576
+  },
+  "AST_parsed_sources": 2,
+  "executed_math_functions": 0,
+  "scientific_or_UI_executions": 0,
+  "runtime_adapter_implemented": false,
+  "fixtures_or_training_authorized": false,
+  "source_authoring_seconds": null,
+  "parent_owns_execution_and_publication": true
+}

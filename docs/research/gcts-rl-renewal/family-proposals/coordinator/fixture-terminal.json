@@ -1,0 +1,27 @@
+{
+  "status": "passed_ROOT_owned_pure_fixture_gate",
+  "owner_terminal": {
+    "chunk": "140490",
+    "exit_code": 0,
+    "running_session": null
+  },
+  "child_pid": 72582,
+  "child_reaped": true,
+  "child_exit": 0,
+  "owner_seconds_before_final_receipt_write": 0.140686833,
+  "conservative_peak_bytes": 38191104,
+  "controls": 52,
+  "positive_controls": 18,
+  "negative_controls": 34,
+  "result": {
+    "path": ".gcts-active/family-proposal-independent-20261012/fixture-result-v2.json",
+    "sha256": "994edd42c5d2d62f060d3aa15fe8820bd2add05e2c863f83d5a2e3c0dd1e15d5",
+    "bytes": 11356
+  },
+  "lifetime": {
+    "path": ".gcts-active/family-proposal-independent-20261012/fixture-lifetime-v2.json",
+    "sha256": "fe5dad1d3df508ad9561991720f2a5f3bc651eb037de597ebe56ae3b17338230",
+    "bytes": 1889
+  },
+  "scope": "Synthetic projection/ports/identity/embedding controls only; no actual graph/model, producer correspondence, proof acceptance, RL or native execution."
+}

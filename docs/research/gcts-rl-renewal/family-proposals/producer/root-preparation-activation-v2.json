@@ -1,0 +1,18 @@
+{
+  "status": "root_authorized_bounded_family_proposal_preparation_only",
+  "plan": {
+    "path": ".gcts-active/family-proposal-source-20261012/preparation-plan-v2.json",
+    "sha256": "f42e8b9ebeb8050874403fab79e2be676ee07b619b2634a95f8d51c408c43ea3",
+    "bytes": 215210
+  },
+  "root_review": {
+    "path": ".gcts-active/family-proposal-progress-20261012/root-preparation-review-v2.json",
+    "sha256": "62784b02eec72ad0d7d0eac6142292fe3dd36849b0898a1f10f1f0eaed3c4d61",
+    "bytes": 1836
+  },
+  "independent_source_review": {
+    "path": ".gcts-active/family-preparation-source-independent-review-20261012/source-review-v2.json",
+    "sha256": "3c4420f2beaf867f7a017da078cef940e4d4d09964c0dac3855adcf122eac8fe",
+    "bytes": 182490
+  }
+}

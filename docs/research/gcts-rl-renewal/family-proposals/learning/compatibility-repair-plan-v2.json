@@ -1,0 +1,72 @@
+{
+  "status": "immutable_source_only_compatibility_successor_not_activated",
+  "supersedes_sources_only": {
+    "API": {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v1.py",
+      "sha256": "7565e35ee5aef27443023873635653bbd80b5a85a4567b6645f59dd90a73263c",
+      "bytes": 3576
+    },
+    "math": {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v1.py",
+      "sha256": "a13e2273fe44a000adb7705a9387ef4bd265995cfb30e82a6c95e67fa55f3a37",
+      "bytes": 10953
+    }
+  },
+  "preserved_V1_manifest": {
+    "path": ".gcts-active/family-proposal-learning-20261012/integration.json",
+    "sha256": "989b9139bcb65970e7ee0bae360c92746bd80f4fb758d7f11d2ce2f8bced267c",
+    "bytes": 1246
+  },
+  "preserved_protocol": {
+    "path": ".gcts-active/family-proposal-learning-20261012/protocol-v2.json",
+    "sha256": "097ff664b88c1ced40e56b4701c46e75545a5effe6adcdcce3d1771a5ede73ab",
+    "bytes": 9905
+  },
+  "successor_API": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+    "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+    "bytes": 3612
+  },
+  "successor_math": {
+    "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+    "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+    "bytes": 11607
+  },
+  "exact_diffs": [
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.diff",
+      "sha256": "32d6324186a891e25ef8b2f961a79b5dbe4a6a1bf2716f208d97076b760a7bbb",
+      "bytes": 438
+    },
+    {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.diff",
+      "sha256": "5275f7dec9ff01977a4a57e99d7db1ba6a7917d01a77ce53e17ba03089d97962",
+      "bytes": 1737
+    }
+  ],
+  "API_repair": "Only future annotation deferral. Pinned Python 3.9 need not evaluate str | None or tuple | None annotations when this API module is later imported. No runtime adapter added.",
+  "math_repair": "New version identifier and choose() finite literal nonnegative probability-sequence validation before normalization/CDF. All other math function ASTs unchanged.",
+  "valid_record_semantics": "For the literal float probabilities emitted by unchanged distribution() algorithm, conversion preserves each float value; normalization, literal left-to-right CDF, strict draw<cumulative and last-positive fallback are unchanged. This is source reasoning only, not numerically tested.",
+  "record_precondition": "Other aligned record fields must be the unchanged exact output of distribution(); arbitrary external record schema validation is not claimed.",
+  "future_controls_not_executed": [
+    "Pinned Python 3.9 import by separately activated source-control owner",
+    "Valid generated distribution/choice correspondence across zero tails and epsilon endpoints",
+    "Reject negative probabilities even when their sum is one",
+    "Reject NaN, positive/negative infinity, boolean, string and empty/nonsequence probabilities",
+    "Retain all original independent softmax/gradient/update/reward controls"
+  ],
+  "Python_3_9_AST_parsed_sources": 2,
+  "API_AST_diff_only_future_import": true,
+  "math_unchanged_function_ASTs": [
+    "finite_number",
+    "vector",
+    "distribution",
+    "score_gradient",
+    "reward",
+    "update"
+  ],
+  "scientific_model_engine_RNG_math_fixture_search_training_replay_native_UI_publication_executions": 0,
+  "runtime_adapter_implemented": false,
+  "authoring_seconds": null,
+  "root_owns_actual_review_activation_execution_and_publication": true
+}
