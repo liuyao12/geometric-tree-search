@@ -1,0 +1,54 @@
+{
+  "status": "immutable_source_only_independent_geometry_trace_audit",
+  "files": [
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v2.py",
+      "sha256": "29aab54805d185f2e4f35ce941780b3298ab0957f8274c62b3fa5c94a1d25eb5",
+      "bytes": 7445
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_order_oracle_v1.py",
+      "sha256": "2dae2c45f21f4833c051d40623d561641fdb2e4c5e68ff1bd744fa20d26d9484",
+      "bytes": 11729
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+      "bytes": 9020
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v2.py",
+      "sha256": "6d196a33a8c1f644a3a142e3a1c4bb1489263edf12a6dded394bcb9285fccf1f",
+      "bytes": 35363
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_owner_v2.py",
+      "sha256": "65feb57e8e88e4d892adfa00c97d127dccddf8fbe4da6bfc5e938671e2e5440e",
+      "bytes": 5365
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_freeze_v2.py",
+      "sha256": "0906bce1cb2893e5bf910c58ff01e4a4026ce31241af73a02f3b1e0847e8cc01",
+      "bytes": 11135
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v2.json",
+      "sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+      "bytes": 218566
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/source-freeze-v2.json",
+      "sha256": "4e0326089d976ec1894474bb017fa39576408d81d1b23239be2461222a5eaa03",
+      "bytes": 632
+    }
+  ],
+  "total_files": 8,
+  "total_bytes": 299255,
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v2.json",
+    "sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+    "bytes": 218566
+  },
+  "root_command": "python3 /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_owner_v2.py",
+  "scientific_execution": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "frozen_source_report_review_complete_actual_projection_pending",
+  "review": {
+    "path": ".gcts-active/receptor-matching-report-independent-20261011/source-review-v1.json",
+    "sha256": "ace2c0e5214d0ce679cbca2626b3891de386523bd2e07fd633ed4722cef6cf48",
+    "bytes": 10102
+  },
+  "reviewed_mutable_source_versions": [
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/prepare_report.py",
+      "version_sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+      "version_bytes": 21312,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+        "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+        "bytes": 21312
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/report_evidence.py",
+      "version_sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+      "version_bytes": 7112,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+        "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+        "bytes": 7112
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/validate_report.py",
+      "version_sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+      "version_bytes": 6604,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+        "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+        "bytes": 6604
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/stage_publication.py",
+      "version_sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+      "version_bytes": 2359,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+        "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+        "bytes": 2359
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/display_data_check_v1.js",
+      "version_sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "version_bytes": 3205,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/display_data_check_v1.js",
+        "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+        "bytes": 3205
+      }
+    }
+  ],
+  "source_checks": 26,
+  "fixed_findings": [
+    "ROOT renamed score-feature timing and exposes all recorded matcher subphases.",
+    "ROOT derives selected trace/certificate flags from exact audit observation_verdicts and checks them in both generator and validator."
+  ],
+  "blockers_at_reviewed_source_version": [],
+  "pending_before_publication": [
+    "Reconcile ROOT terminal selection with the exact terminal audit result, lifetime/same-handle receipt and cost/peak field provenance. These actual files were not read by this source review.",
+    "Verify every selected frozen folder exists and every producer/independent/prior-source pin has at least one exact (path,SHA) public route, including historical MAIN105 and committed baseline MAIN106.",
+    "The generic projection scanner skips nonexistent paths/folders. That is not complete closure by itself; actual final pin-set reconciliation must demonstrate that no required item was skipped.",
+    "Verify task-files manifest and staged blobs contain only the new receptor-matching prefix plus the additive MAIN panel/counter; preserve previous published bytes.",
+    "Check actual report assessment text, trace flags, null certificates, cost fields, renderer/link behavior and live math separately. No rendered/DOM/native/logical acceptance follows from this source review."
+  ],
+  "scope": "No rendered report/task manifest, actual observations/audits/models, staged bytes, UI/MathJax or live data read or executed by this review. Source checks are not runtime or mathematical acceptance.",
+  "owned_helper": {
+    "seconds_before_final_write": 0.006851791999999999,
+    "kernel_peak_bytes": 14548992,
+    "startup_final_write_included": false
+  },
+  "source_authoring_seconds": null,
+  "publication_owner": "root",
+  "active_owned_handles": []
+}

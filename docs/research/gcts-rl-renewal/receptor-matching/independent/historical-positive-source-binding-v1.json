@@ -1,0 +1,12 @@
+{
+  "status": "exact_historical_preparation_source_reconstructed_by_removing_only_two_hash_output_lines",
+  "historical_original_path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+  "historical_sha256": "7ed3f345f8938bdf465d72033f52972314db5e303f93066fdb20840d4f3f67c7",
+  "historical_bytes": 8841,
+  "retained_snapshot_path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_draft_7ed3f345.py",
+  "current_frozen_path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+  "current_frozen_sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+  "current_frozen_bytes": 9020,
+  "edit_scope": "Only two additive diagnostic hash fields differed. Mathematical acceptance, source inputs, limits and all functions otherwise exact. No current frozen audit changes.",
+  "scientific_execution": false
+}

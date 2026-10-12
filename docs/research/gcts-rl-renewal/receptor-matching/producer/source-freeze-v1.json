@@ -1,0 +1,47 @@
+{
+  "status": "frozen_actual_search_sources_no_actual_model_or_search_execution",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "matcher_contract": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/matcher-contract-v1.json",
+    "sha256": "a91cb1d879623572b2af6f6c6f2fef24ac8471ce3afcc7c31d37ff397b17b029",
+    "bytes": 5219
+  },
+  "worker_diff": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/worker-v2-to-receptor-v1.diff",
+    "sha256": "9e247e512632e046e72b13f5cece488394c5adbfe83594dcbba2bdba74c4a1ab",
+    "bytes": 2780
+  },
+  "sources": 11,
+  "inputs": 135,
+  "old_inputs_unchanged": 118,
+  "body_source_inputs": 56,
+  "preserved_files": 729,
+  "unique_verified_paths": 738,
+  "mismatches": 0,
+  "ast_parsed_sources": 11,
+  "static_freeze_seconds_before_receipt_write": 1.035234167,
+  "pure_AST_control_outcome": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-outcome-v1.json",
+    "sha256": "dc39d007a5bbf2481c46e7ace3de32c5f7742828d4f108451a711b80f9446cb0",
+    "bytes": 31731
+  },
+  "pure_AST_control_lifetime": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-lifetime-v1.json",
+    "sha256": "4e72f43efcd675b025b188c98a884d4255b3379c209d7603d88ef82bd3c43f07",
+    "bytes": 1573
+  },
+  "actual_model_loads": 0,
+  "actual_searches": 0,
+  "actual_ordering_graph_calls": 0,
+  "native_queries": 0,
+  "compiler_activations": 0,
+  "new_training": 0,
+  "active_cluster_descriptors": 0,
+  "authored_words_used_as_hints": 0,
+  "root_and_independent_source_reviews": "pending",
+  "execution_authorized": false
+}

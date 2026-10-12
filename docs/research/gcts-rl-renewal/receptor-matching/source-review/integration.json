@@ -1,0 +1,50 @@
+{
+  "status": "immutable_task_only_third_source_review_export",
+  "files": [
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/source_only_review_v1.py",
+      "sha256": "6c885af968231a9c5941ad60769362164439d722f93d96687d4f77f63bff53f8",
+      "bytes": 17463
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/review-plan-v1.json",
+      "sha256": "e0e710aead5ec9ed5a4fe365bc7c44bac06563062063b1b7df2406c6c8d8906b",
+      "bytes": 3575
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/independent-worker-diff-v1.diff",
+      "sha256": "9e247e512632e046e72b13f5cece488394c5adbfe83594dcbba2bdba74c4a1ab",
+      "bytes": 2780
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-checks-v1.json",
+      "sha256": "814a39acf4b331ae0075a72145b9e5d44d6f1e6aa16d8254727c0c7550aee223",
+      "bytes": 4944
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/verified-pin-set-v1.json",
+      "sha256": "ab5f4bd24f9aea3dd0f0b9f243dc0c343481d9961c380ff1cb9b6679536b613f",
+      "bytes": 165861
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-review-v1.json",
+      "sha256": "328d701bcfa952b471bd47d0aa4a9abec79e1f756e0c5c9f194d5072f05e9b5a",
+      "bytes": 2423
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/readiness-v1.json",
+      "sha256": "f039fd7531605ac4f8b3baa5bb2bb3e6e9d409dbfb8efaceb30a0e943fd836cd",
+      "bytes": 3006
+    }
+  ],
+  "total_files": 7,
+  "total_bytes": 200052,
+  "review": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-review-v1.json",
+    "sha256": "328d701bcfa952b471bd47d0aa4a9abec79e1f756e0c5c9f194d5072f05e9b5a",
+    "bytes": 2423
+  },
+  "runtime_or_mathematical_acceptance": false,
+  "publication_owner": "root",
+  "scientific_executions": 0
+}

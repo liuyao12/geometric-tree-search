@@ -1,0 +1,57 @@
+{
+  "status": "passed_bounded_third_source_only_receptor_search_review",
+  "blockers": [],
+  "runtime_acceptance": false,
+  "scope": "read/hash/AST only; no scientific source imports or actual data/model reads",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/review-plan-v1.json",
+    "sha256": "e0e710aead5ec9ed5a4fe365bc7c44bac06563062063b1b7df2406c6c8d8906b",
+    "bytes": 3575
+  },
+  "producer_plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "producer_freeze": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-freeze-v1.json",
+    "sha256": "9a24742fbd79d380dec1e519845e026558e0803c3e7b63ecd7ddbab2b45a657c",
+    "bytes": 1788
+  },
+  "producer_manifest": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-manifest-v1.json",
+    "sha256": "b0055cfd3d0213b6b2fd995fa59413aa41675906fdcd7dc9e3bc50dc0b90e561",
+    "bytes": 4672
+  },
+  "source_checks": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-checks-v1.json",
+    "sha256": "814a39acf4b331ae0075a72145b9e5d44d6f1e6aa16d8254727c0c7550aee223",
+    "bytes": 4944
+  },
+  "verified_pin_set": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/verified-pin-set-v1.json",
+    "sha256": "ab5f4bd24f9aea3dd0f0b9f243dc0c343481d9961c380ff1cb9b6679536b613f",
+    "bytes": 165861
+  },
+  "independent_worker_diff": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/independent-worker-diff-v1.diff",
+    "sha256": "9e247e512632e046e72b13f5cece488394c5adbfe83594dcbba2bdba74c4a1ab",
+    "bytes": 2780
+  },
+  "hash_phase_seconds": 0.158309,
+  "helper_seconds_before_final_receipt_write": 0.185073209,
+  "helper_kernel_peak_bytes": 24182784,
+  "seconds_ceiling": 120,
+  "host_ceiling_bytes": 134217728,
+  "own_receipt_serialization_and_process_startup": "outside pre-write helper clock; not a whole owned lifetime claim",
+  "source_authoring_seconds": null,
+  "source_authoring_scope": "unmeasured text authoring; no scientific work",
+  "actual_models_loaded": 0,
+  "actual_results_decoded": 0,
+  "scientific_imports": 0,
+  "engine_calls": 0,
+  "searches": 0,
+  "training": 0,
+  "native_queries": 0,
+  "scientific_execution_authorized": false
+}

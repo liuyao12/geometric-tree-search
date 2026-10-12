@@ -1,0 +1,45 @@
+{
+  "status": "source_only_isolated_V3_basename_output_successor",
+  "old_plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v2.json",
+    "sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+    "bytes": 218566
+  },
+  "failed_owner_lifetime": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v2.json",
+    "sha256": "520673dd75f8dc8686512c8f656b8d4a36b66dde9fcf91edd85515633346b770",
+    "bytes": 1507
+  },
+  "incorrect_activation": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v1.json",
+    "sha256": "1c4b0229a574c87b1455e613f10191733e782acf2cae40cb05b1315e9cd7537c",
+    "bytes": 873
+  },
+  "root_failure_terminal": {
+    "path": ".gcts-active/receptor-matching-progress-20261011/root-auditor-v2-terminal.json",
+    "sha256": "76e92885cd29784ac8b6e0777d90344f819ff067cf98dfaa31369c59a256ecdd",
+    "bytes": 1520
+  },
+  "worker_diff": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v3.py.diff",
+    "sha256": "7f11112eb752afd14650c05fd621e445c1a740ad3afb2b13520e80a9b52e08e1",
+    "bytes": 892
+  },
+  "owner_diff": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_owner_v3.py.diff",
+    "sha256": "c9a5cd2faf54ce43de5c8e113106a46f43b0037cfcc8f8d30f69fb76fd1ea309",
+    "bytes": 909
+  },
+  "required_root_activation_basename": "root-activation-v3.json",
+  "required_root_activation_path": ".gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v3.json",
+  "changes": "Only isolated plan/output/activation basenames and exact failure/source-history preservation; all scientific functions/matcher/model/tapes/limits unchanged.",
+  "actual_audits_started_before_V3": 0,
+  "failed_V2_owner_seconds": 0.0005985409999999976,
+  "resource_limits": {
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "no_cumulative_gate_claim": "Prior failed owner cost is separately charged; every successor owned gate remains unchanged.",
+  "activation_authorized_by_this_metadata": false
+}

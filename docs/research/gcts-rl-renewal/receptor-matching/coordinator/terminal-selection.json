@@ -1,0 +1,113 @@
+{
+  "status": "actual_terminal_producer_and_independent_trace_audit_selected",
+  "all_owned_handles_terminal": true,
+  "producer_folder": ".gcts-active/receptor-matching-geometry-source-20261011",
+  "independent_result": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+  "independent_result_status": "passed_independent_complete_receptor_geometry_trace_audit",
+  "independent_lifetime": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+  "independent_owned_seconds": 40.93156975,
+  "independent_peak_bytes": 421298176,
+  "independent_gate_scope": "Owner verification/activation, child source-family setup, both complete trace audits, mutations, serialization/reap and receipt assembly; own final receipt write and source authoring excluded.",
+  "observation_verdicts": {
+    "fixed-forward-reference": {
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "scope": "Complete original finite marked transaction tape; certificate acceptance requires all independently checked logical rows.",
+      "terminal_status": "unknown_search_budget",
+      "reconstructed_complete_orders": 128,
+      "reconstructed_receptor_counts": {
+        "recipe_features": 0,
+        "comparisons": 0,
+        "match": 0,
+        "neutral": 0,
+        "nonmatch": 0
+      },
+      "altered_first_choices": 14,
+      "altered_permutations": 17,
+      "positive_certificate_hashes": null,
+      "native_accepted": false
+    },
+    "fixed-forward-receptor": {
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "scope": "Complete original finite marked transaction tape; certificate acceptance requires all independently checked logical rows.",
+      "terminal_status": "unknown_search_budget",
+      "reconstructed_complete_orders": 128,
+      "reconstructed_receptor_counts": {
+        "recipe_features": 1511,
+        "comparisons": 11744,
+        "match": 150,
+        "neutral": 7081,
+        "nonmatch": 4513
+      },
+      "altered_first_choices": 12,
+      "altered_permutations": 15,
+      "positive_certificate_hashes": null,
+      "native_accepted": false
+    }
+  },
+  "main_baseline_sha256": "10739a06cc6a6a87e25646f995f9c0e36e241ef7e437d7d26fb36f245dbf657b",
+  "frozen_folders": [
+    [
+      ".gcts-active/receptor-matching-geometry-source-20261011",
+      "producer",
+      []
+    ],
+    [
+      ".gcts-active/receptor-matching-geometry-independent-20261011",
+      "independent",
+      []
+    ],
+    [
+      ".gcts-active/receptor-matching-cross-domain-source-20261011",
+      "cross-domain",
+      []
+    ],
+    [
+      ".gcts-active/receptor-matching-source-third-review-20261011",
+      "source-review",
+      []
+    ],
+    [
+      ".gcts-active/receptor-matching-report-independent-20261011",
+      "report-source-review",
+      []
+    ],
+    [
+      ".gcts-active/receptor-matching-diagnosis-20261011",
+      "diagnosis",
+      []
+    ],
+    [
+      ".gcts-active/receptor-matching-terminal-review-20261011",
+      "terminal-review",
+      []
+    ]
+  ],
+  "viewer_source": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer.js",
+  "metadata_lifetime": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-lifetime-v1.json",
+  "failed_audit_lifetime": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v2.json",
+  "diagnosis_result": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-diagnosis-v1.json",
+  "next_options": ".gcts-active/receptor-matching-diagnosis-20261011/findings-and-next-options-v1.json",
+  "assessment": "Both fresh controls ended unknown after 128 attempts. Generic literal receptor matching repaired an early specialization and changed later choices, but it produced no accepted proof and took more search time. This demonstrates independently verified structural guidance, not a performance advantage or learned RL policy.",
+  "main_assessment": "Two automatic geometry controls remain unknown after 128 attempts each. The generic matcher repairs an early specialization but does not produce a proof; independent full-trace audits pass. Literal matching adds measured cost. Arithmetic compatibility is still source-only, and no new RL training is claimed.",
+  "diagnosis_summary": "The new order selects equality-shaped outputs for successive line pairs, but the later target MP still has a pending implication source. The recorded tail tests a direct transport route requiring the composed endpoint equality, absent from selected outputs. The proposed next experiment will assess both ordered receptor ports or whole composed family interfaces; neither has run. Recorded constraints, including selected outputs with pending sources, are not accepted partial theorems.",
+  "root_terminal_receipts": [
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json",
+      "sha256": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e",
+      "bytes": 1755
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-independent-terminal-v3.json",
+      "sha256": "0acaac94418599c66c804432ac50abe71787fe694a6d50fd710750c952266ce7",
+      "bytes": 975
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-auditor-v2-terminal.json",
+      "sha256": "76e92885cd29784ac8b6e0777d90344f819ff067cf98dfaa31369c59a256ecdd",
+      "bytes": 1520
+    }
+  ],
+  "scientific_status": "No accepted proof certificates; two accepted complete finite trace audits; no native query or training."
+}

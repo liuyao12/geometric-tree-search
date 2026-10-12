@@ -1,0 +1,32 @@
+{
+  "status": "passed_automatic_primitive_geometry_full_lifetime",
+  "full_supervisor_process_seconds_including_receipt_write": 9.340212875,
+  "process_return_code": 0,
+  "supervisor_pid": 55994,
+  "supervisor_wait_reaped": true,
+  "outer_cleanup_reason": null,
+  "worker_terminal_reaped_confirmed": true,
+  "outer_own_peak_bytes": 13778944,
+  "outer_children_kernel_peak_bytes": 99909632,
+  "conservative_host_peak_bytes": 128057344,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 180,
+  "actual_wall_overshoot_seconds": 0,
+  "actual_memory_overshoot_bytes": 0,
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "supervision": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-supervision-v1.json",
+    "sha256": "75a61cf3113e7e9b3a78e3bb0f8c95c4b9f3222c3e5047309d77792b6906abfc",
+    "bytes": 36471
+  },
+  "own_receipt_serialization": "outside pre-write measurement; all worker/supervisor serialization included",
+  "actual_geometry_model_execution": true,
+  "maximum_geometry_target_searches": 2,
+  "native_queries": 0,
+  "native_authority_activated": false,
+  "mathematical_acceptance": "pending separately owned trace/symbolic audit; no shared native query in this phase"
+}

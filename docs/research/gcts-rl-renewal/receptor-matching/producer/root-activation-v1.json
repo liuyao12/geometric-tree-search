@@ -1,0 +1,46 @@
+{
+  "status": "root_authorized_bounded_automatic_primitive_geometry_search",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "source_manifest": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-manifest-v1.json",
+    "sha256": "b0055cfd3d0213b6b2fd995fa59413aa41675906fdcd7dc9e3bc50dc0b90e561",
+    "bytes": 4672
+  },
+  "source_reviews": [
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-source-review-v1.json",
+      "sha256": "20657aa978fb4b580fb45644a79e427f21ab93361232f5f2acf37de90881fb05",
+      "bytes": 3073
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/producer-source-review-v1.json",
+      "sha256": "79d25429c663561e54bd85aa787a799a452064084df3e5d210102a85a2976c81",
+      "bytes": 5294
+    }
+  ],
+  "sole_owner": "root",
+  "attempt": 1,
+  "allowed_geometry_searches": 2,
+  "allowed_native_queries": 0,
+  "new_RL_training": false,
+  "active_cluster_descriptors": 0,
+  "owned_limits": {
+    "owner_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "maximum_searches": 2,
+    "each_attempts": 128,
+    "each_search_seconds": 20,
+    "each_trace_event_ceiling": 2000,
+    "independent_audit_proposal_seconds": 180,
+    "independent_audit_proposal_bytes": 536870912
+  },
+  "scope": "Exact fixed-forward reference versus literal receptor complete ordering, unchanged finite ground symbolic geometry grammar and original56-input body authority. Structural advice only; independent trace/symbolic certificate gate separate.",
+  "cumulative_prior_owner_seconds_additional": 50.405773542,
+  "prior_and_current_phases_claimed_as_single180secondgate": false
+}

@@ -1,0 +1,20 @@
+{
+  "status": "authorized_by_root_after_independent_source_review",
+  "plan_sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+  "version": 3,
+  "sole_owner": "root",
+  "prerequisite_sha256": {
+    ".gcts-active/receptor-matching-progress-20261011/root-independent-source-review-v3.json": "0ea23e54e916718515090434796b5128f1c32af1152580e6437c18a9f99a3f9f",
+    ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e",
+    ".gcts-active/receptor-matching-progress-20261011/root-auditor-v2-terminal.json": "76e92885cd29784ac8b6e0777d90344f819ff067cf98dfaa31369c59a256ecdd"
+  },
+  "limits": {
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "allowed_searches": 0,
+  "allowed_native_queries": 0,
+  "new_RL_training": false,
+  "scope": "Two full returned UNKNOWN tapes only. Corrected immutable successor after no-child V2 launch failure. Positive-certificate oracle remains unexercised unless an actual certificate exists."
+}

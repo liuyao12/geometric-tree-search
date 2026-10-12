@@ -1,0 +1,29 @@
+{
+  "goal_status": "active",
+  "accepted_ground_certificates": [],
+  "assessment": "Both fresh controls ended unknown after 128 attempts. Generic literal receptor matching repaired an early specialization and changed later choices, but it produced no accepted proof and took more search time. This demonstrates independently verified structural guidance, not a performance advantage or learned RL policy.",
+  "controls": [
+    {
+      "id": "fixed-forward-reference",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "seconds": 1.2529412500000001,
+      "independent_certificate_accepted": false,
+      "independent_trace_accepted": true
+    },
+    {
+      "id": "fixed-forward-receptor",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "seconds": 1.9502715840000002,
+      "independent_certificate_accepted": false,
+      "independent_trace_accepted": true
+    }
+  ],
+  "active_cluster_descriptors": 0,
+  "authored_target_hints": 0,
+  "new_native_queries": 0,
+  "new_RL_training": false,
+  "additional_owned_seconds": "50.9568006239999999946",
+  "scope": "Finite symbolic ground-sequent search; trace, point, symbolic and native acceptance remain distinct."
+}

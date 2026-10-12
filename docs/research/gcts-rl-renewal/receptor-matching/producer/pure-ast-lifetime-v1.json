@@ -1,0 +1,42 @@
+{
+  "status": "passed_bounded_pure_AST_owner_gate",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-plan-v1.json",
+    "sha256": "ac47e59233a122864e2731f3dd058788d4f9819d9893d67f0f7166c22b50288f",
+    "bytes": 2231
+  },
+  "child_pid": 54090,
+  "child_exit_code": 0,
+  "child_wait_reaped": true,
+  "failure": null,
+  "full_child_and_owner_seconds_before_final_receipt_write": 0.030158791999999997,
+  "owner_kernel_peak_bytes": 12353536,
+  "child_kernel_peak_bytes": 14483456,
+  "conservative_host_peak_bytes": 26836992,
+  "limits": {
+    "owner_seconds": 10,
+    "child_SIGALRM_seconds": 5,
+    "host_bytes": 536870912
+  },
+  "enforcement": "Owned wait4 deadline/kill/reap, child SIGALRM, final child+owner kernel-peak validation; no OS soft-memory limit or live RSS sampler claimed.",
+  "outcome": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-outcome-v1.json",
+    "sha256": "dc39d007a5bbf2481c46e7ace3de32c5f7742828d4f108451a711b80f9446cb0",
+    "bytes": 31731
+  },
+  "stdout": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-stdout-v1.txt",
+    "sha256": "5a965bfea4819b8f01b26113ad7a5b76822b93e68ca4daf312d6e4a9b927d91e",
+    "bytes": 729
+  },
+  "stderr": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "actual_models": 0,
+  "engine_imports": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "new_training": 0
+}

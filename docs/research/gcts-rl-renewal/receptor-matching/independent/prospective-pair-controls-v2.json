@@ -1,0 +1,439 @@
+{
+  "status": "authored_unexecuted_literal_adversarial_examples",
+  "semantics": "Schemas and expected statuses only; no actual matcher import or fixture execution.",
+  "cases": [
+    {
+      "name": "rigid_compound_constructor_slot_nullary_image",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "fun",
+                "constructor",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "constructor",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      "expected": "match"
+    },
+    {
+      "name": "unsupported_compound_slot_image",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "constructor",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      "expected": "neutral"
+    },
+    {
+      "name": "definite_mismatch_wins_over_compound_slot_image",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "constructor",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "expected": "nonmatch"
+    },
+    {
+      "name": "repeated_slot_consistent",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": "match"
+    },
+    {
+      "name": "repeated_slot_conflicting",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "expected": "nonmatch"
+    },
+    {
+      "name": "completed_constant_rigid",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": "nonmatch"
+    },
+    {
+      "name": "shadowed_prefix_neutral",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "relation",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "bot"
+            ]
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": "neutral"
+    },
+    {
+      "name": "free_guard_variable_neutral",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": "neutral"
+    },
+    {
+      "name": "quantified_recipient_neutral",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "pred",
+            "relation",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "all",
+        "z",
+        [
+          "pred",
+          "relation",
+          [
+            [
+              "var",
+              "z"
+            ]
+          ]
+        ]
+      ],
+      "expected": "neutral"
+    },
+    {
+      "name": "nested_guard_quantifier_neutral",
+      "rule": "instantiate",
+      "consequent": [
+        "all",
+        "x",
+        [
+          "imp",
+          [
+            "all",
+            "y",
+            [
+              "pred",
+              "relation",
+              [
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ],
+          [
+            "bot"
+          ]
+        ]
+      ],
+      "recipient": [
+        "pred",
+        "relation",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": "neutral"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "source-only-receptor-cross-domain-compatibility-v1",
+  "status": "source_assessment_and_synthetic_corpus_only_no_producer_matcher_gate",
+  "prior_source_pins": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "research/gcts-rl-renewal/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "bytes": 10808
+    },
+    {
+      "path": "research/gcts-rl-renewal/catalog_receptor_points.py",
+      "sha256": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+      "bytes": 6507
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_points.py",
+      "sha256": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+      "bytes": 5632
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_points.py",
+      "sha256": "b213bc019a220af7f0aea82d6191f1aca6b2ff4c2c39e8c1e5fb20bf6041f7d0",
+      "bytes": 1509
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_catalog.py",
+      "sha256": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+      "bytes": 3157
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_catalog.py",
+      "sha256": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+      "bytes": 9374
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_guidance.py",
+      "sha256": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+      "bytes": 9034
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_features_v2.py",
+      "sha256": "529ffcb219ff525612abcb0146817dc460709a09e214b1012b3a65b14a434b08",
+      "bytes": 10133
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    }
+  ],
+  "prospective_root_plan": {
+    "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+    "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+    "bytes": 7007
+  },
+  "scope": "No actual model/result/certificate/teacher word loaded; no scientific imports, graph, policy, search, training, native checking or replay. Synthetic literal matching is advice, not mathematics proved.",
+  "syntax_compatibility": {
+    "ast": "JSON tagged arrays correspond to the arithmetic logic.py immutable tagged tuples: var, fun, pred, eq, not, all, and, imp, bot; fun/pred arguments are ordered third-field arrays. No algebraic normalization, equality symmetry or conjunction reordering.",
+    "prefix_slots": "Only distinctly named leading universally bound variables become pattern slots. Bound-slot renaming can preserve matching behavior; no general alpha-equivalence rewriting claimed.",
+    "constants": "Completed instantiation constants stay rigid. Slot images restricted to closed zero-arity functions. Literal compound constructors recurse, so \\(\\operatorname{add}(x,0)=x\\) against the corresponding constant instance is supported, while binding \\(x\\) to \\(\\operatorname{succ}(0)\\) remains neutral.",
+    "unsupported": "Nested quantification, shadowed/repeated prefix binders, free pattern variables outside that prefix and unsupported constructors are neutral advice, never logical rejection.",
+    "old_match_not_reused": "logic.match() treats every variable as a substitution slot and allows arbitrary term images. It is not the prospective prefix-scoped receptor matcher; no import/reuse performed."
+  },
+  "available_formula_scope": {
+    "geometry": "The frozen geometry design uses outputs of physically selected primitive placements as structural formula constraints. A selected MP output may depend on pending earlier-source receptors; it is not an established hypothesis or proved fact. This assessment imposes no new geometry completion/pruning rule.",
+    "marks": "An assigned formula mark on an unoccupied row does not make a selected output available. Assigned zero is still an assigned value; absence is not zero.",
+    "arithmetic": "Arithmetic has separate C/G/I1/I2 placements. A future completed-output adapter needs all four roles, agreeing command/guard/inference/mode, correct ordered strict-prior source references/formulas, explicit unused inputs and completed dependencies. commutativity13_guidance.requirements()/vectors() provides source evidence for that distinction; synthetic Boolean agreement flags are declarative, not an actual engine certification.",
+    "identities": "Keep duplicate formula outputs on distinct rows and ordered references distinct. Matching advice may be Boolean but cannot merge primitive identities, fallbacks or incidence domains."
+  },
+  "activation_gap": {
+    "current_arithmetic": "The currently searched contextual arithmetic grammar creates block/refl/generalize rules. primitive_stream() declares instantiate/distribute/schema instances but explicitly does not search them. Therefore an instantiate/MP-specific quantifier guidance feature does not automatically activate on the current arithmetic model.",
+    "future_adapter": "A primitive arithmetic control or an explicitly designed interface receptor adapter would need its own complete model/source/authority freeze and independent graph/fallback/scheduler/rollback gates. This memo does not implement or authorize that change.",
+    "scope_of_cross_domain_fixture": "Synthetic arithmetic/FOL AST agreement tests portable syntax only; they are not evidence of practical arithmetic search acceleration or held-out theorem transfer."
+  },
+  "ranking_safety": {
+    "statuses": "Gold corpus calls literal mismatch miss; Hilbert prospective API names it nonmatch. Both mean ordering advice only. Match, neutral and nonmatch must never remove a legal candidate.",
+    "requirements": "Retain original readiness tiers, the complete permutation, global dead/forced/earliest-generation graph decision, original tie order, full fallback and exact rollback. No theorem/predicate/constant IDs in matcher algorithms.",
+    "rl": "This is an authored deterministic feature; no RL training, learned marking or proof discovery is inferred."
+  },
+  "positive_certificate_reader_interface_gaps": [
+    "Reader-v4 expects one decorated primitive square per proof row with key [recipeIndex,row,orderedSourceRows], geometry t/m points and recipe witness metadata. Arithmetic C/G/I1/I2 placements have four-integer keys and four physical squares per inference row; they cannot be passed directly to that reader without a separately frozen exact rendering adapter.",
+    "Reader-v4 ruleEnglish gives generic saved-rule explanations for assumption/instantiate/eq_subst, with the exact command inspectable. A positive certificate could benefit from explaining the actual hypothesis index, instantiation term/universal and equality-substitution template in English. No display change was made.",
+    "Reader independent_certificate_accepted is an explicit root flag; independent_scope must state whether acceptance is symbolic, native or both. The reader must never infer native checking from a found point certificate."
+  ],
+  "producer_api_pending": "Hilbert supplied prospective extract_pattern, literal_guard_match, evaluate_pattern and ReceptorOrder API; source file not yet available/frozen at corpus authoring. Actual producer compatibility execution remains unexecuted.",
+  "authoring_cost": "Source authoring elapsed/CPU uninstrumented; bounded independent synthetic helper cost will be measured separately. No old research budget reset or new scientific cost."
+}

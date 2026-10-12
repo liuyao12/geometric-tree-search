@@ -1,0 +1,110 @@
+{
+  "status": "immutable_source_only_actual_geometry_receptor_ranking_package",
+  "files": [
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "235068c38d9ae35b0bc2fdc9fa4ba965a125c7e4eef52a279579edc07be09be7",
+      "bytes": 16848
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_bridge_decode_v1.py",
+      "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+      "bytes": 6052
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_search_run_v1.py",
+      "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+      "bytes": 7394
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_search_outer_v1.py",
+      "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+      "bytes": 3889
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_literal_match_v1.py",
+      "sha256": "d3384a838d9a5c6cbd2b549b5a4b5e00b753be64a5e26d65421e916a72c86a3c",
+      "bytes": 15139
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure_ast_fixtures_v1.py",
+      "sha256": "e1db52a90fd4a5a0db5ca325803639ea1909c645bf696fd7172ae3765da4d477",
+      "bytes": 9651
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure_ast_owner_v1.py",
+      "sha256": "6865527c0b213160f3d2c290c5a5b3f953e85fa76bc51c87f55b9db420b767b5",
+      "bytes": 4394
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_search_freeze_v1.py",
+      "sha256": "0fc681857465d31262ba00bf32d7d0a677c6bcea7a07bebe4845598e05f30120",
+      "bytes": 22518
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/worker-v2-to-receptor-v1.diff",
+      "sha256": "9e247e512632e046e72b13f5cece488394c5adbfe83594dcbba2bdba74c4a1ab",
+      "bytes": 2780
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/matcher-contract-v1.json",
+      "sha256": "a91cb1d879623572b2af6f6c6f2fef24ac8471ce3afcc7c31d37ff397b17b029",
+      "bytes": 5219
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+      "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+      "bytes": 243262
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-freeze-v1.json",
+      "sha256": "9a24742fbd79d380dec1e519845e026558e0803c3e7b63ecd7ddbab2b45a657c",
+      "bytes": 1788
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-plan-v1.json",
+      "sha256": "ac47e59233a122864e2731f3dd058788d4f9819d9893d67f0f7166c22b50288f",
+      "bytes": 2231
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-source-freeze-v1.json",
+      "sha256": "b9759c68fa52f0ef75cb96297e2e88e51f737a0fab77d121e904934538826956",
+      "bytes": 458
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-outcome-v1.json",
+      "sha256": "dc39d007a5bbf2481c46e7ace3de32c5f7742828d4f108451a711b80f9446cb0",
+      "bytes": 31731
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-lifetime-v1.json",
+      "sha256": "4e72f43efcd675b025b188c98a884d4255b3379c209d7603d88ef82bd3c43f07",
+      "bytes": 1573
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-stdout-v1.txt",
+      "sha256": "5a965bfea4819b8f01b26113ad7a5b76822b93e68ca4daf312d6e4a9b927d91e",
+      "bytes": 729
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "total_files": 19,
+  "total_bytes": 379354,
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "scope": "64 pure AST controls passed; no actual geometry ranking/model/search/native/training or proof claim.",
+  "publication_owner": "root",
+  "execution_authorized": false
+}

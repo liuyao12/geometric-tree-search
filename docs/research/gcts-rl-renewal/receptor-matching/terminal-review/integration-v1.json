@@ -1,0 +1,30 @@
+{
+  "status": "immutable_read_only_terminal_review_delivery",
+  "files": [
+    {
+      "path": ".gcts-active/receptor-matching-terminal-review-20261011/terminal-review-v1.json",
+      "sha256": "1f33d4d6f15a0b5fea2ee92805f81cdfe4c3cb17eb07fcd002e09c7510fb04a4",
+      "bytes": 9358
+    }
+  ],
+  "actual_scientific_inputs": {
+    "plan": {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v3.json",
+      "sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+      "bytes": 222574
+    },
+    "result": {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+      "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+      "bytes": 7156588
+    },
+    "lifetime": {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+      "sha256": "ed8d8e4cf6dd30501da3c8afc8aea36a9cf70abf117689b235550e896fec060b",
+      "bytes": 1483
+    }
+  },
+  "files_total_bytes": 9358,
+  "publication_owner": "ROOT",
+  "scientific_reexecutions": 0
+}

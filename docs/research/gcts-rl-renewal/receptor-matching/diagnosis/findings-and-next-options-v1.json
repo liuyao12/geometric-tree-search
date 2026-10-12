@@ -1,0 +1,245 @@
+{
+  "status": "authored_source_bound_metadata_interpretation_pending_independent_actual_trace_audit",
+  "metadata_diagnosis": {
+    "path": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-diagnosis-v1.json",
+    "sha256": "756520120bc484d904bb711237db529077ab9ee803349e1b86eb68a59fc778ba",
+    "bytes": 1319215
+  },
+  "method": "Interpret only the frozen metadata pass and inspected immutable ranking source. No engine, matcher or checker invocation, model reconstruction, inference check, order-hash verification, trace replay or new search.",
+  "main_result": "The recorded new receptor feature corrects the old initial point specialization and reaches useful equality-shaped outputs, but supplies no complete proof. The remaining structural blind spot is that an MP match looks only at its first ordered antecedent; a matched first port can coexist with an unsupported second port.",
+  "evidence": [
+    {
+      "claim": "The fresh reference first fifteen step keys exactly equal the previous frozen fixed-forward metadata. The new control first diverges at zero-based step 3, row 6.",
+      "reference": [
+        197,
+        6,
+        []
+      ],
+      "receptor": [
+        198,
+        6,
+        []
+      ],
+      "literal_term_display_latex": "Reference \\(\\mathrm{point1}\\mapsto P\\); receptor \\(\\mathrm{point1}\\mapsto Q\\).",
+      "source": "metadata-diagnosis-v1.json comparison and observations[1].first_twenty_recorded_steps[3]"
+    },
+    {
+      "claim": "The saved new feature records full literal matches to the initial guard constraints, with the expected remaining closed-constant bindings. Its early instantiate guards contain no literal self-inequality subtree.",
+      "examples": [
+        {
+          "step": 1,
+          "row": 4,
+          "matched_seed_codes": [
+            11,
+            15
+          ],
+          "remaining_slots": [
+            "point1",
+            "line0",
+            "line1"
+          ]
+        },
+        {
+          "step": 3,
+          "row": 6,
+          "matched_seed_codes": [
+            11,
+            15
+          ],
+          "remaining_slots": [
+            "line0",
+            "line1"
+          ]
+        },
+        {
+          "step": 5,
+          "row": 8,
+          "matched_seed_codes": [
+            11
+          ],
+          "remaining_slots": [
+            "line1"
+          ]
+        },
+        {
+          "step": 7,
+          "row": 10,
+          "matched_seed_codes": [
+            11
+          ],
+          "remaining_slots": []
+        },
+        {
+          "step": 10,
+          "row": 13,
+          "matched_seed_codes": [
+            15
+          ],
+          "remaining_slots": [
+            "line1"
+          ]
+        },
+        {
+          "step": 12,
+          "row": 15,
+          "matched_seed_codes": [
+            15
+          ],
+          "remaining_slots": []
+        }
+      ],
+      "caution": "These are saved structural comparison records, not independently checked matcher outputs or derived hypotheses in this metadata pass. Selected constraints can still have pending ordered sources."
+    },
+    {
+      "claim": "The new first fifteen steps end with selected equality-shaped outputs at rows 12 and 17 rather than the reference's unusable specialization variants.",
+      "selected_outputs": [
+        {
+          "row": 12,
+          "formula_code": 38,
+          "latex": "\\(l=m\\)"
+        },
+        {
+          "row": 17,
+          "formula_code": 42,
+          "latex": "\\(m=n\\)"
+        }
+      ],
+      "caution": "No new symbolic proof is checked here; independent actual trace/inference acceptance remains separate."
+    },
+    {
+      "claim": "Both controls return the recorded 128-attempt unknown. Each spends all 113 attempts after its first fifteen in rows 18 through 23; no recorded parent exclusion reaches an earlier row than 19.",
+      "reference": {
+        "nodes": 95,
+        "events": 1168,
+        "maximum_occupied_rows": 23,
+        "search_seconds": 1.2529412500000001,
+        "tail_rule_counts": {
+          "mp": 99,
+          "eq_subst": 10,
+          "assumption": 4
+        }
+      },
+      "receptor": {
+        "nodes": 107,
+        "events": 1280,
+        "maximum_occupied_rows": 22,
+        "search_seconds": 1.9502715840000002,
+        "tail_rule_counts": {
+          "mp": 105,
+          "eq_subst": 4,
+          "assumption": 4
+        }
+      },
+      "interpretation": "The attempt ceiling is reached below the 20-second and 2000-event ceilings. Prefix correction does not demonstrate overall speedup or a proof. Higher occupancy in the reference is not evidence of a more valid proof."
+    },
+    {
+      "claim": "The new target-side order initially selects recipe 137 with first source row 2, an exact incidence-shaped seed match, while its second implication source is unoccupied. It repeatedly changes that source row binding.",
+      "first_tail_keys": [
+        [
+          137,
+          23,
+          [
+            2,
+            18
+          ]
+        ],
+        [
+          137,
+          23,
+          [
+            2,
+            19
+          ]
+        ],
+        [
+          137,
+          23,
+          [
+            2,
+            20
+          ]
+        ]
+      ],
+      "first_port_latex": "\\(\\operatorname{Incident}(R,l)\\)",
+      "missing_second_port_latex": "\\(\\operatorname{Incident}(R,l)\\to\\operatorname{Incident}(R,n)\\)",
+      "source_contract": "extract_pattern for MP reads only the first ordered premise as a rigid guard. It does not assess whether the second ordered implication can attach to selected outputs."
+    },
+    {
+      "claim": "Its first deepest recorded state places a direct transport implication and its equality-substitution interface, then an MP output demanding the direct line equality. The displayed selected prefix contains the two successive equalities, while that direct equality is only a marking on an empty source row.",
+      "first_deepest": {
+        "event_index": 315,
+        "occupied_rows": 22,
+        "frontier_rows": [
+          18,
+          19
+        ],
+        "pending_direct_equality_code": 39
+      },
+      "literal_obligations_latex": "Selected constraints include \\(l=m\\) and \\(m=n\\); the direct transport chain demands \\(l=n\\). Its empty source row is marked for a guard with \\(\\neg(P=P)\\).",
+      "caution": "A literal contradictory-looking antecedent remains a legal formula. This diagnosis performs no satisfiability test, graph impossibility proof or candidate pruning."
+    },
+    {
+      "claim": "At recorded new branch choices, 31 feature labels are match, 68 nonmatch and 7 neutral. The new control pays additional literal feature cost.",
+      "recorded_feature_costs": {
+        "literal_matching_seconds": 0.4993546759999936,
+        "pattern_preparation_seconds": 0.009023083999999848,
+        "feature_payload_hash_seconds": 0.03308595200000086,
+        "recipe_features_evaluated": 1511,
+        "selected_constraint_comparisons": 11744
+      },
+      "caution": "These are recorded producer subphase counters/clocks. They overlap enclosing search clocks and are not added as disjoint wall cost. No significance or general comparison claim."
+    }
+  ],
+  "diagnosis": {
+    "old_first_wrong_prefix": "Addressed in these saved choices: the old point1=P specialization is replaced by point1=Q and seed-compatible line instantiations.",
+    "new_bottleneck": "A single-port receptor score favors a ready first premise even when the missing ordered implication has an incompatible prerequisite. This is a limitation of the declared feature, not established evidence of a scheduler, inference or rollback defect.",
+    "broader_conjunction_or_prefix_matching": "Not motivated by these observations: exact full guards already match the supplied conjunctions, and all required early nullary bindings appear in the saved successful comparison records. No request to flatten/reorder conjunctions, widen term images, infer new hypotheses or prune nonmatches.",
+    "hierarchy_direction": "Useful next evidence would assess all ordered ports and known source-family interfaces together, so a future output can be a receptor for another family. Keep source-body validity and point embeddings explicit rather than treating same-formula labels as interchangeable shared placements."
+  },
+  "prospective_options_no_implementation_or_dispatch": [
+    {
+      "id": "two-port-structural-advice-control",
+      "purpose": "Isolate the saved first-port blind spot before changing registry lifecycle.",
+      "specification": "Within the unchanged readiness tier, record both ordered MP premise ASTs and whether each matches selected output constraints. For an unmatched port, inspect all declared recipe interfaces with that exact output and read their immediate guards as structural compatibility features. Any bounded expansion is advice only, never a newly established hypothesis, proof oracle, graph degree or pruning rule.",
+      "scope_to_freeze_first": "Exact depth, score precedence, unsupported/neutral behavior, cycle handling, duplicate ordered references and every interface binding must be specified and independently mirrored before any run. A one-port-count tie may remain insufficient; do not announce success from this sketch.",
+      "preserved": "All 229 recipes, 217 formulas, 24 rows, 171 body validation, same epoch, empty descriptors, complete chosen-domain permutation, global dead/forced/earliest scheduler and exact rollback.",
+      "comparisons": "Existing receptor control versus the newly frozen structural-advice control at identical 128-attempt / 20-second / 2000-event limits. Fresh owner 180 / 175 / 170 seconds, 512 MiB and separately bounded independent audit; no automatic budget increase, native call or training."
+    },
+    {
+      "id": "generic-source-family-composition-advice",
+      "purpose": "Test the user's inventory/receptor idea by deriving proposals from source interfaces rather than an authored target path.",
+      "specification": "Scan every registered family and all ordered recipient-premise matches; permit one family's declared output to satisfy another's ordered receptor. Validate primitive-body embeddings and exact shared member identities using the same authority and point graph. No named pair, target-proof word, formula-code whitelist or authored 24 example supplies the proposal.",
+      "finite_type_bound": {
+        "family_types": 171,
+        "ordered_type_pairs_including_self": 29241,
+        "embedding_or_binding_count": "Not enumerated in this metadata task; no completeness/count claim for proposal bindings."
+      },
+      "pre_execution_obligations": "Freeze complete interface binding grammar, canonical sharing/reference identity, primitive embeddings, source/dependency closure and resource bounds. The accepted lifecycle uses immutable root-fixed descriptors: runtime additions or a generic pre-search generated registry need an independently checked protocol before activation.",
+      "fallback": "A bounded proposal pool is allowed only as advice. It never supplies forced/dead degrees; all primitive candidates and parent alternatives remain available. A proposal must meet the graph-chosen point and forced-first resynchronization rules, not choose a more convenient row.",
+      "bounded_next_step": "Prefer a source-only complete interface/embedding construction and independent checks, then a separately dispatched equal-inventory controlled search. No target search, native gate or new resource allowance is authorized by this note."
+    }
+  ],
+  "recommendation": "Do not widen the literal prefix/conjunction language or repeat the same 128-attempt run. Freeze an explicit two-port interface diagnostic or a generic all-family composition proposal protocol, preserving complete primitive fallback. The family route is closer to the requested reusable higher-level constructs, but its registry/embedding obligations remain real work.",
+  "costs_and_status": {
+    "fresh_producer_root_reported_seconds": 9.340212875,
+    "fresh_producer_peak_bytes": 128057344,
+    "retained_previous_owner_timer_sum_seconds": 50.405773542,
+    "new_metadata_owner_seconds": 0.654260666,
+    "new_metadata_conservative_peak_bytes": 244121600,
+    "known_nonoverlapping_old_and_current_owner_timers_seconds": 59.745986417,
+    "cost_caution": "Current independent actual audit is additional and pending here. Old source authoring, freezing, pureAST control, original 546.8 s native admission and all prior UNKNOWN/repair/model/lifecycle costs remain additional. This is not one cumulative 180-second gate or complete program wall time.",
+    "source_authoring_seconds": null,
+    "current_complete_proofs": 0,
+    "new_engine_or_checker_imports": 0,
+    "new_models": 0,
+    "new_pattern_matcher_calls": 0,
+    "new_graph_or_state_replays": 0,
+    "new_searches": 0,
+    "native_queries": 0,
+    "new_training": 0,
+    "authored_words_used_as_hints": 0,
+    "new_policy_implemented": false,
+    "independent_actual_audit": "Pending; root owns final qualification and publication."
+  },
+  "publication_owner": "root"
+}

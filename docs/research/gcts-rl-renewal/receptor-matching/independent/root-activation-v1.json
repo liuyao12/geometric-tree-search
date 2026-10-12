@@ -1,0 +1,19 @@
+{
+  "status": "authorized_by_root_after_independent_source_review",
+  "plan_sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+  "version": 2,
+  "sole_owner": "root",
+  "prerequisite_sha256": {
+    ".gcts-active/receptor-matching-progress-20261011/root-independent-source-review-v2.json": "6686e3b932310aa2a8ae0722a6d4ca8e76130b9cc07dfdfb2582d0889a985c04",
+    ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e"
+  },
+  "limits": {
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "allowed_searches": 0,
+  "allowed_native_queries": 0,
+  "new_RL_training": false,
+  "scope": "Independently audit exact two returned UNKNOWN tapes; positive source gate remains unexercised absent actualcertificate. V1neverrun."
+}

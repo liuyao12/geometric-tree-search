@@ -1,0 +1,31 @@
+{
+  "status": "failed_root_auditor_V2_activation_basename_before_child_creation",
+  "same_exec_terminal_exit_code": 1,
+  "exec_chunk": "fc35ae",
+  "active_handles": 0,
+  "worker_created": false,
+  "supervisor_or_nested_worker_created": false,
+  "owner_returned_terminal": true,
+  "lifetime": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v2.json",
+    "sha256": "520673dd75f8dc8686512c8f656b8d4a36b66dde9fcf91edd85515633346b770",
+    "bytes": 1507
+  },
+  "incorrect_root_activation": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v1.json",
+    "sha256": "1c4b0229a574c87b1455e613f10191733e782acf2cae40cb05b1315e9cd7537c",
+    "bytes": 873
+  },
+  "root_source_review": {
+    "path": ".gcts-active/receptor-matching-progress-20261011/root-independent-source-review-v2.json",
+    "sha256": "6686e3b932310aa2a8ae0722a6d4ca8e76130b9cc07dfdfb2582d0889a985c04",
+    "bytes": 2719
+  },
+  "owned_seconds": 0.0005985409999999976,
+  "conservative_host_peak_bytes": 13369344,
+  "cause": "ROOT created root-activation-v1.json; frozen V2 owner expects root-activation-v2.json. ROOT had not checked the exact V2 owner basename change.",
+  "actual_independent_audits": 0,
+  "accepted_trace_or_proof": false,
+  "native_queries": 0,
+  "successor_requirement": "Preserve exact failed owner/lifetime/activation and create reviewed V3 isolated plan/worker/owner/output/activation names; same tapes/model/gates, no silent rerun or budget increase."
+}

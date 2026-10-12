@@ -1,0 +1,63 @@
+{
+  "status": "frozen_literal_structural_receptor_order_contract_not_a_logic_rule",
+  "API": {
+    "pattern_from_guard": "guard AST, ordered distinct prefix_binders, source label => literal-receptor-pattern-v1 record",
+    "extract_pattern": "witness plus declared ordered premise ASTs => pattern record",
+    "literal_guard_match": "pattern record plus closed quantifier-free recipient AST => status/bucket/successful bindings/reason",
+    "evaluate_pattern": "pattern record plus selected records {key,formula_code,formula} => per-key comparisons/matches and aggregate bucket",
+    "ReceptorOrder": "same graph interface as frozen ForwardOrder; complete chosen keys only; no native/logic oracle"
+  },
+  "extractors": {
+    "instantiate": "Require exact declared universal as outer implication antecedent. Inspect consequent; peel leading universal binders with distinct nonempty string names; immediate implication guard only.",
+    "mp": "Read exact first ordered premise as a rigid zero-slot guard; require second ordered premise literally equals implication(first, witness output). Do not inspect equality output as a guard and do not peel a quantified MP antecedent.",
+    "other_rules": "neutral, including equality-substitution and named axiom recipes"
+  },
+  "syntax": {
+    "formula_constructors": [
+      "pred",
+      "eq",
+      "not",
+      "and",
+      "imp",
+      "bot"
+    ],
+    "literal_compound_term_constructors": "Recursive fun(name,args) supported, including pattern slots inside constructors.",
+    "slot_images": "Only closed fun(name,[]) with nonempty string name; different slots may share the same image.",
+    "rigid_constants": "Already completed instantiation constants stay literal; cannot be rebound.",
+    "prefix_slots": "Exactly variables in the distinct peeled leading prefix; free/out-of-scope variables neutral.",
+    "unsupported": "Repeated/shadowed/empty prefix names; nested quantified guard or quantified/free recipient; unknown constructor or empty symbol; compound slot image. Literal or/exists are neutral in this first narrow subset.",
+    "no_rewrites": "No conjunction flattening, commutativity, equality symmetry, logical consequence, unification of selected proof commands or satisfiability test."
+  },
+  "pair_precedence": "Validate pattern/recipient shape first. Then compare literal tree in ordered traversal. Any definite constructor/polarity/symbol/arity/repeated-image mismatch dominates unsupported image elsewhere; otherwise an unsupported compound slot image is neutral. Successful bindings only; nonmatch/neutral bindings are empty.",
+  "aggregation": "Any exact supported selected match => match. Otherwise at least one supported nonmatch => nonmatch, even with other neutral recipients. Otherwise neutral. Nonmatch describes only the supported selected subset, never logical impossibility.",
+  "score_order": {
+    "match": 0,
+    "neutral": 1,
+    "nonmatch": 2
+  },
+  "complete_score": "unchanged old readiness tier, then receptor bucket, then original AST size/canonical witness/recipe index/ordered references",
+  "readiness": "Exact original per-key tier conditions copied literally, substituting only the local name selected_outputs for historical proved. Physically selected output constraints may have pending ordered sources and are not established hypotheses/derivations.",
+  "selected_only": "Collect g.selected output codes/formula ASTs and exact keys. No formula from g.m or an empty row is consulted; same formula at distinct selected keys remains distinct.",
+  "fallback": "No candidate removal, merging, changed row scheduling, threshold, match-count bonus, degree update, marking, exclusion or descriptor. Every old legal alternative remains.",
+  "trace_schema": {
+    "registry": "Full per-recipe pattern records once in each new-control result.",
+    "per_branch": "Selected exact key/formula-code records; per-recipe label/bucket/matches with bindings and distinct keys; count/label counts and SHA of every comparison; SHA of full sorted {key,score} stream.",
+    "forced": "receptor_feature_trace is null; forced singleton uses exact base key with no stale branch feature trace.",
+    "timing": "Aggregate separate selected-collection, pattern preparation, literal matching, score-feature, sort, permutation and payload/hash clocks; enclosing search/trace/order clocks overlap and must not be summed."
+  },
+  "pure_controls": {
+    "outcome": {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-outcome-v1.json",
+      "sha256": "dc39d007a5bbf2481c46e7ace3de32c5f7742828d4f108451a711b80f9446cb0",
+      "bytes": 31731
+    },
+    "lifetime": {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-lifetime-v1.json",
+      "sha256": "4e72f43efcd675b025b188c98a884d4255b3379c209d7603d88ef82bd3c43f07",
+      "bytes": 1573
+    },
+    "records": 64,
+    "scope": "Pure AST/selected-record only, no actual graph/order/model/search/native or mathematical proof acceptance."
+  },
+  "scope_limit": "Finite formula-color point model still differs from universal shared FOL-machine Wang palette. This authored fixed feature is not new RL training or a proof-search superiority claim."
+}

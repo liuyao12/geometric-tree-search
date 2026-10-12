@@ -1,0 +1,28 @@
+{
+  "status": "unknown_or_failed_owned_independent_geometry_trace_audit",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v2.json",
+    "sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+    "bytes": 218566
+  },
+  "result": null,
+  "child_pid": null,
+  "child_exit_code": null,
+  "owned_child_terminal_and_reaped": false,
+  "failure": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v2.json'",
+  "full_owner_and_worker_seconds_before_receipt_write": 0.0005985409999999976,
+  "fresh_child_kernel_peak_bytes": 0,
+  "owner_kernel_peak_bytes": 13369344,
+  "conservative_combined_peak_bytes": 13369344,
+  "whole_ceiling_seconds": 180,
+  "peak_ceiling_bytes": 536870912,
+  "wall_overshoot_seconds": 0,
+  "memory_overshoot_bytes": 0,
+  "enforcement": "Owned wait4 direct child, worker SIGALRM, owner deadline kill/wait/reap; retrospective fresh child plus owner kernel peak. No hard OS memory cap or live RSS sampling.",
+  "clock_scope": "Owner verification/activation, child source-family setup, both complete trace audits, mutations, serialization/reap and receipt assembly; own final receipt write and source authoring excluded.",
+  "audit_observations": null,
+  "searches_run_by_owner": 0,
+  "native_queries": 0,
+  "whole_target_logical_checks": null,
+  "positive_certificates": null
+}

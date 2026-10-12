@@ -1,0 +1,86 @@
+{
+  "version": "third-source-only-receptor-review-v1",
+  "status": "prospectively_frozen_no_scientific_execution",
+  "source": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/source_only_review_v1.py",
+    "sha256": "6c885af968231a9c5941ad60769362164439d722f93d96687d4f77f63bff53f8",
+    "bytes": 17463
+  },
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+      "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+      "bytes": 243262
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-manifest-v1.json",
+      "sha256": "b0055cfd3d0213b6b2fd995fa59413aa41675906fdcd7dc9e3bc50dc0b90e561",
+      "bytes": 4672
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-freeze-v1.json",
+      "sha256": "9a24742fbd79d380dec1e519845e026558e0803c3e7b63ecd7ddbab2b45a657c",
+      "bytes": 1788
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/matcher-contract-v1.json",
+      "sha256": "a91cb1d879623572b2af6f6c6f2fef24ac8471ce3afcc7c31d37ff397b17b029",
+      "bytes": 5219
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+      "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+      "bytes": 219919
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c",
+      "bytes": 16449
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/full-language-plan-v3.json",
+      "sha256": "016b6f14ca64cba4af58d742738ad5a785efec46c2d6b2cd103e1aaeb06e6d0a",
+      "bytes": 158160
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+      "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+      "bytes": 7007
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/source_only_review_v1.py",
+      "sha256": "6c885af968231a9c5941ad60769362164439d722f93d96687d4f77f63bff53f8",
+      "bytes": 17463
+    }
+  ],
+  "limits": {
+    "helper_seconds": 120,
+    "helper_kernel_peak_bytes": 134217728,
+    "raw_hash_chunk_bytes": 65536
+  },
+  "allowed": "Read source, prospective/configuration plans and manifests; hash raw frozen input bytes; AST parse without importing sources. No data/model/result JSON decode or inflation, scientific engine imports, graph calls, search, training, native, replay, publication or existing-file mutation.",
+  "outputs": [
+    "independent-worker-diff-v1.diff",
+    "source-checks-v1.json",
+    "verified-pin-set-v1.json",
+    "source-review-v1.json"
+  ],
+  "exact_phase": "one fresh source-only helper",
+  "scientific_activation": false,
+  "authoring_cost": "unmeasured; separate from measured helper"
+}

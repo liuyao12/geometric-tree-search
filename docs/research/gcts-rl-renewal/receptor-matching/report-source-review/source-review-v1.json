@@ -1,0 +1,218 @@
+{
+  "status": "passed_bounded_source_only_report_projection_review_pending_actual_projection",
+  "checks": {
+    "path_and_SHA_requirement_identity": true,
+    "historical_source_lookup_same_identity": true,
+    "historical_member_separated_by_version": true,
+    "current_route_rejected_if_wrong_bytes": true,
+    "historical_overrides_never_adopt_current_route": true,
+    "all_exported_routes_rehashed": true,
+    "all_origins_copy_equal_source": true,
+    "generator_flags_equal_actual_audit_mapping": true,
+    "validator_flags_equal_actual_audit_mapping": true,
+    "original_observation_augmented_without_rewrite": true,
+    "formula_registry_recipes_hypotheses_target_same": true,
+    "actual_unknown_certificates_forbidden": true,
+    "saved_trace_unknown_scope_strict": true,
+    "no_authored_hint_new_native_RL_claim": true,
+    "timing_label_corrected": true,
+    "inclusive_and_overlapping_cost_scope": true,
+    "historical_unknown_costs_additional": true,
+    "MathJax_established_chtml_and_latex_delimiters": true,
+    "partial_constraints_not_proofs": true,
+    "fixed_feature_not_RL_or_learned_pruning": true,
+    "no_statistical_transfer_or_unrestricted_native_claim": true,
+    "arithmetic_transfer_not_activated": true,
+    "main_reconstruction_exact_one_panel_and_counter": true,
+    "task_paths_restricted_in_validator_and_stager": true,
+    "staged_blob_hashes_exact": true,
+    "goal_remains_active": true
+  },
+  "source_ASTs": 4,
+  "source_import_declarations_not_executed": {
+    "prepare_report.py": [
+      "copy",
+      "decimal",
+      "gzip",
+      "hashlib",
+      "html",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "report_evidence",
+      "shutil",
+      "subprocess"
+    ],
+    "report_evidence.py": [
+      "hashlib",
+      "json",
+      "pathlib",
+      "shutil",
+      "zipfile"
+    ],
+    "validate_report.py": [
+      "gzip",
+      "hashlib",
+      "html.parser",
+      "json",
+      "os",
+      "pathlib",
+      "report_evidence",
+      "subprocess",
+      "zipfile"
+    ],
+    "stage_publication.py": [
+      "hashlib",
+      "json",
+      "pathlib",
+      "shutil",
+      "subprocess"
+    ]
+  },
+  "notes": {
+    "fixed_items": [
+      "ROOT changed the misleading Feature seconds label to Score feature seconds and added all four recorded receptor subphase timers before this snapshot.",
+      "ROOT changed both helper and validator to require exact equality between selected flags and actual independent observation_verdicts before this snapshot."
+    ],
+    "final_projection_gate_required": [
+      "Reconcile ROOT terminal selection with the exact terminal audit result, lifetime/same-handle receipt and cost/peak field provenance. These actual files were not read by this source review.",
+      "Verify every selected frozen folder exists and every producer/independent/prior-source pin has at least one exact (path,SHA) public route, including historical MAIN105 and committed baseline MAIN106.",
+      "The generic projection scanner skips nonexistent paths/folders. That is not complete closure by itself; actual final pin-set reconciliation must demonstrate that no required item was skipped.",
+      "Verify task-files manifest and staged blobs contain only the new receptor-matching prefix plus the additive MAIN panel/counter; preserve previous published bytes.",
+      "Check actual report assessment text, trace flags, null certificates, cost fields, renderer/link behavior and live math separately. No rendered/DOM/native/logical acceptance follows from this source review."
+    ],
+    "historical_version_semantics": "Same historical path may legitimately have multiple byte versions. Compare identities by (path,sha256), never deduplicate by path. Every direct or archive-member route must independently hash to its expected version.",
+    "archive_scope": "A .diff/.js/.html excluded from direct suffix copying can still have a bound archive-member route. Route presence and exact bytes, not direct-copy count, establish its preservation.",
+    "cost_scope": "New AST owner + producer owner + independent owner are disjoint owned phases only. Source preparation/reference controls/metadata/reviews/generation/publication and historical native preparation remain additional; overlapping component timers must not be summed.",
+    "scientific_and_UI_scope": "This review read source text, parsed Python ASTs and hashed source/context bytes only. It never imported a generator, viewer, checker or scientific engine; never inflated results/models; never rendered or executed a report."
+  },
+  "inputs": [
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+      "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+      "bytes": 21312
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+      "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+      "bytes": 7112
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+      "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+      "bytes": 6604
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+      "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+      "bytes": 2359
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/display_data_check_v1.js",
+      "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "bytes": 3205
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-review-v1.json",
+      "sha256": "328d701bcfa952b471bd47d0aa4a9abec79e1f756e0c5c9f194d5072f05e9b5a",
+      "bytes": 2423
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/integration.json",
+      "sha256": "35b285e1f03a9e2c270291076be703bb1fbb3d50b17e05f38768e8f1258539d7",
+      "bytes": 1976
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/integration.json",
+      "sha256": "a1969cc46e5477b991e275752a691c6b5940872ccdd6421e92f6714c557b0604",
+      "bytes": 2603
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/integration.json",
+      "sha256": "09057fe033efdb4c35480010fe693aafb554cafd79067e9cee099ed19f90a8e5",
+      "bytes": 3152
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/source_projection_review_v1.py",
+      "sha256": "cd363fbcc8efbd2480150d4503df911d71435014b3664489851bcb1c1532c650",
+      "bytes": 10127
+    }
+  ],
+  "plan": {
+    "path": ".gcts-active/receptor-matching-report-independent-20261011/review-plan-v1.json",
+    "sha256": "c07e8fdf3319c9a82b4f790bbe77d512a252959e4bd3987d59d7d1c41ec08d19",
+    "bytes": 5540
+  },
+  "mutable_source_origins": [
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/prepare_report.py",
+      "version_sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+      "version_bytes": 21312,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+        "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+        "bytes": 21312
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/report_evidence.py",
+      "version_sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+      "version_bytes": 7112,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+        "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+        "bytes": 7112
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/validate_report.py",
+      "version_sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+      "version_bytes": 6604,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+        "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+        "bytes": 6604
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/stage_publication.py",
+      "version_sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+      "version_bytes": 2359,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+        "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+        "bytes": 2359
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/display_data_check_v1.js",
+      "version_sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "version_bytes": 3205,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/display_data_check_v1.js",
+        "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+        "bytes": 3205
+      }
+    }
+  ],
+  "seconds_before_receipt_write": 0.006851791999999999,
+  "kernel_peak_bytes": 14548992,
+  "seconds_ceiling": 60,
+  "host_ceiling_bytes": 134217728,
+  "clock_scope": "Helper only; interpreter startup/final receipt write excluded. Source authoring unmeasured.",
+  "actual_results_read": 0,
+  "actual_models_loaded": 0,
+  "engine_imports": 0,
+  "report_execution": 0,
+  "scientific_execution": 0,
+  "UI_imports": 0,
+  "rendering": 0,
+  "publication": 0,
+  "actual_projection_qualified": false
+}

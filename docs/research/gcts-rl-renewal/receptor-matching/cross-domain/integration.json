@@ -1,0 +1,69 @@
+{
+  "schema": "source-only-cross-domain-receptor-frozen-manifest-v1",
+  "scope": "Task-only source, authored synthetic corpus and independent reference receipts. No producer matcher/actual-model/graph/search/training/native/replay gate executed. Root alone activates science and publication.",
+  "primary_assessment": "compatibility-assessment-v1.json",
+  "current_corpus": "synthetic-corpus-v2.json",
+  "current_scope": "api-scope-clarification-v2.json",
+  "files": [
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/api-scope-clarification-v2.json",
+      "sha256": "cad1054627eabb3cf1ead4a68a8ccd80f8c689b7e49cce463591c66e4f671ee8",
+      "bytes": 4760
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/compatibility-assessment-v1.json",
+      "sha256": "85106faef1ea055087e1ea07339a17f2952b6c4a8731f56969b002ee22e149e1",
+      "bytes": 8017
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/prepare-corpus-v1.py",
+      "sha256": "e853e62e6c41a8510ac47e1db737379451ce74874c188330752682a95d069371",
+      "bytes": 7998
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/prepare-successor-v2.py",
+      "sha256": "cfc599f0f9047335bcd0f03290cc05c23819267c594a7f002772e6d023a4f469",
+      "bytes": 5131
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v1.json",
+      "sha256": "4c72d19390679a7319a00aaf04d9a24cb162ef17d3f2937e82a7aacf0ef4f80c",
+      "bytes": 37356
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v2.json",
+      "sha256": "3e34b4388ebd9765b1c8ca74938a2ddfd69e1a16706b1399f65c40fb816979b4",
+      "bytes": 44401
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-plan-v1.json",
+      "sha256": "da4de7848652252409621b2d48d19c53c537e2734434589810449154aea382a2",
+      "bytes": 3088
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-plan-v2.json",
+      "sha256": "c767f8124388dc178b1e1eeb119234ec6d7831489d412d0b914fa9bbd56cdd82",
+      "bytes": 4260
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-reference-receipt-v1.json",
+      "sha256": "3a80984f3c1992e1eb73e6daeaae959b5948f711d07714a9a87119273b7b4e8e",
+      "bytes": 7204
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-reference-receipt-v2.json",
+      "sha256": "01d3f68e04f6777e95f57b0e321d655e46afb2aae88a39975eab9d38a13c7778",
+      "bytes": 8340
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic_reference_controls_v1.py",
+      "sha256": "caf6cea9c9c3780c6a994327f8d401a457dec8fd91d19c44ff1367d7e1592307",
+      "bytes": 6335
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic_reference_controls_v2.py",
+      "sha256": "d805e1b2d9154ecbd6fce3aa71881b6376727618bd618cf34060a04a5353cf2e",
+      "bytes": 6674
+    }
+  ]
+}

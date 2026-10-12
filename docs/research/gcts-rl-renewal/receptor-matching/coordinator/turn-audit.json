@@ -1,0 +1,36 @@
+{
+  "status": "active_progress_continuation_source_design_before_dispatch",
+  "previous_goal_turn": "progress",
+  "continuation_no_progress_streak": 0,
+  "objective_complete": false,
+  "goal_status": "active",
+  "previous_publication": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/publication.json",
+    "sha256": "0f7ddcb9fe6ac05a5bf969844df219e05d60bdb8d52fb451c5be6172457559ab",
+    "bytes": 2443
+  },
+  "previous_turn_result": {
+    "path": ".gcts-active/automatic-geometry-progress-20261011/turn-result.json",
+    "sha256": "d9b8335f866cbbad6bd43616b17e4532a52e38315d1dfa4ac380f1aaf55fd002",
+    "bytes": 3981
+  },
+  "next_prospective_plan": {
+    "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+    "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+    "bytes": 7007
+  },
+  "current_predecessor_closure_checked": 683,
+  "predecessor_pin_mismatches": [],
+  "baseline_commit": "a4adb7b113338e6b8753b880356954b6a26d2086",
+  "baseline_MAIN": {
+    "path": "docs/research/gcts-rl-renewal/index.html",
+    "sha256": "10739a06cc6a6a87e25646f995f9c0e36e241ef7e437d7d26fb36f245dbf657b",
+    "bytes": 349273
+  },
+  "new_scientific_activations": 0,
+  "parallel_roles": [
+    "new generic receptor-order source",
+    "independent source/order/trace checker",
+    "cross-domain synthetic arithmetic/FOL structural controls"
+  ]
+}

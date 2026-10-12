@@ -1,0 +1,50 @@
+{
+  "status": "actual_root_owned_producer_terminal_reaped_pending_independent_audit",
+  "same_exec_session_id": 94081,
+  "same_exec_terminal_exit_code": 0,
+  "worker_pid": 55995,
+  "supervisor_pid": 55994,
+  "all_owned_processes_terminal_reaped": true,
+  "activation": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/root-activation-v1.json",
+    "sha256": "34e60b53ff5a047d174fcddd2b69e6583379d7a8ff844af4ce668f306dfdd02e",
+    "bytes": 1884
+  },
+  "outcome": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-outcome-v1.json",
+    "sha256": "7639c157efbe8583cbdee1878376d26e70b3bc48a8124e37e252a05bedbee241",
+    "bytes": 2458
+  },
+  "supervision": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-supervision-v1.json",
+    "sha256": "75a61cf3113e7e9b3a78e3bb0f8c95c4b9f3222c3e5047309d77792b6906abfc",
+    "bytes": 36471
+  },
+  "lifetime": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-lifetime-v1.json",
+    "sha256": "000e74607ab723093eba8548bc5f1ece88c03d326a7a613f616b27b1720f80c6",
+    "bytes": 1383
+  },
+  "owned_seconds": 9.340212875,
+  "conservative_host_peak_bytes": 128057344,
+  "observations": [
+    {
+      "id": "fixed-forward-reference",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "events": 1168,
+      "certificate_supplied": false
+    },
+    {
+      "id": "fixed-forward-receptor",
+      "status": "unknown_search_budget",
+      "attempts": 128,
+      "events": 1280,
+      "certificate_supplied": false
+    }
+  ],
+  "accepted_proofs": 0,
+  "acceptance": "Pending separately reviewed independent audit; no proof claim from point/decoder output",
+  "native_queries": 0,
+  "new_RL_training": false
+}

@@ -1,0 +1,84 @@
+{
+  "status": "passed_representative_actual_display_data_correspondence",
+  "inputs": [
+    {
+      "path": "docs/research/gcts-rl-renewal/receptor-matching/visual-data.json",
+      "sha256": "271d11329e5acdf8a1f89560b09e6fdc980577a9f637145c962a62aaf45b1d0e",
+      "bytes": 9675451
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer.js",
+      "sha256": "f51afb1b3609d985d7f1d0b21e1dc3febf20a0316618cdb21534e8c8555be02e",
+      "bytes": 34758
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/display_data_check_v1.js",
+      "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "bytes": 3205
+    }
+  ],
+  "observations": [
+    {
+      "id": "fixed-forward-reference",
+      "defaultEventIndex": 962,
+      "checked": [
+        {
+          "label": "initial",
+          "rows": 3,
+          "marks": 27,
+          "exterior": 23,
+          "pendingOrderedInputs": 0
+        },
+        {
+          "label": "deepest",
+          "rows": 23,
+          "marks": 67,
+          "exterior": 23,
+          "pendingOrderedInputs": 1
+        },
+        {
+          "label": "terminal",
+          "rows": 3,
+          "marks": 27,
+          "exterior": 23,
+          "pendingOrderedInputs": 0
+        }
+      ]
+    },
+    {
+      "id": "fixed-forward-receptor",
+      "defaultEventIndex": 315,
+      "checked": [
+        {
+          "label": "initial",
+          "rows": 3,
+          "marks": 27,
+          "exterior": 23,
+          "pendingOrderedInputs": 0
+        },
+        {
+          "label": "deepest",
+          "rows": 22,
+          "marks": 69,
+          "exterior": 23,
+          "pendingOrderedInputs": 2
+        },
+        {
+          "label": "terminal",
+          "rows": 3,
+          "marks": 27,
+          "exterior": 23,
+          "pendingOrderedInputs": 0
+        }
+      ]
+    }
+  ],
+  "actualDisplayStates": 6,
+  "actualCertificates": 0,
+  "scientificImports": 0,
+  "searches": 0,
+  "logicalOrNativeAcceptance": 0,
+  "scope": "Actual initial/deepest/terminal states only; pure reader display functions. Whole trace validity comes from the separately owned independent audit. No DOM or MathJax claim.",
+  "seconds": 0.060901292,
+  "browserQA": "pending live validation"
+}

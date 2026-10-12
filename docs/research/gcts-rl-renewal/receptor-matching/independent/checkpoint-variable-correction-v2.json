@@ -1,0 +1,29 @@
+{
+  "status": "source_only_checkpoint_variable_defect_corrected_before_any_audit_execution",
+  "old_frozen_plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v1.json",
+    "sha256": "ed2c4dac4c94c1a7e0027ba9a8f7ee569ea63962f9e0b5171f13176d6501da73",
+    "bytes": 216761
+  },
+  "old_worker": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v1.py",
+    "sha256": "c5a9663f34a13190ccba26d68c0d22c2c1f44f6eddbec976bd874cb45fac0460",
+    "bytes": 35353
+  },
+  "successor_worker": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v2.py",
+    "sha256": "6d196a33a8c1f644a3a142e3a1c4bb1489263edf12a6dded394bcb9285fccf1f",
+    "bytes": 35363
+  },
+  "exact_diff": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/worker-v1-to-v2.diff",
+    "sha256": "7f53aa677f3157f204065cab7a12b493fefa12ad96f473fe95c2c89cc5d9c93f",
+    "bytes": 1485
+  },
+  "cause": "Tape.walk stored node checkpoint in local entry, then reused entry as selected comparison record inside receptor feature census. Later rollback expected checkpoint tuple. Root source review identified this before dispatch.",
+  "repair": "Rename only the feature comparison loop variable to comparison; retain checkpoint entry. Basename/plan/output successors isolated. Matcher, domain, state, transactions, positive logical helper, all data/limits unchanged.",
+  "old_auditor_executed": false,
+  "new_auditor_executed": false,
+  "scientific_failure_cost": 0,
+  "metadata_authoring_cost": "Unmeasured; source freeze timers separate."
+}

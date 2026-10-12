@@ -1,0 +1,40 @@
+{
+  "status": "independent_source_only_successor_contract_waiting_frozen_producer_and_root_dispatch",
+  "created_utc": "2026-10-12T00:00:06.000306+00:00",
+  "preserved_v1": [
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v1.py",
+      "sha256": "f56a2f28352015433d6e8fa9166646bb3bd42c2d924368fa3367219c34b95f0f",
+      "bytes": 6180
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/design-checklist-v1.json",
+      "sha256": "22fbc56fbde20ed7d9ffbf7b9f2eef5f59300e80d1609ce34c82a3667d913cec",
+      "bytes": 9701
+    }
+  ],
+  "successor_source": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v2.py",
+    "sha256": "29aab54805d185f2e4f35ce941780b3298ab0957f8274c62b3fa5c94a1d25eb5",
+    "bytes": 7445
+  },
+  "prospective_controls": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/prospective-pair-controls-v2.json",
+    "sha256": "73cb5077d4a2eb8bf029d70f8f64a562842482190a91c23d41cd009d0978eafa",
+    "bytes": 7431
+  },
+  "amendments": [
+    "Rigid literal compound function constructors recurse, preserving symbol, arity and ordered arguments. Only substitution slot images are restricted to closed nullary terms.",
+    "Instantiate feature peels distinct leading binders of the consequent then its immediate implication guard. MP feature uses the rigid zero-slot ordered first premise, with exact second premise implication to the witness output.",
+    "Per-pair deterministic structural scan: definite mismatch wins over unsupported slot image elsewhere. Without definite mismatch, unsupported image is neutral. Globally unsupported or nested quantified pattern/recipient remains neutral before pairing.",
+    "Supported mismatch spelling is nonmatch; prior miss spelling is historical independent draft only. Match, neutral and nonmatch priorities are respectively 0, 1 and 2 after unchanged readiness."
+  ],
+  "unchanged": "Every candidate remains in the complete fallback permutation. Matching is structural advice over occupied selected output constraints, including pending MP outputs, and does not establish logical hypotheses or prune.",
+  "positive_and_unknown_audit_architecture": "All positive, UNKNOWN, strict-prior proof, Gamma-retaining flat request and authority gates in the preserved design remain required. No occupancy-only proof acceptance.",
+  "producer_correspondence": "Pending exact frozen source/API and independent readiness/source/input review. This independent code has not imported the producer or been executed.",
+  "scientific_imports": 0,
+  "matcher_calls": 0,
+  "scientific_execution": 0,
+  "native_calls": 0,
+  "metadata_only_authoring": "Own source AST parsing, static fixture construction, file hashes and JSON receipt writing only."
+}

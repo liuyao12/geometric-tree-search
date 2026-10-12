@@ -1,0 +1,94 @@
+{
+  "status": "passed_read_only_source_ready_receptor_order_review_root_dispatch_only",
+  "created_utc": "2026-10-12T00:09:18.075755+00:00",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "manifest": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-manifest-v1.json",
+    "sha256": "b0055cfd3d0213b6b2fd995fa59413aa41675906fdcd7dc9e3bc50dc0b90e561",
+    "bytes": 4672
+  },
+  "freeze": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-freeze-v1.json",
+    "sha256": "9a24742fbd79d380dec1e519845e026558e0803c3e7b63ecd7ddbab2b45a657c",
+    "bytes": 1788
+  },
+  "sources": 11,
+  "inputs": 135,
+  "preserved": 729,
+  "unique_paths_verified": 738,
+  "manifest_files_verified": 19,
+  "old_118_roles_unchanged": true,
+  "exact_unique_56_body_inputs": true,
+  "copied_sources_byte_identical": [
+    "shared_symbolic_forward_order_v1.py",
+    "shared_symbolic_bridge_decode_v1.py",
+    "shared_symbolic_search_run_v1.py",
+    "shared_symbolic_search_outer_v1.py"
+  ],
+  "exact_minimal_worker_diff": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/worker-v2-to-receptor-v1.diff",
+    "sha256": "9e247e512632e046e72b13f5cece488394c5adbfe83594dcbba2bdba74c4a1ab",
+    "bytes": 2780
+  },
+  "model_epoch_unchanged": "06bc80d38463caa934136e428e66a05bafd6715c715f1fa3892b0dcf20c3c46c",
+  "observation_order": [
+    {
+      "id": "fixed-forward-reference",
+      "mode": "fixed-forward",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    },
+    {
+      "id": "fixed-forward-receptor",
+      "mode": "fixed-forward-receptor",
+      "attempts": 128,
+      "seconds": 20,
+      "event_ceiling": 2000
+    }
+  ],
+  "resources": {
+    "owner_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "maximum_searches": 2,
+    "each_attempts": 128,
+    "each_search_seconds": 20,
+    "each_trace_event_ceiling": 2000,
+    "independent_audit_proposal_seconds": 180,
+    "independent_audit_proposal_bytes": 536870912
+  },
+  "scope": {
+    "matcher": "Literal guard syntax advice only; distinct peeled prefix slots and rigid completed constants, repeated-image consistency, literal compound syntax but nullary slot images, globally unsupported syntax neutral, definite structural miss precedence, successful bindings only. No rewriting or host inference.",
+    "ranker": "MP guard is the ordered first premise, with exact second implication interface; instantiate inspects consequent prefix. Selected output constraints may have pending dependencies and are not thereby derived hypotheses. Match/neutral/nonmatch bucket after identical readiness, then unchanged complete ties.",
+    "authority": "Original complete point graph decides legality, all dead/forced/generation/degree decisions, propagation and exclusions. No matcher key removal, fixed marking, descriptor insertion, target-specific literal, family chain or proof word.",
+    "transaction": "Search walk, successful return and UNKNOWN/exhaustion rollback/exclusion code byte-identical to accepted V2 except listed order/trace interface. Only genuinely exhausted children excluded.",
+    "positive": "A returned point/decoded certificate is pending independent logical and complete trace acceptance. Separate source-only positive helper is being prepared; no native invocation or compiler acceptance here.",
+    "resource": "Per-lane 20-second value is a checked deadline with possible in-flight operation overshoot. Whole 180/175/170-second and 512 MiB gates remain distinct; no strict equal-wall-time or speed claim.",
+    "pure_controls": "64 producer-owned pure AST/selected-record controls; no actual graph, scheduler, order permutation, model or proof acceptance. Independent current review does not rerun these controls."
+  },
+  "positive_support_preparation": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+    "sha256": "7ed3f345f8938bdf465d72033f52972314db5e303f93066fdb20840d4f3f67c7",
+    "bytes": 8841
+  },
+  "independent_pair_oracle": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v2.py",
+    "sha256": "29aab54805d185f2e4f35ce941780b3298ab0957f8274c62b3fa5c94a1d25eb5",
+    "bytes": 7445
+  },
+  "no_scientific_imports_or_runs_by_reviewer": true,
+  "no_process_polling": true,
+  "root_only_command": "python3 /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_search_outer_v1.py",
+  "remaining_scope": [
+    "Actual complete domain/permutation/transaction/matcher payload correspondence requires the separately frozen root-owned audit after producer terminal.",
+    "Flat-request/native/compiler scope remains separate; no unrestricted first-order or general geometry completeness claim.",
+    "Generic syntax controls do not enable instantiation actions in the existing arithmetic searched grammar."
+  ],
+  "source_disposition": "Ready for root-owned exact reviewed producer dispatch; this review is not activation."
+}

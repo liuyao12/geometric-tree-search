@@ -1,0 +1,722 @@
+[
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/matcher-contract-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/matcher-contract-v1.json",
+    "sha256": "a91cb1d879623572b2af6f6c6f2fef24ac8471ce3afcc7c31d37ff397b17b029",
+    "bytes": 5219
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure-ast-lifetime-v1.json",
+    "sha256": "4e72f43efcd675b025b188c98a884d4255b3379c209d7603d88ef82bd3c43f07",
+    "bytes": 1573
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-outcome-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure-ast-outcome-v1.json",
+    "sha256": "dc39d007a5bbf2481c46e7ace3de32c5f7742828d4f108451a711b80f9446cb0",
+    "bytes": 31731
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure-ast-plan-v1.json",
+    "sha256": "ac47e59233a122864e2731f3dd058788d4f9819d9893d67f0f7166c22b50288f",
+    "bytes": 2231
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-source-freeze-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure-ast-source-freeze-v1.json",
+    "sha256": "b9759c68fa52f0ef75cb96297e2e88e51f737a0fab77d121e904934538826956",
+    "bytes": 458
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure-ast-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure-ast-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure-ast-stdout-v1.txt",
+    "sha256": "5a965bfea4819b8f01b26113ad7a5b76822b93e68ca4daf312d6e4a9b927d91e",
+    "bytes": 729
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure_ast_fixtures_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure_ast_fixtures_v1.py",
+    "sha256": "e1db52a90fd4a5a0db5ca325803639ea1909c645bf696fd7172ae3765da4d477",
+    "bytes": 9651
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/pure_ast_owner_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/pure_ast_owner_v1.py",
+    "sha256": "6865527c0b213160f3d2c290c5a5b3f953e85fa76bc51c87f55b9db420b767b5",
+    "bytes": 4394
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_literal_match_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/receptor_literal_match_v1.py",
+    "sha256": "d3384a838d9a5c6cbd2b549b5a4b5e00b753be64a5e26d65421e916a72c86a3c",
+    "bytes": 15139
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_search_freeze_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/receptor_search_freeze_v1.py",
+    "sha256": "0fc681857465d31262ba00bf32d7d0a677c6bcea7a07bebe4845598e05f30120",
+    "bytes": 22518
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/root-activation-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/root-activation-v1.json",
+    "sha256": "34e60b53ff5a047d174fcddd2b69e6583379d7a8ff844af4ce668f306dfdd02e",
+    "bytes": 1884
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-launch-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-launch-v1.json",
+    "sha256": "c8f9a83c641b0f0d50c9e55c1db653fea4a1c3aeae342e0f8db14e900fd40eb0",
+    "bytes": 479
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-lifetime-v1.json",
+    "sha256": "000e74607ab723093eba8548bc5f1ece88c03d326a7a613f616b27b1720f80c6",
+    "bytes": 1383
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-outcome-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-outcome-v1.json",
+    "sha256": "7639c157efbe8583cbdee1878376d26e70b3bc48a8124e37e252a05bedbee241",
+    "bytes": 2458
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-stdout-v1.txt",
+    "sha256": "20fd282a8fe80460eb0a9956d4c7c447b0afc97bb39d8e24871e787cc0efb227",
+    "bytes": 3274
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/search-supervision-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/search-supervision-v1.json",
+    "sha256": "75a61cf3113e7e9b3a78e3bb0f8c95c4b9f3222c3e5047309d77792b6906abfc",
+    "bytes": 36471
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_bridge_decode_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/shared_symbolic_bridge_decode_v1.py",
+    "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6",
+    "bytes": 6052
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_forward_order_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/shared_symbolic_forward_order_v1.py",
+    "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+    "bytes": 3698
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_geometry_search_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/shared_symbolic_geometry_search_v1.py",
+    "sha256": "235068c38d9ae35b0bc2fdc9fa4ba965a125c7e4eef52a279579edc07be09be7",
+    "bytes": 16848
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_search_outer_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/shared_symbolic_search_outer_v1.py",
+    "sha256": "a9bbc9444def2a5890cae30b8dbbd6a35f062a1ac91cedb34c3633ca2fdb692b",
+    "bytes": 3889
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_search_run_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/shared_symbolic_search_run_v1.py",
+    "sha256": "f7a671e2cf6b48d94c06b7acc23af4d0e4a7b16abe67d35c4fdb5a2235a34be2",
+    "bytes": 7394
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/source-freeze-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/source-freeze-v1.json",
+    "sha256": "9a24742fbd79d380dec1e519845e026558e0803c3e7b63ecd7ddbab2b45a657c",
+    "bytes": 1788
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-source-20261011/source-manifest-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/producer/source-manifest-v1.json",
+    "sha256": "b0055cfd3d0213b6b2fd995fa59413aa41675906fdcd7dc9e3bc50dc0b90e561",
+    "bytes": 4672
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/activation-basename-amendment-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/activation-basename-amendment-v3.json",
+    "sha256": "816cf083f7da29a0a1619af68986070e42da8c2f2dcb92023c8d4af0536ccc9b",
+    "bytes": 2179
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-architecture-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-architecture-v1.json",
+    "sha256": "232b9636355ed9d0043d15a236937adef91fbc05064cc0f8ea8e21843e2e442a",
+    "bytes": 3366
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-lifetime-v2.json",
+    "sha256": "520673dd75f8dc8686512c8f656b8d4a36b66dde9fcf91edd85515633346b770",
+    "bytes": 1507
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-lifetime-v3.json",
+    "sha256": "ed8d8e4cf6dd30501da3c8afc8aea36a9cf70abf117689b235550e896fec060b",
+    "bytes": 1483
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-plan-v1.json",
+    "sha256": "ed2c4dac4c94c1a7e0027ba9a8f7ee569ea63962f9e0b5171f13176d6501da73",
+    "bytes": 216761
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-plan-v2.json",
+    "sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+    "bytes": 218566
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-plan-v3.json",
+    "sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+    "bytes": 222574
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-result-v3.json",
+    "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+    "bytes": 7156588
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-stderr-v3.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-stderr-v3.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-stdout-v3.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/audit-stdout-v3.txt",
+    "sha256": "7ba0cbbcda0c4c8f36bb6e1e18abfd93b3bfa8c4e25bfd85a8f597e7fb1d351b",
+    "bytes": 171
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/checkpoint-variable-correction-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/checkpoint-variable-correction-v2.json",
+    "sha256": "a05b314d85c07d93a8cb8e0316878ea44e2193c09df15c78b2decd8a5611f4e0",
+    "bytes": 1645
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/design-amendment-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/design-amendment-v2.json",
+    "sha256": "a56673d787df15e8d6bda6171f294037cb8d86a914900dc36b3fb54d1bb80589",
+    "bytes": 2856
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/design-checklist-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/design-checklist-v1.json",
+    "sha256": "22fbc56fbde20ed7d9ffbf7b9f2eef5f59300e80d1609ce34c82a3667d913cec",
+    "bytes": 9701
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/historical-positive-source-binding-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/historical-positive-source-binding-v1.json",
+    "sha256": "f30aa9bf5592a925307c9844349ab2fa26977f339c9c0f01ec26d4566b61d901",
+    "bytes": 960
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/literal_receptor_oracle_v1.py",
+    "sha256": "f56a2f28352015433d6e8fa9166646bb3bd42c2d924368fa3367219c34b95f0f",
+    "bytes": 6180
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v2.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/literal_receptor_oracle_v2.py",
+    "sha256": "29aab54805d185f2e4f35ce941780b3298ab0957f8274c62b3fa5c94a1d25eb5",
+    "bytes": 7445
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_draft_7ed3f345.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/positive_certificate_oracle_draft_7ed3f345.py",
+    "sha256": "7ed3f345f8938bdf465d72033f52972314db5e303f93066fdb20840d4f3f67c7",
+    "bytes": 8841
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/positive_certificate_oracle_v1.py",
+    "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+    "bytes": 9020
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/producer-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/producer-source-review-v1.json",
+    "sha256": "79d25429c663561e54bd85aa787a799a452064084df3e5d210102a85a2976c81",
+    "bytes": 5294
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/prospective-pair-controls-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/prospective-pair-controls-v2.json",
+    "sha256": "73cb5077d4a2eb8bf029d70f8f64a562842482190a91c23d41cd009d0978eafa",
+    "bytes": 7431
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_order_oracle_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_order_oracle_v1.py",
+    "sha256": "2dae2c45f21f4833c051d40623d561641fdb2e4c5e68ff1bd744fa20d26d9484",
+    "bytes": 11729
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_audit_v1.py",
+    "sha256": "c5a9663f34a13190ccba26d68c0d22c2c1f44f6eddbec976bd874cb45fac0460",
+    "bytes": 35353
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v2.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_audit_v2.py",
+    "sha256": "6d196a33a8c1f644a3a142e3a1c4bb1489263edf12a6dded394bcb9285fccf1f",
+    "bytes": 35363
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_audit_v3.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_audit_v3.py",
+    "sha256": "ceca40cbf1d3e29868d3e1d192bf40a0a1dd8f418868ac02edafa3c0e38763c6",
+    "bytes": 35363
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_freeze_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_freeze_v1.py",
+    "sha256": "7ebf433859d8748154b04076f8b8cda6065fbb1ac7fd8e3897add6a7422a8a9a",
+    "bytes": 10833
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_freeze_v2.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_freeze_v2.py",
+    "sha256": "0906bce1cb2893e5bf910c58ff01e4a4026ce31241af73a02f3b1e0847e8cc01",
+    "bytes": 11135
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_freeze_v3.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_freeze_v3.py",
+    "sha256": "87dd8d3a7952d26cecccacf704a6efbd0d9e28ae5923ee697243b91bba325102",
+    "bytes": 12177
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_owner_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_owner_v1.py",
+    "sha256": "daba64db410b4e507d22af5d6b2d4773327c9191a73a53cc47f2cd9c05b20365",
+    "bytes": 5365
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_owner_v2.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_owner_v2.py",
+    "sha256": "65feb57e8e88e4d892adfa00c97d127dccddf8fbe4da6bfc5e938671e2e5440e",
+    "bytes": 5365
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/receptor_trace_owner_v3.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/receptor_trace_owner_v3.py",
+    "sha256": "f3e7b6e0112064445e31706ebb247117106d30f52f6e509256b682a3cafff12c",
+    "bytes": 5365
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/root-activation-v1.json",
+    "sha256": "1c4b0229a574c87b1455e613f10191733e782acf2cae40cb05b1315e9cd7537c",
+    "bytes": 873
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/root-activation-v3.json",
+    "sha256": "7950dfec15e5bb9f4ed893484bac34c63b764683fec4159a6fd85e4020943554",
+    "bytes": 1081
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/source-freeze-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/source-freeze-v1.json",
+    "sha256": "be2e8fd098f10d174c0b35f92b36898cddc528c36d24f7e4ae28c55cd75a4a37",
+    "bytes": 625
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/source-freeze-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/source-freeze-v2.json",
+    "sha256": "4e0326089d976ec1894474bb017fa39576408d81d1b23239be2461222a5eaa03",
+    "bytes": 632
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/source-freeze-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/source-freeze-v3.json",
+    "sha256": "20d211d189cb20f46bacceae53bb27e1591c000dea78dab7093a96ff5aef5115",
+    "bytes": 632
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/source-manifest-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/source-manifest-v1.json",
+    "sha256": "0d8712b63e2765ed119f0a6ab500e2e7e22c340d7acd73dc4c2be73d196f44b1",
+    "bytes": 2339
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/source-manifest-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/source-manifest-v2.json",
+    "sha256": "9beffb5231e541ecc7317c90f6e58d18d1d0b8dd39517416dbf176d08bff5055",
+    "bytes": 2339
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-geometry-independent-20261011/source-manifest-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/independent/source-manifest-v3.json",
+    "sha256": "c955e894f2052c6d1550a617367b0d38e5f6cf8a01f5bc225593d4da0d6474f6",
+    "bytes": 2339
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/api-scope-clarification-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/api-scope-clarification-v2.json",
+    "sha256": "cad1054627eabb3cf1ead4a68a8ccd80f8c689b7e49cce463591c66e4f671ee8",
+    "bytes": 4760
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/compatibility-assessment-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/compatibility-assessment-v1.json",
+    "sha256": "85106faef1ea055087e1ea07339a17f2952b6c4a8731f56969b002ee22e149e1",
+    "bytes": 8017
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/integration.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/integration.json",
+    "sha256": "09057fe033efdb4c35480010fe693aafb554cafd79067e9cee099ed19f90a8e5",
+    "bytes": 3152
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/prepare-corpus-v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/prepare-corpus-v1.py",
+    "sha256": "e853e62e6c41a8510ac47e1db737379451ce74874c188330752682a95d069371",
+    "bytes": 7998
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/prepare-successor-v2.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/prepare-successor-v2.py",
+    "sha256": "cfc599f0f9047335bcd0f03290cc05c23819267c594a7f002772e6d023a4f469",
+    "bytes": 5131
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic-corpus-v1.json",
+    "sha256": "4c72d19390679a7319a00aaf04d9a24cb162ef17d3f2937e82a7aacf0ef4f80c",
+    "bytes": 37356
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic-corpus-v2.json",
+    "sha256": "3e34b4388ebd9765b1c8ca74938a2ddfd69e1a16706b1399f65c40fb816979b4",
+    "bytes": 44401
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic-plan-v1.json",
+    "sha256": "da4de7848652252409621b2d48d19c53c537e2734434589810449154aea382a2",
+    "bytes": 3088
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-plan-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic-plan-v2.json",
+    "sha256": "c767f8124388dc178b1e1eeb119234ec6d7831489d412d0b914fa9bbd56cdd82",
+    "bytes": 4260
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-reference-receipt-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic-reference-receipt-v1.json",
+    "sha256": "3a80984f3c1992e1eb73e6daeaae959b5948f711d07714a9a87119273b7b4e8e",
+    "bytes": 7204
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-reference-receipt-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic-reference-receipt-v2.json",
+    "sha256": "01d3f68e04f6777e95f57b0e321d655e46afb2aae88a39975eab9d38a13c7778",
+    "bytes": 8340
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic_reference_controls_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic_reference_controls_v1.py",
+    "sha256": "caf6cea9c9c3780c6a994327f8d401a457dec8fd91d19c44ff1367d7e1592307",
+    "bytes": 6335
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic_reference_controls_v2.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/cross-domain/synthetic_reference_controls_v2.py",
+    "sha256": "d805e1b2d9154ecbd6fce3aa71881b6376727618bd618cf34060a04a5353cf2e",
+    "bytes": 6674
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/integration.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/integration.json",
+    "sha256": "35b285e1f03a9e2c270291076be703bb1fbb3d50b17e05f38768e8f1258539d7",
+    "bytes": 1976
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/readiness-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/readiness-v1.json",
+    "sha256": "f039fd7531605ac4f8b3baa5bb2bb3e6e9d409dbfb8efaceb30a0e943fd836cd",
+    "bytes": 3006
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/review-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/review-plan-v1.json",
+    "sha256": "e0e710aead5ec9ed5a4fe365bc7c44bac06563062063b1b7df2406c6c8d8906b",
+    "bytes": 3575
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/source-checks-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/source-checks-v1.json",
+    "sha256": "814a39acf4b331ae0075a72145b9e5d44d6f1e6aa16d8254727c0c7550aee223",
+    "bytes": 4944
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/source-review-v1.json",
+    "sha256": "328d701bcfa952b471bd47d0aa4a9abec79e1f756e0c5c9f194d5072f05e9b5a",
+    "bytes": 2423
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/source_only_review_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/source_only_review_v1.py",
+    "sha256": "6c885af968231a9c5941ad60769362164439d722f93d96687d4f77f63bff53f8",
+    "bytes": 17463
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-source-third-review-20261011/verified-pin-set-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/source-review/verified-pin-set-v1.json",
+    "sha256": "ab5f4bd24f9aea3dd0f0b9f243dc0c343481d9961c380ff1cb9b6679536b613f",
+    "bytes": 165861
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/integration.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/integration.json",
+    "sha256": "5c43e95f3e7745b6932110978e3828ea098bcbd29c71769be2ead66ccec4432d",
+    "bytes": 2248
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/readiness-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/readiness-v1.json",
+    "sha256": "85f5578913ebb4a78dfc64a427eaf7d1dbd792e2aed180b5d0ff91258df81343",
+    "bytes": 4541
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/review-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/review-plan-v1.json",
+    "sha256": "c07e8fdf3319c9a82b4f790bbe77d512a252959e4bd3987d59d7d1c41ec08d19",
+    "bytes": 5540
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/reviewed-source/prepare_report.py",
+    "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+    "bytes": 21312
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/reviewed-source/report_evidence.py",
+    "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+    "bytes": 7112
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/reviewed-source/stage_publication.py",
+    "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+    "bytes": 2359
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/reviewed-source/validate_report.py",
+    "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+    "bytes": 6604
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/source-review-v1.json",
+    "sha256": "ace2c0e5214d0ce679cbca2626b3891de386523bd2e07fd633ed4722cef6cf48",
+    "bytes": 10102
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-report-independent-20261011/source_projection_review_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/report-source-review/source_projection_review_v1.py",
+    "sha256": "cd363fbcc8efbd2480150d4503df911d71435014b3664489851bcb1c1532c650",
+    "bytes": 10127
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/findings-and-next-options-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/findings-and-next-options-v1.json",
+    "sha256": "7c420c2ac13e2c5ec7be698ca7a55c42e0d97d8a84dcdd808b04eebd5b21a0d2",
+    "bytes": 13161
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/integration-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/integration-v1.json",
+    "sha256": "b2a2fd419b728db49f547d8aa0040f30d6830f2ed2f923de16c6ef2237896959",
+    "bytes": 3895
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-diagnosis-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata-diagnosis-v1.json",
+    "sha256": "756520120bc484d904bb711237db529077ab9ee803349e1b86eb68a59fc778ba",
+    "bytes": 1319215
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-lifetime-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata-lifetime-v1.json",
+    "sha256": "5fbff050674690fa43a997bf8258131ef64f77d6387a425c5a53b03c30654413",
+    "bytes": 1579
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-plan-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata-plan-v1.json",
+    "sha256": "d209f10bde7e6b5303d25647220cef13eab9e3f544af75ffade6864d49dd6d93",
+    "bytes": 176106
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-source-freeze-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata-source-freeze-v1.json",
+    "sha256": "5c9fc7a30b300255b076aeb3e4c8625b2545ac2535841bef5d919acfb8f8d8ba",
+    "bytes": 644
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-stderr-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata-stdout-v1.txt",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata-stdout-v1.txt",
+    "sha256": "3172fcee9d3502395f718978b1678dedef75498fb505390f411444849fa2092f",
+    "bytes": 1369
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata_freeze_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata_freeze_v1.py",
+    "sha256": "a9e3afc25c3eeb7315efdaba190ee3adebfd041cca37ceb19c333b962718da63",
+    "bytes": 7621
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/metadata_owner_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/metadata_owner_v1.py",
+    "sha256": "b40134aa7b602ac003fbe53dbb4dce42f3b4876f25c5f7364c9c836cdb1bf6de",
+    "bytes": 4511
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-diagnosis-20261011/recorded_trace_metadata_v1.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/diagnosis/recorded_trace_metadata_v1.py",
+    "sha256": "72775c369df69ea6f0298b8a294db807efb926cea58116421e9af678f4fb4b36",
+    "bytes": 14418
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-terminal-review-20261011/integration-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/terminal-review/integration-v1.json",
+    "sha256": "79c1d7aafffa16ba507c1dcf06a12072aef05565f9775c03a5bdda07f05fb489",
+    "bytes": 1105
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-terminal-review-20261011/terminal-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/terminal-review/terminal-review-v1.json",
+    "sha256": "1f33d4d6f15a0b5fea2ee92805f81cdfe4c3cb17eb07fcd002e09c7510fb04a4",
+    "bytes": 9358
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/actual-display-data-validation-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/actual-display-data-validation-v1.json",
+    "sha256": "5c600a4adaab1eabe432f171af1e55fc3808ab1fecf50831172b8b715e201ff9",
+    "bytes": 2282
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/prepare_report.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/prepare_report.py",
+    "sha256": "9b834d85376939b2053faeedc1516c432b27175a18eb93278e52edbc0db8a22c",
+    "bytes": 23447
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/report-plan.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/report-plan.json",
+    "sha256": "c2610e924ef0d1711784514a698c3b514d687f85d17eb56774859b0759ff5e51",
+    "bytes": 1111
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/report_evidence.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/report_evidence.py",
+    "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+    "bytes": 7112
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/root-auditor-v2-terminal.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/root-auditor-v2-terminal.json",
+    "sha256": "76e92885cd29784ac8b6e0777d90344f819ff067cf98dfaa31369c59a256ecdd",
+    "bytes": 1520
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/root-independent-source-review-v2.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/root-independent-source-review-v2.json",
+    "sha256": "6686e3b932310aa2a8ae0722a6d4ca8e76130b9cc07dfdfb2582d0889a985c04",
+    "bytes": 2719
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/root-independent-source-review-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/root-independent-source-review-v3.json",
+    "sha256": "0ea23e54e916718515090434796b5128f1c32af1152580e6437c18a9f99a3f9f",
+    "bytes": 1548
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/root-independent-terminal-v3.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/root-independent-terminal-v3.json",
+    "sha256": "0acaac94418599c66c804432ac50abe71787fe694a6d50fd710750c952266ce7",
+    "bytes": 975
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/root-producer-terminal-v1.json",
+    "sha256": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e",
+    "bytes": 1755
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/root-source-review-v1.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/root-source-review-v1.json",
+    "sha256": "20657aa978fb4b580fb45644a79e427f21ab93361232f5f2acf37de90881fb05",
+    "bytes": 3073
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/terminal-selection.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/terminal-selection.json",
+    "sha256": "8d5bc77cc351287c11da3279fe64e510267ca7eb807162b0154de21182d5ddaf",
+    "bytes": 5576
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/turn-audit.json",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/turn-audit.json",
+    "sha256": "af32f41fcacea18beafedb32f364a9fcc8b99fcfc0ec4c11b8a33f671a29c0f8",
+    "bytes": 1415
+  },
+  {
+    "origin": ".gcts-active/receptor-matching-progress-20261011/validate_report.py",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/coordinator/validate_report.py",
+    "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+    "bytes": 6604
+  },
+  {
+    "origin": ".gcts-active/automatic-geometry-reader-source-v4-20261011/viewer.js",
+    "path": "docs/research/gcts-rl-renewal/receptor-matching/viewer.js",
+    "sha256": "f51afb1b3609d985d7f1d0b21e1dc3febf20a0316618cdb21534e8c8555be02e",
+    "bytes": 34758
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "status": "root_confirmed_same_owned_actual_audit_handle_terminal",
+  "tool_session_id": 37355,
+  "initial_tool_chunk": "d97ebb",
+  "terminal_tool_chunk": "a99a97",
+  "terminal_exit_code": 0,
+  "live_owned_tool_handles": 0,
+  "child_pid": 60299,
+  "child_terminal_and_reaped": true,
+  "lifetime": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+    "sha256": "ed8d8e4cf6dd30501da3c8afc8aea36a9cf70abf117689b235550e896fec060b",
+    "bytes": 1483
+  },
+  "result": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+    "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+    "bytes": 7156588
+  },
+  "accepted_trace_observations": 2,
+  "accepted_proof_certificates": 0,
+  "new_searches": 0,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "scope": "Exact returned UNKNOWN traces accepted; no logical theorem or native acceptance inferred."
+}

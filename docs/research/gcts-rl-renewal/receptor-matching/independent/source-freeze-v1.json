@@ -1,0 +1,21 @@
+{
+  "status": "frozen_independent_source_only_trace_audit_pending_root_dispatch",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v1.json",
+    "sha256": "ed2c4dac4c94c1a7e0027ba9a8f7ee569ea63962f9e0b5171f13176d6501da73",
+    "bytes": 216761
+  },
+  "sources": 6,
+  "libraries": 5,
+  "inputs": 154,
+  "preserved": 750,
+  "unique_verified_paths": 760,
+  "ASTs_parsed": 11,
+  "mismatches": 0,
+  "metadata_freeze_seconds_before_receipt_write": 0.846100792,
+  "source_authoring": "unmeasured",
+  "scientific_loads": 0,
+  "fixture_runs": 0,
+  "searches": 0,
+  "native_queries": 0
+}

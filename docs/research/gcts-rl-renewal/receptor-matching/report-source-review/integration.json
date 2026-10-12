@@ -1,0 +1,55 @@
+{
+  "status": "immutable_task_only_source_report_review_export",
+  "files": [
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/source_projection_review_v1.py",
+      "sha256": "cd363fbcc8efbd2480150d4503df911d71435014b3664489851bcb1c1532c650",
+      "bytes": 10127
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/review-plan-v1.json",
+      "sha256": "c07e8fdf3319c9a82b4f790bbe77d512a252959e4bd3987d59d7d1c41ec08d19",
+      "bytes": 5540
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/source-review-v1.json",
+      "sha256": "ace2c0e5214d0ce679cbca2626b3891de386523bd2e07fd633ed4722cef6cf48",
+      "bytes": 10102
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/readiness-v1.json",
+      "sha256": "85f5578913ebb4a78dfc64a427eaf7d1dbd792e2aed180b5d0ff91258df81343",
+      "bytes": 4541
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/display_data_check_v1.js",
+      "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "bytes": 3205
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+      "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+      "bytes": 21312
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+      "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+      "bytes": 7112
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+      "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+      "bytes": 2359
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+      "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+      "bytes": 6604
+    }
+  ],
+  "total_files": 9,
+  "total_bytes": 70902,
+  "scientific_or_UI_executions": 0,
+  "actual_projection_acceptance": false,
+  "publication_owner": "root"
+}

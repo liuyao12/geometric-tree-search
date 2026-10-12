@@ -1,0 +1,60 @@
+{
+  "status": "immutable_third_source_only_review_complete_no_runtime_acceptance",
+  "review": {
+    "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-review-v1.json",
+    "sha256": "328d701bcfa952b471bd47d0aa4a9abec79e1f756e0c5c9f194d5072f05e9b5a",
+    "bytes": 2423
+  },
+  "producer_plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "producer_freeze": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-freeze-v1.json",
+    "sha256": "9a24742fbd79d380dec1e519845e026558e0803c3e7b63ecd7ddbab2b45a657c",
+    "bytes": 1788
+  },
+  "producer_manifest": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/source-manifest-v1.json",
+    "sha256": "b0055cfd3d0213b6b2fd995fa59413aa41675906fdcd7dc9e3bc50dc0b90e561",
+    "bytes": 4672
+  },
+  "pins": {
+    "unique_paths": 740,
+    "total_unique_bytes": 278902975,
+    "sources": 11,
+    "new_phase_roles": 135,
+    "preserved_files": 729,
+    "old118_roles_exact_prefix": true,
+    "original_body_inputs_unique": 56
+  },
+  "blockers": [],
+  "preserved_semantics": [
+    "original readiness AST after local variable-name normalization",
+    "old fixed score ties with only a new literal bucket after readiness",
+    "complete legal candidate permutation and forced singleton bypass",
+    "unchanged global dead/forced/earliest-generation decision",
+    "paired graph/hint rollback and justified parent-only exhausted-child exclusion",
+    "exact original56-input full body authority plus all171 bodies with empty proposal registry",
+    "same128/20/2000/180/175/170/512MiB resource gates"
+  ],
+  "scope": [
+    "Static source/pin/AST review only. No scientific module import, model/result decode, ranking call, search, training, native or replay.",
+    "No hardcoded theorem names, target formula/code, geometry constants or authored target proof words in executable matcher. Exact model metadata and source/body inventories remain declared and hashed.",
+    "Physically selected output formulas may still depend on unoccupied prior rows; matching is advice about constraints, not proof or logical rejection.",
+    "ROOT notified us after its separate reviewed dispatch completed; this third review was not used as its prerequisite and does not independently certify actual outcomes.",
+    "Actual complete graph/trace/pool/features/certificate replay remains a separate root-owned gate. All resource/cleanup unknown paths retain unknown scope."
+  ],
+  "measured_helper": {
+    "seconds_before_final_receipt_write": 0.185073209,
+    "kernel_peak_bytes": 24182784,
+    "ceiling_seconds": 120,
+    "ceiling_bytes": 134217728,
+    "process_startup_and_final_receipt_write_included": false
+  },
+  "source_authoring_seconds": null,
+  "active_owned_handles": [],
+  "publication_owner": "root",
+  "scientific_execution_authorized": false
+}

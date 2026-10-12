@@ -1,0 +1,2055 @@
+{
+  "schema": "independent-synthetic-receptor-cross-domain-corpus-v1",
+  "scope": "Synthetic structural ranking advice, not mathematical inference/proof search. No actual model/result/target word.",
+  "api_pending": true,
+  "matcher_cases": [
+    {
+      "id": "distinct-slots",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x",
+        "y"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ],
+          "y": [
+            "fun",
+            "b",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "distinct-slots-same-constant-permitted",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x",
+        "y"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ],
+          "y": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Distinct bound variables do not require distinct images."
+    },
+    {
+      "id": "prefix-renamed-slots",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "u"
+          ],
+          [
+            "var",
+            "v"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "u",
+        "v"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "u": [
+            "fun",
+            "a",
+            []
+          ],
+          "v": [
+            "fun",
+            "b",
+            []
+          ]
+        }
+      },
+      "scope_note": "Only prefix-slot renaming, not general alpha-equivalence rewriting."
+    },
+    {
+      "id": "repeated-slot-agrees",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "repeated-slot-disagrees",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "literal-rigid-completed-constant",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "c",
+            []
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "y"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "c",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "y": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "completed-constant-cannot-rebind",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "c",
+            []
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "y"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "zero-arity-arithmetic-image",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "x"
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        [
+          "var",
+          "x"
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "a",
+          []
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "arithmetic-compound-constructor-literal",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "compound-slot-image-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Compound substitution image outside the first bounded matcher, not a logical failure."
+    },
+    {
+      "id": "free-recipient-slot-image-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "freeRecipient"
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "free-pattern-variable-not-prefix-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "z"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "rigid-zero-arity-exact",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "zero",
+          []
+        ],
+        [
+          "fun",
+          "zero",
+          []
+        ]
+      ],
+      "prefix_binders": [],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "zero",
+          []
+        ],
+        [
+          "fun",
+          "zero",
+          []
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "rigid-zero-arity-name-miss",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "zero",
+          []
+        ],
+        [
+          "fun",
+          "zero",
+          []
+        ]
+      ],
+      "prefix_binders": [],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "a",
+          []
+        ],
+        [
+          "fun",
+          "a",
+          []
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "predicate-name-literal",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "P",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Q",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "predicate-arity-literal",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "P",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x",
+        "y"
+      ],
+      "available": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "term-constructor-name-literal",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "a",
+          []
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "other",
+          [
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "a",
+          []
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "term-constructor-arity-literal",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "pair",
+          [
+            [
+              "var",
+              "x"
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "b",
+          []
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "pair",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "b",
+          []
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "ordered-fixed-argument-miss",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "fun",
+            "c",
+            []
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "c",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "ordered-variable-bindings-retained",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "Rel",
+        [
+          [
+            "var",
+            "x"
+          ],
+          [
+            "var",
+            "y"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x",
+        "y"
+      ],
+      "available": [
+        "pred",
+        "Rel",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ],
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "b",
+            []
+          ],
+          "y": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "polarity-negative-match",
+      "kind": "literal_receptor",
+      "pattern": [
+        "not",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "not",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "polarity-negative-vs-positive",
+      "kind": "literal_receptor",
+      "pattern": [
+        "not",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "double-negation-not-normalized",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "P",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "not",
+        [
+          "not",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "ordered-conjunction-match",
+      "kind": "literal_receptor",
+      "pattern": [
+        "and",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "and",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "ordered-conjunction-miss",
+      "kind": "literal_receptor",
+      "pattern": [
+        "and",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "and",
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "ordered-equality-not-symmetry",
+      "kind": "literal_receptor",
+      "pattern": [
+        "eq",
+        [
+          "fun",
+          "a",
+          []
+        ],
+        [
+          "fun",
+          "b",
+          []
+        ]
+      ],
+      "prefix_binders": [],
+      "available": [
+        "eq",
+        [
+          "fun",
+          "b",
+          []
+        ],
+        [
+          "fun",
+          "a",
+          []
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "nested-pattern-quantification-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "and",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "all",
+          "y",
+          [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "and",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "all",
+          "y",
+          [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "quantified-recipient-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "P",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "all",
+        "y",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "y"
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "shadowed-leading-prefix-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "pred",
+        "P",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x",
+        "x"
+      ],
+      "available": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "unsupported-exists-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "exists",
+        "x",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [],
+      "available": [
+        "pred",
+        "P",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "unsupported-or-neutral",
+      "kind": "literal_receptor",
+      "pattern": [
+        "or",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "or",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "neutral",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "bot-literal-match",
+      "kind": "literal_receptor",
+      "pattern": [
+        "bot"
+      ],
+      "prefix_binders": [],
+      "available": [
+        "bot"
+      ],
+      "expected": {
+        "status": "match",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    },
+    {
+      "id": "implication-order-literal",
+      "kind": "literal_receptor",
+      "pattern": [
+        "imp",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "available": [
+        "imp",
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "expected": {
+        "status": "miss",
+        "bindings": {}
+      },
+      "scope_note": "Literal structural advice only; no logical consequence asserted."
+    }
+  ],
+  "availability_cases": [
+    {
+      "id": "mark-only-not-available",
+      "kind": "availability",
+      "state": {
+        "selected_outputs": [],
+        "assigned_formula_marks": [
+          {
+            "row": 3,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ],
+            "occupied": false
+          }
+        ]
+      },
+      "expected_rows": [],
+      "expected_available_formulas": [],
+      "scope_note": "An assigned marking constrains future output; it supplies no currently available hypothesis."
+    },
+    {
+      "id": "duplicate-formulas-distinct-rows",
+      "kind": "availability",
+      "state": {
+        "selected_outputs": [
+          {
+            "row": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          },
+          {
+            "row": 1,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          }
+        ],
+        "assigned_formula_marks": []
+      },
+      "expected_rows": [
+        0,
+        1
+      ],
+      "expected_available_formulas": [
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "scope_note": "Advice may be Boolean but primitive/reference identities must not be merged."
+    },
+    {
+      "id": "separate-facts-not-conjoined",
+      "kind": "availability",
+      "state": {
+        "selected_outputs": [
+          {
+            "row": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          },
+          {
+            "row": 1,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          }
+        ],
+        "assigned_formula_marks": []
+      },
+      "pattern": [
+        "and",
+        [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "prefix_binders": [
+        "x"
+      ],
+      "expected_status": "miss",
+      "expected_rows": [
+        0,
+        1
+      ],
+      "expected_available_formulas": [
+        [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ]
+      ],
+      "scope_note": "No conjunction construction or logical inference is permitted by receptor ranking."
+    },
+    {
+      "id": "arithmetic-command-role-only-incomplete",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 0,
+          "selected_roles": [
+            0
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [
+        {
+          "row": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "expected_known_rows": [],
+      "scope_note": "Command placement alone is not a complete C/G/I1/I2 row."
+    },
+    {
+      "id": "arithmetic-three-roles-incomplete",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 0,
+          "selected_roles": [
+            0,
+            1,
+            2
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [],
+      "expected_known_rows": []
+    },
+    {
+      "id": "arithmetic-four-roles-zero-input-complete",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 0,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [],
+      "expected_known_rows": [
+        0
+      ]
+    },
+    {
+      "id": "arithmetic-complete-output-with-unavailable-source",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 2,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [
+            1
+          ],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [
+        {
+          "row": 1,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        }
+      ],
+      "expected_known_rows": [],
+      "scope_note": "Complete later row with an assigned but unproved earlier-source formula is not a known output."
+    },
+    {
+      "id": "arithmetic-complete-known-dependency",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 1,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [
+            0
+          ],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [],
+      "expected_known_rows": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "arithmetic-guard-command-mismatch",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 0,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": false,
+          "ordered_sources": [],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [],
+      "expected_known_rows": []
+    },
+    {
+      "id": "arithmetic-source-formula-mismatch",
+      "kind": "arithmetic_adapter",
+      "rows": [
+        {
+          "row": 1,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [
+            0
+          ],
+          "source_formulas_agree": false,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "a",
+              []
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "selected_roles": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "command_guard_agree": true,
+          "ordered_sources": [],
+          "source_formulas_agree": true,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "zero",
+              []
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        }
+      ],
+      "assigned_formula_marks": [],
+      "expected_known_rows": [
+        0
+      ]
+    }
+  ],
+  "expectation_scope": "Gold expectations follow the prospective prefix-only literal matcher; producer API integration and independent fixture execution remain separately gated. Arithmetic adapter cases are declarative completion requirements, not an engine implementation."
+}

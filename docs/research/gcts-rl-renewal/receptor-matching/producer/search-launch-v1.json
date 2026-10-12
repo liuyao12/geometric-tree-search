@@ -1,0 +1,14 @@
+{
+  "pid": 55995,
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-source-20261011/search-plan-v1.json",
+    "sha256": "844dfafeb00c28d132371508465ec7b693e18bc25639fdd794dc96a0dfcfe256",
+    "bytes": 243262
+  },
+  "scope": "two bounded automatic primitive geometry searches; complete inventory; no cluster hints",
+  "wall_ceiling_seconds": 175,
+  "host_ceiling_bytes": 536870912,
+  "maximum_geometry_searches": 2,
+  "native_queries": 0,
+  "new_training": false
+}

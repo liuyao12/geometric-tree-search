@@ -1,0 +1,38 @@
+{
+  "status": "passed_root_source_review_before_actual_V3_audit",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v3.json",
+    "sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+    "bytes": 222574
+  },
+  "verified_unique_exact_paths": 782,
+  "ASTs_parsed": 11,
+  "full_source_review": "Previously reviewed full scientific V1 source plus V2 checkpoint correction; V3 diff and full owner reviewed. Exact byte comparison proves only plan and activation basenames changed from V2. Prior failed launch and its lifetime are preserved.",
+  "activation_basename": "root-activation-v3.json",
+  "limits": {
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "actual_audits_run_by_this_review": 0,
+  "new_searches": 0,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "prerequisites": [
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-producer-terminal-v1.json",
+      "sha256": "d9ff7028bc7705c4cd0174fd0892de0fff617e4101d70e4f003a3839b59ee25e",
+      "bytes": 1755
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-auditor-v2-terminal.json",
+      "sha256": "76e92885cd29784ac8b6e0777d90344f819ff067cf98dfaa31369c59a256ecdd",
+      "bytes": 1520
+    },
+    {
+      "path": ".gcts-active/receptor-matching-progress-20261011/root-independent-source-review-v2.json",
+      "sha256": "6686e3b932310aa2a8ae0722a6d4ca8e76130b9cc07dfdfb2582d0889a985c04",
+      "bytes": 2719
+    }
+  ]
+}

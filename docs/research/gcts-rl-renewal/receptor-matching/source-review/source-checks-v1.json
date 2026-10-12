@@ -1,0 +1,104 @@
+{
+  "source_only": true,
+  "source_ASTs_parsed_without_import": 11,
+  "scientific_imports": 0,
+  "actual_models_loaded": 0,
+  "actual_results_decoded": 0,
+  "engine_calls": 0,
+  "ordering_graph_calls": 0,
+  "searches": 0,
+  "native_queries": 0,
+  "training": 0,
+  "runtime_conformance_accepted": false,
+  "complete_reference_copy_byte_identical": true,
+  "decoder_supervisor_owner_copies_byte_identical": true,
+  "exact_worker_changes": [
+    "matcher import",
+    "declared two fixed modes",
+    "branch ranker dispatch",
+    "new per-branch feature trace",
+    "new per-result pattern registry"
+  ],
+  "old_readiness_AST_same_after_single_local_name_normalization": true,
+  "new_score": "old readiness tier; literal bucket; exact old size/canonical-witness/recipe/ordered-reference ties",
+  "complete_base_permutation_guards_unchanged": true,
+  "forced_singletons_bypass_ranker": true,
+  "graph_scheduler": "Frozen global degree zero, then global singleton, then earliest generation/count/row. Decisions remain exclusively graph-defined.",
+  "rollback": "Frozen paired checkpoint restoration. Only fully exhausted child excluded in restored parent. Unknown/trace cutoff restores root; no learned pruning.",
+  "body_adapter": {
+    "original_inputs": 56,
+    "original_unique_paths": 56,
+    "old_broad_inputs": 118,
+    "old_broad_unique_paths": 104,
+    "old_aliases": 14,
+    "new_broad_inputs": 135,
+    "old118_exact_prefix": true,
+    "all171_bodies_preserved": true,
+    "factory_argument": "exact role-pinned original56-input full-language plan, never broader phase list",
+    "authored_example": "Frozen family helper discards example before extracting all171 source bodies; empty descriptors make no body into a search proposal."
+  },
+  "ranker_scope": "Physically selected output constraints only, not marks on unoccupied rows. Selected MP outputs with pending source dependencies are structural constraints, not established facts.",
+  "pure_matching_scope": "Literal ordered supported syntax and distinct peeled prefix slots; nullary images only, compound literal constructors recurse; unsupported neutral; no target/theory/name/proof path lookup in executable matcher.",
+  "new_pruning": false,
+  "new_marking": false,
+  "new_RL": false,
+  "declaration_only_counts": {
+    "formula_codes": 217,
+    "recipes": 229,
+    "rows": 24,
+    "source_bodies": 171
+  },
+  "resources": {
+    "owner_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_alarm_seconds": 170,
+    "host_bytes": 536870912,
+    "maximum_searches": 2,
+    "each_attempts": 128,
+    "each_search_seconds": 20,
+    "each_trace_event_ceiling": 2000,
+    "independent_audit_proposal_seconds": 180,
+    "independent_audit_proposal_bytes": 536870912
+  },
+  "activation": "All actual workers require exact root plan activation; this source review does not create or authorize one.",
+  "failure_scope": [
+    "Retrospective sampled/kernel gates are not OS-enforced allocation limits; any actual overshoot remains unknown.",
+    "Outer hard cleanup of an unresponsive supervisor can leave worker terminal state unconfirmed; receipt explicitly fails that gate. Root must inspect any such failure and own cleanup.",
+    "Early pin/activation exceptions can precede the supervisor receipt; outer status remains unknown if it is missing.",
+    "Source review verifies bindings and intended paths, not actual complete domains, forced/exhaustion/rollback events or mathematical/native acceptance.",
+    "Actual complete trace/domain/pool/matcher/score/certificate replay remains a separately owned mandatory gate."
+  ],
+  "relevant_sources": [
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_geometry_search_v1.py",
+      "line": 64
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_geometry_search_v1.py",
+      "line": 261
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_literal_match_v1.py",
+      "line": 211
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "line": 341
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "line": 527
+    }
+  ],
+  "cross_domain_corpus_pin_only": {
+    "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v2.json",
+    "sha256": "3e34b4388ebd9765b1c8ca74938a2ddfd69e1a16706b1399f65c40fb816979b4",
+    "bytes": 44401
+  },
+  "matcher_functions_AST_sha256": {
+    "pattern_from_guard": "4fff5c1d111a4740cb1b2aa134e166db712e6735713311d9a0f8dc467f91f8b3",
+    "extract_pattern": "8cf2df8c93dd6ba833b3ae8a8e15c5d48a7294388433296f4e5726351169c01a",
+    "literal_guard_match": "c5ffb5a75caab76a516c2b75fe29e1ddf0f8629b347fc6e9f720b4a6781758d0",
+    "evaluate_pattern": "0ceca30bca6a5ffbea177bdfddecacc93acd5ca047bd93af2d8d09aa7dff8f6b"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "status": "independent_source_only_design_waiting_frozen_producer_contract_and_root_dispatch",
+  "created_utc": "2026-10-11T23:56:53.297456+00:00",
+  "independent_oracle_source": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/literal_receptor_oracle_v1.py",
+    "sha256": "f56a2f28352015433d6e8fa9166646bb3bd42c2d924368fa3367219c34b95f0f",
+    "bytes": 6180
+  },
+  "inputs_read_and_pinned": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-search-diagnosis-20261011/next-gate-plan-v1.json",
+      "sha256": "63e38fb3852ce2ef2d0905fbb71faf684bc7e527231853ada877502be365c0d9",
+      "bytes": 7007
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/search-plan-v1.json",
+      "sha256": "59a5f260382ee2fcfdd43241a8060f4693c2bfe6785007aa013888cf33074261",
+      "bytes": 219919
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_order_v1.py",
+      "sha256": "0fc35c2dacb2266ee587843f715e848ae6839b00220a01bb00d61eb74d65be44",
+      "bytes": 2291
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_audit_v1.py",
+      "sha256": "85c3b09724fb44161efc65a55afe9df2b1865298cd3d7b17db268a54fa834ca9",
+      "bytes": 26613
+    },
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    }
+  ],
+  "scientific_sources_imported": 0,
+  "scientific_trials_executed": 0,
+  "native_calls": 0,
+  "matcher_method": "Compile literal quantifier-free guards into ordered constructor/symbol/arity/constant tokens and prefix-bound substitution slots. Compare them independently to tokens of each occupied selected output, retaining ordered recipient occurrences and repeated-slot consistency.",
+  "selected_output_semantics": "Selected primitive outputs are structural constraints. A selected MP output can have pending earlier receptors and is not thereby established as a logical hypothesis. Assigned markings on empty rows are never selected outputs.",
+  "feature_extraction": "From instantiate consequent or MP output, peel only distinct-name leading universal binders, then inspect the immediate implication antecedent. Exact source-ready producer API and per-recipe applicability will be independently checked before correspondence acceptance.",
+  "supported_images": "Closed zero-arity function terms only. Completed constants are rigid. No compound images, renaming of constants, rewriting, conjunction merging or host inference.",
+  "neutral_scope": [
+    "Repeated or shadowed prefix binder names",
+    "Free guard variables outside the peeled prefix",
+    "Nested quantified guard",
+    "Quantified or free-variable recipient",
+    "Compound term image or unsupported constructor",
+    "No supported available recipient"
+  ],
+  "binding_checks": [
+    "One exact term for every repeated variable occurrence",
+    "Distinct variable slots may bind to the same constant",
+    "Prefix-variable renaming may preserve behavior; no general alpha rewriting",
+    "Exact predicate, constructor, arity, polarity and ordered argument/conjunct structure"
+  ],
+  "priority_contract": "Producer declares match=0, neutral=1, nonmatch=2 inserted after unchanged readiness and before unchanged AST size, canonical witness, recipe and ordered reference tie fields. Independent oracle currently names its supported failure status miss and will explicitly map it to producer nonmatch in the later adapter.",
+  "complete_order_gate": [
+    "Independently enumerate all legal chosen-point keys and exact base stream",
+    "Reconstruct readiness from original selected outputs/rows",
+    "Independently extract all relevant patterns and every selected receptor occurrence",
+    "Reconstruct every key score and complete sorted permutation",
+    "Retain duplicate-premise multiplicity and distinct decorated reference identities",
+    "Compare exported features, bindings and base/ordered/score stream hashes",
+    "Global dead/forced/earliest generation remains independent graph authority; forced singleton order unchanged",
+    "No matching failure removes a candidate, changes a degree or proves a child exhausted"
+  ],
+  "target_information_exclusions": [
+    "No target AST/code, theorem identifier, constant/predicate name special case, selected family chain or authored proof word in matcher/ranker",
+    "All source bodies remain validated prerequisites only; no new dynamic descriptors or learned markings",
+    "New policy remains deterministic fixed ordering; no RL claim"
+  ],
+  "trace_audit_successor": {
+    "reuse": "Pinned independent literal point, source-family registry and guarded symbolic checker only. No producer/controller/ranker/decoder acceptance imports.",
+    "complete_unknown": "Independently consume every returned tape event, full domain and ordering stream, state, generation, marking, selected identity and paired rollback. Exclusions require a fully reconstructed exhausted child.",
+    "deadline_unknown": "Deadline-triggered UNKNOWN may be accepted as safe incomplete result without treating its recorded time as a hard equal-wall-time bound. Attempt limits and count guards are independently checked; time provenance is scoped.",
+    "trace_prefix_unknown": "A trace cutoff can justify only retained-prefix conformance and independently checked whole-root restoration. No whole-tape census or unrecorded transition/exhaustion claim. Unexpected or insufficient evidence fails closed.",
+    "positive_trace": "A complete global decision must be independently reconstructed. Reconstruct completion resynchronization and finite_exact_point_tiling node returns through all parents without rollback. Require terminal state exactly equal the retained independently solved state.",
+    "positive_point": "Independently regenerate all selected full decorated identities and original t/m; verify exact required occupancy, every assigned exterior mark, reference count/generation, all 24 row identities and ordered source ports. No formula-only identity merging.",
+    "positive_logic": "Decode original recipes and strict-prior reference rows independently. Check each assumption, guarded axiom, closed universal-instantiation axiom, equality-substitution axiom and ordered MP against exact frozen theory and three retained closed hypotheses. Require last row equal the exact original target AST. Point consistency alone is insufficient.",
+    "flat_mapping": "Independently derive gcts-fol-1 with blocks empty, all 24 commands retained, each local assumption replaced by a collision-checked hypothesis-index named axiom in an extended theory. Check the extended proof too; compare canonical request, theory/target/commands, ASCII bytes and hashes to producer only after independent derivation.",
+    "native_scope": "Flat-request derivation is a symbolic encoding artifact, not native execution, physical memory acceptance, unrestricted completeness or universally closed theorem.",
+    "positive_scope": "Only independently checked actual complete point and symbolic certificate counts as discovered ground sequent. Any unsupported positive form remains UNKNOWN pending a separate gate."
+  },
+  "adversarial_checklist": [
+    "Repeated variable conflicting image",
+    "Completed constant rebound",
+    "Predicate/arity/constructor/polarity mismatch",
+    "Argument or conjunction order swapped",
+    "Repeated leading binder and nested shadowing",
+    "Free variable mistaken for prefix slot",
+    "Compound image treated as constant",
+    "Quantified recipient treated as an available guard",
+    "Empty-row marking mistaken for selected output",
+    "Distinct same-formula reference identities merged",
+    "Duplicate ordered ports erased",
+    "Nonmatch key pruned from fallback",
+    "Reordered readiness or changed scheduler",
+    "UNKNOWN child excluded",
+    "Success path incorrectly rolled back",
+    "False complete occupancy or exterior mark conflict",
+    "Valid t/m carrying invalid logical instantiate/MP/substitution",
+    "Hypothesis removed or universal closure silently added",
+    "Positive terminal target/code/request altered"
+  ],
+  "resources": "Future actual independent owner must be separately frozen after producer terminal and root source review. Intended 180-second whole lifetime and 512 MiB gate. No actual activation from this design.",
+  "cross_domain_scope": "Synthetic arithmetic/FOL matching checks can validate generic syntax behavior. Existing arithmetic searched grammar does not expose primitive instantiate actions, so direct activation or proof improvement there is not implied.",
+  "pending": [
+    "Frozen producer matcher/API/feature schema",
+    "Independent source correspondence review and complete source/input pins",
+    "Root-owned producer actual terminal",
+    "Separate immutable independent source/actual-input/owner plan",
+    "Root-owned independent actual dispatch"
+  ]
+}

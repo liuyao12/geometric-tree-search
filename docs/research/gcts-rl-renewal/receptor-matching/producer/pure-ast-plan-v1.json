@@ -1,0 +1,49 @@
+{
+  "status": "frozen_authorized_pure_AST_synthetic_controls_no_actual_model_or_search",
+  "saved_utc": "2026-10-12T00:04:12.522307+00:00",
+  "sources": [
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/receptor_literal_match_v1.py",
+      "sha256": "d3384a838d9a5c6cbd2b549b5a4b5e00b753be64a5e26d65421e916a72c86a3c",
+      "bytes": 15139
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure_ast_fixtures_v1.py",
+      "sha256": "e1db52a90fd4a5a0db5ca325803639ea1909c645bf696fd7172ae3765da4d477",
+      "bytes": 9651
+    },
+    {
+      "path": ".gcts-active/receptor-matching-geometry-source-20261011/pure_ast_owner_v1.py",
+      "sha256": "6865527c0b213160f3d2c290c5a5b3f953e85fa76bc51c87f55b9db420b767b5",
+      "bytes": 4394
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v2.json",
+      "sha256": "3e34b4388ebd9765b1c8ca74938a2ddfd69e1a16706b1399f65c40fb816979b4",
+      "bytes": 44401
+    }
+  ],
+  "root_authorization": "Root message authorized pure-AST synthetic controls bounded with no actual models or engine imports. Actual search producer remains pending separately frozen root and independent source gates.",
+  "limits": {
+    "owner_seconds": 10,
+    "child_SIGALRM_seconds": 5,
+    "host_bytes": 536870912
+  },
+  "scope": "Pure extractor/matcher/selected-record functions only; no ReceptorOrder/ForwardOrder instance, graph, model, search, decoder, native, training, or replay. Arithmetic role/dependency controls not executed.",
+  "proposed_outputs": [
+    "pure-ast-outcome-v1.json",
+    "pure-ast-lifetime-v1.json",
+    "pure-ast-stdout-v1.txt",
+    "pure-ast-stderr-v1.txt"
+  ],
+  "command": "python3 /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-source-20261011/pure_ast_owner_v1.py",
+  "source_authoring_seconds": null,
+  "static_plan_preparation_seconds_before_plan_write": 0.003776458
+}

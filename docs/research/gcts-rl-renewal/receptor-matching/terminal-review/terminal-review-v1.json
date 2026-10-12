@@ -1,0 +1,208 @@
+{
+  "status": "passed_read_only_actual_receptor_audit_terminal_metadata_reconciliation",
+  "review_scope": "File hashes, source AST/pins, owner/producer receipts and actual independently returned verdict/census reconciliation only; no model/engine/checker/replay/search/native imports or execution.",
+  "actual_plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v3.json",
+    "sha256": "53a7b26160124a5ec82e82e48be17ff7c1c185afaafdb4415fe047462ca4e6bd",
+    "bytes": 222574
+  },
+  "actual_result": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-result-v3.json",
+    "sha256": "41431d7bdecd44907f00082eb32a2172ca9c3c794039290f62c09d0186fb4866",
+    "bytes": 7156588
+  },
+  "actual_lifetime": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-lifetime-v3.json",
+    "sha256": "ed8d8e4cf6dd30501da3c8afc8aea36a9cf70abf117689b235550e896fec060b",
+    "bytes": 1483
+  },
+  "source_manifest": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/source-manifest-v3.json",
+    "sha256": "c955e894f2052c6d1550a617367b0d38e5f6cf8a01f5bc225593d4da0d6474f6",
+    "bytes": 2339
+  },
+  "source_freeze": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/source-freeze-v3.json",
+    "sha256": "20d211d189cb20f46bacceae53bb27e1591c000dea78dab7093a96ff5aef5115",
+    "bytes": 632
+  },
+  "root_activation": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/root-activation-v3.json",
+    "sha256": "7950dfec15e5bb9f4ed893484bac34c63b764683fec4159a6fd85e4020943554",
+    "bytes": 1081
+  },
+  "ROOT_authoritative_terminal_message": {
+    "same_exec_session": 37355,
+    "same_handle_terminal_chunk": "a99a97",
+    "exit_code": 0,
+    "child_pid": 60299,
+    "child_terminal_reaped": true,
+    "source": "Direct parent task instruction; no polling by this review."
+  },
+  "verified_source_input_closure": {
+    "sources": 6,
+    "independent_libraries": 5,
+    "input_roles": 161,
+    "preserved_entries": 767,
+    "unique_exact_paths": 782,
+    "ASTs_parsed": 11,
+    "mismatches": 0
+  },
+  "observation_verdicts": {
+    "fixed-forward-reference": {
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "scope": "Complete original finite marked transaction tape; certificate acceptance requires all independently checked logical rows.",
+      "terminal_status": "unknown_search_budget",
+      "reconstructed_complete_orders": 128,
+      "reconstructed_receptor_counts": {
+        "recipe_features": 0,
+        "comparisons": 0,
+        "match": 0,
+        "neutral": 0,
+        "nonmatch": 0
+      },
+      "altered_first_choices": 14,
+      "altered_permutations": 17,
+      "positive_certificate_hashes": null,
+      "native_accepted": false
+    },
+    "fixed-forward-receptor": {
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "scope": "Complete original finite marked transaction tape; certificate acceptance requires all independently checked logical rows.",
+      "terminal_status": "unknown_search_budget",
+      "reconstructed_complete_orders": 128,
+      "reconstructed_receptor_counts": {
+        "recipe_features": 1511,
+        "comparisons": 11744,
+        "match": 150,
+        "neutral": 7081,
+        "nonmatch": 4513
+      },
+      "altered_first_choices": 12,
+      "altered_permutations": 15,
+      "positive_certificate_hashes": null,
+      "native_accepted": false
+    }
+  },
+  "observations": [
+    {
+      "id": "fixed-forward-reference",
+      "status": "unknown_search_budget",
+      "events": 1168,
+      "nodes": 95,
+      "attempts": 128,
+      "forced": 34,
+      "branches": 94,
+      "distinct_graph_states": 206,
+      "complete_base_binding_checks": 1878935,
+      "complete_legal_binding_checks": 1878567,
+      "altered_first_choices": 14,
+      "altered_permutations": 17,
+      "root_restored": true,
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "receptor_counts": {
+        "recipe_features": 0,
+        "comparisons": 0,
+        "match": 0,
+        "neutral": 0,
+        "nonmatch": 0
+      },
+      "independently_proved_child_exclusions": 77,
+      "returned_trace": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/fixed-forward-reference-result-v1.json.gz",
+        "sha256": "57134c83c1a38ae43c9d97227ecfab2e9d472d99ddc6b498a7af95e3c782fb13",
+        "bytes": 379129
+      }
+    },
+    {
+      "id": "fixed-forward-receptor",
+      "status": "unknown_search_budget",
+      "events": 1280,
+      "nodes": 107,
+      "attempts": 128,
+      "forced": 22,
+      "branches": 106,
+      "distinct_graph_states": 219,
+      "complete_base_binding_checks": 1922936,
+      "complete_legal_binding_checks": 1922471,
+      "altered_first_choices": 12,
+      "altered_permutations": 15,
+      "root_restored": true,
+      "trace_accepted": true,
+      "certificate_accepted": false,
+      "receptor_counts": {
+        "recipe_features": 1511,
+        "comparisons": 11744,
+        "match": 150,
+        "neutral": 7081,
+        "nonmatch": 4513
+      },
+      "independently_proved_child_exclusions": 90,
+      "returned_trace": {
+        "path": ".gcts-active/receptor-matching-geometry-source-20261011/fixed-forward-receptor-result-v1.json.gz",
+        "sha256": "9403c6375807e1348eca16859cd24904dd973f1b7111cd0cab2df79ed38eb8c3",
+        "bytes": 551531
+      }
+    }
+  ],
+  "complete_census": {
+    "events": 2448,
+    "nodes": 202,
+    "attempts": 256,
+    "distinct_graph_states": 425,
+    "complete_base_bindings": 3801871,
+    "complete_legal_bindings": 3801038,
+    "independently_proved_child_exclusions": 167,
+    "source_bodies": 171,
+    "source_leaves": 1845,
+    "assumption_aliases": 630,
+    "recursive_calls": 216
+  },
+  "mutation_scope": {
+    "actual_expected_event_payload_controls": 51,
+    "acceptance": "Mutant payload hashes differ from independently reconstructed exact expected event hashes. These are not full corrupted-tape reruns.",
+    "point_consistent_invalid_logical_commands": 3,
+    "logical_control_scope": "Independent actual auditor rejects invalid instantiate/eq_subst formulas and reversed ordered MP ports; consistent markings alone confer no inference validity.",
+    "pure_independent_literal_pairs": 51,
+    "pure_control_scope": "Own10 plus cross-domain41 structural cases, not actual proof-search/theorem certificates.",
+    "unexercised_positive_branch": true
+  },
+  "resource_and_costs": {
+    "actual_successful_independent_owner_seconds": 40.93156975,
+    "fresh_worker_kernel_peak_bytes": 377782272,
+    "owner_kernel_peak_bytes": 43515904,
+    "conservative_combined_peak_bytes": 421298176,
+    "whole_seconds": 180,
+    "child_seconds": 170,
+    "peak_ceiling_bytes": 536870912,
+    "producer_owned_seconds": 9.340212875,
+    "producer_peak_bytes": 128057344,
+    "preserved_failed_no_child_V2_owner_seconds": 0.0005985409999999976,
+    "selected_current_producer_failed_owner_successful_owner_sum_seconds": 50.272381166,
+    "scope": "Separate selected owned phases only. Timers include source/input verification, model/body setup, domains/order/tapes/control checks, serialization and reaping; own final receipt writes, source authoring, pure AST phase and this metadata review are additional. Nested lane/subphase clocks are not added again.",
+    "memory_enforcement": "Retrospective fresh-child plus owner kernel peak gate, no hard OS memory cap.",
+    "deadline_scope": "Saved20s checked deadline allows in-flight work overshoot; both actual complete tapes hit128attempt ceiling and are not truncated."
+  },
+  "historical_binding": {
+    "status": "exact_historical_preparation_source_reconstructed_by_removing_only_two_hash_output_lines",
+    "historical_original_path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+    "historical_sha256": "7ed3f345f8938bdf465d72033f52972314db5e303f93066fdb20840d4f3f67c7",
+    "historical_bytes": 8841,
+    "retained_snapshot_path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_draft_7ed3f345.py",
+    "current_frozen_path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+    "current_frozen_sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013",
+    "current_frozen_bytes": 9020,
+    "edit_scope": "Only two additive diagnostic hash fields differed. Mathematical acceptance, source inputs, limits and all functions otherwise exact. No current frozen audit changes.",
+    "scientific_execution": false
+  },
+  "authority_limits": [
+    "Both complete UNKNOWN traces are accepted, with no accepted point/logical/native certificate. UNKNOWN does not establish theorem nonprovability or whole-boundary exhaustion.",
+    "All171 bodies and229 logical recipes belong to the declared guarded incidence fragment and fixed24row217formula model; no unrestricted proof-system claim.",
+    "Positive helper/runtime branch remains unexercised by current zero-certificate observations. Truncated traces are fail-closed here.",
+    "No RL training, native machine query, compiler authority activation, or proof-discovery gain demonstrated."
+  ],
+  "metadata_review_seconds_before_receipt_write": 0.242082792
+}

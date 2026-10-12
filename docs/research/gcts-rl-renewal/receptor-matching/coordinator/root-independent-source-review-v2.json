@@ -1,0 +1,41 @@
+{
+  "status": "passed_root_source_review_independent_receptor_trace_V2_before_dispatch",
+  "plan": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/audit-plan-v2.json",
+    "sha256": "2100b7f2c1005f5adf59fcb0f2a5f9ac4a9e08f3cc9a47511f80c3e9f7a5ae42",
+    "bytes": 218566
+  },
+  "manifest": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/source-manifest-v2.json",
+    "sha256": "9beffb5231e541ecc7317c90f6e58d18d1d0b8dd39517416dbf176d08bff5055",
+    "bytes": 2339
+  },
+  "freeze": {
+    "path": ".gcts-active/receptor-matching-geometry-independent-20261011/source-freeze-v2.json",
+    "sha256": "4e0326089d976ec1894474bb017fa39576408d81d1b23239be2461222a5eaa03",
+    "bytes": 632
+  },
+  "exact_unique_pins": 768,
+  "mismatches": [],
+  "full_reads": [
+    "receptor_order_oracle_v1.py",
+    "positive_certificate_oracle_v1.py",
+    "receptor_trace_audit_v1.py with exact V2 diff",
+    "receptor_trace_owner_v1.py with exact V2 isolated plan name"
+  ],
+  "previous_independent_libraries": "Pinned previously reviewed own point/domain/transaction/family/symbolic libraries; no production graph/ranker/decoder imports.",
+  "checks": [
+    "Entire global dead/forced/generation decision, complete domain/base/order stream, perrecipe patterns/selected recipients/comparison/score hashes independently rebuilt",
+    "Deep paired snapshots; source-only checkpoint shadowing defect caught by ROOT before any V1 run, V2 fixes local comparison variable exactly",
+    "Every excluded child recursively exhausted; UNKNOWN no pruning and root exact restored; full returned tapes only, truncated tapes fail closed",
+    "All171 source body expansions and229 primitive logical recipes checked; point-consistent invalid inference controls separate from expected-event-payload mutation controls",
+    "Positive path retains solved state through parent returns, reconstructs all24 full identities/t/m/refcounts/strict references and every logical command; independently derives exact original-hypothesis flatrequest. Current positive branch unexercised.",
+    "Exact own owner180/170s512MiB wait4 alarm/kill/reap and retrospectivekernelpeak; no hardOS memorycap or live sampler claim",
+    "Actual completed producer terminal/lifetime/outcome bound; no native, RL, search or authored proof hints",
+    "Verdict mapping derives from actual individual trace/cert gates; source/pure examples cannot supply acceptance"
+  ],
+  "source_history": "Earlier positive helper draft7ed bytes preserved separately; same original path versions must route separately in publication.",
+  "review_seconds_before_receipt_write": 0.306490042,
+  "actual_audit_execution": false,
+  "native_queries": 0
+}

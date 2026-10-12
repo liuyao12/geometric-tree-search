@@ -1,0 +1,124 @@
+{
+  "version": "source_only_report_projection_review_v1",
+  "status": "frozen_prospective_source_inspection_no_actual_projection_execution",
+  "sources": [
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+      "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+      "bytes": 21312
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+      "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+      "bytes": 7112
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+      "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+      "bytes": 6604
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+      "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+      "bytes": 2359
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/display_data_check_v1.js",
+      "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "bytes": 3205
+    }
+  ],
+  "mutable_source_origins": [
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/prepare_report.py",
+      "version_sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+      "version_bytes": 21312,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/prepare_report.py",
+        "sha256": "6b326a197dd08a9e2bf1e923b76ff09a4b724ecd11d88fa66d59fd55cb1253a5",
+        "bytes": 21312
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/report_evidence.py",
+      "version_sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+      "version_bytes": 7112,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/report_evidence.py",
+        "sha256": "98a1c4a801814f20a16ae91ab9330fb813fcbce989995a4027d343c66292a99a",
+        "bytes": 7112
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/validate_report.py",
+      "version_sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+      "version_bytes": 6604,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/validate_report.py",
+        "sha256": "7b7ab8fdbde73746b2c5c42c1f39114438ea636a24dd2a40b2b1c5992adc85ce",
+        "bytes": 6604
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/stage_publication.py",
+      "version_sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+      "version_bytes": 2359,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/stage_publication.py",
+        "sha256": "d2ec8338b6ed755d755181c54c76071426d781ad5b13d1061439a5d2b2b1f462",
+        "bytes": 2359
+      }
+    },
+    {
+      "origin_path": ".gcts-active/receptor-matching-progress-20261011/display_data_check_v1.js",
+      "version_sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+      "version_bytes": 3205,
+      "snapshot": {
+        "path": ".gcts-active/receptor-matching-report-independent-20261011/reviewed-source/display_data_check_v1.js",
+        "sha256": "d4cc0237055ecefe47ece389b4a3e0516a8b6c1f7c45eebe7c73f3f5613ec77e",
+        "bytes": 3205
+      }
+    }
+  ],
+  "context_pins": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/source-review-v1.json",
+      "sha256": "328d701bcfa952b471bd47d0aa4a9abec79e1f756e0c5c9f194d5072f05e9b5a",
+      "bytes": 2423
+    },
+    {
+      "path": ".gcts-active/receptor-matching-source-third-review-20261011/integration.json",
+      "sha256": "35b285e1f03a9e2c270291076be703bb1fbb3d50b17e05f38768e8f1258539d7",
+      "bytes": 1976
+    },
+    {
+      "path": ".gcts-active/automatic-geometry-reader-source-v4-20261011/integration.json",
+      "sha256": "a1969cc46e5477b991e275752a691c6b5940872ccdd6421e92f6714c557b0604",
+      "bytes": 2603
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/integration.json",
+      "sha256": "09057fe033efdb4c35480010fe693aafb554cafd79067e9cee099ed19f90a8e5",
+      "bytes": 3152
+    },
+    {
+      "path": ".gcts-active/receptor-matching-report-independent-20261011/source_projection_review_v1.py",
+      "sha256": "cd363fbcc8efbd2480150d4503df911d71435014b3664489851bcb1c1532c650",
+      "bytes": 10127
+    }
+  ],
+  "limits": {
+    "helper_seconds": 60,
+    "helper_kernel_peak_bytes": 134217728,
+    "hash_chunk_bytes": 65536
+  },
+  "allowed": "Immutable source text/AST/hash only. No report/evidence validator/renderer/scientific/viewer imports, model/result reads or inflation, graph/search/native/training/replay/UI/publication.",
+  "output": "source-review-v1.json",
+  "scope": "Source-only checks; final task-file/origin/version/actual-cost/live-math review remains separately pending.",
+  "authoring_cost": "Unmeasured source reading and authoring."
+}

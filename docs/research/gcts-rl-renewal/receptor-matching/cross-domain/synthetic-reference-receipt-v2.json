@@ -1,0 +1,441 @@
+{
+  "status": "passed_independent_synthetic_reference_v2_expectations",
+  "matcher_cases": 41,
+  "availability_cases": 10,
+  "outcomes": [
+    {
+      "id": "distinct-slots",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ],
+          "y": [
+            "fun",
+            "b",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "distinct-slots-same-constant-permitted",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ],
+          "y": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "prefix-renamed-slots",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "u": [
+            "fun",
+            "a",
+            []
+          ],
+          "v": [
+            "fun",
+            "b",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "repeated-slot-agrees",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "repeated-slot-disagrees",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "literal-rigid-completed-constant",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "y": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "completed-constant-cannot-rebind",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "zero-arity-arithmetic-image",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "arithmetic-compound-constructor-literal",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "compound-slot-image-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "free-recipient-slot-image-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "free-pattern-variable-not-prefix-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "rigid-zero-arity-exact",
+      "actual": {
+        "status": "match",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "rigid-zero-arity-name-miss",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "predicate-name-literal",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "predicate-arity-literal",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "term-constructor-name-literal",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "term-constructor-arity-literal",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "ordered-fixed-argument-miss",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "ordered-variable-bindings-retained",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "b",
+            []
+          ],
+          "y": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "polarity-negative-match",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "polarity-negative-vs-positive",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "double-negation-not-normalized",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "ordered-conjunction-match",
+      "actual": {
+        "status": "match",
+        "bindings": {
+          "x": [
+            "fun",
+            "a",
+            []
+          ]
+        }
+      }
+    },
+    {
+      "id": "ordered-conjunction-miss",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "ordered-equality-not-symmetry",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "nested-pattern-quantification-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "quantified-recipient-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "shadowed-leading-prefix-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "unsupported-exists-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "unsupported-or-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "bot-literal-match",
+      "actual": {
+        "status": "match",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "implication-order-literal",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "definite-mismatch-after-compound-slot",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "definite-mismatch-before-compound-slot",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "conjunction-mismatch-after-compound-slot",
+      "actual": {
+        "status": "miss",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "compound-slot-with-no-definite-mismatch",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "global-quantification-still-neutral-despite-mismatch",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "empty-prefix-name-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "empty-predicate-name-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "empty-function-name-neutral",
+      "actual": {
+        "status": "neutral",
+        "bindings": {}
+      }
+    },
+    {
+      "id": "mark-only-not-available",
+      "actual": []
+    },
+    {
+      "id": "duplicate-formulas-distinct-rows",
+      "actual": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "separate-facts-not-conjoined",
+      "actual": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "arithmetic-command-role-only-incomplete",
+      "actual": []
+    },
+    {
+      "id": "arithmetic-three-roles-incomplete",
+      "actual": []
+    },
+    {
+      "id": "arithmetic-four-roles-zero-input-complete",
+      "actual": [
+        0
+      ]
+    },
+    {
+      "id": "arithmetic-complete-output-with-unavailable-source",
+      "actual": []
+    },
+    {
+      "id": "arithmetic-complete-known-dependency",
+      "actual": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "arithmetic-guard-command-mismatch",
+      "actual": []
+    },
+    {
+      "id": "arithmetic-source-formula-mismatch",
+      "actual": [
+        0
+      ]
+    }
+  ],
+  "seconds": 0.00043929200000000085,
+  "peak_rss_bytes": 12173312,
+  "producer_matcher_imported": false,
+  "producer_compatibility_executed": false,
+  "science": {
+    "actual_models": 0,
+    "actual_results": 0,
+    "scientific_imports": 0,
+    "searches": 0,
+    "training": 0,
+    "native_queries": 0,
+    "replays": 0
+  },
+  "scope": "Authored gold corpus checked by independent literal structural reference only. No Hilbert producer matcher gate, arithmetic adapter implementation, proof validity or discovery established."
+}

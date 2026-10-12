@@ -1,0 +1,106 @@
+{
+  "schema": "prospective_synthetic_reference_controls_v2",
+  "scope": "Pure independent literal AST/availability controls only. No Hilbert producer import or engine/science.",
+  "bounds": {
+    "seconds": 5,
+    "host_bytes": 134217728,
+    "cases": 64
+  },
+  "sources": [
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic_reference_controls_v2.py",
+      "sha256": "d805e1b2d9154ecbd6fce3aa71881b6376727618bd618cf34060a04a5353cf2e",
+      "bytes": 6674
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v2.json",
+      "sha256": "3e34b4388ebd9765b1c8ca74938a2ddfd69e1a16706b1399f65c40fb816979b4",
+      "bytes": 44401
+    }
+  ],
+  "source_provenance": [
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "research/gcts-rl-renewal/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "bytes": 10808
+    },
+    {
+      "path": "research/gcts-rl-renewal/catalog_receptor_points.py",
+      "sha256": "54bfa4e50af961790b2d3a6ad852cf8ada3469d6bb617adb9409dca63c052bee",
+      "bytes": 6507
+    },
+    {
+      "path": "research/gcts-rl-renewal/induction_receptors_points.py",
+      "sha256": "9916b1ef81a3a1c016150f44322236218d8fb622682728ed5b075ed12024520f",
+      "bytes": 5632
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_cluster_points.py",
+      "sha256": "b213bc019a220af7f0aea82d6191f1aca6b2ff4c2c39e8c1e5fb20bf6041f7d0",
+      "bytes": 1509
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity_catalog.py",
+      "sha256": "d3986a2b9ec5a29591cd95685a803a4ae3c8be4a9b6490c36192796ea21d2454",
+      "bytes": 3157
+    },
+    {
+      "path": "research/gcts-rl-renewal/left_successor_catalog.py",
+      "sha256": "91068c316abf41051d9f28bd3e1ac77a14726fc461d20155fc4d1115d6b8151e",
+      "bytes": 9374
+    },
+    {
+      "path": "research/gcts-rl-renewal/commutativity13_guidance.py",
+      "sha256": "bb6a043b15b3f859aa4f52b0da058bf3575d11b2f273f91027cf2af48c5cc4a3",
+      "bytes": 9034
+    },
+    {
+      "path": "research/gcts-rl-renewal/arithmetic_stochastic_features_v2.py",
+      "sha256": "529ffcb219ff525612abcb0146817dc460709a09e214b1012b3a65b14a434b08",
+      "bytes": 10133
+    },
+    {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9",
+      "bytes": 3698
+    }
+  ],
+  "scientific_execution_authorized": false,
+  "producer_matcher_execution_authorized": false,
+  "unknown_semantics": "Any helper limit or disagreement is unresolved, never a proof or a pruning justification.",
+  "preserved_v1": [
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-corpus-v1.json",
+      "sha256": "4c72d19390679a7319a00aaf04d9a24cb162ef17d3f2937e82a7aacf0ef4f80c",
+      "bytes": 37356
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic_reference_controls_v1.py",
+      "sha256": "caf6cea9c9c3780c6a994327f8d401a457dec8fd91d19c44ff1367d7e1592307",
+      "bytes": 6335
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-plan-v1.json",
+      "sha256": "da4de7848652252409621b2d48d19c53c537e2734434589810449154aea382a2",
+      "bytes": 3088
+    },
+    {
+      "path": ".gcts-active/receptor-matching-cross-domain-source-20261011/synthetic-reference-receipt-v1.json",
+      "sha256": "3a80984f3c1992e1eb73e6daeaae959b5948f711d07714a9a87119273b7b4e8e",
+      "bytes": 7204
+    }
+  ],
+  "refinement": "Finalized narrow connective subset keeps or neutral; empty names neutral; definite mismatch wins over compound slot-image neutral, while global unsupported quantification/free recipient remains neutral. No producer or engine import."
+}
