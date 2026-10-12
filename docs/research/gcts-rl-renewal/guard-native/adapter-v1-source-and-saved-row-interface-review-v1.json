@@ -1,0 +1,133 @@
+{
+  "all_declared_bytes_match": true,
+  "authority_flags": {
+    "ROOT_sole_execution_owner": true,
+    "all_five_qualification": false,
+    "finite_Wang_rectangle_accepted": false,
+    "independent_native_replay_accepted": false,
+    "mixed_caller_UNKNOWN_preserved": true,
+    "native_accepted": false,
+    "native_queries_by_reviewer": 0,
+    "new_RL_training": false,
+    "translation_invocations_by_reviewer": 0,
+    "universal_compiler_theorem": false
+  },
+  "before_ROOT_syntax_invocation": [
+    "ROOT must pin exact source/input/runtime/review and verify intended fresh output namespace before invocation; no source-only manifest field authorizes native execution.",
+    "Preserve complete emitted raw request/receipt and enclosing tool terminal as a syntax-conversion observation. A partial exclusive output failure is not an accepted translation, and needs no science retry.",
+    "Independently compare actual emitted request/theory/row mapping to these saved source roles before preparation; this source review did not execute the translation."
+  ],
+  "before_any_native_query": [
+    "Separate immutable whole-input preparation/helper source review and actual every-byte constructor/input receipt are mandatory.",
+    "Separate fresh native worker/owner/toolchain/compiler/runtime/resource scope must cover explicit child groups and actual enclosing terminal clock; accepted proof-worker leaf accounting is not transferable.",
+    "True parser start88986, unchanged program877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673/micro2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac/literal-tablefd1621b29a7d497859c850a116b295956db99b3d7c4c076e3b78bed680d682dd, exact full output/status/steps and later independent replay remain separate authority obligations."
+  ],
+  "certain_positive_path_blockers": [],
+  "closed_input_roles": {
+    "ROOT_final_decision": {
+      "bytes": 3033,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-ROOT-final-decision-v1.json",
+      "sha256": "156eacc550a54c137401b1209c6dfdfae77a4531c269546b7c604bde2646f5d3"
+    },
+    "independent_resource": {
+      "bytes": 12363,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-independent-owned-resource-disposition-v1.json",
+      "sha256": "4ad4d27c08efb2644c2e325adf2674956c33eaab71f06270f583a3b9362ef1db"
+    },
+    "point_certificate": {
+      "bytes": 696169,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/point-certificate-v1.json",
+      "sha256": "acda2e222a55df5fd58d2bf900e5b9efa50d0d88abb44cd746592438fbd90fcc"
+    },
+    "producer_resource": {
+      "bytes": 12292,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/fixed-whole-family-pool-producer-owned-resource-disposition-v1.json",
+      "sha256": "d360512513b9d0c1a25b66def1083340db1ccf511c218cfeb1b749b270691b51"
+    },
+    "reader_data": {
+      "bytes": 305278,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/reader-data.json",
+      "sha256": "88a06bd99b13a8bee03821b052bcfcf93d88e2f9211eaf12e336462498bf17f0"
+    },
+    "saved_independent_row_review": {
+      "bytes": 29379,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/saved-result-and-proof-row-metadata-review-v1.json",
+      "sha256": "c172cef65fa8112c0005c6a32e6d7c1c927af77796741261b67cfd7d6e955d33"
+    },
+    "symbolic_certificate": {
+      "bytes": 132277,
+      "path": "docs/research/gcts-rl-renewal/repeated-guard/symbolic-certificate-v1.json",
+      "sha256": "e09adfd5e030c225729375101de074b4daaed631642a978a1f857bad548bd120"
+    }
+  },
+  "compatibility_scope": {
+    "duplicate_hypotheses_not_deduplicated": true,
+    "formula_point_certificate_and_24commands_retained": true,
+    "native_theory_is_extended_not_byte_equal_to_original": true,
+    "no_Point_R_premise_or_target_n": true,
+    "original_sequent_bound_separately": true,
+    "proof_discovery_not_rerun": true
+  },
+  "exact_declared_pin_observations": 76,
+  "inputs": [
+    {
+      "bytes": 8306,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/handoff-v1.json",
+      "sha256": "cb1e6bfb7508fb917e32863d42ff43787c2545cba14895c67976f2bf4a1f2deb"
+    },
+    {
+      "bytes": 14633,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/guard_native_bridge_v1.py",
+      "sha256": "08a7cfabe5a360040a75a20ff930fbc0d152d39ca253caa56a557e65fadc5b13"
+    },
+    {
+      "bytes": 9241,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/frozen-inputs-v1.json",
+      "sha256": "80ed952477f8e6999b204661d72806fe15de05eaf0c9df39860a4077bd6dea01"
+    },
+    {
+      "bytes": 2972,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/source-protocol-v1.json",
+      "sha256": "0d77e5cbdb99863b0566c21d93be462b4339fd6967b09321dcf89a3c84511cfe"
+    },
+    {
+      "bytes": 5404,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/bridge-assessment-v1.json",
+      "sha256": "556749ccb3a3f7a966325bdbba954e0f983cae525d846c2ca89a85f8faf935b1"
+    },
+    {
+      "bytes": 10655,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/source-metadata-review-v1.json",
+      "sha256": "358ae01c9a115157874d6ea6c897b6b27c55694b81db1181269999c1b94b3dfb"
+    },
+    {
+      "bytes": 37296,
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/compatibility-obligations-source-review-v1.json",
+      "sha256": "f42d6981eb4d8ffe8c4234cfc83a388d69538c846533b85c3a0f0af7f226bbef"
+    },
+    {
+      "bytes": 3547,
+      "path": "research/gcts-rl-renewal/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    }
+  ],
+  "nonblocking_conditional_limits": [
+    "The adapter is a syntax/binding operation, not a logical validity checker; generic signature/formula validity is deferred to the unchanged native checker. The exact frozen source contains no floats or malformed pin records; the adapter JSON decoder alone does not reject finite floating numbers and verify alone does not enforce every pin value type, so it is not an arbitrary untrusted-input security proof.",
+    "Initial source/closure hashing relies on immutable ROOT-owned frozen inputs. ROOT should retain its before/after raw source/input pins; no adversarial filesystem snapshot or OS attestation is established.",
+    "Resource-role JSON is raw pinned and saved reader/decision flags are compared. The adapter does not requalify original resource receipts or fresh native resources.",
+    "boundary_oracle.cpp full source is a fixed selected-symbol interpreter and validates exact table/input EOF; its unchanged native table execution is not direct literal Wang tiling search or a complete materialized Wang rectangle."
+  ],
+  "positive_path_source_checks": [
+    "ROOT and INPUTS paths resolve to the expected shared checkout/package. Only stdlib imports are present. The CLI has no native or search dispatch.",
+    "Frozen closure verification precedes saved accepted certificate admission and all output writes; decoded certificate buffers are checked against their own raw pins.",
+    "Saved ROOT decision binds exact point and symbolic pins. All24 reader/source/point/identity-preimage commands, formulas, original t/m and row positions match by independent saved-value comparison.",
+    "Gamma has exactly3 ordered closed ground formulas; firsttwo are identical but separately licensed. Assumption indices are exactly0,1,2; no collision with original I.2 axiom name.",
+    "translate enforces each supported command keyset and strict prior references, changes only assumption to occurrence-named axiom, copies other commands/formulas unchanged, appends hypotheses without changing source theory/signature/schemas, and preserves final target.",
+    "Generated request schema has exactly protocol/theory/target/blocks/proof, native protocol gcts-fol-1, empty blocks. Closed-Gamma promotion matches the native top-level empty-assumptions interface.",
+    "Fresh direct-child translation output namespace, exclusive writes and explicit pending statuses prevent syntax translation from asserting native acceptance or authorizing native execution."
+  ],
+  "review_scope": "Full14633-byte adapter source and complete frozen input/handoff/protocol/assessment source metadata; stdlib-only AST/hash/saved JSON comparisons. No project modules imported, translate/bind/pin/helper functions invoked, request emitted, checker/search/replay/native/RNG/process/browser/network/activation/publication calls.",
+  "schema": "independent-guard-native-bridge-adapter-source-review-v1",
+  "status": "passed_bounded_source_and_saved_row_interface_review_pending_ROOT_translation_and_native_gates",
+  "unique_declared_paths": 36
+}

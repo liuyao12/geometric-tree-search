@@ -1,0 +1,117 @@
+{
+  "schema": "ROOT-guard-native-final-bridge-decision-v1",
+  "status": "accepted_existing_ground_certificate_whole_fixed_machine_with_independent_replay",
+  "ROOT_final_accepted": true,
+  "native_accepted": true,
+  "independent_native_replay_accepted": true,
+  "full_input_output_bytes_matched": true,
+  "existing_rows": 24,
+  "changed_commands": [
+    0,
+    1,
+    2
+  ],
+  "change": "Indexed closed assumption commands become exact occurrence-named axiom uses; other21 commands, all24 formulas and strict-prior references unchanged.",
+  "original_context": "Restricted I.2 theory with exact ordered H,H,Incident(R,l) hypotheses proves Incident(R,m). No Point(R) premise.",
+  "native_context": "Original theory plus exactly3 named CLOSED hypothesis occurrences; blocks empty; target unchanged.",
+  "request_sha256": "a7d0eff5628982cce9f4e9e1db1c1276383a8ed9f51262da9ab5217843bc1ba8",
+  "input_sha256": "dcf77d72d539444fb55ed40564ccc0ccd11964a011277012a98e31b86c73ab92",
+  "output_sha256": "dad45f2834ff24af3532a557dd73a6626e1c3f2813c60c8a1a55a024543c99a6",
+  "output_bytes": 5137500,
+  "micro_steps": 5264348472,
+  "physical_steps": 118010454771962,
+  "micro_fnv64": "4223148293101573671",
+  "parser_start": 88986,
+  "accept_state": 0,
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "literal_palette_sha256": "fd1621b29a7d497859c850a116b295956db99b3d7c4c076e3b78bed680d682dd",
+  "native_queries": 1,
+  "independent_native_replays": 1,
+  "fresh_target_searches": 0,
+  "fresh_proof_discoveries": 0,
+  "new_RL_training": false,
+  "net_speed_advantage_claimed": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "finite_Wang_rectangle_materialized": false,
+  "native_crop_exported": false,
+  "pins": [
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "4675dc9e9d5076d8d56f3dc9fb72f4f342fc792d933fdb6ec20ba43486845af1",
+      "bytes": 2693
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-ROOT-final-decision-v1.json",
+      "sha256": "bacd4654c278414a7896535db63c8e83654a00d323e8276703a577f32b1451d5",
+      "bytes": 2699
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-ROOT-final-decision-v1.json",
+      "sha256": "dc3bd4f39ea4b96ec0c2927e87169a5aa09b56502c2e347bcc2dcddb96f7c5a9",
+      "bytes": 2699
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/translation-v1/native-request-v1.json",
+      "sha256": "bd4a0f8118302503a3aa14d971495fc14c131170ff8b79ff0e6d6e8a29c9ee1f",
+      "bytes": 17524
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/translation-v1/translation-receipt-v1.json",
+      "sha256": "3478e7b17156b60429497bf14d162d04bb48096afc5c3ca050f9f4e870d171e6",
+      "bytes": 13458
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/preparation-result-v1.json",
+      "sha256": "6335a2cdd492ee7aac2f6fc164367a07a9826b0a954dbe7ccdfd62577c997e8a",
+      "bytes": 3179
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/worker-result-v1.json",
+      "sha256": "d96da28a0818ae47662624a67cae9c7bdc26a4531598c97677d799437bbb3072",
+      "bytes": 2231
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/worker-result-v1.json",
+      "sha256": "8d231cc3a65338ac0052201e3887612d5105c1b7eaf4a971c50819802deba83e",
+      "bytes": 2169
+    }
+  ],
+  "conformance_scope": "This stage is a deterministic verification/representation adapter, not a tiling search engine. Prior Notebook119 semantic search and its conformance/resource evidence remain immutable; no new frontier/candidate scheduler is claimed.",
+  "trust_scope": "Whole fixed selected-symbol machine execution, conditional on existing finite lowering/boundary evidence, native toolchain/runtime, and pinned source-trusted owned-process filtering. Independent interpreter reproduced every output byte and full trace summary; no universal compiler equivalence or literal accepting Wang rectangle checked.",
+  "next_program_gap": "Search and compare reusable receptor families on fresh heldout statements; improve learned proposal usefulness with equal-library ordinary proof-search controls. This finite successful bridge does not settle those goals.",
+  "preserved_mixed120": "Preparation-only UNKNOWN unchanged; no activation or retry.",
+  "owned_stages": {
+    "preparation": {
+      "caller_elapsed_seconds": 9.78,
+      "ROOT_final_accepted": true,
+      "limits": {
+        "whole_seconds": 60,
+        "caller_seconds": 90,
+        "peak_bytes": 805306368
+      }
+    },
+    "native": {
+      "caller_elapsed_seconds": 39.915,
+      "ROOT_final_accepted": true,
+      "limits": {
+        "whole_seconds": 900,
+        "caller_seconds": 930,
+        "peak_bytes": 805306368,
+        "micro_steps": 80000000000
+      }
+    },
+    "replay": {
+      "caller_elapsed_seconds": 39.234,
+      "ROOT_final_accepted": true,
+      "limits": {
+        "whole_seconds": 900,
+        "caller_seconds": 930,
+        "peak_bytes": 805306368,
+        "micro_steps": 80000000000
+      }
+    }
+  }
+}

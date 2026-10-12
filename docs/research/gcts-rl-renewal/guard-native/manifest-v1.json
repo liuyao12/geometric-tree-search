@@ -1,0 +1,584 @@
+{
+  "schema": "notebook121-public-alias-manifest-v1",
+  "title": "One actual ground certificate, one unchanged computational core, full independent replay",
+  "aliases": [
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-reader-source-20261012/v3/reader.css",
+        "sha256": "ece5dfb6d4ddbc3e4e811216def4b48f7d61a559b2c22740d14a9e7bda584e3a",
+        "bytes": 6214
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/reader.css",
+        "sha256": "ece5dfb6d4ddbc3e4e811216def4b48f7d61a559b2c22740d14a9e7bda584e3a",
+        "bytes": 6214
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-reader-source-20261012/v3/reader-data.json",
+        "sha256": "2faa400d5ac8f923ab982e3c45463e14cba4870f38a763ff1cacbd8090a1fb55",
+        "bytes": 413894
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/reader-data.json",
+        "sha256": "2faa400d5ac8f923ab982e3c45463e14cba4870f38a763ff1cacbd8090a1fb55",
+        "bytes": 413894
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-reader-source-20261012/v3/guard119-all24-provenance-v1.json",
+        "sha256": "05fc73d2d789efba6677a8ec2187e597eff455475d868b17388e812fc730ded8",
+        "bytes": 286306
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/guard119-all24-provenance-v1.json",
+        "sha256": "05fc73d2d789efba6677a8ec2187e597eff455475d868b17388e812fc730ded8",
+        "bytes": 286306
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/translation-v1/native-request-v1.json",
+        "sha256": "bd4a0f8118302503a3aa14d971495fc14c131170ff8b79ff0e6d6e8a29c9ee1f",
+        "bytes": 17524
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-request-v1.json",
+        "sha256": "bd4a0f8118302503a3aa14d971495fc14c131170ff8b79ff0e6d6e8a29c9ee1f",
+        "bytes": 17524
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/translation-v1/translation-receipt-v1.json",
+        "sha256": "3478e7b17156b60429497bf14d162d04bb48096afc5c3ca050f9f4e870d171e6",
+        "bytes": 13458
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/translation-receipt-v1.json",
+        "sha256": "3478e7b17156b60429497bf14d162d04bb48096afc5c3ca050f9f4e870d171e6",
+        "bytes": 13458
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/preparation-result-v1.json",
+        "sha256": "6335a2cdd492ee7aac2f6fc164367a07a9826b0a954dbe7ccdfd62577c997e8a",
+        "bytes": 3179
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/preparation-result-v1.json",
+        "sha256": "6335a2cdd492ee7aac2f6fc164367a07a9826b0a954dbe7ccdfd62577c997e8a",
+        "bytes": 3179
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/worker-result-v1.json",
+        "sha256": "d96da28a0818ae47662624a67cae9c7bdc26a4531598c97677d799437bbb3072",
+        "bytes": 2231
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-result-v1.json",
+        "sha256": "d96da28a0818ae47662624a67cae9c7bdc26a4531598c97677d799437bbb3072",
+        "bytes": 2231
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/worker-result-v1.json",
+        "sha256": "8d231cc3a65338ac0052201e3887612d5105c1b7eaf4a971c50819802deba83e",
+        "bytes": 2169
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/replay-result-v1.json",
+        "sha256": "8d231cc3a65338ac0052201e3887612d5105c1b7eaf4a971c50819802deba83e",
+        "bytes": 2169
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/output.bin.gz",
+        "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+        "bytes": 22409
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-output.bin.gz",
+        "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+        "bytes": 22409
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/output.bin.gz",
+        "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+        "bytes": 22409
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/replay-output.bin.gz",
+        "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+        "bytes": 22409
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/input.bin.gz",
+        "sha256": "066bec30bf517ac085438ad59d7d4e29511d0f933c3966a496f634dcb08c48f1",
+        "bytes": 13223
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/input.bin.gz",
+        "sha256": "066bec30bf517ac085438ad59d7d4e29511d0f933c3966a496f634dcb08c48f1",
+        "bytes": 13223
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/microcode.bin.gz",
+        "sha256": "5eb239d30f63efe592ed4ca32cc81755dc04f373181414b49d7deab47607238d",
+        "bytes": 1090818
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/microcode.bin.gz",
+        "sha256": "5eb239d30f63efe592ed4ca32cc81755dc04f373181414b49d7deab47607238d",
+        "bytes": 1090818
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/request-frame-v1.json.gz",
+        "sha256": "0d06a0dbf4585a866ee04e67c4ebdecb7202d61d7225e9926ce77569db429133",
+        "bytes": 5627
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/request-frame-v1.json.gz",
+        "sha256": "0d06a0dbf4585a866ee04e67c4ebdecb7202d61d7225e9926ce77569db429133",
+        "bytes": 5627
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/ROOT-final-bridge-decision-v1.json",
+        "sha256": "74829b9909606fe9aca40d8bfd562677ea524efdd4b57adc15c2e414ef2c6b60",
+        "bytes": 5389
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/ROOT-final-bridge-decision-v1.json",
+        "sha256": "74829b9909606fe9aca40d8bfd562677ea524efdd4b57adc15c2e414ef2c6b60",
+        "bytes": 5389
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/ROOT-source-review-v1.json",
+        "sha256": "61e9eb9c7bd4825416e2f88ab6dd48590aecc92537ec8be512da76cd072ef25b",
+        "bytes": 3388
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/ROOT-source-review-v1.json",
+        "sha256": "61e9eb9c7bd4825416e2f88ab6dd48590aecc92537ec8be512da76cd072ef25b",
+        "bytes": 3388
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-source-20261012/guard_native_bridge_v1.py",
+        "sha256": "08a7cfabe5a360040a75a20ff930fbc0d152d39ca253caa56a557e65fadc5b13",
+        "bytes": 14633
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/guard_native_bridge_v1.py",
+        "sha256": "08a7cfabe5a360040a75a20ff930fbc0d152d39ca253caa56a557e65fadc5b13",
+        "bytes": 14633
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-source-20261012/prepare_native_input_v1.py",
+        "sha256": "3c5416ce66cd69af05ed58a8bec645b4e95bb4766569e7480b82ed84b7b18ad6",
+        "bytes": 16037
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/prepare_native_input_v1.py",
+        "sha256": "3c5416ce66cd69af05ed58a8bec645b4e95bb4766569e7480b82ed84b7b18ad6",
+        "bytes": 16037
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/run_owned_bridge_v1.py",
+        "sha256": "2b49716146ae88de8c8e0009076c79234e18668408a9dcbb7b83e8f500651b3d",
+        "bytes": 12795
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/run_owned_bridge_v1.py",
+        "sha256": "2b49716146ae88de8c8e0009076c79234e18668408a9dcbb7b83e8f500651b3d",
+        "bytes": 12795
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native_bridge_worker_v1.py",
+        "sha256": "9f12671e9798b6156065f55f43e93d5ef7246431624b68c4915dd43acc966245",
+        "bytes": 13398
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native_bridge_worker_v1.py",
+        "sha256": "9f12671e9798b6156065f55f43e93d5ef7246431624b68c4915dd43acc966245",
+        "bytes": 13398
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/freeze_stage_plan_v1.py",
+        "sha256": "a01bf91b6aa46c4135a207e4b8a2bfc3e084cba0e2efb8240f638e966aaddfd3",
+        "bytes": 6038
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/freeze_stage_plan_v1.py",
+        "sha256": "a01bf91b6aa46c4135a207e4b8a2bfc3e084cba0e2efb8240f638e966aaddfd3",
+        "bytes": 6038
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/close_stage_decision_v1.py",
+        "sha256": "cb3698a24f0ae655d4c0e7487ec8c19eba79928c1e11168626bed1c28ba35c2e",
+        "bytes": 4720
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/close_stage_decision_v1.py",
+        "sha256": "cb3698a24f0ae655d4c0e7487ec8c19eba79928c1e11168626bed1c28ba35c2e",
+        "bytes": 4720
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": "research/gcts-rl-renewal/boundary_oracle.cpp",
+        "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+        "bytes": 3547
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/boundary_oracle.cpp",
+        "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+        "bytes": 3547
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": "research/gcts-rl-renewal/audit_boundary_micro.cpp",
+        "sha256": "4c6e5c151094049125dd0e357d9c1dabcdffa2a9cc414717e1d72f4d513c590b",
+        "bytes": 3158
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/audit_boundary_micro.cpp",
+        "sha256": "4c6e5c151094049125dd0e357d9c1dabcdffa2a9cc414717e1d72f4d513c590b",
+        "bytes": 3158
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-ROOT-final-decision-v1.json",
+        "sha256": "4675dc9e9d5076d8d56f3dc9fb72f4f342fc792d933fdb6ec20ba43486845af1",
+        "bytes": 2693
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/preparation-ROOT-final-decision-v1.json",
+        "sha256": "4675dc9e9d5076d8d56f3dc9fb72f4f342fc792d933fdb6ec20ba43486845af1",
+        "bytes": 2693
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-actual-tool-observations-v1.json",
+        "sha256": "07b93f344614ded0712041c13da6e7915661c97e53035a71b7d657e3d1276349",
+        "bytes": 1768
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/preparation-actual-tool-observations-v1.json",
+        "sha256": "07b93f344614ded0712041c13da6e7915661c97e53035a71b7d657e3d1276349",
+        "bytes": 1768
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "5517e97dbc394db2478530dee6cdaa7df9bb0b2fc692b9aa786f4f8aff1e1fdc",
+        "bytes": 1631
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/preparation-ROOT-terminal-v1.json",
+        "sha256": "5517e97dbc394db2478530dee6cdaa7df9bb0b2fc692b9aa786f4f8aff1e1fdc",
+        "bytes": 1631
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/post-write-observation-v1.json",
+        "sha256": "78e649308f76a4d9f9d3bc66b3fa3678993a7f834419cae29253e7a531175555",
+        "bytes": 751
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/preparation-post-write-observation-v1.json",
+        "sha256": "78e649308f76a4d9f9d3bc66b3fa3678993a7f834419cae29253e7a531175555",
+        "bytes": 751
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-ROOT-final-decision-v1.json",
+        "sha256": "bacd4654c278414a7896535db63c8e83654a00d323e8276703a577f32b1451d5",
+        "bytes": 2699
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-ROOT-final-decision-v1.json",
+        "sha256": "bacd4654c278414a7896535db63c8e83654a00d323e8276703a577f32b1451d5",
+        "bytes": 2699
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-actual-tool-observations-v1.json",
+        "sha256": "e456356b62da9dd31729c240aff6e53fc1a3d3cb8bf48cc364f28751efd22c87",
+        "bytes": 3104
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-actual-tool-observations-v1.json",
+        "sha256": "e456356b62da9dd31729c240aff6e53fc1a3d3cb8bf48cc364f28751efd22c87",
+        "bytes": 3104
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "716368055f6aeeb5de3102928485cc55319b7c2f43c65af19fa01bd90a7e9193",
+        "bytes": 1611
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-ROOT-terminal-v1.json",
+        "sha256": "716368055f6aeeb5de3102928485cc55319b7c2f43c65af19fa01bd90a7e9193",
+        "bytes": 1611
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/post-write-observation-v1.json",
+        "sha256": "2d7462b0fd0e010d3a29827dde66e4fb1240a74f0108dbd5e197d220738c64c2",
+        "bytes": 776
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/native-post-write-observation-v1.json",
+        "sha256": "2d7462b0fd0e010d3a29827dde66e4fb1240a74f0108dbd5e197d220738c64c2",
+        "bytes": 776
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-ROOT-final-decision-v1.json",
+        "sha256": "dc3bd4f39ea4b96ec0c2927e87169a5aa09b56502c2e347bcc2dcddb96f7c5a9",
+        "bytes": 2699
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/replay-ROOT-final-decision-v1.json",
+        "sha256": "dc3bd4f39ea4b96ec0c2927e87169a5aa09b56502c2e347bcc2dcddb96f7c5a9",
+        "bytes": 2699
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-actual-tool-observations-v1.json",
+        "sha256": "2f51d46a9fdc6813d78e49f40b2dc599a26a67e6ac0b5660eb08d16e2ea65813",
+        "bytes": 3082
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/replay-actual-tool-observations-v1.json",
+        "sha256": "2f51d46a9fdc6813d78e49f40b2dc599a26a67e6ac0b5660eb08d16e2ea65813",
+        "bytes": 3082
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "a709c72e4095ccb06def5b22200c78c334970e96912e1a3b0ec5659fb3818ae3",
+        "bytes": 1611
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/replay-ROOT-terminal-v1.json",
+        "sha256": "a709c72e4095ccb06def5b22200c78c334970e96912e1a3b0ec5659fb3818ae3",
+        "bytes": 1611
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/post-write-observation-v1.json",
+        "sha256": "317f19d4ddcbd189c3de356708d6c8b7958fb652bacd42a10c7e315b9a6611a3",
+        "bytes": 776
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/replay-post-write-observation-v1.json",
+        "sha256": "317f19d4ddcbd189c3de356708d6c8b7958fb652bacd42a10c7e315b9a6611a3",
+        "bytes": 776
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-independent-review-20261012/compatibility-obligations-source-review-v1.json",
+        "sha256": "f42d6981eb4d8ffe8c4234cfc83a388d69538c846533b85c3a0f0af7f226bbef",
+        "bytes": 37296
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/compatibility-obligations-source-review-v1.json",
+        "sha256": "f42d6981eb4d8ffe8c4234cfc83a388d69538c846533b85c3a0f0af7f226bbef",
+        "bytes": 37296
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-independent-review-20261012/adapter-v1-source-and-saved-row-interface-review-v1.json",
+        "sha256": "990baa1193ae0c450df97ade45d399002382076bf1488af8abc32475cd67daf4",
+        "bytes": 8745
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/adapter-v1-source-and-saved-row-interface-review-v1.json",
+        "sha256": "990baa1193ae0c450df97ade45d399002382076bf1488af8abc32475cd67daf4",
+        "bytes": 8745
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-independent-review-20261012/preparation-v1-full-source-interface-review-v1.json",
+        "sha256": "b7aa05ebfe677e658ce254cfdaa29f9c77b5a2cc6b0992a109a20c35ccdd9cea",
+        "bytes": 10042
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/preparation-v1-full-source-interface-review-v1.json",
+        "sha256": "b7aa05ebfe677e658ce254cfdaa29f9c77b5a2cc6b0992a109a20c35ccdd9cea",
+        "bytes": 10042
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-independent-review-20261012/owned-native-stage-source-review-v1.json",
+        "sha256": "1e9a2511a956d7aed09953280671e680349b157eec11cf0c2b9d321cfafc35d9",
+        "bytes": 12056
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/owned-native-stage-source-review-v1.json",
+        "sha256": "1e9a2511a956d7aed09953280671e680349b157eec11cf0c2b9d321cfafc35d9",
+        "bytes": 12056
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-independent-review-20261012/actual-three-closed-stages-metadata-review-v1.json",
+        "sha256": "a6d3e356ed8e504469b2440df4cfaafaa0a6b864834e7c9f1b6a3626074b689f",
+        "bytes": 16996
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/actual-three-closed-stages-metadata-review-v1.json",
+        "sha256": "a6d3e356ed8e504469b2440df4cfaafaa0a6b864834e7c9f1b6a3626074b689f",
+        "bytes": 16996
+      },
+      "exact_raw_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-independent-review-20261012/joint-ROOT-bridge-decision-metadata-review-v1.json",
+        "sha256": "5ba345822c4aff9b45f7b7b858b4c1ebcf02bf09714f20804420add5de3f1465",
+        "bytes": 2171
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/joint-ROOT-bridge-decision-metadata-review-v1.json",
+        "sha256": "5ba345822c4aff9b45f7b7b858b4c1ebcf02bf09714f20804420add5de3f1465",
+        "bytes": 2171
+      },
+      "exact_raw_bytes": true
+    }
+  ],
+  "display_transforms": [
+    {
+      "source": {
+        "path": ".gcts-active/guard-native-bridge-reader-source-20261012/v3/reader.html",
+        "sha256": "dc200c9a92df6ee77fb3578e69feba7544b387bee8947bf8be35c2c697f7dc7b",
+        "bytes": 188354
+      },
+      "public": {
+        "path": "docs/research/gcts-rl-renewal/guard-native/reader.html",
+        "sha256": "e5a6f6e575b197ddacfddd64594b01bcc292cc875687049eeccc89f648939d45",
+        "bytes": 188709
+      },
+      "scope": "Prose-only correction: selected-symbol input, acceptance evidence sentence, and added independent-review/manifest links. All24 rows, math, AST and markings untouched."
+    }
+  ],
+  "parent": {
+    "before_sha256": "fedb51df1c3881f03092728012c8b160aff7c63102dc27f8227105d114e68679",
+    "before_bytes": 361956,
+    "after": {
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "f6fd9d09c9d4d68db211d9f7f081bfea447e2509046741bb54c9cdecbd687d5a",
+      "bytes": 363006
+    },
+    "panel": {
+      "path": ".gcts-active/guard-native-bridge-reader-source-20261012/v3/parent-panel121.html",
+      "sha256": "a80b6900958f3e9407db07db84b646e5208b9084981e155ac44e5a9997c03453",
+      "bytes": 1049
+    },
+    "scope": "One new panel plus exact counter120\u2192121; reverse restores every prior byte."
+  },
+  "publication_scope": "Task-only research artifacts; no owned-host process ledgers, absolute repository argv, compiler binary, local runtime secrets or unrelated working-tree changes published.",
+  "original_reader_handoff": {
+    "path": ".gcts-active/guard-native-bridge-reader-source-20261012/v3/handoff-v3.json",
+    "sha256": "9fc870ea0817570dd99f410471480a0e70ab6262d140ed816a99999d7a4aad51",
+    "bytes": 13845
+  },
+  "scientific_calls_by_exporter": 0,
+  "native_accepted": true,
+  "independent_replay_accepted": true,
+  "fresh_searches": 0,
+  "new_RL_training": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "self_hash_excluded": true
+}

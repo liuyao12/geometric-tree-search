@@ -1,0 +1,208 @@
+{
+  "all_observed_pins_match": true,
+  "authority_flags": {
+    "all_five_qualification": false,
+    "finite_Wang_rectangle_accepted": false,
+    "independent_native_replay_accepted": false,
+    "mixed_caller_UNKNOWN_preserved": true,
+    "native_accepted": false,
+    "new_RL_training": false,
+    "preparation_calls_by_reviewer": 0,
+    "project_imports_by_reviewer": 0,
+    "universal_compiler_theorem": false
+  },
+  "certain_positive_path_blockers": [],
+  "complete_reachable_project_source_reads": [
+    {
+      "bytes": 6992,
+      "path": "research/gcts-rl-renewal/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 13290,
+      "path": "research/gcts-rl-renewal/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 19188,
+      "path": "research/gcts-rl-renewal/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 3756,
+      "path": "research/gcts-rl-renewal/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 11238,
+      "path": "research/gcts-rl-renewal/audit_proof_boundary.py",
+      "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538"
+    },
+    {
+      "bytes": 12912,
+      "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+      "sha256": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a"
+    },
+    {
+      "bytes": 10993,
+      "path": "research/gcts-rl-renewal/audit_tape_kernel.py",
+      "sha256": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd"
+    }
+  ],
+  "conditional_limits": [
+    "Heap-band cells are finite symbol cells, not a cons-node capacity or a proof that the future checker has enough heap/stack space.",
+    "Literal table rawgzip is pinned but this helper does not independently reprove every upstream compiler/lowering law. Existing finite lowering evidence and universal-equivalence gap remain.",
+    "Encoder/decoder source and immutable input trust are explicit. No universal interpreter/stdlib/OS attestation, hard memory cap, logical validity check or materialized accepting Wang rectangle is supplied.",
+    "Malformed/partial output failure must remain UNKNOWN with immutable one-shot artifacts; no retry or native activation is implied."
+  ],
+  "exact_declared_pin_observations": 89,
+  "inputs": [
+    {
+      "bytes": 10375,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/preparation-handoff-v1.json",
+      "sha256": "67b51e57eb7e1cfeee577bd82d8b1ecddc33629fe32f0f9a7e3fbeb3a6e06f24"
+    },
+    {
+      "bytes": 16037,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/prepare_native_input_v1.py",
+      "sha256": "3c5416ce66cd69af05ed58a8bec645b4e95bb4766569e7480b82ed84b7b18ad6"
+    },
+    {
+      "bytes": 11777,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/preparation-input-contract-v1.json",
+      "sha256": "c7881e36a49e85fc0f81b795b5a40c08a061234d1a995020b0c7f9f5a15cf32a"
+    },
+    {
+      "bytes": 4755,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/preparation-source-protocol-v1.json",
+      "sha256": "964cb48a79518b03f1da633cfe3298ea4e26852a95d097642b63ad39996199ac"
+    },
+    {
+      "bytes": 13523,
+      "path": ".gcts-active/guard-native-bridge-source-20261012/preparation-source-metadata-review-v1.json",
+      "sha256": "0ee2ed9a496f43974ea7450bd23f7442acc42e538a6055acc4b5678ab45a7d86"
+    },
+    {
+      "bytes": 2883,
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/saved-translation-v1-structural-metadata-review-v1.json",
+      "sha256": "4a68ebe7e686a66a59ad563f27336c9b596555debd3c7d657fcb6160fbd3a8df"
+    }
+  ],
+  "project_import_source_metadata": [
+    {
+      "imports": [
+        "from tree_machine import Heap, encode_json",
+        "from tape_tree_machine import Lowering, RAW, bits",
+        "from pathlib import Path",
+        "from tree_machine import Compiler"
+      ],
+      "source": {
+        "bytes": 6992,
+        "path": "research/gcts-rl-renewal/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "imports": [
+        "import ast, hashlib, json, time",
+        "from collections import Counter"
+      ],
+      "source": {
+        "bytes": 13290,
+        "path": "research/gcts-rl-renewal/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "imports": [
+        "import hashlib, json, time",
+        "from itertools import combinations",
+        "from tree_machine import validate"
+      ],
+      "source": {
+        "bytes": 19188,
+        "path": "research/gcts-rl-renewal/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "imports": [
+        "import struct",
+        "from pathlib import Path",
+        "from tape_tree_machine import physical_input, RAW"
+      ],
+      "source": {
+        "bytes": 3756,
+        "path": "research/gcts-rl-renewal/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "imports": [
+        "import gzip, hashlib, json, resource, struct, subprocess, time",
+        "from pathlib import Path",
+        "from audit_tree_kernel import decode_input, validate_heap, need, packed, sha, static_program",
+        "from audit_tape_kernel import check_table, check_allocation",
+        "import copy"
+      ],
+      "source": {
+        "bytes": 11238,
+        "path": "research/gcts-rl-renewal/audit_proof_boundary.py",
+        "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538"
+      }
+    },
+    {
+      "imports": [
+        "import hashlib, json, resource, time",
+        "from pathlib import Path",
+        "import copy"
+      ],
+      "source": {
+        "bytes": 12912,
+        "path": "research/gcts-rl-renewal/audit_tree_kernel.py",
+        "sha256": "ead0a387abd7c9389d6c6f418bfae0eca86ab5ae455fc208b7792816be98639a"
+      }
+    },
+    {
+      "imports": [
+        "import gzip, hashlib, json, struct, time, resource, subprocess",
+        "from pathlib import Path",
+        "from audit_tree_kernel import decode_input, strict_json, packed, sha as canonical_sha, need, PINNED_PROGRAM_SHA256"
+      ],
+      "source": {
+        "bytes": 10993,
+        "path": "research/gcts-rl-renewal/audit_tape_kernel.py",
+        "sha256": "2d7dd1a0b4e61a22faaac4ad3926c48c16ab4ccd33355c53001d70caf9eac1dd"
+      }
+    }
+  ],
+  "prospective_scope": {
+    "all_bands": 43,
+    "fixed_problem_band": 29,
+    "free_certificate_band": 30,
+    "heap_band_index": 26,
+    "heap_band_symbol_cells": 1048576,
+    "old_template_heap_symbol_cells": 73178,
+    "peak_bytes": 805306368,
+    "seconds": 60
+  },
+  "schema": "independent-guard-native-whole-input-preparation-source-review-v1",
+  "scope": "Complete preparation helper, frozen contract/protocol/handoff and all seven imported project source files read; stdlib-only AST/hash/JSON source metadata. No project import, helper/constructor/serializer/checker/native/search/RNG/process/browser/network/activation/publication invocation.",
+  "source_checks": [
+    "Exact actual syntax-conversion request/receipt and accepted certificate are pinned before imported serializer/decoder use. require_translation independently compares all24 rows, exact3 closed occurrence additions and original target/theory.",
+    "Fixed program/micro canonical identities and literal-table identity match the existing authority metadata; no lowering recompilation or new checker program is created.",
+    "Fresh cold project module cache and actual loaded file identities are checked for exactly seven pinned modules. Import-time source has no native/process/query or proof search entry; CLI main functions in imported audits remain dormant.",
+    "Exact saved first43-band template is copied. Only fixed/free payload words/capacities/head1 change; only the heap-band capacity is enlarged to1048576 symbol cells. All other boot words/heads/capacities are explicitly compared unchanged.",
+    "expected_constructor independently parses the complete fixed/free words and compares reconstructed canonical request. Fixed three plus free two fields remain distinct; no source proof row is dropped or injected.",
+    "Independent input_bytes/code_bytes are compared byte-for-byte to tape_binary.write_micro_input/write_micro outputs, before compressed frame/result completion.",
+    "Raw input/code and lossless gzip copies retain exact byte/length pins. Closure/contract/translated raw bytes are rehashed after assembly/compression and before the completed candidate receipt.",
+    "Result schema supplies stage=preparation/stage_completed=true/direct-child sum0/reapedtrue needed by prospective owner, while own_resource_accepted remains false and native/query/search counters0."
+  ],
+  "status": "passed_bounded_whole_input_preparation_source_interface_pending_ROOT_owned_execution",
+  "unresolved_actual_gates": [
+    "No actual preparation input/frame/result exists from this reviewer; source PASS is not a completed byte audit.",
+    "ROOT must freeze exact owner/helper/source/runtime/project closure/review and one fresh output namespace before the once-only preparation.",
+    "Full preparation costs include module imports, constructor reconstruction, both serializers, compression/raw hashing, all receipt writes and the separately declared caller terminal scope. Prospective60-second stage and any separate30-second caller reserve must be reported as distinct scopes, not historical discounts.",
+    "Current owner/worker source review and exact plan/resource/terminal binding remain separate; no accepted native query or replay follows from this source artifact."
+  ]
+}

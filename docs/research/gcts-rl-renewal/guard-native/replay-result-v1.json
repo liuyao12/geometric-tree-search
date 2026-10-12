@@ -1,0 +1,55 @@
+{
+  "stage": "replay",
+  "status": "whole_independent_replay_matched",
+  "stage_completed": true,
+  "native_queries": 0,
+  "native_replays": 1,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "finite_Wang_rectangle_accepted": false,
+  "universal_compiler_theorem": false,
+  "direct_children_peak_sum_bytes": 147537920,
+  "compile_seconds": 0.47339966600000005,
+  "interpreter_binary": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/interpreter",
+    "sha256": "02c9934ec25b32ac2423977ebc4fa2fba7d38e365b73ba4da60db7b6ae9b9c0d",
+    "bytes": 40920
+  },
+  "query_seconds": 35.783282416,
+  "all_input_output_bytes_matched": true,
+  "native_result": {
+    "status": "accepted",
+    "micro_steps": 5264348472,
+    "physical_steps": 118010454771962,
+    "micro_fnv64": "4223148293101573671",
+    "seconds": 34.4404
+  },
+  "final_state": 0,
+  "out_of_frame_bands": [],
+  "output_sha256": "dad45f2834ff24af3532a557dd73a6626e1c3f2813c60c8a1a55a024543c99a6",
+  "output_bytes": 5137500,
+  "output_file": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/output.bin.gz",
+    "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+    "bytes": 22409
+  },
+  "request_sha256": "a7d0eff5628982cce9f4e9e1db1c1276383a8ed9f51262da9ab5217843bc1ba8",
+  "input_sha256": "dcf77d72d539444fb55ed40564ccc0ccd11964a011277012a98e31b86c73ab92",
+  "micro_code_bytes_sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+  "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+  "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+  "limits": {
+    "whole_seconds": 900,
+    "caller_seconds": 930,
+    "peak_bytes": 805306368,
+    "micro_steps": 80000000000
+  },
+  "discovery": "previous_GCTS_fixed_family_pool_search",
+  "same_24_command_positions": true,
+  "closed_hypothesis_axiom_translation": true,
+  "worker_peak_bytes": 188071936,
+  "elapsed_before_receipt_write_seconds": 36.966504333,
+  "all_direct_children_terminal_and_reaped": true,
+  "cancelled_before_receipt_write": false,
+  "requires_ROOT_group_cleanup": false
+}

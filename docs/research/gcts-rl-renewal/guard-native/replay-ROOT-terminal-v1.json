@@ -1,0 +1,40 @@
+{
+  "schema": "ROOT-guard-native-owner-terminal-v1",
+  "stage": "replay",
+  "status": "resource_gate_accepted_pending_post_write_observation",
+  "resource_gate_accepted": true,
+  "error": null,
+  "cancelled": false,
+  "cleanup_errors": [],
+  "plan": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-plan-v1.json",
+    "sha256": "fb96d1ba3eb3453483a24439732aa926514074c4f9b1b96563907c857796220f",
+    "bytes": 15393
+  },
+  "worker_receipt": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/worker-result-v1.json",
+    "sha256": "8d231cc3a65338ac0052201e3887612d5105c1b7eaf4a971c50819802deba83e",
+    "bytes": 2169
+  },
+  "elapsed_before_write_seconds": 37.145972875000005,
+  "write_reserve_seconds": 2,
+  "peak_bytes": 539148288,
+  "memory_write_reserve_bytes": 8388608,
+  "ROOT_peak_bytes": 15466496,
+  "worker_kernel_peak_bytes": 188071936,
+  "direct_children_peak_sum_bytes": 147537920,
+  "observer_peak_bytes": 188071936,
+  "worker_returncode": 0,
+  "owned_leftovers": [],
+  "sampled_observations": 310,
+  "max_sampled_owned_rss_bytes": 221593600,
+  "ownership_ledger": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "8b16ed829724956ea7be940aa1842fb91cf45a92a0fca6d4df6913a99d442084",
+    "bytes": 3844
+  },
+  "ownership_accounting_scope": "pinned owner source plus complete retained owned-row ledger; no independent whole-host observer claimed",
+  "all_direct_children_terminal_and_reaped": true,
+  "no_OS_hard_memory_limit_claim": true,
+  "scientific_stage": "replay"
+}

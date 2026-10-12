@@ -1,0 +1,32 @@
+{
+  "stage": "preparation",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/guard-native-bridge-progress-20261012/run_owned_bridge_v1.py .gcts-active/guard-native-bridge-progress-20261012/preparation-plan-v1.json",
+  "started_ms": 1791818489957,
+  "clock": "Date.now measured elapsed in a single awaited tool isolate; no clock-origin subtraction",
+  "events": [
+    {
+      "observed_ms": 1791818498511,
+      "chunk_id": "279096",
+      "wall_time_seconds": 1.002793917,
+      "session_id": 73760,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818499737,
+      "chunk_id": "d1afa3",
+      "wall_time_seconds": 1.22485025,
+      "exit_code": 0,
+      "original_token_count": 93,
+      "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 2.322837792, \"peak_bytes\": 698449920, \"worker_receipt\": \".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/preparation-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/ROOT-terminal-v1.json\"}\n"
+    }
+  ],
+  "terminal_observed_ms": 1791818499737,
+  "terminal": {
+    "chunk_id": "d1afa3",
+    "wall_time_seconds": 1.22485025,
+    "exit_code": 0,
+    "original_token_count": 93,
+    "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 2.322837792, \"peak_bytes\": 698449920, \"worker_receipt\": \".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/preparation-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/ROOT-terminal-v1.json\"}\n"
+  }
+}

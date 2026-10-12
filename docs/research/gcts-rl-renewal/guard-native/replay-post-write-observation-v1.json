@@ -1,0 +1,22 @@
+{
+  "resource_gate_accepted": true,
+  "elapsed_seconds": 37.148646708,
+  "peak_bytes": 539820032,
+  "limits": {
+    "whole_seconds": 900,
+    "caller_seconds": 930,
+    "peak_bytes": 805306368,
+    "micro_steps": 80000000000
+  },
+  "terminal": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "a709c72e4095ccb06def5b22200c78c334970e96912e1a3b0ec5659fb3818ae3",
+    "bytes": 1611
+  },
+  "provisional": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "a709c72e4095ccb06def5b22200c78c334970e96912e1a3b0ec5659fb3818ae3",
+    "bytes": 1611
+  },
+  "scope": "post-write observation; tool caller observation is separately required"
+}

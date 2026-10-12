@@ -1,0 +1,41 @@
+{
+  "schema": "independent-guard-native-joint-ROOT-decision-saved-metadata-review-v1",
+  "status": "PASS_JOINT_DECISION_EXACT_SAVED_BINDINGS",
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "project_function_calls": 0,
+  "process_or_PS_calls": 0,
+  "exact_joint_decision": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/ROOT-final-bridge-decision-v1.json",
+    "sha256": "74829b9909606fe9aca40d8bfd562677ea524efdd4b57adc15c2e414ef2c6b60",
+    "bytes": 5389
+  },
+  "prior_three_closed_stages_review": {
+    "path": ".gcts-active/guard-native-bridge-independent-review-20261012/actual-three-closed-stages-metadata-review-v1.json",
+    "sha256": "a6d3e356ed8e504469b2440df4cfaafaa0a6b864834e7c9f1b6a3626074b689f",
+    "bytes": 16996
+  },
+  "all_eight_declared_pins_match": true,
+  "stage_limits_clocks_and_acceptance_match": true,
+  "native_and_replay_full_trace_digests_match": true,
+  "original_sequent_preserved": {
+    "rows": 24,
+    "ordered_hypothesis_occurrences": 3,
+    "duplicate_guard_occurrences_retained": true,
+    "target_is_incidence_on_second_line": true,
+    "Point_R_not_added": true,
+    "only_assumption_commands_0_1_2_change_to_occurrence_named_axiom_uses": true,
+    "original_theory_plus_three_closed_Gamma_axioms_explicit": true
+  },
+  "source_discovery_attribution": "Existing Notebook119 GCTS fixed-family-pool discovery retained; this bridge made zero fresh proof searches or discoveries.",
+  "all_limitations_match_recorded_scope": [
+    "Source-trusted finite owned-process/resource/toolchain scope; no OS hard cap or universal guarantee.",
+    "Native and independent replay acceptance of the exact whole fixed-machine request, conditional on earlier finite lowering/boundary authority.",
+    "No complete accepting literal Wang rectangle was materialized or separately checked, and no universal compiler theorem was proved.",
+    "No new RL training, speed superiority, all-five curriculum qualification, mixed-context retry or historic UNKNOWN promotion."
+  ],
+  "findings": [],
+  "ROOT_native_and_replay_accepted_saved": true,
+  "reviewer_native_or_replay_invocation": false,
+  "all_prior_reviews_unchanged": true
+}

@@ -1,0 +1,88 @@
+{
+  "stage": "native",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/guard-native-bridge-progress-20261012/run_owned_bridge_v1.py .gcts-active/guard-native-bridge-progress-20261012/native-plan-v1.json",
+  "started_ms": 1791818565191,
+  "clock": "Date.now elapsed in one awaited tool isolate; terminal captured before any model context transition",
+  "events": [
+    {
+      "observed_ms": 1791818568788,
+      "chunk_id": "2da7f3",
+      "wall_time_seconds": 1.001547334,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818573792,
+      "chunk_id": "13deb2",
+      "wall_time_seconds": 5.002744875,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818578795,
+      "chunk_id": "f86ca2",
+      "wall_time_seconds": 5.00208325,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818583798,
+      "chunk_id": "9ac3fb",
+      "wall_time_seconds": 5.002208041,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818588800,
+      "chunk_id": "9b8d34",
+      "wall_time_seconds": 5.001860333,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818593804,
+      "chunk_id": "8baa67",
+      "wall_time_seconds": 5.003099916,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818598806,
+      "chunk_id": "227547",
+      "wall_time_seconds": 5.001199167,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818603811,
+      "chunk_id": "7d27b2",
+      "wall_time_seconds": 5.00312825,
+      "session_id": 92990,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818605106,
+      "chunk_id": "e2fec2",
+      "wall_time_seconds": 1.293724583,
+      "exit_code": 0,
+      "original_token_count": 89,
+      "output": "{\"stage\": \"native\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 37.414283042, \"peak_bytes\": 528842752, \"worker_receipt\": \".gcts-active/guard-native-bridge-progress-20261012/native-v1/worker-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/ROOT-terminal-v1.json\"}\n"
+    }
+  ],
+  "terminal_observed_ms": 1791818605106,
+  "terminal": {
+    "chunk_id": "e2fec2",
+    "wall_time_seconds": 1.293724583,
+    "exit_code": 0,
+    "original_token_count": 89,
+    "output": "{\"stage\": \"native\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 37.414283042, \"peak_bytes\": 528842752, \"worker_receipt\": \".gcts-active/guard-native-bridge-progress-20261012/native-v1/worker-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/ROOT-terminal-v1.json\"}\n"
+  }
+}

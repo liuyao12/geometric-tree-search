@@ -1,0 +1,378 @@
+{
+  "schema": "independent-guard-native-three-closed-stages-saved-metadata-review-v1",
+  "status": "PASS_SAVED_PREPARATION_NATIVE_AND_INDEPENDENT_REPLAY_BINDINGS",
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "project_function_calls": 0,
+  "process_or_PS_calls": 0,
+  "gzip_decodes": 0,
+  "native_queries_by_reviewer": 0,
+  "native_replays_by_reviewer": 0,
+  "exact_inputs": [
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-plan-v1.json",
+      "sha256": "a5bf80389472c60150b09e9b5d55a943595edb19d5d56e30448fc3aec0bd67c6",
+      "bytes": 12420
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/preparation-result-v1.json",
+      "sha256": "6335a2cdd492ee7aac2f6fc164367a07a9826b0a954dbe7ccdfd62577c997e8a",
+      "bytes": 3179
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "4675dc9e9d5076d8d56f3dc9fb72f4f342fc792d933fdb6ec20ba43486845af1",
+      "bytes": 2693
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-actual-tool-observations-v1.json",
+      "sha256": "07b93f344614ded0712041c13da6e7915661c97e53035a71b7d657e3d1276349",
+      "bytes": 1768
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "5517e97dbc394db2478530dee6cdaa7df9bb0b2fc692b9aa786f4f8aff1e1fdc",
+      "bytes": 1631
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "78e649308f76a4d9f9d3bc66b3fa3678993a7f834419cae29253e7a531175555",
+      "bytes": 751
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "0ff83f8ba39d29926d5ec2efefee59774d9aec0cae814d246aec6bcf6d9be95a",
+      "bytes": 709
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-plan-v1.json",
+      "sha256": "bd3a61e5bb4dee9fae6701dc872587220c02ec19c8d8bc005e658eeac0a157ce",
+      "bytes": 14417
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/worker-result-v1.json",
+      "sha256": "d96da28a0818ae47662624a67cae9c7bdc26a4531598c97677d799437bbb3072",
+      "bytes": 2231
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-ROOT-final-decision-v1.json",
+      "sha256": "bacd4654c278414a7896535db63c8e83654a00d323e8276703a577f32b1451d5",
+      "bytes": 2699
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-actual-tool-observations-v1.json",
+      "sha256": "e456356b62da9dd31729c240aff6e53fc1a3d3cb8bf48cc364f28751efd22c87",
+      "bytes": 3104
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "716368055f6aeeb5de3102928485cc55319b7c2f43c65af19fa01bd90a7e9193",
+      "bytes": 1611
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/post-write-observation-v1.json",
+      "sha256": "2d7462b0fd0e010d3a29827dde66e4fb1240a74f0108dbd5e197d220738c64c2",
+      "bytes": 776
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "b586afbbede49c4dc42890a627c433c7d911ba93797aeae10445f02fb8af27bc",
+      "bytes": 3955
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-plan-v1.json",
+      "sha256": "fb96d1ba3eb3453483a24439732aa926514074c4f9b1b96563907c857796220f",
+      "bytes": 15393
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/worker-result-v1.json",
+      "sha256": "8d231cc3a65338ac0052201e3887612d5105c1b7eaf4a971c50819802deba83e",
+      "bytes": 2169
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-ROOT-final-decision-v1.json",
+      "sha256": "dc3bd4f39ea4b96ec0c2927e87169a5aa09b56502c2e347bcc2dcddb96f7c5a9",
+      "bytes": 2699
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-actual-tool-observations-v1.json",
+      "sha256": "2f51d46a9fdc6813d78e49f40b2dc599a26a67e6ac0b5660eb08d16e2ea65813",
+      "bytes": 3082
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "a709c72e4095ccb06def5b22200c78c334970e96912e1a3b0ec5659fb3818ae3",
+      "bytes": 1611
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/post-write-observation-v1.json",
+      "sha256": "317f19d4ddcbd189c3de356708d6c8b7958fb652bacd42a10c7e315b9a6611a3",
+      "bytes": 776
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "8b16ed829724956ea7be940aa1842fb91cf45a92a0fca6d4df6913a99d442084",
+      "bytes": 3844
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/input.bin",
+      "sha256": "dcf77d72d539444fb55ed40564ccc0ccd11964a011277012a98e31b86c73ab92",
+      "bytes": 5137496
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+      "bytes": 7558192
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/output.bin",
+      "sha256": "dad45f2834ff24af3532a557dd73a6626e1c3f2813c60c8a1a55a024543c99a6",
+      "bytes": 5137500
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/query-stdout.txt",
+      "sha256": "a555c588dd64a9ec912b8dbee9febbf6f38d381b9ef791f52edbe54c3c542078",
+      "bytes": 239
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/output.bin.gz",
+      "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+      "bytes": 22409
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native-v1/interpreter",
+      "sha256": "7c956e0de774e1460fd5e6759492d533e7c0613de761dce7d5d95db8c875bd5c",
+      "bytes": 41800
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/input.bin",
+      "sha256": "dcf77d72d539444fb55ed40564ccc0ccd11964a011277012a98e31b86c73ab92",
+      "bytes": 5137496
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+      "bytes": 7558192
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/output.bin",
+      "sha256": "dad45f2834ff24af3532a557dd73a6626e1c3f2813c60c8a1a55a024543c99a6",
+      "bytes": 5137500
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/query-stdout.txt",
+      "sha256": "f2346b3680e43ad916c5ade9649489a3414c1e2bb7f90a0fb5dbe45f1b641bd7",
+      "bytes": 134
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/output.bin.gz",
+      "sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+      "bytes": 22409
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-v1/interpreter",
+      "sha256": "02c9934ec25b32ac2423977ebc4fa2fba7d38e365b73ba4da60db7b6ae9b9c0d",
+      "bytes": 40920
+    }
+  ],
+  "prior_immutable_reviews": [
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/actual-preparation-and-native-plan-metadata-review-v1.json",
+      "sha256": "3ad72de89266805ba7d18ea235c3824dba57989ead4ae95f5273653b0a1ab209",
+      "bytes": 35419
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/preparation-review-concurrent-native-scope-clarification-v1.json",
+      "sha256": "4aea94eecfdb6c0bb0e3eab8cc0a0b20c1028571efacaa17d438a41233f15b1c",
+      "bytes": 1267
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/actual-native-and-replay-plan-metadata-review-v1.json",
+      "sha256": "ec2d2cb1b51c9ddef9c1c734717c69e1144ba6e97453900e3a4d67bb98eb1d26",
+      "bytes": 37914
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/owned-native-stage-source-review-v1.json",
+      "sha256": "1e9a2511a956d7aed09953280671e680349b157eec11cf0c2b9d321cfafc35d9",
+      "bytes": 12056
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/compatibility-obligations-source-review-v1.json",
+      "sha256": "f42d6981eb4d8ffe8c4234cfc83a388d69538c846533b85c3a0f0af7f226bbef",
+      "bytes": 37296
+    }
+  ],
+  "complete_closure_observations_reconciled": 172,
+  "unique_closure_files_rehashed": 61,
+  "all_exact_closure_pins_match": true,
+  "stages": [
+    {
+      "stage": "preparation",
+      "ROOT_decision": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-ROOT-final-decision-v1.json",
+        "sha256": "4675dc9e9d5076d8d56f3dc9fb72f4f342fc792d933fdb6ec20ba43486845af1",
+        "bytes": 2693
+      },
+      "actual_terminal_exit_code": 0,
+      "actual_tool_events": 2,
+      "caller_seconds": 9.78,
+      "caller_margin_seconds": 1,
+      "caller_limit_seconds": 90,
+      "internal_postwrite_seconds": 2.322837792,
+      "internal_limit_seconds": 60,
+      "prewrite_component_sum_bytes": 698368000,
+      "postwrite_peak_bytes": 698449920,
+      "memory_limit_bytes": 805306368,
+      "closure_count": 53,
+      "ROOT_gate_predicates": {
+        "actual_tool_terminal": true,
+        "caller_clock_bound": true,
+        "owner_terminal_link_present": true,
+        "owner_gate": true,
+        "post_write_gate": true,
+        "cancelled_at_final_print_false": true,
+        "final_print_gate": true,
+        "stage_identity": true,
+        "worker_complete": true,
+        "all_worker_direct_children_closed": true,
+        "all_owner_direct_children_closed": true,
+        "no_owned_leftovers": true,
+        "complete_post_closure_unchanged": true,
+        "post_write_exact_terminal": true
+      },
+      "native_status": null,
+      "native_accepted_by_ROOT": false,
+      "native_queries": 0,
+      "native_replays": 0,
+      "owned_leftovers": [],
+      "cancelled": false
+    },
+    {
+      "stage": "native",
+      "ROOT_decision": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/native-ROOT-final-decision-v1.json",
+        "sha256": "bacd4654c278414a7896535db63c8e83654a00d323e8276703a577f32b1451d5",
+        "bytes": 2699
+      },
+      "actual_terminal_exit_code": 0,
+      "actual_tool_events": 9,
+      "caller_seconds": 39.915,
+      "caller_margin_seconds": 1,
+      "caller_limit_seconds": 930,
+      "internal_postwrite_seconds": 37.414283042,
+      "internal_limit_seconds": 900,
+      "prewrite_component_sum_bytes": 528171008,
+      "postwrite_peak_bytes": 528842752,
+      "memory_limit_bytes": 805306368,
+      "closure_count": 58,
+      "ROOT_gate_predicates": {
+        "actual_tool_terminal": true,
+        "caller_clock_bound": true,
+        "owner_terminal_link_present": true,
+        "owner_gate": true,
+        "post_write_gate": true,
+        "cancelled_at_final_print_false": true,
+        "final_print_gate": true,
+        "stage_identity": true,
+        "worker_complete": true,
+        "all_worker_direct_children_closed": true,
+        "all_owner_direct_children_closed": true,
+        "no_owned_leftovers": true,
+        "complete_post_closure_unchanged": true,
+        "post_write_exact_terminal": true
+      },
+      "native_status": "accepted",
+      "native_accepted_by_ROOT": true,
+      "native_queries": 1,
+      "native_replays": 0,
+      "owned_leftovers": [],
+      "cancelled": false
+    },
+    {
+      "stage": "replay",
+      "ROOT_decision": {
+        "path": ".gcts-active/guard-native-bridge-progress-20261012/replay-ROOT-final-decision-v1.json",
+        "sha256": "dc3bd4f39ea4b96ec0c2927e87169a5aa09b56502c2e347bcc2dcddb96f7c5a9",
+        "bytes": 2699
+      },
+      "actual_terminal_exit_code": 0,
+      "actual_tool_events": 9,
+      "caller_seconds": 39.234,
+      "caller_margin_seconds": 1,
+      "caller_limit_seconds": 930,
+      "internal_postwrite_seconds": 37.148646708,
+      "internal_limit_seconds": 900,
+      "prewrite_component_sum_bytes": 539148288,
+      "postwrite_peak_bytes": 539820032,
+      "memory_limit_bytes": 805306368,
+      "closure_count": 61,
+      "ROOT_gate_predicates": {
+        "actual_tool_terminal": true,
+        "caller_clock_bound": true,
+        "owner_terminal_link_present": true,
+        "owner_gate": true,
+        "post_write_gate": true,
+        "cancelled_at_final_print_false": true,
+        "final_print_gate": true,
+        "stage_identity": true,
+        "worker_complete": true,
+        "all_worker_direct_children_closed": true,
+        "all_owner_direct_children_closed": true,
+        "no_owned_leftovers": true,
+        "complete_post_closure_unchanged": true,
+        "post_write_exact_terminal": true
+      },
+      "native_status": "accepted",
+      "native_accepted_by_ROOT": true,
+      "native_queries": 0,
+      "native_replays": 1,
+      "owned_leftovers": [],
+      "cancelled": false
+    }
+  ],
+  "all_42_ROOT_predicates_independently_reconstructed": true,
+  "independent_replay_saved_result": {
+    "status": "accepted",
+    "micro_steps": 5264348472,
+    "physical_steps": 118010454771962,
+    "micro_fnv64": "4223148293101573671",
+    "seconds": 34.4404
+  },
+  "raw_native_replay_output_byte_comparison": {
+    "all_bytes_equal": true,
+    "bytes_compared": 5137500,
+    "sha256": "dad45f2834ff24af3532a557dd73a6626e1c3f2813c60c8a1a55a024543c99a6",
+    "compressed_sha256": "9fcf940cb75862f9638b7365a9ca37e03a2e709d482fca03bd1849455d2c2688",
+    "compressed_bytes": 22409
+  },
+  "full_transport_identity": {
+    "request_canonical_sha256": "a7d0eff5628982cce9f4e9e1db1c1276383a8ed9f51262da9ab5217843bc1ba8",
+    "input_raw_sha256": "dcf77d72d539444fb55ed40564ccc0ccd11964a011277012a98e31b86c73ab92",
+    "microcode_raw_sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed",
+    "program_sha256": "877c47879b027b08f02d3923d1e6dd9ccaf9a12e354567109f1aaa640a8fb673",
+    "micro_sha256": "2f9e430b0b7034ed615d81c3e9b3978dc47ba4136686227a9b86df5779b203ac",
+    "true_parser_start": 88986,
+    "accept_state": 0,
+    "rows": 24,
+    "closed_ordered_hypothesis_occurrences": 3,
+    "same_input_and_command_positions": true
+  },
+  "result_scope": "ROOT recorded one accepted native selected-symbol run and one accepted independent C++ replay of the previously discovered ground proof, with a separate complete whole-boundary constructor/input preparation. Saved output bytes and all four trace fields match. This reviewer reconciled records, hashes, arithmetic and full saved raw-output equality, and did not execute either interpreter or checker.",
+  "concurrency_lineage": "The preparation-plan review retained task-start native-pending wording after observing native paths present; its immutable clarification fixes that scope. The native/replay-plan review expressly had not reviewed an actual replay outcome; the current new artifact now reconciles the completed replay. Earlier reviews remain unchanged.",
+  "limitations": [
+    "Native theory is the original guarded I.2 theory transparently extended by three occurrence-named closed hypothesis axioms. This accepted computation checks that translated request; it is not a universal proof of arbitrary source translation.",
+    "Conditional owned resource scope relies on pinned runtime/toolchain, PS filtering, source-managed process topology and finite platform evidence. All saved terminal/resource gates reconcile, but no independent OS or whole-host attestation or hard cap is invented.",
+    "Ownership gzip ledgers and machine input/code payloads were hashed, not semantically re-executed or decompressed by this reviewer.",
+    "This does not materialize every tile of a complete accepting Wang rectangle or prove the universal source-to-microcode compiler theorem. The request-independent palette and earlier finite lowering authority remain separately scoped.",
+    "No new proof was searched for during this bridge, no RL policy trained or updated, and no benchmark superiority or all-five-curriculum qualification follows.",
+    "Historical arithmetic/geometry/resource UNKNOWNs and mixed-context unqualified preparation remain unchanged."
+  ],
+  "findings": [],
+  "ROOT_native_accepted_saved": true,
+  "ROOT_independent_replay_accepted_saved": true,
+  "new_RL_training": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "materialized_accepting_Wang_rectangle": false,
+  "historical_UNKNOWNs_unchanged": true
+}

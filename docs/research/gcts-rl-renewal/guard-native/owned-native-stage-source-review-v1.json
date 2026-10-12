@@ -1,0 +1,181 @@
+{
+  "schema": "independent-guard-native-owned-stage-source-review-v1",
+  "status": "PASS_SOURCE_ONLY_WITH_EXPLICIT_EXTERNAL_ACCEPTANCE_CONDITIONS",
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "project_function_invocations": 0,
+  "process_or_PS_launches": 0,
+  "native_queries": 0,
+  "native_replays": 0,
+  "source_records": [
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/run_owned_bridge_v1.py",
+      "sha256": "2b49716146ae88de8c8e0009076c79234e18668408a9dcbb7b83e8f500651b3d",
+      "bytes": 12795
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native_bridge_worker_v1.py",
+      "sha256": "9f12671e9798b6156065f55f43e93d5ef7246431624b68c4915dd43acc966245",
+      "bytes": 13398
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/freeze_stage_plan_v1.py",
+      "sha256": "a01bf91b6aa46c4135a207e4b8a2bfc3e084cba0e2efb8240f638e966aaddfd3",
+      "bytes": 6038
+    }
+  ],
+  "prior_independent_reviews": [
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/compatibility-obligations-source-review-v1.json",
+      "sha256": "f42d6981eb4d8ffe8c4234cfc83a388d69538c846533b85c3a0f0af7f226bbef",
+      "bytes": 37296
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/adapter-v1-source-and-saved-row-interface-review-v1.json",
+      "sha256": "990baa1193ae0c450df97ade45d399002382076bf1488af8abc32475cd67daf4",
+      "bytes": 8745
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/saved-translation-v1-structural-metadata-review-v1.json",
+      "sha256": "4a68ebe7e686a66a59ad563f27336c9b596555debd3c7d657fcb6160fbd3a8df",
+      "bytes": 2883
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/preparation-v1-full-source-interface-review-v1.json",
+      "sha256": "b7aa05ebfe677e658ce254cfdaa29f9c77b5a2cc6b0992a109a20c35ccdd9cea",
+      "bytes": 10042
+    }
+  ],
+  "additional_exact_inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "research/gcts-rl-renewal/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+      "bytes": 3547
+    },
+    {
+      "path": "research/gcts-rl-renewal/audit_boundary_micro.cpp",
+      "sha256": "4c6e5c151094049125dd0e357d9c1dabcdffa2a9cc414717e1d72f4d513c590b",
+      "bytes": 3158
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-source-20261012/prepare_native_input_v1.py",
+      "sha256": "3c5416ce66cd69af05ed58a8bec645b4e95bb4766569e7480b82ed84b7b18ad6",
+      "bytes": 16037
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-source-20261012/preparation-input-contract-v1.json",
+      "sha256": "c7881e36a49e85fc0f81b795b5a40c08a061234d1a995020b0c7f9f5a15cf32a",
+      "bytes": 11777
+    }
+  ],
+  "checks": [
+    {
+      "id": "complete-source-and-AST",
+      "result": "PASS_SOURCE_ONLY",
+      "detail": "Complete current owner, native/replay worker and stage freezer were read; each parses using Python 3.9 grammar. No source module was imported or invoked."
+    },
+    {
+      "id": "same-scientific-authority",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Preparation source is the separately reviewed unchanged constructor/every-byte helper. Native and independent stages use distinct pinned C++ interpreter sources, unchanged program/microtable/parser start and exact complete prepared input. Original 24 commands, closed three-occurrence Gamma promotion and original target are bound by prior independent reviews."
+    },
+    {
+      "id": "prospective-limits",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Freezer fixes preparation 60 s with caller 90 s, query/replay 900 s with caller 930 s, all at 805306368 bytes. Query/replay use 80000000000 microsteps and true parser start 88986; larger heap is a prospective input capacity only. No outcome-based limit revision is authorized."
+    },
+    {
+      "id": "receipt-before-launch",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Owner verifies closure/runtime/argv and performs PS capability preflight before worker activation. Native/replay freezer requires actual preparation byte result and separate ROOT decision; replay worker checks accepted producer request/input/limit/full output prerequisites before compilation/query."
+    },
+    {
+      "id": "child-registration-terminal-bookkeeping",
+      "result": "PASS_SOURCE_INTERFACE_CONDITIONAL_RUNTIME",
+      "detail": "Non-raising signal flags keep source bookkeeping intact. Direct worker handles remain registered until wait4 terminal usage is recorded. Worker clears active before zero-exit checks; pre-spawn cancellation checks prevent a knowingly cancelled subsequent child launch. Runtime/Popen semantics remain an explicit trusted boundary."
+    },
+    {
+      "id": "failure-containment",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Any native worker failure/publication exception after spawning a child retains its fresh leader alive. Owner detects the containment latch or deadline, terminates the still-owned group and reaps its direct worker. Observer failure while leader remains unreaped has group-kill/reap fallback; failed or unconfirmed cleanup cannot qualify."
+    },
+    {
+      "id": "birth-owned-rows",
+      "result": "PASS_SOURCE_INTERFACE_CONDITIONAL_FILTER",
+      "detail": "Every sampled task-owned row, birth, PPID, PGID and RSS is retained. Reaped numeric leader PID is not reacquired. Post-reap membership needs retained birth/group anchors. Complete-host filtering trusts pinned source and PS; no independent host-wide ledger or universal escaped-child guarantee is claimed."
+    },
+    {
+      "id": "saved-sample-arithmetic",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Owner captures own_sample_peak once and reuses it for combined_bytes and ROOT_peak_bytes. Combined sample equals own peak plus summed active owned RSS plus observer maximum. Final conservative accounting deliberately includes rolled kernel usage more than once; no subtraction or historical discount."
+    },
+    {
+      "id": "publication-and-terminal",
+      "result": "PASS_SOURCE_INTERFACE_CONDITIONAL_EXTERNAL_GATE",
+      "detail": "Closed ledger/provisional receipt is followed by actual post-write time/SELF observation. Candidate hard-link occurs only on pass. Final stdout includes cancelled_at_final_print; ROOT must reject late cancellation or nonterminal/nonzero tool result. A candidate terminal link alone is insufficient authority."
+    },
+    {
+      "id": "native-and-replay-whole-records",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Worker reconstructs every microcode byte and every initial symbol; validates exact six-token native handshake, bounded steps, terminal state, full-band alphabet/capacity/output length. Replay compares all complete output bytes and status/microsteps/physicalsteps/FNV fields. UNKNOWN and rejected states do not become proof acceptance."
+    },
+    {
+      "id": "fresh-stage-plan",
+      "result": "PASS_SOURCE_INTERFACE",
+      "detail": "Freezer writes only exclusive fresh stage plans/output namespaces after streaming complete closure checks and reviewed source pins. This review does not execute that freezer or observe an actual frozen plan."
+    }
+  ],
+  "certain_positive_path_blockers_remaining": [],
+  "repaired_prefreeze_findings": [
+    "Raising cancellation handlers across spawn/reap bookkeeping replaced by flags.",
+    "Reaped child handle cleared before nonzero-exit checks.",
+    "Observer failure cannot abandon direct worker reap.",
+    "Reaped numeric leader is not reacquired by PID alone.",
+    "Owned row/birth/RSS sample records retained and declared stage/reap/nonnegative child-peak fields checked.",
+    "Cancellation checked during cleanup/publication and final owner stdout.",
+    "Spawned-child failure/publication containment holds live fresh group leader for ROOT cleanup.",
+    "Replay admission/full producer output checked before compiling/querying.",
+    "Single captured owner SELF peak reused in saved sample arithmetic.",
+    "Explicit worker pre-spawn cancellation guard added."
+  ],
+  "prefreeze_finding_lineage": "Findings concern mutable, unexecuted ROOT drafts; old draft bytes were not independently frozen. Only the exact final source records above are acceptance candidates for ROOT source freezing.",
+  "mandatory_ROOT_actual_acceptance": [
+    "Exact frozen stage plan/source/runtime/input closure and fresh one-shot namespace, with actual ownership-metadata preflight success before activation.",
+    "Actual closed tool terminal exit_code 0 with no live session, exact command/source pins, and enclosing caller clock captured inside the awaited tool cell. Caller limits are 90 s preparation and 930 s query/replay; internal limits remain 60/900 s.",
+    "Matching post-write observation resource_gate_accepted true, exact provisional/terminal raw pins and actual owner stdout resource_gate_accepted true plus cancelled_at_final_print false.",
+    "Worker stage_completed true for exact stage; complete owned/direct-child closure and reaping, no cancellation/errors/containment/unconfirmed leftovers; conditional conservative memory and internal clock bounds.",
+    "Preparation whole fixed/free constructor and every input/code byte evidence must precede query. Native logical acceptance additionally requires native_result.status accepted, complete final output/in-frame head checks; independent replay acceptance is a separate later obligation.",
+    "Any permission/preflight failure, malformed/partial receipt, cancelled stage, late observation, resource excess, compilation/query failure or unconfirmed cleanup stays UNKNOWN; no retry or historic reclassification is authorized by this review."
+  ],
+  "conditional_postlude_reserve": {
+    "seconds": 2,
+    "bytes": 8388608,
+    "description": "Prospective reserve for bounded owner ledger/receipt serialization and metadata postlude, with post-write measurements; final hard-link/post-observation/stdout/interpreter exit are also covered by actual caller terminal/clock. Not an OS hard cap, independent whole-host guarantee or universal postlude memory theorem."
+  },
+  "remaining_trusted_boundaries": [
+    "Exact ROOT frozen plans and aggregate review bind current source bytes/runtime binaries/platform metadata before execution.",
+    "Darwin byte units and PS KiB conversion rely on prior finite platform evidence, not universal OS attestation.",
+    "Pinned PS/source filtering and fixed compiler/interpreter topology support owned-scope observation; unseen escaped descendants and arbitrary compiler behavior are not universally ruled out.",
+    "Python/runtime/Popen/signal bookkeeping and immutable input use remain source/runtime trust conditions.",
+    "Selected-symbol native trajectory plus complete boundary constructor is not a materialized accepting Wang rectangle or universal compiler proof."
+  ],
+  "source_vs_actual": "No actual preparation/native/replay stage, resource qualification, native proof acceptance, independent replay acceptance or universal compiler result is issued by this source review.",
+  "ROOT_reported_preflight_note": "ROOT reported a default-sandbox PermissionError launching /bin/ps before worker activation, with zero scientific calls. This report does not independently inspect that tool result and does not classify it as a scientific attempt or authorize bypassing automatic approval.",
+  "preserved_outcomes": {
+    "all_five_curriculum_qualification": false,
+    "new_RL_training": false,
+    "mixed_context_retry": false,
+    "historical_UNKNOWNs_unchanged": true
+  }
+}

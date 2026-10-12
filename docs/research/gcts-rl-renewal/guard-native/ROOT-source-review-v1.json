@@ -1,0 +1,77 @@
+{
+  "schema": "ROOT-guard-native-source-review-v1",
+  "full_sources_reviewed": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "source_records": [
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/run_owned_bridge_v1.py",
+      "sha256": "2b49716146ae88de8c8e0009076c79234e18668408a9dcbb7b83e8f500651b3d",
+      "bytes": 12795
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/native_bridge_worker_v1.py",
+      "sha256": "9f12671e9798b6156065f55f43e93d5ef7246431624b68c4915dd43acc966245",
+      "bytes": 13398
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/freeze_stage_plan_v1.py",
+      "sha256": "a01bf91b6aa46c4135a207e4b8a2bfc3e084cba0e2efb8240f638e966aaddfd3",
+      "bytes": 6038
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/close_stage_decision_v1.py",
+      "sha256": "cb3698a24f0ae655d4c0e7487ec8c19eba79928c1e11168626bed1c28ba35c2e",
+      "bytes": 4720
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-source-20261012/guard_native_bridge_v1.py",
+      "sha256": "08a7cfabe5a360040a75a20ff930fbc0d152d39ca253caa56a557e65fadc5b13",
+      "bytes": 14633
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-source-20261012/prepare_native_input_v1.py",
+      "sha256": "3c5416ce66cd69af05ed58a8bec645b4e95bb4766569e7480b82ed84b7b18ad6",
+      "bytes": 16037
+    }
+  ],
+  "independent_reviews": [
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/adapter-v1-source-and-saved-row-interface-review-v1.json",
+      "sha256": "990baa1193ae0c450df97ade45d399002382076bf1488af8abc32475cd67daf4",
+      "bytes": 8745
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/compatibility-obligations-source-review-v1.json",
+      "sha256": "f42d6981eb4d8ffe8c4234cfc83a388d69538c846533b85c3a0f0af7f226bbef",
+      "bytes": 37296
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/owned-native-stage-source-review-v1.json",
+      "sha256": "1e9a2511a956d7aed09953280671e680349b157eec11cf0c2b9d321cfafc35d9",
+      "bytes": 12056
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/preparation-v1-full-source-interface-review-v1.json",
+      "sha256": "b7aa05ebfe677e658ce254cfdaa29f9c77b5a2cc6b0992a109a20c35ccdd9cea",
+      "bytes": 10042
+    },
+    {
+      "path": ".gcts-active/guard-native-bridge-independent-review-20261012/saved-translation-v1-structural-metadata-review-v1.json",
+      "sha256": "4a68ebe7e686a66a59ad563f27336c9b596555debd3c7d657fcb6160fbd3a8df",
+      "bytes": 2883
+    }
+  ],
+  "preparation_closure_count": 39,
+  "mismatches": [],
+  "translation_actual_complete": true,
+  "native_calls": 0,
+  "universal_compiler_theorem": false,
+  "all_five_qualification": false,
+  "scope": "Exact reviewed adapter/preparation, unchanged native/interpreter and independent replay; owned process filter and toolchain trusted, no universal compiler or resource guarantee. ROOT requires post-write acceptance, noncancelled final stdout and actual tool terminal within90/930 caller seconds.",
+  "default_sandbox_PS_preflight": {
+    "status": "PermissionError_before_any_worker_activation",
+    "scientific_calls": 0,
+    "next_execution_requires_process_metadata_capability": true
+  }
+}

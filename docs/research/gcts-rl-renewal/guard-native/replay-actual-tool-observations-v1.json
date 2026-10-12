@@ -1,0 +1,88 @@
+{
+  "stage": "replay",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/guard-native-bridge-progress-20261012/run_owned_bridge_v1.py .gcts-active/guard-native-bridge-progress-20261012/replay-plan-v1.json",
+  "started_ms": 1791818667780,
+  "clock": "Date.now elapsed in one awaited tool isolate; actual terminal saved immediately",
+  "events": [
+    {
+      "observed_ms": 1791818670963,
+      "chunk_id": "8f9cbb",
+      "wall_time_seconds": 1.001858833,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818675966,
+      "chunk_id": "b9fd77",
+      "wall_time_seconds": 5.001984084,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818680970,
+      "chunk_id": "000939",
+      "wall_time_seconds": 5.003066291,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818685973,
+      "chunk_id": "95edfd",
+      "wall_time_seconds": 5.002647,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818690977,
+      "chunk_id": "2231c3",
+      "wall_time_seconds": 5.003499167,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818695981,
+      "chunk_id": "e139dc",
+      "wall_time_seconds": 5.002815875,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818700984,
+      "chunk_id": "4fb57a",
+      "wall_time_seconds": 5.002492333,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818705987,
+      "chunk_id": "2a5072",
+      "wall_time_seconds": 5.00258125,
+      "session_id": 90943,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "observed_ms": 1791818707014,
+      "chunk_id": "b35844",
+      "wall_time_seconds": 1.025512958,
+      "exit_code": 0,
+      "original_token_count": 89,
+      "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 37.148646708, \"peak_bytes\": 539820032, \"worker_receipt\": \".gcts-active/guard-native-bridge-progress-20261012/replay-v1/worker-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/ROOT-terminal-v1.json\"}\n"
+    }
+  ],
+  "terminal_observed_ms": 1791818707014,
+  "terminal": {
+    "chunk_id": "b35844",
+    "wall_time_seconds": 1.025512958,
+    "exit_code": 0,
+    "original_token_count": 89,
+    "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 37.148646708, \"peak_bytes\": 539820032, \"worker_receipt\": \".gcts-active/guard-native-bridge-progress-20261012/replay-v1/worker-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/guard-native-bridge-progress-20261012/replay-owner-v1/ROOT-terminal-v1.json\"}\n"
+  }
+}

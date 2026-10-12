@@ -1,0 +1,66 @@
+{
+  "schema": "ROOT-guard-native-stage-final-decision-v1",
+  "stage": "preparation",
+  "status": "accepted_complete_owned_stage",
+  "ROOT_final_accepted": true,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": true,
+    "owner_gate": true,
+    "post_write_gate": true,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": true,
+    "stage_identity": true,
+    "worker_complete": true,
+    "all_worker_direct_children_closed": true,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": true
+  },
+  "mismatches": [],
+  "limits": {
+    "whole_seconds": 60,
+    "caller_seconds": 90,
+    "peak_bytes": 805306368
+  },
+  "caller_elapsed_seconds": 9.78,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-plan-v1.json",
+    "sha256": "a5bf80389472c60150b09e9b5d55a943595edb19d5d56e30448fc3aec0bd67c6",
+    "bytes": 12420
+  },
+  "actual_tool": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-actual-tool-observations-v1.json",
+    "sha256": "07b93f344614ded0712041c13da6e7915661c97e53035a71b7d657e3d1276349",
+    "bytes": 1768
+  },
+  "owner": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "5517e97dbc394db2478530dee6cdaa7df9bb0b2fc692b9aa786f4f8aff1e1fdc",
+    "bytes": 1631
+  },
+  "post_write": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-owner-v1/post-write-observation-v1.json",
+    "sha256": "78e649308f76a4d9f9d3bc66b3fa3678993a7f834419cae29253e7a531175555",
+    "bytes": 751
+  },
+  "worker": {
+    "path": ".gcts-active/guard-native-bridge-progress-20261012/preparation-v1/preparation-result-v1.json",
+    "sha256": "6335a2cdd492ee7aac2f6fc164367a07a9826b0a954dbe7ccdfd62577c997e8a",
+    "bytes": 3179
+  },
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Owned stage qualification is separate from acceptance of a proof. Native UNKNOWN is retained even when a complete bounded computation and resource gate qualify. Toolchain and pinned owner/whole-host filter remain trusted; no hard OS or universal compiler proof claimed."
+}
