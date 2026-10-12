@@ -1,0 +1,143 @@
+{
+  "schema": "independent-fresh-catalog-oracle-source-handoff-v1",
+  "source_only": true,
+  "source_ready_for_peer_review": true,
+  "execution_ready": false,
+  "scientific_acceptance": false,
+  "source": {
+    "path": ".gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+    "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+    "bytes": 23504
+  },
+  "reference_pins": {
+    "fixture": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+      "bytes": 24474
+    },
+    "compiler": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0",
+      "bytes": 16384
+    },
+    "producer_worker": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12",
+      "bytes": 10803
+    },
+    "independent_point": {
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    "first_actual_UNKNOWN": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-PA-compiler-memory-UNKNOWN-metadata-review-v1.json",
+      "sha256": "9ee7ddd37d63c9d4f75588c5623e9322867ef6b4030c07a2e064c5e2fc7d0541",
+      "bytes": 7380
+    }
+  },
+  "source_AST": {
+    "Python39_passed": true,
+    "imports": [
+      [
+        "copy"
+      ],
+      [
+        "hashlib"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "functions_classes": [
+      [
+        "canon",
+        15,
+        17
+      ],
+      [
+        "sha",
+        20,
+        21
+      ],
+      [
+        "need",
+        24,
+        26
+      ],
+      [
+        "name",
+        29,
+        30
+      ],
+      [
+        "variables",
+        33,
+        41
+      ],
+      [
+        "closed_replace",
+        44,
+        52
+      ],
+      [
+        "GroundChecker",
+        55,
+        141
+      ],
+      [
+        "subformulas",
+        144,
+        150
+      ],
+      [
+        "subterms",
+        153,
+        157
+      ],
+      [
+        "atom_terms",
+        160,
+        163
+      ],
+      [
+        "audit_catalog",
+        166,
+        336
+      ],
+      [
+        "audit_initial_graph",
+        339,
+        385
+      ]
+    ]
+  },
+  "API": {
+    "GroundChecker": "Generic exact signature/arity and five primitive host FOL rules. command/proof compatible conceptual interfaces, not an unreviewed drop-in replacement for the whole prior symbolic module. Compound terms accepted; nat-induction retained as unused metadata; no induction/gen/refl/tautology rule.",
+    "audit_catalog": "Inputs exact prepared compiled_context, original fixture/id and original producer-plan source_bindings; independently reconstruct complete role term pools, simultaneous4round syntax, one atomic equality layer, all registry/subformulas/licenses/full IDs/context/boundary/census. No producer helper called.",
+    "audit_initial_graph": "After audit_catalog acceptance, reconstruct model epoch, all3 occurrence identities, every original domain/mark/refcount/generation/count using independently pinned State/points/decorate. No source PointGraph/Controller/search used."
+  },
+  "independence": "Caller pins raw original fixture and producer worker plan, reconstructs its source-binding list from that original plan. Producer returned seeds/target/census/license list are compared to independently derived values, not treated as authority. Independent point-state modules supplied by separately reviewed ROOT worker.",
+  "required_future_worker": [
+    "Exact independently reviewed source/input plan closure and source/readiness binding before imports.",
+    "Original accepted producer preparation resource decision and receipt/full-evidence raw pins; no accepted producer result currently exists for train-pa-right-zero.",
+    "Run audit_catalog then audit_initial_graph on the same exact raw saved artifact; never pass producer reconstruction or expected trace.",
+    "Charge full gzip decoding, independent catalog creation, all zero-port license checks, full graph/census, serialization/exit/reap and trusted external terminal.",
+    "Resource/cancellation/partial failure UNKNOWN; no dependent proof/RL/mining.",
+    "Separate positive certificate gate integration for generic arithmetic command checking and point union remains source review work."
+  ],
+  "controls_not_executed": [
+    "Capture/closed term substitution",
+    "Wrong axiom/schema/arity/term role and missing scheme",
+    "Repeated occurrence index/identity",
+    "Wrong MP order and source offsets",
+    "Missing/added formula or zero-port recipe",
+    "Exterior sentinels/full domain/count/model identity",
+    "False producer acceptance flag and body/pool injection"
+  ],
+  "author_functional_imports_or_calls": 0,
+  "author_model_or_checker_invocations": 0,
+  "author_scientific_calls": 0,
+  "actual_static_oracle_receipt": null,
+  "historical_and_new_UNKNOWN_preserved": true
+}

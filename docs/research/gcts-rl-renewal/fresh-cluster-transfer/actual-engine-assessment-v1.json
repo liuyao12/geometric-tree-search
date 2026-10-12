@@ -1,0 +1,627 @@
+{
+  "schema": "independent-fresh-cluster-transfer-actual-source-assessment-v1",
+  "status": "SOURCE_ONLY_concrete_successor_design_no_execution_qualification",
+  "inputs": {
+    "master": {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "instructions": {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518
+    },
+    "point_core": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    "lifecycle": {
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f",
+      "bytes": 30989
+    },
+    "composer": {
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+      "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3",
+      "bytes": 22693
+    },
+    "features31": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b",
+      "bytes": 12386
+    },
+    "overlay_v2": {
+      "path": ".gcts-active/family-proposal-real-overlay-source-20261012/family_learned_overlay_v2.py",
+      "sha256": "9a15caf82affdcfb359eb1ffdc9c6c635b861ca53cb5eeb59de86dea7f82c956",
+      "bytes": 13208
+    },
+    "policy_math": {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294",
+      "bytes": 11607
+    },
+    "qualified_update": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/family_episode_learning_v1.py",
+      "sha256": "25a78303ae0b839973ab5ef9735ef928b9ca90f5dc1ac816934fb52c65c6ab01",
+      "bytes": 3722
+    },
+    "scientific_driver": {
+      "path": ".gcts-active/family-scientific-trajectory-source-20261012/family_scientific_dfs_v1.py",
+      "sha256": "d144367ad82699e23215625202f4a67528819784aec1b662da24e4ee20c4f082",
+      "bytes": 24115
+    },
+    "old_all_five_gate": {
+      "path": ".gcts-active/family-scientific-trajectory-source-v2-20261012/family_context_qualification_v2.py",
+      "sha256": "fb4706600e7aedeb89621633aa350c4b0720b2e451ebd7bf8589cc0102c9707c",
+      "bytes": 6748
+    },
+    "typed_bridge": {
+      "path": ".gcts-active/family-proposal-learning-20261012/family_pool_bridge_v2.py",
+      "sha256": "35dd1c6d3402950dea22dc7ca11fcd9b0aebc817206b8cb47063a526f4fbed11",
+      "bytes": 3612
+    },
+    "current_producer": {
+      "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_producer_v1.py",
+      "sha256": "404c171931f0d071504a99eb86884f4de202ea749d538a1187881ee11d251b3e",
+      "bytes": 6669
+    },
+    "current_independent": {
+      "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_independent_v1.py",
+      "sha256": "7a3044764dcf0e81af18d14b90e9a5d3874023a018a836c359cac23613c52d4f",
+      "bytes": 9588
+    },
+    "pool_registration": {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+      "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656",
+      "bytes": 4186
+    },
+    "pool_search": {
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+      "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435",
+      "bytes": 11866
+    },
+    "old_context_compiler": {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+      "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb",
+      "bytes": 14954
+    },
+    "independent_scientific_tape": {
+      "path": ".gcts-active/family-scientific-independent-source-20261012/independent_scientific_tape_v1.py",
+      "sha256": "394cbc87355a5dc1a6c4ae9186095ca091ac0d3859e6db0c5c722dc9f528e533",
+      "bytes": 24937
+    },
+    "older_semantic_policy": {
+      "path": "research/gcts-rl-renewal/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+      "bytes": 2746
+    },
+    "older_semantic_search": {
+      "path": "research/gcts-rl-renewal/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+      "bytes": 5318
+    },
+    "older_lemma_miner": {
+      "path": "research/gcts-rl-renewal/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "bytes": 7196
+    },
+    "older_first_order_compiler": {
+      "path": "research/gcts-rl-renewal/first_order_receptors.py",
+      "sha256": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+      "bytes": 9139
+    },
+    "older_family_model": {
+      "path": "research/gcts-rl-renewal/first_order_family_points.py",
+      "sha256": "54c87bd5886c40cffd5ee8b5235c5f74ef124a5c03693c68bd0b7c193187eb3d",
+      "bytes": 4699
+    },
+    "ordinary_horn": {
+      "path": "research/gcts-rl-renewal/horn_proof_search.py",
+      "sha256": "bbc4aaaf00d80c6b50d934000189d8d311a925a33ba71c66ee3c2d0556643a8e",
+      "bytes": 8546
+    },
+    "old_protocol": {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813
+    },
+    "actual_base_decision": {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/base-ROOT-final-decision-v1.json",
+      "sha256": "cb73e335fe6ef978db588643b97c0fddc80376600fff3e8635f8909bf86a0eac",
+      "bytes": 2411
+    },
+    "actual_fixed_decision": {
+      "path": ".gcts-active/repeated-guard-proof-progress-20261012/fixed-whole-family-pool-ROOT-final-decision-v1.json",
+      "sha256": "156eacc550a54c137401b1209c6dfdfae77a4531c269546b7c604bde2646f5d3",
+      "bytes": 3033
+    },
+    "actual_native_bridge_decision": {
+      "path": ".gcts-active/guard-native-bridge-progress-20261012/ROOT-final-bridge-decision-v1.json",
+      "sha256": "74829b9909606fe9aca40d8bfd562677ea524efdd4b57adc15c2e414ef2c6b60",
+      "bytes": 5389
+    },
+    "ordinary_source": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/ordinary_licensed_agenda_v1.py",
+      "sha256": "40914d5a5997dec0faba1567fd9bed30da0cf3bccd0469d85ab35c4d461938ab",
+      "bytes": 15138
+    }
+  },
+  "inspection_scope": {
+    "full_functional_source_read": [
+      "point_core_except_frozen_loader",
+      "lifecycle",
+      "composer",
+      "features31",
+      "overlay_v2",
+      "policy_math",
+      "qualified_update",
+      "scientific_driver",
+      "old_all_five_gate",
+      "typed_bridge",
+      "current_producer",
+      "current_independent",
+      "older_semantic_policy",
+      "older_semantic_search",
+      "older_lemma_miner",
+      "ordinary_horn"
+    ],
+    "selected_relevant_source_read": [
+      "pool_registration",
+      "pool_search",
+      "old_context_compiler",
+      "independent_scientific_tape",
+      "older_first_order_compiler",
+      "older_family_model"
+    ],
+    "remaining_full_independent_successor_source_review_required": true,
+    "AST_observations": {
+      "point_core": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          "__future__",
+          [
+            "copy"
+          ],
+          [
+            "gzip"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "json"
+          ],
+          [
+            "time"
+          ],
+          "dataclasses",
+          "pathlib",
+          "typing"
+        ]
+      },
+      "lifecycle": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          "__future__",
+          [
+            "copy"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "importlib.util"
+          ],
+          [
+            "json"
+          ],
+          [
+            "math"
+          ],
+          [
+            "sys"
+          ],
+          [
+            "time"
+          ],
+          "dataclasses",
+          "pathlib"
+        ]
+      },
+      "composer": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "itertools"
+          ],
+          [
+            "json"
+          ],
+          [
+            "time"
+          ],
+          "dataclasses"
+        ]
+      },
+      "features31": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          "__future__"
+        ]
+      },
+      "overlay_v2": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          "__future__",
+          [
+            "copy"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "json"
+          ]
+        ]
+      },
+      "policy_math": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "math"
+          ]
+        ]
+      },
+      "qualified_update": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          "__future__",
+          [
+            "copy"
+          ]
+        ]
+      },
+      "scientific_driver": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "math"
+          ],
+          [
+            "random"
+          ],
+          [
+            "time"
+          ]
+        ]
+      },
+      "old_all_five_gate": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "gzip"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "json"
+          ],
+          "pathlib"
+        ]
+      },
+      "typed_bridge": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          "__future__",
+          "dataclasses",
+          "typing"
+        ]
+      },
+      "current_producer": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "time"
+          ],
+          "proof_control_bindings_v1"
+        ]
+      },
+      "current_independent": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "time"
+          ],
+          "proof_control_bindings_v1"
+        ]
+      },
+      "pool_registration": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "json"
+          ],
+          [
+            "time"
+          ]
+        ]
+      },
+      "pool_search": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "json"
+          ],
+          [
+            "math"
+          ],
+          [
+            "time"
+          ]
+        ]
+      },
+      "old_context_compiler": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "hashlib"
+          ],
+          [
+            "json"
+          ],
+          [
+            "time"
+          ]
+        ]
+      },
+      "independent_scientific_tape": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "math"
+          ]
+        ]
+      },
+      "older_semantic_policy": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "math"
+          ]
+        ]
+      },
+      "older_semantic_search": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "collections",
+            "random",
+            "time"
+          ],
+          "native_receptor_points",
+          "native_inventory_policy",
+          "native_inference_inventory",
+          "semantic_inventory_guidance",
+          "turtle"
+        ]
+      },
+      "older_lemma_miner": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy",
+            "itertools"
+          ],
+          "certificate_boundary_search"
+        ]
+      },
+      "older_first_order_compiler": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "collections",
+            "copy",
+            "math",
+            "time"
+          ],
+          [
+            "logic"
+          ],
+          "certificate_boundary_search",
+          "native_receptor_points",
+          "semantic_receptor_points"
+        ]
+      },
+      "older_family_model": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "collections",
+            "copy",
+            "math",
+            "time"
+          ],
+          "certificate_boundary_search",
+          "first_order_receptors",
+          "native_receptor_points",
+          "semantic_receptor_points"
+        ]
+      },
+      "ordinary_horn": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "hashlib",
+            "itertools",
+            "time"
+          ],
+          [
+            "logic"
+          ],
+          "proof_block_search",
+          "serialized_kernel"
+        ]
+      },
+      "ordinary_source": {
+        "syntax": "Python3.9 AST only",
+        "imports": [
+          [
+            "copy"
+          ],
+          [
+            "math"
+          ],
+          [
+            "time"
+          ]
+        ]
+      }
+    }
+  },
+  "actual_basis": {
+    "accepted_repeated_guard": {
+      "status": "accepted_ground_point_and_symbolic_certificate",
+      "ROOT_final_accepted": true,
+      "point_symbolic_accepted": true,
+      "trace_accepted": true,
+      "complete_search_tape": 130,
+      "attempts": 21,
+      "nodes": 22,
+      "changed_first_choices": 10,
+      "backtracks": 0,
+      "first_target_row": 15
+    },
+    "base_control": {
+      "status": "checked_budget_UNKNOWN",
+      "ROOT_final_accepted": false,
+      "trace_accepted": true,
+      "complete_search_tape": 1208,
+      "attempts": 128,
+      "nodes": 99,
+      "backtracks": 82
+    },
+    "conclusion": "Actual library/fixed-order evidence on one ground incidence sequent; no learned policy or transfer experiment. Native bridge checks that same certificate after transparent closed-Gamma promotion, not new proof search."
+  },
+  "engine_contract": {
+    "point_object": "Unit integer row occupancy and injective formula/ordered-offset marking values; vertical translation, identity orientation; exact source license scope.",
+    "complete_frontier": "Every row active. Factored full recipe/reference products, explicit excluded-key subtraction and all strict-prior source rows; no policy shortlist supplies dead or forced authority.",
+    "scheduler": "Global zero-degree, global singleton, then minimum generation with degree tie-break; every primitive through unchanged Executor in reference lanes.",
+    "generation_limitation": "All 24 required rows are generation-zero roots. Generation precedes degree in source but current proof experiments do not exercise nontrivial growth-generation selection.",
+    "remote_marks": "Formula changes constrain own row and every later reader. Explicit zero and absence differ. Whole aggregate checks include remote marking conflicts.",
+    "rollback": "Exact graph/domain/exclusion/generation/mark-refcount rollback plus Controller and overlay active-hint/commit rollback; chronological RNG and cost/first-terminal ledgers do not rewind.",
+    "finite_semantics": "Budget/trace/infrastructure limits are UNKNOWN and never authorize child exclusion; only complete child exhaustion justifies parent-local exclusion; finite rows do not prove arbitrary proof absence.",
+    "scope": "Source conformance for the restricted linear-row adaptation, not a new runtime/kernel/infinite-tiling guarantee."
+  },
+  "RL_attribution": {
+    "currently_supported": "31 name-free bounded structural features, epsilon-mixture selection among exact registered whole single/pair families plus NULL, full primitive fallback, forced and waiting continuation consume no new draw.",
+    "not_currently_supported": "New topology, newly discovered lemma body generalization, unrestricted family synthesis, arithmetic induction, or successful real-theorem training/heldout superiority.",
+    "reward": "Terminal bonus only after complete independent point/logical/resource acceptance. Fmax is maximum per-state distinct dependency-complete nonroot facts; pending formula marks never count. Qualified complete budget-UNKNOWN may train cost/potential; partial traces may not.",
+    "update": "Frozen-per-episode weights, audited chronological choices/mixture gradients, donor-only qualified mean-gradient clipped heuristic; no unbiased expected-return gradient claim.",
+    "gaming_limit": "Irrelevant licensed scheme facts can improve shaping; capped validation/attempt penalties can lose cost sensitivity. Reward or nonzero coefficients alone cannot establish proof-search benefit.",
+    "needed_effects": [
+      "Probability TV/max delta learned versus zero-weight uniform on complete menus",
+      "Non-NULL commitments, actual candidate-order changes, waiting/retirement/consumption",
+      "Independently accepted heldout proofs versus UNKNOWN, attempts, validation work, cold/end-to-end wall and memory",
+      "All donor search/audit/update and library construction costs, with any amortization explicitly reported"
+    ]
+  },
+  "fresh_context_requirements": {
+    "frozen_old_protocol_preserved": true,
+    "all_five_qualification_remains_false": true,
+    "certain_old_API_blockers": [
+      "Old compiler permits only five selectors and original217/229 registry",
+      "Composer enforces171 bodies and root single/connected-pair grammar",
+      "Registration asserts229/226/171 census",
+      "Scientific driver asserts24/229/217/171 and output count171",
+      "Independent tape and qualification route assume old fixed model/all-five actual acceptance"
+    ],
+    "minimal_successors": "Keep height24, features/math/reward/update and exact core/transaction semantics; replace fixed semantic counts only with independently qualified explicit fresh counts. New declarations/catalog/license oracle and fresh all-context gate must be separate immutable sources, preserving historical UNKNOWNs.",
+    "fresh_arithmetic_scope": "Compound arithmetic terms plus equality transport under bound PA theory is a ground finite first-order equality fragment; induction/full Peano theorem search is not established merely by retaining axiom/induction data.",
+    "split": "Freeze all fresh contexts and role term pools before outcomes. Separate rename tests from unseen composition, direction reversal, repeated-occurrence and cross-signature tests. Arithmetic-to-incidence and incidence-to-arithmetic frozen checkpoints should be reported separately.",
+    "capacity": "Complete registered pools over64 are an unresolved frozen experiment limit; no trimming or omitted failed contexts."
+  },
+  "controls": [
+    {
+      "lane": "reference primitive",
+      "inventory": "Identical complete primitive licenses and declared boundary. No active family advice; full pool preparation/cold costs disclosed.",
+      "purpose": "Reference GCTS scheduler/order baseline."
+    },
+    {
+      "lane": "same-full-pool fixed",
+      "inventory": "Exact same graph and literal full descriptors/authority as uniform and learned.",
+      "purpose": "Library and fixed priority benefit."
+    },
+    {
+      "lane": "same-full-pool uniform",
+      "inventory": "Same complete menu including NULL; all31 coefficients zero, identical mixture/seed protocol.",
+      "purpose": "Separate learning from stochastic family selection."
+    },
+    {
+      "lane": "same-full-pool learned",
+      "inventory": "Same complete descriptor records and primitive domains; donor-trained frozen checkpoint, no heldout update.",
+      "purpose": "Learned policy attribution only if heldout outcomes/costs differ."
+    },
+    {
+      "lane": "ordinary exact-license agenda",
+      "inventory": "Same primitives and registered macro definitions; formula memoization and re-embedding change instance-generation/physical action menus and are explicitly specialized.",
+      "purpose": "Stronger ordinary proof-search comparison; same complete24-row kernel output with charged expansion/padding. No extra logical rule."
+    }
+  ],
+  "ordinary_source": {
+    "pin": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/ordinary_licensed_agenda_v1.py",
+      "sha256": "40914d5a5997dec0faba1567fd9bed30da0cf3bccd0469d85ab35c4d461938ab",
+      "bytes": 15138
+    },
+    "authoring_only": true,
+    "functional_imports_or_calls": 0,
+    "API": "search_candidate(graph, authority, descriptors, core, *, seconds, operation_limit, event_limit, prerequisite_pins)",
+    "definition": "Revalidates every full descriptor through supplied authority. Expands exact registered member recipes and root occurrence ports in stable fixed-priority order. Then licensed zero-port/ordered-MP finite formula saturation. First witness memoization and strict DAG re-embedding; all original hypothesis rows retained; padding repeats an original licensed assumption; target witness replay occupies last row.",
+    "no_new_authority": "No reflexivity, equality symmetry/transitivity, conjunction introduction/elimination or axiom beyond supplied licenses; macros are primitive expansions, never new axioms.",
+    "limits": "Prefix/clock/operation overflow, no target closure, over24 or failed embedding are UNKNOWN. First-witness memoization is incomplete for bounded proof search, so no unsatisfiability claim.",
+    "remaining_gate": "ROOT/peer complete source review, independent dependency-node/certificate reconstruction and resource owner/terminal adapter, prospective closed job bindings and actual numerical controls before mathematical execution."
+  },
+  "next_executable_action": [
+    "Freeze nine fresh theorem-only AST declarations and generic finite catalog grammar with independently rederived licenses; run only one bounded owned static preparation after source review, then qualify every predeclared context before learning.",
+    "Freeze count-only generic pool/DFS and independent trajectory successors plus current owned resource route; retain exact all-domain scheduler, policy31/math/update, complete pools and paired rollback.",
+    "ROOT alone executes predeclared donor episodes, independent trace/RNG/fact/reward replay and qualified update; publish weights/checkpoint chain and all failures, not only successful donors.",
+    "Freeze final checkpoint; execute same-full-pool fixed/uniform/learned and ordinary controls on all heldout contexts with common enclosing caps. Separate primitive attempts from ordinary agenda operations, and compare checked proof coverage plus full costs.",
+    "Only after measured selection transfer consider automated donor proof-cone mining and safe generalization. Older semantic_lemma_inventory mine only abstracts nullary predicate formulas; it is not a ready equality-term/quantifier-safe miner for this31-feature engine."
+  ],
+  "no_actual_scientific_execution_by_reviewer": true,
+  "new_proofs": 0,
+  "RL_updates": 0,
+  "native_queries": 0,
+  "activation_authored": false,
+  "qualification_issued": false
+}

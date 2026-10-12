@@ -1,0 +1,17 @@
+{
+  "resource_gate_accepted": false,
+  "elapsed_seconds": 11.468548292,
+  "peak_bytes": 1058816000,
+  "limits": {
+    "whole_seconds": 60,
+    "caller_seconds": 90,
+    "peak_bytes": 536870912
+  },
+  "terminal": null,
+  "provisional": {
+    "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/provisional-terminal-v1.json",
+    "sha256": "6b1d1bc824bd103b810ef777f6282714f1d2f4304a895671c3343d1b14e6bd87",
+    "bytes": 1469
+  },
+  "scope": "post-write observation; tool caller observation is separately required"
+}

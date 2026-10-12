@@ -1,0 +1,50 @@
+{
+  "schema": "independent-first-fresh-compiler-closed-plan-v3-metadata-review-v1",
+  "status": "SOURCE_METADATA_BINDING_PASS_NO_MATHEMATICAL_ACCEPTANCE",
+  "source_only": true,
+  "source_ready": true,
+  "scientific_acceptance": false,
+  "inputs": {
+    "owner_plan": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-plan-v1.json",
+      "sha256": "605ecdb4cbd4fbe62cc7ec8026f3c691ae34838309210774ad78d8ab24a20d9c",
+      "bytes": 5148
+    },
+    "worker_plan": {
+      "path": ".gcts-active/cluster-transfer-progress-20261012/train-pa-right-zero-worker-plan-v3.json",
+      "sha256": "d36aa946d5b022e8545b1888eeba5fe6b31718322bad7eb3c27803cd026f2877",
+      "bytes": 1722
+    },
+    "ROOT_role_binding": {
+      "path": ".gcts-active/cluster-transfer-progress-v2-20261012/ROOT-source-readiness-binding-v1.json",
+      "sha256": "6cba01c8af53b562367099de0c7864cc342bf0cf96d9bd4c3ef4829d89af0ef8",
+      "bytes": 1844
+    },
+    "independent_source_review": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-pa-preparation-source-readiness-v1.json",
+      "sha256": "abbced4016b0642be6ad0780ebde398f21c9e0f2fa5eef21af5a672ff1e09873",
+      "bytes": 7536
+    }
+  },
+  "exact_pins_streamed": 16,
+  "checks": {
+    "exact8_worker_fields": true,
+    "unchanged4_source_roles_and_fixture": true,
+    "source_review_source_input_maps_exact_worker_guard": true,
+    "first_compiler_source_pin_unchanged": true,
+    "worker_plan_original_required_progress_namespace": true,
+    "worker_output_original_progress_direct_child": true,
+    "worker_output_absent_at_metadata_observation": true,
+    "owner_namespace_absent_at_metadata_observation": true,
+    "exact_literal_runtime_and_worker_argv": true,
+    "worker60s512MiB_owner60s512MiB_caller90s": true
+  },
+  "preserved_failures": "ROOT reports two prior worker preimport guard rejections (review role shape and plan namespace); those saved UNKNOWNs are preserved and neither supplied a mathematical outcome. This review does not independently re-execute their commands.",
+  "necessary_runtime_conditions": [
+    "Actual complete source closure must still match before and after.",
+    "ROOT sole once-only compiler invocation, actual owned terminal/reap and caller bound; no resource or logical credit from this metadata review.",
+    "Successful full catalog output still requires independent complete licensing/context/graph audit."
+  ],
+  "actual_invocations_by_reviewer": 0,
+  "source_gate_only": true
+}

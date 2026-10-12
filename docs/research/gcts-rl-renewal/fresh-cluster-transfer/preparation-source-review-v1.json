@@ -1,0 +1,176 @@
+{
+  "schema": "independent-fresh-ground-first-preparation-source-readiness-v1",
+  "source_only": true,
+  "source_ready": true,
+  "scientific_acceptance": false,
+  "scope": "Source-readiness of one actual train-pa-right-zero full declared catalog/graph preparation; not independent licensing, proof search, learning, or resource qualification.",
+  "inputs": {
+    "fixture_v1": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v1.json",
+      "sha256": "e4fd8c4ca32269534d9f646a2bd21e698bb85d7180b88cf28c26e1e5e3006376",
+      "bytes": 24420
+    },
+    "fixture_v2": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+      "bytes": 24474
+    },
+    "compiler": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0",
+      "bytes": 16384
+    },
+    "worker": {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12",
+      "bytes": 10803
+    },
+    "point_core": {
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    "master": {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "engine_assessment": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/actual-engine-and-transfer-assessment-v1.json",
+      "sha256": "bf4322564ea24c268bf68dbbe7a115b5dbbafff5e4f51330a0cabeb10981a3e2",
+      "bytes": 23685
+    }
+  },
+  "selected_instance": "train-pa-right-zero",
+  "fixture_v1_to_v2_literal_delta_paths": [
+    "/cases/4/english"
+  ],
+  "fixtures": {
+    "contexts": 9,
+    "train": 5,
+    "evaluation": 4,
+    "same_theory_all_declared_seed_vocabulary": true,
+    "heldout_scope": "Composition/term nesting only; deterministic compiler sees evaluation formulas/boundaries before outcomes, never evaluation proofs or traces."
+  },
+  "compiler_review": {
+    "source_read_complete": true,
+    "schema": "fresh-ground-cluster-context-declaration-v1",
+    "context": "Original closed theory and exactly three indexed ordered hypothesis occurrences; target original;24 rows.",
+    "capture": "Every substitution replacement is a closed frozen seed term, so no free-variable capture. Fresh hole name excludes every seed/binder variable encountered.",
+    "catalog": "Four snapshot universal rounds; binder role pools frozen from original closed seed subterms/numerals or named constants. Include all subformulas; equality one layer from all closed atoms, every actual closed subterm abstraction and ordered closed equality pair. All resulting subformulas registered injectively.",
+    "licenses": "Theory-named axioms, exact universal instantiation and atomic equality substitution schemes, literal ordered MP for every registered implication,3occurrence-sensitive assumptions. Every license pending independent audit; no extra refl/tautology/induction/generalization command.",
+    "authority": "Inactive exact theory/grammar/source-bound authority epoch; full witness/registry/context-derived recipe identities; no native correspondence claim.",
+    "boundary": "All24 generation-zero roots,23negative exterior sentinel formula marks-1, target atrow23, separately licensed assumption seeds0/1/2.",
+    "census": "Source-derived formula/recipe counts; body_count0 and pool0 explicit, not an RL-active inventory."
+  },
+  "worker_review": {
+    "source_read_complete": true,
+    "plan_schema": "ROOT-fresh-ground-cluster-preparation-plan-v1",
+    "closed_plan_fields": 8,
+    "source_roles": [
+      "compiler",
+      "worker",
+      "point_core",
+      "master"
+    ],
+    "input_roles": [
+      "fixture"
+    ],
+    "pin_spelling": "verify_pin preserves declared lexical spelling and hashes exact full bytes, absolute and relative paths; no repeated old absolute-only verification bug.",
+    "output": "Exclusive fresh direct preparation directory under ROOT progress, plan same namespace; full gzip evidence and receipt with unchanged graph epoch/census.",
+    "loaded_project_modules": [
+      "exact pinned compiler",
+      "unchanged pinned point_core"
+    ],
+    "leaf_scope": "Reviewed worker/main/compiler/PointGraph constructor/semantic_state/decorate and stdlib path/hash/gzip/resource calls contain no child launch, checker, search, RNG or training. Conditional pinned runtime extension/native scope remains ROOT-owned, not universal interpreter attestation.",
+    "resource": "Worker SELF+elapsed are sampled before final receipt serialization. Enclosing owned process lifetime/serialization/reap and trusted caller terminal are separately required; worker claims no acceptance. Gzip full-string compression may require substantial transient memory.",
+    "failures": "Full exception outputs preserved UNKNOWN/no retry; no truncated or partial inventory salvage.",
+    "post_source_recheck": "Every plan/input/source/review pin rehashed after full evidence write, before receipt candidate publication."
+  },
+  "AST_metadata": {
+    "compiler": {
+      "Python39_AST_passed": true,
+      "imports": [
+        [
+          "copy"
+        ],
+        [
+          "hashlib"
+        ],
+        [
+          "json"
+        ]
+      ]
+    },
+    "worker": {
+      "Python39_AST_passed": true,
+      "imports": [
+        [
+          "gzip"
+        ],
+        [
+          "hashlib"
+        ],
+        [
+          "importlib.util"
+        ],
+        [
+          "json"
+        ],
+        [
+          "resource"
+        ],
+        [
+          "sys"
+        ],
+        [
+          "time"
+        ],
+        "pathlib"
+      ]
+    },
+    "point_core": {
+      "Python39_AST_passed": true,
+      "imports": [
+        "__future__",
+        [
+          "copy"
+        ],
+        [
+          "gzip"
+        ],
+        [
+          "hashlib"
+        ],
+        [
+          "json"
+        ],
+        [
+          "time"
+        ],
+        "dataclasses",
+        "pathlib",
+        "typing"
+      ]
+    }
+  },
+  "limits": {
+    "worker_whole_seconds": 60,
+    "peak_bytes": 536870912,
+    "retrospective_owned_envelope_not_OS_hardcap": true,
+    "actual_costs": null
+  },
+  "future_blockers_not_first_preparation": [
+    "No independently rederived catalog/context/primitive-license receipt exists yet.",
+    "Empty initial body/pool means NULL-only and cannot test RL; automatic donor-derived inventory is required later.",
+    "Compiler/worker source_bindings are a list. Existing old positive_certificate_oracle requires a dict, so fresh positive proof handoff must be adapted/source-reviewed without reclassifying this catalog.",
+    "New generic graph/body/trace/RNG/update counts and actual resource terminal bindings remain separate review.",
+    "Historical five-context qualification remains false; this is a fresh instance, not a retry."
+  ],
+  "blocking_first_preparation_source_findings": [],
+  "execution_or_qualification_authorized_by_this_artifact": false,
+  "ROOT_sole_actual_execution_owner": true,
+  "functional_imports_or_calls_by_reviewer": 0,
+  "scientific_calls_by_reviewer": 0,
+  "activation_authored_by_reviewer": false
+}

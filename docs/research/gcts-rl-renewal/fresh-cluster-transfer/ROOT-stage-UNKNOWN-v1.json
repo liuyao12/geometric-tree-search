@@ -1,0 +1,62 @@
+{
+  "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+  "stage": "preparation",
+  "status": "UNKNOWN_complete_stage_qualification",
+  "ROOT_final_accepted": false,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": false,
+    "owner_gate": false,
+    "post_write_gate": false,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": false,
+    "stage_identity": false,
+    "worker_complete": false,
+    "all_worker_direct_children_closed": false,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": false
+  },
+  "mismatches": [],
+  "limits": {
+    "whole_seconds": 60,
+    "caller_seconds": 90,
+    "peak_bytes": 536870912
+  },
+  "caller_elapsed_seconds": 16.592,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-plan-v1.json",
+    "sha256": "605ecdb4cbd4fbe62cc7ec8026f3c691ae34838309210774ad78d8ab24a20d9c",
+    "bytes": 5148
+  },
+  "actual_tool": {
+    "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-actual-tool-observations-v1.json",
+    "sha256": "1ce6ee4e5ed57f7250be5de8be2ac60eae72ee6a45125ca7534a7a6d0e699e7f",
+    "bytes": 2426
+  },
+  "owner": {
+    "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/provisional-terminal-v1.json",
+    "sha256": "6b1d1bc824bd103b810ef777f6282714f1d2f4304a895671c3343d1b14e6bd87",
+    "bytes": 1469
+  },
+  "post_write": {
+    "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/post-write-observation-v1.json",
+    "sha256": "aa9e8ffba3a4faf860b7dcabc1a84a81371d0eb95bc32a1b13793a2046ada1ad",
+    "bytes": 544
+  },
+  "worker": null,
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+}

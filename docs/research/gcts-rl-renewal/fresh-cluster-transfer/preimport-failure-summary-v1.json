@@ -1,0 +1,31 @@
+{
+  "schema": "publication-preimport-failure-summary-v1",
+  "sandbox_observer_preflight_failures": 1,
+  "preimport_worker_guard_failures": 2,
+  "scientific_imports_in_these_failures": 0,
+  "compiler_calls_in_these_failures": 0,
+  "causes": [
+    "Sandbox denied process observer before worker launch",
+    "ROOT connected source review with incompatible role-map shape",
+    "ROOT placed worker plan outside its fixed required namespace"
+  ],
+  "full_private_records": [
+    {
+      "path": ".gcts-active/cluster-transfer-progress-20261012/ROOT-preflight-failure-v1.json",
+      "sha256": "fead93dba0e929ec04163d50a1738867d8f63fa3d5e7b0132a8a4b58ebb2b726",
+      "bytes": 644
+    },
+    {
+      "path": ".gcts-active/cluster-transfer-progress-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "e74be16172b5f18b2a81fea55976b6512f44bbfc0c3366a35d4b2949c0853a6a",
+      "bytes": 2527
+    },
+    {
+      "path": ".gcts-active/cluster-transfer-progress-v2-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "9111ed88887765f8ba6985e721d6f6823aa34ea645bce57dd0634e8ea92a6b53",
+      "bytes": 2539
+    }
+  ],
+  "final_attempt_scope": "Fresh role binding and corrected plan location; compiler, theory, target, finite grammar and resource limits unchanged. This is the first actual compiler attempt. Its memory UNKNOWN remains immutable.",
+  "no_outcome_retry": true
+}

@@ -1,0 +1,156 @@
+{
+  "schema": "independent-first-fresh-PA-compiler-actual-UNKNOWN-metadata-review-v1",
+  "status": "SAVED_METADATA_RECONCILED_UNKNOWN_PRESERVED",
+  "inputs": {
+    "caller": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-actual-tool-observations-v1.json",
+      "sha256": "1ce6ee4e5ed57f7250be5de8be2ac60eae72ee6a45125ca7534a7a6d0e699e7f",
+      "bytes": 2426
+    },
+    "decision": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "fa36bc09562d36dda204e9d65cadab7c690f7e5199d7be3af7d7684888737d79",
+      "bytes": 2540
+    },
+    "owner": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "6b1d1bc824bd103b810ef777f6282714f1d2f4304a895671c3343d1b14e6bd87",
+      "bytes": 1469
+    },
+    "post_write": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "aa9e8ffba3a4faf860b7dcabc1a84a81371d0eb95bc32a1b13793a2046ada1ad",
+      "bytes": 544
+    },
+    "ledger": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "14d078c5835be2b922561284cc3bcdf7b2857f02b501db81ed6bde1da86f396b",
+      "bytes": 2677
+    },
+    "launch": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/launch-v1.json",
+      "sha256": "e42e7175be26ef20bf87b606b9a5e8b824f012f83b07a6c5c21a212b56a6af31",
+      "bytes": 966
+    },
+    "owner_plan": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-plan-v1.json",
+      "sha256": "605ecdb4cbd4fbe62cc7ec8026f3c691ae34838309210774ad78d8ab24a20d9c",
+      "bytes": 5148
+    },
+    "owner_source": {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/run_owned_bridge_v1.py",
+      "sha256": "2b49716146ae88de8c8e0009076c79234e18668408a9dcbb7b83e8f500651b3d",
+      "bytes": 12795
+    },
+    "worker_plan": {
+      "path": ".gcts-active/cluster-transfer-progress-20261012/train-pa-right-zero-worker-plan-v3.json",
+      "sha256": "d36aa946d5b022e8545b1888eeba5fe6b31718322bad7eb3c27803cd026f2877",
+      "bytes": 1722
+    },
+    "prior_source_review": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-pa-preparation-source-readiness-v1.json",
+      "sha256": "abbced4016b0642be6ad0780ebde398f21c9e0f2fa5eef21af5a672ff1e09873",
+      "bytes": 7536
+    },
+    "prior_binding_review": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-compiler-closed-plan-v3-metadata-review-v1.json",
+      "sha256": "102dd5254aafc6dc9833e991a8070c60fa9a3c495a8c3903ea4dab3af847ab63",
+      "bytes": 2514
+    }
+  },
+  "inspections": "Standard-library saved JSON/gzip metadata, raw source arithmetic and streaming hashes only. No compiler, model, checker, search, RNG, PS or process call.",
+  "actual_attempt": {
+    "instance": "train-pa-right-zero",
+    "first_compiler_attempt": true,
+    "caller_actual_invocations": 1,
+    "tool_exit": 0,
+    "tool_exit_scope": "Owner completed its UNKNOWN disposition; not worker or compiler success.",
+    "worker_exit": -15,
+    "worker_reaped": true,
+    "owned_leftovers": [],
+    "cleanup_errors": [],
+    "whole_owner_seconds_through_post_write": 11.468548292,
+    "caller_seconds": 16.592,
+    "caller_plus1s_bound": 17.592,
+    "limits": {
+      "whole_seconds": 60,
+      "caller_seconds": 90,
+      "peak_bytes": 536870912
+    },
+    "compiled_catalog_or_worker_receipt_present": false,
+    "output_directory_exists_empty": true
+  },
+  "sample_reconciliation": {
+    "all93_exact_field_types_nonnegative_finite_and_monotone": true,
+    "all_owned_RSS_sums_and_combined_arithmetic": true,
+    "worker_birth_PID_PPID_PGID_consistent": true,
+    "maximum_sample": {
+      "seconds": 11.372805709,
+      "owned_rss_bytes": 520945664,
+      "combined_bytes": 538279936,
+      "ROOT_peak_bytes": 14565376,
+      "observer_peak_bytes": 2768896
+    },
+    "frozen_cap_bytes": 536870912,
+    "maximum_sample_excess_bytes": 1409024,
+    "raw_owned_worker_RSS_max_bytes": 520945664,
+    "sample_estimate_scope": "Owner historical SELF kernel peak plus current retained owned-worker RSS plus historical observer kernel peak. This is conservative; it is not a simultaneous whole-host memory measurement."
+  },
+  "terminal_reconciliation": {
+    "ROOT_SELF_peak_bytes": 14565376,
+    "worker_wait4_kernel_peak_bytes": 522125312,
+    "observer_RUSAGE_CHILDREN_upper_bound_bytes": 522125312,
+    "worker_direct_child_sum_bytes": 0,
+    "recorded_conservative_sum_bytes": 1058816000,
+    "post_reap_observer_bound_contamination": "RUSAGE_CHILDREN maximum after worker reap includes that same worker peak, duplicating its contribution in the terminal conservative sum.",
+    "not_measured_simultaneous_one_GB": true,
+    "no_historical_discount_or_reclassification": true
+  },
+  "closed_gate": {
+    "all16_original_closure_pins_match": true,
+    "all14_ROOT_predicates_preserved": {
+      "actual_tool_terminal": true,
+      "caller_clock_bound": true,
+      "owner_terminal_link_present": false,
+      "owner_gate": false,
+      "post_write_gate": false,
+      "cancelled_at_final_print_false": true,
+      "final_print_gate": false,
+      "stage_identity": false,
+      "worker_complete": false,
+      "all_worker_direct_children_closed": false,
+      "all_owner_direct_children_closed": true,
+      "no_owned_leftovers": true,
+      "complete_post_closure_unchanged": true,
+      "post_write_exact_terminal": false
+    },
+    "normalized_accepted_terminal_absent": true,
+    "proof_searches": 0,
+    "independent_licensing": false,
+    "RL_updates": 0,
+    "native_queries": 0,
+    "all_five_qualification": false
+  },
+  "conclusion": "UNKNOWN must remain. The actual frozen sample estimator crossed its cap, worker was terminated before producing any catalog/receipt, and terminal sum is more conservative due to rolled child peak reuse. Correcting future accounting alone cannot create missing semantic evidence or promote this stopped attempt.",
+  "prospective_only_recommendations": [
+    "For still-unexecuted/versioned phases, disjoint directly owned observer wait4 records avoid counting reaped science in RUSAGE_CHILDREN observer maximum. Retain separate reported own/child/sample quantities and conditional trusted process-filter scope.",
+    "Reduce compiler memory while preserving exact declared universe: immutable/shared AST representation, streamed JSON/gzip serialization, and explicit temporary-object release; independently prove byte/catalog correspondence before a new source version. No trim or cap increase is inferred here.",
+    "No mathematical proof, mining or learning may depend on this incomplete preparation. Keep nine declared cases and historical failures visible; future library source can be frozen without activation."
+  ],
+  "earlier_preimport_failures_preserved": true,
+  "reviewer_source_runtime_call_count": 0,
+  "qualification_issued": false,
+  "publication_view": {
+    "original_complete_review": {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-PA-compiler-memory-UNKNOWN-metadata-review-v1.json",
+      "sha256": "9ee7ddd37d63c9d4f75588c5623e9322867ef6b4030c07a2e064c5e2fc7d0541",
+      "bytes": 7380
+    },
+    "removed_fields": [
+      "/sample_reconciliation/owned_worker_PID",
+      "/sample_reconciliation/owner_PID",
+      "/sample_reconciliation/maximum_sample/owned_rows"
+    ],
+    "scope": "Privacy view: owned PIDs and process birth rows omitted. All numeric resource observations, source bindings, logical status and conclusions retained. Original full review and owned ledger retained privately."
+  }
+}

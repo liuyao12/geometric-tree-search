@@ -1,0 +1,84 @@
+{
+  "schema": "ROOT-fresh-cluster-transfer-final-progress-decision-v1",
+  "status": "UNKNOWN_first_fresh_catalog_memory_no_dependent_activation",
+  "previous_goal_turn": "Concrete progress: prior automatically found incidence proof accepted by the fixed native machine and independent replay, published and live verified as Notebook121.",
+  "fresh_statements": 9,
+  "training_statements": 5,
+  "evaluation_statements": 4,
+  "first_instance": "train-pa-right-zero",
+  "actual_compiler_attempts": 1,
+  "preimport_worker_guard_failures": 2,
+  "sandbox_observer_preflight_failures": 1,
+  "complete_catalogs": 0,
+  "independent_licensed_contexts": 0,
+  "fresh_proof_searches": 0,
+  "fresh_discovered_proofs": 0,
+  "new_RL_training": false,
+  "training_updates": 0,
+  "native_queries": 0,
+  "all_five_qualification": false,
+  "goal_remains_active": true,
+  "actual_outcome": {
+    "sample_count": 93,
+    "max_sample_seconds": 11.372805709,
+    "max_sample_bytes": 538279936,
+    "sample_components": {
+      "ROOT_peak_bytes": 14565376,
+      "owned_rss_bytes": 520945664,
+      "observer_peak_bytes": 2768896
+    },
+    "frozen_cap_bytes": 536870912,
+    "sample_excess_bytes": 1409024,
+    "owner_seconds": 11.468548292,
+    "caller_seconds": 16.592,
+    "worker_kernel_peak_bytes": 522125312,
+    "terminal_conservative_sum_bytes": 1058816000,
+    "terminal_sum_includes_worker_twice_via_CHILDREN_max": true,
+    "measured_simultaneous_one_GB": false,
+    "worker_exit": -15,
+    "worker_reaped": true,
+    "owned_leftovers": [],
+    "compiled_output_empty": true
+  },
+  "pins": [
+    {
+      "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+      "bytes": 24474
+    },
+    {
+      "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "fa36bc09562d36dda204e9d65cadab7c690f7e5199d7be3af7d7684888737d79",
+      "bytes": 2540
+    },
+    {
+      "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-PA-compiler-memory-UNKNOWN-metadata-review-v1.json",
+      "sha256": "9ee7ddd37d63c9d4f75588c5623e9322867ef6b4030c07a2e064c5e2fc7d0541",
+      "bytes": 7380
+    },
+    {
+      "path": ".gcts-active/cluster-transfer-progress-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "e74be16172b5f18b2a81fea55976b6512f44bbfc0c3366a35d4b2949c0853a6a",
+      "bytes": 2527
+    },
+    {
+      "path": ".gcts-active/cluster-transfer-progress-v2-20261012/preparation-ROOT-final-decision-v1.json",
+      "sha256": "9111ed88887765f8ba6985e721d6f6823aa34ea645bce57dd0634e8ea92a6b53",
+      "bytes": 2539
+    }
+  ],
+  "conformance_scope": "No target tiling/proof search was activated. This attempt measures complete eager finite syntax/point-model preparation; exact frontier/factor/global-dead/forced/generation/rollback are only source-reviewed for downstream reuse.",
+  "learning_scope": "Current overlay selects validated source-body instances; unrestricted body synthesis and useful learned transfer are unestablished. Initial library is empty and never qualifies as an RL test.",
+  "comparison_scope": "Same complete physical inventory for fixed/uniform/trained GCTS lanes. Specialized licensed-recipe logical agenda uses the same primitive/macro definitions but formula memoization and row re-embedding, so its physical action menus differ. No comparison has run.",
+  "next_concrete_work": "Implement shared/factored AST and streamed complete catalog serialization with an independent exact grammar/point-domain audit; preserve all nine statements and old UNKNOWNs. Then discover donor proofs automatically, mine all declared connected primitive windows, independently validate the entire same-theory portable inventory, freeze policy before heldout comparison.",
+  "claims_not_established": [
+    "New mathematical proof",
+    "RL advantage or training",
+    "Unrestricted cluster topology discovery",
+    "Universal compiler correspondence",
+    "Accepting Wang rectangle",
+    "Full Hilbert or full PA completeness",
+    "Plane tiling theorem"
+  ],
+  "no_outcome_retry": true
+}

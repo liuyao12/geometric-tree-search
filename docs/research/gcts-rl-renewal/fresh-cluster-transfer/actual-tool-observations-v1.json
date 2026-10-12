@@ -1,0 +1,63 @@
+{
+  "schema": "ROOT-fresh-catalog-actual-tool-observations-v1",
+  "started_ms": 1791822040755,
+  "terminal_observed_ms": 1791822057347,
+  "actual_invocations": 1,
+  "request": {
+    "cmd": "python3 -B .gcts-active/cluster-transfer-progress-v3-20261012/run_owned_bridge_v1.py .gcts-active/cluster-transfer-progress-v3-20261012/preparation-plan-v1.json",
+    "yield_time_ms": 1000,
+    "max_output_tokens": 2000,
+    "sandbox_permissions": "require_escalated",
+    "justification": "May I run the requested compiler under its frozen 60-second, 512-MiB resource envelope with owned-process inspection?"
+  },
+  "frames": [
+    {
+      "observed_ms": 1791822046954,
+      "result": {
+        "chunk_id": "f29284",
+        "wall_time_seconds": 1.001600667,
+        "session_id": 46367,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "observed_ms": 1791822051957,
+      "result": {
+        "chunk_id": "47f160",
+        "wall_time_seconds": 5.001844041,
+        "session_id": 46367,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "observed_ms": 1791822056960,
+      "result": {
+        "chunk_id": "ffd193",
+        "wall_time_seconds": 5.0017605,
+        "session_id": 46367,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "observed_ms": 1791822057347,
+      "result": {
+        "chunk_id": "f3f8b5",
+        "wall_time_seconds": 0.384380375,
+        "exit_code": 0,
+        "original_token_count": 76,
+        "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 11.468548292, \"peak_bytes\": 1058816000, \"worker_receipt\": \".gcts-active/cluster-transfer-progress-20261012/train-pa-right-zero-preparation-v3/preparation-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+      }
+    }
+  ],
+  "terminal": {
+    "chunk_id": "f3f8b5",
+    "wall_time_seconds": 0.384380375,
+    "exit_code": 0,
+    "original_token_count": 76,
+    "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 11.468548292, \"peak_bytes\": 1058816000, \"worker_receipt\": \".gcts-active/cluster-transfer-progress-20261012/train-pa-right-zero-preparation-v3/preparation-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+  },
+  "clock_scope": "One awaited Date.now isolate; no absolute clock origins combined."
+}

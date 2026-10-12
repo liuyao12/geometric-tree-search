@@ -1,0 +1,323 @@
+{
+  "schema": "ROOT-notebook122-publication-manifest-v1",
+  "notebook": 122,
+  "scientific_result": "Memory UNKNOWN; no catalog, proof search or learning",
+  "exact_aliases": [
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-progress-v3-20261012/ROOT-final-progress-decision-v1.json",
+        "sha256": "c40cb91fec13644c9c782c3067985f045e28c25d5bc5ebcffab02abd3f4d8d04",
+        "bytes": 4182
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/ROOT-final-progress-decision-v1.json",
+        "sha256": "c40cb91fec13644c9c782c3067985f045e28c25d5bc5ebcffab02abd3f4d8d04",
+        "bytes": 4182
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-ROOT-final-decision-v1.json",
+        "sha256": "fa36bc09562d36dda204e9d65cadab7c690f7e5199d7be3af7d7684888737d79",
+        "bytes": 2540
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/ROOT-stage-UNKNOWN-v1.json",
+        "sha256": "fa36bc09562d36dda204e9d65cadab7c690f7e5199d7be3af7d7684888737d79",
+        "bytes": 2540
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/provisional-terminal-v1.json",
+        "sha256": "6b1d1bc824bd103b810ef777f6282714f1d2f4304a895671c3343d1b14e6bd87",
+        "bytes": 1469
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/owner-UNKNOWN-v1.json",
+        "sha256": "6b1d1bc824bd103b810ef777f6282714f1d2f4304a895671c3343d1b14e6bd87",
+        "bytes": 1469
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-owner-v1/post-write-observation-v1.json",
+        "sha256": "aa9e8ffba3a4faf860b7dcabc1a84a81371d0eb95bc32a1b13793a2046ada1ad",
+        "bytes": 544
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/post-write-observation-v1.json",
+        "sha256": "aa9e8ffba3a4faf860b7dcabc1a84a81371d0eb95bc32a1b13793a2046ada1ad",
+        "bytes": 544
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-progress-v3-20261012/preparation-actual-tool-observations-v1.json",
+        "sha256": "1ce6ee4e5ed57f7250be5de8be2ac60eae72ee6a45125ca7534a7a6d0e699e7f",
+        "bytes": 2426
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/actual-tool-observations-v1.json",
+        "sha256": "1ce6ee4e5ed57f7250be5de8be2ac60eae72ee6a45125ca7534a7a6d0e699e7f",
+        "bytes": 2426
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+        "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+        "bytes": 24474
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/statements-v2.json",
+        "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+        "bytes": 24474
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-pa-preparation-source-readiness-v1.json",
+        "sha256": "abbced4016b0642be6ad0780ebde398f21c9e0f2fa5eef21af5a672ff1e09873",
+        "bytes": 7536
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/preparation-source-review-v1.json",
+        "sha256": "abbced4016b0642be6ad0780ebde398f21c9e0f2fa5eef21af5a672ff1e09873",
+        "bytes": 7536
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/first-compiler-closed-plan-v3-metadata-review-v1.json",
+        "sha256": "102dd5254aafc6dc9833e991a8070c60fa9a3c495a8c3903ea4dab3af847ab63",
+        "bytes": 2514
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/closed-plan-source-review-v1.json",
+        "sha256": "102dd5254aafc6dc9833e991a8070c60fa9a3c495a8c3903ea4dab3af847ab63",
+        "bytes": 2514
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/actual-engine-and-transfer-assessment-v1.json",
+        "sha256": "bf4322564ea24c268bf68dbbe7a115b5dbbafff5e4f51330a0cabeb10981a3e2",
+        "bytes": 23685
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/actual-engine-assessment-v1.json",
+        "sha256": "bf4322564ea24c268bf68dbbe7a115b5dbbafff5e4f51330a0cabeb10981a3e2",
+        "bytes": 23685
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+        "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0",
+        "bytes": 16384
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/declaration-compiler-source-v1.py",
+        "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0",
+        "bytes": 16384
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+        "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12",
+        "bytes": 10803
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/preparation-worker-source-v1.py",
+        "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12",
+        "bytes": 10803
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+        "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+        "bytes": 23504
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/independent-catalog-source-v1.py",
+        "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+        "bytes": 23504
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/fresh-catalog-oracle-source-handoff-v1.json",
+        "sha256": "4b206e3e346fddb66adb7f7a162bb039d2b7f1f83a3f257ebaf4be5014f5b087",
+        "bytes": 5292
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/independent-catalog-source-handoff-v1.json",
+        "sha256": "4b206e3e346fddb66adb7f7a162bb039d2b7f1f83a3f257ebaf4be5014f5b087",
+        "bytes": 5292
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-independent-review-20261012/ordinary_licensed_agenda_v2.py",
+        "sha256": "e3d2b46b1c2351c12e6b948bce64d358c8e3f28efcb6e3030a4782eca1eafc46",
+        "bytes": 15265
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/ordinary-control-source-v2.py",
+        "sha256": "e3d2b46b1c2351c12e6b948bce64d358c8e3f28efcb6e3030a4782eca1eafc46",
+        "bytes": 15265
+      },
+      "exact_bytes": true
+    },
+    {
+      "source": {
+        "path": ".gcts-active/cluster-transfer-theorem-source-20261012/mining-transfer-interface-v1.json",
+        "sha256": "6e23f5223c9b9871705374bd09bf9ccfa400b7c468e40fdd114880a9d6755bc4",
+        "bytes": 7034
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/mining-contract-source-v1.json",
+        "sha256": "6e23f5223c9b9871705374bd09bf9ccfa400b7c468e40fdd114880a9d6755bc4",
+        "bytes": 7034
+      },
+      "exact_bytes": true
+    }
+  ],
+  "generated_views": [
+    "memory-samples-v1.json",
+    "independent-memory-review-view-v1.json",
+    "preimport-failure-summary-v1.json",
+    "reader.html",
+    "reader.css"
+  ],
+  "public_files": [
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/ROOT-final-progress-decision-v1.json",
+      "sha256": "c40cb91fec13644c9c782c3067985f045e28c25d5bc5ebcffab02abd3f4d8d04",
+      "bytes": 4182
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/ROOT-stage-UNKNOWN-v1.json",
+      "sha256": "fa36bc09562d36dda204e9d65cadab7c690f7e5199d7be3af7d7684888737d79",
+      "bytes": 2540
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/actual-engine-assessment-v1.json",
+      "sha256": "bf4322564ea24c268bf68dbbe7a115b5dbbafff5e4f51330a0cabeb10981a3e2",
+      "bytes": 23685
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/actual-tool-observations-v1.json",
+      "sha256": "1ce6ee4e5ed57f7250be5de8be2ac60eae72ee6a45125ca7534a7a6d0e699e7f",
+      "bytes": 2426
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/closed-plan-source-review-v1.json",
+      "sha256": "102dd5254aafc6dc9833e991a8070c60fa9a3c495a8c3903ea4dab3af847ab63",
+      "bytes": 2514
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/declaration-compiler-source-v1.py",
+      "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0",
+      "bytes": 16384
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/independent-catalog-source-handoff-v1.json",
+      "sha256": "4b206e3e346fddb66adb7f7a162bb039d2b7f1f83a3f257ebaf4be5014f5b087",
+      "bytes": 5292
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/independent-catalog-source-v1.py",
+      "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e",
+      "bytes": 23504
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/independent-memory-review-view-v1.json",
+      "sha256": "c26f962d019e776d7c01de9582fc44e6451bf0b2968e79f2aa3858c313249969",
+      "bytes": 7843
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/memory-samples-v1.json",
+      "sha256": "6820cdf4f5a2726438f405203fadfb832911d8496d44b82d58537f7df329398b",
+      "bytes": 18112
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/mining-contract-source-v1.json",
+      "sha256": "6e23f5223c9b9871705374bd09bf9ccfa400b7c468e40fdd114880a9d6755bc4",
+      "bytes": 7034
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/ordinary-control-source-v2.py",
+      "sha256": "e3d2b46b1c2351c12e6b948bce64d358c8e3f28efcb6e3030a4782eca1eafc46",
+      "bytes": 15265
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/owner-UNKNOWN-v1.json",
+      "sha256": "6b1d1bc824bd103b810ef777f6282714f1d2f4304a895671c3343d1b14e6bd87",
+      "bytes": 1469
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/post-write-observation-v1.json",
+      "sha256": "aa9e8ffba3a4faf860b7dcabc1a84a81371d0eb95bc32a1b13793a2046ada1ad",
+      "bytes": 544
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/preimport-failure-summary-v1.json",
+      "sha256": "3957ac56c06f160526d2289dc59e7399c8542f273e2df672010b3a752144509b",
+      "bytes": 1392
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/preparation-source-review-v1.json",
+      "sha256": "abbced4016b0642be6ad0780ebde398f21c9e0f2fa5eef21af5a672ff1e09873",
+      "bytes": 7536
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/preparation-worker-source-v1.py",
+      "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12",
+      "bytes": 10803
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/reader.css",
+      "sha256": "a796525c5a3d9e9586e1e59f7c9494f280a57a891d37a99e9f79024f35c0d188",
+      "bytes": 1703
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/reader.html",
+      "sha256": "480c062079d25eb1a0afa48bcb7d79b30aad48d29a74c82db2148879c422b7a9",
+      "bytes": 51418
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/fresh-cluster-transfer/statements-v2.json",
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8",
+      "bytes": 24474
+    }
+  ],
+  "parent_before": {
+    "sha256": "f6fd9d09c9d4d68db211d9f7f081bfea447e2509046741bb54c9cdecbd687d5a",
+    "bytes": 363006
+  },
+  "parent_after": {
+    "path": "docs/research/gcts-rl-renewal/index.html",
+    "sha256": "278944a93c9bc2718b9bbe80bd5ec888d3d341b1b040a79468edda0912bd8366",
+    "bytes": 363908
+  },
+  "parent_change": "One new Notebook122 panel and counter only; exact byte reversal verified",
+  "omitted_private_artifacts": "Absolute-path plans, raw ownership PID/birth ledger, preimport stack traces and source snapshots not selected for this report.",
+  "scientific_calls_by_exporter": 0
+}
