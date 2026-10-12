@@ -1,5 +1,6 @@
 import { parse, canonical, count, solve, examples } from './engine.mjs';
 import { latticeLoop, gridLoop, regularProjection } from './projection.mjs';
+import { trefoilIdentification } from './cases.mjs';
 const $ = id => document.getElementById(id);
 let projection = null, result = null, frames = [], timer = null;
 function clearMovie() { if(timer) clearInterval(timer); timer = null; $('play').textContent = 'Play seams'; result = null; frames = []; $('play').disabled = true; $('download').disabled = true; $('frame').max = 0; $('frame').value = 0; $('tiles').replaceChildren(); }
@@ -24,10 +25,13 @@ function drawSeam(word) {
 }
 function preset() {
   clearMovie();projection=null;const name=$('example').value;
-  if(['curl','double','trefoil'].includes(name)){const n=name==='curl'?2:name==='double'?3:5,k=name==='trefoil'?2:1;projection=regularProjection(gridLoop(Array.from({length:n},(_,i)=>i),Array.from({length:n},(_,i)=>(i+k)%n)));$('source').value=projection.canonical;}
+  if(name==='identification')$('source').value=trefoilIdentification.source;
+  else if(['curl','double','trefoil'].includes(name)){const n=name==='curl'?2:name==='double'?3:5,k=name==='trefoil'?2:1;projection=regularProjection(gridLoop(Array.from({length:n},(_,i)=>i),Array.from({length:n},(_,i)=>(i+k)%n)));$('source').value=projection.canonical;}
   else if(name==='bigon')$('source').value=examples.bigon;
   else if(name==='triangle')$('source').value='O1+ O2- O3+ U1+ U2- U3+';
-  $('target').value='';$('cap').value=Math.max(3,count(parse($('source').value)));drawProjection();drawSeam(parse($('source').value));
+  $('target').value=name==='identification'?trefoilIdentification.target:'';
+  if(name==='identification')$('depth').value=trefoilIdentification.depth;
+  $('cap').value=Math.max(3,count(parse($('source').value)));drawProjection();drawSeam(parse($('source').value));
   $('projection-caption').textContent=projection?(projection.direction.every(x=>x===1)?'Exact body-diagonal source projection.':'Body-diagonal view is degenerate here; a nearby rational direction supplies a regular source diagram.'):'Signed diagram input; a spatial realization is a future step.';
   $('status').textContent='Ready';$('summary').textContent='Run a search to inspect its graph, learning cost, and certificate.';
 }
@@ -54,4 +58,5 @@ $('frame').addEventListener('input',()=>showFrame(Number($('frame').value)));
 $('play').addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;$('play').textContent='Play seams';return;}$('play').textContent='Pause';if(Number($('frame').value)===frames.length-1)showFrame(0);timer=setInterval(()=>{const i=Number($('frame').value)+1;if(i>=frames.length){clearInterval(timer);timer=null;$('play').textContent='Play seams';}else showFrame(i);},900);});
 $('download').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(result.certificate,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='reidemeister-movie.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('import').addEventListener('change',async()=>{try{const file=$('import').files[0];if(!file)return;const data=JSON.parse(await file.text());projection=regularProjection(latticeLoop(data.vertices||data));clearMovie();$('example').value='custom';$('source').value=projection.canonical;$('cap').value=Math.max(3,count(projection.word));drawProjection();drawSeam(projection.word);$('projection-caption').textContent='Imported lattice loop; rational regular projection and signed planar diagram checked.';$('status').textContent='Imported';}catch(e){$('status').textContent='Import error';$('summary').textContent=e.message;}});
+if(new URLSearchParams(location.search).get('example')==='identification')$('example').value='identification';
 preset();

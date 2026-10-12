@@ -1,0 +1,32 @@
+{
+  "version": "reidemeister-seams-v1",
+  "source": "O1+ O2+ U3+ O4+ O5- U1+ O6+ O3+ U4+ U5- U2+ U6+",
+  "target": "O1+ U2+ O3+ U1+ O2+ U3+",
+  "crossingCap": 6,
+  "steps": [
+    {
+      "kind": "II−",
+      "after": "O1+ O2+ U3+ U1+ O4+ O3+ U2+ U4+",
+      "patch": [
+        8,
+        17
+      ]
+    },
+    {
+      "kind": "III",
+      "after": "O1+ O2+ U2+ U3+ O4+ U1+ O3+ U4+",
+      "patch": [
+        1,
+        12,
+        5
+      ]
+    },
+    {
+      "kind": "I−",
+      "after": "O1+ U2+ O3+ U1+ O2+ U3+",
+      "patch": [
+        0
+      ]
+    }
+  ]
+}
