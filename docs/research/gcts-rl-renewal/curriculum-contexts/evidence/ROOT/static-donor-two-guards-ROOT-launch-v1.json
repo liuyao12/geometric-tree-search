@@ -1,0 +1,22 @@
+{
+  "phase": "static",
+  "selector": "donor-two-guards",
+  "pid": 65850,
+  "preparation_or_static_plan": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+    "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5",
+    "bytes": 287829
+  },
+  "activation": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+    "sha256": "a709d8044ef39e93927a0efe9b7208a9e752b38e227ea97d412e88af017b40c7",
+    "bytes": 812
+  },
+  "dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+    "bytes": 18749
+  },
+  "maximum_seconds": 180,
+  "maximum_bytes": 536870912
+}

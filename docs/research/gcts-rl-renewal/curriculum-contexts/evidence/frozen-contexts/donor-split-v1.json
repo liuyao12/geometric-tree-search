@@ -1,0 +1,71 @@
+{
+  "schema": "small-whole-family-context-split-v1",
+  "status": "SOURCE_ONLY_UNEXECUTED_PROSPECTIVE_SPLIT",
+  "reference_source": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+  "common_boundary": {
+    "rows": 24,
+    "seed_rows": [0, 1, 2],
+    "target_row": 23,
+    "root_generations": "Every required row is an explicit generation-zero obligation.",
+    "source_inventory": "All217 formula values,226 non-assumption witnesses,three fresh exact-context assumption licenses,all171 source family bodies and all171 singles plus29241 ordered pair types. Complete pools must be freshly generated and independently checked, never a named subset.",
+    "theory": "Exact closed symbolic I.2 incidence/equality fragment pinned by the reference source; not full Hilbert geometry."
+  },
+  "donors": [
+    {
+      "id": "donor-two-guards",
+      "ordered_hypotheses": [
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 0]},
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 1]},
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 2]}
+      ],
+      "target": {"metadata_reference": ["target_ast"]},
+      "sequent_latex": "H(P,Q,\\ell,m),\\ H(P,Q,m,n),\\ \\operatorname{Incident}(R,\\ell)\\vdash\\operatorname{Incident}(R,n)",
+      "historical_overlap": "This context has a prior checked fixed-control result. No historical proof word, trace, successful descriptor sequence, reward or policy is loaded for training; fresh trajectories only."
+    },
+    {
+      "id": "donor-two-equalities",
+      "ordered_hypotheses": [
+        {"literal_ast": ["eq", ["fun", "l", []], ["fun", "m", []]]},
+        {"literal_ast": ["eq", ["fun", "m", []], ["fun", "n", []]]},
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 2]}
+      ],
+      "target": {"metadata_reference": ["target_ast"]},
+      "sequent_latex": "\\ell=m,\\ m=n,\\ \\operatorname{Incident}(R,\\ell)\\vdash\\operatorname{Incident}(R,n)"
+    },
+    {
+      "id": "donor-repeated-guard",
+      "ordered_hypotheses": [
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 0]},
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 0]},
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 2]}
+      ],
+      "target": {"literal_ast": ["pred", "Incident", [["fun", "R", []], ["fun", "m", []]]]},
+      "sequent_latex": "H(P,Q,\\ell,m),\\ H(P,Q,\\ell,m),\\ \\operatorname{Incident}(R,\\ell)\\vdash\\operatorname{Incident}(R,m)",
+      "multiplicity_scope": "Hypothesis occurrences remain distinct licenses/seeds even when their formulas agree."
+    },
+    {
+      "id": "donor-repeated-equality",
+      "ordered_hypotheses": [
+        {"literal_ast": ["eq", ["fun", "l", []], ["fun", "m", []]]},
+        {"literal_ast": ["eq", ["fun", "l", []], ["fun", "m", []]]},
+        {"metadata_reference": ["original_ordered_hypotheses_ast", 2]}
+      ],
+      "target": {"literal_ast": ["pred", "Incident", [["fun", "R", []], ["fun", "m", []]]]},
+      "sequent_latex": "\\ell=m,\\ \\ell=m,\\ \\operatorname{Incident}(R,\\ell)\\vdash\\operatorname{Incident}(R,m)",
+      "multiplicity_scope": "Hypothesis occurrences remain distinct licenses/seeds even when their formulas agree."
+    }
+  ],
+  "held_out": {
+    "id": "heldout-mixed-guard-equality",
+    "ordered_hypotheses": {"metadata_reference": ["new_ordered_hypotheses_ast"]},
+    "target": {"metadata_reference": ["target_ast"]},
+    "literal_saved_registry_codes": {"hypotheses": [11, 42, 52], "target": 54},
+    "sequent_latex": "H(P,Q,\\ell,m),\\ m=n,\\ \\operatorname{Incident}(R,\\ell)\\vdash\\operatorname{Incident}(R,n)",
+    "holdout_scope": "Context composition is held out from donor compilation/proposals/trajectories/updates. Formulas, constants, primitive witnesses and all source families already occur in the existing library. This is not unseen-theorem, unseen-lemma, new-quantifier or unrestricted topology generalization.",
+    "outcome_firewall": "Upcoming base/fixed transfer outcomes and all held-out RL outcomes may be reported but must not tune these frozen features, donor choices, rewards, seeds, weights initialization, hyperparameters or budgets. No retry/selective repeat from successes."
+  },
+  "schema_overlap": "Donors and held-out tasks share the exact finite inventory and theorem schemas. The old incidence donor was historically searched; current171 mapped local interfaces are authored/certified infrastructure, not newly discovered by this experiment.",
+  "no_authored_proof_words": true,
+  "donor_generation_scope": "Resolve only these literal source metadata references/ASTs. There is no teacher proof, forward witness, winning induction/receptor choice, target backward cone or proof-length padding script.",
+  "execution_authorized": false
+}

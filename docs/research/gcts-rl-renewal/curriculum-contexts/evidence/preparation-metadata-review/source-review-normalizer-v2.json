@@ -1,0 +1,56 @@
+{
+  "schema": "independent-historical-context-normalizer-source-review-v2",
+  "status": "SOURCE_FINDING_INPUT_SNAPSHOT_RECHECK_REQUIRED_BEFORE_INVOCATION",
+  "source": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/normalize_measured_context_gate_v2.py",
+    "sha256": "650801feb1045b87272d278da02fb551382ba0a4fbdc541b68c0e09eb5a54375",
+    "bytes": 9369
+  },
+  "Python39_AST_passed": true,
+  "scope": "Exact donor-two-guards first historical preparation; source/AST/raw-pin/arithmetic/metadata only. No project import or functional normalizer call. Generic later preparation/static qualification not accepted by this review.",
+  "satisfied": [
+    "Literal same preparation60/static180second and536870912byte caps; no budget increase or scientific retry.",
+    "Already measured full dispatcher clock and conservative observation/helper/terminal peak arithmetic retained with no discount.",
+    "Original rejected/envelope history and explicit external accepted flag preserved; fresh exclusive measured terminal and normalization audit paths.",
+    "Exact original source and artifact hashes inspected without compressed model/evidence decoding; unchanged finalizer remains responsible for its stringent nested actual receipt contracts.",
+    "Correction receipt serialization and audit cost explicitly additional; no claim of new theorem/RL acceptance."
+  ],
+  "findings": [
+    {
+      "id": "N2-F1",
+      "priority": "required",
+      "lines": [
+        54,
+        55,
+        137,
+        145
+      ],
+      "issue": "The external receipt is parsed before any exact pin is captured; later output pins can name different bytes from those whose scalars and status were accepted. Other read_pin inputs and Python source bytes are not collectively rechecked after metadata processing and terminal serialization.",
+      "repair": "Preserve V2. In a minimal source successor, capture the exact bytes/digest/count for each input when read, decode JSON from that same byte snapshot, retain a complete checked input table and compare every current raw pin before terminal write and after terminal write before successful audit. Successful audit must bind that table and the written terminal; ROOT must require it before finalizer. Any mismatch leaves partial successor receipt unusable and stops without scientific retry."
+    },
+    {
+      "id": "N2-F2",
+      "priority": "required_metadata_contract",
+      "lines": [
+        70,
+        79,
+        86
+      ],
+      "issue": "Known first observation schema/phase/selector and provisional terminal raw pin are not checked, and external accepted flag is not required to be an actual bool. An invalid flag can skip the false-envelope-only branch. First actual pinned receipts have the correct values, but the prospective generic guard should enforce them.",
+      "repair": "Require external accepted flag type bool; exact observation schema/phase/selector; exact provisional bytes/pin and historical terminal/rejected correspondence. Retain original false flag and failed envelope. Do not change numeric coefficients/caps or scientific sources."
+    }
+  ],
+  "original_envelope_still_UNKNOWN": true,
+  "historical_cap_fit_remains_metadata_evidence": true,
+  "predecessor_assessment": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/metadata-review-v1.json",
+    "sha256": "fa869edcc4f58dd661be6cfb808fbbd359debcabd8c5ee97ec8dc6153a810142",
+    "bytes": 13372
+  },
+  "project_modules_imported": 0,
+  "project_functions_invoked": 0,
+  "scientific_calls": 0,
+  "process_ownership_calls": 0,
+  "activations_created": 0,
+  "ROOT_sole_actual_owner": true
+}

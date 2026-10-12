@@ -1,0 +1,1350 @@
+{
+  "all_five_contexts_qualified": false,
+  "contexts": [
+    {
+      "complete_context_qualification_issued": false,
+      "formula_display_scope": "Literal frozen split ASTs and lookup in the saved shared registry; formula codes alone are not fresh model or license qualification.",
+      "hypotheses": [
+        {
+          "duplicate_of_index": null,
+          "formula_code": 11,
+          "latex": "H(P,Q,\\ell,m)",
+          "license_id": "primitive-recipe-9a7f5f127ca008276e832f92092b0e72d5b7534ce2406bc9176962ddf7146a7d",
+          "literal_formula_ast": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "occurrence_index": 0,
+          "row": 0
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 15,
+          "latex": "H(P,Q,m,n)",
+          "license_id": "primitive-recipe-9bd57d566baaa9e2c279897fcd86c76d8f3affa1a9c60e1820b024d3919e9f65",
+          "literal_formula_ast": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "m",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "n",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "m",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "m",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "n",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "n",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "occurrence_index": 1,
+          "row": 1
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 52,
+          "latex": "\\operatorname{Incident}(R,\\ell)",
+          "license_id": "primitive-recipe-34d92f5a5a7bf5ef90e9481e0ab027a442af09b7d090adf36bb1efb0251bae3a",
+          "literal_formula_ast": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ],
+          "occurrence_index": 2,
+          "row": 2
+        }
+      ],
+      "id": "donor-two-guards",
+      "inventory": {
+        "capacity": 64,
+        "capacity_status": "within",
+        "complete_body_count": 171,
+        "complete_cluster_group_count": 5,
+        "initial_primitive_candidate_count": 332130
+      },
+      "partition": "donor",
+      "preparation": {
+        "artifact_href": "evidence/ROOT/preparation-donor-two-guards-measured-ROOT-terminal-v2.json",
+        "note": "Measured historical preparation qualifies under unchanged caps; original failed predictive envelope retained. No preparation rerun.",
+        "peak_estimate_bytes": 442040320,
+        "root_full_owned_seconds": 6.635612167,
+        "root_resource_accepted": true,
+        "status": "accepted"
+      },
+      "static_gate": {
+        "ROOT_provisional_peak_estimate_bytes": 821870592,
+        "artifact_href": "evidence/ROOT/first-static-resource-unknown-disposition-v1.json",
+        "context_inventory_accepted": true,
+        "context_mutation_calls": 19,
+        "controls_scope": "Actual fresh context-gate calls and per-group comparisons; no full altered-file/process replay.",
+        "frozen_maximum_bytes": 536870912,
+        "inner_owner_peak_estimate_bytes": 394657792,
+        "note": "Raw finite context/inventory checks passed; complete ROOT resource gate failed the frozen memory limit. This context is not fully qualified.",
+        "peak_estimate_bytes": 1023344640,
+        "per_group_pool_comparison_controls": 17,
+        "raw_result_href": "evidence/independent-actual/static-result-v1.json",
+        "root_full_owned_seconds": 14.004124667000001,
+        "root_resource_accepted": false,
+        "status": "unknown"
+      },
+      "target": {
+        "formula_code": 54,
+        "latex": "\\operatorname{Incident}(R,n)",
+        "literal_formula_ast": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "R",
+              []
+            ],
+            [
+              "fun",
+              "n",
+              []
+            ]
+          ]
+        ],
+        "row": 23
+      }
+    },
+    {
+      "complete_context_qualification_issued": false,
+      "formula_display_scope": "Literal frozen split ASTs and lookup in the saved shared registry; formula codes alone are not fresh model or license qualification.",
+      "hypotheses": [
+        {
+          "duplicate_of_index": null,
+          "formula_code": 38,
+          "latex": "\\ell=m",
+          "license_id": null,
+          "literal_formula_ast": [
+            "eq",
+            [
+              "fun",
+              "l",
+              []
+            ],
+            [
+              "fun",
+              "m",
+              []
+            ]
+          ],
+          "occurrence_index": 0,
+          "row": 0
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 42,
+          "latex": "m=n",
+          "license_id": null,
+          "literal_formula_ast": [
+            "eq",
+            [
+              "fun",
+              "m",
+              []
+            ],
+            [
+              "fun",
+              "n",
+              []
+            ]
+          ],
+          "occurrence_index": 1,
+          "row": 1
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 52,
+          "latex": "\\operatorname{Incident}(R,\\ell)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ],
+          "occurrence_index": 2,
+          "row": 2
+        }
+      ],
+      "id": "donor-two-equalities",
+      "inventory": {
+        "capacity": 64,
+        "capacity_status": "pending",
+        "complete_body_count": null,
+        "complete_cluster_group_count": null,
+        "initial_primitive_candidate_count": null
+      },
+      "partition": "donor",
+      "preparation": {
+        "artifact_href": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "static_gate": {
+        "artifact_href": null,
+        "context_inventory_accepted": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "target": {
+        "formula_code": 54,
+        "latex": "\\operatorname{Incident}(R,n)",
+        "literal_formula_ast": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "R",
+              []
+            ],
+            [
+              "fun",
+              "n",
+              []
+            ]
+          ]
+        ],
+        "row": 23
+      }
+    },
+    {
+      "complete_context_qualification_issued": false,
+      "formula_display_scope": "Literal frozen split ASTs and lookup in the saved shared registry; formula codes alone are not fresh model or license qualification.",
+      "hypotheses": [
+        {
+          "duplicate_of_index": null,
+          "formula_code": 11,
+          "latex": "H(P,Q,\\ell,m)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "occurrence_index": 0,
+          "row": 0
+        },
+        {
+          "duplicate_of_index": 0,
+          "formula_code": 11,
+          "latex": "H(P,Q,\\ell,m)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "occurrence_index": 1,
+          "row": 1
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 52,
+          "latex": "\\operatorname{Incident}(R,\\ell)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ],
+          "occurrence_index": 2,
+          "row": 2
+        }
+      ],
+      "id": "donor-repeated-guard",
+      "inventory": {
+        "capacity": 64,
+        "capacity_status": "pending",
+        "complete_body_count": null,
+        "complete_cluster_group_count": null,
+        "initial_primitive_candidate_count": null
+      },
+      "partition": "donor",
+      "preparation": {
+        "artifact_href": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "static_gate": {
+        "artifact_href": null,
+        "context_inventory_accepted": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "target": {
+        "formula_code": 53,
+        "latex": "\\operatorname{Incident}(R,m)",
+        "literal_formula_ast": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "R",
+              []
+            ],
+            [
+              "fun",
+              "m",
+              []
+            ]
+          ]
+        ],
+        "row": 23
+      }
+    },
+    {
+      "complete_context_qualification_issued": false,
+      "formula_display_scope": "Literal frozen split ASTs and lookup in the saved shared registry; formula codes alone are not fresh model or license qualification.",
+      "hypotheses": [
+        {
+          "duplicate_of_index": null,
+          "formula_code": 38,
+          "latex": "\\ell=m",
+          "license_id": null,
+          "literal_formula_ast": [
+            "eq",
+            [
+              "fun",
+              "l",
+              []
+            ],
+            [
+              "fun",
+              "m",
+              []
+            ]
+          ],
+          "occurrence_index": 0,
+          "row": 0
+        },
+        {
+          "duplicate_of_index": 0,
+          "formula_code": 38,
+          "latex": "\\ell=m",
+          "license_id": null,
+          "literal_formula_ast": [
+            "eq",
+            [
+              "fun",
+              "l",
+              []
+            ],
+            [
+              "fun",
+              "m",
+              []
+            ]
+          ],
+          "occurrence_index": 1,
+          "row": 1
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 52,
+          "latex": "\\operatorname{Incident}(R,\\ell)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ],
+          "occurrence_index": 2,
+          "row": 2
+        }
+      ],
+      "id": "donor-repeated-equality",
+      "inventory": {
+        "capacity": 64,
+        "capacity_status": "pending",
+        "complete_body_count": null,
+        "complete_cluster_group_count": null,
+        "initial_primitive_candidate_count": null
+      },
+      "partition": "donor",
+      "preparation": {
+        "artifact_href": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "static_gate": {
+        "artifact_href": null,
+        "context_inventory_accepted": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "target": {
+        "formula_code": 53,
+        "latex": "\\operatorname{Incident}(R,m)",
+        "literal_formula_ast": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "R",
+              []
+            ],
+            [
+              "fun",
+              "m",
+              []
+            ]
+          ]
+        ],
+        "row": 23
+      }
+    },
+    {
+      "complete_context_qualification_issued": false,
+      "formula_display_scope": "Literal frozen split ASTs and lookup in the saved shared registry; formula codes alone are not fresh model or license qualification.",
+      "hypotheses": [
+        {
+          "duplicate_of_index": null,
+          "formula_code": 11,
+          "latex": "H(P,Q,\\ell,m)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "P",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "Q",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "l",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "m",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "not",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "P",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "Q",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "P",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "l",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "Q",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "l",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "P",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "Q",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "m",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "occurrence_index": 0,
+          "row": 0
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 42,
+          "latex": "m=n",
+          "license_id": null,
+          "literal_formula_ast": [
+            "eq",
+            [
+              "fun",
+              "m",
+              []
+            ],
+            [
+              "fun",
+              "n",
+              []
+            ]
+          ],
+          "occurrence_index": 1,
+          "row": 1
+        },
+        {
+          "duplicate_of_index": null,
+          "formula_code": 52,
+          "latex": "\\operatorname{Incident}(R,\\ell)",
+          "license_id": null,
+          "literal_formula_ast": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "R",
+                []
+              ],
+              [
+                "fun",
+                "l",
+                []
+              ]
+            ]
+          ],
+          "occurrence_index": 2,
+          "row": 2
+        }
+      ],
+      "id": "heldout-mixed-guard-equality",
+      "inventory": {
+        "capacity": 64,
+        "capacity_status": "pending",
+        "complete_body_count": null,
+        "complete_cluster_group_count": null,
+        "initial_primitive_candidate_count": null
+      },
+      "partition": "heldout",
+      "preparation": {
+        "artifact_href": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "static_gate": {
+        "artifact_href": null,
+        "context_inventory_accepted": null,
+        "peak_estimate_bytes": null,
+        "root_full_owned_seconds": null,
+        "root_resource_accepted": null,
+        "status": "not_run"
+      },
+      "target": {
+        "formula_code": 54,
+        "latex": "\\operatorname{Incident}(R,n)",
+        "literal_formula_ast": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "R",
+              []
+            ],
+            [
+              "fun",
+              "n",
+              []
+            ]
+          ]
+        ],
+        "row": 23
+      }
+    }
+  ],
+  "costs": {
+    "additional_cost_note": "The external launcher imports, final metadata receipt writes, metadata normalization/finalization, source authoring, inspection, report assembly and publication are additional. Unavailable costs are not zero. The saved conservative complete memory estimates are retained without discount.",
+    "metadata_normalizer_seconds_through_successor_write": 0.012986458,
+    "phase_subtotal_seconds": 20.639736834,
+    "scope": "Full actual ROOT dispatcher process clocks cover startup/imports, preparation or static audit, original receipt-byte serialization, exit and reaping. Only the two executed phases contribute to this subtotal.",
+    "static_metadata_plan_finalizer_seconds": 0.431088584,
+    "unmeasured_additional_metadata_costs": true
+  },
+  "evidence": [
+    {
+      "href": "origins.json",
+      "label": "Exact artifact origins and hashes"
+    },
+    {
+      "href": "evidence/frozen-contexts/donor-split-v1.json",
+      "label": "Frozen context split"
+    },
+    {
+      "href": "evidence/preparation-source/source-plan-v1.json",
+      "label": "Preparation source plan"
+    },
+    {
+      "href": "evidence/independent-source/source-plan-v1.json",
+      "label": "Independent source plan"
+    },
+    {
+      "href": "evidence/preparation-actual/compiled-context-v1.json.gz",
+      "label": "Prepared compiled context"
+    },
+    {
+      "href": "evidence/preparation-actual/preparation-evidence-v1.json.gz",
+      "label": "Complete preparation evidence"
+    },
+    {
+      "href": "evidence/independent-actual/static-result-v1.json",
+      "label": "Raw independent finite checks"
+    },
+    {
+      "href": "evidence/independent-actual/static-lifetime-v1.json",
+      "label": "Inner independent owner receipt"
+    },
+    {
+      "href": "evidence/ROOT/preparation-donor-two-guards-measured-ROOT-terminal-v2.json",
+      "label": "Measured preparation ROOT receipt"
+    },
+    {
+      "href": "evidence/ROOT/preparation-donor-two-guards-external-launcher-v1.json",
+      "label": "Original failed preparation envelope"
+    },
+    {
+      "href": "evidence/ROOT/first-static-resource-unknown-disposition-v1.json",
+      "label": "Static complete resource UNKNOWN"
+    },
+    {
+      "href": "evidence/ROOT/static-donor-two-guards-external-launcher-v1.json",
+      "label": "Static external observation"
+    },
+    {
+      "href": "evidence/static-resource-review/review-v1.json",
+      "label": "Independent review of the static resource failure"
+    },
+    {
+      "href": "evidence/preparation-metadata-review/source-review-normalizer-v3.json",
+      "label": "Independent source review of preparation metadata repair"
+    }
+  ],
+  "guard_definition_latex": "H(P,Q,\\ell,m)\\equiv (\\operatorname{Point}(P)\\land (\\operatorname{Point}(Q)\\land (\\operatorname{Line}(\\ell)\\land (\\operatorname{Line}(m)\\land (\\neg(P=Q)\\land (\\operatorname{Incident}(P,\\ell)\\land (\\operatorname{Incident}(Q,\\ell)\\land (\\operatorname{Incident}(P,m)\\land \\operatorname{Incident}(Q,m)))))))))",
+  "notebook": 114,
+  "progress": {
+    "RNG_draws": 0,
+    "native_queries": 0,
+    "new_proofs": 0,
+    "training_episodes": 0
+  },
+  "schema": "ROOT-assembled-frozen-curriculum-context-reader-v1",
+  "status_note": "Partial phase: first preparation qualifies; first independent context/inventory checks passed, but complete ROOT resource qualification is UNKNOWN. The remaining four contexts are Not run; learning is unrun."
+}

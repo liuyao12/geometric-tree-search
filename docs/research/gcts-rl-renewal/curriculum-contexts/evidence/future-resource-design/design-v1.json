@@ -1,0 +1,180 @@
+{
+  "schema": "future-curriculum-resource-engineering-design-v1",
+  "status": "SOURCE_ONLY_PROSPECTIVE_DESIGN_NOT_IMPLEMENTED_NOT_ACTIVATED",
+  "scope": "Still-unexecuted phases only; metadata transport and ownership/accounting design. No replacement verifier, source executable, activation, process or qualification is produced.",
+  "preserved_history": {
+    "selector": "donor-two-guards",
+    "raw_static_status": "passed_independent_frozen_curriculum_context_family_pool_audit",
+    "resource_disposition": "UNKNOWN_PRESERVED_FULL_RESOURCE_GATE_FAILED_NO_RECLASSIFICATION",
+    "external_complete_conservative_bytes": 1023344640,
+    "frozen_memory_cap_bytes": 536870912,
+    "original_immutable_review": {
+      "path": ".gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json",
+      "sha256": "43c9dabb621526ebe0f5836c69ed077ff2da6c6aaad21482d3438f93f9c94836",
+      "bytes": 7884
+    },
+    "no_rerun": true,
+    "no_reclassification": true,
+    "global_five_context_qualification": false
+  },
+  "unchanged_contract": {
+    "independent_whole_seconds": 180,
+    "independent_supervisor_seconds": 175,
+    "independent_child_seconds": 170,
+    "conservative_peak_bytes": 536870912,
+    "preparation_whole_seconds": 60,
+    "preparation_supervisor_seconds": 55,
+    "preparation_child_seconds": 50,
+    "scientific_sources": "Existing complete semantic/static verifier and all point/domain/body/pool semantics remain unchanged; any later wrapper implementation requires a separate source freeze and independent review.",
+    "unchanged": [
+      "Complete grammar and untrimmed pools",
+      "Frozen64 RL capacity",
+      "31 features",
+      "Donor/heldout split and schedule",
+      "All seeds",
+      "Reward and update arithmetic",
+      "Every attempt/time/memory budget",
+      "Complete immutable evidence and independent semantic checking"
+    ],
+    "OS_hard_cap_claim": false
+  },
+  "compact_worker_status_interface": {
+    "schema_name": "prospective-exact-bound-static-worker-status-v1",
+    "actual_receipt_created": false,
+    "producer": "Same independently reviewed worker after its unchanged full semantic audit, full JSON serialization/close, streamed final-artifact hash and postserialization plan-byte verification.",
+    "required_bindings": {
+      "full_audit_pin": "Exact declared path, SHA256 and full byte count of the closed immutable full static-result JSON.",
+      "plan_pin": "Exact frozen actual per-phase plan, not an uninstantiated source template.",
+      "worker_pin": "Exact reviewed worker source bytes.",
+      "source_manifest_pin": "Exact independently reviewed source closure.",
+      "activation_pin": "Separately ROOT-created actual activation; design does not create one.",
+      "selector_and_stage": "Literal predeclared selector and static phase."
+    },
+    "scalar_projection": [
+      "status",
+      "static_context_pool_accepted",
+      "trace_accepted",
+      "certificate_accepted",
+      "selector",
+      "partition",
+      "model_epoch",
+      "context_id",
+      "compiled_context_pin",
+      "preparation_evidence_pin",
+      "RL_full_pool_capacity",
+      "RL_full_pool_capacity_satisfied",
+      "primitive_license_count",
+      "non_assumption_witness_count",
+      "source_body_count",
+      "single_types",
+      "pair_types",
+      "whole_target_logical_checks",
+      "native_queries",
+      "native_accepted",
+      "searches",
+      "training"
+    ],
+    "count_projection": "Emit complete group count derived from the same groups_checked array; preserve full groups, census, domain streams, source receipts and mutation controls in the full audit JSON.",
+    "status_authority": "A compact status is a transport projection of an actual full audit. It creates no additional semantic acceptance and cannot replace the full audit or its independent verifier.",
+    "write_order": [
+      "Complete unchanged semantic audit",
+      "Close full immutable audit JSON",
+      "Hash its bytes in a bounded stream and verify exact plan/source bytes",
+      "Write and close compact worker status",
+      "Exit; direct owner waits/reaps before consuming status"
+    ],
+    "failure_rule": "Missing/truncated/hash-mismatched/wrong-plan/wrong-worker/stale compact status is UNKNOWN. A semantic pass never overrides resource failure. No retry, inferred successful suffix or full-json fallback decode in metadata parents."
+  },
+  "streamed_parent_transport": {
+    "owner": "Read compact status only. Stream hash full audit file once to match status pin; do not decode full audit JSON to read scalar status. Own result hashing, compact decode, serialization, close, exit and reap are charged.",
+    "dispatcher": "Read compact owner receipt and exact compact worker status; stream each distinct full audit/plan/worker artifact to verify pins with a phase-local pin cache keyed by literal declared path plus immutable pin, never by filename alone. No repeated huge audit decode.",
+    "launcher": "Read compact final dispatcher status/receipt and compare exact receipt pins after dispatcher exit/reap; stream required artifacts rather than read_bytes. Its own final receipt/exit costs remain visible to the enclosing ROOT gate.",
+    "mutation_safety": "Exclusive immutable output names; preserve literal external/runtime path spelling. Hash cache is valid only within one unchanged exclusive phase. Re-stat before/after stream and reject changed file identity/length; no relaxed pin merely because scalar status agrees.",
+    "receipt_payloads": "Keep complete observer/sample tables in separately immutable detailed metadata artifacts. Compact owner/dispatcher/launcher receipts bind them by exact pins and summary maxima/counts. Detailed tables remain inspectable, not silently omitted.",
+    "serialization_accounting": "No receipt is final before close and enclosing exit/reap clock qualification. If a provisional envelope is used, retain existing budget/reserve semantics and validate full serialized bytes/postwrite observations rather than introducing an unmeasured reserve.",
+    "memory_scope": "Bounded byte chunks and compact fields reduce avoidable metadata allocations; this is a prospective design claim, not measured resource improvement or new qualification."
+  },
+  "individually_owned_observers": {
+    "topology": "Launcher owns one dispatcher; dispatcher owns one phase owner; phase owner owns one scientific worker. Each sampling process is a separately tracked direct child of its calling wrapper, with no use of cumulative RUSAGE_CHILDREN as a ps-only measurement.",
+    "commands": "Exact pinned metadata observer binary and predeclared PID/PPID/PGID/RSS/birth-identity fields only. No process command lines or unrelated contents. No actual observer is launched in this task.",
+    "required_observer_receipt_fields": [
+      "observer_id",
+      "direct_owner_identity",
+      "process_identity_and_birth_binding",
+      "observer_binary_pin",
+      "exact_argv",
+      "monotone_clock_before_spawn",
+      "monotone_clock_after_spawn",
+      "stdout_stderr_close_clock",
+      "terminal_wait4_clock",
+      "post_receipt_close_clock",
+      "exit_code_or_signal",
+      "reaped",
+      "timeout_or_cancellation",
+      "stream_sizes_and_exact_pins",
+      "terminal_usage_with_units",
+      "leaf_scope_verified",
+      "owned_sampled_PIDs_and_RSS_scope"
+    ],
+    "clock_domain": "Start before spawn, include startup, pipe draining, parsing, hashing, timeout handling, close, terminal wait/reap and receipt close. The caller continues its own complete outer clock through observer work and enclosing receipt/exit/reap.",
+    "reaping": "Track each process handle and birth identity. Reap every observer exactly once, including timeout/parse-error/cancellation. Never send a signal to a historical PID/process group after its terminal child is reaped. Any unresolved descendant or unaccounted observer is UNKNOWN.",
+    "boundedness": "Reuse unchanged enclosing time/memory limits and already frozen applicable observer/stream limits. Source implementation must declare deterministic phase-local observation scheduling and cap metadata memory within those limits, not obtain larger scientific budgets.",
+    "ledger": "Preserve per-observer wait4 usage separately. For sequential verified leaf observers, their maximum may bound at most one concurrent observer per caller; observers from different nested callers may coexist and all distinct simultaneous scopes must be represented. Never infer sequentiality merely from a loop name."
+  },
+  "platform_semantics_prerequisites": [
+    {
+      "topic": "Darwin memory units",
+      "must_verify": "Exact ru_maxrss units and semantics for RUSAGE_SELF, direct-child wait4 and the selected ps RSS field on the pinned macOS/Python/binary versions. Record primary platform documentation and separately authorized bounded non-scientific calibration evidence.",
+      "current_status": "UNVERIFIED_IN_THIS_DESIGN"
+    },
+    {
+      "topic": "Descendant aggregation",
+      "must_verify": "Whether direct-child terminal wait4 usage contains reaped descendants; whether RUSAGE_CHILDREN combines maxima or accumulated quantities; fork/exec and short-lived descendants. Specify the accounting domain for each record.",
+      "current_status": "UNVERIFIED_IN_THIS_DESIGN"
+    },
+    {
+      "topic": "Observer identity and coverage",
+      "must_verify": "Birth-identity reliability and PID reuse handling, direct-child reaping, ownership traversal, observer leaf behavior, sampling race/error semantics and any unobserved terminated process scope.",
+      "current_status": "UNVERIFIED_IN_THIS_DESIGN"
+    },
+    {
+      "topic": "Shared-memory and summation",
+      "must_verify": "What summing RSS/high-water values bounds, including shared pages. Sum independently justified distinct scopes conservatively; do not subtract an alleged overlap without established semantics. A sum of disjoint-scope peaks need not be simultaneous physical RSS.",
+      "current_status": "UNVERIFIED_IN_THIS_DESIGN"
+    },
+    {
+      "topic": "Complete clocks and self peaks",
+      "must_verify": "Coverage from launcher startup/imports to final receipt close/exit/reap; postserialization self/observer peaks and streamed hashing allocations; any measurement observer used to qualify a measurement must itself be owned/charged.",
+      "current_status": "UNVERIFIED_IN_THIS_DESIGN"
+    }
+  ],
+  "prospective_acceptance_rule": "Future separately reviewed executable wrappers may accept only exact-bound full semantic evidence AND complete owned resource/clock/reap acceptance under unchanged caps. If platform scope cannot be established, retain conservative accounting and UNKNOWN. No historical discount/recalculation is permitted here.",
+  "future_source_review_controls": [
+    "Changed full audit bytes with unchanged compact status pin must reject",
+    "Correct audit pin but wrong plan/worker/selector must reject",
+    "Missing/truncated compact receipt or missing detailed observer artifact must reject",
+    "Semantic PASS with nonzero exit/resource UNKNOWN must remain UNKNOWN",
+    "Every observer timeout/cancellation/parse failure must be terminal and reaped",
+    "Postwrite/exit memory or clock overrun must invalidate provisional acceptance",
+    "Complete all-five qualification stays forbidden while donor-two-guards resource status is UNKNOWN"
+  ],
+  "handoff": "ROOT alone may separately author/freeze/review future executable implementation and any separately authorized platform calibration. This design does not activate remaining contexts or authorize another attempt of the executed donor phase.",
+  "actual_calls": {
+    "project_imports": 0,
+    "project_functions": 0,
+    "scientific_checkers": 0,
+    "models": 0,
+    "policy_or_RNG": 0,
+    "searches": 0,
+    "training_updates": 0,
+    "native_queries": 0,
+    "subprocess_launches": 0,
+    "PS": 0,
+    "browser": 0,
+    "activations_created": 0,
+    "qualification_issued": 0,
+    "publication": 0
+  },
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner": true
+}

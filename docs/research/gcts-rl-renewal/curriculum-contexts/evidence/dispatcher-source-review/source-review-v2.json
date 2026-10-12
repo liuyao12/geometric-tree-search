@@ -1,0 +1,49 @@
+{
+  "schema": "independent-ROOT-curriculum-dispatcher-source-review-v2",
+  "status": "SOURCE_REVIEW_PASSES_FIRST_EXACT_PREPARATION_WITH_STATED_QUALIFICATION_REQUIREMENTS",
+  "reviewed_dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v2.py",
+    "sha256": "da389bc6bdecb9002c6247e7f6b3c8415505c6890acea7648fa15e94f4388252",
+    "bytes": 18698
+  },
+  "V1_findings_preserved_in": "source-review-v1.json",
+  "Python39_AST_passed": true,
+  "resolved": [
+    "F1: checks both preserved and preserved_files before activation; exact selected V3 preparation bytes bind to reviewed independent manifest input role.",
+    "F2: serializes exclusive provisional bytes first; publishes no normalized terminal unless post-clock and post-peak checks pass; successful pin-bound post observation remains prerequisite before use.",
+    "F3: adds an8MiB reserve and validates post-serialization ROOT peak growth and time before promotion; final direct-child usage upper bound includes final ROOT ps and may conservatively include the entire reaped owner peak.",
+    "F4: adds the producer supervisor full reaped-child kernel peak as an upper bound for its one sequential observer, on top of the inner conservative peak. This can double-count the dominant worker and reject feasible contexts; no capacity/budget tuning is permitted."
+  ],
+  "exact_schema_alignment": [
+    "Preparation normalized schema matches ROOT-actual-frozen-curriculum-preparation-terminal-v1 and nested artifact fields required by frozen finalizer.",
+    "Static normalized schema and evidence fields match ROOT-actual-frozen-curriculum-static-terminal-v1 required by independent full trajectory qualification.",
+    "Prospective timing/memory bounds remain60/180seconds and512MiB; write and memory reserves can only cause a failure, never increase limits."
+  ],
+  "qualification_requirements": [
+    "The pinned successful post-write observation, exact terminal bytes and dispatcher source must be retained in ROOT qualification/report evidence before invoking frozen finalizer.",
+    "Failed candidates remain immutable provisional files; no normalized accepted terminal is produced on failure. A failure, missing observation or unconfirmed cleanup stops progression and requires an explicit preserved successor, not a retry.",
+    "Exact literal static owner/worker/activation paths, required statuses and all nested receipt bindings should be checked against the genuine frozen finalizer result before later static dispatch; the first preparation is already bound by exact V3 raw plan bytes.",
+    "Clock and memory are retrospective conservative observations, not OS hard caps. Main timer excludes startup/imports and metadata promotion/post-observation/exit; external launcher costs must be stated or separately bounded when claiming full ROOT process lifetime."
+  ],
+  "remaining_notes": [
+    {
+      "id": "N1",
+      "severity": "small_consistency_improvement",
+      "detail": "V2 computes conservative using an earlier ROOT peak then captures root_peak_before_write with another getrusage read. Capture a single base peak before constructing conservative and use it both there and in the post-write delta to avoid omitting any intervening growth. ROOT informed before use."
+    },
+    {
+      "id": "N2",
+      "severity": "failure_cleanup_scope",
+      "detail": "V1 F6 remains: sampled lineage does not use PGID, RSS0 is filtered, and kills are not followed by complete terminal revalidation. Passed frozen inner receipts attest worker reaping on the successful path; failures must not be treated as clean terminal owners or followed by another phase without separate confirmed cleanup."
+    }
+  ],
+  "owner_kernel_peak_double_count_disclosed": true,
+  "first_preparation_source_scope_passed": true,
+  "all_runtime_resource_and_scientific_acceptance": false,
+  "source_modules_imported": 0,
+  "process_ownership_calls": 0,
+  "scientific_calls": 0,
+  "activations_created": 0,
+  "publication_actions": 0,
+  "ROOT_sole_actual_owner": true
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "source-review-location-errata-v1",
+  "review": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/source-review-normalizer-v2.json",
+    "sha256": "df8e3dfeca8c6eb4f5917e1129f9e3fc4709d0efd602fd2e127b679632152175",
+    "bytes": 3657
+  },
+  "reason": "The review author entered draft location numbers. Findings are unchanged; original review bytes remain preserved.",
+  "correct_source_lines": {
+    "N2-F1": [
+      37,
+      40,
+      41,
+      58,
+      117,
+      122,
+      125
+    ],
+    "N2-F2": [
+      63,
+      72,
+      73,
+      74,
+      75,
+      85,
+      86,
+      87
+    ]
+  },
+  "scientific_calls": 0
+}

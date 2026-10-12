@@ -1,0 +1,167 @@
+{
+  "schema": "source-only-curriculum-reader-validation-v1",
+  "status": "READY_source_only_for_ROOT_data_assembly",
+  "files": [
+    {
+      "path": ".gcts-active/curriculum-context-reader-source-20261012/reader.html",
+      "sha256": "55a2b4c2c205d610f5e66e3bbf11f7ae5457de4997bd2abadcfa000903e6cfd0",
+      "bytes": 11542
+    },
+    {
+      "path": ".gcts-active/curriculum-context-reader-source-20261012/reader.js",
+      "sha256": "d3d8fb49a18c871681c8c2db2176065ccdb932939ec264c7ab7c4db2fa586a84",
+      "bytes": 8686
+    },
+    {
+      "path": ".gcts-active/curriculum-context-reader-source-20261012/view-schema-v1.json",
+      "sha256": "5b821462f76dc30ab0bf1342168de4e819deb65b44b1e56344166f6fae5202cc",
+      "bytes": 53066
+    },
+    {
+      "path": ".gcts-active/curriculum-context-reader-source-20261012/write_display_schema_v2.py",
+      "sha256": "8cd996e78593bf97836681b25aa0c2d17a4a7722868c2384d6943cd9a3ca4819",
+      "bytes": 5591
+    }
+  ],
+  "checks": [
+    {
+      "name": "Notebook114_and_future_target_theme",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "exact_five_ordered_display_schema",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "three_occurrences_preserved_in_each_context",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "occurrence_seed_rows_and_target_row_exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_manufactured_view_or_outcome_exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "future_ROOT_data_only_fetch",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all_dynamic_DOM_targets_unique",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "MathJax_source_delimiters_match_established_reader",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all_markup_controls_have_readable_colors",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_Control_character_math_escape",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "finite_authored_source_library_scope_explicit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "capacity_never_discards_overflow",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "preparation_static_flags_resource_dispositions_separate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "raw_context_inspection_safe",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unknown_missing_measurement_not_zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all4_progress_counters_frozen_at_zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_proof_tape_or_fabricated_tiling",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "source_helper_python39_AST_parse",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "literal_latex_and_names_escape_HTML",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "evidence_links_local_and_path_filtered",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "full_receipt_byte_serialization_and_post_phase_metadata_scope",
+      "pass": true,
+      "detail": "ROOT requested these explicit scope labels; no costs/outcomes invented."
+    }
+  ],
+  "issues": [],
+  "JS_syntax_check": {
+    "command": [
+      "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "--check",
+      ".gcts-active/curriculum-context-reader-source-20261012/reader.js"
+    ],
+    "exit_code": 0,
+    "tool_chunk": "ca6c37",
+    "scope": "Parse only; no JS module execution, DOM rendering, scientific code or browser."
+  },
+  "scientific_modules_imported": 0,
+  "scientific_calls": 0,
+  "outcomes_authored": 0,
+  "fixtures": 0,
+  "checkers": 0,
+  "RNG": 0,
+  "training": 0,
+  "browser": 0,
+  "publication": 0,
+  "limitations": [
+    "No view.json has been assembled; no runtime UI/math rendering was inspected.",
+    "ROOT must bind formula latex/ASTs/occurrence license IDs and actual complete inventory/result/cost receipts, with UNKNOWN or null for unavailable evidence.",
+    "ROOT adds parent114 panel and evidence copies and performs its independent report/live verification."
+  ],
+  "supersedes": {
+    "path": ".gcts-active/curriculum-context-reader-source-20261012/source-validation-v1.json",
+    "sha256": "28c2c5dd84e5e113714a3820834f5fdce52b456036036e5225eb1e04058418a8",
+    "bytes": 4140
+  },
+  "scope_corrections": [
+    "Preserved first draft HTML; ROOT clarified complete immutable receipt-byte serialization and post-phase hard-link promotion/post-write observations.",
+    "Replaced a temporary source-validation node parse chunk label with the actual successful tool chunk ca6c37; node --check performed no JS evaluation."
+  ]
+}

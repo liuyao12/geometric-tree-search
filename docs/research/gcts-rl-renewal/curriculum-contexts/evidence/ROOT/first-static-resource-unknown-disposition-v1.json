@@ -1,0 +1,83 @@
+{
+  "ROOT_external_terminal_observation": {
+    "bytes": 1529,
+    "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+    "sha256": "76118f55684442dc7d85a70e8dfe0e20b3864fe4046a7ee9df4273c781602d3e"
+  },
+  "ROOT_post_write_observation": {
+    "bytes": 1010,
+    "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+    "sha256": "f7914d939d36cb4d6aaaee72f7542092a83a54b7f4f0b5450c09df6d634ea1d2"
+  },
+  "ROOT_provisional_terminal": {
+    "bytes": 87772,
+    "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+    "sha256": "4e84adf59fb8fddc1d53a317afd392ac63c4045bfda0a9e79ea4c58d17dab116"
+  },
+  "actual_lifetime": {
+    "bytes": 2284,
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+    "sha256": "11c930103a9d9e5f021b53aaf1aa7ea2185e85ed75f91efe40fc999d48184315"
+  },
+  "actual_phase_repeated": false,
+  "actual_plan": {
+    "bytes": 287829,
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+    "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5"
+  },
+  "actual_result": {
+    "bytes": 15932793,
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+    "sha256": "4c780805a89a6d00c48af9831e9eb2d54556a0f3cb2c39e8e9b4e5bc357ed617"
+  },
+  "all_five_qualification_issued": false,
+  "cleanup": "Scientific owner and worker exited successfully and were reaped. Outer resource dispatcher exited 1 and was reaped. No owned descendants recorded alive.",
+  "complete_context_qualification_issued": false,
+  "costs": {
+    "ROOT_provisional_peak_estimate_bytes": 821870592,
+    "conservative_complete_peak_estimate_bytes": 1023344640,
+    "frozen_maximum_bytes": 536870912,
+    "frozen_maximum_seconds": 180,
+    "full_dispatcher_seconds": 14.004124667000001,
+    "inner_owner_peak_estimate_bytes": 394657792,
+    "memory_scope": "Retain the original conservative estimates, including descendant/observer kernel accounting. Not a measured simultaneous allocation, a hard OS cap, or an impossibility proof."
+  },
+  "finite_checks": {
+    "complete_groups": 5,
+    "complete_initial_candidates": 332130,
+    "context_mutations": 19,
+    "context_mutations_all_rejected": true,
+    "controls_scope": "Actual context-gate calls and saved per-group comparisons; not full altered-file/process replays.",
+    "non_assumption_witnesses": 226,
+    "ordered_pair_types": 29241,
+    "per_group_pool_comparison_controls": 17,
+    "pool_controls_all_rejected": true,
+    "primitive_licenses": 229,
+    "single_types": 171,
+    "source_bodies": 171
+  },
+  "next_work": "Source-only prospective accounting review for still-unexecuted phases. No downward reclassification of this fixed-cap failure, retry, selective repeat, learned policy, or global qualification.",
+  "original_resource_dispositions_retained": true,
+  "raw_independent_context_inventory_checks_passed": true,
+  "remaining_contexts_not_run": [
+    "donor-two-equalities",
+    "donor-repeated-guard",
+    "donor-repeated-equality",
+    "heldout-mixed-guard-equality"
+  ],
+  "resource_caps_changed": false,
+  "schema": "ROOT-first-curriculum-static-resource-unknown-disposition-v1",
+  "selector": "donor-two-guards",
+  "source_plan": {
+    "bytes": 290878,
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+    "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9"
+  },
+  "status": "UNKNOWN_COMPLETE_ROOT_RESOURCE_QUALIFICATION",
+  "subsequent_science_not_run": {
+    "RNG_draws": 0,
+    "native_queries": 0,
+    "proof_searches": 0,
+    "training_episodes": 0
+  }
+}

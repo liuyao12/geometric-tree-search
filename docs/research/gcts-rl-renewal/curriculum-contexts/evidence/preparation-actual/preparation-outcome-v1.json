@@ -1,0 +1,85 @@
+{
+  "status": "completed_fresh_context_preparation_pending_independent_gate",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-guards-plan-v1.json",
+    "sha256": "25aece2ee9cd3e0764a1012993cb8284b805ee834af6ede36d1a1265873398a2",
+    "bytes": 209229
+  },
+  "selector": "donor-two-guards",
+  "partition": "donor",
+  "compiled_context": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/compiled-context-v1.json.gz",
+    "sha256": "15b598dbbb66669d62c96e6298b4838f111e1a56060082a229d780d6ad031ab2",
+    "bytes": 311588
+  },
+  "preparation_evidence": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-evidence-v1.json.gz",
+    "sha256": "4013f45690e9035b1e82a199a7c0b83caaf370f762ad2b417f6fc37766068cfc",
+    "bytes": 1386512
+  },
+  "model_epoch": "b9e7c862e06d5152cb643e2df1c22748c28b3e6c4ed46377d023e56bf8f0d024",
+  "group_authority_epoch": "e566528a631a60d84a5c136ea79f96da1afcdf8f32fcabcc7eefc06769299267",
+  "original_body_authority_epoch": "5c1ae124860939c73b4fa39bd8fdb6d1cc59717e33a7ffa12bbab6cb50204af5",
+  "complete_pool_group_count": 5,
+  "single_types": 171,
+  "pair_types": 29241,
+  "candidate_count": 332130,
+  "model_constructions": 1,
+  "target_searches": 0,
+  "native_queries": 0,
+  "new_RL_training": false,
+  "RL_full_pool_capacity_satisfied": true,
+  "RL_feasibility_status": "pending_independent_static_acceptance",
+  "curriculum_binding": {
+    "schema": "frozen-five-context-selection-v1",
+    "selector": "donor-two-guards",
+    "partition": "donor",
+    "rows": 24,
+    "document_bindings": {
+      "reference": {
+        "raw_pin": {
+          "path": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+          "sha256": "f2f8c25b21dfee4966bdcfd6fe93d0dcaa4c4caf194a3a83462474cf9db5f24b",
+          "bytes": 25906
+        },
+        "canonical_sha256": "866af9ba7ef1befe0197be0241377d58d7cd042b06673f88f55bb9705b2b63b4"
+      },
+      "split": {
+        "raw_pin": {
+          "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+          "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+          "bytes": 4811
+        },
+        "canonical_sha256": "80031da3781bd100c2b9a5dc0daf4f13e04a02b8d7cffff3e5ed00187c6de0a3"
+      },
+      "protocol": {
+        "raw_pin": {
+          "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+          "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+          "bytes": 19813
+        },
+        "canonical_sha256": "fd5554888ed03de13bb48aa663b6e841fbfa05a0e6baacbd5a62f546e771dd46"
+      }
+    },
+    "resolved_context_sha256": "167f3987c498e8d8f7b0c895c4b16dd13d077d7fa92b2c1302f24c99c4bcbae9",
+    "ordered_hypotheses_sha256": "0ce74669a500aadaeb415d28132e48121292e50f91081e43250eaeca1e5ad882",
+    "target_sha256": "872fe034960ea789ab404617761d1134dbe04d9996d6353222645b5a26cdbc3e",
+    "holdout_scope": "Context composition only; formula/primitive/source-family overlap retained.",
+    "source_only_selection": true
+  },
+  "hypothesis_codes": [
+    11,
+    15,
+    52
+  ],
+  "target_code": 54,
+  "worker_seconds_before_outcome_write": 5.518670459,
+  "costs": {
+    "context_compilation_seconds": 0.09979337499999999,
+    "scientific_import_seconds": 0.024746917000000035,
+    "graph_construction_seconds": 0.079268,
+    "all_body_registration_seconds": 0.07924587500000002,
+    "complete_pool_preparation_seconds": 1.5254728339999999,
+    "complete_initial_domain_census_seconds": 2.104753083
+  }
+}

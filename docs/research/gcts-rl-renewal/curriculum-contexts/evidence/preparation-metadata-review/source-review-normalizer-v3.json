@@ -1,0 +1,180 @@
+{
+  "schema": "independent-historical-context-normalizer-source-review-v3",
+  "status": "SOURCE_REVIEW_PASSES_EXACT_FIRST_PREPARATION_PENDING_ROOT_METADATA_INVOCATION",
+  "source": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/normalize_measured_context_gate_v3.py",
+    "sha256": "b91397c65afe640c0193d12d106cbf75ea653753156938a7745d6bd0d6a0b0dc",
+    "bytes": 10631
+  },
+  "Python39_AST_passed": true,
+  "source_snapshot": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/normalize-measured-context-gate-v3.py.txt",
+    "sha256": "b91397c65afe640c0193d12d106cbf75ea653753156938a7745d6bd0d6a0b0dc",
+    "bytes": 10631
+  },
+  "full_source_diff": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/normalizer-v2-to-v3-source-diff-v1.txt",
+    "sha256": "7de61a54fa093f2063cdbef6b0d8b33c0961cbfeb340a49908d4cf95fcc37457",
+    "bytes": 7059
+  },
+  "scope": "Exact donor-two-guards first historical preparation; source/AST/raw-pin/metadata only. Future generic static/other-context handling remains conditional on their genuine raw receipts and frozen source/activation/qualification contracts.",
+  "resolved": [
+    {
+      "finding": "N2-F1",
+      "resolution": "read hashes, counts and decodes exactly the same raw JSON bytes, tracks exact declared input identities, rejects inconsistent repeated reads, and rechecks every tracked input before terminal serialization and again after serialization/before successful audit. Audit carries the exact tracked input table."
+    },
+    {
+      "finding": "N2-F2",
+      "resolution": "External accepted flag has exact bool type; observation schema/phase/selector and provisional content/hash/bytes are checked, with raw provisional input tracked and rechecked."
+    }
+  ],
+  "continued_requirements": [
+    "Original failed auxiliary envelope stays UNKNOWN, original external accepted=false/rejected/provisional/post-write records remain immutable and are bound in the successor; no accepted original path may be restored.",
+    "Retrospective certificate keeps historical6.635612167seconds and conservative442040320bytes against unchanged60second/536870912byte preparation caps, no inferred kernel-accounting discount. This is a separate metadata accounting correction, not a V1/V3-envelope pass.",
+    "ROOT source/metadata guard must require the successful normalization audit raw pin, exact V3 normalizer source pin, measured-terminal raw identity and exact input table including prior historical external/provisional/rejected/postwrite/source/artifact identities before frozen finalizer. A measured terminal left by a failed post-write recheck or missing/partial audit is unusable.",
+    "ROOT must enforce the unchanged frozen finalizer nested/schema/owned-resource contracts; its future static plan pins the corrected measured terminal and qualification/report metadata must preserve the historical rejected receipt and failed envelope.",
+    "Metadata/hash/correction authoring and audit serialization costs remain additional; the historical measured timer covers completed dispatcher startup/import/original final writes/exit/reap. Do not call that time total program cost.",
+    "No producer scientific retry, new model/evidence generation, source/feature/split/grammar/seed/reward/weight/budget change. Only one existing historical attempt is being described.",
+    "Resource source pass is not independent static correctness, full-pool/RL capacity, theorem/proof or all-five curriculum acceptance; later actual static gates and full scientific review remain separate requirements."
+  ],
+  "prior_assessment": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/metadata-review-v1.json",
+    "sha256": "fa869edcc4f58dd661be6cfb808fbbd359debcabd8c5ee97ec8dc6153a810142",
+    "bytes": 13372
+  },
+  "preserved_V2_finding": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/source-review-normalizer-v2.json",
+    "sha256": "df8e3dfeca8c6eb4f5917e1129f9e3fc4709d0efd602fd2e127b679632152175",
+    "bytes": 3657
+  },
+  "preserved_location_errata": {
+    "path": ".gcts-active/curriculum-envelope-independent-metadata-review-20261012/source-review-normalizer-v2-location-errata-v1.json",
+    "sha256": "39e3c9324b3e7f0fa5754e8e6a5aa4b2244c103d418ac215cb8b593a7baf1e2d",
+    "bytes": 669
+  },
+  "historical_raw_pins_rechecked": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-external-launcher-v1.json",
+      "sha256": "a60d56b82c465ecb479554b6999029deba8627a44672e58bfeff053aa74221f0",
+      "bytes": 1766
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-post-write-observation-v1.json",
+      "sha256": "ae5cf6b06abbeee4be3b37f0e8a98421aef17e574443a21cb03231bdf8ea9bae",
+      "bytes": 1240
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-externally-rejected-ROOT-terminal-v1.json",
+      "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e",
+      "bytes": 40840
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e",
+      "bytes": 40840
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/first-preparation-failed-envelope-disposition-v1.json",
+      "sha256": "7aee8cba4f8eb8d0d0b7437333363cce4c592adb1a265192819f14ec61bf5ec6",
+      "bytes": 1920
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-ROOT-launch-v1.json",
+      "sha256": "5777d57839e4b1a058ad748a9fa533f0f57b23d78c5217f42a26437ab920dcee",
+      "bytes": 854
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+      "bytes": 5294
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-guards-plan-v1.json",
+      "sha256": "25aece2ee9cd3e0764a1012993cb8284b805ee834af6ede36d1a1265873398a2",
+      "bytes": 209229
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/source-plan-v1.json",
+      "sha256": "6631f0bd5c079442f48a0035aeb630373e4a8a460fc0aaec5f82cfd20871cf38",
+      "bytes": 207404
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/prospective-protocol-v1.json",
+      "sha256": "138ea75f915fd7e9cc169f5cba21429d4e9863a996bdeab4aa06c2a052154923",
+      "bytes": 4845
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+      "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9",
+      "bytes": 290878
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json",
+      "sha256": "196df251503c926b6670c12387b3388e8da08bc67fd32640de4e6cee7ca5054d",
+      "bytes": 7773
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/finalize_curriculum_actual_static_plan_v1.py",
+      "sha256": "f893a182950e5b5dabb3a9dcf083072c48401da8c676344b978049feb8c22062",
+      "bytes": 10588
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-lifetime-v1.json",
+      "sha256": "d067a823e9acd41a6993415f40b3c7d08f47f3029d8a00f28342c5ab6d483a29",
+      "bytes": 1309
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-supervision-v1.json",
+      "sha256": "313f4b6bfc4467b91c588359f9f527d24cc6df08a9a7a4953cabdbd19ffdb184",
+      "bytes": 23207
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-outcome-v1.json",
+      "sha256": "aa04acc702dd921fa340fd88d9743ef44d4cb585676b7b4a9c3d277ca9c0c176",
+      "bytes": 3677
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-launch-v1.json",
+      "sha256": "a0b0daaa9ba32f460c3761d089d7ef18557f27c067d4cea850b910223011da39",
+      "bytes": 560
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/root-preparation-donor-two-guards-activation-v1.json",
+      "sha256": "376c73a761af2e4b9c5561dcd93a9f17aebee3490febb43299be8ecdaeb01b1a",
+      "bytes": 877
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/compiled-context-v1.json.gz",
+      "sha256": "15b598dbbb66669d62c96e6298b4838f111e1a56060082a229d780d6ad031ab2",
+      "bytes": 311588
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-evidence-v1.json.gz",
+      "sha256": "4013f45690e9035b1e82a199a7c0b83caaf370f762ad2b417f6fc37766068cfc",
+      "bytes": 1386512
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-dispatcher-independent-20261012/source-review-v4.json",
+      "sha256": "57b48eb741091a1882a739e0da50ee7f87913de73cad6c3a9ccbb554c4e94861",
+      "bytes": 2899
+    }
+  ],
+  "project_modules_imported": 0,
+  "project_functions_invoked": 0,
+  "normalizer_invocations": 0,
+  "compiled_artifacts_decoded": 0,
+  "scientific_calls": 0,
+  "process_ownership_calls": 0,
+  "activations_created": 0,
+  "ROOT_sole_actual_owner": true
+}

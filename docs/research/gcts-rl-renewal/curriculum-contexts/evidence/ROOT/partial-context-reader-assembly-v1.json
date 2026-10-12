@@ -1,0 +1,491 @@
+{
+  "all_five_contexts_qualified": false,
+  "file_count": 94,
+  "files": [
+    {
+      "bytes": 2993,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/ROOT-dispatcher-freeze-v3.json",
+      "sha256": "b2963116f90c6a15f44bae339ea650223bc22467fcbdd1fb89dfa86411a76488"
+    },
+    {
+      "bytes": 5740,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879"
+    },
+    {
+      "bytes": 19243,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/assemble_partial_context_reader_v1.py",
+      "sha256": "068739bc2372e09ed9eaf79021528c9a3d0bb313cb0a60231c6941433bc7d5e3"
+    },
+    {
+      "bytes": 1920,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/first-preparation-failed-envelope-disposition-v1.json",
+      "sha256": "7aee8cba4f8eb8d0d0b7437333363cce4c592adb1a265192819f14ec61bf5ec6"
+    },
+    {
+      "bytes": 3910,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/first-static-resource-unknown-disposition-v1.json",
+      "sha256": "8c58dd8438bb9a2d672ac888f5a93e0cc26421f07394bace1e8938b76e9b77dc"
+    },
+    {
+      "bytes": 4378,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/launch_owned_context_gate_v1.py",
+      "sha256": "1298237523fe79f329b98c7ea92977a912904ebc3e0efdb0e414e20b63fd91a3"
+    },
+    {
+      "bytes": 5294,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/launch_owned_context_gate_v2.py",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136"
+    },
+    {
+      "bytes": 9284,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/normalize_measured_context_gate_v1.py",
+      "sha256": "e42fbd11f2a518fbf2be3fab10ea0f985b4ba7491316fba1bfe67ebf4bd1b7ce"
+    },
+    {
+      "bytes": 9369,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/normalize_measured_context_gate_v2.py",
+      "sha256": "650801feb1045b87272d278da02fb551382ba0a4fbdc541b68c0e09eb5a54375"
+    },
+    {
+      "bytes": 10631,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/normalize_measured_context_gate_v3.py",
+      "sha256": "b91397c65afe640c0193d12d106cbf75ea653753156938a7745d6bd0d6a0b0dc"
+    },
+    {
+      "bytes": 854,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-ROOT-launch-v1.json",
+      "sha256": "5777d57839e4b1a058ad748a9fa533f0f57b23d78c5217f42a26437ab920dcee"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-ROOT-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2654,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-ROOT-stdout-v1.txt",
+      "sha256": "74a385bc934b50a27a902c58ad106adf4a3dd85f91ac2d9050d45c561ffbad6d"
+    },
+    {
+      "bytes": 1766,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-external-launcher-v1.json",
+      "sha256": "a60d56b82c465ecb479554b6999029deba8627a44672e58bfeff053aa74221f0"
+    },
+    {
+      "bytes": 40840,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-externally-rejected-ROOT-terminal-v1.json",
+      "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e"
+    },
+    {
+      "bytes": 42072,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-measured-ROOT-terminal-v2.json",
+      "sha256": "5dc43db23ada0b99d0cb5a0d3c9b3a35b0e48a6eaff87cf72ff680f2bfa64415"
+    },
+    {
+      "bytes": 8274,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-metadata-normalization-v1.json",
+      "sha256": "46ee5b84cfa648e4c9551fbefc3bddef19661dd63ea582d51fd556c98f79974c"
+    },
+    {
+      "bytes": 1240,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-post-write-observation-v1.json",
+      "sha256": "ae5cf6b06abbeee4be3b37f0e8a98421aef17e574443a21cb03231bdf8ea9bae"
+    },
+    {
+      "bytes": 40840,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/preparation-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e"
+    },
+    {
+      "bytes": 15613,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/run_owned_context_gate_v1.py",
+      "sha256": "77c0217dd6b2f30e83e907e93dca58dab61e77d3ae7f98dbd26c4ecaa85431c7"
+    },
+    {
+      "bytes": 18698,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/run_owned_context_gate_v2.py",
+      "sha256": "da389bc6bdecb9002c6247e7f6b3c8415505c6890acea7648fa15e94f4388252"
+    },
+    {
+      "bytes": 18749,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397"
+    },
+    {
+      "bytes": 855,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/static-donor-two-guards-ROOT-launch-v1.json",
+      "sha256": "88dd711fb07e495004dc4bdd0777001ccbc2f4bd06a1e12c96c5de5298f5b98e"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/static-donor-two-guards-ROOT-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 343,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/static-donor-two-guards-ROOT-stdout-v1.txt",
+      "sha256": "a4d41a01e4aab34b80a37dffac6db6c77376ec7a90c39eb4ab02a5b0fca1b6c5"
+    },
+    {
+      "bytes": 1529,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/static-donor-two-guards-external-launcher-v1.json",
+      "sha256": "76118f55684442dc7d85a70e8dfe0e20b3864fe4046a7ee9df4273c781602d3e"
+    },
+    {
+      "bytes": 1010,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/static-donor-two-guards-post-write-observation-v1.json",
+      "sha256": "f7914d939d36cb4d6aaaee72f7542092a83a54b7f4f0b5450c09df6d634ea1d2"
+    },
+    {
+      "bytes": 87772,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/ROOT/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "sha256": "4e84adf59fb8fddc1d53a317afd392ac63c4045bfda0a9e79ea4c58d17dab116"
+    },
+    {
+      "bytes": 15613,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/reviewed-dispatcher-v1.py.txt",
+      "sha256": "77c0217dd6b2f30e83e907e93dca58dab61e77d3ae7f98dbd26c4ecaa85431c7"
+    },
+    {
+      "bytes": 18698,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/reviewed-dispatcher-v2.py.txt",
+      "sha256": "da389bc6bdecb9002c6247e7f6b3c8415505c6890acea7648fa15e94f4388252"
+    },
+    {
+      "bytes": 4378,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/reviewed-launch_owned_context_gate_v1.py.txt",
+      "sha256": "1298237523fe79f329b98c7ea92977a912904ebc3e0efdb0e414e20b63fd91a3"
+    },
+    {
+      "bytes": 5294,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/reviewed-launch_owned_context_gate_v2.py.txt",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136"
+    },
+    {
+      "bytes": 18749,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/reviewed-run_owned_context_gate_v3.py.txt",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397"
+    },
+    {
+      "bytes": 10621,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/source-review-v1.json",
+      "sha256": "89310f4a8d7d57488ba9dc5a152fff57459f544d8924e9a6ba6752e6803a9c22"
+    },
+    {
+      "bytes": 4056,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/source-review-v2.json",
+      "sha256": "1c1518564d8e0a34dc24265b93dd5b01474ed7adefb90d0a4d4782f82b701aba"
+    },
+    {
+      "bytes": 3018,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/source-review-v3.json",
+      "sha256": "faaf78ee5e0d575ee197da28bef021d04ebf86e1261ec0161bd5b93c23831c7a"
+    },
+    {
+      "bytes": 2899,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/dispatcher-source-review/source-review-v4.json",
+      "sha256": "57b48eb741091a1882a739e0da50ee7f87913de73cad6c3a9ccbb554c4e94861"
+    },
+    {
+      "bytes": 11542,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/display-source/before-partial-actual-update-reader.html",
+      "sha256": "55a2b4c2c205d610f5e66e3bbf11f7ae5457de4997bd2abadcfa000903e6cfd0"
+    },
+    {
+      "bytes": 4880,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/display-source/source-validation-v2.json",
+      "sha256": "25449d38dfc38b15a261b4dd0ec6bd5468aac3fb4c29e11fc7e39fa80eef39c8"
+    },
+    {
+      "bytes": 53066,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/display-source/view-schema-v1.json",
+      "sha256": "5b821462f76dc30ab0bf1342168de4e819deb65b44b1e56344166f6fae5202cc"
+    },
+    {
+      "bytes": 4811,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/frozen-contexts/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed"
+    },
+    {
+      "bytes": 25906,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/frozen-contexts/next-experiment-v1.json",
+      "sha256": "f2f8c25b21dfee4966bdcfd6fe93d0dcaa4c4caf194a3a83462474cf9db5f24b"
+    },
+    {
+      "bytes": 812,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-actual/root-static-donor-two-guards-activation-v1.json",
+      "sha256": "a709d8044ef39e93927a0efe9b7208a9e752b38e227ea97d412e88af017b40c7"
+    },
+    {
+      "bytes": 2284,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-actual/static-lifetime-v1.json",
+      "sha256": "11c930103a9d9e5f021b53aaf1aa7ea2185e85ed75f91efe40fc999d48184315"
+    },
+    {
+      "bytes": 15932793,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-actual/static-result-v1.json",
+      "sha256": "4c780805a89a6d00c48af9831e9eb2d54556a0f3cb2c39e8e9b4e5bc357ed617"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-actual/static-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-actual/static-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 287829,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/actual-static-donor-two-guards-plan-v1.json",
+      "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5"
+    },
+    {
+      "bytes": 22429,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/curriculum_context_oracle_v1.py",
+      "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41"
+    },
+    {
+      "bytes": 9444,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d"
+    },
+    {
+      "bytes": 13373,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/curriculum_independent_worker_v1.py",
+      "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1"
+    },
+    {
+      "bytes": 10588,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/finalize_curriculum_actual_static_plan_v1.py",
+      "sha256": "f893a182950e5b5dabb3a9dcf083072c48401da8c676344b978049feb8c22062"
+    },
+    {
+      "bytes": 9770,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/freeze_curriculum_independent_source_v1.py",
+      "sha256": "08166c0ab5c06f748295574f217fc5991211c467209ca4ce36a06900c87b7975"
+    },
+    {
+      "bytes": 8816,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/independent_curriculum_selection_v1.py",
+      "sha256": "5f368989c715e90ca018a5d3cca82c4ee1569abb52567aabe06f0c411524e28f"
+    },
+    {
+      "bytes": 7773,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/protocol-v1.json",
+      "sha256": "196df251503c926b6670c12387b3388e8da08bc67fd32640de4e6cee7ca5054d"
+    },
+    {
+      "bytes": 290878,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/source-plan-v1.json",
+      "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9"
+    },
+    {
+      "bytes": 2956,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/source-review-v1.json",
+      "sha256": "3205f48a33822ea72f008390e8ece81ffebb353f5115c6f7f62719389b662b65"
+    },
+    {
+      "bytes": 32051,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/independent-source/sources-v1.zip",
+      "sha256": "155a717ad936595a30d36fc17a7683638699c47cdd8bb7c6fcfedb893c0569cd"
+    },
+    {
+      "bytes": 311588,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/compiled-context-v1.json.gz",
+      "sha256": "15b598dbbb66669d62c96e6298b4838f111e1a56060082a229d780d6ad031ab2"
+    },
+    {
+      "bytes": 1386512,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-evidence-v1.json.gz",
+      "sha256": "4013f45690e9035b1e82a199a7c0b83caaf370f762ad2b417f6fc37766068cfc"
+    },
+    {
+      "bytes": 560,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-launch-v1.json",
+      "sha256": "a0b0daaa9ba32f460c3761d089d7ef18557f27c067d4cea850b910223011da39"
+    },
+    {
+      "bytes": 1309,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-lifetime-v1.json",
+      "sha256": "d067a823e9acd41a6993415f40b3c7d08f47f3029d8a00f28342c5ab6d483a29"
+    },
+    {
+      "bytes": 3677,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-outcome-v1.json",
+      "sha256": "aa04acc702dd921fa340fd88d9743ef44d4cb585676b7b4a9c3d277ca9c0c176"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3275,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-stdout-v1.txt",
+      "sha256": "d8e6e09826c48cf4251193d01e9e900ee57d02bec45c5e55df97e365cbe667b6"
+    },
+    {
+      "bytes": 23207,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/preparation-supervision-v1.json",
+      "sha256": "313f4b6bfc4467b91c588359f9f527d24cc6df08a9a7a4953cabdbd19ffdb184"
+    },
+    {
+      "bytes": 877,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-actual/root-preparation-donor-two-guards-activation-v1.json",
+      "sha256": "376c73a761af2e4b9c5561dcd93a9f17aebee3490febb43299be8ecdaeb01b1a"
+    },
+    {
+      "bytes": 13372,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-metadata-review/metadata-review-v1.json",
+      "sha256": "fa869edcc4f58dd661be6cfb808fbbd359debcabd8c5ee97ec8dc6153a810142"
+    },
+    {
+      "bytes": 10631,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-metadata-review/normalize-measured-context-gate-v3.py.txt",
+      "sha256": "b91397c65afe640c0193d12d106cbf75ea653753156938a7745d6bd0d6a0b0dc"
+    },
+    {
+      "bytes": 7059,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-metadata-review/normalizer-v2-to-v3-source-diff-v1.txt",
+      "sha256": "7de61a54fa093f2063cdbef6b0d8b33c0961cbfeb340a49908d4cf95fcc37457"
+    },
+    {
+      "bytes": 669,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-metadata-review/source-review-normalizer-v2-location-errata-v1.json",
+      "sha256": "39e3c9324b3e7f0fa5754e8e6a5aa4b2244c103d418ac215cb8b593a7baf1e2d"
+    },
+    {
+      "bytes": 3657,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-metadata-review/source-review-normalizer-v2.json",
+      "sha256": "df8e3dfeca8c6eb4f5917e1129f9e3fc4709d0efd602fd2e127b679632152175"
+    },
+    {
+      "bytes": 10056,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-metadata-review/source-review-normalizer-v3.json",
+      "sha256": "fe951d16eff601872dc2050f87e0bff45ce4b8381e7d531d86ab2fbadca523fd"
+    },
+    {
+      "bytes": 14954,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/curriculum_context_compiler_v1.py",
+      "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb"
+    },
+    {
+      "bytes": 2978,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/curriculum_outer_v1.py",
+      "sha256": "cbc1430be5821cbea3d2cd716bbb9e0533e1c493b234a476046c2c3e499b31e9"
+    },
+    {
+      "bytes": 8948,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/curriculum_prepare_worker_v1.py",
+      "sha256": "84b64117a605fecd756c15e4e71513c8f71b1ec875f4dcf0746c7e0ee1204b69"
+    },
+    {
+      "bytes": 5372,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/curriculum_runtime_v1.py",
+      "sha256": "55d59e522c2659153f38ec642f80e4ede99ad8ac8c460df8238c7729ac56ce84"
+    },
+    {
+      "bytes": 6433,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/curriculum_selection_v1.py",
+      "sha256": "7d5e4ab83f266d9d08e916cd5c76c1f953750d594e02cbd41ddc4c0d853147fd"
+    },
+    {
+      "bytes": 5413,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/curriculum_supervisor_v1.py",
+      "sha256": "d6f4e68a889ebdbc08655abdbc09a98271f96cb61c2a7d6d9fce3eada7d5b273"
+    },
+    {
+      "bytes": 20514,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/freeze_curriculum_source_v1.py",
+      "sha256": "3578a9962305e0f856fe5678cab74c1a12006d52b0ce7b6d06ef769decfaa29e"
+    },
+    {
+      "bytes": 209362,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/preparation-donor-repeated-equality-plan-v1.json",
+      "sha256": "295c50a4206644bee0bf00a0b14673816f6d30efd261f121df60be28e23087c8"
+    },
+    {
+      "bytes": 209305,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/preparation-donor-repeated-guard-plan-v1.json",
+      "sha256": "67e5d11310418a80624bb3e0a9fa7b8d0c8e4386cc0658c9e93542ea037b670c"
+    },
+    {
+      "bytes": 209305,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/preparation-donor-two-equalities-plan-v1.json",
+      "sha256": "f3cdff421d5cb88a42abdb44052ed326272a0462e0f9dff6eddec9c143b7b04a"
+    },
+    {
+      "bytes": 209229,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/preparation-donor-two-guards-plan-v1.json",
+      "sha256": "25aece2ee9cd3e0764a1012993cb8284b805ee834af6ede36d1a1265873398a2"
+    },
+    {
+      "bytes": 209459,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/preparation-heldout-mixed-guard-equality-plan-v1.json",
+      "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e"
+    },
+    {
+      "bytes": 4845,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/prospective-protocol-v1.json",
+      "sha256": "138ea75f915fd7e9cc169f5cba21429d4e9863a996bdeab4aa06c2a052154923"
+    },
+    {
+      "bytes": 1418,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/selection-binding-v1.json",
+      "sha256": "0e70bcd6990211f879b586048ff80c057444fe7bca62acede8791fb8fdf114ad"
+    },
+    {
+      "bytes": 207404,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/source-plan-v1.json",
+      "sha256": "6631f0bd5c079442f48a0035aeb630373e4a8a460fc0aaec5f82cfd20871cf38"
+    },
+    {
+      "bytes": 325555,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/preparation-source/sources-v1.zip",
+      "sha256": "27159e391f269fbf1ad6ce091d2813ef14aa8fbb2b333868b2ed188dd4f37f68"
+    },
+    {
+      "bytes": 7884,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/evidence/static-resource-review/review-v1.json",
+      "sha256": "43c9dabb621526ebe0f5836c69ed077ff2da6c6aaad21482d3438f93f9c94836"
+    },
+    {
+      "bytes": 52444,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/origins.json",
+      "sha256": "85740ec7a79ac4596b5f4ea5c8675c328be2f0850e5d754ea0d8dd140f29b030"
+    },
+    {
+      "bytes": 12069,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/reader.html",
+      "sha256": "180cbfdd4be02d2d839c6f88c353bc8a265208a67db55f22a84d4822f85a2b59"
+    },
+    {
+      "bytes": 8686,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/reader.js",
+      "sha256": "d3d8fb49a18c871681c8c2db2176065ccdb932939ec264c7ab7c4db2fa586a84"
+    },
+    {
+      "bytes": 37843,
+      "path": "docs/research/gcts-rl-renewal/curriculum-contexts/view.json",
+      "sha256": "819cff216d16497fccac66d84b1f3183b67df965338f1ca6d683515429c0a7d1"
+    }
+  ],
+  "first_static_resource_qualified": false,
+  "new_proofs": 0,
+  "origins": {
+    "bytes": 52444,
+    "path": "docs/research/gcts-rl-renewal/curriculum-contexts/origins.json",
+    "sha256": "85740ec7a79ac4596b5f4ea5c8675c328be2f0850e5d754ea0d8dd140f29b030"
+  },
+  "schema": "ROOT-partial-context-reader-assembly-v1",
+  "scientific_calls_by_assembler": 0,
+  "total_bytes": 20717067,
+  "view": {
+    "bytes": 37843,
+    "path": "docs/research/gcts-rl-renewal/curriculum-contexts/view.json",
+    "sha256": "819cff216d16497fccac66d84b1f3183b67df965338f1ca6d683515429c0a7d1"
+  }
+}

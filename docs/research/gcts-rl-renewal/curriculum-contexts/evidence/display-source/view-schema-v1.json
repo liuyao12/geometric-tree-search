@@ -1,0 +1,1841 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ROOT-assembled five-context display projection, not semantic acceptance",
+  "type": "object",
+  "required": [
+    "schema",
+    "contexts",
+    "progress",
+    "costs",
+    "evidence"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ROOT-assembled-frozen-curriculum-context-reader-v1"
+    },
+    "notebook": {
+      "const": 114
+    },
+    "status_note": {
+      "type": "string"
+    },
+    "guard_definition_latex": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contexts": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "prefixItems": [
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "partition",
+            "hypotheses",
+            "target",
+            "inventory",
+            "preparation",
+            "static_gate"
+          ],
+          "properties": {
+            "id": {
+              "const": "donor-two-guards"
+            },
+            "partition": {
+              "const": "donor"
+            },
+            "hypotheses": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 0
+                    },
+                    "row": {
+                      "const": 0
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 1
+                    },
+                    "row": {
+                      "const": 1
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 2
+                    },
+                    "row": {
+                      "const": 2
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ],
+              "items": false
+            },
+            "target": {
+              "type": "object",
+              "required": [
+                "latex",
+                "formula_code",
+                "row"
+              ],
+              "properties": {
+                "latex": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "formula_code": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 216
+                },
+                "row": {
+                  "const": 23
+                }
+              },
+              "additionalProperties": true
+            },
+            "inventory": {
+              "type": "object",
+              "required": [
+                "initial_primitive_candidate_count",
+                "complete_cluster_group_count",
+                "complete_body_count",
+                "capacity",
+                "capacity_status"
+              ],
+              "properties": {
+                "initial_primitive_candidate_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_cluster_group_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_body_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "capacity": {
+                  "const": 64
+                },
+                "capacity_status": {
+                  "enum": [
+                    "pending",
+                    "within",
+                    "exceeded",
+                    "unresolved"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "preparation": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "static_gate": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted",
+                "context_inventory_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "partition",
+            "hypotheses",
+            "target",
+            "inventory",
+            "preparation",
+            "static_gate"
+          ],
+          "properties": {
+            "id": {
+              "const": "donor-two-equalities"
+            },
+            "partition": {
+              "const": "donor"
+            },
+            "hypotheses": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 0
+                    },
+                    "row": {
+                      "const": 0
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 1
+                    },
+                    "row": {
+                      "const": 1
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 2
+                    },
+                    "row": {
+                      "const": 2
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ],
+              "items": false
+            },
+            "target": {
+              "type": "object",
+              "required": [
+                "latex",
+                "formula_code",
+                "row"
+              ],
+              "properties": {
+                "latex": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "formula_code": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 216
+                },
+                "row": {
+                  "const": 23
+                }
+              },
+              "additionalProperties": true
+            },
+            "inventory": {
+              "type": "object",
+              "required": [
+                "initial_primitive_candidate_count",
+                "complete_cluster_group_count",
+                "complete_body_count",
+                "capacity",
+                "capacity_status"
+              ],
+              "properties": {
+                "initial_primitive_candidate_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_cluster_group_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_body_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "capacity": {
+                  "const": 64
+                },
+                "capacity_status": {
+                  "enum": [
+                    "pending",
+                    "within",
+                    "exceeded",
+                    "unresolved"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "preparation": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "static_gate": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted",
+                "context_inventory_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "partition",
+            "hypotheses",
+            "target",
+            "inventory",
+            "preparation",
+            "static_gate"
+          ],
+          "properties": {
+            "id": {
+              "const": "donor-repeated-guard"
+            },
+            "partition": {
+              "const": "donor"
+            },
+            "hypotheses": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 0
+                    },
+                    "row": {
+                      "const": 0
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 1
+                    },
+                    "row": {
+                      "const": 1
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 2
+                    },
+                    "row": {
+                      "const": 2
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ],
+              "items": false
+            },
+            "target": {
+              "type": "object",
+              "required": [
+                "latex",
+                "formula_code",
+                "row"
+              ],
+              "properties": {
+                "latex": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "formula_code": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 216
+                },
+                "row": {
+                  "const": 23
+                }
+              },
+              "additionalProperties": true
+            },
+            "inventory": {
+              "type": "object",
+              "required": [
+                "initial_primitive_candidate_count",
+                "complete_cluster_group_count",
+                "complete_body_count",
+                "capacity",
+                "capacity_status"
+              ],
+              "properties": {
+                "initial_primitive_candidate_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_cluster_group_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_body_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "capacity": {
+                  "const": 64
+                },
+                "capacity_status": {
+                  "enum": [
+                    "pending",
+                    "within",
+                    "exceeded",
+                    "unresolved"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "preparation": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "static_gate": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted",
+                "context_inventory_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "partition",
+            "hypotheses",
+            "target",
+            "inventory",
+            "preparation",
+            "static_gate"
+          ],
+          "properties": {
+            "id": {
+              "const": "donor-repeated-equality"
+            },
+            "partition": {
+              "const": "donor"
+            },
+            "hypotheses": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 0
+                    },
+                    "row": {
+                      "const": 0
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 1
+                    },
+                    "row": {
+                      "const": 1
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 2
+                    },
+                    "row": {
+                      "const": 2
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ],
+              "items": false
+            },
+            "target": {
+              "type": "object",
+              "required": [
+                "latex",
+                "formula_code",
+                "row"
+              ],
+              "properties": {
+                "latex": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "formula_code": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 216
+                },
+                "row": {
+                  "const": 23
+                }
+              },
+              "additionalProperties": true
+            },
+            "inventory": {
+              "type": "object",
+              "required": [
+                "initial_primitive_candidate_count",
+                "complete_cluster_group_count",
+                "complete_body_count",
+                "capacity",
+                "capacity_status"
+              ],
+              "properties": {
+                "initial_primitive_candidate_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_cluster_group_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_body_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "capacity": {
+                  "const": 64
+                },
+                "capacity_status": {
+                  "enum": [
+                    "pending",
+                    "within",
+                    "exceeded",
+                    "unresolved"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "preparation": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "static_gate": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted",
+                "context_inventory_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "partition",
+            "hypotheses",
+            "target",
+            "inventory",
+            "preparation",
+            "static_gate"
+          ],
+          "properties": {
+            "id": {
+              "const": "heldout-mixed-guard-equality"
+            },
+            "partition": {
+              "const": "heldout"
+            },
+            "hypotheses": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 0
+                    },
+                    "row": {
+                      "const": 0
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 1
+                    },
+                    "row": {
+                      "const": 1
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "occurrence_index",
+                    "row",
+                    "latex",
+                    "formula_code",
+                    "license_id",
+                    "duplicate_of_index"
+                  ],
+                  "properties": {
+                    "occurrence_index": {
+                      "const": 2
+                    },
+                    "row": {
+                      "const": 2
+                    },
+                    "latex": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "formula_code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 216
+                    },
+                    "license_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "duplicate_of_index": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 2
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ],
+              "items": false
+            },
+            "target": {
+              "type": "object",
+              "required": [
+                "latex",
+                "formula_code",
+                "row"
+              ],
+              "properties": {
+                "latex": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "formula_code": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 216
+                },
+                "row": {
+                  "const": 23
+                }
+              },
+              "additionalProperties": true
+            },
+            "inventory": {
+              "type": "object",
+              "required": [
+                "initial_primitive_candidate_count",
+                "complete_cluster_group_count",
+                "complete_body_count",
+                "capacity",
+                "capacity_status"
+              ],
+              "properties": {
+                "initial_primitive_candidate_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_cluster_group_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "complete_body_count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "capacity": {
+                  "const": 64
+                },
+                "capacity_status": {
+                  "enum": [
+                    "pending",
+                    "within",
+                    "exceeded",
+                    "unresolved"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "preparation": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            },
+            "static_gate": {
+              "type": "object",
+              "required": [
+                "status",
+                "root_full_owned_seconds",
+                "peak_estimate_bytes",
+                "root_resource_accepted",
+                "context_inventory_accepted"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prepared",
+                    "accepted",
+                    "unknown",
+                    "failed",
+                    "not_run"
+                  ]
+                },
+                "root_full_owned_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "peak_estimate_bytes": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "root_resource_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "artifact_href": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "context_inventory_accepted": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      ],
+      "items": false
+    },
+    "progress": {
+      "type": "object",
+      "required": [
+        "new_proofs",
+        "training_episodes",
+        "RNG_draws",
+        "native_queries"
+      ],
+      "properties": {
+        "new_proofs": {
+          "const": 0
+        },
+        "training_episodes": {
+          "const": 0
+        },
+        "RNG_draws": {
+          "const": 0
+        },
+        "native_queries": {
+          "const": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "costs": {
+      "type": "object",
+      "required": [
+        "phase_subtotal_seconds",
+        "scope",
+        "additional_cost_note"
+      ],
+      "properties": {
+        "phase_subtotal_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "scope": {
+          "type": "string"
+        },
+        "additional_cost_note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "href"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "pattern": "^(evidence/[A-Za-z0-9._/-]+|view\\.json|origins\\.json)(#[A-Za-z0-9_-]+)?$"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

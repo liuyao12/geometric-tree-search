@@ -1,0 +1,38 @@
+{
+  "schema": "frozen-five-context-selection-v1",
+  "documents": {
+    "reference": {
+      "raw_pin": {
+        "path": ".gcts-active/fixed-family-transfer-plan-20261012/next-experiment-v1.json",
+        "sha256": "f2f8c25b21dfee4966bdcfd6fe93d0dcaa4c4caf194a3a83462474cf9db5f24b",
+        "bytes": 25906
+      },
+      "canonical_sha256": "866af9ba7ef1befe0197be0241377d58d7cd042b06673f88f55bb9705b2b63b4"
+    },
+    "split": {
+      "raw_pin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+        "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+        "bytes": 4811
+      },
+      "canonical_sha256": "80031da3781bd100c2b9a5dc0daf4f13e04a02b8d7cffff3e5ed00187c6de0a3"
+    },
+    "protocol": {
+      "raw_pin": {
+        "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+        "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+        "bytes": 19813
+      },
+      "canonical_sha256": "fd5554888ed03de13bb48aa663b6e841fbfa05a0e6baacbd5a62f546e771dd46"
+    }
+  },
+  "selectors": [
+    "donor-two-guards",
+    "donor-two-equalities",
+    "donor-repeated-guard",
+    "donor-repeated-equality",
+    "heldout-mixed-guard-equality"
+  ],
+  "execution_authorized": false,
+  "scope": "Canonical hashes of literal metadata documents only; no context selector or compiler invoked."
+}

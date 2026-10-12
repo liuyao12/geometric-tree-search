@@ -1,0 +1,30 @@
+{
+  "status": "passed_full_fresh_context_preparation_lifetime",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-guards-plan-v1.json",
+    "sha256": "25aece2ee9cd3e0764a1012993cb8284b805ee834af6ede36d1a1265873398a2",
+    "bytes": 209229
+  },
+  "phase_kind": "preparation",
+  "supervision": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-two-guards/preparation-supervision-v1.json",
+    "sha256": "313f4b6bfc4467b91c588359f9f527d24cc6df08a9a7a4953cabdbd19ffdb184",
+    "bytes": 23207
+  },
+  "supervisor_pid": 59150,
+  "supervisor_exit": 0,
+  "supervisor_reaped": true,
+  "worker_reaped_confirmed": true,
+  "full_supervisor_seconds_including_receipt_write": 5.998385958,
+  "outer_receipt_write": "outside pre-write interval; ROOT should also time full outer process",
+  "conservative_host_peak_bytes": 131743744,
+  "host_ceiling_bytes": 536870912,
+  "wall_ceiling_seconds": 60,
+  "cleanup_reason": null,
+  "actual_memory_overshoot_bytes": 0,
+  "actual_wall_overshoot_seconds": 0,
+  "memory_scope": "retrospective owned-process peak estimate; no OS hard cap or strict aggregate host upper bound",
+  "native_queries": 0,
+  "training_runs": 0,
+  "scope": "producer resource receipt only; no mathematical acceptance"
+}

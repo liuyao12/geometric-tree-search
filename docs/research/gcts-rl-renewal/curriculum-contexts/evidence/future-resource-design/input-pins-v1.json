@@ -1,0 +1,119 @@
+{
+  "status": "EXACT_METADATA_INPUT_PINS_STREAM_VERIFIED",
+  "review": {
+    "path": ".gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json",
+    "sha256": "43c9dabb621526ebe0f5836c69ed077ff2da6c6aaad21482d3438f93f9c94836",
+    "bytes": 7884
+  },
+  "inputs": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+      "sha256": "76118f55684442dc7d85a70e8dfe0e20b3864fe4046a7ee9df4273c781602d3e",
+      "bytes": 1529
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+      "sha256": "f7914d939d36cb4d6aaaee72f7542092a83a54b7f4f0b5450c09df6d634ea1d2",
+      "bytes": 1010
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "sha256": "4e84adf59fb8fddc1d53a317afd392ac63c4045bfda0a9e79ea4c58d17dab116",
+      "bytes": 87772
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+      "sha256": "11c930103a9d9e5f021b53aaf1aa7ea2185e85ed75f91efe40fc999d48184315",
+      "bytes": 2284
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+      "sha256": "4c780805a89a6d00c48af9831e9eb2d54556a0f3cb2c39e8e9b4e5bc357ed617",
+      "bytes": 15932793
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json",
+      "sha256": "88dd711fb07e495004dc4bdd0777001ccbc2f4bd06a1e12c96c5de5298f5b98e",
+      "bytes": 855
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+      "bytes": 5294
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d",
+      "bytes": 9444
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+      "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5",
+      "bytes": 287829
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+      "sha256": "a709d8044ef39e93927a0efe9b7208a9e752b38e227ea97d412e88af017b40c7",
+      "bytes": 812
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+      "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9",
+      "bytes": 290878
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json",
+      "sha256": "196df251503c926b6670c12387b3388e8da08bc67fd32640de4e6cee7ca5054d",
+      "bytes": 7773
+    },
+    {
+      "path": ".gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json",
+      "sha256": "43c9dabb621526ebe0f5836c69ed077ff2da6c6aaad21482d3438f93f9c94836",
+      "bytes": 7884,
+      "role": "preserved_independent_resource_review"
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+      "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1",
+      "bytes": 13373,
+      "role": "original_full_static_audit_worker"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2",
+      "bytes": 1518,
+      "role": "project_algorithm_contract_pointer"
+    },
+    {
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657,
+      "role": "master_algorithm_contract"
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+      "bytes": 19813,
+      "role": "unchanged_RL_protocol"
+    },
+    {
+      "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+      "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+      "bytes": 4811,
+      "role": "unchanged_donor_split"
+    }
+  ],
+  "full_audit_json_decoded_by_design_author": false,
+  "metadata_tools_only": true,
+  "scientific_calls": 0
+}

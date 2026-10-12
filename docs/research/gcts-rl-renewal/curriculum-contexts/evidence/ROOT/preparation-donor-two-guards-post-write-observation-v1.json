@@ -1,0 +1,24 @@
+{
+  "schema": "ROOT-context-gate-post-write-observation-v1",
+  "phase": "preparation",
+  "selector": "donor-two-guards",
+  "terminal": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-ROOT-terminal-v1.json",
+    "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e",
+    "bytes": 40840
+  },
+  "provisional_terminal": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-provisional-ROOT-terminal-v1.json",
+    "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e",
+    "bytes": 40840
+  },
+  "actual_seconds_through_ROOT_terminal_write": 6.6055874999999995,
+  "peak_after_receipt_serialization_bytes": 16384000,
+  "conservative_peak_after_receipt_serialization_bytes": 346636288,
+  "memory_reserve_validated": true,
+  "conservative_terminal_bound_seconds": 7.604026959,
+  "reserve_validated": true,
+  "accepted_for_metadata_finalization": true,
+  "observation_write_scope": "Hard-link metadata promotion and this standard-library observation are outside the charged phase; all immutable normalized receipt-byte serialization/close was charged; no further scientific work",
+  "scientific_calls_by_dispatcher": 0
+}

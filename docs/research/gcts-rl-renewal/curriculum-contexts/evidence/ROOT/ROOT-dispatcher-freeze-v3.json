@@ -1,0 +1,62 @@
+{
+  "schema": "ROOT-frozen-one-shot-five-context-dispatcher-v3",
+  "status": "source_review_passed_before_first_actual_preparation",
+  "dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+    "bytes": 18749
+  },
+  "launcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+    "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+    "bytes": 5294
+  },
+  "full_ROOT_source_review": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+    "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+    "bytes": 5740
+  },
+  "preserved_unexecuted_sources": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v1.py",
+      "sha256": "77c0217dd6b2f30e83e907e93dca58dab61e77d3ae7f98dbd26c4ecaa85431c7",
+      "bytes": 15613
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v2.py",
+      "sha256": "da389bc6bdecb9002c6247e7f6b3c8415505c6890acea7648fa15e94f4388252",
+      "bytes": 18698
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v1.py",
+      "sha256": "1298237523fe79f329b98c7ea92977a912904ebc3e0efdb0e414e20b63fd91a3",
+      "bytes": 4378
+    }
+  ],
+  "selectors": [
+    "donor-two-guards",
+    "donor-two-equalities",
+    "donor-repeated-guard",
+    "donor-repeated-equality",
+    "heldout-mixed-guard-equality"
+  ],
+  "limits": {
+    "preparation_full_seconds": 60,
+    "static_full_seconds": 180,
+    "owned_complete_peak_estimate_bytes": 536870912
+  },
+  "full_lifetime_method": "External Popen to wait4 includes dispatcher Python startup/imports/final receipt-byte write/metadata observation/printing/exit and reap; prospective1s/32MiB envelope validated before use. External launcher own setup/final metadata serialization are additional.",
+  "independent_source_review": {
+    "reviewer": "/root/independent_rl_review",
+    "passed": true,
+    "scientific_calls": 0,
+    "process_ownership_calls": 0,
+    "scope": "first exact preparation; exact successful pinned post-write AND external-launcher receipts required before frozen finalizer/qualification; no progression on missing/exceptional/unconfirmed cleanup"
+  },
+  "source_review_complete": true,
+  "scientific_calls_by_this_metadata_freeze": 0,
+  "actual_preparations_so_far": 0,
+  "actual_static_gates_so_far": 0,
+  "scheduler": "Master earliest-generation/global dead/forced/full primitive fallback unchanged; this phase only prepares and statically audits complete domains and cluster inventories.",
+  "qualification": "All five unchanged contexts and complete pools within64 needed before trajectories; no trimming or selective omission, retry, learned policy, proof or native acceptance by these gates."
+}

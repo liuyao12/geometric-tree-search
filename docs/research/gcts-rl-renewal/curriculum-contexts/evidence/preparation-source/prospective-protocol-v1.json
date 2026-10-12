@@ -1,0 +1,82 @@
+{
+  "schema": "frozen-curriculum-context-preparation-handoff-v1",
+  "status": "SOURCE_ONLY_five_exact_contexts_unexecuted",
+  "selection_binding": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/selection-binding-v1.json",
+    "sha256": "0e70bcd6990211f879b586048ff80c057444fe7bca62acede8791fb8fdf114ad",
+    "bytes": 1418
+  },
+  "frozen_split": {
+    "path": ".gcts-active/family-proposal-rl-small-source-20261012/donor-split-v1.json",
+    "sha256": "7085af5ac8304faf3268ee7117bb9674c77f849cdb17b45899a9fc6c4eb0e4ed",
+    "bytes": 4811
+  },
+  "frozen_RL_protocol": {
+    "path": ".gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+    "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5",
+    "bytes": 19813
+  },
+  "selectors": [
+    "donor-two-guards",
+    "donor-two-equalities",
+    "donor-repeated-guard",
+    "donor-repeated-equality",
+    "heldout-mixed-guard-equality"
+  ],
+  "context_selection": "Only exact frozen metadata references/literal ASTs; no proof word, chosen family subset or target priority script.",
+  "inventory": {
+    "non_assumption_witnesses": 226,
+    "ordered_assumption_occurrences": 3,
+    "formula_values": 217,
+    "conditional_source_bodies": 171,
+    "single_types": 171,
+    "ordered_pair_types": 29241,
+    "height": 24,
+    "all_initial_point_domains": "complete; not sampled"
+  },
+  "identity": "The original two-guard donor retains its semantic contextual assumption IDs; changed contexts rebuild all three licenses. Repeated equal formulas retain distinct index licenses. Fresh per-selector source/plan provenance changes model/full-placement/body/pool identity even where semantic context agrees.",
+  "boundary": "All24 required rows are explicit generation-zero roots. Only the three occurrence seeds and the resolved fixed-target formula mark vary; negative exterior sentinel, strict prior offsets, translations and complete point grammar stay identical.",
+  "advice": "Every independently rederived canonical single/ordered-pair root binding and shared full-key union is retained; exact base domains/fallback/scheduler unchanged.",
+  "RL_capacity": {
+    "maximum_full_group_count": 64,
+    "scope": "Prospective RL feasibility only; preserve all descriptors and report unresolved if exceeded, never trim."
+  },
+  "actual_output_schema": {
+    "compiled": "closed-frozen-curriculum-context-v1",
+    "compiled_fields_additive_to_transfer": [
+      "curriculum_binding",
+      "hypothesis_codes",
+      "target_code"
+    ],
+    "evidence": "fresh-context-whole-family-pool-preparation-v1",
+    "evidence_additional_fields": [
+      "curriculum_binding",
+      "hypothesis_codes",
+      "target_code",
+      "RL_full_pool_capacity",
+      "RL_full_pool_capacity_satisfied"
+    ],
+    "artifact_names": [
+      "compiled-context-v1.json.gz",
+      "preparation-evidence-v1.json.gz",
+      "preparation-outcome-v1.json"
+    ],
+    "artifact_namespace": "outputs/<exact frozen selector>/"
+  },
+  "required_actual_static_gate": "Separate ROOT-owned independent code must resolve the original frozen documents itself, rederive all229 licenses/171 recursively checked conditional bodies/full171+29241 grammar/24 raw domains, bind raw new outputs and actual owner/reaped ROOT terminals. Prior producer counts/source-only manifests are not acceptance. The existing mixed-only static gate cannot accept donor outputs unchanged.",
+  "actual_donor_search_and_training": "Not implemented or authorized here. All five preparation/static gates and the separate real-Controller feature/overlay fixture must precede the frozen episode driver. The8episode/8evaluation schedule,31features,rewards,seeds,zero weights/hyperparameters remain byte frozen.",
+  "resource_protocol": {
+    "per_context_preparation_outer_seconds": 60,
+    "supervisor_seconds": 55,
+    "child_seconds": 50,
+    "per_context_independent_static_seconds": 180,
+    "peak_bytes": 536870912,
+    "five_preparation_and_audit_phase_seconds": 1260,
+    "coordinator_allowance_seconds": 60,
+    "whole_cost": "Charge all imports/compilation/all bodies/full pool/all candidate domains/serialization/cleanup and full ROOT outer lifecycle. Existing monitor omits observer simultaneous RSS; no OS hard cap or aggregate-host bound."
+  },
+  "hypothesis_holdout": "Context composition only; existing formula/constant/primitive/source-family overlap and historical old donor result retained. No unseen-theorem, universal Wang, full Hilbert geometry, PA, or native acceptance claim.",
+  "immutable_failure": "Any missing/partial/resource-failed run is UNKNOWN with all partials retained and no rerun under the same frozen version. Observe/reap the same process handle; no retry from an observation timeout.",
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

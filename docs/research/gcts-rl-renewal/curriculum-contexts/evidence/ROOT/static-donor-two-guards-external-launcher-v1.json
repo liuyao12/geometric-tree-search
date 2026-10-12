@@ -1,0 +1,33 @@
+{
+  "schema": "ROOT-context-gate-external-launcher-observation-v1",
+  "phase": "static",
+  "selector": "donor-two-guards",
+  "accepted_for_metadata_finalization": false,
+  "dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+    "bytes": 18749
+  },
+  "launcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+    "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+    "bytes": 5294
+  },
+  "owner_pid": 65848,
+  "owner_exit_code": 1,
+  "owner_terminal_reaped": true,
+  "interruption": null,
+  "full_dispatcher_process_seconds_including_startup_imports_final_write_exit_reap": 14.004124667000001,
+  "launcher_peak_bytes": 12419072,
+  "dispatcher_kernel_peak_bytes": 308133888,
+  "observer_inclusive_phase_plus_launcher_peak_estimate_bytes": 1023344640,
+  "terminal": null,
+  "post_write_observation": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+    "sha256": "f7914d939d36cb4d6aaaee72f7542092a83a54b7f4f0b5450c09df6d634ea1d2",
+    "bytes": 1010
+  },
+  "rejected_terminal": null,
+  "receipt_scope": "External launcher imports and this metadata receipt serialization/exit are additional; full actual dispatcher lifetime and simultaneous launcher peak are covered by validated frozen terminal envelope.",
+  "scientific_calls_by_launcher": 0
+}

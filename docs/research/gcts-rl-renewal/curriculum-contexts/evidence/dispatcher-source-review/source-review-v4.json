@@ -1,0 +1,46 @@
+{
+  "schema": "independent-ROOT-curriculum-dispatcher-and-launcher-source-review-v4",
+  "status": "SOURCE_REVIEW_PASSES_FIRST_EXACT_PREPARATION_WITH_EXACT_RECEIPT_REQUIREMENTS",
+  "reviewed_sources": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+      "bytes": 5294
+    }
+  ],
+  "Python39_AST_passed": true,
+  "resolved": [
+    "Dispatcher single ROOT base peak and post-write delta share the same observation.",
+    "Zero-RSS entries and owned leader PGID participate in survivor failure detection.",
+    "Immutable provisional bytes are promoted only after post-time and post-peak reserve validation under unchanged60/180second and512MiB caps.",
+    "Launcher actual wait4 terminal kernel peak growth is added to the phase-plus-helper estimate before prospective envelope and cap acceptance.",
+    "Launcher startup/import/final metadata/exit/reap elapsed is measured externally. The helper own import and final receipt costs remain explicitly additional.",
+    "TERM/INT during launch/wait forces accepted false; the dispatcher receives TERM and the same child is reaped with no retry or second launch."
+  ],
+  "conditions": [
+    "ROOT must require successful exact external-launcher and post-write observation pins, terminal raw bytes and both reviewed source pins before frozen finalizer or qualification.",
+    "Missing/partial/unreadable/exceptional receipt means rejection and no progression; do not infer cleanup or acceptance from a remaining terminal path alone.",
+    "Source pass is for the first exact frozen V3 preparation. Later static dispatch also requires genuine frozen finalizer output with exact configured owner/worker/status/activation and nested input bindings.",
+    "Resource measurements are retrospective conservative estimates, not OS hard caps. Worker/owner/observer double-counting can correctly produce resource UNKNOWN; retain all records and do not relax budgets or scan alternative seeds."
+  ],
+  "prior_reviews_preserved": [
+    "source-review-v1.json",
+    "source-review-v2.json",
+    "source-review-v3.json"
+  ],
+  "remaining_scope": [
+    "No actual resource, process, compiler, static checker or mathematical result was executed or accepted by this reviewer.",
+    "Failure-path cleanup cannot be inferred if the dispatcher/helper is interrupted before complete receipts; a successful external receipt is required."
+  ],
+  "source_modules_imported": 0,
+  "process_ownership_calls": 0,
+  "scientific_calls": 0,
+  "activations_created": 0,
+  "publication_actions": 0,
+  "ROOT_sole_actual_owner": true
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "independent-failed-full-static-resource-metadata-review-v1",
+  "status": "UNKNOWN_PRESERVED_FULL_RESOURCE_GATE_FAILED_NO_RECLASSIFICATION",
+  "selector": "donor-two-guards",
+  "scope": "Saved JSON/source/AST/hash/resource-arithmetic only. Raw audit result status is reported, not logically reverified. No checker/model/search/process/PS/RNG/training/source-functional calls.",
+  "observed": {
+    "raw_static_semantic_audit": "passed_independent_frozen_curriculum_context_family_pool_audit",
+    "inner_owner_static_pass": true,
+    "inner_owner_kernel_conservative_bytes": 394657792,
+    "inner_owner_sampled_combined_bytes": 324730880,
+    "ROOT_provisional_conservative_bytes": 821870592,
+    "ROOT_postwrite_conservative_bytes": 788365312,
+    "external_complete_conservative_bytes": 1023344640,
+    "frozen_memory_cap_bytes": 536870912,
+    "frozen_time_cap_seconds": 180,
+    "external_full_dispatcher_seconds": 14.004124667000001,
+    "external_dispatcher_exit": 1,
+    "inner_owner_exit": 0,
+    "owner_worker_dispatcher_reaped_metadata": true,
+    "surviving_owned_descendants": [],
+    "normalized_static_terminal_exists": false,
+    "raw_static_result_bytes": 15932793,
+    "ROOT_samples": 339,
+    "ROOT_sampled_combined_max_bytes": 341868544
+  },
+  "scope_and_accounting_gap": [
+    "Raw semantic audit and inner owner success do not establish full ROOT-owned resource acceptance. The frozen complete provisional and external estimates exceed512MiB; the context remains UNKNOWN and cannot enter a global/all-five qualification manifest.",
+    "Dispatcher final observer_peak uses cumulative RUSAGE_CHILDREN after the scientific owner is reaped; that maximum also covers the owner and is added to inner/kernel/sample scope. This is deliberately conservative overlapping accounting, not a separately measured ps-only peak.",
+    "Launcher then adds terminal dispatcher kernel peak growth over postserialization SELF peak. Descendant usage may overlap on the platform, but no platform-specific inference or discount is applied to the historical numbers.",
+    "Owner and dispatcher both decode the complete15932793-byte audit result JSON. These postworker metadata allocations are charged owner/ROOT work and explain why earlier simultaneous-RSS samples do not describe the complete resource certificate.",
+    "The estimates are retrospective conservative instrumentation, not an OS hard cap or proof that physical simultaneous resident memory exceeded512MiB. This distinction does not permit reducing or reclassifying the failed frozen acceptance result.",
+    "Earlier preparation metadata correction was possible because its full estimate fit frozen caps. That route cannot apply here: postwrite and external estimates already exceed the original cap, external dispatcher exits1, and no accepted original terminal exists."
+  ],
+  "prospective_source_only_recommendations": [
+    "For still-unexecuted phases only, review/freeze a new wrapper version which hashes full audit evidence in a stream and reads a separate compact worker/owner terminal-status manifest bound to the exact full evidence SHA/bytes/plan/scope. Preserve complete evidence and full independent semantic checking; avoid repeated parent decoding of huge proof/domain records merely to read status.",
+    "Measure each short ps observer through its own explicitly owned process handle and terminal usage rather than using a cumulative RUSAGE_CHILDREN maximum contaminated by a reaped scientific child. Keep complete clocks/reaping and observer-inclusive costs; establish exact platform semantics before freezing any altered ledger.",
+    "Declare the accounting domain for every SELF/wait4/descendant observation and combine each distinct scope only under documented valid rules. If terminal rusage overlap cannot be established, retain conservative bounds and report UNKNOWN instead of subtracting an inferred descendant peak.",
+    "Keep180second/512MiB static and all other frozen scientific sources/features/split/grammar/reward/seeds/capacity semantics unchanged. No rerun, altered functional verifier, or resumed qualification for this executed donor static phase under the frozen version.",
+    "Do not issue a per-context or all-five accepted qualification; retain the raw semantic pass solely as partial evidence with the failed whole-resource result."
+  ],
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+      "sha256": "76118f55684442dc7d85a70e8dfe0e20b3864fe4046a7ee9df4273c781602d3e",
+      "bytes": 1529
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+      "sha256": "f7914d939d36cb4d6aaaee72f7542092a83a54b7f4f0b5450c09df6d634ea1d2",
+      "bytes": 1010
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "sha256": "4e84adf59fb8fddc1d53a317afd392ac63c4045bfda0a9e79ea4c58d17dab116",
+      "bytes": 87772
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+      "sha256": "11c930103a9d9e5f021b53aaf1aa7ea2185e85ed75f91efe40fc999d48184315",
+      "bytes": 2284
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+      "sha256": "4c780805a89a6d00c48af9831e9eb2d54556a0f3cb2c39e8e9b4e5bc357ed617",
+      "bytes": 15932793
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json",
+      "sha256": "88dd711fb07e495004dc4bdd0777001ccbc2f4bd06a1e12c96c5de5298f5b98e",
+      "bytes": 855
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+      "bytes": 5294
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d",
+      "bytes": 9444
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+      "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5",
+      "bytes": 287829
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+      "sha256": "a709d8044ef39e93927a0efe9b7208a9e752b38e227ea97d412e88af017b40c7",
+      "bytes": 812
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+      "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9",
+      "bytes": 290878
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json",
+      "sha256": "196df251503c926b6670c12387b3388e8da08bc67fd32640de4e6cee7ca5054d",
+      "bytes": 7773
+    }
+  ],
+  "project_modules_imported": 0,
+  "project_functions_invoked": 0,
+  "scientific_calls": 0,
+  "process_ownership_calls": 0,
+  "PS_calls": 0,
+  "RNG_draws": 0,
+  "activations_created": 0,
+  "publication_actions": 0,
+  "qualification_issued": false,
+  "ROOT_sole_actual_owner": true
+}

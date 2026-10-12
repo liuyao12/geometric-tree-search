@@ -1,0 +1,46 @@
+{
+  "schema": "ROOT-failed-one-shot-preparation-envelope-disposition-v1",
+  "status": "UNKNOWN_FAILED_FROZEN_EXTERNAL_ENVELOPE_PRESERVED_NO_RETRY",
+  "selector": "donor-two-guards",
+  "launcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-external-launcher-v1.json",
+    "sha256": "a60d56b82c465ecb479554b6999029deba8627a44672e58bfeff053aa74221f0",
+    "bytes": 1766
+  },
+  "post_write_observation": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-post-write-observation-v1.json",
+    "sha256": "ae5cf6b06abbeee4be3b37f0e8a98421aef17e574443a21cb03231bdf8ea9bae",
+    "bytes": 1240
+  },
+  "rejected_terminal": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-two-guards-externally-rejected-ROOT-terminal-v1.json",
+    "sha256": "aecdad670b5dedc6f368ded92381494906105160a28222e78bd116499e2b649e",
+    "bytes": 40840
+  },
+  "scientific_preparation_completed": true,
+  "final_external_envelope_accepted": false,
+  "actual_full_dispatcher_seconds": 6.635612167,
+  "conservative_complete_owned_peak_estimate_bytes": 442040320,
+  "fixed_phase_caps": {
+    "seconds": 60,
+    "bytes": 536870912
+  },
+  "failed_component": "Stored prospective normalization envelope underreported the final terminal kernel/launcher estimate; actual time/combined estimate were below unchanged phase ceilings.",
+  "phase_cleanup": {
+    "dispatcher_reaped": true,
+    "dispatcher_exit": 0,
+    "interruption": null
+  },
+  "actual_preparations": 1,
+  "actual_static_gates": 0,
+  "model_constructions": 1,
+  "target_searches": 0,
+  "RNG_draws": 0,
+  "training_runs": 0,
+  "native_queries": 0,
+  "independent_static_acceptance": false,
+  "mathematical_certificate_acceptance": false,
+  "further_progression_stopped": true,
+  "metadata_only_review_pending": true,
+  "scientific_retry_for_this_executed_phase_allowed": false
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "ROOT-reader-unbound-metadata-cost-correction-v1",
+  "scope": "Display metadata correction only, no scientific run or gate reclassification",
+  "before_view_sha256": "819cff216d16497fccac66d84b1f3183b67df965338f1ca6d683515429c0a7d1",
+  "after_view_sha256": "edc0f3e81ea6d73bd01efca39798b9fc093eca87d7e4963862fbcc7760035b92",
+  "after_bytes": 37784,
+  "only_change": "Removed optional precise finalizer time which lacked a saved timing receipt. It remains included in unmeasured additional metadata work. Bound two-phase subtotal unchanged.",
+  "old_raw_view": ".gcts-active/curriculum-gates-progress-20261012/view-before-unbound-metadata-cost-correction-v1.json",
+  "all_outcomes_counts_scopes_and_phase_receipts_unchanged": true,
+  "scientific_calls": 0
+}

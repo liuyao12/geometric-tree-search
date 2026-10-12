@@ -1,0 +1,132 @@
+{
+  "schema": "ROOT-frozen-curriculum-static-source-review-v1",
+  "curriculum_source_plan": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/source-plan-v1.json",
+    "sha256": "6631f0bd5c079442f48a0035aeb630373e4a8a460fc0aaec5f82cfd20871cf38",
+    "bytes": 207404
+  },
+  "independent_source_plan": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+    "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9",
+    "bytes": 290878
+  },
+  "full_sources_reviewed": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "source_review_scope": "ROOT read full producer/compiler/selection/worker/runtime/outer/supervisor/freezer and independent context/selection/worker/owner/finalizer/freezer; previous independent point/family/symbolic/expansion/pool libraries remain exact pinned previously reviewed accepted sources.",
+  "source_records": [
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_selection_v1.py",
+      "sha256": "7d5e4ab83f266d9d08e916cd5c76c1f953750d594e02cbd41ddc4c0d853147fd",
+      "bytes": 6433
+    },
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+      "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb",
+      "bytes": 14954
+    },
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_runtime_v1.py",
+      "sha256": "55d59e522c2659153f38ec642f80e4ede99ad8ac8c460df8238c7729ac56ce84",
+      "bytes": 5372
+    },
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_prepare_worker_v1.py",
+      "sha256": "84b64117a605fecd756c15e4e71513c8f71b1ec875f4dcf0746c7e0ee1204b69",
+      "bytes": 8948
+    },
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_supervisor_v1.py",
+      "sha256": "d6f4e68a889ebdbc08655abdbc09a98271f96cb61c2a7d6d9fce3eada7d5b273",
+      "bytes": 5413
+    },
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_outer_v1.py",
+      "sha256": "cbc1430be5821cbea3d2cd716bbb9e0533e1c493b234a476046c2c3e499b31e9",
+      "bytes": 2978
+    },
+    {
+      "role": "producer",
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/freeze_curriculum_source_v1.py",
+      "sha256": "3578a9962305e0f856fe5678cab74c1a12006d52b0ce7b6d06ef769decfaa29e",
+      "bytes": 20514
+    },
+    {
+      "role": "independent",
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+      "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41",
+      "bytes": 22429
+    },
+    {
+      "role": "independent",
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d",
+      "bytes": 9444
+    },
+    {
+      "role": "independent",
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+      "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1",
+      "bytes": 13373
+    },
+    {
+      "role": "independent",
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/finalize_curriculum_actual_static_plan_v1.py",
+      "sha256": "f893a182950e5b5dabb3a9dcf083072c48401da8c676344b978049feb8c22062",
+      "bytes": 10588
+    },
+    {
+      "role": "independent",
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/freeze_curriculum_independent_source_v1.py",
+      "sha256": "08166c0ab5c06f748295574f217fc5991211c467209ca4ce36a06900c87b7975",
+      "bytes": 9770
+    },
+    {
+      "role": "independent",
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py",
+      "sha256": "5f368989c715e90ca018a5d3cca82c4ee1569abb52567aabe06f0c411524e28f",
+      "bytes": 8816
+    }
+  ],
+  "unique_pin_counts": {
+    "producer": 895,
+    "independent": 946
+  },
+  "archives": [
+    {
+      "role": "producer",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/sources-v1.zip",
+        "sha256": "27159e391f269fbf1ad6ce091d2813ef14aa8fbb2b333868b2ed188dd4f37f68",
+        "bytes": 325555
+      },
+      "members": 18
+    },
+    {
+      "role": "independent",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/sources-v1.zip",
+        "sha256": "155a717ad936595a30d36fc17a7683638699c47cdd8bb7c6fcfedb893c0569cd",
+        "bytes": 32051
+      },
+      "members": 10
+    }
+  ],
+  "conformance": [
+    "All229 context-bound primitive records, three ordered hypothesis occurrences and all171 conditional bodies preserved.",
+    "Every24 root obligation remains generation zero; all171 single and29241 ordered pair proposal types and full primitive domain streams are retained.",
+    "Cluster inventory is advisory and never supplies primitive domain completeness or proof exhaustion.",
+    "All5 contexts and full64 descriptor capacity are fixed; no trimming or tuned retry."
+  ],
+  "gaps": [
+    "Static finite within-library context qualification only; no newly discovered theorem or universal compiler.",
+    "Observer-inclusive ROOT owned accounting and final receipt serialization/exit/reap are required before static finalization.",
+    "No actual preparation/static calls yet."
+  ]
+}

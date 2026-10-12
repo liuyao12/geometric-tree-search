@@ -1,0 +1,20 @@
+{
+  "schema": "ROOT-independent-frozen-curriculum-static-activation-v1",
+  "authorized": true,
+  "selector": "donor-two-guards",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+    "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5",
+    "bytes": 287829
+  },
+  "ROOT_source_review": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+    "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+    "bytes": 5740
+  },
+  "ROOT_dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+    "bytes": 18749
+  }
+}

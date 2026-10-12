@@ -1,0 +1,47 @@
+{
+  "schema": "independent-ROOT-curriculum-dispatcher-and-launcher-source-review-v3",
+  "status": "DISPATCHER_V3_PASSES_LAUNCHER_REQUIRES_TERMINAL_KERNEL_PEAK_ACCEPTANCE_REPAIR",
+  "reviewed_sources": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v1.py",
+      "sha256": "1298237523fe79f329b98c7ea92977a912904ebc3e0efdb0e414e20b63fd91a3",
+      "bytes": 4378
+    }
+  ],
+  "Python39_AST_passed": true,
+  "dispatcher_resolved": [
+    "One pre-write ROOT kernel peak is used consistently in initial bound and post-serialization delta.",
+    "Leader PGID and all RSS values participate in final survivor rejection.",
+    "1second and32MiB prospective reserves only tighten stopping/acceptance under unchanged60/180second and512MiB caps.",
+    "Exact full serialized bytes remain provisional until time/peak checks pass; promotion hard-links identical immutable bytes."
+  ],
+  "launcher_positive_alignment": [
+    "Actual dispatcher process Popen through wait4 exit/reap is measured externally, covering startup/imports/final metadata and exit.",
+    "The helper simultaneous kernel peak is charged and its own import/receipt cost is explicitly additional.",
+    "Exact successful post-write terminal pin and successful dispatcher exit are required.",
+    "A normally rejected external envelope renames the normalized terminal to a preserved rejected path."
+  ],
+  "finding": {
+    "id": "L1",
+    "priority": "blocking_resource_acceptance",
+    "title": "Dispatcher final wait4 kernel peak is recorded but ignored",
+    "detail": "complete_peak uses only observation.conservative_peak_after_receipt_serialization_bytes plus helper peak. The actual dispatcher terminal ru_maxrss is present only in the output receipt; a peak increase during subsequent observation/printing/exit can escape the external envelope check.",
+    "required_fix": "Include nonnegative delta between dispatcher terminal kernel peak and observation.peak_after_receipt_serialization_bytes in complete_peak before all stored-envelope/cap comparisons."
+  },
+  "conditions": [
+    "Successful pinned external launcher receipt plus successful pinned post-write observation are mandatory before finalizer/qualification.",
+    "Exceptions or external cancellation have no accepted external receipt; ROOT must stop and preserve unconfirmed-cleanup status. Normalized-path invalidation on exceptional paths should not be assumed from the current normal-failure-only rename branch.",
+    "Static plan configured owner/worker/activation/status paths must still be genuine frozen finalizer output before static dispatch."
+  ],
+  "metadata_only": true,
+  "source_modules_imported": 0,
+  "process_ownership_calls": 0,
+  "scientific_calls": 0,
+  "activations_created": 0,
+  "publication_actions": 0
+}

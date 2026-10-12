@@ -1,0 +1,46 @@
+{
+  "status": "passed_owned_independent_frozen_curriculum_context_family_pool_audit",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+    "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5",
+    "bytes": 287829
+  },
+  "child_pid": 65856,
+  "child_exit": 0,
+  "child_reaped": true,
+  "maximum_whole_seconds": 180,
+  "maximum_peak_bytes": 536870912,
+  "sampled_combined_peak_bytes": 324730880,
+  "kernel_conservative_peak_bytes": 394657792,
+  "metadata_child_peak_bytes": 1441792,
+  "trace_accepted": false,
+  "certificate_accepted": false,
+  "static_context_pool_accepted": true,
+  "searches_run_by_owner": 0,
+  "native_queries": 0,
+  "training_runs": 0,
+  "activation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+    "sha256": "a709d8044ef39e93927a0efe9b7208a9e752b38e227ea97d412e88af017b40c7",
+    "bytes": 812
+  },
+  "whole_target_logical_checks": 0,
+  "owner_seconds_before_final_receipt_write": 13.521534375,
+  "stdout": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-stderr-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "result": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+    "sha256": "4c780805a89a6d00c48af9831e9eb2d54556a0f3cb2c39e8e9b4e5bc357ed617",
+    "bytes": 15932793
+  },
+  "enforcement": "One owned wait4 child, worker SIGALRM, owned sampled RSS/time and fresh kernel peaks with retrospective rejection. No hard OS cap.",
+  "cost_scope": "Setup, body/model reconstruction, complete context/body/pool controls, worker serialization and reaping included. Own final receipt serialization and source authoring excluded; ROOT external process lifetime additional."
+}

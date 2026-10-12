@@ -1,0 +1,21 @@
+{
+  "schema": "ROOT-frozen-curriculum-preparation-activation-v1",
+  "authorized": true,
+  "selector": "donor-two-guards",
+  "plan": {
+    "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-guards-plan-v1.json",
+    "sha256": "25aece2ee9cd3e0764a1012993cb8284b805ee834af6ede36d1a1265873398a2",
+    "bytes": 209229
+  },
+  "status": "ROOT_authorized_exact_frozen_curriculum_context_preparation_v1",
+  "ROOT_source_review": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+    "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+    "bytes": 5740
+  },
+  "ROOT_dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+    "bytes": 18749
+  }
+}

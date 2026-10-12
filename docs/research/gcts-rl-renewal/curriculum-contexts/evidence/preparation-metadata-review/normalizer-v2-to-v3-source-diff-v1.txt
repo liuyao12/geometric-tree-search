@@ -1,0 +1,105 @@
+--- .gcts-active/curriculum-gates-progress-20261012/normalize_measured_context_gate_v2.py
++++ .gcts-active/curriculum-gates-progress-20261012/normalize_measured_context_gate_v3.py
+@@ -31,14 +31,38 @@
+     return dict(path=str(path.relative_to(ROOT)) if declared is None else declared,sha256=h.hexdigest(),bytes=n)
+ 
+ 
+-def read(path):return json.loads(Path(path).read_text())
++INPUT_PINS={}
++
++
++def track(path,record):
++    key=str(Path(path).resolve())
++    need(key not in INPUT_PINS or INPUT_PINS[key]==record,'consistent pinned input at read/verify')
++    INPUT_PINS[key]=record
++
++
++def read(path,expected=None):
++    path=Path(path);raw=path.read_bytes()
++    declared=expected['path'] if expected else str(path.relative_to(ROOT))
++    record=dict(path=declared,sha256=hashlib.sha256(raw).hexdigest(),bytes=len(raw))
++    need(expected is None or record==expected,'exact bytes decoded equal expected raw pin')
++    track(path,record)
++    return json.loads(raw)
++
++
++def verify_bytes(path,record):
++    need(pin(path,record['path'])==record,'immutable byte input')
++    track(path,record)
++
++
++def recheck():
++    for key,record in INPUT_PINS.items():
++        need(pin(Path(key),record['path'])==record,'input bytes unchanged through metadata normalization')
+ 
+ 
+ def read_pin(record):
+     need(set(record)=={'path','sha256','bytes'},'exact raw three-field pin')
+     path=Path(record['path']);path=path if path.is_absolute() else ROOT/path
+-    need(pin(path,record['path'])==record,'immutable actual raw byte identity')
+-    return read(path)
++    return read(path,record)
+ 
+ 
+ def bounded(value,maximum):
+@@ -59,7 +83,8 @@
+     need(external['schema']=='ROOT-context-gate-external-launcher-observation-v1'
+          and external['phase']==phase and external['selector']==selector
+          and external['owner_exit_code']==0 and external['owner_terminal_reaped'] is True
+-         and external['interruption'] is None,'fully measured clean one-shot dispatcher terminal')
++         and external['interruption'] is None
++         and type(external['accepted_for_metadata_finalization']) is bool,'fully measured clean one-shot dispatcher terminal')
+     original_pin=external['terminal'] if external['accepted_for_metadata_finalization'] is True else external['rejected_terminal']
+     need(original_pin is not None,'actual original normalization preserved')
+     original=read_pin(original_pin);observation=read_pin(external['post_write_observation'])
+@@ -69,6 +94,12 @@
+         and original['full_resource_accepted'] is True and original['failure'] is None
+         and original['error'] is None and original['live_owned_descendants_after_owner_reap']==[],
+         'original clean measured phase and descendants, no failed scientific owner or cleanup')
++    provisional=read_pin(observation['provisional_terminal'])
++    need(observation['schema']=='ROOT-context-gate-post-write-observation-v1'
++        and observation['phase']==phase and observation['selector']==selector
++        and provisional==original
++        and observation['provisional_terminal']['sha256']==original_pin['sha256']
++        and observation['provisional_terminal']['bytes']==original_pin['bytes'], 'exact original post-write schema/selector/provisional bytes')
+     need(observation['accepted_for_metadata_finalization'] is True
+         and observation['reserve_validated'] is True and observation['memory_reserve_validated'] is True
+         and observation['terminal']['sha256']==original_pin['sha256']
+@@ -86,18 +117,18 @@
+         need(full<=original['full_outer_seconds_including_receipt_write']
+             and peak>original['conservative_combined_peak_bytes'], 'failed auxiliary prediction is only memory envelope underreporting')
+     for name in ('dispatcher','launcher'):
+-        rec=external[name];need(pin(ROOT/rec['path'])==rec,'actual Python source bytes, no decoding/import')
++        rec=external[name];verify_bytes(ROOT/rec['path'],rec)
+     # Python sources are bytes, not JSON. Verify them without decoding/imports.
+     review=read_pin(original['ROOT_source_review'])
+     need(review['full_sources_reviewed'] is True and review['source_review_passed'] is True
+         and review['scientific_calls']==0,'original full source review')
+     for rec in review['source_records']:
+-        path=ROOT/rec['path'];need(pin(path,rec['path'])=={k:rec[k] for k in ('path','sha256','bytes')},'source still frozen')
++        path=ROOT/rec['path'];verify_bytes(path,{k:rec[k] for k in ('path','sha256','bytes')})
+     required=('preparation_plan','compiled_context','preparation_evidence','outcome','lifetime','supervision','activation') if phase=='preparation' else (
+         'static_plan','static_result','static_lifetime','static_activation','independent_source_plan')
+     raw={name:read_pin(original[name]) for name in required if name not in ('compiled_context','preparation_evidence')}
+     for name in ('compiled_context','preparation_evidence') if phase=='preparation' else ():
+-        rec=original[name];need(pin(ROOT/rec['path'])==rec,'complete gzip artifact bytes; no model decoding')
++        rec=original[name];verify_bytes(ROOT/rec['path'],rec)
+     if phase=='preparation':
+         need(raw['lifetime']['status']=='passed_full_fresh_context_preparation_lifetime'
+             and raw['lifetime']['supervisor_reaped'] is True and raw['lifetime']['worker_reaped_confirmed'] is True
+@@ -119,12 +150,15 @@
+         normalization_successor='Retrospective exact historical measured resource normalization; original failed auxiliary envelope remains failed. No scientific rerun or setting/cap change.',
+         timing_kind='Already measured full historical dispatcher startup/import/original receipt write/exit/reap. This successor metadata write is additional.',
+         memory_scope='Retain the exact conservative full external observation including launcher and terminal kernel growth; no XNU discount or OS hard-cap claim.')
++    recheck()
+     save(target,normalized);elapsed=time.perf_counter()-began
++    recheck()
+     save(audit_path,dict(schema='ROOT-metadata-only-measured-context-normalization-v1',phase=phase,selector=selector,
+         status='accepted_historical_full_measured_phase_resources_original_envelope_preserved',
+         measured_terminal=pin(target),original_terminal=original_pin,external_launcher=pin(external_path),
+         post_write_observation=external['post_write_observation'],normalizer=pin(Path(__file__)),
+         metadata_seconds_through_successor_terminal_write=elapsed,
++        exact_input_pins=[INPUT_PINS[key] for key in sorted(INPUT_PINS)],
+         scientific_calls=0,scientific_retries=0,original_external_envelope_accepted=external['accepted_for_metadata_finalization'],
+         actual_phase_scientific_acceptance='Pending separate independent static gate; no mathematical/proof/RL acceptance by normalization',
+         own_cost_scope='Additional standard JSON/hash metadata work; original historical charged phase was not rerun. This audit serialization is additional unmeasured metadata.'))

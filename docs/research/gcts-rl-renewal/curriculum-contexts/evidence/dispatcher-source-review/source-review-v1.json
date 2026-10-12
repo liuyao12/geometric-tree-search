@@ -1,0 +1,196 @@
+{
+  "schema": "independent-ROOT-curriculum-dispatcher-source-review-v1",
+  "status": "V1_SOURCE_REVIEW_REQUIRES_UNEXECUTED_SUCCESSOR_NO_ACTIVATION_APPROVED",
+  "reviewed_dispatcher": {
+    "path": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v1.py",
+    "sha256": "77c0217dd6b2f30e83e907e93dca58dab61e77d3ae7f98dbd26c4ecaa85431c7",
+    "bytes": 15613
+  },
+  "reviewed_inputs": [
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_outer_v1.py",
+      "sha256": "cbc1430be5821cbea3d2cd716bbb9e0533e1c493b234a476046c2c3e499b31e9",
+      "bytes": 2978
+    },
+    {
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_supervisor_v1.py",
+      "sha256": "d6f4e68a889ebdbc08655abdbc09a98271f96cb61c2a7d6d9fce3eada7d5b273",
+      "bytes": 5413
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/finalize_curriculum_actual_static_plan_v1.py",
+      "sha256": "f893a182950e5b5dabb3a9dcf083072c48401da8c676344b978049feb8c22062",
+      "bytes": 10588
+    },
+    {
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d",
+      "bytes": 9444
+    },
+    {
+      "path": ".gcts-active/family-scientific-independent-source-20261012/independent_scientific_qualification_v1.py",
+      "sha256": "e67e8c4f0fd9d66e7f8cb47d723a6093b5aaba632b51c0eadb82c915ca6e1cf3",
+      "bytes": 13105
+    }
+  ],
+  "five_exact_preparation_plans": [
+    {
+      "selector": "donor-two-guards",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-guards-plan-v1.json",
+        "sha256": "25aece2ee9cd3e0764a1012993cb8284b805ee834af6ede36d1a1265873398a2",
+        "bytes": 209229
+      },
+      "preserved_field": "preserved_files",
+      "preserved_count": 808
+    },
+    {
+      "selector": "donor-two-equalities",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-two-equalities-plan-v1.json",
+        "sha256": "f3cdff421d5cb88a42abdb44052ed326272a0462e0f9dff6eddec9c143b7b04a",
+        "bytes": 209305
+      },
+      "preserved_field": "preserved_files",
+      "preserved_count": 808
+    },
+    {
+      "selector": "donor-repeated-guard",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-repeated-guard-plan-v1.json",
+        "sha256": "67e5d11310418a80624bb3e0a9fa7b8d0c8e4386cc0658c9e93542ea037b670c",
+        "bytes": 209305
+      },
+      "preserved_field": "preserved_files",
+      "preserved_count": 808
+    },
+    {
+      "selector": "donor-repeated-equality",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-donor-repeated-equality-plan-v1.json",
+        "sha256": "295c50a4206644bee0bf00a0b14673816f6d30efd261f121df60be28e23087c8",
+        "bytes": 209362
+      },
+      "preserved_field": "preserved_files",
+      "preserved_count": 808
+    },
+    {
+      "selector": "heldout-mixed-guard-equality",
+      "pin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/preparation-heldout-mixed-guard-equality-plan-v1.json",
+        "sha256": "2c6fd15233014db780e68f4bb82175d04cc4eeb3da0b9ff0fb5897e0b1c3232e",
+        "bytes": 209459
+      },
+      "preserved_field": "preserved_files",
+      "preserved_count": 808
+    }
+  ],
+  "Python39_AST_passed": true,
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "blocking",
+      "lines": [
+        127,
+        137
+      ],
+      "title": "Producer preserved closure is skipped before launch",
+      "detail": "All five frozen producer plans contain808 preserved_files records. V1 verifies preserved only, omitting that closure until the frozen child later verifies it.",
+      "required_successor": "Verify both preserved_files and preserved, reconcile duplicates exactly, before activation or process launch."
+    },
+    {
+      "id": "F2",
+      "priority": "blocking",
+      "lines": [
+        248,
+        269
+      ],
+      "title": "Provisional positive terminal is consumable after failed reserve validation",
+      "detail": "V1 writes full_resource_accepted=true to the final normalized path before post-write validation. A failed reserve check produces exit1/accepted_for_metadata_finalization=false, but the frozen finalizer and scientific qualification consume the terminal fields without requiring that observation. Manual caller obedience is needed to avoid stale positive use.",
+      "required_successor": "Publish no final accepted normalized path until already-written bytes and post-serialization clocks/peaks pass. Atomically promote immutable provisional bytes, and bind a successful post observation in downstream ROOT qualification/report metadata before invoking frozen finalizer."
+    },
+    {
+      "id": "F3",
+      "priority": "blocking",
+      "lines": [
+        205,
+        206,
+        242,
+        263
+      ],
+      "title": "Post-serialization memory and final observer are not checked",
+      "detail": "Conservative memory is computed before terminal JSON serialization; post validation tests time only. The final process_table subprocess is reaped after the last observer_peak update and its individual usage is not separately retained. A larger ROOT serialization peak or final observer can evade the stored positive resource test.",
+      "required_successor": "Record terminal usage for each ROOT ps observer and recheck ROOT and observer-inclusive memory after provisional receipt serialization/close, as well as time, before promotion."
+    },
+    {
+      "id": "F4",
+      "priority": "blocking_accounting_gap",
+      "lines": [
+        227,
+        242
+      ],
+      "title": "Producer inner observer contribution lacks a separate bound",
+      "detail": "The frozen producer supervisor explicitly labels ps observer RSS omitted; its own+child kernel peak uses a maximum over reaped children. ROOT max(inner_peak,owner_peak,owned_RSS) is not a sum including an inner ps that may never be sampled. This is a retrospective estimate, not an observer-complete estimate by source construction.",
+      "required_successor": "Add an explicit sound inner-observer contribution. ROOT proposed adding the supervisor kernel_child_peak_bytes upper bound for its one sequential observer; this conservatively double-counts the worker and may correctly force resource UNKNOWN. Do not relax budgets or silently discard this charge."
+    },
+    {
+      "id": "F5",
+      "priority": "binding_gap",
+      "lines": [
+        120,
+        124,
+        125,
+        127
+      ],
+      "title": "Exact selected plan/schema is not directly bound to reviewed manifest",
+      "detail": "V1 checks selector and each self-declared plan record, but does not check exact plan schema or selected producer plan raw pin against the reviewed source manifest. Self-declared closure consistency does not prove that the configuration being launched is the frozen selector plan.",
+      "required_successor": "For preparation, match the entire raw selected plan to the reviewed V3 manifest input role; for static, require exact frozen actual-static schema/stage/ROOT-only flags plus review-linked immutable plan and nested receipt bindings. Bind launch and activation to those exact bytes."
+    },
+    {
+      "id": "F6",
+      "priority": "cleanup_gap",
+      "lines": [
+        78,
+        106,
+        207,
+        212
+      ],
+      "title": "Cleanup can leave unobserved or zero-RSS owned descendants unconfirmed",
+      "detail": "PGID is collected but unused. Tracking is based on sampled PPID descendants and retained PIDs; a quickly reparented descendant can be missed. Survivors filter discards zero-RSS entries, and SIGKILL is followed by no fresh absence/terminal check. This does not create a positive receipt when survivors are found, but does not establish clean terminal ownership after a failure.",
+      "required_successor": "Use known receipt worker/supervisor PIDs and owned process groups as well as lineage; distinguish live processes from zombies without treating RSS0 as absence; preserve an explicit unconfirmed-cleanup failure and stop all progression if full terminal cleanup cannot be established."
+    },
+    {
+      "id": "F7",
+      "priority": "scope_note",
+      "lines": [
+        109,
+        110,
+        268
+      ],
+      "title": "Clock scope starts at main and ends at receipt bytes",
+      "detail": "V1 main timer excludes Python startup/module imports; post-observation write and dispatcher exit are explicitly excluded. Scientific owners/workers are terminal before this metadata work, so the scope can be stated, but it is not an independent measurement of the entire dispatcher process lifetime.",
+      "required_successor": "Keep this scope explicit and charge external ROOT launch/import/exit observations separately if reporting the complete ROOT process lifetime. Do not label a main-only interval as an externally measured full process clock."
+    }
+  ],
+  "positive_alignment": [
+    "Five literal selectors and two declared phases; expected60/180-second and512MiB ceiling choices.",
+    "Exclusive x-mode receipt/stdout/stderr/activation outputs and immutable one-shot namespaces.",
+    "Actual immediate child termination is consumed through wait4; passed preparation/static paths require frozen inner worker/owner reaping statuses.",
+    "Runtime/observer byte identities and reviewed source pins are checked.",
+    "Post-write clock observation exists; budget or infrastructure failure returns nonzero and is not a theorem failure."
+  ],
+  "ROOT_proposed_successor_assessment": "Exclusive provisional full receipt bytes, post-serialization time+memory checks, atomic hard-link promotion only after success, successful post-observation pin before finalization, and explicit inner observer bound addressF2/F3/F4 if implemented exactly. Preserve V1 and use a fresh successor namespace; also fixF1/F5 and retain cleanup/scope gaps until resolved.",
+  "source_modules_imported": 0,
+  "scientific_calls": 0,
+  "process_ownership_calls": 0,
+  "RNG_draws": 0,
+  "activations_created": 0,
+  "actual_scientific_dispatches": 0,
+  "publication_actions": 0,
+  "ROOT_sole_actual_owner": true
+}
