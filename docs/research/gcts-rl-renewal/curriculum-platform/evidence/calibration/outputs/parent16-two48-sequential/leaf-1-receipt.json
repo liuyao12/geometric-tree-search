@@ -1,0 +1,23 @@
+{
+  "status": "fixed_non_scientific_leaf_completed",
+  "touched_bytes": 50331648,
+  "no_children": true,
+  "SELF_before_receipt": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 17,
+    "ru_maxrss": 63913984,
+    "ru_minflt": 4525,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 25,
+    "ru_nsignals": 0,
+    "ru_nswap": 0,
+    "ru_nvcsw": 1,
+    "ru_oublock": 0,
+    "ru_stime": 0.017727,
+    "ru_utime": 0.031404
+  }
+}

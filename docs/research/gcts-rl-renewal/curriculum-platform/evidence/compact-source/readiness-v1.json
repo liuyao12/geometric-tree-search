@@ -1,0 +1,40 @@
+{
+  "status": "SOURCE_ONLY_V1_PRESERVED_BLOCKED_NO_FUNCTIONAL_EXECUTION",
+  "manifest": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json",
+    "sha256": "2cfcfde17096cb74077ae8375df2cc50b51c0791270ca821b9fc89150e4329a1",
+    "bytes": 277764
+  },
+  "ASTs": [
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "status": "Python3.9_AST_only"
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "status": "Python3.9_AST_only"
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py",
+      "status": "Python3.9_AST_only"
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1.py",
+      "status": "Python3.9_AST_only"
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1b.py",
+      "status": "Python3.9_AST_only"
+    }
+  ],
+  "scientific_functions_byte_identical": 8,
+  "exact_original_libraries": 7,
+  "leaf_source_modules": 9,
+  "preserved_unique": 965,
+  "metadata_freeze_seconds_before_final_receipts": 0.475123834,
+  "postlude_bytes": 52,
+  "scientific_calls": 0,
+  "process_PS_browser_calibration_calls": 0,
+  "qualification_issued": false,
+  "execution_authorized": false
+}

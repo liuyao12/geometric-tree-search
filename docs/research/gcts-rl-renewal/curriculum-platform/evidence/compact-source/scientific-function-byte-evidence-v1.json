@@ -1,0 +1,67 @@
+{
+  "status": "EXACT_SOURCE_BYTES_PRESERVED_NO_FUNCTION_EXECUTED",
+  "original": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+    "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1",
+    "bytes": 13373
+  },
+  "successor": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+    "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+    "bytes": 13759
+  },
+  "complete_pre_main_prefix_bytes": 11725,
+  "complete_pre_main_prefix_sha256": "0b02c8499531cd15863c45e8f1b34c2a2a7e7a8ea1d54f919aa5ffd9ac37176f",
+  "functions": [
+    {
+      "name": "pin",
+      "bytes": 262,
+      "sha256": "d1ce0f3ea9740210f9695374bb647452d5f1fe735f1be98238ae957061c5934f",
+      "byte_identical": true
+    },
+    {
+      "name": "relative",
+      "bytes": 114,
+      "sha256": "3df62c0c7159602ff859f4fdd61bfdddbcb5a46d26cac787468fbd272bcf8d4f",
+      "byte_identical": true
+    },
+    {
+      "name": "verify",
+      "bytes": 389,
+      "sha256": "af96be3296f17e8198c79640456099af4828a33912e44adf3d30daa0181131d6",
+      "byte_identical": true
+    },
+    {
+      "name": "load",
+      "bytes": 300,
+      "sha256": "7e607fc80c0a52a9688640c7e81263044fdb0ce73402fee5728573dda7272527",
+      "byte_identical": true
+    },
+    {
+      "name": "libraries",
+      "bytes": 612,
+      "sha256": "173d682692055bdebb3b82647908a1617c7934a96ae5ec188e4b228ff7e8acb0",
+      "byte_identical": true
+    },
+    {
+      "name": "validate_terminal",
+      "bytes": 1420,
+      "sha256": "50d06fb33f87dc01815a8834df5ee680165a2b8902fbda7a6db8ebd5e1db00d4",
+      "byte_identical": true
+    },
+    {
+      "name": "rebuild",
+      "bytes": 2813,
+      "sha256": "58b04481fe6995791275ae8777fdaf8216aea8d85bbe87dec7394e43cf398fac",
+      "byte_identical": true
+    },
+    {
+      "name": "static_run",
+      "bytes": 5122,
+      "sha256": "2820e32d892e32e1d6c0aa31a5462fd10a585a78ee1d283aaca0a95b6849caef",
+      "byte_identical": true
+    }
+  ],
+  "all_seven_original_semantic_libraries_preserved": true,
+  "scientific_calls": 0
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "ROOT-calibration-complete-outer-reap-v1",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+    "bytes": 16922
+  },
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+    "bytes": 2133
+  },
+  "freeze": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/ROOT-execution-freeze-v1.json",
+    "sha256": "268795564ab95133c44c2d25072f25c7065eeac6fe14f7ad7ca7f353bf6a3259",
+    "bytes": 2728
+  },
+  "child_pid": 83990,
+  "child_exit": 0,
+  "child_reaped": true,
+  "full_external_process_seconds": 5.368283458,
+  "cancellation_observed": false,
+  "cooperative_stop": false,
+  "emergency_group_kill": false,
+  "runner_seconds_before_receipt": 5.388712125,
+  "wait4_descendant_inclusive_ru_maxrss_raw": 64110592,
+  "raw_semantic_scope": "No mathematics, model, search or RL; finite platform observations",
+  "postwrite_FRAME_validated": true,
+  "resource_estimate_accepted": true,
+  "external_SELF_after_receipt_close_raw": 13893632,
+  "external_seconds_through_receipt_close": 5.344305916,
+  "complete_distinct_role_estimate_bytes": 204603392,
+  "resource_scope": "Distinct role maxima plus32MiB fixed postlude/runner final receipt reserve; retrospective finite estimate, no OS hard cap",
+  "result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+    "sha256": "507145fc23bc4463c41367c3cf85bd5b57958c0fb7027e9e758187b779ea0cec",
+    "bytes": 32651
+  }
+}

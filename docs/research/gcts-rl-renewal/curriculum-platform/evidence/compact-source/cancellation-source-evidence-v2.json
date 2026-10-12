@@ -1,0 +1,65 @@
+{
+  "schema": "source-only-compact-owner-cancellation-evidence-v2",
+  "status": "AST_AND_EXACT_SOURCE_TRANSFORM_REVIEWED_NO_RUNTIME_FIXTURE",
+  "owner": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py",
+    "sha256": "a31524a879f28650e8f57507d304b939ae634c1e509fa9a663a13a4b686dd55f",
+    "bytes": 16884
+  },
+  "handler_line": 183,
+  "handler_sha256": "c4763b091e5c02b2d1d2b476be34e9b667de54138a822aa31eea252c57ee59dc",
+  "handler_operations": [
+    "nonlocal cancelled_signum",
+    "cancelled_signum=signum"
+  ],
+  "registrations": [
+    {
+      "line": 189,
+      "signal": "signal.SIGTERM",
+      "handler": "cancellation_flag"
+    },
+    {
+      "line": 189,
+      "signal": "signal.SIGALRM",
+      "handler": "cancellation_flag"
+    }
+  ],
+  "ownership_scopes": [
+    {
+      "function": "run_owner",
+      "spawn_line": 195,
+      "spawn_end_line": 197,
+      "polling_wait4_line": 202,
+      "explicit_check_cancel_lines": [
+        192,
+        199,
+        201,
+        206,
+        223
+      ],
+      "source_sha256": "ff574c2de813af430606b07c00a6598f580858348efd2c2d68d50bed7c7b2a49"
+    },
+    {
+      "function": "observe",
+      "spawn_line": 69,
+      "spawn_end_line": 69,
+      "polling_wait4_line": 75,
+      "explicit_check_cancel_lines": [
+        67,
+        72,
+        74,
+        79
+      ],
+      "source_sha256": "dcce788ff3ba62d0e5a00cc6dfbb9cb63a1273ada81a325faf4cc3550793a233"
+    }
+  ],
+  "cleanup": "Direct registered unreaped handle retained through SIGKILL/exact terminal wait4. No signal ignore/restore, historical PID or group cleanup.",
+  "complete_lifetime_gap": "Blocking exact-child wait4 after SIGKILL requires ROOT outer complete bounded lifetime/cleanup and platform verification; no kernel-independent reap bound is claimed.",
+  "late_signal_gap": "External cancellation provenance and complete ROOT gate must reject a signal after final exit-code/frame sampling; pending owner never resource-qualifies.",
+  "interpreter_scope": "Source argument, not runtime/Popen/import-hook/native/Mach-O/ELF safety certification.",
+  "source_only": true,
+  "runtime_fixtures": 0,
+  "scientific_calls": 0,
+  "process_calls": 0,
+  "execution_authorized": false
+}

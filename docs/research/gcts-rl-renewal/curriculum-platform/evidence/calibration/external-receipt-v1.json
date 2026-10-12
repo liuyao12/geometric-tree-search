@@ -1,0 +1,53 @@
+{
+  "status": "completed_non_scientific_calibration_external_lifetime",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+    "bytes": 2133
+  },
+  "result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+    "sha256": "507145fc23bc4463c41367c3cf85bd5b57958c0fb7027e9e758187b779ea0cec",
+    "bytes": 32651
+  },
+  "coordinator_pid": 83991,
+  "coordinator_reaped": true,
+  "coordinator_exit_code": 0,
+  "coordinator_wait4_raw": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 176,
+    "ru_maxrss": 64110592,
+    "ru_minflt": 38710,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 379,
+    "ru_nsignals": 0,
+    "ru_nswap": 0,
+    "ru_nvcsw": 733,
+    "ru_oublock": 0,
+    "ru_stime": 0.20823999999999998,
+    "ru_utime": 0.319345
+  },
+  "coordinator_frame": {
+    "pid": 83991,
+    "role": 3,
+    "SELF_ru_maxrss_raw": 14319616,
+    "seconds_through_all_artifact_close": 5.309706875000001,
+    "entry": 0.005301916,
+    "last_close": 5.315008791,
+    "pin": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+      "sha256": "6c4e397ac69c5b3c934b10c744155d2ed6ec7021ac5d68cdd2e6fc17f64b0a2b",
+      "bytes": 52
+    }
+  },
+  "distinct_scope_peak_sum_raw_plus_32MiB": 191643648,
+  "raw_bytes_interpretation_pending_independent_platform_review": true,
+  "estimate_under_fixed_256MiB": true,
+  "external_seconds_before_final_receipt": 5.3438518329999996,
+  "remaining_scope": "External receipt close/fixed52-byte postlude/hard exit within declared32MiB reserve; retrospective estimate, no OS hard cap",
+  "original_donor_two_guards_UNKNOWN_preserved": true
+}

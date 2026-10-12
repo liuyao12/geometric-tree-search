@@ -1,0 +1,211 @@
+{
+  "schema": "independent-fixed-platform-calibration-V4-finite-source-pass-v1",
+  "status": "SOURCE_PASS_FIXED_FINITE_NONSCIENTIFIC_SCOPE_PENDING_ROOT_FREEZE_AND_ACTUAL_REVIEW",
+  "exact_input_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v1.py",
+      "sha256": "380182e6f25ddee2c31c3282ca7aac534a5e10bbdf2ae97f2a1a73ecf26778e2",
+      "bytes": 13045
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v1.json",
+      "sha256": "d8e60d5ab33feec2c479c61da8a52ea9234d8df3d59a8c65a27839af3b8fc7f9",
+      "bytes": 1862
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v2.py",
+      "sha256": "6cfedaff4b0de5f72f34e65f3d0056a75eb4613cac7ee24b5d731b938c5582b0",
+      "bytes": 14790
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v2.json",
+      "sha256": "970be64805afcdf1f3d6592d405986c8b79e25a92d387fb3172e9e1afd2caf42",
+      "bytes": 2061
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v3.py",
+      "sha256": "b247d0f1436812ef6a706d8259ddba8030dc3a223f04df56b92c4b0c5a364acd",
+      "bytes": 16728
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v3.json",
+      "sha256": "34474a0e2eceb9f7652ec57c96a0873b38cfee47262763563ab7bba5703a1f3b",
+      "bytes": 2095
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v1.py",
+      "sha256": "ccc045c357445569930ad178831b867b4b15504111ce21e7f461d0c6adecd059",
+      "bytes": 4459
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+      "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+      "bytes": 16922
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+      "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+      "bytes": 2133
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+      "sha256": "44845f25f0f58cb2947d769d12231b4510fb973a47c51b752a80c835be66c8f5",
+      "bytes": 6655
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v1.json",
+      "sha256": "330cd708f2581c6da8d377dba1b399b48676625d739df4074f40c18e9fae589b",
+      "bytes": 1391
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v1.json",
+      "sha256": "d297a8f7953a9a2965a72c5c8ad3b1f71a976560de6b7998d2d432edcb3a5db7",
+      "bytes": 9221
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-semantics-source-review-20261012/review-v1.json",
+      "sha256": "a94932d5648a8ea3062d8ddbd3e96142636269bd51f91a450ddfcbd86aeba3d2",
+      "bytes": 10129
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-semantics-source-review-20261012/conclusions-v1.json",
+      "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+      "bytes": 9398
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v3-findings-v1.json",
+      "sha256": "bfed9ed15a4527fd8f92ad7dd889f61ef545f388d90772e4afd2734bc5aaca6d",
+      "bytes": 2083
+    }
+  ],
+  "full_sources_read": true,
+  "Python39_AST_only_passed": [
+    "calibrate_platform_v1.py",
+    "calibrate_platform_v2.py",
+    "calibrate_platform_v3.py",
+    "run_calibration_once_v1.py",
+    "calibrate_platform_v4.py",
+    "run_calibration_once_v2.py"
+  ],
+  "fixed_five_cases": [
+    [
+      "leaf16",
+      0,
+      [
+        16
+      ]
+    ],
+    [
+      "leaf48",
+      0,
+      [
+        48
+      ]
+    ],
+    [
+      "parent16-child48",
+      16,
+      [
+        48
+      ]
+    ],
+    [
+      "parent48-child16",
+      48,
+      [
+        16
+      ]
+    ],
+    [
+      "parent16-two48-sequential",
+      16,
+      [
+        48,
+        48
+      ]
+    ]
+  ],
+  "unchanged_limits": {
+    "whole_seconds": 60,
+    "case_seconds": 10,
+    "leaf_seconds": 4,
+    "peak_bytes": 268435456,
+    "memory_reserve_bytes": 33554432
+  },
+  "source_controls": {
+    "no_project_imports_or_random_calls": true,
+    "calibration_nested_Popen_same_owned_group_lines": [
+      148,
+      278,
+      190,
+      222
+    ],
+    "entry_runner_owned_external_new_session": true,
+    "signals_set_flags_not_async_raise": true,
+    "returncode_bookkeeping_before_signal_safe_boundary": true,
+    "cooperative_nonleaf_stop_and_direct_leaf_reap": true,
+    "nominal_nested_frames_and_reaping_records": true,
+    "unresolved_nonleaf_held_live_for_emergency": true,
+    "external_emergency_group_kill_includes_self_and_cannot_emit_success_frame": true,
+    "runner_cancellation_stop_and_emergency_excluded_from_acceptance": true,
+    "runner_owned_leader_wait4_once_tracking_and_finally_cleanup": true,
+    "exact3column_unique_target_PS_nonnegative_RSS_expected_PPID": true,
+    "fixed52byte_finite_positive_SELF_role_PID_success_clocks": true,
+    "entry_Popen_to_wait4_full_external_lifetime": true,
+    "external_postclose_SELF_supersedes_prewrite_value": true,
+    "separate_PS_direct_wait4_not_cumulative_CHILDREN": true,
+    "rolled_terminal_value_retained_raw_not_added_again": true,
+    "exclusive_one_attempt_no_retry_namespaces": true,
+    "raw_finite_scope_not_fullproof_qualification": true
+  },
+  "scope_and_remaining_limits": [
+    "Pass applies only to reviewed fixed5 nominal non-scientific workloads and authored flag-based timeout/cancellation paths; emergency termination is UNKNOWN and does not qualify descendant reaping.",
+    "ROOT must create a fresh immutable freeze binding exact source, plan, entry runner, this review, host/runtime and resource/_posixsubprocess extension pins before sole invocation. No actual activation is produced by this review.",
+    "Actual raw records, all nominal child/observer wait4 evidence, frames and resource arithmetic require saved-metadata review after execution; source pass is not calibration acceptance.",
+    "Retrospective256MiB distinct-role estimate includes32MiB reserve. It is not OS hard-cap enforcement; runner startup/import and final receipt/print/exit clock cost is additional and must stay visible.",
+    "PS leaf scope follows bounded pinned command/source assumptions; birth-identity races, concurrent-two-child scopes, universal fork/exec behavior and general process failure lifecycle are not established by these5 finite cases.",
+    "Running kernel121.10 is not exactly published reviewed121.6 source. SDK/archived-unit discrepancy remains preserved; finite observations do not erase the version gap.",
+    "No historic donor resource discount/reclassification/retry; all-five context qualification remains false."
+  ],
+  "preexecution_namespace_metadata": {
+    "outputs_exists": false,
+    "ROOT_freeze_exists": false,
+    "outer_receipt_exists": false
+  },
+  "actual_review_operations": {
+    "source_AST_JSON_hash_only": true,
+    "functional_source_imports": 0,
+    "tests": 0,
+    "calibration_invocations": 0,
+    "PS_calls": 0,
+    "process_ownership_calls": 0,
+    "project_calls": 0,
+    "scientific_calls": 0,
+    "RNG_draws": 0,
+    "activations_created": 0,
+    "publication_actions": 0
+  },
+  "qualification_issued": false,
+  "historical_donor_two_guards_UNKNOWN_preserved": true,
+  "ROOT_sole_actual_owner": true
+}

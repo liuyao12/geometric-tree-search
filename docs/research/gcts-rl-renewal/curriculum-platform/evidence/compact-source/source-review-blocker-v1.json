@@ -1,0 +1,17 @@
+{
+  "status": "SOURCE_REVIEW_V1_ASYNC_CANCELLATION_BLOCKER_PRESERVED_NOT_EXECUTED",
+  "owner_source": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py",
+    "sha256": "46c0af034e1ac7cec5b1140f1a10e363fac6214872028a430903802fe84c68f0",
+    "bytes": 16003
+  },
+  "finding": "Raising TERM/ALRM handler can interrupt Popen handle registration or wait4 terminal bookkeeping before waited/returncode are set. A later cleanup path can mistake a reaped child for unreaped and signal an historical PID. Source finding only; no race or ownership fixture was executed.",
+  "required_successor": "Non-raising cancellation flags, checked only after coherent spawn-registration/wait4 bookkeeping in owner and every observer; preserve V1 immutable.",
+  "runtime_source_leaf_limitations": "Closed pinned project source no-spawn evidence is not adversarial interpreter/import-hook/native/runtime-image security proof. Actual Darwin runtime uses Mach-O rather than assuming ELF; exact host binary/native library and observation semantics need ROOT review/calibration. No physical simultaneous RSS inference or historical discount.",
+  "platform_rule_frozen": false,
+  "owner_CLI_blocked": true,
+  "scientific_calls": 0,
+  "process_calls": 0,
+  "qualification_issued": false,
+  "execution_authorized": false
+}

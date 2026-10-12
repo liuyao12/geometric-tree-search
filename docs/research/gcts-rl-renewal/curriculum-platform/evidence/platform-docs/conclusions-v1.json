@@ -1,0 +1,106 @@
+{
+  "schema": "independent-Darwin-resource-primary-source-review-v1",
+  "status": "SOURCE_DOCUMENTATION_ONLY_NOT_A_PLATFORM_OR_CONTEXT_QUALIFICATION",
+  "scope": "Primary SDK text, fixed Apple XNU sources and saved metadata/source only. Future unexecuted wrappers only; no historical accounting discount or scientific retry.",
+  "source_version": {
+    "repository": "https://github.com/apple-oss-distributions/xnu",
+    "tag": "xnu-12377.121.6",
+    "commit": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+    "commit_URL": "https://github.com/apple-oss-distributions/xnu/commit/ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+    "raw_remote_content_SHA256_observed": false,
+    "pin_scope": "Commit plus exact repository-relative file and source locations. Web renderer observations are not raw-file byte hashes.",
+    "host_identity_reported_by_ROOT": {
+      "macOS": "26.5.2",
+      "build": "25F84",
+      "Darwin": "25.5.0",
+      "kernel": "xnu-12377.121.10~1/RELEASE_ARM64_T8132",
+      "evidence_scope": "Trusted ROOT message; no host command executed by this reviewer. Exact saved host metadata artifact pin still required by any future platform qualification. ROOT reports sysctl denied and uname/sw_vers successful."
+    },
+    "exact_running_kernel_source_match": false,
+    "version_gap": "Reviewed release ends in121.6; ROOT-reported running kernel ends in121.10. The same release family is not byte-exact source equivalence. Attempted official121.10 raw source was not accessible; search results from other repositories are not used as authority."
+  },
+  "primary_findings": [
+    {
+      "id": "units-current-SDK",
+      "conclusion": "Both installed MacOSX26.5 and MacOSX15.4 SDK getrusage.2 documents specify ru_maxrss in bytes. Their ps.1 documents specify rss in1024-byte units. Retain raw values and explicit conversion metadata; do not apply a Linux multiplier to Darwin ru_maxrss.",
+      "authority": "Exact local SDK file pins in review-v1.json. getrusage.2 lines94-95; ps.1 lines300-301. SDK documentation does not itself pin the executing kernel, ps binary or Python extension.",
+      "qualification": false
+    },
+    {
+      "id": "units-XNU-chain",
+      "conclusion": "At the fixed XNU commit, calcru assigns Mach resident_size_max directly to ru_maxrss. The corresponding Mach task-info header defines resident_size_max in bytes. The reviewed implementation therefore supports byte units for SELF and the same unscaled field transported through wait4.",
+      "sources": [
+        {"path": "bsd/kern/kern_resource.c", "lines": "1666-1694", "URL": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/kern_resource.c#L1666-L1694"},
+        {"path": "osfmk/mach/task_info.h", "lines": "296-306", "URL": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/mach/task_info.h#L296-L306"}
+      ]
+    },
+    {
+      "id": "archive-conflict",
+      "conclusion": "Apple's older online archived getrusage manual instead specifies kilobytes and carries a1993 BSD date. This conflicts with the installed SDK wording. Preserve the discrepancy; the archive is not the authority for current runtime conversion. Exact host/runtime pins and bounded prospective calibration remain necessary.",
+      "URL": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/getrusage.2.html",
+      "web_lines": "61 and136"
+    },
+    {
+      "id": "ruadd-field-semantics",
+      "conclusion": "At the fixed XNU commit, ruadd adds user/system time and the later counters, but combines ru_maxrss by maximum. The resource header starts the additive counter range after ru_maxrss. RUSAGE_CHILDREN copies the accumulated p_cru; SELF obtains p_ru after current-task accounting.",
+      "sources": [
+        {"path": "bsd/kern/kern_resource.c", "lines": "1705-1762", "URL": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/kern_resource.c#L1705-L1762"},
+        {"path": "bsd/sys/resource.h", "lines": "150-176", "URL": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/sys/resource.h#L150-L176"}
+      ]
+    },
+    {
+      "id": "terminal-child-descendants",
+      "conclusion": "At this commit, exit folds accumulated child usage into the saved terminal record. wait4 copies that record, then ordinary reaping rolls it into the waiting parent's child accumulator. A directly awaited child can therefore return a descendant-inclusive RSS maximum. The rollup is conditional on ordinary ownership/reaping and SIGCHLD handling; live reparented or unaccounted descendants cannot be assumed covered.",
+      "source": {"path": "bsd/kern/kern_exit.c", "lines": "2431-2440,2706-2717,2881-2924", "URL": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/kern_exit.c#L2431-L2440"},
+      "supporting_manual": "Local SDK wait.2 lines135-140 describes child-and-children resource usage; official older wait manual agrees on that scope.",
+      "manual_URL": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/wait.2.html"
+    }
+  ],
+  "inferences_for_future_source_review": [
+    "A descendant-inclusive maximum is not a sum of simultaneous process RSS. Several concurrent children can jointly exceed their largest individual high-water mark.",
+    "After reaping the scientific owner, a wrapper's cumulative RUSAGE_CHILDREN RSS maximum includes that owner and rolled-up descendants. It cannot then be labeled ps-only memory. The previously saved wrapper source does exactly this; that statement explains its conservative overlapping scopes but changes no historical result.",
+    "The difference of two cumulative maxima does not recover the intervening observer's peak: a smaller observer may produce a zero difference. Similarly, a terminal max and a known descendant max cannot uniquely recover the exiting parent's own peak.",
+    "A separate direct wait4 record for each verified leaf observer can provide its own terminal scope. Sequentiality must be established per caller; observers owned by different nested callers may overlap and must be accounted separately.",
+    "A terminal child maximum may conservatively upper-bound that child's SELF high-water value while overlapping descendants. Any prospective adapter using it must explicitly state the bound and keep separate owned descendant coverage; it must not call the value exact simultaneous tree memory.",
+    "Summing justified per-process RSS/high-water bounds is conservative and can count shared pages more than once. Sampling simultaneous RSS does not by itself bound missed short-lived peaks. No hard OS memory-cap enforcement is established by these retrospective records.",
+    "Current-task high-water semantics do not establish full fork/exec lifecycle coverage without reviewing the pinned runtime and process topology. Complete import/startup/hash/serialization/close/exit/reap clocks remain separate obligations."
+  ],
+  "remaining_prerequisites": [
+    "ROOT-saved exact host/kernel/architecture/version metadata and executable ps/Python/resource/os-extension pins; preserve the121.6 versus121.10 source discrepancy.",
+    "Separately ROOT-authorized bounded non-scientific calibration with source/plan freeze before execution, raw records, complete clocks/reaping and no mathematical engine imports. Calibration observations do not prove all possible lifecycles.",
+    "Exact observer leaf scope, PID/birth identity, ownership traversal and reuse rules, timeout/cancellation cleanup, stream bounds and handling of unsampled/escaped descendants.",
+    "Separately frozen prospective accounting adapter explaining each SELF/direct-child/descendant scope and why its chosen sum/max operations cover every owned process and postserialization/exit cost.",
+    "Independent source review of compact transport and wrappers, including exact full-artifact pin binding without repeated full JSON decode. Compact status remains a projection of complete semantic evidence.",
+    "ROOT alone may create a fresh actual plan/activation for a still-unexecuted phase after review; this documentation is not permission or qualification to execute."
+  ],
+  "preserved_history": {
+    "selector": "donor-two-guards",
+    "raw_static_semantic_status": "passed_independent_frozen_curriculum_context_family_pool_audit",
+    "complete_resource_status": "UNKNOWN_PRESERVED_FULL_RESOURCE_GATE_FAILED_NO_RECLASSIFICATION",
+    "static_external_complete_conservative_bytes": 1023344640,
+    "static_ROOT_provisional_conservative_bytes": 821870592,
+    "frozen_memory_cap_bytes": 536870912,
+    "frozen_static_seconds": 180,
+    "all_five_qualification": false,
+    "historical_discount": false,
+    "rerun": false,
+    "reclassification": false
+  },
+  "actual_operations": {
+    "metadata_and_text_reads_only": true,
+    "primary_web_browsing": true,
+    "project_imports": 0,
+    "project_function_calls": 0,
+    "scientific_calls": 0,
+    "calibration_calls": 0,
+    "process_ownership_calls": 0,
+    "PS_calls": 0,
+    "RNG_draws": 0,
+    "native_queries": 0,
+    "browser_calls": 0,
+    "activations": 0,
+    "publication_actions": 0,
+    "qualification_issued": false,
+    "ROOT_sole_actual_owner": true
+  }
+}

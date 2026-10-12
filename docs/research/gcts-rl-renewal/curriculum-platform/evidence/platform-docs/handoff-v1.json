@@ -1,0 +1,19 @@
+{
+  "schema": "independent-platform-primary-source-review-handoff-v1",
+  "status": "SOURCE_ONLY_HOST_BINDING_CALIBRATION_AND_WRAPPER_REVIEW_REQUIRED",
+  "review": {
+    "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/review-v1.json",
+    "sha256": "a94932d5648a8ea3062d8ddbd3e96142636269bd51f91a450ddfcbd86aeba3d2",
+    "bytes": 10129
+  },
+  "conclusions": {
+    "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/conclusions-v1.json",
+    "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+    "bytes": 9398
+  },
+  "inputs_count": 31,
+  "execution_authorized": false,
+  "qualification_issued": false,
+  "historical_UNKNOWN_unchanged": true,
+  "ROOT_sole_actual_owner": true
+}

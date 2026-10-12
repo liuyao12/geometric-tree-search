@@ -1,0 +1,41 @@
+{
+  "schema": "ROOT-V4-calibration-runtime-preflight-v2",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+    "bytes": 16922
+  },
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+    "bytes": 2133
+  },
+  "runner": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+    "sha256": "44845f25f0f58cb2947d769d12231b4510fb973a47c51b752a80c835be66c8f5",
+    "bytes": 6655
+  },
+  "runtime": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "python": {
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+    "bytes": 102352
+  },
+  "ps": {
+    "path": "/bin/ps",
+    "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+    "bytes": 170816
+  },
+  "resource_extension": {
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+    "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+    "bytes": 135472
+  },
+  "posixsubprocess_extension": {
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+    "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+    "bytes": 137888
+  },
+  "scientific_calls": 0,
+  "actual_calibration_pending": true
+}

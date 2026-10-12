@@ -1,0 +1,2703 @@
+{
+  "schema": "independent-saved-platform-reader-reconciliation-v1",
+  "status": "SOURCE_AND_SAVED_METADATA_PROJECTION_ACCEPTED",
+  "scope": "Saved JSON/text/hash/standard-library AST/HTML source only. No browser, project import, calibration invocation, scientific call, PS/native/process ownership query or publication.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/cancellation-source-evidence-v2.json",
+      "sha256": "6536a9f8ba377d803f4d35ae44f75915474d384816238445c9d834d183b2bc24",
+      "bytes": 2245
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py",
+      "sha256": "46c0af034e1ac7cec5b1140f1a10e363fac6214872028a430903802fe84c68f0",
+      "bytes": 16003
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py",
+      "sha256": "a31524a879f28650e8f57507d304b939ae634c1e509fa9a663a13a4b686dd55f",
+      "bytes": 16884
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1.py",
+      "sha256": "97cbb75f0bbf0b21a4a2a02588119958f1a76d900f212263a8a3e5efdd82be98",
+      "bytes": 12880
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1b.py",
+      "sha256": "13df88c9e33a6616e1004ed85a9a3bb40072c28cb520e2dd0d3303e545ebc182",
+      "bytes": 13278
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v2.py",
+      "sha256": "9313c6a4cb5d2436df4f0ed45289b01ba7c09308550ce01561643d5f1736407f",
+      "bytes": 22404
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/integration-v1.json",
+      "sha256": "3ad706d48d21a40be5a1a64ff1672bfbd393ee688377fdcc3fa2eb752cdb0f75",
+      "bytes": 4051
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/integration-v2.json",
+      "sha256": "b37b41a0d14fd956619d526019323374013dc5beed1ebb2897cdb99feb37a980",
+      "bytes": 3813
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/metadata-freeze-failure-v1.json",
+      "sha256": "29223bff600f461fdea2f2f94210b572ec400d687b7ce791e7e7bb6763ffc133",
+      "bytes": 779
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-original-v3-to-v2.diff",
+      "sha256": "207a0cc895ce75c1133fff7982704d0beb6033af4ec54513e4a0779cf0b25fe5",
+      "bytes": 26539
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-v1-to-v2.diff",
+      "sha256": "3ab3ed026b1568ba9ea9c435a5fcd8647ac9ef8254fe4d7aec00ca8b2ed65a6c",
+      "bytes": 7788
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-v3-to-compact-v1.diff",
+      "sha256": "041d7868637d13691737cf070d7dba93129fe468ed1a9daaf452941b7496fe88",
+      "bytes": 25473
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v1.json",
+      "sha256": "dcc0b067a511db85b866a9818dad90284f244ec3f946d71b31cae54b98d47076",
+      "bytes": 9298
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v2.json",
+      "sha256": "b996797baec3986f9b9dfcd4aa0a095486ce1cb77eae81d759696ccb0cc35daf",
+      "bytes": 6646
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v1.json",
+      "sha256": "5c6e767c4740ac7beda324bb448f2abafc81793cd1d667306cb260f0d0932a7e",
+      "bytes": 1443
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v2.json",
+      "sha256": "f9c79a89b9ee080b6dcace5a29408d023c36b833d218b35866d265a4c76698d4",
+      "bytes": 1134
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/scientific-function-byte-evidence-v1.json",
+      "sha256": "8281660cac5c5c863e53bff563741b27a8a245a4983d41c2e9465e743bb82d8a",
+      "bytes": 2161
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json",
+      "sha256": "2cfcfde17096cb74077ae8375df2cc50b51c0791270ca821b9fc89150e4329a1",
+      "bytes": 277764
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v2.json",
+      "sha256": "e58e4439aeabd8e39fe0206071b97b569d5bb7367f0e68193a8fc46eca1ff794",
+      "bytes": 282404
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-review-blocker-v1.json",
+      "sha256": "f7dcda9d193596d4a644ee8c95c947f297a67b552ba8a555336a4004db6e1db5",
+      "bytes": 1344
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-v1.zip",
+      "sha256": "3bddbeb44fe9664d752164fd6655d43761bb3f7b943c1ea8fce5abb9332a62f8",
+      "bytes": 119548
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-v2.zip",
+      "sha256": "d6e89b90bc5c1e265c16110745915cdca173766bfc07599e3e1ec47ffb9f1e0d",
+      "bytes": 89810
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/unchanged-science-evidence-v2.json",
+      "sha256": "4d074fb88f327587f5bf7534a1a7516a4321718aa615a8739bba87b9743418c3",
+      "bytes": 6354
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-leaf-source-evidence-v1.json",
+      "sha256": "82afbf452f20bd984b56d1dfca01e3926f7772e49a8648261f627c23f967bb95",
+      "bytes": 5834
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-v3-to-compact-v1.diff",
+      "sha256": "a934b673f43c01fb4d72a88b9e87d68a96a48310326c60734d9cff82be3d712e",
+      "bytes": 3311
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/first-static-resource-unknown-disposition-v1.json",
+      "sha256": "8c58dd8438bb9a2d672ac888f5a93e0cc26421f07394bace1e8938b76e9b77dc",
+      "bytes": 3910
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+      "sha256": "76118f55684442dc7d85a70e8dfe0e20b3864fe4046a7ee9df4273c781602d3e",
+      "bytes": 1529
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/ROOT-execution-freeze-v1.json",
+      "sha256": "268795564ab95133c44c2d25072f25c7065eeac6fe14f7ad7ca7f353bf6a3259",
+      "bytes": 2728
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/assemble_reader_v1.py",
+      "sha256": "aec80eacbcdaeb16cf17565b146f3c5beaf27cd6269a8426f761b4f3c140a735",
+      "bytes": 11112
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/assemble_reader_v2.py",
+      "sha256": "45e8c241d6514f49fd53b1d673cff8d09ff8cbd1b25c772ec14813efedc42c42",
+      "bytes": 11107
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v1.py",
+      "sha256": "380182e6f25ddee2c31c3282ca7aac534a5e10bbdf2ae97f2a1a73ecf26778e2",
+      "bytes": 13045
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v2.py",
+      "sha256": "6cfedaff4b0de5f72f34e65f3d0056a75eb4613cac7ee24b5d731b938c5582b0",
+      "bytes": 14790
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v3.py",
+      "sha256": "b247d0f1436812ef6a706d8259ddba8030dc3a223f04df56b92c4b0c5a364acd",
+      "bytes": 16728
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+      "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+      "bytes": 16922
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/coordinator.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+      "sha256": "6c4e397ac69c5b3c934b10c744155d2ed6ec7021ac5d68cdd2e6fc17f64b0a2b",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/external-receipt-v1.json",
+      "sha256": "84df6294c7f3b4e28aa158d249903043e0dee018c2baa802f6512d0c32b847ee",
+      "bytes": 2019
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/external.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/external.stdout",
+      "sha256": "b9945f577df17a400edf5d97ecab7c9b6eaac7a3fc933d986ca3af83de41d52d",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/metadata-assembly-v1-failure.json",
+      "sha256": "8824a1eff9fe373bea089d0096636f293ed40eb80f5bc2938ea0407eadf39a0d",
+      "bytes": 383
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outer-reap-v1.json",
+      "sha256": "45e6ae68002fa0c639731e19f74156d01b5fcac2587ace5987a5542e956ee3bd",
+      "bytes": 1947
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+      "sha256": "507145fc23bc4463c41367c3cf85bd5b57958c0fb7027e9e758187b779ea0cec",
+      "bytes": 32651
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+      "sha256": "aa53eb10fd2ea724eb8cdba6ce1be32c87542bf909a014d7427798206c2e0020",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-ready.json",
+      "sha256": "331e4f9cd2edb4e4386552f9b39ef4576933856918a39857820711d11928a266",
+      "bytes": 459
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-receipt.json",
+      "sha256": "c425e98eff5cd648f59572ede7060dad3adb0a07933c049f701eed5b5eedd217",
+      "bytes": 503
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stdout",
+      "sha256": "d171f83ef640a10513f963cf92bee6c2ff196aacc807e7addf5bbcecd5595796",
+      "bytes": 19
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+      "sha256": "c469cf609f47b66928bcb6a2469000446d8ed093084cec34da3b22c79569aa73",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-ready.json",
+      "sha256": "e701adbbbecf3b6de6d51c042e27fa616be21c0f0359c95a3881096ba4241cab",
+      "bytes": 448
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-receipt.json",
+      "sha256": "0e3ad4c5a7111d3bd35b65f2275377338189cb1731703a796d4e8887489069ee",
+      "bytes": 480
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stdout",
+      "sha256": "397ecb05ef6a7099036163b3d91aebb11f8138fe0c6100772885ff5fd69cbeba",
+      "bytes": 19
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+      "sha256": "6556aa5da86c5cf3bc348ccc23c587f3424646fff2323ce6ce69980710ccd8b8",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-ready.json",
+      "sha256": "6fbd0e9bd7b956ad65974f13b5f777b485b3a8ed96baf900aea6586c75f3f521",
+      "bytes": 436
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-receipt.json",
+      "sha256": "eeeebe5a9002383581bd784e66fa7406424eff01b2aacb9277aad3bdf4a7c87f",
+      "bytes": 492
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+      "sha256": "8aeb5105ef0a0be5e2dc92e452116ae65049491f34ed96038087d146a3d8bfe8",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stdout",
+      "sha256": "dc2cb8be68f3a2d9e29716230788fd4cdfa7e8b10b359c5d8ce29f264a1ee86d",
+      "bytes": 38
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/parent-receipt.json",
+      "sha256": "6723938a9f7da9f64e7f9e8a33ffa1c3a508ab5a50a91c3a8c080bc63a3918e1",
+      "bytes": 3208
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+      "sha256": "7cd380488eabc4716c06699ddf7261f70268a8e862ab98b9c6afa602883137ed",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-ready.json",
+      "sha256": "da48b8fe2657eec14ca9396ecba0d2a9d0576d1c01d2a05202dc0c4d02c0ed03",
+      "bytes": 436
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-receipt.json",
+      "sha256": "3115d48a90048fcd941eb7dc432a7cfc025ae41ee381a8de644b32ef0de866f9",
+      "bytes": 480
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+      "sha256": "f6cebb24690addf60386b93734e99acee93df9aadb85f22ac47f53c7668d5d75",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-ready.json",
+      "sha256": "bb2a3eb8a6cb1c95d92e16ffbcd05b09af907c0656f0160df1e2eb099a9a83ac",
+      "bytes": 448
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-receipt.json",
+      "sha256": "4f211f0c9c7bab473dc08dac3ebdbf7f07c1021c78cfa3d28b2aae95c6bffa82",
+      "bytes": 480
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+      "sha256": "8500fcfd059637a502c2f2338d4da29f24904709dca8a26d6812b8119794fbd5",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stdout",
+      "sha256": "6b58ebddfc33a5007f768a620b2a440f7dbb8676edf8712f8e6ec8a5a12ff8d5",
+      "bytes": 38
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stdout",
+      "sha256": "410890ce34ec78289be4c5d8c9221cbea2a767dcf6664b43e3ec017155e7b179",
+      "bytes": 38
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/parent-receipt.json",
+      "sha256": "f197ecc1906006e73395e134a2d45400046ff829aca0584fe5c0e1c0d454adcf",
+      "bytes": 5200
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+      "sha256": "2b5878412b4920f2c119286ce231eb72cadc4eb3e8b4d13c7ffeb8723c494c35",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-ready.json",
+      "sha256": "47f423f5f02c19881e1631b97d92b5ecf812bca4716a8842090ef6d02d820368",
+      "bytes": 436
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-receipt.json",
+      "sha256": "a0a640de9ec39240b72d9c3c1e0e2d371e2c1b633fe0ebffd31c466365cd914f",
+      "bytes": 480
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+      "sha256": "90c83e80bc94bb2658d799ef5917460f7b88451f4aaf8ca019292496db24e6c0",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stdout",
+      "sha256": "2dfd2d71de9a2d193f1ea7e2b5c273c154402e8dcb0c3d574331530a905872ce",
+      "bytes": 38
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/parent-receipt.json",
+      "sha256": "1dc168b285ae5c5c19ab43278be4efb71785a4b590cfeebc7b8cf611443905ec",
+      "bytes": 3204
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/plan-v1.json",
+      "sha256": "d8e60d5ab33feec2c479c61da8a52ea9234d8df3d59a8c65a27839af3b8fc7f9",
+      "bytes": 1862
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/plan-v2.json",
+      "sha256": "970be64805afcdf1f3d6592d405986c8b79e25a92d387fb3172e9e1afd2caf42",
+      "bytes": 2061
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/plan-v3.json",
+      "sha256": "34474a0e2eceb9f7652ec57c96a0873b38cfee47262763563ab7bba5703a1f3b",
+      "bytes": 2095
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+      "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+      "bytes": 2133
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/reader-assembly-v2.json",
+      "sha256": "9fa81f438bdbd5bdd4322c0d7b871831b0006ac6147772627066b4dc0033bc92",
+      "bytes": 27172
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v1.py",
+      "sha256": "ccc045c357445569930ad178831b867b4b15504111ce21e7f461d0c6adecd059",
+      "bytes": 4459
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+      "sha256": "44845f25f0f58cb2947d769d12231b4510fb973a47c51b752a80c835be66c8f5",
+      "bytes": 6655
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v1.json",
+      "sha256": "330cd708f2581c6da8d377dba1b399b48676625d739df4074f40c18e9fae589b",
+      "bytes": 1391
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v2.json",
+      "sha256": "911efb069618451a0410b82ecbba737b3e3d34aa1fb31a647686a2db44269d6e",
+      "bytes": 1997
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/actual-review-v1.json",
+      "sha256": "9dcf8863cb1cb60d23e88fd6bd175874e35590294657b9f4186089609af450ad",
+      "bytes": 64734
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v1.json",
+      "sha256": "d297a8f7953a9a2965a72c5c8ad3b1f71a976560de6b7998d2d432edcb3a5db7",
+      "bytes": 9221
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v3-findings-v1.json",
+      "sha256": "bfed9ed15a4527fd8f92ad7dd889f61ef545f388d90772e4afd2734bc5aaca6d",
+      "bytes": 2083
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v4-source-pass-v1.json",
+      "sha256": "fe6f949eb7f6789733f74e62c3259958432d4174ff59e5cc2f3e2c9b12ca9919",
+      "bytes": 9357
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/handoff-v1.json",
+      "sha256": "545a1d766719bc682382c78c76b41e8d40cc031f7c1bc482e1fe2a306f637a4d",
+      "bytes": 4283
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader-before-ROOT-calibration-visuals.html",
+      "sha256": "def1fd924310c42e13f2828d964fe878f230447c4c3a1f8f36f7d616bc331a00",
+      "bytes": 10292
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader-before-ROOT-calibration-visuals.js",
+      "sha256": "006fd2a3ad12d954c4e358813e1f8df031b27c2703bf27ab083fc5dbe11ed653",
+      "bytes": 6377
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.html",
+      "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
+      "bytes": 11307
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.js",
+      "sha256": "feaeafe1b4adb5b6443bb56d8288b709294380bd460608bfde8e7d94084deab5",
+      "bytes": 7497
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/view-schema-v1.json",
+      "sha256": "142dd7a98a1a5f433a089478084f423a7c5fb3b6230e249e2f91c255c1ce522b",
+      "bytes": 7303
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/conclusions-v1.json",
+      "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+      "bytes": 9398
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/handoff-v1.json",
+      "sha256": "8e5fa9c508c23549fc983424529ce2b6e307a7c983d2326f2d0e1157c999e58d",
+      "bytes": 755
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-semantics-source-review-20261012/review-v1.json",
+      "sha256": "a94932d5648a8ea3062d8ddbd3e96142636269bd51f91a450ddfcbd86aeba3d2",
+      "bytes": 10129
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/actual-review-v1.json",
+      "sha256": "9dcf8863cb1cb60d23e88fd6bd175874e35590294657b9f4186089609af450ad",
+      "bytes": 64734
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/review-v1.json",
+      "sha256": "d297a8f7953a9a2965a72c5c8ad3b1f71a976560de6b7998d2d432edcb3a5db7",
+      "bytes": 9221
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/review-v3-findings-v1.json",
+      "sha256": "bfed9ed15a4527fd8f92ad7dd889f61ef545f388d90772e4afd2734bc5aaca6d",
+      "bytes": 2083
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/review-v4-source-pass-v1.json",
+      "sha256": "fe6f949eb7f6789733f74e62c3259958432d4174ff59e5cc2f3e2c9b12ca9919",
+      "bytes": 9357
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/ROOT-execution-freeze-v1.json",
+      "sha256": "268795564ab95133c44c2d25072f25c7065eeac6fe14f7ad7ca7f353bf6a3259",
+      "bytes": 2728
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/assemble_reader_v1.py",
+      "sha256": "aec80eacbcdaeb16cf17565b146f3c5beaf27cd6269a8426f761b4f3c140a735",
+      "bytes": 11112
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/assemble_reader_v2.py",
+      "sha256": "45e8c241d6514f49fd53b1d673cff8d09ff8cbd1b25c772ec14813efedc42c42",
+      "bytes": 11107
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v1.py",
+      "sha256": "380182e6f25ddee2c31c3282ca7aac534a5e10bbdf2ae97f2a1a73ecf26778e2",
+      "bytes": 13045
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v2.py",
+      "sha256": "6cfedaff4b0de5f72f34e65f3d0056a75eb4613cac7ee24b5d731b938c5582b0",
+      "bytes": 14790
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v3.py",
+      "sha256": "b247d0f1436812ef6a706d8259ddba8030dc3a223f04df56b92c4b0c5a364acd",
+      "bytes": 16728
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v4.py",
+      "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+      "bytes": 16922
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/coordinator.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/coordinator.stdout",
+      "sha256": "6c4e397ac69c5b3c934b10c744155d2ed6ec7021ac5d68cdd2e6fc17f64b0a2b",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/external-receipt-v1.json",
+      "sha256": "84df6294c7f3b4e28aa158d249903043e0dee018c2baa802f6512d0c32b847ee",
+      "bytes": 2019
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/external.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/external.stdout",
+      "sha256": "b9945f577df17a400edf5d97ecab7c9b6eaac7a3fc933d986ca3af83de41d52d",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/metadata-assembly-v1-failure.json",
+      "sha256": "8824a1eff9fe373bea089d0096636f293ed40eb80f5bc2938ea0407eadf39a0d",
+      "bytes": 383
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outer-reap-v1.json",
+      "sha256": "45e6ae68002fa0c639731e19f74156d01b5fcac2587ace5987a5542e956ee3bd",
+      "bytes": 1947
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/calibration-result-v1.json",
+      "sha256": "507145fc23bc4463c41367c3cf85bd5b57958c0fb7027e9e758187b779ea0cec",
+      "bytes": 32651
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/actor.stdout",
+      "sha256": "aa53eb10fd2ea724eb8cdba6ce1be32c87542bf909a014d7427798206c2e0020",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/leaf-0-ready.json",
+      "sha256": "331e4f9cd2edb4e4386552f9b39ef4576933856918a39857820711d11928a266",
+      "bytes": 459
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/leaf-0-receipt.json",
+      "sha256": "c425e98eff5cd648f59572ede7060dad3adb0a07933c049f701eed5b5eedd217",
+      "bytes": 503
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/observer-0.stdout",
+      "sha256": "d171f83ef640a10513f963cf92bee6c2ff196aacc807e7addf5bbcecd5595796",
+      "bytes": 19
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/actor.stdout",
+      "sha256": "c469cf609f47b66928bcb6a2469000446d8ed093084cec34da3b22c79569aa73",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/leaf-0-ready.json",
+      "sha256": "e701adbbbecf3b6de6d51c042e27fa616be21c0f0359c95a3881096ba4241cab",
+      "bytes": 448
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/leaf-0-receipt.json",
+      "sha256": "0e3ad4c5a7111d3bd35b65f2275377338189cb1731703a796d4e8887489069ee",
+      "bytes": 480
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/observer-0.stdout",
+      "sha256": "397ecb05ef6a7099036163b3d91aebb11f8138fe0c6100772885ff5fd69cbeba",
+      "bytes": 19
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/actor.stdout",
+      "sha256": "6556aa5da86c5cf3bc348ccc23c587f3424646fff2323ce6ce69980710ccd8b8",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0-ready.json",
+      "sha256": "6fbd0e9bd7b956ad65974f13b5f777b485b3a8ed96baf900aea6586c75f3f521",
+      "bytes": 436
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0-receipt.json",
+      "sha256": "eeeebe5a9002383581bd784e66fa7406424eff01b2aacb9277aad3bdf4a7c87f",
+      "bytes": 492
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0.stdout",
+      "sha256": "8aeb5105ef0a0be5e2dc92e452116ae65049491f34ed96038087d146a3d8bfe8",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/observer-0.stdout",
+      "sha256": "dc2cb8be68f3a2d9e29716230788fd4cdfa7e8b10b359c5d8ce29f264a1ee86d",
+      "bytes": 38
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/parent-receipt.json",
+      "sha256": "6723938a9f7da9f64e7f9e8a33ffa1c3a508ab5a50a91c3a8c080bc63a3918e1",
+      "bytes": 3208
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/actor.stdout",
+      "sha256": "7cd380488eabc4716c06699ddf7261f70268a8e862ab98b9c6afa602883137ed",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0-ready.json",
+      "sha256": "da48b8fe2657eec14ca9396ecba0d2a9d0576d1c01d2a05202dc0c4d02c0ed03",
+      "bytes": 436
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0-receipt.json",
+      "sha256": "3115d48a90048fcd941eb7dc432a7cfc025ae41ee381a8de644b32ef0de866f9",
+      "bytes": 480
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0.stdout",
+      "sha256": "f6cebb24690addf60386b93734e99acee93df9aadb85f22ac47f53c7668d5d75",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1-ready.json",
+      "sha256": "bb2a3eb8a6cb1c95d92e16ffbcd05b09af907c0656f0160df1e2eb099a9a83ac",
+      "bytes": 448
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1-receipt.json",
+      "sha256": "4f211f0c9c7bab473dc08dac3ebdbf7f07c1021c78cfa3d28b2aae95c6bffa82",
+      "bytes": 480
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1.stdout",
+      "sha256": "8500fcfd059637a502c2f2338d4da29f24904709dca8a26d6812b8119794fbd5",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-0.stdout",
+      "sha256": "6b58ebddfc33a5007f768a620b2a440f7dbb8676edf8712f8e6ec8a5a12ff8d5",
+      "bytes": 38
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-1.stdout",
+      "sha256": "410890ce34ec78289be4c5d8c9221cbea2a767dcf6664b43e3ec017155e7b179",
+      "bytes": 38
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/parent-receipt.json",
+      "sha256": "f197ecc1906006e73395e134a2d45400046ff829aca0584fe5c0e1c0d454adcf",
+      "bytes": 5200
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/actor.stdout",
+      "sha256": "2b5878412b4920f2c119286ce231eb72cadc4eb3e8b4d13c7ffeb8723c494c35",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0-ready.json",
+      "sha256": "47f423f5f02c19881e1631b97d92b5ecf812bca4716a8842090ef6d02d820368",
+      "bytes": 436
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0-receipt.json",
+      "sha256": "a0a640de9ec39240b72d9c3c1e0e2d371e2c1b633fe0ebffd31c466365cd914f",
+      "bytes": 480
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0.stdout",
+      "sha256": "90c83e80bc94bb2658d799ef5917460f7b88451f4aaf8ca019292496db24e6c0",
+      "bytes": 52
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/observer-0.stdout",
+      "sha256": "2dfd2d71de9a2d193f1ea7e2b5c273c154402e8dcb0c3d574331530a905872ce",
+      "bytes": 38
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/parent-receipt.json",
+      "sha256": "1dc168b285ae5c5c19ab43278be4efb71785a4b590cfeebc7b8cf611443905ec",
+      "bytes": 3204
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v1.json",
+      "sha256": "d8e60d5ab33feec2c479c61da8a52ea9234d8df3d59a8c65a27839af3b8fc7f9",
+      "bytes": 1862
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v2.json",
+      "sha256": "970be64805afcdf1f3d6592d405986c8b79e25a92d387fb3172e9e1afd2caf42",
+      "bytes": 2061
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v3.json",
+      "sha256": "34474a0e2eceb9f7652ec57c96a0873b38cfee47262763563ab7bba5703a1f3b",
+      "bytes": 2095
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v4.json",
+      "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+      "bytes": 2133
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/run_calibration_once_v1.py",
+      "sha256": "ccc045c357445569930ad178831b867b4b15504111ce21e7f461d0c6adecd059",
+      "bytes": 4459
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/run_calibration_once_v2.py",
+      "sha256": "44845f25f0f58cb2947d769d12231b4510fb973a47c51b752a80c835be66c8f5",
+      "bytes": 6655
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/runtime-preflight-v1.json",
+      "sha256": "330cd708f2581c6da8d377dba1b399b48676625d739df4074f40c18e9fae589b",
+      "bytes": 1391
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/runtime-preflight-v2.json",
+      "sha256": "911efb069618451a0410b82ecbba737b3e3d34aa1fb31a647686a2db44269d6e",
+      "bytes": 1997
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/cancellation-source-evidence-v2.json",
+      "sha256": "6536a9f8ba377d803f4d35ae44f75915474d384816238445c9d834d183b2bc24",
+      "bytes": 2245
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/curriculum_compact_owner_v1.py",
+      "sha256": "46c0af034e1ac7cec5b1140f1a10e363fac6214872028a430903802fe84c68f0",
+      "bytes": 16003
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/curriculum_compact_owner_v2.py",
+      "sha256": "a31524a879f28650e8f57507d304b939ae634c1e509fa9a663a13a4b686dd55f",
+      "bytes": 16884
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/freeze_compact_wrapper_source_v1.py",
+      "sha256": "97cbb75f0bbf0b21a4a2a02588119958f1a76d900f212263a8a3e5efdd82be98",
+      "bytes": 12880
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/freeze_compact_wrapper_source_v1b.py",
+      "sha256": "13df88c9e33a6616e1004ed85a9a3bb40072c28cb520e2dd0d3303e545ebc182",
+      "bytes": 13278
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/freeze_compact_wrapper_source_v2.py",
+      "sha256": "9313c6a4cb5d2436df4f0ed45289b01ba7c09308550ce01561643d5f1736407f",
+      "bytes": 22404
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/integration-v1.json",
+      "sha256": "3ad706d48d21a40be5a1a64ff1672bfbd393ee688377fdcc3fa2eb752cdb0f75",
+      "bytes": 4051
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/integration-v2.json",
+      "sha256": "b37b41a0d14fd956619d526019323374013dc5beed1ebb2897cdb99feb37a980",
+      "bytes": 3813
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/metadata-freeze-failure-v1.json",
+      "sha256": "29223bff600f461fdea2f2f94210b572ec400d687b7ce791e7e7bb6763ffc133",
+      "bytes": 779
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/owner-original-v3-to-v2.diff",
+      "sha256": "207a0cc895ce75c1133fff7982704d0beb6033af4ec54513e4a0779cf0b25fe5",
+      "bytes": 26539
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/owner-v1-to-v2.diff",
+      "sha256": "3ab3ed026b1568ba9ea9c435a5fcd8647ac9ef8254fe4d7aec00ca8b2ed65a6c",
+      "bytes": 7788
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/owner-v3-to-compact-v1.diff",
+      "sha256": "041d7868637d13691737cf070d7dba93129fe468ed1a9daaf452941b7496fe88",
+      "bytes": 25473
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/protocol-v1.json",
+      "sha256": "dcc0b067a511db85b866a9818dad90284f244ec3f946d71b31cae54b98d47076",
+      "bytes": 9298
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/protocol-v2.json",
+      "sha256": "b996797baec3986f9b9dfcd4aa0a095486ce1cb77eae81d759696ccb0cc35daf",
+      "bytes": 6646
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/readiness-v1.json",
+      "sha256": "5c6e767c4740ac7beda324bb448f2abafc81793cd1d667306cb260f0d0932a7e",
+      "bytes": 1443
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/readiness-v2.json",
+      "sha256": "f9c79a89b9ee080b6dcace5a29408d023c36b833d218b35866d265a4c76698d4",
+      "bytes": 1134
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/scientific-function-byte-evidence-v1.json",
+      "sha256": "8281660cac5c5c863e53bff563741b27a8a245a4983d41c2e9465e743bb82d8a",
+      "bytes": 2161
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-plan-v1.json",
+      "sha256": "2cfcfde17096cb74077ae8375df2cc50b51c0791270ca821b9fc89150e4329a1",
+      "bytes": 277764
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-plan-v2.json",
+      "sha256": "e58e4439aeabd8e39fe0206071b97b569d5bb7367f0e68193a8fc46eca1ff794",
+      "bytes": 282404
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-review-blocker-v1.json",
+      "sha256": "f7dcda9d193596d4a644ee8c95c947f297a67b552ba8a555336a4004db6e1db5",
+      "bytes": 1344
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-v1.zip",
+      "sha256": "3bddbeb44fe9664d752164fd6655d43761bb3f7b943c1ea8fce5abb9332a62f8",
+      "bytes": 119548
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-v2.zip",
+      "sha256": "d6e89b90bc5c1e265c16110745915cdca173766bfc07599e3e1ec47ffb9f1e0d",
+      "bytes": 89810
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/unchanged-science-evidence-v2.json",
+      "sha256": "4d074fb88f327587f5bf7534a1a7516a4321718aa615a8739bba87b9743418c3",
+      "bytes": 6354
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/worker-leaf-source-evidence-v1.json",
+      "sha256": "82afbf452f20bd984b56d1dfca01e3926f7772e49a8648261f627c23f967bb95",
+      "bytes": 5834
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/worker-v3-to-compact-v1.diff",
+      "sha256": "a934b673f43c01fb4d72a88b9e87d68a96a48310326c60734d9cff82be3d712e",
+      "bytes": 3311
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/original-resource-UNKNOWN.json",
+      "sha256": "8c58dd8438bb9a2d672ac888f5a93e0cc26421f07394bace1e8938b76e9b77dc",
+      "bytes": 3910
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/platform-docs/conclusions-v1.json",
+      "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+      "bytes": 9398
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/platform-docs/handoff-v1.json",
+      "sha256": "8e5fa9c508c23549fc983424529ce2b6e307a7c983d2326f2d0e1157c999e58d",
+      "bytes": 755
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/platform-docs/review-v1.json",
+      "sha256": "a94932d5648a8ea3062d8ddbd3e96142636269bd51f91a450ddfcbd86aeba3d2",
+      "bytes": 10129
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/handoff-v1.json",
+      "sha256": "545a1d766719bc682382c78c76b41e8d40cc031f7c1bc482e1fe2a306f637a4d",
+      "bytes": 4283
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader-before-ROOT-calibration-visuals.html",
+      "sha256": "def1fd924310c42e13f2828d964fe878f230447c4c3a1f8f36f7d616bc331a00",
+      "bytes": 10292
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader-before-ROOT-calibration-visuals.js",
+      "sha256": "006fd2a3ad12d954c4e358813e1f8df031b27c2703bf27ab083fc5dbe11ed653",
+      "bytes": 6377
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader.html",
+      "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
+      "bytes": 11307
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader.js",
+      "sha256": "feaeafe1b4adb5b6443bb56d8288b709294380bd460608bfde8e7d94084deab5",
+      "bytes": 7497
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/view-schema-v1.json",
+      "sha256": "142dd7a98a1a5f433a089478084f423a7c5fb3b6230e249e2f91c255c1ce522b",
+      "bytes": 7303
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/origins.json",
+      "sha256": "ab1bd85ae3879005647a5834c149b55ade94dabe8c69cff35740f9654f90a230",
+      "bytes": 56534
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/reader.html",
+      "sha256": "b5152a3ff9047741642c81b07d43dce35bc7749f26764f45002502c62a9c4fa0",
+      "bytes": 11307
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/reader.js",
+      "sha256": "feaeafe1b4adb5b6443bb56d8288b709294380bd460608bfde8e7d94084deab5",
+      "bytes": 7497
+    },
+    {
+      "path": "docs/research/gcts-rl-renewal/curriculum-platform/view.json",
+      "sha256": "ec86d6b0357361b9fd6db66cade5037b4971a3542e0dc388c38661602abaaa49",
+      "bytes": 20624
+    }
+  ],
+  "checks_count": 370,
+  "checks": [
+    {
+      "check": "closed display schema",
+      "passed": true
+    },
+    {
+      "check": "111 origins",
+      "passed": true
+    },
+    {
+      "check": "origin 0 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 1 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 2 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 3 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 4 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 5 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 6 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 7 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 8 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 9 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 10 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 11 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 12 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 13 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 14 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 15 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 16 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 17 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 18 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 19 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 20 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 21 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 22 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 23 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 24 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 25 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 26 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 27 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 28 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 29 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 30 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 31 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 32 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 33 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 34 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 35 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 36 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 37 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 38 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 39 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 40 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 41 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 42 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 43 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 44 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 45 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 46 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 47 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 48 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 49 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 50 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 51 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 52 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 53 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 54 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 55 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 56 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 57 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 58 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 59 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 60 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 61 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 62 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 63 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 64 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 65 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 66 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 67 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 68 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 69 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 70 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 71 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 72 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 73 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 74 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 75 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 76 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 77 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 78 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 79 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 80 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 81 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 82 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 83 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 84 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 85 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 86 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 87 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 88 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 89 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 90 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 91 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 92 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 93 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 94 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 95 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 96 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 97 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 98 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 99 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 100 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 101 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 102 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 103 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 104 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 105 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 106 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 107 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 108 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 109 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "origin 110 exact source/public pins and byte identity",
+      "passed": true
+    },
+    {
+      "check": "unique origin destinations",
+      "passed": true
+    },
+    {
+      "check": "assembly view pin",
+      "passed": true
+    },
+    {
+      "check": "assembly origins pin",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/ROOT-execution-freeze-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/assemble_reader_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/assemble_reader_v2.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v2.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v3.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/calibrate_platform_v4.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/coordinator.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/coordinator.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/external-receipt-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/external.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/external.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/metadata-assembly-v1-failure.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outer-reap-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/calibration-result-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/actor.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/actor.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/leaf-0-ready.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/leaf-0-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/observer-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf16/observer-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/actor.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/actor.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/leaf-0-ready.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/leaf-0-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/observer-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/leaf48/observer-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/actor.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/actor.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0-ready.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/leaf-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/observer-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/observer-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-child48/parent-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/actor.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/actor.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0-ready.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1-ready.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/leaf-1.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-1.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/observer-1.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent16-two48-sequential/parent-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/actor.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/actor.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0-ready.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/leaf-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/observer-0.stderr",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/observer-0.stdout",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/outputs/parent48-child16/parent-receipt.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v3.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/plan-v4.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/run_calibration_once_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/run_calibration_once_v2.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/runtime-preflight-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration/runtime-preflight-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/actual-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/review-v3-findings-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/calibration-review/review-v4-source-pass-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/cancellation-source-evidence-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/compact_static_transport_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/curriculum_compact_owner_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/curriculum_compact_owner_v2.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/curriculum_compact_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/freeze_compact_wrapper_source_v1.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/freeze_compact_wrapper_source_v1b.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/freeze_compact_wrapper_source_v2.py",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/integration-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/integration-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/metadata-freeze-failure-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/owner-original-v3-to-v2.diff",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/owner-v1-to-v2.diff",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/owner-v3-to-compact-v1.diff",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/protocol-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/protocol-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/readiness-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/readiness-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/scientific-function-byte-evidence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-plan-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-plan-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-review-blocker-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-v1.zip",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/source-v2.zip",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/unchanged-science-evidence-v2.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/worker-leaf-source-evidence-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/compact-source/worker-v3-to-compact-v1.diff",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/original-resource-UNKNOWN.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/platform-docs/conclusions-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/platform-docs/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/platform-docs/review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader-before-ROOT-calibration-visuals.html",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader-before-ROOT-calibration-visuals.js",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader.html",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/reader.js",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/evidence/reader-source/view-schema-v1.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/origins.json",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/reader.html",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/reader.js",
+      "passed": true
+    },
+    {
+      "check": "assembly exact file docs/research/gcts-rl-renewal/curriculum-platform/view.json",
+      "passed": true
+    },
+    {
+      "check": "assembly finite metadata only",
+      "passed": true
+    },
+    {
+      "check": "failed V1 assembly preserved without rerun",
+      "passed": true
+    },
+    {
+      "check": "partial V1 directory retained",
+      "passed": true
+    },
+    {
+      "check": "assembly receipt intentionally absent from its earlier copy set",
+      "passed": true
+    },
+    {
+      "check": "preserved original reader.html hash",
+      "passed": true
+    },
+    {
+      "check": "current source/public reader.html byte identity",
+      "passed": true
+    },
+    {
+      "check": "preserved original reader.js hash",
+      "passed": true
+    },
+    {
+      "check": "current source/public reader.js byte identity",
+      "passed": true
+    },
+    {
+      "check": "saved finite observation review accepted",
+      "passed": true
+    },
+    {
+      "check": "independent complete resource review remains false",
+      "passed": true
+    },
+    {
+      "check": "raw source flags no science/RNG/search",
+      "passed": true
+    },
+    {
+      "check": "five raw and projected cases",
+      "passed": true
+    },
+    {
+      "check": "six actual observers",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 identity/label",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 exactly three bars",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 self raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory leaf16 self raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory leaf16 self unit label",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 rolled raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory leaf16 rolled raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory leaf16 rolled unit label",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 sample raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory leaf16 sample raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory leaf16 sample unit label",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 actual success/reap",
+      "passed": true
+    },
+    {
+      "check": "case leaf16 finite-only scope",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 identity/label",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 exactly three bars",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 self raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory leaf48 self raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory leaf48 self unit label",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 rolled raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory leaf48 rolled raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory leaf48 rolled unit label",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 sample raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory leaf48 sample raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory leaf48 sample unit label",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 actual success/reap",
+      "passed": true
+    },
+    {
+      "check": "case leaf48 finite-only scope",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 identity/label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 exactly three bars",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 self raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-child48 self raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-child48 self unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 rolled raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-child48 rolled raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-child48 rolled unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 sample raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-child48 sample raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-child48 sample unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 actual success/reap",
+      "passed": true
+    },
+    {
+      "check": "case parent16-child48 finite-only scope",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 identity/label",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 exactly three bars",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 self raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent48-child16 self raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent48-child16 self unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 rolled raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent48-child16 rolled raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent48-child16 rolled unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 sample raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent48-child16 sample raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent48-child16 sample unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 actual success/reap",
+      "passed": true
+    },
+    {
+      "check": "case parent48-child16 finite-only scope",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential identity/label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential exactly three bars",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential self raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-two48-sequential self raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-two48-sequential self unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential rolled raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-two48-sequential rolled raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-two48-sequential rolled unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential sample raw value and display fraction",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-two48-sequential sample raw projection",
+      "passed": true
+    },
+    {
+      "check": "memory parent16-two48-sequential sample unit label",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential actual success/reap",
+      "passed": true
+    },
+    {
+      "check": "case parent16-two48-sequential finite-only scope",
+      "passed": true
+    },
+    {
+      "check": "observer 83993 reaped leaf",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 83992",
+      "passed": true
+    },
+    {
+      "check": "observer 83995 reaped leaf",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 83994",
+      "passed": true
+    },
+    {
+      "check": "observer 83998 reaped leaf",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 83996",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 83997",
+      "passed": true
+    },
+    {
+      "check": "observer 84004 reaped leaf",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 84000",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 84003",
+      "passed": true
+    },
+    {
+      "check": "observer 84007 reaped leaf",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 84005",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 84006",
+      "passed": true
+    },
+    {
+      "check": "observer 84010 reaped leaf",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 84005",
+      "passed": true
+    },
+    {
+      "check": "PS sampled PID ancestry 84009",
+      "passed": true
+    },
+    {
+      "check": "17 exact actor/parent/role projections",
+      "passed": true
+    },
+    {
+      "check": "actor PIDs unique",
+      "passed": true
+    },
+    {
+      "check": "external parent unavailable preserved",
+      "passed": true
+    },
+    {
+      "check": "16 memory rows",
+      "passed": true
+    },
+    {
+      "check": "reported envelope exact saved value",
+      "passed": true
+    },
+    {
+      "check": "reported envelope missing SELF limitation",
+      "passed": true
+    },
+    {
+      "check": "two phase projections",
+      "passed": true
+    },
+    {
+      "check": "original phase semantic pass resource unknown",
+      "passed": true
+    },
+    {
+      "check": "original phase full clock nine-decimal projection",
+      "passed": true
+    },
+    {
+      "check": "calibration phase semantic finite pass resource unknown",
+      "passed": true
+    },
+    {
+      "check": "source estimate true distinct from independent UNKNOWN",
+      "passed": true
+    },
+    {
+      "check": "first historical resource failure exact",
+      "passed": true
+    },
+    {
+      "check": "four original remaining contexts unrun and no global qualification",
+      "passed": true
+    },
+    {
+      "check": "all subsequent scientific counters zero",
+      "passed": true
+    },
+    {
+      "check": "milestone actual finite calibration only",
+      "passed": true
+    },
+    {
+      "check": "costs exact raw clock/envelope with unavailable final scope",
+      "passed": true
+    },
+    {
+      "check": "HTML unique IDs",
+      "passed": true
+    },
+    {
+      "check": "all literal and role JS DOM targets exist",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/calibration-review/actual-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/calibration-review/review-v4-source-pass-v1.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/calibration/external-receipt-v1.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/calibration/outer-reap-v1.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/calibration/outputs/calibration-result-v1.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/compact-source/integration-v2.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/original-resource-UNKNOWN.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link evidence/platform-docs/conclusions-v1.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link origins.json",
+      "passed": true
+    },
+    {
+      "check": "safe existing data evidence link view.json",
+      "passed": true
+    },
+    {
+      "check": "existing local HTML link ../#curriculum-platform",
+      "passed": true
+    },
+    {
+      "check": "HTML fragment target #scopes",
+      "passed": true
+    },
+    {
+      "check": "HTML fragment target #scopes",
+      "passed": true
+    },
+    {
+      "check": "HTML fragment target #memory",
+      "passed": true
+    },
+    {
+      "check": "HTML fragment target #qualification",
+      "passed": true
+    },
+    {
+      "check": "HTML fragment target #milestone",
+      "passed": true
+    },
+    {
+      "check": "HTML fragment target #evidence",
+      "passed": true
+    },
+    {
+      "check": "primary source fixed external HTML link",
+      "passed": true
+    },
+    {
+      "check": "existing local HTML link view.json",
+      "passed": true
+    },
+    {
+      "check": "existing local HTML link ../curriculum-contexts/reader.html",
+      "passed": true
+    },
+    {
+      "check": "existing local HTML link ../real-overlay-checks/reader.html",
+      "passed": true
+    },
+    {
+      "check": "JS only literal saved-view fetch",
+      "passed": true
+    },
+    {
+      "check": "JS HTML escaping, safe href and raw text rendering",
+      "passed": true
+    },
+    {
+      "check": "JS bars only saved display fractions",
+      "passed": true
+    },
+    {
+      "check": "JS no code evaluation or scientific execution APIs",
+      "passed": true
+    },
+    {
+      "check": "MathJax supported LaTex delimiters and queued typesetting",
+      "passed": true
+    },
+    {
+      "check": "HTML displays scope and missing/full-cost limitations",
+      "passed": true
+    },
+    {
+      "check": "assembler source AST imports standard library only",
+      "passed": true
+    },
+    {
+      "check": "assembler source metadata exclusive writes and exact copy guard",
+      "passed": true
+    }
+  ],
+  "projection_counts": {
+    "exact_origin_copies": 111,
+    "calibration_cases": 5,
+    "bars": 15,
+    "numeric_bar_fields": 30,
+    "memory_rows": 16,
+    "actor_ancestry_rows": 17,
+    "phase_rows": 2,
+    "unique_HTML_IDs": 26,
+    "unique_data_evidence_links": 10
+  },
+  "bar_projection": [
+    {
+      "case": "leaf16",
+      "SELF_bytes": 30425088,
+      "terminal_wait4_bytes": 30425088,
+      "sample_sum_bytes": 30425088,
+      "display_denominator_bytes": 134217728
+    },
+    {
+      "case": "leaf48",
+      "SELF_bytes": 63963136,
+      "terminal_wait4_bytes": 63963136,
+      "sample_sum_bytes": 63963136,
+      "display_denominator_bytes": 134217728
+    },
+    {
+      "case": "parent16-child48",
+      "SELF_bytes": 30457856,
+      "terminal_wait4_bytes": 63979520,
+      "sample_sum_bytes": 94388224,
+      "display_denominator_bytes": 134217728
+    },
+    {
+      "case": "parent48-child16",
+      "SELF_bytes": 64110592,
+      "terminal_wait4_bytes": 64110592,
+      "sample_sum_bytes": 94420992,
+      "display_denominator_bytes": 134217728
+    },
+    {
+      "case": "parent16-two48-sequential",
+      "SELF_bytes": 30556160,
+      "terminal_wait4_bytes": 63995904,
+      "sample_sum_bytes": 94388224,
+      "display_denominator_bytes": 134217728
+    }
+  ],
+  "preserved_dispositions": {
+    "finite_calibration_observation_acceptance": true,
+    "complete_resource_recomputation_accepted": false,
+    "source_reported_resource_estimate_accepted": true,
+    "source_reported_envelope_bytes": 204603392,
+    "missing_runner_SELF": true,
+    "original_donor_resource": "UNKNOWN",
+    "original_full_seconds": 14.004124667000001,
+    "original_full_bytes": 1023344640,
+    "remaining_contexts_not_run": [
+      "donor-two-equalities",
+      "donor-repeated-guard",
+      "donor-repeated-equality",
+      "heldout-mixed-guard-equality"
+    ],
+    "all_five_qualified": false,
+    "proof_searches": 0,
+    "RNG_draws": 0,
+    "training_episodes": 0
+  },
+  "source_lineage": {
+    "original_reader_HTML_sha256": "def1fd924310c42e13f2828d964fe878f230447c4c3a1f8f36f7d616bc331a00",
+    "original_reader_JS_sha256": "006fd2a3ad12d954c4e358813e1f8df031b27c2703bf27ab083fc5dbe11ed653",
+    "originals_preserved_before_ROOT_visual_additions": true,
+    "current_source_public_readers_byte_identical": true,
+    "ROOT_visual_additions": "Saved case selector/bars and normalized display widths only; source-inspected, not browser-rendered. No new acceptance authority.",
+    "assembler_V1_failed_private_partial_retained": true,
+    "assembler_V2_metadata_only": true,
+    "assembly_receipt_written_after_evidence_copy_and_not_in_111_origins": true,
+    "future_assembly_receipt_and_review_link_supplement": "ROOT-owned additive metadata publication delta; not part of this pinned current-view reconciliation."
+  },
+  "limitations": [
+    "No browser rendering or live deployment verification was performed by this reviewer.",
+    "Ancestry for owned coordinator/observer handles is reconciled from saved raw identity plus reviewed source ownership; missing ROOT runner PID remains null.",
+    "The fifteen original memory values are display-normalized saved bytes; raw PS 1024-byte units remain in exact evidence.",
+    "Finite calibration and primary-source version limits remain those of the pinned actual review; no universal platform/lifecycle or scientific qualification issued.",
+    "Compact wrapper evidence is copied and labeled source only; this review does not import, invoke or independently approve its functionality.",
+    "Future additive ROOT evidence links and assembly metadata need their own exact publication binding."
+  ],
+  "scientific_calls": 0,
+  "calibration_rerun": false,
+  "browser_calls": 0,
+  "process_or_native_calls": 0,
+  "public_files_modified": false,
+  "qualification_issued": false
+}

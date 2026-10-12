@@ -1,0 +1,129 @@
+--- .gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py
++++ .gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py
+@@ -1,4 +1,4 @@
+-"""SOURCE ONLY compact owner implementation; CLI intentionally cannot dispatch.
++"""SOURCE ONLY compact owner V2; CLI intentionally cannot dispatch.
+ 
+ ROOT must separately freeze verified platform evidence, an exact accounting
+ adapter and an outer launcher before library entry may run. No counting rule
+@@ -44,17 +44,12 @@
+ def stop_unreaped(child):
+     # Caller proves this handle has not been terminal-reaped. Do not signal
+     # historical PIDs or a group after the direct child terminal is consumed.
+-    previous={signum:signal.getsignal(signum) for signum in (signal.SIGTERM,signal.SIGALRM)}
+-    try:
+-        for signum in previous:signal.signal(signum,signal.SIG_IGN)
+-        try:os.kill(child.pid,signal.SIGKILL)
+-        except ProcessLookupError:pass
+-        return wait_terminal(child)
+-    finally:
+-        for signum,handler in previous.items():signal.signal(signum,handler)
+-
+-
+-def observe(plan,index,owner_started):
++    try:os.kill(child.pid,signal.SIGKILL)
++    except ProcessLookupError:pass
++    return wait_terminal(child)
++
++
++def observe(plan,index,owner_started,check_cancel):
+     """One direct pinned ps child, two closed streams, exactly one wait4.
+ 
+     Terminal usage stays RAW; no RUSAGE_CHILDREN query or unit inference.
+@@ -69,13 +64,19 @@
+     command=[str(binary),'-axo','pid=,ppid=,pgid=,lstart=,rss=']
+     child=None;usage=None;waited=False;failure=None;after_spawn=None;clock_before=time.perf_counter()
+     try:
++        check_cancel()
+         with outpath.open('xb') as out,errpath.open('xb') as err:
+             child=subprocess.Popen(command,stdin=subprocess.DEVNULL,stdout=out,stderr=err,start_new_session=True)
+             after_spawn=time.perf_counter()
++            # Signal handlers only set flags; handle registration is coherent.
++            check_cancel()
+             while True:
++                check_cancel()
+                 pid,status,current=os.wait4(child.pid,os.WNOHANG)
+                 if pid:
+-                    waited=True;usage=current;child.returncode=os.waitstatus_to_exitcode(status);break
++                    waited=True;usage=current;child.returncode=os.waitstatus_to_exitcode(status)
++                    # Only after terminal bookkeeping may cancellation raise.
++                    check_cancel();break
+                 if time.perf_counter()-clock_before>=c['observer_seconds']:
+                     raise TimeoutError('owned direct observer one-second lifetime')
+                 if max(outpath.stat().st_size,errpath.stat().st_size)>c['observer_stream_maximum_bytes']:
+@@ -178,23 +179,34 @@
+     child=None;usage=None;waited=False;child_start=None;worker_terminal_clock=None
+     failure=None;compact=None;worker_SELF=None
+     identities={};observer_count=0;provisional_accounting=None
+-    def cutoff(*_):raise TimeoutError('complete owner175second signal gate')
+-    signal.signal(signal.SIGTERM,cutoff);signal.signal(signal.SIGALRM,cutoff)
++    cancelled_signum=0
++    def cancellation_flag(signum,_frame):
++        nonlocal cancelled_signum
++        cancelled_signum=signum
++    def check_cancel():
++        if cancelled_signum:
++            raise TimeoutError('owned cancellation flag at safe boundary: '+str(cancelled_signum))
++    signal.signal(signal.SIGTERM,cancellation_flag);signal.signal(signal.SIGALRM,cancellation_flag)
+     signal.setitimer(signal.ITIMER_REAL,max(.001,175-(time.perf_counter()-started)))
+     try:
++        check_cancel()
+         with Path(outputs['stdout']).open('xb') as out,Path(outputs['stderr']).open('xb') as err:
+             child_start=time.perf_counter()
+             child=subprocess.Popen([sys.executable,'-B',plan['worker_path'],str(planpath)],
+                 stdin=subprocess.DEVNULL,stdout=out,stderr=err,start_new_session=True,
+                 env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'))
++            # No asynchronous raising handler can discard this registered handle.
++            check_cancel()
+             while True:
++                check_cancel()
+                 pid,status,current=os.wait4(child.pid,os.WNOHANG)
+                 if pid:
+                     waited=True;usage=current;child.returncode=os.waitstatus_to_exitcode(status)
+-                    worker_terminal_clock=time.perf_counter();break
++                    worker_terminal_clock=time.perf_counter()
++                    check_cancel();break
+                 if time.perf_counter()-started>=175:raise TimeoutError('complete owner supervisor gate')
+                 if observer_count>=contract['maximum_observers']:raise RuntimeError('ROOT-frozen observer metadata count')
+-                rows,receipt=observe(plan,observer_count,started);observer_count+=1
++                rows,receipt=observe(plan,observer_count,started,check_cancel);observer_count+=1
+                 observer_close=observers.append(receipt);accounting.add_observer(receipt)
+                 if rows is None:raise RuntimeError('owned observer failure after terminal reap')
+                 owned=owned_rows(rows,child.pid,identities)
+@@ -208,6 +220,7 @@
+                 samples.append(sample);accounting.add_sample(sample)
+                 if accounting.rejects_current_caps():raise MemoryError('separately verified unchanged512MiB rule rejected')
+                 time.sleep(.02)
++        check_cancel()
+         child_seconds=worker_terminal_clock-child_start
+         if child.returncode!=0:raise RuntimeError('scientific worker nonzero terminal')
+         if child_seconds>170:raise TimeoutError('full scientific child170second exit/reap gate')
+@@ -222,6 +235,8 @@
+             usage=stop_unreaped(child);waited=True
+             worker_terminal_clock=time.perf_counter()
+         observer_artifact=observers.close();sample_artifact=samples.close()
++    if cancelled_signum:
++        failure=failure or dict(type='TimeoutError',message='owned non-raising cancellation requested before receipt')
+     elapsed=time.perf_counter()-started
+     if elapsed>175:failure=failure or dict(type='TimeoutError',message='owner complete pre-receipt175second gate')
+     SELF_before=raw_usage(resource.getrusage(resource.RUSAGE_SELF))
+@@ -245,7 +260,9 @@
+         compact_status=stream_pin(Path(outputs['compact'])) if Path(outputs['compact']).exists() else None,
+         semantic_static_candidate=bool(compact),static_context_pool_accepted=False,
+         full_resource_accepted=False,all_five_qualification=False,
+-        failure=failure,owner_seconds_before_lifetime_receipt_write=elapsed,
++        failure=failure,cancellation_signum=cancelled_signum,cancellation_requested=bool(cancelled_signum),
++        cancellation_semantics='Non-raising TERM/ALRM flags; checked only after spawn registration/terminal wait4 bookkeeping and at safe loop boundaries',
++        owner_seconds_before_lifetime_receipt_write=elapsed,
+         maximum_whole_seconds=180,maximum_supervisor_seconds=175,maximum_child_seconds=170,
+         maximum_peak_bytes=536870912,OS_hard_cap_claim=False,
+         remaining_scope='After this closed receipt: raw SELF snapshot, fixed52byte terminal frame, os._exit. ROOT separately reviews preserved reserve and full180second launcher/dispatcher accounting.',
+@@ -253,7 +270,7 @@
+     write_new(outputs['lifetime'],receipt)
+     # No interpreter atexit/print follows the post-close SELF reading. All
+     # owner artifact files and detail streams are closed before this call.
+-    emit_closed_SELF_and_exit(2,started,0 if compact and not failure else 1)
++    emit_closed_SELF_and_exit(2,started,0 if compact and not failure and not cancelled_signum else 1)
+ 
+ 
+ def main():

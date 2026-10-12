@@ -1,0 +1,49 @@
+--- .gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py
++++ .gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py
+@@ -167,26 +167,34 @@
+ 
+ 
+ def main():
++    # Only metadata preflight/post-audit transport changes below this point.
++    # All preceding audit/guard functions are byte-identical to V3.
++    started=time.perf_counter()
++    from compact_static_transport_v1 import (require_contract,read_small,emit_compact,
++        emit_closed_SELF_and_exit)
+     planpath=Path(sys.argv[1]).resolve();plan=json.loads(planpath.read_text())
+-    if (plan.get('schema')!='frozen-curriculum-independent-actual-static-plan-v1'
+-            or plan.get('status')!='frozen_actual_inputs_pending_ROOT_activation'
+-            or plan.get('stage')!='static' or plan.get('actual_execution_authorized') is not False
+-            or plan.get('ROOT_sole_actual_owner') is not True):
+-        raise ValueError('one frozen actual per-selector static plan required')
+-    activation=json.loads(Path(plan['activation_path']).read_text())
+-    if (activation.get('schema')!='ROOT-independent-frozen-curriculum-static-activation-v1'
++    contract=require_contract(plan,planpath,Path(__file__))
++    if any(Path(plan['outputs'][name]).exists() for name in ('result','compact')):
++        raise ValueError('closed immutable audit/compact output already exists; no rerun')
++    activationpath=Path(plan['activation_path'])
++    activation=read_small(activationpath,contract['compact_maximum_bytes'])
++    if (activation.get('schema')!='ROOT-independent-frozen-curriculum-compact-static-activation-v1'
+             or activation.get('authorized') is not True or activation.get('plan')!=relative(planpath)
+             or activation.get('selector')!=plan['selector']):
+-        raise ValueError('exact separate ROOT static activation required before independent scientific imports')
+-    signal.signal(signal.SIGALRM,lambda *_:(_ for _ in ()).throw(TimeoutError('independent transfer child lifetime')))
+-    signal.alarm(plan['limits']['child_seconds'])
+-    if plan['stage'] != 'static': raise ValueError('this successor is static-only; full DFS/RNG/training adapter remains absent')
++        raise ValueError('exact separate ROOT compact static activation required before scientific imports')
++    signal.signal(signal.SIGALRM,lambda *_:(_ for _ in ()).throw(TimeoutError('independent compact static child lifetime')))
++    signal.setitimer(signal.ITIMER_REAL,max(.001,170-(time.perf_counter()-started)))
+     result=static_run(plan)
+     result['plan']=relative(planpath)
+     result['kernel_peak_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)
+     with Path(plan['outputs']['result']).open('x') as stream:
+         json.dump(result,stream,indent=2,ensure_ascii=False,allow_nan=False);stream.write('\n')
+-    verify(plan);signal.alarm(0)
++    verify(plan)
++    emit_compact(result,plan,planpath,Path(__file__),activationpath,started)
++    signal.setitimer(signal.ITIMER_REAL,0)
++    # Full audit and compact receipt are closed. SELF is read after these
++    # metadata costs; only a fixed52byte frame and os._exit remain.
++    emit_closed_SELF_and_exit(1,started,0)
+ 
+ 
+ if __name__=='__main__':main()

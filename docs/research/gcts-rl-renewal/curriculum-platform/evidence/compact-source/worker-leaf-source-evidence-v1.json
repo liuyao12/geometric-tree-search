@@ -1,0 +1,191 @@
+{
+  "status": "CLOSED_PINNED_PROJECT_SOURCE_CHILD_LAUNCH_ABSENCE",
+  "modules": [
+    {
+      "pin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+        "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+        "bytes": 13759
+      },
+      "imports": [
+        "compact_static_transport_v1",
+        "copy",
+        "hashlib",
+        "importlib.util",
+        "json",
+        "pathlib",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+        "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+        "bytes": 13756
+      },
+      "imports": [
+        "hashlib",
+        "json",
+        "os",
+        "pathlib",
+        "resource",
+        "struct",
+        "time"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+        "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+        "bytes": 14401
+      },
+      "imports": [
+        "copy",
+        "gzip",
+        "hashlib",
+        "itertools",
+        "json",
+        "pathlib"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+        "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+        "bytes": 12212
+      },
+      "imports": [
+        "copy",
+        "full_point_oracle_v1"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+        "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+        "bytes": 44198
+      },
+      "imports": [
+        "argparse",
+        "copy",
+        "hashlib",
+        "json",
+        "pathlib",
+        "platform",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+        "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+        "bytes": 51577
+      },
+      "imports": [
+        "argparse",
+        "collections",
+        "copy",
+        "gc",
+        "gzip",
+        "hashlib",
+        "independent_aggregate_audit_v1",
+        "json",
+        "pathlib",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+        "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+        "bytes": 31396
+      },
+      "imports": [
+        "copy",
+        "gzip",
+        "hashlib",
+        "importlib.util",
+        "itertools",
+        "json",
+        "pathlib",
+        "resource",
+        "signal",
+        "sys",
+        "time"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+        "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41",
+        "bytes": 22429
+      },
+      "imports": [
+        "copy",
+        "hashlib",
+        "independent_curriculum_selection_v1",
+        "math"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    },
+    {
+      "pin": {
+        "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py",
+        "sha256": "5f368989c715e90ca018a5d3cca82c4ee1569abb52567aabe06f0c411524e28f",
+        "bytes": 8816
+      },
+      "imports": [
+        "copy"
+      ],
+      "forbidden_process_or_native_imports": 0,
+      "forbidden_launch_calls": 0
+    }
+  ],
+  "library_roles": [
+    "independent_point",
+    "independent_families",
+    "independent_symbolic",
+    "independent_expansion",
+    "independent_static_pool",
+    "independent_context",
+    "independent_curriculum_selection"
+  ],
+  "latent_dormant_library_calls": [
+    {
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "function": "main",
+      "line": 826,
+      "call": "platform.platform",
+      "scope": "Dormant library CLI main, never reached by static worker"
+    }
+  ],
+  "reasoning": "Worker dynamic load targets are all seven literal exact frozen libraries; their project imports resolve inside this inspected set. No inspected project module has process-spawn/native/eval/exec primitive. Existing library CLI main guards are not invoked by worker static_run. Transport performs metadata I/O/raw resource/frame/os._exit only.",
+  "limitations": "Known pinned project source argument, not a hostile interpreter/import-hook/native security proof. Standard-library and pinned host/observer semantics still require ROOT verification/calibration; unexpected runtime descendants stay UNKNOWN.",
+  "source_only": true,
+  "functions_imported_or_invoked": 0,
+  "scientific_calls": 0
+}

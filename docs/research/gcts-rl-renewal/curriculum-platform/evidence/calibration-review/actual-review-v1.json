@@ -1,0 +1,925 @@
+{
+  "schema": "independent-saved-finite-platform-calibration-observation-review-v1",
+  "status": "ACCEPTED_SAVED_FINITE_UNIT_AND_MAX_ROLLUP_OBSERVATIONS_ONLY",
+  "scope": "Saved JSON/52byte frames/PS text/exact source-runtime-plan pins/arithmetic only; no functional calibration, PS, process, native, engine or test calls. No universal platform, mathematical context or full resource proof qualification.",
+  "exact_input_pins": [
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/first-static-resource-unknown-disposition-v1.json",
+      "sha256": "8c58dd8438bb9a2d672ac888f5a93e0cc26421f07394bace1e8938b76e9b77dc",
+      "bytes": 3910
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+      "sha256": "ad2dd720d29a2f363d26a8dd5e54d1c16972c832bf8ee32e0724eafc5f573136",
+      "bytes": 5294
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "sha256": "ee9fa7ed76441c354b11c579ba16985c325379e9152bde966625d093e4501397",
+      "bytes": 18749
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json",
+      "sha256": "88dd711fb07e495004dc4bdd0777001ccbc2f4bd06a1e12c96c5de5298f5b98e",
+      "bytes": 855
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+      "sha256": "76118f55684442dc7d85a70e8dfe0e20b3864fe4046a7ee9df4273c781602d3e",
+      "bytes": 1529
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+      "sha256": "f7914d939d36cb4d6aaaee72f7542092a83a54b7f4f0b5450c09df6d634ea1d2",
+      "bytes": 1010
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "sha256": "4e84adf59fb8fddc1d53a317afd392ac63c4045bfda0a9e79ea4c58d17dab116",
+      "bytes": 87772
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/ROOT-execution-freeze-v1.json",
+      "sha256": "268795564ab95133c44c2d25072f25c7065eeac6fe14f7ad7ca7f353bf6a3259",
+      "bytes": 2728
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+      "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+      "bytes": 16922
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+      "sha256": "6c4e397ac69c5b3c934b10c744155d2ed6ec7021ac5d68cdd2e6fc17f64b0a2b",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external-receipt-v1.json",
+      "sha256": "84df6294c7f3b4e28aa158d249903043e0dee018c2baa802f6512d0c32b847ee",
+      "bytes": 2019
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stdout",
+      "sha256": "b9945f577df17a400edf5d97ecab7c9b6eaac7a3fc933d986ca3af83de41d52d",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outer-reap-v1.json",
+      "sha256": "45e6ae68002fa0c639731e19f74156d01b5fcac2587ace5987a5542e956ee3bd",
+      "bytes": 1947
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+      "sha256": "507145fc23bc4463c41367c3cf85bd5b57958c0fb7027e9e758187b779ea0cec",
+      "bytes": 32651
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+      "sha256": "aa53eb10fd2ea724eb8cdba6ce1be32c87542bf909a014d7427798206c2e0020",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-ready.json",
+      "sha256": "331e4f9cd2edb4e4386552f9b39ef4576933856918a39857820711d11928a266",
+      "bytes": 459
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-receipt.json",
+      "sha256": "c425e98eff5cd648f59572ede7060dad3adb0a07933c049f701eed5b5eedd217",
+      "bytes": 503
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stdout",
+      "sha256": "d171f83ef640a10513f963cf92bee6c2ff196aacc807e7addf5bbcecd5595796",
+      "bytes": 19
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+      "sha256": "c469cf609f47b66928bcb6a2469000446d8ed093084cec34da3b22c79569aa73",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-ready.json",
+      "sha256": "e701adbbbecf3b6de6d51c042e27fa616be21c0f0359c95a3881096ba4241cab",
+      "bytes": 448
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-receipt.json",
+      "sha256": "0e3ad4c5a7111d3bd35b65f2275377338189cb1731703a796d4e8887489069ee",
+      "bytes": 480
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stdout",
+      "sha256": "397ecb05ef6a7099036163b3d91aebb11f8138fe0c6100772885ff5fd69cbeba",
+      "bytes": 19
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+      "sha256": "6556aa5da86c5cf3bc348ccc23c587f3424646fff2323ce6ce69980710ccd8b8",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-ready.json",
+      "sha256": "6fbd0e9bd7b956ad65974f13b5f777b485b3a8ed96baf900aea6586c75f3f521",
+      "bytes": 436
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-receipt.json",
+      "sha256": "eeeebe5a9002383581bd784e66fa7406424eff01b2aacb9277aad3bdf4a7c87f",
+      "bytes": 492
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+      "sha256": "8aeb5105ef0a0be5e2dc92e452116ae65049491f34ed96038087d146a3d8bfe8",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stdout",
+      "sha256": "dc2cb8be68f3a2d9e29716230788fd4cdfa7e8b10b359c5d8ce29f264a1ee86d",
+      "bytes": 38
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/parent-receipt.json",
+      "sha256": "6723938a9f7da9f64e7f9e8a33ffa1c3a508ab5a50a91c3a8c080bc63a3918e1",
+      "bytes": 3208
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+      "sha256": "7cd380488eabc4716c06699ddf7261f70268a8e862ab98b9c6afa602883137ed",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-ready.json",
+      "sha256": "da48b8fe2657eec14ca9396ecba0d2a9d0576d1c01d2a05202dc0c4d02c0ed03",
+      "bytes": 436
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-receipt.json",
+      "sha256": "3115d48a90048fcd941eb7dc432a7cfc025ae41ee381a8de644b32ef0de866f9",
+      "bytes": 480
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+      "sha256": "f6cebb24690addf60386b93734e99acee93df9aadb85f22ac47f53c7668d5d75",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-ready.json",
+      "sha256": "bb2a3eb8a6cb1c95d92e16ffbcd05b09af907c0656f0160df1e2eb099a9a83ac",
+      "bytes": 448
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-receipt.json",
+      "sha256": "4f211f0c9c7bab473dc08dac3ebdbf7f07c1021c78cfa3d28b2aae95c6bffa82",
+      "bytes": 480
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+      "sha256": "8500fcfd059637a502c2f2338d4da29f24904709dca8a26d6812b8119794fbd5",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stdout",
+      "sha256": "6b58ebddfc33a5007f768a620b2a440f7dbb8676edf8712f8e6ec8a5a12ff8d5",
+      "bytes": 38
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stdout",
+      "sha256": "410890ce34ec78289be4c5d8c9221cbea2a767dcf6664b43e3ec017155e7b179",
+      "bytes": 38
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/parent-receipt.json",
+      "sha256": "f197ecc1906006e73395e134a2d45400046ff829aca0584fe5c0e1c0d454adcf",
+      "bytes": 5200
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+      "sha256": "2b5878412b4920f2c119286ce231eb72cadc4eb3e8b4d13c7ffeb8723c494c35",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-ready.json",
+      "sha256": "47f423f5f02c19881e1631b97d92b5ecf812bca4716a8842090ef6d02d820368",
+      "bytes": 436
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-receipt.json",
+      "sha256": "a0a640de9ec39240b72d9c3c1e0e2d371e2c1b633fe0ebffd31c466365cd914f",
+      "bytes": 480
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+      "sha256": "90c83e80bc94bb2658d799ef5917460f7b88451f4aaf8ca019292496db24e6c0",
+      "bytes": 52
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stdout",
+      "sha256": "2dfd2d71de9a2d193f1ea7e2b5c273c154402e8dcb0c3d574331530a905872ce",
+      "bytes": 38
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/parent-receipt.json",
+      "sha256": "1dc168b285ae5c5c19ab43278be4efb71785a4b590cfeebc7b8cf611443905ec",
+      "bytes": 3204
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+      "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+      "bytes": 2133
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+      "sha256": "44845f25f0f58cb2947d769d12231b4510fb973a47c51b752a80c835be66c8f5",
+      "bytes": 6655
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v2.json",
+      "sha256": "911efb069618451a0410b82ecbba737b3e3d34aa1fb31a647686a2db44269d6e",
+      "bytes": 1997
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v4-source-pass-v1.json",
+      "sha256": "fe6f949eb7f6789733f74e62c3259958432d4174ff59e5cc2f3e2c9b12ca9919",
+      "bytes": 9357
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json",
+      "sha256": "43c9dabb621526ebe0f5836c69ed077ff2da6c6aaad21482d3438f93f9c94836",
+      "bytes": 7884
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+      "sha256": "3a148b6cb50bf6ca13d155c33bbf384297aa17b1778b1b80f4728d6697ed34f5",
+      "bytes": 287829
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d",
+      "bytes": 9444
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+      "sha256": "11c930103a9d9e5f021b53aaf1aa7ea2185e85ed75f91efe40fc999d48184315",
+      "bytes": 2284
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+      "sha256": "4c780805a89a6d00c48af9831e9eb2d54556a0f3cb2c39e8e9b4e5bc357ed617",
+      "bytes": 15932793
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json",
+      "sha256": "196df251503c926b6670c12387b3388e8da08bc67fd32640de4e6cee7ca5054d",
+      "bytes": 7773
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+      "sha256": "a709d8044ef39e93927a0efe9b7208a9e752b38e227ea97d412e88af017b40c7",
+      "bytes": 812
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+      "sha256": "34d94837ad995b7508f851968b8e861dc58d3bcf4495317adc68e61a3f9334b9",
+      "bytes": 290878
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  ],
+  "metadata_checks_count": 298,
+  "metadata_checks": [
+    "ROOT freeze exact",
+    "result exact",
+    "freeze9 authorized",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v2.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v4-source-pass-v1.json",
+    "exact pin:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "exact pin:/bin/ps",
+    "exact pin:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+    "exact pin:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/ROOT-execution-freeze-v1.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "same plan/source",
+    "five ordered literal cases",
+    "six observers",
+    "no science",
+    "nominal outer",
+    "nominal coordinator",
+    "actual reported60s256MiB finite gate",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stdout",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+    "postclose external exact",
+    "nested durations covered",
+    "actor nominal:leaf16",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+    "actor clock bound:leaf16",
+    "empty actor stderr:leaf16",
+    "actor terminal maximum:leaf16",
+    "ready ownership+allocation:leaf160",
+    "closed leaf receipt:leaf160",
+    "actor nominal:leaf48",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+    "actor clock bound:leaf48",
+    "empty actor stderr:leaf48",
+    "actor terminal maximum:leaf48",
+    "ready ownership+allocation:leaf480",
+    "closed leaf receipt:leaf480",
+    "actor nominal:parent16-child48",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+    "actor clock bound:parent16-child48",
+    "empty actor stderr:parent16-child48",
+    "same parent receipt:parent16-child48",
+    "parent allocation/count:parent16-child48",
+    "parent highwater:parent16-child48",
+    "nested nominal:parent16-child480",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+    "leaf bound/SELFwait4:parent16-child480",
+    "CHILDREN cumulative max:parent16-child480",
+    "empty nested stderr:parent16-child480",
+    "actor terminal maximum:parent16-child48",
+    "parent final CHILDREN max:parent16-child48",
+    "ready ownership+allocation:parent16-child480",
+    "closed leaf receipt:parent16-child480",
+    "actor nominal:parent48-child16",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+    "actor clock bound:parent48-child16",
+    "empty actor stderr:parent48-child16",
+    "same parent receipt:parent48-child16",
+    "parent allocation/count:parent48-child16",
+    "parent highwater:parent48-child16",
+    "nested nominal:parent48-child160",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+    "leaf bound/SELFwait4:parent48-child160",
+    "CHILDREN cumulative max:parent48-child160",
+    "empty nested stderr:parent48-child160",
+    "actor terminal maximum:parent48-child16",
+    "parent final CHILDREN max:parent48-child16",
+    "ready ownership+allocation:parent48-child160",
+    "closed leaf receipt:parent48-child160",
+    "actor nominal:parent16-two48-sequential",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+    "actor clock bound:parent16-two48-sequential",
+    "empty actor stderr:parent16-two48-sequential",
+    "same parent receipt:parent16-two48-sequential",
+    "parent allocation/count:parent16-two48-sequential",
+    "parent highwater:parent16-two48-sequential",
+    "nested nominal:parent16-two48-sequential0",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+    "leaf bound/SELFwait4:parent16-two48-sequential0",
+    "CHILDREN cumulative max:parent16-two48-sequential0",
+    "empty nested stderr:parent16-two48-sequential0",
+    "nested nominal:parent16-two48-sequential1",
+    "frame52:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+    "frame identity:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+    "frame clocks:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+    "frame exact record:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+    "leaf bound/SELFwait4:parent16-two48-sequential1",
+    "CHILDREN cumulative max:parent16-two48-sequential1",
+    "empty nested stderr:parent16-two48-sequential1",
+    "actor terminal maximum:parent16-two48-sequential",
+    "parent final CHILDREN max:parent16-two48-sequential",
+    "ready ownership+allocation:parent16-two48-sequential0",
+    "closed leaf receipt:parent16-two48-sequential0",
+    "ready ownership+allocation:parent16-two48-sequential1",
+    "closed leaf receipt:parent16-two48-sequential1",
+    "PS nominal:83993",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stdout",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stderr",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-ready.json",
+    "empty PS stderr:83993",
+    "PS3fields:83993",
+    "PS rows exact/unique:83993",
+    "PS live PPID:83993",
+    "PS argv:83993",
+    "exact PSx1024 SELF:83993",
+    "PS nominal:83995",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stdout",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stderr",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-ready.json",
+    "empty PS stderr:83995",
+    "PS3fields:83995",
+    "PS rows exact/unique:83995",
+    "PS live PPID:83995",
+    "PS argv:83995",
+    "exact PSx1024 SELF:83995",
+    "PS nominal:83998",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stdout",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stderr",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-ready.json",
+    "empty PS stderr:83998",
+    "PS3fields:83998",
+    "PS3fields:83998",
+    "PS rows exact/unique:83998",
+    "PS live PPID:83998",
+    "PS argv:83998",
+    "exact PSx1024 SELF:83998",
+    "PS nominal:84004",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stdout",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stderr",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-ready.json",
+    "empty PS stderr:84004",
+    "PS3fields:84004",
+    "PS3fields:84004",
+    "PS rows exact/unique:84004",
+    "PS live PPID:84004",
+    "PS argv:84004",
+    "exact PSx1024 SELF:84004",
+    "PS nominal:84007",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stdout",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stderr",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-ready.json",
+    "empty PS stderr:84007",
+    "PS3fields:84007",
+    "PS3fields:84007",
+    "PS rows exact/unique:84007",
+    "PS live PPID:84007",
+    "PS argv:84007",
+    "exact PSx1024 SELF:84007",
+    "PS nominal:84010",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stdout",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stderr",
+    "exact pin:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-ready.json",
+    "empty PS stderr:84010",
+    "PS3fields:84010",
+    "PS3fields:84010",
+    "PS rows exact/unique:84010",
+    "PS live PPID:84010",
+    "PS argv:84010",
+    "exact PSx1024 SELF:84010",
+    "17 unique recorded owned PIDs",
+    "11 exact frames",
+    "empty outer/coordinator stderr",
+    "coordinator rolled maximum",
+    "external rolled maximum",
+    "inferred but not independent summands",
+    "original/final estimate consistency",
+    "sequential maximum not sum",
+    "historical UNKNOWN unchanged",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "historical exact pin:.gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+    "historical exact pin:.gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json",
+    "no failure cleanup artifacts",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/ROOT-execution-freeze-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outer-reap-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external-receipt-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/calibration-result-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v2.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v4-source-pass-v1.json",
+    "unchanged before review:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "unchanged before review:/bin/ps",
+    "unchanged before review:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+    "unchanged before review:/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-ready.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-ready.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/parent-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-ready.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/parent-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-ready.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/parent-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-ready.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-ready.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-receipt.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stdout",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/external.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/coordinator.stderr",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/first-static-resource-unknown-disposition-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+    "unchanged before review:/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json"
+  ],
+  "finite_observation_acceptance": true,
+  "nominal_saved_scope": {
+    "ROOT_reported_unifiedexec_session": 39536,
+    "ROOT_reported_runner_exit": 0,
+    "terminal_reporting_scope": "Trusted ROOT message; unifiedexec terminal has no additional file pin in this review.",
+    "case_count": 5,
+    "observer_count": 6,
+    "frame_count": 11,
+    "unique_recorded_owned_process_count": 17,
+    "all_nominal_recorded_direct_wait4_and_frames_reconciled": true,
+    "case_observations": [
+      {
+        "case": "leaf16",
+        "actor_pid": 83992,
+        "actor_SELF_raw": 30425088,
+        "actor_wait4_raw": 30425088,
+        "actor_close_seconds": 0.817617083,
+        "children": []
+      },
+      {
+        "case": "leaf48",
+        "actor_pid": 83994,
+        "actor_SELF_raw": 63963136,
+        "actor_wait4_raw": 63963136,
+        "actor_close_seconds": 0.826354084,
+        "children": []
+      },
+      {
+        "case": "parent16-child48",
+        "actor_pid": 83996,
+        "actor_SELF_raw": 30457856,
+        "actor_wait4_raw": 63979520,
+        "actor_close_seconds": 0.866349958,
+        "children": [
+          {
+            "index": 0,
+            "pid": 83997,
+            "leaf_SELF_raw": 63979520,
+            "leaf_wait4_raw": 63979520,
+            "CHILDREN_after_reap_raw": 63979520
+          }
+        ]
+      },
+      {
+        "case": "parent48-child16",
+        "actor_pid": 84000,
+        "actor_SELF_raw": 64110592,
+        "actor_wait4_raw": 64110592,
+        "actor_close_seconds": 0.8694095,
+        "children": [
+          {
+            "index": 0,
+            "pid": 84003,
+            "leaf_SELF_raw": 30441472,
+            "leaf_wait4_raw": 30441472,
+            "CHILDREN_after_reap_raw": 30441472
+          }
+        ]
+      },
+      {
+        "case": "parent16-two48-sequential",
+        "actor_pid": 84005,
+        "actor_SELF_raw": 30556160,
+        "actor_wait4_raw": 63995904,
+        "actor_close_seconds": 1.735816042,
+        "children": [
+          {
+            "index": 0,
+            "pid": 84006,
+            "leaf_SELF_raw": 63995904,
+            "leaf_wait4_raw": 63995904,
+            "CHILDREN_after_reap_raw": 63995904
+          },
+          {
+            "index": 1,
+            "pid": 84009,
+            "leaf_SELF_raw": 63913984,
+            "leaf_wait4_raw": 63913984,
+            "CHILDREN_after_reap_raw": 63995904
+          }
+        ]
+      }
+    ],
+    "PS_observations": [
+      {
+        "case": "leaf16",
+        "leaf_index": 0,
+        "observer_pid": 83993,
+        "leaf_pid": 83992,
+        "PS_RSS_1024_units": 29712,
+        "PS_times1024": 30425088,
+        "leaf_SELF_raw": 30425088,
+        "exact_equality": true,
+        "observer_wait4_peak_raw": 1409024,
+        "observer_whole_seconds": 0.014429917
+      },
+      {
+        "case": "leaf48",
+        "leaf_index": 0,
+        "observer_pid": 83995,
+        "leaf_pid": 83994,
+        "PS_RSS_1024_units": 62464,
+        "PS_times1024": 63963136,
+        "leaf_SELF_raw": 63963136,
+        "exact_equality": true,
+        "observer_wait4_peak_raw": 1409024,
+        "observer_whole_seconds": 0.014591041999999943
+      },
+      {
+        "case": "parent16-child48",
+        "leaf_index": 0,
+        "observer_pid": 83998,
+        "leaf_pid": 83997,
+        "PS_RSS_1024_units": 62480,
+        "PS_times1024": 63979520,
+        "leaf_SELF_raw": 63979520,
+        "exact_equality": true,
+        "observer_wait4_peak_raw": 1769472,
+        "observer_whole_seconds": 0.014250334000000198
+      },
+      {
+        "case": "parent48-child16",
+        "leaf_index": 0,
+        "observer_pid": 84004,
+        "leaf_pid": 84003,
+        "PS_RSS_1024_units": 29728,
+        "PS_times1024": 30441472,
+        "leaf_SELF_raw": 30441472,
+        "exact_equality": true,
+        "observer_wait4_peak_raw": 1785856,
+        "observer_whole_seconds": 0.012640999999999902
+      },
+      {
+        "case": "parent16-two48-sequential",
+        "leaf_index": 0,
+        "observer_pid": 84007,
+        "leaf_pid": 84006,
+        "PS_RSS_1024_units": 62496,
+        "PS_times1024": 63995904,
+        "leaf_SELF_raw": 63995904,
+        "exact_equality": true,
+        "observer_wait4_peak_raw": 1785856,
+        "observer_whole_seconds": 0.014696292
+      },
+      {
+        "case": "parent16-two48-sequential",
+        "leaf_index": 1,
+        "observer_pid": 84010,
+        "leaf_pid": 84009,
+        "PS_RSS_1024_units": 62416,
+        "PS_times1024": 63913984,
+        "leaf_SELF_raw": 63913984,
+        "exact_equality": true,
+        "observer_wait4_peak_raw": 1785856,
+        "observer_whole_seconds": 0.01457091700000035
+      }
+    ],
+    "no_cancel_stop_emergency": true
+  },
+  "finite_conclusions": [
+    "All6 sampled leaf PS RSS values multiplied by1024 exactly equal terminal SELF and direct wait4 ru_maxrss on these recorded workloads, supporting installed SDK byte semantics.",
+    "All3 parent terminal wait4 peaks equal max(parent terminal SELF, completed child peaks).",
+    "Sequential48MiB children have peaks63995904 and63913984; CHILDREN maximum63995904 differs from sum127909888.",
+    "Coordinator/external wait4 peaks64110592 include descendants and exceed their own SELF; these are not isolated observer or SELF measurements."
+  ],
+  "resource_reconciliation": {
+    "ROOT_reported_estimate_accepted": true,
+    "reported_complete_estimate_bytes": 204603392,
+    "unchanged_cap_bytes": 268435456,
+    "known_saved_terms": {
+      "external_postclose_SELF": 13893632,
+      "coordinator_postclose_SELF": 14319616,
+      "max_actor_postclose_SELF": 64110592,
+      "max_nested_leaf_postclose_SELF": 63995904,
+      "max_PS_wait4": 1785856,
+      "fixed_reserve": 33554432
+    },
+    "known_saved_terms_sum": 191660032,
+    "runner_SELF_omitted_from_raw_receipt": true,
+    "runner_SELF_inferred_not_independently_observed": 12943360,
+    "external_prewrite_SELF_inferred_not_independently_observed": 13877248,
+    "reported_arithmetic_consistency": true,
+    "independent_complete_resource_recomputation_accepted": false,
+    "limitation": "Two actual SELF terms were not serialized separately. Inferred values reconcile totals but are not independent raw measurements. No new measurement, retry or downward correction."
+  },
+  "clock_reconciliation": {
+    "actual_external_Popen_to_wait4_seconds": 5.368283458,
+    "external_postclose_frame_seconds": 5.344305916,
+    "coordinator_postclose_frame_seconds": 5.309706875000001,
+    "runner_ENTRY_to_before_receipt_seconds": 5.388712125,
+    "pre_receipt_runner_overhead_over_external_seconds": 0.02042866700000001,
+    "actual_external_fits_unchanged60s": true,
+    "observer_clocks_already_inside_outer_clock": true,
+    "additional_scope": "Runner earliest startup/import initialization and final receipt/print/exit/reap, plus this review overhead, lack a complete independent saved terminal clock. They are additional; nested durations are not summed. Frame origins are process-local, not compared as common absolute timestamps."
+  },
+  "remaining_limits": [
+    "Finite records do not establish exhaustive birth/leaf scope, arbitrary external failure cleanup, concurrent-sibling tree bounds, or universal fork/exec behavior.",
+    "Exact host XNU121.10 differs from pinned published121.6; older archived kilobyte wording remains preserved.",
+    "Future compact-wrapper/accounting adapter source review and ROOT binding remain required; no scientific activation follows automatically."
+  ],
+  "historical_donor_two_guards": {
+    "status": "UNKNOWN_PRESERVED_FULL_RESOURCE_GATE_FAILED_NO_RECLASSIFICATION",
+    "full_seconds": 14.004124667000001,
+    "conservative_complete_bytes": 1023344640,
+    "unchanged_cap_bytes": 536870912,
+    "rerun": false,
+    "discount": false,
+    "reclassification": false,
+    "all_five_qualification": false
+  },
+  "review_event_note": "First metadata-only reconciliation stopped before writes on wrong historical receipt key accepted; corrected to exact accepted_for_metadata_finalization. No calibration or other functional call occurred.",
+  "actual_review_calls": {
+    "saved_metadata_only": true,
+    "functional_source_imports": 0,
+    "calibration_invocations": 0,
+    "PS_calls": 0,
+    "process_ownership_calls": 0,
+    "native_queries": 0,
+    "tests": 0,
+    "engine_or_scientific_calls": 0,
+    "RNG_draws": 0,
+    "training": 0,
+    "activations": 0,
+    "publication": 0
+  },
+  "scientific_or_context_qualification_issued": false,
+  "ROOT_sole_actual_owner": true
+}

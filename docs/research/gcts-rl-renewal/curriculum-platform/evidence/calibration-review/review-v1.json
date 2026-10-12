@@ -1,0 +1,219 @@
+{
+  "schema": "independent-fixed-platform-calibration-source-review-v1",
+  "status": "FINDINGS_V1_REMAINS_UNEXECUTED_SOURCE_SUCCESSOR_REQUIRED",
+  "exact_input_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v1.py",
+      "sha256": "380182e6f25ddee2c31c3282ca7aac534a5e10bbdf2ae97f2a1a73ecf26778e2",
+      "bytes": 13045
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v1.json",
+      "sha256": "d8e60d5ab33feec2c479c61da8a52ea9234d8df3d59a8c65a27839af3b8fc7f9",
+      "bytes": 1862
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v1.json",
+      "sha256": "330cd708f2581c6da8d377dba1b399b48676625d739df4074f40c18e9fae589b",
+      "bytes": 1391
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-semantics-source-review-20261012/review-v1.json",
+      "sha256": "a94932d5648a8ea3062d8ddbd3e96142636269bd51f91a450ddfcbd86aeba3d2",
+      "bytes": 10129
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-semantics-source-review-20261012/conclusions-v1.json",
+      "sha256": "557b5d4cc03564942e3bcbfe3e6125b6cfb2e0df7c8ec9ad3e8f3f30da082f3f",
+      "bytes": 9398
+    }
+  ],
+  "AST_python39_passed": true,
+  "declared_imports": [
+    "time",
+    "hashlib",
+    "json",
+    "os",
+    "pathlib",
+    "resource",
+    "signal",
+    "struct",
+    "subprocess",
+    "sys"
+  ],
+  "fixed_cases_verified": [
+    [
+      "leaf16",
+      0,
+      [
+        16
+      ]
+    ],
+    [
+      "leaf48",
+      0,
+      [
+        48
+      ]
+    ],
+    [
+      "parent16-child48",
+      16,
+      [
+        48
+      ]
+    ],
+    [
+      "parent48-child16",
+      48,
+      [
+        16
+      ]
+    ],
+    [
+      "parent16-two48-sequential",
+      16,
+      [
+        48,
+        48
+      ]
+    ]
+  ],
+  "fixed_limits_verified": {
+    "whole_seconds": 60,
+    "case_seconds": 10,
+    "leaf_seconds": 4,
+    "peak_bytes": 268435456,
+    "memory_reserve_bytes": 33554432
+  },
+  "host_preflight_scope": "Saved ROOT standard-library preflight read as metadata only; reviewer imported no calibration module or native resource extension. Host version/source121.10-versus121.6 discrepancy preserved.",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "blocking_before_V1_invocation",
+      "lines": [
+        100,
+        102,
+        144,
+        146,
+        171,
+        189,
+        193,
+        219,
+        221
+      ],
+      "problem": "Each nested scientific-free actor starts a new session. Killing coordinator or actor process group cannot terminate their separately sessioned children; killing a nonleaf actor prevents its own child cleanup. Deadlines/alarms do not prove complete ownership/reaping. An observer error or outer interruption can leave an unaccounted descendant.",
+      "prospective_remedy": "Preserve V1 unexecuted. Contain nested actors in a declared group and use bounded cooperative direct-child termination plus exact nested cleanup acknowledgements. Emergency group termination remains UNKNOWN and must not claim successful complete reaping. No retries."
+    },
+    {
+      "id": "F2",
+      "severity": "lifecycle_safety_requirement_for_successor",
+      "lines": [
+        91,
+        94,
+        99,
+        103,
+        113,
+        115,
+        144,
+        147,
+        171,
+        173,
+        182,
+        185,
+        219,
+        221,
+        246
+      ],
+      "problem": "Raising signal handlers can interrupt spawn-to-registration or wait4-to-returncode bookkeeping. After wait4 has reaped but before returncode is set, cleanup may try to signal a historical PID/process group and wait a second time. A second TERM can also interrupt cleanup.",
+      "prospective_remedy": "Use cancellation flags at safe boundaries or explicit signal masking around process registration and reaping bookkeeping. Never signal an already reaped identity; account each direct child exactly once and bound cleanup under original whole deadline."
+    },
+    {
+      "id": "F3",
+      "severity": "resource_clock_acceptance_gap_not_a_claim_of_failed_measurements",
+      "lines": [
+        63,
+        74,
+        125,
+        133,
+        203,
+        207,
+        221,
+        228,
+        242
+      ],
+      "problem": "Full estimate uses outer SELF before receipt serialization plus a32MiB reserve. The source does not compare post-close outer SELF/frame clock to that reserve/caps before successful hard exit; the fixed whole alarm begins after imports/plan read and is disabled before terminal. Child frame durations exclude enclosing startup/exit/reap. A false estimate_under_fixed_256MiB does not change completed status or exit0.",
+      "prospective_remedy": "Keep raw finite observations distinguishable from accepted calibration. Bind a ROOT-measured actual outer startup-to-exit/reap clock and exact post-close frame; postvalidate unchanged60s/256MiB envelope. Any overrun or incomplete final record remains UNKNOWN with no retry."
+    },
+    {
+      "id": "F4",
+      "severity": "metadata_validation_gap",
+      "lines": [
+        77,
+        85,
+        110,
+        120,
+        178,
+        181
+      ],
+      "problem": "Frame validation checks size/magic/role/PID/status but does not reject nonfinite or inconsistent duration/start/close values. PS parsing via zip permits missing RSS or ignored extra fields, and set equality permits duplicate PID rows; sampled PPID ancestry is not checked. Observer leaf=True is declared from command/source assumptions, not observed ancestry.",
+      "prospective_remedy": "Require finite nonnegative frame values with consistent clock differences, exact3-field PS rows, unique target PIDs, nonnegative RSS and expected PPID relationships. Make leaf scope explicit and preserve any uncertainty. Pin decoded bytes and exact source/runtime bindings before acceptance."
+    }
+  ],
+  "evidence_sufficiency": {
+    "nominal_success_paths": "Five fixed fresh workloads can supply finite allocation/RSS-unit and parent-versus-child terminal max-rollup observations, with two sequential equal-size children distinguishing maximum from accumulation. Separate PS wait4 records are an improvement over cumulative CHILDREN. Full raw artifacts and exact bounds still require independent saved-metadata interpretation after ROOT execution.",
+    "not_established": [
+      "No concurrent-two-child calibration; no universal simultaneous tree bound",
+      "No general fork/exec lifecycle guarantee",
+      "No exhaustive PS leaf/birth-identity coverage",
+      "No post-receipt outer process lifetime acceptance from this source alone",
+      "No mathematical/proof/RL or all-five context qualification"
+    ]
+  },
+  "positive_source_controls": [
+    "No project imports or random calls",
+    "Exact fixed5case literals and unchanged60s/256MiB limits",
+    "Source/Python/ps pins checked before external actor launch",
+    "Exclusive immutable output namespace and close-before-hard-link JSON writes",
+    "Fixed52byte frame and hard exit",
+    "Direct per-observer wait4 ledger; complete observer stdout/stderr pins",
+    "Finite failure produces no inferred successful retry"
+  ],
+  "prospective_ROOT_design_feedback": "ROOT acknowledged V1 is unlaunched. Same-group containment, cooperative cleanup acknowledgements and emergency UNKNOWN are acceptable as a prospective bounded non-scientific design subject to exact successor source review. This review itself authorizes no execution.",
+  "actual_review_operations": {
+    "AST_hash_JSON_text_metadata_only": true,
+    "functional_source_imports": 0,
+    "project_calls": 0,
+    "calibration_invocations": 0,
+    "process_ownership_calls": 0,
+    "PS_calls": 0,
+    "tests": 0,
+    "scientific_calls": 0,
+    "RNG_draws": 0,
+    "activations": 0,
+    "publication_actions": 0
+  },
+  "historical_donor_two_guards_UNKNOWN_preserved": true,
+  "qualification_issued": false,
+  "ROOT_sole_actual_owner": true
+}

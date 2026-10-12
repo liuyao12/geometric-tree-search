@@ -1,0 +1,168 @@
+{
+  "status": "EXACT_V1_WORKER_TRANSPORT_AND_ORIGINAL_SCIENTIFIC_BYTES_PRESERVED",
+  "predecessor": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json",
+    "sha256": "2cfcfde17096cb74077ae8375df2cc50b51c0791270ca821b9fc89150e4329a1",
+    "bytes": 277764
+  },
+  "original_worker": {
+    "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+    "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1",
+    "bytes": 13373
+  },
+  "reused_worker": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+    "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+    "bytes": 13759
+  },
+  "reused_transport": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+    "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+    "bytes": 13756
+  },
+  "prefix_bytes": 11725,
+  "prefix_sha256": "0b02c8499531cd15863c45e8f1b34c2a2a7e7a8ea1d54f919aa5ffd9ac37176f",
+  "original_scientific_functions": [
+    {
+      "name": "pin",
+      "bytes": 262,
+      "sha256": "d1ce0f3ea9740210f9695374bb647452d5f1fe735f1be98238ae957061c5934f",
+      "byte_identical": true
+    },
+    {
+      "name": "relative",
+      "bytes": 114,
+      "sha256": "3df62c0c7159602ff859f4fdd61bfdddbcb5a46d26cac787468fbd272bcf8d4f",
+      "byte_identical": true
+    },
+    {
+      "name": "verify",
+      "bytes": 389,
+      "sha256": "af96be3296f17e8198c79640456099af4828a33912e44adf3d30daa0181131d6",
+      "byte_identical": true
+    },
+    {
+      "name": "load",
+      "bytes": 300,
+      "sha256": "7e607fc80c0a52a9688640c7e81263044fdb0ce73402fee5728573dda7272527",
+      "byte_identical": true
+    },
+    {
+      "name": "libraries",
+      "bytes": 612,
+      "sha256": "173d682692055bdebb3b82647908a1617c7934a96ae5ec188e4b228ff7e8acb0",
+      "byte_identical": true
+    },
+    {
+      "name": "validate_terminal",
+      "bytes": 1420,
+      "sha256": "50d06fb33f87dc01815a8834df5ee680165a2b8902fbda7a6db8ebd5e1db00d4",
+      "byte_identical": true
+    },
+    {
+      "name": "rebuild",
+      "bytes": 2813,
+      "sha256": "58b04481fe6995791275ae8777fdaf8216aea8d85bbe87dec7394e43cf398fac",
+      "byte_identical": true
+    },
+    {
+      "name": "static_run",
+      "bytes": 5122,
+      "sha256": "2820e32d892e32e1d6c0aa31a5462fd10a585a78ee1d283aaca0a95b6849caef",
+      "byte_identical": true
+    }
+  ],
+  "original_libraries": [
+    {
+      "role": "independent_point",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    {
+      "role": "independent_families",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212
+    },
+    {
+      "role": "independent_symbolic",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "role": "independent_expansion",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "role": "independent_static_pool",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+      "bytes": 31396
+    },
+    {
+      "role": "independent_context",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+      "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41",
+      "bytes": 22429
+    },
+    {
+      "role": "independent_curriculum_selection",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py",
+      "sha256": "5f368989c715e90ca018a5d3cca82c4ee1569abb52567aabe06f0c411524e28f",
+      "bytes": 8816
+    }
+  ],
+  "inherited_leaf_source_evidence": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-leaf-source-evidence-v1.json",
+    "sha256": "82afbf452f20bd984b56d1dfca01e3926f7772e49a8648261f627c23f967bb95",
+    "bytes": 5834
+  },
+  "unchanged_owner_constructs": [
+    {
+      "name": "DetailStream",
+      "bytes": 628,
+      "sha256": "b7baa8cea06bea48a3dd35020c4fcfe80c08f3e98f656b78d4bb1769abbdd09c",
+      "byte_identical": true
+    },
+    {
+      "name": "wait_terminal",
+      "bytes": 286,
+      "sha256": "5ac2328e7a8512c7238eaab1b68a1a1ea4d1aed2cbb67d5bdf8b602f4cf64cc1",
+      "byte_identical": true
+    },
+    {
+      "name": "owned_rows",
+      "bytes": 530,
+      "sha256": "90045b74691ed2c72691970b43f92cc3558e2fdfe6fadd0d71c4b4701c896be1",
+      "byte_identical": true
+    },
+    {
+      "name": "require_accounting_adapter",
+      "bytes": 748,
+      "sha256": "7cd7390b3413679829af496811e42a8de54cbf37f390220b35e7f24d06b61d4c",
+      "byte_identical": true
+    },
+    {
+      "name": "main",
+      "bytes": 187,
+      "sha256": "93cf33216ae70d36a9f2e21c97c3d5e0c80fa6e3780fb63420e9fcea0360b4d8",
+      "byte_identical": true
+    }
+  ],
+  "declared_exact_owner_transform_count": 15,
+  "exact_limits": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "no_budget_or_feature_grammar_reward_seed_change": true,
+  "source_only": true,
+  "scientific_calls": 0,
+  "project_function_imports": 0,
+  "process_calls": 0
+}

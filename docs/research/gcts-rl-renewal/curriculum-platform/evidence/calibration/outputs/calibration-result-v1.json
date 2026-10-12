@@ -1,0 +1,1054 @@
+{
+  "status": "completed_fixed_non_scientific_platform_calibration",
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+    "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+    "bytes": 2133
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+    "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+    "bytes": 16922
+  },
+  "cases": [
+    {
+      "name": "leaf16",
+      "own_touched_mib": 0,
+      "child_touched_mib": [
+        16
+      ],
+      "pid": 83992,
+      "reaped": true,
+      "exit_code": 0,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 17,
+        "ru_maxrss": 30425088,
+        "ru_minflt": 2474,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 8,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 1,
+        "ru_oublock": 0,
+        "ru_stime": 0.008314,
+        "ru_utime": 0.016064
+      },
+      "actor_frame": {
+        "pid": 83992,
+        "role": 1,
+        "SELF_ru_maxrss_raw": 30425088,
+        "seconds_through_all_artifact_close": 0.817617083,
+        "entry": 0.005683958,
+        "last_close": 0.823301041,
+        "pin": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/actor.stdout",
+          "sha256": "aa53eb10fd2ea724eb8cdba6ce1be32c87542bf909a014d7427798206c2e0020",
+          "bytes": 52
+        }
+      },
+      "parent_receipt": null
+    },
+    {
+      "name": "leaf48",
+      "own_touched_mib": 0,
+      "child_touched_mib": [
+        48
+      ],
+      "pid": 83994,
+      "reaped": true,
+      "exit_code": 0,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 17,
+        "ru_maxrss": 63963136,
+        "ru_minflt": 4525,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 12,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 1,
+        "ru_oublock": 0,
+        "ru_stime": 0.019639,
+        "ru_utime": 0.033146
+      },
+      "actor_frame": {
+        "pid": 83994,
+        "role": 1,
+        "SELF_ru_maxrss_raw": 63963136,
+        "seconds_through_all_artifact_close": 0.826354084,
+        "entry": 0.010885416,
+        "last_close": 0.8372395,
+        "pin": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/actor.stdout",
+          "sha256": "c469cf609f47b66928bcb6a2469000446d8ed093084cec34da3b22c79569aa73",
+          "bytes": 52
+        }
+      },
+      "parent_receipt": null
+    },
+    {
+      "name": "parent16-child48",
+      "own_touched_mib": 16,
+      "child_touched_mib": [
+        48
+      ],
+      "pid": 83996,
+      "reaped": true,
+      "exit_code": 0,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 34,
+        "ru_maxrss": 63979520,
+        "ru_minflt": 7226,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 58,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 73,
+        "ru_oublock": 0,
+        "ru_stime": 0.029355,
+        "ru_utime": 0.054465
+      },
+      "actor_frame": {
+        "pid": 83996,
+        "role": 2,
+        "SELF_ru_maxrss_raw": 30457856,
+        "seconds_through_all_artifact_close": 0.866349958,
+        "entry": 0.010351083,
+        "last_close": 0.876701041,
+        "pin": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/actor.stdout",
+          "sha256": "6556aa5da86c5cf3bc348ccc23c587f3424646fff2323ce6ce69980710ccd8b8",
+          "bytes": 52
+        }
+      },
+      "parent_receipt": {
+        "status": "fixed_non_scientific_parent_completed",
+        "touched_bytes": 16777216,
+        "SELF_initial": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 30392320,
+          "ru_minflt": 2477,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 28,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 0,
+          "ru_oublock": 0,
+          "ru_stime": 0.014605,
+          "ru_utime": 0.03059
+        },
+        "children": [
+          {
+            "pid": 83997,
+            "exit_code": 0,
+            "reaped": true,
+            "wait4_raw": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 63979520,
+              "ru_minflt": 4526,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 10,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.011014,
+              "ru_utime": 0.019875999999999998
+            },
+            "leaf_frame": {
+              "pid": 83997,
+              "role": 1,
+              "SELF_ru_maxrss_raw": 63979520,
+              "seconds_through_all_artifact_close": 0.821302,
+              "entry": 0.006720708,
+              "last_close": 0.828022708,
+              "pin": {
+                "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0.stdout",
+                "sha256": "8aeb5105ef0a0be5e2dc92e452116ae65049491f34ed96038087d146a3d8bfe8",
+                "bytes": 52
+              }
+            },
+            "SELF_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 30425088,
+              "ru_minflt": 2660,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 42,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 72,
+              "ru_oublock": 0,
+              "ru_stime": 0.016954,
+              "ru_utime": 0.034108
+            },
+            "CHILDREN_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 63979520,
+              "ru_minflt": 4526,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 10,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.011014,
+              "ru_utime": 0.019875999999999998
+            }
+          }
+        ],
+        "SELF_after_all_reaps": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 30425088,
+          "ru_minflt": 2661,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 42,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 72,
+          "ru_oublock": 0,
+          "ru_stime": 0.016958,
+          "ru_utime": 0.034172
+        },
+        "CHILDREN_after_all_reaps": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 63979520,
+          "ru_minflt": 4526,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 10,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 1,
+          "ru_oublock": 0,
+          "ru_stime": 0.011014,
+          "ru_utime": 0.019875999999999998
+        }
+      }
+    },
+    {
+      "name": "parent48-child16",
+      "own_touched_mib": 48,
+      "child_touched_mib": [
+        16
+      ],
+      "pid": 84000,
+      "reaped": true,
+      "exit_code": 0,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 34,
+        "ru_maxrss": 64110592,
+        "ru_minflt": 7226,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 55,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 72,
+        "ru_oublock": 0,
+        "ru_stime": 0.028613,
+        "ru_utime": 0.048059
+      },
+      "actor_frame": {
+        "pid": 84000,
+        "role": 2,
+        "SELF_ru_maxrss_raw": 64110592,
+        "seconds_through_all_artifact_close": 0.8694095,
+        "entry": 0.00816675,
+        "last_close": 0.87757625,
+        "pin": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/actor.stdout",
+          "sha256": "2b5878412b4920f2c119286ce231eb72cadc4eb3e8b4d13c7ffeb8723c494c35",
+          "bytes": 52
+        }
+      },
+      "parent_receipt": {
+        "status": "fixed_non_scientific_parent_completed",
+        "touched_bytes": 50331648,
+        "SELF_initial": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 63963136,
+          "ru_minflt": 4522,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 18,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 0,
+          "ru_oublock": 0,
+          "ru_stime": 0.012998,
+          "ru_utime": 0.024544999999999997
+        },
+        "children": [
+          {
+            "pid": 84003,
+            "exit_code": 0,
+            "reaped": true,
+            "wait4_raw": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 30441472,
+              "ru_minflt": 2477,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 11,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.010716,
+              "ru_utime": 0.01937
+            },
+            "leaf_frame": {
+              "pid": 84003,
+              "role": 1,
+              "SELF_ru_maxrss_raw": 30441472,
+              "seconds_through_all_artifact_close": 0.8197846670000001,
+              "entry": 0.007139708,
+              "last_close": 0.826924375,
+              "pin": {
+                "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0.stdout",
+                "sha256": "90c83e80bc94bb2658d799ef5917460f7b88451f4aaf8ca019292496db24e6c0",
+                "bytes": 52
+              }
+            },
+            "SELF_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 64028672,
+              "ru_minflt": 4704,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 33,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 71,
+              "ru_oublock": 0,
+              "ru_stime": 0.015957,
+              "ru_utime": 0.028114999999999998
+            },
+            "CHILDREN_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 30441472,
+              "ru_minflt": 2477,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 11,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.010716,
+              "ru_utime": 0.01937
+            }
+          }
+        ],
+        "SELF_after_all_reaps": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 64028672,
+          "ru_minflt": 4705,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 33,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 71,
+          "ru_oublock": 0,
+          "ru_stime": 0.015967,
+          "ru_utime": 0.028203
+        },
+        "CHILDREN_after_all_reaps": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 30441472,
+          "ru_minflt": 2477,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 11,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 1,
+          "ru_oublock": 0,
+          "ru_stime": 0.010716,
+          "ru_utime": 0.01937
+        }
+      }
+    },
+    {
+      "name": "parent16-two48-sequential",
+      "own_touched_mib": 16,
+      "child_touched_mib": [
+        48,
+        48
+      ],
+      "pid": 84005,
+      "reaped": true,
+      "exit_code": 0,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 51,
+        "ru_maxrss": 63995904,
+        "ru_minflt": 11942,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 95,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 145,
+        "ru_oublock": 0,
+        "ru_stime": 0.054547,
+        "ru_utime": 0.08782799999999999
+      },
+      "actor_frame": {
+        "pid": 84005,
+        "role": 2,
+        "SELF_ru_maxrss_raw": 30556160,
+        "seconds_through_all_artifact_close": 1.735816042,
+        "entry": 0.010213583,
+        "last_close": 1.746029625,
+        "pin": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/actor.stdout",
+          "sha256": "7cd380488eabc4716c06699ddf7261f70268a8e862ab98b9c6afa602883137ed",
+          "bytes": 52
+        }
+      },
+      "parent_receipt": {
+        "status": "fixed_non_scientific_parent_completed",
+        "touched_bytes": 16777216,
+        "SELF_initial": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 30375936,
+          "ru_minflt": 2477,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 17,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 0,
+          "ru_oublock": 0,
+          "ru_stime": 0.013712,
+          "ru_utime": 0.029606
+        },
+        "children": [
+          {
+            "pid": 84006,
+            "exit_code": 0,
+            "reaped": true,
+            "wait4_raw": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 63995904,
+              "ru_minflt": 4526,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 19,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.016243999999999998,
+              "ru_utime": 0.020544
+            },
+            "leaf_frame": {
+              "pid": 84006,
+              "role": 1,
+              "SELF_ru_maxrss_raw": 63995904,
+              "seconds_through_all_artifact_close": 0.822449291,
+              "entry": 0.0066125,
+              "last_close": 0.829061791,
+              "pin": {
+                "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0.stdout",
+                "sha256": "f6cebb24690addf60386b93734e99acee93df9aadb85f22ac47f53c7668d5d75",
+                "bytes": 52
+              }
+            },
+            "SELF_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 30441472,
+              "ru_minflt": 2655,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 31,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 71,
+              "ru_oublock": 0,
+              "ru_stime": 0.016406999999999998,
+              "ru_utime": 0.032992
+            },
+            "CHILDREN_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 63995904,
+              "ru_minflt": 4526,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 19,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.016243999999999998,
+              "ru_utime": 0.020544
+            }
+          },
+          {
+            "pid": 84009,
+            "exit_code": 0,
+            "reaped": true,
+            "wait4_raw": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 63913984,
+              "ru_minflt": 4525,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 25,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 1,
+              "ru_oublock": 0,
+              "ru_stime": 0.018251,
+              "ru_utime": 0.031519
+            },
+            "leaf_frame": {
+              "pid": 84009,
+              "role": 1,
+              "SELF_ru_maxrss_raw": 63913984,
+              "seconds_through_all_artifact_close": 0.824612,
+              "entry": 0.010113916,
+              "last_close": 0.834725916,
+              "pin": {
+                "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1.stdout",
+                "sha256": "8500fcfd059637a502c2f2338d4da29f24904709dca8a26d6812b8119794fbd5",
+                "bytes": 52
+              }
+            },
+            "SELF_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 17,
+              "ru_maxrss": 30474240,
+              "ru_minflt": 2834,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 51,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 143,
+              "ru_oublock": 0,
+              "ru_stime": 0.019584999999999998,
+              "ru_utime": 0.035525
+            },
+            "CHILDREN_after_reap": {
+              "ru_idrss": 0,
+              "ru_inblock": 0,
+              "ru_isrss": 0,
+              "ru_ixrss": 0,
+              "ru_majflt": 34,
+              "ru_maxrss": 63995904,
+              "ru_minflt": 9051,
+              "ru_msgrcv": 0,
+              "ru_msgsnd": 0,
+              "ru_nivcsw": 44,
+              "ru_nsignals": 0,
+              "ru_nswap": 0,
+              "ru_nvcsw": 2,
+              "ru_oublock": 0,
+              "ru_stime": 0.034495,
+              "ru_utime": 0.052063
+            }
+          }
+        ],
+        "SELF_after_all_reaps": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 17,
+          "ru_maxrss": 30474240,
+          "ru_minflt": 2837,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 51,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 143,
+          "ru_oublock": 0,
+          "ru_stime": 0.019589,
+          "ru_utime": 0.035554999999999996
+        },
+        "CHILDREN_after_all_reaps": {
+          "ru_idrss": 0,
+          "ru_inblock": 0,
+          "ru_isrss": 0,
+          "ru_ixrss": 0,
+          "ru_majflt": 34,
+          "ru_maxrss": 63995904,
+          "ru_minflt": 9051,
+          "ru_msgrcv": 0,
+          "ru_msgsnd": 0,
+          "ru_nivcsw": 44,
+          "ru_nsignals": 0,
+          "ru_nswap": 0,
+          "ru_nvcsw": 2,
+          "ru_oublock": 0,
+          "ru_stime": 0.034495,
+          "ru_utime": 0.052063
+        }
+      }
+    }
+  ],
+  "observers": [
+    {
+      "pid": 83993,
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "83992",
+        "-o",
+        "pid=,ppid=,rss="
+      ],
+      "exit_code": 0,
+      "reaped": true,
+      "leaf": true,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 1,
+        "ru_maxrss": 1409024,
+        "ru_minflt": 256,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 7,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 0,
+        "ru_oublock": 0,
+        "ru_stime": 0.0012439999999999999,
+        "ru_utime": 0.0006879999999999999
+      },
+      "rows": [
+        {
+          "pid": 83992,
+          "ppid": 83991,
+          "RSS_1024_byte_units": 29712
+        }
+      ],
+      "stdout": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stdout",
+        "sha256": "d171f83ef640a10513f963cf92bee6c2ff196aacc807e7addf5bbcecd5595796",
+        "bytes": 19
+      },
+      "stderr": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/observer-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_seconds": 0.014429917,
+      "case": "leaf16",
+      "leaf_index": 0,
+      "sampled_ready_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf16/leaf-0-ready.json",
+        "sha256": "331e4f9cd2edb4e4386552f9b39ef4576933856918a39857820711d11928a266",
+        "bytes": 459
+      }
+    },
+    {
+      "pid": 83995,
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "83994",
+        "-o",
+        "pid=,ppid=,rss="
+      ],
+      "exit_code": 0,
+      "reaped": true,
+      "leaf": true,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 1,
+        "ru_maxrss": 1409024,
+        "ru_minflt": 256,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 4,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 0,
+        "ru_oublock": 0,
+        "ru_stime": 0.001246,
+        "ru_utime": 0.00083
+      },
+      "rows": [
+        {
+          "pid": 83994,
+          "ppid": 83991,
+          "RSS_1024_byte_units": 62464
+        }
+      ],
+      "stdout": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stdout",
+        "sha256": "397ecb05ef6a7099036163b3d91aebb11f8138fe0c6100772885ff5fd69cbeba",
+        "bytes": 19
+      },
+      "stderr": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/observer-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_seconds": 0.014591041999999943,
+      "case": "leaf48",
+      "leaf_index": 0,
+      "sampled_ready_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/leaf48/leaf-0-ready.json",
+        "sha256": "e701adbbbecf3b6de6d51c042e27fa616be21c0f0359c95a3881096ba4241cab",
+        "bytes": 448
+      }
+    },
+    {
+      "pid": 83998,
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "83996,83997",
+        "-o",
+        "pid=,ppid=,rss="
+      ],
+      "exit_code": 0,
+      "reaped": true,
+      "leaf": true,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 1,
+        "ru_maxrss": 1769472,
+        "ru_minflt": 282,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 4,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 0,
+        "ru_oublock": 0,
+        "ru_stime": 0.001251,
+        "ru_utime": 0.0006889999999999999
+      },
+      "rows": [
+        {
+          "pid": 83996,
+          "ppid": 83991,
+          "RSS_1024_byte_units": 29696
+        },
+        {
+          "pid": 83997,
+          "ppid": 83996,
+          "RSS_1024_byte_units": 62480
+        }
+      ],
+      "stdout": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stdout",
+        "sha256": "dc2cb8be68f3a2d9e29716230788fd4cdfa7e8b10b359c5d8ce29f264a1ee86d",
+        "bytes": 38
+      },
+      "stderr": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/observer-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_seconds": 0.014250334000000198,
+      "case": "parent16-child48",
+      "leaf_index": 0,
+      "sampled_ready_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-child48/leaf-0-ready.json",
+        "sha256": "6fbd0e9bd7b956ad65974f13b5f777b485b3a8ed96baf900aea6586c75f3f521",
+        "bytes": 436
+      }
+    },
+    {
+      "pid": 84004,
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "84000,84003",
+        "-o",
+        "pid=,ppid=,rss="
+      ],
+      "exit_code": 0,
+      "reaped": true,
+      "leaf": true,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 1,
+        "ru_maxrss": 1785856,
+        "ru_minflt": 283,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 5,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 0,
+        "ru_oublock": 0,
+        "ru_stime": 0.001385,
+        "ru_utime": 0.0007019999999999999
+      },
+      "rows": [
+        {
+          "pid": 84000,
+          "ppid": 83991,
+          "RSS_1024_byte_units": 62480
+        },
+        {
+          "pid": 84003,
+          "ppid": 84000,
+          "RSS_1024_byte_units": 29728
+        }
+      ],
+      "stdout": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stdout",
+        "sha256": "2dfd2d71de9a2d193f1ea7e2b5c273c154402e8dcb0c3d574331530a905872ce",
+        "bytes": 38
+      },
+      "stderr": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/observer-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_seconds": 0.012640999999999902,
+      "case": "parent48-child16",
+      "leaf_index": 0,
+      "sampled_ready_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent48-child16/leaf-0-ready.json",
+        "sha256": "47f423f5f02c19881e1631b97d92b5ecf812bca4716a8842090ef6d02d820368",
+        "bytes": 436
+      }
+    },
+    {
+      "pid": 84007,
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "84005,84006",
+        "-o",
+        "pid=,ppid=,rss="
+      ],
+      "exit_code": 0,
+      "reaped": true,
+      "leaf": true,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 1,
+        "ru_maxrss": 1785856,
+        "ru_minflt": 284,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 4,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 0,
+        "ru_oublock": 0,
+        "ru_stime": 0.001449,
+        "ru_utime": 0.0007469999999999999
+      },
+      "rows": [
+        {
+          "pid": 84005,
+          "ppid": 83991,
+          "RSS_1024_byte_units": 29680
+        },
+        {
+          "pid": 84006,
+          "ppid": 84005,
+          "RSS_1024_byte_units": 62496
+        }
+      ],
+      "stdout": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stdout",
+        "sha256": "6b58ebddfc33a5007f768a620b2a440f7dbb8676edf8712f8e6ec8a5a12ff8d5",
+        "bytes": 38
+      },
+      "stderr": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_seconds": 0.014696292,
+      "case": "parent16-two48-sequential",
+      "leaf_index": 0,
+      "sampled_ready_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-0-ready.json",
+        "sha256": "da48b8fe2657eec14ca9396ecba0d2a9d0576d1c01d2a05202dc0c4d02c0ed03",
+        "bytes": 436
+      }
+    },
+    {
+      "pid": 84010,
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "84005,84009",
+        "-o",
+        "pid=,ppid=,rss="
+      ],
+      "exit_code": 0,
+      "reaped": true,
+      "leaf": true,
+      "wait4_raw": {
+        "ru_idrss": 0,
+        "ru_inblock": 0,
+        "ru_isrss": 0,
+        "ru_ixrss": 0,
+        "ru_majflt": 1,
+        "ru_maxrss": 1785856,
+        "ru_minflt": 284,
+        "ru_msgrcv": 0,
+        "ru_msgsnd": 0,
+        "ru_nivcsw": 3,
+        "ru_nsignals": 0,
+        "ru_nswap": 0,
+        "ru_nvcsw": 0,
+        "ru_oublock": 0,
+        "ru_stime": 0.001589,
+        "ru_utime": 0.000848
+      },
+      "rows": [
+        {
+          "pid": 84005,
+          "ppid": 83991,
+          "RSS_1024_byte_units": 29744
+        },
+        {
+          "pid": 84009,
+          "ppid": 84005,
+          "RSS_1024_byte_units": 62416
+        }
+      ],
+      "stdout": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stdout",
+        "sha256": "410890ce34ec78289be4c5d8c9221cbea2a767dcf6664b43e3ec017155e7b179",
+        "bytes": 38
+      },
+      "stderr": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/observer-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_seconds": 0.01457091700000035,
+      "case": "parent16-two48-sequential",
+      "leaf_index": 1,
+      "sampled_ready_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/outputs/parent16-two48-sequential/leaf-1-ready.json",
+        "sha256": "bb2a3eb8a6cb1c95d92e16ffbcd05b09af907c0656f0160df1e2eb099a9a83ac",
+        "bytes": 448
+      }
+    }
+  ],
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "random_draws": 0,
+  "proof_searches": 0,
+  "qualification_scope": "Raw finite unit/roll-up observations only; no mathematical/proof/RL qualification"
+}

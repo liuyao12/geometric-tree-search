@@ -1,0 +1,63 @@
+{
+  "schema": "source-only-compact-curriculum-wrapper-protocol-v2",
+  "status": "SOURCE_ONLY_FLAG_CANCELLATION_OWNER_PLATFORM_ADAPTER_AND_CLI_UNBOUND",
+  "predecessor": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json",
+    "sha256": "2cfcfde17096cb74077ae8375df2cc50b51c0791270ca821b9fc89150e4329a1",
+    "bytes": 277764
+  },
+  "preservation": "Every V1 source, protocol, evidence, diff, archive, manifest and handoff is preserved. V1's raising TERM/ALRM handler remains a recorded SOURCE blocker, never an observed runtime failure. The original donor-two-guards semantic PASS/resource UNKNOWN is never rerun, discounted or reclassified. No all-five qualification is issued.",
+  "change_scope": "Only the owner cancellation and its receipt metadata change. Worker, compact transport, all eight original scientific/guard functions, all seven original semantic libraries, full control census, grammar/pool/64 capacity/split/features/seeds/rewards, 180/175/170-second gates and 512 MiB gate remain exact.",
+  "owner_version": "curriculum_compact_owner_v2.py",
+  "cancellation": {
+    "signals": ["SIGTERM", "SIGALRM"],
+    "handler": "cancellation_flag only assigns cancelled_signum; it does not raise, launch, reap, signal, write files or alter scientific state.",
+    "safe_check": "check_cancel raises only from explicitly called boundaries, before launch, after Popen has returned and the complete handle is assigned, at loop boundaries, and after wait4 terminal bookkeeping has set waited, usage, returncode and the worker terminal clock.",
+    "observer": "The same non-raising owner handler applies while an observer is spawned/reaped. observe receives check_cancel. Cancellation yields a retained observer receipt after stream closure and exact direct child cleanup/reap. The owner appends its observer record before treating its failure as UNKNOWN.",
+    "cleanup": "stop_unreaped receives only a registered handle not terminal-reaped by its caller. Its direct SIGKILL and wait_terminal retain that handle until exactly one terminal wait4 completes. Handlers remain non-raising through this bookkeeping; no temporary ignore/mask loses cancellation and no reaped historical PID or process group is signaled.",
+    "receipt": "A cancellation flag already seen before the lifetime receipt makes the pending status UNKNOWN. Cancellation signum/requested/semantics fields are retained. A later flag makes the final fixed SELF frame nonzero; ROOT must reject even a previously closed pending semantic candidate receipt.",
+    "late_postlude": "A signal after the final frame exit-code argument is evaluated cannot be represented reliably by the flag alone. ROOT's separately owned timeout/cancellation provenance and full exit/reap gate must reject that case. The pending owner never grants resource acceptance.",
+    "scope": "This source argument addresses ROOT's TERM/ALRM handlers. It is not a proof against arbitrary interpreter exceptions, hostile import hooks, OS/kernel stalls, SIGKILL or other signal handlers. Pinned interpreter/Popen exception semantics still need platform review."
+  },
+  "complete_lifetimes": {
+    "observer_timeout_seconds": 1,
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912,
+    "direct_cleanup_limit": "After direct SIGKILL, wait_terminal blocks for the exact child and retries InterruptedError. This package does not claim a kernel-independent bounded reap. ROOT's outer owner must enforce complete lifetime, preserve cancellation/exit/reap clocks and own failure cleanup before execution or acceptance.",
+    "detailed_records": "Original compact V1 worker/observer/sample/full-audit/status pins and raw wait4/SELF/PS scopes are unchanged. Observer receipt clocks include spawn, close/reap, parse/hash, and caller detail append close.",
+    "closed_SELF": "All artifact streams and lifetime receipt close before raw SELF snapshot and the unchanged fixed 52-byte frame/os._exit postlude. ROOT must independently review remaining allocations, frame close/hash, full outer clocks and preserved reserve.",
+    "raw_scope": "SELF snapshots exclude descendant peak roll-up; leaf worker/observer wait4 remain distinct raw domains. Nested wrapper wait4 roll-up is recorded only as its own scope. No retrospective subtraction or duplicated addition is used."
+  },
+  "unchanged_interfaces": "All actual plan, compact status, activation, adapter and wire schemas remain those of protocol-v1. The exact owner_pin must name V2 and wrapper_source_manifest_pin must name this V2 manifest. No real plan, adapter or activation is authored here. Owner CLI remains an unconditional SOURCE ONLY rejection.",
+  "verification": {
+    "permitted": "Python 3.9 AST parsing, exact streamed hashes, source-byte comparison, source diffs and ZIP encoding only. No project functional imports or function calls.",
+    "source_claim": "AST/source evidence verifies registered TERM/ALRM handler does not raise and explicit cancellation checks follow coherent spawn/reap bookkeeping in both loops. This is source inspection, not an executed race fixture.",
+    "future_ROOT_controls": [
+      "TERM/ALRM immediately before/after worker Popen registration",
+      "TERM/ALRM immediately before/after worker wait4 terminal bookkeeping",
+      "The same four cuts for each observer",
+      "Observer timeout/nonzero/parser/stream failure retains exact wait4 receipt",
+      "Cancellation during cleanup never signals a terminal-reaped PID",
+      "Late cancellation after closed receipt is rejected by nonzero frame or external cancellation evidence",
+      "Full owner/dispatcher/launcher exit and reap under unchanged complete clocks",
+      "Pinned interpreter Popen failure cleanup and runtime import/ELF/Mach-O scope"
+    ]
+  },
+  "open_gaps": [
+    "No runtime cancellation/observer/postlude fixture was executed",
+    "No separately ROOT-frozen platform adapter, actual plan, activation or outer binding exists here",
+    "Source leaf proof covers known pinned project modules, not standard-library/native/interpreter behavior",
+    "Complete bounded reap and birth-safe cleanup require ROOT outer ownership and platform review",
+    "Full original all-five curriculum remains unqualified because its original first donor resource UNKNOWN is retained"
+  ],
+  "source_only": true,
+  "functional_project_imports_or_invocations": 0,
+  "scientific_calls": 0,
+  "subprocess_PS_browser_calibration_calls": 0,
+  "activations_created": 0,
+  "qualification_issued": false,
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner": true
+}

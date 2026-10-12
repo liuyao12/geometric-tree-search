@@ -1,0 +1,74 @@
+{
+  "status": "SOURCE_ONLY_COMPACT_WRAPPER_V2_AWAITING_ROOT_OUTER_PLATFORM_BINDING",
+  "manifest": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v2.json",
+    "sha256": "e58e4439aeabd8e39fe0206071b97b569d5bb7367f0e68193a8fc46eca1ff794",
+    "bytes": 282404
+  },
+  "readiness": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v2.json",
+    "sha256": "f9c79a89b9ee080b6dcace5a29408d023c36b833d218b35866d265a4c76698d4",
+    "bytes": 1134
+  },
+  "files": [
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py",
+      "sha256": "a31524a879f28650e8f57507d304b939ae634c1e509fa9a663a13a4b686dd55f",
+      "bytes": 16884
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v2.py",
+      "sha256": "9313c6a4cb5d2436df4f0ed45289b01ba7c09308550ce01561643d5f1736407f",
+      "bytes": 22404
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v2.json",
+      "sha256": "b996797baec3986f9b9dfcd4aa0a095486ce1cb77eae81d759696ccb0cc35daf",
+      "bytes": 6646
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/cancellation-source-evidence-v2.json",
+      "sha256": "6536a9f8ba377d803f4d35ae44f75915474d384816238445c9d834d183b2bc24",
+      "bytes": 2245
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/unchanged-science-evidence-v2.json",
+      "sha256": "4d074fb88f327587f5bf7534a1a7516a4321718aa615a8739bba87b9743418c3",
+      "bytes": 6354
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-v1-to-v2.diff",
+      "sha256": "3ab3ed026b1568ba9ea9c435a5fcd8647ac9ef8254fe4d7aec00ca8b2ed65a6c",
+      "bytes": 7788
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-original-v3-to-v2.diff",
+      "sha256": "207a0cc895ce75c1133fff7982704d0beb6033af4ec54513e4a0779cf0b25fe5",
+      "bytes": 26539
+    }
+  ],
+  "archive": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-v2.zip",
+    "sha256": "d6e89b90bc5c1e265c16110745915cdca173766bfc07599e3e1ec47ffb9f1e0d",
+    "bytes": 89810
+  },
+  "predecessor_handoff": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/integration-v1.json",
+    "sha256": "3ad706d48d21a40be5a1a64ff1672bfbd393ee688377fdcc3fa2eb752cdb0f75",
+    "bytes": 4051
+  },
+  "actual_interfaces": [
+    "Reuse exact compact V1 worker/transport and all original V3 semantic libraries; actual owner_pin must name V2 and source manifest pin must name source-plan-v2.",
+    "Owner CLI remains an unconditional SOURCE ONLY error. ROOT must review source, pinned platform/Popen semantics, complete lifetime and direct reap ownership, metadata-only adapter and outer binding before any future actual plan/activation.",
+    "TERM/ALRM flags are inspected only after handle assignment or terminal wait4 bookkeeping; every observer remains individually recorded and reaped. No executed race fixture is claimed.",
+    "Owner resource flags always remain false; outer ROOT must reject late cancellation even if pending compact semantic candidate bytes were already closed.",
+    "Complete blocking direct wait4 cleanup requires ROOT outer bounded ownership; current package does not certify kernel-independent bounded reaping.",
+    "All SELF/leaf terminal usage remains raw. No nested rolled-peak subtraction/addition, final platform rule, historical resource discount or all-five qualification."
+  ],
+  "original_donor_resource_UNKNOWN_preserved": true,
+  "scientific_calls": 0,
+  "project_function_imports": 0,
+  "process_calls": 0,
+  "no_actual_qualification": true,
+  "execution_authorized": false
+}

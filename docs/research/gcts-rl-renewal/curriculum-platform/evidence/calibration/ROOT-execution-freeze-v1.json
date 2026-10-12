@@ -1,0 +1,57 @@
+{
+  "schema": "ROOT-V4-finite-non-scientific-calibration-execution-freeze-v1",
+  "authorized": true,
+  "ROOT_sole_actual_owner": true,
+  "scientific_calls": 0,
+  "pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v4.py",
+      "sha256": "4f60c9b392a96565a186aaf8c1220f5903975b4417e75bbb4cdce1f9c88eb581",
+      "bytes": 16922
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v2.py",
+      "sha256": "44845f25f0f58cb2947d769d12231b4510fb973a47c51b752a80c835be66c8f5",
+      "bytes": 6655
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v4.json",
+      "sha256": "8280b42b5c037907bedc107fc76f17be5786c4b312be2056ec746aa24b3f0867",
+      "bytes": 2133
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/runtime-preflight-v2.json",
+      "sha256": "911efb069618451a0410b82ecbba737b3e3d34aa1fb31a647686a2db44269d6e",
+      "bytes": 1997
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-independent-review-20261012/review-v4-source-pass-v1.json",
+      "sha256": "fe6f949eb7f6789733f74e62c3259958432d4174ff59e5cc2f3e2c9b12ca9919",
+      "bytes": 9357
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    }
+  ],
+  "source_review_scope": "Source-only pass for fixed5freshcases; no universal lifecycle/general proof/RL claim",
+  "historical_donor_two_guards_UNKNOWN_preserved": true,
+  "V1_V2_V3_unexecuted": true,
+  "no_retry": true
+}

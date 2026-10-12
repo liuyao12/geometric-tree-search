@@ -1,0 +1,72 @@
+{
+  "schema": "curriculum-platform-reader-source-handoff-v1",
+  "status": "SOURCE_ONLY_draft_for_ROOT_actual_evidence_assembly",
+  "notebook": 115,
+  "eventual_target": "docs/research/gcts-rl-renewal/curriculum-platform/reader.html",
+  "authored_byte_pins": [
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.html",
+      "sha256": "def1fd924310c42e13f2828d964fe878f230447c4c3a1f8f36f7d616bc331a00",
+      "bytes": 10292
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/reader.js",
+      "sha256": "006fd2a3ad12d954c4e358813e1f8df031b27c2703bf27ab083fc5dbe11ed653",
+      "bytes": 6377
+    },
+    {
+      "path": ".gcts-active/curriculum-platform-reader-source-20261012/view-schema-v1.json",
+      "sha256": "142dd7a98a1a5f433a089478084f423a7c5fb3b6230e249e2f91c255c1ce522b",
+      "bytes": 7303
+    }
+  ],
+  "hash_scope": "Pins computed from exact authored UTF-8 source strings passed to apply_patch. ROOT must independently confirm saved file bytes; no filesystem reader or process was invoked.",
+  "source_checks": {
+    "five_fixed_role_ids_unique": true,
+    "all_literal_DOM_ids_unique": true,
+    "view_only_fetch": true,
+    "matching_MathJax_source_delimiters": true,
+    "no_project_import_process_browser_or_eval_APIs": true,
+    "unchanged_partial_checkpoint_explicit": true,
+    "no_design_only_milestone": true,
+    "scopes_and_overlap_separate": true,
+    "missing_measurements_unavailable": true,
+    "supplied_milestone_basis_required": true,
+    "original_outcomes_not_computed": true,
+    "raw_view_uses_textContent": true,
+    "untrusted_names_HTML_escaped": true,
+    "no_new_data_or_outcome_file": true,
+    "physical_process_tree_not_asserted": true,
+    "non_scientific_calibration_role_separate": true
+  },
+  "observation_scope": "In-memory source strings and display JSON schema only; no JS execution, full parser, DOM rendering, source project import, process sampling, calibration or scientific call.",
+  "actual_view_created": false,
+  "actual_outcomes_authored": 0,
+  "processes_launched": 0,
+  "browser_actions": 0,
+  "scientific_calls": 0,
+  "PS_calls": 0,
+  "RNG": 0,
+  "training": 0,
+  "native": 0,
+  "activation": 0,
+  "publication": 0,
+  "ROOT_assembly_requirements": [
+    "Bind original frozen five-context disposition: first raw semantic pass/full resource UNKNOWN; other4 unrun in that version. Do not rerun or retroactively globally qualify it.",
+    "Supply only actual owned actor records, explicit platform units/normalizations, parent/descendant/observer scopes and full receipt evidence. Empty arrays/null measurements are unavailable.",
+    "Memory table reproduces supplied observations without recomputing accounting, calibrating APIs, summing overlapping scopes or inferring gate acceptance.",
+    "Label scientific workers separately from non-scientific calibration workers. Leaf observers must be individually bound to declared ownership.",
+    "Milestone ROOT_qualified may be true only with bound actual calibration and/or new previously unexecuted donor progress, including complete actual terminal/resource dispositions. Design-only changes are insufficient.",
+    "Provide raw semantic and full resource dispositions independently for every phase/version; status pass is raw checks only.",
+    "Use complete owned phase clocks including declared immutable receipt-byte serialization, exit and reaping; report hard-link promotion/post-write observations/report/deployment costs outside phase.",
+    "Evidence links are local evidence/ paths without traversal, view.json or origins.json. Platform references may be supplied as exact local reference artifacts; no external URL auto-navigation.",
+    "ROOT reviews source syntax, view/raw correspondence and saved file hashes, adds a parent milestone only after actual progress, publishes and verifies live."
+  ],
+  "limitations": [
+    "No actual data assembled and no live rendering/syntax-process check performed.",
+    "Role boxes are an explanatory key, not an asserted recorded process tree.",
+    "Source design establishes no platform result, accepted donor run, proof discovery, learner or benchmark superiority."
+  ],
+  "execution_authorized": false,
+  "ROOT_sole_actual_owner_and_publisher": true
+}

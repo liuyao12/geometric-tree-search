@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Platform memory scopes · GCTS research</title>
+  <link rel="stylesheet" href="../report.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','style','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    main{max-width:1250px}.scope-note{padding:20px;border-left:5px solid #a67534;background:#fbf4e8}.role-grid{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px}.role{padding:18px;border:1px solid #ced5ca;border-top:5px solid #7c8580;border-radius:5px;background:#fafbf7}.role h3{font-size:23px;margin-bottom:12px}.role.worker{border-top-color:#4476ad}.role.owner{border-top-color:#438c78}.role.dispatcher{border-top-color:#c58530}.role.launcher{border-top-color:#747c78}.role .record{font-size:12px;color:var(--muted);overflow-wrap:anywhere}.observers{border:2px dashed #9b85b2;border-radius:5px;background:#f0eaf7;padding:18px;margin-top:18px}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px}.measure{padding:20px;border:1px solid var(--line);border-radius:5px;background:#fafbf7}.measure h3{font-size:24px}.measure p{font-size:14px}.table-wrap{overflow-x:auto}table{min-width:780px}td,th{vertical-align:top}.cell-note{display:block;max-width:300px;color:var(--muted);font-size:11px;font-weight:400;white-space:normal}.status{display:inline-block;padding:4px 8px;border:1px solid #c9d0c6;border-radius:5px;background:#f1f3ec;font-size:12px}.status-pass,.status-accepted{color:#216243;background:#eaf3e9}.status-unknown,.status-failed{color:#913f35;background:#f9e9e4}.status-pending,.status-not_run{color:#687166}.pending{padding:15px;background:#f1f3ec;border:1px solid var(--line);border-radius:5px}.evidence-links{display:flex;flex-wrap:wrap;gap:12px}pre{font-size:11px;max-height:500px;overflow:auto}mjx-container{max-width:100%}@media(max-width:850px){.role-grid{grid-template-columns:repeat(2,minmax(140px,1fr))}.comparison{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="masthead"><a href="../#curriculum-platform">Research report</a><span>NOTEBOOK 115</span><a href="#scopes">Inspect scopes</a></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">PLATFORM UNITS · OWNED PROCESS SCOPES · RESOURCE QUALIFICATION</p>
+      <h1>Identify what each memory observation covers.</h1>
+      <p class="deck">A raw semantic pass and a qualified full experiment are separate results. This reader makes the process scopes, platform units and resource dispositions inspectable alongside any new saved calibration or donor progress.</p>
+      <p><a href="#scopes">Process roles</a> · <a href="#memory">Memory observations</a> · <a href="#qualification">Qualification</a> · <a href="#milestone">Actual progress</a> · <a href="#evidence">Evidence</a></p>
+    </section>
+    <section class="panel">
+      <p class="scope-note">The original five-context experiment remains partial: the first donor has a raw semantic pass and a full resource outcome of unknown; the other four contexts remain unrun in that frozen version. This notebook does not rerun it or replace its disposition. No learner, theorem search, RNG stream or global qualification has been established.</p>
+      <p id="load-status" class="pending" aria-live="polite">Awaiting a ROOT-assembled saved view. A source design alone is not a new research milestone.</p>
+    </section>
+    <section class="panel" id="scopes">
+      <h2>Separate scientific work from its surrounding processes.</h2>
+      <div class="role-grid">
+        <article class="role worker"><h3>Scientific worker</h3><p>Performs a declared preparation or independent audit.</p><p id="scientific_worker" class="record">No saved actor record supplied.</p></article>
+        <article class="role owner"><h3>Owner</h3><p>Owns its worker lifetime, output and terminal receipt.</p><p id="owner" class="record">No saved actor record supplied.</p></article>
+        <article class="role dispatcher"><h3>Dispatcher</h3><p>Invokes an owned phase and retains its outer disposition.</p><p id="dispatcher" class="record">No saved actor record supplied.</p></article>
+        <article class="role launcher"><h3>Launcher</h3><p>The surrounding launch boundary, with its own measurement scope.</p><p id="launcher" class="record">No saved actor record supplied.</p></article>
+      </div>
+      <div class="observers"><h3>Leaf observers</h3><p>Observer ownership and inclusion in a memory envelope must be explicit. These role boxes are a key, not an asserted live process tree.</p><p id="leaf_observer" class="record">No saved observer record supplied.</p></div>
+      <p class="caption">Actual PIDs, parent relationships, observer associations and units come from the saved records below. No process list is sampled by this page.</p>
+      <div class="table-wrap"><table><thead><tr><th>Saved actor</th><th>Role</th><th>PID</th><th>Recorded parent PID</th><th>Measurement / observer scope</th><th>Evidence</th></tr></thead><tbody id="actor-rows"><tr><td colspan="6">No actual actor records loaded.</td></tr></tbody></table></div>
+    </section>
+    <section class="panel" id="memory">
+      <h2>Simultaneous samples and peak sums answer different questions.</h2>
+      <div class="comparison">
+        <article class="measure"><h3>Sampled simultaneous RSS</h3><p>At each saved sample, sum over its unique included PID set \(U(t)\):</p><p>\(\widehat M_{\mathrm{RSS}}=\max_{t\in T}\sum_{p\in U(t)}\mathrm{RSS}_p(t)\).</p><p>The finite sample set \(T\) may miss an unsampled peak. Inclusion of workers, owners and observers must be recorded for each sample scope.</p></article>
+        <article class="measure"><h3>Sum of scoped peaks</h3><p>For explicitly declared scopes \(\mathcal S\), sum their recorded peak values \(K_s\):</p><p>\(M_{\mathrm{sum}}=\sum_{s\in\mathcal S}K_s\).</p><p>Peaks need not occur simultaneously. A descendant-inclusive parent scope may overlap another scope; overlapping values are not distinct-process peaks.</p></article>
+      </div>
+      <p>With consistent units, complete coverage and disjoint scopes, \(\max_t\sum_s M_s(t)\leq\sum_s\max_t M_s(t)\). This is an envelope comparison, not an equality of measurement methods. Scope overlap, missing observers, reserve and unobserved intervals need separate labels.</p>
+      <p>Platform documentation and actual bounded calibration must resolve the units and descendant semantics of APIs such as <code>resource.getrusage</code>, <code>RUSAGE_SELF</code> and <code>RUSAGE_CHILDREN</code>. This source reader supplies no platform result.</p>
+      <div class="table-wrap"><table><thead><tr><th>Saved observation</th><th>Method</th><th>Normalized bytes</th><th>Original value / unit</th><th>Included scope and limitations</th><th>Evidence</th></tr></thead><tbody id="memory-rows"><tr><td colspan="6">No saved memory observations loaded.</td></tr></tbody></table></div>
+      <p class="caption">The table reproduces ROOT's saved values. The browser performs no unit calibration, process accounting, peak recomputation or acceptance test. Conservative envelopes and reserves are not a hard OS cap or a strict whole-host upper bound.</p>
+    </section>
+    <section class="panel" id="qualification">
+      <h2>Keep semantic and resource outcomes on different lines.</h2>
+      <div class="table-wrap"><table><thead><tr><th>Frozen phase / version</th><th>Raw semantic checks</th><th>Full resource qualification</th><th>Full ROOT owned seconds</th><th>Recorded disposition</th><th>Evidence</th></tr></thead><tbody id="gate-rows"><tr><td colspan="6">No new qualified phase records loaded.</td></tr></tbody></table></div>
+      <p>Raw licenses, formula registries, authored bodies and complete inventories can pass their checks while the full owned resource gate remains unknown. A calibration result also does not turn a prior unknown into global acceptance.</p>
+      <p class="caption">Full phase clocks include the declared immutable receipt-byte serialization, exit and reaping. Hard-link promotion, post-write observation, report preparation and deployment are additional metadata costs outside the phase. Missing measurements stay unavailable.</p>
+    </section>
+    <section class="panel" id="milestone">
+      <h2>A milestone needs an actual saved observation.</h2>
+      <div class="comparison">
+        <article class="measure"><h3>Bounded non-scientific calibration</h3><p id="calibration-status">Pending saved calibration evidence.</p><p id="calibration-note" class="cell-note">No calibration is run by this reader.</p></article>
+        <article class="measure"><h3>Next previously unexecuted donor</h3><p id="donor-status">Pending new donor evidence.</p><p id="donor-note" class="cell-note">Original unrun contexts remain unrun in their frozen version; any new execution needs a separately bound version.</p></article>
+      </div>
+      <p id="milestone-disposition" class="pending">No milestone claim enabled. ROOT must supply actual calibration and/or new donor progress evidence.</p>
+      <p>Future compact post-audit metadata receipts and individually owned observer designs are source work. They are not successful calibrations, accepted donor runs, new proofs, learned policies or benchmark improvements.</p>
+      <details><summary>Literal saved view</summary><pre id="raw-view">No saved view loaded.</pre></details>
+    </section>
+    <section class="panel" id="evidence">
+      <h2>Inspect saved sources and receipts.</h2>
+      <p id="evidence-links" class="evidence-links"><a href="view.json">ROOT-assembled display view</a></p>
+      <p class="caption">Raw owned receipts, platform source references, bounded calibration artifacts and exact version bindings remain the evidence. This page is a display projection, not another scientific worker or proof checker.</p>
+      <p><a href="../curriculum-contexts/reader.html">Partial curriculum checkpoint</a> · <a href="../real-overlay-checks/reader.html">Proposal-interface checks</a></p>
+    </section>
+  </main>
+  <script src="reader.js"></script>
+</body>
+</html>

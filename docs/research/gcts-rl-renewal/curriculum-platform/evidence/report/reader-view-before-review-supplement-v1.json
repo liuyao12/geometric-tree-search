@@ -1,0 +1,504 @@
+{
+  "schema": "ROOT-assembled-curriculum-platform-reader-v1",
+  "status_note": "Five fresh non-scientific cases and six owned observers completed. Finite unit/max-rollup observations pass; independently complete resource qualification remains unknown. No new proof, search, RNG or learning.",
+  "actors": [
+    {
+      "label": "Calibration external supervisor",
+      "role": "launcher",
+      "pid": 83990,
+      "parent_pid": null,
+      "scope_note": "Direct child of ROOT entry; parent PID was not saved.",
+      "evidence_href": "evidence/calibration/outer-reap-v1.json"
+    },
+    {
+      "label": "Calibration coordinator",
+      "role": "owner",
+      "pid": 83991,
+      "parent_pid": 83990,
+      "scope_note": "Source-owned direct child of the recorded external supervisor; all actual case handles reaped.",
+      "evidence_href": "evidence/calibration/external-receipt-v1.json"
+    },
+    {
+      "label": "Smaller single leaf",
+      "role": "calibration_worker",
+      "pid": 83992,
+      "parent_pid": 83991,
+      "scope_note": "Non-scientific actor; exact terminal handle reaped.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Larger single leaf",
+      "role": "calibration_worker",
+      "pid": 83994,
+      "parent_pid": 83991,
+      "scope_note": "Non-scientific actor; exact terminal handle reaped.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Smaller parent with larger child",
+      "role": "calibration_worker",
+      "pid": 83996,
+      "parent_pid": 83991,
+      "scope_note": "Non-scientific actor; exact terminal handle reaped.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Nested calibration leaf in parent16-child48",
+      "role": "calibration_worker",
+      "pid": 83997,
+      "parent_pid": 83996,
+      "scope_note": "Direct child recorded and reaped by this actor.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Larger parent with smaller child",
+      "role": "calibration_worker",
+      "pid": 84000,
+      "parent_pid": 83991,
+      "scope_note": "Non-scientific actor; exact terminal handle reaped.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Nested calibration leaf in parent48-child16",
+      "role": "calibration_worker",
+      "pid": 84003,
+      "parent_pid": 84000,
+      "scope_note": "Direct child recorded and reaped by this actor.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Smaller parent with two sequential larger children",
+      "role": "calibration_worker",
+      "pid": 84005,
+      "parent_pid": 83991,
+      "scope_note": "Non-scientific actor; exact terminal handle reaped.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Nested calibration leaf in parent16-two48-sequential",
+      "role": "calibration_worker",
+      "pid": 84006,
+      "parent_pid": 84005,
+      "scope_note": "Direct child recorded and reaped by this actor.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Nested calibration leaf in parent16-two48-sequential",
+      "role": "calibration_worker",
+      "pid": 84009,
+      "parent_pid": 84005,
+      "scope_note": "Direct child recorded and reaped by this actor.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Observer for leaf16",
+      "role": "leaf_observer",
+      "pid": 83993,
+      "parent_pid": 83991,
+      "scope_note": "Separate owned pinned PS command, closed streams and terminal wait4.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Observer for leaf48",
+      "role": "leaf_observer",
+      "pid": 83995,
+      "parent_pid": 83991,
+      "scope_note": "Separate owned pinned PS command, closed streams and terminal wait4.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Observer for parent16-child48",
+      "role": "leaf_observer",
+      "pid": 83998,
+      "parent_pid": 83991,
+      "scope_note": "Separate owned pinned PS command, closed streams and terminal wait4.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Observer for parent48-child16",
+      "role": "leaf_observer",
+      "pid": 84004,
+      "parent_pid": 83991,
+      "scope_note": "Separate owned pinned PS command, closed streams and terminal wait4.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Observer for parent16-two48-sequential",
+      "role": "leaf_observer",
+      "pid": 84007,
+      "parent_pid": 83991,
+      "scope_note": "Separate owned pinned PS command, closed streams and terminal wait4.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Observer for parent16-two48-sequential",
+      "role": "leaf_observer",
+      "pid": 84010,
+      "parent_pid": 83991,
+      "scope_note": "Separate owned pinned PS command, closed streams and terminal wait4.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    }
+  ],
+  "memory_observations": [
+    {
+      "label": "leaf16 SELF",
+      "method": "getrusage SELF",
+      "value_bytes": 30425088,
+      "original_value": 30425088,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Actor only, after artifact close",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "leaf16 terminal",
+      "method": "direct wait4",
+      "value_bytes": 30425088,
+      "original_value": 30425088,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Descendant-inclusive maximum for parent actors",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "leaf16 sample",
+      "method": "ps RSS sum",
+      "value_bytes": 30425088,
+      "original_value": 30425088,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Unique actual actor/child PIDs; finite sample may miss peaks",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "leaf48 SELF",
+      "method": "getrusage SELF",
+      "value_bytes": 63963136,
+      "original_value": 63963136,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Actor only, after artifact close",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "leaf48 terminal",
+      "method": "direct wait4",
+      "value_bytes": 63963136,
+      "original_value": 63963136,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Descendant-inclusive maximum for parent actors",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "leaf48 sample",
+      "method": "ps RSS sum",
+      "value_bytes": 63963136,
+      "original_value": 63963136,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Unique actual actor/child PIDs; finite sample may miss peaks",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent16-child48 SELF",
+      "method": "getrusage SELF",
+      "value_bytes": 30457856,
+      "original_value": 30457856,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Actor only, after artifact close",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent16-child48 terminal",
+      "method": "direct wait4",
+      "value_bytes": 63979520,
+      "original_value": 63979520,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Descendant-inclusive maximum for parent actors",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent16-child48 sample",
+      "method": "ps RSS sum",
+      "value_bytes": 94388224,
+      "original_value": 94388224,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Unique actual actor/child PIDs; finite sample may miss peaks",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent48-child16 SELF",
+      "method": "getrusage SELF",
+      "value_bytes": 64110592,
+      "original_value": 64110592,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Actor only, after artifact close",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent48-child16 terminal",
+      "method": "direct wait4",
+      "value_bytes": 64110592,
+      "original_value": 64110592,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Descendant-inclusive maximum for parent actors",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent48-child16 sample",
+      "method": "ps RSS sum",
+      "value_bytes": 94420992,
+      "original_value": 94420992,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Unique actual actor/child PIDs; finite sample may miss peaks",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent16-two48-sequential SELF",
+      "method": "getrusage SELF",
+      "value_bytes": 30556160,
+      "original_value": 30556160,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Actor only, after artifact close",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent16-two48-sequential terminal",
+      "method": "direct wait4",
+      "value_bytes": 63995904,
+      "original_value": 63995904,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Descendant-inclusive maximum for parent actors",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "parent16-two48-sequential sample",
+      "method": "ps RSS sum",
+      "value_bytes": 94388224,
+      "original_value": 94388224,
+      "original_unit": "bytes; PS rows converted using their documented 1024-byte unit",
+      "scope_note": "Unique actual actor/child PIDs; finite sample may miss peaks",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Saved retrospective calibration envelope",
+      "method": "Distinct role maxima plus declared reserve",
+      "value_bytes": 204603392,
+      "original_value": 204603392,
+      "original_unit": "bytes",
+      "scope_note": "Source-computed saved total; runner SELF summand was not individually saved. Independent complete resource recomputation remains unavailable; no hard OS cap.",
+      "evidence_href": "evidence/calibration/outer-reap-v1.json"
+    }
+  ],
+  "calibration_cases": [
+    {
+      "id": "leaf16",
+      "label": "Smaller single leaf",
+      "bars": [
+        {
+          "label": "Actor SELF peak after receipt close",
+          "value_bytes": 30425088,
+          "kind": "self",
+          "display_fraction": 0.2266845703125
+        },
+        {
+          "label": "Actor terminal wait4 peak (may include descendants)",
+          "value_bytes": 30425088,
+          "kind": "rolled",
+          "display_fraction": 0.2266845703125
+        },
+        {
+          "label": "Saved simultaneous actor/child RSS sample sum",
+          "value_bytes": 30425088,
+          "kind": "sample",
+          "display_fraction": 0.2266845703125
+        }
+      ],
+      "note": "No nested child: the leaf SELF and direct wait4 peaks agree.",
+      "checks_note": "Observed success frames, direct terminal reaping and declared PS ancestry agree. Finite evidence only; failure paths and arbitrary concurrency are not empirically proved.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "id": "leaf48",
+      "label": "Larger single leaf",
+      "bars": [
+        {
+          "label": "Actor SELF peak after receipt close",
+          "value_bytes": 63963136,
+          "kind": "self",
+          "display_fraction": 0.4765625
+        },
+        {
+          "label": "Actor terminal wait4 peak (may include descendants)",
+          "value_bytes": 63963136,
+          "kind": "rolled",
+          "display_fraction": 0.4765625
+        },
+        {
+          "label": "Saved simultaneous actor/child RSS sample sum",
+          "value_bytes": 63963136,
+          "kind": "sample",
+          "display_fraction": 0.4765625
+        }
+      ],
+      "note": "No nested child: the leaf SELF and direct wait4 peaks agree.",
+      "checks_note": "Observed success frames, direct terminal reaping and declared PS ancestry agree. Finite evidence only; failure paths and arbitrary concurrency are not empirically proved.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "id": "parent16-child48",
+      "label": "Smaller parent with larger child",
+      "bars": [
+        {
+          "label": "Actor SELF peak after receipt close",
+          "value_bytes": 30457856,
+          "kind": "self",
+          "display_fraction": 0.2269287109375
+        },
+        {
+          "label": "Actor terminal wait4 peak (may include descendants)",
+          "value_bytes": 63979520,
+          "kind": "rolled",
+          "display_fraction": 0.4766845703125
+        },
+        {
+          "label": "Saved simultaneous actor/child RSS sample sum",
+          "value_bytes": 94388224,
+          "kind": "sample",
+          "display_fraction": 0.7032470703125
+        }
+      ],
+      "note": "Terminal wait4 is the maximum of the parent SELF and reaped child peaks; it does not sum simultaneous process RSS.",
+      "checks_note": "Observed success frames, direct terminal reaping and declared PS ancestry agree. Finite evidence only; failure paths and arbitrary concurrency are not empirically proved.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "id": "parent48-child16",
+      "label": "Larger parent with smaller child",
+      "bars": [
+        {
+          "label": "Actor SELF peak after receipt close",
+          "value_bytes": 64110592,
+          "kind": "self",
+          "display_fraction": 0.4776611328125
+        },
+        {
+          "label": "Actor terminal wait4 peak (may include descendants)",
+          "value_bytes": 64110592,
+          "kind": "rolled",
+          "display_fraction": 0.4776611328125
+        },
+        {
+          "label": "Saved simultaneous actor/child RSS sample sum",
+          "value_bytes": 94420992,
+          "kind": "sample",
+          "display_fraction": 0.7034912109375
+        }
+      ],
+      "note": "Terminal wait4 is the maximum of the parent SELF and reaped child peaks; it does not sum simultaneous process RSS.",
+      "checks_note": "Observed success frames, direct terminal reaping and declared PS ancestry agree. Finite evidence only; failure paths and arbitrary concurrency are not empirically proved.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "id": "parent16-two48-sequential",
+      "label": "Smaller parent with two sequential larger children",
+      "bars": [
+        {
+          "label": "Actor SELF peak after receipt close",
+          "value_bytes": 30556160,
+          "kind": "self",
+          "display_fraction": 0.2276611328125
+        },
+        {
+          "label": "Actor terminal wait4 peak (may include descendants)",
+          "value_bytes": 63995904,
+          "kind": "rolled",
+          "display_fraction": 0.476806640625
+        },
+        {
+          "label": "Saved simultaneous actor/child RSS sample sum",
+          "value_bytes": 94388224,
+          "kind": "sample",
+          "display_fraction": 0.7032470703125
+        }
+      ],
+      "note": "Terminal wait4 is the maximum of the parent SELF and reaped child peaks; it does not sum simultaneous process RSS. The cumulative child peak remains the larger of the two sequential leaf peaks.",
+      "checks_note": "Observed success frames, direct terminal reaping and declared PS ancestry agree. Finite evidence only; failure paths and arbitrary concurrency are not empirically proved.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    }
+  ],
+  "phases": [
+    {
+      "label": "Original first donor static audit",
+      "version": "Original frozen curriculum; donor-two-guards",
+      "semantic_status": "pass",
+      "resource_status": "unknown",
+      "root_full_owned_seconds": 14.004124667,
+      "disposition_note": "Raw semantic pass; original full resource failure preserved. No rerun or discount.",
+      "evidence_href": "evidence/original-resource-UNKNOWN.json"
+    },
+    {
+      "label": "Fresh non-scientific calibration",
+      "version": "Calibration V4, outer runner V2, fixed five cases",
+      "semantic_status": "pass",
+      "resource_status": "unknown",
+      "root_full_owned_seconds": 5.368283458,
+      "disposition_note": "Clock covers external creation through reap. Saved retrospective estimate passes its source check; missing raw runner SELF prevents independently complete resource recomputation. Entry-runner final receipt/exit clock remains additional.",
+      "evidence_href": "evidence/calibration/outer-reap-v1.json"
+    }
+  ],
+  "milestone": {
+    "calibration": {
+      "status": "pass",
+      "note": "Actual saved unit and descendant-max observations; finite scope only.",
+      "evidence_href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    "next_donor": {
+      "status": "not_run",
+      "note": "All four original remaining contexts are still unexecuted. Compact wrappers are source only; platform adapter, outer binding and review remain required."
+    },
+    "ROOT_qualified": true,
+    "claim_basis": "actual_calibration",
+    "note": "Milestone is actual finite calibration evidence. It is not complete resource qualification, a mathematical theorem, policy training or benchmark superiority."
+  },
+  "preserved_original": {
+    "first_donor_resource": "UNKNOWN",
+    "first_static_conservative_bytes": 1023344640,
+    "frozen_memory_cap_bytes": 536870912,
+    "remaining_contexts_executed": 0,
+    "all_five_qualified": false
+  },
+  "costs": {
+    "external_creation_to_reap_seconds": 5.368283458,
+    "entry_runner_seconds_before_receipt": 5.388712125,
+    "entry_runner_final_receipt_exit_clock": null,
+    "report_review_and_publication_cost": null,
+    "saved_retrospective_envelope_bytes": 204603392,
+    "complete_resource_recomputation_qualified": false
+  },
+  "evidence": [
+    {
+      "label": "Exact public origins",
+      "href": "origins.json"
+    },
+    {
+      "label": "Raw finite calibration result",
+      "href": "evidence/calibration/outputs/calibration-result-v1.json"
+    },
+    {
+      "label": "Full external lifetime and postclose frame",
+      "href": "evidence/calibration/outer-reap-v1.json"
+    },
+    {
+      "label": "Independent calibration source review",
+      "href": "evidence/calibration-review/review-v4-source-pass-v1.json"
+    },
+    {
+      "label": "Independent actual saved-record review",
+      "href": "evidence/calibration-review/actual-review-v1.json"
+    },
+    {
+      "label": "Platform primary-source findings",
+      "href": "evidence/platform-docs/conclusions-v1.json"
+    },
+    {
+      "label": "Compact wrappers source-only handoff",
+      "href": "evidence/compact-source/integration-v2.json"
+    }
+  ]
+}

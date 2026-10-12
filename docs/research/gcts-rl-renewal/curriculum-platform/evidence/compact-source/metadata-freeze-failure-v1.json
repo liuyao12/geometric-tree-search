@@ -1,0 +1,13 @@
+{
+  "status": "PRESERVED_METADATA_ONLY_FREEZE_SOURCE_FALSE_POSITIVE",
+  "original_freezer_pin": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1.py",
+    "sha256": "97cbb75f0bbf0b21a4a2a02588119958f1a76d900f212263a8a3e5efdd82be98",
+    "bytes": 12880
+  },
+  "failure": "AST source leaf scan treated local platform dictionary .get as imported platform module in transport require_contract. No module or source function was imported/executed.",
+  "repair": "Metadata-only freezer V1b requires actual platform module import before classifying platform.* calls; preserved partial identical evidence/diffs are read and compared, not overwritten.",
+  "scientific_calls": 0,
+  "process_calls": 0,
+  "execution_authorized": false
+}

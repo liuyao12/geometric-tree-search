@@ -1,0 +1,90 @@
+{
+  "status": "SOURCE_ONLY_COMPACT_WRAPPER_V1_PRESERVED_BLOCKED",
+  "manifest": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json",
+    "sha256": "2cfcfde17096cb74077ae8375df2cc50b51c0791270ca821b9fc89150e4329a1",
+    "bytes": 277764
+  },
+  "readiness": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v1.json",
+    "sha256": "5c6e767c4740ac7beda324bb448f2abafc81793cd1d667306cb260f0d0932a7e",
+    "bytes": 1443
+  },
+  "files": [
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py",
+      "sha256": "46c0af034e1ac7cec5b1140f1a10e363fac6214872028a430903802fe84c68f0",
+      "bytes": 16003
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1.py",
+      "sha256": "97cbb75f0bbf0b21a4a2a02588119958f1a76d900f212263a8a3e5efdd82be98",
+      "bytes": 12880
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1b.py",
+      "sha256": "13df88c9e33a6616e1004ed85a9a3bb40072c28cb520e2dd0d3303e545ebc182",
+      "bytes": 13278
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v1.json",
+      "sha256": "dcc0b067a511db85b866a9818dad90284f244ec3f946d71b31cae54b98d47076",
+      "bytes": 9298
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-review-blocker-v1.json",
+      "sha256": "f7dcda9d193596d4a644ee8c95c947f297a67b552ba8a555336a4004db6e1db5",
+      "bytes": 1344
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/metadata-freeze-failure-v1.json",
+      "sha256": "29223bff600f461fdea2f2f94210b572ec400d687b7ce791e7e7bb6763ffc133",
+      "bytes": 779
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/scientific-function-byte-evidence-v1.json",
+      "sha256": "8281660cac5c5c863e53bff563741b27a8a245a4983d41c2e9465e743bb82d8a",
+      "bytes": 2161
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-leaf-source-evidence-v1.json",
+      "sha256": "82afbf452f20bd984b56d1dfca01e3926f7772e49a8648261f627c23f967bb95",
+      "bytes": 5834
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-v3-to-compact-v1.diff",
+      "sha256": "a934b673f43c01fb4d72a88b9e87d68a96a48310326c60734d9cff82be3d712e",
+      "bytes": 3311
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-v3-to-compact-v1.diff",
+      "sha256": "041d7868637d13691737cf070d7dba93129fe468ed1a9daaf452941b7496fe88",
+      "bytes": 25473
+    }
+  ],
+  "archive": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-v1.zip",
+    "sha256": "3bddbeb44fe9664d752164fd6655d43761bb3f7b943c1ea8fce5abb9332a62f8",
+    "bytes": 119548
+  },
+  "interfaces": [
+    "Worker main requires a real exact bound compact actual plan, separate ROOT activation, verified platform receipt and adapter pin; none are instantiated.",
+    "Owner CLI always refuses dispatch. run_owner(planpath,accounting) requires separately ROOT-frozen platform adapter and ends with post-close raw SELF frame/os._exit.",
+    "ROOT must separately review/bind outer launcher/dispatcher SELF frames/complete clocks/postlude reserve and raw distinct-domain accounting."
+  ],
+  "original_donor_resource_UNKNOWN_preserved": true,
+  "scientific_calls": 0,
+  "process_calls": 0,
+  "no_actual_qualification": true,
+  "execution_authorized": false
+}

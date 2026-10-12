@@ -1,0 +1,54 @@
+{
+  "schema": "independent-fixed-platform-calibration-preserved-V3-source-findings-v1",
+  "status": "V3_AND_ENTRY_V1_UNEXECUTED_FINDINGS_PRESERVED",
+  "exact_input_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/calibrate_platform_v3.py",
+      "sha256": "b247d0f1436812ef6a706d8259ddba8030dc3a223f04df56b92c4b0c5a364acd",
+      "bytes": 16728
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/plan-v3.json",
+      "sha256": "34474a0e2eceb9f7652ec57c96a0873b38cfee47262763563ab7bba5703a1f3b",
+      "bytes": 2095
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-platform-calibration-20261012/run_calibration_once_v1.py",
+      "sha256": "ccc045c357445569930ad178831b867b4b15504111ce21e7f461d0c6adecd059",
+      "bytes": 4459
+    }
+  ],
+  "findings": [
+    {
+      "id": "V3-F1",
+      "file": "calibrate_platform_v3.py",
+      "lines": [
+        148,
+        149
+      ],
+      "problem": "PS observer starts separate session, escaping coordinator emergency group containment."
+    },
+    {
+      "id": "V3-F2",
+      "file": "run_calibration_once_v1.py",
+      "lines": [
+        33,
+        38
+      ],
+      "problem": "Entry Popen-to-blocking-wait4 lacks interruption/finally cleanup; sole owner may leave before reaping external child."
+    },
+    {
+      "id": "V3-F3",
+      "file": "calibrate_platform_v3.py",
+      "lines": [
+        151,
+        155
+      ],
+      "problem": "zip parser ignores extra PS fields; exact3-column schema not enforced."
+    }
+  ],
+  "preserved_review_event": "Earlier metadata-only save attempt stopped at an incorrectly transcribed entry-V1 SHA assertion before writing any report. Exact SHA now rederived and checked; no functional source calls or scientific work occurred.",
+  "resolved_by_separately_reviewed_V4": true,
+  "calibration_invocations": 0,
+  "qualification_issued": false
+}
