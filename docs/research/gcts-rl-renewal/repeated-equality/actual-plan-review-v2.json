@@ -1,0 +1,425 @@
+{
+  "schema": "independent-repeated-equality-preparation-and-static-V2-metadata-review-v1",
+  "created_utc": "2026-10-12T11:53:43.062814+00:00",
+  "status": "PASS_corrected_static_V2_source_metadata_binding_pending_ROOT_prospective_terminal_contract",
+  "selector": "donor-repeated-equality",
+  "scope": "Bounded stdlib saved JSON/raw bytes/hash/AST/full binder source only; no project module import or scientific function/model/compiler/checker/search/PS/process/calibration/native/RNG/training/browser/activation/publication.",
+  "checks": [
+    {
+      "id": "complete_closure",
+      "passed": true,
+      "pins": 1085,
+      "bytes": 338754743,
+      "ordered_pin_records_sha256": "29d589c179be416e9390ec4dcdf9c2e8870c859460715a7690efd1ddf3369be6",
+      "gzip_inputs_only_stream_hashed": true
+    },
+    {
+      "id": "exact_V2_metadata_only_repair",
+      "passed": true,
+      "preserved_additions": [
+        ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v1.json",
+        ".gcts-active/repeated-equality-progress-20261012/binding-evidence-v1.json",
+        ".gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v1.json",
+        ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3.json",
+        ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v2.json"
+      ],
+      "originals_unchanged": true
+    },
+    {
+      "id": "producer_contract",
+      "passed": true,
+      "exact_typed_fields": 33,
+      "nested_relative_pins": 18,
+      "ceilings_pass": true
+    },
+    {
+      "id": "once_only_preparation_saved_terminal",
+      "passed": true,
+      "exit_code": 0,
+      "attempts": 1,
+      "internal_receipt_seconds": 5.103012959,
+      "external_enclosing_bound_seconds": 10.78,
+      "conditional_owned_peak_bytes": 377208832,
+      "caps_seconds": 60,
+      "caps_bytes": 536870912
+    },
+    {
+      "id": "legacy_estimate_arithmetic_consistency",
+      "passed": true,
+      "postwrite_peak_without_reserve": 343703552,
+      "inferred_final_ROOT_prewrite_bytes": 16252928,
+      "max_retained_sample_ROOT_bytes": 16236544,
+      "final_direct_ROOT_prewrite_scalar_retained": false,
+      "scope": "Consistency under reviewed source formula, not independent whole-host or terminal wait4 measurement."
+    },
+    {
+      "id": "saved_prepared_census",
+      "passed": true,
+      "single_types": 171,
+      "pair_types": 29241,
+      "candidates": 332890,
+      "complete_groups": 2,
+      "capacity": 64,
+      "hypothesis_codes": [
+        38,
+        38,
+        52
+      ],
+      "target_code": 53,
+      "context_id": "92bcd2112a4053ac35ef0438f93f0d26d9b91b3e1ac7973a212c10a4f3ed55bc",
+      "context_id_scope": "ROOT binder streamed scalar; no reviewer scientific decode/rederivation."
+    },
+    {
+      "id": "frozen_science_and_active_clock_sources",
+      "passed": true,
+      "libraries": 7,
+      "active_entry": "V3",
+      "active_owner": "V5",
+      "future_finalizer": "V2",
+      "worker_transport_adapter_unchanged": true,
+      "exact_source_manifests_separate": true,
+      "old_V2_entry_source_in_closure_inert": true,
+      "limits": {
+        "whole_seconds": 180,
+        "supervisor_seconds": 175,
+        "child_seconds": 170,
+        "peak_bytes": 536870912
+      },
+      "historical_selectors_excluded": true
+    },
+    {
+      "id": "runtime_and_platform_metadata",
+      "passed": true,
+      "exact_binary_native_extension_ps_bytes": true,
+      "process_local_clock_policy_bound": true,
+      "postlude_reserve_bytes": 33554432,
+      "reserve_is_conditional_prospective": true
+    },
+    {
+      "id": "fresh_namespaces",
+      "passed": true,
+      "absent_distinct_outputs": 13,
+      "actual_static_dispatches": 0,
+      "prospective_activations_exist": true
+    },
+    {
+      "id": "metadata_binder_SOURCE_review",
+      "passed": true,
+      "stdlib_imports": [
+        "copy",
+        "datetime",
+        "gzip",
+        "hashlib",
+        "json",
+        "re",
+        "pathlib"
+      ],
+      "bounded_scalar_only": true,
+      "no_project_scientific_import_process_RNG_or_native_call": true,
+      "reviewer_invocation": false
+    },
+    {
+      "id": "ROOT_saved_metadata_preflight",
+      "passed": true,
+      "functions_called_by_ROOT": [
+        "entry.preflight",
+        "transport.require_contract"
+      ],
+      "reviewer_reinvoked": false,
+      "scientific_acceptance": false
+    }
+  ],
+  "preserved_V1_blocker": {
+    "attestation": {
+      "path": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v1.json",
+      "sha256": "6dcf3cd3a258a72240faf95023d1dcf78ff9a92413b4e23c94099a05701a8a61",
+      "bytes": 244
+    },
+    "missing": [
+      "status",
+      "prior_donor_two_guards_resource_UNKNOWN_preserved"
+    ],
+    "unchanged_transport_source": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    "exact_source_lines": [
+      100,
+      102
+    ],
+    "V1_unexecuted": true,
+    "corrected_attestation": {
+      "path": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v2.json",
+      "sha256": "8000b87189026cc0a81ef7f7b8c01509376932c424b2080aef3101bc88a98f3b",
+      "bytes": 572
+    },
+    "all_originals_immutable": true
+  },
+  "remaining_pre_execution_conditions": [
+    "ROOT must bind this review, complete source aggregate and exact prospective trusted-tool terminal contract to corrected planV2/entry activationV3V2/runtime/sources before sole dispatch.",
+    "Actual terminal0/no live session, within-process clock and duration nesting, complete raw frame/artifact/flag/topology replay and finalizerV2 conditional resource gate must pass after execution. This review is not an actual static result."
+  ],
+  "scope_limits": [
+    "Preparation is conditionally accepted within the preserved retrospective owned-process/observer estimator with32MiB fixed postlude reserve; no whole-host/OS hardcap/universal kernel guarantee, external raw wait4, or historical discounts.",
+    "Final legacy ROOT pre-write SELF peak is not separately retained; saved arithmetic has a consistent inferred16252928B versus sampled maximum16236544B.",
+    "Context_id is ROOT metadata binder-reported scalar. Compressed scientific inputs were hashed but not decoded or independently semantically reconstructed by this reviewer.",
+    "Running kernel121.10 versus reviewed primary121.6 discrepancy and finite calibration scope remain.",
+    "Source/manifests/activations and ROOT metadata preflight are readiness evidence; no proof/trajectory/learner/global qualification."
+  ],
+  "reviewer_metadata_helper_failures": "Two earlier stdlib-only helpers exited before writing artifacts: one assumed final ROOT peak equalled saved sampled maximum; the second AST literal scanner did not recognize dict keyword construction. Corrected bounded source/metadata checks preserve the actual records and do not execute project functions or science.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-repeated-equality-ROOT-terminal-v1.json",
+      "sha256": "7cf668dade62633e9ce13b068f21320af972689ea9869fd20efaa064374f7558",
+      "bytes": 31315
+    },
+    {
+      "path": ".gcts-active/curriculum-gates-progress-20261012/preparation-donor-repeated-equality-post-write-observation-v1.json",
+      "sha256": "fe3791215389243315749868c5029d35a5cfec9093273fe58f5cdeec0140ba1a",
+      "bytes": 1254
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-independent-review-20261012/source-review-v1.json",
+      "sha256": "2429d38825a5fa60fc7214e0a0769c3880ef136f47d96ade1de3e7ce5760e870",
+      "bytes": 20465
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+      "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+      "bytes": 27912
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+      "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30",
+      "bytes": 39085
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py",
+      "sha256": "6aa5d2fc1885ff101edbd7139f6599e9df4bc625259f27b450f866f565f1e997",
+      "bytes": 46554
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-owner-v5.json",
+      "sha256": "1537702e25cccb9697d9404fc09c5a53dcf354de0415c54f77ea8f9b942c7422",
+      "bytes": 3071
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-root-entry-v3.json",
+      "sha256": "c720005898f473482e1d2e852b06f5c05570b38c4e5630dc5a059d38c8adaf1e",
+      "bytes": 3294
+    },
+    {
+      "path": ".gcts-active/repeated-equality-preparation-independent-review-20261012/source-review-v1.json",
+      "sha256": "48b5e6da3ea3b1b0b69f4ad65587d097f967e37ef34a05285516e7e3d3f273ad",
+      "bytes": 12550
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/platform-accounting-evidence-v1.json",
+      "sha256": "ea8a005b1543fa3426649bac5a495e32112b4a655ae77b0a0b15be0b6c14988e",
+      "bytes": 3396
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/preparation-prospective-tool-plan-v1.json",
+      "sha256": "0d20d3a87ad6259c27d19197f37b58e089a0f706b6f5e2e8dc59d2b79cc7bcdc",
+      "bytes": 3124
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/preparation-tool-terminal-v1.json",
+      "sha256": "6d2bd011eee2f2dda57d6dff0a0133050691b0bdb492fff6cb1c7c51dcca093f",
+      "bytes": 2012
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v2.json",
+      "sha256": "2eb5dad16cc369c803162a32079b100ca3550e4562c8a0f08991cf7475cb5c54",
+      "bytes": 456
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/runtime-binding-v1.json",
+      "sha256": "9757f33f6625a065aaccae6ac2baac64e7fdde3cc564d90077bf7c28e44e9e42",
+      "bytes": 2356
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v1.json",
+      "sha256": "6dcf3cd3a258a72240faf95023d1dcf78ff9a92413b4e23c94099a05701a8a61",
+      "bytes": 244
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v2.json",
+      "sha256": "8000b87189026cc0a81ef7f7b8c01509376932c424b2080aef3101bc88a98f3b",
+      "bytes": 572
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+      "bytes": 21195
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+      "sha256": "63dea8f6a1004bfe638dcbdcecb2c5065cae27f3e56e97ac78d7d11431bd9b90",
+      "bytes": 44014
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "sha256": "8e0e1fc07c898fc5ab2d058e74915af9a83d7ee5f219880ac3d6611a92fce879",
+      "bytes": 5740
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-repeated-equality/preparation-lifetime-v1.json",
+      "sha256": "1633d82aaf33861bbd556294a213925884724722aa82cc328d2b0c2e6d60c770",
+      "bytes": 1322
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-repeated-equality/preparation-outcome-v1.json",
+      "sha256": "3a58c585cc9bacb1c0ea3b096c5fb941cc7345b1193f33bdecdbee49713acc99",
+      "bytes": 3710
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-repeated-equality/preparation-supervision-v1.json",
+      "sha256": "7cb1d024335876a48590fcf86335f00dc9a0a7166db7da471a89c3a356583584",
+      "bytes": 17932
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-context-source-v3-20261012/root-preparation-donor-repeated-equality-activation-v1.json",
+      "sha256": "840e74633d84aec7e3a776a70bfcc4faf23dc7c4e9ab8be347c0daa8884b728c",
+      "bytes": 891
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+      "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41",
+      "bytes": 22429
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "sha256": "8f933dfc8fb83a630170f0e26829016eb17c65e99bed83b00c417ed32fbc488d",
+      "bytes": 9444
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+      "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1",
+      "bytes": 13373
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/finalize_curriculum_actual_static_plan_v1.py",
+      "sha256": "f893a182950e5b5dabb3a9dcf083072c48401da8c676344b978049feb8c22062",
+      "bytes": 10588
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/freeze_curriculum_independent_source_v1.py",
+      "sha256": "08166c0ab5c06f748295574f217fc5991211c467209ca4ce36a06900c87b7975",
+      "bytes": 9770
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py",
+      "sha256": "5f368989c715e90ca018a5d3cca82c4ee1569abb52567aabe06f0c411524e28f",
+      "bytes": 8816
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3",
+      "bytes": 31396
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840",
+      "bytes": 44198
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a",
+      "bytes": 51577
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c",
+      "bytes": 12212
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546",
+      "bytes": 14401
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+      "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+      "bytes": 27912
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/ROOT-preparation-source-review-v1.json",
+      "sha256": "ffff681a7c50059b702d3ef2597f9780ab176602983f92db31c1dbc10e88ada0",
+      "bytes": 872
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v1.json",
+      "sha256": "285cf3fa8f6f42fe1fc87605679f233cacdc42787a0338567f5e2656f3f46f89",
+      "bytes": 322489
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+      "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+      "bytes": 323642
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/bind_static_metadata_v1.py",
+      "sha256": "af30f75c2543545a0927aa3df30356904c377bc04893f58861c8890fa9d13def",
+      "bytes": 11401
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/binding-evidence-v1.json",
+      "sha256": "6ed8b8a6a840af8a127d55c4cf1202768031aea5c571fb018d1d1d8b393d8ec7",
+      "bytes": 1956
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/metadata-correction-v2.json",
+      "sha256": "3f51e43093af5e245f5d45a5b24f0acc7c55e0f07a8a440fa34c8c318005f00d",
+      "bytes": 1572
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/metadata-helper-partial-write-failure-v1.json",
+      "sha256": "cacffdda7562e8d1e09bc7b150a4215e9abaf92deae338952194b56374c4564b",
+      "bytes": 1099
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/metadata-preflight-v2.json",
+      "sha256": "ec93dfa05679c99cfe437785bcbae9954737bb22a4118a44a40654fe882c91ff",
+      "bytes": 996
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/preparation-qualified-owned-scope-terminal-v1.json",
+      "sha256": "6ce5a706f525a0ad27d883148ae1e67e8a088f69471b5c77d6fb3be254a57b3e",
+      "bytes": 32810
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+      "sha256": "2960c2c8a9871f4523c14513c0ef690f0b1bde5f7bd5559ca961e964c726b304",
+      "bytes": 305864
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3.json",
+      "sha256": "2047aa825dfc63118ac346793e6fb9d9ef65288324b6a20c3f63cf5c62903e20",
+      "bytes": 304711
+    }
+  ],
+  "all_five_qualification": false,
+  "independent_static_mathematical_acceptance": false,
+  "proof_acceptance": false,
+  "RNG_draws": 0,
+  "training": 0,
+  "both_historical_UNKNOWN_preserved": true,
+  "scientific_calls_by_reviewer": 0
+}

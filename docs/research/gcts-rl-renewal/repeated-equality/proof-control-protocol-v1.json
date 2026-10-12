@@ -1,0 +1,448 @@
+{
+  "schema": "one-context-two-lane-proof-control-source-protocol-v1",
+  "status": "SOURCE_ONLY_PENDING_ROOT_AND_INDEPENDENT_REVIEW",
+  "source_only": true,
+  "execution_ready": false,
+  "actual_plan_created": false,
+  "activation_created": false,
+  "functional_calls": 0,
+  "scientific_imports": 0,
+  "source_tests": 0,
+  "purpose": "A separately prospective ground retained-hypothesis proof feasibility comparison. It is not the globally frozen eight-episode learner and confers no global qualification or RL credit.",
+  "selectors": [
+    "donor-repeated-guard",
+    "donor-repeated-equality",
+    "heldout-mixed-guard-equality"
+  ],
+  "forbidden_prior_executed_selectors": [
+    "donor-two-guards",
+    "donor-two-equalities"
+  ],
+  "preserved_status": "The historical two executed resource UNKNOWN dispositions remain intact. Neither may be retried or admitted by this source. This package asserts no new actual preparation, static qualification, target search or proof.",
+  "deterministic_lanes": [
+    {
+      "mode": "base",
+      "cold_owned_process": true,
+      "reconstruct_complete_pool": true,
+      "charge_complete_pool": true,
+      "active_advice": []
+    },
+    {
+      "mode": "fixed-whole-family-pool",
+      "cold_owned_process": true,
+      "reconstruct_complete_pool": true,
+      "charge_complete_pool": true,
+      "active_advice": "entire independently qualified saved pool"
+    }
+  ],
+  "lane_order": [
+    "base",
+    "fixed-whole-family-pool"
+  ],
+  "lane_search_limits": {
+    "attempts": 128,
+    "seconds": 20,
+    "event_ceiling": 2000
+  },
+  "actual_existing_result_limits_keys": [
+    "attempts",
+    "seconds",
+    "events"
+  ],
+  "owned_phase_limits": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "conditional_postlude_reserve_bytes": 33554432,
+  "resource_clock_rule": "process_local_no_cross_process_absolute_comparison",
+  "raw_owned_terms": [
+    "trusted_tool_terminal",
+    "ROOT_SELF",
+    "ROOT_raw_frame",
+    "owner_raw_frame",
+    "worker_raw_frame",
+    "owner_lifetime",
+    "observer_tables",
+    "closed_artifacts",
+    "source_review",
+    "platform_evidence"
+  ],
+  "resource_scope": "Inclusive read/decode/import/rebuild/registration/search-or-replay/serialization/stream-close/reap/owner receipt costs. Each emitter has local elapsed/order; the parent measures complete child duration. Full scoped estimate is a conservative conditional known-topology envelope, not an actual simultaneous physical peak or whole-host hard cap.",
+  "preserved_complete_problem": {
+    "required_primitive_rows": 24,
+    "formula_AST_registry_size": 217,
+    "exact_primitive_recipes": 229,
+    "non_assumption_witnesses": 226,
+    "ordered_hypothesis_occurrences": 3,
+    "existing_authored_bodies": 171,
+    "single_types": 171,
+    "ordered_pair_types": 29241,
+    "complete_pool_capacity": 64,
+    "over_capacity": "reject without trimming",
+    "training_features_preserved": 31,
+    "checked_request_blocks": [],
+    "proof_scope": "Original theory and all indexed retained hypotheses; original ground target. No assumption discharge or universal conclusion is inferred."
+  },
+  "fallback_and_trace": {
+    "schedule": "Global dead end, global forced move, earliest generation; degree breaks only generation ties.",
+    "fixed_advice": "Checked ordering only; complete primitive fallback remains. No atomic macro move.",
+    "unknown": "UNKNOWN is not proof of child exhaustion and never creates proved exclusion.",
+    "rollback": "Exact paired point/controller marks, full identities and refcounts; root restored.",
+    "raw_trace": "Retain complete automatic search result including every node/event/domain/full semantic identity/whole markings/transaction mutation/rollback stream; no result projection is authority.",
+    "positive": "If a point certificate is returned, independent point and symbolic checker reconstructs all 24 rows and flat checked request with blocks=[], original theory/Gamma/target, exact licensed placements and occurrence provenance.",
+    "duplicate_hypotheses": "Occurrences are never deduplicated. A formula-equal index swap can remain logically valid; exact returned point/full-placement provenance must still agree. Legacy first-assumption-index mutation controls are not reused."
+  },
+  "entry_interfaces": {
+    "immutable_raw_artifact": "proof_control_bindings_v1.BoundArtifact(declared_path, raw, sha256, size, compressed_json=False)",
+    "producer": "proof_control_producer_v1.produce_one_lane(bundle, resource_closure, libraries, *, selector, mode, activation, source_contract)",
+    "independent": "proof_control_independent_v1.audit_one_lane(bundle, static_resource_closure, producer_result, producer_resource, producer_resource_closure, libraries, *, selector, mode, activation, source_contract)",
+    "input_roles": [
+      "compiled_context",
+      "preparation_evidence",
+      "fresh_static_result",
+      "fresh_static_plan",
+      "fresh_static_resource",
+      "trusted_static_tool_terminal",
+      "frozen_reference",
+      "frozen_split",
+      "frozen_RL_protocol",
+      "frozen_selection_binding",
+      "family_projection"
+    ],
+    "byte_binding": "Every decoded JSON value comes from the same immutable retained raw buffer whose declared path/hash/byte length is bound; gzip transport remains bound to compressed raw bytes. Complete nested pin closure is mandatory.",
+    "loaded_library_binding": "The future owner separately freezes transitive imports before loading; this adapter verifies exact passed module path/source bytes before and after work.",
+    "static_admission": "Requires actual independent full semantic PASS plus accepted fresh scoped static resource disposition and trusted terminal. Raw semantic PASS, source review or UNKNOWN are insufficient.",
+    "search_resource": "Distinct future ROOT-one-context-proof-control-owned-resource-disposition-v1 accepted_conditional_known_topology_proof_control_resource_envelope; existing static-only owner chain does not emit this.",
+    "independent_result": "Complete raw tape and conditional positive-certificate semantic result only. Its own full resource acceptance and ROOT final decision are separate retrospective gates."
+  },
+  "library_binding_templates": {
+    "independent": {
+      "body": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+        "pin": {
+          "bytes": 12212,
+          "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+          "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c"
+        }
+      },
+      "context": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+        "pin": {
+          "bytes": 22429,
+          "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+          "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41"
+        }
+      },
+      "curriculum_worker": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+        "pin": {
+          "bytes": 13373,
+          "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+          "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1"
+        }
+      },
+      "expansion": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+        "pin": {
+          "bytes": 51577,
+          "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+          "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a"
+        }
+      },
+      "hints": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+        "pin": {
+          "bytes": 8544,
+          "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+          "sha256": "1d3e0dd94ac5290dfa7520e6f62f865757da39ac6ee9b9b4b2b2037fb594abe4"
+        }
+      },
+      "point": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+        "pin": {
+          "bytes": 14401,
+          "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+          "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546"
+        }
+      },
+      "positive": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+        "pin": {
+          "bytes": 9020,
+          "path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+          "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013"
+        }
+      },
+      "static_pool": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+        "pin": {
+          "bytes": 31396,
+          "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+          "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3"
+        }
+      },
+      "symbolic": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+        "pin": {
+          "bytes": 44198,
+          "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+          "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840"
+        }
+      },
+      "tape": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+        "pin": {
+          "bytes": 37597,
+          "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+          "sha256": "dfa8fcac99e5bf299b92e2876b8b308cd0fdd76dc8d7d5dfdf299f15e2ab1d51"
+        }
+      },
+      "transactions": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+        "pin": {
+          "bytes": 9091,
+          "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+          "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51"
+        }
+      }
+    },
+    "producer": {
+      "compiler": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+        "pin": {
+          "bytes": 14954,
+          "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+          "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb"
+        }
+      },
+      "lifecycle": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+        "pin": {
+          "bytes": 30989,
+          "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+          "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f"
+        }
+      },
+      "prior_search": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+        "pin": {
+          "bytes": 16449,
+          "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+          "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c"
+        }
+      },
+      "proposals": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+        "pin": {
+          "bytes": 22693,
+          "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+          "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3"
+        }
+      },
+      "registration": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+        "pin": {
+          "bytes": 4186,
+          "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+          "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656"
+        }
+      },
+      "search_loop": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+        "pin": {
+          "bytes": 11866,
+          "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+          "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435"
+        }
+      },
+      "selection": {
+        "absolute_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-context-source-v3-20261012/curriculum_selection_v1.py",
+        "pin": {
+          "bytes": 6433,
+          "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_selection_v1.py",
+          "sha256": "7d5e4ab83f266d9d08e916cd5c76c1f953750d594e02cbd41ddc4c0d853147fd"
+        }
+      }
+    }
+  },
+  "API_matches": [
+    {
+      "API": "construct_graph",
+      "keyword_only": [],
+      "line": 174,
+      "phase": "producer",
+      "pin": {
+        "bytes": 14954,
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+        "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb"
+      },
+      "positional_arguments": [
+        "compiled",
+        "core"
+      ],
+      "role": "compiler"
+    },
+    {
+      "API": "construct_family_authority",
+      "keyword_only": [],
+      "line": 191,
+      "phase": "producer",
+      "pin": {
+        "bytes": 14954,
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+        "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb"
+      },
+      "positional_arguments": [
+        "graph",
+        "projection",
+        "life",
+        "source_pins"
+      ],
+      "role": "compiler"
+    },
+    {
+      "API": "select_context",
+      "keyword_only": [],
+      "line": 51,
+      "phase": "producer",
+      "pin": {
+        "bytes": 6433,
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_selection_v1.py",
+        "sha256": "7d5e4ab83f266d9d08e916cd5c76c1f953750d594e02cbd41ddc4c0d853147fd"
+      },
+      "positional_arguments": [
+        "reference",
+        "split",
+        "protocol",
+        "frozen_binding",
+        "selector"
+      ],
+      "role": "selection"
+    },
+    {
+      "API": "register_pool",
+      "keyword_only": [],
+      "line": 18,
+      "phase": "producer",
+      "pin": {
+        "bytes": 4186,
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+        "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656"
+      },
+      "positional_arguments": [
+        "g",
+        "original",
+        "projection",
+        "proposals",
+        "life",
+        "evidence",
+        "static"
+      ],
+      "role": "registration"
+    },
+    {
+      "API": "fixed_pool_search",
+      "keyword_only": [
+        "mode",
+        "attempts",
+        "seconds",
+        "event_ceiling"
+      ],
+      "line": 33,
+      "phase": "producer",
+      "pin": {
+        "bytes": 11866,
+        "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+        "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435"
+      },
+      "positional_arguments": [
+        "graph",
+        "authority",
+        "descriptors",
+        "life",
+        "prior_search"
+      ],
+      "role": "search_loop"
+    },
+    {
+      "API": "verify",
+      "keyword_only": [],
+      "line": 33,
+      "phase": "independent",
+      "pin": {
+        "bytes": 13373,
+        "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+        "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1"
+      },
+      "positional_arguments": [
+        "plan"
+      ],
+      "role": "curriculum_worker"
+    },
+    {
+      "API": "rebuild",
+      "keyword_only": [],
+      "line": 82,
+      "phase": "independent",
+      "pin": {
+        "bytes": 13373,
+        "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+        "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1"
+      },
+      "positional_arguments": [
+        "plan",
+        "p",
+        "b",
+        "symbolic",
+        "expansion",
+        "static",
+        "context"
+      ],
+      "role": "curriculum_worker"
+    },
+    {
+      "API": "measured_transactions",
+      "keyword_only": [],
+      "line": 64,
+      "phase": "independent",
+      "pin": {
+        "bytes": 37597,
+        "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+        "sha256": "dfa8fcac99e5bf299b92e2876b8b308cd0fdd76dc8d7d5dfdf299f15e2ab1d51"
+      },
+      "positional_arguments": [
+        "base_class",
+        "point",
+        "body"
+      ],
+      "role": "tape"
+    }
+  ],
+  "mandatory_future_work": [
+    "ROOT and independent source review of these frozen adapters and exact transitive source closure.",
+    "Actual once-only previously unexecuted context preparation and independent static admission under the reviewed process-local clock successor.",
+    "A separately reviewed producer and independent replay owner/entry/finalizer contract emitting the distinct complete proof-control resource disposition; no implementation is supplied here.",
+    "Fresh ROOT source contract, exact actual input pins, complete raw resource closure and phase activation per owned cold lane; none are created here.",
+    "Actual full retained transcripts, trusted terminal and ROOT resource gates; independently accepted positive certificate before reporting any discovered proof.",
+    "Separate ROOT comparison reconciliation: matching original context/limits/full pool/source authority, timing and attempts including common preparation cost, no speedup or RL claim from these source files."
+  ],
+  "outcome_interpretation": {
+    "successful_positive": "A newly automatically found ground certificate, conditional on independent full proof/tape and owned-resource acceptance. It may reuse the pre-existing authored bodies.",
+    "two_lane_comparison": "Tests whole-cluster ordering versus base primitive ordering in the same marked search engine. It does not isolate GCTS against a nongeometric prover and does not establish RL superiority.",
+    "no_positive": "Bounded UNKNOWN is a feasibility result, not failure to prove the theorem or proof of unsatisfiability."
+  },
+  "prohibitions": [
+    "teacher proof word",
+    "target route or tactic",
+    "new authored theorem/body",
+    "pool subset or graph trimming",
+    "RNG",
+    "RL fitting or credit",
+    "new target/formula theory",
+    "native/compiler acceptance authority",
+    "rerun either executed donor",
+    "publication by this agent"
+  ]
+}

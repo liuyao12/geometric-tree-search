@@ -1,0 +1,23 @@
+{
+  "schema": "ROOT-repeated-equality-preparation-actual-terminal-tool-v1",
+  "prospective_plan": ".gcts-active/repeated-equality-progress-20261012/preparation-prospective-tool-plan-v1.json",
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py preparation donor-repeated-equality",
+  "terminal_tool_result": {
+    "began_ms": 1791805157952,
+    "observed_ms": 1791805167732,
+    "enclosing_seconds": 9.78,
+    "enclosing_bound_seconds": 10.78,
+    "result": {
+      "chunk_id": "8a9c1f",
+      "wall_time_seconds": 5.015419666,
+      "exit_code": 0,
+      "original_token_count": 240,
+      "output": "{\"phase\": \"preparation\", \"selector\": \"donor-repeated-equality\", \"accepted\": true, \"owner_exit\": 0, \"actual_seconds_through_ROOT_terminal_write\": 5.103012959, \"conservative_combined_peak_bytes\": 377208832, \"terminal\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-donor-repeated-equality-ROOT-terminal-v1.json\", \"sha256\": \"7cf668dade62633e9ce13b068f21320af972689ea9869fd20efaa064374f7558\", \"bytes\": 31315}, \"provisional_terminal\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-donor-repeated-equality-provisional-ROOT-terminal-v1.json\", \"sha256\": \"7cf668dade62633e9ce13b068f21320af972689ea9869fd20efaa064374f7558\", \"bytes\": 31315}, \"post_write_observation\": {\"path\": \".gcts-active/curriculum-gates-progress-20261012/preparation-donor-repeated-equality-post-write-observation-v1.json\", \"sha256\": \"fe3791215389243315749868c5029d35a5cfec9093273fe58f5cdeec0140ba1a\", \"bytes\": 1254}, \"failure\": null, \"error\": null}\n"
+    }
+  },
+  "terminal": true,
+  "actual_invocations": 1,
+  "external_wait4_claim": false,
+  "scope": "Actual terminal tool result and enclosing external wall clock; conditional reviewed legacy owned-process/observer estimate and postlude reserve only.",
+  "all_five_qualification": false
+}

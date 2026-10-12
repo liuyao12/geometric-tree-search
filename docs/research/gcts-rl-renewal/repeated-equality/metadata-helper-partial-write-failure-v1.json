@@ -1,0 +1,25 @@
+{
+  "schema": "ROOT-metadata-only-helper-failure-v1",
+  "actual_static_invocations": 0,
+  "scientific_calls": 0,
+  "tool_chunk_id": "56d741",
+  "exit_code": 1,
+  "error": "ValueError from relative_to on external pinned runtime path during closure verification; three V2 metadata files were fully closed before failure, entry V2 was not written.",
+  "preserved_complete_files": [
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v2.json",
+      "sha256": "8000b87189026cc0a81ef7f7b8c01509376932c424b2080aef3101bc88a98f3b",
+      "bytes": 572
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+      "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+      "bytes": 323642
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v2.json",
+      "sha256": "2eb5dad16cc369c803162a32079b100ca3550e4562c8a0f08991cf7475cb5c54",
+      "bytes": 456
+    }
+  ]
+}

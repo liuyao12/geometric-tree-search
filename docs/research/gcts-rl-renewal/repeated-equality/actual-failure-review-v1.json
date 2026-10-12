@@ -1,0 +1,225 @@
+{
+  "schema": "independent-repeated-equality-static-actual-failure-metadata-review-v1",
+  "created_utc": "2026-10-12T12:06:34.546408+00:00",
+  "status": "RECONCILED_SAVED_UNKNOWN_before_semantic_import_or_reconstruction",
+  "selector": "donor-repeated-equality",
+  "scope": "Saved small JSON/log/raw52byte frame plus source/AST only. No project import/function/scientific object decode/model/compiler/checker/search/re-execution/process/PS/native/calibration/RNG/train/browser/activation/publication.",
+  "source_cause": {
+    "worker_source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    "source_lines": {
+      "absolute_pin": [
+        22,
+        26
+      ],
+      "exact_comparison": [
+        33,
+        39
+      ],
+      "verify_before_libraries": [
+        116,
+        117
+      ]
+    },
+    "first_rejected_group": "preserved",
+    "first_rejected_index": 0,
+    "declared_record": {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-plan-v2-metadata-review-v1.json",
+      "sha256": "53ec18a9a540934088114c7bde33828598c5b20d7881f8c2995337be7d2a6e1d",
+      "bytes": 9413
+    },
+    "actual_same_bytes_absolute_record": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-plan-v2-metadata-review-v1.json",
+      "sha256": "53ec18a9a540934088114c7bde33828598c5b20d7881f8c2995337be7d2a6e1d",
+      "bytes": 9413
+    },
+    "mismatching_fields": [
+      "path"
+    ],
+    "relative_record_counts": {
+      "sources": 0,
+      "libraries": 0,
+      "inputs": 0,
+      "preserved": 108
+    },
+    "conclusion": "Identical expected bytes are rejected solely because worker pin() returns an absolute resolved path and verify() compares it to the preserved relative spelling. This happens before libraries(plan) and reconstruction."
+  },
+  "actual_terminal": {
+    "attempts": 1,
+    "tool_exit": 1,
+    "observed_enclosing_seconds": 3.38,
+    "conservative_enclosing_bound_seconds": 4.38,
+    "tool_wall_time_seconds": 0.813937333,
+    "external_wait4_claim": false
+  },
+  "saved_process_records": {
+    "ROOT_pid": 491,
+    "ROOT_failure_frame_exit": 1,
+    "ROOT_actual_tool_terminal": true,
+    "worker_pid": 493,
+    "worker_exit": 1,
+    "worker_reaped": true,
+    "owner_pid": 492,
+    "owner_exit": -9,
+    "owner_reaped": true,
+    "observer_pid": 494,
+    "observer_exit": 0,
+    "observer_reaped": true,
+    "observer_records": 1,
+    "sample_records": 1,
+    "containment_latched": true,
+    "group_kill_attempted_once": true,
+    "owner_success_frame_absent": true,
+    "worker_success_frame_absent": true,
+    "static_result_compact_lifetime_absent": true,
+    "no_grandchild_reap_claim": true
+  },
+  "raw_ROOT_failure_frame": {
+    "role": 3,
+    "exit_code": 1,
+    "pid": 491,
+    "SELF_ru_maxrss_raw": 18989056,
+    "elapsed": 0.938156791,
+    "start": 0.008234875,
+    "closed": 0.946391666
+  },
+  "conclusions": {
+    "mathematical_reconstruction": false,
+    "semantic_library_loads": 0,
+    "semantic_PASS": false,
+    "clock_successor_positive_path_validated": false,
+    "complete_accounting_replay": false,
+    "complete_owned_peak": null,
+    "complete_resource_accepted": false,
+    "finalizer_called": false,
+    "proof_acceptance": false,
+    "all_five_qualification": false,
+    "RNG_draws": 0,
+    "training": 0
+  },
+  "prior_review_disposition": {
+    "immutable_record": {
+      "path": ".gcts-active/repeated-equality-static-plan-independent-review-20261012/actual-preparation-and-static-plan-v2-review-v1.json",
+      "sha256": "4a8f23edee03f888f7a839278983b2ce8b2b765a7cc9b37e5ba7c4866669200a",
+      "bytes": 20622
+    },
+    "missed_compatibility_requirement": "The prior source/metadata review checked raw byte identity and declared spelling preservation but missed the unchanged worker verifier requiring absolute resolved spelling for every closure record. Its pre-execution compatibility conclusion was incomplete; immutable source/hash observations are preserved and are not actual acceptance."
+  },
+  "future_source_only_note": "For still-unexecuted selectors, enforce the unchanged worker absolute-path contract independently from lexical owner/entry transport. Any repair requires immutable reviewed dependent source/metadata pins. This failed selector is preserved without retry.",
+  "scope_limits": [
+    "Saved failure receipts confirm direct worker/owner terminal records and ROOT tool completion; no universal descendant ownership/reaping guarantee.",
+    "One ROOT failure SELF frame and one observer/sample do not determine complete owned peak or qualify resources.",
+    "Within-ROOT failure-path clock arithmetic is consistent; absent worker/owner success frames and accounting replay leave positive clock path unvalidated.",
+    "Preparation acceptance and both prior UNKNOWN dispositions remain unchanged."
+  ],
+  "reviewer_metadata_helper_note": "An initial stdlib-only reconciliation helper compared a saved elapsed duration to an absolute ROOT-local clock and exited before artifact creation. Final checks keep the clock scopes separate; no actual record/science was modified or rerun.",
+  "exact_input_pins": [
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-plan-v2-metadata-review-v1.json",
+      "sha256": "53ec18a9a540934088114c7bde33828598c5b20d7881f8c2995337be7d2a6e1d",
+      "bytes": 9413
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/observer-0-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/observer-0-stdout.txt",
+      "sha256": "b6c313a85029b14ae4bc4ff4fc078396bf085b318502354c995f47d3c3a653ab",
+      "bytes": 34399
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-containment-v1.json",
+      "sha256": "733b004d8eb16ac737bc6b74c540d2c728f71ca5ec39520ff45824de01503242",
+      "bytes": 1469
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-observers-v1.jsonl",
+      "sha256": "55e606184ea564d33b363555a317fac577fe96488c2b39622b1316c1e6f287ba",
+      "bytes": 1510
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-samples-v1.jsonl",
+      "sha256": "22949b4fb42fb4c0dbbd76848fc539f537e80ac41e3f62996a2a8b4f7d064cb2",
+      "bytes": 514
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-stderr-v1.txt",
+      "sha256": "c265069192b3f91ef68ea3e39255254126273d219c9c79475ea5c07e396319e1",
+      "bytes": 1095
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-equality/ROOT-closed-SELF-v1.bin",
+      "sha256": "ed11385d3597ab99089651529061b85bdfc181ca661b9f717f5fe9677fa9139f",
+      "bytes": 52
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-equality/ROOT-pending-receipt-v1.json",
+      "sha256": "234f323bd24207e3e6068f9807ee173cad0b3fde21776508f3595474ce57e180",
+      "bytes": 6344
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-equality/static-prospective-tool-contract-v1.json",
+      "sha256": "1fbc690be44847ecdad704d91ee733ecaaabb3769695ca89d9f2fec732034b7d",
+      "bytes": 3654
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-equality/static-tool-terminal-v1.json",
+      "sha256": "bbddf565ed0eabae17ec5447b810beba14b0931739e0a8b9fd150fb6f82ef50a",
+      "bytes": 1056
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+      "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+      "bytes": 323642
+    },
+    {
+      "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+      "sha256": "2960c2c8a9871f4523c14513c0ef690f0b1bde5f7bd5559ca961e964c726b304",
+      "bytes": 305864
+    },
+    {
+      "path": ".gcts-active/repeated-equality-static-plan-independent-review-20261012/actual-preparation-and-static-plan-v2-review-v1.json",
+      "sha256": "4a8f23edee03f888f7a839278983b2ce8b2b765a7cc9b37e5ba7c4866669200a",
+      "bytes": 20622
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-equality/owner-stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-equality/owner-stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/static-unknown-disposition-v1.json",
+      "sha256": "db9f17e8abd40175615fdaaf702df8130ded1c7f5473182c46fd39546a13f589",
+      "bytes": 3107
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  ],
+  "both_earlier_UNKNOWNs_preserved": true,
+  "current_UNKNOWN_preserved": true,
+  "no_rerun": true,
+  "scientific_calls_by_reviewer": 0
+}

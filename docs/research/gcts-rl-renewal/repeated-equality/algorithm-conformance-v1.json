@@ -1,0 +1,29 @@
+{
+  "schema": "notebook118-GCTS-conformance-and-gaps-v1",
+  "master": {
+    "path": "docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "engine_scope": "Existing symbolic constraint-candidate adaptation; this checkpoint changes prospective metadata wrappers only.",
+  "prepared_counts": {
+    "required_rows": 24,
+    "primitive_licenses": 229,
+    "non_assumption_witnesses": 226,
+    "conditional_bodies": 171,
+    "single_types": 171,
+    "pair_types": 29241,
+    "initial_candidates": 332890,
+    "complete_groups": 2
+  },
+  "inherited_contract": "Complete graph and point domains; global dead/forced/earliest-generation scheduling; exact t/m rollback and full primitive fallback.",
+  "this_attempt_independent_conformance_established": false,
+  "static_failed_before_reconstruction": true,
+  "learned_pruning_or_RL_activated": false,
+  "proof_discovered": false,
+  "gaps": [
+    "Not a universal adjacency-only Wang compiler",
+    "No new target search/tape/native proof/RL in this checkpoint",
+    "No successful clock or complete resource replay for this attempt"
+  ]
+}

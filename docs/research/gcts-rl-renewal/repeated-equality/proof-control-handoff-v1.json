@@ -1,0 +1,213 @@
+{
+  "schema": "one-context-two-lane-proof-control-source-handoff-v1",
+  "status": "FROZEN_SOURCE_FOR_ROOT_AND_INDEPENDENT_REVIEW",
+  "source_only": true,
+  "execution_ready": false,
+  "prefix": ".gcts-active/one-context-proof-control-source-20261012",
+  "artifacts": [
+    {
+      "bytes": 15648,
+      "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_bindings_v1.py",
+      "sha256": "704d7e088b613fcd5aeb6ff0cfc1f51e9fce23595b3e5ea258cd2f9cd4ca42cb"
+    },
+    {
+      "bytes": 9588,
+      "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_independent_v1.py",
+      "sha256": "7a3044764dcf0e81af18d14b90e9a5d3874023a018a836c359cac23613c52d4f"
+    },
+    {
+      "bytes": 6669,
+      "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_producer_v1.py",
+      "sha256": "404c171931f0d071504a99eb86884f4de202ea749d538a1187881ee11d251b3e"
+    },
+    {
+      "bytes": 18574,
+      "path": ".gcts-active/one-context-proof-control-source-20261012/source-metadata-review-v1.json",
+      "sha256": "ff5b3b77f7242d1030974921a8e98dcaf239b91bc951cbc4af421bf17950f0a1"
+    },
+    {
+      "bytes": 20655,
+      "path": ".gcts-active/one-context-proof-control-source-20261012/source-protocol-v1.json",
+      "sha256": "3662d66a49e65c89632bf0edc06d0696bf214661c26b9ce54c84d9f7c37906c0"
+    }
+  ],
+  "reference_pins": [
+    {
+      "bytes": 21657,
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 31300,
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    {
+      "bytes": 6052,
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_bridge_decode_v1.py",
+      "sha256": "f8c06353cccc2dee34123b093c997b34f22e42a5cd4255b271f7ab933fbb69d6"
+    },
+    {
+      "bytes": 3698,
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_forward_order_v1.py",
+      "sha256": "8e1cae2370869374aa746c7085b9e9ed6ea986c494a647f456233dcbf1ca53b9"
+    },
+    {
+      "bytes": 8816,
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py",
+      "sha256": "5f368989c715e90ca018a5d3cca82c4ee1569abb52567aabe06f0c411524e28f"
+    },
+    {
+      "bytes": 13344,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/protocol-v1.json",
+      "sha256": "3b7606a8ce4635ac8d0b9fdf0c97863dc62311294c4dfe252be08f136f9dbbc0"
+    },
+    {
+      "bytes": 4483,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/handoff-v1.json",
+      "sha256": "a9a4685cc2f65d8867cb1c47d5666f4c2d23e87e421340553b4f25f9129c1736"
+    },
+    {
+      "bytes": 19318,
+      "path": ".gcts-active/one-context-proof-feasibility-source-audit-20261012/handoff-v1.json",
+      "sha256": "05f2ae5f264e99eb828d015c276152f83d3c5f1b65bda170660b367453d7faed"
+    },
+    {
+      "bytes": 12212,
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "sha256": "71fb7add4338cfb1ace339993d991e96c5c2fa59dc450a48816096575e5c297c"
+    },
+    {
+      "bytes": 22429,
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+      "sha256": "2f474f5b43793c6d712079130bcb315540e388bc7f6a32f9e6f120654f96bf41"
+    },
+    {
+      "bytes": 13373,
+      "path": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_worker_v1.py",
+      "sha256": "bac12671bfd81ff2e5bcef78b5889c37ca7703ea03eac18a942bd84670a5f2d1"
+    },
+    {
+      "bytes": 51577,
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "sha256": "ea21d696a86f907b333dbe18f712aa7f00e9d3960c6cba69a19d2b879194fc0a"
+    },
+    {
+      "bytes": 8544,
+      "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_transactions_oracle_v1.py",
+      "sha256": "1d3e0dd94ac5290dfa7520e6f62f865757da39ac6ee9b9b4b2b2037fb594abe4"
+    },
+    {
+      "bytes": 14401,
+      "path": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "sha256": "6a94f6c7c2d7713061c7238ca6abb5d58936670d348736f758c57ba8cf5a8546"
+    },
+    {
+      "bytes": 9020,
+      "path": ".gcts-active/receptor-matching-geometry-independent-20261011/positive_certificate_oracle_v1.py",
+      "sha256": "3cd8672a7942b18794e5658f275f232df490caa57d1872b8845ad91d93789013"
+    },
+    {
+      "bytes": 31396,
+      "path": ".gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "sha256": "7cf5b5840b7374eb405948baee722747c0122cbeae44d8b9a6057ed76b8106b3"
+    },
+    {
+      "bytes": 44198,
+      "path": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "sha256": "bc7a080659fb0715ef098717a79a4bb5d6583ab05d8dec6739a8de90df488840"
+    },
+    {
+      "bytes": 37597,
+      "path": ".gcts-active/fixed-family-transfer-independent-source-20261012/transfer_trace_oracle_v1.py",
+      "sha256": "dfa8fcac99e5bf299b92e2876b8b308cd0fdd76dc8d7d5dfdf299f15e2ab1d51"
+    },
+    {
+      "bytes": 9091,
+      "path": ".gcts-active/shared-symbolic-geometry-trace-independent-20261011/geometry_trace_point_v1.py",
+      "sha256": "f4e4f4430a483f3fcf7b81a329ddfb0a1b389555b7dcb6b457a9b009be4b5d51"
+    },
+    {
+      "bytes": 14954,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_context_compiler_v1.py",
+      "sha256": "5538344ee9a74dea4165599c5505487d7f289724fc9ccb89a512d54e00d39bbb"
+    },
+    {
+      "bytes": 30989,
+      "path": ".gcts-active/hilbert-cluster-lifecycle-20261011/hilbert_cluster_lifecycle_v1.py",
+      "sha256": "e836501e29605df6c226342a0a2b63d7fa9ff2f91dc3c1b43e830f49f188744f"
+    },
+    {
+      "bytes": 16449,
+      "path": ".gcts-active/shared-symbolic-geometry-search-source-v2-20261011/shared_symbolic_geometry_search_v1.py",
+      "sha256": "6bd620501bcdd48d8e56da9b1e2b4b964aa587ad4928cb5ec339632cd330068c"
+    },
+    {
+      "bytes": 22693,
+      "path": ".gcts-active/family-proposal-source-20261012/family_proposal_v2.py",
+      "sha256": "e80fa61ccf781c9d8b28aa05ad98757b21eb1794d694d03df38248f6a2e7f4c3"
+    },
+    {
+      "bytes": 4186,
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_register_v1.py",
+      "sha256": "94ef1fe8adc99e9a122942868efc31f1297f1d926a91db4f87a74eca1c39d656"
+    },
+    {
+      "bytes": 11866,
+      "path": ".gcts-active/fixed-family-transfer-source-v1-20261012/transfer_fixed_pool_search_v1.py",
+      "sha256": "67f7225e6737ebcaa52ac6d303c346584fd478a3a86b07c3eb5a7eb90654c435"
+    },
+    {
+      "bytes": 6433,
+      "path": ".gcts-active/family-curriculum-context-source-v3-20261012/curriculum_selection_v1.py",
+      "sha256": "7d5e4ab83f266d9d08e916cd5c76c1f953750d594e02cbd41ddc4c0d853147fd"
+    }
+  ],
+  "source_metadata_validation": {
+    "authored_Python_AST_files": 3,
+    "authored_JSON_files": 2,
+    "check_count": 30,
+    "passed_checks": 30,
+    "reference_pin_observations": 26,
+    "post_authoring_byte_reconciliation": true,
+    "project_imports": 0,
+    "project_function_calls": 0,
+    "model_constructions": 0,
+    "searches": 0,
+    "checkers": 0,
+    "fixtures": 0,
+    "RNG_draws": 0,
+    "training": 0,
+    "process_observer_calls": 0,
+    "actual_plans": 0,
+    "activations": 0,
+    "browser_calls": 0,
+    "publication_calls": 0
+  },
+  "code_entries": {
+    "producer": "proof_control_producer_v1.produce_one_lane",
+    "independent": "proof_control_independent_v1.audit_one_lane",
+    "immutable_input": "proof_control_bindings_v1.BoundArtifact"
+  },
+  "source_scope": "Three uninvoked Python adapters; one source protocol and self-authored metadata review. AST/API/hash predicates establish source shape, not functional correctness. ROOT and independent review remain pending.",
+  "completed_interface": "Complete exact context gate, immutable same-buffer decoding, generic cold automatic primitive two-lane producer, full independent static rebuild/Tape/conditional positive certificate adapter.",
+  "unresolved_execution_interfaces": [
+    "Actual accepted fresh semantic and scoped static resource admission for an original previously unexecuted selector.",
+    "A separately ROOT/independently reviewed transitive import/source freeze.",
+    "Distinct prospective producer/replay process-local clock owner/entry/finalizer and retrospective proof-control resource disposition emitter; static-only clock emitter does not qualify these jobs.",
+    "Exact future ROOT source-contract/input/phase-activation records, trusted terminals and complete raw owned receipt closure.",
+    "Independent replay own-resource acceptance and separate ROOT paired comparison reconciliation."
+  ],
+  "never_inferred": [
+    "global all-five qualification",
+    "old eight-episode driver activation",
+    "RL progress",
+    "new theorem",
+    "actual positive proof",
+    "mathematical or search superiority",
+    "speedup",
+    "resource qualification from source readiness"
+  ],
+  "original_executed_donors": "donor-two-guards and donor-two-equalities remain excluded; both resource UNKNOWNs preserved without rerun.",
+  "immutable_successor_rule": "Preserve these exact V1 bytes. Any source correction requires successor filenames or a new prefix and new metadata/handoff pins."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "ROOT-repeated-equality-pure-metadata-preflight-v1",
+  "entry_activation": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+    "sha256": "2960c2c8a9871f4523c14513c0ef690f0b1bde5f7bd5559ca961e964c726b304",
+    "bytes": 305864
+  },
+  "plan": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+    "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+    "bytes": 323642
+  },
+  "source_called": [
+    "entry.preflight",
+    "transport.require_contract"
+  ],
+  "checks_pass": true,
+  "scientific_calls": 0,
+  "actual_entry_invocations": 0,
+  "PS_calls": 0,
+  "RNG_draws": 0,
+  "training": 0,
+  "worker_or_owner_dispatches": 0,
+  "full_closure": 1085,
+  "all_source_and_actual_input_bindings": true,
+  "all_output_directories_absent": true,
+  "both_historical_UNKNOWN_preserved": true,
+  "all_five_qualification": false
+}

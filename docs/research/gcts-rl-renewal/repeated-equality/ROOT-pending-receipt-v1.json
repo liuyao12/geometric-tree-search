@@ -1,0 +1,174 @@
+{
+  "schema": "ROOT-compact-static-pending-terminal-tool-v2",
+  "status": "UNKNOWN",
+  "ROOT_pid": 491,
+  "selector": "donor-repeated-equality",
+  "freeze": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+    "sha256": "2960c2c8a9871f4523c14513c0ef690f0b1bde5f7bd5559ca961e964c726b304",
+    "bytes": 305864
+  },
+  "plan": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+    "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+    "bytes": 323642
+  },
+  "activation": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v2.json",
+    "sha256": "2eb5dad16cc369c803162a32079b100ca3550e4562c8a0f08991cf7475cb5c54",
+    "bytes": 456
+  },
+  "entry_source": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py",
+    "sha256": "6aa5d2fc1885ff101edbd7139f6599e9df4bc625259f27b450f866f565f1e997",
+    "bytes": 46554
+  },
+  "entry_source_manifest": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-root-entry-v3.json",
+    "sha256": "c720005898f473482e1d2e852b06f5c05570b38c4e5630dc5a059d38c8adaf1e",
+    "bytes": 3294
+  },
+  "owner_source": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+    "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+    "bytes": 27912
+  },
+  "owner_source_manifest": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-owner-v5.json",
+    "sha256": "1537702e25cccb9697d9404fc09c5a53dcf354de0415c54f77ea8f9b942c7422",
+    "bytes": 3071
+  },
+  "adapter_source": {
+    "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+    "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+    "bytes": 21195
+  },
+  "platform_evidence": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/platform-accounting-evidence-v1.json",
+    "sha256": "ea8a005b1543fa3426649bac5a495e32112b4a655ae77b0a0b15be0b6c14988e",
+    "bytes": 3396
+  },
+  "owner_pid": 492,
+  "owner_group": 492,
+  "owner_reaped": true,
+  "owner_exit": -9,
+  "owner_terminal_wait4_raw": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 35,
+    "ru_maxrss": 22478848,
+    "ru_minflt": 5035,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 297,
+    "ru_nsignals": 1,
+    "ru_nswap": 0,
+    "ru_nvcsw": 18,
+    "ru_oublock": 0,
+    "ru_stime": 0.125497,
+    "ru_utime": 0.325594
+  },
+  "owner_creation_clock": 0.489520625,
+  "owner_terminal_reap_clock": 0.945473833,
+  "owner_streams_closed_clock": 0.945495041,
+  "owner_creation_through_reap_and_stream_close_seconds": 0.45597441600000005,
+  "owner_closed_SELF": null,
+  "provisional": null,
+  "closed_accounting_replay": null,
+  "closed_artifacts": {},
+  "containment_record": {
+    "pin": {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-containment-v1.json",
+      "sha256": "733b004d8eb16ac737bc6b74c540d2c728f71ca5ec39520ff45824de01503242",
+      "bytes": 1469
+    },
+    "value": {
+      "schema": "compact-owner-V3-live-group-containment-v1",
+      "status": "UNKNOWN_REQUIRES_ROOT_LIVE_GROUP_TERMINATION",
+      "selector": "donor-repeated-equality",
+      "owner": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+        "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+        "bytes": 27912
+      },
+      "group": {
+        "owner_pid": 492,
+        "owner_pgid": 492,
+        "owner_sid": 492,
+        "ROOT_parent_pid": 491
+      },
+      "reason": "post-spawn failure or cancellation",
+      "detail": {
+        "failure": {
+          "type": "RuntimeError",
+          "message": "scientific worker nonzero terminal"
+        },
+        "cancellation_signum": 0,
+        "child_pid": 493,
+        "child_reaped": true,
+        "child_exit": 1,
+        "observer_count": 1,
+        "observer_detail": {
+          "pin": {
+            "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-observers-v1.jsonl",
+            "sha256": "55e606184ea564d33b363555a317fac577fe96488c2b39622b1316c1e6f287ba",
+            "bytes": 1510
+          },
+          "records": 1
+        },
+        "sample_detail": {
+          "pin": {
+            "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-samples-v1.jsonl",
+            "sha256": "22949b4fb42fb4c0dbbd76848fc539f537e80ac41e3f62996a2a8b4f7d064cb2",
+            "bytes": 514
+          },
+          "records": 1
+        }
+      },
+      "clock_before_containment_serialization": 0.434773833,
+      "direct_owner_leader_retained": true,
+      "grandchildren_reaped_claim": false,
+      "success_SELF_frame_emitted": false,
+      "full_resource_accepted": false,
+      "all_five_qualification": false,
+      "whole_seconds": 180,
+      "supervisor_seconds": 175,
+      "child_seconds": 170,
+      "peak_bytes": 536870912
+    }
+  },
+  "ROOT_SELF_before_final_receipt_write_raw": {
+    "ru_idrss": 0,
+    "ru_inblock": 0,
+    "ru_isrss": 0,
+    "ru_ixrss": 0,
+    "ru_majflt": 60,
+    "ru_maxrss": 18939904,
+    "ru_minflt": 2384,
+    "ru_msgrcv": 0,
+    "ru_msgsnd": 0,
+    "ru_nivcsw": 249,
+    "ru_nsignals": 0,
+    "ru_nswap": 0,
+    "ru_nvcsw": 1842,
+    "ru_oublock": 0,
+    "ru_stime": 0.082564,
+    "ru_utime": 0.16655699999999998
+  },
+  "ROOT_seconds_before_final_receipt_write": 0.937776833,
+  "cancellation_signum": 0,
+  "emergency_group_kill": true,
+  "group_kill_attempted_once": true,
+  "group_kill_error": null,
+  "cooperative_stop": true,
+  "containment_latched": true,
+  "failure": null,
+  "semantic_candidate": false,
+  "resource_accepted": false,
+  "all_five_qualification": false,
+  "known_topology_only": true,
+  "no_grandchild_reap_claim": true,
+  "remaining": "Closed receipt, raw ROOT SELF, fixed52byte ROOT frame file, hard exit; separate trusted external terminal/full tool clock/topology/reserve gate required."
+}

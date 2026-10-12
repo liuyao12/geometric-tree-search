@@ -1,0 +1,31 @@
+{
+  "schema": "ROOT-repeated-equality-static-metadata-correction-v2",
+  "reason": "Independent source review found missing exact status and prior-guard-UNKNOWN fields in V1 attestation before execution.",
+  "scientific_calls": 0,
+  "source_code_changed": false,
+  "originals_preserved": true,
+  "actual_static_invocations": 0,
+  "corrected_plan": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+    "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+    "bytes": 323642
+  },
+  "corrected_worker_activation": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v2.json",
+    "sha256": "2eb5dad16cc369c803162a32079b100ca3550e4562c8a0f08991cf7475cb5c54",
+    "bytes": 456
+  },
+  "corrected_entry_activation": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+    "sha256": "2960c2c8a9871f4523c14513c0ef690f0b1bde5f7bd5559ca961e964c726b304",
+    "bytes": 305864
+  },
+  "changed_semantics": "Only admission attestation fields and dependent immutable paths/pins; scientific problem, functions and budgets preserved.",
+  "closure_pins": 1085,
+  "helper_failure_preserved": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/metadata-helper-partial-write-failure-v1.json",
+    "sha256": "cacffdda7562e8d1e09bc7b150a4215e9abaf92deae338952194b56374c4564b",
+    "bytes": 1099
+  },
+  "created_utc": "2026-10-12T11:42:33.210946+00:00"
+}

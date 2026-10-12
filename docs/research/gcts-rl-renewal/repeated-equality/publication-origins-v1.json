@@ -1,0 +1,371 @@
+{
+  "schema": "notebook118-selected-exact-origin-copies-v1",
+  "origins": [
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/family-curriculum-context-source-v3-20261012/outputs/donor-repeated-equality/preparation-outcome-v1.json",
+        "sha256": "3a58c585cc9bacb1c0ea3b096c5fb941cc7345b1193f33bdecdbee49713acc99",
+        "bytes": 3710
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/preparation-outcome-v1.json",
+        "sha256": "3a58c585cc9bacb1c0ea3b096c5fb941cc7345b1193f33bdecdbee49713acc99",
+        "bytes": 3710
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/preparation-qualified-owned-scope-terminal-v1.json",
+        "sha256": "6ce5a706f525a0ad27d883148ae1e67e8a088f69471b5c77d6fb3be254a57b3e",
+        "bytes": 32810
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/preparation-scoped-terminal-v1.json",
+        "sha256": "6ce5a706f525a0ad27d883148ae1e67e8a088f69471b5c77d6fb3be254a57b3e",
+        "bytes": 32810
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/preparation-tool-terminal-v1.json",
+        "sha256": "6d2bd011eee2f2dda57d6dff0a0133050691b0bdb492fff6cb1c7c51dcca093f",
+        "bytes": 2012
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/preparation-tool-terminal-v1.json",
+        "sha256": "6d2bd011eee2f2dda57d6dff0a0133050691b0bdb492fff6cb1c7c51dcca093f",
+        "bytes": 2012
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/static-unknown-disposition-v1.json",
+        "sha256": "db9f17e8abd40175615fdaaf702df8130ded1c7f5473182c46fd39546a13f589",
+        "bytes": 3107
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/static-unknown-disposition-v1.json",
+        "sha256": "db9f17e8abd40175615fdaaf702df8130ded1c7f5473182c46fd39546a13f589",
+        "bytes": 3107
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-equality/static-tool-terminal-v1.json",
+        "sha256": "bbddf565ed0eabae17ec5447b810beba14b0931739e0a8b9fd150fb6f82ef50a",
+        "bytes": 1056
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/static-tool-terminal-v1.json",
+        "sha256": "bbddf565ed0eabae17ec5447b810beba14b0931739e0a8b9fd150fb6f82ef50a",
+        "bytes": 1056
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-equality/static-prospective-tool-contract-v1.json",
+        "sha256": "1fbc690be44847ecdad704d91ee733ecaaabb3769695ca89d9f2fec732034b7d",
+        "bytes": 3654
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/static-prospective-tool-contract-v1.json",
+        "sha256": "1fbc690be44847ecdad704d91ee733ecaaabb3769695ca89d9f2fec732034b7d",
+        "bytes": 3654
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-stderr-v1.txt",
+        "sha256": "c265069192b3f91ef68ea3e39255254126273d219c9c79475ea5c07e396319e1",
+        "bytes": 1095
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/static-worker-stderr-v1.txt",
+        "sha256": "c265069192b3f91ef68ea3e39255254126273d219c9c79475ea5c07e396319e1",
+        "bytes": 1095
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/outputs/donor-repeated-equality/static-containment-v1.json",
+        "sha256": "733b004d8eb16ac737bc6b74c540d2c728f71ca5ec39520ff45824de01503242",
+        "bytes": 1469
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/static-containment-v1.json",
+        "sha256": "733b004d8eb16ac737bc6b74c540d2c728f71ca5ec39520ff45824de01503242",
+        "bytes": 1469
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-equality/ROOT-pending-receipt-v1.json",
+        "sha256": "234f323bd24207e3e6068f9807ee173cad0b3fde21776508f3595474ce57e180",
+        "bytes": 6344
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/ROOT-pending-receipt-v1.json",
+        "sha256": "234f323bd24207e3e6068f9807ee173cad0b3fde21776508f3595474ce57e180",
+        "bytes": 6344
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/outputs/donor-repeated-equality/ROOT-closed-SELF-v1.bin",
+        "sha256": "ed11385d3597ab99089651529061b85bdfc181ca661b9f717f5fe9677fa9139f",
+        "bytes": 52
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/ROOT-closed-SELF-v1.bin",
+        "sha256": "ed11385d3597ab99089651529061b85bdfc181ca661b9f717f5fe9677fa9139f",
+        "bytes": 52
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/metadata-correction-v2.json",
+        "sha256": "3f51e43093af5e245f5d45a5b24f0acc7c55e0f07a8a440fa34c8c318005f00d",
+        "bytes": 1572
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/metadata-correction-v2.json",
+        "sha256": "3f51e43093af5e245f5d45a5b24f0acc7c55e0f07a8a440fa34c8c318005f00d",
+        "bytes": 1572
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/metadata-helper-partial-write-failure-v1.json",
+        "sha256": "cacffdda7562e8d1e09bc7b150a4215e9abaf92deae338952194b56374c4564b",
+        "bytes": 1099
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/metadata-helper-partial-write-failure-v1.json",
+        "sha256": "cacffdda7562e8d1e09bc7b150a4215e9abaf92deae338952194b56374c4564b",
+        "bytes": 1099
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/metadata-preflight-v2.json",
+        "sha256": "ec93dfa05679c99cfe437785bcbae9954737bb22a4118a44a40654fe882c91ff",
+        "bytes": 996
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/metadata-preflight-v2.json",
+        "sha256": "ec93dfa05679c99cfe437785bcbae9954737bb22a4118a44a40654fe882c91ff",
+        "bytes": 996
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/future-absolute-path-contract-metadata-control-v1.json",
+        "sha256": "2b820ea7cea5d04421bd9e1c1daccaa2480e942bd772b28ec29b82077bc11e3f",
+        "bytes": 35152
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/future-absolute-path-contract-metadata-control-v1.json",
+        "sha256": "2b820ea7cea5d04421bd9e1c1daccaa2480e942bd772b28ec29b82077bc11e3f",
+        "bytes": 35152
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-independent-review-20261012/source-review-v1.json",
+        "sha256": "2429d38825a5fa60fc7214e0a0769c3880ef136f47d96ade1de3e7ce5760e870",
+        "bytes": 20465
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/clock-source-review-v1.json",
+        "sha256": "2429d38825a5fa60fc7214e0a0769c3880ef136f47d96ade1de3e7ce5760e870",
+        "bytes": 20465
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json",
+        "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b",
+        "bytes": 6153
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/clock-contract-v1.json",
+        "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b",
+        "bytes": 6153
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+        "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+        "bytes": 27912
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/curriculum_compact_owner_v5.py",
+        "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+        "bytes": 27912
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py",
+        "sha256": "6aa5d2fc1885ff101edbd7139f6599e9df4bc625259f27b450f866f565f1e997",
+        "bytes": 46554
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/root_compact_entry_v3.py",
+        "sha256": "6aa5d2fc1885ff101edbd7139f6599e9df4bc625259f27b450f866f565f1e997",
+        "bytes": 46554
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+        "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30",
+        "bytes": 39085
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/external_terminal_finalize_v2.py",
+        "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30",
+        "bytes": 39085
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/process-local-clock-successor-source-20261012/handoff-v1.json",
+        "sha256": "a9a4685cc2f65d8867cb1c47d5666f4c2d23e87e421340553b4f25f9129c1736",
+        "bytes": 4483
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/clock-handoff-v1.json",
+        "sha256": "a9a4685cc2f65d8867cb1c47d5666f4c2d23e87e421340553b4f25f9129c1736",
+        "bytes": 4483
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/one-context-proof-control-source-20261012/handoff-v1.json",
+        "sha256": "6f124ac7be61151829481a87cbaa9138f60665a76579a92209666ee350e1b788",
+        "bytes": 9609
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/proof-control-handoff-v1.json",
+        "sha256": "6f124ac7be61151829481a87cbaa9138f60665a76579a92209666ee350e1b788",
+        "bytes": 9609
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_bindings_v1.py",
+        "sha256": "704d7e088b613fcd5aeb6ff0cfc1f51e9fce23595b3e5ea258cd2f9cd4ca42cb",
+        "bytes": 15648
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/proof_control_bindings_v1.py",
+        "sha256": "704d7e088b613fcd5aeb6ff0cfc1f51e9fce23595b3e5ea258cd2f9cd4ca42cb",
+        "bytes": 15648
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_producer_v1.py",
+        "sha256": "404c171931f0d071504a99eb86884f4de202ea749d538a1187881ee11d251b3e",
+        "bytes": 6669
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/proof_control_producer_v1.py",
+        "sha256": "404c171931f0d071504a99eb86884f4de202ea749d538a1187881ee11d251b3e",
+        "bytes": 6669
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/one-context-proof-control-source-20261012/proof_control_independent_v1.py",
+        "sha256": "7a3044764dcf0e81af18d14b90e9a5d3874023a018a836c359cac23613c52d4f",
+        "bytes": 9588
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/proof_control_independent_v1.py",
+        "sha256": "7a3044764dcf0e81af18d14b90e9a5d3874023a018a836c359cac23613c52d4f",
+        "bytes": 9588
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/one-context-proof-control-source-20261012/source-protocol-v1.json",
+        "sha256": "3662d66a49e65c89632bf0edc06d0696bf214661c26b9ce54c84d9f7c37906c0",
+        "bytes": 20655
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/proof-control-protocol-v1.json",
+        "sha256": "3662d66a49e65c89632bf0edc06d0696bf214661c26b9ce54c84d9f7c37906c0",
+        "bytes": 20655
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-progress-20261012/ROOT-static-terminal-gate-source-review-v1.json",
+        "sha256": "b5eaee0a92410683ea0e63dd6304fd5c432e88eefc627e5dc92870321e1b77f9",
+        "bytes": 3446
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/ROOT-static-source-review-v1.json",
+        "sha256": "b5eaee0a92410683ea0e63dd6304fd5c432e88eefc627e5dc92870321e1b77f9",
+        "bytes": 3446
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-static-plan-independent-review-20261012/actual-preparation-and-static-plan-v2-review-v1.json",
+        "sha256": "4a8f23edee03f888f7a839278983b2ce8b2b765a7cc9b37e5ba7c4866669200a",
+        "bytes": 20622
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/actual-plan-review-v2.json",
+        "sha256": "4a8f23edee03f888f7a839278983b2ce8b2b765a7cc9b37e5ba7c4866669200a",
+        "bytes": 20622
+      }
+    },
+    {
+      "kind": "exact_copy",
+      "origin": {
+        "path": ".gcts-active/repeated-equality-static-plan-independent-review-20261012/actual-static-failure-metadata-review-v1.json",
+        "sha256": "0efc613202856018516b9055e5f6483ed708a9d050167b56ac51c9ea9cbd0be4",
+        "bytes": 10736
+      },
+      "published": {
+        "path": "docs/research/gcts-rl-renewal/repeated-equality/actual-failure-review-v1.json",
+        "sha256": "0efc613202856018516b9055e5f6483ed708a9d050167b56ac51c9ea9cbd0be4",
+        "bytes": 10736
+      }
+    }
+  ],
+  "omitted_raw_host_PS_tables": true,
+  "full_executable_closure_published": false
+}

@@ -1,0 +1,106 @@
+{
+  "ROOT_binding_required": true,
+  "all_five_qualification": false,
+  "author": "/root/rl_engine_fixture",
+  "clock_contract_pin": {
+    "bytes": 6153,
+    "path": ".gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json",
+    "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b"
+  },
+  "diffs": [
+    {
+      "bytes": 6988,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/owner-v4-to-v5.diff",
+      "sha256": "36e0701642d2a33aea61b6bd64245b14c95de1680cbf0a2d99a2b254d81f1c68"
+    },
+    {
+      "bytes": 15504,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/root-entry-v2-to-v3.diff",
+      "sha256": "22f637dd462e4abadec540fba906bd6f584e5c53053bfb3148fdfaf1603f1a2c"
+    },
+    {
+      "bytes": 17579,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/external-finalizer-v1-to-v2.diff",
+      "sha256": "98653faad58b1ad9834ecbbce9869297acee485914354e08417b0e10a7f2dff6"
+    }
+  ],
+  "exact_limits": {
+    "child_seconds": 170,
+    "peak_bytes": 536870912,
+    "supervisor_seconds": 175,
+    "whole_seconds": 180
+  },
+  "independent_review_pending": true,
+  "no_actual_plan_or_activation": true,
+  "no_execution_authorized": true,
+  "no_historical_retry_or_reclassification": true,
+  "postlude_reserve_bytes": 33554432,
+  "protocol": {
+    "bytes": 13344,
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/protocol-v1.json",
+    "sha256": "3b7606a8ce4635ac8d0b9fdf0c97863dc62311294c4dfe252be08f136f9dbbc0"
+  },
+  "readiness": {
+    "bytes": 1361,
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/readiness-v1.json",
+    "sha256": "5279f2dbbbb4497f61cf8ed2224b04f267f366b451635bbf36869213e81b2ec4"
+  },
+  "schema": "source-only-process-local-clock-successor-handoff-v1",
+  "source_byte_evidence": {
+    "bytes": 20423,
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/source-byte-evidence-v1.json",
+    "sha256": "cb5480ee45b28e0aa70a8f23b6c37d04accedf5dc7339d7a7cabdb41103dd59f"
+  },
+  "source_manifests": {
+    "source-plan-external-finalizer-v2.json": {
+      "bytes": 3581,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-external-finalizer-v2.json",
+      "sha256": "9c0d9646ef050b3482e6537e5e5da79a760223b5c74a17f92334326233086073"
+    },
+    "source-plan-owner-v5.json": {
+      "bytes": 3071,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-owner-v5.json",
+      "sha256": "1537702e25cccb9697d9404fc09c5a53dcf354de0415c54f77ea8f9b942c7422"
+    },
+    "source-plan-root-entry-v3.json": {
+      "bytes": 3294,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-root-entry-v3.json",
+      "sha256": "c720005898f473482e1d2e852b06f5c05570b38c4e5630dc5a059d38c8adaf1e"
+    }
+  },
+  "sources": {
+    "curriculum_compact_owner_v5.py": {
+      "bytes": 27912,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+      "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e"
+    },
+    "external_terminal_finalize_v2.py": {
+      "bytes": 39085,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+      "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30"
+    },
+    "root_compact_entry_v3.py": {
+      "bytes": 46554,
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py",
+      "sha256": "6aa5d2fc1885ff101edbd7139f6599e9df4bc625259f27b450f866f565f1e997"
+    }
+  },
+  "status": "SOURCE_ONLY_FROZEN_FOR_REVIEW_NOT_ACTIVATION",
+  "unchanged_sources": {
+    "adapter": {
+      "bytes": 21195,
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d"
+    },
+    "transport": {
+      "bytes": 13756,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+    },
+    "worker": {
+      "bytes": 13759,
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3"
+    }
+  }
+}

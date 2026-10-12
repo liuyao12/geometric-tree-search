@@ -1,0 +1,73 @@
+{
+  "schema": "ROOT-compact-static-external-tool-contract-v1",
+  "selector": "donor-repeated-equality",
+  "ROOT_sole_actual_owner": true,
+  "attempts": 1,
+  "cwd": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search",
+  "limits": {
+    "whole_seconds": 180,
+    "supervisor_seconds": 175,
+    "child_seconds": 170,
+    "peak_bytes": 536870912
+  },
+  "postlude_reserve_bytes": 33554432,
+  "external_wait4_claim": false,
+  "all_five_qualification": false,
+  "scientific_settings_changed": false,
+  "clock": {
+    "kind": "ROOT-Date.now-enclosing-tool-boundary-v1",
+    "margin_seconds": 1
+  },
+  "expected_tool_terminal_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-equality/static-tool-terminal-v1.json",
+  "result_output": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/terminal-gates/donor-repeated-equality/static-resource-disposition-v1.json",
+  "literal_command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B .gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py entry .gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+  "entry_activation_pin": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3-v2.json",
+    "sha256": "2960c2c8a9871f4523c14513c0ef690f0b1bde5f7bd5559ca961e964c726b304",
+    "bytes": 305864
+  },
+  "finalizer_pin": {
+    "path": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+    "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30",
+    "bytes": 39085
+  },
+  "runtime": {
+    "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "platform": "darwin",
+    "binary": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    "resource_extension": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    "posixsubprocess_extension": {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    "observer": {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  },
+  "source_review_pin": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/ROOT-static-terminal-gate-source-review-v1.json",
+    "sha256": "b5eaee0a92410683ea0e63dd6304fd5c432e88eefc627e5dc92870321e1b77f9",
+    "bytes": 3446
+  },
+  "platform_evidence_pin": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/platform-accounting-evidence-v1.json",
+    "sha256": "ea8a005b1543fa3426649bac5a495e32112b4a655ae77b0a0b15be0b6c14988e",
+    "bytes": 3396
+  },
+  "process_local_clock_contract_pin": {
+    "path": ".gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json",
+    "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b",
+    "bytes": 6153
+  }
+}

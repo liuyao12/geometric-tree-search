@@ -1,0 +1,77 @@
+{
+  "schema": "ROOT-compact-static-source-review-for-terminal-gate-v1",
+  "full_sources_reviewed": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "source_records": [
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py",
+      "sha256": "6aa5d2fc1885ff101edbd7139f6599e9df4bc625259f27b450f866f565f1e997",
+      "bytes": 46554
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-root-entry-v3.json",
+      "sha256": "c720005898f473482e1d2e852b06f5c05570b38c4e5630dc5a059d38c8adaf1e",
+      "bytes": 3294
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+      "sha256": "64a66b3f5feba295e1e4d1964873153d4f9400b4193058f8db4adc026b2ada7e",
+      "bytes": 27912
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-owner-v5.json",
+      "sha256": "1537702e25cccb9697d9404fc09c5a53dcf354de0415c54f77ea8f9b942c7422",
+      "bytes": 3071
+    },
+    {
+      "path": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+      "sha256": "995acd41e23a0d16cf7258f702ef2a00f7ebb9ab43295d5a8736a90448210f30",
+      "bytes": 39085
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "sha256": "e9620ffec78f2b014107b2907456aab2dc933084ecee0f5f96e62df11d6a631d",
+      "bytes": 21195
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+      "bytes": 13759
+    },
+    {
+      "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3",
+      "bytes": 13756
+    },
+    {
+      "path": ".gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json",
+      "sha256": "61238d81491eea7c9cdd8501dff9a0a78d9666302a545b38f8dd2eadf2ad323b",
+      "bytes": 6153
+    }
+  ],
+  "independent_review": {
+    "path": ".gcts-active/process-local-clock-successor-independent-review-20261012/source-review-v1.json",
+    "sha256": "2429d38825a5fa60fc7214e0a0769c3880ef136f47d96ade1de3e7ce5760e870",
+    "bytes": 20465
+  },
+  "actual_plan_review": {
+    "path": ".gcts-active/repeated-equality-static-plan-independent-review-20261012/actual-preparation-and-static-plan-v2-review-v1.json",
+    "sha256": "4a8f23edee03f888f7a839278983b2ce8b2b765a7cc9b37e5ba7c4866669200a",
+    "bytes": 20622
+  },
+  "metadata_preflight": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/metadata-preflight-v2.json",
+    "sha256": "ec93dfa05679c99cfe437785bcbae9954737bb22a4118a44a40654fe882c91ff",
+    "bytes": 996
+  },
+  "master_algorithm": {
+    "path": "docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "scope": "ROOT complete source reads plus independent complete source/metadata reviews; conditional pinned topology, process-local clock ordering and elapsed nesting only; actual run not yet performed.",
+  "both_historical_UNKNOWN_preserved": true,
+  "all_five_qualification": false,
+  "created_utc": "2026-10-12T11:54:48.963697+00:00"
+}

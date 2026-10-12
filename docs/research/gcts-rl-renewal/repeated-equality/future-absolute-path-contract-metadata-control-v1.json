@@ -1,0 +1,572 @@
+{
+  "schema": "ROOT-worker-absolute-path-metadata-fixture-v1",
+  "fixture_kind": "In-memory prospective metadata spelling correction only; not an actual plan, activation, repeated scientific attempt or resource qualification.",
+  "source": {
+    "path": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+    "sha256": "77a15d292833f82ee759b522ed8a615da4bad7d43f48e8ccc218844cac9c1dd3",
+    "bytes": 13759
+  },
+  "original_failed_plan": {
+    "path": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v2.json",
+    "sha256": "bf367b199f31dfafdf1ec8d8ed6ae3e787671cdba8ee7c6607d9e044ca3187ca",
+    "bytes": 323642
+  },
+  "transformation": "Normalize only the108 relative preserved record path spellings to absolute resolved paths. All hash/size fields, semantic inputs, libraries, other plan fields and budgets remain identical.",
+  "changed_records": [
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-plan-v2-metadata-review-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-independent-review-20261012/equality-static-plan-v2-metadata-review-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-independent-review-20261012/root-entry-v2-complete-source-review-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-independent-review-20261012/root-entry-v2-complete-source-review-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v3.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/curriculum_compact_owner_v4.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/freeze_compact_owner_v4.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/freeze_compact_owner_v4.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/freeze_compact_root_binding_source_v3.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/freeze_compact_root_binding_source_v3.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/freeze_root_compact_entry_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/freeze_root_compact_entry_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/group-lifecycle-source-evidence-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/group-lifecycle-source-evidence-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/owner-v3-to-v4.diff",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/owner-v3-to-v4.diff"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/owner-v4-byte-evidence.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/owner-v4-byte-evidence.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/protocol-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/protocol-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/readiness-owner-v4.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/readiness-owner-v4.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v3.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v3.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_accounting_adapter_v4.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/root_compact_entry_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-owner-v4.zip",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/source-owner-v4.zip"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-owner-v4.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-root-entry-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-root-entry-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/source-plan-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-review-blocker-owner-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/source-review-blocker-owner-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/source-v3.zip",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/source-v3.zip"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-root-binding-source-20261012/unchanged-science-evidence-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-root-binding-source-20261012/unchanged-science-evidence-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/cancellation-source-evidence-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/cancellation-source-evidence-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_owner_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/curriculum_compact_worker_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1b.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v1b.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/freeze_compact_wrapper_source_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/integration-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/integration-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/integration-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/integration-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/metadata-freeze-failure-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/metadata-freeze-failure-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-original-v3-to-v2.diff",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/owner-original-v3-to-v2.diff"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-v1-to-v2.diff",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/owner-v1-to-v2.diff"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/owner-v3-to-compact-v1.diff",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/owner-v3-to-compact-v1.diff"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/protocol-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/readiness-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/scientific-function-byte-evidence-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/scientific-function-byte-evidence-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/source-plan-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-review-blocker-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/source-review-blocker-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-v1.zip",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/source-v1.zip"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/source-v2.zip",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/source-v2.zip"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/unchanged-science-evidence-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/unchanged-science-evidence-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-leaf-source-evidence-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/worker-leaf-source-evidence-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-compact-wrapper-source-20261012/worker-v3-to-compact-v1.diff",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/worker-v3-to-compact-v1.diff"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-future-resource-design-source-20261012/design-v1.html",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-future-resource-design-source-20261012/design-v1.html"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-future-resource-design-source-20261012/design-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-future-resource-design-source-20261012/design-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-future-resource-design-source-20261012/handoff-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-future-resource-design-source-20261012/handoff-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-future-resource-design-source-20261012/input-pins-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-future-resource-design-source-20261012/input-pins-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/ROOT-source-review-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/launch_owned_context_gate_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/run_owned_context_gate_v3.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-ROOT-launch-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-external-launcher-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-post-write-observation-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-gates-progress-20261012/static-donor-two-guards-provisional-ROOT-terminal-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-static-resource-independent-metadata-review-20261012/review-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-clock-interface-source-review-20261012/future-clock-contract-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/actual-compact-static-donor-two-equalities-plan-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-context-progress-20261012/platform-accounting-evidence-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/platform-accounting-evidence-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-context-progress-20261012/root-compact-static-donor-two-equalities-activation-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/root-compact-static-donor-two-equalities-activation-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-context-progress-20261012/runtime-binding-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/runtime-binding-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/static-tool-terminal-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/equality-context-progress-20261012/static-unknown-disposition-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-context-progress-20261012/static-unknown-disposition-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/actual-static-donor-two-guards-plan-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_context_oracle_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/curriculum_independent_owner_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/independent_curriculum_selection_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-lifetime-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/outputs/donor-two-guards/static-result-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/protocol-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/root-static-donor-two-guards-activation-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-curriculum-independent-source-v3-20261012/source-plan-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-pool-independent-audit-20261012/family_pool_independent_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_audit_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-aggregate-independent-audit-20261011/independent_aggregate_full_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_family_registry_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-cluster-full-independent-20261011/full_point_oracle_v1.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-independent-review-20261012/source-review-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-independent-review-20261012/source-review-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/curriculum_compact_owner_v5.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/external_terminal_finalize_v2.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/handoff-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/handoff-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/protocol-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/protocol-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/root_compact_entry_v3.py"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/source-byte-evidence-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/source-byte-evidence-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-external-finalizer-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/source-plan-external-finalizer-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-owner-v5.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/source-plan-owner-v5.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/process-local-clock-successor-source-20261012/source-plan-root-entry-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/process-local-clock-successor-source-20261012/source-plan-root-entry-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-preparation-independent-review-20261012/source-review-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-preparation-independent-review-20261012/source-review-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/actual-compact-static-donor-repeated-equality-plan-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/binding-evidence-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/binding-evidence-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/platform-accounting-evidence-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/platform-accounting-evidence-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/preparation-prospective-tool-plan-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/preparation-prospective-tool-plan-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/preparation-tool-terminal-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/preparation-tool-terminal-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/root-compact-static-donor-repeated-equality-activation-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/root-compact-static-entry-activation-v3.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/runtime-binding-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/runtime-binding-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v1.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v1.json"
+    },
+    {
+      "group": "preserved",
+      "before": ".gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v2.json",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/repeated-equality-progress-20261012/still-unexecuted-static-attestation-v2.json"
+    },
+    {
+      "group": "preserved",
+      "before": "AGENTS.md",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/AGENTS.md"
+    },
+    {
+      "group": "preserved",
+      "before": "docs/basic-tiling-algorithm.md",
+      "after": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md"
+    }
+  ],
+  "worker_verify_pass": true,
+  "verified_distinct_resolved_inputs": 1060,
+  "metadata_verify_seconds": 0.5703805420000001,
+  "scientific_library_loads": 0,
+  "model_constructions": 0,
+  "target_searches": 0,
+  "Controller_calls": 0,
+  "Executor_calls": 0,
+  "RNG_draws": 0,
+  "training": 0,
+  "PS_calls": 0,
+  "actual_scientific_dispatches": 0,
+  "old_attempt_reclassified": false,
+  "all_five_qualification": false,
+  "created_utc": "2026-10-12T12:06:43.701749+00:00"
+}
