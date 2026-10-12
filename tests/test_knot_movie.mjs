@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { parse, canonical, topology, moves, catalog, learnSeamMarkings, pointSearch, solve, verifyMovie, colorDimension, examples, ClusterPolicy } from '../apps/knot-movie/engine.mjs';
+import { parse, canonical, topology, moves, catalog, learnSeamMarkings, pointSearch, solveSpecialized as solve, verifyMovie, colorDimension, examples, ClusterPolicy } from '../apps/knot-movie/engine.mjs';
 import { latticeLoop, gridLoop, regularProjection, project } from '../apps/knot-movie/projection.mjs';
 assert.throws(() => parse('O1+ U1-'));
 assert.throws(() => parse('O1+ O2- U1+ U2-'), /not a planar/);

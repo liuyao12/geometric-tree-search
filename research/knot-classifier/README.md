@@ -1,5 +1,7 @@
 # Knots as Reidemeister tiles: GCTS + RL research plan
 
+> Current viewer: the search now uses **brute force + online GCTS**, with no knot-specific search hints. See the [online search contract](online-search.html). The implementation below documents the earlier specialized control, retained as `solveSpecialized`; its offline seam learner, coloring shortcut, and RL policy are not used by the current viewer.
+
 The search object is a movie assembled from **Reidemeister-move tiles**. Input
 knots are piecewise-linear embedded circles with edges parallel to coordinate
 axes. Their diagrams come from projecting the lattice embedding; the extra

@@ -1,4 +1,4 @@
-import { parse, canonical, count, solve, examples } from './engine.mjs';
+import { parse, canonical, count, solve, examples } from './engine.mjs?v=online-v1';
 import { latticeLoop, gridLoop, regularProjection } from './projection.mjs';
 import { trefoilIdentification } from './cases.mjs';
 import { planarDrawing, verifyDrawing, movieDrawings, drawKnot } from './drawing.mjs?v=readable-v1';
@@ -31,13 +31,13 @@ function preset(){clearMovie();projection=null;const name=$('example').value;
 }
 function describe(r){const {certificate,selected,...summary}=r;return JSON.stringify({...summary,certificateTiles:certificate?.steps.length},null,2);}
 async function run(compare=false){clearMovie();$('run').disabled=true;$('compare').disabled=true;$('status').textContent='Finding moves…';await new Promise(resolve=>setTimeout(resolve,40));
-  try{const source=parse($('source').value),target=parse($('target').value),options={depth:Number($('depth').value),crossingCap:Number($('cap').value),stateCap:1500,nodeCap:10000,episodes:12,seed:31};
-    const lanes=compare?['baseline','gcts','gcts+rl']:[$('lane').value],results=lanes.map(lane=>({lane,...solve(source,target,{...options,lane})}));result=results.find(x=>x.lane===$('lane').value)||results[0];
+  try{const source=parse($('source').value),target=parse($('target').value),options={depth:Number($('depth').value),crossingCap:Number($('cap').value),stateCap:1500,nodeCap:10000};
+    const lanes=compare?['baseline','gcts']:[$('lane').value],results=lanes.map(lane=>({lane,...solve(source,target,{...options,lane})}));result=results.find(x=>x.lane===$('lane').value)||results[0];
     $('summary').textContent=results.map(r=>`${r.lane}\n${describe(r)}`).join('\n\n');showPair(source,target);
     if(result.certificate){frames=annularMovie(result.certificate)||movieDrawings(result.certificate);$('download').disabled=false;
       if(frames.length){$('status').textContent=`Same knot · ${frames.length} verified ${frames.length===1?'move':'moves'}`;$('frame').max=frames.length-1;$('play').disabled=frames.length<2;frames.forEach((f,j)=>{const button=document.createElement('button');button.className='tile';button.textContent=`${j+1}. ${descriptions[f.kind].title}`;button.addEventListener('click',()=>{stop();showMove(j);});$('tiles').append(button);});showMove(0);}
       else{$('status').textContent='Same diagram · no moves needed';$('move-heading').textContent='These diagrams already agree';}
-    }else if(result.status==='inequivalent'){$('status').textContent='Different knots · coloring proof';$('move-heading').textContent='These knots cannot be transformed into each other';}
+    }
     else{$('status').textContent='No sequence found within these limits';$('move-heading').textContent='Try a longer sequence or a larger crossing limit';}
   }catch(e){$('status').textContent='Check the input';$('move-heading').textContent='Cannot draw or search this input';$('move-description').textContent=e.message;$('summary').textContent=e.message;}
   finally{$('run').disabled=false;$('compare').disabled=false;}

@@ -1,0 +1,116 @@
+{
+  "version": "online-point-guards-v1",
+  "date": "2026-10-12",
+  "scope": "Exact finite whole-diagram seam reduction; not transferable local tile synthesis.",
+  "conformance": {
+    "arithmetic": "Integer capacities and exact opaque marking equality",
+    "target": "All time-slot obligations activated as generation-zero roots",
+    "incidence": "Complete forward/reverse incidence rebuilt from all tiles",
+    "scheduler": "Global dead ends, global forced moves, then minimum degree within generation zero",
+    "rollback": "Immutable prefix and branch-local exclusions",
+    "updates": "Monotone proved redundant guards; full prefix and graph replay at each activation",
+    "learning": "Fresh unmarked fixed-candidate exhaustive probe after observed child failure; unknown adds no assignment",
+    "ordering": "Seeded permutation of numeric identifiers; no semantic features",
+    "cost": "Learning nodes and individual proof times reported; no acceleration claim"
+  },
+  "tests": {
+    "onlineGuards": 2,
+    "liveLearnedEliminations": 3,
+    "contextOnlyFailures": 1,
+    "unresolvedProbeLabels": 2,
+    "legacyMovesChecked": 688,
+    "planarDrawingsChecked": 223
+  },
+  "gaps": [
+    "Whole-diagram inventory instead of local hexagonal tiles",
+    "Full graph reconstruction instead of incremental dependencies",
+    "Generation-zero roots only",
+    "Finite inventory eagerly enumerated",
+    "Candidate-specific guards instead of prototype pair-marking synthesis",
+    "Independent geometry completeness remains bounded test evidence",
+    "No unrestricted inequivalence classifier"
+  ],
+  "rows": [
+    {
+      "case": "trefoil-identification",
+      "lane": "baseline",
+      "status": "equivalent",
+      "steps": [
+        "III",
+        "II−",
+        "I−"
+      ],
+      "stats": {
+        "nodes": 3,
+        "attempts": 2,
+        "forced": 1,
+        "branches": 2,
+        "backtracks": 0,
+        "markingEliminations": 620,
+        "learnedMarkingEliminations": 0,
+        "graphBuilds": 4,
+        "peakIncidences": 49,
+        "learningAttempts": 0,
+        "learningNodes": 0,
+        "unresolvedLabels": 0,
+        "contextDependentFailures": 0,
+        "markingVersion": 0
+      },
+      "catalogMs": 118.40770899999998,
+      "searchMs": 3.3757499999999823,
+      "totalMs": 135.26091699999998,
+      "learningStartsEmpty": true
+    },
+    {
+      "case": "trefoil-identification",
+      "lane": "gcts",
+      "status": "equivalent",
+      "steps": [
+        "III",
+        "II−",
+        "I−"
+      ],
+      "stats": {
+        "nodes": 3,
+        "attempts": 2,
+        "forced": 1,
+        "branches": 2,
+        "backtracks": 0,
+        "markingEliminations": 620,
+        "learnedMarkingEliminations": 0,
+        "graphBuilds": 4,
+        "peakIncidences": 49,
+        "learningAttempts": 0,
+        "learningNodes": 0,
+        "unresolvedLabels": 0,
+        "contextDependentFailures": 0,
+        "markingVersion": 0
+      },
+      "catalogMs": 77.01212499999997,
+      "searchMs": 2.0930000000000177,
+      "totalMs": 92.56395800000001,
+      "learningStartsEmpty": true
+    },
+    {
+      "case": "trefoil-versus-unknot",
+      "status": "exhausted-finite-search",
+      "knotEquivalence": "unknown",
+      "stats": {
+        "nodes": 1,
+        "attempts": 0,
+        "forced": 0,
+        "branches": 0,
+        "backtracks": 0,
+        "markingEliminations": 1,
+        "learnedMarkingEliminations": 0,
+        "graphBuilds": 1,
+        "peakIncidences": 1,
+        "learningAttempts": 0,
+        "learningNodes": 0,
+        "unresolvedLabels": 0,
+        "contextDependentFailures": 0,
+        "markingVersion": 0
+      }
+    }
+  ]
+}

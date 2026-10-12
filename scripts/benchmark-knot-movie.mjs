@@ -1,5 +1,5 @@
 import { writeFileSync } from 'node:fs';
-import { parse, solve, examples, canonical } from '../apps/knot-movie/engine.mjs';
+import { parse, solveSpecialized as solve, examples, canonical } from '../apps/knot-movie/engine.mjs';
 const rows = [], certificates = [];
 for (const [name, text] of Object.entries({ curl: examples.curl, bigon: examples.bigon, doubleCurl: 'O1+ U1+ O2- U2-', trefoil: examples.trefoil }))
   for (const lane of ['baseline', 'gcts', 'gcts+rl']) {

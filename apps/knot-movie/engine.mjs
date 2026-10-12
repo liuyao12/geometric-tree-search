@@ -1,3 +1,5 @@
+import { pointSearch, onlinePointSearch } from './point-search.mjs?v=online-v1';
+export { pointSearch } from './point-search.mjs?v=online-v1';
 // Reidemeister tiles, exact diagram seams, and a finite point-value pilot.
 export const VERSION = 'reidemeister-seams-v1';
 const clone = w => w.map(x => ({ ...x }));
@@ -183,54 +185,6 @@ export function learnSeamMarkings(cat) {
   }
   return { tiles, boundary, failures, viable, version: VERSION, scope: { depth: cat.depth, crossingCap: cat.crossingCap, target: cat.targetKey }, assignedValues: tiles.reduce((a, t) => a + t.m.size - 2, 0) + failures.length };
 }
-// Full re-enumeration after each placement is intentional in this small pilot.
-// Both incidence directions, mark-only dependencies, global scheduling and rollback are explicit.
-export function pointSearch(cat, { learned = null, nodeCap = 10000, order = null } = {}) {
-  const tiles = learned?.tiles || cat.tiles;
-  const fixed = learned?.boundary || new Map([[`seam:0`, cat.sourceKey], [`seam:${cat.depth}`, cat.targetKey]]);
-  const stats = { nodes: 0, attempts: 0, forced: 0, branches: 0, backtracks: 0, markingEliminations: 0, graphBuilds: 0, peakIncidences: 0 };
-  function graph(selected) {
-    stats.graphBuilds++;
-    const totals = Array(cat.depth).fill(0), marks = new Map(fixed), generations = Array(cat.depth).fill(0);
-    for (const id of selected) for (const [p, v] of tiles[id].m) { if (marks.has(p) && marks.get(p) !== v) throw Error('Selected marking mismatch.'); marks.set(p, v); }
-    for (const id of selected) for (const [p, v] of tiles[id].t) totals[p] += v;
-    const forward = new Map(), reverse = new Map();
-    for (let p = 0; p < cat.depth; p++) if (totals[p] < 1) forward.set(p, []);
-    for (const tile of tiles) {
-      if (selected.includes(tile.id) || [...tile.t].some(([p, v]) => totals[p] + v > 1)) continue;
-      if ([...tile.m].some(([p, v]) => marks.has(p) && marks.get(p) !== v)) { stats.markingEliminations++; continue; }
-      for (const [p, v] of tile.t) if (v > 0 && forward.has(p)) {
-        forward.get(p).push(tile.id); if (!reverse.has(tile.id)) reverse.set(tile.id, []); reverse.get(tile.id).push(p);
-      }
-    }
-    stats.peakIncidences = Math.max(stats.peakIncidences, [...forward.values()].reduce((a, x) => a + x.length, 0));
-    return { totals, marks, generations, forward, reverse, placements: tiles, selected: new Set(selected) };
-  }
-  function visit(prefix) {
-    if (stats.nodes >= nodeCap) return { status: 'unknown', reason: 'search-node-budget' };
-    stats.nodes++;
-    let selected = [...prefix];
-    while (true) {
-      const g = graph(selected);
-      if ([...g.forward.values()].some(x => !x.length)) return { status: 'exhausted-finite-search' };
-      if (!g.forward.size) return { status: 'equivalent', selected };
-      const singleton = [...g.forward].find(([, x]) => x.length === 1);
-      if (singleton) { selected.push(singleton[1][0]); stats.forced++; continue; }
-      const [p, options] = [...g.forward].sort((a, b) => g.generations[a[0]] - g.generations[b[0]] || a[1].length - b[1].length || a[0] - b[0])[0];
-      stats.branches++;
-      const ranked = order ? order(options.map(id => tiles[id]), p, g) : options.map(id => tiles[id]);
-      if (ranked.length !== options.length || new Set(ranked.map(x => x.id)).size !== options.length || ranked.some(x => !options.includes(x.id))) throw Error('Policy changed the complete candidate domain.');
-      for (const tile of ranked) {
-        stats.attempts++;
-        const result = visit([...selected, tile.id]);
-        if (result.status !== 'exhausted-finite-search') return result;
-        stats.backtracks++;
-      }
-      return { status: 'exhausted-finite-search' };
-    }
-  }
-  return { ...visit([]), stats };
-}
 export class ClusterPolicy {
   constructor(seed = 7) { this.q = new Map(); this.seed = seed >>> 0; this.training = { episodes: 0, validatedBaseMoves: 0, proposals: 0, proposalValidations: 0, proposalRejections: 0 }; }
   random() { this.seed = (1664525 * this.seed + 1013904223) >>> 0; return this.seed / 4294967296; }
@@ -292,7 +246,7 @@ export class ClusterPolicy {
     return [...tiles].sort((a, b) => scores.get(b.id) - scores.get(a.id) || a.id - b.id);
   }
 }
-export function solve(source, target = [], options = {}) {
+export function solveSpecialized(source, target = [], options = {}) {
   const started = performance.now();
   if (colorDimension(source) !== colorDimension(target)) return { status: 'inequivalent', reason: 'Fox-3-coloring-dimension', sourceDimension: colorDimension(source), targetDimension: colorDimension(target), totalMs: performance.now() - started };
   if (canonical(source) === canonical(target)) return { status: 'equivalent', certificate: { version: VERSION, source: canonical(source), target: canonical(target), crossingCap: options.crossingCap || count(source), steps: [] }, totalMs: performance.now() - started };
@@ -311,6 +265,31 @@ export function solve(source, target = [], options = {}) {
     verifyMovie(summary.certificate);
   } else if (result.status === 'exhausted-finite-search') summary.knotEquivalence = 'unknown';
   return { ...summary, totalMs: performance.now() - started };
+}
+// Current experiment: the search receives opaque point data only. Knot rules
+// author the inventory and replay the certificate, never supply search hints.
+export function solve(source, target = [], options = {}) {
+  const lane = options.lane || 'gcts';
+  if (!['baseline','gcts'].includes(lane)) throw Error('Use baseline or gcts; legacy knot-aware controls use solveSpecialized.');
+  const started = performance.now(), cat = catalog(source, target, options);
+  const catalogMs = performance.now() - started;
+  if (!cat.complete) return {status:'unknown',...cat,catalogMs,totalMs:performance.now()-started};
+  // Strip all move types, diagram words, patch data and time metadata.
+  const opaque = {depth:cat.depth,sourceKey:cat.sourceKey,targetKey:cat.targetKey,
+    tiles:cat.tiles.map(({id,t,m})=>({id,t,m}))};
+  const began = performance.now();
+  const result = onlinePointSearch(opaque,{...options,learn:lane==='gcts'});
+  const summary = {...result,searchModel:'opaque point values; exhaustive branching; online proved markings only',
+    knotHeuristics:false,states:cat.stateCount,tiles:cat.tiles.length,catalogMs,
+    searchMs:performance.now()-began,learnedFailures:result.learning.failures,
+    assignedMarkValues:result.learning.assignedValues};
+  if (result.status==='equivalent') {
+    summary.certificate={version:VERSION,source:cat.sourceKey,target:cat.targetKey,crossingCap:cat.crossingCap,
+      steps:result.selected.map(id=>cat.tiles[id]).sort((a,b)=>a.time-b.time)
+        .filter(x=>x.kind!=='hold').map(x=>({kind:x.kind,after:x.after,patch:x.patch}))};
+    verifyMovie(summary.certificate);
+  } else if (result.status==='exhausted-finite-search') summary.knotEquivalence='unknown';
+  return {...summary,totalMs:performance.now()-started};
 }
 export const examples = {
   curl: 'O1+ U1+',
