@@ -5,11 +5,11 @@ import {LocalExtensionMarkings} from './local-extension-markings.mjs';
 import {LocalPointMarkings} from './local-point-markings.mjs';
 import {lazyPointPath} from '../../apps/knot-movie/lazy-point-path.mjs';
 const pk=p=>p.join(',');
-export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DIRECTION,region=null,model=new LocalPointMarkings(),extensionModel=null,shouldStop=()=>false}={}){
+export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DIRECTION,region=null,model=new LocalPointMarkings(),extensionModel=null,shouldStop=()=>false,diagramMoveCache=new Map()}={}){
  if(extensionModel&&Object.getPrototypeOf(extensionModel)!==LocalExtensionMarkings.prototype)throw Error('Extension models must be native immutable proof catalogs.');
  if(extensionModel&&extensionModel.system!=='face-edge-cover-extension-v1')throw Error('Extension system does not match face grammar.');
  if(model.system!=='unit-cubic-face-internal-vertex-capacity-v1')throw Error('Marking system does not match face grammar.');
- const sourceKey=embeddingKey(source),targetKey=embeddingKey(target),entries=new Map(),diagramMoveCache=new Map();let nextId=0;
+ const sourceKey=embeddingKey(source),targetKey=embeddingKey(target),entries=new Map();let nextId=0;
  return{
   sourceKey,targetKey,entries,model,diagramMoveCache,reversible:true,version:()=>model.version,
   ...(extensionModel?{extensionDomain(accepted,{targetKey:goal,remaining}){

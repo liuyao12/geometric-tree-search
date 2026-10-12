@@ -3,6 +3,8 @@ import json
 import sys
 from functools import lru_cache
 
+popcount = getattr(int, "bit_count", lambda value: bin(value).count("1"))
+
 
 def replay_event(event):
     edges = [[tuple(p) for p in e] for e in json.loads(event['signature'])]
@@ -31,6 +33,7 @@ def replay_event(event):
     if supplied != masks:
         raise ValueError('Local alphabet is incomplete or contains invented faces')
     full = (1 << len(edges))-1
+    full_maximum = max((popcount(mask) for mask in masks), default=0)
     incident = [[m for m in masks if m & (1 << i)] for i in range(len(edges))]
 
     @lru_cache(None)
@@ -38,6 +41,11 @@ def replay_event(event):
         if not uncovered:
             return True
         if not remaining:
+            return False
+        # Independent union-capacity certificate over the verified complete
+        # alphabet. Wide wrong-reference windows need not branch exponentially.
+        maximum=full_maximum if uncovered==full else max((popcount(uncovered & mask) for mask in masks), default=0)
+        if not maximum or popcount(uncovered)>remaining*maximum:
             return False
         # Independent exhaustive recursion over the first uncovered bit.
         point = (uncovered & -uncovered).bit_length()-1

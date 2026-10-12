@@ -26,11 +26,13 @@ export function latticeCatalog(source,target,{depth=3,stateCap=20000,maxEdges=20
  }
  return{complete:true,sourceKey,targetKey,depth,states,tiles,stateCount,options:{depth,stateCap,maxEdges,region,direction}};
 }
-export function verifyLatticeCertificate(certificate){
+export function verifyLatticeCertificate(certificate,{shouldStop=()=>false}={}){
  if(certificate.version!==VERSION)throw Error('Unsupported lattice movie version.');
  let p=unitLoop(certificate.source);
  if(p.length>certificate.options.maxEdges||(certificate.options.depth!==undefined&&certificate.steps.length>certificate.options.depth))throw Error('Certificate exceeds bounds.');
- for(const step of certificate.steps){verifyStep(p,step,certificate.options);p=JSON.parse(embeddingKey(step.vertices));}
+ const options={...certificate.options,diagramMoveCache:new Map()};
+ for(const step of certificate.steps){if(shouldStop())return false;verifyStep(p,step,options);p=JSON.parse(embeddingKey(step.vertices));}
+ if(shouldStop())return false;
  if(embeddingKey(p)!==embeddingKey(certificate.target))throw Error('Wrong lattice endpoint.');return true;
 }
 export function solveLattice(source,target,{learn=true,nodeCap=10000,proofNodeCap=10000,learningAttemptCap=64,seed=31,...bounds}={}){

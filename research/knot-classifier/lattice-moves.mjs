@@ -79,7 +79,12 @@ export function latticeMoves(input,options={}){
  return [...unique.values()];
 }
 export function verifyStep(input,step,options={}){
- const found=latticeMoves(input,options).find(m=>m.key===embeddingKey(step.vertices)&&m.kind===step.kind&&JSON.stringify(m.face.map(pk).sort())===JSON.stringify(step.face.map(pk).sort()));
+ // A certificate supplies its face. Verify that exact placement from the
+ // complete raw face inventory, then resolve only its endpoint; do not build
+ // every unrelated legal move merely to check one witnessed tile.
+ const faceKey=JSON.stringify(step.face.map(pk).sort()),sweep=rawFaceSweeps(input,options).find(m=>JSON.stringify(m.face.map(pk).sort())===faceKey);
+ const resolved=sweep?resolveSweep(sweep,moveContext(input,options)):null;
+ const found=resolved&&resolved.key===embeddingKey(step.vertices)&&resolved.kind===step.kind?resolved:null;
  if(!found)throw Error('Invalid lattice Reidemeister face tile.');
  const pathKey=p=>p.slice(1).map((x,i)=>ek(p[i],x)).sort().join(';');
  if(step.beforeDiagram!==found.beforeDiagram||step.afterDiagram!==found.afterDiagram||pathKey(step.old)!==pathKey(found.old)||pathKey(step.replacement)!==pathKey(found.replacement)||JSON.stringify(step.direction)!==JSON.stringify(found.direction))throw Error('Inconsistent lattice tile certificate data.');

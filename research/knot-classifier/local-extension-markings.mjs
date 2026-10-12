@@ -58,12 +58,15 @@ export function coverProbe(width,masks,horizon,{nodeCap=10000,shouldStop=()=>fal
   if(!left)return null;
   const cache=uncovered.toString(16)+':'+left;if(memo.has(cache))return null;
   const candidates=masks.map((m,id)=>({id,cover:m&uncovered})).filter(c=>c.cover);
+  // Complete alphabet already enumerated. This generic capacity certificate
+  // can prove failure before constructing an incidence for branching. It
+  // makes no degree-zero/singleton claim from a partial candidate graph.
+  const maximum=Math.max(0,...candidates.map(c=>count(c.cover)));
+  if(!maximum||Math.ceil(count(uncovered)/maximum)>left){memo.add(cache);return null;}
   const forward=new Map(),reverse=new Map();
   for(let i=0;i<width;i++)if(uncovered&(1n<<BigInt(i)))forward.set(i,[]);
   for(const c of candidates){const support=[...forward.keys()].filter(i=>c.cover&(1n<<BigInt(i)));reverse.set(c.id,support);for(const i of support)forward.get(i).push(c.id);}
   if([...forward.values()].some(a=>!a.length)){memo.add(cache);return null;}
-  const maximum=Math.max(...candidates.map(c=>count(c.cover)));
-  if(Math.ceil(count(uncovered)/maximum)>left){memo.add(cache);return null;}
   // All obligations are generation zero: degree only breaks generation ties.
   const point=[...forward.keys()].sort((a,b)=>forward.get(a).length-forward.get(b).length||a-b)[0];
   for(const id of forward.get(point)){
@@ -79,8 +82,9 @@ const readonlyMap=map=>Object.freeze({get size(){return map.size;},get:key=>map.
 export class LocalExtensionMarkings{
  #rules=new Map();#events=[];#version=0;#assigned=0;
  get version(){return this.#version;}
- constructor({enabled=true,probeNodeCap=10000,maxComponentEdges=48}={}){
-  Object.defineProperties(this,{system:{value:'face-edge-cover-extension-v1',enumerable:true},enabled:{value:enabled,enumerable:true},probeNodeCap:{value:probeNodeCap,enumerable:true},maxComponentEdges:{value:maxComponentEdges,enumerable:true},rules:{value:readonlyMap(this.#rules),enumerable:true},events:{value:new Proxy(this.#events,{set(){throw Error('Immutable proof evidence');},deleteProperty(){throw Error('Immutable proof evidence');},defineProperty(){throw Error('Immutable proof evidence');},setPrototypeOf(){throw Error('Immutable proof evidence');},preventExtensions(){throw Error('Immutable proof evidence');}}),enumerable:true}});this.activationValidationNodes=0;this.activationValidationMs=0;this.cachedTransferChecks=0;this.fullAudits=0;this.nodes=0;this.probeMs=0;this.transferredApplications=0;this.cacheHits=0;this.transferValidationNodes=0;this.transferValidationMs=0;Object.seal(this);
+ constructor({enabled=true,probeNodeCap=10000,maxComponentEdges=48,maxProbeHorizon=Infinity}={}){
+  if(maxProbeHorizon!==Infinity&&(!Number.isInteger(maxProbeHorizon)||maxProbeHorizon<0))throw Error('Invalid maximum probe horizon.');
+  Object.defineProperties(this,{system:{value:'face-edge-cover-extension-v1',enumerable:true},enabled:{value:enabled,enumerable:true},probeNodeCap:{value:probeNodeCap,enumerable:true},maxComponentEdges:{value:maxComponentEdges,enumerable:true},maxProbeHorizon:{value:maxProbeHorizon,enumerable:true},rules:{value:readonlyMap(this.#rules),enumerable:true},events:{value:new Proxy(this.#events,{set(){throw Error('Immutable proof evidence');},deleteProperty(){throw Error('Immutable proof evidence');},defineProperty(){throw Error('Immutable proof evidence');},setPrototypeOf(){throw Error('Immutable proof evidence');},preventExtensions(){throw Error('Immutable proof evidence');}}),enumerable:true}});this.activationValidationNodes=0;this.activationValidationMs=0;this.cachedTransferChecks=0;this.fullAudits=0;this.nodes=0;this.probeMs=0;this.transferredApplications=0;this.cacheHits=0;this.transferValidationNodes=0;this.transferValidationMs=0;Object.seal(this);
  }
  learn(component,{shouldStop=()=>false}={}){
   const old=this.rules.get(component.signature);
@@ -89,7 +93,7 @@ export class LocalExtensionMarkings{
   if(JSON.stringify(component.masks.map(m=>m.toString(16)).sort())!==JSON.stringify(projectedAlphabet(component.edges).map(m=>m.toString(16)).sort()))throw Error('Incomplete extension alphabet.');
   const start=performance.now(),samples=[];let lower=0;
   // Probe every smaller budget, then the first positive; unknowns never exclude.
-  for(let h=0;h<=component.edges.length;h++){
+  for(let h=0;h<=Math.min(component.edges.length,this.maxProbeHorizon);h++){
    const sample={horizon:h,...coverProbe(component.edges.length,component.masks,h,{nodeCap:this.probeNodeCap,shouldStop})};samples.push(sample);this.nodes+=sample.nodes;
    if(sample.outcome==='unresolved')break;
    if(sample.outcome==='negative')lower=h+1;else break;
