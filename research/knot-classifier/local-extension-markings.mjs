@@ -28,22 +28,28 @@ export function extensionComponents(source,target){
  for(const e of diff.values())for(const f of incidentFaces(e)){
   const ids=f.map(ek).sort(),inside=ids.filter(k=>diff.has(k));faceSets.set(ids.join(';'),inside);
  }
- const links=new Map([...diff.keys()].map(k=>[k,new Set()]));
- for(const f of faceSets.values())for(const k of f)for(const j of f)links.get(k).add(j);
- const unseen=new Set(diff.keys()),components=[];
- while(unseen.size){
-  const root=unseen.values().next().value,keys=[root];unseen.delete(root);
-  for(let i=0;i<keys.length;i++)for(const k of links.get(keys[i]))if(unseen.delete(k))keys.push(k);
+ // Union the complete face incidence once. This preserves the old component,
+ // edge and mask ordering while avoiding a full face scan for each component.
+ const ids=[...diff.keys()],positions=new Map(ids.map((k,i)=>[k,i])),parents=ids.map((_,i)=>i);
+ const find=i=>{while(parents[i]!==i){parents[i]=parents[parents[i]];i=parents[i];}return i;};
+ for(const f of faceSets.values())for(let i=1;i<f.length;i++){const x=find(positions.get(f[0])),y=find(positions.get(f[i]));if(x!==y)parents[y]=x;}
+ const groups=new Map();for(const k of ids){const root=find(positions.get(k));if(!groups.has(root))groups.set(root,[]);groups.get(root).push(k);}
+ const components=[],member=new Map(),indices=[];
+ for(const keys of groups.values()){
   const es=keys.map(k=>diff.get(k)),mins=[0,1,2].map(i=>Math.min(...es.flat().map(p=>p[i])));
-  const normalized=es.map(e=>edge(...e.map(p=>p.map((x,i)=>x-mins[i])))).sort((x,y)=>ek(x).localeCompare(ek(y)));
   const normalizedKey=e=>ek(edge(...e.map(p=>p.map((x,i)=>x-mins[i]))));
-  const index=new Map(normalized.map((e,i)=>[ek(e),i]));
-  const masks=[...new Set([...faceSets.values()].filter(f=>f.includes(root)||f.some(k=>keys.includes(k))).map(f=>f.reduce((m,k)=>m|(1n<<BigInt(index.get(normalizedKey(diff.get(k))))),0n).toString(16)))].map(x=>BigInt('0x'+x));
-  components.push({signature:JSON.stringify(normalized),edges:normalized,masks,origin:mins});
+  const normalized=es.map(e=>edge(...e.map(p=>p.map((x,i)=>x-mins[i])))).sort((x,y)=>ek(x).localeCompare(ek(y)));
+  const index=new Map(normalized.map((e,i)=>[ek(e),i])),n=components.length;
+  for(const k of keys){member.set(k,n);indices.push([k,index.get(normalizedKey(diff.get(k)))]);}
+  components.push({signature:JSON.stringify(normalized),edges:normalized,masks:[],origin:mins});
  }
+ const bits=new Map(indices.map(([k,i])=>[k,1n<<BigInt(i)])),maskSets=components.map(()=>new Set());
+ for(const f of faceSets.values()){const n=member.get(f[0]);let mask=0n;for(const k of f){if(member.get(k)!==n)throw Error('Incomplete component union');mask|=bits.get(k);}maskSets[n].add(mask.toString(16));}
+ for(let i=0;i<components.length;i++)components[i].masks=[...maskSets[i]].map(x=>BigInt('0x'+x));
  return components;
 }
-const count=x=>{let n=0;while(x){x&=x-1n;n++;}return n;};
+const nibbleCounts=[0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4];
+const count=x=>{let n=0;for(const c of x.toString(16)){const k=c.charCodeAt(0);n+=nibbleCounts[k<58?k-48:k-87];}return n;};
 // Generic unmarked finite cover probe: opaque bit points and exhaustive masks.
 // Covering a discrepancy is necessary; double flips, exterior, and embedding
 // restrictions are relaxed. A positive cover is NOT a knot-move witness.

@@ -24,55 +24,83 @@ def translated(signature,origin):
 
 def verify_report(path):
     started=time.perf_counter();path=Path(path);data=json.loads(path.read_text());refs=data['references'];cases=data['cases'];bounds=data['bounds']
-    corpus=json.loads((Path(__file__).resolve().parents[1]/'research/knot-classifier/lattice-corpus-12.json').read_text())['records'];bank={r['id']:r for r in corpus if 3<=r['crossings']<=8}
-    require(len(bank)==35 and len(refs)==35 and {r['evaluatorKnot'] for r in refs}==set(bank),'Incomplete prime bank')
-    require(len(cases)==105 and len({(r['evaluatorKnot'],r['seedIndex']) for r in cases})==105,'Incomplete seeded cases')
-    require({(r['evaluatorKnot'],r['seedIndex']) for r in cases}=={(k,s) for k in bank for s in range(3)},'Wrong seeded coverage')
+    corpus_path=Path(__file__).resolve().parents[1]/'research/knot-classifier/lattice-corpus-12.json'
+    corpus=json.loads(corpus_path.read_text())['records'];scaled=data.get('stage')=='scale12';retry=data.get('stage')=='retry-six'
+    bank={r['id']:r for r in corpus if 3<=r['crossings']<=(12 if scaled else 8)}
+    require(len(bank)==(2977 if scaled else 35) and len(refs)==len(bank) and {r['evaluatorKnot'] for r in refs}==set(bank),'Incomplete prime bank')
     def shuffle(values,seed):
         values=list(values)
         for i in range(len(values)-1,0,-1):
             seed=(1664525*seed+1013904223)&0xffffffff;j=(seed*(i+1))//4294967296;values[i],values[j]=values[j],values[i]
         return values
     ordered=list(bank)
-    require([(r['evaluatorKnot'],r['seed']) for r in refs]==shuffle([(k,31013+i*7919) for i,k in enumerate(ordered)],515151),'Reference seed/order mismatch')
-    require([(r['evaluatorKnot'],r['seedIndex'],r['inputSeed']) for r in cases]==shuffle([(k,j,81017+i*104729+j*15485863) for i,k in enumerate(ordered) for j in range(3)],424242),'Query seed/order mismatch')
+    if retry:
+        parent_path=path.parent/data['parent']['file'];raw=parent_path.read_bytes();parent=json.loads(raw)
+        require(hashlib.sha256(raw).hexdigest()==data['parent']['sha256'],'Changed immutable parent')
+        chosen=[r['caseIndex'] for r in next(l for l in parent['lanes'] if l['learn'])['runs'] if r['status']=='unknown']
+        require(data['parent']['caseIndices']==chosen and refs==parent['references'],'Retry changed cases or bank')
+        expected=[dict(parent['cases'][i],originalCaseIndex=parent['cases'][i].get('originalCaseIndex',i)) for i in chosen]
+        require(cases==expected,'Retry changed input or provenance')
+    elif scaled:
+        require(hashlib.sha256(corpus_path.read_bytes()).hexdigest()==data['corpusSha256'],'Changed scaling corpus')
+        selected=[k for n in range(9,13) for k in ([r['id'] for r in corpus if r['crossings']==n][0],[r['id'] for r in corpus if r['crossings']==n][-1])]
+        require(data['selectedTypes']==selected and len(cases)==24,'Pilot selection or coverage')
+        require([(r['evaluatorKnot'],r['seed']) for r in refs]==shuffle([(k,57011+i*7919 if k in selected else None) for i,k in enumerate(ordered)],717171),'Scaling reference seed/order mismatch')
+        require([(r['evaluatorKnot'],r['seedIndex'],r['inputSeed']) for r in cases]==shuffle([(k,j,97003+i*104729+j*15485863) for i,k in enumerate(ordered) if k in selected for j in range(3)],626262),'Scaling query seed/order mismatch')
+    else:
+        require(len(cases)==105 and {(r['evaluatorKnot'],r['seedIndex']) for r in cases}=={(k,s) for k in bank for s in range(3)},'Incomplete seeded cases')
+        require([(r['evaluatorKnot'],r['seed']) for r in refs]==shuffle([(k,31013+i*7919) for i,k in enumerate(ordered)],515151),'Reference seed/order mismatch')
+        require([(r['evaluatorKnot'],r['seedIndex'],r['inputSeed']) for r in cases]==shuffle([(k,j,81017+i*104729+j*15485863) for i,k in enumerate(ordered) for j in range(3)],424242),'Query seed/order mismatch')
     require(all(c['inputSeed']!=next(r['seed'] for r in refs if r['evaluatorKnot']==c['evaluatorKnot']) for c in cases),'Shared source/reference seed')
     require(data['region'] is None and data['stepsPerIndependentScramble']==8 and bounds['maxDepth']==16 and bounds['maxEdges']==240,'Changed benchmark scope')
     provenance=0;nontrivialInputs=sum(edges(loop(c['vertices']))!=edges(loop(next(r['vertices'] for r in refs if r['evaluatorKnot']==c['evaluatorKnot']))) for c in cases)
     for r in refs+cases:
-        p=r['provenance'];require(len(p['steps'])==8 and p['options'].get('region') is None,'Not an unrestricted eight-step scramble')
+        p=r['provenance']
+        if p is None:
+            require(scaled and r in refs and r['evaluatorKnot'] not in data['selectedTypes'] and edges(loop(r['vertices']))==edges(loop(bank[r['evaluatorKnot']]['vertices'])),'Noncanonical unproven reference');continue
+        require(len(p['steps'])==8 and p['options'].get('region') is None,'Not an unrestricted eight-step scramble')
         require(edges(loop(p['source']))==edges(loop(bank[r['evaluatorKnot']]['vertices'])) and edges(loop(p['target']))==edges(loop(r['vertices'])),'Provenance endpoints')
         verify(p);provenance+=1
     require(not data['incomplete'] and len(data['lanes'])==2,'Incomplete experiment')
+    for lane in data['lanes']:
+        for i,stub in enumerate(lane['runs']):
+            if 'artifact' not in stub:continue
+            artifact=stub['artifact'];raw=(path.parent/artifact['file']).read_bytes();require(len(raw)==artifact['bytes'] and hashlib.sha256(raw).hexdigest()==artifact['sha256'] and artifact['format']=='json.gz','Query artifact integrity')
+            run=json.loads(gzip.decompress(raw));require(all(run[k]==v for k,v in stub.items() if k!='artifact'),'Query manifest summary mismatch');lane['runs'][i]=run
     root_rules={};event_meta={};labels=proofs=movies=cancelled_movies=0;movieKinds={};movieLengths={};lane_summary=[]
     for lane in data['lanes']:
-        require(not lane['incomplete'] and len(lane['runs'])==105 and lane['bounds']==bounds,'Lane coverage or mismatched bounds')
+        require(not lane['incomplete'] and len(lane['runs'])==len(cases) and lane['bounds']==bounds,'Lane coverage or mismatched bounds')
         counters={'root':0,'local':0,'capacity':0};versions={k:0 for k in counters};case_events={};probePrefixes={ch:[0] for ch in counters};activationPrefixes={ch:[0] for ch in counters}
         if lane['learn']:
-            arch=lane['proofArchive'];ap=path.parent/arch['file'];raw=ap.read_bytes();require(hashlib.sha256(raw).hexdigest()==arch['sha256'] and len(raw)==arch['bytes'],'Archive integrity')
-            with gzip.open(ap,'rt') as stream:
-                for line in stream:
-                    entry=json.loads(line);ch=entry['channel'];event=entry['event'];require(entry['eventIndex']==counters[ch],'Proof index discontinuity');counters[ch]+=1
-                    case_events.setdefault((entry['caseIndex'],ch),[]).append(entry['eventIndex'])
-                    if ch in ('root','local'):
-                        require(hashlib.sha256(event['signature'].encode()).hexdigest()==entry['proofId'],'Proof digest')
-                        n=replay_event(event);labels+=n;proofs+=1
-                        require(event['width']==len(json.loads(event['signature'])) and event['width']<=(480 if ch=='root' else 48),'Proof support scope')
-                        require(all(s['horizon']<=16 for s in event['samples']) if ch=='root' else True,'Root horizon scope')
-                        if ch=='root':
-                            require(entry['proofId'] not in root_rules,'Repeated root catalog insertion')
-                            root_rules[entry['proofId']]={'signature':event['signature'],'lower':event['lower'],'caseIndex':entry['caseIndex']}
-                    else:
-                        w=event['width'];require(w in (1,2) and len(event['samples'])==2**w,'Capacity profiles')
-                        require({tuple(s['profile']) for s in event['samples']}=={tuple((b>>i)&1 for i in range(w)) for b in range(2**w)},'Capacity profile coverage')
-                        for sample in event['samples']:
-                            positive=not any(sample['profile']);require(sample['outcome']==('positive' if positive else 'negative'),'Capacity outcome')
-                            require(all(v is None or v==sample['profile'][i] for i,v in enumerate(event['values']))==positive,'Capacity stencil')
-                    node_limit=bounds['rootProbeNodeCap'] if ch=='root' else bounds['extensionProbeNodeCap'] if ch=='local' else 64
-                    require(all(type(s['nodes']) is int and 0<=s['nodes']<=node_limit for s in event['samples']),'Probe node accounting')
-                    probePrefixes[ch].append(probePrefixes[ch][-1]+sum(s['nodes'] for s in event['samples']))
-                    activationPrefixes[ch].append(activationPrefixes[ch][-1]+(sum(s['nodes'] for s in event['samples'] if s['outcome']!='unresolved') if ch!='capacity' else 0))
-                    event_meta[(ch,entry['eventIndex'])]=event['activated']
+            arch=lane['proofArchive'];parts=arch.get('files',[arch]);joined=hashlib.sha256();size=0
+            for part in parts:
+                raw=(path.parent/part['file']).read_bytes();require(hashlib.sha256(raw).hexdigest()==part['sha256'] and len(raw)==part['bytes'],'Archive part integrity');joined.update(raw);size+=len(raw)
+            require(joined.hexdigest()==arch['sha256'] and size==arch['bytes'],'Joined archive integrity')
+            def proof_lines():
+                for part in parts:
+                    with gzip.open(path.parent/part['file'],'rt') as stream:yield from stream
+            for line in proof_lines():
+                entry=json.loads(line);ch=entry['channel'];event=entry['event'];require(entry['eventIndex']==counters[ch],'Proof index discontinuity');counters[ch]+=1
+                case_events.setdefault((entry['caseIndex'],ch),[]).append(entry['eventIndex'])
+                if ch in ('root','local'):
+                    require(hashlib.sha256(event['signature'].encode()).hexdigest()==entry['proofId'],'Proof digest')
+                    n=replay_event(event);labels+=n;proofs+=1
+                    require(event['width']==len(json.loads(event['signature'])) and event['width']<=(480 if ch=='root' else 48),'Proof support scope')
+                    require(all(s['horizon']<=16 for s in event['samples']) if ch=='root' else True,'Root horizon scope')
+                    if ch=='root':
+                        require(entry['proofId'] not in root_rules,'Repeated root catalog insertion')
+                        root_rules[entry['proofId']]={'signature':event['signature'],'lower':event['lower'],'caseIndex':entry['caseIndex']}
+                else:
+                    w=event['width'];require(w in (1,2) and len(event['samples'])==2**w,'Capacity profiles')
+                    require({tuple(s['profile']) for s in event['samples']}=={tuple((b>>i)&1 for i in range(w)) for b in range(2**w)},'Capacity profile coverage')
+                    for sample in event['samples']:
+                        positive=not any(sample['profile']);require(sample['outcome']==('positive' if positive else 'negative'),'Capacity outcome')
+                        require(all(v is None or v==sample['profile'][i] for i,v in enumerate(event['values']))==positive,'Capacity stencil')
+                node_limit=bounds['rootProbeNodeCap'] if ch=='root' else bounds['extensionProbeNodeCap'] if ch=='local' else 64
+                require(all(type(s['nodes']) is int and 0<=s['nodes']<=node_limit for s in event['samples']),'Probe node accounting')
+                probePrefixes[ch].append(probePrefixes[ch][-1]+sum(s['nodes'] for s in event['samples']))
+                activationPrefixes[ch].append(activationPrefixes[ch][-1]+(sum(s['nodes'] for s in event['samples'] if s['outcome']!='unresolved') if ch!='capacity' else 0))
+                event_meta[(ch,entry['eventIndex'])]=event['activated']
             require(counters==arch['eventCounts'],'Archive counts')
         correct=incorrect=unknown=totalnodes=0;bytype={k:{'correct':0,'incorrect':0,'unknown':0} for k in bank};byseed={str(i):{'correct':0,'incorrect':0,'unknown':0} for i in range(3)};stats={};rootexcluded=0;rootReuse=0;rootCrossTypeReuse=0
         for i,run in enumerate(lane['runs']):
@@ -86,7 +114,7 @@ def verify_report(path):
                 if ch!='capacity':require(model['activationValidationNodes']==activationPrefixes[ch][hi] and model['transferValidationNodes']==0,'Activation/transfer cost accounting')
                 require(model['version']==versions[ch]+sum(event_meta[(ch,j)] for j in range(lo,hi)),'Version change not supported by new proof events');versions[ch]=model['version']
             root=run['rootGraph'];require(root['point']=='reference-choice' and root['boundary']==[['root-budget',0]],'Root point model')
-            require([c['id'] for c in root['candidates']]==list(range(len(root['candidates']))) and len(root['candidates'])<=35,'Root reference domain')
+            require([c['id'] for c in root['candidates']]==list(range(len(root['candidates']))) and len(root['candidates'])<=len(refs),'Root reference domain')
             admitted=[]
             for candidate in root['candidates']:
                 require(candidate['t']==[['reference-choice',1]],'Root tile t')
@@ -104,7 +132,7 @@ def verify_report(path):
                 require(candidate['m']==([['root-budget',1]] if candidate['lower']>bounds['maxDepth'] else []),'Root elimination not a proved marking mismatch')
                 if not candidate['m']:admitted.append(candidate['id'])
             if root['complete']:
-                require(len(root['candidates'])==35 and root['forward']==[['reference-choice',admitted]] and root['reverse']==[[j,['reference-choice']] for j in admitted],'Incomplete root incidence')
+                require(len(root['candidates'])==len(refs) and root['forward']==[['reference-choice',admitted]] and root['reverse']==[[j,['reference-choice']] for j in admitted],'Incomplete root incidence')
             else:require(run['status']=='unknown' and not root['forward'] and not root['reverse'],'Partial root claimed complete')
             require(run['referenceChecks']==len(root['candidates']) and run['referencesAdmitted']==len(admitted),'Root accounting')
             rootexcluded+=len(root['candidates'])-len(admitted)

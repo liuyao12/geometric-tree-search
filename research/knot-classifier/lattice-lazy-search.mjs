@@ -5,7 +5,8 @@ import {LocalExtensionMarkings} from './local-extension-markings.mjs';
 import {LocalPointMarkings} from './local-point-markings.mjs';
 import {lazyPointPath} from '../../apps/knot-movie/lazy-point-path.mjs';
 const pk=p=>p.join(',');
-export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DIRECTION,region=null,model=new LocalPointMarkings(),extensionModel=null,shouldStop=()=>false,diagramMoveCache=new Map()}={}){
+export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DIRECTION,region=null,model=new LocalPointMarkings(),extensionModel=null,globalExtensionModel=null,shouldStop=()=>false,diagramMoveCache=new Map(),authorDomainCache=new Map(),extensionContextCache=new Map()}={}){
+ if(globalExtensionModel&&Object.getPrototypeOf(globalExtensionModel)!==LocalExtensionMarkings.prototype)throw Error('Global extensions must be native immutable proof catalogs.');
  if(extensionModel&&Object.getPrototypeOf(extensionModel)!==LocalExtensionMarkings.prototype)throw Error('Extension models must be native immutable proof catalogs.');
  if(extensionModel&&extensionModel.system!=='face-edge-cover-extension-v1')throw Error('Extension system does not match face grammar.');
  if(model.system!=='unit-cubic-face-internal-vertex-capacity-v1')throw Error('Marking system does not match face grammar.');
@@ -15,7 +16,16 @@ export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DI
   ...(extensionModel?{extensionDomain(accepted,{targetKey:goal,remaining}){
    const candidates=[];for(const edge of accepted){
     if(shouldStop())return{complete:false,reason:"search-time-budget"};
-    const compiled=extensionModel.compile(JSON.parse(edge.destination),JSON.parse(goal),remaining,{shouldStop});
+    const cacheKey=edge.destination+'|'+goal;let cached=extensionContextCache.get(cacheKey);
+    if(cached)extensionContextCache.hits=(extensionContextCache.hits||0)+1;else extensionContextCache.misses=(extensionContextCache.misses||0)+1;
+    if(!cached){cached=extensionModel.compile(JSON.parse(edge.destination),JSON.parse(goal),Infinity,{shouldStop});
+     if(globalExtensionModel&&cached.components.some(c=>JSON.parse(c.signature).length>extensionModel.maxComponentEdges)){
+      const whole=globalExtensionModel.compile(JSON.parse(edge.destination),JSON.parse(goal),Infinity,{shouldStop});
+      if(whole.components.length!==cached.components.length||whole.components.some((c,i)=>c.signature!==cached.components[i].signature))throw Error('Extension component mismatch');
+      cached={...cached,lower:whole.components.reduce((n,c,i)=>n+Math.max(c.lower,cached.components[i].lower),0)};
+     }
+     extensionContextCache.set(cacheKey,cached);if(extensionContextCache.size>4096)extensionContextCache.delete(extensionContextCache.keys().next().value);}
+    const compiled={...cached,m:cached.lower>remaining?new Map([['extension-budget',1]]):new Map()};
     candidates.push({id:edge.id,edge,t:new Map([[edge.raw.point,1]]),m:compiled.m});
    }
    // All candidate stencils are frozen before this complete incidence is built.
@@ -24,11 +34,14 @@ export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DI
    return{complete:true,boundary:new Map([['extension-budget',0]]),candidates,version:extensionModel.version};
   }}:{}),
   domain(key){
-   const p=JSON.parse(key),occupied=new Set(p.map(pk)),context=moveContext(p,{direction,diagramMoveCache}),point=`choice:${key}`,boundary=new Map([['current',key]]);
-   const candidates=rawFaceSweeps(p,{maxEdges,region}).map(sweep=>{
+   const cacheKey=JSON.stringify([key,maxEdges,direction,region]);let authored=authorDomainCache.get(cacheKey);
+   if(authored)authorDomainCache.hits=(authorDomainCache.hits||0)+1;else authorDomainCache.misses=(authorDomainCache.misses||0)+1;
+   if(!authored){const p=JSON.parse(key);authored={occupied:new Set(p.map(pk)),context:moveContext(p,{direction,diagramMoveCache}),sweeps:rawFaceSweeps(p,{maxEdges,region}),results:new Map()};authorDomainCache.set(cacheKey,authored);if(authorDomainCache.size>64)authorDomainCache.delete(authorDomainCache.keys().next().value);}
+   const {occupied,context}=authored,point=`choice:${key}`,boundary=new Map([['current',key]]);
+   const candidates=authored.sweeps.map((sweep,authorIndex)=>{
     const internal=sweep.replacement.slice(1,-1),contextId=JSON.stringify(sweep.face.map(pk).sort());
     for(const v of internal)boundary.set(`occupancy:${pk(v)}`,occupied.has(pk(v))?1:0);
-    const id=nextId++,entry={id,key,sweep,internal,point,context,contextId,occupied};return entry;
+    const id=nextId++,entry={id,key,sweep,internal,point,context,contextId,occupied,authored,authorIndex};return entry;
    });
    return{complete:true,point,boundary,candidates};
   },
@@ -41,7 +54,8 @@ export function latticeProvider(source,target,{maxEdges=200,direction=DEFAULT_DI
   resolve(entry){
    if(entry.move)return{key:entry.move.key};
    if(entry.internal.some(v=>entry.occupied.has(pk(v)))){entry.failure='vertex-capacity';return null;}
-   const move=resolveSweep(entry.sweep,entry.context);if(!move)return null;entry.move={...move,vertices:undefined};entry.sweep=null;entry.context=null;entry.occupied=null;entries.set(entry.id,entry);return{key:move.key};
+   let move;if(entry.authored.results.has(entry.authorIndex))move=entry.authored.results.get(entry.authorIndex);else{move=resolveSweep(entry.sweep,entry.context);entry.authored.results.set(entry.authorIndex,move);}
+   if(!move)return null;entry.move={...move,vertices:undefined};entry.sweep=null;entry.context=null;entry.occupied=null;entry.authored=null;entries.set(entry.id,entry);return{key:move.key};
   },
   observeRejected(entry){if(entry.failure==='vertex-capacity')model.observe(entry.internal.length,entry.contextId);}
  };

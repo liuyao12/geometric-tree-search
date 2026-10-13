@@ -1,0 +1,121 @@
+{
+  "stages": [
+    {
+      "name": "lattice-blind-retry60",
+      "cases": 6,
+      "correct": [
+        3,
+        0
+      ],
+      "unknown": [
+        3,
+        6
+      ]
+    },
+    {
+      "name": "lattice-blind-retry180",
+      "cases": 3,
+      "correct": [
+        2,
+        0
+      ],
+      "unknown": [
+        1,
+        3
+      ]
+    },
+    {
+      "name": "lattice-blind-retry600",
+      "cases": 1,
+      "correct": [
+        0,
+        0
+      ],
+      "unknown": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "lattice-blind-portfolio900",
+      "cases": 1,
+      "correct": [
+        1,
+        0
+      ],
+      "unknown": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "lattice-blind-scale12",
+      "cases": 24,
+      "correct": [
+        20,
+        0
+      ],
+      "unknown": [
+        4,
+        24
+      ]
+    }
+  ],
+  "cumulativeOriginal105": {
+    "marked": {
+      "correct": 105,
+      "incorrect": 0,
+      "unknown": 0,
+      "totalMs": 1791056.353376,
+      "nodes": 9973,
+      "proofNodes": 1312816
+    },
+    "brute": {
+      "correct": 0,
+      "incorrect": 0,
+      "unknown": 105,
+      "totalMs": 1445105.8025,
+      "nodes": 24340,
+      "proofNodes": 0
+    }
+  },
+  "combined": {
+    "marked": {
+      "original105": {
+        "correct": 105,
+        "incorrect": 0,
+        "unknown": 0,
+        "totalMs": 1791056.353376,
+        "nodes": 9973,
+        "proofNodes": 1312816
+      },
+      "pilotCorrect": 20,
+      "pilotIncorrect": 0,
+      "pilotUnknown": 4,
+      "pilotTotalMs": 1904493.7515419999,
+      "totalMs": 3695550.104918,
+      "nodes": 11357,
+      "proofNodes": 21253498
+    },
+    "brute": {
+      "original105": {
+        "correct": 0,
+        "incorrect": 0,
+        "unknown": 105,
+        "totalMs": 1445105.8025,
+        "nodes": 24340,
+        "proofNodes": 0
+      },
+      "pilotCorrect": 0,
+      "pilotIncorrect": 0,
+      "pilotUnknown": 24,
+      "pilotTotalMs": 424564.1295,
+      "totalMs": 1869669.932,
+      "nodes": 144340,
+      "proofNodes": 0
+    }
+  },
+  "commonPreparationMs": 654084.412,
+  "independentAuditsMs": 357263.97054100316,
+  "artifactFinalizationMs": 16699.408291
+}

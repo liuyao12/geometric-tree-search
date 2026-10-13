@@ -21,7 +21,7 @@ let last;do{last=steps.next();}while(!last.done);assert.equal(last.value.status,
 const records=JSON.parse(readFileSync(new URL('../research/knot-classifier/lattice-corpus-12.json',import.meta.url))).records.filter(r=>r.crossings>=3&&r.crossings<=8);
 const goal=records[0].vertices,source=latticeMoves(goal,{maxEdges:240})[0].vertices,bank=[...records.slice(1),records[0]].map(r=>({vertices:r.vertices,id:'unused',crossings:99}));
 for(const learn of [false,true]){
- const r=classifyLatticeBlind({vertices:source,id:'misleading'},bank,{learn,maxDepth:1,maxMs:20000,nodeCap:1000});
+ const r=classifyLatticeBlind({vertices:source,id:'misleading'},bank,{learn,maxDepth:1,maxMs:20000,nodeCap:1000,searchSeeds:[31,73,131,197],wholeWindowChildren:true});
  assert.equal(r.status,'identified');assert.equal(r.referenceIndex,34);assert.equal(r.referenceChecks,35);assert.equal(r.rootGraph.complete,true);assert.equal(r.certificate.steps.length,1);assert.ok(r.nodes<=1000);
  assert.equal(verifyLatticeCertificate(r.certificate),true);assert.equal(verifyLatticeCertificate(r.certificate,{shouldStop:()=>true}),false);
  const altered=structuredClone(r.certificate);altered.steps[0].afterDiagram='fabricated';assert.throws(()=>verifyLatticeCertificate(altered),/Inconsistent/);

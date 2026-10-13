@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "completeMemoizedInventory": {
+    "domains": 14,
+    "acceptedEdges": 2388,
+    "crossingCounts": [
+      3,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "independentBaseline": "latticeMoves complete legal inventory",
+    "translationPreserved": true
+  },
+  "genericReachability": {
+    "exhaustiveGraphHorizonChecks": 384,
+    "fullBankLateTarget": true,
+    "labelsIgnored": true,
+    "budgetsUnknown": true
+  },
+  "extensionRegression": {
+    "checks": 171,
+    "trefoilNodes": 30,
+    "extensionEliminations": 1987
+  },
+  "developmentDifferential": {
+    "orderedComponentCases": 35,
+    "sameComponentsMasksOriginsAndOrder": true,
+    "sameCoverProbeOutcomesWitnessesAndNodes": true,
+    "scope": "Exact old/new comparison before scored optimized stages, seven source and five target representatives through 12 crossings. Old source preserved from immutable published engine."
+  },
+  "wholeWindowContinuation": {
+    "knownValidFrameChecks": 17,
+    "largeStaircaseWindowChecked": true,
+    "cancellationRemainsUnknown": true
+  }
+}
