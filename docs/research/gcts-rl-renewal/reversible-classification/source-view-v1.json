@@ -1,0 +1,138 @@
+{
+  "broad_goal": "active",
+  "fingerprints": [
+    {
+      "bytes": 30343,
+      "path": ".gcts-active/compact-reversible-classification-source-20261013/compact_point_graph_reversible_v2.py",
+      "sha256": "75f3da66e2537a63bac84345b3ba488216de047bcd5af7b7a59dae0e8299b9f1"
+    },
+    {
+      "bytes": 25029,
+      "path": ".gcts-active/compact-reversible-classification-source-20261013/compact_dynamic_graph_reversible_v4.py",
+      "sha256": "2fe5a57b1855624d9ed6c8031343b98c0fff102c0371e348255e523f78a64609"
+    },
+    {
+      "bytes": 8065,
+      "path": ".gcts-active/compact-reversible-classification-source-20261013/source-manifest-v1.json",
+      "sha256": "f94502c10c235550abbe45c974485098f87fa2f3bbe1a8907b51fffe1b9186d1"
+    },
+    {
+      "bytes": 20934,
+      "path": ".gcts-active/compact-reversible-classification-source-20261013/conformance-protocol-v1.json",
+      "sha256": "f421e662b9fca562e5db11384aad49cc575cbb2283d56421a8f3652fc24d6b34"
+    },
+    {
+      "bytes": 20486,
+      "path": ".gcts-active/classification-cache-conditional-argument-20261013/source-argument-v1.json",
+      "sha256": "ceca194da0a8ca3d3b00f8a7144ce356bc4115b4b22413931ee58fbda47a94f5"
+    },
+    {
+      "bytes": 13931,
+      "path": ".gcts-active/reversible-classification-cache-invariants-source-20261013/source-note-v1.json",
+      "sha256": "8a5a8daf2f0a3119e4a1fa3f2274c3885f047ec6740c370f378518d96371080d"
+    },
+    {
+      "bytes": 30841,
+      "path": ".gcts-active/compact-reversible-classification-independent-source-20261013/source-review-v1.json",
+      "sha256": "6d0c76926babcebba4ccfc963d8ba42591f8b4a0545b0ec34c4e0eb94cacfe19"
+    },
+    {
+      "bytes": 10958,
+      "path": ".gcts-active/reversible-classification-ROOT-review-20261013/ROOT-source-read-v1.json",
+      "sha256": "35dd7519b68ced98fd74042525cd2a355e9fa0f788aca967f3026e556f938d90"
+    },
+    {
+      "bytes": 3457,
+      "path": ".gcts-active/compact-primitive-observer-capable-progress-20261013/ROOT-actual-disposition-v1.json",
+      "sha256": "83ca8131dbb3afb14e294a56527783c4817d7298dd0c9366a7197b61e19df231"
+    }
+  ],
+  "notebook": 132,
+  "preserved_actual_BASE": {
+    "RL_updates": 0,
+    "attempt_limit": 128,
+    "attempts": 43,
+    "event_limit": 2000,
+    "formula_count": 113406,
+    "full_recipe_count": 119633,
+    "independent_full_trajectory_accepted": false,
+    "new_cache_speed_measured": false,
+    "new_proofs": 0,
+    "ordered_premise_occurrences": 3,
+    "outcome": "UNKNOWN_SEARCH_BUDGET",
+    "reference_reader": "../runtime-and-language/reader.html",
+    "rows": 24,
+    "search_operation_checked_seconds": 20,
+    "stored_bodies": 0
+  },
+  "qualification": {
+    "ROOT_raw_reference_checks": 32,
+    "conditional_source_verdict": "PASS_SOURCE_READY_FOR_PROSPECTIVE_CONFORMANCE_DESIGN_ONLY",
+    "intrinsic_source_blockers": [],
+    "mechanical_control_groups_completed": 0,
+    "mechanical_control_groups_declared": 12,
+    "runtime_execution_admitted": false,
+    "specific_open_gaps": [
+      "Fresh loader and complete worker source binding",
+      "Complete tiny dynamic domain/corruption/rollback conformance",
+      "Nontrivial live-parent subtree-exhaustion exclusion integration",
+      "Cold owned resource observation",
+      "Same complete catalogue production comparison",
+      "Independent whole production trajectory and returned proof checking"
+    ],
+    "trust_scope": "Single-threaded trusted pinned sources; private official writer tokens/resealing helpers trusted. Ordinary alias/replacement integrity controls; no adversarial reflection claim."
+  },
+  "reader_scientific_execution": false,
+  "roles": [
+    {
+      "agent": "rl_engine_fixture",
+      "authorship": "Authored the borrowed original compact graph; author checks are not independent acceptance.",
+      "work": "Fresh immutable parent classification implementation and prospective conformance harness"
+    },
+    {
+      "agent": "theorem_ladder",
+      "authorship": "Authored the argument; no machine proof or runtime acceptance.",
+      "work": "Conditional mathematical class/count/domain argument"
+    },
+    {
+      "agent": "donor_contexts",
+      "authorship": "Authored borrowed dynamic/lifecycle consumers and invariants; did not author fresh compact cache implementation.",
+      "work": "Independent review of fresh cache implementation"
+    },
+    {
+      "agent": "ROOT",
+      "work": "Full source reads, independent byte/AST inverses, coordination and publication"
+    }
+  ],
+  "schema": "public-reversible-classification-source-view-v1",
+  "schematic": {
+    "discovered_proof": false,
+    "latex": [
+      "\\(a\\ne b\\)",
+      "\\(A=\\{a\\}\\)",
+      "\\(M_A(1,0)=a\\)",
+      "\\(M_B(1,2)=a\\)"
+    ],
+    "meaning": "Equal assigned-code sets justify class count reuse; row masks depend on assignment locations.",
+    "provenance": "Abstract illustration derived from conditional argument counterexample C2",
+    "runtime_data": false
+  },
+  "source_changes": {
+    "all_original_dynamic_guards_retained": true,
+    "all_original_factor_domain_bodies_preserved": true,
+    "candidate_record_API_combined": false,
+    "compact": {
+      "bytes": 30343,
+      "sha256": "75f3da66e2537a63bac84345b3ba488216de047bcd5af7b7a59dae0e8299b9f1",
+      "whole_source_inverse_to_original": true
+    },
+    "dynamic": {
+      "bytes": 25029,
+      "sha256": "2fe5a57b1855624d9ed6c8031343b98c0fff102c0371e348255e523f78a64609",
+      "whole_source_inverse_to_original": true
+    },
+    "full_classifier_multiplicity_loop_preserved": true,
+    "parent_map_restored_before_original_affected_refresh": true
+  },
+  "status": "SOURCE_REVIEW_PASSED_RUNTIME_PENDING"
+}

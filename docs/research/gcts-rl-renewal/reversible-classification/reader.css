@@ -1,0 +1,20 @@
+.metrics b{font-size:1.45rem}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin:28px 0}
+.flow article{border:1px solid #d6e2e5;background:#f6faf9;border-radius:14px;padding:20px;min-height:160px}
+.flow article p{font-size:.95rem;margin:9px 0 0}
+.flow>span{font-size:1.5rem;color:#70828a}
+.schematic{background:#f7fafb;border:1px solid #d6e2e5;border-radius:18px;padding:24px;margin:30px 0}
+.schematic-pair{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.schematic-pair article{min-width:0}
+.schematic-pair h3{font-size:1.04rem;margin:0 0 16px}
+.schematic-pair svg{width:100%;height:auto;display:block;background:white;border-radius:12px}
+.schematic-pair svg text{font:14px system-ui,sans-serif;fill:#405567}
+.formula-cell{fill:#805cb3}
+.reader-cell{fill:#278d75}
+.empty-cell{fill:#f2f5f8;stroke:#b6c4cf;stroke-dasharray:5 4}
+.schematic-pair svg .white-label{fill:white;font-weight:650}
+.schematic-pair svg .conflict-label{fill:#b44946;font-size:12px;font-weight:650}
+.schematic-pair svg .compatible-label{fill:#217862;font-size:12px;font-weight:650}
+.schematic-pair article p{font-size:.95rem}
+.schematic figcaption{font-size:.85rem;color:#657989;line-height:1.65;margin-top:15px}
+@media(max-width:750px){.schematic-pair{grid-template-columns:1fr;gap:30px}.flow{grid-template-columns:1fr}.flow>span{display:none}.flow article{min-height:0}.schematic{padding:17px}.metrics b{font-size:1.2rem}}
