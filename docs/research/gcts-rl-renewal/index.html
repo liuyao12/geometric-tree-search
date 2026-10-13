@@ -10,7 +10,7 @@
   <script defer src="report.js?v=20261009-r33.1"></script>
 </head>
 <body>
-<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 138</span><a href="#goals">Research goals</a></header>
+<header class="masthead"><a href="../../../">Geometric Tree Search</a><span>RESEARCH NOTEBOOK · 139</span><a href="#goals">Research goals</a></header>
 <main>
   <section class="intro">
     <p class="eyebrow">STARTED OCTOBER 8, 2026 · ACTIVE RESEARCH PROGRAM</p>
@@ -33,6 +33,14 @@
 
 
 
+
+<section class="panel" id="hilbert-batched">
+  <p class="eyebrow">NOTEBOOK139 · BATCHED EXACT CHECKS · CONTROLS PASSED, BOTH SEARCHES UNKNOWN</p>
+  <h2>Parallel work reduces the marking-check overhead.</h2>
+  <p>The fresh canonical and batched-advice searches retain the same catalogue, empty inventory and \(128\)-attempt, \(20\,\mathrm{s}\), \(2000\)-event limits. Both reach the event ceiling after \(94\) attempts without a proof. The advised search completes \(89\) selections in \(3.523246\,\mathrm{s}\) of advice work; whole search takes \(13.180396\,\mathrm{s}\). The earlier scalar-advice run used \(16.756006\,\mathrm{s}\) for \(35\) complete selections and one interrupted selection.</p>
+  <p>All \(12\) tiny catalogues and \(1152\) row-domain EOF comparisons pass. New complete selected-row controls compare \(17036\) syntactic key occurrences against scalar and independent literal checking, including false candidates. Implementation, controls and independent review proceed in parallel; owned searches run once each. This pilot supports an implementation improvement, while theorem discovery, RL benefit and comparison with established provers remain open.</p>
+  <p><a href="hilbert-batched/reader.html#comparison">Inspect the new outcomes and scientific figure</a> · <a href="hilbert-batched/reader.html#costs">Batch and historical prefix costs</a> · <a href="hilbert-batched/reader.html#controls">Exact controls and conformance gaps</a> · <a href="hilbert-batched/reader.html#parallel">Parallel contributions</a></p>
+</section>
 
 <section class="panel" id="hilbert-ordering">
   <p class="eyebrow">NOTEBOOK138 · MATCHED HILBERT ORDERING · BOTH SEARCHES UNKNOWN</p>
