@@ -1,0 +1,168 @@
+{
+  "RL_advantage": false,
+  "advice_cost_diagnosis": {
+    "batch_speedup_measured": false,
+    "completed_calls": 35,
+    "completed_helper_selection_seconds": 16.203140127,
+    "exact_legality_queries": 21694,
+    "full_guard_cost_separately_measured": false,
+    "predicted_batches_on_saved_calls": 350,
+    "predicted_endpoint_full_guards": 700,
+    "proposed_batch_size": 64,
+    "recipes_scanned": 102235
+  },
+  "ancillary_metadata_pin_difference": "Advice has one extra prospective terminal-contract metadata pin; its verification cost is charged to the enclosing cold lane.",
+  "controls": {
+    "RL_training": false,
+    "actual_cases": 12,
+    "advice_choice_observations": 32,
+    "all14_resource_predicates": true,
+    "all24_point_state_observations": 48,
+    "caller_seconds": 10.608,
+    "complete_focused_nonlogical": true,
+    "complete_row_EOFs": 1152,
+    "earlier_failed_supervisor_before_science_preserved": true,
+    "focused_choices": 6,
+    "focused_limit64_full_fallback70": 70,
+    "literal_keys_checked": 388020,
+    "no_partial_advice": true,
+    "owner_seconds": 6.111199833000001,
+    "production_proof": false,
+    "schema": "ROOT-hilbert-advice-controls-actual-summary-v1",
+    "scoped_peak_bytes": 43171840,
+    "target_searches": 0
+  },
+  "counter_scope": "Saved producer counters of incomplete trajectories; independent saved-record reconciliation is not semantic replay.",
+  "dimensions": {
+    "cluster_groups": 0,
+    "formulas": 5112,
+    "initial_candidates": 4407560,
+    "ordered_hypotheses": 3,
+    "primitive_licenses": 2921,
+    "rows": 24,
+    "source_bodies": 0
+  },
+  "engineering_attempts": {
+    "fixed_controls_child_invocations": 1,
+    "fixed_controls_later_metadata_finalizer_seconds": 0.064,
+    "supervisor_prechild_pin_rejection_seconds": 7.658,
+    "supervisor_prechild_rejection_had_scientific_calls": 0,
+    "unexecuted_loader_v1_fixed_before_dispatch": true
+  },
+  "full_search_trajectory_accepted": false,
+  "general_master_conformance": false,
+  "lanes": [
+    {
+      "RL_training": false,
+      "RNG_draws": 0,
+      "advice_construction": null,
+      "advice_observations": 0,
+      "advice_seconds": 0.0,
+      "attempts": 94,
+      "backtracks": 80,
+      "branches": 89,
+      "complete_advice_observations": 0,
+      "events": 2000,
+      "forced": 5,
+      "lane": "canonical-v1",
+      "maximum_distinct_dependency_complete_nonroot_facts": 1,
+      "mode": "base",
+      "nodes": 90,
+      "observed_cold_caller_seconds": 14.493,
+      "order_seconds": 1.5377554570000003,
+      "proof_accepted": false,
+      "resources": {
+        "caller_seconds_with_margin": 15.493,
+        "conservative_peak_bytes": 66928640,
+        "owner_elapsed_seconds": 10.230708584,
+        "resource_accepted": true
+      },
+      "root_restored_producer_report": true,
+      "search_seconds": 9.039545459,
+      "status": "unknown_trace_budget",
+      "termination": {
+        "events_retained": 2000,
+        "kind": "trace-ceiling",
+        "message": "full scientific event budget; prefix never accepted"
+      },
+      "trace_complete": false
+    },
+    {
+      "RL_training": false,
+      "RNG_draws": 0,
+      "advice_construction": {
+        "all_licenses_scanned": 2921,
+        "cache_scope": "immutable catalog/target only; no proof path retained",
+        "completed": true,
+        "distinct_dependency_arcs": 3836,
+        "formula_count": 5112,
+        "goal_reachable_formula_codes": 1442,
+        "ordered_input_ports": 3836,
+        "seconds": 0.010896500000000031,
+        "total_construction_call_seconds": 0.010987666000000007,
+        "version": "ready-novel-goal-dependency-advice-v1",
+        "visited_arcs": 2148
+      },
+      "advice_observations": 36,
+      "advice_seconds": 16.756005626,
+      "attempts": 35,
+      "backtracks": 27,
+      "branches": 35,
+      "complete_advice_observations": 35,
+      "events": 724,
+      "forced": 0,
+      "lane": "goal-advice-v1",
+      "maximum_distinct_dependency_complete_nonroot_facts": 7,
+      "mode": "goal_advice",
+      "nodes": 36,
+      "observed_cold_caller_seconds": 23.792,
+      "order_seconds": 17.062203293,
+      "proof_accepted": false,
+      "resources": {
+        "caller_seconds_with_margin": 24.792,
+        "conservative_peak_bytes": 57081856,
+        "owner_elapsed_seconds": 20.770745958,
+        "resource_accepted": true
+      },
+      "root_restored_producer_report": true,
+      "search_seconds": 20.014491208000003,
+      "status": "unknown_search_budget",
+      "termination": {
+        "events_retained": 724,
+        "kind": "candidate-advice-budget",
+        "message": "candidate-advice search-clock budget",
+        "partial_advice_accepted": false
+      },
+      "trace_complete": false
+    }
+  ],
+  "limits": {
+    "attempts": 128,
+    "events": 2000,
+    "seconds": 20
+  },
+  "prior_first_BASE": {
+    "artifact_unchanged": true,
+    "attempts": 94,
+    "combined_with_new_pair": false,
+    "events": 2000,
+    "status": "unknown_trace_budget"
+  },
+  "proof_accepted": false,
+  "saved_record_review": {
+    "metadata_mismatches": 0,
+    "referenced_files_hashed": 269,
+    "semantic_replay": false,
+    "sha256": "04be80068d892c03ed609dc9fba5e51b49995361a13f0bfeba8fb89f687c26ed"
+  },
+  "schema": "sanitized-Hilbert-ordering-pair-report-v1",
+  "source_and_inventory_match": true,
+  "source_sha256": {
+    "DFS": "b58ea4a3e0a82011db871b054fa16e04aeabd0e42bec9126a22ffeffbb20dd5c",
+    "advice": "ecec4cf8e0d805b7e7911d58f4ee333a5da65039d244d7001d567fcee2f91b1b",
+    "catalogue": "6bdb83c81ca84c2321e242fd8e1949ae7f79776a7f846a45bcfd83d638e90d77"
+  },
+  "statement_latex": "u=v,\\ v=w,\\ \\operatorname{Incident}(C,u)\\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\operatorname{Incident}(C,w)",
+  "target_id": "next-inc-equality-line-chain",
+  "universal_compiler_accepted": false
+}
