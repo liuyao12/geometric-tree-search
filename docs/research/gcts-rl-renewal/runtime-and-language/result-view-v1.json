@@ -1,0 +1,3444 @@
+{
+  "schema": "public-runtime-language-saved-view-v1",
+  "notebook": 131,
+  "scope": "Saved scalar/snapshot display only; no graph reconstruction, catalogue decoding, checker, replay or search. Producer state/decision/timing records are not independent full-trajectory acceptance.",
+  "actual_baseline": {
+    "schema": "ROOT-primitive-base-discovery-resource-and-final-certificate-disposition-v1",
+    "status": "accepted_conditional_owned_primitive_discovery",
+    "caller_seconds_with_margin": 29.372,
+    "owner_postwrite_seconds": 23.333318584,
+    "resource_accepted": true,
+    "conservative_owned_peak_bytes": 92880896,
+    "prospective_reserve_bytes": 33554432,
+    "search_status": "unknown_search_budget",
+    "automatic_primitive_final_certificate_accepted": false,
+    "independent_full_trajectory_accepted": false,
+    "native_accepted": false,
+    "new_RL_training": false,
+    "performance_comparison_accepted": false,
+    "whole_host_cap_claim": false,
+    "OS_hard_cap_claim": false,
+    "external_wait4_claim": false,
+    "universal_compiler_accepted": false,
+    "search_limits": {
+      "attempts": 128,
+      "event_ceiling": 2000,
+      "seconds": 20
+    },
+    "owned_limits": {
+      "child_seconds": 170,
+      "peak_bytes": 536870912,
+      "supervisor_seconds": 175,
+      "whole_seconds": 180
+    }
+  },
+  "new_accepted_theorems": 0,
+  "actual_invocations": 1,
+  "target_latex": "\\(a=b,\\ b=c,\\ c=d\\ \\vdash a+0=b\\).",
+  "qualified_dimensions": {
+    "formula_count": 113406,
+    "logical_rows": 24,
+    "non_assumption_witness_count": 119630,
+    "primitive_license_count": 119633,
+    "source_body_count": 0
+  },
+  "search": {
+    "status": "unknown_search_budget",
+    "attempts": 43,
+    "node_count": 43,
+    "trace_complete": true,
+    "root_restored": true,
+    "graph_metrics": {
+      "attempts": 43,
+      "backtracks": 42,
+      "branches": 42,
+      "domain_refreshes": 1900,
+      "forced": 1,
+      "lazy_id_constructions": 0,
+      "placements": 46,
+      "proposal_rejections": 0,
+      "proposal_validations": 0
+    },
+    "graph_metrics_at_search_entry": {
+      "attempts": 0,
+      "backtracks": 0,
+      "branches": 0,
+      "domain_refreshes": 93,
+      "forced": 0,
+      "lazy_id_constructions": 0,
+      "placements": 3,
+      "proposal_rejections": 0,
+      "proposal_validations": 0
+    },
+    "ordering_and_policy_metrics": {
+      "commit_bookkeeping_seconds": 0.2694990839999991,
+      "exclusion_seconds": 0.05100774999999569,
+      "full_fact_closure_seconds": 0.004954704000004195,
+      "logical_domain_keys_represented": 513323,
+      "order_calls": 43,
+      "order_descriptor_seconds": 0.02858841999999484,
+      "order_seconds": 0.3863866250000041,
+      "policy_prepare_choose_seconds": 0.0,
+      "primitive_step_seconds": 9.371721165999997,
+      "rollback_seconds": 9.641932704000004,
+      "selected_key_observations": 43,
+      "trace_seconds": 0.7148685899999956
+    },
+    "checked_deadline_overshoot_seconds": 0.4657010419999992,
+    "search_seconds_including_certificate_and_return_preparation": 20.465700959,
+    "rng_draws": [],
+    "policy_choices": [],
+    "training_updates": 0,
+    "atomic_macro_moves": 0,
+    "literal_full_stream_hashes_measured": false,
+    "reward_counters": {
+      "attempt_limit": 128,
+      "check_ceiling": 10000,
+      "commits": 0,
+      "construction_validation_checks": 0,
+      "logical_rows": 24,
+      "maximum_distinct_dependency_complete_nonroot_facts": 0,
+      "primitive_attempts": 43,
+      "retired_commits": 0
+    }
+  },
+  "trace_counts": {
+    "events": 988,
+    "graph_states": 86,
+    "budget_observations": 87,
+    "fact_observations": 130
+  },
+  "event_counts": {
+    "before_exhausted_child_exclusion": 42,
+    "branch_begin": 42,
+    "budget_unknown_no_exclusion": 1,
+    "checked_search_budget_observation": 87,
+    "complete_chosen_domain_order": 43,
+    "dependency_complete_fact_observation": 130,
+    "global_decision": 86,
+    "node_enter": 43,
+    "node_return": 43,
+    "overlay_after_whole_resync": 128,
+    "paired_rollback": 86,
+    "parent_local_exhausted_child_exclusion": 42,
+    "primitive_step": 43,
+    "proved_global_dead": 42,
+    "solve_begin": 1,
+    "solve_return": 1,
+    "whole_controller_resync": 128
+  },
+  "budget_observations": [
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 0.007982875000000167,
+      "checked_search_limit_seconds": 20,
+      "index": 0,
+      "primitive_attempts": 0,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 0.017482874999999787,
+      "checked_search_limit_seconds": 20,
+      "index": 1,
+      "primitive_attempts": 0,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 0.4842004169999998,
+      "checked_search_limit_seconds": 20,
+      "index": 2,
+      "primitive_attempts": 1,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 0.49416404199999997,
+      "checked_search_limit_seconds": 20,
+      "index": 3,
+      "primitive_attempts": 1,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 0.9490348339999999,
+      "checked_search_limit_seconds": 20,
+      "index": 4,
+      "primitive_attempts": 2,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 0.9585547920000002,
+      "checked_search_limit_seconds": 20,
+      "index": 5,
+      "primitive_attempts": 2,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 1.4178614170000001,
+      "checked_search_limit_seconds": 20,
+      "index": 6,
+      "primitive_attempts": 3,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 1.427626417,
+      "checked_search_limit_seconds": 20,
+      "index": 7,
+      "primitive_attempts": 3,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 1.8876056669999999,
+      "checked_search_limit_seconds": 20,
+      "index": 8,
+      "primitive_attempts": 4,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 1.8973272090000002,
+      "checked_search_limit_seconds": 20,
+      "index": 9,
+      "primitive_attempts": 4,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 2.3492602089999997,
+      "checked_search_limit_seconds": 20,
+      "index": 10,
+      "primitive_attempts": 5,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 2.3590392089999996,
+      "checked_search_limit_seconds": 20,
+      "index": 11,
+      "primitive_attempts": 5,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 2.817626209,
+      "checked_search_limit_seconds": 20,
+      "index": 12,
+      "primitive_attempts": 6,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 2.827460417,
+      "checked_search_limit_seconds": 20,
+      "index": 13,
+      "primitive_attempts": 6,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 3.288884459,
+      "checked_search_limit_seconds": 20,
+      "index": 14,
+      "primitive_attempts": 7,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 3.298688542,
+      "checked_search_limit_seconds": 20,
+      "index": 15,
+      "primitive_attempts": 7,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 3.757131875,
+      "checked_search_limit_seconds": 20,
+      "index": 16,
+      "primitive_attempts": 8,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 3.7674192919999996,
+      "checked_search_limit_seconds": 20,
+      "index": 17,
+      "primitive_attempts": 8,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 4.23319875,
+      "checked_search_limit_seconds": 20,
+      "index": 18,
+      "primitive_attempts": 9,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 4.242975792,
+      "checked_search_limit_seconds": 20,
+      "index": 19,
+      "primitive_attempts": 9,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 4.698610959,
+      "checked_search_limit_seconds": 20,
+      "index": 20,
+      "primitive_attempts": 10,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 4.708461792,
+      "checked_search_limit_seconds": 20,
+      "index": 21,
+      "primitive_attempts": 10,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 5.176714125,
+      "checked_search_limit_seconds": 20,
+      "index": 22,
+      "primitive_attempts": 11,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 5.186833167,
+      "checked_search_limit_seconds": 20,
+      "index": 23,
+      "primitive_attempts": 11,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 5.651410209,
+      "checked_search_limit_seconds": 20,
+      "index": 24,
+      "primitive_attempts": 12,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 5.661312084,
+      "checked_search_limit_seconds": 20,
+      "index": 25,
+      "primitive_attempts": 12,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 6.126710374999999,
+      "checked_search_limit_seconds": 20,
+      "index": 26,
+      "primitive_attempts": 13,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 6.137041583999999,
+      "checked_search_limit_seconds": 20,
+      "index": 27,
+      "primitive_attempts": 13,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 6.591937875,
+      "checked_search_limit_seconds": 20,
+      "index": 28,
+      "primitive_attempts": 14,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 6.602188792000001,
+      "checked_search_limit_seconds": 20,
+      "index": 29,
+      "primitive_attempts": 14,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 7.05953625,
+      "checked_search_limit_seconds": 20,
+      "index": 30,
+      "primitive_attempts": 15,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 7.069735625000001,
+      "checked_search_limit_seconds": 20,
+      "index": 31,
+      "primitive_attempts": 15,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 7.536845499999999,
+      "checked_search_limit_seconds": 20,
+      "index": 32,
+      "primitive_attempts": 16,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 7.547412584000001,
+      "checked_search_limit_seconds": 20,
+      "index": 33,
+      "primitive_attempts": 16,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 8.01252475,
+      "checked_search_limit_seconds": 20,
+      "index": 34,
+      "primitive_attempts": 17,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 8.022736834,
+      "checked_search_limit_seconds": 20,
+      "index": 35,
+      "primitive_attempts": 17,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 8.4813245,
+      "checked_search_limit_seconds": 20,
+      "index": 36,
+      "primitive_attempts": 18,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 8.491665833999999,
+      "checked_search_limit_seconds": 20,
+      "index": 37,
+      "primitive_attempts": 18,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 8.957433792,
+      "checked_search_limit_seconds": 20,
+      "index": 38,
+      "primitive_attempts": 19,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 8.968084084000001,
+      "checked_search_limit_seconds": 20,
+      "index": 39,
+      "primitive_attempts": 19,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 9.434621292,
+      "checked_search_limit_seconds": 20,
+      "index": 40,
+      "primitive_attempts": 20,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 9.444871834,
+      "checked_search_limit_seconds": 20,
+      "index": 41,
+      "primitive_attempts": 20,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 9.914125917,
+      "checked_search_limit_seconds": 20,
+      "index": 42,
+      "primitive_attempts": 21,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 9.924526749999998,
+      "checked_search_limit_seconds": 20,
+      "index": 43,
+      "primitive_attempts": 21,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 10.390383959000001,
+      "checked_search_limit_seconds": 20,
+      "index": 44,
+      "primitive_attempts": 22,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 10.400957250000001,
+      "checked_search_limit_seconds": 20,
+      "index": 45,
+      "primitive_attempts": 22,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 10.865359834,
+      "checked_search_limit_seconds": 20,
+      "index": 46,
+      "primitive_attempts": 23,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 10.875928792,
+      "checked_search_limit_seconds": 20,
+      "index": 47,
+      "primitive_attempts": 23,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 11.341745542000002,
+      "checked_search_limit_seconds": 20,
+      "index": 48,
+      "primitive_attempts": 24,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 11.352091042000001,
+      "checked_search_limit_seconds": 20,
+      "index": 49,
+      "primitive_attempts": 24,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 11.819641833999999,
+      "checked_search_limit_seconds": 20,
+      "index": 50,
+      "primitive_attempts": 25,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 11.830621209,
+      "checked_search_limit_seconds": 20,
+      "index": 51,
+      "primitive_attempts": 25,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 12.307581709,
+      "checked_search_limit_seconds": 20,
+      "index": 52,
+      "primitive_attempts": 26,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 12.318380667,
+      "checked_search_limit_seconds": 20,
+      "index": 53,
+      "primitive_attempts": 26,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 12.785453875000002,
+      "checked_search_limit_seconds": 20,
+      "index": 54,
+      "primitive_attempts": 27,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 12.796127542,
+      "checked_search_limit_seconds": 20,
+      "index": 55,
+      "primitive_attempts": 27,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 13.265336584,
+      "checked_search_limit_seconds": 20,
+      "index": 56,
+      "primitive_attempts": 28,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 13.276036000000001,
+      "checked_search_limit_seconds": 20,
+      "index": 57,
+      "primitive_attempts": 28,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 13.740633459000001,
+      "checked_search_limit_seconds": 20,
+      "index": 58,
+      "primitive_attempts": 29,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 13.751380042000001,
+      "checked_search_limit_seconds": 20,
+      "index": 59,
+      "primitive_attempts": 29,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 14.223241000000002,
+      "checked_search_limit_seconds": 20,
+      "index": 60,
+      "primitive_attempts": 30,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 14.234150125,
+      "checked_search_limit_seconds": 20,
+      "index": 61,
+      "primitive_attempts": 30,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 14.702983917000001,
+      "checked_search_limit_seconds": 20,
+      "index": 62,
+      "primitive_attempts": 31,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 14.714026209,
+      "checked_search_limit_seconds": 20,
+      "index": 63,
+      "primitive_attempts": 31,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 15.181279084,
+      "checked_search_limit_seconds": 20,
+      "index": 64,
+      "primitive_attempts": 32,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 15.192262792000001,
+      "checked_search_limit_seconds": 20,
+      "index": 65,
+      "primitive_attempts": 32,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 15.664523792,
+      "checked_search_limit_seconds": 20,
+      "index": 66,
+      "primitive_attempts": 33,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 15.675532959000002,
+      "checked_search_limit_seconds": 20,
+      "index": 67,
+      "primitive_attempts": 33,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 16.143533167,
+      "checked_search_limit_seconds": 20,
+      "index": 68,
+      "primitive_attempts": 34,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 16.154679875,
+      "checked_search_limit_seconds": 20,
+      "index": 69,
+      "primitive_attempts": 34,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 16.628055917,
+      "checked_search_limit_seconds": 20,
+      "index": 70,
+      "primitive_attempts": 35,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 16.63911025,
+      "checked_search_limit_seconds": 20,
+      "index": 71,
+      "primitive_attempts": 35,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 17.112278542000002,
+      "checked_search_limit_seconds": 20,
+      "index": 72,
+      "primitive_attempts": 36,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 17.123446667,
+      "checked_search_limit_seconds": 20,
+      "index": 73,
+      "primitive_attempts": 36,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 17.594605125,
+      "checked_search_limit_seconds": 20,
+      "index": 74,
+      "primitive_attempts": 37,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 17.605718625,
+      "checked_search_limit_seconds": 20,
+      "index": 75,
+      "primitive_attempts": 37,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 18.068506334000002,
+      "checked_search_limit_seconds": 20,
+      "index": 76,
+      "primitive_attempts": 38,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 18.079658792,
+      "checked_search_limit_seconds": 20,
+      "index": 77,
+      "primitive_attempts": 38,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 18.555967917,
+      "checked_search_limit_seconds": 20,
+      "index": 78,
+      "primitive_attempts": 39,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 18.567276834,
+      "checked_search_limit_seconds": 20,
+      "index": 79,
+      "primitive_attempts": 39,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 19.037318167000002,
+      "checked_search_limit_seconds": 20,
+      "index": 80,
+      "primitive_attempts": 40,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 19.048920584,
+      "checked_search_limit_seconds": 20,
+      "index": 81,
+      "primitive_attempts": 40,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 19.288840792000002,
+      "checked_search_limit_seconds": 20,
+      "index": 82,
+      "primitive_attempts": 41,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 19.297405917000003,
+      "checked_search_limit_seconds": 20,
+      "index": 83,
+      "primitive_attempts": 41,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 19.768026167000002,
+      "checked_search_limit_seconds": 20,
+      "index": 84,
+      "primitive_attempts": 42,
+      "stage": "before-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 19.776349459000002,
+      "checked_search_limit_seconds": 20,
+      "index": 85,
+      "primitive_attempts": 42,
+      "stage": "after-order",
+      "time_exhausted": false
+    },
+    {
+      "attempt_limit": 128,
+      "attempts_exhausted": false,
+      "checked_search_elapsed_seconds": 20.453223584,
+      "checked_search_limit_seconds": 20,
+      "index": 86,
+      "primitive_attempts": 43,
+      "stage": "before-order",
+      "time_exhausted": true
+    }
+  ],
+  "cold_costs": {
+    "metadata_admission_seconds": 0.175751,
+    "import_and_construction_seconds": 1.9061969170000002,
+    "worker_before_receipt_serialization_seconds": 22.974771875,
+    "postterminal_metadata_before_disposition_write_seconds": 0.10487637500000001,
+    "historical_catalog_preparation_and_audit": "Separate previously accepted preparation phases; not included in this fresh caller interval. Independent review and publication also additional."
+  },
+  "snapshots": {
+    "initial": {
+      "state_sha256": "0d7a06e433a52ac439d1c53a71eb14767bda3b06ff6efa20519ff216f1200b1e",
+      "state": {
+        "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+        "domains": [
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 0
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 1
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 2
+          },
+          {
+            "base_count": 40476,
+            "count": 40476,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 3
+          },
+          {
+            "base_count": 41564,
+            "count": 41564,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 4
+          },
+          {
+            "base_count": 200966,
+            "count": 200966,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 5
+          },
+          {
+            "base_count": 518682,
+            "count": 518682,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 6
+          },
+          {
+            "base_count": 994712,
+            "count": 994712,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 7
+          },
+          {
+            "base_count": 1629056,
+            "count": 1629056,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 8
+          },
+          {
+            "base_count": 2421714,
+            "count": 2421714,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 9
+          },
+          {
+            "base_count": 3372686,
+            "count": 3372686,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 10
+          },
+          {
+            "base_count": 4481972,
+            "count": 4481972,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 11
+          },
+          {
+            "base_count": 5749572,
+            "count": 5749572,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 12
+          },
+          {
+            "base_count": 7175486,
+            "count": 7175486,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 13
+          },
+          {
+            "base_count": 8759714,
+            "count": 8759714,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 14
+          },
+          {
+            "base_count": 10502256,
+            "count": 10502256,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 15
+          },
+          {
+            "base_count": 12403112,
+            "count": 12403112,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 16
+          },
+          {
+            "base_count": 14462282,
+            "count": 14462282,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 17
+          },
+          {
+            "base_count": 16679766,
+            "count": 16679766,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 18
+          },
+          {
+            "base_count": 19055564,
+            "count": 19055564,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 19
+          },
+          {
+            "base_count": 21589676,
+            "count": 21589676,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 20
+          },
+          {
+            "base_count": 24282102,
+            "count": 24282102,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 21
+          },
+          {
+            "base_count": 27132842,
+            "count": 27132842,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 22
+          },
+          {
+            "base_count": 12540,
+            "count": 12540,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  23,
+                  2127
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 23
+          }
+        ],
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            90,
+            1
+          ],
+          [
+            1,
+            1,
+            15456,
+            1
+          ],
+          [
+            1,
+            2,
+            15655,
+            1
+          ],
+          [
+            1,
+            23,
+            2127,
+            1
+          ]
+        ],
+        "model_epoch": "9b56ca5647893e593239c9b852e8049f8c4831970d6f3619353edafd451ee730",
+        "order": [
+          [
+            85,
+            0,
+            []
+          ],
+          [
+            16079,
+            1,
+            []
+          ],
+          [
+            16454,
+            2,
+            []
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "runtime_authority_sha256": "0676b5764f75da8220b50467e6163d4410d23f2e7259f27502b2f30292bd68f9",
+        "schema": "compact-complete-dynamic-point-state-v2",
+        "selected_generations": [
+          [
+            [
+              85,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              16079,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              16454,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "first_trial": {
+      "state_sha256": "c530a7d4d90e8671124cc7cbc1178f60a53b6a8ae0769d28dfda5029de18427e",
+      "state": {
+        "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+        "domains": [
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 0
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 1
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 2
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 3
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 4
+          },
+          {
+            "base_count": 40477,
+            "count": 40477,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 5
+          },
+          {
+            "base_count": 41569,
+            "count": 41569,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 6
+          },
+          {
+            "base_count": 200975,
+            "count": 200975,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 7
+          },
+          {
+            "base_count": 518695,
+            "count": 518695,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 8
+          },
+          {
+            "base_count": 994729,
+            "count": 994729,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 9
+          },
+          {
+            "base_count": 1629077,
+            "count": 1629077,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 10
+          },
+          {
+            "base_count": 2421739,
+            "count": 2421739,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 11
+          },
+          {
+            "base_count": 3372715,
+            "count": 3372715,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 12
+          },
+          {
+            "base_count": 4482005,
+            "count": 4482005,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 13
+          },
+          {
+            "base_count": 5749609,
+            "count": 5749609,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 14
+          },
+          {
+            "base_count": 7175527,
+            "count": 7175527,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 15
+          },
+          {
+            "base_count": 8759759,
+            "count": 8759759,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 16
+          },
+          {
+            "base_count": 10502305,
+            "count": 10502305,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 17
+          },
+          {
+            "base_count": 12403165,
+            "count": 12403165,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 18
+          },
+          {
+            "base_count": 14462339,
+            "count": 14462339,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 19
+          },
+          {
+            "base_count": 16679827,
+            "count": 16679827,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 20
+          },
+          {
+            "base_count": 19055629,
+            "count": 19055629,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 21
+          },
+          {
+            "base_count": 21589745,
+            "count": 21589745,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 0,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 22
+          },
+          {
+            "base_count": 0,
+            "count": 0,
+            "excluded_legal": [],
+            "factor_relation": {
+              "all_relevant_assigned_marks": [
+                [
+                  1,
+                  0,
+                  90
+                ],
+                [
+                  1,
+                  1,
+                  15456
+                ],
+                [
+                  1,
+                  2,
+                  15655
+                ],
+                [
+                  1,
+                  3,
+                  238
+                ],
+                [
+                  1,
+                  4,
+                  35811
+                ],
+                [
+                  1,
+                  23,
+                  2127
+                ],
+                [
+                  2,
+                  23,
+                  -20
+                ],
+                [
+                  3,
+                  23,
+                  -19
+                ]
+              ],
+              "catalog_identity_sha256": "6a9b6e03b251df959b225c8397ea615301dcffd971b4999a4c4a6d5c6c013029",
+              "positive_total": 1,
+              "recipe_order": "all_original_recipe_indices",
+              "reference_order": "all_ordered_strict_prior_row_pairs",
+              "schema": "ordered-proof-row-full-mark-dependency-v1",
+              "unequal_input_codes_disallow_same_reference": true
+            },
+            "row": 23
+          }
+        ],
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            90,
+            1
+          ],
+          [
+            1,
+            1,
+            15456,
+            1
+          ],
+          [
+            1,
+            2,
+            15655,
+            1
+          ],
+          [
+            1,
+            3,
+            238,
+            1
+          ],
+          [
+            1,
+            4,
+            35811,
+            1
+          ],
+          [
+            1,
+            23,
+            2127,
+            2
+          ],
+          [
+            2,
+            23,
+            -20,
+            1
+          ],
+          [
+            3,
+            23,
+            -19,
+            1
+          ]
+        ],
+        "model_epoch": "9b56ca5647893e593239c9b852e8049f8c4831970d6f3619353edafd451ee730",
+        "order": [
+          [
+            85,
+            0,
+            []
+          ],
+          [
+            16079,
+            1,
+            []
+          ],
+          [
+            16454,
+            2,
+            []
+          ],
+          [
+            2109,
+            23,
+            [
+              3,
+              4
+            ]
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "runtime_authority_sha256": "0676b5764f75da8220b50467e6163d4410d23f2e7259f27502b2f30292bd68f9",
+        "schema": "compact-complete-dynamic-point-state-v2",
+        "selected_generations": [
+          [
+            [
+              85,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              2109,
+              23,
+              [
+                3,
+                4
+              ]
+            ],
+            1
+          ],
+          [
+            [
+              16079,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              16454,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "snapshot_observations": {
+    "first_branch": [
+      "branch",
+      23,
+      12540,
+      0
+    ],
+    "first_primitive_key": [
+      2109,
+      23,
+      [
+        3,
+        4
+      ]
+    ],
+    "primitive_event_index": 10,
+    "first_dead": [
+      "dead",
+      3,
+      0,
+      0
+    ],
+    "first_dead_event_index": 15,
+    "formula_codes_not_decoded_to_unrecorded_formulas": true,
+    "mark_columns": [
+      "layer",
+      "row",
+      "exact_value",
+      "reference_count"
+    ],
+    "source_offset_definition_latex": "\\(m(2+p,r)=s_p-r\\)"
+  },
+  "language_profile": {
+    "native_rule_tags": [
+      "axiom",
+      "tautology",
+      "refl",
+      "instantiate",
+      "distribute",
+      "eq_subst",
+      "mp",
+      "generalize",
+      "induction",
+      "assumption",
+      "block"
+    ],
+    "current_compact_rule_tags": [
+      "axiom",
+      "instantiate",
+      "eq_subst",
+      "mp",
+      "assumption"
+    ],
+    "proposed_new_tag": "induction",
+    "status": "reviewed_source_specification_only_not_implemented_or_executed",
+    "current_geometry": "one-sort guarded I.2 uniqueness fragment",
+    "restricted_induction_substitution_latex": "\\(P[x:=0]\\), \\(P[x:=S(x)]\\)",
+    "native_top_level_context": "empty; closed-Gamma adapter is prospective",
+    "full_PA_Hilbert_completeness": false
+  },
+  "next_engine_experiment": {
+    "status": "prospective_source_only",
+    "priority": "Reversible complete recipe-classification snapshots, preserving affected-row updates, exact class multiplicities, complete incidence, guards, scheduler and rollback.",
+    "internal_classification_timing_isolated": false,
+    "candidate_record_API_changes_BASE_transactions": false,
+    "candidate_record_qualification": "Separate unexecuted checking qualification; all twelve complete cases and controls remain required.",
+    "target_inventory_budgets_to_preserve": true
+  },
+  "fingerprints": [
+    {
+      "artifact": "ROOT-actual-disposition-v1.json",
+      "bytes": 3457,
+      "sha256": "83ca8131dbb3afb14e294a56527783c4817d7298dd0c9366a7197b61e19df231"
+    },
+    {
+      "artifact": "result-v1.json.gz",
+      "bytes": 64482,
+      "sha256": "eb189667108891c78c5f37b294656bb0014746694d00346a579e83291e0531ed"
+    },
+    {
+      "artifact": "worker-receipt-v1.json",
+      "bytes": 5762,
+      "sha256": "302e7d56099272c97d0381130e9263e2e7d0f2e85e5a8e524e7d7d0b0a8b88a2"
+    },
+    {
+      "artifact": "actual-outcome-review-v1.json",
+      "bytes": 14114,
+      "sha256": "2152c92ca643c65ab8bcf7564913a03d8f1d3a58483cbb470bba42bbaff2282b"
+    },
+    {
+      "artifact": "base-bottleneck-source-assessment-v1.json",
+      "bytes": 15178,
+      "sha256": "a392c2ac72df9555089de5fc8eaa24dd94935efd0225c2b2d9522a9f6db3551f"
+    },
+    {
+      "artifact": "language-spec-v4.json",
+      "bytes": 40884,
+      "sha256": "f47e92122f816a1d59b45705e06931e69621625dbc0ff681c806b033340910c3"
+    },
+    {
+      "artifact": "catalog-extension-v3.json",
+      "bytes": 24561,
+      "sha256": "beb91dbd9e5dcc3fe70d0a6e6589c01f04aea7e69e4738dca5dcc5d0e20e7a1c"
+    },
+    {
+      "artifact": "first-order-profile-person-source-review-v1.json",
+      "bytes": 18583,
+      "sha256": "97148334f9ae556310bb77952977e6b7fcfc2b71856908bd4b391a5b4ab625a0"
+    },
+    {
+      "artifact": "base-bottleneck-person-source-review-v1.json",
+      "bytes": 13466,
+      "sha256": "6eb010fb699547993ddcd670770cc6ae1fcccbe6626e09f3fb21f5ece1a71dc3"
+    }
+  ]
+}

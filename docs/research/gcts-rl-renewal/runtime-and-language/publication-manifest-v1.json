@@ -1,0 +1,27 @@
+{
+  "schema": "public-research-publication-manifest-v1",
+  "notebook": 131,
+  "scope": "Closed actual UNKNOWN, selected complete saved point snapshots, recorded composite timings and independently reviewed source-only first-order/engine proposals. No scientific execution in reader.",
+  "files": [
+    {
+      "path": "reader.html",
+      "bytes": 24655,
+      "sha256": "e995a9226595e6a747dd330858080fac4b61b401155e51a3e6128c55cdfc3592"
+    },
+    {
+      "path": "reader.css",
+      "bytes": 7626,
+      "sha256": "5552bec98453a040b34ffc55b409930038864476402e847928d8554e62641661"
+    },
+    {
+      "path": "result-view-v1.json",
+      "bytes": 93547,
+      "sha256": "1d4288f1b7ad05935fca67d0f06d04839b2a277aa5445ae5acdd5d82d59d720c"
+    }
+  ],
+  "parent": {
+    "path": "../index.html",
+    "bytes": 372300,
+    "sha256": "95c84031840c74fdffdc9025ae273006b597fda2b9c2cdd631f43825e7bf0595"
+  }
+}
