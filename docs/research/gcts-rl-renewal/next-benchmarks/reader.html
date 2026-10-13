@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Three proposed symbolic Hilbert geometry benchmarks, their blank proof boundaries, and fair comparisons for GCTS cluster reuse and learning. Source specifications only; no new proofs are claimed.">
+  <title>GCTS research · The next symbolic geometry benchmarks</title>
+  <link rel="stylesheet" href="../runtime-and-language/reader.css"><link rel="stylesheet" href="reader.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<header><a href="../index.html#next-benchmarks">Research program</a><span>NOTEBOOK 134 · OCTOBER 12, 2026</span><a href="#evidence">Evidence</a></header>
+<main>
+<section class="hero" id="reader">
+  <p class="eyebrow">SYMBOLIC HILBERT GEOMETRY · PREDECLARED SEARCH TARGETS</p>
+  <h1>Which theorem should<br>the next search discover?</h1>
+  <p class="lead">A useful next test asks the system to compose two guarded line identifications. Two diagnostic statements separate equality transport from a receptor that must itself be derived. Their literal hypotheses and conclusions are specified; their proofs have not been searched in this new benchmark.</p>
+  <div class="metrics"><article><b>\(3\)</b><span>proposed geometry recipients</span></article><article><b>\(24\)</b><span>required rows per recipient</span></article><article><b>\(0\)</b><span>new proofs from this packet</span></article></div>
+</section>
+<nav aria-label="Report sections"><a href="#statements">Concrete statements</a><a href="#boundary">Blank proof boundary</a><a href="#families">What a cluster family must establish</a><a href="#comparisons">Fair comparisons</a><a href="#parallel">Parallel progress</a></nav>
+<section id="statements">
+  <p class="eyebrow">ONE SYMBOLIC LANGUAGE · A DECLARED INCIDENCE THEORY</p>
+  <h2>Line identity followed by incidence transport.</h2>
+  <p>The geometry is symbolic first-order logic. The one-sorted language has explicit point and line predicates and an incidence predicate. Its geometric axiom is Hilbert's guarded line uniqueness axiom, <code>I.2</code>. There are no coordinates, drawing-based inferences or implicit assumptions about the point \(C\).</p>
+  <details><summary>The exact common-point guard</summary>
+    \[\begin{aligned}H(A,B,l,m):={}&\operatorname{Point}(A)\land\operatorname{Point}(B)\land\operatorname{Line}(l)\land\operatorname{Line}(m)\\&\land\neg(A=B)\land\operatorname{Incident}(A,l)\land\operatorname{Incident}(B,l)\\&\land\operatorname{Incident}(A,m)\land\operatorname{Incident}(B,m).\end{aligned}\]
+    <p>The literal syntax tree associates these conjunctions to the right. The guard names the full formula; it introduces no extra inference rule or axiom.</p>
+  </details>
+  <article class="candidate primary"><p class="eyebrow">PRIMARY CANDIDATE · TWO GUARDED IDENTIFICATIONS</p>
+    \[H(A,B,u,v),\ H(A,B,v,w),\ \operatorname{Incident}(C,u)\ \vdash_{\mathcal T_{\mathrm{I.2}}}\ \operatorname{Incident}(C,w).\]
+    <p>In words: the distinct guarded points \(A\) and \(B\) lie on \(u\) and \(v\), and also on \(v\) and \(w\). If \(C\) lies on \(u\), show that \(C\) lies on \(w\).</p>
+    <p class="caption">This mathematical candidate was already named in the earlier ladder. The new packet supplies its exact literal declaration, not a newly discovered theorem.</p>
+  </article>
+  <article class="candidate"><p class="eyebrow">DIAGNOSTIC · EQUALITY WITHOUT A GEOMETRY AXIOM</p>
+    \[u=v,\ v=w,\ \operatorname{Incident}(C,u)\ \vdash_{\mathcal T_{\mathrm{I.2}}}\ \operatorname{Incident}(C,w).\]
+    <p>If the two line equalities are given, transport the incidence statement to the final line. This tests logical composition; its success would not show that the search discovered a substantive geometric result.</p>
+  </article>
+  <article class="candidate"><p class="eyebrow">DIAGNOSTIC · A DERIVED RECEPTOR</p>
+    \[H(A,B,u,v),\ \bigl(H(A,B,u,v)\to H(A,B,v,w)\bigr),\ \operatorname{Incident}(C,u)\ \vdash_{\mathcal T_{\mathrm{I.2}}}\ \operatorname{Incident}(C,w).\]
+    <p>The second common-point guard is supplied only as a consequence of the first. A later cluster must attach to an actually derived earlier formula, with its dependency checked, rather than assume that guard is a fixed root fact.</p>
+  </article>
+  <p class="note">All three have separately indexed hypothesis occurrences and the same planned finite grammar. No proof word, winning prefix, policy checkpoint or new axiom equal to the conclusion is supplied. Hilbert existence, order, congruence and continuity axioms remain outside this incidence slice.</p>
+</section>
+<section id="boundary">
+  <p class="eyebrow">PROPOSED BOUNDARY · NO PROOF TILES PLACED</p>
+  <h2>The middle rows are the search problem.</h2>
+  <figure>
+    <div class="legend"><span><i class="formula"></i>Formula layer</span><span><i class="source-one"></i>First ordered read layer</span><span><i class="source-two"></i>Second ordered read layer</span></div>
+    <div class="boundary-scroll"><div class="boundary-board">
+      <div class="boundary-head"><span>Row</span><span>Declared formula</span><span>First read</span><span>Second read</span></div>
+      <div class="boundary-row"><span>\(0\)</span><span class="boundary-formula">\(H(A,B,u,v)\)</span><span class="empty first">Unassigned</span><span class="empty second">Unassigned</span></div>
+      <div class="boundary-row"><span>\(1\)</span><span class="boundary-formula">\(H(A,B,v,w)\)</span><span class="empty first">Unassigned</span><span class="empty second">Unassigned</span></div>
+      <div class="boundary-row"><span>\(2\)</span><span class="boundary-formula">\(\operatorname{Incident}(C,u)\)</span><span class="empty first">Unassigned</span><span class="empty second">Unassigned</span></div>
+      <div class="open-rows"><b>\(3,\ldots,22\)</b><span>Proof rows unfilled.<br>No derivation or read offsets supplied.</span></div>
+      <div class="boundary-row target"><span>\(23\)</span><span class="boundary-formula">\(\operatorname{Incident}(C,w)\)</span><span class="empty first">Unassigned</span><span class="empty second">Unassigned</span></div>
+    </div></div>
+    <figcaption>Symbolic boundary sketch for the primary candidate. A new registry has not allocated formula codes and no recipient graph has been constructed. These are source declarations, not saved point values or an accepted tile placement.</figcaption>
+  </figure>
+  <p>The proposed reduction uses one unit of positive occupancy per primitive row, formula markings and two ordered negative-offset read channels. Tiles have a fixed orientation and translate vertically. All \(24\) rows must be filled; reaching the target earlier is a milestone, not completion of the declared boundary. Blank means unassigned; an assigned code \(0\) would still constrain matching.</p>
+  <p>The exact same point rules must check every cluster expansion and every distant marking. Global dead and forced checks precede branching, and complete primitive fallback remains available. The proposed roots all have generation \(0\), so this benchmark does not test differing generations or general fractional and shared positive supports.</p>
+  <p><a href="../cache-conformance/reader.html#markings">The completed cache controls show actual saved distant markings.</a> Their result qualifies the small mechanical fixtures, not these new recipient statements or the complete production relation.</p>
+</section>
+<section id="families">
+  <p class="eyebrow">REUSABLE LEMMAS · THREE DISTINCT AUTHORITY LEVELS</p>
+  <h2>A family needs more than a body name.</h2>
+  <div class="family-levels">
+    <article><span class="stage">A</span><h3>Exact syntax reuse</h3><p>Mine every declared short window from independently accepted training proofs. Rebind every literal witness and ordered premise to licensed recipient recipes. A fragment that maps nowhere stays visible as unavailable.</p><b>Current source scope</b></article>
+    <article><span class="stage">B</span><h3>Parameterized families</h3><p>A generic abstraction algorithm must preserve every rule, axiom dependency, binder and ordered premise under each allowed constant binding. Independently check the entire transformed expansion, including failed and coincident bindings.</p><b>New authority required</b></article>
+    <article><span class="stage">C</span><h3>Higher clusters</h3><p>A cluster may consume a genuinely earlier cluster output. Keep the full dependency structure, count shared primitive placements once, and retain every receptor occurrence. Recursive promotion needs its own checked composition grammar.</p><b>New composer required</b></article>
+  </div>
+  <p>These are the mechanisms through which flexible receptors could help build larger proofs. The present packet does not implement an automatically mined parameterized family or arbitrary hierarchical composition. Existing ground proof reuse supplies useful precedent, while the new search must earn its own body, context and runtime authority.</p>
+</section>
+<section id="comparisons">
+  <p class="eyebrow">MATCH THE LANGUAGE, INVENTORY AND COSTS</p>
+  <h2>What would count as a contribution?</h2>
+  <div class="table-wrap"><table><thead><tr><th>Comparison</th><th>Question answered</th><th>Required control</th></tr></thead><tbody>
+    <tr><td>Expanded and compact representations</td><td>Does representation reduce total cost?</td><td>Identical licensed primitives, ordering, theory and boundary; independent whole-catalogue correspondence and both cold costs.</td></tr>
+    <tr><td>Primitive fallback, fixed inventory advice</td><td>Does checked fragment reuse help?</td><td>Construct and charge the same complete library and pool in both lanes. Separate empty-library discovery from this advice comparison.</td></tr>
+    <tr><td>Uniform and trained proposal policy</td><td>Does learning help beyond the inventory?</td><td>Same pool, action menu, features and fallback; qualified training-only checkpoint and actual changed proposal probabilities.</td></tr>
+    <tr><td>Ordinary search with the same library</td><td>Does the point/marking search organization help?</td><td>Same licensed calculus and fully checked expansions. Disclose the different scheduler and compare accepted results and inclusive resources.</td></tr>
+    <tr><td>Established external prover</td><td>How does the experiment relate to existing proof search?</td><td>Exact statement and library translation, checked returned steps, full cold costs and explicit calculus/boundary differences.</td></tr>
+  </tbody></table></div>
+  <p>Successful proof search must return a complete checked proof whose rows can be decoded into formulas, ordered references and readable English. Reduced branching alone is insufficient: preparation, learning, proposal validation, checking and cleanup all belong in the cost. Training may see statements and syntax bounds, but receives no held-out proof, trace, reward or successful prefix.</p>
+  <p class="note">No comparison in this new packet has run. The current search slice has five rule kinds; the separate induction constructor is not yet a sixth licensed search rule. A single universal finite Wang proof compiler and general first-order completeness remain open objectives.</p>
+</section>
+<section id="parallel">
+  <h2>Parallel work now has concrete next interfaces.</h2>
+  <div class="tracks"><article><h3>Engine</h3><p>ROOT and independent source reviews reconcile the complete raw-recipe cache oracle and harness. Fresh owned execution sources are being prepared for all declared production controls.</p></article><article><h3>Arithmetic</h3><p>The induction helper, complete finite-pool controls and adapter design are reconciled. A local execution wrapper is being prepared; native, production and proof integration remain pending.</p></article><article><h3>Geometry</h3><p>The three literal statements and receptor distinctions are reconciled. A fresh declaration/fixture successor is being prepared; recipient compilation and search remain pending.</p></article></div>
+  <p>The production test declares \(54\) complete state observations, \(1296\) row EOF checks, \(119633\) primitive licenses and retained depth \(20\). These are source obligations, not completed measurements. It preserves the full catalogue and original envelope; a missing control or cutoff makes the complete phase UNKNOWN.</p>
+  <p>The original production BASE remains UNKNOWN after \(43\) attempts, with no proof. The separate completed \(12/12\) tiny controls remain the latest actual result. Independent review continues to separate source readiness, owned execution, proof acceptance and any eventual GCTS or RL advantage.</p>
+</section>
+<section id="evidence">
+  <h2>Source evidence, not new experimental results.</h2>
+  <p><a href="source-view-v1.json">Sanitized declarations, scope and exact source fingerprints</a> · <a href="publication-manifest-v1.json">Public file fingerprints</a> · <a href="../cache-conformance/reader.html#outcome">Latest completed experiment</a></p>
+  <p>This page performs only mathematical typesetting. It runs no search, compiler, graph, schema constructor, checker or learner. Source successors and all actual execution gates remain separate from this display.</p>
+</section>
+</main>
+</body>
+</html>

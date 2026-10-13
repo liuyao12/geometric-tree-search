@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "bytes": 13584,
+      "path": "reader.html",
+      "sha256": "daca4c675064f4291a04cb9f83d79149079328c1710963b14bbe3508ca1a7499"
+    },
+    {
+      "bytes": 1980,
+      "path": "reader.css",
+      "sha256": "308922bf98b6056052d52bb66070f4c10ab38c4c5619dc7bde3276cf056adcce"
+    },
+    {
+      "bytes": 29373,
+      "path": "source-view-v1.json",
+      "sha256": "5ebff9aa358551de8e26e6b7f31b42f35138704f6e5ad7e8590ffca098226f1c"
+    }
+  ],
+  "live_verification_pending": true,
+  "notebook": 134,
+  "schema": "next-benchmarks-publication-manifest-v1",
+  "scientific_code_executed_in_browser": false,
+  "source_only_new_benchmark_checkpoint": true
+}

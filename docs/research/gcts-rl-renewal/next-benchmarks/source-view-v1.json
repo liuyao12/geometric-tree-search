@@ -1,0 +1,1154 @@
+{
+  "all_new_case_proof_results_null": true,
+  "boundary_contract": {
+    "all_required_roots_generation": 0,
+    "exterior_formula_sentinel": -1,
+    "exterior_rows": [
+      -23,
+      -1
+    ],
+    "formula_mark_channel": 1,
+    "missing_and_zero": "Assigned formula code zero remains a value. Missing is unconstrained. Every ordered read port retained; input aliasing allowed only if formula values agree.",
+    "ordered_MP_offset_channels": [
+      2,
+      3
+    ],
+    "orientation": "identity; vertical translations only",
+    "proof_semantics": "All24 row obligations must be filled, and row23 is the actual conclusion. A target reached earlier is only a milestone until full boundary completion and independent checking.",
+    "required_rows": 24,
+    "seed_generations": [
+      0,
+      0,
+      0
+    ],
+    "seed_rows": [
+      0,
+      1,
+      2
+    ],
+    "target_row": 23,
+    "tile_occupancy": "one exact positive point with unit capacity per primitive row"
+  },
+  "cases": [
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "If u equals v, v equals w, and C is incident with u, conclude that C is incident with w.",
+      "hypotheses": [
+        "eq-uv",
+        "eq-vw",
+        "inc-Cu"
+      ],
+      "id": "next-inc-equality-line-chain",
+      "independent_acceptance": null,
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "heldout integration diagnostic",
+      "rows": 24,
+      "scope": "Equality transport in a symbolic incidence predicate. This conclusion does not need the I.2 axiom and is not a substantive new geometry result.",
+      "split": "evaluation",
+      "statement_latex": "u=v,\\ v=w,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+      "target": "inc-Cw"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "The distinct guarded points A and B lie on u and v, and also on v and w. If C is incident with u, conclude that C is incident with w.",
+      "hypotheses": [
+        "guard-ABuv",
+        "guard-ABvw",
+        "inc-Cu"
+      ],
+      "id": "next-inc-two-uniqueness",
+      "independent_acceptance": null,
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "primary next heldout geometry candidate",
+      "rows": 24,
+      "scope": "Two guarded I.2 uniqueness instances compose. This exact mathematical candidate was already named proposed-hi-two-identifications in the prior ladder; this file advances its literal declaration, not its novelty.",
+      "split": "evaluation",
+      "statement_latex": "H(A,B,u,v),\\ H(A,B,v,w),\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+      "target": "inc-Cw"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "The first common-point guard is assumed. That guard implies a second guard for v and w. If C is incident with u, conclude that C is incident with w.",
+      "hypotheses": [
+        "guard-ABuv",
+        "guard-ABuv-implies-ABvw",
+        "inc-Cu"
+      ],
+      "id": "next-inc-derived-middle-guard",
+      "independent_acceptance": null,
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "heldout receptor-dependency diagnostic",
+      "rows": 24,
+      "scope": "The second receptor guard must be obtained by an actual earlier derivation, rather than treated as a fixed root fact. No claimed row fit or successful placement sequence is supplied.",
+      "split": "evaluation",
+      "statement_latex": "H(A,B,u,v),\\ (H(A,B,u,v)\\Rightarrow H(A,B,v,w)),\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+      "target": "inc-Cw"
+    }
+  ],
+  "evidence_fingerprints": [
+    {
+      "bytes": 35493,
+      "label": "geometry_literal_declarations",
+      "sha256": "a9748e01636323ab886f4e5e41d5d89ae9ef56cf36dbb7884e53c537597a83bd"
+    },
+    {
+      "bytes": 26296,
+      "label": "geometry_protocol",
+      "sha256": "c0b5499a2d25bdec5304eb50c810aad8cdbc02ed1d0a6f42b38f86371c0eb1ab"
+    },
+    {
+      "bytes": 11063,
+      "label": "geometry_ROOT_source_review",
+      "sha256": "c1bb65ea01c189010bcc28dd2c853dbdd179ccc438af3b37fb19434342ecd32f"
+    },
+    {
+      "bytes": 5126,
+      "label": "geometry_literal_compiler_handoff",
+      "sha256": "b722a2e8311b0eb9a8c96e39b4e2407226550055abf5b2025c2010cbae7c680e"
+    },
+    {
+      "bytes": 17135,
+      "label": "full_catalogue_oracle",
+      "sha256": "9c6be043d89c9d64e28f91d5f7a34a8a654b53ba7fc54df2ebcde6343c03a1a6"
+    },
+    {
+      "bytes": 19449,
+      "label": "full_catalogue_harness",
+      "sha256": "69f01092871db888a3ba2b60dc7c5553c6e6bc5dc9a6685ff2db9ed553937915"
+    },
+    {
+      "bytes": 21938,
+      "label": "full_catalogue_protocol",
+      "sha256": "9c06831b6fe7a0b3696d9dd51f3b901a0a3b29fea89d512213d6fc8126364a45"
+    },
+    {
+      "bytes": 61004,
+      "label": "full_catalogue_independent_source_review",
+      "sha256": "65a003e4faaf15e7169e1d50552a937e5394164f675504ba894589f527e5cf30"
+    },
+    {
+      "bytes": 11416,
+      "label": "full_catalogue_ROOT_source_reconciliation",
+      "sha256": "23e4259f397cb82cbc3d1f6715de0884a9b39ac390dd607acc9163e18dca8997"
+    },
+    {
+      "bytes": 10706,
+      "label": "full_catalogue_ROOT_peer_reconciliation",
+      "sha256": "9e0f085a205e1c56c5dec501dcb7d24ebb3d683b8ace773f480c243322127da8"
+    },
+    {
+      "bytes": 9785,
+      "label": "induction_helper",
+      "sha256": "43f8e931cd51e6b5c4299247cb0d5d5c2086f88db0ebc03c29b6dd00ab7660fa"
+    },
+    {
+      "bytes": 25448,
+      "label": "induction_control_worker",
+      "sha256": "ba343bd3082cb772909681d3bf5651ab717f618b97ee73dfbc7735522f087ae2"
+    },
+    {
+      "bytes": 31185,
+      "label": "induction_adapter_design",
+      "sha256": "02791ad037af3a8e796b7f12f2c1a6d46f3b1b9c938702348aca27fd8b88ec67"
+    },
+    {
+      "bytes": 7317,
+      "label": "induction_ROOT_source_reconciliation",
+      "sha256": "8a36aacd0ebc8c663f53fa8297b21425b42c63bebca2e65d7519323833ed15a6"
+    },
+    {
+      "bytes": 2801,
+      "label": "tiny_cache_actual_ROOT_close",
+      "sha256": "7aa1f0d0a5ce964335de9b67d32df788039a75ece737aa433400d76801d05b80"
+    },
+    {
+      "bytes": 19523,
+      "label": "tiny_cache_saved_independent_review",
+      "sha256": "09c58b6d09af28fe8e0da0e2b494471f842e38dc99ae5212721f9952d77778d9"
+    }
+  ],
+  "family_authority_levels": [
+    "Exact-AST checked training-window reuse",
+    "Parameterized substitution families require fresh authority",
+    "Recursive derived-receptor hierarchy requires new complete composer"
+  ],
+  "finite_grammar": {
+    "binder_roles": {
+      "P": "point",
+      "Q": "point",
+      "l": "line",
+      "m": "line"
+    },
+    "equality_layers": 1,
+    "instantiation_rounds": 4,
+    "term_roles": {
+      "line": [
+        "u",
+        "v",
+        "w"
+      ],
+      "point": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  },
+  "guard_association": "exact right-associated conjunction in literal AST; display conjunction is only readable notation",
+  "guard_latex": "H(A,B,u,v):=\\operatorname{Point}(A)\\land\\operatorname{Point}(B)\\land\\operatorname{Line}(u)\\land\\operatorname{Line}(v)\\land\\neg(A=B)\\land\\operatorname{Incident}(A,u)\\land\\operatorname{Incident}(B,u)\\land\\operatorname{Incident}(A,v)\\land\\operatorname{Incident}(B,v)",
+  "latest_actual_tiny_cache_result": {
+    "cases_completed": 12,
+    "cases_declared": 12,
+    "factor_row_comparisons": 3744,
+    "kernel_row_comparisons": 3744,
+    "production_qualification": false,
+    "proof_or_RL_result": false,
+    "saved_observations": 156
+  },
+  "literal_formulas": {
+    "eq-CD": [
+      "eq",
+      [
+        "fun",
+        "C",
+        []
+      ],
+      [
+        "fun",
+        "D",
+        []
+      ]
+    ],
+    "eq-uv": [
+      "eq",
+      [
+        "fun",
+        "u",
+        []
+      ],
+      [
+        "fun",
+        "v",
+        []
+      ]
+    ],
+    "eq-vw": [
+      "eq",
+      [
+        "fun",
+        "v",
+        []
+      ],
+      [
+        "fun",
+        "w",
+        []
+      ]
+    ],
+    "guard-ABuv": [
+      "and",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Line",
+            [
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "not",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "u",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "B",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "u",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "A",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "guard-ABuv-implies-ABvw": [
+      "imp",
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "B",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "A",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "u",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "u",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "A",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "B",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "B",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "A",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "A",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "w",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "B",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "w",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "guard-ABvw": [
+      "and",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Line",
+            [
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "not",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "B",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "A",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "inc-Cu": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "u",
+          []
+        ]
+      ]
+    ],
+    "inc-Cv": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "v",
+          []
+        ]
+      ]
+    ],
+    "inc-Cw": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ]
+    ],
+    "inc-Du": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "D",
+          []
+        ],
+        [
+          "fun",
+          "u",
+          []
+        ]
+      ]
+    ],
+    "inc-Dv": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "D",
+          []
+        ],
+        [
+          "fun",
+          "v",
+          []
+        ]
+      ]
+    ]
+  },
+  "new_scientific_executions": 0,
+  "new_theorem_proofs": 0,
+  "original_production_BASE": {
+    "attempts": 43,
+    "outcome": "UNKNOWN_SEARCH_TIME_BUDGET",
+    "proof": null,
+    "rerun_by_this_packet": false
+  },
+  "primary_candidate": "next-inc-two-uniqueness",
+  "privacy_projection": "Whitelist selected source declarations and fingerprints only; no host paths, runtime binaries, process identifiers, active epochs, private policies or ownership ledgers.",
+  "prospective_production_control_obligations": {
+    "completed_by_this_packet": false,
+    "formulas": 113406,
+    "non_assumptions": 119630,
+    "primitive_licenses": 119633,
+    "row_EOFs": 1296,
+    "rows_each": 24,
+    "states": 54,
+    "stress_depth": 20
+  },
+  "recorded_at_UTC": "2026-10-13T04:04:05.662261+00:00",
+  "schema": "next-symbolic-benchmarks-public-source-view-v1",
+  "source_specifications_only": true,
+  "source_state": {
+    "RL_training": false,
+    "geometry": "Literal statements SOURCE reconciled; fresh literal fixture and expanded/compact compiler source successors authored; distinct review and whole recipient authority pending.",
+    "induction": "Helper, complete finite controls and adapter design SOURCE reconciled; actual local adapter under construction. Native/origin/compiler/six-rule integration open.",
+    "matched_performance_comparison": false,
+    "new_graphs": null,
+    "new_proofs": null,
+    "new_recipient_catalogues": null,
+    "production_raw_relation": "ROOT and independent SOURCE review reconciled; fresh owned execution sources pending review/admission.",
+    "universal_finite_Wang_compiler": false
+  },
+  "theory": {
+    "axioms": {
+      "I.2": [
+        "all",
+        "P",
+        [
+          "all",
+          "Q",
+          [
+            "all",
+            "l",
+            [
+              "all",
+              "m",
+              [
+                "imp",
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Point",
+                    [
+                      [
+                        "var",
+                        "P"
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "var",
+                          "Q"
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Line",
+                        [
+                          [
+                            "var",
+                            "l"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "m"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "not",
+                            [
+                              "eq",
+                              [
+                                "var",
+                                "P"
+                              ],
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "var",
+                                  "P"
+                                ],
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "var",
+                                    "Q"
+                                  ],
+                                  [
+                                    "var",
+                                    "l"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "Q"
+                                    ],
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "l"
+                  ],
+                  [
+                    "var",
+                    "m"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    "functions": {
+      "A": 0,
+      "B": 0,
+      "C": 0,
+      "D": 0,
+      "u": 0,
+      "v": 0,
+      "w": 0
+    },
+    "predicates": {
+      "Incident": 2,
+      "Line": 1,
+      "Point": 1
+    },
+    "schemas": []
+  }
+}
