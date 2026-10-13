@@ -1,0 +1,2964 @@
+{
+  "actual_RL_episodes": 0,
+  "actual_summary_pin": {
+    "bytes": 67389,
+    "sha256": "e6cbcd923186b6398d959e4076743deac8d0b63726ab6aad42445f9dae36a02a"
+  },
+  "bootstrap_episodes": 0,
+  "cases": [
+    {
+      "assumption_recipe_indices": [
+        353,
+        354,
+        2791
+      ],
+      "authority_epoch": "63530343281d3fabc6c9e0d29acf366031657657b019f28e296ff137eb716351",
+      "boundary": {
+        "all_root_obligations_generation_zero": true,
+        "fixed_exterior_m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ]
+        ],
+        "fixed_initial_local_seeds": [
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-7a02e7d34b682d319a1cef3ccd43fcf400820afbcb7928fea35cd17ae17f7566",
+            "row": 0
+          },
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-5cff1eedbf49aa6ae50e9ce83f40cf95aefd47dacd97d53b9b20b25bc8a359ea",
+            "row": 1
+          },
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-6085c722de1c40f6f26dc7327956a8a71ba629614978c9b22dccba53903db070",
+            "row": 2
+          }
+        ],
+        "fixed_target_m": [
+          [
+            1,
+            23,
+            5062
+          ]
+        ],
+        "required": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            0,
+            9
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            11
+          ],
+          [
+            0,
+            12
+          ],
+          [
+            0,
+            13
+          ],
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            15
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            0,
+            17
+          ],
+          [
+            0,
+            18
+          ],
+          [
+            0,
+            19
+          ],
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            21
+          ],
+          [
+            0,
+            22
+          ],
+          [
+            0,
+            23
+          ]
+        ],
+        "root_generations": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ],
+          [
+            0,
+            11,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            13,
+            0
+          ],
+          [
+            0,
+            14,
+            0
+          ],
+          [
+            0,
+            15,
+            0
+          ],
+          [
+            0,
+            16,
+            0
+          ],
+          [
+            0,
+            17,
+            0
+          ],
+          [
+            0,
+            18,
+            0
+          ],
+          [
+            0,
+            19,
+            0
+          ],
+          [
+            0,
+            20,
+            0
+          ],
+          [
+            0,
+            21,
+            0
+          ],
+          [
+            0,
+            22,
+            0
+          ],
+          [
+            0,
+            23,
+            0
+          ]
+        ]
+      },
+      "complete_static_qualification_accepted": true,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "u",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "u",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "context_id": "8e6d4163c359232f73ce5193280da2983bcd88e754b6a6bb47489f65325e0d34",
+      "declaration": {
+        "english": "The two indexed occurrences both say u equals v. If C is incident with u, C is incident with v.",
+        "hypotheses": [
+          "eq-uv",
+          "eq-uv",
+          "inc-Cu"
+        ],
+        "id": "train-inc-line",
+        "latex": "u=v,\\ u=v,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,v)",
+        "rows": 24,
+        "split": "train",
+        "structural_tag": "one line-argument transport, distinct repeated equality occurrences",
+        "target": "inc-Cv",
+        "theory": "hilbert-incidence"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "evidence": {
+        "audit_receipt": {
+          "bytes": 33672,
+          "file": "audit-result-v1.json",
+          "sha256": "bd14101a09cd7400dbfa020de908e76ad1e2ed1d8d2ca9d3932548abc6a27e30"
+        },
+        "audit_resource_disposition": {
+          "bytes": 2760,
+          "file": "replay-ROOT-final-decision-v1.json",
+          "sha256": "a6b0def49f91ff00e011b3921e0eb700a38aa6c058e68fee51514d70eb00f7a6"
+        },
+        "catalog": {
+          "bytes": 10657,
+          "file": "catalog-v1.json",
+          "sha256": "2619ab5e4204490f6402f37b273f6c2bb6ede616cd4c243658c8856812b12708"
+        },
+        "independent_evidence": {
+          "bytes": 10239,
+          "file": "complete-independent-static-evidence-v1.json.gz",
+          "sha256": "ccae626149d86f0c38161f734c5edb3bc211f34be02526dcdb2f6a587b12331d"
+        },
+        "licenses": {
+          "bytes": 245617,
+          "file": "complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "e3defe11919e27c883fae59d5d8e5284b66cd9bd2ab7353593cb440cb4e0f4b3"
+        },
+        "preparation_receipt": {
+          "bytes": 26440,
+          "file": "preparation-result-v1.json",
+          "sha256": "48e9b8f0dfbbca13706e5ae3ee6fc2fc1c24afe7477391df4aff529e25c0bc4f"
+        },
+        "preparation_resource_disposition": {
+          "bytes": 2797,
+          "file": "preparation-ROOT-final-decision-v1.json",
+          "sha256": "d12db2832dd4f684e0b76914169da130ca2c28bd4186c1e5e101efe1eb513fbb"
+        },
+        "stream_formulas": {
+          "bytes": 40896,
+          "file": "formulas-v1.u64le.bin",
+          "sha256": "fb89c3e4960d28fc47618c2af96888020f03914a61521687931b2c2f761901e2"
+        },
+        "stream_nodes": {
+          "bytes": 30957,
+          "file": "nodes-v1.jsonl.gz",
+          "sha256": "f5017bb0bc3be3340391a5c5ae9c5933e46cda5425d76a2fd4d93eb544f5e0af"
+        },
+        "stream_recipes": {
+          "bytes": 443992,
+          "file": "recipes-v1.bin",
+          "sha256": "4e83efa9fec80af0bad95432f9f5dad1ed69008a61f5cd91b0eecf583caff455"
+        }
+      },
+      "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+      "initial_candidate_count": 4407560,
+      "initial_graph": {
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3068,
+            1
+          ],
+          [
+            1,
+            1,
+            3068,
+            1
+          ],
+          [
+            1,
+            2,
+            5061,
+            1
+          ],
+          [
+            1,
+            23,
+            5062,
+            1
+          ]
+        ],
+        "model_epoch": "f080ca646eeb24ab059fb14279b595128cbbb2a8710962f7fcd5a35f5554fee9",
+        "order": [
+          [
+            353,
+            0,
+            []
+          ],
+          [
+            354,
+            1,
+            []
+          ],
+          [
+            2791,
+            2,
+            []
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected_generations": [
+          [
+            [
+              353,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              354,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              2791,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "logical_rule_counts": {
+        "assumption": 3,
+        "axiom": 1,
+        "eq_subst": 600,
+        "instantiate": 399,
+        "mp": 1918
+      },
+      "measurements": {
+        "audit_caller_seconds": 3.491,
+        "audit_worker_seconds_before_final_receipt": 0.846800667,
+        "preparation_caller_seconds": 5.613,
+        "preparation_worker_seconds_before_final_receipt": 0.905906542
+      },
+      "model_epoch": "f080ca646eeb24ab059fb14279b595128cbbb2a8710962f7fcd5a35f5554fee9",
+      "target_code": 5062
+    },
+    {
+      "assumption_recipe_indices": [
+        223,
+        354,
+        2791
+      ],
+      "authority_epoch": "f2381d2710ba4917036c03e8103331a6c54d18a18628cabee522eee9bd22c5b5",
+      "boundary": {
+        "all_root_obligations_generation_zero": true,
+        "fixed_exterior_m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ]
+        ],
+        "fixed_initial_local_seeds": [
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-588fd447b4a83d736c515b8a4564b5a7f3f078f5c3a89d9fc6add52b41508a96",
+            "row": 0
+          },
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-ae0195c3f1a8173b513ff9eecd654ac37b303d816ad575a5a24aadb9747f32c0",
+            "row": 1
+          },
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-75692b03afc205b968ecc3fa077ef796a3d156d4082f94a8ee4799097dca369b",
+            "row": 2
+          }
+        ],
+        "fixed_target_m": [
+          [
+            1,
+            23,
+            5070
+          ]
+        ],
+        "required": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            0,
+            9
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            11
+          ],
+          [
+            0,
+            12
+          ],
+          [
+            0,
+            13
+          ],
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            15
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            0,
+            17
+          ],
+          [
+            0,
+            18
+          ],
+          [
+            0,
+            19
+          ],
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            21
+          ],
+          [
+            0,
+            22
+          ],
+          [
+            0,
+            23
+          ]
+        ],
+        "root_generations": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ],
+          [
+            0,
+            11,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            13,
+            0
+          ],
+          [
+            0,
+            14,
+            0
+          ],
+          [
+            0,
+            15,
+            0
+          ],
+          [
+            0,
+            16,
+            0
+          ],
+          [
+            0,
+            17,
+            0
+          ],
+          [
+            0,
+            18,
+            0
+          ],
+          [
+            0,
+            19,
+            0
+          ],
+          [
+            0,
+            20,
+            0
+          ],
+          [
+            0,
+            21,
+            0
+          ],
+          [
+            0,
+            22,
+            0
+          ],
+          [
+            0,
+            23,
+            0
+          ]
+        ]
+      },
+      "complete_static_qualification_accepted": true,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "C",
+              []
+            ],
+            [
+              "fun",
+              "D",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "u",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "context_id": "e74ae40e563083703548ea5964a373e98bf47bb90ed15ef5094c6107e48c9f00",
+      "declaration": {
+        "english": "If C equals D and C is incident with u, D is incident with u. The line equality remains a declared premise.",
+        "hypotheses": [
+          "eq-CD",
+          "eq-uv",
+          "inc-Cu"
+        ],
+        "id": "train-inc-point",
+        "latex": "C=D,\\ u=v,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(D,u)",
+        "rows": 24,
+        "split": "train",
+        "structural_tag": "one point-argument transport, retained unused line equality",
+        "target": "inc-Du",
+        "theory": "hilbert-incidence"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "evidence": {
+        "audit_receipt": {
+          "bytes": 33712,
+          "file": "audit-result-v1.json",
+          "sha256": "418a19cbd8d9b25b7118d51bf2e7574e1d494196da409220fafce933befb8c35"
+        },
+        "audit_resource_disposition": {
+          "bytes": 2765,
+          "file": "replay-ROOT-final-decision-v1.json",
+          "sha256": "03ecb3440e6916ca0cd69d2a6af8d28dbe60e65c5ec6b4927cecc906e3d7440e"
+        },
+        "catalog": {
+          "bytes": 10665,
+          "file": "catalog-v1.json",
+          "sha256": "ad4f2d0dc1b3ce3bf7bbff00b68adebe499163f6d26e04d109518e421c4c15e7"
+        },
+        "independent_evidence": {
+          "bytes": 10229,
+          "file": "complete-independent-static-evidence-v1.json.gz",
+          "sha256": "cd01d1eee3696aaac5529d5a2db3593e1fdb06bf4476f2c68237d632785d8645"
+        },
+        "licenses": {
+          "bytes": 245559,
+          "file": "complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "0ec0cc70dc4cf31ceccdbe52bad49ef86bf48253e7ec8e742480f19fb6645403"
+        },
+        "preparation_receipt": {
+          "bytes": 26459,
+          "file": "preparation-result-v1.json",
+          "sha256": "01918df82176ce652dea77bab0669ff0a826bfab0cd30c39e4b05759780ed3fa"
+        },
+        "preparation_resource_disposition": {
+          "bytes": 2802,
+          "file": "preparation-ROOT-final-decision-v1.json",
+          "sha256": "240258ee133aaf42af4c8bfb320a6746bafbf46f3dc2470b69fcefa8ccf21e93"
+        },
+        "stream_formulas": {
+          "bytes": 40896,
+          "file": "formulas-v1.u64le.bin",
+          "sha256": "1b62ded33f5e00e1fc9b1c8a723387c099cf94b5c1237dbdaf41577eb6e8adbc"
+        },
+        "stream_nodes": {
+          "bytes": 30905,
+          "file": "nodes-v1.jsonl.gz",
+          "sha256": "ae791138574b9afe78b1e226560c6748e7e9ae5a1ea3353a2df4dab20f3bb2e6"
+        },
+        "stream_recipes": {
+          "bytes": 443992,
+          "file": "recipes-v1.bin",
+          "sha256": "c28f0d9ae35b1f01bf3aa2177957f04c5722b9d305c54472e576208a1f25064c"
+        }
+      },
+      "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+      "initial_candidate_count": 4407940,
+      "initial_graph": {
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3050,
+            1
+          ],
+          [
+            1,
+            1,
+            3068,
+            1
+          ],
+          [
+            1,
+            2,
+            5061,
+            1
+          ],
+          [
+            1,
+            23,
+            5070,
+            1
+          ]
+        ],
+        "model_epoch": "ceecd137378ae6860f1b6c1cb72c124b5aa7496c98a57142982c614269978de9",
+        "order": [
+          [
+            223,
+            0,
+            []
+          ],
+          [
+            354,
+            1,
+            []
+          ],
+          [
+            2791,
+            2,
+            []
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected_generations": [
+          [
+            [
+              223,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              354,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              2791,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "logical_rule_counts": {
+        "assumption": 3,
+        "axiom": 1,
+        "eq_subst": 600,
+        "instantiate": 399,
+        "mp": 1918
+      },
+      "measurements": {
+        "audit_caller_seconds": 2.577,
+        "audit_worker_seconds_before_final_receipt": 0.878582083,
+        "preparation_caller_seconds": 3.115,
+        "preparation_worker_seconds_before_final_receipt": 0.881340333
+      },
+      "model_epoch": "ceecd137378ae6860f1b6c1cb72c124b5aa7496c98a57142982c614269978de9",
+      "target_code": 5070
+    },
+    {
+      "assumption_recipe_indices": [
+        223,
+        354,
+        2791
+      ],
+      "authority_epoch": "8d046fbd4f4160a119c6cd43e2c0f7136460c9126170237bfc89d7ab12160904",
+      "boundary": {
+        "all_root_obligations_generation_zero": true,
+        "fixed_exterior_m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ]
+        ],
+        "fixed_initial_local_seeds": [
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-b04b15e21f770714e8b7edfaf97a291a2e877e1a99b890c751f895953101b9da",
+            "row": 0
+          },
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-361de051dfc9dc37718be00906601698e8a95a51b0b236ada78c387a9fa282db",
+            "row": 1
+          },
+          {
+            "generation": 0,
+            "recipe_id": "primitive-recipe-8be6e167e3c70c15057c655120df6d5b575ae68b21e1ada000610a82fe6e6775",
+            "row": 2
+          }
+        ],
+        "fixed_target_m": [
+          [
+            1,
+            23,
+            5071
+          ]
+        ],
+        "required": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            0,
+            9
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            11
+          ],
+          [
+            0,
+            12
+          ],
+          [
+            0,
+            13
+          ],
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            15
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            0,
+            17
+          ],
+          [
+            0,
+            18
+          ],
+          [
+            0,
+            19
+          ],
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            21
+          ],
+          [
+            0,
+            22
+          ],
+          [
+            0,
+            23
+          ]
+        ],
+        "root_generations": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ],
+          [
+            0,
+            11,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            13,
+            0
+          ],
+          [
+            0,
+            14,
+            0
+          ],
+          [
+            0,
+            15,
+            0
+          ],
+          [
+            0,
+            16,
+            0
+          ],
+          [
+            0,
+            17,
+            0
+          ],
+          [
+            0,
+            18,
+            0
+          ],
+          [
+            0,
+            19,
+            0
+          ],
+          [
+            0,
+            20,
+            0
+          ],
+          [
+            0,
+            21,
+            0
+          ],
+          [
+            0,
+            22,
+            0
+          ],
+          [
+            0,
+            23,
+            0
+          ]
+        ]
+      },
+      "complete_static_qualification_accepted": true,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "C",
+              []
+            ],
+            [
+              "fun",
+              "D",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "u",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "context_id": "e74ae40e563083703548ea5964a373e98bf47bb90ed15ef5094c6107e48c9f00",
+      "declaration": {
+        "english": "Transport the incident relation in both arguments: replace C with D and u with v.",
+        "hypotheses": [
+          "eq-CD",
+          "eq-uv",
+          "inc-Cu"
+        ],
+        "id": "eval-inc-both-arguments",
+        "latex": "C=D,\\ u=v,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(D,v)",
+        "rows": 24,
+        "split": "evaluation",
+        "structural_tag": "compose point-argument and line-argument transport",
+        "target": "inc-Dv",
+        "theory": "hilbert-incidence"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "evidence": {
+        "audit_receipt": {
+          "bytes": 34032,
+          "file": "audit-result-v1.json",
+          "sha256": "35aa2c22a400b3d8793d8304b8c591c8c431ac7e15d7b24dc6a25368b4811c4f"
+        },
+        "audit_resource_disposition": {
+          "bytes": 2805,
+          "file": "replay-ROOT-final-decision-v1.json",
+          "sha256": "abac45ba6dada2623b3b31eaf87ee60ebc453f68f739877f1db94bb72877c029"
+        },
+        "catalog": {
+          "bytes": 10734,
+          "file": "catalog-v1.json",
+          "sha256": "d1da5ab4f5e3b642c1969fe7e34be0770573d5cd566cb771ca5b8a55ced2d34c"
+        },
+        "independent_evidence": {
+          "bytes": 10433,
+          "file": "complete-independent-static-evidence-v1.json.gz",
+          "sha256": "7d4c8f3a0ca8babb76e45f26932e51523a0682cde6b872bec20ea86ca350106a"
+        },
+        "licenses": {
+          "bytes": 245584,
+          "file": "complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "df23464901500d87803ccdcd3e9b1d2864a81470443016ecf316dbee99700a27"
+        },
+        "preparation_receipt": {
+          "bytes": 26594,
+          "file": "preparation-result-v1.json",
+          "sha256": "42d015085bf2903a5ad30fb41b2ba85acd75aaf37489b656e8c4e2d9dc131db9"
+        },
+        "preparation_resource_disposition": {
+          "bytes": 2842,
+          "file": "preparation-ROOT-final-decision-v1.json",
+          "sha256": "5daf45cfde9921839fe4b1418f1337a1a0bcd3b5c499dcb457330440234373dd"
+        },
+        "stream_formulas": {
+          "bytes": 40896,
+          "file": "formulas-v1.u64le.bin",
+          "sha256": "adbadf495c0331bccaa421f19fa88c5607bfa321a39c4caed7544859e82d68ca"
+        },
+        "stream_nodes": {
+          "bytes": 30889,
+          "file": "nodes-v1.jsonl.gz",
+          "sha256": "e0dfc1a3124da6056bc36bd9192b3d58696108bca4219c62534718e25472da5a"
+        },
+        "stream_recipes": {
+          "bytes": 443992,
+          "file": "recipes-v1.bin",
+          "sha256": "2d0029e1fb3a7e868513ca841818fb1a6bb2c3af62c56d291595898b3d1f108d"
+        }
+      },
+      "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+      "initial_candidate_count": 4407920,
+      "initial_graph": {
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3050,
+            1
+          ],
+          [
+            1,
+            1,
+            3068,
+            1
+          ],
+          [
+            1,
+            2,
+            5061,
+            1
+          ],
+          [
+            1,
+            23,
+            5071,
+            1
+          ]
+        ],
+        "model_epoch": "e13e7c7995d3ee8f05097bfb403bd74eef6177e96a41ab5e6a00356b85f53f13",
+        "order": [
+          [
+            223,
+            0,
+            []
+          ],
+          [
+            354,
+            1,
+            []
+          ],
+          [
+            2791,
+            2,
+            []
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected_generations": [
+          [
+            [
+              223,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              354,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              2791,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "logical_rule_counts": {
+        "assumption": 3,
+        "axiom": 1,
+        "eq_subst": 600,
+        "instantiate": 399,
+        "mp": 1918
+      },
+      "measurements": {
+        "audit_caller_seconds": 2.508,
+        "audit_worker_seconds_before_final_receipt": 0.879051292,
+        "preparation_caller_seconds": 3.375,
+        "preparation_worker_seconds_before_final_receipt": 0.877820209
+      },
+      "model_epoch": "e13e7c7995d3ee8f05097bfb403bd74eef6177e96a41ab5e6a00356b85f53f13",
+      "target_code": 5071
+    }
+  ],
+  "family_library_admitted": false,
+  "holdout": "Context/outcome holdout; common declared statement syntax visible. Point-training and evaluation share Gamma but differ in fixed target and source/model binding.",
+  "proof_certificates": 0,
+  "qualified_context_runtime_created": false,
+  "schema": "public-fresh-receptor-learning-static-summary-v1",
+  "scope": "Full declared finite grammar/primitive licensing and every initial point domain only. No new target proof, donor fragment or learning evidence. Source-qualified fresh context and target model bindings required before bootstraps.",
+  "target_searches": 0,
+  "training_updates": 0
+}
