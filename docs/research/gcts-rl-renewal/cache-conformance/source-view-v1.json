@@ -1,0 +1,418 @@
+{
+  "actual_marking_projections": [
+    {
+      "assigned_code_signature": [
+        0,
+        6,
+        7,
+        8,
+        9
+      ],
+      "case_id": "tiny-pred-branch",
+      "domains": [
+        {
+          "base_count": 524,
+          "count": 524,
+          "factor_EOF": true,
+          "kernel_key_EOF": true,
+          "row": 18
+        },
+        {
+          "base_count": 618,
+          "count": 618,
+          "factor_EOF": true,
+          "kernel_key_EOF": true,
+          "row": 19
+        },
+        {
+          "base_count": 948,
+          "count": 948,
+          "factor_EOF": true,
+          "kernel_key_EOF": true,
+          "row": 22
+        }
+      ],
+      "label": "remote_parent",
+      "marks": [],
+      "scope": "Saved state projection, not independent semantic recomputation or a newly discovered proof. Other rows omitted. Occupied rows have no remaining placement domain.",
+      "totals": [
+        {
+          "row": 18,
+          "total": 0
+        },
+        {
+          "row": 19,
+          "total": 0
+        },
+        {
+          "row": 22,
+          "total": 0
+        }
+      ]
+    },
+    {
+      "assigned_code_signature": [
+        0,
+        6,
+        7,
+        8,
+        9
+      ],
+      "case_id": "tiny-pred-branch",
+      "domains": [
+        {
+          "base_count": 3,
+          "count": 3,
+          "factor_EOF": true,
+          "kernel_key_EOF": true,
+          "row": 18
+        },
+        {
+          "base_count": 2,
+          "count": 2,
+          "factor_EOF": true,
+          "kernel_key_EOF": true,
+          "row": 19
+        },
+        {
+          "base_count": 0,
+          "count": 0,
+          "factor_EOF": true,
+          "kernel_key_EOF": true,
+          "row": 22
+        }
+      ],
+      "label": "remote_formula_and_read_ports",
+      "marks": [
+        [
+          1,
+          18,
+          9,
+          1
+        ],
+        [
+          1,
+          19,
+          6,
+          1
+        ],
+        [
+          1,
+          22,
+          7,
+          1
+        ],
+        [
+          2,
+          22,
+          -4,
+          1
+        ],
+        [
+          3,
+          22,
+          -3,
+          1
+        ]
+      ],
+      "scope": "Saved state projection, not independent semantic recomputation or a newly discovered proof. Other rows omitted. Occupied rows have no remaining placement domain.",
+      "totals": [
+        {
+          "row": 18,
+          "total": 0
+        },
+        {
+          "row": 19,
+          "total": 0
+        },
+        {
+          "row": 22,
+          "total": 1
+        }
+      ]
+    }
+  ],
+  "actual_once_only": true,
+  "case_receipts": [
+    {
+      "case_id": "tiny-pred-branch",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 246672,
+        "sha256": "6429d354c4b4f90872d8223985913e0ec195ede04e90d8c215246dcec65fa6cc"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-pred-forced",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238935,
+        "sha256": "3bd47f0b920ecbbd3e7a0967119fc01b6b8f82b8a065d14dd29f6c33fc0f9865"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-pred-dead",
+      "completed": true,
+      "factor_row_EOFs": 360,
+      "fingerprint": {
+        "bytes": 298426,
+        "sha256": "dbed351e51ab26150f773d42eaf2424c9cc78700287fc15c6df0e30e68545cef"
+      },
+      "kernel_row_EOFs": 360,
+      "observations": 15
+    },
+    {
+      "case_id": "tiny-eq-branch",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238866,
+        "sha256": "11eedae9700d41f990bff12f9b6c44b6cae388fafc38674ffc2b98ba1f87a9d2"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-eq-forced",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238866,
+        "sha256": "07f283f616072219cafb2f76aaaa2409f8f89528f3441c42bb97678152917c9a"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-eq-dead",
+      "completed": true,
+      "factor_row_EOFs": 360,
+      "fingerprint": {
+        "bytes": 298332,
+        "sha256": "fe88dd3e98df5bb114c06ade1a3d6555738a235869c4c620a021b9682636cf7b"
+      },
+      "kernel_row_EOFs": 360,
+      "observations": 15
+    },
+    {
+      "case_id": "tiny-and-branch",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238867,
+        "sha256": "6eca3e5c120e2b04e07ca4d48f7d4940a2a51bb35b542f27707e6e9594294d43"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-and-forced",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238867,
+        "sha256": "bb3659501cecbbbe9b43ee223903bfb3f17b7ecf066ae26013131cf788c8585f"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-and-dead",
+      "completed": true,
+      "factor_row_EOFs": 360,
+      "fingerprint": {
+        "bytes": 298333,
+        "sha256": "0d8680bfce084e330c3ffecbb96016912ee2edbcfd879ac2a7b78e45bc83ea3e"
+      },
+      "kernel_row_EOFs": 360,
+      "observations": 15
+    },
+    {
+      "case_id": "tiny-all-branch",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238867,
+        "sha256": "9a49a61a61c68915eeb832e9ffcaa734ab796f84db3ca2cd916e5b8ab522d589"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-all-forced",
+      "completed": true,
+      "factor_row_EOFs": 288,
+      "fingerprint": {
+        "bytes": 238868,
+        "sha256": "3e50c5575528490e6dafb8b252bb6de9896726797807d2e71dc1500138c6bc9e"
+      },
+      "kernel_row_EOFs": 288,
+      "observations": 12
+    },
+    {
+      "case_id": "tiny-all-dead",
+      "completed": true,
+      "factor_row_EOFs": 360,
+      "fingerprint": {
+        "bytes": 298334,
+        "sha256": "f90f69b07ab502b82f957d724931bd2792d929179cfe6b6fe8651ebaa2606069"
+      },
+      "kernel_row_EOFs": 360,
+      "observations": 15
+    }
+  ],
+  "completed_cases": 12,
+  "distinct_states_claimed": false,
+  "evidence": {
+    "ROOT_final_disposition": {
+      "bytes": 2801,
+      "sha256": "7aa1f0d0a5ce964335de9b67d32df788039a75ece737aa433400d76801d05b80"
+    },
+    "actual_tool": {
+      "bytes": 2100,
+      "sha256": "8134562efd66659d53e10c5795628680bf765e270edbd7b39176ca962edd6edf"
+    },
+    "corrected_source_review": {
+      "bytes": 29308,
+      "sha256": "270a910af9119004be80de31ee59e6a9465f482ae7d9025930ef4530ca21aaac"
+    },
+    "corrected_worker": {
+      "bytes": 27755,
+      "sha256": "9805699685fa52070ccc6e18aed64a93779b0b80851fac49ba74e4d0f4450735"
+    },
+    "evidence": {
+      "bytes": 51097,
+      "sha256": "5b305bc9fa6117e7f741f4f4aa160cda95e0f3149808b079b26c5f3435a21733"
+    },
+    "finalizer_tool": {
+      "bytes": 1147,
+      "sha256": "6c856d9e46846de6c5bf62a449e253bdcca27454a79c173ac38b032a58336007"
+    },
+    "independent_saved_review": {
+      "bytes": 19523,
+      "sha256": "09c58b6d09af28fe8e0da0e2b494471f842e38dc99ae5212721f9952d77778d9"
+    },
+    "induction_control_review": {
+      "bytes": 27658,
+      "sha256": "4cda07f878d3f7100b7166b42c2b8169ba10e46dd1c3b9b699657d306b29e04d"
+    },
+    "induction_controls": {
+      "bytes": 25448,
+      "sha256": "ba343bd3082cb772909681d3bf5651ab717f618b97ee73dfbc7735522f087ae2"
+    },
+    "induction_helper": {
+      "bytes": 9785,
+      "sha256": "43f8e931cd51e6b5c4299247cb0d5d5c2086f88db0ebc03c29b6dd00ab7660fa"
+    },
+    "induction_helper_review": {
+      "bytes": 21320,
+      "sha256": "7530c088dac95d161af2a160707ef4af96371de4781c4e09fba73fd5cf628a9a"
+    },
+    "literal_plan_review": {
+      "bytes": 10797,
+      "sha256": "a1d6f093076c64497c23f3ffa670d2900c88037536aa011cc822c635e11a07f0"
+    },
+    "once_only_admission": {
+      "bytes": 3857,
+      "sha256": "20cb753deebb367aed16191bec9791b742fefbca3c07d01bcd0c2c2ad598c97f"
+    },
+    "owner_terminal": {
+      "bytes": 1748,
+      "sha256": "6da9a4d49c6e450c245e72fabdc259d2b45a87b2ace4f0bfc7f3cba683c3a037"
+    },
+    "post_write": {
+      "bytes": 776,
+      "sha256": "7e1bf34d47c88fbaaf142aebef46f444feef6d33eabf69729f1aa7a16a62a291"
+    },
+    "source_blocker": {
+      "bytes": 8667,
+      "sha256": "d761c18a2f6373e8e75f20324de725cd7779f70b7f43e305ac0cc25ed35764d3"
+    },
+    "worker_receipt": {
+      "bytes": 13174,
+      "sha256": "8d3ed9abaa8b5f83d6201569228826066b82e8167666428cde782c92b2bed800"
+    }
+  },
+  "factor_row_EOFs": 3744,
+  "independent_saved_metadata_review": {
+    "borrowed_authorship_disclosed": true,
+    "passed": true,
+    "scope": "Full saved declared raw-pin and scalar/state/EOF reconciliation only.",
+    "second_semantic_execution": false
+  },
+  "induction": {
+    "base_and_step_proofs_supplied": false,
+    "controls_executed": false,
+    "full_declarations_completed": 0,
+    "helper_executed": false,
+    "local_control_source_review_passed": true,
+    "native_checked": false,
+    "production_integrated": false,
+    "scope": "Strict parsed-JSON bounded induction-schema source and local prospective control design; all runtime/integration gates remain open.",
+    "six_rule_integrated": false,
+    "source_review_passed": true,
+    "total_declarations": 16
+  },
+  "kernel_row_EOFs": 3744,
+  "notebook": 133,
+  "privacy": "No machine paths, PIDs, secrets, policy weights, private process rows or executable scientific page code included.",
+  "resource": {
+    "ROOT_final_accepted": true,
+    "accounting_scope": "Conditional pinned synchronous owner/worker/PS source, kernel peaks and sampled owned RSS; no OS hardcap or independent wholehost completeness guarantee.",
+    "all_direct_worker_children_closed": true,
+    "caller_elapsed_seconds": 16.697,
+    "clock_scope": "Owner main clock excludes interpreter and pre-main imports, enclosed by cold caller request to observed terminal; later metadata finalizer separate.",
+    "later_finalizer_elapsed_seconds": 0.085,
+    "limits": {
+      "caller_seconds": 90,
+      "peak_bytes": 536870912,
+      "whole_seconds": 60
+    },
+    "owned_leftovers": [],
+    "owner_main_to_postwrite_seconds": 10.62243625,
+    "postwrite_peak_bytes": 44564480,
+    "predicates": {
+      "actual_tool_terminal": true,
+      "all_owner_direct_children_closed": true,
+      "all_worker_direct_children_closed": true,
+      "caller_clock_bound": true,
+      "cancelled_at_final_print_false": true,
+      "complete_post_closure_unchanged": true,
+      "final_print_gate": true,
+      "no_owned_leftovers": true,
+      "owner_gate": true,
+      "owner_terminal_link_present": true,
+      "post_write_exact_terminal": true,
+      "post_write_gate": true,
+      "stage_identity": true,
+      "worker_complete": true
+    },
+    "worker_returncode": 0
+  },
+  "saved_observations": 156,
+  "schema": "sanitized-cache-conformance-notebook133-view-v1",
+  "scientific_scope": {
+    "RL_activated": false,
+    "RNG_draws": 0,
+    "candidate_record_API_qualified": false,
+    "different_generation_precedence_qualified": false,
+    "full31feature_qualification": false,
+    "full_body_pool_qualification": false,
+    "native_accepted": false,
+    "performance_comparison": false,
+    "policy_choices": 0,
+    "production_qualified": false,
+    "proof_accepted": false,
+    "proof_certificates": 0,
+    "stronger_live_parent_exhaustion_qualified": false,
+    "target_searches": 0,
+    "tiny_relation_completed": true,
+    "training_updates": 0
+  }
+}

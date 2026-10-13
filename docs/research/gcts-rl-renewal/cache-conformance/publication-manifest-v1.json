@@ -1,0 +1,36 @@
+{
+  "parent_predecessor": {
+    "bytes": 373326,
+    "sha256": "1e5cb72ca1d1319bc61c46238d79d82af4d3dc6cf169b5beb3c9e753b7f1ebf0"
+  },
+  "preservation": "Exact inverse restores all predecessor parent bytes; archived readers unchanged.",
+  "schema": "gcts-notebook133-publication-manifest-v1",
+  "scope": "Public saved-metadata report only; no executable scientific page code.",
+  "shared_stylesheet": {
+    "bytes": 7626,
+    "path": "docs/research/gcts-rl-renewal/runtime-and-language/reader.css",
+    "sha256": "5552bec98453a040b34ffc55b409930038864476402e847928d8554e62641661"
+  },
+  "task_files": [
+    {
+      "bytes": 374636,
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "6440991a73536bf1a4203f2e4875e88c024cc3ce6e1fdcd3d8cef534a9f08c20"
+    },
+    {
+      "bytes": 16538,
+      "path": "docs/research/gcts-rl-renewal/cache-conformance/reader.html",
+      "sha256": "784351026573522e24404a3242f4d47b6a3e0cd3a76787ca6a32a42c6daff6df"
+    },
+    {
+      "bytes": 2172,
+      "path": "docs/research/gcts-rl-renewal/cache-conformance/reader.css",
+      "sha256": "7b3de1973f1ac1bac27afe7a53009d165fc715230941fd1d26372cfdfb557f1e"
+    },
+    {
+      "bytes": 11687,
+      "path": "docs/research/gcts-rl-renewal/cache-conformance/source-view-v1.json",
+      "sha256": "01e0e930530f115d90e52acc7a23f6f5babbb7edae875b7efae1d245aeb061ee"
+    }
+  ]
+}
