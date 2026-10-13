@@ -1,0 +1,27 @@
+{
+  "files": [
+    {
+      "bytes": 14931,
+      "path": "reader.html",
+      "sha256": "e3ca71ee879f646b4fb265d0521570ffb7a761b2c6abc02fcfd0a53c7b2c09de"
+    },
+    {
+      "bytes": 3953,
+      "path": "reader.css",
+      "sha256": "81b9bf661fa246c52fcde7c565fba2d68e5ac13b3b89d207e6d65265eee72feb"
+    },
+    {
+      "bytes": 4762,
+      "path": "result-view-v1.json",
+      "sha256": "d71d2eff82e77fc6471aba63541fdd5193552bfce707ec6ccbd8a1e75d475789"
+    }
+  ],
+  "notebook": 130,
+  "parent": {
+    "bytes": 371044,
+    "path": "../index.html",
+    "sha256": "3978093b5ea87f77fa282fafc6769345bcf9383143da6c45208306adbc5701f6"
+  },
+  "schema": "public-research-publication-manifest-v1",
+  "scope": "Current closed baseline and reported-history/prospective research assessment."
+}
