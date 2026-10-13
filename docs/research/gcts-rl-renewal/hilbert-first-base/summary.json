@@ -1,0 +1,92 @@
+{
+  "costs": {
+    "BASE_cold_caller_seconds": 19.488,
+    "BASE_cold_caller_seconds_with_margin": 20.488,
+    "BASE_conditional_peak_bytes": 64307200,
+    "BASE_owner_seconds": 16.197081834,
+    "BASE_terminal_adapter_tool_seconds": 0.101,
+    "audit_cold_caller_seconds": 4.274,
+    "audit_conditional_peak_bytes": 44056576,
+    "audit_owner_seconds": 1.039964916,
+    "preparation_cold_caller_seconds": 8.345,
+    "preparation_conditional_peak_bytes": 46596096,
+    "preparation_owner_seconds": 1.048669333,
+    "search_seconds_reported": 14.813182417,
+    "trace_seconds_reported": 4.839981020999984
+  },
+  "diagnosis": {
+    "first_same_axiom_placements_reported": 7,
+    "maximum_dependency_complete_nonroot_codes_reported": 1,
+    "next_comparison": "Generic dependency-ready, novel, goal-relevant candidate advice vs canonical at the unchanged master-selected row; same empty inventory and limits; full fallback.",
+    "next_comparison_implemented_or_run": false,
+    "recorded_dead_rows": {
+      "10": 63,
+      "11": 15,
+      "12": 2
+    },
+    "scope": "SOURCE and saved-prefix observations; no full trajectory replay or experiment",
+    "source_diagnosis_sha256": "0307e7a279598a2b819312523157b2b14e3633157bc1f348b354affce3839139"
+  },
+  "instance_id": "next-inc-equality-line-chain",
+  "limits": {
+    "attempts": 128,
+    "cold_caller_seconds": 180,
+    "cold_leaf_seconds": 170,
+    "event_ceiling": 2000,
+    "owner_seconds": 175,
+    "peak_bytes": 536870912,
+    "search_seconds": 20
+  },
+  "saved_metadata_review": {
+    "consistency_checks_passed": true,
+    "mathematical_trajectory_replayed": false,
+    "review_sha256": "c7a2c61a3097b70f687ad5d1eac474838d736f354a917d76476e01baa06c6643",
+    "reviewer_authored_supervision_source": true
+  },
+  "saved_result_sha256": "c736327ead59ef0c2cc616af19c2520c0df81c81ef8a202a2a17f8075010a39b",
+  "schema": "gcts-hilbert-first-base-saved-summary-v1",
+  "scope": "Sanitized saved metadata for one actual bounded automatic BASE run. Resource closure accepted; no complete proof, exhaustive unprovability, complete mathematical trajectory replay, RL training or performance advantage follows.",
+  "search": {
+    "RNG_draws": 0,
+    "attempts_reported": 94,
+    "complete_mathematical_trajectory_independently_checked": false,
+    "graph_metrics_reported": {
+      "attempts": 94,
+      "backtracks": 80,
+      "branches": 89,
+      "domain_refreshes": 2678,
+      "forced": 5,
+      "lazy_id_constructions": 0,
+      "placements": 97,
+      "proposal_rejections": 0,
+      "proposal_validations": 0
+    },
+    "nodes_reported": 90,
+    "outcome": "unknown_trace_budget",
+    "point_certificate": null,
+    "policy_or_cluster_performance_advantage_established": false,
+    "proof_discovered": false,
+    "retained_events": 2000,
+    "root_restored_reported": true,
+    "termination": "trace-ceiling",
+    "trace_complete": false,
+    "training_updates": 0
+  },
+  "statement_latex": "u=v,\\ v=w,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+  "static_qualification": {
+    "cluster_group_count": 0,
+    "complete_catalogue_and_initial_domains_accepted": true,
+    "complete_initial_candidates": 4407560,
+    "formula_count": 5112,
+    "logical_rows": 24,
+    "primitive_license_count": 2921,
+    "rule_counts": {
+      "assumption": 3,
+      "axiom": 1,
+      "eq_subst": 600,
+      "instantiate": 399,
+      "mp": 1918
+    },
+    "source_body_count": 0
+  }
+}
