@@ -1,0 +1,1052 @@
+{
+  "RL_activated": false,
+  "atomic_macro_accepted": false,
+  "costs": {
+    "caller_finish_reserve_seconds": 1,
+    "caller_limit_seconds": 90,
+    "cold_caller_seconds": 6.433,
+    "cost_scope_evidence": "ROOT confirmed exact saved owner/post-write observations and actual plan limits; independent metadata review reconciles resource records.",
+    "leaf_check_limit_seconds": 55,
+    "leaf_check_memory_bytes": 524288000,
+    "memory_finish_reserve_bytes": 8388608,
+    "memory_limit_bytes": 536870912,
+    "metadata_closer_seconds": 0.116,
+    "owner_finish_reserve_seconds": 2,
+    "owner_limit_seconds": 60,
+    "owner_through_post_write_seconds": 0.88811325,
+    "scoped_owned_peak_before_reserve_bytes": 76070912,
+    "worker_SELF_peak_before_receipt_bytes": 57688064,
+    "worker_before_receipt_seconds": 0.748802291
+  },
+  "counts": {
+    "body_size_histogram": {
+      "1": 6,
+      "2": 1
+    },
+    "dependency_complete_fragments": 7,
+    "requested_target_fragments": 0,
+    "row_slot_family_skeletons": 7,
+    "selected_primitive_licenses": 18,
+    "snapshots": 175
+  },
+  "display_only": true,
+  "fragments": [
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            1,
+            3077
+          ],
+          [
+            1,
+            8,
+            4683
+          ],
+          [
+            1,
+            9,
+            4895
+          ],
+          [
+            2,
+            9,
+            -8
+          ],
+          [
+            3,
+            9,
+            -1
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            8,
+            2
+          ],
+          [
+            1,
+            9,
+            1
+          ],
+          [
+            2,
+            9,
+            1
+          ],
+          [
+            3,
+            9,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            8,
+            1
+          ],
+          [
+            0,
+            9,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "775f854cbde695bc30d6157b9e1e4e293dc66425f29834a921d79be3eaef0c15",
+      "anchor": "composite",
+      "body_size": 2,
+      "candidate_id": "unverified-fragment-dbebb645f4899673d6785ab48025819b1b9b1b300f642ff15be5117bf2d4104f",
+      "commands_sha256": "a3003edb783c83d0c3c9f93be24ebbc9e5e28670129a8636f1fa746590ad5dbf",
+      "conclusion_code": 4895,
+      "conclusion_latex": "(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w}))",
+      "conclusion_row": 9,
+      "display_index": 1,
+      "family_id": "unverified-row-family-c47ca63fb30fcfe51494acec0097bc61ae9e2784a19c6eb40eeee09164b23a98",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 4683,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-a10844e520e773e3d68ceba60ecf7d38803a8d3ee260c5bb225683b466110363"
+          },
+          {
+            "formula_code": 4895,
+            "ordered_source_slots": [
+              0,
+              1
+            ],
+            "recipe_id": "primitive-recipe-0aca3f1c0967cfe4ab5139b702d72b03470f0b6916976164838a110818bc9274"
+          }
+        ],
+        "original_hypothesis_occurrences": [
+          1
+        ],
+        "output_slot": 2,
+        "receptor_occurrences": [
+          {
+            "formula_code": 3077,
+            "original_hypothesis_index": 1
+          }
+        ]
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [
+          1
+        ],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [
+          {
+            "formula_code": 3077,
+            "high_level_port": 0,
+            "input_row": 1,
+            "new_occupancy": 0,
+            "readers": [
+              {
+                "formula_code": 3077,
+                "primitive_input_port": 0,
+                "reader_row": 9
+              }
+            ]
+          }
+        ],
+        "premise_codes": [
+          3077
+        ],
+        "primitive_members": [
+          {
+            "formula_code": 4683,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-a10844e520e773e3d68ceba60ecf7d38803a8d3ee260c5bb225683b466110363",
+            "row": 8
+          },
+          {
+            "formula_code": 4895,
+            "ordered_inputs": [
+              1,
+              8
+            ],
+            "recipe_id": "primitive-recipe-0aca3f1c0967cfe4ab5139b702d72b03470f0b6916976164838a110818bc9274",
+            "row": 9
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "This is hypothesis occurrence \\(2\\).",
+          "formula_english": "\\(\\mathrm{v}\\) equals \\(\\mathrm{w}\\)",
+          "formula_latex": "(\\mathrm{v}=\\mathrm{w})",
+          "is_existing_seed": true,
+          "key": [
+            525,
+            1,
+            []
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3077
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 1,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-e7ac7d5e6f5a3d28c46f6edc74cfb25ea19ea172dfd8943a431f3d2485a6f93a",
+          "rule": "assumption",
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{v}\\) equals \\(\\mathrm{w}\\)), then (if (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{v}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{v}=\\mathrm{w})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            2356,
+            8,
+            []
+          ],
+          "m": [
+            [
+              1,
+              8,
+              4683
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 8,
+          "proof_line": 2,
+          "recipe_id": "primitive-recipe-a10844e520e773e3d68ceba60ecf7d38803a8d3ee260c5bb225683b466110363",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              8,
+              1
+            ]
+          ]
+        },
+        {
+          "derivation_english": "Apply modus ponens to row \\(1\\) and the implication in row \\(2\\).",
+          "formula_english": "if (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{v}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\))",
+          "formula_latex": "(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w}))",
+          "is_existing_seed": false,
+          "key": [
+            2584,
+            9,
+            [
+              1,
+              8
+            ]
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3077
+            ],
+            [
+              1,
+              8,
+              4683
+            ],
+            [
+              1,
+              9,
+              4895
+            ],
+            [
+              2,
+              9,
+              -8
+            ],
+            [
+              3,
+              9,
+              -1
+            ]
+          ],
+          "ordered_original_prior_rows": [
+            1,
+            8
+          ],
+          "original_selected_row": 9,
+          "proof_line": 3,
+          "recipe_id": "primitive-recipe-0aca3f1c0967cfe4ab5139b702d72b03470f0b6916976164838a110818bc9274",
+          "rule": "mp",
+          "t": [
+            [
+              0,
+              9,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": [
+        1
+      ]
+    },
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            3,
+            3984
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            3,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "2849bff98de3a8cbc0a075a8cd556cd6f3e0bc3e87de0bac98962d9b3f11d955",
+      "anchor": "fragment-2",
+      "body_size": 1,
+      "candidate_id": "unverified-fragment-4ba8e746e5002634a8679ca5761d0e3bcfbc65d36ccd405dd3c180a84469464c",
+      "commands_sha256": "cd1c4e687038cb928ad0ff0bc47211865da9311eb59bc02d7a97febba023e223",
+      "conclusion_code": 3984,
+      "conclusion_latex": "((\\mathrm{A}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{A},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+      "conclusion_row": 3,
+      "display_index": 2,
+      "family_id": "unverified-row-family-ebc3a363a048f85ea97ace43ba048ae11f4ee656971b5e499b691619778d5c89",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 3984,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-de74bf6342e156d616887758ac4ae76616989e1def79bceb656dff9d6c34e292"
+          }
+        ],
+        "original_hypothesis_occurrences": [],
+        "output_slot": 0,
+        "receptor_occurrences": []
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [],
+        "premise_codes": [],
+        "primitive_members": [
+          {
+            "formula_code": 3984,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-de74bf6342e156d616887758ac4ae76616989e1def79bceb656dff9d6c34e292",
+            "row": 3
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{A}\\) equals \\(\\mathrm{C}\\)), then (if (\\(\\mathrm{A}\\) is incident with \\(\\mathrm{w}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{A}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{A},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            1613,
+            3,
+            []
+          ],
+          "m": [
+            [
+              1,
+              3,
+              3984
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 3,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-de74bf6342e156d616887758ac4ae76616989e1def79bceb656dff9d6c34e292",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              3,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": []
+    },
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            4,
+            4128
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            4,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            4,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "c4e91bc0c54fd4380e5d93842a7dbea11412c8f33684395d06fc08d0c427bd86",
+      "anchor": "fragment-3",
+      "body_size": 1,
+      "candidate_id": "unverified-fragment-457e5db2b1af4c33a5e9ef5902da92169e99f8fa44dbee5e823504ef8167252f",
+      "commands_sha256": "c2f795599946ba7aadbc2001613912918b943fa5763c071cfd96380d0deb49cd",
+      "conclusion_code": 4128,
+      "conclusion_latex": "((\\mathrm{B}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{B},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+      "conclusion_row": 4,
+      "display_index": 3,
+      "family_id": "unverified-row-family-1b012d6d902ae68588e1fadcb124c919abebc2592d46ba733a479974184fa4bf",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 4128,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-e5c6f91a472a10d3cb421d734cfec20352bfc626975042fa5665fa754311f369"
+          }
+        ],
+        "original_hypothesis_occurrences": [],
+        "output_slot": 0,
+        "receptor_occurrences": []
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [],
+        "premise_codes": [],
+        "primitive_members": [
+          {
+            "formula_code": 4128,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-e5c6f91a472a10d3cb421d734cfec20352bfc626975042fa5665fa754311f369",
+            "row": 4
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{B}\\) equals \\(\\mathrm{C}\\)), then (if (\\(\\mathrm{B}\\) is incident with \\(\\mathrm{w}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{B}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{B},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            1765,
+            4,
+            []
+          ],
+          "m": [
+            [
+              1,
+              4,
+              4128
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 4,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-e5c6f91a472a10d3cb421d734cfec20352bfc626975042fa5665fa754311f369",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              4,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": []
+    },
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            5,
+            4272
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            5,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            5,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "00f4a6d16e1a3c823ae8f0cdc1cd98ec25742049960a9e86379b8bdd699e3fe1",
+      "anchor": "fragment-4",
+      "body_size": 1,
+      "candidate_id": "unverified-fragment-ffcccf22d35ab8338349fd8ff9b8f2b0ffb14813ddb8389380a816f13dd787a2",
+      "commands_sha256": "0f139624b247a992d54f72dea21dcc2fd598fb3ee12c153ed056b26fb644e36e",
+      "conclusion_code": 4272,
+      "conclusion_latex": "((\\mathrm{C}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+      "conclusion_row": 5,
+      "display_index": 4,
+      "family_id": "unverified-row-family-cb035a1e5072b854f1e86b1cf2eb662efacc8100a7389e8d91175faff0ac372e",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 4272,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-7a7e4b332d2f223f3c20328af1894060a9fad96df18cc74a2d53e494d8154710"
+          }
+        ],
+        "original_hypothesis_occurrences": [],
+        "output_slot": 0,
+        "receptor_occurrences": []
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [],
+        "premise_codes": [],
+        "primitive_members": [
+          {
+            "formula_code": 4272,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-7a7e4b332d2f223f3c20328af1894060a9fad96df18cc74a2d53e494d8154710",
+            "row": 5
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{C}\\) equals \\(\\mathrm{C}\\)), then (if (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{C}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            1917,
+            5,
+            []
+          ],
+          "m": [
+            [
+              1,
+              5,
+              4272
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 5,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-7a7e4b332d2f223f3c20328af1894060a9fad96df18cc74a2d53e494d8154710",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              5,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": []
+    },
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            6,
+            4415
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            6,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            6,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "672bab375f63c132ede2d464cd5812541758e14c19f49da201bbde401f356044",
+      "anchor": "fragment-5",
+      "body_size": 1,
+      "candidate_id": "unverified-fragment-98fb9d224e0f6cbf991eda743b02d41d62b129944434bf67567705b5dc286857",
+      "commands_sha256": "0e08de7fb042ee2d13455372c5c26672ee0996f32ede455b4b7400dbb5a3c84b",
+      "conclusion_code": 4415,
+      "conclusion_latex": "((\\mathrm{D}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{D},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+      "conclusion_row": 6,
+      "display_index": 5,
+      "family_id": "unverified-row-family-0818d06627c7db40c160ca7dfead1f1f635ac5bee1b2cf1e333542b19b455c6f",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 4415,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-14aa61765775981465ebd72fca28d24be230d5f5e53ad65ba86543bccd9e6817"
+          }
+        ],
+        "original_hypothesis_occurrences": [],
+        "output_slot": 0,
+        "receptor_occurrences": []
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [],
+        "premise_codes": [],
+        "primitive_members": [
+          {
+            "formula_code": 4415,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-14aa61765775981465ebd72fca28d24be230d5f5e53ad65ba86543bccd9e6817",
+            "row": 6
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{D}\\) equals \\(\\mathrm{C}\\)), then (if (\\(\\mathrm{D}\\) is incident with \\(\\mathrm{w}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{D}=\\mathrm{C})\\to (\\operatorname{Incident}(\\mathrm{D},\\mathrm{w})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            2067,
+            6,
+            []
+          ],
+          "m": [
+            [
+              1,
+              6,
+              4415
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 6,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-14aa61765775981465ebd72fca28d24be230d5f5e53ad65ba86543bccd9e6817",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              6,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": []
+    },
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            7,
+            4572
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            7,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            7,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "65db82032d76b5866d35ae9a6e16aae2577f6853b1c7f56c0789e291b981cd3b",
+      "anchor": "fragment-6",
+      "body_size": 1,
+      "candidate_id": "unverified-fragment-7d7e0b50effcb72a4b6dc3368ab9cbeb8d94303c9e5098f919bbbdab568245b6",
+      "commands_sha256": "66936056125f3dd8353d6b975c290705b72678cb8556086e05821af2239d8e68",
+      "conclusion_code": 4572,
+      "conclusion_latex": "((\\mathrm{u}=\\mathrm{w})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{u})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+      "conclusion_row": 7,
+      "display_index": 6,
+      "family_id": "unverified-row-family-db86fb5d332a0196a0121a7c4afc8eb45c828a1054de01c86dd5dc2941505c88",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 4572,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-4cf5079a7e88cb3a2bf7a906e30677f1a107f19f2fcd7ce65985a778da344491"
+          }
+        ],
+        "original_hypothesis_occurrences": [],
+        "output_slot": 0,
+        "receptor_occurrences": []
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [],
+        "premise_codes": [],
+        "primitive_members": [
+          {
+            "formula_code": 4572,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-4cf5079a7e88cb3a2bf7a906e30677f1a107f19f2fcd7ce65985a778da344491",
+            "row": 7
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{u}\\) equals \\(\\mathrm{w}\\)), then (if (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{u}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{u}=\\mathrm{w})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{u})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            2237,
+            7,
+            []
+          ],
+          "m": [
+            [
+              1,
+              7,
+              4572
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 7,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-4cf5079a7e88cb3a2bf7a906e30677f1a107f19f2fcd7ce65985a778da344491",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              7,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": []
+    },
+    {
+      "aggregate": {
+        "m": [
+          [
+            1,
+            8,
+            4683
+          ]
+        ],
+        "m_reference_counts": [
+          [
+            1,
+            8,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            8,
+            1
+          ]
+        ]
+      },
+      "aggregate_sha256": "9e918aff56958067d5048208704bba831b3af472bf82a744bb21b688e13537b9",
+      "anchor": "fragment-7",
+      "body_size": 1,
+      "candidate_id": "unverified-fragment-ff1d239c4a9a0443fc715c99985d9aa378a65bd2c6808c44fb8ec15ea06be1c9",
+      "commands_sha256": "6bce5db22cf87ed8ea350e3ea469d2970e8f910260a1c1eeab051261cfb2f661",
+      "conclusion_code": 4683,
+      "conclusion_latex": "((\\mathrm{v}=\\mathrm{w})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+      "conclusion_row": 8,
+      "display_index": 7,
+      "family_id": "unverified-row-family-82227d5a2f7387d5b6e049b4fdf18f9c5335d4a218365ce3fe13aa2798390c17",
+      "family_skeleton": {
+        "context_id": "c3aea2a3b8c8f5ae2a507b12a1a9a7b2070fee0fd0788249aebfa09a6038c196",
+        "member_recipes": [
+          {
+            "formula_code": 4683,
+            "ordered_source_slots": [],
+            "recipe_id": "primitive-recipe-a10844e520e773e3d68ceba60ecf7d38803a8d3ee260c5bb225683b466110363"
+          }
+        ],
+        "original_hypothesis_occurrences": [],
+        "output_slot": 0,
+        "receptor_occurrences": []
+      },
+      "original_target_fragment": false,
+      "producer_status": "candidate_dependency_complete_fragment_unchecked",
+      "projection": {
+        "canonical_input_rows": [],
+        "dependency_bindings": [],
+        "native_accepted": false,
+        "ordered_receptor_ports": [],
+        "premise_codes": [],
+        "primitive_members": [
+          {
+            "formula_code": 4683,
+            "ordered_inputs": [],
+            "recipe_id": "primitive-recipe-a10844e520e773e3d68ceba60ecf7d38803a8d3ee260c5bb225683b466110363",
+            "row": 8
+          }
+        ]
+      },
+      "proof_rows": [
+        {
+          "derivation_english": "Equality substitution supplies this implication for the displayed atomic template.",
+          "formula_english": "if (\\(\\mathrm{v}\\) equals \\(\\mathrm{w}\\)), then (if (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{v}\\)), then (\\(\\mathrm{C}\\) is incident with \\(\\mathrm{w}\\)))",
+          "formula_latex": "((\\mathrm{v}=\\mathrm{w})\\to (\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\to \\operatorname{Incident}(\\mathrm{C},\\mathrm{w})))",
+          "is_existing_seed": false,
+          "key": [
+            2356,
+            8,
+            []
+          ],
+          "m": [
+            [
+              1,
+              8,
+              4683
+            ]
+          ],
+          "ordered_original_prior_rows": [],
+          "original_selected_row": 8,
+          "proof_line": 1,
+          "recipe_id": "primitive-recipe-a10844e520e773e3d68ceba60ecf7d38803a8d3ee260c5bb225683b466110363",
+          "rule": "eq_subst",
+          "t": [
+            [
+              0,
+              8,
+              1
+            ]
+          ]
+        }
+      ],
+      "scoped_acceptance_recorded": true,
+      "used_original_hypothesis_occurrences": []
+    }
+  ],
+  "guarded_definition_latex": "\\[H(A,B,u,v):=\\operatorname{Point}(A)\\land\\operatorname{Point}(B)\\land\\operatorname{Line}(u)\\land\\operatorname{Line}(v)\\land\\neg(A=B)\\land\\operatorname{Incident}(A,u)\\land\\operatorname{Incident}(B,u)\\land\\operatorname{Incident}(A,v)\\land\\operatorname{Incident}(B,v)\\]",
+  "guarded_preparation": {
+    "RL_training": false,
+    "actual_independent_complete_static_audit": true,
+    "actual_preparation_complete": true,
+    "complete_initial_candidate_count": 4397110,
+    "complete_static_qualification_accepted": true,
+    "dimensions": {
+      "formula_count": 5112,
+      "logical_rows": 24,
+      "non_assumption_witness_count": 2918,
+      "primitive_license_count": 2921,
+      "source_body_count": 0
+    },
+    "fresh_runtime_binding_created": false,
+    "inventory_admission": false,
+    "logical_rule_counts": {
+      "assumption": 3,
+      "axiom": 1,
+      "eq_subst": 600,
+      "instantiate": 399,
+      "mp": 1918
+    },
+    "measurements": {
+      "audit_caller_seconds": 3.134,
+      "audit_worker_peak_bytes": 25722880,
+      "audit_worker_seconds": 0.876076791,
+      "preparation_caller_seconds": 4.02
+    },
+    "proof_certificates": 0,
+    "qualified_context_created": false,
+    "scope": "The entire frozen finite grammar and licensed primitive identities, three ordered seeds and every initial24-point factor domain are independently qualified, with both actual ROOT-owned14-predicate resource chains. This is preparation for proof discovery, not a proof of the target or production search trajectory. Full FOL/Hilbert or universal Wang compiler completeness remains open.",
+    "selector": "next-inc-two-uniqueness",
+    "target_searches": 0
+  },
+  "indexing": {
+    "displayed_row_base": 1,
+    "original_hypothesis_occurrence_base": 0,
+    "physical_row_base": 0,
+    "reader_seed_reason": "Second hypothesis in the original ordered context, occurrence index 1; saved ordinal English is normalized only in the HTML reader.",
+    "saved_English_retained": true
+  },
+  "inventory_registered": false,
+  "metadata_review": {
+    "all_14_recorded_resource_predicates": true,
+    "authorship": "Extractor and literal checker share one author; borrowed symbolic kernel/licence source has separate authorship. This audit checks saved metadata only.",
+    "method": "metadata_only",
+    "mismatch_count": 0,
+    "pinchecks": 1166,
+    "reviewer_mathematical_acceptance": false,
+    "saved_documents_parsed": 27,
+    "unique_rawfiles": 194
+  },
+  "new_context_family_accepted": false,
+  "notebook": 141,
+  "original_gamma_latex": "\\Gamma=((\\mathrm{u}=\\mathrm{v}),\\;(\\mathrm{v}=\\mathrm{w}),\\;\\operatorname{Incident}(\\mathrm{C},\\mathrm{u}))",
+  "original_result_pin": {
+    "bytes": 141779,
+    "sha256": "b1f8de413f471820e3b9413e38b199a28e5ef506429d8189258241ecd697b039"
+  },
+  "original_status": "unknown_trace_budget",
+  "original_target_latex": "\\operatorname{Incident}(\\mathrm{C},\\mathrm{w})",
+  "original_trace_complete": false,
+  "original_trajectory_accepted": false,
+  "saved_data_pins": [
+    {
+      "bytes": 3396,
+      "name": "ROOT-scoped-fragment-disposition-v1.json",
+      "sha256": "844e2c315ff9c19a918f574d91c89ce8309975dcec8dfa58c705913ebc3334ac"
+    },
+    {
+      "bytes": 1593,
+      "name": "fragment-result-v1.json",
+      "sha256": "40b7682bc94494501843788950e710be9e9db6b50ea95b3969171241433ffd54"
+    },
+    {
+      "bytes": 62265,
+      "name": "fragment-evidence-v1.json",
+      "sha256": "b8f78980947c1c914fc55866e9c67856d27d73f4b841c87e6def664c38d524f4"
+    },
+    {
+      "bytes": 279655,
+      "name": "fragment-candidates-v1.json",
+      "sha256": "ff4f6db289a9c29a8761129ac37960554c5202ac99b0a392bce2a96ed90cca4d"
+    },
+    {
+      "bytes": 202893,
+      "name": "fragment-scoped-checks-v1.json",
+      "sha256": "7690ee3c52646927c2f7af84062280bb24d48a2103e4c59f50b6536ab2a114d4"
+    },
+    {
+      "bytes": 17981,
+      "name": "fragment-saved-record-findings-v1.json",
+      "sha256": "11d79d4bc61c9827a6acfea762a964450cb248851fe50548a8d6d3c40574845c"
+    },
+    {
+      "bytes": 4578,
+      "name": "ROOT-static-actual-close-v1.json",
+      "sha256": "9b37e5ae4879ce8292efe9dd784b5f85a091a741cb3d1b1dd71613fa56133786"
+    },
+    {
+      "bytes": 37696,
+      "name": "next-guarded-target-readiness-v1.json",
+      "sha256": "ba1a11adea78d1f5e53a465da31635fa51193b2274a6928b7f57defba4f8e8bb"
+    }
+  ],
+  "schema": "notebook141-saved-fragment-display-v1",
+  "scientific_execution_by_report_generator": false,
+  "scope": "Per-fragment original ordered Gamma consequence under I.2 plus compatible finite partial point cluster only. Independent-authored GroundChecker/SelectedWire licence source; extraction and separate literal checker share one author. Different-author source review, ROOT-owned actual execution. No whole-target or trajectory acceptance, universal/context-general family, inventory registration, atomic macro, learned markings, RL or speedup.",
+  "source_pins": [
+    {
+      "bytes": 8784,
+      "name": "fragment_candidates_v1.py",
+      "role": "candidate_extractor",
+      "sha256": "eebe22c9ed429ad43e89bbb78c596eb655f3c6d3b1433535bff2a351513ab381"
+    },
+    {
+      "bytes": 63480,
+      "name": "hilbert_batched_pair_certificate_v4.py",
+      "role": "certificate",
+      "sha256": "98fda5748c77e9039b99dff18e03e5d5351e54d2ee8ddb38df26e84dab3b4995"
+    },
+    {
+      "bytes": 24588,
+      "name": "hilbert_fresh_catalog_oracle_v2.py",
+      "role": "logical_oracle",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    {
+      "bytes": 21657,
+      "name": "basic-tiling-algorithm.md",
+      "role": "master",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 19428,
+      "name": "fragment_scoped_checks_v1.py",
+      "role": "scoped_checker",
+      "sha256": "3ba690af15a3a7503cd225d5a269c7c7c8f243d2881697113d82318aa96a8d0d"
+    },
+    {
+      "bytes": 19256,
+      "name": "fragment_checks_worker_v1.py",
+      "role": "worker",
+      "sha256": "8ce461b897239182b007bacd15ed92550b4563f9a6de3f6eb2b9b029ff4cb5fc"
+    }
+  ],
+  "speedup_claimed": false,
+  "whole_original_target_accepted": false
+}
