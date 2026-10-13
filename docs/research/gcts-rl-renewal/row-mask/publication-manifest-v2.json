@@ -1,0 +1,137 @@
+{
+  "RL_activated": false,
+  "completed_current_runtime_cases": 12,
+  "current_runtime_evidence": {
+    "ROOT_after_peer_close": {
+      "bytes": 1374,
+      "sha256": "07dc8edbd43955fb8c83590721f1fc96c8886df5795ecb11db952662a73fe37e"
+    },
+    "ROOT_disposition": {
+      "bytes": 8886,
+      "sha256": "dad226aedecdf87ce2e77950811b7a9ecbea3fbdb21b0e77b2c7df7b95791a61"
+    },
+    "ROOT_final_decision": {
+      "bytes": 2814,
+      "sha256": "8d5aa34f1ef70c49c96c02834b7732bcc31bbbd928dd5586f7c27f6c5b5e759e"
+    },
+    "actual_caller_terminal": {
+      "bytes": 2298,
+      "sha256": "64966d17a4a1a833ffa7db337be5f3d6cca454509be0916520b571b537a82333"
+    },
+    "independent_saved_review": {
+      "bytes": 45024,
+      "sha256": "4b335ba02e9891f6eb01c4c3d7fede63c578040ab622b4070b68c9b3d9cf0d80"
+    },
+    "later_metadata_finalizer": {
+      "bytes": 1149,
+      "sha256": "a013a1147487a39e6c7b716a68516c3cbe4d1b73454f7670320f7e93dd9f1814"
+    },
+    "owner_terminal": {
+      "bytes": 1758,
+      "sha256": "061cd944ba65b956bac7c2b5cd11ed938da348d7148e2c9305d113004e4a2f6d"
+    },
+    "post_write": {
+      "bytes": 781,
+      "sha256": "aa3afa6468e5410c2c76e9076fb6441faea1aa521f88c2f3a6bb16dc1d8331ec"
+    },
+    "worker_evidence": {
+      "bytes": 46712,
+      "sha256": "f847f8d8c8458eda634046cc80141d35bc72c2ad59d912099fc3e4c06cf84940"
+    },
+    "worker_receipt": {
+      "bytes": 13374,
+      "sha256": "cea3dbf62c5c5b22657af6657fac806fc8ee51e4ca6e0799f061957e4f49e9d6"
+    }
+  },
+  "files": [
+    {
+      "bytes": 379249,
+      "file": "index.html",
+      "sha256": "b49c634df4cdfc0dffafd7e042e2e7829c0a3d61dcc6afcca3e6016cbd45bebb"
+    },
+    {
+      "bytes": 13174,
+      "file": "row-mask/reader.html",
+      "sha256": "6eefeafa45c672ad5f041a9cbc80b86ad1eabd43af7cd34ebcf3f2b2c18fd841"
+    },
+    {
+      "bytes": 4337,
+      "file": "row-mask/reader.css",
+      "sha256": "80725f2311bbe49f287abfd931613f2be20b382e1af56c7699ef6e1c9f2df2f1"
+    },
+    {
+      "bytes": 17070,
+      "file": "row-mask/reader.js",
+      "sha256": "f0a7b78f588b60ae07d26128bcd1f8d170b07563b988319d0c6e591dc5b4ec92"
+    },
+    {
+      "bytes": 3185,
+      "file": "row-mask/outcome-v1.json",
+      "sha256": "6345796e5b2a23e89e861b5887e04d17e96eadc17eaa24b0a533b2ef3225d0b3"
+    },
+    {
+      "bytes": 2318216,
+      "file": "row-mask/runtime-outcome-v1.json",
+      "sha256": "42a248c16729f10f18df79f8fcd5f50f9e62a82919d3cb66916c6d5f72424638"
+    },
+    {
+      "bytes": 2611,
+      "file": "row-mask/publication-manifest-v1.json",
+      "sha256": "4dfe016d89c54f996647e9ceb70471e96451dbc463cc3d2bbe493c6458d9f400"
+    },
+    {
+      "bytes": 48417,
+      "file": "row-mask/reproduction-v1.zip",
+      "sha256": "43946e450591db338bbaa13e4ae0c44b503b82a55d91c9f19ed25df591ed6b08"
+    },
+    {
+      "bytes": 23274,
+      "file": "row-mask/reproduction/controls.py",
+      "sha256": "4dffbe5c0169636664e7ca13cc6cbb236971bb069bb0e5e9eccf648aae5292d5"
+    },
+    {
+      "bytes": 31300,
+      "file": "row-mask/reproduction/core.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    {
+      "bytes": 42946,
+      "file": "row-mask/reproduction/graph.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    {
+      "bytes": 25084,
+      "file": "row-mask/reproduction/oracle.py",
+      "sha256": "7c28fae08f6d035bf39b50b92909eb2d29f5d120b82f9ea6165c54b412da7390"
+    },
+    {
+      "bytes": 30343,
+      "file": "row-mask/reproduction/previous_graph.py",
+      "sha256": "75f3da66e2537a63bac84345b3ba488216de047bcd5af7b7a59dae0e8299b9f1"
+    },
+    {
+      "bytes": 17135,
+      "file": "row-mask/reproduction/previous_oracle.py",
+      "sha256": "9c6be043d89c9d64e28f91d5f7a34a8a654b53ba7fc54df2ebcde6343c03a1a6"
+    },
+    {
+      "bytes": 2333,
+      "file": "row-mask/reproduction/reproduce.py",
+      "sha256": "43af5f41fad5b4730c5538eb3e3520d8272f5fa8ce8d3a30cae33e36a211656c"
+    },
+    {
+      "bytes": 1213,
+      "file": "row-mask/reproduction/sources-v1.json",
+      "sha256": "57f3ef3580acbd51f4df247c1dc65fa538ab8b4fb7fef74d23e6227520e70b31"
+    }
+  ],
+  "full_production_accepted": false,
+  "independent_saved_review_passed": true,
+  "manifest_self_hash_excluded": true,
+  "notebook": 136,
+  "performance_advantage_established": false,
+  "proof_discovered": false,
+  "public_host_paths_excluded": true,
+  "schema": "row-mask-publication-manifest-v2",
+  "scope": "Original finite control evidence and capsule unchanged. New saved tiny current-runtime controls separately completed and independently reconciled. Reader loads sanitized saved JSON only; it does not run graph, oracle, checker, search or learning code."
+}
