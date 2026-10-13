@@ -1,0 +1,83 @@
+{
+  "Darwin_SELF_peak_bytes_before_serialization": 22953984,
+  "Darwin_SELF_peak_bytes_through_print": 22970368,
+  "RL_activated": false,
+  "capsule_source_review_passed": true,
+  "capsule_wrapper_executed": false,
+  "cost_scope": "single finite worker local elapsed and SELF only; caller and complete production envelope are separate",
+  "evidence": {
+    "RL_or_search_advantage": false,
+    "actual_dynamic_adapter_qualified": false,
+    "all_checks_passed": true,
+    "bare_provider_generic_negative_qualified": false,
+    "candidate_key_EOF_qualified": false,
+    "checks": {
+      "descriptor_rejects": 2,
+      "factor_cases": 84000,
+      "factor_stream_EOFs": 16800,
+      "immutable_rejects": 13,
+      "mask_cases": 14640,
+      "raw_guard_rejects": 4,
+      "raw_remote_restore": 1,
+      "receipt_cases": 35,
+      "signature_cases": 7,
+      "visitor_rejects": 54
+    },
+    "complete_declared_synthetic_grids": true,
+    "full_production54_1296_qualified": false,
+    "production_catalog_loaded": false,
+    "production_resource_fit_qualified": false,
+    "production_source_authority_admitted": false,
+    "proof_accepted": false,
+    "schema": "row-mask-finite-point-contract-controls-v1",
+    "status": "LOCAL_FINITE_CONTROLS_COMPLETED",
+    "supplied_theorem_route": false,
+    "theorem_discovered": false
+  },
+  "full_resource_accepted": false,
+  "genuine_worker_exit_code": 0,
+  "local_elapsed_seconds_before_serialization": 2.334458625,
+  "local_elapsed_seconds_through_print": 2.334721792,
+  "once_only_ROOT_invocation": true,
+  "performance_advantage_established": false,
+  "previous_production_V1_V2": "UNKNOWN, unchanged and charged",
+  "production_qualified": false,
+  "proof_discovered": false,
+  "saved_result_bytes": 3394,
+  "saved_result_sha256": "86bf2b5356c53e79e5edf2559453d6a14f2f2c9d221cfb0f18b28b14564f2d20",
+  "schema": "row-mask-public-finite-outcome-v1",
+  "sources": {
+    "compact": {
+      "bytes": 42946,
+      "file": "graph.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    "core": {
+      "bytes": 31300,
+      "file": "core.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    "finite_harness": {
+      "bytes": 23274,
+      "file": "controls.py",
+      "sha256": "4dffbe5c0169636664e7ca13cc6cbb236971bb069bb0e5e9eccf648aae5292d5"
+    },
+    "old_compact": {
+      "bytes": 30343,
+      "file": "previous_graph.py",
+      "sha256": "75f3da66e2537a63bac84345b3ba488216de047bcd5af7b7a59dae0e8299b9f1"
+    },
+    "old_raw": {
+      "bytes": 17135,
+      "file": "previous_oracle.py",
+      "sha256": "9c6be043d89c9d64e28f91d5f7a34a8a654b53ba7fc54df2ebcde6343c03a1a6"
+    },
+    "raw": {
+      "bytes": 25084,
+      "file": "oracle.py",
+      "sha256": "7c28fae08f6d035bf39b50b92909eb2d29f5d120b82f9ea6165c54b412da7390"
+    }
+  },
+  "status": "passed_finite_point_controls",
+  "synthetic_scope": "Ten authored nonlogical recipes, seven marking profiles. Actual old/new factor streams and receipt algorithms; test-only receipt shells bypass production authority admission. No production catalog, dynamic constructor or proof checker admission."
+}
