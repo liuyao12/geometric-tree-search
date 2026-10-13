@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "bytes": 17562,
+      "path": "reader.html",
+      "sha256": "86054b8170938d1d9ea074ac948bb62e230c1727c74c2f7f131983d5e2754e4d"
+    },
+    {
+      "bytes": 2562,
+      "path": "reader.css",
+      "sha256": "4faaae4c4a240cf4f6f4067c8333b8ba9410a99e435ac727202aa4729a16f5bc"
+    },
+    {
+      "bytes": 41693,
+      "path": "outcome-v1.json",
+      "sha256": "efe78a0ecfb222f1c33a13c572e9bef7e5bdcd8fb2953d811ad111e6e92b1e01"
+    },
+    {
+      "bytes": 377417,
+      "path": "../index.html",
+      "sha256": "4425c186ba6d5d40c8e21350497cd0344cea8ccc01fc10646e5e0a1061b38f80"
+    }
+  ],
+  "notebook": 135,
+  "publication_authorized_by_this_manifest": false,
+  "schema": "Notebook135-public-closed-outcome-manifest-v1",
+  "self_hash_scope": "Manifest excludes its own raw fingerprint; final five-file publication scope binds it separately.",
+  "status": "CLOSED_ACTUAL_PROJECTION_PENDING_DIFFERENT_PERSON_PUBLICATION_REVIEW"
+}

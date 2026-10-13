@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The corrected complete production-cache test reaches its original cold-child deadline after a diagnostic row prefix. Both failures remain UNKNOWN; no complete conformance, proof, RL or speed result is claimed.">
+  <title>GCTS research · Production-cache controls</title>
+  <link rel="stylesheet" href="../runtime-and-language/reader.css"><link rel="stylesheet" href="reader.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<header><a href="../index.html#production-cache">Research program</a><span>NOTEBOOK 135 · OCTOBER 12, 2026</span><a href="#evidence">Evidence</a></header>
+<main>
+<section class="hero" id="reader">
+  <p class="eyebrow">COMPLETE PRODUCTION RELATION · BOTH ACTUAL PHASES UNKNOWN</p>
+  <h1>The corrected test runs,<br>then reaches its deadline.</h1>
+  <p class="lead">V1 stops before graph construction at a raw-pin lookup error. The corrected once-only V2 reaches construction and saves a prefix of complete-row diagnostics, then exceeds the original cold-child deadline without a full result or worker receipt. Both outcomes remain UNKNOWN. No new proof, policy update or speed comparison is accepted.</p>
+  <div class="metrics"><article><b>UNKNOWN</b><span>actual V2 production phase</span></article><article><b>\(0/54\)</b><span>certified complete control states</span></article><article><b>\(0\)</b><span>new proofs or RL updates</span></article></div>
+  <p class="notice"><strong>A diagnostic prefix is not partial qualification.</strong>V2 saves \(80\) scalar records, including \(78\) row EOF events. The complete experiment still requires \(54\) labeled state observations and \(1296\) row EOF comparisons. Certified completion is \(0\); neither frozen phase may be rerun.</p>
+</section>
+<nav aria-label="Report sections"><a href="#outcome">Actual deadline UNKNOWN</a><a href="#v1-failure">Earlier wrapper failure</a><a href="#data-flow">Inspect the correction</a><a href="#controls">Complete intended controls</a><a href="#parallel">Parallel research</a><a href="#limits">What remains open</a></nav>
+<section id="outcome">
+  <p class="eyebrow">V2 · ACTUAL ONCE-ONLY INVOCATION · WHOLE CONTROLS INCOMPLETE</p>
+  <h2>Construction is reached; the complete relation does not close.</h2>
+  <p>The corrected worker emits its ready diagnostic at \(2.95268025\,\mathrm{s}\). It then records three ordered passes through rows \(0,\ldots,23\), followed by rows \(0,\ldots,5\). The last row event is at \(167.3612235\,\mathrm{s}\) on that worker's local clock. The trace provides no final \(54\)-state labels, full control result or worker receipt.</p>
+  <figure class="prefix-figure">
+    <p class="eyebrow">SAVED DIAGNOSTIC PREFIX · NOT ACCEPTED STATES</p>
+    <div class="prefix-row"><span>First observed row pass</span><div class="prefix-track full"></div><b>\(24\) EOF events</b></div>
+    <div class="prefix-row"><span>Second observed row pass</span><div class="prefix-track full"></div><b>\(24\) EOF events</b></div>
+    <div class="prefix-row"><span>Third observed row pass</span><div class="prefix-track full"></div><b>\(24\) EOF events</b></div>
+    <div class="prefix-row"><span>Fourth observed row prefix</span><div class="prefix-track partial"><i></i></div><b>\(6\) EOF events</b></div>
+    <figcaption>Every colored segment represents saved scalar row-EOF events, not a proof tile, accepted graph state or fraction of qualification. The required full experiment remains \(54\) labeled states and \(1296\) complete row comparisons. Its certified completed counts are both \(0\).</figcaption>
+  </figure>
+  <div class="table-wrap"><table><thead><tr><th>V2 observed interval</th><th>Original bound</th><th>Closed observation</th></tr></thead><tbody>
+    <tr><td>Parent-measured full cold child</td><td>\(170\,\mathrm{s}\)</td><td>\(170.675873\,\mathrm{s}\): deadline exceeded.</td></tr>
+    <tr><td>Owner through post-write observation</td><td>\(175\,\mathrm{s}\)</td><td>\(171.545094917\,\mathrm{s}\): this interval alone is below its bound.</td></tr>
+    <tr><td>Caller through observed terminal, with finish margin</td><td>\(180\,\mathrm{s}\)</td><td>\(182.462\,\mathrm{s}\), including \(1\,\mathrm{s}\): bound exceeded. Actual enclosing observation is \(181.462\,\mathrm{s}\).</td></tr>
+    <tr><td>Conditional scoped resource estimate</td><td>\(512\,\mathrm{MiB}\)</td><td>\(107{,}380{,}736\,\mathrm{bytes}=102.40625\,\mathrm{MiB}\). Below the memory envelope; resource acceptance is still false.</td></tr>
+  </tbody></table></div>
+  <p>The cold child scope includes creation through reap. The caller interval includes cold approval and polling through the genuine terminal observation; it is not an estimate of active worker runtime. All clock comparisons use elapsed values within their own measured scopes. These nested intervals are not disjoint costs to add. The prospective \(32\,\mathrm{MiB}\) ROOT postlude reserve remains separate from the observed failed-phase estimate; it is not a measured peak or acceptance.</p>
+  <p>The worker exits with code \(1\), with a saved <code>value_error</code> diagnostic in <code>full-relation-controls</code>. The owner records the full cold-child deadline failure, reaps the worker and all \(1322\) observers, and closes with no leftovers. Its CLI returns code \(0\), meaning owner completion, while the resource gate remains false and the accepting terminal is absent. No metadata acceptance closer is invoked.</p>
+  <p class="note">Reaching construction does not independently certify a graph. Scalar row diagnostics do not replace the full result or complete semantic/resource gate. The source closure is rehashed after failure, but that check supplies no missing control result. A different-person saved-metadata review reconciles the records and this UNKNOWN disposition; it performs no semantic replay or second scientific execution. A separately named and reviewed successor is required before any later invocation; both existing attempts remain immutable UNKNOWNs.</p>
+</section>
+<section id="v1-failure">
+  <p class="eyebrow">SAVED V1 OBSERVATIONS · NO RESULT OR WORKER RECEIPT</p>
+  <h2>Cleanup completes; qualification does not.</h2>
+  <p>The worker returns code \(1\). The owner itself reaches a genuine terminal with code \(0\), while explicitly reporting that its resource gate is false and that no accepting terminal record exists. The worker and all eight observers are reaped, with no owned leftovers. No complete relation result or worker receipt was saved.</p>
+  <div class="table-wrap"><table><thead><tr><th>Observed scope</th><th>Saved value</th><th>Meaning</th></tr></thead><tbody>
+    <tr><td>Enclosing caller bound</td><td>\(15.36\,\mathrm{s}\)</td><td>Includes the \(1\,\mathrm{s}\) finish margin; the measured interval is \(14.36\,\mathrm{s}\).</td></tr>
+    <tr><td>Owner through post-write observation</td><td>\(1.563590916\,\mathrm{s}\)</td><td>Emitter-local owner interval; does not include the entire caller observation interval.</td></tr>
+    <tr><td>Cold worker lifetime</td><td>\(0.71991675\,\mathrm{s}\)</td><td>Parent-measured child creation through reap, inside the owner scope.</td></tr>
+    <tr><td>Failed-phase conditional resource estimate</td><td>\(47{,}431{,}680\,\mathrm{bytes}\)</td><td>Scoped conservative accounting after failure; resource acceptance remains false.</td></tr>
+    <tr><td>Complete production observations</td><td>\(0/54\)</td><td>No complete graph state or row factor EOF comparison is certified.</td></tr>
+  </tbody></table></div>
+  <p>These nested time intervals are separate observations and must not be added as disjoint costs. The failed V1 invocation remains charged; it is not reset or reclassified by a source correction. The original arithmetic BASE budget UNKNOWN and the completed tiny cache controls also remain unchanged.</p>
+  <p class="note">The saved diagnostic identifies a wrapper exception in the graph-construction phase. Source data-flow inspection further locates argument evaluation before <code>build_subject</code> enters. No functional reproducer or second scientific execution supplied this diagnosis. Earlier source and literal-plan reviews missed the cross-field type error; their no-defect conclusions are qualified by this finding.</p>
+</section>
+<section id="data-flow">
+  <p class="eyebrow">RAW FILE AUTHORITY AND DECODED CONTENTS HAVE DIFFERENT TYPES</p>
+  <h2>The correction forwards the already authenticated pin.</h2>
+  <figure class="flow-figure">
+    <div class="flow-legend"><span><i class="raw"></i>Raw file fingerprint</span><span><i class="decoded"></i>Decoded metadata value</span><span><i class="call"></i>Prospective helper call</span></div>
+    <div class="flow-grid">
+      <article class="flow-box raw"><h3>Literal plan field</h3><code>p['qualification']</code><p>Exactly <code>path</code>, <code>sha256</code>, <code>bytes</code>.<br>It has no <code>catalog</code> field.</p></article>
+      <span class="flow-arrow" aria-hidden="true">Decode</span>
+      <article class="flow-box decoded"><h3>Separate decoded value</h3><code>q</code><p>Its <code>catalog</code> field is a raw header fingerprint. The whole expected graph binding is checked against this value.</p></article>
+    </div>
+    <div class="call-row failed"><b>V1 · actual exception before helper entry</b><code>header_pin=p['qualification']['catalog']</code><span>The lookup uses the raw record as if it were the decoded value.</span></div>
+    <div class="call-row corrected"><b>V2 · corrected source reaches construction</b><code>header_pin=p['expected_graph_binding']['catalog_header_pin']</code><span>This field is already checked against <code>q['catalog']</code>; it forwards the exact authenticated raw header fingerprint.</span></div>
+    <figcaption>Data-flow schematic derived from source and saved failure metadata. Colors identify data categories, not proof tiles, GCTS markings or an accepted tiling. V2 reaches its construction-ready diagnostic, but its complete production qualification remains UNKNOWN.</figcaption>
+  </figure>
+  <p>The V2 successor changes that expression and the necessary fresh source, path and fingerprint bindings. Its complete source inverse accounts for eight edits across worker, owner and terminal sources. The catalogue, primitive rules, target, complete controls and budgets are preserved. Fresh metadata declares \(508\) leaf closure files, \(510\) owner closure files and \(29\) explicit decoded reader roots; The fresh V2 phase is invoked once after separate admission; these metadata counts do not constitute a runtime conformance result.</p>
+  <div class="table-wrap"><table><thead><tr><th>Stage</th><th>Current evidence</th><th>Acceptance</th></tr></thead><tbody>
+    <tr><td>V1 owned invocation</td><td>Once-only actual exception, terminal and cleanup records</td><td>UNKNOWN; no graph or production relation</td></tr>
+    <tr><td>Independent diagnosis</td><td>Source argument evaluation reconciled with saved phase and stderr</td><td>Data-flow finding; no runtime reproduction</td></tr>
+    <tr><td>V2 owned invocation</td><td>Reviewed correction, construction-ready diagnostic and incomplete row prefix</td><td>Deadline UNKNOWN; no full control result or resource acceptance</td></tr>
+  </tbody></table></div>
+</section>
+<section id="controls">
+  <p class="eyebrow">UNCHANGED FULL INVENTORY · NO TARGET CONDITIONING</p>
+  <h2>The production checks retain the entire relation.</h2>
+  <div class="obligations"><article><b>\(119633\)</b><span>complete primitive recipe headers</span></article><article><b>\(54\times24=1296\)</b><span>declared full row factor EOF checks</span></article><article><b>\(20\)</b><span>retained pushes and full unwind</span></article></div>
+  <p>The intended harness compares full point assignments and candidate-factor multiplicities with an independent raw-recipe oracle across every declared state. It exercises repeated, new and remote formula marks, a canonical direct dead child, immutable parent classification reuse and exact restoration through the full retained trail. All \(24\) required rows and three ordered hypothesis occurrences remain present.</p>
+  <p>The cache reuses classification counts only under the exact assigned-code signature and admitted immutable source authority. Row masks, distant markings, branch exclusions and the original affected-row refresh still determine the complete current candidate relation. A reusable count image cannot replace legality checks or the reference global dead, forced and earliest-generation scheduler.</p>
+  <p class="note">These are the full production experiment's declared obligations. V1 completed none; V2 saved row diagnostics without a completed whole control result. Both certified completion counts remain zero. The earlier <a href="../cache-conformance/reader.html#outcome">completed tiny controls</a> are genuine engineering evidence, but do not certify the new whole production relation or a speed improvement.</p>
+</section>
+<section id="parallel">
+  <p class="eyebrow">SEPARATE SOURCES AND INDEPENDENT REVIEWS</p>
+  <h2>Each workstream has a concrete next gate.</h2>
+  <div class="tracks"><article><h3>Engine and controls</h3><p>The wrapper error is corrected, and the distinct V2 phase reaches the deadline during full relation controls. Next: locate the cost with bounded emitter-local checkpoints, then review a fresh successor preserving every check and the same budgets.</p></article><article><h3>Symbolic geometry</h3><p>Fresh preparation and independent audit wrappers for the three Hilbert recipients pass different-person SOURCE review. They retain the whole literal nine-plus-three fixture and complete grammar. No new recipient catalogue, proof or search has run.</p></article><article><h3>Arithmetic</h3><p>The standalone induction-schema helper, finite control specification and local owned wrapper are source groundwork. Induction is not yet a licensed compact search rule; native, production compiler and proof integration remain external.</p></article></div>
+  <p>The new geometry primary target is still prospective:</p>
+  \[H(A,B,u,v),\ H(A,B,v,w),\ \operatorname{Incident}(C,u)\ \vdash_{\mathcal T_{\mathrm{I.2}}}\ \operatorname{Incident}(C,w).\]
+  <p>Here \(H\) abbreviates the exact symbolic common-point guard, including point and line predicates, distinctness and all four incidences. Its <a href="../next-benchmarks/reader.html#statements">literal definition and three recipient statements</a> are inspectable. No coordinates or implicit \(\operatorname{Point}(C)\) premise are introduced.</p>
+  <p>Parallel review supplies a concrete failure diagnosis, corrected interfaces and independently authored audits. It does not itself demonstrate faster proof search, a better learned policy or a new theorem. Those claims require accepted complete proofs and matched-inventory comparisons with all preparation, learning and checking costs charged.</p>
+</section>
+<section id="limits">
+  <h2>Production conformance is a step toward the proof experiment.</h2>
+  <p>The stronger live-parent subtree-exhaustion control remains open. This model uses unit positive support and root generation \(0\); differing-generation precedence, general fractional support and candidates sharing positive support are not qualified by these controls. Complete streamed proposal, overlay, trajectory, policy credit and production search interfaces also need their own evidence.</p>
+  <p>The next engineering step is source diagnosis of the complete relation-audit path. The saved prefix supplies no isolated bottleneck measurement or speed estimate. Any optimization must retain the full inventory, states, EOF comparisons and original budgets, followed by fresh independent source and owned runtime gates. A later automatic theorem search must preserve complete primitive fallback and return every proof row for independent checking. Fixed, uniform and learned cluster proposals must use the same complete inventory, with held-out proof traces excluded from updates. The current phase performs no proof search, cluster mining, policy fit, RNG draws or native proof check.</p>
+  <p>The original finite arithmetic language and the new symbolic incidence language each retain their declared five primitive commands. Full PA induction and Hilbert's existence, order, congruence and continuity groups remain separate integration goals. A universal finite Wang compiler and any general GCTS or RL advantage are still unestablished.</p>
+</section>
+<section id="evidence">
+  <h2>Public projection and raw fingerprints.</h2>
+  <p><a href="outcome-v1.json">Sanitized saved outcomes, all diagnostic-prefix events and source fingerprints</a> · <a href="publication-manifest-v1.json">Public file fingerprints</a> · <a href="../runtime-and-language/reader.html#outcome">Original arithmetic search UNKNOWN</a></p>
+  <p>This reader runs only the established mathematical typesetter. It imports no catalogue, compiler, graph, checker, schema constructor or learner. The public projection contains scalar observations and raw fingerprints; private paths, process identities and raw execution closures stay outside it.</p>
+</section>
+</main>
+</body>
+</html>
