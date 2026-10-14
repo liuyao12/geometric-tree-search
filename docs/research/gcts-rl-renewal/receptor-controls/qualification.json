@@ -1,0 +1,751 @@
+{
+  "schema": "ROOT-current-two-I2-family-controls-disposition-v1",
+  "ROOT_complete_scoped_controls_accepted": true,
+  "resource_qualification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "2df25f3289d573c9e6fadd411660b1e2efa11802b0231b579e8537e5d57d541c",
+    "bytes": 2825
+  },
+  "actual_controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/worker-output-v1/actual-family-controls-v1.json",
+    "sha256": "9d13def9902d5d4902ea038558a3ffbf25deeba2d052f989964fdad46fd88907",
+    "bytes": 171724
+  },
+  "actual_evidence": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/worker-output-v1/actual-family-controls-evidence-v1.json",
+    "sha256": "8f7578cb12f04f6337161ce26fc98726cae511db13cbd4a4837ff2861ba36c02",
+    "bytes": 52897
+  },
+  "actual_receipt": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/worker-output-v1/actual-family-controls-result-v1.json",
+    "sha256": "47c5f8e59c17278823362a1a4030ef22dc1815dc7dc5a137842e94d05df62578",
+    "bytes": 1654
+  },
+  "prior_failed_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-actual-family-controls-failure-disposition-v1.json",
+    "sha256": "e866c77cb450062918bbe449587a340a0ad4fda2f162c340386718649e5b29d3",
+    "bytes": 1793
+  },
+  "actual_cold_invocations_this_checkpoint": 2,
+  "successful_control_cases": 2,
+  "actual_control_checks": 106,
+  "inner_complete_seconds": 17.956941584,
+  "owned_post_seconds": 18.122334334,
+  "caller_seconds": 23.5,
+  "conditional_peak_bytes": 60997632,
+  "cases": [
+    {
+      "instance_id": "fresh-i2-CD-vw-direct",
+      "qualification": {
+        "bytes": 10778,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+        "sha256": "c17713944fcb3659dc8f416b9f1c575c17049f40fff32c75e1ed0c9389e341e4"
+      },
+      "checked_tests": 53,
+      "all_initial_receptor_requests": 2,
+      "initial_ground_expansions": 1,
+      "case_call_seconds": 8.487186333,
+      "ground_checks_completed": 2,
+      "initial_domain_count": 1003,
+      "all_checked_commands": [
+        [
+          {
+            "formula": [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "v",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "D",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "v",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "w",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "w",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "u",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "u",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "u",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "u",
+              []
+            ],
+            "right": [
+              "fun",
+              "v",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "var",
+                  "hole0"
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          {
+            "antecedent": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 3,
+            "rule": "mp"
+          },
+          {
+            "antecedent": 2,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            "implication": 4,
+            "rule": "mp"
+          }
+        ]
+      ]
+    },
+    {
+      "instance_id": "fresh-i2-CD-vw-incidence-transport",
+      "qualification": {
+        "bytes": 10921,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+        "sha256": "f22d5992e0156f2d890df6794acdee61c339cad12671226196f73a6727c19b30"
+      },
+      "checked_tests": 53,
+      "all_initial_receptor_requests": 2,
+      "initial_ground_expansions": 1,
+      "case_call_seconds": 8.561464667,
+      "ground_checks_completed": 2,
+      "initial_domain_count": 1003,
+      "all_checked_commands": [
+        [
+          {
+            "formula": [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "v",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "D",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "v",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "w",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "w",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "u",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "u",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "u",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "u",
+              []
+            ],
+            "right": [
+              "fun",
+              "v",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "var",
+                  "hole0"
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          {
+            "antecedent": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 3,
+            "rule": "mp"
+          },
+          {
+            "antecedent": 2,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            "implication": 4,
+            "rule": "mp"
+          }
+        ]
+      ]
+    }
+  ],
+  "scientific_search_activation": false,
+  "ROOT_library_admitted": false,
+  "inventory_admission": false,
+  "target_proofs_accepted": false,
+  "full24_board_accepted": false,
+  "RL_episodes": 0,
+  "training_updates": 0,
+  "schema_universally_validated": false,
+  "scope": "Only current finite family instances and recorded real graph/domain fixtures. Mechanical off-scheduler reader placement and unproved sole-key exclusion are explicitly nonlogical controls. Successful control qualification grants no scientific search, no universal family or new inference rule, and no whole trajectory.",
+  "unexercised": [
+    "repeated equal original hypotheses",
+    "actual-zero marking",
+    "aliased MP inputs",
+    "successful second-family chain",
+    "independent full24 dynamic-domain oracle",
+    "native/fullboard/scientific-search/learned-RL/performance comparisons"
+  ]
+}

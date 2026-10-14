@@ -1,0 +1,33 @@
+{
+  "schema": "ROOT-actual-family-controls-failure-disposition-v1",
+  "status": "UNKNOWN_incomplete_real_family_controls",
+  "ROOT_complete_controls_accepted": false,
+  "scientific_code_activated": true,
+  "completed_control_cases": 0,
+  "accepted_partial_prefix": false,
+  "actual_cold_invocations": 1,
+  "worker_returncode": 1,
+  "failure": "RecipeMetadataView inherited classmethod rejected by production function-only method guard during first-recipient GoalDependencyAdvice construction",
+  "failure_log": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/stderr-v1.txt",
+    "sha256": "d1a608e4375bf5ace68cea9e6fa84bbaad4e4499bf67bdb2b23b5762ed419142",
+    "bytes": 1915
+  },
+  "resource_decision": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "7c67dcdfcd2f92361ba175e9ce03e480b0cde486da7612efdb61bb2d7261ca9a",
+    "bytes": 2598
+  },
+  "owned_post_seconds": 1.604088667,
+  "caller_seconds": 5.682,
+  "conditional_observed_peak_bytes": 58195968,
+  "all_owner_direct_children_terminal_and_reaped": true,
+  "owned_leftovers": [],
+  "mathematical_target_acceptance": false,
+  "target_searches": 0,
+  "RL_episodes": 0,
+  "inventory_admission": false,
+  "scientific_search_activation": false,
+  "partial_ground_check_count": "unrecorded; do not infer a completed count from constructor progress",
+  "scope": "Preserved failed cold attempt; observed within limits and reaped, but complete resource/stage predicates did not pass. No controls completion or theorem acceptance. Fresh reviewed successor required before another activation."
+}

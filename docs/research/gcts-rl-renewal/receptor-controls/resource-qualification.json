@@ -1,0 +1,67 @@
+{
+  "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+  "stage": "replay",
+  "status": "accepted_complete_owned_stage",
+  "ROOT_final_accepted": true,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": true,
+    "owner_gate": true,
+    "post_write_gate": true,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": true,
+    "stage_identity": true,
+    "worker_complete": true,
+    "all_worker_direct_children_closed": true,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": true
+  },
+  "mismatches": [],
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "caller_elapsed_seconds": 23.5,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/equality-receptor-family-controls-progress-v2-20261014/replay-plan-v1.json",
+    "sha256": "492aa46f2f2e3c449d6c3bdb46bc9e561171e4a352e2b33c01f5ed4d088ee3d2",
+    "bytes": 45167
+  },
+  "actual_tool": {
+    "path": ".gcts-active/equality-receptor-family-controls-progress-v2-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "eab5391af42bb600467b9e4d54386dd04d7f826bcbf36454dce98ef5a7659b5c",
+    "bytes": 2400
+  },
+  "owner": {
+    "path": ".gcts-active/equality-receptor-family-controls-progress-v2-20261014/replay-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "dfd9b1b198d3908bf62c007a169b39b1699db12edc11672993bd8ff7a34dec78",
+    "bytes": 1756
+  },
+  "post_write": {
+    "path": ".gcts-active/equality-receptor-family-controls-progress-v2-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "df28b6989e6ce0f666b0c65a3e4a1c38d8a9c81c219230762ad3d7903e6b4de5",
+    "bytes": 802
+  },
+  "worker": {
+    "path": ".gcts-active/equality-receptor-family-controls-progress-v2-20261014/worker-output-v1/actual-family-controls-result-v1.json",
+    "sha256": "47c5f8e59c17278823362a1a4030ef22dc1815dc7dc5a137842e94d05df62578",
+    "bytes": 1654
+  },
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+}

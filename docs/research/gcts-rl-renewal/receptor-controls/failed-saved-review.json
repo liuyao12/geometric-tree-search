@@ -1,0 +1,3415 @@
+{
+  "accepted_partial_prefix": false,
+  "actual_invocations": 1,
+  "actual_status": "UNKNOWN_incomplete_real_family_controls",
+  "all_checks_passed": true,
+  "cases": [
+    {
+      "complete_controls_census": null,
+      "complete_preparation_dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "completed_controls": false,
+      "controls_admission": {
+        "bytes": 6785,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/ROOT-controls-only-admission-v1.json",
+        "sha256": "cb08f28219747085debd2f7d507bc6980daa13632b5bcb6aa039a835b2a1d0ec"
+      },
+      "instance_id": "fresh-i2-CD-vw-direct",
+      "original_Gamma": [
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "u",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ]
+      ],
+      "qualification": {
+        "bytes": 10749,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+        "sha256": "25fa815f7075b04a8a37213d82d786771acbc25fc8eb1ac070d29d4e25fbe834"
+      },
+      "registry_preimage_sha256": "70b2a8b86c47838de94d5439b6771de68537b4ed75976a52b6fd1d62b8165561"
+    },
+    {
+      "complete_controls_census": null,
+      "complete_preparation_dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "completed_controls": false,
+      "controls_admission": {
+        "bytes": 6798,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/ROOT-controls-only-admission-v1.json",
+        "sha256": "819a95ac48b69732ccabb681ba81a2394f439fa0c4aae8b8142db2fca45b0f05"
+      },
+      "instance_id": "fresh-i2-CD-vw-incidence-transport",
+      "original_Gamma": [
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "u",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ]
+      ],
+      "qualification": {
+        "bytes": 10892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+        "sha256": "add18cc2c2e76ec55e331f6a5a6cdb18aaf7a27e5547a874a91af87d72eb20f9"
+      },
+      "registry_preimage_sha256": "e705831d35179aef6145e76f2de65aa0bc8cf707d57299e6089a3dd1e1612492"
+    }
+  ],
+  "check_count": 684,
+  "checklist": {
+    "bytes": 2734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/saved-reconciliation-checklist-v1.json",
+    "sha256": "3515b46beb0b0050be527ca147f5191832a733d355ef947c996512ae43835d0c"
+  },
+  "checks": [
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-policy-source-20261012/cluster_episode_contract_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/I2-recipient-bindings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/control-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-source-findings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-controls-input-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/source-contract-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runner-source-20261013/fresh_observer_overlay_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/compact_first_checked_proof_dfs_v11.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-actual-complete-static-geometry-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-direct-preparation-preactivation-sandbox-failure-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/freeze_static_reviews_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/seal_static_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-design-independent-20261013/findings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-design-20261013/declaration-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/build_i2_static_metadata_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_audit_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_grammar_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/static-profile-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/audit-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/catalog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/recipes-v1.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/preparation-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/producer-diagnostics-v1.jsonl",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/audit-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/catalog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/recipes-v1.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/preparation-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/producer-diagnostics-v1.jsonl",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-person-review-20261013/raw-source-evidence-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-person-review-20261013/source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/full-source-inverse-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_independent_compact_grammar_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/source-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/raw-source-evidence-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/compact-profile-full-diff-v1.patch",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/expanded-profile-full-diff-v1.patch",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/full-source-inverse-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert-next-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_compact_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_expanded_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-metadata-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-protocol-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/preparation-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/protocol-and-gaps-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/raw-closure-reconciliation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-complete-saved-static-findings-v3.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-ROOT-worker-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-static-source-findings-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/AGENTS.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/fol_checker.tree",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/serialized_kernel.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /bin/ps",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-controls-input-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/control-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-policy-source-20261012/cluster_episode_contract_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-I2-recipient-source-20261014/I2-recipient-bindings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-consumer-source-20261014/control-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-source-findings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-controls-input-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-source-20261014/source-contract-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/fresh-equality-first-proof-runner-source-20261013/fresh_observer_overlay_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/fresh-equality-first-proof-runtime-source-20261013/compact_first_checked_proof_dfs_v11.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-actual-complete-static-geometry-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-direct-preparation-preactivation-sandbox-failure-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/freeze_static_reviews_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-request-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-ROOT-source-20261013/seal_static_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-design-independent-20261013/findings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-design-20261013/declaration-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/build_i2_static_metadata_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_audit_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_grammar_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-implementation-source-20261013/static-profile-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/audit-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/catalog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/recipes-v1.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/preparation-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/producer-diagnostics-v1.jsonl",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/audit-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/catalog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/recipes-v1.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/preparation-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/producer-diagnostics-v1.jsonl",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-person-review-20261013/raw-source-evidence-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-person-review-20261013/source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-source-20261013/full-source-inverse-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_independent_compact_grammar_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-source-20261013/source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-independent-oracles-source-20261013/source-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-independent-source-20261013/raw-source-evidence-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/compact-profile-full-diff-v1.patch",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/expanded-profile-full-diff-v1.patch",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/full-source-inverse-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert-next-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_compact_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_expanded_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/source-manifest-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/source-metadata-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-literal-compiler-source-20261013/source-protocol-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-owned-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-owned-progress-20261013/audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-owned-progress-20261013/close_stage_decision_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-owned-progress-20261013/preparation-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-owned-progress-20261013/preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-owned-progress-20261013/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-receptor-benchmark-source-20261013/handoff-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-receptor-benchmark-source-20261013/protocol-and-gaps-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-next-receptor-benchmark-source-20261013/raw-closure-reconciliation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/receptor-i2-independent-implementation-review-20261013/I2-complete-saved-static-findings-v3.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-ROOT-worker-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/receptor-i2-independent-implementation-review-20261013/I2-static-source-findings-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin AGENTS.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin research/gcts-rl-renewal/fol_checker.tree",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin research/gcts-rl-renewal/serialized_kernel.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /bin/ps",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/ROOT-controls-only-admission-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /bin/ps",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-source-findings-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/source-contract-v2.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/run_owned_bridge_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/provisional-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-actual-tool-observations-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/provisional-terminal-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin .gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/post-write-observation-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/stderr-v1.txt",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "strict eleven-field leaf and ten-field generic owner",
+      "passed": true
+    },
+    {
+      "name": "controls scope separate from science search",
+      "passed": true
+    },
+    {
+      "name": "one owned controls attempt, generic transport stage replay",
+      "passed": true
+    },
+    {
+      "name": "all twenty/sixty/512MiB/ninety caps unchanged",
+      "passed": true
+    },
+    {
+      "name": "whole exact twenty-source epoch",
+      "passed": true
+    },
+    {
+      "name": "prior genuine Source-only reviews retained, not actual pass",
+      "passed": true
+    },
+    {
+      "name": "worker author and reviewer distinct",
+      "passed": true
+    },
+    {
+      "name": "complete saved closure sizes, no census narrowing",
+      "passed": true
+    },
+    {
+      "name": "literal selected worker/runtime/command and same two actual plans",
+      "passed": true
+    },
+    {
+      "name": "flat anchors and literal exclusive output namespace",
+      "passed": true
+    },
+    {
+      "name": "explicit real controls-only Root grant",
+      "passed": true
+    },
+    {
+      "name": "accepted extraction artifacts preserved without advice search admission",
+      "passed": true
+    },
+    {
+      "name": "two original current recipient order, first failed before second completed",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/catalog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/audit-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/preparation-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_grammar_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_audit_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/recipes-v1.bin",
+      "passed": true
+    },
+    {
+      "name": "whole original eleven-field q/header fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "original static profile fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "exact scoped advice authorization, no universal/science library fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "current registry exact input/source/admission bindings fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "acyclic complete family registry preimage fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "empty primitive body inventory retained fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "complete original dimensions retained fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "all seven explicit current consumer raw roles fresh-i2-CD-vw-direct",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/catalog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/audit-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/preparation-result-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_grammar_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_audit_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-source-review-v1.json",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "passed": true
+    },
+    {
+      "name": "whole raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/recipes-v1.bin",
+      "passed": true
+    },
+    {
+      "name": "whole original eleven-field q/header fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "original static profile fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "exact scoped advice authorization, no universal/science library fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "current registry exact input/source/admission bindings fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "acyclic complete family registry preimage fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "empty primitive body inventory retained fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "complete original dimensions retained fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "all seven explicit current consumer raw roles fresh-i2-CD-vw-incidence-transport",
+      "passed": true
+    },
+    {
+      "name": "literal pinned generic owner source unchanged",
+      "passed": true
+    },
+    {
+      "name": "literal pinned saved closer source unchanged",
+      "passed": true
+    },
+    {
+      "name": "actual indexed metadata view inherits stdlib Sequence",
+      "passed": true
+    },
+    {
+      "name": "Python3.9 source declares inherited classmethod over GenericAlias type, not Python function",
+      "passed": true
+    },
+    {
+      "name": "function-only effective-method seal rejects nonfunction descriptor payload",
+      "passed": true
+    },
+    {
+      "name": "exact constructor failure chain is source bound",
+      "passed": true
+    },
+    {
+      "name": "rollback is prospective failure-finally code; no completed saved rollback receipt inferred",
+      "passed": true
+    },
+    {
+      "name": "publication requires complete case return and complete sequential cases",
+      "passed": true
+    },
+    {
+      "name": "actual retained nonexact-function rejection",
+      "passed": true
+    },
+    {
+      "name": "actual traceback source frame actual_Incident_family_controls_worker_v2.py\", line 447",
+      "passed": true
+    },
+    {
+      "name": "actual traceback source frame actual_Incident_family_controls_v1.py\", line 121",
+      "passed": true
+    },
+    {
+      "name": "actual traceback source frame equality_receptor_family_I2_v2.py\", line 825",
+      "passed": true
+    },
+    {
+      "name": "actual traceback source frame equality_receptor_family_I2_v2.py\", line 127",
+      "passed": true
+    },
+    {
+      "name": "actual traceback source frame equality_receptor_family_I2_v2.py\", line 93",
+      "passed": true
+    },
+    {
+      "name": "worker success stdout absent",
+      "passed": true
+    },
+    {
+      "name": "exclusive worker output directory and whole controls receipt absent",
+      "passed": true
+    },
+    {
+      "name": "no accepted owner terminal or worker alias",
+      "passed": true
+    },
+    {
+      "name": "entire twelve-sample ownership ledger retained",
+      "passed": true
+    },
+    {
+      "name": "actual saved direct child reap and no observed leftovers, no observer cleanup error",
+      "passed": true
+    },
+    {
+      "name": "worker failure distinguishes owner supervisor error",
+      "passed": true
+    },
+    {
+      "name": "same child wait4 maximum recorded",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 0",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 0",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 1",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 1",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 2",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 2",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 3",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 3",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 4",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 4",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 5",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 5",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 6",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 6",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 7",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 7",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 8",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 8",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 9",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 9",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 10",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 10",
+      "passed": true
+    },
+    {
+      "name": "retained owned-row integer memory sum 11",
+      "passed": true
+    },
+    {
+      "name": "saved same-PID birth identity 11",
+      "passed": true
+    },
+    {
+      "name": "full owner plus disjoint worker/observer kernel peak and sampled maxima",
+      "passed": true
+    },
+    {
+      "name": "sampled worker maximum exact",
+      "passed": true
+    },
+    {
+      "name": "failed worker prevents accepted conditional owner gate, no limit rescue",
+      "passed": true
+    },
+    {
+      "name": "saved observed within-limit envelope, no complete-stage resource acceptance",
+      "passed": true
+    },
+    {
+      "name": "genuine one-isolate caller request-to-terminal wall clock",
+      "passed": true
+    },
+    {
+      "name": "initial live handle plus final same-owned invocation terminal observation",
+      "passed": true
+    },
+    {
+      "name": "complete terminal print matches failed postwrite values",
+      "passed": true
+    },
+    {
+      "name": "independent saved-only fourteen-predicate reconstruction, missing receipt remains failure",
+      "passed": true
+    },
+    {
+      "name": "final stage remains UNKNOWN, not accepted reaping evidence",
+      "passed": true
+    },
+    {
+      "name": "ROOT typed failure retains actual activation and zero completed cases/no partial prefix",
+      "passed": true
+    },
+    {
+      "name": "ROOT failure preserves exact observed cost/peak provenance",
+      "passed": true
+    },
+    {
+      "name": "no theorem/search/RL/inventory/science admission from failed controls",
+      "passed": true
+    }
+  ],
+  "complete_control_census": null,
+  "complete_controls_accepted": false,
+  "completed_control_cases": 0,
+  "evidence_roots": [
+    {
+      "bytes": 61954,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/worker-plan-v1.json",
+      "sha256": "f3e29e5f273c773bdad17f3e3a576b1834ee68026e4c2b750e57ae2ab23dd5db"
+    },
+    {
+      "bytes": 43582,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-plan-v1.json",
+      "sha256": "b375db699b718ddc39014fa4bbcc0af5f1ea85483ef863ab7c0343b0f29bffaf"
+    },
+    {
+      "bytes": 10634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-controls-input-manifest-v1.json",
+      "sha256": "2a5d42a74a3d0e2617d3411444dcfced8e2294d99dbb5ad559f76c4c3a7e677a"
+    },
+    {
+      "bytes": 8885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "22e1b252d1899d004d14594062e5146f1b14034c705a1bccb506db6d31843c50"
+    },
+    {
+      "bytes": 9578,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-independent-20261014/family-controls-typed-source-review-v1.json",
+      "sha256": "bc5d3b4486ab050f25b3c375acc2b32196f8ef06259fe499615192e1b61465e8"
+    },
+    {
+      "bytes": 1262,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/launch-v1.json",
+      "sha256": "f327f803628cd214599bda491f4a36633680b9d2c2f2eeed3a999107971868ea"
+    },
+    {
+      "bytes": 1470,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/provisional-terminal-v1.json",
+      "sha256": "2977ea585d9680e382ee76c2f87467e6303e00aea828d53b182d9df5454e533a"
+    },
+    {
+      "bytes": 577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-owner-v1/post-write-observation-v1.json",
+      "sha256": "372dd4b8e3cb6522396b106f0211a26b0498a081bd6c9a2c741811ba4946b99f"
+    },
+    {
+      "bytes": 1545,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-actual-tool-observations-v1.json",
+      "sha256": "79689e5d7dac5278e48dfdf4c4f148e0c4dc2df9f30afc230a5ac667c3a715de"
+    },
+    {
+      "bytes": 2598,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/replay-ROOT-final-decision-v1.json",
+      "sha256": "7c67dcdfcd2f92361ba175e9ce03e480b0cde486da7612efdb61bb2d7261ca9a"
+    },
+    {
+      "bytes": 1793,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/ROOT-actual-family-controls-failure-disposition-v1.json",
+      "sha256": "e866c77cb450062918bbe449587a340a0ad4fda2f162c340386718649e5b29d3"
+    },
+    {
+      "bytes": 10749,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "sha256": "25fa815f7075b04a8a37213d82d786771acbc25fc8eb1ac070d29d4e25fbe834"
+    },
+    {
+      "bytes": 6785,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-direct/ROOT-controls-only-admission-v1.json",
+      "sha256": "cb08f28219747085debd2f7d507bc6980daa13632b5bcb6aa039a835b2a1d0ec"
+    },
+    {
+      "bytes": 11067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/catalog-v1.json",
+      "sha256": "2ce332c2ba040dc7ebc0cdbb67626d6546b00cd8c3eabca172a0184453af9139"
+    },
+    {
+      "bytes": 10892,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "sha256": "add18cc2c2e76ec55e331f6a5a6cdb18aaf7a27e5547a874a91af87d72eb20f9"
+    },
+    {
+      "bytes": 6798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-20261014/fresh-i2-CD-vw-incidence-transport/ROOT-controls-only-admission-v1.json",
+      "sha256": "819a95ac48b69732ccabb681ba81a2394f439fa0c4aae8b8142db2fca45b0f05"
+    },
+    {
+      "bytes": 11186,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/catalog-v1.json",
+      "sha256": "07085b22165229bd6035e288d94070d37d47921b91f70f6292560f83cc039c5c"
+    },
+    {
+      "bytes": 29377,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/_collections_abc.py",
+      "sha256": "b48bf9fb41a1712a7e179c095d6dc871d84c5da2f651d35e91cc4a7c230ce60f"
+    }
+  ],
+  "failure_explanation": {
+    "boundary": "The actual traceback does not record descriptor name or partial kernel-call count. No additional constructor/control calls were made by this reviewer.",
+    "observed": "Retained traceback rejects nonexact FunctionType in method_state(view) during first GoalDependencyAdvice constructor.",
+    "specific_descriptor_recorded_by_worker": false,
+    "static_support": "RecipeMetadataView inherits Sequence; pinned Python3.9 stdlib Iterable declares classmethod(GenericAlias), whose descriptor payload is a type rather than a Python function. The family MRO scan passes every such payload to its function-only guard.",
+    "stdlib_source": {
+      "bytes": 29377,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/_collections_abc.py",
+      "sha256": "b48bf9fb41a1712a7e179c095d6dc871d84c5da2f651d35e91cc4a7c230ce60f"
+    }
+  },
+  "helper_cost_scope": "Authoring and saved-only metadata helper cost, not a scientific worker/search/checker or full process total.",
+  "inventory_admission": false,
+  "limitations": [
+    "No complete worker receipt, controls/evidence payload or accepted owner link exists.",
+    "Exception-finally rollback source is present, but no completed saved rollback/census receipt is claimed.",
+    "Both current q/admission records are preparatory metadata; second recipient controls did not complete.",
+    "Source-pass prior to activation remains its historical prospective finding; this actual compatibility failure is additive and requires reviewed successor before any new attempt."
+  ],
+  "mathematical_authority_issued": false,
+  "metadata_helper_seconds_before_serialization": 0.143989917,
+  "mismatches": [],
+  "partial_ground_check_count": null,
+  "project_imports": 0,
+  "raw_pin_occurrences": 598,
+  "resource_authority_issued": false,
+  "resource_observations": {
+    "caller_seconds": 5.682,
+    "clock_scope": "Inclusive scopes overlap; do not sum caller, owner or scientific component clocks.",
+    "complete_owned_resource_accepted": false,
+    "observed_owned_leftovers": [],
+    "observed_reaped": true,
+    "owned_post_seconds": 1.604088667,
+    "owner_tool_exit_code": 0,
+    "postwrite_conservative_peak_bytes": 58195968,
+    "worker_exit_code": 1
+  },
+  "review_scope": "raw saved failure/closure/provenance plus static source explanation, no replay",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "saved_resource_predicates": {
+    "actual_tool_terminal": true,
+    "all_owner_direct_children_closed": true,
+    "all_worker_direct_children_closed": false,
+    "caller_clock_bound": true,
+    "cancelled_at_final_print_false": true,
+    "complete_post_closure_unchanged": true,
+    "final_print_gate": false,
+    "no_owned_leftovers": true,
+    "owner_gate": false,
+    "owner_terminal_link_present": false,
+    "post_write_exact_terminal": false,
+    "post_write_gate": false,
+    "stage_identity": false,
+    "worker_complete": false
+  },
+  "schema": "independent-saved-failed-real-family-controls-findings-v1",
+  "scientific_calls": 0,
+  "scientific_consumer_activation": false,
+  "semantic_replays": 0,
+  "source_map": {
+    "candidate_advice": {
+      "bytes": 27264,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "sha256": "3a86adba8982c406ae4a2ad3349b8ae962e52498dee38ee3ee26719b22468053"
+    },
+    "certificate": {
+      "bytes": 64498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "sha256": "c8fa4aeba82fcc2af9bd091fd351d72f86a24ae97cb5edd92ff558e81c23501b"
+    },
+    "compact_decoder": {
+      "bytes": 14720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+    },
+    "compact_graph": {
+      "bytes": 42946,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    "dynamic_graph_adapter": {
+      "bytes": 35568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "dynamic_lifecycle_adapter": {
+      "bytes": 29230,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+    },
+    "family_advice": {
+      "bytes": 61070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "sha256": "de5f58e4fff4ac62155bffba406f10488f32be665dfa0254ebb2e3a8d421a7e3"
+    },
+    "features31": {
+      "bytes": 12386,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b"
+    },
+    "final_certificate": {
+      "bytes": 70191,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_final24_certificate_v3.py",
+      "sha256": "e2d62967278386075bdabbb040eb0c8a227e05f6f4190e9f285aa66fa106e6a4"
+    },
+    "logical_oracle": {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "mechanism_controls": {
+      "bytes": 20345,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_v1.py",
+      "sha256": "70187b4ad5b0a733dedae6b9ac0f9cf20bc398fe83d96fdf17ba522c20cf8583"
+    },
+    "point_core": {
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    "policy_math": {
+      "bytes": 11607,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294"
+    },
+    "proof_observer": {
+      "bytes": 29717,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "sha256": "ad2efd1b7685fe6f7baa8f3b9849baf3568c3cf67e87a85e3d0ac657d8772cdc"
+    },
+    "streamed_dfs": {
+      "bytes": 49263,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "sha256": "57e415f9822f73dcbec2f16f45564196de519476ab2b0f3fbb9097fc972d8859"
+    },
+    "streamed_overlay": {
+      "bytes": 18348,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "sha256": "df05db866111b8e5c86ddffb9c9a0216678d6e171c7b5f1bdde866573f87ab4b"
+    },
+    "streamed_proposal": {
+      "bytes": 25358,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "sha256": "1d094e7f51c7607cc121a48e0bc55f4daf2cc7801701eea34a2bb552f1505b38"
+    },
+    "transport": {
+      "bytes": 13756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+    },
+    "worker": {
+      "bytes": 39442,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-source-20261014/actual_Incident_family_controls_worker_v2.py",
+      "sha256": "020c1a3379607a9a13193fc1800175a121f4d060d268788579999c385f8c9e70"
+    }
+  },
+  "static_ast_source_count": 22,
+  "unique_raw_pin_identities": 358,
+  "worker_author_identity": "/root/hilbert_advice_controls"
+}
