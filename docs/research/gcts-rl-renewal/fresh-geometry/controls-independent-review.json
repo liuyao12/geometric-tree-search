@@ -1,0 +1,543 @@
+{
+  "schema": "independent-fresh-observer-controls-actual-saved-metadata-findings-v1",
+  "saved_metadata_only": true,
+  "source_only": false,
+  "scientific_calls": 0,
+  "semantic_replays": 0,
+  "project_functions_executed": 0,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "whole_saved_reconciliation_passed": true,
+  "concrete_mismatches": [],
+  "actual_ROOT_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-ROOT-source-20261013/ROOT-first-checked-proof-observer-conformance-disposition-v1.json",
+    "sha256": "4eeabbf9579b636e85d72e391698f83b9c610e14ec7b4f33b5a8aae72237dab1",
+    "bytes": 9485
+  },
+  "resource_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-ROOT-final-decision-v1.json",
+    "sha256": "d047eccb05d3109e3c77747b8aea24906d08e1a8cc724104e0cba805e26adcb9",
+    "bytes": 2806
+  },
+  "prior_preactivation_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-observer-controls-v3-preactivation-metadata-findings-v1.json",
+    "sha256": "eb07b0c05483cfef583c5b63822f62f60b190923ae11418b12ca4f5bb6efe87d",
+    "bytes": 6945
+  },
+  "result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/controls-result-v1.json",
+    "sha256": "c14c25aed408464f35430a88474212f56dbfc36e8c738804e9a0fa0ef5b119cd",
+    "bytes": 845548
+  },
+  "evidence": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/controls-evidence-v1.json",
+    "sha256": "74316d1ff49262a7985261012d2d336ec5a36f69671cd6135373043d1b51fa51",
+    "bytes": 3749
+  },
+  "worker_receipt": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/worker-receipt-v1.json",
+    "sha256": "166f779fa9b4bc732bc6a0f8da3334e02f7be5b16adbdad8788aea741233580e",
+    "bytes": 4626
+  },
+  "review_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/audit_fresh_observer_controls_saved_v1.py",
+    "sha256": "b3dc880fcc1bcb1adaffc05831c07cb44dbae6cd09d1659515a62499bcf6a167",
+    "bytes": 18140
+  },
+  "sources": {
+    "certificate": {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "controls": {
+      "bytes": 32249,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-source-20261013/observer_dfs_mechanical_controls_v3.py",
+      "sha256": "b03af83f7043de40a31d77d20ed47e37aa910201400e24bf0e08ca77c237bc2d"
+    },
+    "logical_oracle": {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "proof_observer": {
+      "bytes": 29654,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/first_checked_proof_observer_v5.py",
+      "sha256": "b1a43eb13af0a15b8d4a9e89a0f9a586f444b0db3a23452e27ff9ace60e4bced"
+    },
+    "streamed_dfs": {
+      "bytes": 42024,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/compact_first_checked_proof_dfs_v11.py",
+      "sha256": "a2cf1bb6d3ede1695d08f7c0d6f709bd5e9a6bc493ff06f1febe2fd4650269e4"
+    },
+    "worker": {
+      "bytes": 17680,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-source-20261013/owned_observer_controls_worker_v3.py",
+      "sha256": "f196398ea2d07a71d0bad3108d0fa71d018f0cf4bdd3bf924b9174b50c67c1b0"
+    }
+  },
+  "mechanism_sources": {
+    "certificate": {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "proof_observer": {
+      "bytes": 29654,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/first_checked_proof_observer_v5.py",
+      "sha256": "b1a43eb13af0a15b8d4a9e89a0f9a586f444b0db3a23452e27ff9ace60e4bced"
+    },
+    "streamed_dfs": {
+      "bytes": 42024,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/compact_first_checked_proof_dfs_v11.py",
+      "sha256": "a2cf1bb6d3ede1695d08f7c0d6f709bd5e9a6bc493ff06f1febe2fd4650269e4"
+    }
+  },
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "all45_control_records": [
+    {
+      "name": "direct observer passive whole state",
+      "passed": true
+    },
+    {
+      "name": "actual observer actual GroundChecker unrelated target",
+      "passed": true
+    },
+    {
+      "name": "indexed repeated Gamma occurrence1 retained",
+      "passed": true
+    },
+    {
+      "name": "sealed graph endpoint replacement",
+      "passed": true
+    },
+    {
+      "name": "sealed kernel endpoint replacement",
+      "passed": true
+    },
+    {
+      "name": "raw guard detects changed disposable input",
+      "passed": true
+    },
+    {
+      "name": "code-object mutation rejected before acceptance",
+      "passed": true
+    },
+    {
+      "name": "generated catalogue property code root rejected",
+      "passed": true
+    },
+    {
+      "name": "instance method shadow recipe",
+      "passed": true
+    },
+    {
+      "name": "original effective method restored recipe",
+      "passed": true
+    },
+    {
+      "name": "instance method shadow absolute",
+      "passed": true
+    },
+    {
+      "name": "original effective method restored absolute",
+      "passed": true
+    },
+    {
+      "name": "instance method shadow semantic_state",
+      "passed": true
+    },
+    {
+      "name": "original effective method restored semantic_state",
+      "passed": true
+    },
+    {
+      "name": "callable-object delegated validator no-op code rejected",
+      "passed": true
+    },
+    {
+      "name": "nested delegated validator same-object code no-op rejected",
+      "passed": true
+    },
+    {
+      "name": "fresh observer first recipe cache is empty",
+      "passed": true
+    },
+    {
+      "name": "empty-cache internal wire method shadow rejected before first record",
+      "passed": true
+    },
+    {
+      "name": "rejected first-record shadow grants no cache prefix",
+      "passed": true
+    },
+    {
+      "name": "direct observer passive whole state",
+      "passed": true
+    },
+    {
+      "name": "current union rejected target is supplemental only",
+      "passed": true
+    },
+    {
+      "name": "direct observer passive whole state",
+      "passed": true
+    },
+    {
+      "name": "forged proposal commands/target flag ignored",
+      "passed": true
+    },
+    {
+      "name": "direct observer passive whole state",
+      "passed": true
+    },
+    {
+      "name": "pending prior reader is not proof",
+      "passed": true
+    },
+    {
+      "name": "wrong original occurrence index with identical formula rejected",
+      "passed": true
+    },
+    {
+      "name": "assigned zero preserved separately from missing",
+      "passed": true
+    },
+    {
+      "name": "zero and one same assigned point disagree",
+      "passed": true
+    },
+    {
+      "name": "unequal codes cannot alias ordered read ports",
+      "passed": true
+    },
+    {
+      "name": "duplicate shared primitive key cannot add t twice",
+      "passed": true
+    },
+    {
+      "name": "direct observer passive whole state",
+      "passed": true
+    },
+    {
+      "name": "shared current/proposed placement counted once",
+      "passed": true
+    },
+    {
+      "name": "deliberate first proof exact root rollback",
+      "passed": true
+    },
+    {
+      "name": "logical stop creates no exhausted exclusion",
+      "passed": true
+    },
+    {
+      "name": "disabled/enabled exact scheduler/domain/order/key prefix",
+      "passed": true
+    },
+    {
+      "name": "timed actual observer return metadata binding",
+      "passed": true
+    },
+    {
+      "name": "global dead precedes forced and every observation",
+      "passed": true
+    },
+    {
+      "name": "global forced move completed before proof observation",
+      "passed": true
+    },
+    {
+      "name": "trace expiry never returns partial primary",
+      "passed": true
+    },
+    {
+      "name": "expired constructor grants no object",
+      "passed": true
+    },
+    {
+      "name": "constructor final seal metadata expiry withholds object",
+      "passed": true
+    },
+    {
+      "name": "observation final receipt append expiry returns no certificate",
+      "passed": true
+    },
+    {
+      "name": "late saved receipt is explicitly incomplete with no primary",
+      "passed": true
+    },
+    {
+      "name": "DFS final proof deepcopy expiry withdraws every primary flag",
+      "passed": true
+    },
+    {
+      "name": "all controls final real aggregate deadline",
+      "passed": true
+    }
+  ],
+  "reported_raw_guard_calls": 118,
+  "episode_summary": [
+    {
+      "id": "unrelated-mechanical/enabled",
+      "status": "first_checked_original_Gamma_target_proof",
+      "attempts": 1,
+      "events": 25,
+      "states": 2,
+      "observer_receipts": 2,
+      "origin_census": 7,
+      "root_restored": true,
+      "trace_complete": true,
+      "scope": "toy doubles only"
+    },
+    {
+      "id": "unrelated-mechanical/disabled",
+      "status": "finite_exact_point_tiling",
+      "attempts": 21,
+      "events": 303,
+      "states": 22,
+      "observer_receipts": 22,
+      "origin_census": 297,
+      "root_restored": false,
+      "trace_complete": true,
+      "scope": "toy doubles only"
+    },
+    {
+      "id": "unrelated-mechanical/dead",
+      "status": "exhausted_finite_marked_subtree",
+      "attempts": 0,
+      "events": 11,
+      "states": 1,
+      "observer_receipts": 0,
+      "origin_census": 0,
+      "root_restored": true,
+      "trace_complete": true,
+      "scope": "toy doubles only"
+    },
+    {
+      "id": "unrelated-mechanical/forced",
+      "status": "first_checked_original_Gamma_target_proof",
+      "attempts": 1,
+      "events": 21,
+      "states": 2,
+      "observer_receipts": 1,
+      "origin_census": 4,
+      "root_restored": true,
+      "trace_complete": true,
+      "scope": "toy doubles only"
+    },
+    {
+      "id": "unrelated-mechanical/trace-budget",
+      "status": "unknown_trace_budget",
+      "attempts": 0,
+      "events": 1,
+      "states": 1,
+      "observer_receipts": 0,
+      "origin_census": 0,
+      "root_restored": true,
+      "trace_complete": false,
+      "scope": "toy doubles only"
+    },
+    {
+      "id": "unrelated-mechanical/late-DFS-record",
+      "status": "unknown_search_budget",
+      "attempts": 1,
+      "events": 25,
+      "states": 2,
+      "observer_receipts": 2,
+      "origin_census": 7,
+      "root_restored": true,
+      "trace_complete": false,
+      "scope": "toy doubles only"
+    }
+  ],
+  "full_saved_census": {
+    "episodes": 6,
+    "events": 386,
+    "states": 30,
+    "observer_receipts": 27,
+    "origin_census": 315
+  },
+  "scratch_raw_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/constructor-expired-licences.jsonl.gz",
+      "sha256": "524236e44318feccf989cf4c181022e7da34fbc12a8df202ff88726f62cb8b86",
+      "bytes": 715
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/dead-licences.jsonl.gz",
+      "sha256": "b4920c5b5375d7a31d8722c73db57c0a155bf0aa30b3baa47a18c52ef4cdc608",
+      "bytes": 700
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/direct-valid-licences.jsonl.gz",
+      "sha256": "360fa41c284f4f9d801f17a0ad447e2190136354e829a7b4b022132a05aa317a",
+      "bytes": 708
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/disabled-licences.jsonl.gz",
+      "sha256": "3b5dc674d4fa00d12453b154beff08a71f8718822ba195e327aeb33bd2e6d12d",
+      "bytes": 704
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/enabled-licences.jsonl.gz",
+      "sha256": "02444e11cfd0f28d516dd59c5fdea11fd796dcc8769960371266efd02930ecd3",
+      "bytes": 703
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/forced-licences.jsonl.gz",
+      "sha256": "e7c82523107ec90ecbf0d0c71181ce372673422f60242de65727679349b5ac70",
+      "bytes": 702
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/forged-flags-licences.jsonl.gz",
+      "sha256": "590566eff72ab450b274be5361665d5bb1640f74f367a1861dcb887c6f02b3a9",
+      "bytes": 708
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/late-DFS-record-licences.jsonl.gz",
+      "sha256": "6417b422895c3eae05d91f07b4d2dfc052dd0ef0a0e1d966b8b2643089b92238",
+      "bytes": 711
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/late-constructor-licences.jsonl.gz",
+      "sha256": "563dd6c22101070d404c6b32ee6acefce3d8108f89d01bf5f928d6d3fc7ee149",
+      "bytes": 712
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/late-observation-licences.jsonl.gz",
+      "sha256": "119f28f9e0e340caa6ef096f1bcf70130d9ac8cee16122fba2f129e804d5184f",
+      "bytes": 712
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/pending-licences.jsonl.gz",
+      "sha256": "2ddbe2e1b8bf97adb327a23cec2d2cdb0a50c5e2da3f3835d8b2c86d2d6a8f57",
+      "bytes": 703
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/shared-licences.jsonl.gz",
+      "sha256": "e53dc97a0cf576224732a08269505000fce9245ffabd83e450d72cd42e5c535c",
+      "bytes": 702
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/trace-budget-licences.jsonl.gz",
+      "sha256": "7077ffd34ab4f04f4ec3a0c1f4f1947d7da77319b362ced554cc6fb98adbf930",
+      "bytes": 708
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/union-failure-licences.jsonl.gz",
+      "sha256": "47420085aba07a36ba18411b371541f9aee37d43784b57c994433005013fed36",
+      "bytes": 709
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/wire-empty-cache-licences.jsonl.gz",
+      "sha256": "62006fd12143417f90e07bc4ff5eb665a9756123b1a36b2c926d4d4fb9aaf284",
+      "bytes": 712
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/mechanical-scratch/wrong-index-licences.jsonl.gz",
+      "sha256": "1cd509544d5dec709fd3dc3e7f29b08396b0b749a52244fd03484c4d566c18a5",
+      "bytes": 681
+    }
+  ],
+  "scratch_license_rows": 112,
+  "static_metadata_assertions": 1710,
+  "raw_audit": {
+    "roots": [
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/controls-worker-plan-v1.json",
+        "sha256": "804d16487a403128debe7352c3289805131a86c852022fe65d9ee0dfa2c353a5",
+        "bytes": 15602
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-plan-v1.json",
+        "sha256": "9566889af3860d480660f3f14d587b1c5f1cd1274126d136dfa0ab4e59777e66",
+        "bytes": 11325
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/ROOT-source-review-v1.json",
+        "sha256": "a692685373d55f8c984ca26fb64d84fc6c142e8e5360e3ddef5c72a59b0c1fbb",
+        "bytes": 6112
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-ROOT-source-20261013/ROOT-first-checked-proof-observer-conformance-disposition-v1.json",
+        "sha256": "4eeabbf9579b636e85d72e391698f83b9c610e14ec7b4f33b5a8aae72237dab1",
+        "bytes": 9485
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-ROOT-final-decision-v1.json",
+        "sha256": "d047eccb05d3109e3c77747b8aea24906d08e1a8cc724104e0cba805e26adcb9",
+        "bytes": 2806
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-actual-tool-observations-v1.json",
+        "sha256": "5ad325e26dfa0309e626748a0ded672de413b37da2a1dc1b5bce57587ec01abc",
+        "bytes": 1570
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "9fed8513559bc79baf7ec91e8fc7b82b46bba7dfec257d0d02f84e367a01535b",
+        "bytes": 1729
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-owner-v1/post-write-observation-v1.json",
+        "sha256": "94a35979d79a63356575bc0e470b788cf805cf3fc079340d68023f4d021ff61b",
+        "bytes": 799
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+        "sha256": "c55c1011f328f384a2b56ccdf77c09b748c838a4cfecdb00abdf98d79196fc2d",
+        "bytes": 630
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-owner-v1/launch-v1.json",
+        "sha256": "d599eade27c3bb80cf1278ee72877894401d38d71e3454a7e6602e190cfd3390",
+        "bytes": 1225
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/worker-receipt-v1.json",
+        "sha256": "166f779fa9b4bc732bc6a0f8da3334e02f7be5b16adbdad8788aea741233580e",
+        "bytes": 4626
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/controls-evidence-v1.json",
+        "sha256": "74316d1ff49262a7985261012d2d336ec5a36f69671cd6135373043d1b51fa51",
+        "bytes": 3749
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/controls-result-v1.json",
+        "sha256": "c14c25aed408464f35430a88474212f56dbfc36e8c738804e9a0fa0ef5b119cd",
+        "bytes": 845548
+      }
+    ],
+    "pin_references": 207,
+    "unique_raw_files": 54,
+    "mismatches": 0
+  },
+  "actual_resource_records": {
+    "ROOT14_all_true": true,
+    "caller_seconds": 3.745,
+    "owner_postwrite_seconds": 1.528507208,
+    "conservative_peak_bytes": 44679168,
+    "control_call_seconds": 1.3304972080000002,
+    "whole_retained_samples": 12,
+    "source_trusted_process_filter": true,
+    "OS_hardcap_claim": false,
+    "independent_wholehost_audit": false
+  },
+  "inspection_note": "Initial read-only metadata print treated graph_states as a list; corrected to its whole SHA-keyed mapping before this audit. No source, artifact, semantic function or actual run was changed/repeated.",
+  "scope": "Actual real observer5/DFSv11/independent GroundChecker tests executed only by ROOT on unrelated explicit graph/wire/lifecycle/overlay/disabled/timing doubles. All45 reports and whole6toy tapes match saved receipts/resources. This audit is independently authored metadata reconciliation, not independent logical/kernel/point replay or a fresh theorem/productionq/G5/catalogue/adviser/full24/native/inventory/RL qualification. Disabled toy episode internally reaches finite_exact_point_tiling under a double; that is never current production full24 acceptance. Retained late proof observation precedes withdrawn UNKNOWN return and is not promoted.",
+  "fresh_target_proofs": 0,
+  "fresh_target_searches": 0,
+  "new_RL_training": false,
+  "actual_mathematical_or_inventory_acceptance_issued_by_reviewer": false
+}

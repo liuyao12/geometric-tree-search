@@ -1,0 +1,67 @@
+{
+  "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+  "stage": "replay",
+  "status": "accepted_complete_owned_stage",
+  "ROOT_final_accepted": true,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": true,
+    "owner_gate": true,
+    "post_write_gate": true,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": true,
+    "stage_identity": true,
+    "worker_complete": true,
+    "all_worker_direct_children_closed": true,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": true
+  },
+  "mismatches": [],
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "caller_elapsed_seconds": 3.745,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-plan-v1.json",
+    "sha256": "9566889af3860d480660f3f14d587b1c5f1cd1274126d136dfa0ab4e59777e66",
+    "bytes": 11325
+  },
+  "actual_tool": {
+    "path": ".gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-actual-tool-observations-v1.json",
+    "sha256": "5ad325e26dfa0309e626748a0ded672de413b37da2a1dc1b5bce57587ec01abc",
+    "bytes": 1570
+  },
+  "owner": {
+    "path": ".gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "9fed8513559bc79baf7ec91e8fc7b82b46bba7dfec257d0d02f84e367a01535b",
+    "bytes": 1729
+  },
+  "post_write": {
+    "path": ".gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "94a35979d79a63356575bc0e470b788cf805cf3fc079340d68023f4d021ff61b",
+    "bytes": 799
+  },
+  "worker": {
+    "path": ".gcts-active/fresh-equality-observer-controls-progress-v3-20261013/replay-result-v1/worker-receipt-v1.json",
+    "sha256": "166f779fa9b4bc732bc6a0f8da3334e02f7be5b16adbdad8788aea741233580e",
+    "bytes": 4626
+  },
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+}
