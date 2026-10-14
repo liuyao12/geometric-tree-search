@@ -1,0 +1,509 @@
+{
+  "ROOT_final_accepted": true,
+  "actual_once_only_trials": 4,
+  "all_inventories_empty": true,
+  "assessment": "Two elementary equality-transport statements now have three automatically generated checked derivations, from selected point-tile ancestry or a current-compatible source-generated proposal. One canonical trial remains UNKNOWN at the2000-event trace ceiling. The adviser is conventional target-blind minimum-tree-cost AND-witness search, not RL; its proposals are not selected placements. These results establish this finite proof-search capability without supplied proof routes, not superiority, whole-board tilings, full Hilbert geometry, a universal tile set or the full research objective.",
+  "author_identity": "/root",
+  "checked_logical_derivations": 3,
+  "complete_resources_accepted": 4,
+  "completed_unselected_source_proposals": 2,
+  "construction": {
+    "bytes": 31158,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/ROOT-construction-v1.json",
+    "sha256": "dc252cfb7e1260a94cb7f04dd3f2f2986a3e4aa8fc287951d315274dcd3558ed"
+  },
+  "distinct_original_hypothesis_sequents": 2,
+  "full24_board_accepted": false,
+  "genuine_Hilbert_incidence_axiom_use_in_found_derivations": false,
+  "independent_full_trajectory_accepted": false,
+  "independent_saved_audit": {
+    "bytes": 117942,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-first-proof-four-lane-actual-saved-findings-v1.json",
+    "sha256": "d7f316cbde8ef46544e8fc074f9cd01076788bfa0b007816a40d9c14f4c2f281"
+  },
+  "learned_marking": false,
+  "mathematical_authority": "Actual timed independent GroundChecker and literal point/current-union checks in the exact source-sealed observer; whole cold owned/caller resource closure for each trial. Saved evidence independently reconciled, without rerunning semantics.",
+  "native_accepted": false,
+  "new_RL_training": false,
+  "performance_comparison_accepted": false,
+  "preregistered_endpoint_unchanged": true,
+  "preserved_UNKNOWN_trials": 1,
+  "proof_input_sequences_supplied": false,
+  "provenance": {
+    "bytes": 8535,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-ROOT-source-20261013/seal_ROOT_first_proofs_v1.py",
+    "sha256": "f60469e71d7a1b68f604702601c133925674234f758081031262eb75de9dd8e8"
+  },
+  "research_program_complete": false,
+  "restarts": 0,
+  "schema": "ROOT-fresh-geometry-first-checked-proofs-disposition-v1",
+  "scientific_calls_in_this_metadata_seal": 0,
+  "selected_derivations": 1,
+  "source_only_readiness_is_not_mathematical_authority": true,
+  "trials": [
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "caller_seconds_with_margin": 12.92,
+      "candidate_advice_construction": null,
+      "conservative_peak_bytes": 62963712,
+      "events": 1013,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "canonical",
+      "logical_certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "mode": "base",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "actual_selected",
+      "owned_postwrite_seconds": 8.089131083,
+      "performance_comparison_accepted": false,
+      "placements": 57,
+      "qualified_context": {
+        "bytes": 10586,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+      },
+      "resource_disposition": {
+        "bytes": 4212,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040"
+      },
+      "result": {
+        "bytes": 83892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "66cec6557aa27b17f1fe8eedb4a054a0a4c51c4a40beda811e49549f25beb962"
+      },
+      "search_seconds": 7.037180500000001,
+      "selector": "fresh-inc-point-chain-w",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "caller_seconds_with_margin": 4.568,
+      "candidate_advice_construction": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5045
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 144,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1347,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 380,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.023217209000000016,
+        "settled_formula_codes": 1345,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.02330724999999989,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "conservative_peak_bytes": 56262656,
+      "events": 14,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "generic-incidence-ordering",
+      "logical_certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "mode": "seed_forward",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "completed_source_proposal",
+      "owned_postwrite_seconds": 1.637100333,
+      "performance_comparison_accepted": false,
+      "placements": 0,
+      "qualified_context": {
+        "bytes": 10586,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+      },
+      "resource_disposition": {
+        "bytes": 4340,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d"
+      },
+      "result": {
+        "bytes": 13604,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "a275d08666e2d7d13b513b24fd2f79cfbb6221feef7267748858c86de784487d"
+      },
+      "search_seconds": 0.886497416,
+      "selector": "fresh-inc-point-chain-w",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "caller_seconds_with_margin": 4.337,
+      "candidate_advice_construction": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5072
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 144,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1345,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 380,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.02354983300000002,
+        "settled_formula_codes": 1345,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.023639667000000086,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "conservative_peak_bytes": 56197120,
+      "events": 14,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "generic-incidence-ordering",
+      "logical_certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "mode": "seed_forward",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "completed_source_proposal",
+      "owned_postwrite_seconds": 1.507842458,
+      "performance_comparison_accepted": false,
+      "placements": 0,
+      "qualified_context": {
+        "bytes": 10652,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+      },
+      "resource_disposition": {
+        "bytes": 4386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863"
+      },
+      "result": {
+        "bytes": 13626,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "033d033bf5bf49dab669c0f69231840af81ddb6333b797b85872612d0ef1c528"
+      },
+      "search_seconds": 0.763819958,
+      "selector": "fresh-inc-reversed-line-chain",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": false,
+      "caller_seconds_with_margin": 19.554,
+      "candidate_advice_construction": null,
+      "conservative_peak_bytes": 72597504,
+      "events": 2000,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "canonical",
+      "logical_certificate": null,
+      "mode": "base",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": null,
+      "owned_postwrite_seconds": 16.664797375,
+      "performance_comparison_accepted": false,
+      "placements": 90,
+      "qualified_context": {
+        "bytes": 10652,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+      },
+      "resource_disposition": {
+        "bytes": 3918,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "27ace2679cb6baf7681cab15e02251f0550efe3f9df5a87410b78e464855325a"
+      },
+      "result": {
+        "bytes": 135656,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "56113cfb5b5606b5f2c2fd97e5fd1224b7b48b3efeffea37f2555b7ba68d1350"
+      },
+      "search_seconds": 15.230815625,
+      "selector": "fresh-inc-reversed-line-chain",
+      "status": "unknown_trace_budget",
+      "trace_complete": false
+    }
+  ],
+  "universal_compiler_accepted": false,
+  "whole_plane_tiling_accepted": false
+}

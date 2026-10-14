@@ -1,0 +1,2934 @@
+{
+  "all_proof_commands_copied_from_actual_certificates": true,
+  "display_tile_support_projection_only": true,
+  "full24_accepted": false,
+  "independent_saved_audit": {
+    "bytes": 117942,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-first-proof-four-lane-actual-saved-findings-v1.json",
+    "sha256": "d7f316cbde8ef46544e8fc074f9cd01076788bfa0b007816a40d9c14f4c2f281"
+  },
+  "new_RL_training": false,
+  "no_new_proof_or_search_constructed": true,
+  "proofs": [
+    {
+      "current_occupied": 16,
+      "current_union_accepted": true,
+      "formula_points": [
+        [
+          1,
+          0,
+          3032
+        ],
+        [
+          1,
+          1,
+          3041
+        ],
+        [
+          1,
+          2,
+          5045
+        ],
+        [
+          1,
+          10,
+          4109
+        ],
+        [
+          1,
+          11,
+          3930
+        ],
+        [
+          1,
+          12,
+          3033
+        ],
+        [
+          1,
+          13,
+          3984
+        ],
+        [
+          1,
+          14,
+          4833
+        ],
+        [
+          1,
+          23,
+          5063
+        ]
+      ],
+      "gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "lane": "canonical",
+      "literal_point_seconds": 0.00012562499999990706,
+      "logical_kernel_seconds": 0.00023658399999959556,
+      "origin_kind": "actual_selected",
+      "raw_certificate_url": "evidence/fresh-inc-point-chain-w/canonical/proof-v1.json",
+      "root_row": 23,
+      "selector": "fresh-inc-point-chain-w",
+      "source_certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "tiles": [
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          "formula_code": 3032,
+          "key": [
+            111,
+            0,
+            []
+          ],
+          "m": [
+            [
+              1,
+              0,
+              3032
+            ]
+          ],
+          "recipe_index": 111,
+          "refs": [],
+          "row": 0,
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          "formula_code": 3041,
+          "key": [
+            168,
+            1,
+            []
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3041
+            ]
+          ],
+          "recipe_index": 168,
+          "refs": [],
+          "row": 1,
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          "formula_code": 5045,
+          "key": [
+            2735,
+            2,
+            []
+          ],
+          "m": [
+            [
+              1,
+              2,
+              5045
+            ]
+          ],
+          "recipe_index": 2735,
+          "refs": [],
+          "row": 2,
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "B",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "B",
+              []
+            ],
+            "right": [
+              "fun",
+              "C",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "formula_code": 4109,
+          "key": [
+            1746,
+            10,
+            []
+          ],
+          "m": [
+            [
+              1,
+              10,
+              4109
+            ]
+          ],
+          "recipe_index": 1746,
+          "refs": [],
+          "row": 10,
+          "t": [
+            [
+              0,
+              10,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 1,
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ],
+            "implication": 3,
+            "rule": "mp"
+          },
+          "formula_code": 3930,
+          "key": [
+            1558,
+            11,
+            [
+              1,
+              10
+            ]
+          ],
+          "m": [
+            [
+              1,
+              11,
+              3930
+            ],
+            [
+              1,
+              1,
+              3041
+            ],
+            [
+              2,
+              11,
+              -10
+            ],
+            [
+              1,
+              10,
+              4109
+            ],
+            [
+              3,
+              11,
+              -1
+            ]
+          ],
+          "recipe_index": 1558,
+          "refs": [
+            1,
+            10
+          ],
+          "row": 11,
+          "t": [
+            [
+              0,
+              11,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 0,
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            "implication": 4,
+            "rule": "mp"
+          },
+          "formula_code": 3033,
+          "key": [
+            120,
+            12,
+            [
+              0,
+              11
+            ]
+          ],
+          "m": [
+            [
+              1,
+              12,
+              3033
+            ],
+            [
+              1,
+              0,
+              3032
+            ],
+            [
+              2,
+              12,
+              -12
+            ],
+            [
+              1,
+              11,
+              3930
+            ],
+            [
+              3,
+              12,
+              -1
+            ]
+          ],
+          "recipe_index": 120,
+          "refs": [
+            0,
+            11
+          ],
+          "row": 12,
+          "t": [
+            [
+              0,
+              12,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "C",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "A",
+              []
+            ],
+            "right": [
+              "fun",
+              "C",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "var",
+                  "hole0"
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "formula_code": 3984,
+          "key": [
+            1613,
+            13,
+            []
+          ],
+          "m": [
+            [
+              1,
+              13,
+              3984
+            ]
+          ],
+          "recipe_index": 1613,
+          "refs": [],
+          "row": 13,
+          "t": [
+            [
+              0,
+              13,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 5,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 6,
+            "rule": "mp"
+          },
+          "formula_code": 4833,
+          "key": [
+            2517,
+            14,
+            [
+              12,
+              13
+            ]
+          ],
+          "m": [
+            [
+              1,
+              14,
+              4833
+            ],
+            [
+              1,
+              12,
+              3033
+            ],
+            [
+              2,
+              14,
+              -2
+            ],
+            [
+              1,
+              13,
+              3984
+            ],
+            [
+              3,
+              14,
+              -1
+            ]
+          ],
+          "recipe_index": 2517,
+          "refs": [
+            12,
+            13
+          ],
+          "row": 14,
+          "t": [
+            [
+              0,
+              14,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 2,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "implication": 7,
+            "rule": "mp"
+          },
+          "formula_code": 5063,
+          "key": [
+            2804,
+            23,
+            [
+              2,
+              14
+            ]
+          ],
+          "m": [
+            [
+              1,
+              23,
+              5063
+            ],
+            [
+              1,
+              2,
+              5045
+            ],
+            [
+              2,
+              23,
+              -21
+            ],
+            [
+              1,
+              14,
+              4833
+            ],
+            [
+              3,
+              23,
+              -9
+            ]
+          ],
+          "recipe_index": 2804,
+          "refs": [
+            2,
+            14
+          ],
+          "row": 23,
+          "t": [
+            [
+              0,
+              23,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "current_occupied": 3,
+      "current_union_accepted": true,
+      "formula_points": [
+        [
+          1,
+          0,
+          3032
+        ],
+        [
+          1,
+          1,
+          3041
+        ],
+        [
+          1,
+          2,
+          5045
+        ],
+        [
+          1,
+          3,
+          3984
+        ],
+        [
+          1,
+          4,
+          4109
+        ],
+        [
+          1,
+          5,
+          3930
+        ],
+        [
+          1,
+          6,
+          3033
+        ],
+        [
+          1,
+          7,
+          4833
+        ],
+        [
+          1,
+          8,
+          5063
+        ],
+        [
+          1,
+          23,
+          5063
+        ]
+      ],
+      "gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "lane": "generic-incidence-ordering",
+      "literal_point_seconds": 0.00012524999999996567,
+      "logical_kernel_seconds": 0.00021079099999998796,
+      "origin_kind": "completed_source_proposal",
+      "raw_certificate_url": "evidence/fresh-inc-point-chain-w/generic-incidence-ordering/proof-v1.json",
+      "root_row": 8,
+      "selector": "fresh-inc-point-chain-w",
+      "source_certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "tiles": [
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          "formula_code": 3032,
+          "key": [
+            111,
+            0,
+            []
+          ],
+          "m": [
+            [
+              1,
+              0,
+              3032
+            ]
+          ],
+          "recipe_index": 111,
+          "refs": [],
+          "row": 0,
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          "formula_code": 3041,
+          "key": [
+            168,
+            1,
+            []
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3041
+            ]
+          ],
+          "recipe_index": 168,
+          "refs": [],
+          "row": 1,
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          "formula_code": 5045,
+          "key": [
+            2735,
+            2,
+            []
+          ],
+          "m": [
+            [
+              1,
+              2,
+              5045
+            ]
+          ],
+          "recipe_index": 2735,
+          "refs": [],
+          "row": 2,
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "C",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "A",
+              []
+            ],
+            "right": [
+              "fun",
+              "C",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "var",
+                  "hole0"
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "formula_code": 3984,
+          "key": [
+            1613,
+            3,
+            []
+          ],
+          "m": [
+            [
+              1,
+              3,
+              3984
+            ]
+          ],
+          "recipe_index": 1613,
+          "refs": [],
+          "row": 3,
+          "t": [
+            [
+              0,
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "B",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "B",
+              []
+            ],
+            "right": [
+              "fun",
+              "C",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "formula_code": 4109,
+          "key": [
+            1746,
+            4,
+            []
+          ],
+          "m": [
+            [
+              1,
+              4,
+              4109
+            ]
+          ],
+          "recipe_index": 1746,
+          "refs": [],
+          "row": 4,
+          "t": [
+            [
+              0,
+              4,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 1,
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ],
+            "implication": 4,
+            "rule": "mp"
+          },
+          "formula_code": 3930,
+          "key": [
+            1558,
+            5,
+            [
+              1,
+              4
+            ]
+          ],
+          "m": [
+            [
+              1,
+              5,
+              3930
+            ],
+            [
+              1,
+              1,
+              3041
+            ],
+            [
+              2,
+              5,
+              -4
+            ],
+            [
+              1,
+              4,
+              4109
+            ],
+            [
+              3,
+              5,
+              -1
+            ]
+          ],
+          "recipe_index": 1558,
+          "refs": [
+            1,
+            4
+          ],
+          "row": 5,
+          "t": [
+            [
+              0,
+              5,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 0,
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            "implication": 5,
+            "rule": "mp"
+          },
+          "formula_code": 3033,
+          "key": [
+            120,
+            6,
+            [
+              0,
+              5
+            ]
+          ],
+          "m": [
+            [
+              1,
+              6,
+              3033
+            ],
+            [
+              1,
+              0,
+              3032
+            ],
+            [
+              2,
+              6,
+              -6
+            ],
+            [
+              1,
+              5,
+              3930
+            ],
+            [
+              3,
+              6,
+              -1
+            ]
+          ],
+          "recipe_index": 120,
+          "refs": [
+            0,
+            5
+          ],
+          "row": 6,
+          "t": [
+            [
+              0,
+              6,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 6,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 3,
+            "rule": "mp"
+          },
+          "formula_code": 4833,
+          "key": [
+            2517,
+            7,
+            [
+              6,
+              3
+            ]
+          ],
+          "m": [
+            [
+              1,
+              7,
+              4833
+            ],
+            [
+              1,
+              6,
+              3033
+            ],
+            [
+              2,
+              7,
+              -1
+            ],
+            [
+              1,
+              3,
+              3984
+            ],
+            [
+              3,
+              7,
+              -4
+            ]
+          ],
+          "recipe_index": 2517,
+          "refs": [
+            6,
+            3
+          ],
+          "row": 7,
+          "t": [
+            [
+              0,
+              7,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 2,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "implication": 7,
+            "rule": "mp"
+          },
+          "formula_code": 5063,
+          "key": [
+            2804,
+            8,
+            [
+              2,
+              7
+            ]
+          ],
+          "m": [
+            [
+              1,
+              8,
+              5063
+            ],
+            [
+              1,
+              2,
+              5045
+            ],
+            [
+              2,
+              8,
+              -6
+            ],
+            [
+              1,
+              7,
+              4833
+            ],
+            [
+              3,
+              8,
+              -1
+            ]
+          ],
+          "recipe_index": 2804,
+          "refs": [
+            2,
+            7
+          ],
+          "row": 8,
+          "t": [
+            [
+              0,
+              8,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "current_occupied": 3,
+      "current_union_accepted": true,
+      "formula_points": [
+        [
+          1,
+          0,
+          3075
+        ],
+        [
+          1,
+          1,
+          3084
+        ],
+        [
+          1,
+          2,
+          5072
+        ],
+        [
+          1,
+          3,
+          4626
+        ],
+        [
+          1,
+          4,
+          4766
+        ],
+        [
+          1,
+          5,
+          4928
+        ],
+        [
+          1,
+          6,
+          4935
+        ],
+        [
+          1,
+          7,
+          5071
+        ],
+        [
+          1,
+          8,
+          5070
+        ],
+        [
+          1,
+          23,
+          5070
+        ]
+      ],
+      "gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "lane": "generic-incidence-ordering",
+      "literal_point_seconds": 0.0001296670000001665,
+      "logical_kernel_seconds": 0.00021537500000001764,
+      "origin_kind": "completed_source_proposal",
+      "raw_certificate_url": "evidence/fresh-inc-reversed-line-chain/generic-incidence-ordering/proof-v1.json",
+      "root_row": 8,
+      "selector": "fresh-inc-reversed-line-chain",
+      "source_certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ],
+      "tiles": [
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          "formula_code": 3075,
+          "key": [
+            462,
+            0,
+            []
+          ],
+          "m": [
+            [
+              1,
+              0,
+              3075
+            ]
+          ],
+          "recipe_index": 462,
+          "refs": [],
+          "row": 0,
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          "formula_code": 3084,
+          "key": [
+            634,
+            1,
+            []
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3084
+            ]
+          ],
+          "recipe_index": 634,
+          "refs": [],
+          "row": 1,
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          "formula_code": 5072,
+          "key": [
+            2837,
+            2,
+            []
+          ],
+          "m": [
+            [
+              1,
+              2,
+              5072
+            ]
+          ],
+          "recipe_index": 2837,
+          "refs": [],
+          "row": 2,
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "v",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "u",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "v",
+              []
+            ],
+            "right": [
+              "fun",
+              "u",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "var",
+                  "hole0"
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "formula_code": 4626,
+          "key": [
+            2296,
+            3,
+            []
+          ],
+          "m": [
+            [
+              1,
+              3,
+              4626
+            ]
+          ],
+          "recipe_index": 2296,
+          "refs": [],
+          "row": 3,
+          "t": [
+            [
+              0,
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "w",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "w",
+              []
+            ],
+            "right": [
+              "fun",
+              "v",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "var",
+                  "hole0"
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "formula_code": 4766,
+          "key": [
+            2445,
+            4,
+            []
+          ],
+          "m": [
+            [
+              1,
+              4,
+              4766
+            ]
+          ],
+          "recipe_index": 2445,
+          "refs": [],
+          "row": 4,
+          "t": [
+            [
+              0,
+              4,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 0,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 3,
+            "rule": "mp"
+          },
+          "formula_code": 4928,
+          "key": [
+            2619,
+            5,
+            [
+              0,
+              3
+            ]
+          ],
+          "m": [
+            [
+              1,
+              5,
+              4928
+            ],
+            [
+              1,
+              0,
+              3075
+            ],
+            [
+              2,
+              5,
+              -5
+            ],
+            [
+              1,
+              3,
+              4626
+            ],
+            [
+              3,
+              5,
+              -2
+            ]
+          ],
+          "recipe_index": 2619,
+          "refs": [
+            0,
+            3
+          ],
+          "row": 5,
+          "t": [
+            [
+              0,
+              5,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 4,
+            "rule": "mp"
+          },
+          "formula_code": 4935,
+          "key": [
+            2627,
+            6,
+            [
+              1,
+              4
+            ]
+          ],
+          "m": [
+            [
+              1,
+              6,
+              4935
+            ],
+            [
+              1,
+              1,
+              3084
+            ],
+            [
+              2,
+              6,
+              -5
+            ],
+            [
+              1,
+              4,
+              4766
+            ],
+            [
+              3,
+              6,
+              -2
+            ]
+          ],
+          "recipe_index": 2627,
+          "refs": [
+            1,
+            4
+          ],
+          "row": 6,
+          "t": [
+            [
+              0,
+              6,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 2,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            "implication": 6,
+            "rule": "mp"
+          },
+          "formula_code": 5071,
+          "key": [
+            2836,
+            7,
+            [
+              2,
+              6
+            ]
+          ],
+          "m": [
+            [
+              1,
+              7,
+              5071
+            ],
+            [
+              1,
+              2,
+              5072
+            ],
+            [
+              2,
+              7,
+              -5
+            ],
+            [
+              1,
+              6,
+              4935
+            ],
+            [
+              3,
+              7,
+              -1
+            ]
+          ],
+          "recipe_index": 2836,
+          "refs": [
+            2,
+            6
+          ],
+          "row": 7,
+          "t": [
+            [
+              0,
+              7,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "antecedent": 7,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ],
+            "implication": 5,
+            "rule": "mp"
+          },
+          "formula_code": 5070,
+          "key": [
+            2829,
+            8,
+            [
+              7,
+              5
+            ]
+          ],
+          "m": [
+            [
+              1,
+              8,
+              5070
+            ],
+            [
+              1,
+              7,
+              5071
+            ],
+            [
+              2,
+              8,
+              -1
+            ],
+            [
+              1,
+              5,
+              4928
+            ],
+            [
+              3,
+              8,
+              -3
+            ]
+          ],
+          "recipe_index": 2829,
+          "refs": [
+            7,
+            5
+          ],
+          "row": 8,
+          "t": [
+            [
+              0,
+              8,
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "schema": "ROOT-notebook155-first-checked-proof-reader-data-v1",
+  "scientific_calls": 0,
+  "source_disposition": {
+    "bytes": 18027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-ROOT-source-20261013/ROOT-actual-first-checked-geometry-proofs-v1.json",
+    "sha256": "a751d1806904489160b1b286aa2fedb10ba55044546db15b7dc196a7197e6513"
+  },
+  "trials": [
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "accepted": true,
+      "adviser_work": null,
+      "caller_seconds_with_margin": 12.92,
+      "candidate_advice_construction": null,
+      "conservative_peak_bytes": 62963712,
+      "events": 1013,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "canonical",
+      "logical_certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "mode": "base",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "actual_selected",
+      "owned_postwrite_seconds": 8.089131083,
+      "performance_comparison_accepted": false,
+      "placements": 57,
+      "proposals_scanned": 0,
+      "qualified_context": {
+        "bytes": 10586,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+      },
+      "raw_certificate_url": "evidence/fresh-inc-point-chain-w/canonical/proof-v1.json",
+      "raw_resource_url": "evidence/fresh-inc-point-chain-w/canonical/resources-v1.json",
+      "raw_result_url": "evidence/fresh-inc-point-chain-w/canonical/result-v1.json.gz",
+      "resource_disposition": {
+        "bytes": 4212,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040"
+      },
+      "result": {
+        "bytes": 83892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "66cec6557aa27b17f1fe8eedb4a054a0a4c51c4a40beda811e49549f25beb962"
+      },
+      "search_seconds": 7.037180500000001,
+      "selector": "fresh-inc-point-chain-w",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "accepted": true,
+      "adviser_work": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5045
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 144,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1347,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 380,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.023217209000000016,
+        "settled_formula_codes": 1345,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.02330724999999989,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "caller_seconds_with_margin": 4.568,
+      "candidate_advice_construction": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5045
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 144,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1347,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 380,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.023217209000000016,
+        "settled_formula_codes": 1345,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.02330724999999989,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "conservative_peak_bytes": 56262656,
+      "events": 14,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "generic-incidence-ordering",
+      "logical_certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "mode": "seed_forward",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "completed_source_proposal",
+      "owned_postwrite_seconds": 1.637100333,
+      "performance_comparison_accepted": false,
+      "placements": 0,
+      "proposals_scanned": 64,
+      "qualified_context": {
+        "bytes": 10586,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+      },
+      "raw_certificate_url": "evidence/fresh-inc-point-chain-w/generic-incidence-ordering/proof-v1.json",
+      "raw_resource_url": "evidence/fresh-inc-point-chain-w/generic-incidence-ordering/resources-v1.json",
+      "raw_result_url": "evidence/fresh-inc-point-chain-w/generic-incidence-ordering/result-v1.json.gz",
+      "resource_disposition": {
+        "bytes": 4340,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d"
+      },
+      "result": {
+        "bytes": 13604,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "a275d08666e2d7d13b513b24fd2f79cfbb6221feef7267748858c86de784487d"
+      },
+      "search_seconds": 0.886497416,
+      "selector": "fresh-inc-point-chain-w",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "accepted": true,
+      "adviser_work": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5072
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 144,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1345,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 380,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.02354983300000002,
+        "settled_formula_codes": 1345,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.023639667000000086,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "caller_seconds_with_margin": 4.337,
+      "candidate_advice_construction": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5072
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 144,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1345,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 380,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.02354983300000002,
+        "settled_formula_codes": 1345,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.023639667000000086,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "conservative_peak_bytes": 56197120,
+      "events": 14,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "generic-incidence-ordering",
+      "logical_certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "mode": "seed_forward",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "completed_source_proposal",
+      "owned_postwrite_seconds": 1.507842458,
+      "performance_comparison_accepted": false,
+      "placements": 0,
+      "proposals_scanned": 64,
+      "qualified_context": {
+        "bytes": 10652,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+      },
+      "raw_certificate_url": "evidence/fresh-inc-reversed-line-chain/generic-incidence-ordering/proof-v1.json",
+      "raw_resource_url": "evidence/fresh-inc-reversed-line-chain/generic-incidence-ordering/resources-v1.json",
+      "raw_result_url": "evidence/fresh-inc-reversed-line-chain/generic-incidence-ordering/result-v1.json.gz",
+      "resource_disposition": {
+        "bytes": 4386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863"
+      },
+      "result": {
+        "bytes": 13626,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "033d033bf5bf49dab669c0f69231840af81ddb6333b797b85872612d0ef1c528"
+      },
+      "search_seconds": 0.763819958,
+      "selector": "fresh-inc-reversed-line-chain",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": false,
+      "accepted": false,
+      "adviser_work": null,
+      "caller_seconds_with_margin": 19.554,
+      "candidate_advice_construction": null,
+      "conservative_peak_bytes": 72597504,
+      "events": 2000,
+      "exact_original_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "canonical",
+      "logical_certificate": null,
+      "mode": "base",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": null,
+      "owned_postwrite_seconds": 16.664797375,
+      "performance_comparison_accepted": false,
+      "placements": 90,
+      "proposals_scanned": 0,
+      "qualified_context": {
+        "bytes": 10652,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+      },
+      "raw_certificate_url": null,
+      "raw_resource_url": "evidence/fresh-inc-reversed-line-chain/canonical/resources-v1.json",
+      "raw_result_url": "evidence/fresh-inc-reversed-line-chain/canonical/result-v1.json.gz",
+      "resource_disposition": {
+        "bytes": 3918,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "27ace2679cb6baf7681cab15e02251f0550efe3f9df5a87410b78e464855325a"
+      },
+      "result": {
+        "bytes": 135656,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "56113cfb5b5606b5f2c2fd97e5fd1224b7b48b3efeffea37f2555b7ba68d1350"
+      },
+      "search_seconds": 15.230815625,
+      "selector": "fresh-inc-reversed-line-chain",
+      "status": "unknown_trace_budget",
+      "trace_complete": false
+    }
+  ],
+  "viewer_performs_no_logical_or_point_validation": true
+}

@@ -1,0 +1,5502 @@
+{
+  "schema": "independent-fresh-first-proof-four-lane-actual-saved-findings-v1",
+  "saved_metadata_only": true,
+  "scientific_calls": 0,
+  "semantic_replays": 0,
+  "project_source_functions_executed": 0,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "whole_saved_reconciliation_passed": true,
+  "concrete_mismatches": [],
+  "construction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/ROOT-construction-v1.json",
+    "sha256": "dc252cfb7e1260a94cb7f04dd3f2f2986a3e4aa8fc287951d315274dcd3558ed",
+    "bytes": 31158
+  },
+  "prior_preactivation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-first-proof-four-lane-preactivation-metadata-findings-v1.json",
+    "sha256": "74c1417d5c6823c17c687bcb454c8f55cfc16f9534c38c427ef36de581f9297a",
+    "bytes": 39906
+  },
+  "review_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/audit_fresh_first_proof_actual_v3.py",
+    "sha256": "c95f69d346ec0cebce9898795d3a16a0c35704c1186c41eeb2b83d157903341b",
+    "bytes": 24135
+  },
+  "static_metadata_assertions": 10573,
+  "raw_audit": {
+    "roots": [
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/ROOT-construction-v1.json",
+        "sha256": "dc252cfb7e1260a94cb7f04dd3f2f2986a3e4aa8fc287951d315274dcd3558ed",
+        "bytes": 31158
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-plan-v1.json",
+        "sha256": "d45ae49eda3e16bd362bfa58cb8bd47e77a7c11e3ab93ed4b333217a7db288e3",
+        "bytes": 103412
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/owner-plan-v1.json",
+        "sha256": "fde6999af72c7b69d4ff533c632abbe03166f0a58fd056487e6535d1ae65202b",
+        "bytes": 89435
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-activation-v1.json",
+        "sha256": "51be34b4fc2e3d61de9bc1367f779a7d7d8751587e4a294f969f3a0a6ac3f50c",
+        "bytes": 2235
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56",
+        "bytes": 10586
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561",
+        "bytes": 10822
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040",
+        "bytes": 4212
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/actual-terminal-v1.json",
+        "sha256": "6a06107647e7f0a4034299fd5691759a73069e9528ed98ba2619e6f6efdfa0b6",
+        "bytes": 2676
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "db9f5a53c3005496bc50791639a50eddf413ff4ef5a50aaf0cc46c707835474d",
+        "bytes": 4555
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "5555af0c74c8a0918620a6596d3dc4ebd23b2c7c559568c4cbf0b299b38c2fea",
+        "bytes": 1268
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "3f1d11727dae58f1e2b393d8e38bf754865aa034f9f06b9e855dd37ea36ebfcf",
+        "bytes": 6907
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "3df865dff24e470d31348f83b055131447ab31c62583bd55c646c5427cd036fa",
+        "bytes": 11939
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "66cec6557aa27b17f1fe8eedb4a054a0a4c51c4a40beda811e49549f25beb962",
+        "bytes": 83892
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/owner-output-v1/launch-v1.json",
+        "sha256": "f68f6ee3585156b1b7784a2516030925a61f53e13d7298f541087611be30c22e",
+        "bytes": 1349
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a",
+        "bytes": 21797
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-plan-v1.json",
+        "sha256": "43dcac24e69de3e5b527a958e1619080036a2c95cd3c0bfbba412dfc70e82681",
+        "bytes": 103816
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/owner-plan-v1.json",
+        "sha256": "d12ff49505dd22b8a0497fe66ba6a33fed7c807f4364dfccbbae22c31f25196c",
+        "bytes": 89907
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-activation-v1.json",
+        "sha256": "3203a06dc73693a2d5d7161249c8be8797b408d33215d4bb5ae6314828387466",
+        "bytes": 2260
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56",
+        "bytes": 10586
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561",
+        "bytes": 10822
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d",
+        "bytes": 4340
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "17e887d78c60f7479d4a92d33846a49d0074f4e90bad644e7f8ffaa93abce0fc",
+        "bytes": 2759
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "fd39f38e68110726bcac67f33e9b0df7437dfe3f51b6df0cc4f9ba24dae15f3a",
+        "bytes": 4704
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "91496fede2c571e478e7dba8dd4ad7e6422eff14570e62d52ce5f903cbb30713",
+        "bytes": 1300
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "fe7790ec130bb4023763cbff068d5ec8f85234e8f08ba0d621c5ed75c3c5d446",
+        "bytes": 1943
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "5d5da3b2cc9c5ee6bf765c42d90bce2a446ced80c5797a2b0c68a9683adb1916",
+        "bytes": 12024
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "a275d08666e2d7d13b513b24fd2f79cfbb6221feef7267748858c86de784487d",
+        "bytes": 13604
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/owner-output-v1/launch-v1.json",
+        "sha256": "85414f0fd1f0ff87f4733a143875afdd173ae1a82de1767a64144d9e13a9f3e1",
+        "bytes": 1400
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27",
+        "bytes": 19085
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-plan-v1.json",
+        "sha256": "585b38fdf69622bc0cbec5b17cff522411f9635145065fca9716e466ebb3e7a9",
+        "bytes": 104192
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/owner-plan-v1.json",
+        "sha256": "6d67c4a6d6f61a48952ec01f82d38c3ccbc912186b04bbc26a22501d9dc968a2",
+        "bytes": 90301
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-activation-v1.json",
+        "sha256": "cfc7d539674a7ae18b618acd2c1139fb69e352a15a5b93ebdd46c1af014429e7",
+        "bytes": 2278
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef",
+        "bytes": 10652
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15",
+        "bytes": 10870
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863",
+        "bytes": 4386
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "b2294660a84b8a45b4441ebba270ec3b05aedcfbfcace45b13cb3e0c2d27f28c",
+        "bytes": 2791
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "f8cfb0e0195fa0e15cec8e6948de65b0fda226ec48a02f0468d64242d00c3591",
+        "bytes": 4746
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "2b0fa9fa0cf35bf5a1b27b17a1a7d5d772d2d70646a1714970480743e3d1c5f7",
+        "bytes": 1301
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "6ae74dc1fe5b403aa4cd984661ee511d70a3d7ab3ace6f7bfd119e0d7c835360",
+        "bytes": 1829
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "25969a14ec21df7b0c0a7188163e68d16d734c4fc1b012b89bde42bbeb6d875f",
+        "bytes": 12077
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "033d033bf5bf49dab669c0f69231840af81ddb6333b797b85872612d0ef1c528",
+        "bytes": 13626
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/owner-output-v1/launch-v1.json",
+        "sha256": "724addbdb7d93ee723c9b9523ae63080ae9760c1121672bba3832b04cde8623a",
+        "bytes": 1418
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e",
+        "bytes": 19193
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-plan-v1.json",
+        "sha256": "0cb505588fe297ae8842c6168bf1cfd94b630b90dfade952ef15165cfbcc5d72",
+        "bytes": 104433
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/owner-plan-v1.json",
+        "sha256": "e070cc4849ce1436c4ea79f2d8056792912e4c88acf7226775ebf6471987291d",
+        "bytes": 90474
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-activation-v1.json",
+        "sha256": "ec011d898c02500f1a4259ca0bf219f7013901bb7a6dd60fe41415341511fada",
+        "bytes": 2253
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef",
+        "bytes": 10652
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15",
+        "bytes": 10870
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "27ace2679cb6baf7681cab15e02251f0550efe3f9df5a87410b78e464855325a",
+        "bytes": 3918
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/actual-terminal-v1.json",
+        "sha256": "52ddd13bea9979279152c8d3a4c0e9d4b5dd89d7505fc04f28494153c3182162",
+        "bytes": 2870
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "61ff0af373e56003c5200aafb6498bede0887c49eee10b1a10c62bb758b7fdf5",
+        "bytes": 4622
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "e4c5e834211b1a20ff030d5ebbdea5abc0e8cd5e8604fafd4de6c751211995f4",
+        "bytes": 1281
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "c201fc09df51bdf56940ebb1f779a4cdce1543e1bb36ff10f896a9afcd3fd53a",
+        "bytes": 13871
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "63dcae8c6a80ac0b1b4fd1a024b8d9489e042c071beffb1ac869b8be5a01ce61",
+        "bytes": 11639
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "56113cfb5b5606b5f2c2fd97e5fd1224b7b48b3efeffea37f2555b7ba68d1350",
+        "bytes": 135656
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/owner-output-v1/launch-v1.json",
+        "sha256": "efc74b252e880d3ec867c2b44ff6cd9e08021a5c2d54f30bcc2b5464337b26bc",
+        "bytes": 1367
+      }
+    ],
+    "pin_references": 3255,
+    "unique_raw_files": 244,
+    "mismatches": 0
+  },
+  "whole_trial_census": {
+    "trials": 4,
+    "events": 3041,
+    "states": 255,
+    "observer_calls": 128,
+    "all_origins": 1418,
+    "selected_origins": 1290,
+    "proposed_origins": 128,
+    "owned_samples": 217,
+    "PS_observers": 225
+  },
+  "lanes": [
+    {
+      "case": "fresh-inc-point-chain-w",
+      "lane": "canonical",
+      "mode": "base",
+      "status": "first_checked_original_Gamma_target_proof",
+      "origin": "actual_selected",
+      "attempts": 57,
+      "events": 1013,
+      "states": 86,
+      "observer_calls": 39,
+      "all_origin_census": 416,
+      "reported_search_seconds": 7.037180500000001,
+      "reported_observer_seconds": 3.30026225,
+      "reported_advice_seconds": 0.0,
+      "worker_metadata_admission_seconds": 0.075917708,
+      "cold_import_and_construction_seconds": 0.2604625,
+      "owner_postwrite_seconds": 8.089131083,
+      "caller_seconds_with_margin": 12.92,
+      "conservative_owned_peak_bytes": 62963712,
+      "root_restored": true,
+      "trace_complete": true,
+      "result": {
+        "bytes": 83892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "66cec6557aa27b17f1fe8eedb4a054a0a4c51c4a40beda811e49549f25beb962"
+      },
+      "resource_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040",
+        "bytes": 4212
+      },
+      "actual_terminal": {
+        "bytes": 2676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/actual-terminal-v1.json",
+        "sha256": "6a06107647e7f0a4034299fd5691759a73069e9528ed98ba2619e6f6efdfa0b6"
+      },
+      "logical_certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "full24_certificate": null,
+      "adviser_work": null
+    },
+    {
+      "case": "fresh-inc-point-chain-w",
+      "lane": "generic-incidence-ordering",
+      "mode": "seed_forward",
+      "status": "first_checked_original_Gamma_target_proof",
+      "origin": "completed_source_proposal",
+      "attempts": 0,
+      "events": 14,
+      "states": 1,
+      "observer_calls": 2,
+      "all_origin_census": 67,
+      "reported_search_seconds": 0.886497416,
+      "reported_observer_seconds": 0.32148679299999994,
+      "reported_advice_seconds": 0.5105875830000001,
+      "worker_metadata_admission_seconds": 0.076041,
+      "cold_import_and_construction_seconds": 0.253064625,
+      "owner_postwrite_seconds": 1.637100333,
+      "caller_seconds_with_margin": 4.568,
+      "conservative_owned_peak_bytes": 56262656,
+      "root_restored": true,
+      "trace_complete": true,
+      "result": {
+        "bytes": 13604,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "a275d08666e2d7d13b513b24fd2f79cfbb6221feef7267748858c86de784487d"
+      },
+      "resource_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d",
+        "bytes": 4340
+      },
+      "actual_terminal": {
+        "bytes": 2759,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "17e887d78c60f7479d4a92d33846a49d0074f4e90bad644e7f8ffaa93abce0fc"
+      },
+      "logical_certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "full24_certificate": null,
+      "adviser_work": {
+        "all_licenses_scanned": 2921,
+        "formula_heads_scanned": 5112,
+        "heap_pops": 1347,
+        "settled_formula_codes": 1345,
+        "eligible_roots": 144,
+        "construction_seconds": 0.02330724999999989,
+        "embedding_call_seconds": 0.5105875830000001,
+        "roots_scanned": 90,
+        "completed_embeddings": 90,
+        "point_expansions": 569,
+        "exact_legality_queries": 299,
+        "published_proposals": 64,
+        "actualplacements": 0,
+        "interpretation": "Conventional target-blind AND/hypergraph witness search plus exact current point embedding/legality and independent observer validation;0placements does not mean0proof-search work. All calls charged in reported timer."
+      }
+    },
+    {
+      "case": "fresh-inc-reversed-line-chain",
+      "lane": "generic-incidence-ordering",
+      "mode": "seed_forward",
+      "status": "first_checked_original_Gamma_target_proof",
+      "origin": "completed_source_proposal",
+      "attempts": 0,
+      "events": 14,
+      "states": 1,
+      "observer_calls": 2,
+      "all_origin_census": 67,
+      "reported_search_seconds": 0.763819958,
+      "reported_observer_seconds": 0.312843999,
+      "reported_advice_seconds": 0.39740041700000006,
+      "worker_metadata_admission_seconds": 0.07840775,
+      "cold_import_and_construction_seconds": 0.25746058299999997,
+      "owner_postwrite_seconds": 1.507842458,
+      "caller_seconds_with_margin": 4.337,
+      "conservative_owned_peak_bytes": 56197120,
+      "root_restored": true,
+      "trace_complete": true,
+      "result": {
+        "bytes": 13626,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "033d033bf5bf49dab669c0f69231840af81ddb6333b797b85872612d0ef1c528"
+      },
+      "resource_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863",
+        "bytes": 4386
+      },
+      "actual_terminal": {
+        "bytes": 2791,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "b2294660a84b8a45b4441ebba270ec3b05aedcfbfcace45b13cb3e0c2d27f28c"
+      },
+      "logical_certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "full24_certificate": null,
+      "adviser_work": {
+        "all_licenses_scanned": 2921,
+        "formula_heads_scanned": 5112,
+        "heap_pops": 1345,
+        "settled_formula_codes": 1345,
+        "eligible_roots": 144,
+        "construction_seconds": 0.023639667000000086,
+        "embedding_call_seconds": 0.39740041700000006,
+        "roots_scanned": 74,
+        "completed_embeddings": 74,
+        "point_expansions": 441,
+        "exact_legality_queries": 219,
+        "published_proposals": 64,
+        "actualplacements": 0,
+        "interpretation": "Conventional target-blind AND/hypergraph witness search plus exact current point embedding/legality and independent observer validation;0placements does not mean0proof-search work. All calls charged in reported timer."
+      }
+    },
+    {
+      "case": "fresh-inc-reversed-line-chain",
+      "lane": "canonical",
+      "mode": "base",
+      "status": "unknown_trace_budget",
+      "origin": null,
+      "attempts": 90,
+      "events": 2000,
+      "states": 167,
+      "observer_calls": 85,
+      "all_origin_census": 868,
+      "reported_search_seconds": 15.230815625,
+      "reported_observer_seconds": 7.079489169000004,
+      "reported_advice_seconds": 0.0,
+      "worker_metadata_admission_seconds": 0.080179,
+      "cold_import_and_construction_seconds": 0.263475792,
+      "owner_postwrite_seconds": 16.664797375,
+      "caller_seconds_with_margin": 19.554,
+      "conservative_owned_peak_bytes": 72597504,
+      "root_restored": true,
+      "trace_complete": false,
+      "result": {
+        "bytes": 135656,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "56113cfb5b5606b5f2c2fd97e5fd1224b7b48b3efeffea37f2555b7ba68d1350"
+      },
+      "resource_disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "27ace2679cb6baf7681cab15e02251f0550efe3f9df5a87410b78e464855325a",
+        "bytes": 3918
+      },
+      "actual_terminal": {
+        "bytes": 2870,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/actual-terminal-v1.json",
+        "sha256": "52ddd13bea9979279152c8d3a4c0e9d4b5dd89d7505fc04f28494153c3182162"
+      },
+      "logical_certificate": null,
+      "full24_certificate": null,
+      "adviser_work": null
+    }
+  ],
+  "complete_checked_patches": [
+    {
+      "case": "fresh-inc-point-chain-w",
+      "lane": "canonical",
+      "origin": "actual_selected",
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "root_row": 23,
+      "original_ordered_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "B",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "A",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "var",
+                "hole0"
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 5,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 6,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        }
+      ],
+      "primitive_keys": [
+        [
+          111,
+          0,
+          []
+        ],
+        [
+          168,
+          1,
+          []
+        ],
+        [
+          2735,
+          2,
+          []
+        ],
+        [
+          1746,
+          10,
+          []
+        ],
+        [
+          1558,
+          11,
+          [
+            1,
+            10
+          ]
+        ],
+        [
+          120,
+          12,
+          [
+            0,
+            11
+          ]
+        ],
+        [
+          1613,
+          13,
+          []
+        ],
+        [
+          2517,
+          14,
+          [
+            12,
+            13
+          ]
+        ],
+        [
+          2804,
+          23,
+          [
+            2,
+            14
+          ]
+        ]
+      ],
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "exact_independent_license_records": [
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-daca4483a7cfb4f1e69064e6d467af6c10a41bbb0dbb41fad0cf0222d69dfbcf",
+          "recipe_index": 111,
+          "record_sha256": "0e30344e70987e475a9529183ca5ca57637c348917688eba603a7eac055d8a0a",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-fc4fb56a6a224fd8abde046ce1d94acb47e7de3c09598570a8ca238597e0bda5",
+          "recipe_index": 168,
+          "record_sha256": "68f3147efd278f03bcf96d485bb3ac5ca8b5eb62cd7567eb7a2c1697eee70e80",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-a61df2983bda08e5c50535a6fb5873b3f90ecf9c2d764a311f3527581c732d9f",
+          "recipe_index": 2735,
+          "record_sha256": "8681cf930ac4bf0336048fb05387fab69c98aaf14fec255922683c684fde951a",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-2057729510d22cb9f1912c4dbb6934d67b370e2be3dee2ffe0638116b8bddc2a",
+          "recipe_index": 1746,
+          "record_sha256": "c6397d289b5be2a5cf571cda2098a7c7c9b1aa720ed47ca42279f9be46f0ac47",
+          "rule": "eq_subst",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-04b7aa17864519bf5842e40ac0a427334a75e4f69fbf982325a5ad9f09a4600e",
+          "recipe_index": 1558,
+          "record_sha256": "50f0eaa633de6b365f169ca4f08ae7aa0bd4afe6d3051ada2703b649bfb514a7",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-88a4a757817039abc756d2e4fb36256a02f6fa2c4f4386db6538ff06a4626f4b",
+          "recipe_index": 120,
+          "record_sha256": "f6ef2c80873c115747283b4b8419e839908ac59c7ab5e483ff93842d1012f834",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-903ede6245769fe98ee47fa1e9f466777e9474e8eea5568b4f7048387b28d6f8",
+          "recipe_index": 1613,
+          "record_sha256": "20483381b914e5a073819cbf6b9a5a3c22405c31a70b5798b355614be5decf67",
+          "rule": "eq_subst",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-10044a6d70470e7dd462e5ab1b0ae1a3fc9979d1a706a9829701d9d413adaf66",
+          "recipe_index": 2517,
+          "record_sha256": "283491befc31d004a09c0790a6378e8a2a327c0c18b4b7fd50c0b189b39d922d",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-8c6e6b68ddde4ea1408ba12d49bbc13986ac2c46a4f6318579aabf623122379e",
+          "recipe_index": 2804,
+          "record_sha256": "b452026ad4ea8189b93db9e4c40f3da6f83d29ebe9317aa03105267cf8e42c7e",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        }
+      ],
+      "logical_checker_record": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "literal_points": {
+        "m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            0,
+            3032
+          ],
+          [
+            1,
+            1,
+            3041
+          ],
+          [
+            1,
+            2,
+            5045
+          ],
+          [
+            1,
+            10,
+            4109
+          ],
+          [
+            1,
+            11,
+            3930
+          ],
+          [
+            1,
+            12,
+            3033
+          ],
+          [
+            1,
+            13,
+            3984
+          ],
+          [
+            1,
+            14,
+            4833
+          ],
+          [
+            1,
+            23,
+            5063
+          ],
+          [
+            2,
+            11,
+            -10
+          ],
+          [
+            2,
+            12,
+            -12
+          ],
+          [
+            2,
+            14,
+            -2
+          ],
+          [
+            2,
+            23,
+            -21
+          ],
+          [
+            3,
+            11,
+            -1
+          ],
+          [
+            3,
+            12,
+            -1
+          ],
+          [
+            3,
+            14,
+            -1
+          ],
+          [
+            3,
+            23,
+            -9
+          ]
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3032,
+            2
+          ],
+          [
+            1,
+            1,
+            3041,
+            2
+          ],
+          [
+            1,
+            2,
+            5045,
+            2
+          ],
+          [
+            1,
+            10,
+            4109,
+            2
+          ],
+          [
+            1,
+            11,
+            3930,
+            2
+          ],
+          [
+            1,
+            12,
+            3033,
+            2
+          ],
+          [
+            1,
+            13,
+            3984,
+            2
+          ],
+          [
+            1,
+            14,
+            4833,
+            2
+          ],
+          [
+            1,
+            23,
+            5063,
+            2
+          ],
+          [
+            2,
+            11,
+            -10,
+            1
+          ],
+          [
+            2,
+            12,
+            -12,
+            1
+          ],
+          [
+            2,
+            14,
+            -2,
+            1
+          ],
+          [
+            2,
+            23,
+            -21,
+            1
+          ],
+          [
+            3,
+            11,
+            -1,
+            1
+          ],
+          [
+            3,
+            12,
+            -1,
+            1
+          ],
+          [
+            3,
+            14,
+            -1,
+            1
+          ],
+          [
+            3,
+            23,
+            -9,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            10,
+            1
+          ],
+          [
+            0,
+            11,
+            1
+          ],
+          [
+            0,
+            12,
+            1
+          ],
+          [
+            0,
+            13,
+            1
+          ],
+          [
+            0,
+            14,
+            1
+          ],
+          [
+            0,
+            23,
+            1
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "whole_current_union": {
+        "m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            0,
+            3032
+          ],
+          [
+            1,
+            1,
+            3041
+          ],
+          [
+            1,
+            2,
+            5045
+          ],
+          [
+            1,
+            3,
+            0
+          ],
+          [
+            1,
+            4,
+            0
+          ],
+          [
+            1,
+            5,
+            0
+          ],
+          [
+            1,
+            6,
+            0
+          ],
+          [
+            1,
+            7,
+            0
+          ],
+          [
+            1,
+            8,
+            0
+          ],
+          [
+            1,
+            9,
+            0
+          ],
+          [
+            1,
+            10,
+            4109
+          ],
+          [
+            1,
+            11,
+            3930
+          ],
+          [
+            1,
+            12,
+            3033
+          ],
+          [
+            1,
+            13,
+            3984
+          ],
+          [
+            1,
+            14,
+            4833
+          ],
+          [
+            1,
+            23,
+            5063
+          ],
+          [
+            2,
+            11,
+            -10
+          ],
+          [
+            2,
+            12,
+            -12
+          ],
+          [
+            2,
+            14,
+            -2
+          ],
+          [
+            2,
+            23,
+            -21
+          ],
+          [
+            3,
+            11,
+            -1
+          ],
+          [
+            3,
+            12,
+            -1
+          ],
+          [
+            3,
+            14,
+            -1
+          ],
+          [
+            3,
+            23,
+            -9
+          ]
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3032,
+            2
+          ],
+          [
+            1,
+            1,
+            3041,
+            2
+          ],
+          [
+            1,
+            2,
+            5045,
+            2
+          ],
+          [
+            1,
+            3,
+            0,
+            1
+          ],
+          [
+            1,
+            4,
+            0,
+            1
+          ],
+          [
+            1,
+            5,
+            0,
+            1
+          ],
+          [
+            1,
+            6,
+            0,
+            1
+          ],
+          [
+            1,
+            7,
+            0,
+            1
+          ],
+          [
+            1,
+            8,
+            0,
+            1
+          ],
+          [
+            1,
+            9,
+            0,
+            1
+          ],
+          [
+            1,
+            10,
+            4109,
+            2
+          ],
+          [
+            1,
+            11,
+            3930,
+            2
+          ],
+          [
+            1,
+            12,
+            3033,
+            2
+          ],
+          [
+            1,
+            13,
+            3984,
+            2
+          ],
+          [
+            1,
+            14,
+            4833,
+            2
+          ],
+          [
+            1,
+            23,
+            5063,
+            2
+          ],
+          [
+            2,
+            11,
+            -10,
+            1
+          ],
+          [
+            2,
+            12,
+            -12,
+            1
+          ],
+          [
+            2,
+            14,
+            -2,
+            1
+          ],
+          [
+            2,
+            23,
+            -21,
+            1
+          ],
+          [
+            3,
+            11,
+            -1,
+            1
+          ],
+          [
+            3,
+            12,
+            -1,
+            1
+          ],
+          [
+            3,
+            14,
+            -1,
+            1
+          ],
+          [
+            3,
+            23,
+            -9,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            8,
+            1
+          ],
+          [
+            0,
+            9,
+            1
+          ],
+          [
+            0,
+            10,
+            1
+          ],
+          [
+            0,
+            11,
+            1
+          ],
+          [
+            0,
+            12,
+            1
+          ],
+          [
+            0,
+            13,
+            1
+          ],
+          [
+            0,
+            14,
+            1
+          ],
+          [
+            0,
+            23,
+            1
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "source_state_sha256": "2b0e72884376e5c05d7f972ddfca0462267c855521709d6327517c8da87b7a54",
+      "source_link": {
+        "budget_event_index": 996,
+        "decision": [
+          "branch",
+          15,
+          1007,
+          0
+        ],
+        "node": 38
+      },
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "semantic_replay_by_reviewer": false
+    },
+    {
+      "case": "fresh-inc-point-chain-w",
+      "lane": "generic-incidence-ordering",
+      "origin": "completed_source_proposal",
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "root_row": 8,
+      "original_ordered_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "A",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "var",
+                "hole0"
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "B",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 6,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        }
+      ],
+      "primitive_keys": [
+        [
+          111,
+          0,
+          []
+        ],
+        [
+          168,
+          1,
+          []
+        ],
+        [
+          2735,
+          2,
+          []
+        ],
+        [
+          1613,
+          3,
+          []
+        ],
+        [
+          1746,
+          4,
+          []
+        ],
+        [
+          1558,
+          5,
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          120,
+          6,
+          [
+            0,
+            5
+          ]
+        ],
+        [
+          2517,
+          7,
+          [
+            6,
+            3
+          ]
+        ],
+        [
+          2804,
+          8,
+          [
+            2,
+            7
+          ]
+        ]
+      ],
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "exact_independent_license_records": [
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-daca4483a7cfb4f1e69064e6d467af6c10a41bbb0dbb41fad0cf0222d69dfbcf",
+          "recipe_index": 111,
+          "record_sha256": "0e30344e70987e475a9529183ca5ca57637c348917688eba603a7eac055d8a0a",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-fc4fb56a6a224fd8abde046ce1d94acb47e7de3c09598570a8ca238597e0bda5",
+          "recipe_index": 168,
+          "record_sha256": "68f3147efd278f03bcf96d485bb3ac5ca8b5eb62cd7567eb7a2c1697eee70e80",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-a61df2983bda08e5c50535a6fb5873b3f90ecf9c2d764a311f3527581c732d9f",
+          "recipe_index": 2735,
+          "record_sha256": "8681cf930ac4bf0336048fb05387fab69c98aaf14fec255922683c684fde951a",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-903ede6245769fe98ee47fa1e9f466777e9474e8eea5568b4f7048387b28d6f8",
+          "recipe_index": 1613,
+          "record_sha256": "20483381b914e5a073819cbf6b9a5a3c22405c31a70b5798b355614be5decf67",
+          "rule": "eq_subst",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-2057729510d22cb9f1912c4dbb6934d67b370e2be3dee2ffe0638116b8bddc2a",
+          "recipe_index": 1746,
+          "record_sha256": "c6397d289b5be2a5cf571cda2098a7c7c9b1aa720ed47ca42279f9be46f0ac47",
+          "rule": "eq_subst",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-04b7aa17864519bf5842e40ac0a427334a75e4f69fbf982325a5ad9f09a4600e",
+          "recipe_index": 1558,
+          "record_sha256": "50f0eaa633de6b365f169ca4f08ae7aa0bd4afe6d3051ada2703b649bfb514a7",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-88a4a757817039abc756d2e4fb36256a02f6fa2c4f4386db6538ff06a4626f4b",
+          "recipe_index": 120,
+          "record_sha256": "f6ef2c80873c115747283b4b8419e839908ac59c7ab5e483ff93842d1012f834",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-10044a6d70470e7dd462e5ab1b0ae1a3fc9979d1a706a9829701d9d413adaf66",
+          "recipe_index": 2517,
+          "record_sha256": "283491befc31d004a09c0790a6378e8a2a327c0c18b4b7fd50c0b189b39d922d",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-8c6e6b68ddde4ea1408ba12d49bbc13986ac2c46a4f6318579aabf623122379e",
+          "recipe_index": 2804,
+          "record_sha256": "b452026ad4ea8189b93db9e4c40f3da6f83d29ebe9317aa03105267cf8e42c7e",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        }
+      ],
+      "logical_checker_record": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "literal_points": {
+        "m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            0,
+            3032
+          ],
+          [
+            1,
+            1,
+            3041
+          ],
+          [
+            1,
+            2,
+            5045
+          ],
+          [
+            1,
+            3,
+            3984
+          ],
+          [
+            1,
+            4,
+            4109
+          ],
+          [
+            1,
+            5,
+            3930
+          ],
+          [
+            1,
+            6,
+            3033
+          ],
+          [
+            1,
+            7,
+            4833
+          ],
+          [
+            1,
+            8,
+            5063
+          ],
+          [
+            1,
+            23,
+            5063
+          ],
+          [
+            2,
+            5,
+            -4
+          ],
+          [
+            2,
+            6,
+            -6
+          ],
+          [
+            2,
+            7,
+            -1
+          ],
+          [
+            2,
+            8,
+            -6
+          ],
+          [
+            3,
+            5,
+            -1
+          ],
+          [
+            3,
+            6,
+            -1
+          ],
+          [
+            3,
+            7,
+            -4
+          ],
+          [
+            3,
+            8,
+            -1
+          ]
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3032,
+            2
+          ],
+          [
+            1,
+            1,
+            3041,
+            2
+          ],
+          [
+            1,
+            2,
+            5045,
+            2
+          ],
+          [
+            1,
+            3,
+            3984,
+            2
+          ],
+          [
+            1,
+            4,
+            4109,
+            2
+          ],
+          [
+            1,
+            5,
+            3930,
+            2
+          ],
+          [
+            1,
+            6,
+            3033,
+            2
+          ],
+          [
+            1,
+            7,
+            4833,
+            2
+          ],
+          [
+            1,
+            8,
+            5063,
+            1
+          ],
+          [
+            1,
+            23,
+            5063,
+            1
+          ],
+          [
+            2,
+            5,
+            -4,
+            1
+          ],
+          [
+            2,
+            6,
+            -6,
+            1
+          ],
+          [
+            2,
+            7,
+            -1,
+            1
+          ],
+          [
+            2,
+            8,
+            -6,
+            1
+          ],
+          [
+            3,
+            5,
+            -1,
+            1
+          ],
+          [
+            3,
+            6,
+            -1,
+            1
+          ],
+          [
+            3,
+            7,
+            -4,
+            1
+          ],
+          [
+            3,
+            8,
+            -1,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            8,
+            1
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "whole_current_union": {
+        "m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            0,
+            3032
+          ],
+          [
+            1,
+            1,
+            3041
+          ],
+          [
+            1,
+            2,
+            5045
+          ],
+          [
+            1,
+            3,
+            3984
+          ],
+          [
+            1,
+            4,
+            4109
+          ],
+          [
+            1,
+            5,
+            3930
+          ],
+          [
+            1,
+            6,
+            3033
+          ],
+          [
+            1,
+            7,
+            4833
+          ],
+          [
+            1,
+            8,
+            5063
+          ],
+          [
+            1,
+            23,
+            5063
+          ],
+          [
+            2,
+            5,
+            -4
+          ],
+          [
+            2,
+            6,
+            -6
+          ],
+          [
+            2,
+            7,
+            -1
+          ],
+          [
+            2,
+            8,
+            -6
+          ],
+          [
+            3,
+            5,
+            -1
+          ],
+          [
+            3,
+            6,
+            -1
+          ],
+          [
+            3,
+            7,
+            -4
+          ],
+          [
+            3,
+            8,
+            -1
+          ]
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3032,
+            2
+          ],
+          [
+            1,
+            1,
+            3041,
+            2
+          ],
+          [
+            1,
+            2,
+            5045,
+            2
+          ],
+          [
+            1,
+            3,
+            3984,
+            2
+          ],
+          [
+            1,
+            4,
+            4109,
+            2
+          ],
+          [
+            1,
+            5,
+            3930,
+            2
+          ],
+          [
+            1,
+            6,
+            3033,
+            2
+          ],
+          [
+            1,
+            7,
+            4833,
+            2
+          ],
+          [
+            1,
+            8,
+            5063,
+            1
+          ],
+          [
+            1,
+            23,
+            5063,
+            1
+          ],
+          [
+            2,
+            5,
+            -4,
+            1
+          ],
+          [
+            2,
+            6,
+            -6,
+            1
+          ],
+          [
+            2,
+            7,
+            -1,
+            1
+          ],
+          [
+            2,
+            8,
+            -6,
+            1
+          ],
+          [
+            3,
+            5,
+            -1,
+            1
+          ],
+          [
+            3,
+            6,
+            -1,
+            1
+          ],
+          [
+            3,
+            7,
+            -4,
+            1
+          ],
+          [
+            3,
+            8,
+            -1,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            8,
+            1
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "source_state_sha256": "e3efa52c0c7d20b6ed7c2d838a886f933215d43bdc8ced75c7cc909da9ecadfa",
+      "source_link": {
+        "advice_observation_index": 0,
+        "decision": [
+          "branch",
+          3,
+          1003,
+          0
+        ],
+        "node": 0,
+        "prior_event_index": 7
+      },
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "semantic_replay_by_reviewer": false
+    },
+    {
+      "case": "fresh-inc-reversed-line-chain",
+      "lane": "generic-incidence-ordering",
+      "origin": "completed_source_proposal",
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "root_row": 8,
+      "original_ordered_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ],
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "v",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "w",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "v",
+            []
+          ],
+          "right": [
+            "fun",
+            "u",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "w",
+            []
+          ],
+          "right": [
+            "fun",
+            "v",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ]
+          ],
+          "implication": 6,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 7,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        }
+      ],
+      "primitive_keys": [
+        [
+          462,
+          0,
+          []
+        ],
+        [
+          634,
+          1,
+          []
+        ],
+        [
+          2837,
+          2,
+          []
+        ],
+        [
+          2296,
+          3,
+          []
+        ],
+        [
+          2445,
+          4,
+          []
+        ],
+        [
+          2619,
+          5,
+          [
+            0,
+            3
+          ]
+        ],
+        [
+          2627,
+          6,
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          2836,
+          7,
+          [
+            2,
+            6
+          ]
+        ],
+        [
+          2829,
+          8,
+          [
+            7,
+            5
+          ]
+        ]
+      ],
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "exact_independent_license_records": [
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-3d8016ad2d0c57119c7f9a92e161ed47d24668a48f3df5b62e09bfdbda51ab46",
+          "recipe_index": 462,
+          "record_sha256": "cada7ee68cfa1d53f4a51e4b1209a6f7ca8b5f4f414f388ce18b88b76407fc2b",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-6015e2ef28cced4a751efd27ef22756d95062173fb60d87b3cf06e238fea7350",
+          "recipe_index": 634,
+          "record_sha256": "5d3d5f30b1429e170c4a64cd3db74bdcac7e7651a35e10f222bc87d981c8a39b",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-f0661f01cea308a4101191d8e27b227adc6c62bb156410268a421b6e859e50b3",
+          "recipe_index": 2837,
+          "record_sha256": "18a5075e53c0bd275857f809cb93ebe43f1f82505f6227c0656a4142c603ff95",
+          "rule": "assumption",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-07d15ff6c2674bd471ec4ca59a7135423dee26be0e281732e3ea398c7d78e249",
+          "recipe_index": 2296,
+          "record_sha256": "03f1754919fa081cc999e31833356b2c5709c235c8839adb87877fbeb65ab0a0",
+          "rule": "eq_subst",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-ab7e2a56ef4e51430f482542c72cd1a590d1c3f17cfc9f79885c4282986b4da9",
+          "recipe_index": 2445,
+          "record_sha256": "cf96ac79cab9befbca1a7907c5022af58a8d6f5a749c0aa5b64748573e912dbe",
+          "rule": "eq_subst",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-99785c445b4b6c5c9a1090fb7bd92c9c54566fafae11ee9bdb37396c93cc6e98",
+          "recipe_index": 2619,
+          "record_sha256": "1e23a4da7ca2860abd8e71db6281c1bc516d699fb48441cbaa36bfa82740361b",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-793aba1c3aa2fe11894f25c1dde85bf19819ef587e5cfad60f767bf01716f0df",
+          "recipe_index": 2627,
+          "record_sha256": "28cfcf6414ba5cae14d2f0cb9153677af42080e61a60abbb20edde3a24fd4aa4",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-e42c2add5b0304d7b1dc843829ae4d58b0295e8effaf5614133b39f505b3c6c2",
+          "recipe_index": 2836,
+          "record_sha256": "cbb05e464568e0c8e51ca30f136655154862c41224c8daf312e5798fced769ed",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        },
+        {
+          "logical_accepted": true,
+          "native_accepted": false,
+          "recipe_id": "primitive-recipe-e1b68aecf4861c64989891c3ab1991d0d005839f501b61093167dc69f8013747",
+          "recipe_index": 2829,
+          "record_sha256": "1025b91a2e3b644c9760db11ccbc08851318875ea9abc92f4164847e110c8082",
+          "rule": "mp",
+          "status": "accepted_independent_exact_primitive_license"
+        }
+      ],
+      "logical_checker_record": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "literal_points": {
+        "m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            0,
+            3075
+          ],
+          [
+            1,
+            1,
+            3084
+          ],
+          [
+            1,
+            2,
+            5072
+          ],
+          [
+            1,
+            3,
+            4626
+          ],
+          [
+            1,
+            4,
+            4766
+          ],
+          [
+            1,
+            5,
+            4928
+          ],
+          [
+            1,
+            6,
+            4935
+          ],
+          [
+            1,
+            7,
+            5071
+          ],
+          [
+            1,
+            8,
+            5070
+          ],
+          [
+            1,
+            23,
+            5070
+          ],
+          [
+            2,
+            5,
+            -5
+          ],
+          [
+            2,
+            6,
+            -5
+          ],
+          [
+            2,
+            7,
+            -5
+          ],
+          [
+            2,
+            8,
+            -1
+          ],
+          [
+            3,
+            5,
+            -2
+          ],
+          [
+            3,
+            6,
+            -2
+          ],
+          [
+            3,
+            7,
+            -1
+          ],
+          [
+            3,
+            8,
+            -3
+          ]
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3075,
+            2
+          ],
+          [
+            1,
+            1,
+            3084,
+            2
+          ],
+          [
+            1,
+            2,
+            5072,
+            2
+          ],
+          [
+            1,
+            3,
+            4626,
+            2
+          ],
+          [
+            1,
+            4,
+            4766,
+            2
+          ],
+          [
+            1,
+            5,
+            4928,
+            2
+          ],
+          [
+            1,
+            6,
+            4935,
+            2
+          ],
+          [
+            1,
+            7,
+            5071,
+            2
+          ],
+          [
+            1,
+            8,
+            5070,
+            1
+          ],
+          [
+            1,
+            23,
+            5070,
+            1
+          ],
+          [
+            2,
+            5,
+            -5,
+            1
+          ],
+          [
+            2,
+            6,
+            -5,
+            1
+          ],
+          [
+            2,
+            7,
+            -5,
+            1
+          ],
+          [
+            2,
+            8,
+            -1,
+            1
+          ],
+          [
+            3,
+            5,
+            -2,
+            1
+          ],
+          [
+            3,
+            6,
+            -2,
+            1
+          ],
+          [
+            3,
+            7,
+            -1,
+            1
+          ],
+          [
+            3,
+            8,
+            -3,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            8,
+            1
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "whole_current_union": {
+        "m": [
+          [
+            1,
+            -23,
+            -1
+          ],
+          [
+            1,
+            -22,
+            -1
+          ],
+          [
+            1,
+            -21,
+            -1
+          ],
+          [
+            1,
+            -20,
+            -1
+          ],
+          [
+            1,
+            -19,
+            -1
+          ],
+          [
+            1,
+            -18,
+            -1
+          ],
+          [
+            1,
+            -17,
+            -1
+          ],
+          [
+            1,
+            -16,
+            -1
+          ],
+          [
+            1,
+            -15,
+            -1
+          ],
+          [
+            1,
+            -14,
+            -1
+          ],
+          [
+            1,
+            -13,
+            -1
+          ],
+          [
+            1,
+            -12,
+            -1
+          ],
+          [
+            1,
+            -11,
+            -1
+          ],
+          [
+            1,
+            -10,
+            -1
+          ],
+          [
+            1,
+            -9,
+            -1
+          ],
+          [
+            1,
+            -8,
+            -1
+          ],
+          [
+            1,
+            -7,
+            -1
+          ],
+          [
+            1,
+            -6,
+            -1
+          ],
+          [
+            1,
+            -5,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            0,
+            3075
+          ],
+          [
+            1,
+            1,
+            3084
+          ],
+          [
+            1,
+            2,
+            5072
+          ],
+          [
+            1,
+            3,
+            4626
+          ],
+          [
+            1,
+            4,
+            4766
+          ],
+          [
+            1,
+            5,
+            4928
+          ],
+          [
+            1,
+            6,
+            4935
+          ],
+          [
+            1,
+            7,
+            5071
+          ],
+          [
+            1,
+            8,
+            5070
+          ],
+          [
+            1,
+            23,
+            5070
+          ],
+          [
+            2,
+            5,
+            -5
+          ],
+          [
+            2,
+            6,
+            -5
+          ],
+          [
+            2,
+            7,
+            -5
+          ],
+          [
+            2,
+            8,
+            -1
+          ],
+          [
+            3,
+            5,
+            -2
+          ],
+          [
+            3,
+            6,
+            -2
+          ],
+          [
+            3,
+            7,
+            -1
+          ],
+          [
+            3,
+            8,
+            -3
+          ]
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3075,
+            2
+          ],
+          [
+            1,
+            1,
+            3084,
+            2
+          ],
+          [
+            1,
+            2,
+            5072,
+            2
+          ],
+          [
+            1,
+            3,
+            4626,
+            2
+          ],
+          [
+            1,
+            4,
+            4766,
+            2
+          ],
+          [
+            1,
+            5,
+            4928,
+            2
+          ],
+          [
+            1,
+            6,
+            4935,
+            2
+          ],
+          [
+            1,
+            7,
+            5071,
+            2
+          ],
+          [
+            1,
+            8,
+            5070,
+            1
+          ],
+          [
+            1,
+            23,
+            5070,
+            1
+          ],
+          [
+            2,
+            5,
+            -5,
+            1
+          ],
+          [
+            2,
+            6,
+            -5,
+            1
+          ],
+          [
+            2,
+            7,
+            -5,
+            1
+          ],
+          [
+            2,
+            8,
+            -1,
+            1
+          ],
+          [
+            3,
+            5,
+            -2,
+            1
+          ],
+          [
+            3,
+            6,
+            -2,
+            1
+          ],
+          [
+            3,
+            7,
+            -1,
+            1
+          ],
+          [
+            3,
+            8,
+            -3,
+            1
+          ]
+        ],
+        "t": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            8,
+            1
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "source_state_sha256": "879c34f1f6dcb1009a2845d9f1aefb4009b01202d4d67d555ff8a95409687728",
+      "source_link": {
+        "advice_observation_index": 0,
+        "decision": [
+          "branch",
+          3,
+          1003,
+          0
+        ],
+        "node": 0,
+        "prior_event_index": 7
+      },
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "semantic_replay_by_reviewer": false
+    }
+  ],
+  "current_timed_kernel_logical_target_checks": 3,
+  "unique_ground_sequents": 2,
+  "actual_selected_target_artifacts": 1,
+  "completed_adviser_target_artifacts": 2,
+  "UNKNOWN_trace_budget_artifacts": 1,
+  "scope": "Actual ROOT-owned once-only first-proof study of elementary equality transport in the declared unsorted I.2 signature. Independent source-bound GroundChecker/literal currentunion checks ran inside ROOT scientific clocks; this reviewer checks only complete saved data, raw/licence/source/context identities, indexedassumptions and serialized ports/points—not logical/point replay. Neither proof uses I.2 axiom; commands are assumption/eq_subst/MP.0advised placements is not0proofsearch: conventional target-blind hypergraph minimum-tree witness construction and current-point embedding are recorded and charged. Shared GCTS engine compatibility is demonstrated; independent marking benefit, native/ordinary prover comparison, repeated performance/robustness, hierarchy/inventory/RL and wholeplane tiling remain unqualified. Proposed artifacts were never physically selected; partial compatible patches are not full24 boards. UNKNOWN staysUNKNOWN with no rescue or missingcounterexample interpretation.",
+  "mathematical_or_runtime_authority_issued_by_reviewer": false,
+  "full24_native_trajectory_inventory_RL_or_performance_qualification": false
+}
