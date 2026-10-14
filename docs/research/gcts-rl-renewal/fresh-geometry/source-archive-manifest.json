@@ -1,0 +1,929 @@
+{
+  "archive": {
+    "bytes": 1571217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+    "public_url": "reproduction.zip",
+    "sha256": "da5dcf6005a07adaf3429e46e67f54aed665b48e949a286efd3578118128b314"
+  },
+  "external_runtime_references": [
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 137888,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952"
+    },
+    {
+      "bytes": 135472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+    },
+    {
+      "bytes": 170816,
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02"
+    }
+  ],
+  "members": [
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "bytes": 14720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "bytes": 20787,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "sha256": "d638f7152ec7fa8293adbd8915b79de60f95d0756952bdc6bf0e40b15f549ca0"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+      "bytes": 44888,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+      "sha256": "be5d6fdf80a28effaefb1e0fa69bfce32dd262d05db8a7a0eed377d51e72481c"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+      "bytes": 22203,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+      "sha256": "db4f65b1ac6a21410707eb6c31f20de4c96672327b1aa7a6dcc40085bd932236"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+      "bytes": 36646,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+      "sha256": "2256ca596ff4f432e12479e7006c04f0cc21f85999680d0c5b8844931515ae81"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "bytes": 15171,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "bytes": 7441,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+      "bytes": 13588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+      "sha256": "86b8c916344c34629450bc12a0251b8ec9a0c29ce1542d1e039966879fb3278e"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+      "bytes": 23504,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+      "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-policy-source-20261012/cluster_episode_contract_v1.py",
+      "bytes": 2643,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-policy-source-20261012/cluster_episode_contract_v1.py",
+      "sha256": "15df2b2d8e29cec2e9fe0ec34afe0bed6c3e0c941dec2c7a0e19db0c709aaa9b"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "bytes": 24474,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "bytes": 16384,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0"
+    },
+    {
+      "archive_name": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "bytes": 10803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/ROOT-actual-complete-static-geometry-disposition-v1.json",
+      "bytes": 57884,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/ROOT-actual-complete-static-geometry-disposition-v1.json",
+      "sha256": "d87c6169a18a769a2e90b59f9809aae8dd1ebbe6324c8c39450fcd646047ed5a"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/ROOT-first-checked-endpoint-preregistration-v1.json",
+      "bytes": 3765,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/ROOT-first-checked-endpoint-preregistration-v1.json",
+      "sha256": "aef624fc300172eaacb7973b9fbf90c38e83831a8c3f466e838f4cc02d9e75a8"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/build_geometry_report_v1.py",
+      "bytes": 9608,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/build_geometry_report_v1.py",
+      "sha256": "a2888579f3358c87c7b9dd2d9ad808d55abdbf504c7b1b3a0ddf78f4cae07546"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/freeze_ROOT_static_reviews_v1.py",
+      "bytes": 5787,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/freeze_ROOT_static_reviews_v1.py",
+      "sha256": "b05e94de0ae6a8d722e64a213b034dceb93ad55facf6deff34a6bcda741c6376"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-audit-ROOT-request-v1.json",
+      "bytes": 669,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-audit-ROOT-request-v1.json",
+      "sha256": "4e80072ec83829ea10b8a59ae4c2c0cd0c9d20900d1dd55e2839bdd37d4f972a"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-audit-ROOT-source-review-v1.json",
+      "bytes": 6939,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-audit-ROOT-source-review-v1.json",
+      "sha256": "e169440691ce38cf57033305adcd7dadb110590df7ea405aacc441e67facd10c"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-prepare-ROOT-request-v1.json",
+      "bytes": 673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-prepare-ROOT-request-v1.json",
+      "sha256": "891454e7919d41d3f47f76176be37f133be125283606e70355c8b4520dab2dff"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-prepare-ROOT-source-review-v1.json",
+      "bytes": 6915,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-point-chain-w-prepare-ROOT-source-review-v1.json",
+      "sha256": "6def309ae65dceae08f90016d084225c50eaaaa7af1f8e393d6a88f9cc8f382c"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-audit-ROOT-request-v1.json",
+      "bytes": 687,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-audit-ROOT-request-v1.json",
+      "sha256": "9dc7770ef22268fc23293a4bb7e010c55275fc0bc94017ca97599163db32fb64"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-audit-ROOT-source-review-v1.json",
+      "bytes": 6951,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-audit-ROOT-source-review-v1.json",
+      "sha256": "b47a53db0ef3796c38393a539589d9816f8bbabc20850ddeaa991dd935702ab3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-prepare-ROOT-request-v1.json",
+      "bytes": 691,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-prepare-ROOT-request-v1.json",
+      "sha256": "a86402e8d08658c0a78c1431413605ddbf46617ee86fe0a01dcc48360dec2806"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-prepare-ROOT-source-review-v1.json",
+      "bytes": 6927,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/fresh-inc-reversed-line-chain-prepare-ROOT-source-review-v1.json",
+      "sha256": "f7e245326b67941b0b6d2a6bb34594a4b891594c885bedcefbfe8ad4cf29819b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-ROOT-source-20261013/seal_static_geometry_v1.py",
+      "bytes": 8813,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/seal_static_geometry_v1.py",
+      "sha256": "9f2eb5d374bf614e68d403c9a564cae44ca6b5ee54b9450120fe767ab04e7f68"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "bytes": 6939,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "sha256": "e169440691ce38cf57033305adcd7dadb110590df7ea405aacc441e67facd10c"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "bytes": 4086,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "sha256": "b75c7cd39820cafb97f6b2f672d58ffc56db502f235f831db7d7bff869ee19b0"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/ROOT-source-review-v1.json",
+      "bytes": 6915,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/ROOT-source-review-v1.json",
+      "sha256": "6def309ae65dceae08f90016d084225c50eaaaa7af1f8e393d6a88f9cc8f382c"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/close_stage_decision_v1.py",
+      "bytes": 4752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "bytes": 2897,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "sha256": "4b9d5f6357a63ab2754fa05ba6762212bc4f615b7e5ac0c77f8a15622853274b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "bytes": 1423,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "sha256": "a4b2a5e6110aa5fe2059358bac95a31bbb2934984da311d1213f7221a55ca715"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "bytes": 1805,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "d169e1d5e01d4cbc213539e43d3965bc2ad0a380df6584f9102b5dff84b94cda"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/launch-v1.json",
+      "bytes": 1134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/launch-v1.json",
+      "sha256": "dbf01f6acd1850357d419d70af112ae7a0a8b755f41f9912409c07a1bb96ff05"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "bytes": 510,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "9461ea8a7200b2b06988f320b578615f7ff8ab49ee676ca725484dea829c8dc7"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "bytes": 818,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "0ea6027bf29d1faedb8663b14accc46dd349fe7e8f9c01baf6f1db39f5c8b32b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/provisional-terminal-v1.json",
+      "bytes": 1805,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "d169e1d5e01d4cbc213539e43d3965bc2ad0a380df6584f9102b5dff84b94cda"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/stderr-v1.txt",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/stdout-v1.txt",
+      "bytes": 390,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "5adfaec6a5985e7b0ef0d79e94800f169fd7b349605d1481ee0dcaa6373fc1ff"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-plan-v1.json",
+      "bytes": 17091,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-plan-v1.json",
+      "sha256": "bb0b1018335e604a130ebb80b67df5fd1ef8970f603817acb6937c819f16306d"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "bytes": 2860,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "sha256": "5c57b5852120307a152a9cb4f594f22f431a316a7ce2346971aaf1d538fefdcd"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "bytes": 1373,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "sha256": "7536d708c4e0a92ce169b4e054111683d9c645074ddb92104b2c2388ce8590bf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "bytes": 1773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "8a21d40d06a9ffe500fd388349ff8fbb8d10e62aa9d1d6b00bdf868cb7cedfe1"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/launch-v1.json",
+      "bytes": 1119,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/launch-v1.json",
+      "sha256": "7a0da5e71895df19f22cd26c6361ce1647206437e81e6d71010234411f884fd6"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "bytes": 488,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "bd4353101e070b31b901c5d3988925c440597752e6d9f55abe09111af4a3bd1e"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "bytes": 805,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "sha256": "85e60a0f2685ca02226201582da5adb169168949dc978d7030c599cb98649653"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/provisional-terminal-v1.json",
+      "bytes": 1773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/provisional-terminal-v1.json",
+      "sha256": "8a21d40d06a9ffe500fd388349ff8fbb8d10e62aa9d1d6b00bdf868cb7cedfe1"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/stderr-v1.txt",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/stdout-v1.txt",
+      "bytes": 446,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/stdout-v1.txt",
+      "sha256": "3a294b7a3aff15ea0d3a26e1409423c6e3b953af89da9e1c30cc762db349c8e0"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-plan-v1.json",
+      "bytes": 22446,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-plan-v1.json",
+      "sha256": "230824a264070b69113304398cf047f4c687bae154f070958b8d7fb8f169459e"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/run_owned_bridge_v2.py",
+      "bytes": 14639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "bytes": 6951,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "sha256": "b47a53db0ef3796c38393a539589d9816f8bbabc20850ddeaa991dd935702ab3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "bytes": 4152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "sha256": "62113e7b493cdd83b12b50575a995180378243e7c94f4b478ad3482568114636"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/ROOT-source-review-v1.json",
+      "bytes": 6927,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/ROOT-source-review-v1.json",
+      "sha256": "f7e245326b67941b0b6d2a6bb34594a4b891594c885bedcefbfe8ad4cf29819b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/close_stage_decision_v1.py",
+      "bytes": 4752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "bytes": 2927,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "sha256": "69bf626716bbe944acfd81389c0cdb5d39488a556581c07998ed20f1d221c9b2"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "bytes": 1461,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "sha256": "bf405020692b89e141a959829d5b6029642bf63a6023c86641b605baa414afda"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "bytes": 1823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "c3c9e3a610d8d7099045d2e4121b97aa9e104bb07fb903c9cbc5915db5819a9a"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/launch-v1.json",
+      "bytes": 1152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/launch-v1.json",
+      "sha256": "8652e780872bf3a9ed84f7f7538196c3625b26039fc39015e3dc040bd14d0b1b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "bytes": 490,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "f2fba3ef2e858a82fdf7731ead71cf14f5cf37ceafd4c6c346363f3cc07f9c45"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "bytes": 837,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "eccb059857739320270d335928990aa8ee2e2fb53b2c9a3760dca516cb1bccc3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/provisional-terminal-v1.json",
+      "bytes": 1823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "c3c9e3a610d8d7099045d2e4121b97aa9e104bb07fb903c9cbc5915db5819a9a"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/stderr-v1.txt",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/stdout-v1.txt",
+      "bytes": 396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "c883b67e9ca042e43fb7a4f18de844958ab643f34663c22431ffbaaecde0bcb3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-plan-v1.json",
+      "bytes": 17145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-plan-v1.json",
+      "sha256": "639c43a7199892aee3f40dcacb1629a2c9d22a0e89e47b4635af69fec5219983"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "bytes": 2890,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "sha256": "419dfde6b26ccfb35c630d630c57484bb4ce64435a125e1a2c3c3852940b36cf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "bytes": 1403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "sha256": "e8a6f1680e524e019af98a6ba45d984642ecb2cdcb9224a46154b1343f933a03"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "bytes": 1791,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "308187666d3985a6fc0714b2ef36628384887019d5de6e83648387849be5c3f6"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/launch-v1.json",
+      "bytes": 1137,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/launch-v1.json",
+      "sha256": "be874f295e1f461266c2f2cde4f6a94429f41246b8af622948a380803e67f332"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "bytes": 485,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "f1f19ad69cf219747d629a669ca761eabb0cd175d6fa25d25d192582049d61bd"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "bytes": 820,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "sha256": "4ae478cc8180d4fdd512bc15644256f243ad543fbb9ceb3fcf10c9d91e36c313"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/provisional-terminal-v1.json",
+      "bytes": 1791,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/provisional-terminal-v1.json",
+      "sha256": "308187666d3985a6fc0714b2ef36628384887019d5de6e83648387849be5c3f6"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/stderr-v1.txt",
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/stdout-v1.txt",
+      "bytes": 452,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-owner-v1/stdout-v1.txt",
+      "sha256": "c26e84c17f2752b7983f70d3dc68e26e6825c04edc3050873299f5f6d8dbdb95"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-plan-v1.json",
+      "bytes": 22608,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-plan-v1.json",
+      "sha256": "efbe8c447a3f64183dfd5bdf4f61a7b5e1fc8bc7c841818b5fa7f3250ddd93e1"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/run_owned_bridge_v2.py",
+      "bytes": 14639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json",
+      "bytes": 31035,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json",
+      "sha256": "c8440f2d274ce1199cd320ec13dfd5a2211cd2a11e6bad25de1b572f445ccc62"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "bytes": 245655,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "bytes": 9388,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "sha256": "293946e9cb0129ead69d73816061fc5a56fea045364cd3d5c4350b233e8b5373"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-worker-plan-v1.json",
+      "bytes": 30699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-worker-plan-v1.json",
+      "sha256": "33924efad6c115d9a65736fbff5b190a732c454e6039e0712f9113d681472735"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+      "bytes": 10822,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+      "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "bytes": 40896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "sha256": "f37cea0ca969311d4686531a0e6e06e5678c0e0d4c63ced2663ac375d2463a2d"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "bytes": 30933,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "sha256": "947549298530a6343c28f5ad881c03a3333a9f73c9a7c9c9a8193adf7523311f"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/recipes-v1.bin",
+      "bytes": 443992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/recipes-v1.bin",
+      "sha256": "e4c8e5936ccc2b451c897d5785de916167181c2b0d43c27c21cffd5880f40f15"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "bytes": 10169,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "sha256": "53fe3bae5701581e333963cf22b10f926cc83254209af861a442e6301242dab0"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/preparation-result-v1.json",
+      "bytes": 23400,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/preparation-result-v1.json",
+      "sha256": "bc7ef755c138fbfe2e2d4501473b82563427e69379381d83f21bcbfb5784531d"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/producer-diagnostics-v1.jsonl",
+      "bytes": 16909,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/producer-diagnostics-v1.jsonl",
+      "sha256": "9f19bbd1d31cd681736ae88d380d690a202b8780a891fdfb0d6e93226eeb9420"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-worker-plan-v1.json",
+      "bytes": 21921,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-worker-plan-v1.json",
+      "sha256": "d63cead0136e63b245e3df569d160942df77a2c9cbb03498d3c8ac61c6091ef2"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/audit-result-v1.json",
+      "bytes": 31275,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/audit-result-v1.json",
+      "sha256": "ed54d2e6f0a18f29b09c7df7dfc49b27ed5f498396da8731f633b52b4a960c48"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "bytes": 245615,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "sha256": "44f9fbf1700af9e4e8600c2c39d9a1aed12a80cd3d0a6a16496f347aa1c48425"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "bytes": 9391,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "sha256": "ad68b77ed48641a72fd5854eb3fa1c5805ceabe6506268fe1bf6fcddfcb57510"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-worker-plan-v1.json",
+      "bytes": 30891,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-worker-plan-v1.json",
+      "sha256": "a7e35f26f4dc47670c9242cf82f564635929481d35fabdd9a5ceeddc00660680"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+      "bytes": 10870,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+      "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "bytes": 40896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "sha256": "3637b49aee674e658dd1ed63b3b8023cb97a285e59f50bf31dc1dc1138e3cb80"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "bytes": 30998,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "sha256": "1ceb0db162fa68627ae89dc296425c1ab15dc0705f270b06a87c996518a2e084"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/recipes-v1.bin",
+      "bytes": 443992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/recipes-v1.bin",
+      "sha256": "946a8a539c0270d8df597ba0a82309eae537450bc5c91b71707a5bcb35189c87"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "bytes": 10166,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "sha256": "8ddb797866817c9f3546b3910c2f4cdc262758e8ea51648c6b6a031b76122f42"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/preparation-result-v1.json",
+      "bytes": 23489,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/preparation-result-v1.json",
+      "sha256": "1f421aedcb58d1fc73c92a44c2d96219d72c897a6804c28d5db57ed1e1b353c1"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/producer-diagnostics-v1.jsonl",
+      "bytes": 16888,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/producer-diagnostics-v1.jsonl",
+      "sha256": "ae8b1b865b76e679046e21232adf2e09967e03387391d5abdda850ad7c43c3c5"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-worker-plan-v1.json",
+      "bytes": 21969,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-worker-plan-v1.json",
+      "sha256": "f7c21392ad4bd89cef3a01b87e909e738dc28abaf5997ad0786a6faffdbf7ca3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/build_fresh_equality_static_metadata_v1.py",
+      "bytes": 27337,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/build_fresh_equality_static_metadata_v1.py",
+      "sha256": "8e40c89b7eeb3981b28af823e2be35af7dad8e935332f86660f7023c26c66bbd"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "bytes": 43532,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "sha256": "b60869d015f5f60caa726864595a6293a4566ffdf04403c2499ade76987ef831"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_audit_worker_v1.py",
+      "bytes": 47959,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_audit_worker_v1.py",
+      "sha256": "7b25d902b69398d5d71c450ee9e63021df6d3b4e967b4c47b7d6e6b563d55fe6"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "bytes": 46112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "bytes": 14799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_prepare_worker_v1.py",
+      "bytes": 31893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_prepare_worker_v1.py",
+      "sha256": "cc1f05b4b18e4f570b25745a0cf3d3f7c816e4146872f36f8d7a939894acb7e3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+      "bytes": 5565,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+      "sha256": "91ed32762629eb127319d3710b9f7fab8d05a87226b203497d346bb6104cfbc7"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+      "bytes": 61285,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+      "sha256": "eeb13ad46fe2bab153162068a666cb27cb88aa124a165b9cdda3bb6c3f8452bc"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-audit-source-review-v1.json",
+      "bytes": 4244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-audit-source-review-v1.json",
+      "sha256": "dbf550b6462ec831cded0f98503faa9b1daf14ead68d7327400e5e11c2918013"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-complete-saved-static-findings-v1.json",
+      "bytes": 50597,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-complete-saved-static-findings-v1.json",
+      "sha256": "35a7add788b98ef0ae3406d4d1da81e83b416b96826f9325e004470fbbe5954b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-preparation-source-review-v1.json",
+      "bytes": 4214,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-preparation-source-review-v1.json",
+      "sha256": "d31cd02166841f0af1f1ad00c298e132102b2989379af1104b4bd7355361b40c"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-static-source-findings-v1.json",
+      "bytes": 18113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-static-source-findings-v1.json",
+      "sha256": "3b9ad8901c41da1aed45d8d9ce7ce7edd3c485423acd8c239db0cef2d26a7b51"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-person-review-20261013/raw-source-evidence-v1.json",
+      "bytes": 28876,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-person-review-20261013/raw-source-evidence-v1.json",
+      "sha256": "5f1861381d6f4d4335688f5e8bf5aa4badd291d8946da35e94b8642414ea30cc"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-person-review-20261013/source-review-v1.json",
+      "bytes": 33603,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-person-review-20261013/source-review-v1.json",
+      "sha256": "86091bf909f486ff160fad27606ffd7f8d1945737d63218d3c68ea4986a1f7ee"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-source-20261013/full-source-inverse-v1.json",
+      "bytes": 6350,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/full-source-inverse-v1.json",
+      "sha256": "563b7a8c275563799d43a35e1e0fa5d812d69e48fc08a89fe3cb506c191327d8"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-source-20261013/handoff-v1.json",
+      "bytes": 7397,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/handoff-v1.json",
+      "sha256": "8ce6c90661b88b0214ab1dedeb033704557d6323a7c1edbe0409207ab7f3f9e3"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_independent_compact_grammar_v2.py",
+      "bytes": 14517,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_independent_compact_grammar_v2.py",
+      "sha256": "520bbca2d84c370528103d133d1aa70ef64ab8fbefe7ebf07c0fcaccc8aa0eaf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-source-20261013/source-contract-v1.json",
+      "bytes": 14883,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/source-contract-v1.json",
+      "sha256": "2bc8125419803cdb356fe186ac225246ac932ac9358304c9f9b7075242d3e738"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-independent-oracles-source-20261013/source-manifest-v1.json",
+      "bytes": 10901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/source-manifest-v1.json",
+      "sha256": "41c1831149ced8f09d85a2be06f9c22a1c709ffa27f8045ba80dcc77fec85a1a"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-independent-source-20261013/raw-source-evidence-v1.json",
+      "bytes": 31004,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/raw-source-evidence-v1.json",
+      "sha256": "68d260a66d4eb2bb49802b4009898c18df99a9ccbf47c153d9a305fb2f3289fa"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v1.json",
+      "bytes": 43738,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v1.json",
+      "sha256": "8ec612f623867c1851af242902253fcca8216f61385d815a00b173e520926c82"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v2.json",
+      "bytes": 51269,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v2.json",
+      "sha256": "0e782dd6207746fa95b5109f32beaf45036b9edfd6be226fa182c1d581598cf8"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/compact-profile-full-diff-v1.patch",
+      "bytes": 2343,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/compact-profile-full-diff-v1.patch",
+      "sha256": "c78ba91a0eb7a0be8aa8bd705cdfd9f0076371da2e24715372f73e3b3b91c08c"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/expanded-profile-full-diff-v1.patch",
+      "bytes": 2236,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/expanded-profile-full-diff-v1.patch",
+      "sha256": "c1e2eae0efd22587180da9e1a5c18fca6bfd880a0dc138d07e7ae12c465f95bd"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/full-source-inverse-v1.json",
+      "bytes": 8649,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/full-source-inverse-v1.json",
+      "sha256": "d9f37f1c1cf2c39b26626c808aaf24fd8091eda8c5a26992f62190a118a3d295"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/handoff-v1.json",
+      "bytes": 5126,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/handoff-v1.json",
+      "sha256": "b722a2e8311b0eb9a8c96e39b4e2407226550055abf5b2025c2010cbae7c680e"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert-next-fixtures-v1.json",
+      "bytes": 39325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert-next-fixtures-v1.json",
+      "sha256": "781d0b5139619d7c758425f198c84bbfa4176ca103f7de783d30c7249156e201"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_compact_compiler_v1.py",
+      "bytes": 45830,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_compact_compiler_v1.py",
+      "sha256": "bd3ee86d52d403524e8f183fc6771d702af1d29e3ea71427dcf362e7484ffebe"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_expanded_compiler_v1.py",
+      "bytes": 17326,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_expanded_compiler_v1.py",
+      "sha256": "a2603a33397a6d81df813d4a580e7f5c3c304f67c473c412892f44753f147f79"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/source-manifest-v1.json",
+      "bytes": 9063,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-manifest-v1.json",
+      "sha256": "423961fd53633e6bee3c1eb2c2698b53556737a56e8de08d8ef03aed10b7d500"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/source-metadata-review-v1.json",
+      "bytes": 12205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-metadata-review-v1.json",
+      "sha256": "5f8c9e4db67be711f8125ec7e5cfed3d129108c74d1e33847e01a627b15a7f39"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-literal-compiler-source-20261013/source-protocol-v1.json",
+      "bytes": 25320,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-protocol-v1.json",
+      "sha256": "f438efeb8bbd0a6080890e78e1b72cd9f05c15aa9cdb17af671178cffa38dd72"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-owned-progress-20261013/ROOT-source-review-v1.json",
+      "bytes": 6676,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/ROOT-source-review-v1.json",
+      "sha256": "d5f3843f416b67d2089a38cf41d638c738d7d5a11597bc61a33f2cf5c03d18a4"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-owned-progress-20261013/audit-worker-plan-v1.json",
+      "bytes": 24943,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/audit-worker-plan-v1.json",
+      "sha256": "51494f4efbace2b1b348d94fcec04c5b05afb3e91d82c3f866da668cfc5c393b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-owned-progress-20261013/close_stage_decision_v1.py",
+      "bytes": 4752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-owned-progress-20261013/preparation-plan-v1.json",
+      "bytes": 13268,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/preparation-plan-v1.json",
+      "sha256": "f0de65b0c53af0e78b897bfd16da37b57535bd3a7cf5c96fda9786f46b653a23"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-owned-progress-20261013/preparation-worker-plan-v1.json",
+      "bytes": 17222,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/preparation-worker-plan-v1.json",
+      "sha256": "5bdbfe8a518df5531dda99b98a5332de9555cbf965abc6329200ae3ac0fc2c50"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-owned-progress-20261013/run_owned_bridge_v2.py",
+      "bytes": 14639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+      "bytes": 35493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+      "sha256": "a9748e01636323ab886f4e5e41d5d89ae9ef56cf36dbb7884e53c537597a83bd"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/handoff-v1.json",
+      "bytes": 3733,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/handoff-v1.json",
+      "sha256": "6e6f78f4f7c51079ce7563ccdfa4e44572b0f71da8732353b2aee72fd9f9c02b"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/protocol-and-gaps-v1.json",
+      "bytes": 26296,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/protocol-and-gaps-v1.json",
+      "sha256": "c0b5499a2d25bdec5304eb50c810aad8cdbc02ed1d0a6f42b38f86371c0eb1ab"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/raw-closure-reconciliation-v1.json",
+      "bytes": 7791,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/raw-closure-reconciliation-v1.json",
+      "sha256": "0711f897c5793ca3cd111f71b8f1de9af334fbbd0ecc69a02065aa0de4227516"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    {
+      "archive_name": ".gcts-active/hilbert-rl-family-static-source-20261013/static-profile-plan-v1.json",
+      "bytes": 15083,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-rl-family-static-source-20261013/static-profile-plan-v1.json",
+      "sha256": "5a8ab38347172f03f38317fe6df584ca8e7eeef10b83ff46ee28d0ad462851c8"
+    },
+    {
+      "archive_name": "AGENTS.md",
+      "bytes": 1518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/AGENTS.md",
+      "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2"
+    },
+    {
+      "archive_name": "docs/basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_name": "research/gcts-rl-renewal/fol_checker.tree",
+      "bytes": 17577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    {
+      "archive_name": "research/gcts-rl-renewal/serialized_kernel.py",
+      "bytes": 13977,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/serialized_kernel.py",
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+    }
+  ],
+  "saved_capsules_are_used_once_only": true,
+  "schema": "notebook154-complete-static-source-archive-v1",
+  "scientific_calls": 0
+}

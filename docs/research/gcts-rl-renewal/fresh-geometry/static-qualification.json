@@ -1,0 +1,2155 @@
+{
+  "actual_scientific_stages_observed": 4,
+  "all_five_qualification": false,
+  "all_four_complete_static_stages_accepted": true,
+  "author_identity": "/root",
+  "case_ids": [
+    "fresh-inc-point-chain-w",
+    "fresh-inc-reversed-line-chain"
+  ],
+  "cases": [
+    {
+      "complete_initial_candidate_count": 4408320,
+      "declaration": {
+        "actual_outcome": null,
+        "certificate": null,
+        "english": "The exact supplied ordered hypotheses and target are the statement. No proof, row route or inventory lemma is supplied.",
+        "hypotheses": [
+          "fresh-inc-point-chain-w/Gamma-0",
+          "fresh-inc-point-chain-w/Gamma-1",
+          "fresh-inc-point-chain-w/Gamma-2"
+        ],
+        "id": "fresh-inc-point-chain-w",
+        "independent_acceptance": null,
+        "latex": "\\(A=B,\\;B=C,\\;\\operatorname{Incident}(A,w)\\;\\vdash\\;\\operatorname{Incident}(C,w)\\)",
+        "ordered_hypothesis_occurrences": 3,
+        "policy_checkpoint": null,
+        "proof_rows": null,
+        "proof_words": [],
+        "role": "fresh first-checked-proof evaluation",
+        "rows": 24,
+        "scope": "Elementary symbolic equality calibration in the unsorted I.2-only signature; fresh source context, not a new geometry theorem or implicit logical sort.",
+        "split": "evaluation",
+        "structural_tag": "fresh declared ground incidence sequent",
+        "target": "fresh-inc-point-chain-w/target",
+        "theory": "hilbert-incidence"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "discovered_proofs": 0,
+      "hypothesis_asts": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "id": "fresh-inc-point-chain-w",
+      "independent": {
+        "evidence": {
+          "bytes": 9388,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-static-evidence-v1.json.gz",
+          "sha256": "293946e9cb0129ead69d73816061fc5a56fea045364cd3d5c4350b233e8b5373"
+        },
+        "licenses": {
+          "bytes": 245655,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf"
+        },
+        "plan": {
+          "bytes": 30699,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-worker-plan-v1.json",
+          "sha256": "33924efad6c115d9a65736fbff5b190a732c454e6039e0712f9113d681472735"
+        },
+        "receipt": {
+          "bytes": 31035,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json",
+          "sha256": "c8440f2d274ce1199cd320ec13dfd5a2211cd2a11e6bad25de1b572f445ccc62"
+        }
+      },
+      "initial_row_receipts": [
+        {
+          "base_count": 0,
+          "bytes": 0,
+          "count": 0,
+          "excluded_legal": [],
+          "factor_count": 0,
+          "row": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "base_count": 0,
+          "bytes": 0,
+          "count": 0,
+          "excluded_legal": [],
+          "factor_count": 0,
+          "row": 1,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "base_count": 0,
+          "bytes": 0,
+          "count": 0,
+          "excluded_legal": [],
+          "factor_count": 0,
+          "row": 2,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "base_count": 1003,
+          "bytes": 33099,
+          "count": 1003,
+          "excluded_legal": [],
+          "factor_count": 1003,
+          "row": 3,
+          "sha256": "dc96c4bc293479113543407529aa2271987b7c8b871faf856026da01fe55b377"
+        },
+        {
+          "base_count": 1071,
+          "bytes": 35343,
+          "count": 1071,
+          "excluded_legal": [],
+          "factor_count": 1071,
+          "row": 4,
+          "sha256": "0a17b88affda4a2b52b91f969dcccbf3f671f1a40e82a00006927bf668aa2168"
+        },
+        {
+          "base_count": 4975,
+          "bytes": 96393,
+          "count": 4975,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 5,
+          "sha256": "c09578642448955ebc07fa7404835062531f6b926443093ad21d89443095b767"
+        },
+        {
+          "base_count": 12715,
+          "bytes": 96393,
+          "count": 12715,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 6,
+          "sha256": "4959fab9cf1eb91adddbc7da7dbd7ae84b7e05555489eb9fd3e9f88a2b07763a"
+        },
+        {
+          "base_count": 24291,
+          "bytes": 96393,
+          "count": 24291,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 7,
+          "sha256": "3ea0b18bf3d4171be65ad9ab39585105775ac1832b0f39c99bd7770192ecd9e9"
+        },
+        {
+          "base_count": 39703,
+          "bytes": 96393,
+          "count": 39703,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 8,
+          "sha256": "8b472573e2b83a4aa2fbd001f5129108e25226925dd5455e368ec391a113592c"
+        },
+        {
+          "base_count": 58951,
+          "bytes": 96393,
+          "count": 58951,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 9,
+          "sha256": "a5b6d3ca32e3118de5c6af9123f94a34f0218b25a3bd2e1da45c01d49d0ff0de"
+        },
+        {
+          "base_count": 82035,
+          "bytes": 96393,
+          "count": 82035,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 10,
+          "sha256": "ac2d916625c5ed573f13466833acacf96c69cf6853fb8efd6e207047cc01efa8"
+        },
+        {
+          "base_count": 108955,
+          "bytes": 96393,
+          "count": 108955,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 11,
+          "sha256": "55c8d35e878448b06284baffc5180730e8d5fe3478647647d75fe2fd72126202"
+        },
+        {
+          "base_count": 139711,
+          "bytes": 96393,
+          "count": 139711,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 12,
+          "sha256": "0203984180a1e60057915b120c4d9b0f9202f016fa3670958d295cc318c80d51"
+        },
+        {
+          "base_count": 174303,
+          "bytes": 96393,
+          "count": 174303,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 13,
+          "sha256": "d379a4836a54c7cbc907b443e5081423bdbd9bb6117480274883639a84234582"
+        },
+        {
+          "base_count": 212731,
+          "bytes": 96393,
+          "count": 212731,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 14,
+          "sha256": "32eba5316220b57efe69806b0b461f1eb5edcff819a614301dad40c1695c61f6"
+        },
+        {
+          "base_count": 254995,
+          "bytes": 96393,
+          "count": 254995,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 15,
+          "sha256": "306f70f790548d770b9446d6440c5fd2e402337e2e1848670d63d07465bdfdb4"
+        },
+        {
+          "base_count": 301095,
+          "bytes": 96393,
+          "count": 301095,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 16,
+          "sha256": "18c007e27f0bd0e2d64fb808684307f4784c3a8b080cf608fba4d5d66f9b88fc"
+        },
+        {
+          "base_count": 351031,
+          "bytes": 96393,
+          "count": 351031,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 17,
+          "sha256": "a3e0181786e6557f506d1858da8292ee0ea1951c59d1463b04ccfdb5fc9f4956"
+        },
+        {
+          "base_count": 404803,
+          "bytes": 96393,
+          "count": 404803,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 18,
+          "sha256": "84a20b92fd88a78e4311f0211c7f6fe96814903595f34fb008b342763f47d05b"
+        },
+        {
+          "base_count": 462411,
+          "bytes": 96393,
+          "count": 462411,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 19,
+          "sha256": "83eaeeba7beb1970239fc1a26464ef0510158634905cdb26c37b13b1f3237a3a"
+        },
+        {
+          "base_count": 523855,
+          "bytes": 96393,
+          "count": 523855,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 20,
+          "sha256": "31b0f2dd418c5f59a98565f077b8e5a3525695327795f4c7eebae226c8aa2bf5"
+        },
+        {
+          "base_count": 589135,
+          "bytes": 96393,
+          "count": 589135,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 21,
+          "sha256": "bd8db2205fe6bab5437d65d114e94583b0bd9e80f9e1eb33f4996e036e357c1e"
+        },
+        {
+          "base_count": 658251,
+          "bytes": 96393,
+          "count": 658251,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 22,
+          "sha256": "85bc0fd08d19fec7144c9e42b6ef79a8ad5947a43221c8079222c875957c8c0a"
+        },
+        {
+          "base_count": 2300,
+          "bytes": 198,
+          "count": 2300,
+          "excluded_legal": [],
+          "factor_count": 6,
+          "row": 23,
+          "sha256": "83d95e04f3f90df2b8d8c2ff6d79d31a7b7880ebbf5593ca3da83d4360d3deb2"
+        }
+      ],
+      "initial_seed_placements": [
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          "id": "aggregate-primitive-3ac6ab84e219a5d057f8bf6bcda0548e50dc6d07427b6156da160f695d95435c",
+          "identity_preimage": {
+            "authority_epoch": "707bc4b0d317b42422413e38296f1293b217aa5f99518e5471b6d0594b1ed015",
+            "context_id": "373af2509c6217b308700d227c35f70a37f9ac85584a185c1501a8c96b1e2b0e",
+            "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+            "m": [
+              [
+                1,
+                0,
+                3032
+              ]
+            ],
+            "ordered_input_rows": [],
+            "primitive_command": {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            "prototype_id": "primitive-prototype-e84f1ba4617a5e93592feef3917b6272ccff804d15b233ea39122875f29ea599",
+            "prototype_preimage": {
+              "authority_epoch": "707bc4b0d317b42422413e38296f1293b217aa5f99518e5471b6d0594b1ed015",
+              "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+              "m": [
+                [
+                  1,
+                  0,
+                  3032
+                ]
+              ],
+              "marking_version": "injective-formula-ordered-mp-offset-v1",
+              "ordered_premise_formulas": [],
+              "orientation": "identity",
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ],
+                "index": 0,
+                "rule": "assumption"
+              },
+              "recipe_id": "primitive-recipe-daca4483a7cfb4f1e69064e6d467af6c10a41bbb0dbb41fad0cf0222d69dfbcf",
+              "relative_ordered_input_offsets": [],
+              "t": [
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "t": [
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "transform": [
+              0,
+              0
+            ]
+          },
+          "key": [
+            111,
+            0,
+            []
+          ],
+          "m": [
+            [
+              1,
+              0,
+              3032
+            ]
+          ],
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          "id": "aggregate-primitive-60209d84f4d94b25010503c0280ff0fef7938bcb702d195e3354e59b4dfe86c7",
+          "identity_preimage": {
+            "authority_epoch": "707bc4b0d317b42422413e38296f1293b217aa5f99518e5471b6d0594b1ed015",
+            "context_id": "373af2509c6217b308700d227c35f70a37f9ac85584a185c1501a8c96b1e2b0e",
+            "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+            "m": [
+              [
+                1,
+                1,
+                3041
+              ]
+            ],
+            "ordered_input_rows": [],
+            "primitive_command": {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "B",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            "prototype_id": "primitive-prototype-08ce6d9a9c21dd61ffdfd18a310404f11dd5a3cb1d0b566cfb3822fb647a1af2",
+            "prototype_preimage": {
+              "authority_epoch": "707bc4b0d317b42422413e38296f1293b217aa5f99518e5471b6d0594b1ed015",
+              "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+              "m": [
+                [
+                  1,
+                  0,
+                  3041
+                ]
+              ],
+              "marking_version": "injective-formula-ordered-mp-offset-v1",
+              "ordered_premise_formulas": [],
+              "orientation": "identity",
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ]
+                ],
+                "index": 1,
+                "rule": "assumption"
+              },
+              "recipe_id": "primitive-recipe-fc4fb56a6a224fd8abde046ce1d94acb47e7de3c09598570a8ca238597e0bda5",
+              "relative_ordered_input_offsets": [],
+              "t": [
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "t": [
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "transform": [
+              0,
+              1
+            ]
+          },
+          "key": [
+            168,
+            1,
+            []
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3041
+            ]
+          ],
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          "id": "aggregate-primitive-778ed9f2b4aa9347084cb09efbdf3facb67288d74456c01aad8a2ea111bc1006",
+          "identity_preimage": {
+            "authority_epoch": "707bc4b0d317b42422413e38296f1293b217aa5f99518e5471b6d0594b1ed015",
+            "context_id": "373af2509c6217b308700d227c35f70a37f9ac85584a185c1501a8c96b1e2b0e",
+            "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+            "m": [
+              [
+                1,
+                2,
+                5045
+              ]
+            ],
+            "ordered_input_rows": [],
+            "primitive_command": {
+              "formula": [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              "index": 2,
+              "rule": "assumption"
+            },
+            "prototype_id": "primitive-prototype-c613aeead43ea4d8a21ad7cdccfdd9639be17eceba7d7585c33eb5000f179592",
+            "prototype_preimage": {
+              "authority_epoch": "707bc4b0d317b42422413e38296f1293b217aa5f99518e5471b6d0594b1ed015",
+              "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+              "m": [
+                [
+                  1,
+                  0,
+                  5045
+                ]
+              ],
+              "marking_version": "injective-formula-ordered-mp-offset-v1",
+              "ordered_premise_formulas": [],
+              "orientation": "identity",
+              "primitive_witness": {
+                "formula": [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                "index": 2,
+                "rule": "assumption"
+              },
+              "recipe_id": "primitive-recipe-a61df2983bda08e5c50535a6fb5873b3f90ecf9c2d764a311f3527581c732d9f",
+              "relative_ordered_input_offsets": [],
+              "t": [
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "t": [
+              [
+                0,
+                2,
+                1
+              ]
+            ],
+            "transform": [
+              0,
+              2
+            ]
+          },
+          "key": [
+            2735,
+            2,
+            []
+          ],
+          "m": [
+            [
+              1,
+              2,
+              5045
+            ]
+          ],
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ]
+        }
+      ],
+      "initial_state": {
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3032,
+            1
+          ],
+          [
+            1,
+            1,
+            3041,
+            1
+          ],
+          [
+            1,
+            2,
+            5045,
+            1
+          ],
+          [
+            1,
+            23,
+            5063,
+            1
+          ]
+        ],
+        "model_epoch": "6db73dc7a113272f99db096957d43b7fe002c24cf6f274654688afb4108aa3a7",
+        "order": [
+          [
+            111,
+            0,
+            []
+          ],
+          [
+            168,
+            1,
+            []
+          ],
+          [
+            2735,
+            2,
+            []
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected_generations": [
+          [
+            [
+              111,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              168,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              2735,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "producer": {
+        "catalog": {
+          "bytes": 10822,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+          "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+        },
+        "evidence": {
+          "bytes": 10169,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/full-preparation-evidence-v1.json.gz",
+          "sha256": "53fe3bae5701581e333963cf22b10f926cc83254209af861a442e6301242dab0"
+        },
+        "plan": {
+          "bytes": 21921,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-worker-plan-v1.json",
+          "sha256": "d63cead0136e63b245e3df569d160942df77a2c9cbb03498d3c8ac61c6091ef2"
+        },
+        "receipt": {
+          "bytes": 23400,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/preparation-result-v1.json",
+          "sha256": "bc7ef755c138fbfe2e2d4501473b82563427e69379381d83f21bcbfb5784531d"
+        }
+      },
+      "proof_search_status": "UNSEARCHED",
+      "resources": [
+        {
+          "ROOT_decision": {
+            "bytes": 2897,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+            "sha256": "4b9d5f6357a63ab2754fa05ba6762212bc4f615b7e5ac0c77f8a15622853274b"
+          },
+          "all14_resource_predicates": true,
+          "caller_elapsed_seconds": 4.327,
+          "conservative_peak_bytes": 46743552,
+          "owned_post_write_seconds": 1.035962375,
+          "stage": "preparation"
+        },
+        {
+          "ROOT_decision": {
+            "bytes": 2860,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+            "sha256": "5c57b5852120307a152a9cb4f594f22f431a316a7ce2346971aaf1d538fefdcd"
+          },
+          "all14_resource_predicates": true,
+          "caller_elapsed_seconds": 4.105,
+          "conservative_peak_bytes": 44515328,
+          "owned_post_write_seconds": 0.948532,
+          "stage": "replay"
+        }
+      ],
+      "rule_counts": {
+        "assumption": 3,
+        "axiom": 1,
+        "eq_subst": 600,
+        "instantiate": 399,
+        "mp": 1918
+      },
+      "runtime_observer_qualification": false,
+      "statement_latex": "\\(A=B,\\;B=C,\\;\\operatorname{Incident}(A,w)\\;\\vdash\\;\\operatorname{Incident}(C,w)\\)",
+      "static_qualification_accepted": true,
+      "target_ast": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "complete_initial_candidate_count": 4407560,
+      "declaration": {
+        "actual_outcome": null,
+        "certificate": null,
+        "english": "The exact supplied ordered hypotheses and target are the statement. No proof, row route or inventory lemma is supplied.",
+        "hypotheses": [
+          "fresh-inc-reversed-line-chain/Gamma-0",
+          "fresh-inc-reversed-line-chain/Gamma-1",
+          "fresh-inc-reversed-line-chain/Gamma-2"
+        ],
+        "id": "fresh-inc-reversed-line-chain",
+        "independent_acceptance": null,
+        "latex": "\\(v=u,\\;w=v,\\;\\operatorname{Incident}(D,w)\\;\\vdash\\;\\operatorname{Incident}(D,u)\\)",
+        "ordered_hypothesis_occurrences": 3,
+        "policy_checkpoint": null,
+        "proof_rows": null,
+        "proof_words": [],
+        "role": "fresh first-checked-proof evaluation",
+        "rows": 24,
+        "scope": "Elementary symbolic equality calibration in the unsorted I.2-only signature; fresh source context, not a new geometry theorem or implicit logical sort.",
+        "split": "evaluation",
+        "structural_tag": "fresh declared ground incidence sequent",
+        "target": "fresh-inc-reversed-line-chain/target",
+        "theory": "hilbert-incidence"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "discovered_proofs": 0,
+      "hypothesis_asts": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "id": "fresh-inc-reversed-line-chain",
+      "independent": {
+        "evidence": {
+          "bytes": 9391,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-static-evidence-v1.json.gz",
+          "sha256": "ad68b77ed48641a72fd5854eb3fa1c5805ceabe6506268fe1bf6fcddfcb57510"
+        },
+        "licenses": {
+          "bytes": 245615,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "44f9fbf1700af9e4e8600c2c39d9a1aed12a80cd3d0a6a16496f347aa1c48425"
+        },
+        "plan": {
+          "bytes": 30891,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-worker-plan-v1.json",
+          "sha256": "a7e35f26f4dc47670c9242cf82f564635929481d35fabdd9a5ceeddc00660680"
+        },
+        "receipt": {
+          "bytes": 31275,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/audit-result-v1.json",
+          "sha256": "ed54d2e6f0a18f29b09c7df7dfc49b27ed5f498396da8731f633b52b4a960c48"
+        }
+      },
+      "initial_row_receipts": [
+        {
+          "base_count": 0,
+          "bytes": 0,
+          "count": 0,
+          "excluded_legal": [],
+          "factor_count": 0,
+          "row": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "base_count": 0,
+          "bytes": 0,
+          "count": 0,
+          "excluded_legal": [],
+          "factor_count": 0,
+          "row": 1,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "base_count": 0,
+          "bytes": 0,
+          "count": 0,
+          "excluded_legal": [],
+          "factor_count": 0,
+          "row": 2,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "base_count": 1003,
+          "bytes": 33099,
+          "count": 1003,
+          "excluded_legal": [],
+          "factor_count": 1003,
+          "row": 3,
+          "sha256": "65587a92ec00d8298d0900a8a9b5fba6d3c96093b3f2f27392df209be9a66a51"
+        },
+        {
+          "base_count": 1067,
+          "bytes": 35211,
+          "count": 1067,
+          "excluded_legal": [],
+          "factor_count": 1067,
+          "row": 4,
+          "sha256": "63f4ca205637f1a47401d0591c86fa7a0c1a399e4f9dd20b48fc74e6ab2d5de5"
+        },
+        {
+          "base_count": 4967,
+          "bytes": 96393,
+          "count": 4967,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 5,
+          "sha256": "d1c197fc3d7d7ddac2c59314b2dd07449430a48b7cb49fe7d39e35d4acebf030"
+        },
+        {
+          "base_count": 12703,
+          "bytes": 96393,
+          "count": 12703,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 6,
+          "sha256": "95f62a5027701192f46a79ee30a4dcd5cfc3a3211a51db8b232c941e58977c55"
+        },
+        {
+          "base_count": 24275,
+          "bytes": 96393,
+          "count": 24275,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 7,
+          "sha256": "33c39178edc5e3be05fd2890e4d3b55ee95dd242a3aff2388989573a9edfcbb1"
+        },
+        {
+          "base_count": 39683,
+          "bytes": 96393,
+          "count": 39683,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 8,
+          "sha256": "df7e1cde72a92d7907ec187c2f1940d0835d1266b43c39a95d2c7be5cdc7c79e"
+        },
+        {
+          "base_count": 58927,
+          "bytes": 96393,
+          "count": 58927,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 9,
+          "sha256": "6768aaea6ecc369743b4c0fbd9dd045531d310536c3e9f775e442017654d9022"
+        },
+        {
+          "base_count": 82007,
+          "bytes": 96393,
+          "count": 82007,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 10,
+          "sha256": "8d64c409ccfdf11925b2b8b61d26092d8e0ecf4897176b27686b1dd79a26d21a"
+        },
+        {
+          "base_count": 108923,
+          "bytes": 96393,
+          "count": 108923,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 11,
+          "sha256": "a8d1d91e516d2eacccbdc6fa08ef23f2549e9f0bcdbea4b6b5e34b34553c537d"
+        },
+        {
+          "base_count": 139675,
+          "bytes": 96393,
+          "count": 139675,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 12,
+          "sha256": "4a469342e7f9e5e814aca894ba20cabc1106517d10bd2d1bc2a555307022ba5c"
+        },
+        {
+          "base_count": 174263,
+          "bytes": 96393,
+          "count": 174263,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 13,
+          "sha256": "af4f8ccb4e2ca63ef4762b0f2277d486a071be00bb1d02286e1f47fc2d79dc5c"
+        },
+        {
+          "base_count": 212687,
+          "bytes": 96393,
+          "count": 212687,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 14,
+          "sha256": "f03545006e67a495fa95a083f31c0575c95c442d4d5ccdc1cfab0db12ed2fbc0"
+        },
+        {
+          "base_count": 254947,
+          "bytes": 96393,
+          "count": 254947,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 15,
+          "sha256": "36e49371e980acbf5005dde8c1bfaf2447d413d296cc92ec101585c402a2b248"
+        },
+        {
+          "base_count": 301043,
+          "bytes": 96393,
+          "count": 301043,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 16,
+          "sha256": "7f3482d27a931fe7f62d5a61fb75e1582768d617bcc547cee348994d2278539b"
+        },
+        {
+          "base_count": 350975,
+          "bytes": 96393,
+          "count": 350975,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 17,
+          "sha256": "d003a712d4ba20bbe5f93a73c28f1a491f91f60e5b712991933826a00ed5494b"
+        },
+        {
+          "base_count": 404743,
+          "bytes": 96393,
+          "count": 404743,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 18,
+          "sha256": "9e5d50b75bae3c405fe15b2443afafc22d429bee306e707b4ac62e1e92679f18"
+        },
+        {
+          "base_count": 462347,
+          "bytes": 96393,
+          "count": 462347,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 19,
+          "sha256": "0b938ec71d45f7676af765fd4665198d68049a818c3e36384d6821d2635bfb81"
+        },
+        {
+          "base_count": 523787,
+          "bytes": 96393,
+          "count": 523787,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 20,
+          "sha256": "bbe5bb069f241543c6231e8cf3daf3539e59f0ace9b323050a92f67ab637b44d"
+        },
+        {
+          "base_count": 589063,
+          "bytes": 96393,
+          "count": 589063,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 21,
+          "sha256": "1ae6eb0976a269f09e83ba313ca890983898c950ad0a20519cc9695549b3ce91"
+        },
+        {
+          "base_count": 658175,
+          "bytes": 96393,
+          "count": 658175,
+          "excluded_legal": [],
+          "factor_count": 2921,
+          "row": 22,
+          "sha256": "5a288b82284a94f72a37e0b362091a09ab1db37fa8ddc0f56349e35905ae33e4"
+        },
+        {
+          "base_count": 2300,
+          "bytes": 198,
+          "count": 2300,
+          "excluded_legal": [],
+          "factor_count": 6,
+          "row": 23,
+          "sha256": "5bb30aff6b34988c253e9721ed672c25278f8a7603de42d2f302dd30d8ea70db"
+        }
+      ],
+      "initial_seed_placements": [
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          "id": "aggregate-primitive-a2d90259a0577a2120cca7c3af59002ce2cdee9caea51ee2f444f692205dcc84",
+          "identity_preimage": {
+            "authority_epoch": "ac3c655cef356b09ee97c1930d76906108efb4dac8f78a8cee23568c89393817",
+            "context_id": "e061b300bab358c661b0b354f8b6f0dea4fdc3471355c2b32e7041884f40a711",
+            "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+            "m": [
+              [
+                1,
+                0,
+                3075
+              ]
+            ],
+            "ordered_input_rows": [],
+            "primitive_command": {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "v",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ],
+              "index": 0,
+              "rule": "assumption"
+            },
+            "prototype_id": "primitive-prototype-4476beb9189701284f3b76e7367b238af8330c56befdcc59e829dce3d051b405",
+            "prototype_preimage": {
+              "authority_epoch": "ac3c655cef356b09ee97c1930d76906108efb4dac8f78a8cee23568c89393817",
+              "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+              "m": [
+                [
+                  1,
+                  0,
+                  3075
+                ]
+              ],
+              "marking_version": "injective-formula-ordered-mp-offset-v1",
+              "ordered_premise_formulas": [],
+              "orientation": "identity",
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ],
+                "index": 0,
+                "rule": "assumption"
+              },
+              "recipe_id": "primitive-recipe-3d8016ad2d0c57119c7f9a92e161ed47d24668a48f3df5b62e09bfdbda51ab46",
+              "relative_ordered_input_offsets": [],
+              "t": [
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "t": [
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "transform": [
+              0,
+              0
+            ]
+          },
+          "key": [
+            462,
+            0,
+            []
+          ],
+          "m": [
+            [
+              1,
+              0,
+              3075
+            ]
+          ],
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          "id": "aggregate-primitive-68301e75c3d88804adf6755e85f83770d9ff22fc99d48b43a6004746edce3b20",
+          "identity_preimage": {
+            "authority_epoch": "ac3c655cef356b09ee97c1930d76906108efb4dac8f78a8cee23568c89393817",
+            "context_id": "e061b300bab358c661b0b354f8b6f0dea4fdc3471355c2b32e7041884f40a711",
+            "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+            "m": [
+              [
+                1,
+                1,
+                3084
+              ]
+            ],
+            "ordered_input_rows": [],
+            "primitive_command": {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "w",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ],
+              "index": 1,
+              "rule": "assumption"
+            },
+            "prototype_id": "primitive-prototype-85d4dd04f347d84fc44d993a99b0c149313d13d5976a8a1b0e63777348fe8a5e",
+            "prototype_preimage": {
+              "authority_epoch": "ac3c655cef356b09ee97c1930d76906108efb4dac8f78a8cee23568c89393817",
+              "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+              "m": [
+                [
+                  1,
+                  0,
+                  3084
+                ]
+              ],
+              "marking_version": "injective-formula-ordered-mp-offset-v1",
+              "ordered_premise_formulas": [],
+              "orientation": "identity",
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ],
+                "index": 1,
+                "rule": "assumption"
+              },
+              "recipe_id": "primitive-recipe-6015e2ef28cced4a751efd27ef22756d95062173fb60d87b3cf06e238fea7350",
+              "relative_ordered_input_offsets": [],
+              "t": [
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "t": [
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "transform": [
+              0,
+              1
+            ]
+          },
+          "key": [
+            634,
+            1,
+            []
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3084
+            ]
+          ],
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "command": {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          "id": "aggregate-primitive-eaad702fb378f91c10505cd714d7620cd2e240c5649ca2642585e3b0114625a1",
+          "identity_preimage": {
+            "authority_epoch": "ac3c655cef356b09ee97c1930d76906108efb4dac8f78a8cee23568c89393817",
+            "context_id": "e061b300bab358c661b0b354f8b6f0dea4fdc3471355c2b32e7041884f40a711",
+            "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+            "m": [
+              [
+                1,
+                2,
+                5072
+              ]
+            ],
+            "ordered_input_rows": [],
+            "primitive_command": {
+              "formula": [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              "index": 2,
+              "rule": "assumption"
+            },
+            "prototype_id": "primitive-prototype-285c6031a87fa630f9794772cea1a07ca603a7fcfaa738aae2264464f2355a3e",
+            "prototype_preimage": {
+              "authority_epoch": "ac3c655cef356b09ee97c1930d76906108efb4dac8f78a8cee23568c89393817",
+              "formula_registry_sha256": "618f8dacfba997f890e7a6b57de2c86051afc527bed2197d6bf1ac2b152428af",
+              "m": [
+                [
+                  1,
+                  0,
+                  5072
+                ]
+              ],
+              "marking_version": "injective-formula-ordered-mp-offset-v1",
+              "ordered_premise_formulas": [],
+              "orientation": "identity",
+              "primitive_witness": {
+                "formula": [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                "index": 2,
+                "rule": "assumption"
+              },
+              "recipe_id": "primitive-recipe-f0661f01cea308a4101191d8e27b227adc6c62bb156410268a421b6e859e50b3",
+              "relative_ordered_input_offsets": [],
+              "t": [
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "t": [
+              [
+                0,
+                2,
+                1
+              ]
+            ],
+            "transform": [
+              0,
+              2
+            ]
+          },
+          "key": [
+            2837,
+            2,
+            []
+          ],
+          "m": [
+            [
+              1,
+              2,
+              5072
+            ]
+          ],
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ]
+        }
+      ],
+      "initial_state": {
+        "excluded": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "marks": [
+          [
+            1,
+            -23,
+            -1,
+            1
+          ],
+          [
+            1,
+            -22,
+            -1,
+            1
+          ],
+          [
+            1,
+            -21,
+            -1,
+            1
+          ],
+          [
+            1,
+            -20,
+            -1,
+            1
+          ],
+          [
+            1,
+            -19,
+            -1,
+            1
+          ],
+          [
+            1,
+            -18,
+            -1,
+            1
+          ],
+          [
+            1,
+            -17,
+            -1,
+            1
+          ],
+          [
+            1,
+            -16,
+            -1,
+            1
+          ],
+          [
+            1,
+            -15,
+            -1,
+            1
+          ],
+          [
+            1,
+            -14,
+            -1,
+            1
+          ],
+          [
+            1,
+            -13,
+            -1,
+            1
+          ],
+          [
+            1,
+            -12,
+            -1,
+            1
+          ],
+          [
+            1,
+            -11,
+            -1,
+            1
+          ],
+          [
+            1,
+            -10,
+            -1,
+            1
+          ],
+          [
+            1,
+            -9,
+            -1,
+            1
+          ],
+          [
+            1,
+            -8,
+            -1,
+            1
+          ],
+          [
+            1,
+            -7,
+            -1,
+            1
+          ],
+          [
+            1,
+            -6,
+            -1,
+            1
+          ],
+          [
+            1,
+            -5,
+            -1,
+            1
+          ],
+          [
+            1,
+            -4,
+            -1,
+            1
+          ],
+          [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          [
+            1,
+            -2,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            1,
+            0,
+            3075,
+            1
+          ],
+          [
+            1,
+            1,
+            3084,
+            1
+          ],
+          [
+            1,
+            2,
+            5072,
+            1
+          ],
+          [
+            1,
+            23,
+            5070,
+            1
+          ]
+        ],
+        "model_epoch": "d6c33875fe1d6d609e5492153e8bb5706841d57b61d187486a6a1554b2f4a26e",
+        "order": [
+          [
+            462,
+            0,
+            []
+          ],
+          [
+            634,
+            1,
+            []
+          ],
+          [
+            2837,
+            2,
+            []
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected_generations": [
+          [
+            [
+              462,
+              0,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              634,
+              1,
+              []
+            ],
+            0
+          ],
+          [
+            [
+              2837,
+              2,
+              []
+            ],
+            0
+          ]
+        ],
+        "totals": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "producer": {
+        "catalog": {
+          "bytes": 10870,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+          "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+        },
+        "evidence": {
+          "bytes": 10166,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/full-preparation-evidence-v1.json.gz",
+          "sha256": "8ddb797866817c9f3546b3910c2f4cdc262758e8ea51648c6b6a031b76122f42"
+        },
+        "plan": {
+          "bytes": 21969,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-worker-plan-v1.json",
+          "sha256": "f7c21392ad4bd89cef3a01b87e909e738dc28abaf5997ad0786a6faffdbf7ca3"
+        },
+        "receipt": {
+          "bytes": 23489,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/preparation-result-v1.json",
+          "sha256": "1f421aedcb58d1fc73c92a44c2d96219d72c897a6804c28d5db57ed1e1b353c1"
+        }
+      },
+      "proof_search_status": "UNSEARCHED",
+      "resources": [
+        {
+          "ROOT_decision": {
+            "bytes": 2927,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+            "sha256": "69bf626716bbe944acfd81389c0cdb5d39488a556581c07998ed20f1d221c9b2"
+          },
+          "all14_resource_predicates": true,
+          "caller_elapsed_seconds": 3.316,
+          "conservative_peak_bytes": 46596096,
+          "owned_post_write_seconds": 1.0468695410000002,
+          "stage": "preparation"
+        },
+        {
+          "ROOT_decision": {
+            "bytes": 2890,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-reversed-line-chain-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+            "sha256": "419dfde6b26ccfb35c630d630c57484bb4ce64435a125e1a2c3c3852940b36cf"
+          },
+          "all14_resource_predicates": true,
+          "caller_elapsed_seconds": 3.297,
+          "conservative_peak_bytes": 44072960,
+          "owned_post_write_seconds": 0.912820458,
+          "stage": "replay"
+        }
+      ],
+      "rule_counts": {
+        "assumption": 3,
+        "axiom": 1,
+        "eq_subst": 600,
+        "instantiate": 399,
+        "mp": 1918
+      },
+      "runtime_observer_qualification": false,
+      "statement_latex": "\\(v=u,\\;w=v,\\;\\operatorname{Incident}(D,w)\\;\\vdash\\;\\operatorname{Incident}(D,u)\\)",
+      "static_qualification_accepted": true,
+      "target_ast": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ]
+    }
+  ],
+  "checked_proof_certificates": 0,
+  "dynamic_search_conformance": false,
+  "fixture": {
+    "bytes": 43532,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+    "sha256": "b60869d015f5f60caa726864595a6293a4566ffdf04403c2499ade76987ef831"
+  },
+  "goal_remains_active": true,
+  "independent_saved_metadata_review": {
+    "bytes": 50597,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-equality-complete-saved-static-findings-v1.json",
+    "sha256": "35a7add788b98ef0ae3406d4d1da81e83b416b96826f9325e004470fbbe5954b"
+  },
+  "metadata_scientific_calls": 0,
+  "metadata_sealer": {
+    "bytes": 8813,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-ROOT-source-20261013/seal_static_geometry_v1.py",
+    "sha256": "9f2eb5d374bf614e68d403c9a564cae44ca6b5ee54b9450120fe767ab04e7f68"
+  },
+  "profile": {
+    "bytes": 5565,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+    "sha256": "91ed32762629eb127319d3710b9f7fab8d05a87226b203497d346bb6104cfbc7"
+  },
+  "proof_searches": 0,
+  "qualification_scope": "The two exact declared finite rule catalogues and complete initial24-row point models only. All original syntax seeds, all five rules and empty inventory retained. No proof discovery, dynamic search/observer qualification, native/universal checker, learned marking, RL, comparison gain, substitution or plane-tiling acceptance.",
+  "schema": "ROOT-accepted-fresh-geometry-complete-static-contexts-v1",
+  "scientific_stage_restarts": 0,
+  "universal_compiler_theorem": false
+}

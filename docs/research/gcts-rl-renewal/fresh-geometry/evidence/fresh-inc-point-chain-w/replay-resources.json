@@ -1,0 +1,66 @@
+{
+  "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+  "stage": "replay",
+  "status": "accepted_complete_owned_stage",
+  "ROOT_final_accepted": true,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": true,
+    "owner_gate": true,
+    "post_write_gate": true,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": true,
+    "stage_identity": true,
+    "worker_complete": true,
+    "all_worker_direct_children_closed": true,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": true
+  },
+  "mismatches": [],
+  "limits": {
+    "caller_seconds": 90,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "caller_elapsed_seconds": 4.105,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-plan-v1.json",
+    "sha256": "230824a264070b69113304398cf047f4c687bae154f070958b8d7fb8f169459e",
+    "bytes": 22446
+  },
+  "actual_tool": {
+    "path": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-actual-tool-observations-v1.json",
+    "sha256": "7536d708c4e0a92ce169b4e054111683d9c645074ddb92104b2c2388ce8590bf",
+    "bytes": 1373
+  },
+  "owner": {
+    "path": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "8a21d40d06a9ffe500fd388349ff8fbb8d10e62aa9d1d6b00bdf868cb7cedfe1",
+    "bytes": 1773
+  },
+  "post_write": {
+    "path": ".gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "85e60a0f2685ca02226201582da5adb169168949dc978d7030c599cb98649653",
+    "bytes": 805
+  },
+  "worker": {
+    "path": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json",
+    "sha256": "c8440f2d274ce1199cd320ec13dfd5a2211cd2a11e6bad25de1b572f445ccc62",
+    "bytes": 31035
+  },
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+}
