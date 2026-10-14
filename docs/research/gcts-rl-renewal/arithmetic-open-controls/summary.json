@@ -1,0 +1,1163 @@
+{
+  "schema": "Q-streamed-controls-saved-display-packet-v1",
+  "presentation_only": true,
+  "attachment_status": "attached",
+  "lead": "The streamed successor completed \\(36\\) finite controls and \\(6\\) serialization fixtures with every required row retained. The observed peak was about \\(382\\,\\mathrm{MiB}\\), within the original \\(512\\,\\mathrm{MiB}\\) cap. The earlier memory failure remains attached. Mathematical catalogue admission and theorem search are the next gates.",
+  "status_text": "Complete producer controls and owned resources accepted; independent saved reconciliation passed. Target proofs: none. Mathematical catalogue admission: pending.",
+  "ROOT_presentation_pin": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json",
+    "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef",
+    "bytes": 8797
+  },
+  "attempts": [
+    {
+      "label": "First cold preparation",
+      "status": "UNKNOWN: memory limit exceeded",
+      "scope": "Actual cold preparation/controls exceeded the512MiB observed owned-memory limit. Worker terminated/reaped with no leftovers; only a provisional preparation artifact exists, no complete controls or qualified catalogue. Provisional census values are diagnostic, never accepted completion or theorem discovery.",
+      "stage_completed": false,
+      "ROOT_scoped_controls_accepted": false,
+      "resource_accepted": false,
+      "inner_seconds": null,
+      "owned_postwrite_seconds": 11.382454874999999,
+      "caller_observed_seconds": 16.38,
+      "caller_finish_margin_seconds": 1,
+      "peak_bytes": 549044224,
+      "record_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-actual-Q-controls-failure-disposition-v1.json",
+        "sha256": "2c74d3ed4d02336033ab0bd512ab5e18f16bb886454b16c9f0e0ed6e5685a219",
+        "bytes": 2768
+      },
+      "evidence_href": "prior-memory-failure.json"
+    },
+    {
+      "label": "Streamed successor v7",
+      "status": "Complete producer controls / resources",
+      "scope": "Resource-qualified complete producer preparation/finite controls; distinct-author mathematical catalogue/grammar licensing and theorem search remain unactivated.",
+      "stage_completed": true,
+      "ROOT_scoped_controls_accepted": true,
+      "resource_accepted": true,
+      "inner_seconds": 16.748586708,
+      "owned_postwrite_seconds": 17.009707625,
+      "caller_observed_seconds": 23.325,
+      "caller_finish_margin_seconds": 1,
+      "peak_bytes": 400506880,
+      "record_pin": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json",
+        "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef",
+        "bytes": 8797
+      },
+      "evidence_href": "qualification.json"
+    }
+  ],
+  "initial_domains": [
+    {
+      "row": 0,
+      "count": 5480,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 1,
+      "count": 5894,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 2,
+      "count": 26920,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 3,
+      "count": 68558,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 4,
+      "count": 130808,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 5,
+      "count": 213670,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 6,
+      "count": 317144,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 7,
+      "count": 441230,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 8,
+      "count": 585928,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 9,
+      "count": 751238,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 10,
+      "count": 937160,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 11,
+      "count": 1143694,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 12,
+      "count": 1370840,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 13,
+      "count": 1618598,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 14,
+      "count": 1886968,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 15,
+      "count": 2175950,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 16,
+      "count": 2485544,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 17,
+      "count": 2815750,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 18,
+      "count": 3166568,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 19,
+      "count": 3537998,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 20,
+      "count": 3930040,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 21,
+      "count": 4342694,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 22,
+      "count": 4775960,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "row": 23,
+      "count": 23,
+      "raw_href": "evidence/Q-initial-state-witness-v2.json.gz"
+    }
+  ],
+  "initial_domains_complete": true,
+  "initial_domains_raw_href": "evidence/Q-initial-oracle-domains-v2.json.gz",
+  "control_records": [
+    {
+      "index": 0,
+      "label": "exact original empty context and declared quantified right-one grammar",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 0,
+        "label": "exact original empty context and declared quantified right-one grammar",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 1,
+      "label": "open-parameter instantiation schema uses exact capture-safe renaming",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 1,
+        "label": "open-parameter instantiation schema uses exact capture-safe renaming",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 2,
+      "label": "captured wrong instantiation formula rejected",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 2,
+        "label": "captured wrong instantiation formula rejected",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 3,
+      "label": "shadowed substitution binder stops free substitution",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 3,
+        "label": "shadowed substitution binder stops free substitution",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 4,
+      "label": "occupied fresh0 selects exact next unused fresh suffix",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 4,
+        "label": "occupied fresh0 selects exact next unused fresh suffix",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 5,
+      "label": "full deterministic fresh namespace overflow is UNKNOWN, no partial result",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 5,
+        "label": "full deterministic fresh namespace overflow is UNKNOWN, no partial result",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 6,
+      "label": "generalization has one genuine source, synthetic prior is not a proof",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 6,
+        "label": "generalization has one genuine source, synthetic prior is not a proof",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 7,
+      "label": "free generalization variable in unused original hypothesis rejects",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 7,
+        "label": "free generalization variable in unused original hypothesis rejects",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 8,
+      "label": "duplicate original context occurrences remain ordered",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 8,
+        "label": "duplicate original context occurrences remain ordered",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 9,
+      "label": "duplicate free-context occurrences do not weaken generalization condition",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 9,
+        "label": "duplicate free-context occurrences do not weaken generalization condition",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 10,
+      "label": "self-or-future unary source rejected",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 10,
+        "label": "self-or-future unary source rejected",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 11,
+      "label": "boolean unary source is not an integer prior index",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 11,
+        "label": "boolean unary source is not an integer prior index",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 12,
+      "label": "empty original Gamma has no hidden assumption",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 12,
+        "label": "empty original Gamma has no hidden assumption",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 13,
+      "label": "foreign free parameter rejected",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 13,
+        "label": "foreign free parameter rejected",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 14,
+      "label": "induction and additional proof rules remain unsupported",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 14,
+        "label": "induction and additional proof rules remain unsupported",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 15,
+      "label": "same actual payload-owned complete production graph, no second construction",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 15,
+        "label": "same actual payload-owned complete production graph, no second construction",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 16,
+      "label": "production graph has no selected hypothesis, proof seed or dummy row",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 16,
+        "label": "production graph has no selected hypothesis, proof seed or dummy row",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 17,
+      "label": "every full initial24 parametric domain independently reconstructed",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 17,
+        "label": "every full initial24 parametric domain independently reconstructed",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 18,
+      "label": "complete initial global scheduler agrees with literal reference",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 18,
+        "label": "complete initial global scheduler agrees with literal reference",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 19,
+      "label": "declared complete inventory exposes genuine unary generalization",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 19,
+        "label": "declared complete inventory exposes genuine unary generalization",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 20,
+      "label": "actual unary positive output/source mark/one offset; second port absent, not zero",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 20,
+        "label": "actual unary positive output/source mark/one offset; second port absent, not zero",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 21,
+      "label": "unary decorated primitive command uses genuine source index",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 21,
+        "label": "unary decorated primitive command uses genuine source index",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 22,
+      "label": "nonprior unary point reference rejected",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 22,
+        "label": "nonprior unary point reference rejected",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 23,
+      "label": "duplicated second unary port rejected",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 23,
+        "label": "duplicated second unary port rejected",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 24,
+      "label": "actual full model has nonempty initial chosen domain",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 24,
+        "label": "actual full model has nonempty initial chosen domain",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 25,
+      "label": "full24 domains after one generic scheduler primitive reconstructed",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 25,
+        "label": "full24 domains after one generic scheduler primitive reconstructed",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 26,
+      "label": "exact full production marks/refcounts/generations/exclusions/domain rollback",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 26,
+        "label": "exact full production marks/refcounts/generations/exclusions/domain rollback",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 27,
+      "label": "global-dead-before-forced specialized nonlogical complete fixture",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 27,
+        "label": "global-dead-before-forced specialized nonlogical complete fixture",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 28,
+      "label": "global-dead-before-forced complete streaming state protocol equals unchanged full scalar snapshot",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 28,
+        "label": "global-dead-before-forced complete streaming state protocol equals unchanged full scalar snapshot",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 29,
+      "label": "global-forced-before-branch specialized nonlogical complete fixture",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 29,
+        "label": "global-forced-before-branch specialized nonlogical complete fixture",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 30,
+      "label": "global-forced-before-branch complete streaming state protocol equals unchanged full scalar snapshot",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 30,
+        "label": "global-forced-before-branch complete streaming state protocol equals unchanged full scalar snapshot",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 31,
+      "label": "earlier-generation-before-smaller-degree specialized nonlogical complete fixture",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 31,
+        "label": "earlier-generation-before-smaller-degree specialized nonlogical complete fixture",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 32,
+      "label": "earlier-generation-before-smaller-degree complete streaming state protocol equals unchanged full scalar snapshot",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 32,
+        "label": "earlier-generation-before-smaller-degree complete streaming state protocol equals unchanged full scalar snapshot",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 33,
+      "label": "synthetic assigned-zero mark differs from absent point",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 33,
+        "label": "synthetic assigned-zero mark differs from absent point",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 34,
+      "label": "temporary unproved sole-key exclusion tests actual global dead bookkeeping",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 34,
+        "label": "temporary unproved sole-key exclusion tests actual global dead bookkeeping",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "index": 35,
+      "label": "specialized exclusion transaction restores full state exactly",
+      "saved_outcome": "passed in completed producer control return",
+      "scope": "Producer-authored finite side-condition/domain/rollback/nonlogical-fixture control; no theorem or mathematical catalogue admission.",
+      "record": {
+        "index": 35,
+        "label": "specialized exclusion transaction restores full state exactly",
+        "completed_return": true
+      },
+      "raw_href": "evidence/Q-controls-provisional-v1.json"
+    }
+  ],
+  "reported_control_count": 36,
+  "complete_control_records_attached": true,
+  "control_scope_text": "All saved control labels are shown. Six additional bounded serializer fixtures are recorded separately. Complete raw initial/after-step arrays and byte-exact rollback were reconciled from saved evidence; this is not an independent mathematical kernel replay.",
+  "unary_probe": {
+    "probe_kind": "actual_unary_footprint_not_proof",
+    "source_fact_or_selected_claimed": false,
+    "actual_controls_record_pin": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785
+    },
+    "unary_placement": {
+      "command": {
+        "formula": [
+          "all",
+          "n",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "generalize",
+        "source": 0,
+        "variable": "n"
+      },
+      "id": "aggregate-primitive-c82bcef3d7131b812f8001d9a679459756b865dab84931aab5be1768878729f8",
+      "identity_preimage": {
+        "authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039",
+        "context_id": "55b3ce6ab88932a26456904a97f8900f6186eaa87267db849d337744f1f10b21",
+        "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+        "m": [
+          [
+            1,
+            0,
+            427
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            -1
+          ]
+        ],
+        "ordered_input_rows": [
+          0
+        ],
+        "primitive_command": {
+          "formula": [
+            "all",
+            "n",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 0,
+          "variable": "n"
+        },
+        "prototype_id": "primitive-prototype-6d41c1d0465e8624db34cdec52e6ed513ebe8e6f2c9f04e6c760f713e81b4752",
+        "prototype_preimage": {
+          "authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039",
+          "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+          "m": [
+            [
+              1,
+              -1,
+              427
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              -1
+            ]
+          ],
+          "marking_version": "injective-formula-ordered-primitive-offset-Q-v1",
+          "ordered_premise_formulas": [
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "orientation": "identity",
+          "primitive_witness": {
+            "formula": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "variable": "n"
+          },
+          "recipe_id": "primitive-recipe-588d74b92894d0483808dbcf58d25f45094a268260f3dcc1b478bff8670cf50b",
+          "relative_ordered_input_offsets": [
+            -1
+          ],
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "t": [
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "transform": [
+          0,
+          1
+        ]
+      },
+      "key": [
+        154,
+        1,
+        [
+          0
+        ]
+      ],
+      "m": [
+        [
+          1,
+          0,
+          427
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          -1
+        ]
+      ],
+      "t": [
+        [
+          0,
+          1,
+          1
+        ]
+      ]
+    },
+    "output_formula_latex": "\\forall n\\;\\bigl(\\bigl(\\bigl(0+0\\bigr)+S\\bigl(\\bigl(0+0\\bigr)\\bigr)\\bigr)=S\\bigl(\\bigl(\\bigl(0+0\\bigr)+\\bigl(0+0\\bigr)\\bigr)\\bigr)\\bigr)",
+    "raw_href": "evidence/Q-controls-provisional-v1.json"
+  },
+  "evidence_links": [
+    {
+      "href": "qualification.json",
+      "label": "ROOT scoped completion and resource record"
+    },
+    {
+      "href": "independent-saved-review.json",
+      "label": "Independent whole saved-output reconciliation"
+    },
+    {
+      "href": "evidence/Q-controls-result-v1.json",
+      "label": "Complete worker receipt"
+    },
+    {
+      "href": "evidence/Q-controls-evidence-v1.json",
+      "label": "Source/clock/complete-witness closure"
+    },
+    {
+      "href": "evidence/Q-preparation-provisional-v1.json.gz",
+      "label": "Complete producer catalogue and initial state; mathematical admission pending"
+    },
+    {
+      "href": "prior-memory-failure.json",
+      "label": "Earlier unaccepted memory failure"
+    },
+    {
+      "href": "source-rejection-v6.json",
+      "label": "Preserved wrapper Source rejection before v7"
+    },
+    {
+      "href": "benchmark-memo.html",
+      "label": "Prospective existing-Incident transfer benchmark"
+    },
+    {
+      "href": "broadening-specification.json",
+      "label": "Separate proposed equality / universal-instantiation inventory"
+    },
+    {
+      "href": "reproduction.zip",
+      "label": "Complete task Source and saved-data reproduction package"
+    }
+  ]
+}

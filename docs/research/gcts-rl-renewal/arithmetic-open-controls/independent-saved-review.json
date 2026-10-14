@@ -1,0 +1,1470 @@
+{
+  "schema": "independent-Q-streamed-controls-actual-saved-findings-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only_saved_metadata": true,
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "project_functions": 0,
+  "semantic_replays": 0,
+  "kernel_calls": 0,
+  "graph_calls": 0,
+  "checks": [
+    {
+      "check": "actual Root14 complete resource gates true",
+      "passed": true
+    },
+    {
+      "check": "current exact11 leaf10 owner7 sources4 inputs6 argv",
+      "passed": true
+    },
+    {
+      "check": "once-only actual launch and no restarted worker",
+      "passed": true
+    },
+    {
+      "check": "fixed20/60/512/90 identical scopes",
+      "passed": true
+    },
+    {
+      "check": "plan Source and record links exact",
+      "passed": true
+    },
+    {
+      "check": "current genuine typed7-source Source reviews retained",
+      "passed": true
+    },
+    {
+      "check": "complete canonical leaf40 and owned41 raw closures",
+      "passed": true
+    },
+    {
+      "check": "all current Source and input raw bindings enclosed",
+      "passed": true
+    },
+    {
+      "check": "Source7 exact executed6 project path ledger",
+      "passed": true
+    },
+    {
+      "check": "new V7 and unchanged original mathematical roles",
+      "passed": true
+    },
+    {
+      "check": "eight complete output names no failure or withdrawn receipt",
+      "passed": true
+    },
+    {
+      "check": "whole full preparation initial object identical to standalone witness",
+      "passed": true
+    },
+    {
+      "check": "complete24 initial and after state arrays equal literal oracle arrays",
+      "passed": true
+    },
+    {
+      "check": "all8 exact same protocol buffers wholeJSON with canonical bytes and EOF",
+      "passed": true
+    },
+    {
+      "check": "complete source scope empty originalGamma and no hidden assumption seeds",
+      "passed": true
+    },
+    {
+      "check": "actual producer full raw11147 formula16200 recipe counts",
+      "passed": true
+    },
+    {
+      "check": "model exact declaration and current Source authority metadata",
+      "passed": true
+    },
+    {
+      "check": "whole raw formula registry SHA recomputed without semantics",
+      "passed": true
+    },
+    {
+      "check": "whole raw recipe SHA/preimage identities all16200 recomputed",
+      "passed": true
+    },
+    {
+      "check": "single production graph lifetime and complete controls reported",
+      "passed": true
+    },
+    {
+      "check": "exact full production state fields and whole24 vectors",
+      "passed": true
+    },
+    {
+      "check": "initial/row0/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row1/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row2/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row3/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row4/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row5/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row6/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row7/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row8/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row9/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row10/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row11/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row12/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row13/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row14/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row15/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row16/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row17/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row18/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row19/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row20/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row21/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row22/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "initial/row23/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row0/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row1/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row2/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row3/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row4/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row5/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row6/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row7/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row8/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row9/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row10/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row11/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row12/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row13/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row14/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row15/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row16/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row17/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row18/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row19/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row20/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row21/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row22/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "after_one_step/row23/full exact redundant count relation",
+      "passed": true
+    },
+    {
+      "check": "whole initial reported candidate total matches all24 array",
+      "passed": true
+    },
+    {
+      "check": "one actual raw canonical primitive linkage",
+      "passed": true
+    },
+    {
+      "check": "first step is unresolved unary reader not a target proof",
+      "passed": true
+    },
+    {
+      "check": "producer exact full rollback check recorded not independently replayed",
+      "passed": true
+    },
+    {
+      "check": "unary example exact declared single-port footprint and raw preimages",
+      "passed": true
+    },
+    {
+      "check": "three tiny scheduler fixtures retained clearly nonlogical",
+      "passed": true
+    },
+    {
+      "check": "complete six witnessed outputs then evidence then final receipt closed",
+      "passed": true
+    },
+    {
+      "check": "observed serialized byte accounting exact and nested not added",
+      "passed": true
+    },
+    {
+      "check": "all8 completed output total rawbytes full output ceilings",
+      "passed": true
+    },
+    {
+      "check": "full worker stdout1terminalJSON no errors",
+      "passed": true
+    },
+    {
+      "check": "actual stdout print postwrite observer and caller link",
+      "passed": true
+    },
+    {
+      "check": "genuine same-session complete observed caller clock and separate reserve",
+      "passed": true
+    },
+    {
+      "check": "observed17.009707625 owned postwrite400506880 bytes bound separate8MiB reserve",
+      "passed": true
+    },
+    {
+      "check": "inner16.748586708 completed controls enclosed by worker and wholeowner",
+      "passed": true
+    },
+    {
+      "check": "all process/accounting resource record reaping no leftovers",
+      "passed": true
+    },
+    {
+      "check": "complete ledger sample count and sampled row scope",
+      "passed": true
+    },
+    {
+      "check": "all no mathematical target native search PA induction trajectory RL flags remain exact",
+      "passed": true
+    },
+    {
+      "check": "old memory failure and unactivatedV6 negative preserved",
+      "passed": true
+    },
+    {
+      "check": "current no prior partial preparation consumed as input",
+      "passed": true
+    },
+    {
+      "check": "all named raw targets stable final rehash",
+      "passed": true
+    }
+  ],
+  "check_count": 89,
+  "all_scoped_saved_checks_passed": true,
+  "pin_mismatch_count": 0,
+  "raw_reference_count": 336,
+  "unique_raw_target_count": 93,
+  "final_rehash_count": 93,
+  "whole_named_decoded_documents": 26,
+  "ROOT_final_decision": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+    "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49",
+    "bytes": 2810
+  },
+  "worker_receipt": {
+    "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+    "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+    "bytes": 5595
+  },
+  "current_source_map": {
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "payload": {
+      "bytes": 5435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "worker": {
+      "bytes": 37266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    }
+  },
+  "complete_output_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json",
+      "sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db",
+      "bytes": 7973213
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json",
+      "sha256": "c93d718c0642375c1d442e4c2bad475290049b0017bd8bf1f99719cad258524e",
+      "bytes": 7973913
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+      "bytes": 11000
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+      "bytes": 5595
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969",
+      "bytes": 8295473
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9",
+      "bytes": 8296118
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a",
+      "bytes": 38376960
+    }
+  ],
+  "row_census": [
+    {
+      "phase": "initial",
+      "rows": [
+        {
+          "row": 0,
+          "factor_count": 5480,
+          "base_count": 5480,
+          "excluded_legal_count": 0,
+          "count": 5480,
+          "full_factor_array_sha256": "16b165586f8b379de5700bdb19d047029c8bb8aba1c37df9f02d9626f5a2de22"
+        },
+        {
+          "row": 1,
+          "factor_count": 5894,
+          "base_count": 5894,
+          "excluded_legal_count": 0,
+          "count": 5894,
+          "full_factor_array_sha256": "70523c505f2a9e5964dcce193ce888b9eae5e95fc73daaefb58335069f0d5230"
+        },
+        {
+          "row": 2,
+          "factor_count": 16200,
+          "base_count": 26920,
+          "excluded_legal_count": 0,
+          "count": 26920,
+          "full_factor_array_sha256": "64f1dacf92eeac448f2f480d2dba5ca1199cf789e55063c6199a39c8863c0696"
+        },
+        {
+          "row": 3,
+          "factor_count": 16200,
+          "base_count": 68558,
+          "excluded_legal_count": 0,
+          "count": 68558,
+          "full_factor_array_sha256": "fa86200df206c0b9fc24cc7491afa9ccc5922b176affa6c0cf09caae700559ce"
+        },
+        {
+          "row": 4,
+          "factor_count": 16200,
+          "base_count": 130808,
+          "excluded_legal_count": 0,
+          "count": 130808,
+          "full_factor_array_sha256": "9a533b12cdd8d7c777b62b2647511bd47e23dcd35aae950eb005d3e6ef66ae65"
+        },
+        {
+          "row": 5,
+          "factor_count": 16200,
+          "base_count": 213670,
+          "excluded_legal_count": 0,
+          "count": 213670,
+          "full_factor_array_sha256": "e81ef6c7071ec895feece53c0bfae1a920d62e287ed88a86d5e38bfc9a26c224"
+        },
+        {
+          "row": 6,
+          "factor_count": 16200,
+          "base_count": 317144,
+          "excluded_legal_count": 0,
+          "count": 317144,
+          "full_factor_array_sha256": "6d551815717e3d0e94db1755bbc8f4abb0a19b0731aefdbad25ba166b05d836a"
+        },
+        {
+          "row": 7,
+          "factor_count": 16200,
+          "base_count": 441230,
+          "excluded_legal_count": 0,
+          "count": 441230,
+          "full_factor_array_sha256": "49093636892e205b56d04d76a4c5aeb704696ecd5e9b8cf11667e7c27fcdd7ad"
+        },
+        {
+          "row": 8,
+          "factor_count": 16200,
+          "base_count": 585928,
+          "excluded_legal_count": 0,
+          "count": 585928,
+          "full_factor_array_sha256": "fd0c67f3e2b2f03d90a285b40875f05cc2e9bfe987820cb561710adbee749970"
+        },
+        {
+          "row": 9,
+          "factor_count": 16200,
+          "base_count": 751238,
+          "excluded_legal_count": 0,
+          "count": 751238,
+          "full_factor_array_sha256": "4e6d2c8e19b353c789c38954174ac09bad17ed7a47afc0d1f03fcfe3a7ed3879"
+        },
+        {
+          "row": 10,
+          "factor_count": 16200,
+          "base_count": 937160,
+          "excluded_legal_count": 0,
+          "count": 937160,
+          "full_factor_array_sha256": "33ab7ee9eeae4401898502947b4741d4f58588239c376846d5eb12f066e5fd22"
+        },
+        {
+          "row": 11,
+          "factor_count": 16200,
+          "base_count": 1143694,
+          "excluded_legal_count": 0,
+          "count": 1143694,
+          "full_factor_array_sha256": "a9a7cb13fb6d0846b611cd2deafc63f4ebe7352a59553505853d806920fec18c"
+        },
+        {
+          "row": 12,
+          "factor_count": 16200,
+          "base_count": 1370840,
+          "excluded_legal_count": 0,
+          "count": 1370840,
+          "full_factor_array_sha256": "05a623aad64c1e2c610b5af86ed3eccba656eada68ec6c55ef7467a53123b63c"
+        },
+        {
+          "row": 13,
+          "factor_count": 16200,
+          "base_count": 1618598,
+          "excluded_legal_count": 0,
+          "count": 1618598,
+          "full_factor_array_sha256": "f6ff535bf7bfbbdd080eac48c36131016036a780d3cb859b0c9b4aa3e9fb82dc"
+        },
+        {
+          "row": 14,
+          "factor_count": 16200,
+          "base_count": 1886968,
+          "excluded_legal_count": 0,
+          "count": 1886968,
+          "full_factor_array_sha256": "d7cc43a60e8feca20112fbd1c65ee9708babad4625584b7c1d93850107db0730"
+        },
+        {
+          "row": 15,
+          "factor_count": 16200,
+          "base_count": 2175950,
+          "excluded_legal_count": 0,
+          "count": 2175950,
+          "full_factor_array_sha256": "ee4a26acc097a06039ca6ebdb2e459a1bd4e71ce8fbcd9d4b2556e889e2ceac3"
+        },
+        {
+          "row": 16,
+          "factor_count": 16200,
+          "base_count": 2485544,
+          "excluded_legal_count": 0,
+          "count": 2485544,
+          "full_factor_array_sha256": "6616e9a017d1a3b7d23ee4d32b2bb503f3f87f157e6d077863c20c7000d4c574"
+        },
+        {
+          "row": 17,
+          "factor_count": 16200,
+          "base_count": 2815750,
+          "excluded_legal_count": 0,
+          "count": 2815750,
+          "full_factor_array_sha256": "429ec118d00d2f53c85005268a9757f59b93aeb2b253e46fcf3d034229e376a6"
+        },
+        {
+          "row": 18,
+          "factor_count": 16200,
+          "base_count": 3166568,
+          "excluded_legal_count": 0,
+          "count": 3166568,
+          "full_factor_array_sha256": "aab1a0877e040153c2d7f7c7b8985c542c6038d598b5fdef50f660e3eff17d57"
+        },
+        {
+          "row": 19,
+          "factor_count": 16200,
+          "base_count": 3537998,
+          "excluded_legal_count": 0,
+          "count": 3537998,
+          "full_factor_array_sha256": "d38c2ea1ef16df82e061656f9a0b9d5ac9387cadf2cf4ccc0d2a66835e594bb7"
+        },
+        {
+          "row": 20,
+          "factor_count": 16200,
+          "base_count": 3930040,
+          "excluded_legal_count": 0,
+          "count": 3930040,
+          "full_factor_array_sha256": "940bd287f7af399ffd7ce1244eb1a47ffb056f28495adbb5a38183283093b23d"
+        },
+        {
+          "row": 21,
+          "factor_count": 16200,
+          "base_count": 4342694,
+          "excluded_legal_count": 0,
+          "count": 4342694,
+          "full_factor_array_sha256": "77770e38af6b3b3858a01913aaf60cb505f36deba7180288d1437c65a2091ac6"
+        },
+        {
+          "row": 22,
+          "factor_count": 16200,
+          "base_count": 4775960,
+          "excluded_legal_count": 0,
+          "count": 4775960,
+          "full_factor_array_sha256": "b6d114315f3d09dc9f8825330a7e3d49aa986f46503b6f8d9740b44e17bd59d7"
+        },
+        {
+          "row": 23,
+          "factor_count": 1,
+          "base_count": 23,
+          "excluded_legal_count": 0,
+          "count": 23,
+          "full_factor_array_sha256": "10fd442be6ee6205d7264f1029cf30167587b9085efa3fcee8ecc57971db8b0d"
+        }
+      ],
+      "complete_candidate_count": 36734657,
+      "full_array_sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    {
+      "phase": "after_one_step",
+      "rows": [
+        {
+          "row": 0,
+          "factor_count": 0,
+          "base_count": 0,
+          "excluded_legal_count": 0,
+          "count": 0,
+          "full_factor_array_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "row": 1,
+          "factor_count": 5481,
+          "base_count": 5481,
+          "excluded_legal_count": 0,
+          "count": 5481,
+          "full_factor_array_sha256": "5497cd93983f287c04b766c8ec2a1600b3fe1e58a62d99b12fe941f2b40423fb"
+        },
+        {
+          "row": 2,
+          "factor_count": 5966,
+          "base_count": 5967,
+          "excluded_legal_count": 0,
+          "count": 5967,
+          "full_factor_array_sha256": "06d79b934cbfe1c17f9b15dae17658a667245a2089f363d6790ed537e3ce0b9e"
+        },
+        {
+          "row": 3,
+          "factor_count": 16200,
+          "base_count": 27065,
+          "excluded_legal_count": 0,
+          "count": 27065,
+          "full_factor_array_sha256": "a8eb9af1a84a0c5bf402dc07596a7859cf8e5d44920a7ed94d4cc71731da30a3"
+        },
+        {
+          "row": 4,
+          "factor_count": 16200,
+          "base_count": 68775,
+          "excluded_legal_count": 0,
+          "count": 68775,
+          "full_factor_array_sha256": "aefec298425219394d564e76e283ad2d06552cb12ef7df808fab303a6a689429"
+        },
+        {
+          "row": 5,
+          "factor_count": 16200,
+          "base_count": 131097,
+          "excluded_legal_count": 0,
+          "count": 131097,
+          "full_factor_array_sha256": "5f6b441440ed4fa5efe6a01deff609ec1ffa750a601da458f568d6bbbfdb75e3"
+        },
+        {
+          "row": 6,
+          "factor_count": 16200,
+          "base_count": 214031,
+          "excluded_legal_count": 0,
+          "count": 214031,
+          "full_factor_array_sha256": "e00385dedf9f38634b317cd1f5eec6a3d60a79e052b634570676d6a2008cd151"
+        },
+        {
+          "row": 7,
+          "factor_count": 16200,
+          "base_count": 317577,
+          "excluded_legal_count": 0,
+          "count": 317577,
+          "full_factor_array_sha256": "561f564ff573426a45af1cf118bbf2310a2b8b6965bc5d8dec73901b55d814d4"
+        },
+        {
+          "row": 8,
+          "factor_count": 16200,
+          "base_count": 441735,
+          "excluded_legal_count": 0,
+          "count": 441735,
+          "full_factor_array_sha256": "cb28d79c2a22084dda87fa45dcdf30426ae4995704de05c618e1e28d66282970"
+        },
+        {
+          "row": 9,
+          "factor_count": 16200,
+          "base_count": 586505,
+          "excluded_legal_count": 0,
+          "count": 586505,
+          "full_factor_array_sha256": "64a3ca6055f98026a4a26d5f37de96fc3aec471ad13acc6c636538147275d9c8"
+        },
+        {
+          "row": 10,
+          "factor_count": 16200,
+          "base_count": 751887,
+          "excluded_legal_count": 0,
+          "count": 751887,
+          "full_factor_array_sha256": "b5313b8f33792fbe9bd53f52296d51ffaef204ab4f5751a84223e96c4caed7d8"
+        },
+        {
+          "row": 11,
+          "factor_count": 16200,
+          "base_count": 937881,
+          "excluded_legal_count": 0,
+          "count": 937881,
+          "full_factor_array_sha256": "cd9918427c16ab72192762912429da61bff15ffb81c76124202241b1afeb8bbf"
+        },
+        {
+          "row": 12,
+          "factor_count": 16200,
+          "base_count": 1144487,
+          "excluded_legal_count": 0,
+          "count": 1144487,
+          "full_factor_array_sha256": "8f440c7111af7deeef8c5e4a9913a77a3d46c5320c38fafbc3b69c1331463532"
+        },
+        {
+          "row": 13,
+          "factor_count": 16200,
+          "base_count": 1371705,
+          "excluded_legal_count": 0,
+          "count": 1371705,
+          "full_factor_array_sha256": "4c088e0b581cc6d2294c52e14542371083b0dbee964aee195d49d84915ac96fc"
+        },
+        {
+          "row": 14,
+          "factor_count": 16200,
+          "base_count": 1619535,
+          "excluded_legal_count": 0,
+          "count": 1619535,
+          "full_factor_array_sha256": "a39f4e23b199cc1a8acc07e0faa79cc72fc293d32d33d203214d9a11356748c1"
+        },
+        {
+          "row": 15,
+          "factor_count": 16200,
+          "base_count": 1887977,
+          "excluded_legal_count": 0,
+          "count": 1887977,
+          "full_factor_array_sha256": "c0aae09b5e2f9e77d1d970defa057392160adf2798b8849634b01e5b315a86ef"
+        },
+        {
+          "row": 16,
+          "factor_count": 16200,
+          "base_count": 2177031,
+          "excluded_legal_count": 0,
+          "count": 2177031,
+          "full_factor_array_sha256": "81626456037d2a06a2b36c789d913b6753720da249805efd435e4fba8026fef7"
+        },
+        {
+          "row": 17,
+          "factor_count": 16200,
+          "base_count": 2486697,
+          "excluded_legal_count": 0,
+          "count": 2486697,
+          "full_factor_array_sha256": "e3b20454d79b8e7764bc7a11b1ca65af37bb31af33cb63c89917ae71df963805"
+        },
+        {
+          "row": 18,
+          "factor_count": 16200,
+          "base_count": 2816975,
+          "excluded_legal_count": 0,
+          "count": 2816975,
+          "full_factor_array_sha256": "f8fb2bbbf140b74494f8c28344208d74c8ce2ebe3295823fcde04fc52572f944"
+        },
+        {
+          "row": 19,
+          "factor_count": 16200,
+          "base_count": 3167865,
+          "excluded_legal_count": 0,
+          "count": 3167865,
+          "full_factor_array_sha256": "97d36432a60742f7b9340494e999f3530d55f6439270300c60577f30137cbe50"
+        },
+        {
+          "row": 20,
+          "factor_count": 16200,
+          "base_count": 3539367,
+          "excluded_legal_count": 0,
+          "count": 3539367,
+          "full_factor_array_sha256": "4de0029aadaa42cf1a83a2c2c51ddf6e856dfe667392b44846ee175c82b4c0e6"
+        },
+        {
+          "row": 21,
+          "factor_count": 16200,
+          "base_count": 3931481,
+          "excluded_legal_count": 0,
+          "count": 3931481,
+          "full_factor_array_sha256": "fbb86d133a2f80db7c38f0e09e1ff6e128fa23ccfab6a0da4ea1c794b1963552"
+        },
+        {
+          "row": 22,
+          "factor_count": 16200,
+          "base_count": 4344207,
+          "excluded_legal_count": 0,
+          "count": 4344207,
+          "full_factor_array_sha256": "cce6ce5a4edfa84648b2b9af65e7468605bfbf297240787054e264849e431360"
+        },
+        {
+          "row": 23,
+          "factor_count": 0,
+          "base_count": 0,
+          "excluded_legal_count": 0,
+          "count": 0,
+          "full_factor_array_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "complete_candidate_count": 31975328,
+      "full_array_sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db"
+    }
+  ],
+  "recorded_census": {
+    "arity_counts": {
+      "0": 5480,
+      "1": 414,
+      "2": 10306
+    },
+    "atomic_templates": 44,
+    "formulas": 11147,
+    "generalization_sources": 414,
+    "generated_equality_schemes_before_dedup": 5324,
+    "hole_contexts": 2,
+    "instantiation_rounds": [
+      {
+        "new_recipes": 33,
+        "recipes": 35,
+        "round": 0,
+        "universals": 3
+      },
+      {
+        "new_recipes": 121,
+        "recipes": 156,
+        "round": 1,
+        "universals": 14
+      }
+    ],
+    "operands": 11,
+    "recipes": 16200,
+    "unconstrained_key_universe_upper_bound": 44808928
+  },
+  "producer_control_labels": [
+    "exact original empty context and declared quantified right-one grammar",
+    "open-parameter instantiation schema uses exact capture-safe renaming",
+    "captured wrong instantiation formula rejected",
+    "shadowed substitution binder stops free substitution",
+    "occupied fresh0 selects exact next unused fresh suffix",
+    "full deterministic fresh namespace overflow is UNKNOWN, no partial result",
+    "generalization has one genuine source, synthetic prior is not a proof",
+    "free generalization variable in unused original hypothesis rejects",
+    "duplicate original context occurrences remain ordered",
+    "duplicate free-context occurrences do not weaken generalization condition",
+    "self-or-future unary source rejected",
+    "boolean unary source is not an integer prior index",
+    "empty original Gamma has no hidden assumption",
+    "foreign free parameter rejected",
+    "induction and additional proof rules remain unsupported",
+    "same actual payload-owned complete production graph, no second construction",
+    "production graph has no selected hypothesis, proof seed or dummy row",
+    "every full initial24 parametric domain independently reconstructed",
+    "complete initial global scheduler agrees with literal reference",
+    "declared complete inventory exposes genuine unary generalization",
+    "actual unary positive output/source mark/one offset; second port absent, not zero",
+    "unary decorated primitive command uses genuine source index",
+    "nonprior unary point reference rejected",
+    "duplicated second unary port rejected",
+    "actual full model has nonempty initial chosen domain",
+    "full24 domains after one generic scheduler primitive reconstructed",
+    "exact full production marks/refcounts/generations/exclusions/domain rollback",
+    "global-dead-before-forced specialized nonlogical complete fixture",
+    "global-dead-before-forced complete streaming state protocol equals unchanged full scalar snapshot",
+    "global-forced-before-branch specialized nonlogical complete fixture",
+    "global-forced-before-branch complete streaming state protocol equals unchanged full scalar snapshot",
+    "earlier-generation-before-smaller-degree specialized nonlogical complete fixture",
+    "earlier-generation-before-smaller-degree complete streaming state protocol equals unchanged full scalar snapshot",
+    "synthetic assigned-zero mark differs from absent point",
+    "temporary unproved sole-key exclusion tests actual global dead bookkeeping",
+    "specialized exclusion transaction restores full state exactly"
+  ],
+  "previous_failure_pin": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-actual-Q-controls-failure-disposition-v1.json",
+    "sha256": "2c74d3ed4d02336033ab0bd512ab5e18f16bb886454b16c9f0e0ed6e5685a219",
+    "bytes": 2768
+  },
+  "preserved_V6_negative_pin": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v1.json",
+    "sha256": "a0dbaa6271cdf6b16581572785e1b1c138797054bada6fe5749ca036df451b19",
+    "bytes": 28531
+  },
+  "raw_targets": [
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-independent-20261014/actual-memory-failure-saved-findings-v1.json",
+      "sha256": "36e88a115c1497fed0ca47b744612b7e0e109c955adfbce675fe135a225f3000",
+      "bytes": 3879
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_v1.py",
+      "sha256": "15e018972b0de0a0d93749ab9d3e3984c31bc0e677157d6a4a05e39634cd3da5",
+      "bytes": 16320
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v3.py",
+      "sha256": "c894c0b00a1fe77e8425c391499366c4a284b64903ada76a7f308b29c963d5aa",
+      "bytes": 27332
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6f49e3eaee97634532c2981ff8e9dbff4ee7c0f33c844aa0e02f9e86f99e1028",
+      "bytes": 14779
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-actual-Q-controls-failure-disposition-v1.json",
+      "sha256": "2c74d3ed4d02336033ab0bd512ab5e18f16bb886454b16c9f0e0ed6e5685a219",
+      "bytes": 2768
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "d10310c411d5a0a735542e6c5d07457ff5e7b3f57ee3ad9e49b32dc31d5d2877",
+      "bytes": 2574
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "bb160a01216ca55f5b81fc478b11a053d70eaa8d0ff8d29fcb50105c7ad194bc",
+      "bytes": 1668
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "0cd606fcaf3fc0086957574619f69fa9e30bac41ff81aa15c52db6c22bb7ab43",
+      "bytes": 578
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "68934569ef47b676b8b4179d6ed034baadf7130ead67b877243433a520123c61",
+      "bytes": 1554
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "652170c07f22f5f7e7d903eca870ca0f4988b13121b99f1d3c3676462f19a636",
+      "bytes": 38376939
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-ROOT-source-20261014/build_Q_controls_metadata_v2.py",
+      "sha256": "db0830f3abb7f20bdefbd403c5b34d438151736100211918ec0645bbf474d073",
+      "bytes": 6614
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v1.json",
+      "sha256": "a0dbaa6271cdf6b16581572785e1b1c138797054bada6fe5749ca036df451b19",
+      "bytes": 28531
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v2.json",
+      "sha256": "14f60a7fac63a54864e189265ef572f5abe1dc170cc62a271fd40b5dc45df58f",
+      "bytes": 35059
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v1.json",
+      "sha256": "345462862862f7ad4637725786cfd1ceced419a35f6dd79c628b3f9cccaf9640",
+      "bytes": 3157
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v2.json",
+      "sha256": "fa304eb16f9b4b43c05393fd7fae3020b63d875d10ed79bee12e39b8d4258384",
+      "bytes": 3143
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+      "sha256": "aa706bee1e48220d4eec0e31b32c456314145bdabf2646cb2d7945728d6f65e7",
+      "bytes": 562
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "7b864138b9c2a849b3d94956644afc7128fd1e5c471d2f188ef2577875a8e647",
+      "bytes": 6069
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "5d01f8ae1404c6b32dea2d0c59ebf1013a0c3e1da1b6b33078aa5d1b7351d08d",
+      "bytes": 6763
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49",
+      "bytes": 2810
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "3ba0cf08afee86db89c854cb60c6d2e37f3be1fdfc5873469b763ebe0104f57e",
+      "bytes": 2148
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "617b74d6766626a8b57b5c4e2ae0f56244b88438d0ef3402dc08b35b661029ac",
+      "bytes": 1742
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/launch-v1.json",
+      "sha256": "738184352ca73683d7e88862689835402614eb23e3d49875d3f9c511d9cc3b64",
+      "bytes": 1263
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "3239827789846495a881a0cb580ac7682d3f28bbf73387df204210456e6a57f4",
+      "bytes": 3035
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "8d8e849c6c03dc890582328dc06cd7c2c9bb56a201d49ecea1c60160ad8acd3c",
+      "bytes": 801
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "617b74d6766626a8b57b5c4e2ae0f56244b88438d0ef3402dc08b35b661029ac",
+      "bytes": 1742
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "ad0b9e30a90da470f86ffd150b811155bdd1877e8c34960026162db3c53abdcb",
+      "bytes": 82
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-plan-v1.json",
+      "sha256": "07a17cd6342eccb7f7231cfdc0f7eff91863b5b995fb7214b31b116cbc845351",
+      "bytes": 10980
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json",
+      "sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db",
+      "bytes": 7973213
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json",
+      "sha256": "c93d718c0642375c1d442e4c2bad475290049b0017bd8bf1f99719cad258524e",
+      "bytes": 7973913
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+      "bytes": 11000
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+      "bytes": 5595
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969",
+      "bytes": 8295473
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9",
+      "bytes": 8296118
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a",
+      "bytes": 38376960
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-plan-v1.json",
+      "sha256": "f44b778167aeefbcb561d60279f4ece55552639f6e58d6f31a53cd778aeba4d9",
+      "bytes": 16547
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v1.json",
+      "sha256": "5f63cc34e0e5d31472e1138e0b2d056777d1770d52c55edb91470ea90ac5f0d2",
+      "bytes": 33486
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v2.json",
+      "sha256": "71eff7eac42dc11eadf3f16d6b3ecc1618d13b321bbc48d5f6d8bfed905832ab",
+      "bytes": 30996
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-readiness-v1.json",
+      "sha256": "ce5bc44c5a1046517897a75f2faa2f5145f48bff3ef77b272fe67ec4ee62dbe1",
+      "bytes": 5546
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-retention-diagnosis-v1.json",
+      "sha256": "82b1a1486bb4ca39fa6c59cbb1efdf9da71ef03c69f2e72d75a89d7b18e2a93e",
+      "bytes": 2283
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v2.py",
+      "sha256": "4270c416dd19a7df78538109d280cb3f27640976363818e66879156f2324a7ec",
+      "bytes": 19574
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+      "bytes": 19742
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v4.py",
+      "sha256": "f59a11afbcc2459ea49e373b15c94c3f912d79791e3ce6d5d55625b81f147069",
+      "bytes": 30510
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v5.py",
+      "sha256": "1954296101580625af513612edfe6604265575fd18dc5f12840f4b5cef02ed38",
+      "bytes": 31964
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v6.py",
+      "sha256": "f8c7428631a612ff1048c243fb93ed0efd1f54f5b474550ef0d6f357e27f0ec2",
+      "bytes": 33612
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d",
+      "bytes": 37266
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_final_stream_successor_v3.py",
+      "sha256": "87b615f5a1a8942ddea8d9b0d55eddf86922a2a011a6f7476370f02882b7b7f6",
+      "bytes": 6256
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_freezer_metadata_successor_v2.py",
+      "sha256": "e8a9faf9749c97b1e016da86bfc12e46ba0282af11586b374d1743723f1e70d1",
+      "bytes": 1229
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_freezer_metadata_successor_v3.py",
+      "sha256": "910ce0d1ede162641a20238731c3e44bbba4228dad860a7582c8dcd343691a34",
+      "bytes": 1488
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_memory_closure_successor_v2.py",
+      "sha256": "a5ba2490ca94afaf99bc727a37707e1e5c1241839b2b8e463c816abea5672655",
+      "bytes": 5907
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_memory_successor_v1.py",
+      "sha256": "54db8114ee92afd1dd2cf8763dcdee80928e5c717a9d0a93d33a593032d1715c",
+      "bytes": 16752
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-original-to-stream-v3.patch",
+      "sha256": "09c0257cae0ba736eb1d5bc29f707ad6bbf68830686633b81145ea2afb82243e",
+      "bytes": 12169
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v2.json",
+      "sha256": "cc5b5d13a30ef003ce21f55efd6df67c80c60a98d4bca201d237d1d3fa4e7af0",
+      "bytes": 4113
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v3.json",
+      "sha256": "cf8312ef9cdf4f8b1871b76ad76773ae1542d5dc127e9281b8657b4f3b947e8c",
+      "bytes": 4316
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v4.json",
+      "sha256": "f3cc208b518c7ddae480172bc6416e02b754a1a2e9ca7370f36f5e40cef97a79",
+      "bytes": 4886
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/final-source-authoring-receipt-v3.json",
+      "sha256": "e628dde70b944c4b94b7a6870ae31c3887475b9b975d47026112b45c920c6cf1",
+      "bytes": 1115
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v1.py",
+      "sha256": "df3a45f692c54fc166025ad2ecd115549e537f66579ef746e9c36d68f3f155a3",
+      "bytes": 20669
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v2.py",
+      "sha256": "e1ec4ac1aa6738f885dbbc4e051985d469af1d455dad8db480992d34ae100c84",
+      "bytes": 21085
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v3.py",
+      "sha256": "2fd87f542550753399da9539167dd13c3fa17d9bb5701c30458f80885d09aa9a",
+      "bytes": 21314
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/handoff-v1.json",
+      "sha256": "7958174ac549a2fc8c9878e9aee3befe0599c0921ff773a67567bcd4a74c208d",
+      "bytes": 4551
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/integration-v1.json",
+      "sha256": "7a77ededf0d4401364a3746e7cb7e707801e8c4adc41a7d2759ed4aaad234d6d",
+      "bytes": 12300
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/payload-original-to-stream-v3.patch",
+      "sha256": "e3a35b9709e18dbfc0b73fdef2f750e37fa1beb443b01d394f33e4407a7979a6",
+      "bytes": 1738
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/preserved-metadata-freezer-failure-v1.json",
+      "sha256": "80c164e812c80f79c51a9e0a579c9e4df6c7daa7a309f7373cca0f18133d9363",
+      "bytes": 555
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/preserved-metadata-freezer-failure-v2.json",
+      "sha256": "4813d13b7be11872b00f013898b2207373925494562bcb80d7e9242225fa5d37",
+      "bytes": 599
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v2.py",
+      "sha256": "e73a4963c393abedcd7f1d0626c95125d060638720ffb0d6aa64156f225899d4",
+      "bytes": 5227
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad",
+      "bytes": 5435
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6fec101a926caf72d06bf38604b9bde919ba73c57d976eecba5c7c9a6f560fc6",
+      "bytes": 18559
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v2.json",
+      "sha256": "039e5017c261170abae5d6156e02e324cc4b6b50a4be45323b8979c32c8576ea",
+      "bytes": 20184
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-original-to-stream-v6.patch",
+      "sha256": "71239053509604b194bf241e18a422a7b4609c3eb04297790ad41a92f8d3fa5e",
+      "bytes": 19179
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-v6-to-v7-local-limit-anchors.patch",
+      "sha256": "a3075335421cdf965d7ddf87d21abb7e1c9066b35420b0668cdb28dd80db3e9b",
+      "bytes": 8983
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-benchmark-ladder-independent-20261013/declaration-review-v2.json",
+      "sha256": "dbbcf402c9dd77fff76b3bd3148662f575b76e6a2a9373ef1d904f8241717e91",
+      "bytes": 35516
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json",
+      "sha256": "d8c17f915e6c340f4299c34bfb6a3fbb8077f2a987a4c15860547e0a2c542289",
+      "bytes": 20506
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "bytes": 2683
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/handoff-v1.json",
+      "sha256": "31d1f9f072686658c31c3aa60d15a4a03e1271711a6ca05e6bec657df7556478",
+      "bytes": 2806
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/point-core-source-delta-v1.json",
+      "sha256": "43a50a8a74ab10ea51d35e168ecd6c2ca0d2cfa4df903245513e0ac33be57139",
+      "bytes": 1724
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/prospective-controls-v1.json",
+      "sha256": "004e1e3534900401d28382863c1401c74d40d1038a5a24d4e453946e8c2865c3",
+      "bytes": 4230
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/q_preparation_gate_v1.py",
+      "sha256": "7712d2760570a0cd75d88de8099b492c99e8f824f2185c46322fb8fe33028a4a",
+      "bytes": 5219
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-contract-v1.json",
+      "sha256": "78df35e4f72ce6cc46e70459d0e366d646a404305311d481c3d0671db5e2a870",
+      "bytes": 8367
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-independent-20261014/source-findings-v1.json",
+      "sha256": "c37a2f1c3f8fafdc3f35b41ecaa758352195e9cdf524443fce0ee34e1fd2bd4d",
+      "bytes": 11414
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  ],
+  "public_summary": {
+    "scope": "Saved metadata reconciliation of actual producer Q preparation and finite controls; no independent mathematical replay.",
+    "all_scoped_saved_checks_passed": true,
+    "raw_pin_mismatches": 0,
+    "actual_cold_invocations": 1,
+    "producer_controls_completed": 36,
+    "serializer_fixtures_completed": 6,
+    "producer_formula_count": 11147,
+    "producer_recipe_count": 16200,
+    "required_rows": 24,
+    "complete_initial_and_after_oracle_arrays_equal_saved_production": true,
+    "full_output_files": 8,
+    "full_output_bytes": 70942057,
+    "production_graph_constructions": 1,
+    "inner_complete_seconds": 16.748586708,
+    "observed_owned_postwrite_seconds": 17.009707625,
+    "observed_caller_seconds": 23.325,
+    "caller_finish_reserve_seconds": 1,
+    "observed_conditional_peak_bytes": 400506880,
+    "owned_peak_cap_bytes": 536870912,
+    "prospective_memory_write_reserve_bytes": 8388608,
+    "all14_ROOT_resource_predicates": true,
+    "worker_returncode": 0,
+    "owned_leftovers": [],
+    "original_Gamma": [],
+    "catalogue_mathematically_admitted": false,
+    "target_searches": 0,
+    "target_proofs": 0,
+    "native_accepted": false,
+    "RL_runs": 0,
+    "induction_accepted": false,
+    "full_PA_accepted": false,
+    "full24_or_trajectory_accepted": false,
+    "actual_canonical_control_key": [
+      2670,
+      23,
+      [
+        0
+      ]
+    ],
+    "after_control_decision": {
+      "count": 0,
+      "generation": 0,
+      "kind": "dead",
+      "row": 0
+    },
+    "control_step_is_proof": false,
+    "rollback_scope": "Actual producer executed full byte+EOF+SHA rollback comparison; this review authenticates that saved control receipt and witnesses without replay.",
+    "prior_memory_failure_retained": true,
+    "v6_Source_negative_retained": true,
+    "performance_or_memory_speedup_claim": false
+  },
+  "limitations": [
+    "No current project/Source function, semantic fixture, kernel, graph, preparation, control, solver/search/native/RL or browser executed by this review.",
+    "Whole model formula/recipe SHA and array/count relations are data integrity checks, not independently regenerated grammar, primitive licensing or mathematical admission.",
+    "The domain oracle is a separate producer-authored algorithm; distinct-author Source and saved metadata review are not a distinct-author semantic domain audit.",
+    "The real canonical step occupies target row23 with an unresolved source0, followed by a raw global-dead decision; it is not a discovered target proof. The separate unary decoration example is not selected ancestry.",
+    "Rollback equality was checked by the actual producer under the Source-reviewed implementation; no independent rollback replay is performed here.",
+    "Observed peak/caller/resources are conditional owned-scope gates, not hard OS or whole-host completeness. Nested construction/oracle/serialization spans are not summed as disjoint clocks.",
+    "Previously failed attempt and V6 Source negative remain separate; these measured successor costs alone do not establish general memory or speed advantage."
+  ]
+}

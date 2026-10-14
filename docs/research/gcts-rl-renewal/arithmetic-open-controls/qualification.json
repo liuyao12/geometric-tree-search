@@ -1,0 +1,162 @@
+{
+  "schema": "ROOT-Q-actual-complete-producer-controls-reconciled-disposition-v2",
+  "author_identity": "/root",
+  "ROOT_complete_scoped_controls_accepted": true,
+  "scope": "Resource-qualified complete producer preparation/finite controls; distinct-author mathematical catalogue/grammar licensing and theorem search remain unactivated.",
+  "actual_cold_invocations": 1,
+  "resource_qualification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+    "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49",
+    "bytes": 2810
+  },
+  "source_construction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json",
+    "sha256": "7b864138b9c2a849b3d94956644afc7128fd1e5c471d2f188ef2577875a8e647",
+    "bytes": 6069
+  },
+  "saved_plan_validation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+    "sha256": "aa706bee1e48220d4eec0e31b32c456314145bdabf2646cb2d7945728d6f65e7",
+    "bytes": 562
+  },
+  "worker_receipt": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+    "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+    "bytes": 5595
+  },
+  "evidence": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+    "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+    "bytes": 11000
+  },
+  "controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+    "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+    "bytes": 9785
+  },
+  "preparation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+    "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a",
+    "bytes": 38376960
+  },
+  "output_files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json",
+      "sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db",
+      "bytes": 7973213
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json",
+      "sha256": "c93d718c0642375c1d442e4c2bad475290049b0017bd8bf1f99719cad258524e",
+      "bytes": 7973913
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+      "bytes": 11000
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+      "bytes": 5595
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969",
+      "bytes": 8295473
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9",
+      "bytes": 8296118
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a",
+      "bytes": 38376960
+    }
+  ],
+  "controls_completed": true,
+  "control_count": 36,
+  "serializer_fixture_count": 6,
+  "complete_initial_domain_rows": 24,
+  "complete_initial_and_after_step_snapshots": 2,
+  "complete_byte_and_EOF_rollback_recorded": true,
+  "observed_formula_codes": 11147,
+  "observed_recipes": 16200,
+  "profile_counts_scope": "Actual complete producer profile census; not independent mathematical admission.",
+  "inner_seconds": 16.748586708,
+  "owned_seconds": 17.009707625,
+  "caller_seconds": 23.325,
+  "caller_seconds_with_finish_margin": 24.325,
+  "conditional_peak_bytes": 400506880,
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "all_owner_direct_children_terminal_and_reaped": true,
+  "owned_leftovers": [],
+  "complete_executed_raw_project_source_ledger": [
+    {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    {
+      "bytes": 37266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    },
+    {
+      "bytes": 5435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  ],
+  "catalogue_mathematically_admitted": false,
+  "target_searches": 0,
+  "target_proofs_accepted": false,
+  "induction_accepted": false,
+  "full_PA_accepted": false,
+  "full24_board_accepted": false,
+  "native_accepted": false,
+  "RL_training_runs": 0,
+  "unary_probe_is_selected_or_source_fact": false,
+  "prior_memory_failure_preserved": true,
+  "v6_Source_rejection_preserved": true,
+  "independent_saved_review_pending": false,
+  "inherited_first_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-disposition-v1.json",
+    "sha256": "6367e42b45161f854caeeea864fe5aefa3aa317f85bb37e41fb3cb498014fbf3",
+    "bytes": 8045
+  },
+  "independent_saved_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/findings-v1.json",
+    "sha256": "185b75f1d3a0e14cd4a7b79480b5df88a694537a723fcdc20880ddd17e02eaf4",
+    "bytes": 62853
+  },
+  "independent_saved_reconciliation_completed": true,
+  "independent_mathematical_replay_performed": false
+}

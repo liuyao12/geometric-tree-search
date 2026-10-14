@@ -1,0 +1,1176 @@
+{
+  "schema": "Notebook160-task-source-archive-manifest-v1",
+  "presentation_only": true,
+  "scope": "Complete task Source directories and declared experiment input closures; all actual output files, failure and independent saved reviews. No unrelated workspace work.",
+  "archive": {
+    "path": "reproduction.zip",
+    "sha256": "8c987d045d22e715bbbcfd2ad786e7d9c99254737ad18da32937249f968e9329",
+    "bytes": 10769620
+  },
+  "root_source_members": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-independent-20261014/Q-cold-controls-source-findings-v1.json",
+      "sha256": "2f9f3bc65de81f7a6a0423fc111d4ab079968b92f153dae7d56e620cfb5511e5",
+      "bytes": 12062,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-independent-20261014/Q-cold-controls-source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-independent-20261014/Q-cold-controls-typed-source-review-v1.json",
+      "sha256": "34579ec5301997ca1a6efe5ae148eb25adde1aeea1925be60f0c096c96aa1f44",
+      "bytes": 2766,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-independent-20261014/Q-cold-controls-typed-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-independent-20261014/actual-memory-failure-saved-findings-v1.json",
+      "sha256": "36e88a115c1497fed0ca47b744612b7e0e109c955adfbce675fe135a225f3000",
+      "bytes": 3879,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-independent-20261014/actual-memory-failure-saved-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-independent-20261014/handoff-v1.json",
+      "sha256": "c1ee8358d40ef33cdb16af987b9d7020cf0c748fab423da9638eb97b2bce329d",
+      "bytes": 867,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/Source-authoring-checks-v1.json",
+      "sha256": "baabbb1ff4fbae7fb906f80c11cbfaab6f21a5b363ea6ca9767349d488d3e788",
+      "bytes": 14137,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/Source-authoring-checks-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_v1.py",
+      "sha256": "15e018972b0de0a0d93749ab9d3e3984c31bc0e677157d6a4a05e39634cd3da5",
+      "bytes": 16320,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v1.py",
+      "sha256": "9a98fc525c52a562b58d5e012acf59114dd990bda11f027d1ca4de95e2a0476d",
+      "bytes": 25047,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v2.py",
+      "sha256": "bde65a91ae10ea9201c494668185eb7875b28b18f896c81072ea0902d29dcc9b",
+      "bytes": 27556,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v3.py",
+      "sha256": "c894c0b00a1fe77e8425c391499366c4a284b64903ada76a7f308b29c963d5aa",
+      "bytes": 27332,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/arithmetic_Q_controls_worker_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/author_worker_endpoint_successor_v2.py",
+      "sha256": "2cc9067dd83b099ebde49b551ab8baf479241a016fd4cb727c6a2d85d242efc1",
+      "bytes": 1822,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/author_worker_endpoint_successor_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/author_worker_endpoint_successor_v3.py",
+      "sha256": "8b3b27d5218e59df46832dae8e357628fc26b45f1b58531f9a6bb73e0bd3b34e",
+      "bytes": 1582,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/author_worker_endpoint_successor_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/author_worker_metadata_v1.py",
+      "sha256": "082f77c461c750871c288729b6508a68d6809105401b4a24dd20ed921003cf55",
+      "bytes": 18938,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/author_worker_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/controls-specification-v1.json",
+      "sha256": "637e4c9af9faa803c4390aa9159bc682b5ee1b173a7c0baf40f9192d64d926a3",
+      "bytes": 3163,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/controls-specification-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/freeze_Source_metadata_v1.py",
+      "sha256": "5430e9eac2ddc6b0c8c5ca7eccd53ee7ad9988bd683f37518844902ba86e9637",
+      "bytes": 13359,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/freeze_Source_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/handoff-v1.json",
+      "sha256": "53570b93c48a44f947925fc336a38fefd09f5158b7b7346a363709cc7eef9c9b",
+      "bytes": 4324,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/integration-v1.json",
+      "sha256": "2d07fec2f837d09e0d6a7e4c8f3955fa0ecb7e53960d3deb494be3199b3bae81",
+      "bytes": 3519,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6f49e3eaee97634532c2981ff8e9dbff4ee7c0f33c844aa0e02f9e86f99e1028",
+      "bytes": 14779,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/worker-v1-to-v3.patch",
+      "sha256": "8ef4f20805d1b9c29730d41ecaa53b00bc5874d35be6183d9f907b57e25c05c9",
+      "bytes": 6353,
+      "member": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/worker-v1-to-v3.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-ROOT-source-20261014/build_Q_controls_metadata_v1.py",
+      "sha256": "392edfe2126bae9c7901e124b343a6461ded15abacb8505e6806c7c6c9ab2d84",
+      "bytes": 6493,
+      "member": ".gcts-active/arithmetic-Q-controls-ROOT-source-20261014/build_Q_controls_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-actual-Q-controls-failure-disposition-v1.json",
+      "sha256": "2c74d3ed4d02336033ab0bd512ab5e18f16bb886454b16c9f0e0ed6e5685a219",
+      "bytes": 2768,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-actual-Q-controls-failure-disposition-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "24a91ef9169d1b35410a598fad470016e47f15762bcef57838bdc7be4775898a",
+      "bytes": 5977,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-construction-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "d132db01487bbb2a17866521409a96a431aaac1b3bd3cde6c9644508916348ff",
+      "bytes": 6579,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/ROOT-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "d10310c411d5a0a735542e6c5d07457ff5e7b3f57ee3ad9e49b32dc31d5d2877",
+      "bytes": 2574,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "bb160a01216ca55f5b81fc478b11a053d70eaa8d0ff8d29fcb50105c7ad194bc",
+      "bytes": 1668,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-actual-tool-observations-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/launch-v1.json",
+      "sha256": "705709ad941c6c6c7537a8a2907cfa49027e4194e101c9bf75969ba7b10a4eba",
+      "bytes": 1213,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/launch-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "14f7d5c8bb38c5c25e12688292fcf4f21a1db582fc3e85ef36d10e687022e883",
+      "bytes": 2373,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "0cd606fcaf3fc0086957574619f69fa9e30bac41ff81aa15c52db6c22bb7ab43",
+      "bytes": 578,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "68934569ef47b676b8b4179d6ed034baadf7130ead67b877243433a520123c61",
+      "bytes": 1554,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/stderr-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/stdout-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-plan-v1.json",
+      "sha256": "d4cebb940151af32bfe86ed5eebf31089fb555334af7c7c5fd20da4b04cd3de4",
+      "bytes": 8782,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/preparation-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "652170c07f22f5f7e7d903eca870ca0f4988b13121b99f1d3c3676462f19a636",
+      "bytes": 38376939,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/worker-plan-v1.json",
+      "sha256": "18feb044b313141e6a8e8ef473c2c0b6527d52c49d7ca8d1672dd88ddf26439d",
+      "bytes": 13819,
+      "member": ".gcts-active/arithmetic-Q-controls-progress-20261014/worker-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-ROOT-source-20261014/build_Q_controls_metadata_v2.py",
+      "sha256": "db0830f3abb7f20bdefbd403c5b34d438151736100211918ec0645bbf474d073",
+      "bytes": 6614,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-ROOT-source-20261014/build_Q_controls_metadata_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/handoff-v1.json",
+      "sha256": "83a71cb416961bb04d7fede8319555183ac4826a51b5216d14ffc28d62a15bbf",
+      "bytes": 793,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/handoff-v2.json",
+      "sha256": "0d9d09b9befa98634b02f49a199771684a2ec4de74933974ba15575d50967255",
+      "bytes": 1074,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/independent-v6-v7-complete-delta.patch",
+      "sha256": "a3075335421cdf965d7ddf87d21abb7e1c9066b35420b0668cdb28dd80db3e9b",
+      "bytes": 8983,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/independent-v6-v7-complete-delta.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/review_v6_Source_metadata_v1.py",
+      "sha256": "e79174d26bfb81da0cd7efc2595b534324d2b116be6dc0ddfba20b62a78749c2",
+      "bytes": 14971,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/review_v6_Source_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/review_v6_Source_metadata_v2.py",
+      "sha256": "908d31872925aa63f6466e1b1c09161c5c37a8808cf5e202b6512e829082b177",
+      "bytes": 14971,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/review_v6_Source_metadata_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/review_v7_Source_metadata_v1.py",
+      "sha256": "2ae035ed4e8eb9027191ef28208ce244cf3a62889fb26d5e49cfe405bdec1152",
+      "bytes": 10562,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/review_v7_Source_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v1.json",
+      "sha256": "a0dbaa6271cdf6b16581572785e1b1c138797054bada6fe5749ca036df451b19",
+      "bytes": 28531,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v2.json",
+      "sha256": "14f60a7fac63a54864e189265ef572f5abe1dc170cc62a271fd40b5dc45df58f",
+      "bytes": 35059,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v1.json",
+      "sha256": "345462862862f7ad4637725786cfd1ceced419a35f6dd79c628b3f9cccaf9640",
+      "bytes": 3157,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v2.json",
+      "sha256": "fa304eb16f9b4b43c05393fd7fae3020b63d875d10ed79bee12e39b8d4258384",
+      "bytes": 3143,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-disposition-v1.json",
+      "sha256": "6367e42b45161f854caeeea864fe5aefa3aa317f85bb37e41fb3cb498014fbf3",
+      "bytes": 8045,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-disposition-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json",
+      "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef",
+      "bytes": 8797,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+      "sha256": "aa706bee1e48220d4eec0e31b32c456314145bdabf2646cb2d7945728d6f65e7",
+      "bytes": 562,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "7b864138b9c2a849b3d94956644afc7128fd1e5c471d2f188ef2577875a8e647",
+      "bytes": 6069,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "5d01f8ae1404c6b32dea2d0c59ebf1013a0c3e1da1b6b33078aa5d1b7351d08d",
+      "bytes": 6763,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49",
+      "bytes": 2810,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "3ba0cf08afee86db89c854cb60c6d2e37f3be1fdfc5873469b763ebe0104f57e",
+      "bytes": 2148,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-actual-tool-observations-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "617b74d6766626a8b57b5c4e2ae0f56244b88438d0ef3402dc08b35b661029ac",
+      "bytes": 1742,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/launch-v1.json",
+      "sha256": "738184352ca73683d7e88862689835402614eb23e3d49875d3f9c511d9cc3b64",
+      "bytes": 1263,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/launch-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "3239827789846495a881a0cb580ac7682d3f28bbf73387df204210456e6a57f4",
+      "bytes": 3035,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "8d8e849c6c03dc890582328dc06cd7c2c9bb56a201d49ecea1c60160ad8acd3c",
+      "bytes": 801,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "617b74d6766626a8b57b5c4e2ae0f56244b88438d0ef3402dc08b35b661029ac",
+      "bytes": 1742,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/stderr-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "ad0b9e30a90da470f86ffd150b811155bdd1877e8c34960026162db3c53abdcb",
+      "bytes": 82,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/stdout-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-plan-v1.json",
+      "sha256": "07a17cd6342eccb7f7231cfdc0f7eff91863b5b995fb7214b31b116cbc845351",
+      "bytes": 10980,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json",
+      "sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db",
+      "bytes": 7973213,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json",
+      "sha256": "c93d718c0642375c1d442e4c2bad475290049b0017bd8bf1f99719cad258524e",
+      "bytes": 7973913,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+      "bytes": 11000,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+      "bytes": 5595,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969",
+      "bytes": 8295473,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9",
+      "bytes": 8296118,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a",
+      "bytes": 38376960,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-plan-v1.json",
+      "sha256": "f44b778167aeefbcb561d60279f4ece55552639f6e58d6f31a53cd778aeba4d9",
+      "bytes": 16547,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/ROOT-display-projection-v1.json",
+      "sha256": "f61d2823c0b76471ddda0ef34d6ba6d2211d66776c296e3fa42790915087ab95",
+      "bytes": 2169,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/ROOT-display-projection-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/Source-authoring-checks-v1.json",
+      "sha256": "63964d008eba5e3f50d27ac19d6364f8c780102d3785982614359e957dfacc0c",
+      "bytes": 1609,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/Source-authoring-checks-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/build_notebook160_ROOT_v1.py",
+      "sha256": "d4775bfb31e8c0c7531d26ac3bcaf8aca8b8d00487dcb8cfa982133ec7fd12a0",
+      "bytes": 11726,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/build_notebook160_ROOT_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/handoff-v1.json",
+      "sha256": "3deae76aac8eb7ef3417f7c6c962d3e198eeb555fdd0272555bd170f5247e781",
+      "bytes": 5373,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/package_notebook160_ROOT_v1.py",
+      "sha256": "ea8ab34caec3ef3a66c796bdf3f19417c3448a0c45e13cb151e8a47c6f4177ab",
+      "bytes": 5566,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/package_notebook160_ROOT_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/reader.css",
+      "sha256": "11fe8b37e7d0704ee2ec7dcf50228983023701af2cff786d8b4eb3ab0efd5c19",
+      "bytes": 1877,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/reader.css"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/reader.html",
+      "sha256": "93daf86a026ce9f3b718c477478a286ee5bec962fb9c04d63a056fed52371e66",
+      "bytes": 6448,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/reader.html"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/source-schema-v1.json",
+      "sha256": "0ffd6e7706f51da689e9d49f5ee662e215672c093b541662c673463fce6b79c7",
+      "bytes": 10096,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/source-schema-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/summary.json",
+      "sha256": "0298d1c273211b9479124ae15e7ff319d5a2ef3d56097e3157c7b72cbf95b81e",
+      "bytes": 651,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/summary.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/viewer.js",
+      "sha256": "4105203e7105d747cd17f2212dd9b83879d5909ddd73cbfc9abf8ad7738376cb",
+      "bytes": 13911,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-report-source-20261014/viewer.js"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/findings-v1.json",
+      "sha256": "185b75f1d3a0e14cd4a7b79480b5df88a694537a723fcdc20880ddd17e02eaf4",
+      "bytes": 62853,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/handoff-v1.json",
+      "sha256": "cd05892be89f0c723821b8e030d8b32a5003b187272b40099dfa3f5a9325ce29",
+      "bytes": 535,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/reconcile_saved_v1.py",
+      "sha256": "e9d4572657d375dc7518bfb2d1325d74280ee0fc35e4ea8587def5bb7a3c13e8",
+      "bytes": 21977,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/reconcile_saved_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/reconcile_saved_v2.py",
+      "sha256": "70a0749e2b2a1e5bf8681813f784c0cec461395e5f9eec8b092d64c3485bc11a",
+      "bytes": 21984,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/reconcile_saved_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v1.json",
+      "sha256": "5f63cc34e0e5d31472e1138e0b2d056777d1770d52c55edb91470ea90ac5f0d2",
+      "bytes": 33486,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v2.json",
+      "sha256": "71eff7eac42dc11eadf3f16d6b3ecc1618d13b321bbc48d5f6d8bfed905832ab",
+      "bytes": 30996,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-readiness-v1.json",
+      "sha256": "ce5bc44c5a1046517897a75f2faa2f5145f48bff3ef77b272fe67ec4ee62dbe1",
+      "bytes": 5546,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-readiness-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-readiness-v2.json",
+      "sha256": "503d2ca50342009ee505335d8a6c1e084b76835669f224e55011fdebd60e1e38",
+      "bytes": 5101,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-readiness-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-retention-diagnosis-v1.json",
+      "sha256": "82b1a1486bb4ca39fa6c59cbb1efdf9da71ef03c69f2e72d75a89d7b18e2a93e",
+      "bytes": 2283,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-retention-diagnosis-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v2.py",
+      "sha256": "4270c416dd19a7df78538109d280cb3f27640976363818e66879156f2324a7ec",
+      "bytes": 19574,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+      "bytes": 19742,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v4.py",
+      "sha256": "f59a11afbcc2459ea49e373b15c94c3f912d79791e3ce6d5d55625b81f147069",
+      "bytes": 30510,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v4.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v5.py",
+      "sha256": "1954296101580625af513612edfe6604265575fd18dc5f12840f4b5cef02ed38",
+      "bytes": 31964,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v5.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v6.py",
+      "sha256": "f8c7428631a612ff1048c243fb93ed0efd1f54f5b474550ef0d6f357e27f0ec2",
+      "bytes": 33612,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v6.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d",
+      "bytes": 37266,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_final_stream_successor_v3.py",
+      "sha256": "87b615f5a1a8942ddea8d9b0d55eddf86922a2a011a6f7476370f02882b7b7f6",
+      "bytes": 6256,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_final_stream_successor_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_freezer_metadata_successor_v2.py",
+      "sha256": "e8a9faf9749c97b1e016da86bfc12e46ba0282af11586b374d1743723f1e70d1",
+      "bytes": 1229,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_freezer_metadata_successor_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_freezer_metadata_successor_v3.py",
+      "sha256": "910ce0d1ede162641a20238731c3e44bbba4228dad860a7582c8dcd343691a34",
+      "bytes": 1488,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_freezer_metadata_successor_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_local_limit_anchor_successor_v4.py",
+      "sha256": "5f0d97a36ab1f715f70a9df309b0869bb2696d4267b17db159fd892569e2f2cc",
+      "bytes": 3214,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_local_limit_anchor_successor_v4.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_memory_closure_successor_v2.py",
+      "sha256": "a5ba2490ca94afaf99bc727a37707e1e5c1241839b2b8e463c816abea5672655",
+      "bytes": 5907,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_memory_closure_successor_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_memory_successor_v1.py",
+      "sha256": "54db8114ee92afd1dd2cf8763dcdee80928e5c717a9d0a93d33a593032d1715c",
+      "bytes": 16752,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/author_memory_successor_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-original-to-stream-v3.patch",
+      "sha256": "09c0257cae0ba736eb1d5bc29f707ad6bbf68830686633b81145ea2afb82243e",
+      "bytes": 12169,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-original-to-stream-v3.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v2.json",
+      "sha256": "cc5b5d13a30ef003ce21f55efd6df67c80c60a98d4bca201d237d1d3fa4e7af0",
+      "bytes": 4113,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v3.json",
+      "sha256": "cf8312ef9cdf4f8b1871b76ad76773ae1542d5dc127e9281b8657b4f3b947e8c",
+      "bytes": 4316,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v3.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v4.json",
+      "sha256": "f3cc208b518c7ddae480172bc6416e02b754a1a2e9ca7370f36f5e40cef97a79",
+      "bytes": 4886,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v4.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/final-source-authoring-receipt-v3.json",
+      "sha256": "e628dde70b944c4b94b7a6870ae31c3887475b9b975d47026112b45c920c6cf1",
+      "bytes": 1115,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/final-source-authoring-receipt-v3.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_local_limit_successor_metadata_v2.py",
+      "sha256": "aa641b56733e19856776ddc940f9cf84b3d060331222c01ed5ca69dd727dab90",
+      "bytes": 9365,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_local_limit_successor_metadata_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v1.py",
+      "sha256": "df3a45f692c54fc166025ad2ecd115549e537f66579ef746e9c36d68f3f155a3",
+      "bytes": 20669,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v2.py",
+      "sha256": "e1ec4ac1aa6738f885dbbc4e051985d469af1d455dad8db480992d34ae100c84",
+      "bytes": 21085,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v3.py",
+      "sha256": "2fd87f542550753399da9539167dd13c3fa17d9bb5701c30458f80885d09aa9a",
+      "bytes": 21314,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/freeze_streamed_Source_metadata_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/handoff-v1.json",
+      "sha256": "7958174ac549a2fc8c9878e9aee3befe0599c0921ff773a67567bcd4a74c208d",
+      "bytes": 4551,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/handoff-v2.json",
+      "sha256": "aeabc8f73ef9dfc87b2c826b006f7931f5bddb7517febf77a063db29c6e4aa69",
+      "bytes": 4785,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/integration-v1.json",
+      "sha256": "7a77ededf0d4401364a3746e7cb7e707801e8c4adc41a7d2759ed4aaad234d6d",
+      "bytes": 12300,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/integration-v2.json",
+      "sha256": "fc52895aa0301f0dab500b8000cf16af6ee409dd35223384b36d1a67b60f66e2",
+      "bytes": 15430,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/integration-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/local-limit-anchor-authoring-receipt-v4.json",
+      "sha256": "90b6f3d3d5599349971f0bb003dc0a6abb4de6cb1b9f9da8510c367a0624c1e8",
+      "bytes": 919,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/local-limit-anchor-authoring-receipt-v4.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/payload-original-to-stream-v3.patch",
+      "sha256": "e3a35b9709e18dbfc0b73fdef2f750e37fa1beb443b01d394f33e4407a7979a6",
+      "bytes": 1738,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/payload-original-to-stream-v3.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/preserved-metadata-freezer-failure-v1.json",
+      "sha256": "80c164e812c80f79c51a9e0a579c9e4df6c7daa7a309f7373cca0f18133d9363",
+      "bytes": 555,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/preserved-metadata-freezer-failure-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/preserved-metadata-freezer-failure-v2.json",
+      "sha256": "4813d13b7be11872b00f013898b2207373925494562bcb80d7e9242225fa5d37",
+      "bytes": 599,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/preserved-metadata-freezer-failure-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v2.py",
+      "sha256": "e73a4963c393abedcd7f1d0626c95125d060638720ffb0d6aa64156f225899d4",
+      "bytes": 5227,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad",
+      "bytes": 5435,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6fec101a926caf72d06bf38604b9bde919ba73c57d976eecba5c7c9a6f560fc6",
+      "bytes": 18559,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v2.json",
+      "sha256": "039e5017c261170abae5d6156e02e324cc4b6b50a4be45323b8979c32c8576ea",
+      "bytes": 20184,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-original-to-stream-v6.patch",
+      "sha256": "71239053509604b194bf241e18a422a7b4609c3eb04297790ad41a92f8d3fa5e",
+      "bytes": 19179,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-original-to-stream-v6.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-v6-to-v7-local-limit-anchors.patch",
+      "sha256": "a3075335421cdf965d7ddf87d21abb7e1c9066b35420b0668cdb28dd80db3e9b",
+      "bytes": 8983,
+      "member": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-v6-to-v7-local-limit-anchors.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/freeze_constructor_applicability_v2.py",
+      "sha256": "95aa8b09ababf3675b63d3b8dfa7760bcbeaf2ac80ebcb8c0e0d04bf631172a1",
+      "bytes": 5487,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/freeze_constructor_applicability_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/freeze_constructor_review_v1.py",
+      "sha256": "1d3b19404f42096657806c844b7842cae56c6573564c5235e01475da1041fce8",
+      "bytes": 12084,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/freeze_constructor_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/handoff-v1.json",
+      "sha256": "f93e7b87af56fc421bf03b27eaae6b9ea43eb59bbdf4bd4dd3d3ece783734715",
+      "bytes": 1311,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/handoff-v2.json",
+      "sha256": "49d49e603aefd52700fbdbcbd18bb48f299bc104251537bedca1ca5965fba55c",
+      "bytes": 1755,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/integration-v1.json",
+      "sha256": "0792518c783c11d9de55469d85841ad5be4032796018f2ba336ff6e76323d694",
+      "bytes": 1052,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/integration-v2.json",
+      "sha256": "99a545e33f27f963e81532848e221d8152c163a14cdd9c890d449247f8076461",
+      "bytes": 1307,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/integration-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/metadata-constructor-Source-findings-v1.json",
+      "sha256": "dddf3a7c77203c7a60bd788dd8a52651967f515ce611cdb889ff6c1b5b8f925f",
+      "bytes": 39735,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/metadata-constructor-Source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/metadata-constructor-applicability-note-v2.json",
+      "sha256": "e8cc3040f6f005d771b368c76466f39eaea7c0b32eb196abf1b2606b62e5ac28",
+      "bytes": 6697,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/metadata-constructor-applicability-note-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/metadata-constructor-typed-Source-review-v1.json",
+      "sha256": "ae1a3f704348b9ddbf8db8e3ad5e972ded0ce590a1017af0575e7356b5976fb3",
+      "bytes": 1678,
+      "member": ".gcts-active/arithmetic-Q-streamed-metadata-independent-20261014/metadata-constructor-typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-benchmark-ladder-independent-20261013/declaration-review-v2.json",
+      "sha256": "dbbcf402c9dd77fff76b3bd3148662f575b76e6a2a9373ef1d904f8241717e91",
+      "bytes": 35516,
+      "member": ".gcts-active/arithmetic-benchmark-ladder-independent-20261013/declaration-review-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json",
+      "sha256": "d8c17f915e6c340f4299c34bfb6a3fbb8077f2a987a4c15860547e0a2c542289",
+      "bytes": 20506,
+      "member": ".gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "bytes": 2683,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/author_q_graph_source_v1.py",
+      "sha256": "a1a7fed44af90c71fe3ac19f76f5a79a14a834a1c234e7bd7601654f1e0829c5",
+      "bytes": 6676,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/author_q_graph_source_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/freeze_source_metadata_v1.py",
+      "sha256": "10e79c9b10cd7f47299eb22e3d6aa81573d69dd8cec8692a15191de426fab65a",
+      "bytes": 14823,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/freeze_source_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/handoff-v1.json",
+      "sha256": "31d1f9f072686658c31c3aa60d15a4a03e1271711a6ca05e6bec657df7556478",
+      "bytes": 2806,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/integration-v1.json",
+      "sha256": "01b6901628f05521acd0e4b2ba1626958dc531c378f302c2472d52189fbe4c24",
+      "bytes": 3397,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/point-core-source-delta-v1.json",
+      "sha256": "43a50a8a74ab10ea51d35e168ecd6c2ca0d2cfa4df903245513e0ac33be57139",
+      "bytes": 1724,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/point-core-source-delta-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/prospective-controls-v1.json",
+      "sha256": "004e1e3534900401d28382863c1401c74d40d1038a5a24d4e453946e8c2865c3",
+      "bytes": 4230,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/prospective-controls-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/q_preparation_gate_v1.py",
+      "sha256": "7712d2760570a0cd75d88de8099b492c99e8f824f2185c46322fb8fe33028a4a",
+      "bytes": 5219,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/q_preparation_gate_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-contract-v1.json",
+      "sha256": "78df35e4f72ce6cc46e70459d0e366d646a404305311d481c3d0671db5e2a870",
+      "bytes": 8367,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-static-readiness-v1.json",
+      "sha256": "f3c5d2a55271c32aeb8fa9bbdee3b3c77d3e8612989114ef7a82eba05ea1d9b4",
+      "bytes": 2550,
+      "member": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-static-readiness-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-independent-20261014/handoff-v1.json",
+      "sha256": "407252c373a3d4adff5e887ea3bab7ef15fa71581ea76a433aeb1c63a07781fe",
+      "bytes": 2004,
+      "member": ".gcts-active/arithmetic-open-generalize-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-independent-20261014/source-findings-v1.json",
+      "sha256": "c37a2f1c3f8fafdc3f35b41ecaa758352195e9cdf524443fce0ee34e1fd2bd4d",
+      "bytes": 11414,
+      "member": ".gcts-active/arithmetic-open-generalize-independent-20261014/source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/candidate-cohort-v1.json",
+      "sha256": "0a92b2db5d8c49526d7ce7db7503e80a95ef6b08831be9df0997ae9da1ce4d5f",
+      "bytes": 18537,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/candidate-cohort-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/candidate-cohort-v2.json",
+      "sha256": "10d77be0404285fee4d46b11c7785d65ac6f79c84dd67f114676f498ed719255",
+      "bytes": 19695,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/candidate-cohort-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/design-memo-v1.txt",
+      "sha256": "452b943f33a19a8d2435475dc258edd4b0421712964d60324d5455381c8281c5",
+      "bytes": 6860,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/design-memo-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/handoff-v1.json",
+      "sha256": "f28f6e8c1a68036b81dcad6555bc65adcb5ff20572fe941a105b3181af6429fc",
+      "bytes": 2085,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/handoff-v2.json",
+      "sha256": "41cad02e5ac1054f73272670ca3a50ccb9c78025ea779b656890293f6abeab7b",
+      "bytes": 2810,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/handoff-v3.json",
+      "sha256": "7cfe74343d88629a714c5f817aa256fdbef7ec2a0580098dff005a1edf9b9577",
+      "bytes": 3052,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/handoff-v3.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/source-specification-v1.json",
+      "sha256": "3d5caa45319ffac0f94f5071075209002eefc04fe6cac36b3358869b88738781",
+      "bytes": 26782,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/source-specification-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/source-specification-v2.json",
+      "sha256": "fb73a79a1f3be472603221fb9900ff1693bd7c9394c548c70a413a79e790a6aa",
+      "bytes": 27527,
+      "member": ".gcts-active/equality-receptor-family-broadening-design-source-20261014/source-specification-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-independent-20261014/findings-v1.json",
+      "sha256": "20bd81437771564f21a6859a923024d2c1da33cddf25644a5cb429b3afc99697",
+      "bytes": 32229,
+      "member": ".gcts-active/equality-receptor-family-broadening-independent-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-independent-20261014/handoff-v1.json",
+      "sha256": "795fbe7703e1c8a133a5c9c8ea72a54afcdc1df762b84c3d26c62254729ff229",
+      "bytes": 512,
+      "member": ".gcts-active/equality-receptor-family-broadening-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-independent-20261014/review_literal_metadata_v1.py",
+      "sha256": "afa2cbfe0e77506e0ad2ea6688c6f177856a4fb3df73de14d46771a9c8532056",
+      "bytes": 19699,
+      "member": ".gcts-active/equality-receptor-family-broadening-independent-20261014/review_literal_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/author_literal_design_v1.py",
+      "sha256": "e53ed5bdaee2aa1ad82415f5c1538f9a148613d44a1c4f5ceece08cf164e3d08",
+      "bytes": 31331,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/author_literal_design_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/benchmark-memo-v1.html",
+      "sha256": "857d5a06fee6dd2250817e1a5c8f0976b42103aa89eedce24aefd7becd92efec",
+      "bytes": 8324,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/benchmark-memo-v1.html"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/benchmark-specification-v1.json",
+      "sha256": "0b8c45824a91267fe5eaa40d4e1d94d73e023b7315524e876479cde0b386cd6e",
+      "bytes": 45018,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/benchmark-specification-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/handoff-v1.json",
+      "sha256": "dc1db341c10668cf0cc14db3cf84c692a2749411d4d95328ba89b0bf8b54361a",
+      "bytes": 2924,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/literal-conformance-v1.json",
+      "sha256": "057868f3f4557abd1f90ae335f3f1086bd469bd4aacadda05c880e5e5d601601",
+      "bytes": 629,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/literal-conformance-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/literal-targets-v1.json",
+      "sha256": "5e469c39d63041873663df3e6355c90f125eb90c1a241fd86532a3c280089a64",
+      "bytes": 31110,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-design-source-20261014/literal-targets-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-independent-source-20261014/benchmark-conceptual-source-findings-v1.json",
+      "sha256": "edc9dd24c14573edeb1359050d06239595aa5f1cc398de3ec997ece0f6a18e26",
+      "bytes": 13826,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-independent-source-20261014/benchmark-conceptual-source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-heldout-benchmark-independent-source-20261014/benchmark-conceptual-source-findings-v2.json",
+      "sha256": "45d2485357433f9bc0c70aebb7236fcb05206f34a4a175e15ca75a16540a3f70",
+      "bytes": 15840,
+      "member": ".gcts-active/equality-receptor-heldout-benchmark-independent-source-20261014/benchmark-conceptual-source-findings-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300,
+      "member": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657,
+      "member": "docs/basic-tiling-algorithm.md"
+    }
+  ],
+  "external_runtime_raw_references": [
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  ],
+  "public_members": [
+    {
+      "sha256": "64320bd6f2de3df1519a01d05cd8f9c4a6199d169f3b8246a776e5416d08be69",
+      "bytes": 8325,
+      "member": "PUBLIC/benchmark-memo.html"
+    },
+    {
+      "sha256": "fb73a79a1f3be472603221fb9900ff1693bd7c9394c548c70a413a79e790a6aa",
+      "bytes": 27527,
+      "member": "PUBLIC/broadening-specification.json"
+    },
+    {
+      "sha256": "c65ebb0efbb7cca4b010a3390091fe32a90dd4a2cdb25ee39b05360c22288fdb",
+      "bytes": 903385,
+      "member": "PUBLIC/evidence/Q-after-one-step-oracle-domains-v2.json.gz"
+    },
+    {
+      "sha256": "e9f935438f79effeae5acc4a828f10de23c7bfb6f88be73424588b4daa31bfa7",
+      "bytes": 903767,
+      "member": "PUBLIC/evidence/Q-after-one-step-state-v2.json.gz"
+    },
+    {
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+      "bytes": 11000,
+      "member": "PUBLIC/evidence/Q-controls-evidence-v1.json"
+    },
+    {
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785,
+      "member": "PUBLIC/evidence/Q-controls-provisional-v1.json"
+    },
+    {
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+      "bytes": 5595,
+      "member": "PUBLIC/evidence/Q-controls-result-v1.json"
+    },
+    {
+      "sha256": "6971afece70b525d56c018f8b7dc6f32f67621e1ef8060e821ab017a512b8d29",
+      "bytes": 945253,
+      "member": "PUBLIC/evidence/Q-initial-oracle-domains-v2.json.gz"
+    },
+    {
+      "sha256": "632248d6d2e6197859fea920a823ee7c08af748637b7045d9b6e40d5974b9524",
+      "bytes": 945566,
+      "member": "PUBLIC/evidence/Q-initial-state-witness-v2.json.gz"
+    },
+    {
+      "sha256": "9b2cf52bff9e666297557be1762018b0032e3f9a526103854b638c0976db57ed",
+      "bytes": 2074387,
+      "member": "PUBLIC/evidence/Q-preparation-provisional-v1.json.gz"
+    },
+    {
+      "sha256": "185b75f1d3a0e14cd4a7b79480b5df88a694537a723fcdc20880ddd17e02eaf4",
+      "bytes": 62853,
+      "member": "PUBLIC/independent-saved-review.json"
+    },
+    {
+      "sha256": "2c74d3ed4d02336033ab0bd512ab5e18f16bb886454b16c9f0e0ed6e5685a219",
+      "bytes": 2768,
+      "member": "PUBLIC/prior-memory-failure.json"
+    },
+    {
+      "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef",
+      "bytes": 8797,
+      "member": "PUBLIC/qualification.json"
+    },
+    {
+      "sha256": "e3380726d4ae186ee0bd69de547ecc1289ff4ac31a3d6c4420f58c1f12fd77fd",
+      "bytes": 2266,
+      "member": "PUBLIC/reader.css"
+    },
+    {
+      "sha256": "90ddf6c5926037ea27d03ce546368e75251c1af01ff18e4656ddf403d69a491a",
+      "bytes": 9259,
+      "member": "PUBLIC/reader.html"
+    },
+    {
+      "sha256": "345462862862f7ad4637725786cfd1ceced419a35f6dd79c628b3f9cccaf9640",
+      "bytes": 3157,
+      "member": "PUBLIC/source-rejection-v6.json"
+    },
+    {
+      "sha256": "2b3ec9effc903620c7654d58fa2393a2461eb0c3017ce7a86c8c6fc491e84c00",
+      "bytes": 41105,
+      "member": "PUBLIC/summary.json"
+    },
+    {
+      "sha256": "4105203e7105d747cd17f2212dd9b83879d5909ddd73cbfc9abf8ad7738376cb",
+      "bytes": 13911,
+      "member": "PUBLIC/viewer.js"
+    }
+  ]
+}

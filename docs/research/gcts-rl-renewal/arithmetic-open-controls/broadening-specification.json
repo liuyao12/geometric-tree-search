@@ -1,0 +1,432 @@
+{
+  "schema": "broad-certificate-mined-receptor-family-source-specification-v2",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "project_functions": 0,
+  "browser_calls": 0,
+  "actual_library_admission": false,
+  "parameterized_schema_accepted": false,
+  "new_inference_rules": [],
+  "RL_activated": false,
+  "memo": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/design-memo-v1.txt",
+    "sha256": "452b943f33a19a8d2435475dc258edd4b0421712964d60324d5455381c8281c5",
+    "bytes": 6860
+  },
+  "cohort": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/candidate-cohort-v2.json",
+    "sha256": "10d77be0404285fee4d46b11c7785d65ac6f79c84dd67f114676f498ed719255",
+    "bytes": 19695
+  },
+  "raw_sources": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "current_family_guard": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-Sequence-guard-source-20261014/equality_receptor_family_I2_sequence_guard_v3.py",
+      "sha256": "b4d20eaf6c7f5db25e7ab7a70303e7d39a733b49c2cec300b363cbc3f7fbfaa5",
+      "bytes": 62803
+    },
+    "current_family_consumer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/I2_family_consumer_overlay_v2.py",
+      "sha256": "df05db866111b8e5c86ddffb9c9a0216678d6e171c7b5f1bdde866573f87ab4b",
+      "bytes": 18348
+    },
+    "current_DFS12": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-consumer-source-20261014/compact_I2_family_first_checked_proof_dfs_v12.py",
+      "sha256": "57e415f9822f73dcbec2f16f45564196de519476ab2b0f3fbb9097fc972d8859",
+      "bytes": 49263
+    },
+    "current_observer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "sha256": "ad2efd1b7685fe6f7baa8f3b9849baf3568c3cf67e87a85e3d0ac657d8772cdc",
+      "bytes": 29717
+    },
+    "donor_old_reader": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b",
+      "bytes": 64540
+    },
+    "recipient_I2_reader": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "sha256": "c8fa4aeba82fcc2af9bd091fd351d72f86a24ae97cb5edd92ff558e81c23501b",
+      "bytes": 64498
+    },
+    "independent_ground_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc",
+      "bytes": 24588
+    },
+    "current_family_final24_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-Sequence-guard-source-20261014/I2_family_final24_sequence_guard_binding_v4.py",
+      "sha256": "10a41171c18a82e6f33d13403aae9e441a69d7fd11f065ff5497aea415f0188f",
+      "bytes": 70208
+    }
+  },
+  "raw_evidence": {
+    "current_six_lane_ROOT_disposition": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/ROOT-actual-six-lane-comparison-disposition-v1.json",
+      "sha256": "91b49d3540867c11af7b3f0285c7a75c88f90f7dd8c8ca420b518bd3e373d7dd",
+      "bytes": 18800
+    },
+    "current_six_lane_distinct_author_saved_findings": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-independent-20261014/saved-six-lane-findings-v2.json",
+      "sha256": "ed03c9ebafcc2d01a88dc33c56321eaf7e73d0d3aab2ae713303806ec576eee0",
+      "bytes": 234037
+    },
+    "legacy_training_declaration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "sha256": "de34653e96673e080c65a6c17fad3cc24cfb00ab0043fdc11c9741e6708f382c",
+      "bytes": 8340
+    },
+    "current_finite_candidate_library": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "sha256": "08e75860545d3e0248e99c36858b0ca25d1bcbb1c7ad01b3cd2d332d51149e07",
+      "bytes": 85344
+    },
+    "current_all27_origin_audit": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "sha256": "55a9e8c2a4df287da9dbc2c72c42c4b13de520e6eafb02bd61124919b5ee22be",
+      "bytes": 41490
+    },
+    "current_finite_extraction_disposition": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "sha256": "757606d7a20048e5a8335559c96cf1749e1ab53f900bdff593fb10beeed8a173",
+      "bytes": 7879
+    },
+    "current_receiver_controls_disposition": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-controls-progress-v2-20261014/ROOT-actual-family-controls-disposition-v1.json",
+      "sha256": "687b59a54a7b10bdfe213b96e66ee18c3ab1d6586c12490b5fceab9227975846",
+      "bytes": 20667
+    },
+    "diagnostic_known19_certificate": {
+      "bytes": 31480,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/worker-output-v1/first-proof-certificate-v1.json",
+      "sha256": "d28241f377a33e06e8a2988063ee0ee979dcb31f6ad327241339cfb29c2318e7"
+    },
+    "diagnostic_known19_result": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/worker-output-v1/result-v1.json.gz",
+      "sha256": "c31b66615cc0715c3c4d0cf0607544c0a6ce0eb0294d60e31dc42df426b18b71",
+      "bytes": 12751
+    },
+    "diagnostic_known19_resource": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/ROOT-final-disposition-v1.json",
+      "sha256": "3a2581b41a93b6f401a1053024346b44a5d704ae316c17d0f564312ad18cf309",
+      "bytes": 7384
+    },
+    "earlier_correlated_known19_certificate": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+      "sha256": "7d0c2c78be2e6e3768312e164ef25ba49b7c950ef197128eb3798d88cd477863",
+      "bytes": 30318
+    },
+    "legacy_donors": {
+      "legacy_donor_0": {
+        "case": "fresh-inc-point-chain-w",
+        "certificate": {
+          "bytes": 21797,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+          "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+        },
+        "result": {
+          "bytes": 83892,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/result-v1.json.gz",
+          "sha256": "66cec6557aa27b17f1fe8eedb4a054a0a4c51c4a40beda811e49549f25beb962"
+        },
+        "qualification": {
+          "bytes": 10586,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+          "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+        },
+        "header": {
+          "bytes": 10822,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+          "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+        },
+        "licenses": {
+          "bytes": 245655,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf"
+        },
+        "resource_disposition": {
+          "bytes": 4212,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+          "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040"
+        }
+      },
+      "legacy_donor_1": {
+        "case": "fresh-inc-point-chain-w",
+        "certificate": {
+          "bytes": 19085,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+          "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+        },
+        "result": {
+          "bytes": 13604,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+          "sha256": "a275d08666e2d7d13b513b24fd2f79cfbb6221feef7267748858c86de784487d"
+        },
+        "qualification": {
+          "bytes": 10586,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+          "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+        },
+        "header": {
+          "bytes": 10822,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+          "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+        },
+        "licenses": {
+          "bytes": 245655,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf"
+        },
+        "resource_disposition": {
+          "bytes": 4340,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+          "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d"
+        }
+      },
+      "legacy_donor_2": {
+        "case": "fresh-inc-reversed-line-chain",
+        "certificate": {
+          "bytes": 19193,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+          "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+        },
+        "result": {
+          "bytes": 13626,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+          "sha256": "033d033bf5bf49dab669c0f69231840af81ddb6333b797b85872612d0ef1c528"
+        },
+        "qualification": {
+          "bytes": 10652,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+          "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+        },
+        "header": {
+          "bytes": 10870,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+          "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+        },
+        "licenses": {
+          "bytes": 245615,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+          "sha256": "44f9fbf1700af9e4e8600c2c39d9a1aed12a80cd3d0a6a16496f347aa1c48425"
+        },
+        "resource_disposition": {
+          "bytes": 4386,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+          "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863"
+        }
+      }
+    }
+  },
+  "current_source_locations": {
+    "method_state": 103,
+    "term": 185,
+    "replace_terms": 193,
+    "ground": 205,
+    "literal_points": 216,
+    "reconstruct": 266,
+    "transport_body": 307,
+    "extract_training": 360,
+    "FamilySession": 547,
+    "GoalDependencyAdvice": 826
+  },
+  "observed_result_vs_hypothesis": {
+    "actual_family_ground_checks_completed": 23,
+    "actual_family_target_proofs": 0,
+    "ordinary_known_proof_commands": 19,
+    "ordinary_origin": "completed_source_proposal",
+    "diagnostic_constructs": [
+      "eq_subst into an eq formula",
+      "licensed universal-instantiation/MP chain"
+    ],
+    "inventory_gap_observed": true,
+    "gap_caused_timeouts_established": false,
+    "new_contribution_or_speedup_established": false
+  },
+  "donor_policy": {
+    "currently_declared": "Exact legacy three nine-command certificates; old donor reader remains explicit.",
+    "proposed_new_donor": "ROOT may declare one historical I.2 accepted certificate for a new training phase; neither known I.2 target remains held out. Not admitted or consumed by this packet.",
+    "correlated_duplicates": "Earlier/newly replicated same19 proof counts one correlated proof/sequent evidence group. Preserve each raw origin and all differing tapes; do not inflate sample count.",
+    "intake_required": [
+      "whole certificate/result/q/catalogue/licence/resource/math linkage",
+      "source reader selected per original donor profile",
+      "complete selected or complete source-proposed provenance",
+      "fresh independent complete original-Gamma check",
+      "literal whole source current/fixed union"
+    ],
+    "prohibited": [
+      "partial UNKNOWN trajectories as accepted donor certificates",
+      "first failed missing-result run",
+      "target test proofs or held-out result bodies",
+      "proof commands manually authored into the extractor"
+    ]
+  },
+  "recognizers": [
+    {
+      "id": "binary-one-hole-equality-transport",
+      "source_language": "For each closed command root, recognize actual eq_subst then ordered MP then ordered MP. Template is eq or declared Incident with exactly one free whole-operand hole at slot0/slot1; other operand, left and right become correlated term parameters. Every other rule/shape has an explicit ineligible reason.",
+      "members": 3,
+      "ports": [
+        "input:equality",
+        "input:formula"
+      ],
+      "output": "Same grounded formula with the single licensed hole substitution. Not an arbitrary metatheoretic replacement rule.",
+      "initial_parameters": "Closed nullary terms in current theory signature; no compound/open-term generality. Do not infer pairwise distinctness is logically necessary from distinct donor samples. Aliases need separate normalizer/control; absent advice retains base fallback."
+    },
+    {
+      "id": "licensed-universal-instantiation-pair",
+      "source_language": "For each root whose actual rule is MP, its implication ancestor must be an actual instantiate witness whose universal formula equals the ordered antecedent receptor. Preserve the actual universal, binder, closed term, output witness and ordered primitive references; eligibility never calls a target route constructor.",
+      "members": 2,
+      "ports": [
+        "input:universal"
+      ],
+      "parameters": [
+        "meta-formula:universal",
+        "meta-term:closed-instantiation-term"
+      ],
+      "binder_policy": "Capture-avoiding substitution and full bound/free-variable/signature checks before any concrete lookup. The meta universal is syntax; ground validity is freshly kernel checked.",
+      "composition": "Use exact member expansions and existing shared universal ancestry. Initial same two-instance composition cap may be retained to isolate language broadening; deeper mixed composition requires its own preregistered cost/source ablation."
+    }
+  ],
+  "candidate_wire": {
+    "proposed_schema": "candidate-finite-licensed-receptor-family-library-v2",
+    "required_family_fields": [
+      "normalized_syntactic_family_id",
+      "recognizer_version",
+      "typed_meta_parameters_outside_FOL",
+      "ordered_input_receptors_with_multiplicity",
+      "primitive_member_witnesses_and_ordered_ports",
+      "output_receptor",
+      "binding_and_freshness_guards",
+      "complete_donor_root_origin_census",
+      "all_correlated_ground_evidence",
+      "primitive_expansion_and_shared_identity_map"
+    ],
+    "candidate_flags": {
+      "ROOT_inventory_admitted": false,
+      "schema_universally_validated": false,
+      "primitive_source_body_count": 0
+    },
+    "independent_audit": "Separate implementation reconstructs every declared donor root/preimage including ineligible origins and checks complete expanded ground bodies. Peer Source review alone is not that audit."
+  },
+  "runtime_api": {
+    "proposed": "FamilySession.instantiate(family_id, ordered_receptor_keys, parameters, deadline, previous=None) -> checked provisional instance; preferred() remains exact primitive preferences plus complete inspectable proposal wire.",
+    "binding": [
+      "current case/q/theory/signature/catalogue/licences",
+      "advice library/source version and actual training/audit admission",
+      "full model/runtime/source epoch",
+      "source-guard code/default/closure/shim",
+      "generated class MRO/property/effective endpoints",
+      "current semantic state/revision/decision/domain identity"
+    ],
+    "acceptance_checks": [
+      "complete receptor ancestors",
+      "exact original ambient occurrence list and separate ancestry consumption",
+      "all concrete witnesses/premises resolved in full current independent licences",
+      "strict-prior ordered member refs and repeated-port identity",
+      "one shared full Key counted once in t aggregate",
+      "entire fixed exterior/target+actual selected+planned t/m union",
+      "independent original-Gamma ground-sequent check",
+      "final no-state/source/deadline change after return preparation"
+    ],
+    "unavailable_meaning": "No advice preference, not a candidate exclusion, refutation or restricted solver."
+  },
+  "engine_invariants": {
+    "height": 24,
+    "all_required_points_domains_complete": true,
+    "scheduler": "global dead -> global forced -> earliest generation; count tie only",
+    "complete_primitive_fallback": true,
+    "forced_advice": [],
+    "macro_commits": false,
+    "learned_pruning": false,
+    "new_marking_assignments": false,
+    "rollback": "Full points/m assignments+refcounts/generations/domains/reverse links/exclusions/selected identities/branch metadata, plus invalidate old advice/registry/domain bindings after state change."
+  },
+  "comparison": {
+    "primary": "First checked exact original-Gamma target primitive derivation with whole current/fixed point compatibility. Completed source proposal may qualify only under predeclared observer scope; never label it selected/full24/native/trajectory.",
+    "lanes": [
+      "canonical",
+      "ordinary symbolic witness advice",
+      "broadened finite-family advice"
+    ],
+    "fairness": "Same full complete catalogue, originalGamma, target/boundary, required24 rows, point model, exact graph/scheduler/rollback, empty primitive-body inventory and limits. Same common raw source set with per-variant deferred execution ledgers.",
+    "search_limits": {
+      "placement_attempts": 128,
+      "inner_seconds": 20,
+      "events": 2000
+    },
+    "enclosing_limits": {
+      "child_seconds": 170,
+      "supervisor_seconds": 175,
+      "caller_seconds": 180,
+      "peak_bytes": 536870912
+    },
+    "clock_scope": "Inner construction/search/checking/in-memory returns; file serialization/postwrite/resource closure inside enclosing clocks. Cooperative overshoot reported, no accepted late prefix.",
+    "cold_vs_reused": "Declare frozen library and reuse count before outcomes. Full library cost charged once in cold end-to-end cost, displayed separately for warm runs with no silent target cache. Never sum nested spans.",
+    "optional_ablations": [
+      "Current Incident-only library versus broader equality/UI library, same proposal/composition limits.",
+      "Same broader family under symbolic receptor ranking versus current-point-aware routing, with mandatory exact final point checking in both.",
+      "Same primitive advice engine versus ordinary native symbolic proof search under a separately frozen comparable original-Gamma endpoint; current ordinary advice is not an external prover."
+    ],
+    "success": "First structurally held-out checked proof from family lane with exact primitive/current-point certificate; any cost/coverage advantage is descriptive at the matched stated envelope.",
+    "failure": "UNKNOWN, empty relevant family inventory, unavailable grounding, point-incompatible proposals, greater total cost or no structural transfer are retained; no rescue or negative theorem assertion."
+  },
+  "implementation_gaps": [
+    {
+      "source": "current transport_body",
+      "needed": "Recognize eq operand templates and licensed UI/MP pairs generically; retain all root reasons and exact source indices."
+    },
+    {
+      "source": "current fixed extract_training + DONOR_SOURCE_PINS",
+      "needed": "New explicit donor declaration/intake per original reader/schema including historical I.2 only after ROOT role change, no old7 map transplant; current MAXIMUM_CERTIFICATES=3/training spec fixed."
+    },
+    {
+      "source": "FamilySession __init__/instantiate and GoalDependencyAdvice",
+      "needed": "Typed variable-port arity and universal-formula/binder parameters; generalized primitive body output map replaces fixed member:2 assumptions, exact catalogue matching/point/kernel checks remain mandatory."
+    },
+    {
+      "source": "current strict I2 recipient allowlist/compiler/profile",
+      "needed": "Fresh full source-bound cohort/static audits; new names/guards/universal seed closures cannot silently reuse original two q records. No target-specific grammar pruning."
+    },
+    {
+      "source": "scientific cold worker/owner/terminal/metadata/observer return adapter",
+      "needed": "New exact library/schema/source/q epochs and actual broad receiver control admission; preserve21 leaf/19 raw/7 consumer semantic authority only if ABI truly remains identical. Do not reuse controls-only seal as scientific activation."
+    },
+    {
+      "source": "full24 secondary checker",
+      "needed": "Any changed DFS or family schema requires explicit new final-checker source binding. First checked patch stays separate from actual full24 certificate."
+    }
+  ],
+  "prospective_controls": [
+    "every declared donor root has one eligibility record, including complete source-proposed versus selected origin",
+    "same concrete body from correlated certificates preserves alias/ordered port/DAG identity",
+    "eq slot0/slot1 and Incident slot0/slot1 never conflated",
+    "UI binder alpha-renaming/capture/signature/missing parameter malformed AST rejects whole request",
+    "unlicensed rule/witness or incomplete receptor gives no preference and full fallback remains exact",
+    "repeated equal Gamma occurrence and repeated ordered input ports remain separate",
+    "assigned zero, missing, distant fixed/selected mark conflict and shared placement multiplicity",
+    "global remote dead before forced, earlier generation before later smaller domain, forced empty advice",
+    "stale after placement/exclusion/rollback and restored semantic state, exact paired rollback",
+    "deadline in final guard/hash/serialization staging gives no accepted partial advice"
+  ],
+  "unknowns": [
+    "No broader extractor/generator/receiver exists or has executed from this design.",
+    "No historical I.2 proof is newly admitted training here.",
+    "No candidate universally validated family or new proof rule.",
+    "No fresh cohort complete catalogue,24-row feasibility or held-out proof checked.",
+    "No causal timeout explanation, RL policy/update, learned GCTS markings, full-Hilbert or prover superiority."
+  ],
+  "preserved_prior_specification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-broadening-design-source-20261014/source-specification-v1.json",
+    "sha256": "3d5caa45319ffac0f94f5071075209002eefc04fe6cac36b3358869b88738781",
+    "bytes": 26782
+  },
+  "narrow_design_correction": "The prior universal premise forall x forall y Incident(x,y) directly covered its target, so its equality inputs could be unused. The selected candidate now uses a universal implication and a ground incidence premise; it tests mixed quantifier/premise/transport composition rather than claiming those unused equalities demonstrate two-argument transfer. No semantic checker or search has run."
+}
