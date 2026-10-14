@@ -1,0 +1,114 @@
+{
+  "RL_used": false,
+  "ROOT_controls_qualified": false,
+  "ROOT_failed_run_reconciliation_complete": true,
+  "ROOT_resource14_accepted": false,
+  "Root_Source_review": {
+    "bytes": 7498,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/ROOT-source-review-v1.json",
+    "sha256": "c5468d9a5e9e7af80ab052c5eefa47879c8dfd9ebc8924c24902a4af1e77e0b7"
+  },
+  "Source_review_miss_disclosed": true,
+  "actual_caller": {
+    "bytes": 1344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "e0f5379908fb4dcfabf9561fc4a8f9ab382dbb8a1e9e895b43617593469b1386"
+  },
+  "actual_owned_worker_invocations": 1,
+  "all_direct_children_terminal_and_reaped": true,
+  "author_identity": "/root",
+  "caller_finish_reserve_seconds": 1,
+  "caller_seconds": 12.475,
+  "construction": {
+    "bytes": 11688,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/ROOT-construction-v1.json",
+    "sha256": "32a26bce224497528f9a8e7f235ae9f9691c9aa3548caf6727e717cb00d347ca"
+  },
+  "controls_completed": 0,
+  "controls_started": 0,
+  "failure": "load_cached inserted authenticated module in sys.modules; postcall source_cache_guard ran before handles.modules/module_anchors registration and rejected exact cached module identity.",
+  "full24_accepted": false,
+  "full_PA_accepted": false,
+  "full_trajectory_accepted": false,
+  "graph_constructor_calls": 0,
+  "independent_raw_mismatches": 0,
+  "independent_raw_paths": 193,
+  "independent_raw_reference_count": 856,
+  "independent_saved_checks": 770,
+  "induction_accepted": false,
+  "native_accepted": false,
+  "next_action": "Preserve failed namespace. Review a narrow atomic authenticated loader/owned-registration repair for both wrappers, then use a distinct fresh actual namespace; no broad guard exemption, warm graph or budget change.",
+  "owned_leftovers": [],
+  "owned_samples": 67,
+  "owner_peak_bytes": 316047360,
+  "owner_plan": {
+    "bytes": 45157,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-plan-v1.json",
+    "sha256": "16a090045ed0ecd99f15d42d8186895df0ed11d43e1d044af281aab43963773e"
+  },
+  "owner_postwrite": {
+    "bytes": 591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "061fdfffd13a471fbfa6833228a1267e72a09cfc7013c1e898ba8ee7bcfd637d"
+  },
+  "owner_provisional_terminal": {
+    "bytes": 1506,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "fabf093aed75d3fdb4f903738d1c20bed75504762ca4efdc76f03a730fe373a9"
+  },
+  "owner_seconds": 8.280550291,
+  "ownership_ledger": {
+    "bytes": 1729,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "753d21afdf75512eae6e966d4818aad1483256ab871b00da7bc9ab52567a62d8"
+  },
+  "prior_sandbox_pre_activation_only": {
+    "bytes": 890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/ROOT-sandbox-preactivation-observation-v1.json",
+    "sha256": "d975178ee11b1fe66689d49769593fda01521e64fe0e571d2e40cde8cc4a447e"
+  },
+  "provisional_disposition": {
+    "bytes": 5531,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/ROOT-provisional-loader-failure-disposition-v1.json",
+    "sha256": "3829cdc175a780dce75253a1495527db9f30a89bf120ed978db9116958a522ed"
+  },
+  "resource_qualification": {
+    "bytes": 2651,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "3dac7d5cb86b1b2446ae6ee5b97e4f121ba8a5750814cc3c5508552f801f5f27"
+  },
+  "saved_record_review": {
+    "bytes": 996619,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-failure-independent-20261014/findings-v1.json",
+    "sha256": "2dce976a530666aad1056d11ecdd23168695ef7475844f3686547c8c99f802cc"
+  },
+  "saved_review_handoff": {
+    "bytes": 1085,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-failure-independent-20261014/handoff-v1.json",
+    "sha256": "c4d7bf546513933688ebe9f73177372badc8c8c32503d344ee80b29d6faf2d61"
+  },
+  "schema": "ROOT-Q-first-proof-neutral-controls-reconciled-loader-failure-v1",
+  "scope": "Observed infrastructure failure, not theorem failure or performance comparison. No accepted prefix or control qualification. Same original complete model and caps retained.",
+  "selected_target_proof_accepted": false,
+  "source_stage": "After complete preparation parse/input seal, during first cached point module load postguard; before model construction/control call.",
+  "status": "UNKNOWN_loader_integration_failure",
+  "target_proof_discovered": false,
+  "target_searches": 0,
+  "worker_exit_code": 1,
+  "worker_kernel_peak_bytes": 297877504,
+  "worker_plan": {
+    "bytes": 71610,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/worker-plan-v1.json",
+    "sha256": "5484a4b72706885d94c941f80c8bd836d5ed777cd78598485e338e41796d3ee9"
+  },
+  "worker_stderr": {
+    "bytes": 2420,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-owner-v1/stderr-v1.txt",
+    "sha256": "a6253520378eb9e29f5766c6b572a1bf38d1e67fb6ac4496d2b8730abe8d7277"
+  },
+  "worker_stdout": {
+    "bytes": 0,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/replay-owner-v1/stdout-v1.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
