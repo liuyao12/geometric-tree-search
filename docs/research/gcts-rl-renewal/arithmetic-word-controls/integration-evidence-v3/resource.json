@@ -1,0 +1,63 @@
+{
+  "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+  "stage": "replay",
+  "status": "UNKNOWN_complete_stage_qualification",
+  "ROOT_final_accepted": false,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": false,
+    "owner_gate": false,
+    "post_write_gate": false,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": false,
+    "stage_identity": false,
+    "worker_complete": false,
+    "all_worker_direct_children_closed": false,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": false
+  },
+  "mismatches": [],
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "caller_elapsed_seconds": 23.536,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-plan-v1.json",
+    "sha256": "a27fd8f8956044c14b1a3b6e008989468ba9b4d8c1e4781815632b1bd306e985",
+    "bytes": 47418
+  },
+  "actual_tool": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "861f3d8537392cc53e29701b3761b861456bebe2d9b3564e512d01b0280c45eb",
+    "bytes": 1353
+  },
+  "owner": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "095d5e3228caf8d71cdd446b24945e8d769f731c294247990146a6b2f01d36be",
+    "bytes": 1514
+  },
+  "post_write": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "345dbfc0469b0dfaa271cb13f5401654e0fd69909cf3a883534de20712f70539",
+    "bytes": 595
+  },
+  "worker": null,
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+}

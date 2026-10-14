@@ -1,0 +1,18 @@
+{
+  "schema": "ROOT-genuine-same-isolate-tool-observation-v1",
+  "started_ms": 1792014715730,
+  "terminal_observed_ms": 1792014739266,
+  "terminal": {
+    "chunk_id": "e66f8b",
+    "wall_time_seconds": 4.224881667,
+    "exit_code": 0,
+    "original_token_count": 83,
+    "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 20.338136875, \"peak_bytes\": 388022272, \"worker_receipt\": \".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/worker-output-v1/Q-proof-neutral-controls-worker-receipt-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+  },
+  "literal_owner_command": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/run_owned_bridge_v2.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-plan-v1.json",
+  "caller_seconds": 23.536,
+  "finish_reserve_seconds": 1,
+  "source": "Date.now start and completion recorded within this awaited functions.exec isolate; terminal is the exact observed tool result.",
+  "target_searches": 0,
+  "controls_started": null
+}

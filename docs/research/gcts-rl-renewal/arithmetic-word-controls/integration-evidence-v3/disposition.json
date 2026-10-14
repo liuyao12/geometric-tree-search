@@ -1,0 +1,134 @@
+{
+  "ROOT_controls_qualified": false,
+  "ROOT_failure_account_reconciled": true,
+  "accepted_control_prefix": false,
+  "actual_executor_identity": "/root",
+  "actual_search_activation": false,
+  "actual_tool": {
+    "bytes": 1353,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "861f3d8537392cc53e29701b3761b861456bebe2d9b3564e512d01b0280c45eb"
+  },
+  "attempt": "fresh-v3-once-only-controls-V5",
+  "author_identity": "/root",
+  "construction": {
+    "bytes": 11700,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/ROOT-construction-v1.json",
+    "sha256": "9b21347cd3f87e1281feb67becd694c835be5443d2ebe4f5c92b0b43c24e12b9"
+  },
+  "controls_calls": 0,
+  "current_worker": {
+    "bytes": 122791,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v5.py",
+    "sha256": "6c05e3d04a9cf0438feadbd080446beaae98d3d14413e7f4154ab49228423193"
+  },
+  "diagnosis": {
+    "Source_flow_inference": "Module loading and original graph/runtime construction/registration completed. Observer constructor reached the full admitted recipe correspondence loop; final observer records/events/call-start/control suite/search were not reached.",
+    "completed_recipe_counter": null,
+    "model_fit": "No completed full initialization/control stage fit established under original shared20s.",
+    "nonprovability_claim": false,
+    "observed_failure": "shared20s exceeded after delegated guard in proof-observer initializer recipe loop",
+    "stage_time_attribution": "Unmeasured; full repeated source checks are a Source-level cost hypothesis, not a measured bottleneck."
+  },
+  "discovered_target_proofs": 0,
+  "failure_only_output": {
+    "bytes": 560,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/worker-output-v1/Q-proof-neutral-controls-failure-v1.json",
+    "sha256": "c420813cd57572221b458ad1a20dbf8406f7b9744fcca8e3cded6d752539150e"
+  },
+  "metadata_constructor": {
+    "bytes": 17460,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-controls-metadata-source-20261014/build_proof_neutral_controls_metadata_v3.py",
+    "sha256": "6a2bc3a0ae677872fc0b8a9bc03202ab3ac919b66fb817dad854b04cc6818d69"
+  },
+  "namespace": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014",
+  "next_step": "Investigate initialization work and a bounded, justified pure-allocation guard optimization with complete unchanged recipe correspondence, original code/parser/callback guards and absolute clocks. New Source/metadata qualification required; original model/caps unchanged.",
+  "observations": {
+    "all_reaped": true,
+    "caller_finish_reserve_seconds": 1,
+    "control_call_counters": 0,
+    "failure_only_status": "UNKNOWN",
+    "genuine_caller_seconds": 23.536,
+    "no_control_result_or_receipt": true,
+    "owned_elapsed_seconds": 20.338136875,
+    "owned_leftovers": [],
+    "owned_peak_bytes": 388022272,
+    "owned_samples": 162,
+    "worker_kernel_peak_bytes": 369704960
+  },
+  "owner": {
+    "bytes": 1514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "095d5e3228caf8d71cdd446b24945e8d769f731c294247990146a6b2f01d36be"
+  },
+  "owner_plan": {
+    "bytes": 47418,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-plan-v1.json",
+    "sha256": "a27fd8f8956044c14b1a3b6e008989468ba9b4d8c1e4781815632b1bd306e985"
+  },
+  "owner_tool_exit_code": 0,
+  "ownership_ledger": {
+    "bytes": 3390,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "97b09c1cd7264d336a958ac98b3dce9179aa252fcd1f71cf22f40e35bacc175e"
+  },
+  "post_write": {
+    "bytes": 595,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "345dbfc0469b0dfaa271cb13f5401654e0fd69909cf3a883534de20712f70539"
+  },
+  "preservation": "All three actual namespaces/old Sources remain immutable. No same-stage retry, reset, raised limit or accepted prefix.",
+  "prior_failures": [
+    {
+      "bytes": 6737,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-20261014/ROOT-reconciled-loader-failure-disposition-v1.json",
+      "sha256": "ed0051c10434cb4ea977831b7ef40e89efa09e9a306a9b9eb00df6f6de287c16"
+    },
+    {
+      "bytes": 7266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v2-20261014/ROOT-reconciled-object-registration-failure-disposition-v1.json",
+      "sha256": "2a95e638a1ae0316d5ec6f0bc1ec96b11528b95258084487e04c8ff588e5a408"
+    }
+  ],
+  "proof_routes_supplied": 0,
+  "resource14_accepted": false,
+  "resource_qualification": {
+    "bytes": 2663,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "ac6c3870fa51cd7848a08192e8c452195cd92a99cc8807d9951087323bb1eeb6"
+  },
+  "saved_failure_reconciliation": {
+    "ROOT_complete_paths_rehashed": 202,
+    "ROOT_literal_checks_rechecked": 1271,
+    "ROOT_raw_refs_rechecked": 895,
+    "ROOT_whole_ledger_matched": true,
+    "complete": true,
+    "independent_findings": {
+      "bytes": 1127141,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-observer-timeout-independent-20261014/findings-v1.json",
+      "sha256": "bf8bdf8124c8ea76bba32002e0ef7b5299b7552a4a561e16641e5764769e8dd5"
+    },
+    "independent_handoff": {
+      "bytes": 1088,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-observer-timeout-independent-20261014/handoff-v1.json",
+      "sha256": "9667eaca1bf7d9d195b39584569d45abfbf9e86cc139028fee18cdc6c49e713b"
+    },
+    "owned_samples": 162,
+    "scope": "Saved UNKNOWN failure record only. No semantic replay, resource/control or proof admission."
+  },
+  "schema": "ROOT-Q-proof-neutral-cold-controls-integration-failure-disposition-v1",
+  "scope": "Provisional saved UNKNOWN failure account. No runtime control/resource admission, proof discovery, full board, universal compiler, RL or GCTS benefit.",
+  "status": "UNKNOWN_SHARED_CLOCK_DURING_OBSERVER_INITIALIZATION_RECONCILED",
+  "stderr": {
+    "bytes": 1848,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/stderr-v1.txt",
+    "sha256": "55122141e2fca23426ca5f19efebc1aa15f6e7f370922ef328ec8ea1e649bbfa"
+  },
+  "target_searches": 0,
+  "worker_plan": {
+    "bytes": 74411,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/worker-plan-v1.json",
+    "sha256": "f7d966321754387558bdb5292f3e17b430b73c057220ca4178aa634b7b1503e4"
+  },
+  "worker_returncode": 1
+}

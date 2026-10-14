@@ -1,0 +1,37 @@
+{
+  "schema": "ROOT-guard-native-owner-terminal-v2",
+  "stage": "replay",
+  "status": "UNKNOWN_owned_phase_gate",
+  "resource_gate_accepted": false,
+  "error": null,
+  "cancelled": false,
+  "cleanup_errors": [],
+  "plan": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-plan-v1.json",
+    "sha256": "a27fd8f8956044c14b1a3b6e008989468ba9b4d8c1e4781815632b1bd306e985",
+    "bytes": 47418
+  },
+  "worker_receipt": null,
+  "elapsed_before_write_seconds": 20.336832416999997,
+  "write_reserve_seconds": 2,
+  "peak_bytes": 387743744,
+  "memory_write_reserve_bytes": 8388608,
+  "ROOT_peak_bytes": 15581184,
+  "worker_kernel_peak_bytes": 369704960,
+  "direct_children_peak_sum_bytes": 0,
+  "observer_peak_bytes": 2457600,
+  "observer_accounting": "explicit separate observer wait4 peaks; worker excluded",
+  "worker_returncode": 1,
+  "owned_leftovers": [],
+  "sampled_observations": 162,
+  "max_sampled_owned_rss_bytes": 369704960,
+  "ownership_ledger": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "97b09c1cd7264d336a958ac98b3dce9179aa252fcd1f71cf22f40e35bacc175e",
+    "bytes": 3390
+  },
+  "ownership_accounting_scope": "pinned owner source plus complete retained owned-row ledger; no independent whole-host observer claimed",
+  "all_direct_children_terminal_and_reaped": true,
+  "no_OS_hard_memory_limit_claim": true,
+  "scientific_stage": null
+}

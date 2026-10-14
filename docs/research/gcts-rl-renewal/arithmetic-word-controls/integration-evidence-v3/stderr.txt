@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v5.py", line 1537, in <module>
+    main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v5.py", line 1145, in main
+    observer=call_fn(construct_owned,'observer',registration=handles,guarded_call=call_fn,
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v5.py", line 966, in call
+    result=function(*args,**kwargs)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v5.py", line 538, in construct_owned
+    returned=original_call(initializer,obj,*arguments,**keywords)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v5.py", line 966, in call
+    result=function(*args,**kwargs)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v2.py", line 300, in __init__
+    runtime.check()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v2.py", line 175, in check
+    raise Unresolved('shared20s exceeded after delegated guard')
+_ROOT_cold_Q_driver.Unresolved: shared20s exceeded after delegated guard

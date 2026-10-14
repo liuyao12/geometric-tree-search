@@ -1,0 +1,142 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authoring_scope": {
+    "Q_preparation_or_witness_parses": 0,
+    "Source_and_small_saved_metadata_reads_only": true,
+    "actual_q_or_plan_emissions": 0,
+    "native": 0,
+    "not_execution_authorization": true,
+    "project_imports": 0,
+    "project_or_semantic_functions": 0,
+    "public_or_engine_edits": 0,
+    "rank_or_model_computations": 0,
+    "searches": 0,
+    "training": 0
+  },
+  "cost_and_reporting": {
+    "amortization_latex": "C_{\\mathrm{cold}}(N)=C_{\\mathrm{common}}+C_{\\mathrm{discover/mine}}+C_{\\mathrm{train/audit}}+\\sum_{j=1}^{N}C_{\\mathrm{query},j}",
+    "reuse": "Show one-shot and predeclared reuse-count totals/break-even separately; never make donor mining/training or per-query grounding free. Retain prior infrastructure failures separately from mathematical/search failures. No retrospective cap reset.",
+    "scope_flags": "Logical proof, original-Gamma sequent, current point union, actual selected origin, compatible-proposed origin, fullboard, native, full trajectory, quantified-profile, induction/PA, inventory admission and RL/performance claims remain separate. Unsupported native/fullboard/universal flags stay false.",
+    "statistics": "A tiny cohort can demonstrate effect or falsify utility on its exact scope; it cannot establish broad superiority. Report every paired raw outcome, completion/censoring reason, provenance and total cost, not only successful seeds or median successful time.",
+    "unit": "Sum genuine enclosing caller lifetimes for separate preparation/discovery/mining/admission/control/training/replay/query stages. Inner and owned subclocks are overlapping diagnostics, not additive costs. Include failed/incomplete/unexecuted work and cold input/cache/setup/grounding/serialization/cleanup; model/weight reuse is predeclared."
+  },
+  "expressiveness_vs_evidence": {
+    "automatic_discovery": "A target is discovered only by an authorized unsupplied search, with the declared original context and independent primitive/point/current-state/resource acceptance. A target mark on an empty row, a pending selected output, an authored calibration word or extracted old certificate is not a newly discovered target.",
+    "finite_compilation": "A complete finite formula/recipe/row domain admission certifies the declared bounded language and its point encoding. It does not prove the target, infinite-plane tiling, a universal proof-checker tile set, or useful search. Configured finite Wang/compiler relation tests remain a different evidence axis.",
+    "formal_first_order": "Common ASTs, capture-safe substitution and freshness-sensitive primitive rules establish declared representation/checking scope, not automatic discovery, full first-order search completeness or unrestricted PA. Current Q has primitive instantiate and true unary generalize with empty original Gamma; it has no induction. Older geometry-only/legacy role protocols that say arithmetic lacks instantiate do not describe the new Q profile.",
+    "inventory_transfer": "The existing extraction sealed all27 roots from three donor certificates/two correlated sequents and two finite candidate families. It did not grant universal family validity or new-recipient/scientific inventory admission. Every later ground instance needs original-recipient primitive licensing, strict ordered dependencies and compatible exact point union.",
+    "measurement": "Numerical policy controls, a changed score, a legal proposal, more forced moves or fewer branches do not establish proof-search improvement. The same checked endpoint and complete total-cost comparison are required."
+  },
+  "external_method_claims": "None made. The ordinary symbolic comparator is a prospective internal equal-language/equal-library control, not a current product/tool performance assertion.",
+  "grounded_primary_references": {
+    "Q_declaration": {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "Q_driver_contract": {
+      "bytes": 20547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-contract-v2.json",
+      "sha256": "3d6c9c787bf7c2faf9a20cc0ed5b7af3c500931744ce5ca7a2c2fb916833d312"
+    },
+    "Q_finite_admission": {
+      "bytes": 8563,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json",
+      "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1"
+    },
+    "Q_to_induction_scope": {
+      "bytes": 20506,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json",
+      "sha256": "d8c17f915e6c340f4299c34bfb6a3fbb8077f2a987a4c15860547e0a2c542289"
+    },
+    "configured_finite_Wang_scope": {
+      "bytes": 3677,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/tm-wang-two-phase-source-20261013/handoff-v1.json",
+      "sha256": "915bf8d34a8bb794c5071cb0c4f07d2ba0478dcfaeb61d0aa282ce25e0ede444"
+    },
+    "family_extraction_scope": {
+      "bytes": 7879,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "sha256": "757606d7a20048e5a8335559c96cf1749e1ab53f900bdff593fb10beeed8a173"
+    },
+    "family_integration_protocol": {
+      "bytes": 22799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-scientific-integration-plan-20261014/integration-plan-v1.json",
+      "sha256": "8b2eb74b5b5d164fb43472fcb4e5907a7b24ebf8f971cc0c328a0fd115108583"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "minimal_baseline_acceptance": {
+      "bytes": 14279,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-independent-source-20261014/minimal-control-acceptance-plan-v1.json",
+      "sha256": "a80011e2d89cc345a72a1ea92bcffcd7726bd403e927066388e238b785adc370"
+    },
+    "rank_marking_proposal": {
+      "bytes": 17062,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-marking-design-source-20261014/rank-marking-memo-v1.json",
+      "sha256": "1a2d73462332b1ec09fe49c441f784aec99be1e7d9641f2275175d6e4cf24577"
+    },
+    "restricted_RL_protocol": {
+      "bytes": 19813,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/protocol-v1.json",
+      "sha256": "1669b1591aad9504d9415dce7ddc2eebd09eb2d9393685c796f585e3a605c8b5"
+    },
+    "semantic_inventory_ground_check_boundary": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/external-hilbert-transfer-reproduce-20261011/source-snapshot/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    }
+  },
+  "milestones": [
+    {
+      "acceptance": "First distinguish runtime feasibility from proof discovery. Any claimed solved target needs the complete declared independent word/current-point/source/resource checks. A contribution comparison requires paired endpoint-identical outcomes and measured inclusive cold costs; a lone GCTS proof is feasibility, not superiority.",
+      "deliverable": "One genuine original Q canonical trial with complete accepted custody, actual call/event tape and all UNKNOWN reasons; independently check any naturally returned selected proof. Preserve deliberate-found rollback and fullboard separation.",
+      "fair_control": "After this first unchanged trial, separately qualify an ordinary symbolic word-search comparator over exactly the same finite licensed recipes, parameters, original Gamma, dependency/height bounds and stopping/checking endpoint. Translate/check every returned word against the original literal current point relation; no proof route, stronger library, free checker postlude or fullboard-vs-word objective mismatch. The comparator is explicitly ordinary symbolic search, not a silently altered GCTS scheduler.",
+      "falsification": "Setup/guard/serialization consumes the envelope and no qualified search/proof occurs; a pending target is mislabeled solved; or symbolic control obtains the same checked result more cheaply. UNKNOWN is not nonprovability and may expose an insensitive or unfitted benchmark rather than a theorem result.",
+      "id": "M1-fixed-language-automatic-baseline"
+    },
+    {
+      "GCTS_specific_ablation": "Only after a separate complete soundness/emission/graph/rollback gate, compare original versus certified redundant rank-marked point models with identical primitive proof language and scheduler. Preserve both marking epochs. Rejection must arise from literal translated m-value agreement and full dependencies, not a rank callback/target-backcone predicate. No rank implementation or admission is supplied here.",
+      "acceptance": "Every used donor-derived body and new ground instance independently expands to licensed primitives with strict prior/repeated receptor identity and whole current/fixed t/m agreement. Demonstrate actual family-dependent continuation effect and matched cold cost or accepted-target gain; separately report setup/mining/audit/grounding costs and unknown/unexecuted cases.",
+      "deliverable": "Freeze a small new context/composition cohort BEFORE its compilation/proposals/search labels. Use new original-Gamma occurrence arrangements and a longer composition stratum for the two certificate-mined transport roles; name-renaming copies remain one correlation stratum. Current exposed I2 cases are integration/calibration cases, not newly held-out evidence.",
+      "fair_controls": "Matched canonical point search, ordinary target-blind structural ordering, deterministic finite-family guidance and an equal-library ordinary symbolic reuse control. All consume the same audited candidate family schemes/current ground-instance checks and full primitive fallback. Use the SAME declared primary policy in every lane; actual selected proof and compatible unselected proposal counts remain separate. Do not compare a fullboard requirement in one lane to a short logical endpoint in another.",
+      "falsification": "No eligible dependency-complete receptors; only pending marks are used; gains disappear when the symbolic control gets the same library; or literal-marking savings disappear after complete production/audit/serialization costs. These outcomes would support no GCTS-specific advantage, even if inventory reuse itself helps.",
+      "id": "M2-inventory-transfer-and-marking-isolation",
+      "induction_boundary": "Arithmetic induction/family transfer is a later separately compiled and licensed profile, not obtained by importing Incident templates or Q admission. It requires complete bounded schema/propositional/discharge alternatives, capture/freshness/full-context guards and capacity qualification, with no old associativity word as input."
+    },
+    {
+      "acceptance": "All donor state/feature/menu/RNG/reward/gradient/EMA/weight/rollback traces independently replay; resource-unknown or partial episodes do not train. Actual changed whole-family selections/continuations must occur, not merely score changes. Held-out targets use exactly the declared checker/current-point endpoint. Practical improvement requires additional checked targets at the matched resource budget, or lower full cost for the same solved set after discovery/training/replay charges.",
+      "concrete_policy": "Reuse the reviewed mathV2 mixture/old-baseline/advantage-before-clipping semantics; the grounded small protocol specifies31 geometry structural features, epsilon0.1, temperature1, learning rate0.05 and EMA0.2. An eight-episode/four-donor/two-seed pilot is a reasonable prospective scale, with final qualified checkpoint only. Its real interface and endpoint/reward must be separately repinned: the old fullboard terminal reward cannot silently become a first-proof reward, and legacy four-role arithmetic features cannot silently be applied to Q unary tiles.",
+      "deferred": "Autoregressive append/STOP/COMMIT of irregular primitive clusters changes the action grammar and needs a further distinct Source/primitive-expansion/rollback gate. Do not claim this from the finite selector.",
+      "deliverable": "Use a separately admitted real-engine bridge to select explicit NULL or an exact validated single/pair family instance. The first restricted experiment learns whole-family utility; fixed pool membership/topology is not unrestricted learned construction or new lemma discovery.",
+      "fair_controls": "Same family inventory/pool/NULL/validator/full fallback and scheduler under deterministic fixed utility, zero-weight uniform mixture, trained mixture, and ordinary equal-library symbolic reuse. Pair stochastic seeds and balance run order. No evaluation adaptation or favorable restart/seed selection.",
+      "falsification": "Uniform/fixed/equal-library controls match or beat trained policy; only training contexts improve; incomplete audit prevents qualified weights; no actual action effect; or training/validation cost exceeds query savings. Rewarding pending outputs/duplicate rediscovery/macros invalidates the experiment rather than demonstrating RL.",
+      "freeze": "Before any donor trajectories or recipient outcomes, freeze a NEW disjoint context/composition split, complete pools, structural features, seeds, reward, update rules and final-checkpoint selection. Historical mixed-context outcomes must not become fresh holdout. Formula/rule/library overlap is disclosed; renaming/context holdout is not unseen-theorem generalization.",
+      "id": "M3-incremental-RL-whole-family-utility"
+    }
+  ],
+  "schema": "proof-contribution-three-milestone-research-note-v1",
+  "source_only": true,
+  "status": "RESEARCH_STRATEGY_ONLY_NOT_AN_ACTUAL_EXPERIMENT_PLAN",
+  "summary": "First earn a genuine fixed-model baseline. Then isolate certificate-mined inventory transfer and literal marking propagation from ordinary symbolic reuse. Only then measure incremental RL with the identical family pool and frozen donor-only updates.",
+  "unchanged_next_Q_baseline": {
+    "endpoint": "Dependency-complete actual selected target ancestry, whole original Gamma, independent six-rule word plus all24 current point/domain/fixed-mark relation, completed inside original clock. A short proof is not a full24 board, native/trajectory/PA/induction result.",
+    "limits": {
+      "caller_seconds": 90,
+      "events": 2000,
+      "owned_bytes": 536870912,
+      "owned_seconds": 60,
+      "primitive_attempts": 128,
+      "shared_inner_seconds": 20,
+      "worker_bytes": 524288000,
+      "worker_seconds": 55
+    },
+    "profile": "Original full admitted finite Q registry/recipes and all24 rows; original empty ordered Gamma, closed right-one target, model/authority/registry epochs unchanged. No new rank/family/proposer or old proof word/weight/trace input.",
+    "scheduler": "Global dead before observation/moves, global forced, then earliest generation; complete base candidates and exact whole rollback. Only genuinely exhausted child permits its restored-parent exclusion. Deliberate FOUND/UNKNOWN/cancel/late failure cannot justify exclusion.",
+    "status": "Integration failures and Source-qualified successors do not qualify an actual baseline or imply mathematical failure. Controls and actual search admission remain separate ROOT gates. This note changes neither.",
+    "target_latex": "\\forall n\\,\\bigl(n+S(0)=S(n)\\bigr)"
+  }
+}
