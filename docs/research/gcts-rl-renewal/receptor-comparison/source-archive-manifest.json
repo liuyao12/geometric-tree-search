@@ -1,5 +1,5 @@
 {
-  "schema": "Notebook159-reproduction-source-archive-manifest-v1",
+  "schema": "Notebook159-reproduction-source-archive-manifest-v2",
   "presentation_only": true,
   "root_source_members": [
     {
@@ -3187,6 +3187,72 @@
       "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/serialized_kernel.py",
       "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4",
       "bytes": 13977
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/ROOT-local-browser-checks-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/ROOT-local-browser-checks-v1.json",
+      "sha256": "7e1a1dd03cc0bfa4728eb2ff7c236492953714c8f654d9964ce8ca4a1fa416b6",
+      "bytes": 600
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/after/reader.css",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/after/reader.css",
+      "sha256": "0d9589c4a6a9ee6a16ce0a5908d4331ab868a4eeac7dd41530227a445ddf5ead",
+      "bytes": 2805
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/after/summary.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/after/summary.json",
+      "sha256": "c357e1860ca06c51a9ea0e1d2d86001be8e3e791dffd81a456dd967d52613992",
+      "bytes": 145300
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/after/viewer.js",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/after/viewer.js",
+      "sha256": "208d0e3f52afb217c035b51809ef9642a366314fb3516292d15db31c1df798a6",
+      "bytes": 14204
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/before/reader.css",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/before/reader.css",
+      "sha256": "15e4d10d0d2aef24a2707e0500deace1a1fb73c705986140a708cb0a7901ad80",
+      "bytes": 2698
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/before/source-archive-manifest.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/before/source-archive-manifest.json",
+      "sha256": "b4d131dbde6704c40e7e5b1782f5ebefb91f275a8cd309039130352628b3c1b7",
+      "bytes": 243247
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/before/summary.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/before/summary.json",
+      "sha256": "cf8c1285eba4838e01a48f477e64597cdc0794e31294b9ee0b252f7862e009bd",
+      "bytes": 145292
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/before/viewer.js",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/before/viewer.js",
+      "sha256": "3ef8cddd4d8388530e1167f444c7324cac7adfae80cd71c7ac9b1ca803076c85",
+      "bytes": 14203
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/independent-source-review-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/independent-source-review-v1.json",
+      "sha256": "adabe1b08f69245d8703f49333fed0e62738870a4e5debf1bca1dae0bf98e017",
+      "bytes": 5721
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/refresh_reproduction_v1.py",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/refresh_reproduction_v1.py",
+      "sha256": "0fdf48c559d0fb9834a1f8cb6344b1d0bde9ab7da30d7b6b05c96be5c424d8b5",
+      "bytes": 4813
+    },
+    {
+      "member": ".gcts-active/notebook159-live-display-repair-source-20261014/repair-record-v1.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/notebook159-live-display-repair-source-20261014/repair-record-v1.json",
+      "sha256": "003e24b163122d1114496803fbb1be13c49fad550faa5adbc707a3bdb99f40e9",
+      "bytes": 1814
     }
   ],
   "external_runtime_raw_references": [
@@ -3214,8 +3280,8 @@
   "public_members": [
     {
       "member": "PUBLIC/summary.json",
-      "sha256": "cf8c1285eba4838e01a48f477e64597cdc0794e31294b9ee0b252f7862e009bd",
-      "bytes": 145292
+      "sha256": "c357e1860ca06c51a9ea0e1d2d86001be8e3e791dffd81a456dd967d52613992",
+      "bytes": 145300
     },
     {
       "member": "PUBLIC/qualification.json",
@@ -3224,8 +3290,8 @@
     },
     {
       "member": "PUBLIC/reader.css",
-      "sha256": "15e4d10d0d2aef24a2707e0500deace1a1fb73c705986140a708cb0a7901ad80",
-      "bytes": 2698
+      "sha256": "0d9589c4a6a9ee6a16ce0a5908d4331ab868a4eeac7dd41530227a445ddf5ead",
+      "bytes": 2805
     },
     {
       "member": "PUBLIC/independent-saved-review.json",
@@ -3244,8 +3310,8 @@
     },
     {
       "member": "PUBLIC/viewer.js",
-      "sha256": "3ef8cddd4d8388530e1167f444c7324cac7adfae80cd71c7ac9b1ca803076c85",
-      "bytes": 14203
+      "sha256": "208d0e3f52afb217c035b51809ef9642a366314fb3516292d15db31c1df798a6",
+      "bytes": 14204
     },
     {
       "member": "PUBLIC/arithmetic-failure.json",
@@ -3356,7 +3422,8 @@
   "scope": "All scientific plans/closures, complete six returned tapes, retained first failed invocation, arithmetic unaccepted provisional output, reviews and current compatibility Source. Runtime binaries referenced by exact raw hashes, not distributed. No unrelated workspace changes.",
   "archive": {
     "path": "reproduction.zip",
-    "sha256": "a251f5b16fc28d57ddb6342557287a91179c544b1bd2c9715123bfd0e971a1e6",
-    "bytes": 7258356
-  }
+    "sha256": "e3b8dec9f022321ea4d9897204b10a33c0bb86f4900f15cbed9f37175eb6966b",
+    "bytes": 7327500
+  },
+  "display_correction_scope": "Narrow-grid sizing and phrase spacing only; all six scientific tapes and trial objects unchanged."
 }

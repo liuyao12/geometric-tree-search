@@ -122,7 +122,7 @@ function proofView(trial){
   const view=byId('proof-view');view.replaceChildren();
   const scope=byId('proof-scope');
   if(!trial){scope.textContent='No saved trial is attached.';view.append(pending('Proof rows remain pending.'));return;}
-  scope.textContent=`${trial.proof_rows.length?'The same19 commands as the earlier known proof, freshly timed and checked here. ':''}Saved status: ${trial.status}. Saved logical acceptance flag: ${trial.logical_accepted}. Origin: ${trial.origin_kind||'not supplied'}. Registry completed: ${trial.registry_completed}. These display fields issue no new acceptance.`;
+  scope.textContent=`${trial.proof_rows.length?'The same 19 commands as the earlier known proof, freshly timed and checked here. ':''}Saved status: ${trial.status}. Saved logical acceptance flag: ${trial.logical_accepted}. Origin: ${trial.origin_kind||'not supplied'}. Registry completed: ${trial.registry_completed}. These display fields issue no new acceptance.`;
   if(!trial.proof_rows.length){view.append(pending('No proof rows are attached for this saved trial. Its status and costs remain visible in the comparison table.'));return;}
   const rows=[...trial.proof_rows].sort((a,b)=>a.physical_row-b.physical_row),layout=node('div',undefined,'proof-layout'),cards=node('div');
   layout.append(tileDiagram(rows),cards);
