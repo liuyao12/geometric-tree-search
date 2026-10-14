@@ -1,0 +1,1061 @@
+{
+  "ROOT_final_accepted": true,
+  "actual_once_only_trials": 4,
+  "all_inventories_empty": true,
+  "assessment": "The saved actual bounded outcomes are reported without selecting successes only. I.2 use requires the named axiom to lie in the strict dependency closure and be consumed by modus ponens, rather than merely being available in the catalogue. Selected ancestry and compatible unselected proposal origins are separate. The generic adviser is conventional target-blind witness search, not RL; no superiority or full research-objective claim.",
+  "author_identity": "/root",
+  "checked_logical_derivations": 1,
+  "complete_resources_accepted": 4,
+  "completed_unselected_source_proposals": 1,
+  "construction": {
+    "bytes": 30774,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/ROOT-construction-v1.json",
+    "sha256": "5b133e1d0fa3a4e8be74684a2fa2c9c4e3fa43c2498c5777fab5b469b60687c7"
+  },
+  "distinct_proved_sequents": 1,
+  "endpoint_preregistration": {
+    "bytes": 2483,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-first-checked-endpoint-preregistration-v1.json",
+    "sha256": "23fff0c25bc2b050b670fe44f35fac0ef6694598517621861a031683e9ce4b26"
+  },
+  "essential_I2_derivations": 1,
+  "full24_board_accepted": false,
+  "independent_full_trajectory_accepted": false,
+  "independent_saved_audit": {
+    "bytes": 1497164,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-four-lane-actual-saved-findings-v1.json",
+    "sha256": "1cffc498a3880ffbb349dca9ba24a425a71c397428b2f3ec4fda5dd32989292d"
+  },
+  "learned_marking": false,
+  "mathematical_authority": "Actual timed independent GroundChecker and literal point/current-union checks in the exact source-sealed observer, with each complete cold owned/caller resource chain. Peer saved audit and this seal reconcile metadata without semantic replay.",
+  "native_accepted": false,
+  "new_RL_training": false,
+  "performance_comparison_accepted": false,
+  "preregistered_endpoint_unchanged": true,
+  "preserved_UNKNOWN_trials": 3,
+  "proof_input_sequences_supplied": false,
+  "provenance": {
+    "bytes": 9373,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/seal_ROOT_first_proofs_v1.py",
+    "sha256": "941c442a12e19b655002973f822ed0c878226d17ebd1c92630b0aef89dd8d35e"
+  },
+  "research_program_complete": false,
+  "restarts": 0,
+  "schema": "ROOT-I2-first-checked-proofs-disposition-v1",
+  "scientific_calls_in_this_metadata_seal": 0,
+  "selected_derivations": 0,
+  "trials": [
+    {
+      "ROOT_checked_logical_derivation_accepted": false,
+      "caller_seconds_with_margin": 23.162,
+      "candidate_advice_construction": null,
+      "conservative_peak_bytes": 75612160,
+      "consumed_original_occurrence_indices": [],
+      "essential_I2_in_strict_dependency_closure": false,
+      "events": 2000,
+      "exact_original_Gamma": [
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "u",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "eq",
+        [
+          "fun",
+          "v",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "canonical",
+      "logical_certificate": null,
+      "mode": "base",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": null,
+      "owned_postwrite_seconds": 17.341752041000003,
+      "performance_comparison_accepted": false,
+      "placements": 94,
+      "qualified_context": {
+        "bytes": 10426,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+        "sha256": "5ffe3b6dc1eb5b0e019d3ca248454c90bcbb47f521d095455497d06b982123c1"
+      },
+      "resource_disposition": {
+        "bytes": 3848,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "c2fb82c980de4aac2bc9e4bf3236c47fe6e40e16bc252fb35db77bef1a4695cb"
+      },
+      "result": {
+        "bytes": 137307,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "e5acbd868e60d72b9a9e061c9c19822fdab509387c2b84cf5e5d08426dbe5277"
+      },
+      "rule_census": {},
+      "search_seconds": 15.840573125,
+      "selector": "fresh-i2-CD-vw-direct",
+      "status": "unknown_trace_budget",
+      "trace_complete": false
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": false,
+      "caller_seconds_with_margin": 26.32,
+      "candidate_advice_construction": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5043
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 145,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1348,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 381,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.025492417000000045,
+        "settled_formula_codes": 1346,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.025602582999999957,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "conservative_peak_bytes": 59146240,
+      "consumed_original_occurrence_indices": [],
+      "essential_I2_in_strict_dependency_closure": false,
+      "events": 106,
+      "exact_original_Gamma": [
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "u",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "eq",
+        [
+          "fun",
+          "v",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "generic-incidence-ordering",
+      "logical_certificate": null,
+      "mode": "seed_forward",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": null,
+      "owned_postwrite_seconds": 20.771232834,
+      "performance_comparison_accepted": false,
+      "placements": 7,
+      "qualified_context": {
+        "bytes": 10426,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+        "sha256": "5ffe3b6dc1eb5b0e019d3ca248454c90bcbb47f521d095455497d06b982123c1"
+      },
+      "resource_disposition": {
+        "bytes": 3952,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "072b050029730667c60ad718f3dc37754df6d0380c41ce8390248368259ceccd"
+      },
+      "result": {
+        "bytes": 28369,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "752b87efcd896bb9e934e69d7f5d650207574c7d4207796aa0b6ba37005e795b"
+      },
+      "rule_census": {},
+      "search_seconds": 20.016662833999998,
+      "selector": "fresh-i2-CD-vw-direct",
+      "status": "unknown_search_budget",
+      "trace_complete": false
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": true,
+      "caller_seconds_with_margin": 7.638,
+      "candidate_advice_construction": {
+        "all_licenses_scanned": 2921,
+        "atomic_Incident_seed_codes": [
+          5043
+        ],
+        "atomic_formula_heads_scanned": 5112,
+        "cache_scope": "immutable catalogue/context/original-seed closure only",
+        "completed": true,
+        "control": "specialized conventional incidence-priority seed-forward AND-witness ordering",
+        "cost_objective": "minimum positive additive TREE cost; seed0; licence1+sum ordered input costs",
+        "distinct_AND_dependencies": 3836,
+        "eligible_seed_consuming_roots": 145,
+        "every_original_eligible_root_retained": true,
+        "formula_count": 5112,
+        "heap_pops": 1348,
+        "incidence_priority_root_count": 2,
+        "inventory_admission": false,
+        "learned_marking": false,
+        "minimum_witness_only_incomplete_advice": true,
+        "new_RL_training": false,
+        "nonzero_port_licenses_fired": 381,
+        "ordered_input_ports": 3836,
+        "predicate_role_is_logical_sort": false,
+        "root_order": "Incident conclusion plus original Incident-seed witness ancestry first; original cost/code/recipe order within both buckets",
+        "seconds": 0.027809374999999914,
+        "settled_formula_codes": 1346,
+        "shared_DAG_cardinality_minimized": false,
+        "supplied_proof_input": false,
+        "target_consulted_for_symbolic_selection": false,
+        "total_construction_call_seconds": 0.027950166,
+        "version": "target-blind-incidence-priority-witness-order-v2"
+      },
+      "conservative_peak_bytes": 55541760,
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "essential_I2_in_strict_dependency_closure": true,
+      "events": 14,
+      "exact_original_Gamma": [
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "u",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "generic-incidence-ordering",
+      "logical_certificate": {
+        "bytes": 30318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "7d0c2c78be2e6e3768312e164ef25ba49b7c950ef197128eb3798d88cd477863"
+      },
+      "mode": "seed_forward",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": "completed_source_proposal",
+      "owned_postwrite_seconds": 3.5851033329999997,
+      "performance_comparison_accepted": false,
+      "placements": 0,
+      "qualified_context": {
+        "bytes": 10569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+        "sha256": "9fb1285ff155fde0345d20edf720ccf9a0eaa2b19bb6e0f5e81bb882157acc51"
+      },
+      "resource_disposition": {
+        "bytes": 4412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6326298f907ef28e834f483ab585e09100f20c1fd5f9e6674ebad1834287f21c"
+      },
+      "result": {
+        "bytes": 12513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "a53aab03a7e45e7d5e64086ccce777f674327de97f3fa14ad6af9cabb75c3cca"
+      },
+      "rule_census": {
+        "assumption": 3,
+        "axiom": 1,
+        "eq_subst": 2,
+        "instantiate": 4,
+        "mp": 9
+      },
+      "search_seconds": 2.765110584,
+      "selector": "fresh-i2-CD-vw-incidence-transport",
+      "status": "first_checked_original_Gamma_target_proof",
+      "trace_complete": true
+    },
+    {
+      "ROOT_checked_logical_derivation_accepted": false,
+      "caller_seconds_with_margin": 22.418,
+      "candidate_advice_construction": null,
+      "conservative_peak_bytes": 74694656,
+      "consumed_original_occurrence_indices": [],
+      "essential_I2_in_strict_dependency_closure": false,
+      "events": 2000,
+      "exact_original_Gamma": [
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Point",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Line",
+                  [
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "not",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "u",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ]
+      ],
+      "exact_target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ],
+      "full24_board_accepted": false,
+      "independent_full_trajectory_accepted": false,
+      "lane": "canonical",
+      "logical_certificate": null,
+      "mode": "base",
+      "native_accepted": false,
+      "new_RL_training": false,
+      "origin_kind": null,
+      "owned_postwrite_seconds": 18.552904334,
+      "performance_comparison_accepted": false,
+      "placements": 96,
+      "qualified_context": {
+        "bytes": 10569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+        "sha256": "9fb1285ff155fde0345d20edf720ccf9a0eaa2b19bb6e0f5e81bb882157acc51"
+      },
+      "resource_disposition": {
+        "bytes": 3925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "3171ec3ddb2185e8f0c15e0713c069a621d16496dccd94b8c720a0e3b676f9d9"
+      },
+      "result": {
+        "bytes": 138849,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "1f928638538683a76e8b84317f131890b9ae607f2473eae8baabfea9dc2c502f"
+      },
+      "rule_census": {},
+      "search_seconds": 17.0582245,
+      "selector": "fresh-i2-CD-vw-incidence-transport",
+      "status": "unknown_trace_budget",
+      "trace_complete": false
+    }
+  ],
+  "universal_compiler_accepted": false,
+  "whole_plane_tiling_accepted": false
+}

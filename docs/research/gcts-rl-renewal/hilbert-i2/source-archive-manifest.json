@@ -1,0 +1,2150 @@
+{
+  "archive": {
+    "bytes": 2607591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/public-report-display-v2/reproduction.zip",
+    "sha256": "161826835d7c542c3a62b91f84212895846bfcfdbd020c28fe2f4615325b8f28"
+  },
+  "display_only_successor": true,
+  "external_runtime_files_not_redistributed": [
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 137888,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952"
+    },
+    {
+      "bytes": 135472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+    },
+    {
+      "bytes": 170816,
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02"
+    }
+  ],
+  "independent_display_review": {
+    "bytes": 5534,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-independent-20261014/display-v2-findings-v1.json",
+    "sha256": "74689b6ac5fb35c5c481f2f1ea116bc1c9e3292e33bd5b74de6c45fbc00dd9dc"
+  },
+  "members": [
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "source": {
+        "bytes": 14720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+        "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "source": {
+        "bytes": 29230,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+        "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "source": {
+        "bytes": 20787,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+        "sha256": "d638f7152ec7fa8293adbd8915b79de60f95d0756952bdc6bf0e40b15f549ca0"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+      "source": {
+        "bytes": 44888,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-compiler-source-20261012/compact_declaration_compiler_v3.py",
+        "sha256": "be5d6fdf80a28effaefb1e0fa69bfce32dd262d05db8a7a0eed377d51e72481c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+      "source": {
+        "bytes": 22203,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-engine-source-20261012/compact_prepare_worker_v3.py",
+        "sha256": "db4f65b1ac6a21410707eb6c31f20de4c96672327b1aa7a6dcc40085bd932236"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+      "source": {
+        "bytes": 36646,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-identity-engine-source-20261012/independent_compact_audit_worker_v3.py",
+        "sha256": "2256ca596ff4f432e12479e7006c04f0cc21f85999680d0c5b8844931515ae81"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "source": {
+        "bytes": 15171,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+        "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "source": {
+        "bytes": 7441,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+        "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+      "source": {
+        "bytes": 13588,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_grammar_v1.py",
+        "sha256": "86b8c916344c34629450bc12a0251b8ec9a0c29ce1542d1e039966879fb3278e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+      "source": {
+        "bytes": 25358,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-streamed-consumers-source-20261012/compact_cluster_proposal_v2.py",
+        "sha256": "1d094e7f51c7607cc121a48e0bc55f4daf2cc7801701eea34a2bb552f1505b38"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+      "source": {
+        "bytes": 23504,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-independent-review-20261012/fresh_catalog_oracle_v1.py",
+        "sha256": "a9c960735f0f132933dd8e6c3aa44fa9c1b36efd44ecdcb24279929690dc773e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-policy-source-20261012/cluster_episode_contract_v1.py",
+      "source": {
+        "bytes": 2643,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-policy-source-20261012/cluster_episode_contract_v1.py",
+        "sha256": "15df2b2d8e29cec2e9fe0ec34afe0bed6c3e0c941dec2c7a0e19db0c709aaa9b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+      "source": {
+        "bytes": 24474,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fixtures-v2.json",
+        "sha256": "b17ba2cea0dd5d595e39c7c38f3d7cefce2d2c040ba1f3fd4a4aa10418bd99f8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+      "source": {
+        "bytes": 16384,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fresh_declaration_compiler_v1.py",
+        "sha256": "85c3e676d05d36d7867dd11105c022d94725a520dbe37b43baabce83ef4da3d0"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+      "source": {
+        "bytes": 10803,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-theorem-source-20261012/fresh_prepare_worker_v1.py",
+        "sha256": "4f1e1b0dc181cac5b667f8fbe42419c06811abe12e197ecdbd7b09ca4904bd12"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+      "source": {
+        "bytes": 13756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/curriculum-compact-wrapper-source-20261012/compact_static_transport_v1.py",
+        "sha256": "65a0b598966ae4dffdda1b770eb2d4d5b64af1bcaf6aead4281a224a4123def3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+      "source": {
+        "bytes": 11607,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-learning-20261012/family_policy_math_v2.py",
+        "sha256": "61b772b45ed4523ba4c14ae4519cd9dae53c21d4dc1b1681689011707831c294"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+      "source": {
+        "bytes": 12386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/family-proposal-rl-small-source-20261012/family_graph_features_v1.py",
+        "sha256": "644e4cd195f98c1ca3f97c3fcba84dfdbc18765454512435702951cc6169a14b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/fresh-equality-first-proof-runner-source-20261013/fresh_observer_overlay_v1.py",
+      "source": {
+        "bytes": 18033,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runner-source-20261013/fresh_observer_overlay_v1.py",
+        "sha256": "3ebe4e96ddce79e4e2e2bfa4bd845a26a1fe27ab1784842adbc526f6a0443065"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/fresh-equality-first-proof-runner-source-v2-20261013/leaf-source-contract-v2.json",
+      "source": {
+        "bytes": 15653,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runner-source-v2-20261013/leaf-source-contract-v2.json",
+        "sha256": "60a5453212a72ee9c74164de7cc21079ad1a46518e9a6de7de731c096e948903"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/fresh-equality-first-proof-runner-source-v2-20261013/metadata-source-contract-v1.json",
+      "source": {
+        "bytes": 12138,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runner-source-v2-20261013/metadata-source-contract-v1.json",
+        "sha256": "559890bc94ad29664b960e0f60e847e70ffef9c0a806e7ec5d4ee6e465a34d54"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/fresh-equality-first-proof-runtime-source-20261013/compact_first_checked_proof_dfs_v11.py",
+      "source": {
+        "bytes": 42024,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/compact_first_checked_proof_dfs_v11.py",
+        "sha256": "a2cf1bb6d3ede1695d08f7c0d6f709bd5e9a6bc493ff06f1febe2fd4650269e4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "source": {
+        "bytes": 35568,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+        "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-deterministic-incidence-three-lane-progress-v2-20261013/base/platform-review-v1.json",
+      "source": {
+        "bytes": 3039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-deterministic-incidence-three-lane-progress-v2-20261013/base/platform-review-v1.json",
+        "sha256": "fa7ea6394eb4586910dd75e0c32e274d4f31c9fd6cc9164ea0742300902cfcda"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "source": {
+        "bytes": 43532,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+        "sha256": "b60869d015f5f60caa726864595a6293a4566ffdf04403c2499ade76987ef831"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+      "source": {
+        "bytes": 5565,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+        "sha256": "91ed32762629eb127319d3710b9f7fab8d05a87226b203497d346bb6104cfbc7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-actual-complete-static-geometry-disposition-v1.json",
+      "source": {
+        "bytes": 91255,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-actual-complete-static-geometry-disposition-v1.json",
+        "sha256": "69998c957bcf604c695f6a29c9f64564b35ce1b3c09d7d15fbbd23c485b634ab"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-direct-preparation-preactivation-sandbox-failure-v1.json",
+      "source": {
+        "bytes": 2081,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-direct-preparation-preactivation-sandbox-failure-v1.json",
+        "sha256": "8ea3118bff7f11c2ff8c5a893049ef6ad4445f51e2050acfec16e07f57548c25"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-first-checked-endpoint-preregistration-v1.json",
+      "source": {
+        "bytes": 2483,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/ROOT-first-checked-endpoint-preregistration-v1.json",
+        "sha256": "23fff0c25bc2b050b670fe44f35fac0ef6694598517621861a031683e9ce4b26"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/freeze_static_reviews_v1.py",
+      "source": {
+        "bytes": 6686,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/freeze_static_reviews_v1.py",
+        "sha256": "cba4b9c10ef95ef7e7078ce782bd2c19dba1c3b3feaebfac04c9ee8f60b5bfff"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-request-v1.json",
+      "source": {
+        "bytes": 635,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-request-v1.json",
+        "sha256": "1012bc11980eb0994881a8716d688b603990dcd61e2828bad0adecd3735e67c7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 7275,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-audit-ROOT-source-review-v1.json",
+        "sha256": "bc9c2a0bfd243f05316db32144147bb56006af678b550513ca298b8ce36551ec"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-request-v1.json",
+      "source": {
+        "bytes": 639,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-request-v1.json",
+        "sha256": "19cd732b7e60b76221662a2c85ed4fbaeac14a0bfd8cb3cc319eb08a15e6d8be"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 7245,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-direct-prepare-ROOT-source-review-v1.json",
+        "sha256": "7c3a4442973602e85eb5035f49e3bd66b87cbec65cf1c05193a0031c4628f542"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-request-v1.json",
+      "source": {
+        "bytes": 674,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-request-v1.json",
+        "sha256": "03897b88e8e9b2f9501afc603fe205db24595860f6d4477fb46c490014f1cc30"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 7301,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-audit-ROOT-source-review-v1.json",
+        "sha256": "0d2864f2a826af44a6201d7a965a4b73135fd5e72dab0776c538448ffb7cc83a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-request-v1.json",
+      "source": {
+        "bytes": 678,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-request-v1.json",
+        "sha256": "03d0a3b25225639a13545843116baabf4fe3d02b979ebc5cc9a80a9347b090d7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 7271,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/fresh-i2-CD-vw-incidence-transport-prepare-ROOT-source-review-v1.json",
+        "sha256": "e7612a0112612006c8f8b5bf21be1cc0752db7720a560e8215773c8158cdb1dc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-ROOT-source-20261013/seal_static_i2_v1.py",
+      "source": {
+        "bytes": 8950,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-ROOT-source-20261013/seal_static_i2_v1.py",
+        "sha256": "f8dcab8da701759645bf2a9cd64ccbe14873a15f755857524ea6759a5ad6ca14"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-design-independent-20261013/findings-v1.json",
+      "source": {
+        "bytes": 5465,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-design-independent-20261013/findings-v1.json",
+        "sha256": "63f97a3ffcaca8d54c441ba3835691b52cc3a6c47e84797576ee2702922cb8e4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-implementation-source-20261014/i2_first_proof_worker_v1.py",
+      "source": {
+        "bytes": 58162,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-implementation-source-20261014/i2_first_proof_worker_v1.py",
+        "sha256": "8bca959bcdbce23db1280ea583be3aab0792bbab8dd2606269a164df814c475c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-implementation-source-20261014/worker-source-contract-v1.json",
+      "source": {
+        "bytes": 11297,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-implementation-source-20261014/worker-source-contract-v1.json",
+        "sha256": "0a85a387e6824f762dd6a7a141af2abeb3e1d0fe574cf8cb9e82b8e72dac63ca"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-actual-first-checked-I2-proofs-v1.json",
+      "source": {
+        "bytes": 31951,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-actual-first-checked-I2-proofs-v1.json",
+        "sha256": "1bfae2aac3a86271e5895726e2271e9544972261fb553143126645ccfd28a5da"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-first-proof-metadata-request-v1.json",
+      "source": {
+        "bytes": 4932,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-first-proof-metadata-request-v1.json",
+        "sha256": "44ca861acbdf30db2876a62a70eee4fbfe7b51d6b9959ba7e00514071150dc42"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-helper-SOURCE-review-v1.json",
+      "source": {
+        "bytes": 4215,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-helper-SOURCE-review-v1.json",
+        "sha256": "8422727811692be244f7122f54818be51c10b311a3f9393233d30c001f337884"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-metadata-SOURCE-review-v1.json",
+      "source": {
+        "bytes": 2716,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-metadata-SOURCE-review-v1.json",
+        "sha256": "a555078b459134b8c7d68709cdd5400524b45f58349f1a0745713006cd5485f1"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-owner-SOURCE-review-v1.json",
+      "source": {
+        "bytes": 2691,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-owner-SOURCE-review-v1.json",
+        "sha256": "6ac249baf74351a13aa0ea00520efc82c512620382923a33654a07bcbf5c4c0f"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-platform-SOURCE-review-v1.json",
+      "source": {
+        "bytes": 3990,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/ROOT-platform-SOURCE-review-v1.json",
+        "sha256": "4589a7f24d727c6c6cc47636a8b88b322303d794231e2ea45236b95ab97e55fb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/freeze_ROOT_first_proof_request_v1.py",
+      "source": {
+        "bytes": 6225,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/freeze_ROOT_first_proof_request_v1.py",
+        "sha256": "635134616bf91dea41e2d9d0ede0a0ba822e0beb19c274f84011ac9d536d53bd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/seal_ROOT_first_proofs_v1.py",
+      "source": {
+        "bytes": 9373,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-ROOT-source-20261014/seal_ROOT_first_proofs_v1.py",
+        "sha256": "941c442a12e19b655002973f822ed0c878226d17ebd1c92630b0aef89dd8d35e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "source": {
+        "bytes": 64498,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+        "sha256": "c8fa4aeba82fcc2af9bd091fd351d72f86a24ae97cb5edd92ff558e81c23501b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-metadata-source-findings-v1.json",
+      "source": {
+        "bytes": 25848,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-metadata-source-findings-v1.json",
+        "sha256": "cc7e622c73ae9af6b68d96d0f3dbc519eda8644029548d2cc0597f3b9b294dcc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-metadata-source-review-v1.json",
+      "source": {
+        "bytes": 1497,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-metadata-source-review-v1.json",
+        "sha256": "dc9a5ba04df2f64d182b98fa7ad2bf3a5712c716feb52904140ad9fa24d55349"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-owner-source-review-v1.json",
+      "source": {
+        "bytes": 1475,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-owner-source-review-v1.json",
+        "sha256": "b01b07c802fd6314faf30071ff378510434de4a463830eba15a46340ec9e4d07"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-owner-terminal-source-findings-v1.json",
+      "source": {
+        "bytes": 14462,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-integration-review-20261014/I2-owner-terminal-source-findings-v1.json",
+        "sha256": "dc41ff544aca1d48430192dc90f5bc7ec8826ea0a98a172e2445a2983013f6e7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-metadata-source-20261014/build_i2_first_proof_metadata_v1.py",
+      "source": {
+        "bytes": 27424,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-metadata-source-20261014/build_i2_first_proof_metadata_v1.py",
+        "sha256": "0fb76a48d3a9adc65ee724ee87ace1fee5293650836eb56c4d46f56889807553"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-metadata-source-20261014/leaf-source-contract-v1.json",
+      "source": {
+        "bytes": 16258,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-metadata-source-20261014/leaf-source-contract-v1.json",
+        "sha256": "3c97c16ff7aa0707ea0994dcb386c50f8fef99abd28d50ea301c0956e69d81ec"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-metadata-source-20261014/metadata-source-contract-v1.json",
+      "source": {
+        "bytes": 16538,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-metadata-source-20261014/metadata-source-contract-v1.json",
+        "sha256": "e0ae8ba26aca575f485810ac8bc61b00d26a77021a75d6d3a0f0b8381fc93beb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-owner-source-20261014/handoff-v1.json",
+      "source": {
+        "bytes": 8308,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-owner-source-20261014/handoff-v1.json",
+        "sha256": "a78085e9c83d85415c9a88648e248d920f97688750ab52eb63b7801e77f33a98"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-owner-source-20261014/i2_first_proof_owner_v1.py",
+      "source": {
+        "bytes": 46528,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-owner-source-20261014/i2_first_proof_owner_v1.py",
+        "sha256": "293f8251b31eef6bd95ba3874248d1f166b8ef8bb834fb0bf3fda159cacd3399"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-owner-source-20261014/i2_first_proof_terminal_v1.py",
+      "source": {
+        "bytes": 31060,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-owner-source-20261014/i2_first_proof_terminal_v1.py",
+        "sha256": "68accb4f303331f19ca91e322f68b31946eecba8d5973e1f91ca5c7cb08b78f0"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/ROOT-construction-v1.json",
+      "source": {
+        "bytes": 30774,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/ROOT-construction-v1.json",
+        "sha256": "5b133e1d0fa3a4e8be74684a2fa2c9c4e3fa43c2498c5777fab5b469b60687c7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/ROOT-resource-disposition-v1.json",
+      "source": {
+        "bytes": 3848,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "c2fb82c980de4aac2bc9e4bf3236c47fe6e40e16bc252fb35db77bef1a4695cb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/actual-terminal-v1.json",
+      "source": {
+        "bytes": 3288,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/actual-terminal-v1.json",
+        "sha256": "1cec10994cb5a786a4c524a22b4d23c7065b838f57af801648074e31a74ed96a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 4493,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "542fcf89243a4819bf61019677e0a0bc541d2ed7ca439fffe691132169616088"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/launch-v1.json",
+      "source": {
+        "bytes": 1329,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/launch-v1.json",
+        "sha256": "a7a0df69daa681ba4cb37a04170f83160af27457ff9c8243a07872c8cedbc879"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/ownership-ledger-v1.json.gz",
+      "source": {
+        "bytes": 15088,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "7fcd24fe735391458d7bf2b3bd5b6ec69e7bac8ff31cef78e9b96cdc1dc559b1"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 1251,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "f3027dac54a23a1da489d92cf0ba0eb1818abaa02f216e4e6a0741d7087700b6"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/provisional-terminal-v1.json",
+      "source": {
+        "bytes": 4493,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/provisional-terminal-v1.json",
+        "sha256": "542fcf89243a4819bf61019677e0a0bc541d2ed7ca439fffe691132169616088"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/worker-stderr-v1.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/worker-stderr-v1.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/worker-stdout-v1.bin",
+      "source": {
+        "bytes": 52,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/worker-stdout-v1.bin",
+        "sha256": "5e7529e555442765363f073571a20145fe3e7a13aae89949deebe1d5ba8956f4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-plan-v1.json",
+      "source": {
+        "bytes": 89302,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-plan-v1.json",
+        "sha256": "849ae3e4d972a2e34d4a11c559512006b9c264d8fa3bbdcc5916d9e3737449c3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/platform-review-v1.json",
+      "source": {
+        "bytes": 3990,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/platform-review-v1.json",
+        "sha256": "4589a7f24d727c6c6cc47636a8b88b322303d794231e2ea45236b95ab97e55fb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/prospective-terminal-contract-v1.json",
+      "source": {
+        "bytes": 2421,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/prospective-terminal-contract-v1.json",
+        "sha256": "5d73899456e4c2d5db6039352a54074a947db691aa7f08ef8973acae2f929868"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-activation-v1.json",
+      "source": {
+        "bytes": 2254,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-activation-v1.json",
+        "sha256": "e399aa4afe14e2e067f01a404d9fd86fb1b6f821a46a558922bbdd98ef3b29b3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/result-v1.json.gz",
+      "source": {
+        "bytes": 137307,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "e5acbd868e60d72b9a9e061c9c19822fdab509387c2b84cf5e5d08426dbe5277"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/worker-receipt-v1.json",
+      "source": {
+        "bytes": 11617,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "ea31db7787b5746f1cc843301e42ccd36ade6346e29623ef240e1e33e4024399"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-plan-v1.json",
+      "source": {
+        "bytes": 103339,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-plan-v1.json",
+        "sha256": "857b7b2b22557add112612a892cf63b2df3b8d822d20f378f9efc2cae33027a4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+      "source": {
+        "bytes": 3952,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "072b050029730667c60ad718f3dc37754df6d0380c41ce8390248368259ceccd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/actual-terminal-v1.json",
+      "source": {
+        "bytes": 3365,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "88a712f173abca8458801d234ef2cc62943cc46ba921d974742a81a90df10202"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 4636,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "54c66e70c62ac1817e126587cb9e286b78d75a59dcafb110c4f1e734acbe6cee"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/launch-v1.json",
+      "source": {
+        "bytes": 1380,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/launch-v1.json",
+        "sha256": "1730404670b03d350953b2302c94d430fd35c8d3c4d862fe1dfc91167687bc86"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/ownership-ledger-v1.json.gz",
+      "source": {
+        "bytes": 15904,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "97022044ed9db554ca661a484017d2c67e5ebda731f832a98fd8d95c0eb142ff"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 1292,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "b5d56cf90cbc92d42106a7ce24d609a5342b92fc9dd11b91ca8330905b051d4e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/provisional-terminal-v1.json",
+      "source": {
+        "bytes": 4636,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/provisional-terminal-v1.json",
+        "sha256": "54c66e70c62ac1817e126587cb9e286b78d75a59dcafb110c4f1e734acbe6cee"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/worker-stderr-v1.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/worker-stderr-v1.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/worker-stdout-v1.bin",
+      "source": {
+        "bytes": 52,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-output-v1/worker-stdout-v1.bin",
+        "sha256": "ec5e9e9932be455419e0b557644fd57f63e004c42b9cef98914cfa09740b2bde"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-plan-v1.json",
+      "source": {
+        "bytes": 89768,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/owner-plan-v1.json",
+        "sha256": "5fb6448b44e068b7149f4b7e41c684af6abe8ef4ea0dce1386887ea4d278fabe"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/platform-review-v1.json",
+      "source": {
+        "bytes": 3990,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/platform-review-v1.json",
+        "sha256": "4589a7f24d727c6c6cc47636a8b88b322303d794231e2ea45236b95ab97e55fb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/prospective-terminal-contract-v1.json",
+      "source": {
+        "bytes": 2480,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/prospective-terminal-contract-v1.json",
+        "sha256": "9195e3f1cd5f3744e188c7a9e651e87101d8d253809438734487f646b8c28bda"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-activation-v1.json",
+      "source": {
+        "bytes": 2279,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-activation-v1.json",
+        "sha256": "1156998b4e6215ee8cb72b3188b5d9d125fa955058411b9d7296dfcb89fb7c29"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+      "source": {
+        "bytes": 28369,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "752b87efcd896bb9e934e69d7f5d650207574c7d4207796aa0b6ba37005e795b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-output-v1/worker-receipt-v1.json",
+      "source": {
+        "bytes": 11668,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "b64e76955dce184c4c4f027299aa5b200433e444d169849f4f3a7e2aeaca1a6d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-plan-v1.json",
+      "source": {
+        "bytes": 103737,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/generic-incidence-ordering/worker-plan-v1.json",
+        "sha256": "a5d3197e6e6792c0c85cfd3fe218c2e49ef52a7573d007e8482faacb42cc6c5b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+      "source": {
+        "bytes": 10426,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-direct/qualified-context-v1.json",
+        "sha256": "5ffe3b6dc1eb5b0e019d3ca248454c90bcbb47f521d095455497d06b982123c1"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/ROOT-resource-disposition-v1.json",
+      "source": {
+        "bytes": 3925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "3171ec3ddb2185e8f0c15e0713c069a621d16496dccd94b8c720a0e3b676f9d9"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/actual-terminal-v1.json",
+      "source": {
+        "bytes": 3346,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/actual-terminal-v1.json",
+        "sha256": "92a87fa4bb9b8f7f583622b1cc4d0650d7a797e4c3c4322b1101b45abc2f190b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 4617,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "36d1bdbc5181f3819acc8aba476cb274281b48088caa07719eda3d7939d7e8bd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/launch-v1.json",
+      "source": {
+        "bytes": 1368,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/launch-v1.json",
+        "sha256": "ca4c869f8faea61d9482669acae55a82f6e883b2c96716b5aca50648d31ff706"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/ownership-ledger-v1.json.gz",
+      "source": {
+        "bytes": 15989,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "f72f0c1cf05f856c449119ef24ff22bc480cbd421356313ef21124c323e61b48"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 1284,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "654d0209c39275fe75c90ccf056542f0ac48c123527c342994c14bbc868edb7c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/provisional-terminal-v1.json",
+      "source": {
+        "bytes": 4617,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/provisional-terminal-v1.json",
+        "sha256": "36d1bdbc5181f3819acc8aba476cb274281b48088caa07719eda3d7939d7e8bd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/worker-stderr-v1.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/worker-stderr-v1.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/worker-stdout-v1.bin",
+      "source": {
+        "bytes": 52,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-output-v1/worker-stdout-v1.bin",
+        "sha256": "c28890141f036c0263072bf7e1eccec6a9fe0bceaa102dfdce399ca254dedb15"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-plan-v1.json",
+      "source": {
+        "bytes": 90407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/owner-plan-v1.json",
+        "sha256": "ae8ccb502280c8373b2a04747f4c23f22e1ded77fcd0a82fad392aac0e79b531"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/platform-review-v1.json",
+      "source": {
+        "bytes": 3990,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/platform-review-v1.json",
+        "sha256": "4589a7f24d727c6c6cc47636a8b88b322303d794231e2ea45236b95ab97e55fb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/prospective-terminal-contract-v1.json",
+      "source": {
+        "bytes": 2473,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/prospective-terminal-contract-v1.json",
+        "sha256": "0ea6afc65a7f2435efd20f34b46a5bd8604ae4e0bf2ac2a353120521da3273d7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-activation-v1.json",
+      "source": {
+        "bytes": 2293,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-activation-v1.json",
+        "sha256": "f46d36040d701134f942aae841a7104a2ca98b275fb24ae90e2f3c8f066fd919"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/result-v1.json.gz",
+      "source": {
+        "bytes": 138849,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "1f928638538683a76e8b84317f131890b9ae607f2473eae8baabfea9dc2c502f"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/worker-receipt-v1.json",
+      "source": {
+        "bytes": 11681,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "bac1f6190a05bb493774ecc1393e9d771b92905ab2c3eb1bed03a90bb24f968d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-plan-v1.json",
+      "source": {
+        "bytes": 104405,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-plan-v1.json",
+        "sha256": "591e4a911cda2393c6f4ada7823464f08ef0a4ab2bcdab227c68c768d4fa861e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+      "source": {
+        "bytes": 4412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6326298f907ef28e834f483ab585e09100f20c1fd5f9e6674ebad1834287f21c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/actual-terminal-v1.json",
+      "source": {
+        "bytes": 2962,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "a54ffe4219107b748fbd4507b9ea7245d969e3f0d469ad39e74438f2f9ecddaa"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 4747,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "9e23728ab2d4749f04cb6e447f26f1878a463bcd8e019e4b8188e102f7f0df91"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/launch-v1.json",
+      "source": {
+        "bytes": 1419,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/launch-v1.json",
+        "sha256": "bb2c1af69155c44d7837786fb203088f52cc654c74df286c62f784cb73430048"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/ownership-ledger-v1.json.gz",
+      "source": {
+        "bytes": 3302,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/ownership-ledger-v1.json.gz",
+        "sha256": "10d6e94f21f09fd85b2cf0ec846b0962f3e334e6c15d5218cef3c3d44ca4ee15"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 1312,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/post-write-observation-v1.json",
+        "sha256": "943fc76a41d79146e5ab74cd91f59eb8f2751f8bb7339f230dbe0f80cc87983e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/provisional-terminal-v1.json",
+      "source": {
+        "bytes": 4747,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/provisional-terminal-v1.json",
+        "sha256": "9e23728ab2d4749f04cb6e447f26f1878a463bcd8e019e4b8188e102f7f0df91"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/worker-stderr-v1.bin",
+      "source": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/worker-stderr-v1.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/worker-stdout-v1.bin",
+      "source": {
+        "bytes": 52,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-output-v1/worker-stdout-v1.bin",
+        "sha256": "d2276691df343b42ce262fc02e5de73ce8551a509ae7e8b92d95a8993cef39a7"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-plan-v1.json",
+      "source": {
+        "bytes": 90233,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/owner-plan-v1.json",
+        "sha256": "1a75f91db18c083c823ee43174ee461704cc7baf2814b37f05531234022607cd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/platform-review-v1.json",
+      "source": {
+        "bytes": 3990,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/platform-review-v1.json",
+        "sha256": "4589a7f24d727c6c6cc47636a8b88b322303d794231e2ea45236b95ab97e55fb"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/prospective-terminal-contract-v1.json",
+      "source": {
+        "bytes": 2532,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/prospective-terminal-contract-v1.json",
+        "sha256": "9303df018b81fb6ff88ff3483a7173616dda6b5f8557a1fafc8559aeaba38d5b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-activation-v1.json",
+      "source": {
+        "bytes": 2318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-activation-v1.json",
+        "sha256": "b1dde030edbe2686e2e95d73ca3a964cdb328be3b0e6b7f8c7f503d4eaf4108f"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+      "source": {
+        "bytes": 30318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "7d0c2c78be2e6e3768312e164ef25ba49b7c950ef197128eb3798d88cd477863"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+      "source": {
+        "bytes": 12513,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+        "sha256": "a53aab03a7e45e7d5e64086ccce777f674327de97f3fa14ad6af9cabb75c3cca"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/worker-receipt-v1.json",
+      "source": {
+        "bytes": 12102,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "1933c19984c3b4fcf01baeb4ce34193868762e49bc17bd61125735af1c73a770"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-plan-v1.json",
+      "source": {
+        "bytes": 104163,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-plan-v1.json",
+        "sha256": "7ba5f03e326b40e2845505323fb765024cba1a7a679a5e35b54cd88398ce29ae"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+      "source": {
+        "bytes": 10569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/qualified-context-v1.json",
+        "sha256": "9fb1285ff155fde0345d20edf720ccf9a0eaa2b19bb6e0f5e81bb882157acc51"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-source-20261014/build_first_proofs_report_v1.py",
+      "source": {
+        "bytes": 12698,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/build_first_proofs_report_v1.py",
+        "sha256": "32a940540e907cee4bf342b4de6eab4913624fa0446940a701730a99b7b95bff"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-source-20261014/reader.html",
+      "source": {
+        "bytes": 9540,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/reader.html",
+        "sha256": "6dbd21b1fb56c9e54ed435a2d5c65dbeefdb6154d8f40a1f825fcb019364b33d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-source-20261014/viewer.js",
+      "source": {
+        "bytes": 13730,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/viewer.js",
+        "sha256": "06226843a88c503e2cd9a00f450e3a52b8e30b2c367a6326eecb2f53a519558b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-design-20261013/declaration-v1.json",
+      "source": {
+        "bytes": 52521,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-design-20261013/declaration-v1.json",
+        "sha256": "65535d98bb28588029c3d519c46d70e89a7180bca97a5a483a6fc9a98035f6fa"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "source": {
+        "bytes": 7275,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-audit-source-review-v1.json",
+        "sha256": "bc9c2a0bfd243f05316db32144147bb56006af678b550513ca298b8ce36551ec"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "source": {
+        "bytes": 3928,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+        "sha256": "883cf22d858cea8fc998f279a7bdd8a57d443fe979edfa2bf60f2681eb09507d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 7245,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/ROOT-source-review-v1.json",
+        "sha256": "7c3a4442973602e85eb5035f49e3bd66b87cbec65cf1c05193a0031c4628f542"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/close_stage_decision_v1.py",
+      "source": {
+        "bytes": 4752,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/close_stage_decision_v1.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "source": {
+        "bytes": 2827,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+        "sha256": "59d372b293036cdb9f32e30d62499442250ef22b10d3caebd90112af1839ac45"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "source": {
+        "bytes": 1748,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+        "sha256": "545520a539db716a4fcb1ab93c7d4c207eaee029b0109759b4ccbd76d81905f9"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 1762,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "dc0e735617b49062d021dcf3bde7729e522c8b6d21015b85f7979baa94d15149"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "source": {
+        "bytes": 488,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+        "sha256": "d3773206ff6c5b08045fd6e2bd50d327f103191aa595e22788ae562c231b9da3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 790,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+        "sha256": "192fdc17f2a61ba551593f3ffb634086d8ede1beb9199a5e23200398c9d6ba1a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-plan-v1.json",
+      "source": {
+        "bytes": 17498,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/preparation-plan-v1.json",
+        "sha256": "1205d1bf18bdae5a39382fc8f3fd468fed3f111447f20f22ffb62c871f68ef33"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "source": {
+        "bytes": 2790,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+        "sha256": "d46b245b7bd724c5d20afba1b238bc8bf34cdeda6fd20220a01d4cab142dd93f"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "source": {
+        "bytes": 1697,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-actual-tool-observations-v1.json",
+        "sha256": "3c57df4b243cce864f68bb2e8f1248ff6b03c8947552fb94187f50dbe00a35ba"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 1731,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "e9d43ed8fb3c844583ace031718fbb9a258e90960d793dffaa57e87647868b3b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 779,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+        "sha256": "5177c8ab7a5bda03f9ce3f5b128e129661023463f6458644aa322e621f4d722a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-plan-v1.json",
+      "source": {
+        "bytes": 22359,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/replay-plan-v1.json",
+        "sha256": "b5e88772a9821a8b48ac49efde99d4a8785eae6550fc66231f1450af225a45ce"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/run_owned_bridge_v2.py",
+      "source": {
+        "bytes": 14639,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-direct-static-progress-20261013/run_owned_bridge_v2.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-audit-source-review-v1.json",
+      "source": {
+        "bytes": 7301,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-audit-source-review-v1.json",
+        "sha256": "0d2864f2a826af44a6201d7a965a4b73135fd5e72dab0776c538448ffb7cc83a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+      "source": {
+        "bytes": 4071,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-preparation-plan-construction-v1.json",
+        "sha256": "f4dc2b8e5594322d364adfe40e1a50653ca9c0fb3cf89087116ff3e7e6373d9a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 7271,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/ROOT-source-review-v1.json",
+        "sha256": "e7612a0112612006c8f8b5bf21be1cc0752db7720a560e8215773c8158cdb1dc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/close_stage_decision_v1.py",
+      "source": {
+        "bytes": 4752,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/close_stage_decision_v1.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "source": {
+        "bytes": 2892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+        "sha256": "bde13eac7e613ff083e9edc93d9f30b38008be1b5e312f48025f71a4fbd12ada"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+      "source": {
+        "bytes": 1813,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-actual-tool-observations-v1.json",
+        "sha256": "a83c5b6ca24dbe028f4760a305217591b49f1cc0316bb34da3ec43e5b06f2423"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 1809,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "88ea766b39d5a610c0d4462b00336420dc9c78f5515be5ba542e96751df4669e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "source": {
+        "bytes": 495,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+        "sha256": "e6dfc1fb0f5951682f251b617758ae3aaebfc2351197a6dd9b988be25f799d65"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 816,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-owner-v1/post-write-observation-v1.json",
+        "sha256": "db794dca5c5fae3adfe58fb19269c42ff3fb51b400b3c1589bb7f71339ad655c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-plan-v1.json",
+      "source": {
+        "bytes": 17615,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/preparation-plan-v1.json",
+        "sha256": "ec862c5c54130dfd398adac800f654d1fe88f3db08477607a44a5f2f99df2dc8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "source": {
+        "bytes": 2855,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+        "sha256": "db74c75c4eb0445ccdee6079e0d29c42fd286c950b26f87dc124a6857f7edc75"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-actual-tool-observations-v1.json",
+      "source": {
+        "bytes": 1764,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-actual-tool-observations-v1.json",
+        "sha256": "56fcb40e5df83d7d2a17598681e4916bddf7c791b4be62f11f46ea9487f68483"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+      "source": {
+        "bytes": 1777,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/ROOT-terminal-v1.json",
+        "sha256": "6706bd43b8ef3e92a66c744aceacf57c3413ca4eab0b21a35442278069678529"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+      "source": {
+        "bytes": 806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-owner-v1/post-write-observation-v1.json",
+        "sha256": "5a2bd9c2469458a78c2928cdcea15af44701c13f95a1afc57ee7984aa33c6d9e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-plan-v1.json",
+      "source": {
+        "bytes": 22710,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/replay-plan-v1.json",
+        "sha256": "11de2862abf70a8525cf099a8ec24c00be4c3220864eb2b9085f88c1ebea9337"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/run_owned_bridge_v2.py",
+      "source": {
+        "bytes": 14639,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-fresh-i2-CD-vw-incidence-transport-static-progress-20261013/run_owned_bridge_v2.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-ROOT-source-20261014/ROOT-first-checked-proof-observer-conformance-disposition-v1.json",
+      "source": {
+        "bytes": 9624,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-ROOT-source-20261014/ROOT-first-checked-proof-observer-conformance-disposition-v1.json",
+        "sha256": "e72d235b12d0625788a123a79cb187df0abd425897b014412be3db07f29ae3d0"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-ROOT-source-20261014/seal_ROOT_mechanical_control_disposition_v1.py",
+      "source": {
+        "bytes": 5884,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-ROOT-source-20261014/seal_ROOT_mechanical_control_disposition_v1.py",
+        "sha256": "533dc81d7aae8a7d85b3b1b52b82c4133978879d654c0185f28dc9be5a3624b3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 6128,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/ROOT-source-review-v1.json",
+        "sha256": "8f94dfe0b07ce19dbd8026f32e76495832bb86b7dd09907eb221925881b4e76f"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-ROOT-final-decision-v1.json",
+      "source": {
+        "bytes": 2785,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-ROOT-final-decision-v1.json",
+        "sha256": "097e4c73377f2ce88cbf47f7ad5d9bcf1babc543bc1e49a01fa817f1870e8587"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-result-v1/controls-evidence-v1.json",
+      "source": {
+        "bytes": 3718,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-result-v1/controls-evidence-v1.json",
+        "sha256": "fed1b3350c4cbe666f740274d7ce286e79ec71f0e5a4f8374c7603913d4c86c4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-result-v1/controls-result-v1.json",
+      "source": {
+        "bytes": 845476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-result-v1/controls-result-v1.json",
+        "sha256": "ee8a71e9eb19afba92a7d9b1a8f32ef4953eb023f7bb13d1a088fd854bd782b8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-result-v1/worker-receipt-v1.json",
+      "source": {
+        "bytes": 4565,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-progress-v1-20261014/replay-result-v1/worker-receipt-v1.json",
+        "sha256": "e470148f51e96027bd782ae7833b77c52282fe27259be31ae1fa9686065d165d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+      "source": {
+        "bytes": 29717,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/first_checked_proof_observer_i2_v1.py",
+        "sha256": "ad2efd1b7685fe6f7baa8f3b9849baf3568c3cf67e87a85e3d0ac657d8772cdc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-source-20261013/handoff-v1.json",
+      "source": {
+        "bytes": 8922,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/handoff-v1.json",
+        "sha256": "dbbbc2b91fafea0f1b2b4c5fde0f5a7b18dc0466607ae303072a5a34507fc22f"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-observer-controls-source-20261013/observer_dfs_mechanical_controls_i2_v1.py",
+      "source": {
+        "bytes": 32249,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-observer-controls-source-20261013/observer_dfs_mechanical_controls_i2_v1.py",
+        "sha256": "b03af83f7043de40a31d77d20ed47e37aa910201400e24bf0e08ca77c237bc2d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/build_i2_static_metadata_v1.py",
+      "source": {
+        "bytes": 27289,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/build_i2_static_metadata_v1.py",
+        "sha256": "1c5445d842aba9e0da1346374fce6f7339ad63ffc6ece02171702464e1141357"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/handoff-v1.json",
+      "source": {
+        "bytes": 11295,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/handoff-v1.json",
+        "sha256": "73c9777487a55a977f08d4c75410eaa5ecbde47e9356d6878eacf162a469c8e1"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_audit_worker_v1.py",
+      "source": {
+        "bytes": 47882,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_audit_worker_v1.py",
+        "sha256": "ac3d460603ae0eea3113d80c5bb63ad1dfc5bdb71ca88727fc69357a4900b2e5"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+      "source": {
+        "bytes": 46195,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_compiler_v1.py",
+        "sha256": "b6a423ab2412af99842894ac8788d167a764987a897f0ca2e974d244d6f21ced"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_grammar_v1.py",
+      "source": {
+        "bytes": 14885,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_grammar_v1.py",
+        "sha256": "3d93bf6f1a970912d4a9b28433f761e91d6d91aeb08e1cc597bae28144139415"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+      "source": {
+        "bytes": 31822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/hilbert_i2_prepare_worker_v1.py",
+        "sha256": "b8a75aa41c786ec1003ef8d0f44a3d3b489dd4ce844b7cddfe6eaa0bb85e6336"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+      "source": {
+        "bytes": 54170,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/i2-fixtures-v1.json",
+        "sha256": "91fe6df2c148ddc9968c429bd5cf40fbd90f367c337feee14122a9df3bb452b5"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/profile-source-manifest-v1.json",
+      "source": {
+        "bytes": 6106,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/profile-source-manifest-v1.json",
+        "sha256": "583ff9fea31597181609bfb39fa5d64827e392e5c69ac25e3a75efeeff365e24"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-implementation-source-20261013/static-profile-plan-v1.json",
+      "source": {
+        "bytes": 6660,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-implementation-source-20261013/static-profile-plan-v1.json",
+        "sha256": "d3db4aa03bfb9166b1d63f024dacbdcc1c103af33436d27dd2b8421e2218e342"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/audit-result-v1.json",
+      "source": {
+        "bytes": 30838,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/audit-result-v1.json",
+        "sha256": "eca6043d6bd4bba3ffd46dd28cfac5e8fa04eaac13230c85d68c2189f977d473"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "source": {
+        "bytes": 245569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+        "sha256": "78146217c85158ef3ef06783a0d1bd8906bdbf6cf46fb2da2ea6c63c21922689"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "source": {
+        "bytes": 9504,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-v1/complete-independent-static-evidence-v1.json.gz",
+        "sha256": "e935735bcd935e296bfe83c4589bc92a68cfb273b1a41942caada25d323cb233"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-worker-plan-v1.json",
+      "source": {
+        "bytes": 30664,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-audit-worker-plan-v1.json",
+        "sha256": "ef49d35a36239c3d32ad26139dfa7776802253554381ca1e2f119f6a3208321e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/catalog-v1.json",
+      "source": {
+        "bytes": 11067,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "2ce332c2ba040dc7ebc0cdbb67626d6546b00cd8c3eabca172a0184453af9139"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "source": {
+        "bytes": 40896,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+        "sha256": "cb066f23f8447bf359d5a61f1bfaa1b17f94bf95d4ec587c71205b942a96fca1"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "source": {
+        "bytes": 30953,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+        "sha256": "f56f7a76db801b248e2f5208a1d8d9113b3bc95015bd17c9ea9ac58a976865cf"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/recipes-v1.bin",
+      "source": {
+        "bytes": 443992,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/catalog-v1/recipes-v1.bin",
+        "sha256": "779098bb3dd91712be21d5ce7cf789ad75cad98e8f13f25b97fdab1aa69541ed"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "source": {
+        "bytes": 10482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/full-preparation-evidence-v1.json.gz",
+        "sha256": "8047b2ba37fc99f9200a42afbd6e380c139f3a39a46ff702c44636136a7c9d72"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/preparation-result-v1.json",
+      "source": {
+        "bytes": 23801,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/preparation-result-v1.json",
+        "sha256": "e5a6e0cb2347410c9c1ce7186c3ef2a2c7ec8326e7c0bdc161e2e8ac1059246b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/producer-diagnostics-v1.jsonl",
+      "source": {
+        "bytes": 16887,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-v1/producer-diagnostics-v1.jsonl",
+        "sha256": "8bfd89c65d812704c6a8ab4c468f02d0b607afe8b95b52aa366dccdf648955a5"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+      "source": {
+        "bytes": 22525,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-direct-preparation-worker-plan-v1.json",
+        "sha256": "b9c93d2845035b501e5c91646e5925b0eba41225e28edf131b06196ecf4e97ba"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/audit-result-v1.json",
+      "source": {
+        "bytes": 31358,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/audit-result-v1.json",
+        "sha256": "ace260f6906da090b88adefb418e90f7bfaccac9bceb57b08f1c721b778977fa"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "source": {
+        "bytes": 245545,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+        "sha256": "302918b9ea30f5afbed85fc54a6fcbea49641b30714aeb8533e959fa41c7b67a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "source": {
+        "bytes": 9524,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-v1/complete-independent-static-evidence-v1.json.gz",
+        "sha256": "3110557980b4f356629955e4dd51b96b7ab14f6686b23771c95507f42bfed7c6"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-worker-plan-v1.json",
+      "source": {
+        "bytes": 31080,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-audit-worker-plan-v1.json",
+        "sha256": "e3a705c512509a8e7ae7870ea8f52a41592708e5310b59c3e263c42cba7fc1ce"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/catalog-v1.json",
+      "source": {
+        "bytes": 11186,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "07085b22165229bd6035e288d94070d37d47921b91f70f6292560f83cc039c5c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "source": {
+        "bytes": 40896,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+        "sha256": "159e63ab36b1b0d29ab2f1311ef4eea8f9aaf5621e31185d91dbe1059304fbdd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "source": {
+        "bytes": 30935,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+        "sha256": "5d8a99a1d9fb05a26aa3ad6a05739223218fd6bde0ee72dd9777696a678cef43"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/recipes-v1.bin",
+      "source": {
+        "bytes": 443992,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/catalog-v1/recipes-v1.bin",
+        "sha256": "375738c0edc02555fe51d2fc144c3a8e2f0c23e2cebef17d4c071c1ee00c7e02"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "source": {
+        "bytes": 10562,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/full-preparation-evidence-v1.json.gz",
+        "sha256": "97d8184e6bd8b17f8b2fe76563ffe73a3b14b8b87ede8f5f07022192df3fe6f1"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/preparation-result-v1.json",
+      "source": {
+        "bytes": 24006,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/preparation-result-v1.json",
+        "sha256": "42ce4c55419c875065ba7f23e4f4361108c6129f0dbed6f8c827e06e554d2618"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/producer-diagnostics-v1.jsonl",
+      "source": {
+        "bytes": 16843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-v1/producer-diagnostics-v1.jsonl",
+        "sha256": "81a023e042fe3230c7c67fb4daa8d6580aaf945ae49d86aa7adee7aa4ebef19e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+      "source": {
+        "bytes": 22629,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-static-progress-20261013/fresh-i2-CD-vw-incidence-transport-preparation-worker-plan-v1.json",
+        "sha256": "24f87f533b327d3375d6104e4b36264af9f579f011bb11afd2a0cdb067a58613"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+      "source": {
+        "bytes": 61285,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+        "sha256": "eeb13ad46fe2bab153162068a666cb27cb88aa124a165b9cdda3bb6c3f8452bc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+      "source": {
+        "bytes": 27264,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-source-20261013/incidence_priority_witness_advice_v2.py",
+        "sha256": "3a86adba8982c406ae4a2ad3349b8ae962e52498dee38ee3ee26719b22468053"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-person-review-20261013/raw-source-evidence-v1.json",
+      "source": {
+        "bytes": 28876,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-person-review-20261013/raw-source-evidence-v1.json",
+        "sha256": "5f1861381d6f4d4335688f5e8bf5aa4badd291d8946da35e94b8642414ea30cc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-person-review-20261013/source-review-v1.json",
+      "source": {
+        "bytes": 33603,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-person-review-20261013/source-review-v1.json",
+        "sha256": "86091bf909f486ff160fad27606ffd7f8d1945737d63218d3c68ea4986a1f7ee"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-source-20261013/full-source-inverse-v1.json",
+      "source": {
+        "bytes": 6350,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/full-source-inverse-v1.json",
+        "sha256": "563b7a8c275563799d43a35e1e0fa5d812d69e48fc08a89fe3cb506c191327d8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-source-20261013/handoff-v1.json",
+      "source": {
+        "bytes": 7397,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/handoff-v1.json",
+        "sha256": "8ce6c90661b88b0214ab1dedeb033704557d6323a7c1edbe0409207ab7f3f9e3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "source": {
+        "bytes": 24588,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+        "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_independent_compact_grammar_v2.py",
+      "source": {
+        "bytes": 14517,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_independent_compact_grammar_v2.py",
+        "sha256": "520bbca2d84c370528103d133d1aa70ef64ab8fbefe7ebf07c0fcaccc8aa0eaf"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-source-20261013/source-contract-v1.json",
+      "source": {
+        "bytes": 14883,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/source-contract-v1.json",
+        "sha256": "2bc8125419803cdb356fe186ac225246ac932ac9358304c9f9b7075242d3e738"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-independent-oracles-source-20261013/source-manifest-v1.json",
+      "source": {
+        "bytes": 10901,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/source-manifest-v1.json",
+        "sha256": "41c1831149ced8f09d85a2be06f9c22a1c709ffa27f8045ba80dcc77fec85a1a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-independent-source-20261013/raw-source-evidence-v1.json",
+      "source": {
+        "bytes": 31004,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/raw-source-evidence-v1.json",
+        "sha256": "68d260a66d4eb2bb49802b4009898c18df99a9ccbf47c153d9a305fb2f3289fa"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v1.json",
+      "source": {
+        "bytes": 43738,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v1.json",
+        "sha256": "8ec612f623867c1851af242902253fcca8216f61385d815a00b173e520926c82"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v2.json",
+      "source": {
+        "bytes": 51269,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-independent-source-20261013/source-review-v2.json",
+        "sha256": "0e782dd6207746fa95b5109f32beaf45036b9edfd6be226fa182c1d581598cf8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/compact-profile-full-diff-v1.patch",
+      "source": {
+        "bytes": 2343,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/compact-profile-full-diff-v1.patch",
+        "sha256": "c78ba91a0eb7a0be8aa8bd705cdfd9f0076371da2e24715372f73e3b3b91c08c"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/expanded-profile-full-diff-v1.patch",
+      "source": {
+        "bytes": 2236,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/expanded-profile-full-diff-v1.patch",
+        "sha256": "c1e2eae0efd22587180da9e1a5c18fca6bfd880a0dc138d07e7ae12c465f95bd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/full-source-inverse-v1.json",
+      "source": {
+        "bytes": 8649,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/full-source-inverse-v1.json",
+        "sha256": "d9f37f1c1cf2c39b26626c808aaf24fd8091eda8c5a26992f62190a118a3d295"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/handoff-v1.json",
+      "source": {
+        "bytes": 5126,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/handoff-v1.json",
+        "sha256": "b722a2e8311b0eb9a8c96e39b4e2407226550055abf5b2025c2010cbae7c680e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert-next-fixtures-v1.json",
+      "source": {
+        "bytes": 39325,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert-next-fixtures-v1.json",
+        "sha256": "781d0b5139619d7c758425f198c84bbfa4176ca103f7de783d30c7249156e201"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_compact_compiler_v1.py",
+      "source": {
+        "bytes": 45830,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_compact_compiler_v1.py",
+        "sha256": "bd3ee86d52d403524e8f183fc6771d702af1d29e3ea71427dcf362e7484ffebe"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_expanded_compiler_v1.py",
+      "source": {
+        "bytes": 17326,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/hilbert_literal_expanded_compiler_v1.py",
+        "sha256": "a2603a33397a6d81df813d4a580e7f5c3c304f67c473c412892f44753f147f79"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/source-manifest-v1.json",
+      "source": {
+        "bytes": 9063,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-manifest-v1.json",
+        "sha256": "423961fd53633e6bee3c1eb2c2698b53556737a56e8de08d8ef03aed10b7d500"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/source-metadata-review-v1.json",
+      "source": {
+        "bytes": 12205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-metadata-review-v1.json",
+        "sha256": "5f8c9e4db67be711f8125ec7e5cfed3d129108c74d1e33847e01a627b15a7f39"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-literal-compiler-source-20261013/source-protocol-v1.json",
+      "source": {
+        "bytes": 25320,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-literal-compiler-source-20261013/source-protocol-v1.json",
+        "sha256": "f438efeb8bbd0a6080890e78e1b72cd9f05c15aa9cdb17af671178cffa38dd72"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-owned-progress-20261013/ROOT-source-review-v1.json",
+      "source": {
+        "bytes": 6676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/ROOT-source-review-v1.json",
+        "sha256": "d5f3843f416b67d2089a38cf41d638c738d7d5a11597bc61a33f2cf5c03d18a4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-owned-progress-20261013/audit-worker-plan-v1.json",
+      "source": {
+        "bytes": 24943,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/audit-worker-plan-v1.json",
+        "sha256": "51494f4efbace2b1b348d94fcec04c5b05afb3e91d82c3f866da668cfc5c393b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-owned-progress-20261013/close_stage_decision_v1.py",
+      "source": {
+        "bytes": 4752,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/close_stage_decision_v1.py",
+        "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-owned-progress-20261013/preparation-plan-v1.json",
+      "source": {
+        "bytes": 13268,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/preparation-plan-v1.json",
+        "sha256": "f0de65b0c53af0e78b897bfd16da37b57535bd3a7cf5c96fda9786f46b653a23"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-owned-progress-20261013/preparation-worker-plan-v1.json",
+      "source": {
+        "bytes": 17222,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/preparation-worker-plan-v1.json",
+        "sha256": "5bdbfe8a518df5531dda99b98a5332de9555cbf965abc6329200ae3ac0fc2c50"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-owned-progress-20261013/run_owned_bridge_v2.py",
+      "source": {
+        "bytes": 14639,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-owned-progress-20261013/run_owned_bridge_v2.py",
+        "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+      "source": {
+        "bytes": 35493,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+        "sha256": "a9748e01636323ab886f4e5e41d5d89ae9ef56cf36dbb7884e53c537597a83bd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/handoff-v1.json",
+      "source": {
+        "bytes": 3733,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/handoff-v1.json",
+        "sha256": "6e6f78f4f7c51079ce7563ccdfa4e44572b0f71da8732353b2aee72fd9f9c02b"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/protocol-and-gaps-v1.json",
+      "source": {
+        "bytes": 26296,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/protocol-and-gaps-v1.json",
+        "sha256": "c0b5499a2d25bdec5304eb50c810aad8cdbc02ed1d0a6f42b38f86371c0eb1ab"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-next-receptor-benchmark-source-20261013/raw-closure-reconciliation-v1.json",
+      "source": {
+        "bytes": 7791,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/raw-closure-reconciliation-v1.json",
+        "sha256": "0711f897c5793ca3cd111f71b8f1de9af334fbbd0ecc69a02065aa0de4227516"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "source": {
+        "bytes": 31300,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+        "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-complete-saved-static-findings-v3.json",
+      "source": {
+        "bytes": 55286,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-complete-saved-static-findings-v3.json",
+        "sha256": "174921f1bc35d037ef1c507ca88ee68c7aeebb789e0d65e4b51a1e1aaf19d4f5"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-ROOT-worker-source-review-v1.json",
+      "source": {
+        "bytes": 9805,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-ROOT-worker-source-review-v1.json",
+        "sha256": "f6a0d432b1a4a22f813152babe5ce2490bdd06e41cc9b2ad1677a6b9b5d05b9d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-four-lane-actual-saved-findings-v1.json",
+      "source": {
+        "bytes": 1497164,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-four-lane-actual-saved-findings-v1.json",
+        "sha256": "1cffc498a3880ffbb349dca9ba24a425a71c397428b2f3ec4fda5dd32989292d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-four-lane-preactivation-saved-findings-v1.json",
+      "source": {
+        "bytes": 1382507,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-four-lane-preactivation-saved-findings-v1.json",
+        "sha256": "c17f382ee2cb6676b189adf01828a3c9d24f77edfaf7db0b5bfe332e9014e91a"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-helper-typed-source-review-v1.json",
+      "source": {
+        "bytes": 2973,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-helper-typed-source-review-v1.json",
+        "sha256": "fc0d15170cf52f8f56af15d587d5de065c8a648fa5d2111051d7fcaecacfd9a8"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-observer-typed-source-review-v1.json",
+      "source": {
+        "bytes": 2654,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-first-proof-observer-typed-source-review-v1.json",
+        "sha256": "cc00941e5962ff65869a1680c1cf30c3841f6c3dbed49cf6513e985913a067b3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-helper-source-findings-v2.json",
+      "source": {
+        "bytes": 4139,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-helper-source-findings-v2.json",
+        "sha256": "588b2c4e4e66ae6b44062146594d81cb1900530c10b62a0f27cf0869b22242de"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-observer-and-ROOT-worker-source-findings-v1.json",
+      "source": {
+        "bytes": 40523,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-observer-and-ROOT-worker-source-findings-v1.json",
+        "sha256": "5afdb79d68580511e480e17b93a4b9df1fb91d18e13c180709c70fbe7dd2f9c3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-observer-controls-actual-saved-findings-v1.json",
+      "source": {
+        "bytes": 92652,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-observer-controls-actual-saved-findings-v1.json",
+        "sha256": "9a638684826b2cd96cde8ce9a8f89f8397f45e27aec4a4dfa0bd7ec29ccc9f22"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-observer-controls-source-review-v1.json",
+      "source": {
+        "bytes": 4042,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-observer-controls-source-review-v1.json",
+        "sha256": "8ef68233cfe9e2c670d5783399a57b2a31f7dfe0fe167828b005a5f1622b232d"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/receptor-i2-independent-implementation-review-20261013/I2-static-source-findings-v2.json",
+      "source": {
+        "bytes": 7729,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-i2-independent-implementation-review-20261013/I2-static-source-findings-v2.json",
+        "sha256": "ac9fbe2a4f08eca992f0d8627ac81545f65335bf3f2f82e9fc65fb2376444dd0"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "source": {
+        "bytes": 42946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+        "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+      }
+    },
+    {
+      "archive_path": "AGENTS.md",
+      "source": {
+        "bytes": 1518,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/AGENTS.md",
+        "sha256": "d28fa1017af52d7e454797315a24f9b4d204b24741e6db9b01d30456e506e0c2"
+      }
+    },
+    {
+      "archive_path": "docs/basic-tiling-algorithm.md",
+      "source": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      }
+    },
+    {
+      "archive_path": "research/gcts-rl-renewal/fol_checker.tree",
+      "source": {
+        "bytes": 17577,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/fol_checker.tree",
+        "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+      }
+    },
+    {
+      "archive_path": "research/gcts-rl-renewal/serialized_kernel.py",
+      "source": {
+        "bytes": 13977,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/research/gcts-rl-renewal/serialized_kernel.py",
+        "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-source-20261014/display-source-v2/reader.html",
+      "source": {
+        "bytes": 9596,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/display-source-v2/reader.html",
+        "sha256": "2f8fe90181943a7fda5378d2b3a5a2aa28bc62bb12ff6e82b829ee4848dd4a9e"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-source-20261014/display-source-v2/viewer.js",
+      "source": {
+        "bytes": 13859,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/display-source-v2/viewer.js",
+        "sha256": "55fd156c113c642f4ca5a9fcf56ce791bf093e7d4594561b4ca312b76a82e7e3"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-source-20261014/finish_display_v2.py",
+      "source": {
+        "bytes": 3877,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/finish_display_v2.py",
+        "sha256": "331f6aa6156a2fbd8ca5c96f15d29441a7d18a97dd964d7fada8841a0f3bfcc0"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-independent-20261014/findings-v1.json",
+      "source": {
+        "bytes": 10683,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-independent-20261014/findings-v1.json",
+        "sha256": "14ab494eef4b2ce8a425fac858b9770e61b5b7da025d463822a0ab29ed6a3917"
+      }
+    },
+    {
+      "archive_path": ".gcts-active/hilbert-i2-first-proof-report-independent-20261014/display-v2-findings-v1.json",
+      "source": {
+        "bytes": 5534,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-independent-20261014/display-v2-findings-v1.json",
+        "sha256": "74689b6ac5fb35c5c481f2f1ea116bc1c9e3292e33bd5b74de6c45fbc00dd9dc"
+      }
+    }
+  ],
+  "original_archive": {
+    "bytes": 2589740,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-report-source-20261014/public-report-v1/reproduction.zip",
+    "sha256": "510d5c443e2535b8e6b859b016b7765103c492ebd05c2def1e994041499988cf"
+  },
+  "schema": "ROOT-notebook156-source-archive-manifest-v1",
+  "scientific_calls": 0,
+  "scientific_capsules_unchanged": true,
+  "scope": "Declared activated task closure and saved capsules only."
+}
