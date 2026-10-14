@@ -1,0 +1,32 @@
+{
+  "schema": "ROOT-genuine-actual-caller-tool-observations-v1",
+  "started_ms": 1792021179832,
+  "terminal_observed_ms": 1792021204024,
+  "caller_seconds": 24.192,
+  "caller_finish_reserve_seconds": 1,
+  "observations": [
+    {
+      "chunk_id": "f37a5e",
+      "wall_time_seconds": 1.001479667,
+      "session_id": 82282,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "91088b",
+      "wall_time_seconds": 3.843940292,
+      "exit_code": 0,
+      "original_token_count": 83,
+      "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 20.326478792, \"peak_bytes\": 391856128, \"worker_receipt\": \".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/worker-output-v1/Q-proof-neutral-controls-worker-receipt-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+    }
+  ],
+  "terminal": {
+    "chunk_id": "91088b",
+    "wall_time_seconds": 3.843940292,
+    "exit_code": 0,
+    "original_token_count": 83,
+    "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 20.326478792, \"peak_bytes\": 391856128, \"worker_receipt\": \".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/worker-output-v1/Q-proof-neutral-controls-worker-receipt-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+  },
+  "actual_invocation_count": 1,
+  "scope": "Fresh once-only full-model proof-neutral controls; original budgets. No target search or proof route."
+}

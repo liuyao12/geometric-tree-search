@@ -1,0 +1,65 @@
+{
+  "schema": "Q-first-selected-proof-cold-worker-Source-review-v1",
+  "scope": "Q-first-selected-proof-cold-worker-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/Q_first_selected_cold_worker_endpoint_slice_v14.py",
+    "sha256": "afde50a50a53176ad893b2ccf95f8e0a2a6da900a4a9d8336c4cc9c8a65697e3",
+    "bytes": 159170
+  },
+  "sources": {
+    "worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/Q_first_selected_cold_worker_endpoint_slice_v14.py",
+      "sha256": "afde50a50a53176ad893b2ccf95f8e0a2a6da900a4a9d8336c4cc9c8a65697e3",
+      "bytes": 159170
+    },
+    "driver": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426",
+      "bytes": 46691
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/scientific-Source-contract-v2.json",
+    "sha256": "166bd4e98a168665fdeb91d010ea3a753b85a97779ce686c9ce644056f72f7f9",
+    "bytes": 45662
+  },
+  "factory": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/recipe_allocation_guard_fragment_v7.py",
+    "sha256": "a824a1d641ea3051da91aeb36ea046d1de5105a769eafaf773bd0e7602b2d023",
+    "bytes": 33771
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "source_ready": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "mathematical_acceptance": false,
+  "runtime_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-independent-source-20261014/findings-v3.json",
+    "sha256": "a14e36c5446295d3d6e94c3423dcb25926012d3fa4d7ccff58e2ed90538cb75f",
+    "bytes": 388043
+  },
+  "resolved_blockers": [
+    "ALLOCATION-SLICE-REACHABLE-GLOBAL-1"
+  ],
+  "remaining_scope": "Source readiness is conditional only. Current metadata bindings, fresh absent namespace, once-only actual neutral controls/complete resources and declared deferred production FOUND/full24/late-unwind coverage remain separate ROOT-owned gates. No fit, elimination, proof, performance or scientific activation claim."
+}

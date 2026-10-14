@@ -1,0 +1,20 @@
+{
+  "schema": "Q-private-allocation-phase-evidence-v1",
+  "purpose": "Observed initializer progress only. Never target/point/control/accepted-prefix/resource authority. All fields start empty/zero in the caller; no expected recipe count shortcut.",
+  "fields": {
+    "factory_started": "Native-clock-bounded capture entered.",
+    "factory_returned": "Set only by cold caller AFTER captured factory and mandatory postguard return.",
+    "factory_capture_seconds": "Actual inclusive factory capture preparation until final metadata, if available; no whole-stage attribution.",
+    "boundary_entries": "Actual guarded callback entries, counted after original clock identity check; a later rejection may prevent completion.",
+    "boundary_returns": "Completed local guard work; final metadata deadline rejection removes its count. It is not a driver recipe completion count.",
+    "last_started_recipe_index": "Actual callback index input, may be unvalidated on a failed boundary.",
+    "last_returned_boundary_recipe_index": "Last local guard work passing all pre/post body checks; if its final metadata deadline fails it is supplemental rejected work only.",
+    "completed_recipe_comparisons_observed": "Exact len(primitives) in the genuine original initializer frame after relevant class/frame identity checks; list append follows original complete witness/port/preimage comparisons. Lower bound only until caller constructor returns.",
+    "completed_boundary_inclusive_seconds": "Inclusive elapsed original native clock for completed guard bodies, including their initial direct checks; aborted bodies before completion are omitted. A final metadata-time rejected body can remain included. Not total guard cost or nonoverlapping phase sum.",
+    "constructor_returned": "Set only after actual original complete constructor plus mandatory cold caller postguard returns.",
+    "constructor_recipe_interfaces": "Literal len(observer.primitives) only after that return. None on failure; no authored expected count."
+  },
+  "cost_semantics": "Same absolute20/55/60/90 and500/512MiB. Counter acquisition and saved serialization are charged; no clock reset or late-success. Whole caller/owner resource clocks remain authoritative; local sums are diagnostic, not resource acceptance.",
+  "current_actual_values": null,
+  "author_functions_or_Q_decodes": 0
+}

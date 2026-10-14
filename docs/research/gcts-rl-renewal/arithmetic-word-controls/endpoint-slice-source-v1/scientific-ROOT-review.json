@@ -1,0 +1,85 @@
+{
+  "schema": "Q-first-selected-proof-cold-worker-Source-review-v1",
+  "scope": "Q-first-selected-proof-cold-worker-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "reviewer_identity": "/root",
+  "sources": {
+    "worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/Q_first_selected_cold_worker_endpoint_slice_v14.py",
+      "sha256": "afde50a50a53176ad893b2ccf95f8e0a2a6da900a4a9d8336c4cc9c8a65697e3",
+      "bytes": 159170
+    },
+    "driver": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426",
+      "bytes": 46691
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/Q_first_selected_cold_worker_endpoint_slice_v14.py",
+    "sha256": "afde50a50a53176ad893b2ccf95f8e0a2a6da900a4a9d8336c4cc9c8a65697e3",
+    "bytes": 159170
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/scientific-Source-contract-v2.json",
+    "sha256": "166bd4e98a168665fdeb91d010ea3a753b85a97779ce686c9ce644056f72f7f9",
+    "bytes": 45662
+  },
+  "factory": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-source-20261014/recipe_allocation_guard_fragment_v7.py",
+    "sha256": "a824a1d641ea3051da91aeb36ea046d1de5105a769eafaf773bd0e7602b2d023",
+    "bytes": 33771
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "Source_functions_called": 0,
+  "Q_payload_decodes": 0,
+  "actual_plans": 0,
+  "actual_controls": 0,
+  "actual_searches": 0,
+  "scientific_acceptance": false,
+  "mathematical_acceptance": false,
+  "runtime_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-ROOT-review-source-20261014/findings-v2.json",
+    "sha256": "8815edab28a4cd6063412c717c6dffc2439542e4b8393cb2b937cacae3128ed8",
+    "bytes": 147785
+  },
+  "current_distinct_peer": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-allocation-endpoint-slice-independent-source-20261014/scientific-typed-Source-review-v3.json",
+    "sha256": "7d8c842c6fa599f63fe5f06e83387d34c22c42d4ea491dde437fe8f95158b8f4",
+    "bytes": 3621
+  },
+  "scope_findings": [
+    "Factory capture is confined to the guarded original cold caller; original native lookup aliases and exception class are captured before later delegation.",
+    "Recursive co_names census includes nested allocation_guard/floatstr code, declared helper/driver/class/accessor/decoder roots, actual global dictionary identity and function signatures.",
+    "Complete relevant namespace key tuples and reachable global/builtin presence/absence/value identities are rejected at entry before mutable predicates/module property reads, and repeated after delegates; the concrete JSONEncoder.encode isinstance shadow gap is closed in Source.",
+    "Immediate class/MRO/descriptor/accessor/default/cell/native hook/constant-table/current Recipe/Runtime checks remain; unused namespaces/method bodies keep mandatory full32/end guards.",
+    "Exact driver3 still performs every original canonical/getter/correspondence comparison and 7+2*p callback boundaries. Callback scope is the genuine initializer frame only and it is not retained for later proof search/checking.",
+    "Diagnostic counters do not grant accepted prefix, completion, fit, resource or proof authority. Starts/returns/completed comparison prefix/factory/constructor latches have distinct units; failed metadata-time work can remain in the inclusive timing sum.",
+    "Driver Runtime.check/graph.recipes/fixed reads precede the callback under the disclosed guarded-pure-operation assumption. No blanket before-every-field-read or asynchronous hostile-VM claim is made.",
+    "All current maps and entire byte/AST inverses preserve the original model/inventory/caps, global scheduler/base fallback/exact rollback and authored/deferred control scopes. No Source performance or automatically discovered proof follows."
+  ],
+  "remaining": [
+    "Source readiness only. Current metadata constructor Source review and fresh once-only neutral controls/resource remain required.",
+    "Actual proof search, new target certificate and comparative performance remain unearned."
+  ]
+}

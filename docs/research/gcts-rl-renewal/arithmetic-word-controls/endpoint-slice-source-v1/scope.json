@@ -1,0 +1,71 @@
+{
+  "schema": "published-allocation-endpoint-slice-Source-and-attempt-scope-v1",
+  "source_readiness_only": true,
+  "independent_current_source_checks": 427,
+  "independent_whole_source_paths": 80,
+  "ROOT_static_checks": 129,
+  "actual_fresh_attempt": "progress-v5",
+  "actual_status": "UNKNOWN",
+  "actual_control_calls": 0,
+  "actual_searches": 0,
+  "actual_original_model_unchanged": true,
+  "actual_original_shared_seconds": 20,
+  "no_accepted_prefix": true,
+  "no_speedup_or_theorem_claim": true,
+  "recorded_comparison_prefix": 3476,
+  "factory_returned": true,
+  "constructor_returned": false,
+  "phase_scope": "Observed counters and real initializer-frame comparison-prefix length only. boundary_started is assigned AFTER the native entry resolution gates; the 7.149156363s sum covers completed timed bodies only. It excludes the entry namespace/global/builtin census, unfinished body, outer invoke/driver/full32/end/setup work. It is not total guard cost, an exhaustive partition, accepted prefix/model fit, or comparison to prior uninstrumented attempts.",
+  "files": [
+    {
+      "file": "factory.py",
+      "sha256": "a824a1d641ea3051da91aeb36ea046d1de5105a769eafaf773bd0e7602b2d023",
+      "bytes": 33771
+    },
+    {
+      "file": "scientific-worker.py",
+      "sha256": "afde50a50a53176ad893b2ccf95f8e0a2a6da900a4a9d8336c4cc9c8a65697e3",
+      "bytes": 159170
+    },
+    {
+      "file": "controls-worker.py",
+      "sha256": "95d7a5cdb3f8a668c8ae77925c4bc99fede8ef07c56ff714a4a600d72897c86c",
+      "bytes": 157836
+    },
+    {
+      "file": "scientific-contract.json",
+      "sha256": "166bd4e98a168665fdeb91d010ea3a753b85a97779ce686c9ce644056f72f7f9",
+      "bytes": 45662
+    },
+    {
+      "file": "controls-contract.json",
+      "sha256": "62eac48c552183dadcda0cc2c1747c5b0b42230c55cc35fa6781d87a1ab96591",
+      "bytes": 50468
+    },
+    {
+      "file": "scientific-independent-review.json",
+      "sha256": "7d8c842c6fa599f63fe5f06e83387d34c22c42d4ea491dde437fe8f95158b8f4",
+      "bytes": 3621
+    },
+    {
+      "file": "controls-independent-review.json",
+      "sha256": "a2cc1bda13e2aa78dac4dfafe608474744f4fd11b0c76e517bd76eae8dd73005",
+      "bytes": 4302
+    },
+    {
+      "file": "scientific-ROOT-review.json",
+      "sha256": "ac5d8d60fddfb2ecfd065743454d05bc87d56bacd2ee74e062e9dc96b6174011",
+      "bytes": 5699
+    },
+    {
+      "file": "controls-ROOT-review.json",
+      "sha256": "8d525e109e3df3f243ebf9d6efabd541c802aa9d2e0a5a467c0a9c21272f2428",
+      "bytes": 6378
+    },
+    {
+      "file": "phase-schema.json",
+      "sha256": "3f1cb990d2716c7cc6005e7e0c71db8229d0530c92535bdc0d0408789567b404",
+      "bytes": 2354
+    }
+  ]
+}

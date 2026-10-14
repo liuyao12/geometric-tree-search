@@ -1,0 +1,18 @@
+{
+  "resource_gate_accepted": false,
+  "elapsed_seconds": 20.326478792,
+  "peak_bytes": 391856128,
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "terminal": null,
+  "provisional": {
+    "path": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "ff6bb90687d6d3b97280ee88a46ac615635b017c5345362a9b17400d88cab8b0",
+    "bytes": 1514
+  },
+  "scope": "post-write observation; tool caller observation is separately required"
+}

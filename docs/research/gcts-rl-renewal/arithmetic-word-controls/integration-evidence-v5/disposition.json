@@ -1,0 +1,129 @@
+{
+  "schema": "ROOT-Q-endpoint-slice-timeout-reconciled-disposition-v2",
+  "actual_owner_identity": "/root",
+  "status": "UNKNOWN",
+  "failure_account_reconciled": true,
+  "independent_saved_reconciliation": "complete_saved_failure_account_only",
+  "ROOT_resource_accepted": false,
+  "complete_neutral_controls_accepted": false,
+  "selected_target_proof_accepted": false,
+  "full24_accepted": false,
+  "native_accepted": false,
+  "full_trajectory_accepted": false,
+  "RL_used": false,
+  "actual_invocation_count": 1,
+  "actual_started_control_calls": 0,
+  "actual_returned_control_calls": 0,
+  "actual_raised_control_calls": 0,
+  "actual_target_searches": 0,
+  "worker_exit": 1,
+  "owner_command_exit": 0,
+  "post_write_elapsed_seconds": 20.326478792,
+  "post_write_peak_bytes": 391856128,
+  "post_write_peak_MiB": 373.703125,
+  "genuine_caller_seconds": 24.192,
+  "caller_finish_reserve_seconds": 1,
+  "all_direct_children_terminal_and_reaped": true,
+  "owned_leftovers": [],
+  "ownership_sample_rows": 170,
+  "allocation_phase": {
+    "boundary_entries": 37824,
+    "boundary_returns": 37823,
+    "completed_boundary_inclusive_seconds": 7.149156363000062,
+    "completed_recipe_comparisons_observed": 3476,
+    "constructor_recipe_interfaces": null,
+    "constructor_returned": false,
+    "factory_capture_seconds": 0.028517707999998976,
+    "factory_returned": true,
+    "factory_started": true,
+    "last_returned_boundary_recipe_index": 3476,
+    "last_started_recipe_index": 3476,
+    "schema": "Q-private-allocation-phase-evidence-v1"
+  },
+  "phase_scope": "Observed counters and real initializer-frame comparison-prefix length only. boundary_started is assigned AFTER the native entry resolution gates; the 7.149156363s sum covers completed timed bodies only. It excludes the entry namespace/global/builtin census, unfinished body, outer invoke/driver/full32/end/setup work. It is not total guard cost, an exhaustive partition, accepted prefix/model fit, or comparison to prior uninstrumented attempts.",
+  "failure": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/worker-output-v1/Q-proof-neutral-controls-failure-v1.json",
+    "sha256": "ea7f510144fdc746494f265850cd98689220cd365db2807c91038f0b8899b620",
+    "bytes": 1057
+  },
+  "caller": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "05a8dcd3a65172efedd07b2287ceff3c4590fd2721ebcdbabbef740149cc61a9",
+    "bytes": 1546
+  },
+  "resource": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "3254ed3699a14e418caaef3ade5caa514e3c04ed55cc2190dcda044ecf8b44ef",
+    "bytes": 2663
+  },
+  "owner": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "ff6bb90687d6d3b97280ee88a46ac615635b017c5345362a9b17400d88cab8b0",
+    "bytes": 1514
+  },
+  "post_write": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "09e9d844e1e21db38a96b9c0801d192dd186ee34c8c648e9d291443abdecb011",
+    "bytes": 595
+  },
+  "ownership_ledger": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "4a0c6bf2bf5d65e7e13897721b9b850fe1960df984ce05c1832e0ad63d1a7f4e",
+    "bytes": 3271
+  },
+  "stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-owner-v1/stderr-v1.txt",
+    "sha256": "75cec2ac476ebfeb9dd7ed3b3292a5dab96dd8983e67249ae561f4e2eaaaf833",
+    "bytes": 2721
+  },
+  "worker_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/worker-plan-v1.json",
+    "sha256": "ae2d238372e593d27fdbb0bbb96ba998093a680ad1bf4ead795195a220078f8f",
+    "bytes": 80681
+  },
+  "owner_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/replay-plan-v1.json",
+    "sha256": "a0273735d2aa9e18fa049523a3b2732044f9defecb7a7302ca4191872bfc409f",
+    "bytes": 52349
+  },
+  "construction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/ROOT-construction-v1.json",
+    "sha256": "e39d3dbe6c3c93f855b34918fb33325aea9f6194b401f0a566336842f470e698",
+    "bytes": 11728
+  },
+  "failure_error": {
+    "message": "allocation boundary completed after unchanged limits",
+    "type": "TimeoutError"
+  },
+  "current_Source_readiness_only": true,
+  "private_provisional_metadata_correction": "Initial local writer selected worker_exit from owner; current actual schema is worker_returncode. It stopped before any output or subject function. No actual work was repeated.",
+  "scope": "Complete saved failure custody accepted only. Exact counter observations, caller and complete ownership ledger are reconciled; all resource/control/model/proof/search/fit/performance acceptance remains false. No scientific replay, Source functions, Q payload decoding or actual retry performed by either saved reviewer.",
+  "Root_provisional": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/ROOT-provisional-endpoint-slice-timeout-disposition-v1.json",
+    "sha256": "206396960da87423c3321831349ee0a7635c30038d8ec4c8488e3960d89238da",
+    "bytes": 5730
+  },
+  "independent_saved_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-endpoint-slice-timeout-independent-20261014/findings-v1.json",
+    "sha256": "d5da9110a5edf1e91c7a834c6f258856b308dc754e8387550cb771bcb839f3a0",
+    "bytes": 1165441
+  },
+  "independent_saved_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-endpoint-slice-timeout-independent-20261014/handoff-v1.json",
+    "sha256": "5c63913a2b826a5bfd301f855d5ebfdef65277b485a4094ef5c1aef05fcd1004",
+    "bytes": 1145
+  },
+  "independent_literal_checks_reauthenticated": 1372,
+  "independent_raw_references_reauthenticated": 979,
+  "independent_canonical_paths": 224,
+  "Root_complete_owned_ledger_equal": true,
+  "Root_all_raw_records_reauthenticated": 1977,
+  "Root_whole_raw_targets_hashed": 227,
+  "leaf_complete_raw_closure_count": 212,
+  "owner_complete_raw_closure_count": 213,
+  "preserved_initial_reconciliation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v5-20261014/ROOT-reconciled-endpoint-slice-timeout-disposition-v1.json",
+    "sha256": "f2380948c8e49eb777f57023666e9752aafe92311c2b0923367a9e54a603bdd8",
+    "bytes": 7109
+  }
+}
