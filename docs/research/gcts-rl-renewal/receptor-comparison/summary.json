@@ -1,0 +1,4202 @@
+{
+  "schema": "Notebook159-saved-display-packet-v1",
+  "presentation_only": true,
+  "notebook": 159,
+  "lead": "The finite receptor-family advice ran and completed23 ground checks, but it proved neither target within the search cutoff. Ordinary symbolic advice reproduced a checked19-command incidence proof. All six scientific runs passed conditional owned-resource qualification; the earlier failed run and arithmetic memory failure remain visible.",
+  "status_text": "Six matched runs recorded: one known proof replicated, two family lanes timed out; no family advantage demonstrated.",
+  "trials": [
+    {
+      "case": "fresh-i2-CD-vw-direct",
+      "lane": "canonical",
+      "status": "unknown_trace_budget",
+      "attempts": 94,
+      "events": 2000,
+      "search_seconds": 17.555989,
+      "owned_seconds": 19.334258,
+      "caller_seconds": 22.846,
+      "peak_MiB": 93.296875,
+      "logical_accepted": false,
+      "origin_kind": null,
+      "registry_completed": false,
+      "proof_rows": [],
+      "evidence_href": "evidence/fresh-i2-CD-vw-direct/canonical/resources.json",
+      "family_ground_checks": 0
+    },
+    {
+      "case": "fresh-i2-CD-vw-direct",
+      "lane": "ordinary-symbolic-advice",
+      "status": "unknown_search_budget",
+      "attempts": 7,
+      "events": 106,
+      "search_seconds": 20.016803,
+      "owned_seconds": 21.122171,
+      "caller_seconds": 24.938,
+      "peak_MiB": 61.296875,
+      "logical_accepted": false,
+      "origin_kind": null,
+      "registry_completed": false,
+      "proof_rows": [],
+      "evidence_href": "evidence/fresh-i2-CD-vw-direct/ordinary-symbolic-advice/resources.json",
+      "family_ground_checks": 0
+    },
+    {
+      "case": "fresh-i2-CD-vw-direct",
+      "lane": "extracted-finite-family-advice",
+      "status": "unknown_search_budget",
+      "attempts": 11,
+      "events": 162,
+      "search_seconds": 20.019796,
+      "owned_seconds": 20.96452,
+      "caller_seconds": 24.94,
+      "peak_MiB": 68.328125,
+      "logical_accepted": false,
+      "origin_kind": null,
+      "registry_completed": true,
+      "proof_rows": [],
+      "evidence_href": "evidence/fresh-i2-CD-vw-direct/extracted-finite-family-advice/resources.json",
+      "family_ground_checks": 12
+    },
+    {
+      "case": "fresh-i2-CD-vw-incidence-transport",
+      "lane": "extracted-finite-family-advice",
+      "status": "unknown_search_budget",
+      "attempts": 10,
+      "events": 170,
+      "search_seconds": 20.045195,
+      "owned_seconds": 20.988569,
+      "caller_seconds": 25.607,
+      "peak_MiB": 68.359375,
+      "logical_accepted": false,
+      "origin_kind": null,
+      "registry_completed": true,
+      "proof_rows": [],
+      "evidence_href": "evidence/fresh-i2-CD-vw-incidence-transport/extracted-finite-family-advice/resources.json",
+      "family_ground_checks": 11
+    },
+    {
+      "case": "fresh-i2-CD-vw-incidence-transport",
+      "lane": "ordinary-symbolic-advice",
+      "status": "first_checked_original_Gamma_target_proof",
+      "attempts": 0,
+      "events": 14,
+      "search_seconds": 2.828882,
+      "owned_seconds": 3.841,
+      "caller_seconds": 7.249,
+      "peak_MiB": 56.859375,
+      "logical_accepted": true,
+      "origin_kind": "completed_source_proposal",
+      "registry_completed": false,
+      "proof_rows": [
+        {
+          "formula_latex": "\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{v})\\land \\bigl(\\operatorname{Line}(\\mathrm{w})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{w})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{w})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)",
+          "formula_english": "(C is a point) and ((D is a point) and ((v is a line) and ((w is a line) and ((it is not the case that (C equals D)) and ((C is incident with v) and ((D is incident with v) and ((C is incident with w) and (D is incident with w)))))))).",
+          "derivation_english": "Retain original hypothesis occurrence 0.",
+          "physical_row": 0,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              0,
+              2685
+            ]
+          ],
+          "command": {
+            "formula": [
+              "and",
+              [
+                "pred",
+                "Point",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "D",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Line",
+                    [
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "not",
+                        [
+                          "eq",
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Incident",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "v",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "D",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "v",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "w",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "w",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          "recipe_index": 101,
+          "local_line": 1
+        },
+        {
+          "formula_latex": "\\mathrm{u}=\\mathrm{v}",
+          "formula_english": "u equals v.",
+          "derivation_english": "Retain original hypothesis occurrence 1.",
+          "physical_row": 1,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              1,
+              3068
+            ]
+          ],
+          "command": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "u",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          "recipe_index": 354,
+          "local_line": 2
+        },
+        {
+          "formula_latex": "\\operatorname{Incident}(\\mathrm{A},\\mathrm{u})",
+          "formula_english": "A is incident with u.",
+          "derivation_english": "Retain original hypothesis occurrence 2.",
+          "physical_row": 2,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              2,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              2,
+              5043
+            ]
+          ],
+          "command": {
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          },
+          "recipe_index": 2723,
+          "local_line": 3
+        },
+        {
+          "formula_latex": "\\forall \\mathrm{P}\\;\\bigl(\\forall \\mathrm{Q}\\;\\bigl(\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{P})\\land \\bigl(\\operatorname{Point}(\\mathrm{Q})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{P}=\\mathrm{Q}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{P},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{Q},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{P},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{Q},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)",
+          "formula_english": "for every P, (for every Q, (for every l, (for every m, (if ((P is a point) and ((Q is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (P equals Q)) and ((P is incident with l) and ((Q is incident with l) and ((P is incident with m) and (Q is incident with m))))))))), then (l equals m))))).",
+          "derivation_english": "Use the theory axiom I.2.",
+          "physical_row": 3,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              3,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              3,
+              0
+            ]
+          ],
+          "command": {
+            "formula": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "name": "I.2",
+            "rule": "axiom"
+          },
+          "recipe_index": 0,
+          "local_line": 4
+        },
+        {
+          "formula_latex": "\\bigl(\\forall \\mathrm{P}\\;\\bigl(\\forall \\mathrm{Q}\\;\\bigl(\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{P})\\land \\bigl(\\operatorname{Point}(\\mathrm{Q})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{P}=\\mathrm{Q}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{P},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{Q},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{P},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{Q},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\forall \\mathrm{Q}\\;\\bigl(\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{Q})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{Q}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{Q},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{Q},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)",
+          "formula_english": "if (for every P, (for every Q, (for every l, (for every m, (if ((P is a point) and ((Q is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (P equals Q)) and ((P is incident with l) and ((Q is incident with l) and ((P is incident with m) and (Q is incident with m))))))))), then (l equals m)))))), then (for every Q, (for every l, (for every m, (if ((C is a point) and ((Q is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (C equals Q)) and ((C is incident with l) and ((Q is incident with l) and ((C is incident with m) and (Q is incident with m))))))))), then (l equals m))))).",
+          "derivation_english": "Use the licensed universal-instantiation implication with term C.",
+          "physical_row": 4,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              4,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              4,
+              3098
+            ]
+          ],
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "P",
+                [
+                  "all",
+                  "Q",
+                  [
+                    "all",
+                    "l",
+                    [
+                      "all",
+                      "m",
+                      [
+                        "imp",
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "P"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Point",
+                              [
+                                [
+                                  "var",
+                                  "Q"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "l"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Line",
+                                  [
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "not",
+                                    [
+                                      "eq",
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "Q"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "P"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "l"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "and",
+                                        [
+                                          "pred",
+                                          "Incident",
+                                          [
+                                            [
+                                              "var",
+                                              "P"
+                                            ],
+                                            [
+                                              "var",
+                                              "m"
+                                            ]
+                                          ]
+                                        ],
+                                        [
+                                          "pred",
+                                          "Incident",
+                                          [
+                                            [
+                                              "var",
+                                              "Q"
+                                            ],
+                                            [
+                                              "var",
+                                              "m"
+                                            ]
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "eq",
+                          [
+                            "var",
+                            "l"
+                          ],
+                          [
+                            "var",
+                            "m"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "C",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "fun",
+                                            "C",
+                                            []
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "C",
+              []
+            ],
+            "universal": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "recipe_index": 824,
+          "local_line": 5
+        },
+        {
+          "formula_latex": "\\bigl(\\forall \\mathrm{Q}\\;\\bigl(\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{Q})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{Q}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{Q},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{Q},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\bigr)\\to \\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\bigr)",
+          "formula_english": "if (for every Q, (for every l, (for every m, (if ((C is a point) and ((Q is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (C equals Q)) and ((C is incident with l) and ((Q is incident with l) and ((C is incident with m) and (Q is incident with m))))))))), then (l equals m))))), then (for every l, (for every m, (if ((C is a point) and ((D is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (C equals D)) and ((C is incident with l) and ((D is incident with l) and ((C is incident with m) and (D is incident with m))))))))), then (l equals m)))).",
+          "derivation_english": "Use the licensed universal-instantiation implication with term D.",
+          "physical_row": 5,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              5,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              5,
+              3111
+            ]
+          ],
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "C",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "fun",
+                                            "C",
+                                            []
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "l",
+                [
+                  "all",
+                  "m",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "l"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "m"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "D",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "D",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "fun",
+                                          "C",
+                                          []
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "fun",
+                                          "D",
+                                          []
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "l"
+                      ],
+                      [
+                        "var",
+                        "m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "D",
+              []
+            ],
+            "universal": [
+              "all",
+              "Q",
+              [
+                "all",
+                "l",
+                [
+                  "all",
+                  "m",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "Q"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "l"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "m"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "var",
+                                    "Q"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "Q"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "fun",
+                                          "C",
+                                          []
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "l"
+                      ],
+                      [
+                        "var",
+                        "m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "recipe_index": 837,
+          "local_line": 6
+        },
+        {
+          "formula_latex": "\\bigl(\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\to \\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{v})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{v}=\\mathrm{m}\\bigr)\\bigr)\\bigr)",
+          "formula_english": "if (for every l, (for every m, (if ((C is a point) and ((D is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (C equals D)) and ((C is incident with l) and ((D is incident with l) and ((C is incident with m) and (D is incident with m))))))))), then (l equals m)))), then (for every m, (if ((C is a point) and ((D is a point) and ((v is a line) and ((m is a line) and ((it is not the case that (C equals D)) and ((C is incident with v) and ((D is incident with v) and ((C is incident with m) and (D is incident with m))))))))), then (v equals m))).",
+          "derivation_english": "Use the licensed universal-instantiation implication with term v.",
+          "physical_row": 6,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              6,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              6,
+              3160
+            ]
+          ],
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "l",
+                [
+                  "all",
+                  "m",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "l"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "m"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "D",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "D",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "fun",
+                                          "C",
+                                          []
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "fun",
+                                          "D",
+                                          []
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "l"
+                      ],
+                      [
+                        "var",
+                        "m"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "m",
+                [
+                  "imp",
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "fun",
+                              "v",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "m"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "not",
+                              [
+                                "eq",
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "v",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "fun",
+                                      "v",
+                                      []
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "C",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "D",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ],
+                    [
+                      "var",
+                      "m"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "v",
+              []
+            ],
+            "universal": [
+              "all",
+              "l",
+              [
+                "all",
+                "m",
+                [
+                  "imp",
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "l"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "m"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "not",
+                              [
+                                "eq",
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "var",
+                                    "l"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "C",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "D",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "l"
+                    ],
+                    [
+                      "var",
+                      "m"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "recipe_index": 886,
+          "local_line": 7
+        },
+        {
+          "formula_latex": "\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{v})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{v}=\\mathrm{m}\\bigr)\\bigr)\\to \\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{v})\\land \\bigl(\\operatorname{Line}(\\mathrm{w})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{w})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{w})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{v}=\\mathrm{w}\\bigr)\\bigr)",
+          "formula_english": "if (for every m, (if ((C is a point) and ((D is a point) and ((v is a line) and ((m is a line) and ((it is not the case that (C equals D)) and ((C is incident with v) and ((D is incident with v) and ((C is incident with m) and (D is incident with m))))))))), then (v equals m))), then (if ((C is a point) and ((D is a point) and ((v is a line) and ((w is a line) and ((it is not the case that (C equals D)) and ((C is incident with v) and ((D is incident with v) and ((C is incident with w) and (D is incident with w))))))))), then (v equals w)).",
+          "derivation_english": "Use the licensed universal-instantiation implication with term w.",
+          "physical_row": 7,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              7,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              7,
+              3356
+            ]
+          ],
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "m",
+                [
+                  "imp",
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "fun",
+                              "v",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "m"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "not",
+                              [
+                                "eq",
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "v",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "fun",
+                                      "v",
+                                      []
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "C",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "D",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ],
+                    [
+                      "var",
+                      "m"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Point",
+                    [
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "D",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Line",
+                        [
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "fun",
+                              "w",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "not",
+                            [
+                              "eq",
+                              [
+                                "fun",
+                                "C",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "D",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "v",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "D",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "v",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "fun",
+                                      "w",
+                                      []
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "fun",
+                                      "w",
+                                      []
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "w",
+              []
+            ],
+            "universal": [
+              "all",
+              "m",
+              [
+                "imp",
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Point",
+                    [
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "D",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Line",
+                        [
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "m"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "not",
+                            [
+                              "eq",
+                              [
+                                "fun",
+                                "C",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "D",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "v",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "D",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "v",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ],
+                  [
+                    "var",
+                    "m"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "recipe_index": 1082,
+          "local_line": 8
+        },
+        {
+          "formula_latex": "\\bigl(\\mathrm{u}=\\mathrm{w}\\to \\bigl(\\operatorname{Incident}(\\mathrm{A},\\mathrm{u})\\to \\operatorname{Incident}(\\mathrm{A},\\mathrm{w})\\bigr)\\bigr)",
+          "formula_english": "if (u equals w), then (if (A is incident with u), then (A is incident with w)).",
+          "derivation_english": "Use the licensed equality-substitution implication from u to w.",
+          "physical_row": 8,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              8,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              8,
+              4570
+            ]
+          ],
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "u",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "u",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "w",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "u",
+              []
+            ],
+            "right": [
+              "fun",
+              "w",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "var",
+                  "hole0"
+                ]
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "recipe_index": 2235,
+          "local_line": 9
+        },
+        {
+          "formula_latex": "\\bigl(\\mathrm{v}=\\mathrm{w}\\to \\bigl(\\mathrm{u}=\\mathrm{v}\\to \\mathrm{u}=\\mathrm{w}\\bigr)\\bigr)",
+          "formula_english": "if (v equals w), then (if (u equals v), then (u equals w)).",
+          "derivation_english": "Use the licensed equality-substitution implication from v to w.",
+          "physical_row": 9,
+          "ordered_prior_rows": [],
+          "t": [
+            [
+              0,
+              9,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              9,
+              4670
+            ]
+          ],
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "v",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "v",
+              []
+            ],
+            "right": [
+              "fun",
+              "w",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "eq",
+              [
+                "fun",
+                "u",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ],
+            "variable": "hole0"
+          },
+          "recipe_index": 2343,
+          "local_line": 10
+        },
+        {
+          "formula_latex": "\\forall \\mathrm{Q}\\;\\bigl(\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{Q})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{Q}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{Q},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{Q},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)\\bigr)",
+          "formula_english": "for every Q, (for every l, (for every m, (if ((C is a point) and ((Q is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (C equals Q)) and ((C is incident with l) and ((Q is incident with l) and ((C is incident with m) and (Q is incident with m))))))))), then (l equals m)))).",
+          "derivation_english": "Apply modus ponens to proof lines 4 and 5.",
+          "physical_row": 10,
+          "ordered_prior_rows": [
+            3,
+            4
+          ],
+          "t": [
+            [
+              0,
+              10,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              10,
+              3
+            ],
+            [
+              1,
+              3,
+              0
+            ],
+            [
+              1,
+              4,
+              3098
+            ],
+            [
+              2,
+              10,
+              -7
+            ],
+            [
+              3,
+              10,
+              -6
+            ]
+          ],
+          "command": {
+            "antecedent": 3,
+            "formula": [
+              "all",
+              "Q",
+              [
+                "all",
+                "l",
+                [
+                  "all",
+                  "m",
+                  [
+                    "imp",
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "C",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "Q"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "l"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "m"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "not",
+                                [
+                                  "eq",
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "var",
+                                    "Q"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "Q"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "fun",
+                                          "C",
+                                          []
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "m"
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "l"
+                      ],
+                      [
+                        "var",
+                        "m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "implication": 4,
+            "rule": "mp"
+          },
+          "recipe_index": 3,
+          "local_line": 11
+        },
+        {
+          "formula_latex": "\\forall \\mathrm{l}\\;\\bigl(\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{l})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{l})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{l}=\\mathrm{m}\\bigr)\\bigr)\\bigr)",
+          "formula_english": "for every l, (for every m, (if ((C is a point) and ((D is a point) and ((l is a line) and ((m is a line) and ((it is not the case that (C equals D)) and ((C is incident with l) and ((D is incident with l) and ((C is incident with m) and (D is incident with m))))))))), then (l equals m))).",
+          "derivation_english": "Apply modus ponens to proof lines 11 and 6.",
+          "physical_row": 11,
+          "ordered_prior_rows": [
+            10,
+            5
+          ],
+          "t": [
+            [
+              0,
+              11,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              11,
+              19
+            ],
+            [
+              1,
+              10,
+              3
+            ],
+            [
+              1,
+              5,
+              3111
+            ],
+            [
+              2,
+              11,
+              -1
+            ],
+            [
+              3,
+              11,
+              -6
+            ]
+          ],
+          "command": {
+            "antecedent": 10,
+            "formula": [
+              "all",
+              "l",
+              [
+                "all",
+                "m",
+                [
+                  "imp",
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "C",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "fun",
+                            "D",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "l"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "m"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "not",
+                              [
+                                "eq",
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "var",
+                                    "l"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "C",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "fun",
+                                        "D",
+                                        []
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "l"
+                    ],
+                    [
+                      "var",
+                      "m"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "implication": 5,
+            "rule": "mp"
+          },
+          "recipe_index": 16,
+          "local_line": 12
+        },
+        {
+          "formula_latex": "\\forall \\mathrm{m}\\;\\bigl(\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{v})\\land \\bigl(\\operatorname{Line}(\\mathrm{m})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{m})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{m})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{v}=\\mathrm{m}\\bigr)\\bigr)",
+          "formula_english": "for every m, (if ((C is a point) and ((D is a point) and ((v is a line) and ((m is a line) and ((it is not the case that (C equals D)) and ((C is incident with v) and ((D is incident with v) and ((C is incident with m) and (D is incident with m))))))))), then (v equals m)).",
+          "derivation_english": "Apply modus ponens to proof lines 12 and 7.",
+          "physical_row": 12,
+          "ordered_prior_rows": [
+            11,
+            6
+          ],
+          "t": [
+            [
+              0,
+              12,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              12,
+              84
+            ],
+            [
+              1,
+              11,
+              19
+            ],
+            [
+              1,
+              6,
+              3160
+            ],
+            [
+              2,
+              12,
+              -1
+            ],
+            [
+              3,
+              12,
+              -6
+            ]
+          ],
+          "command": {
+            "antecedent": 11,
+            "formula": [
+              "all",
+              "m",
+              [
+                "imp",
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Point",
+                    [
+                      [
+                        "fun",
+                        "C",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "fun",
+                          "D",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Line",
+                        [
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "m"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "not",
+                            [
+                              "eq",
+                              [
+                                "fun",
+                                "C",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "D",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "C",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "v",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "D",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "v",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "C",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "fun",
+                                      "D",
+                                      []
+                                    ],
+                                    [
+                                      "var",
+                                      "m"
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ],
+                  [
+                    "var",
+                    "m"
+                  ]
+                ]
+              ]
+            ],
+            "implication": 6,
+            "rule": "mp"
+          },
+          "recipe_index": 65,
+          "local_line": 13
+        },
+        {
+          "formula_latex": "\\bigl(\\bigl(\\operatorname{Point}(\\mathrm{C})\\land \\bigl(\\operatorname{Point}(\\mathrm{D})\\land \\bigl(\\operatorname{Line}(\\mathrm{v})\\land \\bigl(\\operatorname{Line}(\\mathrm{w})\\land \\bigl(\\neg\\bigl(\\mathrm{C}=\\mathrm{D}\\bigr)\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{D},\\mathrm{v})\\land \\bigl(\\operatorname{Incident}(\\mathrm{C},\\mathrm{w})\\land \\operatorname{Incident}(\\mathrm{D},\\mathrm{w})\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\bigr)\\to \\mathrm{v}=\\mathrm{w}\\bigr)",
+          "formula_english": "if ((C is a point) and ((D is a point) and ((v is a line) and ((w is a line) and ((it is not the case that (C equals D)) and ((C is incident with v) and ((D is incident with v) and ((C is incident with w) and (D is incident with w))))))))), then (v equals w).",
+          "derivation_english": "Apply modus ponens to proof lines 13 and 8.",
+          "physical_row": 13,
+          "ordered_prior_rows": [
+            12,
+            7
+          ],
+          "t": [
+            [
+              0,
+              13,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              13,
+              3710
+            ],
+            [
+              1,
+              12,
+              84
+            ],
+            [
+              1,
+              7,
+              3356
+            ],
+            [
+              2,
+              13,
+              -1
+            ],
+            [
+              3,
+              13,
+              -6
+            ]
+          ],
+          "command": {
+            "antecedent": 12,
+            "formula": [
+              "imp",
+              [
+                "and",
+                [
+                  "pred",
+                  "Point",
+                  [
+                    [
+                      "fun",
+                      "C",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Point",
+                    [
+                      [
+                        "fun",
+                        "D",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Line",
+                      [
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Line",
+                        [
+                          [
+                            "fun",
+                            "w",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "not",
+                          [
+                            "eq",
+                            [
+                              "fun",
+                              "C",
+                              []
+                            ],
+                            [
+                              "fun",
+                              "D",
+                              []
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Incident",
+                            [
+                              [
+                                "fun",
+                                "C",
+                                []
+                              ],
+                              [
+                                "fun",
+                                "v",
+                                []
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Incident",
+                              [
+                                [
+                                  "fun",
+                                  "D",
+                                  []
+                                ],
+                                [
+                                  "fun",
+                                  "v",
+                                  []
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "C",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "w",
+                                    []
+                                  ]
+                                ]
+                              ],
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "fun",
+                                    "D",
+                                    []
+                                  ],
+                                  [
+                                    "fun",
+                                    "w",
+                                    []
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "v",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "implication": 7,
+            "rule": "mp"
+          },
+          "recipe_index": 1382,
+          "local_line": 14
+        },
+        {
+          "formula_latex": "\\mathrm{v}=\\mathrm{w}",
+          "formula_english": "v equals w.",
+          "derivation_english": "Apply modus ponens to proof lines 1 and 14.",
+          "physical_row": 14,
+          "ordered_prior_rows": [
+            0,
+            13
+          ],
+          "t": [
+            [
+              0,
+              14,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              14,
+              3077
+            ],
+            [
+              1,
+              0,
+              2685
+            ],
+            [
+              1,
+              13,
+              3710
+            ],
+            [
+              2,
+              14,
+              -14
+            ],
+            [
+              3,
+              14,
+              -1
+            ]
+          ],
+          "command": {
+            "antecedent": 0,
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ],
+            "implication": 13,
+            "rule": "mp"
+          },
+          "recipe_index": 539,
+          "local_line": 15
+        },
+        {
+          "formula_latex": "\\bigl(\\mathrm{u}=\\mathrm{v}\\to \\mathrm{u}=\\mathrm{w}\\bigr)",
+          "formula_english": "if (u equals v), then (u equals w).",
+          "derivation_english": "Apply modus ponens to proof lines 15 and 10.",
+          "physical_row": 15,
+          "ordered_prior_rows": [
+            14,
+            9
+          ],
+          "t": [
+            [
+              0,
+              15,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              15,
+              4523
+            ],
+            [
+              1,
+              14,
+              3077
+            ],
+            [
+              1,
+              9,
+              4670
+            ],
+            [
+              2,
+              15,
+              -1
+            ],
+            [
+              3,
+              15,
+              -6
+            ]
+          ],
+          "command": {
+            "antecedent": 14,
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "u",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "u",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "implication": 9,
+            "rule": "mp"
+          },
+          "recipe_index": 2187,
+          "local_line": 16
+        },
+        {
+          "formula_latex": "\\mathrm{u}=\\mathrm{w}",
+          "formula_english": "u equals w.",
+          "derivation_english": "Apply modus ponens to proof lines 2 and 16.",
+          "physical_row": 16,
+          "ordered_prior_rows": [
+            1,
+            15
+          ],
+          "t": [
+            [
+              0,
+              16,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              16,
+              3069
+            ],
+            [
+              1,
+              1,
+              3068
+            ],
+            [
+              1,
+              15,
+              4523
+            ],
+            [
+              2,
+              16,
+              -15
+            ],
+            [
+              3,
+              16,
+              -1
+            ]
+          ],
+          "command": {
+            "antecedent": 1,
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "u",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ],
+            "implication": 15,
+            "rule": "mp"
+          },
+          "recipe_index": 411,
+          "local_line": 17
+        },
+        {
+          "formula_latex": "\\bigl(\\operatorname{Incident}(\\mathrm{A},\\mathrm{u})\\to \\operatorname{Incident}(\\mathrm{A},\\mathrm{w})\\bigr)",
+          "formula_english": "if (A is incident with u), then (A is incident with w).",
+          "derivation_english": "Apply modus ponens to proof lines 17 and 9.",
+          "physical_row": 17,
+          "ordered_prior_rows": [
+            16,
+            8
+          ],
+          "t": [
+            [
+              0,
+              17,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              17,
+              4819
+            ],
+            [
+              1,
+              16,
+              3069
+            ],
+            [
+              1,
+              8,
+              4570
+            ],
+            [
+              2,
+              17,
+              -1
+            ],
+            [
+              3,
+              17,
+              -9
+            ]
+          ],
+          "command": {
+            "antecedent": 16,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "implication": 8,
+            "rule": "mp"
+          },
+          "recipe_index": 2501,
+          "local_line": 18
+        },
+        {
+          "formula_latex": "\\operatorname{Incident}(\\mathrm{A},\\mathrm{w})",
+          "formula_english": "A is incident with w.",
+          "derivation_english": "Apply modus ponens to proof lines 3 and 18.",
+          "physical_row": 18,
+          "ordered_prior_rows": [
+            2,
+            17
+          ],
+          "t": [
+            [
+              0,
+              18,
+              1
+            ]
+          ],
+          "m": [
+            [
+              1,
+              18,
+              5045
+            ],
+            [
+              1,
+              2,
+              5043
+            ],
+            [
+              1,
+              17,
+              4819
+            ],
+            [
+              2,
+              18,
+              -16
+            ],
+            [
+              3,
+              18,
+              -1
+            ]
+          ],
+          "command": {
+            "antecedent": 2,
+            "formula": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            "implication": 17,
+            "rule": "mp"
+          },
+          "recipe_index": 2736,
+          "local_line": 19
+        }
+      ],
+      "evidence_href": "evidence/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/resources.json",
+      "family_ground_checks": 0
+    },
+    {
+      "case": "fresh-i2-CD-vw-incidence-transport",
+      "lane": "canonical",
+      "status": "unknown_trace_budget",
+      "attempts": 96,
+      "events": 2000,
+      "search_seconds": 17.36482,
+      "owned_seconds": 19.136903,
+      "caller_seconds": 22.309,
+      "peak_MiB": 91.953125,
+      "logical_accepted": false,
+      "origin_kind": null,
+      "registry_completed": false,
+      "proof_rows": [],
+      "evidence_href": "evidence/fresh-i2-CD-vw-incidence-transport/canonical/resources.json",
+      "family_ground_checks": 0
+    }
+  ],
+  "prior_costs": [
+    {
+      "label": "Complete donor extraction",
+      "status": "Accepted scoped extraction/control",
+      "scope": "Actual finite source-bound extraction and independent full-root/current-union/ground-body checks accepted. Ground exposed receptors are local hypotheses, not universally quantified lemma validity. Candidate inventory is not yet admitted; no recipient or speed comparison has run.",
+      "owned_seconds": 3.636048541,
+      "caller_seconds": 7.269,
+      "peak_MiB": 67.609375,
+      "evidence_href": "../receptor-extraction/reader.html#evidence"
+    },
+    {
+      "label": "First receiver control failed",
+      "status": "Incomplete; no accepted prefix",
+      "scope": "Preserved failed cold attempt; observed within limits and reaped, but complete resource/stage predicates did not pass. No controls completion or theorem acceptance. Fresh reviewed successor required before another activation.",
+      "owned_seconds": 1.604088667,
+      "caller_seconds": 5.682,
+      "peak_MiB": 55.5,
+      "evidence_href": "../receptor-controls/reader.html#attempts"
+    },
+    {
+      "label": "Fresh receiver controls passed",
+      "status": "Accepted scoped extraction/control",
+      "scope": "Only current finite family instances and recorded real graph/domain fixtures. Mechanical off-scheduler reader placement and unproved sole-key exclusion are explicitly nonlogical controls. Successful control qualification grants no scientific search, no universal family or new inference rule, and no whole trajectory.",
+      "owned_seconds": 18.122334334,
+      "caller_seconds": 23.5,
+      "peak_MiB": 58.171875,
+      "evidence_href": "../receptor-controls/reader.html#attempts"
+    },
+    {
+      "label": "First scientific run failed",
+      "status": "Incomplete; no accepted prefix",
+      "scope": "Actual incomplete scientific invocation with closed worker. Neither an UNKNOWN mathematical result tape, theorem refutation, performance observation for the solver, nor a qualifying comparison. All infrastructure costs retained.",
+      "owned_seconds": 19.454656292,
+      "caller_seconds": 23.718,
+      "peak_MiB": 75.125,
+      "evidence_href": "first-scientific-failure.json"
+    },
+    {
+      "label": "Arithmetic controls exceeded memory",
+      "status": "Incomplete; no accepted prefix",
+      "scope": "Actual cold preparation/controls exceeded the512MiB observed owned-memory limit. Worker terminated/reaped with no leftovers; only a provisional preparation artifact exists, no complete controls or qualified catalogue. Provisional census values are diagnostic, never accepted completion or theorem discovery.",
+      "owned_seconds": 11.382454874999999,
+      "caller_seconds": 16.38,
+      "peak_MiB": 523.609375,
+      "evidence_href": "arithmetic-failure.json"
+    },
+    {
+      "label": "fresh-i2-CD-vw-direct \u00b7 earlier preparation",
+      "status": "Accepted complete static phase",
+      "scope": "Historical full catalogue/licence/initial24-domain prerequisite, separately measured and reused across current lanes; not included in new search/cold timers.",
+      "owned_seconds": 1.055936542,
+      "caller_seconds": 6.287,
+      "peak_MiB": 44.609375,
+      "evidence_href": "../hilbert-i2/reader.html#evidence"
+    },
+    {
+      "label": "fresh-i2-CD-vw-direct \u00b7 earlier replay",
+      "status": "Accepted complete static phase",
+      "scope": "Historical full catalogue/licence/initial24-domain prerequisite, separately measured and reused across current lanes; not included in new search/cold timers.",
+      "owned_seconds": 0.90185025,
+      "caller_seconds": 4.325,
+      "peak_MiB": 42.53125,
+      "evidence_href": "../hilbert-i2/reader.html#evidence"
+    },
+    {
+      "label": "fresh-i2-CD-vw-incidence-transport \u00b7 earlier preparation",
+      "status": "Accepted complete static phase",
+      "scope": "Historical full catalogue/licence/initial24-domain prerequisite, separately measured and reused across current lanes; not included in new search/cold timers.",
+      "owned_seconds": 0.928111084,
+      "caller_seconds": 4.689,
+      "peak_MiB": 44.671875,
+      "evidence_href": "../hilbert-i2/reader.html#evidence"
+    },
+    {
+      "label": "fresh-i2-CD-vw-incidence-transport \u00b7 earlier replay",
+      "status": "Accepted complete static phase",
+      "scope": "Historical full catalogue/licence/initial24-domain prerequisite, separately measured and reused across current lanes; not included in new search/cold timers.",
+      "owned_seconds": 0.916910208,
+      "caller_seconds": 3.959,
+      "peak_MiB": 42.578125,
+      "evidence_href": "../hilbert-i2/reader.html#evidence"
+    }
+  ],
+  "arithmetic_status": "The actual arithmetic preparation/controls run exceeded the fixed memory limit. Its provisional catalogue and incomplete controls are unaccepted; theorem search, induction and production admission remain unactivated.",
+  "evidence_links": [
+    {
+      "label": "Root six-lane scoped qualification",
+      "href": "qualification.json"
+    },
+    {
+      "label": "Earlier incomplete scientific attempt",
+      "href": "first-scientific-failure.json"
+    },
+    {
+      "label": "Arithmetic memory failure",
+      "href": "arithmetic-failure.json"
+    },
+    {
+      "label": "Receiver controls and actual ground cluster tiles",
+      "href": "../receptor-controls/reader.html#reader"
+    },
+    {
+      "label": "Earlier known proof for replication comparison",
+      "href": "../hilbert-i2/reader.html#proof-reader"
+    },
+    {
+      "label": "Reproduction package, including all raw source closures and saved attempts",
+      "href": "reproduction.zip"
+    },
+    {
+      "label": "Independent saved reconciliation: all six tapes, exact proof and variant binding",
+      "href": "independent-saved-review.json"
+    },
+    {
+      "label": "Independent arithmetic failure reconciliation",
+      "href": "arithmetic-saved-review.json"
+    }
+  ],
+  "replicated_proof_scope": "Exact same19 primitive commands as Notebook156, newly timed and checked here. Completed source proposal; every original hypothesis occurrence retained and consumed, current point union compatible. No full24-row board or actually selected target."
+}

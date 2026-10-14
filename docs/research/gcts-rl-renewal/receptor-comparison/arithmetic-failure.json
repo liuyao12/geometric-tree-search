@@ -1,0 +1,55 @@
+{
+  "schema": "ROOT-Q-actual-incomplete-controls-disposition-v1",
+  "author_identity": "/root",
+  "ROOT_complete_scoped_controls_accepted": false,
+  "resource_qualification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+    "sha256": "d10310c411d5a0a735542e6c5d07457ff5e7b3f57ee3ad9e49b32dc31d5d2877",
+    "bytes": 2574
+  },
+  "owner": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+    "sha256": "68934569ef47b676b8b4179d6ed034baadf7130ead67b877243433a520123c61",
+    "bytes": 1554
+  },
+  "post_write": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+    "sha256": "0cd606fcaf3fc0086957574619f69fa9e30bac41ff81aa15c52db6c22bb7ab43",
+    "bytes": 578
+  },
+  "actual_caller": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+    "sha256": "bb160a01216ca55f5b81fc478b11a053d70eaa8d0ff8d29fcb50105c7ad194bc",
+    "bytes": 1668
+  },
+  "actual_cold_invocations": 1,
+  "worker_returncode": -15,
+  "all_owner_direct_children_terminal_and_reaped": true,
+  "owned_leftovers": [],
+  "owned_seconds": 11.382454874999999,
+  "caller_seconds": 16.38,
+  "caller_seconds_with_finish_margin": 17.38,
+  "conditional_peak_bytes": 549044224,
+  "fixed_peak_limit_bytes": 536870912,
+  "control_count": null,
+  "catalogue_accepted": false,
+  "all24_initial_domains_accepted": false,
+  "provisional_preparation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+    "sha256": "652170c07f22f5f7e7d903eca870ca0f4988b13121b99f1d3c3676462f19a636",
+    "bytes": 38376939
+  },
+  "final_worker_receipt": null,
+  "accepted_prefix": false,
+  "actual_error": {
+    "type": "ValueError",
+    "message": "sampled owner/observer/owned-worker memory"
+  },
+  "target_searches": 0,
+  "target_proofs_accepted": false,
+  "induction_accepted": false,
+  "full_PA_accepted": false,
+  "native_accepted": false,
+  "RL_training_runs": 0,
+  "scope": "Actual cold preparation/controls exceeded the512MiB observed owned-memory limit. Worker terminated/reaped with no leftovers; only a provisional preparation artifact exists, no complete controls or qualified catalogue. Provisional census values are diagnostic, never accepted completion or theorem discovery."
+}

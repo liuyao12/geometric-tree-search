@@ -1,0 +1,375 @@
+{
+  "schema": "ROOT-two-known-I2-six-lane-comparison-disposition-v1",
+  "author_identity": "/root",
+  "all_six_actual_scientific_invocations_resource_accepted": true,
+  "actual_scientific_invocations": 6,
+  "preregistered_order": [
+    [
+      "fresh-i2-CD-vw-direct",
+      "canonical",
+      "base"
+    ],
+    [
+      "fresh-i2-CD-vw-direct",
+      "ordinary-symbolic-advice",
+      "seed_forward"
+    ],
+    [
+      "fresh-i2-CD-vw-direct",
+      "extracted-finite-family-advice",
+      "seed_forward"
+    ],
+    [
+      "fresh-i2-CD-vw-incidence-transport",
+      "extracted-finite-family-advice",
+      "seed_forward"
+    ],
+    [
+      "fresh-i2-CD-vw-incidence-transport",
+      "ordinary-symbolic-advice",
+      "seed_forward"
+    ],
+    [
+      "fresh-i2-CD-vw-incidence-transport",
+      "canonical",
+      "base"
+    ]
+  ],
+  "preregistration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-ROOT-source-20261014/ROOT-six-lane-preregistration-v1.json",
+    "sha256": "cabd16d28e9a51e9899f5e44c244b283f90334b7478fae5df47bec0c6f8902ee",
+    "bytes": 4623
+  },
+  "rows": [
+    {
+      "case": "fresh-i2-CD-vw-direct",
+      "lane": "canonical",
+      "mode": "base",
+      "status": "unknown_trace_budget",
+      "resource_accepted": true,
+      "logical_target_accepted": false,
+      "origin_kind": null,
+      "attempts": 94,
+      "events": 2000,
+      "search_seconds": 17.555989375,
+      "owned_seconds": 19.334258415999997,
+      "caller_seconds": 22.846,
+      "caller_seconds_with_margin": 23.846,
+      "peak_bytes": 97828864,
+      "registry_completed": false,
+      "family_metrics": null,
+      "nominal20s_cutoff_cooperative": true,
+      "checked_deadline_overshoot_seconds": 0.0,
+      "trace_complete": false,
+      "root_restored": true,
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "RL_training_runs": 0,
+      "worker_receipt": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "c6302addcdcd98993654156778d7a0aa983f168bc4e57f5a5715f54694b91290",
+        "bytes": 14017
+      },
+      "result": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "ed91210d6598fd93788a15c2f41e873995cafa00c73d1a785e7d120c2aa82892",
+        "bytes": 137756
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/canonical/ROOT-final-disposition-v1.json",
+        "sha256": "292a5f74668ef51a39f16a8adfad800309ebf924d783f96bb9e11cddea319c5d",
+        "bytes": 6772
+      },
+      "actual_terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/canonical/actual-terminal-v1.json",
+        "sha256": "a5bee2208576b46f85d753f111f42ce8c5cbc1719568983fa2a5fd3cce1ec415",
+        "bytes": 3391
+      },
+      "logical_certificate": null
+    },
+    {
+      "case": "fresh-i2-CD-vw-direct",
+      "lane": "ordinary-symbolic-advice",
+      "mode": "seed_forward",
+      "status": "unknown_search_budget",
+      "resource_accepted": true,
+      "logical_target_accepted": false,
+      "origin_kind": null,
+      "attempts": 7,
+      "events": 106,
+      "search_seconds": 20.016803291,
+      "owned_seconds": 21.122170916,
+      "caller_seconds": 24.938,
+      "caller_seconds_with_margin": 25.938,
+      "peak_bytes": 64274432,
+      "registry_completed": false,
+      "family_metrics": null,
+      "nominal20s_cutoff_cooperative": true,
+      "checked_deadline_overshoot_seconds": 0.016803290999998666,
+      "trace_complete": false,
+      "root_restored": true,
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "RL_training_runs": 0,
+      "worker_receipt": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/ordinary-symbolic-advice/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "8d338302031e82146d775fa1dd7f894b6949b2bc9b5cb2a63bc91aba7b368cd6",
+        "bytes": 14101
+      },
+      "result": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/ordinary-symbolic-advice/worker-output-v1/result-v1.json.gz",
+        "sha256": "bd72712a63e6d2b87eb7bf8be74102a5d3ec29dca8caa728bc891002cfa5bda6",
+        "bytes": 28566
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/ordinary-symbolic-advice/ROOT-final-disposition-v1.json",
+        "sha256": "fc8100a14ecf9bf1957b408bcc128e7b56cdd1755f65a5308fc2e385f41c6ca8",
+        "bytes": 6896
+      },
+      "actual_terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/ordinary-symbolic-advice/actual-terminal-v1.json",
+        "sha256": "3e406a9a109a728f3a3c2621fcaa2860b0316dc949d5d44804307155683a90e7",
+        "bytes": 3452
+      },
+      "logical_certificate": null
+    },
+    {
+      "case": "fresh-i2-CD-vw-direct",
+      "lane": "extracted-finite-family-advice",
+      "mode": "seed_forward",
+      "status": "unknown_search_budget",
+      "resource_accepted": true,
+      "logical_target_accepted": false,
+      "origin_kind": null,
+      "attempts": 11,
+      "events": 162,
+      "search_seconds": 20.019796292,
+      "owned_seconds": 20.96452025,
+      "caller_seconds": 24.94,
+      "caller_seconds_with_margin": 25.94,
+      "peak_bytes": 71647232,
+      "registry_completed": true,
+      "family_metrics": {
+        "completed_instance_seconds_before_final_guards": 4.683293293999998,
+        "current_point_calls_completed": 77,
+        "current_point_calls_started": 77,
+        "embedding_point_calls_completed": 6,
+        "embedding_point_calls_started": 6,
+        "exact_legality_calls": 6,
+        "final_point_calls_completed": 24,
+        "final_point_calls_started": 24,
+        "ground_checks_accepted": 12,
+        "ground_checks_completed": 12,
+        "ground_checks_started": 12,
+        "instance_calls_completed": 12,
+        "instance_calls_started": 66
+      },
+      "nominal20s_cutoff_cooperative": true,
+      "checked_deadline_overshoot_seconds": 0.019796291999998772,
+      "trace_complete": false,
+      "root_restored": true,
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "RL_training_runs": 0,
+      "worker_receipt": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/extracted-finite-family-advice/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "082e2e6688054990a57be5d3990dd6713b25ea38286daebb7634ebdb1fd50885",
+        "bytes": 19310
+      },
+      "result": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/extracted-finite-family-advice/worker-output-v1/result-v1.json.gz",
+        "sha256": "1f2b038f77986a3c6cf62c49f734e65641292948cf0afca38cd128a48093ddaf",
+        "bytes": 25660
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/extracted-finite-family-advice/ROOT-final-disposition-v1.json",
+        "sha256": "dacc4cfcb7901e5a80055a8e67c3cde3eb5884b4c771aa03c6e7078450ed44de",
+        "bytes": 6949
+      },
+      "actual_terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-direct/extracted-finite-family-advice/actual-terminal-v1.json",
+        "sha256": "c74692361c913d62b86963f4e067bb9a72ac66407ef507075516d4862370e0ba",
+        "bytes": 3482
+      },
+      "logical_certificate": null
+    },
+    {
+      "case": "fresh-i2-CD-vw-incidence-transport",
+      "lane": "extracted-finite-family-advice",
+      "mode": "seed_forward",
+      "status": "unknown_search_budget",
+      "resource_accepted": true,
+      "logical_target_accepted": false,
+      "origin_kind": null,
+      "attempts": 10,
+      "events": 170,
+      "search_seconds": 20.045195333000002,
+      "owned_seconds": 20.988569417,
+      "caller_seconds": 25.607,
+      "caller_seconds_with_margin": 26.607,
+      "peak_bytes": 71680000,
+      "registry_completed": true,
+      "family_metrics": {
+        "completed_instance_seconds_before_final_guards": 4.588136290999999,
+        "current_point_calls_completed": 71,
+        "current_point_calls_started": 71,
+        "embedding_point_calls_completed": 6,
+        "embedding_point_calls_started": 6,
+        "exact_legality_calls": 6,
+        "final_point_calls_completed": 22,
+        "final_point_calls_started": 22,
+        "ground_checks_accepted": 11,
+        "ground_checks_completed": 11,
+        "ground_checks_started": 11,
+        "instance_calls_completed": 11,
+        "instance_calls_started": 60
+      },
+      "nominal20s_cutoff_cooperative": true,
+      "checked_deadline_overshoot_seconds": 0.045195333000002336,
+      "trace_complete": false,
+      "root_restored": true,
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "RL_training_runs": 0,
+      "worker_receipt": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/extracted-finite-family-advice/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "696c344dff5b6ffca9b0f1365c1138e535703503db07fbb898412d440c381696",
+        "bytes": 19456
+      },
+      "result": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/extracted-finite-family-advice/worker-output-v1/result-v1.json.gz",
+        "sha256": "f411a707cb8d2e8a3ace384c6cc0cbce860630e27fbf47dbb501eebd55de59c5",
+        "bytes": 25473
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/extracted-finite-family-advice/ROOT-final-disposition-v1.json",
+        "sha256": "48c9442fc490bb922f0f4bcac2ca88abf9a2e854b7b86e20cd9f069de7c188bd",
+        "bytes": 7043
+      },
+      "actual_terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/extracted-finite-family-advice/actual-terminal-v1.json",
+        "sha256": "38ccca162f88352c2f2200e77c3504da8ee40216887ea6261760201580e86ce7",
+        "bytes": 3545
+      },
+      "logical_certificate": null
+    },
+    {
+      "case": "fresh-i2-CD-vw-incidence-transport",
+      "lane": "ordinary-symbolic-advice",
+      "mode": "seed_forward",
+      "status": "first_checked_original_Gamma_target_proof",
+      "resource_accepted": true,
+      "logical_target_accepted": true,
+      "origin_kind": "completed_source_proposal",
+      "attempts": 0,
+      "events": 14,
+      "search_seconds": 2.8288817920000002,
+      "owned_seconds": 3.84099975,
+      "caller_seconds": 7.249,
+      "caller_seconds_with_margin": 8.248999999999999,
+      "peak_bytes": 59621376,
+      "registry_completed": false,
+      "family_metrics": null,
+      "nominal20s_cutoff_cooperative": true,
+      "checked_deadline_overshoot_seconds": 0.0,
+      "trace_complete": true,
+      "root_restored": true,
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "RL_training_runs": 0,
+      "worker_receipt": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "0ed10b64ee4fc7b1fa1d8b9f8445e72fc187ce569ff4eeef1a635c44b7d17866",
+        "bytes": 14563
+      },
+      "result": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/worker-output-v1/result-v1.json.gz",
+        "sha256": "c31b66615cc0715c3c4d0cf0607544c0a6ce0eb0294d60e31dc42df426b18b71",
+        "bytes": 12751
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/ROOT-final-disposition-v1.json",
+        "sha256": "3a2581b41a93b6f401a1053024346b44a5d704ae316c17d0f564312ad18cf309",
+        "bytes": 7384
+      },
+      "actual_terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/actual-terminal-v1.json",
+        "sha256": "568c92e8e92d437f204a944c44756f780772b6287a850ef29d7be222bbb8a39b",
+        "bytes": 3047
+      },
+      "logical_certificate": {
+        "bytes": 31480,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/ordinary-symbolic-advice/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "d28241f377a33e06e8a2988063ee0ee979dcb31f6ad327241339cfb29c2318e7"
+      }
+    },
+    {
+      "case": "fresh-i2-CD-vw-incidence-transport",
+      "lane": "canonical",
+      "mode": "base",
+      "status": "unknown_trace_budget",
+      "resource_accepted": true,
+      "logical_target_accepted": false,
+      "origin_kind": null,
+      "attempts": 96,
+      "events": 2000,
+      "search_seconds": 17.364820125,
+      "owned_seconds": 19.136902583,
+      "caller_seconds": 22.309,
+      "caller_seconds_with_margin": 23.309,
+      "peak_bytes": 96419840,
+      "registry_completed": false,
+      "family_metrics": null,
+      "nominal20s_cutoff_cooperative": true,
+      "checked_deadline_overshoot_seconds": 0.0,
+      "trace_complete": false,
+      "root_restored": true,
+      "full24_board_accepted": false,
+      "native_accepted": false,
+      "RL_training_runs": 0,
+      "worker_receipt": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/worker-receipt-v1.json",
+        "sha256": "ab43e78f7fcb2614284d52d24d2e7c8784d63fae7fda91cb023b6e2fde7f7969",
+        "bytes": 14120
+      },
+      "result": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/canonical/worker-output-v1/result-v1.json.gz",
+        "sha256": "56533475bcfff6d401effee10fdda6a8607e957d476b468c861f40f910ba5aaa",
+        "bytes": 139046
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/canonical/ROOT-final-disposition-v1.json",
+        "sha256": "739d3eed332e5f90975311a6c9859bd0f64a0d6c429f654f061bf880d67fca3e",
+        "bytes": 6870
+      },
+      "actual_terminal": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-v2-20261014/fresh-i2-CD-vw-incidence-transport/canonical/actual-terminal-v1.json",
+        "sha256": "a7a31780c4829c0e7122b91f7f80885c8bb040ed939e344843676204fcd997e0",
+        "bytes": 3443
+      },
+      "logical_certificate": null
+    }
+  ],
+  "accepted_logical_target_runs": 1,
+  "distinct_previously_unseen_theorems_discovered": 0,
+  "winner_replicates_previously_saved_commands": true,
+  "previous_known_certificate": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-progress-20261014/fresh-i2-CD-vw-incidence-transport/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+    "sha256": "7d0c2c78be2e6e3768312e164ef25ba49b7c950ef197128eb3798d88cd477863",
+    "bytes": 30318
+  },
+  "current_family_ground_checks_completed": 23,
+  "family_target_proofs": 0,
+  "all_primitive_source_body_inventories_empty": true,
+  "new_RL_training": false,
+  "full24_board_or_trajectory_or_native_accepted": false,
+  "universal_family_or_full_Hilbert_or_prover_superiority_accepted": false,
+  "preserved_failed_scientific_invocation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/ROOT-failed-scientific-attempt-v1.json",
+    "sha256": "a5e142935bcf925ade795a686c8975267051b7defdbcdfe418dc674e2ccc0736",
+    "bytes": 4022
+  },
+  "assessment": "Finite family advice was executed and ground-checked but did not reach either target within the stated limits. Ordinary symbolic advice replicated the known19-command incidence theorem proposal; canonical lanes reached trace ceilings. No family advantage is demonstrated by these known-context once-only descriptive runs.",
+  "next_diagnostic": "Winning proof contains equality substitution into an equality formula; current extracted family language covers Incident only. This is a concrete expansion gap to test, not an established cause of the two timeouts.",
+  "scope": "Whole actual result and resource custody, exact source/variant/registry and explicit saved-only schema compatibility. Search cutoff is cooperative; inclusive return costs and actual overshoot retained. Independent saved-record reconciliation and public display validation remain separate."
+}

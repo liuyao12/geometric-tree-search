@@ -1,0 +1,69 @@
+{
+  "schema": "ROOT-I2-six-lane-scientific-failed-attempt-disposition-v1",
+  "author_identity": "/root",
+  "ROOT_scientific_stage_accepted": false,
+  "complete_comparison_accepted": false,
+  "actual_invocations": 1,
+  "actual_case": "fresh-i2-CD-vw-direct",
+  "actual_lane": "canonical",
+  "actual_terminal": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/actual-terminal-v1.json",
+    "sha256": "8a04cef4b95d353080dd829afef764f23d3b13e23b3d93cdd4e2f20342d01356",
+    "bytes": 2973
+  },
+  "owner": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/provisional-terminal-v1.json",
+    "sha256": "e453fcd853bf9393cdd8840b4ec47f34efb0b7796e42fca5a78d367e1f9d4ac9",
+    "bytes": 3834
+  },
+  "postwrite": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/post-write-observation-v1.json",
+    "sha256": "8592797af883afd796143986ce0faddc8dd6ad31b8a650eb63a01887f21c2991",
+    "bytes": 979
+  },
+  "stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/worker-stderr-v1.bin",
+    "sha256": "afa10d31a85bf770e80001c4ea8da4e435c482dbfb7f464192a4891eb26e88b2",
+    "bytes": 226
+  },
+  "stdout_failure_frame": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-output-v1/worker-stdout-v1.bin",
+    "sha256": "cc10b69298ac9421dadedc41d392090c4001545ea0592d865c810341adee425f",
+    "bytes": 52
+  },
+  "worker_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/worker-plan-v1.json",
+    "sha256": "7b05764985c9328047057de0b2a1bd7c2506725d6e5d688102f9b45005ec0d7a",
+    "bytes": 127192
+  },
+  "owner_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-six-lane-progress-20261014/fresh-i2-CD-vw-direct/canonical/owner-plan-v1.json",
+    "sha256": "e320e48de8b4cad84f59e292de4cce5bd1f5cbe1018231a28536e26327cfe6b2",
+    "bytes": 111427
+  },
+  "worker_returncode": 1,
+  "worker_terminal_and_reaped": true,
+  "owned_leftovers": [],
+  "owned_seconds": 19.454656292,
+  "caller_seconds": 23.718,
+  "caller_seconds_with_finish_margin": 24.718,
+  "conditional_peak_bytes": 78774272,
+  "failure_phase": "first-proof-return-binding",
+  "observed_diagnostic": {
+    "diagnostic_only": true,
+    "exception_category": "value_error",
+    "gate_sha256_prefix16": "none",
+    "phase": "first-proof-return-binding",
+    "schema": "compact-primitive-base-worker-failure-diagnostic-v1",
+    "status": "UNKNOWN_worker_exception"
+  },
+  "source_diagnosis": "Unchanged observer verify_returned_proof accepts only literal DFS-v11 result schema; current DFS12 returns v12. Failure occurs before serialization, so no complete tape/receipt/counts are available. Diagnosis is Source inspection, not replay.",
+  "accepted_proof": false,
+  "accepted_prefix": false,
+  "full24_board_accepted": false,
+  "search_counts": null,
+  "search_status": null,
+  "other_once_lanes_activated": 0,
+  "remaining_five": "Frozen plans retain unactivated status; shared ABI failure must be repaired and reviewed in a fresh namespace before a new matched comparison.",
+  "scope": "Actual incomplete scientific invocation with closed worker. Neither an UNKNOWN mathematical result tape, theorem refutation, performance observation for the solver, nor a qualifying comparison. All infrastructure costs retained."
+}
