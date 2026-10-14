@@ -1,0 +1,43 @@
+{
+  "schema": "Q-initialization-repair-presentation-scope-v1",
+  "presentation_only": true,
+  "Source_only": true,
+  "driver_source_review": "conditional_current_driver_API_only",
+  "status": "cold_factory_and_worker_integration_review_pending",
+  "all_original_math_and_limits_preserved": true,
+  "all15_non_initializer_callables_exact": true,
+  "original_default_loop_exact": true,
+  "full_guard_every32_recipes_and_at_end": true,
+  "factory_authority_admitted": false,
+  "cold_integration_admitted": false,
+  "actual_new_control_calls": 0,
+  "actual_new_searches": 0,
+  "resource_fit": false,
+  "speedup_claim": false,
+  "new_theorem": false,
+  "proof_route_supplied": false,
+  "published_raw_files": {
+    "driver.py": {
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426",
+      "bytes": 46691,
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py"
+    },
+    "driver-contract.json": {
+      "sha256": "f7968455c47cfc5af2288483088f44bc6ff9298f05d7839fcfe2bbaadf4d934c",
+      "bytes": 31853,
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-contract-v4.json"
+    },
+    "independent-review.json": {
+      "sha256": "e8cc81d11fe1f3a0b80229124d799cdef4beea06851b6ee6085b7325a1f29968",
+      "bytes": 4185,
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-independent-source-20261014/typed-Source-review-v4.json"
+    },
+    "ROOT-review.json": {
+      "sha256": "7f9c33c810d63f1acc44b2e03addfe3a1c1050ffaf63accd60117c4d1fcda66c",
+      "bytes": 4872,
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-ROOT-review-source-20261014/typed-Source-review-v2.json"
+    }
+  },
+  "current_failed_attempts_preserved": 3,
+  "meaning": "Static Source/API review only. Driver callback must belong to a separately reviewed literal cold factory; namespace identity alone cannot qualify it. Actual original full controls/resource closure remain required before automatic canonical proof search. Changed guard cadence is initializer-only and not retained for proof/checker/search. No asynchronous host or arbitrary-callback guarantee."
+}

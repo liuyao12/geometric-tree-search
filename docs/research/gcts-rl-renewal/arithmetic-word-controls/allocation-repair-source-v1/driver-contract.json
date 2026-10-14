@@ -1,0 +1,450 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required_equalities": [
+      "review.source == contract.source",
+      "review.sources == contract.sources",
+      "review.source == review.sources.proposal == current_driver"
+    ],
+    "required_flags": "source_only/source_review_passed/all_checks_passed true and scientific_calls exact integer0; not math/resource/search admission",
+    "reviewer_identity": "genuine distinct reviewer; no record fabricated here",
+    "schema": "Q-first-selected-proof-observer-driver-Source-review-v1",
+    "scope": "Q-first-selected-proof-observer-driver-Source",
+    "source": {
+      "bytes": 46691,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426"
+    },
+    "source_contract": "exact raw pin of this additive source-contract-v4.json",
+    "sources": {
+      "declaration": {
+        "bytes": 2683,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+        "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+      },
+      "independent_checker": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      },
+      "master": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "original_catalogue": {
+        "bytes": 10187,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+      },
+      "point_graph": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "producer_checker": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "proposal": {
+        "bytes": 46691,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+        "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426"
+      }
+    },
+    "status": "PENDING genuine current review; required flags are not supplied by this author"
+  },
+  "Source_API": {
+    "context_binding_fields": [
+      "schema",
+      "finite_admission",
+      "finite_certificate",
+      "word_controls",
+      "declaration",
+      "preparation",
+      "initial_state_witness",
+      "initial_oracle_witness",
+      "model_epoch",
+      "primitive_authority_epoch",
+      "formula_registry_sha256"
+    ],
+    "context_schema": "Q-first-selected-proof-original-context-binding-v1",
+    "driver": "run_first_checked_Q(graph=graph,observer=observer,runtime=runtime,events=events) -> complete_return_record",
+    "events": "OwnedEvents(canonical_absolute_exclusive_directory,runtime)",
+    "independent_point": "Unchanged check_point_state, complete current8-field state, all admitted primitive interfaces, original epoch and Boundary. Every24 domain factor and fixed/current t/m/refcount/generation/exclusion compared.",
+    "independent_word": "Unchanged check_primitive_word, exact theory/parameters/full originalGamma/decoded selected commands/closed target/guard/deadline.",
+    "observer": "FirstSelectedProofObserver(graph=actual_new_original_PointGraph,catalogue=whole_authenticated_original_catalogue,declaration=whole_original_Q_declaration,checker_module=unchanged1717_raw_module,runtime=runtime,context_binding=raw_original_11-field_binding), optional initializer-only allocation_guard=exact_current_cold_factory_callback; defaultNone preserves original loop",
+    "runtime": "Runtime(began=original_worker_begin,deadline=begin+20,source_guard=exact_cold_zeroarg_function)"
+  },
+  "actual_calls": 0,
+  "actual_plans": 0,
+  "actual_q": 0,
+  "allocation_only_extension": {
+    "actual_calls": 0,
+    "coordinated_factory_Source": {
+      "bytes": 16270,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/recipe_allocation_guard_fragment_v3.py",
+      "sha256": "914ed2b277152cff86e1c121056a1b04af351130ca37ce059b38d0ae8c4eaf90"
+    },
+    "default_branch": "Complete original V2 loop AST/relative order exact. Existing callers remain compatible but retain original per-record full Runtime.check.",
+    "factory_API": "make_recipe_allocation_guard(*,graph_module,driver_module,graph,runtime,source_records,cached_source_buffers,module_anchors,full_guard) -> allocation_guard(*,index,recipe)",
+    "factory_review_status": "PENDING distinct full Source review and exact future worker integration; this pin is coordination only, not admission",
+    "fit": "UNMEASURED; source-observed repeated authority work is only a cost hypothesis, not established peak/time cause",
+    "full_boundaries": "Original full Runtime.check before index0, before every fixed32 batch, after the whole remainder/end, then original Boundary/counts construction and final Runtime.check. Raw files/module/object snapshots stay complete at full boundaries. No partial prefix escapes.",
+    "local_boundaries": "Original direct need/function_state/invoke/code checks precede every private validator invocation. Original callback/helper code/default/closure state, actual Runtime effective method/fixed fields and original clock/resource predicates run per record and around every actual canonical encoding and Recipe witness/formulas getter. Callback checks actual original parser/encoder/default decoder/native scanner/effective Recipe endpoints and cached raw buffer/module ledgers. No authority reseal.",
+    "optimized_branch": "Only an independently reviewed authenticated Source-copy callback from the original cold namespace is admissible. Exact FunctionType, same globals/module/filename as original full cold guard; distinct function. Caller supplies no arbitrary no-op or different Source authority.",
+    "parameter": "FirstSelectedProofObserver.__init__(..., allocation_guard=None)",
+    "phase": "Callback validates actual current initializer code frame and graph/runtime/allocation_guard locals within four caller frames; exact original indexed Recipe, repeated-current or next-only progression; recursion/skipped/reversed indexes rejected. Callback is not retained on observer/Runtime and cannot qualify post-constructor operations.",
+    "required_before_actual": [
+      "genuine distinct current driver Source review",
+      "genuine factory/cold caller Source review with literal current callback and effective guards",
+      "fresh metadata reviews/ROOT purpose/once-only admission",
+      "actual complete original initialization/oracle/conformance and whole resource closure; no accepted partial prefix"
+    ],
+    "same_clocks": "Original absolute20 before loading and all55/500 worker,60/512 owner,90(+1finish) caller limits; no resets, extra windows or extra semantic work.",
+    "schema": "Q-private-recipe-allocation-callback-ABI-v1",
+    "unchanged_math": "Whole registry injectivity/equality, target encoding, all original licensed rule/id/output/ordered premise/witness/preimage correspondence, append order and immutable tuple conversion unchanged. Nothing is dropped/shortlisted/deduplicated/recompiled.",
+    "unchanged_runtime": "Runtime.check, events, independent checker Boundary/word/point work, observation, scheduler, all fallback/exclusion and rollback, endpoints and caps unchanged. No general cheap Runtime method exists."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "cost_and_storage": {
+    "clock": "began is original cold worker begin before input/Source loading. Every successful setup/domain update/snapshot/checker/serialization/unwind/final traversal must finish by begun+20. No reset or extra semantic checking window.",
+    "failure_cleanup": "After inner timeout, only graph rollback and preserved failure/snapshot metadata may use remaining55/500 worker and60/512 owner envelope; source_guard must independently enforce whole reserve rather than hide an inner reset. No candidate/word/point work and no accepted primary during cleanup.",
+    "fit": "UNMEASURED. All three prior controls attempts remain UNKNOWN failures; V3 has not been imported/called. Neither batch count nor guard cost is a measured time attribution.",
+    "memory": "Owned event files avoid retaining every snapshot or loading old witnesses into duplicate object graphs. One complete semantic snapshot is transient per event, at most one escaping proof state held; graph/catalogue/primitive maps and recursion hashes remain. This is a retention argument, not proof peak below512MiB.",
+    "serialization": "Bounded existing C-JSON blocks, full recursive canonical sorted-key traversal, complete write and raw byte/SHA/EOF re-read.64KiB is a guard/coalescing threshold, not a hard token bound. Actual max token cap4MiB, every file/partial and serialization cost enters output closure.",
+    "source_observation": "Complete snapshot contains full24 factor relations and is about8MB in the existing actual initial witness; complete trace I/O may dominate. This is a raw Source observation, not measured new fit."
+  },
+  "current_scope": {
+    "complete_frozen_grammar": {
+      "equality_operand_pairs": "all_ordered_pairs",
+      "equality_template_other_terms": "complete_operand_pool",
+      "generalization_sources": "all_resulting_parameter_scoped_equality_atoms",
+      "hole_context_node_bound": 2,
+      "instantiation_rounds": 2,
+      "target_and_axiom_open_subterms": true,
+      "target_seed_is_formula_only": true,
+      "term_node_bound": 3
+    },
+    "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+    "initial_domain_candidate_count": 36734657,
+    "initial_rows": 24,
+    "meaning": "11147/16200 are authenticated complete actual observations, not shortcuts or desired counts. Use the whole admitted raw registry/recipes/preimages and all24 domains. No recompile/trim, no stronger induction/FOL/PA/native authority.",
+    "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+    "observed_full_formula_count": 11147,
+    "observed_full_recipe_count": 16200,
+    "ordered_Gamma": [],
+    "parameters": [
+      "n"
+    ],
+    "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039",
+    "rules": [
+      "axiom",
+      "assumption",
+      "instantiate",
+      "eq_subst",
+      "mp",
+      "generalize"
+    ],
+    "target": [
+      "all",
+      "n",
+      [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "n"
+            ]
+          ]
+        ]
+      ]
+    ],
+    "target_latex": "\\forall n\\,\\bigl(n+S(0)=S(n)\\bigr)"
+  },
+  "endpoint": {
+    "admitted_by_this_Source": false,
+    "check": "Rebase exact physical ordered refs into sorted ancestry; independently check whole word with full originalGamma and full current24 point state. Freeze source decision event raw pin and complete state digest, physical licensed recipe preimages/t/m and checker receipts before escaping.",
+    "full24": "Separate optional observable only on actual complete board plus full current point checker and all24 actual decoded commands. First proof certificate itself always full24false; native/trajectory/induction/PA/ROOTresource false.",
+    "late": "Any late guard, cap, serialization, observer or rollback failure clears escaping primary/fullboard flags to UNKNOWN. Raw provisional event files remain, never an accepted prefix.",
+    "placement_scope": "Ordinary Source/generated candidates only, actual_selected; proposed_proofs0/library0/rank0/RL0. No authored command sequence or success seed.",
+    "primary": "First dependency-complete actual selected closed-target ancestry after a reference decision boundary with no globaldead. Earlier physical target code constraints or unresolved reads are pending only."
+  },
+  "executed_project_roles_proposed": [
+    "proposal",
+    "point_graph",
+    "independent_checker"
+  ],
+  "implementation_gaps": [
+    "This private allocation driver has no actual cold execution, completed setup, new controls result, search or resource fit; Source compilation is not qualification.",
+    "Current older driver/cold Source reviews remain historical. New driver, Source-copy factory and exact cold worker/controls wrapper must receive genuine distinct Source reviews before ROOT constructs new metadata.",
+    "Proof-neutral actual conformance must complete on the unchanged full original24 context. No authored target proof route or smaller grammar is supplied.",
+    "Production FOUND/full24/late-FOUND and complete dynamic all24 trajectory remain deferred to a genuine unsupplied actual search and subsequent independent saved/semantic checks.",
+    "Existing finite grammar and unrelated68-word gates retain only their established scopes. No new first-proof/native/PA/induction/RL/admission is inferred."
+  ],
+  "initial_construction": {
+    "epochs": "Original registry/model/authority/source preimages remain unchanged. A fresh independently reviewed consumer/runtime binding is separate; never mutate original inactive native flags or relabel old audit target_searches0 as a search grant.",
+    "graph": "Construct unchanged raw8d22 PointGraph from complete authenticated catalogue formula_codes/recipes/context/authority/boundary and original7 raw source_bindings. No producer kernel/catalogue/preparation function executes; no seed/proof word/cache. Initial complete state must match original witness byte/SHA/EOF before search.",
+    "primitive_lookup": "Whole original registry and every16200 recipe mapped to output/ordered input codes. Id/witness/premise correspondence checked against all graph Recipe records; original finite admission licences remain the authority. No grammar recompile or target-backcone inventory. V3 changes only allocation validation frequency: exact full recipe correspondence still executes for every original occurrence; no new mathematical licences or epochs."
+  },
+  "limits": {
+    "caller_finish_seconds": 1,
+    "caller_seconds": 90,
+    "inner_seconds": 20,
+    "max_attempts": 128,
+    "max_events": 2000,
+    "maximum_visits": 5000000,
+    "owned_peak_bytes": 536870912,
+    "owned_seconds": 60,
+    "owner_finish_bytes": 8388608,
+    "owner_finish_seconds": 2,
+    "worker_peak_bytes": 524288000,
+    "worker_seconds": 55
+  },
+  "metadata_binding_correction": {
+    "historical_V2_source": {
+      "bytes": 35407,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v2.py",
+      "sha256": "44fc601bc2249cb4969b2c28d1431fde95aba8f51ef055c01ef8b0fe17ad0ffc"
+    },
+    "operative_source_map_corrected": true,
+    "preserved_mismatched_V3_contract": {
+      "bytes": 26844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-contract-v3.json",
+      "sha256": "c681cedad523d73febffe62a4f527b0ca66fed33abecf81ab3cc918a7bb929e6"
+    },
+    "preserved_mismatched_V3_handoff": {
+      "bytes": 7270,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/handoff-v3.json",
+      "sha256": "ed317cfc30287a2b8730901fc86648430aa39aae15bee00d23d042bd89a00584"
+    },
+    "reason": "The frozen V3 operative sources.proposal erroneously retained V2; ROOT and reviewer correctly rejected that current map. No historical interpretation grants readiness.",
+    "scientific_calls": 0,
+    "scope": "Source map and review ABI only. No mathematical/profile/model/epoch/clock/callback/driver code change or actual execution.",
+    "source_only": true,
+    "unchanged_current_V3_code": {
+      "bytes": 46691,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426"
+    }
+  },
+  "narrow_Source_successor": {
+    "actual_execution": false,
+    "actual_unknown_failure": {
+      "bytes": 8042,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v3-20261014/ROOT-reconciled-observer-timeout-disposition-v1.json",
+      "sha256": "bb195e705693399910afc523bf277ecba8cc3883c6b40db20f80c7a8aaea3737"
+    },
+    "independent_Source_review": "PENDING distinct controls agent",
+    "preserved_V1_history": {
+      "actual_execution": false,
+      "independent_Source_review": "PENDING distinct controls author",
+      "postguard_boundary": "Repeat direct original state helper/code, need/code, clock/resource identities immediately after source_guard return, before any delegated postguard helper or clock call. No mutation/test outcome is claimed.",
+      "preserved_V1_contract": {
+        "bytes": 18356,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-contract-v1.json",
+        "sha256": "e916712f2d8b7980687ddfb979bc17a09a13a7cbdf39ca18761597bdba1638be"
+      },
+      "preserved_V1_handoff": {
+        "bytes": 5646,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/handoff-v1.json",
+        "sha256": "3257d317961f750c0e2dedac04c19329333a5e2304d72bf05fa9debb9189309e"
+      },
+      "preserved_negative_Source_review": {
+        "bytes": 3521,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-independent-source-20261014/typed-Source-review-v1.json",
+        "sha256": "945ff8afcc113dc9d0dbae529123ce974dd4bdc54587687429a58eee86ef9bbb"
+      },
+      "preserved_negative_findings": {
+        "bytes": 126207,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-independent-source-20261014/findings-v1.json",
+        "sha256": "01f30cd8c2ec454664f33419518b2c1dae7063ba8d1f6475939bacf14416c605"
+      },
+      "source_delta": {
+        "bytes": 11469,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-delta-v2.json",
+        "sha256": "7be5a32a0155b6f103cd9ca933ab114b4246bcdf2414cac43727db55b819a537"
+      },
+      "stable_mutable_runtime_values": "One captured outcome_state object, keys exactly first_proof/full_board/restoration_failed/trace_complete. Callback cell/content identity stays unchanged across lawful updates; function/code/default anchors never resealed or relaxed."
+    },
+    "preserved_V2_Source": {
+      "bytes": 35407,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v2.py",
+      "sha256": "44fc601bc2249cb4969b2c28d1431fde95aba8f51ef055c01ef8b0fe17ad0ffc"
+    },
+    "preserved_V2_contract": {
+      "bytes": 20547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-contract-v2.json",
+      "sha256": "3d6c9c787bf7c2faf9a20cc0ed5b7af3c500931744ce5ca7a2c2fb916833d312"
+    },
+    "preserved_V2_handoff": {
+      "bytes": 5533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/handoff-v2.json",
+      "sha256": "7a91e9cfbf869a675f941343f88ea8764280e48ef4a84778bf3daa189870bbc1"
+    },
+    "preserved_V2_typed_review": {
+      "bytes": 3839,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-independent-source-20261014/typed-Source-review-v2.json",
+      "sha256": "0e77647785024e0044ea76b4c5de13724e4053bd972ea4dada24faeb2bd7fbcd"
+    },
+    "source_delta": {
+      "bytes": 2964,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/source-delta-v3.json",
+      "sha256": "17cf3cecfda222e70d6298ab74c00bd9d04cf326ab85f79be1c25b56622fd054"
+    },
+    "stable_mutable_runtime_values": "One captured outcome_state object, keys exactly first_proof/full_board/restoration_failed/trace_complete. Callback cell/content identity stays unchanged across lawful updates; function/code/default anchors never resealed or relaxed."
+  },
+  "raw_inputs": {
+    "actual_word_controls_ROOT": {
+      "bytes": 6796,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-actual-unrelated-word-controls-reconciled-disposition-v1.json",
+      "sha256": "f254219dc8e7324a7d15f9ff50661de627d207eca08660bca354e73978d39fd1"
+    },
+    "design_handoff": {
+      "bytes": 4840,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-integration-design-source-20261014/handoff-v1.json",
+      "sha256": "e2d25ac6bc2f1339870e06226be840394b9896b1ac38d1d47da33987bc45ae03"
+    },
+    "finite_ROOT_admission": {
+      "bytes": 8563,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json",
+      "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1"
+    },
+    "finite_audit_certificate": {
+      "bytes": 5789,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json",
+      "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87"
+    },
+    "integration_design": {
+      "bytes": 24397,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-integration-design-source-20261014/integration-design-v1.json",
+      "sha256": "f929aa404799004ec1a081aa9d5be755835182252531ce88e6293474dfbd472c"
+    },
+    "original_declaration": {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "original_initial_oracle_witness": {
+      "bytes": 8295473,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    "original_initial_state_witness": {
+      "bytes": 8296118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    "original_preparation": {
+      "bytes": 38376960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    },
+    "original_producer_reconciled_disposition": {
+      "bytes": 8797,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json",
+      "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef"
+    },
+    "original_producer_resource_closure": {
+      "bytes": 2810,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49"
+    },
+    "proof_point_agreement": {
+      "bytes": 8140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-integration-design-source-20261014/proof-point-agreement-v1.json",
+      "sha256": "52f87799dc03d5765001a498341c42e606dba9ed89e0bad5beea9a1932f5f9ba"
+    }
+  },
+  "raw_only_roles": [
+    "original_catalogue",
+    "producer_checker",
+    "declaration",
+    "master"
+  ],
+  "required_cold_guards": [
+    "Authenticate complete original preparation and both initial witnesses against actual finite admission raw closure; one lossless shared-list parse preserving every type/value/occurrence/port. Before/after whole decoded input seals and unchanged raw byte/SHA/EOF.",
+    "Compile exact cached Source buffers for explicit executable roles only; reject local bytecode/imports. Older producer Sources stay RAW_ONLY. Seal parser/scanner/encoder hooks including mixed callable defaults/effective descriptors/native bindings using current reviewed lossless patterns.",
+    "Direct own need/helper/code/clock/resource/function-state anchors before all delegated checks, guards, output writers and final console/caller gates; no unchecked local shim or mutable checked-function gap.",
+    "Actual core/checker/proposal module dictionaries/classMRO/properties/effective methods/defaults/closures and raw filenames plus original object/type/instance method-shadow rejection. Include Runtime/OwnedEvents/observer/PointGraph/Recipe/Key/independent Boundary and nested driver callbacks.",
+    "Graph mutable state is permitted only through original exact place/exclude/rollback transactions. Fixed context/signature/formulas/recipe/witness/licence/body Source epochs and opaque candidate order are immutable; do not assert pristine state after legal placement.",
+    "No control-only/audit-only grant activates theorem search. Genuine fresh purpose/context/consumer Source review, actual conformance and separately frozen ROOT search activation required.",
+    "Preserve whole returned record and every owned event/partial/file/serialization receipt. Outer current-source/data/postwrite/receipt/console guard must fail closed and revoke any success latch; unchanged generic owner/closer+same-isolate caller remain separate."
+  ],
+  "scheduler": {
+    "base": "Entire original canonical graph.candidates domain. Globaldead precedes observation/forced/branch. Forced singleton EOF verified; otherwise graph.decision chooses earliest generation with count/row ties. All24 roots0 unchanged. Re-query after every placement/exclusion/rollback.",
+    "exhaustion": "Only EXHAUSTED child may produce parent-local exclusion after exact parent restoration. FOUND and UNKNOWN/clock/guard/cancellation never justify exclusion. Whole finite-board exhaustion is not theorem nonprovability.",
+    "observation_timing": "Passive logical stopping is considered at a global decision boundary after ruling out dead, before executing a forced/branch move. It is intentional theorem stopping, not a new candidate/degree priority or a fullboard claim.",
+    "rollback": "Complete semantic state witnesses and streamed canonical digests compare each node/child/run checkpoint, including zero assignments, mark refs, generations, domains/exclusions. Metrics stay cumulative; every ancestor restores on intentional found-word stop."
+  },
+  "schema": "Q-first-actual-selected-proof-observer-driver-Source-contract-v1",
+  "source": {
+    "bytes": 46691,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+    "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426"
+  },
+  "source_only": true,
+  "sources": {
+    "declaration": {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "original_catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer_checker": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "proposal": {
+      "bytes": 46691,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426"
+    }
+  },
+  "status": "UNEXECUTED_PROPOSAL"
+}
