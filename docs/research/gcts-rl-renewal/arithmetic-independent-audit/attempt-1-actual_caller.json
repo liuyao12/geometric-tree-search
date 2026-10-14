@@ -1,0 +1,31 @@
+{
+  "schema": "ROOT-independent-Q-genuine-tool-observations-v1",
+  "started_ms": 1791995231878,
+  "terminal_observed_ms": 1791995241948,
+  "launch": {
+    "chunk_id": "87801f",
+    "wall_time_seconds": 1.003361292,
+    "session_id": 20379,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "observations": [
+    {
+      "chunk_id": "1fd2fe",
+      "wall_time_seconds": 2.189872167,
+      "exit_code": 0,
+      "original_token_count": 76,
+      "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 3.298020709, \"peak_bytes\": 548421632, \"worker_receipt\": \".gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+    }
+  ],
+  "terminal": {
+    "chunk_id": "1fd2fe",
+    "wall_time_seconds": 2.189872167,
+    "exit_code": 0,
+    "original_token_count": 76,
+    "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 3.298020709, \"peak_bytes\": 548421632, \"worker_receipt\": \".gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+  },
+  "clock_scope": "Date.now request-to-observed-terminal in the same awaited isolate; no elapsed clocks summed.",
+  "genuine_caller_elapsed_seconds": 10.07,
+  "caller_finish_reserve_seconds": 1
+}

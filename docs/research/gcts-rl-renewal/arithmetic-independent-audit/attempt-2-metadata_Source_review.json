@@ -1,0 +1,91 @@
+{
+  "actual_plan_constructions_by_reviewer": 0,
+  "actual_worker_activations_by_reviewer": 0,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "name": "current wrapper contract schema is exact v3 expected",
+      "passed": true
+    },
+    {
+      "name": "current Sources3/input11/leaf11/owner10/sixargv unchanged",
+      "passed": true
+    },
+    {
+      "name": "original named inputs and producer raw roles exact",
+      "passed": true
+    },
+    {
+      "name": "owner/closer/output anchors and all caps retained",
+      "passed": true
+    },
+    {
+      "name": "actual current peer pin Source map and contract agree",
+      "passed": true
+    },
+    {
+      "name": "current author/reviewer identities genuine distinct",
+      "passed": true
+    },
+    {
+      "name": "current clock and execution/success scopes exact",
+      "passed": true
+    },
+    {
+      "name": "constructor actual Source remains frozen87df",
+      "passed": true
+    },
+    {
+      "name": "constructor peer gates bind exact current contract and Source",
+      "passed": true
+    }
+  ],
+  "constructor": {
+    "bytes": 10443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v3.py",
+    "sha256": "87df9dd6022f6846518f659a444d6b2ffbe430221b3ee77e67621158f74068c3"
+  },
+  "constructor_author_identity": "/root",
+  "constructor_executions": 0,
+  "current_contract": {
+    "bytes": 26793,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/source-contract-v2.json",
+    "sha256": "18f4780e8b519d94dc5aca7c0d746b582487d67e696e5952ef91e65a3d76a171"
+  },
+  "current_typed_worker_review": {
+    "bytes": 2211,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v2.json",
+    "sha256": "2b82c4ffbbddf4e60f897a8bb912f2a999d15e4a9448d2d55dee54bb9f69105b"
+  },
+  "current_worker": {
+    "bytes": 63556,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/independent_Q_lossless_cold_worker_v3.py",
+    "sha256": "c283a256f237583ed3b58793c059d99aec9735943524236bab6777404e258f70"
+  },
+  "destination_exists_at_confirmation": true,
+  "destination_scope": "Prior constructor Source review recorded then-absent destination. ROOT subsequently created it; this is current Source/interface applicability, not a new preactivation/absence or actual saved-plan review.",
+  "mathematical_acceptance": false,
+  "mismatches": [],
+  "preserved_authoring_failure": {
+    "bytes": 916,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/current-contract-confirmation-authoring-failure-v1.json",
+    "sha256": "2c76cc211058823454efc31ee14b6eb3092da4f6edad99eca4d9dfb8aa89b998"
+  },
+  "preserved_constructor_findings": {
+    "bytes": 4842,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-applicability-findings-v1.json",
+    "sha256": "9e571788cddfaebd33a1f7947af4e577b6e903c71ceeb30d9d1e3b5a952f1589"
+  },
+  "preserved_constructor_review": {
+    "bytes": 1510,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-typed-Source-review-v1.json",
+    "sha256": "7c518dc89886085088bf58364b35b69e30019e50dbc393643ff2c818e028f5e5"
+  },
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "independent-Q-constructor-v3-current-contract-applicability-confirmation-v2",
+  "scientific_calls": 0,
+  "scope": "Exact current v3 worker/default-guard contract matches the previously reviewed v3 stdlib metadata constructor. No constructor, worker, parser or science was run by this reviewer.",
+  "source_only": true,
+  "source_review_passed": true
+}

@@ -1,0 +1,1292 @@
+{
+  "schema": "Notebook161-task-archive-manifest-v1",
+  "archived": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6f49e3eaee97634532c2981ff8e9dbff4ee7c0f33c844aa0e02f9e86f99e1028",
+      "bytes": 14779,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-cold-controls-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v1.py",
+      "sha256": "30b001606ef7b15cfb7791a2a3a0cd89cb8b9007f0a7e8288ff09f3a64084631",
+      "bytes": 10371,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v2.py",
+      "sha256": "00d5e14637d7d2aed47c3bb99054716b32752cc0156509609db9ef3cd8e4bada",
+      "bytes": 10434,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v3.py",
+      "sha256": "87df9dd6022f6846518f659a444d6b2ffbe430221b3ee77e67621158f74068c3",
+      "bytes": 10443,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/findings-v1.json",
+      "sha256": "0fb4c8d6e68654f2df6301db66444977279201989ea20d692ec1e11c48e481e2",
+      "bytes": 217236,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/freeze_saved_failure_review_v1.py",
+      "sha256": "e79072c6dbf6ce7954634b001d4227eda0cca8c23ee2d9f02828debce3662d9b",
+      "bytes": 15478,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/freeze_saved_failure_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/handoff-v1.json",
+      "sha256": "36088d4bac684281f4cdfcf4efaaea40007716a93353025437611689beb77b2c",
+      "bytes": 1197,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/integration-v1.json",
+      "sha256": "2dc6ec58f98aa1673717cdcdb943dcac058d4123f51e0a23d5d8b799a1949617",
+      "bytes": 1043,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-failure-saved-review-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/current-contract-confirmation-authoring-failure-v1.json",
+      "sha256": "2c76cc211058823454efc31ee14b6eb3092da4f6edad99eca4d9dfb8aa89b998",
+      "bytes": 916,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/current-contract-confirmation-authoring-failure-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_metadata_Source_review_v1.py",
+      "sha256": "d1306eefbaf0da2b36c6c4d291567ee721ad26b290c279670c16e9cfcb8e27af",
+      "bytes": 16937,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_metadata_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_v3_applicability_Source_review_v1.py",
+      "sha256": "a76195f94ef8ebe56932a0283e1664ab746c657ff357aa3bd6a8de0914e40a93",
+      "bytes": 8130,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_v3_applicability_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_v3_current_contract_confirmation_v1.py",
+      "sha256": "f9aa4ff4ffa4ceb676606270733963e24774bbca70fb8e37267b09b5eeabd292",
+      "bytes": 4651,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_v3_current_contract_confirmation_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_v3_current_contract_confirmation_v2.py",
+      "sha256": "7e547af715a04e2d5682bb76e02ab6f0c6e3b3a739a88baf53bef9c31fd44906",
+      "bytes": 5418,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/freeze_v3_current_contract_confirmation_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/handoff-v1.json",
+      "sha256": "10a964c3cc11c2a1104158bd7351072435cc75657023c370ce9d6306dbcef59d",
+      "bytes": 1551,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/integration-v1.json",
+      "sha256": "e553a4192e2775826715974118267b195fde6d9ca4710b6e85195f15ccdead96",
+      "bytes": 1395,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-Source-findings-v1.json",
+      "sha256": "2e79a6d598261ceed09739fb52179a22067af27f740da8c080251f42f1d81e79",
+      "bytes": 391342,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-Source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-typed-Source-review-v1.json",
+      "sha256": "8b740b7826f10c4332dd2852576e53d6061f0a56d0ea8f99ea00e99794154ca9",
+      "bytes": 2013,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v2-schema-mismatch-v1.json",
+      "sha256": "3b4e518ca978043ee60877a776fb204914de929fed0cf0ae17a1319145504510",
+      "bytes": 1581,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v2-schema-mismatch-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-applicability-findings-v1.json",
+      "sha256": "9e571788cddfaebd33a1f7947af4e577b6e903c71ceeb30d9d1e3b5a952f1589",
+      "bytes": 4842,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-applicability-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-current-contract-confirmation-v2.json",
+      "sha256": "9fda2f6fd70f2be4d56f84c87d494465e6740871cfef3b18b39c280ee14a2c18",
+      "bytes": 4209,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-current-contract-confirmation-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-review-handoff-v1.json",
+      "sha256": "969a2254a9145ab8772e75215d0f82667b5c599fc60074532d7ad118fd8d6cf3",
+      "bytes": 1659,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-review-handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-typed-Source-review-v1.json",
+      "sha256": "7c518dc89886085088bf58364b35b69e30019e50dbc393643ff2c818e028f5e5",
+      "bytes": 1510,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-actual-independent-Q-audit-failure-disposition-v1.json",
+      "sha256": "472dcd9c76a0b5ab3fb6916d94a7c72179ebdfdb93e8937023933acf7a0667b7",
+      "bytes": 3895,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-actual-independent-Q-audit-failure-disposition-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+      "sha256": "f98a5fa73ac4f0350bc9a69b465fefcad89d3c4111a462a91fce38ea711ba807",
+      "bytes": 388,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-actual-saved-plan-validation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "56d1d93a80486270d518814b0cb24423a3eac8e82732e549d76a79151073f059",
+      "bytes": 6456,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-construction-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "7d73cc7c80b0cec204fa60dffa4fb30c72c7de1b43364bba906a7ddd542ee602",
+      "bytes": 7636,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "66cada875ca863137a74aaa9ef6b88f52d6b5fabb9e85e562dab32c6a8f99e0a",
+      "bytes": 2611,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "46ea128612dc49a5ae6ed95b8d61c1674ab1f64133e27f830330d90dd7deb595",
+      "bytes": 1466,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-actual-tool-observations-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/launch-v1.json",
+      "sha256": "d8b11ed3cc406c7648e8583a801d9aa3050b5977c086d02b4e65b6f2e501cb65",
+      "bytes": 1259,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/launch-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "10c2f0996be1d32c851c3f7859b1d1303d7d33ac9acb513e404491f38739b3b6",
+      "bytes": 878,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "ae8388f2811770d6e4cb0d31b20f6c1bd50f6a78428bacb82af6f532abe5b871",
+      "bytes": 580,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "085ddb364768e62c8b43d6d793b5544f124b0627234f363cbb7d5acc081b6d87",
+      "bytes": 1571,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "f799ffd7b24efe9068b5714b11ef60960356a773c31b01618d480e3d72e0f1a9",
+      "bytes": 2978,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stderr-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stdout-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json",
+      "sha256": "86bbd4a7ba4ea9faedbb20004e15b42a6b481d1967d72b7810ee7cf11a701833",
+      "bytes": 19347,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/failure-v1.json",
+      "sha256": "33dcd3ff4f5e56a5f06504c0e12306f32c438e934b5850681b0a1b281d3168e3",
+      "bytes": 988,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/failure-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json",
+      "sha256": "09b5730415a3cc2cb5e2f183c65ed21144fd4ffc55c8736840444553be68a045",
+      "bytes": 31040,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/ROOT-build-notebook161-publication-v1.py",
+      "sha256": "c05970e3936346ae34c6452fbcf86d177b9981613a9109d271524da1690dadaa",
+      "bytes": 13596,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/ROOT-build-notebook161-publication-v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/Source-manifest-v2.json",
+      "sha256": "6d613cb446cffc425c013affd2effdc1084807f751c23b2810ffdb729d57a78b",
+      "bytes": 2418,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/Source-manifest-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/handoff-v2.json",
+      "sha256": "abcbfc80b2bac9a59e74db3d505c6596b5f668f77ecaf95181630dcd102ce666",
+      "bytes": 3189,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/source-schema-v2.json",
+      "sha256": "8aec8986df0a15cc6397f03fbebb0a973b3944aa491f9a1ef515925c504f60e0",
+      "bytes": 5691,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-report-source-20261014/source-schema-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-provisional-disposition-v1.json",
+      "sha256": "6c1da03b1c482534b18607a354899d01acc37e3764f6a645334d889228faf303",
+      "bytes": 7254,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-provisional-disposition-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json",
+      "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1",
+      "bytes": 8563,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+      "sha256": "4ff088df647b0a8855e603c82d7f1d2624be45fee627a2c988e6a636b625591a",
+      "bytes": 1157,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-saved-plan-validation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "21d8c8bb477d4bed299b76d01533201e6ab364d5b4e6b596074dd5309a270fae",
+      "bytes": 6484,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-construction-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "06351acc80ef56756459f70a3c87a82d1d89736751768dafce5e90e63218e00d",
+      "bytes": 7700,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "b01149b45774dafb290438af06fffd8e34d48dd6d333fc84dbb9b6ff793c7f3b",
+      "bytes": 2879,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "64b06e0a68fc0827130e6859eeaed94f86bef67804ccaa1821a6f4645a28ca3e",
+      "bytes": 2049,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-actual-tool-observations-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+      "bytes": 1788,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/launch-v1.json",
+      "sha256": "ed1307ad74d947fb44e3e67f599f5c4f2bf00e26d1cf1bb692aff645ffa70eeb",
+      "bytes": 1318,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/launch-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "sha256": "e33998568cfc5ad660492006ec11e0d909e3412031e242cbef81491faba8eedc",
+      "bytes": 2687,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "2dd6ef2b18b2af682eaa22aa340bdf93294460aa9112b5b766e61066b84539e5",
+      "bytes": 825,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+      "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+      "bytes": 1788,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/stderr-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/stdout-v1.txt",
+      "sha256": "67c1b1c6f5d8130e7ce4ee02a7015966361e0dd3f31daab556972f0fa0b95591",
+      "bytes": 829,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/stdout-v1.txt"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-plan-v1.json",
+      "sha256": "3b17f5ef4b5f57a44767b7a81cdf666276df3c2a79cfca6d97dc2b552f25ce01",
+      "bytes": 21547,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json",
+      "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87",
+      "bytes": 5789,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-evidence-v1.json",
+      "sha256": "5c221c863cff0f3d7c164a8429ba3796276e5f87391ab00c1cbeb471f730f42e",
+      "bytes": 8501,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-postwrite-observation-v1.json",
+      "sha256": "5b8f2902fc3d810bc65e4636cfab487d94adf6bee8e3faea2e2d30cfc9989bd6",
+      "bytes": 1269,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-postwrite-observation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json",
+      "sha256": "b7b3bda1239462da7926e5b018e71fccb653d9a4020197087670a834e9b8469d",
+      "bytes": 3379,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-plan-v1.json",
+      "sha256": "2d01c031b8aaf66b91e5096794738356c71bdd407d7af8c8e9764cf5bc5dde2c",
+      "bytes": 33718,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/findings-v1.json",
+      "sha256": "10969bbd89dca335373e9118d3677482c813d774a36a10863599c66473e59b24",
+      "bytes": 853962,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/findings-v2.json",
+      "sha256": "ab545ee08233c05a65bc91b644cc023ad2cf45cfd9b44fecb26cc242238bdbe3",
+      "bytes": 855572,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/findings-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v1.json",
+      "sha256": "d3d150171bedce9772287dc67c22bbebe5e068899e005a95a8235dd00a5ee2a7",
+      "bytes": 682,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v2.json",
+      "sha256": "682ded6b363203ac233149fc1420669b05360afc7a984c4773ddd1d1eecdc213",
+      "bytes": 1489,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/reconcile_saved_records_v1.py",
+      "sha256": "91c5dfb10813f3ede7bc4fe435b6e475a1869673b08224e965826850f18c33b7",
+      "bytes": 22726,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/reconcile_saved_records_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/findings-v1.json",
+      "sha256": "963430601fb9ec9af92f77325f2d8ae3b724c91a00dc96f31aba5f869ac85179",
+      "bytes": 75698,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/findings-v2.json",
+      "sha256": "25ad59a96a943764af01624985a52788dcb5c4d658ad7f71dfad31434b33cc60",
+      "bytes": 106991,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/findings-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/freeze_lossless_Source_review_v1.py",
+      "sha256": "3779cbd01713caff58d0fa03530ba2ac1ebe505c324ba1851ca245d3892f0cf0",
+      "bytes": 10488,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/freeze_lossless_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/freeze_lossless_Source_review_v2.py",
+      "sha256": "64392e2ca5b12a232306b067170c57b278a5a60ea23b85beeaab3cbc3eab33c0",
+      "bytes": 9106,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/freeze_lossless_Source_review_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/handoff-v1.json",
+      "sha256": "7cbf8087c247ced90f97df58feb378211ef0060aedf912263ca6e5c4aba21de3",
+      "bytes": 1869,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/handoff-v2.json",
+      "sha256": "837a3e6c8f3a255fc50793bff1d0e57a6406864fba0f9e32d26d047b10c9a920",
+      "bytes": 1824,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "7ef4734a454a1978404efe38d94fb32cb92dfbe312395ec06836a91e0c793053",
+      "bytes": 1996,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v2.json",
+      "sha256": "2b82c4ffbbddf4e60f897a8bb912f2a999d15e4a9448d2d55dee54bb9f69105b",
+      "bytes": 2211,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/author-static-evidence-v1.json",
+      "sha256": "908b548b12adf2bcb687bad910c54fd74f2b9e7f229ead541b3cd1b42644673d",
+      "bytes": 5471,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/author-static-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/author-static-evidence-v2.json",
+      "sha256": "ef36b65f61f7970af8d9ce8c2aa527278c09725376bfecb56d4caa1d6c183c80",
+      "bytes": 5425,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/author-static-evidence-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/freeze_lossless_guard_Source_v2.py",
+      "sha256": "d12d575ad569efb3bc58c17e4384c1db1d966e05554dec3fd589633a088274ee",
+      "bytes": 11872,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/freeze_lossless_guard_Source_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/freeze_lossless_worker_Source_v1.py",
+      "sha256": "93a9091df112e16cd93da02950b9ff79ca9b35ce6ae2cd4defa9e65871b07e86",
+      "bytes": 15069,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/freeze_lossless_worker_Source_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/handoff-v1.json",
+      "sha256": "c6677b3c7691fbad611423a7647346d9db159cb9459812735957f8323a3cbf8c",
+      "bytes": 5349,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/handoff-v2.json",
+      "sha256": "9721d9b1d5cfab2a503f886f7d267a916abdc5dc03dd3414b5561c7fc34fbe3b",
+      "bytes": 5897,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/independent_Q_lossless_cold_worker_v2.py",
+      "sha256": "75e3a188833e72a1bcdc2a084449f34b2c38f3b46838fc1d0a483f6ff77d251a",
+      "bytes": 61042,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/independent_Q_lossless_cold_worker_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/independent_Q_lossless_cold_worker_v3.py",
+      "sha256": "c283a256f237583ed3b58793c059d99aec9735943524236bab6777404e258f70",
+      "bytes": 63556,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/independent_Q_lossless_cold_worker_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/lossless-v2-to-v3-default-guard-only.patch",
+      "sha256": "f9d7c157ec97328e61149ebf8c3d3d34921a4a6de48d4d371a840f9412459ea4",
+      "bytes": 3856,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/lossless-v2-to-v3-default-guard-only.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/parent-v1-to-lossless-v2.patch",
+      "sha256": "bd5156a12f9f987a3c2c5bd13f687de8811b02d6e032b57129432d6cb5fe040b",
+      "bytes": 7652,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/parent-v1-to-lossless-v2.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/source-contract-v1.json",
+      "sha256": "a66fad6f37f5ae1525eae4450f7104d65fbadddd48a7ca58bc368b6c202c98ce",
+      "bytes": 24630,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/source-contract-v2.json",
+      "sha256": "18f4780e8b519d94dc5aca7c0d746b582487d67e696e5952ef91e65a3d76a171",
+      "bytes": 26793,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-lossless-source-20261014/source-contract-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/freeze_Source_review_v1.py",
+      "sha256": "ce002a5a64f7a031e93c72ee17f5d6c6be55a6700166b7a282dbc3a2586456a0",
+      "bytes": 23881,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/freeze_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/handoff-v1.json",
+      "sha256": "bd93a5d51e76b7591aeaa68ca68b0a346cafc1e32edfa944cf7c83d06fdff88c",
+      "bytes": 1995,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/independent-Q-cold-worker-Source-findings-v1.json",
+      "sha256": "8c54d91bde7034ef4cc6e195edbc5b758eb7531c789a9ab10494702bb51883f2",
+      "bytes": 413899,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/independent-Q-cold-worker-Source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/independent-Q-cold-worker-typed-Source-review-v1.json",
+      "sha256": "e90ff5e1d1c661cb7060e45a4745f30638c89643aeaca213e5ea5032e851b380",
+      "bytes": 2447,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/independent-Q-cold-worker-typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/integration-v1.json",
+      "sha256": "bf1464dd2786c8d1d41e082f847b89650368c0b976ffccb4024c9390877106ec",
+      "bytes": 1397,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/author-static-evidence-v1.json",
+      "sha256": "c15fc653094e6314e646626cef736ddd831a237972dbd5c052828f6536f866e4",
+      "bytes": 6864,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/author-static-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/freeze_worker_Source_v1.py",
+      "sha256": "66dea30e81bd6cf01bef2461a79e8e90ea3748654825074aa1975d975ec14554",
+      "bytes": 14263,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/freeze_worker_Source_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/handoff-v1.json",
+      "sha256": "743f6b5892361f480d9c501da2877804bc80ccd5bc68b4f2676a1c9badc70a92",
+      "bytes": 3573,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py",
+      "sha256": "3831e5ee9a7d6c9a1cd8f2f1d7ad0a0aeb253c5afc38956c825fdb00a5ff8c4d",
+      "bytes": 56093,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/source-contract-v1.json",
+      "sha256": "621432be161769904b4b236a83349592626fcf38bdd2326d29608e328fa2b8f3",
+      "bytes": 19425,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/freeze_independent_auditor_Source_review_v1.py",
+      "sha256": "f0f62ddd206839e6b795a9e4747a43fb5f6db9a48128c33623132356503a7899",
+      "bytes": 19680,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/freeze_independent_auditor_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/handoff-v1.json",
+      "sha256": "eee058c0e9a198bdf3abcc7f301a44013d89f53d430702e6b4056ec4c16a2840",
+      "bytes": 1862,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-auditor-Source-findings-v1.json",
+      "sha256": "a8fba2a47540fc1cff1107be9ea36d842f0e93da29175f79417d87c3138fd092",
+      "bytes": 37584,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-auditor-Source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-typed-Source-review-v1.json",
+      "sha256": "afccb219235728f7e5e0924eeaf8a337ee2c193c6ac2b149f568e0665e9ab273",
+      "bytes": 1857,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/integration-v1.json",
+      "sha256": "7e874cce6bc90d9d2ac645eb5d3204526ce5a3d5927be5724d64454e837c2345",
+      "bytes": 1108,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/author-metadata-failure-v1.json",
+      "sha256": "8017e3343eaea2b25a124a905ab03b106fa2ed7dcf57105d218613096cd63308",
+      "bytes": 322,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/author-metadata-failure-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/author-static-evidence-v1.json",
+      "sha256": "656bbdcadc6d73ed3f9d86cffa20fcc14332f61504525620b2172fcf1e7a3729",
+      "bytes": 4598,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/author-static-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/design-v1.json",
+      "sha256": "fe42904c8c8f8c2fb22824c497b0b2a329ff032e45d30d0da9df0d720d2b55d9",
+      "bytes": 4575,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/design-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/freeze_source_package_v1.py",
+      "sha256": "8c6f6f1fabc3d857d19652358a05a394d9f23ae8cbf07ad69a53a80a467d70bb",
+      "bytes": 20411,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/freeze_source_package_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/freeze_source_package_v2.py",
+      "sha256": "16199ae56e6a54d388f002b77f78b305a64fbd5db771c44023bfbff723982bc4",
+      "bytes": 20422,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/freeze_source_package_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/handoff-v1.json",
+      "sha256": "6ceb31b4b5a34e61f9d8fa8e7fefa1f28f3031383b040c391c1f9a904f35396d",
+      "bytes": 7895,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/prospective-controls-v1.json",
+      "sha256": "d9079e9f6b28db0ba0fb8c2007654c36e34eb33177b13b37d80617e65be6e41a",
+      "bytes": 1697,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/prospective-controls-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/source-contract-v1.json",
+      "sha256": "de26586799af2c8143fe744590dc2d76789836735342a8d6b582583d3b870e51",
+      "bytes": 16116,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/findings-v1.json",
+      "sha256": "c55d2d1bd20b9b964a40d1bd7ec9c05a7019272109b35466530f5571cb0d9311",
+      "bytes": 122990,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/freeze_word_controls_Source_review_v1.py",
+      "sha256": "60fe57d3089c889390c8a2e1991294075352d4da11e351df6b3b8a1c5aba4a9d",
+      "bytes": 16186,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/freeze_word_controls_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/handoff-v1.json",
+      "sha256": "eb8da2f0089311fc2f7bfc0c5834470e2d811d6f684f68d1fc640eb7842b7a9f",
+      "bytes": 1191,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/integration-v1.json",
+      "sha256": "555795d7781482602b811374af825d9a187d49e5420df816f47ad3f741128581",
+      "bytes": 1348,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "f03b1b6013cc7fe66aaa79f17d7e1fd79d8fad2f1d7e705e848d29650b15baa9",
+      "bytes": 2393,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/author-static-evidence-v1.json",
+      "sha256": "fbb3dd8ccce7f67c512698521cd22e36290855ca8c0ac939a89301b1b9eed726",
+      "bytes": 1988,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/author-static-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/complete-fixtures-v1.json",
+      "sha256": "b12b2504310d1ce5f11d6d737fccb5e8165a3c54202b66442ad75988373bbe5e",
+      "bytes": 150938,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/complete-fixtures-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/handoff-v1.json",
+      "sha256": "82f6b84b94f0148f27f7583612e7f8212de9e0d0cdd580148f3a4a4e40fc1a5a",
+      "bytes": 2137,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/integration-v1.json",
+      "sha256": "8a12c5853555bfb2e9a04a10f32b4bad04d3b55cd27625b7189c215e7ab3e0be",
+      "bytes": 3513,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/source-contract-v1.json",
+      "sha256": "9a05ffd364fde921914ae1156ad4598c295ff429c3a846c9b3cbb79daff0b1e6",
+      "bytes": 8774,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py",
+      "sha256": "4aeb339a444675421b043f687d298825a122a13210caa9e7c3eec29d6da65bab",
+      "bytes": 17637,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/Source-review-authoring-coverage-note-v1.json",
+      "sha256": "1ff708248efbe5f1a56ce7a9ceb47837eddf5b3fe5d85e14c271d5cedcb7a8ed",
+      "bytes": 1923,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/Source-review-authoring-coverage-note-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/findings-v1.json",
+      "sha256": "748a6ba5d460de6e742325c33669f8b5a2393b2e5b956d8fd4a8e7b414842bb2",
+      "bytes": 58132,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/freeze_worker_Source_findings_v1.py",
+      "sha256": "d56a71d614d012f420b3e6c0d9446bccc553e2f6429665f9feca8c2e59ca817c",
+      "bytes": 12978,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/freeze_worker_Source_findings_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/handoff-v1.json",
+      "sha256": "813e49a074efe928a8d108e778445d2f59c173a85d3ff79dd364c18890d5e4f4",
+      "bytes": 1585,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "6f59bfb154c556f4a319ff4a26ea3cb4ed362296c6a54113c0826ba8ffe7b8ee",
+      "bytes": 2358,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/author-static-evidence-v1.json",
+      "sha256": "789d1f24f55b81c751e7ad70b62c35cadab4a6f0e76038013d79e6df6f8ec83c",
+      "bytes": 1995,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/author-static-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/handoff-v1.json",
+      "sha256": "623451ea59f461f059c52238336c15fee19e923dd41825dd50c8d00be85248e0",
+      "bytes": 4333,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v1.py",
+      "sha256": "de621b6bf2672fec61148b3440aad73fc04e953c823b5edf2486b3af997ce611",
+      "bytes": 38590,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/integration-v1.json",
+      "sha256": "44197dd7b60d3706bb57af2ac4caa1850318641fe1530016fc4ba96825b4a1c5",
+      "bytes": 4450,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/integration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v1.json",
+      "sha256": "a2be1a13fe991929ce26a1be439ce89e7c0bbe2d223b12c72957df5cbe027379",
+      "bytes": 16965,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/freeze_rank_Source_review_v1.py",
+      "sha256": "34e5d81db05ae6a53b915e74ce0278a0d85a9ddd1b3eadaf9ebb6565e7409014",
+      "bytes": 15788,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/freeze_rank_Source_review_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/handoff-v1.json",
+      "sha256": "074117a5f45d4bbad201109081a5ae804f9459766c7d108da7228ca3ae2d4680",
+      "bytes": 1785,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/handoff-v2.json",
+      "sha256": "209bff6b23ce81bd684de42ba835aeaa8d823e1eb5d8d3e70547b86540f6bb81",
+      "bytes": 1149,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-Source-findings-v1.json",
+      "sha256": "c924a0671007cad4f71d7a061a8703b8ef562913831fd9682f67bb28ff3b22e4",
+      "bytes": 21531,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-Source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-Source-findings-v2.json",
+      "sha256": "310ec3ee5e3f26c78449c097a2b56ff5c3bf8a645418812c43c496c46bbd5394",
+      "bytes": 14490,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-Source-findings-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-typed-Source-review-v1.json",
+      "sha256": "6f5945a8f2e31f0950fc49d58919efe773639f5e33db4534585789709e79c3d3",
+      "bytes": 1479,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-typed-Source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-typed-Source-review-v2.json",
+      "sha256": "b883c7aceb575f7d49d98a1a938357eb04ad56eaaecefbb2f507a97226afb973",
+      "bytes": 1431,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/rank-producer-emitter-typed-Source-review-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/review_rank_guard_delta_v2.py",
+      "sha256": "8626dadc3a0b0d01fe861717c25468f6dcda63cff62a120a94b0f0fb639e4deb",
+      "bytes": 6271,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-review-source-20261014/review_rank_guard_delta_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/api-v1.json",
+      "sha256": "4362ef404719d4978bad88a2ca4de505aaf45eda76689bf4c98b04c68a81de79",
+      "bytes": 1456,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/api-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/api-v2.json",
+      "sha256": "7cb7b398e3abaea1da2a151b1db7689bc680a611ddcf17e08e135a5589b0b8d4",
+      "bytes": 1887,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/api-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/handoff-v1.json",
+      "sha256": "6fbd80f787ea30bc1d9586c01139bb32e06f4c0e7c21329eea7f1ff535333dd7",
+      "bytes": 6779,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/handoff-v2.json",
+      "sha256": "bb19933567703a37d00e35ceb2f7f739cfe4dbeba2c61775e2f7d3b07b8d3c47",
+      "bytes": 2981,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/handoff-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/rank-v1-to-v2-guard-only.patch",
+      "sha256": "dbf3c2a81e559828ab037374caa21055f6d9c0ca353c399103188a76c69a8598",
+      "bytes": 5749,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/rank-v1-to-v2-guard-only.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/saturated_rank_and_literal_profiles_v1.py",
+      "sha256": "14caaddb46194facba640ec1a9e8b2f76cf0005addff3de8c542977d90b0590c",
+      "bytes": 36404,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/saturated_rank_and_literal_profiles_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/saturated_rank_and_literal_profiles_v2.py",
+      "sha256": "9cccf4cc5e29321c782583ec5a5a3bc307c876df4b94391a0a74e7d8a739a1b3",
+      "bytes": 40943,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/saturated_rank_and_literal_profiles_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-contract-v1.json",
+      "sha256": "25b4a3ff6ae958ba3dbff5ddbfcd8ac2daf3af1993541a80771223578bb63edf",
+      "bytes": 18692,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-contract-v2.json",
+      "sha256": "2d6360cb3ac5e4cac6277d3157ed376ebedf80639735738dbc8fb06785024c25",
+      "bytes": 21625,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-contract-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-static-checks-v1.json",
+      "sha256": "f3d93810fb93f79166f4c3f24faf6fc23a3fa27038da06267daa13b74bda0e72",
+      "bytes": 7403,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-static-checks-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-static-checks-v2.json",
+      "sha256": "e2330406298a007495bedaec03f2c98749b6ac46c678324db94ee6bb76158ec8",
+      "bytes": 3364,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-rank-certificate-source-20261014/source-static-checks-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-ROOT-source-20261014/build_Q_controls_metadata_v2.py",
+      "sha256": "db0830f3abb7f20bdefbd403c5b34d438151736100211918ec0645bbf474d073",
+      "bytes": 6614,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-ROOT-source-20261014/build_Q_controls_metadata_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v2.json",
+      "sha256": "14f60a7fac63a54864e189265ef572f5abe1dc170cc62a271fd40b5dc45df58f",
+      "bytes": 35059,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v1.json",
+      "sha256": "345462862862f7ad4637725786cfd1ceced419a35f6dd79c628b3f9cccaf9640",
+      "bytes": 3157,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v2.json",
+      "sha256": "fa304eb16f9b4b43c05393fd7fae3020b63d875d10ed79bee12e39b8d4258384",
+      "bytes": 3143,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-disposition-v1.json",
+      "sha256": "6367e42b45161f854caeeea864fe5aefa3aa317f85bb37e41fb3cb498014fbf3",
+      "bytes": 8045,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-disposition-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json",
+      "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef",
+      "bytes": 8797,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+      "sha256": "aa706bee1e48220d4eec0e31b32c456314145bdabf2646cb2d7945728d6f65e7",
+      "bytes": 562,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "7b864138b9c2a849b3d94956644afc7128fd1e5c471d2f188ef2577875a8e647",
+      "bytes": 6069,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "5d01f8ae1404c6b32dea2d0c59ebf1013a0c3e1da1b6b33078aa5d1b7351d08d",
+      "bytes": 6763,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-source-review-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49",
+      "bytes": 2810,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "3ba0cf08afee86db89c854cb60c6d2e37f3be1fdfc5873469b763ebe0104f57e",
+      "bytes": 2148,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-actual-tool-observations-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "617b74d6766626a8b57b5c4e2ae0f56244b88438d0ef3402dc08b35b661029ac",
+      "bytes": 1742,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "8d8e849c6c03dc890582328dc06cd7c2c9bb56a201d49ecea1c60160ad8acd3c",
+      "bytes": 801,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-plan-v1.json",
+      "sha256": "07a17cd6342eccb7f7231cfdc0f7eff91863b5b995fb7214b31b116cbc845351",
+      "bytes": 10980,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json",
+      "sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db",
+      "bytes": 7973213,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json",
+      "sha256": "c93d718c0642375c1d442e4c2bad475290049b0017bd8bf1f99719cad258524e",
+      "bytes": 7973913,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7",
+      "bytes": 11000,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525",
+      "bytes": 9785,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4",
+      "bytes": 5595,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969",
+      "bytes": 8295473,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9",
+      "bytes": 8296118,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a",
+      "bytes": 38376960,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-plan-v1.json",
+      "sha256": "f44b778167aeefbcb561d60279f4ece55552639f6e58d6f31a53cd778aeba4d9",
+      "bytes": 16547,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-plan-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/findings-v1.json",
+      "sha256": "185b75f1d3a0e14cd4a7b79480b5df88a694537a723fcdc20880ddd17e02eaf4",
+      "bytes": 62853,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v2.json",
+      "sha256": "71eff7eac42dc11eadf3f16d6b3ecc1618d13b321bbc48d5f6d8bfed905832ab",
+      "bytes": 30996,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-retention-diagnosis-v1.json",
+      "sha256": "82b1a1486bb4ca39fa6c59cbb1efdf9da71ef03c69f2e72d75a89d7b18e2a93e",
+      "bytes": 2283,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-retention-diagnosis-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+      "bytes": 19742,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d",
+      "bytes": 37266,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-original-to-stream-v3.patch",
+      "sha256": "09c0257cae0ba736eb1d5bc29f707ad6bbf68830686633b81145ea2afb82243e",
+      "bytes": 12169,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-original-to-stream-v3.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v4.json",
+      "sha256": "f3cc208b518c7ddae480172bc6416e02b754a1a2e9ca7370f36f5e40cef97a79",
+      "bytes": 4886,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v4.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/payload-original-to-stream-v3.patch",
+      "sha256": "e3a35b9709e18dbfc0b73fdef2f750e37fa1beb443b01d394f33e4407a7979a6",
+      "bytes": 1738,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/payload-original-to-stream-v3.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad",
+      "bytes": 5435,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6fec101a926caf72d06bf38604b9bde919ba73c57d976eecba5c7c9a6f560fc6",
+      "bytes": 18559,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v2.json",
+      "sha256": "039e5017c261170abae5d6156e02e324cc4b6b50a4be45323b8979c32c8576ea",
+      "bytes": 20184,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-original-to-stream-v6.patch",
+      "sha256": "71239053509604b194bf241e18a422a7b4609c3eb04297790ad41a92f8d3fa5e",
+      "bytes": 19179,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-original-to-stream-v6.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-v6-to-v7-local-limit-anchors.patch",
+      "sha256": "a3075335421cdf965d7ddf87d21abb7e1c9066b35420b0668cdb28dd80db3e9b",
+      "bytes": 8983,
+      "archive_path": "workspace/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-v6-to-v7-local-limit-anchors.patch"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-benchmark-ladder-independent-20261013/declaration-review-v2.json",
+      "sha256": "dbbcf402c9dd77fff76b3bd3148662f575b76e6a2a9373ef1d904f8241717e91",
+      "bytes": 35516,
+      "archive_path": "workspace/.gcts-active/arithmetic-benchmark-ladder-independent-20261013/declaration-review-v2.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json",
+      "sha256": "d8c17f915e6c340f4299c34bfb6a3fbb8077f2a987a4c15860547e0a2c542289",
+      "bytes": 20506,
+      "archive_path": "workspace/.gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "bytes": 2683,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/handoff-v1.json",
+      "sha256": "31d1f9f072686658c31c3aa60d15a4a03e1271711a6ca05e6bec657df7556478",
+      "bytes": 2806,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/handoff-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/point-core-source-delta-v1.json",
+      "sha256": "43a50a8a74ab10ea51d35e168ecd6c2ca0d2cfa4df903245513e0ac33be57139",
+      "bytes": 1724,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/point-core-source-delta-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/prospective-controls-v1.json",
+      "sha256": "004e1e3534900401d28382863c1401c74d40d1038a5a24d4e453946e8c2865c3",
+      "bytes": 4230,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/prospective-controls-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/q_preparation_gate_v1.py",
+      "sha256": "7712d2760570a0cd75d88de8099b492c99e8f824f2185c46322fb8fe33028a4a",
+      "bytes": 5219,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/q_preparation_gate_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-contract-v1.json",
+      "sha256": "78df35e4f72ce6cc46e70459d0e366d646a404305311d481c3d0671db5e2a870",
+      "bytes": 8367,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-contract-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-independent-20261014/source-findings-v1.json",
+      "sha256": "c37a2f1c3f8fafdc3f35b41ecaa758352195e9cdf524443fce0ee34e1fd2bd4d",
+      "bytes": 11414,
+      "archive_path": "workspace/.gcts-active/arithmetic-open-generalize-independent-20261014/source-findings-v1.json"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf",
+      "bytes": 4752,
+      "archive_path": "workspace/.gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656",
+      "bytes": 14639,
+      "archive_path": "workspace/.gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "bytes": 31300,
+      "archive_path": "workspace/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657,
+      "archive_path": "workspace/docs/basic-tiling-algorithm.md"
+    }
+  ],
+  "external_runtime_references": [
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952",
+      "bytes": 137888
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67",
+      "bytes": 135472
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02",
+      "bytes": 170816
+    }
+  ],
+  "archive": {
+    "path": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/arithmetic-independent-audit/source-and-evidence.zip",
+    "sha256": "eb20066cea1e16295de16fbbc545aa0e15ef07ed6f3b0e6231ba1db60b7b4263",
+    "bytes": 6753236
+  }
+}

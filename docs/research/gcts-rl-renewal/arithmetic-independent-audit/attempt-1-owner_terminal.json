@@ -1,0 +1,40 @@
+{
+  "schema": "ROOT-guard-native-owner-terminal-v2",
+  "stage": "preparation",
+  "status": "UNKNOWN_owned_phase_gate",
+  "resource_gate_accepted": false,
+  "error": {
+    "type": "ValueError",
+    "message": "sampled owner/observer/owned-worker memory"
+  },
+  "cancelled": false,
+  "cleanup_errors": [],
+  "plan": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json",
+    "sha256": "86bbd4a7ba4ea9faedbb20004e15b42a6b481d1967d72b7810ee7cf11a701833",
+    "bytes": 19347
+  },
+  "worker_receipt": null,
+  "elapsed_before_write_seconds": 3.297416875,
+  "write_reserve_seconds": 2,
+  "peak_bytes": 548339712,
+  "memory_write_reserve_bytes": 8388608,
+  "ROOT_peak_bytes": 15663104,
+  "worker_kernel_peak_bytes": 530169856,
+  "direct_children_peak_sum_bytes": 0,
+  "observer_peak_bytes": 2506752,
+  "observer_accounting": "explicit separate observer wait4 peaks; worker excluded",
+  "worker_returncode": -15,
+  "owned_leftovers": [],
+  "sampled_observations": 26,
+  "max_sampled_owned_rss_bytes": 520028160,
+  "ownership_ledger": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "10c2f0996be1d32c851c3f7859b1d1303d7d33ac9acb513e404491f38739b3b6",
+    "bytes": 878
+  },
+  "ownership_accounting_scope": "pinned owner source plus complete retained owned-row ledger; no independent whole-host observer claimed",
+  "all_direct_children_terminal_and_reaped": true,
+  "no_OS_hard_memory_limit_claim": true,
+  "scientific_stage": null
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+  "stage": "preparation",
+  "status": "accepted_complete_owned_stage",
+  "ROOT_final_accepted": true,
+  "predicates": {
+    "actual_tool_terminal": true,
+    "caller_clock_bound": true,
+    "owner_terminal_link_present": true,
+    "owner_gate": true,
+    "post_write_gate": true,
+    "cancelled_at_final_print_false": true,
+    "final_print_gate": true,
+    "stage_identity": true,
+    "worker_complete": true,
+    "all_worker_direct_children_closed": true,
+    "all_owner_direct_children_closed": true,
+    "no_owned_leftovers": true,
+    "complete_post_closure_unchanged": true,
+    "post_write_exact_terminal": true
+  },
+  "mismatches": [],
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "caller_elapsed_seconds": 20.074,
+  "caller_finish_reserve_seconds": 1,
+  "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+  "plan": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-plan-v1.json",
+    "sha256": "3b17f5ef4b5f57a44767b7a81cdf666276df3c2a79cfca6d97dc2b552f25ce01",
+    "bytes": 21547
+  },
+  "actual_tool": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-actual-tool-observations-v1.json",
+    "sha256": "64b06e0a68fc0827130e6859eeaed94f86bef67804ccaa1821a6f4645a28ca3e",
+    "bytes": 2049
+  },
+  "owner": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+    "bytes": 1788
+  },
+  "post_write": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+    "sha256": "2dd6ef2b18b2af682eaa22aa340bdf93294460aa9112b5b766e61066b84539e5",
+    "bytes": 825
+  },
+  "worker": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json",
+    "sha256": "b7b3bda1239462da7926e5b018e71fccb653d9a4020197087670a834e9b8469d",
+    "bytes": 3379
+  },
+  "native_queries": 0,
+  "native_replays": 0,
+  "target_searches": 0,
+  "new_RL_training": false,
+  "native_status": null,
+  "native_accepted": false,
+  "all_five_qualification": false,
+  "universal_compiler_theorem": false,
+  "finite_Wang_rectangle_accepted": false,
+  "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+}

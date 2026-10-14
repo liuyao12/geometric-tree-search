@@ -1,0 +1,847 @@
+{
+  "schema": "Notebook161-saved-arithmetic-audit-display-packet-v1",
+  "presentation_only": true,
+  "lead": "Parallel Source work produces a lossless storage successor, independent reviews and unrelated logical controls. This notebook records the actual independent audit attempts.",
+  "status_text": "Complete independent finite catalogue, primitive licensing and all initial row domains admitted after resource and saved-record reconciliation. No target proof search or accepted proof prefix.",
+  "formula_latex": "\\forall n\\,\\bigl(n+S(0)=S(n)\\bigr)",
+  "attempts": [
+    {
+      "id": "attempt-1",
+      "label": "Original parse",
+      "chart_label": "Original",
+      "status_text": "First cold independent full-Q audit failed owned memory qualification while sealing the already-decoded preparation, before the auditor module load/call. No audit certificate, receipt or accepted prefix.",
+      "disposition": {
+        "schema": "ROOT-actual-independent-Q-audit-failure-disposition-v1",
+        "author_identity": "/root",
+        "classification": "progress-from-verified-resource-failure",
+        "actual_invocations": 1,
+        "ROOT_complete_independent_audit_accepted": false,
+        "mathematical_catalogue_admitted": false,
+        "scope": "First cold independent full-Q audit failed owned memory qualification while sealing the already-decoded preparation, before the auditor module load/call. No audit certificate, receipt or accepted prefix.",
+        "resource_qualification": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-ROOT-final-decision-v1.json",
+          "sha256": "66cada875ca863137a74aaa9ef6b88f52d6b5fabb9e85e562dab32c6a8f99e0a",
+          "bytes": 2611
+        },
+        "actual_caller": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-actual-tool-observations-v1.json",
+          "sha256": "46ea128612dc49a5ae6ed95b8d61c1674ab1f64133e27f830330d90dd7deb595",
+          "bytes": 1466
+        },
+        "owner_terminal": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+          "sha256": "085ddb364768e62c8b43d6d793b5544f124b0627234f363cbb7d5acc081b6d87",
+          "bytes": 1571
+        },
+        "owner_postwrite": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+          "sha256": "ae8388f2811770d6e4cb0d31b20f6c1bd50f6a78428bacb82af6f532abe5b871",
+          "bytes": 580
+        },
+        "worker_failure": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/failure-v1.json",
+          "sha256": "33dcd3ff4f5e56a5f06504c0e12306f32c438e934b5850681b0a1b281d3168e3",
+          "bytes": 988
+        },
+        "worker_stderr": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+          "sha256": "f799ffd7b24efe9068b5714b11ef60960356a773c31b01618d480e3d72e0f1a9",
+          "bytes": 2978
+        },
+        "worker_plan": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json",
+          "sha256": "09b5730415a3cc2cb5e2f183c65ed21144fd4ffc55c8736840444553be68a045",
+          "bytes": 31040
+        },
+        "owner_plan": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json",
+          "sha256": "86bbd4a7ba4ea9faedbb20004e15b42a6b481d1967d72b7810ee7cf11a701833",
+          "bytes": 19347
+        },
+        "limits": {
+          "inner_seconds": 20,
+          "owned_seconds": 60,
+          "caller_seconds": 90,
+          "owned_peak_bytes": 536870912,
+          "worker_peak_reserve_ceiling_bytes": 524288000
+        },
+        "worker_kernel_peak_bytes": 530169856,
+        "observed_owned_postwrite_peak_bytes": 548421632,
+        "owned_postwrite_seconds": 3.298020709,
+        "genuine_caller_seconds": 10.07,
+        "caller_finish_reserve_seconds": 1,
+        "worker_returncode": -15,
+        "all_direct_children_terminal_and_reaped": true,
+        "owned_leftovers": [],
+        "accepted_prefix": false,
+        "audit_certificates": 0,
+        "target_searches": 0,
+        "target_proofs_accepted": false,
+        "native_accepted": false,
+        "full24_accepted": false,
+        "full_PA_accepted": false,
+        "induction_accepted": false,
+        "RL_training_runs": 0,
+        "unchanged_original_grammar_and_all_rows": true,
+        "next_action": "Review a lossless complete-wire allocation repair under the same budgets in a fresh namespace; do not rerun this attempt or accept a partial model."
+      },
+      "resource_decision": {
+        "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+        "stage": "preparation",
+        "status": "UNKNOWN_complete_stage_qualification",
+        "ROOT_final_accepted": false,
+        "predicates": {
+          "actual_tool_terminal": true,
+          "caller_clock_bound": true,
+          "owner_terminal_link_present": false,
+          "owner_gate": false,
+          "post_write_gate": false,
+          "cancelled_at_final_print_false": true,
+          "final_print_gate": false,
+          "stage_identity": false,
+          "worker_complete": false,
+          "all_worker_direct_children_closed": false,
+          "all_owner_direct_children_closed": true,
+          "no_owned_leftovers": true,
+          "complete_post_closure_unchanged": true,
+          "post_write_exact_terminal": false
+        },
+        "mismatches": [],
+        "limits": {
+          "caller_seconds": 90,
+          "control_seconds": 20,
+          "peak_bytes": 536870912,
+          "whole_seconds": 60
+        },
+        "caller_elapsed_seconds": 10.07,
+        "caller_finish_reserve_seconds": 1,
+        "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+        "plan": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json",
+          "sha256": "86bbd4a7ba4ea9faedbb20004e15b42a6b481d1967d72b7810ee7cf11a701833",
+          "bytes": 19347
+        },
+        "actual_tool": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-actual-tool-observations-v1.json",
+          "sha256": "46ea128612dc49a5ae6ed95b8d61c1674ab1f64133e27f830330d90dd7deb595",
+          "bytes": 1466
+        },
+        "owner": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+          "sha256": "085ddb364768e62c8b43d6d793b5544f124b0627234f363cbb7d5acc081b6d87",
+          "bytes": 1571
+        },
+        "post_write": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+          "sha256": "ae8388f2811770d6e4cb0d31b20f6c1bd50f6a78428bacb82af6f532abe5b871",
+          "bytes": 580
+        },
+        "worker": null,
+        "native_queries": 0,
+        "native_replays": 0,
+        "target_searches": 0,
+        "new_RL_training": false,
+        "native_status": null,
+        "native_accepted": false,
+        "all_five_qualification": false,
+        "universal_compiler_theorem": false,
+        "finite_Wang_rectangle_accepted": false,
+        "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+      },
+      "audit_certificate": null,
+      "phase_trace": [
+        {
+          "phase": "raw_input",
+          "status_text": "Completed for the preparation",
+          "evidence_note": "Source-mapped traceback reached the following complete value-seal call; the preceding authenticated read returned."
+        },
+        {
+          "phase": "parse",
+          "status_text": "Returned before rejection",
+          "evidence_note": "This is a control-flow inference from the exact saved traceback and worker Source, not a timed parser milestone."
+        },
+        {
+          "phase": "input_seal",
+          "status_text": "Rejected at the first value_digest tick",
+          "evidence_href": "attempt-1-worker_stderr.txt"
+        },
+        {
+          "phase": "auditor",
+          "status_text": "Not reached"
+        },
+        {
+          "phase": "domains",
+          "status_text": "Not reached"
+        },
+        {
+          "phase": "eof",
+          "status_text": "Not reached"
+        },
+        {
+          "phase": "certificate",
+          "status_text": "Not reached"
+        }
+      ],
+      "raw_closure_links": [
+        {
+          "label": "Complete ROOT saved disposition",
+          "href": "attempt-1-disposition.json",
+          "sha256": "472dcd9c76a0b5ab3fb6916d94a7c72179ebdfdb93e8937023933acf7a0667b7",
+          "bytes": 3895,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-actual-independent-Q-audit-failure-disposition-v1.json"
+        },
+        {
+          "label": "Complete resource decision and predicates",
+          "href": "attempt-1-resource.json",
+          "sha256": "66cada875ca863137a74aaa9ef6b88f52d6b5fabb9e85e562dab32c6a8f99e0a",
+          "bytes": 2611,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-ROOT-final-decision-v1.json"
+        },
+        {
+          "label": "Genuine caller tool observations",
+          "href": "attempt-1-actual_caller.json",
+          "sha256": "46ea128612dc49a5ae6ed95b8d61c1674ab1f64133e27f830330d90dd7deb595",
+          "bytes": 1466,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-actual-tool-observations-v1.json"
+        },
+        {
+          "label": "Owned terminal observation",
+          "href": "attempt-1-owner_terminal.json",
+          "sha256": "085ddb364768e62c8b43d6d793b5544f124b0627234f363cbb7d5acc081b6d87",
+          "bytes": 1571,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json"
+        },
+        {
+          "label": "Owned postwrite costs",
+          "href": "attempt-1-owner_postwrite.json",
+          "sha256": "ae8388f2811770d6e4cb0d31b20f6c1bd50f6a78428bacb82af6f532abe5b871",
+          "bytes": 580,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+        },
+        {
+          "label": "Worker diagnostic traceback",
+          "href": "attempt-1-worker_stderr.txt",
+          "sha256": "f799ffd7b24efe9068b5714b11ef60960356a773c31b01618d480e3d72e0f1a9",
+          "bytes": 2978,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stderr-v1.txt"
+        },
+        {
+          "label": "Actual worker plan and complete raw closure",
+          "href": "attempt-1-worker_plan.json",
+          "sha256": "09b5730415a3cc2cb5e2f183c65ed21144fd4ffc55c8736840444553be68a045",
+          "bytes": 31040,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json"
+        },
+        {
+          "label": "Actual owner plan",
+          "href": "attempt-1-owner_plan.json",
+          "sha256": "86bbd4a7ba4ea9faedbb20004e15b42a6b481d1967d72b7810ee7cf11a701833",
+          "bytes": 19347,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json"
+        },
+        {
+          "label": "Complete worker failure record",
+          "href": "attempt-1-failure.json",
+          "sha256": "33dcd3ff4f5e56a5f06504c0e12306f32c438e934b5850681b0a1b281d3168e3",
+          "bytes": 988,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/failure-v1.json"
+        }
+      ]
+    },
+    {
+      "id": "attempt-2",
+      "label": "Lossless shared syntax",
+      "chart_label": "Shared syntax",
+      "status_text": "Complete independent finite catalogue, primitive licensing and all initial row domains admitted after resource and saved-record reconciliation. No target proof search or accepted proof prefix.",
+      "disposition": {
+        "schema": "ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2",
+        "author_identity": "/root",
+        "classification": "progress-complete-independent-finite-audit-admitted",
+        "actual_invocations": 1,
+        "ROOT_complete_independent_audit_accepted": true,
+        "mathematical_catalogue_admitted": true,
+        "scope": "Complete independent finite catalogue, primitive licensing and all initial row domains admitted after resource and saved-record reconciliation. No target proof search or accepted proof prefix.",
+        "resource_qualification": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-ROOT-final-decision-v1.json",
+          "sha256": "b01149b45774dafb290438af06fffd8e34d48dd6d333fc84dbb9b6ff793c7f3b",
+          "bytes": 2879
+        },
+        "actual_caller": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-actual-tool-observations-v1.json",
+          "sha256": "64b06e0a68fc0827130e6859eeaed94f86bef67804ccaa1821a6f4645a28ca3e",
+          "bytes": 2049
+        },
+        "owner_terminal": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+          "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+          "bytes": 1788
+        },
+        "owner_postwrite": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+          "sha256": "2dd6ef2b18b2af682eaa22aa340bdf93294460aa9112b5b766e61066b84539e5",
+          "bytes": 825
+        },
+        "worker_stderr": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "worker_plan": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-plan-v1.json",
+          "sha256": "2d01c031b8aaf66b91e5096794738356c71bdd407d7af8c8e9764cf5bc5dde2c",
+          "bytes": 33718
+        },
+        "owner_plan": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-plan-v1.json",
+          "sha256": "3b17f5ef4b5f57a44767b7a81cdf666276df3c2a79cfca6d97dc2b552f25ce01",
+          "bytes": 21547
+        },
+        "worker_receipt": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json",
+          "sha256": "b7b3bda1239462da7926e5b018e71fccb653d9a4020197087670a834e9b8469d",
+          "bytes": 3379
+        },
+        "audit_certificate": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json",
+          "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87",
+          "bytes": 5789
+        },
+        "worker_evidence": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-evidence-v1.json",
+          "sha256": "5c221c863cff0f3d7c164a8429ba3796276e5f87391ab00c1cbeb471f730f42e",
+          "bytes": 8501
+        },
+        "worker_postwrite": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-postwrite-observation-v1.json",
+          "sha256": "5b8f2902fc3d810bc65e4636cfab487d94adf6bee8e3faea2e2d30cfc9989bd6",
+          "bytes": 1269
+        },
+        "worker_Source_review": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v2.json",
+          "sha256": "2b82c4ffbbddf4e60f897a8bb912f2a999d15e4a9448d2d55dee54bb9f69105b",
+          "bytes": 2211
+        },
+        "metadata_Source_review": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-current-contract-confirmation-v2.json",
+          "sha256": "9fda2f6fd70f2be4d56f84c87d494465e6740871cfef3b18b39c280ee14a2c18",
+          "bytes": 4209
+        },
+        "limits": {
+          "inner_seconds": 20,
+          "owned_seconds": 60,
+          "caller_seconds": 90,
+          "owned_peak_bytes": 536870912,
+          "worker_peak_reserve_ceiling_bytes": 524288000
+        },
+        "inner_seconds": 16.706178583,
+        "observed_owned_postwrite_peak_bytes": 336347136,
+        "owned_postwrite_seconds": 16.856909916,
+        "genuine_caller_seconds": 20.074,
+        "caller_finish_reserve_seconds": 1,
+        "worker_kernel_peak_bytes": 317980672,
+        "all_direct_children_terminal_and_reaped": true,
+        "owned_leftovers": [],
+        "sampled_observations": 133,
+        "accepted_prefix": false,
+        "audit_certificates": 1,
+        "target_searches": 0,
+        "target_proofs_accepted": false,
+        "native_accepted": false,
+        "full24_accepted": false,
+        "full_PA_accepted": false,
+        "induction_accepted": false,
+        "RL_training_runs": 0,
+        "unchanged_original_grammar_and_all_rows": true,
+        "phase_trace": [
+          {
+            "phase": "raw_input",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          },
+          {
+            "phase": "parse",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          },
+          {
+            "phase": "input_seal",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          },
+          {
+            "phase": "auditor",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          },
+          {
+            "phase": "domains",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          },
+          {
+            "phase": "eof",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          },
+          {
+            "phase": "certificate",
+            "status_text": "Completed",
+            "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+          }
+        ],
+        "next_action": "Repair and independently review the unrelated-word control runner; then qualify actual word/observer integration before one first-proof search and rank-marking comparison.",
+        "saved_record_review": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v2.json",
+          "sha256": "682ded6b363203ac233149fc1420669b05360afc7a984c4773ddd1d1eecdc213",
+          "bytes": 1489
+        },
+        "reviewed_provisional_disposition": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-provisional-disposition-v1.json",
+          "sha256": "6c1da03b1c482534b18607a354899d01acc37e3764f6a645334d889228faf303",
+          "bytes": 7254
+        },
+        "finite_mathematical_scope": {
+          "formula_count": 11147,
+          "primitive_recipe_count": 16200,
+          "initial_rows": 24,
+          "candidate_count": 36734657,
+          "full_witness_byte_SHA_EOF_comparison": true,
+          "source_recipe_grammar_complete": true,
+          "context": {
+            "original_Gamma": [],
+            "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+            "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+          },
+          "word_checker_execution_qualified": false,
+          "proof_board_compiler_correspondence_qualified": false
+        }
+      },
+      "resource_decision": {
+        "schema": "ROOT-fresh-catalog-stage-final-decision-v1",
+        "stage": "preparation",
+        "status": "accepted_complete_owned_stage",
+        "ROOT_final_accepted": true,
+        "predicates": {
+          "actual_tool_terminal": true,
+          "caller_clock_bound": true,
+          "owner_terminal_link_present": true,
+          "owner_gate": true,
+          "post_write_gate": true,
+          "cancelled_at_final_print_false": true,
+          "final_print_gate": true,
+          "stage_identity": true,
+          "worker_complete": true,
+          "all_worker_direct_children_closed": true,
+          "all_owner_direct_children_closed": true,
+          "no_owned_leftovers": true,
+          "complete_post_closure_unchanged": true,
+          "post_write_exact_terminal": true
+        },
+        "mismatches": [],
+        "limits": {
+          "caller_seconds": 90,
+          "control_seconds": 20,
+          "peak_bytes": 536870912,
+          "whole_seconds": 60
+        },
+        "caller_elapsed_seconds": 20.074,
+        "caller_finish_reserve_seconds": 1,
+        "caller_clock_scope": "Elapsed Date.now tool request to observed terminal in one awaited isolate; no clock origins combined.",
+        "plan": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-plan-v1.json",
+          "sha256": "3b17f5ef4b5f57a44767b7a81cdf666276df3c2a79cfca6d97dc2b552f25ce01",
+          "bytes": 21547
+        },
+        "actual_tool": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-actual-tool-observations-v1.json",
+          "sha256": "64b06e0a68fc0827130e6859eeaed94f86bef67804ccaa1821a6f4645a28ca3e",
+          "bytes": 2049
+        },
+        "owner": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+          "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+          "bytes": 1788
+        },
+        "post_write": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+          "sha256": "2dd6ef2b18b2af682eaa22aa340bdf93294460aa9112b5b766e61066b84539e5",
+          "bytes": 825
+        },
+        "worker": {
+          "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json",
+          "sha256": "b7b3bda1239462da7926e5b018e71fccb653d9a4020197087670a834e9b8469d",
+          "bytes": 3379
+        },
+        "native_queries": 0,
+        "native_replays": 0,
+        "target_searches": 0,
+        "new_RL_training": false,
+        "native_status": null,
+        "native_accepted": false,
+        "all_five_qualification": false,
+        "universal_compiler_theorem": false,
+        "finite_Wang_rectangle_accepted": false,
+        "scope": "Fresh catalog preparation resource qualification is separate from independent primitive licensing and proof discovery. Pinned runtime, owner and process ownership filtering remain trusted; no hard OS cap, whole-host completeness, native proof, learned policy or universal compiler theorem is claimed."
+      },
+      "audit_certificate": {
+        "FOL_complete": false,
+        "RL_updates": 0,
+        "ROOT_admission_issued": false,
+        "ROOT_resource_accepted": false,
+        "actual_primitive_semantic_checks": 16200,
+        "all_catalogue_primitive_and_initial_domains_accepted": true,
+        "bounded_grammar_complete": true,
+        "census": {
+          "arity_counts": {
+            "0": 5480,
+            "1": 414,
+            "2": 10306
+          },
+          "atomic_templates": 44,
+          "formulas": 11147,
+          "generalization_sources": 414,
+          "generated_equality_schemes_before_dedup": 5324,
+          "hole_contexts": 2,
+          "instantiation_rounds": [
+            {
+              "new_recipes": 33,
+              "recipes": 35,
+              "round": 0,
+              "universals": 3
+            },
+            {
+              "new_recipes": 121,
+              "recipes": 156,
+              "round": 1,
+              "universals": 14
+            }
+          ],
+          "operands": 11,
+          "recipes": 16200,
+          "unconstrained_key_universe_upper_bound": 44808928
+        },
+        "completed": true,
+        "declaration_sha256": "f6ca72af011a9343f4661b5092d54565f668a978fd020734072267b76f89b7a3",
+        "elapsed_seconds_before_final_guard": 8.000003667,
+        "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+        "full24_accepted": false,
+        "full_PA_accepted": false,
+        "full_trajectory_accepted": false,
+        "grammar": {
+          "equality_operand_pairs": "all_ordered_pairs",
+          "equality_template_other_terms": "complete_operand_pool",
+          "generalization_sources": "all_resulting_parameter_scoped_equality_atoms",
+          "hole_context_node_bound": 2,
+          "instantiation_rounds": 2,
+          "target_and_axiom_open_subterms": true,
+          "target_seed_is_formula_only": true,
+          "term_node_bound": 3
+        },
+        "induction_accepted": false,
+        "initial_point_domains": {
+          "all_rows": 24,
+          "complete_candidate_count": 36734657,
+          "domain_counts": [
+            5480,
+            5894,
+            26920,
+            68558,
+            130808,
+            213670,
+            317144,
+            441230,
+            585928,
+            751238,
+            937160,
+            1143694,
+            1370840,
+            1618598,
+            1886968,
+            2175950,
+            2485544,
+            2815750,
+            3166568,
+            3537998,
+            3930040,
+            4342694,
+            4775960,
+            23
+          ],
+          "domain_sha256_by_row": [
+            "2ba53d8cb796ff80af0b132c3ac08eacd4b4c853a05f881863bf3f6a4af99b9b",
+            "e8613a68307f79d2f962747e1c60e69d3a42e80ffaba44fd837aedd33c6f0493",
+            "9a8f7572c0e19735fa31b7172eec01720da8d0cb1c4bc1571fa4878298b52974",
+            "db25fa8e4d2a4bc0d0b183446d8c21563a6bae771e8c9401752f9e9b7df42427",
+            "5e1814233e92d8cfc89214a321fa6a674873bdabdd3597fd9fca327ce2efe489",
+            "36f22b737d09c248d4ca1af260c04a8ff78b29be4c279eba3da0124322804ad0",
+            "39f1983c8e841e9ef5ea9ecac70de3dd81dadf87d3f1cf1cf66a48b5fb49b4b8",
+            "0d43f821c820264ba03e5a7e47d25f7a4c5f8017287289de93fb068d2b0c47c8",
+            "a7d9b025f571a7c82c7fbc510f7a3f426cb97e5dbb544126f8c98c8a93969c29",
+            "3209bf3e8c5208b086047df6db3c1b52ba01dfc3affd44fa48bc4aede494c246",
+            "b85524ca286c7317e91701a9bfd6856e964f450ad061e682599286528e8af5e5",
+            "ea6eb65a6f4251203d70a1b52bffd5d48e071790a8c034d91929cafb2eaef287",
+            "1218733e88e52a7ed8f8abb29657bf2e9bca455032e57ce1012fa15d3f41c73a",
+            "3c2b054868e464284657523e55510ca2e732155e0bc9c91ad40f9bbcdc57e5c7",
+            "465a374d8ac6a7afb4120332f29263399b0670ea684db5811be467bc4a0a9e35",
+            "86aef0d90e8a7034fca4c9669b345dc23217fa938b5e90f3269cb096cb962b58",
+            "b11f35d90eb8088f5a98c7f9fc40cab843a4625bc95764778b65bc964bf2e11d",
+            "09cb47b9c5c98dc0bef84e89d5827c04bbc27a9f3366644e504c8bb98f5090aa",
+            "00b628e5b4b2c550bbe607fc1f197deaad1c3ec61e989213393a6106851afa8a",
+            "5d19fb65be3f304fa47e4f4749bd5a247bd8687e476f1a3e7b6b45cbc639484c",
+            "262007c309a503b6bba92d5de8011a7be79c05b1d3d99eee09e42409f60b2805",
+            "1ef7f8e54b969777a7fc605ee0b8a69ac35783383bc29c2f677f1f82a1b5cee4",
+            "bb37ae46254dc0f3ef763b644428f888cbcc1e4952827720de39d82412fa98af",
+            "9da2116ad9b36c467fb64f45ad974a760606795fde8fca7703401516ba7390ad"
+          ],
+          "exact_saved_point_union_accepted": true,
+          "full24_accepted": false,
+          "full_trajectory_accepted": false,
+          "logical_proof_accepted": false,
+          "point_decision": {
+            "count": 23,
+            "generation": 0,
+            "kind": "branch",
+            "row": 23
+          },
+          "selected_physical_keys": 0
+        },
+        "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+        "native_accepted": false,
+        "original_Gamma": [],
+        "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039",
+        "primitive_rule_counts": {
+          "assumption": 0,
+          "axiom": 2,
+          "eq_subst": 5324,
+          "generalize": 414,
+          "instantiate": 154,
+          "mp": 10306
+        },
+        "schema": "independent-complete-Q-catalogue-point-audit-v1",
+        "searches": 0,
+        "source_bindings": {
+          "catalogue": {
+            "bytes": 10187,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+            "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+          },
+          "controls": {
+            "bytes": 19742,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+            "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+          },
+          "kernel": {
+            "bytes": 10323,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+            "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+          },
+          "master": {
+            "bytes": 21657,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+            "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+          },
+          "payload": {
+            "bytes": 5435,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+            "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+          },
+          "point_graph": {
+            "bytes": 28531,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+            "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+          },
+          "worker": {
+            "bytes": 37266,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+            "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+          }
+        },
+        "target_proof_discovered": false,
+        "universal_compiler_accepted": false,
+        "visits": 4163134
+      },
+      "phase_trace": [
+        {
+          "phase": "raw_input",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        },
+        {
+          "phase": "parse",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        },
+        {
+          "phase": "input_seal",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        },
+        {
+          "phase": "auditor",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        },
+        {
+          "phase": "domains",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        },
+        {
+          "phase": "eof",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        },
+        {
+          "phase": "certificate",
+          "status_text": "Completed",
+          "evidence_note": "Actual complete worker evidence and certificate; one full preparation parse and canonical seals bracket the audit."
+        }
+      ],
+      "raw_closure_links": [
+        {
+          "label": "Complete ROOT saved disposition",
+          "href": "attempt-2-disposition.json",
+          "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1",
+          "bytes": 8563,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json"
+        },
+        {
+          "label": "Complete resource decision and predicates",
+          "href": "attempt-2-resource.json",
+          "sha256": "b01149b45774dafb290438af06fffd8e34d48dd6d333fc84dbb9b6ff793c7f3b",
+          "bytes": 2879,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-ROOT-final-decision-v1.json"
+        },
+        {
+          "label": "Genuine caller tool observations",
+          "href": "attempt-2-actual_caller.json",
+          "sha256": "64b06e0a68fc0827130e6859eeaed94f86bef67804ccaa1821a6f4645a28ca3e",
+          "bytes": 2049,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-actual-tool-observations-v1.json"
+        },
+        {
+          "label": "Owned terminal observation",
+          "href": "attempt-2-owner_terminal.json",
+          "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+          "bytes": 1788,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json"
+        },
+        {
+          "label": "Owned postwrite costs",
+          "href": "attempt-2-owner_postwrite.json",
+          "sha256": "2dd6ef2b18b2af682eaa22aa340bdf93294460aa9112b5b766e61066b84539e5",
+          "bytes": 825,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/post-write-observation-v1.json"
+        },
+        {
+          "label": "Worker diagnostic traceback",
+          "href": "attempt-2-worker_stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/stderr-v1.txt"
+        },
+        {
+          "label": "Actual worker plan and complete raw closure",
+          "href": "attempt-2-worker_plan.json",
+          "sha256": "2d01c031b8aaf66b91e5096794738356c71bdd407d7af8c8e9764cf5bc5dde2c",
+          "bytes": 33718,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-plan-v1.json"
+        },
+        {
+          "label": "Actual owner plan",
+          "href": "attempt-2-owner_plan.json",
+          "sha256": "3b17f5ef4b5f57a44767b7a81cdf666276df3c2a79cfca6d97dc2b552f25ce01",
+          "bytes": 21547,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-plan-v1.json"
+        },
+        {
+          "label": "Complete independent worker receipt",
+          "href": "attempt-2-worker_receipt.json",
+          "sha256": "b7b3bda1239462da7926e5b018e71fccb653d9a4020197087670a834e9b8469d",
+          "bytes": 3379,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json"
+        },
+        {
+          "label": "Complete independent audit evidence",
+          "href": "attempt-2-worker_evidence.json",
+          "sha256": "5c221c863cff0f3d7c164a8429ba3796276e5f87391ab00c1cbeb471f730f42e",
+          "bytes": 8501,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-evidence-v1.json"
+        },
+        {
+          "label": "Worker postwrite observation",
+          "href": "attempt-2-worker_postwrite.json",
+          "sha256": "5b8f2902fc3d810bc65e4636cfab487d94adf6bee8e3faea2e2d30cfc9989bd6",
+          "bytes": 1269,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-postwrite-observation-v1.json"
+        },
+        {
+          "label": "Distinct current worker Source review",
+          "href": "attempt-2-worker_Source_review.json",
+          "sha256": "2b82c4ffbbddf4e60f897a8bb912f2a999d15e4a9448d2d55dee54bb9f69105b",
+          "bytes": 2211,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-lossless-review-source-20261014/typed-Source-review-v2.json"
+        },
+        {
+          "label": "Metadata compatibility Source review",
+          "href": "attempt-2-metadata_Source_review.json",
+          "sha256": "9fda2f6fd70f2be4d56f84c87d494465e6740871cfef3b18b39c280ee14a2c18",
+          "bytes": 4209,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-metadata-review-source-20261014/metadata-constructor-v3-current-contract-confirmation-v2.json"
+        },
+        {
+          "label": "Independent saved-record review",
+          "href": "attempt-2-saved_record_review.json",
+          "sha256": "682ded6b363203ac233149fc1420669b05360afc7a984c4773ddd1d1eecdc213",
+          "bytes": 1489,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v2.json"
+        },
+        {
+          "label": "Complete provisional audit certificate",
+          "href": "attempt-2-certificate.json",
+          "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87",
+          "bytes": 5789,
+          "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json"
+        }
+      ]
+    }
+  ],
+  "scopes": [
+    {
+      "id": "independent_audit",
+      "status_text": "Complete independent finite catalogue, primitive licensing and all initial row domains admitted after resource and saved-record reconciliation. No target proof search or accepted proof prefix.",
+      "scope_text": "A completed finite audit and resource admission are prerequisites for the next proof search. An incomplete attempt supplies no accepted prefix.",
+      "evidence_href": "attempt-2-disposition.json"
+    },
+    {
+      "id": "calibration",
+      "status_text": "Notebook 160 retains the completed producer calibration.",
+      "scope_text": "All producer controls and resource qualification are distinct from independent mathematical admission or discovery of the arithmetic target.",
+      "evidence_href": "../arithmetic-open-controls/reader.html#attempts"
+    },
+    {
+      "id": "word_controls",
+      "status_text": "Sixty-eight fixture declarations have Source review. The proposed runner was rejected for a final nested-guard gap and remains unexecuted.",
+      "scope_text": "Fifty-six primitive words and twelve explicit nonlogical boundary controls use unrelated tiny theories. Authored fixtures are not discovered theorems; the runner needs a separate repair and review."
+    },
+    {
+      "id": "rank_proposal",
+      "status_text": "The repaired rank-marking Source has conditional review; no ranks or pruning have been activated.",
+      "scope_text": "The initial guard flaw is retained. Full finite rank certification, point-channel integration, rollback and equal-cost comparison remain necessary."
+    }
+  ],
+  "evidence_links": [
+    {
+      "label": "Mathematical Source and saved raw closure ZIP",
+      "href": "source-and-evidence.zip",
+      "sha256": "eb20066cea1e16295de16fbbc545aa0e15ef07ed6f3b0e6231ba1db60b7b4263",
+      "bytes": 6753236
+    },
+    {
+      "label": "Exact archive member manifest",
+      "href": "archive-manifest.json",
+      "sha256": "745be2f43874720ea451aaa63fe613f8fc3b970a9d0ce639c96db902bdf8e9a8",
+      "bytes": 92399
+    }
+  ]
+}

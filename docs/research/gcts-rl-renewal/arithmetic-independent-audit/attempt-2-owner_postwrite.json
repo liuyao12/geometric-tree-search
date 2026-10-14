@@ -1,0 +1,22 @@
+{
+  "resource_gate_accepted": true,
+  "elapsed_seconds": 16.856909916,
+  "peak_bytes": 336347136,
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "terminal": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+    "bytes": 1788
+  },
+  "provisional": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+    "sha256": "30f045aa81bc5c1f269107ceaff54f8fe9309fc8bf9f949abdbf23561352b7f5",
+    "bytes": 1788
+  },
+  "scope": "post-write observation; tool caller observation is separately required"
+}

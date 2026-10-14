@@ -1,0 +1,75 @@
+{
+  "schema": "ROOT-actual-independent-Q-audit-failure-disposition-v1",
+  "author_identity": "/root",
+  "classification": "progress-from-verified-resource-failure",
+  "actual_invocations": 1,
+  "ROOT_complete_independent_audit_accepted": false,
+  "mathematical_catalogue_admitted": false,
+  "scope": "First cold independent full-Q audit failed owned memory qualification while sealing the already-decoded preparation, before the auditor module load/call. No audit certificate, receipt or accepted prefix.",
+  "resource_qualification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-ROOT-final-decision-v1.json",
+    "sha256": "66cada875ca863137a74aaa9ef6b88f52d6b5fabb9e85e562dab32c6a8f99e0a",
+    "bytes": 2611
+  },
+  "actual_caller": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-actual-tool-observations-v1.json",
+    "sha256": "46ea128612dc49a5ae6ed95b8d61c1674ab1f64133e27f830330d90dd7deb595",
+    "bytes": 1466
+  },
+  "owner_terminal": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+    "sha256": "085ddb364768e62c8b43d6d793b5544f124b0627234f363cbb7d5acc081b6d87",
+    "bytes": 1571
+  },
+  "owner_postwrite": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+    "sha256": "ae8388f2811770d6e4cb0d31b20f6c1bd50f6a78428bacb82af6f532abe5b871",
+    "bytes": 580
+  },
+  "worker_failure": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/failure-v1.json",
+    "sha256": "33dcd3ff4f5e56a5f06504c0e12306f32c438e934b5850681b0a1b281d3168e3",
+    "bytes": 988
+  },
+  "worker_stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/stderr-v1.txt",
+    "sha256": "f799ffd7b24efe9068b5714b11ef60960356a773c31b01618d480e3d72e0f1a9",
+    "bytes": 2978
+  },
+  "worker_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json",
+    "sha256": "09b5730415a3cc2cb5e2f183c65ed21144fd4ffc55c8736840444553be68a045",
+    "bytes": 31040
+  },
+  "owner_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json",
+    "sha256": "86bbd4a7ba4ea9faedbb20004e15b42a6b481d1967d72b7810ee7cf11a701833",
+    "bytes": 19347
+  },
+  "limits": {
+    "inner_seconds": 20,
+    "owned_seconds": 60,
+    "caller_seconds": 90,
+    "owned_peak_bytes": 536870912,
+    "worker_peak_reserve_ceiling_bytes": 524288000
+  },
+  "worker_kernel_peak_bytes": 530169856,
+  "observed_owned_postwrite_peak_bytes": 548421632,
+  "owned_postwrite_seconds": 3.298020709,
+  "genuine_caller_seconds": 10.07,
+  "caller_finish_reserve_seconds": 1,
+  "worker_returncode": -15,
+  "all_direct_children_terminal_and_reaped": true,
+  "owned_leftovers": [],
+  "accepted_prefix": false,
+  "audit_certificates": 0,
+  "target_searches": 0,
+  "target_proofs_accepted": false,
+  "native_accepted": false,
+  "full24_accepted": false,
+  "full_PA_accepted": false,
+  "induction_accepted": false,
+  "RL_training_runs": 0,
+  "unchanged_original_grammar_and_all_rows": true,
+  "next_action": "Review a lossless complete-wire allocation repair under the same budgets in a fresh namespace; do not rerun this attempt or accept a partial model."
+}

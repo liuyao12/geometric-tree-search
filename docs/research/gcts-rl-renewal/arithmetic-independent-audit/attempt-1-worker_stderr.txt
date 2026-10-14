@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 736, in <module>
+    main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 565, in main
+    seals={name:value_digest(value,lambda:checked_fn(True)) for name,value in input_values.items()}
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 565, in <dictcomp>
+    seals={name:value_digest(value,lambda:checked_fn(True)) for name,value in input_values.items()}
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 244, in value_digest
+    tick()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 565, in <lambda>
+    seals={name:value_digest(value,lambda:checked_fn(True)) for name,value in input_values.items()}
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 485, in checked_boundary
+    boundary_fn(inner)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 475, in boundary
+    invoke_fn(); tick_fn(inner)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 462, in invoke_guard
+    source_guard_fn()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 446, in source_guard
+    tick_fn()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 427, in tick
+    whole_tick_fn()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 416, in whole_tick
+    need(time.perf_counter()-began<55 and resource.getrusage(resource.RUSAGE_SELF).ru_maxrss<500*1048576,
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py", line 37, in need
+    raise ValueError(label)
+ValueError: whole55/500 with fixed inherited60/512 owner finish reserves

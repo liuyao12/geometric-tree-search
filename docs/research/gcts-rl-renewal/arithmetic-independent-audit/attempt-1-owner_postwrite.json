@@ -1,0 +1,18 @@
+{
+  "resource_gate_accepted": false,
+  "elapsed_seconds": 3.298020709,
+  "peak_bytes": 548421632,
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "terminal": null,
+  "provisional": {
+    "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-owner-v1/provisional-terminal-v1.json",
+    "sha256": "085ddb364768e62c8b43d6d793b5544f124b0627234f363cbb7d5acc081b6d87",
+    "bytes": 1571
+  },
+  "scope": "post-write observation; tool caller observation is separately required"
+}

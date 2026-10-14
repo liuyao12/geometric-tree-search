@@ -1,0 +1,27 @@
+{
+  "schema": "independent-Q-shared-wire-saved-custody-handoff-v2",
+  "author_identity": "/root/hilbert_advice_controls",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/findings-v2.json",
+    "bytes": 855572,
+    "sha256": "ab545ee08233c05a65bc91b644cc023ad2cf45cfd9b44fecb26cc242238bdbe3"
+  },
+  "all_scoped_saved_checks_passed": true,
+  "scientific_calls": 0,
+  "mathematical_acceptance_issued": false,
+  "scope": "Whole saved metadata/raw custody reconciliation, with additive aggregate-count correction only; actual Root admission remains separate.",
+  "check_count": 1846,
+  "actual_saved_check_list_length": 1846,
+  "raw_target_count": 154,
+  "checks_snapshot_sha256": "8c48d5a3c93928fecb9b2ef61b919bc6d1651d6d18aed8ea3af13003ada424ce",
+  "preserved_v1_findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/findings-v1.json",
+    "bytes": 853962,
+    "sha256": "10969bbd89dca335373e9118d3677482c813d774a36a10863599c66473e59b24"
+  },
+  "preserved_v1_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-saved-independent-20261014/handoff-v1.json",
+    "bytes": 682,
+    "sha256": "d3d150171bedce9772287dc67c22bbebe5e068899e005a95a8235dd00a5ee2a7"
+  }
+}

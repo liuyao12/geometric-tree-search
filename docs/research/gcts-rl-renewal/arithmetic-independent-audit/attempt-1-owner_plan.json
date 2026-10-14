@@ -1,0 +1,413 @@
+{
+  "ROOT_source_review": {
+    "bytes": 7636,
+    "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-source-review-v1.json",
+    "sha256": "7d73cc7c80b0cec204fa60dffa4fb30c72c7de1b43364bba906a7ddd542ee602"
+  },
+  "argv": [
+    "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "-B",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py",
+    "ROOT-independent-complete-Q-mathematical-audit",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json",
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-progress-20261014/preparation-plan-v1.json"
+  ],
+  "closure": [
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 137888,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-darwin.so",
+      "sha256": "f23b2e40e280e5a66bfc4c545d038ce4b6f541a17f1c84697d3ef9e02688c952"
+    },
+    {
+      "bytes": 135472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+    },
+    {
+      "bytes": 14779,
+      "path": ".gcts-active/arithmetic-Q-cold-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6f49e3eaee97634532c2981ff8e9dbff4ee7c0f33c844aa0e02f9e86f99e1028"
+    },
+    {
+      "bytes": 10371,
+      "path": ".gcts-active/arithmetic-Q-independent-audit-ROOT-source-20261014/build_independent_Q_audit_metadata_v1.py",
+      "sha256": "30b001606ef7b15cfb7791a2a3a0cd89cb8b9007f0a7e8288ff09f3a64084631"
+    },
+    {
+      "bytes": 7636,
+      "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "7d73cc7c80b0cec204fa60dffa4fb30c72c7de1b43364bba906a7ddd542ee602"
+    },
+    {
+      "bytes": 4752,
+      "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "bytes": 14639,
+      "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "bytes": 31040,
+      "path": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-plan-v1.json",
+      "sha256": "09b5730415a3cc2cb5e2f183c65ed21144fd4ffc55c8736840444553be68a045"
+    },
+    {
+      "bytes": 413899,
+      "path": ".gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/independent-Q-cold-worker-Source-findings-v1.json",
+      "sha256": "8c54d91bde7034ef4cc6e195edbc5b758eb7531c789a9ab10494702bb51883f2"
+    },
+    {
+      "bytes": 2447,
+      "path": ".gcts-active/arithmetic-Q-independent-cold-worker-review-source-20261014/independent-Q-cold-worker-typed-Source-review-v1.json",
+      "sha256": "e90ff5e1d1c661cb7060e45a4745f30638c89643aeaca213e5ea5032e851b380"
+    },
+    {
+      "bytes": 56093,
+      "path": ".gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py",
+      "sha256": "3831e5ee9a7d6c9a1cd8f2f1d7ad0a0aeb253c5afc38956c825fdb00a5ff8c4d"
+    },
+    {
+      "bytes": 19425,
+      "path": ".gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/source-contract-v1.json",
+      "sha256": "621432be161769904b4b236a83349592626fcf38bdd2326d29608e328fa2b8f3"
+    },
+    {
+      "bytes": 37584,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-auditor-Source-findings-v1.json",
+      "sha256": "a8fba2a47540fc1cff1107be9ea36d842f0e93da29175f79417d87c3138fd092"
+    },
+    {
+      "bytes": 1857,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-typed-Source-review-v1.json",
+      "sha256": "afccb219235728f7e5e0924eeaf8a337ee2c193c6ac2b149f568e0665e9ab273"
+    },
+    {
+      "bytes": 4598,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/author-static-evidence-v1.json",
+      "sha256": "656bbdcadc6d73ed3f9d86cffa20fcc14332f61504525620b2172fcf1e7a3729"
+    },
+    {
+      "bytes": 4575,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/design-v1.json",
+      "sha256": "fe42904c8c8f8c2fb22824c497b0b2a329ff032e45d30d0da9df0d720d2b55d9"
+    },
+    {
+      "bytes": 7895,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/handoff-v1.json",
+      "sha256": "6ceb31b4b5a34e61f9d8fa8e7fefa1f28f3031383b040c391c1f9a904f35396d"
+    },
+    {
+      "bytes": 46514,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 1697,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/prospective-controls-v1.json",
+      "sha256": "d9079e9f6b28db0ba0fb8c2007654c36e34eb33177b13b37d80617e65be6e41a"
+    },
+    {
+      "bytes": 16116,
+      "path": ".gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/source-contract-v1.json",
+      "sha256": "de26586799af2c8143fe744590dc2d76789836735342a8d6b582583d3b870e51"
+    },
+    {
+      "bytes": 6614,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-ROOT-source-20261014/build_Q_controls_metadata_v2.py",
+      "sha256": "db0830f3abb7f20bdefbd403c5b34d438151736100211918ec0645bbf474d073"
+    },
+    {
+      "bytes": 35059,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-source-findings-v2.json",
+      "sha256": "14f60a7fac63a54864e189265ef572f5abe1dc170cc62a271fd40b5dc45df58f"
+    },
+    {
+      "bytes": 3157,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v1.json",
+      "sha256": "345462862862f7ad4637725786cfd1ceced419a35f6dd79c628b3f9cccaf9640"
+    },
+    {
+      "bytes": 3143,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-independent-20261014/streamed-Q-typed-source-review-v2.json",
+      "sha256": "fa304eb16f9b4b43c05393fd7fae3020b63d875d10ed79bee12e39b8d4258384"
+    },
+    {
+      "bytes": 8045,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-disposition-v1.json",
+      "sha256": "6367e42b45161f854caeeea864fe5aefa3aa317f85bb37e41fb3cb498014fbf3"
+    },
+    {
+      "bytes": 8797,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-Q-streamed-controls-reconciled-disposition-v2.json",
+      "sha256": "e52a47fe3ffa562a81d2084150eacec11c11be87e96def01ee728afaa4bd88ef"
+    },
+    {
+      "bytes": 562,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-actual-saved-plan-validation-v1.json",
+      "sha256": "aa706bee1e48220d4eec0e31b32c456314145bdabf2646cb2d7945728d6f65e7"
+    },
+    {
+      "bytes": 6069,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-construction-v1.json",
+      "sha256": "7b864138b9c2a849b3d94956644afc7128fd1e5c471d2f188ef2577875a8e647"
+    },
+    {
+      "bytes": 6763,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "5d01f8ae1404c6b32dea2d0c59ebf1013a0c3e1da1b6b33078aa5d1b7351d08d"
+    },
+    {
+      "bytes": 4752,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "bytes": 2810,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-ROOT-final-decision-v1.json",
+      "sha256": "ba68f21a9a8bcc32402d6057d6bfff1b443a8c95207ade185fef194a9406fd49"
+    },
+    {
+      "bytes": 2148,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-actual-tool-observations-v1.json",
+      "sha256": "3ba0cf08afee86db89c854cb60c6d2e37f3be1fdfc5873469b763ebe0104f57e"
+    },
+    {
+      "bytes": 1742,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json",
+      "sha256": "617b74d6766626a8b57b5c4e2ae0f56244b88438d0ef3402dc08b35b661029ac"
+    },
+    {
+      "bytes": 801,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-owner-v1/post-write-observation-v1.json",
+      "sha256": "8d8e849c6c03dc890582328dc06cd7c2c9bb56a201d49ecea1c60160ad8acd3c"
+    },
+    {
+      "bytes": 10980,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/preparation-plan-v1.json",
+      "sha256": "07a17cd6342eccb7f7231cfdc0f7eff91863b5b995fb7214b31b116cbc845351"
+    },
+    {
+      "bytes": 14639,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "bytes": 7973213,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-oracle-domains-v2.json",
+      "sha256": "91910104a6b78b6f171a06217ea3b2dda1af24f19d56944b4eabec3f8c99d0db"
+    },
+    {
+      "bytes": 7973913,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-after-one-step-state-v2.json",
+      "sha256": "c93d718c0642375c1d442e4c2bad475290049b0017bd8bf1f99719cad258524e"
+    },
+    {
+      "bytes": 11000,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-evidence-v1.json",
+      "sha256": "1c4069230b761d905046810f012f9d5ab6f4bf814674bdb90d3cb0ceaf8f6bb7"
+    },
+    {
+      "bytes": 9785,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-provisional-v1.json",
+      "sha256": "f9341fa0fdfe9403bb58d128ee416935a4601c85599ba93e11c92c12e50ba525"
+    },
+    {
+      "bytes": 5595,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-controls-result-v1.json",
+      "sha256": "a6cc241c7c5408951979981f5de6c8e2d0d6be38cdbfe0fe16a365fa3085ede4"
+    },
+    {
+      "bytes": 8295473,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    {
+      "bytes": 8296118,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    {
+      "bytes": 38376960,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    },
+    {
+      "bytes": 16547,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-plan-v1.json",
+      "sha256": "f44b778167aeefbcb561d60279f4ece55552639f6e58d6f31a53cd778aeba4d9"
+    },
+    {
+      "bytes": 62853,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-saved-independent-20261014/findings-v1.json",
+      "sha256": "185b75f1d3a0e14cd4a7b79480b5df88a694537a723fcdc20880ddd17e02eaf4"
+    },
+    {
+      "bytes": 30996,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-authoring-checks-v2.json",
+      "sha256": "71eff7eac42dc11eadf3f16d6b3ecc1618d13b321bbc48d5f6d8bfed905832ab"
+    },
+    {
+      "bytes": 2283,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/Source-retention-diagnosis-v1.json",
+      "sha256": "82b1a1486bb4ca39fa6c59cbb1efdf9da71ef03c69f2e72d75a89d7b18e2a93e"
+    },
+    {
+      "bytes": 19742,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    {
+      "bytes": 37266,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    },
+    {
+      "bytes": 12169,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-original-to-stream-v3.patch",
+      "sha256": "09c0257cae0ba736eb1d5bc29f707ad6bbf68830686633b81145ea2afb82243e"
+    },
+    {
+      "bytes": 4886,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/controls-specification-v4.json",
+      "sha256": "f3cc208b518c7ddae480172bc6416e02b754a1a2e9ca7370f36f5e40cef97a79"
+    },
+    {
+      "bytes": 1738,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/payload-original-to-stream-v3.patch",
+      "sha256": "e3a35b9709e18dbfc0b73fdef2f750e37fa1beb443b01d394f33e4407a7979a6"
+    },
+    {
+      "bytes": 5435,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    {
+      "bytes": 18559,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v1.json",
+      "sha256": "6fec101a926caf72d06bf38604b9bde919ba73c57d976eecba5c7c9a6f560fc6"
+    },
+    {
+      "bytes": 20184,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/source-contract-v2.json",
+      "sha256": "039e5017c261170abae5d6156e02e324cc4b6b50a4be45323b8979c32c8576ea"
+    },
+    {
+      "bytes": 19179,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-original-to-stream-v6.patch",
+      "sha256": "71239053509604b194bf241e18a422a7b4609c3eb04297790ad41a92f8d3fa5e"
+    },
+    {
+      "bytes": 8983,
+      "path": ".gcts-active/arithmetic-Q-streamed-controls-source-20261014/worker-v6-to-v7-local-limit-anchors.patch",
+      "sha256": "a3075335421cdf965d7ddf87d21abb7e1c9066b35420b0668cdb28dd80db3e9b"
+    },
+    {
+      "bytes": 35516,
+      "path": ".gcts-active/arithmetic-benchmark-ladder-independent-20261013/declaration-review-v2.json",
+      "sha256": "dbbcf402c9dd77fff76b3bd3148662f575b76e6a2a9373ef1d904f8241717e91"
+    },
+    {
+      "bytes": 20506,
+      "path": ".gcts-active/arithmetic-compiler-gap-design-20261013/gap-design-v1.json",
+      "sha256": "d8c17f915e6c340f4299c34bfb6a3fbb8077f2a987a4c15860547e0a2c542289"
+    },
+    {
+      "bytes": 2683,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    {
+      "bytes": 10187,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    {
+      "bytes": 10323,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 28531,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "bytes": 2806,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/handoff-v1.json",
+      "sha256": "31d1f9f072686658c31c3aa60d15a4a03e1271711a6ca05e6bec657df7556478"
+    },
+    {
+      "bytes": 1724,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/point-core-source-delta-v1.json",
+      "sha256": "43a50a8a74ab10ea51d35e168ecd6c2ca0d2cfa4df903245513e0ac33be57139"
+    },
+    {
+      "bytes": 4230,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/prospective-controls-v1.json",
+      "sha256": "004e1e3534900401d28382863c1401c74d40d1038a5a24d4e453946e8c2865c3"
+    },
+    {
+      "bytes": 5219,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/q_preparation_gate_v1.py",
+      "sha256": "7712d2760570a0cd75d88de8099b492c99e8f824f2185c46322fb8fe33028a4a"
+    },
+    {
+      "bytes": 8367,
+      "path": ".gcts-active/arithmetic-open-generalize-implementation-source-20261014/source-contract-v1.json",
+      "sha256": "78df35e4f72ce6cc46e70459d0e366d646a404305311d481c3d0671db5e2a870"
+    },
+    {
+      "bytes": 11414,
+      "path": ".gcts-active/arithmetic-open-generalize-independent-20261014/source-findings-v1.json",
+      "sha256": "c37a2f1c3f8fafdc3f35b41ecaa758352195e9cdf524443fce0ee34e1fd2bd4d"
+    },
+    {
+      "bytes": 4752,
+      "path": ".gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "bytes": 14639,
+      "path": ".gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "bytes": 31300,
+      "path": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    {
+      "bytes": 21657,
+      "path": "docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 170816,
+      "path": "/bin/ps",
+      "sha256": "472992c470606d28f577590decfecd7f4a20f832fd92c671bebc6d44790b5d02"
+    }
+  ],
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "runtime_binary": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-guard-native-owned-plan-v1",
+  "scope": "independent-complete-finite-Q-catalogue-primitive-initial-domains-no-search",
+  "stage": "preparation",
+  "worker": ".gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py",
+  "worker_receipt": ".gcts-active/arithmetic-Q-independent-audit-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json"
+}

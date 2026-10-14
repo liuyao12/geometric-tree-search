@@ -1,0 +1,51 @@
+{
+  "schema": "ROOT-single-isolate-owned-tool-observations-v1",
+  "clock": "Date.now",
+  "stage": "preparation",
+  "started_ms": 1791998161200,
+  "polls": [
+    {
+      "chunk_id": "f02d75",
+      "wall_time_seconds": 5.003271125,
+      "session_id": 17082,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "403432",
+      "wall_time_seconds": 5.0022695,
+      "session_id": 17082,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "048aad",
+      "wall_time_seconds": 5.001637334,
+      "session_id": 17082,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "a3793c",
+      "wall_time_seconds": 0.748932625,
+      "exit_code": 0,
+      "original_token_count": 108,
+      "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 16.856909916, \"peak_bytes\": 336347136, \"worker_receipt\": \".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json\"}\n"
+    }
+  ],
+  "launch": {
+    "chunk_id": "6000f8",
+    "wall_time_seconds": 1.003121042,
+    "session_id": 17082,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "terminal_observed_ms": 1791998181274,
+  "terminal": {
+    "chunk_id": "a3793c",
+    "wall_time_seconds": 0.748932625,
+    "exit_code": 0,
+    "original_token_count": 108,
+    "output": "{\"stage\": \"preparation\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 16.856909916, \"peak_bytes\": 336347136, \"worker_receipt\": \".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/preparation-owner-v1/ROOT-terminal-v1.json\"}\n"
+  }
+}
