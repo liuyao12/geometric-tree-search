@@ -1,0 +1,276 @@
+{
+  "activation": {
+    "Q_target_searches": 0,
+    "RL_updates": 0,
+    "ROOT_owned_once_only": true,
+    "author_identity": "/root",
+    "native_queries": 0,
+    "rank_computations": 0,
+    "schema": "ROOT-unrelated-Q-word-controls-activation-v1",
+    "scope": "unrelated-six-rule-words-and-nonlogical-Boundary-controls-no-Q-search",
+    "source_review_not_mathematical_admission": true
+  },
+  "allowed_runtime": {
+    "binary": {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    "platform": "darwin",
+    "python_version": [
+      3,
+      9,
+      6
+    ],
+    "resource_extension": {
+      "bytes": 135472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+    }
+  },
+  "inputs": {
+    "auditor_contract": {
+      "bytes": 16116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/source-contract-v1.json",
+      "sha256": "de26586799af2c8143fe744590dc2d76789836735342a8d6b582583d3b870e51"
+    },
+    "complete_fixtures": {
+      "bytes": 150938,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/complete-fixtures-v1.json",
+      "sha256": "b12b2504310d1ce5f11d6d737fccb5e8165a3c54202b66442ad75988373bbe5e"
+    },
+    "suite_contract": {
+      "bytes": 8774,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/source-contract-v1.json",
+      "sha256": "9a05ffd364fde921914ae1156ad4598c295ff429c3a846c9b3cbb79daff0b1e6"
+    },
+    "worker_contract": {
+      "bytes": 20343,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v3.json",
+      "sha256": "39b0556401a629f661df2ecf963a3099eaa132040f122e88c3a6d5cdca86c571"
+    }
+  },
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "outdir": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1",
+  "raw_closure": [
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 135472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+    },
+    {
+      "bytes": 56093,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py",
+      "sha256": "3831e5ee9a7d6c9a1cd8f2f1d7ad0a0aeb253c5afc38956c825fdb00a5ff8c4d"
+    },
+    {
+      "bytes": 37584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-auditor-Source-findings-v1.json",
+      "sha256": "a8fba2a47540fc1cff1107be9ea36d842f0e93da29175f79417d87c3138fd092"
+    },
+    {
+      "bytes": 1857,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-typed-Source-review-v1.json",
+      "sha256": "afccb219235728f7e5e0924eeaf8a337ee2c193c6ac2b149f568e0665e9ab273"
+    },
+    {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 1697,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/prospective-controls-v1.json",
+      "sha256": "d9079e9f6b28db0ba0fb8c2007654c36e34eb33177b13b37d80617e65be6e41a"
+    },
+    {
+      "bytes": 16116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/source-contract-v1.json",
+      "sha256": "de26586799af2c8143fe744590dc2d76789836735342a8d6b582583d3b870e51"
+    },
+    {
+      "bytes": 12879,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-ROOT-source-20261014/build_word_controls_metadata_v1.py",
+      "sha256": "fa4a6f2b7565c96878c739625b1e9db0b1305f3d3b1cfee0792350ea64e8cd03"
+    },
+    {
+      "bytes": 60730,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-metadata-review-source-20261014/findings-v1.json",
+      "sha256": "7596f8d54daf621b8cd57533de9558d2e864ea9d8625c658eb65c2c632655720"
+    },
+    {
+      "bytes": 1505,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-metadata-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "adcb84d3f678c2fa3ba550eb12a2856c3e1bfa17a9a704413f09ba62ad56edce"
+    },
+    {
+      "bytes": 5393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "ff58dfd300f119d78660edc4836eec93509dd38ea53bd9a1c48a82acbf3f1b53"
+    },
+    {
+      "bytes": 4752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "bytes": 14639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "bytes": 122990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/findings-v1.json",
+      "sha256": "c55d2d1bd20b9b964a40d1bd7ec9c05a7019272109b35466530f5571cb0d9311"
+    },
+    {
+      "bytes": 2393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "f03b1b6013cc7fe66aaa79f17d7e1fd79d8fad2f1d7e705e848d29650b15baa9"
+    },
+    {
+      "bytes": 150938,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/complete-fixtures-v1.json",
+      "sha256": "b12b2504310d1ce5f11d6d737fccb5e8165a3c54202b66442ad75988373bbe5e"
+    },
+    {
+      "bytes": 8774,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/source-contract-v1.json",
+      "sha256": "9a05ffd364fde921914ae1156ad4598c295ff429c3a846c9b3cbb79daff0b1e6"
+    },
+    {
+      "bytes": 17637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py",
+      "sha256": "4aeb339a444675421b043f687d298825a122a13210caa9e7c3eec29d6da65bab"
+    },
+    {
+      "bytes": 2827,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/current-contract-Source-confirmation-v1.json",
+      "sha256": "885b6970d15f105fabab6c4bab6a72bca8594625be024130430920fe32fc5319"
+    },
+    {
+      "bytes": 56669,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/current-contract-confirmation-findings-v1.json",
+      "sha256": "dfd0440562f7afcf200c50f2f868252a837f70c6d2dc564dac36d7175677187d"
+    },
+    {
+      "bytes": 58132,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/findings-v1.json",
+      "sha256": "748a6ba5d460de6e742325c33669f8b5a2393b2e5b956d8fd4a8e7b414842bb2"
+    },
+    {
+      "bytes": 2358,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "6f59bfb154c556f4a319ff4a26ea3cb4ed362296c6a54113c0826ba8ffe7b8ee"
+    },
+    {
+      "bytes": 2582,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/typed-Source-review-v2.json",
+      "sha256": "53cdd86dcd5aabad7a9617ae0843645fca85923f43bd8c72fb9cbbd0aee54d0e"
+    },
+    {
+      "bytes": 4752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "bytes": 38590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v1.py",
+      "sha256": "de621b6bf2672fec61148b3440aad73fc04e953c823b5edf2486b3af997ce611"
+    },
+    {
+      "bytes": 57232,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v2.py",
+      "sha256": "ea42b82d3dbadb4c30fc3d53289aa5b6198e5ca05764c6e574b9315c023535e5"
+    },
+    {
+      "bytes": 14639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "bytes": 16965,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v1.json",
+      "sha256": "a2be1a13fe991929ce26a1be439ce89e7c0bbe2d223b12c72957df5cbe027379"
+    },
+    {
+      "bytes": 20343,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v3.json",
+      "sha256": "39b0556401a629f661df2ecf963a3099eaa132040f122e88c3a6d5cdca86c571"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "schema": "ROOT-unrelated-Q-word-controls-worker-plan-v1",
+  "source_cache_gate": {
+    "allow_project_bytecode": false,
+    "execute_or_compile_producer_sources": false,
+    "executed_roles": [
+      "worker",
+      "control_callable",
+      "independent_semantics"
+    ],
+    "raw_only_roles": [
+      "master"
+    ],
+    "temporary_mutation_scope": "invented callbacks/ephemeral Boundary only; production guard never mutable"
+  },
+  "source_review": {
+    "ROOT": {
+      "bytes": 5393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-source-review-v1.json",
+      "sha256": "ff58dfd300f119d78660edc4836eec93509dd38ea53bd9a1c48a82acbf3f1b53"
+    },
+    "auditor_independent": {
+      "bytes": 1857,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-review-source-20261014/independent-Q-typed-Source-review-v1.json",
+      "sha256": "afccb219235728f7e5e0924eeaf8a337ee2c193c6ac2b149f568e0665e9ab273"
+    },
+    "suite_independent": {
+      "bytes": 2393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "f03b1b6013cc7fe66aaa79f17d7e1fd79d8fad2f1d7e705e848d29650b15baa9"
+    },
+    "worker_independent": {
+      "bytes": 2827,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/current-contract-Source-confirmation-v1.json",
+      "sha256": "885b6970d15f105fabab6c4bab6a72bca8594625be024130430920fe32fc5319"
+    }
+  },
+  "sources": {
+    "control_callable": {
+      "bytes": 17637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py",
+      "sha256": "4aeb339a444675421b043f687d298825a122a13210caa9e7c3eec29d6da65bab"
+    },
+    "independent_semantics": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "worker": {
+      "bytes": 57232,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v2.py",
+      "sha256": "ea42b82d3dbadb4c30fc3d53289aa5b6198e5ca05764c6e574b9315c023535e5"
+    }
+  },
+  "stage": "replay"
+}

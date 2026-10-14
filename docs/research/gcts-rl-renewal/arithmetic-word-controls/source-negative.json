@@ -1,0 +1,48 @@
+{
+  "all_checks_passed": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "blocker_ids": [
+    "nested-checked-outer-caller-guard"
+  ],
+  "earlier_producer_authorship_disclosed": true,
+  "findings": {
+    "bytes": 58132,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/findings-v1.json",
+    "sha256": "748a6ba5d460de6e742325c33669f8b5a2393b2e5b956d8fd4a8e7b414842bb2"
+  },
+  "mathematical_acceptance": false,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_acceptance": false,
+  "schema": "unrelated-Q-word-control-cold-worker-Source-review-v1",
+  "scientific_calls": 0,
+  "scope": "unrelated-Q-word-control-cold-worker-Source",
+  "source_contract": {
+    "bytes": 16965,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v1.json",
+    "sha256": "a2be1a13fe991929ce26a1be439ce89e7c0bbe2d223b12c72957df5cbe027379"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "control_callable": {
+      "bytes": 17637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py",
+      "sha256": "4aeb339a444675421b043f687d298825a122a13210caa9e7c3eec29d6da65bab"
+    },
+    "independent_semantics": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "worker": {
+      "bytes": 38590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v1.py",
+      "sha256": "de621b6bf2672fec61148b3440aad73fc04e953c823b5edf2486b3af997ce611"
+    }
+  }
+}

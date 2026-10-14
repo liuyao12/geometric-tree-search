@@ -1,0 +1,22 @@
+{
+  "resource_gate_accepted": true,
+  "elapsed_seconds": 0.918069458,
+  "peak_bytes": 42516480,
+  "limits": {
+    "caller_seconds": 90,
+    "control_seconds": 20,
+    "peak_bytes": 536870912,
+    "whole_seconds": 60
+  },
+  "terminal": {
+    "path": ".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "a44896e9f39ad0b7006410b9ce8bdfba5a302b0fdaa718d861f82a8b041871a8",
+    "bytes": 1768
+  },
+  "provisional": {
+    "path": ".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "a44896e9f39ad0b7006410b9ce8bdfba5a302b0fdaa718d861f82a8b041871a8",
+    "bytes": 1768
+  },
+  "scope": "post-write observation; tool caller observation is separately required"
+}

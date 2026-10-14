@@ -1,0 +1,41 @@
+{
+  "schema": "ROOT-guard-native-owner-terminal-v2",
+  "stage": "replay",
+  "status": "resource_gate_accepted_pending_post_write_observation",
+  "resource_gate_accepted": true,
+  "error": null,
+  "cancelled": false,
+  "cleanup_errors": [],
+  "plan": {
+    "path": ".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-plan-v1.json",
+    "sha256": "9257a4aecfcf364a4b4ff6908743cc279fd31aea1c8097bdf9fe3648913a3d26",
+    "bytes": 9375
+  },
+  "worker_receipt": {
+    "path": ".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-result-v1.json",
+    "sha256": "50faa623195e8acb642c05abd4acc49e39283edc264a123679a60787be049570",
+    "bytes": 3360
+  },
+  "elapsed_before_write_seconds": 0.9175227909999999,
+  "write_reserve_seconds": 2,
+  "peak_bytes": 42467328,
+  "memory_write_reserve_bytes": 8388608,
+  "ROOT_peak_bytes": 15499264,
+  "worker_kernel_peak_bytes": 24428544,
+  "direct_children_peak_sum_bytes": 0,
+  "observer_peak_bytes": 2539520,
+  "observer_accounting": "explicit separate observer wait4 peaks; worker excluded",
+  "worker_returncode": 0,
+  "owned_leftovers": [],
+  "sampled_observations": 7,
+  "max_sampled_owned_rss_bytes": 24330240,
+  "ownership_ledger": {
+    "path": ".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "127034c26a5f0b5ca7aeb96ecf60980a82aa6e68f8b702c4fd3efae704c63d44",
+    "bytes": 496
+  },
+  "ownership_accounting_scope": "pinned owner source plus complete retained owned-row ledger; no independent whole-host observer claimed",
+  "all_direct_children_terminal_and_reaped": true,
+  "no_OS_hard_memory_limit_claim": true,
+  "scientific_stage": "replay"
+}

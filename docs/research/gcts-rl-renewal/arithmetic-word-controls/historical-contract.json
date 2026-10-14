@@ -1,0 +1,322 @@
+{
+  "Source_review_ABI": {
+    "all_checks_passed": "only after actual Source review",
+    "author_identity": "/root/hilbert_advice_controls",
+    "mathematical_acceptance": false,
+    "reviewer_identity": "Genuine distinct author; ROOT record reviewer /root, peer record another agent. No invented acceptance.",
+    "runtime_acceptance": false,
+    "schema": "unrelated-Q-word-control-cold-worker-Source-review-v1",
+    "scientific_calls": 0,
+    "scope": "unrelated-Q-word-control-cold-worker-Source",
+    "source_contract": "Exact frozen source-contract-v2.json raw pin; wire review schema/scope remain v1.",
+    "source_only": true,
+    "source_review_passed": "only after actual Source review",
+    "sources": {
+      "control_callable": {
+        "bytes": 17637,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py",
+        "sha256": "4aeb339a444675421b043f687d298825a122a13210caa9e7c3eec29d6da65bab"
+      },
+      "independent_semantics": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      },
+      "master": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "worker": {
+        "bytes": 57232,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v2.py",
+        "sha256": "ea42b82d3dbadb4c30fc3d53289aa5b6198e5ca05764c6e574b9315c023535e5"
+      }
+    }
+  },
+  "activation": false,
+  "actual_Source_execution": false,
+  "actual_calls": 0,
+  "actual_plans": 0,
+  "actual_word_or_boundary_calls": 0,
+  "author_identity": "/root/hilbert_advice_controls",
+  "borrowed_source_utility_reference": {
+    "bytes": 56093,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-cold-worker-source-20261014/independent_Q_cold_worker_v1.py",
+    "sha256": "3831e5ee9a7d6c9a1cd8f2f1d7ad0a0aeb253c5afc38956c825fdb00a5ff8c4d"
+  },
+  "budgets_and_costs": {
+    "caller_finish_seconds": 1,
+    "cold_worker_bytes": 524288000,
+    "cold_worker_seconds": 55,
+    "fit": "UNMEASURED. No actual fixture/Source/worker/control call, performance or resource acceptance is implied.",
+    "genuine_caller_seconds": 90,
+    "later_scope": "Evidence/receipt/postwrite/console/source/input/output hashes/exit remain within55/500 and enclosing60/512. Actual owner observation/reaper and genuine Root caller90 incl finishing reserve qualify later. Returned partial timing fields are explicitly before final guards or writes, not complete phase measurements.",
+    "owner_finish_reserve_bytes": 8388608,
+    "owner_finish_reserve_seconds": 2,
+    "shared_inner_scope": "Starts at worker main before metadata preflight/raw source and fixture input load. Includes complete exact68 control API invocation, whole input seals, all code/callback/runtime checks and complete provisional result serialization/hash/write. No reset per fixture.",
+    "shared_inner_seconds": 20,
+    "whole_owned_bytes": 536870912,
+    "whole_owned_seconds": 60
+  },
+  "executed_project_roles": [
+    "worker",
+    "control_callable",
+    "independent_semantics"
+  ],
+  "existing_suite_Source_review": {
+    "bytes": 2393,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-review-source-20261014/typed-Source-review-v1.json",
+    "sha256": "f03b1b6013cc7fe66aaa79f17d7e1fd79d8fad2f1d7e705e848d29650b15baa9"
+  },
+  "failure": "Timeout/memory/Source/default/clock/input/expected-outcome/full-output/final-console failure leaves UNKNOWN with no accepted suite prefix. Any already saved files remain provisional; successful receipt is withdrawn if a later guard fails. Generic resource terminal + Root all14 custody remain separate.",
+  "full_closure": "Canonical ABS sorted unique leaf raw_closure includes direct4 Source roles, fixture+suite/auditor/worker contract, actual4 typed reviews, runtime binary/resource and literal named-root pins; copies of byte-identical generic owner/closer in actual flat namespace. Parsed named documents all explicit pin values raw-verified; neither contract ancestry nor findings are recursively decoded. Generic owner closure ROOT-relative repository paths (canonical runtime absolute), includes every leaf pin and exact leafplan. Max256 explicit leaf raw records; no raw omissions or arbitrary old ancestor parsing.",
+  "guard_scope": [
+    "All interpreted worker code compared to compile of authenticated current whole raw worker buffer (same code/absolute filename), no executed reference module; not mere co_filename authority.",
+    "Both suite and independent semantics load only from one cached authenticated stable raw buffer using explicit compile/exec, declared module names and exact final origin/object/effective entry binding; no loader pyc or producer modules.",
+    "Own rejection/hash/read/raw loader/serializer/closure validators captured before any project Source; direct identity/code rejection precedes invocation. Original clock/resource plus own module/default/closure/constant guards; all external source modules/functions/classes/MRO/properties sealed.",
+    "Original production source_guard and outer shim/checked boundary/writer Python function/code/default/kwdefault/cell identity sealed. Sole metadata setup binds plan/output before project loading; module/entry setup uses existing containers and never reseals after loaded project Source.",
+    "Production writer/seal checks bracket full input/result serialization, postwrite/receipt/console and final whole limits. Whole canonical input fixture seal restored unchanged. Any final failure revokes success receipt (withdrawn), no accepted prefix.",
+    "Source/module cache permits only worker/suite/auditor current objects/raw paths; generic parent supervisor/closer have separate byte-identical outer custody. Original Q producer and other ROOT-local imports/caches rejected.",
+    "Cold guard scope is ordinary Python source/object substitution and exact buffer custody, not hostile VM isolation. Internally created private Semantics/Boundary fields are not a production graph boundary.",
+    "V2 additionally seals every immediate nested checked caller, saved inner tick and value_digest before/after tick delegation, including final stdout boundary. No ordinary same-object checked code mutation is authorized."
+  ],
+  "inputs": {
+    "auditor_contract": {
+      "bytes": 16116,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/source-contract-v1.json",
+      "sha256": "de26586799af2c8143fe744590dc2d76789836735342a8d6b582583d3b870e51"
+    },
+    "complete_fixtures": {
+      "bytes": 150938,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/complete-fixtures-v1.json",
+      "sha256": "b12b2504310d1ce5f11d6d737fccb5e8165a3c54202b66442ad75988373bbe5e"
+    },
+    "suite_contract": {
+      "bytes": 8774,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/source-contract-v1.json",
+      "sha256": "9a05ffd364fde921914ae1156ad4598c295ff429c3a846c9b3cbb79daff0b1e6"
+    }
+  },
+  "intentional_mutation_scope": {
+    "always_sealed": "Actual worker production source_guard/shim, own validators/runtime, every suite/auditor module/class function and complete original fixture data remain unchanged.",
+    "category": "12 NONLOGICAL_BOUNDARY fixtures; separately counted from56 arbitrary-word controls.",
+    "exception": "Only the frozen suite boundary_case creates an invented ephemeral callback and private Boundary. It temporarily replaces that callback code/default/kwdefault/closure or private Boundary.guard to exercise checker rejection, then restores in finally. These private instances/functions are not the worker authority or module callable roots. No skipped source module guard, altered semantic methods or blanket mutable production callback.",
+    "negative_meaning": "Expected ValueError rejects the given command word/schema/logic input, not a false target statement. Expected local Unresolved is a nonlogical exhausted/expired toy boundary, not theorem nonprovability or phase rescue."
+  },
+  "leaf_ABI": {
+    "Source_review_slots": [
+      "ROOT",
+      "worker_independent",
+      "suite_independent",
+      "auditor_independent"
+    ],
+    "activation": {
+      "Q_target_searches": 0,
+      "RL_updates": 0,
+      "ROOT_owned_once_only": true,
+      "author_identity": "/root",
+      "native_queries": 0,
+      "rank_computations": 0,
+      "schema": "ROOT-unrelated-Q-word-controls-activation-v1",
+      "scope": "unrelated-six-rule-words-and-nonlogical-Boundary-controls-no-Q-search",
+      "source_review_not_mathematical_admission": true
+    },
+    "allowed_runtime": {
+      "binary": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      },
+      "platform": "darwin",
+      "python_version": [
+        3,
+        9,
+        6
+      ],
+      "resource_extension": {
+        "bytes": 135472,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+        "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+      }
+    },
+    "cache_gate": {
+      "allow_project_bytecode": false,
+      "execute_or_compile_producer_sources": false,
+      "executed_roles": [
+        "worker",
+        "control_callable",
+        "independent_semantics"
+      ],
+      "raw_only_roles": [
+        "master"
+      ],
+      "temporary_mutation_scope": "invented callbacks/ephemeral Boundary only; production guard never mutable"
+    },
+    "field_count": 11,
+    "fields": [
+      "schema",
+      "stage",
+      "activation",
+      "outdir",
+      "sources",
+      "inputs",
+      "source_review",
+      "limits",
+      "allowed_runtime",
+      "source_cache_gate",
+      "raw_closure"
+    ],
+    "fresh_namespace": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014",
+    "inputs": "Three exact inputs above plus this current worker_contract raw pin, bound by exact current typed worker/ROOT Source records.",
+    "inputs_count": 4,
+    "limits": {
+      "caller_seconds": 90,
+      "control_seconds": 20,
+      "peak_bytes": 536870912,
+      "whole_seconds": 60
+    },
+    "outdir": "Fresh namespace/word-controls-output-v1; must be absent. No resume/reuse/retry.",
+    "schema": "ROOT-unrelated-Q-word-controls-worker-plan-v1",
+    "sources_count": 4,
+    "stage": "replay"
+  },
+  "mathematical_acceptance": false,
+  "narrow_v2_repair": {
+    "actual_activation_this_checkpoint": false,
+    "changed_top_level_definitions": [
+      "main",
+      "value_digest"
+    ],
+    "direct_checked_caller_rule": "Before every actual checked delegation in main, save and inner tick, compare original clock/resource, saved function_state/code and all original own validator identities/codes directly; then require checked is the original saved function and its complete function/code/default/kwdefault/closure-cell/content identity state matches the separately captured original anchor. Invoke only that saved function.",
+    "independent_current_Source_review": "PENDING, neither prior negative nor suite Source review admits this new cold worker.",
+    "input_seal_rule": "Replace anonymous checked lambdas by a source-defined inner tick with the same direct checked caller rule. Main verifies its original saved tick before value_digest. value_digest seals the actual tick function and its own helper/clock endpoints and directly checks them before and after every tick invocation; a stable closure containing changed checked.__code__ cannot bypass the inner tick body guard.",
+    "late_failure_rule": "The final post-stdout delegation uses the same direct original checked guard. A late rejection enters unchanged failure logic, withdraws any successful receipt before writing provisional failure metadata and reraises. Failure cleanup makes no unchecked checked delegation.",
+    "limits_fixtures_unchanged": true,
+    "new_Source_execution": false,
+    "ordinary_python_scope_only": true,
+    "preserved_negative_full_findings": {
+      "bytes": 58132,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/findings-v1.json",
+      "sha256": "748a6ba5d460de6e742325c33669f8b5a2393b2e5b956d8fd4a8e7b414842bb2"
+    },
+    "preserved_negative_typed_Source_review": {
+      "bytes": 2358,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-review-source-20261014/typed-Source-review-v1.json",
+      "sha256": "6f59bfb154c556f4a319ff4a26ea3cb4ed362296c6a54113c0826ba8ffe7b8ee"
+    },
+    "preserved_prior_contract": {
+      "bytes": 16965,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/source-contract-v1.json",
+      "sha256": "a2be1a13fe991929ce26a1be439ce89e7c0bbe2d223b12c72957df5cbe027379"
+    },
+    "prior_worker": {
+      "bytes": 38590,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v1.py",
+      "sha256": "de621b6bf2672fec61148b3440aad73fc04e953c823b5edf2486b3af997ce611"
+    },
+    "scientific_calls": 0,
+    "unchanged_semantic_wire": "Leaf11/owner10/argv6/result and review schemas are unchanged v1. This successor exposes new raw worker/contract pins, never a relabeled actual outcome."
+  },
+  "outputs": [
+    "Q-unrelated-word-controls-provisional-v1.json",
+    "Q-unrelated-word-controls-evidence-v1.json",
+    "Q-unrelated-word-controls-result-v1.json",
+    "Q-unrelated-word-controls-postwrite-v1.json"
+  ],
+  "owner_ABI": {
+    "ROOT_review_path": "fresh namespace/ROOT-source-review-v1.json",
+    "argv": [
+      "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "-B",
+      "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v1.py",
+      "ROOT-unrelated-Q-word-controls",
+      "<canonicalABS fresh worker-plan-v1.json>",
+      "<canonicalABS fresh replay-plan-v1.json>"
+    ],
+    "argv_count": 6,
+    "closer": {
+      "bytes": 4752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/close_stage_decision_v1.py",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    "copy_requirement": "ROOT copies these identical2df/9fe bytes into actual flat fresh namespace; HERE uses plan.parent. No source behavior changed.",
+    "field_count": 10,
+    "fields": [
+      "schema",
+      "stage",
+      "runtime_binary",
+      "worker",
+      "argv",
+      "worker_receipt",
+      "limits",
+      "closure",
+      "ROOT_source_review",
+      "scope"
+    ],
+    "limits": {
+      "caller_seconds": 90,
+      "control_seconds": 20,
+      "peak_bytes": 536870912,
+      "whole_seconds": 60
+    },
+    "owner": {
+      "bytes": 14639,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/run_owned_bridge_v2.py",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    "schema": "ROOT-guard-native-owned-plan-v1",
+    "scope": "unrelated-six-rule-words-and-nonlogical-Boundary-controls-no-Q-search",
+    "stage": "replay",
+    "worker_receipt": "word-controls-output-v1/Q-unrelated-word-controls-result-v1.json"
+  },
+  "parsed_small_named_roots": [
+    "worker-plan-v1.json",
+    "replay-plan-v1.json",
+    "four literal typed Source review documents",
+    "this current worker Source contract",
+    "frozen suite Source contract",
+    "whole exact complete fixture array"
+  ],
+  "publication_changed": false,
+  "raw_only_leaves": "Independent auditor Source contract/prospective Source provenance/current reviewer findings; no arbitrary descendant JSON parse, no Q declaration/preparation/state/domain payload or saved proof input. Every explicit pin in actual parsed roots is whole raw-closed only.",
+  "raw_only_roles": [
+    "master"
+  ],
+  "remaining_gates": [
+    "Distinct-author whole current cold worker/source-map/ABI/guard/output review.",
+    "ROOT current complete raw closure/runtime/typed review metadata construction and absence preflight; no plans authored here.",
+    "ROOT once-only whole68 execution under original caps; separate genuine caller and generic owner/closer resource14 gates.",
+    "Saved complete-source/result/fixture/call-tape/census/resource reconciliation before any control admission.",
+    "These controls never grant Q catalogue/rank/pruning/Graph/search/target proof/native/full24/full trajectory/induction/PA/RL or performance authority."
+  ],
+  "resource_acceptance": false,
+  "schema": "unrelated-Q-word-control-cold-worker-Source-contract-v1",
+  "scientific_calls": 0,
+  "scope": "Cold/owned SOURCE proposal for whole literal68-control suite only. No worker/suite/checker Source executes here; no actual leaf/owner plans or qualification. Unrelated words are manual mechanics, never the Q theorem/donor/discovery.",
+  "source_only": true,
+  "sources": {
+    "control_callable": {
+      "bytes": 17637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-source-20261014/unrelated_word_and_boundary_controls_v1.py",
+      "sha256": "4aeb339a444675421b043f687d298825a122a13210caa9e7c3eec29d6da65bab"
+    },
+    "independent_semantics": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "worker": {
+      "bytes": 57232,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-worker-source-20261014/independent_Q_word_controls_worker_v2.py",
+      "sha256": "ea42b82d3dbadb4c30fc3d53289aa5b6198e5ca05764c6e574b9315c023535e5"
+    }
+  },
+  "typed_auditor_review": "Exact independent-Q-mathematical-auditor-Source-review-v1 / complete-finite-Q-catalogue-primitive-domain-and-word-checker-Source / independent_auditor1717+master / raw auditor contractde265. Author diagnosis, reviewer distinct. Complete profile/auditor Source review is not actual complete catalogue admission.",
+  "typed_suite_review": "Exact current unrelated-six-rule-word-boundary-controls-Source-review-v1 / complete-unrelated-six-rule-word-and-nonlogical-Boundary-controls-Source / sources3+contract9a05 from arithmetic. Author controls, reviewer arithmetic; no Word/worker qualification inherited."
+}

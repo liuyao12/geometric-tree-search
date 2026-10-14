@@ -1,0 +1,7073 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "fixtures": [
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "Closed zero-premise UI implication licence, no original hypothesis.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "ui-closed-constant",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "c",
+              []
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "The free replacement y forces the inner binder to literal fresh0; Gen closes y afterward.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0,
+          1
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          [],
+          [
+            0
+          ]
+        ],
+        "status": "accept"
+      },
+      "id": "ui-capture-safe",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "fresh0",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ],
+                    [
+                      "var",
+                      "fresh0"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "y"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "formula": [
+              "all",
+              "y",
+              [
+                "imp",
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "pred",
+                      "R",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "all",
+                  "fresh0",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ],
+                      [
+                        "var",
+                        "fresh0"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 0,
+            "variable": "y"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "y"
+        ],
+        "target": [
+          "all",
+          "y",
+          [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "Reject syntactic capture even though the captured conclusion is closed.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "exact capture-safe universal-instantiation implication",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "ui-wrong-captured-output",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "y"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "y"
+        ],
+        "target": [
+          "all",
+          "y",
+          [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "No hidden alpha-equivalence quotient replaces the exact declared fresh-name policy.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "exact capture-safe universal-instantiation implication",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "ui-wrong-literal-fresh-suffix",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "fresh1",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ],
+                    [
+                      "var",
+                      "fresh1"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "y"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "y"
+        ],
+        "target": [
+          "all",
+          "y",
+          [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "An inner binder equal to x stops substitution beneath it.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "ui-shadowed-binder-stops-substitution",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "x",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "c",
+              []
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "Closed wrong result cannot hide an undeclared replacement parameter.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "open-parameter universal instance scope",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "ui-foreign-replacement-parameter",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "w"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "UI",
+      "description": "Reject an atomic formula as the universal input.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "open-parameter universal instance scope",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "ui-nonuniversal-input",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "fun",
+              "c",
+              []
+            ],
+            "universal": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Generalization refers to an actually checked prior open row; no self-proving universal.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          [],
+          [],
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "status": "accept"
+      },
+      "id": "gen-genuine-unary",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 2,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "A variable need not occur in the prior formula, but an actual prior row is still required.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0,
+          1
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          [],
+          [
+            0
+          ]
+        ],
+        "status": "accept"
+      },
+      "id": "gen-vacuous-but-genuine-unary",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "closedP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 0,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Preserve both equal unused original hypotheses; ordinary weakening and freshness are distinct.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          [],
+          [],
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "status": "accept"
+      },
+      "id": "gen-unused-closed-duplicate-Gamma",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 2,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Reject a non-prior or Boolean source index.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "strict-prior ordered reference",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-self-source",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 3,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Reject a non-prior or Boolean source index.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "strict-prior ordered reference",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-future-source",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 4,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Reject a non-prior or Boolean source index.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "literal integer",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-bool-source",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": true,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "A first universal row cannot cite itself as its unary premise.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "strict-prior ordered reference",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-no-prior-source",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 0,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "An unused ambient hypothesis with free x still blocks generalization.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "generalization fresh for every original undischarged Gamma occurrence",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-unused-free-original-Gamma",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 2,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Duplicating the unused free-x hypothesis does not discharge either occurrence.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "generalization fresh for every original undischarged Gamma occurrence",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-duplicate-free-original-Gamma",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 2,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Universal output must use exactly the checked source formula.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "genuine unary universal introduction",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-wrong-unary-output",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 2,
+            "variable": "x"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gen",
+      "description": "Universal introduction variable must be a declared parameter.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "generalization fresh for every original undischarged Gamma occurrence",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "gen-undeclared-variable",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "name": "allP",
+            "rule": "axiom"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 2,
+            "variable": "y"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gamma",
+      "description": "Second equal original occurrence remains index 1; unused occurrence 0 and Q(c) remain in the original context.",
+      "expected": {
+        "consumed_original_occurrence_indices": [
+          1
+        ],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "assumption-duplicate-occurrence-one",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "Q",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gamma",
+      "description": "Ancestry consumes only the last assumption row, while the entire original Gamma remains preserved.",
+      "expected": {
+        "consumed_original_occurrence_indices": [
+          0
+        ],
+        "essential_rows": [
+          1
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          [],
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "assumption-unused-row-versus-original-context",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gamma",
+      "description": "Boolean occurrence is not an integer index.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "literal integer",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "assumption-bool-index",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": true,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gamma",
+      "description": "No synthetic extra original occurrence.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original indexed Gamma occurrence",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "assumption-outside-original-Gamma",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 2,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gamma",
+      "description": "Valid index alone cannot change its original formula.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original indexed Gamma occurrence",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "assumption-wrong-occurrence-formula",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "Q",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Gamma",
+      "description": "No hidden assumption in the empty original context.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original indexed Gamma occurrence",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "assumption-empty-Gamma",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Ordered antecedent and implication ports consume exact original occurrence indices.",
+      "expected": {
+        "consumed_original_occurrence_indices": [
+          0,
+          1
+        ],
+        "essential_rows": [
+          0,
+          1,
+          2
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          [],
+          [],
+          [
+            0,
+            1
+          ]
+        ],
+        "status": "accept"
+      },
+      "id": "mp-ordered-original-ports",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Full ordered ports are checked, never merged or replaced by a validity flag.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "ordered literal modus ponens",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "mp-swapped-ports",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": 1,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "implication": 0,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Full ordered ports are checked, never merged or replaced by a validity flag.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "strict-prior ordered reference",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "mp-self-implication",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "implication": 2,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Full ordered ports are checked, never merged or replaced by a validity flag.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "strict-prior ordered reference",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "mp-future-antecedent",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": 3,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Full ordered ports are checked, never merged or replaced by a validity flag.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "literal integer",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "mp-bool-reference",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": false,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Full ordered ports are checked, never merged or replaced by a validity flag.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "ordered literal modus ponens",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "mp-wrong-conclusion",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ],
+            "implication": 1,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "MP",
+      "description": "Full ordered ports are checked, never merged or replaced by a validity flag.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "ordered literal modus ponens",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "mp-shared-row-not-an-implication",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          },
+          {
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "index": 1,
+            "rule": "assumption"
+          },
+          {
+            "antecedent": 0,
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "implication": 0,
+            "rule": "mp"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Atomic predicate substitution is a zero-premise implication licence.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "eq-subst-predicate-atomic",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "h"
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Atomic equality template and nested function operands retain the exact literal output.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "eq-subst-equality-atomic",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "f",
+                    [
+                      [
+                        "fun",
+                        "c",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "f",
+                    [
+                      [
+                        "fun",
+                        "d",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "eq",
+              [
+                "fun",
+                "f",
+                [
+                  [
+                    "var",
+                    "h"
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "f",
+                [
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "f",
+                [
+                  [
+                    "fun",
+                    "d",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Equal operands and a vacuous atomic hole licence are permitted; no reflexivity inference is added.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "eq-subst-alias-vacuous-template",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "c",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Reject malformed hole, template, operand scope or output before accepting a word.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "atomic equality hole and declared open operand scope",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "eq-hole-is-declared-parameter",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "h"
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "h"
+        ],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Reject malformed hole, template, operand scope or output before accepting a word.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "atomic equality hole and declared open operand scope",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "eq-template-foreign-free-variable",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "h"
+                ],
+                [
+                  "var",
+                  "w"
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Reject malformed hole, template, operand scope or output before accepting a word.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "atomic equality hole and declared open operand scope",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "eq-operand-foreign-free-variable",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "var",
+              "w"
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "h"
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Reject malformed hole, template, operand scope or output before accepting a word.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "atomic equality hole and declared open operand scope",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "eq-nonatomic-template",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "h"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "h"
+                  ]
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "EqSubst",
+      "description": "Reject malformed hole, template, operand scope or output before accepting a word.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "exact atomic equality-substitution implication",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "eq-wrong-output",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "rule": "eq_subst",
+            "template": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "h"
+                ]
+              ]
+            ],
+            "variable": "h"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Axiom",
+      "description": "Named closed original axiom, no unregistered axiom or theorem discovery.",
+      "expected": {
+        "consumed_original_occurrence_indices": [],
+        "essential_rows": [
+          0
+        ],
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": [
+          []
+        ],
+        "status": "accept"
+      },
+      "id": "axiom-exact-closed-original",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "closedP",
+            "rule": "axiom"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Axiom",
+      "description": "Named axiom output is immutable.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "exact named original axiom",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "axiom-wrong-named-output",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "Q",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "closedP",
+            "rule": "axiom"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Axiom",
+      "description": "No synthetic axiom name.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "exact named original axiom",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "axiom-unknown-name",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "missing",
+            "rule": "axiom"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Model",
+      "description": "Validate every original named axiom as closed even when not needed by the command.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "every named original axiom closed",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "model-open-named-axiom",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "openP": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Model",
+      "description": "Boolean signature arity is not an integer.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "literal integer",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "model-bool-function-arity",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": true,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Model",
+      "description": "No induction schema can enter this six-rule checker.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "no induction or extra proof schema",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "model-unadmitted-schema",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": [
+            "nat-induction"
+          ]
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Model",
+      "description": "No hidden additional theory/sorted-language field.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "complete exact original theory",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "model-extra-theory-field",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": [],
+          "sorts": {
+            "Point": []
+          }
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Rules",
+      "description": "Reject rules outside the exact six-rule language.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "declared six primitive rules only",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "rule-reflexivity-unsupported",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "rule": "reflexivity"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Rules",
+      "description": "Reject rules outside the exact six-rule language.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "declared six primitive rules only",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "rule-induction-unsupported",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "rule": "induction"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Rules",
+      "description": "Reject rules outside the exact six-rule language.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "declared six primitive rules only",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "rule-opaque-unsupported",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "rule": "opaque"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Rules",
+      "description": "Primitive field completeness prevents hidden alternate references.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "exact primitive command fields",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "rule-extra-command-field",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "closedP",
+            "rule": "axiom",
+            "source": 0
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Syntax",
+      "description": "A raw AST with an undeclared function cannot enter Gamma.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "declared function and exact arity",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "signature-undeclared-constant",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "missing",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Syntax",
+      "description": "Exact predicate arity is checked on the original context.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "declared predicate and exact arity",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "signature-wrong-predicate-arity",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ],
+              [
+                "fun",
+                "d",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Syntax",
+      "description": "Repeated parameter name is not a second declaration.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "distinct parameters",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "parameters-duplicate",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "closedP",
+            "rule": "axiom"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [
+          "x",
+          "x"
+        ],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Target",
+      "description": "A valid last row does not certify another declared target.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "final conclusion is the exact original target",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "target-exact-final-formula",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "name": "closedP",
+            "rule": "axiom"
+          }
+        ],
+        "original_Gamma": [],
+        "parameters": [],
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "allP": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "closedP": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Target",
+      "description": "This word API accepts closed exact final targets, not arbitrary open targets.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "closed exact final target",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "target-open-not-supported",
+      "wire": {
+        "commands": [
+          {
+            "formula": [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "index": 0,
+            "rule": "assumption"
+          }
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "parameters": [
+          "x"
+        ],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "check_primitive_word",
+      "category": "Word",
+      "description": "A nonempty whole word is required even when original Gamma contains the target.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "complete nonempty primitive word",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "word-empty-is-not-proof",
+      "wire": {
+        "commands": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "P",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "parameters": [],
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "c",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {},
+          "functions": {
+            "c": 0,
+            "d": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 2
+          },
+          "schemas": []
+        }
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": null,
+        "message_contains": null,
+        "ordered_prior_rows": null,
+        "status": "accept"
+      },
+      "id": "boundary-normal",
+      "wire": {
+        "operation": "normal"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "Unresolved",
+        "message_contains": "exceeded its deadline",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-expired",
+      "wire": {
+        "operation": "expired_deadline"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "finite absolute deadline",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-bool-deadline",
+      "wire": {
+        "deadline_literal": true,
+        "operation": "invalid_deadline"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "unchanged visit ceiling",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-bool-visits",
+      "wire": {
+        "maximum_visits": true,
+        "operation": "invalid_visits"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "unchanged visit ceiling",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-zero-visits",
+      "wire": {
+        "maximum_visits": 0,
+        "operation": "invalid_visits"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "unchanged visit ceiling",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-excess-visits",
+      "wire": {
+        "maximum_visits": 5000001,
+        "operation": "invalid_visits"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "Unresolved",
+        "message_contains": "work unfinished",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-visit-exhaustion",
+      "wire": {
+        "maximum_visits": 1,
+        "operation": "visit_exhaustion",
+        "tick_count": 2
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original delegated authority/default/closure changed",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-callback-code-mutation",
+      "wire": {
+        "operation": "callback_code"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original delegated authority/default/closure changed",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-callback-default-mutation",
+      "wire": {
+        "operation": "callback_defaults"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original delegated authority/default/closure changed",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-callback-keyword-default-mutation",
+      "wire": {
+        "operation": "callback_kwdefaults"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original delegated authority/default/closure changed",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-callback-closure-mutation",
+      "wire": {
+        "operation": "callback_closure"
+      }
+    },
+    {
+      "api": "Boundary",
+      "category": "NONLOGICAL_BOUNDARY",
+      "description": "Prospective direct Boundary mechanics on an invented callback; never an inference or theorem.",
+      "expected": {
+        "consumed_original_occurrence_indices": null,
+        "essential_rows": null,
+        "exception": "ValueError",
+        "message_contains": "original delegated authority/default/closure changed",
+        "ordered_prior_rows": null,
+        "status": "reject"
+      },
+      "id": "boundary-callback-identity-mutation",
+      "wire": {
+        "operation": "callback_identity"
+      }
+    }
+  ],
+  "no_Q_target_route": true,
+  "no_donor_words": true,
+  "schema": "complete-unrelated-six-rule-word-fixture-declaration-v1",
+  "scientific_calls": 0,
+  "scope": "Literal small predicate/equality words and nonlogical Boundary cases, unrelated to arithmetic Q; manual control declarations, not discovered theorems.",
+  "source_only": true,
+  "tests_executed": 0
+}

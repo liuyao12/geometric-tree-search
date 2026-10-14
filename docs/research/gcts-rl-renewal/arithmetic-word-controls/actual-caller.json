@@ -1,0 +1,22 @@
+{
+  "schema": "ROOT-unrelated-word-controls-actual-tool-observations-v1",
+  "started_ms": 1792002131103,
+  "terminal_observed_ms": 1792002135179,
+  "launch": {
+    "chunk_id": "aaf2ca",
+    "wall_time_seconds": 0.836406875,
+    "exit_code": 0,
+    "original_token_count": 106,
+    "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 0.918069458, \"peak_bytes\": 42516480, \"worker_receipt\": \".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/ROOT-terminal-v1.json\"}\n"
+  },
+  "polls": [],
+  "terminal": {
+    "chunk_id": "aaf2ca",
+    "wall_time_seconds": 0.836406875,
+    "exit_code": 0,
+    "original_token_count": 106,
+    "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": true, \"elapsed_seconds\": 0.918069458, \"peak_bytes\": 42516480, \"worker_receipt\": \".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-result-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": \".gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/ROOT-terminal-v1.json\"}\n"
+  },
+  "actual_invocations": 1,
+  "clock_scope": "Date.now request through terminal observation in one awaited isolate; plus separate one-second finishing reserve."
+}
