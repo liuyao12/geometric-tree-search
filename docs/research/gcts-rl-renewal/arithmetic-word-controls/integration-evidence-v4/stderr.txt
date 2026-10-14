@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py", line 1778, in <module>
+    main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py", line 1386, in main
+    observer=call_fn(construct_owned,'observer',registration=handles,guarded_call=call_fn,
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py", line 1198, in call
+    result=function(*args,**kwargs)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py", line 538, in construct_owned
+    returned=original_call(initializer,obj,*arguments,**keywords)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py", line 1198, in call
+    result=function(*args,**kwargs)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py", line 387, in __init__
+    invoke_fn(allocation_validate, allocation_validate_anchor, index, recipe)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py", line 122, in invoke
+    result = function(*args, **kwargs)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py", line 374, in allocation_validate
+    invoke_fn(allocation_guard, callback_anchor, index=index, recipe=recipe)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py", line 122, in invoke
+    result = function(*args, **kwargs)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py", line 939, in allocation_guard
+    raise TimeoutError('same allocation20/worker55/500 deadline or memory exhausted')
+TimeoutError: same allocation20/worker55/500 deadline or memory exhausted

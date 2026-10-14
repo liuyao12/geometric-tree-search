@@ -1,0 +1,135 @@
+{
+  "schema": "ROOT-Q-proof-neutral-optimized-allocation-timeout-reconciled-disposition-v1",
+  "author_identity": "/root",
+  "status": "UNKNOWN_optimized_initialization_shared20_timeout",
+  "scope": "proof-neutral-cold-Q-driver-controls-not-started",
+  "failure_account_reconciled": true,
+  "independent_saved_review_pending": false,
+  "ROOT_resource_accepted": false,
+  "ROOT_controls_qualified": false,
+  "all_controls_passed": false,
+  "target_searches": 0,
+  "target_proof_discovered": false,
+  "native_accepted": false,
+  "full24_accepted": false,
+  "full_trajectory_accepted": false,
+  "new_RL_training": false,
+  "completed_recipe_counter": null,
+  "phase_cost_breakdown": null,
+  "measured_speedup": false,
+  "observed_scope": "Complete traceback reaches original V3 observer initialization and factory4 local row-entry allocation guard. Prior stages/partial recipe work inferred only from exact Source flow; no completed controls/recipes census or accepted prefix.",
+  "metrics": {
+    "owned_elapsed_seconds": 20.465611292,
+    "owned_peak_bytes": 390774784,
+    "owned_peak_MiB": 372.671875,
+    "caller_seconds": 24.266,
+    "caller_finish_reserve_seconds": 1,
+    "worker_failure_only_seconds": 20.000453500000003,
+    "ownership_samples": 170,
+    "worker_returncode": 1,
+    "owner_command_exitcode": 0,
+    "all_owner_children_reaped": true,
+    "owned_leftovers": [],
+    "resource_true": 6,
+    "resource_false": 8
+  },
+  "actual_constructor_count": 1,
+  "actual_controls_attempts": 1,
+  "actual_source_worker_version": "allocation_v8",
+  "metadata_construction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/ROOT-construction-v1.json",
+    "sha256": "41778dc4bbfda8a796c12b5f6c6d68ce28a767c3eb07f0ba9ffd19c3da76f7c5",
+    "bytes": 11719
+  },
+  "worker_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/worker-plan-v1.json",
+    "sha256": "deddbefb4ca350b7d64ff86145bd4bf399a0f608b80150ecddc4864581451a46",
+    "bytes": 79784
+  },
+  "owner_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-plan-v1.json",
+    "sha256": "a5ccbc07c09388efd44943f2f5cdfc67f8c544cc4ed95d1ce9b5c1cb314a05da",
+    "bytes": 51632
+  },
+  "actual_caller": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "124871d6b4da81694c8b22575927850b24eb34135c452adbb71214aa04af0bae",
+    "bytes": 2733
+  },
+  "preserved_first_incompatible_caller_format": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-actual-tool-observations-incompatible-v1.json",
+    "sha256": "24eb30e884bb687ec4e18c00d04c60f4b0ce1cdca9324ffd41f87e3e2649ab73",
+    "bytes": 1851
+  },
+  "owner": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-owner-v1/provisional-terminal-v1.json",
+    "sha256": "e885039b24d19fc2579ff1411f5a27f8cc20e298d390ab1aaf130aced243b9a3",
+    "bytes": 1508
+  },
+  "postwrite": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "451f40d7c7a2dcde38ba2934b72c267923bb7a26de40cea95cd89a7ca7652b70",
+    "bytes": 595
+  },
+  "resource_qualification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "ad2e01bf07cf4514e91faa55407482d522465eb4f766cc1d35bd7de7c24334ba",
+    "bytes": 2663
+  },
+  "ownership_ledger": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+    "sha256": "c28a0c77058453eb377fb9b395ab5e7c518f2fe593adaea5bf0beb5a2354c2c2",
+    "bytes": 3145
+  },
+  "stderr": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/replay-owner-v1/stderr-v1.txt",
+    "sha256": "42e4e339b44137635c57f6a604afc58f3e0397982ff5654640c0ce6de6c751e3",
+    "bytes": 2746
+  },
+  "failure_output": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/worker-output-v1/Q-proof-neutral-controls-failure-v1.json",
+    "sha256": "b18a13ca9e54ed3f48004caaa15244e4f81a2fbea19c23c7fd7a843eeb9ff1fd",
+    "bytes": 581
+  },
+  "source": {
+    "worker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-observer-allocation-optimization-source-20261014/Q_proof_neutral_cold_controls_worker_allocation_v8.py",
+      "sha256": "6300b0a0b9980c88692123ae8700b97392d21b932ef680144f68fec0a28500f2",
+      "bytes": 139981
+    },
+    "driver": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426",
+      "bytes": 46691
+    }
+  },
+  "preserved_prior_attempts": 3,
+  "current_attempt_immutable": true,
+  "no_retry_or_budget_change": true,
+  "next": "Saved-only independent reconciliation; narrower allocation custody and actual phase evidence under new genuine Source reviews. No namespace rescue, model/grammar/clock trim or performance claim.",
+  "caller_wrapper_correction": "First caller JSON used alternative fieldnames. Original bytes preserved; generic closer input adds aliases from exact same-isolate Date.now and actual terminal result. Failed duplicate-file apply_patch changed nothing; normal update then closer ran once. No reconstructed or repeated actual invocation.",
+  "independent_saved_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-optimized-timeout-independent-20261014/findings-v1.json",
+    "sha256": "91d39629f8cc88e9f1b74b3945fe80d0512cf09e0596a2b7a11f4d9061c8a6ab",
+    "bytes": 1223773
+  },
+  "independent_saved_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-optimized-timeout-independent-20261014/handoff-v1.json",
+    "sha256": "5b3deef8bf3bca60a8256b29b5b8c983ef72d84d013a368b94a1c3f0c4c44042",
+    "bytes": 1112
+  },
+  "saved_reconciliation_counts": {
+    "literal_checks": 1362,
+    "raw_references": 969,
+    "complete_paths": 221,
+    "ownership_samples": 170,
+    "leaf_raw_closure": 209,
+    "owner_raw_closure": 210
+  },
+  "Root_reauthentication": "All1362 literaltrue outcomes and969 raw references to221 complete canonical paths independently rehashed; saved same-isolate caller/170 ledger samples remain genuine. Saved account only, not source/science replay or resource acceptance.",
+  "preserved_provisional": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/ROOT-provisional-optimized-allocation-timeout-disposition-v1.json",
+    "sha256": "638149c81400fde68b03e9146ed21cbfde48a69159b8ae18cfdc1362d61c83d6",
+    "bytes": 6411
+  }
+}

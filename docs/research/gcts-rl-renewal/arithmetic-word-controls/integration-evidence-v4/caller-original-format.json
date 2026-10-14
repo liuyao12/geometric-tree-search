@@ -1,0 +1,61 @@
+{
+  "schema": "ROOT-proof-neutral-controls-actual-caller-observations-v1",
+  "namespace": ".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014",
+  "started_at_unix_ms": 1792018571944,
+  "ended_at_unix_ms": 1792018596210,
+  "caller_seconds": 24.266,
+  "finish_reserve_seconds": 1,
+  "cancelled_at_final_print": false,
+  "observations": [
+    {
+      "method": "exec_command",
+      "result": {
+        "chunk_id": "fae44e",
+        "wall_time_seconds": 1.001620625,
+        "session_id": 65654,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "method": "write_stdin",
+      "result": {
+        "chunk_id": "426d1e",
+        "wall_time_seconds": 5.0019515,
+        "session_id": 65654,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "method": "write_stdin",
+      "result": {
+        "chunk_id": "b70325",
+        "wall_time_seconds": 5.001026625,
+        "session_id": 65654,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "method": "write_stdin",
+      "result": {
+        "chunk_id": "4a48c6",
+        "wall_time_seconds": 5.002149375,
+        "session_id": 65654,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "method": "write_stdin",
+      "result": {
+        "chunk_id": "b2e218",
+        "wall_time_seconds": 4.349820667,
+        "exit_code": 0,
+        "original_token_count": 83,
+        "output": "{\"stage\": \"replay\", \"resource_gate_accepted\": false, \"elapsed_seconds\": 20.465611292, \"peak_bytes\": 390774784, \"worker_receipt\": \".gcts-active/arithmetic-Q-first-proof-neutral-cold-controls-progress-v4-20261014/worker-output-v1/Q-proof-neutral-controls-worker-receipt-v1.json\", \"cancelled_at_final_print\": false, \"terminal\": null}\n"
+      }
+    }
+  ]
+}

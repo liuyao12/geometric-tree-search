@@ -3,7 +3,7 @@
   "presentation_only": true,
   "Source_only": true,
   "driver_source_review": "conditional_current_driver_API_only",
-  "status": "cold_factory_and_worker_integration_review_pending",
+  "status": "optimized_controls_attempt_UNKNOWN_after_separate_cold_Source_review",
   "all_original_math_and_limits_preserved": true,
   "all15_non_initializer_callables_exact": true,
   "original_default_loop_exact": true,
@@ -39,5 +39,10 @@
     }
   },
   "current_failed_attempts_preserved": 3,
-  "meaning": "Static Source/API review only. Driver callback must belong to a separately reviewed literal cold factory; namespace identity alone cannot qualify it. Actual original full controls/resource closure remain required before automatic canonical proof search. Changed guard cadence is initializer-only and not retained for proof/checker/search. No asynchronous host or arbitrary-callback guarantee."
+  "meaning": "Static Source/API review only. Driver callback must belong to a separately reviewed literal cold factory; namespace identity alone cannot qualify it. Actual original full controls/resource closure remain required before automatic canonical proof search. Changed guard cadence is initializer-only and not retained for proof/checker/search. No asynchronous host or arbitrary-callback guarantee.",
+  "actual_optimized_attempts": 1,
+  "actual_control_calls": 0,
+  "actual_proof_searches": 0,
+  "latest_failure": "../integration-evidence-v4/disposition.json",
+  "prior_driver_snapshot_scope": "Driver Source API only; current cold caller/factory separately reviewed and executed once, initialization timed out. No fit, controls or proof acceptance."
 }
