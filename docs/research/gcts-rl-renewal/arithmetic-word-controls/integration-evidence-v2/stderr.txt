@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 1463, in <module>
+    main()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 1035, in main
+    handles['object_anchors']['graph']=call_fn(endpoint_anchor,graph)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 865, in call
+    cb_fn(inner=True)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 856, in checked_boundary
+    boundary_fn(inner=inner)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 847, in boundary
+    invoke_fn(); checked_tick(inner=inner)
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 835, in invoke_guard
+    guard_fn()
+  File "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-cold-controls-worker-source-20261014/Q_proof_neutral_cold_controls_worker_v3.py", line 795, in source_guard
+    check_endpoint(obj,handles['object_anchors'][name])
+KeyError: 'graph'
