@@ -1,0 +1,159 @@
+{
+  "ROOT_advice_admission": false,
+  "ROOT_complete_finite_extraction_and_ground_audit_accepted": true,
+  "ROOT_library_admitted": false,
+  "actual_candidate_library": {
+    "bytes": 85344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+    "sha256": "08e75860545d3e0248e99c36858b0ca25d1bcbb1c7ad01b3cd2d332d51149e07"
+  },
+  "actual_evidence": {
+    "bytes": 4731,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/extraction-evidence-v1.json",
+    "sha256": "f16ecf40232eb2d567c40e1fdb2847f42090ee105fd3a514b41fcdadab74ae15"
+  },
+  "actual_independent_audit": {
+    "bytes": 41490,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+    "sha256": "55a9e8c2a4df287da9dbc2c72c42c4b13de520e6eafb02bd61124919b5ee22be"
+  },
+  "actual_resource_gate": {
+    "bytes": 2806,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "3bf9d8264268f4e1e36b9a49ffc2e1329d08bd09a74dc336801827f588cdfea6"
+  },
+  "actual_result": {
+    "bytes": 1812,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/extraction-result-v1.json",
+    "sha256": "d17202adbd2a59cd924a62eafdbe02bcb0219665b278eeef7ad254b7e0dabc25"
+  },
+  "actual_scientific_invocations": 1,
+  "actual_worker": {
+    "bytes": 5767,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/worker-receipt-v1.json",
+    "sha256": "90bf1c79410fa08984ad5dfb297f502533c5737b79734c8129bb019076c03dde"
+  },
+  "author_identity": "/root",
+  "costs": {
+    "caller_finish_margin_seconds": 1,
+    "caller_seconds": 7.269,
+    "extraction_call_seconds": 1.389963166,
+    "independent_audit_call_seconds": 2.030872292,
+    "inner_complete_seconds": 3.47836075,
+    "owned_seconds": 3.636048541,
+    "peak_bytes": 70893568
+  },
+  "counts": {
+    "all_command_roots": 27,
+    "derivations": 3,
+    "distinct_correlated_sequents": 2,
+    "eligible_bodies": 4,
+    "families": 2,
+    "independent_metrics": {
+      "catalogues_completed": 2,
+      "catalogues_started": 2,
+      "certificate_proofs_completed": 3,
+      "certificate_proofs_started": 3,
+      "command_roots_completed": 27,
+      "command_roots_started": 27,
+      "complete_DAG_nodes": 10296,
+      "complete_formula_codes": 10224,
+      "complete_license_lines": 5842,
+      "complete_recipe_interfaces": 5842,
+      "exact_catalogue_cache_reuses": 1,
+      "open_ground_bodies_completed": 4,
+      "open_ground_bodies_started": 4,
+      "point_unions_completed": 3,
+      "point_unions_started": 3,
+      "primitive_commands_completed": 5842,
+      "primitive_commands_started": 5842
+    }
+  },
+  "full24_board_accepted": false,
+  "full_trajectory_accepted": false,
+  "native_accepted": false,
+  "new_RL_training": false,
+  "new_theorems": 0,
+  "original_training_specification": {
+    "bytes": 8340,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+    "sha256": "de34653e96673e080c65a6c17fad3cc24cfb00ab0043fdc11c9741e6708f382c"
+  },
+  "plane_tiling_accepted": false,
+  "recipient_proofs": 0,
+  "resource_predicates": {
+    "actual_tool_terminal": true,
+    "all_owner_direct_children_closed": true,
+    "all_worker_direct_children_closed": true,
+    "caller_clock_bound": true,
+    "cancelled_at_final_print_false": true,
+    "complete_post_closure_unchanged": true,
+    "final_print_gate": true,
+    "no_owned_leftovers": true,
+    "owner_gate": true,
+    "owner_terminal_link_present": true,
+    "post_write_exact_terminal": true,
+    "post_write_gate": true,
+    "stage_identity": true,
+    "worker_complete": true
+  },
+  "saved_metadata_reconciliation_only": true,
+  "schema": "ROOT-actual-complete-Incident-family-extraction-disposition-v1",
+  "scope": "Actual finite source-bound extraction and independent full-root/current-union/ground-body checks accepted. Ground exposed receptors are local hypotheses, not universally quantified lemma validity. Candidate inventory is not yet admitted; no recipient or speed comparison has run.",
+  "semantic_replay": false,
+  "sources": {
+    "auditor": {
+      "bytes": 46305,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-independent-source-20261014/independent_Incident_family_audit_v1.py",
+      "sha256": "739e25b0f7f13ce2aa103cd3404b5d623d3f0ef3068589177c39f5930d10a06c"
+    },
+    "compact_decoder": {
+      "bytes": 14720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+    },
+    "compact_graph": {
+      "bytes": 42946,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    "dynamic_graph": {
+      "bytes": 35568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "family": {
+      "bytes": 61070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "sha256": "de5f58e4fff4ac62155bffba406f10488f32be665dfa0254ebb2e3a8d421a7e3"
+    },
+    "logical_oracle": {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "point_core": {
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    "reader": {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "worker": {
+      "bytes": 27650,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-source-20261014/family_extraction_worker_v2.py",
+      "sha256": "7fefb833e3f2663b4ca0d76ff2a5f0dc31d2220f8a0e5bd8bb795878242703c1"
+    }
+  },
+  "universal_compiler_accepted": false,
+  "universal_schema_validity_accepted": false,
+  "whole_named_closure_paths": 38
+}

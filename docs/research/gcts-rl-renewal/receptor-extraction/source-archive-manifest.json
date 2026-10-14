@@ -1,0 +1,650 @@
+{
+  "member_count": 107,
+  "project_members": [
+    {
+      "bytes": 14720,
+      "member": ".gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "scope": "exact activated named input closure",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+    },
+    {
+      "bytes": 3983,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/I2-recipient-bindings-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "92eeeb7dbac6b6a228e509abb79b4193c83eae9a97303404b1e403ccbf4f21fb"
+    },
+    {
+      "bytes": 61070,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/equality_receptor_family_I2_v2.py",
+      "scope": "exact activated named input closure",
+      "sha256": "de5f58e4fff4ac62155bffba406f10488f32be665dfa0254ebb2e3a8d421a7e3"
+    },
+    {
+      "bytes": 7249,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/handoff-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "e6b783f6dceaf6b2f567fdd2573d164d992e7d7944f8c0df8a753c73d6863706"
+    },
+    {
+      "bytes": 1898,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/recipient-control-request-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "af46ab7643e310eb8914cb90e1e386fdceee4f76a1083ff6a1f097094fcc2081"
+    },
+    {
+      "bytes": 12287,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/source-contract-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "78ac75e5464d5e3d2c05233b36de31b8caeb950ce49a5672bdc08fad544f0a37"
+    },
+    {
+      "bytes": 10724,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/source-delta-v2.patch",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "63bcc63017852568ea3a442adb853ceca3a35f5cc50178c7e99a8aa7a86a23ce"
+    },
+    {
+      "bytes": 1224,
+      "member": ".gcts-active/equality-receptor-family-I2-recipient-source-20261014/source-static-delta-checks-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "e69f778e5fd82d187c1539a2a4212b4654efef599684ed38c5f498b1dd357857"
+    },
+    {
+      "bytes": 6721,
+      "member": ".gcts-active/equality-receptor-family-ROOT-source-20261014/build_extraction_plans_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "f0d35a35d1e5b304f31f1d59a03b0ddda02a2168954b205fb9a7f0e73ec011cd"
+    },
+    {
+      "bytes": 6063,
+      "member": ".gcts-active/equality-receptor-family-ROOT-source-20261014/close_extraction_math_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "7420e6972c51980323790214e4f7a2b207a1c018d490acdb846684c4dda39b12"
+    },
+    {
+      "bytes": 22928,
+      "member": ".gcts-active/equality-receptor-family-design-20261013/design-v2.json",
+      "scope": "exact activated named input closure",
+      "sha256": "7c6330645c1f00234cfef5062ff549687e9a21d40b391a53965186abc5f1fa87"
+    },
+    {
+      "bytes": 4025,
+      "member": ".gcts-active/equality-receptor-family-design-20261013/handoff-v2.json",
+      "scope": "exact activated named input closure",
+      "sha256": "579819dfdd13d4a1b415bb33d3b940a309049be1017dc9f2889fe2a22d7df340"
+    },
+    {
+      "bytes": 7879,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "757606d7a20048e5a8335559c96cf1749e1ab53f900bdff593fb10beeed8a173"
+    },
+    {
+      "bytes": 6628,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-source-review-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "ab89c07a559e4b42b2fcfa7aa1cf3f624ba01964333209593c3ce456bbb666bd"
+    },
+    {
+      "bytes": 4752,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/close_stage_decision_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "9fe3a327bf47fe4694a647e313a718e391f780f72160e3916d0d2fcffa16b7bf"
+    },
+    {
+      "bytes": 2806,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-ROOT-final-decision-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "3bf9d8264268f4e1e36b9a49ffc2e1329d08bd09a74dc336801827f588cdfea6"
+    },
+    {
+      "bytes": 1734,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-actual-tool-observations-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "291f5585fcb3b477c743c3d20a4c1c19e2296c7d8136818c7f6900619d50d369"
+    },
+    {
+      "bytes": 1730,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/ROOT-terminal-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "21ad59c12f216242c72d3f46175ad7366c08290060c6268a6706dc1a255de376"
+    },
+    {
+      "bytes": 1213,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/launch-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "bcb4f906b083a14ba00598d7dd129565464e3c47a7bb6f0028ffdbd98fb62f20"
+    },
+    {
+      "bytes": 1023,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/owned-ownership-ledger-v1.json.gz",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "527712d1f04a15d8699351b99ac569ba0c9d592dcf6aede234f58d226705e822"
+    },
+    {
+      "bytes": 799,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/post-write-observation-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "3f90177be5c24a4551985ae92159a69708894befa6d848bc993a68d0fd09f89f"
+    },
+    {
+      "bytes": 1730,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/provisional-terminal-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "21ad59c12f216242c72d3f46175ad7366c08290060c6268a6706dc1a255de376"
+    },
+    {
+      "bytes": 0,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/stderr-v1.txt",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 466,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-owner-v1/stdout-v1.txt",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "2a283c0ea37fc7c97a53414db4636ef950f13aaebcc1eb0ca5dd0d6fca345fba"
+    },
+    {
+      "bytes": 12595,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/replay-plan-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "804704e591aedc46b430368446f1c8335d637f834c68702c135d9d5a7802a18c"
+    },
+    {
+      "bytes": 14639,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/run_owned_bridge_v2.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "2df179c4d500ba17ee832dd7dafb7a43e3fa2f2c171d5b745bfe448275fc1656"
+    },
+    {
+      "bytes": 85344,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/candidate-library-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "08e75860545d3e0248e99c36858b0ca25d1bcbb1c7ad01b3cd2d332d51149e07"
+    },
+    {
+      "bytes": 4731,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/extraction-evidence-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "f16ecf40232eb2d567c40e1fdb2847f42090ee105fd3a514b41fcdadab74ae15"
+    },
+    {
+      "bytes": 1812,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/extraction-result-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "d17202adbd2a59cd924a62eafdbe02bcb0219665b278eeef7ad254b7e0dabc25"
+    },
+    {
+      "bytes": 41490,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/independent-all-origin-audit-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "55a9e8c2a4df287da9dbc2c72c42c4b13de520e6eafb02bd61124919b5ee22be"
+    },
+    {
+      "bytes": 85344,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/provisional-output-v1/candidate-library-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "08e75860545d3e0248e99c36858b0ca25d1bcbb1c7ad01b3cd2d332d51149e07"
+    },
+    {
+      "bytes": 4731,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/provisional-output-v1/extraction-evidence-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "f16ecf40232eb2d567c40e1fdb2847f42090ee105fd3a514b41fcdadab74ae15"
+    },
+    {
+      "bytes": 1812,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/provisional-output-v1/extraction-result-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "d17202adbd2a59cd924a62eafdbe02bcb0219665b278eeef7ad254b7e0dabc25"
+    },
+    {
+      "bytes": 41490,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/provisional-output-v1/independent-all-origin-audit-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "55a9e8c2a4df287da9dbc2c72c42c4b13de520e6eafb02bd61124919b5ee22be"
+    },
+    {
+      "bytes": 5767,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/provisional-worker-receipt-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "90bf1c79410fa08984ad5dfb297f502533c5737b79734c8129bb019076c03dde"
+    },
+    {
+      "bytes": 5767,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-output-v1/worker-receipt-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "90bf1c79410fa08984ad5dfb297f502533c5737b79734c8129bb019076c03dde"
+    },
+    {
+      "bytes": 16618,
+      "member": ".gcts-active/equality-receptor-family-extraction-progress-20261014/worker-plan-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "42fc1cf274000bf03cb031b9a24fbcefee2078a255f20b1aa2ecd54f14155094"
+    },
+    {
+      "bytes": 291,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/author-metadata-assembly-note-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "df7cfe7e8903b849bb87fe71232e2ca93bf0bcbf38f19dc1eff5e4b3e49932ee"
+    },
+    {
+      "bytes": 1404,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/draft-static-notes-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "a9d80d85896a91feb42475479311a38e4969190d3c058b4dad6f3ba0fda14016"
+    },
+    {
+      "bytes": 8354,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/draft-to-frozen-v1.patch",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "51452913253e743e040edc4e61fbaaee308155728e83248ba507765ee9cb95ae"
+    },
+    {
+      "bytes": 24322,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/family_extraction_worker_draft_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "19b10da870aec0340d56abbb543388337a6e9bbdd0032a26af774283642fb754"
+    },
+    {
+      "bytes": 24607,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/family_extraction_worker_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "804a09ea8039c00ac4aebf1fdead7be33e62ef57162b01686cc818333ca11e26"
+    },
+    {
+      "bytes": 27650,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/family_extraction_worker_v2.py",
+      "scope": "exact activated named input closure",
+      "sha256": "7fefb833e3f2663b4ca0d76ff2a5f0dc31d2220f8a0e5bd8bb795878242703c1"
+    },
+    {
+      "bytes": 6469,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/handoff-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "511fb7424a7c9bc59789f897b54eaed7c6f9d3fa64b2b9a8047adc5c0ea07a10"
+    },
+    {
+      "bytes": 7280,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/handoff-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "0bc4f483c1bcb6ac430e6862d8d8ff06f12e9c159ce31c442efd8f1e59c7166e"
+    },
+    {
+      "bytes": 5809,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/independent-auditor-source-findings-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "971abae8fcaecb309918da12c622a2b5f1b84d46cc8e11454c27a3d564dd3a2f"
+    },
+    {
+      "bytes": 6815,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/report-source-findings-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "611efe4da3aa30356f4be368f516c58193a78103c02927bbc0929466bfff845b"
+    },
+    {
+      "bytes": 19592,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/source-contract-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "4901a4a6887dbeecba15a11279bf94bd394a67f7368dff15b14154d24b7cb1be"
+    },
+    {
+      "bytes": 20510,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/source-contract-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "82821db1e0dbd5d6681de7ebf73c913bd9403e0dd433527b559203cc6521419b"
+    },
+    {
+      "bytes": 1820,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/source-static-checks-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "bf9ebfcc8c5d352653d08f3ee8a9ac6b8c4cfbfde27c9a508ea3cc4ba8001f5f"
+    },
+    {
+      "bytes": 1537,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/source-static-checks-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "66fc19633ebe3a7a8b05cc5fa49b948974c55057cab17c8c1b683151993e39cd"
+    },
+    {
+      "bytes": 7831,
+      "member": ".gcts-active/equality-receptor-family-extraction-source-20261014/worker-v1-to-v2.patch",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "8067e83ae51d08d3448f5e71a6a6639017bb7b66a0140403703f74afe1a59313"
+    },
+    {
+      "bytes": 8340,
+      "member": ".gcts-active/equality-receptor-family-implementation-source-20261013/training-inputs-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "de34653e96673e080c65a6c17fad3cc24cfb00ab0043fdc11c9741e6708f382c"
+    },
+    {
+      "bytes": 586,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/auditor-code-freeze-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "44e8b4053a99a4b1182908363de77a76ca85466a7fdab2fc2957596110020db5"
+    },
+    {
+      "bytes": 2086,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/auditor-handoff-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "01fba762c8bea63294f6ec0547ceb3b38e04c0edca4ab4252330063613ca423c"
+    },
+    {
+      "bytes": 8549,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/auditor-source-contract-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "4c4b6b425f0424b5b17da88e3a60d65c09b5e6df8662f70c89c2a0383f57aa60"
+    },
+    {
+      "bytes": 15133,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/auditor-source-static-checks-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "15b8531a1d3e023bbdaa09becf08e2aec24656b34384447f4157fc69b12b3bd1"
+    },
+    {
+      "bytes": 235273,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-actual-saved-findings-v1.json",
+      "scope": "declared actual evidence pin",
+      "sha256": "ebba366615a1e5ce96028dcad0dd5c819d9b82564545d004a937f44b12e577b4"
+    },
+    {
+      "bytes": 826,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-actual-saved-review-handoff-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "bd0aa3f6b25cb6d71a0648db45262c7b1d7ddc8cf098f667b20fbfbd8798cca2"
+    },
+    {
+      "bytes": 761,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-review-handoff-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "d7d54a394ae8cfdc3d987dfbe0cd13d178a98fa357eaf80bf176c557c67f2fd2"
+    },
+    {
+      "bytes": 3788,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-review-handoff-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "307346c09cb27b278f15c37269f87060a5bfdc7bb96a1ad0722fd8884074892c"
+    },
+    {
+      "bytes": 722,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-review-line-clarification-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "2b15ad41f5ceaaa84c9e21a901bd51c446c81bb79cca0358a33a44aa949233aa"
+    },
+    {
+      "bytes": 40039,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-source-findings-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "12d16b83378abb2f0f49cc6b0d3d264106e8177693ea716af67b99cd68e542d6"
+    },
+    {
+      "bytes": 40736,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-source-findings-v2.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "543a1e0782ede4c6f763e4dd0d7d23cf8bc83eb45be42d1f34cd1a1ef50ff12c"
+    },
+    {
+      "bytes": 5396,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-source-review-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "e9dede1e09a18ff99e3eebe0cb3dae64f01e473f8f55cf2fde5afb2981ed190b"
+    },
+    {
+      "bytes": 5353,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/extraction-worker-source-review-v2.json",
+      "scope": "exact activated named input closure",
+      "sha256": "ace8aae6e4fbbe534ce018cb9253fdcd565362ccd659f44c5888aa20f3790e72"
+    },
+    {
+      "bytes": 46305,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/independent_Incident_family_audit_v1.py",
+      "scope": "exact activated named input closure",
+      "sha256": "739e25b0f7f13ce2aa103cd3404b5d623d3f0ef3068589177c39f5930d10a06c"
+    },
+    {
+      "bytes": 3434,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/integration-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "a411ebe8c3cefcde5beee4e45afee700a7737ed5f01278052ec06a3a3492fc46"
+    },
+    {
+      "bytes": 16097,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/prepare_auditor_source_metadata_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "7549ab93359b37f5c6a872bfd6c92ca7fa8dd6edf4d90863732fc1eb046ff8d1"
+    },
+    {
+      "bytes": 4252,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/prospective-negative-controls-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "0affcd7dede9c13e3481dc9429c59fd0ab7b25fa3551ba08a3464caa9167ddf5"
+    },
+    {
+      "bytes": 827,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/receiver-review-handoff-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "7117d2a8895efb64562e611155e6b28817ce69db6d91c54a2469217c24331bb7"
+    },
+    {
+      "bytes": 35166,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/receiver-source-findings-v1.json",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "804ff6173ed0f47c0f77167508ec29676020e277402a9eb314e73c734ea9e4c9"
+    },
+    {
+      "bytes": 26125,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/reconcile_extraction_actual_saved_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "1ac9a5559740691f0d906823c711c25041ea4591a92fd55cbae9d1324a23fed8"
+    },
+    {
+      "bytes": 8120,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/review_extraction_worker_source_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "4ce03379b177deab13b1a5cc5a7613ff700c7cfc300e8c6085e4c4b19b88e6e9"
+    },
+    {
+      "bytes": 8583,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/review_extraction_worker_source_v2.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "3da3ec6b73e57d291edec7ce51776f37a10acbca0bde66f006de4a2fa11d002d"
+    },
+    {
+      "bytes": 7674,
+      "member": ".gcts-active/equality-receptor-family-independent-source-20261014/review_receiver_source_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "1efc12befbb718efd6a2c454b8a487bd26645838eaa7ad0a4d4afb2c135f81c9"
+    },
+    {
+      "bytes": 6440,
+      "member": ".gcts-active/equality-receptor-family-report-source-20261014/build_report_v1.py",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "819f09655345f3824e93eb3d1df7f7fe50564bd33470790e53446b679cb7ae76"
+    },
+    {
+      "bytes": 8338,
+      "member": ".gcts-active/equality-receptor-family-report-source-20261014/reader.html",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "597d739ff7d1aad3bebcba5ffe0b4ca3d90a87c55267a32b3480f75d06c0df4f"
+    },
+    {
+      "bytes": 9467,
+      "member": ".gcts-active/equality-receptor-family-report-source-20261014/viewer.js",
+      "scope": "fresh task Source/history snapshot",
+      "sha256": "b66cc97cb1001b221a45ac4d99cb5752804313ead278513e9752fc8295b48467"
+    },
+    {
+      "bytes": 18027,
+      "member": ".gcts-active/fresh-equality-first-proof-ROOT-source-20261013/ROOT-actual-first-checked-geometry-proofs-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "a751d1806904489160b1b286aa2fedb10ba55044546db15b7dc196a7197e6513"
+    },
+    {
+      "bytes": 4212,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040"
+    },
+    {
+      "bytes": 21797,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+    },
+    {
+      "bytes": 83892,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/result-v1.json.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "66cec6557aa27b17f1fe8eedb4a054a0a4c51c4a40beda811e49549f25beb962"
+    },
+    {
+      "bytes": 4340,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d"
+    },
+    {
+      "bytes": 19085,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+    },
+    {
+      "bytes": 13604,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "a275d08666e2d7d13b513b24fd2f79cfbb6221feef7267748858c86de784487d"
+    },
+    {
+      "bytes": 10586,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+    },
+    {
+      "bytes": 4386,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863"
+    },
+    {
+      "bytes": 19193,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+    },
+    {
+      "bytes": 13626,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/result-v1.json.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "033d033bf5bf49dab669c0f69231840af81ddb6333b797b85872612d0ef1c528"
+    },
+    {
+      "bytes": 10652,
+      "member": ".gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+    },
+    {
+      "bytes": 64540,
+      "member": ".gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "scope": "exact activated named input closure",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    {
+      "bytes": 35568,
+      "member": ".gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "scope": "exact activated named input closure",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    {
+      "bytes": 245655,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf"
+    },
+    {
+      "bytes": 10822,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+    },
+    {
+      "bytes": 40896,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "scope": "exact activated named input closure",
+      "sha256": "f37cea0ca969311d4686531a0e6e06e5678c0e0d4c63ced2663ac375d2463a2d"
+    },
+    {
+      "bytes": 30933,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "947549298530a6343c28f5ad881c03a3333a9f73c9a7c9c9a8193adf7523311f"
+    },
+    {
+      "bytes": 443992,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/recipes-v1.bin",
+      "scope": "exact activated named input closure",
+      "sha256": "e4c8e5936ccc2b451c897d5785de916167181c2b0d43c27c21cffd5880f40f15"
+    },
+    {
+      "bytes": 245615,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "44f9fbf1700af9e4e8600c2c39d9a1aed12a80cd3d0a6a16496f347aa1c48425"
+    },
+    {
+      "bytes": 10870,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+      "scope": "exact activated named input closure",
+      "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+    },
+    {
+      "bytes": 40896,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/formulas-v1.u64le.bin",
+      "scope": "exact activated named input closure",
+      "sha256": "3637b49aee674e658dd1ed63b3b8023cb97a285e59f50bf31dc1dc1138e3cb80"
+    },
+    {
+      "bytes": 30998,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/nodes-v1.jsonl.gz",
+      "scope": "exact activated named input closure",
+      "sha256": "1ceb0db162fa68627ae89dc296425c1ab15dc0705f270b06a87c996518a2e084"
+    },
+    {
+      "bytes": 443992,
+      "member": ".gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/recipes-v1.bin",
+      "scope": "exact activated named input closure",
+      "sha256": "946a8a539c0270d8df597ba0a82309eae537450bc5c91b71707a5bcb35189c87"
+    },
+    {
+      "bytes": 24588,
+      "member": ".gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "scope": "exact activated named input closure",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    {
+      "bytes": 31300,
+      "member": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "scope": "exact activated named input closure",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    {
+      "bytes": 42946,
+      "member": ".gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "scope": "exact activated named input closure",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    {
+      "bytes": 21657,
+      "member": "docs/basic-tiling-algorithm.md",
+      "scope": "exact activated named input closure",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "runtime_binary_files_archived": false,
+  "schema": "notebook157-source-and-actual-evidence-archive-manifest-v1",
+  "scope": "Whole named activated input closure plus complete actual run, Source review/history and presentation sources. No consumer trial or semantic replay added."
+}

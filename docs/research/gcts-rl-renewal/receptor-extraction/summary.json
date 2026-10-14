@@ -1,0 +1,53 @@
+{
+  "completed": true,
+  "costs": {
+    "caller_finish_margin_seconds": 1,
+    "caller_seconds": 7.269,
+    "extraction_call_seconds": 1.389963166,
+    "independent_audit_call_seconds": 2.030872292,
+    "inner_complete_seconds": 3.47836075,
+    "owned_seconds": 3.636048541,
+    "peak_bytes": 70893568
+  },
+  "counts": {
+    "all_command_roots": 27,
+    "derivations": 3,
+    "distinct_correlated_sequents": 2,
+    "eligible_bodies": 4,
+    "families": 2,
+    "independent_metrics": {
+      "catalogues_completed": 2,
+      "catalogues_started": 2,
+      "certificate_proofs_completed": 3,
+      "certificate_proofs_started": 3,
+      "command_roots_completed": 27,
+      "command_roots_started": 27,
+      "complete_DAG_nodes": 10296,
+      "complete_formula_codes": 10224,
+      "complete_license_lines": 5842,
+      "complete_recipe_interfaces": 5842,
+      "exact_catalogue_cache_reuses": 1,
+      "open_ground_bodies_completed": 4,
+      "open_ground_bodies_started": 4,
+      "point_unions_completed": 3,
+      "point_unions_started": 3,
+      "primitive_commands_completed": 5842,
+      "primitive_commands_started": 5842
+    }
+  },
+  "independent_review": {
+    "bytes": 235273,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-independent-source-20261014/extraction-actual-saved-findings-v1.json",
+    "sha256": "ebba366615a1e5ce96028dcad0dd5c819d9b82564545d004a937f44b12e577b4"
+  },
+  "library_admitted": false,
+  "new_RL_training": false,
+  "new_theorems": 0,
+  "qualification": {
+    "bytes": 7879,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-extraction-progress-20261014/ROOT-actual-family-extraction-disposition-v1.json",
+    "sha256": "757606d7a20048e5a8335559c96cf1749e1ab53f900bdff593fb10beeed8a173"
+  },
+  "recipient_searches": 0,
+  "schema": "notebook157-complete-family-extraction-reader-summary-v1"
+}

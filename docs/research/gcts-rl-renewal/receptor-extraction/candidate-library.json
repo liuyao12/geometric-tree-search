@@ -1,0 +1,3394 @@
+{
+  "ROOT_inventory_admitted": false,
+  "calls": {
+    "certificate_ground_checks_completed": 3,
+    "certificate_ground_checks_started": 3
+  },
+  "complete_origin_census": [
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 0,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 1,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 2,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 3,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 4,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_has_no_second_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 5,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "outside_initial_Incident_body_scope"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 6,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 7,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "actual_selected",
+      "reason": "root_has_no_second_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "command_root": 8,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": true,
+      "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+      "origin": "actual_selected",
+      "reason": "eligible_Incident_transport"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 0,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 1,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 2,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 3,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 4,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 5,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_has_no_second_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 6,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "outside_initial_Incident_body_scope"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 7,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_has_no_second_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "command_root": 8,
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "eligible": true,
+      "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+      "origin": "completed_source_proposal",
+      "reason": "eligible_Incident_transport"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 0,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 1,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 2,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 3,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 4,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_not_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 5,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_has_no_second_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 6,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": false,
+      "origin": "completed_source_proposal",
+      "reason": "root_has_no_second_MP"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 7,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": true,
+      "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+      "origin": "completed_source_proposal",
+      "reason": "eligible_Incident_transport"
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "command_root": 8,
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "eligible": true,
+      "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+      "origin": "completed_source_proposal",
+      "reason": "eligible_Incident_transport"
+    }
+  ],
+  "correlated_sequents": {
+    "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2": [
+      {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      }
+    ],
+    "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4": [
+      {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      }
+    ]
+  },
+  "derivations": [
+    {
+      "certificate": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "independent_ground_check": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "origin": "actual_selected",
+      "original_commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "B",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "A",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "var",
+                "hole0"
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 5,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 6,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        }
+      ],
+      "original_keys": [
+        [
+          111,
+          0,
+          []
+        ],
+        [
+          168,
+          1,
+          []
+        ],
+        [
+          2735,
+          2,
+          []
+        ],
+        [
+          1746,
+          10,
+          []
+        ],
+        [
+          1558,
+          11,
+          [
+            1,
+            10
+          ]
+        ],
+        [
+          120,
+          12,
+          [
+            0,
+            11
+          ]
+        ],
+        [
+          1613,
+          13,
+          []
+        ],
+        [
+          2517,
+          14,
+          [
+            12,
+            13
+          ]
+        ],
+        [
+          2804,
+          23,
+          [
+            2,
+            14
+          ]
+        ]
+      ],
+      "original_ordered_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "certificate": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+      "independent_ground_check": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "origin": "completed_source_proposal",
+      "original_commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "A",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "var",
+                "hole0"
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "B",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 6,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        }
+      ],
+      "original_keys": [
+        [
+          111,
+          0,
+          []
+        ],
+        [
+          168,
+          1,
+          []
+        ],
+        [
+          2735,
+          2,
+          []
+        ],
+        [
+          1613,
+          3,
+          []
+        ],
+        [
+          1746,
+          4,
+          []
+        ],
+        [
+          1558,
+          5,
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          120,
+          6,
+          [
+            0,
+            5
+          ]
+        ],
+        [
+          2517,
+          7,
+          [
+            6,
+            3
+          ]
+        ],
+        [
+          2804,
+          8,
+          [
+            2,
+            7
+          ]
+        ]
+      ],
+      "original_ordered_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "certificate": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "consumed_original_occurrence_indices": [
+        0,
+        1,
+        2
+      ],
+      "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+      "independent_ground_check": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "origin": "completed_source_proposal",
+      "original_commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "v",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "w",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "v",
+            []
+          ],
+          "right": [
+            "fun",
+            "u",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "w",
+            []
+          ],
+          "right": [
+            "fun",
+            "v",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ]
+          ],
+          "implication": 6,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 7,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        }
+      ],
+      "original_keys": [
+        [
+          462,
+          0,
+          []
+        ],
+        [
+          634,
+          1,
+          []
+        ],
+        [
+          2837,
+          2,
+          []
+        ],
+        [
+          2296,
+          3,
+          []
+        ],
+        [
+          2445,
+          4,
+          []
+        ],
+        [
+          2619,
+          5,
+          [
+            0,
+            3
+          ]
+        ],
+        [
+          2627,
+          6,
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          2836,
+          7,
+          [
+            2,
+            6
+          ]
+        ],
+        [
+          2829,
+          8,
+          [
+            7,
+            5
+          ]
+        ]
+      ],
+      "original_ordered_Gamma": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ]
+    }
+  ],
+  "elapsed_seconds_before_final_guards": 1.383073333,
+  "families": [
+    {
+      "evidence": [
+        {
+          "ambient_original_ordered_Gamma": [
+            [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "body_command_indices": [
+            4,
+            6,
+            7
+          ],
+          "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+          "ordered_external_command_indices": [
+            1,
+            2
+          ],
+          "ordered_receptor_ancestor_rows": [
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "ordered_receptor_consumed_occurrences": [
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "origin": {
+            "certificate": {
+              "bytes": 19193,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+              "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+            },
+            "command_root": 7,
+            "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+            "eligible": true,
+            "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+            "origin": "completed_source_proposal",
+            "reason": "eligible_Incident_transport"
+          },
+          "original_parameters": {
+            "s": [
+              "fun",
+              "w",
+              []
+            ],
+            "t": [
+              "fun",
+              "v",
+              []
+            ],
+            "u": [
+              "fun",
+              "D",
+              []
+            ]
+          },
+          "shape": {
+            "input_receptors": [
+              [
+                "eq",
+                [
+                  "meta-term",
+                  "s"
+                ],
+                [
+                  "meta-term",
+                  "t"
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "u"
+                  ],
+                  [
+                    "meta-term",
+                    "s"
+                  ]
+                ]
+              ]
+            ],
+            "members": [
+              {
+                "ordered_ports": [],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "meta-term",
+                        "s"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "u"
+                          ],
+                          [
+                            "meta-term",
+                            "s"
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "u"
+                          ],
+                          [
+                            "meta-term",
+                            "t"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "left": [
+                    "meta-term",
+                    "s"
+                  ],
+                  "right": [
+                    "meta-term",
+                    "t"
+                  ],
+                  "rule": "eq_subst",
+                  "template": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "u"
+                      ],
+                      [
+                        "var",
+                        "hole0"
+                      ]
+                    ]
+                  ],
+                  "variable": "hole0"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:equality",
+                  "member:0"
+                ],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "u"
+                        ],
+                        [
+                          "meta-term",
+                          "s"
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "u"
+                        ],
+                        [
+                          "meta-term",
+                          "t"
+                        ]
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:formula",
+                  "member:1"
+                ],
+                "witness": {
+                  "formula": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "u"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              }
+            ],
+            "output": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "meta-term",
+                  "u"
+                ],
+                [
+                  "meta-term",
+                  "t"
+                ]
+              ]
+            ],
+            "parameters": [
+              "s",
+              "t",
+              "u"
+            ],
+            "predicate": "Incident",
+            "slot": 1
+          },
+          "source_body_keys": [
+            [
+              2445,
+              4,
+              []
+            ],
+            [
+              2627,
+              6,
+              [
+                1,
+                4
+              ]
+            ],
+            [
+              2836,
+              7,
+              [
+                2,
+                6
+              ]
+            ]
+          ],
+          "source_body_rows": [
+            4,
+            6,
+            7
+          ]
+        },
+        {
+          "ambient_original_ordered_Gamma": [
+            [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "body_command_indices": [
+            3,
+            5,
+            8
+          ],
+          "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+          "ordered_external_command_indices": [
+            0,
+            7
+          ],
+          "ordered_receptor_ancestor_rows": [
+            [
+              0
+            ],
+            [
+              1,
+              2,
+              4,
+              6,
+              7
+            ]
+          ],
+          "ordered_receptor_consumed_occurrences": [
+            [
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "origin": {
+            "certificate": {
+              "bytes": 19193,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+              "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+            },
+            "command_root": 8,
+            "correlated_sequent_id": "5a03ee06a69d50fea2836a61c8fd7abef862a104b0303714192239cdd0b494e4",
+            "eligible": true,
+            "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+            "origin": "completed_source_proposal",
+            "reason": "eligible_Incident_transport"
+          },
+          "original_parameters": {
+            "s": [
+              "fun",
+              "v",
+              []
+            ],
+            "t": [
+              "fun",
+              "u",
+              []
+            ],
+            "u": [
+              "fun",
+              "D",
+              []
+            ]
+          },
+          "shape": {
+            "input_receptors": [
+              [
+                "eq",
+                [
+                  "meta-term",
+                  "s"
+                ],
+                [
+                  "meta-term",
+                  "t"
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "u"
+                  ],
+                  [
+                    "meta-term",
+                    "s"
+                  ]
+                ]
+              ]
+            ],
+            "members": [
+              {
+                "ordered_ports": [],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "meta-term",
+                        "s"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "u"
+                          ],
+                          [
+                            "meta-term",
+                            "s"
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "u"
+                          ],
+                          [
+                            "meta-term",
+                            "t"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "left": [
+                    "meta-term",
+                    "s"
+                  ],
+                  "right": [
+                    "meta-term",
+                    "t"
+                  ],
+                  "rule": "eq_subst",
+                  "template": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "u"
+                      ],
+                      [
+                        "var",
+                        "hole0"
+                      ]
+                    ]
+                  ],
+                  "variable": "hole0"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:equality",
+                  "member:0"
+                ],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "u"
+                        ],
+                        [
+                          "meta-term",
+                          "s"
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "u"
+                        ],
+                        [
+                          "meta-term",
+                          "t"
+                        ]
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:formula",
+                  "member:1"
+                ],
+                "witness": {
+                  "formula": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "u"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              }
+            ],
+            "output": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "meta-term",
+                  "u"
+                ],
+                [
+                  "meta-term",
+                  "t"
+                ]
+              ]
+            ],
+            "parameters": [
+              "s",
+              "t",
+              "u"
+            ],
+            "predicate": "Incident",
+            "slot": 1
+          },
+          "source_body_keys": [
+            [
+              2296,
+              3,
+              []
+            ],
+            [
+              2619,
+              5,
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              2829,
+              8,
+              [
+                7,
+                5
+              ]
+            ]
+          ],
+          "source_body_rows": [
+            3,
+            5,
+            8
+          ]
+        }
+      ],
+      "family_id": "Incident-transport-11489e2e62c924a95b2dd326c5242bd028d775c77b204112034f2395a4f3db14",
+      "shape": {
+        "input_receptors": [
+          [
+            "eq",
+            [
+              "meta-term",
+              "s"
+            ],
+            [
+              "meta-term",
+              "t"
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "meta-term",
+                "u"
+              ],
+              [
+                "meta-term",
+                "s"
+              ]
+            ]
+          ]
+        ],
+        "members": [
+          {
+            "ordered_ports": [],
+            "witness": {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "meta-term",
+                    "s"
+                  ],
+                  [
+                    "meta-term",
+                    "t"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "u"
+                      ],
+                      [
+                        "meta-term",
+                        "s"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "u"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "left": [
+                "meta-term",
+                "s"
+              ],
+              "right": [
+                "meta-term",
+                "t"
+              ],
+              "rule": "eq_subst",
+              "template": [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "u"
+                  ],
+                  [
+                    "var",
+                    "hole0"
+                  ]
+                ]
+              ],
+              "variable": "hole0"
+            }
+          },
+          {
+            "ordered_ports": [
+              "input:equality",
+              "member:0"
+            ],
+            "witness": {
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "meta-term",
+                      "u"
+                    ],
+                    [
+                      "meta-term",
+                      "s"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "meta-term",
+                      "u"
+                    ],
+                    [
+                      "meta-term",
+                      "t"
+                    ]
+                  ]
+                ]
+              ],
+              "rule": "mp"
+            }
+          },
+          {
+            "ordered_ports": [
+              "input:formula",
+              "member:1"
+            ],
+            "witness": {
+              "formula": [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "u"
+                  ],
+                  [
+                    "meta-term",
+                    "t"
+                  ]
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        ],
+        "output": [
+          "pred",
+          "Incident",
+          [
+            [
+              "meta-term",
+              "u"
+            ],
+            [
+              "meta-term",
+              "t"
+            ]
+          ]
+        ],
+        "parameters": [
+          "s",
+          "t",
+          "u"
+        ],
+        "predicate": "Incident",
+        "slot": 1
+      }
+    },
+    {
+      "evidence": [
+        {
+          "ambient_original_ordered_Gamma": [
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "body_command_indices": [
+            6,
+            7,
+            8
+          ],
+          "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+          "ordered_external_command_indices": [
+            5,
+            2
+          ],
+          "ordered_receptor_ancestor_rows": [
+            [
+              0,
+              1,
+              10,
+              11,
+              12
+            ],
+            [
+              2
+            ]
+          ],
+          "ordered_receptor_consumed_occurrences": [
+            [
+              0,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "origin": {
+            "certificate": {
+              "bytes": 21797,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+              "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+            },
+            "command_root": 8,
+            "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+            "eligible": true,
+            "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+            "origin": "actual_selected",
+            "reason": "eligible_Incident_transport"
+          },
+          "original_parameters": {
+            "s": [
+              "fun",
+              "A",
+              []
+            ],
+            "t": [
+              "fun",
+              "C",
+              []
+            ],
+            "u": [
+              "fun",
+              "w",
+              []
+            ]
+          },
+          "shape": {
+            "input_receptors": [
+              [
+                "eq",
+                [
+                  "meta-term",
+                  "s"
+                ],
+                [
+                  "meta-term",
+                  "t"
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "s"
+                  ],
+                  [
+                    "meta-term",
+                    "u"
+                  ]
+                ]
+              ]
+            ],
+            "members": [
+              {
+                "ordered_ports": [],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "meta-term",
+                        "s"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "s"
+                          ],
+                          [
+                            "meta-term",
+                            "u"
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "t"
+                          ],
+                          [
+                            "meta-term",
+                            "u"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "left": [
+                    "meta-term",
+                    "s"
+                  ],
+                  "right": [
+                    "meta-term",
+                    "t"
+                  ],
+                  "rule": "eq_subst",
+                  "template": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "var",
+                        "hole0"
+                      ],
+                      [
+                        "meta-term",
+                        "u"
+                      ]
+                    ]
+                  ],
+                  "variable": "hole0"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:equality",
+                  "member:0"
+                ],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "s"
+                        ],
+                        [
+                          "meta-term",
+                          "u"
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "t"
+                        ],
+                        [
+                          "meta-term",
+                          "u"
+                        ]
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:formula",
+                  "member:1"
+                ],
+                "witness": {
+                  "formula": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "t"
+                      ],
+                      [
+                        "meta-term",
+                        "u"
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              }
+            ],
+            "output": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "meta-term",
+                  "t"
+                ],
+                [
+                  "meta-term",
+                  "u"
+                ]
+              ]
+            ],
+            "parameters": [
+              "s",
+              "t",
+              "u"
+            ],
+            "predicate": "Incident",
+            "slot": 0
+          },
+          "source_body_keys": [
+            [
+              1613,
+              13,
+              []
+            ],
+            [
+              2517,
+              14,
+              [
+                12,
+                13
+              ]
+            ],
+            [
+              2804,
+              23,
+              [
+                2,
+                14
+              ]
+            ]
+          ],
+          "source_body_rows": [
+            13,
+            14,
+            23
+          ]
+        },
+        {
+          "ambient_original_ordered_Gamma": [
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "body_command_indices": [
+            3,
+            7,
+            8
+          ],
+          "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+          "ordered_external_command_indices": [
+            6,
+            2
+          ],
+          "ordered_receptor_ancestor_rows": [
+            [
+              0,
+              1,
+              4,
+              5,
+              6
+            ],
+            [
+              2
+            ]
+          ],
+          "ordered_receptor_consumed_occurrences": [
+            [
+              0,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "origin": {
+            "certificate": {
+              "bytes": 19085,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+              "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+            },
+            "command_root": 8,
+            "correlated_sequent_id": "58a5d9056ed06b8171ee163b9be6522f24a9b9f8989e6803f72084758d0c36c2",
+            "eligible": true,
+            "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+            "origin": "completed_source_proposal",
+            "reason": "eligible_Incident_transport"
+          },
+          "original_parameters": {
+            "s": [
+              "fun",
+              "A",
+              []
+            ],
+            "t": [
+              "fun",
+              "C",
+              []
+            ],
+            "u": [
+              "fun",
+              "w",
+              []
+            ]
+          },
+          "shape": {
+            "input_receptors": [
+              [
+                "eq",
+                [
+                  "meta-term",
+                  "s"
+                ],
+                [
+                  "meta-term",
+                  "t"
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "s"
+                  ],
+                  [
+                    "meta-term",
+                    "u"
+                  ]
+                ]
+              ]
+            ],
+            "members": [
+              {
+                "ordered_ports": [],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "meta-term",
+                        "s"
+                      ],
+                      [
+                        "meta-term",
+                        "t"
+                      ]
+                    ],
+                    [
+                      "imp",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "s"
+                          ],
+                          [
+                            "meta-term",
+                            "u"
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "meta-term",
+                            "t"
+                          ],
+                          [
+                            "meta-term",
+                            "u"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "left": [
+                    "meta-term",
+                    "s"
+                  ],
+                  "right": [
+                    "meta-term",
+                    "t"
+                  ],
+                  "rule": "eq_subst",
+                  "template": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "var",
+                        "hole0"
+                      ],
+                      [
+                        "meta-term",
+                        "u"
+                      ]
+                    ]
+                  ],
+                  "variable": "hole0"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:equality",
+                  "member:0"
+                ],
+                "witness": {
+                  "formula": [
+                    "imp",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "s"
+                        ],
+                        [
+                          "meta-term",
+                          "u"
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "meta-term",
+                          "t"
+                        ],
+                        [
+                          "meta-term",
+                          "u"
+                        ]
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              {
+                "ordered_ports": [
+                  "input:formula",
+                  "member:1"
+                ],
+                "witness": {
+                  "formula": [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "t"
+                      ],
+                      [
+                        "meta-term",
+                        "u"
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              }
+            ],
+            "output": [
+              "pred",
+              "Incident",
+              [
+                [
+                  "meta-term",
+                  "t"
+                ],
+                [
+                  "meta-term",
+                  "u"
+                ]
+              ]
+            ],
+            "parameters": [
+              "s",
+              "t",
+              "u"
+            ],
+            "predicate": "Incident",
+            "slot": 0
+          },
+          "source_body_keys": [
+            [
+              1613,
+              3,
+              []
+            ],
+            [
+              2517,
+              7,
+              [
+                6,
+                3
+              ]
+            ],
+            [
+              2804,
+              8,
+              [
+                2,
+                7
+              ]
+            ]
+          ],
+          "source_body_rows": [
+            3,
+            7,
+            8
+          ]
+        }
+      ],
+      "family_id": "Incident-transport-c9ef9382b9c98c8f9c1c0ff46cd811d424e4ac8c577066ff514dc78a84ff05e7",
+      "shape": {
+        "input_receptors": [
+          [
+            "eq",
+            [
+              "meta-term",
+              "s"
+            ],
+            [
+              "meta-term",
+              "t"
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "meta-term",
+                "s"
+              ],
+              [
+                "meta-term",
+                "u"
+              ]
+            ]
+          ]
+        ],
+        "members": [
+          {
+            "ordered_ports": [],
+            "witness": {
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "meta-term",
+                    "s"
+                  ],
+                  [
+                    "meta-term",
+                    "t"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "s"
+                      ],
+                      [
+                        "meta-term",
+                        "u"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "meta-term",
+                        "t"
+                      ],
+                      [
+                        "meta-term",
+                        "u"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "left": [
+                "meta-term",
+                "s"
+              ],
+              "right": [
+                "meta-term",
+                "t"
+              ],
+              "rule": "eq_subst",
+              "template": [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "var",
+                    "hole0"
+                  ],
+                  [
+                    "meta-term",
+                    "u"
+                  ]
+                ]
+              ],
+              "variable": "hole0"
+            }
+          },
+          {
+            "ordered_ports": [
+              "input:equality",
+              "member:0"
+            ],
+            "witness": {
+              "formula": [
+                "imp",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "meta-term",
+                      "s"
+                    ],
+                    [
+                      "meta-term",
+                      "u"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "meta-term",
+                      "t"
+                    ],
+                    [
+                      "meta-term",
+                      "u"
+                    ]
+                  ]
+                ]
+              ],
+              "rule": "mp"
+            }
+          },
+          {
+            "ordered_ports": [
+              "input:formula",
+              "member:1"
+            ],
+            "witness": {
+              "formula": [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "meta-term",
+                    "t"
+                  ],
+                  [
+                    "meta-term",
+                    "u"
+                  ]
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        ],
+        "output": [
+          "pred",
+          "Incident",
+          [
+            [
+              "meta-term",
+              "t"
+            ],
+            [
+              "meta-term",
+              "u"
+            ]
+          ]
+        ],
+        "parameters": [
+          "s",
+          "t",
+          "u"
+        ],
+        "predicate": "Incident",
+        "slot": 0
+      }
+    }
+  ],
+  "primitive_source_body_count": 0,
+  "schema": "candidate-finite-Incident-transport-library-v1",
+  "schema_universally_validated": false,
+  "source_only_producer": false,
+  "training_spec_sha256": "4326857ef1e23799a95b19e98ff89c23a14b7e3c416ffe58a4ce49c1fa283f22"
+}
