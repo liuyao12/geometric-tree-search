@@ -1,0 +1,31 @@
+{
+  "schema": "atomic-family-donor-training-independent-Source-handoff-v1",
+  "source_only": true,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "536047b6c5258f7a458b8e0391dbc7c160dc61f605ff57e5aa8b1430400cf574",
+    "bytes": 3595
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-independent-source-20261015/findings-v1.json",
+    "sha256": "c6ff4afc7a15150237d336702c3d3d82b50e649896267013d3d0a92bae86671e",
+    "bytes": 64932
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+    "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+    "bytes": 62865
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/Source-contract-v1.json",
+    "sha256": "70f2ea39ba4352dd79320ae7175cf03d92a883df8cbd5a0437528f05de32beca",
+    "bytes": 16673
+  },
+  "check_count": 68,
+  "raw_reference_count": 49,
+  "unique_raw_path_count": 27,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_execution_authorized": false
+}

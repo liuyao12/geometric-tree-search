@@ -1,0 +1,100 @@
+{
+  "schema": "atomic-family-donor-reader-presentation-static-v1",
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/reader.html",
+    "sha256": "12fdcbbcc5cbb70a6865ea618b1f42292a0536da0f9fdb67977b30a93262927e",
+    "bytes": 57679
+  },
+  "report_data": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/report-data.json",
+    "sha256": "976e61492b94e99cd837772c86b70fa381a401b9b6c45e6db2fa21d404cb9e61",
+    "bytes": 49865
+  },
+  "checks": [
+    {
+      "id": "unique-anchors",
+      "passed": true
+    },
+    {
+      "id": "internal-links",
+      "passed": true
+    },
+    {
+      "id": "complete12-row-anchors",
+      "passed": true
+    },
+    {
+      "id": "one-actual-logical-SVG",
+      "passed": true
+    },
+    {
+      "id": "no-C0",
+      "passed": true
+    },
+    {
+      "id": "no-placeholder",
+      "passed": true
+    },
+    {
+      "id": "established-MathJax",
+      "passed": true
+    },
+    {
+      "id": "actual-no1-shorthand",
+      "passed": true
+    },
+    {
+      "id": "all-saved-metadata-checks",
+      "passed": true
+    },
+    {
+      "id": "both-public-sibling-links",
+      "passed": true
+    }
+  ],
+  "check_count": 10,
+  "saved_metadata_check_count": 23,
+  "forbidden_C0_count": 0,
+  "scope": "HTML parsing, whole saved hash/JSON data and own presentation generation only; no mathematical Source/helper/clock/search/miner/project functions, tests or rerun. Root browser/MathJax/layout/live checks separate.",
+  "public_links": [
+    "#results",
+    "#cluster",
+    "#proof",
+    "#geometry",
+    "#costs",
+    "#parallel",
+    "#evidence",
+    "../ordinary-right-one/reader.html",
+    "../point-checkpoint-reuse/reader.html",
+    "#row-0",
+    "#row-1",
+    "#row-2",
+    "#row-3",
+    "#row-4",
+    "#row-5",
+    "#row-6",
+    "#row-7",
+    "#row-8",
+    "#row-9",
+    "#row-10",
+    "#row-11",
+    "evidence/ROOT-plan-v1.json",
+    "evidence/ROOT-training-disposition-v1.json",
+    "evidence/owned/donor.json",
+    "evidence/owned/mined-library.json",
+    "evidence/owned/controls.json",
+    "evidence/owned/response.jsonl",
+    "evidence/owned/intake-record.json",
+    "evidence/external/native-terminal.json",
+    "evidence/external/observation.json",
+    "evidence/peer/typed-Source-review-v1.json",
+    "evidence/saved-review/handoff-v1.json",
+    "report-data.json",
+    "source/family.py",
+    "source/intake.py",
+    "source/checker_adapter.py",
+    "source/independent_checker.py",
+    "source/clean_support.py"
+  ],
+  "authorship_disclosure": "Reader author also authored checker, family and intake. Distinct saved-evidence review by controls is separate; this is not a second mathematical implementation."
+}

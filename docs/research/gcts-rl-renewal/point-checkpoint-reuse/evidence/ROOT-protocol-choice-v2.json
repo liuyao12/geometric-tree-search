@@ -1,0 +1,79 @@
+{
+  "actual_execution_authorized_by_this_record": false,
+  "allowed_delta": [
+    "Reuse an already computed complete fingerprint only before any intervening graph mutator, with explicit source-event provenance and distinct reuse/computation counters.",
+    "Retain complete actual fresh AFTER-rollback recomputation/comparison, full original fields and typed encoding. Never infer state equality from checkpoint length/count/hash sample.",
+    "Cold parent Source pin/version/current exact producer-version changes only; unchanged bootstrap if ABI needs no change. Fresh current whole/delta reviews, grants/controls/primary."
+  ],
+  "author_identity": "/root",
+  "evidence_scope": "Producer complete domain/fingerprint/selected-origin/rollback records remain claims. Fresh logical checker is mathematical authority. Full-domain trajectory replay, selected point acceptance, full24/native Wang/RL/advantage remain false without separate evidence.",
+  "goal_complete": false,
+  "goal_remains_active": true,
+  "implementation_authorized": true,
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60,
+    "producer_reserved_bytes": 524288000
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "measured_change_proposal": {
+    "bytes": 7429,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-fingerprint-reuse-proposal-20261015/next-change-v1.json",
+    "sha256": "5c0ba74cd4c33a920f1cd4471e799b69c2b2aebc781c54f01f2909abce101798"
+  },
+  "memory_argument": "Closed sequential child lifetimes make maximum leaf terminal peak a conservative bound on simultaneous child memory. Parent SELF high-water sampled only after every child is truly reaped covers parent RSS throughout earlier child epochs. After irreversible no-spawn cutoff only parent remains; actual external terminal inclusive T covers its exit tail. Take maximum across epochs; never subtract rolled-up peaks, replace T with an earlier sample, or promote old additive failures.",
+  "memory_latex": "\\(C=\\max(P,V),\\quad B_{\\mathrm{live}}=S_{\\tau}+C,\\quad B=\\max(B_{\\mathrm{live}},T)\\le536870912\\).",
+  "memory_rule": "point-sequential-cutoff-max-v1",
+  "no_implicit_restarts": true,
+  "original_model_and_budgets_unchanged": true,
+  "parent_protocol": {
+    "bytes": 4300,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "3b829573958c972f1395a4e70b3a7803cbc746affa38184ec22f22b0130b328c"
+  },
+  "point_graph": {
+    "bytes": 28531,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+    "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+  },
+  "preserve": [
+    "Original complete24 rows,11147 formulas,16200 recipes and original model/authority/registry epochs.",
+    "No ordinary proof, prefix, route, backcone, lemma, rank, or RL enters point BASE.",
+    "Original128 attempts/2000events/onecandidate cap; no successful-prefix rescue or restart.",
+    "Prior ordinary proof is the conventional control; this is not ordinary-wire masquerade.",
+    "New prospective sequential Point->true reap->fresh verifier protocol; old point/census/W16 UNKNOWNs remain unchanged.",
+    "No graph/kernel/domain/scheduler/rollback semantic change; producer diagnostic reuse at Source-proven unchanged pre-placement boundaries only. All old UNKNOWNs remain unchanged."
+  ],
+  "previous_publication": {
+    "bytes": 2350,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-publication-complete-v1.json",
+    "sha256": "8e86916c69ab54581b472a8dc6060b6c54a2a6a05dde240d6b9db285f1f9315f"
+  },
+  "previous_turn_classification": "progress",
+  "primary": "Same unchanged full original PointGraph canonical unadvised BASE, compact producer v5 with only Source-proven unchanged pre-placement complete fingerprint reuse. No ordinary word/prefix/library/marking/RL.",
+  "required_before_primary": [
+    "Genuine Root and distinct peer review of whole current Source8 plus deltas/inverse.",
+    "Once-only real current-code controls: two serial wait4 leaves, genuine false-word/corrupt-authority rejection, actual postseal launch denial and resident parent exit tail.",
+    "Fresh Root controls/primary grants and unchanged20/55/60/512/90+1 full native launch-to-postprobe and complete output closure."
+  ],
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-prospective-point-Q-checkpoint-reuse-choice-v2",
+  "scope_assumptions": [
+    "Pinned Darwin25.5.0/Python3.9.6 byte ABI, verified current runtime hash unchanged.",
+    "Fixed reviewed Sources, no arbitrary hostile native child escape, foreign dynamic Source, unregistered fork, OS/VM interference or universal hard-cap claim.",
+    "Native wait4 PID/status/rusage ledger covers exact P/V launches and true terminal; cutoff after all reaped, no late interpreter callback/spawn; captured native os._exit after complete bounded file writes.",
+    "External meter2 and genuine postterminal global clock probe remain separate trusted instrumentation; all scientific startup/intake/search/transport/checking/serialization/output/exit charged."
+  ]
+}

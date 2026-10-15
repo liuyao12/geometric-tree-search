@@ -1,0 +1,54 @@
+{
+  "SELF_cut_bytes": 20856832,
+  "aggregate_cap_bytes": 536870912,
+  "aggregate_owned_bound_bytes": 314146816,
+  "all_true_reaped": true,
+  "classification": "point BASE UNKNOWN",
+  "complete_saved_output_bytes": 55485978,
+  "complete_saved_output_files": 44,
+  "controls_accepted": false,
+  "external_observation": {
+    "bytes": 432,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/observation.json",
+    "sha256": "926f43b7b8b29d02b1fa7a3304774a7505a6989933a6a31d6d8b8e4634a75cab"
+  },
+  "goal_complete": false,
+  "joint_twenty_seconds_accepted": false,
+  "lifecycle_output_closed": true,
+  "live_epoch_bound_bytes": 314146816,
+  "maximum_serial_leaf_peak_bytes": 293289984,
+  "memory_accepted": true,
+  "native_caller_elapsed_ns": 20069408000,
+  "native_launch_to_postprobe_ns": 20107712000,
+  "native_terminal": {
+    "bytes": 1703,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/native-terminal.json",
+    "sha256": "0c64fb4239fd045055147a79b80b5d357c513f68ac0bc459af802104552e13f5"
+  },
+  "old_UNKNOWNs_promoted": false,
+  "plan": {
+    "bytes": 9322,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-plan-v1.json",
+    "sha256": "ebd8bace93b20d3e7f11ccd44873b4648744bdbc88df4a36981d875ce55db640"
+  },
+  "point_full24_trajectory_native_RL_accepted": false,
+  "primary_accepted": false,
+  "provisional": {
+    "bytes": 8632,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/point-provisional.json",
+    "sha256": "0627c4bc982382b30ed66ab97ced4ee13320ed24c6b854651bf8f93fd14f0d6e"
+  },
+  "purpose": "primary",
+  "resource_accepted": false,
+  "resource_rule": "point-sequential-cutoff-max-v1",
+  "schema": "ROOT-point-compact-Q-saved-disposition-v1",
+  "scope": "Fixed reviewed pinned Sources/Darwin ABI. Saved evidence reconciliation, no mathematical or full-domain trajectory replay. No GCTS/RL advantage demonstrated.",
+  "sequential_leaf_count": 1,
+  "tool_bracket": {
+    "bytes": 198,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/tool-bracket.json",
+    "sha256": "a87af66ad1944908823cfb6fc3a4c35123059582556cbc382a3f8fdf50046e2c"
+  },
+  "tool_elapsed_ms": 20264,
+  "true_terminal_inclusive_peak_bytes": 293289984
+}

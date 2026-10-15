@@ -1,0 +1,91 @@
+{
+  "actual_execution_authorized": true,
+  "author_identity": "/root",
+  "inputs": {
+    "checked_candidate": {
+      "bytes": 4292,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-candidate.json",
+      "sha256": "cb8f196ae80c97e41e8be6b5dd8e48b3a49a2ade903978b083e970fe1534bcf4"
+    },
+    "checked_verifier_response": {
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-response.jsonl",
+      "sha256": "7076d1c96f2bbf66e5ba4f732e1ec166074aee35f292291a55e8501a71c95a85"
+    },
+    "declaration": {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "original_authority": {
+      "bytes": 2990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-authority.json",
+      "sha256": "75d731bdc4ab9ce986eaf5768583da40678f1b295cc88c98a2a7e263770afb54"
+    },
+    "prior_ROOT_disposition": {
+      "bytes": 2576,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "1f4d947319f65e24256322c24933881856ec3a90011c6499708145f18d3cdef7"
+    },
+    "prior_authorization": {
+      "bytes": 2285,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-authorization-v1.json",
+      "sha256": "d078ac950ca7743cea470fc6e8279f644d7be6efb8d4b1e68c69ff7aa8802dcc"
+    },
+    "prior_plan": {
+      "bytes": 9646,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-plan-v1.json",
+      "sha256": "2025b362053e1926da033c9e6260e1a3fd8ec0141cc1c6c5b94e62b0a1c37756"
+    },
+    "searched_producer_response": {
+      "bytes": 6846,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/producer-response.jsonl",
+      "sha256": "28038e79c4e27576581b7c64bc8be298aeaa1a3105a8a73e875d90c2bfa7c083"
+    }
+  },
+  "invocation_id": "atomic-family-donor-training-20261015-v1",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "protocol_choice": {
+    "bytes": 5048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "35fe07d4d24fdb1181fddfc711c22c6bddf7f9b204fd09864520f9fc27438b12"
+  },
+  "purpose": "admitted-donor-training",
+  "resource_rule": "single-owned-process-native-terminal-v1",
+  "schema": "ROOT-atomic-family-donor-training-authorization-v1",
+  "scope": "One admitted searched word as training/debug data; fresh same original1717 closed-target check then donor/root census only. No recipient, activation, transfer or speed claim.",
+  "source_bindings": {
+    "checker_adapter": {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 62865,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67"
+    }
+  }
+}

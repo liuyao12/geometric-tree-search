@@ -1,0 +1,43 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py
+@@ -19,7 +19,7 @@
+ import subprocess
+ import sys
+ 
+-VERSION = 'Q-point-compact-sequential-cold-intake-v2'
++VERSION = 'Q-point-compact-sequential-cold-intake-v1'
+ CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ _NATIVE_EXIT = os._exit
+ PLAN_MAX = 1048576
+@@ -31,10 +31,10 @@
+                          'sha256': '1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3'},
+  'point_graph': {'bytes': 28531,
+                  'sha256': '8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567'},
+- 'point_producer': {'bytes': 30988,
+-                    'sha256': 'e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c'},
++ 'point_producer': {'bytes': 28623,
++                    'sha256': '4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052'},
+  'producer_bootstrap': {'bytes': 12467,
+-                        'sha256': '133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98'},
++                        'sha256': 'f2159c4271a0c26c691e5e620b20ea336fc2c861571407e061cb366e002703f2'},
+  'verifier': {'bytes': 48584, 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}}
+ RAW_INPUT_BINDINGS = {'architecture_choice': {'bytes': 6808,
+                          'sha256': '62b0d66686f890c9f604192058bdba48a4b171e233f25767b1e1de88fffbd82f'},
+@@ -87,7 +87,7 @@
+  'joint_seconds': 20,
+  'owned_seconds': 60}
+ DECLARATION_VALUE_SHA256 = 'f6ca72af011a9343f4661b5092d54565f668a978fd020734072267b76f89b7a3'
+-PROTOCOL_CHOICE = {'bytes': 5903, 'sha256': '043302e2ab2409429bab288735617d604b7b013135bf58ca59ec8b71542b7a65'}
++PROTOCOL_CHOICE = {'bytes': 4300, 'sha256': '3b829573958c972f1395a4e70b3a7803cbc746affa38184ec22f22b0130b328c'}
+ 
+ def need(ok, message):
+     if not ok:
+@@ -619,7 +619,7 @@
+                  and body['coordinator_invocation_id']==plan['invocation_id']
+                  and body['source_bindings']==manifest['source_bindings'],'point whole producer context')
+             result=body['result'];need(result['schema']=='Q-full-original-model-untrusted-producer-return-v1'
+-                 and result['version']=='Q-full-original-model-untrusted-compact-candidate-Source-v5'
++                 and result['version']=='Q-full-original-model-untrusted-compact-candidate-Source-v4'
+                  and result['CLOCK_DOMAIN']==CLOCK_DOMAIN
+                  and result['joint_began_ns']==owner.began_ns and result['joint_deadline_ns']==owner.deadline_ns,
+                  'exact compact point return/native context')

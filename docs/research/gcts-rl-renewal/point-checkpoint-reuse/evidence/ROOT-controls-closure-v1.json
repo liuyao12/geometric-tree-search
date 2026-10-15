@@ -1,0 +1,24 @@
+{
+  "Q_decodes": 0,
+  "Source_functions_executed": 0,
+  "actual_started": false,
+  "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1",
+  "external_driver": {
+    "bytes": 4357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+    "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+  },
+  "external_schema_note": "Byte-identical generic9ded driver retains inherited ordinary measurement-only schema; point purpose/plan/Source8 and Root protocol control this new experiment.",
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "plan": {
+    "bytes": 9326,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-plan-v1.json",
+    "sha256": "c699311f92453a5b9e182ba7b949fe2b40fa789eb8bcf10e5fa6788a80cba5fa"
+  },
+  "purpose": "controls",
+  "schema": "ROOT-point-compact-Q-actual-metadata-closure-v1"
+}

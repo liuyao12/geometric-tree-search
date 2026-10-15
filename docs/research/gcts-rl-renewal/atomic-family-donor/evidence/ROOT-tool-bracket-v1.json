@@ -1,0 +1,9 @@
+{
+  "start_ms": 1792105735940,
+  "end_ms": 1792105736618,
+  "chunk_id": "0f7bdb",
+  "wall_time_seconds": 0.503565625,
+  "exit_code": 0,
+  "original_token_count": 120,
+  "output": "{\"ROOT_primary_accepted\": false, \"ROOT_resource_accepted\": false, \"external_began_ns\": 445544009516000, \"invocation_id\": \"atomic-family-donor-training-20261015-v1\", \"measurement_only\": true, \"meter_returncode\": 0, \"plan_bytes\": 6932, \"plan_sha256\": \"91768edb503601d093fb9e0d0470d2036e35e2617887995aa65cb5c200ef6b13\", \"postterminal_native_probe_ns\": 445544573826000, \"probe_returncode\": 0, \"purpose\": \"admitted-donor-training\", \"schema\": \"ROOT-ordinary-external-observation-v1\"}\n"
+}

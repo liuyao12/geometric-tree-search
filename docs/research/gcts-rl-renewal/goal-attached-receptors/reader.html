@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Goal-attached arithmetic receptors: pending inputs are obligations</title>
+<style>
+:root{color-scheme:light;--ink:#193449;--muted:#587084;--line:#ccd9e2;--blue:#225e9b;--paper:#f4f7fa}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,sans-serif}main{max-width:920px;margin:auto;padding:clamp(18px,4vw,42px);min-width:0}h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.2}h2{font-size:1.25rem;margin:0 0 12px}section{background:white;border:1px solid var(--line);border-radius:9px;padding:22px;margin:20px 0;min-width:0}p{margin:0 0 13px}a{color:var(--blue)}code{font-size:.86em;background:#edf2f7;padding:2px 4px;overflow-wrap:anywhere}.tag,.small,footer{color:var(--muted);font-size:.86rem}.notice{border-left:4px solid #b57a16;padding-left:15px}.math{overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.flow div{padding:13px;background:#edf4fa;border:1px solid var(--line);border-radius:6px}.table{overflow:auto}table{border-collapse:collapse;min-width:630px;width:100%;font-size:.9rem}th,td{padding:10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}li{margin:8px 0}@media(max-width:600px){main{padding:16px}section{padding:17px}.flow{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script></head>
+<body><main><p class="tag">Research proposal · Source and saved-data inspection only</p>
+<h1>Attach a learned cluster to a goal, then prove its inputs</h1>
+<p class="notice">Keep “needed” separate from “proved.” A goal-matched cluster can expose unproved input obligations. Its conclusion becomes a fact only after every input has complete primitive ancestry and the unchanged checker accepts the expansion. No new search or benchmark was executed for this note.</p>
+
+<section><h2>What is already real</h2>
+<p>Ordinary search automatically found the closed right-one theorem, from the two original axioms and empty context:</p>
+<div class="math">\[
+\Gamma=\varnothing,\qquad
+\mathrm{AZ}:\forall x\;(x+0=x),\qquad
+\mathrm{AS}:\forall x\,\forall y\;(x+S(y)=S(x+y)).
+\]</div>
+<p>The saved word proves \(\forall n\;(n+S(0)=S(n))\) in \(12\) primitive rows. A subsequent actual donor recheck/mining run censused all \(12\) roots and selected wire root <code>10</code>: body <code>[5,9,10]</code>, external inputs <code>[7,8]</code>. It mined this correlated successor context:</p>
+<div class="math">\[
+\Phi(h)\equiv u_0=S(h),\qquad
+s=t,\quad \Phi(s)\quad\vdash\quad\Phi(t).
+\]</div>
+<p>The body is one <code>eq_subst</code> implication and two ordered <code>mp</code> commands. Mining cost \(0.497768\,\mathrm{s}\) through the native postterminal probe, with \(22{,}790{,}144\) owned bytes. Original discovery plus this separately budgeted mining cost \(6.872785\,\mathrm{s}\); that is not one joint-budget attempt.</p>
+<p>The current source is generalized typed atomic context <code>e4998ebf</code>, not the historical whole-operand recognizer. This family was actually mined; recipient and library admission remain false. The mining grammar was human chosen after seeing the donor. This establishes data-grounded fragment extraction, not held-out transfer, learned calculus, or RL.</p>
+<p class="small"><a href="../atomic-family-donor/reader.html">Actual training disposition</a> · <a href="../atomic-family-donor/reader.html">Actual mined library</a> · <a href="../ordinary-right-one/reader.html#reader">Saved donor rows</a></p></section>
+
+<section><h2>The current interface blocks family backward attachment</h2>
+<p><code>instantiate_transport</code> accepts only two already-selected, dependency-complete receptor facts. This is correct for fact admission. It cannot attach the family to an unfilled goal when either input proof is missing. Original point search can already write formula requirements onto unfilled prior read rows; the restriction is in this family interface, not a theorem that point search cannot reason backward.</p>
+<div class="flow"><div><strong>Match the goal</strong><br>Unify the mined output with a demanded formula.</div><div><strong>Expose inputs</strong><br>Record typed, ordered <code>PENDING</code> obligations; no proof flags.</div><div><strong>Discharge and check</strong><br>Find original primitive ancestry, expand it, then independently check.</div></div>
+<p>Add a separate provisional <code>propose_for_goal</code> path. For the observed output \(u_0=S(t)\), matching binds the visible roles; any unbound \(s\) must range over all licensed recipient terms/recipe preimages in canonical order. Never fill it from a privileged donor ground term or a known recipient proof. Ordered obligations are \(s=t\) and \(u_0=S(s)\), not asserted hypotheses.</p>
+<p>Every grounded member must resolve to an original recipe, with strict-prior physical ports. An uncommitted agenda is advice only. Actual primitive placement supplies the ordinary unit occupancy and formula/offset markings; no free fixed marks are added. In the existing fixed-\(24\)-row model the source rows are already active: their required formulas become specific. A variable-boundary model is not silently substituted.</p>
+<p>After each committed primitive, retain complete global dead checks, forced propagation and earliest-generation branching. Advice may reorder legal alternatives only at that branch, with every base alternative retained. Undo row reservations, bindings, pending/resolved status and shared keys with the full graph trail. A budget interruption is UNKNOWN, never exhausted-child evidence.</p>
+<p>Only complete ancestry becomes a fact. Expand shared primitive identities once, preserve ordered/repeated references and the whole original \(\Gamma\), and keep generalization freshness. The final word, including all discharged obligations, must fit \(24\) rows and pass unchanged <code>check_primitive_word</code>. A successful word is separate from a full board or replayed trajectory.</p></section>
+
+<section><h2>One prospective recipient, matched controls</h2>
+<p>Use right-one only for training/debug. The next unsupplied target is:</p>
+<div class="math">\[
+\Gamma=\varnothing\quad\vdash\quad
+\forall n\;\bigl(n+S(S(0))=S(S(n))\bigr).
+\]</div>
+<p>No recipient proof word, intermediate route or backcone is supplied. Keep the same six primitives, original axioms, compiler grammar rules and ceilings. Changing the target requires a fresh complete catalogue and epoch; the old \(11{,}147\)-formula/\(16{,}200\)-recipe counts do not automatically transfer. Incomplete preparation or an overlong ancestry remains UNKNOWN.</p>
+<div class="table"><table><thead><tr><th>Engine</th><th>Primitive-only baseline</th><th>Learned-family arm</th></tr></thead><tbody>
+<tr><td>Ordinary search</td><td>Generic inverse-primitive goal agenda; full forward fallback.</td><td>The same agenda plus the actual mined context and pending inputs.</td></tr>
+<tr><td>Point search</td><td>The same primitive-only advice; complete original domains and scheduler.</td><td>The same mined family as ordinary, consumed through original primitive placements.</td></tr></tbody></table></div>
+<p>This comparison isolates the mined fragment from generic backward search. Add a selected-facts-only ablation with the same family to isolate the open-input mechanism. A separately labeled handwritten identical schema is a useful control: identical proposals should have identical logical effects. Matching its gains shows fragment utility, not superiority over human lemma design.</p>
+<p>Freeze extraction/library and selection rules before recipient evaluation. Proposed timing is three fresh repetitions per primary arm with rotated order. Keep the original \(20\,\mathrm{s}\) success gate, \(55\,\mathrm{s}\) failure cleanup, \(60\,\mathrm{s}\) owned limit, \(512\,\mathrm{MiB}\) aggregate cap, and \(90\,\mathrm{s}\) external caller plus \(1\,\mathrm{s}\) finish reserve. Charge joins, expansion, checking, parse/setup, search, output and exit; separately disclose shared catalogue creation and all first-use training costs.</p></section>
+
+<section><h2>What would succeed, or falsify the idea</h2>
+<p>Require an actual initially pending receptor later discharged by automatically found primitives, followed by the independent closed-target certificate. Compare checked outcomes, inclusive native cost, peak memory, recipe visits, branches, forced moves, backtracks, lawful matches, embedding failures, discharged obligations and expanded word length. Normal primitive markings may eliminate candidates; the family itself is advice, not a new proved pruning rule.</p>
+<p>Negative controls must reject dangling-as-fact, circular/future-row or swapped-port proposals, capture/arity errors, stale epochs, excluded keys, assigned-zero conflicts and shared-key overfill. Check dead/forced precedence and exact graph-plus-agenda rollback. No matching recipe/embedding means no advice, not impossibility.</p>
+<p>No viable match, no additional checked success and no inclusive cost reduction would fail this pilot. If primitive-only backward search produces the same gain, the family did not establish a contribution. If ordinary benefits equally or more, there is no distinct GCTS advantage. Right-one replay alone is training validation. A small recipient pilot cannot establish universal transfer, full PA, induction, native Wang compilation or RL.</p>
+<p><strong>Recommended implementation:</strong> only provisional goal matching and ordered pending obligations for the already mined data, plus equal-information ordinary consumption. Keep current selected-fact expansion and checker unchanged. No new custody framework is needed for this design.</p></section>
+
+<section><h2>Source basis and boundaries</h2><p><a href="../atomic-family-donor/reader.html">Actual family training</a> · <a href="../point-checkpoint-reuse/reader.html">Current point-search checkpoint</a> · <a href="../parallel-assessment/reader.html">Parallel research assessment</a> · <a href="proposed-experiment-v1.json">Machine-readable proposal and exact master/Source/evidence pins</a> · <a href="report-data-v1.json">Compact training and proposed-target data</a></p>
+<p class="small">Authored by the earlier arithmetic producer/kernel/catalogue author. This is a Source/saved-data research design, not independent review of those implementations. No project function, Q payload decoder, native clock, control or search was executed; no plan, grant, PUB edit or publication was created.</p></section>
+<footer>Proposed experiment only. ROOT owns implementation selection, independent review, any actual authorization, and report integration.</footer>
+</main></body></html>

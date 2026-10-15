@@ -1,0 +1,49 @@
+{
+  "added_definitions": [],
+  "changed_existing_definitions": [],
+  "edits": [
+    {
+      "new": "VERSION = 'Q-point-compact-producer-bootstrap-v2'\n",
+      "new_end": 557,
+      "new_start": 507,
+      "old": "VERSION = 'Q-point-compact-producer-bootstrap-v1'\n",
+      "old_end": 557,
+      "old_start": 507
+    },
+    {
+      "new": " 'producer': {'bytes': 30988, 'sha256': 'e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c'}}\n",
+      "new_end": 975,
+      "new_start": 866,
+      "old": " 'producer': {'bytes': 28623, 'sha256': '4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052'}}\n",
+      "old_end": 975,
+      "old_start": 866
+    }
+  ],
+  "full_forward_and_inverse_verified": true,
+  "new": {
+    "bytes": 12467,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py",
+    "sha256": "133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98"
+  },
+  "old": {
+    "bytes": 12467,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_producer_bootstrap_v1.py",
+    "sha256": "f2159c4271a0c26c691e5e620b20ea336fc2c861571407e061cb366e002703f2"
+  },
+  "schema": "point-checkpoint-reuse-full-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_top_level_definitions": [
+    "need",
+    "decimal",
+    "Budget",
+    "fd_mode",
+    "read_exact",
+    "unique",
+    "load_source",
+    "line",
+    "write_all",
+    "parse_manifest",
+    "journal",
+    "main"
+  ]
+}

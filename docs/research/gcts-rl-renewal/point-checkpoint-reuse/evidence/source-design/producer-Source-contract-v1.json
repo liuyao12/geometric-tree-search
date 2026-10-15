@@ -1,0 +1,220 @@
+{
+  "API": "run_untrusted_candidate_search(*,point_module,catalogue,declaration,original_source_bindings,binding,coordinator_invocation_id,authority_sha256,event_directory,joint_began_ns,joint_deadline_ns) -> untrusted_return",
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Root_choice": {
+    "bytes": 5903,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-protocol-choice-v2.json",
+    "sha256": "043302e2ab2409429bab288735617d604b7b013135bf58ca59ec8b71542b7a65"
+  },
+  "Source_review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "scientific_calls": 0,
+    "scope": "Q-untrusted-compact-full-model-point-producer-Source",
+    "source": {
+      "bytes": 30988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+    },
+    "source_contract": "This exact raw contract pin in genuine future review",
+    "source_only": true,
+    "source_review_passed": "Only genuine distinct reviewer may set true.",
+    "sources": {
+      "point_graph": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "producer": {
+        "bytes": 30988,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+        "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+      }
+    }
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static_evidence": {
+    "bytes": 2517,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/author-static-checks-v1.json",
+    "sha256": "198db8ed2eaedb902c2b73b43b3df25f245f9897b957e6e0ec78795e5938d19a"
+  },
+  "binding": {
+    "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+    "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+    "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+    "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+  },
+  "clock": "Capture native time.clock_gettime_ns and exact integer CLOCK_MONOTONIC ID; resource.getrusage/RUSAGE_SELF endpoints checked. Exact integer D-G20e9, no float epoch inference/reset. Native pre/post every phase/block/event/candidate/return checks; cleanup55 cannot send late success. Runtime is pinned Darwin bytes; no OS hardcap/hostile VM claim. Enclosing native parent/postterminal gates remain authoritative.",
+  "delta": {
+    "bytes": 46153,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-delta-v1.json",
+    "sha256": "4d169f089e1528c7f6aa50f5889cdf24b04a519fcdf9b3e5284480f2685bd53d"
+  },
+  "fingerprint": {
+    "all_fields": [
+      "totals",
+      "all assigned marks with reference counts",
+      "entire mark_refs map (including any orphan)",
+      "ordered selected keys",
+      "selected key/generation relation",
+      "all roots",
+      "all parent-local exclusions",
+      "every row domain: all factor recipe,left,right,different,count; base_count; excluded_legal keys; count",
+      "model_epoch",
+      "checkpoint",
+      "full trail prefix: every place/exclude tag,key,old mark values/refcounts,affected rows"
+    ],
+    "boundaries": [
+      "run_entry",
+      "node_enter",
+      "branch_checkpoint",
+      "child_rollback",
+      "node_unwind",
+      "run_restored"
+    ],
+    "bounds": "Streams original domain tuples directly; no semantic_state call/full domain list/string copy. Small tuples for one factor/trail record and sorted marks/keys only. Hash metadata per recursion frame, not domain snapshots. <=65536 byte blocks with budget tick per accumulated64KiB plus entry/exit; native budget/custody failure ->UNKNOWN. Full traversals remain potentially costly; no measured speed/fit claim.",
+    "comparison": "Compare entire fingerprint metadata including checkpoint at exact restored parent/node/root; trail prefix is encoded too. Metrics remain cumulative and excluded, as in original semantic_state. No sampled/selected-domain hashes.",
+    "encoding": "Q-POINT-STATE-FINGERPRINT-v1 header; D map / L list / T tuple / K key tags with decimal counts and colon; N None, B0/B1 bool, I decimal integer and S UTF8 string both with byte-length prefix. Fixed field order and sorted dict/set-derived key order; original factor and port order retained. Types, cardinalities and scalar byte lengths disambiguate concatenation. Encoder injectivity is a static argument; hash comparison assumes SHA256 collision resistance, not mathematical authority.",
+    "fields": [
+      "schema",
+      "sha256",
+      "bytes",
+      "checkpoint"
+    ],
+    "schema": "Q-complete-producer-state-fingerprint-v1"
+  },
+  "integration": {
+    "Root_owns": "New small point-only sequential cold bootstrap/parent; original full model authenticated/parsed once, producer fully reaped then fresh unchanged verifier4 CLI10. No new wrapper/framework authored here.",
+    "all_original_budgets": "joint20/failure55/owned60/aggregate512MiB/caller90+finish1, producer reserve500MiB. Setup/intake/parse/construction/search/telemetry/fingerprints/transport/fresh verifier/output/exit all charged; no fit claim.",
+    "event_directory_policy": "Exact absolute canonical initially absent child event directory; producer creates it. ROOT inventories complete own base after reap, not paths supplied by producer.",
+    "untrusted_producer": "No local mathematical checker; code/module/phase/physical/hash/rollback claims cannot self-admit. Fresh original theorem/Gamma/parameter/target word checker is sole math endpoint. No point BASE receives known ordinary proof."
+  },
+  "limits": {
+    "caller_seconds": 90,
+    "failure_seconds": 55,
+    "joint_seconds": 20,
+    "max_attempts": 128,
+    "max_candidates": 1,
+    "max_events": 2000,
+    "owned_bytes": 536870912,
+    "owned_seconds": 60,
+    "worker_bytes": 524288000
+  },
+  "model": "Exactly unchanged original full24 required rows, original boundary/roots/fixed marks, empty indexed Gamma, open parameter and closed right-one target, original7 Source bindings/model/registry/authority. Existing11147 formula/16200 recipe counts are prior observations, not success gates. Full original catalogue is received; no Q parse by this callable, new compilation, model trim, target backcone, known ordinary word, rank, library or RL input.",
+  "point_Source": "Exact unchanged PointGraph8d22, recipe/factor/generation/mark-reference/trail/domains/ordering APIs. All graph operations remain producer claims; this successor does not grant old engine/native/selected/point authority.",
+  "preserved_compact_v3_Source": {
+    "bytes": 28398,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v3.py",
+    "sha256": "5fddc249251aa26abe9210929f4263de2423a5e41568ab712d5c2a8ad13da952"
+  },
+  "preserved_compact_v3_contract": {
+    "bytes": 12496,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v1.json",
+    "sha256": "9c87b922a9056fd06ee1be35053f08a3d23deded4ed6d23d47ef78e1b49fa95c"
+  },
+  "preserved_contract": {
+    "bytes": 12373,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Source-contract-v2.json",
+    "sha256": "2431aaab8ece03786de0fe0d2b1acdeb178a002bf5948d5f37217e4b24ea6ec5"
+  },
+  "preserved_producer": {
+    "bytes": 20219,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+    "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+  },
+  "preserved_v4_Source": {
+    "bytes": 28623,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+    "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+  },
+  "preserved_v4_contract": {
+    "bytes": 13860,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+    "sha256": "ba22d1c5d87e724eeb9a89b44d4b1ba20dc9f1fd1777ff08a5cf2253221c8728"
+  },
+  "remaining_gates": [
+    "Distinct current whole/delta Source review and ROOT review.",
+    "Complete current cold parent/bootstrap/verifier Source/FD/EOF/native/resource/caller bindings plus focused controls under ROOT scoped plan.",
+    "Actual once-only point BASE outcome under full original budgets; no timings/fit/search result measured here.",
+    "Independent selected point state/full24/domain trajectory verification remains false.",
+    "A later real cluster/marking benefit requires automatic eligible library, exact expansion and matched point arms including learning/validation costs."
+  ],
+  "resource_acceptance": false,
+  "reuse_delta": {
+    "bytes": 7467,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-delta-v1.json",
+    "sha256": "e95f3ec988a0c4ad8ee32fb5445cf2da29bba4d68310746433cd240d761b41e7"
+  },
+  "reuse_scope": {
+    "after_rollback": "Every actual child_rollback/node_unwind/run_restored STILL calls emit fingerprint=True with no reuse. Fresh unchanged complete encoding traverses every domain/field/trail prefix; compares against original baseline. Even no-op or dead-child rollback never reuses its after hash.",
+    "allowed": [
+      "One computed run_entry record transferred only to original root node_enter before any graph mutator.",
+      "A frame may reuse its node-entry record for its first branch_checkpoint only while unchanged_entry remains non-None. Pure decision/candidate/ancestry reads and compact event output do not mutate graph under exact current Source."
+    ],
+    "invalidation": "Root input transfer consumed immediately inside node entry. Local unchanged_entry set None BEFORE each forced/branch place (which performs _apply_legal), every child/node rollback, and every exclusion. It is never restored. Root transfer invalidated before root rollback. Stored before records remain comparison baselines, not eligible caches.",
+    "not_a_cache_key": "No lookup by checkpoint integer, count, size or sampled hash. Emit checks checkpoint as an additional consistency guard; eligibility comes solely from explicit serial Source control flow and no-intervening-mutator flag.",
+    "provenance": "computed: origin=current event and direct-from=None. reused: ultimate actual computed origin retained, direct-from is the immediately supplied earlier event. none: bothNone. Every event still gets fresh native pre/post budget and phase records; pre-serialization counters distinguish computed hashes from reuse decisions.",
+    "truth_scope": "All state/fingerprint/selected/rollback/trajectory claims remain untrusted. Fresh unchanged mathematical checker is authority. No speed/fit prediction, target route/known word, changed candidate order or learned contribution."
+  },
+  "rollback": "Current state is fingerprinted by complete injective streaming encoding at node/branch/root checkpoints and after rollback. All original graph totals, marking values/refcounts, roots/generations, selected/order, every factor/domain/exclusion, plus checkpoint/full trail prefix are compared. FOUND/UNKNOWN/cancel/late paths unwind with original failure55 reserve; any incomplete comparison clears candidate, marks restoration_failed/sequence incomplete. No hashing implies independent point/trajectory acceptance.",
+  "schema": "Q-compact-full-original-model-point-producer-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "search_policy": "Original canonical graph.decision; global dead checked before target ancestry, then forced or earliest-generation branch, canonical first candidate, complete base fallback through justified parent-local exclusions only. Full singleton generator EOF check; max128 actual base placements/max2000 successfully saved complete events/max1 candidate, no restart/rescue. No deliberate FOUND/UNKNOWN/cancel/late child is exhausted or excluded.",
+  "source": {
+    "bytes": 30988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+    "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+  },
+  "source_only": true,
+  "sources": {
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer": {
+      "bytes": 30988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+    }
+  },
+  "telemetry": {
+    "candidate_schema": "Q-untrusted-first-candidate-word-v1",
+    "candidate_wire": "Unchanged8 fields/first submission0/max1/1..24 commands/ordered physical keys/source_event_index; candidate has no file paths or trusted accepted flag. Same unchanged verifier4 CLI10 consumes candidate through ROOT fixed authority.",
+    "changed_scope_flags": {
+      "compact_event_sequence_complete_claimed": "Actual producer completion claim only; false after incomplete unwind.",
+      "full_domain_trace_recorded": false,
+      "independent_trajectory_replay_accepted": false,
+      "trace_complete_claimed": false
+    },
+    "event_schema": "Q-untrusted-producer-compact-event-v3",
+    "format": "Exclusive event-%06d.json with canonical complete JSON and newline. Whole event <=65536B, max2000. Complete ordered decision/place/exclusion/rollback events, keys/counters/metrics/checkpoint, complete fingerprint only at declared boundaries; partial paths retained. No truncation or favorable prefix.",
+    "per_event_additions": [
+      "observed_native_ns",
+      "budget_counts_before_event_serialization",
+      "budget_phase_intervals_before_event_serialization"
+    ],
+    "phase_fields": [
+      "phase_counts_observed_before_return_validation",
+      "phase_intervals_native_ns",
+      "phase_scope"
+    ],
+    "phase_meaning": "Construction and search enclosing integer-global intervals; counts for complete fingerprints/bytes/block ticks and event files/bytes/writes, with nested elapsedns. Return validation count snapshot explicitly precedes final validation. No double-add of nested clocks. Raw parse/intake/fresh checking/output/exit remain separately charged enclosing ROOT costs.",
+    "return_VERSION": "Q-full-original-model-untrusted-compact-candidate-Source-v5",
+    "return_schema": "Q-full-original-model-untrusted-producer-return-v1",
+    "reuse_count": "budget.counts.fingerprint_reuses; existing fingerprints counts actual complete computations",
+    "reuse_fields": [
+      "state_fingerprint_kind",
+      "state_fingerprint_origin_event",
+      "state_fingerprint_reused_from_event"
+    ],
+    "v4_scope": "Only VERSION/event-schema and three observations immediately before current event serialization; same graph/search/fingerprint algorithm. Last whole event remains available if process killed before return. No timing expectation."
+  },
+  "telemetry_v4_delta": {
+    "bytes": 1779,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/producer-v3-to-v4-Source-delta-v1.json",
+    "sha256": "040bffa26b80f526c1543b18767a929efec5e99215525208974646797d22a2b0"
+  },
+  "unchanged_ancestry": "Exact whole AST of collect_first_ancestry retained: strict-prior selected-source closure, ordered/repeated ports, original primitive witness expansion, topological physical order, MP/generalize refs rebased to candidate commands, <=24 commands. No supplied successful word or compiler/proof checker in producer.",
+  "version": "Q-full-original-model-untrusted-compact-candidate-Source-v5"
+}

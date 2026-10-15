@@ -1,0 +1,54 @@
+{
+  "schema": "atomic-family-donor-report-Source-handoff-v2",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/reader.html",
+    "sha256": "12fdcbbcc5cbb70a6865ea618b1f42292a0536da0f9fdb67977b30a93262927e",
+    "bytes": 57679
+  },
+  "report_data": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/report-data.json",
+    "sha256": "976e61492b94e99cd837772c86b70fa381a401b9b6c45e6db2fa21d404cb9e61",
+    "bytes": 49865
+  },
+  "presentation_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/presentation-checks-v1.json",
+    "sha256": "d47b9d1597a819b6ab2a9be2aaf627607cfba63a82ea2c5b6e4e009460e7ac0b",
+    "bytes": 2825
+  },
+  "Root_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+    "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+    "bytes": 14316
+  },
+  "scope": "Actual training-only proof/family static reader; all12primitiveformula/English rows, fullrootcensus, actualbody5/9/10+external7/8, typedslotbindings, originalclosedtarget and negativecontrols. No recipient/library/newtheorem/RL/GCTSadvantage. Human-chosen grammar after known donor is explicit.",
+  "costs": "Prior6.375017s and current0.497768s shown separately; sum6.872785s is separate-actual first-use arithmetic, not one measured cold lifecycle. Nativecurrent0.461179s/22,790,144B; toolwall0.678s. No phase attribution or speed claim.",
+  "public_folder": "atomic-family-donor/",
+  "public_aliases": {
+    "evidence/ROOT-plan-v1.json": "atomic-family-donor-ROOT-20261015/ROOT-plan-v1.json",
+    "evidence/ROOT-training-disposition-v1.json": "atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+    "evidence/owned/*": "atomic-family-donor-ROOT-20261015/training-owned-v1/*",
+    "evidence/external/*": "atomic-family-donor-ROOT-20261015/training-external-v1/*",
+    "evidence/peer/typed-Source-review-v1.json": "atomic-family-donor-training-independent-source-20261015/typed-Source-review-v1.json",
+    "evidence/saved-review/handoff-v1.json": "atomic-family-donor-training-saved-independent-20261015/handoff-v1.json",
+    "source/intake.py": "atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+    "source/family.py": "typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+    "source/checker_adapter.py": "equality-operand-transport-source-20261015/checker_adapters_v1.py",
+    "source/independent_checker.py": "arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+    "source/clean_support.py": "arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py"
+  },
+  "parallel_roles": "This agent actual proof/cluster reader; arithmetic goal-attached receptor experiment design; controls independent contribution/benchmark/saved review; Root actual/integration/publication.",
+  "remaining": "Root review/browser/MathJax/layout/complete evidence-link checks and publication only. All report alias targets are now frozen. No PUB/main-doc edits by this task.",
+  "Source_or_project_functions_clocks_tests_actuals": 0,
+  "preserved_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/handoff-v1.json",
+    "sha256": "f68fe90dee214e551dfa36f0de87a3a104eeb86ae5a4f97640d3c5ea042afb3e",
+    "bytes": 3513
+  },
+  "independent_saved_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-saved-independent-20261015/handoff-v1.json",
+    "sha256": "ae7eafa77a60d6c0155a419974c08e970491a7883b6cc3f83699a3b1c4774623",
+    "bytes": 1661
+  },
+  "delta": "Handoff metadata only: exact now-frozen distinct saved-review capsule/alias; reader/data/presentation checks unchanged."
+}

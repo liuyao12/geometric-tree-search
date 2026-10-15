@@ -1,0 +1,35 @@
+{
+  "controls": {
+    "bytes": 2674,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-disposition-v1.json",
+    "sha256": "90bf17063d8cd9d1bb094cab11f975ae7165c536b37a6a3ed587da4f25b1673b"
+  },
+  "current_actuals_terminal": true,
+  "diagnostic_change": "Two explicit pre-placement reuses; at shared event11 seven old computations became five, new cumulative7.447742s vs old10.729847s. Fresh postrollback hashing retained in saved events. All telemetry producer claims, no full trajectory replay.",
+  "donor_choice": {
+    "bytes": 5048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "35fe07d4d24fdb1181fddfc711c22c6bddf7f9b204fd09864520f9fc27438b12"
+  },
+  "fairness": "Current point timings include full-domain fingerprint diagnostics absent from ordinary whole-word search. Honest observed costs do not establish intrinsic algorithm inferiority. One-attempt parse variability and killed tails preclude end-to-end speed claims.",
+  "goal_active": true,
+  "goal_complete": false,
+  "last_live_commit": "ee1eef6d5648d0076497adef34f020fe1c75db2d",
+  "new_research_question": "Current family instantiate API only consumes selected dependency-complete facts. Goal-attached clusters with open input obligations may better fit backward point proof search; future separate design, unchanged current Source and no predicted benefit.",
+  "old_UNKNOWNs_promoted": false,
+  "outcome": "Original unchanged-model BASE remainsUNKNOWN: no candidate/freshverifier,20s gate false, memoryfits. Fifteen partial events/2completedplacements vs prior12/1; twelve common records literal-equal.",
+  "parallel_pending": "Donor-only single-worker Source5 implementation/review under Root choice35fe07; no actual donor plan/grant/invocation yet. Arithmetic agent authors saved-point report; controls reviewer available for donor Source.",
+  "prefix_comparison": {
+    "bytes": 1861,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-common-prefix-comparison-v1.json",
+    "sha256": "5c1bd10483b186c7e574a28ad160359cee791a12baed5de5152707ad29025761"
+  },
+  "previous_goal_turn_classification": "progress",
+  "primary": {
+    "bytes": 2664,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-disposition-v1.json",
+    "sha256": "2beddb283f80d92f5d544d2ab224b569ac11e1d790cd77007a1ef20b26ff2ae5"
+  },
+  "publication_pending": true,
+  "schema": "ROOT-point-reuse-research-checkpoint-v1"
+}

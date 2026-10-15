@@ -1,0 +1,99 @@
+{
+  "PUB_edits": false,
+  "Source_helpers_and_contracts_changed": false,
+  "actuals_or_reruns": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Authored the producer, fingerprint encoder and cold intake; this is Source-author literal saved-cost/correspondence analysis, not independent semantic or trajectory replay.",
+  "editorial_delta": {
+    "bytes": 6844,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/editorial-delta-v2.json",
+    "sha256": "f948a09471d313eba62bfb44d88aaecccac5b172a4e7dfefb2ad322a57a4c932"
+  },
+  "editorial_only": true,
+  "native_clock_calls": 0,
+  "pending_ROOT": [
+    "Publish reader-v2.html as the existing route reader.html after rendered editorial/layout/MathJax/link QA and live verification."
+  ],
+  "presentation_only": true,
+  "preserved_handoff_v1": {
+    "bytes": 5321,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/handoff-v1.json",
+    "sha256": "51a594475b107b8a85fb509c88d3e1138b64731086a8114fd8e2102b702a2dca"
+  },
+  "preserved_reader_v1": {
+    "bytes": 64306,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/reader.html",
+    "sha256": "83a4165eed653a296ff883a8164530840cfc5a92ef2fe3b52ab4784ae1aba9cc"
+  },
+  "reader": {
+    "bytes": 64346,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/reader-v2.html",
+    "sha256": "de1c08e90ff0f48ff06f4e7d91d4d134cbe887e4116fe0185f552013b948a64f"
+  },
+  "report_data": {
+    "bytes": 49509,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/report-data-v1.json",
+    "sha256": "df99fbda72aeb2725f003fba90af05a761d21e0acfeaa20990adb74e777e3a32"
+  },
+  "saved_data_only": true,
+  "saved_findings": {
+    "bytes": 14497,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/saved-findings-v1.json",
+    "sha256": "ccb4edc10e255489e763a6677f8b823ad1bc248a78f15a63c168c2df5ef9dc36"
+  },
+  "schema": "point-checkpoint-reuse-saved-reader-handoff-v2",
+  "scientific_calls": 0,
+  "scope": "Same12literal-prefix match; two explicit reuses and fresh saved postrollback hashes, primaryUNKNOWN/no candidate/verifier. Memory/lifecycle closed, original20 not accepted. Not independent semantic/trajectory replay, fullboard or speedup evidence.",
+  "small_evidence_copy_map": {
+    "evidence/ROOT-common-prefix-comparison-v1.json": {
+      "bytes": 1861,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-common-prefix-comparison-v1.json",
+      "sha256": "5c1bd10483b186c7e574a28ad160359cee791a12baed5de5152707ad29025761"
+    },
+    "evidence/ROOT-controls-disposition-v1.json": {
+      "bytes": 2674,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-disposition-v1.json",
+      "sha256": "90bf17063d8cd9d1bb094cab11f975ae7165c536b37a6a3ed587da4f25b1673b"
+    },
+    "evidence/ROOT-primary-disposition-v1.json": {
+      "bytes": 2664,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "2beddb283f80d92f5d544d2ab224b569ac11e1d790cd77007a1ef20b26ff2ae5"
+    },
+    "evidence/ROOT-primary-plan-v1.json": {
+      "bytes": 9322,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-plan-v1.json",
+      "sha256": "ebd8bace93b20d3e7f11ccd44873b4648744bdbc88df4a36981d875ce55db640"
+    },
+    "evidence/diagnostic-cost-scope-v1.json": {
+      "bytes": 3331,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-contribution-benchmark-audit-source-20261015/diagnostic-cost-scope-v1.json",
+      "sha256": "6c3e9aa12c89ab4a41651d432394bedd890a1a180d9decb6d5015082dec7f4df"
+    },
+    "evidence/primary-external/native-terminal.json": {
+      "bytes": 1703,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/native-terminal.json",
+      "sha256": "0c64fb4239fd045055147a79b80b5d357c513f68ac0bc459af802104552e13f5"
+    },
+    "evidence/primary-external/observation.json": {
+      "bytes": 432,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/observation.json",
+      "sha256": "926f43b7b8b29d02b1fa7a3304774a7505a6989933a6a31d6d8b8e4634a75cab"
+    },
+    "evidence/primary-owned/point-provisional.json": {
+      "bytes": 8632,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/point-provisional.json",
+      "sha256": "0627c4bc982382b30ed66ab97ced4ee13320ed24c6b854651bf8f93fd14f0d6e"
+    },
+    "evidence/primary-owned/producer-stdout.txt": {
+      "bytes": 826,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-stdout.txt",
+      "sha256": "5addee84e644acd39a9eb83d6405cff64c13543f52e1a3fa5242e54c4635f2ab"
+    }
+  },
+  "static_reader_checks": {
+    "bytes": 1689,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/static-reader-checks-v2.json",
+    "sha256": "5e78ce07be446b30fc84401467b1ee74cbb859d5d4742e208c869e32e538d4d1"
+  }
+}

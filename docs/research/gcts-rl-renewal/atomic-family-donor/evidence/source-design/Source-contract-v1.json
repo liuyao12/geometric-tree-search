@@ -1,0 +1,248 @@
+{
+  "schema": "atomic-family-admitted-donor-training-Source-contract-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+      "bytes": 62865
+    },
+    "checker_adapter": {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "inputs": {
+    "checked_candidate": {
+      "bytes": 4292,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-candidate.json",
+      "sha256": "cb8f196ae80c97e41e8be6b5dd8e48b3a49a2ade903978b083e970fe1534bcf4"
+    },
+    "checked_verifier_response": {
+      "bytes": 5051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-response.jsonl",
+      "sha256": "7076d1c96f2bbf66e5ba4f732e1ec166074aee35f292291a55e8501a71c95a85"
+    },
+    "declaration": {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "original_authority": {
+      "bytes": 2990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-authority.json",
+      "sha256": "75d731bdc4ab9ce986eaf5768583da40678f1b295cc88c98a2a7e263770afb54"
+    },
+    "prior_ROOT_disposition": {
+      "bytes": 2576,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "1f4d947319f65e24256322c24933881856ec3a90011c6499708145f18d3cdef7"
+    },
+    "prior_authorization": {
+      "bytes": 2285,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-authorization-v1.json",
+      "sha256": "d078ac950ca7743cea470fc6e8279f644d7be6efb8d4b1e68c69ff7aa8802dcc"
+    },
+    "prior_plan": {
+      "bytes": 9646,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-plan-v1.json",
+      "sha256": "2025b362053e1926da033c9e6260e1a3fd8ec0141cc1c6c5b94e62b0a1c37756"
+    },
+    "searched_producer_response": {
+      "bytes": 6846,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/producer-response.jsonl",
+      "sha256": "28038e79c4e27576581b7c64bc8be298aeaa1a3105a8a73e875d90c2bfa7c083"
+    }
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "leaf_reserved_bytes": 524288000,
+  "resource_rule": "single-owned-process-native-terminal-v1",
+  "protocol_choice": {
+    "bytes": 5048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "35fe07d4d24fdb1181fddfc711c22c6bddf7f9b204fd09864520f9fc27438b12"
+  },
+  "family_contract": {
+    "bytes": 12386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+    "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+  },
+  "family_peer": {
+    "bytes": 3472,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "3164ef1b1a22d873f6c0d6307c61cb7bae5181e46ad69a1f00b82c4aa5ecd9c0"
+  },
+  "API": {
+    "CLI": "Exactly one canonical absolute Root plan path; existing generic external9ded reads plan.sources.intake. Top Source captures original native G before remaining imports. main(argv,*,joint_began_ns) rejects absent/invalid early begin; D=G+20e9 with no reset. Root native launch-to-postterminal probe must additionally be<20e9, charging startup and exit.",
+    "plan_schema": "ROOT-atomic-family-donor-training-plan-v1",
+    "plan_exact_fields": [
+      "schema",
+      "invocation_id",
+      "purpose",
+      "output_directory",
+      "resource_rule",
+      "runtime",
+      "limits",
+      "source_contract",
+      "sources",
+      "inputs",
+      "reviews",
+      "protocol_choice",
+      "family_contract",
+      "family_peer",
+      "ROOT_authorization"
+    ],
+    "fixed_values": {
+      "purpose": "admitted-donor-training",
+      "resource_rule": "single-owned-process-native-terminal-v1"
+    },
+    "reviews": "Exact ROOT/peer capsule map; typed current Source5/source_contract/sources/scientific_calls literal0/scientific_acceptancefalse/source_onlytrue/source_review_passedtrue. ROOT reviewer=/root; peer reviewer distinct from/root and author. No invented pending review pin.",
+    "grant_schema": "ROOT-atomic-family-donor-training-authorization-v1",
+    "grant_required_values": {
+      "author_identity": "/root",
+      "actual_execution_authorized": true,
+      "invocation_id": "same plan value",
+      "purpose": "same plan value",
+      "source_bindings": "full exact current Source5",
+      "inputs": "exact fixed eight caps",
+      "resource_rule": "same plan value",
+      "protocol_choice": "exact35fe Root record",
+      "limits": "literal unchanged limits"
+    },
+    "mine": "family.mine_transport([private_donor],authenticate_donor=owned callback,check_word=owned Q-primary callback,tick=owned boundary). No recipient/catalogue/model inputs."
+  },
+  "donor_custody": [
+    "Whole bounded immutable raw byte length/SHA/EOF before parse; exact canonical two LF lines+EOF and body-LF hash on historical responses. Same actual raw buffers compiled for Source4 into private registered modules; intake Source authenticated by actual self buffer/current reviews.",
+    "Fixed36,369B saved inputs bind earlier Root primary/resource acceptance, original searched plan/grant, entire producer return/word/origin arrays, independent certificate all rows/formula hashes/ordered ports/original Gamma/target/parameters/four epochs. Exact raw prior-plan hash is fixed; its Source9/input8/original7 maps remain metadata and are not followed/read.",
+    "Root historical admission authenticates searched origin. This is not independent whole saturation-trace/recipe-membership replay: original producer did not save a whole trace. Private callback accepts only unchanged donor identity/value after exact origin-link digest. No producer checked flag is mathematical authority.",
+    "Existing1717 public closed-target endpoint through unchanged b32 adapter; primary=True/profileQ/entire original word. Shared original D projected with unchanged4645 exact helper per check; no renewal.",
+    "Existing CodeSeal captures all loaded module namespaces/classes/functions/defaults/cells/native/builtins/JSON cached decoder/scanner before semantic work. Exact copied anchor/same plus immediate own dispatch pre/post; finally guards exceptional returns too. Original callbacks captured once after setup, no mutation/reseal.",
+    "Parsing finite historical checker diagnostic floats is explicit; declaration/authority/candidate/commands semantic wire is strict no-float, duplicate-key/nonfinite rejected. Bounded dynamic metadata decoder is constructed within immediately full-guarded original decoder-class scope; no foreign hook/callable is accepted. No hostile asynchronous VM/OS guarantee."
+  ],
+  "controls": [
+    {
+      "id": "corrupt-origin",
+      "mutation": "Derived copy of actual admitted origin changes producer_origin.kind; actual owned authenticator must raise exact ValueError admitted searched origin linkage."
+    },
+    {
+      "id": "corrupted-command",
+      "mutation": "Derived actual first named-axiom row changes only its name to a bounded undeclared label, retaining original context/target; actual unchanged checker must raise exact ValueError exact named original axiom."
+    }
+  ],
+  "control_failure_policy": "Full native/Source/boundary checks before and after each delegate even on exceptions. Only the specific ValueError/message is a passed negative. A timeout/custody/parser/other exception is UNKNOWN, no accepted prefix. Controls precede positive whole-word check/mining.",
+  "mining": "Original core full donor root scan in order, first eligible shape only. No expected family count/root/template or recipient fixture. Complete zero-family result is eligible as mechanical stage completion; actual Root library admission remainsfalse. All literal donor witness/context/receptor/output roundtrips are original core, no supplied proof route.",
+  "outputs": {
+    "successful_files": [
+      "donor.json",
+      "controls.json",
+      "mined-library.json",
+      "intake-record.json",
+      "response.jsonl"
+    ],
+    "response": "Unchanged support.write_response: one canonical body LF and Q-clean-verifier-response-completion-v1 LF+EOF; completion bytes/SHA include body LF. Body inventory covers firstfour; final stdout summary pins complete response and allfive generated files. Full wire reread+canonical+EOF after writer.",
+    "status": "COMPLETE_TRAINING_PENDING_EXTERNAL only; native real exit0 and Root terminal T/postprobe/Date/current output reconciliation still required.",
+    "failure": "Exit2, bounded stderr under failure-only55 if available and any partial files preserved. No failure-prefix admission, no retry/rescue. Before/after run-directory creation failure can yield no complete output inventory; Root independently inventories all retained files/terminal evidence."
+  },
+  "resources": {
+    "processes": "Exactly one fixed owned worker, no subprocess/fork/observer descendants. Native pinned meter2/independent postterminal probe external. T alone covers entire single worker including exit tail; require true wait4 terminal/reaping/whole stdout+stderr/EOF and no unexpected descendants under fixed Source census.",
+    "memory": "B=T<=536870912; worker sampled SELF reserve<524288000 never substitutes for terminalT. No subtraction or sequential peak sum. No fit prediction.",
+    "time": "Original early G+D20 charges intake/imports/controls/check/mining/output/nativeexit; external launch-to-postprobe<20e9 also mandatory. Failure55 only error evidence; owned60/caller90+1/no reset unchanged."
+  },
+  "training_cost": "Earlier Root actual ordinary discovery launch-to-postprobe6.375017s is prior TRAINING cost; report separately and plus future stage cost as first use, never claim their sum was one fresh20s run or same-target transfer.",
+  "all_unearned_flags": {
+    "ROOT_library_admitted": false,
+    "ROOT_resource_accepted": false,
+    "new_theorem_claimed": false,
+    "recipient_accepted": false,
+    "point_state_accepted": false,
+    "full24_accepted": false,
+    "trajectory_accepted": false,
+    "native_accepted": false,
+    "RL_accepted": false,
+    "advantage_claimed": false
+  },
+  "remaining_integration": [
+    "Genuine current Root+distinct peer whole Source5 reviews then fresh actual Root plan/authorization/output/native files; none created by author.",
+    "Root authenticates external generic9ded, native meter2/current runtime+postterminal clock and whole cost/resource/native process closure.",
+    "Current instantiate_transport requires both dependency-complete selected receptors: forward fact reuse only. Goal-attached open-input-obligation point clusters are later research, unchanged/unimplemented here.",
+    "Recipient/current catalogue adapters, expanded-instance independent checking and exact original point/Gamma/preimage/shared ancestry/fallback remain later; no library activation from this mining stage."
+  ],
+  "Source_review_ABI": {
+    "scope": "atomic-family-admitted-donor-training-intake-Source",
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+      "bytes": 62865
+    },
+    "source_contract": "exact capsule of this saved contract",
+    "sources": {
+      "intake": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+        "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+        "bytes": 62865
+      },
+      "checker_adapter": {
+        "bytes": 3901,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+        "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+      },
+      "clean_support": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "family": {
+        "bytes": 29157,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+        "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+      },
+      "independent_checker": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      }
+    },
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "genuine reviewer distinct from author",
+    "source_only": true,
+    "source_review_passed": "only after actual Source review",
+    "scientific_calls": 0,
+    "scientific_acceptance": false
+  },
+  "author_disclosure": "Intake author also authored unchanged checker/codec/family and earlier saved-only review; did not author ordinary producer/adapter or Root historical admission. This is implementation authorship, not independent replay or a mathematical theorem.",
+  "static_authoring_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/static-authoring-checks-v2.json",
+    "sha256": "ebaa82750c36f6439b0a14d5e5a72e5e2ba81badf80c31cb8cd6922679795636",
+    "bytes": 12305
+  },
+  "Source_project_functions_Q_decodes_clocks_tests_actual_plans_outputs": 0
+}

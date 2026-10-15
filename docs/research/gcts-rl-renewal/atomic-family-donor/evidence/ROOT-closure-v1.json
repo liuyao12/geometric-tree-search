@@ -1,0 +1,23 @@
+{
+  "Q_decodes": 0,
+  "Source_functions_executed": 0,
+  "actual_started": false,
+  "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1",
+  "external_driver": {
+    "bytes": 4357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+    "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+  },
+  "external_schema_note": "Byte-identical generic9ded measurement-only driver retains ordinary schema prefixes. Actual plan/purpose/Source5 and explicit single-process protocol define this donor-only experiment; no ordinary/point proof wire is counterfeited.",
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "plan": {
+    "bytes": 6932,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "91768edb503601d093fb9e0d0470d2036e35e2617887995aa65cb5c200ef6b13"
+  },
+  "schema": "ROOT-atomic-family-donor-current-metadata-closure-v1"
+}

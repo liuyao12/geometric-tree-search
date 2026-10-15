@@ -1,0 +1,30 @@
+{
+  "check_count": 85,
+  "findings": {
+    "bytes": 51120,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-independent-source-20261015/findings-v1.json",
+    "sha256": "3539561aae253b46ae63af83fa9e268951d553cefe77c4b13e7551946a2007f7"
+  },
+  "raw_reference_count": 202,
+  "schema": "Q-point-checkpoint-reuse-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-point-compact-cold-intake-Source",
+  "source": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+    "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+  },
+  "source_contract": {
+    "bytes": 22518,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json",
+    "sha256": "8af1a14f9b9d02410616663296bc02597b20c939e7bb525cd2b5bd5025f65438"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 5455,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "ea593f29f7227357bbd332e3367d75233a83b11981003b9884450f1161f66272"
+  },
+  "unique_raw_path_count": 52
+}

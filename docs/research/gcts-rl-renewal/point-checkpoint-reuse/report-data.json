@@ -1,0 +1,1395 @@
+{
+  "all_true_reaped": true,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Authored the producer, fingerprint encoder and cold intake; this is Source-author literal saved-cost/correspondence analysis, not independent semantic or trajectory replay.",
+  "bootstrap_journal": [
+    {
+      "joint_began_ns": 444484796639000,
+      "joint_deadline_ns": 444504796639000,
+      "observed_native_ns": 444484999721000,
+      "phase": "preparation_read_begin",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    },
+    {
+      "joint_began_ns": 444484796639000,
+      "joint_deadline_ns": 444504796639000,
+      "observed_native_ns": 444485022614000,
+      "phase": "parse_begin",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    },
+    {
+      "joint_began_ns": 444484796639000,
+      "joint_deadline_ns": 444504796639000,
+      "observed_native_ns": 444489583270000,
+      "phase": "parse_end",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    },
+    {
+      "joint_began_ns": 444484796639000,
+      "joint_deadline_ns": 444504796639000,
+      "observed_native_ns": 444489590462000,
+      "phase": "point_call_begin",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    }
+  ],
+  "closure": {
+    "SELF_cut_bytes": 20856832,
+    "external_tool_elapsed_ms": 20264,
+    "maximum_leaf_peak_bytes": 293289984,
+    "native_parent_returncode": 2,
+    "original_joint_seconds": 20,
+    "owned_output_bytes": 55485978,
+    "owned_output_files": 44,
+    "producer_returncode": -9,
+    "true_terminal_T_bytes": 293289984
+  },
+  "computed_events": [
+    0,
+    5,
+    7,
+    8,
+    11,
+    13
+  ],
+  "controls": {
+    "accepted": true,
+    "native_caller_ns": 478593000,
+    "native_launch_to_postprobe_ns": 547168000,
+    "owned_bound_bytes": 54657024
+  },
+  "costs": {
+    "current": {
+      "completed_fingerprints": 6,
+      "construction_interval_ns": 1735580000,
+      "encoded_fingerprint_bytes": 60390759,
+      "event_serialization_ns_before_last_write": 3003000,
+      "fingerprint_elapsed_ns": 8905035000,
+      "last_saved_event": 14,
+      "last_saved_placements": 2,
+      "native_caller_ns": 20069408000,
+      "native_launch_to_postprobe_ns": 20107712000,
+      "owned_bound_bytes": 314146816,
+      "parse_interval_ns": 4560656000,
+      "recorded_reuses": 2,
+      "saved_events": 15
+    },
+    "prior": {
+      "completed_fingerprints": 7,
+      "construction_interval_ns": 1785311000,
+      "encoded_fingerprint_bytes": 71075040,
+      "event_serialization_ns_before_last_write": 2259000,
+      "fingerprint_elapsed_ns": 10729847000,
+      "last_saved_event": 11,
+      "last_saved_placements": 1,
+      "native_caller_ns": 20063764000,
+      "native_launch_to_postprobe_ns": 20128667000,
+      "owned_bound_bytes": 314015744,
+      "parse_interval_ns": 3735698000,
+      "recorded_reuses": 0,
+      "saved_events": 12
+    }
+  },
+  "diagnostics_fairness": {
+    "context": "Diagnostic fingerprint work is charged implementation cost, not evidence of inherent point reasoning inferiority. Do not subtract it from20seconds or retrospectively admit UNKNOWN. Ordinary search used different diagnostics. A later minimal-diagnostics comparison would need its own declared weaker trace scope and Source review.",
+    "current_Source_change": false,
+    "raw_pin": {
+      "bytes": 3331,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-contribution-benchmark-audit-source-20261015/diagnostic-cost-scope-v1.json",
+      "sha256": "6c3e9aa12c89ab4a41651d432394bedd890a1a180d9decb6d5015082dec7f4df"
+    }
+  },
+  "events": [
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 167,
+        "event_bytes": 0,
+        "event_files": 0,
+        "event_writes": 0,
+        "fingerprint_block_ticks": 156,
+        "fingerprint_bytes": 10271509,
+        "fingerprint_reuses": 0,
+        "fingerprints": 1,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 0,
+        "fingerprint_elapsed_ns": 1515005000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 0,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "events": 0,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 0,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 0,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "run_entry",
+      "node": null,
+      "observed_native_ns": 444492841359000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      },
+      "state_fingerprint_kind": "computed",
+      "state_fingerprint_origin_event": 0,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 173,
+        "event_bytes": 1450,
+        "event_files": 1,
+        "event_writes": 1,
+        "fingerprint_block_ticks": 156,
+        "fingerprint_bytes": 10271509,
+        "fingerprint_reuses": 1,
+        "fingerprints": 1,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 292000,
+        "fingerprint_elapsed_ns": 1515005000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 0,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "events": 1,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 1,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_enter",
+      "node": 0,
+      "observed_native_ns": 444492841672000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      },
+      "state_fingerprint_kind": "reused",
+      "state_fingerprint_origin_event": 0,
+      "state_fingerprint_reused_from_event": 0
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 179,
+        "event_bytes": 2901,
+        "event_files": 2,
+        "event_writes": 2,
+        "fingerprint_block_ticks": 156,
+        "fingerprint_bytes": 10271509,
+        "fingerprint_reuses": 1,
+        "fingerprints": 1,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 422000,
+        "fingerprint_elapsed_ns": 1515005000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 0,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "events": 2,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": {
+        "count": 23,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 2,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 0,
+      "observed_native_ns": 444492841840000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 185,
+        "event_bytes": 4245,
+        "event_files": 3,
+        "event_writes": 3,
+        "fingerprint_block_ticks": 156,
+        "fingerprint_bytes": 10271509,
+        "fingerprint_reuses": 2,
+        "fingerprints": 1,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 524000,
+        "fingerprint_elapsed_ns": 1515005000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 3,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 3,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "branch_checkpoint",
+      "node": 0,
+      "observed_native_ns": 444492841963000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      },
+      "state_fingerprint_kind": "reused",
+      "state_fingerprint_origin_event": 0,
+      "state_fingerprint_reused_from_event": 1
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 192,
+        "event_bytes": 5703,
+        "event_files": 4,
+        "event_writes": 4,
+        "fingerprint_block_ticks": 156,
+        "fingerprint_bytes": 10271509,
+        "fingerprint_reuses": 2,
+        "fingerprints": 1,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 614000,
+        "fingerprint_elapsed_ns": 1515005000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 4,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 1,
+        "rollbacks": 0
+      },
+      "decision": {
+        "count": 23,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 4,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": [
+        2670,
+        23,
+        [
+          0
+        ]
+      ],
+      "kind": "branch_place",
+      "node": 0,
+      "observed_native_ns": 444494135292000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 350,
+        "event_bytes": 7060,
+        "event_files": 5,
+        "event_writes": 5,
+        "fingerprint_block_ticks": 306,
+        "fingerprint_bytes": 20130217,
+        "fingerprint_reuses": 2,
+        "fingerprints": 2,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 905000,
+        "fingerprint_elapsed_ns": 2953653000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 5,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 1,
+      "event": 5,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_enter",
+      "node": 1,
+      "observed_native_ns": 444495574274000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 9858708,
+        "checkpoint": 1,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "367c8f138a4834c2da98e74c6457fcdeb464cb8beaac58122493075226017133"
+      },
+      "state_fingerprint_kind": "computed",
+      "state_fingerprint_origin_event": 5,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 356,
+        "event_bytes": 8512,
+        "event_files": 6,
+        "event_writes": 6,
+        "fingerprint_block_ticks": 306,
+        "fingerprint_bytes": 20130217,
+        "fingerprint_reuses": 2,
+        "fingerprints": 2,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 1204000,
+        "fingerprint_elapsed_ns": 2953653000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 6,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 0
+      },
+      "decision": {
+        "count": 0,
+        "generation": 0,
+        "kind": "dead",
+        "row": 0
+      },
+      "depth": 1,
+      "event": 6,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 1,
+      "observed_native_ns": 444495574611000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 514,
+        "event_bytes": 9850,
+        "event_files": 7,
+        "event_writes": 7,
+        "fingerprint_block_ticks": 456,
+        "fingerprint_bytes": 29988925,
+        "fingerprint_reuses": 2,
+        "fingerprints": 3,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 1325000,
+        "fingerprint_elapsed_ns": 4396001000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 7,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 1
+      },
+      "decision": null,
+      "depth": 1,
+      "event": 7,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_unwind",
+      "node": 1,
+      "observed_native_ns": 444497017100000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": "EXHAUSTED_PRODUCER_SUBTREE",
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 9858708,
+        "checkpoint": 1,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "367c8f138a4834c2da98e74c6457fcdeb464cb8beaac58122493075226017133"
+      },
+      "state_fingerprint_kind": "computed",
+      "state_fingerprint_origin_event": 7,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 677,
+        "event_bytes": 11328,
+        "event_files": 8,
+        "event_writes": 8,
+        "fingerprint_block_ticks": 612,
+        "fingerprint_bytes": 40260434,
+        "fingerprint_reuses": 2,
+        "fingerprints": 4,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 1606000,
+        "fingerprint_elapsed_ns": 5914654000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 8,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 8,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 72,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "child_rollback",
+      "node": 0,
+      "observed_native_ns": 444499842503000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": "EXHAUSTED_PRODUCER_SUBTREE",
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      },
+      "state_fingerprint_kind": "computed",
+      "state_fingerprint_origin_event": 8,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 682,
+        "event_bytes": 12814,
+        "event_files": 9,
+        "event_writes": 9,
+        "fingerprint_block_ticks": 612,
+        "fingerprint_bytes": 40260434,
+        "fingerprint_reuses": 2,
+        "fingerprints": 4,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 1904000,
+        "fingerprint_elapsed_ns": 5914654000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 1,
+        "branch_decisions": 1,
+        "events": 9,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 9,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 73,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": [
+        2670,
+        23,
+        [
+          0
+        ]
+      ],
+      "kind": "producer_exhausted_child_local_exclusion",
+      "node": 0,
+      "observed_native_ns": 444499845114000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 688,
+        "event_bytes": 14153,
+        "event_files": 10,
+        "event_writes": 10,
+        "fingerprint_block_ticks": 612,
+        "fingerprint_bytes": 40260434,
+        "fingerprint_reuses": 2,
+        "fingerprints": 4,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 2046000,
+        "fingerprint_elapsed_ns": 5914654000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 1,
+        "branch_decisions": 1,
+        "events": 10,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": {
+        "count": 22,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 10,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 73,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 0,
+      "observed_native_ns": 444499845299000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 852,
+        "event_bytes": 15503,
+        "event_files": 11,
+        "event_writes": 11,
+        "fingerprint_block_ticks": 768,
+        "fingerprint_bytes": 50532022,
+        "fingerprint_reuses": 2,
+        "fingerprints": 5,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 2145000,
+        "fingerprint_elapsed_ns": 7447742000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 2,
+        "attempts": 1,
+        "backtracks": 1,
+        "branch_decisions": 2,
+        "events": 11,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 11,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 73,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "branch_checkpoint",
+      "node": 0,
+      "observed_native_ns": 444501378516000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 10271588,
+        "checkpoint": 1,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "ed7c88e0a8361c11a896faec9bc371d60b07bf0f7dcdcb04806585da7967a14b"
+      },
+      "state_fingerprint_kind": "computed",
+      "state_fingerprint_origin_event": 11,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 859,
+        "event_bytes": 16973,
+        "event_files": 12,
+        "event_writes": 12,
+        "fingerprint_block_ticks": 768,
+        "fingerprint_bytes": 50532022,
+        "fingerprint_reuses": 2,
+        "fingerprints": 5,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 2368000,
+        "fingerprint_elapsed_ns": 7447742000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 2,
+      "counters": {
+        "ancestry_scans": 2,
+        "attempts": 2,
+        "backtracks": 1,
+        "branch_decisions": 2,
+        "events": 12,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 2,
+        "rollbacks": 2
+      },
+      "decision": {
+        "count": 22,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 12,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 96,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 2,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": [
+        2670,
+        23,
+        [
+          1
+        ]
+      ],
+      "kind": "branch_place",
+      "node": 0,
+      "observed_native_ns": 444502605621000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 1017,
+        "event_bytes": 18336,
+        "event_files": 13,
+        "event_writes": 13,
+        "fingerprint_block_ticks": 918,
+        "fingerprint_bytes": 60390759,
+        "fingerprint_reuses": 2,
+        "fingerprints": 6,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 2683000,
+        "fingerprint_elapsed_ns": 8905035000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 2,
+      "counters": {
+        "ancestry_scans": 2,
+        "attempts": 2,
+        "backtracks": 1,
+        "branch_decisions": 2,
+        "events": 13,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 3,
+        "placements": 2,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 1,
+      "event": 13,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 96,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 2,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_enter",
+      "node": 2,
+      "observed_native_ns": 444504063259000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": {
+        "bytes": 9858737,
+        "checkpoint": 2,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "817bf5536d45bd06f4cb8303a2d4bf29132181e0395861dde94dfc1e38e13103"
+      },
+      "state_fingerprint_kind": "computed",
+      "state_fingerprint_origin_event": 13,
+      "state_fingerprint_reused_from_event": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 1023,
+        "event_bytes": 19796,
+        "event_files": 14,
+        "event_writes": 14,
+        "fingerprint_block_ticks": 918,
+        "fingerprint_bytes": 60390759,
+        "fingerprint_reuses": 2,
+        "fingerprints": 6,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 444489590523000,
+        "construction_end_ns": 444491326103000,
+        "event_serialization_elapsed_ns": 3003000,
+        "fingerprint_elapsed_ns": 8905035000,
+        "search_begin_ns": 444491326341000,
+        "search_end_ns": null
+      },
+      "checkpoint": 2,
+      "counters": {
+        "ancestry_scans": 2,
+        "attempts": 2,
+        "backtracks": 1,
+        "branch_decisions": 2,
+        "events": 14,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 3,
+        "placements": 2,
+        "rollbacks": 2
+      },
+      "decision": {
+        "count": 0,
+        "generation": 0,
+        "kind": "dead",
+        "row": 1
+      },
+      "depth": 1,
+      "event": 14,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 96,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 2,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 2,
+      "observed_native_ns": 444504063621000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v3",
+      "state_fingerprint": null,
+      "state_fingerprint_kind": "none",
+      "state_fingerprint_origin_event": null,
+      "state_fingerprint_reused_from_event": null
+    }
+  ],
+  "future_family_crosslink": "Pending ROOT milestone; no family activation or contribution inferred here.",
+  "lifecycle_output_closed": true,
+  "matched_prefix_at_event11": {
+    "all12_events_equal": true,
+    "compared_literal_fields": [
+      "event",
+      "kind",
+      "node",
+      "parent",
+      "depth",
+      "decision",
+      "key",
+      "producer_status",
+      "counters",
+      "graph_metrics",
+      "checkpoint",
+      "state_fingerprint"
+    ],
+    "current_completed_fingerprint_ns": 7447742000,
+    "current_computed": 5,
+    "current_reused": 2,
+    "prior_completed_fingerprint_ns": 10729847000,
+    "prior_computed": 7
+  },
+  "memory_accepted": true,
+  "no_candidate_or_fresh_verifier": true,
+  "original_Gamma_latex": "\\Gamma=\\varnothing",
+  "original_target_latex": "\\forall n\\;\\bigl(n+S(0)=S(n)\\bigr)",
+  "presentation_only": true,
+  "primary_accepted": false,
+  "primary_status": "UNKNOWN",
+  "raw_pin_map": {
+    "ROOT_literal_prefix_comparison": {
+      "bytes": 1861,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-common-prefix-comparison-v1.json",
+      "sha256": "5c1bd10483b186c7e574a28ad160359cee791a12baed5de5152707ad29025761"
+    },
+    "controls_disposition": {
+      "bytes": 2674,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-disposition-v1.json",
+      "sha256": "90bf17063d8cd9d1bb094cab11f975ae7165c536b37a6a3ed587da4f25b1673b"
+    },
+    "current/bootstrap_journal": {
+      "bytes": 826,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-stdout.txt",
+      "sha256": "5addee84e644acd39a9eb83d6405cff64c13543f52e1a3fa5242e54c4635f2ab"
+    },
+    "current/event-000000.json": {
+      "bytes": 1450,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000000.json",
+      "sha256": "98daaf3c9facc5832f8fb6f34d69b8dae51f507cc426c186dbf290b4eb7c5277"
+    },
+    "current/event-000001.json": {
+      "bytes": 1451,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000001.json",
+      "sha256": "f792d4cb55f4b91fedc80a61b32590b4e793c9e5f4de7d43cae2fab2edc26576"
+    },
+    "current/event-000002.json": {
+      "bytes": 1344,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000002.json",
+      "sha256": "5fc9b39e975ea1606908d7b91738a12cada5b8bd1d9995337bbf08391df40c12"
+    },
+    "current/event-000003.json": {
+      "bytes": 1458,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000003.json",
+      "sha256": "6aa4e441b1d0b66a2c02c6bdef5303d53dd5e3d68ce39240094ca5c0ac66fdeb"
+    },
+    "current/event-000004.json": {
+      "bytes": 1357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000004.json",
+      "sha256": "03c68f0633e39df2c012567857bcfdf5455dff3044122ab6192d14c2653799c6"
+    },
+    "current/event-000005.json": {
+      "bytes": 1452,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000005.json",
+      "sha256": "93fa13d5bc3c75d5edae806e090cde5aa27c7d596c8bab8f65919309ec80942c"
+    },
+    "current/event-000006.json": {
+      "bytes": 1338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000006.json",
+      "sha256": "2275dab5cd18bec93c451c32963bcc54e156b743ed4953f056e13a343c1e359a"
+    },
+    "current/event-000007.json": {
+      "bytes": 1478,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000007.json",
+      "sha256": "a83ddb5d8abd9642ad8faf837e092584b239fdc3b2eea3e585e21c3ccceeb217"
+    },
+    "current/event-000008.json": {
+      "bytes": 1486,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000008.json",
+      "sha256": "e0a3713de41c8c9410a847cccfbb91292e5e6d1f4b3d822d56b1482e64543a93"
+    },
+    "current/event-000009.json": {
+      "bytes": 1339,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000009.json",
+      "sha256": "190a63cb60e09dc78d4ad0983459f740cf2afa186ddc90ed87d389ea33a74123"
+    },
+    "current/event-000010.json": {
+      "bytes": 1350,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000010.json",
+      "sha256": "cc5ca985084fdfa2fdbc4dc591d1d51e94fa04a28ceafa04a98a829e3e8cf08b"
+    },
+    "current/event-000011.json": {
+      "bytes": 1470,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000011.json",
+      "sha256": "7719b83036352d5081a3c5225eb6a87fe0e6e83cac2124745b8b9b7a85cb4ae0"
+    },
+    "current/event-000012.json": {
+      "bytes": 1363,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000012.json",
+      "sha256": "c223c44a2fd508f449302f24ab4d4155b9c65639215877cc3e3e9493791cd47a"
+    },
+    "current/event-000013.json": {
+      "bytes": 1460,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000013.json",
+      "sha256": "ca86898b11099818a30cfd31067de3376d057f83681b44611813a044cea0a3d6"
+    },
+    "current/event-000014.json": {
+      "bytes": 1344,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000014.json",
+      "sha256": "d0432ebf76d0f510ffbeff694c8c01f91dedb7af7e3b70078c51425c50a86e3b"
+    },
+    "diagnostic_fairness": {
+      "bytes": 3331,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-contribution-benchmark-audit-source-20261015/diagnostic-cost-scope-v1.json",
+      "sha256": "6c3e9aa12c89ab4a41651d432394bedd890a1a180d9decb6d5015082dec7f4df"
+    },
+    "external_observation": {
+      "bytes": 432,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/observation.json",
+      "sha256": "926f43b7b8b29d02b1fa7a3304774a7505a6989933a6a31d6d8b8e4634a75cab"
+    },
+    "native_terminal": {
+      "bytes": 1703,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/native-terminal.json",
+      "sha256": "0c64fb4239fd045055147a79b80b5d357c513f68ac0bc459af802104552e13f5"
+    },
+    "primary_disposition": {
+      "bytes": 2664,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "2beddb283f80d92f5d544d2ab224b569ac11e1d790cd77007a1ef20b26ff2ae5"
+    },
+    "primary_plan": {
+      "bytes": 9322,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-plan-v1.json",
+      "sha256": "ebd8bace93b20d3e7f11ccd44873b4648744bdbc88df4a36981d875ce55db640"
+    },
+    "prior/bootstrap_journal": {
+      "bytes": 826,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-stdout.txt",
+      "sha256": "eb6a93b6537eb6daed50f6bc49313bf054c039fbfa3c124f451c323ccd22ae59"
+    },
+    "prior/event-000000.json": {
+      "bytes": 1313,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000000.json",
+      "sha256": "e2616cc28d47424ed200802e9a7fea91eaedb30b19f8f7509fb9ef858496ea64"
+    },
+    "prior/event-000001.json": {
+      "bytes": 1319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000001.json",
+      "sha256": "c27e3b1a1667271cae28f217a33fa9f5d3ca40ffb40aa57c27898143caa58eed"
+    },
+    "prior/event-000002.json": {
+      "bytes": 1208,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000002.json",
+      "sha256": "fdd2e90a5cc23bfbd664b895ccab229ff28cf9b2456c0daf87269c854ebef494"
+    },
+    "prior/event-000003.json": {
+      "bytes": 1326,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000003.json",
+      "sha256": "6115dea659655dbc37681e22142f3c12f318e006323afe8853d6add2e6d4523a"
+    },
+    "prior/event-000004.json": {
+      "bytes": 1221,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000004.json",
+      "sha256": "3323489e627ab5fc2bcf90f5d198225faff3de0298488f809a088a4b56200400"
+    },
+    "prior/event-000005.json": {
+      "bytes": 1316,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000005.json",
+      "sha256": "770b794530aca7d6ac459a9d9097e6c30616cf3de1d2ab0628d07d0f56510633"
+    },
+    "prior/event-000006.json": {
+      "bytes": 1202,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000006.json",
+      "sha256": "74252d5958aa80df79cfb8f44efeab3715d94b1d2ab7ac083c08b8fca4bfb521"
+    },
+    "prior/event-000007.json": {
+      "bytes": 1341,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000007.json",
+      "sha256": "7c515120521fd2f923216509e86d5a6af07f55e9c8ec7ef5dcc2b4695d3437e0"
+    },
+    "prior/event-000008.json": {
+      "bytes": 1349,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000008.json",
+      "sha256": "a26084d7217adfd1c4552be7495af4ae5b372e178d6b2295b28d9fe4b4eb949a"
+    },
+    "prior/event-000009.json": {
+      "bytes": 1203,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000009.json",
+      "sha256": "38fbd7378c5ea7cf2e8c47ec1a1cdc4b55aecbba59608236dac0d9eaff6c4ded"
+    },
+    "prior/event-000010.json": {
+      "bytes": 1215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000010.json",
+      "sha256": "adda331f1ff1272f2ab1edc936b01a7a56015fd7099f629f4817ed94141e5e91"
+    },
+    "prior/event-000011.json": {
+      "bytes": 1335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000011.json",
+      "sha256": "cf4dfa836e2d4f461238d42f546863edcf75295ff442f7bffb97d640e1294845"
+    },
+    "prior_primary_disposition": {
+      "bytes": 2619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "ceb542a8c5958f9a4238a10c37a813c0e6802211f7dd79ea62bd3347ee4cc6ae"
+    },
+    "provisional": {
+      "bytes": 8632,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/point-provisional.json",
+      "sha256": "0627c4bc982382b30ed66ab97ced4ee13320ed24c6b854651bf8f93fd14f0d6e"
+    },
+    "tool_bracket": {
+      "bytes": 198,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/tool-bracket.json",
+      "sha256": "a87af66ad1944908823cfb6fc3a4c35123059582556cbc382a3f8fdf50046e2c"
+    }
+  },
+  "resource_accepted": false,
+  "reuse_provenance": [
+    {
+      "complete_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      },
+      "computed_origin_event": 0,
+      "direct_from_event": 0,
+      "event": 1
+    },
+    {
+      "complete_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      },
+      "computed_origin_event": 0,
+      "direct_from_event": 1,
+      "event": 3
+    }
+  ],
+  "same_original_model": {
+    "attempt_limit": 128,
+    "candidate_limit": 1,
+    "event_limit": 2000,
+    "formula_count_existing": 11147,
+    "known_ordinary_word_supplied": false,
+    "point_graph_Source_unchanged": true,
+    "recipe_count_existing": 16200,
+    "rows": 24
+  },
+  "saved_after_rollback_computed_events": [
+    7,
+    8
+  ],
+  "saved_data_only": true,
+  "saved_findings_check_count": 141,
+  "schema": "Notebook-point-checkpoint-reuse-saved-display-v1"
+}

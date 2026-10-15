@@ -1,0 +1,133 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "axioms_latex": [
+    "\\(\\forall x\\;(x+0=x)\\)",
+    "\\(\\forall x\\;\\forall y\\;(x+S(y)=S(x+y))\\)"
+  ],
+  "baseline": [
+    {
+      "advice": "generic inverse primitive-recipe goal agenda only; full forward canonical fallback",
+      "engine": "ordinary",
+      "id": "ordinary-primitive-goals"
+    },
+    {
+      "advice": "same agenda plus exact mined family and ordered pending obligations",
+      "engine": "ordinary",
+      "id": "ordinary-mined-open"
+    },
+    {
+      "advice": "same primitive-only agenda; reference scheduler and complete base domains",
+      "engine": "original point model",
+      "id": "point-primitive-goals"
+    },
+    {
+      "advice": "same mined family as ordinary; reference scheduler and complete base domains",
+      "engine": "original point model",
+      "id": "point-mined-open"
+    }
+  ],
+  "candidate_proof_or_route_supplied": false,
+  "context_latex": "\\(\\Gamma=\\varnothing\\)",
+  "design_only": true,
+  "evidence": {
+    "family_contract": {
+      "bytes": 12386,
+      "focus": "Current typed atomic-context family, not historical whole-operand recognizer",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+      "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+    },
+    "family_source": {
+      "bytes": 29157,
+      "focus": "recognize:200; complete_rows:382; expand:391; instantiate_transport:441-476",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "family_training_disposition": {
+      "bytes": 14316,
+      "focus": "Actual accepted donor-only training stage, recipient/library admission false",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+      "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6"
+    },
+    "mined_library": {
+      "bytes": 6598,
+      "focus": "Actual single mined successor context and complete twelve-root census",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+      "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93"
+    },
+    "ordinary_admission": {
+      "bytes": 2576,
+      "focus": "Actual ordinary right-one result; conventional primitive word only",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "1f4d947319f65e24256322c24933881856ec3a90011c6499708145f18d3cdef7"
+    },
+    "ordinary_proof_rows": {
+      "bytes": 28708,
+      "focus": "Saved donor rows; zero-based body [5,9,10], inputs [7,8]",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-saved-independent-20261015/proof-rows-v1.json",
+      "sha256": "5f673266061a850a557b7bf2853a4fc7be3a6a1e9b8110d592f53f05f6f56e70"
+    }
+  },
+  "implementation_status": "Not implemented: proposed separate goal-attached pending-obligation API. Existing e499 selected-facts interface remains intact.",
+  "library_admitted": false,
+  "new_actual_results": false,
+  "presentation_only": true,
+  "proposal": {
+    "bytes": 16849,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/proposed-experiment-v1.json",
+    "sha256": "46cf388710342750c78f05cbf823d72c928974f2770cdb9f3571171b81b9abdb"
+  },
+  "proposed_targets": [
+    {
+      "current_status": "Unsearched by this proposal; no claim that current bounded grammar yields a word within24.",
+      "id": "right-two",
+      "original_Gamma_latex": "\\(\\Gamma=\\varnothing\\)",
+      "parameters": [
+        "n"
+      ],
+      "role": "Proposed first prospective recipient; no recipient commands, proof route or target-derived family are supplied.",
+      "target_latex": "\\(\\forall n\\;\\bigl(n+S(S(0))=S(S(n))\\bigr)\\)"
+    }
+  ],
+  "public_crosslinks": [
+    "../atomic-family-donor/reader.html",
+    "../point-checkpoint-reuse/reader.html",
+    "../parallel-assessment/reader.html",
+    "../ordinary-right-one/reader.html#reader"
+  ],
+  "recipient_admitted": false,
+  "schema": "goal-attached-arithmetic-receptor-display-data-v1",
+  "training": {
+    "body_wire_rows": [
+      5,
+      9,
+      10
+    ],
+    "cost_scope": "Discovery and mining were two separately budgeted actuals, not one joint20 experiment.",
+    "eligible_wire_roots": [
+      10
+    ],
+    "evidence": "Automatically discovered ordinary twelve-command word; actual subsequent donor recheck/mining. No held-out score from replaying it.",
+    "family_id": "atomic-context-family-9aa619cbfbef7dff86d7bd30a96f8d8c8024e570cef7402c588e227b6c81801c",
+    "first_use_discovery_plus_mining_ns": 6872785000,
+    "learned_vs_human": "The concrete correlated context/roles/body came from the saved donor. The three-rule mining grammar was human chosen after seeing this donor; this is program-fragment extraction, not learned calculus, RL or an unbiased held-out success.",
+    "library_admitted": false,
+    "native_launch_to_postprobe_ns": 497768000,
+    "observed_context_latex": "\\(\\Phi(h)\\equiv u_0=S(h)\\)",
+    "observed_interface_latex": "\\(s=t,\\quad u_0=S(s)\\quad\\vdash\\quad u_0=S(t)\\)",
+    "ordered_external_wire_rows": [
+      7,
+      8
+    ],
+    "original_Gamma_latex": "\\(\\Gamma=\\varnothing\\)",
+    "primitive_expansion_rules": [
+      "eq_subst",
+      "mp",
+      "mp"
+    ],
+    "recipient_admitted": false,
+    "roots_censused": 12,
+    "single_worker_peak_bytes": 22790144,
+    "target_latex": "\\(\\forall n\\;\\bigl(n+S(0)=S(n)\\bigr)\\)"
+  }
+}

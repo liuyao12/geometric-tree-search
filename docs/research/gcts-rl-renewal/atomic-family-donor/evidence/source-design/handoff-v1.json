@@ -1,0 +1,71 @@
+{
+  "schema": "atomic-family-donor-training-Source-handoff-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+    "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+    "bytes": 62865
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/Source-contract-v1.json",
+    "sha256": "70f2ea39ba4352dd79320ae7175cf03d92a883df8cbd5a0437528f05de32beca",
+    "bytes": 16673
+  },
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+      "bytes": 62865
+    },
+    "checker_adapter": {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "static_authoring_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/static-authoring-checks-v2.json",
+    "sha256": "ebaa82750c36f6439b0a14d5e5a72e5e2ba81badf80c31cb8cd6922679795636",
+    "bytes": 12305
+  },
+  "draft_preserved": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v1.py",
+    "sha256": "6168d57e1c4c1f3e81cdb2fbcfc59cfbc53e54153e6168bb87004600edb2c7de",
+    "bytes": 62986
+  },
+  "full_inverse": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/selected-v2-to-draft-v1-full-inverse.patch",
+    "sha256": "2ad112c0395578269f256bc3a6f97ae525ae0959191b6d169db8e159b8b5d220",
+    "bytes": 42325
+  },
+  "scope": "One admitted searched ordinary word as TRAINING/debug donor. SoleplanCLI, Source5, eight small inputs. Built-in derived origin/command negatives then unchanged1717 full closed-target recheck and original all-root miner. No actual functions/plan/output/recipient/library admission.",
+  "dependencies": "All4 dependencies unchanged; historical large input/source maps are metadata-only. Existing family scope is forward selected-fact reuse.",
+  "required_next": [
+    "Root and genuine distinct peer current Source5 review.",
+    "Root exact fresh plan15+authorization/native external9ded+meter2+postprobe; no activation grant from this packet.",
+    "Actual whole wire/census/controls/nativeT-only/resources saved reconciliation; zero family remains possible, no expected positive."
+  ],
+  "execution": {
+    "Source_or_project_functions": 0,
+    "Q_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actual_plans_or_output_directories": 0
+  }
+}

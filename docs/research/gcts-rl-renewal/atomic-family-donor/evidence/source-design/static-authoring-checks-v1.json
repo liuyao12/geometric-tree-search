@@ -1,0 +1,345 @@
+{
+  "schema": "atomic-donor-training-Source-author-static-v1",
+  "source_only": true,
+  "checks": [
+    {
+      "id": "parent-helper-need",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-integer",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-canonical",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-digest",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-pin_bytes",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-duplicate_free",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-no_constant",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-no_float",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-signed_integer",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-finite_float",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-tree",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-decode",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-regular_fd",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-read_small",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "parent-helper-write_exclusive",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact; no copied helper called during authoring."
+    },
+    {
+      "id": "clean-helper-anchor",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact, including defaults/closure comparisons."
+    },
+    {
+      "id": "clean-helper-same",
+      "passed": true,
+      "detail": "Complete FunctionDef AST exact, including defaults/closure comparisons."
+    },
+    {
+      "id": "raw-current-intake",
+      "passed": true,
+      "detail": "Whole raw source buffer authenticated, not imported/executed."
+    },
+    {
+      "id": "raw-current-checker_adapter",
+      "passed": true,
+      "detail": "Whole raw source buffer authenticated, not imported/executed."
+    },
+    {
+      "id": "raw-current-clean_support",
+      "passed": true,
+      "detail": "Whole raw source buffer authenticated, not imported/executed."
+    },
+    {
+      "id": "raw-current-family",
+      "passed": true,
+      "detail": "Whole raw source buffer authenticated, not imported/executed."
+    },
+    {
+      "id": "raw-current-independent_checker",
+      "passed": true,
+      "detail": "Whole raw source buffer authenticated, not imported/executed."
+    },
+    {
+      "id": "small-input-checked_candidate",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-checked_verifier_response",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-declaration",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-original_authority",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-prior_ROOT_disposition",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-prior_authorization",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-prior_plan",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "small-input-searched_producer_response",
+      "passed": true,
+      "detail": "Whole small raw artifact authenticated; no large Q file followed/parsed."
+    },
+    {
+      "id": "fixed-FAMILY_CONTRACT",
+      "passed": true,
+      "detail": "Whole raw declared metadata/runtime hash only."
+    },
+    {
+      "id": "fixed-FAMILY_PEER",
+      "passed": true,
+      "detail": "Whole raw declared metadata/runtime hash only."
+    },
+    {
+      "id": "fixed-PROTOCOL",
+      "passed": true,
+      "detail": "Whole raw declared metadata/runtime hash only."
+    },
+    {
+      "id": "fixed-RUNTIME",
+      "passed": true,
+      "detail": "Whole raw declared metadata/runtime hash only."
+    },
+    {
+      "id": "execution-role-five",
+      "passed": true,
+      "detail": "No producer, catalogue, codec, point graph or Hilbert execution."
+    },
+    {
+      "id": "inputs-eight-small",
+      "passed": true,
+      "detail": "Eight saved artifacts total36,369 B; no Q payload read."
+    },
+    {
+      "id": "stdlib-imports",
+      "passed": true,
+      "detail": [
+        "builtins",
+        "copy",
+        "fcntl",
+        "hashlib",
+        "itertools",
+        "json",
+        "math",
+        "os",
+        "pathlib",
+        "resource",
+        "select",
+        "stat",
+        "sys",
+        "time",
+        "types"
+      ]
+    },
+    {
+      "id": "no-child-call",
+      "passed": true,
+      "detail": "One process only; same original checker/family imported from authenticated buffers."
+    },
+    {
+      "id": "no-actual-construction",
+      "passed": true,
+      "detail": "Only Source proposal metadata authored, no actual plan/output directory."
+    },
+    {
+      "id": "strict-original-caps",
+      "passed": true,
+      "detail": "Plan/grant literal-int validation; native successful return before original20."
+    },
+    {
+      "id": "15-plan-fields",
+      "passed": true,
+      "detail": "Exact15 current prospective ABI, no actual plan emitted."
+    },
+    {
+      "id": "exception-postguard",
+      "passed": true,
+      "detail": "Delegate success and rejection both pass mandatory original boundary in finally."
+    },
+    {
+      "id": "original-miner-only",
+      "passed": false,
+      "detail": "One original miner, no recipient integration or point change."
+    },
+    {
+      "id": "derived-control-no-proof-literal",
+      "passed": true,
+      "detail": "Control changes derive from authenticated actual word/origin; no target-positive fixture or eligible-root constant."
+    },
+    {
+      "id": "full-root-derived",
+      "passed": true,
+      "detail": "Complete original root census, allowed zero/one family; no expected selected count."
+    },
+    {
+      "id": "final-native-exit",
+      "passed": true,
+      "detail": "Captured native exit after full wire/stdout/finalguard, no interpreter finalizers."
+    },
+    {
+      "id": "syntax-only",
+      "passed": true,
+      "detail": "One syntax compile+AST parse of new Source, never eval/exec/import."
+    }
+  ],
+  "check_count": 47,
+  "all_checks_passed": false,
+  "authorship": {
+    "intake_family_checker_codec_author": "/root/hilbert_ordering_diagnosis",
+    "ordinary_producer_adapter_and_prior_Root_admission": "not authored by this worker author"
+  },
+  "inheritance": {
+    "parent": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_cold_intake_v1.py",
+      "sha256": "57e2c28233996e4eafc0d19ea0fe9af7eac79c6356174b04f37cf979615c2a47",
+      "bytes": 39108
+    },
+    "clean_leaf": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_clean_checker_v2.py",
+      "sha256": "0ab3ccda1f21660a014f03817f5154d5a3125869d9110b39a083e9483587b3ec",
+      "bytes": 11676
+    },
+    "parent_exact_helpers": [
+      "need",
+      "integer",
+      "canonical",
+      "digest",
+      "pin_bytes",
+      "duplicate_free",
+      "no_constant",
+      "no_float",
+      "signed_integer",
+      "finite_float",
+      "tree",
+      "decode",
+      "regular_fd",
+      "read_small",
+      "write_exclusive"
+    ],
+    "clean_exact_helpers": [
+      "anchor",
+      "same"
+    ]
+  },
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+      "bytes": 62865
+    },
+    "checker_adapter": {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "draft_preserved": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v1.py",
+    "sha256": "6168d57e1c4c1f3e81cdb2fbcfc59cfbc53e54153e6168bb87004600edb2c7de",
+    "bytes": 62986
+  },
+  "forward_patch": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/draft-v1-to-selected-v2.patch",
+    "sha256": "9c345bfb0fe1db214799460f366b8bde3f1cc5dd6e47801cb544d636cf68bc86",
+    "bytes": 42315
+  },
+  "full_inverse_patch": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/selected-v2-to-draft-v1-full-inverse.patch",
+    "sha256": "2ad112c0395578269f256bc3a6f97ae525ae0959191b6d169db8e159b8b5d220",
+    "bytes": 42325
+  },
+  "execution": {
+    "proposed_source_or_project_function_calls": 0,
+    "Q_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actual_plans_or_output_dirs": 0
+  }
+}

@@ -1,0 +1,1023 @@
+{
+  "base_commit": "ee1eef6d5648d0076497adef34f020fe1c75db2d",
+  "count": 169,
+  "files": [
+    {
+      "bytes": 64346,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/reader.html",
+      "sha256": "de1c08e90ff0f48ff06f4e7d91d4d134cbe887e4116fe0185f552013b948a64f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/reader-v2.html"
+    },
+    {
+      "bytes": 49509,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/report-data.json",
+      "sha256": "df99fbda72aeb2725f003fba90af05a761d21e0acfeaa20990adb74e777e3a32",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/report-data-v1.json"
+    },
+    {
+      "bytes": 14497,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/report/saved-findings-v1.json",
+      "sha256": "ccb4edc10e255489e763a6677f8b823ad1bc248a78f15a63c168c2df5ef9dc36",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/saved-findings-v1.json"
+    },
+    {
+      "bytes": 6137,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/report/handoff-v2.json",
+      "sha256": "874af9b21a671de00087a4afdc1035106f60e25261de6e54c0ddc7cabe3480cf",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/handoff-v2.json"
+    },
+    {
+      "bytes": 1689,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/report/static-reader-checks-v2.json",
+      "sha256": "5e78ce07be446b30fc84401467b1ee74cbb859d5d4742e208c869e32e538d4d1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/static-reader-checks-v2.json"
+    },
+    {
+      "bytes": 6844,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/report/editorial-delta-v2.json",
+      "sha256": "f948a09471d313eba62bfb44d88aaecccac5b172a4e7dfefb2ad322a57a4c932",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/editorial-delta-v2.json"
+    },
+    {
+      "bytes": 4367,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-Source-review-v1.json",
+      "sha256": "ead8e01caad89773355ed0d22ff3f90dccbdfbe60b9e186f0b3b8502cb66bb06",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 1861,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-common-prefix-comparison-v1.json",
+      "sha256": "5c1bd10483b186c7e574a28ad160359cee791a12baed5de5152707ad29025761",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-common-prefix-comparison-v1.json"
+    },
+    {
+      "bytes": 2221,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-controls-authorization-v1.json",
+      "sha256": "aa6b06a04ca280c67594751e444a490984f8cddf11885f957cdef313f297c817",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-authorization-v1.json"
+    },
+    {
+      "bytes": 1396,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-controls-closure-v1.json",
+      "sha256": "0bfeb6113a1b0ec64ae717fbb1c6d5b7c6fe1d01d7c91c2a2bf37a63dc41f136",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-closure-v1.json"
+    },
+    {
+      "bytes": 2674,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-controls-disposition-v1.json",
+      "sha256": "90bf17063d8cd9d1bb094cab11f975ae7165c536b37a6a3ed587da4f25b1673b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-disposition-v1.json"
+    },
+    {
+      "bytes": 9326,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-controls-plan-v1.json",
+      "sha256": "c699311f92453a5b9e182ba7b949fe2b40fa789eb8bcf10e5fa6788a80cba5fa",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-plan-v1.json"
+    },
+    {
+      "bytes": 2219,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-primary-authorization-v1.json",
+      "sha256": "02537e9ebfeb1d663eac162c359618b76340fb304c920fcebef2afef95379aeb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-authorization-v1.json"
+    },
+    {
+      "bytes": 1393,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-primary-closure-v1.json",
+      "sha256": "d08f96235d0e5490a24e13d60136a88c2a2eb9f401755136753ac7990f3ef3f4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-closure-v1.json"
+    },
+    {
+      "bytes": 2664,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-primary-disposition-v1.json",
+      "sha256": "2beddb283f80d92f5d544d2ab224b569ac11e1d790cd77007a1ef20b26ff2ae5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-disposition-v1.json"
+    },
+    {
+      "bytes": 9322,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-primary-plan-v1.json",
+      "sha256": "ebd8bace93b20d3e7f11ccd44873b4648744bdbc88df4a36981d875ce55db640",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-plan-v1.json"
+    },
+    {
+      "bytes": 2771,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-progress-checkpoint-v1.json",
+      "sha256": "0f049224731b6ed8b61eba61d81115c79225c5e4045d92e234890ac88e7e9b95",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-progress-checkpoint-v1.json"
+    },
+    {
+      "bytes": 5903,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT-protocol-choice-v2.json",
+      "sha256": "043302e2ab2409429bab288735617d604b7b013135bf58ca59ec8b71542b7a65",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-protocol-choice-v2.json"
+    },
+    {
+      "bytes": 8331,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT_prepare_v1.py",
+      "sha256": "86ce100c0c11cb49a51a1ade0710ef3470851cc732de09526bd540ddd74dd5a9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT_prepare_v1.py"
+    },
+    {
+      "bytes": 14005,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/ROOT_reconcile_saved_v1.py",
+      "sha256": "f1f8c3b9248828de7c25ffe31ddf637fb92d4d93bd6bdcb089430866d1a2cf0d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT_reconcile_saved_v1.py"
+    },
+    {
+      "bytes": 5806,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/codec.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py"
+    },
+    {
+      "bytes": 931,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/control_leaf.py",
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py"
+    },
+    {
+      "bytes": 46514,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/independent_checker.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py"
+    },
+    {
+      "bytes": 42845,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/intake.py",
+      "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py"
+    },
+    {
+      "bytes": 28531,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/point_graph.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py"
+    },
+    {
+      "bytes": 30988,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/point_producer.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py"
+    },
+    {
+      "bytes": 12467,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/producer_bootstrap.py",
+      "sha256": "133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py"
+    },
+    {
+      "bytes": 48584,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/source/verifier.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py"
+    },
+    {
+      "bytes": 217,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/ONCE.json",
+      "sha256": "a09b0e22e00f5fec1b05fde15cac8d4cb9f7edb805fa8e40c749413696dbeb4d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 236,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/meter-stdout.txt",
+      "sha256": "bd0a0c46b49d34ab7d5afbbb1143d77bdec967492f59e7f6dce03af73f6257ae",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1696,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/native-terminal.json",
+      "sha256": "58ed1f2c0850db376915f79313b12ac6eae38acf5df33f47f2b3fc8a0bfb93d6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 434,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/observation.json",
+      "sha256": "de5cb2249d4187419d8a071de4abd1632dacaef2c3b4dae43fe0036ae947e4d4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/postterminal-probe-stdout.txt",
+      "sha256": "74a4138c5fe8ab211e25d9d4379920a36c50596a85fd05c4a228fce1366827e1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 197,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-external/tool-bracket.json",
+      "sha256": "81d335d9efd4ac86896776562bbd8f9126b208822e2579d1fc4ecbee3ba70120",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-external-v1/tool-bracket.json"
+    },
+    {
+      "bytes": 3084,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-authority-authority.json",
+      "sha256": "0b897c807e33c79f564b47e29e158196b5cefaa8ed00d9eed4e81de1518f8fc9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-authority-authority.json"
+    },
+    {
+      "bytes": 1036,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-authority-candidate.json",
+      "sha256": "f8bba4520e28221210a6068f3aafe911978f3f48c13cffacbe7236050739534d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-authority-candidate.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-authority-response.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-authority-response.jsonl"
+    },
+    {
+      "bytes": 67,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-authority-stderr.txt",
+      "sha256": "ba64b7e3474d7991db1aec6a7a76fe884e36a585e670928f1ad473c0df96342b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-authority-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-authority-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-authority-stdout.txt"
+    },
+    {
+      "bytes": 3084,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-word-authority.json",
+      "sha256": "1717d3945ce4ae354fafa82044deb3db18afe96b78da028490ef03a385e61090",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-word-authority.json"
+    },
+    {
+      "bytes": 1036,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-word-candidate.json",
+      "sha256": "23b4bae810fa5b52aa0c5a0143b1ba482943d63cf9558e9cab0a5eccad7cda59",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-word-candidate.json"
+    },
+    {
+      "bytes": 2524,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-word-response.jsonl",
+      "sha256": "9a8519bf64fd62bfb3db6738698fd49bf9b5c5a16f16aebaa694134dd48c91f1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-word-response.jsonl"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-word-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-word-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/bad-word-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/bad-word-stdout.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/inert-a-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/inert-a-stderr.txt"
+    },
+    {
+      "bytes": 9,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/inert-a-stdout.txt",
+      "sha256": "db6d95f98bbe6d36f37b93812675edaef543d28cdc752b8287214e22912f3727",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/inert-a-stdout.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/inert-b-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/inert-b-stderr.txt"
+    },
+    {
+      "bytes": 9,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/inert-b-stdout.txt",
+      "sha256": "8d9f9232a2d6df19f04edc20640eb2eeff1b0fcd47ee32be3586599e2c8c654f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/inert-b-stdout.txt"
+    },
+    {
+      "bytes": 12120,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/controls-owned/point-provisional.json",
+      "sha256": "faafb8d8acb64eaca9de7b50e1a71fad4e5be2e4fab0395d02ed0009187a4c0b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/controls-owned-v1/point-provisional.json"
+    },
+    {
+      "bytes": 215,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/ONCE.json",
+      "sha256": "1d697c95d3721280ce8f394fb9c8aa74309f74ab346403ccdd5a366b94eb7eb7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 235,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/meter-stdout.txt",
+      "sha256": "03de0ac3c969ce22fc2c9896c0853dc7b7244daa7f2994cbc6ee086e98e3f28c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1703,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/native-terminal.json",
+      "sha256": "0c64fb4239fd045055147a79b80b5d357c513f68ac0bc459af802104552e13f5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 432,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/observation.json",
+      "sha256": "926f43b7b8b29d02b1fa7a3304774a7505a6989933a6a31d6d8b8e4634a75cab",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/postterminal-probe-stdout.txt",
+      "sha256": "3ff3fecddcf6797fde566da9785de2e93b1c9e1189eec37270e8ee0fa4a8b807",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 198,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-external/tool-bracket.json",
+      "sha256": "a87af66ad1944908823cfb6fc3a4c35123059582556cbc382a3f8fdf50046e2c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-external-v1/tool-bracket.json"
+    },
+    {
+      "bytes": 8632,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/point-provisional.json",
+      "sha256": "0627c4bc982382b30ed66ab97ced4ee13320ed24c6b854651bf8f93fd14f0d6e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/point-provisional.json"
+    },
+    {
+      "bytes": 1450,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000000.json",
+      "sha256": "98daaf3c9facc5832f8fb6f34d69b8dae51f507cc426c186dbf290b4eb7c5277",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000000.json"
+    },
+    {
+      "bytes": 1451,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000001.json",
+      "sha256": "f792d4cb55f4b91fedc80a61b32590b4e793c9e5f4de7d43cae2fab2edc26576",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000001.json"
+    },
+    {
+      "bytes": 1344,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000002.json",
+      "sha256": "5fc9b39e975ea1606908d7b91738a12cada5b8bd1d9995337bbf08391df40c12",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000002.json"
+    },
+    {
+      "bytes": 1458,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000003.json",
+      "sha256": "6aa4e441b1d0b66a2c02c6bdef5303d53dd5e3d68ce39240094ca5c0ac66fdeb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000003.json"
+    },
+    {
+      "bytes": 1357,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000004.json",
+      "sha256": "03c68f0633e39df2c012567857bcfdf5455dff3044122ab6192d14c2653799c6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000004.json"
+    },
+    {
+      "bytes": 1452,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000005.json",
+      "sha256": "93fa13d5bc3c75d5edae806e090cde5aa27c7d596c8bab8f65919309ec80942c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000005.json"
+    },
+    {
+      "bytes": 1338,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000006.json",
+      "sha256": "2275dab5cd18bec93c451c32963bcc54e156b743ed4953f056e13a343c1e359a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000006.json"
+    },
+    {
+      "bytes": 1478,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000007.json",
+      "sha256": "a83ddb5d8abd9642ad8faf837e092584b239fdc3b2eea3e585e21c3ccceeb217",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000007.json"
+    },
+    {
+      "bytes": 1486,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000008.json",
+      "sha256": "e0a3713de41c8c9410a847cccfbb91292e5e6d1f4b3d822d56b1482e64543a93",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000008.json"
+    },
+    {
+      "bytes": 1339,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000009.json",
+      "sha256": "190a63cb60e09dc78d4ad0983459f740cf2afa186ddc90ed87d389ea33a74123",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000009.json"
+    },
+    {
+      "bytes": 1350,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000010.json",
+      "sha256": "cc5ca985084fdfa2fdbc4dc591d1d51e94fa04a28ceafa04a98a829e3e8cf08b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000010.json"
+    },
+    {
+      "bytes": 1470,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000011.json",
+      "sha256": "7719b83036352d5081a3c5225eb6a87fe0e6e83cac2124745b8b9b7a85cb4ae0",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000011.json"
+    },
+    {
+      "bytes": 1363,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000012.json",
+      "sha256": "c223c44a2fd508f449302f24ab4d4155b9c65639215877cc3e3e9493791cd47a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000012.json"
+    },
+    {
+      "bytes": 1460,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000013.json",
+      "sha256": "ca86898b11099818a30cfd31067de3376d057f83681b44611813a044cea0a3d6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000013.json"
+    },
+    {
+      "bytes": 1344,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-event-base/producer-events/event-000014.json",
+      "sha256": "d0432ebf76d0f510ffbeff694c8c01f91dedb7af7e3b70078c51425c50a86e3b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000014.json"
+    },
+    {
+      "bytes": 4031,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-manifest.json",
+      "sha256": "63128f91ee35e50efdc8203eed502ec5e360bc6c4a0e257ce63248939f4c86c0",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-manifest.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-response.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-response.jsonl"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-stderr.txt"
+    },
+    {
+      "bytes": 826,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/primary-owned/producer-stdout.txt",
+      "sha256": "5addee84e644acd39a9eb83d6405cff64c13543f52e1a3fa5242e54c4635f2ab",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/primary-owned-v1/producer-stdout.txt"
+    },
+    {
+      "bytes": 16081,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/ROOT-plan-shape-and-invocation-v1.json",
+      "sha256": "67ccbfff2d46c7efff1f85b171ad0c146bb796e68091a9f804f557b98dc13efb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/ROOT-plan-shape-and-invocation-v1.json"
+    },
+    {
+      "bytes": 22518,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/Source-contract-v1.json",
+      "sha256": "8af1a14f9b9d02410616663296bc02597b20c939e7bb525cd2b5bd5025f65438",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json"
+    },
+    {
+      "bytes": 5456,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/author-static-checks-v1.json",
+      "sha256": "1a5704b79e1ad2de5e1e3b4cc84e6721be5012b198a40656fc068d1a81dd0c83",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/author-static-checks-v1.json"
+    },
+    {
+      "bytes": 1634,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/bootstrap1-to-2-delta-v1.json",
+      "sha256": "aabdb59ede354ec54e1df7973a1dbbac4b0ad3e6de41fa14c498cc41d8ef9262",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-delta-v1.json"
+    },
+    {
+      "bytes": 1186,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/bootstrap1-to-2-forward.patch",
+      "sha256": "7aa6af21f7ddc22fa5cb2c7adf5df95dfdcb4191d92e8548bcb716ef56098448",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-forward.patch"
+    },
+    {
+      "bytes": 1186,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/bootstrap1-to-2-full-inverse.patch",
+      "sha256": "944a058672d8142af6fb8fedc2a22da45814cad88a65ca3b0c6ad055b9e6d96f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-full-inverse.patch"
+    },
+    {
+      "bytes": 5932,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/handoff-v1.json",
+      "sha256": "24e57bba68ca9ea75e98daec27ad62886897ddf54c20cadeb0374a88203b1562",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 3061,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/parent1-to-2-delta-v1.json",
+      "sha256": "b5f64177d9af7154145c719d348c4ed4e898c2aefbd8aec05861efeb0c73c2d2",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-delta-v1.json"
+    },
+    {
+      "bytes": 2835,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/parent1-to-2-forward.patch",
+      "sha256": "502e5c9383a26ad3ec8c9b9f8a993d75dd9ff620413deb21f2d20b023ef4c3e4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-forward.patch"
+    },
+    {
+      "bytes": 2835,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/parent1-to-2-full-inverse.patch",
+      "sha256": "5afb50a279d93a60fb4658bd0ddd6b9bd73e98aaa195ce6f7bff588b62a63e79",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-full-inverse.patch"
+    },
+    {
+      "bytes": 17223,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/producer-Source-contract-v1.json",
+      "sha256": "8da3f78bf659af9178635f00ef5b1e83da355794822188d34cd9c56c5cb6cc83",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer-Source-contract-v1.json"
+    },
+    {
+      "bytes": 7467,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/producer4-to-5-delta-v1.json",
+      "sha256": "e95f3ec988a0c4ad8ee32fb5445cf2da29bba4d68310746433cd240d761b41e7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-delta-v1.json"
+    },
+    {
+      "bytes": 8442,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/producer4-to-5-forward.patch",
+      "sha256": "d6622f270fe533db295f6465450d10a58a412772a83a0378b4899f9e784e419e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-forward.patch"
+    },
+    {
+      "bytes": 8442,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/source-design/producer4-to-5-full-inverse.patch",
+      "sha256": "19ed31923b7e7bd7d9d21e9572743fbc3960abaf62a87755b4b2eb2fff002e44",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-full-inverse.patch"
+    },
+    {
+      "bytes": 51120,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/Source-peer/findings-v1.json",
+      "sha256": "3539561aae253b46ae63af83fa9e268951d553cefe77c4b13e7551946a2007f7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-independent-source-20261015/findings-v1.json"
+    },
+    {
+      "bytes": 1473,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/Source-peer/handoff-v1.json",
+      "sha256": "54e0539374488e5fd856bb8129f905bf2cff3fdadf722993a78f1438e5c62e8d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-independent-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 5455,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/Source-peer/typed-Source-review-v1.json",
+      "sha256": "ea593f29f7227357bbd332e3367d75233a83b11981003b9884450f1161f66272",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-independent-source-20261015/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 3331,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/evidence/diagnostic-cost-scope-v1.json",
+      "sha256": "6c3e9aa12c89ab4a41651d432394bedd890a1a180d9decb6d5015082dec7f4df",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-contribution-benchmark-audit-source-20261015/diagnostic-cost-scope-v1.json"
+    },
+    {
+      "bytes": 49509,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/report-data-v1.json",
+      "sha256": "df99fbda72aeb2725f003fba90af05a761d21e0acfeaa20990adb74e777e3a32",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/report-data-v1.json"
+    },
+    {
+      "bytes": 14497,
+      "path": "docs/research/gcts-rl-renewal/point-checkpoint-reuse/saved-findings-v1.json",
+      "sha256": "ccb4edc10e255489e763a6677f8b823ad1bc248a78f15a63c168c2df5ef9dc36",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/saved-findings-v1.json"
+    },
+    {
+      "bytes": 57679,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/reader.html",
+      "sha256": "12fdcbbcc5cbb70a6865ea618b1f42292a0536da0f9fdb67977b30a93262927e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/reader.html"
+    },
+    {
+      "bytes": 49865,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/report-data.json",
+      "sha256": "976e61492b94e99cd837772c86b70fa381a401b9b6c45e6db2fa21d404cb9e61",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/report-data.json"
+    },
+    {
+      "bytes": 3513,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/report/handoff-v1.json",
+      "sha256": "f68fe90dee214e551dfa36f0de87a3a104eeb86ae5a4f97640d3c5ea042afb3e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 2825,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/report/presentation-checks-v1.json",
+      "sha256": "d47b9d1597a819b6ab2a9be2aaf627607cfba63a82ea2c5b6e4e009460e7ac0b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/presentation-checks-v1.json"
+    },
+    {
+      "bytes": 3961,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-Source-review-v1.json",
+      "sha256": "3dcad1733273b51c0a5e3da389d1c79641557348482788ae8d499453d8e8d8ae",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 5071,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-authorization-v1.json",
+      "sha256": "0e3a68e2cd58e58ccadcef4aade8ea8897bb897bc0a5da90e2982e32325607ce",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 1407,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-closure-v1.json",
+      "sha256": "7ffce38232534be876b4390f9c1653567a28cfb0f430032bd782b393f8f1a32d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-closure-v1.json"
+    },
+    {
+      "bytes": 6932,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-plan-v1.json",
+      "sha256": "91768edb503601d093fb9e0d0470d2036e35e2617887995aa65cb5c200ef6b13",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 5048,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-protocol-choice-v1.json",
+      "sha256": "35fe07d4d24fdb1181fddfc711c22c6bddf7f9b204fd09864520f9fc27438b12",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-protocol-choice-v1.json"
+    },
+    {
+      "bytes": 695,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-tool-bracket-v1.json",
+      "sha256": "af059d16781a8dc6198bd6e04cfc5eb5fbb718f47e45f75e175d91140e28766c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-tool-bracket-v1.json"
+    },
+    {
+      "bytes": 14316,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT-training-disposition-v1.json",
+      "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json"
+    },
+    {
+      "bytes": 6878,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT_prepare_v1.py",
+      "sha256": "f9889033a43bceab18479f4b55c212321030208e50b329d6dd98cffb3aae56bd",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT_prepare_v1.py"
+    },
+    {
+      "bytes": 13581,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/ROOT_reconcile_saved_v1.py",
+      "sha256": "e9d34ec11413aa8b5e4641a85a55044a7ba219dddaa8374eb632d1c0d6bcfe2c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT_reconcile_saved_v1.py"
+    },
+    {
+      "bytes": 3901,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/source/checker_adapter.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py"
+    },
+    {
+      "bytes": 48584,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/source/clean_support.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py"
+    },
+    {
+      "bytes": 29157,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/source/family.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py"
+    },
+    {
+      "bytes": 46514,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/source/independent_checker.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py"
+    },
+    {
+      "bytes": 62865,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/source/intake.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py"
+    },
+    {
+      "bytes": 4292,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/checked_candidate.json",
+      "sha256": "cb8f196ae80c97e41e8be6b5dd8e48b3a49a2ade903978b083e970fe1534bcf4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-candidate.json"
+    },
+    {
+      "bytes": 5051,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/checked_verifier_response.jsonl",
+      "sha256": "7076d1c96f2bbf66e5ba4f732e1ec166074aee35f292291a55e8501a71c95a85",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-response.jsonl"
+    },
+    {
+      "bytes": 2683,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/declaration.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json"
+    },
+    {
+      "bytes": 2990,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/original_authority.json",
+      "sha256": "75d731bdc4ab9ce986eaf5768583da40678f1b295cc88c98a2a7e263770afb54",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-authority.json"
+    },
+    {
+      "bytes": 2576,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/prior_ROOT_disposition.json",
+      "sha256": "1f4d947319f65e24256322c24933881856ec3a90011c6499708145f18d3cdef7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-disposition-v1.json"
+    },
+    {
+      "bytes": 2285,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/prior_authorization.json",
+      "sha256": "d078ac950ca7743cea470fc6e8279f644d7be6efb8d4b1e68c69ff7aa8802dcc",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-authorization-v1.json"
+    },
+    {
+      "bytes": 9646,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/prior_plan.json",
+      "sha256": "2025b362053e1926da033c9e6260e1a3fd8ec0141cc1c6c5b94e62b0a1c37756",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-plan-v1.json"
+    },
+    {
+      "bytes": 6846,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/inputs/searched_producer_response.jsonl",
+      "sha256": "28038e79c4e27576581b7c64bc8be298aeaa1a3105a8a73e875d90c2bfa7c083",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/producer-response.jsonl"
+    },
+    {
+      "bytes": 596,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/owned/controls.json",
+      "sha256": "fabd0ce7029249d7c0d82c32bdf3548aac9dce3179ce074ca33159a8a5868c2b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/controls.json"
+    },
+    {
+      "bytes": 7166,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/owned/donor.json",
+      "sha256": "6181ae4321a4902a324f2497a635de8bcdc608be8a5f1e8b3894284105fad19c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/donor.json"
+    },
+    {
+      "bytes": 5793,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/owned/intake-record.json",
+      "sha256": "2263e3cb1f7b76afd82583d5eb0b03e033715ddafc3a89bda9f0e132c8721e9a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/intake-record.json"
+    },
+    {
+      "bytes": 6598,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/owned/mined-library.json",
+      "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json"
+    },
+    {
+      "bytes": 6130,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/owned/response.jsonl",
+      "sha256": "8649275742d5e4f8e28734f5c921eede0f46dc47e4238d3164a1281476b642a4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 238,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/ONCE.json",
+      "sha256": "586c2f4f2827d43128169e044765012fa0a7fe85e6c1de7822eeadd467edce01",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 929,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/meter-stdout.txt",
+      "sha256": "cc17c5d8b3130bbc53d324c8a0a95d389beb80b0ee9f1defc1ec59903edb1ec3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1662,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/native-terminal.json",
+      "sha256": "dfa859ff84abadc21cf865fbd01a26ec3dd36e70a78d94d1c2ccd6ad6c09c475",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 455,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/observation.json",
+      "sha256": "74fc07023c0953fa6514f9fce54b4d43b537693ab17857eb0d8a5c89d2cfc34d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/external/postterminal-probe-stdout.txt",
+      "sha256": "edb89401eb9b182193802636f42b6447bb1713db10c95a060a3228bcf0c3bf03",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 16673,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/source-design/Source-contract-v1.json",
+      "sha256": "70f2ea39ba4352dd79320ae7175cf03d92a883df8cbd5a0437528f05de32beca",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/Source-contract-v1.json"
+    },
+    {
+      "bytes": 1441,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/source-design/author-initial-static-record-v1.json",
+      "sha256": "839345ba4fe4f5b4cf9e0b350df58f7cb61c47f8e9bc34e4de7e8a20b1c020ec",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/author-initial-static-record-v1.json"
+    },
+    {
+      "bytes": 4130,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/source-design/handoff-v1.json",
+      "sha256": "df636015cc2d00895f426b457c49ad331e9a5b00fc5610c91a4eb8de21239204",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 11791,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/source-design/static-authoring-checks-v1.json",
+      "sha256": "a26cb71cc0dbf9080dbc4b50f40f429e720ad605f34c8e42cb6c446dab661f8b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/static-authoring-checks-v1.json"
+    },
+    {
+      "bytes": 12305,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/source-design/static-authoring-checks-v2.json",
+      "sha256": "ebaa82750c36f6439b0a14d5e5a72e5e2ba81badf80c31cb8cd6922679795636",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/static-authoring-checks-v2.json"
+    },
+    {
+      "bytes": 64932,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/peer/findings-v1.json",
+      "sha256": "c6ff4afc7a15150237d336702c3d3d82b50e649896267013d3d0a92bae86671e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-independent-source-20261015/findings-v1.json"
+    },
+    {
+      "bytes": 1496,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/peer/handoff-v1.json",
+      "sha256": "8bd7e8741d3ff8e5b2bf8dbb7c1fd5243a8e03302ba904f99745f7b63a8bf379",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-independent-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 3595,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/peer/typed-Source-review-v1.json",
+      "sha256": "536047b6c5258f7a458b8e0391dbc7c160dc61f605ff57e5aa8b1430400cf574",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-independent-source-20261015/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 12386,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-design/Source-contract-v2.json",
+      "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json"
+    },
+    {
+      "bytes": 50305,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-design/complete-positional-delta-v1.json",
+      "sha256": "a16058e3a8e4625d42d441e881a5a6fb56be1ebcbbf2cc28b69ba11e7681704c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/complete-positional-delta-v1.json"
+    },
+    {
+      "bytes": 2597,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-design/handoff-v2.json",
+      "sha256": "c60562d3041c16c5ebc8e5406d5c61b6bd883dbe6a96b044af3c8337d35b4f41",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/handoff-v2.json"
+    },
+    {
+      "bytes": 5592,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-design/static-authoring-checks-v1.json",
+      "sha256": "67e432dc7127f79a1ee471db1fecdc9cf2d6cea4e715a40fcb701f326d82dc68",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/static-authoring-checks-v1.json"
+    },
+    {
+      "bytes": 29416,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-peer/findings-v1.json",
+      "sha256": "b74a76d82560b0528c4586192b4c78672ddcaa82d275f049cd261a32415ff534",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/findings-v1.json"
+    },
+    {
+      "bytes": 1449,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-peer/handoff-v1.json",
+      "sha256": "47f04e2b9c32617ba9d6c20be96bf4c7c7b8d11ecd631931f5aee3f8696c0bf4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 3472,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/family-peer/typed-Source-review-v1.json",
+      "sha256": "3164ef1b1a22d873f6c0d6307c61cb7bae5181e46ad69a1f00b82c4aa5ecd9c0",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 100693,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/saved-review/findings-v1.json",
+      "sha256": "30951017da9e340864f2c9288aa6e85db8d24dd7a0161ef30ee7a3ccf4a66e88",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-saved-independent-20261015/findings-v1.json"
+    },
+    {
+      "bytes": 1661,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/saved-review/handoff-v1.json",
+      "sha256": "ae7eafa77a60d6c0155a419974c08e970491a7883b6cc3f83699a3b1c4774623",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-saved-independent-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 4225,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/report/handoff-v2.json",
+      "sha256": "591a769a421865021b2cb395c8e43a7341d59435f40e8a22f139029405a2adc1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-report-source-20261015/handoff-v2.json"
+    },
+    {
+      "bytes": 1777,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/handoff-v1.json",
+      "sha256": "30e8920fafd67a5ebe4f5b3f5a5db5cc9dcc23b4a06976b0e3f72c8b1a20fd63",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 2898,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/handoff-v2.json",
+      "sha256": "5e87ad552292fc2b2858b8124188c595b4e7465254cb941e24a98108454a75c6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/handoff-v2.json"
+    },
+    {
+      "bytes": 16849,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/proposed-experiment-v1.json",
+      "sha256": "46cf388710342750c78f05cbf823d72c928974f2770cdb9f3571171b81b9abdb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/proposed-experiment-v1.json"
+    },
+    {
+      "bytes": 11106,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/reader.html",
+      "sha256": "df1d32e78252a93f9aa27c819aebaba2bb54b1cccd7f7a8216f4da9bdd9b9dc7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/reader.html"
+    },
+    {
+      "bytes": 6125,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/report-data-v1.json",
+      "sha256": "1adb736af78415818d36a72436c6b66f3d0a5c53671023c28a13ab4c5b3b98b1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/report-data-v1.json"
+    },
+    {
+      "bytes": 1067,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/static-QA-v1.json",
+      "sha256": "d44d46a44b57e168c48ac022030f078d769c97d32809345edef22a4b481db71d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/static-QA-v1.json"
+    },
+    {
+      "bytes": 854,
+      "path": "docs/research/gcts-rl-renewal/goal-attached-receptors/static-QA-v2.json",
+      "sha256": "026ba75b56b3d541d09b80774c56c2c75076a227398d30bb60fa4e21d956637d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-design-source-20261015/static-QA-v2.json"
+    },
+    {
+      "bytes": 6803,
+      "path": "docs/research/gcts-rl-renewal/parallel-assessment/reader.html",
+      "sha256": "a6a56e8871c70cfe1bd232066d78fc0e912026d8a22230e139d0e3e278f49ce8",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-research-publication-ROOT-20261015/assessment-reader-v3.html"
+    },
+    {
+      "bytes": 8302,
+      "path": "docs/research/gcts-rl-renewal/parallel-assessment/assessment.json",
+      "sha256": "7ad16f5351e9656e388244fef4d4c69fdb5948e68db5b1ed9aede88d885c0749",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-contribution-assessment-source-20261015/assessment-v2.json"
+    },
+    {
+      "bytes": 1702,
+      "path": "docs/research/gcts-rl-renewal/parallel-assessment/evidence/handoff-v2.json",
+      "sha256": "3b99be036a289473845c8d8c48c5dca789020bdcf03f009f68459a20771a1ef2",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-contribution-assessment-source-20261015/handoff-v2.json"
+    },
+    {
+      "bytes": 2032,
+      "path": "docs/research/gcts-rl-renewal/parallel-assessment/evidence/editorial-delta-v1.json",
+      "sha256": "bdc9bee999de3bd5850de994456a5324c234540e522a0229ff37c958e1ec9263",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-research-publication-ROOT-20261015/assessment-editorial-delta-v1.json"
+    },
+    {
+      "bytes": 646,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/static-QA-v1.json",
+      "sha256": "e615f15dbd5513bc48a32303bbd41ef6ffa759f65efaaaf0b039dab4ef541a86",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-research-publication-ROOT-20261015/static-QA-v1.json"
+    },
+    {
+      "bytes": 972,
+      "path": "docs/research/gcts-rl-renewal/atomic-family-donor/evidence/browser-QA-v1.json",
+      "sha256": "303afea35b6a307c3767bc4cb71793a2cff1f7879f3717595322a27539e6b6bf",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-research-publication-ROOT-20261015/browser-QA-v1.json"
+    },
+    {
+      "bytes": 417873,
+      "path": "docs/research/gcts-rl-renewal/index.html",
+      "sha256": "bce258853f42cf76095c1a95f893865d289bc721dd94ad8ed5cd7f5329ce5548",
+      "source_path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/index.html"
+    }
+  ],
+  "schema": "ROOT-parallel-research-publication-manifest-v1",
+  "scope": "Current research reports, exact task evidence and current-program index panels only. Root unrelated work and all prior results preserved.",
+  "total_bytes": 1956926
+}

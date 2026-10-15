@@ -1,0 +1,30 @@
+{
+  "schema": "parallel-contribution-assessment-Source-handoff-v2",
+  "source_and_saved_data_only": true,
+  "new_scientific_Source_calls": 0,
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-contribution-assessment-source-20261015/reader.html",
+    "sha256": "9da1727b52aa0ef8589911ccedde1da9a1daf48576b19adce984555737b64a9f",
+    "bytes": 6638
+  },
+  "assessment": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-contribution-assessment-source-20261015/assessment-v2.json",
+    "sha256": "7ad16f5351e9656e388244fef4d4c69fdb5948e68db5b1ed9aede88d885c0749",
+    "bytes": 8302
+  },
+  "public_reader": "parallel-assessment/reader.html",
+  "public_json_alias": "parallel-assessment/assessment.json",
+  "supersedes_for_presentation_only": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-contribution-assessment-source-20261015/handoff-v1.json",
+    "sha256": "22edf1f2d029e25cbab9d4cbc29bc3650671f58344108095d05c27db1117cc31",
+    "bytes": 855
+  },
+  "source_delta": "Identical assessment prose/table/math; adds requested reader.html filename and confirmed public sibling links. Prior local draft and JSON retained.",
+  "source_checks": [
+    "Whole saved Root records read; exact evidence pins retained in assessment JSON.",
+    "Static HTML parsed only; no browser/MathJax or scientific runtime executed.",
+    "Established MathJax loader and responsive overflow precautions retained."
+  ],
+  "publication": false,
+  "scope": "Comparison/next-benchmark note only; no new result, Source implementation, actual plan, activation or deployment."
+}

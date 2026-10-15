@@ -1,0 +1,917 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 85,
+  "checks": [
+    {
+      "check": "whole raw /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R001",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-protocol-choice-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R002",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/findings-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R003",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R004",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R005",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_producer_bootstrap_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R006",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/ROOT-plan-shape-and-invocation-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R007",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Source-contract-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R008",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/author-static-checks-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R009",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/bootstrap-ordinary-to-point-Source-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R010",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/parent-ordinary-to-point-Source-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R011",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v3.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R012",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R013",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R014",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R015",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R016",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/author-static-checks-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R017",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/handoff-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R018",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/producer-v3-to-v4-Source-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R019",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R020",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R021",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R022",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R023",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-actual-unrelated-word-controls-reconciled-disposition-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R024",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R025",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-protocol-choice-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R026",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R027",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R028",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R029",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/ROOT-plan-shape-and-invocation-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R030",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R031",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/author-static-checks-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R032",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R033",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/handoff-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R034",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R035",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer-Source-contract-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R036",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-delta-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R037",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-architecture-design-source-20261014/ROOT-architecture-choice-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R038",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R039",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R040",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R041",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R042",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R043",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R044",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R045",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Source-contract-v2.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R046",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R047",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R048",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R049",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R050",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R051",
+      "passed": true
+    },
+    {
+      "check": "whole raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "detail": "Complete SHA-256/byte stream. No Q preparation/state/oracle was decoded.",
+      "id": "R052",
+      "passed": true
+    },
+    {
+      "check": "all repeated literal raw records consistent",
+      "detail": "Every role/contract/history pin reconciled against actual complete bytes; no stale record overwritten by dedup.",
+      "id": "R053",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only codec",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R054",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only control_leaf",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R055",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only independent_checker",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R056",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only intake",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R057",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only point_graph",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R058",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only point_producer",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R059",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only producer_bootstrap",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R060",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only verifier",
+      "detail": "No compiled code executed; no module imported.",
+      "id": "R061",
+      "passed": true
+    },
+    {
+      "check": "entire module forward/inverse producer4-to-5-delta-v1.json",
+      "detail": "Whole immutable module bytes reconstructed in both directions, no function calls.",
+      "id": "R062",
+      "passed": true
+    },
+    {
+      "check": "all retained definitions producer4-to-5-delta-v1.json",
+      "detail": "Exact actual retained names: Unfinished, need, canonical, chunks, complete_digest, FingerprintWriter, state_fingerprint, CompactEvents, decision_data, collect_first_ancestry",
+      "id": "R063",
+      "passed": true
+    },
+    {
+      "check": "entire module forward/inverse bootstrap1-to-2-delta-v1.json",
+      "detail": "Whole immutable module bytes reconstructed in both directions, no function calls.",
+      "id": "R064",
+      "passed": true
+    },
+    {
+      "check": "all retained definitions bootstrap1-to-2-delta-v1.json",
+      "detail": "Exact actual retained names: need, decimal, Budget, fd_mode, read_exact, unique, load_source, line, write_all, parse_manifest, journal, main",
+      "id": "R065",
+      "passed": true
+    },
+    {
+      "check": "entire module forward/inverse parent1-to-2-delta-v1.json",
+      "detail": "Whole immutable module bytes reconstructed in both directions, no function calls.",
+      "id": "R066",
+      "passed": true
+    },
+    {
+      "check": "all retained definitions parent1-to-2-delta-v1.json",
+      "detail": "Exact actual retained names: need, global_now_ns, integer, canonical, digest, pin_bytes, duplicate_free, no_constant, no_float, signed_integer, finite_float, tree, decode, regular_fd, read_small, write_exclusive, raw_peak, stream_snapshot, two_lines, inventory, SequentialOwner, validate_plan, channel_set, verifier_response, run_checker, bad_word",
+      "id": "R067",
+      "passed": true
+    },
+    {
+      "check": "current exact Source8 and ABI",
+      "detail": "New parent2/bootstrap2/producer5; other five Source capsules unchanged.",
+      "id": "R068",
+      "passed": true
+    },
+    {
+      "check": "parent fixed literal sources and self pin",
+      "detail": "No old current producer pin accepted; actual current Source review must bind this map.",
+      "id": "R069",
+      "passed": true
+    },
+    {
+      "check": "same original mathematical/context/resource maps",
+      "detail": "Original graph/input8/original7/authority5/bothCLI10/sixlimits/controls/ownership/output semantics retained.",
+      "id": "R070",
+      "passed": true
+    },
+    {
+      "check": "new Root choice is exact literal",
+      "detail": "Prospective0433 choice, not old actual authorization or higher budget.",
+      "id": "R071",
+      "passed": true
+    },
+    {
+      "check": "producer current operative Source and contract maps",
+      "detail": "Exact producer5 e453; parent expects same VERSION. Historical author evidence remains historical only.",
+      "id": "R072",
+      "passed": true
+    },
+    {
+      "check": "producer grammar/limits/full fingerprint exact",
+      "detail": "Original full encoding and actual after-rollback state checks unchanged; no original model/count/cap waiver.",
+      "id": "R073",
+      "passed": true
+    },
+    {
+      "check": "whole current delta and retained full module read",
+      "detail": "Current producer5 changed emit/walk/main flow read with all old unchanged bodies previously wholly read; complete raw inverse and callable ASTs establish remaining bytes. Parent2/bootstrap2 changed literals and complete current contract delta read against genuine whole prior review3278; no historical pass relabeled as current.",
+      "id": "R074",
+      "passed": true
+    },
+    {
+      "check": "root reuse is once-only and Source-proven unchanged",
+      "detail": "run_entry computes full fingerprint. Only exact initial record may be passed to root parent=None/depth0 at the original entry checkpoint. No graph operation between computation and transfer can mutate state in fixed current serial Source. Transfer consumed inside node_enter; no general cache keyed by checkpoint length/count.",
+      "id": "R075",
+      "passed": true
+    },
+    {
+      "check": "frame entry eligibility restricted to first pre-mutation branch",
+      "detail": "Local unchanged_entry initially holds node_enter. Prior graph.decision, collect_first_ancestry, candidates generator/checkpoint and event output are read-only for semantic fields under unchanged8d22. Frame can reuse entry at first branch only while that local record remains eligible. Counters/metrics excluded from semantic encoding as before.",
+      "id": "R076",
+      "passed": true
+    },
+    {
+      "check": "placement paths invalidate before private mutation",
+      "detail": "Both forced and branch callers set unchanged_entry=None before calling place; the sole graph._apply_legal is inside place. No other call to place or graph private assignment introduced. Invalidation occurs before delegate so partial mutation exceptions cannot preserve eligibility.",
+      "id": "R077",
+      "passed": true
+    },
+    {
+      "check": "exclusion and rollback eligibility is never restored",
+      "detail": "All child/node rollback and parent-local exclusion paths clear local eligibility beforehand; root transfer cleared before run rollback. Stored baseline hashes remain comparison witnesses, not eligible caches. No after-rollback record is fed into a later reuse argument.",
+      "id": "R078",
+      "passed": true
+    },
+    {
+      "check": "all post-rollback complete hashes genuinely fresh",
+      "detail": "child_rollback/node_unwind/run_restored call emit(fingerprint=True) with no reuse, then compare full state_fingerprint metadata against original parent/node/root baseline. Dead/no-op rollback is not exempted; incomplete guard/hash/unwind clears candidate. FingerprintWriter/state_fingerprint AST exact all fields/trail bytes preserved.",
+      "id": "R079",
+      "passed": true
+    },
+    {
+      "check": "honest reuse lineage and cost counters",
+      "detail": "Computed records have current origin and no direct predecessor; reused records preserve ultimate computed origin and immediate earlier event. none has null fields. fingerprint_reuses counts reuse decisions; fingerprints retains completed computations. Every event still native-checks and labels pre-serialization counts/phases. No hypothetical speedup/complete timing partition asserted.",
+      "id": "R080",
+      "passed": true
+    },
+    {
+      "check": "reference search and proof endpoint unchanged",
+      "detail": "Same global-dead-before-target, forced singleton EOF, earliest-generation/degree/key and canonical fallback; original128 placements/2000events/max1 and all24 domains/catalogue intact. Strict-prior complete selected ancestry helper AST exact. No ordinary proof/known prefix/family/rank/RL input or new theorem route.",
+      "id": "R081",
+      "passed": true
+    },
+    {
+      "check": "cold isolation and untrusted scopes retained",
+      "detail": "Parent stdlib/raw-only; one full cold producer parse via exact codec/point8d22, actual producer native wait4/reap before fresh unchanged verifier4 MAIN+1717. Logical authority5 separate from runtime8. Word math independent of fingerprint claims; selected/currentpoint/full24/trajectory flags remain false.",
+      "id": "R082",
+      "passed": true
+    },
+    {
+      "check": "lifecycle/clock/output gates byte-faithful",
+      "detail": "Parent full function bodies unchanged except expected producer VERSION; bootstrap every callable unchanged. Native G/D20, failure55/owned60/512/caller90+1, same cutoff-max rule, cancel/finalnativeexit, real negative-word/context/serial/no-spawn/tail controls remain mandatory for fresh actual. No old UNKNOWN promoted.",
+      "id": "R083",
+      "passed": true
+    },
+    {
+      "check": "scope and future diagnostics kept separate",
+      "detail": "This pass authorizes no actual; Root alone handles current grant/control/primary. Separate diagnostics-cost note is future-only and changes no current rollback assertions or measurement gates. Reviewer did not author current arithmetic modules; Root protocol authorship and prior own prototype/controls context disclosed.",
+      "id": "R084",
+      "passed": true
+    },
+    {
+      "check": "exact graph mutator surface",
+      "detail": "Sole application helper, one exclusion, child/node/root rollback; all original calls retained and Source-flow invalidation read.",
+      "id": "R085",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Source-only conditional readiness; no Source/project/graph/kernel/helper/Q decode/native clock/test/fixture/actual calls or plan creation.",
+    "Actual controls/current once-only primary/native resource/output closure remain pending; old UNKNOWN and all original budgets/model unchanged.",
+    "Complete fingerprint/rollback/phase/source-selected records remain producer claims, not independent point/trajectory/proof authority. Fresh original word checker owns mathematics.",
+    "Reuse relies on exact private serial graph and Source-proven mutator set, not hostile external graph mutation, async/VM assumptions or equal checkpoint lengths.",
+    "Producer historical author-static/delta references describe preserved earlier versions; current common static1a57 and this genuine review cover current5. No old review/admission is silently current."
+  ],
+  "metadata_roots": [
+    {
+      "bytes": 5932,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/handoff-v1.json",
+      "sha256": "24e57bba68ca9ea75e98daec27ad62886897ddf54c20cadeb0374a88203b1562"
+    },
+    {
+      "bytes": 22518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json",
+      "sha256": "8af1a14f9b9d02410616663296bc02597b20c939e7bb525cd2b5bd5025f65438"
+    },
+    {
+      "bytes": 17223,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer-Source-contract-v1.json",
+      "sha256": "8da3f78bf659af9178635f00ef5b1e83da355794822188d34cd9c56c5cb6cc83"
+    },
+    {
+      "bytes": 16081,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/ROOT-plan-shape-and-invocation-v1.json",
+      "sha256": "67ccbfff2d46c7efff1f85b171ad0c146bb796e68091a9f804f557b98dc13efb"
+    },
+    {
+      "bytes": 5456,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/author-static-checks-v1.json",
+      "sha256": "1a5704b79e1ad2de5e1e3b4cc84e6721be5012b198a40656fc068d1a81dd0c83"
+    },
+    {
+      "bytes": 7467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-delta-v1.json",
+      "sha256": "e95f3ec988a0c4ad8ee32fb5445cf2da29bba4d68310746433cd240d761b41e7"
+    },
+    {
+      "bytes": 1634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-delta-v1.json",
+      "sha256": "aabdb59ede354ec54e1df7973a1dbbac4b0ad3e6de41fa14c498cc41d8ef9262"
+    },
+    {
+      "bytes": 3061,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-delta-v1.json",
+      "sha256": "b5f64177d9af7154145c719d348c4ed4e898c2aefbd8aec05861efeb0c73c2d2"
+    },
+    {
+      "bytes": 5374,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "3278e268b9fd0cac559d568cf5c0dc29f95e56b05517175b47241b38ce20d79e"
+    },
+    {
+      "bytes": 19772,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Source-contract-v1.json",
+      "sha256": "f4305dd5349b8eb273edc398adece6ccb0aba5a54bfe779dbafa06dde5247b8d"
+    },
+    {
+      "bytes": 13860,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+      "sha256": "ba22d1c5d87e724eeb9a89b44d4b1ba20dc9f1fd1777ff08a5cf2253221c8728"
+    }
+  ],
+  "producer_source_contract": {
+    "bytes": 17223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer-Source-contract-v1.json",
+    "sha256": "8da3f78bf659af9178635f00ef5b1e83da355794822188d34cd9c56c5cb6cc83"
+  },
+  "raw_reference_count": 202,
+  "resource_accepted": false,
+  "retained_whole_review": {
+    "bytes": 5374,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "3278e268b9fd0cac559d568cf5c0dc29f95e56b05517175b47241b38ce20d79e"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "Q-point-checkpoint-reuse-independent-Source-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-point-compact-cold-intake-Source",
+  "source": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+    "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+  },
+  "source_contract": {
+    "bytes": 22518,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json",
+    "sha256": "8af1a14f9b9d02410616663296bc02597b20c939e7bb525cd2b5bd5025f65438"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "control_leaf": {
+      "bytes": 931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py",
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 42845,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+      "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "point_producer": {
+      "bytes": 30988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+    },
+    "producer_bootstrap": {
+      "bytes": 12467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py",
+      "sha256": "133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "unique_raw_path_count": 52,
+  "whole_raw_targets": [
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 4300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-protocol-choice-v1.json",
+      "sha256": "3b829573958c972f1395a4e70b3a7803cbc746affa38184ec22f22b0130b328c"
+    },
+    {
+      "bytes": 132289,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/findings-v1.json",
+      "sha256": "fc9e2fd0933fd84aa8f89fdbaffeaf109765f45bc776f541b19b0bf61ef84f11"
+    },
+    {
+      "bytes": 5374,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "3278e268b9fd0cac559d568cf5c0dc29f95e56b05517175b47241b38ce20d79e"
+    },
+    {
+      "bytes": 42845,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py",
+      "sha256": "30bef873644dda63102fb08d32b23d42a3082d3744ce1608535fa18e11171c79"
+    },
+    {
+      "bytes": 12467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_producer_bootstrap_v1.py",
+      "sha256": "f2159c4271a0c26c691e5e620b20ea336fc2c861571407e061cb366e002703f2"
+    },
+    {
+      "bytes": 16042,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/ROOT-plan-shape-and-invocation-v1.json",
+      "sha256": "36a4676579aa5a6efa8c1a6bb85d086fb1fd5d49ce46269e50a59c45f3c7e4eb"
+    },
+    {
+      "bytes": 19772,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Source-contract-v1.json",
+      "sha256": "f4305dd5349b8eb273edc398adece6ccb0aba5a54bfe779dbafa06dde5247b8d"
+    },
+    {
+      "bytes": 5299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/author-static-checks-v1.json",
+      "sha256": "3bb5d4268719f41081b47b7a762fdbe3e9bfae327361f10e796fc881a1ed9e09"
+    },
+    {
+      "bytes": 18134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/bootstrap-ordinary-to-point-Source-delta-v1.json",
+      "sha256": "7158da8e13d5110dad99f2d45b83a380a4c945295ed77ca520c9b0e21dd9bef2"
+    },
+    {
+      "bytes": 55917,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/parent-ordinary-to-point-Source-delta-v1.json",
+      "sha256": "8408c06f66cba0f3196491edefb87d15b3ca28e9a05653c87114101b9ffe2800"
+    },
+    {
+      "bytes": 28398,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v3.py",
+      "sha256": "5fddc249251aa26abe9210929f4263de2423a5e41568ab712d5c2a8ad13da952"
+    },
+    {
+      "bytes": 28623,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+      "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+    },
+    {
+      "bytes": 12496,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v1.json",
+      "sha256": "9c87b922a9056fd06ee1be35053f08a3d23deded4ed6d23d47ef78e1b49fa95c"
+    },
+    {
+      "bytes": 13860,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+      "sha256": "ba22d1c5d87e724eeb9a89b44d4b1ba20dc9f1fd1777ff08a5cf2253221c8728"
+    },
+    {
+      "bytes": 46153,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-delta-v1.json",
+      "sha256": "4d169f089e1528c7f6aa50f5889cdf24b04a519fcdf9b3e5284480f2685bd53d"
+    },
+    {
+      "bytes": 2517,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/author-static-checks-v1.json",
+      "sha256": "198db8ed2eaedb902c2b73b43b3df25f245f9897b957e6e0ec78795e5938d19a"
+    },
+    {
+      "bytes": 1483,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/handoff-v2.json",
+      "sha256": "5853796ad43e08d650b2ae849d21f54e51f3c2571e46d20bad059dfe24630cd7"
+    },
+    {
+      "bytes": 1779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/producer-v3-to-v4-Source-delta-v1.json",
+      "sha256": "040bffa26b80f526c1543b18767a929efec5e99215525208974646797d22a2b0"
+    },
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 8563,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json",
+      "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1"
+    },
+    {
+      "bytes": 5789,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json",
+      "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87"
+    },
+    {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 6796,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-actual-unrelated-word-controls-reconciled-disposition-v1.json",
+      "sha256": "f254219dc8e7324a7d15f9ff50661de627d207eca08660bca354e73978d39fd1"
+    },
+    {
+      "bytes": 931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py",
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    {
+      "bytes": 5903,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-protocol-choice-v2.json",
+      "sha256": "043302e2ab2409429bab288735617d604b7b013135bf58ca59ec8b71542b7a65"
+    },
+    {
+      "bytes": 42845,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+      "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+    },
+    {
+      "bytes": 12467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py",
+      "sha256": "133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98"
+    },
+    {
+      "bytes": 30988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+    },
+    {
+      "bytes": 16081,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/ROOT-plan-shape-and-invocation-v1.json",
+      "sha256": "67ccbfff2d46c7efff1f85b171ad0c146bb796e68091a9f804f557b98dc13efb"
+    },
+    {
+      "bytes": 22518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json",
+      "sha256": "8af1a14f9b9d02410616663296bc02597b20c939e7bb525cd2b5bd5025f65438"
+    },
+    {
+      "bytes": 5456,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/author-static-checks-v1.json",
+      "sha256": "1a5704b79e1ad2de5e1e3b4cc84e6721be5012b198a40656fc068d1a81dd0c83"
+    },
+    {
+      "bytes": 1634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-delta-v1.json",
+      "sha256": "aabdb59ede354ec54e1df7973a1dbbac4b0ad3e6de41fa14c498cc41d8ef9262"
+    },
+    {
+      "bytes": 5932,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/handoff-v1.json",
+      "sha256": "24e57bba68ca9ea75e98daec27ad62886897ddf54c20cadeb0374a88203b1562"
+    },
+    {
+      "bytes": 3061,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-delta-v1.json",
+      "sha256": "b5f64177d9af7154145c719d348c4ed4e898c2aefbd8aec05861efeb0c73c2d2"
+    },
+    {
+      "bytes": 17223,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer-Source-contract-v1.json",
+      "sha256": "8da3f78bf659af9178635f00ef5b1e83da355794822188d34cd9c56c5cb6cc83"
+    },
+    {
+      "bytes": 7467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-delta-v1.json",
+      "sha256": "e95f3ec988a0c4ad8ee32fb5445cf2da29bba4d68310746433cd240d761b41e7"
+    },
+    {
+      "bytes": 6808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-architecture-design-source-20261014/ROOT-architecture-choice-v1.json",
+      "sha256": "62b0d66686f890c9f604192058bdba48a4b171e233f25767b1e1de88fffbd82f"
+    },
+    {
+      "bytes": 8295473,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    {
+      "bytes": 8296118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    {
+      "bytes": 38376960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    },
+    {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    {
+      "bytes": 37266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    },
+    {
+      "bytes": 5435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    {
+      "bytes": 20219,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    },
+    {
+      "bytes": 12373,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Source-contract-v2.json",
+      "sha256": "2431aaab8ece03786de0fe0d2b1acdeb178a002bf5948d5f37217e4b24ea6ec5"
+    },
+    {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ]
+}

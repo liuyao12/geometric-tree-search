@@ -1,0 +1,2013 @@
+{
+  "schema": "atomic-family-donor-reader-saved-data-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "scope": "Presentation of saved actual TRAINING/debug donor mining only; no scientific replay. Author also wrote underlying checker/family/intake; independent saved review by distinct agent is separate.",
+  "source_records": {
+    "intake-record.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/intake-record.json",
+      "sha256": "2263e3cb1f7b76afd82583d5eb0b03e033715ddafc3a89bda9f0e132c8721e9a",
+      "bytes": 5793
+    },
+    "controls.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/controls.json",
+      "sha256": "fabd0ce7029249d7c0d82c32bdf3548aac9dce3179ce074ca33159a8a5868c2b",
+      "bytes": 596
+    },
+    "donor.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/donor.json",
+      "sha256": "6181ae4321a4902a324f2497a635de8bcdc608be8a5f1e8b3894284105fad19c",
+      "bytes": 7166
+    },
+    "mined-library.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+      "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+      "bytes": 6598
+    },
+    "response.jsonl": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/response.jsonl",
+      "sha256": "8649275742d5e4f8e28734f5c921eede0f46dc47e4238d3164a1281476b642a4",
+      "bytes": 6130
+    }
+  },
+  "Root_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+    "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+    "bytes": 14316
+  },
+  "Root_scope": {
+    "donor_stage_accepted": true,
+    "resource_accepted": true,
+    "library_admitted": false,
+    "recipient_accepted": false
+  },
+  "external_wall_ms": 678,
+  "native": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/native-terminal.json",
+    "sha256": "dfa859ff84abadc21cf865fbd01a26ec3dd36e70a78d94d1c2ccd6ad6c09c475",
+    "bytes": 1662
+  },
+  "external": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-external-v1/observation.json",
+    "sha256": "74fc07023c0953fa6514f9fce54b4d43b537693ab17857eb0d8a5c89d2cfc34d",
+    "bytes": 455
+  },
+  "donor_id": "ordinary-Q-primary-20261015-v1",
+  "original_context": {
+    "ordered_Gamma": [],
+    "parameters": [
+      "n"
+    ],
+    "target": [
+      "all",
+      "n",
+      [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "n"
+            ]
+          ]
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "AS": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "AZ": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      },
+      "functions": {
+        "add": 2,
+        "succ": 1,
+        "zero": 0
+      },
+      "predicates": {},
+      "schemas": []
+    }
+  },
+  "primitive_rows": [
+    {
+      "row": 0,
+      "rule": "axiom",
+      "ordered_prior_rows": [],
+      "formula_latex": "\\forall x\\;\\bigl(\\forall y\\;\\bigl((x+S(y))=S((x+y))\\bigr)\\bigr)",
+      "English_html": "Select the original closed axiom <code>AS</code>; there is no earlier-row input.",
+      "display_role": "Context",
+      "command": {
+        "formula": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "name": "AS",
+        "rule": "axiom"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+        "ordered_prior_rows": [],
+        "row": 0,
+        "rule": "axiom"
+      }
+    },
+    {
+      "row": 1,
+      "rule": "axiom",
+      "ordered_prior_rows": [],
+      "formula_latex": "\\forall x\\;\\bigl((x+0)=x\\bigr)",
+      "English_html": "Select the original closed axiom <code>AZ</code>; there is no earlier-row input.",
+      "display_role": "Context",
+      "command": {
+        "formula": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "name": "AZ",
+        "rule": "axiom"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "c0b146418958279b2f2cba2aceba61da8a3fe353527375e324f89a03cbf497c8",
+        "ordered_prior_rows": [],
+        "row": 1,
+        "rule": "axiom"
+      }
+    },
+    {
+      "row": 2,
+      "rule": "instantiate",
+      "ordered_prior_rows": [],
+      "formula_latex": "\\bigl(\\forall x\\;\\bigl(\\forall y\\;\\bigl((x+S(y))=S((x+y))\\bigr)\\bigr)\\bigr)\\to\\bigl(\\forall y\\;\\bigl((n+S(y))=S((n+y))\\bigr)\\bigr)",
+      "English_html": "Construct the universal-instantiation implication by replacing \\(x\\) with \\(n\\). This is the schema implication; a later <code>mp</code> row applies it to its universal premise.",
+      "display_role": "Context",
+      "command": {
+        "formula": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "instantiate",
+        "term": [
+          "var",
+          "n"
+        ],
+        "universal": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "27eff9ca8de01b4bacdff8320142f87d390255fe671e5833a53043c902144278",
+        "ordered_prior_rows": [],
+        "row": 2,
+        "rule": "instantiate"
+      }
+    },
+    {
+      "row": 3,
+      "rule": "instantiate",
+      "ordered_prior_rows": [],
+      "formula_latex": "\\bigl(\\forall x\\;\\bigl((x+0)=x\\bigr)\\bigr)\\to\\bigl((n+0)=n\\bigr)",
+      "English_html": "Construct the universal-instantiation implication by replacing \\(x\\) with \\(n\\). This is the schema implication; a later <code>mp</code> row applies it to its universal premise.",
+      "display_role": "Context",
+      "command": {
+        "formula": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "n"
+            ]
+          ]
+        ],
+        "rule": "instantiate",
+        "term": [
+          "var",
+          "n"
+        ],
+        "universal": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "3a3ec19e640556d9f00bf8154df39499b8abfcff72f0b318463cbd7b3522a343",
+        "ordered_prior_rows": [],
+        "row": 3,
+        "rule": "instantiate"
+      }
+    },
+    {
+      "row": 4,
+      "rule": "instantiate",
+      "ordered_prior_rows": [],
+      "formula_latex": "\\bigl(\\forall y\\;\\bigl((n+S(y))=S((n+y))\\bigr)\\bigr)\\to\\bigl((n+S(0))=S((n+0))\\bigr)",
+      "English_html": "Construct the universal-instantiation implication by replacing \\(y\\) with \\(0\\). This is the schema implication; a later <code>mp</code> row applies it to its universal premise.",
+      "display_role": "Context",
+      "command": {
+        "formula": [
+          "imp",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "instantiate",
+        "term": [
+          "fun",
+          "zero",
+          []
+        ],
+        "universal": [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "848d714c05ea9f237e88377e0fffd1fc03b2a738d1cc90b0c2f68aed6a72a03e",
+        "ordered_prior_rows": [],
+        "row": 4,
+        "rule": "instantiate"
+      }
+    },
+    {
+      "row": 5,
+      "rule": "eq_subst",
+      "ordered_prior_rows": [],
+      "formula_latex": "\\bigl((n+0)=n\\bigr)\\to\\bigl(\\bigl((n+S(0))=S((n+0))\\bigr)\\to\\bigl((n+S(0))=S(n)\\bigr)\\bigr)",
+      "English_html": "Construct equality substitution for the atomic template \\((n+S(0))=S(\\mathsf{hole0})\\), with \\(\\mathsf{hole0}\\) replaced simultaneously by \\((n+0)\\) and \\(n\\). This row creates the implication; it has not yet consumed either external fact.",
+      "display_role": "Mined member",
+      "command": {
+        "formula": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "n"
+            ]
+          ],
+          [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "left": [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        "right": [
+          "var",
+          "n"
+        ],
+        "rule": "eq_subst",
+        "template": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ]
+        ],
+        "variable": "hole0"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "67f06b236f1674797ed1118163d6df1b1f3f99aed99528ed8fbb383fb929d73a",
+        "ordered_prior_rows": [],
+        "row": 5,
+        "rule": "eq_subst"
+      }
+    },
+    {
+      "row": 6,
+      "rule": "mp",
+      "ordered_prior_rows": [
+        0,
+        2
+      ],
+      "formula_latex": "\\forall y\\;\\bigl((n+S(y))=S((n+y))\\bigr)",
+      "English_html": "Apply implication row \\(2\\) to antecedent row \\(0\\). The primitive input order is antecedent first, implication second.",
+      "display_role": "Context",
+      "command": {
+        "antecedent": 0,
+        "formula": [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "implication": 2,
+        "rule": "mp"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "2e548c44c97d41acd54098203ecf991ec3f77b9f6d161adf45e5e43d501b2030",
+        "ordered_prior_rows": [
+          0,
+          2
+        ],
+        "row": 6,
+        "rule": "mp"
+      }
+    },
+    {
+      "row": 7,
+      "rule": "mp",
+      "ordered_prior_rows": [
+        1,
+        3
+      ],
+      "formula_latex": "(n+0)=n",
+      "English_html": "Apply implication row \\(3\\) to antecedent row \\(1\\). The primitive input order is antecedent first, implication second.",
+      "display_role": "External receptor",
+      "command": {
+        "antecedent": 1,
+        "formula": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "n"
+          ]
+        ],
+        "implication": 3,
+        "rule": "mp"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "08eb7f8ecc99d872c81737dd06d2549b04b27341f9cbc139560734b64bc8a4b4",
+        "ordered_prior_rows": [
+          1,
+          3
+        ],
+        "row": 7,
+        "rule": "mp"
+      }
+    },
+    {
+      "row": 8,
+      "rule": "mp",
+      "ordered_prior_rows": [
+        6,
+        4
+      ],
+      "formula_latex": "(n+S(0))=S((n+0))",
+      "English_html": "Apply implication row \\(4\\) to antecedent row \\(6\\). The primitive input order is antecedent first, implication second.",
+      "display_role": "External receptor",
+      "command": {
+        "antecedent": 6,
+        "formula": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "implication": 4,
+        "rule": "mp"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "531bdfa35a5415c24a3c86ed56f2f43d75cb1c5b575fd6dd13e05da232acf967",
+        "ordered_prior_rows": [
+          6,
+          4
+        ],
+        "row": 8,
+        "rule": "mp"
+      }
+    },
+    {
+      "row": 9,
+      "rule": "mp",
+      "ordered_prior_rows": [
+        7,
+        5
+      ],
+      "formula_latex": "\\bigl((n+S(0))=S((n+0))\\bigr)\\to\\bigl((n+S(0))=S(n)\\bigr)",
+      "English_html": "Apply implication row \\(5\\) to antecedent row \\(7\\). The primitive input order is antecedent first, implication second.",
+      "display_role": "Mined member",
+      "command": {
+        "antecedent": 7,
+        "formula": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "implication": 5,
+        "rule": "mp"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "7c7cf938aec702ad5bd1ce42a68465b2f95226ce0a34933254cdea7e19c57368",
+        "ordered_prior_rows": [
+          7,
+          5
+        ],
+        "row": 9,
+        "rule": "mp"
+      }
+    },
+    {
+      "row": 10,
+      "rule": "mp",
+      "ordered_prior_rows": [
+        8,
+        9
+      ],
+      "formula_latex": "(n+S(0))=S(n)",
+      "English_html": "Apply implication row \\(9\\) to antecedent row \\(8\\). The primitive input order is antecedent first, implication second.",
+      "display_role": "Mined member",
+      "command": {
+        "antecedent": 8,
+        "formula": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "n"
+              ]
+            ]
+          ]
+        ],
+        "implication": 9,
+        "rule": "mp"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "1f8a7a7519fa488438243bcc8523b469cd7378d8cf11fa9d1f983be4a5e1be6e",
+        "ordered_prior_rows": [
+          8,
+          9
+        ],
+        "row": 10,
+        "rule": "mp"
+      }
+    },
+    {
+      "row": 11,
+      "rule": "generalize",
+      "ordered_prior_rows": [
+        10
+      ],
+      "formula_latex": "\\forall n\\;\\bigl((n+S(0))=S(n)\\bigr)",
+      "English_html": "Universally generalize row \\(10\\) over \\(n\\). The checker retains the entire original \\(\\Gamma=\\varnothing\\) and returns the original closed target.",
+      "display_role": "Closed target",
+      "command": {
+        "formula": [
+          "all",
+          "n",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "generalize",
+        "source": 10,
+        "variable": "n"
+      },
+      "saved_certificate_row": {
+        "formula_sha256": "4bd5ac8395622f38c210d653eacd92dc3e6c7ce276a210883581e668a2f55e8c",
+        "ordered_prior_rows": [
+          10
+        ],
+        "row": 11,
+        "rule": "generalize"
+      }
+    }
+  ],
+  "mined_library": {
+    "ROOT_library_admitted": false,
+    "donor_census": [
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 0
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 1
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 2
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 3
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 4
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 5
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "not_two_ordered_MP_applications",
+        "root": 6
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "not_two_ordered_MP_applications",
+        "root": 7
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "not_two_ordered_MP_applications",
+        "root": 8
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "not_two_ordered_MP_applications",
+        "root": 9
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "eligible",
+        "root": 10,
+        "shape_sha256": "9aa619cbfbef7dff86d7bd30a96f8d8c8024e570cef7402c588e227b6c81801c"
+      },
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "reason": "root_not_MP",
+        "root": 11
+      }
+    ],
+    "donor_checks": [
+      {
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "independent_word_check": {
+          "ROOT_library_admitted": false,
+          "ROOT_resource_accepted": false,
+          "completed": true,
+          "full_board_accepted": false,
+          "logical_accepted": true,
+          "native_accepted": false,
+          "original_target_primary_accepted": true,
+          "profile": "Q-six-rule-open-parameter",
+          "schema": "equality-family-independent-word-adapter-result-v1",
+          "scope": "original-closed-target-word",
+          "trajectory_accepted": false,
+          "underlying_receipt": {
+            "ROOT_resource_accepted": false,
+            "commands_sha256": "3ed136d57a07a6615ce5ca9431f46ca06b9c41c053aa235659c75bdbf7d08c50",
+            "completed": true,
+            "consumed_original_occurrence_indices": [],
+            "current_state_point_union_accepted": false,
+            "elapsed_seconds_before_final_guard": 0.00812075000000001,
+            "essential_rows": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "full24_accepted": false,
+            "full_PA_accepted": false,
+            "full_trajectory_accepted": false,
+            "induction_accepted": false,
+            "native_accepted": false,
+            "original_Gamma_target_sequent_accepted": true,
+            "original_ordered_Gamma": [],
+            "parameters": [
+              "n"
+            ],
+            "rows": [
+              {
+                "formula_sha256": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+                "ordered_prior_rows": [],
+                "row": 0,
+                "rule": "axiom"
+              },
+              {
+                "formula_sha256": "c0b146418958279b2f2cba2aceba61da8a3fe353527375e324f89a03cbf497c8",
+                "ordered_prior_rows": [],
+                "row": 1,
+                "rule": "axiom"
+              },
+              {
+                "formula_sha256": "27eff9ca8de01b4bacdff8320142f87d390255fe671e5833a53043c902144278",
+                "ordered_prior_rows": [],
+                "row": 2,
+                "rule": "instantiate"
+              },
+              {
+                "formula_sha256": "3a3ec19e640556d9f00bf8154df39499b8abfcff72f0b318463cbd7b3522a343",
+                "ordered_prior_rows": [],
+                "row": 3,
+                "rule": "instantiate"
+              },
+              {
+                "formula_sha256": "848d714c05ea9f237e88377e0fffd1fc03b2a738d1cc90b0c2f68aed6a72a03e",
+                "ordered_prior_rows": [],
+                "row": 4,
+                "rule": "instantiate"
+              },
+              {
+                "formula_sha256": "67f06b236f1674797ed1118163d6df1b1f3f99aed99528ed8fbb383fb929d73a",
+                "ordered_prior_rows": [],
+                "row": 5,
+                "rule": "eq_subst"
+              },
+              {
+                "formula_sha256": "2e548c44c97d41acd54098203ecf991ec3f77b9f6d161adf45e5e43d501b2030",
+                "ordered_prior_rows": [
+                  0,
+                  2
+                ],
+                "row": 6,
+                "rule": "mp"
+              },
+              {
+                "formula_sha256": "08eb7f8ecc99d872c81737dd06d2549b04b27341f9cbc139560734b64bc8a4b4",
+                "ordered_prior_rows": [
+                  1,
+                  3
+                ],
+                "row": 7,
+                "rule": "mp"
+              },
+              {
+                "formula_sha256": "531bdfa35a5415c24a3c86ed56f2f43d75cb1c5b575fd6dd13e05da232acf967",
+                "ordered_prior_rows": [
+                  6,
+                  4
+                ],
+                "row": 8,
+                "rule": "mp"
+              },
+              {
+                "formula_sha256": "7c7cf938aec702ad5bd1ce42a68465b2f95226ce0a34933254cdea7e19c57368",
+                "ordered_prior_rows": [
+                  7,
+                  5
+                ],
+                "row": 9,
+                "rule": "mp"
+              },
+              {
+                "formula_sha256": "1f8a7a7519fa488438243bcc8523b469cd7378d8cf11fa9d1f983be4a5e1be6e",
+                "ordered_prior_rows": [
+                  8,
+                  9
+                ],
+                "row": 10,
+                "rule": "mp"
+              },
+              {
+                "formula_sha256": "4bd5ac8395622f38c210d653eacd92dc3e6c7ce276a210883581e668a2f55e8c",
+                "ordered_prior_rows": [
+                  10
+                ],
+                "row": 11,
+                "rule": "generalize"
+              }
+            ],
+            "schema": "independent-Q-primitive-word-certificate-v1",
+            "target": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "theory_sha256": "d1911f3fee9cb65c79563b251dd8f245d99438adcb99d846bc184824e5f8cc44",
+            "universal_compiler_accepted": false,
+            "visits": 354
+          }
+        },
+        "origin": {
+          "automatically_searched": true,
+          "commands_sha256": "3ed136d57a07a6615ce5ca9431f46ca06b9c41c053aa235659c75bdbf7d08c50",
+          "complete_original_target_return": true,
+          "context_sha256": "b6dd39daa19fb071445b3642b0d0bef87516001810c55e945a6af0c1c522cd82",
+          "donor_id": "ordinary-Q-primary-20261015-v1",
+          "origin_sha256": "57465fb8dd33c19de6ed492918841155866cab4b58e14932fea1b4d99a20de1c",
+          "schema": "ROOT-authenticated-searched-donor-v1"
+        }
+      }
+    ],
+    "donor_intake_sha256": "2f11f921477a2b6848076dc27a1739c108e80c264ed07e1d14ee663c840b788c",
+    "families": [
+      {
+        "body_command_indices": [
+          5,
+          9,
+          10
+        ],
+        "donor_commands_sha256": "3ed136d57a07a6615ce5ca9431f46ca06b9c41c053aa235659c75bdbf7d08c50",
+        "donor_context_syntax": {
+          "hole_occurrences": 1,
+          "nodes": 7
+        },
+        "donor_hole": "hole0",
+        "donor_id": "ordinary-Q-primary-20261015-v1",
+        "donor_role_terms": {
+          "s": [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          "t": [
+            "var",
+            "n"
+          ],
+          "u0": [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        "family_id": "atomic-context-family-9aa619cbfbef7dff86d7bd30a96f8d8c8024e570cef7402c588e227b6c81801c",
+        "ordered_external_command_indices": [
+          7,
+          8
+        ],
+        "shape": {
+          "atomic_context": [
+            "eq",
+            [
+              "family-term",
+              "u0"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "family-hole"
+                ]
+              ]
+            ]
+          ],
+          "input_receptors": [
+            [
+              "eq",
+              [
+                "family-term",
+                "s"
+              ],
+              [
+                "family-term",
+                "t"
+              ]
+            ],
+            [
+              "eq",
+              [
+                "family-term",
+                "u0"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "family-term",
+                    "s"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "members": [
+            {
+              "ordered_ports": [],
+              "witness": {
+                "formula": [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "family-term",
+                      "s"
+                    ],
+                    [
+                      "family-term",
+                      "t"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "family-term",
+                        "u0"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "family-term",
+                            "s"
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "family-term",
+                        "u0"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "family-term",
+                            "t"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "left": [
+                  "family-term",
+                  "s"
+                ],
+                "right": [
+                  "family-term",
+                  "t"
+                ],
+                "rule": "eq_subst",
+                "template": [
+                  "eq",
+                  [
+                    "family-term",
+                    "u0"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "family-hole"
+                      ]
+                    ]
+                  ]
+                ],
+                "variable": [
+                  "family-hole-name"
+                ]
+              }
+            },
+            {
+              "ordered_ports": [
+                "input:equality",
+                "member:0"
+              ],
+              "witness": {
+                "formula": [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "family-term",
+                      "u0"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "family-term",
+                          "s"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "family-term",
+                      "u0"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "family-term",
+                          "t"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            {
+              "ordered_ports": [
+                "input:formula",
+                "member:1"
+              ],
+              "witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "family-term",
+                    "u0"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "family-term",
+                        "t"
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "mp"
+              }
+            }
+          ],
+          "output": [
+            "eq",
+            [
+              "family-term",
+              "u0"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "family-term",
+                  "t"
+                ]
+              ]
+            ]
+          ],
+          "roles": [
+            "s",
+            "t",
+            "u0"
+          ],
+          "slice": "bounded-typed-atomic-context",
+          "syntax_limits": {
+            "context_nodes": 64,
+            "context_parameters": 32,
+            "term_depth": 16,
+            "term_nodes": 64
+          }
+        }
+      }
+    ],
+    "new_theorem_claimed": false,
+    "schema": "mined-typed-atomic-context-library-v2",
+    "scientific_target_accepted": false,
+    "selection": "first eligible body in complete frozen donor/root order"
+  },
+  "controls": [
+    {
+      "corrupted_donor_sha256": "5ebc8a48080e8694f7fe9b2af0e5888583671adc39a2a492a9faa4650581c641",
+      "error": "admitted searched origin linkage",
+      "id": "corrupt-origin",
+      "rejected": true,
+      "unchanged_commands_sha256": "3ed136d57a07a6615ce5ca9431f46ca06b9c41c053aa235659c75bdbf7d08c50"
+    },
+    {
+      "actual_source_row": 0,
+      "corrupted_commands_sha256": "e826daa2a0af78301946cc9627387fd9628799e9055995e12c4061058db280ed",
+      "error": "exact named original axiom",
+      "id": "corrupted-command",
+      "original_commands_sha256": "3ed136d57a07a6615ce5ca9431f46ca06b9c41c053aa235659c75bdbf7d08c50",
+      "original_target_unchanged": true,
+      "rejected": true
+    }
+  ],
+  "observed_costs": {
+    "prior_training_launch_to_postprobe_ns": 6375017000,
+    "current_native_lifetime_ns": 461179000,
+    "current_launch_to_postprobe_ns": 497768000,
+    "sum_of_separate_training_stages_ns": 6872785000,
+    "current_true_terminal_bytes": 22790144
+  },
+  "metadata_checks": [
+    {
+      "id": "complete-two-line-wire",
+      "passed": true
+    },
+    {
+      "id": "body-LF-completion",
+      "passed": true
+    },
+    {
+      "id": "complete-census",
+      "passed": true
+    },
+    {
+      "id": "saved-fresh-closed-word",
+      "passed": true
+    },
+    {
+      "id": "literal-row-0",
+      "passed": true
+    },
+    {
+      "id": "literal-row-1",
+      "passed": true
+    },
+    {
+      "id": "literal-row-2",
+      "passed": true
+    },
+    {
+      "id": "literal-row-3",
+      "passed": true
+    },
+    {
+      "id": "literal-row-4",
+      "passed": true
+    },
+    {
+      "id": "literal-row-5",
+      "passed": true
+    },
+    {
+      "id": "literal-row-6",
+      "passed": true
+    },
+    {
+      "id": "literal-row-7",
+      "passed": true
+    },
+    {
+      "id": "literal-row-8",
+      "passed": true
+    },
+    {
+      "id": "literal-row-9",
+      "passed": true
+    },
+    {
+      "id": "literal-row-10",
+      "passed": true
+    },
+    {
+      "id": "literal-row-11",
+      "passed": true
+    },
+    {
+      "id": "both-specific-negative-results",
+      "passed": true
+    },
+    {
+      "id": "unearned-flags-remain-false",
+      "passed": true
+    },
+    {
+      "id": "native-true-wait4",
+      "passed": true
+    },
+    {
+      "id": "observed-time-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "observed-memory-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "Root-narrow-disposition",
+      "passed": true
+    },
+    {
+      "id": "Root-exact-family-census",
+      "passed": true
+    }
+  ],
+  "presentation_only": true,
+  "scientific_replay_calls": 0
+}

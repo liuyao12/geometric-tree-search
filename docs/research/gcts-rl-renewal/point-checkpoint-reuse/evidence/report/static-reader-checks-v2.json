@@ -1,0 +1,36 @@
+{
+  "all_static_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "checks": {
+    "HTML_math_y_labels_and_code_event_indices_retained": true,
+    "SVG_geometry_and_accessibility_titles_byte_identical": true,
+    "all_15_raw_event_blocks_byte_identical": true,
+    "all_same_document_anchors_unique_and_resolve": true,
+    "complete_B_max_memory_equation_present": true,
+    "complete_byte_inverse_restores_frozen_v1": true,
+    "exact_forall_target_and_empty_Gamma_present": true,
+    "inline_and_display_delimiters_balanced": true,
+    "no_controls_except_tab_and_LF": true,
+    "report_data_saved_findings_and_old_handoff_hashes_unchanged": true,
+    "stable_publication_footer": true,
+    "table_and_MathJax_configuration_loader_byte_identical": true,
+    "visible_prose_no_bare_damaged_scalar_or_command_remnants": true
+  },
+  "editorial_delta": {
+    "bytes": 6844,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/editorial-delta-v2.json",
+    "sha256": "f948a09471d313eba62bfb44d88aaecccac5b172a4e7dfefb2ad322a57a4c932"
+  },
+  "native_clock_calls": 0,
+  "pending_ROOT": [
+    "Rendered MathJax/layout/link verification and publication; static text checks only."
+  ],
+  "presentation_only": true,
+  "reader": {
+    "bytes": 64346,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-report-source-20261015/reader-v2.html",
+    "sha256": "de1c08e90ff0f48ff06f4e7d91d4d134cbe887e4116fe0185f552013b948a64f"
+  },
+  "schema": "point-checkpoint-reuse-reader-static-v2",
+  "scientific_calls": 0
+}

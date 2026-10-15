@@ -1,0 +1,172 @@
+{
+  "schema": "parallel-arithmetic-contribution-assessment-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source_and_saved_data_only": true,
+  "new_scientific_Source_calls": 0,
+  "Q_payload_decodes": 0,
+  "clocks_tests_actuals": 0,
+  "publication": false,
+  "conclusion": "Ordinary searched proof established; current point contribution and end-to-end advantage unestablished. Both point attempts remain UNKNOWN.",
+  "target_latex": "\\Gamma=\\varnothing\\vdash\\forall n\\,(n+S(0)=S(n))",
+  "axioms_latex": [
+    "\\forall x\\,(x+0=x)",
+    "\\forall x\\,\\forall y\\,(x+S(y)=S(x+y))"
+  ],
+  "actual_primary_rows": [
+    {
+      "arm": "ordinary",
+      "classification": "ordinary searched primitive proof",
+      "primary_accepted": true,
+      "resource_accepted": true,
+      "native_launch_to_postprobe_ns": 6375017000,
+      "aggregate_owned_bound_bytes": 308805632,
+      "point_full24_trajectory_native_RL_accepted": false
+    },
+    {
+      "arm": "point_base",
+      "classification": "point BASE UNKNOWN",
+      "primary_accepted": false,
+      "resource_accepted": false,
+      "native_launch_to_postprobe_ns": 20128667000,
+      "aggregate_owned_bound_bytes": 314015744,
+      "point_full24_trajectory_native_RL_accepted": false
+    },
+    {
+      "arm": "point_reuse",
+      "classification": "point BASE UNKNOWN",
+      "primary_accepted": false,
+      "resource_accepted": false,
+      "native_launch_to_postprobe_ns": 20107712000,
+      "aggregate_owned_bound_bytes": 314146816,
+      "point_full24_trajectory_native_RL_accepted": false
+    }
+  ],
+  "partial_diagnostic_comparison": {
+    "matching_events": 12,
+    "event_index": 11,
+    "old_fingerprints": 7,
+    "new_fingerprints": 5,
+    "explicit_reuses": 2,
+    "old_completed_fingerprint_ns": 10729847000,
+    "new_completed_fingerprint_ns": 7447742000,
+    "producer_telemetry_only": true,
+    "complete_cost_partition": false,
+    "end_to_end_speed_claim": false,
+    "independent_full_trajectory_replay": false
+  },
+  "donor_stage": {
+    "scope": "Actual training extraction with fresh full-word receipt and donor-specific literal grounding; no recipient/library/universal soundness admission",
+    "root_count": 12,
+    "eligible_roots": [
+      10
+    ],
+    "selected_family_count": 1,
+    "native_launch_to_postprobe_ns": 497768000,
+    "terminal_peak_bytes": 22790144,
+    "prior_training_ns": 6375017000,
+    "cumulative_separately_budgeted_training_ns": 6872785000,
+    "recognizer_human_chosen_after_donor": true,
+    "RL_training_exists": false
+  },
+  "matched_next_test": {
+    "kind": "proposed four-arm cold calibration, not actual plan",
+    "target": "same original Q as training calibration only",
+    "arms": [
+      "ordinary/no library",
+      "ordinary/identical library",
+      "point/no library",
+      "point/identical library"
+    ],
+    "same_information": [
+      "identical original axioms/Gamma/catalogue and independent primitive-word checker",
+      "identical mined library and accounted training data to both advised arms",
+      "no target proof word or target-specific constructor",
+      "same diagnostic policy in both point arms"
+    ],
+    "required_semantics": [
+      "full24 point domains and original t/m keyed ABI",
+      "global dead before global forced before earliest generation",
+      "full canonical base fallback",
+      "current dependency-complete selected equality/formula receptors; zero instances permitted",
+      "full original Gamma/current-point/primitive expansion checks"
+    ],
+    "total_cost": [
+      "cold Source/input handling",
+      "prior training attribution",
+      "extraction and receptor construction/checking",
+      "search including all diagnostic cost",
+      "independent primitive checking and final terminal/EOF/resource custody"
+    ],
+    "claim_gate": "Only a complete verified point improvement beyond the ordinary arm with identical information supports training-target contribution. No prefix or timed-out arm is a solved target.",
+    "transfer_gate": "Separate preregistered structurally changed unseen target; renaming alone is not transfer. No supplied or retrospectively selected proof."
+  },
+  "known_gaps": [
+    "No accepted point proof/current full-board/trajectory in these two attempts.",
+    "Point fingerprints absent from ordinary control create instrumentation asymmetry; no subtraction or unmeasured bottleneck attribution.",
+    "Current family only reuses already selected dependency-complete facts; no open-obligation or backward point-cluster implementation is supplied.",
+    "No trained RL policy or unseen-theorem family benefit demonstrated.",
+    "Individual bounded trials are not statistical superiority evidence."
+  ],
+  "evidence": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "declaration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "bytes": 2683
+    },
+    "ordinary": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "1f4d947319f65e24256322c24933881856ec3a90011c6499708145f18d3cdef7",
+      "bytes": 2576
+    },
+    "ordinary_controls": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-controls-disposition-v1.json",
+      "sha256": "51a72e90f85732089f6a157dab9290361ef732add7b3670546f192f8160bd2bc",
+      "bytes": 2576
+    },
+    "point_base": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "ceb542a8c5958f9a4238a10c37a813c0e6802211f7dd79ea62bd3347ee4cc6ae",
+      "bytes": 2619
+    },
+    "point_reuse": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "2beddb283f80d92f5d544d2ab224b569ac11e1d790cd77007a1ef20b26ff2ae5",
+      "bytes": 2664
+    },
+    "point_reuse_controls": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-controls-disposition-v1.json",
+      "sha256": "90bf17063d8cd9d1bb094cab11f975ae7165c536b37a6a3ed587da4f25b1673b",
+      "bytes": 2674
+    },
+    "common_prefix": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-common-prefix-comparison-v1.json",
+      "sha256": "5c1bd10483b186c7e574a28ad160359cee791a12baed5de5152707ad29025761",
+      "bytes": 1861
+    },
+    "reuse_checkpoint": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-progress-checkpoint-v1.json",
+      "sha256": "0f049224731b6ed8b61eba61d81115c79225c5e4045d92e234890ac88e7e9b95",
+      "bytes": 2771
+    },
+    "donor": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+      "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+      "bytes": 14316
+    },
+    "donor_saved_review": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-saved-independent-20261015/handoff-v1.json",
+      "sha256": "ae7eafa77a60d6c0155a419974c08e970491a7883b6cc3f83699a3b1c4774623",
+      "bytes": 1661
+    }
+  },
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-contribution-assessment-source-20261015/reader.html",
+    "sha256": "9da1727b52aa0ef8589911ccedde1da9a1daf48576b19adce984555737b64a9f",
+    "bytes": 6638
+  }
+}

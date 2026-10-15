@@ -1,0 +1,101 @@
+{
+  "Root_choice": {
+    "bytes": 5903,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-ROOT-20261015/ROOT-protocol-choice-v2.json",
+    "sha256": "043302e2ab2409429bab288735617d604b7b013135bf58ca59ec8b71542b7a65"
+  },
+  "actual_calls_plans_outputs": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "author_static_evidence": {
+    "bytes": 5456,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/author-static-checks-v1.json",
+    "sha256": "1a5704b79e1ad2de5e1e3b4cc84e6721be5012b198a40656fc068d1a81dd0c83"
+  },
+  "bootstrap_delta": {
+    "bytes": 1634,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/bootstrap1-to-2-delta-v1.json",
+    "sha256": "aabdb59ede354ec54e1df7973a1dbbac4b0ad3e6de41fa14c498cc41d8ef9262"
+  },
+  "parent_delta": {
+    "bytes": 3061,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/parent1-to-2-delta-v1.json",
+    "sha256": "b5f64177d9af7154145c719d348c4ed4e898c2aefbd8aec05861efeb0c73c2d2"
+  },
+  "plan_API": {
+    "bytes": 16081,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/ROOT-plan-shape-and-invocation-v1.json",
+    "sha256": "67ccbfff2d46c7efff1f85b171ad0c146bb796e68091a9f804f557b98dc13efb"
+  },
+  "producer_contract": {
+    "bytes": 17223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer-Source-contract-v1.json",
+    "sha256": "8da3f78bf659af9178635f00ef5b1e83da355794822188d34cd9c56c5cb6cc83"
+  },
+  "producer_delta": {
+    "bytes": 7467,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/producer4-to-5-delta-v1.json",
+    "sha256": "e95f3ec988a0c4ad8ee32fb5445cf2da29bba4d68310746433cd240d761b41e7"
+  },
+  "remaining_gates": [
+    "Genuine whole-current/delta Source8 peer and ROOT reviews.",
+    "Fresh ROOT current controls plan/grant and actual negative/lifecycle/resource closure; no old acceptance promoted.",
+    "Fresh separate once-only primary same full Q/128/2000/max1/original20 caps; result unknown in advance.",
+    "No speed/GCTS/cluster/RL/theorem/point trajectory/full24/native contribution inferred from this diagnostic reuse change."
+  ],
+  "review_scope": "Q-point-compact-cold-intake-Source",
+  "schema": "point-checkpoint-reuse-cold-Source-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+    "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+  },
+  "source_contract": {
+    "bytes": 22518,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Source-contract-v1.json",
+    "sha256": "8af1a14f9b9d02410616663296bc02597b20c939e7bb525cd2b5bd5025f65438"
+  },
+  "source_only": true,
+  "sources": {
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "control_leaf": {
+      "bytes": 931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py",
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 42845,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+      "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "point_producer": {
+      "bytes": 30988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+    },
+    "producer_bootstrap": {
+      "bytes": 12467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py",
+      "sha256": "133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  }
+}

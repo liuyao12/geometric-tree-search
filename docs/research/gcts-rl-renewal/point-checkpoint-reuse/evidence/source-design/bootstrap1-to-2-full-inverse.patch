@@ -1,0 +1,17 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_producer_bootstrap_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_producer_bootstrap_v1.py
+@@ -17,12 +17,12 @@
+ import sys
+ import time
+ import types
+-VERSION = 'Q-point-compact-producer-bootstrap-v2'
++VERSION = 'Q-point-compact-producer-bootstrap-v1'
+ CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ SOURCE_PINS = {'codec': {'bytes': 5806, 'sha256': 'd0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df'},
+  'point_graph': {'bytes': 28531,
+                  'sha256': '8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567'},
+- 'producer': {'bytes': 30988, 'sha256': 'e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c'}}
++ 'producer': {'bytes': 28623, 'sha256': '4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052'}}
+ PREPARATION = {'sha256':'0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a','bytes':38376960}
+ ALLOWED_IMPORTS = {'__future__',
+  'copy',

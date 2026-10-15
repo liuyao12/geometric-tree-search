@@ -1,0 +1,180 @@
+{
+  "schema": "typed-atomic-context-family-static-authoring-checks-v1",
+  "source_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "sources": {
+    "family": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+      "bytes": 29157
+    },
+    "catalogue_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+      "bytes": 12929
+    },
+    "checker_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+      "bytes": 3901
+    }
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+    "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c",
+    "bytes": 12386
+  },
+  "check_count": 20,
+  "checks": [
+    {
+      "id": 1,
+      "check": "complete successor AST parse/compile only",
+      "passed": true,
+      "detail": "No import/exec of this Source"
+    },
+    {
+      "id": 2,
+      "check": "parent raw Source unchanged",
+      "passed": true,
+      "detail": "Preserved frozen whole-operand package"
+    },
+    {
+      "id": 3,
+      "check": "catalogue adapter exact inherited bytes",
+      "passed": true,
+      "detail": "Original Q/H recipe/epoch/point ABI unchanged"
+    },
+    {
+      "id": 4,
+      "check": "checker adapter exact inherited bytes",
+      "passed": true,
+      "detail": "Closed primary vs Q parameter-consequence vs ground Hilbert distinctions unchanged"
+    },
+    {
+      "id": 5,
+      "check": "whole forward byte reconstruction",
+      "passed": true,
+      "detail": "Complete positional edits, no prefix/sample"
+    },
+    {
+      "id": 6,
+      "check": "whole inverse byte reconstruction",
+      "passed": true,
+      "detail": "Every Source byte restored"
+    },
+    {
+      "id": 7,
+      "check": "fourteen inherited definitions AST exact",
+      "passed": true,
+      "detail": [
+        "NoInstance",
+        "need",
+        "canonical",
+        "digest",
+        "integer",
+        "references",
+        "witness",
+        "key_data",
+        "raw_key",
+        "literal_union",
+        "complete_rows",
+        "expand",
+        "essential_ancestors",
+        "prefer_at_reference_branch"
+      ]
+    },
+    {
+      "id": 8,
+      "check": "five inherited definitions changed exactly",
+      "passed": true,
+      "detail": [
+        "term",
+        "ground",
+        "recognize",
+        "mine_transport",
+        "instantiate_transport"
+      ]
+    },
+    {
+      "id": 9,
+      "check": "removed whole-operand abstraction only",
+      "passed": true,
+      "detail": "No old Source modified"
+    },
+    {
+      "id": 10,
+      "check": "seven declared added syntax helpers",
+      "passed": true,
+      "detail": [
+        "OutsideSyntax",
+        "atomic_shape",
+        "bind_context",
+        "contains_hole",
+        "context_pattern",
+        "fill_context",
+        "syntax_need"
+      ]
+    },
+    {
+      "id": 11,
+      "check": "fixed general syntax bounds literal",
+      "passed": true,
+      "detail": "Not selected from a future family result; affects advice only"
+    },
+    {
+      "id": 12,
+      "check": "no successor/target-specific symbol literals",
+      "passed": true,
+      "detail": "No target/donor route constants; nominal symbols copied from actual donor"
+    },
+    {
+      "id": 13,
+      "check": "no project/native/runtime imports",
+      "passed": true,
+      "detail": "No source loader, clock, search or actual plan"
+    },
+    {
+      "id": 14,
+      "check": "full donor/root selection retained",
+      "passed": true,
+      "detail": "Existing full donor independent check and complete root census; one first eligible shape"
+    },
+    {
+      "id": 15,
+      "check": "all actual donor witnesses round-trip",
+      "passed": true,
+      "detail": "Original witness/input/output/template equality required after abstraction"
+    },
+    {
+      "id": 16,
+      "check": "one correlated hole and context slots",
+      "passed": true,
+      "detail": "Repeated holes/slots share simultaneous binding; maximal terms not sequentially rewritten"
+    },
+    {
+      "id": 17,
+      "check": "delegated ValueError is not converted to ineligibility",
+      "passed": true,
+      "detail": "Only own OutsideSyntax catches bound/type mismatch; other delegate failures propagate"
+    },
+    {
+      "id": 18,
+      "check": "licensed recipient template and output bounds",
+      "passed": true,
+      "detail": "Recipe lookup still exact and required; unsupported no instance"
+    },
+    {
+      "id": 19,
+      "check": "original points/ancestry/fallback AST exact",
+      "passed": true,
+      "detail": "Every Gamma seed occurrence, shared primitive identity, union/refcounts and lazy base fallback preserved"
+    },
+    {
+      "id": 20,
+      "check": "master raw unchanged",
+      "passed": true,
+      "detail": "Whole current master reread"
+    }
+  ],
+  "project_Source_functions_Q_decodes_clocks_tests_actuals": 0
+}

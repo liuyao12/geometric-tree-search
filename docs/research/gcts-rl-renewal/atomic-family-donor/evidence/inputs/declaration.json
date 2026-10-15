@@ -1,0 +1,149 @@
+{
+  "grammar": {
+    "equality_operand_pairs": "all_ordered_pairs",
+    "equality_template_other_terms": "complete_operand_pool",
+    "generalization_sources": "all_resulting_parameter_scoped_equality_atoms",
+    "hole_context_node_bound": 2,
+    "instantiation_rounds": 2,
+    "target_and_axiom_open_subterms": true,
+    "target_seed_is_formula_only": true,
+    "term_node_bound": 3
+  },
+  "height": 24,
+  "limits": {
+    "maximum_formulas": 50000,
+    "maximum_recipes": 20000,
+    "maximum_visits": 5000000
+  },
+  "ordered_Gamma": [],
+  "parameters": [
+    "n"
+  ],
+  "schema": "arithmetic-empty-Gamma-Q-declaration-v1",
+  "target": [
+    "all",
+    "n",
+    [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "n"
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "succ",
+        [
+          [
+            "var",
+            "n"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "theory": {
+    "axioms": {
+      "AS": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "AZ": [
+        "all",
+        "x",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    },
+    "functions": {
+      "add": 2,
+      "succ": 1,
+      "zero": 0
+    },
+    "predicates": {},
+    "schemas": []
+  }
+}

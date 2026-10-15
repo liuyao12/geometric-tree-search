@@ -1,0 +1,146 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py
+@@ -14,7 +14,7 @@
+ import resource
+ import time
+ import types
+-VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v4'
++VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v5'
+ CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ 
+ LIMITS = {'joint_seconds': 20, 'failure_seconds': 55, 'worker_bytes': 524288000,
+@@ -51,7 +51,7 @@
+         need(type(self.clock) is types.BuiltinFunctionType and type(self.clock_id) is int,
+              'native global clock callable and exact integer clock ID')
+         self.counts = {'budget_checks':0, 'fingerprints':0, 'fingerprint_bytes':0,
+-                       'fingerprint_block_ticks':0, 'event_files':0, 'event_bytes':0,
++                       'fingerprint_block_ticks':0, 'fingerprint_reuses':0, 'event_files':0, 'event_bytes':0,
+                        'event_writes':0, 'return_validations':0}
+         self.phases = {'construction_begin_ns':None, 'construction_end_ns':None,
+                        'search_begin_ns':None, 'search_end_ns':None,
+@@ -361,11 +361,27 @@
+     error = None
+ 
+     def emit(kind, *, node=None, parent=None, depth=0, decision=None, key=None,
+-             status=None, fingerprint=False, cleanup=False):
++             status=None, fingerprint=False, reuse=None, cleanup=False):
+         budget.check(cleanup=cleanup)
+-        state = state_fingerprint(graph,budget,cleanup=cleanup) if fingerprint else None
+         ordinal = counters['events']
+-        record = {'schema':'Q-untrusted-producer-compact-event-v2','event':ordinal,
++        if reuse is not None:
++            # Caller proves no intervening graph mutator, not checkpoint length.
++            need(not fingerprint and type(reuse) is dict
++                 and type(reuse['event']) is int and 0 <= reuse['event'] < ordinal
++                 and type(reuse['state_fingerprint_origin_event']) is int
++                 and 0 <= reuse['state_fingerprint_origin_event'] <= reuse['event']
++                 and type(reuse['state_fingerprint']) is dict
++                 and reuse['state_fingerprint']['checkpoint'] == graph.checkpoint(),
++                 'explicit unchanged pre-placement fingerprint provenance')
++            state = reuse['state_fingerprint']
++            origin = reuse['state_fingerprint_origin_event']
++            reused_from = reuse['event']
++            budget.counts['fingerprint_reuses'] += 1
++        else:
++            state = state_fingerprint(graph,budget,cleanup=cleanup) if fingerprint else None
++            origin = ordinal if fingerprint else None
++            reused_from = None
++        record = {'schema':'Q-untrusted-producer-compact-event-v3','event':ordinal,
+             'observed_native_ns':budget.check(cleanup=cleanup),
+             'budget_counts_before_event_serialization':dict(budget.counts),
+             'budget_phase_intervals_before_event_serialization':dict(budget.phases),
+@@ -373,11 +389,15 @@
+             'key':None if key is None else key.data(),'producer_status':status,
+             'counters':dict(counters),'graph_metrics':dict(graph.metrics),
+             'checkpoint':graph.checkpoint(),'state_fingerprint':state,
++            'state_fingerprint_kind':'reused' if reuse is not None else 'computed' if fingerprint else 'none',
++            'state_fingerprint_origin_event':origin,
++            'state_fingerprint_reused_from_event':reused_from,
+             'producer_claim_only':True,'full_domain_snapshot':False,
+             'independent_trajectory_replay_accepted':False}
+         raw = events.append(record,cleanup=cleanup)
+         counters['events'] += 1
+-        return {'event':ordinal,'state_fingerprint':state,'file':raw}
++        return {'event':ordinal,'state_fingerprint':state,'file':raw,
++                'state_fingerprint_origin_event':origin}
+ 
+     def place(key, decision, node, parent, depth):
+         budget.check()
+@@ -398,13 +418,19 @@
+         emit('forced_place' if current.kind == 'forced' else 'branch_place',
+              node=node, parent=parent, depth=depth, decision=decision, key=key)
+ 
+-    def walk(parent, depth):
++    def walk(parent, depth, *, reuse_entry=None):
+         budget.check()
+         need(depth <= graph.height, 'finite board recursion')
+         node = counters['nodes']
+         counters['nodes'] += 1
+         checkpoint = graph.checkpoint()
+-        before = emit('node_enter', node=node, parent=parent, depth=depth, fingerprint=True)
++        if reuse_entry is not None:
++            need(parent is None and depth == 0 and reuse_entry is initial
++                 and checkpoint == entry, 'one original root entry reuse only')
++        before = emit('node_enter', node=node, parent=parent, depth=depth,
++                      fingerprint=reuse_entry is None, reuse=reuse_entry)
++        reuse_entry = None  # Consume root transfer; never a general cache.
++        unchanged_entry = before  # Valid only until FIRST graph mutator below.
+         local_status = 'UNKNOWN'
+         try:
+             while True:
+@@ -438,14 +464,18 @@
+                 key = next(iterator, None)
+                 need(key is not None, 'positive domain has original canonical first candidate')
+                 if decision['kind'] == 'forced':
++                    unchanged_entry = None  # Invalidate BEFORE _apply_legal in place.
+                     place(key, decision, node, parent, depth)
+                     continue
+                 need(decision['kind'] == 'branch', 'earliest-generation branch only')
+                 counters['branch_decisions'] += 1
+                 parent_checkpoint = graph.checkpoint()
+-                parent_state = emit('branch_checkpoint', node=node, parent=parent, depth=depth, fingerprint=True)
++                parent_state = emit('branch_checkpoint', node=node, parent=parent, depth=depth,
++                                    fingerprint=unchanged_entry is None, reuse=unchanged_entry)
++                unchanged_entry = None  # Invalidate BEFORE _apply_legal in place.
+                 place(key, decision, node, parent, depth)
+                 child_status = walk(node, depth + 1)
++                unchanged_entry = None  # Never reuse an AFTER-rollback fingerprint.
+                 graph.rollback(parent_checkpoint)
+                 counters['rollbacks'] += 1
+                 restored = emit('child_rollback', node=node, parent=parent, depth=depth, status=child_status, fingerprint=True)
+@@ -454,6 +484,7 @@
+                     local_status = child_status
+                     return local_status
+                 counters['backtracks'] += 1
++                unchanged_entry = None  # Invalidate BEFORE parent-context exclusion.
+                 graph.exclude_failed_child(key)
+                 counters['exclusions'] += 1
+                 emit('producer_exhausted_child_local_exclusion', node=node, parent=parent, depth=depth, key=key)
+@@ -461,6 +492,7 @@
+             cleanup = budget.now() >= joint_deadline_ns
+             try:
+                 budget.check(cleanup=cleanup)
++                unchanged_entry = None  # Always fresh complete post-unwind hash.
+                 graph.rollback(checkpoint)
+                 counters['rollbacks'] += 1
+                 restored = emit('node_unwind', node=node, parent=parent, depth=depth, status=local_status, fingerprint=True, cleanup=cleanup)
+@@ -472,8 +504,10 @@
+ 
+     budget.phases['search_begin_ns'] = budget.check()
+     initial = emit('run_entry',fingerprint=True)
++    root_reuse_record = initial
+     try:
+-        status = walk(None, 0)
++        status = walk(None, 0, reuse_entry=root_reuse_record)
++        root_reuse_record = None
+         budget.check()
+     except BaseException as failure:
+         status = 'UNKNOWN'
+@@ -483,6 +517,7 @@
+         cleanup = budget.now() >= joint_deadline_ns
+         try:
+             budget.check(cleanup=cleanup)
++            root_reuse_record = None  # Invalidate; root restoration is freshly hashed.
+             graph.rollback(entry)
+             counters['rollbacks'] += 1
+             restored = emit('run_restored', status=status, fingerprint=True, cleanup=cleanup)

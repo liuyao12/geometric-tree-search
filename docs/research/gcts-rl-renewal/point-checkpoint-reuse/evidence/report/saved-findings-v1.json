@@ -1,0 +1,649 @@
+{
+  "Q_payload_reads": 0,
+  "all_literal_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Authored the producer, fingerprint encoder and cold intake; this is Source-author literal saved-cost/correspondence analysis, not independent semantic or trajectory replay.",
+  "check_count": 141,
+  "checks": [
+    {
+      "check": "same raw pin provisional",
+      "passed": true
+    },
+    {
+      "check": "same raw pin native_terminal",
+      "passed": true
+    },
+    {
+      "check": "same raw pin external_observation",
+      "passed": true
+    },
+    {
+      "check": "same raw pin primary_plan",
+      "passed": true
+    },
+    {
+      "check": "same raw pin tool_bracket",
+      "passed": true
+    },
+    {
+      "check": "current contiguous saved event ordinals",
+      "passed": true
+    },
+    {
+      "check": "current all saved events explicitly untrusted",
+      "passed": true
+    },
+    {
+      "check": "prior contiguous saved event ordinals",
+      "passed": true
+    },
+    {
+      "check": "prior all saved events explicitly untrusted",
+      "passed": true
+    },
+    {
+      "check": "15 current and12 prior complete events",
+      "passed": true
+    },
+    {
+      "check": "common event0 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event1 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event2 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event3 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event4 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event5 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event6 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event7 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event8 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event9 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event10 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "common event11 all12 literal fields match",
+      "passed": true
+    },
+    {
+      "check": "computed event origin0",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters0",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count0",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix0",
+      "passed": true
+    },
+    {
+      "check": "reused event provenance1",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters1",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count1",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix1",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event2",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters2",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count2",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix2",
+      "passed": true
+    },
+    {
+      "check": "reused event provenance3",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters3",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count3",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix3",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event4",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters4",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count4",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix4",
+      "passed": true
+    },
+    {
+      "check": "computed event origin5",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters5",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count5",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix5",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event6",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters6",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count6",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix6",
+      "passed": true
+    },
+    {
+      "check": "computed event origin7",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters7",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count7",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix7",
+      "passed": true
+    },
+    {
+      "check": "saved postrollback freshly computed7",
+      "passed": true
+    },
+    {
+      "check": "computed event origin8",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters8",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count8",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix8",
+      "passed": true
+    },
+    {
+      "check": "saved postrollback freshly computed8",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event9",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters9",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count9",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix9",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event10",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters10",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count10",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix10",
+      "passed": true
+    },
+    {
+      "check": "computed event origin11",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters11",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count11",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix11",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event12",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters12",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count12",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix12",
+      "passed": true
+    },
+    {
+      "check": "computed event origin13",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters13",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count13",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix13",
+      "passed": true
+    },
+    {
+      "check": "no fingerprint event14",
+      "passed": true
+    },
+    {
+      "check": "exact computation/reuse counters14",
+      "passed": true
+    },
+    {
+      "check": "event-file prefix count14",
+      "passed": true
+    },
+    {
+      "check": "event-file byte prefix14",
+      "passed": true
+    },
+    {
+      "check": "exact two root reuse events",
+      "passed": true
+    },
+    {
+      "check": "all saved fresh postrollback events7and8",
+      "passed": true
+    },
+    {
+      "check": "fresh node unwind restores saved child entry fingerprint",
+      "passed": true
+    },
+    {
+      "check": "fresh parent rollback restores saved prebranch fingerprint",
+      "passed": true
+    },
+    {
+      "check": "two recorded placements and second dead row1",
+      "passed": true
+    },
+    {
+      "check": "current four complete journal rows",
+      "passed": true
+    },
+    {
+      "check": "prior four complete journal rows",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory codec",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory control_leaf",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory independent_checker",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory intake",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory point_graph",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory point_producer",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory producer_bootstrap",
+      "passed": true
+    },
+    {
+      "check": "Source pin retained in saved inventory verifier",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory architecture_choice",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory declaration",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory finite_ROOT_admission",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory finite_certificate",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory initial_oracle",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory initial_state",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory preparation",
+      "passed": true
+    },
+    {
+      "check": "input pin retained in saved inventory word_controls_ROOT",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained catalogue",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained controls",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained kernel",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained master",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained payload",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained point_graph",
+      "passed": true
+    },
+    {
+      "check": "original Source7 pin retained worker",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin0",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin1",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin2",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin3",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin4",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin5",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin6",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin7",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin8",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin9",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin10",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin11",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin12",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin13",
+      "passed": true
+    },
+    {
+      "check": "current raw event inventory pin14",
+      "passed": true
+    },
+    {
+      "check": "44 complete owned files/bytes including provisional",
+      "passed": true
+    },
+    {
+      "check": "native elapsed current caller terminal minus launch",
+      "passed": true
+    },
+    {
+      "check": "native final postprobe launch interval",
+      "passed": true
+    },
+    {
+      "check": "native true parent exit2 reaped PID",
+      "passed": true
+    },
+    {
+      "check": "producer killed9 native reaped before cutoff",
+      "passed": true
+    },
+    {
+      "check": "cutoff all reaped/no future spawn",
+      "passed": true
+    },
+    {
+      "check": "exact separate max memory rule",
+      "passed": true
+    },
+    {
+      "check": "terminal inclusive peak retained",
+      "passed": true
+    },
+    {
+      "check": "current full response absent in saved inventory",
+      "passed": true
+    },
+    {
+      "check": "UNKNOWN and no primary/resource/time acceptance",
+      "passed": true
+    },
+    {
+      "check": "no old failures promoted/point/native/RL claim",
+      "passed": true
+    },
+    {
+      "check": "current exact prefix metrics",
+      "passed": true
+    }
+  ],
+  "common_prefix_events": [
+    {
+      "all_compared_fields_equal": true,
+      "event": 0
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 1
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 2
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 3
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 4
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 5
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 6
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 7
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 8
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 9
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 10
+    },
+    {
+      "all_compared_fields_equal": true,
+      "event": 11
+    }
+  ],
+  "common_prefix_fields": [
+    "event",
+    "kind",
+    "node",
+    "parent",
+    "depth",
+    "decision",
+    "key",
+    "producer_status",
+    "counters",
+    "graph_metrics",
+    "checkpoint",
+    "state_fingerprint"
+  ],
+  "native_clock_calls": 0,
+  "reruns": 0,
+  "saved_data_only": true,
+  "schema": "point-checkpoint-reuse-Source-author-saved-analysis-v1",
+  "scientific_calls": 0,
+  "scope_limits": [
+    "No original graph domains were reconstructed or checked against Q preparation.",
+    "Source/input pins are compared between saved plan and saved inventory; live large buffers were not opened.",
+    "Complete fingerprints/provenance are producer claims; equal saved hashes do not grant independent point validity.",
+    "All counters stop at the last complete event before its own serialization; killed tail/partial hash/unwind are unobserved.",
+    "No candidate, word certificate, selected/full24/trajectory/RL/native Wang result or end-to-end speedup was earned."
+  ]
+}

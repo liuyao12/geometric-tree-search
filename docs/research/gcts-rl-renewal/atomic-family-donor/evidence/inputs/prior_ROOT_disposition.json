@@ -1,0 +1,51 @@
+{
+  "SELF_cut_bytes": 20332544,
+  "aggregate_cap_bytes": 536870912,
+  "aggregate_owned_bound_bytes": 308805632,
+  "all_true_reaped": true,
+  "classification": "ordinary searched primitive proof",
+  "complete_saved_output_bytes": 55476907,
+  "complete_saved_output_files": 35,
+  "controls_accepted": false,
+  "external_observation": {
+    "bytes": 429,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-external-v1/observation.json",
+    "sha256": "ae6e409f6df5f0e71c4d59ca3bf40dd71d95b1c440a961b8bf119a707325d246"
+  },
+  "goal_complete": false,
+  "live_epoch_bound_bytes": 308805632,
+  "maximum_serial_leaf_peak_bytes": 288473088,
+  "native_caller_elapsed_ns": 6306645000,
+  "native_launch_to_postprobe_ns": 6375017000,
+  "native_terminal": {
+    "bytes": 1695,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-external-v1/native-terminal.json",
+    "sha256": "9111ed37cb91903864f26ae851b637f33ffd3295f459dc332d5f20d25ce20c79"
+  },
+  "old_UNKNOWNs_promoted": false,
+  "plan": {
+    "bytes": 9646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-plan-v1.json",
+    "sha256": "2025b362053e1926da033c9e6260e1a3fd8ec0141cc1c6c5b94e62b0a1c37756"
+  },
+  "point_full24_trajectory_native_RL_accepted": false,
+  "primary_accepted": true,
+  "provisional": {
+    "bytes": 15607,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/ordinary-provisional.json",
+    "sha256": "d7a91b6d6cb747cc8f4921a470277ad08956ac341667a6dc275f7cb15af3dff0"
+  },
+  "purpose": "primary",
+  "resource_accepted": true,
+  "resource_rule": "ordinary-sequential-cutoff-max-v1",
+  "schema": "ROOT-ordinary-Q-saved-disposition-v1",
+  "scope": "Fixed reviewed Sources/pinned Darwin runtime; conventional word only. No independent full search trace replay, point search, native Wang board, full PA or speed advantage.",
+  "sequential_leaf_count": 2,
+  "tool_bracket": {
+    "bytes": 143,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-external-v1/tool-bracket.json",
+    "sha256": "dbcf76a50c95122272882c6a80daa705ade042cffc99791dd0391ad80f00dcf9"
+  },
+  "tool_elapsed_ms": 6679,
+  "true_terminal_inclusive_peak_bytes": 288473088
+}

@@ -1,0 +1,170 @@
+{
+  "added_definitions": [],
+  "changed_existing_definitions": [
+    "Budget",
+    "run_untrusted_candidate_search"
+  ],
+  "edits": [
+    {
+      "new": "VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v5'\n",
+      "new_end": 624,
+      "new_start": 552,
+      "old": "VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v4'\n",
+      "old_end": 624,
+      "old_start": 552
+    },
+    {
+      "new": "                       'fingerprint_block_ticks':0, 'fingerprint_reuses':0, 'event_files':0, 'event_bytes':0,\n",
+      "new_end": 2685,
+      "new_start": 2575,
+      "old": "                       'fingerprint_block_ticks':0, 'event_files':0, 'event_bytes':0,\n",
+      "old_end": 2661,
+      "old_start": 2575
+    },
+    {
+      "new": "             status=None, fingerprint=False, reuse=None, cleanup=False):\n",
+      "new_end": 18503,
+      "new_start": 18430,
+      "old": "             status=None, fingerprint=False, cleanup=False):\n",
+      "old_end": 18467,
+      "old_start": 18406
+    },
+    {
+      "new": "",
+      "new_end": 18541,
+      "new_start": 18541,
+      "old": "        state = state_fingerprint(graph,budget,cleanup=cleanup) if fingerprint else None\n",
+      "old_end": 18594,
+      "old_start": 18505
+    },
+    {
+      "new": "        if reuse is not None:\n            # Caller proves no intervening graph mutator, not checkpoint length.\n            need(not fingerprint and type(reuse) is dict\n                 and type(reuse['event']) is int and 0 <= reuse['event'] < ordinal\n                 and type(reuse['state_fingerprint_origin_event']) is int\n                 and 0 <= reuse['state_fingerprint_origin_event'] <= reuse['event']\n                 and type(reuse['state_fingerprint']) is dict\n                 and reuse['state_fingerprint']['checkpoint'] == graph.checkpoint(),\n                 'explicit unchanged pre-placement fingerprint provenance')\n            state = reuse['state_fingerprint']\n            origin = reuse['state_fingerprint_origin_event']\n            reused_from = reuse['event']\n            budget.counts['fingerprint_reuses'] += 1\n        else:\n            state = state_fingerprint(graph,budget,cleanup=cleanup) if fingerprint else None\n            origin = ordinal if fingerprint else None\n            reused_from = None\n        record = {'schema':'Q-untrusted-producer-compact-event-v3','event':ordinal,\n",
+      "new_end": 19688,
+      "new_start": 18578,
+      "old": "        record = {'schema':'Q-untrusted-producer-compact-event-v2','event':ordinal,\n",
+      "old_end": 18715,
+      "old_start": 18631
+    },
+    {
+      "new": "            'state_fingerprint_kind':'reused' if reuse is not None else 'computed' if fingerprint else 'none',\n            'state_fingerprint_origin_event':origin,\n            'state_fingerprint_reused_from_event':reused_from,\n",
+      "new_end": 20453,
+      "new_start": 20226,
+      "old": "",
+      "old_end": 19253,
+      "old_start": 19253
+    },
+    {
+      "new": "        return {'event':ordinal,'state_fingerprint':state,'file':raw,\n                'state_fingerprint_origin_event':origin}\n",
+      "new_end": 20793,
+      "new_start": 20666,
+      "old": "        return {'event':ordinal,'state_fingerprint':state,'file':raw}\n",
+      "old_end": 19536,
+      "old_start": 19466
+    },
+    {
+      "new": "    def walk(parent, depth, *, reuse_entry=None):\n",
+      "new_end": 21825,
+      "new_start": 21775,
+      "old": "    def walk(parent, depth):\n",
+      "old_end": 20547,
+      "old_start": 20518
+    },
+    {
+      "new": "        if reuse_entry is not None:\n            need(parent is None and depth == 0 and reuse_entry is initial\n                 and checkpoint == entry, 'one original root entry reuse only')\n        before = emit('node_enter', node=node, parent=parent, depth=depth,\n                      fingerprint=reuse_entry is None, reuse=reuse_entry)\n        reuse_entry = None  # Consume root transfer; never a general cache.\n        unchanged_entry = before  # Valid only until FIRST graph mutator below.\n",
+      "new_end": 22509,
+      "new_start": 22014,
+      "old": "        before = emit('node_enter', node=node, parent=parent, depth=depth, fingerprint=True)\n",
+      "old_end": 20829,
+      "old_start": 20736
+    },
+    {
+      "new": "                    unchanged_entry = None  # Invalidate BEFORE _apply_legal in place.\n",
+      "new_end": 24717,
+      "new_start": 24630,
+      "old": "",
+      "old_end": 22950,
+      "old_start": 22950
+    },
+    {
+      "new": "                parent_state = emit('branch_checkpoint', node=node, parent=parent, depth=depth,\n                                    fingerprint=unchanged_entry is None, reuse=unchanged_entry)\n                unchanged_entry = None  # Invalidate BEFORE _apply_legal in place.\n",
+      "new_end": 25274,
+      "new_start": 24999,
+      "old": "                parent_state = emit('branch_checkpoint', node=node, parent=parent, depth=depth, fingerprint=True)\n",
+      "old_end": 23346,
+      "old_start": 23232
+    },
+    {
+      "new": "                unchanged_entry = None  # Never reuse an AFTER-rollback fingerprint.\n",
+      "new_end": 25470,
+      "new_start": 25385,
+      "old": "",
+      "old_end": 23457,
+      "old_start": 23457
+    },
+    {
+      "new": "                unchanged_entry = None  # Invalidate BEFORE parent-context exclusion.\n",
+      "new_end": 26100,
+      "new_start": 26014,
+      "old": "",
+      "old_end": 24001,
+      "old_start": 24001
+    },
+    {
+      "new": "                unchanged_entry = None  # Always fresh complete post-unwind hash.\n",
+      "new_end": 26523,
+      "new_start": 26441,
+      "old": "",
+      "old_end": 24342,
+      "old_start": 24342
+    },
+    {
+      "new": "    root_reuse_record = initial\n",
+      "new_end": 27164,
+      "new_start": 27132,
+      "old": "",
+      "old_end": 24951,
+      "old_start": 24951
+    },
+    {
+      "new": "        status = walk(None, 0, reuse_entry=root_reuse_record)\n        root_reuse_record = None\n",
+      "new_end": 27268,
+      "new_start": 27173,
+      "old": "        status = walk(None, 0)\n",
+      "old_end": 24991,
+      "old_start": 24960
+    },
+    {
+      "new": "            root_reuse_record = None  # Invalidate; root restoration is freshly hashed.\n",
+      "new_end": 27680,
+      "new_start": 27592,
+      "old": "",
+      "old_end": 25315,
+      "old_start": 25315
+    }
+  ],
+  "full_forward_and_inverse_verified": true,
+  "new": {
+    "bytes": 30988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+    "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+  },
+  "old": {
+    "bytes": 28623,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+    "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+  },
+  "schema": "point-checkpoint-reuse-full-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_top_level_definitions": [
+    "Unfinished",
+    "need",
+    "canonical",
+    "chunks",
+    "complete_digest",
+    "FingerprintWriter",
+    "state_fingerprint",
+    "CompactEvents",
+    "decision_data",
+    "collect_first_ancestry"
+  ]
+}

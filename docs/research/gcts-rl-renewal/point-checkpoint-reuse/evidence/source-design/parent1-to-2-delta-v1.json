@@ -1,0 +1,89 @@
+{
+  "added_definitions": [],
+  "changed_existing_definitions": [
+    "main"
+  ],
+  "edits": [
+    {
+      "new": "VERSION = 'Q-point-compact-sequential-cold-intake-v2'\n",
+      "new_end": 680,
+      "new_start": 626,
+      "old": "VERSION = 'Q-point-compact-sequential-cold-intake-v1'\n",
+      "old_end": 680,
+      "old_start": 626
+    },
+    {
+      "new": " 'point_producer': {'bytes': 30988,\n                    'sha256': 'e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c'},\n",
+      "new_end": 1474,
+      "new_start": 1339,
+      "old": " 'point_producer': {'bytes': 28623,\n                    'sha256': '4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052'},\n",
+      "old_end": 1474,
+      "old_start": 1339
+    },
+    {
+      "new": "                        'sha256': '133cf50a4107bacb90b6eadaca8eb0c7a8b6ef608468da80156c4c1dc22c3f98'},\n",
+      "new_end": 1617,
+      "new_start": 1514,
+      "old": "                        'sha256': 'f2159c4271a0c26c691e5e620b20ea336fc2c861571407e061cb366e002703f2'},\n",
+      "old_end": 1617,
+      "old_start": 1514
+    },
+    {
+      "new": "PROTOCOL_CHOICE = {'bytes': 5903, 'sha256': '043302e2ab2409429bab288735617d604b7b013135bf58ca59ec8b71542b7a65'}\n",
+      "new_end": 5931,
+      "new_start": 5819,
+      "old": "PROTOCOL_CHOICE = {'bytes': 4300, 'sha256': '3b829573958c972f1395a4e70b3a7803cbc746affa38184ec22f22b0130b328c'}\n",
+      "old_end": 5931,
+      "old_start": 5819
+    },
+    {
+      "new": "                 and result['version']=='Q-full-original-model-untrusted-compact-candidate-Source-v5'\n",
+      "new_end": 36488,
+      "new_start": 36386,
+      "old": "                 and result['version']=='Q-full-original-model-untrusted-compact-candidate-Source-v4'\n",
+      "old_end": 36488,
+      "old_start": 36386
+    }
+  ],
+  "full_forward_and_inverse_verified": true,
+  "new": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_point_compact_cold_intake_v2.py",
+    "sha256": "a4c99db02aa415e1d45c15db5a987c8d25733e4ea94552236581829ea73136f2"
+  },
+  "old": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py",
+    "sha256": "30bef873644dda63102fb08d32b23d42a3082d3744ce1608535fa18e11171c79"
+  },
+  "schema": "point-checkpoint-reuse-full-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_top_level_definitions": [
+    "need",
+    "global_now_ns",
+    "integer",
+    "canonical",
+    "digest",
+    "pin_bytes",
+    "duplicate_free",
+    "no_constant",
+    "no_float",
+    "signed_integer",
+    "finite_float",
+    "tree",
+    "decode",
+    "regular_fd",
+    "read_small",
+    "write_exclusive",
+    "raw_peak",
+    "stream_snapshot",
+    "two_lines",
+    "inventory",
+    "SequentialOwner",
+    "validate_plan",
+    "channel_set",
+    "verifier_response",
+    "run_checker",
+    "bad_word"
+  ]
+}

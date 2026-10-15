@@ -1,0 +1,181 @@
+{
+  "schema": "typed-atomic-context-family-Source-contract-v2",
+  "source_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "sources": {
+    "family": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+      "bytes": 29157
+    },
+    "catalogue_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+      "bytes": 12929
+    },
+    "checker_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+      "bytes": 3901
+    }
+  },
+  "parent_package": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/handoff-v1.json",
+    "sha256": "d2ea793f627751cb9e90ba15247ec1fee05e97c11257c2f069d906683600fbef",
+    "bytes": 2747
+  },
+  "parent_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/Source-contract-v1.json",
+    "sha256": "08e48f38a70f2675a03f2dda2ea8c902b0723995a8aeb8daa723fe355e69c076",
+    "bytes": 17268
+  },
+  "master": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "scope": "Narrow successor for generic bounded typed atomic contexts; all actual outcomes, library mining/admission, instances, fit and proof benefits remain unexecuted/pending.",
+  "fixed_syntax_rule": {
+    "context": "One Eq atom or one predicate atom from the original declared signature. No connective or binder inside the context. At least one occurrence of exactly one hole name; it is not an original parameter. Repeated occurrences use the SAME simultaneous term.",
+    "bounds": {
+      "context_nodes": 64,
+      "term_nodes": 64,
+      "term_depth": 16,
+      "context_parameters": 32
+    },
+    "counting": "Each term constructor/variable is one node; atom adds one. Term-root depth is zero. Template and both grounded donor atoms must satisfy bounds; recipient input/template/output atoms too. Left/right and recipient slot terms have the same64-node/16-depth term bound.",
+    "typing": "Original nominal function/predicate names and literal integer arities. Hole-free variables must be original declared parameters; Hilbert remains closed. No new sort axioms, induction, quantifier rule or primitive licence.",
+    "abstraction": "Preserve atomic head and function symbols on paths to holes. Replace each maximal hole-free term by a typed slot; exact repeated whole terms share a slot, whole terms equal to source s/t retain that correlation. No sequential replacement inside inserted terms. No fixed successor or right-one clause is encoded.",
+    "unsupported": "No hole, binder/connective, undeclared variables, wrong arity, bound overflow, same training left/right term, missing licensed recipe or unavailable greedy embedding stays ineligible/NoInstance. This does not prune the base universe."
+  },
+  "data_driven_requirement": "Every family still requires an actually searched, original-target independently checked donor word authenticated by ROOT. Actual eq_subst then two ordered MP ancestors are recognized at each root. All abstract member witnesses, ordered inputs, output and template must ground back exactly to the checked donor. No donor word or family library is bundled; author has seen the previous saved right-one result, so this is a new declared scope chosen AFTER that observation and BEFORE any execution of this successor, not a retrospective preregistration.",
+  "API": {
+    "public": "mine_transport(donors,*,authenticate_donor,check_word,tick); instantiate_transport(*,catalogue,snapshot,family,equality_key,formula_key,check_word,tick); prefer_at_reference_branch(*,proposal,branch_row,canonical_domain,contains,tick). Same public caller shape as parent.",
+    "family_schema": "mined-typed-atomic-context-library-v2; shape includes bounded-typed-atomic-context, syntax_limits, ordered roles s,t,u0... and atomic_context; family_id atomic-context-family-<shape SHA>; provisional-typed-atomic-context-expansion-v2. Parent whole-operand library is not silently accepted as current schema.",
+    "syntax_failures": "Own OutsideSyntax only marks bounded grammar ineligibility. Other delegate failures/UNKNOWN propagate; no catch-and-relabel of a guard ValueError."
+  },
+  "unchanged_contract": {
+    "adapters": "Exact inherited catalogue2013c070 and checkerb32ae182 files, with all parent API/validation/integration conditions retained. These are not newly independent-reviewed or automatically admitted.",
+    "Q": "Original1717 semantics. Original closed-target public endpoint for donors/primary; NEW parent parameter-consequence adapter for open intermediates only. Original empty Gamma/one parameter/24 rows and complete current catalogue remain.",
+    "Hilbert": "Original3b6 closed GroundChecker, exact c8 reader and existing three indexed Gamma seeds. No Q API transplant, new H profile or guaranteed H instance. Family atomic head stays donor-specific even though recognizer accepts either atomic constructor.",
+    "points": "No new point encoding: original recipe indices/IDs/full preimages/formula codes/model/authority/context/Source epochs, t unit row, all ordered offset m marks and current/fixed refcounts unchanged. Both adapters reconstruct the exact original epoch.",
+    "ancestry": "Only dependency-complete actual selected receptors. Entire shared primitive ancestry once plus every original Gamma occurrence seed, including repeated/unused formulas. Exact strict-prior ordered ports; full expanded proof checked with full original Gamma freshness.",
+    "search": "Advice supplies provisional original base keys only. No graph mutation, macro, exclusion, scheduler or rollback changes. Global dead/forced then earliest generation, current complete-domain membership and all canonical fallback stay outside this proposal and mandatory.",
+    "fairness": "Ordinary and point consumers receive the SAME mined family/expanded primitive DAG and training information. No same-target transfer or distinctive GCTS/RL benefit claim. Charge donor discovery, extraction, full catalogue/join/build/check/output/search/native costs."
+  },
+  "delta": {
+    "changed_definitions": [
+      "term",
+      "ground",
+      "recognize",
+      "mine_transport",
+      "instantiate_transport"
+    ],
+    "removed": [
+      "abstract"
+    ],
+    "added": [
+      "OutsideSyntax",
+      "atomic_shape",
+      "bind_context",
+      "contains_hole",
+      "context_pattern",
+      "fill_context",
+      "syntax_need"
+    ],
+    "AST_exact_inherited": [
+      "NoInstance",
+      "need",
+      "canonical",
+      "digest",
+      "integer",
+      "references",
+      "witness",
+      "key_data",
+      "raw_key",
+      "literal_union",
+      "complete_rows",
+      "expand",
+      "essential_ancestors",
+      "prefer_at_reference_branch"
+    ],
+    "complete_positional_edits": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/complete-positional-delta-v1.json",
+      "sha256": "a16058e3a8e4625d42d441e881a5a6fb56be1ebcbbf2cc28b69ba11e7681704c",
+      "bytes": 50305
+    },
+    "forward_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/whole-operand-v1-to-atomic-v2.patch",
+      "sha256": "afb360277cb9b22c9df4c10006062c5cd8449f9d6a00b74061671d2371b487c1",
+      "bytes": 18754
+    },
+    "inverse_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/atomic-v2-to-whole-operand-v1.patch",
+      "sha256": "f551b2bcafc766d794f2cb24e1b27419f52ebdd174eb82f8489a0e771e8317aa",
+      "bytes": 18754
+    }
+  },
+  "validation_gates": [
+    "Distinct current whole/delta Source review including general context matching, simultaneous repeated holes/slots and both checker profiles; old reviews do not cover changed family.",
+    "Actual authenticated searched donor intake and exact independent full-word recheck, full donor/root census and first-eligible selection. No outcome predicted or accepted by Source.",
+    "Unrelated constructor/arity/depth/repeated-hole/slot-correlation/alias/capture/missing-recipe controls, exact donor round trips and checked recipient expansions; no supplied target-positive route.",
+    "Original live snapshot/Source/callback/default/closure/parser/method custody and canonical-domain consumption under a future reviewed cold wrapper; these remain untrusted pure-data guidance modules, not a security/runtime framework.",
+    "All current point/Gamma/shared-identity/strict-prior/rollback/fallback controls retained. No actor may relabel Q open consequence as primary or logical word as full-board/trajectory.",
+    "Whole native20/failure55/owned60/512MiB/caller90+1 costs measured only in future ROOT activation; no fit or improvement inferred."
+  ],
+  "prospective_limits": {
+    "shared_inner_seconds": 20,
+    "failure_only_reserve_seconds": 55,
+    "owned_seconds": 60,
+    "observed_memory_limit_bytes": 536870912,
+    "caller_seconds": 90,
+    "finish_reserve_seconds": 1,
+    "clock": "ROOT-selected qualified global clock with conservative original same-process checker deadline projection; no reset or raised cap",
+    "fit": "unmeasured; no actual leaf/owner plans or execution ABI claimed"
+  },
+  "Source_review_ABI": {
+    "schema": "typed-atomic-context-family-typed-Source-review-v2",
+    "scope": "typed-atomic-context-transport-family-Source",
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+      "bytes": 29157
+    },
+    "sources": {
+      "family": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+        "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+        "bytes": 29157
+      },
+      "catalogue_adapters": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+        "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+        "bytes": 12929
+      },
+      "checker_adapters": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+        "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+        "bytes": 3901
+      }
+    },
+    "source_contract": "exact raw current contract capsule",
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "must differ from author",
+    "required_fields": {
+      "source_only": true,
+      "source_review_passed": "genuine positive or negative verdict",
+      "scientific_calls": 0,
+      "scientific_acceptance": false
+    }
+  },
+  "actual_status": {
+    "Source_functions_imported_or_executed": 0,
+    "Q_decodes": 0,
+    "clocks_tests_actual_plans": 0,
+    "donor_mined": false,
+    "library_admitted": false,
+    "instance_checked": false,
+    "proof_or_point_or_RL_or_resource_benefit": false
+  },
+  "author_disclosure": "Authored parent family/checker/codec dependencies and independently reconciled saved ordinary result. This is implementation authorship only, not an independent Source review or fresh mathematical admission."
+}

@@ -1,0 +1,85 @@
+{
+  "both_attempts_UNKNOWN": true,
+  "checks": [
+    {
+      "event": 0,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 1,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 2,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 3,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 4,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 5,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 6,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 7,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 8,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 9,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 10,
+      "literal_semantic_record_equal": true
+    },
+    {
+      "event": 11,
+      "literal_semantic_record_equal": true
+    }
+  ],
+  "compared_fields": [
+    "event",
+    "kind",
+    "node",
+    "parent",
+    "depth",
+    "decision",
+    "key",
+    "producer_status",
+    "counters",
+    "graph_metrics",
+    "checkpoint",
+    "state_fingerprint"
+  ],
+  "extra_v5_events": 3,
+  "matching_common_events": 12,
+  "no_end_to_end_speed_claim": true,
+  "no_independent_point_replay": true,
+  "saved_data_only": true,
+  "schema": "ROOT-point-reuse-saved-prefix-comparison-v1",
+  "scope": "Literal common producer-prefix equality and reuse provenance only. Excludes new timing/schema/reuse metadata. No semantic or full-domain replay; last counters and killed tails incomplete.",
+  "v4_event11": {
+    "completed_fingerprints": 7,
+    "fingerprint_ns": 10729847000,
+    "native_ns": 442771057520000
+  },
+  "v5_event11": {
+    "completed_fingerprints": 5,
+    "fingerprint_ns": 7447742000,
+    "native_ns": 444501378516000,
+    "reuses": 2
+  }
+}

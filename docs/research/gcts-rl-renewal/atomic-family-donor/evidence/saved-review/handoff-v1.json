@@ -1,0 +1,46 @@
+{
+  "schema": "atomic-family-donor-training-independent-saved-handoff-v1",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "saved_data_only": true,
+  "saved_record_consistent": true,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-saved-independent-20261015/findings-v1.json",
+    "sha256": "30951017da9e340864f2c9288aa6e85db8d24dd7a0161ef30ee7a3ccf4a66e88",
+    "bytes": 100693
+  },
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "91768edb503601d093fb9e0d0470d2036e35e2617887995aa65cb5c200ef6b13",
+    "bytes": 6932
+  },
+  "check_count": 76,
+  "raw_reference_count": 107,
+  "unique_raw_path_count": 39,
+  "actual_observation": {
+    "root_count": 12,
+    "eligible_roots": [
+      10
+    ],
+    "selected_family_count": 1,
+    "body": [
+      5,
+      9,
+      10
+    ],
+    "ordered_external": [
+      7,
+      8
+    ],
+    "native_launch_to_postprobe_ns": 497768000,
+    "terminal_peak_bytes": 22790144,
+    "tool_elapsed_ms": 678,
+    "prior_training_launch_to_postprobe_ns": 6375017000,
+    "cumulative_training_ns": 6872785000
+  },
+  "scope": "Conditional saved custody and donor-specific literal grounding only. Actual fresh1717 receipt/controls/full census are retained evidence, not a new reviewer semantic execution or general family proof. Root final stage admission remains distinct.",
+  "blockers": [],
+  "scientific_or_Source_calls": 0,
+  "ROOT_library_admitted": false,
+  "recipient_accepted": false,
+  "advantage_claimed": false
+}

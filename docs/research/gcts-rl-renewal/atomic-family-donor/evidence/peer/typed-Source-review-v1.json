@@ -1,0 +1,59 @@
+{
+  "schema": "atomic-family-admitted-donor-training-intake-Source-review-v1",
+  "scope": "atomic-family-admitted-donor-training-intake-Source",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+    "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+    "bytes": 62865
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/Source-contract-v1.json",
+    "sha256": "70f2ea39ba4352dd79320ae7175cf03d92a883df8cbd5a0437528f05de32beca",
+    "bytes": 16673
+  },
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+      "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+      "bytes": 62865
+    },
+    "checker_adapter": {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-independent-source-20261015/findings-v1.json",
+    "sha256": "c6ff4afc7a15150237d336702c3d3d82b50e649896267013d3d0a92bae86671e",
+    "bytes": 64932
+  },
+  "check_count": 68,
+  "raw_reference_count": 49,
+  "unique_raw_path_count": 27,
+  "whole_current_worker_read": true,
+  "unchanged_dependencies_reauthenticated": true,
+  "scope_limit": "Conditional current Source5 pass only; no mathematical execution, current library/recipient/point/full24/trajectory/native/RL/resource acceptance or activation. Actual whole controls/check/mining/wire/terminalT/probe/Date/EOF gates remain Root-owned.",
+  "disclosure": "Reviewer authored earlier neutral controls/runner/census and target proposals, not this worker, miner, checker adapter or original checker. Reviewer previously reviewed e499 family; its exact unchanged current pins and relevant APIs were reauthenticated/read. Prior Root ordinary admission is historical provenance, not reviewer saturation-trace replay."
+}
