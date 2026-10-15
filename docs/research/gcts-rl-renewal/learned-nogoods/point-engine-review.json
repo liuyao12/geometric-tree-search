@@ -1,0 +1,46 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "check_count": 20,
+  "dependency_authorship_disclosure": "Root authored the construction note and earlier native measurement instrument. Current engine author and Boolean oracle author are distinct; this source pass does not independently prove the construction or inherited instrument.",
+  "manual_read_checks": [
+    "Whole frozen module and contract read; stdlib-only imports, no clock or external side effect at import.",
+    "Literal integer coordinates and unit t capacities; bools rejected in integer roles.",
+    "Complete finite roots include untouched capacity obligations; marking-only ports stay outside frontier.",
+    "All original tuple candidates retained, including forbidden and empty tuples.",
+    "Only guard m changes between guard-unmarked and activated model; no inventory deletion.",
+    "Sparse marking membership distinguishes assigned zero from omitted values.",
+    "Full original candidate scan rebuilds both frontier incidence directions and every t/m dependency.",
+    "Candidate compatibility checks all assigned extended marking ports, not a viewport or geometric boundary.",
+    "Global degree-zero scan precedes every forced/branch decision on a new state.",
+    "Global singleton forced moves precede generation-first branching.",
+    "All root generations zero in this specialization; generation then degree/point tie, tile generation root+1.",
+    "Frozen tuple states and freshly constructed local mark dictionaries preserve parent state and graph.",
+    "Cached parent graph is exact after persistent restoration; child menus are parent-local, no learned global exclusion.",
+    "Full final t/m recomposition and selected uniqueness required for FOUND.",
+    "Full finite branch enumeration returns exhaustion only after all alternatives return failure.",
+    "Builder limits reject the whole model without trimming; solver/trace budgets revoke partial/found/exhausted results to UNKNOWN.",
+    "Root boundary marks encode seeds explicitly, with no preselected tiles or silent guard placement.",
+    "No dynamic model update API; guard changes use new models.",
+    "Runtime, global-clock ownership, independent semantic checking and complete trace replay remain actual-run gates.",
+    "Fractional/shared-positive-support/nonzero growth generation/transformation/infinite/learned-soundness/RL/Q claims remain outside scope."
+  ],
+  "reviewer_identity": "/root",
+  "runtime_and_model_limits": "Only exact finite identity-grounded singleton unit-support models. Complete paired outputs, independent graph/decision/rollback audits and native scope not yet executed.",
+  "schema": "finite-unit-point-GCTS-calibration-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "finite-grounded-unit-point-GCTS-CNF-calibration-Source",
+  "source": {
+    "bytes": 15493,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+    "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+  },
+  "source_contract": {
+    "bytes": 8284,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/Source-contract-v1.json",
+    "sha256": "3aaa809e4549177af8c7a89da7f6dcabdabae404263d1423f98928bcb0822405"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

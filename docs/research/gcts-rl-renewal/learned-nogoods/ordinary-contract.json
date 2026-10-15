@@ -1,0 +1,173 @@
+{
+  "schema": "ordinary-finite-CNF-DPLL-Source-contract-v1",
+  "author_identity": "/root/arithmetic_induction",
+  "source_only": true,
+  "execution_status": "UNEXECUTED",
+  "scientific_calls": 0,
+  "source": {
+    "path": ".gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+    "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3",
+    "bytes": 7393
+  },
+  "master_reference": {
+    "path": "docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "research_reference": {
+    "path": ".gcts-active/propositional-calibration-next-benchmark-20261015/research-assessment-v1.json",
+    "sha256": "f38219ab795ebc13965b37fbb5ddea071633cb9cb2f6b2be7b06ebd1d7c7ed83",
+    "bytes": 9312
+  },
+  "scope": "Independent ordinary clause-level DPLL comparator. This is not master point-engine conformance and implements no learned-clause generation, oracle, point engine, target route or RL.",
+  "API": {
+    "name": "solve_cnf",
+    "positional": [
+      "n",
+      "clauses",
+      "seed_bits"
+    ],
+    "keyword_only": [
+      "maximum_nodes",
+      "maximum_literal_checks",
+      "maximum_trace_events"
+    ],
+    "n": "Exact int, not bool, in 0..4.",
+    "clauses": "Exact tuple of at most eight exact tuple clauses. Each clause contains at most n exact tuple (variable_index,satisfying_bit) literals. Exact integer indices are unique within a clause; bits are exact int 0 or 1. Empty clauses/no clauses are supported; repeated whole clauses retain their original indexed occurrences.",
+    "seed_bits": "Exact tuple of exact tuple (variable_index,bit), unique valid indices. Original supplied order retained in seed_bits result; state snapshots are sorted by index. Zero is an assigned value; absence is omitted.",
+    "limits": "All three budgets are exact positive integers. Invalid input raises ValueError without a result."
+  },
+  "algorithm": [
+    "At each node, emit enter once; then scan every clause and every literal occurrence in original order, including literals in already satisfied clauses. Emit scan only after full EOF.",
+    "First globally conflicting clause dominates any previously encountered unit clause. If no conflict, use first unsatisfied one-unassigned-literal clause in original order.",
+    "Otherwise branch at the smallest unassigned index, trying bit 0 then bit 1. Even when all clauses are already satisfied, remaining variables are assigned through this order so FOUND is always complete.",
+    "Assignments are immutable tuples. A child tuple extends the exact parent at one previously unassigned index. Every emitted assign has a finally restore of the exact parent, on conflict, success or budget interruption.",
+    "A sound unit choice has only one child; a branch has both children before finite exhaustion. First complete satisfying assignment stops the run; all ancestors restore. No proof route or expected answer is supplied."
+  ],
+  "results": {
+    "schema": "ordinary-finite-CNF-DPLL-result-v1",
+    "exact_fields": [
+      "schema",
+      "variables",
+      "clauses",
+      "seed_bits",
+      "root_state",
+      "status",
+      "solution",
+      "trace",
+      "trace_complete",
+      "exhaustion_complete",
+      "root_restored",
+      "budget_stop",
+      "limits",
+      "work_counts",
+      "ordinary_origin",
+      "point_engine_conformance",
+      "learned_constraints_generated"
+    ],
+    "status": {
+      "FOUND": "Full assignment plus complete trace of the first-solution run, with exact root unwind. This is not complete satisfying-set enumeration.",
+      "EXHAUSTED_FINITE_CNF": "All permitted branch subtrees exhausted through complete global scans, sound units and conflicting leaves. This concerns only this finite input and seed boundary.",
+      "UNKNOWN": "Any work budget interrupted the run. No solution or finite negative accepted; trace is explicitly incomplete."
+    },
+    "solution": "Sorted list [[index,bit],...] on FOUND, otherwise null.",
+    "state_wire": "Sorted list [[index,bit],...] of assigned entries, including zero. Every event state is a fresh list, never a mutable parent authority.",
+    "ordinary_origin": "chronological-clause-DPLL-first-solution",
+    "authority": "point_engine_conformance and learned_constraints_generated are always false. No mathematical/resource/ROOT/cold/runtime qualification flags are issued."
+  },
+  "trace": {
+    "common_fields": [
+      "event_index",
+      "kind"
+    ],
+    "event_index": "Contiguous zero-based indices.",
+    "events": {
+      "enter": [
+        "state"
+      ],
+      "scan": [
+        "state",
+        "clauses"
+      ],
+      "dead": [
+        "state",
+        "clause_index"
+      ],
+      "unit": [
+        "state",
+        "clause_index",
+        "literal"
+      ],
+      "branch": [
+        "state",
+        "variable",
+        "values"
+      ],
+      "assign": [
+        "state",
+        "parent_state",
+        "candidate",
+        "reason"
+      ],
+      "restore": [
+        "state",
+        "from_assignment"
+      ],
+      "solution": [
+        "state"
+      ],
+      "finished": [
+        "state",
+        "status"
+      ]
+    },
+    "scan_clause_exact_fields": [
+      "index",
+      "satisfied",
+      "unassigned"
+    ],
+    "scan_clause_semantics": "satisfied is true iff some assigned variable equals its satisfying bit; unassigned preserves every remaining literal in input order. A false satisfied value plus empty unassigned is a conflict.",
+    "assign_reason": [
+      "unit",
+      "branch"
+    ],
+    "branch_values": [
+      0,
+      1
+    ],
+    "restore_from_assignment": "The entire child assignment state, not just its last literal.",
+    "budget_reservation": "Each active emitted assignment reserves exactly one restore slot, and one final finished slot is always reserved. Ordinary event exhaustion raises before emission; finally unwind uses only reserved restore slots. maximum_trace_events=1 can return only UNKNOWN finished. No trace truncation is presented as complete.",
+    "finished": "Always last, root state and actual final status; emitted from its reserved slot after all restoration."
+  },
+  "work_counts": {
+    "exact_fields": [
+      "nodes",
+      "scans",
+      "literal_checks",
+      "unit_decisions",
+      "branch_decisions",
+      "assignments",
+      "restores",
+      "conflicts",
+      "solutions",
+      "trace_events"
+    ],
+    "charging": "nodes/enter, scans/full scan, unit_decisions/unit, branch_decisions/branch, assignments/assign, restores/restore, conflicts/dead, solutions/solution, trace_events/whole trace. literal_checks counts only each actual scan literal examination, all occurrences; validation and a nonexistent final rescan are not charged as scans.",
+    "UNKNOWN": "A partial scan may charge literal examinations before its full scan event is emitted. Such counts remain incurred work; an UNKNOWN event prefix alone cannot certify these as completed clause scans. No exhaustion claim follows.",
+    "fairness": "Literal checks and point-candidate checks are different units. Compare both raw counters and inclusive externally measured setup/search/audit/output time and memory; do not interpret counter equality as matched effort."
+  },
+  "soundness_and_completeness": {
+    "formula_latex": "\\(F=\\bigwedge_c\\bigvee_{(i,b)\\in c}(x_i=b)\\)",
+    "seed_scope_latex": "\\(F\\land\\bigwedge_{(i,b)\\in S}(x_i=b)\\)",
+    "conditional_static_argument": "With unexhausted budgets, finite branching strictly increases assigned-variable count, global conflict is exact, unit is necessary under the current assignment, and each remaining branch covers bits 0 and 1. Thus FOUND satisfies the finite seeded CNF and finite exhaustion rules it out. This is a Source argument, not an executed verification.",
+    "bounded_status": "Budget interruption is UNKNOWN, never UNSAT. No general theorem-search, first-order, proof-word or point-trajectory claim."
+  },
+  "pending_gates": [
+    "Distinct whole Source review.",
+    "Independent literal trace/document replay.",
+    "ROOT actual request, same input conversion and frozen budgets/order.",
+    "External cold/terminal/caller/memory closure and complete saved output reconciliation.",
+    "Actual matched discovery/replay comparison; no contribution or speedup has been measured."
+  ],
+  "preservation": "All existing engine, oracle, actual calibration and arithmetic Sources/results remain unchanged."
+}

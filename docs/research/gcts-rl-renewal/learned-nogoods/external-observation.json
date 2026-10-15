@@ -1,0 +1,39 @@
+{
+  "schema": "ROOT-certified-nogood-external-observation-v1",
+  "begin_date_ms": 1792095392356,
+  "end_date_ms": 1792095395096,
+  "elapsed_ms": 2740,
+  "native_command": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -I -S -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/native-terminal-1.json /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -I -S -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/run_comparison_v1.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/ROOT-plan-v1.json",
+  "observations": [
+    {
+      "tool": "exec_command",
+      "at_ms": 1792095393512,
+      "result": {
+        "chunk_id": "d6ed42",
+        "wall_time_seconds": 1.002209208,
+        "session_id": 16693,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "tool": "write_stdin",
+      "at_ms": 1792095395041,
+      "result": {
+        "chunk_id": "d3396e",
+        "wall_time_seconds": 1.52734825,
+        "exit_code": 0,
+        "original_token_count": 23,
+        "output": "{\"discovery_solves\": 96, \"output_bytes\": 13398866, \"replay_solves\": 384, \"status\": \"PASS\"}\n"
+      }
+    }
+  ],
+  "post_terminal_native_probe": {
+    "chunk_id": "2e26a3",
+    "wall_time_seconds": 0.000005791,
+    "exit_code": 0,
+    "original_token_count": 4,
+    "output": "435203049215000\n"
+  },
+  "scope": "One finite non-Q worker only; terminal native peak covers owned worker, external meter memory excluded. Date bracket covers command+genuine post-terminal probe, including worker outputs and exit; annotation writer excluded."
+}

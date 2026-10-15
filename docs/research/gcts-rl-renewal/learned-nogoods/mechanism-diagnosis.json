@@ -1,0 +1,3430 @@
+{
+  "cases": [
+    {
+      "case_id": "B07-long-range-shared-four",
+      "details": [
+        {
+          "guard_activations": [],
+          "query_index": 0,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 1,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 2,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 3,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 4,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 5,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 6,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 7,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 8,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 9,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 10,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 11,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 12,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 13,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 14,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 15,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 16,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 17,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 18,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 19,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 20,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 21,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 22,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 23,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 24,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 25,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 26,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 27,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 28,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 29,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 30,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 31,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 32,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 33,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 34,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 35,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 36,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 37,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 38,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 39,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 40,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 41,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 42,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 43,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 44,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 45,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 46,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 47,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        }
+      ],
+      "guard_clause_already_satisfied": 48,
+      "guard_clause_unresolved": 0,
+      "identical_decision_sequences": 48,
+      "identical_placement_sequences": 48,
+      "identical_point_legal_graph_sequences": 48,
+      "learned_guard_placements": 48,
+      "queries": 48,
+      "queries_no_learned_guard_placed": 24
+    },
+    {
+      "case_id": "B08-three-port-and-shared-chain",
+      "details": [
+        {
+          "guard_activations": [],
+          "query_index": 0,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 26,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 29,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 1,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 2,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 3,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 4,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 38,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 5,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 6,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 7,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 35,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 8,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 9,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 10,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 11,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 12,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 26,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 29,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 13,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 14,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 15,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 16,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 38,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 17,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 18,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 19,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 35,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 20,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 21,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 22,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 23,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 24,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 38,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 25,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 26,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 27,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 28,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 38,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 29,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 30,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 31,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 32,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 33,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 34,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 35,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 36,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 37,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 38,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 35,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 39,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 40,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 41,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [],
+          "query_index": 42,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "EXHAUSTED_FINITE_MARKED_MODEL"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 32,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 35,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 43,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 44,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ]
+              ]
+            }
+          ],
+          "query_index": 45,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 46,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        },
+        {
+          "guard_activations": [
+            {
+              "candidate": "R_4",
+              "clause_already_satisfied": true,
+              "event_index": 41,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "candidate": "R_5",
+              "clause_already_satisfied": true,
+              "event_index": 47,
+              "parent_assigned_bits": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ]
+            }
+          ],
+          "query_index": 47,
+          "same_legal_graphs": true,
+          "same_placements": true,
+          "status": "FOUND"
+        }
+      ],
+      "guard_clause_already_satisfied": 72,
+      "guard_clause_unresolved": 0,
+      "identical_decision_sequences": 48,
+      "identical_placement_sequences": 48,
+      "identical_point_legal_graph_sequences": 48,
+      "learned_guard_placements": 72,
+      "queries": 48,
+      "queries_no_learned_guard_placed": 12
+    }
+  ],
+  "graph_comparison_scope": "Legal forward/reverse incidence and frontier generations. Static dependencies and marking values differ as declared; no false whole-state equality claim.",
+  "interpretation": "Every observed learned guard activation occurs after a bit already satisfies its clause. The forbidden tuple is already illegal through variable ports. All visited legal candidate graphs and search choices coincide. This is specific to the frozen inputs, chosen clauses and layout/order, not an impossibility theorem for useful markings.",
+  "schema": "ROOT-saved-learned-point-effect-diagnosis-v1",
+  "source": "Saved actual1 only; no engine/oracle/checker rerun"
+}

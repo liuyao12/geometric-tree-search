@@ -1,0 +1,146 @@
+{
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored unchanged point engine and this reader, not ROOT runner, ordinary solver, Boolean oracle or independent experiment verifier; no independent engine self-review.",
+  "check_count": 14,
+  "checks": [
+    {
+      "finding": "Whole exact ROOT runner read; AST only. Reviewer did not author runner.",
+      "id": "R01-whole-current-runner",
+      "passed": true,
+      "source_lines": "1-241"
+    },
+    {
+      "finding": "Dependency raw length/SHA are checked before compiling exactly the captured buffer; cases parse that buffer. No general live-custody promise.",
+      "id": "R02-authenticated-buffer",
+      "passed": true,
+      "source_lines": "28-38"
+    },
+    {
+      "finding": "Original oracle truth is available to runner but not passed to solve/model construction. Original-answer checks occur after actual solver return; no proof route or expected answer supplied.",
+      "id": "R03-answer-not-solver-advice",
+      "passed": true,
+      "source_lines": "69-111,119-125"
+    },
+    {
+      "finding": "Frozen i,j,b,c order; whole sorted two-bit counterexample prefix. For four variables:48 per case. Concrete plan must retain B07 then B08.",
+      "id": "R04-fixed-whole-query",
+      "passed": true,
+      "source_lines": "114-125"
+    },
+    {
+      "finding": "Discovery is fresh original-clause point search with all original guards active, no learned guard.",
+      "id": "R05-original-discovery",
+      "passed": true,
+      "source_lines": "87-98,135-138"
+    },
+    {
+      "finding": "Only complete failed query contexts propose negation of every query seed. UNKNOWN supplies no clause. No minimization, deleted assumptions, deep-branch or positive branch count inference.",
+      "id": "R06-exhaustion-only-whole-negation",
+      "passed": true,
+      "source_lines": "139-142"
+    },
+    {
+      "finding": "Entailment required; normalized original/duplicate clauses excluded; first eligible proposals selected in query order without replay benefit. Concrete maximum must be2; current whole verifier independently rederives first two.",
+      "id": "R07-first-new-certified",
+      "passed": true,
+      "source_lines": "133-153"
+    },
+    {
+      "finding": "Both contexts complete discovery before any replay. Library frozen without recipient counter/timing selection.",
+      "id": "R08-discovery-before-replay",
+      "passed": true,
+      "source_lines": "113-160"
+    },
+    {
+      "finding": "Same complete combined clause gadgets/t/IDs/roots in both point arms; original guards active, only additional guard marks absent versus0. Builder semantics unchanged and whole verifier reconstructs full model. Padded point baseline scope explicit.",
+      "id": "R09-point-inventory-matched",
+      "passed": true,
+      "source_lines": "161-174"
+    },
+    {
+      "finding": "Ordinary receives exactly same certified library; deterministic rotation independent of outcomes. Four complete arms retained. Ordinary algorithm not labeled GCTS.",
+      "id": "R10-ordinary-library-and-rotation",
+      "passed": true,
+      "source_lines": "164-180"
+    },
+    {
+      "finding": "Correct distinct finite-exhaustion labels and stats/work_counts. Any UNKNOWN makes summary UNKNOWN; no accepted witness from UNKNOWN. Different counters not equal work units.",
+      "id": "R11-unknown-and-counter-ABI",
+      "passed": true,
+      "source_lines": "69-85,192-227"
+    },
+    {
+      "finding": "Exact current7f1d192c dependency contains both public APIs; initially missing verify_experiment now resolved Source-only. Read its gate for fixed contexts/queries/first-two/all96+384/original truth and point inventories; failures raise. Supporting API review is not whole dependency self-qualification.",
+      "id": "R12-complete-independent-API",
+      "passed": true,
+      "source_lines": "185-187; verifier new verify_experiment"
+    },
+    {
+      "finding": "Per-arm build/solve/check are measured within one worker, with trace generation inside solve. Shared oracle/discovery/certification/global verification/output separate. Library-plus-arm subtotal omits shared overhead, not measured cold lifecycle per strategy.",
+      "id": "R13-honest-cost-boundaries",
+      "passed": true,
+      "source_lines": "87-111,117-154,183-236"
+    },
+    {
+      "finding": "Runner deadline is pre-solve, not a final complete gate; Source/import/startup, last audits/summary/serialization/output/exit must remain charged by genuine external whole-worker time/terminal memory/reaping. Pre-output peak has no final resource authority.",
+      "id": "R14-external-terminal-required",
+      "passed": true,
+      "source_lines": "66-67,88,101,222-236"
+    }
+  ],
+  "disposition": "Conditional scoped runner Source pass; no concrete current runner-logic repair found. No actual or resource acceptance.",
+  "earlier_API_gap_resolved_Source_only": true,
+  "mathematical_or_resource_admission": false,
+  "publication_performed": false,
+  "read_basis": {
+    "assessment": {
+      "bytes": 9312,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-calibration-next-benchmark-20261015/research-assessment-v1.json",
+      "sha256": "f38219ab795ebc13965b37fbb5ddea071633cb9cb2f6b2be7b06ebd1d7c7ed83"
+    },
+    "current_whole_verifier_API": {
+      "bytes": 30551,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    },
+    "engine_interface": {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "oracle_interface": {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "ordinary_interface": {
+      "bytes": 7393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    }
+  },
+  "remaining_gates": [
+    "Genuine concrete plan/current dependency Source reviews: B07/B08 order, maximum learned2, exact whole raw inputs, bounds, fresh actual namespace.",
+    "Actual complete96discovery+384replay and all current result/trace/model/Boolean/UNKNOWN evidence.",
+    "Whole native lifecycle time/terminal memory/reaping after final audits/output/exit; no per-strategy cold lifecycle or statistical speedup from arm subtotals."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualification": false,
+  "schema": "finite-learned-nogood-runner-Source-review-v1",
+  "scientific_calls": 0,
+  "scope": "finite-same-context-nogood-discovery-and-four-arm-runner-Source",
+  "source": {
+    "bytes": 13504,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/run_comparison_v1.py",
+    "sha256": "ddb5c7cc4ad291599adc1fc77ea7eec649bcccaffcc78e8a01a17d28143dc5e2"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "supporting_interface_review_is_whole_verifier_review": false,
+  "tests_executed": 0
+}

@@ -1,0 +1,143 @@
+{
+  "generated": {
+    "comparison-results.json.gz": {
+      "bytes": 508622,
+      "sha256": "c62a56280d23ec223313b308f8ae3e00588cb137645c383dccbec0000423a223"
+    },
+    "learned-certificates.json": {
+      "bytes": 105501,
+      "sha256": "886e03c18f1a09642269788d3f99f9dfe0a2225886fe0848fa07a1a7ce9c763b"
+    },
+    "observed-guard-example.json": {
+      "bytes": 5836,
+      "sha256": "2d849ccd5149ff1fe930b664618a199acf32779f411ee5efa167c8aefe78502d"
+    },
+    "reader.html": {
+      "bytes": 97262,
+      "sha256": "53d54237805163542c055584f5dae2f070e0b9f021fd48811896c7f7034c5058"
+    }
+  },
+  "raw_comparison": {
+    "bytes": 13393146,
+    "sha256": "5466c7f863287d0e06f39f907820a764e072698024daeeaa09e09a57d1081921"
+  },
+  "schema": "finite-learned-nogood-publication-scope-v1",
+  "scope": "Finite automatic same-context clause learning; no additional point pruning in observed traces; no RL/generalization/whole-goal completion.",
+  "sources_and_evidence": {
+    "ROOT-disposition.json": {
+      "bytes": 2113,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/ROOT-disposition-v2.json",
+      "sha256": "695fcf8c40fa82c9b58b0b9c5adaf362d5c34bdeb144668a72a99a8504dd99e7"
+    },
+    "boolean-oracle.py": {
+      "bytes": 8821,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "cases.json": {
+      "bytes": 4419,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+      "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+    },
+    "external-observation.json": {
+      "bytes": 2016,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/external-observation-1.json",
+      "sha256": "c010cd15b2ffc1623d1877db7020d02810f06dbb84f2e3c8acde9d3feec4fc18"
+    },
+    "independent-saved-findings.json": {
+      "bytes": 32879,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/saved-findings-v1.json",
+      "sha256": "f37ad0332968e42d71699f569967307563610d61b410b5cc724e84ec24261204"
+    },
+    "independent-saved-review.json": {
+      "bytes": 3340,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/saved-review-v1.json",
+      "sha256": "aa4e0fc9e23a9a4aba78bc5c5ae8084484ae583f537e4deb0e41c3bb92392668"
+    },
+    "independent-verifier.py": {
+      "bytes": 30551,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    },
+    "mechanism-diagnosis.json": {
+      "bytes": 80161,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/ROOT-mechanism-diagnosis-v1.json",
+      "sha256": "2c9008ef847b75b5afbfd8ea01ad382fef178549efe34535603efaadcc1c329f"
+    },
+    "native-meter.py": {
+      "bytes": 6734,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    "native-terminal.json": {
+      "bytes": 1660,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/native-terminal-1.json",
+      "sha256": "1e7bac335457444b83977da061b7f486f6b1ace9e39e7ce80406dc708f5eeb2e"
+    },
+    "ordinary-contract.json": {
+      "bytes": 8521,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/Source-contract-v1.json",
+      "sha256": "87cfd5fcb9b27eb3ee9c085dacca4cdb07f4cf271f0bc258bffa48802df9dbf8"
+    },
+    "ordinary-review.json": {
+      "bytes": 1457,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/Root-ordinary-Source-review-v1.json",
+      "sha256": "1bf075a4b1851093fa72e5949d85a67499397df1d989d35920cc73b76c66238c"
+    },
+    "ordinary.py": {
+      "bytes": 7393,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    },
+    "plan.json": {
+      "bytes": 5484,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/ROOT-plan-v1.json",
+      "sha256": "12d3071580abd525ab97cc4cf75c26b92a46836c915480d4fa208843de614f0b"
+    },
+    "point-auditor-review.json": {
+      "bytes": 1545,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/Root-auditor-Source-review-v1.json",
+      "sha256": "6df833d5cdbe25528a90583b539ddd4ac760b6b164d917da23d068cd23f10b57"
+    },
+    "point-auditor.py": {
+      "bytes": 18005,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    "point-engine-review.json": {
+      "bytes": 3538,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-Root-review-20261015/typed-Source-review-v1.json",
+      "sha256": "6e2bb3b14b62648998ab90e3fa966ee20145333b43f669fb2f63ca78688a11f4"
+    },
+    "point-engine.py": {
+      "bytes": 15493,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "runner-review.json": {
+      "bytes": 7958,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-report-source-20261015/runner-Source-review-v1.json",
+      "sha256": "244093a2dd3c0cf0b6844afc47e04703f9291683128e6e30f30c3528aa0404fe"
+    },
+    "runner.py": {
+      "bytes": 13504,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/run_comparison_v1.py",
+      "sha256": "ddb5c7cc4ad291599adc1fc77ea7eec649bcccaffcc78e8a01a17d28143dc5e2"
+    },
+    "summary.json": {
+      "bytes": 5720,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/actual-1/summary.json",
+      "sha256": "54d965020b77f72e03a9128084a1dbd4bf9cb3928dfe86cc800f15cc99ef0a55"
+    },
+    "verifier-contract.json": {
+      "bytes": 10124,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/Source-contract-v1.json",
+      "sha256": "858da5a79d6f63893df5f067f21a3d359e0c1c77802c964dc1be671cc321336a"
+    },
+    "verifier-review.json": {
+      "bytes": 1944,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/Root-verifier-Source-review-v1.json",
+      "sha256": "990ec8f6c29deaaaecc2c7d90ce0482e7ceb45aa9ff9ac78d8786f7c16325ca8"
+    }
+  }
+}

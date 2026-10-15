@@ -1,0 +1,58 @@
+{
+  "schema": "saved-certified-nogood-comparison-review-v1",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "saved_only": true,
+  "scientific_calls": 0,
+  "all_checks_passed": true,
+  "check_count": 21235,
+  "mismatches": [],
+  "findings": {
+    "path": ".gcts-active/propositional-learned-nogood-ordinary-source-20261015/saved-findings-v1.json",
+    "sha256": "f37ad0332968e42d71699f569967307563610d61b410b5cc724e84ec24261204",
+    "bytes": 32879
+  },
+  "evidence": [
+    {
+      "path": ".gcts-active/propositional-learned-nogood-ROOT-20261015/ROOT-plan-v1.json",
+      "sha256": "12d3071580abd525ab97cc4cf75c26b92a46836c915480d4fa208843de614f0b",
+      "bytes": 5484
+    },
+    {
+      "path": ".gcts-active/propositional-learned-nogood-ROOT-20261015/native-terminal-1.json",
+      "sha256": "1e7bac335457444b83977da061b7f486f6b1ace9e39e7ce80406dc708f5eeb2e",
+      "bytes": 1660
+    },
+    {
+      "path": ".gcts-active/propositional-learned-nogood-ROOT-20261015/external-observation-1.json",
+      "sha256": "c010cd15b2ffc1623d1877db7020d02810f06dbb84f2e3c8acde9d3feec4fc18",
+      "bytes": 2016
+    },
+    {
+      "path": ".gcts-active/propositional-learned-nogood-ROOT-20261015/actual-1/summary.json",
+      "sha256": "54d965020b77f72e03a9128084a1dbd4bf9cb3928dfe86cc800f15cc99ef0a55",
+      "bytes": 5720
+    },
+    {
+      "path": ".gcts-active/propositional-learned-nogood-ROOT-20261015/actual-1/comparison-results.json",
+      "sha256": "5466c7f863287d0e06f39f907820a764e072698024daeeaa09e09a57d1081921",
+      "bytes": 13393146
+    }
+  ],
+  "main_result": "No observed learned-marking effect on point pruning or decisions: all96 query pairs have identical placement/decision sequences and1,316 identical legal frontier/domain snapshots, not merely equal aggregate counters. Full dependency records differ only by added R_4/R_5 marking incidence.",
+  "activation_diagnosis": "All120 learned guard activations occur after their clause is already satisfied by variable marks and all4 original guards. B07 own tuples already zero in48/48 activations; B08 in66/72, with6 R_5 cases having two legal unselected tuple candidates already zero.",
+  "ordinary_result": "Assignments72->64 and80->74; literal checks960->1344 and1152->1586. No statistically justified timing gain.",
+  "saved_resource_facts": {
+    "native_elapsed_ns": 2604652000,
+    "native_peak_bytes": 173326336,
+    "external_elapsed_ms": 2740,
+    "worker_before_output_elapsed_ns": 2376872000,
+    "post_terminal_probe_from_worker_begin_ns": 2620897000,
+    "output_bytes": 13398866,
+    "all_reaped": true,
+    "terminal_exit_code": 0,
+    "clock_domain": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+    "scope": "Saved measured facts only; no independent resource authority or live rerun. External meter memory is excluded as recorded."
+  },
+  "authorship_disclosure": "Reviewer authored ordinary DPLL Source and earlier research recommendation. This review compares ROOT saved documents; the independent trace/truth document verifier is controls-authored. No claim of independent reexecution or truth-oracle implementation.",
+  "authority": "Saved consistency only; no authored solver/oracle/engine replay, live Source authentication, fresh semantics, ROOT resource/math admission, full point conformance, Q change, RL, held-out or speedup authority."
+}

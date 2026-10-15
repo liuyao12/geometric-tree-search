@@ -1,0 +1,100 @@
+{
+  "UNKNOWN": "Retain actual record, no failed-prefix proposal, no accepted proof/countermodel; whole summary UNKNOWN if any incomplete solve.",
+  "arm_order": "ordinary_no,ordinary_learned,point_no,point_learned rotated by (query_index+case_index)%4",
+  "case_ids": [
+    "B07-long-range-shared-four",
+    "B08-three-port-and-shared-chain"
+  ],
+  "cost_scope": "One cold worker, source loading once; all original oracle computation, discovery, certification, fresh builds, solve, per-result trace/Boolean checking, whole independent verification, JSON output and native process exit. Shared learning cost measured once; first-use accounting adds it once to each learned strategy considered separately, not physical suite totals.",
+  "discovery_solves": 96,
+  "held_out_generalization": false,
+  "inputs": {
+    "cases": {
+      "bytes": 4419,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+      "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+    },
+    "engine": {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "oracle": {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "ordinary": {
+      "bytes": 7393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    },
+    "point_auditor": {
+      "bytes": 18005,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    "verifier": {
+      "bytes": 30551,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    }
+  },
+  "invocation": 1,
+  "master_contract": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "maximum_candidates": 256,
+  "maximum_learned_clauses": 2,
+  "maximum_output_bytes": 67108864,
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "no_gold_learning_or_proof_route": true,
+  "not_claimed": [
+    "RL",
+    "deep branch learning when root propagation suffices",
+    "one fixed universal Wang palette",
+    "full point engine conformance",
+    "original Q qualification",
+    "infinite tiling",
+    "statistical speedup from one suite"
+  ],
+  "ordinary_limits": {
+    "maximum_literal_checks": 500000,
+    "maximum_nodes": 20000,
+    "maximum_trace_events": 50000
+  },
+  "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/actual-1",
+  "point_limits": {
+    "maximum_candidate_checks": 500000,
+    "maximum_nodes": 20000,
+    "maximum_trace_events": 50000
+  },
+  "query": "Original F entails (Xi=b => Xj=c); solve F with sorted fixed boundary Xi=b,Xj=1-c",
+  "query_order": "i ascending, j ascending excluding i, b=0 then1, c=0 then1",
+  "replay_solves": 384,
+  "reused_catalogue": true,
+  "runner": {
+    "bytes": 13504,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/run_comparison_v1.py",
+    "sha256": "ddb5c7cc4ad291599adc1fc77ea7eec649bcccaffcc78e8a01a17d28143dc5e2"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "same_ordinary_library": "Learned arm uses exactly original clauses followed by same selected certified clauses; no-library uses originals only.",
+  "same_point_inventory": "Original plus learned tuple/guard gadgets in BOTH replay arms; only extra R marking absence versus zero differs; original guards active in both.",
+  "schema": "ROOT-certified-nogood-comparison-plan-v1",
+  "selection": "First two distinct normalized non-original clauses from genuinely EXHAUSTED complete root query contexts, negating the WHOLE boundary prefix and independently entailed by original F. All proposals retained. No assumption deletion or minimization.",
+  "whole_native_seconds": 20,
+  "whole_tool_seconds": 60,
+  "worker_peak_bytes": 536870912,
+  "worker_seconds": 20
+}

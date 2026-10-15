@@ -1,0 +1,46 @@
+{
+  "RL": false,
+  "all_480_solves_complete": true,
+  "all_original_solution_sets_preserved": true,
+  "arm_rotation_checked": true,
+  "automatic_selected_clauses": 4,
+  "cost_scope": "Replay includes build/solve/per-result checks. Learning contains original oracle and certification; shared overhead includes source/runtime startup, summary/whole audit/output/exit. Subtotals are not separate cold strategy runs. Meter memory excluded.",
+  "finite_pilot_accepted": true,
+  "full_master_contract_qualification": false,
+  "goal_remains_active": true,
+  "held_out_generalization": false,
+  "independent_raw_trace_checks": {
+    "ordinary": 192,
+    "point": 288
+  },
+  "independent_saved_review": {
+    "bytes": 3340,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/saved-review-v1.json",
+    "scope": "21,235 saved consistency checks; no search/checker/oracle rerun; reviewer authored ordinary comparator.",
+    "sha256": "aa4e0fc9e23a9a4aba78bc5c5ae8084484ae583f537e4deb0e41c3bb92392668"
+  },
+  "library_discovery_and_certification_ns": 458448000,
+  "mechanism_diagnosis_independently_confirmed": true,
+  "native_all_reaped": true,
+  "native_terminal_elapsed_ns": 2604652000,
+  "native_terminal_peak_bytes": 173326336,
+  "new_Q_proof": false,
+  "observed_point_effect": "No additional legal candidate elimination or changed search choices across96 paired queries; see mechanism diagnosis.",
+  "original_context_entailment_certified": true,
+  "post_terminal_from_launch_ns": 2636519000,
+  "replay_inclusive_ns": {
+    "ordinary_learned": 23297000,
+    "ordinary_no": 23219000,
+    "point_learned": 907816000,
+    "point_no": 775000000
+  },
+  "same_context_query_catalogue_reused": true,
+  "same_point_candidate_universe_checked": true,
+  "schema": "ROOT-certified-nogood-comparison-disposition-v1",
+  "shared_suite_overhead_ns": 416872000,
+  "sources_retained": true,
+  "statistical_speedup_established": false,
+  "universal_Wang_set": false,
+  "whole_global_verification_ns": 114955000,
+  "whole_tool_elapsed_ms": 2740
+}

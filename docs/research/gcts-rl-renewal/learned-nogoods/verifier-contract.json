@@ -1,0 +1,111 @@
+{
+  "schema": "finite-certified-nogood-independent-verifier-Source-contract-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+    "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea",
+    "bytes": 30551
+  },
+  "raw_references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "fixed_original_cases": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+      "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947",
+      "bytes": 4419
+    },
+    "prior_research_note": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-calibration-next-benchmark-20261015/research-assessment-v1.json",
+      "sha256": "f38219ab795ebc13965b37fbb5ddea071633cb9cb2f6b2be7b06ebd1d7c7ed83",
+      "bytes": 9312
+    },
+    "point_engine_wire_Source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3",
+      "bytes": 15493
+    },
+    "point_trace_auditor_Source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a",
+      "bytes": 18005
+    },
+    "ordinary_wire_Source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3",
+      "bytes": 7393
+    },
+    "ordinary_wire_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/Source-contract-v1.json",
+      "sha256": "87cfd5fcb9b27eb3ee9c085dacca4cdb07f4cf271f0bc258bffa48802df9dbf8",
+      "bytes": 8521
+    },
+    "original_Boolean_oracle_Source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472",
+      "bytes": 8821
+    }
+  },
+  "APIs": {
+    "verify_ordinary_result(result)": "Raise ValueError on a defective saved ordinary-finite-CNF-DPLL-result-v1 wire. Return independent-ordinary-CNF-trace-audit-v1. UNKNOWN automatically receives prefix-only treatment, never solution/refutation acceptance.",
+    "verify_experiment(document)": "Raise ValueError on a defect. Return independent-finite-certified-nogood-comparison-audit-v1; valid_saved_experiment may be true with unresolved UNKNOWN records and all_queries_completed false."
+  },
+  "document_wire": {
+    "schema": "finite-certified-nogood-comparison-v1",
+    "cases": "Exactly the unchanged B07 then B08 original case dictionaries. Each case requires original, queries, discovery, discovery_audits, learned, arms, point_arm_audits, ordinary_arm_audits, timings, original_oracle, proposal_log. Extra metadata fields are permitted without receiving scientific/resource authority.",
+    "queries": "Exactly 48 per context: for i=0..3, j=0..3 except i=j, b=0,1, c=0,1 in that nested order; {i,j,b,c,seeds}, seeds sorted [[i,b],[j,1-c]].",
+    "discovery": "48 complete raw point-result records plus 48 corresponding raw point-auditor reports. Every discovery model has only original clauses and all original guards active; fresh exact query boundary and empty placement root.",
+    "learned": "Up to two records {clause:[[variable,sign],...],discovery_query_index:int}; sign is exact +1 or -1, clauses sorted by variable index. No proof routes or predeclared learned clause values are encoded in this Source.",
+    "proposal_log": "Every complete EXHAUSTED discovery root in query order. Required fields discovery_query_index,clause,is_original,is_duplicate,entailed,selected. Duplicate means a prior exhausted root proposed that same normalized clause. Extra metadata is permitted.",
+    "arms": "Exact ordinary_no, ordinary_learned, point_no, point_learned maps; each has 48 raw results in query order. Both point arms include the same complete original+selected learned tuple/guard inventory; only learned guard markings differ. Ordinary no arm has original clauses; learned arm original plus exactly selected clauses.",
+    "audits": "point_arm_audits has point_no and point_learned arrays; ordinary_arm_audits has ordinary_no and ordinary_learned arrays. One audit per result. Whole verifier recomputes each ordinary audit; supplied point-audit completion/status fields are matched, with ROOT required separately to invoke exact raw point auditor on corresponding immutable results.",
+    "original_oracle": "Raw existing evaluate_case(original) result. All assignments, complete ordered clause truth rows, and complete marked/unmarked accepted sets are independently checked here. Other original-oracle prefix/unit metadata is outside this checker scope.",
+    "timings": "Retained metadata. This checker grants no clock, memory, native ownership, startup or speedup acceptance."
+  },
+  "mathematical_checks": [
+    "Directly evaluate every complete assignment of each original four-variable CNF. Filter query assumptions without using solver-supplied expected answers.",
+    "Only complete root EXHAUSTED may propose the negation of the entire two-assumption query prefix. No subtree minimization, assumption discharge, human clause injection or UNKNOWN proposal.",
+    "Independently require original-F truth-table entailment and choose exactly the first two distinct non-original entailed clauses in the frozen query order. Retain originals, duplicate proposals, later proposals and all raw unresolved discovery results.",
+    "Recompute all original satisfying assignments after adding learned clauses and require exact equality. Check every FOUND witness against full original/query truth and every complete exhausted outcome against empty extensions.",
+    "Independently reconstruct complete point model wires from all bit/tuple/guard data, including forbidden tuple candidates, all positive unit roots, marking-only ports, exact assigned zero versus absence, query fixed m and marking epoch. Both replay point inventories retain learned gadgets even when guards are inactive.",
+    "Check 96 discovery and 384 replay result slots with fresh root states. UNKNOWN remains unresolved and provides neither witness nor clause."
+  ],
+  "ordinary_trace_checks": [
+    "Every state is a complete sorted exact assignment, with Boolean integer coercion rejected. All seed occurrences preserved; each child extends parent by precisely the declared one unset variable.",
+    "Every node has its full literal/ordered-clause scan, including satisfied clauses and all unassigned ports. Global first conflict precedes first unit; only then branch at smallest unassigned variable with zero before one.",
+    "Explicit stack checks every parent alternative, child, full restore, successful stop and complete finite exhaustion. Complete solutions assign all variables even if clauses became true earlier.",
+    "Every emitted node/scan/unit/branch/assignment/restore/conflict/solution count and trace index is exact. Complete literal checks equal full scan count times all clause occurrences. UNKNOWN permits only one interrupted scan with honestly bounded partial charges.",
+    "UNKNOWN location and its actual exhausted node/literal or trace-reservation gate are checked; reserved restore/final events must restore root exactly. No success may be revoked into UNKNOWN after an ordinary completed reserved return."
+  ],
+  "independence_and_limits": [
+    "No imports/calls of ordinary solver, point engine, prior Boolean oracle, raw point auditor, project Sources, IO, native clocks or resource APIs. Raw point trace audit is intentionally performed by ROOT separately; its supplied report is not an untrusted proof substitute.",
+    "Author previously authored the separate finite truth oracle and point raw-trace auditor; neither is executed or imported by this Source. Ordinary Source author is arithmetic; point Source author is diagnosis. Distinct review is required for this new verifier.",
+    "Counts from different representations are not equal work units. Replayed discovery catalogue is not held-out generalization. No statistical speedup, RL, general point-engine conformance, fixed Wang universality or original arithmetic-Q qualification."
+  ],
+  "review_ABI": {
+    "scope": "finite-certified-nogood-comparison-independent-verifier-Source",
+    "author_identity": "/root/hilbert_advice_controls",
+    "reviewer_identity_must_differ": true,
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea",
+      "bytes": 30551
+    },
+    "source_contract": "this exact frozen contract",
+    "scientific_calls": 0,
+    "scientific_acceptance": false
+  },
+  "authored_functions_executed": 0,
+  "solver_functions_executed": 0,
+  "truth_table_evaluations_executed": 0,
+  "tests": 0,
+  "clocks_called": 0,
+  "Q_payloads_decoded": 0,
+  "actual_plans": 0,
+  "runtime_qualified": false,
+  "resource_qualified": false,
+  "scientific_acceptance": false
+}

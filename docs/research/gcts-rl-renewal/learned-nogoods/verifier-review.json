@@ -1,0 +1,28 @@
+{
+  "author": "/root/hilbert_advice_controls",
+  "checks": [
+    "Original inputs fixed exactly, learned clauses/answers not precomputed.",
+    "Direct independent finite truth enumeration and original oracle truth rows compared.",
+    "Complete ordered query catalogue with both whole root assumptions.",
+    "Exact full point inventory, fixed boundary and marking version independently reconstructed.",
+    "Point reports matched to raw results; separate point raw trace audit still mandatory.",
+    "Ordinary complete scans, global conflicts/units, original branch order, exact child and restore stack independently replayed.",
+    "Ordinary complete status/witness/exhaustion and counters checked; UNKNOWN prefix never accepted.",
+    "Only actual complete exhausted discovery roots propose the negation of the entire fixed prefix.",
+    "First two distinct new non-original independently entailed clauses; all proposals retained.",
+    "Complete original solution sets preserved exactly by learned clauses.",
+    "All four replay arms retain every query, exact original or augmented clauses, point guard masks and same per-representation count policy."
+  ],
+  "dependency_disclosure": "Root authored runner and earlier generic CNF construction, not this independent verifier or ordinary search.",
+  "limits": "Metadata cost, actual arm rotation, clock, memory and direct point-auditor invocation remain Root external/actual gates; this is not broader point/Q/RL qualification.",
+  "reviewer": "/root",
+  "schema": "ROOT-independent-nogood-verifier-Source-review-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30551,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+    "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+  },
+  "source_only": true,
+  "source_pass": true
+}

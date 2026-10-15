@@ -1,0 +1,25 @@
+{
+  "author": "/root/arithmetic_induction",
+  "checks": [
+    "Strict tiny CNF/seed/limit inputs and literal integer roles.",
+    "No imports, point-engine/oracle dependency, learned-library generator or supplied proof.",
+    "Every entered state completely scans every original active literal.",
+    "Global conflict before first unit; otherwise smallest variable and bits zero then one.",
+    "Full assignments required for countermodels; complete branch enumeration for exhaustion.",
+    "Immutable tuple assignments preserve parents; every assigned child has exact finally restore.",
+    "Reserved trace slots retain restores and finished UNKNOWN without accepting a prefix.",
+    "Node/literal/trace budgets retain UNKNOWN and exact stop reason.",
+    "Ordinary work units and EXHAUSTED_FINITE_CNF label remain distinct from point statistics."
+  ],
+  "conditional_on": "Independent trace and semantic checker, actual result preservation and external native cost measurement. Not master point-engine conformance.",
+  "reviewer": "/root",
+  "schema": "ROOT-ordinary-finite-CNF-Source-review-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 7393,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+    "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+  },
+  "source_only": true,
+  "source_pass": true
+}
