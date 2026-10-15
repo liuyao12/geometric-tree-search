@@ -3,9 +3,11 @@
   "Source_review": "Current mechanism Sources and corrected cold-worker/early-launcher Sources have conditional static passes. Native clock ABI failed separately. All Sources/reviews preserved; no current project activation.",
   "actual_full52_control_suites": 0,
   "actual_searches_in_new_architecture": 0,
+  "artifact_scope": "Conditional static Source records plus actual NONLOGICAL standard-library clock calibration; no project control suite, model/checker execution or proof search.",
   "new_theorems_in_new_architecture": 0,
   "pending": "Authoritative global-clock migration and conservative local float projections need design/current review before new Root request/caller/owned controls. SeparateW16/model/resource/proof gates remain pending.",
   "prior_scope": "scope.json",
+  "project_functions_executed": 0,
   "publication_rewrites_source_or_reviews": false,
   "resource_fit": "UNMEASURED",
   "runtime_clock_probes": {
@@ -126,5 +128,5 @@
       "sha256": "56293f4a7acb8664e4a4745ed35d96db869f29c8a93327f83aea41decc3e4f71"
     }
   },
-  "source_only": true
+  "source_only": false
 }
