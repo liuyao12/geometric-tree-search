@@ -1,0 +1,105 @@
+{
+  "Q_payload_reads": 0,
+  "Source_patch_proposal_only": [
+    "Give emit an optional previously computed fingerprint record with explicit origin-event metadata; it must be labelled reuse, not a newly computed fingerprint.",
+    "Pass run_entry record into the root node entry only before any graph operation that can mutate state.",
+    "A per-frame explicit unchanged-since-entry flag can permit the first branch snapshot to share the entry record; invalidate before EVERY _apply_legal, exclude_failed_child or rollback call. Never key reuse solely by checkpoint integer, count, size or sampled hash.",
+    "After every rollback, freshly traverse/hash all original semantic fields and full trail prefix and compare against the before-checkpoint record. Do not reuse the after record, even for a dead child with no apparent changes.",
+    "Maintain original native pre/post/event20 checks and honest separate fingerprint-computation/reuse counters; all emitted complete fingerprint fields/encoding unchanged."
+  ],
+  "author_identity": "/root/arithmetic_induction",
+  "correctness_gates": [
+    "Exact unchanged8d22/full11147+16200/24/boundary/epochs, global dead before target/forced/earliest-generation, canonical first candidate/full fallback and128/2000/max1 caps.",
+    "Reuse proof is explicit serial Source control flow with no intervening graph mutation; ordinary state is private under current fixed reviewed Source assumptions. No cache inferred from equal checkpoint length alone.",
+    "Full fresh parent/node/root rollback fingerprints include totals/mark values and refs/generations/order/exclusions/every factor/trailprefix. No trajectory or mathematical authority promotion.",
+    "Distinct current Source delta review and fresh ROOT actual authorization; all existing4be Source/results and UNKNOWN preserved."
+  ],
+  "evidence": [
+    {
+      "bytes": 2619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "ceb542a8c5958f9a4238a10c37a813c0e6802211f7dd79ea62bd3347ee4cc6ae"
+    },
+    {
+      "bytes": 826,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-stdout.txt",
+      "sha256": "eb6a93b6537eb6daed50f6bc49313bf054c039fbfa3c124f451c323ccd22ae59"
+    },
+    {
+      "bytes": 1313,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000000.json",
+      "sha256": "e2616cc28d47424ed200802e9a7fea91eaedb30b19f8f7509fb9ef858496ea64"
+    },
+    {
+      "bytes": 1319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000001.json",
+      "sha256": "c27e3b1a1667271cae28f217a33fa9f5d3ca40ffb40aa57c27898143caa58eed"
+    },
+    {
+      "bytes": 1326,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000003.json",
+      "sha256": "6115dea659655dbc37681e22142f3c12f318e006323afe8853d6add2e6d4523a"
+    },
+    {
+      "bytes": 1316,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000005.json",
+      "sha256": "770b794530aca7d6ac459a9d9097e6c30616cf3de1d2ab0628d07d0f56510633"
+    },
+    {
+      "bytes": 1341,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000007.json",
+      "sha256": "7c515120521fd2f923216509e86d5a6af07f55e9c8ec7ef5dcc2b4695d3437e0"
+    },
+    {
+      "bytes": 1349,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000008.json",
+      "sha256": "a26084d7217adfd1c4552be7495af4ae5b372e178d6b2295b28d9fe4b4eb949a"
+    },
+    {
+      "bytes": 1335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000011.json",
+      "sha256": "cf4dfa836e2d4f461238d42f546863edcf75295ff442f7bffb97d640e1294845"
+    }
+  ],
+  "implementation_authored": false,
+  "measured_redundancy": {
+    "events": [
+      0,
+      1,
+      3
+    ],
+    "extra_two_completed_traversal_ns": 3108512000,
+    "interpretation": "These two redundant traversals consumed this time in the saved run; this is not a prospective speedup guarantee.",
+    "same_complete_fingerprint": {
+      "bytes": 10271509,
+      "checkpoint": 0,
+      "schema": "Q-complete-producer-state-fingerprint-v1",
+      "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+    }
+  },
+  "native_clock_calls": 0,
+  "no_expected_result": "This is one performance proposal, not a target route, new candidate ordering, learned contribution, fit or proof claim.",
+  "observed_prefix_only": {
+    "completed_event_serialization_elapsed_ns_before_last_write": 2259000,
+    "completed_fingerprint_elapsed_ns": 10729847000,
+    "completed_fingerprints": 7,
+    "encoded_fingerprint_bytes": 71075040,
+    "journal_parse_interval_ns": 3735698000,
+    "last_saved_branch_decisions": 2,
+    "last_saved_completed_placement_count": 1,
+    "last_saved_event_index": 11,
+    "producer_construction_interval_ns": 1785311000,
+    "scope": "All counters are cumulative at the last complete event BEFORE its own serialization. They exclude the killed tail, may exclude partly completed next mutation/hash/write, and are not complete run work totals. Encoded bytes are traversal bytes, not event output size."
+  },
+  "one_recommended_change": "Explicitly reuse the already computed complete fingerprint only across Source-proven read-only pre-placement boundaries. Reuse run_entry for root node_enter; reuse node entry for its first branch_checkpoint only while no graph mutator has run. Preserve all graph factors/frontier/epochs/canonical choices and every fresh AFTER-rollback recomputation/comparison.",
+  "original_immutable_source": {
+    "bytes": 28623,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+    "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+  },
+  "reruns": 0,
+  "saved_data_and_Source_only": true,
+  "schema": "compact-point-saved-fingerprint-reuse-proposal-v1",
+  "scientific_calls": 0,
+  "why_not_factor_change": "The original graph already factorizes exact complete reference domains and lazily expands keys. Saved construction took1.785311s; at least10.729847s of completed fingerprint work is directly recorded. Canonical factor refresh also has cost, but inter-event gaps include multiple operations and the killed tail is unobserved. No Source graph/factor optimization is justified before this smaller redundant-work removal is measured."
+}

@@ -1,0 +1,24 @@
+{
+  "Q_decodes": 0,
+  "Source_functions_executed": 0,
+  "actual_started": false,
+  "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-external-v1",
+  "external_driver": {
+    "bytes": 4357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+    "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+  },
+  "external_schema_note": "Byte-identical generic9ded driver retains inherited ordinary measurement-only schema; point purpose/plan/Source8 and Root protocol control this new experiment.",
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "plan": {
+    "bytes": 9276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-plan-v1.json",
+    "sha256": "278c2b43bd867e191dbc2853d3fbc1c7edb44f2bc5b4ae1fe4d6514f5c09028b"
+  },
+  "purpose": "primary",
+  "schema": "ROOT-point-compact-Q-actual-metadata-closure-v1"
+}

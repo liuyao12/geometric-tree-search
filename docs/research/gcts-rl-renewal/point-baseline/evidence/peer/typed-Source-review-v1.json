@@ -1,0 +1,87 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 82,
+  "findings": {
+    "bytes": 132289,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "fc9e2fd0933fd84aa8f89fdbaffeaf109765f45bc776f541b19b0bf61ef84f11"
+  },
+  "limitations": [
+    "Only raw hashing, small metadata JSON/AST/static inspection and compile-only were performed. No Source/project/graph/codec/kernel/helper/Q decode/fixture/native clock/test/actual invocation.",
+    "Conditional Source pass only; actual controls, exact ROOT grants/plans, measured runtime/cold fit/resource/terminal/output closure and primary result remain pending.",
+    "Compact hashes/phase counters and physical source origins remain producer claims. Independent selected point/current-state/full24/full-domain trajectory/native Wang/RL acceptance false.",
+    "Fixed reviewed Source/pinned Darwin scope; no hostile OS/VM, arbitrary native child escape or universal hard-cap claim. Memory proof depends on complete actual sequential/reaping/no-spawn/terminalT evidence.",
+    "Inherited nonoperative error text Source9/ordinary-only remains descriptive advisory; operative map is exact Source8 and point protocol pin. It does not add a role or weaken a gate.",
+    "Existing ordinary proof and all historical UNKNOWN/failures are preserved; no target proof or successful route supplied to this point BASE."
+  ],
+  "producer_source_contract": {
+    "bytes": 13860,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+    "sha256": "ba22d1c5d87e724eeb9a89b44d4b1ba20dc9f1fd1777ff08a5cf2253221c8728"
+  },
+  "raw_reference_count": 137,
+  "resource_accepted": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "Q-point-compact-cold-intake-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-point-compact-cold-intake-Source",
+  "source": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py",
+    "sha256": "30bef873644dda63102fb08d32b23d42a3082d3744ce1608535fa18e11171c79"
+  },
+  "source_contract": {
+    "bytes": 19772,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "f4305dd5349b8eb273edc398adece6ccb0aba5a54bfe779dbafa06dde5247b8d"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "control_leaf": {
+      "bytes": 931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py",
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 42845,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py",
+      "sha256": "30bef873644dda63102fb08d32b23d42a3082d3744ce1608535fa18e11171c79"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "point_producer": {
+      "bytes": 28623,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+      "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+    },
+    "producer_bootstrap": {
+      "bytes": 12467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_producer_bootstrap_v1.py",
+      "sha256": "f2159c4271a0c26c691e5e620b20ea336fc2c861571407e061cb366e002703f2"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "unique_raw_path_count": 44
+}

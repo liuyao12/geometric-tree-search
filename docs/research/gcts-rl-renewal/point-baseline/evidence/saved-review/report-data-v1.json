@@ -1,0 +1,1158 @@
+{
+  "schema": "compact-point-saved-report-data-v1",
+  "saved_data_only": true,
+  "attempts": {
+    "controls": {
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-controls-plan-v1.json",
+        "sha256": "64726b8a6733ab8a911bb553b90046dbe3fa4868f135f526acf9fdc47a2bec82",
+        "bytes": 9280
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-controls-disposition-v1.json",
+        "sha256": "400e41eb7c19f83282e931978451fd8a33637b4a2c86b81d8d5fae0b940790b0",
+        "bytes": 2629
+      },
+      "owned_file_count": 39,
+      "owned_bytes": 55471967,
+      "external_file_count": 8,
+      "native": {
+        "caller_pid": 72604,
+        "children": [
+          {
+            "kernel_peak_bytes": 18104320,
+            "launch_began_ns": 442665728165000,
+            "pid": 72605,
+            "reaped": true,
+            "returncode": 0,
+            "role": "inert-a",
+            "terminal_observed_ns": 442665773989000,
+            "usage": [
+              {
+                "hex": "0x1.27e0ef99806f2p-6",
+                "kind": "float"
+              },
+              {
+                "hex": "0x1.2a411c2a02320p-8",
+                "kind": "float"
+              },
+              18104320,
+              0,
+              0,
+              0,
+              1581,
+              19,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              28
+            ],
+            "wait4_pid": 72605,
+            "wait4_status": 0
+          },
+          {
+            "kernel_peak_bytes": 22315008,
+            "launch_began_ns": 442665774383000,
+            "pid": 72606,
+            "reaped": true,
+            "returncode": 0,
+            "role": "inert-b",
+            "terminal_observed_ns": 442665832344000,
+            "usage": [
+              {
+                "hex": "0x1.40bfe3b03e20dp-6",
+                "kind": "float"
+              },
+              {
+                "hex": "0x1.a1a93293d102bp-8",
+                "kind": "float"
+              },
+              22315008,
+              0,
+              0,
+              0,
+              1840,
+              17,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              46
+            ],
+            "wait4_pid": 72606,
+            "wait4_status": 0
+          },
+          {
+            "kernel_peak_bytes": 20889600,
+            "launch_began_ns": 442665833284000,
+            "pid": 72607,
+            "reaped": true,
+            "returncode": 0,
+            "role": "bad-word",
+            "terminal_observed_ns": 442665949991000,
+            "usage": [
+              {
+                "hex": "0x1.9c768dfbd6a59p-4",
+                "kind": "float"
+              },
+              {
+                "hex": "0x1.083558a761027p-7",
+                "kind": "float"
+              },
+              20889600,
+              0,
+              0,
+              0,
+              1840,
+              17,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              65
+            ],
+            "wait4_pid": 72607,
+            "wait4_status": 0
+          },
+          {
+            "kernel_peak_bytes": 19185664,
+            "launch_began_ns": 442665951166000,
+            "pid": 72608,
+            "reaped": true,
+            "returncode": 2,
+            "role": "bad-authority",
+            "terminal_observed_ns": 442666038881000,
+            "usage": [
+              {
+                "hex": "0x1.0692f6e82949ap-4",
+                "kind": "float"
+              },
+              {
+                "hex": "0x1.cf0307f23cc8ep-8",
+                "kind": "float"
+              },
+              19185664,
+              0,
+              0,
+              0,
+              1733,
+              17,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              51
+            ],
+            "wait4_pid": 72608,
+            "wait4_status": 512
+          }
+        ],
+        "G": 442665609625000,
+        "D": 442685609625000,
+        "cold_launch_ns": 442665591091000,
+        "parent_terminal_ns": 442666084032000,
+        "postprobe_ns": 442666147096000,
+        "caller_lifetime_ns": 492941000,
+        "cold_launch_to_postprobe_ns": 556005000,
+        "memory_bound_bytes": 54345728,
+        "memory_bound_MiB": 51.828125,
+        "tool_ms": 737
+      }
+    },
+    "primary": {
+      "plan": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-plan-v1.json",
+        "sha256": "278c2b43bd867e191dbc2853d3fbc1c7edb44f2bc5b4ae1fe4d6514f5c09028b",
+        "bytes": 9276
+      },
+      "disposition": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-disposition-v1.json",
+        "sha256": "ceb542a8c5958f9a4238a10c37a813c0e6802211f7dd79ea62bd3347ee4cc6ae",
+        "bytes": 2619
+      },
+      "owned_file_count": 41,
+      "owned_bytes": 55477355,
+      "external_file_count": 8,
+      "native": {
+        "caller_pid": 72735,
+        "children": [
+          {
+            "kernel_peak_bytes": 293240832,
+            "launch_began_ns": 442752053550000,
+            "pid": 72736,
+            "reaped": true,
+            "returncode": -9,
+            "role": "producer",
+            "terminal_observed_ns": 442771920408000,
+            "usage": [
+              {
+                "hex": "0x1.3addbfceb7889p+4",
+                "kind": "float"
+              },
+              {
+                "hex": "0x1.fa355043e5321p-4",
+                "kind": "float"
+              },
+              293240832,
+              0,
+              0,
+              0,
+              27827,
+              38,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              40,
+              10886
+            ],
+            "wait4_pid": 72736,
+            "wait4_status": 9
+          }
+        ],
+        "G": 442751912181000,
+        "D": 442771912181000,
+        "cold_launch_ns": 442751892707000,
+        "parent_terminal_ns": 442771956471000,
+        "postprobe_ns": 442772021374000,
+        "caller_lifetime_ns": 20063764000,
+        "cold_launch_to_postprobe_ns": 20128667000,
+        "memory_bound_bytes": 314015744,
+        "memory_bound_MiB": 299.46875,
+        "tool_ms": 21014
+      }
+    }
+  },
+  "journal": [
+    {
+      "joint_began_ns": 442751912181000,
+      "joint_deadline_ns": 442771912181000,
+      "observed_native_ns": 442752156660000,
+      "phase": "preparation_read_begin",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    },
+    {
+      "joint_began_ns": 442751912181000,
+      "joint_deadline_ns": 442771912181000,
+      "observed_native_ns": 442752181165000,
+      "phase": "parse_begin",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    },
+    {
+      "joint_began_ns": 442751912181000,
+      "joint_deadline_ns": 442771912181000,
+      "observed_native_ns": 442755916863000,
+      "phase": "parse_end",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    },
+    {
+      "joint_began_ns": 442751912181000,
+      "joint_deadline_ns": 442771912181000,
+      "observed_native_ns": 442755925477000,
+      "phase": "point_call_begin",
+      "producer_claim_only": true,
+      "schema": "Q-point-bootstrap-phase-journal-v1"
+    }
+  ],
+  "events": [
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 167,
+        "event_bytes": 0,
+        "event_files": 0,
+        "event_writes": 0,
+        "fingerprint_block_ticks": 156,
+        "fingerprint_bytes": 10271509,
+        "fingerprints": 1,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 0,
+        "fingerprint_elapsed_ns": 1569063000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 0,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "events": 0,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 0,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 0,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "run_entry",
+      "node": null,
+      "observed_native_ns": 442759280159000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      }
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 331,
+        "event_bytes": 1313,
+        "event_files": 1,
+        "event_writes": 1,
+        "fingerprint_block_ticks": 312,
+        "fingerprint_bytes": 20543018,
+        "fingerprints": 2,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 339000,
+        "fingerprint_elapsed_ns": 3127717000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 0,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "events": 1,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 1,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_enter",
+      "node": 0,
+      "observed_native_ns": 442760839178000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      }
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 337,
+        "event_bytes": 2632,
+        "event_files": 2,
+        "event_writes": 2,
+        "fingerprint_block_ticks": 312,
+        "fingerprint_bytes": 20543018,
+        "fingerprints": 2,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 636000,
+        "fingerprint_elapsed_ns": 3127717000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 0,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 0,
+        "events": 2,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": {
+        "count": 23,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 2,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 0,
+      "observed_native_ns": 442760839523000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 501,
+        "event_bytes": 3840,
+        "event_files": 3,
+        "event_writes": 3,
+        "fingerprint_block_ticks": 468,
+        "fingerprint_bytes": 30814527,
+        "fingerprints": 3,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 778000,
+        "fingerprint_elapsed_ns": 4677575000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 0,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 3,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 0,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 3,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 24,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 0,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "branch_checkpoint",
+      "node": 0,
+      "observed_native_ns": 442762389554000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      }
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 508,
+        "event_bytes": 5166,
+        "event_files": 4,
+        "event_writes": 4,
+        "fingerprint_block_ticks": 468,
+        "fingerprint_bytes": 30814527,
+        "fingerprints": 3,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 989000,
+        "fingerprint_elapsed_ns": 4677575000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 4,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 1,
+        "placements": 1,
+        "rollbacks": 0
+      },
+      "decision": {
+        "count": 23,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 4,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": [
+        2670,
+        23,
+        [
+          0
+        ]
+      ],
+      "kind": "branch_place",
+      "node": 0,
+      "observed_native_ns": 442763687491000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 666,
+        "event_bytes": 6387,
+        "event_files": 5,
+        "event_writes": 5,
+        "fingerprint_block_ticks": 618,
+        "fingerprint_bytes": 40673235,
+        "fingerprints": 4,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 1229000,
+        "fingerprint_elapsed_ns": 6152917000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 5,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 0
+      },
+      "decision": null,
+      "depth": 1,
+      "event": 5,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_enter",
+      "node": 1,
+      "observed_native_ns": 442765163100000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 9858708,
+        "checkpoint": 1,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "367c8f138a4834c2da98e74c6457fcdeb464cb8beaac58122493075226017133"
+      }
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 672,
+        "event_bytes": 7703,
+        "event_files": 6,
+        "event_writes": 6,
+        "fingerprint_block_ticks": 618,
+        "fingerprint_bytes": 40673235,
+        "fingerprints": 4,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 1464000,
+        "fingerprint_elapsed_ns": 6152917000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 6,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 0
+      },
+      "decision": {
+        "count": 0,
+        "generation": 0,
+        "kind": "dead",
+        "row": 0
+      },
+      "depth": 1,
+      "event": 6,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 1,
+      "observed_native_ns": 442765163369000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 830,
+        "event_bytes": 8905,
+        "event_files": 7,
+        "event_writes": 7,
+        "fingerprint_block_ticks": 768,
+        "fingerprint_bytes": 50531943,
+        "fingerprints": 5,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 1586000,
+        "fingerprint_elapsed_ns": 7611929000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 7,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 1
+      },
+      "decision": null,
+      "depth": 1,
+      "event": 7,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 48,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "node_unwind",
+      "node": 1,
+      "observed_native_ns": 442766622526000,
+      "parent": 0,
+      "producer_claim_only": true,
+      "producer_status": "EXHAUSTED_PRODUCER_SUBTREE",
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 9858708,
+        "checkpoint": 1,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "367c8f138a4834c2da98e74c6457fcdeb464cb8beaac58122493075226017133"
+      }
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 993,
+        "event_bytes": 10246,
+        "event_files": 8,
+        "event_writes": 8,
+        "fingerprint_block_ticks": 924,
+        "fingerprint_bytes": 60803452,
+        "fingerprints": 6,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 1875000,
+        "fingerprint_elapsed_ns": 9148376000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 0,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 0,
+        "branch_decisions": 1,
+        "events": 8,
+        "exclusions": 0,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 8,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 72,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "child_rollback",
+      "node": 0,
+      "observed_native_ns": 442769473373000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": "EXHAUSTED_PRODUCER_SUBTREE",
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 10271509,
+        "checkpoint": 0,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "93703dbd5d6f8707bbcdc3990e3eddf5e1f9b2cfc92b1aeeca29aa493c44de65"
+      }
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 998,
+        "event_bytes": 11595,
+        "event_files": 9,
+        "event_writes": 9,
+        "fingerprint_block_ticks": 924,
+        "fingerprint_bytes": 60803452,
+        "fingerprints": 6,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 2052000,
+        "fingerprint_elapsed_ns": 9148376000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 1,
+        "branch_decisions": 1,
+        "events": 9,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 9,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 73,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": [
+        2670,
+        23,
+        [
+          0
+        ]
+      ],
+      "kind": "producer_exhausted_child_local_exclusion",
+      "node": 0,
+      "observed_native_ns": 442769475774000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 1004,
+        "event_bytes": 12798,
+        "event_files": 10,
+        "event_writes": 10,
+        "fingerprint_block_ticks": 924,
+        "fingerprint_bytes": 60803452,
+        "fingerprints": 6,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 2171000,
+        "fingerprint_elapsed_ns": 9148376000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 1,
+        "attempts": 1,
+        "backtracks": 1,
+        "branch_decisions": 1,
+        "events": 10,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": {
+        "count": 22,
+        "generation": 0,
+        "kind": "branch",
+        "row": 23
+      },
+      "depth": 0,
+      "event": 10,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 73,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "decision",
+      "node": 0,
+      "observed_native_ns": 442769475936000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": null
+    },
+    {
+      "budget_counts_before_event_serialization": {
+        "budget_checks": 1168,
+        "event_bytes": 14013,
+        "event_files": 11,
+        "event_writes": 11,
+        "fingerprint_block_ticks": 1080,
+        "fingerprint_bytes": 71075040,
+        "fingerprints": 7,
+        "return_validations": 0
+      },
+      "budget_phase_intervals_before_event_serialization": {
+        "construction_begin_ns": 442755925536000,
+        "construction_end_ns": 442757710847000,
+        "event_serialization_elapsed_ns": 2259000,
+        "fingerprint_elapsed_ns": 10729847000,
+        "search_begin_ns": 442757711082000,
+        "search_end_ns": null
+      },
+      "checkpoint": 1,
+      "counters": {
+        "ancestry_scans": 2,
+        "attempts": 1,
+        "backtracks": 1,
+        "branch_decisions": 2,
+        "events": 11,
+        "exclusions": 1,
+        "forced": 0,
+        "nodes": 2,
+        "placements": 1,
+        "rollbacks": 2
+      },
+      "decision": null,
+      "depth": 0,
+      "event": 11,
+      "full_domain_snapshot": false,
+      "graph_metrics": {
+        "attempts": 0,
+        "backtracks": 0,
+        "branches": 0,
+        "domain_refreshes": 73,
+        "forced": 0,
+        "lazy_id_constructions": 0,
+        "placements": 1,
+        "proposal_rejections": 0,
+        "proposal_validations": 0
+      },
+      "independent_trajectory_replay_accepted": false,
+      "key": null,
+      "kind": "branch_checkpoint",
+      "node": 0,
+      "observed_native_ns": 442771057520000,
+      "parent": null,
+      "producer_claim_only": true,
+      "producer_status": null,
+      "schema": "Q-untrusted-producer-compact-event-v2",
+      "state_fingerprint": {
+        "bytes": 10271588,
+        "checkpoint": 1,
+        "schema": "Q-complete-producer-state-fingerprint-v1",
+        "sha256": "ed7c88e0a8361c11a896faec9bc371d60b07bf0f7dcdcb04806585da7967a14b"
+      }
+    }
+  ],
+  "event_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000000.json",
+      "sha256": "e2616cc28d47424ed200802e9a7fea91eaedb30b19f8f7509fb9ef858496ea64",
+      "bytes": 1313
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000001.json",
+      "sha256": "c27e3b1a1667271cae28f217a33fa9f5d3ca40ffb40aa57c27898143caa58eed",
+      "bytes": 1319
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000002.json",
+      "sha256": "fdd2e90a5cc23bfbd664b895ccab229ff28cf9b2456c0daf87269c854ebef494",
+      "bytes": 1208
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000003.json",
+      "sha256": "6115dea659655dbc37681e22142f3c12f318e006323afe8853d6add2e6d4523a",
+      "bytes": 1326
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000004.json",
+      "sha256": "3323489e627ab5fc2bcf90f5d198225faff3de0298488f809a088a4b56200400",
+      "bytes": 1221
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000005.json",
+      "sha256": "770b794530aca7d6ac459a9d9097e6c30616cf3de1d2ab0628d07d0f56510633",
+      "bytes": 1316
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000006.json",
+      "sha256": "74252d5958aa80df79cfb8f44efeab3715d94b1d2ab7ac083c08b8fca4bfb521",
+      "bytes": 1202
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000007.json",
+      "sha256": "7c515120521fd2f923216509e86d5a6af07f55e9c8ec7ef5dcc2b4695d3437e0",
+      "bytes": 1341
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000008.json",
+      "sha256": "a26084d7217adfd1c4552be7495af4ae5b372e178d6b2295b28d9fe4b4eb949a",
+      "bytes": 1349
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000009.json",
+      "sha256": "38fbd7378c5ea7cf2e8c47ec1a1cdc4b55aecbba59608236dac0d9eaff6c4ded",
+      "bytes": 1203
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000010.json",
+      "sha256": "adda331f1ff1272f2ab1edc936b01a7a56015fd7099f629f4817ed94141e5e91",
+      "bytes": 1215
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000011.json",
+      "sha256": "cf4dfa836e2d4f461238d42f546863edcf75295ff442f7bffb97d640e1294845",
+      "bytes": 1335
+    }
+  ],
+  "partial_measurements": {
+    "parse_ns": 3735698000,
+    "construction_ns": 1785311000,
+    "search_begin_to_last_event_ns": 13346438000,
+    "last_saved_event_relative_G_ns": 19145339000,
+    "last_saved_event_to_parent_terminal_ns": 898951000,
+    "last_saved_event_to_postprobe_unattributed_ns": 963854000,
+    "reported_completed_fingerprints": 7,
+    "reported_fingerprint_bytes": 71075040,
+    "reported_fingerprint_elapsed_ns": 10729847000,
+    "reported_prior_event_serialization_ns": 2259000,
+    "actual_saved_event_files": 12,
+    "actual_saved_event_bytes": 15348,
+    "partial_counts_before_last_event_write": {
+      "budget_checks": 1168,
+      "event_bytes": 14013,
+      "event_files": 11,
+      "event_writes": 11,
+      "fingerprint_block_ticks": 1080,
+      "fingerprint_bytes": 71075040,
+      "fingerprints": 7,
+      "return_validations": 0
+    },
+    "partial_search_counters": {
+      "ancestry_scans": 2,
+      "attempts": 1,
+      "backtracks": 1,
+      "branch_decisions": 2,
+      "events": 11,
+      "exclusions": 1,
+      "forced": 0,
+      "nodes": 2,
+      "placements": 1,
+      "rollbacks": 2
+    },
+    "duplicate_initial_extra_passes_ns": [
+      1558654000,
+      1549858000
+    ],
+    "duplicate_initial_extra_total_ns": 3108512000
+  },
+  "ordinary_comparison": {
+    "disposition": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "1f4d947319f65e24256322c24933881856ec3a90011c6499708145f18d3cdef7",
+      "bytes": 2576
+    },
+    "native_launch_to_postprobe_ns": 6375017000,
+    "native_caller_lifetime_ns": 6306645000,
+    "bound_bytes": 308805632,
+    "bound_MiB": 294.5,
+    "tool_ms": 6679,
+    "checked_word_rows": 12,
+    "public_reader": "../ordinary-right-one/reader.html"
+  },
+  "scope": "Full bytes/metadata only, no graph/domain/semantic replay; producer origins/hash/partial counters are observations/claims. No point selected proof/full24/trajectory/native Wang/RL advantage. Source atomic family not executed in this lane."
+}

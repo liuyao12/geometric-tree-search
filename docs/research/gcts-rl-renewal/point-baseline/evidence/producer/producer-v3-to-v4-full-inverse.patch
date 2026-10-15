@@ -1,0 +1,23 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v3.py
+@@ -14,7 +14,7 @@
+ import resource
+ import time
+ import types
+-VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v4'
++VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v3'
+ CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ 
+ LIMITS = {'joint_seconds': 20, 'failure_seconds': 55, 'worker_bytes': 524288000,
+@@ -365,10 +365,7 @@
+         budget.check(cleanup=cleanup)
+         state = state_fingerprint(graph,budget,cleanup=cleanup) if fingerprint else None
+         ordinal = counters['events']
+-        record = {'schema':'Q-untrusted-producer-compact-event-v2','event':ordinal,
+-            'observed_native_ns':budget.check(cleanup=cleanup),
+-            'budget_counts_before_event_serialization':dict(budget.counts),
+-            'budget_phase_intervals_before_event_serialization':dict(budget.phases),
++        record = {'schema':'Q-untrusted-producer-compact-event-v1','event':ordinal,
+             'kind':kind,'node':node,'parent':parent,'depth':depth,'decision':decision,
+             'key':None if key is None else key.data(),'producer_status':status,
+             'counters':dict(counters),'graph_metrics':dict(graph.metrics),

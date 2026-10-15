@@ -1,0 +1,156 @@
+{
+  "schema": "compact-point-reader-evidence-link-map-v1",
+  "links": {
+    "report-data.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-report-source-20261015/report-data.json",
+      "sha256": "9030172409ddae58129b1af175df0043ad2ad92a83ccdb09e37637a8d9678cf8",
+      "bytes": 37212
+    },
+    "evidence/saved-review/findings-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-saved-independent-20261015/findings-v1.json",
+      "sha256": "66ba7f452e2fd1be5a294e33044617f568b08024820130d3c15858bcb37d70ae",
+      "bytes": 87099
+    },
+    "evidence/saved-review/handoff-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-saved-independent-20261015/handoff-v1.json",
+      "sha256": "02317c4d2a86150de5ecdeb28b94bc57e85beb7099291a495fa8a7b35e639eba",
+      "bytes": 1142
+    },
+    "evidence/cold/Source-contract-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Source-contract-v1.json",
+      "sha256": "f4305dd5349b8eb273edc398adece6ccb0aba5a54bfe779dbafa06dde5247b8d",
+      "bytes": 19772
+    },
+    "evidence/producer/Source-contract-v2.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+      "sha256": "ba22d1c5d87e724eeb9a89b44d4b1ba20dc9f1fd1777ff08a5cf2253221c8728",
+      "bytes": 13860
+    },
+    "evidence/peer/typed-Source-review-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "3278e268b9fd0cac559d568cf5c0dc29f95e56b05517175b47241b38ce20d79e",
+      "bytes": 5374
+    },
+    "evidence/family/typed-Source-review-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "3164ef1b1a22d873f6c0d6307c61cb7bae5181e46ad69a1f00b82c4aa5ecd9c0",
+      "bytes": 3472
+    },
+    "evidence/ROOT-controls-disposition-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-controls-disposition-v1.json",
+      "sha256": "400e41eb7c19f83282e931978451fd8a33637b4a2c86b81d8d5fae0b940790b0",
+      "bytes": 2629
+    },
+    "evidence/ROOT-controls-plan-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-controls-plan-v1.json",
+      "sha256": "64726b8a6733ab8a911bb553b90046dbe3fa4868f135f526acf9fdc47a2bec82",
+      "bytes": 9280
+    },
+    "evidence/controls-external/native-terminal.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/controls-external-v1/native-terminal.json",
+      "sha256": "02ea113e6f5c8e0b1097a5a0e4e42b4c4c5635ed069aac61edc48815b1986cf8",
+      "bytes": 1682
+    },
+    "evidence/ROOT-primary-disposition-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-disposition-v1.json",
+      "sha256": "ceb542a8c5958f9a4238a10c37a813c0e6802211f7dd79ea62bd3347ee4cc6ae",
+      "bytes": 2619
+    },
+    "evidence/ROOT-primary-plan-v1.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-primary-plan-v1.json",
+      "sha256": "278c2b43bd867e191dbc2853d3fbc1c7edb44f2bc5b4ae1fe4d6514f5c09028b",
+      "bytes": 9276
+    },
+    "evidence/primary-external/native-terminal.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-external-v1/native-terminal.json",
+      "sha256": "21de4ac8c0537e34b7f70c7ba351ef833fe65844323ad85f1f0b8e0e1b705ffa",
+      "bytes": 1691
+    },
+    "evidence/primary-external/observation.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-external-v1/observation.json",
+      "sha256": "6829ff28502928ea0e0e55421ef6335e2f4123c1ed0a7c43d757dd5bda633196",
+      "bytes": 434
+    },
+    "evidence/primary-external/tool-bracket.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-external-v1/tool-bracket.json",
+      "sha256": "17be29cbacc73c1be5f650a770f3e7ea324f292d5a0ba84bb4f75068493e3d62",
+      "bytes": 198
+    },
+    "evidence/primary-owned/point-provisional.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/point-provisional.json",
+      "sha256": "2bfeb4228634a103a880b699aea513cfd564b2a431d4d522bfd225c42261f723",
+      "bytes": 8173
+    },
+    "evidence/primary-owned/producer-stdout.txt": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-stdout.txt",
+      "sha256": "eb6a93b6537eb6daed50f6bc49313bf054c039fbfa3c124f451c323ccd22ae59",
+      "bytes": 826
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000000.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000000.json",
+      "sha256": "e2616cc28d47424ed200802e9a7fea91eaedb30b19f8f7509fb9ef858496ea64",
+      "bytes": 1313
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000001.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000001.json",
+      "sha256": "c27e3b1a1667271cae28f217a33fa9f5d3ca40ffb40aa57c27898143caa58eed",
+      "bytes": 1319
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000002.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000002.json",
+      "sha256": "fdd2e90a5cc23bfbd664b895ccab229ff28cf9b2456c0daf87269c854ebef494",
+      "bytes": 1208
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000003.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000003.json",
+      "sha256": "6115dea659655dbc37681e22142f3c12f318e006323afe8853d6add2e6d4523a",
+      "bytes": 1326
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000004.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000004.json",
+      "sha256": "3323489e627ab5fc2bcf90f5d198225faff3de0298488f809a088a4b56200400",
+      "bytes": 1221
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000005.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000005.json",
+      "sha256": "770b794530aca7d6ac459a9d9097e6c30616cf3de1d2ab0628d07d0f56510633",
+      "bytes": 1316
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000006.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000006.json",
+      "sha256": "74252d5958aa80df79cfb8f44efeab3715d94b1d2ab7ac083c08b8fca4bfb521",
+      "bytes": 1202
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000007.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000007.json",
+      "sha256": "7c515120521fd2f923216509e86d5a6af07f55e9c8ec7ef5dcc2b4695d3437e0",
+      "bytes": 1341
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000008.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000008.json",
+      "sha256": "a26084d7217adfd1c4552be7495af4ae5b372e178d6b2295b28d9fe4b4eb949a",
+      "bytes": 1349
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000009.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000009.json",
+      "sha256": "38fbd7378c5ea7cf2e8c47ec1a1cdc4b55aecbba59608236dac0d9eaff6c4ded",
+      "bytes": 1203
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000010.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000010.json",
+      "sha256": "adda331f1ff1272f2ab1edc936b01a7a56015fd7099f629f4817ed94141e5e91",
+      "bytes": 1215
+    },
+    "evidence/primary-owned/producer-event-base/producer-events/event-000011.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/primary-owned-v1/producer-event-base/producer-events/event-000011.json",
+      "sha256": "cf4dfa836e2d4f461238d42f546863edcf75295ff442f7bffb97d640e1294845",
+      "bytes": 1335
+    }
+  },
+  "prior_public_references": [
+    "../ordinary-right-one/reader.html",
+    "../ordinary-right-one/original-inputs-and-sources.zip"
+  ],
+  "public_destination": "point-baseline/",
+  "note": "ROOT packaging/live QA owns public link verification; all task-owned evidence mappings raw-authenticated here."
+}

@@ -1,0 +1,30 @@
+{
+  "check_count": 50,
+  "findings": {
+    "bytes": 29416,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/findings-v1.json",
+    "sha256": "b74a76d82560b0528c4586192b4c78672ddcaa82d275f049cd261a32415ff534"
+  },
+  "raw_reference_count": 59,
+  "schema": "typed-atomic-context-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "typed-atomic-context-transport-family-Source",
+  "source": {
+    "bytes": 29157,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+    "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+  },
+  "source_contract": {
+    "bytes": 12386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+    "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 3472,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "3164ef1b1a22d873f6c0d6307c61cb7bae5181e46ad69a1f00b82c4aa5ecd9c0"
+  },
+  "unique_raw_path_count": 24
+}

@@ -1,0 +1,31 @@
+{
+  "check_count": 82,
+  "findings": {
+    "bytes": 132289,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "fc9e2fd0933fd84aa8f89fdbaffeaf109765f45bc776f541b19b0bf61ef84f11"
+  },
+  "raw_reference_count": 137,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "Q-point-compact-cold-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-point-compact-cold-intake-Source",
+  "source": {
+    "bytes": 42845,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Q_point_compact_cold_intake_v1.py",
+    "sha256": "30bef873644dda63102fb08d32b23d42a3082d3744ce1608535fa18e11171c79"
+  },
+  "source_contract": {
+    "bytes": 19772,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "f4305dd5349b8eb273edc398adece6ccb0aba5a54bfe779dbafa06dde5247b8d"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 5374,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "3278e268b9fd0cac559d568cf5c0dc29f95e56b05517175b47241b38ce20d79e"
+  },
+  "unique_raw_path_count": 44
+}

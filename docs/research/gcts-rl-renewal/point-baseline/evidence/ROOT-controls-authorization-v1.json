@@ -1,0 +1,58 @@
+{
+  "actual_execution_authorized": true,
+  "author_identity": "/root",
+  "binding": {
+    "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+    "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+    "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+    "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+  },
+  "invocation_id": "point-compact-Q-controls-20261015-v1",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "point_BASE_receives_ordinary_output": false,
+  "purpose": "controls",
+  "resource_rule": "point-sequential-cutoff-max-v1",
+  "schema": "ROOT-point-compact-Q-cold-authorization-v1",
+  "scope": "Once only unchanged full-model canonical point baseline. Producer origins/fingerprints untrusted; fresh1717 word check only mathematical endpoint.",
+  "source_bindings": {
+    "codec": {
+      "bytes": 5806,
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "control_leaf": {
+      "bytes": 931,
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 42845,
+      "sha256": "30bef873644dda63102fb08d32b23d42a3082d3744ce1608535fa18e11171c79"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "point_producer": {
+      "bytes": 28623,
+      "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+    },
+    "producer_bootstrap": {
+      "bytes": 12467,
+      "sha256": "f2159c4271a0c26c691e5e620b20ea336fc2c861571407e061cb366e002703f2"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  }
+}

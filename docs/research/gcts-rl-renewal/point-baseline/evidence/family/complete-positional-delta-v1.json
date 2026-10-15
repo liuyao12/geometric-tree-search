@@ -1,0 +1,2050 @@
+{
+  "schema": "atomic-context-family-complete-byte-delta-v1",
+  "parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+    "sha256": "5888f71e29714e3144b6ef18f6f27361909dba958da841199a6554b98e952813",
+    "bytes": 22614
+  },
+  "successor": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+    "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+    "bytes": 29157
+  },
+  "edits": [
+    {
+      "before_start": 20,
+      "before_end": 29,
+      "after_start": 20,
+      "after_end": 20,
+      "before": " proposal",
+      "after": ""
+    },
+    {
+      "before_start": 31,
+      "before_end": 33,
+      "after_start": 22,
+      "after_end": 25,
+      "before": "mi",
+      "after": "bou"
+    },
+    {
+      "before_start": 34,
+      "before_end": 34,
+      "after_start": 26,
+      "after_end": 27,
+      "before": "",
+      "after": "d"
+    },
+    {
+      "before_start": 37,
+      "before_end": 43,
+      "after_start": 30,
+      "after_end": 30,
+      "before": "equali",
+      "after": ""
+    },
+    {
+      "before_start": 45,
+      "before_end": 47,
+      "after_start": 32,
+      "after_end": 32,
+      "before": "-o",
+      "after": ""
+    },
+    {
+      "before_start": 49,
+      "before_end": 50,
+      "after_start": 34,
+      "after_end": 36,
+      "before": "r",
+      "after": "d "
+    },
+    {
+      "before_start": 51,
+      "before_end": 51,
+      "after_start": 37,
+      "after_end": 45,
+      "before": "",
+      "after": "tomic-co"
+    },
+    {
+      "before_start": 52,
+      "before_end": 53,
+      "after_start": 46,
+      "after_end": 50,
+      "before": "d",
+      "after": "text"
+    },
+    {
+      "before_start": 370,
+      "before_end": 376,
+      "after_start": 367,
+      "after_end": 367,
+      "before": "equali",
+      "after": ""
+    },
+    {
+      "before_start": 378,
+      "before_end": 380,
+      "after_start": 369,
+      "after_end": 369,
+      "before": "-o",
+      "after": ""
+    },
+    {
+      "before_start": 382,
+      "before_end": 383,
+      "after_start": 371,
+      "after_end": 373,
+      "before": "r",
+      "after": "d-"
+    },
+    {
+      "before_start": 384,
+      "before_end": 384,
+      "after_start": 374,
+      "after_end": 382,
+      "before": "",
+      "after": "tomic-co"
+    },
+    {
+      "before_start": 385,
+      "before_end": 386,
+      "after_start": 383,
+      "after_end": 387,
+      "before": "d",
+      "after": "text"
+    },
+    {
+      "before_start": 405,
+      "before_end": 406,
+      "after_start": 406,
+      "after_end": 407,
+      "before": "1",
+      "after": "2"
+    },
+    {
+      "before_start": 494,
+      "before_end": 494,
+      "after_start": 495,
+      "after_end": 533,
+      "before": "",
+      "after": ")\nSYNTAX_LIMITS = {'context_nodes': 64"
+    },
+    {
+      "before_start": 497,
+      "before_end": 498,
+      "after_start": 536,
+      "after_end": 546,
+      "before": "u",
+      "after": "term_nodes"
+    },
+    {
+      "before_start": 499,
+      "before_end": 500,
+      "after_start": 547,
+      "after_end": 613,
+      "before": ")",
+      "after": ": 64,\n                 'term_depth': 16, 'context_parameters': 32}"
+    },
+    {
+      "before_start": 614,
+      "before_end": 614,
+      "after_start": 727,
+      "after_end": 927,
+      "before": "",
+      "after": "\n\n\nclass OutsideSyntax(NoInstance):\n    \"\"\"Declared family bound/type mismatch, distinct from delegated failures.\"\"\"\n\n\ndef syntax_need(ok, message):\n    if not ok:\n        raise OutsideSyntax(message)"
+    },
+    {
+      "before_start": 1190,
+      "before_end": 1191,
+      "after_start": 1503,
+      "after_end": 1512,
+      "before": "N",
+      "after": "Bounded n"
+    },
+    {
+      "before_start": 1202,
+      "before_end": 1202,
+      "after_start": 1523,
+      "after_end": 1540,
+      "before": "",
+      "after": "; bounds restrict"
+    },
+    {
+      "before_start": 1204,
+      "before_end": 1205,
+      "after_start": 1542,
+      "after_end": 1581,
+      "before": "y",
+      "after": "his advice, never base grammar.\"\"\"\n    "
+    },
+    {
+      "before_start": 1206,
+      "before_end": 1206,
+      "after_start": 1582,
+      "after_end": 1585,
+      "before": "",
+      "after": "end"
+    },
+    {
+      "before_start": 1211,
+      "before_end": 1211,
+      "after_start": 1590,
+      "after_end": 1618,
+      "before": "",
+      "after": "nodes = [(value, 0)], 0\n    "
+    },
+    {
+      "before_start": 1212,
+      "before_end": 1212,
+      "after_start": 1619,
+      "after_end": 1620,
+      "before": "",
+      "after": "h"
+    },
+    {
+      "before_start": 1213,
+      "before_end": 1215,
+      "after_start": 1621,
+      "after_end": 1623,
+      "before": "th",
+      "after": "le"
+    },
+    {
+      "before_start": 1217,
+      "before_end": 1221,
+      "after_start": 1625,
+      "after_end": 1625,
+      "before": "aram",
+      "after": ""
+    },
+    {
+      "before_start": 1222,
+      "before_end": 1227,
+      "after_start": 1626,
+      "after_end": 1627,
+      "before": "ters ",
+      "after": "n"
+    },
+    {
+      "before_start": 1229,
+      "before_end": 1232,
+      "after_start": 1629,
+      "after_end": 1629,
+      "before": "sti",
+      "after": ""
+    },
+    {
+      "before_start": 1233,
+      "before_end": 1235,
+      "after_start": 1630,
+      "after_end": 1633,
+      "before": "ct",
+      "after": "g:\n"
+    },
+    {
+      "before_start": 1236,
+      "before_end": 1240,
+      "after_start": 1634,
+      "after_end": 1634,
+      "before": "from",
+      "after": ""
+    },
+    {
+      "before_start": 1241,
+      "before_end": 1253,
+      "after_start": 1635,
+      "after_end": 1635,
+      "before": "substitution",
+      "after": ""
+    },
+    {
+      "before_start": 1254,
+      "before_end": 1264,
+      "after_start": 1636,
+      "after_end": 1637,
+      "before": "holes.\"\"\"\n",
+      "after": " "
+    },
+    {
+      "before_start": 1279,
+      "before_end": 1279,
+      "after_start": 1652,
+      "after_end": 1877,
+      "before": "",
+      "after": "    node, depth = pending.pop()\n        nodes += 1\n        syntax_need(nodes <= SYNTAX_LIMITS['term_nodes'] and depth <= SYNTAX_LIMITS['term_depth'],\n             'outside fixed family term node/depth bounds')\n        syntax_"
+    },
+    {
+      "before_start": 1289,
+      "before_end": 1293,
+      "after_start": 1887,
+      "after_end": 1890,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1308,
+      "before_end": 1312,
+      "after_start": 1905,
+      "after_end": 1908,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1339,
+      "before_end": 1339,
+      "after_start": 1935,
+      "after_end": 1939,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 1342,
+      "before_end": 1346,
+      "after_start": 1942,
+      "after_end": 1945,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1369,
+      "before_end": 1369,
+      "after_start": 1968,
+      "after_end": 1979,
+      "before": "",
+      "after": "    syntax_"
+    },
+    {
+      "before_start": 1378,
+      "before_end": 1382,
+      "after_start": 1988,
+      "after_end": 1991,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1399,
+      "before_end": 1403,
+      "after_start": 2008,
+      "after_end": 2011,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1420,
+      "before_end": 1424,
+      "after_start": 2028,
+      "after_end": 2031,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1444,
+      "before_end": 1444,
+      "after_start": 2051,
+      "after_end": 2055,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 1512,
+      "before_end": 1512,
+      "after_start": 2123,
+      "after_end": 2127,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 1526,
+      "before_end": 1526,
+      "after_start": 2141,
+      "after_end": 2152,
+      "before": "",
+      "after": "    syntax_"
+    },
+    {
+      "before_start": 1535,
+      "before_end": 1539,
+      "after_start": 2161,
+      "after_end": 2164,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1551,
+      "before_end": 1555,
+      "after_start": 2176,
+      "after_end": 2179,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1578,
+      "before_end": 1582,
+      "after_start": 2202,
+      "after_end": 2205,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1608,
+      "before_end": 1608,
+      "after_start": 2231,
+      "after_end": 2235,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 1617,
+      "before_end": 1621,
+      "after_start": 2244,
+      "after_end": 2247,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1639,
+      "before_end": 1643,
+      "after_start": 2265,
+      "after_end": 2268,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1671,
+      "before_end": 1671,
+      "after_start": 2296,
+      "after_end": 2300,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 1713,
+      "before_end": 1717,
+      "after_start": 2342,
+      "after_end": 2345,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1744,
+      "before_end": 1744,
+      "after_start": 2372,
+      "after_end": 2376,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 1752,
+      "before_end": 1756,
+      "after_start": 2384,
+      "after_end": 2387,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1785,
+      "before_end": 1789,
+      "after_start": 2416,
+      "after_end": 2419,
+      "before": "valu",
+      "after": "nod"
+    },
+    {
+      "before_start": 1831,
+      "before_end": 1831,
+      "after_start": 2461,
+      "after_end": 2499,
+      "before": "",
+      "after": "    pending.extend((child, depth + 1) "
+    },
+    {
+      "before_start": 1844,
+      "before_end": 1844,
+      "after_start": 2512,
+      "after_end": 2514,
+      "before": "",
+      "after": "re"
+    },
+    {
+      "before_start": 1845,
+      "before_end": 1848,
+      "after_start": 2515,
+      "after_end": 2524,
+      "before": "alu",
+      "after": "ersed(nod"
+    },
+    {
+      "before_start": 1852,
+      "before_end": 1902,
+      "after_start": 2528,
+      "after_end": 2529,
+      "before": ":\n            term(child, theory, parameters, tick",
+      "after": ")"
+    },
+    {
+      "before_start": 2292,
+      "before_end": 2292,
+      "after_start": 2919,
+      "after_end": 3145,
+      "before": "",
+      "after": "tomic_shape(atom, hole, theory, parameters, tick):\n    \"\"\"Validate the fixed finite atomic syntax; retain every hole occurrence.\n\n    Context has at most 64 AST nodes (atom included), depth at most 16 in each\n    term, and no "
+    },
+    {
+      "before_start": 2293,
+      "before_end": 2293,
+      "after_start": 3146,
+      "after_end": 3568,
+      "before": "",
+      "after": "inder/connective. Function/predicate names are nominal.\n    A single hole name may occur repeatedly, always with one simultaneous term.\n    \"\"\"\n    tick()\n    syntax_need(type(atom) is list and atom, 'literal atomic context')\n    if atom[0] == 'eq':\n        syntax_need(len(atom) == 3, 'binary equality atom')\n        args = atom[1:]\n    else:\n        syntax_need(len(atom) == 3 and atom[0] == 'pred' and type(atom[1]) is "
+    },
+    {
+      "before_start": 2296,
+      "before_end": 2296,
+      "after_start": 3571,
+      "after_end": 3820,
+      "before": "",
+      "after": "\n             and type(atom[2]) is list and atom[1] in theory['predicates']\n             and type(theory['predicates'][atom[1]]) is int\n             and len(atom[2]) == theory['predicates'][atom[1]],\n             'declared predicate signature and ex"
+    },
+    {
+      "before_start": 2299,
+      "before_end": 2299,
+      "after_start": 3823,
+      "after_end": 4947,
+      "before": "",
+      "after": " arity')\n        args = atom[2]\n    pending, nodes, holes = [(a, 0) for a in reversed(args)], 1, 0\n    while pending:\n        tick()\n        node, depth = pending.pop()\n        nodes += 1\n        syntax_need(nodes <= SYNTAX_LIMITS['context_nodes']\n             and depth <= SYNTAX_LIMITS['term_depth'], 'outside atomic-context bounds')\n        syntax_need(type(node) is list and node, 'literal atomic-context term')\n        if node[0] == 'var':\n            syntax_need(len(node) == 2 and type(node[1]) is str\n                 and (node[1] == hole or node[1] in parameters), 'free context variable scope')\n            holes += int(node[1] == hole)\n        else:\n            syntax_need(len(node) == 3 and node[0] == 'fun' and type(node[1]) is str\n                 and type(node[2]) is list and node[1] in theory['functions']\n                 and type(theory['functions'][node[1]]) is int\n                 and len(node[2]) == theory['functions'][node[1]], 'typed context function')\n            pending.extend((a, depth + 1) for a in reversed(node[2]))\n    return {'nodes': nodes, 'hole_occurrences': holes}\n\n\ndef contains_hole"
+    },
+    {
+      "before_start": 2305,
+      "before_end": 2312,
+      "after_start": 4953,
+      "after_end": 4953,
+      "before": ", terms",
+      "after": ""
+    },
+    {
+      "before_start": 2325,
+      "before_end": 2332,
+      "after_start": 4966,
+      "after_end": 4970,
+      "before": "\"\"\"Simu",
+      "after": "# Ca"
+    },
+    {
+      "before_start": 2333,
+      "before_end": 2344,
+      "after_start": 4971,
+      "after_end": 4971,
+      "before": "taneous who",
+      "after": ""
+    },
+    {
+      "before_start": 2346,
+      "before_end": 2347,
+      "after_start": 4973,
+      "after_end": 4982,
+      "before": "-",
+      "after": "d only af"
+    },
+    {
+      "before_start": 2350,
+      "before_end": 2350,
+      "after_start": 4985,
+      "after_end": 4988,
+      "before": "",
+      "after": " co"
+    },
+    {
+      "before_start": 2351,
+      "before_end": 2351,
+      "after_start": 4989,
+      "after_end": 4994,
+      "before": "",
+      "after": "plete"
+    },
+    {
+      "before_start": 2352,
+      "before_end": 2353,
+      "after_start": 4995,
+      "after_end": 5003,
+      "before": "m",
+      "after": "bounded "
+    },
+    {
+      "before_start": 2355,
+      "before_end": 2355,
+      "after_start": 5005,
+      "after_end": 5008,
+      "before": "",
+      "after": "omi"
+    },
+    {
+      "before_start": 2356,
+      "before_end": 2358,
+      "after_start": 5009,
+      "after_end": 5012,
+      "before": "hi",
+      "after": " sy"
+    },
+    {
+      "before_start": 2359,
+      "before_end": 2364,
+      "after_start": 5013,
+      "after_end": 5013,
+      "before": "g; me",
+      "after": ""
+    },
+    {
+      "before_start": 2366,
+      "before_end": 2366,
+      "after_start": 5015,
+      "after_end": 5016,
+      "before": "",
+      "after": "x"
+    },
+    {
+      "before_start": 2367,
+      "before_end": 2373,
+      "after_start": 5017,
+      "after_end": 5018,
+      "before": "nodes ",
+      "after": "v"
+    },
+    {
+      "before_start": 2374,
+      "before_end": 2381,
+      "after_start": 5019,
+      "after_end": 5020,
+      "before": "re outs",
+      "after": "l"
+    },
+    {
+      "before_start": 2383,
+      "before_end": 2385,
+      "after_start": 5022,
+      "after_end": 5023,
+      "before": "e ",
+      "after": "a"
+    },
+    {
+      "before_start": 2386,
+      "before_end": 2396,
+      "after_start": 5024,
+      "after_end": 5027,
+      "before": "he FOL AST",
+      "after": "ion"
+    },
+    {
+      "before_start": 2397,
+      "before_end": 2400,
+      "after_start": 5028,
+      "after_end": 5028,
+      "before": "\"\"\"",
+      "after": ""
+    },
+    {
+      "before_start": 2412,
+      "before_end": 2412,
+      "after_start": 5040,
+      "after_end": 5552,
+      "before": "",
+      "after": "e[0] == 'var':\n        return value[1] == hole\n    return any(contains_hole(a, hole) for a in value[2])\n\n\ndef context_pattern(atom, hole, terms, tick):\n    \"\"\"Maximal hole-free terms become correlated data slots, not gold terms.\n\n    Only symbols on paths to holes and the atomic head stay fixed. Equal\n    maximal terms share a slot. A whole maximal term equal to s/t keeps that\n    correlation; no matching or rewriting inside an introduced slot occurs.\n    \"\"\"\n    def sub(node):\n        tick()\n        if nod"
+    },
+    {
+      "before_start": 2432,
+      "before_end": 2432,
+      "after_start": 5572,
+      "after_end": 5576,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 2467,
+      "before_end": 2467,
+      "after_start": 5611,
+      "after_end": 5716,
+      "before": "",
+      "after": "    if contains_hole(node, hole):\n            return ['fun', node[1], [sub(a) for a in node[2]]]\n        "
+    },
+    {
+      "before_start": 2475,
+      "before_end": 2475,
+      "after_start": 5724,
+      "after_end": 5731,
+      "before": "",
+      "after": ", value"
+    },
+    {
+      "before_start": 2479,
+      "before_end": 2484,
+      "after_start": 5735,
+      "after_end": 5748,
+      "before": "ROLES",
+      "after": "terms.items()"
+    },
+    {
+      "before_start": 2486,
+      "before_end": 2486,
+      "after_start": 5750,
+      "after_end": 5754,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 2497,
+      "before_end": 2497,
+      "after_start": 5765,
+      "after_end": 5773,
+      "before": "",
+      "after": "node == "
+    },
+    {
+      "before_start": 2502,
+      "before_end": 2517,
+      "after_start": 5778,
+      "after_end": 5778,
+      "before": " == terms[name]",
+      "after": ""
+    },
+    {
+      "before_start": 2519,
+      "before_end": 2519,
+      "after_start": 5780,
+      "after_end": 5784,
+      "before": "",
+      "after": "    "
+    },
+    {
+      "before_start": 2564,
+      "before_end": 2564,
+      "after_start": 5829,
+      "after_end": 6421,
+      "before": "",
+      "after": "    name = 'u' + str(len(terms) - len(ROLES))\n        syntax_need(len(terms) - len(ROLES) < SYNTAX_LIMITS['context_parameters'],\n             'outside fixed context parameter count')\n        terms[name] = copy.deepcopy(node)\n        return ['family-term', name]\n    return (['eq', sub(atom[1]), sub(atom[2])] if atom[0] == 'eq' else\n            ['pred', atom[1], [sub(a) for a in atom[2]]])\n\n\ndef fill_context(value, replacement):\n    \"\"\"Replace every one-hole marker simultaneously, without revisiting terms.\"\"\"\n    if value == ['family-hole']:\n        return copy.deepcopy(replacement)\n    "
+    },
+    {
+      "before_start": 2604,
+      "before_end": 2607,
+      "after_start": 6461,
+      "after_end": 6469,
+      "before": "abs",
+      "after": "fill_con"
+    },
+    {
+      "before_start": 2608,
+      "before_end": 2611,
+      "after_start": 6470,
+      "after_end": 6472,
+      "before": "rac",
+      "after": "ex"
+    },
+    {
+      "before_start": 2616,
+      "before_end": 2616,
+      "after_start": 6477,
+      "after_end": 6487,
+      "before": "",
+      "after": "replacemen"
+    },
+    {
+      "before_start": 2617,
+      "before_end": 2627,
+      "after_start": 6488,
+      "after_end": 6488,
+      "before": "erms, hole",
+      "after": ""
+    },
+    {
+      "before_start": 2644,
+      "before_end": 2824,
+      "after_start": 6505,
+      "after_end": 6505,
+      "before": "\n    if type(value) is dict:\n        return {k: (['family-hole-name'] if k == 'variable' and v == hole else\n                    abstract(v, terms, hole)) for k, v in value.items()}",
+      "after": ""
+    },
+    {
+      "before_start": 2855,
+      "before_end": 2855,
+      "after_start": 6536,
+      "after_end": 7424,
+      "before": "",
+      "after": ")\n\n\ndef bind_context(pattern, atom, substituted_term, terms, context, tick):\n    \"\"\"Exact nominal pattern join; repeated context slots/hole remain correlated.\"\"\"\n    atomic_shape(atom, None, context['theory'], context['parameters'], tick)\n    def match(p, value):\n        tick()\n        if p == ['family-hole']:\n            return value == substituted_term\n        if type(p) is list and len(p) == 2 and p[0] == 'family-term':\n            term(value, context['theory'], context['parameters'], tick)\n            if p[1] in terms:\n                return value == terms[p[1]]\n            terms[p[1]] = copy.deepcopy(value)\n            return True\n        if type(p) is list:\n            return (type(value) is list and len(p) == len(value)\n                    and all(match(a, b) for a, b in zip(p, value)))\n        return type(value) is type(p) and value == p\n    return match(pattern, atom"
+    },
+    {
+      "before_start": 3114,
+      "before_end": 3119,
+      "after_start": 7683,
+      "after_end": 7688,
+      "before": "ROLES",
+      "after": "terms"
+    },
+    {
+      "before_start": 3129,
+      "before_end": 3129,
+      "after_start": 7698,
+      "after_end": 7704,
+      "before": "",
+      "after": "d boun"
+    },
+    {
+      "before_start": 4033,
+      "before_end": 4339,
+      "after_start": 8608,
+      "after_end": 8608,
+      "before": "if not (type(template) is list and len(template) == 3 and template[0] == 'eq'):\n        return None, 'outside_equality_operand_slice'\n    slots = [i for i in (0, 1) if template[1+i] == ['var', hole]]\n    if len(slots) != 1:\n        return None, 'not_exactly_one_whole_operand_hole'\n    slot = slots[0]\n    ",
+      "after": ""
+    },
+    {
+      "before_start": 4402,
+      "before_end": 4402,
+      "after_start": 8671,
+      "after_end": 8683,
+      "before": "",
+      "after": " or not hole"
+    },
+    {
+      "before_start": 4639,
+      "before_end": 4639,
+      "after_start": 8920,
+      "after_end": 8966,
+      "before": "",
+      "after": "))}\n        shape_info = atomic_shape(template"
+    },
+    {
+      "before_start": 4640,
+      "before_end": 4640,
+      "after_start": 8967,
+      "after_end": 9057,
+      "before": "",
+      "after": " hole, context['theory'], parameters, tick)\n        if not shape_info['hole_occurrences']:"
+    },
+    {
+      "before_start": 4653,
+      "before_end": 4653,
+      "after_start": 9070,
+      "after_end": 9112,
+      "before": "",
+      "after": "return None, 'atomic_context_has_no_hole'\n"
+    },
+    {
+      "before_start": 4661,
+      "before_end": 4661,
+      "after_start": 9120,
+      "after_end": 9127,
+      "before": "",
+      "after": "pattern"
+    },
+    {
+      "before_start": 4662,
+      "before_end": 4662,
+      "after_start": 9128,
+      "after_end": 9129,
+      "before": "",
+      "after": "="
+    },
+    {
+      "before_start": 4663,
+      "before_end": 4688,
+      "after_start": 9130,
+      "after_end": 9146,
+      "before": "                         ",
+      "after": "context_pattern("
+    },
+    {
+      "before_start": 4696,
+      "before_end": 4699,
+      "after_start": 9154,
+      "after_end": 9166,
+      "before": "[2-",
+      "after": ", hole, term"
+    },
+    {
+      "before_start": 4700,
+      "before_end": 4702,
+      "after_start": 9167,
+      "after_end": 9169,
+      "before": "lo",
+      "after": ", "
+    },
+    {
+      "before_start": 4703,
+      "before_end": 4704,
+      "after_start": 9170,
+      "after_end": 9173,
+      "before": "]",
+      "after": "ick"
+    },
+    {
+      "before_start": 4705,
+      "before_end": 4707,
+      "after_start": 9174,
+      "after_end": 9174,
+      "before": ")}",
+      "after": ""
+    },
+    {
+      "before_start": 4719,
+      "before_end": 4720,
+      "after_start": 9186,
+      "after_end": 9197,
+      "before": "V",
+      "after": "OutsideSynt"
+    },
+    {
+      "before_start": 4721,
+      "before_end": 4729,
+      "after_start": 9198,
+      "after_end": 9199,
+      "before": "lueError",
+      "after": "x"
+    },
+    {
+      "before_start": 4753,
+      "before_end": 4753,
+      "after_start": 9223,
+      "after_end": 9227,
+      "before": "",
+      "after": "outs"
+    },
+    {
+      "before_start": 4754,
+      "before_end": 4756,
+      "after_start": 9228,
+      "after_end": 9238,
+      "before": "ll",
+      "after": "de_bounded"
+    },
+    {
+      "before_start": 4763,
+      "before_end": 4763,
+      "after_start": 9245,
+      "after_end": 9247,
+      "before": "",
+      "after": "at"
+    },
+    {
+      "before_start": 4764,
+      "before_end": 4765,
+      "after_start": 9248,
+      "after_end": 9251,
+      "before": "r",
+      "after": "mic"
+    },
+    {
+      "before_start": 4767,
+      "before_end": 4775,
+      "after_start": 9253,
+      "after_end": 9254,
+      "before": "apture_u",
+      "after": "o"
+    },
+    {
+      "before_start": 4776,
+      "before_end": 4781,
+      "after_start": 9255,
+      "after_end": 9255,
+      "before": "safe_",
+      "after": ""
+    },
+    {
+      "before_start": 4783,
+      "before_end": 4791,
+      "after_start": 9257,
+      "after_end": 9259,
+      "before": "rm_roles",
+      "after": "xt"
+    },
+    {
+      "before_start": 4800,
+      "before_end": 4801,
+      "after_start": 9268,
+      "after_end": 9269,
+      "before": "l",
+      "after": "t"
+    },
+    {
+      "before_start": 4802,
+      "before_end": 4817,
+      "after_start": 9270,
+      "after_end": 9278,
+      "before": "n({canonical(v)",
+      "after": "rms['s']"
+    },
+    {
+      "before_start": 4818,
+      "before_end": 4826,
+      "after_start": 9279,
+      "after_end": 9281,
+      "before": "for v in",
+      "after": "=="
+    },
+    {
+      "before_start": 4832,
+      "before_end": 4848,
+      "after_start": 9287,
+      "after_end": 9292,
+      "before": ".values()}) != 3",
+      "after": "['t']"
+    },
+    {
+      "before_start": 5013,
+      "before_end": 5016,
+      "after_start": 9457,
+      "after_end": 9457,
+      "before": ", u",
+      "after": ""
+    },
+    {
+      "before_start": 5019,
+      "before_end": 5020,
+      "after_start": 9460,
+      "after_end": 9460,
+      "before": "(",
+      "after": ""
+    },
+    {
+      "before_start": 5026,
+      "before_end": 5027,
+      "after_start": 9466,
+      "after_end": 9469,
+      "before": "n",
+      "after": "'s'"
+    },
+    {
+      "before_start": 5028,
+      "before_end": 5028,
+      "after_start": 9470,
+      "after_end": 9471,
+      "before": "",
+      "after": ","
+    },
+    {
+      "before_start": 5029,
+      "before_end": 5031,
+      "after_start": 9472,
+      "after_end": 9474,
+      "before": "fo",
+      "after": "te"
+    },
+    {
+      "before_start": 5032,
+      "before_end": 5044,
+      "after_start": 9475,
+      "after_end": 9482,
+      "before": " n in ROLES)",
+      "after": "ms['t']"
+    },
+    {
+      "before_start": 5057,
+      "before_end": 5057,
+      "after_start": 9495,
+      "after_end": 9524,
+      "before": "",
+      "after": "ground(fill_context(pattern, "
+    },
+    {
+      "before_start": 5059,
+      "before_end": 5059,
+      "after_start": 9526,
+      "after_end": 9534,
+      "before": "",
+      "after": "family-t"
+    },
+    {
+      "before_start": 5060,
+      "before_end": 5061,
+      "after_start": 9535,
+      "after_end": 9537,
+      "before": "q",
+      "after": "rm"
+    },
+    {
+      "before_start": 5064,
+      "before_end": 5064,
+      "after_start": 9540,
+      "after_end": 9551,
+      "before": "",
+      "after": "'s']), term"
+    },
+    {
+      "before_start": 5067,
+      "before_end": 5074,
+      "after_start": 9554,
+      "after_end": 9556,
+      "before": "u] if s",
+      "after": "ho"
+    },
+    {
+      "before_start": 5075,
+      "before_end": 5083,
+      "after_start": 9557,
+      "after_end": 9557,
+      "before": "ot == 0 ",
+      "after": ""
+    },
+    {
+      "before_start": 5084,
+      "before_end": 5100,
+      "after_start": 9558,
+      "after_end": 9559,
+      "before": "lse ['eq', u, s]",
+      "after": ")"
+    },
+    {
+      "before_start": 5113,
+      "before_end": 5113,
+      "after_start": 9572,
+      "after_end": 9601,
+      "before": "",
+      "after": "ground(fill_context(pattern, "
+    },
+    {
+      "before_start": 5115,
+      "before_end": 5115,
+      "after_start": 9603,
+      "after_end": 9611,
+      "before": "",
+      "after": "family-t"
+    },
+    {
+      "before_start": 5116,
+      "before_end": 5117,
+      "after_start": 9612,
+      "after_end": 9614,
+      "before": "q",
+      "after": "rm"
+    },
+    {
+      "before_start": 5120,
+      "before_end": 5120,
+      "after_start": 9617,
+      "after_end": 9742,
+      "before": "",
+      "after": "'t']), terms, hole)\n    try:\n        atomic_shape(phi_s, None, context['theory'], parameters, tick)\n        atomic_shape(phi_"
+    },
+    {
+      "before_start": 5123,
+      "before_end": 5125,
+      "after_start": 9745,
+      "after_end": 9750,
+      "before": "u]",
+      "after": "None,"
+    },
+    {
+      "before_start": 5126,
+      "before_end": 5131,
+      "after_start": 9751,
+      "after_end": 9752,
+      "before": "if sl",
+      "after": "c"
+    },
+    {
+      "before_start": 5132,
+      "before_end": 5132,
+      "after_start": 9753,
+      "after_end": 9754,
+      "before": "",
+      "after": "n"
+    },
+    {
+      "before_start": 5133,
+      "before_end": 5139,
+      "after_start": 9755,
+      "after_end": 9755,
+      "before": " == 0 ",
+      "after": ""
+    },
+    {
+      "before_start": 5140,
+      "before_end": 5144,
+      "after_start": 9756,
+      "after_end": 9758,
+      "before": "lse ",
+      "after": "xt"
+    },
+    {
+      "before_start": 5146,
+      "before_end": 5146,
+      "after_start": 9760,
+      "after_end": 9762,
+      "before": "",
+      "after": "th"
+    },
+    {
+      "before_start": 5147,
+      "before_end": 5148,
+      "after_start": 9763,
+      "after_end": 9766,
+      "before": "q",
+      "after": "ory"
+    },
+    {
+      "before_start": 5149,
+      "before_end": 5149,
+      "after_start": 9767,
+      "after_end": 9768,
+      "before": "",
+      "after": "]"
+    },
+    {
+      "before_start": 5151,
+      "before_end": 5152,
+      "after_start": 9770,
+      "after_end": 9780,
+      "before": "u",
+      "after": "parameters"
+    },
+    {
+      "before_start": 5155,
+      "before_end": 5156,
+      "after_start": 9783,
+      "after_end": 9884,
+      "before": "]",
+      "after": "ick)\n    except OutsideSyntax:\n        return None, 'grounded_donor_atom_exceeds_fixed_family_bounds'"
+    },
+    {
+      "before_start": 5648,
+      "before_end": 5648,
+      "after_start": 10376,
+      "after_end": 10917,
+      "before": "",
+      "after": "# These structural abstractions are admitted ONLY after round-tripping to\n    # all actual donor witnesses. No command is emitted without that donor DAG.\n    a, b = ['family-term', 's'], ['family-term', 't']\n    p, q = fill_context(pattern, a), fill_context(pattern, b)\n    body = [witness(commands[i]) for i in indices]\n    body[0].update(variable=['family-hole-name'], template=pattern, left=a, right=b,\n                   formula=['imp', ['eq', a, b], ['imp', p, q]])\n    body[1]['formula'] = ['imp', p, q]\n    body[2]['formula'] = q\n    "
+    },
+    {
+      "before_start": 5676,
+      "before_end": 5676,
+      "after_start": 10945,
+      "after_end": 10967,
+      "before": "",
+      "after": "bounded-typed-atomic-c"
+    },
+    {
+      "before_start": 5678,
+      "before_end": 5678,
+      "after_start": 10969,
+      "after_end": 10970,
+      "before": "",
+      "after": "t"
+    },
+    {
+      "before_start": 5679,
+      "before_end": 5692,
+      "after_start": 10971,
+      "after_end": 10972,
+      "before": "-whole-equali",
+      "after": "x"
+    },
+    {
+      "before_start": 5693,
+      "before_end": 5702,
+      "after_start": 10973,
+      "after_end": 10973,
+      "before": "y-operand",
+      "after": ""
+    },
+    {
+      "before_start": 5704,
+      "before_end": 5704,
+      "after_start": 10975,
+      "after_end": 10983,
+      "before": "",
+      "after": "\n       "
+    },
+    {
+      "before_start": 5707,
+      "before_end": 5707,
+      "after_start": 10986,
+      "after_end": 10992,
+      "before": "",
+      "after": "yntax_"
+    },
+    {
+      "before_start": 5708,
+      "before_end": 5709,
+      "after_start": 10993,
+      "after_end": 10996,
+      "before": "o",
+      "after": "imi"
+    },
+    {
+      "before_start": 5710,
+      "before_end": 5710,
+      "after_start": 10997,
+      "after_end": 10998,
+      "before": "",
+      "after": "s"
+    },
+    {
+      "before_start": 5713,
+      "before_end": 5715,
+      "after_start": 11001,
+      "after_end": 11002,
+      "before": "sl",
+      "after": "c"
+    },
+    {
+      "before_start": 5716,
+      "before_end": 5717,
+      "after_start": 11003,
+      "after_end": 11029,
+      "before": "t",
+      "after": "py.deepcopy(SYNTAX_LIMITS)"
+    },
+    {
+      "before_start": 5741,
+      "before_end": 5746,
+      "after_start": 11053,
+      "after_end": 11058,
+      "before": "ROLES",
+      "after": "terms"
+    },
+    {
+      "before_start": 5747,
+      "before_end": 5747,
+      "after_start": 11059,
+      "after_end": 11086,
+      "before": "",
+      "after": ", 'atomic_context': pattern"
+    },
+    {
+      "before_start": 5776,
+      "before_end": 5785,
+      "after_start": 11115,
+      "after_end": 11115,
+      "before": "abstract(",
+      "after": ""
+    },
+    {
+      "before_start": 5793,
+      "before_end": 5794,
+      "after_start": 11123,
+      "after_end": 11124,
+      "before": "s",
+      "after": "a"
+    },
+    {
+      "before_start": 5796,
+      "before_end": 5797,
+      "after_start": 11126,
+      "after_end": 11127,
+      "before": "t",
+      "after": "b"
+    },
+    {
+      "before_start": 5801,
+      "before_end": 5805,
+      "after_start": 11131,
+      "after_end": 11131,
+      "before": "hi_s",
+      "after": ""
+    },
+    {
+      "before_start": 5806,
+      "before_end": 5820,
+      "after_start": 11132,
+      "after_end": 11132,
+      "before": ", terms, hole)",
+      "after": ""
+    },
+    {
+      "before_start": 5854,
+      "before_end": 5863,
+      "after_start": 11166,
+      "after_end": 11166,
+      "before": "abstract(",
+      "after": ""
+    },
+    {
+      "before_start": 5864,
+      "before_end": 5883,
+      "after_start": 11167,
+      "after_end": 11167,
+      "before": "itness(commands[i])",
+      "after": ""
+    },
+    {
+      "before_start": 5884,
+      "before_end": 5919,
+      "after_start": 11168,
+      "after_end": 11168,
+      "before": " terms, hole),\n                    ",
+      "after": ""
+    },
+    {
+      "before_start": 5938,
+      "before_end": 5938,
+      "after_start": 11187,
+      "after_end": 11188,
+      "before": "",
+      "after": "s"
+    },
+    {
+      "before_start": 5944,
+      "before_end": 5945,
+      "after_start": 11194,
+      "after_end": 11195,
+      "before": "i",
+      "after": "w"
+    },
+    {
+      "before_start": 5948,
+      "before_end": 5948,
+      "after_start": 11198,
+      "after_end": 11199,
+      "before": "",
+      "after": "s"
+    },
+    {
+      "before_start": 5956,
+      "before_end": 5958,
+      "after_start": 11207,
+      "after_end": 11209,
+      "before": "in",
+      "after": "bo"
+    },
+    {
+      "before_start": 5959,
+      "before_end": 5963,
+      "after_start": 11210,
+      "after_end": 11211,
+      "before": "ices",
+      "after": "y"
+    },
+    {
+      "before_start": 5992,
+      "before_end": 5992,
+      "after_start": 11240,
+      "after_end": 11251,
+      "before": "",
+      "after": "q}\n    if ("
+    },
+    {
+      "before_start": 5993,
+      "before_end": 5996,
+      "after_start": 11252,
+      "after_end": 11256,
+      "before": "bst",
+      "after": "ny(g"
+    },
+    {
+      "before_start": 5997,
+      "before_end": 6000,
+      "after_start": 11257,
+      "after_end": 11261,
+      "before": "act",
+      "after": "ound"
+    },
+    {
+      "before_start": 6001,
+      "before_end": 6006,
+      "after_start": 11262,
+      "after_end": 11263,
+      "before": "phi_t",
+      "after": "w"
+    },
+    {
+      "before_start": 6020,
+      "before_end": 6021,
+      "after_start": 11277,
+      "after_end": 11664,
+      "before": "}",
+      "after": " != witness(commands[i]) for w, i in zip(body, indices))\n            or ground(shape['input_receptors'], terms, hole) !=\n                [commands[eq_i]['formula'], commands[phi_i]['formula']]\n            or ground(shape['output'], terms, hole) != final['formula']\n            or ground(pattern, terms, hole) != template):\n        return None, 'actual_donor_structural_round_trip_failed'"
+    },
+    {
+      "before_start": 6203,
+      "before_end": 6203,
+      "after_start": 11846,
+      "after_end": 11894,
+      "before": "",
+      "after": ",\n            'donor_context_syntax': shape_info"
+    },
+    {
+      "before_start": 8930,
+      "before_end": 8930,
+      "after_start": 14621,
+      "after_end": 14632,
+      "before": "",
+      "after": "atomic-cont"
+    },
+    {
+      "before_start": 8931,
+      "before_end": 8936,
+      "after_start": 14633,
+      "after_end": 14634,
+      "before": "quali",
+      "after": "x"
+    },
+    {
+      "before_start": 8937,
+      "before_end": 8938,
+      "after_start": 14635,
+      "after_end": 14635,
+      "before": "y",
+      "after": ""
+    },
+    {
+      "before_start": 9303,
+      "before_end": 9309,
+      "after_start": 15000,
+      "after_end": 15000,
+      "before": "equali",
+      "after": ""
+    },
+    {
+      "before_start": 9311,
+      "before_end": 9313,
+      "after_start": 15002,
+      "after_end": 15002,
+      "before": "-o",
+      "after": ""
+    },
+    {
+      "before_start": 9315,
+      "before_end": 9316,
+      "after_start": 15004,
+      "after_end": 15006,
+      "before": "r",
+      "after": "d-"
+    },
+    {
+      "before_start": 9317,
+      "before_end": 9317,
+      "after_start": 15007,
+      "after_end": 15015,
+      "before": "",
+      "after": "tomic-co"
+    },
+    {
+      "before_start": 9318,
+      "before_end": 9319,
+      "after_start": 15016,
+      "after_end": 15020,
+      "before": "d",
+      "after": "text"
+    },
+    {
+      "before_start": 9329,
+      "before_end": 9330,
+      "after_start": 15030,
+      "after_end": 15031,
+      "before": "1",
+      "after": "2"
+    },
+    {
+      "before_start": 16151,
+      "before_end": 16151,
+      "after_start": 21852,
+      "after_end": 21863,
+      "before": "",
+      "after": "atomic-cont"
+    },
+    {
+      "before_start": 16152,
+      "before_end": 16157,
+      "after_start": 21864,
+      "after_end": 21865,
+      "before": "quali",
+      "after": "x"
+    },
+    {
+      "before_start": 16158,
+      "before_end": 16159,
+      "after_start": 21866,
+      "after_end": 21866,
+      "before": "y",
+      "after": ""
+    },
+    {
+      "before_start": 16224,
+      "before_end": 16224,
+      "after_start": 21931,
+      "after_end": 21937,
+      "before": "",
+      "after": "yntax_"
+    },
+    {
+      "before_start": 16225,
+      "before_end": 16226,
+      "after_start": 21938,
+      "after_end": 21941,
+      "before": "o",
+      "after": "imi"
+    },
+    {
+      "before_start": 16227,
+      "before_end": 16227,
+      "after_start": 21942,
+      "after_end": 21943,
+      "before": "",
+      "after": "s"
+    },
+    {
+      "before_start": 16238,
+      "before_end": 16238,
+      "after_start": 21954,
+      "after_end": 21999,
+      "before": "",
+      "after": " 'atomic_context',\n                          "
+    },
+    {
+      "before_start": 16311,
+      "before_end": 16311,
+      "after_start": 22072,
+      "after_end": 22094,
+      "before": "",
+      "after": "bounded-typed-atomic-c"
+    },
+    {
+      "before_start": 16313,
+      "before_end": 16313,
+      "after_start": 22096,
+      "after_end": 22097,
+      "before": "",
+      "after": "t"
+    },
+    {
+      "before_start": 16314,
+      "before_end": 16327,
+      "after_start": 22098,
+      "after_end": 22099,
+      "before": "-whole-equali",
+      "after": "x"
+    },
+    {
+      "before_start": 16328,
+      "before_end": 16334,
+      "after_start": 22100,
+      "after_end": 22111,
+      "before": "y-oper",
+      "after": "'\n         "
+    },
+    {
+      "before_start": 16337,
+      "before_end": 16337,
+      "after_start": 22114,
+      "after_end": 22121,
+      "before": "",
+      "after": " shape["
+    },
+    {
+      "before_start": 16338,
+      "before_end": 16338,
+      "after_start": 22122,
+      "after_end": 22154,
+      "before": "",
+      "after": "syntax_limits'] == SYNTAX_LIMITS"
+    },
+    {
+      "before_start": 16364,
+      "before_end": 16364,
+      "after_start": 22180,
+      "after_end": 22184,
+      "before": "",
+      "after": "role"
+    },
+    {
+      "before_start": 16365,
+      "before_end": 16368,
+      "after_start": 22185,
+      "after_end": 22185,
+      "before": "lot",
+      "after": ""
+    },
+    {
+      "before_start": 16375,
+      "before_end": 16375,
+      "after_start": 22192,
+      "after_end": 22193,
+      "before": "",
+      "after": "l"
+    },
+    {
+      "before_start": 16376,
+      "before_end": 16377,
+      "after_start": 22194,
+      "after_end": 22195,
+      "before": "n",
+      "after": "s"
+    },
+    {
+      "before_start": 16390,
+      "before_end": 16390,
+      "after_start": 22208,
+      "after_end": 22212,
+      "before": "",
+      "after": "role"
+    },
+    {
+      "before_start": 16391,
+      "before_end": 16394,
+      "after_start": 22213,
+      "after_end": 22213,
+      "before": "lot",
+      "after": ""
+    },
+    {
+      "before_start": 16396,
+      "before_end": 16396,
+      "after_start": 22215,
+      "after_end": 22219,
+      "before": "",
+      "after": "[:2]"
+    },
+    {
+      "before_start": 16397,
+      "before_end": 16397,
+      "after_start": 22220,
+      "after_end": 22224,
+      "before": "",
+      "after": "== l"
+    },
+    {
+      "before_start": 16398,
+      "before_end": 16400,
+      "after_start": 22225,
+      "after_end": 22227,
+      "before": "n ",
+      "after": "st"
+    },
+    {
+      "before_start": 16401,
+      "before_end": 16405,
+      "after_start": 22228,
+      "after_end": 22233,
+      "before": "0, 1",
+      "after": "ROLES"
+    },
+    {
+      "before_start": 16434,
+      "before_end": 16434,
+      "after_start": 22262,
+      "after_end": 22266,
+      "before": "",
+      "after": "[2:]"
+    },
+    {
+      "before_start": 16438,
+      "before_end": 16440,
+      "after_start": 22270,
+      "after_end": 22275,
+      "before": "li",
+      "after": "['u'+"
+    },
+    {
+      "before_start": 16442,
+      "before_end": 16442,
+      "after_start": 22277,
+      "after_end": 22360,
+      "before": "",
+      "after": "r(i) for i in range(len(shape['roles'])-2)]\n         and len(shape['roles']) <= len"
+    },
+    {
+      "before_start": 16449,
+      "before_end": 16449,
+      "after_start": 22367,
+      "after_end": 22405,
+      "before": "",
+      "after": " + SYNTAX_LIMITS['context_parameters']"
+    },
+    {
+      "before_start": 16745,
+      "before_end": 16747,
+      "after_start": 22701,
+      "after_end": 22703,
+      "before": "eq",
+      "after": "bo"
+    },
+    {
+      "before_start": 16748,
+      "before_end": 16759,
+      "after_start": 22704,
+      "after_end": 22704,
+      "before": "ality-opera",
+      "after": ""
+    },
+    {
+      "before_start": 16761,
+      "before_end": 16761,
+      "after_start": 22706,
+      "after_end": 22708,
+      "before": "",
+      "after": "ed"
+    },
+    {
+      "before_start": 16762,
+      "before_end": 16764,
+      "after_start": 22709,
+      "after_end": 22713,
+      "before": "sl",
+      "after": "atom"
+    },
+    {
+      "before_start": 16766,
+      "before_end": 16766,
+      "after_start": 22715,
+      "after_end": 22720,
+      "before": "",
+      "after": "-cont"
+    },
+    {
+      "before_start": 16767,
+      "before_end": 16767,
+      "after_start": 22721,
+      "after_end": 22730,
+      "before": "",
+      "after": "xt family"
+    },
+    {
+      "before_start": 16906,
+      "before_end": 16931,
+      "after_start": 22869,
+      "after_end": 22869,
+      "before": "slot = shape['slot']\n    ",
+      "after": ""
+    },
+    {
+      "before_start": 16981,
+      "before_end": 17061,
+      "after_start": 22919,
+      "after_end": 22919,
+      "before": " and len(phi) == 3\n            and phi[0] == 'eq' and phi[1+slot] == equality[1]",
+      "after": ""
+    },
+    {
+      "before_start": 17090,
+      "before_end": 17098,
+      "after_start": 22948,
+      "after_end": 22948,
+      "before": "ordered ",
+      "after": ""
+    },
+    {
+      "before_start": 17106,
+      "before_end": 17114,
+      "after_start": 22956,
+      "after_end": 22956,
+      "before": "/formula",
+      "after": ""
+    },
+    {
+      "before_start": 17124,
+      "before_end": 17126,
+      "after_start": 22966,
+      "after_end": 22966,
+      "before": "jo",
+      "after": ""
+    },
+    {
+      "before_start": 17127,
+      "before_end": 17131,
+      "after_start": 22967,
+      "after_end": 22967,
+      "before": "n ha",
+      "after": ""
+    },
+    {
+      "before_start": 17135,
+      "before_end": 17135,
+      "after_start": 22971,
+      "after_end": 22972,
+      "before": "",
+      "after": "t"
+    },
+    {
+      "before_start": 17136,
+      "before_end": 17137,
+      "after_start": 22973,
+      "after_end": 22988,
+      "before": "b",
+      "after": "an actual equal"
+    },
+    {
+      "before_start": 17138,
+      "before_end": 17143,
+      "after_start": 22989,
+      "after_end": 22991,
+      "before": "nding",
+      "after": "ty"
+    },
+    {
+      "before_start": 17289,
+      "before_end": 17290,
+      "after_start": 23137,
+      "after_end": 23137,
+      "before": "(",
+      "after": ""
+    },
+    {
+      "before_start": 17300,
+      "before_end": 17300,
+      "after_start": 23147,
+      "after_end": 23148,
+      "before": "",
+      "after": ":"
+    },
+    {
+      "before_start": 17301,
+      "before_end": 17302,
+      "after_start": 23149,
+      "after_end": 23152,
+      "before": ",",
+      "after": ")}\n"
+    },
+    {
+      "before_start": 17303,
+      "before_end": 17303,
+      "after_start": 23153,
+      "after_end": 23174,
+      "before": "",
+      "after": "   try:\n        match"
+    },
+    {
+      "before_start": 17304,
+      "before_end": 17306,
+      "after_start": 23175,
+      "after_end": 23194,
+      "before": "qu",
+      "after": "d = bind_context(sh"
+    },
+    {
+      "before_start": 17307,
+      "before_end": 17308,
+      "after_start": 23195,
+      "after_end": 23203,
+      "before": "l",
+      "after": "pe['atom"
+    },
+    {
+      "before_start": 17309,
+      "before_end": 17309,
+      "after_start": 23204,
+      "after_end": 23209,
+      "before": "",
+      "after": "c_con"
+    },
+    {
+      "before_start": 17310,
+      "before_end": 17313,
+      "after_start": 23210,
+      "after_end": 23214,
+      "before": "y[2",
+      "after": "ext'"
+    },
+    {
+      "before_start": 17319,
+      "before_end": 17319,
+      "after_start": 23220,
+      "after_end": 23227,
+      "before": "",
+      "after": ", terms"
+    },
+    {
+      "before_start": 17320,
+      "before_end": 17322,
+      "after_start": 23228,
+      "after_end": 23229,
+      "before": "2-",
+      "after": "'"
+    },
+    {
+      "before_start": 17323,
+      "before_end": 17324,
+      "after_start": 23230,
+      "after_end": 23381,
+      "before": "l",
+      "after": "'], terms, context, tick)\n    except OutsideSyntax as exc:\n        raise NoInstance('recipient outside bounded typed atomic context') from exc\n    if n"
+    },
+    {
+      "before_start": 17326,
+      "before_end": 17326,
+      "after_start": 23383,
+      "after_end": 23423,
+      "before": "",
+      "after": " matched or list(terms) != shape['roles'"
+    },
+    {
+      "before_start": 17327,
+      "before_end": 17327,
+      "after_start": 23424,
+      "after_end": 23507,
+      "before": "",
+      "after": ":\n        raise NoInstance('correlated atomic-context receptor join has no binding'"
+    },
+    {
+      "before_start": 17328,
+      "before_end": 17330,
+      "after_start": 23508,
+      "after_end": 23508,
+      "before": ")}",
+      "after": ""
+    },
+    {
+      "before_start": 17718,
+      "before_end": 17718,
+      "after_start": 23896,
+      "after_end": 23933,
+      "before": "",
+      "after": "type(hole) is not str or not hole or "
+    },
+    {
+      "before_start": 17877,
+      "before_end": 17877,
+      "after_start": 24092,
+      "after_end": 24416,
+      "before": "",
+      "after": "\n            try:\n                atomic_shape(w['template'], hole, context['theory'], context['parameters'], tick)\n                atomic_shape(ground(shape['output'], terms, hole), None,\n                             context['theory'], context['parameters'], tick)\n            except OutsideSyntax:\n                continue"
+    },
+    {
+      "before_start": 21089,
+      "before_end": 21095,
+      "after_start": 27628,
+      "after_end": 27628,
+      "before": "equali",
+      "after": ""
+    },
+    {
+      "before_start": 21097,
+      "before_end": 21099,
+      "after_start": 27630,
+      "after_end": 27630,
+      "before": "-o",
+      "after": ""
+    },
+    {
+      "before_start": 21101,
+      "before_end": 21102,
+      "after_start": 27632,
+      "after_end": 27634,
+      "before": "r",
+      "after": "d-"
+    },
+    {
+      "before_start": 21103,
+      "before_end": 21103,
+      "after_start": 27635,
+      "after_end": 27643,
+      "before": "",
+      "after": "tomic-co"
+    },
+    {
+      "before_start": 21104,
+      "before_end": 21105,
+      "after_start": 27644,
+      "after_end": 27648,
+      "before": "d",
+      "after": "text"
+    },
+    {
+      "before_start": 21117,
+      "before_end": 21118,
+      "after_start": 27660,
+      "after_end": 27661,
+      "before": "1",
+      "after": "2"
+    }
+  ],
+  "full_forward_matches": true,
+  "full_inverse_matches": true,
+  "meaning": "Literal raw text edits, not invoked scientific functions"
+}

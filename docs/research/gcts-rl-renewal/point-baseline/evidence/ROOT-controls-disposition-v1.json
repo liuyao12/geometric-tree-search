@@ -1,0 +1,54 @@
+{
+  "SELF_cut_bytes": 20742144,
+  "aggregate_cap_bytes": 536870912,
+  "aggregate_owned_bound_bytes": 54345728,
+  "all_true_reaped": true,
+  "classification": "actual negative/lifecycle controls",
+  "complete_saved_output_bytes": 55471967,
+  "complete_saved_output_files": 39,
+  "controls_accepted": true,
+  "external_observation": {
+    "bytes": 436,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/controls-external-v1/observation.json",
+    "sha256": "a4f8c8fd06815ec4e958b09a2f96997aa23b5de9a65449ab43b6d976b85155d3"
+  },
+  "goal_complete": false,
+  "joint_twenty_seconds_accepted": true,
+  "lifecycle_output_closed": true,
+  "live_epoch_bound_bytes": 43057152,
+  "maximum_serial_leaf_peak_bytes": 22315008,
+  "memory_accepted": true,
+  "native_caller_elapsed_ns": 492941000,
+  "native_launch_to_postprobe_ns": 556005000,
+  "native_terminal": {
+    "bytes": 1682,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/controls-external-v1/native-terminal.json",
+    "sha256": "02ea113e6f5c8e0b1097a5a0e4e42b4c4c5635ed069aac61edc48815b1986cf8"
+  },
+  "old_UNKNOWNs_promoted": false,
+  "plan": {
+    "bytes": 9280,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/ROOT-controls-plan-v1.json",
+    "sha256": "64726b8a6733ab8a911bb553b90046dbe3fa4868f135f526acf9fdc47a2bec82"
+  },
+  "point_full24_trajectory_native_RL_accepted": false,
+  "primary_accepted": false,
+  "provisional": {
+    "bytes": 12124,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/controls-owned-v1/point-provisional.json",
+    "sha256": "4761ccf26deece42301f7cbb3d05ea7d5afd0a4a09352bd12f2eb51d01034c50"
+  },
+  "purpose": "controls",
+  "resource_accepted": true,
+  "resource_rule": "point-sequential-cutoff-max-v1",
+  "schema": "ROOT-point-compact-Q-saved-disposition-v1",
+  "scope": "Fixed reviewed pinned Sources/Darwin ABI. Saved evidence reconciliation, no mathematical or full-domain trajectory replay. No GCTS/RL advantage demonstrated.",
+  "sequential_leaf_count": 4,
+  "tool_bracket": {
+    "bytes": 197,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-ROOT-20261015/controls-external-v1/tool-bracket.json",
+    "sha256": "05a5de4b394d7be027c48c1dc01bcae7cc6062c0bc298f48e05ed061f59c918b"
+  },
+  "tool_elapsed_ms": 737,
+  "true_terminal_inclusive_peak_bytes": 54345728
+}

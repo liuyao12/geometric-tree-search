@@ -1,0 +1,21 @@
+{
+  "schema": "compact-point-independent-saved-review-handoff-v1",
+  "saved_data_only": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-saved-independent-20261015/findings-v1.json",
+    "sha256": "66ba7f452e2fd1be5a294e33044617f568b08024820130d3c15858bcb37d70ae",
+    "bytes": 87099
+  },
+  "report_data": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-saved-independent-20261015/report-data-v1.json",
+    "sha256": "72ace593783fac365cac3ec596648e710290f99a20f19b477168320fa48ecac7",
+    "bytes": 36077
+  },
+  "check_count": 357,
+  "all_checks_passed": true,
+  "controls": "accepted negative/lifecycle observations, native bound54345728B",
+  "primary": "UNKNOWN;20.128667s launch-to-postprobe,314015744B bound, no candidate/verifier/certificate",
+  "scope": "No independent semantic/point trajectory replay or promotion of prior UNKNOWNs; ROOT owns final disposition.",
+  "Source_functions_Q_decodes_clocks_tests_actuals": 0
+}

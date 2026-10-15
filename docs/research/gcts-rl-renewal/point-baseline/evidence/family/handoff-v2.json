@@ -1,0 +1,41 @@
+{
+  "schema": "typed-atomic-context-family-Source-handoff-v2",
+  "source_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "sources": {
+    "family": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+      "bytes": 29157
+    },
+    "catalogue_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+      "bytes": 12929
+    },
+    "checker_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+      "bytes": 3901
+    }
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+    "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c",
+    "bytes": 12386
+  },
+  "author_static_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/static-authoring-checks-v1.json",
+    "sha256": "67e432dc7127f79a1ee471db1fecdc9cf2d6cea4e715a40fcb701f326d82dc68",
+    "bytes": 5592
+  },
+  "complete_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/complete-positional-delta-v1.json",
+    "sha256": "a16058e3a8e4625d42d441e881a5a6fb56be1ebcbbf2cc28b69ba11e7681704c",
+    "bytes": 50305
+  },
+  "status": "Frozen UNEXECUTED Source proposal, distinct Source review pending",
+  "summary": "Generic bounded typed Eq/Pred contexts, nested/repeated hole; data-driven checked donor DAG extraction, whole witness round trips, exact existing licence instantiation, unchanged original point/Gamma/ancestry/fallback and separate Q/Hilbert adapters. No successor-symbol or target-specific proof route.",
+  "remaining": "Genuine current Source review; actual donor authentication/mining and recipient controls; guarded cold integration, native resource/benefit evidence. ROOT sole activation.",
+  "project_Source_functions_Q_decodes_clocks_tests_actuals": 0
+}

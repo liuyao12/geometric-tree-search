@@ -1,0 +1,28 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "preserved_v3_handoff": {
+    "bytes": 3219,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/handoff-v1.json",
+    "sha256": "14c43540a92f68aaf522bf873664dcbdd01721e8e674657ed91aedbf6be62631"
+  },
+  "review_scope": "Q-untrusted-compact-full-model-point-producer-Source",
+  "schema": "Q-compact-point-producer-Source-handoff-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 28623,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+    "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+  },
+  "source_contract": {
+    "bytes": 13860,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Source-contract-v2.json",
+    "sha256": "ba22d1c5d87e724eeb9a89b44d4b1ba20dc9f1fd1777ff08a5cf2253221c8728"
+  },
+  "source_only": true,
+  "status": "UNEXECUTED_UNTRUSTED_SOURCE_ONLY",
+  "telemetry_only_delta": {
+    "bytes": 1779,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/producer-v3-to-v4-Source-delta-v1.json",
+    "sha256": "040bffa26b80f526c1543b18767a929efec5e99215525208974646797d22a2b0"
+  }
+}

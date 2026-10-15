@@ -1,0 +1,58 @@
+{
+  "changed_existing_definitions": [
+    "run_untrusted_candidate_search"
+  ],
+  "complete_forward_and_inverse_verified": true,
+  "edits": [
+    {
+      "new": "4",
+      "new_end": 622,
+      "new_start": 621,
+      "old": "3",
+      "old_end": 622,
+      "old_start": 621
+    },
+    {
+      "new": "2",
+      "new_end": 18696,
+      "new_start": 18695,
+      "old": "1",
+      "old_end": 18696,
+      "old_start": 18695
+    },
+    {
+      "new": ",\n            'observed_native_ns':budget.check(cleanup=cleanup),\n            'budget_counts_before_event_serialization':dict(budget.counts),\n            'budget_phase_intervals_before_event_serialization':dict(budget.phases)",
+      "new_end": 18938,
+      "new_start": 18713,
+      "old": "",
+      "old_end": 18713,
+      "old_start": 18713
+    }
+  ],
+  "new": {
+    "bytes": 28623,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v4.py",
+    "sha256": "4be9709eb3b5d8da15a0fdbf313683e61983f53519ac843c01afc2fe8233d052"
+  },
+  "new_definitions": [],
+  "old": {
+    "bytes": 28398,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-compact-point-producer-source-20261015/Q_untrusted_compact_candidate_search_v3.py",
+    "sha256": "5fddc249251aa26abe9210929f4263de2423a5e41568ab712d5c2a8ad13da952"
+  },
+  "schema": "point-compact-full-byte-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_top_level_definitions": [
+    "Unfinished",
+    "need",
+    "canonical",
+    "Budget",
+    "chunks",
+    "complete_digest",
+    "FingerprintWriter",
+    "state_fingerprint",
+    "CompactEvents",
+    "decision_data",
+    "collect_first_ancestry"
+  ]
+}

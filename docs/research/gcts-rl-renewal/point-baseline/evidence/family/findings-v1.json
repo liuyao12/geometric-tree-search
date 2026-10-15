@@ -1,0 +1,509 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "check_count": 50,
+  "checks": [
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F001",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F002",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F003",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F004",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/Source-contract-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F005",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F006",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F007",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F008",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/handoff-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F009",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/static-authoring-checks-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F010",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-Sequence-guard-source-20261014/equality_receptor_family_I2_sequence_guard_v3.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F011",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F012",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F013",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-symbolic-target-audit-20261015/next-hilbert-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F014",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/next-receptor-family-contribution-source-20261015/next-receptor-families-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F015",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F016",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F017",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/atomic-v2-to-whole-operand-v1.patch",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F018",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/complete-positional-delta-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F019",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/handoff-v2.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F020",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/static-authoring-checks-v1.json",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F021",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F022",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/whole-operand-v1-to-atomic-v2.patch",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F023",
+      "passed": true
+    },
+    {
+      "check": "complete raw /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "detail": "Whole raw bytes authenticated; historical reference is not promoted to a current review.",
+      "id": "F024",
+      "passed": true
+    },
+    {
+      "check": "every literal raw reference matches whole target",
+      "detail": "All repeated role/contract/raw pins reconciled; no conflicting duplicate capsule ignored.",
+      "id": "F025",
+      "passed": true
+    },
+    {
+      "check": "current exact Source3 and review ABI",
+      "detail": "Family e499, unchanged catalogue2013 and checkerb32; current scope/schema required.",
+      "id": "F026",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only family",
+      "detail": "No code object executed or Source module imported.",
+      "id": "F027",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only catalogue_adapters",
+      "detail": "No code object executed or Source module imported.",
+      "id": "F028",
+      "passed": true
+    },
+    {
+      "check": "AST/compile only checker_adapters",
+      "detail": "No code object executed or Source module imported.",
+      "id": "F029",
+      "passed": true
+    },
+    {
+      "check": "complete forward and inverse raw module reconstruction",
+      "detail": "All declared positional edits independently applied to immutable strings; no Source functions called.",
+      "id": "F030",
+      "passed": true
+    },
+    {
+      "check": "fourteen inherited whole definitions AST exact",
+      "detail": "Includes original point unions, Gamma expansion, ancestry and complete fallback; these bodies also read.",
+      "id": "F031",
+      "passed": true
+    },
+    {
+      "check": "adapters exact inherited raw Sources",
+      "detail": "Both adapter whole Sources read afresh; no old independent pass assumed.",
+      "id": "F032",
+      "passed": true
+    },
+    {
+      "check": "declared entire callable delta exact",
+      "detail": "Seven added syntax definitions, five changed, abstract removed; no undeclared callable change.",
+      "id": "F033",
+      "passed": true
+    },
+    {
+      "check": "no target-successor-symbol command literals",
+      "detail": "Literal constructor/name/schema vocabulary is generic; function/predicate paths derive only from actual donor atom.",
+      "id": "F034",
+      "passed": true
+    },
+    {
+      "check": "full new family and both adapters read",
+      "detail": "Current family and both entire inherited catalogue/checker adapters read; relevant original1717 Boundary/Semantics.command/primitive-word APIs,3b6 GroundChecker.proof/command,c8 SelectedWire.formula/recipe/model_epoch and original Q/H point epoch definitions inspected statically. No production Source invoked.",
+      "id": "F035",
+      "passed": true
+    },
+    {
+      "check": "bounded nominal atomic syntax",
+      "detail": "Only Eq or a declared Pred atom, exact signature names/literal integer arities, term variables from original parameters plus one distinct hole. No binder/connective inside atom; 64 nodes/context and terms,16 depth,32 context slots; template and grounded donor/recipient atoms checked. Advice bounds never restrict base grammar.",
+      "id": "F036",
+      "passed": true
+    },
+    {
+      "check": "simultaneous repeated hole and slot correlations",
+      "detail": "Every repeated hole is replaced by one whole term, without revisiting inserted terms. Maximal hole-free equal terms share a slot, including s/t correlation; hole-path function symbols and atomic head remain literal donor symbols. Recipient aliasing allowed only through consistent exact term matches.",
+      "id": "F037",
+      "passed": true
+    },
+    {
+      "check": "capture and free-parameter safety",
+      "detail": "Hole must be a nonempty nonparameter name. Operands/context slots validate nominal signatures and original parameter scope. Atomic body has no binders; broader ancestry goes through unchanged independent command semantics and full Gamma side conditions.",
+      "id": "F038",
+      "passed": true
+    },
+    {
+      "check": "actual donor DAG and all witness round trips",
+      "detail": "ROOT-authenticated automatic original-target donor plus independent complete original-target word check precede root recognition. Actual final MP implication points to preceding MP implication points to actual eq_subst. Equality/formula external inputs and every body witness, template, ordered ports and conclusion must reconstruct the actual checked donor exactly.",
+      "id": "F039",
+      "passed": true
+    },
+    {
+      "check": "complete census and deterministic selection",
+      "detail": "Mine scans every supplied donor and every command root, keeping all reasons and checks and only first eligible body in declared order. No human target proof, successful route, active library or target-specific constructor is bundled; chosen syntax is explicitly post-observation scope, not historical preregistration.",
+      "id": "F040",
+      "passed": true
+    },
+    {
+      "check": "failure classifications remain honest",
+      "detail": "Only own OutsideSyntax converts bounded grammar ineligibility; other delegate/custody/UNKNOWN exceptions propagate under existing trusted callback API. Recipient NoInstance/greedy embedding failure never declares base impossibility or changes exclusion.",
+      "id": "F041",
+      "passed": true
+    },
+    {
+      "check": "exact current catalogue and epochs",
+      "detail": "Adapters preserve full formula/recipe order, identity preimages and hashes, formula codes, authority/context/model/Source epochs, zero/unary/ordered binary interfaces and assumption occurrence identities. Reconstruct actual original point epoch; no new normalized epoch or profile transplant.",
+      "id": "F042",
+      "passed": true
+    },
+    {
+      "check": "separate Q and Hilbert contracts",
+      "detail": "Q current catalogue remains empty Gamma/one parameter/24 rows, full original Source7. Hilbert uses exact c8 reader/full stream-backed catalogue/three indexed seed occurrences and3b6 closed five-rule proof. No new Hilbert profile, open variables, generalization or guaranteed H instance.",
+      "id": "F043",
+      "passed": true
+    },
+    {
+      "check": "actual selected receptors and original point union",
+      "detail": "Only complete selected keyed receptor ancestry accepted. Entire current totals/m-values/refcounts/fixed marks compared by literal union; assigned zero distinct from absence. Original per-row exclusions, strict-prior ports, unit capacity and shared key dedup preserved. It is guidance and does not independently certify current graph domains/generations.",
+      "id": "F044",
+      "passed": true
+    },
+    {
+      "check": "licensed recipient instance and exact expansion",
+      "detail": "Simultaneous equality/context join fixes all roles. Hole borrowed only from an exact current licensed eq_subst witness; each grounded member resolves exact original witness plus ordered premise preimage. Reuse identical complete key once; otherwise deterministic first compatible empty strict-prior row, with current/fixed marks and exclusions. No licence manufacture or alternate compiler.",
+      "id": "F045",
+      "passed": true
+    },
+    {
+      "check": "original Gamma and independent consequence",
+      "detail": "Expansion retains every original Gamma seed occurrence including unused/duplicates; ancestry keys deduplicated once. Entire expanded word checked under unchanged full Gamma. Q intermediate adapter explicitly uses unchanged Semantics.command with5000000-visit Boundary and parameter-scoped conclusion, never public primary acceptance. Gen freshness sees every original Gamma occurrence; MP is ordered, Gen unary. Hilbert remains closed GroundChecker.proof.",
+      "id": "F046",
+      "passed": true
+    },
+    {
+      "check": "primary/consequence authority separation",
+      "detail": "Donor primary must equal authenticated original target and invoke original public checker. Q intermediate open consequence is clearly separate scope; Hilbert ground intermediate similarly false primary. No intermediate receipt, point union or family flag becomes original-target/fullboard/trajectory/resource authority.",
+      "id": "F047",
+      "passed": true
+    },
+    {
+      "check": "unchanged graph scheduler and complete fallback",
+      "detail": "No graph mutation/macro/exclusion/domain change. prefer_at_reference_branch only reorders already selected current branch candidates passing original contains, then yields every other canonical base member. Caller retains global dead, forced and earliest generation, per-constituent transaction/rollback/current membership; existing adapter requirements only.",
+      "id": "F048",
+      "passed": true
+    },
+    {
+      "check": "state and input preservation",
+      "detail": "Catalogue/family/input donor hashes checked before/after successful work, current snapshot re-read/hash compared before provisional return. No callback reseal or consumed mutable state authority is introduced. Existing cold caller callback/Source and actual recipient controls remain necessary, not implemented here.",
+      "id": "F049",
+      "passed": true
+    },
+    {
+      "check": "equal information and no benefit claim",
+      "detail": "Both ordinary and point consume identical mined family/expanded primitive DAG and training information. Charge extraction, matching, full catalogue, checking and use; same-target Q training is not structural transfer. No actual donor, instance, fit, selected proof or GCTS/RL superiority established.",
+      "id": "F050",
+      "passed": true
+    }
+  ],
+  "instance_checked": false,
+  "library_admitted": false,
+  "limitations": [
+    "Conditional Source eligibility only; actual donor authentication/mining, original recipient instances, independently checked library admission and measured usage remain pending. ROOT sole activation.",
+    "No Source/project/checker/helper/Q decode/clock/test/fixture/actual execution or plan creation occurred. Only raw byte hashing, metadata JSON, AST and compile-only inspection.",
+    "Pure-data guidance trusts the already declared fixed checker/catalogue/live snapshot/callback adapters; it is not an autonomous cold custody or hostile-callback framework. No additional Root integration framework requested.",
+    "Current library syntax bounds may yield no family/no instance. Greedy embedding is deliberately incomplete, while original base fallback remains complete. No guaranteed Q or Hilbert benefit.",
+    "Reviewer authored prior controls/point-audit/target proposal dependencies, not this family/catalogue/checker adapter. Authorship by diagnosis and current role pins are explicit; historical references do not grant runtime qualification."
+  ],
+  "metadata_roots": [
+    {
+      "bytes": 2597,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/handoff-v2.json",
+      "sha256": "c60562d3041c16c5ebc8e5406d5c61b6bd883dbe6a96b044af3c8337d35b4f41"
+    },
+    {
+      "bytes": 12386,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+      "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+    },
+    {
+      "bytes": 5592,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/static-authoring-checks-v1.json",
+      "sha256": "67e432dc7127f79a1ee471db1fecdc9cf2d6cea4e715a40fcb701f326d82dc68"
+    },
+    {
+      "bytes": 50305,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/complete-positional-delta-v1.json",
+      "sha256": "a16058e3a8e4625d42d441e881a5a6fb56be1ebcbbf2cc28b69ba11e7681704c"
+    },
+    {
+      "bytes": 17268,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/Source-contract-v1.json",
+      "sha256": "08e48f38a70f2675a03f2dda2ea8c902b0723995a8aeb8daa723fe355e69c076"
+    },
+    {
+      "bytes": 2747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/handoff-v1.json",
+      "sha256": "d2ea793f627751cb9e90ba15247ec1fee05e97c11257c2f069d906683600fbef"
+    }
+  ],
+  "raw_reference_count": 59,
+  "resource_accepted": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "typed-atomic-context-independent-Source-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "typed-atomic-context-transport-family-Source",
+  "source": {
+    "bytes": 29157,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+    "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+  },
+  "source_contract": {
+    "bytes": 12386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+    "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "catalogue_adapters": {
+      "bytes": 12929,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00"
+    },
+    "checker_adapters": {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    "family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    }
+  },
+  "unique_raw_path_count": 24,
+  "whole_raw_targets": [
+    {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "bytes": 17268,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/Source-contract-v1.json",
+      "sha256": "08e48f38a70f2675a03f2dda2ea8c902b0723995a8aeb8daa723fe355e69c076"
+    },
+    {
+      "bytes": 3901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f"
+    },
+    {
+      "bytes": 12929,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00"
+    },
+    {
+      "bytes": 22614,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+      "sha256": "5888f71e29714e3144b6ef18f6f27361909dba958da841199a6554b98e952813"
+    },
+    {
+      "bytes": 2747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/handoff-v1.json",
+      "sha256": "d2ea793f627751cb9e90ba15247ec1fee05e97c11257c2f069d906683600fbef"
+    },
+    {
+      "bytes": 5295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/static-authoring-checks-v1.json",
+      "sha256": "04b022f0c56727e2ec010b93dbc27e416d8b2495c52e093095a1d2566508b985"
+    },
+    {
+      "bytes": 62803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-Sequence-guard-source-20261014/equality_receptor_family_I2_sequence_guard_v3.py",
+      "sha256": "b4d20eaf6c7f5db25e7ab7a70303e7d39a733b49c2cec300b363cbc3f7fbfaa5"
+    },
+    {
+      "bytes": 64498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "sha256": "c8fa4aeba82fcc2af9bd091fd351d72f86a24ae97cb5edd92ff558e81c23501b"
+    },
+    {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    {
+      "bytes": 5388,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-symbolic-target-audit-20261015/next-hilbert-v1.json",
+      "sha256": "793f1c3787a75a16f759c2d01b30a1bbeb04818276ceb3eb871483ea84484d82"
+    },
+    {
+      "bytes": 5851,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/next-receptor-family-contribution-source-20261015/next-receptor-families-v1.json",
+      "sha256": "e0bc3906d8dcde6867398984c1559109a900e9b977468075b0c51b036548fff5"
+    },
+    {
+      "bytes": 42946,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    {
+      "bytes": 12386,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+      "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+    },
+    {
+      "bytes": 18754,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/atomic-v2-to-whole-operand-v1.patch",
+      "sha256": "f551b2bcafc766d794f2cb24e1b27419f52ebdd174eb82f8489a0e771e8317aa"
+    },
+    {
+      "bytes": 50305,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/complete-positional-delta-v1.json",
+      "sha256": "a16058e3a8e4625d42d441e881a5a6fb56be1ebcbbf2cc28b69ba11e7681704c"
+    },
+    {
+      "bytes": 2597,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/handoff-v2.json",
+      "sha256": "c60562d3041c16c5ebc8e5406d5c61b6bd883dbe6a96b044af3c8337d35b4f41"
+    },
+    {
+      "bytes": 5592,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/static-authoring-checks-v1.json",
+      "sha256": "67e432dc7127f79a1ee471db1fecdc9cf2d6cea4e715a40fcb701f326d82dc68"
+    },
+    {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    {
+      "bytes": 18754,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/whole-operand-v1-to-atomic-v2.patch",
+      "sha256": "afb360277cb9b22c9df4c10006062c5cd8449f9d6a00b74061671d2371b487c1"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ]
+}
