@@ -1,0 +1,71 @@
+{
+  "ROOT_primary_accepted": false,
+  "ROOT_resource_accepted": false,
+  "activation_allowed": false,
+  "check_count": 235,
+  "direct_raw_canonical_paths": 24,
+  "direct_raw_reference_count": 124,
+  "findings": {
+    "bytes": 65289,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-saved-independent-v2-20261015/findings-v1.json",
+    "sha256": "abacb16c2603ec1640190abe5e7ff80515b418bc0f1a3120a0f048a80859c6ea"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_reconciliation_passed": true,
+  "schema": "Q-isolated-projection-controls-saved-independent-handoff-v1",
+  "scientific_calls": 0,
+  "summary": {
+    "ROOT_primary_accepted": false,
+    "ROOT_resource_accepted": false,
+    "accepted_prefix": false,
+    "caller_exit": 0,
+    "clocks": {
+      "caller_kernel_elapsed_ns": 3094510000,
+      "caller_terminal_observed_ns": 421276982407000,
+      "external_complete_wall_ms": 3295,
+      "finish_reserve_ms": 1000,
+      "joint_began_ns": 421273905648000,
+      "joint_deadline_ns": 421293905648000,
+      "observed_worker_terminal_elapsed_ns": 3065785000,
+      "outer_afterstdout_observed_ns": 421276974735000,
+      "owned_elapsed_ns_before_receipts": 3067818000,
+      "postterminal_from_begin_ns": 3151067000,
+      "postterminal_global_ns": 421277056715000,
+      "worker_terminal_observed_ns": 421276971433000
+    },
+    "completed_saved_controls": 85,
+    "memory": {
+      "cap_bytes": 536870912,
+      "complete_conservative_aggregate_bytes": 41910272,
+      "complete_worker_wait4_peak_bytes": 20955136,
+      "parent_before_receipts_peak_bytes": 19660800,
+      "provisional_sum_bytes": 40615936,
+      "terminal_parent_peak_bytes": 20955136
+    },
+    "native_calls": 51,
+    "normal_native": 6,
+    "outer_tool_exit": 0,
+    "overall_status": "complete85_control_evidence_and_scoped_resource_predicates_reconciled_pending_ROOT_disposition",
+    "postterminal_probe_exit": 0,
+    "prior_attempt": {
+      "ROOT_resource_accepted": false,
+      "disposition": {
+        "bytes": 5587,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-ROOT-disposition.json",
+        "sha256": "331a447e3719743425d086dc1a6d4ec3a8920c76f7005b6c6b47797f629bdb1e"
+      },
+      "status": "UNKNOWN"
+    },
+    "record_only_rejections": 8,
+    "resource_failure": null,
+    "synthetic_numerical": 26,
+    "time_rejections": 6,
+    "typed_input_rejections": 39,
+    "worker_exit": 0
+  },
+  "worker_wire": {
+    "bytes": 52999,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-result.jsonl",
+    "sha256": "79d07bc2288a8b5455a5e7fcdaae69898400974bf75f1c479d6185cda6eb6960"
+  }
+}

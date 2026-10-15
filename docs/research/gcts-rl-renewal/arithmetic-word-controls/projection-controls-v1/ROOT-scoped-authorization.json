@@ -1,0 +1,43 @@
+{
+  "Q_payload_parses_authorized": false,
+  "W16_authorized": false,
+  "actual_invocations_for_this_id_before_disposition": 0,
+  "all_stronger_scopes_authorized": false,
+  "author_identity": "/root",
+  "controls_execution_authorized": true,
+  "external_JS_source": {
+    "bytes": 6468,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v3.js",
+    "sha256": "b102933e5b86cbf760bce5b8491d7d683a699cd18e3721622eac2d57cc5f2f01"
+  },
+  "external_measurement": "Pinned stdlib-only Python native wait4 meter supplies true terminal caller rusage and status; add worker wait4 peak. Observer memory excluded, all observed wall overhead included. No operating-system hard-cap claim.",
+  "external_requirements": "Complete native wait4 caller terminal exit zero followed by complete pinned-Python stdlib post-terminal observation with genuine kernel observed_ns strictly below original inherited D; nonnegative monotone external Date bracket through probe completion; elapsed<=60 and elapsed+1<=90; complete canonical native meter JSON through EOF; terminal caller kernel peak plus worker kernel peak<=512MiB.",
+  "full52_authorized": false,
+  "maximum_actual_invocations": 1,
+  "original_model_and_mathematical_sources_changed": false,
+  "outer_preregistration": {
+    "bytes": 10056,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-outer-preregistration.json",
+    "sha256": "64fe55d5622ea4b80fc0b3e91e246603054b36c842be9ba7e0c2b0f0daf18eee"
+  },
+  "owned_scope": "exact reviewed Python caller and one child worker; external native time and tool executor are measurement infrastructure",
+  "prior_attempt_disposition": {
+    "bytes": 5587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-ROOT-disposition.json",
+    "sha256": "331a447e3719743425d086dc1a6d4ec3a8920c76f7005b6c6b47797f629bdb1e"
+  },
+  "prior_registered_attempts": 1,
+  "proof_accepted": false,
+  "proof_search_authorized": false,
+  "schema": "ROOT-isolated-projection-controls-scoped-authorization-v1",
+  "worker_preregistration": {
+    "bytes": 10315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-worker-preregistration.json",
+    "sha256": "b835afee97d1d237074dfc6c63463f87fe706360f9836faa87918656029c0189"
+  },
+  "worker_request": {
+    "bytes": 9168,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-worker-request.json",
+    "sha256": "1ba39e5dcbd0bb09fe0abc03a6b35223b12f7a02b62f9a862fb456cd178831d1"
+  }
+}

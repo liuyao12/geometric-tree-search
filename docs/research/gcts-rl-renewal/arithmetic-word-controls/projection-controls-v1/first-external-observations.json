@@ -1,0 +1,86 @@
+{
+  "schema": "ROOT-Q-projection-actual-tool-observations-v2",
+  "caller_source": {
+    "bytes": 29587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v2.py",
+    "sha256": "5a5a2f1fdedcd0ccd93c037e78e2da24997626ea84d037b4c5ad22a98d3f63a4"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "preregistration": {
+    "bytes": 9780,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-outer-preregistration.json",
+    "sha256": "4d9232239190df8e8b1d9d1f5e63d8fab66a70925c0b3bf78cc0c049f498c0ea"
+  },
+  "external_terminal_meter": {
+    "path": "/usr/bin/time",
+    "sha256": "d2210b72e8c978748a0f0ac7d0819dda4dd411bb7a2e9730476038b0d695e7a2",
+    "bytes": 135248
+  },
+  "external_terminal_meter_output": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-terminal-meter.txt",
+  "terminal_meter_parse_and_raw_EOF_authentication_pending": true,
+  "started_ms": 1792080886904,
+  "terminal_observed_ms": 1792080889086,
+  "completed_observation_ms": 1792080889169,
+  "elapsed_ms": 2265,
+  "finish_reserve_ms": 1000,
+  "actual_terminal_observed": true,
+  "actual_exit_code": 1,
+  "unfinished_session_id": null,
+  "post_terminal_native_probe_complete": true,
+  "unfinished_probe_session_id": null,
+  "post_terminal_native_output": "{\"CLOCK_DOMAIN\":\"time.clock_gettime_ns(time.CLOCK_MONOTONIC)\",\"ROOT_resource_accepted\":false,\"clock_id\":6,\"observed_ns\":420697121481000,\"schema\":\"ROOT-Q-post-terminal-native-observation-v1\"}\n",
+  "post_terminal_native_integer_parse_and_original_deadline_gate_pending": true,
+  "wall_clock_brackets_valid": true,
+  "external_owned60_candidate": true,
+  "external_caller90_with_finish1_candidate": true,
+  "observations": [
+    {
+      "kind": "exec_command",
+      "observed_ms": 1792080888066,
+      "result": {
+        "chunk_id": "4645d3",
+        "wall_time_seconds": 1.003261708,
+        "session_id": 21335,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "kind": "write_stdin",
+      "session_id": 21335,
+      "observed_ms": 1792080889086,
+      "result": {
+        "chunk_id": "580da2",
+        "wall_time_seconds": 1.018707916,
+        "exit_code": 1,
+        "original_token_count": 143,
+        "output": "{\"ROOT_resource_accepted\":false,\"native_ledger\":{\"bytes\":7461,\"sha256\":\"b10bcae7d84fedc7206715ed409fe80c7ece68e0be92e7d8e2398897140ea627\"},\"output_directory\":\"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output\",\"pending_external_caller\":true,\"schema\":\"Q-projection-outer-bounded-terminal-notice-v1\",\"worker_wire\":{\"bytes\":52971,\"sha256\":\"a337169c203d511f2311f91d1d66776d17b64c01f88bbbc21f8b6ad9a31814c5\"}}\ntime: sysctl kern.clockrate: Operation not permitted\n"
+      }
+    },
+    {
+      "kind": "caller_terminal_boundary",
+      "observed_ms": 1792080889086
+    },
+    {
+      "kind": "post_terminal_native_exec",
+      "observed_ms": 1792080889169,
+      "result": {
+        "chunk_id": "bd609e",
+        "wall_time_seconds": 0.0000065,
+        "exit_code": 0,
+        "original_token_count": 48,
+        "output": "{\"CLOCK_DOMAIN\":\"time.clock_gettime_ns(time.CLOCK_MONOTONIC)\",\"ROOT_resource_accepted\":false,\"clock_id\":6,\"observed_ns\":420697121481000,\"schema\":\"ROOT-Q-post-terminal-native-observation-v1\"}\n"
+      }
+    }
+  ],
+  "scope": "External Date wall includes actual tool startup, interpreter/caller Source compilation/time import, true caller exit, native meter printing and post-terminal pinned-Python observation. Native original20 requires caller process exit before genuine post-terminal global observed_ns < original deadline, plus complete output/raw/Source gates. Native meter full EOF must yield terminal caller maxRSS; add explicit worker wait4 peak conservatively. Meter/probe observer memory excluded like tool executor; all wall overhead charged. Root acceptance remains false until separate whole saved reconciliation.",
+  "ROOT_resource_accepted": false,
+  "ROOT_primary_accepted": false,
+  "full52_qualified": false,
+  "original_Q_theorem_accepted": false,
+  "actual_invocation_only_if_ROOT_runs_later": true
+}

@@ -1,0 +1,44 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root",
+  "bounded_scope": "Whole current Source/contract/fixture-literal and exact-rational algorithm review only, under explicit negative-overflow domain limit and future caller custody; no function/clock/numeric execution.",
+  "domain_note": "nearest_bits rejects rationals below negative maxfinite through the floor precondition. It is not a symmetric unrestricted IEEE754 overflow oracle. Current observed finite producer b+20 cannot be below negative maxfinite, and none of the26 specified synthetic rows needs that excluded domain. Preserve this bounded scope; no general arithmetic theorem is asserted.",
+  "findings": {
+    "bytes": 7673,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/oracle-findings-v1.json",
+    "sha256": "5d06b6f405414f24ef74669f6adba5072a4a4533c130b7e21ff028fbd523a777"
+  },
+  "mathematical_acceptance": false,
+  "remaining": [
+    "whole worker/profile/callback/capture default/global custody",
+    "full original global20 through oracle/output/stdout/exit/reap",
+    "native aggregate512/owned60/caller90+1 and actual reconciliation",
+    "genuine ROOT scoped preregistration and activation"
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_acceptance": false,
+  "schema": "Q-isolated-projection-binary64-oracle-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-isolated-projection-binary64-oracle-Source",
+  "source": {
+    "bytes": 14789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+    "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+  },
+  "source_contract": {
+    "bytes": 4186,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/Source-contract-v1.json",
+    "sha256": "a28c6a9fc33183f9f4c6e315acc185ddddd452eef589e1d504ddd419ebe35af3"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "oracle": {
+      "bytes": 14789,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+      "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+    }
+  }
+}

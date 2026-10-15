@@ -1,0 +1,320 @@
+{
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Source_functions_executed": 0,
+  "activation_allowed": false,
+  "actual_outdir_created": false,
+  "actual_plan_created": false,
+  "author_identity": "/root/arithmetic_induction",
+  "basis": {
+    "clock_choice": {
+      "bytes": 4443,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+      "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+    },
+    "design": {
+      "bytes": 15294,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-observability-design-review-source-20261015/design-review-v1.json",
+      "sha256": "8f8cda56a340b56ff4d13c493d5112ac5c5710d428e4757010fef2b6fb73b905"
+    },
+    "independent_checklist": {
+      "bytes": 11007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/inventory-and-reconciliation-checklist-v1.json",
+      "sha256": "34d33d4e949751e880a79db0be98bf0e1b4ed48d58d0f129b5d05d3118e1c797"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  },
+  "executed_sources": [
+    "worker",
+    "oracle"
+  ],
+  "fixed_inventory": {
+    "bytes": 7593,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/fixed-inventory-v1.json",
+    "sha256": "fa7deace5cd45c37f6a85fbe6f5e5436bb6c0de8abee4a4311d3baebc2fd5e5e"
+  },
+  "guard_scope": [
+    "Exact full default entries/identity tokens/strong refs, positional defaults, code/cells, module/class/MRO/accessors/global/builtin/native endpoint and int-ID custody.",
+    "Direct original gate/function_state identity/code/default/cell prechecks at all16 guard delegations, including after actual helper/oracle and final output.",
+    "Fresh exact single helper frame/code AND globals, one call/return, bounded scalar capture, exact arguments and returned object. No retained frame/f_locals.",
+    "Prior profiler None; exact callback state; original cached native profiler restored in finally BEFORE changed attribute/restoration rejection.",
+    "Callback failure/uninstallation is guard failure, never expected helper rejection. Actual exception requires caught ValueError/TimeoutError and same frame return(None).",
+    "Single current thread only; no thread creation by worker/oracle; no concurrent or hostile interpreter/OS claim.",
+    "Normal helpers retain all original native/default endpoints, never monkeypatched for positive observations. Invalid private keyword arguments are separate input rejection controls."
+  ],
+  "helper_AST_sha256": "264c5c2ab7ed0b46830c989c9a564f8b5761b6c7125906391865230785c3fc76",
+  "helper_execution": "Only exact identical project_local_float_deadline FunctionDef from each authenticated parent buffer is compiled in a fresh registered private module. No whole lane-A module or other project Source is executed.",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_seconds": 90,
+    "failure_ns": 55000000000,
+    "finish_seconds": 1,
+    "joint_ns": 20000000000,
+    "owned_seconds": 60,
+    "worker_bytes": 524288000
+  },
+  "main_ABI": {
+    "__main___identity_required": false,
+    "argv": [
+      "request_fd",
+      "request_sha256",
+      "request_bytes",
+      "result_fd",
+      "joint_began_ns",
+      "joint_deadline_ns"
+    ],
+    "argv_count": 6,
+    "call": "main(argv)",
+    "caller_owns": "interpreter/minimal native startup, Source loading and all process/EOF/terminal/aggregate resource acceptance",
+    "earliest_global_begin": "mandatory inherited integer begin, original exact20e9 interval; no reset",
+    "private_registered_module_supported": true,
+    "request_fd": "distinct readonly regular descriptor offset0, whole SHA/length/EOF",
+    "result_fd": "distinct writeonly descriptor"
+  },
+  "native_clock_calls": 0,
+  "observation_ABI": {
+    "bool_wire": {
+      "kind": "bool",
+      "value": "exact bool"
+    },
+    "captured_exact": [
+      "global_deadline_ns",
+      "producer_pair",
+      "local_before",
+      "global_after",
+      "remaining_ns",
+      "local_lower",
+      "numerator",
+      "denominator",
+      "bound_numerator",
+      "bound_denominator",
+      "local_deadline",
+      "local_began",
+      "deadline_numerator",
+      "deadline_denominator",
+      "final_global"
+    ],
+    "float_wire": {
+      "hex": "actual float.hex() string",
+      "kind": "float",
+      "ratio": [
+        "integer numerator",
+        "positive integer denominator"
+      ]
+    },
+    "int_wire": {
+      "kind": "int",
+      "value": "exact int, bool excluded"
+    },
+    "keys_exact": [
+      "case_id",
+      "global_deadline_ns",
+      "producer_pair",
+      "captured",
+      "returned"
+    ],
+    "negative_only_string_wire": {
+      "kind": "negative-string",
+      "value": "bounded <=128 characters, only deadline-str exception row; never a successful observation or oracle record"
+    },
+    "none_wire": {
+      "kind": "none"
+    },
+    "returned": "two-element list of typed actual scalar wires from exact returned tuple"
+  },
+  "oracle_Source_review": {
+    "bytes": 2571,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/oracle-typed-Source-review-v1.json",
+    "sha256": "f7fc6c7367eddc76564e5a7b387bd84307492e873bd3b669d2917b409c7ee45b"
+  },
+  "oracle_contract": {
+    "bytes": 4186,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/Source-contract-v1.json",
+    "sha256": "a28c6a9fc33183f9f4c6e315acc185ddddd452eef589e1d504ddd419ebe35af3"
+  },
+  "preregistration_ABI": {
+    "author_identity": "/root",
+    "inventory": "exact fixed native inventory list; controls_execution_authorized is True, genuine Root record only",
+    "required_binding_fields": [
+      "invocation_id",
+      "worker_source",
+      "oracle_source",
+      "helper_sources",
+      "limits",
+      "inventory",
+      "controls_execution_authorized"
+    ],
+    "schema": "ROOT-Q-isolated-clock-projection-controls-preregistration-v1"
+  },
+  "qualification_limits": [
+    "Source authoring is unexecuted and grants no actual fit/resource/clock/helper correctness.",
+    "No Q decode/model/checker/producer whole modules/search/theorem/Graph/RL execution or positive target route.",
+    "Numerical oracle certifies observed sample arithmetic only; future clock rates/suspend/resolution equivalence is not established.",
+    "Full52/W16/whole architecture/native tiling/full24 and original target proof remain unqualified.",
+    "Record-only mutations do not establish live mutation detection coverage."
+  ],
+  "request_ABI": {
+    "fields_exact": [
+      "schema",
+      "invocation_id",
+      "worker_source",
+      "helper_sources",
+      "oracle_source",
+      "runtime",
+      "reviews",
+      "preregistration",
+      "raw_closure"
+    ],
+    "helper_sources": {
+      "bootstrap": {
+        "bytes": 18802,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+        "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+      },
+      "runner": {
+        "bytes": 38113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+        "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+      },
+      "verifier": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      }
+    },
+    "invocation_id": "ASCII letters/digits/underscore, length 1..64",
+    "oracle_source": {
+      "bytes": 14789,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+      "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+    },
+    "preregistration": "future genuine ROOT scoped controls authorization raw pin; no actual request or authorization created here",
+    "raw_closure": "bounded <=64 canonical raw pins; whole Source/reviews/contracts/prereg/runtime custody, no Q/model input",
+    "reviews": {
+      "oracle": {
+        "bytes": 2571,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/oracle-typed-Source-review-v1.json",
+        "sha256": "f7fc6c7367eddc76564e5a7b387bd84307492e873bd3b669d2917b409c7ee45b"
+      },
+      "worker": "future genuine distinct current typed worker Source review raw pin"
+    },
+    "runtime": {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    "schema": "ROOT-Q-isolated-clock-projection-controls-request-v1",
+    "worker_source": {
+      "bytes": 38487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+    }
+  },
+  "response_ABI": {
+    "body_max_bytes": 1048576,
+    "body_schema": "Q-isolated-clock-projection-controls-body-v1",
+    "completed": "True only all51 native calls/all8 record validators/all26 Root numerical rows and original20 gates complete",
+    "completion_max_bytes": 1024,
+    "completion_schema": "Q-isolated-clock-projection-controls-completion-v1",
+    "exit0": "diagnostic isolated controls only; caller additionally requires complete EOF, timely native terminal and owned/caller closure",
+    "exit2": "any incomplete/exception/late/guard/resource failure; partial output cannot be accepted",
+    "format": "Exactly two canonical ASCII JSON lines plus EOF; body digest/length includes newline. No float JSON tokens.",
+    "parent_required": "Root outer acceptance after final output/exit/reap must remain independent of child claims",
+    "required_body_fields": [
+      "schema",
+      "version",
+      "CLOCK_DOMAIN",
+      "invocation_id",
+      "joint_began_ns",
+      "joint_deadline_ns",
+      "completed",
+      "all_checks_passed",
+      "helper_sources",
+      "helper_AST_sha256",
+      "native_helper_results",
+      "native_case_count",
+      "harness_record_negatives",
+      "pure_numerical_controls",
+      "profiler_restored",
+      "ROOT_primary_accepted",
+      "ROOT_resource_accepted",
+      "original_Q_theorem_accepted",
+      "full_architecture_qualified",
+      "full52_qualified",
+      "full24_accepted",
+      "native_accepted",
+      "RL_accepted"
+    ],
+    "strong_flags": {
+      "RL_accepted": false,
+      "ROOT_primary_accepted": false,
+      "ROOT_resource_accepted": false,
+      "full24_accepted": false,
+      "full52_qualified": false,
+      "full_architecture_qualified": false,
+      "native_accepted": false,
+      "original_Q_theorem_accepted": false
+    }
+  },
+  "review_ABI": {
+    "all_checks_passed": true,
+    "author_identity": "/root/arithmetic_induction",
+    "oracle_scope": "Q-isolated-projection-binary64-oracle-Source",
+    "reviewer_identity": "distinct genuine reviewer",
+    "scientific_calls": 0,
+    "scope": "Q-isolated-clock-projection-controls-Source",
+    "source": {
+      "bytes": 38487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+    },
+    "source_contract": "this exact contract raw pin supplied by future genuine reviewer",
+    "source_only": true,
+    "source_review_passed": true
+  },
+  "schema": "Q-isolated-clock-projection-controls-Source-contract-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 38487,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+    "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+  },
+  "source_only": true,
+  "sources": {
+    "bootstrap": {
+      "bytes": 18802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+      "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+    },
+    "oracle": {
+      "bytes": 14789,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+      "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+    },
+    "runner": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "worker": {
+      "bytes": 38487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+    }
+  },
+  "untested": true,
+  "version": "Q-isolated-clock-projection-controls-Source-v1",
+  "worker_source": {
+    "bytes": 38487,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+    "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+  }
+}

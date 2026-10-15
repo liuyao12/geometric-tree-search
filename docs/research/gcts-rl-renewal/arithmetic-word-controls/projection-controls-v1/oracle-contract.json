@@ -1,0 +1,109 @@
+{
+  "Q_payload_parses": 0,
+  "W16_qualified": false,
+  "activation_allowed": false,
+  "author": "/root",
+  "basis": {
+    "bytes": 11007,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/inventory-and-reconciliation-checklist-v1.json",
+    "sha256": "34d33d4e949751e880a79db0be98bf0e1b4ed48d58d0f129b5d05d3118e1c797"
+  },
+  "capture_keys": [
+    "global_deadline_ns",
+    "producer_pair",
+    "local_before",
+    "global_after",
+    "remaining_ns",
+    "local_lower",
+    "numerator",
+    "denominator",
+    "bound_numerator",
+    "bound_denominator",
+    "local_deadline",
+    "local_began",
+    "deadline_numerator",
+    "deadline_denominator",
+    "final_global"
+  ],
+  "does_not_certify": [
+    "profile/frame/callback custody",
+    "outer output/terminal/caller/global budgets",
+    "future clock-rate or suspend equivalence",
+    "whole-module native fit",
+    "full52 or W16",
+    "proof search, theorem, RL or plane tiling"
+  ],
+  "exports": [
+    "audit_observation",
+    "run_numerical_controls"
+  ],
+  "full52_qualified": false,
+  "functions_executed": 0,
+  "independence": "Integer IEEE754 bit decoding through struct; Euclidean reduction; binary search over all finite ordered bits and exact rational midpoint/ties-even. Does not call production helper, clocks, float.as_integer_ratio, project checker, producer or Q parser. Float.fromhex and struct bind each wire to exact bits; wire ratio is checked, not trusted.",
+  "numeric_count": 26,
+  "numeric_fixed_ids": [
+    "numeric-decode-positive-zero",
+    "numeric-decode-negative-zero",
+    "numeric-decode-positive-min-subnormal",
+    "numeric-decode-negative-min-subnormal",
+    "numeric-decode-smallest-normal",
+    "numeric-decode-one",
+    "numeric-decode-predecessor-one",
+    "numeric-decode-twenty",
+    "numeric-bound-zero-one-ns",
+    "numeric-bound-negative-zero-one-ns",
+    "numeric-bound-subnormal-one-ns",
+    "numeric-bound-smallest-normal-one-ns",
+    "numeric-bound-one-one-ns",
+    "numeric-bound-power-boundary-joint20",
+    "numeric-bound-large-ulp-one-ns",
+    "numeric-bound-large-ulp-joint20",
+    "numeric-add-cancel-to-zero",
+    "numeric-add-halfway-at-one-even",
+    "numeric-add-halfway-at-one-odd",
+    "numeric-producer-subnormal-cancels",
+    "numeric-producer-unit-retained",
+    "numeric-reject-infinity",
+    "numeric-reject-negative-infinity",
+    "numeric-reject-nan",
+    "numeric-reject-zero-remainder",
+    "numeric-reject-foreign-remainder"
+  ],
+  "numeric_scope": "Synthetic finite binary64/rational oracle controls; these do not force production clock samples or execute the production helper.",
+  "observation_keys": [
+    "case_id",
+    "global_deadline_ns",
+    "producer_pair",
+    "captured",
+    "returned"
+  ],
+  "observed_certifies": [
+    "all15 capture keys and typed wires",
+    "actual argument and return linkage",
+    "finite predecessor bits including signed zeros",
+    "independent exact remainder and stronger bound",
+    "both exact conservative inequalities and strict future",
+    "captured numerator/denominator equality",
+    "same-domain final helper global gate",
+    "producer original float expression and independent exact sum rounding"
+  ],
+  "proof_accepted": false,
+  "required_worker_guards": "Seal this module and all13 functions/code/default entries/globals/builtins, struct pack/unpack endpoints and float methods before first call; recheck after each oracle call; own global gate before/after and output. Do not reseal changed authority.",
+  "resource_fit_accepted": false,
+  "schema": "Q-isolated-projection-numerical-oracle-Source-contract-v1",
+  "source": {
+    "bytes": 14789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+    "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+  },
+  "source_only": true,
+  "static_checks": {
+    "AST_parsed": true,
+    "compiled_without_exec": true,
+    "function_count": 13,
+    "imports": [
+      "struct"
+    ]
+  },
+  "tests": 0
+}

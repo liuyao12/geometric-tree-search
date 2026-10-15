@@ -1,0 +1,295 @@
+{
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Q_payload_parses": 0,
+  "Root_preregistration": {
+    "CLI3": [
+      "canonical_prereg_path",
+      "raw_sha256",
+      "raw_bytes"
+    ],
+    "actual_preregistration": "ABSENT; Root must separately author concrete authenticated capsule. No plan or outdir generated.",
+    "field_count": 16,
+    "fields": [
+      "schema",
+      "scope",
+      "invocation_id",
+      "clock_domain",
+      "limits",
+      "runtime",
+      "caller_source",
+      "caller_review",
+      "caller_contract",
+      "worker_source",
+      "worker_review",
+      "worker_contract",
+      "request",
+      "output_directory",
+      "external_meter",
+      "raw_closure"
+    ],
+    "schema_source": {
+      "bytes": 3381,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Root-preregistration-schema-v1.json",
+      "sha256": "71d845cb044aa6f4a6e8219e9865b55dafd7d9c69603f516d4bde909fb71cf3d"
+    }
+  },
+  "Source_execution_roles": {
+    "child": "One fresh pinned Python; constant caller-owned bootstrap authenticates exact worker Source FD then compiles same buffer once in fresh registered private namespace. Selected reviewed projection worker extracts only declared helper FunctionDefs and Rootoracle, no graph/kernel/search/Q and no childspawns.",
+    "external_meter": "Pinned native time -l -o measures actual caller process kernel rusage after terminal; observer memory explicitly outside owned benchmark, like tool executor. Date wall includes it.",
+    "parent": "Only trusted caller and stdlib, no project Source exec or Q/model decode"
+  },
+  "Source_function_calls": 0,
+  "W16_qualified": false,
+  "actual_controls": 0,
+  "actual_plans": 0,
+  "all_strong_acceptance_false": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 5292,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/author-static-checks-v2.json",
+    "sha256": "1baa8047c66a6a3674bffb07d45ba63be3c2c42e9615a1f3d71226de5cfa79d9"
+  },
+  "binding_successor_scope": {
+    "JS": "Explicit Root-authorized new external postterminal observation instrument, Sourcev1 preserved. Genuine parent terminal is followed by one pinned-Python stdlib native clock observation, complete raw line/exit retained. All Date wall through probe charged; no project Source/helper/Q executes there.",
+    "Python": "Only ownVERSION and final cancel/resource/deadline order/return revocation/sample-scope. All18 other definitions/class, constant child bootstrap/API/caps/Sourceauth/output mechanics unchanged. Full inverse supplied.",
+    "no_actuals": true,
+    "resolved_findings": [
+      "CALLER-FINAL-CANCEL-1",
+      "CALLER-FINAL-RESOURCE-CLOCK-1"
+    ]
+  },
+  "caller_source": {
+    "bytes": 29587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v2.py",
+    "sha256": "5a5a2f1fdedcd0ccd93c037e78e2da24997626ea84d037b4c5ad22a98d3f63a4"
+  },
+  "clock_policy": {
+    "bytes": 4443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+    "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+  },
+  "complete_cost_scope": {
+    "caller90_finish1": "Same-isolate Date before exec until complete post-terminal observation tool; all literal tool observations and original sessions retained; finite nonnegative monotone brackets and elapsed+1<=90. No invented terminal.",
+    "failure55": "Only kill/reap/raw diagnostics/failure publication, never success or proof.",
+    "initial_startup": "Interpreter/this trusted caller Source compilation/time import are before native begin; external actual Date bracket conservatively includes them for owned60 and caller90+finish1.",
+    "memory512": "Root must authenticate full external native meter output EOF with exact one positive terminal caller maximumresidentsetsize integer plus complete worker wait4 peak. Sum is conservative even if native meter includes some descendant peak. Internal parent selfpeak is provisional preexit, never called a terminal peak. Meter observer memory excluded as external measurement instrument; wall overhead included.",
+    "native20": "Original native begin/cold Source+all work+serialization/final resource then fresh native time+cancel return gate unchanged. True caller exit must additionally precede genuine common-kernel post-terminal observation < original D. Initial interpreter/trusted caller compilation/time import remain externally charged owned/caller startup. No native deadline reset.",
+    "outputs": "Complete raw result/stdout/stderr plus exact ledger/provisional/final-native/revocation. Tool stdout only bounded<4KiB notice with full artifact paths/pins; truncated tool text never protocol authority.",
+    "owned60": "External actual observed elapsed<=60 includes prebegin startup, all caller/worker work/true exit, meter printing and complete post-terminal observer tool. Incomplete caller/probe or nonfinite/negative/nonmonotone Date brackets cannot qualify."
+  },
+  "external_accounting_API": {
+    "accounting_fields": [
+      "started_ms",
+      "terminal_observed_ms",
+      "elapsed_ms",
+      "finish_reserve_ms",
+      "actual_terminal_observed",
+      "actual_exit_code",
+      "observations",
+      "unfinished_session_id",
+      "external_owned60_candidate",
+      "external_caller90_with_finish1_candidate",
+      "wall_clock_brackets_valid",
+      "completed_observation_ms",
+      "post_terminal_native_probe_complete",
+      "post_terminal_native_output",
+      "unfinished_probe_session_id"
+    ],
+    "fresh_output": "Shell guard refuses existing or symlink external metrics before exec. Root concrete prereg.external_meter output path must be exactly the same argument.",
+    "function": "observeActualProjectionCaller({runtime,caller,preregistration,external_meter_output,cwd})",
+    "meter_saved_schema": "Complete raw native output retained separately. Root saved closer requires terminal tool exit, regular full stable EOF/hash, one literal maximum resident set size row and nonnegative native real duration with conservative printed-precision upward allowance corroborating external<=60, complete worker wait4, source pins and all global/owned/caller scopes. No independent metric parser/closer execution authored here. Native post-terminal probe line/exit/Source/runtime must independently pass original D; Date alone cannot authorize native success.",
+    "native_postterminal_gate": "Only after actual caller+meter terminal, fixed pinned-Python -I-S-B stdlib-only snippet captures original native clock_gettime_ns and exact integer CLOCK_MONOTONIC ID, validates callable/type/ID before/after one call, emits bounded complete JSONline. Keep complete tool result/exit. Root saved closer parses exact native integer and requires actual caller exit < post-terminal native observed_ns < original native deadline. No numeric/helper/math/Q/control Source executed by probe.",
+    "source": {
+      "bytes": 6306,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v2.js",
+      "sha256": "b995437cee107e2effc433dbea936780c1a256966f83d74733b9cf5e7cf08012"
+    },
+    "supported_command_prefix": [
+      "/usr/bin/time",
+      "-l",
+      "-o",
+      "<fresh external metrics>",
+      "<pinned runtime>",
+      "-I",
+      "-S",
+      "-B",
+      "<caller Source>",
+      "<Root prereg CLI3>"
+    ]
+  },
+  "external_accounting_source": {
+    "bytes": 6306,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v2.js",
+    "sha256": "b995437cee107e2effc433dbea936780c1a256966f83d74733b9cf5e7cf08012"
+  },
+  "external_terminal_meter": {
+    "bytes": 135248,
+    "path": "/usr/bin/time",
+    "sha256": "d2210b72e8c978748a0f0ac7d0819dda4dd411bb7a2e9730476038b0d695e7a2"
+  },
+  "full52_qualified": false,
+  "guard_scope": "Ordinary synchronous trusted Source processes. No foreign Source executes in parent and no worker callback can mutate parent address space. Exact immutable capsules, same-buffer compilation, strict fd access/length/EOF/native clock+ID and entry code/default/kwentry/closure checks. Actual selected worker owns profiler/helper/oracle guards. No hostile OS/VM/async promise or OS-enforced universal memory hard limit.",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "native_clock_calls": 0,
+  "pending": [
+    "Distinct current caller2+JS2 complete Source review",
+    "Distinct current selected worker/oracle Source reviews",
+    "Root genuine concrete request/prereg16 and exact current rawclosure/fresh native meter path",
+    "Root-authorized actual once invocation + whole native/EOF/raw/caller/resource reconciliation"
+  ],
+  "preserved_negative_Source_review": {
+    "bytes": 2061,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/caller-typed-Source-review-v1.json",
+    "sha256": "542cec8eae45af57b35d38812e5c439193a1cb6ffbda7d8e3c2215432eff1f02"
+  },
+  "preserved_negative_findings": {
+    "bytes": 4534,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/caller-findings-v1.json",
+    "sha256": "6807f7709fb58143369d0c7eefcfa76f7c53db143e4dfc4c314d07c8b14e9d74"
+  },
+  "preserved_parent_author_static": {
+    "bytes": 2903,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/author-static-checks-v1.json",
+    "sha256": "7c0360eb03b794087ce9d1d60f43df7c32e280bef19b0ccf661be5e0c95c7c4c"
+  },
+  "preserved_parent_contract": {
+    "bytes": 11825,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-contract-v1.json",
+    "sha256": "f618f4036eade0dff3cb4243ba9fd2b26ca6b413422afea84bacf5cd114b6309"
+  },
+  "preserved_parent_handoff": {
+    "bytes": 2474,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/handoff-v1.json",
+    "sha256": "fd973222987934ef59d47e3987e4e0743e519946c1c3bfef53e2539194659bc8"
+  },
+  "resource_fit": false,
+  "review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "reviewer_identity": "must differ",
+    "scientific_calls": 0,
+    "scope": "Q-trusted-projection-only-outer-caller-Source",
+    "source": {
+      "bytes": 29587,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v2.py",
+      "sha256": "5a5a2f1fdedcd0ccd93c037e78e2da24997626ea84d037b4c5ad22a98d3f63a4"
+    },
+    "source_contract": "This actual contract rawpin supplied by genuine distinct reviewer",
+    "source_only": true,
+    "source_review_passed": "genuine reviewer result only",
+    "sources": {
+      "caller": {
+        "bytes": 29587,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v2.py",
+        "sha256": "5a5a2f1fdedcd0ccd93c037e78e2da24997626ea84d037b4c5ad22a98d3f63a4"
+      },
+      "external_accounting": {
+        "bytes": 6306,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v2.js",
+        "sha256": "b995437cee107e2effc433dbea936780c1a256966f83d74733b9cf5e7cf08012"
+      }
+    }
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "Q-trusted-projection-only-outer-caller-Source-contract-v2",
+  "selected_current_worker_provenance": {
+    "review": "PENDING genuine distinct review, no fabricated pass",
+    "source": {
+      "bytes": 38487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+    },
+    "source_contract": {
+      "bytes": 15147,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "385be50cd3b63a6e795c28932cbff8283e118e09eac2d4fe77ceb7808e20a0bc"
+    },
+    "source_selection_authority": "Root authenticated concrete prereg must bind exact actual current reviewed worker/source_contract. Caller is projection-only reusable intake, no unreviewed worker or other scope accepted."
+  },
+  "source_deltas": {
+    "external_forward": {
+      "bytes": 10060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/external-JS-v1-to-v2.patch",
+      "sha256": "998fcea9a1cca09fae4a33291ea8aa1acf681a250e23af75adca4baafa058dd8"
+    },
+    "external_inverse": {
+      "bytes": 10060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/external-JS-v2-to-v1-full-inverse.patch",
+      "sha256": "999146da3f847db7ec289a51630477fb72889ec33df6ad48d682bec2e7619ae2"
+    },
+    "python": {
+      "bytes": 4346,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/caller2-code-only-delta-v1.json",
+      "sha256": "ef6c6c5050ae51b6b34f4cf7e59c3ddc1c6e2dce2e267fe9e169acadfc9c61e3"
+    },
+    "python_forward": {
+      "bytes": 4033,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-v1-to-v2.patch",
+      "sha256": "73cd16bde9243ad98fe5763b6f16314402c7deda32f0d27318f4c2e6a760e6ab"
+    },
+    "python_inverse": {
+      "bytes": 4033,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-v2-to-v1-full-inverse.patch",
+      "sha256": "363794d00860023b2832973d1767027d14e0b06641b50c77f962c3e13f1ad84b"
+    }
+  },
+  "source_only": true,
+  "supported": {
+    "W16": false,
+    "full52": false,
+    "projection": "Executable Source only, contingent on exact current worker contract/review and Root concrete prereg + distinct current caller review. No runtime claimed."
+  },
+  "unsupported_lanes": {
+    "W16": "Controller6 accepts original integers and genuine fresh Owner/context9, but this caller does not assemble/seal full original context/snapshots/census or failure55 Source guard. Separate trusted early W16 caller remains absent.",
+    "full52": "Worker5 accepts inherited begin but insists on genuine __main__ launcher5 origin/WORKER_SOURCE/JOINT_BEGAN_NS; launcher5 unconditionally captures new begin. Requires separate explicit inherited-begin launcher/outer handoff review; no __main__ spoofing or silent clock shift."
+  },
+  "worker_API": {
+    "argv6": [
+      "request_fd",
+      "request_sha256",
+      "request_bytes",
+      "result_fd",
+      "joint_began_ns",
+      "joint_deadline_ns"
+    ],
+    "author_identity": "/root/arithmetic_induction",
+    "body_schema": "Q-isolated-clock-projection-controls-body-v1",
+    "caps": {
+      "body_bytes": 1048576,
+      "trailer_bytes": 1024
+    },
+    "completion_schema": "Q-isolated-clock-projection-controls-completion-v1",
+    "entry": "main(argv6), exact inherited original global integers; private registered module allowed",
+    "request": "Whole opaque readonly regular FD offset0 and complete EOF, <=1MiB. Parent never decodes it.",
+    "required_body_fields": {
+      "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+      "all_checks_passed": true,
+      "completed": true,
+      "false_flags": [
+        "ROOT_primary_accepted",
+        "ROOT_resource_accepted",
+        "original_Q_theorem_accepted",
+        "full_architecture_qualified",
+        "full52_qualified",
+        "full24_accepted",
+        "native_accepted",
+        "RL_accepted"
+      ],
+      "joint_began_ns": "exact original int",
+      "joint_deadline_ns": "same begin+20e9 int"
+    },
+    "response_integer_policy": "Metadata/trailer native integers signed64; workerbody exact integers bounded4096decimal digits under1MiB, preserving all binary64 ratios. No float/nonfinite tokens or bool coercion.",
+    "returncode": "Exact int0 only complete result; all incomplete/late/failure2 or exception cannot qualify.",
+    "scope": "Q-isolated-clock-projection-controls-Source"
+  }
+}

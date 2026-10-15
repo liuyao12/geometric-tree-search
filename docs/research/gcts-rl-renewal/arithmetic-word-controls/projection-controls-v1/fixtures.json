@@ -1,0 +1,337 @@
+{
+  "actual_calls": 0,
+  "native_case_count": 51,
+  "native_helper_cases": [
+    {
+      "id": "bootstrap-normal-checker",
+      "kind": "normal",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-normal-producer",
+      "kind": "normal",
+      "pair": true,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-bool",
+      "kind": "deadline-bool",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-float",
+      "kind": "deadline-float",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-str",
+      "kind": "deadline-str",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-negative",
+      "kind": "deadline-negative",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-large",
+      "kind": "deadline-large",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-pair-nonbool",
+      "kind": "pair-nonbool",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-global",
+      "kind": "nonnative-global",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-local",
+      "kind": "nonnative-local",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-nextafter",
+      "kind": "nonnative-nextafter",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-finite",
+      "kind": "nonnative-finite",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-ratio",
+      "kind": "nonnative-ratio",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-clock-id-bool",
+      "kind": "clock-id-bool",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-clock-id-wrong",
+      "kind": "clock-id-wrong",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-expired",
+      "kind": "expired",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-foreign",
+      "kind": "foreign",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "runner-normal-checker",
+      "kind": "normal",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-normal-producer",
+      "kind": "normal",
+      "pair": true,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-bool",
+      "kind": "deadline-bool",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-float",
+      "kind": "deadline-float",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-str",
+      "kind": "deadline-str",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-negative",
+      "kind": "deadline-negative",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-large",
+      "kind": "deadline-large",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-pair-nonbool",
+      "kind": "pair-nonbool",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-global",
+      "kind": "nonnative-global",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-local",
+      "kind": "nonnative-local",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-nextafter",
+      "kind": "nonnative-nextafter",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-finite",
+      "kind": "nonnative-finite",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-ratio",
+      "kind": "nonnative-ratio",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-clock-id-bool",
+      "kind": "clock-id-bool",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-clock-id-wrong",
+      "kind": "clock-id-wrong",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-expired",
+      "kind": "expired",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-foreign",
+      "kind": "foreign",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "verifier-normal-checker",
+      "kind": "normal",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-normal-producer",
+      "kind": "normal",
+      "pair": true,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-bool",
+      "kind": "deadline-bool",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-float",
+      "kind": "deadline-float",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-str",
+      "kind": "deadline-str",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-negative",
+      "kind": "deadline-negative",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-large",
+      "kind": "deadline-large",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-pair-nonbool",
+      "kind": "pair-nonbool",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-global",
+      "kind": "nonnative-global",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-local",
+      "kind": "nonnative-local",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-nextafter",
+      "kind": "nonnative-nextafter",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-finite",
+      "kind": "nonnative-finite",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-ratio",
+      "kind": "nonnative-ratio",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-clock-id-bool",
+      "kind": "clock-id-bool",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-clock-id-wrong",
+      "kind": "clock-id-wrong",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-expired",
+      "kind": "expired",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-foreign",
+      "kind": "foreign",
+      "pair": false,
+      "role": "verifier"
+    }
+  ],
+  "no_positive_Q_word": true,
+  "normal_count": 6,
+  "pure_numeric_count": 26,
+  "pure_numeric_oracle_source": {
+    "bytes": 14789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+    "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+  },
+  "record_only_mutant_count": 8,
+  "record_only_mutants": [
+    "missing-return",
+    "duplicate-return",
+    "foreign-code",
+    "foreign-globals",
+    "default-entry-record-mismatch",
+    "callback-record-mismatch",
+    "profiler-not-restored",
+    "late-post-profile"
+  ],
+  "record_scope": "Mutate a copy of one actual complete native envelope only. No live helper/native/default/callback mutation is performed or qualified.",
+  "schema": "Q-isolated-clock-projection-fixed-inventory-Source-v1",
+  "source_only": true,
+  "time_rejection_count": 6,
+  "typed_rejection_count": 39,
+  "unexecuted": true
+}

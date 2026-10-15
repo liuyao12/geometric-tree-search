@@ -1,0 +1,269 @@
+{
+  "W16_qualified": false,
+  "artifacts": [
+    {
+      "bytes": 14789,
+      "public_filename": "oracle.py",
+      "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py"
+    },
+    {
+      "bytes": 4186,
+      "public_filename": "oracle-contract.json",
+      "sha256": "a28c6a9fc33183f9f4c6e315acc185ddddd452eef589e1d504ddd419ebe35af3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/Source-contract-v1.json"
+    },
+    {
+      "bytes": 2571,
+      "public_filename": "oracle-review.json",
+      "sha256": "f7fc6c7367eddc76564e5a7b387bd84307492e873bd3b669d2917b409c7ee45b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/oracle-typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 38487,
+      "public_filename": "worker.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py"
+    },
+    {
+      "bytes": 15147,
+      "public_filename": "worker-contract.json",
+      "sha256": "385be50cd3b63a6e795c28932cbff8283e118e09eac2d4fe77ceb7808e20a0bc",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/Source-contract-v1.json"
+    },
+    {
+      "bytes": 3986,
+      "public_filename": "worker-review.json",
+      "sha256": "a535d82a25f75e791ac9d785cdb636fb30def3f1c257ef4831387f8d38d547ca",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/worker-typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 7593,
+      "public_filename": "fixtures.json",
+      "sha256": "fa7deace5cd45c37f6a85fbe6f5e5436bb6c0de8abee4a4311d3baebc2fd5e5e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/fixed-inventory-v1.json"
+    },
+    {
+      "bytes": 29730,
+      "public_filename": "caller.py",
+      "sha256": "82d5dc9cf67e5c1f1a1f1a5edefe980068070683a0cd2ac90d05fd860f066750",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v3.py"
+    },
+    {
+      "bytes": 20610,
+      "public_filename": "caller-contract.json",
+      "sha256": "0b3ed4e6fddbb95e2aa444f301fda3b98d8775d26caa17b8892da7ae1a9a222a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-contract-v4.json"
+    },
+    {
+      "bytes": 3747,
+      "public_filename": "caller-review.json",
+      "sha256": "5a5ff16a5949b363a4a1124f911cee3770676d2f45a568bb8b0770126f9064d6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-projection-caller-independent-review-source-20261015/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 6604,
+      "public_filename": "native-meter.py",
+      "sha256": "89f017054ca5b229c25d8b4b568c974d388a6b15a928d6cb27dd7840aacb84f4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_native_terminal_meter_v1.py"
+    },
+    {
+      "bytes": 6468,
+      "public_filename": "external-accounting.js",
+      "sha256": "b102933e5b86cbf760bce5b8491d7d683a699cd18e3721622eac2d57cc5f2f01",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v3.js"
+    },
+    {
+      "bytes": 7491,
+      "public_filename": "ROOT-disposition.json",
+      "sha256": "67826de9c0dfeedc74646ef888d4e67754d93b3e09e6e7b9d34e7ed7d66c8796",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-ROOT-disposition.json"
+    },
+    {
+      "bytes": 17893,
+      "public_filename": "ROOT-critical-checks.json",
+      "sha256": "463d596da058ad3b19802d0dcb103ee3e1f904ca414f8a63578929dd1b4f7a41",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-ROOT-critical-reconciliation.json"
+    },
+    {
+      "bytes": 65289,
+      "public_filename": "independent-findings.json",
+      "sha256": "abacb16c2603ec1640190abe5e7ff80515b418bc0f1a3120a0f048a80859c6ea",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-saved-independent-v2-20261015/findings-v1.json"
+    },
+    {
+      "bytes": 2920,
+      "public_filename": "independent-handoff.json",
+      "sha256": "6ca8e88d78c03069d265523f3c6791cba2420a70d9243577b9e44ad9206743db",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-saved-independent-v2-20261015/handoff-v1.json"
+    },
+    {
+      "bytes": 52999,
+      "public_filename": "worker-wire.jsonl",
+      "sha256": "79d07bc2288a8b5455a5e7fcdaae69898400974bf75f1c479d6185cda6eb6960",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-result.jsonl"
+    },
+    {
+      "bytes": 52789,
+      "public_filename": "worker-body.json",
+      "sha256": "9dca0e6d62e2855430ddf7631ec94dbcd7e92afdcfe40d6102369a0790782391",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-control-body.json"
+    },
+    {
+      "bytes": 7738,
+      "public_filename": "outer-ledger.json",
+      "sha256": "7c09b5e3aa3916211703247845bfc098b982848a05b3c199c6248a421c32e0be",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/outer-native-ledger.json"
+    },
+    {
+      "bytes": 589,
+      "public_filename": "outer-final-observation.json",
+      "sha256": "43cab60bde5488715167b372f795725ee235156a31e970b56d81e09d99597bd8",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/outer-final-native-observation.json"
+    },
+    {
+      "bytes": 53722,
+      "public_filename": "outer-provisional.json",
+      "sha256": "2524d0abfedd221513e23fb13ea65cda60c6b2358804a90a7d34c48c74eb0c86",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/outer-provisional.json"
+    },
+    {
+      "bytes": 6065,
+      "public_filename": "raw-closure-receipts.json",
+      "sha256": "ba8ab31f146ed92f238232de7549651260a84396a966029f626205bcd271fce6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/raw-closure-receipts.json"
+    },
+    {
+      "bytes": 4796,
+      "public_filename": "external-observations.json",
+      "sha256": "638c629c7e8b3e69bf8d9eb9e15eb89ed7bc0d6123d0af2ac7777506d68f1baa",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-external-observations.json"
+    },
+    {
+      "bytes": 1804,
+      "public_filename": "native-meter-result.json",
+      "sha256": "106ed1a26212c6f6fac774f2b08cc9ea81ab9c8969d5e8531833e87a8209385b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-terminal-meter.txt"
+    },
+    {
+      "bytes": 10056,
+      "public_filename": "outer-preregistration.json",
+      "sha256": "64fe55d5622ea4b80fc0b3e91e246603054b36c842be9ba7e0c2b0f0daf18eee",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-outer-preregistration.json"
+    },
+    {
+      "bytes": 10315,
+      "public_filename": "worker-preregistration.json",
+      "sha256": "b835afee97d1d237074dfc6c63463f87fe706360f9836faa87918656029c0189",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-worker-preregistration.json"
+    },
+    {
+      "bytes": 9168,
+      "public_filename": "worker-request.json",
+      "sha256": "1ba39e5dcbd0bb09fe0abc03a6b35223b12f7a02b62f9a862fb456cd178831d1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-worker-request.json"
+    },
+    {
+      "bytes": 2951,
+      "public_filename": "ROOT-scoped-authorization.json",
+      "sha256": "962a041713a4c23cfda83e217e1bdddaab024f95c0eaa8064803fc0e13bca649",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-ROOT-scoped-authorization.json"
+    },
+    {
+      "bytes": 5587,
+      "public_filename": "first-UNKNOWN.json",
+      "sha256": "331a447e3719743425d086dc1a6d4ec3a8920c76f7005b6c6b47797f629bdb1e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-ROOT-disposition.json"
+    },
+    {
+      "bytes": 52971,
+      "public_filename": "first-worker-wire.jsonl",
+      "sha256": "a337169c203d511f2311f91d1d66776d17b64c01f88bbbc21f8b6ad9a31814c5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/worker-result.jsonl"
+    },
+    {
+      "bytes": 52761,
+      "public_filename": "first-worker-body.json",
+      "sha256": "6f8d6ae51a0c249b2f3967af64296627e7b34909f045dff1e0bb5199395df950",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-control-body.json"
+    },
+    {
+      "bytes": 7461,
+      "public_filename": "first-outer-ledger.json",
+      "sha256": "b10bcae7d84fedc7206715ed409fe80c7ece68e0be92e7d8e2398897140ea627",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/outer-native-ledger.json"
+    },
+    {
+      "bytes": 4711,
+      "public_filename": "first-external-observations.json",
+      "sha256": "c3f684b113c84e6e5e1dcc998cf0197ff55c322f8b62bd1f507f66f8ab5cf209",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-external-observations.json"
+    },
+    {
+      "bytes": 53,
+      "public_filename": "first-meter-output.txt",
+      "sha256": "08cdf2560479b218fe0335e2eb36c8abdc5edfcd47cd7dcd129208b82564a3c5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-terminal-meter.txt"
+    },
+    {
+      "bytes": 63906,
+      "public_filename": "first-independent-findings.json",
+      "sha256": "f8fc2b6c4abc4f7d7802ebb7d36e69bbb0fa5271613bb40dc9f093e822a3cd73",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-saved-independent-20261015/findings-v1.json"
+    },
+    {
+      "bytes": 29587,
+      "public_filename": "first-caller.py",
+      "sha256": "5a5a2f1fdedcd0ccd93c037e78e2da24997626ea84d037b4c5ad22a98d3f63a4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v2.py"
+    },
+    {
+      "bytes": 17584,
+      "public_filename": "first-caller-contract.json",
+      "sha256": "c8f11fb92f4bb6bfbcd4f8c1464bd5be61a9ae52fdca92288609e04aaaaf3caa",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-contract-v2.json"
+    },
+    {
+      "bytes": 3453,
+      "public_filename": "first-caller-review.json",
+      "sha256": "8249d4eef7ec8a9ef693fd3ceb7e852454391af4671dc443e01b0a9a176d9c50",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-projection-caller-independent-review-source-20261015/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 6306,
+      "public_filename": "first-external-accounting.js",
+      "sha256": "b995437cee107e2effc433dbea936780c1a256966f83d74733b9cf5e7cf08012",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v2.js"
+    },
+    {
+      "bytes": 2061,
+      "public_filename": "earlier-caller-negative.json",
+      "sha256": "542cec8eae45af57b35d38812e5c439193a1cb6ffbda7d8e3c2215432eff1f02",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/caller-typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 28423,
+      "public_filename": "earlier-caller.py",
+      "sha256": "269f61c06641effd0216f6bcdc3aab0ff07de01b0e0feb6ff785ccf6e92567d6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v1.py"
+    }
+  ],
+  "descriptive_erratum": "The exact preserved ledger.memory_bound_scope explanatory string still names time -l. Its current external_terminal_meter capsule, canonical native meter JSON and true wait4 data identify the reviewed Python replacement; no failed old timer data is used for admission.",
+  "first_attempt": "UNKNOWN, preserved, no prefix admission",
+  "full52_qualified": false,
+  "independent_saved_checks": 235,
+  "new_theorems": 0,
+  "original_model_fit_accepted": false,
+  "partitions": {
+    "normal_native": 6,
+    "record_only": 8,
+    "synthetic_numeric": 26,
+    "time_rejections": 6,
+    "typed_rejections": 39
+  },
+  "proof_search_runs": 0,
+  "qualified_cases": 85,
+  "resource_scope": "Owned reviewed caller plus one worker; pinned meter/postprobe and tool executor are external measuring instruments. Observer memory excluded; all observed wall overhead included. No OS hard-cap claim.",
+  "result": "ISOLATED_CONTROLS_QUALIFIED",
+  "schema": "GCTS-isolated-clock-projection-publication-v1"
+}

@@ -1,0 +1,499 @@
+{
+  "RL_accepted": false,
+  "ROOT_primary_accepted": false,
+  "ROOT_resource_accepted": false,
+  "W16_qualified": false,
+  "all_saved_files": [
+    {
+      "bytes": 589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/outer-final-native-observation.json",
+      "sha256": "43cab60bde5488715167b372f795725ee235156a31e970b56d81e09d99597bd8"
+    },
+    {
+      "bytes": 7738,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/outer-native-ledger.json",
+      "sha256": "7c09b5e3aa3916211703247845bfc098b982848a05b3c199c6248a421c32e0be"
+    },
+    {
+      "bytes": 53722,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/outer-provisional.json",
+      "sha256": "2524d0abfedd221513e23fb13ea65cda60c6b2358804a90a7d34c48c74eb0c86"
+    },
+    {
+      "bytes": 6065,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/raw-closure-receipts.json",
+      "sha256": "ba8ab31f146ed92f238232de7549651260a84396a966029f626205bcd271fce6"
+    },
+    {
+      "bytes": 9168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/request.json",
+      "sha256": "1ba39e5dcbd0bb09fe0abc03a6b35223b12f7a02b62f9a862fb456cd178831d1"
+    },
+    {
+      "bytes": 52999,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-result.jsonl",
+      "sha256": "79d07bc2288a8b5455a5e7fcdaae69898400974bf75f1c479d6185cda6eb6960"
+    },
+    {
+      "bytes": 38487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-source.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "author": "/root",
+  "body": {
+    "bytes": 52789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-control-body.json",
+    "sha256": "9dca0e6d62e2855430ddf7631ec94dbcd7e92afdcfe40d6102369a0790782391"
+  },
+  "caller_finish_reserve_ms": 1000,
+  "caller_terminal_peak_bytes": 20955136,
+  "checks": [
+    {
+      "check": "complete two lines and EOF",
+      "passed": true
+    },
+    {
+      "check": "canonical complete worker body",
+      "passed": true
+    },
+    {
+      "check": "canonical complete completion",
+      "passed": true
+    },
+    {
+      "check": "whole body hash and bytes",
+      "passed": true
+    },
+    {
+      "check": "exact complete native inventory/order",
+      "passed": true
+    },
+    {
+      "check": "51 actual complete native rows",
+      "passed": true
+    },
+    {
+      "check": "complete native partitions",
+      "passed": true
+    },
+    {
+      "check": "all actual envelopes intact",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-normal-checker certificate and argument linkage",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-normal-producer certificate and argument linkage",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-deadline-bool intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-deadline-float intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-deadline-str intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-deadline-negative intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-deadline-large intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-pair-nonbool intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-nonnative-global intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-nonnative-local intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-nonnative-nextafter intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-nonnative-finite intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-nonnative-ratio intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-clock-id-bool intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-clock-id-wrong intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-expired intended exception",
+      "passed": true
+    },
+    {
+      "check": "bootstrap-foreign intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-normal-checker certificate and argument linkage",
+      "passed": true
+    },
+    {
+      "check": "runner-normal-producer certificate and argument linkage",
+      "passed": true
+    },
+    {
+      "check": "runner-deadline-bool intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-deadline-float intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-deadline-str intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-deadline-negative intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-deadline-large intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-pair-nonbool intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-nonnative-global intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-nonnative-local intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-nonnative-nextafter intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-nonnative-finite intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-nonnative-ratio intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-clock-id-bool intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-clock-id-wrong intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-expired intended exception",
+      "passed": true
+    },
+    {
+      "check": "runner-foreign intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-normal-checker certificate and argument linkage",
+      "passed": true
+    },
+    {
+      "check": "verifier-normal-producer certificate and argument linkage",
+      "passed": true
+    },
+    {
+      "check": "verifier-deadline-bool intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-deadline-float intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-deadline-str intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-deadline-negative intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-deadline-large intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-pair-nonbool intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-nonnative-global intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-nonnative-local intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-nonnative-nextafter intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-nonnative-finite intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-nonnative-ratio intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-clock-id-bool intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-clock-id-wrong intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-expired intended exception",
+      "passed": true
+    },
+    {
+      "check": "verifier-foreign intended exception",
+      "passed": true
+    },
+    {
+      "check": "eight exact record-only cases",
+      "passed": true
+    },
+    {
+      "check": "26 exact synthetic cases",
+      "passed": true
+    },
+    {
+      "check": "all stronger worker flags false",
+      "passed": true
+    },
+    {
+      "check": "profiler restored and whole body complete",
+      "passed": true
+    },
+    {
+      "check": "complete canonical native terminal meter",
+      "passed": true
+    },
+    {
+      "check": "external tool true terminal0 and complete probe",
+      "passed": true
+    },
+    {
+      "check": "original global20 and complete native chain",
+      "passed": true
+    },
+    {
+      "check": "caller actual native PID/status/reap",
+      "passed": true
+    },
+    {
+      "check": "worker actual native status/reap",
+      "passed": true
+    },
+    {
+      "check": "all cancellation and failure gates clear",
+      "passed": true
+    },
+    {
+      "check": "no revocation or extra owned files",
+      "passed": true
+    },
+    {
+      "check": "actual terminal kernel memory observations",
+      "passed": true
+    },
+    {
+      "check": "conservative owned aggregate512",
+      "passed": true
+    },
+    {
+      "check": "external all-wall owned60 and caller90+finish1",
+      "passed": true
+    },
+    {
+      "check": "native whole caller elapsed within owned cap",
+      "passed": true
+    },
+    {
+      "check": "complete empty worker stdout/stderr",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v3.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/worker-typed-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-projection-caller-independent-review-source-20261015/typed-Source-review-v2.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/oracle-typed-Source-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-contract-v4.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_native_terminal_meter_v1.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v3.js",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/inventory-and-reconciliation-checklist-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-observability-design-review-source-20261015/design-review-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/fixed-inventory-v1.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-worker-preregistration.json",
+      "passed": true
+    },
+    {
+      "check": "raw custody /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-worker-request.json",
+      "passed": true
+    },
+    {
+      "check": "private worker Source exact authenticated buffer",
+      "passed": true
+    },
+    {
+      "check": "private request exact authenticated buffer",
+      "passed": true
+    }
+  ],
+  "conservative_aggregate_bytes": 41910272,
+  "descriptive_erratum": "The exact preserved ledger.memory_bound_scope explanatory string still names time -l. Its current external_terminal_meter capsule, canonical native meter JSON and true wait4 data identify the reviewed Python replacement; no failed old timer data is used for admission.",
+  "external_elapsed_ms": 3295,
+  "external_observations": {
+    "bytes": 4796,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-external-observations.json",
+    "sha256": "638c629c7e8b3e69bf8d9eb9e15eb89ed7bc0d6123d0af2ac7777506d68f1baa"
+  },
+  "full52_qualified": false,
+  "independent_saved_review_pending": true,
+  "invocation_id": "projection85_20261015_v2",
+  "isolated_controls_qualified": false,
+  "native_cases": 51,
+  "native_meter": {
+    "bytes": 1804,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-terminal-meter.txt",
+    "sha256": "106ed1a26212c6f6fac774f2b08cc9ea81ab9c8969d5e8531833e87a8209385b"
+  },
+  "native_normal": 6,
+  "new_theorems": 0,
+  "original_joint_began_ns": 421273905648000,
+  "original_joint_deadline_ns": 421293905648000,
+  "postterminal_elapsed_ns": 3151067000,
+  "postterminal_observed_ns": 421277056715000,
+  "proof_search_runs": 0,
+  "record_only_cases": 8,
+  "resource_scope": "Owned reviewed caller plus one worker; pinned meter/postprobe and tool executor are external measuring instruments. Observer memory excluded; all observed wall overhead included. No OS hard-cap claim.",
+  "result": "PENDING_INDEPENDENT_SAVED_RECONCILIATION",
+  "root_checks_passed": true,
+  "schema": "ROOT-isolated-projection-controls-critical-reconciliation-v2",
+  "synthetic_numeric_cases": 26,
+  "time_rejections": 6,
+  "total_cases": 85,
+  "typed_rejections": 39,
+  "worker_terminal_peak_bytes": 20955136,
+  "worker_wire": {
+    "bytes": 52999,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-owned-output/worker-result.jsonl",
+    "sha256": "79d07bc2288a8b5455a5e7fcdaae69898400974bf75f1c479d6185cda6eb6960"
+  }
+}

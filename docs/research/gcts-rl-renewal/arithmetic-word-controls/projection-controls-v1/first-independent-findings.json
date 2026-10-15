@@ -1,0 +1,1821 @@
+{
+  "all_checks_passed": true,
+  "attribution": "Reviewer authored conceptual O1-O8 observability design and old checker/verifier/codec dependencies, independently Source-reviewed current worker/Root oracle, but authored neither current worker, Root oracle, caller nor Root actual projection. This is saved reconciliation, not a new independent mathematical replay.",
+  "body_bytes": 52761,
+  "body_sha256": "6f8d6ae51a0c249b2f3967af64296627e7b34909f045dff1e0bb5199395df950",
+  "check_count": 227,
+  "checks": [
+    {
+      "detail": null,
+      "name": "whole wire exact requested52971 SHA",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact two LF lines and full EOF",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole canonical two lines",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "complete trailer exact four fields length digest parent gate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact invocation and native original20 interval shared through saved records",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact native CLOCK_DOMAIN and Source version",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "body completed all checks and profile restoration strict true",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole provisional worker body exact copy",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "worker copied Source/request byte equality",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Root scoped once-only control authorization no stronger scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact fixed51 native inventory shared with prereg",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-normal-checker complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-normal-checker complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-normal-checker six normal full15 actual captures returned pair and saved oracle certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-normal-producer complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-normal-producer complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-normal-producer six normal full15 actual captures returned pair and saved oracle certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-bool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-bool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-bool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-float complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-float complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-float exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-str complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-str complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-str exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-negative complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-negative complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-negative exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-large complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-large complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-deadline-large exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-pair-nonbool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-pair-nonbool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-pair-nonbool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-global complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-global complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-global exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-local complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-local complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-local exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-nextafter complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-nextafter complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-nextafter exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-finite complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-finite complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-finite exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-ratio complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-ratio complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-nonnative-ratio exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-clock-id-bool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-clock-id-bool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-clock-id-bool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-clock-id-wrong complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-clock-id-wrong complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-clock-id-wrong exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-expired complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-expired complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-expired exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-foreign complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-foreign complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap-foreign exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-normal-checker complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-normal-checker complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-normal-checker six normal full15 actual captures returned pair and saved oracle certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-normal-producer complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-normal-producer complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-normal-producer six normal full15 actual captures returned pair and saved oracle certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-bool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-bool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-bool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-float complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-float complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-float exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-str complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-str complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-str exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-negative complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-negative complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-negative exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-large complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-large complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-deadline-large exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-pair-nonbool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-pair-nonbool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-pair-nonbool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-global complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-global complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-global exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-local complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-local complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-local exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-nextafter complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-nextafter complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-nextafter exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-finite complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-finite complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-finite exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-ratio complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-ratio complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-nonnative-ratio exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-clock-id-bool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-clock-id-bool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-clock-id-bool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-clock-id-wrong complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-clock-id-wrong complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-clock-id-wrong exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-expired complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-expired complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-expired exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-foreign complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-foreign complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "runner-foreign exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-normal-checker complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-normal-checker complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-normal-checker six normal full15 actual captures returned pair and saved oracle certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-normal-producer complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-normal-producer complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-normal-producer six normal full15 actual captures returned pair and saved oracle certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-bool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-bool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-bool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-float complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-float complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-float exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-str complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-str complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-str exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-negative complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-negative complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-negative exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-large complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-large complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-deadline-large exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-pair-nonbool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-pair-nonbool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-pair-nonbool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-global complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-global complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-global exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-local complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-local complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-local exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-nextafter complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-nextafter complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-nextafter exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-finite complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-finite complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-finite exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-ratio complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-ratio complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-nonnative-ratio exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-clock-id-bool complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-clock-id-bool complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-clock-id-bool exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-clock-id-wrong complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-clock-id-wrong complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-clock-id-wrong exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-expired complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-expired complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-expired exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-foreign complete saved frame/custody/profile/deadline envelope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-foreign complete original actual argument wire correspondence",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "verifier-foreign exact saved helper exception and absence of positive observation certificate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "native six39six exact census unique complete IDs",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all8 exact record-only IDs and scope retained",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "missing-return complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "duplicate-return complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "foreign-code complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "foreign-globals complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "default-entry-record-mismatch complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "callback-record-mismatch complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "profiler-not-restored complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "late-post-profile complete actual record-validator rejection only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all26 complete numerical rows exact preregistered order",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "195ec0bae552f1779fc43fbadb553d9e3fb53fbabe1140fdd9e3b89bb73a13bd"
+      },
+      "name": "numeric-decode-positive-zero literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "d89d4bdc7fc9dd0bd38efe15f7ff74f38323f036a5c3d998150341f8e6fe3819"
+      },
+      "name": "numeric-decode-negative-zero literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "eb741c0fdf5d5fd315b9c387e3ce59e22e57bd06755f424748be060d0c0393ae"
+      },
+      "name": "numeric-decode-positive-min-subnormal literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "2707fbf6b1fa87f66b5d61d25eb0090ba640d2abdaf5304dd626a2298b69d684"
+      },
+      "name": "numeric-decode-negative-min-subnormal literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "42616c4c497104b74cf5a003aef183e7d10e5de253f71cde589e75145bf54fdc"
+      },
+      "name": "numeric-decode-smallest-normal literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "e2fdb5d3ef7d728b4d319925495e7ac8b6812dfe37cc6b674bac06fd4fe8ceb3"
+      },
+      "name": "numeric-decode-one literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "c3220a14381e56e5086189cd21fb3451efea2a48f153f1af5783997a072d6c13"
+      },
+      "name": "numeric-decode-predecessor-one literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "693b5e9332e0eec21661f6aa53b03371f7ed94376d27a82bb8be5467b70f8bfa"
+      },
+      "name": "numeric-decode-twenty literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "63ccc7cc43045f2e0cc6fa20436e4d000ca63c31de041d6eb696f22484d36072"
+      },
+      "name": "numeric-bound-zero-one-ns literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "21d96951e24551806b8fac8f1ccfef2e38afb52dab9ba556f907012a7ada9cc2"
+      },
+      "name": "numeric-bound-negative-zero-one-ns literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "2e216b8bda255c8eb6156e99bf7b5dc0fc684a118c391364d281aaeb088924d0"
+      },
+      "name": "numeric-bound-subnormal-one-ns literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "5cc79b41936045539c9339227e1e9ed1c74fd15082085cd9b1bf7058281c7f39"
+      },
+      "name": "numeric-bound-smallest-normal-one-ns literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "12d1554aba0378c75831593301fd8e3c114ad71c54cae79360d021bf15b8f1c0"
+      },
+      "name": "numeric-bound-one-one-ns literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "e4a4be24fb78639df12be52b6ae0781e1949ab0971d907b2ad4c0de3a4ba6845"
+      },
+      "name": "numeric-bound-power-boundary-joint20 literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "f0262e933000daca22847c33401411869b3e031f090161e0bf2193b890853ec9"
+      },
+      "name": "numeric-bound-large-ulp-one-ns literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "1d2fbc76e173ac71133f6b3cb72162e45361781f54c5d44fdeb86a5f5a40fbe8"
+      },
+      "name": "numeric-bound-large-ulp-joint20 literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "740c6e4481a5ddea039155e087fb2929b79e8e34b19e4d9b60516633aee6f038"
+      },
+      "name": "numeric-add-cancel-to-zero literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "c271d32ee2908e9ae9b8c14a9b76537a172253b4dea90be686a5c0537143553b"
+      },
+      "name": "numeric-add-halfway-at-one-even literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "76f3334172b14c3e580377a94bc0fe8274e4d0010c7767c3cab69951224c703a"
+      },
+      "name": "numeric-add-halfway-at-one-odd literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "1177cd80fbc6f0205e08e0b27f24682a216fdedb99f01a2ecfd9bf9db8d97262"
+      },
+      "name": "numeric-producer-subnormal-cancels literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "c5c849a7c7bf3c7b56c507757e924f14d2c9794ea57782217565e3acdf028ed6"
+      },
+      "name": "numeric-producer-unit-retained literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "269c8611b3eafde1a898c13e41b13baaf467bb4b3a5556d88998e697577431f8"
+      },
+      "name": "numeric-reject-infinity literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "1fc97b68c81c8cc0151ff9383ee16f2d8d647459678e429d2e51092522433664"
+      },
+      "name": "numeric-reject-negative-infinity literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "2c813ee33b8ee1c5d210074a66f5925cc24c5f405c5d852031b6554695bfd8d6"
+      },
+      "name": "numeric-reject-nan literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "f9bcff3b361b907f663d4d71bca75a44282003a7366404aaf783ae94c11e694c"
+      },
+      "name": "numeric-reject-zero-remainder literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": {
+        "saved_row_sha256": "52db07859a43f6980616b464711d43b96da88929f0db8d1e1968550a3da75fd2"
+      },
+      "name": "numeric-reject-foreign-remainder literal saved pass whole record retained",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all85 complete no accepted subset",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "worker all stronger flags strict false",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "numerical scope strong false",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all whole stdout stderr empty hashes",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "actual worker wait4 exit0 fully reaped distinct pid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole recorded wait4 kernel peak same integer",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "provisional parent and conservative sum exact not terminal authority",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "complete native lifecycle ordering and original20 terminal observation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole external tool tape complete terminal plus native probe and no sessions",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "external meter denial exact saved actual output",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "actual outer pending notice exact worker and ledger whole buffers",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "actual postterminal pinned-runtime native probe complete full canonical singleline",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all external Date samples nonnegative monotone exact bracket",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "external observed wall below60 and90 including separate finish1",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole meter53 bytes contains only decimal real user sys and no terminal RSS",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "aggregate terminal resource and successful outer status NOT qualified",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all provisional external final acceptance flags strict false",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "no late return revocation file observed in complete owned directory",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact original scoped metadata caps and purpose",
+      "passed": true
+    },
+    {
+      "detail": {
+        "canonical_paths": 23,
+        "references": 123
+      },
+      "name": "whole named raw capsule census exact without mismatches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw closure receipts exact same declared order and outer request binding",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "worker current genuine review exact Source/contract distinct authors",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "caller current genuine review exact Source/contract distinct authors",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "outputs_before_receipts all recorded SHA lengths match whole output files",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole_outputs all recorded SHA lengths match whole output files",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "provisional native ledger same buffer pin",
+      "passed": true
+    }
+  ],
+  "complete_native_record_digests": [
+    {
+      "bytes": 3028,
+      "id": "bootstrap-normal-checker",
+      "sha256": "2ae2cf3133e95e9230d15ddc1ff4adaffc7eb65553a3693e8bf4f61b9331d7fc"
+    },
+    {
+      "bytes": 3237,
+      "id": "bootstrap-normal-producer",
+      "sha256": "7a7f3ef5c5b1ac8158ee44f3f7bff46675a01cb3347076558d0ccb45f2d8192f"
+    },
+    {
+      "bytes": 546,
+      "id": "bootstrap-deadline-bool",
+      "sha256": "6562a598f8204e4646f0610573a1f9d150b43ef036d5e5911e2a7b0826fde318"
+    },
+    {
+      "bytes": 579,
+      "id": "bootstrap-deadline-float",
+      "sha256": "f50a11f64e129fe61a995bf9c465ed8bc33e5de17edc780c6c7020b42ebf5bf1"
+    },
+    {
+      "bytes": 554,
+      "id": "bootstrap-deadline-str",
+      "sha256": "933f86641cd330913d3b46e303c52d8f0bc90e393dea9548437f077422cf033b"
+    },
+    {
+      "bytes": 551,
+      "id": "bootstrap-deadline-negative",
+      "sha256": "96bfac25149ec4b4786c4c5e40cd0c071ddc794c12b2522cb48b2a2adb6f6418"
+    },
+    {
+      "bytes": 562,
+      "id": "bootstrap-deadline-large",
+      "sha256": "1d933bd83001e7f775d24ad13effdec84f093d0ebc6244d94cabf54f58ca2900"
+    },
+    {
+      "bytes": 549,
+      "id": "bootstrap-pair-nonbool",
+      "sha256": "41f01d13e8ae43ddabf58f78da6a102e769e321916feceb12fecaba3896583d4"
+    },
+    {
+      "bytes": 562,
+      "id": "bootstrap-nonnative-global",
+      "sha256": "02fef0ad43ef76ca7a90ed52908c8e5048c489a7b7b6f2fab6ed012ad47acad2"
+    },
+    {
+      "bytes": 560,
+      "id": "bootstrap-nonnative-local",
+      "sha256": "230d78b7d836f562edb9088c406a90cbcd749d548b0886b5a197107deeaaf752"
+    },
+    {
+      "bytes": 568,
+      "id": "bootstrap-nonnative-nextafter",
+      "sha256": "21094da1e6e4614b1cb8e8141d0a682024394e5b8191f76ca4f772ae3daec72b"
+    },
+    {
+      "bytes": 562,
+      "id": "bootstrap-nonnative-finite",
+      "sha256": "e31a0757880e233f7e90274578fbe1e941699b5fd38de0c787c94437ae82210c"
+    },
+    {
+      "bytes": 560,
+      "id": "bootstrap-nonnative-ratio",
+      "sha256": "5251418b7d63a2308d0c860d9a15c7f60527d86e108d99e6571aaf4dd2e6d58a"
+    },
+    {
+      "bytes": 556,
+      "id": "bootstrap-clock-id-bool",
+      "sha256": "10ed7e5b0d6b31c66d766397fb8590a6ccb4d8fd3cae2d5edda7f011daa38a3d"
+    },
+    {
+      "bytes": 558,
+      "id": "bootstrap-clock-id-wrong",
+      "sha256": "3768829c71fc44f128c70333a8e151cfb1e74280c2dde89a737ebf5891ef3c03"
+    },
+    {
+      "bytes": 757,
+      "id": "bootstrap-expired",
+      "sha256": "37f5b91218cb73968d8804ccd7751cc683a20a6dc9490c7bffce19438bfbd861"
+    },
+    {
+      "bytes": 759,
+      "id": "bootstrap-foreign",
+      "sha256": "14d5829d9906653e8e81b5e40ddfe5ea7bbbf6ee0e48498bb94027f948a0109d"
+    },
+    {
+      "bytes": 2991,
+      "id": "runner-normal-checker",
+      "sha256": "a4bd751c75b41a15cdfe4a373e313dc6c21cb717602577b3dd8558a470b8bec5"
+    },
+    {
+      "bytes": 3199,
+      "id": "runner-normal-producer",
+      "sha256": "c0adcb0efb1d8127f7fb36c00f906f911e6954c7f52d1df52fc381ca8d3a9dc2"
+    },
+    {
+      "bytes": 540,
+      "id": "runner-deadline-bool",
+      "sha256": "86e3ea9cf118335ffe72e1838053ef561fd4fdc24206aa79c5f0e21adf136149"
+    },
+    {
+      "bytes": 573,
+      "id": "runner-deadline-float",
+      "sha256": "ccae0a0ccbb893d0923fdfbb75d995e9239b75ae60a2d3f55f4b6db3a4d15e49"
+    },
+    {
+      "bytes": 548,
+      "id": "runner-deadline-str",
+      "sha256": "26e44d3312bbf8eca7f328ebbef586cd2e2eead09cffc59b9598c9c24ce84c05"
+    },
+    {
+      "bytes": 545,
+      "id": "runner-deadline-negative",
+      "sha256": "923efe2f314dabe67db14dac07dc43551f18c3d3bf77149d865102be18732061"
+    },
+    {
+      "bytes": 556,
+      "id": "runner-deadline-large",
+      "sha256": "06594143b1b79a9cc001ea8154b3904bb5b50c7f29ebbdc8aa28059cdb12c656"
+    },
+    {
+      "bytes": 543,
+      "id": "runner-pair-nonbool",
+      "sha256": "8fbc5e74b58736f070283d9f98d31b565d12792ee7dbb9dedd28c5a4c7deb0bd"
+    },
+    {
+      "bytes": 556,
+      "id": "runner-nonnative-global",
+      "sha256": "afc50dfc58872969f528219be28b1a34db8d305325797bd408e5e43d2520dd48"
+    },
+    {
+      "bytes": 554,
+      "id": "runner-nonnative-local",
+      "sha256": "08ec8d5dbefda7b509f1712d6c3378b7a9362e8494d9823915f50818ad4dcb65"
+    },
+    {
+      "bytes": 562,
+      "id": "runner-nonnative-nextafter",
+      "sha256": "8b006dbfb80c6e1b6a1ddad4d750c7334393b4eab4952b3fddd4fb9ed41a1d57"
+    },
+    {
+      "bytes": 556,
+      "id": "runner-nonnative-finite",
+      "sha256": "5d9cf57b05afcf56a83451924d5b10ffb821833cae466b0b97bf12e0d96a3b91"
+    },
+    {
+      "bytes": 554,
+      "id": "runner-nonnative-ratio",
+      "sha256": "67908469937e43b2ff021f0a878fd14aa65fc605fb4f2632fa350e82aaa0f54f"
+    },
+    {
+      "bytes": 550,
+      "id": "runner-clock-id-bool",
+      "sha256": "8eced48342d838101054d2c7346d2bdf46ec04ae727f71d97393576339f9fff3"
+    },
+    {
+      "bytes": 552,
+      "id": "runner-clock-id-wrong",
+      "sha256": "ce0688895b3e4fe46371ca78f2560c8e8a7660603106eddbc50a5ff663130c23"
+    },
+    {
+      "bytes": 753,
+      "id": "runner-expired",
+      "sha256": "23f625429dff0e946e3410dd2b22f0f82c7071db8f6a39e1ec6b7ace638d7eee"
+    },
+    {
+      "bytes": 753,
+      "id": "runner-foreign",
+      "sha256": "899909aa14d4d739c7fb9f9977644ee55ebbbfe65393b571cdcdd8f4744f77be"
+    },
+    {
+      "bytes": 3014,
+      "id": "verifier-normal-checker",
+      "sha256": "39789ad24cca490c0d6bfdbba7e1c5c17354677a4bae95562bf631920e960bc0"
+    },
+    {
+      "bytes": 3227,
+      "id": "verifier-normal-producer",
+      "sha256": "638c94d3340bebabdd7fbcfc4ad2b99c2406b7fb8c4209c9998675e1d3e9c0b4"
+    },
+    {
+      "bytes": 544,
+      "id": "verifier-deadline-bool",
+      "sha256": "2ca02c448dab46a2485076c4662c76e37d502d574ceec988cdc8d8367485a538"
+    },
+    {
+      "bytes": 577,
+      "id": "verifier-deadline-float",
+      "sha256": "487bdbbef76beab81142d3caf85b3d3abefb8d66e7580a1b5d3363c1f170dfb4"
+    },
+    {
+      "bytes": 552,
+      "id": "verifier-deadline-str",
+      "sha256": "021432a9f8cf30caf8b50fd17b46550ba80efba37be1ecf66ddf872ca855edae"
+    },
+    {
+      "bytes": 549,
+      "id": "verifier-deadline-negative",
+      "sha256": "bd50711788d8455e43099d3d4143a85708bb76f8b8f7d7e1a6d76ae326deab1c"
+    },
+    {
+      "bytes": 560,
+      "id": "verifier-deadline-large",
+      "sha256": "c22c8f81aaba42306e1d6c951fb84d9f0bf495fc641901c99ccdd0c631373a9d"
+    },
+    {
+      "bytes": 547,
+      "id": "verifier-pair-nonbool",
+      "sha256": "5664b41853f0c1468b87bcdbc27d68958c3dff25c35e086cabc348167e60accc"
+    },
+    {
+      "bytes": 560,
+      "id": "verifier-nonnative-global",
+      "sha256": "2d725c0d5e9f29449b967ec80217658cc6e0dac1153f83edea0491772da69c3f"
+    },
+    {
+      "bytes": 558,
+      "id": "verifier-nonnative-local",
+      "sha256": "e68ec8634b25622e750b5d96ee890c95851bf26d8c5e56d9cad6239474d70b18"
+    },
+    {
+      "bytes": 566,
+      "id": "verifier-nonnative-nextafter",
+      "sha256": "dddbc9a470a0be501f0e1f529860e4215c5c4375f7fa5cf75ead2e08376ec02a"
+    },
+    {
+      "bytes": 560,
+      "id": "verifier-nonnative-finite",
+      "sha256": "01dd0aab986c003506cc8116868496adc8d443ea99a7414e49269885cef65257"
+    },
+    {
+      "bytes": 558,
+      "id": "verifier-nonnative-ratio",
+      "sha256": "b69a9417db67a947cb70b10a976ae3142c7eb50d9e6cf49e8dcfdde3c6db07e3"
+    },
+    {
+      "bytes": 554,
+      "id": "verifier-clock-id-bool",
+      "sha256": "2bd257940f5c9726085c5d3df8651b47ba886367bc928ab2905c3b1bcaf50994"
+    },
+    {
+      "bytes": 556,
+      "id": "verifier-clock-id-wrong",
+      "sha256": "d4695fa90f19fca3740a4b0f4cfc09fef1eae4c1b17b43a02fd490546a4bbe1c"
+    },
+    {
+      "bytes": 757,
+      "id": "verifier-expired",
+      "sha256": "cc3826a420af9184ce718547c19d79ea1ef8fc38b6c7047da6b632e80fb187bf"
+    },
+    {
+      "bytes": 757,
+      "id": "verifier-foreign",
+      "sha256": "f7e712054abdf69617056956892944ba016146eea7d981d6f9713bb934556ee8"
+    }
+  ],
+  "direct_raw_canonical_paths": 23,
+  "direct_raw_reference_count": 123,
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "no_execution": {
+    "Q_payload_parses": 0,
+    "Source_helper_oracle_or_project_calls": 0,
+    "native_clock_calls": 0,
+    "plans": 0,
+    "tests_or_replays": 0
+  },
+  "publication_authority": false,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_reconciliation_passed": true,
+  "schema": "Q-isolated-projection-controls-saved-independent-findings-v1",
+  "scope": "complete saved literal records and raw custody only; no semantic oracle/helper replay",
+  "scope_limits": [
+    "All85 completed rows remain recorded observations, not an accepted favorable subset after the outer resource failure.",
+    "Six native observations are profiled unchanged helper FunctionDefs only, not clean whole producer/verifier/runner modules.",
+    "Thirty-nine typed and six time outcomes are actual saved helper exceptions. Eight mutants are record-validator mechanics only. Twenty-six numeric rows are synthetic Root oracle results; their mathematics is not recomputed here.",
+    "Worker all-reaped status comes from complete wait4 ledger; actual terminal parent resource closure is missing. External pending notice does not override tool exit1 or supply parent maxRSS.",
+    "No full52/W16/model/Q target/selected ancestry/full24/native tiling/search/RL or general clock theorem acceptance."
+  ],
+  "source_and_metadata_raw_capsules": [
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 18802,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+        "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 38113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+        "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 14789,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+        "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 10315,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-worker-preregistration.json",
+        "sha256": "832bce669bfade1cc3c0118a4e0e05017e2c667a35525e16335b85062b606736"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 38487,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+        "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 29587,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v2.py",
+        "sha256": "5a5a2f1fdedcd0ccd93c037e78e2da24997626ea84d037b4c5ad22a98d3f63a4"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 3986,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/worker-typed-Source-review-v1.json",
+        "sha256": "a535d82a25f75e791ac9d785cdb636fb30def3f1c257ef4831387f8d38d547ca"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 3453,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-projection-caller-independent-review-source-20261015/typed-Source-review-v1.json",
+        "sha256": "8249d4eef7ec8a9ef693fd3ceb7e852454391af4671dc443e01b0a9a176d9c50"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 2571,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/oracle-typed-Source-review-v1.json",
+        "sha256": "f7fc6c7367eddc76564e5a7b387bd84307492e873bd3b669d2917b409c7ee45b"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 15147,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/Source-contract-v1.json",
+        "sha256": "385be50cd3b63a6e795c28932cbff8283e118e09eac2d4fe77ceb7808e20a0bc"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 17584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-contract-v2.json",
+        "sha256": "c8f11fb92f4bb6bfbcd4f8c1464bd5be61a9ae52fdca92288609e04aaaaf3caa"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4186,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/Source-contract-v1.json",
+        "sha256": "a28c6a9fc33183f9f4c6e315acc185ddddd452eef589e1d504ddd419ebe35af3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 135248,
+        "path": "/usr/bin/time",
+        "sha256": "d2210b72e8c978748a0f0ac7d0819dda4dd411bb7a2e9730476038b0d695e7a2"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4443,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+        "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6306,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v2.js",
+        "sha256": "b995437cee107e2effc433dbea936780c1a256966f83d74733b9cf5e7cf08012"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 11007,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/inventory-and-reconciliation-checklist-v1.json",
+        "sha256": "34d33d4e949751e880a79db0be98bf0e1b4ed48d58d0f129b5d05d3118e1c797"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 15294,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-observability-design-review-source-20261015/design-review-v1.json",
+        "sha256": "8f8cda56a340b56ff4d13c493d5112ac5c5710d428e4757010fef2b6fb73b905"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7593,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/fixed-inventory-v1.json",
+        "sha256": "fa7deace5cd45c37f6a85fbe6f5e5436bb6c0de8abee4a4311d3baebc2fd5e5e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 9030,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-worker-request.json",
+        "sha256": "5d0da6c22194e4b6fa10f307092aec73504b63540d7ca3d10997498d1a18bb61"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 9780,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-outer-preregistration.json",
+        "sha256": "4d9232239190df8e8b1d9d1f5e63d8fab66a70925c0b3bf78cc0c049f498c0ea"
+      }
+    }
+  ],
+  "strong_acceptance": {
+    "Q_theorem_accepted": false,
+    "RL_accepted": false,
+    "ROOT_primary_accepted": false,
+    "ROOT_resource_accepted": false,
+    "W16_accepted": false,
+    "full52_qualified": false,
+    "mathematical_acceptance": false,
+    "native_tiling_accepted": false,
+    "search_accepted": false
+  },
+  "summary": {
+    "ROOT_resource_accepted": false,
+    "accepted_prefix": false,
+    "clocks": {
+      "external_complete_wall_ms": 2265,
+      "finish_reserve_ms": 1000,
+      "joint_began_ns": 420694935196000,
+      "joint_deadline_ns": 420714935196000,
+      "meter_real_text": "2.15",
+      "observed_worker_terminal_elapsed_ns": 2124598000,
+      "outer_afterstdout_observed_ns": 420697061653000,
+      "owned_elapsed_ns_before_receipts": 2125792000,
+      "postterminal_from_begin_ns": 2186285000,
+      "postterminal_global_ns": 420697121481000,
+      "worker_terminal_observed_ns": 420697059794000
+    },
+    "completed_saved_controls": 85,
+    "memory": {
+      "accepted_aggregate_bytes": null,
+      "cap_bytes": 536870912,
+      "complete_worker_wait4_peak_bytes": 21037056,
+      "parent_before_receipts_peak_bytes": 19775488,
+      "provisional_sum_bytes": 40812544,
+      "terminal_parent_peak_bytes": null
+    },
+    "native_calls": 51,
+    "normal_native": 6,
+    "outer_tool_exit": 1,
+    "overall_status": "UNKNOWN",
+    "record_only_rejections": 8,
+    "resource_failure": "Pinned external /usr/bin/time -l reported sysctl kern.clockrate: Operation not permitted;53B meter has only real/user/sys, missing terminal caller rusage/maxRSS. Complete owned aggregate512 gate is unearned.",
+    "synthetic_numerical": 26,
+    "time_rejections": 6,
+    "typed_input_rejections": 39,
+    "worker_exit": 0
+  },
+  "trailer_bytes": 210,
+  "whole_evidence_files": {
+    "prepare_actual_v1.py": {
+      "bytes": 9371,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/prepare_actual_v1.py",
+      "sha256": "585347e8bc589ea8c1bc46eff52be8137dd618a92c9d05cfec15aaf92b5ecc12"
+    },
+    "prepare_actual_v2.py": {
+      "bytes": 9740,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/prepare_actual_v2.py",
+      "sha256": "12debd6ba160ade2d1558b0da914612c47d8d1d5c73d1206cb1d42660dcad58b"
+    },
+    "projection85_20261015_v1-ROOT-disposition.json": {
+      "bytes": 5587,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-ROOT-disposition.json",
+      "sha256": "331a447e3719743425d086dc1a6d4ec3a8920c76f7005b6c6b47797f629bdb1e"
+    },
+    "projection85_20261015_v1-ROOT-scoped-authorization.json": {
+      "bytes": 2500,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-ROOT-scoped-authorization.json",
+      "sha256": "a1f1e0f6048d608715642551c7bd132f2646411904804b037587def072cd8883"
+    },
+    "projection85_20261015_v1-control-body.json": {
+      "bytes": 52761,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-control-body.json",
+      "sha256": "6f8d6ae51a0c249b2f3967af64296627e7b34909f045dff1e0bb5199395df950"
+    },
+    "projection85_20261015_v1-external-observations.json": {
+      "bytes": 4711,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-external-observations.json",
+      "sha256": "c3f684b113c84e6e5e1dcc998cf0197ff55c322f8b62bd1f507f66f8ab5cf209"
+    },
+    "projection85_20261015_v1-outer-preregistration.json": {
+      "bytes": 9780,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-outer-preregistration.json",
+      "sha256": "4d9232239190df8e8b1d9d1f5e63d8fab66a70925c0b3bf78cc0c049f498c0ea"
+    },
+    "projection85_20261015_v1-owned-output/outer-final-native-observation.json": {
+      "bytes": 589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/outer-final-native-observation.json",
+      "sha256": "e9ed38eb54096dc7b74bb771cc24887d1c3bf1406054967b91f0a3accf14e589"
+    },
+    "projection85_20261015_v1-owned-output/outer-native-ledger.json": {
+      "bytes": 7461,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/outer-native-ledger.json",
+      "sha256": "b10bcae7d84fedc7206715ed409fe80c7ece68e0be92e7d8e2398897140ea627"
+    },
+    "projection85_20261015_v1-owned-output/outer-provisional.json": {
+      "bytes": 53694,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/outer-provisional.json",
+      "sha256": "348541828fbc2520c8f68932de38a9e2c03f6079ff39c99133d658d257252b7f"
+    },
+    "projection85_20261015_v1-owned-output/raw-closure-receipts.json": {
+      "bytes": 5926,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/raw-closure-receipts.json",
+      "sha256": "6f670ddc52a46253f3cbf1584c6fbe20b69aa450b5d7028b07198175ad3913a8"
+    },
+    "projection85_20261015_v1-owned-output/request.json": {
+      "bytes": 9030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/request.json",
+      "sha256": "5d0da6c22194e4b6fa10f307092aec73504b63540d7ca3d10997498d1a18bb61"
+    },
+    "projection85_20261015_v1-owned-output/worker-result.jsonl": {
+      "bytes": 52971,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/worker-result.jsonl",
+      "sha256": "a337169c203d511f2311f91d1d66776d17b64c01f88bbbc21f8b6ad9a31814c5"
+    },
+    "projection85_20261015_v1-owned-output/worker-source.py": {
+      "bytes": 38487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/worker-source.py",
+      "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+    },
+    "projection85_20261015_v1-owned-output/worker-stderr.txt": {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/worker-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "projection85_20261015_v1-owned-output/worker-stdout.txt": {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/worker-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "projection85_20261015_v1-terminal-meter.txt": {
+      "bytes": 53,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-terminal-meter.txt",
+      "sha256": "08cdf2560479b218fe0335e2eb36c8abdc5edfcd47cd7dcd129208b82564a3c5"
+    },
+    "projection85_20261015_v1-worker-preregistration.json": {
+      "bytes": 10315,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-worker-preregistration.json",
+      "sha256": "832bce669bfade1cc3c0118a4e0e05017e2c667a35525e16335b85062b606736"
+    },
+    "projection85_20261015_v1-worker-request.json": {
+      "bytes": 9030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-worker-request.json",
+      "sha256": "5d0da6c22194e4b6fa10f307092aec73504b63540d7ca3d10997498d1a18bb61"
+    }
+  },
+  "worker_wire": {
+    "bytes": 52971,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v1-owned-output/worker-result.jsonl",
+    "sha256": "a337169c203d511f2311f91d1d66776d17b64c01f88bbbc21f8b6ad9a31814c5"
+  }
+}

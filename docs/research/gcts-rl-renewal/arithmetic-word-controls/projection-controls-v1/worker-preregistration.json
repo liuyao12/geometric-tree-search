@@ -1,0 +1,396 @@
+{
+  "Q_payload_parsing_authorized": false,
+  "W16_authorized": false,
+  "author_identity": "/root",
+  "controls_execution_authorized": true,
+  "failure_policy": "Retain the complete attempt and all outputs; missing/late/failed cases remain UNKNOWN. No favorable subset or changed budget.",
+  "full52_authorized": false,
+  "helper_sources": {
+    "bootstrap": {
+      "bytes": 18802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+      "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+    },
+    "runner": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "inventory": [
+    {
+      "id": "bootstrap-normal-checker",
+      "kind": "normal",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-normal-producer",
+      "kind": "normal",
+      "pair": true,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-bool",
+      "kind": "deadline-bool",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-float",
+      "kind": "deadline-float",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-str",
+      "kind": "deadline-str",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-negative",
+      "kind": "deadline-negative",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-deadline-large",
+      "kind": "deadline-large",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-pair-nonbool",
+      "kind": "pair-nonbool",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-global",
+      "kind": "nonnative-global",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-local",
+      "kind": "nonnative-local",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-nextafter",
+      "kind": "nonnative-nextafter",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-finite",
+      "kind": "nonnative-finite",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-nonnative-ratio",
+      "kind": "nonnative-ratio",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-clock-id-bool",
+      "kind": "clock-id-bool",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-clock-id-wrong",
+      "kind": "clock-id-wrong",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-expired",
+      "kind": "expired",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "bootstrap-foreign",
+      "kind": "foreign",
+      "pair": false,
+      "role": "bootstrap"
+    },
+    {
+      "id": "runner-normal-checker",
+      "kind": "normal",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-normal-producer",
+      "kind": "normal",
+      "pair": true,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-bool",
+      "kind": "deadline-bool",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-float",
+      "kind": "deadline-float",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-str",
+      "kind": "deadline-str",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-negative",
+      "kind": "deadline-negative",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-deadline-large",
+      "kind": "deadline-large",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-pair-nonbool",
+      "kind": "pair-nonbool",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-global",
+      "kind": "nonnative-global",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-local",
+      "kind": "nonnative-local",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-nextafter",
+      "kind": "nonnative-nextafter",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-finite",
+      "kind": "nonnative-finite",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-nonnative-ratio",
+      "kind": "nonnative-ratio",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-clock-id-bool",
+      "kind": "clock-id-bool",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-clock-id-wrong",
+      "kind": "clock-id-wrong",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-expired",
+      "kind": "expired",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "runner-foreign",
+      "kind": "foreign",
+      "pair": false,
+      "role": "runner"
+    },
+    {
+      "id": "verifier-normal-checker",
+      "kind": "normal",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-normal-producer",
+      "kind": "normal",
+      "pair": true,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-bool",
+      "kind": "deadline-bool",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-float",
+      "kind": "deadline-float",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-str",
+      "kind": "deadline-str",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-negative",
+      "kind": "deadline-negative",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-deadline-large",
+      "kind": "deadline-large",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-pair-nonbool",
+      "kind": "pair-nonbool",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-global",
+      "kind": "nonnative-global",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-local",
+      "kind": "nonnative-local",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-nextafter",
+      "kind": "nonnative-nextafter",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-finite",
+      "kind": "nonnative-finite",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-nonnative-ratio",
+      "kind": "nonnative-ratio",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-clock-id-bool",
+      "kind": "clock-id-bool",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-clock-id-wrong",
+      "kind": "clock-id-wrong",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-expired",
+      "kind": "expired",
+      "pair": false,
+      "role": "verifier"
+    },
+    {
+      "id": "verifier-foreign",
+      "kind": "foreign",
+      "pair": false,
+      "role": "verifier"
+    }
+  ],
+  "invocation_id": "projection85_20261015_v2",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_seconds": 90,
+    "failure_ns": 55000000000,
+    "finish_seconds": 1,
+    "joint_ns": 20000000000,
+    "owned_seconds": 60,
+    "worker_bytes": 524288000
+  },
+  "mathematical_acceptance": false,
+  "maximum_actual_invocations": 1,
+  "numeric_fixed_ids": [
+    "numeric-decode-positive-zero",
+    "numeric-decode-negative-zero",
+    "numeric-decode-positive-min-subnormal",
+    "numeric-decode-negative-min-subnormal",
+    "numeric-decode-smallest-normal",
+    "numeric-decode-one",
+    "numeric-decode-predecessor-one",
+    "numeric-decode-twenty",
+    "numeric-bound-zero-one-ns",
+    "numeric-bound-negative-zero-one-ns",
+    "numeric-bound-subnormal-one-ns",
+    "numeric-bound-smallest-normal-one-ns",
+    "numeric-bound-one-one-ns",
+    "numeric-bound-power-boundary-joint20",
+    "numeric-bound-large-ulp-one-ns",
+    "numeric-bound-large-ulp-joint20",
+    "numeric-add-cancel-to-zero",
+    "numeric-add-halfway-at-one-even",
+    "numeric-add-halfway-at-one-odd",
+    "numeric-producer-subnormal-cancels",
+    "numeric-producer-unit-retained",
+    "numeric-reject-infinity",
+    "numeric-reject-negative-infinity",
+    "numeric-reject-nan",
+    "numeric-reject-zero-remainder",
+    "numeric-reject-foreign-remainder"
+  ],
+  "oracle_source": {
+    "bytes": 14789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-oracle-source-20261015/projection_binary64_oracle_v1.py",
+    "sha256": "c25bd8d35422a5cb5278f85bcfeb82e0f58cf1df44ea4098d101231c92a3b393"
+  },
+  "proof_search_authorized": false,
+  "record_only_mechanics": [
+    "missing-return",
+    "duplicate-return",
+    "foreign-code",
+    "foreign-globals",
+    "default-entry-record-mismatch",
+    "callback-record-mismatch",
+    "profiler-not-restored",
+    "late-post-profile"
+  ],
+  "schema": "ROOT-Q-isolated-clock-projection-controls-preregistration-v1",
+  "scope": "51 isolated unchanged native helper calls, 8 record validator negatives, 26 synthetic numeric cases; no whole production module, model, proof or RL execution",
+  "worker_source": {
+    "bytes": 38487,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clock-projection-controls-source-20261015/isolated_projection_controls_worker_v1.py",
+    "sha256": "eaa7dcacabbfa0120b851d352b571f646e415ea3909d693a1bd05e96d1405dd6"
+  }
+}

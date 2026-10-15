@@ -1,0 +1,43 @@
+{
+  "all_checks_passed": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "blocking_findings": [
+    "CALLER-FINAL-CANCEL-1",
+    "CALLER-FINAL-RESOURCE-CLOCK-1"
+  ],
+  "findings": {
+    "bytes": 4534,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-profiled-clock-controls-independent-validation-source-20261015/caller-findings-v1.json",
+    "sha256": "6807f7709fb58143369d0c7eefcfa76f7c53db143e4dfc4c314d07c8b14e9d74"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "Q-trusted-projection-only-outer-caller-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-trusted-projection-only-outer-caller-Source",
+  "source": {
+    "bytes": 28423,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v1.py",
+    "sha256": "269f61c06641effd0216f6bcdc3aab0ff07de01b0e0feb6ff785ccf6e92567d6"
+  },
+  "source_contract": {
+    "bytes": 11825,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Source-contract-v1.json",
+    "sha256": "f618f4036eade0dff3cb4243ba9fd2b26ca6b413422afea84bacf5cd114b6309"
+  },
+  "source_only": true,
+  "source_ready": false,
+  "source_review_passed": false,
+  "sources": {
+    "caller": {
+      "bytes": 28423,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/Q_trusted_projection_outer_caller_v1.py",
+      "sha256": "269f61c06641effd0216f6bcdc3aab0ff07de01b0e0feb6ff785ccf6e92567d6"
+    },
+    "external_accounting": {
+      "bytes": 4072,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-outer-caller-source-20261015/observe_actual_projection_caller_v1.js",
+      "sha256": "627dd250cff77b534a5c7b355811b59ccf44e15c504ab8aa4f8f39b77d793538"
+    }
+  }
+}
