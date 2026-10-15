@@ -2,6 +2,7 @@
   "Q_qualification_changed": false,
   "RL_used": false,
   "Root_editorial_successor": "Clarify trace-audit cost; translate all316 saved event variable assignments/candidate meanings without inference or checking; fit actual figures on narrow screens.",
+  "Root_responsive_QA_fix": "Higher-specificity narrow-screen actual figure rule overrides later desktop style; no saved mathematical data changed.",
   "Root_saved_display_annotations": {
     "project_functions_executed": 0,
     "rows": 316,
@@ -73,8 +74,8 @@
       "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
     },
     "reader.html": {
-      "bytes": 3448676,
-      "sha256": "7a1aa148f92c0e870d45637e3a0d44058938edff0b44eb0f6bc1efd5ee556771"
+      "bytes": 3448915,
+      "sha256": "b0d19ffbaaff2a4a8b9865a7d78fd920b69f24c8680802c476b4137beced87a7"
     },
     "report-data.json": {
       "bytes": 1038751,
