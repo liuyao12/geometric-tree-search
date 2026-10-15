@@ -1,0 +1,57 @@
+{
+  "Q_payload_parses": 0,
+  "Source_review_history_preserved": true,
+  "actual_scope": "Two stdlib-only controlled probes, each2fresh children;4nativechildren exited0/reaped. No project Source/helper/point/kernel/word/candidate/fixture functions or Q payloads executed. These are real NONLOGICAL runtime ABI observations, not Source-only review.",
+  "author_identity": "/root",
+  "code": [
+    {
+      "bytes": 2216,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/perf-counter-probe-v1.py",
+      "sha256": "eaf042bd9615862fa17ad294be939c03e16ba25b73afb855b96b4efa641615d2"
+    },
+    {
+      "bytes": 2241,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/kernel-clock-probe-v1.py",
+      "sha256": "156d737868e5adfc22db624af62bae2a2097280314920767830687b890d12553"
+    }
+  ],
+  "evidence_storage": "Exact structured results transcribed from completed tool stdout; no recomputed clocks or invented process measurements. Native result JSON canonicalized for storage, source scripts copied unchanged.",
+  "finding": "Actual pinned Darwin Python3.9.6 perf_counter_ns has per-process origins; values cannot be used as globally shared integer timestamps. Parent-only authoritative timing is not disproven, but child shared-clock/late-boundary assumptions remain unqualified.",
+  "full52_control_runs": 0,
+  "full_architecture_qualified": false,
+  "new_theorems": 0,
+  "next": "Preserve existing Sources/reviews/actual failures. Additive global-clock and conservative local-perf deadline adapter design/review required; keep original point8d22/checker1717/full model/runtime/caps. No current project activation.",
+  "primary_sources": [
+    "https://raw.githubusercontent.com/python/cpython/v3.9.6/Python/pytime.c",
+    "https://docs.python.org/3/library/time.html#time.monotonic"
+  ],
+  "project_functions_executed": 0,
+  "proof_searches": 0,
+  "replacement_scope": "CLOCK_MONOTONIC clock_gettime_ns passed both fresh-process bracket controls. This alone does not qualify the project pipeline or prove all timing/resource invariants.",
+  "resource_fit_accepted": false,
+  "runtime": {
+    "bytes": 102352,
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-NONLOGICAL-runtime-clock-ABI-disposition-v1",
+  "tool_observations": [
+    {
+      "chunk_id": "592621",
+      "exit_code": 0,
+      "native_result": {
+        "bytes": 1534,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/perf-counter-actual-v1.json",
+        "sha256": "b4c3d7398ead3158b734ca02479c1a8d6a9f955a310760b8f0c643ccbc9aa1e8"
+      }
+    },
+    {
+      "chunk_id": "7062fc",
+      "exit_code": 0,
+      "native_result": {
+        "bytes": 1497,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/kernel-clock-actual-v1.json",
+        "sha256": "bc5ef6f3a88a5c82c76c48d43c4d8cda1f896ee516c7cf18b2cfaf21c29df996"
+      }
+    }
+  ]
+}

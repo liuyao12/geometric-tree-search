@@ -1,0 +1,43 @@
+{
+  "began_ns": 413951316639000,
+  "clock_API": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "elapsed_ns": 601092000,
+  "finished_ns": 413951917731000,
+  "full_architecture_qualified": false,
+  "parent_version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "project_functions_executed": 0,
+  "proof_accepted": false,
+  "resource_fit_accepted": false,
+  "rows": [
+    {
+      "child": {
+        "global_ns": 413951636778000,
+        "local_perf_ns": 46980500,
+        "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]"
+      },
+      "exit_code": 0,
+      "global_bracketed": true,
+      "index": 0,
+      "parent_after_ns": 413951638709000,
+      "parent_before_ns": 413951570546000,
+      "reaped": true
+    },
+    {
+      "child": {
+        "global_ns": 413951915915000,
+        "local_perf_ns": 48637250,
+        "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]"
+      },
+      "exit_code": 0,
+      "global_bracketed": true,
+      "index": 1,
+      "parent_after_ns": 413951917693000,
+      "parent_before_ns": 413951843787000,
+      "reaped": true
+    }
+  ],
+  "runtime_sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+  "schema": "ROOT-NONLOGICAL-kernel-clock-ABI-probe-v1",
+  "scope": "two fresh pinned runtime processes only; no project Source/functions/Q/model/fixtures/proof search",
+  "shared_kernel_clock_bracket_control_passed": true
+}

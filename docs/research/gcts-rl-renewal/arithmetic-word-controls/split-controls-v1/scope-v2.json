@@ -1,0 +1,130 @@
+{
+  "RL_advantage": "NOT_ESTABLISHED",
+  "Source_review": "Current mechanism Sources and corrected cold-worker/early-launcher Sources have conditional static passes. Native clock ABI failed separately. All Sources/reviews preserved; no current project activation.",
+  "actual_full52_control_suites": 0,
+  "actual_searches_in_new_architecture": 0,
+  "new_theorems_in_new_architecture": 0,
+  "pending": "Authoritative global-clock migration and conservative local float projections need design/current review before new Root request/caller/owned controls. SeparateW16/model/resource/proof gates remain pending.",
+  "prior_scope": "scope.json",
+  "publication_rewrites_source_or_reviews": false,
+  "resource_fit": "UNMEASURED",
+  "runtime_clock_probes": {
+    "fresh_children_exited_and_reaped": 4,
+    "full_architecture_qualified": false,
+    "kernel_CLOCK_MONOTONIC_brackets": "PASS for2fresh child controls only",
+    "perf_counter_cross_process": "FAILED on actual pinnedPython3.9.6",
+    "project_functions_executed": 0
+  },
+  "schema": "GCTS-split-controls-publication-scope-v2",
+  "source_files": {
+    "census-leaf.py": {
+      "bytes": 19640,
+      "sha256": "1de670a269e612a454ba58a9b8c9a219934b8ae7666867a0f0a28105f0c44959"
+    },
+    "clock-disposition.json": {
+      "bytes": 3231,
+      "sha256": "acb5f342e6404909d951b85e2ad359d337c06bbe35f3b3bdde0923b72e2388bc"
+    },
+    "cold-contract.json": {
+      "bytes": 23697,
+      "sha256": "8dcd850ab1b3d4f1da0791819e0c05b301d6d05157883737395e85e57b0d3098"
+    },
+    "cold-worker-review.json": {
+      "bytes": 5746,
+      "sha256": "c1de50a638f286ad1b11909a4bb3fac8392ecf71353da83002cd23755506263a"
+    },
+    "cold-worker.py": {
+      "bytes": 70238,
+      "sha256": "f7754698418f264f1f6bb64c03c0eff216d20a1f53cfdbbf1463f758808bbd96"
+    },
+    "coordinator-cancellation-negative.json": {
+      "bytes": 1927,
+      "sha256": "69c15752c0dc019445b74c2d57cd39281e0f0603e087d6e90dc25f9562127f81"
+    },
+    "coordinator-lifetime-negative.json": {
+      "bytes": 2164,
+      "sha256": "a53a5e67984d2a4e96d3969d559965b031da81d653107f7b4bd3b256be4b1700"
+    },
+    "coordinator-review.json": {
+      "bytes": 2000,
+      "sha256": "fd40ccb14f58392af039fd00315155465f9e6478b8496c7890993953d3e024a2"
+    },
+    "coordinator.py": {
+      "bytes": 53864,
+      "sha256": "1a769203da1050d2ede508edf3f2d40a4620be31d873e75eb4eb84245425785f"
+    },
+    "disposable-leaf.py": {
+      "bytes": 2985,
+      "sha256": "8c88dabb29c1e5e5b7af0bceddc37173ac03fd6de86e89604cf10a406bb5e190"
+    },
+    "early-launcher-review.json": {
+      "bytes": 2322,
+      "sha256": "ab7e314593816772e45cbdf5b48f06bea5397956116694d846b889aa08303d1f"
+    },
+    "early-launcher.py": {
+      "bytes": 8606,
+      "sha256": "9c4cd23dc98bb6855993f603cf4adc4b01575268a1e5d81d6d16ab3910da9716"
+    },
+    "fixtures.json": {
+      "bytes": 62584,
+      "sha256": "1420cd2c0a56d09e629ca65fe4b7f690570ccb283b1998762c10de1190180575"
+    },
+    "kernel-clock-actual.json": {
+      "bytes": 1497,
+      "sha256": "bc5ef6f3a88a5c82c76c48d43c4d8cda1f896ee516c7cf18b2cfaf21c29df996"
+    },
+    "kernel-clock-probe.py": {
+      "bytes": 2241,
+      "sha256": "156d737868e5adfc22db624af62bae2a2097280314920767830687b890d12553"
+    },
+    "owned-adapter.py": {
+      "bytes": 25468,
+      "sha256": "7155ba54659c722c308a6377f16e8cbfc719dfb98f7e7488d0dd86db886512c5"
+    },
+    "owned-review.json": {
+      "bytes": 7225,
+      "sha256": "81dbd79451d218f1e78961974891e3c4df4121ef63e81e8fb8852e196f5cc61f"
+    },
+    "perf-clock-actual.json": {
+      "bytes": 1534,
+      "sha256": "b4c3d7398ead3158b734ca02479c1a8d6a9f955a310760b8f0c643ccbc9aa1e8"
+    },
+    "perf-clock-probe.py": {
+      "bytes": 2216,
+      "sha256": "eaf042bd9615862fa17ad294be939c03e16ba25b73afb855b96b4efa641615d2"
+    },
+    "point-adapter.py": {
+      "bytes": 21715,
+      "sha256": "4349af2c387cc6ccee27cdf5bf02d50f6bfdb51474ce46648b4d9f94a3f5bd8d"
+    },
+    "point-review.json": {
+      "bytes": 3145,
+      "sha256": "269fd7ff3029918668ddbd1587ab38de96e7f988664ba63c54bab7ea942e5ad7"
+    },
+    "profile-leaf.py": {
+      "bytes": 5085,
+      "sha256": "7ccbc8818af91cc2e83aaf558dfab645fbc5bdd4acf130ee4309e53ec49af18b"
+    },
+    "protocol-adapter.py": {
+      "bytes": 75561,
+      "sha256": "495bd2ffa499734a9d4abbbf238a718c66c9fbebc2c3b82789960777f66a041f"
+    },
+    "protocol-negative.json": {
+      "bytes": 3648,
+      "sha256": "ee791eb13cb6d9264aeec5043da81e9d35586a1cf58bdd6d9add452f05694665"
+    },
+    "protocol-review.json": {
+      "bytes": 4022,
+      "sha256": "15bb9491a6b94d972d0edd89e30a9e41bb3afb8bdbd8106426a9b7e6217b43a4"
+    },
+    "runner-review.json": {
+      "bytes": 3774,
+      "sha256": "6d4f905f37fbf4a3aef633e04d623184495a4cadb68eb24da6acdbdb6596116d"
+    },
+    "runner.py": {
+      "bytes": 31622,
+      "sha256": "56293f4a7acb8664e4a4745ed35d96db869f29c8a93327f83aea41decc3e4f71"
+    }
+  },
+  "source_only": true
+}

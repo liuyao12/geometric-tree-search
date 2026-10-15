@@ -1,0 +1,45 @@
+{
+  "began_ns": 21664291,
+  "elapsed_ns": 571842167,
+  "finished_ns": 593506458,
+  "full_architecture_qualified": false,
+  "parent_clock_implementation": "mach_absolute_time()",
+  "parent_version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "project_functions_executed": 0,
+  "proof_accepted": false,
+  "resource_fit_accepted": false,
+  "rows": [
+    {
+      "child": {
+        "implementation": "mach_absolute_time()",
+        "monotonic_ns": 36730041,
+        "perf_ns": 36729750,
+        "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]"
+      },
+      "exit_code": 0,
+      "index": 0,
+      "parent_after_ns": 335824041,
+      "parent_before_ns": 289161708,
+      "perf_bracketed": false,
+      "reaped": true
+    },
+    {
+      "child": {
+        "implementation": "mach_absolute_time()",
+        "monotonic_ns": 38700000,
+        "perf_ns": 38699416,
+        "version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]"
+      },
+      "exit_code": 0,
+      "index": 1,
+      "parent_after_ns": 593477958,
+      "parent_before_ns": 544494875,
+      "perf_bracketed": false,
+      "reaped": true
+    }
+  ],
+  "runtime_sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+  "schema": "ROOT-NONLOGICAL-runtime-clock-ABI-probe-v1",
+  "scope": "two fresh pinned runtime processes only; no project Source/functions/Q/model/fixtures/proof search",
+  "shared_perf_origin_bracket_control_passed": false
+}
