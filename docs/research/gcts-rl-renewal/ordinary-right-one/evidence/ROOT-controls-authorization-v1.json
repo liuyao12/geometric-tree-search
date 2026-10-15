@@ -1,0 +1,62 @@
+{
+  "actual_execution_authorized": true,
+  "author_identity": "/root",
+  "binding": {
+    "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+    "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+    "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+    "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+  },
+  "invocation_id": "ordinary-Q-controls-20261015-v1",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "point_BASE_receives_ordinary_output": false,
+  "purpose": "controls",
+  "resource_rule": "ordinary-sequential-cutoff-max-v1",
+  "schema": "ROOT-ordinary-Q-cold-authorization-v1",
+  "scope": "Once-only original ordinary control; no mathematical authority in producer and no point trajectory/full24/RL claim.",
+  "source_bindings": {
+    "checker_support": {
+      "bytes": 48584,
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "clean_checker": {
+      "bytes": 11676,
+      "sha256": "0ab3ccda1f21660a014f03817f5154d5a3125869d9110b39a083e9483587b3ec"
+    },
+    "codec": {
+      "bytes": 5806,
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "control_leaf": {
+      "bytes": 931,
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 39108,
+      "sha256": "57e2c28233996e4eafc0d19ea0fe9af7eac79c6356174b04f37cf979615c2a47"
+    },
+    "ordinary_adapter": {
+      "bytes": 22226,
+      "sha256": "e65a456f133807919e7d61cca55af782fbee32d62d8603684dae907841be8850"
+    },
+    "ordinary_producer": {
+      "bytes": 17921,
+      "sha256": "860134e6a3c95b4099713a481d5ce322cfd9cc452a87a45330b932424054f875"
+    },
+    "producer_bootstrap": {
+      "bytes": 10952,
+      "sha256": "a503a32bd9464531f0b1f0bfa64016c7e9754e486854f04f84250d8abb0ea340"
+    }
+  }
+}

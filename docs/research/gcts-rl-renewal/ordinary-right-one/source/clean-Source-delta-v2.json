@@ -1,0 +1,39 @@
+{
+  "changes": [
+    "VERSION v2",
+    "Immediate actual boundary/endpoint/helper function and code/default/cell state rejection before first adapter delegation."
+  ],
+  "edits": [
+    {
+      "new": "2",
+      "new_end": 568,
+      "new_start": 567,
+      "old": "1",
+      "old_end": 568,
+      "old_start": 567
+    },
+    {
+      "new": "if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code\n            or same is not same_fn or same_fn.__code__ is not same_code\n            or boundary.__code__ is not boundary_state[1] or not same_fn(boundary,boundary_state)\n            or adapter.validate_first_ready_candidate is not endpoint or not same_fn(endpoint,endpoint_state)):\n        raise RuntimeError('original pre-adapter invoking boundary changed')\n    ",
+      "new_end": 9117,
+      "new_start": 8685,
+      "old": "",
+      "old_end": 8685,
+      "old_start": 8685
+    }
+  ],
+  "full_forward_and_inverse_verified": true,
+  "new": {
+    "bytes": 11676,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_clean_checker_v2.py",
+    "sha256": "0ab3ccda1f21660a014f03817f5154d5a3125869d9110b39a083e9483587b3ec"
+  },
+  "old": {
+    "bytes": 11244,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_clean_checker_v1.py",
+    "sha256": "e8891e22b741ee07ecaecc4d160beb7f606146644c263325e8b1e1e775bb6d93"
+  },
+  "reviewer_finding": "Pre-adapter boundary was called without its own immediate original state precheck; v1 preserved, no mutation outcome or execution claimed.",
+  "schema": "ordinary-clean-leaf-v1-to-v2-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_non_main_definitions": 7
+}

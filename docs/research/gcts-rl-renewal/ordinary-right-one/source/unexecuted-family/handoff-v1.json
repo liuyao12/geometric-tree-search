@@ -1,0 +1,43 @@
+{
+  "schema": "equality-operand-family-Source-handoff-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "sources": {
+    "family": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+      "sha256": "5888f71e29714e3144b6ef18f6f27361909dba958da841199a6554b98e952813",
+      "bytes": 22614
+    },
+    "catalogue_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+      "bytes": 12929
+    },
+    "checker_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+      "bytes": 3901
+    }
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/Source-contract-v1.json",
+    "sha256": "08e48f38a70f2675a03f2dda2ea8c902b0723995a8aeb8daa723fe355e69c076",
+    "bytes": 17268
+  },
+  "static_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/static-authoring-checks-v1.json",
+    "sha256": "04b022f0c56727e2ec010b93dbc27e416d8b2495c52e093095a1d2566508b985",
+    "bytes": 5295
+  },
+  "status": "UNEXECUTED implementation proposal; current distinct Source review pending",
+  "api_summary": "Full current recipe adapters; complete donor/root miner selecting first eligible Eq operand DAG; typed simultaneous recipient join; shared original key/point union and full primitive-word check; lazy preference with complete original fallback. No graph/search implementation changed.",
+  "remaining_gates": [
+    "Genuine searched donor and Root-authenticated origin; none bundled",
+    "Distinct whole Source review including Q parameter-consequence adapter",
+    "Guarded current catalogue/snapshot/checker bindings and original state consumption",
+    "Original scheduler/domain/rollback controls, equal-information ordinary integration",
+    "Actual whole cold learning/build/check/search/resources under unchanged caps; no fit claim"
+  ],
+  "unchanged_scope": "No new primitive rule, point encoding, original Gamma/context/target change, H forced instance, actual library, theorem, full-board/trajectory/RL or publication acceptance",
+  "project_source_functions_Q_decodes_clocks_tests_actual_plans": 0
+}

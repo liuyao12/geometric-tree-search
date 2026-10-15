@@ -1,0 +1,23 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_clean_checker_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_clean_checker_v1.py
+@@ -21,7 +21,7 @@
+ import time
+ import types
+ 
+-VERSION = 'Q-ordinary-clean-checker-leaf-v2'
++VERSION = 'Q-ordinary-clean-checker-leaf-v1'
+ CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ PINS = {
+  'support': {'sha256':'464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba','bytes':48584},
+@@ -167,11 +167,6 @@
+     endpoint_state = anchor(endpoint)
+     authority_value = support.value_digest(authority)
+     candidate_value = support.value_digest(candidate)
+-    if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code
+-            or same is not same_fn or same_fn.__code__ is not same_code
+-            or boundary.__code__ is not boundary_state[1] or not same_fn(boundary,boundary_state)
+-            or adapter.validate_first_ready_candidate is not endpoint or not same_fn(endpoint,endpoint_state)):
+-        raise RuntimeError('original pre-adapter invoking boundary changed')
+     boundary()
+     try:
+         result = endpoint(candidate=candidate,fixed_authority=authority,fixed_authority_sha256=asha,

@@ -1,0 +1,1158 @@
+{
+  "schema": "ordinary-right-one-saved-proof-row-translation-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_data_only": true,
+  "source_candidate": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-candidate.json",
+    "sha256": "cb8f196ae80c97e41e8be6b5dd8e48b3a49a2ade903978b083e970fe1534bcf4",
+    "bytes": 4292
+  },
+  "source_certificate_container": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/primary-owned-v1/verifier-response.jsonl",
+    "sha256": "7076d1c96f2bbf66e5ba4f732e1ec166074aee35f292291a55e8501a71c95a85",
+    "bytes": 5051
+  },
+  "commands_sha256": "3ed136d57a07a6615ce5ca9431f46ca06b9c41c053aa235659c75bdbf7d08c50",
+  "wire_numbering": "zero based; display rows are wire+1",
+  "scope": "Literal translation of already saved, separately checked primitive rows. No checker replay, supplied target route or new proof authority. Origin ordinals/formula codes/recipe indices are recorded producer provenance, not independently replayed catalogue membership.",
+  "target_latex": "\\(\\forall n\\;\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(n\\right)\\bigr)\\)",
+  "original_Gamma_latex": "\\(\\Gamma=\\varnothing\\)",
+  "parameters": [
+    "n"
+  ],
+  "rows": [
+    {
+      "wire_row": 0,
+      "display_row": 1,
+      "rule": "axiom",
+      "formula_latex": "\\(\\forall x\\;\\bigl(\\forall y\\;\\bigl(\\left(x+S\\left(y\\right)\\right)=S\\left(\\left(x+y\\right)\\right)\\bigr)\\bigr)\\)",
+      "english": "Load the original successor axiom AS.",
+      "ordered_prior_wire_rows": [],
+      "ordered_prior_display_rows": [],
+      "formula_sha256": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+      "original_command": {
+        "formula": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "name": "AS",
+        "rule": "axiom"
+      },
+      "recorded_recipe_index": 10720,
+      "recorded_formula_code": 414,
+      "recorded_discovery_ordinal": 0
+    },
+    {
+      "wire_row": 1,
+      "display_row": 2,
+      "rule": "axiom",
+      "formula_latex": "\\(\\forall x\\;\\bigl(\\left(x+0\\right)=x\\bigr)\\)",
+      "english": "Load the original right-zero axiom AZ.",
+      "ordered_prior_wire_rows": [],
+      "ordered_prior_display_rows": [],
+      "formula_sha256": "c0b146418958279b2f2cba2aceba61da8a3fe353527375e324f89a03cbf497c8",
+      "original_command": {
+        "formula": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "name": "AZ",
+        "rule": "axiom"
+      },
+      "recorded_recipe_index": 10721,
+      "recorded_formula_code": 415,
+      "recorded_discovery_ordinal": 1
+    },
+    {
+      "wire_row": 2,
+      "display_row": 3,
+      "rule": "instantiate",
+      "formula_latex": "\\(\\bigl(\\forall x\\;\\bigl(\\forall y\\;\\bigl(\\left(x+S\\left(y\\right)\\right)=S\\left(\\left(x+y\\right)\\right)\\bigr)\\bigr)\\bigr)\\;\\Longrightarrow\\;\\bigl(\\forall y\\;\\bigl(\\left(n+S\\left(y\\right)\\right)=S\\left(\\left(n+y\\right)\\right)\\bigr)\\bigr)\\)",
+      "english": "Form the universal-instantiation implication that replaces outer \\(x\\) by the declared parameter \\(n\\) in AS. The \\(y\\) quantifier remains.",
+      "ordered_prior_wire_rows": [],
+      "ordered_prior_display_rows": [],
+      "formula_sha256": "27eff9ca8de01b4bacdff8320142f87d390255fe671e5833a53043c902144278",
+      "original_command": {
+        "formula": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "instantiate",
+        "term": [
+          "var",
+          "n"
+        ],
+        "universal": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "recorded_recipe_index": 10743,
+      "recorded_formula_code": 862,
+      "recorded_discovery_ordinal": 23
+    },
+    {
+      "wire_row": 3,
+      "display_row": 4,
+      "rule": "instantiate",
+      "formula_latex": "\\(\\bigl(\\forall x\\;\\bigl(\\left(x+0\\right)=x\\bigr)\\bigr)\\;\\Longrightarrow\\;\\bigl(\\left(n+0\\right)=n\\bigr)\\)",
+      "english": "Form the universal-instantiation implication that replaces \\(x\\) by \\(n\\) in AZ.",
+      "ordered_prior_wire_rows": [],
+      "ordered_prior_display_rows": [],
+      "formula_sha256": "3a3ec19e640556d9f00bf8154df39499b8abfcff72f0b318463cbd7b3522a343",
+      "original_command": {
+        "formula": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "n"
+            ]
+          ]
+        ],
+        "rule": "instantiate",
+        "term": [
+          "var",
+          "n"
+        ],
+        "universal": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ]
+      },
+      "recorded_recipe_index": 10754,
+      "recorded_formula_code": 873,
+      "recorded_discovery_ordinal": 34
+    },
+    {
+      "wire_row": 4,
+      "display_row": 5,
+      "rule": "instantiate",
+      "formula_latex": "\\(\\bigl(\\forall y\\;\\bigl(\\left(n+S\\left(y\\right)\\right)=S\\left(\\left(n+y\\right)\\right)\\bigr)\\bigr)\\;\\Longrightarrow\\;\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(\\left(n+0\\right)\\right)\\bigr)\\)",
+      "english": "Form the universal-instantiation implication that replaces \\(y\\) by \\(0\\) in the remaining successor formula.",
+      "ordered_prior_wire_rows": [],
+      "ordered_prior_display_rows": [],
+      "formula_sha256": "848d714c05ea9f237e88377e0fffd1fc03b2a738d1cc90b0c2f68aed6a72a03e",
+      "original_command": {
+        "formula": [
+          "imp",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "instantiate",
+        "term": [
+          "fun",
+          "zero",
+          []
+        ],
+        "universal": [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "recorded_recipe_index": 10874,
+      "recorded_formula_code": 993,
+      "recorded_discovery_ordinal": 154
+    },
+    {
+      "wire_row": 5,
+      "display_row": 6,
+      "rule": "eq_subst",
+      "formula_latex": "\\(\\bigl(\\left(n+0\\right)=n\\bigr)\\;\\Longrightarrow\\;\\bigl(\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(\\left(n+0\\right)\\right)\\bigr)\\;\\Longrightarrow\\;\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(n\\right)\\bigr)\\bigr)\\)",
+      "english": "Form the equality-substitution implication for template \\(n+S(0)=S(h)\\), replacing \\(h\\) from \\(n+0\\) to \\(n\\). This is a licence, not yet an equality application.",
+      "ordered_prior_wire_rows": [],
+      "ordered_prior_display_rows": [],
+      "formula_sha256": "67f06b236f1674797ed1118163d6df1b1f3f99aed99528ed8fbb383fb929d73a",
+      "original_command": {
+        "formula": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "n"
+            ]
+          ],
+          [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "left": [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        "right": [
+          "var",
+          "n"
+        ],
+        "rule": "eq_subst",
+        "template": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ]
+        ],
+        "variable": "hole0"
+      },
+      "recorded_recipe_index": 12773,
+      "recorded_formula_code": 4232,
+      "recorded_discovery_ordinal": 2049
+    },
+    {
+      "wire_row": 6,
+      "display_row": 7,
+      "rule": "mp",
+      "formula_latex": "\\(\\forall y\\;\\bigl(\\left(n+S\\left(y\\right)\\right)=S\\left(\\left(n+y\\right)\\right)\\bigr)\\)",
+      "english": "Apply ordered modus ponens with antecedent row 1 and implication row 3.",
+      "ordered_prior_wire_rows": [
+        0,
+        2
+      ],
+      "ordered_prior_display_rows": [
+        1,
+        3
+      ],
+      "formula_sha256": "2e548c44c97d41acd54098203ecf991ec3f77b9f6d161adf45e5e43d501b2030",
+      "original_command": {
+        "antecedent": 0,
+        "formula": [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "implication": 2,
+        "rule": "mp"
+      },
+      "recorded_recipe_index": 21,
+      "recorded_formula_code": 426,
+      "recorded_discovery_ordinal": 5467
+    },
+    {
+      "wire_row": 7,
+      "display_row": 8,
+      "rule": "mp",
+      "formula_latex": "\\(\\left(n+0\\right)=n\\)",
+      "english": "Apply ordered modus ponens with antecedent row 2 and implication row 4.",
+      "ordered_prior_wire_rows": [
+        1,
+        3
+      ],
+      "ordered_prior_display_rows": [
+        2,
+        4
+      ],
+      "formula_sha256": "08eb7f8ecc99d872c81737dd06d2549b04b27341f9cbc139560734b64bc8a4b4",
+      "original_command": {
+        "antecedent": 1,
+        "formula": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "n"
+          ]
+        ],
+        "implication": 3,
+        "rule": "mp"
+      },
+      "recorded_recipe_index": 32,
+      "recorded_formula_code": 637,
+      "recorded_discovery_ordinal": 5478
+    },
+    {
+      "wire_row": 8,
+      "display_row": 9,
+      "rule": "mp",
+      "formula_latex": "\\(\\left(n+S\\left(0\\right)\\right)=S\\left(\\left(n+0\\right)\\right)\\)",
+      "english": "Apply ordered modus ponens with antecedent row 7 and implication row 5.",
+      "ordered_prior_wire_rows": [
+        6,
+        4
+      ],
+      "ordered_prior_display_rows": [
+        7,
+        5
+      ],
+      "formula_sha256": "531bdfa35a5415c24a3c86ed56f2f43d75cb1c5b575fd6dd13e05da232acf967",
+      "original_command": {
+        "antecedent": 6,
+        "formula": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "implication": 4,
+        "rule": "mp"
+      },
+      "recorded_recipe_index": 152,
+      "recorded_formula_code": 609,
+      "recorded_discovery_ordinal": 5598
+    },
+    {
+      "wire_row": 9,
+      "display_row": 10,
+      "rule": "mp",
+      "formula_latex": "\\(\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(\\left(n+0\\right)\\right)\\bigr)\\;\\Longrightarrow\\;\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(n\\right)\\bigr)\\)",
+      "english": "Apply ordered modus ponens with antecedent row 8 and implication row 6, obtaining the remaining transport implication.",
+      "ordered_prior_wire_rows": [
+        7,
+        5
+      ],
+      "ordered_prior_display_rows": [
+        8,
+        6
+      ],
+      "formula_sha256": "7c7cf938aec702ad5bd1ce42a68465b2f95226ce0a34933254cdea7e19c57368",
+      "original_command": {
+        "antecedent": 7,
+        "formula": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "implication": 5,
+        "rule": "mp"
+      },
+      "recorded_recipe_index": 3601,
+      "recorded_formula_code": 3000,
+      "recorded_discovery_ordinal": 5780
+    },
+    {
+      "wire_row": 10,
+      "display_row": 11,
+      "rule": "mp",
+      "formula_latex": "\\(\\left(n+S\\left(0\\right)\\right)=S\\left(n\\right)\\)",
+      "english": "Apply ordered modus ponens with antecedent row 9 and implication row 10, obtaining the open parameter equality.",
+      "ordered_prior_wire_rows": [
+        8,
+        9
+      ],
+      "ordered_prior_display_rows": [
+        9,
+        10
+      ],
+      "formula_sha256": "1f8a7a7519fa488438243bcc8523b469cd7378d8cf11fa9d1f983be4a5e1be6e",
+      "original_command": {
+        "antecedent": 8,
+        "formula": [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "n"
+              ]
+            ]
+          ]
+        ],
+        "implication": 9,
+        "rule": "mp"
+      },
+      "recorded_recipe_index": 2341,
+      "recorded_formula_code": 616,
+      "recorded_discovery_ordinal": 5821
+    },
+    {
+      "wire_row": 11,
+      "display_row": 12,
+      "rule": "generalize",
+      "formula_latex": "\\(\\forall n\\;\\bigl(\\left(n+S\\left(0\\right)\\right)=S\\left(n\\right)\\bigr)\\)",
+      "english": "Generalize row 11 over \\(n\\). The saved certificate records the original empty \\(\\Gamma\\); no premise is discharged or omitted.",
+      "ordered_prior_wire_rows": [
+        10
+      ],
+      "ordered_prior_display_rows": [
+        11
+      ],
+      "formula_sha256": "4bd5ac8395622f38c210d653eacd92dc3e6c7ce276a210883581e668a2f55e8c",
+      "original_command": {
+        "formula": [
+          "all",
+          "n",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "rule": "generalize",
+        "source": 10,
+        "variable": "n"
+      },
+      "recorded_recipe_index": 2670,
+      "recorded_formula_code": 189,
+      "recorded_discovery_ordinal": 5866
+    }
+  ],
+  "independent_semantic_replay": false,
+  "point_full24_trajectory_RL_claimed": false,
+  "family_scope_note": "The actual equality template contains succ(hole0), outside the frozen one-whole-operand family recognizer. No miner was called and no family instance is claimed."
+}

@@ -1,0 +1,87 @@
+{
+  "actual_runtime_qualified": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 71,
+  "findings": {
+    "bytes": 115880,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "ab4fbcd65c2b704e5fbacc20a53cf4e43a78f7dab50fe6886530a45b372b9b7f"
+  },
+  "limitations": [
+    "No Source/project/producer/checker/codec/helper/native-clock/test/fixture/Q decode or actual plan was executed in this review. Only stdlib raw hashing, metadata JSON, AST parsing and compile-only code objects.",
+    "Reviewer previously authored related controls/point-audit/two-epoch prototype dependencies, but did not author this new minimal parent, ordinary producer/adapter, leaves, support or1717. No self-independent review of former prototypes is claimed.",
+    "Conditional Source readiness only. Actual controls, exact Root authorization, native meter/postprobe, terminal memory, full raw output/cancellation/reaping and later separately scoped once-only primary remain unqualified.",
+    "Parent has fixed reviewed stdlib/no-user-callback trust scope, not a hostile VM/OS guarantee. Source9 is the cold ledger; authority four roles alone is not an execution census.",
+    "External driver subprocess timeout65 can only directly reap its meter process; any such failure requires complete later native caller/leaf closure evidence and cannot be admitted from this review.",
+    "Descriptive author clean delta overcounts non-main definitions by one: actual seven total/six non-main, all actual non-main ASTs exact. Operative Source/maps unchanged."
+  ],
+  "raw_reference_count": 137,
+  "resource_accepted": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "Q-ordinary-first-ready-cold-intake-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-ordinary-first-ready-cold-intake-Source",
+  "source": {
+    "bytes": 39108,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_cold_intake_v1.py",
+    "sha256": "57e2c28233996e4eafc0d19ea0fe9af7eac79c6356174b04f37cf979615c2a47"
+  },
+  "source_contract": {
+    "bytes": 27686,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "b9d0fee7701c59cc03877805d5bd615e38a97a705f94197c9072b647278da9a9"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "checker_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "clean_checker": {
+      "bytes": 11676,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_clean_checker_v2.py",
+      "sha256": "0ab3ccda1f21660a014f03817f5154d5a3125869d9110b39a083e9483587b3ec"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "control_leaf": {
+      "bytes": 931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_control_leaf_v1.py",
+      "sha256": "8da445dfea2046b46559bd2eda2d1e503f085babb60516fc90e7e566a62bbb0a"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "intake": {
+      "bytes": 39108,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_cold_intake_v1.py",
+      "sha256": "57e2c28233996e4eafc0d19ea0fe9af7eac79c6356174b04f37cf979615c2a47"
+    },
+    "ordinary_adapter": {
+      "bytes": 22226,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-control-source-20261015/Q_ordinary_first_ready_word_adapter_v1.py",
+      "sha256": "e65a456f133807919e7d61cca55af782fbee32d62d8603684dae907841be8850"
+    },
+    "ordinary_producer": {
+      "bytes": 17921,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-control-source-20261015/Q_ordinary_first_ready_saturation_v1.py",
+      "sha256": "860134e6a3c95b4099713a481d5ce322cfd9cc452a87a45330b932424054f875"
+    },
+    "producer_bootstrap": {
+      "bytes": 10952,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-cold-source-20261015/Q_ordinary_producer_bootstrap_v1.py",
+      "sha256": "a503a32bd9464531f0b1f0bfa64016c7e9754e486854f04f84250d8abb0ea340"
+    }
+  },
+  "unique_raw_path_count": 38
+}

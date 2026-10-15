@@ -1,0 +1,213 @@
+{
+  "schema": "mined-equality-operand-family-Source-contract-v1",
+  "source_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "sources": {
+    "family": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+      "sha256": "5888f71e29714e3144b6ef18f6f27361909dba958da841199a6554b98e952813",
+      "bytes": 22614
+    },
+    "catalogue_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+      "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+      "bytes": 12929
+    },
+    "checker_adapters": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+      "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+      "bytes": 3901
+    }
+  },
+  "references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "current_Incident_family": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-receptor-family-Sequence-guard-source-20261014/equality_receptor_family_I2_sequence_guard_v3.py",
+      "sha256": "b4d20eaf6c7f5db25e7ab7a70303e7d39a733b49c2cec300b363cbc3f7fbfaa5",
+      "bytes": 62803
+    },
+    "Q_kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    "Q_catalogue": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187
+    },
+    "Q_point_graph": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531
+    },
+    "Q_independent_semantics": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514
+    },
+    "Hilbert_ground_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc",
+      "bytes": 24588
+    },
+    "Hilbert_selected_reader": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+      "sha256": "c8fa4aeba82fcc2af9bd091fd351d72f86a24ae97cb5edd92ff558e81c23501b",
+      "bytes": 64498
+    },
+    "Hilbert_point_graph": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6",
+      "bytes": 42946
+    },
+    "next_step_note": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/next-receptor-family-contribution-source-20261015/next-receptor-families-v1.json",
+      "sha256": "e0bc3906d8dcde6867398984c1559109a900e9b977468075b0c51b036548fff5",
+      "bytes": 5851
+    },
+    "Hilbert_target_proposal": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-symbolic-target-audit-20261015/next-hilbert-v1.json",
+      "sha256": "793f1c3787a75a16f759c2d01b30a1bbeb04818276ceb3eb871483ea84484d82",
+      "bytes": 5388
+    }
+  },
+  "scope": "One whole equality operand only, learned from an authenticated automatically searched and independently rechecked donor DAG. No donor, family instance, proof route, scientific plan or activated library is bundled.",
+  "api": {
+    "catalogue_from_q": "keyword prepared_catalogue, original_graph_source_bindings, binding, tick; use original parsed preparation catalogue, no reparse or regeneration",
+    "catalogue_from_hilbert": "keyword header, selected_wire, binding, tick; exact source-bound c8 reader, entire formula/recipe census, current three-Gamma/24-row profile only",
+    "mine_transport": "donors, keyword authenticate_donor, check_word, tick; exact donor keys id/profile/context/commands/origin; every donor fully checked, every command root censused; select first eligible only after complete census",
+    "instantiate_transport": "keyword catalogue, snapshot, family, equality_key, formula_key, check_word, tick; snapshot returns original Q semantic_state or Hilbert compact_semantic_state, no model conversion; returns provisional original keys/word only",
+    "check_word": "keyword profile,context,commands,conclusion,primary,q_module,hilbert_checker_class,source_guard,local_deadline,tick; future caller may bind fixed modules/deadline into a genuine adapter",
+    "prefer_at_reference_branch": "keyword proposal,branch_row,canonical_domain,contains,tick; generator of preferred domain members followed by EVERY other canonical base member; contains is original current-domain membership, not advice approval"
+  },
+  "profiles": {
+    "Q-six-rule-open-parameter": {
+      "checker": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "point_graph": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "primary": "Unchanged check_primitive_word requires the exact CLOSED original target and all original Gamma.",
+      "consequence": "NEW scoped adapter uses unchanged Boundary+Semantics.command for parameter-scoped intermediate consequence only; no public closed-target relaxation, no primary acceptance.",
+      "current_profile": "Original empty Gamma, one declared parameter, 24 rows. Complete input formula and recipe inventories retained, with no count shortcuts. The prior observed 11147/16200 counts are not used as acceptance constants."
+    },
+    "Hilbert-five-rule-ground": {
+      "checker": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+        "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc",
+        "bytes": 24588
+      },
+      "reader": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-i2-first-proof-helper-source-20261013/i2_context_and_final24_certificate_v1.py",
+        "sha256": "c8fa4aeba82fcc2af9bd091fd351d72f86a24ae97cb5edd92ff558e81c23501b",
+        "bytes": 64498
+      },
+      "point_graph": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+        "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6",
+        "bytes": 42946
+      },
+      "primary_and_consequence": "Unchanged GroundChecker.proof; parameters empty, every Gamma/target closed. No generalization/induction/extra rule added. c8 SelectedWire keeps its existing three-occurrence ABI.",
+      "recipient": "The proposed new H/Incident target may have NO equality-operand instance. No widening to Incident or target-specific construction is permitted."
+    }
+  },
+  "data_contract": {
+    "context": "Exact theory, parameters, ordered_Gamma, target. Context is copied without alpha-normalization, occurrence deletion or target replacement.",
+    "binding": "Exactly model_epoch/primitive_authority_epoch/formula_registry_sha256/local_context_id. Original model-epoch preimage, original ordered Source bindings, recipe IDs/order and original formula codes are reproduced, not replaced by a normalized epoch.",
+    "recipes": "Whole original catalogue; exact witness and ordered premise formulas; original identity_preimage and complete record digest. Q adds original context identity to all recipe preimages; Hilbert adds it to assumption preimages only, matching its original ABI.",
+    "keys": "[original recipe index, original physical row, ordered original prior rows]. Every source strictly prior, no Boolean integer, all original branch-local exclusions retained.",
+    "points": "Original unit t at (0,row); m formula code at (1,row), source code at (1,ref), ordered port offset ref-row at (2+port,row). Shared keys counted once. All fixed/current marks and reference counts compared exactly; assigned zero differs from absence. No new point encoding.",
+    "mining": "Only actual eq_subst plus two ordered MP ancestors with one whole Eq operand hole. Members are abstracted from donor witnesses, never authored as donor commands. Ambiguous donor role aliases are censused ineligible; recipient aliases permitted if exact grounded preimages and full checks pass.",
+    "binding_safety": "Term arity/type and original free-parameter scope; hole distinct from parameters; simultaneous exact whole-term substitution, no sequential rewriting. Hole name selected only from an existing licensed recipient eq_subst recipe. No binders in this family body; surrounding arbitrary six-rule ancestry still checked with full Gamma freshness.",
+    "receptors_and_union": "Actual dependency-complete selected keys only. Entire ancestry plus every occurrence-specific Gamma seed retained, including unused and repeated formulas. Current union checked before and after; members resolve exact ordered recipe preimages and may reuse identical selected/new keys once.",
+    "embedding": "Deterministic greedy strict-prior empty-row embedding, checked against all current/fixed t/m and exclusions. Failure means NoInstance, not impossibility. Not a complete family-embedding algorithm.",
+    "search": "No graph mutation, pruning, macro, factor/domain replacement, callback reseal or rollback change. Caller retains global dead then forced then earliest-generation scheduler and complete 0/1/2-port base fallback. Proposal absence cannot remove a base candidate. Do not use advice list as a forced/dead degree census.",
+    "ordinary": "Ordinary receives the SAME mined family and exact primitive expansion DAG, with no private lemma or successful target route reserved for point search."
+  },
+  "trusted_integration_gates": [
+    "Genuine current independent Source review of these three files, including NEW Q intermediate-consequence adapter; no old typed review is current.",
+    "ROOT donor authenticator must establish exact saved automatic search return/tape and independent original-target check, not trust producer checked=true or the schema label. No actual donor is currently bound.",
+    "ROOT authenticates complete raw catalogues/EOF/current admissions, original context/model/registry/authority and all source buffers. No Q payload or Hilbert stream was parsed during authoring.",
+    "Caller pins fixed checker modules/classes and original effective methods, parser and source_guard/tick/snapshot/check_word/contains endpoints, defaults/cells/global authority and same-buffer provenance. These pure-data proposal modules are NOT a cold custody framework and are NOT independently authoritative against a hostile callback.",
+    "All setup, donor checking/mining, full catalogue materialization, joins, expansion checking, original point unions, advice consumption, search/output/native lifecycle must be charged. Full Hilbert materialization may be expensive; fit is unknown.",
+    "Current state must be revalidated at consumption; apply each constituent only via original Executor/scheduler/transaction, preserving complete graph/generations/exclusions/rollback. None is implemented or qualified by this proposal.",
+    "Primary result still requires separate unchanged clean original-target checker. Selected proof, current patch, full board, complete search trajectory, theorem admission and resource qualification are separate gates."
+  ],
+  "validation_needed": [
+    "Fresh searched donor positive OR honest complete no-family result, full root census and origin linkage; no known target proof supplied.",
+    "Both Eq operand directions, compound/open correlated terms, simultaneous nested-term roles, recipient aliases; reject capture, undeclared variables and donor normalization ambiguity.",
+    "Repeated/unused Gamma occurrences; dependency-complete versus pending sources; exact ordered MP and unary ancestry; stale model/context/registry/source epochs rejected.",
+    "Missing recipe and wrong preimage/port order; shared key counted once, repeated compatible input rows; no double positive t and exact zero/absence/refcount union including fixed target/exterior marks.",
+    "Current branch exclusions, entire-domain membership and complete fallback; original dead/forced/generation choice and exact full-state rollback remain independently controlled.",
+    "No automatic H instance or cross-checker fallback; Q open intermediate consequence must not be relabeled closed original-target proof.",
+    "Equal-information ordinary and point arms, learning/build/check plus first-use/reuse/native costs and UNKNOWN retention; no speedup/RL/generalization claim from a Source packet."
+  ],
+  "prospective_limits": {
+    "shared_inner_seconds": 20,
+    "failure_only_reserve_seconds": 55,
+    "owned_seconds": 60,
+    "observed_memory_limit_bytes": 536870912,
+    "caller_seconds": 90,
+    "finish_reserve_seconds": 1,
+    "clock": "ROOT-selected qualified global clock with conservative original same-process checker deadline projection; no reset or raised cap",
+    "fit": "unmeasured; no actual leaf/owner plans or execution ABI claimed"
+  },
+  "Source_review_ABI": {
+    "schema": "mined-equality-operand-family-typed-Source-review-v1",
+    "scope": "mined-equality-operand-transport-family-Source",
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "must differ from author",
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+      "sha256": "5888f71e29714e3144b6ef18f6f27361909dba958da841199a6554b98e952813",
+      "bytes": 22614
+    },
+    "sources": {
+      "family": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/equality_operand_transport_v1.py",
+        "sha256": "5888f71e29714e3144b6ef18f6f27361909dba958da841199a6554b98e952813",
+        "bytes": 22614
+      },
+      "catalogue_adapters": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/current_catalogue_adapters_v1.py",
+        "sha256": "2013c070d299d51f2356ccf6a59bff7cfd7e83bcb05cf5915034ecedb5173a00",
+        "bytes": 12929
+      },
+      "checker_adapters": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/equality-operand-transport-source-20261015/checker_adapters_v1.py",
+        "sha256": "b32ae182d7deda4707eca3ee7f99dfe8d526ec246778d7a994339aef640e069f",
+        "bytes": 3901
+      }
+    },
+    "source_contract": "exact current contract raw capsule",
+    "required_fields": {
+      "source_only": true,
+      "source_review_passed": "genuine verdict, not presumed",
+      "scientific_calls": 0,
+      "scientific_acceptance": false
+    }
+  },
+  "actual_status": {
+    "donor_authenticated": false,
+    "library_mined_or_admitted": false,
+    "instance_checked": false,
+    "scientific_search": false,
+    "target_proof": false,
+    "full_board": false,
+    "trajectory": false,
+    "resource_fit": false,
+    "RL": false,
+    "publication": false
+  },
+  "authorship_disclosure": "Author of earlier independent Q checker/codec/cold wrappers, report and finite calibration dependencies. This is new implementation authorship, not an independent review or a mathematical/runtime admission."
+}

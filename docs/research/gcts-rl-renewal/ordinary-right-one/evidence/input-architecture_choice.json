@@ -1,0 +1,85 @@
+{
+  "schema": "ROOT-full-model-search-and-independent-verifier-design-choice-v1",
+  "author_identity": "/root",
+  "design_only": true,
+  "implementation_authorized": true,
+  "actual_execution_authorized_by_this_record": false,
+  "recommendation": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-architecture-design-source-20261014/recommendation-v1.json",
+    "sha256": "bf09dd2cbeae45ecbcbe6473e5e7c4c6fcead5855b8be08cfe76247232a71d2b",
+    "bytes": 22673
+  },
+  "corrected_design_reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-architecture-design-source-20261014/reader-v2.html",
+    "sha256": "db31503f9bfc6c36c4957f83cf350d0d67d7e1e24fe576ada317033f5c5af8d4",
+    "bytes": 6100
+  },
+  "decision": "Develop a separately labeled full-model untrusted candidate-search process and fresh independent certificate-verifier process. Primary outcome is an automatically generated, independently checked proof of the original closed target; actual-selected provenance and trajectory remain separate gates.",
+  "objective_fidelity": "This changes the implementation trust boundary and freezes a new experimental endpoint, not the mathematical model or overall research objective. Retain full original theory, hypotheses, parameters, target, formula/recipe inventories, point support, all24 rows, generator, global dead/forced/earliest-generation scheduler, rollback and base fallback. No authored route, seed, lemma library, rank, learned pruning or RL is provided for the first baseline. Universal compiler, PA induction, geometry, learned clusters and plane tiling remain separate unfinished program requirements.",
+  "primary_endpoint": "Complete independent primitive word proof of the exact original closed target under the unchanged original theory/full indexed Gamma/parameters. No candidate checked=true or Source self-check becomes authority. Proof-origin records must distinguish producer data from coordinator-observed invocation.",
+  "secondary_scopes": {
+    "source_claimed_selected_ancestry": "Producer provenance only unless independently replayed/recorded.",
+    "consistent_finite_point_state": "Only independently reconstructed t/m union and declared domains; unknown extension.",
+    "actual_reference_scheduler_or_selected_trace": "Requires new meaningful conformance/independent bounded transition verification; snapshot alone is insufficient.",
+    "full24_board": "Separate full required coverage/marking/proof obligations.",
+    "trajectory_exhaustion_native_universal_PA_induction_RL_advantage": "All remain unearned."
+  },
+  "original_model_bindings": {
+    "declaration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "bytes": 2683
+    },
+    "point_graph": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531
+    },
+    "mathematical_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514
+    },
+    "historical_driver": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-first-proof-search-source-20261014/Q_first_selected_proof_v3.py",
+      "sha256": "8dcfa3d82ecd374c70a2a931c0a0c2334fb5e8be3d2a0fc104d66079d4fb5426",
+      "bytes": 46691
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "initial_counts_are_not_authority": {
+      "formulas": 11147,
+      "recipes": 16200,
+      "rows": 24
+    }
+  },
+  "trust_contract": "Owned coordinator authenticates exact bytes/runtime/model/admission and accounts for both processes and complete wire/output. Search is outside mathematical acceptance authority. Verifier compiles/parses pinned same buffers in a fresh address space and binds semantic authority solely from coordinator-authenticated original inputs. No callable/module/object/default from producer crosses. This is ordinary process separation, not hostile-OS isolation. If producer retains a local checker for original API/candidate construction, its output remains untrusted and both copies/load costs are charged.",
+  "protocol_required": "Non-executable bounded typed JSON/equivalent with strict integers, duplicate-key rejection, exact epochs, original occurrence indices/ordered ports, complete expanded commands/ancestry and complete EOF/pins. No eval/pickle/import/path-selected executable or authority from candidate. Every complete submitted candidate is dealt with in original order under frozen stop/deadline policy; no favorable subset/restart.",
+  "cost_contract": {
+    "joint_successful_work_seconds": 20,
+    "failure_only_worker_seconds": 55,
+    "failure_only_worker_bytes": 524288000,
+    "whole_owned_seconds": 60,
+    "aggregate_owned_bytes": 536870912,
+    "genuine_caller_seconds": 90,
+    "caller_finish_reserve_seconds": 1,
+    "all_loading_both_process_setup_search_transport_verification_final_outputs_charged": true,
+    "not_OS_hard_cap": true
+  },
+  "gates_before_actuals": [
+    "Distinct exact Source review of full-model producer, coordinator, protocol and clean verifier.",
+    "Meaningful whole data/epoch/theory/Gamma/capture/ordered-port/zero-versus-absent/shared-points/scheduler/rollback/deadline/EOF and Source-role boundary controls under the new architecture.",
+    "Fresh owned full-model controls/resource admission with the new endpoint/trust contract; no promotion of old controls.",
+    "Only then fresh once-only canonical baseline with no supplied route; independent final proof and complete lifecycle/cost reconciliation."
+  ],
+  "preservation": "All five original failed/UNKNOWN namespaces and Source/custody records stay immutable and keep their original20s semantics. Their outcomes are not a matched performance comparison to the new trust/endpoint experiment.",
+  "actual_plans": 0,
+  "actual_searches": 0,
+  "actual_proofs": 0,
+  "fit": "UNMEASURED",
+  "scientific_acceptance": false,
+  "remaining_program_active": true
+}

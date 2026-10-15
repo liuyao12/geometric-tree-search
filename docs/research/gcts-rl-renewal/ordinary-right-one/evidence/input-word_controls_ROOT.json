@@ -1,0 +1,126 @@
+{
+  "schema": "ROOT-actual-unrelated-word-controls-reconciled-disposition-v1",
+  "author_identity": "/root",
+  "actual_invocations": 1,
+  "stage": "replay",
+  "status": "accepted_complete_authored_word_controls_and_resources",
+  "complete_fixture_cases": 68,
+  "logical_word_controls": 56,
+  "logical_positive_words": 13,
+  "logical_rejected_words": 43,
+  "NONLOGICAL_boundary_controls": 12,
+  "NONLOGICAL_positive_cases": 1,
+  "NONLOGICAL_rejected_cases": 11,
+  "actual_started_calls": 76,
+  "actual_returned_calls": 22,
+  "actual_exception_calls": 54,
+  "worker_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/worker-plan-v1.json",
+    "sha256": "b8818ead6480efb777cbd50e76430fe2d307e9a2451d0eb45e99169c8f01597c",
+    "bytes": 14818
+  },
+  "owner_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-plan-v1.json",
+    "sha256": "9257a4aecfcf364a4b4ff6908743cc279fd31aea1c8097bdf9fe3648913a3d26",
+    "bytes": 9375
+  },
+  "ROOT_source_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-source-review-v1.json",
+    "sha256": "ff58dfd300f119d78660edc4836eec93509dd38ea53bd9a1c48a82acbf3f1b53",
+    "bytes": 5393
+  },
+  "construction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-construction-v1.json",
+    "sha256": "946380be454636b0ec1cad41f104f3ab3efd7da235758ceaf02ca066edc1200d",
+    "bytes": 3813
+  },
+  "controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-provisional-v1.json",
+    "sha256": "2de8f15b3e412d49f8b1b1d48a516ef6cf653c380a523c31e1a50948043f17df",
+    "bytes": 59155
+  },
+  "worker_evidence": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-evidence-v1.json",
+    "sha256": "2526b2714944103b35e11845b08cf4da8fcbeddd07dcc4200e0a68746226fd4c",
+    "bytes": 15698
+  },
+  "worker_receipt": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-result-v1.json",
+    "sha256": "50faa623195e8acb642c05abd4acc49e39283edc264a123679a60787be049570",
+    "bytes": 3360
+  },
+  "worker_postwrite": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/word-controls-output-v1/Q-unrelated-word-controls-postwrite-v1.json",
+    "sha256": "3acc45419d2f1de5a0cae369c4b119bda4a7b4867d6ce0f44c87b9ebc8587936",
+    "bytes": 1267
+  },
+  "resource_qualification": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-ROOT-final-decision-v1.json",
+    "sha256": "4816fe3b3c8531335e7a2c94607feefa8162592c1863ef8783641dcddc26d82b",
+    "bytes": 2845
+  },
+  "actual_caller": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-actual-tool-observations-v1.json",
+    "sha256": "bd4618e69d4cf9f657ee19e823f9f4e680fff91f91785e6a8b5c10f7cf7ae207",
+    "bytes": 1517
+  },
+  "owner_terminal": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/ROOT-terminal-v1.json",
+    "sha256": "a44896e9f39ad0b7006410b9ce8bdfba5a302b0fdaa718d861f82a8b041871a8",
+    "bytes": 1768
+  },
+  "owner_postwrite": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/replay-owner-v1/post-write-observation-v1.json",
+    "sha256": "5dffec82949e8468d933226f3685a8baf0de2455d1a1932b6a5e07b326fc65dc",
+    "bytes": 805
+  },
+  "limits": {
+    "shared_inner_seconds": 20,
+    "owned_seconds": 60,
+    "caller_seconds": 90,
+    "owned_peak_bytes": 536870912
+  },
+  "cost": {
+    "inner_elapsed_before_final_guard_seconds": 0.75465825,
+    "worker_after_receipt_write_seconds": 0.826373334,
+    "owned_postwrite_seconds": 0.918069458,
+    "owned_peak_bytes": 42516480,
+    "caller_seconds": 4.076,
+    "caller_finish_reserve_seconds": 1
+  },
+  "resource14_accepted": true,
+  "ROOT_controls_qualified": true,
+  "mathematical_catalogue_admitted": false,
+  "discovered_target_proofs": 0,
+  "Q_target_searches": 0,
+  "rank_computations": 0,
+  "native_queries": 0,
+  "RL_runs": 0,
+  "current_point_union_accepted": false,
+  "full24_accepted": false,
+  "full_trajectory_accepted": false,
+  "induction_accepted": false,
+  "full_PA_accepted": false,
+  "native_accepted": false,
+  "scope": "Root qualifies the frozen68 authored mechanics controls after independent saved correspondence and resource14. This does not prove global calculus soundness, discover a theorem, validate a proof-board compiler, admit current point/trajectory or rank pruning, or establish a GCTS/RL advantage. Prior finite catalogue admission remains separately recorded in Notebook161.",
+  "provisional_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-actual-unrelated-word-controls-provisional-disposition-v1.json",
+    "sha256": "7aba91130198882fe8b95190064a09087c94d246c4c8a77200883225ff8fb018",
+    "bytes": 5502
+  },
+  "saved_record_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-saved-review-20261014/findings-v1.json",
+    "sha256": "b2113ffe9324ab78cd2354eaf8758163cf556ca7b7c7401bed03382a8e356050",
+    "bytes": 196588
+  },
+  "saved_record_review_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-saved-review-20261014/handoff-v1.json",
+    "sha256": "a073abdba53f5868070b00687e1581c25f8f0d6f85e4278ef7040b86954362cb",
+    "bytes": 2508
+  },
+  "independent_saved_checks": 729,
+  "independent_raw_paths": 68,
+  "independent_raw_pin_references": 312,
+  "independent_mismatches": 0,
+  "qualified_scope": "Frozen 68 authored checker mechanics cases and authenticated complete resource lifecycle only."
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "ordinary-Q-independent-saved-review-handoff-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_data_only": true,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-saved-independent-20261015/findings-v1.json",
+    "sha256": "d1f61f62afe5dff956b3b010a273ab88f4a23e4b051b17e93242927b508ede61",
+    "bytes": 99084
+  },
+  "proof_rows": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-saved-independent-20261015/proof-rows-v1.json",
+    "sha256": "5f673266061a850a557b7bf2853a4fc7be3a6a1e9b8110d592f53f05f6f56e70",
+    "bytes": 28708
+  },
+  "check_count": 342,
+  "all_checks_passed": true,
+  "controls_native_bound_bytes": 54165504,
+  "primary_native_bound_bytes": 308805632,
+  "primary_rows": 12,
+  "scope": "Saved evidence only; original right-one ordinary proof, no semantic replay or point/RL/resource-rule replacement. Root final admission remains separate.",
+  "scientific_functions_Q_decodes_clocks_tests_actuals": 0
+}

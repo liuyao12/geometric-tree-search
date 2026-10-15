@@ -1,0 +1,51 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "evidence_link_contract": {
+    "controls_disposition": "evidence/ROOT-controls-disposition-v1.json",
+    "external_observation": "evidence/primary-external/observation.json",
+    "native_terminal": "evidence/primary-external/native-terminal.json",
+    "plan": "evidence/ROOT-primary-plan-v1.json",
+    "primary_disposition": "evidence/ROOT-primary-disposition-v1.json",
+    "provisional": "evidence/primary-owned/ordinary-provisional.json"
+  },
+  "extra_evidence": [
+    "evidence/saved-independent/proof-rows-v1.json",
+    "evidence/saved-independent/findings-v1.json",
+    "evidence/saved-independent/handoff-v1.json"
+  ],
+  "metadata_helper": {
+    "bytes": 4093,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-report-source-20261015/freeze_saved_reader_metadata_v1.py",
+    "sha256": "7f657c35e7ea797db350d1a08a1410f8964f24044c7c443169fc33023a2be864"
+  },
+  "pending_ROOT": [
+    "Final editorial and raw saved correspondence review.",
+    "Responsive549px/wide browser/MathJax/link check.",
+    "Public evidence packaging, existing-destination publication and live verification."
+  ],
+  "presentation_helper": {
+    "bytes": 30925,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-report-source-20261015/build_saved_reader_v1.py",
+    "sha256": "c1a019aa40542b723c06c56e32ea053662ad5d5df2e60a9446bb64ed4682fa6a"
+  },
+  "presentation_only": true,
+  "publication_or_PUB_edits": false,
+  "reader": {
+    "bytes": 51294,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-report-source-20261015/reader.html",
+    "sha256": "8b3cdda7572889392c33eb7c645eed6925a7712cfab385e4d70f514b61bcad42"
+  },
+  "report_data": {
+    "bytes": 61536,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-report-source-20261015/report-data-v1.json",
+    "sha256": "6c99ab9dcdfdb6891d1b13561108f90d27efc57fea4267b8791bcf4ec2230870"
+  },
+  "saved_data_only": true,
+  "schema": "ordinary-Q-saved-proof-reader-Source-handoff-v1",
+  "scope": "One ordinary searched word accepted by unchanged independent checker and ROOT ordinary resource closure. No selected point/full24/trajectory/RL/nativeWang/fullPA/induction/speed-superiority or activated equality-family claim.",
+  "static_correspondence": {
+    "bytes": 1285,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-report-source-20261015/static-saved-correspondence-v1.json",
+    "sha256": "2aa88039ab84e034ccc78a952cf7e9bd743b62188b4170a301c1b04540a276ce"
+  }
+}

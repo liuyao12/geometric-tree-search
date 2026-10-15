@@ -1,0 +1,76 @@
+{
+  "actual_execution_authorized_by_this_record": false,
+  "adapter_Source": {
+    "bytes": 22226,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-control-source-20261015/Q_ordinary_first_ready_word_adapter_v1.py",
+    "sha256": "e65a456f133807919e7d61cca55af782fbee32d62d8603684dae907841be8850"
+  },
+  "architecture": "Small ordinary-only owned coordinator streams hashes and authenticates immutable inputs, never parses full Q or loads producer/checker. Fixed leaf producer fully exits and is true-wait4 reaped before fixed fresh leaf checker starts; only nonexecutable bounded data crosses. All children leaf/no other observer processes under reviewed authenticated fixed Sources.",
+  "author": "/root",
+  "checker_Source": {
+    "bytes": 46514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+    "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+  },
+  "full_goal_complete": false,
+  "goal_remains_active": true,
+  "implementation_authorized": true,
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60,
+    "producer_reserved_bytes": 524288000
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "memory_argument": "Closed sequential child lifetimes make maximum leaf terminal peak a conservative bound on simultaneous child memory. Parent SELF high-water sampled only after every child is truly reaped covers parent RSS throughout earlier child epochs. After irreversible no-spawn cutoff only parent remains; actual external terminal inclusive T covers its exit tail. Take maximum across epochs; never subtract rolled-up peaks, replace T with an earlier sample, or promote old additive failures.",
+  "memory_latex": "\\(C=\\max(P,V),\\quad B_{\\mathrm{live}}=S_{\\tau}+C,\\quad B=\\max(B_{\\mathrm{live}},T)\\le536870912\\).",
+  "ordinary_Source": {
+    "bytes": 17921,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-control-source-20261015/Q_ordinary_first_ready_saturation_v1.py",
+    "sha256": "860134e6a3c95b4099713a481d5ce322cfd9cc452a87a45330b932424054f875"
+  },
+  "original_architecture": {
+    "bytes": 6808,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-architecture-design-source-20261014/ROOT-architecture-choice-v1.json",
+    "sha256": "62b0d66686f890c9f604192058bdba48a4b171e233f25767b1e1de88fffbd82f"
+  },
+  "original_model_and_budgets_unchanged": true,
+  "preserve": [
+    "All old Q attempts/controls/Source hashes/budget semantics and failures remain immutable.",
+    "This prospective ordinary-only protocol is not an admission of old two-epoch census/full52/W16 or point BASE.",
+    "Point BASE never receives the ordinary result or an authored route.",
+    "A conventional success is a baseline; later GCTS/lemma/RL benefit needs matched original-target tests with shared information/full costs."
+  ],
+  "previous_turn_classification": "progress",
+  "primary": "Automatically discovered exact original closed right-one primitive word under unchanged two arithmetic axioms, empty indexed Gamma, parameter n and complete finite licence catalogue. Independent1717 mathematical endpoint; no point/board/GCTS/RL claim.",
+  "prior_ABI_evidence": {
+    "bytes": 3702,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-disposition-v1.json",
+    "sha256": "b92512f09d8c8a6d6ce15c9fe1589548729e657996711f9fd19dc402b1d99d76"
+  },
+  "required_before_target": [
+    "Whole current Source reviews by Root and distinct reviewer, including selected support/helper modules and literal no-spawn tail/exception paths.",
+    "Root-frozen once-only plan/raw closure/source roles and explicit ordinary-purpose authority. No supplied proof, successful prefix, target backcone, lemma inventory or known word.",
+    "Small actual controls for sequencing/true reaping, post-cutoff launch denial, terminal tail accounting and rejection of corrupt proof/authority data using unchanged checker. Controls are controls, never a gold target route.",
+    "Native/current output/candidate/checker EOF and strict bounded data custody; complete evidence retained on UNKNOWN."
+  ],
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-prospective-ordinary-Q-cold-control-choice-v1",
+  "scope_assumptions": [
+    "Pinned Darwin25.5.0/Python3.9.6 byte ABI, verified current runtime hash unchanged.",
+    "Fixed reviewed Sources, no arbitrary hostile native child escape, foreign dynamic Source, unregistered fork, OS/VM interference or universal hard-cap claim.",
+    "Native wait4 PID/status/rusage ledger covers exact P/V launches and true terminal; cutoff after all reaped, no late interpreter callback/spawn; captured native os._exit after complete bounded file writes.",
+    "External meter2 and genuine postterminal global clock probe remain separate trusted instrumentation; all scientific startup/intake/search/transport/checking/serialization/output/exit charged."
+  ]
+}
