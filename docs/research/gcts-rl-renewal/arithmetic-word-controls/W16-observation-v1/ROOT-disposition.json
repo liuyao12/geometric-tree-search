@@ -1,0 +1,120 @@
+{
+  "Q_payload_parses_in_reconciliation": 0,
+  "ROOT_primary_accepted": false,
+  "ROOT_resource_accepted": false,
+  "RSS_samples": 240,
+  "W16_expected_UNKNOWN_whole_run_qualified": false,
+  "aggregate_allowance_bytes": 536870912,
+  "all23_original_snapshots_raw_match": true,
+  "author_identity": "/root",
+  "authorization": {
+    "bytes": 3013,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-scoped-authorization-v2.json",
+    "sha256": "42f4ec34e913ac663c30cb353f882eda644821047f666fa5854ad79ca12b0f26"
+  },
+  "both_O08_controls_reject": true,
+  "caller_observation": {
+    "bytes": 51110,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/owned-output-v2/W16-early-caller-observation.json",
+    "sha256": "12d9a04f530abb8db91d3455896e1d0d5fa2c43934f455c30daa93c4d682f4b9"
+  },
+  "census_child_lifetime_ns": 11314462000,
+  "cleanup_errors": [],
+  "complete_child_lifetime_overlap_peak_bytes": 374456320,
+  "controller_result": {
+    "bytes": 32703,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/owned-output-v2/W16-expected-UNKNOWN-result.json",
+    "sha256": "875da3f4d618cf5617771bc2ea57657fe0e364846a29aadfc7f6056a91d47211"
+  },
+  "expected_late_predicate_observed": true,
+  "external": {
+    "bytes": 6194,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v2.json",
+    "sha256": "a4e2e3e23825781d5e8517f02360b0671a002471f4042bc0a8debd43022f98cf"
+  },
+  "external_finish_reserve_ms": 1000,
+  "external_wall_ms": 23020,
+  "failure_deadline": 427469748087000,
+  "full52_qualified": false,
+  "internal_postwrite_SELF_based_diagnostic_bytes": 406650880,
+  "ledger": {
+    "bytes": 8042,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/owned-output-v2/W16-owned-ledger.json.gz",
+    "sha256": "3bbd0dff291b6f6bc6a75c70b471e5f4f88d22930fc2e53d12751c58be9f7239"
+  },
+  "leftovers": [],
+  "native_caller_exit_code": 0,
+  "native_caller_terminal_inclusive_peak_bytes": 374456320,
+  "native_observers_reaped": 243,
+  "native_terminal": {
+    "bytes": 1688,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v2.json",
+    "sha256": "615e3454a4f2c948062d6235b82780636c94192bdca48d5e1da8b6e3f40a10df"
+  },
+  "neutral_full_census_observed": true,
+  "new_theorems": 0,
+  "no_actual_simultaneous_memory_violation_inferred": true,
+  "original_D": 427434748087000,
+  "original_G": 427414748087000,
+  "original_model_resource_fit": false,
+  "owned_children_reaped": 2,
+  "post_write": {
+    "bytes": 10982,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/owned-output-v2/W16-post-write.json",
+    "sha256": "c9e41c8d76fbe4fbfd1435a5940d0120f17f3793d984483a9cfe4f0e685ef1d9"
+  },
+  "project_Source_functions_in_reconciliation": 0,
+  "proof_search_runs": 0,
+  "proposed_two_epoch_rule_used": false,
+  "readiness_then_late_live_same_PID": 16479,
+  "reporting_errata": [
+    "Controller result retains source_functions_are_actual_only_if_Root_runs_later=true from its Source template. Actual external/native invocation and cold child evidence establish this run executed; this stale explanatory literal grants no acceptance.",
+    "Native call tape covers64 calls before receipts and68 through result-write/read. It is not a complete through-return tape; post/caller/external records close the later boundary."
+  ],
+  "root_plan": {
+    "bytes": 21145,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v2.json",
+    "sha256": "b3ab80fa18d28f36b32ee6d5323becce084b6bad2b4bdc616ef774e2eb8d7748"
+  },
+  "row_count": 24,
+  "schema": "ROOT-W16-actual2-reconciled-v1",
+  "scope": "A genuine whole neutral census precedes timely readiness; the same verifier-role process stays live beyond original20 and actual Owner.wait rejects it, then all known processes are reaped and true exit/observations close before original55. The unchanged external conservative additive memory bound fails its512MiB allowance. Thus the late predicate is observed, the whole W16 resource qualification remains UNKNOWN, and no proof-search/full52/original-model fit or accepted prefix follows. Earlier samples and proposed two-epoch formula are not substituted.",
+  "serialized_observer_max_bytes": 2506752,
+  "status": "EXPECTED_LATE_PREDICATE_OBSERVED_RESOURCE_CERTIFICATE_UNKNOWN",
+  "successful20_stage": false,
+  "timeline_elapsed_ns": {
+    "Owner_wait_rejection_ns": 20061661000,
+    "caller_observation_ns": 20481059000,
+    "census_launch_ns": 896554000,
+    "census_reaped_ns": 12211016000,
+    "last_observer_reaped_ns": 20133740000,
+    "parent_ready_ns": 12654109000,
+    "post_terminal_native_ns": 20573829000,
+    "post_write_ns": 20426965000,
+    "same_verifier_native_live_ns": 20093697000,
+    "true_caller_terminal_ns": 20513764000,
+    "verifier_launch_ns": 12454138000,
+    "verifier_reaped_ns": 20103570000
+  },
+  "timeline_native": {
+    "Owner_wait_rejection_ns": 427434809748000,
+    "caller_observation_ns": 427435229146000,
+    "census_launch_ns": 427415644641000,
+    "census_reaped_ns": 427426959103000,
+    "last_observer_reaped_ns": 427434881827000,
+    "parent_ready_ns": 427427402196000,
+    "post_terminal_native_ns": 427435321916000,
+    "post_write_ns": 427435175052000,
+    "same_verifier_native_live_ns": 427434841784000,
+    "true_caller_terminal_ns": 427435261851000,
+    "verifier_launch_ns": 427427202225000,
+    "verifier_reaped_ns": 427434851657000
+  },
+  "unchanged_external_additive_bound_bytes": 751419392,
+  "verifier_word_status": "WORD_REJECTED",
+  "whole_output_inventory": {
+    "bytes": 19737,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-output-inventory-v2.json",
+    "sha256": "167dead2fdc811ad1f64e84d73632d7a170aa358ebd5328e72f7a5ebb5b4fab1"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "Q_payload_parses_in_metadata": 0,
+  "actual_invocations_authorized": 1,
+  "all_acceptance_false_pending_saved_reconciliation": true,
+  "author_identity": "/root",
+  "caller_review": {
+    "bytes": 2903,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v4.json",
+    "sha256": "4fb7ea9c2532225d7079406100f3bc00a7ce830f4a96d9a75cd4059b81578629"
+  },
+  "caller_source": {
+    "bytes": 38118,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+    "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+  },
+  "changed_plan_fields": [
+    "caller_contract",
+    "caller_source",
+    "invocation_id",
+    "raw_closure",
+    "reviews",
+    "run_directory"
+  ],
+  "external_JS": {
+    "bytes": 7471,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+    "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+  },
+  "invocation_id": "W16_20261015_v2",
+  "output_child_absent": true,
+  "preserved_actual1": {
+    "bytes": 2815,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-disposition-v1.json",
+    "sha256": "b4329dbee5aa20dd50d16ac014b04e58d87be7080c4182b60f7bae068292d110"
+  },
+  "project_Source_functions_in_metadata": 0,
+  "raw_closure_count": 36,
+  "root_plan": {
+    "bytes": 21145,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v2.json",
+    "sha256": "b3ab80fa18d28f36b32ee6d5323becce084b6bad2b4bdc616ef774e2eb8d7748"
+  },
+  "schema": "ROOT-W16-once-only-actual-authorization-v2",
+  "scope": "One fresh original W16 expected-late-UNKNOWN control only, with caller3 native-property correction and current review4; unchanged census2/controller6/lateleaf3/coordinator6/Source9/input8/original7/runtime/limits/native meter2 and JS2. All remaining whole snapshots/setup/census/readiness under original G20; genuine same live verifier wait rejects late at20 and complete failure cleanup/output/true terminal before55, owned60, aggregate512, caller90+finish1. Current additive terminal memory gate retained, no diagnostic FD or optimization, no proof search or full model fit claim. Actual1 remains UNKNOWN; all strong acceptance false pending separate saved review.",
+  "source_contract": {
+    "bytes": 24443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+    "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f"
+  },
+  "whole_raw_sha_length_match": true
+}

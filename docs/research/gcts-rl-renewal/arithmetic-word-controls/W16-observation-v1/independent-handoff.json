@@ -1,0 +1,20 @@
+{
+  "schema": "W16-second-attempt-saved-independent-handoff-v2",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-second-attempt-saved-independent-20261015/findings-v2.json",
+    "bytes": 17796,
+    "sha256": "bdaef88086cbe81a778514397125e7399b45d66fecc18faf117f74cd7be0c6dd"
+  },
+  "retained_findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-second-attempt-saved-independent-20261015/findings-v1.json",
+    "bytes": 15727,
+    "sha256": "aaa99f9d38d8626b07aa93d00c9ad44d4d1101be7908bd57a69318ea9c7f6b83"
+  },
+  "check_count": 44,
+  "all_saved_reconciliation_checks_passed": true,
+  "expected_late_sequence_complete": true,
+  "CURRENT_resource_gate": false,
+  "overall_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Complete saved actual2 plus compact final Root disposition/whole37file23snapshot agreement; no Q/helper/native/semantic replay"
+}

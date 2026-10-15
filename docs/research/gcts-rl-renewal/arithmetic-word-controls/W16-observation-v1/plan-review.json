@@ -1,0 +1,97 @@
+{
+  "schema": "W16-concrete-plan-source-only-independent-check-v2",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "scientific_calls": 0,
+  "all_checks_passed": true,
+  "check_count": 11,
+  "checks": [
+    {
+      "id": "exact_frozen_plan_and_scope_pins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "only_six_declared_changed_fields",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "unchanged_model_sources_inputs_runtime_caps",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "caller_three_changed_bindings_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "other_three_reviews_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "closure_exact_three_replacements",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all36_whole_raw_hashes_and_canonical_paths",
+      "passed": true,
+      "detail": "Full bytes only; no Q preparation/state/oracle JSON decoded."
+    },
+    {
+      "id": "genuine_current_typed_review",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "Root_once_scope_and_previous_failure_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "fresh_nonce_and_canonical_absent_output",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "new_external_and_native_files_absent",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v2.json",
+    "sha256": "b3ab80fa18d28f36b32ee6d5323becce084b6bad2b4bdc616ef774e2eb8d7748",
+    "bytes": 21145
+  },
+  "authorization": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-scoped-authorization-v2.json",
+    "sha256": "42f4ec34e913ac663c30cb353f882eda644821047f666fa5854ad79ca12b0f26",
+    "bytes": 3013
+  },
+  "prior_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "c55d865a5e5e33355568e4990e472ff4d528eee720b83550ac02bfad87d08b17",
+    "bytes": 21145
+  },
+  "prior_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-concrete-plan-findings-v1.json",
+    "sha256": "15b37be36be68221fd75f7bc6d9a665051f69313afbafeb5bf4b17b5f59d8e86",
+    "bytes": 6690
+  },
+  "changed_top_level_fields": [
+    "caller_contract",
+    "caller_source",
+    "invocation_id",
+    "raw_closure",
+    "reviews",
+    "run_directory"
+  ],
+  "raw_closure_count": 36,
+  "scope": "Precise plan2 delta/changed authority/full named raw closure and output freshness only. No new Source runtime or model qualification, no project/functions/Q parsing/clocks/tests/plans/actuals executed. Reviewer controller/lateleaf/checker/codec authorship and genuine independent caller3 review retained. ROOT alone chooses/runs actual.",
+  "runtime_acceptance": false,
+  "actual1_status": "UNKNOWN unchanged"
+}
