@@ -1,0 +1,582 @@
+{
+  "schema": "Q-census-factor-batch64-independent-Source-findings-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source_only": true,
+  "all_checks_passed": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "activation_allowed": false,
+  "runtime_acceptance": false,
+  "Source_functions_executed": 0,
+  "Q_payload_parses": 0,
+  "native_clock_calls": 0,
+  "tests": 0,
+  "leaf_source": {
+    "bytes": 31026,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+    "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+  },
+  "leaf_source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-contract-v1.json",
+    "sha256": "87408a01e64b0491991b2685c6f158793c09f04b4dd61d918f64e3b4af816dc8",
+    "bytes": 14579
+  },
+  "binding_sources": {
+    "caller": {
+      "bytes": 38071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+      "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+    },
+    "controller": {
+      "bytes": 55979,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+      "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1"
+    }
+  },
+  "binding_source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Source-contract-v1.json",
+    "sha256": "a08c1c65653a47234e76c7b02b7401be57fd77172a2c7c9378b8fd2f4b7545bc",
+    "bytes": 27763
+  },
+  "dependency_authorship_disclosure": "Reviewer authored unchanged lossless codec and earlier W16 controller/lateleaf/checker/verifier dependencies; current serializer and binding successor author is arithmetic. This review does not independently re-admit those dependencies.",
+  "checks": [
+    {
+      "name": "all named current metadata raw references",
+      "passed": true,
+      "detail": {
+        "references": 110,
+        "distinct_whole_raw_paths": 46,
+        "mismatches": 0,
+        "scope": "Only named metadata read recursively; linked files read whole as raw bytes, not Q JSON."
+      }
+    },
+    {
+      "name": "frozen handoff identities",
+      "passed": true,
+      "detail": "Both whole immutable subjects are the ROOT-requested exact packages."
+    },
+    {
+      "name": "leaf full forward bytes",
+      "passed": true,
+      "detail": "2 exact declared replacements and no other changes."
+    },
+    {
+      "name": "leaf full inverse bytes and AST",
+      "passed": true,
+      "detail": "Independent complete inverse, not author flags."
+    },
+    {
+      "name": "leaf forward_patch",
+      "passed": true,
+      "detail": "Full independently regenerated unified diff."
+    },
+    {
+      "name": "leaf inverse_patch",
+      "passed": true,
+      "detail": "Full independently regenerated unified diff."
+    },
+    {
+      "name": "leaf declared changed ASTs",
+      "passed": true,
+      "detail": "Exact whole top-level definition census."
+    },
+    {
+      "name": "leaf all retained definitions exact raw",
+      "passed": true,
+      "detail": [
+        "need",
+        "decimal",
+        "Budget",
+        "fd_mode",
+        "read_exact",
+        "unique",
+        "load_source",
+        "line",
+        "write_all",
+        "WitnessMismatch",
+        "compare_fd",
+        "stream_hash",
+        "parse_manifest",
+        "PhaseDiagnostic",
+        "main"
+      ]
+    },
+    {
+      "name": "caller full forward bytes",
+      "passed": true,
+      "detail": "4 exact declared replacements and no other changes."
+    },
+    {
+      "name": "caller full inverse bytes and AST",
+      "passed": true,
+      "detail": "Independent complete inverse, not author flags."
+    },
+    {
+      "name": "caller forward_patch",
+      "passed": true,
+      "detail": "Full independently regenerated unified diff."
+    },
+    {
+      "name": "caller inverse_patch",
+      "passed": true,
+      "detail": "Full independently regenerated unified diff."
+    },
+    {
+      "name": "caller declared changed ASTs",
+      "passed": true,
+      "detail": "Exact whole top-level definition census."
+    },
+    {
+      "name": "caller all retained definitions exact raw",
+      "passed": true,
+      "detail": [
+        "need",
+        "now",
+        "cancelled",
+        "canonical",
+        "decode",
+        "shape",
+        "read_pin",
+        "wire",
+        "function_state",
+        "data_state",
+        "class_state",
+        "module_state",
+        "effective",
+        "load_exact",
+        "Seal",
+        "review"
+      ]
+    },
+    {
+      "name": "controller full forward bytes",
+      "passed": true,
+      "detail": "3 exact declared replacements and no other changes."
+    },
+    {
+      "name": "controller full inverse bytes and AST",
+      "passed": true,
+      "detail": "Independent complete inverse, not author flags."
+    },
+    {
+      "name": "controller forward_patch",
+      "passed": true,
+      "detail": "Full independently regenerated unified diff."
+    },
+    {
+      "name": "controller inverse_patch",
+      "passed": true,
+      "detail": "Full independently regenerated unified diff."
+    },
+    {
+      "name": "controller declared changed ASTs",
+      "passed": true,
+      "detail": "Exact whole top-level definition census."
+    },
+    {
+      "name": "controller all retained definitions exact raw",
+      "passed": true,
+      "detail": [
+        "need",
+        "state",
+        "effective",
+        "code_state",
+        "raw_pin",
+        "wire",
+        "run_census_only_diagnostic"
+      ]
+    },
+    {
+      "name": "leaf only serializer and VERSION",
+      "passed": true,
+      "detail": "Complete main, Budget/clock, PhaseDiagnostic, compare/hash/FD/source/output and all callsites remain byte-identical."
+    },
+    {
+      "name": "pair exactly seven raw bindings",
+      "passed": true,
+      "detail": "Only versions, leaf pins, phase VERSION, derived controller pin and leaf review scope/author."
+    },
+    {
+      "name": "leaf current Source review map",
+      "passed": true,
+      "detail": "Exact three roles, correct new author and source scope."
+    },
+    {
+      "name": "leaf unchanged codec and point role identities",
+      "passed": true,
+      "detail": "Reviewer authored unchanged codec; no fresh dependency semantics or mathematical admission."
+    },
+    {
+      "name": "all inherited leaf constants preserved",
+      "passed": true,
+      "detail": "Full original input hashes/epochs/original7/import policy and global clock unchanged."
+    },
+    {
+      "name": "parent whole leaf review genuinely retained",
+      "passed": true,
+      "detail": "Inherited whole Source finding retained at exact unchanged parent; current serializer independently reviewed."
+    },
+    {
+      "name": "canonical encoder options retained",
+      "passed": true,
+      "detail": "Original compact sorted string key / UTF-8 / nonfinite-rejection policy."
+    },
+    {
+      "name": "complete recursive dictionary/list traversal",
+      "passed": true,
+      "detail": "Every ordered child retained; all scalar/tuple/non-string-key dict cases delegate to unchanged original encoder."
+    },
+    {
+      "name": "local cycle tracking and full fallback",
+      "passed": true,
+      "detail": "Active path markers removed in finally; nonmatching shapes are serialized completely, not rejected as an admission filter."
+    },
+    {
+      "name": "factor eligibility exact and nonlogical",
+      "passed": true,
+      "detail": "Only exact domain/factors lists with flat five-field records can take batching; other valid values remain fallback."
+    },
+    {
+      "name": "bounded allocation arithmetic",
+      "passed": true,
+      "detail": "At most64 borrowed factor refs. Each of four nonnegative signed63 ints has <=19 digits; exact bool <=5 chars, six punctuation; full batch <=5633."
+    },
+    {
+      "name": "same encoder C path and no truncation",
+      "passed": true,
+      "detail": "Pinned JSONEncoder.encode uses _one_shot=True then C encoder for indent=None. Exact integers/bools make C/Python bytes agree; removes only group outer brackets."
+    },
+    {
+      "name": "factor ordered fragment assembly",
+      "passed": true,
+      "detail": "All consecutive groups joined by exactly one comma inside original list; no record copied into model, reordered, skipped or cached."
+    },
+    {
+      "name": "original outer flush/check/yield code exact",
+      "passed": true,
+      "detail": "Collector loop body/threshold/before-yield code exact; iterator expression intentionally switches from encoder.iterencode(value) to pieces(value). Internal chunk boundaries may differ; each added factor encode also has budget pre/post checks."
+    },
+    {
+      "name": "whole witness and row/O08 semantics retained",
+      "passed": true,
+      "detail": "Full byte/SHA/length/EOF state+oracle, all24 row hashes, both omission controls and final original rewalk unchanged. Near-byte O08 diagnostic offsets may change with chunks only."
+    },
+    {
+      "name": "caller/controller exact leaf pin and controller link",
+      "passed": true,
+      "detail": "Hard current executable pins match exact frozen files."
+    },
+    {
+      "name": "pair source and Review ABI exact",
+      "passed": true,
+      "detail": "Author arithmetic, genuinely distinct new current reviews required; old parent pass cannot be relabeled."
+    },
+    {
+      "name": "pair whole context8 map current",
+      "passed": true,
+      "detail": "Complete context map compared, not just leaf raw-pin validity."
+    },
+    {
+      "name": "pair all nonleaf context identities unchanged",
+      "passed": true,
+      "detail": "Coordinator6 and all other old roles retained. No two-epoch Owner or memory-branch merge."
+    },
+    {
+      "name": "pair exact original inputs and caps",
+      "passed": true,
+      "detail": "Whole original input8 and literal20/55/60/512/90+1 unchanged; original7 source binding invariant via complete raw inverse."
+    },
+    {
+      "name": "pair review gate author and scope corrected",
+      "passed": true,
+      "detail": "Exact operative new author/scope/contract/full3-source census review metadata reconciled."
+    },
+    {
+      "name": "pair phase VERSION exact",
+      "passed": true,
+      "detail": "Parser now requires exact leaf4 header VERSION, all other parser statements and run/nested guards byte-identical."
+    },
+    {
+      "name": "pair finite ABI unchanged",
+      "passed": true,
+      "detail": "Source9/context8+controller, original7/input8/plan15/context9/FD12+8; existing19pairs38events/native20 through exit preserved by full inverse."
+    },
+    {
+      "name": "no resource/speed acceptance or authority fabrication",
+      "passed": true,
+      "detail": "Source proposal only. Old additive native memory rule retained; exact future plan/reviews/scoped grant and actual full bytes/EOF/native resources required."
+    }
+  ],
+  "check_count": 44,
+  "raw_reference_count": 110,
+  "distinct_whole_raw_paths": 46,
+  "raw_path_pins": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/canonical-equivalence-and-retention-v1.json",
+      "sha256": "051537bb8d75e953db409d0ecfa6020244cb4816d5b23baef57658990ce39854",
+      "bytes": 3880
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3",
+      "bytes": 31026
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-contract-v1.json",
+      "sha256": "87408a01e64b0491991b2685c6f158793c09f04b4dd61d918f64e3b4af816dc8",
+      "bytes": 14579
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-delta-v1.json",
+      "sha256": "0b538656ff9773d25243fd09b1023239f6a8d335be7b103446f30be72c5e1dd7",
+      "bytes": 8423
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+      "bytes": 5806
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/static-authoring-checks-v1.json",
+      "sha256": "2cf164a203d13ace3062ff1472badd61641155bbe0ee0cdac8c253a4c12c77ad",
+      "bytes": 2124
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-typed-Source-review-v1.json",
+      "sha256": "d678401ead894323ed06d898206bd6bd3209268e2f2ca422bcb8020fbee463d4",
+      "bytes": 3459
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-phases.jsonl",
+      "sha256": "e8e184c6baf5979749b12b3a678c2b795304f3e2282deeab9aa923ad5b913c50",
+      "bytes": 4553
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+      "bytes": 19742
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad",
+      "bytes": 5435
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d",
+      "bytes": 37266
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Source-contract-v1.json",
+      "sha256": "aa25318f3058f2384e78bd00abc4c4257208e899399212587656fb0f44f642d7",
+      "bytes": 12421
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Q_neutral_full_model_census_leaf_v3_phases.py",
+      "sha256": "0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7",
+      "bytes": 27175
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/encoder.py",
+      "sha256": "cdb1eb54c453f672c56caf00c02ace80c97fb48121c4af734b7c4123ceb1fb3d",
+      "bytes": 16072
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/leaf3-to-leaf4-factor-batch64.patch",
+      "sha256": "4334cb3c3b76bf1fa7838bbad1f7f2f49b3ec3e3c70bd3f2d3826a4a7583ff99",
+      "bytes": 5168
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/leaf4-to-leaf3-full-inverse.patch",
+      "sha256": "ac3e06481af01dfae069e3a78fc1cba2373c52f5f75c74738c3e86b6aaca16b6",
+      "bytes": 5168
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/caller-typed-Source-review-v1.json",
+      "sha256": "34558755afa071d3ce064c317aa27242bbf641c2a18ea4f46b83351c2aef735b",
+      "bytes": 3228
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/controller-typed-Source-review-v1.json",
+      "sha256": "fec301b470b403d7c303bbc32127f33e1c1ec75b49b6fd49fc11b6baad448a1b",
+      "bytes": 2902
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+      "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034",
+      "bytes": 38071
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Source-contract-v1.json",
+      "sha256": "a08c1c65653a47234e76c7b02b7401be57fd77172a2c7c9378b8fd2f4b7545bc",
+      "bytes": 27763
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Source-delta-v1.json",
+      "sha256": "8bfb7468fce3ea842459bb864eb492763199c96804b9ada701b9b98727919306",
+      "bytes": 6673
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+      "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1",
+      "bytes": 55979
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/static-authoring-checks-v1.json",
+      "sha256": "a86cfce984b82a795b4e67fb459413a3ba1c1116fb1b546adbe11619ed4a7902",
+      "bytes": 1926
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/handoff-v1.json",
+      "sha256": "f4248c301fb42491d5d6c9ed5bbe7ccdd879014ce3b45743d2f801a0216c1b08",
+      "bytes": 3594
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab",
+      "bytes": 54630
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_late_exit_verifier_leaf_global_clock_v3.py",
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a",
+      "bytes": 15699
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "bytes": 48584
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "bytes": 6734
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808",
+      "bytes": 38118
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+      "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f",
+      "bytes": 24443
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+      "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114",
+      "bytes": 68771
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v4.json",
+      "sha256": "4fb7ea9c2532225d7079406100f3bc00a7ce830f4a96d9a75cd4059b81578629",
+      "bytes": 2903
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/typed-Source-review-v1.json",
+      "sha256": "016e2d78db0e42ac1d86ef7e2234fe0f26b0a3d296caa3ad789cf1d6764a14a4",
+      "bytes": 2196
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/handoff-v1.json",
+      "sha256": "30d2d6b98149638d8a0b3ebce10429fb5afd9d18124e6ad175f5e23f0d443850",
+      "bytes": 3337
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Source-contract-v1.json",
+      "sha256": "0b674cefe8bdb26784951de32dffee08c3e02152b03d981db8fd60830e19a51f",
+      "bytes": 22465
+    },
+    {
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+      "bytes": 102352
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py.forward.patch",
+      "sha256": "2731e91a4c5e68392c35dd8be388582dae1312a7546d1c57fedde830d85b1989",
+      "bytes": 2619
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py.inverse.patch",
+      "sha256": "b5b7e034b8fb1774a0dd72e12bff7663f3538eb57dbd25c3ad67029557f07e0c",
+      "bytes": 2619
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_trusted_early_cold_caller_v1.py",
+      "sha256": "6320c7bd8ffa37ce1eb8cc90e519ae00c59d3d4fdb9181f0bdc18201c9759115",
+      "bytes": 38074
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py.forward.patch",
+      "sha256": "c9f51ac810555452d503c9b4017fe57f34581f5c14584f45e8ce2394b5f4c74a",
+      "bytes": 2018
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py.inverse.patch",
+      "sha256": "30d111976dab44069185ec065511e22bbe9068bb11448761a02233f6c76fac63",
+      "bytes": 2018
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_diagnostic_controller_v1.py",
+      "sha256": "7783f5617cb68bf82757217959d98c2f59b54f9adc513d964bc2e86cd56c6a2a",
+      "bytes": 55979
+    }
+  ],
+  "concrete_blockers": [],
+  "scope_limitations": [
+    "Static canonical-byte argument only. No serializer/fixture/Q parse/project/native clock/test or actual run executed. Actual complete witness/state/oracle/all24/O08/phase/raw EOF equality and output closure remain ROOT gates.",
+    "No model trim, reset clock or cap change. Current old additive external memory gate still applies; previous census/W16 resource UNKNOWN outcomes remain unchanged. Separate Owner cutoff branch is not merged.",
+    "Future ROOT exact plan/current contracts/genuine reviews/fresh namespace/external native observation+terminal closure are required before actual activation; metadata pending-at-freeze text is historical, not a grant.",
+    "Chunk boundaries and approximate O08 near-byte mismatch offsets can differ while full canonical bytes/view hashes/rejection labels remain fixed. Serializer correctness asserted within the original plain acyclic JSON-value model, not concurrent mutation or hostile replacement semantics.",
+    "Reported prior phase5.376308s includes logging, checks, serialization, hashing and I/O; no measured pure JSON CPU attribution, speedup or memory-fit prediction.",
+    "Inherited contract entry prose mentions census3 in its G/D sentence; operative maps, raw source records, phase VERSION and caller gate select leaf4. This descriptive historical label grants no old-review applicability."
+  ],
+  "retained_parent_whole_findings": {
+    "leaf": {
+      "bytes": 3459,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-typed-Source-review-v1.json",
+      "sha256": "d678401ead894323ed06d898206bd6bd3209268e2f2ca422bcb8020fbee463d4"
+    },
+    "pair": {
+      "caller": {
+        "bytes": 3228,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/caller-typed-Source-review-v1.json",
+        "sha256": "34558755afa071d3ce064c317aa27242bbf641c2a18ea4f46b83351c2aef735b"
+      },
+      "controller": {
+        "bytes": 2902,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/controller-typed-Source-review-v1.json",
+        "sha256": "fec301b470b403d7c303bbc32127f33e1c1ec75b49b6fd49fc11b6baad448a1b"
+      }
+    }
+  },
+  "own_metadata_history": "Initial review_v1 collector comparison mistakenly included the intentionally changed iterator expression; it halted before output. This v2 check compares the actual unchanged loop body. No subject code or functions changed/executed.",
+  "static_equivalence_reasoning": [
+    "Induction over original exact string-key dicts and lists preserves sorted keys, delimiters, commas and recursively every value. Original encoder handles all unmatched scalar/tuple/non-string-key dict cases.",
+    "Within a factor list, each exact eligible consecutive batch produces original canonical ordered list bytes. Removing only batch outer brackets and joining all fragments with one comma is the same entire factor-list encoding.",
+    "Pinned stdlib C path is used only for flat int/bool arrays. No float/Unicode variant is moved into that path; other values retain original Python encoder semantics. Nonmatching/C-unavailable batches are fully traversed fallback.",
+    "The eligibility bounds imply <=5633 ASCII characters before encoding, checked again after. Batch refs/whole group string released before eligible fragment yield; no complete-model string or retained witness cache introduced."
+  ]
+}

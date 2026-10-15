@@ -1,0 +1,138 @@
+{
+  "Q_payload_parses": 0,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "caller": {
+    "changed_definition_ASTs": [
+      "main"
+    ],
+    "complete_forward_matches": true,
+    "complete_inverse_matches": true,
+    "current": {
+      "bytes": 38071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+      "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+    },
+    "exact_raw_edits": [
+      {
+        "new": "VERSION = 'Q-census-only-trusted-early-cold-caller-Source-v2-factor-batch64'",
+        "old": "VERSION = 'Q-census-only-trusted-early-cold-caller-Source-v1-global-clock'"
+      },
+      {
+        "new": "CONTROLLER = {'bytes': 55979, 'sha256': '7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1'}",
+        "old": "CONTROLLER = {'bytes': 55979, 'sha256': '7783f5617cb68bf82757217959d98c2f59b54f9adc513d964bc2e86cd56c6a2a'}"
+      },
+      {
+        "new": "'bytes': 31026,\n                 'sha256': 'ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3'",
+        "old": "'bytes': 27175,\n                 'sha256': '0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7'"
+      },
+      {
+        "new": "review(plan['reviews']['census'],source=plan['sources']['census_leaf'],scope='Q-neutral-full-model-census-factor-batch64-Source',author='/root/arithmetic_induction')",
+        "old": "review(plan['reviews']['census'],source=plan['sources']['census_leaf'],scope='Q-neutral-full-model-census-phase-diagnostic-Source',author='/root/hilbert_advice_controls')"
+      }
+    ],
+    "forward_patch": {
+      "bytes": 2619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py.forward.patch",
+      "sha256": "2731e91a4c5e68392c35dd8be388582dae1312a7546d1c57fedde830d85b1989"
+    },
+    "inverse_patch": {
+      "bytes": 2619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py.inverse.patch",
+      "sha256": "b5b7e034b8fb1774a0dd72e12bff7663f3538eb57dbd25c3ad67029557f07e0c"
+    },
+    "parent": {
+      "bytes": 38074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_trusted_early_cold_caller_v1.py",
+      "sha256": "6320c7bd8ffa37ce1eb8cc90e519ae00c59d3d4fdb9181f0bdc18201c9759115"
+    },
+    "unchanged_definition_ASTs": [
+      "need",
+      "now",
+      "cancelled",
+      "canonical",
+      "decode",
+      "shape",
+      "read_pin",
+      "wire",
+      "function_state",
+      "data_state",
+      "class_state",
+      "module_state",
+      "effective",
+      "load_exact",
+      "Seal",
+      "review"
+    ]
+  },
+  "controller": {
+    "changed_definition_ASTs": [
+      "parse_phase_sidecar"
+    ],
+    "complete_forward_matches": true,
+    "complete_inverse_matches": true,
+    "current": {
+      "bytes": 55979,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+      "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1"
+    },
+    "exact_raw_edits": [
+      {
+        "new": "VERSION = 'Q-census-only-cold-diagnostic-controller-Source-v2-factor-batch64'",
+        "old": "VERSION = 'Q-census-only-cold-diagnostic-controller-Source-v1-global-clock'"
+      },
+      {
+        "new": "'bytes': 31026,\n                 'sha256': 'ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3'",
+        "old": "'bytes': 27175,\n                 'sha256': '0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7'"
+      },
+      {
+        "new": "header['version']=='Q-neutral-full-model-census-leaf-v4-global-clock-factor-batch64'",
+        "old": "header['version']=='Q-neutral-full-model-census-leaf-v3-global-clock-phase-diagnostic'"
+      }
+    ],
+    "forward_patch": {
+      "bytes": 2018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py.forward.patch",
+      "sha256": "c9f51ac810555452d503c9b4017fe57f34581f5c14584f45e8ce2394b5f4c74a"
+    },
+    "inverse_patch": {
+      "bytes": 2018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py.inverse.patch",
+      "sha256": "30d111976dab44069185ec065511e22bbe9068bb11448761a02233f6c76fac63"
+    },
+    "parent": {
+      "bytes": 55979,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_diagnostic_controller_v1.py",
+      "sha256": "7783f5617cb68bf82757217959d98c2f59b54f9adc513d964bc2e86cd56c6a2a"
+    },
+    "unchanged_definition_ASTs": [
+      "need",
+      "state",
+      "effective",
+      "code_state",
+      "raw_pin",
+      "wire",
+      "run_census_only_diagnostic"
+    ]
+  },
+  "exact_literal_edit_count": 7,
+  "memory_branch_merged": false,
+  "native_clock_calls": 0,
+  "preserved_genuine_parent_reviews": {
+    "caller": {
+      "bytes": 3228,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/caller-typed-Source-review-v1.json",
+      "sha256": "34558755afa071d3ce064c317aa27242bbf641c2a18ea4f46b83351c2aef735b"
+    },
+    "controller": {
+      "bytes": 2902,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/controller-typed-Source-review-v1.json",
+      "sha256": "fec301b470b403d7c303bbc32127f33e1c1ec75b49b6fd49fc11b6baad448a1b"
+    }
+  },
+  "schema": "Q-census-serializer-only-binding-pair-Source-delta-v1",
+  "scope": "Only own version literals, exact leaf raw records, exact phase header VERSION, derived controller pin and census review scope+author. No runtime algorithm, guard, constructor, FD, model, traversal, output or clock changes.",
+  "source_functions_executed": 0,
+  "source_only": true,
+  "tests": 0
+}

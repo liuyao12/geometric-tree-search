@@ -1,0 +1,84 @@
+{
+  "Q_payload_parses": 0,
+  "Source_functions_executed": 0,
+  "actual_plans": 0,
+  "actual_runs": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "basis_telemetry": {
+    "basis": "ROOT supplied completed actual census1 phase summary. This author raw-pinned but did not parse/replay the log or independently accept its enclosing resources.",
+    "interpretation": "Combined repeated witness/serialization/I/O is the largest reported group; no measured pure JSON CPU bottleneck or speedup attribution. Old additive memory remains unqualified.",
+    "raw_log": {
+      "bytes": 4553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-phases.jsonl",
+      "sha256": "e8e184c6baf5979749b12b3a678c2b795304f3e2282deeab9aa923ad5b913c50"
+    },
+    "reported_seconds": {
+      "PointGraph_constructor": "1.785452",
+      "entire_phase_span": "11.322073",
+      "repeated_witness_row_omission_final_serialization_and_IO_group": "5.376308",
+      "whole_preparation_parse": "3.829354"
+    }
+  },
+  "changed_callable_ASTs": [
+    "canonical_chunks"
+  ],
+  "current": {
+    "bytes": 31026,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+    "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+  },
+  "encoding_path_reference": {
+    "bytes": 16072,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/encoder.py",
+    "sha256": "cdb1eb54c453f672c56caf00c02ace80c97fb48121c4af734b7c4123ceb1fb3d"
+  },
+  "exact_raw_edits": [
+    {
+      "new": "def canonical_chunks(value, budget):\n    \"\"\"Same complete canonical bytes; only flat factor runs use bounded C batches.\n\n    No earlier serialization, witness bytes or model/domain result is cached.\n    Every call traverses its complete current value. Other data uses the same\n    JSONEncoder scalar semantics; nonmatching factor shapes retain full fallback.\n    \"\"\"\n    encoder = json.JSONEncoder(sort_keys=True, separators=(',', ':'), ensure_ascii=False,\n                               allow_nan=False)\n    active = set()\n    domain_keys = frozenset(('factors', 'base_count', 'excluded_legal', 'count'))\n\n    def pieces(item, factor_records=False):\n        if type(item) is dict and all(type(key) is str for key in item):\n            marker = id(item)\n            if marker in active:\n                raise ValueError('Circular reference detected')\n            active.add(marker)\n            try:\n                yield '{'\n                domain = set(item) == domain_keys\n                for index, name in enumerate(sorted(item)):\n                    if index:\n                        yield ','\n                    yield from encoder.iterencode(name)\n                    yield ':'\n                    yield from pieces(item[name], domain and name == 'factors')\n                yield '}'\n            finally:\n                active.remove(marker)\n        elif type(item) is list:\n            marker = id(item)\n            if marker in active:\n                raise ValueError('Circular reference detected')\n            active.add(marker)\n            try:\n                yield '['\n                emitted = False\n                if factor_records:\n                    for offset in range(0, len(item), 64):\n                        batch = item[offset:offset + 64]  # at most64 borrowed record refs\n                        eligible = json.encoder.c_make_encoder is not None and all(\n                            type(record) is list and len(record) == 5 and type(record[3]) is bool\n                            and all(type(record[pos]) is int and 0 <= record[pos] < 2**63\n                                    for pos in (0, 1, 2, 4)) for record in batch)\n                        if eligible:\n                            budget.check()\n                            encoded = encoder.encode(batch)  # _one_shot=True: existing C encoder\n                            # Four at-most19-digit integers+one bool+punctuation:\n                            # <=87 characters/record, <=5633 for the whole64 list.\n                            need(type(encoded) is str and len(encoded) <= 5633\n                                 and encoded.startswith('[') and encoded.endswith(']'),\n                                 'bounded whole factor batch, never truncate')\n                            fragment = encoded[1:-1]\n                            del encoded, batch\n                            budget.check()\n                            if emitted:\n                                yield ','\n                            yield fragment\n                            emitted = True\n                        else:\n                            # A storage optimization is never a mathematical filter.\n                            # Every unexpected type/value/shape follows complete\n                            # original JSON semantics; no record is dropped.\n                            for record in batch:\n                                if emitted:\n                                    yield ','\n                                yield from pieces(record)\n                                emitted = True\n                else:\n                    for child in item:\n                        if emitted:\n                            yield ','\n                        yield from pieces(child)\n                        emitted = True\n                yield ']'\n            finally:\n                active.remove(marker)\n        else:\n            # Scalar/tuple/non-string-key dictionary semantics are unchanged.\n            yield from encoder.iterencode(item)\n\n    parts, length = [], 0\n    for piece in pieces(value):\n        parts.append(piece)\n        length += len(piece)\n        if length >= 16384:\n            budget.check()\n            yield ''.join(parts).encode('utf8')\n            parts, length = [], 0\n    if parts:\n        budget.check()\n        yield ''.join(parts).encode('utf8')\n",
+      "old": "def canonical_chunks(value, budget):\n    parts, length = [], 0\n    for piece in json.JSONEncoder(sort_keys=True, separators=(',', ':'), ensure_ascii=False,\n                                  allow_nan=False).iterencode(value):\n        parts.append(piece)\n        length += len(piece)\n        if length >= 16384:\n            budget.check()\n            yield ''.join(parts).encode('utf8')\n            parts, length = [], 0\n    if parts:\n        budget.check()\n        yield ''.join(parts).encode('utf8')\n"
+    },
+    {
+      "new": "VERSION = 'Q-neutral-full-model-census-leaf-v4-global-clock-factor-batch64'",
+      "old": "VERSION = 'Q-neutral-full-model-census-leaf-v3-global-clock-phase-diagnostic'"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 5168,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/leaf3-to-leaf4-factor-batch64.patch",
+    "sha256": "4334cb3c3b76bf1fa7838bbad1f7f2f49b3ec3e3c70bd3f2d3826a4a7583ff99"
+  },
+  "full_byte_forward_matches": true,
+  "full_byte_inverse_matches": true,
+  "inverse_patch": {
+    "bytes": 5168,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/leaf4-to-leaf3-full-inverse.patch",
+    "sha256": "ac3e06481af01dfae069e3a78fc1cba2373c52f5f75c74738c3e86b6aaca16b6"
+  },
+  "native_clock_calls": 0,
+  "parent": {
+    "bytes": 27175,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Q_neutral_full_model_census_leaf_v3_phases.py",
+    "sha256": "0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7"
+  },
+  "schema": "Q-census-factor-batch64-only-Source-delta-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "tests": 0,
+  "unchanged_callable_ASTs": [
+    "need",
+    "decimal",
+    "Budget",
+    "fd_mode",
+    "read_exact",
+    "unique",
+    "load_source",
+    "line",
+    "write_all",
+    "WitnessMismatch",
+    "compare_fd",
+    "stream_hash",
+    "parse_manifest",
+    "PhaseDiagnostic",
+    "main"
+  ]
+}

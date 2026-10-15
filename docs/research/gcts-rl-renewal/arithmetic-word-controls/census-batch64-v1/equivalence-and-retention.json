@@ -1,0 +1,32 @@
+{
+  "Q_payload_parses": 0,
+  "canonical_equivalence": [
+    "Use exactly the original sorted-key compact JSON encoder options: ensure_ascii=False, allow_nan=False, separators comma/colon. Scalar and all unmatched shapes delegate to that same encoder; no values are transformed.",
+    "For plain string-key dictionaries, emit original sorted keys, braces, colon/comma separators and recursively the entire value. For plain lists, emit brackets, comma separators and every ordered child. The active-identity set retains circular-reference rejection; it is local and cleared by generator finally blocks.",
+    "Only values under factors in an exact four-key domain record are considered for batching. Split their full ordered record list into consecutive slices of at most64; all slices and records are visited. Batching is eligible only for exact5-item lists with four nonnegative signed63 integers and one exact bool; this is a storage fast path, not a type/admission filter.",
+    "For each eligible group, existing JSONEncoder.encode uses _one_shot=True and the pinned stdlib C encoder when present. The returned complete group is its canonical JSON array. Remove only the two outer array delimiters, retain all inner record delimiters and values, and join groups with one comma. Concatenating these fragments inside the original list brackets equals canonical encoding of the whole original list by ordered concatenation.",
+    "If any batch shape/value is outside this fast shape or C encoder is absent, every record goes through full fallback. No record, type, port, assigned-zero mark, row or factor is dropped. Unexpected NaN/unsupported values keep original encoder failure behavior.",
+    "The original 16KiB outer accumulation/check/yield code and every compare_fd/stream_hash traversal/call remain. Complete concatenated bytes, full SHA/length/EOF and all24 row hashes are invariant; internal chunk boundaries may differ. O08 must still reject both whole views; its approximate near-byte diagnostic offset can change with chunk boundaries, not its label/type/actual rejection or view SHA."
+  ],
+  "native_clock_calls": 0,
+  "no_runtime_equivalence_or_fit_claim": true,
+  "retention_bound": {
+    "batch_size": 64,
+    "borrowed_record_references": "At most64 shallow references; no record tree is copied, interned or retained across calls.",
+    "bound_derivation": "64*87 +63 commas+2 outer brackets =5633 ASCII characters. This bound is checked after encode and follows before allocation from exact eligible scalar ranges.",
+    "clocks_and_memory": "Existing Budget/global20/failure55/500MiB reserve and outer60/512MiB/caller90+finish1 are unchanged. Added before/after batch-encode budget checks do not replace any existing check. All normal/full output must still close inside original20; cleanup cannot accept a late prefix.",
+    "integer_fields_per_record": 4,
+    "longest_bool_characters": 5,
+    "maximum_encoded_whole_batch_characters": 5633,
+    "maximum_record_characters": 87,
+    "outer_accumulator": "Current semantic state is ASCII keys/int/bool/epoch data; original16KiB flush threshold may overshoot by at most one <=5631-character factor fragment. Other scalar tokens retain original behavior. No exact whole-worker RSS prediction is claimed.",
+    "per_integer_decimal_characters": 19,
+    "record_punctuation_characters": 6,
+    "temporary_strings": "One <=5633-character batch string, then its <=5631-character inner fragment. Original string and borrowed batch refs are explicitly deleted before the fragment is yielded. No full-state/domain string, encoded witness cache or duplicate factor inventory."
+  },
+  "schema": "Q-census-factor-batch64-canonical-equivalence-and-retention-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "Static argument only, not an executed byte comparison or resource qualification",
+  "tests": 0
+}

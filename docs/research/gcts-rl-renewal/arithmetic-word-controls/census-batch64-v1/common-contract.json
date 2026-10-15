@@ -1,0 +1,545 @@
+{
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Q_payload_parses": 0,
+  "ROOT_primary_accepted": false,
+  "ROOT_resource_accepted": false,
+  "W16_late_gate_exercised": false,
+  "activation_allowed": false,
+  "actual_outdirs": 0,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "census4_contract": {
+    "bytes": 14579,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-contract-v1.json",
+    "sha256": "87408a01e64b0491991b2685c6f158793c09f04b4dd61d918f64e3b4af816dc8"
+  },
+  "census4_equivalence_and_retention": {
+    "bytes": 3880,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/canonical-equivalence-and-retention-v1.json",
+    "sha256": "051537bb8d75e953db409d0ecfa6020244cb4816d5b23baef57658990ce39854"
+  },
+  "census4_handoff": {
+    "bytes": 3594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/handoff-v1.json",
+    "sha256": "f4248c301fb42491d5d6c9ed5bbe7ccdd879014ce3b45743d2f801a0216c1b08"
+  },
+  "census_FD_ABI": {
+    "RO_positions": [
+      "manifestFD",
+      "prepFD",
+      "codecFD",
+      "pointFD",
+      "stateFD",
+      "oracleFD"
+    ],
+    "WO_positions": [
+      "resultFD",
+      "phaseFD"
+    ],
+    "argc": 12,
+    "argv": [
+      "manifestFD",
+      "manifestSHA",
+      "manifestBytes",
+      "prepFD",
+      "codecFD",
+      "pointFD",
+      "stateFD",
+      "oracleFD",
+      "resultFD",
+      "originalG",
+      "originalD",
+      "phaseFD"
+    ],
+    "distinct_FDs": 8,
+    "phase_file": "whole-cold-census/census-phases.jsonl",
+    "phase_file_flags": "O_WRONLY|O_CREAT|O_EXCL, regular offset0, different inode from all original input/result FDs; same original budget and pass_fds ownership",
+    "result_transport": "Original unchanged census body+completion two-line whole JSON/EOF; child true exit0/reaped before parent parsing",
+    "sidecar": "Whole<=32768B/line<=2048/96event limit; complete exact original19 phasepairs (38events) plus header/footer, canonical JSONL+EOF, prefixSHA/bytes, all samples original G<=t<D. Prefixes preserved on failure never admitted."
+  },
+  "context_source_roles_exact_wire_map": {
+    "census_leaf": {
+      "bytes": 31026,
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+    },
+    "codec": {
+      "bytes": 5806,
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "coordinator": {
+      "bytes": 54630,
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "late_leaf": {
+      "bytes": 15699,
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer": {
+      "bytes": 20219,
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "dependency_sources_with_existing_canonical_paths": {
+    "census_leaf": {
+      "bytes": 31026,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "coordinator": {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "late_leaf": {
+      "bytes": 15699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_late_exit_verifier_leaf_global_clock_v3.py",
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "entry_ABI": {
+    "argc": 1,
+    "begin": "Actual native clock captured before every remaining import/Source auth/compile/read/copy/Owner setup. Same original G/D20 inherited by controller and census3. No parent Q parse.",
+    "context_field_count": 9,
+    "context_fields": [
+      "coordinator_module",
+      "coordinator_source_raw",
+      "inputs",
+      "invocation_id",
+      "original_sources",
+      "owner",
+      "run_directory",
+      "runtime",
+      "sources"
+    ],
+    "controller": "run_census_only_diagnostic(*,context,source_guard,joint_began_ns,joint_deadline_ns)",
+    "entry": "isolated pinnedPython -I -S -B callerSource solecanonicalRootPlanPath",
+    "external_preclock": "Interpreter/trusted Source startup/minimal time import and final observation are external owned60/caller90+finish1 costs; never hidden20 or clock reset."
+  },
+  "external_accounting_rule": "Exactly the existing coordinator6/full census pair1 additive native child/observer closure plus terminal caller peak and same native20/55/owned60/512/caller90+finish1 external rule. No Owner-only cutoff, two-epoch bound or changed memory admission; old memory limitation is preserved.",
+  "external_meter": {
+    "CLI": [
+      "fresh_metrics",
+      "pinnedPython",
+      "-I",
+      "-S",
+      "-B",
+      "new_census_only_caller_Source",
+      "soleRootPlanPath"
+    ],
+    "CLI_count": 7,
+    "pending": true,
+    "scope": "ROOT actual external invocation must request authorized native /bin/ps accounting. Meter has no success authority. Unlike W16 JS2, complete census-only exit0+output+terminal+postterminal native observation must all precede originalG+20. Do not reuse W16 failure55 success predicate. Root must author/freeze exact external observation code/actual grant before activation.",
+    "source": {
+      "bytes": 6734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    }
+  },
+  "full52_qualified": false,
+  "full_input_roles_exact_wire_map": {
+    "architecture_choice": {
+      "bytes": 6808,
+      "sha256": "62b0d66686f890c9f604192058bdba48a4b171e233f25767b1e1de88fffbd82f"
+    },
+    "declaration": {
+      "bytes": 2683,
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "finite_ROOT_admission": {
+      "bytes": 8563,
+      "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1"
+    },
+    "finite_certificate": {
+      "bytes": 5789,
+      "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87"
+    },
+    "initial_oracle": {
+      "bytes": 8295473,
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    "initial_state": {
+      "bytes": 8296118,
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    "preparation": {
+      "bytes": 38376960,
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    },
+    "word_controls_ROOT": {
+      "bytes": 6796,
+      "sha256": "f254219dc8e7324a7d15f9ff50661de627d207eca08660bca354e73978d39fd1"
+    }
+  },
+  "genuine_retained_pair1_reviews": {
+    "caller": {
+      "bytes": 3228,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/caller-typed-Source-review-v1.json",
+      "sha256": "34558755afa071d3ce064c317aa27242bbf641c2a18ea4f46b83351c2aef735b"
+    },
+    "controller": {
+      "bytes": 2902,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/controller-typed-Source-review-v1.json",
+      "sha256": "fec301b470b403d7c303bbc32127f33e1c1ec75b49b6fd49fc11b6baad448a1b"
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "memory_branch_merged": false,
+  "native_clock_calls": 0,
+  "original_Q_theorem_accepted": false,
+  "original_sources": {
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "payload": {
+      "bytes": 5435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "worker": {
+      "bytes": 37266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    }
+  },
+  "output_closure": {
+    "caller_file": "census-only-early-caller-observation.json",
+    "controller_files": [
+      "cold-snapshots/input-* (8)",
+      "cold-snapshots/source-* (8)",
+      "cold-snapshots/original-* (7)",
+      "census-manifest.json",
+      "whole-cold-census/census-response.jsonl",
+      "whole-cold-census/census-phases.jsonl",
+      "whole-cold-census/producer stdout/stderr from genuine Owner",
+      "census-owned-ledger.json.gz",
+      "census-diagnostic-result.json",
+      "census-diagnostic-post-write.json"
+    ],
+    "failure": "UNKNOWN/exit2, original55 only for kill/reap/partial raw evidence. Sidecar partial/canonical failure or any late/memory/cancel revokes complete path; no accepted prefix.",
+    "final_closure": "Existing controller inventory includes response/sidecar before receipts; ledger/result/post/caller pins and all native stdout/stderr/tool partials must be inventoried by ROOT after actual terminal. No output omitted from actual owned serialization/resource record.",
+    "normal_return": "result/post_write full dict; complete flags are observational evidence only. True normal native20 required through cleanup/output/final caller memory+afterstdout return."
+  },
+  "parents": {
+    "caller": {
+      "bytes": 38118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+    },
+    "caller_contract": {
+      "bytes": 24443,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+      "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f"
+    },
+    "controller": {
+      "bytes": 68771,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+      "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+    },
+    "genuine_caller_review": {
+      "bytes": 2903,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v4.json",
+      "sha256": "4fb7ea9c2532225d7079406100f3bc00a7ce830f4a96d9a75cd4059b81578629"
+    }
+  },
+  "pending": [
+    "genuine distinct current leaf4 Source pass",
+    "genuine distinct current caller/controller binding pass",
+    "ROOT prospective same-input comparison plan/scoped grant/fresh namespace/raw closure under unchanged additive external rule",
+    "actual full canonical witness/24 row/O08/38phase equality, whole output/EOF/native20 and memory/owned/caller reconciliation; no speed claim from Source"
+  ],
+  "performance_improvement_accepted": false,
+  "plan_ABI": {
+    "author_identity": "/root",
+    "authorization": "ROOT supplies its concrete controls_execution_authorized true only after genuine current reviews. This Source contract is not a grant.",
+    "caller_contract": "this exact raw frozen contract",
+    "caller_source": {
+      "bytes": 38071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+      "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+    },
+    "field_count": 15,
+    "fields": [
+      "author_identity",
+      "caller_contract",
+      "caller_source",
+      "controls_execution_authorized",
+      "inputs",
+      "invocation_id",
+      "limits",
+      "original_sources",
+      "raw_closure",
+      "reviews",
+      "run_directory",
+      "runtime",
+      "schema",
+      "scope",
+      "sources"
+    ],
+    "input_roles": [
+      "architecture_choice",
+      "declaration",
+      "finite_ROOT_admission",
+      "finite_certificate",
+      "initial_oracle",
+      "initial_state",
+      "preparation",
+      "word_controls_ROOT"
+    ],
+    "original_source_count": 7,
+    "raw_closure": "All named actual Source/runtime/contracts/reviews and original8+source7 pins, <=128. Small buffers SHA/EOF validated in caller; original8+source7 bytes exclusively streamed into genuine controller snapshots. ROOT must close all raw pin leaves in named read documents.",
+    "reviews": {
+      "caller": {
+        "author_identity": "/root/arithmetic_induction",
+        "scope": "Q-census-only-trusted-early-cold-caller-Source",
+        "source": {
+          "bytes": 38071,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+          "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+        },
+        "source_contract": "this exact frozen contract",
+        "sources": {
+          "caller": {
+            "bytes": 38071,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+            "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+          },
+          "controller": {
+            "bytes": 55979,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+            "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1"
+          }
+        },
+        "status": "genuine distinct current serializer-only binding review pending"
+      },
+      "census": {
+        "author_identity": "/root/arithmetic_induction",
+        "scope": "Q-neutral-full-model-census-factor-batch64-Source",
+        "source": {
+          "bytes": 31026,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+          "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+        },
+        "source_contract": {
+          "bytes": 14579,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-contract-v1.json",
+          "sha256": "87408a01e64b0491991b2685c6f158793c09f04b4dd61d918f64e3b4af816dc8"
+        },
+        "status": "genuine current distinct review mandatory; no invented path or pass"
+      },
+      "controller": {
+        "author_identity": "/root/arithmetic_induction",
+        "scope": "Q-census-only-diagnostic-controller-Source",
+        "source": {
+          "bytes": 55979,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+          "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1"
+        },
+        "source_contract": "this exact frozen contract",
+        "sources": {
+          "controller": {
+            "bytes": 55979,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+            "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1"
+          }
+        },
+        "status": "genuine distinct current serializer-only binding review pending"
+      },
+      "coordinator": {
+        "author_identity": "/root",
+        "genuine_existing_review": {
+          "bytes": 2196,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/typed-Source-review-v1.json",
+          "sha256": "016e2d78db0e42ac1d86ef7e2234fe0f26b0a3d296caa3ad789cf1d6764a14a4"
+        },
+        "scope": "Q-split-owned-coordinator-Source"
+      }
+    },
+    "run_directory": "Canonical existing parent and fresh absent owned inner directory, created only by controller. No actual plan/directory is supplied by this Source package.",
+    "runtime_limits": "exact literals above",
+    "schema": "ROOT-Q-census-only-diagnostic-plan-v1",
+    "scope": "census_phase_diagnostic_only",
+    "source_roles": [
+      "census_controller",
+      "census_leaf",
+      "codec",
+      "coordinator",
+      "independent_checker",
+      "late_leaf",
+      "point_graph",
+      "producer",
+      "verifier"
+    ],
+    "sources": "Eight fixed role records above with only census_leaf updated, plus census_controller exact current controller pin. ROOT supplies canonical source/input paths and complete actual closure; no memory-source substitution."
+  },
+  "preserved_pair1_handoff": {
+    "bytes": 3337,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/handoff-v1.json",
+    "sha256": "30d2d6b98149638d8a0b3ebce10429fb5afd9d18124e6ad175f5e23f0d443850"
+  },
+  "preserved_pair1_source_contract": {
+    "bytes": 22465,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Source-contract-v1.json",
+    "sha256": "0b674cefe8bdb26784951de32dffee08c3e02152b03d981db8fd60830e19a51f"
+  },
+  "preserved_parent_census3_Source_review": {
+    "bytes": 3459,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-typed-Source-review-v1.json",
+    "sha256": "d678401ead894323ed06d898206bd6bd3209268e2f2ca422bcb8020fbee463d4"
+  },
+  "preserved_parent_census3_contract": {
+    "bytes": 12421,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Source-contract-v1.json",
+    "sha256": "aa25318f3058f2384e78bd00abc4c4257208e899399212587656fb0f44f642d7"
+  },
+  "required_current_census4_review": {
+    "author_identity": "/root/arithmetic_induction",
+    "scope": "Q-neutral-full-model-census-factor-batch64-Source",
+    "source": {
+      "bytes": 31026,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+    },
+    "source_contract": {
+      "bytes": 14579,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-contract-v1.json",
+      "sha256": "87408a01e64b0491991b2685c6f158793c09f04b4dd61d918f64e3b4af816dc8"
+    },
+    "sources": {
+      "census_leaf": {
+        "bytes": 31026,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+        "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+      },
+      "codec": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      },
+      "point_graph": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      }
+    },
+    "status": "genuine distinct current review not yet supplied to this Source freeze; mandatory actual Root plan input, never replaced by parent census3 pass"
+  },
+  "review_ABI": {
+    "all_checks_passed": "earned current review only",
+    "author_identity": "/root/arithmetic_induction",
+    "caller_scope": "Q-census-only-trusted-early-cold-caller-Source",
+    "controller_scope": "Q-census-only-diagnostic-controller-Source",
+    "reviewer_identity": "genuine distinct reviewer; disclose inherited controller/codec dependency authorship if applicable",
+    "scientific_calls": 0,
+    "source_contract": "this exact raw frozen contract",
+    "source_only": true,
+    "source_review_passed": "earned current review only"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "Q-census-only-batch64-binding-pair-Source-contract-v1",
+  "scientific_calls": 0,
+  "scope": "Serializer-only same-input census comparison path; no Owner-only cutoff/memory integration. Original full neutral24/O08/38phase/cold snapshots and coordinator6 additive external rule unchanged. No W16 late, theorem/search/point/native/full52/resource or speed authority.",
+  "source": {
+    "bytes": 38071,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+    "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+  },
+  "source_delta": {
+    "bytes": 6673,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Source-delta-v1.json",
+    "sha256": "8bfb7468fce3ea842459bb864eb492763199c96804b9ada701b9b98727919306"
+  },
+  "source_only": true,
+  "sources": {
+    "caller": {
+      "bytes": 38071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_trusted_early_cold_caller_batch64_v2.py",
+      "sha256": "93a90400e6989a34795cbcca679f114e753ee49a287b7e4f2b64602101fb2034"
+    },
+    "controller": {
+      "bytes": 55979,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/Q_census_only_diagnostic_controller_batch64_v2.py",
+      "sha256": "7f1dddc2f863232b3df9bcda32e09624864f057bffb7fa17f93d2759bf582cb1"
+    }
+  },
+  "static_checks": {
+    "bytes": 1926,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-binding-source-20261015/static-authoring-checks-v1.json",
+    "sha256": "a86cfce984b82a795b4e67fb459413a3ba1c1116fb1b546adbe11619ed4a7902"
+  },
+  "tests": 0,
+  "unchanged_coordinator_review": {
+    "bytes": 2196,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/typed-Source-review-v1.json",
+    "sha256": "016e2d78db0e42ac1d86ef7e2234fe0f26b0a3d296caa3ad789cf1d6764a14a4"
+  },
+  "versions": {
+    "caller": "Q-census-only-trusted-early-cold-caller-Source-v2-factor-batch64",
+    "census_leaf": "Q-neutral-full-model-census-leaf-v4-global-clock-factor-batch64",
+    "controller": "Q-census-only-cold-diagnostic-controller-Source-v2-factor-batch64"
+  }
+}

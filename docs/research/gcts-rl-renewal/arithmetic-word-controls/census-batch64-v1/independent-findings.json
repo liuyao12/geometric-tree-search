@@ -1,0 +1,696 @@
+{
+  "schema": "census-batch64-actual1-saved-independent-findings-v2",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_evidence_only": true,
+  "scientific_calls": 0,
+  "Source_functions_executed": 0,
+  "native_clocks_called": 0,
+  "Q_payload_parses": 0,
+  "all_saved_reconciliation_checks_passed": true,
+  "check_count": 46,
+  "checks": [
+    {
+      "id": "exact_current_Root_plan_once_authority",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all37_whole_named_raw_capsules",
+      "passed": true,
+      "detail": "Full preparation/state/oracle raw bytes only, never decoded."
+    },
+    {
+      "id": "same_G20_F55_no_clock_reset",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "current_caller_controller_context_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all23_complete_source_input_original_snapshots",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole32_owned_files_28_before_receipts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_gzip_result_post_caller_binding",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "complete_observations_not_accepted_prefix",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "complete_canonical_census_body_trailer_EOF_LFhash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "full_fixed_manifest_sources_input_context_epoch",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "complete_saved_model_24_scope_no_search",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "full_state_oracle_original_SHA_EOF_receipts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole24_saved_row_metadata_not_semantic_recompute",
+      "passed": true,
+      "detail": "All24 complete literal census row records inspected; not a new mathematical/domain reconstruction or Q state/oracle parse."
+    },
+    {
+      "id": "both_O08_rejections_original_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "same_buffer_codec_point_executed_census",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "complete40_phase_JSONL_lines_4551B_EOF",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "exact_phase_header_native_original20_scope",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all38_strict_phase_events_exact19pairs_global_monotonic",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "complete_footer_authenticates_all_prefixbytes_LF",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all19_phase_pair_durations_independent_integer_subtraction",
+      "passed": true,
+      "detail": "Durations include local logging/check overhead. Witness phases include I/O/hash/canonical serialization; not pure JSON CPU or matched performance. Intervals do not exhaust the full cost boundary."
+    },
+    {
+      "id": "one_native_producer_only_and_reaped_before20",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "argv12_exact_same_G20_and8FD_channels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole50_successful_original20_calls_and46prefix",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "full_child_stdout_stderr_empty",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole113_observers_111RSS_rows_births_reaped",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "independent_complete_one_child_weighted_bound",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "post_caller_full_native_internal_diagnostic",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "current_additive_terminal_memory_gate_FAILS",
+      "passed": true,
+      "detail": "Current upper-bound predicate false, not an inferred actual simultaneous RSS violation; no SELF or prospective two-epoch substitution."
+    },
+    {
+      "id": "true_native_caller_terminal_usage_exit0_reaped",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "meter_runtime_caller_plan_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_actual_external_session_terminal_notice",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_postterminal_probe_strict_native_line",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "entire_normal_output_native_terminal_postprobe_under20",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all_strong_false_no_W16_search_proof",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "inherited_conditional_labels_preserved_errata",
+      "passed": true,
+      "detail": "Actual native/source/input/call evidence establishes invocation. These stale Source-template labels grant no acceptance and cannot negate actual execution."
+    },
+    {
+      "id": "baseline_saved_complete_response_exact_prior_review_pin",
+      "passed": true,
+      "detail": "Prior saved baseline checked as literal small response metadata, not a Q state/oracle or mathematical replay."
+    },
+    {
+      "id": "only_declared_nine_saved_response_literal_changes",
+      "passed": true,
+      "detail": [
+        "$.O08_controls[0].message",
+        "$.O08_controls[1].message",
+        "$.coordinator_invocation_id",
+        "$.joint_began_ns",
+        "$.joint_deadline_ns",
+        "$.same_buffer_execution_census[0].registered_module",
+        "$.same_buffer_execution_census[1].registered_module",
+        "$.source_bindings.census_leaf.bytes",
+        "$.source_bindings.census_leaf.sha256"
+      ]
+    },
+    {
+      "id": "complete_mathematical_witness_rows_and_omission_view_hashes_identical",
+      "passed": true,
+      "detail": "Exact all24 literal row/hash/count records, original state/oracle SHA+length+EOF and O08 view bytes/SHA/labels/type/rejection equal baseline. No new independent domain reconstruction."
+    },
+    {
+      "id": "same_complete_19phasepair_labels_no_phase_substitution",
+      "passed": true,
+      "detail": "Source nonce/version/time legitimately differ. Timings include logging/checks/serialization/hash/I/O and are one paired observation only, not pureCPU or reproduced speedup."
+    },
+    {
+      "id": "final_Root_exact_four_whole_documents",
+      "passed": true,
+      "detail": "Frozen disposition, whole inventory, phase intervals and one-observation comparison."
+    },
+    {
+      "id": "whole_final_inventory32_and23snapshots_exact",
+      "passed": true,
+      "detail": "No extra generated files omitted; all full original snapshot raw identities match saved reconciliation."
+    },
+    {
+      "id": "Root_native_time_inventory_matches_saved",
+      "passed": true,
+      "detail": "Entire Root summary equals native lifecycle/output clocks; normal20 holds, observer/native reaping complete."
+    },
+    {
+      "id": "all19_root_phase_intervals_groups_exact",
+      "passed": true,
+      "detail": "All individual native begin/end/elapsed and grouped witness/hash/I/O arithmetic match; no pure CPU interpretation."
+    },
+    {
+      "id": "sum_and_span_disjoint_instrumented_scope_exact",
+      "passed": true,
+      "detail": "Observed intervals are not exhaustive whole-cost partition."
+    },
+    {
+      "id": "exact_one_observation_comparison_baseline_current",
+      "passed": true,
+      "detail": "Actual nine metadata-only body differences previously checked; all24/witness/O08 view hashes unchanged. Single pair only; no reproducible speedup."
+    },
+    {
+      "id": "Root_current_additive_memory_and_false_claims_exact",
+      "passed": true,
+      "detail": "Overall resource UNKNOWN remains; terminal inclusion/overcount limitation disclosed, no SELF/prospective gate substitution or proof benefit."
+    }
+  ],
+  "timeline": {
+    "G_ns": 430692205830000,
+    "D20_ns": 430712205830000,
+    "F55_ns": 430747205830000,
+    "census_launch_after_G_ns": 881621000,
+    "census_terminal_after_G_ns": 9157555000,
+    "census_native_lifetime_ns": 8275934000,
+    "last_observer_reaped_after_G_ns": 9287565000,
+    "post_write_after_G_ns": 9508283000,
+    "caller_observation_after_G_ns": 9564459000,
+    "true_caller_terminal_after_G_ns": 9595561000,
+    "postterminal_probe_after_G_ns": 9661170000,
+    "external_wall_ms": 12630,
+    "separate_finish_reserve_ms": 1000
+  },
+  "phase_pairs": [
+    {
+      "pair_index": 0,
+      "phase": "manifest_read_parse",
+      "begin_ns": 430693145386000,
+      "end_ns": 430693145551000,
+      "observed_interval_ns": 165000
+    },
+    {
+      "pair_index": 1,
+      "phase": "source_auth_load",
+      "begin_ns": 430693145569000,
+      "end_ns": 430693145958000,
+      "observed_interval_ns": 389000
+    },
+    {
+      "pair_index": 2,
+      "phase": "source_auth_load",
+      "begin_ns": 430693145977000,
+      "end_ns": 430693184456000,
+      "observed_interval_ns": 38479000
+    },
+    {
+      "pair_index": 3,
+      "phase": "preparation_raw_read",
+      "begin_ns": 430693184498000,
+      "end_ns": 430693215354000,
+      "observed_interval_ns": 30856000
+    },
+    {
+      "pair_index": 4,
+      "phase": "lossless_decode",
+      "begin_ns": 430693215426000,
+      "end_ns": 430693231509000,
+      "observed_interval_ns": 16083000
+    },
+    {
+      "pair_index": 5,
+      "phase": "whole_preparation_parse",
+      "begin_ns": 430693231560000,
+      "end_ns": 430696913110000,
+      "observed_interval_ns": 3681550000
+    },
+    {
+      "pair_index": 6,
+      "phase": "PointGraph_constructor",
+      "begin_ns": 430696913182000,
+      "end_ns": 430698620275000,
+      "observed_interval_ns": 1707093000
+    },
+    {
+      "pair_index": 7,
+      "phase": "semantic_state",
+      "begin_ns": 430698620404000,
+      "end_ns": 430698850338000,
+      "observed_interval_ns": 229934000
+    },
+    {
+      "pair_index": 8,
+      "phase": "parsed_original_state_comparison",
+      "begin_ns": 430698850383000,
+      "end_ns": 430698860376000,
+      "observed_interval_ns": 9993000
+    },
+    {
+      "pair_index": 9,
+      "phase": "first_complete_state_witness",
+      "begin_ns": 430698867510000,
+      "end_ns": 430699144512000,
+      "observed_interval_ns": 277002000
+    },
+    {
+      "pair_index": 10,
+      "phase": "first_complete_domain_witness",
+      "begin_ns": 430699144571000,
+      "end_ns": 430699418365000,
+      "observed_interval_ns": 273794000
+    },
+    {
+      "pair_index": 11,
+      "phase": "all24_row_hashes",
+      "begin_ns": 430699418405000,
+      "end_ns": 430699682207000,
+      "observed_interval_ns": 263802000
+    },
+    {
+      "pair_index": 12,
+      "phase": "omission_view_hash",
+      "begin_ns": 430699682287000,
+      "end_ns": 430699952242000,
+      "observed_interval_ns": 269955000
+    },
+    {
+      "pair_index": 13,
+      "phase": "omission_view_comparison",
+      "begin_ns": 430699952281000,
+      "end_ns": 430700219733000,
+      "observed_interval_ns": 267452000
+    },
+    {
+      "pair_index": 14,
+      "phase": "omission_view_hash",
+      "begin_ns": 430700219761000,
+      "end_ns": 430700497451000,
+      "observed_interval_ns": 277690000
+    },
+    {
+      "pair_index": 15,
+      "phase": "omission_view_comparison",
+      "begin_ns": 430700497485000,
+      "end_ns": 430700766212000,
+      "observed_interval_ns": 268727000
+    },
+    {
+      "pair_index": 16,
+      "phase": "final_complete_state_recomparison",
+      "begin_ns": 430700766244000,
+      "end_ns": 430701036030000,
+      "observed_interval_ns": 269786000
+    },
+    {
+      "pair_index": 17,
+      "phase": "final_complete_domain_recomparison",
+      "begin_ns": 430701036061000,
+      "end_ns": 430701303950000,
+      "observed_interval_ns": 267889000
+    },
+    {
+      "pair_index": 18,
+      "phase": "complete_response_serialization_write",
+      "begin_ns": 430701303987000,
+      "end_ns": 430701304171000,
+      "observed_interval_ns": 184000
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_plan": {
+      "bytes": 21560,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-plan-v1.json",
+      "sha256": "4584e5e3183487e913d14e2e0cd299401b4ca96cdcd582fa4b33096fd72b010f"
+    },
+    "baseline_disposition": {
+      "bytes": 5216,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-disposition-v1.json",
+      "sha256": "d10e5aa51dec74043f7ecaf38e6b0a20878345045657ba60fcaec46c48eb8590"
+    },
+    "baseline_whole_response": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-response.jsonl",
+      "bytes": 7786,
+      "sha256": "81b12d4123d29fe69597fee7f680b605181e03e4e2d424c349cc6be92be29db7"
+    },
+    "response_changed_paths": [
+      "$.O08_controls[0].message",
+      "$.O08_controls[1].message",
+      "$.coordinator_invocation_id",
+      "$.joint_began_ns",
+      "$.joint_deadline_ns",
+      "$.same_buffer_execution_census[0].registered_module",
+      "$.same_buffer_execution_census[1].registered_module",
+      "$.source_bindings.census_leaf.bytes",
+      "$.source_bindings.census_leaf.sha256"
+    ],
+    "baseline_sum_phase_intervals_ns": 11314216000,
+    "current_sum_phase_intervals_ns": 8150823000,
+    "baseline_witness_serialization_hash_IO_phase_group_ns": 5376308000,
+    "current_witness_serialization_hash_IO_phase_group_ns": 2436097000,
+    "one_paired_observation_only": true,
+    "performance_acceptance": false,
+    "memory_rule_unchanged": true
+  },
+  "sum_of_disjoint_observed_phase_intervals_ns": 8150823000,
+  "phase_timing_scope": "Instrumented observed intervals include logging/checks; witness phases include I/O/hash/canonical serialization. No exhaustive partition, pure JSON CPU, uninstrumented speed, reproduced matched performance or pure-CPU attribution.",
+  "owned_files": [
+    {
+      "path": "census-diagnostic-post-write.json",
+      "bytes": 8360,
+      "sha256": "d27e15da8213541edfcb0dbc4a75b5c43106ba32e507d7c0695c1e49b3a67f45"
+    },
+    {
+      "path": "census-diagnostic-result.json",
+      "bytes": 28236,
+      "sha256": "ce9ff5ef17629969a4278268ec591bbc453c5d50d721fb8a0390984e5a0f019d"
+    },
+    {
+      "path": "census-manifest.json",
+      "bytes": 4090,
+      "sha256": "e34490b0a208cc6dfcd18409ec3e39aa1eda3c473a661ad7087df1c4e029459d"
+    },
+    {
+      "path": "census-only-early-caller-observation.json",
+      "bytes": 43968,
+      "sha256": "6744c4484de5e14b2b40c79321f4a2597bdcd599b246759cdd40bdaadbe01932"
+    },
+    {
+      "path": "census-owned-ledger.json.gz",
+      "bytes": 4494,
+      "sha256": "ce2f88013bf9ae21dc91cb5efeacdbc6d949d1d8a8f1a3886cbe922d6cc20356"
+    },
+    {
+      "path": "cold-snapshots/input-architecture_choice",
+      "bytes": 6808,
+      "sha256": "62b0d66686f890c9f604192058bdba48a4b171e233f25767b1e1de88fffbd82f"
+    },
+    {
+      "path": "cold-snapshots/input-declaration",
+      "bytes": 2683,
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    {
+      "path": "cold-snapshots/input-finite_ROOT_admission",
+      "bytes": 8563,
+      "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1"
+    },
+    {
+      "path": "cold-snapshots/input-finite_certificate",
+      "bytes": 5789,
+      "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87"
+    },
+    {
+      "path": "cold-snapshots/input-initial_oracle",
+      "bytes": 8295473,
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    {
+      "path": "cold-snapshots/input-initial_state",
+      "bytes": 8296118,
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    {
+      "path": "cold-snapshots/input-preparation",
+      "bytes": 38376960,
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    },
+    {
+      "path": "cold-snapshots/input-word_controls_ROOT",
+      "bytes": 6796,
+      "sha256": "f254219dc8e7324a7d15f9ff50661de627d207eca08660bca354e73978d39fd1"
+    },
+    {
+      "path": "cold-snapshots/original-catalogue",
+      "bytes": 10187,
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    {
+      "path": "cold-snapshots/original-controls",
+      "bytes": 19742,
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    {
+      "path": "cold-snapshots/original-kernel",
+      "bytes": 10323,
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "path": "cold-snapshots/original-master",
+      "bytes": 21657,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "path": "cold-snapshots/original-payload",
+      "bytes": 5435,
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    {
+      "path": "cold-snapshots/original-point_graph",
+      "bytes": 28531,
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "path": "cold-snapshots/original-worker",
+      "bytes": 37266,
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    },
+    {
+      "path": "cold-snapshots/source-census_leaf",
+      "bytes": 31026,
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+    },
+    {
+      "path": "cold-snapshots/source-codec",
+      "bytes": 5806,
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    {
+      "path": "cold-snapshots/source-coordinator",
+      "bytes": 54630,
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    {
+      "path": "cold-snapshots/source-independent_checker",
+      "bytes": 46514,
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "path": "cold-snapshots/source-late_leaf",
+      "bytes": 15699,
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    },
+    {
+      "path": "cold-snapshots/source-point_graph",
+      "bytes": 28531,
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "path": "cold-snapshots/source-producer",
+      "bytes": 20219,
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    },
+    {
+      "path": "cold-snapshots/source-verifier",
+      "bytes": 48584,
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "path": "whole-cold-census/census-phases.jsonl",
+      "bytes": 4551,
+      "sha256": "a63f3d5509ec9f45be71f791b25ed8b5aad6e91519af05c6402efd27ab325e01"
+    },
+    {
+      "path": "whole-cold-census/census-response.jsonl",
+      "bytes": 7794,
+      "sha256": "c234321f689b010695c6f24b8f32ceacf99720a4b99704200d793c40a2b1361c"
+    },
+    {
+      "path": "whole-cold-census/producer-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "whole-cold-census/producer-stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "owned_file_count": 32,
+  "whole_owned_bytes": 55484833,
+  "external_files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-plan-v1.json",
+      "bytes": 21605,
+      "sha256": "1b43e33142a1087169ff0de6d71b8753db19e0cb6336af4576d18a83dbd2252c"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-scoped-authorization-v1.json",
+      "bytes": 5397,
+      "sha256": "198eeaac5666e6e6e8a62a800ca503f3ac2a1988eadeab8428233eea0800e73f"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/external-observations-v1.json",
+      "bytes": 5722,
+      "sha256": "44e2bd54743a292bbb4a9f5d44e209a2466b55fbcaf393ad1e3be7b5db538f42"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/native-terminal-v1.json",
+      "bytes": 1721,
+      "sha256": "f1f23212c85fad2a1ac142a32a8c6c05a3e2da0886c6edbf7a2e7e015bc787b2"
+    }
+  ],
+  "phase_wire": {
+    "path": "whole-cold-census/census-phases.jsonl",
+    "bytes": 4551,
+    "sha256": "a63f3d5509ec9f45be71f791b25ed8b5aad6e91519af05c6402efd27ab325e01"
+  },
+  "native_scope": {
+    "children": 1,
+    "native_observer_intervals": 113,
+    "live_RSS_samples": 111,
+    "complete_call_tape_rows": 50,
+    "pre_receipt_prefix_rows": 46,
+    "all_reaped": true,
+    "terminal_caller_peak_bytes": 365903872,
+    "child_overlap_peak_bytes": 365903872,
+    "observer_peak_bytes": 2441216,
+    "CURRENT_additive_bound_bytes": 734248960,
+    "limit_bytes": 536870912,
+    "CURRENT_memory_gate": false
+  },
+  "result_scope": {
+    "complete_original_census_and_phase_diagnostic_observed": true,
+    "normal_all_output_true_exit_postterminal_within_original20": true,
+    "whole_resource_qualification": false,
+    "full52_qualified": false,
+    "W16_late_gate": false,
+    "target_proof": false,
+    "searches": 0
+  },
+  "interpretation": "Timely complete neutral census/phase diagnostic is observed, but current additive external memory certificate fails; overall resource admission remains UNKNOWN. All previous failures remain unchanged. No proposed Owner cutoff or two-epoch formula substituted.",
+  "limitations": [
+    "Reviewer authored older W16 parent controller/checker/verifier/codec, not current arithmetic batch64 serializer/binding pair or ROOT execution. Review is whole saved correspondence, no project/Source/semantic/Q/helper/native replay.",
+    "Original preparation/state/oracle files raw-SHA/length checked only. The24 row data and full witness receipts are saved metadata, not newly reconstructed mathematical domains.",
+    "Native terminal rusage may include descendant peaks; current conservative contract is retained. A failed upper bound does not prove actual simultaneous RSS exceeded512MiB.",
+    "No original uninstrumented speed, phase CPU attribution, full52/proof/production model-fit or stronger admission follows.",
+    "Stale conditional Source-template labels preserved as reporting errata."
+  ],
+  "own_metadata_history": "Initial inline check-writer replaced observer count before an external-wall token and halted on its own missing-literal assertion before writing or replaying checks. Selected writer uses isolated numeric tokens. No subject function/Q/native execution.",
+  "runtime_acceptance": false,
+  "supersedes_additively": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-saved-independent-20261015/findings-v1.json",
+    "sha256": "b8581994171e64a5b46a6d34e9078e29b373bcc89f967ed87afc9b1fb6681a61",
+    "bytes": 21601
+  },
+  "final_ROOT_concordance": {
+    "checks_added": 7,
+    "documents": [
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-disposition-v1.json",
+        "sha256": "6e4276b602a01db469db5dc3eede2ad23059ee93a31aefdc69a4f1095fa994a3",
+        "bytes": 5197
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-output-inventory-v1.json",
+        "sha256": "d3ce1d32d64041080b8cfcdcfc823b7a4f8a96071c47b7f0af5d8ad0f1ab577f",
+        "bytes": 14211
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-phase-intervals-v1.json",
+        "sha256": "d5c48cbc1bb8ee2612284a8592dea200d0937929d976ca20d89ca0b136aed80a",
+        "bytes": 5222
+      },
+      {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-one-observation-comparison-v1.json",
+        "sha256": "aa1859e3ebb42eaa86849aa7fda787f057f3230abbed175ec3931807925cd41f",
+        "bytes": 3321
+      }
+    ],
+    "all_checks_passed": true
+  }
+}

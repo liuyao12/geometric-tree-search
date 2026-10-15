@@ -1,0 +1,84 @@
+{
+  "GCTS_RL_advantage_demonstrated": false,
+  "Q_payload_parses": 0,
+  "after": {
+    "bytes": 5197,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-disposition-v1.json",
+    "sha256": "6e4276b602a01db469db5dc3eede2ad23059ee93a31aefdc69a4f1095fa994a3"
+  },
+  "before": {
+    "bytes": 5216,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-disposition-v1.json",
+    "sha256": "d10e5aa51dec74043f7ecaf38e6b0a20878345045657ba60fcaec46c48eb8590"
+  },
+  "child_lifetime_ns": {
+    "after": 8275934000,
+    "before": 11476690000,
+    "observed_reduction": 3200756000
+  },
+  "current_external_memory_bound_bytes": 734248960,
+  "excluded_metadata": [
+    "joint_began_ns",
+    "joint_deadline_ns",
+    "coordinator_invocation_id",
+    "source_bindings.census_leaf",
+    "same_buffer_execution_census[*].registered_module nonce",
+    "O08_controls[*].message approximate byte offset"
+  ],
+  "external_wall_ms": {
+    "after": 12630,
+    "before": 15832
+  },
+  "full52_qualified": false,
+  "grouped_intervals": [
+    {
+      "after_ns": 1707093000,
+      "before_ns": 1785452000,
+      "group": "PointGraph_constructor",
+      "observed_reduction_ns": 78359000
+    },
+    {
+      "after_ns": 96149000,
+      "before_ns": 83084000,
+      "group": "all_other_measured_phases",
+      "observed_reduction_ns": -13065000
+    },
+    {
+      "after_ns": 2436097000,
+      "before_ns": 5376308000,
+      "group": "repeated_witness_serialization_comparison_hashing",
+      "observed_reduction_ns": 2940211000
+    },
+    {
+      "after_ns": 229934000,
+      "before_ns": 240018000,
+      "group": "semantic_state",
+      "observed_reduction_ns": 10084000
+    },
+    {
+      "after_ns": 3681550000,
+      "before_ns": 3829354000,
+      "group": "whole_preparation_parse",
+      "observed_reduction_ns": 147804000
+    }
+  ],
+  "new_theorems": 0,
+  "next": "The serializer candidate is worth prospective integration after remaining controls. Keep full original data and existing memory rule; separately qualify the terminal-memory repair and ordinary baseline before scientific contribution claims.",
+  "normalized_complete_body_equal": true,
+  "postterminal_elapsed_ns": {
+    "after": 9661170000,
+    "before": 12885100000
+  },
+  "project_Source_functions_executed": 0,
+  "proof_search_runs": 0,
+  "reproducible_speedup_established": false,
+  "resource_accepted": false,
+  "same_O08_view_hashes_labels_error_types_actual_rejections": true,
+  "same_all24_row_domain_bytes_hashes_counts": true,
+  "same_original_inputs_runtime_limits": true,
+  "same_whole_state_and_domain_witnesses": true,
+  "schema": "ROOT-census-batch64-one-observation-comparison-v1",
+  "scope": "One cold diagnostic observation per serializer version with the same full original model/runtime/limits; not a randomized/repeated speedup experiment.",
+  "successful20_stage": false,
+  "timing_limitations": "Paired native elapsed intervals include phase logging/checks and phase-specific I/O/hash/canonicalization. Parent setup, unmeasured gaps and tail are not an exhaustive partition. These are not isolated JSON CPU measurements, matched implementation timings or speedup evidence."
+}

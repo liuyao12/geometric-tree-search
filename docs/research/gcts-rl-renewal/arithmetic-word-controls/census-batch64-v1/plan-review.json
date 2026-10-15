@@ -1,0 +1,98 @@
+{
+  "schema": "Q-batch64-concrete-plan-independent-findings-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "source_only": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "Source_functions_executed": 0,
+  "Q_payload_parses": 0,
+  "native_clock_calls": 0,
+  "runtime_acceptance": false,
+  "scientific_acceptance": false,
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "1b43e33142a1087169ff0de6d71b8753db19e0cb6336af4576d18a83dbd2252c",
+    "bytes": 21605
+  },
+  "authorization": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-batch64-cold-progress-20261015/ROOT-scoped-authorization-v1.json",
+    "sha256": "198eeaac5666e6e6e8a62a800ca503f3ac2a1988eadeab8428233eea0800e73f",
+    "bytes": 5397
+  },
+  "check_count": 11,
+  "checks": [
+    {
+      "name": "exact requested plan and authorization bytes",
+      "passed": true,
+      "detail": "Whole current metadata, no project function/Q parse."
+    },
+    {
+      "name": "exact15 field schema/purpose",
+      "passed": true,
+      "detail": "Only ROOT supplied genuine once-only authorization, serializer-only census purpose."
+    },
+    {
+      "name": "original inputs8/source7/runtime/caps unchanged",
+      "passed": true,
+      "detail": "Whole original model/preparation/state/oracle/finite admission and exact20/55/60/512/90+1; no memory-branch merge."
+    },
+    {
+      "name": "caller/controller/leaf exact current Sources",
+      "passed": true,
+      "detail": "Current93a904/7f1ddd/ca44 selected, no old Source-review relabel."
+    },
+    {
+      "name": "complete Source9/context8/input8/original7 operative maps",
+      "passed": true,
+      "detail": "All named role records compared, not just new raw pins."
+    },
+    {
+      "name": "whole37 raw closure canonical/SHA/length",
+      "passed": true,
+      "detail": "Every full raw file read/hash matched, including large Q files as bytes only; no Q JSON decoded."
+    },
+    {
+      "name": "closure covers all exact actual read roles and external artifacts",
+      "passed": true,
+      "detail": "Current Source/runtime/contracts/reviews and original8+7, existing external1/meter2/canonical paths all included."
+    },
+    {
+      "name": "all four genuine current review ABIs",
+      "passed": true,
+      "detail": "New leaf/caller/controller reviews exact whole maps+contract/scope+author+distinct reviewer; unchanged coordinator6 genuine review retained."
+    },
+    {
+      "name": "external1/meter2 exact current applicability",
+      "passed": true,
+      "detail": "Normal native postprobe before original20, actual terminal native memory plus old additive child/observer gate; no W16late or new cutoff rule."
+    },
+    {
+      "name": "authorization binds exact current scope and comparison parent",
+      "passed": true,
+      "detail": "One fresh whole observation, not a retry of old namespace or successful resource/proof prefix; earlier UNKNOWNs unchanged."
+    },
+    {
+      "name": "canonical fresh actual paths",
+      "passed": true,
+      "detail": "Existing Source-review output is separate; actual inner/output/native/external absent at this check."
+    }
+  ],
+  "raw_closure_count": 37,
+  "changed_top_level_fields_from_parent": [
+    "caller_contract",
+    "caller_source",
+    "invocation_id",
+    "raw_closure",
+    "reviews",
+    "run_directory",
+    "sources"
+  ],
+  "concrete_blockers": [],
+  "dependency_authorship_disclosure": "Reviewer authored unchanged codec/verifier/checker and old W16 controller/lateleaf; did not author this ROOT plan or arithmetic serializer/binding Sources. Current Source reviews are genuine, not actual resource or mathematical replay.",
+  "limitations": [
+    "ROOT alone owns one actual invocation. This static check neither executes the plan nor grants independent science/resource acceptance.",
+    "All normal output/EOF/cleanup/true exit/native postprobe must complete before original20. Failure55 is evidence only; owned60/old additive512/caller90+finish1 unchanged.",
+    "Single paired phase observation is not reproducible speedup, pure serializer CPU attribution, memory fit or proof/search/GCTS/RL benefit. Old UNKNOWN outcomes unchanged."
+  ]
+}

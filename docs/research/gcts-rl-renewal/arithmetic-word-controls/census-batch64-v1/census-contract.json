@@ -1,0 +1,243 @@
+{
+  "API": {
+    "diagnostic_argv12": "Same11 plus distinct freshDiagnosticFD as argument12. New FD must be WO regular/empty/offset0 and different inode from every original input/result. Original11 remains accepted with no diagnostic file/events; it cannot establish phase coverage.",
+    "log_failure": "Telemetry failure revokes normal return; no successful result prefix accepted without true exit0/whole Parent original20/native/caller/resource gates.",
+    "main": "main(arguments)",
+    "original_argv11": [
+      "manifestFD",
+      "manifestSHA",
+      "manifestBytes",
+      "prepFD",
+      "codecFD",
+      "pointFD",
+      "stateFD",
+      "oracleFD",
+      "resultFD",
+      "originalBeginNS",
+      "originalDeadlineNS"
+    ],
+    "phase_clock": "Captured original native Budget clock/ID, strict literal integer timestamp, original deadline pre/post phase and every log write; failure footer only under existing55. No clock reset or other domain.",
+    "response": "Original Q-neutral-full-model-census-response-v1 +Q-neutral-full-model-census-completion-v1, two-lines+EOF, no new fields or stderr telemetry."
+  },
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Q_payload_parses": 0,
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required_flags": {
+      "all_checks_passed": true,
+      "scientific_acceptance": false,
+      "scientific_calls": 0,
+      "source_only": true,
+      "source_review_passed": true
+    },
+    "reviewer_identity_must_differ": true,
+    "scope": "Q-neutral-full-model-census-factor-batch64-Source",
+    "source": {
+      "bytes": 31026,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+    },
+    "source_contract": "this exact frozen raw contract",
+    "sources": {
+      "census_leaf": {
+        "bytes": 31026,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+        "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+      },
+      "codec": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      },
+      "point_graph": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      }
+    }
+  },
+  "Source_functions_executed": 0,
+  "activation_allowed": false,
+  "actual_outdirs": 0,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "binding": {
+    "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+    "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+    "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+    "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+  },
+  "canonical_equivalence_and_retention": {
+    "bytes": 3880,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/canonical-equivalence-and-retention-v1.json",
+    "sha256": "051537bb8d75e953db409d0ecfa6020244cb4816d5b23baef57658990ce39854"
+  },
+  "costs": {
+    "accounting": "Telemetry Source auth/compile/extra FD/setup/all log bytes/serialization/clockcalls/childexit/reap/external observation charged; original meter/conservative native lifetime bounds unchanged. No actual fit or speed claim.",
+    "aggregate_owned_bytes": 536870912,
+    "caller_seconds": 90,
+    "failure_evidence_seconds": 55,
+    "finish_reserve_seconds": 1,
+    "global_success_seconds": 20,
+    "owned_seconds": 60
+  },
+  "full52_qualified": false,
+  "genuine_retained_parent_review": {
+    "bytes": 3459,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-typed-Source-review-v1.json",
+    "sha256": "d678401ead894323ed06d898206bd6bd3209268e2f2ca422bcb8020fbee463d4"
+  },
+  "inherited_checks": "Whole original38376960B prep rawread/SHA/EOF, lossless decode\u2192release raw\u2192one full parse\u2192release text; unchanged PointGraph fixtureFalse/seedempty and complete semanticstate; original11147/16200/all24 rows and factors, whole state/oracle canonical SHA/length/EOF, all24 row hashes, both O08 omitted row23/lastfactor rejects, whole original final recomparisons; original result body/trailer/stderr/exit gates retained.",
+  "inherited_input_bindings": {
+    "initial_oracle": {
+      "bytes": 8295473,
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    "initial_state": {
+      "bytes": 8296118,
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    "preparation": {
+      "bytes": 38376960,
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    }
+  },
+  "measured_selection_basis": {
+    "basis": "ROOT supplied completed actual census1 phase summary. This author raw-pinned but did not parse/replay the log or independently accept its enclosing resources.",
+    "interpretation": "Combined repeated witness/serialization/I/O is the largest reported group; no measured pure JSON CPU bottleneck or speedup attribution. Old additive memory remains unqualified.",
+    "raw_log": {
+      "bytes": 4553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-phases.jsonl",
+      "sha256": "e8e184c6baf5979749b12b3a678c2b795304f3e2282deeab9aa923ad5b913c50"
+    },
+    "reported_seconds": {
+      "PointGraph_constructor": "1.785452",
+      "entire_phase_span": "11.322073",
+      "repeated_witness_row_omission_final_serialization_and_IO_group": "5.376308",
+      "whole_preparation_parse": "3.829354"
+    }
+  },
+  "native_clock_calls": 0,
+  "original_Q_theorem_accepted": false,
+  "original_sources": {
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "payload": {
+      "bytes": 5435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "worker": {
+      "bytes": 37266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    }
+  },
+  "output_compatibility": "Original body/completion schemas and optional diagnostic FD/JSONL schema unchanged. Version/header Source pins necessarily change; canonical witness/view/row bytes must match exactly. Internal chunk boundaries and O08 approximate near-byte diagnostic offsets may differ; no expected count or success supplied.",
+  "parent_contract": {
+    "bytes": 12421,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Source-contract-v1.json",
+    "sha256": "aa25318f3058f2384e78bd00abc4c4257208e899399212587656fb0f44f642d7"
+  },
+  "parent_source": {
+    "bytes": 27175,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Q_neutral_full_model_census_leaf_v3_phases.py",
+    "sha256": "0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7"
+  },
+  "pending": [
+    "genuine distinct current Source review",
+    "Root explicit caller/controller binding integration and current review, separate memory gate preserved",
+    "actual full witness byte/row/O08 equality, original native20/resource/caller/EOF closure and paired cost comparison"
+  ],
+  "performance_improvement_accepted": false,
+  "required_caller_controller_delta": {
+    "metadata": [
+      "new exact controller/caller contracts, current distinct reviews and all role/closure maps",
+      "new leaf review scope Q-neutral-full-model-census-factor-batch64-Source with author arithmetic distinct reviewer; old census3 review remains historical only",
+      "genuine Root scope/plan selects new leaf/wrappers/fresh actual namespace explicitly; current old pair and any separate memory successor reject unselected pins"
+    ],
+    "minimal_operative_sites": [
+      "controller FIXED_SOURCES.census_leaf -> exact leaf4 raw pin",
+      "controller parse_phase_sidecar expected header.version -> exact new leaf4 VERSION",
+      "caller SOURCE_BINDINGS.census_leaf -> exact leaf4 raw pin",
+      "caller CONTROLLER wire -> exact independently reviewed binding successor after its freeze"
+    ],
+    "preserve": [
+      "original inputs8/source7/model epochs",
+      "original FD12/8 descriptors and complete phase sidecar inventory",
+      "global original20 and failure55/owned60/512/caller90+finish1",
+      "any new Owner-only cutoff must keep its separately chosen Source identity/custody and review; do not edit or silently merge it here"
+    ],
+    "status": "NOT IMPLEMENTED OR SELECTED HERE; Root owns integration choice; separate controls memory branch untouched"
+  },
+  "resource_acceptance": false,
+  "review_checklist": [
+    "whole canonical_chunks plus exact parent inverse; every other definition/main/callsite unchanged",
+    "all shapes/scalars/commas/order/boolean/assigned-zero bytes retained; batch fallback no mathematical filter",
+    "64-record+5633-character preallocation bound from exact scalar shape; local cycle tracking/generator cleanup",
+    "unchanged all24 whole oracle/state/row hashes/O08/final rewalk, no byte cache",
+    "original native clock/resource/output/sidecar semantics and new version/pin applicability",
+    "no measured CPU attribution/speedup/peak/fit/admission from Source or one old telemetry group"
+  ],
+  "schema": "Q-neutral-full-model-census-factor-batch64-Source-contract-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 31026,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+    "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+  },
+  "source_delta": {
+    "bytes": 8423,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Source-delta-v1.json",
+    "sha256": "0b538656ff9773d25243fd09b1023239f6a8d335be7b103446f30be72c5e1dd7"
+  },
+  "source_only": true,
+  "sources": {
+    "census_leaf": {
+      "bytes": 31026,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/Q_neutral_full_model_census_leaf_v4_factor_batches.py",
+      "sha256": "ca44ba1ad2845001db4ec28b7f6617975867265ac7ecdc56fcdf5131d743f9d3"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "static_checks": {
+    "bytes": 2124,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-factor-batch64-source-20261015/static-authoring-checks-v1.json",
+    "sha256": "2cf164a203d13ace3062ff1472badd61641155bbe0ee0cdac8c253a4c12c77ad"
+  },
+  "tests": 0,
+  "unchanged_semantics": "All original11147 formula/16200 primitive recipe/24 row domain data, full state and domain canonical witness comparisons, per-row hashes, both O08 omission views+rejections, final full recomparisons, point8d22 and codec d0d922 unchanged. Only bounded encoding of each current factors list changes. No model/serializer-result cache, checker, rank, library, target-route or graph change.",
+  "version": "Q-neutral-full-model-census-leaf-v4-global-clock-factor-batch64"
+}
