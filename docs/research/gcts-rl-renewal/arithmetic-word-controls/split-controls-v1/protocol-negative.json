@@ -1,0 +1,63 @@
+{
+  "schema": "Q-clean-verifier-protocol-controls-adapter-typed-Source-review-v1",
+  "scope": "Q-split-neutral-hard-target-protocol-adapter-Source",
+  "source_only": true,
+  "source_review_passed": false,
+  "all_checks_passed": false,
+  "scientific_calls": 0,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clean-verifier-protocol-controls-adapter-source-20261014/Q_clean_verifier_protocol_controls_adapter_v2.py",
+    "sha256": "4ef3f668f90e094cfcc08074b31c0900e17ed0f15eea9bd2ed6c7f7803db98a7",
+    "bytes": 68916
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clean-verifier-protocol-controls-adapter-source-20261014/Source-contract-v1.json",
+    "sha256": "a964837d3fcc38044638948782cde7cf0b8b5d3bda1417c56c880c75b6ea88cf",
+    "bytes": 16352
+  },
+  "sources": {
+    "adapter": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clean-verifier-protocol-controls-adapter-source-20261014/Q_clean_verifier_protocol_controls_adapter_v2.py",
+      "sha256": "4ef3f668f90e094cfcc08074b31c0900e17ed0f15eea9bd2ed6c7f7803db98a7",
+      "bytes": 68916
+    },
+    "coordinator": {
+      "bytes": 44921,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v2.py",
+      "sha256": "dfb8c4bddb17368aa6553274c48a28c8d42aa7ed5b83d4ce1b880afe816762be"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer": {
+      "bytes": 20219,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    },
+    "verifier": {
+      "bytes": 42086,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clean-verifier-protocol-source-20261014/Q_clean_word_verifier_v3.py",
+      "sha256": "a5cfbe5c72ab617d1c98b1939c4d24aefc0e1c701e36b5fc141dc48bd1ea329b"
+    }
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clean-verifier-protocol-controls-adapter-independent-source-20261014/findings-v1.json",
+    "sha256": "7cfd12e66f08cf3696b383a1ff0ecb7c770553ec155f148a48bda0550fd44ab4",
+    "bytes": 54665
+  },
+  "blocker_ids": [
+    "P15-N1-authority-edit-key",
+    "P15-N2-immediate-postdelegate-validator-authority"
+  ],
+  "mismatches": [],
+  "bounded_scope": "Whole current P15 V2 Source/ABI/raw custody only, exact coordinator V2. Two concrete Source blockers; no actual outcomes. Reviewer-authored producer/bootstrap/launcher dependencies disclosed in findings. No mathematical/resource/fit/admission authority."
+}

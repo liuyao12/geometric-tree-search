@@ -1,0 +1,63 @@
+{
+  "all_checks_passed": true,
+  "attribution": {
+    "independence_claim": "Distinct-author Source/control correspondence review of runner/fixtures, not a fresh independent mathematical or resource audit of reviewer-authored dependencies.",
+    "independent_checker_author": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "/root/arithmetic_induction",
+    "reviewer_prior_authorship": "Earlier arithmetic producer work, current untrusted producer994b, bootstrap7f6a and trusted launcher96b are reviewer-authored dependencies. Reviewer did not author this neutral runner, independent1717 checker or its literal fixture/design packet.",
+    "runner_and_design_author": "/root/hilbert_advice_controls"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "bounded_scope": "Genuine current full Source/delta/fixture correspondence only. K02 repaired andW16 expressly deferred. Actual adapters/cold/full model/resource/fit/controls admission pending; not all52 or theorem authority.",
+  "findings": {
+    "bytes": 39824,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-independent-source-20261014/findings-v2.json",
+    "sha256": "bca8100bd0126adeb132bccf76261215ef876832b3d722e470ae48e48cbfc606"
+  },
+  "inputs": {
+    "complete_fixture_data": {
+      "bytes": 62584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-design-source-20261014/complete-fixtures-design-v2.json",
+      "sha256": "1420cd2c0a56d09e629ca65fe4b7f690570ccb283b1998762c10de1190180575"
+    }
+  },
+  "preserved_negative_review": {
+    "bytes": 3522,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-independent-source-20261014/typed-Source-review-v1.json",
+    "sha256": "241403df5937b24eaa8d48c0f702867a88a0222a0a9e950f7e6422d42fe7b0c0"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "Q-split-neutral-controls-callable-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-split-neutral-controls-callable-Source",
+  "source": {
+    "bytes": 31622,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-source-20261014/Q_split_neutral_controls_runner_v2.py",
+    "sha256": "56293f4a7acb8664e4a4745ed35d96db869f29c8a93327f83aea41decc3e4f71"
+  },
+  "source_contract": {
+    "bytes": 17195,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-source-20261014/Source-contract-v2.json",
+    "sha256": "a0ad630e848c3bfbab9edccc756a79f6e9a88b790353ae83661796b9bb3b7644"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "runner": {
+      "bytes": 31622,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-source-20261014/Q_split_neutral_controls_runner_v2.py",
+      "sha256": "56293f4a7acb8664e4a4745ed35d96db869f29c8a93327f83aea41decc3e4f71"
+    }
+  }
+}

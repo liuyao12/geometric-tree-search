@@ -1,0 +1,39 @@
+{
+  "schema": "Q-split-owned-coordinator-Source-review-v1",
+  "scope": "Q-split-owned-coordinator-Source",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "source_only": true,
+  "source": {
+    "bytes": 53864,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v5.py",
+    "sha256": "1a769203da1050d2ede508edf3f2d40a4620be31d873e75eb4eb84245425785f"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Source-contract-v5.json",
+    "sha256": "3e7c37d1478aaa6494e9b38af0babca8d80d0aba49c333dae624b26ffc83f1c0",
+    "bytes": 12908
+  },
+  "sources": {
+    "coordinator": {
+      "bytes": 53864,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v5.py",
+      "sha256": "1a769203da1050d2ede508edf3f2d40a4620be31d873e75eb4eb84245425785f"
+    }
+  },
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "resource_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-coordinator-boundary-independent-source-20261014/findings-v2.json",
+    "sha256": "0e5101093deb3c6a3e403117831e838808900890b8ce48f3ffcdfb559eead40d",
+    "bytes": 43211
+  },
+  "concrete_blocker_ids": [],
+  "mismatches": [],
+  "check_count": 60,
+  "dependency_authorship_disclosed": true,
+  "conditional_scope": "Current V5 whole/delta Source pass only. Five edits repair current cancellation blocker, V3 evidence/clock repairs retained. No Source/functions/signals/nativeclock/Q/sweeps/tests/plans/actuals or resource/proof/fit admission. Cold/current binding and actual gates remain pending."
+}

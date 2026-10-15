@@ -1,0 +1,41 @@
+{
+  "schema": "Q-split-owned-coordinator-Source-review-v1",
+  "scope": "Q-split-owned-coordinator-Source",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "source_only": true,
+  "source": {
+    "bytes": 53702,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v4.py",
+    "sha256": "a2d57c8fe2e97de3fabce479e0fe9ba34c782c5e7ef50c43cecf55dde0595354"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Source-contract-v4.json",
+    "sha256": "e9b1ace106a5267b67a7553b9f69d87067e131bc77f099a665bf2224d764b351",
+    "bytes": 12969
+  },
+  "sources": {
+    "coordinator": {
+      "bytes": 53702,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v4.py",
+      "sha256": "a2d57c8fe2e97de3fabce479e0fe9ba34c782c5e7ef50c43cecf55dde0595354"
+    }
+  },
+  "source_review_passed": false,
+  "all_checks_passed": false,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "resource_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-coordinator-boundary-independent-source-20261014/findings-v1.json",
+    "sha256": "e4ed9dcdcd89c4dd82ac415e2d6b7821a1547d55544779dd393b0dcf0b1e27d2",
+    "bytes": 45860
+  },
+  "concrete_blocker_ids": [
+    "Q-V4-FINAL-CANCELLATION-1"
+  ],
+  "mismatches": [],
+  "check_count": 68,
+  "dependency_authorship_disclosed": true,
+  "conditional_scope": "V3 failure/clock blockers Source-repaired; current V4 remains negative for natural postpending cancellation. No executed signal/mutation/functions/clock/Q/fit/activation."
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "Q-split-owned-coordinator-Source-review-v1",
+  "scope": "Q-split-owned-coordinator-Source",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v3.py",
+    "sha256": "b1feca165ac2ecf726a2136b08f16a16bd885a16339885b3b79b92c59aad06e7",
+    "bytes": 51811
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Source-contract-v3.json",
+    "sha256": "27515201127138f7b60f374ef95f1097fde41220711f8a7abe2d5dfa440e9278",
+    "bytes": 12332
+  },
+  "sources": {
+    "coordinator": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v3.py",
+      "sha256": "b1feca165ac2ecf726a2136b08f16a16bd885a16339885b3b79b92c59aad06e7",
+      "bytes": 51811
+    }
+  },
+  "source_review_passed": false,
+  "all_checks_passed": false,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "resource_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-lifetime-coordinator-diagnosis-review-source-20261014/findings-v1.json",
+    "sha256": "3b92cf49383ce4174dab064745a17edefe5753b837ac68189140141790e4ed93",
+    "bytes": 31360
+  },
+  "check_count": 49,
+  "concrete_blocker_ids": [
+    "Q-LIFETIME-FAILURE-EVIDENCE-1",
+    "Q-LIFETIME-FINAL-CLOCK-1"
+  ],
+  "dependency_authorship_disclosed": true,
+  "scope_is_coordinator_not_dependency_mathematical_admission": true,
+  "whole_Source_read_and_full_inverse": true,
+  "conditional_scope": "Negative current coordinatorV3 Source review only; no functions/native clocks/sweep/Q parse/tests/activation. Preserve RootV3 and genuine old V2 review history. Resource math is conditionally justified but failure publication and final timing need additive repair."
+}
