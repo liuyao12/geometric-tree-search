@@ -1,0 +1,248 @@
+{
+  "GCTS_RL_advantage_demonstrated": false,
+  "Q_payload_parses_by_Root_reconciliation": 0,
+  "ROOT_resource_accepted": false,
+  "W16_qualified": false,
+  "absolute_events": {
+    "census_launch_ns": 424187370724000,
+    "census_terminal_ns": 424194240590000,
+    "first_verifier_launch_ns": 424180361326000,
+    "last_verifier_terminal_ns": 424185231095000,
+    "post_terminal_observation_ns": 424194602961000
+  },
+  "census_internal_phase_timing_available": false,
+  "census_response_bytes": 0,
+  "census_stderr": "NEUTRAL_CENSUS_FAILURE: TimeoutError: coordinator joint20 unfinished\n",
+  "complete_suite_result": false,
+  "current_external_terminal_conservative_bound_bytes": 751026176,
+  "external_caller_with_finish_reserve_ms": 25539,
+  "external_elapsed_ms": 24539,
+  "external_observations": {
+    "bytes": 5676,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v3-external-observations.json",
+    "sha256": "cc6bbededd2090b9b6b972b1b3c8cbb3f6e3fc8351b7cab09a509b1682eb994b"
+  },
+  "full_controls_qualified": false,
+  "independent_child_lifetime_overlap_peak_bytes": 374259712,
+  "independent_native_observer_peak_bytes": 2506752,
+  "internal_self_based_postwrite_bound_bytes": 408092672,
+  "invocation_id": "full52_20261015_v3",
+  "memory_interpretation": "The larger bound is conservative and may double count descendants. Exceeding an upper-bound allowance does not prove real simultaneous RSS exceeded512MiB; no kernel inclusion explanation is inferred here. Do not replace true terminal caller record with an earlier smaller self sample.",
+  "native_RSS_samples": 138,
+  "native_children_all_reaped": true,
+  "native_known_children": 16,
+  "native_observer_intervals": 140,
+  "native_observers_all_reaped": true,
+  "native_terminal_meter": {
+    "bytes": 1727,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v3.json",
+    "sha256": "216732a7e4a6508dcbb9409c9d0ba93bc273cbd63d4b05ab83541fb6fb129620"
+  },
+  "new_theorems": 0,
+  "next": "Diagnose same-model census/initialization and current terminal memory certificate; separate reviewed W16 early caller; no budget increase, target witness or model trimming.",
+  "no_accepted_prefix": true,
+  "no_leftovers_or_cleanup_errors": true,
+  "original_D": 424194116299000,
+  "original_G": 424174116299000,
+  "original_limits_model_and_checker_unchanged": true,
+  "original_model_fit_accepted": false,
+  "owned_ledger_gzip": {
+    "bytes": 6964,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/owned-ledger.json.gz",
+    "sha256": "c66376afc377ec39e905803f397edeaeae43a90e3157971e51515da6bd412ce9"
+  },
+  "post_terminal_elapsed_ns": 20486662000,
+  "proof_search_invocations": 0,
+  "protocol_observations": [
+    {
+      "case": "W01-whole-typed-rejection-baseline",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 19790,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W01/complete-surface-observation.json",
+        "sha256": "e01ba84cb05ac96009c9942464beea0c2e6ab5949c94dc6140eb9c2ffecd087f"
+      }
+    },
+    {
+      "case": "W02-duplicate-top-key",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12769,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W02/complete-surface-observation.json",
+        "sha256": "f905872806d28c98e4b6bf79b0f1f1939fc29d91edd11cbddabd3e08f5a0ebb7"
+      }
+    },
+    {
+      "case": "W03-truncated-EOF",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12755,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W03/complete-surface-observation.json",
+        "sha256": "3ad23c40f5c08c2ecc5b773d76f91bcd07b2238c4c6d41d4f96363525cd01edc"
+      }
+    },
+    {
+      "case": "W04-second-document",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12791,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W04/complete-surface-observation.json",
+        "sha256": "1c8344366df618d9b6414914beed9ac9eb5ef27f35e8c1a93addbfd4310b05ee"
+      }
+    },
+    {
+      "case": "W05-JSON-whitespace",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 19770,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W05/complete-surface-observation.json",
+        "sha256": "441e723b56196504291d13a3532731b5e06fcf84d14f1261366aa851a099c713"
+      }
+    },
+    {
+      "case": "W06-nonJSON-whitespace",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12798,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W06/complete-surface-observation.json",
+        "sha256": "b826118c5c5bc1ef36879877d32f422fb573f0e92314d321e6101c3ed95cd139"
+      }
+    },
+    {
+      "case": "W07-Boolean-physical-row",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12746,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W07/complete-surface-observation.json",
+        "sha256": "643cb896679bca9a5034f1320aec23591c93f1e95256c6c1cd603fffdfe26ced"
+      }
+    },
+    {
+      "case": "W08-float-submission",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12765,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W08/complete-surface-observation.json",
+        "sha256": "218f963ebf096a1379913665e03cbfdaf211da77e8a44752252a8520d37ae5df"
+      }
+    },
+    {
+      "case": "W09-stale-epoch",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12844,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W09/complete-surface-observation.json",
+        "sha256": "b47652a1f4228231c52002f90438ce389b4d521bc3ff8aae7b774b307a52bca3"
+      }
+    },
+    {
+      "case": "W10-authority-wrong-Gamma",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 13012,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W10/complete-surface-observation.json",
+        "sha256": "314fd7b6733580983aa31e85bdd6059536cf3ae9a1018f7aee4ce0e3980e9ffb"
+      }
+    },
+    {
+      "case": "W11-forged-checked-or-path",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12880,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W11/complete-surface-observation.json",
+        "sha256": "dd29421c58343bce4d3fd88d3b00121d1a162a3d3725f4f11ed488fe1209d1fb"
+      }
+    },
+    {
+      "case": "W12-second-submission",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12744,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W12/complete-surface-observation.json",
+        "sha256": "821b34a23e81afc1b76b57d2149dfa5ee36811a05696e5246e3ef6c43454a35c"
+      }
+    },
+    {
+      "case": "W13-authority-Boolean-reserve",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12905,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W13/complete-surface-observation.json",
+        "sha256": "0d44f3a53e00c06dfa470194d6164364549b816eef977a899493630e0e6269f0"
+      }
+    },
+    {
+      "case": "W14-pin-mismatch",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 12775,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W14/complete-surface-observation.json",
+        "sha256": "f79cdf0844c418f3bdfc18f3d3072941e0bb02fafc28ac85f417ba2d67947b5e"
+      }
+    },
+    {
+      "case": "W15-response-incomplete",
+      "completed": true,
+      "observed_predicate": true,
+      "surface_observation": {
+        "bytes": 24723,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W15/complete-surface-observation.json",
+        "sha256": "e159617b840372baf30e4c690aa189def2b793dff1f8a19bf30caeb0a8ada72e"
+      }
+    }
+  ],
+  "protocol_surface_count": 15,
+  "raw_child_peak_sum_diagnostic_only": 669253632,
+  "reason": "Original20 success interval exhausted during whole original-model census after protocol controls; complete controls result absent. Current external terminal-caller conservative memory certificate also does not fit512MiB.",
+  "relative_event_ns": {
+    "census_launch_ns": 13254425000,
+    "census_terminal_ns": 20124291000,
+    "first_verifier_launch_ns": 6245027000,
+    "last_verifier_terminal_ns": 11114796000,
+    "post_terminal_observation_ns": 20486662000
+  },
+  "request": {
+    "bytes": 27944,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v3.json",
+    "sha256": "5ab853b16d6716ed003e3c8065c3a2cb88984ee89940292bcf01e5e4c7383895"
+  },
+  "schema": "ROOT-full52-third-cold-controls-disposition-v1",
+  "status": "UNKNOWN",
+  "terminal_caller_kernel_peak_bytes": 374259712,
+  "terminal_memory_bound_within512MiB": false,
+  "unsaved_kernel_point_owned_rows_not_reconstructed": true,
+  "whole_output_inventory": {
+    "bytes": 41658,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-third-attempt-output-inventory-v1.json",
+    "sha256": "e4fe0560ed4e4c292d2a0bd040bd7cd432d15a3d846148e66b9f49b7b9051fd2"
+  },
+  "worker_postwrite": {
+    "bytes": 3067,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-postwrite.json",
+    "sha256": "e98c7e52bf007b495cb638b99afc5d4c2d141b2834f0012a88bba2baa5de4060"
+  },
+  "worker_provisional": {
+    "bytes": 17995,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-provisional.json",
+    "sha256": "d6d4f8c66e69a3fa8603c7037bdb00cedc616d136144b0faa1c777fd8e29ed2f"
+  },
+  "worker_revocation": {
+    "bytes": 3039,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-revocation.json",
+    "sha256": "6421e547fc98077ab878f1791a648c28bd6f41a752757755cb6233aefbfe836b"
+  }
+}

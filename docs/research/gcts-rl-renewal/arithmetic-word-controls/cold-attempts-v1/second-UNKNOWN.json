@@ -1,0 +1,80 @@
+{
+  "Q_payload_parses_by_Root_reconciliation": 0,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "aggregate_memory_complete": false,
+  "caller_terminal_peak_bytes": 29097984,
+  "case_count": 52,
+  "complete_control_records": {
+    "bytes": 30600,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/complete-controls-result.json",
+    "sha256": "082891c834d4bc42a1edea795f27cb8d120506f61934f68569a78acd1102ff40"
+  },
+  "correction_to_preliminary_hypothesis": "The unoptimized complete raw closure did finish in this attempt; no evidence-driven reason to change its guard cadence.",
+  "external": {
+    "bytes": 5095,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v2-external-observations.json",
+    "sha256": "cb38a24c4c80c9fdda60aa0c32b4dbcc935fd3f501ce02dea5b389193b33cf09"
+  },
+  "external_elapsed_ms": 7699,
+  "full_controls_qualified": false,
+  "invocation_id": "full52_20261015_v2",
+  "known_children_native_reaped": true,
+  "native_observer_denied_intervals": 3,
+  "native_terminal_meter": {
+    "bytes": 1720,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v2.json",
+    "sha256": "419b45d4c72737d57bec91d3ff1b979a5780a077e908df4a6110231da4c30dcc"
+  },
+  "next": "Fresh original-model controls under native process-observer access, with identical mathematical model/caps/guards; preserve both actual failures.",
+  "original_D": 423988693918000,
+  "original_G": 423968693918000,
+  "original_Q_theorem_accepted": false,
+  "original_limits_unchanged": true,
+  "owned_ledger_gzip": {
+    "bytes": 509,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/owned-ledger.json.gz",
+    "sha256": "ec7218d418110a8132b766cbfe365d7c1a281822056153fbb1f464b6eea960ab"
+  },
+  "partial_results_not_accepted_prefix": true,
+  "post_terminal_before_original20": true,
+  "post_terminal_elapsed_ns": 7563065000,
+  "post_terminal_ns": 423976256983000,
+  "proof_search_invocations": 0,
+  "reason": "Native process accounting denied by default sandbox at /bin/ps; W01 failed and remaining30 dispatched controls are unfinished. No full-model control/resource admission.",
+  "recorded_status_counts": {
+    "UNKNOWN_unfinished": 30,
+    "fail": 1,
+    "not_exercised": 1,
+    "pass_expected_accept": 4,
+    "pass_expected_reject": 16
+  },
+  "request": {
+    "bytes": 27943,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v2.json",
+    "sha256": "08500148a5e4b21c22f3282618a7c03e08b551e948d640d7aa6a4303a8e17a8a"
+  },
+  "schema": "ROOT-full52-second-cold-controls-disposition-v1",
+  "status": "UNKNOWN",
+  "whole_output_inventory": {
+    "bytes": 13947,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-second-attempt-output-inventory-v1.json",
+    "sha256": "ed7e5cf55e36d32cd8cb45f8ff0c0147e7caf9200f8cf07730a376924221ebd3"
+  },
+  "whole_process_tree_ownership_confirmed": false,
+  "worker_postwrite": {
+    "bytes": 786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/worker-postwrite.json",
+    "sha256": "bdd0c868e28481d8e3408d894742300684eb1bfe4d2ed4b8997cd2dddc5a4433"
+  },
+  "worker_provisional": {
+    "bytes": 6321,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/worker-provisional.json",
+    "sha256": "0306ae91292661bf41898f9a7fb25151d09788ef943c3ec5f9019d169d6051b3"
+  },
+  "worker_revocation": {
+    "bytes": 758,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/worker-revocation.json",
+    "sha256": "bb95319bb9b0a938fec0b91beffee9634c435806ddd409a4ccea2e7c6bc2cbeb"
+  }
+}

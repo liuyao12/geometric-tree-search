@@ -1,0 +1,76 @@
+{
+  "schema": "ROOT-Q-full52-actual-tool-observations-v1",
+  "launcher_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v5.py",
+    "sha256": "3ddfadf1120dbc9ca03b0f718a4956d0cf93d10dabca5dd981122a3761d2bcf3",
+    "bytes": 9204
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "request": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v1.json",
+    "sha256": "918eeaaf5c81d0a8848ecf4b015aad3589184201f358c6bf80fd2d60b8ed90a2",
+    "bytes": 25653
+  },
+  "external_terminal_meter": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+    "bytes": 6734
+  },
+  "external_terminal_meter_output": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v1.json",
+  "terminal_meter_parse_and_raw_EOF_authentication_pending": true,
+  "started_ms": 1792083637786,
+  "terminal_observed_ms": 1792083638002,
+  "completed_observation_ms": 1792083638084,
+  "elapsed_ms": 298,
+  "finish_reserve_ms": 1000,
+  "actual_terminal_observed": true,
+  "actual_exit_code": 2,
+  "unfinished_session_id": null,
+  "post_terminal_native_probe_complete": true,
+  "unfinished_probe_session_id": null,
+  "post_terminal_native_output": "{\"CLOCK_DOMAIN\":\"time.clock_gettime_ns(time.CLOCK_MONOTONIC)\",\"ROOT_resource_accepted\":false,\"clock_id\":6,\"observed_ns\":423446036675000,\"schema\":\"ROOT-Q-post-terminal-native-observation-v1\"}\n",
+  "post_terminal_native_integer_parse_and_original_deadline_gate_pending": true,
+  "wall_clock_brackets_valid": true,
+  "external_owned60_candidate": true,
+  "external_caller90_with_finish1_candidate": true,
+  "observations": [
+    {
+      "kind": "exec_command",
+      "observed_ms": 1792083638002,
+      "result": {
+        "chunk_id": "8f92fa",
+        "wall_time_seconds": 0.058866917,
+        "exit_code": 2,
+        "original_token_count": 15,
+        "output": "ValueError: stdlib only; no filesystem project/pyc import\n"
+      }
+    },
+    {
+      "kind": "caller_terminal_boundary",
+      "observed_ms": 1792083638002
+    },
+    {
+      "kind": "post_terminal_native_exec",
+      "observed_ms": 1792083638084,
+      "result": {
+        "chunk_id": "904b4c",
+        "wall_time_seconds": 0.000006958,
+        "exit_code": 0,
+        "original_token_count": 48,
+        "output": "{\"CLOCK_DOMAIN\":\"time.clock_gettime_ns(time.CLOCK_MONOTONIC)\",\"ROOT_resource_accepted\":false,\"clock_id\":6,\"observed_ns\":423446036675000,\"schema\":\"ROOT-Q-post-terminal-native-observation-v1\"}\n"
+      }
+    }
+  ],
+  "scope": "External Date wall includes actual tool startup, interpreter/caller Source compilation/time import, true caller exit, native meter printing and post-terminal pinned-Python observation. Native original20 requires caller process exit before genuine post-terminal global observed_ns < original deadline, plus complete output/raw/Source gates. Native meter full EOF yields terminal launcher maxRSS; combine conservatively with complete Owner native child-lifetime overlap maximum and serialized observer maximum. Worker runs inside launcher, not a second worker PID. Meter/probe observer memory excluded like tool executor; all wall overhead charged. Root acceptance remains false until separate whole saved reconciliation.",
+  "ROOT_resource_accepted": false,
+  "ROOT_primary_accepted": false,
+  "full52_qualified": false,
+  "original_Q_theorem_accepted": false,
+  "W16_qualified": false,
+  "scope_addendum": "TOP __main__ existing launcher5 receives sole planpath and captures original G once. No private compile/spoof/reset. Root must recover exact G/D from saved worker/ledger and require post-terminal native observation < D; native meter provides terminal launcher RSS. Full52 retains51 dispatched andW16 deferred, no fullarchitecture claim.",
+  "actual_invocation_only_if_ROOT_runs_later": true
+}

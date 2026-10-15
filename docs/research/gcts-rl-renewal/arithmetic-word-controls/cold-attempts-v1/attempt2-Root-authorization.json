@@ -1,0 +1,57 @@
+{
+  "all_acceptance_false_pending_complete_saved_evidence": true,
+  "author_identity": "/root",
+  "authorized_invocations": 1,
+  "caps": {
+    "aggregate_bytes": 536870912,
+    "caller_seconds": 90,
+    "failure_evidence_seconds": 55,
+    "finish_reserve_seconds": 1,
+    "joint_success_seconds": 20,
+    "owned_seconds": 60
+  },
+  "current_Source_review": {
+    "bytes": 4376,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-worker6-launcher6-JS2-Source-findings-v1.json",
+    "sha256": "c7a4f1b1e67e380e991f44213bbb5e36ce9a651f2847042bd94421519e67d19c"
+  },
+  "descriptive_erratum": "JS2 retains previous scope_addendum prose naming launcher5; exact executing launcher_source capsule and actual native argv are launcher6. Only reporting label stale.",
+  "external_JS": {
+    "bytes": 7182,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v2.js",
+    "sha256": "40612fb69904a5149895b073a94b7f98f76e60d8efdadab9d2983f511415cbe5"
+  },
+  "invocation_id": "full52_20261015_v2",
+  "launcher": {
+    "bytes": 9204,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v6.py",
+    "sha256": "7e4c8414b50a066a16d640ed66da776b43fa5e912fd4af3af87d5d5a7d93b0db"
+  },
+  "metadata_construction": {
+    "bytes": 1903,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-request2-construction-v1.json",
+    "sha256": "707e75a67e53ce29ccb6d4ceac7fe6fd3c6df18fe8876f001463c05827cc804c"
+  },
+  "preregistration": {
+    "bytes": 8491,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v2.json",
+    "sha256": "e391316eff31e8d4c89333af31c8c9125f031bc3b006c46f99f0439b40182a02"
+  },
+  "request": {
+    "bytes": 27943,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v2.json",
+    "sha256": "08500148a5e4b21c22f3282618a7c03e08b551e948d640d7aa6a4303a8e17a8a"
+  },
+  "retained_first_negative": {
+    "bytes": 1482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-first-attempt-UNKNOWN-v1.json",
+    "sha256": "26c8341d059cafb73772dda6dbbe3e22a22bcdece0fbce2fe545a0f6d46dbcf1"
+  },
+  "schema": "ROOT-full52-once-only-actual-authorization-v2",
+  "scope": "Exact original model neutral51 controls+W16 deferred only. ROOT independently reviewed exact itertools standard-library loader repair and current own pins; all original fixed maps/caps/guards/semantics unchanged. Direct stdlib metadata construction, no generic builder re-execution. No original target proof search or W16. All timing/memory/output gates retain original authority and every failure remains UNKNOWN.",
+  "worker": {
+    "bytes": 75506,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v6.py",
+    "sha256": "adcd91541c2ab99f3b63ed7343b961d4369f469a296af96ca159c05390b31696"
+  }
+}

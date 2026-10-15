@@ -1,0 +1,54 @@
+{
+  "all_checks_passed": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 32,
+  "concrete_blockers": [
+    {
+      "effect": "Decoded named small metadata authority is not coupled to the exact bytes authenticated by the supplied raw pin.",
+      "end_line": 220,
+      "file": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/build_ROOT_full52_metadata_v1.py",
+      "id": "FULL52-METADATA-SAME-BUFFER-1",
+      "minimal_repair": "Preserve V1. Read one bounded raw buffer in small(), verify actual len/hash against record immediately before parsing exactly that buffer; retain duplicate/float rejection, maps/caps/no model execution.",
+      "start_line": 217
+    }
+  ],
+  "findings": {
+    "bytes": 28575,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/integration-findings-v1.json",
+    "sha256": "b5e0c8abcdc2000ba73e1f32d603ced86b963935b96446a8734009c2d9f8453d"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "Q-full52-metadata-native-meter-integration-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-full52-metadata-native-meter-integration-Source",
+  "source": {
+    "bytes": 24844,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/build_ROOT_full52_metadata_v1.py",
+    "sha256": "a09af472755cc574156ff529a1c41684570f0419b5f664284e213a134feacf37"
+  },
+  "source_contract": {
+    "bytes": 16228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Source-contract-v1.json",
+    "sha256": "03f79824eed3f76ccfefc7c5695e0e7821918950badb252eb0d280f84cee713c"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "external_accounting": {
+      "bytes": 7182,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v1.js",
+      "sha256": "61da0d7361b37040a5599ede8a542d76130b90b5ec1a845a848bc83eef771a6e"
+    },
+    "metadata_builder": {
+      "bytes": 24844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/build_ROOT_full52_metadata_v1.py",
+      "sha256": "a09af472755cc574156ff529a1c41684570f0419b5f664284e213a134feacf37"
+    },
+    "native_meter": {
+      "bytes": 6734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    }
+  }
+}

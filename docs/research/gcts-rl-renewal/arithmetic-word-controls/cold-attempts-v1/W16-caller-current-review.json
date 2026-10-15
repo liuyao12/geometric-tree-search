@@ -1,0 +1,46 @@
+{
+  "activation_permission_status": "PENDING: genuine coordinator Owner.table requires process-accounting /bin/ps access. Frozen JS1 initial exec retains default sandbox; no elevated execution authorization or actual runtime applicability is inferred. ROOT must explicitly select and separately Source-review any initial-exec permission adaptation before actual W16 activation.",
+  "all_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "findings": {
+    "bytes": 15251,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-findings-v2.json",
+    "sha256": "399165ac2e1fe104fa7b49534da521a387c12cca7981e9f2a99e28a718a4fd54"
+  },
+  "remaining": [
+    "Root-selected separately Source-reviewed initial exec permission adaptation for /bin/ps process-accounting; JS1 default sandbox is not current runtime applicability",
+    "Root exact current W16-only plan/raw closure/canonical absent run directory and current genuine reviews",
+    "actual full original census/readiness beforeG+20, actual same held-live verifier wait rejection, cleanup/reap/evidence beforeG+55",
+    "whole native terminal/child weighted lifetime memory512/owned60/caller90+finish1 costs; no successful20/full52/proof/resource qualification"
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_applicability": false,
+  "schema": "Q-W16-trusted-early-cold-caller-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-W16-trusted-early-cold-caller-Source",
+  "source": {
+    "bytes": 36217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py",
+    "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790"
+  },
+  "source_contract": {
+    "bytes": 22311,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v2.json",
+    "sha256": "0342a01c59719cb574bf54d8d83c3fcac5e8d5d5b86bfac852607ffd67837a64"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "caller": {
+      "bytes": 36217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py",
+      "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790"
+    },
+    "external_accounting": {
+      "bytes": 6925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v1.js",
+      "sha256": "e9480f0a747adffee5e33961182229495305dbbab5d8da1b795d42f789eb64c7"
+    }
+  }
+}

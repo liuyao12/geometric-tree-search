@@ -1,0 +1,34 @@
+{
+  "all_acceptance_false_pending_whole_saved_reconciliation": true,
+  "all_raw_closure_whole_pins_match": true,
+  "author_identity": "/root",
+  "authorized_invocations": 1,
+  "closure_count": 50,
+  "current_Source_review": {
+    "bytes": 2223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-worker7-launcher7-JS3-Source-findings-v1.json",
+    "sha256": "07f6f14cb2caa9f6c8d5adff1450bc520f1399c3c83752e931e868d38046376b"
+  },
+  "invocation_id": "full52_20261015_v3",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "output_child_fresh": true,
+  "preregistration": {
+    "bytes": 8621,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v3.json",
+    "sha256": "77f3f634ad3593eb3a67cd84b666de3857f2129de2218564d7de99dc7fe0d3cf"
+  },
+  "request": {
+    "bytes": 27944,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v3.json",
+    "sha256": "5ab853b16d6716ed003e3c8065c3a2cb88984ee89940292bcf01e5e4c7383895"
+  },
+  "schema": "ROOT-full52-once-only-actual-authorization-v3",
+  "scope": "Identical original model/caps/Source guards and neutral51+W16deferred only; genuine TOP launcher7 original G, exact native observer permission explicit. Preserve prior2 failed actuals; no continuation/reused prefix or model shrink. No original-target search, W16 call or mathematical acceptance. Root grants no future scope."
+}

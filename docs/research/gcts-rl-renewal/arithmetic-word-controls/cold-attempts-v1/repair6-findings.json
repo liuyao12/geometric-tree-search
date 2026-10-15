@@ -1,0 +1,146 @@
+{
+  "all_checks_passed": true,
+  "all_fixed_maps_caps_output_unchanged": true,
+  "author_identity": "/root",
+  "common_contract": {
+    "bytes": 28250,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/worker-launcher-Source-contract-v3.json",
+    "sha256": "eda6132e8840a4ad3e5ee4b89d347ceedfefbbbf6804162d993ba937a04aabd6"
+  },
+  "direct_import_census": [
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "gzip",
+        "hashlib",
+        "json",
+        "math",
+        "os",
+        "pathlib",
+        "resource",
+        "signal",
+        "stat",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "time"
+      ],
+      "role": "coordinator"
+    },
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "copy",
+        "hashlib",
+        "json",
+        "math",
+        "resource",
+        "time",
+        "types"
+      ],
+      "role": "runner"
+    },
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "hashlib",
+        "itertools",
+        "json",
+        "math",
+        "pathlib",
+        "time",
+        "types"
+      ],
+      "role": "independent_checker"
+    },
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "__future__",
+        "copy",
+        "dataclasses",
+        "gzip",
+        "hashlib",
+        "json",
+        "pathlib",
+        "time",
+        "typing"
+      ],
+      "role": "point_graph"
+    },
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "copy",
+        "hashlib",
+        "os",
+        "pathlib",
+        "sys",
+        "time",
+        "types"
+      ],
+      "role": "protocol_adapter"
+    },
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "copy",
+        "hashlib",
+        "json",
+        "resource",
+        "sys",
+        "time",
+        "types"
+      ],
+      "role": "point_adapter"
+    },
+    {
+      "all_allowed": true,
+      "direct_stdlib_roots": [
+        "copy",
+        "hashlib",
+        "json",
+        "os",
+        "pathlib",
+        "resource",
+        "signal",
+        "time",
+        "types"
+      ],
+      "role": "owned_adapter"
+    }
+  ],
+  "exact_external_JS_byte_delta": "launcher6 capsule only",
+  "exact_launcher_byte_delta": "VERSION plus worker6 capsule only",
+  "exact_worker_byte_delta": "VERSION plus itertools admission only",
+  "external_JS": {
+    "bytes": 7182,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v2.js",
+    "sha256": "40612fb69904a5149895b073a94b7f98f76e60d8efdadab9d2983f511415cbe5"
+  },
+  "first_actual_negative": {
+    "bytes": 1482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-first-attempt-UNKNOWN-v1.json",
+    "sha256": "26c8341d059cafb73772dda6dbbe3e22a22bcdece0fbce2fe545a0f6d46dbcf1"
+  },
+  "launcher": {
+    "bytes": 9204,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v6.py",
+    "sha256": "7e4c8414b50a066a16d640ed66da776b43fa5e912fd4af3af87d5d5a7d93b0db"
+  },
+  "original_checker_unchanged": {
+    "bytes": 46514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+    "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+  },
+  "schema": "ROOT-worker6-launcher6-externalJS2-independent-delta-Source-findings-v1",
+  "scientific_calls": 0,
+  "scope": "Reuse genuine current worker5/launcher5 distinct base review and exact byte equality outside the described repair. This Source pass does not qualify runtime, mathematical search, native resources or full controls.",
+  "source_functions_executed": 0,
+  "source_only": true,
+  "worker": {
+    "bytes": 75506,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v6.py",
+    "sha256": "adcd91541c2ab99f3b63ed7343b961d4369f469a296af96ca159c05390b31696"
+  }
+}

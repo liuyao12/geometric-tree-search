@@ -1,0 +1,135 @@
+{
+  "ROOT_resource_accepted": false,
+  "accepted_prefix": false,
+  "attempt_summary": [
+    {
+      "accepted_prefix": false,
+      "attempt": 1,
+      "caller_kernel_elapsed_ns": 120960000,
+      "caller_kernel_peak_bytes": 22036480,
+      "caller_pid": 94158,
+      "external": {
+        "bytes": 4492,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v1-external-observations.json",
+        "sha256": "c4ba1602c0219096f5bb6c7331d915a346c40247e07f2599487246a69a4e77aa"
+      },
+      "external_elapsed_ms": 298,
+      "finish_reserve_ms": 1000,
+      "full_suite_qualified": false,
+      "meter": {
+        "bytes": 1716,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v1.json",
+        "sha256": "19e95ea05e4bc8cb06664bbb9acf5780b43e3d9590bebf0c09ac07c96af34f36"
+      },
+      "original20_qualified": false,
+      "original_D": null,
+      "original_G": null,
+      "output_directory_absent_at_attempt": true,
+      "reason": "loader omitted itertools; before runtime output/Q/control calls",
+      "request": {
+        "bytes": 25653,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v1.json",
+        "sha256": "918eeaaf5c81d0a8848ecf4b015aad3589184201f358c6bf80fd2d60b8ed90a2"
+      },
+      "status": "UNKNOWN"
+    },
+    {
+      "accepted_prefix": false,
+      "attempt": 2,
+      "caller_kernel_elapsed_ns": 7518907000,
+      "caller_kernel_peak_bytes": 29097984,
+      "caller_pid": 96833,
+      "child_count": 1,
+      "child_weighted_peak_bytes": 11616256,
+      "external": {
+        "bytes": 5095,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v2-external-observations.json",
+        "sha256": "cb38a24c4c80c9fdda60aa0c32b4dbcc935fd3f501ce02dea5b389193b33cf09"
+      },
+      "external_elapsed_ms": 7699,
+      "finish_reserve_ms": 1000,
+      "full_suite_qualified": false,
+      "internal_postwrite_bound_bytes": 40714240,
+      "memory_complete": false,
+      "meter": {
+        "bytes": 1720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v2.json",
+        "sha256": "419b45d4c72737d57bec91d3ff1b979a5780a077e908df4a6110231da4c30dcc"
+      },
+      "observer_interval_count": 3,
+      "original_D": 423988693918000,
+      "original_G": 423968693918000,
+      "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1",
+      "postterminal_elapsed_ns": 7563065000,
+      "reason": "sandbox /bin/ps EPERM; incomplete ownership",
+      "request": {
+        "bytes": 27943,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v2.json",
+        "sha256": "08500148a5e4b21c22f3282618a7c03e08b551e948d640d7aa6a4303a8e17a8a"
+      },
+      "sample_count": 0,
+      "saved_row_census": {
+        "UNKNOWN_unfinished": 30,
+        "fail": 1,
+        "not_exercised": 1,
+        "pass_expected_accept": 4,
+        "pass_expected_reject": 16
+      },
+      "status": "UNKNOWN"
+    },
+    {
+      "accepted_prefix": false,
+      "attempt": 3,
+      "caller_kernel_elapsed_ns": 20438836000,
+      "caller_kernel_peak_bytes": 374259712,
+      "caller_pid": 98580,
+      "child_count": 16,
+      "child_weighted_peak_bytes": 374259712,
+      "external": {
+        "bytes": 5676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v3-external-observations.json",
+        "sha256": "cc6bbededd2090b9b6b972b1b3c8cbb3f6e3fc8351b7cab09a509b1682eb994b"
+      },
+      "external_elapsed_ms": 24539,
+      "external_terminal_bound_bytes": 751026176,
+      "external_terminal_bound_within512": false,
+      "finish_reserve_ms": 1000,
+      "full_suite_qualified": false,
+      "internal_postwrite_bound_bytes": 408092672,
+      "memory_complete": true,
+      "meter": {
+        "bytes": 1727,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v3.json",
+        "sha256": "216732a7e4a6508dcbb9409c9d0ba93bc273cbd63d4b05ab83541fb6fb129620"
+      },
+      "observer_interval_count": 140,
+      "original_D": 424194116299000,
+      "original_G": 424174116299000,
+      "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2",
+      "persisted_protocol_surfaces": 15,
+      "postterminal_elapsed_ns": 20486662000,
+      "reason": "original20 full census timeout; current terminal conservative memory certificate also outside512",
+      "request": {
+        "bytes": 27944,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v3.json",
+        "sha256": "5ab853b16d6716ed003e3c8065c3a2cb88984ee89940292bcf01e5e4c7383895"
+      },
+      "sample_count": 138,
+      "status": "UNKNOWN",
+      "unsaved_kernel_point_owned_rows_not_reconstructed": true
+    }
+  ],
+  "check_count": 485,
+  "findings": {
+    "bytes": 111344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-three-attempts-saved-independent-20261015/findings-v1.json",
+    "sha256": "b94a75e3de3be87f64ff7d30fb746263171c191f5c0def031f30acd42fa75cd2"
+  },
+  "full_controls_qualified": false,
+  "raw_canonical_paths": 106,
+  "raw_reference_count": 391,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_reconciliation_passed": true,
+  "schema": "Q-full52-three-cold-attempts-saved-independent-handoff-v1",
+  "scientific_calls": 0
+}

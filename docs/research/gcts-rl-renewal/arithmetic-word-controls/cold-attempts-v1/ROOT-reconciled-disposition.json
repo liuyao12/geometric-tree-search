@@ -1,0 +1,53 @@
+{
+  "GCTS_RL_advantage_demonstrated": false,
+  "W16_actuals": 0,
+  "actual_dispositions": [
+    {
+      "bytes": 1482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-first-attempt-UNKNOWN-v1.json",
+      "sha256": "26c8341d059cafb73772dda6dbbe3e22a22bcdece0fbce2fe545a0f6d46dbcf1"
+    },
+    {
+      "bytes": 4374,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-second-attempt-UNKNOWN-v1.json",
+      "sha256": "445fee5b7f38ded065a612b80ec1cd3de38250457bd320f64011fc19221052e4"
+    },
+    {
+      "bytes": 12468,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-third-attempt-UNKNOWN-v1.json",
+      "sha256": "95b2c6de06f096afa8c267f2ac2a33f165b82f67f6d84205d0b6694fc85934fc"
+    }
+  ],
+  "author_identity": "/root",
+  "current_external_conservative_bound_bytes": 751026176,
+  "full_controls_qualified": false,
+  "goal_status": "active",
+  "independent_handoff": {
+    "bytes": 6313,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-three-attempts-saved-independent-20261015/handoff-v1.json",
+    "sha256": "33af8c2b81c8cd86b3d2c86a18434eac62fb26ad3f7065e8886b2ac90c7a836b"
+  },
+  "independent_saved_checks": 485,
+  "independent_saved_review": {
+    "bytes": 111344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-three-attempts-saved-independent-20261015/findings-v1.json",
+    "sha256": "b94a75e3de3be87f64ff7d30fb746263171c191f5c0def031f30acd42fa75cd2"
+  },
+  "latest_distinct_protocol_observations": 15,
+  "latest_external_wall_ms": 24539,
+  "latest_full_suite_result_absent": true,
+  "latest_post_terminal_elapsed_ns": 20486662000,
+  "new_theorems": 0,
+  "no_actual_memory_violation_inferred": true,
+  "original_model_caps_checker_unchanged": true,
+  "saved_evidence_reconciliation_passed": true,
+  "schema": "ROOT-full52-three-attempts-reconciled-disposition-v1",
+  "scientific_interpretation": "The checked evidence faithfully records failures. This does not admit their runtime resources, controls, original model or proof search. The prior85 isolated clock scope remains unchanged.",
+  "source_only_optimization_proposal": {
+    "bytes": 36707,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-actual3-bottleneck-diagnosis-source-20261015/recommendation-v1.json",
+    "sha256": "b2326da8c20de62a79fe93945a9cc5ba3bb2ef2663cfb614129e99e9e7e60a41"
+  },
+  "status": "ALL_THREE_UNKNOWN",
+  "unsupplied_proof_searches": 0
+}

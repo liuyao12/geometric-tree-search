@@ -1,0 +1,742 @@
+{
+  "Q_payload_parses": 0,
+  "ROOT_resource_accepted": false,
+  "Source_functions_executed": 0,
+  "actual_plans": 0,
+  "all_literal_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "I authored worker/census/owned wrapper Sources; this is requested Source+saved diagnosis, not an independent mathematical or Source admission review. Independent original point/codec/calculus Sources remain untouched.",
+  "check_count": 11,
+  "checks": [
+    {
+      "detail": "No cap or clock reset.",
+      "id": "same_original20",
+      "passed": true
+    },
+    {
+      "detail": "15 verifier children plus census producer child; all actual native terminal records.",
+      "id": "native_children",
+      "passed": true
+    },
+    {
+      "detail": "Stored surface observations only, not a complete runner result or accepted prefix.",
+      "id": "protocol15",
+      "passed": true
+    },
+    {
+      "detail": "Actual complete launch/terminal envelope; no internal phase split.",
+      "id": "census_timed_out",
+      "passed": true
+    },
+    {
+      "detail": "No census response/trailer or completion telemetry.",
+      "id": "census_empty",
+      "passed": true
+    },
+    {
+      "detail": "Whole suite failed; no prefix salvage.",
+      "id": "failure_status",
+      "passed": true
+    },
+    {
+      "detail": "Lifecycle closure does not make timeout successful.",
+      "id": "lifecycle",
+      "passed": true
+    },
+    {
+      "detail": "RSS sample rows distinct from native observer occurrences.",
+      "id": "observation_counts",
+      "passed": true
+    },
+    {
+      "detail": "No complete52 accepted artifact.",
+      "id": "no_complete_result",
+      "passed": true
+    },
+    {
+      "detail": "Current conservative terminal caller +child overlap +observer bound; cannot replace terminal caller with smaller earlier self sample.",
+      "id": "external_memory_fails",
+      "passed": true
+    },
+    {
+      "detail": "Exact actual consumed Source pins.",
+      "id": "source_maps_unchanged",
+      "passed": true
+    }
+  ],
+  "full_architecture_qualified": false,
+  "measured": {
+    "RSS_sample_count": 138,
+    "cap_bytes": 536870912,
+    "census_available_at_launch_ns": 6745575000,
+    "census_lifetime_envelope_ns": 6869866000,
+    "census_response_bytes": 0,
+    "census_stderr": "NEUTRAL_CENSUS_FAILURE: TimeoutError: coordinator joint20 unfinished\n",
+    "external_Date_elapsed_ms": 24539,
+    "external_current_conservative_aggregate_bytes": 751026176,
+    "external_terminal_caller_peak_bytes": 374259712,
+    "first_verifier_to_last_terminal_envelope_ns": 4869769000,
+    "internal_postwrite_native_bound_bytes": 408092672,
+    "joint_began_ns": 424174116299000,
+    "joint_deadline_ns": 424194116299000,
+    "memory_scope": "Current external formula also fails. Observed terminal caller RSS equals child peak; no OS/kernel attribution is inferred. Smaller preexit self sample must not substitute for terminal evidence.",
+    "native_observer_interval_count": 140,
+    "observer_sum_scope": "Recorded interval sum, overlaps child work; not an exclusive cost partition or measurable subtraction from suite time.",
+    "phase_telemetry": null,
+    "post_W15_to_census_launch_envelope_ns": 2139629000,
+    "pre_first_verifier_envelope_ns": 6245027000,
+    "sum_observer_interval_durations_ns": 2275028000,
+    "surface15": [
+      {
+        "case_id": "W01-whole-typed-rejection-baseline",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 19790,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W01/complete-surface-observation.json",
+          "sha256": "e01ba84cb05ac96009c9942464beea0c2e6ab5949c94dc6140eb9c2ffecd087f"
+        }
+      },
+      {
+        "case_id": "W02-duplicate-top-key",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12769,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W02/complete-surface-observation.json",
+          "sha256": "f905872806d28c98e4b6bf79b0f1f1939fc29d91edd11cbddabd3e08f5a0ebb7"
+        }
+      },
+      {
+        "case_id": "W03-truncated-EOF",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12755,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W03/complete-surface-observation.json",
+          "sha256": "3ad23c40f5c08c2ecc5b773d76f91bcd07b2238c4c6d41d4f96363525cd01edc"
+        }
+      },
+      {
+        "case_id": "W04-second-document",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12791,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W04/complete-surface-observation.json",
+          "sha256": "1c8344366df618d9b6414914beed9ac9eb5ef27f35e8c1a93addbfd4310b05ee"
+        }
+      },
+      {
+        "case_id": "W05-JSON-whitespace",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 19770,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W05/complete-surface-observation.json",
+          "sha256": "441e723b56196504291d13a3532731b5e06fcf84d14f1261366aa851a099c713"
+        }
+      },
+      {
+        "case_id": "W06-nonJSON-whitespace",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12798,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W06/complete-surface-observation.json",
+          "sha256": "b826118c5c5bc1ef36879877d32f422fb573f0e92314d321e6101c3ed95cd139"
+        }
+      },
+      {
+        "case_id": "W07-Boolean-physical-row",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12746,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W07/complete-surface-observation.json",
+          "sha256": "643cb896679bca9a5034f1320aec23591c93f1e95256c6c1cd603fffdfe26ced"
+        }
+      },
+      {
+        "case_id": "W08-float-submission",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12765,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W08/complete-surface-observation.json",
+          "sha256": "218f963ebf096a1379913665e03cbfdaf211da77e8a44752252a8520d37ae5df"
+        }
+      },
+      {
+        "case_id": "W09-stale-epoch",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12844,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W09/complete-surface-observation.json",
+          "sha256": "b47652a1f4228231c52002f90438ce389b4d521bc3ff8aae7b774b307a52bca3"
+        }
+      },
+      {
+        "case_id": "W10-authority-wrong-Gamma",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 13012,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W10/complete-surface-observation.json",
+          "sha256": "314fd7b6733580983aa31e85bdd6059536cf3ae9a1018f7aee4ce0e3980e9ffb"
+        }
+      },
+      {
+        "case_id": "W11-forged-checked-or-path",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12880,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W11/complete-surface-observation.json",
+          "sha256": "dd29421c58343bce4d3fd88d3b00121d1a162a3d3725f4f11ed488fe1209d1fb"
+        }
+      },
+      {
+        "case_id": "W12-second-submission",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12744,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W12/complete-surface-observation.json",
+          "sha256": "821b34a23e81afc1b76b57d2149dfa5ee36811a05696e5246e3ef6c43454a35c"
+        }
+      },
+      {
+        "case_id": "W13-authority-Boolean-reserve",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12905,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W13/complete-surface-observation.json",
+          "sha256": "0d44f3a53e00c06dfa470194d6164364549b816eef977a899493630e0e6269f0"
+        }
+      },
+      {
+        "case_id": "W14-pin-mismatch",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 12775,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W14/complete-surface-observation.json",
+          "sha256": "f79cdf0844c418f3bdfc18f3d3072941e0bb02fafc28ac85f417ba2d67947b5e"
+        }
+      },
+      {
+        "case_id": "W15-response-incomplete",
+        "completed": true,
+        "observed_predicate": true,
+        "record": {
+          "bytes": 24723,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W15/complete-surface-observation.json",
+          "sha256": "e159617b840372baf30e4c690aa189def2b793dff1f8a19bf30caeb0a8ada72e"
+        }
+      }
+    ],
+    "timeline": [
+      {
+        "exit_code": 0,
+        "kernel_peak_bytes": 21020672,
+        "launch_began_ns": 424180361326000,
+        "launch_index": 0,
+        "launch_relative_ns": 6245027000,
+        "lifetime_envelope_ns": 125280000,
+        "pid": 98589,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.008908,
+        "terminal_observed_ns": 424180486606000,
+        "terminal_relative_ns": 6370307000,
+        "user_seconds": 0.102182
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19333120,
+        "launch_began_ns": 424180695489000,
+        "launch_index": 1,
+        "launch_relative_ns": 6579190000,
+        "lifetime_envelope_ns": 123638000,
+        "pid": 98593,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.0067139999999999995,
+        "terminal_observed_ns": 424180819127000,
+        "terminal_relative_ns": 6702828000,
+        "user_seconds": 0.07354999999999999
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19300352,
+        "launch_began_ns": 424181030764000,
+        "launch_index": 2,
+        "launch_relative_ns": 6914465000,
+        "lifetime_envelope_ns": 122751000,
+        "pid": 98600,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.0066489999999999995,
+        "terminal_observed_ns": 424181153515000,
+        "terminal_relative_ns": 7037216000,
+        "user_seconds": 0.073417
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19300352,
+        "launch_began_ns": 424181363012000,
+        "launch_index": 3,
+        "launch_relative_ns": 7246713000,
+        "lifetime_envelope_ns": 138768000,
+        "pid": 98604,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.007809,
+        "terminal_observed_ns": 424181501780000,
+        "terminal_relative_ns": 7385481000,
+        "user_seconds": 0.075066
+      },
+      {
+        "exit_code": 0,
+        "kernel_peak_bytes": 21053440,
+        "launch_began_ns": 424181714693000,
+        "launch_index": 4,
+        "launch_relative_ns": 7598394000,
+        "lifetime_envelope_ns": 124584000,
+        "pid": 98608,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.007234,
+        "terminal_observed_ns": 424181839277000,
+        "terminal_relative_ns": 7722978000,
+        "user_seconds": 0.10138599999999999
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19349504,
+        "launch_began_ns": 424182056461000,
+        "launch_index": 5,
+        "launch_relative_ns": 7940162000,
+        "lifetime_envelope_ns": 124500000,
+        "pid": 98615,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.006951,
+        "terminal_observed_ns": 424182180961000,
+        "terminal_relative_ns": 8064662000,
+        "user_seconds": 0.074165
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19316736,
+        "launch_began_ns": 424182387864000,
+        "launch_index": 6,
+        "launch_relative_ns": 8271565000,
+        "lifetime_envelope_ns": 139096000,
+        "pid": 98619,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.007677,
+        "terminal_observed_ns": 424182526960000,
+        "terminal_relative_ns": 8410661000,
+        "user_seconds": 0.076569
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19300352,
+        "launch_began_ns": 424182732896000,
+        "launch_index": 7,
+        "launch_relative_ns": 8616597000,
+        "lifetime_envelope_ns": 121959000,
+        "pid": 98623,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.006528,
+        "terminal_observed_ns": 424182854855000,
+        "terminal_relative_ns": 8738556000,
+        "user_seconds": 0.073299
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19349504,
+        "launch_began_ns": 424183060226000,
+        "launch_index": 8,
+        "launch_relative_ns": 8943927000,
+        "lifetime_envelope_ns": 128827000,
+        "pid": 98630,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.007176,
+        "terminal_observed_ns": 424183189053000,
+        "terminal_relative_ns": 9072754000,
+        "user_seconds": 0.075752
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19152896,
+        "launch_began_ns": 424183411274000,
+        "launch_index": 9,
+        "launch_relative_ns": 9294975000,
+        "lifetime_envelope_ns": 125052000,
+        "pid": 98634,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.007697,
+        "terminal_observed_ns": 424183536326000,
+        "terminal_relative_ns": 9420027000,
+        "user_seconds": 0.06819499999999999
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19333120,
+        "launch_began_ns": 424183741693000,
+        "launch_index": 10,
+        "launch_relative_ns": 9625394000,
+        "lifetime_envelope_ns": 123220000,
+        "pid": 98638,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.006431,
+        "terminal_observed_ns": 424183864913000,
+        "terminal_relative_ns": 9748614000,
+        "user_seconds": 0.07577199999999999
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19349504,
+        "launch_began_ns": 424184074893000,
+        "launch_index": 11,
+        "launch_relative_ns": 9958594000,
+        "lifetime_envelope_ns": 131523000,
+        "pid": 98642,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.008061,
+        "terminal_observed_ns": 424184206416000,
+        "terminal_relative_ns": 10090117000,
+        "user_seconds": 0.077608
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19447808,
+        "launch_began_ns": 424184426301000,
+        "launch_index": 12,
+        "launch_relative_ns": 10310002000,
+        "lifetime_envelope_ns": 128367000,
+        "pid": 98650,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.008228,
+        "terminal_observed_ns": 424184554668000,
+        "terminal_relative_ns": 10438369000,
+        "user_seconds": 0.070467
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 19283968,
+        "launch_began_ns": 424184762464000,
+        "launch_index": 13,
+        "launch_relative_ns": 10646165000,
+        "lifetime_envelope_ns": 135791000,
+        "pid": 98654,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.006535,
+        "terminal_observed_ns": 424184898255000,
+        "terminal_relative_ns": 10781956000,
+        "user_seconds": 0.07128999999999999
+      },
+      {
+        "exit_code": 0,
+        "kernel_peak_bytes": 21102592,
+        "launch_began_ns": 424185106445000,
+        "launch_index": 14,
+        "launch_relative_ns": 10990146000,
+        "lifetime_envelope_ns": 124650000,
+        "pid": 98658,
+        "reaped": true,
+        "role": "verifier",
+        "system_seconds": 0.007226,
+        "terminal_observed_ns": 424185231095000,
+        "terminal_relative_ns": 11114796000,
+        "user_seconds": 0.1041
+      },
+      {
+        "exit_code": 2,
+        "kernel_peak_bytes": 374259712,
+        "launch_began_ns": 424187370724000,
+        "launch_index": 15,
+        "launch_relative_ns": 13254425000,
+        "lifetime_envelope_ns": 6869866000,
+        "pid": 98668,
+        "reaped": true,
+        "role": "producer",
+        "system_seconds": 0.10367799999999999,
+        "terminal_observed_ns": 424194240590000,
+        "terminal_relative_ns": 20124291000,
+        "user_seconds": 6.679926
+      }
+    ]
+  },
+  "native_clocks_called": 0,
+  "raw_references": [
+    {
+      "bytes": 19790,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W01/complete-surface-observation.json",
+      "sha256": "e01ba84cb05ac96009c9942464beea0c2e6ab5949c94dc6140eb9c2ffecd087f"
+    },
+    {
+      "bytes": 12769,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W02/complete-surface-observation.json",
+      "sha256": "f905872806d28c98e4b6bf79b0f1f1939fc29d91edd11cbddabd3e08f5a0ebb7"
+    },
+    {
+      "bytes": 12755,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W03/complete-surface-observation.json",
+      "sha256": "3ad23c40f5c08c2ecc5b773d76f91bcd07b2238c4c6d41d4f96363525cd01edc"
+    },
+    {
+      "bytes": 12791,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W04/complete-surface-observation.json",
+      "sha256": "1c8344366df618d9b6414914beed9ac9eb5ef27f35e8c1a93addbfd4310b05ee"
+    },
+    {
+      "bytes": 19770,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W05/complete-surface-observation.json",
+      "sha256": "441e723b56196504291d13a3532731b5e06fcf84d14f1261366aa851a099c713"
+    },
+    {
+      "bytes": 12798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W06/complete-surface-observation.json",
+      "sha256": "b826118c5c5bc1ef36879877d32f422fb573f0e92314d321e6101c3ed95cd139"
+    },
+    {
+      "bytes": 12746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W07/complete-surface-observation.json",
+      "sha256": "643cb896679bca9a5034f1320aec23591c93f1e95256c6c1cd603fffdfe26ced"
+    },
+    {
+      "bytes": 12765,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W08/complete-surface-observation.json",
+      "sha256": "218f963ebf096a1379913665e03cbfdaf211da77e8a44752252a8520d37ae5df"
+    },
+    {
+      "bytes": 12844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W09/complete-surface-observation.json",
+      "sha256": "b47652a1f4228231c52002f90438ce389b4d521bc3ff8aae7b774b307a52bca3"
+    },
+    {
+      "bytes": 13012,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W10/complete-surface-observation.json",
+      "sha256": "314fd7b6733580983aa31e85bdd6059536cf3ae9a1018f7aee4ce0e3980e9ffb"
+    },
+    {
+      "bytes": 12880,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W11/complete-surface-observation.json",
+      "sha256": "dd29421c58343bce4d3fd88d3b00121d1a162a3d3725f4f11ed488fe1209d1fb"
+    },
+    {
+      "bytes": 12744,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W12/complete-surface-observation.json",
+      "sha256": "821b34a23e81afc1b76b57d2149dfa5ee36811a05696e5246e3ef6c43454a35c"
+    },
+    {
+      "bytes": 12905,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W13/complete-surface-observation.json",
+      "sha256": "0d44f3a53e00c06dfa470194d6164364549b816eef977a899493630e0e6269f0"
+    },
+    {
+      "bytes": 12775,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W14/complete-surface-observation.json",
+      "sha256": "f79cdf0844c418f3bdfc18f3d3072941e0bb02fafc28ac85f417ba2d67947b5e"
+    },
+    {
+      "bytes": 24723,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W15/complete-surface-observation.json",
+      "sha256": "e159617b840372baf30e4c690aa189def2b793dff1f8a19bf30caeb0a8ada72e"
+    },
+    {
+      "bytes": 27944,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v3.json",
+      "sha256": "5ab853b16d6716ed003e3c8065c3a2cb88984ee89940292bcf01e5e4c7383895"
+    },
+    {
+      "bytes": 8621,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v3.json",
+      "sha256": "77f3f634ad3593eb3a67cd84b666de3857f2129de2218564d7de99dc7fe0d3cf"
+    },
+    {
+      "bytes": 5676,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v3-external-observations.json",
+      "sha256": "cc6bbededd2090b9b6b972b1b3c8cbb3f6e3fc8351b7cab09a509b1682eb994b"
+    },
+    {
+      "bytes": 1727,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v3.json",
+      "sha256": "216732a7e4a6508dcbb9409c9d0ba93bc273cbd63d4b05ab83541fb6fb129620"
+    },
+    {
+      "bytes": 17995,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-provisional.json",
+      "sha256": "d6d4f8c66e69a3fa8603c7037bdb00cedc616d136144b0faa1c777fd8e29ed2f"
+    },
+    {
+      "bytes": 3067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-postwrite.json",
+      "sha256": "e98c7e52bf007b495cb638b99afc5d4c2d141b2834f0012a88bba2baa5de4060"
+    },
+    {
+      "bytes": 3039,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-revocation.json",
+      "sha256": "6421e547fc98077ab878f1791a648c28bd6f41a752757755cb6233aefbfe836b"
+    },
+    {
+      "bytes": 6964,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/owned-ledger.json.gz",
+      "sha256": "c66376afc377ec39e905803f397edeaeae43a90e3157971e51515da6bd412ce9"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/O07-whole-model-census/census-response.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 69,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/O07-whole-model-census/producer-stderr.txt",
+      "sha256": "c48bd834f882a3f692661ba7b692ccfb164bb98d7a9b9ecb13a3b3234e92b5ed"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/O07-whole-model-census/producer-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 75506,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v7.py",
+      "sha256": "1c27732c7ec7d0815e8b5e4e35467c1e9fe52eff061eee214d652cef1bb40bc5"
+    },
+    {
+      "bytes": 9204,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v7.py",
+      "sha256": "a18090f4dd63ee4c06f491924495090c1786a8db3c724b6d26e7e2776c93aa9e"
+    },
+    {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    {
+      "bytes": 26071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+      "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+    },
+    {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "recommendation": {
+    "cache_reuse": "Reuse only actual newly generated immutable canonical bytes with explicit authority/state/alias guards. Never echo original expected witness as actual graph evidence or skip post-control preservation. This is more involved than the one-function serialization candidate and not recommended as an unreviewed shortcut.",
+    "memory_caution": "Whole one-shot serialization may transiently retain a string plus encoded bytes and raise peak RSS. Current external conservative bound already fails; prefer a bounded exact block/row traversal or explicit lifetime release design if independently justified. No assumption that faster serialization repairs memory or deadline. Future actual must pass original aggregate512 and all timing gates.",
+    "next_gate": "Root chooses a bounded same-model Source change, distinct reviewer checks exact byte semantics and guard/lifetime/cost closure, then one fresh measured full original control attempt under unchanged20/55/60/512/90+1. Optional minimal phase-entry/completion telemetry may locate future failure; no claim current data contains it.",
+    "not_authorized_now": "No Source repair, functions/tests/Q parsing/actual run or budget/model relaxation was performed.",
+    "raw_guard_cadence": "Second candidate only after a separate precise Source justification: batch full namespace scans around an uninterrupted trusted native read/hash loop while retaining immediate anchored native clock/resource/read/hash endpoint checks, full entry/EOF guards, complete same-buffer hash/length/stable-descriptor/EOF and final closed caller guards. No blanket guard removal, callback mutation window or asynchronous threat claim; no measured proof it dominates initial6.245027s.",
+    "smallest_first_candidate": "A narrowly reviewed census canonical_chunks implementation using the pinned trusted stdlib one-shot/C canonical encoder with the exact same sort_keys/separators/ensure_ascii/allow_nan options, immutable actual generated bytes, budget checks immediately before/after encoding and every emitted chunk. Retain every whole state/domain comparison, original SHA/length/EOF, all24 row hashes and both omission controls. The actual fixed witness comparisons fail closed if byte output differs. This replaces serialization mechanics only; do not supply expected witness bytes as generated output.",
+    "why_concrete": "One small Source function is the common repeated canonical traversal site; change need not modify point8d22, codec, model, row domains, original context, caller clock, scheduler or acceptance endpoints. Its cost dominance and sufficient total fit remain unmeasured."
+  },
+  "result_scope": "Actual3 UNKNOWN, complete native cleanup retained, no complete control result or accepted prefix, no theorem/proof/search/RL/fullarchitecture authority.",
+  "schema": "Q-full52-actual3-Source-saved-bottleneck-diagnosis-v1",
+  "scientific_acceptance": false,
+  "source_and_saved_records_only": true,
+  "source_cost_observations": [
+    {
+      "measured_dominance": false,
+      "minimal_read_guard_callbacks_from_saved_metadata": 940,
+      "observation": "Complete raw closure contains50 whole files/55,893,239 bytes. At read cap65,536 and one EOF check per file, at least940 source_guard callback delegations are scheduled; invoke full-precheck +source_guard fullcheck+invoke full-postcheck yields at least2820 complete checks here. This is a Source lower bound after successful EOF traversal, not measured timing/count telemetry.",
+      "site": "worker7:677-695 /invoke:618-648"
+    },
+    {
+      "measured_dominance": false,
+      "observation": "canonical_chunks uses default JSONEncoder.iterencode without one-shot. Full state and full domain each compared twice, plus24 row hashes, two omission-view hashes/comparisons. Those are repeated whole value traversals, not omitted mathematical tests. The saved empty response does not identify which traversal, parse, constructor or state generation was reached/completed.",
+      "site": "census2:199-250,318-352"
+    },
+    {
+      "measured_dominance": false,
+      "observation": "Census also authenticates38MiB preparation, lossless-decodes/parses once, constructs unchanged full Graph, materializes whole semantic_state and compares it to parsed initial_state. CPU-heavy lifetime alone does not distinguish this work from canonical loops.",
+      "site": "census2:294-323 /point8d22:127-214,434-442"
+    }
+  ],
+  "source_edits": 0,
+  "sources": {
+    "census2": {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    "codec1": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "coordinator6": {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "launcher7": {
+      "bytes": 9204,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v7.py",
+      "sha256": "a18090f4dd63ee4c06f491924495090c1786a8db3c724b6d26e7e2776c93aa9e"
+    },
+    "owned_adapter4": {
+      "bytes": 26071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+      "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+    },
+    "point8d22": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "runner3": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    "worker7": {
+      "bytes": 75506,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v7.py",
+      "sha256": "1c27732c7ec7d0815e8b5e4e35467c1e9fe52eff061eee214d652cef1bb40bc5"
+    }
+  },
+  "tests": 0,
+  "unknowns": [
+    "No internal census parse/constructor/state/canonical-phase telemetry or completed row counter.",
+    "No measured raw-closure versus whole-snapshot versus native guard exclusive cost.",
+    "No proof that any proposed optimization suffices for deadline or current conservative external memory cap."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "RL_acceptance": false,
+  "W16_authorized": false,
+  "all_acceptance_flags_false_until_complete_saved_reconciliation": true,
+  "author_identity": "/root",
+  "authorized_invocations": 1,
+  "authorized_scope": "Only exact full original-model neutral controls, 51 dispatched plus W16 deferred. Real TOP launcher5 sole request path, original native G, exact owner descendants, all terminal/whole output/ledger evidence. No original-target positive route or untrusted search call, no W16 call. Future tries require separate Root scope.",
+  "caps": {
+    "aggregate_bytes": 536870912,
+    "external_caller_seconds": 90,
+    "failure_evidence_only_seconds": 55,
+    "finish_reserve_seconds": 1,
+    "original_success_seconds": 20,
+    "owned_seconds": 60
+  },
+  "concrete_metadata_review": {
+    "bytes": 25207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/F15-metadata-findings-v1.json",
+    "sha256": "0fe4474364a3eb0feaa4465683751ea292d834b4d0b8503d1ebd40966f88b7ca"
+  },
+  "external_JS": {
+    "bytes": 7182,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v1.js",
+    "sha256": "61da0d7361b37040a5599ede8a542d76130b90b5ec1a845a848bc83eef771a6e"
+  },
+  "integration_review": {
+    "bytes": 2882,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/integration-typed-Source-review-v2.json",
+    "sha256": "f8861c7af79e3f8dfeebb620776a66c611245ef97a23374ce332aec293efe6f3"
+  },
+  "invocation_id": "full52_20261015_v1",
+  "launcher": {
+    "bytes": 9204,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v5.py",
+    "sha256": "3ddfadf1120dbc9ca03b0f718a4956d0cf93d10dabca5dd981122a3761d2bcf3"
+  },
+  "mathematical_acceptance": false,
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "preregistration": {
+    "bytes": 7447,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v1.json",
+    "sha256": "a7bb14a9e6915ae44a211becca89b388829a919b0e45453a2c8ed265f5cedaa0"
+  },
+  "request": {
+    "bytes": 25653,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v1.json",
+    "sha256": "918eeaaf5c81d0a8848ecf4b015aad3589184201f358c6bf80fd2d60b8ed90a2"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-full52-once-only-actual-authorization-v1",
+  "worker": {
+    "bytes": 75494,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v5.py",
+    "sha256": "7c0ae6343cec47c28af8f452c5d56839dbf9a627e2d1a4b4933c7cb7ae61e957"
+  }
+}

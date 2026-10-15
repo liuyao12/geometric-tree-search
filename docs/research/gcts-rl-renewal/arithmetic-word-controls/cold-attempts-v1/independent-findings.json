@@ -1,0 +1,3509 @@
+{
+  "ROOT_resource_accepted": false,
+  "accepted_prefix": false,
+  "all_checks_passed": true,
+  "attempts": [
+    {
+      "accepted_prefix": false,
+      "attempt": 1,
+      "caller_kernel_elapsed_ns": 120960000,
+      "caller_kernel_peak_bytes": 22036480,
+      "caller_pid": 94158,
+      "external": {
+        "bytes": 4492,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v1-external-observations.json",
+        "sha256": "c4ba1602c0219096f5bb6c7331d915a346c40247e07f2599487246a69a4e77aa"
+      },
+      "external_elapsed_ms": 298,
+      "finish_reserve_ms": 1000,
+      "full_suite_qualified": false,
+      "meter": {
+        "bytes": 1716,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v1.json",
+        "sha256": "19e95ea05e4bc8cb06664bbb9acf5780b43e3d9590bebf0c09ac07c96af34f36"
+      },
+      "original20_qualified": false,
+      "original_D": null,
+      "original_G": null,
+      "output_directory_absent_at_attempt": true,
+      "reason": "loader omitted itertools; before runtime output/Q/control calls",
+      "request": {
+        "bytes": 25653,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v1.json",
+        "sha256": "918eeaaf5c81d0a8848ecf4b015aad3589184201f358c6bf80fd2d60b8ed90a2"
+      },
+      "status": "UNKNOWN"
+    },
+    {
+      "accepted_prefix": false,
+      "attempt": 2,
+      "caller_kernel_elapsed_ns": 7518907000,
+      "caller_kernel_peak_bytes": 29097984,
+      "caller_pid": 96833,
+      "child_count": 1,
+      "child_weighted_peak_bytes": 11616256,
+      "external": {
+        "bytes": 5095,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v2-external-observations.json",
+        "sha256": "cb38a24c4c80c9fdda60aa0c32b4dbcc935fd3f501ce02dea5b389193b33cf09"
+      },
+      "external_elapsed_ms": 7699,
+      "finish_reserve_ms": 1000,
+      "full_suite_qualified": false,
+      "internal_postwrite_bound_bytes": 40714240,
+      "memory_complete": false,
+      "meter": {
+        "bytes": 1720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v2.json",
+        "sha256": "419b45d4c72737d57bec91d3ff1b979a5780a077e908df4a6110231da4c30dcc"
+      },
+      "observer_interval_count": 3,
+      "original_D": 423988693918000,
+      "original_G": 423968693918000,
+      "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1",
+      "postterminal_elapsed_ns": 7563065000,
+      "reason": "sandbox /bin/ps EPERM; incomplete ownership",
+      "request": {
+        "bytes": 27943,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v2.json",
+        "sha256": "08500148a5e4b21c22f3282618a7c03e08b551e948d640d7aa6a4303a8e17a8a"
+      },
+      "sample_count": 0,
+      "saved_row_census": {
+        "UNKNOWN_unfinished": 30,
+        "fail": 1,
+        "not_exercised": 1,
+        "pass_expected_accept": 4,
+        "pass_expected_reject": 16
+      },
+      "status": "UNKNOWN"
+    },
+    {
+      "accepted_prefix": false,
+      "attempt": 3,
+      "caller_kernel_elapsed_ns": 20438836000,
+      "caller_kernel_peak_bytes": 374259712,
+      "caller_pid": 98580,
+      "child_count": 16,
+      "child_weighted_peak_bytes": 374259712,
+      "external": {
+        "bytes": 5676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v3-external-observations.json",
+        "sha256": "cc6bbededd2090b9b6b972b1b3c8cbb3f6e3fc8351b7cab09a509b1682eb994b"
+      },
+      "external_elapsed_ms": 24539,
+      "external_terminal_bound_bytes": 751026176,
+      "external_terminal_bound_within512": false,
+      "finish_reserve_ms": 1000,
+      "full_suite_qualified": false,
+      "internal_postwrite_bound_bytes": 408092672,
+      "memory_complete": true,
+      "meter": {
+        "bytes": 1727,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v3.json",
+        "sha256": "216732a7e4a6508dcbb9409c9d0ba93bc273cbd63d4b05ab83541fb6fb129620"
+      },
+      "observer_interval_count": 140,
+      "original_D": 424194116299000,
+      "original_G": 424174116299000,
+      "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2",
+      "persisted_protocol_surfaces": 15,
+      "postterminal_elapsed_ns": 20486662000,
+      "reason": "original20 full census timeout; current terminal conservative memory certificate also outside512",
+      "request": {
+        "bytes": 27944,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v3.json",
+        "sha256": "5ab853b16d6716ed003e3c8065c3a2cb88984ee89940292bcf01e5e4c7383895"
+      },
+      "sample_count": 138,
+      "status": "UNKNOWN",
+      "unsaved_kernel_point_owned_rows_not_reconstructed": true
+    }
+  ],
+  "attribution": "Reviewer authored old checker/verifier/codec/P/W16 dependencies and independently reviewed integration builder/meter/JS, not current cold worker/launcher/coordinator or Root actual evidence. Reconciliation does not replay checker/controls/model.",
+  "check_count": 485,
+  "checks": [
+    {
+      "detail": null,
+      "name": "A1 exact request12 current53plus closure maps typed metadata",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 original caps and exact prereg data Source model epochs",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 complete unique canonical regular raw closure paths",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact coordinator source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact launcher source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact owned_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact point_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact protocol_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact runner source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 genuine exact worker source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 native meter canonical complete line EOF same runtime launcher plan",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 native actual caller PID terminal status2 peak full wait4",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 actual native meter full chronology true terminal before postprobe",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 actual complete tool/probe terminal no open sessions",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 whole external Date includes startup approval wherepresent probe and finish",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 all external Root strong flags false UNKNOWN preserved",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A1 exact saved restricted import failure before any owned results",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 exact request12 current53plus closure maps typed metadata",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 original caps and exact prereg data Source model epochs",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete unique canonical regular raw closure paths",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact coordinator source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact launcher source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact owned_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact point_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact protocol_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact runner source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 genuine exact worker source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 native meter canonical complete line EOF same runtime launcher plan",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 native actual caller PID terminal status2 peak full wait4",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 actual native meter full chronology true terminal before postprobe",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 actual complete tool/probe terminal no open sessions",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 whole external Date includes startup approval wherepresent probe and finish",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 all external Root strong flags false UNKNOWN preserved",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 whole gzip EOF ledger exact pinned compressed bytes",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 all current snapshots29 whole raw Source input exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 whole pre-receipt inventory each raw file and total exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 entire owned output manifest rawbytes and exact file set",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 final UNKNOWN receipts whole records and no pending flags",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 all actual child rows reaped exact launch registration andwait4peak",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 independent weighted overlapping child maximum exact no summing sequentialpeaks",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 child0 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 whole observer interval0 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 whole observer interval1 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 whole observer interval2 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 all58 metadata Source strong false no invented control acceptance",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 all52 preserved literal result status census20pass1fail30UNKNOWN1deferred",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K01-occurrence-ordered-MP",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K02-MP-reversed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K03-MP-repeated-wrong-port",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K04-MP-self",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K05-MP-future",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K06-MP-Boolean",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K07-Gamma-Boolean-index",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K08-Gamma-wrong-formula",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K09-unary-Gen-unused-closed-Gamma",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K10-Gen-unused-open-duplicate-Gamma",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K11-Gen-self-reference",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K12-capture-safe-UI-then-Gen",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K13-captured-UI-output",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K14-atomic-equality-hole",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K15-equality-nonatomic-template",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K16-equality-undeclared-operand",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K17-equality-wrong-output",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K18-open-named-axiom",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K19-exact-final-target",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row K20-unsupported-rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W01-whole-typed-rejection-baseline",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W02-duplicate-top-key",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W03-truncated-EOF",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W04-second-document",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W05-JSON-whitespace",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W06-nonJSON-whitespace",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W07-Boolean-physical-row",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W08-float-submission",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W09-stale-epoch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W10-authority-wrong-Gamma",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W11-forged-checked-or-path",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W12-second-submission",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W13-authority-Boolean-reserve",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W14-pin-mismatch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W15-response-incomplete",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row W16-late-exit-or-held-EOF",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M01-distant-dead-outranks-forced",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M02-global-forced-before-branch",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M03-generation-before-count",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M04-assignedzero-conflict",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M05-absent-mark-unconstrained",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M06-shared-placement-identity",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M07-distinct-overfill",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row M08-rollback-sharedmark",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O01-clean-role-import-census",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O02-foreign-FD-alias",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O03-same-original-clock",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O04-own-boundary-code-mutation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O05-both-child-aggregate-cost",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O06-cancel-midwire",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O07-full-data-initial-census",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 complete saved literal row O08-missing-last-domain",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A2 actual W01 denied ps no protocol response and no accepted prefix",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 exact request12 current53plus closure maps typed metadata",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 original caps and exact prereg data Source model epochs",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete unique canonical regular raw closure paths",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact coordinator source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact launcher source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact owned_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact point_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact protocol_adapter source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact runner source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 genuine exact worker source review",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 native meter canonical complete line EOF same runtime launcher plan",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 native actual caller PID terminal status2 peak full wait4",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 actual native meter full chronology true terminal before postprobe",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 actual complete tool/probe terminal no open sessions",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole external Date includes startup approval wherepresent probe and finish",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 all external Root strong flags false UNKNOWN preserved",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole gzip EOF ledger exact pinned compressed bytes",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 all current snapshots29 whole raw Source input exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole pre-receipt inventory each raw file and total exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 entire owned output manifest rawbytes and exact file set",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 final UNKNOWN receipts whole records and no pending flags",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 all actual child rows reaped exact launch registration andwait4peak",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 independent weighted overlapping child maximum exact no summing sequentialpeaks",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child0 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child1 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child2 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child3 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child4 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child5 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child6 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child7 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child8 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child9 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child10 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child11 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child12 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child13 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child14 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 child15 full declared native interval",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval0 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval1 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval2 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval3 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval4 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval5 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval6 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval7 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval8 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval9 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval10 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval11 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval12 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval13 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval14 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval15 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval16 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval17 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval18 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval19 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval20 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval21 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval22 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval23 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval24 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval25 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval26 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval27 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval28 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval29 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval30 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval31 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval32 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval33 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval34 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval35 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval36 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval37 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval38 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval39 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval40 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval41 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval42 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval43 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval44 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval45 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval46 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval47 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval48 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval49 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval50 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval51 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval52 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval53 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval54 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval55 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval56 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval57 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval58 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval59 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval60 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval61 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval62 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval63 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval64 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval65 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval66 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval67 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval68 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval69 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval70 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval71 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval72 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval73 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval74 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval75 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval76 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval77 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval78 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval79 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval80 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval81 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval82 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval83 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval84 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval85 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval86 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval87 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval88 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval89 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval90 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval91 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval92 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval93 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval94 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval95 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval96 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval97 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval98 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval99 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval100 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval101 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval102 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval103 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval104 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval105 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval106 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval107 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval108 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval109 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval110 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval111 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval112 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval113 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval114 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval115 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval116 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval117 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval118 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval119 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval120 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval121 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval122 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval123 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval124 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval125 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval126 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval127 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval128 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval129 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval130 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval131 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval132 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval133 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval134 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval135 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval136 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval137 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval138 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 whole observer interval139 actual complete or declared denial",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample0",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample1",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample2",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample3",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample4",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample5",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample6",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample7",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample8",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample9",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample10",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample11",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample12",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample13",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample14",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample15",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample16",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample17",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample18",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample19",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample20",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample21",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample22",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample23",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample24",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample25",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample26",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample27",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample28",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample29",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample30",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample31",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample32",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample33",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample34",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample35",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample36",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample37",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample38",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample39",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample40",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample41",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample42",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample43",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample44",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample45",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample46",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample47",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample48",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample49",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample50",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample51",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample52",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample53",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample54",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample55",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample56",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample57",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample58",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample59",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample60",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample61",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample62",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample63",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample64",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample65",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample66",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample67",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample68",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample69",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample70",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample71",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample72",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample73",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample74",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample75",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample76",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample77",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample78",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample79",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample80",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample81",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample82",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample83",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample84",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample85",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample86",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample87",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample88",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample89",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample90",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample91",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample92",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample93",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample94",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample95",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample96",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample97",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample98",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample99",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample100",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample101",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample102",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample103",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample104",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample105",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample106",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample107",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample108",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample109",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample110",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample111",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample112",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample113",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample114",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample115",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample116",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample117",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample118",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample119",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample120",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample121",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample122",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample123",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample124",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample125",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample126",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample127",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample128",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample129",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample130",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample131",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample132",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample133",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample134",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample135",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample136",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 complete ownedRSS sample137",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 all58 metadata Source strong false no invented control acceptance",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 no complete suite result or census response; original20 actual timeout",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 all16children140observers138samples no leftovers errors complete raw memory bound",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 exact independent observer max and native internal vs external conservative bounds",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 exact complete timeline without census internal phase attribution",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "A3 exact15 complete protocol surface files preserved",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W01 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W01 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W01 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W01 original two canonical response lines EOF trailer pins no primary",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W02 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W02 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W02 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W02 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W03 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W03 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W03 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W03 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W04 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W04 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W04 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W04 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W05 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W05 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W05 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W05 original two canonical response lines EOF trailer pins no primary",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W06 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W06 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W06 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W06 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W07 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W07 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W07 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W07 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W08 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W08 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W08 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W08 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W09 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W09 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W09 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W09 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W10 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W10 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W10 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W10 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W11 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W11 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W11 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W11 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W12 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W12 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W12 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W12 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W13 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W13 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W13 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W13 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W14 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W14 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W14 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W14 actual early parse typed rejection whole stderr no response",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W15 actual saved completed predicate strict flags plus source scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W15 actual child PID code peak original clock matches whole ledger",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W15 every complete rawhex equality and outputSHA length exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W15 original two canonical response lines EOF trailer pins no primary",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "W15 original response preserved and labeled body-only controlview rejection",
+      "passed": true
+    },
+    {
+      "detail": {
+        "canonical_paths": 106,
+        "references": 391
+      },
+      "name": "all exact bounded direct raw capsules across3attempts match",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all three UNKNOWN no-prefix and no new proof/search/RL acceptance",
+      "passed": true
+    }
+  ],
+  "current_Root_third_disposition": {
+    "bytes": 12468,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-third-attempt-UNKNOWN-v1.json",
+    "sha256": "95b2c6de06f096afa8c267f2ac2a33f165b82f67f6d84205d0b6694fc85934fc"
+  },
+  "full_controls_qualified": false,
+  "no_execution": {
+    "Q_snapshot_parses": 0,
+    "Source_project_helper_oracle_calls": 0,
+    "actual_plans": 0,
+    "native_clock_calls": 0,
+    "tests_or_replays": 0
+  },
+  "original_Q_theorem_accepted": false,
+  "persisted_protocol_surfaces": [
+    {
+      "bytes": 19790,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W01/complete-surface-observation.json",
+      "sha256": "e01ba84cb05ac96009c9942464beea0c2e6ab5949c94dc6140eb9c2ffecd087f"
+    },
+    {
+      "bytes": 12769,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W02/complete-surface-observation.json",
+      "sha256": "f905872806d28c98e4b6bf79b0f1f1939fc29d91edd11cbddabd3e08f5a0ebb7"
+    },
+    {
+      "bytes": 12755,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W03/complete-surface-observation.json",
+      "sha256": "3ad23c40f5c08c2ecc5b773d76f91bcd07b2238c4c6d41d4f96363525cd01edc"
+    },
+    {
+      "bytes": 12791,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W04/complete-surface-observation.json",
+      "sha256": "1c8344366df618d9b6414914beed9ac9eb5ef27f35e8c1a93addbfd4310b05ee"
+    },
+    {
+      "bytes": 19770,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W05/complete-surface-observation.json",
+      "sha256": "441e723b56196504291d13a3532731b5e06fcf84d14f1261366aa851a099c713"
+    },
+    {
+      "bytes": 12798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W06/complete-surface-observation.json",
+      "sha256": "b826118c5c5bc1ef36879877d32f422fb573f0e92314d321e6101c3ed95cd139"
+    },
+    {
+      "bytes": 12746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W07/complete-surface-observation.json",
+      "sha256": "643cb896679bca9a5034f1320aec23591c93f1e95256c6c1cd603fffdfe26ced"
+    },
+    {
+      "bytes": 12765,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W08/complete-surface-observation.json",
+      "sha256": "218f963ebf096a1379913665e03cbfdaf211da77e8a44752252a8520d37ae5df"
+    },
+    {
+      "bytes": 12844,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W09/complete-surface-observation.json",
+      "sha256": "b47652a1f4228231c52002f90438ce389b4d521bc3ff8aae7b774b307a52bca3"
+    },
+    {
+      "bytes": 13012,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W10/complete-surface-observation.json",
+      "sha256": "314fd7b6733580983aa31e85bdd6059536cf3ae9a1018f7aee4ce0e3980e9ffb"
+    },
+    {
+      "bytes": 12880,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W11/complete-surface-observation.json",
+      "sha256": "dd29421c58343bce4d3fd88d3b00121d1a162a3d3725f4f11ed488fe1209d1fb"
+    },
+    {
+      "bytes": 12744,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W12/complete-surface-observation.json",
+      "sha256": "821b34a23e81afc1b76b57d2149dfa5ee36811a05696e5246e3ef6c43454a35c"
+    },
+    {
+      "bytes": 12905,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W13/complete-surface-observation.json",
+      "sha256": "0d44f3a53e00c06dfa470194d6164364549b816eef977a899493630e0e6269f0"
+    },
+    {
+      "bytes": 12775,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W14/complete-surface-observation.json",
+      "sha256": "f79cdf0844c418f3bdfc18f3d3072941e0bb02fafc28ac85f417ba2d67947b5e"
+    },
+    {
+      "bytes": 24723,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W15/complete-surface-observation.json",
+      "sha256": "e159617b840372baf30e4c690aa189def2b793dff1f8a19bf30caeb0a8ada72e"
+    }
+  ],
+  "raw_canonical_paths": 106,
+  "raw_capsules": [
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6808,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-architecture-design-source-20261014/ROOT-architecture-choice-v1.json",
+        "sha256": "62b0d66686f890c9f604192058bdba48a4b171e233f25767b1e1de88fffbd82f"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 2683,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+        "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 8563,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/ROOT-actual-independent-Q-shared-wire-audit-reconciled-disposition-v2.json",
+        "sha256": "80dee8b9ec1bca398c24d61c10a026a82f73c8886cdeeb0ed9bf9ea5cf9c1ff1"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 5789,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-audit-shared-wire-progress-20261014/worker-output-v1/Q-independent-audit-certificate-provisional-v1.json",
+        "sha256": "3c3aefa4ff9d918a43a8b73d94fd6cebf0741e6203e0d47f3a44fbd716c7bc87"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 62584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-design-source-20261014/complete-fixtures-design-v2.json",
+        "sha256": "1420cd2c0a56d09e629ca65fe4b7f690570ccb283b1998762c10de1190180575"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 8295473,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+        "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 8296118,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+        "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 38376960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+        "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6796,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-word-controls-progress-20261014/ROOT-actual-unrelated-word-controls-reconciled-disposition-v1.json",
+        "sha256": "f254219dc8e7324a7d15f9ff50661de627d207eca08660bca354e73978d39fd1"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 9204,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v5.py",
+        "sha256": "3ddfadf1120dbc9ca03b0f718a4956d0cf93d10dabca5dd981122a3761d2bcf3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 10187,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 19742,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 5435,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+        "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 37266,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+        "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7447,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v1.json",
+        "sha256": "a7bb14a9e6915ae44a211becca89b388829a919b0e45453a2c8ed265f5cedaa0"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 721,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-metadata-authoring-request-v1.json",
+        "sha256": "0af308b1700086b9884ebc89b2f9aaf9a00c1a63e23362aeacee563d1578645a"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 2882,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/integration-typed-Source-review-v2.json",
+        "sha256": "f8861c7af79e3f8dfeebb620776a66c611245ef97a23374ce332aec293efe6f3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+        "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 17704,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Source-contract-v2.json",
+        "sha256": "83f43b444806c71dea7c59da1e3a61d9895810238a9ef1458f8192089128dd6c"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 25018,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/build_ROOT_full52_metadata_v2.py",
+        "sha256": "664ec4c3ad16ead02db5604f5c90f7262200e5d6efce52a9be54200934061a0e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7182,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v1.js",
+        "sha256": "61da0d7361b37040a5599ede8a542d76130b90b5ec1a845a848bc83eef771a6e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 2196,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/typed-Source-review-v1.json",
+        "sha256": "016e2d78db0e42ac1d86ef7e2234fe0f26b0a3d296caa3ad789cf1d6764a14a4"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 54630,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+        "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 13518,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Source-contract-v6.json",
+        "sha256": "8d37f633a14a0a23f00ea3888c832137f291896d5ee00e079ffd1ac481861a5b"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 3519,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-diagnosis-review-source-20261015/runner-typed-Source-review-v1.json",
+        "sha256": "cfb384d20404039f4b0e5cd3f7ee60fce8967a72ce5a751ad1c4924d73dc7c34"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 38113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+        "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 15495,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/runner-Source-contract-v1.json",
+        "sha256": "01bf2a0b45a476b27442f5e87e015d50d4838cc5c8625fe3ba02cd3e68935bf0"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 3037,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-ROOT-independent-source-20261015/point-adapter-typed-Source-review-v1.json",
+        "sha256": "d166ab09e6af0d3a59a8348e674419ca96166e7e363efbbfb94166dd0472471a"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 5927,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/M8-census-Source-contract-v1.json",
+        "sha256": "99e15e3bb34786e86496da815924954431bfa93f0aa9df5db49759cf92aec7c2"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6704,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_control_verifier_profile_leaf_v2.py",
+        "sha256": "6ba72fc11295e8972b356fd433f5990bc39723eb166001f374c795933cffbdd9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 20215,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+        "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 22217,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_point_scheduler_adapter_v2.py",
+        "sha256": "0e38a1ee5e3b2a55beaf2fbae5c461e3b5f6bc2530d2bb375cd22573ee9379bb"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 26071,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+        "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 75494,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v5.py",
+        "sha256": "7c0ae6343cec47c28af8f452c5d56839dbf9a627e2d1a4b4933c7cb7ae61e957"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 13058,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/profile-O8-Source-contract-v1.json",
+        "sha256": "b569e8d1c5aca24b2db5e9a711871b1e7f88294ddff39335eb273a695601077c"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 25425,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/worker-launcher-Source-contract-v2.json",
+        "sha256": "e5e315f18c2a8356f3cd8004b2be0d1d9c46642f86bc03f9edf151c3862b2f05"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7885,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/P15-Source-contract-v1.json",
+        "sha256": "01a00f3e2ccdfb46c6f4cc76b93a50d0ff7dbfed467a707b73e9bb13854f6abb"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 76516,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_clean_verifier_protocol_controls_adapter_global_clock_v5.py",
+        "sha256": "77c48f0ffac17faf40ec5cbbb7f5011a00cd6cac3d7236c42546e851415b4cc1"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6327,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-profile-owned-independent-source-20261015/O8-typed-Source-review-v1.json",
+        "sha256": "c818eeb4247053d151b6b14cb52aeb901377103eed3a2cfc67a9683639f474d8"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-protocol-ROOT-independent-source-20261015/typed-Source-review-v2.json",
+        "sha256": "5a7a7db6b4394d1eb623d5fee91e26ec521b56899d8d997e06b55a5dc35ab49c"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 10864,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-worker-independent-source-20261015/launcher-typed-Source-review-v2.json",
+        "sha256": "d059ad6d003911a9154735c72e89454e125b87d739f5d167ca31b06fb326b276"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 10855,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-worker-independent-source-20261015/worker-typed-Source-review-v2.json",
+        "sha256": "7e6bda8f516e867336aad6cc9732978554856377de96bf310d20e295d3af0eb9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7491,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-isolated-projection-progress-20261015/projection85_20261015_v2-ROOT-disposition.json",
+        "sha256": "67826de9c0dfeedc74646ef888d4e67754d93b3e09e6e7b9d34e7ed7d66c8796"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4443,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+        "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 2985,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_neutral_calibration_leaf_v1.py",
+        "sha256": "8c88dabb29c1e5e5b7af0bceddc37173ac03fd6de86e89604cf10a406bb5e190"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 20219,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+        "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 25653,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v1.json",
+        "sha256": "918eeaaf5c81d0a8848ecf4b015aad3589184201f358c6bf80fd2d60b8ed90a2"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4492,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v1-external-observations.json",
+        "sha256": "c4ba1602c0219096f5bb6c7331d915a346c40247e07f2599487246a69a4e77aa"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1716,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v1.json",
+        "sha256": "19e95ea05e4bc8cb06664bbb9acf5780b43e3d9590bebf0c09ac07c96af34f36"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 9204,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v6.py",
+        "sha256": "7e4c8414b50a066a16d640ed66da776b43fa5e912fd4af3af87d5d5a7d93b0db"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 8491,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v2.json",
+        "sha256": "e391316eff31e8d4c89333af31c8c9125f031bc3b006c46f99f0439b40182a02"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-first-attempt-UNKNOWN-v1.json",
+        "sha256": "26c8341d059cafb73772dda6dbbe3e22a22bcdece0fbce2fe545a0f6d46dbcf1"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1627,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-launcher6-typed-Source-review-v1.json",
+        "sha256": "f2ff95c5c21d8c8cb506120ee10c6920d2f77fdffc4fa366411659f4cbf074b5"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4376,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-worker6-launcher6-JS2-Source-findings-v1.json",
+        "sha256": "c7a4f1b1e67e380e991f44213bbb5e36ce9a651f2847042bd94421519e67d19c"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1618,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-worker6-typed-Source-review-v1.json",
+        "sha256": "f5f8fd49d880448e77ae3f6129676af7d348a786b66645117f72eca45a53a71b"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7182,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v2.js",
+        "sha256": "40612fb69904a5149895b073a94b7f98f76e60d8efdadab9d2983f511415cbe5"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 75506,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v6.py",
+        "sha256": "adcd91541c2ab99f3b63ed7343b961d4369f469a296af96ca159c05390b31696"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 28250,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/worker-launcher-Source-contract-v3.json",
+        "sha256": "eda6132e8840a4ad3e5ee4b89d347ceedfefbbbf6804162d993ba937a04aabd6"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 27943,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v2.json",
+        "sha256": "08500148a5e4b21c22f3282618a7c03e08b551e948d640d7aa6a4303a8e17a8a"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 30600,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/complete-controls-result.json",
+        "sha256": "082891c834d4bc42a1edea795f27cb8d120506f61934f68569a78acd1102ff40"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 5095,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v2-external-observations.json",
+        "sha256": "cb38a24c4c80c9fdda60aa0c32b4dbcc935fd3f501ce02dea5b389193b33cf09"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v2.json",
+        "sha256": "419b45d4c72737d57bec91d3ff1b979a5780a077e908df4a6110231da4c30dcc"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 509,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/owned-ledger.json.gz",
+        "sha256": "ec7218d418110a8132b766cbfe365d7c1a281822056153fbb1f464b6eea960ab"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 13947,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-second-attempt-output-inventory-v1.json",
+        "sha256": "ed7e5cf55e36d32cd8cb45f8ff0c0147e7caf9200f8cf07730a376924221ebd3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 786,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/worker-postwrite.json",
+        "sha256": "bdd0c868e28481d8e3408d894742300684eb1bfe4d2ed4b8997cd2dddc5a4433"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6321,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/worker-provisional.json",
+        "sha256": "0306ae91292661bf41898f9a7fb25151d09788ef943c3ec5f9019d169d6051b3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 758,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v1/worker-revocation.json",
+        "sha256": "bb95319bb9b0a938fec0b91beffee9634c435806ddd409a4ccea2e7c6bc2cbeb"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 9204,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_controls_early_launcher_global_clock_v7.py",
+        "sha256": "a18090f4dd63ee4c06f491924495090c1786a8db3c724b6d26e7e2776c93aa9e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 8621,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-preregistration-v3.json",
+        "sha256": "77f3f634ad3593eb3a67cd84b666de3857f2129de2218564d7de99dc7fe0d3cf"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 4374,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-second-attempt-UNKNOWN-v1.json",
+        "sha256": "445fee5b7f38ded065a612b80ec1cd3de38250457bd320f64011fc19221052e4"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1271,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-launcher7-typed-Source-review-v1.json",
+        "sha256": "2dd2ebcd22f3305ddd16799ecb410e3d82ca4597f63bb2f3345c4b2bc157ffc5"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 2223,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-worker7-launcher7-JS3-Source-findings-v1.json",
+        "sha256": "07f6f14cb2caa9f6c8d5adff1450bc520f1399c3c83752e931e868d38046376b"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1264,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-worker7-typed-Source-review-v1.json",
+        "sha256": "b596524e66607498426e8302b40251ef038d6286e60e5ccf4494fef8f8cec745"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 7350,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/observe_actual_full52_launcher_v3.js",
+        "sha256": "6c6353eb6827f053f3341216f5c23e4b47764ff8e769926e5eb5e6ffc8a9d77b"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 75506,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v7.py",
+        "sha256": "1c27732c7ec7d0815e8b5e4e35467c1e9fe52eff061eee214d652cef1bb40bc5"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 31108,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/worker-launcher-Source-contract-v4.json",
+        "sha256": "c49384e1664dcfc40ccf39185ccf1fdabbe26c75891c0e1b7c6298d4ff7eebce"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 27944,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/ROOT-full52-request-v3.json",
+        "sha256": "5ab853b16d6716ed003e3c8065c3a2cb88984ee89940292bcf01e5e4c7383895"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 5676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v3-external-observations.json",
+        "sha256": "cc6bbededd2090b9b6b972b1b3c8cbb3f6e3fc8351b7cab09a509b1682eb994b"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 1727,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v3.json",
+        "sha256": "216732a7e4a6508dcbb9409c9d0ba93bc273cbd63d4b05ab83541fb6fb129620"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 6964,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/owned-ledger.json.gz",
+        "sha256": "c66376afc377ec39e905803f397edeaeae43a90e3157971e51515da6bd412ce9"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 19790,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W01/complete-surface-observation.json",
+        "sha256": "e01ba84cb05ac96009c9942464beea0c2e6ab5949c94dc6140eb9c2ffecd087f"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12769,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W02/complete-surface-observation.json",
+        "sha256": "f905872806d28c98e4b6bf79b0f1f1939fc29d91edd11cbddabd3e08f5a0ebb7"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12755,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W03/complete-surface-observation.json",
+        "sha256": "3ad23c40f5c08c2ecc5b773d76f91bcd07b2238c4c6d41d4f96363525cd01edc"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12791,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W04/complete-surface-observation.json",
+        "sha256": "1c8344366df618d9b6414914beed9ac9eb5ef27f35e8c1a93addbfd4310b05ee"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 19770,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W05/complete-surface-observation.json",
+        "sha256": "441e723b56196504291d13a3532731b5e06fcf84d14f1261366aa851a099c713"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12798,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W06/complete-surface-observation.json",
+        "sha256": "b826118c5c5bc1ef36879877d32f422fb573f0e92314d321e6101c3ed95cd139"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12746,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W07/complete-surface-observation.json",
+        "sha256": "643cb896679bca9a5034f1320aec23591c93f1e95256c6c1cd603fffdfe26ced"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12765,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W08/complete-surface-observation.json",
+        "sha256": "218f963ebf096a1379913665e03cbfdaf211da77e8a44752252a8520d37ae5df"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12844,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W09/complete-surface-observation.json",
+        "sha256": "b47652a1f4228231c52002f90438ce389b4d521bc3ff8aae7b774b307a52bca3"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 13012,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W10/complete-surface-observation.json",
+        "sha256": "314fd7b6733580983aa31e85bdd6059536cf3ae9a1018f7aee4ce0e3980e9ffb"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12880,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W11/complete-surface-observation.json",
+        "sha256": "dd29421c58343bce4d3fd88d3b00121d1a162a3d3725f4f11ed488fe1209d1fb"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12744,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W12/complete-surface-observation.json",
+        "sha256": "821b34a23e81afc1b76b57d2149dfa5ee36811a05696e5246e3ef6c43454a35c"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12905,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W13/complete-surface-observation.json",
+        "sha256": "0d44f3a53e00c06dfa470194d6164364549b816eef977a899493630e0e6269f0"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 12775,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W14/complete-surface-observation.json",
+        "sha256": "f79cdf0844c418f3bdfc18f3d3072941e0bb02fafc28ac85f417ba2d67947b5e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 24723,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/protocol/W15/complete-surface-observation.json",
+        "sha256": "e159617b840372baf30e4c690aa189def2b793dff1f8a19bf30caeb0a8ada72e"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 41658,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-ROOT-integration-20261015/ROOT-full52-third-attempt-output-inventory-v1.json",
+        "sha256": "e4fe0560ed4e4c292d2a0bd040bd7cd432d15a3d846148e66b9f49b7b9051fd2"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 3067,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-postwrite.json",
+        "sha256": "e98c7e52bf007b495cb638b99afc5d4c2d141b2834f0012a88bba2baa5de4060"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 17995,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-provisional.json",
+        "sha256": "d6d4f8c66e69a3fa8603c7037bdb00cedc616d136144b0faa1c777fd8e29ed2f"
+      }
+    },
+    {
+      "matches": true,
+      "pin": {
+        "bytes": 3039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/controls-output-v2/worker-revocation.json",
+        "sha256": "6421e547fc98077ab878f1791a648c28bd6f41a752757755cb6233aefbfe836b"
+      }
+    }
+  ],
+  "raw_reference_count": 391,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_reconciliation_passed": true,
+  "schema": "Q-full52-three-cold-attempts-saved-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scope_limits": [
+    "First attempt originalG/D is absent; meter timestamps are not substituted for that lost stage begin. Its output-directory absence is at that attempt, while later fresh attempt legitimately used same never-created leaf.",
+    "Second attempt all52 literal rows retained but no prefix admitted:20 passes+W01failure+30UNKNOWN+W16deferred. Whole ownership remains unconfirmed by denied ps observer.",
+    "Third attempt15 protocol surfaces are whole standalone saved observations; no complete suite result or reconstructed unsaved kernel/point/owned rows. Census has no accepted response or internal phase timings.",
+    "Internal408092672 bound differs from current external751026176 conservative terminal-caller bound. The latter fails allowed upper-bound512 predicate; this does not prove actual simultaneousRSS violation or establish kernel inclusion semantics.",
+    "All current original20/fullcontrols/model-fit/proof/search/selected/full24/trajectory/native/RL admissions remain false. W16 remains separately unactivated."
+  ]
+}

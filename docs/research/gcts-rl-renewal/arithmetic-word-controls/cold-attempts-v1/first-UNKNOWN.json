@@ -1,0 +1,31 @@
+{
+  "Q_payload_parses": 0,
+  "RL_accepted": false,
+  "accepted_prefix": false,
+  "actual_stdout": "ValueError: stdlib only; no filesystem project/pyc import\n",
+  "caller_native_elapsed_ns": 120960000,
+  "caller_terminal_peak_bytes": 22036480,
+  "controls_dispatched": 0,
+  "external_elapsed_ms": 298,
+  "external_observations": {
+    "bytes": 4492,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/full52_20261015_v1-external-observations.json",
+    "sha256": "c4ba1602c0219096f5bb6c7331d915a346c40247e07f2599487246a69a4e77aa"
+  },
+  "full_architecture_qualified": false,
+  "invocation_id": "full52_20261015_v1",
+  "native_caller_terminal_reaped": true,
+  "original20_qualified": false,
+  "original_G_or_D_saved": false,
+  "original_Q_theorem_accepted": false,
+  "original_limits_unchanged": true,
+  "output_directory_absent": true,
+  "reason": "Restricted loader omitted itertools required by exact original independent checker; failure during module loading before output directory and Q snapshots.",
+  "schema": "ROOT-full52-first-cold-controls-disposition-v1",
+  "status": "UNKNOWN",
+  "terminal_meter": {
+    "bytes": 1716,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-neutral-controls-progress-20261014/native-terminal-meter-v1.json",
+    "sha256": "19e95ea05e4bc8cb06664bbb9acf5780b43e3d9590bebf0c09ac07c96af34f36"
+  }
+}
