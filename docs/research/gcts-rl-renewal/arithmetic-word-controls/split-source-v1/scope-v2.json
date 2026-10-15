@@ -1,0 +1,97 @@
+{
+  "RL_advantage": false,
+  "actual_runs": 0,
+  "artifacts": [
+    {
+      "bytes": 20219,
+      "file": "producer.py",
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36",
+      "source": ".gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py"
+    },
+    {
+      "bytes": 5806,
+      "file": "codec.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+      "source": ".gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py"
+    },
+    {
+      "bytes": 42086,
+      "file": "verifier.py",
+      "sha256": "a5cfbe5c72ab617d1c98b1939c4d24aefc0e1c701e36b5fc141dc48bd1ea329b",
+      "source": ".gcts-active/arithmetic-Q-clean-verifier-protocol-source-20261014/Q_clean_word_verifier_v3.py"
+    },
+    {
+      "bytes": 1564,
+      "file": "producer-review.json",
+      "sha256": "e3b3da104dfdbab62a0e1aff146b4e93b1bda3262976fd2dd86fd80d53c4f16d",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/producer-typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 1873,
+      "file": "verifier-review.json",
+      "sha256": "e24eccc080fccf9165f86977a6a2f3b5de8e51abc457d676f2c1008e95c8df54",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/verifier-typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 1894,
+      "file": "codec-review.json",
+      "sha256": "71124f7c6ba681fee2a3d1ddb246e309a4e99535db05f3aefc0432490eef96de",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/codec-typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 62584,
+      "file": "controls-design.json",
+      "sha256": "2c0bc8a562c195d7ef0ccc7bc11889f7a35ae9ec4d0193172b30eb2add9b703d",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-controls-design-source-20261014/complete-fixtures-design-v1.json"
+    },
+    {
+      "bytes": 12502,
+      "file": "bootstrap.py",
+      "sha256": "7f6a091303f016c5ad732786c5e1ea76a85caf0c0700236187106f6d2e271857",
+      "source": ".gcts-active/arithmetic-Q-untrusted-producer-bootstrap-source-20261014/Q_untrusted_producer_bootstrap_v2.py"
+    },
+    {
+      "bytes": 2806,
+      "file": "bootstrap-review.json",
+      "sha256": "fa7231a0e80493eea4adabd8ab051c1b104137a5dd48fa6be0f70f6fe0b3f56d",
+      "source": ".gcts-active/arithmetic-Q-untrusted-bootstrap-independent-source-20261014/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 44921,
+      "file": "coordinator.py",
+      "sha256": "dfb8c4bddb17368aa6553274c48a28c8d42aa7ed5b83d4ce1b880afe816762be",
+      "source": ".gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v2.py"
+    },
+    {
+      "bytes": 2007,
+      "file": "coordinator-review.json",
+      "sha256": "5ea3fc1593b14f9ae93f3d39a2ad149c8de430435578d7644d978693f09b324c",
+      "source": ".gcts-active/arithmetic-Q-split-coordinator-diagnosis-review-source-20261014/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 5568,
+      "file": "launcher.py",
+      "sha256": "96b1799fde4605bfda699405ce11eefa0b74ab6bffb86fa470390c6388bd5d4b",
+      "source": ".gcts-active/arithmetic-Q-trusted-cold-launcher-source-20261014/Q_trusted_cold_launcher_v1.py"
+    },
+    {
+      "bytes": 2584,
+      "file": "launcher-review.json",
+      "sha256": "1f1b82b928288447eaba39d1ccb065d67d37e4e748a3e037ff8cc4e2aaaf309e",
+      "source": ".gcts-active/arithmetic-Q-trusted-launcher-diagnosis-review-source-20261014/typed-Source-review-v2.json"
+    }
+  ],
+  "fit": "UNMEASURED",
+  "mathematical_acceptance": false,
+  "new_theorems": 0,
+  "preserved_prior_scope": {
+    "bytes": 2591,
+    "file": "scope.json",
+    "sha256": "1ca211aaae96c55ccbd6bc1325b8af0eed7e59b1f709a538bacbbe0232e8e597"
+  },
+  "private_data_policy": "Only task-owned mathematical source, typed reviews and control designs attached; no full model payloads, runtime plans, unrelated files or system process tables.",
+  "remaining_clock_scope": "Initial interpreter/launcher compilation and time import before first native clock need external caller accounting; all subsequent coordinator source authentication/imports/data/both launches/search/check/output share original20e9 begin. No actual timing qualification.",
+  "review_scope": "All six prototype roles have current conditional independent Source passes. Current neutral52 runner frozen under separate review. Real control adapters/full model ownership/caller/resources/unsupplied search unearned; no old controls promotion.",
+  "schema": "Q-split-source-public-scope-v2",
+  "source_only": true
+}

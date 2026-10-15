@@ -1,0 +1,40 @@
+{
+  "schema": "Q-split-owned-coordinator-Source-review-v1",
+  "scope": "Q-split-owned-coordinator-Source",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v2.py",
+    "sha256": "dfb8c4bddb17368aa6553274c48a28c8d42aa7ed5b83d4ce1b880afe816762be",
+    "bytes": 44921
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Source-contract-v2.json",
+    "sha256": "804cb9df9573bfe983ab998c7daa4578f5129e1198b29fe19f4b2c663d9d8753",
+    "bytes": 11552
+  },
+  "sources": {
+    "coordinator": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v2.py",
+      "sha256": "dfb8c4bddb17368aa6553274c48a28c8d42aa7ed5b83d4ce1b880afe816762be",
+      "bytes": 44921
+    }
+  },
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "resource_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-coordinator-diagnosis-review-source-20261014/findings-v2.json",
+    "sha256": "05f2138e40ab6ebdc0165f7f07e57f1d5a41590635f30a249cd9d622d04856fa",
+    "bytes": 39771
+  },
+  "check_count": 89,
+  "concrete_blocker_ids": [],
+  "dependency_authorship_disclosed": true,
+  "scope_is_coordinator_not_dependency_mathematical_admission": true,
+  "whole_Source_read_and_full_inverse": true,
+  "conditional_scope": "Current coordinator Source V2 only. Early trusted launcher/current controls/actual plans/cold fit/owned caller/mathematical result acceptance remain pending; no functions or tests executed."
+}

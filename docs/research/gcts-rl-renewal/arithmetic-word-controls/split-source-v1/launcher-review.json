@@ -1,0 +1,47 @@
+{
+  "schema": "Q-trusted-cold-launcher-typed-Source-review-v1",
+  "scope": "Whole raw/AST Source launch binding and clock/accounting, conditional on separate coordinator/current controls/owned-caller acceptance; no actual activation.",
+  "author_identity": "/root/arithmetic_induction",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-cold-launcher-source-20261014/Q_trusted_cold_launcher_v1.py",
+    "sha256": "96b1799fde4605bfda699405ce11eefa0b74ab6bffb86fa470390c6388bd5d4b",
+    "bytes": 5568
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-cold-launcher-source-20261014/source-contract-v1.json",
+    "sha256": "f227200b265f103f392ceffa633087e07fd30f0eb881fcab299f9c6e02cebb80",
+    "bytes": 7669
+  },
+  "coordinator_source": {
+    "bytes": 44921,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-coordinator-source-20261014/Q_split_owned_coordinator_v2.py",
+    "sha256": "dfb8c4bddb17368aa6553274c48a28c8d42aa7ed5b83d4ce1b880afe816762be"
+  },
+  "sources": {
+    "launcher": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-cold-launcher-source-20261014/Q_trusted_cold_launcher_v1.py",
+      "sha256": "96b1799fde4605bfda699405ce11eefa0b74ab6bffb86fa470390c6388bd5d4b",
+      "bytes": 5568
+    }
+  },
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "resource_acceptance": false,
+  "dependency_authorship_disclosed": true,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-launcher-diagnosis-review-source-20261014/findings-v2.json",
+    "sha256": "20ce9e0ea9dd216aba076d47f613904aa29ec7cd9a78dba8f3cc99d8782b6fa4",
+    "bytes": 24876
+  },
+  "check_count": 45,
+  "conditional_scope": "Whole launcher Source/AST/raw loading and clock binding only. Actual controls/runtime/caller/resources/fit/independent word primary acceptance remain pending.",
+  "preserved_typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-trusted-launcher-diagnosis-review-source-20261014/typed-Source-review-v1.json",
+    "sha256": "630fabec4b3dc12e0fef883a607330e830e397acb658b5fba151500dd3cf8024",
+    "bytes": 2269
+  }
+}

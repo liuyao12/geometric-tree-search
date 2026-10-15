@@ -14,7 +14,7 @@
 <main id="progress">
 <p class="eyebrow">Parallel work · Code and review progress</p>
 <h1>Let search propose; let a separate checker decide.</h1>
-<p class="scope-note"><strong>Current result:</strong> the full-model search and clean verifier have been implemented as source prototypes. The repaired verifier and lossless loader passed independent static review. Coordinator integration, the cold launcher and meaningful controls are still being qualified. This architecture has had \(0\) actual search runs and has discovered \(0\) new theorems. Resource fit and a GCTS/RL advantage are unmeasured.</p>
+<p class="scope-note"><strong>Current result:</strong> the full-model search and clean verifier have been implemented as source prototypes. The current producer, loader, bootstrap, repaired verifier, coordinator and cold launcher passed conditional independent static review. Real control adapters, whole-model ownership and measured controls remain pending. This architecture has had \(0\) actual search runs and has discovered \(0\) new theorems. Resource fit and a GCTS/RL advantage are unmeasured.</p>
 <p>Parallel agents now cover implementation and independent review. Each review names its author and exact source version. A reviewed source is ready for the next qualification step; it is not an executed test or a mathematical result. The existing five failed attempts keep their original outcomes and budgets.</p>
 <svg class="architecture" viewBox="0 0 900 310" role="img" aria-labelledby="architecture-title architecture-description">
 <title id="architecture-title">Separate search, coordinator and mathematical verifier</title>
@@ -35,9 +35,10 @@
 <tr><td>Search producer</td><td>Full original point graph, canonical base candidates, first complete target ancestry, exact rollback claims; no supplied proof, library, learned ranking or RL.</td><td class="status">Conditional independent source pass. No actual run.</td></tr>
 <tr><td>Lossless loader</td><td>One full original model parse, storage sharing that preserves values, types, order and repeated occurrences. Raw data is released before parsing.</td><td class="status">Conditional independent source pass. Memory and time unmeasured.</td></tr>
 <tr><td>Clean verifier</td><td>Fresh process; pinned independent semantic checker; original declaration supplied by the coordinator. Complete primitive word and prior references checked.</td><td class="status">Independent source review accepts the current repairs. Actual protocol controls pending.</td></tr>
-<tr><td>Coordinator and launcher</td><td>Authenticated input snapshots, read-only descriptors, complete response trailers, process reaping, aggregate costs and output inventory.</td><td class="review">Implemented source under review. Cold entry and integration still being qualified.</td></tr>
-<tr><td>Controls</td><td>\(52\) designed cases: \(20\) unrelated kernel words, \(16\) hard-target protocol or rejection cases, \(8\) point/scheduler cases, and \(8\) ownership/full-data obligations.</td><td class="review">Runner implementation in progress. No actual outcomes attached.</td></tr>
+<tr><td>Coordinator and launcher</td><td>Authenticated input snapshots, read-only descriptors, complete response trailers, process reaping, aggregate costs and output inventory.</td><td class="review">Conditional independent source passes. Cold integration and actual caller/resource closure remain pending.</td></tr>
+<tr><td>Controls</td><td>\(52\) designed cases: \(20\) unrelated kernel words, \(16\) hard-target protocol or rejection cases, \(8\) point/scheduler cases, and \(8\) ownership/full-data obligations.</td><td class="review">Runner source frozen under review. Missing protocol, point and ownership adapters remain explicitly unexercised.</td></tr>
 </tbody></table></div>
+<p>Integration review also found two coordinator defects: response lines were not required to use canonical bytes, and the completed ownership ledger lacked a same-buffer hash. Both were repaired and independently reviewed. The cold launcher now supplies the original native clock before coordinator source loading; the bootstrap uses the same clock API. Initial interpreter and first-clock startup still require external caller accounting, so no complete cold timing qualification is inferred.</p>
 <p>Independent review found three defects in the first verifier: a Boolean could satisfy one integer-limit comparison; a live callback lacked an immediate caller anchor; and the JSON suffix check admitted extra whitespace characters. Additive repairs preserve the earlier negative findings. This is a concrete benefit of dividing implementation from review; it does not demonstrate better proof search.</p>
 </section>
 <section id="target">
@@ -58,8 +59,9 @@ It uses the original addition theory, empty indexed hypothesis sequence \(\Gamma
 </section>
 <section id="evidence">
 <h2>Inspect the exact source and review records</h2>
-<p>The attached records describe source qualifications and design. They contain no new executed search result. <a href="split-source-v1/scope.json">Artifact scope and exact hashes</a>.</p>
+<p>The attached records describe source qualifications and design. They contain no new executed search result. <a href="split-source-v1/scope-v2.json">Artifact scope and exact hashes</a>.</p>
 <p><a href="split-source-v1/producer.py">Candidate producer</a> · <a href="split-source-v1/codec.py">Lossless loader</a> · <a href="split-source-v1/verifier.py">Repaired clean verifier</a> · <a href="split-source-v1/producer-review.json">Independent producer review</a> · <a href="split-source-v1/verifier-review.json">Independent verifier review</a> · <a href="split-source-v1/codec-review.json">Independent loader review</a> · <a href="split-source-v1/controls-design.json">Full control design</a></p>
+<p><a href="split-source-v1/bootstrap.py">Producer bootstrap</a> · <a href="split-source-v1/coordinator.py">Owned coordinator</a> · <a href="split-source-v1/launcher.py">Cold launcher</a> · <a href="split-source-v1/bootstrap-review.json">Bootstrap review</a> · <a href="split-source-v1/coordinator-review.json">Coordinator review</a> · <a href="split-source-v1/launcher-review.json">Launcher review</a></p>
 <p><a href="reader.html#integration-checkpoint">Latest measured failure and all saved controls</a> · <a href="../index.html#goals">Research goals</a></p>
 </section>
 </main>
