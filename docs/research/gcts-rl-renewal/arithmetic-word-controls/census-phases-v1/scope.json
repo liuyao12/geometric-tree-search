@@ -1,0 +1,162 @@
+{
+  "census_source_and_review": "../parallel-oct15-v1/scope-v2.json",
+  "diagnostic_invocation_count": 1,
+  "files": {
+    "ROOT-authorization.json": {
+      "bytes": 4579,
+      "sha256": "7b1930834a01793dfb2cecd27d7921005be02b1c039234ff1a00bc9ccc9c8c2f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-scoped-authorization-v1.json"
+    },
+    "ROOT-disposition.json": {
+      "bytes": 5216,
+      "sha256": "d10e5aa51dec74043f7ecaf38e6b0a20878345045657ba60fcaec46c48eb8590",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-disposition-v1.json"
+    },
+    "ROOT-output-inventory.json": {
+      "bytes": 14198,
+      "sha256": "700c45ff6fa5d0504d7dbeeb0763ac0d79e58875db3523a14793c8800abde50a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-output-inventory-v1.json"
+    },
+    "ROOT-plan.json": {
+      "bytes": 21560,
+      "sha256": "4584e5e3183487e913d14e2e0cd299401b4ca96cdcd582fa4b33096fd72b010f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-plan-v1.json"
+    },
+    "actual/census-diagnostic-post-write.json": {
+      "bytes": 8360,
+      "sha256": "3051b49626e4628de602d557f4c0801295fd6ea3db0039f960379c8e6c2eff56",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-diagnostic-post-write.json"
+    },
+    "actual/census-diagnostic-result.json": {
+      "bytes": 28225,
+      "sha256": "552ad9b91548bd38d98cd83ff0c512a1b5fd59220bb8416789334ed1144fa38c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-diagnostic-result.json"
+    },
+    "actual/census-manifest.json": {
+      "bytes": 4082,
+      "sha256": "ee12b013f79183952431b5d3268eaba71822df7bbd8660c8a83b18587441382d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-manifest.json"
+    },
+    "actual/census-only-early-caller-observation.json": {
+      "bytes": 43924,
+      "sha256": "a500209e2dd6fd41eecce17b0b4ecb03e3c4ee98fdf17dc7ea69f71a2e7b7abc",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-only-early-caller-observation.json"
+    },
+    "actual/census-owned-ledger.json.gz": {
+      "bytes": 5607,
+      "sha256": "072268a6cbbcae46e71f2a205c7dc06f4bc2e01f1702150f859816ee8f4d73ae",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-owned-ledger.json.gz"
+    },
+    "actual/whole-cold-census/census-phases.jsonl": {
+      "bytes": 4553,
+      "sha256": "e8e184c6baf5979749b12b3a678c2b795304f3e2282deeab9aa923ad5b913c50",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-phases.jsonl"
+    },
+    "actual/whole-cold-census/census-response.jsonl": {
+      "bytes": 7786,
+      "sha256": "81b12d4123d29fe69597fee7f680b605181e03e4e2d424c349cc6be92be29db7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-response.jsonl"
+    },
+    "actual/whole-cold-census/producer-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/producer-stderr.txt"
+    },
+    "actual/whole-cold-census/producer-stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/producer-stdout.txt"
+    },
+    "caller-controller-findings.json": {
+      "bytes": 15693,
+      "sha256": "b4d4d2d782f28f47d135bdcb13e4c703d1fb342f5f2f653a34022a84a9959ece",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/findings-v1.json"
+    },
+    "caller-review.json": {
+      "bytes": 3228,
+      "sha256": "34558755afa071d3ce064c317aa27242bbf641c2a18ea4f46b83351c2aef735b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/caller-typed-Source-review-v1.json"
+    },
+    "caller.py": {
+      "bytes": 38074,
+      "sha256": "6320c7bd8ffa37ce1eb8cc90e519ae00c59d3d4fdb9181f0bdc18201c9759115",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_trusted_early_cold_caller_v1.py"
+    },
+    "common-contract.json": {
+      "bytes": 22465,
+      "sha256": "0b674cefe8bdb26784951de32dffee08c3e02152b03d981db8fd60830e19a51f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Source-contract-v1.json"
+    },
+    "controller-review.json": {
+      "bytes": 2902,
+      "sha256": "fec301b470b403d7c303bbc32127f33e1c1ec75b49b6fd49fc11b6baad448a1b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/controller-typed-Source-review-v1.json"
+    },
+    "controller.py": {
+      "bytes": 55979,
+      "sha256": "7783f5617cb68bf82757217959d98c2f59b54f9adc513d964bc2e86cd56c6a2a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_diagnostic_controller_v1.py"
+    },
+    "external-observations.json": {
+      "bytes": 5990,
+      "sha256": "c0136f23f5d7c8826a517825e1c2474d182d2f6b81b08a68d3d997bcd6bb8b19",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/external-observations-v1.json"
+    },
+    "external-observer-contract.json": {
+      "bytes": 2055,
+      "sha256": "5ebe58f0874b5e80dff076a26b532d33bde90653e9aafc5b082870f316e3f94a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-source-20261015/Source-contract-v1.json"
+    },
+    "external-observer-findings.json": {
+      "bytes": 4102,
+      "sha256": "cb8f4915b6a8ee5483f704dc7cbd63096095fc4914630ac87d85fa2a8d3c92ef",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-independent-source-20261015/findings-v1.json"
+    },
+    "external-observer-review.json": {
+      "bytes": 2226,
+      "sha256": "6ebeee5920e93f54743e34ea1f6b633fa0aacd4aa62d19ccba00805ffe9af8cf",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-independent-source-20261015/typed-Source-review-v1.json"
+    },
+    "external-observer.js": {
+      "bytes": 7514,
+      "sha256": "c596e17f44edb66fa822ca263e2c1331f3792e5abd92c7a0adbe55a0a31b3e90",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-source-20261015/observe_actual_cold_census_phases_v1.js"
+    },
+    "independent-findings.json": {
+      "bytes": 20677,
+      "sha256": "f6e83da18246cf310c98f082ab700dad69a469b7422199ca8269a67027dc88e2",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-saved-independent-20261015/findings-v2.json"
+    },
+    "independent-handoff.json": {
+      "bytes": 846,
+      "sha256": "5491a94cf7f0f4b4f0969c3c77e92b89503ad2cf51f5fe9a3d06fdc37ba8d617",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-saved-independent-20261015/handoff-v2.json"
+    },
+    "native-terminal.json": {
+      "bytes": 1709,
+      "sha256": "efffd8108e226c54046108b6985704e71c5f3407e27e49aaff7489d0e85bdd8c",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/native-terminal-v1.json"
+    },
+    "phase-intervals.json": {
+      "bytes": 5217,
+      "sha256": "9637ab2caa7721b2f71c757901fc5a99aee928d59c69abc3af5ba7f5085262c4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-phase-intervals-v1.json"
+    },
+    "plan-review.json": {
+      "bytes": 2587,
+      "sha256": "a318563c3016bb6571696eeb0308308ad997ace28eb183fa58f034ee897e3da4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/concrete-plan-findings-v1.json"
+    }
+  },
+  "new_theorems": 0,
+  "original_snapshot_count": 23,
+  "original_snapshots_published_again": false,
+  "original_snapshots_raw_hash_inventory": "ROOT-output-inventory.json",
+  "paired_interval_count": 19,
+  "phase_event_count": 38,
+  "prior_outcomes_changed": false,
+  "production_memory_gate_changed": false,
+  "proof_search_runs": 0,
+  "schema": "census-phase-diagnostic-publication-scope-v1",
+  "scope": "One fresh complete timely census-phase diagnostic; unchanged external additive memory gate remains UNKNOWN. No proof search, theorem, speedup, full52 qualification, memory admission or retrospective reclassification."
+}

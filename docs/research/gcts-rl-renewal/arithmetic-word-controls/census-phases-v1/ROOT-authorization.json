@@ -1,0 +1,69 @@
+{
+  "Q_payload_parses_in_metadata": 0,
+  "actual_invocations_authorized": 1,
+  "all_strong_acceptance_false": true,
+  "author_identity": "/root",
+  "caller_source": {
+    "bytes": 38074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_trusted_early_cold_caller_v1.py",
+    "sha256": "6320c7bd8ffa37ce1eb8cc90e519ae00c59d3d4fdb9181f0bdc18201c9759115"
+  },
+  "current_reviews": {
+    "caller": {
+      "bytes": 3228,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/caller-typed-Source-review-v1.json",
+      "sha256": "34558755afa071d3ce064c317aa27242bbf641c2a18ea4f46b83351c2aef735b"
+    },
+    "census": {
+      "bytes": 3459,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-typed-Source-review-v1.json",
+      "sha256": "d678401ead894323ed06d898206bd6bd3209268e2f2ca422bcb8020fbee463d4"
+    },
+    "controller": {
+      "bytes": 2902,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-review-source-20261015/controller-typed-Source-review-v1.json",
+      "sha256": "fec301b470b403d7c303bbc32127f33e1c1ec75b49b6fd49fc11b6baad448a1b"
+    },
+    "coordinator": {
+      "bytes": 2196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/typed-Source-review-v1.json",
+      "sha256": "016e2d78db0e42ac1d86ef7e2234fe0f26b0a3d296caa3ad789cf1d6764a14a4"
+    }
+  },
+  "external_JS": {
+    "bytes": 7514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-source-20261015/observe_actual_cold_census_phases_v1.js",
+    "sha256": "c596e17f44edb66fa822ca263e2c1331f3792e5abd92c7a0adbe55a0a31b3e90"
+  },
+  "external_contract": {
+    "bytes": 2055,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-source-20261015/Source-contract-v1.json",
+    "sha256": "5ebe58f0874b5e80dff076a26b532d33bde90653e9aafc5b082870f316e3f94a"
+  },
+  "external_review": {
+    "bytes": 2226,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "6ebeee5920e93f54743e34ea1f6b633fa0aacd4aa62d19ccba00805ffe9af8cf"
+  },
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "output_child_absent": true,
+  "project_Source_functions_in_metadata": 0,
+  "root_plan": {
+    "bytes": 21560,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "4584e5e3183487e913d14e2e0cd299401b4ca96cdcd582fa4b33096fd72b010f"
+  },
+  "schema": "ROOT-census-phase-once-only-actual-authorization-v1",
+  "scope": "One fresh separate census-phase-only diagnostic with exact reviewed caller/controller1/census3/external1. Unchanged original whole input8/source7 and Source9 context, neutral full24/O08 checks, coordinator6/runtime/global-clock and caps. No W16 late branch/hold/verifier or theorem search/word. Normal complete child/census/38phase header+footer/EOF/cleanup/output/caller true exit and native final observation must precede originalG+20;55 failure-only cleanup/evidence, owned60/caller90+finish1. Current additive terminalK+child-lifetime-overlapC+observerO <=512MiB remains unchanged. No proposed cutoff or retrospective reclassification. Root acceptance false until whole saved reconciliation; partial diagnostic data can identify work but grants no accepted prefix.",
+  "source_contract": {
+    "bytes": 22465,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Source-contract-v1.json",
+    "sha256": "0b674cefe8bdb26784951de32dffee08c3e02152b03d981db8fd60830e19a51f"
+  },
+  "whole_raw_authentication_passed": true,
+  "whole_raw_closure_count": 37
+}

@@ -1,0 +1,112 @@
+{
+  "schema": "ROOT-Q-census-phase-only-actual-tool-observations-v1",
+  "caller_source": {
+    "bytes": 38074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-diagnostic-source-20261015/Q_census_only_trusted_early_cold_caller_v1.py",
+    "sha256": "6320c7bd8ffa37ce1eb8cc90e519ae00c59d3d4fdb9181f0bdc18201c9759115"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "root_plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "4584e5e3183487e913d14e2e0cd299401b4ca96cdcd582fa4b33096fd72b010f",
+    "bytes": 21560
+  },
+  "external_terminal_meter": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+    "bytes": 6734
+  },
+  "external_terminal_meter_output": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/native-terminal-v1.json",
+  "terminal_meter_parse_and_raw_EOF_authentication_pending": true,
+  "started_ms": 1792089073233,
+  "terminal_observed_ms": 1792089088978,
+  "completed_observation_ms": 1792089089065,
+  "elapsed_ms": 15832,
+  "finish_reserve_ms": 1000,
+  "actual_terminal_observed": true,
+  "actual_exit_code": 0,
+  "unfinished_session_id": null,
+  "post_terminal_native_probe_complete": true,
+  "unfinished_probe_session_id": null,
+  "post_terminal_native_output": "{\"CLOCK_DOMAIN\":\"time.clock_gettime_ns(time.CLOCK_MONOTONIC)\",\"ROOT_resource_accepted\":false,\"clock_id\":6,\"observed_ns\":428897016233000,\"schema\":\"ROOT-Q-post-terminal-native-observation-v1\"}\n",
+  "post_terminal_native_integer_parse_and_census_original20_gate_pending": true,
+  "wall_clock_brackets_valid": true,
+  "external_owned60_candidate": true,
+  "external_caller90_with_finish1_candidate": true,
+  "observations": [
+    {
+      "kind": "exec_command",
+      "observed_ms": 1792089077209,
+      "result": {
+        "chunk_id": "648280",
+        "wall_time_seconds": 1.003456084,
+        "session_id": 61633,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "kind": "write_stdin",
+      "session_id": 61633,
+      "observed_ms": 1792089082214,
+      "result": {
+        "chunk_id": "ba20fa",
+        "wall_time_seconds": 5.003787958,
+        "session_id": 61633,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "kind": "write_stdin",
+      "session_id": 61633,
+      "observed_ms": 1792089087218,
+      "result": {
+        "chunk_id": "c1601f",
+        "wall_time_seconds": 5.0021155,
+        "session_id": 61633,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "kind": "write_stdin",
+      "session_id": 61633,
+      "observed_ms": 1792089088978,
+      "result": {
+        "chunk_id": "83d299",
+        "wall_time_seconds": 1.759467083,
+        "exit_code": 0,
+        "original_token_count": 89,
+        "output": "{\"ROOT_primary_accepted\":false,\"ROOT_resource_accepted\":false,\"census_diagnostic_complete\":true,\"run_directory\":\"/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1\",\"schema\":\"Q-census-only-early-caller-terminal-notice-v1\",\"status\":\"CENSUS_ONLY_COMPLETE_UNADMITTED\"}\n"
+      }
+    },
+    {
+      "kind": "caller_terminal_boundary",
+      "observed_ms": 1792089088978
+    },
+    {
+      "kind": "post_terminal_native_exec",
+      "observed_ms": 1792089089065,
+      "result": {
+        "chunk_id": "3b3744",
+        "wall_time_seconds": 0.000006416,
+        "exit_code": 0,
+        "original_token_count": 48,
+        "output": "{\"CLOCK_DOMAIN\":\"time.clock_gettime_ns(time.CLOCK_MONOTONIC)\",\"ROOT_resource_accepted\":false,\"clock_id\":6,\"observed_ns\":428897016233000,\"schema\":\"ROOT-Q-post-terminal-native-observation-v1\"}\n"
+      }
+    }
+  ],
+  "scope": "Census-phase-only cold diagnostic: complete original snapshots, full neutral model with original24/O08 checks, complete bounded phase sidecar, actual child success, cleanup/output/caller exit and genuine post-terminal native observation must all precede original G+20 for normal completion. Failure G+55 is reserved only for cleanup and preserving unknown evidence. No W16 late control, proof search, supplied theorem word, full52 qualification or original-model resource fit is granted. External Date wall includes approval/startup, interpreter and first-clock setup, true caller exit, native meter printing and post-terminal pinned-Python observation; caller90+finish1 and owned60 remain unchanged. The terminal meter is descendant-inclusive: Root separately recomputes the unchanged conservative terminal caller plus complete child-lifetime overlap plus serialized observer bound against512MiB. Instrument memory is excluded like tool execution; all wall overhead is charged. No earlier smaller SELF sample or proposed two-epoch rule is substituted. Only the initial exec requests native process-accounting access for the genuine Owner observer. This Source alone authorizes no actual invocation. Every gate remains false until current distinct Source review, a concrete Root-only original-census plan/authorization, real execution and whole saved reconciliation.",
+  "ROOT_resource_accepted": false,
+  "ROOT_primary_accepted": false,
+  "full52_qualified": false,
+  "original_Q_theorem_accepted": false,
+  "successful20_stage": false,
+  "census_phase_observation_pending": true,
+  "actual_invocation_only_if_ROOT_runs_later": true
+}

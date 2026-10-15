@@ -1,0 +1,81 @@
+{
+  "schema": "census-only-concrete-plan-independent-check-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "Q_payload_parses": 0,
+  "native_clocks_called": 0,
+  "check_count": 11,
+  "checks": [
+    {
+      "id": "exact_Root_frozen_plan_scope_pins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "literal_fifteen_field_purpose_Root_once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "source9_exact_current_literals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "input8_original7_runtime_limits_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole37_raw_canonical_paths",
+      "passed": true,
+      "detail": "Whole raw bytes SHA/length only; no Q preparation/state/oracle decode."
+    },
+    {
+      "id": "all_required_named_capsules_closed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "caller_common_contract_authorization_current",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "four_genuine_current_review_ABIs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "current_external_observer_review_contract_meter_clock_closed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "canonical_fresh_absent_owned_child",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "new_external_native_outputs_absent",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-plan-v1.json",
+    "bytes": 21560,
+    "sha256": "4584e5e3183487e913d14e2e0cd299401b4ca96cdcd582fa4b33096fd72b010f"
+  },
+  "authorization": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-scoped-authorization-v1.json",
+    "bytes": 4579,
+    "sha256": "7b1930834a01793dfb2cecd27d7921005be02b1c039234ff1a00bc9ccc9c8c2f"
+  },
+  "raw_closure_count": 37,
+  "scope": "Exact current fifteen-field plan/purpose/role/review/contract/raw-caps/freshness check only. No new Source/function/Q/native clock/test/actual plan/execution. ROOT owns actual authorization and run.",
+  "runtime_acceptance": false,
+  "resource_rule": "Unchanged coordinator6 additive terminal caller plus complete child overlap plus serialized observer. No cutoff/two-epoch proposal or prior failure reclassification."
+}

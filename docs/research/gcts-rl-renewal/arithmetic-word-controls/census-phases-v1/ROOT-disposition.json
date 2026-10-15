@@ -1,0 +1,98 @@
+{
+  "Q_payload_parses_in_reconciliation": 0,
+  "ROOT_primary_accepted": false,
+  "ROOT_resource_accepted": false,
+  "RSS_samples": 156,
+  "aggregate_allowance_bytes": 536870912,
+  "all23_original_snapshots_raw_match": true,
+  "all_known_processes_reaped": true,
+  "author_identity": "/root",
+  "authorization": {
+    "bytes": 4579,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-scoped-authorization-v1.json",
+    "sha256": "7b1930834a01793dfb2cecd27d7921005be02b1c039234ff1a00bc9ccc9c8c2f"
+  },
+  "both_O08_controls_reject": true,
+  "caller_observation": {
+    "bytes": 43924,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-only-early-caller-observation.json",
+    "sha256": "a500209e2dd6fd41eecce17b0b4ecb03e3c4ee98fdf17dc7ea69f71a2e7b7abc"
+  },
+  "census_child_launch_elapsed_ns": 881019000,
+  "census_child_lifetime_ns": 11476690000,
+  "census_child_reaped_elapsed_ns": 12357709000,
+  "cleanup_errors": [],
+  "complete_child_lifetime_overlap_peak_bytes": 374947840,
+  "complete_cold_census_and_phase_observed": true,
+  "controller_result": {
+    "bytes": 28225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-diagnostic-result.json",
+    "sha256": "552ad9b91548bd38d98cd83ff0c512a1b5fd59220bb8416789334ed1144fa38c"
+  },
+  "external": {
+    "bytes": 5990,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/external-observations-v1.json",
+    "sha256": "c0136f23f5d7c8826a517825e1c2474d182d2f6b81b08a68d3d997bcd6bb8b19"
+  },
+  "external_finish_reserve_ms": 1000,
+  "external_wall_ms": 15832,
+  "failure_deadline": 428939131133000,
+  "full52_qualified": false,
+  "internal_postwrite_SELF_based_diagnostic_bytes": 406536192,
+  "ledger": {
+    "bytes": 5607,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/census-owned-ledger.json.gz",
+    "sha256": "072268a6cbbcae46e71f2a205c7dc06f4bc2e01f1702150f859816ee8f4d73ae"
+  },
+  "leftovers": [],
+  "native_caller_exit_code": 0,
+  "native_caller_pid": 21791,
+  "native_observers_reaped": 158,
+  "native_terminal": {
+    "bytes": 1709,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/native-terminal-v1.json",
+    "sha256": "efffd8108e226c54046108b6985704e71c5f3407e27e49aaff7489d0e85bdd8c"
+  },
+  "new_theorems": 0,
+  "next": "Test one prospective bounded factor C-encoder candidate while retaining every whole state/domain/row/omission traversal. Witness phases are the largest grouped elapsed category but also include I/O/hash; parsing is largest single phase. No isolated serializer attribution, optimization speed or GCTS/RL benefit is proved. Keep current memory gate and all earlier UNKNOWN outcomes until separately qualified prospective repair.",
+  "no_actual_simultaneous_memory_violation_inferred": true,
+  "normal_time_gate_met": true,
+  "original_D": 428904131133000,
+  "original_G": 428884131133000,
+  "original_model_resource_fit": false,
+  "phase_events": 38,
+  "phase_intervals": {
+    "bytes": 5217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-phase-intervals-v1.json",
+    "sha256": "9637ab2caa7721b2f71c757901fc5a99aee928d59c69abc3af5ba7f5085262c4"
+  },
+  "phase_pairs": 19,
+  "phase_wire_bytes": 4553,
+  "post_terminal_native_elapsed_ns": 12885100000,
+  "producer_exit_code": 0,
+  "producer_pid": 21792,
+  "project_Source_functions_in_reconciliation": 0,
+  "proof_search_runs": 0,
+  "proposed_two_epoch_rule_used": false,
+  "reporting_errata": [
+    "Source template retains source_functions_are_actual_only_if_Root_runs_later=true; actual external/native invocation and saved output prove this run executed.",
+    "Call tape covers declared pre-receipt/through-result-read boundary, not every final return step; post/caller/native records close the later lifecycle."
+  ],
+  "root_plan": {
+    "bytes": 21560,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "4584e5e3183487e913d14e2e0cd299401b4ca96cdcd582fa4b33096fd72b010f"
+  },
+  "row_count": 24,
+  "schema": "ROOT-census1-reconciled-v1",
+  "serialized_observer_max_bytes": 2490368,
+  "status": "COMPLETE_TIMELY_PHASE_DIAGNOSTIC_RESOURCE_UNKNOWN",
+  "successful20_stage": false,
+  "terminal_caller_inclusive_peak_bytes": 374947840,
+  "unchanged_external_additive_bound_bytes": 752386048,
+  "whole_output_inventory": {
+    "bytes": 14198,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/ROOT-output-inventory-v1.json",
+    "sha256": "700c45ff6fa5d0504d7dbeeb0763ac0d79e58875db3523a14793c8800abde50a"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "census_child_lifetime_ns": 11476690000,
+  "event_span_ns": 11322073000,
+  "grouped_totals_ns": {
+    "PointGraph_constructor": 1785452000,
+    "all_other_measured_phases": 83084000,
+    "repeated_witness_serialization_comparison_hashing": 5376308000,
+    "semantic_state": 240018000,
+    "whole_preparation_parse": 3829354000
+  },
+  "intervals": [
+    {
+      "begin_ns": 428885071223000,
+      "begin_sequence": 0,
+      "elapsed_ns": 171000,
+      "end_ns": 428885071394000,
+      "phase": "manifest_read_parse"
+    },
+    {
+      "begin_ns": 428885071411000,
+      "begin_sequence": 2,
+      "elapsed_ns": 397000,
+      "end_ns": 428885071808000,
+      "phase": "source_auth_load"
+    },
+    {
+      "begin_ns": 428885071827000,
+      "begin_sequence": 4,
+      "elapsed_ns": 37545000,
+      "end_ns": 428885109372000,
+      "phase": "source_auth_load"
+    },
+    {
+      "begin_ns": 428885109419000,
+      "begin_sequence": 6,
+      "elapsed_ns": 21604000,
+      "end_ns": 428885131023000,
+      "phase": "preparation_raw_read"
+    },
+    {
+      "begin_ns": 428885131074000,
+      "begin_sequence": 8,
+      "elapsed_ns": 14350000,
+      "end_ns": 428885145424000,
+      "phase": "lossless_decode"
+    },
+    {
+      "begin_ns": 428885145471000,
+      "begin_sequence": 10,
+      "elapsed_ns": 3829354000,
+      "end_ns": 428888974825000,
+      "phase": "whole_preparation_parse"
+    },
+    {
+      "begin_ns": 428888974909000,
+      "begin_sequence": 12,
+      "elapsed_ns": 1785452000,
+      "end_ns": 428890760361000,
+      "phase": "PointGraph_constructor"
+    },
+    {
+      "begin_ns": 428890760479000,
+      "begin_sequence": 14,
+      "elapsed_ns": 240018000,
+      "end_ns": 428891000497000,
+      "phase": "semantic_state"
+    },
+    {
+      "begin_ns": 428891000548000,
+      "begin_sequence": 16,
+      "elapsed_ns": 8866000,
+      "end_ns": 428891009414000,
+      "phase": "parsed_original_state_comparison"
+    },
+    {
+      "begin_ns": 428891016395000,
+      "begin_sequence": 18,
+      "elapsed_ns": 644101000,
+      "end_ns": 428891660496000,
+      "phase": "first_complete_state_witness"
+    },
+    {
+      "begin_ns": 428891660535000,
+      "begin_sequence": 20,
+      "elapsed_ns": 606332000,
+      "end_ns": 428892266867000,
+      "phase": "first_complete_domain_witness"
+    },
+    {
+      "begin_ns": 428892266912000,
+      "begin_sequence": 22,
+      "elapsed_ns": 567032000,
+      "end_ns": 428892833944000,
+      "phase": "all24_row_hashes"
+    },
+    {
+      "begin_ns": 428892833977000,
+      "begin_sequence": 24,
+      "elapsed_ns": 586337000,
+      "end_ns": 428893420314000,
+      "phase": "omission_view_hash"
+    },
+    {
+      "begin_ns": 428893420348000,
+      "begin_sequence": 26,
+      "elapsed_ns": 593849000,
+      "end_ns": 428894014197000,
+      "phase": "omission_view_comparison"
+    },
+    {
+      "begin_ns": 428894014260000,
+      "begin_sequence": 28,
+      "elapsed_ns": 584391000,
+      "end_ns": 428894598651000,
+      "phase": "omission_view_hash"
+    },
+    {
+      "begin_ns": 428894598786000,
+      "begin_sequence": 30,
+      "elapsed_ns": 588771000,
+      "end_ns": 428895187557000,
+      "phase": "omission_view_comparison"
+    },
+    {
+      "begin_ns": 428895187588000,
+      "begin_sequence": 32,
+      "elapsed_ns": 615720000,
+      "end_ns": 428895803308000,
+      "phase": "final_complete_state_recomparison"
+    },
+    {
+      "begin_ns": 428895803339000,
+      "begin_sequence": 34,
+      "elapsed_ns": 589775000,
+      "end_ns": 428896393114000,
+      "phase": "final_complete_domain_recomparison"
+    },
+    {
+      "begin_ns": 428896393145000,
+      "begin_sequence": 36,
+      "elapsed_ns": 151000,
+      "end_ns": 428896393296000,
+      "phase": "complete_response_serialization_write"
+    }
+  ],
+  "pair_count": 19,
+  "schema": "ROOT-census1-native-phase-intervals-v1",
+  "source_log": {
+    "bytes": 4553,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-cold-progress-20261015/owned-output-v1/whole-cold-census/census-phases.jsonl",
+    "sha256": "e8e184c6baf5979749b12b3a678c2b795304f3e2282deeab9aa923ad5b913c50"
+  },
+  "sum_measured_interval_ns": 11314216000,
+  "timing_scope": "Paired native elapsed intervals include phase logging/checks and phase-specific I/O/hash/canonicalization. Parent setup, unmeasured gaps and tail are not an exhaustive partition. These are not isolated JSON CPU measurements, matched implementation timings or speedup evidence.",
+  "totals_by_phase_ns": {
+    "PointGraph_constructor": 1785452000,
+    "all24_row_hashes": 567032000,
+    "complete_response_serialization_write": 151000,
+    "final_complete_domain_recomparison": 589775000,
+    "final_complete_state_recomparison": 615720000,
+    "first_complete_domain_witness": 606332000,
+    "first_complete_state_witness": 644101000,
+    "lossless_decode": 14350000,
+    "manifest_read_parse": 171000,
+    "omission_view_comparison": 1182620000,
+    "omission_view_hash": 1170728000,
+    "parsed_original_state_comparison": 8866000,
+    "preparation_raw_read": 21604000,
+    "semantic_state": 240018000,
+    "source_auth_load": 37942000,
+    "whole_preparation_parse": 3829354000
+  }
+}

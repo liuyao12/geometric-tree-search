@@ -1,0 +1,31 @@
+{
+  "API": "observeActualColdCensusPhases({runtime,caller,root_plan,external_meter_output,cwd})",
+  "ROOT_resource_accepted": false,
+  "actual_invocations": 0,
+  "actual_plans": 0,
+  "author_identity": "/root",
+  "exact_external_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "memory_gate": "unchanged descendant-inclusive terminalK + complete child-overlapC + serialized observerO <=536870912; all actual admissions false pending Root reconciliation",
+  "normal_completion_required": "originalG+20 through child completion, complete phase footer/EOF and caller/native observation; G+55 failure-only, owned60 and caller90+finish1 unchanged",
+  "parent_source": {
+    "bytes": 7471,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+    "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+  },
+  "proofs_discovered": 0,
+  "review_required": true,
+  "schema": "Q-census-phase-only-external-native-observer-contract-v1",
+  "scientific_calls": 0,
+  "scope": "Q-census-phase-only-external-native-observer-Source",
+  "source": {
+    "bytes": 7514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-external-observer-source-20261015/observe_actual_cold_census_phases_v1.js",
+    "sha256": "c596e17f44edb66fa822ca263e2c1331f3792e5abd92c7a0adbe55a0a31b3e90"
+  },
+  "source_delta": "Only function/schema/permission prose/pending label/scope comments change; genuine meter2 CLI7, tool sequence/polls, Date brackets, native postterminal probe and exact output capture remain inherited. No authored/project Source function, Q parse, clock, test or actual is executed in this authoring.",
+  "source_only": true
+}

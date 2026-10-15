@@ -1,0 +1,19 @@
+{
+  "schema": "census-only-actual1-saved-independent-handoff-v2",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-saved-independent-20261015/findings-v2.json",
+    "bytes": 20677,
+    "sha256": "f6e83da18246cf310c98f082ab700dad69a469b7422199ca8269a67027dc88e2"
+  },
+  "retained_findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-only-saved-independent-20261015/findings-v1.json",
+    "bytes": 18159,
+    "sha256": "6e24475fab161f5b07f7217cb1869e0b9daf6c1560c41f7573324263fa19b8f0"
+  },
+  "check_count": 42,
+  "all_saved_reconciliation_checks_passed": true,
+  "timely_complete_census_phase_observed": true,
+  "CURRENT_resource_gate": false,
+  "overall_acceptance": false,
+  "scientific_calls": 0
+}
