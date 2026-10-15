@@ -1,0 +1,31 @@
+--- pre-freeze-prospective-R-witness-negative-v0.py
++++ verify_3cnf_catalogue_case_v1.py
+@@ -229,7 +229,9 @@
+                 'marked_singleton_observations': 0}
+     first_exclusion, first_effect = None, None
+     _, _, ordered_candidates, _ = _model_parts(marked_model)
++    _, _, _, baseline_named = _model_parts(baseline_model)
+     for event_index, event in enumerate(result['trace']):
++        _need(type(event) is dict and type(event.get('kind')) is str, 'complete raw point trace event')
+         if event['kind'] != 'graph':
+             continue
+         _fields(event, ('state', 'point_candidates', 'candidate_points', 'dependencies', 'frontier_generations'))
+@@ -255,10 +257,16 @@
+         if first_exclusion is None and excluded:
+             name, base, ports = next(c for c in ordered_candidates if c[0] in excluded)
+             p = next(p for p, value in sorted(ports.items()) if p in marked_marks and marked_marks[p] != value)
+-            _need(p not in baseline_marks or baseline_marks[p] == ports[p], 'actual m-conflict witness is compatible in baseline')
++            baseline_ports = baseline_named[name][1]
++            _need(p not in baseline_ports or p not in baseline_marks or baseline_marks[p] == baseline_ports[p],
++                  'baseline candidate is compatible using its own actual port definition')
+             first_exclusion = {'graph_event_index': event_index, 'candidate_id': name,
+                 'support_point': list(base), 'selected_prefix': [list(row) for row in prefix],
+-                'conflicting_m_port': list(p), 'candidate_value': ports[p], 'marked_state_value': marked_marks[p],
++                'conflicting_m_port': list(p),
++                'marked_candidate_port_assigned': True, 'marked_candidate_value': ports[p],
++                'baseline_candidate_port_assigned': p in baseline_ports,
++                'baseline_candidate_value': baseline_ports[p] if p in baseline_ports else None,
++                'marked_state_port_assigned': True, 'marked_state_value': marked_marks[p],
+                 'baseline_port_assigned': p in baseline_marks,
+                 'baseline_state_value': baseline_marks[p] if p in baseline_marks else None,
+                 'marked_state_port_origins': origins[p],

@@ -1,0 +1,264 @@
+{
+  "RL_used": false,
+  "all_completed": true,
+  "case_count": 70,
+  "cases_with_extra_exclusions": [
+    "T000",
+    "T009",
+    "T020",
+    "T049",
+    "T060",
+    "T069"
+  ],
+  "cases_with_selected_units": [
+    "T000",
+    "T009",
+    "T020",
+    "T049",
+    "T060",
+    "T069"
+  ],
+  "catalogue_jsonl_bytes": 73402899,
+  "catalogue_jsonl_sha256": "1f89077b19026a4c02b1da2f3243922a76b41e5faf7b1b047f10b2208e3702c7",
+  "cost_scope": "One cold suite. Replay build+solve+per-result checking; library measured once. Separate whole-case verification, source/runtime/output/exit overhead. L+arm subtotals are accounting only, not separate measured cold runs. External meter memory excluded.",
+  "discovery_solves": 420,
+  "empty_singleton_split": {
+    "ordinary_learned": {
+      "empty": {
+        "outcomes": {
+          "FOUND": 70
+        },
+        "timing_ns": {
+          "build_ns": 186000,
+          "check_ns": 18717000,
+          "inclusive_ns": 22081000,
+          "solve_ns": 3178000
+        },
+        "work": {
+          "assignments": 236,
+          "branch_decisions": 158,
+          "conflicts": 13,
+          "literal_checks": 3696,
+          "restores": 236,
+          "unit_decisions": 65
+        }
+      },
+      "singleton": {
+        "outcomes": {
+          "EXHAUSTED_FINITE_CNF": 6,
+          "FOUND": 414
+        },
+        "timing_ns": {
+          "build_ns": 1137000,
+          "check_ns": 94156000,
+          "inclusive_ns": 110992000,
+          "solve_ns": 15699000
+        },
+        "work": {
+          "assignments": 984,
+          "branch_decisions": 528,
+          "conflicts": 84,
+          "literal_checks": 16944,
+          "restores": 984,
+          "unit_decisions": 378
+        }
+      }
+    },
+    "ordinary_no": {
+      "empty": {
+        "outcomes": {
+          "FOUND": 70
+        },
+        "timing_ns": {
+          "build_ns": 251000,
+          "check_ns": 19945000,
+          "inclusive_ns": 23855000,
+          "solve_ns": 3659000
+        },
+        "work": {
+          "assignments": 243,
+          "branch_decisions": 163,
+          "conflicts": 16,
+          "literal_checks": 3756,
+          "restores": 243,
+          "unit_decisions": 64
+        }
+      },
+      "singleton": {
+        "outcomes": {
+          "EXHAUSTED_FINITE_CNF": 6,
+          "FOUND": 414
+        },
+        "timing_ns": {
+          "build_ns": 1502000,
+          "check_ns": 99655000,
+          "inclusive_ns": 118509000,
+          "solve_ns": 17352000
+        },
+        "work": {
+          "assignments": 1020,
+          "branch_decisions": 546,
+          "conflicts": 96,
+          "literal_checks": 17280,
+          "restores": 1020,
+          "unit_decisions": 384
+        }
+      }
+    },
+    "point_learned": {
+      "empty": {
+        "outcomes": {
+          "FOUND": 70
+        },
+        "timing_ns": {
+          "build_ns": 5235000,
+          "check_ns": 323015000,
+          "inclusive_ns": 439363000,
+          "solve_ns": 111113000
+        },
+        "work": {
+          "backtracks": 26,
+          "branch_decisions": 158,
+          "forced_placements": 637
+        }
+      },
+      "singleton": {
+        "outcomes": {
+          "EXHAUSTED_FINITE_MARKED_MODEL": 6,
+          "FOUND": 414
+        },
+        "timing_ns": {
+          "build_ns": 31715000,
+          "check_ns": 1845091000,
+          "inclusive_ns": 2526576000,
+          "solve_ns": 649770000
+        },
+        "work": {
+          "backtracks": 192,
+          "branch_decisions": 528,
+          "forced_placements": 4200
+        }
+      }
+    },
+    "point_no": {
+      "empty": {
+        "outcomes": {
+          "FOUND": 70
+        },
+        "timing_ns": {
+          "build_ns": 5335000,
+          "check_ns": 329240000,
+          "inclusive_ns": 444352000,
+          "solve_ns": 109777000
+        },
+        "work": {
+          "backtracks": 34,
+          "branch_decisions": 163,
+          "forced_placements": 637
+        }
+      },
+      "singleton": {
+        "outcomes": {
+          "EXHAUSTED_FINITE_MARKED_MODEL": 6,
+          "FOUND": 414
+        },
+        "timing_ns": {
+          "build_ns": 31482000,
+          "check_ns": 1852606000,
+          "inclusive_ns": 2534875000,
+          "solve_ns": 650787000
+        },
+        "work": {
+          "backtracks": 234,
+          "branch_decisions": 546,
+          "forced_placements": 4212
+        }
+      }
+    }
+  },
+  "finite_cohort_accepted": true,
+  "full70case_order_coverage_footer_hash_EOF_verified": true,
+  "full_master_conformance": false,
+  "goal_remains_active": true,
+  "held_out_generalization": false,
+  "independent_saved_check_count": 7755,
+  "independent_saved_findings": {
+    "bytes": 658899,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/saved-findings-v1.json",
+    "sha256": "ffdbcda07f8703704d4ac57fddd89677e47e719cec91bbf22024cfa5f10606db"
+  },
+  "independent_saved_reconciliation_passed": true,
+  "independent_saved_review": {
+    "bytes": 4257,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/saved-review-v1.json",
+    "sha256": "f9b522ca04093099aeff5931e4cdb2d8f9ef9a1e49fc41269bc1aa570d5bc5ac"
+  },
+  "invocation": 1,
+  "library_discovery_and_certification_ns": 2509516000,
+  "marking_effect_totals": {
+    "additional_exclusion_observations": 36,
+    "baseline_legal_candidate_observations": 81421,
+    "baseline_singleton_observations": 12977,
+    "baseline_zero_domain_observations": 91,
+    "graph_observations": 6104,
+    "marked_legal_candidate_observations": 81385,
+    "marked_singleton_observations": 13001,
+    "marked_zero_domain_observations": 97,
+    "reduced_domain_observations": 36,
+    "singletons_created_observations": 30,
+    "zero_domains_created_observations": 6
+  },
+  "native_all_reaped": true,
+  "native_pid": 53322,
+  "native_terminal_elapsed_ns": 12759901000,
+  "native_terminal_peak_bytes": 36323328,
+  "new_arithmetic_or_Hilbert_theorem": false,
+  "next": "Return this proven finite propagation mechanism to authenticated symbolic proof prefixes and reusable receptor/lemma families. Keep independent checking and an ordinary equal-information baseline; no further easy-cohort speedup claim.",
+  "observed_outcomes": {
+    "discovery": {
+      "EXHAUSTED_FINITE_MARKED_MODEL": 6,
+      "FOUND": 414
+    },
+    "ordinary_learned": {
+      "EXHAUSTED_FINITE_CNF": 6,
+      "FOUND": 484
+    },
+    "ordinary_no": {
+      "EXHAUSTED_FINITE_CNF": 6,
+      "FOUND": 484
+    },
+    "point_learned": {
+      "EXHAUSTED_FINITE_MARKED_MODEL": 6,
+      "FOUND": 484
+    },
+    "point_no": {
+      "EXHAUSTED_FINITE_MARKED_MODEL": 6,
+      "FOUND": 484
+    }
+  },
+  "ordinary_trace_audits": 980,
+  "original_Q_qualification_changed": false,
+  "other_suite_overhead_ns": 1178482000,
+  "per_arm_replay_inclusive_ns": {
+    "ordinary_learned": 133073000,
+    "ordinary_no": 142364000,
+    "point_learned": 2965939000,
+    "point_no": 2979227000
+  },
+  "point_trace_audits": 1400,
+  "post_terminal_from_launch_ns": 12803883000,
+  "previous_turn_classification": "progress",
+  "replay_solves": 1960,
+  "saved_review_authorship_disclosure": "Reviewer authored catalogue checker, prior raw point auditor and Boolean/ordinary independent helpers; this is a separate saved-byte/data custody reconciliation, not a new distinct Source or mathematical review.",
+  "saved_review_scope": "All72 JSONL records and EOF; all70ordered cases;420discovery+1960replay statuses/audits/proposals; saved oracle/model witness joins; all summary/timing/work sums/rotation/shadow aggregates and recorded first-conflict/effect evidence.",
+  "saved_trace_events": 84751,
+  "schema": "ROOT-fixed-3CNF-catalogue-disposition-v1",
+  "scientific_reexecution_in_this_saved_review": 0,
+  "selected_unit_count": 6,
+  "source_pins_still_exact": true,
+  "statistical_speedup": false,
+  "tool_elapsed_ms": 12925,
+  "universal_Wang_set": false,
+  "unknown_count": 0,
+  "whole_case_verification_ns": 2851300000
+}

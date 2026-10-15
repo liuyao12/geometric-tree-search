@@ -1,0 +1,100 @@
+{
+  "RL_used": false,
+  "UNKNOWN": "Never learns a clause, accepts a witness or refutation from UNKNOWN. Any incomplete solve makes cohort UNKNOWN; budget/output/process failure retains evidence and forbids silent rerun.",
+  "arm_order": "ordinary_no,ordinary_learned,point_no,point_learned rotated by (case_index+boundary_index)%4",
+  "case_count": 70,
+  "catalogue": "Every lexicographic four-element subset of masks0..7; mask bit(2-i) is variable i literal satisfying value; T000..T069; no supplied answers.",
+  "cost_scope": "One cold worker, six modules loaded once. Includes original oracle, all discovery/certification, replay build/solve/result checks, independent whole-case/shadow verification, streaming hashes/serialization/output and genuine native process exit. Common library cost is measured once; L+arm subtotals are not independent cold lifecycles. External meter memory excluded.",
+  "discovery": "Every singleton [Xi=b], i=0,1,2 and b=0,1. Fresh original point model for each. Only complete finite exhaustion proposes the negation of the entire singleton; certify original-F truth and retain first2 distinct non-original clauses. Retain all proposals and UNKNOWNs.",
+  "discovery_solves": 420,
+  "held_out_generalization": false,
+  "inputs": {
+    "catalogue_verifier": {
+      "bytes": 25659,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639"
+    },
+    "engine": {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "oracle": {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "ordinary": {
+      "bytes": 7393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    },
+    "point_auditor": {
+      "bytes": 18005,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    "verifier": {
+      "bytes": 30551,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    }
+  },
+  "invocation": 1,
+  "master_contract": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "maximum_candidates": 256,
+  "maximum_case_bytes": 8388608,
+  "maximum_learned_clauses": 2,
+  "maximum_output_bytes": 134217728,
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "not_claimed": [
+    "full point contract qualification",
+    "fixed universal Wang compiler",
+    "unconstrained marking-support synthesis",
+    "hierarchical receptor learning",
+    "new arithmetic or Hilbert theorem",
+    "statistical speedup",
+    "plane tiling"
+  ],
+  "ordinary_information": "Same selected certified clauses supplied to ordinary_learned; ordinary_no originals only.",
+  "ordinary_limits": {
+    "maximum_literal_checks": 500000,
+    "maximum_nodes": 20000,
+    "maximum_trace_events": 50000
+  },
+  "original_Q_qualification_changed": false,
+  "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-ROOT-20261015/actual-1",
+  "point_limits": {
+    "maximum_candidate_checks": 500000,
+    "maximum_nodes": 20000,
+    "maximum_trace_events": 50000
+  },
+  "replay": "Empty boundary then all6 discovery singleton boundaries, in each of4 arms; fresh state/model each solve; library frozen per original F.",
+  "replay_solves": 1960,
+  "runner": {
+    "bytes": 18070,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-runner-source-20261015/run_catalogue_v1.py",
+    "sha256": "ea604c9333a781291d51b9fa72b0585c4944d0a6f71ea514e3864c823e6b8a28"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "same_point_inventory": "Full original plus learned tuple/guard inventory in both arms; original R always active; only learned R assigned0 versus absent differs.",
+  "schema": "ROOT-fixed-3CNF-catalogue-plan-v1",
+  "shadow": "After search, recompose baseline and marked models at identical selected IDs+seed using each variant own candidate markings, compare complete t/m domains and reverse graph. No marked-state m-copy into baseline. Record repeated exclusion observations and exact first conflict witness, plus degree0/1 effects. Never used to guide search.",
+  "streaming": "Exclusive canonical JSONL header, all70 verified cases, digest/count completion footer and EOF; release each case before next; summary has70 small rows.",
+  "whole_native_seconds": 40,
+  "whole_tool_seconds": 60,
+  "worker_peak_bytes": 536870912,
+  "worker_seconds": 40
+}

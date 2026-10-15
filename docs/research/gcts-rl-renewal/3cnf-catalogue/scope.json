@@ -1,0 +1,124 @@
+{
+  "Q_qualification_changed": false,
+  "RL_used": false,
+  "Root_editorial_successor": "Clarify trace-audit cost; translate all316 saved event variable assignments/candidate meanings without inference or checking; fit actual figures on narrow screens.",
+  "Root_saved_display_annotations": {
+    "project_functions_executed": 0,
+    "rows": 316,
+    "source": "Exact first saved T000 case and all6 saved selected discovery_result arrays; immutable raw events retained unchanged."
+  },
+  "files": {
+    "ROOT-Source-review.json": {
+      "bytes": 2527,
+      "sha256": "bc1939f90f1658f4c210c59d7d4cff429c06198c64a44b14f0f3a1689a170863"
+    },
+    "boolean_cnf_truth_oracle_v1.py": {
+      "bytes": 8821,
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "catalogue-results.jsonl.gz": {
+      "bytes": 3015177,
+      "sha256": "09d8a6dde3e45e16e7d4d9019921c7df2bdb9a3a50eb9a9cb08825098dc4d41f"
+    },
+    "checker-Source-contract.json": {
+      "bytes": 10392,
+      "sha256": "f0630c5b4c0c43c6d980cbcdf8bf618c9461572e5c38fb1878d2541c30e56b82"
+    },
+    "disposition.json": {
+      "bytes": 8081,
+      "sha256": "6362c51a7be694211280efa691ceffc4162eec63a6de884d7fb8a9f9b4f543b6"
+    },
+    "external-observation.json": {
+      "bytes": 2554,
+      "sha256": "764ebf9c34dc201cad02fc32a1a236cff0c19226bffb57f4a2716e6f885822d2"
+    },
+    "findings.json": {
+      "bytes": 658899,
+      "sha256": "ffdbcda07f8703704d4ac57fddd89677e47e719cec91bbf22024cfa5f10606db"
+    },
+    "finite_unit_point_gcts_v1.py": {
+      "bytes": 15493,
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "independent-saved-review.json": {
+      "bytes": 4257,
+      "sha256": "f9b522ca04093099aeff5931e4cdb2d8f9ef9a1e49fc41269bc1aa570d5bc5ac"
+    },
+    "independent_nogood_verifier_v1.py": {
+      "bytes": 30551,
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    },
+    "native-terminal.json": {
+      "bytes": 1668,
+      "sha256": "4cfc015d36e92eeaffa448428d5f7a8fd0e79df8db4fb0351794ce4c8c513e3c"
+    },
+    "ordinary_cnf_dpll_v1.py": {
+      "bytes": 7393,
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    },
+    "peer-Source-review.json": {
+      "bytes": 16825,
+      "sha256": "b76abfa892aa061ee109d4b63dcbdeb8519980760beefb86fb5bb1837519b5a0"
+    },
+    "plan.json": {
+      "bytes": 6182,
+      "sha256": "c093eb651c849e893d34b31a8f6bf66e80125843354e5d04d86ab3f582ee6528"
+    },
+    "pre-freeze-witness-fix.patch": {
+      "bytes": 2255,
+      "sha256": "5a195d86154ee85f871074bf367c662715bcae2d4f6e35dfe8c91b95703f3642"
+    },
+    "raw_point_trace_auditor_v1.py": {
+      "bytes": 18005,
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    "reader.html": {
+      "bytes": 3448676,
+      "sha256": "7a1aa148f92c0e870d45637e3a0d44058938edff0b44eb0f6bc1efd5ee556771"
+    },
+    "report-data.json": {
+      "bytes": 1038751,
+      "sha256": "fdc0409b69bb02e75bfe5547652ab4d9ab7e43206ad4aab5ea8e659774734cd8"
+    },
+    "run_catalogue_v1.py": {
+      "bytes": 18070,
+      "sha256": "ea604c9333a781291d51b9fa72b0585c4944d0a6f71ea514e3864c823e6b8a28"
+    },
+    "runner-Source-contract.json": {
+      "bytes": 12484,
+      "sha256": "e197aa2fef755dd9038d8787454c9d93c618cef4ccb0bf547868c9abdbd33e73"
+    },
+    "selected-certificates.json": {
+      "bytes": 1488330,
+      "sha256": "a54b51b4de080264d19ccc338939537309aefd344266a5f86f0f85620603abbc"
+    },
+    "summary.json": {
+      "bytes": 116348,
+      "sha256": "4d9f72328f72d31f3b7609f79b511bff5725802bce7f56c8f4af48869bdff87e"
+    },
+    "verify_3cnf_catalogue_case_v1.py": {
+      "bytes": 25659,
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639"
+    }
+  },
+  "frozen_reader_input": {
+    "bytes": 3410450,
+    "sha256": "e271de02510e1db42b3ca70f2d74d9d99d9695e381934a7f6a259e9de9d331d9"
+  },
+  "full_point_contract_qualified": false,
+  "goal_remains_active": true,
+  "new_arithmetic_or_Hilbert_theorem": false,
+  "purpose": "Complete finite learned-unit marking mechanism; same selected prefix shadow and actual four-arm search costs.",
+  "raw_results_gzip_roundtrip": {
+    "bytes": 73402899,
+    "complete_header_70cases_footer_EOF": true,
+    "sha256": "1f89077b19026a4c02b1da2f3243922a76b41e5faf7b1b047f10b2208e3702c7"
+  },
+  "saved_evidence_only_report": true,
+  "schema": "fixed-3CNF-catalogue-publication-scope-v1",
+  "source_plan": {
+    "bytes": 6182,
+    "sha256": "c093eb651c849e893d34b31a8f6bf66e80125843354e5d04d86ab3f582ee6528"
+  },
+  "statistical_speedup": false
+}

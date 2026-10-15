@@ -1,0 +1,185 @@
+{
+  "schema": "fixed-3CNF-catalogue-streaming-runner-Source-contract-v1",
+  "author_identity": "/root/arithmetic_induction",
+  "source_only": true,
+  "execution_status": "UNEXECUTED",
+  "scientific_calls": 0,
+  "source": {
+    "path": ".gcts-active/propositional-3cnf-catalogue-runner-source-20261015/run_catalogue_v1.py",
+    "sha256": "ea604c9333a781291d51b9fa72b0585c4944d0a6f71ea514e3864c823e6b8a28",
+    "bytes": 18070
+  },
+  "inputs": {
+    "engine": {
+      "path": ".gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3",
+      "bytes": 15493
+    },
+    "oracle": {
+      "path": ".gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472",
+      "bytes": 8821
+    },
+    "point_auditor": {
+      "path": ".gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a",
+      "bytes": 18005
+    },
+    "ordinary": {
+      "path": ".gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3",
+      "bytes": 7393
+    },
+    "verifier": {
+      "path": ".gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea",
+      "bytes": 30551
+    },
+    "catalogue_verifier": {
+      "path": ".gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639",
+      "bytes": 25659
+    }
+  },
+  "master_reference": {
+    "path": "docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "prior_pilot_runner": {
+    "path": ".gcts-active/propositional-learned-nogood-ROOT-20261015/run_comparison_v1.py",
+    "sha256": "ddb5c7cc4ad291599adc1fc77ea7eec649bcccaffcc78e8a01a17d28143dc5e2",
+    "bytes": 13504
+  },
+  "CLI": "Pinned Python -I -S -B absolute/run_catalogue_v1.py absolute/ROOT-plan-v1.json; sole runtime argument is frozen plan path.",
+  "plan_schema": "ROOT-fixed-3CNF-catalogue-plan-v1",
+  "required_plan_fields": {
+    "schema": "ROOT-fixed-3CNF-catalogue-plan-v1",
+    "invocation": "exact positive integer",
+    "inputs": "exact six-role raw-pin dictionary above; each role SHA/bytes hardcoded",
+    "runner": "exact executing Source raw pin; path matches __file__",
+    "output_directory": "ROOT-created absolute existing empty directory; exclusive xb outputs",
+    "worker_seconds": 40,
+    "whole_native_seconds": 40,
+    "whole_tool_seconds": 60,
+    "worker_peak_bytes": 536870912,
+    "case_count": 70,
+    "discovery_solves": 420,
+    "replay_solves": 1960,
+    "maximum_candidates": 256,
+    "maximum_learned_clauses": 2,
+    "point_limits": {
+      "maximum_nodes": 20000,
+      "maximum_candidate_checks": 500000,
+      "maximum_trace_events": 50000
+    },
+    "ordinary_limits": {
+      "maximum_nodes": 20000,
+      "maximum_literal_checks": 500000,
+      "maximum_trace_events": 50000
+    },
+    "maximum_output_bytes": "positive exact integer <=536870912; JSONL plus summary complete bytes",
+    "maximum_case_bytes": "positive exact integer <=maximum_output_bytes; every full JSONL record"
+  },
+  "raw_pin": {
+    "path": "absolute Source path",
+    "sha256": "exact raw SHA256",
+    "bytes": "exact positive integer, Source <=1MiB"
+  },
+  "extra_plan_metadata": "Permitted and preserved in header; ROOT owns actual Source/review/runtime/native-meter/master pins and actual authorization. No supplied answers, learned clauses or proof routes.",
+  "fixed_catalogue": {
+    "case_count": 70,
+    "case_ids": "T000..T069",
+    "generation": "itertools.combinations(range(8),4), lexicographic four-element subsets, no exclusions or outcome-based ordering",
+    "mask_bits": "for i in 0,1,2: (mask >> (2-i)) & 1; signed literal +1 for bit1 and -1 for bit0, literal ports always i order",
+    "case_exact_value_shape": {
+      "id": "Tddd",
+      "variables": 3,
+      "clauses": "four generated signed three-literal clauses",
+      "prefixes": []
+    },
+    "formula_latex": "\\(F=\\bigwedge_{c=0}^{3}\\bigvee_{i=0}^{2}(X_i=b_{c,i})\\)",
+    "answers_supplied": false
+  },
+  "discovery": {
+    "boundaries": "[[[0,0]],[[0,1]],[[1,0]],[[1,1]],[[2,0]],[[2,1]]] in exact i,b order",
+    "solves_per_case": 6,
+    "whole_solves": 420,
+    "fresh_model": "Original four-clause point model, all original guards active, no learned gadgets or hypotheses.",
+    "proposal_rule": "Only complete EXHAUSTED_FINITE_MARKED_MODEL roots propose the negation of the WHOLE singleton boundary. No partial failure, learned restriction or deleted assumption qualifies.",
+    "certification": "Compute original oracle truth set once; independently certify candidate against every original satisfying assignment, with no hardcoded nonvacuity/expected learned count. The separate case verifier recomputes original semantics.",
+    "selection": "First two distinct normalized non-original certified clauses in discovery order, maximum two; may select zero or one. Preserve all six outcomes and every exhausted-root proposal.",
+    "UNKNOWN": "Retain raw trace/result/audit and never propose. No accepted witness or finite-exhaustion claim."
+  },
+  "replay": {
+    "boundaries": "empty boundary first, then the same six singleton boundaries",
+    "arms": [
+      "ordinary_no",
+      "ordinary_learned",
+      "point_no",
+      "point_learned"
+    ],
+    "rotation": "(catalogue_index+boundary_index)%4, rotate fixed arm tuple; never outcome/timing dependent",
+    "solves_per_case": 28,
+    "whole_solves": 1960,
+    "ordinary_no": "Only four original clauses.",
+    "ordinary_learned": "Original clauses followed by exactly selected clauses.",
+    "point_inventory": "Both arms contain exactly the same entire bit/tuple/guard inventory for original+selected clauses, including all forbidden tuples. Original guards active in both; only extra guard m assignments absent versus zero differ.",
+    "freshness": "Each model/state/solve fresh; pinned modules loaded once for this single cohort worker.",
+    "semantics": "First finite satisfying assignment or complete finite exhaustion or UNKNOWN, with seed boundary. Ordinary and point work units remain separate."
+  },
+  "independent_checks": {
+    "point_per_result": "Unchanged pinned raw point auditor audit_result, with allow_unknown exactly matching result status; original oracle witness/status check.",
+    "ordinary_per_result": "Unchanged prior pinned verifier.verify_ordinary_result plus original oracle witness/status check.",
+    "whole_case": "New pinned catalogue_verifier.verify_case(case, prior_verifier.verify_ordinary_result), exact six discovery and28 replay wires, complete original declaration/truths/learning/provenance/inventory/audits; raises on failure.",
+    "required_case_audit": "valid_saved_case is True; all_boundaries_completed exact bool; unknown_count exact nonnegative int. Runner independently counts raw UNKNOWNs and requires exact agreement. UNKNOWN alone may remain a valid saved prefix.",
+    "shadow_analysis": "The new verifier recomposes identical selected placement IDs under baseline and marked definitions. Baseline removes learned R marks from BOTH selected state union and tested candidates. Counts are repeated observations, not unique candidates or proof the baseline search reaches that prefix.",
+    "case_wire_fields": [
+      "catalogue_index",
+      "original",
+      "discovery_boundaries",
+      "discovery",
+      "discovery_audits",
+      "proposal_log",
+      "learned",
+      "replay_boundaries",
+      "arms",
+      "point_arm_audits",
+      "ordinary_arm_audits",
+      "original_oracle",
+      "execution_order",
+      "timings"
+    ],
+    "proposal_index_field": "discovery_boundary_index"
+  },
+  "streaming_outputs": {
+    "catalogue-results.jsonl": {
+      "encoding": "Canonical sort_keys JSON, compact separators, ensure_ascii, no NaN; one newline per record; complete EOF. One case C-encoded at a time, no full-suite result list/string.",
+      "header_schema": "fixed-3CNF-catalogue-header-v1",
+      "case_schema": "fixed-3CNF-catalogue-case-record-v1",
+      "case_fields": "case, independent_verification, case_verification_ns plus schema; whole case verified before write.",
+      "footer_schema": "fixed-3CNF-catalogue-completion-v1",
+      "footer": "Exactly70 sequential verified case lines; observed solve counts recomputed from summary outcomes and asserted420/1960. Rolling case-line SHA/bytes exclude header/footer; preceding SHA/bytes include header+70case lines; terminal footer is not a native process-exit certificate.",
+      "partial_rule": "Any exception, deadline or output cap can preserve a prefix/partial line but cannot yield accepted whole cohort. ROOT must require full footer, summary, EOF and true successful native terminal."
+    },
+    "summary.json": "Exactly70 lightweight rows; original/learned outcome counters, four timing+work rows and shadow totals. Full per-boundary shadows/traces are ONLY in JSONL case records. Complete JSONL SHA/bytes include footer; whole output byte cap includes summary.",
+    "stdout": "One compact status/count/total-output-bytes line; fresh deadline/memory sampling follows stdout flush. ROOT authenticates actual terminal separately."
+  },
+  "cost_and_retention": {
+    "clock": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+    "begin": "Native begin immediately after first time import, before remaining imports/Source authentication/compile/modules/setup. External ROOT caller additionally accounts interpreter and time import startup plus finish.",
+    "deadline": "Absolute40s from this original begin, never reset. Checks before/after Source load, oracle, solves/audits, whole-case verification and output; no claim of continuous preemption inside unchanged callees. External terminal40s gate mandatory.",
+    "memory": "Pinned Darwin ru_maxrss bytes sampled at every deadline, cap512MiB. Full true terminal native peak/caller closure mandatory; no other child process exists. No fit measured or guaranteed by Source.",
+    "charged": "All original truth computation, discovery, certification, four-arm fresh builds/searches/per-result checks, repeated independent ordinary checks in whole-case verification, shadow analysis, canonical JSON serialization, writes/flush, summary and stdout.",
+    "retention": "At most one full case+audit+one bounded encoded JSONL record, small frozen modules and70 summary rows. Every written case/audit/local row is released before next iteration; rows retain only small learned records, counters/timings/shadow totals. No entire cohort array.",
+    "time_accounting": "Nested case/arm/phase clocks are reported for interpretation, never added on top of enclosing native duration. Shared learning cost is counted once per learned strategy for first-use comparisons, not multiplied into actual physical cohort cost.",
+    "fairness": "Cohort shares module loading, fresh per-solve state, fixed work caps, same semantic boundary and checker. Different ordinary/point counter units and padding/check costs remain explicit; one observation cannot establish reproducible speedup."
+  },
+  "scope": "Finite three-variable same-context failure-clause learning calibration and ordinary comparator. No Q qualification, RL, held-out transfer, full point-engine contract, fixed Wang universality, general theorem proof route or measured speedup.",
+  "remaining_gates": [
+    "Distinct whole runner and new catalogue-verifier Source reviews.",
+    "ROOT-authored actual frozen plan, native meter/caller and explicit40s/512MiB acceptance.",
+    "Actual whole70 lines+footer/EOF+summary/native terminal and independent saved reconciliation; all2380 solves/UNKNOWNs retained."
+  ],
+  "authorship_disclosure": "Runner and prior ordinary DPLL authored by arithmetic; new independent case/ordinary verifier authored by controls, engine by diagnosis. Runner author does not self-review its solver semantics; future distinct reviewer must preserve attribution."
+}

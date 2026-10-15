@@ -1,0 +1,126 @@
+{
+  "schema": "finite-3CNF-catalogue-independent-checker-Source-contract-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+    "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639",
+    "bytes": 25659
+  },
+  "raw_references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "point_engine": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3",
+      "bytes": 15493
+    },
+    "point_auditor": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a",
+      "bytes": 18005
+    },
+    "original_oracle": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472",
+      "bytes": 8821
+    },
+    "ordinary": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3",
+      "bytes": 7393
+    },
+    "ordinary_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea",
+      "bytes": 30551
+    }
+  },
+  "API": "verify_case(case, ordinary_check) -> independent-3CNF-catalogue-case-audit-v1; ValueError on a defective wire. ordinary_check must be the exact ROOT-authenticated prior verify_ordinary_result callable, not supplied by case data.",
+  "catalogue": {
+    "declaration": "All seventy lexicographically ordered four-subsets of masks 0..7; each mask gives one three-literal clause on variables 0,1,2 with satisfying bits in big-endian variable order. A bit one maps to sign +1, zero to sign -1. Independently generate exact original {id:T000..T069,variables:3,clauses:[four ordered signed clauses],prefixes:[]}. No case-data Source input is required.",
+    "discovery": "Exactly six singleton boundaries in variable then bit order. Original full point model, original guards active, no learned gadgets during discovery. Preserve every raw outcome/audit.",
+    "selection": "Only complete root EXHAUSTED may negate its entire singleton boundary. Independently check original-context entailment, retain all exhausted proposals, choose first two new distinct non-original clauses at most; never propose from UNKNOWN.",
+    "replay": "Empty boundary then the same six singleton boundaries, each in all four arms. Both point arms retain the identical padded original+learned tuple/guard inventory; original guards always active, learned R marks present only in learned arm. Ordinary arms use absent/exactly the same certified clauses.",
+    "scope": "One case has 6 discovery plus 28 replay solve slots. ROOT must enforce catalogue_index 0..69 exactly once in order and same global policy across streamed lines, yielding 420 discovery plus 1960 replay slots. A per-case check does not itself certify the complete cohort."
+  },
+  "case_wire": {
+    "required": [
+      "catalogue_index",
+      "original",
+      "discovery_boundaries",
+      "discovery",
+      "discovery_audits",
+      "proposal_log",
+      "learned",
+      "replay_boundaries",
+      "arms",
+      "point_arm_audits",
+      "ordinary_arm_audits",
+      "original_oracle"
+    ],
+    "metadata": "Extra metadata such as execution_order and timings allowed, without timing/resource authority.",
+    "proposal_and_learned": "Proposal uses discovery_boundary_index,clause,is_original,is_duplicate,entailed,selected; learned uses clause,discovery_boundary_index. Clauses sorted by variable index, signs exact +1/-1. Extra per-record metadata allowed.",
+    "audits": "ROOT obtains point reports by separately invoking exact raw point auditor on the corresponding immutable wires. This checker recomputes original truth sets and point inventories; it invokes the exact supplied prior ordinary checker for every ordinary result and compares saved reports.",
+    "return": "valid_saved_case is True only after scope checks. all_boundaries_completed is a literal Boolean false if any discovery/replay UNKNOWN remains. unknown_count is exact; UNKNOWN alone is not a defect and never supplies a clause, refutation or accepted witness."
+  },
+  "marking_effect": {
+    "scope": "Post-solve analysis only, for each graph event actually recorded in point_learned, grouped by the seven replay boundaries. Never aligns two diverged trace indices and never calls a solver.",
+    "identical_prefix": "Use identical chronological selected original candidate IDs/generations and fixed seed. Independently recompose both complete states from their own definitions. In baseline suppress learned R marks in BOTH selected-state m union and every prospective candidate definition, including a not-yet-selected R.",
+    "enumeration": "Rebuild full legal frontier candidate domains by exact unit t capacity and sparse m agreement alone. Rebuild marked reverse/dependencies/generation fields and require exact actual graph equality. Baseline state is legal at the same prefix; this does not claim baseline search visited it.",
+    "witness": "First extra exclusion in graph-event then candidate inventory order records selected prefix, support, actual conflicting m port, marked and baseline candidate port assigned/absent/value, both state port assignments, and actual marked-state fixed/selected origins. Assigned zero remains distinct from absent/null.",
+    "effects": "Per-boundary and total graph/legal-candidate/exclusion/domain-reduction/zero/singleton observation counts. All are repeated observations, not unique candidates or proved branch/time savings. A singleton degree effect is not a claim that it outranks a global dead point or that it was actually placed.",
+    "UNKNOWN": "Only retained graph events are analyzed; report marks the boundary prefix-only. No hypothetical completion or hidden-phase count is invented.",
+    "keys": "Returned marking_effect has analysis_only,identical_selected_prefixes,counts_are_repeated_observations,counts_are_unique_candidates=False,per_boundary,totals."
+  },
+  "mathematical_scope": [
+    "Independent direct truth evaluation for every assignment of each generated original and certified augmented CNF; exact original solution-set preservation and every query witness/complete refutation.",
+    "Full original point inventory and learned padding, exact current marking epoch, fixed boundary, fresh root, signed-to-bit conversion and strict integer types.",
+    "All ordinary traces replayed through exact prior independent helper. Full point trace conformance is a separate genuine ROOT raw-auditor invocation; supplied report fields alone cannot replace that call.",
+    "No preset expected hidden-unit counts, learned clauses, success counts, countermodels, routes or shadow exclusion scores. These are computed only in a later actual verification."
+  ],
+  "limits": [
+    "No resource/native ownership/clock/speedup or whole master-contract acceptance. Same count policy checked within each case; cross-case policy/order and inclusive costs remain ROOT obligations.",
+    "Reused discovery catalogue, not held-out generalization. No RL, fixed universal Wang palette, original arithmetic Q change or new proof-rule claim.",
+    "Author also authored the prior truth oracle, raw point auditor and ordinary independent helper; engine/ordinary search authors are distinct. A distinct reviewer must assess this new checker."
+  ],
+  "pre_freeze_correction": {
+    "preserved_negative": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/pre-freeze-prospective-R-witness-negative-v0.py",
+      "sha256": "9e502d5cfccabde1fba563bfc02224cff7b4a94ac045065e250280ee5b12f094",
+      "bytes": 25087
+    },
+    "exact_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/pre-freeze-prospective-R-witness-fix-v1.patch",
+      "sha256": "5a195d86154ee85f871074bf367c662715bcae2d4f6e35dfe8c91b95703f3642",
+      "bytes": 2255
+    },
+    "description": "ROOT Source read identified a witness-only baseline check against marked ports. Current Source uses actual baseline candidate ports and exposes both definitions. Baseline domain enumeration already used correct suppressed candidate definitions. No Source calls or actuals occurred."
+  },
+  "review_ABI": {
+    "scope": "finite-3CNF-catalogue-independent-verifier-Source",
+    "author_identity": "/root/hilbert_advice_controls",
+    "reviewer_identity_must_differ": true,
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639",
+      "bytes": 25659
+    },
+    "source_contract": "this exact current raw contract",
+    "scientific_calls": 0,
+    "scientific_acceptance": false
+  },
+  "authored_functions_executed": 0,
+  "solver_functions_executed": 0,
+  "truth_table_evaluations_executed": 0,
+  "tests": 0,
+  "clocks_called": 0,
+  "Q_payloads_decoded": 0,
+  "actual_plans": 0,
+  "runtime_qualified": false,
+  "resource_qualified": false,
+  "scientific_acceptance": false
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "ROOT-fixed-3CNF-catalogue-external-observation-v1",
+  "begin_date_ms": 1792097406235,
+  "end_date_ms": 1792097419160,
+  "elapsed_ms": 12925,
+  "native_command": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -I -S -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-ROOT-20261015/native-terminal-1.json /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -I -S -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-runner-source-20261015/run_catalogue_v1.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-ROOT-20261015/ROOT-plan-v1.json",
+  "observations": [
+    {
+      "tool": "exec_command",
+      "at_ms": 1792097407397,
+      "result": {
+        "chunk_id": "a0fb38",
+        "wall_time_seconds": 1.003842042,
+        "session_id": 75804,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "tool": "write_stdin",
+      "at_ms": 1792097412401,
+      "result": {
+        "chunk_id": "58a431",
+        "wall_time_seconds": 5.002878584,
+        "session_id": 75804,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "tool": "write_stdin",
+      "at_ms": 1792097417407,
+      "result": {
+        "chunk_id": "de54bc",
+        "wall_time_seconds": 5.003635417,
+        "session_id": 75804,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "tool": "write_stdin",
+      "at_ms": 1792097419095,
+      "result": {
+        "chunk_id": "fccdd0",
+        "wall_time_seconds": 1.686070459,
+        "exit_code": 0,
+        "original_token_count": 28,
+        "output": "{\"case_count\": 70, \"discovery_solves\": 420, \"output_bytes\": 73519247, \"replay_solves\": 1960, \"status\": \"PASS\"}\n"
+      }
+    }
+  ],
+  "post_terminal_native_probe": {
+    "chunk_id": "1cf9a7",
+    "wall_time_seconds": 0.000007709,
+    "exit_code": 0,
+    "original_token_count": 4,
+    "output": "437227113814000\n"
+  },
+  "scope": "Finite one-worker cohort only. Native terminal peak covers owned worker; external meter memory excluded. Date bracket includes command, output/exit and genuine post-terminal native probe. Annotation writer excluded."
+}

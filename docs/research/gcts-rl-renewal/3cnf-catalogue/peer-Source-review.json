@@ -1,0 +1,295 @@
+{
+  "actual_results_or_publication": false,
+  "check_count": 20,
+  "checks": [
+    {
+      "checker_scope": true,
+      "finding": "Whole335-line runner and whole current checker read; exact SHA/length reauthenticated. Both contracts read. No project/semantic calls or test execution.",
+      "id": "S01-current-whole-sources",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Every named raw pin in both current contracts authenticated against whole buffers. Runner hard six-role map matches exact current contract; private modules compile captured authenticated buffers, not a second path read.",
+      "id": "S02-bounded-raw-closure",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Independent runner combinations versus checker explicit four-nested-index enumeration both fix70 lexicographic masks and big-endian signs. Original exact4-key AST independently checked:3variables,4generated clauses,empty prefixes; no learned/model answer inputs.",
+      "id": "S03-complete-original-cohort",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Exactly6 singleton i,b boundaries, empty then6 singleton replay. Every case6+28 solves, no dropped no-learning case, no favorable subset. Actual whole70 order/coverage/footer and count policy remain saved-evidence gates.",
+      "id": "S04-query-and-replay-order",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Discovery always fresh original4clauses/all original guards, no learned gadgets. Oracle original truth is used only after solve to check result/certify; neither point nor ordinary solver receives truth set or expected outcome.",
+      "id": "S05-original-discovery-context",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Proposal reached only after EXHAUSTED_FINITE_MARKED_MODEL; negates entire singleton prefix. No minimization/assumption deletion or positive branch count requirement. UNKNOWN retains no solution/certificate.",
+      "id": "S06-whole-prefix-negation",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Runner and checker independently require original-F entailment, distinct normalized nonoriginal clauses and first2 maximum by boundary order; may learn none. Full original satisfying set rechecked after addition; no expected learned count.",
+      "id": "S07-automatic-first-two",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Both point arms contain exact combined full bit/tuple/guard t/IDs/roots/candidate inventory. Original guards active, learned-R absent versus assigned0 only. Ordinary receives exactly same certified library; no point clause filter introduced.",
+      "id": "S08-matched-variants",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Exact old point engine/raw auditor/ordinary/checker Source pins retained; runner actually invokes per-result raw point auditor and ordinary checker before whole case verify. New checker matches exact reports; does not pretend supplied flags replace genuine point-auditor calls.",
+      "id": "S09-unchanged-scheduler-audits",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Independent direct finite truth recomputation checks every original/certified/query case and full projection. FOUND needs original-context full bit witness; finite exhaustion requires no original model extension. Point/ordinary labels/counters remain distinct.",
+      "id": "S10-full-original-outcomes",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "For each retained marked graph event, independently recompose BOTH complete states from same selected IDs/generations and fixed seed, own definitions, unit t/selected capacity. Exact marked state and all forward/reverse/dependency/frontier-generation fields matched.",
+      "id": "S11-whole-shadow-state",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Baseline _domains receives baseline candidate definitions AND baseline selected-state marks; learned-R marks suppressed in both. Marked legal set must be subset of baseline legal set at identical prefix. No actual baseline-path reachability implied.",
+      "id": "S12-both-state-and-candidate-m",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Known pre-freeze witness bug corrected. Actual baseline candidate ports looked up independently; absence accepted even when marked candidate0 conflicts with state1. Witness records assigned/absent separately for both candidates/states plus marked-state origins. Full raw patch independently reproduced; only _shadow FunctionDef differs from preserved negative.",
+      "id": "S13-prospective-R-repair",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "First exclusion in saved graph-event then inventory order; exact conflicting port/values/selected prefix/support retained. Prospective unplaced R included. Zero/singleton effects distinguish before>0/after0 and before>1/after1. Counts are repeated observations, not unique exclusions/actual moves or speed savings.",
+      "id": "S14-first-effect-and-count-scope",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Each UNKNOWN is valid prefix only, no accepted word/finite refutation. Raw UNKNOWN count independently recomputed by runner and matched to literal audit completion. Complete suite status false if any unknown; no rescue/prefix admission.",
+      "id": "S15-unknown-not-complete",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "One full case+audit encoded/written after verification then del; only70small summaries retained. Canonical bounded JSONL header+70case+footer with rolling full/case SHA+bytes; complete summary and EOF required. Partial line/cap/deadline leaves unaccepted incomplete cohort.",
+      "id": "S16-streamed-complete-output",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "420/1960 derived from actual70summary outcome rows, then checked, not header constants alone. Fixed(index+boundary)%4 rotation independent of answers. Checker allows execution_order/timings metadata without validating it; actual saved rotation/cross-case current policies remain ROOT reconciliation duties.",
+      "id": "S17-observed-counts-and-rotation",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Original absolute40s and512MiB whole cohort, finite engine count limits unchanged. Checks surround source loading/solves/audits/case verify/output and final stdout. No Q limit changed. External native terminal/startup/exit/caller and true peak are mandatory; Source sampling alone admits no fit.",
+      "id": "S18-full-cost-and-limits",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Per-arm build/solve/check intervals are inside one reused-module suite. Source/oracle/discovery/cert/shadow/globalcaseaudit/summary/serialization/output/exit charged to whole lifecycle; library+arm subtotal omits shared overhead unless allocated. No statistical/generalization/RL/full-contract/whole-goal promotion.",
+      "id": "S19-no-cold-strategy-fiction",
+      "passed": true,
+      "runner_scope": true
+    },
+    {
+      "checker_scope": true,
+      "finding": "Reviewer authored old point engine/report, not runner/new checker. New checker author also authored old oracle/raw auditor/ordinary verifier, disclosed in contract. This is distinct review of current runner/checker, not independent engine requalification or actual mathematical replay.",
+      "id": "S20-qualified-boundaries",
+      "passed": true,
+      "runner_scope": true
+    }
+  ],
+  "disposition": "Conditional Source pass for both current Sources; no concrete scoped blocker found.",
+  "preserved_negative_patch": {
+    "changed_Definitions": [
+      "_shadow"
+    ],
+    "other_Definitions_unchanged": 20,
+    "selected_current_patch": {
+      "bytes": 2255,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/pre-freeze-prospective-R-witness-fix-v1.patch",
+      "sha256": "5a195d86154ee85f871074bf367c662715bcae2d4f6e35dfe8c91b95703f3642"
+    },
+    "whole_patch_independently_reproduced": true
+  },
+  "raw_reference_records": [
+    {
+      "bytes": 18070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-runner-source-20261015/run_catalogue_v1.py",
+      "sha256": "ea604c9333a781291d51b9fa72b0585c4944d0a6f71ea514e3864c823e6b8a28"
+    },
+    {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    {
+      "bytes": 18005,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    {
+      "bytes": 7393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    },
+    {
+      "bytes": 30551,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    },
+    {
+      "bytes": 25659,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 13504,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ROOT-20261015/run_comparison_v1.py",
+      "sha256": "ddb5c7cc4ad291599adc1fc77ea7eec649bcccaffcc78e8a01a17d28143dc5e2"
+    },
+    {
+      "bytes": 25659,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    {
+      "bytes": 18005,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    {
+      "bytes": 7393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-ordinary-source-20261015/ordinary_cnf_dpll_v1.py",
+      "sha256": "15ca1ca4f5a3a685ca4ac8fc45332d219d5594c97f64a07c7100d7da9fedc9d3"
+    },
+    {
+      "bytes": 30551,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-learned-nogood-independent-source-20261015/independent_nogood_verifier_v1.py",
+      "sha256": "7f1d192c67b858e1ef1a0fcc7a7a556671af534d29f607f156f028f0ad2345ea"
+    },
+    {
+      "bytes": 25087,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/pre-freeze-prospective-R-witness-negative-v0.py",
+      "sha256": "9e502d5cfccabde1fba563bfc02224cff7b4a94ac045065e250280ee5b12f094"
+    },
+    {
+      "bytes": 2255,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/pre-freeze-prospective-R-witness-fix-v1.patch",
+      "sha256": "5a195d86154ee85f871074bf367c662715bcae2d4f6e35dfe8c91b95703f3642"
+    },
+    {
+      "bytes": 25659,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639"
+    }
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_resource_admission": false,
+  "schema": "full-small-3cnf-runner-and-checker-Source-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope_limitations": [
+    "Current code only; no engine, checker, oracle, Source function or clock executed. No actual fit/cost/learning/graph benefit observed here.",
+    "Current small runner is not a broad hostile-code/mutable-endpoint custody framework. ROOT fixes exact inputs and genuine native actual lifecycle.",
+    "Per-case checker does not independently certify complete70-line cohort/order/cross-case count policy/native resources; runner and saved ROOT reconciliation must close these.",
+    "Shadow only for retained actual marked graph events; UNKNOWN prefix-only, counts repeated; baseline visitation and causal savings not inferred.",
+    "Concrete actual plan/admission and all result/native/EOF hashes remain ROOT duties."
+  ],
+  "source_contracts": {
+    "catalogue_checker": {
+      "bytes": 10392,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/Source-contract-v1.json",
+      "sha256": "f0630c5b4c0c43c6d980cbcdf8bf618c9461572e5c38fb1878d2541c30e56b82"
+    },
+    "runner": {
+      "bytes": 12484,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-runner-source-20261015/Source-contract-v1.json",
+      "sha256": "e197aa2fef755dd9038d8787454c9d93c618cef4ccb0bf547868c9abdbd33e73"
+    }
+  },
+  "source_only": true,
+  "sources": {
+    "catalogue_checker": {
+      "bytes": 25659,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/verify_3cnf_catalogue_case_v1.py",
+      "sha256": "fadee2e0f26379dfdf7cd45580723f2a24fc563b7d82fa38b641d1f022247639"
+    },
+    "runner": {
+      "bytes": 18070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-runner-source-20261015/run_catalogue_v1.py",
+      "sha256": "ea604c9333a781291d51b9fa72b0585c4944d0a6f71ea514e3864c823e6b8a28"
+    }
+  },
+  "unique_named_raw_paths_checked": 11,
+  "whole_contract_pin_references_checked": 19
+}

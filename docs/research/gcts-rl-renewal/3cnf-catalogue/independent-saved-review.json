@@ -1,0 +1,154 @@
+{
+  "actual_reruns": 0,
+  "all_checks_passed": true,
+  "check_count": 7755,
+  "cost_limit": "Per-arm subtotals share one cold suite and library/discovery costs. No native/resource acceptance or statistically reproducible speedup is issued; Root handles actual40sec/512MiB/external gates.",
+  "counts": {
+    "case_count": 70,
+    "cases_with_learned_clauses": 6,
+    "discovery_solves": 420,
+    "recorded_first_conflict_witnesses_checked": 36,
+    "recorded_first_degree_effects_checked": 36,
+    "replay_solves": 1960,
+    "unknowns": 0
+  },
+  "custody_conclusion": "All complete JSONL/header/case/footer/EOF hashes and counts, ordered input cohort, original saved oracle assignments, learned selection/provenance, all raw status/audit joins, per-arm rotations, summary and timing/work sums, shadow aggregates and recorded first conflict/degree witnesses match. No discrepancy found in this saved-data scope.",
+  "disclosure": "Reviewer authored catalogue checker and prior Boolean/raw-trace helpers. This is saved-data custody, not an additional independent Source or mathematical admission. No project/checker/oracle/engine/search/clock function was executed.",
+  "findings": {
+    "bytes": 658899,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-3cnf-catalogue-independent-source-20261015/saved-findings-v1.json",
+    "sha256": "ffdbcda07f8703704d4ac57fddd89677e47e719cec91bbf22024cfa5f10606db"
+  },
+  "first_saved_conflict": {
+    "baseline_candidate_port_assigned": true,
+    "baseline_candidate_value": 1,
+    "baseline_state_port_assigned": false,
+    "baseline_state_value": null,
+    "boundary_index": 0,
+    "candidate_id": "A_4_1",
+    "case_id": "T000",
+    "conflicting_m_port": [
+      26,
+      8
+    ],
+    "graph_event_index": 15,
+    "marked_candidate_value": 1,
+    "marked_state_port_origins": [
+      {
+        "candidate_id": "R_4",
+        "kind": "selected_candidate",
+        "value": 0
+      }
+    ],
+    "marked_state_value": 0
+  },
+  "learned_cases": [
+    {
+      "case_id": "T000",
+      "catalogue_index": 0,
+      "learned": [
+        {
+          "clause": [
+            [
+              0,
+              -1
+            ]
+          ],
+          "discovery_boundary_index": 1
+        }
+      ]
+    },
+    {
+      "case_id": "T009",
+      "catalogue_index": 9,
+      "learned": [
+        {
+          "clause": [
+            [
+              1,
+              -1
+            ]
+          ],
+          "discovery_boundary_index": 3
+        }
+      ]
+    },
+    {
+      "case_id": "T020",
+      "catalogue_index": 20,
+      "learned": [
+        {
+          "clause": [
+            [
+              2,
+              -1
+            ]
+          ],
+          "discovery_boundary_index": 5
+        }
+      ]
+    },
+    {
+      "case_id": "T049",
+      "catalogue_index": 49,
+      "learned": [
+        {
+          "clause": [
+            [
+              2,
+              1
+            ]
+          ],
+          "discovery_boundary_index": 4
+        }
+      ]
+    },
+    {
+      "case_id": "T060",
+      "catalogue_index": 60,
+      "learned": [
+        {
+          "clause": [
+            [
+              1,
+              1
+            ]
+          ],
+          "discovery_boundary_index": 2
+        }
+      ]
+    },
+    {
+      "case_id": "T069",
+      "catalogue_index": 69,
+      "learned": [
+        {
+          "clause": [
+            [
+              0,
+              1
+            ]
+          ],
+          "discovery_boundary_index": 0
+        }
+      ]
+    }
+  ],
+  "marking_effect_repeated_observations": {
+    "additional_exclusion_observations": 36,
+    "baseline_legal_candidate_observations": 81421,
+    "baseline_singleton_observations": 12977,
+    "baseline_zero_domain_observations": 91,
+    "graph_observations": 6104,
+    "marked_legal_candidate_observations": 81385,
+    "marked_singleton_observations": 13001,
+    "marked_zero_domain_observations": 97,
+    "reduced_domain_observations": 36,
+    "singletons_created_observations": 30,
+    "zero_domains_created_observations": 6
+  },
+  "new_mathematical_authority": false,
+  "resource_admission": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "independent-3CNF-catalogue-saved-review-v1"
+}
