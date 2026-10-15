@@ -1,0 +1,61 @@
+{
+  "Q_payload_parses": 0,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "Source_review_dependencies": "Distinct reviewer must read this small Source, complete literal case array and scope. No Source call during review. Point implementation Source/review is a different author/lane.",
+  "actual_oracle_calls": 0,
+  "actual_plans": 0,
+  "author_identity": "/root/hilbert_advice_controls",
+  "bounds": {
+    "maximum_cases": 16,
+    "maximum_clauses_per_case": 8,
+    "maximum_declared_prefixes_per_case": 32,
+    "maximum_literal_variables_per_clause": 4,
+    "maximum_variables": 4
+  },
+  "cases": {
+    "bytes": 4419,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+    "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+  },
+  "comparison_controls": {
+    "bytes": 3703,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/point-comparison-controls-v1.json",
+    "sha256": "e3e88b8c36e4411a46ca8b676990a80bee1bdaaf1247d28b8c410a4476b03a4f"
+  },
+  "expected_values": "No stored truth sets, counts, satisfiability labels or forced-bit answer tables. Future callable generically enumerates every bit assignment, evaluates each clause directly, derives satisfying sets/semantic forced bits, and separately computes unit closure from declarations.",
+  "future_ownership": "ROOT authors actual paired caller/data intake/source guard/deadline/resource scope after independent review; no owned worker/plan/cold fit is supplied. Do not import the point implementation into this oracle or treat this oracle as its candidate-pruning procedure.",
+  "intake": "Strict integer variable/bit/sign fields reject booleans; distinct indices per clause and prefix. Empty clause and no-clause CNF both supported. Duplicate clause occurrences retained. Whole case inventory required.",
+  "internal_helpers": "require/bit/declaration/clause_true/unit_closure are internal; only validated whole public intake supplies evaluation authority.",
+  "learned_clause_soundness_accepted": false,
+  "native_clocks_called": 0,
+  "original_Q_changed": false,
+  "point_engine_calls": 0,
+  "point_engine_conformance_accepted": false,
+  "public_API": [
+    "evaluate_case(case)",
+    "evaluate_declarations(document)"
+  ],
+  "raw_basis": [
+    {
+      "bytes": 6616,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-construction-20261015/ROOT-construction-note-v2.json",
+      "sha256": "f7c6c38699a5ae96385d7d4b221f2e02f89f597ff5276823889cf8a4a835f638"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "result_scope": "Exact finite Boolean truth-table/conditional-unit metadata only. Parent point implementation must compare full projected solution set and whole state; its own scheduler/incidence/rollback and guard-placement qualification remain separate.",
+  "schema": "independent-Boolean-CNF-truth-oracle-Source-contract-v1",
+  "scope": "independent-Boolean-CNF-truth-oracle-Source",
+  "source": {
+    "bytes": 8821,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+    "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+  },
+  "source_only": true,
+  "tests": 0
+}

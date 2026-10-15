@@ -1,0 +1,143 @@
+{
+  "learning_or_RL_claim": false,
+  "new_theorem_count": 0,
+  "report": {
+    "bytes": 48878,
+    "sha256": "67aee28f2f0f758cc54f09bee0d39fa2a6b32ce31efeaa9319d48e4bad18c7aa"
+  },
+  "report_draft": {
+    "bytes": 23276,
+    "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-report-draft-20261015/reader-v2.html",
+    "sha256": "532a7f5e324f4be76551a28a09dd46816873c12269a794b5ed11baa30925edc2"
+  },
+  "same_problem_performance_claim": false,
+  "schema": "finite-point-calibration-publication-scope-v1",
+  "scope": "Finite pre-grounded singleton unit point calibration only; original Q and geometric lanes unchanged.",
+  "sources_and_evidence": {
+    "ROOT-disposition.json": {
+      "bytes": 3380,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/ROOT-disposition-v2.json",
+      "sha256": "6f860c218aabef2fcb8ad983506429a5b8f66b2112eddff1f008211921f341bf"
+    },
+    "ROOT-plan.json": {
+      "bytes": 4364,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/ROOT-plan-v1.json",
+      "sha256": "c647c52288ed40d8d60bdc7120602d815ae02ee68796fba1552913def5ed5398"
+    },
+    "auditor-contract.json": {
+      "bytes": 7077,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/Source-contract-v1.json",
+      "sha256": "10b6cf5049d7510c0f46a0ccea9571e7a90a2c96c0204fe2bb09719e57de868c"
+    },
+    "auditor-review.json": {
+      "bytes": 1545,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/Root-auditor-Source-review-v1.json",
+      "sha256": "6df833d5cdbe25528a90583b539ddd4ac760b6b164d917da23d068cd23f10b57"
+    },
+    "auditor.py": {
+      "bytes": 18005,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    "calibration-results.json": {
+      "bytes": 3969464,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1/calibration-results.json",
+      "sha256": "04385bf7688f20ba8e2c18f2c25ac54f4105b87f4dddb2b621d46c338a9cbefb"
+    },
+    "cases.json": {
+      "bytes": 4419,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+      "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+    },
+    "construction-note.json": {
+      "bytes": 6616,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-construction-20261015/ROOT-construction-note-v2.json",
+      "sha256": "f7c6c38699a5ae96385d7d4b221f2e02f89f597ff5276823889cf8a4a835f638"
+    },
+    "construction-review.json": {
+      "bytes": 11208,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-independent-20261015/findings-v2.json",
+      "sha256": "642861fed1f102a5c0714b2650c62e95fffcd2043e572aebfe621736a5c6255b"
+    },
+    "engine-contract.json": {
+      "bytes": 8284,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/Source-contract-v1.json",
+      "sha256": "3aaa809e4549177af8c7a89da7f6dcabdabae404263d1423f98928bcb0822405"
+    },
+    "engine-review.json": {
+      "bytes": 3538,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-Root-review-20261015/typed-Source-review-v1.json",
+      "sha256": "6e2bb3b14b62648998ab90e3fa966ee20145333b43f669fb2f63ca78688a11f4"
+    },
+    "engine.py": {
+      "bytes": 15493,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "external-observation.json": {
+      "bytes": 1770,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/external-observation-1.json",
+      "sha256": "b2c0a51549c3ef43ac8c423beda10e0c454d3c4bfac03a0fd0120f97a637b964"
+    },
+    "independent-saved-review.json": {
+      "bytes": 6761,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-calibration-next-benchmark-20261015/saved-reconciliation-v1.json",
+      "sha256": "36a3fdb3e80eec73dd46e704a13be3da500ca34060886d1b419aad09739cedd3"
+    },
+    "native-meter.py": {
+      "bytes": 6734,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    "native-terminal.json": {
+      "bytes": 1673,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/native-terminal-1.json",
+      "sha256": "90bcea7415bbc590544bcba469d596863bcb8cc13e7a57bb46db31b0df9e198d"
+    },
+    "next-benchmark.json": {
+      "bytes": 9312,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-calibration-next-benchmark-20261015/research-assessment-v1.json",
+      "sha256": "f38219ab795ebc13965b37fbb5ddea071633cb9cb2f6b2be7b06ebd1d7c7ed83"
+    },
+    "oracle-contract.json": {
+      "bytes": 3689,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/Source-contract-v1.json",
+      "sha256": "b248f448a273913033bed5f8cba2714ecc7721a9b1f3c299ad6675061e91cd27"
+    },
+    "oracle-results.json": {
+      "bytes": 37905,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1/oracle-results.json",
+      "sha256": "583256b1ef99bf0f91a001ad8ba5a50f1d04d193f62808aed16bb3191d060969"
+    },
+    "oracle-review.json": {
+      "bytes": 3151,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-review-source-20261015/typed-Source-review-v1.json",
+      "sha256": "1d13a0438076664d84da153165d3cae185006297f5ce2c411da61bf2ca693c25"
+    },
+    "oracle.py": {
+      "bytes": 8821,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "run-calibration.py": {
+      "bytes": 12466,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/run_calibration_v1.py",
+      "sha256": "fa63935fe56408b4f346f3ac9a81aa874f39a3dde1ce86656aa7700705a3f6cc"
+    },
+    "runner-review.json": {
+      "bytes": 3287,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-calibration-next-benchmark-20261015/runner-Source-review-v1.json",
+      "sha256": "2526d60da4f590d71f6c711c0a90cb5af18afb8f3725ce285cdd0bd034b52857"
+    },
+    "selected-case.json": {
+      "bytes": 40677,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/selected-case.json",
+      "sha256": "de8018d0400b8b27c3aeaca814d13cf70b5be79eddaa5192e641a52cd4c5703b"
+    },
+    "summary.json": {
+      "bytes": 7953,
+      "origin": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1/summary.json",
+      "sha256": "fe225c95e6e81931c29cfb5d27f573ad839dc269fe4e859b1a9839e2b7007b5e"
+    }
+  }
+}

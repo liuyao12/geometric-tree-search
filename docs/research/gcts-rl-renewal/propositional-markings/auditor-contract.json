@@ -1,0 +1,86 @@
+{
+  "schema": "independent-unit-point-raw-trace-auditor-Source-contract-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+    "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a",
+    "bytes": 18005
+  },
+  "raw_references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "engine_wire_Source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3",
+      "bytes": 15493
+    },
+    "engine_wire_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/Source-contract-v1.json",
+      "sha256": "3aaa809e4549177af8c7a89da7f6dcabdabae404263d1423f98928bcb0822405",
+      "bytes": 8284
+    }
+  },
+  "API": {
+    "call": "audit_result(result, allow_unknown=False)",
+    "input": "One complete saved JSON-compatible finite-unit-point-gcts-result-v1 object, treated as a fixed data snapshot. No engine objects or callback arguments.",
+    "success": "Short JSON-serializable independent-unit-point-trace-audit-v1 report.",
+    "defect": "ValueError. No returned partial acceptance on a rejected wire.",
+    "UNKNOWN": "audit_result(result, allow_unknown=True) checks a legal interrupted trace prefix and records no solution or exhaustion acceptance."
+  },
+  "independence": "Auditor imports/calls no engine, CNF builder, truth oracle, project module, checker, search, clock or IO. Independently folds selected original candidate t/m data and reconstructs only recorded graphs; it does not search another branch. The author previously authored the separate Boolean oracle and controls runner, but did not author this unit-point engine.",
+  "accepted_wire_scope": "Exactly the frozen finite identity-grounded single-positive-unit-support model. Every original required point generation is zero; a selected tile generation is one. Named candidates are used at most once. All sparse m values are literal integers; assigned zero differs from absence. Full original inventory and marking version are preserved. No general growth, fractional support or multi-point positive support claim.",
+  "checks": [
+    "Exact object fields and literal integer types, rejecting Boolean integer coercion; fixed/root/candidate/placement uniqueness.",
+    "Recompose every recorded state from complete original fixed m and chronological selected candidate IDs; unit capacity and all current/fixed m overlaps agree; recorded filled/mark unions match exactly.",
+    "Rebuild the complete legal frontier/candidate graph, empty domains included; exact reverse edges and all original t/m dependencies, including off-frontier, selected and incompatible candidate ports.",
+    "Global degree-zero rejection precedes all forced moves; singleton moves precede branching. Within a decision use generation, degree and point-key order; visit the complete declared candidate menu in original model order.",
+    "Stack verifies every child is precisely its next parent candidate, restores exactly the complete parent state, and requires complete returned child outcome before continuing another menu entry. No global learned exclusion or branch omission.",
+    "FOUND requires the unique whole-domain recomposed solution, entire unwind to root and final finished event. Finite exhaustion requires every menu complete and failed, no solution, full root unwind and final finished event.",
+    "Complete stats and work counts are reconstructed exactly: nodes equal graph events, trace_events equal trace length, candidate_checks equal N*(1+graph_events)+sum(selected-member counts in solution events); rejection counts include every repeated full scan."
+  ],
+  "UNKNOWN_limits": [
+    "Requires explicit allow_unknown=True, trace_complete=False, solution=None and a declared exhausted counter or the original root ceiling. Trace_events equals actual retained trace length.",
+    "A recorded place followed by restore without a child graph is permitted only as interrupted UNKNOWN unwind. No later forward graph/decision/placement is allowed after that unwind begins.",
+    "Unfinished suffixes may omit restore/finished events when the trace budget is full; no unrecorded runtime restoration or exact unrecorded work is certified.",
+    "Unknown stats are checked for literal nonnegative values, declared work caps and observed event/rejection/maxima lower bounds. They are not presented as a complete exact reconstruction of hidden work.",
+    "A saved solution event revoked by a later budget failure remains prefix-only: exact_solution_accepted and finite_exhaustion_accepted are false."
+  ],
+  "authority_limits": [
+    "Value restoration in raw snapshots is checked; native immutable object identity and physical rollback are not observable here.",
+    "The raw model is the audit authority. CNF compilation equivalence and independently computed Boolean truth sets require the separate oracle/control comparison.",
+    "No elapsed-time, memory, native ownership, full master-contract, learned-clause soundness, original-Q, theorem-discovery or RL qualification."
+  ],
+  "proposed_future_controls_not_executed": [
+    "Complete FOUND and finite exhaustion, empty model and globally dead roots.",
+    "Alter frontier/reverse/off-frontier dependencies, candidate order, forced/dead order, state marks including assigned zero, generation or original ID.",
+    "Alter restored parent, skip failed menu entry, omit root unwind, forge final solution or counts.",
+    "UNKNOWN node/candidate/trace limits, missing child graph during unwind and revoked solution prefix."
+  ],
+  "review_ABI": {
+    "scope": "finite-unit-point-independent-raw-trace-auditor-Source",
+    "author_identity": "/root/hilbert_advice_controls",
+    "reviewer_identity_must_differ": true,
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a",
+      "bytes": 18005
+    },
+    "source_contract": "this exact frozen raw contract",
+    "scientific_calls": 0,
+    "scientific_acceptance": false
+  },
+  "authored_Source_functions_executed": 0,
+  "engine_functions_executed": 0,
+  "tests": 0,
+  "clocks_called": 0,
+  "Q_payloads_decoded": 0,
+  "actual_plans": 0,
+  "runtime_qualified": false,
+  "resource_qualified": false,
+  "CNF_equivalence_qualified": false,
+  "scientific_acceptance": false
+}

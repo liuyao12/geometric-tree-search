@@ -1,0 +1,97 @@
+{
+  "authorship": {
+    "auditor": "/root/hilbert_advice_controls",
+    "engine": "/root/hilbert_ordering_diagnosis",
+    "engine_Source_reviewer": "/root",
+    "oracle": "/root/hilbert_advice_controls",
+    "oracle_Source_reviewer": "/root/arithmetic_induction",
+    "runner": "/root"
+  },
+  "inputs": {
+    "auditor": {
+      "bytes": 18005,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+      "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+    },
+    "cases": {
+      "bytes": 4419,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+      "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+    },
+    "engine": {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "oracle": {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    }
+  },
+  "invocation": 1,
+  "master_contract": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "maximum_candidates": 256,
+  "maximum_output_bytes": 67108864,
+  "memory_scope": "One owned Python worker, no child workers. Native terminal wait4 peak includes that worker; external meter memory excluded.",
+  "modes": [
+    "guards_unmarked",
+    "marked_guards_actually_placed"
+  ],
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "no_precomputed_truth_answers_or_proof_routes": true,
+  "not_claimed": [
+    "new mathematical theorem",
+    "learned redundant marking",
+    "RL",
+    "infinite tiling",
+    "fixed universal Wang palette",
+    "fractional support conformance",
+    "nonzero generation conformance",
+    "matched proof-search speedup",
+    "untrusted-code runtime qualification"
+  ],
+  "output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1",
+  "runner": {
+    "bytes": 12466,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/run_calibration_v1.py",
+    "sha256": "fa63935fe56408b4f346f3ac9a81aa874f39a3dde1ce86656aa7700705a3f6cc"
+  },
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-finite-point-calibration-plan-v1",
+  "separate_scope": "Finite non-Q calibration only. Existing Q outcomes, budgets, and admission gates unchanged.",
+  "solve_limits": {
+    "maximum_candidate_checks": 500000,
+    "maximum_nodes": 20000,
+    "maximum_trace_events": 50000
+  },
+  "tests": [
+    "all declared full assignments in both modes",
+    "every oracle-generated/declared prefix",
+    "independent raw state, graph, scheduling, rollback and final solution audit",
+    "full CNF inventory, including forbidden tuples and repeated clause occurrences",
+    "point initial forced closure versus direct Boolean unit closure",
+    "global dead before forced",
+    "real failed branch rollback",
+    "node budget unknown",
+    "terminal trace budget unknown",
+    "builder cap without trimming"
+  ],
+  "unknowns_fail_scientific_cases": true,
+  "whole_native_seconds": 20,
+  "whole_tool_seconds": 60,
+  "worker_peak_bytes": 536870912,
+  "worker_seconds": 20
+}

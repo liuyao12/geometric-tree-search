@@ -1,0 +1,79 @@
+{
+  "schema": "finite-unit-point-GCTS-calibration-Source-contract-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+    "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3",
+    "bytes": 15493
+  },
+  "VERSION": "finite-grounded-unit-point-gcts-v1",
+  "master": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "construction_note": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-construction-20261015/ROOT-construction-note-v2.json",
+    "sha256": "f7c6c38699a5ae96385d7d4b221f2e02f89f597ff5276823889cf8a4a835f638",
+    "bytes": 6616
+  },
+  "scope": "Small finite grounded calibration only: integer coordinates, singleton positive support \\(t_c(p)=1\\), sparse exact integer markings, identity transformations, each named candidate at most once. Every finite root generation is \\(0\\); tile generation is \\(1\\).",
+  "API": {
+    "builder": "build_cnf_model(variable_count, clauses, *, active_guards, seed_bits, maximum_candidates) -> frozen Model or BudgetExceeded/ValueError",
+    "solver": "solve(model, *, maximum_nodes, maximum_candidate_checks, maximum_trace_events) -> JSON-compatible result",
+    "model_wire": "model_wire(model) -> complete original roots/t/m/IDs/marking-version data",
+    "builder_input": "variable_count is a nonnegative literal int. clauses is a tuple of clause tuples, each literal exactly (i,b) with literal integer index and bit in{0,1}; the literal is true iff assignment(i)=b. Variables are distinct in a clause. Empty clause() is allowed; empty CNF() is allowed. active_guards is the tuple of distinct activated clause indices; () is guard-unmarked, tuple(range(len(clauses))) all-active. seed_bits is a tuple of distinct(variable,bit) boundary pairs; () means no seeds. All outer/inner input containers are tuples; booleans are rejected in integer roles.",
+    "guard_mask": "Guard-unmarked retains B/A consistency and flag markings. Mask changes only R_c marking entries; all B/A/R IDs and base supports remain. Guard q value enters current state only when R_c is placed. No live state/model mutation or replay of an old prefix API.",
+    "seed_boundary": "Seed(i,b) initializes m(p_i)=b without preselecting B_i,b or assigning t at any point. Mark-only ports never become capacity obligations. Seeded model is a declared boundary-restricted problem, not a learned fact."
+  },
+  "budgets": {
+    "required_root_ceiling": 128,
+    "builder_candidate_limit": "Required caller-supplied positive literal integer maximum_candidates. Precompute exact full count before generating; any overflow raises BudgetExceeded and no Model/prefix is returned. Root ceiling also checked before construction.",
+    "solver_counts": "Required positive node/candidate-check/trace-event limits. Candidate checks charge validation, every original-candidate graph scan and selected full-solution recomposition. Trace event budget includes restore/finished events; exhausted trace revokes found/exhausted status. Root ceiling128 bounds recursive depth for this small calibration.",
+    "wall_memory_cancellation": "No internal clock/rusage/cancellation API. Whole builder/model conversion/search/trace/result serialization plus actual external wall/memory/caller/cancellation costs must be charged by later ROOT invocation. No runtime/fit or inherited Q resource admission. External kill/incomplete result is UNKNOWN, never exhausted. This Source creates no actual plan/limits grant."
+  },
+  "state_graph_scheduler": {
+    "state": "Frozen dataclasses containing immutable tuples only. No mutable totals/marks/generation/exclusion cache is shared; new local mark dict folded into a new frozen State. Parent State+complete parent Graph remains exact across recursive calls and is restored by persistent reference. Global stats/trace intentionally accumulate cost and are not rolled back.",
+    "graph": "Full frontier includes every unfilled required root. One shared node per currently legal original candidate with t-positive incidence and reverse edge; all original candidate dependencies on base and every sparse marking point retained, including ports outside frontier. Full graph rebuilt for each new child state; no clause scan inside solver and no shortlist.",
+    "decision": "Whole frontier degree0 first; otherwise singleton forced move; otherwise smallest generation then degree/point tie. Every child returns through a persistent restore. All current roots0 makes generation selection degenerate; does not qualify general growth scheduling.",
+    "trace": "Complete graph/state/dependencies/generations decision snapshots; dead/forced/branch/place/restore/solution/finished events. UNKNOWN retains bounded prefix with trace_complete=false. Counters count rebuild/check/rejection reason/placement/forced/branch/backtrack/restore/max graph sizes and full-solution recompositions; rejection counts sum repeated scans, not unique candidate removals."
+  },
+  "result_scope": {
+    "FOUND": "First internally whole t/m checked finite exact marked-model solution, complete trace through persistent root restoration. Not independent-oracle acceptance.",
+    "EXHAUSTED_FINITE_MARKED_MODEL": "Entire finite current candidate tree returned failure with complete trace within budgets. Only this exact boundary/guard-marked model; not an unmarked/theory nonexistence conclusion.",
+    "UNKNOWN": "Only BudgetExceeded produces this returned status; no candidate solution or exhausted prefix accepted. Invalid input ValueError and unexpected faults propagate; later ROOT harness must record infrastructure failures/incomplete output separately."
+  },
+  "review_ABI": {
+    "schema": "finite-unit-point-GCTS-calibration-typed-Source-review-v1",
+    "scope": "finite-grounded-unit-point-GCTS-CNF-calibration-Source",
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity_must_differ": true,
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3",
+      "bytes": 15493
+    },
+    "source_contract": "this exact raw frozen contract",
+    "source_only": true,
+    "source_review_passed": "genuine distinct reviewer only",
+    "all_checks_passed": "genuine distinct reviewer only",
+    "scientific_calls": 0,
+    "scientific_acceptance": false
+  },
+  "remaining_full_contract_gaps": [
+    "No fractional t, partial deficits, candidate positive support shared across several points, nontrivial generation-growth model, newly exposed obligations, dynamic marking update/revalidation, symmetries/translations/reflections or infinite target.",
+    "No generic mutable graph/trail/refcount implementation: persistence provides exact rollback only in this immutable finite scope. No clusters/RL, learned clause synthesis/entailment or current Q engine/Source changes.",
+    "No runtime conformance/replay/independent exhaustive Boolean or point oracle results. Oracle authored separately and deliberately unread before this freeze. Future peer controls must check exact domains, degree0-vs-forced, seeds/assigned0/absence, empty clause, unit closure, successful/failed rollback, full solution/exhaustion and budget UNKNOWN.",
+    "No wall/memory/native/caller/fit/performance comparison. Marked versus guard-unmarked may define different solution sets; a redundant learned guard requires its own complete context certificate. No fixed Wang inventory, automatically discovered theorem or original-Q proof."
+  ],
+  "project_functions_executed": 0,
+  "Source_functions_executed": 0,
+  "Q_payloads_decoded": 0,
+  "clocks_called": 0,
+  "tests": 0,
+  "actual_plans": 0,
+  "actual_outdirs": 0,
+  "runtime_qualified": false,
+  "independent_oracle_read": false
+}

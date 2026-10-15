@@ -1,0 +1,45 @@
+{
+  "ROOT_resource_accepted": false,
+  "actual_runs": 0,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer did not author the runner, finite Boolean oracle, calibration engine or actual auditor. Earlier arithmetic Q dependency authorship is unrelated to this scoped finding.",
+  "concrete_scoped_Source_blockers": [],
+  "findings": [
+    "Every oracle complete bit vector is tested in both guard modes. Accepted projections are checked against all satisfying assignments, so the first-solution engine is not mistaken for a complete projected-set enumerator.",
+    "Every requested/generated prefix is tested. The first branch/dead/solution event follows genuine point forced closure; comparisons use clause-level unit closure rather than every semantic forced consequence.",
+    "Independent inventory reconstruction retains every bit/tuple/guard candidate, including forbidden tuples, and checks exact fixed marking-only seeds and absence of preselected guards.",
+    "Five specialized controls exercise global dead before forced, an actual failed branch followed by its successful sibling, node-budget UNKNOWN, terminal-trace-budget UNKNOWN and whole-inventory builder rejection without trimming."
+  ],
+  "mandatory_conditions": [
+    "The frozen auditor.audit_result API must raise on every failed audit. This runner stores the returned audit report without separately testing completed/pass fields. Its actual Source/API must be bound and reviewed before invocation; this review does not qualify that future auditor.",
+    "The runner checks worker wall budget before each solve only. It is not final oracle/setup/build/audit/serialization/output/exit/terminal/memory authority. A genuine explicit Root plan and enclosing observed wall/memory/cancellation/complete-output closure remain necessary.",
+    "Bind the exact reviewed engine, oracle, auditor and complete immutable ten-case inventory; no favorable subset or alternate Source is authorized by this scoped review."
+  ],
+  "method": "Whole current 12466-byte runner read; raw hash/length and AST/syntax-only compilation inspected. No runner, engine, oracle, auditor, helper, Q, clock, fixture/test or actual function executed.",
+  "not_granted": [
+    "auditor Source pass",
+    "actual calibration result",
+    "resource or runtime acceptance",
+    "full master-contract qualification",
+    "learned clause or cluster contribution",
+    "RL",
+    "new theorem discovery",
+    "original Q change"
+  ],
+  "point_engine_runtime_accepted": false,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_accepted": false,
+  "schema": "ROOT-finite-point-calibration-runner-scoped-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "paired truth-set, initial unit-closure and five specialized controls Source logic only",
+  "scoped_all_checks_passed": true,
+  "source": {
+    "bytes": 12466,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/run_calibration_v1.py",
+    "sha256": "fa63935fe56408b4f346f3ac9a81aa874f39a3dde1ce86656aa7700705a3f6cc"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "status": "CONDITIONAL_SOURCE_PASS_NO_CONCRETE_PAIRED_LOGIC_BLOCKER"
+}

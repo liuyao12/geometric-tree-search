@@ -1,0 +1,28 @@
+{
+  "schema": "ROOT-finite-point-calibration-external-observation-v1",
+  "begin_date_ms": 1792093774742,
+  "end_date_ms": 1792093775657,
+  "elapsed_ms": 915,
+  "native_command": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -I -S -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/native-terminal-1.json /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9 -I -S -B /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/run_calibration_v1.py /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/ROOT-plan-v1.json",
+  "observations": [
+    {
+      "tool": "exec_command",
+      "at_ms": 1792093775604,
+      "result": {
+        "chunk_id": "ca8cc8",
+        "wall_time_seconds": 0.70349175,
+        "exit_code": 0,
+        "original_token_count": 15,
+        "output": "{\"output_bytes\": 4015322, \"solves\": 180, \"status\": \"PASS\"}\n"
+      }
+    }
+  ],
+  "post_terminal_native_probe": {
+    "chunk_id": "2417fc",
+    "wall_time_seconds": 0.000004917,
+    "exit_code": 0,
+    "original_token_count": 4,
+    "output": "433583612675000\n"
+  },
+  "scope": "One finite non-Q worker only; external measurement process excluded from memory. Date bracket covers native command and genuine post-terminal probe, including worker output and exit. Annotation writer is outside measured worker scope."
+}

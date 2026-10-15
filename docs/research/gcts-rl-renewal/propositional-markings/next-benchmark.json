@@ -1,0 +1,76 @@
+{
+  "Source_level_caveat": {
+    "calibration_claim_gate": "solve returns one solution, not the complete solution set. A single root FOUND cannot establish bijective truth-table projection. The paired harness must systematically test every complete Boolean seed or perform genuine exhaustive enumeration, and validate the whole projected set including rejected seeds.",
+    "new_concrete_code_blocker_found": "None in this bounded research read; this is not a replacement engine Source review.",
+    "trace_gate": "UNKNOWN may have an incomplete restore trace when its trace budget is exhausted. It must never be counted as a completed conformance observation. The core has count budgets only; wall/memory/cancellation remain external responsibilities."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "conclusion": "A successful ten-case run would validate a small human-authored Boolean-to-point encoding and its finite search mechanics. It would not show that useful failure constraints were learned. The next experiment should discover and independently certify new redundant clauses from genuine failed search branches, then isolate their effect from ordinary clause learning.",
+  "exact_read_only_basis": {
+    "cases": {
+      "bytes": 4419,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+      "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+    },
+    "engine": {
+      "bytes": 15493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+      "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+    },
+    "engine_contract": {
+      "bytes": 8284,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/Source-contract-v1.json",
+      "sha256": "3aaa809e4549177af8c7a89da7f6dcabdabae404263d1423f98928bcb0822405"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "oracle": {
+      "bytes": 8821,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+      "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+    },
+    "oracle_contract": {
+      "bytes": 3689,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/Source-contract-v1.json",
+      "sha256": "b248f448a273913033bed5f8cba2714ecc7721a9b1f3c299ad6675061e91cd27"
+    }
+  },
+  "limitations": "No runtime/helper/project/oracle/engine/clock/test/plan/actual or Q-payload read. No files outside this task namespace changed. Earlier arithmetic dependencies authored by this assessor are not evidence for this Boolean result; no new independent Source or scientific acceptance is issued.",
+  "next_one_experiment": {
+    "acceptance_and_falsification": "First require exact original solution preservation for every learned clause and all query outcomes. Contribution requires better verified query coverage at matched total budget, or lower inclusive total cost for the same complete solved set. If nothing is learned, constraints are unsound, savings vanish after costs, or ordinary equal-library search matches/beats point learning, report that result. Fewer branches alone is insufficient.",
+    "bounded_selection": "Retain all resolved evidence. Use the first two new independently certified non-original clauses per F in a predeclared query/branch order, without choosing by recipient benefit. With four original clauses and two query units, these two additions still fit the current eight-clause oracle. No clause or successful branch is written by hand.",
+    "certificate_latex": "\\(F\\land P\\models\\bot\\Rightarrow F\\models\\bigvee_{\\ell\\in P}\\neg\\ell\\). Unresolved \\(P\\) supplies no clause.",
+    "existing_inputs": "Reuse the unchanged four-variable CNFs B07 and B08. Freeze every ordered distinct-variable implication query and both literal polarities before outcomes; do not select only queries later found true.",
+    "fairness": "Use the same original queries, checker, declared native wall/memory/trace policy and complete semantics. Balance order, retain UNKNOWN/faults, and charge discovery, exhaustive certification, model construction, guard activation, search, trace and verification. Report first-use total cost separately from amortized replay. Different algorithm counters are diagnostics, not equal work units.",
+    "feasibility": "Current point builder/solver and independent oracle are concrete Source functions. The paired ordinary clause-search/learning loop is still proposed, not silently present or executed. On four variables truth-table enumeration may be cheaper than any learning; that is a useful negative outcome. No larger infrastructure or new Q model is needed for this finite pilot.",
+    "four_arms": [
+      "Point search with the new clause gadgets present but their extra guards unmarked",
+      "Same point inventory and reference scheduler with learned redundant guards active",
+      "Ordinary deterministic clause search without learned clauses",
+      "Same ordinary search with exactly the same certified learned clauses"
+    ],
+    "freeze_and_replay": "After discovery, freeze that finite inventory and its exact context certificates. Replay the complete query catalogue as an explicitly reused-catalogue experiment, not fresh held-out generalization. Start new immutable models; never insert marks into an old selected prefix.",
+    "learning": "Run ordinary unlearned point search to label actual branch prefixes. Only a genuinely exhausted complete subtree may propose a nogood. Include every query and branch assumption in the proposed clause unless independently discharged. The oracle must check that the original F entails each clause before it can be reused across queries of that F.",
+    "logical_endpoint": "Finite propositional entailment by an independently checked complete refutation/countermodel, not a primitive Hilbert/Q proof word. The existing exhaustive Boolean oracle is the common semantic checker; any claimed UNSAT requires complete finite search evidence, not timeout.",
+    "mechanism_isolation": "Both point arms retain every bit/tuple/guard candidate, including forbidden tuples. Only learned guard markings change; they must act through normal compatibility/dependency updates, not an injected clause scanner. The ordinary equal-library arm distinguishes generic clause-learning value from point representation value. This is no RL claim.",
+    "name": "Certified learned-nogood reuse on finite propositional entailment queries",
+    "theorem_family_latex": "\\(F\\models((x_i=b)\\Rightarrow(x_j=c)),\\quad i\\ne j,\\quad b,c\\in\\{0,1\\}\\). Search the unsatisfiability of \\(F\\land(x_i=b)\\land(x_j=1-c)\\); a complete satisfying assignment is a counterexample."
+  },
+  "schema": "propositional-calibration-next-benchmark-research-assessment-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "RESEARCH_ASSESSMENT_ONLY_NOT_AN_ACTUAL_PLAN",
+  "successful_calibration_would_establish": [
+    "Only the frozen declared cases and exercised prefixes: full projected Boolean solutions agree with direct truth-table semantics; empty/no-clause cases, signed literals, assigned zero versus absence and repeated clause occurrences behave correctly.",
+    "For the trace states actually checked: complete original candidate/point incidence and marking dependencies, global dead before forced before branching, ordinary marking agreement, exact unit capacity, and persistent parent state restoration. Every root generation is zero, so generation ordering is only a degenerate calibration.",
+    "Marked unit propagation is conditional on guards actually being selected or fixed. Unit consequences are distinct from all semantic consequences; an unsatisfiable extension set produces no vacuous forced-bit claim. Costs/complete-output/UNKNOWN handling are accepted only if a genuine separately declared enclosing run also passes."
+  ],
+  "would_not_establish": [
+    "Automatic theorem discovery, learned failure clauses, reusable lemma/cluster discovery, RL, speedup, universal Wang/FOL/PA or any original-Q change. The original CNF clauses and forbidden tuple flags are authored problem data.",
+    "Soundness of transferring a branch failure outside its original assumptions; unbounded nonexistence from budget exhaustion; general mutable rollback/refcounts, fractional/shared positive support, nontrivial growth generations, transforms or dynamic rule updates.",
+    "Arbitrary CNF correctness beyond the finite declared language. The oracle limits variable count, clauses and prefixes, and rejects repeated variable ports inside a clause. Successful source review alone is not runtime, memory or physics evidence."
+  ]
+}

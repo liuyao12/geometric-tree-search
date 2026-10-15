@@ -1,0 +1,97 @@
+{
+  "Q_qualification_changed": false,
+  "RL": false,
+  "actual_output_pins": {
+    "actual-1/calibration-results.json": {
+      "bytes": 3969464,
+      "sha256": "04385bf7688f20ba8e2c18f2c25ac54f4105b87f4dddb2b621d46c338a9cbefb"
+    },
+    "actual-1/oracle-results.json": {
+      "bytes": 37905,
+      "sha256": "583256b1ef99bf0f91a001ad8ba5a50f1d04d193f62808aed16bb3191d060969"
+    },
+    "actual-1/summary.json": {
+      "bytes": 7953,
+      "sha256": "fe225c95e6e81931c29cfb5d27f573ad839dc269fe4e859b1a9839e2b7007b5e"
+    }
+  },
+  "aggregate_counts": {
+    "candidate_checks": 42545,
+    "nodes": 1500,
+    "trace_events": 5820
+  },
+  "all_scientific_cases_complete": true,
+  "all_trace_audits_pass": true,
+  "assignment_checks": 100,
+  "controls": [
+    {
+      "id": "control/global-dead-before-forced",
+      "pass": true
+    },
+    {
+      "backtracks": 1,
+      "id": "control/failed-branch-rollback",
+      "pass": true
+    },
+    {
+      "id": "control/node-budget-unknown",
+      "pass": true
+    },
+    {
+      "id": "control/finished-trace-budget-unknown",
+      "pass": true
+    },
+    {
+      "id": "control/builder-rejects-cap-without-trimming",
+      "pass": true
+    }
+  ],
+  "engine_author": "/root/hilbert_ordering_diagnosis",
+  "finite_calibration_accepted": true,
+  "fixed_universal_Wang_set": false,
+  "full_master_contract_qualified": false,
+  "independent_raw_trace_auditor_author": "/root/hilbert_advice_controls",
+  "independent_saved_review": {
+    "bytes": 6761,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-calibration-next-benchmark-20261015/saved-reconciliation-v1.json",
+    "scope": "Saved artifact consistency only; no rerun or independent Boolean oracle reimplementation.",
+    "sha256": "36a3fdb3e80eec73dd46e704a13be3da500ca34060886d1b419aad09739cedd3"
+  },
+  "independent_truth_oracle_author": "/root/hilbert_advice_controls",
+  "learned_markings": false,
+  "native_all_reaped": true,
+  "native_terminal_elapsed_ns": 768690000,
+  "native_terminal_peak_bytes": 67092480,
+  "new_theorems": 0,
+  "outcomes": {
+    "EXHAUSTED_FINITE_MARKED_MODEL": 42,
+    "FOUND": 136,
+    "UNKNOWN": 2
+  },
+  "post_terminal_from_launch_ns": 803968000,
+  "prefix_checks": 76,
+  "previous_disposition_sha256": "b0ba60605ae3503029fb4ba77f1a4f6e65da7959dab72cefa02a47c4c4a08179",
+  "resource_scope": "One worker with no child workers; terminal Darwin wait4 peak; meter excluded from memory. Tool Date bracket includes command and genuine post-terminal probe; saved annotation writing excluded. This is not Q admission.",
+  "runner_author": "/root",
+  "schema": "ROOT-finite-point-calibration-disposition-v1",
+  "scientific_solve_count": 176,
+  "scope": "Exact frozen 10-case identity-grounded singleton unit-point CNF calibration only",
+  "solve_count": 180,
+  "source_pin_retention": true,
+  "speedup_claim": false,
+  "whole_record_pins": {
+    "ROOT-plan-v1.json": {
+      "bytes": 4364,
+      "sha256": "c647c52288ed40d8d60bdc7120602d815ae02ee68796fba1552913def5ed5398"
+    },
+    "external-observation-1.json": {
+      "bytes": 1770,
+      "sha256": "b2c0a51549c3ef43ac8c423beda10e0c454d3c4bfac03a0fd0120f97a637b964"
+    },
+    "native-terminal-1.json": {
+      "bytes": 1673,
+      "sha256": "90bcea7415bbc590544bcba469d596863bcb8cc13e7a57bb46db31b0df9e198d"
+    }
+  },
+  "whole_tool_elapsed_ms": 915
+}

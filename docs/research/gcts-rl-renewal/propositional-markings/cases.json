@@ -1,0 +1,326 @@
+{
+  "cases": [
+    {
+      "clauses": [],
+      "id": "B00-empty-model-no-clauses",
+      "prefixes": [
+        []
+      ],
+      "variables": 0
+    },
+    {
+      "clauses": [
+        []
+      ],
+      "id": "B01-empty-clause",
+      "prefixes": [
+        []
+      ],
+      "variables": 0
+    },
+    {
+      "clauses": [],
+      "id": "B02-free-two-variables",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "variables": 2
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "id": "B03-positive-unit",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "variables": 1
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            -1
+          ]
+        ]
+      ],
+      "id": "B04-negative-unit",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "variables": 1
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "id": "B05-two-coupled-clauses",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "variables": 2
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            -1
+          ]
+        ]
+      ],
+      "id": "B06-incompatible-units",
+      "prefixes": [
+        []
+      ],
+      "variables": 1
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        [
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          [
+            2,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ]
+      ],
+      "id": "B07-long-range-shared-four",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            3,
+            1
+          ]
+        ]
+      ],
+      "variables": 4
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            -1
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          [
+            3,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ]
+      ],
+      "id": "B08-three-port-and-shared-chain",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "variables": 4
+    },
+    {
+      "clauses": [
+        [
+          [
+            0,
+            -1
+          ]
+        ],
+        [
+          [
+            0,
+            -1
+          ]
+        ]
+      ],
+      "id": "B09-repeated-negative-unit-occurrences",
+      "prefixes": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "variables": 1
+    }
+  ],
+  "schema": "independent-Boolean-CNF-oracle-cases-v1"
+}

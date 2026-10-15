@@ -1,0 +1,57 @@
+{
+  "Q_payloads_decoded": 0,
+  "coordinates_latex": "\\(v_i=(6i,0),\\ p_i=(6i,2),\\ a_c=(6c,6),\\ g_c=(6c+2,6),\\ q_c=(6c+2,8)\\).",
+  "current_benchmark_semantics_changed": false,
+  "goal_status": "active",
+  "implementation_requirements": [
+    "Use complete frontier/candidate incidence for every required point and dependencies at all marking-only ports.",
+    "Recompute or update all affected candidates after extended marking changes, with exact rollback and parent-scoped exclusions.",
+    "Use global dead ends, then global forced moves, then earliest generation, retaining the full original tuple inventory.",
+    "Declare all root obligations at generation zero and derive tile generations from the shared contract.",
+    "Verify truth-table projection, assigned-zero versus absence, unit propagation, empty-clause rejection and rollback before calling an implementation conforming."
+  ],
+  "input": "A finite CNF with distinct variable indices within each clause. For each clause, its forbidden tuple assigns every literal false. The empty clause is allowed.",
+  "inventory": [
+    {
+      "family_latex": "\\(B_{i,b},\\ b\\in\\{0,1\\}\\)",
+      "m_latex": "\\(m_{B_{i,b}}(p_i)=b\\), absent elsewhere.",
+      "t_latex": "\\(t_{B_{i,b}}(v_i)=1\\), zero elsewhere."
+    },
+    {
+      "family_latex": "For each clause \\(c\\) on indices \\(I_c\\), include every \\(A_{c,s}\\) with \\(s\\in\\{0,1\\}^{I_c}\\).",
+      "m_latex": "\\(m_{A_{c,s}}(p_i)=s_i\\) for \\(i\\in I_c\\), and \\(m_{A_{c,s}}(q_c)=\\mathbf 1[s=f_c]\\), where \\(f_c\\) is the forbidden tuple. All other markings are absent.",
+      "t_latex": "\\(t_{A_{c,s}}(a_c)=1\\), zero elsewhere."
+    },
+    {
+      "family_latex": "\\(R_c\\)",
+      "m_latex": "Unmarked baseline: absent at \\(q_c\\). Clause activated: assign \\(m_{R_c}(q_c)=0\\). No tile is removed from the inventory.",
+      "t_latex": "\\(t_{R_c}(g_c)=1\\), zero elsewhere."
+    }
+  ],
+  "learning_and_soundness": "The gadget represents a clause; it does not learn or justify one. A learned guard is proved redundant only with a checked certificate that the original complete finite problem implies the clause in the stated context. A branch-specific certificate must remain branch-scoped or explicitly include its assumptions in the clause. Exhaustion of a bounded proof model does not establish unprovability in the underlying mathematical theory. Otherwise a learned guard is a restriction. Timeouts provide no negative certificate.",
+  "marking_update_requirement": "Adding a guard marking changes the model version. A reused selected guard does not silently acquire an entry in an old state: start a fresh run or revalidate/replay the full prefix and rebuild the graph, dependencies and rollback metadata under the new marking version.",
+  "new_automatically_discovered_theorems": 0,
+  "next_actual": "Implement a small standalone generic point-graph calibration and independent exhaustive verifier; test finite clause instances without decoding or altering Q. Then assess how a genuinely exhausted Q branch can supply a checked nogood certificate and guard marking.",
+  "prior_note": {
+    "bytes": 5188,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-construction-20261015/ROOT-construction-note-v1.json",
+    "sha256": "c6e563d3852845340504c2ef6e323ec4dc9c03a163820d0ddf4d75697dd6f79f"
+  },
+  "production_engines_changed": false,
+  "project_functions_executed": 0,
+  "projection_theorem": {
+    "empty_clause": "Its sole empty tuple has forbidden flag one, conflicting with the zero guard, so no exact marked tiling exists.",
+    "forward_argument": "Each required variable point selects exactly one bit tile; each clause point selects exactly one tuple tile and each guard point selects its guard. Equality at shared variable ports makes each tuple the restriction of the selected bit assignment. Equality with the assigned-zero guard forces the tuple's forbidden flag to zero, so every clause is true.",
+    "reverse_argument": "For a satisfying assignment choose its bit tile at every variable point, the uniquely determined restriction tuple at every clause point, and every guard. Each required t-total is exactly one. All shared variable ports agree, and every tuple flag equals its guard's zero. These choices are unique.",
+    "statement": "With all guard markings activated, exact marked tilings project bijectively onto satisfying assignments of the CNF.",
+    "unmarked_baseline": "Guard-unmarked baseline: all guard values are absent, but variable/tuple consistency markings remain. Every bit assignment extends uniquely using the same full inventory. Absent values are not assigned zeros."
+  },
+  "propagation": "Guard activation changes the guard tile marking pattern; it does not assign a value in the partial state until that guard is placed (or the point is explicitly initialized by the declared problem). Each guard point has one candidate, so global forced closure places every guard before branching unless a global dead end is detected first. After that closure, when all but one variable of an active nonempty clause are fixed to their forbidden values, only one compatible tuple remains. The complete graph forces that tuple and then the remaining bit, unless another global contradiction takes precedence.",
+  "purpose": "Represent a certified finite failure clause by actual extended point-value markings, rather than a separate procedural clause scanner or deletion from the candidate inventory.",
+  "required_points_latex": "\\(Q=\\{v_i\\}_i\\cup\\{a_c,g_c\\}_c\\). All remaining ports are marking-only points.",
+  "schema": "ROOT-propositional-failure-marking-construction-v2",
+  "scope": "Finite grounded GCTS point instance. This construction alone does not supply a single fixed finite Wang inventory, an infinite tiling or Turing universality.",
+  "size_and_uniformity_limit": "Tuple inventory is exponential in clause arity. Bounded arity limits that local cost, but this grounded instance family still does not provide a single fixed finite Wang set or a compiler into one.",
+  "status": "Human-designed construction with first independent mathematical review; additive clarifications selected, final focused concordance pending. Implementation and finite replay pending; not an automatically discovered theorem or Q change.",
+  "transformations": "The candidate universe is explicitly grounded, with the identity transformation only. This is a specialized finite point calibration, not unrestricted translation enumeration or polygon tiling conformance."
+}

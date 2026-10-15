@@ -1,0 +1,130 @@
+{
+  "Q_payloads_read": 0,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "Source_functions_executed": 0,
+  "all_checks_passed": true,
+  "checks_count": 2133,
+  "counts": {
+    "builder_exception_controls_without_solve": 1,
+    "cases": 10,
+    "complete_audits": 178,
+    "full_assignment_solves": 100,
+    "guard_modes_per_case": 2,
+    "intentional_UNKNOWN_audits": 2,
+    "partial_boundary_solves": 76,
+    "saved_graph_events": 1500,
+    "saved_restore_events": 1321,
+    "saved_trace_events": 5820,
+    "specialized_solver_controls": 4,
+    "status_histogram": {
+      "EXHAUSTED_FINITE_MARKED_MODEL": 42,
+      "FOUND": 136,
+      "UNKNOWN": 2
+    },
+    "total_solves": 180,
+    "whole_output_bytes": 4015322
+  },
+  "evidence_pins": {
+    "ROOT-plan-v1.json": {
+      "bytes": 4364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/ROOT-plan-v1.json",
+      "sha256": "c647c52288ed40d8d60bdc7120602d815ae02ee68796fba1552913def5ed5398"
+    },
+    "actual-1/calibration-results.json": {
+      "bytes": 3969464,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1/calibration-results.json",
+      "sha256": "04385bf7688f20ba8e2c18f2c25ac54f4105b87f4dddb2b621d46c338a9cbefb"
+    },
+    "actual-1/oracle-results.json": {
+      "bytes": 37905,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1/oracle-results.json",
+      "sha256": "583256b1ef99bf0f91a001ad8ba5a50f1d04d193f62808aed16bb3191d060969"
+    },
+    "actual-1/summary.json": {
+      "bytes": 7953,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/actual-1/summary.json",
+      "sha256": "fe225c95e6e81931c29cfb5d27f573ad839dc269fe4e859b1a9839e2b7007b5e"
+    },
+    "external-observation-1.json": {
+      "bytes": 1770,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/external-observation-1.json",
+      "sha256": "b2c0a51549c3ef43ac8c423beda10e0c454d3c4bfac03a0fd0120f97a637b964"
+    },
+    "native-terminal-1.json": {
+      "bytes": 1673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/native-terminal-1.json",
+      "sha256": "90bcea7415bbc590544bcba469d596863bcb8cc13e7a57bb46db31b0df9e198d"
+    }
+  },
+  "intentional_UNKNOWN_controls": [
+    "control/node-budget-unknown",
+    "control/finished-trace-budget-unknown"
+  ],
+  "learned_markings_accepted": false,
+  "limitations": [
+    "Every outcome was compared to the SAVED oracle accepted vectors/extension lists, and saved initial forced closure to SAVED unit closure. No truth table, point graph, checker or auditor was re-executed.",
+    "Audit validity/completeness and event counts were reconciled as saved claims. This is not another independent full trace replay or mathematical correctness audit.",
+    "Only the six permitted files were read. Source/runtime bytes and case declarations were not reread/rehashed; plan-recorded input pins were compared with the known current review pins and preserved for Root closure.",
+    "Native/tool/reap/clock/peak statements describe the saved instrument records and their consistency, not new OS measurements or Root resource authority.",
+    "Finite human-authored CNF calibration only: no learned marking, RL, theorem-search advantage, full master-contract/physical-engine/general-growth qualification or original-Q change."
+  ],
+  "mismatches": [],
+  "new_scientific_execution": false,
+  "oracle_functions_executed": 0,
+  "plan_recorded_sources": {
+    "inputs": {
+      "auditor": {
+        "bytes": 18005,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+        "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+      },
+      "cases": {
+        "bytes": 4419,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+        "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+      },
+      "engine": {
+        "bytes": 15493,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-calibration-source-20261015/finite_unit_point_gcts_v1.py",
+        "sha256": "2690280c314d57ea8b585d556ddc1a38b164c5ffe56ff831bc58e5bacc1724b3"
+      },
+      "oracle": {
+        "bytes": 8821,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+        "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+      }
+    },
+    "native_meter": {
+      "bytes": 6734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    "runner": {
+      "bytes": 12466,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-ROOT-calibration-20261015/run_calibration_v1.py",
+      "sha256": "fa63935fe56408b4f346f3ac9a81aa874f39a3dde1ce86656aa7700705a3f6cc"
+    },
+    "runtime": {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    }
+  },
+  "resource_saved_observations": {
+    "actual_wait4_pid": 40384,
+    "all_reaped": true,
+    "external_elapsed_ms": 915,
+    "native_caller_elapsed_ns": 768690000,
+    "native_terminal_peak_bytes": 67092480,
+    "observed_within_plan_bounds": true,
+    "planned_peak_cap_bytes": 536870912,
+    "postterminal_probe_from_worker_begin_ns": 787287000,
+    "worker_before_output_elapsed_ns": 680554000
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "saved_consistency_passed": true,
+  "schema": "propositional-calibration-saved-consistency-review-v1",
+  "scientific_calls": 0,
+  "scope": "Only six named saved actual1 JSON/raw buffers; consistency with saved oracle/audit/terminal data, not a second execution or independent oracle reimplementation."
+}

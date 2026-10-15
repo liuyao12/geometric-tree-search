@@ -1,0 +1,26 @@
+{
+  "author": "/root/hilbert_advice_controls",
+  "checks": [
+    "No imports, engine calls, IO or resource authority; defects raise ValueError.",
+    "Typed model/state equality and strict integer roles reject bool-as-int.",
+    "State recomposed from original candidate IDs with exact unit capacity, m union and root-based generations.",
+    "Every logged graph recomputed from complete original candidates, including all marking-only dependencies.",
+    "Global dead and forced checks precede ordered generation/degree/point branch menus.",
+    "Explicit nested stack checks child construction, all failed alternatives and complete parent restoration.",
+    "Terminal solution/exhaustion requires complete stack, full state and exact independent work/stat counters.",
+    "UNKNOWN only audits emitted prefixes and never grants solution or exhaustion.",
+    "Resource and Boolean semantics remain separate from trace mechanics."
+  ],
+  "disclosure": "Root authored the driver and construction, not this auditor; complete actual agreement remains pending.",
+  "reviewer": "/root",
+  "runtime_accepted": false,
+  "schema": "ROOT-raw-point-trace-auditor-Source-review-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 18005,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-unit-point-independent-auditor-20261015/raw_point_trace_auditor_v1.py",
+    "sha256": "4081e574d38ea689ebdc846c0bb3760c4e202dd87e927db65cd902204319e84a"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

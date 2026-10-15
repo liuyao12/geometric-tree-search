@@ -1,0 +1,49 @@
+{
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "cases": {
+    "bytes": 4419,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/finite-cases-v1.json",
+    "sha256": "0ac1cb647742078288501a6a2520cfc8c01f41f4f6cde86ade7fb3df08de0947"
+  },
+  "check_count": 32,
+  "comparison_controls": {
+    "bytes": 3703,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/point-comparison-controls-v1.json",
+    "sha256": "e3e88b8c36e4411a46ca8b676990a80bee1bdaaf1247d28b8c410a4476b03a4f"
+  },
+  "findings": {
+    "bytes": 9961,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-review-source-20261015/findings-v1.json",
+    "sha256": "c9d41ae87d60438eaa50ccf99981ce985a28391648dc0ce574b26dbdbac7d270"
+  },
+  "learned_clause_soundness_accepted": false,
+  "limitations": [
+    "Whole Source/metadata/AST/compile-only review. No oracle, helper, truth-table, unit-propagation, point, Q, clock, fixture/test or actual function was executed; no semantic expected-answer reconstruction was performed.",
+    "Source pass is conditional on a later genuine Root intake/owned runtime. No cold wrapper, Source guard, deadline/memory qualification, actual paired result or measured resource acceptance exists in this packet.",
+    "The callable accepts a generic bounded inventory; the later paired actual must bind and consume the complete frozen ten-case declaration bytes, not a favorable subset.",
+    "Unit conflict precedence means a presently falsified clause precedes a next unit, not that unit propagation decides every semantic contradiction. Engine global-dead/forced semantics and complete solution-set/rollback/guard-placement checks are independent gates.",
+    "All cases are small finite declared Boolean calibrations. No original-Q theorem, full FOL/PA, learned clause soundness, universal tiling, point-engine conformance, speedup or RL claim is granted."
+  ],
+  "original_Q_changed": false,
+  "point_engine_conformance_accepted": false,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "independent-CNF-oracle-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "independent-Boolean-CNF-truth-oracle-Source",
+  "source": {
+    "bytes": 8821,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/boolean_cnf_truth_oracle_v1.py",
+    "sha256": "f0841090782102a121702f81c742a0d397f3ef3e59788a163426ccfe8447a472"
+  },
+  "source_contract": {
+    "bytes": 3689,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-CNF-independent-oracle-source-20261015/Source-contract-v1.json",
+    "sha256": "b248f448a273913033bed5f8cba2714ecc7721a9b1f3c299ad6675061e91cd27"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

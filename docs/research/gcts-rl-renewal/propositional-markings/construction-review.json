@@ -1,0 +1,148 @@
+{
+  "schema": "propositional-failure-marking-independent-conceptual-findings-v2",
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "conceptual_review_complete": true,
+  "core_projection_argument_valid": true,
+  "disposition": "Selected note2 concordant: finite grounded projection bijection valid, both necessary note1 clarifications resolved; implementation and finite conformance still unqualified.",
+  "source_note": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-construction-20261015/ROOT-construction-note-v2.json",
+    "sha256": "f7c6c38699a5ae96385d7d4b221f2e02f89f597ff5276823889cf8a4a835f638",
+    "bytes": 6616
+  },
+  "master": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "check_count": 15,
+  "checks": [
+    {
+      "id": "finite_domain_and_disjoint_ports",
+      "valid": true,
+      "reason": "The specified integer-coordinate families have disjoint positive-support obligations and disjoint variable/flag ports. Identity-only placements and default set multiplicity make the finite candidate universe exactly the listed grounded candidates; no unintended transformed alignment is admitted."
+    },
+    {
+      "id": "exact_cover_selects_unique_local_choices",
+      "valid": true,
+      "reason": "Every required \\(v_i\\) has only its two \\(B_{i,b}\\) candidates; every \\(a_c\\) only its tuple candidates; every \\(g_c\\) only \\(R_c\\). Each contributes exactly one at that point and nowhere else positively. An exact tiling therefore chooses exactly one member of each group."
+    },
+    {
+      "id": "forward_assignment_and_clause_truth",
+      "valid": true,
+      "reason": "Overlaps at \\(p_i\\) identify every selected tuple with the restriction of the selected global bit assignment. With all guards active, overlap at \\(q_c\\) forces \\(\\mathbf 1[s=f_c]=0\\). The clause is true exactly when its restriction differs from its unique all-literals-false tuple. This uses the declared distinct-variable-within-clause input restriction."
+    },
+    {
+      "id": "reverse_unique_extension",
+      "valid": true,
+      "reason": "For each satisfying assignment, its bit tiles, unique restriction tuple for every clause, and unique guards agree on all shared markings and exactly cover all required points. No other choices project to that assignment. Thus the map is a bijection, not only equisatisfiability."
+    },
+    {
+      "id": "empty_clause_empty_cnf_unused_variables",
+      "valid": true,
+      "reason": "An empty clause has one empty tuple and forbidden flag \\(1\\), incompatible with its active zero guard, so no exact tiling. With no clauses, every assignment has exactly its bit-tile extension; unused variables remain free. With no variables and no clauses, the empty assignment corresponds to the empty tiling."
+    },
+    {
+      "id": "assigned_zero_absence_mark_only_semantics",
+      "valid": true,
+      "reason": "Assigned \\(0\\) at \\(p_i\\) or \\(q_c\\) is an actual equality value. Absence is unconstrained. Mark-only ports are not additional capacity obligations and must still be indexed for every dependent candidate. All tuple candidates remain in the declared inventory; illegal candidates become unavailable through ordinary marking agreement."
+    },
+    {
+      "id": "unit_propagation_after_guard_placement",
+      "valid": true,
+      "reason": "After the guard value is present in the current state, fixing all but one clause variable to forbidden values leaves exactly one legal satisfying tuple. Its placement sets the remaining variable port, forcing the matching bit tile. If the guard has not yet been placed, its unique candidate is itself globally forced; the conclusion follows after complete forced closure, unless a global dead end is found first. Mere activation of a tile prototype does not itself assign a state marking."
+    },
+    {
+      "id": "baseline_same_candidates_not_all_markings_absent",
+      "valid": true,
+      "reason": "When guard values alone are absent, each bit assignment still determines its tuple tiles uniquely through \\(p_i\\). The flag ports then have no guard restriction. This is a guard-unmarked baseline: variable-consistency and tuple flag markings remain. Activating guards changes marking data/version on existing guard candidates, not the base supports or candidate count."
+    },
+    {
+      "id": "redundancy_requires_original_problem_certificate",
+      "valid": true,
+      "reason": "Encoding an arbitrary clause restricts the guard-unmarked solution set; it is not automatically redundant. A learned guard is redundant only with an independent entailment certificate for the complete original problem and exact context. A parent-dependent nogood remains scoped to that parent, or its assumptions must be discharged into the clause. Timeout/incomplete failure supplies no such certificate."
+    },
+    {
+      "id": "grounded_finite_scope_and_size_limits",
+      "valid": true,
+      "reason": "Inventory includes every one of the \\(2^{|I_c|}\\) tuples per declared clause. The resulting size can be exponential in clause width. Hard-coded coordinates, clause identities and identity-only transformations give no single fixed finite Wang inventory, translationally uniform tiling theorem, infinite extension, Turing universality or measured algorithmic advantage."
+    },
+    {
+      "id": "master_scheduler_rollback_and_versions",
+      "valid": true,
+      "reason": "A conforming implementation must keep complete incidence and dependencies at all ports, global degree-zero before any degree-one action, forced closure before earliest-generation branching, original root obligations at generation \\(0\\), and complete rollback/reference counts/exclusions. Activating a guard after placements must update/revalidate the whole accepted state, graph and marking-version caches. It must not add mark-only ports as capacity roots."
+    },
+    {
+      "id": "selected_v2_raw_identity_and_preserved_v1",
+      "valid": true,
+      "reason": "Exact additive selected note; original1 and independent review remain immutable."
+    },
+    {
+      "id": "exact_core_bijection_and_inventory_preserved",
+      "valid": true,
+      "reason": "All finite grounded coordinates/full tuples/assigned-zero/mark-only supports/empty-clause and both bijection arguments exact; no altered mathematical model."
+    },
+    {
+      "id": "both_operational_baseline_clarifications_resolved",
+      "valid": true,
+      "reason": "State assignment follows placement/explicit initialization, singleton guards precede branching through global forced closure, and versioned prefix/graph/trail revalidation is explicit. Guard-unmarked baseline retains consistency marks."
+    },
+    {
+      "id": "scoped_soundness_size_and_nonadmission_limits",
+      "valid": true,
+      "reason": "Contextual certificate and bounded-model/theory distinction explicit; no timeouts-as-negative, fixed Wang compiler, universal/actual fit, current Q change or automatically discovered theorem claim."
+    }
+  ],
+  "additional_scope_conditions": [
+    "Variable indices must be distinct within each clause as declared. Clauses containing repeated variables/both polarities need a separately specified normalization before this unique-forbidden-tuple construction applies.",
+    "All candidate clauses/gadgets for a same-inventory comparison must already be declared. Introducing a genuinely new clause gadget changes required points/candidate universe and requires a new version/epoch and review; it is not merely activating a previously absent guard.",
+    "The original base supports and grounded candidate identities remain fixed across guard activation, but full marking data do change. No literal unchanged-\\(m\\)-data or old marked-state cache applicability claim follows.",
+    "Independent finite truth-table/tiling/projection/zero-versus-absence/empty-clause/unit-closure/rollback controls are still required before an implementation is qualified. No such controls were run here."
+  ],
+  "human_authorship_scope": "ROOT supplied this human-designed construction. Reviewer checked its symbolic argument; neither activity is an automatically discovered target theorem, learned marking or current Q modification. No supplied Q proof route was generated.",
+  "scientific_calls": 0,
+  "project_functions_executed": 0,
+  "Source_functions_executed": 0,
+  "Q_payloads_decoded": 0,
+  "native_clocks_called": 0,
+  "tests": 0,
+  "actual_plans": 0,
+  "actual_outdirs": 0,
+  "implementation_conformance_qualified": false,
+  "learned_guard_entailed_certificate_supplied": false,
+  "production_engines_changed": false,
+  "current_benchmark_semantics_changed": false,
+  "fixed_Wang_inventory_established": false,
+  "infinite_tiling_established": false,
+  "automatic_theorem_discovery_established": false,
+  "performance_advantage_established": false,
+  "supersedes_additively": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-independent-20261015/findings-v1.json",
+    "sha256": "3be3e04d69dae0c565f6803ff53d6e794a45d5d3e75daf10bd3a12d7a88d8a16",
+    "bytes": 9394
+  },
+  "original_note1": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/propositional-failure-marking-construction-20261015/ROOT-construction-note-v1.json",
+    "sha256": "c6e563d3852845340504c2ef6e323ec4dc9c03a163820d0ddf4d75697dd6f79f",
+    "bytes": 5188
+  },
+  "prior_note1_corrections": [
+    {
+      "id": "PROPAGATION-STATE-1",
+      "severity": "necessary operational clarification",
+      "field": "propagation",
+      "issue": "The phrase bad tuple is already excluded by the guard marking conflates an active \\(R_c\\) prototype with a selected guard/current state marking. Before guard placement, both residual tuples may remain legal.",
+      "recommended_text": "Once the active guard has been placed, or its zero is explicitly part of the fixed initial marking, fixing all but one clause variable to forbidden values leaves one compatible tuple. With an initially unplaced guard, its singleton candidate is globally forced, so this implication is obtained during complete global forced closure; a global dead end always takes precedence."
+    },
+    {
+      "id": "BASELINE-NAME-1",
+      "severity": "necessary baseline-scope clarification",
+      "field": "projection_theorem.unmarked_baseline",
+      "issue": "This baseline removes only guard values. The \\(B\\)/\\(A\\) variable-consistency markings and tuple flag markings remain, so it is not the fully unmarked base problem.",
+      "recommended_text": "Guard-unmarked baseline: all \\(R_c\\) flag values are absent while existing bit/tuple consistency markings remain. Every bit assignment extends uniquely using the same grounded candidate identities. Assigned zero and absence remain distinct."
+    }
+  ],
+  "necessary_corrections": [],
+  "selected_note2_concordance_checks": 4
+}
