@@ -1,0 +1,2934 @@
+{
+  "schema": "Q-split-architecture-neutral-control-fixtures-design-v1",
+  "source_only": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "kernel_words": [
+    {
+      "id": "K01-occurrence-ordered-MP",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 0,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "accept",
+        "consumed_original_occurrence_indices": [
+          1,
+          2
+        ],
+        "ordered_prior_rows": [
+          [],
+          [],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "reason": "Repeated originalGamma occurrence0 is preserved even though occurrence2 is consumed. Antecedent and implication order remain distinct.",
+      "actual": null
+    },
+    {
+      "id": "K02-MP-reversed",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 1,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Ordered strict-prior literal references; no integer coercion or wrong premise use.",
+      "actual": null
+    },
+    {
+      "id": "K03-MP-repeated-wrong-port",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 0,
+            "implication": 0,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Ordered strict-prior literal references; no integer coercion or wrong premise use.",
+      "actual": null
+    },
+    {
+      "id": "K04-MP-self",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 2,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Ordered strict-prior literal references; no integer coercion or wrong premise use.",
+      "actual": null
+    },
+    {
+      "id": "K05-MP-future",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 3,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Ordered strict-prior literal references; no integer coercion or wrong premise use.",
+      "actual": null
+    },
+    {
+      "id": "K06-MP-Boolean",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": false,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Ordered strict-prior literal references; no integer coercion or wrong premise use.",
+      "actual": null
+    },
+    {
+      "id": "K07-Gamma-Boolean-index",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": false,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 0,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "BooleanFalse must not stand for occurrence0 even though that equal hypothesis exists.",
+      "actual": null
+    },
+    {
+      "id": "K08-Gamma-wrong-formula",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 0,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Original indexed occurrence is exact formula data, not any available fact.",
+      "actual": null
+    },
+    {
+      "id": "K09-unary-Gen-unused-closed-Gamma",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {
+            "CONTROL_A": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          "schemas": []
+        },
+        "parameters": [
+          "z"
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "U",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "U",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "axiom",
+            "name": "CONTROL_A",
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "generalize",
+            "variable": "z",
+            "source": 0,
+            "formula": [
+              "all",
+              "z",
+              [
+                "pred",
+                "A",
+                []
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "all",
+          "z",
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ]
+      },
+      "expected": {
+        "status": "accept",
+        "consumed_original_occurrence_indices": [],
+        "ordered_prior_rows": [
+          [],
+          [
+            0
+          ]
+        ]
+      },
+      "reason": "Weakening preserves duplicate unused closed original hypotheses; Gen has one genuine prior source.",
+      "actual": null
+    },
+    {
+      "id": "K10-Gen-unused-open-duplicate-Gamma",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {
+            "CONTROL_A": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          "schemas": []
+        },
+        "parameters": [
+          "z"
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "U",
+            [
+              [
+                "var",
+                "z"
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "U",
+            [
+              [
+                "var",
+                "z"
+              ]
+            ]
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "axiom",
+            "name": "CONTROL_A",
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "generalize",
+            "variable": "z",
+            "source": 0,
+            "formula": [
+              "all",
+              "z",
+              [
+                "pred",
+                "A",
+                []
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "all",
+          "z",
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Freshness checks all originalGamma occurrences, including unused and duplicated premises.",
+      "actual": null
+    },
+    {
+      "id": "K11-Gen-self-reference",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {
+            "CONTROL_A": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          "schemas": []
+        },
+        "parameters": [
+          "z"
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "U",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "U",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "axiom",
+            "name": "CONTROL_A",
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "generalize",
+            "variable": "z",
+            "source": 1,
+            "formula": [
+              "all",
+              "z",
+              [
+                "pred",
+                "A",
+                []
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "all",
+          "z",
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "A unary Gen source must be strictly prior.",
+      "actual": null
+    },
+    {
+      "id": "K12-capture-safe-UI-then-Gen",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [
+          "y"
+        ],
+        "original_Gamma": [],
+        "commands": [
+          {
+            "rule": "instantiate",
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "term": [
+              "var",
+              "y"
+            ],
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "fresh0",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ],
+                    [
+                      "var",
+                      "fresh0"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "rule": "generalize",
+            "variable": "y",
+            "source": 0,
+            "formula": [
+              "all",
+              "y",
+              [
+                "imp",
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "pred",
+                      "R",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "all",
+                  "fresh0",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ],
+                      [
+                        "var",
+                        "fresh0"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "all",
+          "y",
+          [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "expected": {
+        "status": "accept",
+        "consumed_original_occurrence_indices": [],
+        "ordered_prior_rows": [
+          [],
+          [
+            0
+          ]
+        ]
+      },
+      "reason": "The inner binder is renamed; free replacementy is not captured. This unrelated relation is not original-Q vocabulary or target.",
+      "actual": null
+    },
+    {
+      "id": "K13-captured-UI-output",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [
+          "y"
+        ],
+        "original_Gamma": [],
+        "commands": [
+          {
+            "rule": "instantiate",
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "term": [
+              "var",
+              "y"
+            ],
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          {
+            "rule": "generalize",
+            "variable": "y",
+            "source": 0,
+            "formula": [
+              "all",
+              "y",
+              [
+                "imp",
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "pred",
+                      "R",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "all",
+          "y",
+          [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Captured output differs from the capture-safe licensed implication.",
+      "actual": null
+    },
+    {
+      "id": "K14-atomic-equality-hole",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [],
+        "commands": [
+          {
+            "rule": "eq_subst",
+            "variable": "hole",
+            "template": [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "hole"
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "expected": {
+        "status": "accept",
+        "consumed_original_occurrence_indices": [],
+        "ordered_prior_rows": [
+          []
+        ]
+      },
+      "reason": "Closed nullary operands and an atomic formula hole give a zero-premise substitution implication, not a new inference rule.",
+      "actual": null
+    },
+    {
+      "id": "K15-equality-nonatomic-template",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [],
+        "commands": [
+          {
+            "rule": "eq_subst",
+            "variable": "hole",
+            "template": [
+              "imp",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "hole"
+                  ],
+                  [
+                    "fun",
+                    "c",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "A",
+                []
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "The exposed independent primitive accepts atomic equality/predicate templates only.",
+      "actual": null
+    },
+    {
+      "id": "K16-equality-undeclared-operand",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [],
+        "commands": [
+          {
+            "rule": "eq_subst",
+            "variable": "hole",
+            "template": [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "hole"
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "var",
+              "free"
+            ],
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "d",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "No undeclared open operand can pass signature/parameter scope.",
+      "actual": null
+    },
+    {
+      "id": "K17-equality-wrong-output",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [],
+        "commands": [
+          {
+            "rule": "eq_subst",
+            "variable": "hole",
+            "template": [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "hole"
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            "left": [
+              "fun",
+              "c",
+              []
+            ],
+            "right": [
+              "fun",
+              "d",
+              []
+            ],
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "fun",
+                      "c",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "d",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "c",
+              []
+            ],
+            [
+              "fun",
+              "d",
+              []
+            ]
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "c",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "c",
+                  []
+                ],
+                [
+                  "fun",
+                  "d",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Substitution affects the declared hole only.",
+      "actual": null
+    },
+    {
+      "id": "K18-open-named-axiom",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {
+            "CONTROL_A": [
+              "pred",
+              "U",
+              [
+                [
+                  "var",
+                  "z"
+                ]
+              ]
+            ]
+          },
+          "schemas": []
+        },
+        "parameters": [
+          "z"
+        ],
+        "original_Gamma": [
+          [
+            "pred",
+            "U",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ],
+          [
+            "pred",
+            "U",
+            [
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "axiom",
+            "name": "CONTROL_A",
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "generalize",
+            "variable": "z",
+            "source": 0,
+            "formula": [
+              "all",
+              "z",
+              [
+                "pred",
+                "A",
+                []
+              ]
+            ]
+          }
+        ],
+        "target": [
+          "all",
+          "z",
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "Named original axioms must all be closed, including unused entries.",
+      "actual": null
+    },
+    {
+      "id": "K19-exact-final-target",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "mp",
+            "antecedent": 0,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "A",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "A previously present formula is not the required final conclusion.",
+      "actual": null
+    },
+    {
+      "id": "K20-unsupported-rule",
+      "surface": "unchanged-independent-checker-API-only",
+      "api": "check_primitive_word",
+      "complete_wire": {
+        "theory": {
+          "functions": {
+            "c": 0,
+            "d": 0
+          },
+          "predicates": {
+            "A": 0,
+            "B": 0,
+            "U": 1,
+            "R": 2
+          },
+          "axioms": {},
+          "schemas": []
+        },
+        "parameters": [],
+        "original_Gamma": [
+          [
+            "pred",
+            "A",
+            []
+          ],
+          [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ],
+        "commands": [
+          {
+            "rule": "assumption",
+            "index": 2,
+            "formula": [
+              "pred",
+              "A",
+              []
+            ]
+          },
+          {
+            "rule": "assumption",
+            "index": 1,
+            "formula": [
+              "imp",
+              [
+                "pred",
+                "A",
+                []
+              ],
+              [
+                "pred",
+                "B",
+                []
+              ]
+            ]
+          },
+          {
+            "rule": "induction",
+            "antecedent": 0,
+            "implication": 1,
+            "formula": [
+              "pred",
+              "B",
+              []
+            ]
+          }
+        ],
+        "target": [
+          "pred",
+          "B",
+          []
+        ]
+      },
+      "expected": {
+        "status": "reject"
+      },
+      "reason": "No unadmitted inference/schema can be inserted.",
+      "actual": null
+    }
+  ],
+  "protocol_rejection_baseline": {
+    "schema": "Q-untrusted-first-candidate-word-v1",
+    "coordinator_invocation_id": "CONTROL_PROTOCOL_ONLY",
+    "authority_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "binding": {
+      "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+      "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+      "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+    },
+    "submission_index": 0,
+    "commands": [
+      {
+        "rule": "axiom",
+        "name": "CONTROL_UNDECLARED",
+        "formula": [
+          "bot"
+        ]
+      }
+    ],
+    "origin": {
+      "kind": "producer_claimed_selected_original_target_ancestry",
+      "source_event_index": 0,
+      "physical_keys": [
+        [
+          0,
+          0,
+          []
+        ]
+      ]
+    },
+    "termination": {
+      "producer_status": "CANDIDATE_NOT_VERIFIED",
+      "root_rollback_claimed": true,
+      "proof_accepted": false,
+      "full24_accepted": false,
+      "trajectory_accepted": false
+    }
+  },
+  "protocol_cases": [
+    {
+      "id": "W01-whole-typed-rejection-baseline",
+      "input": "one complete candidate as below",
+      "expected": "transport/schema accepted; WORD_REJECTED with no primary acceptance",
+      "intervention": null
+    },
+    {
+      "id": "W02-duplicate-top-key",
+      "input": "literal duplicate schema key in same object",
+      "expected": "protocol rejection before word call",
+      "intervention": {
+        "raw_suffix_or_edit": "duplicate object field, retain whole bytes; no ordinary-dict normalization"
+      }
+    },
+    {
+      "id": "W03-truncated-EOF",
+      "input": "drop final closing brace and close pipe",
+      "expected": "incomplete input; no certificate",
+      "intervention": {
+        "raw_edit": "remove last object-closing byte"
+      }
+    },
+    {
+      "id": "W04-second-document",
+      "input": "valid candidate followed by {}",
+      "expected": "whole EOF rejection",
+      "intervention": {
+        "suffix_utf8": "{}"
+      }
+    },
+    {
+      "id": "W05-JSON-whitespace",
+      "input": "same invalid-word candidate then JSON whitespace",
+      "expected": "same WORD_REJECTED; transport completes",
+      "intervention": {
+        "suffix_utf8": " \t\r\n"
+      }
+    },
+    {
+      "id": "W06-nonJSON-whitespace",
+      "input": "same candidate then NBSP",
+      "expected": "protocol rejection",
+      "intervention": {
+        "suffix_utf8": "\u00a0"
+      }
+    },
+    {
+      "id": "W07-Boolean-physical-row",
+      "input": "origin.physical_keys[0][1]=false",
+      "expected": "strict integer rejection",
+      "intervention": {
+        "path": [
+          "origin",
+          "physical_keys",
+          0,
+          1
+        ],
+        "value": false
+      }
+    },
+    {
+      "id": "W08-float-submission",
+      "input": "submission_index=0.0 literal token",
+      "expected": "numeric token rejection",
+      "intervention": {
+        "path": [
+          "submission_index"
+        ],
+        "raw_token": "0.0"
+      }
+    },
+    {
+      "id": "W09-stale-epoch",
+      "input": "replace model epoch only",
+      "expected": "binding rejection",
+      "intervention": {
+        "path": [
+          "binding",
+          "model_epoch"
+        ],
+        "value": "1111111111111111111111111111111111111111111111111111111111111111"
+      }
+    },
+    {
+      "id": "W10-authority-wrong-Gamma",
+      "input": "coordinator test authority declares one extra original hypothesis",
+      "expected": "fixed original declaration digest rejection",
+      "intervention": {
+        "authority_path": [
+          "declaration",
+          "ordered_Gamma"
+        ],
+        "value": [
+          [
+            "pred",
+            "A",
+            []
+          ]
+        ]
+      }
+    },
+    {
+      "id": "W11-forged-checked-or-path",
+      "input": "candidate includes checked/source_path authority fields",
+      "expected": "exact-field rejection without any file import",
+      "intervention": {
+        "extra_fields": {
+          "checked": true,
+          "source_path": "NONEXECUTABLE_CONTROL_SENTINEL"
+        }
+      }
+    },
+    {
+      "id": "W12-second-submission",
+      "input": "submission_index=1",
+      "expected": "one-first-submission rejection; no restart",
+      "intervention": {
+        "path": [
+          "submission_index"
+        ],
+        "value": 1
+      }
+    },
+    {
+      "id": "W13-authority-Boolean-reserve",
+      "input": "trusted test authority limits.caller_finish_reserve_seconds=true",
+      "expected": "strict authority-integer rejection",
+      "intervention": {
+        "authority_path": [
+          "limits",
+          "caller_finish_reserve_seconds"
+        ],
+        "value": true
+      }
+    },
+    {
+      "id": "W14-pin-mismatch",
+      "input": "complete candidate bytes but expected SHA differs",
+      "expected": "byte authentication rejection before parse",
+      "intervention": {
+        "channel": "candidate_sha256",
+        "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    },
+    {
+      "id": "W15-response-incomplete",
+      "input": "only full body line, no completion+EOF",
+      "expected": "coordinator no acceptance",
+      "intervention": {
+        "response_lines": 1
+      }
+    },
+    {
+      "id": "W16-late-exit-or-held-EOF",
+      "input": "response bytes complete before deadline, terminal/EOF observed afterjoint20",
+      "expected": "coordinator UNKNOWN no prefix rescue",
+      "intervention": {
+        "deadline_relation": "terminal_observed_ns >= joint_deadline_ns"
+      }
+    }
+  ],
+  "point_and_scheduler_NONLOGICAL_cases": [
+    {
+      "id": "M01-distant-dead-outranks-forced",
+      "NONLOGICAL": true,
+      "required_points": [
+        {
+          "id": "early",
+          "generation": 0,
+          "candidates": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "id": "forced",
+          "generation": 1,
+          "candidates": [
+            "c"
+          ]
+        },
+        {
+          "id": "late-dead",
+          "generation": 9,
+          "candidates": []
+        }
+      ],
+      "expected": {
+        "decision": "dead",
+        "point": "late-dead"
+      }
+    },
+    {
+      "id": "M02-global-forced-before-branch",
+      "NONLOGICAL": true,
+      "required_points": [
+        {
+          "id": "early",
+          "generation": 0,
+          "candidates": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "id": "later",
+          "generation": 5,
+          "candidates": [
+            "d"
+          ]
+        }
+      ],
+      "expected": {
+        "decision": "forced",
+        "point": "later",
+        "candidate": "d"
+      }
+    },
+    {
+      "id": "M03-generation-before-count",
+      "NONLOGICAL": true,
+      "required_points": [
+        {
+          "id": "early",
+          "generation": 0,
+          "candidates": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "id": "later",
+          "generation": 2,
+          "candidates": [
+            "d",
+            "e"
+          ]
+        }
+      ],
+      "expected": {
+        "decision": "branch",
+        "point": "early"
+      }
+    },
+    {
+      "id": "M04-assignedzero-conflict",
+      "NONLOGICAL": true,
+      "capacity": 1,
+      "current_t": [],
+      "current_m": [
+        [
+          7,
+          9,
+          0
+        ]
+      ],
+      "candidate_t": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "candidate_m": [
+        [
+          7,
+          9,
+          1
+        ]
+      ],
+      "expected": {
+        "compatible": false
+      }
+    },
+    {
+      "id": "M05-absent-mark-unconstrained",
+      "NONLOGICAL": true,
+      "capacity": 1,
+      "current_t": [],
+      "current_m": [],
+      "candidate_t": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "candidate_m": [
+        [
+          7,
+          9,
+          1
+        ]
+      ],
+      "expected": {
+        "compatible": true
+      }
+    },
+    {
+      "id": "M06-shared-placement-identity",
+      "NONLOGICAL": true,
+      "capacity": 1,
+      "primitive_placements": [
+        {
+          "id": "common",
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "m": [
+            [
+              7,
+              9,
+              0
+            ]
+          ]
+        }
+      ],
+      "cluster_members": [
+        "common",
+        "common"
+      ],
+      "expected": {
+        "distinct_placements": 1,
+        "total_t": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "M07-distinct-overfill",
+      "NONLOGICAL": true,
+      "capacity": 1,
+      "primitive_placements": [
+        {
+          "id": "a",
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "m": []
+        },
+        {
+          "id": "b",
+          "t": [
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "m": []
+        }
+      ],
+      "cluster_members": [
+        "a",
+        "b"
+      ],
+      "expected": {
+        "compatible": false
+      }
+    },
+    {
+      "id": "M08-rollback-sharedmark",
+      "NONLOGICAL": true,
+      "initial": {
+        "totals": [
+          0,
+          0,
+          0
+        ],
+        "marks": [
+          [
+            7,
+            9,
+            0,
+            1
+          ]
+        ],
+        "generations": [
+          0,
+          0,
+          0
+        ],
+        "selected": [],
+        "excluded": [
+          [],
+          [],
+          []
+        ]
+      },
+      "placements": [
+        {
+          "id": "a",
+          "row": 0,
+          "m": [
+            [
+              7,
+              9,
+              0
+            ]
+          ]
+        },
+        {
+          "id": "b",
+          "row": 1,
+          "m": [
+            [
+              7,
+              9,
+              0
+            ]
+          ]
+        }
+      ],
+      "action": "checkpoint, placea, checkpoint, placeb, rollback child, rollback root",
+      "expected": "entire initial semantic state exactly restored, including original mark/refcount/generations/domains/exclusions"
+    }
+  ],
+  "owned_role_and_deadline_cases": [
+    {
+      "id": "O01-clean-role-import-census",
+      "expected": "only verifier+1717 checker execute in verifier; producer graph never imported there; no inherited producer callbacks/module/default/object crosses"
+    },
+    {
+      "id": "O02-foreign-FD-alias",
+      "intervention": "authority_fd==candidate_fd",
+      "expected": "CLI distinct-channel rejection"
+    },
+    {
+      "id": "O03-same-original-clock",
+      "intervention": "verifier deadline reset to childbegin+20",
+      "expected": "coordinator rejects different joint interval even if child produces bytes"
+    },
+    {
+      "id": "O04-own-boundary-code-mutation",
+      "NONLOGICAL": true,
+      "intervention": "toy late-bound boundary function sameobject code substitution in a dedicated calibration isolate",
+      "expected": "immediate caller anchor rejects; original module/instance restored or process discarded; no altered production guard accepted"
+    },
+    {
+      "id": "O05-both-child-aggregate-cost",
+      "expected": "whole producer+verifier+transient buffers/output/observer lifetimes accounted; no sum of incompatible clocks or single-child RSS proxy"
+    },
+    {
+      "id": "O06-cancel-midwire",
+      "intervention": "owned cancellation after partial candidate/response",
+      "expected": "both children reaped/no leftovers; partial evidence retained, no primary acceptance"
+    },
+    {
+      "id": "O07-full-data-initial-census",
+      "expected": "same authenticated raw buffer parsed once in producer, complete formula/primitive/24 domain rows and all hashes/EOF match original saved witnesses; counts alone not authority; verifier does not decode large preparation"
+    },
+    {
+      "id": "O08-missing-last-domain",
+      "intervention": "omit row23 or last factor in declared control output",
+      "expected": "whole initial-domain reconciliation fails; no accepted prefix or model fit"
+    }
+  ],
+  "case_count": 52,
+  "actual_results": null,
+  "actual_calls": 0,
+  "authored_original_Q_proof_routes": 0
+}

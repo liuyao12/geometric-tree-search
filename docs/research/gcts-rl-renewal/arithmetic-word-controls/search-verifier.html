@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Search and verification · Parallel implementation progress</title>
+<link rel="stylesheet" href="styles.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>.architecture{width:100%;height:auto;display:block}.step{padding:1rem;border:1px solid #bac6bd;border-radius:8px;margin:1rem 0}.step p:last-child{margin-bottom:0}.status{font-weight:700;color:#38584b}.review{color:#986813}.scope-note{padding:1rem;background:#eef2ec;border-left:4px solid #718976}td:first-child{min-width:9rem}</style>
+</head>
+<body>
+<header><a href="reader.html#integration-checkpoint">Notebook 162 · Measured attempt</a><span>Search and verification</span></header>
+<main id="progress">
+<p class="eyebrow">Parallel work · Code and review progress</p>
+<h1>Let search propose; let a separate checker decide.</h1>
+<p class="scope-note"><strong>Current result:</strong> the full-model search and clean verifier have been implemented as source prototypes. The repaired verifier and lossless loader passed independent static review. Coordinator integration, the cold launcher and meaningful controls are still being qualified. This architecture has had \(0\) actual search runs and has discovered \(0\) new theorems. Resource fit and a GCTS/RL advantage are unmeasured.</p>
+<p>Parallel agents now cover implementation and independent review. Each review names its author and exact source version. A reviewed source is ready for the next qualification step; it is not an executed test or a mathematical result. The existing five failed attempts keep their original outcomes and budgets.</p>
+<svg class="architecture" viewBox="0 0 900 310" role="img" aria-labelledby="architecture-title architecture-description">
+<title id="architecture-title">Separate search, coordinator and mathematical verifier</title>
+<desc id="architecture-description">The coordinator supplies the original authenticated model to an untrusted search. A complete first candidate travels as data to a fresh checker. The coordinator requires complete output, terminal processes and the same deadline before a result can be admitted.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#596b61"/></marker></defs>
+<g font-family="system-ui,sans-serif" font-size="17">
+<rect x="265" y="15" width="370" height="70" rx="8" fill="#edf1ec" stroke="#718976"/><text x="285" y="43">Owned coordinator</text><text x="285" y="65" font-size="14">Original input · One clock · Both process costs</text>
+<path d="M350 85V118H195V137M550 85V118H710V137" fill="none" stroke="#596b61" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="25" y="145" width="330" height="90" rx="8" fill="#fff3dc" stroke="#ac8135"/><text x="45" y="175">Untrusted candidate search</text><text x="45" y="198" font-size="14">Complete original candidate graph</text><text x="45" y="220" font-size="14">Global dead / forced / earliest generation</text>
+<rect x="545" y="145" width="330" height="90" rx="8" fill="#e3f1e9" stroke="#258572"/><text x="565" y="175">Fresh independent checker</text><text x="565" y="198" font-size="14">Original theory, hypotheses and target</text><text x="565" y="220" font-size="14">Every command and ordered reference</text>
+<path d="M360 190H538" fill="none" stroke="#596b61" stroke-width="2" marker-end="url(#arrow)"/><text x="372" y="178" font-size="14">Candidate data</text><text x="372" y="211" font-size="13">No trusted proof flag</text>
+<text x="26" y="275" font-size="14">Complete bytes and EOF + successful exit + shared deadline + resource and caller closure</text>
+<text x="26" y="298" font-size="13">Software architecture diagram; these colors are not proof tiles or learned GCTS markings.</text>
+</g></svg>
+<section id="roles">
+<h2>What the parallel work has delivered</h2>
+<div class="scroll"><table><thead><tr><th>Component</th><th>Concrete work</th><th>Current gate</th></tr></thead><tbody>
+<tr><td>Search producer</td><td>Full original point graph, canonical base candidates, first complete target ancestry, exact rollback claims; no supplied proof, library, learned ranking or RL.</td><td class="status">Conditional independent source pass. No actual run.</td></tr>
+<tr><td>Lossless loader</td><td>One full original model parse, storage sharing that preserves values, types, order and repeated occurrences. Raw data is released before parsing.</td><td class="status">Conditional independent source pass. Memory and time unmeasured.</td></tr>
+<tr><td>Clean verifier</td><td>Fresh process; pinned independent semantic checker; original declaration supplied by the coordinator. Complete primitive word and prior references checked.</td><td class="status">Independent source review accepts the current repairs. Actual protocol controls pending.</td></tr>
+<tr><td>Coordinator and launcher</td><td>Authenticated input snapshots, read-only descriptors, complete response trailers, process reaping, aggregate costs and output inventory.</td><td class="review">Implemented source under review. Cold entry and integration still being qualified.</td></tr>
+<tr><td>Controls</td><td>\(52\) designed cases: \(20\) unrelated kernel words, \(16\) hard-target protocol or rejection cases, \(8\) point/scheduler cases, and \(8\) ownership/full-data obligations.</td><td class="review">Runner implementation in progress. No actual outcomes attached.</td></tr>
+</tbody></table></div>
+<p>Independent review found three defects in the first verifier: a Boolean could satisfy one integer-limit comparison; a live callback lacked an immediate caller anchor; and the JSON suffix check admitted extra whitespace characters. Additive repairs preserve the earlier negative findings. This is a concrete benefit of dividing implementation from review; it does not demonstrate better proof search.</p>
+</section>
+<section id="target">
+<h2>The mathematical experiment is unchanged</h2>
+<p>The first baseline still asks for an automatic proof of
+\[\forall n\,\bigl(n+S(0)=S(n)\bigr).\]
+It uses the original addition theory, empty indexed hypothesis sequence \(\Gamma\), parameter scope and finite grammar. The whole original inventory contains \(11{,}147\) formulas and \(16{,}200\) primitive recipes on the \(24\)-row model. Counts are descriptive; complete authenticated model bytes and the prior independent catalogue admission determine the model.</p>
+<p>The producer receives no human-written route to this conclusion. The new controls deliberately use unrelated positive words and hard-target rejections. They test the machinery without giving the baseline its answer.</p>
+<p>This is a symbolic constraint–candidate adaptation of the shared GCTS algorithm. The producer retains complete frontier domains, global dead ends before forced moves, earliest-generation branching and full base fallback. A producer event log is not an independently verified trajectory. A checked primitive word proves the original sequent; point coverage, selected-state provenance, full-board validity and justified branch exclusions require their own evidence.</p>
+<p>The first run has no RL or learned marking. Establishing a runnable, independently checked baseline comes before measuring certified markings, learned cluster proposals and reusable receptor families. A single successful theorem would show autonomous discovery at this scope; it would still leave broad arithmetic, Hilbert geometry and comparative performance unfinished.</p>
+</section>
+<section id="next">
+<h2>What must happen before the next search</h2>
+<div class="step"><strong>Review the integration.</strong><p>Freeze and independently inspect the current bootstrap, coordinator and cold launcher, including failure cleanup, strict data boundaries and the earliest shared clock. The repaired checker alone cannot admit the entire pipeline.</p></div>
+<div class="step"><strong>Execute meaningful controls under ownership.</strong><p>Exercise malformed and incomplete transport, original-context and binding checks, ordered references, shared points, absent versus assigned-zero markings, scheduler precedence, exact rollback, deadlines and role separation. Qualify the whole original model and aggregate memory without promoting an old control result.</p></div>
+<div class="step"><strong>Run one fresh unsupplied baseline.</strong><p>Keep the joint successful-work limit \(20\,\mathrm{s}\), failure-only reserve \(55\,\mathrm{s}\), whole owned limit \(60\,\mathrm{s}\) and aggregate \(512\,\mathrm{MiB}\). Include loading, both process launches, parsing, search, checking, transport and complete output. The genuine caller limit remains \(90\,\mathrm{s}\), with a separate \(1\,\mathrm{s}\) finish reserve. No reset or budget increase.</p></div>
+<p>A late or incomplete result remains UNKNOWN. No new theorem, full PA induction result, universal tile compiler, plane-tiling proof or matched GCTS/RL speedup has been earned by this implementation work.</p>
+</section>
+<section id="evidence">
+<h2>Inspect the exact source and review records</h2>
+<p>The attached records describe source qualifications and design. They contain no new executed search result. <a href="split-source-v1/scope.json">Artifact scope and exact hashes</a>.</p>
+<p><a href="split-source-v1/producer.py">Candidate producer</a> · <a href="split-source-v1/codec.py">Lossless loader</a> · <a href="split-source-v1/verifier.py">Repaired clean verifier</a> · <a href="split-source-v1/producer-review.json">Independent producer review</a> · <a href="split-source-v1/verifier-review.json">Independent verifier review</a> · <a href="split-source-v1/codec-review.json">Independent loader review</a> · <a href="split-source-v1/controls-design.json">Full control design</a></p>
+<p><a href="reader.html#integration-checkpoint">Latest measured failure and all saved controls</a> · <a href="../index.html#goals">Research goals</a></p>
+</section>
+</main>
+</body>
+</html>

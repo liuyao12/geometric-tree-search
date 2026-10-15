@@ -1,0 +1,31 @@
+{
+  "schema": "Q-full-model-untrusted-candidate-producer-Source-review-v1",
+  "scope": "Q-full-model-untrusted-candidate-producer-Source",
+  "author_identity": "/root/arithmetic_induction",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 20219,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+    "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+  },
+  "source_contract": {
+    "bytes": 12373,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/source-contract-v2.json",
+    "sha256": "2431aaab8ece03786de0fe0d2b1acdeb178a002bf5948d5f37217e4b24ea6ec5"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "mathematical_acceptance": false,
+  "runtime_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/findings-v2.json",
+    "sha256": "8c81b1300930580e754b7a9b3bc50d3d16ab98593314e67813f9e96615017546",
+    "bytes": 93360
+  },
+  "blockers": [],
+  "remaining": "Exact cold coordinator/loader/wire/current review and new owned conformance/resource qualification remain pending; no actual baseline or target proof supplied."
+}

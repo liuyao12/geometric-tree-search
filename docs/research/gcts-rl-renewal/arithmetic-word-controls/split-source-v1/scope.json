@@ -1,0 +1,55 @@
+{
+  "RL_advantage": false,
+  "actual_runs": 0,
+  "artifacts": [
+    {
+      "bytes": 20219,
+      "file": "producer.py",
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36",
+      "source": ".gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py"
+    },
+    {
+      "bytes": 5806,
+      "file": "codec.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+      "source": ".gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py"
+    },
+    {
+      "bytes": 42086,
+      "file": "verifier.py",
+      "sha256": "a5cfbe5c72ab617d1c98b1939c4d24aefc0e1c701e36b5fc141dc48bd1ea329b",
+      "source": ".gcts-active/arithmetic-Q-clean-verifier-protocol-source-20261014/Q_clean_word_verifier_v3.py"
+    },
+    {
+      "bytes": 1564,
+      "file": "producer-review.json",
+      "sha256": "e3b3da104dfdbab62a0e1aff146b4e93b1bda3262976fd2dd86fd80d53c4f16d",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/producer-typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 1873,
+      "file": "verifier-review.json",
+      "sha256": "e24eccc080fccf9165f86977a6a2f3b5de8e51abc457d676f2c1008e95c8df54",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/verifier-typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 1894,
+      "file": "codec-review.json",
+      "sha256": "71124f7c6ba681fee2a3d1ddb246e309a4e99535db05f3aefc0432490eef96de",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/codec-typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 62584,
+      "file": "controls-design.json",
+      "sha256": "2c0bc8a562c195d7ef0ccc7bc11889f7a35ae9ec4d0193172b30eb2add9b703d",
+      "source": ".gcts-active/arithmetic-Q-search-verifier-controls-design-source-20261014/complete-fixtures-design-v1.json"
+    }
+  ],
+  "fit": "UNMEASURED",
+  "mathematical_acceptance": false,
+  "new_theorems": 0,
+  "private_data_policy": "Only task-owned mathematical source, typed reviews and control designs attached; no full model payloads, runtime plans, unrelated files or system process tables.",
+  "review_scope": "Exact conditional independent static reviews of current producer/codec/verifier, no promotion to integrated conformance. Controls are design with null actual outcomes. Coordinator/bootstrap/launcher controls are separate and pending.",
+  "schema": "Q-split-source-public-scope-v1",
+  "source_only": true
+}

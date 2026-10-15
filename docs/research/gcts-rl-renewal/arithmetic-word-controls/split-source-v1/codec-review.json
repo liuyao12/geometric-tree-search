@@ -1,0 +1,37 @@
+{
+  "schema": "Q-untrusted-preparation-codec-Source-review-v1",
+  "scope": "Q-untrusted-lossless-preparation-codec-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+    "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+    "bytes": 5806
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Source-contract-v1.json",
+    "sha256": "0722a7e6768523a2ecb1107f949a08f9af30c88fab27221c2ec315ef4568d2a4",
+    "bytes": 6979
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "mathematical_acceptance": false,
+  "runtime_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-independent-source-20261014/findings-v3.json",
+    "sha256": "d91c210a530efc891c84cbcdcb691868ee9253733159308d466de5e200c59b0d",
+    "bytes": 113213
+  },
+  "remaining": "Current coordinator/bootstrap/runtime/role closure and new measured controls/resource qualification remain pending; no Q target route supplied or actual fit/proof claimed.",
+  "sources": {
+    "codec": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+      "bytes": 5806
+    }
+  }
+}
