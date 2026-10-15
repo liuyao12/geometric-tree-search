@@ -1,0 +1,72 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Root authored coordinator6 dependency; coordinator6 is separately assigned to controls for distinct review. Root did not author current P5/verifier4. Current review covers complete P5 delta plus retained prior genuine whole P4 review and does not admit dependency runtime/physical-clock behavior.",
+  "findings": {
+    "bytes": 11468,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-protocol-ROOT-independent-source-20261015/findings-v1.json",
+    "sha256": "0bcf54447a3d74da4a52b2a8b6c4c7f04cbabeff1a3525b90c33e5cc06320326"
+  },
+  "full_architecture_qualified": false,
+  "mathematical_acceptance": false,
+  "retained_parent_whole_review": {
+    "bytes": 4022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-clean-verifier-protocol-controls-adapter-independent-source-20261014/typed-Source-review-v3.json",
+    "sha256": "15bb9491a6b94d972d0edd89e30a9e41bb3afb8bdbd8106426a9b7e6217b43a4"
+  },
+  "reviewer_identity": "/root",
+  "runtime_acceptance": false,
+  "schema": "Q-global-clock-protocol-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-split-neutral-hard-target-protocol-adapter-Source",
+  "source": {
+    "bytes": 76516,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_clean_verifier_protocol_controls_adapter_global_clock_v5.py",
+    "sha256": "77c48f0ffac17faf40ec5cbbb7f5011a00cd6cac3d7236c42546e851415b4cc1"
+  },
+  "source_contract": {
+    "bytes": 7885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/P15-Source-contract-v1.json",
+    "sha256": "01a00f3e2ccdfb46c6f4cc76b93a50d0ff7dbfed467a707b73e9bb13854f6abb"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "coordinator": {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer": {
+      "bytes": 20219,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "typed_scope_correction": {
+    "basis": "Consumer EXPECTED_REVIEW_SCOPES and genuine prior P4 review require this exact role scope. Prior v1 typed record is unusable at that consumer. Current actual P5 byte/contract/check findings unchanged, no Source edit or new execution inferred.",
+    "previous": {
+      "bytes": 3652,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-protocol-ROOT-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "29319105011119bf9a2beb8f1b623d6616679fe4071a576ca6e837e0a9a7f1a3"
+    },
+    "previous_scope": "Q-clean-verifier-protocol-controls-adapter-Source"
+  }
+}

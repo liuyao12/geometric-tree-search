@@ -1,0 +1,200 @@
+{
+  "Q_payload_parses": 0,
+  "ROOT_clock_choice": {
+    "bytes": 4443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+    "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+  },
+  "Source_delta": {
+    "bytes": 15346,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/bootstrap-Source-delta-v1.json",
+    "sha256": "6fcc7893b28561c5b4535568ab91e64eebc0aafe1893efe085c90f2dcdeeb52b"
+  },
+  "actual_activation": false,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "clock_domain": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "fit": "UNMEASURED",
+  "fixed_inputs_unchanged": {
+    "epochs": {
+      "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+      "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+      "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+    },
+    "preparation": {
+      "policy": "One complete immutable FD read; codec decode full raw SHA/length; del caller raw before one whole parse; deltext after return; full catalogue selected, preparation observations released. No byte/record/occurrence/type/domain trim or grammar regeneration.",
+      "raw_pin": {
+        "bytes": 38376960,
+        "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+      }
+    },
+    "whole_model_scope": "full original11147formula/16200recipe/24row prior observations, complete bindings not count-only authority"
+  },
+  "full_architecture_qualified": false,
+  "interface": {
+    "arguments": [
+      "manifest_fd",
+      "manifest_sha256",
+      "manifest_bytes",
+      "preparation_fd",
+      "codec_source_fd",
+      "point_source_fd",
+      "producer_source_fd",
+      "result_fd",
+      "joint_began_ns",
+      "joint_deadline_ns"
+    ],
+    "entry": "main(arguments)",
+    "event_directory_policy": "Root-approved coordinator-created canonical empty owned base producer-event-base; fixed child producer-events must not exist, unchanged FullEvents creates it. No deletion/reused directory/producer-supplied path authority; root independent inventory includes every partial.",
+    "manifest_and_response_interface": {
+      "bytes": 2696,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-producer-bootstrap-source-20261014/response-and-manifest-interface-v1.json",
+      "sha256": "fc7fcc908eab9e4f577cb965c49ed8b61566ed9378e5996bb2a8f4282ea279ee"
+    },
+    "positional_count": 10
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "ancestry_commands_cap": 24,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_ns": 55000000000,
+    "joint_success_ns": 20000000000,
+    "max_attempts": 128,
+    "max_candidates": 1,
+    "max_events": 2000,
+    "max_semantic_visits": 5000000,
+    "owned_seconds": 60,
+    "worker_guidance_bytes": 524288000
+  },
+  "mathematical_acceptance": false,
+  "native_clock_calls": 0,
+  "parent_author_identity": "/root/arithmetic_induction",
+  "pending": [
+    "genuine distinct current Source review",
+    "exact new coordinator/adapter/cold Source bindings and closure",
+    "ROOT-owned clock/projection and cold controls with complete owned/caller closure",
+    "separate W16 expected-UNKNOWN qualification",
+    "actual runtime/resource fit and any later baseline authorization"
+  ],
+  "preserved_parent_Source_review_historical": {
+    "bytes": 2806,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-bootstrap-independent-source-20261014/typed-Source-review-v1.json",
+    "sha256": "fa7231a0e80493eea4adabd8ab051c1b104137a5dd48fa6be0f70f6fe0b3f56d"
+  },
+  "preserved_parent_contract": {
+    "bytes": 8112,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-producer-bootstrap-source-20261014/source-contract-v2.json",
+    "sha256": "f4d1bc894712e230de246604ae3ee2ad225b1579e8ea14d5767586edd26f88d0"
+  },
+  "projection": {
+    "authority": "Projection only certifies the numeric relation at the sample. It proves no future clock-rate, drift, suspend, physical resolution or wall-time equivalence. Enclosing original global pre/post/delegation/output/terminal and external caller gates remain authoritative.",
+    "clock_failure": "Expired/unrepresentable projections are UNKNOWN/incomplete. Verifier computes its projection outside the mathematical ValueError-rejection try, so a projection error is not counted as word rejection.",
+    "custody": "Native global callable, exact type-int clock ID, process-local perf callable, nextafter/isfinite and original float ratio descriptor are captured in function keyword defaults and compared directly to original module endpoints before/after sampling/final gate. Trusted cold caller must retain full code/default/kwdefault/cell/module/class/MRO/object/native custody. No injected arbitrary clock or no-op guard.",
+    "exact_bound": "Lower the local float sample by math.nextafter toward negative infinity. Form the rational sum with the integer-nanosecond remainder. float.as_integer_ratio gives exact numerators/denominators; cross-products verify the returned local deadline is no later than that rational bound. A failed finite/bound/expired check raises TimeoutError, never renews a budget.",
+    "helper": "project_local_float_deadline",
+    "helper_AST_sha256": "264c5c2ab7ed0b46830c989c9a564f8b5761b6c7125906391865230785c3fc76",
+    "identical_source_and_AST_in_all_three": true,
+    "inline_runtime_roles_added": 0,
+    "producer_pair": "Original producer2 receives a synthetic same-process local began and deadline. Deadline is evaluated as began+20.0 and that exact equality and rational no-later bound are checked after optional downward correction. Synthetic began is not the coordinator global begin and is never a resource epoch.",
+    "sampling": "Native process-local perf is sampled before native global CLOCK_MONOTONIC. Remaining global integer interval is positive and at most the unchanged joint interval. No shared perf epoch is assumed."
+  },
+  "review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "pending": true,
+    "prior_review_is_not_current_acceptance": true,
+    "required_current_source": {
+      "bytes": 18802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+      "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+    },
+    "required_flags": {
+      "scientific_acceptance": false,
+      "scientific_calls": 0,
+      "source_only": true,
+      "source_review_passed": true
+    },
+    "reviewer_distinct_from_current_author": true,
+    "scope": "Q-untrusted-producer-bootstrap-Source",
+    "source": {
+      "bytes": 18802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+      "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+    },
+    "source_contract": "This exact current contract raw pin must be bound by the independent review.",
+    "sources": {
+      "bootstrap": {
+        "bytes": 18802,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+        "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+      },
+      "codec": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      },
+      "point_graph": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "producer": {
+        "bytes": 20219,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+        "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+      }
+    }
+  },
+  "review_checklist": [
+    "Authenticate complete choice/ABI records and all exact current Source/contract/parent pins; prior passes are preserved conditional history, not new current reviews.",
+    "Read each full parent/current delta; verify complete byte inverse and the exact three changed existing callables per role, with all other callable ASTs unchanged.",
+    "Confirm identical inline helper byte/AST; native local sample precedes global read; exact float ratios and integer cross-products guard every returned deadline and producer pair.",
+    "Check real perf/clock_gettime_ns/CLOCK_MONOTONIC/native helper custody plus caller defaults/kwdefaults/cells/module/global/builtin/class/MRO/effective-instance seals; no general cheap guard is introduced.",
+    "Confirm all shared CLI ns/gates/case stamps are global integer domain; no absolute global ns is divided to obtain a local perf deadline; original native/float producer and checker files remain unchanged.",
+    "Confirm unchanged exact authority/manifest/candidate/body/trailer/observation/result wire field sets and CLI counts; versions/new Source hard pins distinguish clocks without new roles or hidden schema widening.",
+    "Bootstrap retains full original authenticated preparation decode/one parse/lifetimes/event-base policy/complete two-line EOF; diagnostic no-candidate output can use failure-only window but cannot earn late acceptance.",
+    "Verifier retains full strict original authority/input/candidate/word/guard/EOF checks; projection failures escape outside logical rejection classification; final global output/terminal closure remains mandatory.",
+    "Runner retains all52 cases and complete frozen fixture bytes, unrelated checker words only, strict adapter review evidence, W16 unconditional deferral and all false mathematical/full-architecture flags.",
+    "Keep caps/complete original grammar/source7/model/registry/theory/Gamma/parameters/target/scheduler/rollback/fallback unchanged; no new proof route, rank, library or RL input.",
+    "Future ROOT must qualify projection/native-clock controls, exact current coordinator/adapters/cold caller/raw closure/owned lifecycle and W16 expected-UNKNOWN separately. Source-only is not runtime fit, control or proof acceptance."
+  ],
+  "reviewed_implementation_functions_called": 0,
+  "schema": "Q-untrusted-producer-bootstrap-Source-contract-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 18802,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+    "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+  },
+  "source_only": true,
+  "source_role_count": 4,
+  "sources": {
+    "bootstrap": {
+      "bytes": 18802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_untrusted_producer_bootstrap_global_clock_v3.py",
+      "sha256": "5232e8cd3b5763b16e11a092638231234abb4962424ab1026bb7363d7572cb1e"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer": {
+      "bytes": 20219,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-candidate-producer-source-20261014/Q_untrusted_candidate_search_v2.py",
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    }
+  },
+  "static_Source_conformance": {
+    "bytes": 6386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/static-Source-conformance-v1.json",
+    "sha256": "8711a6ae4aa304cb38d157fdccc41eeaf5c180a7df8659de371ee781da59dc6b"
+  },
+  "wire_policy": "All existing exact authority/manifest/candidate/response/observation/result field sets and schemas retained. Source VERSION/CLOCK_DOMAIN and genuine new exact hard pins reject mixed clock semantics. No new executed module or runtime role."
+}

@@ -1,0 +1,93 @@
+{
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Clock_ID_policy": "Capture actual time.clock_gettime_ns and type-int time.CLOCK_MONOTONIC once before any delegated work; reject changed module/callable/id before use. No float crossing in these wrappers; original point8d22 unchanged and only its NONLOGICAL finite APIs used. Exact new Source pins+versions/domain reject mixed per-process perf semantics.",
+  "M8_source": {
+    "bytes": 22217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_point_scheduler_adapter_v2.py",
+    "sha256": "0e38a1ee5e3b2a55beaf2fbae5c461e3b5f6bc2530d2bb375cd22573ee9379bb"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "caps": "unchanged joint20/failure55/owned60/512aggregate/500guidance/caller90+1; original model/epochs/source7/runtime unchanged",
+  "census_source": {
+    "bytes": 20215,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+    "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+  },
+  "change_inventory": {
+    "M8": "VERSION +module CLOCK_DOMAIN, Gate native clock/module/strict int ID capture; guard endpoint/id before/after delegates; use captured native callable with captured ID; require current cold guard module domain. All other class/function ASTs exact.",
+    "census": "VERSION/CLOCK_DOMAIN and Budget native clock/module/strict int ID capture/check. All other class/function ASTs exact. No whole model/census/count/domain/omission comparison changes."
+  },
+  "current_review": "PENDING genuine distinct current M8/census Source reviews",
+  "original_M8_author": "/root/arithmetic_induction; current clock-wrapper successor author controls, no independent self-review",
+  "parent_sources": {
+    "M8": {
+      "bytes": 21715,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-neutral-point-adapter-source-20261014/Q_neutral_point_scheduler_adapter_v1.py",
+      "sha256": "4349af2c387cc6ccee27cdf5bf02d50f6bfdb51474ce46648b4d9f94a3f5bd8d"
+    },
+    "census_leaf": {
+      "bytes": 19640,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_neutral_full_model_census_leaf_v1.py",
+      "sha256": "1de670a269e612a454ba58a9b8c9a219934b8ae7666867a0f0a28105f0c44959"
+    }
+  },
+  "policy": {
+    "bytes": 4443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+    "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+  },
+  "remaining": [
+    "profile successor exact verifier4 rawpin",
+    "O8 successor exact coor6/verifier4/census2/profile2 source bindings",
+    "worker/launcher successors exact all current roles and source contracts +genuine reviews",
+    "future unrelated native clock/projection and actual owned full52/W16 controls, no fit/acceptance"
+  ],
+  "resource_fit": "UNMEASURED",
+  "schema": "Q-global-clock-laneB-initial-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Source only; no Source/project imports or function calls, Q decode, fixtures/tests/clocks/plans/actuals. All mathematical/resource/fullarchitecture acceptance false.",
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "M8": {
+      "bytes": 22217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_point_scheduler_adapter_v2.py",
+      "sha256": "0e38a1ee5e3b2a55beaf2fbae5c461e3b5f6bc2530d2bb375cd22573ee9379bb"
+    },
+    "census_leaf": {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "disposable_duration_leaf_unchanged": {
+      "bytes": 2985,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_neutral_calibration_leaf_v1.py",
+      "sha256": "8c88dabb29c1e5e5b7af0bceddc37173ac03fd6de86e89604cf10a406bb5e190"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "unchanged_evidence": {
+    "bytes": 2629,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/M8-census-static-Source-clock-delta-v1.json",
+    "sha256": "b4ab044333268c2bfb727e5ad92ba37a1b8c16eebebdb734b37c6baf3ce0f586"
+  },
+  "wire_interfaces_unchanged": {
+    "M8": "factory7/endpoint5 and exact receipt schema/fields/cases",
+    "census": "manifest8/CLI11, exact response/completion schema/fields"
+  }
+}

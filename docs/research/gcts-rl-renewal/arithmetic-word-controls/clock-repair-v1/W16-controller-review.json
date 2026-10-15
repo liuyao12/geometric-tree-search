@@ -1,0 +1,57 @@
+{
+  "actual_invocations": 0,
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "findings": {
+    "bytes": 183227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-W16-controls-review-source-20261015/findings-v2.json",
+    "sha256": "892c72050bac76e6b61af0b1ff514e3207b24d6c4aa82a52eda39ee54cc6b5f8"
+  },
+  "full52_qualified": false,
+  "preserved_negative": {
+    "bytes": 2465,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-W16-controls-review-source-20261015/typed-Source-review-v1.json",
+    "sha256": "3754b102ba09fe4e2d6d5773032079d3012c11d67149362f805033d00cbc3072"
+  },
+  "qualification": "Conditional Source-only current controller6 plus raw-identical whole-read leaf3. Separate genuine early caller/current clock/owned/caller/expected-UNKNOWN actual evidence still required. No activation.",
+  "resolved_blocker": "W16-CONTROLLER-CHILD-CELL-1",
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "Q-W16-global-clock-expected-UNKNOWN-control-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-W16-global-clock-expected-UNKNOWN-control-Source",
+  "source": {
+    "bytes": 68771,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+    "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+  },
+  "source_contract": {
+    "bytes": 10277,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/W16-Source-contract-v2.json",
+    "sha256": "08c890a87d6d9c9cac3cc78b3373a9cb5adc3f66b9c16d8d2428209149bf5879"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "W16_controller": {
+      "bytes": 68771,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+      "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+    },
+    "late_leaf": {
+      "bytes": 15699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_late_exit_verifier_leaf_global_clock_v3.py",
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    }
+  },
+  "summary": {
+    "checks": 225,
+    "failed": 0,
+    "passed": 225,
+    "raw_references": 136,
+    "unique_raw_paths": 58
+  }
+}

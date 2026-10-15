@@ -1,0 +1,43 @@
+{
+  "all_checks_passed": true,
+  "author_identity": "/root",
+  "authorship_disclosed": true,
+  "check_count": 152,
+  "concrete_blocker_ids": [],
+  "conditional_scope": "Exact current coor6 whole/delta Source only. Genuine coor5 whole review retained after full byte inverse/current raw auth; all13 native shared clock calls/new captures, original model/runtime/caps/wires/closed overlap/cancel/failure/poststdout flow checked. No current clocks/projection/control/Source calls, Q decode, tests, plans, actual admission or resource fit.",
+  "findings": {
+    "bytes": 131337,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/findings-v1.json",
+    "sha256": "3af21ba769e0e54076ebb22d625a60106d5bf8314f1b1fc5a002808212b70745"
+  },
+  "mismatches": [],
+  "raw_reference_count": 120,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_acceptance": false,
+  "schema": "Q-split-owned-coordinator-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-split-owned-coordinator-Source",
+  "source": {
+    "bytes": 54630,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+    "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+  },
+  "source_contract": {
+    "bytes": 13518,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Source-contract-v6.json",
+    "sha256": "8d37f633a14a0a23f00ea3888c832137f291896d5ee00e079ffd1ac481861a5b"
+  },
+  "source_only": true,
+  "source_ready": true,
+  "source_review_passed": true,
+  "sources": {
+    "coordinator": {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    }
+  },
+  "unique_raw_paths": 35
+}

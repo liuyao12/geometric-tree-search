@@ -1,0 +1,215 @@
+{
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Q_payload_decodes": 0,
+  "actual_plans": 0,
+  "all_acceptance_false": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "change_inventory": {
+    "O8": "VERSION/CLOCK_DOMAIN/coor6 rawpin+version/domain; native callable/module/type-int ID captured/guarded in original checked pre/post, all clock comparisons chosen shared domain; no O05/role/FD/cancel/census/observation schema/field or other case change.",
+    "profile": "VERSION/CLOCK_DOMAIN/verifier4 rawpin+version/domain; capture native callable/module/type-int ID, direct guards before inherited clock uses and before actual verifier entry. No collector, trace schema, two-line transport, output limits or exact verifier CLI10 change."
+  },
+  "current_reviews": "PENDING genuine distinct current profile/O8 and coor6/verifier4/runner3 Source passes; no parent review relabel",
+  "inputs": {
+    "declaration": {
+      "bytes": 2683,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/Q-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    "initial_oracle_domains": {
+      "bytes": 8295473,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-oracle-domains-v2.json",
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    "initial_state": {
+      "bytes": 8296118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-initial-state-witness-v2.json",
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    "producer_preparation": {
+      "bytes": 38376960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-progress-20261014/worker-output-v1/Q-preparation-provisional-v1.json",
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    }
+  },
+  "native_clocks_called": 0,
+  "original_model_runtime_caps": "Byte-identical point8d22/checker1717/codec/duration-only disposable/originalprep+state+oracle/source7/runtime/math epochs; exact20/55/60/512/500/90+1. New executable pin/versions/domain only; no reset, wallclock, unchecked clock wrapper or global_ns/billion legacy float conversion.",
+  "original_scopes": {
+    "API": {
+      "bytes": 1053,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/owned_adapter_API_v1.pyi",
+      "sha256": "d4ed316514cd43d9384169d0bcb8e821739ce2cdcc46e711dc04f5fcb25ab0bf"
+    },
+    "context_schema": {
+      "bytes": 1459,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/owned-result-and-context-schema-v1.json",
+      "sha256": "741700ed54d06689c09ab6894625d9862faa3e614a7f29ac04a67038249b57d7"
+    }
+  },
+  "parent_O8_contract": {
+    "bytes": 18268,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Source-contract-v3.json",
+    "sha256": "acef27e411a9d6c2d9a0b81fd6a22aa5133567cb2d7f48f802917bed35a757fd"
+  },
+  "parent_O8_source": {
+    "bytes": 25468,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_owned_neutral_controls_adapter_v3.py",
+    "sha256": "7155ba54659c722c308a6377f16e8cbfc719dfb98f7e7488d0dd86db886512c5"
+  },
+  "parent_profile_source": {
+    "bytes": 5085,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_control_verifier_profile_leaf_v1.py",
+    "sha256": "7ccbc8818af91cc2e83aaf558dfab645fbc5bdd4acf130ee4309e53ec49af18b"
+  },
+  "policy": {
+    "bytes": 4443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+    "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+  },
+  "profile_source": {
+    "bytes": 6704,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_control_verifier_profile_leaf_v2.py",
+    "sha256": "6ba72fc11295e8972b356fd433f5990bc39723eb166001f374c795933cffbdd9"
+  },
+  "resource_fit": "UNMEASURED",
+  "review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "required_flags": {
+      "all_checks_passed": true,
+      "scientific_acceptance": false,
+      "scientific_calls": 0,
+      "source_only": true,
+      "source_review_passed": true
+    },
+    "reviewer_distinct": true,
+    "scope": "Q-split-neutral-owned-model-role-deadline-adapter-Source",
+    "source": {
+      "bytes": 26071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+      "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+    },
+    "source_contract": "this exact raw contract",
+    "sources": {
+      "adapter": {
+        "bytes": 26071,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+        "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+      },
+      "census_leaf": {
+        "bytes": 20215,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+        "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+      },
+      "codec": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      },
+      "coordinator": {
+        "bytes": 54630,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+        "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+      },
+      "disposable_leaf": {
+        "bytes": 2985,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_neutral_calibration_leaf_v1.py",
+        "sha256": "8c88dabb29c1e5e5b7af0bceddc37173ac03fd6de86e89604cf10a406bb5e190"
+      },
+      "independent_checker": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      },
+      "point_graph": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "profile_leaf": {
+        "bytes": 6704,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_control_verifier_profile_leaf_v2.py",
+        "sha256": "6ba72fc11295e8972b356fd433f5990bc39723eb166001f374c795933cffbdd9"
+      },
+      "runner": {
+        "bytes": 38113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+        "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+      },
+      "verifier": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      }
+    }
+  },
+  "runtime_Source_functions_called": 0,
+  "schema": "Q-global-clock-laneB-profile-O8-Source-contract-v1",
+  "source": {
+    "bytes": 26071,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+    "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+  },
+  "source_only": true,
+  "sources": {
+    "adapter": {
+      "bytes": 26071,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_owned_neutral_controls_adapter_v4.py",
+      "sha256": "768e6ef7c9386b92bc7330f6ca96766ccdaaa560c1c38b809efa7be3308f1ca1"
+    },
+    "census_leaf": {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "coordinator": {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "disposable_leaf": {
+      "bytes": 2985,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-split-owned-controls-source-20261014/Q_neutral_calibration_leaf_v1.py",
+      "sha256": "8c88dabb29c1e5e5b7af0bceddc37173ac03fd6de86e89604cf10a406bb5e190"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "profile_leaf": {
+      "bytes": 6704,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_control_verifier_profile_leaf_v2.py",
+      "sha256": "6ba72fc11295e8972b356fd433f5990bc39723eb166001f374c795933cffbdd9"
+    },
+    "runner": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "static_delta": {
+    "bytes": 6376,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/profile-O8-static-clock-delta-v1.json",
+    "sha256": "4b14711b2501a4a0efafc66d9812029ffa2d440b786d6c22b9641f0f4a591b83"
+  },
+  "unchanged_census_contract": {
+    "bytes": 5927,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/M8-census-Source-contract-v1.json",
+    "sha256": "99e15e3bb34786e86496da815924954431bfa93f0aa9df5db49759cf92aec7c2"
+  },
+  "worker_launcher_binding": "PENDING all current dependency contracts/reviews; no actual Root request/plan"
+}

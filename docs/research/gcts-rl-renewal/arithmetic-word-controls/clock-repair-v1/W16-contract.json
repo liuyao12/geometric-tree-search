@@ -1,0 +1,200 @@
+{
+  "CLOCK_DOMAIN": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "Source_review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "must differ",
+    "scientific_calls": 0,
+    "scope": "Q-W16-global-clock-expected-UNKNOWN-control-Source",
+    "source_contract": "THIS_FROZEN_CONTRACT_PIN, supplied by genuine reviewer",
+    "source_only": true,
+    "source_review_passed": "genuine result only",
+    "sources": {
+      "W16_controller": {
+        "bytes": 68771,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+        "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+      },
+      "late_leaf": {
+        "bytes": 15699,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_late_exit_verifier_leaf_global_clock_v3.py",
+        "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+      }
+    }
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "caps": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "claims": {
+    "Q_payload_parses": 0,
+    "ROOT_primary_accepted": false,
+    "ROOT_resource_accepted": false,
+    "Source_implemented_only": true,
+    "actual_calls": 0,
+    "fit": "UNMEASURED",
+    "full52_qualification": false,
+    "proofs": 0,
+    "tests": 0
+  },
+  "clock_policy": {
+    "bytes": 4443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+    "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+  },
+  "context_fields": [
+    "coordinator_module",
+    "coordinator_source_raw",
+    "owner",
+    "runtime",
+    "run_directory",
+    "sources",
+    "inputs",
+    "original_sources",
+    "invocation_id"
+  ],
+  "controller_API": [
+    "context",
+    "source_guard",
+    "joint_began_ns",
+    "joint_deadline_ns"
+  ],
+  "delta": {
+    "bytes": 10119,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/W16-controller6-Source-delta-v1.json",
+    "sha256": "12b0a9088338137207309fa1100d5d446944c0478c72b75e14d234d09eddaa89"
+  },
+  "dependencies": {
+    "census_leaf": {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    "coordinator": {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "fixed_sources": {
+    "census_leaf": {
+      "bytes": 20215,
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    "codec": {
+      "bytes": 5806,
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "coordinator": {
+      "bytes": 54630,
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    "independent_checker": {
+      "bytes": 46514,
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "late_leaf": {
+      "bytes": 15699,
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "producer": {
+      "bytes": 20219,
+      "sha256": "994b1ff8f3edf2621826f64fe7d974dee9041fa211e1990d76362268eb607f36"
+    },
+    "verifier": {
+      "bytes": 48584,
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    }
+  },
+  "late_leaf_CLI": "14 arguments: original four control-only extra channels followed by unchanged verifier argv10; no new clock epoch field",
+  "native_child_registration": {
+    "actual_owner_method": "unchanged coordinator6 Owner.launch/wait/cleanup",
+    "call_freevars": [
+      "calls",
+      "checked",
+      "checked_anchor",
+      "clock",
+      "clock_id",
+      "coordinator",
+      "effective_code",
+      "effective_fn",
+      "joint_deadline_ns",
+      "late_child_holder",
+      "originals",
+      "own",
+      "owner",
+      "phase",
+      "state_code",
+      "state_fn"
+    ],
+    "holder_transition": "Private holder identity remains fixed. Exactly once, after intact genuine Owner.launch verifier return and before mandatory postguard, binding None becomes the immutable tuple (actual child dict, actual process object, launch_index1, launch_began_ns, pid). Holder shape/identity via closure capture and exact native Owner registry/attempt/process/PID fields validated before/after delegated Source guard. Lifecycle usage/reap/status legitimately evolve; code/default/cell authorities never resealed.",
+    "no_reseal": true,
+    "retained_limits_and_readiness": "original global20/wait; failure55 only cleanup/evidence; owned60/aggregate512/caller90+1; whole timely rejected response then same live verifier-role PID; no primary/math/full52/resource acceptance",
+    "scope": "repair CHILD-CELL-1 only"
+  },
+  "native_clock_contract": {
+    "callable": "actual native time.clock_gettime_ns captured once, exact BuiltinFunctionType/time/name required",
+    "clock_id": "actual type-int time.CLOCK_MONOTONIC captured once; identity of callable and exact literal integer ID retained, no mutation/reseal",
+    "custody": "immediate existing guard entry/postcallback plus original cold caller Source/native/parser/builtin seals; late leaf direct native checks at every clock read boundary",
+    "legacy_float_crossing": "none in P15/controller/late leaf; unchanged checker uses separately reviewed verifier projection",
+    "no_clock_reset": true,
+    "shared_values": "every begin/deadline/event/readiness/lifetime/failure/owned ns uses this one global integer domain"
+  },
+  "original_mathematical_and_raw_inputs": "all original bytes/Gamma/target/model/authority/registry/source7 unchanged; no Q parse here except genuine future census leaf in owned child",
+  "pending": "genuine distinct controller6 whole/delta Source review; current leaf3 Source scope inherited only via genuine peer; separate early W16 caller/preregistration/actual still absent",
+  "preserved_negative_Source_review": {
+    "bytes": 2465,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-W16-controls-review-source-20261015/typed-Source-review-v1.json",
+    "sha256": "3754b102ba09fe4e2d6d5773032079d3012c11d67149362f805033d00cbc3072"
+  },
+  "preserved_negative_findings": {
+    "bytes": 157001,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-W16-controls-review-source-20261015/findings-v1.json",
+    "sha256": "c5ef04049f28c7aa740739565ace84d8ca059e3992dd0b29515975a930737e45"
+  },
+  "preserved_original_contract": {
+    "bytes": 18139,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-expected-UNKNOWN-control-source-20261015/Source-contract-v1.json",
+    "sha256": "52de6ffddea18f16f739d74882793572495ef5fae1078debc4dcd888ec47b953"
+  },
+  "preserved_parent_contract": {
+    "bytes": 8017,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/W16-Source-contract-v1.json",
+    "sha256": "0d1efc4cc12012f2f1d40f036fa4ce6f070a61300ead6a58ddd3e41d5d82d535"
+  },
+  "required_provenance": "fresh genuine global coordinator Owner and early global begin before Source/cold loading; complete original8+source7 raw streams, one genuine full-model census, one genuine timely rejected-word verifier response, readiness before original20, same verifier-role process held live, actual Owner.wait rejects at original20 then live census/kill/reap/complete evidence under failure55",
+  "review_checklist": {
+    "bytes": 1606,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/dependency-and-review-checklist-v1.json",
+    "sha256": "45433f98db70a0c3f3c57002493a28e373c500564cd3dd36fc97cf6a248b6ae8"
+  },
+  "schema": "Q-W16-global-clock-expected-UNKNOWN-Source-contract-v2",
+  "scope": "separate expected-UNKNOWN rejection observation; never a successful20/full52/proof/resource/selected/fullboard/native/RL admission; no existing failed namespace reused",
+  "source_only": true,
+  "sources": {
+    "W16_controller": {
+      "bytes": 68771,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+      "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+    },
+    "late_leaf": {
+      "bytes": 15699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_late_exit_verifier_leaf_global_clock_v3.py",
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    }
+  },
+  "wire_compatibility": "unchanged census manifest8/CLI11/response, verifier authority/argv10/response, W16 readiness/result/post fields; only Source/version values change"
+}

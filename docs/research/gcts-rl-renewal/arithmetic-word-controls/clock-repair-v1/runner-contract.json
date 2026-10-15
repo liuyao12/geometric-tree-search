@@ -1,0 +1,239 @@
+{
+  "Q_payload_parses": 0,
+  "ROOT_clock_choice": {
+    "bytes": 4443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+    "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+  },
+  "Source_delta": {
+    "bytes": 15890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/runner-Source-delta-v1.json",
+    "sha256": "e1cb794aae421cb04c32c3e099990c610d25efccf6a8b3e6de0418ee996c51e5"
+  },
+  "actual_activation": false,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "clock_domain": "time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "fit": "UNMEASURED",
+  "fixed_inputs_unchanged": {
+    "adapter_API": {
+      "binding_authority": "Root trusted same-buffer cold loader validates exact reviewed Source contract/whole module globals, builtins, class/MRO/properties/effective objects and actual callable code/defaults/cells before passing it. The runner raw hash and typed review checks alone do not prove object-to-Source equality.",
+      "binding_fields": [
+        "endpoint",
+        "authenticated_source_raw",
+        "reviewed_source_record",
+        "genuine_typed_review"
+      ],
+      "current_protocol_dispatch": {
+        "W16": "Not_exercised in current52. A future separate actual original20/failure55/owned60 run expects UNKNOWN late gate with complete bytes/EOF/terminal/caller evidence; never successful20 completion/admission, no toy/reset clock.",
+        "completed_false": "Never fake observed_predicate=True; incomplete adapter remains failed/UNKNOWN, not positive conformance",
+        "future_cases": "W01-W15 only; W16 never delegated by current callable",
+        "implemented_adapters": 0
+      },
+      "expected_observation_schema": "Q-split-neutral-surface-observation-v1",
+      "expected_source_literal": "frozen-neutral-fixture",
+      "implemented_adapters": 0,
+      "observation_fields": [
+        "schema",
+        "case_id",
+        "surface",
+        "completed",
+        "observed_predicate",
+        "expected_source",
+        "evidence",
+        "original_Q_theorem_accepted",
+        "selected_accepted",
+        "point_union_accepted",
+        "full24_accepted",
+        "trajectory_accepted",
+        "ROOT_resource_accepted",
+        "RL_accepted"
+      ],
+      "owned_evidence_required": "both child role/raw Source census, original clock/cancellation/reaping/lifecycle/whole model/24 domain receipts, output and actual terminal ownership; O04 dedicated disposable toy isolate.",
+      "point_evidence_required": "whole genuine fixture/API graph before/after/current decision/domain EOF/actual placement identity and t/m/zero-vs-absence/rollback receipts; not a compiled Q board.",
+      "protocol_evidence_required": "whole authority/candidate bytes and hashes, exact edited field provenance, genuine verifier child exit/result/exception, complete two-line hash/EOF and native terminal clock. WORD_REJECTED must be literal for W01/W05; all protocol primary acceptance false. The adapter independent Source review must map every W02-W16 expected predicate to full evidence, not only its own pass Boolean.",
+      "review_scope_template": "Q-split-neutral-{surface}-adapter-Source",
+      "surface_names": [
+        "hard-target-protocol",
+        "NONLOGICAL-point-scheduler",
+        "owned-model-role-deadline"
+      ]
+    },
+    "case_counts": {
+      "NONLOGICAL_point_scheduler": 8,
+      "kernel": 20,
+      "owned_model_roles_deadline": 8,
+      "protocol": 16,
+      "total": 52
+    },
+    "correction_scope": {
+      "K02": "Literal ordered ports corrected from repeated [1,1] to swapped [1,0]; V1 repeated-premise declaration remains historical only, with no executed outcome.",
+      "W16": "Not_exercised in current52. A future separate actual original20/failure55/owned60 run expects UNKNOWN late gate with complete bytes/EOF/terminal/caller evidence; never successful20 completion/admission, no toy/reset clock."
+    },
+    "inputs": {
+      "complete_fixture_data": {
+        "bytes": 62584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-design-source-20261014/complete-fixtures-design-v2.json",
+        "sha256": "1420cd2c0a56d09e629ca65fe4b7f690570ccb283b1998762c10de1190180575"
+      }
+    }
+  },
+  "full_architecture_qualified": false,
+  "interface": {
+    "callable": "run_split_neutral_controls",
+    "keyword_fields": [
+      "complete_fixtures_raw",
+      "checker_module",
+      "checker_source_raw",
+      "source_guard",
+      "joint_began_ns",
+      "joint_deadline_ns",
+      "adapter_bindings",
+      "authority_raw",
+      "invocation_id"
+    ],
+    "result_schema": {
+      "bytes": 1433,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-source-20261014/result-Source-schema-v1.json",
+      "sha256": "2a55e9bf6ae6ef6cabd701fe415652569d679c20fdbb17d690e01e44cb2cc8ad"
+    },
+    "signature_Source": {
+      "bytes": 1379,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-source-20261014/controls_adapter_API_v1.pyi",
+      "sha256": "efc5c1ca79e2d2cde951deb9ff32a24f044bf7c753de8870f06ed272930d7bce"
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "ancestry_commands_cap": 24,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_ns": 55000000000,
+    "joint_success_ns": 20000000000,
+    "max_attempts": 128,
+    "max_candidates": 1,
+    "max_events": 2000,
+    "max_semantic_visits": 5000000,
+    "owned_seconds": 60,
+    "worker_guidance_bytes": 524288000
+  },
+  "mathematical_acceptance": false,
+  "native_clock_calls": 0,
+  "parent_author_identity": "/root/hilbert_advice_controls",
+  "pending": [
+    "genuine distinct current Source review",
+    "exact new coordinator/adapter/cold Source bindings and closure",
+    "ROOT-owned clock/projection and cold controls with complete owned/caller closure",
+    "separate W16 expected-UNKNOWN qualification",
+    "actual runtime/resource fit and any later baseline authorization"
+  ],
+  "preserved_parent_Source_review_historical": {
+    "bytes": 3774,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-independent-source-20261014/typed-Source-review-v2.json",
+    "sha256": "6d4f905f37fbf4a3aef633e04d623184495a4cadb68eb24da6acdbdb6596116d"
+  },
+  "preserved_parent_contract": {
+    "bytes": 17195,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-search-verifier-controls-runner-source-20261014/Source-contract-v2.json",
+    "sha256": "a0ad630e848c3bfbab9edccc756a79f6e9a88b790353ae83661796b9bb3b7644"
+  },
+  "projection": {
+    "authority": "Projection only certifies the numeric relation at the sample. It proves no future clock-rate, drift, suspend, physical resolution or wall-time equivalence. Enclosing original global pre/post/delegation/output/terminal and external caller gates remain authoritative.",
+    "clock_failure": "Expired/unrepresentable projections are UNKNOWN/incomplete. Verifier computes its projection outside the mathematical ValueError-rejection try, so a projection error is not counted as word rejection.",
+    "custody": "Native global callable, exact type-int clock ID, process-local perf callable, nextafter/isfinite and original float ratio descriptor are captured in function keyword defaults and compared directly to original module endpoints before/after sampling/final gate. Trusted cold caller must retain full code/default/kwdefault/cell/module/class/MRO/object/native custody. No injected arbitrary clock or no-op guard.",
+    "exact_bound": "Lower the local float sample by math.nextafter toward negative infinity. Form the rational sum with the integer-nanosecond remainder. float.as_integer_ratio gives exact numerators/denominators; cross-products verify the returned local deadline is no later than that rational bound. A failed finite/bound/expired check raises TimeoutError, never renews a budget.",
+    "helper": "project_local_float_deadline",
+    "helper_AST_sha256": "264c5c2ab7ed0b46830c989c9a564f8b5761b6c7125906391865230785c3fc76",
+    "identical_source_and_AST_in_all_three": true,
+    "inline_runtime_roles_added": 0,
+    "producer_pair": "Original producer2 receives a synthetic same-process local began and deadline. Deadline is evaluated as began+20.0 and that exact equality and rational no-later bound are checked after optional downward correction. Synthetic began is not the coordinator global begin and is never a resource epoch.",
+    "sampling": "Native process-local perf is sampled before native global CLOCK_MONOTONIC. Remaining global integer interval is positive and at most the unchanged joint interval. No shared perf epoch is assumed."
+  },
+  "review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "pending": true,
+    "prior_review_is_not_current_acceptance": true,
+    "required_current_source": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    "required_flags": {
+      "scientific_acceptance": false,
+      "scientific_calls": 0,
+      "source_only": true,
+      "source_review_passed": true
+    },
+    "reviewer_distinct_from_current_author": true,
+    "scope": "Q-split-neutral-controls-callable-Source",
+    "source": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    },
+    "source_contract": "This exact current contract raw pin must be bound by the independent review.",
+    "sources": {
+      "independent_checker": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      },
+      "master": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "runner": {
+        "bytes": 38113,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+        "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+      }
+    }
+  },
+  "review_checklist": [
+    "Authenticate complete choice/ABI records and all exact current Source/contract/parent pins; prior passes are preserved conditional history, not new current reviews.",
+    "Read each full parent/current delta; verify complete byte inverse and the exact three changed existing callables per role, with all other callable ASTs unchanged.",
+    "Confirm identical inline helper byte/AST; native local sample precedes global read; exact float ratios and integer cross-products guard every returned deadline and producer pair.",
+    "Check real perf/clock_gettime_ns/CLOCK_MONOTONIC/native helper custody plus caller defaults/kwdefaults/cells/module/global/builtin/class/MRO/effective-instance seals; no general cheap guard is introduced.",
+    "Confirm all shared CLI ns/gates/case stamps are global integer domain; no absolute global ns is divided to obtain a local perf deadline; original native/float producer and checker files remain unchanged.",
+    "Confirm unchanged exact authority/manifest/candidate/body/trailer/observation/result wire field sets and CLI counts; versions/new Source hard pins distinguish clocks without new roles or hidden schema widening.",
+    "Bootstrap retains full original authenticated preparation decode/one parse/lifetimes/event-base policy/complete two-line EOF; diagnostic no-candidate output can use failure-only window but cannot earn late acceptance.",
+    "Verifier retains full strict original authority/input/candidate/word/guard/EOF checks; projection failures escape outside logical rejection classification; final global output/terminal closure remains mandatory.",
+    "Runner retains all52 cases and complete frozen fixture bytes, unrelated checker words only, strict adapter review evidence, W16 unconditional deferral and all false mathematical/full-architecture flags.",
+    "Keep caps/complete original grammar/source7/model/registry/theory/Gamma/parameters/target/scheduler/rollback/fallback unchanged; no new proof route, rank, library or RL input.",
+    "Future ROOT must qualify projection/native-clock controls, exact current coordinator/adapters/cold caller/raw closure/owned lifecycle and W16 expected-UNKNOWN separately. Source-only is not runtime fit, control or proof acceptance."
+  ],
+  "reviewed_implementation_functions_called": 0,
+  "schema": "Q-split-neutral-controls-callable-Source-contract-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 38113,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+    "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+  },
+  "source_only": true,
+  "source_role_count": 3,
+  "sources": {
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "runner": {
+      "bytes": 38113,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_split_neutral_controls_runner_global_clock_v3.py",
+      "sha256": "b64e50d800e74c4c0622f78c153a7a7d058c9036d351af1dfa030e4075d65590"
+    }
+  },
+  "static_Source_conformance": {
+    "bytes": 6386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/static-Source-conformance-v1.json",
+    "sha256": "8711a6ae4aa304cb38d157fdccc41eeaf5c180a7df8659de371ee781da59dc6b"
+  },
+  "wire_policy": "All existing exact authority/manifest/candidate/response/observation/result field sets and schemas retained. Source VERSION/CLOCK_DOMAIN and genuine new exact hard pins reject mixed clock semantics. No new executed module or runtime role."
+}
