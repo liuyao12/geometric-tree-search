@@ -1,0 +1,54 @@
+{
+  "G_or_deadline_substitution": false,
+  "Q_payload_parses_in_reconciliation": 0,
+  "ROOT_primary_accepted": false,
+  "ROOT_resource_accepted": false,
+  "W16_expected_UNKNOWN_qualified": false,
+  "actual_invocations": 1,
+  "actual_terminal_observed": true,
+  "all_known_processes_native_reaped": true,
+  "author_identity": "/root",
+  "caller_G_saved": false,
+  "caller_kernel_elapsed_ns": 178256000,
+  "caller_pid": 10349,
+  "caller_terminal_inclusive_peak_bytes": 21495808,
+  "child_directory_absent": true,
+  "complete_control_result": false,
+  "exact_complete_stderr": "ValueError: exact original Python function\n",
+  "exit_code": 2,
+  "external_elapsed_ms": 4797,
+  "external_observations": {
+    "bytes": 4727,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v1.json",
+    "sha256": "9fe8f076a090b55324952c567ae0c389ea7a5d9674895aa9c6da8035427b8406"
+  },
+  "finish_reserve_ms": 1000,
+  "full52_qualified": false,
+  "interpretation": "Current early caller fails its exact Python-function authority check before any controller-owned output or mathematical child. Exact guard site is under independent static diagnosis. The raw message does not identify that call site, so no site is inferred from the message alone. Terminal meter and complete external observations are preserved. No census timing, successful20 result or genuine late-exit predicate can be inferred; no accepted prefix or rerun is authorized by this saved reconciliation.",
+  "late_verifier_observed": false,
+  "native_terminal": {
+    "bytes": 1680,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v1.json",
+    "sha256": "26cf8d8e267c327bd235abbe24eb3b3abd2caf175673b20559e9952f845d84cb"
+  },
+  "new_theorems": 0,
+  "original_model_fit": false,
+  "post_terminal_native_ns": 426317970637000,
+  "project_Source_functions_in_reconciliation": 0,
+  "proof_search_runs": 0,
+  "root_plan": {
+    "bytes": 21145,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "c55d865a5e5e33355568e4990e472ff4d528eee720b83550ac02bfad87d08b17"
+  },
+  "schema": "ROOT-W16-cold-first-attempt-reconciled-v1",
+  "scoped_authorization": {
+    "bytes": 2406,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-scoped-authorization-v1.json",
+    "sha256": "2e69b85563816d04b4465f662f53f4a01baac21aedf01c180842bc7f02b508ae"
+  },
+  "status": "UNKNOWN_PRE_CONTROLLER_CALLER_GUARD_FAILURE",
+  "timely_census_or_readiness_evidence": false,
+  "wait4_pid": 10349,
+  "wait4_status": 512
+}

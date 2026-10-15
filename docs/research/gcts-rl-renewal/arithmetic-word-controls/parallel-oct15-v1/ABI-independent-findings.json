@@ -1,0 +1,198 @@
+{
+  "schema": "native-rusage-ABI-saved-independent-findings-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "saved_evidence_only": true,
+  "source_only": false,
+  "scientific_calls": 0,
+  "Q_payload_parses": 0,
+  "native_clocks_called": 0,
+  "all_checks_passed": true,
+  "check_count": 26,
+  "checks": [
+    {
+      "id": "raw_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "raw_9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_seven_named_files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "exact_single_complete_canonical_line_EOF",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "actual_tool_return_whole_wire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "external_complete_Date_bracket",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "authorized_stdlib_once_exact_fixture",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "wire_plan_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_parent_and_leaf_IDs_and_true_wait4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_full_rusage_peak_index",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_global_interval_order",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "meter_actual_source_and_argv_pinned",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "parent_self_before_after_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "descendant_inclusive_terminal_observation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "leaf_full_fixture_and_last_sample_tail",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all_scope_counters_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all_strong_and_prior_acceptance_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_source_inspected_stdlib_leaf_and_native_wait",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-authorization-v1.json",
+      "bytes": 2013,
+      "sha256": "b3876f2cbb85bf29ba965c7e14ef31eaacc75b9b95ad19204e614e168dc4c4b9"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-disposition-v1.json",
+      "bytes": 3702,
+      "sha256": "b92512f09d8c8a6d6ce15c9fe1589548729e657996711f9fd19dc402b1d99d76"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-plan-v1.json",
+      "bytes": 175,
+      "sha256": "6c5e08e83f0661bca1baa7a49f9a2f33f8e4e3afa981530729d19ad3fb7dd094"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/external-observations-v1.json",
+      "bytes": 1046,
+      "sha256": "46dfff3bb1ba36091815349e4d7b7ff6a414770ae62be3cd55431d45f714af22"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native-terminal-v1.json",
+      "bytes": 1658,
+      "sha256": "5bb9d825f3fdfcd1ffeb3592dbf9424746cba09bcfa76a59b44a91f621c24bdb"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native_rusage_probe_v1.py",
+      "bytes": 2965,
+      "sha256": "86eb03c994d9af4f2e11556054e959ff77eee97123ac5677e43e61fffbadcdef"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/parent-exact-wire-v1.jsonl",
+      "bytes": 655,
+      "sha256": "f9f28fec4fc4edd62e1c724005114f819937882455bdd863983bf5928781e4e7"
+    }
+  ],
+  "raw_reference_count": 10,
+  "observed_values": {
+    "parent_SELF_before_after_bytes": 17940480,
+    "leaf_last_SELF_bytes": 80953344,
+    "leaf_terminal_wait4_bytes": 81002496,
+    "parent_terminal_wait4_bytes": 81002496,
+    "uncovered_leaf_tail_bytes": 49152,
+    "external_elapsed_ms": 249
+  },
+  "interpretation": "Saved raw data consistently shows terminal parent wait4 peak equal to descendant terminal peak while parent SELF samples stay smaller. Leaf terminal peak is49152B above its last SELF sample. This is an observed ABI diagnostic fixture, not proof of every production memory bound, exclusive-parent terminal measurement, or old-run fit. Smaller preexit SELF samples cannot replace terminal rusage. Primary manual/XNU interpretation is ROOT-supplied context, not newly independently fetched or generalized here.",
+  "limitations": [
+    "Source read only; no probe/helper/native/Source/Q execution by reviewer.",
+    "No old UNKNOWN/admission changed, no terminal upper-bound replacement or model/resource relaxation.",
+    "Source and actual wire are bounded complete fixture evidence; no mathematical/project data read."
+  ],
+  "prior_attempt_admissions_changed": false,
+  "production_fit_accepted": false
+}

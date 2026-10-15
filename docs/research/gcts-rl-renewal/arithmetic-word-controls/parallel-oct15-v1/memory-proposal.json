@@ -1,0 +1,196 @@
+{
+  "Q_payload_parses": 0,
+  "Source_functions_executed": 0,
+  "actual_invocations": 0,
+  "all_literal_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 4,
+  "checks": [
+    {
+      "detail": "Saved fixture: inclusive parent terminal peak equals leaf terminal peak, rather than parent SELF.",
+      "id": "observed_rollup",
+      "passed": true
+    },
+    {
+      "detail": "Saved leaf terminal measurement exceeds last SELF observation; earlier SELF is not terminal-complete.",
+      "id": "observed_exit_tail",
+      "passed": true
+    },
+    {
+      "detail": "Use actual already-saved closed fixture only.",
+      "id": "closed_probe",
+      "passed": true
+    },
+    {
+      "detail": "No frozen Source/acceptance predicate/actual run or prior status modified.",
+      "id": "no_current_gate_change",
+      "passed": true
+    }
+  ],
+  "current_gates_changed": false,
+  "current_scope": "Recommendation/proof only. No source edits, probe/test, actual plan or invocation; all current failures, Sources and resource predicates remain frozen. Native RSS accounting under declared fixed-source ownership is not a universal OS-enforced hard cap.",
+  "decision": "Prefer a prospective two-epoch maximum after an authenticated all-reaped/no-future-spawn cutoff. Keep the existing conservative gate until this small protocol change is Source-reviewed, preregistered and qualified. Do not subtract rolled-up child peaks or replace terminal evidence with an earlier SELF sample.",
+  "fallback": "If a complete no-spawn cutoff or ABI upper-bound argument cannot be qualified simply, keep the safe current additive certificate and reduce actual full-model/serialization memory under it. Lowering memory changes no measurement authority, but must preserve the complete model and be measured; it is not yet known to suffice.",
+  "native_clocks_called": 0,
+  "preservation_argument": [
+    "For any time at or before the cutoff, caller RSS is at most its later SELF high-water; complete child-lifetime weights bound simultaneous owned child RSS, and the observer certificate bounds observer RSS. Their sum bounds every pre-cut aggregate state.",
+    "After cutoff, the no-spawn condition and complete reaping leave only the caller in owned scope. Inclusive terminal wait4 is still an upper bound on that caller exit-tail RSS. Taking the maximum therefore covers both epochs without adding the same rolled-up descendant peak again. This is a proposed proof conditional on the listed evidence, not a changed current gate."
+  ],
+  "prior_runs_reclassified": false,
+  "production_certificate_qualified": false,
+  "proposed_gate_latex": "\\[B_{\\mathrm{live}}=S_\\tau+C+O,\\qquad B=\\max\\{B_{\\mathrm{live}},T\\}\\le 536870912.\\]",
+  "published_semantics": [
+    {
+      "support": "Apple documents terminal wait4 resource information for the process and its children, so the returned peak cannot be assumed exclusive SELF.",
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/wait4.2.html"
+    },
+    {
+      "support": "Published calcru obtains task resident_size_max for SELF; ruadd merges ru_maxrss by maximum. Thus subtracting descendant peak cannot recover a parent-exclusive peak.",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_resource.c#L1657-L1758"
+    },
+    {
+      "support": "Published exit handling copies SELF usage and merges child usage before retaining terminal rusage.",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_exit.c#L2296-L2306"
+    },
+    {
+      "support": "Current published XNU manual specifies ru_maxrss bytes. The older archived Apple getrusage page says kilobytes; do not apply that archival unit to this already-qualified Darwin byte ABI.",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/getrusage.2#L93-L94"
+    }
+  ],
+  "raw_references": [
+    {
+      "bytes": 3702,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-disposition-v1.json",
+      "sha256": "b92512f09d8c8a6d6ce15c9fe1589548729e657996711f9fd19dc402b1d99d76"
+    },
+    {
+      "bytes": 655,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/parent-exact-wire-v1.jsonl",
+      "sha256": "f9f28fec4fc4edd62e1c724005114f819937882455bdd863983bf5928781e4e7"
+    },
+    {
+      "bytes": 1658,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native-terminal-v1.json",
+      "sha256": "5bb9d825f3fdfcd1ffeb3592dbf9424746cba09bcfa76a59b44a91f621c24bdb"
+    },
+    {
+      "bytes": 1046,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/external-observations-v1.json",
+      "sha256": "46dfff3bb1ba36091815349e4d7b7ff6a414770ae62be3cd55431d45f714af22"
+    },
+    {
+      "bytes": 175,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-plan-v1.json",
+      "sha256": "6c5e08e83f0661bca1baa7a49f9a2f33f8e4e3afa981530729d19ad3fb7dd094"
+    },
+    {
+      "bytes": 2013,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-authorization-v1.json",
+      "sha256": "b3876f2cbb85bf29ba965c7e14ef31eaacc75b9b95ad19204e614e168dc4c4b9"
+    },
+    {
+      "bytes": 2965,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native_rusage_probe_v1.py",
+      "sha256": "86eb03c994d9af4f2e11556054e959ff77eee97123ac5677e43e61fffbadcdef"
+    },
+    {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    {
+      "bytes": 75506,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v7.py",
+      "sha256": "1c27732c7ec7d0815e8b5e4e35467c1e9fe52eff061eee214d652cef1bb40bc5"
+    },
+    {
+      "bytes": 68771,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+      "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+    },
+    {
+      "bytes": 6734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    }
+  ],
+  "required_before_production": [
+    "Genuine Root scope/preregistration and distinct Source review of cutoff, native endpoint/default/cell custody, all paths after cutoff and the changed closer. No retrospective relabeling of current UNKNOWN runs.",
+    "Complete birth-bound launch occurrences, true wait4 PID/status/rusage, observer intervals, no leftovers and ordinary fixed-Source no-escape/no-unregistered-fork assumption. Each role is a leaf or has a complete recursive bound.",
+    "Capture SELF only after every child/observer terminal and seal before any possible later process creation; ledger counts and full immutable records cannot change thereafter. Audit interpreter finalization/atexit/signal paths or use a reviewed minimal no-spawn native exit tail.",
+    "Authenticate strict integer byte values/native resource endpoints/current ABI, original global clock and cutoff brackets; confirm terminal T is at least recorded cutoff SELF and each known rolled-up peak. Inconsistency or incomplete native evidence yields UNKNOWN.",
+    "Meaningful separate controls: known overlap of two children, large child plus small parent, parent tail growth after seal, attempted post-seal child/observer spawn, missing/reused PID or missing terminal row, and cancellation/final output tail. These are future obligations only; none executed here.",
+    "Original global20/failure55/owned60/aggregate512MiB/caller90+finish1 and all output/EOF/cancellation gates remain. Every cutoff/ledger/serialization/reconciliation cost is charged."
+  ],
+  "saved_probe": {
+    "disposition": {
+      "bytes": 3702,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-disposition-v1.json",
+      "sha256": "b92512f09d8c8a6d6ce15c9fe1589548729e657996711f9fd19dc402b1d99d76"
+    },
+    "leaf_last_SELF_bytes": 80953344,
+    "leaf_tail_above_last_SELF_bytes": 49152,
+    "leaf_terminal_wait4_peak_bytes": 81002496,
+    "parent_SELF_after_bytes": 17940480,
+    "parent_terminal_wait4_peak_bytes": 81002496,
+    "runtime_release": "25.5.0",
+    "scope": "One already-saved stdlib fixture supports the ABI interpretation and exposes a real unobserved tail; it does not establish production lifecycle completeness or qualify the proposed certificate."
+  },
+  "schema": "Q-two-epoch-production-memory-certificate-recommendation-v1",
+  "smallest_future_source_sites": [
+    {
+      "change": "Add one explicit irreversible spawn/observer seal, require all launches/observers fully reaped with no cleanup errors/leftovers, then capture guarded SELF high-water and a native bracket. Seal gates both launch and table because table itself creates a ps observer. Keep the current closed weighted interval algorithm unchanged.",
+      "sites": "Owner.cleanup at542 after final native table/leftover closure; Owner.launch at483 and Owner.table at381; memory_bound at280",
+      "source": {
+        "bytes": 54630,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+        "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+      }
+    },
+    {
+      "change": "Bind the cutoff SELF sample to immutable launch/observer counts, identities and complete ledger digest, and record sealed-no-spawn state. Extend existing instance guards only for this declared one-time transition. All later paths, signals and normal/failure exit tails must be audited no-spawn; an attempted spawn invalidates acceptance.",
+      "site": "finally immediately after invoke_fn(owner.cleanup) at796, before ledger/receipt/tail serialization",
+      "source": {
+        "bytes": 75506,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_split_neutral_cold_worker_global_clock_v7.py",
+        "sha256": "1c27732c7ec7d0815e8b5e4e35467c1e9fe52eff061eee214d652cef1bb40bc5"
+      }
+    },
+    {
+      "change": "Same lifecycle cutoff for a future W16 successor. This is not applicable to currently frozen controller/caller without explicit new Source/binding reviews.",
+      "site": "post-cleanup call_fn(owner.cleanup) at771 and memory/ledger assembly at782 onward",
+      "source": {
+        "bytes": 68771,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+        "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+      }
+    },
+    {
+      "change": "Reuse the actual terminal inclusive peak/exit/EOF instrument unchanged if its current complete custody holds. Future saved closer combines max(live_epoch_bound,terminal_inclusive_peak), checks strict types/units and consistency; never reinterpret terminal peak as SELF.",
+      "site": "existing exact PID native wait4 terminal record",
+      "source": {
+        "bytes": 6734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+        "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+      }
+    }
+  ],
+  "source_and_saved_read_only": true,
+  "source_modifications": 0,
+  "source_version_limit": "These Apple main-branch sources were read as published primary semantics, not asserted byte-identical to the deployed Darwin25.5.0 kernel. Retain the saved actual probe/runtime pins and require an exact supported-ABI justification for production; a future OS/runtime change invalidates implicit applicability.",
+  "tests": 0,
+  "variables": {
+    "SELF": "\\(S_\\tau\\): native SELF resident high-water sampled at the authenticated cutoff, covering every caller allocation from process birth through that sample.",
+    "children": "\\(P_i\\): terminal per-leaf native resident peak, on the conservative closed interval \\(I_i=[a_i,b_i]\\), with start before Popen and end after true wait4.",
+    "cutoff": "\\(\\tau\\): after every owned child and native observer is truly terminal/reaped, before the final SELF sample. No new owned process can be spawned from then through true caller exit.",
+    "observers": "\\(O\\): certified bound on simultaneous owned observer RSS. The current serialized observer model may use its complete maximum; otherwise preserve its own overlap sum.",
+    "overlap": "\\(C=\\max_t\\sum_{i:t\\in I_i}P_i\\): complete weighted lifetime-overlap bound, using starts before ends on ties.",
+    "terminal": "\\(T\\): actual external wait4 peak of the exact caller through true exit. It is inclusive, but must dominate the caller SELF peak through exit. External meter/probe memory exclusions remain explicitly the established instrument scope."
+  },
+  "why_other_shortcuts_fail": [
+    "Terminal wait4 alone is a maximum over rolled-up peaks, not the sum of concurrently live children. It cannot replace the existing weighted overlap certificate.",
+    "Subtracting a largest child from a maximum loses parent information; replacing terminal SELF by a smaller earlier observation misses exit-tail allocations.",
+    "Taking a two-epoch maximum without an enforced cutoff is unsound: parent growth after the sample could still overlap a live/new child.",
+    "An inclusive child peak is only a valid leaf weight when that role cannot spawn descendants; otherwise its entire subtree needs a recursively sound simultaneous bound and complete lineage."
+  ]
+}

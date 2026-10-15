@@ -1,0 +1,332 @@
+{
+  "schema": "W16-native-property-successor-source-independent-findings-v1",
+  "source_only": true,
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 38118,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+    "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+  },
+  "sources": {
+    "caller": {
+      "bytes": 38118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+    },
+    "external_accounting": {
+      "bytes": 7471,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+      "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+    }
+  },
+  "source_contract": {
+    "bytes": 24443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+    "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f"
+  },
+  "check_count": 16,
+  "checks": [
+    {
+      "id": "exact_supplied_frozen_pins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all_direct_raw_capsules",
+      "passed": true,
+      "detail": {
+        "references": 83,
+        "whole_paths": 38
+      }
+    },
+    {
+      "id": "current_source_and_ABI_map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "four_edit_full_forward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "complete_byte_inverse",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_forward_patch",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_inverse_patch",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "sixteen_other_definitions_main_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "strict_Python_function_state_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_exception_exact_original_base_name_descriptor_getter_slot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_capture_exact_two_properties_and_no_setter_deleter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_strong_refs_and_reject_other_accessors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_custody_does_not_invoke_getters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "full_remaining_ABI_caps_model_same",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "JS2_and_old_failure_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "current_dependency_no_telemetry_silent_rebind",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "raw_reference_count": 83,
+  "whole_raw_path_count": 38,
+  "raw_files": [
+    {
+      "bytes": 13313,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/ROOT-W16-metadata-map-and-scopes-v2.json",
+      "sha256": "70db1a3d2e826894faf2bb52b7a99875bce4486adacc144df720cf04cf77dac8"
+    },
+    {
+      "bytes": 2558,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v3.json",
+      "sha256": "111d66585a41da11b7d027dbea3388fecff6a28902e5e850ad02361e4573b1dd"
+    },
+    {
+      "bytes": 4727,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v1.json",
+      "sha256": "9fe8f076a090b55324952c567ae0c389ea7a5d9674895aa9c6da8035427b8406"
+    },
+    {
+      "bytes": 1680,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v1.json",
+      "sha256": "26cf8d8e267c327bd235abbe24eb3b3abd2caf175673b20559e9952f845d84cb"
+    },
+    {
+      "bytes": 3536,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/handoff-v3.json",
+      "sha256": "721c19bf4ac77509486a774bea47441168441262e40bd9929cab8bec55116c8e"
+    },
+    {
+      "bytes": 38118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+    },
+    {
+      "bytes": 24443,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+      "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f"
+    },
+    {
+      "bytes": 7088,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-native-property-Source-delta-v4.json",
+      "sha256": "12fdb16b7b8227e529cc5a4042a5a84d5808ab98044c3b7d4f2f1efb989f6d52"
+    },
+    {
+      "bytes": 7471,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+      "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+    },
+    {
+      "bytes": 1752,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/static-authoring-checks-v4.json",
+      "sha256": "bd223baa241052138b9fec35d71f68009ac4dae935e7a95c0caa9a13721f3f2e"
+    },
+    {
+      "bytes": 10277,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/W16-Source-contract-v2.json",
+      "sha256": "08c890a87d6d9c9cac3cc78b3373a9cb5adc3f66b9c16d8d2428209149bf5879"
+    },
+    {
+      "bytes": 4193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/W16-handoff-v2.json",
+      "sha256": "299198e0d6d176b1db89078cc85d8d7e1b4e339650a3edaeb00010146c8d5bc2"
+    },
+    {
+      "bytes": 68771,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_expected_UNKNOWN_controller_global_clock_v6.py",
+      "sha256": "0c3a93428ef5cb4d22ea249ba8fc157f8df428322af945aeb7f8a62564080114"
+    },
+    {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    {
+      "bytes": 54630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-source-20261015/Q_split_owned_coordinator_v6.py",
+      "sha256": "dafc392dc1463cac98d36dcb8e74d164cc2aa91cb04e64ac7b9f7f304c001fab"
+    },
+    {
+      "bytes": 15699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-C-source-20261015/Q_W16_late_exit_verifier_leaf_global_clock_v3.py",
+      "sha256": "c44016f9c1e84d24ad4fd75112ea9dac08e5810bdbce971691b5a52df285e12a"
+    },
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 6734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    {
+      "bytes": 2917,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v2.json",
+      "sha256": "e8d56cff8c767fd9b263fee100208a5587cb5a466a0b3e34f10e852a4ef5428a"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 5435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py",
+      "sha256": "ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad"
+    },
+    {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    {
+      "bytes": 37266,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+      "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d"
+    },
+    {
+      "bytes": 53285,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py",
+      "sha256": "6b33d2d55c09aa9c607a528003ed8fe154894afaa977ec554e0a858240412b72"
+    },
+    {
+      "bytes": 3018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-ROOT-independent-source-20261015/census-leaf-typed-Source-review-v1.json",
+      "sha256": "ecead0a2d8263ae400cdd3873c8eb464301efc3e08d0968f5478d3bfcb3f0532"
+    },
+    {
+      "bytes": 2823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-W16-controls-review-source-20261015/typed-Source-review-v2.json",
+      "sha256": "44847088b37608df72323c243a96512fd6413c2b3fd73e978b602c5422799850"
+    },
+    {
+      "bytes": 2196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-coordinator-controls-review-source-20261015/typed-Source-review-v1.json",
+      "sha256": "016e2d78db0e42ac1d86ef7e2234fe0f26b0a3d296caa3ad789cf1d6764a14a4"
+    },
+    {
+      "bytes": 2778,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v1.json",
+      "sha256": "c8ccd55357b8832611189f930aa7e4fd7d23211da3e6e617443a83d787939870"
+    },
+    {
+      "bytes": 15708,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-findings-v1.json",
+      "sha256": "eaaff392e82d37ee1fc2df9b9d846bbd9d31d010968d0b3d5689bc86b5317452"
+    },
+    {
+      "bytes": 22971,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v3.json",
+      "sha256": "3c2304f3a6f1be10eb3f89dde04287d9314d803c7bd2a3d0750149e4fbcd9564"
+    },
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 3427,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-v2-to-v3-native-property.patch",
+      "sha256": "f4e256d02f480f852754a1ecab71e58bb67f8e639cfea631a5ae1afed7f4609f"
+    },
+    {
+      "bytes": 3427,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-v3-to-v2-full-inverse.patch",
+      "sha256": "bc3e936eb78df94aabb69a2fe19510f27f073d7bfc57ea0119cc45eea18cf3e9"
+    },
+    {
+      "bytes": 36217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py",
+      "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790"
+    },
+    {
+      "bytes": 12364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/ROOT-W16-metadata-map-and-scopes-v1.json",
+      "sha256": "47737744c90ba7f71e2d50a5aa94e8782dd7b4a1d774ad9c9f410583324c65b1"
+    }
+  ],
+  "review_method": "Current causal delta and whole byte forward/inverse; all16 other definitions including main retained byte+AST; unchanged function_state and Python-property representation; exact two native getter objects/type/MRO/call/slot bindings. Retains prior whole caller and JS2 Source review scope, candid actual1 failure and corresponding compatibility miss. No callable/helper/clock/probe/Q/test execution.",
+  "repaired_finding": "W16-PATHLIB-NATIVE-PROPERTY-1 static Source incompatibility addressed by exact native-property custody. This is not a measured successful repair.",
+  "preserved_actual1_saved_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-first-attempt-saved-independent-20261015/findings-v1.json",
+    "bytes": 12167,
+    "sha256": "b1b8401f5e6e08f74bdfbb7dceb0e069e3c1e2760055f141feae4107ba40bce1"
+  },
+  "concrete_current_blockers": [],
+  "limitations": [
+    "Current Source only: no new plan/outdir or actual invocation, census/readiness/late hold/cleanup/native resource/owned/caller fit remain unearned.",
+    "The native exception accepts only captured PurePath drive/root getter descriptor instances. No generic callable/property allowlist or relaxed Python function/default/closure checks. Native callable behavior relies on pinned runtime and stated synchronous ordinary-Python scope, not a hostile VM/OS theorem.",
+    "Underlying checker/codec and controller/lateleaf reviewer authorship disclosed. Caller3 author is arithmetic; their implementation was independently reviewed here.",
+    "Current census2/argv11 remains selected; phase diagnostic Source is separate and cannot be enabled by this pass.",
+    "Prior W16 actual1 stays UNKNOWN; no runtime traceback was saved, and causal phase identification remains static reachability inference."
+  ],
+  "activation_allowed": false,
+  "runtime_acceptance": false,
+  "Q_payload_parses": 0,
+  "native_clocks_called": 0,
+  "tests": 0
+}

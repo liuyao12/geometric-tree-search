@@ -1,0 +1,41 @@
+{
+  "common_timestamp": "observed_ns exact native global integer in original G domain; time.clock_gettime_ns(time.CLOCK_MONOTONIC)",
+  "completion": "prefix_sha256 and prefix_bytes authenticate all complete preceding lines; census_return_path_reached reports control flow only, every acceptance field false. Parent must authenticate full EOF/hash/exit/time/owned closure.",
+  "completion_schema": "Q-census-phase-diagnostic-completion-v1",
+  "failure": "Exception during phase leaves active_phase in failure55-only footer if failure cleanup completes. Native kill/write/deadline failure may leave a prefix without footer: raw partial diagnostic only, never a complete census or accepted prefix.",
+  "format": "Canonical JSONL on a fresh explicit inherited WO regular FD, complete file EOF observed after true native terminal. No floats.",
+  "header_schema": "Q-census-phase-diagnostic-v1",
+  "limits": {
+    "line_bytes": 2048,
+    "phase_events": 96,
+    "whole_log_bytes": 32768
+  },
+  "no_result_ABI_mutation": true,
+  "phase_labels": [
+    "manifest_read_parse",
+    "source_auth_load",
+    "preparation_raw_read",
+    "lossless_decode",
+    "whole_preparation_parse",
+    "PointGraph_constructor",
+    "semantic_state",
+    "parsed_original_state_comparison",
+    "first_complete_state_witness",
+    "first_complete_domain_witness",
+    "all24_row_hashes",
+    "omission_view_hash",
+    "omission_view_comparison",
+    "final_complete_state_recomparison",
+    "final_complete_domain_recomparison",
+    "complete_response_serialization_write"
+  ],
+  "record_kinds": [
+    "header",
+    "phase_begin",
+    "phase_end",
+    "completion"
+  ],
+  "schema": "Q-census-phase-diagnostic-wire-specification-v1",
+  "sequence": "Strict event sequence starts0, counts begin/end only, maximum96. Same source_auth_load label appears twice in fixed codec then point order; omission labels repeat in original two-view order.",
+  "timing_scope": "Start/end samples include some local checks/log overhead and exclude other setup/writes. Complete phase-end requires postoperation original20 check. This is not an exhaustive cost partition, original uninstrumented speed or count of completed recipes/rows."
+}

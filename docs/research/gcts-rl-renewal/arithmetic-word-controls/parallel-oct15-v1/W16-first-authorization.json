@@ -1,0 +1,37 @@
+{
+  "Q_payload_parses_in_metadata": 0,
+  "actual_invocations_authorized": 1,
+  "all_acceptance_false_pending_saved_reconciliation": true,
+  "author_identity": "/root",
+  "caller_review": {
+    "bytes": 2558,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v3.json",
+    "sha256": "111d66585a41da11b7d027dbea3388fecff6a28902e5e850ad02361e4573b1dd"
+  },
+  "caller_source": {
+    "bytes": 36217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py",
+    "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790"
+  },
+  "external_JS": {
+    "bytes": 7471,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+    "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+  },
+  "output_child_absent": true,
+  "project_Source_functions_in_metadata": 0,
+  "raw_closure_count": 36,
+  "root_plan": {
+    "bytes": 21145,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "c55d865a5e5e33355568e4990e472ff4d528eee720b83550ac02bfad87d08b17"
+  },
+  "schema": "ROOT-W16-once-only-actual-authorization-v1",
+  "scope": "One genuine separate expected-late-exit W16 under original G20/failure55/owned60/aggregate512/caller90+1. Exact original census2/controller6/lateleaf3; all whole inputs/root snapshots within G; no diagnostic rebinding, no proof search/target positive word or original-model fit grant. Require genuine timely census/readiness, same live child rejected by Owner.wait at original deadline, complete reaping/evidence. Current conservative terminal memory gate is retained even if it overcounts; no retrospective or future qualification.",
+  "source_contract": {
+    "bytes": 22971,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v3.json",
+    "sha256": "3c2304f3a6f1be10eb3f89dde04287d9314d803c7bd2a3d0750149e4fbcd9564"
+  },
+  "whole_raw_sha_length_match": true
+}

@@ -1,0 +1,303 @@
+{
+  "schema": "W16-concrete-plan-source-only-independent-check-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "scientific_calls": 0,
+  "plan": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v1.json",
+    "sha256": "c55d865a5e5e33355568e4990e472ff4d528eee720b83550ac02bfad87d08b17",
+    "bytes": 21145
+  },
+  "all_checks_passed": true,
+  "check_count": 57,
+  "checks": [
+    {
+      "check": "exact Root supplied plan pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "exact fifteen fields and Root W16-only authority",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged original limits strict integers and runtime",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source9 exact literal map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inputs8 and original7 exact literal maps",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 12",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 13",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 14",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 15",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 17",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 18",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 19",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 20",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 21",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 23",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 25",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 26",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 27",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 28",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 29",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 30",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 31",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 34",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "whole raw closure 35",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all named roles closed; bounded distinct closure36",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "exact four reviews",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "genuine current caller review",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current caller contract/source/JS map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "caller contract raw closed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "genuine current census review",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current census review source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "census contract raw closed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "genuine current controller review",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current controller/leaf review map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "controller contract raw closed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "genuine current coordinator review",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current coordinator review source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "coordinator contract raw closed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "canonical fresh absent child under existing parent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current census2 no telemetry silently enabled",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "scope": "Concrete current15-field W16 expected-UNKNOWN plan raw metadata and absent output only. Not execution authorization or runtime/resource/clock fit. Underlying controller/lateleaf/checker/codec authorship disclosed. Current caller and JS independently reviewed; Source9/input8/original7/four reviews/current limits exact. Full Q preparation/state/oracle authenticated as raw bytes only, never decoded.",
+  "runtime_acceptance": false,
+  "publication": false
+}

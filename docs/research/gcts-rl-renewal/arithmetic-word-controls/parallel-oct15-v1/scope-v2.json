@@ -1,0 +1,184 @@
+{
+  "Q_payload_parses_in_publication": 0,
+  "Q_search_runs": 0,
+  "W16_actual1_status": "UNKNOWN_PRE_CONTROLLER_CALLER_GUARD_FAILURE",
+  "W16_actual_attempts": 1,
+  "W16_caller3_status": "conditional distinct Source pass; no actual plan or execution",
+  "files": {
+    "ABI-authorization.json": {
+      "bytes": 2013,
+      "sha256": "b3876f2cbb85bf29ba965c7e14ef31eaacc75b9b95ad19204e614e168dc4c4b9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-authorization-v1.json"
+    },
+    "ABI-disposition.json": {
+      "bytes": 3702,
+      "sha256": "b92512f09d8c8a6d6ce15c9fe1589548729e657996711f9fd19dc402b1d99d76",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-disposition-v1.json"
+    },
+    "ABI-external-observations.json": {
+      "bytes": 1046,
+      "sha256": "46dfff3bb1ba36091815349e4d7b7ff6a414770ae62be3cd55431d45f714af22",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/external-observations-v1.json"
+    },
+    "ABI-independent-findings.json": {
+      "bytes": 5977,
+      "sha256": "fa93ab813ca860c076b8bfd5f25db0774909befc4ae089354ceda40bfeff927d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-saved-independent-20261015/findings-v1.json"
+    },
+    "ABI-native-terminal.json": {
+      "bytes": 1658,
+      "sha256": "5bb9d825f3fdfcd1ffeb3592dbf9424746cba09bcfa76a59b44a91f621c24bdb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native-terminal-v1.json"
+    },
+    "ABI-parent-wire.jsonl": {
+      "bytes": 655,
+      "sha256": "f9f28fec4fc4edd62e1c724005114f819937882455bdd863983bf5928781e4e7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/parent-exact-wire-v1.jsonl"
+    },
+    "ABI-plan.json": {
+      "bytes": 175,
+      "sha256": "6c5e08e83f0661bca1baa7a49f9a2f33f8e4e3afa981530729d19ad3fb7dd094",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-plan-v1.json"
+    },
+    "ABI-source.py": {
+      "bytes": 2965,
+      "sha256": "86eb03c994d9af4f2e11556054e959ff77eee97123ac5677e43e61fffbadcdef",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native_rusage_probe_v1.py"
+    },
+    "W16-caller2-review.json": {
+      "bytes": 2558,
+      "sha256": "111d66585a41da11b7d027dbea3388fecff6a28902e5e850ad02361e4573b1dd",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v3.json"
+    },
+    "W16-caller2.py": {
+      "bytes": 36217,
+      "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py"
+    },
+    "W16-caller3-author-delta.json": {
+      "bytes": 7088,
+      "sha256": "12fdb16b7b8227e529cc5a4042a5a84d5808ab98044c3b7d4f2f1efb989f6d52",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-native-property-Source-delta-v4.json"
+    },
+    "W16-caller3-author-handoff.json": {
+      "bytes": 4149,
+      "sha256": "45cc1a2757eb9b6154819f49ab86a1fed43cb919e8be7838538697d8905a13d3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/handoff-v4.json"
+    },
+    "W16-caller3-review-findings.json": {
+      "bytes": 16491,
+      "sha256": "ceec618510abcb6711e1ac941618e7430e294fd139e53fae6d69df96ebd7c59f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-native-property-findings-v4.json"
+    },
+    "W16-caller3-review.json": {
+      "bytes": 2903,
+      "sha256": "4fb7ea9c2532225d7079406100f3bc00a7ce830f4a96d9a75cd4059b81578629",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v4.json"
+    },
+    "W16-caller3.py": {
+      "bytes": 38118,
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py"
+    },
+    "W16-contract3.json": {
+      "bytes": 22971,
+      "sha256": "3c2304f3a6f1be10eb3f89dde04287d9314d803c7bd2a3d0750149e4fbcd9564",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v3.json"
+    },
+    "W16-contract4.json": {
+      "bytes": 24443,
+      "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json"
+    },
+    "W16-external2.js": {
+      "bytes": 7471,
+      "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js"
+    },
+    "W16-first-authorization.json": {
+      "bytes": 2406,
+      "sha256": "2e69b85563816d04b4465f662f53f4a01baac21aedf01c180842bc7f02b508ae",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-scoped-authorization-v1.json"
+    },
+    "W16-first-disposition.json": {
+      "bytes": 2815,
+      "sha256": "b4329dbee5aa20dd50d16ac014b04e58d87be7080c4182b60f7bae068292d110",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-disposition-v1.json"
+    },
+    "W16-first-external-observations.json": {
+      "bytes": 4727,
+      "sha256": "9fe8f076a090b55324952c567ae0c389ea7a5d9674895aa9c6da8035427b8406",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v1.json"
+    },
+    "W16-first-independent-findings.json": {
+      "bytes": 12167,
+      "sha256": "b1b8401f5e6e08f74bdfbb7dceb0e069e3c1e2760055f141feae4107ba40bce1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-first-attempt-saved-independent-20261015/findings-v1.json"
+    },
+    "W16-first-native-terminal.json": {
+      "bytes": 1680,
+      "sha256": "26cf8d8e267c327bd235abbe24eb3b3abd2caf175673b20559e9952f845d84cb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v1.json"
+    },
+    "W16-first-plan.json": {
+      "bytes": 21145,
+      "sha256": "c55d865a5e5e33355568e4990e472ff4d528eee720b83550ac02bfad87d08b17",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v1.json"
+    },
+    "W16-plan-review.json": {
+      "bytes": 6690,
+      "sha256": "15b37be36be68221fd75f7bc6d9a665051f69313afbafeb5bf4b17b5f59d8e86",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-concrete-plan-findings-v1.json"
+    },
+    "census-static-cost-map.json": {
+      "bytes": 10690,
+      "sha256": "6a6b37774ad74c68e00d285fda104eb959c0a8a6f6628eff5bf234056b3afebe",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-cold-census-cost-note-source-20261015/cost-map-and-conditional-next-change-v1.json"
+    },
+    "census3-contract.json": {
+      "bytes": 12421,
+      "sha256": "aa25318f3058f2384e78bd00abc4c4257208e899399212587656fb0f44f642d7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Source-contract-v1.json"
+    },
+    "census3-diagnostic-wire.json": {
+      "bytes": 2194,
+      "sha256": "34ad253b9e6320a9ef5e97f29bd4132888911cfdd5dfb7ea9baaa7173ba34757",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/diagnostic-wire-schema-v1.json"
+    },
+    "census3-review-findings.json": {
+      "bytes": 11918,
+      "sha256": "828a7eec31e724901a38c31626d8d49e059d94b7b4f2af8424db87550a219ffe",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-findings-v1.json"
+    },
+    "census3-review.json": {
+      "bytes": 3459,
+      "sha256": "d678401ead894323ed06d898206bd6bd3209268e2f2ca422bcb8020fbee463d4",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/census-phase-typed-Source-review-v1.json"
+    },
+    "census3.py": {
+      "bytes": 27175,
+      "sha256": "0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Q_neutral_full_model_census_leaf_v3_phases.py"
+    },
+    "memory-proposal-handoff.json": {
+      "bytes": 1002,
+      "sha256": "e84c9abdcadc59516c3a87a9c74277fa4c00d777bdc79a12ed124b39416ccde0",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-two-epoch-memory-certificate-design-source-20261015/handoff-v1.json"
+    },
+    "memory-proposal.json": {
+      "bytes": 14737,
+      "sha256": "2fe77f4dbf7d269be05c1ac34ca6f60079fe0b7f91ea00b5be0fbcc3e74c6824",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-two-epoch-memory-certificate-design-source-20261015/recommendation-v1.json"
+    }
+  },
+  "new_theorems": 0,
+  "previous_outcomes_changed": false,
+  "production_memory_gate_changed": false,
+  "schema": "parallel-oct15-publication-scope-v2",
+  "scope": "Executed stdlib native-memory fixture and first W16 caller failure; independently reconciled saved records; unexecuted census telemetry and native-property caller proposal; prospective memory design. No new proof, successful full-model fit, RL result, resource gate change or retrospective admission. Original raw Q inputs remain hash-referenced in plans, not republished.",
+  "supersedes_scope_metadata": {
+    "bytes": 10341,
+    "path": "scope.json",
+    "sha256": "4d9155e70de03fc907e8511133adc44dfe474b0627564f94f7deeaa391dd293f"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "actuals_authorized": 1,
+  "author_identity": "/root",
+  "local_limit_seconds": 20,
+  "local_uname_release": "25.5.0",
+  "maximum_fixture_allocation_bytes": 67108864,
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "pipeline_qualification": false,
+  "plan": {
+    "bytes": 175,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-plan-v1.json",
+    "sha256": "6c5e08e83f0661bca1baa7a49f9a2f33f8e4e3afa981530729d19ad3fb7dd094"
+  },
+  "primary_sources": [
+    "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/wait4.2.html",
+    "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_exit.c",
+    "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_resource.c"
+  ],
+  "runtime": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "ROOT-native-rusage-ABI-once-only-authorization-v1",
+  "scope": "One stdlib-only parent+64MiB allocation leaf under pinned Python and native terminal meter. Capture SELF/CHILDREN/leafwait4 and external parentwait4; do not import any project code/parse Q/exercise mathematical code. Original production threeUNKNOWN statuses unchanged; this is ABI diagnostic only.",
+  "source": {
+    "bytes": 2965,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native_rusage_probe_v1.py",
+    "sha256": "86eb03c994d9af4f2e11556054e959ff77eee97123ac5677e43e61fffbadcdef"
+  },
+  "source_syntax_only_checked": true
+}

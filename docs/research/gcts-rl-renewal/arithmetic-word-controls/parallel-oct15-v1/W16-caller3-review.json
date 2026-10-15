@@ -1,0 +1,47 @@
+{
+  "schema": "Q-W16-trusted-early-cold-caller-Source-review-v4",
+  "scope": "Q-W16-trusted-early-cold-caller-Source",
+  "source_only": true,
+  "source_review_passed": true,
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_identity": "/root/arithmetic_induction",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "bytes": 38118,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+    "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+  },
+  "sources": {
+    "caller": {
+      "bytes": 38118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+    },
+    "external_accounting": {
+      "bytes": 7471,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+      "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+    }
+  },
+  "source_contract": {
+    "bytes": 24443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+    "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f"
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-native-property-findings-v4.json",
+    "bytes": 16491,
+    "sha256": "ceec618510abcb6711e1ac941618e7430e294fd139e53fae6d69df96ebd7c59f"
+  },
+  "check_count": 16,
+  "runtime_acceptance": false,
+  "limitations": [
+    "Current Source only: no new plan/outdir or actual invocation, census/readiness/late hold/cleanup/native resource/owned/caller fit remain unearned.",
+    "The native exception accepts only captured PurePath drive/root getter descriptor instances. No generic callable/property allowlist or relaxed Python function/default/closure checks. Native callable behavior relies on pinned runtime and stated synchronous ordinary-Python scope, not a hostile VM/OS theorem.",
+    "Underlying checker/codec and controller/lateleaf reviewer authorship disclosed. Caller3 author is arithmetic; their implementation was independently reviewed here.",
+    "Current census2/argv11 remains selected; phase diagnostic Source is separate and cannot be enabled by this pass.",
+    "Prior W16 actual1 stays UNKNOWN; no runtime traceback was saved, and causal phase identification remains static reachability inference."
+  ]
+}

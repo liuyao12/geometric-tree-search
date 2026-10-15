@@ -1,0 +1,99 @@
+{
+  "Q_payload_parses": 0,
+  "actual1_preserved_raw": {
+    "external-observations-v1.json": {
+      "bytes": 4727,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v1.json",
+      "sha256": "9fe8f076a090b55324952c567ae0c389ea7a5d9674895aa9c6da8035427b8406"
+    },
+    "native-terminal-v1.json": {
+      "bytes": 1680,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v1.json",
+      "sha256": "26cf8d8e267c327bd235abbe24eb3b3abd2caf175673b20559e9952f845d84cb"
+    }
+  },
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "causal_path": "First own_before module_state(own,authored=True) includes imported Path class, whose MRO includes PurePath. class_state sent native property attrgetter fget to strict function_state, yielding exact saved ValueError before project load/Owner/directory/census. Saved failure has no traceback, so callsite is statically identified, not an actual traced stack.",
+  "changed_definitions": [
+    "class_state"
+  ],
+  "complete_inverse_matches": true,
+  "current": {
+    "bytes": 38118,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+    "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+  },
+  "exact_raw_edits": [
+    {
+      "new": "from pathlib import Path\nfrom operator import attrgetter as _PATH_ATTRGETTER\n",
+      "old": "from pathlib import Path\n"
+    },
+    {
+      "new": "VERSION = 'Q-W16-trusted-early-cold-caller-Source-v3-global-clock'",
+      "old": "VERSION = 'Q-W16-trusted-early-cold-caller-Source-v2-global-clock'"
+    },
+    {
+      "new": "CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'\n# Exact two pinned-stdlib native properties; never a generic callable permit.\n_PATH_PURE = Path.__mro__[1]\nif (_PATH_PURE.__module__ != 'pathlib' or _PATH_PURE.__name__ != 'PurePath'\n        or _PATH_ATTRGETTER.__module__ != 'operator' or _PATH_ATTRGETTER.__name__ != 'attrgetter'):\n    raise ValueError('original native pathlib attrgetter class origin')\n_PATH_ATTRGETTER_MRO = _PATH_ATTRGETTER.__mro__\n_PATH_ATTRGETTER_CALL = vars(_PATH_ATTRGETTER)['__call__']\n_PATH_NATIVE_PROPERTIES = tuple((name,vars(_PATH_PURE)[name],vars(_PATH_PURE)[name].fget) for name in ('drive','root'))\nif any(type(prop) is not property or type(getter) is not _PATH_ATTRGETTER\n       or prop.fset is not None or prop.fdel is not None for name,prop,getter in _PATH_NATIVE_PROPERTIES):\n    raise ValueError('original exact PurePath drive/root native property descriptors')\n",
+      "old": "CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'\n"
+    },
+    {
+      "new": "            elif type(v) is property:\n                accessors=[]\n                for slot,f in enumerate((v.fget,v.fset,v.fdel)):\n                    if f is None:accessors.append(None)\n                    elif type(f) is types.FunctionType:accessors.append(function_state(f))\n                    elif (slot==0 and base is _PATH_PURE and any(name==n and v is prop and f is getter\n                            for n,prop,getter in _PATH_NATIVE_PROPERTIES)):\n                        if (type(f) is not _PATH_ATTRGETTER or _PATH_ATTRGETTER.__mro__!=_PATH_ATTRGETTER_MRO\n                                or vars(_PATH_ATTRGETTER).get('__call__') is not _PATH_ATTRGETTER_CALL):\n                            raise ValueError('original exact native pathlib accessor type/MRO/call changed')\n                        accessors.append(('native-PurePath-attrgetter',id(f),f,_PATH_ATTRGETTER,\n                                          _PATH_ATTRGETTER_MRO,_PATH_ATTRGETTER_CALL))\n                    else:raise ValueError('non-Python property accessor is not original PurePath drive/root getter')\n                s=(v,tuple(accessors))\n",
+      "old": "            elif type(v) is property:s=(v,tuple(None if f is None else function_state(f) for f in (v.fget,v.fset,v.fdel)))\n"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 3427,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-v2-to-v3-native-property.patch",
+    "sha256": "f4e256d02f480f852754a1ecab71e58bb67f8e639cfea631a5ae1afed7f4609f"
+  },
+  "genuine_parent_source_review": {
+    "bytes": 2558,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v3.json",
+    "sha256": "111d66585a41da11b7d027dbea3388fecff6a28902e5e850ad02361e4573b1dd"
+  },
+  "inverse_patch": {
+    "bytes": 3427,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-v3-to-v2-full-inverse.patch",
+    "sha256": "bc3e936eb78df94aabb69a2fe19510f27f073d7bfc57ea0119cc45eea18cf3e9"
+  },
+  "native_clock_calls": 0,
+  "no_runtime_mutation_outcomes_inferred": true,
+  "parent": {
+    "bytes": 36217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py",
+    "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790"
+  },
+  "pinned_stdlib_source": {
+    "bytes": 53285,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py",
+    "sha256": "6b33d2d55c09aa9c607a528003ed8fe154894afaa977ec554e0a858240412b72"
+  },
+  "repair": "Capture only original PurePath drive/root descriptor/getter pairs and native operator.attrgetter class/MRO/__call__. Native branch requires exact base/name/descriptor/getter/slot0 identities and captured native class endpoints. Every Python function still uses unchanged strict full function_state; every other non-Python property accessor rejects.",
+  "schema": "Q-W16-exact-native-Path-property-Source-delta-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "stdlib_native_property_assignment_ASTs": {
+    "drive": "Call(func=Name(id='property', ctx=Load()), args=[Call(func=Name(id='attrgetter', ctx=Load()), args=[Constant(value='_drv')], keywords=[])], keywords=[keyword(arg='doc', value=Constant(value='The drive prefix (letter or UNC path), if any.'))])",
+    "root": "Call(func=Name(id='property', ctx=Load()), args=[Call(func=Name(id='attrgetter', ctx=Load()), args=[Constant(value='_root')], keywords=[])], keywords=[keyword(arg='doc', value=Constant(value='The root of the path, if any.'))])"
+  },
+  "tests": 0,
+  "unchanged_definitions": [
+    "need",
+    "now",
+    "cancelled",
+    "canonical",
+    "decode",
+    "shape",
+    "read_pin",
+    "wire",
+    "function_state",
+    "data_state",
+    "module_state",
+    "effective",
+    "load_exact",
+    "Seal",
+    "review",
+    "main"
+  ]
+}

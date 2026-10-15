@@ -1,0 +1,142 @@
+{
+  "Q_payload_parses": 0,
+  "Source_functions_executed": 0,
+  "actual_controls": 0,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "census3_scope": "Diagnostic proposal only; original W16 caller/controller are fixed to census2. No silent rebind or telemetry FD injection. ROOT separately chooses any diagnostic binding/caller successor and closes its extra sidecar.",
+  "cost_map": [
+    {
+      "phase": "parent early setup/snapshots before leaf",
+      "retention": "Parent owned snapshots are files; no parent Q preparation decode allowed.",
+      "source_work": "Caller Source authentication/compile/Owner setup, whole8 input+8 Source+original7 snapshots and process accounting; W16 controller owns this unchanged work.",
+      "telemetry": "Not inside census3 phase timings. Native inherited begin and complete parent/child/caller chain must retain it."
+    },
+    {
+      "phase": "manifest_read_parse +source_auth_load (two roles)",
+      "retention": "Small Source buffers/modules only, released role raw buffers.",
+      "source_work": "Complete small manifest, exact own Source binding and codec/point buffer authentication/compile/exec.",
+      "telemetry": "Source role phase label repeats; sequence order distinguishes codec then point."
+    },
+    {
+      "phase": "preparation_raw_read +lossless_decode +whole_preparation_parse",
+      "retention": "read_exact temporarily holds bytearray+immutable bytes; decode overlaps raw+text. Parser memo/identity maps clear on return. No claim that these dominate elapsed/peak.",
+      "source_work": "Whole38,376,960B preparation read/SHA/EOF, authenticated codec second SHA/decode, release raw before one whole lossless parse; release text after."
+    },
+    {
+      "phase": "PointGraph_constructor",
+      "retention": "Parsed catalogue +parsed original initial_state coexist with new Graph and constructor temporaries. No graph/model/palette/row trimming permitted.",
+      "source_work": "Original fixture=False constructor deep-copies formula/context/authority values, canonicalizes all recipes and registry/epochs, computes all24 complete factor domains."
+    },
+    {
+      "phase": "semantic_state +parsed_original_state_comparison",
+      "retention": "Two complete state representations overlap until del preparation. The local catalogue still retains parsed catalogue after that deletion; a lifetime observation only, not the selected optimization.",
+      "source_work": "Materialize complete current factor/state lists and compare the whole parsed original initial_state."
+    },
+    {
+      "phase": "first_complete_state_witness +first_complete_domain_witness +all24_row_hashes",
+      "retention": "Bounded serialized chunks, complete graph/state still retained.",
+      "source_work": "canonical_chunks uses JSONEncoder.iterencode default token iteration, accumulating16KiB pieces; compare_fd reads/authenticates whole witness EOF, then each24 domain is separately serialized/hashed."
+    },
+    {
+      "phase": "omission_view_hash +omission_view_comparison (two views)",
+      "retention": "Shallow domain dictionaries plus truncated factor-list/row-list references, not a replacement current graph or accepted subset.",
+      "source_work": "Keep both O08 omitted-row23 and omitted-last-factor-row23 calibration views. Each view is fully hashed, then its actual comparison must reject. Original full state stays untouched."
+    },
+    {
+      "phase": "final_complete_state_recomparison +final_complete_domain_recomparison +complete_response_serialization_write",
+      "retention": "No cached earlier bytes may stand in for the post-control full-value traversal.",
+      "source_work": "Reserialize/recompare complete original state and domains after controls; preserve all24 row records and actual complete two-line response/EOF."
+    }
+  ],
+  "inspected_sources": {
+    "census2": {
+      "bytes": 20215,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-B-source-20261015/Q_neutral_full_model_census_leaf_v2.py",
+      "sha256": "bb30787adbeee4d479bbcad254eedcd02ed354135199524bd96103501f40aca6"
+    },
+    "census3_telemetry_proposal": {
+      "bytes": 27175,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Q_neutral_full_model_census_leaf_v3_phases.py",
+      "sha256": "0c07eb759f16e2e501b0f5d7181dd76d313e406452049c95bbf38d270bc065c7"
+    },
+    "original_codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "original_point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "native_clock_calls": 0,
+  "next_experiment_relation": "Reduce mandatory full-model cold verification overhead without changing automatic-search semantics; spend any eventual measured saved time inside the same original20 joint envelope, never reset a search clock or supply a target proof route.",
+  "one_candidate": {
+    "algorithm_outline": "Preserve exact sorted-key compact JSON traversal. At each actual domains[row].factors list only, encode fixed batches of at most64 entire5-field factor records using the native stdlib JSON encoder, emitting identical list brackets/commas and every record in order. Other state/domain fields retain the existing canonical encoder. Re-traverse current values for every call; no cross-call serialized cache or witness-byte substitution.",
+    "bounded_storage": "At most one small factor batch plus one bounded encoded chunk; explicitly cap batch output (for example16KiB) and fail closed or use the unchanged streaming path if exceeded. The original full24 integer-mask/factor fields justify a small-record bound; any implementation must state and review that bound, retain500MiB reserve/512MiB owned cap and original budget checks before/after each batch/output. No whole8MiB output string or materialized duplicate factor inventory.",
+    "future_acceptance": "Distinct Source review must establish byte-for-byte canonical equivalence and bounded lifetimes. ROOT alone may later run one explicit telemetry/optimization comparison with fresh namespaces, complete native resource/caller closure, no accepted partial prefix. Reject the change if it shifts bytes/coverage, weakens mutation detection, exceeds memory or does not reduce the relevant elapsed phase. No runtime improvement/fit/admission claimed.",
+    "name": "Bounded C-encoder batches for complete flat factor records inside the leaf canonical serializer",
+    "only_if": "Actual complete paired census3 phase events show witness/row-hash/O08 serialization-comparison phases materially dominate the cold elapsed budget. An unfinished active-phase prefix is localization evidence only; no fabricated duration or completion count. If parse/constructor/parent setup dominates, defer this candidate rather than claiming a gain.",
+    "proposed_minimal_surface": "One additive census leaf serializer successor; keep original graph8d22, codec, model/epochs/inputs and every existing compare_fd/stream_hash call in the same order. Do not implement it now.",
+    "what_does_not_change": [
+      "whole preparation SHA/decode/one parse/EOF",
+      "all11147 formulas/all16200 recipes/all24 row/factor domains",
+      "fixtureFalse/originalGamma/assigned-zero markings/point graph and epochs",
+      "whole initial-state equality and original state/oracle full-byte/SHA/EOF comparisons",
+      "all24 per-row complete-domain hashes",
+      "both O08 omissions and whole final state/oracle recomparisons",
+      "original global20 and55/60/512/90+1 gates and complete output accounting"
+    ]
+  },
+  "optimization_implemented": false,
+  "performance_measured": false,
+  "resource_acceptance": false,
+  "schema": "Q-cold-census-static-cost-map-and-one-conditional-candidate-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_serialization_lower_bound": {
+    "basis": "Two state calls plus two whole-domain calls using frozen byte lengths. This is a static successful-path work count, not measured completed work/throughput. It excludes all24 row hashes and both full omission-view hashes/comparisons.",
+    "clocks": "Never add inclusive parent/child/caller clocks; use disjoint census phase intervals for attribution and enclosing original global clock for acceptance.",
+    "frozen_bytes_serialized_and_compared_by_these_four_successful_calls": 33183182,
+    "unconditional_whole_state_and_domain_comparison_passes": 4
+  },
+  "status": "SOURCE inspection only; no telemetry measurements or optimization implementation",
+  "telemetry_contract": {
+    "bytes": 12421,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-census-phase-diagnostic-source-20261015/Source-contract-v1.json",
+    "sha256": "aa25318f3058f2384e78bd00abc4c4257208e899399212587656fb0f44f642d7"
+  },
+  "tests": 0,
+  "unchanged_scope": {
+    "aggregate_owned_bytes": 536870912,
+    "binding": {
+      "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "formula_registry_sha256": "4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe",
+      "model_epoch": "3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9",
+      "primitive_authority_epoch": "4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039"
+    },
+    "caller_seconds": 90,
+    "failure_seconds": 55,
+    "finish_reserve_seconds": 1,
+    "formula_count": 11147,
+    "full_original_domains": {
+      "bytes": 8295473,
+      "sha256": "03c42ca0083d5e40363d5237d69af56df4ebe3b3ae7d88fa3720fae3390d6969"
+    },
+    "full_original_preparation": {
+      "bytes": 38376960,
+      "sha256": "0321a462025357d188793bd45a44670adc20776e9ba30574049d77a8b5935d3a"
+    },
+    "full_original_state": {
+      "bytes": 8296118,
+      "sha256": "c7e8cfd099b1b80ae170b6c35591d68d56f37aecb38f1bcf7b567d2e019acbb9"
+    },
+    "model_and_input_counts_basis": "Source literals/bindings only, not newly reconstructed payload or accepted run",
+    "original20_global_success_seconds": 20,
+    "owned_seconds": 60,
+    "recipe_count": 16200,
+    "required_rows": 24
+  }
+}

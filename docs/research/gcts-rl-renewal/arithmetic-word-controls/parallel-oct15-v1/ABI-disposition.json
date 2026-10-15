@@ -1,0 +1,65 @@
+{
+  "Q_payload_parses": 0,
+  "all_known_processes_native_reaped": true,
+  "author_identity": "/root",
+  "external": {
+    "bytes": 1046,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/external-observations-v1.json",
+    "sha256": "46dfff3bb1ba36091815349e4d7b7ff6a414770ae62be3cd55431d45f714af22"
+  },
+  "external_elapsed_ms": 249,
+  "interpretation": "Apple documents wait4 as process-and-children usage; published XNU ruadd uses maximum for ru_maxrss. This local fixture is consistent with that API, including descendant rollup. Its smaller parent SELF samples are not substituted for terminal measurement; leaf terminal sample exceeds its last SELF observation, directly demonstrating an uncovered tail. One fixture does not prove a complete production memory bound or calibrate every OS/runtime.",
+  "leaf_last_SELF_sample_bytes": 80953344,
+  "leaf_terminal_minus_last_self_bytes": 49152,
+  "leaf_terminal_wait4_peak_bytes": 81002496,
+  "local_uname_release": "25.5.0",
+  "native_terminal": {
+    "bytes": 1658,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native-terminal-v1.json",
+    "sha256": "5bb9d825f3fdfcd1ffeb3592dbf9424746cba09bcfa76a59b44a91f621c24bdb"
+  },
+  "new_theorems": 0,
+  "next": "Keep previous UNKNOWN statuses and declared aggregate allowance; design a terminal self measurement or reduce actual memory, without silently treating an inclusive max as self or substituting earlier smaller samples.",
+  "parent_SELF_after_bytes": 17940480,
+  "parent_SELF_before_bytes": 17940480,
+  "parent_terminal_wait4_peak_bytes": 81002496,
+  "parent_wire": {
+    "bytes": 655,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/parent-exact-wire-v1.jsonl",
+    "sha256": "f9f28fec4fc4edd62e1c724005114f819937882455bdd863983bf5928781e4e7"
+  },
+  "plan": {
+    "bytes": 175,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-plan-v1.json",
+    "sha256": "6c5e08e83f0661bca1baa7a49f9a2f33f8e4e3afa981530729d19ad3fb7dd094"
+  },
+  "primary_references": [
+    {
+      "support": "Documentation lines63-65 states terminated process and children.",
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/wait4.2.html"
+    },
+    {
+      "support": "Published exit path merges child rusage into saved exit rusage.",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_exit.c#L2296-L2306"
+    },
+    {
+      "support": "Published ruadd uses maximum for ru_maxrss.",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_resource.c#L1749-L1762"
+    }
+  ],
+  "prior_attempt_admissions_changed": false,
+  "production_certificate_changed": false,
+  "project_Source_functions": 0,
+  "schema": "ROOT-native-rusage-ABI-reconciled-v1",
+  "scope_authorization": {
+    "bytes": 2013,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/ROOT-authorization-v1.json",
+    "sha256": "b3876f2cbb85bf29ba965c7e14ef31eaacc75b9b95ad19204e614e168dc4c4b9"
+  },
+  "source": {
+    "bytes": 2965,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-terminal-rusage-ABI-20261015/native_rusage_probe_v1.py",
+    "sha256": "86eb03c994d9af4f2e11556054e959ff77eee97123ac5677e43e61fffbadcdef"
+  },
+  "status": "OBSERVED_DOCUMENTED_DESCENDANT_INCLUSION"
+}

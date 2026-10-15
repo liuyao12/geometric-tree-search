@@ -1,0 +1,526 @@
+{
+  "schema": "W16-first-attempt-saved-independent-findings-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "saved_evidence_only": true,
+  "scientific_calls": 0,
+  "native_clocks_called": 0,
+  "Q_payload_parses": 0,
+  "Source_functions_executed": 0,
+  "all_checks_passed": true,
+  "check_count": 89,
+  "checks": [
+    {
+      "id": "rawpin_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_12",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_13",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_14",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_15",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_17",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_18",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_19",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_20",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_21",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_23",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_25",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_26",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_27",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_28",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_29",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_30",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_31",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_34",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_35",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_36",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_37",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_38",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_39",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_41",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_42",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_43",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_45",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_46",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_47",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_49",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_50",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_51",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_52",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_53",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_54",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_56",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_57",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_58",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_59",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_60",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_61",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_62",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_63",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_64",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_65",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_66",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_67",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_68",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_69",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_70",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_71",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_72",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_73",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_74",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "rawpin_75",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "exact_original_plan_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "actual_whole_tool_failure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "terminal_native_exact_PID_status_usage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_elapsed_no_replacement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "external_fullwall_plus_separate_reserve",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "whole_postterminal_probe_wire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "native_probe_after_true_terminal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "correct_meter_runtime_caller_plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "all_strong_acceptance_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "owned_output_absent_no_completed_W16_evidence",
+      "passed": true,
+      "detail": "No receipt, census/readiness, live-late-verifier wait, Owner ledger or original G saved. No expected-late observation or partial resource admission."
+    },
+    {
+      "id": "static_property_function_type_gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "pinned_stdlib_native_attrgetter_properties",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "static_reachable_before_project_load_Owner_output",
+      "passed": true,
+      "detail": "The message-only actual has no traceback; this is a concrete statically reachable native-property rejection, with execution phase inferred separately, not a recorded runtime stack."
+    }
+  ],
+  "raw_reference_count": 76,
+  "whole_raw_path_count": 37,
+  "files": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-plan-v1.json",
+      "bytes": 21145,
+      "sha256": "c55d865a5e5e33355568e4990e472ff4d528eee720b83550ac02bfad87d08b17"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/ROOT-scoped-authorization-v1.json",
+      "bytes": 2406,
+      "sha256": "2e69b85563816d04b4465f662f53f4a01baac21aedf01c180842bc7f02b508ae"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v1.json",
+      "bytes": 4727,
+      "sha256": "9fe8f076a090b55324952c567ae0c389ea7a5d9674895aa9c6da8035427b8406"
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v1.json",
+      "bytes": 1680,
+      "sha256": "26cf8d8e267c327bd235abbe24eb3b3abd2caf175673b20559e9952f845d84cb"
+    }
+  ],
+  "static_stdlib_source": {
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py",
+    "bytes": 53285,
+    "sha256": "6b33d2d55c09aa9c607a528003ed8fe154894afaa977ec554e0a858240412b72"
+  },
+  "actual_status": "UNKNOWN_early_caller_failure",
+  "actual_error": "ValueError: exact original Python function",
+  "observed_costs": {
+    "native_caller_elapsed_ns": 178256000,
+    "terminal_caller_peak_bytes": 21495808,
+    "external_elapsed_ms": 4797,
+    "separate_finish_reserve_ms": 1000
+  },
+  "original_G_D_saved": false,
+  "source_finding": {
+    "id": "W16-PATHLIB-NATIVE-PROPERTY-1",
+    "source": {
+      "bytes": 36217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v2.py",
+      "sha256": "4123027655286cbad0a3f48c57b6ed2a01f314bbcaa694fb73bd24cb82660790"
+    },
+    "property_snapshot_line": 199,
+    "message_origin_line": 175,
+    "stdlib_drive_line": 809,
+    "stdlib_root_line": 812,
+    "description": "class_state passes all property getters/setters/deleters to a Python-FunctionType-only function_state. Pinned pathlib.PurePath.drive/root are property(operator.attrgetter(...)), native callable instances. Imported Path MRO reaches these at the first own module snapshot before project loads/Owner creation. Saved stderr contains message only, so no exact traceback runtime line is claimed.",
+    "suggestion": "Preserve Source/reviews/failed namespace. A narrow additive exact native property-accessor identity/type/custody branch can repair this legitimate stdlib endpoint while Python function/code/default/cell checks remain strict. Distinct current review required."
+  },
+  "authorship_disclosure": "Reviewer authored old controller/lateleaf and checker/codec dependencies, not the failed early caller. Prior genuine caller Source review missed this native-property compatibility gap and remains historical; this saved finding does not retroactively promote it.",
+  "claims": {
+    "W16_expected_late_rejection_observed": false,
+    "census_completed": false,
+    "successful20_stage": false,
+    "resource_accepted": false,
+    "full52_qualified": false,
+    "original_Q_theorem_accepted": false,
+    "proof_search_accepted": false
+  },
+  "limitations": [
+    "Only saved external/meter/raw plan and static Source inspected, no Source/helper/native/Q/test execution.",
+    "No original early G was saved before failure; meter/probe timestamps are not substituted for G or a W16 readiness/deadline observation.",
+    "No owned child result/ledger exists. No accepted prefix or successful late-wait/reap control is inferred from a fast caller exit."
+  ]
+}

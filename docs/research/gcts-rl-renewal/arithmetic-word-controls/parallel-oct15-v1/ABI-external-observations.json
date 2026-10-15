@@ -1,0 +1,16 @@
+{
+  "schema": "ROOT-native-rusage-ABI-external-observations-v1",
+  "started_ms": 1792086100742,
+  "completed_ms": 1792086100991,
+  "elapsed_ms": 249,
+  "terminal": true,
+  "results": [
+    {
+      "chunk_id": "7a77cf",
+      "wall_time_seconds": 0.089729,
+      "exit_code": 0,
+      "original_token_count": 164,
+      "output": "{\"Q_payload_parses\":0,\"begin_ns\":425908827537000,\"child_pid\":8406,\"current_pipeline_admitted\":false,\"known_children_reaped\":true,\"leaf_self_record\":{\"after_self_bytes\":80953344,\"before_self_bytes\":13910016,\"touched_bytes\":67108864},\"leaf_terminal_wait4_maxrss_bytes\":81002496,\"observed_before_output_ns\":425908952408000,\"parent_CHILDREN_after_bytes\":81002496,\"parent_SELF_after_bytes\":17940480,\"parent_SELF_before_bytes\":17940480,\"pid\":8405,\"plan_sha256\":\"6c5e08e83f0661bca1baa7a49f9a2f33f8e4e3afa981530729d19ad3fb7dd094\",\"project_Source_imports\":0,\"proof_searches\":0,\"schema\":\"ROOT-native-rusage-parent-observation-v1\",\"wait4_pid\":8406,\"wait4_status\":0}\n"
+    }
+  ]
+}

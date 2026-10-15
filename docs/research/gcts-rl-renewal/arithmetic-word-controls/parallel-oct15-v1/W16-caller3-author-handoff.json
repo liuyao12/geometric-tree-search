@@ -1,0 +1,74 @@
+{
+  "Q_payload_parses": 0,
+  "ROOT_metadata_map_and_scopes": {
+    "bytes": 13313,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/ROOT-W16-metadata-map-and-scopes-v2.json",
+    "sha256": "70db1a3d2e826894faf2bb52b7a99875bce4486adacc144df720cf04cf77dac8"
+  },
+  "activation_allowed": false,
+  "actual_outdirs": 0,
+  "actual_plans": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "genuine_retained_caller2_JS2_Source_review": {
+    "bytes": 2558,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-and-W16-integration-review-source-20261015/W16-caller-typed-Source-review-v3.json",
+    "sha256": "111d66585a41da11b7d027dbea3388fecff6a28902e5e850ad02361e4573b1dd"
+  },
+  "native_clock_calls": 0,
+  "preserved_actual1_raw": {
+    "external-observations-v1.json": {
+      "bytes": 4727,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/external-observations-v1.json",
+      "sha256": "9fe8f076a090b55324952c567ae0c389ea7a5d9674895aa9c6da8035427b8406"
+    },
+    "native-terminal-v1.json": {
+      "bytes": 1680,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-cold-progress-20261015/native-terminal-v1.json",
+      "sha256": "26cf8d8e267c327bd235abbe24eb3b3abd2caf175673b20559e9952f845d84cb"
+    }
+  },
+  "preserved_parent_handoff": {
+    "bytes": 3536,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/handoff-v3.json",
+    "sha256": "721c19bf4ac77509486a774bea47441168441262e40bd9929cab8bec55116c8e"
+  },
+  "review_scope": "Q-W16-trusted-early-cold-caller-Source",
+  "review_status": "pending genuine distinct caller3 current Source review; no automatic runtime applicability",
+  "schema": "Q-W16-early-cold-caller-Source-handoff-v4",
+  "scientific_calls": 0,
+  "scope": "Original full-model W16 expected-late-UNKNOWN observation only, no successful20/full52/proof/model/resource qualification. Source3 correction is exact native descriptor custody, no broad callable acceptance.",
+  "source": {
+    "bytes": 38118,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+    "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+  },
+  "source_contract": {
+    "bytes": 24443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Source-contract-v4.json",
+    "sha256": "14a2d3b7e541e6191f8f02ce9cb7904a189f202f5eb11f9423839d10ecd0e65f"
+  },
+  "source_delta": {
+    "bytes": 7088,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/caller-native-property-Source-delta-v4.json",
+    "sha256": "12fdb16b7b8227e529cc5a4042a5a84d5808ab98044c3b7d4f2f1efb989f6d52"
+  },
+  "source_only": true,
+  "sources": {
+    "caller": {
+      "bytes": 38118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/Q_W16_trusted_early_cold_caller_v3.py",
+      "sha256": "a62f88e121110f5d3946c2aa0419e78b87922ae93a255c99560b34e653188808"
+    },
+    "external_accounting": {
+      "bytes": 7471,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/observe_actual_W16_expected_UNKNOWN_v2.js",
+      "sha256": "ca74233df3d37f45d8a9148f792e747bebaf93f6710f3471c60b3c2a2c14556e"
+    }
+  },
+  "static_checks": {
+    "bytes": 1752,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-W16-early-cold-caller-source-20261015/static-authoring-checks-v4.json",
+    "sha256": "bd223baa241052138b9fec35d71f68009ac4dae935e7a95c0caa9a13721f3f2e"
+  },
+  "tests": 0
+}
