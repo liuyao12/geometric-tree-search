@@ -1,0 +1,28 @@
+{
+  "findings": {
+    "bytes": 24488,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-independent-source-20261016/findings-v1.json",
+    "sha256": "75551fb6e36b12081e50cd907f6f7f10417e587d7a1f562453989dfbf3307bb4"
+  },
+  "review": {
+    "bytes": 3928,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "c760138370edc5ffc1c8bbb441940a84e6c19a5b7c337da81059955882182bf6"
+  },
+  "schema": "unit-row-marked-aware-fibre-checker-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-marked-aware-nonimp-fibre-checker-Source",
+  "source": {
+    "bytes": 25783,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+    "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+  },
+  "source_contract": {
+    "bytes": 22481,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/Source-contract-v1.json",
+    "sha256": "5d3e7854b3eff9a01a673b1cee12fb71b9d60d59b45efe6ec0578549dc4b8c9a"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

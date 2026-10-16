@@ -1,0 +1,28 @@
+{
+  "findings": {
+    "bytes": 19940,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-independent-source-20261016/findings-v1.json",
+    "sha256": "9afdc7b610a3ae4ec1a249e07a45187ccb67d1516394da42bcec44456e15b38c"
+  },
+  "review": {
+    "bytes": 6024,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "bbfd85ea86270a17d0f61993a5dc43100940b3093e0a25b7b6640b70453d720c"
+  },
+  "schema": "unit-row-marked-aware-calibration-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-marked-aware-calibration-cold-Source",
+  "source": {
+    "bytes": 65029,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/marked_aware_calibration_cold_v1.py",
+    "sha256": "5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817"
+  },
+  "source_contract": {
+    "bytes": 27670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "d5a0467432caaf18cba837b1bd72c83eeefd80c2763b64641786af34b26fb773"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

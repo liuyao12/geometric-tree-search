@@ -1,0 +1,75 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Reviewer authored independent checker8f7a/9fd6 and coordinated wire/API with proposer author; shared old c354/membership/kernel/point primitives and old syntax grammar are disclosed. Independence is reenumeration and independently derived marked packets, not unrelated mathematics. This review does not self-review checker8f7a.",
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_CONCRETE_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 15594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-independent-source-20261016/findings-v1.json",
+    "sha256": "257ebd505bbd893961659a8ff5628a0935680aa14561712db9d67b3832632199"
+  },
+  "fixture_challenge": {
+    "bytes": 4519,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-independent-source-20261016/fixture-challenge-v1.json",
+    "sha256": "d7b66957bab33f890d530b286d3b74bc1a2be66315141d217d16e909a5f2bb18"
+  },
+  "limitations": [
+    "No module/helper, model, checker/proposer, scientific clock, test or actual executed.",
+    "Source-only pass requires separately reviewed Root cold integration and fresh independent runtime controls.",
+    "No target proof, speed/fit, full graph, receipt-transfer, marking activation or RL claim.",
+    "Current engine11 and all old UNKNOWN/partial records remain unchanged."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-marked-aware-fibre-proposer-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-marked-aware-nonimp-fibre-proposer-Source",
+  "source": {
+    "bytes": 14064,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+    "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+  },
+  "source_contract": {
+    "bytes": 24072,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/Source-contract-v1.json",
+    "sha256": "977a877f898d3fb9f9aa85a9b4d2343467996ef15849d0c733672905bea1e35c"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "base_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_semantics": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    }
+  }
+}

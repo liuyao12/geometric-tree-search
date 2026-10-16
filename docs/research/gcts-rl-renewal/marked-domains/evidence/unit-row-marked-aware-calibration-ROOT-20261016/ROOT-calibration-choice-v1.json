@@ -1,0 +1,64 @@
+{
+  "schema": "ROOT-marked-aware-calibration-choice-v1",
+  "author_identity": "/root",
+  "previous_goal_turn": "progress",
+  "current_goal_turn": "progress",
+  "parent_checkpoint": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-parallel-fibres-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "c0183654f78fe13100360f920b1cc03557daf600f3ad787305a89f127f928423",
+    "bytes": 26662
+  },
+  "scope": "Local marked-domain calibration only. Original full bounded symbolic input unchanged; no engine activation or target search.",
+  "purposes_and_cases": {
+    "unit-row-marked-aware-calibration-zero": [
+      "MA-01"
+    ],
+    "unit-row-marked-aware-calibration-singleton": [
+      "MA-02"
+    ],
+    "unit-row-marked-aware-calibration-two": [
+      "MA-03"
+    ],
+    "unit-row-marked-aware-calibration-negative-protocol": [
+      "MA-04",
+      "MA-05",
+      "MA-06"
+    ]
+  },
+  "fixture_design": {
+    "ZERO": "Old C1 genuine UG3 reading universal false at1; query1 yields complete markedZERO.",
+    "SINGLETON": "Old C4 two seeds impose first namedAX at1 and C42 at3; query3 must freshly complete full markedcensus, expected soleMP reads(2,0).",
+    "TWO": "Separate state with only C42-read UG5; query3 expected actual firsttwo fullymarkedlegal reads(1,0),(1,2), lowerbound only.",
+    "NEGATIVE_PROTOCOL": "Fresh ZEROproposal copies: wrong full context/binding, omitted orderedMP fibre, inconsistent partial/complete flag; exact expected invalid-data errors only."
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "maximum_actual_invocations_per_purpose": 1,
+  "maximum_total_new_actuals": 4,
+  "all_six_cases_essential": true,
+  "each_endpoint_separate_original20": true,
+  "combined20_suite_claim": false,
+  "scientific_execution_authorized": false,
+  "execution_requires_fresh_ROOT_grants_and_whole_Source_reviews": true,
+  "old_failed_MAIN_unchanged_restart": false,
+  "old_six_cases_rerun": false,
+  "old_stageC_suite_remains_incomplete": true,
+  "semantic_original17_input2_epoch_unchanged": true,
+  "current_executable_Source13_input8": true,
+  "candidate_carrier_or_rules_restricted": false,
+  "no_old_query_or_cursor_replay": true,
+  "no_engine_or_target_search": true,
+  "no_receipt_schema_masquerade": true,
+  "partial_TWO_exact_count": false,
+  "failure_counts_inferred": false,
+  "complete_GCTS_accepted": false,
+  "logical_proof_accepted": false,
+  "RL_accepted": false,
+  "GCTS_advantage_claimed": false
+}

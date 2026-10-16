@@ -1,0 +1,97 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "all_four_endpoints_closed": true,
+  "closure_helper": {
+    "bytes": 33468,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+    "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+  },
+  "combined20_suite_claimed": false,
+  "complete_GCTS_model_accepted": false,
+  "endpoint_dispositions": {
+    "negative-protocol": {
+      "bytes": 14180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-negative-protocol-disposition-v1.json",
+      "sha256": "715df4e9c903f59a53c72d9a2ed9be28b95e8f1be46912acf963fb1464277999"
+    },
+    "singleton": {
+      "bytes": 13937,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-singleton-disposition-v1.json",
+      "sha256": "1c6ab0fc9c4e0853af20aa3792748a732fff02a77d678bc34928415553619a13"
+    },
+    "two": {
+      "bytes": 13853,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-two-disposition-v1.json",
+      "sha256": "5b5740fd60345b85a519e5eed1006cb8c1b6b65a63656167b5f4ed72187d7f85"
+    },
+    "zero": {
+      "bytes": 13852,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-zero-disposition-v1.json",
+      "sha256": "6458ce6976d364e160aaad6e2e43bab2bca5353b47bb2d7254354760fc4cc844"
+    }
+  },
+  "endpoint_summaries": {
+    "negative-protocol": {
+      "aggregate_B_bytes": 46874624,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 626443000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-calibration-negative-protocol",
+      "qualified_case_count": 3,
+      "unqualified_case_count": 0
+    },
+    "singleton": {
+      "aggregate_B_bytes": 47300608,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 704777000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-calibration-singleton",
+      "qualified_case_count": 1,
+      "unqualified_case_count": 0
+    },
+    "two": {
+      "aggregate_B_bytes": 47087616,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 589269000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-calibration-two",
+      "qualified_case_count": 1,
+      "unqualified_case_count": 0
+    },
+    "zero": {
+      "aggregate_B_bytes": 46628864,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 506572000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-calibration-zero",
+      "qualified_case_count": 1,
+      "unqualified_case_count": 0
+    }
+  },
+  "engine_integration_qualified": false,
+  "exact_point_board_accepted": false,
+  "failure_marking_activated": false,
+  "local_marked_aware_calibration_qualified": true,
+  "logical_proof_accepted": false,
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "qualified_case_count": 6,
+  "qualified_cases": [
+    "MA-04-wrong-original-binding-provenance-rejected",
+    "MA-05-omitted-ordered-MP-fibre-rejected",
+    "MA-06-inconsistent-completion-flag-rejected",
+    "MA-02-complete-marked-SINGLETON",
+    "MA-03-two-marked-witnesses-lower-bound-only",
+    "MA-01-complete-marked-ZERO"
+  ],
+  "required_case_count": 6,
+  "same_process_all_six_qualified": false,
+  "schema": "ROOT-marked-aware-calibration-disposition-v1",
+  "scientific_replay": false,
+  "separate_endpoint_count": 4,
+  "target_search_performed": false,
+  "unqualified_case_count": 0,
+  "unqualified_cases": []
+}

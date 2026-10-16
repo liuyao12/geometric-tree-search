@@ -1,0 +1,200 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 18,
+  "checks": [
+    {
+      "detail": "Parsed/compiled bytes only; compiled object never evaluated/imported.",
+      "name": "compile_only",
+      "passed": true
+    },
+    {
+      "detail": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "save_failure_diagnostic",
+        "encode_result_transport"
+      ],
+      "name": "all17_helpers",
+      "passed": true
+    },
+    {
+      "detail": [
+        "archived",
+        "boundary",
+        "call",
+        "candidate",
+        "core",
+        "exact_restore",
+        "fresh_language",
+        "guard",
+        "maps",
+        "marked_semantics",
+        "passed",
+        "place_base",
+        "root_state",
+        "rowproof",
+        "slot",
+        "snapshot",
+        "state_from",
+        "tick",
+        "tile",
+        "ug"
+      ],
+      "name": "all20_core_nested_helpers",
+      "passed": true
+    },
+    {
+      "detail": [
+        "ObservedCursor",
+        "ChildControlInterruption"
+      ],
+      "name": "whole_observer_and_interruption_classes",
+      "passed": true
+    },
+    {
+      "detail": 19,
+      "name": "full_raw_and_actual_patch_inverses",
+      "passed": true
+    },
+    {
+      "detail": [
+        "clean_support",
+        "decorator",
+        "degree_checker",
+        "engine",
+        "fallback",
+        "intake",
+        "kernel",
+        "marked_adapter",
+        "marked_aware_checker",
+        "marked_aware_proposer",
+        "marked_verifier",
+        "membership",
+        "proposer"
+      ],
+      "name": "runtime_Source13",
+      "passed": true
+    },
+    {
+      "detail": [
+        "clean_support",
+        "decorator",
+        "degree_checker",
+        "engine",
+        "fallback",
+        "kernel",
+        "marked_adapter",
+        "marked_verifier",
+        "membership",
+        "proposer"
+      ],
+      "name": "old10deps_raw_exact",
+      "passed": true
+    },
+    {
+      "detail": "Hashed all current12 dependency/original17 raw Source refs and input8; no scientific decoding.",
+      "name": "raw_all_runtime_and_original_caps",
+      "passed": true
+    },
+    {
+      "detail": "Whole literal maps and limits unchanged; original make_language unchanged.",
+      "name": "original17_input2_binding_and_input8",
+      "passed": true
+    },
+    {
+      "detail": "Native tick raw exact; final boundary/exit/top-level failure tail raw exact.",
+      "name": "native_and_final_failure_tail",
+      "passed": true
+    },
+    {
+      "detail": {
+        "unit-row-marked-aware-calibration-negative-protocol": [
+          "MA-04-wrong-original-binding-provenance-rejected",
+          "MA-05-omitted-ordered-MP-fibre-rejected",
+          "MA-06-inconsistent-completion-flag-rejected"
+        ],
+        "unit-row-marked-aware-calibration-singleton": [
+          "MA-02-complete-marked-SINGLETON"
+        ],
+        "unit-row-marked-aware-calibration-two": [
+          "MA-03-two-marked-witnesses-lower-bound-only"
+        ],
+        "unit-row-marked-aware-calibration-zero": [
+          "MA-01-complete-marked-ZERO"
+        ]
+      },
+      "name": "four_purposes_six_cases",
+      "passed": true
+    },
+    {
+      "detail": "No old proposal/check/cursor/search invocation from new dispatch; new protocol identities remain distinct.",
+      "name": "new_receipt_only",
+      "passed": true
+    },
+    {
+      "detail": "New proposer has private fresh original language; new checker gets separate fresh original language/private state+marking copy.",
+      "name": "fresh_authority_per_delegate",
+      "passed": true
+    },
+    {
+      "detail": "ZERO full0; SINGLETON full1; TWO exactly2 checked lower-bound and no cover/degree/sole.",
+      "name": "complete_fixture_assertions",
+      "passed": true
+    },
+    {
+      "detail": "Negative loop catches only exact type ValueError and exact three checker reason literals; TimeoutError propagates.",
+      "name": "specific_ValueError_only",
+      "passed": true
+    },
+    {
+      "detail": "All fixture seeds/currentstates/proposals/newreceipts; each full invalid proposal+exact reason retained under unchanged16MiB cap.",
+      "name": "full_evidence_no_trimming",
+      "passed": true
+    },
+    {
+      "detail": "All new science/carrier/membership occurs under call(positive)/call(negative_protocol); new endpoints also use call with module FunctionType.",
+      "name": "FunctionType_boundaries",
+      "passed": true
+    },
+    {
+      "detail": "No target/engine/EOF/graph/transfer/mark activation/RL/advantage or runtime/fit claim; four fresh20 endpoints.",
+      "name": "unqualified_scope",
+      "passed": true
+    }
+  ],
+  "independent_review": false,
+  "native_fit": "UNMEASURED",
+  "parent": {
+    "bytes": 77932,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/channel4_stageC_batched_main_cold_v1.py",
+    "sha256": "404f81265bd2c25cee9609d6602eeef20d074c3bdfa88302cb20cff50f1f5623"
+  },
+  "runtime_executed": false,
+  "schema": "unit-row-marked-aware-calibration-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 65029,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/marked_aware_calibration_cold_v1.py",
+    "sha256": "5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817"
+  },
+  "source_delta": {
+    "bytes": 51477,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "d6a3aa08701aa0d239b16adf4b9a76e8f79a924aa607c8913e53f156f99a64ba"
+  },
+  "source_only": true
+}

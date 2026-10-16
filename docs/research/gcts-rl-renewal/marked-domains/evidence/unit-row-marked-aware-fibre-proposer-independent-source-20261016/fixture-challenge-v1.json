@@ -1,0 +1,32 @@
+{
+  "additional_adversarial": "Forge completed header, omit/reorder one MP pair, alter occurs case, counts/hash/carrier/output/type/binding/marking/fullkey/ordered port, duplicate witness, remove sole survivor, branch-exclude the exact full key (conditional context only), and raise native-first callback/membership UNKNOWN. Malformed/authority/collision failures propagate; only actual current point legality removes candidates. Direct carrier0/1/2 reference is conditional on original signature, never a smaller production universe.",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "cases": [
+    {
+      "build": "Reuse the separately fresh old C1 state: select original UG atrow3, readrow1=G, output all(v,G). Query unoccupiedrow1; earlierrow0 absent.",
+      "case": "ZERO-oldC1-channel4-removes-sole-UG",
+      "derivation_latex": "Query output is \\(G=\\forall v\\,\\bot\\). Check no original AX or indexed \\(\\Gamma\\) equals \\(G\\). UG at row1 can only read \\(\\bot\\) at row0, assigning actual \\(m(4,0)=1\\) against fixed zero. The only MP pair \\((0,0)\\) is finite-AST occurs-empty. UI/EqSubst cannot output non-implication \\(G\\).",
+      "expected": "New COMPLETE cover + independently ZERO, exact0, no sole packet. Save the explicit channel4 conflict and completed UG/MP census. This duplicates the old C1 mathematical context, not its runtime acceptance."
+    },
+    {
+      "build": "Reuse separately fresh old C4 seeds: UG atrow4 reads A atrow1; UG atrow5 reads C42 atrow3. Queryrow3; marks at0 and2 absent, mark1=A.",
+      "case": "ONE-oldC4-new-missing-prefix-completion",
+      "derivation_latex": "Only antecedent \\(\\bot\\) fits the both-absent MP fibres. Pair \\((0,2)\\) is removed by the row0 guard; pair \\((2,0)\\) is individually legal. Same-row pairs are occurs-empty; the assigned \\(A\\) row is neither a matching implication nor a small enough antecedent for \\(A\\to C_{42}\\). All other AX/Gamma/UG possibilities are absent or independently excluded.",
+      "expected": "New COMPLETE cover + independently SINGLETON with sole full MP key reads[2,0] and exact pending obligations. Old partialTWO->markedUNKNOWN1 remains historically unchanged. Save every independently finished pair, including membership exclusions and counts/hashes."
+    },
+    {
+      "build": "Use a separately owned fresh state retaining ONLY old C4 UG atrow5 reading C42 atrow3. Queryrow3 with marks0,1,2 absent; no AX-at1 marking is introduced.",
+      "case": "TWO-separate-C4-unconstrained-prefix-variant",
+      "derivation_latex": "The size1 carrier is still \\(\\{\\bot\\}\\). Ordered pairs \\((0,1)\\) and \\((0,2)\\) lose the bot-at0 candidate, then \\((1,0)\\) and \\((1,2)\\) are distinct individually legal marked placements. Their different second offsets preserve distinct full keys.",
+      "expected": "TWO_LEGAL_WITNESSES + independently TWO_OR_MORE, degree_exactNone, complete_cover_checkedFalse and unfinished fibre header. These are alternatives at the same positive row, not two simultaneously compatible cluster members."
+    }
+  ],
+  "common": "Use original Source17/input2/epoch and the exact accepted marking, original empty ordered Gamma/parameter v from language.parameters[0], height24 roots0. Build states by original lawful AX/UG tiles and independently check full original+decorated data. No snapshot editing, expected receipt injection, target word, route, donor or changed limits. Each case must retain actual whole proposal/new independent receipt; no static argument substitutes for a measured result.",
+  "definitions_latex": "Let \\(B=\\bot\\), \\(G=\\forall v\\,B\\), and \\(C_{42}=\\neg^{41}\\bot\\). Choose \\(A\\) from the original named AX declaration as in old C4. Check that the exact input has no unary-node predicate formula, that \\(C_{42}\\) is not an AX/Gamma value or a forbidden literal, and that \\(A\\) has the original larger non-implication AX shape. Then the MP antecedent bound for \\(C_{42}\\) is \\(1\\), whose full carrier is \\(\\{\\bot\\}\\).",
+  "qualification_limit": "No fixture membership, cardinality, receipt or runtime has been executed/accepted by this Source note. Original20/512 gate and full independent checks still decide. No graph, target proof, receipt transfer, learned benefit or RL claim.",
+  "schema": "unit-row-marked-aware-fibre-independent-fixture-challenge-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "PROSPECTIVE_MATH_CHALLENGE_NOT_RUNTIME_EVIDENCE"
+}

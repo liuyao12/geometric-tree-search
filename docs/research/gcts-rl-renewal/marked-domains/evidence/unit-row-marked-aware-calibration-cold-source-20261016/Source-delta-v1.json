@@ -1,0 +1,262 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "added_named_regions": [
+    "main.check_new",
+    "main.fixture",
+    "main.negative_protocol",
+    "main.new_query",
+    "main.positive",
+    "main.reads_of"
+  ],
+  "all17_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "all20_core_nested_helpers_raw_AST_exact": [
+    "archived",
+    "boundary",
+    "call",
+    "candidate",
+    "core",
+    "exact_restore",
+    "fresh_language",
+    "guard",
+    "maps",
+    "marked_semantics",
+    "passed",
+    "place_base",
+    "root_state",
+    "rowproof",
+    "slot",
+    "snapshot",
+    "state_from",
+    "tick",
+    "tile",
+    "ug"
+  ],
+  "changed_named_regions": [
+    "main"
+  ],
+  "edit_count": 19,
+  "edits": [
+    {
+      "new_end": 230,
+      "new_start": 0,
+      "new_utf8": "\"\"\"Prospective local marked-aware degree calibration only, Source unexecuted.\nFour separately granted original20 endpoints; six essential assertions total.\nNew proposals/receipts never masquerade as engine11 or old c354 evidence.\n",
+      "old_end": 240,
+      "old_start": 0,
+      "old_utf8": "\"\"\"Prospective dedicated StageC MAIN: one private five-seed constructor language.\nOriginal v1 four-endpoint suite stays immutable/incomplete; no six-case rerun.\nAll later checks/assertions/native20 remain; no fit or combined qualification.\n"
+    },
+    {
+      "new_end": 732,
+      "new_start": 613,
+      "new_utf8": "VERSION='unit-row-marked-aware-local-degree-calibration-cold-v1'\nSCOPE='unit-row-marked-aware-calibration-cold-Source'\n",
+      "old_end": 737,
+      "old_start": 623,
+      "old_utf8": "VERSION='unit-row-channel4-stageC-batched-main-cold-v1'\nSCOPE='unit-row-channel4-stageC-batched-main-cold-Source'\n"
+    },
+    {
+      "new_end": 4685,
+      "new_start": 807,
+      "new_utf8": "CALIBRATION_CASES_BY_PURPOSE={'unit-row-marked-aware-calibration-zero': ['MA-01-complete-marked-ZERO'], 'unit-row-marked-aware-calibration-singleton': ['MA-02-complete-marked-SINGLETON'], 'unit-row-marked-aware-calibration-two': ['MA-03-two-marked-witnesses-lower-bound-only'], 'unit-row-marked-aware-calibration-negative-protocol': ['MA-04-wrong-original-binding-provenance-rejected', 'MA-05-omitted-ordered-MP-fibre-rejected', 'MA-06-inconsistent-completion-flag-rejected']}\nFIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'decorator': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895', 'bytes': 12619}, 'marked_verifier': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a', 'bytes': 18475}, 'marked_adapter': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py', 'sha256': '821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9', 'bytes': 28980}, 'engine': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py', 'sha256': 'fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476', 'bytes': 56207}, 'fallback': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae', 'bytes': 24227}, 'marked_aware_proposer': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d', 'bytes': 14064}, 'marked_aware_checker': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188', 'bytes': 25783}}\n",
+      "old_end": 3854,
+      "old_start": 812,
+      "old_utf8": "STAGEC_CASES_BY_PURPOSE={'unit-row-channel4-stageC-batched-main-controls': ['C5-genuine-all-frontier-FORCED-before-BRANCH', 'C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH', 'C7-actual-child-native-first-UNKNOWN-full-restoration']}\nFIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'decorator': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895', 'bytes': 12619}, 'marked_verifier': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a', 'bytes': 18475}, 'marked_adapter': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py', 'sha256': '821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9', 'bytes': 28980}, 'engine': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py', 'sha256': 'fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476', 'bytes': 56207}, 'fallback': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae', 'bytes': 24227}}\n"
+    },
+    {
+      "new_end": 31418,
+      "new_start": 31292,
+      "new_utf8": "    need(plan['schema']=='ROOT-marked-aware-calibration-plan-v1'\n         and plan['purpose'] in CALIBRATION_CASES_BY_PURPOSE\n",
+      "old_end": 30586,
+      "old_start": 30461,
+      "old_utf8": "    need(plan['schema']=='ROOT-channel4-stageC-batched-main-plan-v1'\n         and plan['purpose'] in STAGEC_CASES_BY_PURPOSE\n"
+    },
+    {
+      "new_end": 32100,
+      "new_start": 32004,
+      "new_utf8": "         and plan['inputs']==FIXED_INPUTS,'exact current executable Source13 and saved input8')\n",
+      "old_end": 31268,
+      "old_start": 31172,
+      "old_utf8": "         and plan['inputs']==FIXED_INPUTS,'exact current executable Source11 and saved input8')\n"
+    },
+    {
+      "new_end": 32492,
+      "new_start": 32403,
+      "new_utf8": "    need(contract['schema']=='unit-row-marked-aware-calibration-cold-Source-contract-v1'\n",
+      "old_end": 31664,
+      "old_start": 31571,
+      "old_utf8": "    need(contract['schema']=='unit-row-channel4-stageC-batched-main-cold-Source-contract-v1'\n"
+    },
+    {
+      "new_end": 33858,
+      "new_start": 33783,
+      "new_utf8": "    need(grant['schema']=='ROOT-marked-aware-calibration-authorization-v1'\n",
+      "old_end": 33034,
+      "old_start": 32955,
+      "old_utf8": "    need(grant['schema']=='ROOT-channel4-stageC-batched-main-authorization-v1'\n"
+    },
+    {
+      "new_end": 50782,
+      "new_start": 50409,
+      "new_utf8": "    new_proposer, new_checker = modules['marked_aware_proposer'], modules['marked_aware_checker']\n    need(new_proposer.VERSION == 'unit-row-marked-aware-nonimp-fibre-proposer-v1'\n         and new_checker.VERSION == 'unit-row-independent-marked-aware-nonimp-fibre-checker-v1',\n         'exact new local-only proposer/checker versions')\n    marking_raw = canonical(marking)\n",
+      "old_end": 49665,
+      "old_start": 49585,
+      "old_utf8": "    def sha(value):\n        return hashlib.sha256(canonical(value)).hexdigest()\n"
+    },
+    {
+      "new_end": 51233,
+      "new_start": 50783,
+      "new_utf8": "    def check_new(state, row, proposal):\n        receipt = call(new_checker.check_degree_evidence,kwargs={\n            'language':fresh_language(),'base_semantics':semantics,'verifier':verifier,\n            'marking':copy.deepcopy(marking),'state':copy.deepcopy(state),'row':row,\n            'proposal':copy.deepcopy(proposal),'tick':tick})\n        need(canonical(marking) == marking_raw, 'private accepted marking unchanged')\n        return receipt\n",
+      "old_end": 49739,
+      "old_start": 49666,
+      "old_utf8": "    def cert(value,row):\n        return dict(value['certificates'])[row]\n"
+    },
+    {
+      "new_end": 53239,
+      "new_start": 51234,
+      "new_utf8": "    def new_query(state, row):\n        private_state_raw = canonical(state)\n        producer_language = fresh_language()\n        current = marked_semantics(producer_language)\n        proposal = call(new_proposer.propose_degree,kwargs={'language':producer_language,\n            'semantics':current,'state':copy.deepcopy(state),'row':row,'tick':tick})\n        del current, producer_language\n        need(canonical(state) == private_state_raw and canonical(marking) == marking_raw,\n             'producer cannot replace private current state or marking')\n        receipt = check_new(state,row,proposal)\n        need(proposal['schema'] == 'unit-row-marked-aware-nonimp-fibre-proposal-v1'\n             and receipt['schema'] == 'unit-row-marked-aware-nonimp-fibre-check-v1'\n             and receipt['version'] == new_checker.VERSION\n             and receipt['proposal_sha256'] == hashlib.sha256(canonical(proposal)).hexdigest()\n             and canonical(receipt['state']) == private_state_raw\n             and receipt['state_sha256'] == hashlib.sha256(private_state_raw).hexdigest()\n             and canonical(receipt['original_state']) == canonical(proposal['original_state'])\n             and receipt['original_state_sha256'] == proposal['original_state_sha256']\n             and receipt['row'] == row and receipt['input_epoch'] == ORIGINAL_BINDING['language_epoch']\n             and receipt['language_binding'] == ORIGINAL_BINDING\n             and receipt['marking_id'] == marking['marking_id']\n             and receipt['independent_marked_state_check']['marked_state_checked'] is True\n             and all(proposal[k] is False and receipt[k] is False for k in\n                 ('complete_candidate_graph_accepted','scheduler_or_rollback_accepted',\n                  'logical_proof_accepted','ROOT_resource_accepted')),\n             'fresh new typed local receipt/full context with all strong flags false')\n        return {'state':copy.deepcopy(state),'query_row':row,'proposal':proposal,'receipt':receipt}\n",
+      "old_end": 50262,
+      "old_start": 49740,
+      "old_utf8": "    def checked_query(state,row):\n        language=fresh_language(); current=marked_semantics(language)\n        proposal=current.propose_degree(language=language,state=copy.deepcopy(state),row=row,\n            tick=tick,degree_proposer=modules['proposer'].propose_degree)\n        receipt=current.check_degree_evidence(language=language,state=copy.deepcopy(state),row=row,\n            proposal=copy.deepcopy(proposal),tick=tick)\n        return {'state':copy.deepcopy(state),'row':row,'proposal':proposal,'receipt':receipt}\n"
+    },
+    {
+      "new_end": 53422,
+      "new_start": 53240,
+      "new_utf8": "    def reads_of(candidate):\n        key = candidate['placement_key']\n        return [key['translation'][1]+d for d in key['type_preimage']['base_type_preimage']['ordered_offsets']]\n",
+      "old_end": 52928,
+      "old_start": 50263,
+      "old_utf8": "    def make_stageC_engine(state,log,record_rows=(),interrupt_after=None):\n        language=fresh_language(); current=marked_semantics(language)\n        def proposer(**kwargs):\n            observed_native_ns=kwargs['tick']()\n            if interrupt_after is not None and len(kwargs['state']['selected'])>interrupt_after:\n                log['interruptions'].append({'kind':'DECLARED_ACTUAL_CHILD_DEGREE_INTERRUPTION',\n                    'row':kwargs['row'],'state':copy.deepcopy(kwargs['state']),\n                    'selected_count':len(kwargs['state']['selected']),\n                    'native_ns':observed_native_ns,'joint_began_ns':EARLY_G,'joint_deadline_ns':end})\n                raise ChildControlInterruption('StageC native-first actual-child degree interruption')\n            proposal=current.propose_degree(degree_proposer=modules['proposer'].propose_degree,**kwargs)\n            if kwargs['row'] in record_rows:\n                log['queries'].append({'row':kwargs['row'],'state_sha256':sha(kwargs['state']),\n                    'proposal':copy.deepcopy(proposal)})\n            return proposal\n        def original(**kwargs):\n            real=fallback.open_fallback(**kwargs)\n            record={'context':copy.deepcopy(real.context()),'events':[]}\n            log['original_cursors'].append(record)\n            return ObservedCursor(real,record,tick)\n        def filtered(**kwargs):\n            real=adapter.open_fallback(semantics=current,base_fallback=original,**kwargs)\n            record={'context':copy.deepcopy(real.context()),'events':[]}\n            log['marked_cursors'].append(record)\n            return ObservedCursor(real,record,tick)\n        def certifier(**kwargs):\n            # The SAME fixed proposer, including its deliberate child interruption,\n            # is used here. No cached/copied receipt or alternate quiet delegate.\n            receipt=engine.certify_by_current_cover(degree_proposer=proposer,semantics=current,**kwargs)\n            log['certifications'].append({'state':copy.deepcopy(kwargs['state']),'row':kwargs['row'],\n                'completion':copy.deepcopy(kwargs['completion']),\n                'checked_candidates':copy.deepcopy(kwargs['checked_candidates']),\n                'receipt':copy.deepcopy(receipt)})\n            return receipt\n        return engine.LazyUnitRowEngine(language=language,degree_proposer=proposer,\n            semantics=current,fallback=filtered,certify_fallback=certifier,\n            transition_checker=adapter.MarkedTransition(),tick=tick,initial_state=copy.deepcopy(state),\n            maximum_nodes=128,maximum_events=2000,branch_adviser=None,validate_advice=None,branch_tie='ROW')\n"
+    },
+    {
+      "new_end": 57614,
+      "new_start": 53423,
+      "new_utf8": "    def fixture(mode):\n        deep42 = ['bot']\n        for unused in range(41): deep42 = ['not',deep42]\n        carrier = None\n        if mode in ('singleton','two'):\n            need(language.formula(deep42) == 42, 'fresh deep42 bounded constructor size')\n            carrier = list(new_proposer.iter_bounded_formulas(language=language,maximum_nodes=1,tick=tick))\n            need(carrier == [['bot']], 'whole original size1 carrier exactly bot')\n        if mode == 'zero':\n            body = ['all',variable,['bot']]\n            seeds, row = [ug(body,1,3)], 1\n        elif mode == 'singleton':\n            seeds, row = [ug(ax_formula,1,4),ug(deep42,3,5)], 3\n        else:\n            need(mode == 'two','declared fixture mode')\n            seeds, row = [ug(deep42,3,5)], 3\n        state = state_from(seeds)\n        result = new_query(state,row)\n        p, r = result['proposal'], result['receipt']\n        need(state['excluded'] == [] and state['generation'] == [[[0,k],0] for k in range(24)]\n             and r['accepted_local_evidence'] is True\n             and canonical(p['candidates']) == canonical(r['checked_candidates'])\n             and r['candidate_keys'] == [c['placement_key'] for c in p['candidates']]\n             and r['checked_root_rejections'] == p['root_rejections'],\n             'actual fixture local evidence, empty exclusions and original roots0')\n        actual_reads = [reads_of(c) for c in p['candidates']]\n        if mode in ('zero','singleton'):\n            cover = r['checked_fibre_cover']\n            need(p['kind'] == 'COMPLETE_NONIMP_FIBRE_COVER' and p['complete_cover_proposed'] is True\n                 and r['complete_cover_checked'] is True and r['nonimp_fibre_cover_checked'] is True\n                 and canonical(cover) == canonical(p['fibre_cover']) and cover['completed'] is True\n                 and len(cover['UG_fibres']) == row and len(cover['ordered_MP_fibres']) == row*row\n                 and all(f['completed'] is True for f in cover['UG_fibres']+cover['ordered_MP_fibres']),\n                 'entire new independent complete finite nonimp census')\n            if mode == 'zero':\n                need(r['status'] == 'ZERO' and type(r['degree_exact']) is int and r['degree_exact'] == 0\n                     and r['candidate_keys'] == [] and r['sole_candidate'] is None\n                     and p['candidates'] == [] and cover['UG_fibres'][0]['examined'] == 1\n                     and cover['UG_fibres'][0]['rejections'] == 1\n                     and cover['ordered_MP_fibres'][0]['case'] == 'FINITE_AST_OCCURS_CHECK_EMPTY',\n                     'complete ZERO after genuine marked UG rejection and same-row MP occurs check')\n            else:\n                need(r['status'] == 'SINGLETON' and type(r['degree_exact']) is int and r['degree_exact'] == 1\n                     and len(r['candidate_keys']) == 1 and actual_reads == [[2,0]]\n                     and canonical(r['sole_candidate']) == canonical(p['candidates'][0])\n                     and cover['output_nodes'] == 42 and cover['MP_antecedent_max_nodes'] == 1\n                     and sum(f['rejections'] for f in cover['ordered_MP_fibres']) >= 1,\n                     'complete fresh marked singleton from same oldC4 state, no old receipt replay')\n        else:\n            need(p['kind'] == 'TWO_LEGAL_WITNESSES' and p['complete_cover_proposed'] is False\n                 and p['fibre_cover']['completed'] is False and len(p['candidates']) == 2\n                 and r['status'] == 'TWO_OR_MORE' and r['complete_cover_checked'] is False\n                 and r['nonimp_fibre_cover_checked'] is False and r['degree_exact'] is None\n                 and r['sole_candidate'] is None and r['checked_fibre_cover'] is None\n                 and actual_reads == [[1,0],[1,2]]\n                 and canonical(r['candidate_keys'][0]) != canonical(r['candidate_keys'][1]),\n                 'two actual marked-legal witnesses only, no complete count or EOF authority')\n        result.update(seeds=seeds,size1_carrier=carrier,actual_candidate_reads=actual_reads,\n            evidence_scope='Local degree calibration only; pending read obligations are not installed facts.')\n        return result\n",
+      "old_end": 53076,
+      "old_start": 52929,
+      "old_utf8": "    def new_log():\n        return {'queries':[],'original_cursors':[],'marked_cursors':[],\n                'certifications':[],'interruptions':[]}\n"
+    },
+    {
+      "new_end": 57791,
+      "new_start": 57615,
+      "new_utf8": "    def positive(mode):\n        data = fixture(mode)\n        families[mode.upper()] = data\n        passed(CALIBRATION_CASES_BY_PURPOSE[plan['purpose']][0],family=mode.upper())\n",
+      "old_end": 53178,
+      "old_start": 53077,
+      "old_utf8": "    def ax(row):\n        return tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],row)\n"
+    },
+    {
+      "new_end": 59965,
+      "new_start": 57792,
+      "new_utf8": "    def negative_protocol():\n        data = fixture('zero')\n        proposal, state, row = data['proposal'], data['state'], data['query_row']\n        failures = []\n        for index in range(3):\n            bad = copy.deepcopy(proposal)\n            if index == 0:\n                bad['language_binding']['language_epoch'] = '0'*64\n                mutation = 'language_binding.language_epoch replaced by a stale literal'\n                reason = 'whole original/marked current context'\n            elif index == 1:\n                need(len(bad['fibre_cover']['ordered_MP_fibres']) == 1,'ZERO has one actual ordered MP fibre')\n                omitted = bad['fibre_cover']['ordered_MP_fibres'].pop()\n                mutation = 'required complete ordered_MP_fibres[0] omitted'\n                reason = 'complete independent fibres/counts/hashes'\n            else:\n                bad['complete_cover_proposed'] = False\n                mutation = 'complete kind retained while completion flag falsely changed to partial'\n                reason = 'literal completion flag'\n            expected = 'marked-aware fibre evidence: '+reason\n            try:\n                check_new(state,row,bad)\n            except ValueError as error:\n                need(type(error) is ValueError and str(error) == expected,\n                     'only exact declared invalid-data rejection counts; callback/resource errors propagate')\n                failure = {'mutation':mutation,'failing_proposal':bad,'expected_reason':expected,\n                    'exception_type':'ValueError','actual_reason':str(error),'rejected':True,\n                    'returned_receipt':None}\n                if index == 1: failure['omitted_original_fibre'] = omitted\n                failures.append(failure)\n            else:\n                raise ValueError('new checker accepted deliberately invalid protocol data')\n            passed(CALIBRATION_CASES_BY_PURPOSE[plan['purpose']][index],family='NEGATIVE_PROTOCOL')\n        families['NEGATIVE_PROTOCOL'] = {'valid_zero_fixture':data,'failures':failures,\n            'scope':'Three invalid-data checks only; no callback/timeout is caught or treated as rejection.'}\n",
+      "old_end": 73112,
+      "old_start": 53179,
+      "old_utf8": "    def full_transfer(before,after,row,origin):\n        previous=cert(before,row); current=cert(after,row); proof=rowproof(after,row)\n        need(proof['retain'] is True and after['last_transition']['collision_ledger_equal'] is True,\n             'complete all-possible-support and both full collision ledgers equal')\n        need(current['schema']=='unit-row-channel4-transferred-domain-classification-v1'\n             and current['marking_id']==marking['marking_id']\n             and current['input_epoch']==ORIGINAL_BINDING['language_epoch']\n             and current['state_sha256']==sha(after['state']) and current['row']==row\n             and current['previous_evidence_sha256']==sha(previous)\n             and canonical(current['original_receipt'])==canonical(origin)\n             and current['complete_cover_checked'] is True,\n             'new current transfer wrapper retains WHOLE original marked cover receipt')\n        for name in ('status','accepted_local_evidence','complete_cover_checked','degree_exact',\n                     'candidate_keys','missing_mark_cover_checked'):\n            need(canonical(current[name])==canonical(previous[name]),'retained exact classification and keys')\n        chain=current['transfer_chain']\n        need(canonical(chain[:-1])==canonical(previous.get('transfer_chain',[]))\n             and chain[-1]['before_state_sha256']==sha(before['state'])\n             and chain[-1]['after_state_sha256']==sha(after['state'])\n             and chain[-1]['transition_sha256']==sha(after['last_transition'])\n             and current['transition']['before_state_sha256']==sha(before['state'])\n             and current['transition']['after_state_sha256']==sha(after['state'])\n             and canonical(current['transition']['rows'])==canonical([proof]),\n             'full previous wrapper/transition chain/current states join')\n        if current['sole_candidate'] is not None:\n            rebuilt,reason=candidate(current['sole_candidate']['base_tile'],after['state'])\n            need(reason is None and canonical(rebuilt)==canonical(current['sole_candidate']),\n                 'transferred sole packet independently rebuilt in full CURRENT state')\n        return current\n\n    def dead_and_zero_transfer():\n        g=['all',variable,['bot']]; seeds=[ug(g,1,3)]\n        initial=state_from(seeds); log=new_log(); e=make_stageC_engine(initial,log,(0,1))\n        before=snapshot(e); decision=e.decision(); checked=snapshot(e)\n        origin=copy.deepcopy(cert(checked,1))\n        need(decision=={'kind':'DEAD','row':1} and cert(checked,0)['status']=='TWO_OR_MORE'\n             and origin['status']=='ZERO' and origin['complete_cover_checked'] is True\n             and origin['degree_exact']==0 and origin['candidate_keys']==[] and origin['sole_candidate'] is None\n             and origin['original_base_receipt']['status']=='SINGLETON'\n             and origin['original_base_receipt']['complete_cover_checked'] is True\n             and any(p==[4,0] for x in origin['marked_rejections'] for p,a,b in x['conflicting_points'])\n             and canonical(before['state'])==canonical(checked['state']),\n             'C1 genuine one-original-to-zero marked cover gives actual global DEAD1')\n        data={'seeds':seeds,'initial_state':initial,'before':before,'actual_decision':decision,\n              'checked_snapshot':checked,'origin_marked_receipt':origin}\n        passed('C1-marking-created-complete-ZERO-global-DEAD',family='DEAD')\n        token=e.checkpoint()\n        try:\n            placed=place_base(e,ug(g,4,6)); after=snapshot(e)\n            transferred=full_transfer(checked,after,1,origin)\n            need(transferred['status']=='ZERO' and transferred['candidate_keys']==[]\n                 and transferred['sole_candidate'] is None,'complete ZERO retained, not reclassified')\n            again=e.decision(); consumed=snapshot(e)\n            need(again=={'kind':'DEAD','row':1}\n                 and canonical(cert(consumed,1))==canonical(transferred),'actual second decision consumes transferred ZERO')\n            data.update(policy_independent_post_DEAD_placement=placed,after_transfer=after,\n                transferred_receipt=transferred,second_decision=again,after_second_decision=consumed)\n        finally:\n            e.rollback(token)\n        data['restored']=snapshot(e)\n        need(canonical(data['restored'])==canonical(checked),'C3 exact populated cache/point restore')\n        data['actual_log']=log; families['DEAD_ZERO_TRANSFER']=data\n        passed('C3-owned-complete-ZERO-transfer-original-marked-wrapper',family='DEAD',\n            scope='Post-DEAD public local transaction/transfer mechanics, not a scheduled search move.')\n\n        deep43=['bot']\n        for unused in range(42):deep43=['not',deep43]\n        need(language.formula(deep43)==43,'fresh deep43 constructor size')\n        seeds=[ug(ax_formula,0,1),ug(deep43,2,3)]\n        initial=state_from(seeds); log=new_log(); e=make_stageC_engine(initial,log,(0,2))\n        before=snapshot(e); decision=e.decision(); after=snapshot(e)\n        need(decision=={'kind':'DEAD','row':2}\n             and cert(after,0)['status']=='SINGLETON' and cert(after,0)['complete_cover_checked'] is True\n             and cert(after,2)['status']=='ZERO' and cert(after,2)['complete_cover_checked'] is True\n             and canonical(before['state'])==canonical(after['state']),\n             'C2 real later complete ZERO outranks earlier complete SINGLETON with no placement')\n        families['DEAD_BEFORE_SINGLETON']={'seeds':seeds,'initial_state':initial,'before':before,\n            'actual_decision':decision,'after':after,'actual_log':log}\n        passed('C2-later-complete-ZERO-before-earlier-complete-SINGLETON',family='DEAD')\n\n    def natural_unknown():\n        deep42=['bot']\n        for unused in range(41):deep42=['not',deep42]\n        need(language.formula(deep42)==42,'fresh deep42 constructor size')\n        carrier=list(modules['proposer'].iter_bounded_formulas(language=language,maximum_nodes=1,tick=tick))\n        need(carrier==[['bot']],'WHOLE original size1 formula carrier exactly bot')\n        seeds=[ug(ax_formula,1,4),ug(deep42,3,5)]; initial=state_from(seeds)\n        # This fresh diagnostic check preserves the full UNKNOWN wrapper; the\n        # engine later replaces unresolved fallback cache with its minimal status.\n        # It never supplies the engine decision or certifier authority.\n        initial_partial=checked_query(initial,3)\n        p,r=initial_partial['proposal'],initial_partial['receipt']\n        original=p['original_proposal']\n        reads=[[3+d for d in c['placement_key']['type_preimage']['ordered_offsets']]\n               for c in original['candidates']]\n        need(original['kind']=='TWO_LEGAL_WITNESSES' and original['complete_cover_proposed'] is False\n             and reads==[[0,2],[2,0]] and len(p['candidates'])==1 and len(p['marked_rejections'])==1\n             and r['original_base_receipt']['complete_cover_checked'] is False\n             and r['status']=='UNKNOWN' and r['complete_cover_checked'] is False\n             and r['degree_exact'] is None and r['sole_candidate'] is None,\n             'genuine partial original2-to-marked1 remains freshly checked UNKNOWN')\n        log=new_log(); e=make_stageC_engine(initial,log,(1,3)); before=snapshot(e); token=e.checkpoint()\n        try:\n            decision=e.decision(); after=snapshot(e)\n            need(decision['kind']=='UNKNOWN' and 3 in decision['unresolved_rows']\n                 and cert(after,1)['status']=='SINGLETON' and cert(after,1)['complete_cover_checked'] is True\n                 and cert(after,3)=={'status':'UNKNOWN'}\n                 and canonical(before['state'])==canonical(after['state']),\n                 'actual normal unaccepted short EOF UNKNOWN blocks genuine complete SINGLETON1')\n            originals=[x for x in log['original_cursors'] if x['context']['row']==3]\n            marked=[x for x in log['marked_cursors'] if x['context']['row']==3]\n            certifications=[x for x in log['certifications'] if x['row']==3]\n            need(len(originals)==len(marked)==len(certifications)==1\n                 and [x['kind'] for x in originals[0]['events']]==['CANDIDATE','CANDIDATE','EOF']\n                 and [x['kind'] for x in marked[0]['events']]==['CANDIDATE','EOF']\n                 and originals[0]['events'][-1]['completion']['yielded_candidates']==2\n                 and marked[0]['events'][-1]['completion']['yielded_candidates']==1\n                 and len(certifications[0]['checked_candidates'])==1\n                 and certifications[0]['receipt'] is None,\n                 'real ordered original2/marked1 streams and normal fresh cover returns None')\n            same_state_queries=[x for x in log['queries'] if x['row']==3 and x['state_sha256']==sha(initial)]\n            need(len(same_state_queries)==2\n                 and all(x['proposal']['original_proposal']['complete_cover_proposed'] is False\n                         and len(x['proposal']['candidates'])==1 for x in same_state_queries),\n                 'normal engine query and SAME normal fresh-cover query both incomplete, no suppression')\n            data={'size1_carrier':carrier,'seeds':seeds,'initial_state':initial,\n                'fresh_initial_partial':initial_partial,'before':before,'actual_decision':decision,\n                'after_decision':after,'actual_log':log}\n        finally:\n            e.rollback(token)\n        data['restored']=snapshot(e)\n        need(canonical(data['restored'])==canonical(before),'natural UNKNOWN full owned restore')\n        families['NATURAL_UNKNOWN']=data\n        passed('C4-natural-partial-filter-real-EOF-UNKNOWN-blocks-FORCED',family='NATURAL_UNKNOWN')\n\n    def main_seed_batch(d):\n        # Constructor-local only. Its parser budget is CUMULATIVE over all five\n        # seeds; it is never reset/reused by state_from, search or coverage.\n        fixture_language=fresh_language()\n        def seed_tile(witness, premises, reads, row):\n            pre = {'input_epoch':ORIGINAL_BINDING['language_epoch'],'primitive_witness':copy.deepcopy(witness),\n                'ordered_premise_formulas':copy.deepcopy(premises),'ordered_offsets':[k-row for k in reads]}\n            return semantics.rebuild_tile(fixture_language,pre,[0,row],tick)\n        def seed_ax(row):\n            return seed_tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],row)\n        def seed_ug(body, source, row):\n            return seed_tile({'rule':'generalize','variable':variable,'formula':['all',variable,copy.deepcopy(body)]},\n                        [body],[source],row)\n        try:\n            return [seed_ax(0),seed_ax(4),seed_ug(ax_formula,1,2),seed_ug(d,3,6),seed_ug(ax_formula,5,8)]\n        finally:\n            # Neither the language nor its nested constructor closures escape;\n            # only original bare JSON tile packets reach independent rebuilding.\n            del fixture_language\n\n    def forced_transfer_child():\n        d=['all',variable,copy.deepcopy(ax_formula)]\n        seeds=main_seed_batch(d)\n        initial=state_from(seeds); log=new_log()\n        e=make_stageC_engine(initial,log,(1,3,5),interrupt_after=len(seeds)+2)\n        before=snapshot(e); first=e.decision(); checked=snapshot(e)\n        need(first['kind']=='FORCED' and first['row']==1\n             and cert(checked,1)['status']=='SINGLETON' and cert(checked,1)['complete_cover_checked'] is True\n             and cert(checked,3)['status']=='MANY' and cert(checked,3)['degree_exact']==2\n             and cert(checked,3)['complete_cover_checked'] is True\n             and cert(checked,5)['status']=='SINGLETON' and cert(checked,5)['complete_cover_checked'] is True\n             and all(v['status']!='UNKNOWN' for row,v in checked['certificates']),\n             'actual all-frontier resolved, complete FORCED1 before earlier/later branches')\n        originals={row:copy.deepcopy(cert(checked,row)) for row in (1,3,5)}\n        initial_cursor=[e.next_alternative(3),e.next_alternative(3),e.next_alternative(3)]\n        need([x['kind'] for x in initial_cursor]==['CANDIDATE','CANDIDATE','EOF'],\n             'actual original-order complete two-UG cursor and genuine EOF at3')\n        populated=snapshot(e); old_slot=copy.deepcopy(slot(populated,3)); outer=e.checkpoint()\n        data={'seeds':seeds,'initial_state':initial,'before':before,'first_actual_decision':first,\n            'checked_snapshot':checked,'original_marked_receipts':originals,\n            'initial_cursor_events':initial_cursor,'populated_before':populated,'original_slot':old_slot}\n        passed('C5-genuine-all-frontier-FORCED-before-BRANCH',family='MAIN')\n        try:\n            e.place(first['candidate']); after1=snapshot(e)\n            many1=full_transfer(populated,after1,3,originals[3])\n            single1=full_transfer(populated,after1,5,originals[5])\n            need(many1['status']=='MANY' and many1['degree_exact']==2\n                 and single1['status']=='SINGLETON' and single1['degree_exact']==1,\n                 'both complete MANY and SINGLETON classifications transferred intact')\n            retained1=slot(after1,3)\n            need(all(canonical(core(a))==canonical(core(b)) for a,b in zip(old_slot['candidates'],retained1['candidates']))\n                 and all(o['occupied'] is True for c in retained1['candidates'] for o in c['read_obligations'])\n                 and len(archived(retained1,old_slot))==1,\n                 'full current q3 packets refresh pending source1 occupancy and preserve original full archive')\n            second=e.decision(); before5=snapshot(e)\n            need(second['kind']=='FORCED' and second['row']==5\n                 and canonical(cert(before5,3))==canonical(many1)\n                 and canonical(cert(before5,5))==canonical(single1),\n                 'cached complete SINGLETON5 outranks earlier complete MANY3')\n            e.place(second['candidate']); after5=snapshot(e)\n            many2=full_transfer(before5,after5,3,originals[3])\n            need(5 not in dict(after5['certificates'])\n                 and many2['status']=='MANY' and many2['degree_exact']==2\n                 and len(many2['transfer_chain'])==2\n                 and len(slot(after5,3)['context_archive'])==1\n                 and len(archived(slot(after5,3),old_slot))==1,\n                 'second complete transfer preserves original receipt/EOF archive without relabel')\n            branch=e.decision(); search_before=snapshot(e)\n            need(branch=={'kind':'BRANCH','row':3}\n                 and all(v['status'] in ('MANY','TWO_OR_MORE') for row,v in search_before['certificates'])\n                 and len(search_before['state']['selected'])==len(seeds)+2,\n                 'actual global reference ROW branch3 only after both real forced fills')\n            data.update(first_forced_candidate=first['candidate'],after_first_placement=after1,\n                first_MANY_transfer=many1,first_SINGLETON_transfer=single1,\n                second_actual_decision=second,before_second_placement=before5,\n                second_forced_candidate=second['candidate'],after_second_placement=after5,\n                second_MANY_transfer=many2,actual_branch_decision=branch,search_before=search_before)\n            passed('C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH',family='MAIN')\n            result=e.search(); restored=snapshot(e)\n            interrupted=log['interruptions']\n            tries=[x for x in result['events'] if x['kind']=='TRY']\n            need(result['status']=='UNKNOWN' and result['reason']=='StageC native-first actual-child degree interruption'\n                 and result['found'] is None and result['root_restored'] is True and result['stack_restored'] is True\n                 and len(interrupted)==1 and interrupted[0]['selected_count']>len(search_before['state']['selected'])\n                 and type(interrupted[0]['native_ns']) is int\n                 and EARLY_G<=interrupted[0]['native_ns']<end\n                 and tries and any(x['kind']=='PLACE' and x['event']>tries[0]['event'] for x in result['events'])\n                 and not any(x['kind']=='EXCLUDE' for x in result['events'])\n                 and canonical(result['last_observed_state'])==canonical(interrupted[0]['state'])\n                 and result['root_snapshot_sha256']==sha(search_before)\n                 and result['final_snapshot_sha256']==sha(restored)\n                 and canonical(restored)==canonical(search_before)\n                 and restored['state']['excluded']==[],\n                 'actual child callback interruption yields UNKNOWN/no exclusion and exact populated root/stack restore')\n            data.update(controlled_search_result=result,search_restored=restored,\n                actual_interruption=copy.deepcopy(interrupted[0]))\n            passed('C7-actual-child-native-first-UNKNOWN-full-restoration',family='MAIN',\n                scope='CONTROL-ONLY interruption of actual engine child work; not target discovery/exhaustion/trajectory acceptance.')\n        finally:\n            e.rollback(outer)\n        data['outer_after']=snapshot(e)\n        need(canonical(data['outer_after'])==canonical(populated),'normal same-engine populated outer restoration')\n        data['actual_log']=log; families['FORCED_TRANSFER_CHILD']=data\n\n    def nonlogical_scheduler():\n        observations={}\n        priorities={0:{'status':'UNKNOWN'},1:{'status':'SINGLETON'},9:{'status':'ZERO'}}\n        zero=engine.select_schedule(evidence=copy.deepcopy(priorities),generations={0:0,1:0,9:9},tick=tick)\n        unresolved=engine.select_schedule(evidence={0:{'status':'UNKNOWN'},1:{'status':'SINGLETON'}},\n            generations={0:0,1:0},tick=tick)\n        forced=engine.select_schedule(evidence={0:{'status':'MANY','degree_exact':2},7:{'status':'SINGLETON'}},\n            generations={0:0,7:9},tick=tick)\n        need(zero=={'kind':'DEAD','row':9} and unresolved=={'kind':'UNKNOWN','row':None,'unresolved_rows':[0]}\n             and forced=={'kind':'FORCED','row':7},'NONLOGICAL exact global ZERO/UNKNOWN/FORCED priority')\n        observations['priority']={\n            'ZERO_input':{'evidence':priorities,'generations':[[0,0],[1,0],[9,9]]},\n            'UNKNOWN_input':{'evidence':{0:{'status':'UNKNOWN'},1:{'status':'SINGLETON'}},'generations':[[0,0],[1,0]]},\n            'FORCED_input':{'evidence':{0:{'status':'MANY','degree_exact':2},7:{'status':'SINGLETON'}},'generations':[[0,0],[7,9]]},\n            'ZERO_result':zero,'UNKNOWN_result':unresolved,'FORCED_result':forced}\n        passed('C8-NONLOGICAL-kernel-global-priority',scope='Synthetic status dictionaries, not logical receipts or production state.')\n        evidence={0:{'status':'MANY','degree_exact':10},2:{'status':'MANY','degree_exact':2}}\n        earlier=engine.select_schedule(evidence=copy.deepcopy(evidence),generations={0:0,2:1},tick=tick,\n            branch_tie='ASSIGNED-OUTPUT-THEN-ROW',assigned_output_rows=[2])\n        row=engine.select_schedule(evidence=copy.deepcopy(evidence),generations={0:0,2:0},tick=tick,\n            branch_tie='ROW',assigned_output_rows=[2])\n        marked=engine.select_schedule(evidence=copy.deepcopy(evidence),generations={0:0,2:0},tick=tick,\n            branch_tie='ASSIGNED-OUTPUT-THEN-ROW',assigned_output_rows=[2])\n        need(earlier==row=={'kind':'BRANCH','row':0} and marked=={'kind':'BRANCH','row':2},\n             'NONLOGICAL earliest generation before degree/marks, exact ROW and named MARK ties')\n        observations['generation_and_ties']={'evidence':evidence,'earlier_generations':[[0,0],[2,1]],\n            'tied_generations':[[0,0],[2,0]],'assigned_output_rows':[2],\n            'earlier_generation_result':earlier,'ROW_result':row,'MARK_result':marked}\n        families['NONLOGICAL_SCHEDULER']=observations\n        passed('C9-NONLOGICAL-kernel-earliest-generation-explicit-ties',scope='Synthetic varied generations only; original24 roots remain0.')\n"
+    },
+    {
+      "new_end": 61139,
+      "new_start": 60226,
+      "new_utf8": "    suffix = plan['purpose'].removeprefix('unit-row-marked-aware-calibration-')\n    if suffix == 'negative-protocol': call(negative_protocol)\n    else: call(positive,(suffix,))\n    expected_controls = CALIBRATION_CASES_BY_PURPOSE[plan['purpose']]\n    need([c['case'] for c in controls] == expected_controls\n         and len(controls) == len(expected_controls) and all(c['status'] == 'PASSED' for c in controls),\n         'every essential local calibration assertion completed, without SKIP/substitution')\n    calibration = {'schema':'ROOT-unit-row-marked-aware-calibration-payload-v1',\n        'stage':'LOCAL_NEW_MARKED_AWARE_NONIMP_DEGREE_ONLY','endpoint_purpose':plan['purpose'],\n        'separate_endpoint_count':4,'whole_calibration_qualification_accepted':False,\n        'same_process_all_six_qualified':False,\n        'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('stageB_')},\n",
+      "old_end": 74189,
+      "old_start": 73373,
+      "old_utf8": "    call(forced_transfer_child)\n    expected_controls=STAGEC_CASES_BY_PURPOSE[plan['purpose']]\n    need([c['case'] for c in controls]==expected_controls\n         and len(controls)==len(expected_controls) and all(c['status']=='PASSED' for c in controls),\n         'every essential assertion in this endpoint completed without SKIP/substitution')\n    stageC={'schema':'ROOT-unit-row-channel4-stageC-batched-main-payload-v1','stage':'BATCHED_MAIN_SEEDS_FORCED_TRANSFER_CHILD_ONLY',\n        'endpoint_purpose':plan['purpose'],'current_main_only':True,'essential_case_count':3,\n        'original_v1_four_endpoint_suite_qualified':False,'same_controller_all_nine_qualified':False,\n        'whole_StageC_qualification_accepted':False,'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('stageB_')},\n"
+    },
+    {
+      "new_end": 62022,
+      "new_start": 61439,
+      "new_utf8": "        'target_search_performed':False,'engine_or_fallback_queried':False,\n        'old_degree_proposal_or_receipt_replayed':False,'new_receipt_engine_compatibility_claimed':False,\n        'failure_marking_activated':False,'logical_proof_accepted':False,'exact_point_board_accepted':False,\n        'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,'RL_accepted':False,\n        'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}\n    result_raw = canonical({'schema':'ROOT-unit-row-marked-aware-calibration-result-v1','purpose':plan['purpose'],\n",
+      "old_end": 74961,
+      "old_start": 74489,
+      "old_utf8": "        'target_search_performed':False,'failure_marking_activated':False,\n        'controlled_child_search_performed':True,\n        'logical_proof_accepted':False,'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n        'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}\n    result_raw = canonical({'schema':'ROOT-unit-row-global-engine-result-v1','purpose':plan['purpose'],\n"
+    },
+    {
+      "new_end": 62219,
+      "new_start": 62117,
+      "new_utf8": "        'controls':None,'search':None,'found_validation':None,'marked_aware_calibration':calibration,\n",
+      "old_end": 75144,
+      "old_start": 75056,
+      "old_utf8": "        'controls':None,'search':None,'found_validation':None,'channel4_stageC':stageC,\n"
+    },
+    {
+      "new_end": 62767,
+      "new_start": 62671,
+      "new_utf8": "    body={'schema':'ROOT-unit-row-marked-aware-calibration-response-body-v1','version':VERSION,\n",
+      "old_end": 75681,
+      "old_start": 75596,
+      "old_utf8": "    body={'schema':'ROOT-unit-row-global-engine-response-body-v1','version':VERSION,\n"
+    },
+    {
+      "new_end": 63975,
+      "new_start": 63878,
+      "new_utf8": "    final_raw=canonical({'schema':'ROOT-unit-row-marked-aware-calibration-final-observation-v1',\n",
+      "old_end": 76878,
+      "old_start": 76792,
+      "old_utf8": "    final_raw=canonical({'schema':'ROOT-unit-row-global-engine-final-observation-v1',\n"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "native_final_boundary_exit_and_top_failure_suffix_raw_exact": true,
+  "parent": {
+    "bytes": 77932,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/channel4_stageC_batched_main_cold_v1.py",
+    "sha256": "404f81265bd2c25cee9609d6602eeef20d074c3bdfa88302cb20cff50f1f5623"
+  },
+  "patches": [
+    {
+      "bytes": 52472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/parent-to-calibration-forward.patch",
+      "sha256": "d21f8bd2f3816ee84635fdcfee6e493784c82cfa1696590d5766cd072f130467"
+    },
+    {
+      "bytes": 52472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/calibration-to-parent-full-inverse.patch",
+      "sha256": "cb5ba9a2853adde25ebd456fefb6b757c23c0e2f1ac78f419e45a7f2df7c8a7d"
+    }
+  ],
+  "removed_named_regions": [
+    "main.ax",
+    "main.cert",
+    "main.checked_query",
+    "main.dead_and_zero_transfer",
+    "main.forced_transfer_child",
+    "main.full_transfer",
+    "main.main_seed_batch",
+    "main.main_seed_batch.seed_ax",
+    "main.main_seed_batch.seed_tile",
+    "main.main_seed_batch.seed_ug",
+    "main.make_stageC_engine",
+    "main.make_stageC_engine.certifier",
+    "main.make_stageC_engine.filtered",
+    "main.make_stageC_engine.original",
+    "main.make_stageC_engine.proposer",
+    "main.natural_unknown",
+    "main.new_log",
+    "main.nonlogical_scheduler",
+    "main.sha"
+  ],
+  "schema": "unit-row-marked-aware-calibration-cold-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 65029,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/marked_aware_calibration_cold_v1.py",
+    "sha256": "5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817"
+  },
+  "whole_classes_raw_AST_exact": [
+    "ObservedCursor",
+    "ChildControlInterruption"
+  ]
+}

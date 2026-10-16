@@ -1,0 +1,42 @@
+{
+  "Root_disposition_written": false,
+  "actual_output_decode": false,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored new proposer4316, old membership/c960/fallback/decorator and coordinated the proposal wire; reviewer independently Source-reviewed checker8f7a and caller5780. Reviewer did not author either saved helper or independent checker/marked verifier/engine/adapter. This review concerns raw-data closure Source and literal concordance, not independent scientific replay or proof/trajectory/performance qualification.",
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_CONCRETE_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 22412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "3910e388c1e4d10ebcbd7138210060470c02e9db7cbcff6d0c704c60343b6368"
+  },
+  "helper_execution": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-marked-aware-calibration-saved-helpers-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-marked-aware-calibration-saved-helpers-Source",
+  "source": {
+    "bytes": 33468,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+    "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+  },
+  "source_contract": {
+    "bytes": 21832,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "110a18805d04695fa1ee26981e797db80eb856ede64e7f9c6cda6378a578c5d3"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 33468,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+      "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+    },
+    "decoder": {
+      "bytes": 5893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_decode_marked_aware_calibration_saved_v1.py",
+      "sha256": "6abb2e1a3e9b584059b6b7bff61cedd9073e2344d7d54563f64ed634936d2952"
+    }
+  }
+}

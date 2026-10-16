@@ -1,0 +1,29 @@
+{
+  "schema": "ROOT-marked-aware-same-state-improvement-v1",
+  "old_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-natural-unknown-expanded-result-v1.json",
+    "sha256": "f7f8a7a0c8577ecdbf76e44ea2c12481ed074c4a4eaf2c432ddfda8f8b1d6ad9",
+    "bytes": 1028366
+  },
+  "new_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-singleton-expanded-result-v1.json",
+    "sha256": "2b572f7acffad33f78bce190b9ebaf9a688ba8f2de5946b2c41978b51f0c3381",
+    "bytes": 281471
+  },
+  "full_original_and_marked_initial_state_equal": true,
+  "full_old_survivor_and_new_sole_packet_equal": true,
+  "old_status": "UNKNOWN",
+  "old_complete_cover_checked": false,
+  "new_status": "SINGLETON",
+  "new_complete_cover_checked": true,
+  "new_degree_exact": 1,
+  "new_checked_UG_fibres": 3,
+  "new_checked_ordered_MP_fibres": 9,
+  "new_native_launch_to_postprobe_seconds": 0.704777,
+  "comparison_scope": "Exact same saved conditional point state and full surviving candidate; new independent cover closes old completeness gap. Old run also executed global scheduling/cursors/rollback, so timings are not a matched speedup comparison.",
+  "engine_integration_qualified": false,
+  "new_target_proof": false,
+  "GCTS_speedup_claimed": false,
+  "RL_accepted": false,
+  "scientific_replay": false
+}

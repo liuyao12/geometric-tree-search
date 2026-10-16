@@ -1,0 +1,40 @@
+{
+  "schema": "unit-row-marked-aware-calibration-reader-data-contract-v1",
+  "purpose": "Root normalizes saved literal evidence after all actual endpoints close. This contract supplies no outcomes or sample candidates.",
+  "data_filename": "report-data.json",
+  "top_level": {
+    "lead": "String; human report lead, LaTeX supported by MathJax.",
+    "outcome": "String; actual qualified scope and unresolved outcomes, with no assumed pass count.",
+    "runs": "Ordered list of separately measured endpoint objects. Empty is allowed.",
+    "links": "List of {label,href} evidence/review links. Relative HTTP-hosted paths or https URLs."
+  },
+  "run_fields": {
+    "id": "Stable literal identifier.",
+    "label": "Human endpoint label.",
+    "qualified": "Exact boolean or null. Only true displays endpoint qualification.",
+    "seconds": "Finite numeric native launch-through-postprobe seconds, or null. Never a per-method or combined endpoint timing.",
+    "status": "Actual endpoint status string, including UNKNOWN/failure where applicable.",
+    "cases": "List of {name,status}. Empty when no case record returned; do not convert expected cases into observed passes/skips. Optional state/proposal/receipt/record/links fields may supply a particular case's own evidence.",
+    "state": "Flat saved original8 or marked9 point-state object, or null. No engine or model reconstruction is performed by the reader.",
+    "proposal": "Whole selected actual proposer record or null. Its fibre_cover is labeled untrusted unless a checked census is present.",
+    "receipt": "Whole selected actual independent checker receipt or null. New schema unit-row-marked-aware-nonimp-fibre-check-v1 provides checked_candidates, checked_fibre_cover and full current state. Do not synthesize these fields from an untrusted proposal.",
+    "record": "Whole saved record or bounded explanatory metadata, or null; shown as literal JSON.",
+    "links": "List of {label,href} linking exact actual evidence, disposition, Source and reviews."
+  },
+  "rendering_rules": [
+    "Candidate portraits and point tables use only receipt.checked_candidates. No fallback to proposal.candidates, reconstructed tiles, expected witnesses or static fixtures.",
+    "All formula ASTs are rendered as LaTeX with MathJax. Literal consecutive not nodes are accurately compressed as a counted sequence of negations; C42 is41 negations of bot, not the target theorem.",
+    "Colored dots come only from actual global_m_values; squares come only from global_t_values. The compact table is symbolic coordinate data, not physical tile geometry. No rotations/reflections or matching runs.",
+    "Read obligations preserve the actual ordered list, row/formula/occupied/fact_accepted fields. Pending unoccupied requirements are never labeled proven facts.",
+    "Receipt completeness and exact degree are displayed separately. Null degree is not zero; TWO_OR_MORE is a lower bound and alternatives are not a compatible cluster.",
+    "If a selected case has summary fields only, the page explicitly labels displayed data as endpoint primary evidence, not that case's own receipt.",
+    "Missing or failed endpoints render without invented cases, candidate packets, degree or qualification. If qualified is not true, evidence remains explicitly unqualified.",
+    "No full-language count, scientific acceptance or performance conclusion is inferred. The key-list length is displayed only as the length of that saved array. Displaying a saved receipt does not run its checker."
+  ],
+  "assets": ["reader.html", "reader.css", "reader.js"],
+  "deployment": "Root integrates actual data, performs visual/data QA, packages and publishes to existing marked-domains/ destination. Author writes only this task-owned Source folder.",
+  "authoring_validation": "Raw file/C0 inspection and JavaScript syntax check only. No model imports/functions, actual-data rendering tests, scientific calls or clocks.",
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_outcomes_assumed": false
+}

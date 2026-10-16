@@ -1,0 +1,89 @@
+{
+  "all6essential": true,
+  "endpoints": [
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/MA-zero-external-v1",
+      "mode": "zero",
+      "ordered_cases": [
+        "MA-01-complete-marked-ZERO"
+      ],
+      "plan": {
+        "bytes": 8635,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-zero-plan-v1.json",
+        "sha256": "d647c812d894167b1d2c12e752aa4d924270d44ecdda3a8f57bf2103e5a82003"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/MA-singleton-external-v1",
+      "mode": "singleton",
+      "ordered_cases": [
+        "MA-02-complete-marked-SINGLETON"
+      ],
+      "plan": {
+        "bytes": 8655,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-singleton-plan-v1.json",
+        "sha256": "1ee0da613f643bbd4f338f5892344fd1c3e57bf8692d0b6c75ad101a8a274e4c"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/MA-two-external-v1",
+      "mode": "two",
+      "ordered_cases": [
+        "MA-03-two-marked-witnesses-lower-bound-only"
+      ],
+      "plan": {
+        "bytes": 8631,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-two-plan-v1.json",
+        "sha256": "70c657f3a30031bc1872bcf56240c98bd462943ae3c1640ed81011485dfbaefe"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/MA-negative-protocol-external-v1",
+      "mode": "negative-protocol",
+      "ordered_cases": [
+        "MA-04-wrong-original-binding-provenance-rejected",
+        "MA-05-omitted-ordered-MP-fibre-rejected",
+        "MA-06-inconsistent-completion-flag-rejected"
+      ],
+      "plan": {
+        "bytes": 8687,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-negative-protocol-plan-v1.json",
+        "sha256": "3d6798b24237e00e8c35b67c1244e3fe6bfa86ece902b28624e0bf92ed030475"
+      }
+    }
+  ],
+  "new_module_reviews": {
+    "checker": {
+      "ROOT": {
+        "bytes": 4110,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-checker-Source-review-v1.json",
+        "sha256": "996d21b4a66e00822048bc61b5813f23a90422c5994dd7c00b37af7e064a98f7"
+      },
+      "peer": {
+        "bytes": 3928,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-independent-source-20261016/typed-Source-review-v1.json",
+        "sha256": "c760138370edc5ffc1c8bbb441940a84e6c19a5b7c337da81059955882182bf6"
+      }
+    },
+    "proposer": {
+      "ROOT": {
+        "bytes": 4719,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-proposer-Source-review-v1.json",
+        "sha256": "5cf72e44e391ae7d04e57b99dfc6ee8249d07d89edfaa2c9feb5bf001c935145"
+      },
+      "peer": {
+        "bytes": 4607,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-independent-source-20261016/typed-Source-review-v1.json",
+        "sha256": "a57d8148de431900f571ec1f9589414baed94cb902905d2d9b7fcef247ba476a"
+      }
+    }
+  },
+  "no_combined20_claim": true,
+  "protocol_choice": {
+    "bytes": 2661,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-calibration-choice-v1.json",
+    "sha256": "3bcef5ab2f0dd4e472dcf5e8a1955d47ddd62260a0d8dcef98c410b3f690cf8d"
+  },
+  "schema": "ROOT-marked-aware-calibration-preflight-v1",
+  "scientific_calls": 0
+}

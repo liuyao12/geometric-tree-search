@@ -1,0 +1,448 @@
+{
+  "helpers": {
+    "closer": {
+      "actual_unified_forward_inverse_verified": true,
+      "edit_count": 40,
+      "edits": [
+        {
+          "new_end": 158,
+          "new_start": 0,
+          "new_utf8": "\"\"\"Saved local calibration concordance only; no scientific evaluation or replay.\nFour distinct original20 windows, no combined20/engine/target qualification.\n",
+          "old_end": 151,
+          "old_start": 0,
+          "old_utf8": "\"\"\"Dedicated batched MAIN C5-C7 saved concordance only; no all9 aggregation.\nNo degree, model or logical replay; original v1 suite remains incomplete.\n"
+        },
+        {
+          "new_end": 1503,
+          "new_start": 651,
+          "new_utf8": "EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd5a0467432caaf18cba837b1bd72c83eeefd80c2763b64641786af34b26fb773', 'bytes': 27670}\nMODE_PURPOSE={'negative-protocol': 'unit-row-marked-aware-calibration-negative-protocol', 'singleton': 'unit-row-marked-aware-calibration-singleton', 'two': 'unit-row-marked-aware-calibration-two', 'zero': 'unit-row-marked-aware-calibration-zero'}\nEXPECTED_CASES={'negative-protocol': ['MA-04-wrong-original-binding-provenance-rejected', 'MA-05-omitted-ordered-MP-fibre-rejected', 'MA-06-inconsistent-completion-flag-rejected'], 'singleton': ['MA-02-complete-marked-SINGLETON'], 'two': ['MA-03-two-marked-witnesses-lower-bound-only'], 'zero': ['MA-01-complete-marked-ZERO']}\n",
+          "old_end": 1214,
+          "old_start": 644,
+          "old_utf8": "EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/Source-contract-v1.json', 'sha256': 'a433608ca59165c5d470513098fb383ebd4b8408d55a0dc98fa222f6fb45c257', 'bytes': 26891}\nMODE_PURPOSE={'stageC-batched-main': 'unit-row-channel4-stageC-batched-main-controls'}\nEXPECTED_CASES={'stageC-batched-main': ['C5-genuine-all-frontier-FORCED-before-BRANCH', 'C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH', 'C7-actual-child-native-first-UNKNOWN-full-restoration']}\n"
+        },
+        {
+          "new_end": 2045,
+          "new_start": 1938,
+          "new_utf8": "    assert plan['schema']=='ROOT-marked-aware-calibration-plan-v1' and plan['purpose']==MODE_PURPOSE[mode]\n",
+          "old_end": 1760,
+          "old_start": 1649,
+          "old_utf8": "    assert plan['schema']=='ROOT-channel4-stageC-batched-main-plan-v1' and plan['purpose']==MODE_PURPOSE[mode]\n"
+        },
+        {
+          "new_end": 2560,
+          "new_start": 2339,
+          "new_utf8": "    assert len(plan['sources'])==13 and len(plan['inputs'])==8\n    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817'\n",
+          "old_end": 2275,
+          "old_start": 2054,
+          "old_utf8": "    assert len(plan['sources'])==11 and len(plan['inputs'])==8\n    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='404f81265bd2c25cee9609d6602eeef20d074c3bdfa88302cb20cff50f1f5623'\n"
+        },
+        {
+          "new_end": 3050,
+          "new_start": 2920,
+          "new_utf8": "        assert v['scope']=='unit-row-marked-aware-calibration-cold-Source' and v['author_identity']=='/root/arithmetic_induction'\n",
+          "old_end": 2769,
+          "old_start": 2635,
+          "old_utf8": "        assert v['scope']=='unit-row-channel4-stageC-batched-main-cold-Source' and v['author_identity']=='/root/arithmetic_induction'\n"
+        },
+        {
+          "new_end": 3708,
+          "new_start": 3545,
+          "new_utf8": "    assert grant['schema']=='ROOT-marked-aware-calibration-authorization-v1' and grant['author_identity']=='/root' and grant['actual_execution_authorized']is True\n",
+          "old_end": 3431,
+          "old_start": 3264,
+          "old_utf8": "    assert grant['schema']=='ROOT-channel4-stageC-batched-main-authorization-v1' and grant['author_identity']=='/root' and grant['actual_execution_authorized']is True\n"
+        },
+        {
+          "new_end": 4309,
+          "new_start": 4021,
+          "new_utf8": "    # Nonzero/no returned record is administrative closure, never a case result.\n    plan_path=HERE/('ROOT-MA-'+mode+'-plan-v1.json');plan=read(plan_path);pp=pin(plan_path)\n    contract=auth_plan(plan,pp,mode);owned=HERE/('MA-'+mode+'-owned-v1');external=HERE/('MA-'+mode+'-external-v1')\n",
+          "old_end": 4140,
+          "old_start": 3744,
+          "old_utf8": "    # No decoding or interpretation of any returned science. This endpoint has\n    # an exact native TimeoutError and no complete owned result/response.\n    assert mode=='stageC-batched-main'\n    plan_path=HERE/'ROOT-batched-main-plan-v1.json';plan=read(plan_path);pp=pin(plan_path)\n    contract=auth_plan(plan,pp,mode);owned=HERE/'batched-main-owned-v1';external=HERE/'batched-main-external-v1'\n"
+        },
+        {
+          "new_end": 4449,
+          "new_start": 4358,
+          "new_utf8": "    bracket_path=HERE/('ROOT-MA-'+mode+'-tool-bracket-v1.json');bracket=read(bracket_path)\n",
+          "old_end": 4277,
+          "old_start": 4189,
+          "old_utf8": "    bracket_path=HERE/('ROOT-'+mode+'-tool-bracket-v1.json');bracket=read(bracket_path)\n"
+        },
+        {
+          "new_end": 4659,
+          "new_start": 4536,
+          "new_utf8": "    assert type(bracket['tool_exit_code'])is int and 0<bracket['tool_exit_code']<256 and bracket['tool_session_id']is None\n",
+          "old_end": 4442,
+          "old_start": 4364,
+          "old_utf8": "    assert bracket['tool_exit_code']==2 and bracket['tool_session_id']is None\n"
+        },
+        {
+          "new_end": 5388,
+          "new_start": 5124,
+          "new_utf8": "    code=native['caller_returncode']\n    assert type(code)is int and 0<code<256 and code==bracket['tool_exit_code']==observation['meter_returncode']\n    assert observation['probe_returncode']==0 and native['wait4_status']==code*256 and native['all_reaped']is True\n",
+          "old_end": 5098,
+          "old_start": 4907,
+          "old_utf8": "    assert observation['meter_returncode']==2 and observation['probe_returncode']==0\n    assert native['caller_returncode']==2 and native['wait4_status']==512 and native['all_reaped']is True\n"
+        },
+        {
+          "new_end": 5947,
+          "new_start": 5831,
+          "new_utf8": "    assert start<terminal<=probe and terminal-start==native['caller_kernel_elapsed_ns'] and probe-start<55000000000\n",
+          "old_end": 5693,
+          "old_start": 5541,
+          "old_utf8": "    assert start<terminal<=probe and terminal-start==native['caller_kernel_elapsed_ns']\n    assert 20000000000<=terminal-start<=probe-start<55000000000\n"
+        },
+        {
+          "new_end": 6184,
+          "new_start": 6184,
+          "new_utf8": "",
+          "old_end": 6065,
+          "old_start": 5930,
+          "old_utf8": "    assert stderr==b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\\n'\n"
+        },
+        {
+          "new_end": 6749,
+          "new_start": 6255,
+          "new_utf8": "    deadline=(stderr==b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\\n'\n              and terminal-start>=20000000000)\n    raw_outputs=[]\n    if owned.exists():\n        assert owned.is_dir() and all(p.is_file() and p.name in('engine-result.json','response.jsonl')for p in owned.iterdir())\n        raw_outputs=[pin(p)for p in sorted(owned.iterdir())]\n    # Do not decode even an extant partial owned file in this failure branch.\n",
+          "old_end": 6230,
+          "old_start": 6136,
+          "old_utf8": "    assert not owned.exists()  # Exact present actual; absence means NO observed case counts.\n"
+        },
+        {
+          "new_end": 7112,
+          "new_start": 6993,
+          "new_utf8": "    disposition=dict(schema='ROOT-marked-aware-calibration-endpoint-disposition-v1',mode=mode,purpose=plan['purpose'],\n",
+          "old_end": 6588,
+          "old_start": 6474,
+          "old_utf8": "    disposition=dict(schema='ROOT-channel4-stageC-batched-main-disposition-v1',mode=mode,purpose=plan['purpose'],\n"
+        },
+        {
+          "new_end": 7349,
+          "new_start": 7251,
+          "new_utf8": "        outputs=raw_outputs,native_evidence=native_refs(external),tool_bracket=pin(bracket_path),\n",
+          "old_end": 6816,
+          "old_start": 6727,
+          "old_utf8": "        outputs=[],native_evidence=native_refs(external),tool_bracket=pin(bracket_path),\n"
+        },
+        {
+          "new_end": 7663,
+          "new_start": 7483,
+          "new_utf8": "        original20_positive_native_gate_failed=True,native_deadline_confirmed=deadline,\n        native_launch_to_postprobe_ns=probe-start,native_worker_lifetime_ns=terminal-start,\n",
+          "old_end": 7086,
+          "old_start": 6950,
+          "old_utf8": "        original20_positive_native_gate_failed=True,native_launch_to_postprobe_ns=probe-start,native_worker_lifetime_ns=terminal-start,\n"
+        },
+        {
+          "new_end": 7887,
+          "new_start": 7744,
+          "new_utf8": "        reported_case_count=None,passed_cases=None,skipped_cases=None,qualified_case_count=0,unqualified_case_count=len(EXPECTED_CASES[mode]),\n",
+          "old_end": 7286,
+          "old_start": 7167,
+          "old_utf8": "        reported_case_count=None,passed_cases=None,skipped_cases=None,qualified_case_count=0,unqualified_case_count=3,\n"
+        },
+        {
+          "new_end": 8113,
+          "new_start": 7981,
+          "new_utf8": "        complete_returned_record=False,owned_output_directory_exists=owned.exists(),whole_calibration_qualification_accepted=False,\n",
+          "old_end": 7619,
+          "old_start": 7380,
+          "old_utf8": "        complete_returned_record=False,owned_output_directory_exists=False,whole_StageC_qualification_accepted=False,\n        same_controller_all_nine_qualified=False,original_v1_four_endpoint_suite_qualified=False,current_main_only=True,\n"
+        },
+        {
+          "new_end": 8671,
+          "new_start": 8211,
+          "new_utf8": "        failure_kind='NATIVE20_DEADLINE_NO_RETURNED_CASE_RECORD'if deadline else'NONZERO_NO_RETURNED_CASE_RECORD',\n        raw_stderr_pin=pin(external/'meter-stderr.txt'),\n        diagnostic_limit='Opaque raw stderr/native administrative closure only; no inferred case progress, counts, degree, membership or semantic success.',\n        reconciliation_scope='No output decode or scientific replay; nonzero administrative failure always0qualified/countsNone.',\n",
+          "old_end": 8167,
+          "old_start": 7717,
+          "old_utf8": "        failure_kind='ORIGINAL_NATIVE20_UNKNOWN_NO_RETURNED_CASE_RECORD',raw_stderr=stderr.decode(),\n        diagnostic_limit='No inference of C5/C6/C7 progress, deliberate-child occurrence, counters, decisions, cache transfer, rollback, trajectory or scientific success.',\n        reconciliation_scope='Administrative whole saved raw native/once/tool/diagnostic closure only; positive20 gate FAILED. No result/model decoding or scientific replay.',\n"
+        },
+        {
+          "new_end": 9164,
+          "new_start": 9110,
+          "new_utf8": "    out=HERE/('ROOT-MA-'+mode+'-disposition-v1.json')\n",
+          "old_end": 8657,
+          "old_start": 8606,
+          "old_utf8": "    out=HERE/('ROOT-'+mode+'-disposition-v1.json')\n"
+        },
+        {
+          "new_end": 13563,
+          "new_start": 9406,
+          "new_utf8": "def aggregate():\n    refs={};records={};ids=[];plans=[];directories=[];qualified=[];unqualified=[]\n    for mode,purpose in MODE_PURPOSE.items():\n        p=HERE/('ROOT-MA-'+mode+'-disposition-v1.json');v=read(p);refs[mode]=pin(p);records[mode]=v\n        assert v['schema']=='ROOT-marked-aware-calibration-endpoint-disposition-v1' and v['mode']==mode and v['purpose']==purpose\n        assert v['actual_closed']is v['all_reaped']is v['native_terminal_closed']is True\n        assert v['whole_calibration_qualification_accepted']is False and v['case_names']==EXPECTED_CASES[mode]\n        assert v['closure_helper']==pin(Path(__file__).resolve())\n        plan=read(check(v['plan']));auth_plan(plan,v['plan'],mode)\n        assert v['sources']==plan['sources'] and v['inputs']==plan['inputs'] and v['source_contract']==plan['source_contract']\n        assert v['invocation_id']==plan['invocation_id'];ids.append(v['invocation_id']);plans.append(v['plan']['sha256']);directories.append(plan['output_directory'])\n        for ref in [*v['native_evidence'].values(),v['tool_bracket'],*v['outputs']]:check(ref)\n        assert v['original_model_binding']==read(check(v['source_contract']))['original_model_binding']\n        if v['endpoint_controls_literal_concordance_accepted']:\n            assert v['native_resources_qualified']is v['complete_wire_verified']is v['complete_returned_record']is True\n            assert v['qualified_case_count']==len(EXPECTED_CASES[mode]) and v['unqualified_case_count']==0\n            assert v['reported_case_count']==v['passed_cases']==len(EXPECTED_CASES[mode]) and v['skipped_cases']==0\n            check(v['lossless_transport_concordance']);check(v['raw_expanded']);qualified.extend(EXPECTED_CASES[mode])\n        else:\n            assert v['native_resources_qualified']is v['complete_wire_verified']is v['complete_returned_record']is False\n            assert v['reported_case_count']is v['passed_cases']is v['skipped_cases']is None\n            assert v['qualified_case_count']==0 and v['unqualified_case_count']==len(EXPECTED_CASES[mode]);unqualified.extend(EXPECTED_CASES[mode])\n        for k in('target_search_performed','failure_marking_activated','logical_proof_accepted','exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','RL_accepted','GCTS_advantage_claimed','scientific_replay','ROOT_resource_accepted'):assert v[k]is False\n    assert len(set(ids))==len(set(plans))==len(set(directories))==4\n    assert len({v['marking_id']for v in records.values()})==1\n    complete=len(qualified)==6 and not unqualified\n    result=dict(schema='ROOT-marked-aware-calibration-disposition-v1',endpoint_dispositions=refs,\n        endpoint_summaries={m:{k:v[k]for k in('purpose','qualified_case_count','unqualified_case_count','native_resources_qualified','complete_wire_verified','native_launch_to_postprobe_ns','aggregate_B_bytes')}for m,v in records.items()},\n        all_four_endpoints_closed=True,separate_endpoint_count=4,required_case_count=6,qualified_case_count=len(qualified),\n        unqualified_case_count=len(unqualified),qualified_cases=qualified,unqualified_cases=unqualified,\n        local_marked_aware_calibration_qualified=complete,combined20_suite_claimed=False,\n        same_process_all_six_qualified=False,engine_integration_qualified=False,\n        marking_id=next(iter(records.values()))['marking_id'],closure_helper=pin(Path(__file__).resolve()),\n        scientific_replay=False,target_search_performed=False,failure_marking_activated=False,logical_proof_accepted=False,\n        exact_point_board_accepted=False,complete_GCTS_model_accepted=False,GCTS_search_trajectory_accepted=False,\n        RL_accepted=False,GCTS_advantage_claimed=False,ROOT_resource_accepted=False)\n    out=HERE/'ROOT-MA-calibration-disposition-v1.json'\n    with out.open('x')as f:json.dump(result,f,indent=2,sort_keys=True);f.write('\\n')\n    print(json.dumps({'disposition':pin(out),'qualified_cases':len(qualified),'local_calibration_qualified':complete,'scientific_replay':False}))\n\n\nassert len(sys.argv)==2 and sys.argv[1]in(*MODE_PURPOSE,'aggregate')\nif sys.argv[1]=='aggregate':aggregate();sys.exit(0)\n",
+          "old_end": 8954,
+          "old_start": 8899,
+          "old_utf8": "assert len(sys.argv)==2 and sys.argv[1]in MODE_PURPOSE\n"
+        },
+        {
+          "new_end": 13670,
+          "new_start": 13580,
+          "new_utf8": "if read(HERE/('MA-'+mode+'-external-v1')/'native-terminal.json')['caller_returncode']!=0:\n",
+          "old_end": 9091,
+          "old_start": 8971,
+          "old_utf8": "if mode=='stageC-batched-main'and read(HERE/'batched-main-external-v1'/'native-terminal.json')['caller_returncode']==2:\n"
+        },
+        {
+          "new_end": 13933,
+          "new_start": 13706,
+          "new_utf8": "plan_path=HERE/('ROOT-MA-'+mode+'-plan-v1.json');plan=read(plan_path);pp=pin(plan_path)\nowned=HERE/('MA-'+mode+'-owned-v1');external=HERE/('MA-'+mode+'-external-v1')\nbracket=read(HERE/('ROOT-MA-'+mode+'-tool-bracket-v1.json'))\n",
+          "old_end": 9348,
+          "old_start": 9127,
+          "old_utf8": "plan_path=HERE/'ROOT-batched-main-plan-v1.json';plan=read(plan_path);pp=pin(plan_path)\nowned=HERE/'batched-main-owned-v1';external=HERE/'batched-main-external-v1'\nbracket=read(HERE/('ROOT-'+mode+'-tool-bracket-v1.json'))\n"
+        },
+        {
+          "new_end": 14953,
+          "new_start": 14817,
+          "new_utf8": "assert body['schema']=='ROOT-unit-row-marked-aware-calibration-response-body-v1' and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'\n",
+          "old_end": 10357,
+          "old_start": 10232,
+          "old_utf8": "assert body['schema']=='ROOT-unit-row-global-engine-response-body-v1' and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'\n"
+        },
+        {
+          "new_end": 16944,
+          "new_start": 16872,
+          "new_utf8": "transport=read(HERE/('ROOT-MA-'+mode+'-transport-concordance-v1.json'))\n",
+          "old_end": 12345,
+          "old_start": 12276,
+          "old_utf8": "transport=read(HERE/('ROOT-'+mode+'-transport-concordance-v1.json'))\n"
+        },
+        {
+          "new_end": 17876,
+          "new_start": 17537,
+          "new_utf8": "data=result['marked_aware_calibration'];contract=read(check(plan['source_contract']))\nassert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-marked-aware-calibration-cold-Source-contract-v1'\nassert len(plan['sources'])==13 and len(plan['inputs'])==8 and plan['schema']=='ROOT-marked-aware-calibration-plan-v1'\n",
+          "old_end": 13276,
+          "old_start": 12938,
+          "old_utf8": "data=result['channel4_stageC'];contract=read(check(plan['source_contract']))\nassert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-channel4-stageC-batched-main-cold-Source-contract-v1'\nassert len(plan['sources'])==11 and len(plan['inputs'])==8 and plan['schema']=='ROOT-channel4-stageC-batched-main-plan-v1'\n"
+        },
+        {
+          "new_end": 18343,
+          "new_start": 18158,
+          "new_utf8": "assert contract['source']['sha256']=='5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817'\nassert body['version']=='unit-row-marked-aware-local-degree-calibration-cold-v1'\n",
+          "old_end": 13734,
+          "old_start": 13558,
+          "old_utf8": "assert contract['source']['sha256']=='404f81265bd2c25cee9609d6602eeef20d074c3bdfa88302cb20cff50f1f5623'\nassert body['version']=='unit-row-channel4-stageC-batched-main-cold-v1'\n"
+        },
+        {
+          "new_end": 18986,
+          "new_start": 18652,
+          "new_utf8": "assert data['schema']=='ROOT-unit-row-marked-aware-calibration-payload-v1'\nassert data['stage']=='LOCAL_NEW_MARKED_AWARE_NONIMP_DEGREE_ONLY'\nassert data['endpoint_purpose']==plan['purpose'] and data['separate_endpoint_count']==4\nassert data['whole_calibration_qualification_accepted']is data['same_process_all_six_qualified']is False\n",
+          "old_end": 14487,
+          "old_start": 14043,
+          "old_utf8": "assert data['schema']=='ROOT-unit-row-channel4-stageC-batched-main-payload-v1'\nassert data['stage']=='BATCHED_MAIN_SEEDS_FORCED_TRANSFER_CHILD_ONLY'\nassert data['endpoint_purpose']==plan['purpose'] and data['current_main_only'] is True and data['essential_case_count']==3\nassert data['original_v1_four_endpoint_suite_qualified'] is data['same_controller_all_nine_qualified'] is False\nassert data['whole_StageC_qualification_accepted'] is False\n"
+        },
+        {
+          "new_end": 19625,
+          "new_start": 19489,
+          "new_utf8": "    assert review['scope']=='unit-row-marked-aware-calibration-cold-Source' and review['author_identity']=='/root/arithmetic_induction'\n",
+          "old_end": 15130,
+          "old_start": 14990,
+          "old_utf8": "    assert review['scope']=='unit-row-channel4-stageC-batched-main-cold-Source' and review['author_identity']=='/root/arithmetic_induction'\n"
+        },
+        {
+          "new_end": 20277,
+          "new_start": 20166,
+          "new_utf8": "assert grant['schema']=='ROOT-marked-aware-calibration-authorization-v1' and grant['author_identity']=='/root'\n",
+          "old_end": 15786,
+          "old_start": 15671,
+          "old_utf8": "assert grant['schema']=='ROOT-channel4-stageC-batched-main-authorization-v1' and grant['author_identity']=='/root'\n"
+        },
+        {
+          "new_end": 22462,
+          "new_start": 22302,
+          "new_utf8": "assert result['schema']=='ROOT-unit-row-marked-aware-calibration-result-v1' and stdout['schema']=='ROOT-unit-row-marked-aware-calibration-final-observation-v1'\n",
+          "old_end": 17811,
+          "old_start": 17811,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 26714,
+          "new_start": 24089,
+          "new_utf8": "def query_record(record):\n    s=state(record['state']);row=record['query_row'];p=record['proposal'];r=record['receipt']\n    assert type(row)is int and 0<=row<24 and points(s['t'])[(0,row)]==0\n    assert p['schema']=='unit-row-marked-aware-nonimp-fibre-proposal-v1' and p['version']=='unit-row-marked-aware-nonimp-fibre-proposer-v1'\n    assert r['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1' and r['version']=='unit-row-independent-marked-aware-nonimp-fibre-checker-v1'\n    for v in(p,r):\n        equal(v['state'],s);assert v['state_sha256']==sha(s) and v['row']==row\n        assert v['input_epoch']==binding['language_epoch'] and v['language_binding']==binding and v['marking_id']==mid\n        assert v['original_state_sha256']==sha(v['original_state'])\n        for k in('complete_candidate_graph_accepted','scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted'):assert v[k]is False\n    equal(p['original_state'],r['original_state'])\n    equal(r['checked_candidates'],p['candidates']);equal(r['candidate_keys'],[c['placement_key']for c in p['candidates']])\n    assert r['proposal_sha256']==sha(p) and r['marking_sha256']==sha(data['marking'])\n    check=r['independent_marked_state_check'];assert check['marked_state_checked']is check['projection_literals_rechecked']is True\n    assert check['original_binding']==binding and check['original_state_sha256']==p['original_state_sha256'] and check['marking_id']==mid\n    equal(p['output_formula'],r['output_formula'])\n    equal(points(s['m'])[(1,row)],['formula',canonical(p['output_formula']).decode()])\n    assert p['untrusted']is True and r['accepted_local_evidence']is True\n    assert len(record['seeds'])==len(s['selected'])\n    for seed,selected in zip(record['seeds'],s['selected']):\n        equal(seed['placement_key']['type_preimage'],selected['type_preimage']['base_type_preimage'])\n        equal(seed['placement_key']['translation'],selected['translation'])\n    actual=[]\n    for c in p['candidates']:\n        key=c['placement_key'];pre=key['type_preimage'];base=pre['base_type_preimage']\n        assert key['translation']==[0,row] and pre['marking_id']==mid and base['input_epoch']==binding['language_epoch']\n        assert base['primitive_witness']['rule']=='mp'\n        actual.append([row+d for d in base['ordered_offsets']])\n        equal(c['base_tile']['placement_key']['type_preimage'],base)\n        equal(c['base_tile']['placement_key']['translation'],key['translation'])\n    equal(actual,record['actual_candidate_reads'])\n    assert len({canonical(k)for k in r['candidate_keys']})==len(r['candidate_keys'])\n    return p,r\n",
+          "old_end": 19849,
+          "old_start": 19438,
+          "old_utf8": "def snapshot(value):\n    state(value['state']);assert value['marking_id']==mid\n    assert value['scheduler_policy']['branch_tie']=='ROW' and value['pending_preferences'] is None\n    assert type(value['row_versions'])is list and len(value['row_versions'])==24 and all(type(n)is int for n in value['row_versions'])\n    assert len({r for r,v in value['certificates']})==len(value['certificates'])\n    return value\n"
+        },
+        {
+          "new_end": 27627,
+          "new_start": 26715,
+          "new_utf8": "def complete_zero(record):\n    p,r=query_record(record);f=p['fibre_cover']\n    assert record['query_row']==1 and record['size1_carrier']is None\n    assert p['kind']=='COMPLETE_NONIMP_FIBRE_COVER' and p['complete_cover_proposed']is True\n    assert r['status']=='ZERO' and type(r['degree_exact'])is int and r['degree_exact']==0\n    assert r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is True\n    assert r['candidate_keys']==p['candidates']==[] and r['sole_candidate']is None\n    equal(f,r['checked_fibre_cover']);assert f['completed']is True and len(f['UG_fibres'])==len(f['ordered_MP_fibres'])==1\n    assert f['UG_fibres'][0]['examined']==f['UG_fibres'][0]['rejections']==1\n    assert f['ordered_MP_fibres'][0]['rows']==[0,0] and f['ordered_MP_fibres'][0]['case']=='FINITE_AST_OCCURS_CHECK_EMPTY'\n    assert all(x['completed']is True for x in f['UG_fibres']+f['ordered_MP_fibres'])\n    return p,r\n",
+          "old_end": 20251,
+          "old_start": 19850,
+          "old_utf8": "def cert(value,row):return dict(value['certificates'])[row]\ndef slot(value,row):\n    assert len({r for r,v in value['cursors']})==len(value['cursors'])\n    return dict(value['cursors'])[row]\ndef rowproof(value,row):\n    rows=value['last_transition']['rows'];assert [p['row']for p in rows]==list(range(24));return rows[row]\ndef core(value):return {k:v for k,v in value.items()if k!='read_obligations'}\n"
+        },
+        {
+          "new_end": 30158,
+          "new_start": 27628,
+          "new_utf8": "if mode=='zero':\n    assert set(data['families'])=={'ZERO'};complete_zero(data['families']['ZERO'])\nelif mode=='singleton':\n    assert set(data['families'])=={'SINGLETON'};record=data['families']['SINGLETON'];p,r=query_record(record);f=p['fibre_cover']\n    assert record['query_row']==3 and record['size1_carrier']==[['bot']] and record['actual_candidate_reads']==[[2,0]]\n    assert p['kind']=='COMPLETE_NONIMP_FIBRE_COVER' and p['complete_cover_proposed']is True\n    assert r['status']=='SINGLETON' and type(r['degree_exact'])is int and r['degree_exact']==1 and len(p['candidates'])==1\n    assert r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is True\n    equal(r['sole_candidate'],p['candidates'][0]);equal(f,r['checked_fibre_cover'])\n    assert f['completed']is True and f['output_nodes']==42 and f['MP_antecedent_max_nodes']==1\n    assert len(f['UG_fibres'])==3 and len(f['ordered_MP_fibres'])==9\n    assert all(x['completed']is True for x in f['UG_fibres']+f['ordered_MP_fibres'])\nelif mode=='two':\n    assert set(data['families'])=={'TWO'};record=data['families']['TWO'];p,r=query_record(record)\n    assert record['query_row']==3 and record['size1_carrier']==[['bot']] and record['actual_candidate_reads']==[[1,0],[1,2]]\n    assert p['kind']=='TWO_LEGAL_WITNESSES' and p['complete_cover_proposed']is p['fibre_cover']['completed']is False\n    assert r['status']=='TWO_OR_MORE' and r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is False\n    assert len(p['candidates'])==2 and r['degree_exact']is r['sole_candidate']is r['checked_fibre_cover']is None\nelse:\n    assert set(data['families'])=={'NEGATIVE_PROTOCOL'};record=data['families']['NEGATIVE_PROTOCOL']\n    p,r=complete_zero(record['valid_zero_fixture']);failures=record['failures'];assert len(failures)==3\n    reasons=['whole original/marked current context','complete independent fibres/counts/hashes','literal completion flag']\n    for i,failure in enumerate(failures):\n        bad=json.loads(canonical(p))\n        if i==0:bad['language_binding']['language_epoch']='0'*64\n        elif i==1:\n            omitted=bad['fibre_cover']['ordered_MP_fibres'].pop();equal(omitted,failure['omitted_original_fibre'])\n        else:bad['complete_cover_proposed']=False\n        equal(bad,failure['failing_proposal'])\n        assert failure['expected_reason']==failure['actual_reason']=='marked-aware fibre evidence: '+reasons[i]\n        assert failure['exception_type']=='ValueError' and failure['rejected']is True and failure['returned_receipt']is None\n",
+          "old_end": 21450,
+          "old_start": 20252,
+          "old_utf8": "def receipt(value,s,row):\n    assert value['marking_id']==mid and value['input_epoch']==binding['language_epoch']\n    assert type(value['row'])is int and value['row']==row and value['state_sha256']==sha(s)\n    assert value['status']in('ZERO','SINGLETON','MANY','TWO_OR_MORE','UNKNOWN')\n    assert value['accepted_local_evidence']is(value['status']!='UNKNOWN')\n    for k in('complete_candidate_graph_accepted','scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted'):assert value[k]is False\n    if value['complete_cover_checked']:\n        assert type(value['degree_exact'])is int and value['degree_exact']==len(value['candidate_keys'])\n        if value['status']=='ZERO':assert value['degree_exact']==0 and value['sole_candidate']is None\n        elif value['status']=='SINGLETON':\n            assert value['degree_exact']==1;equal(value['sole_candidate']['placement_key'],value['candidate_keys'][0])\n        else:assert value['status']=='MANY' and value['degree_exact']>=2 and value['sole_candidate']is None\n    else:\n        assert value['degree_exact']is None and value['sole_candidate']is None\n        assert value['status']in('TWO_OR_MORE','UNKNOWN')\n    return value\n"
+        },
+        {
+          "new_end": 30543,
+          "new_start": 30159,
+          "new_utf8": "for k in('target_search_performed','engine_or_fallback_queried','old_degree_proposal_or_receipt_replayed','new_receipt_engine_compatibility_claimed','failure_marking_activated','logical_proof_accepted','exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','RL_accepted','GCTS_advantage_claimed','ROOT_resource_accepted'):assert data[k]is False\n",
+          "old_end": 31098,
+          "old_start": 21451,
+          "old_utf8": "def proposal_join(proposal,s,row,checked=None):\n    assert proposal['schema']=='unit-row-channel4-degree-evidence-proposal-v1' and proposal['untrusted']is True\n    equal(proposal['state'],s);assert proposal['state_sha256']==sha(s) and proposal['row']==row\n    assert proposal['marking_id']==mid and proposal['input_epoch']==binding['language_epoch'];equal(proposal['language_binding'],binding)\n    original=proposal['original_proposal'];base=original['state']\n    assert base['schema']=='unit-row-implicit-private-state-v1' and base['input_epoch']==binding['language_epoch']\n    equal(base['t'],s['t']);equal(base['m'],[v for v in s['m']if v[0][0]!=4]);equal(base['generation'],s['generation'])\n    assert original['state_sha256']==sha(base) and original['row']==row;equal(original['language_binding'],binding)\n    assert len(base['selected'])==len(s['selected'])\n    for a,b in zip(base['selected'],s['selected']):\n        equal(a['type_preimage'],b['type_preimage']['base_type_preimage']);equal(a['translation'],b['translation']);equal(a['generation'],b['generation'])\n    if checked is not None:\n        receipt(checked,s,row)\n        equal(checked['candidate_keys'],[c['placement_key']for c in proposal['candidates']])\n        equal(checked['marked_rejections'],proposal['marked_rejections'])\n        base_receipt=checked['original_base_receipt']\n        assert base_receipt['state_sha256']==sha(base) and base_receipt['row']==row and base_receipt['input_epoch']==binding['language_epoch']\n        equal(base_receipt['candidate_keys'],[c['placement_key']for c in original['candidates']])\n    return original\n\ndef logged_origin(log,s,row,checked):\n    found=[q for q in log['queries']if q['row']==row and q['state_sha256']==sha(s)]\n    assert found\n    for q in found:proposal_join(q['proposal'],s,row,checked)\n    return found[0]['proposal']\n\ndef transfer(before,after,row,origin):\n    snapshot(before);snapshot(after);previous=receipt(cert(before,row),before['state'],row)\n    current=receipt(cert(after,row),after['state'],row)\n    assert current['schema']=='unit-row-channel4-transferred-domain-classification-v1'\n    proof=rowproof(after,row);assert proof['retain']is True and after['last_transition']['collision_ledger_equal']is True\n    equal(current['original_receipt'],origin);assert current['previous_evidence_sha256']==sha(previous)\n    for k in('status','accepted_local_evidence','complete_cover_checked','degree_exact','candidate_keys','missing_mark_cover_checked'):equal(current[k],previous[k])\n    chain=current['transfer_chain'];equal(chain[:-1],previous.get('transfer_chain',[]))\n    assert chain[-1]=={'before_state_sha256':sha(before['state']),'after_state_sha256':sha(after['state']),'transition_sha256':sha(after['last_transition'])}\n    equal(current['transition'],dict(after['last_transition'],rows=[proof]))\n    if current['sole_candidate']is not None:equal(core(current['sole_candidate']),core(previous['sole_candidate']))\n    return current\n\ndef context(value,s,marked=True):\n    equal(value['state'],s);assert value['state_sha256']==sha(s)\n    assert value['context_sha256']==sha({k:v for k,v in value.items()if k!='context_sha256'})\n    assert value['input_epoch']==binding['language_epoch'];equal(value['language_binding'],binding)\n    if marked:assert value['marking_id']==mid\n\ndef stream(log,s,n,marked):\n    context(log['context'],s,marked);events=log['events']\n    assert [e['kind']for e in events]==['CANDIDATE']*n+['EOF']\n    assert [e['ordinal']for e in events[:-1]]==list(range(n))\n    for e in events[:-1]:\n        assert e['context_sha256']==log['context']['context_sha256'] and e['independently_checked']is False\n    completion=events[-1]['completion']\n    assert events[-1]['context_sha256']==log['context']['context_sha256']==completion['context_sha256']\n    assert completion['state_sha256']==sha(s) and completion['row']==log['context']['row'] and completion['yielded_candidates']==n\n    assert completion['independently_checked']is completion['degree_zero_or_singleton_accepted']is False\n    for k in('complete_candidate_graph_accepted','scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted'):assert completion[k]is False\n    if marked:assert completion['marking_id']==mid\n    return events\n\ndef selected_append(before,after,packet):\n    equal(after['state']['selected'],before['state']['selected']+[packet['selection_record']])\n    assert len(after['state']['selected'])==len(before['state']['selected'])+1\n\nfamilies=data['families']\nassert mode=='stageC-batched-main'\nassert set(families)=={'FORCED_TRANSFER_CHILD'}\na=families['FORCED_TRANSFER_CHILD'];before=snapshot(a['before']);checked=snapshot(a['checked_snapshot'])\nequal(before['state'],a['initial_state']);equal(checked['state'],before['state'])\nassert a['first_actual_decision']['kind']=='FORCED' and a['first_actual_decision']['row']==1\nequal(a['first_actual_decision']['candidate'],cert(checked,1)['sole_candidate'])\nfrontier={p[1]for p,v in points(checked['state']['t']).items()if v==0}\nassert set(dict(checked['certificates']))==frontier and all(v['status']!='UNKNOWN'for r,v in checked['certificates'])\norigin={int(k):v for k,v in a['original_marked_receipts'].items()}\nfor row,status,n in((1,'SINGLETON',1),(3,'MANY',2),(5,'SINGLETON',1)):\n    equal(origin[row],cert(checked,row));receipt(origin[row],checked['state'],row)\n    assert origin[row]['status']==status and origin[row]['degree_exact']==n and origin[row]['complete_cover_checked']is True\n    logged_origin(a['actual_log'],checked['state'],row,origin[row])\npopulated=snapshot(a['populated_before']);old=a['original_slot'];equal(old,slot(populated,3));equal(populated['state'],checked['state'])\nassert [x['kind']for x in a['initial_cursor_events']]==['CANDIDATE','CANDIDATE','EOF']\nfor i in range(2):equal(a['initial_cursor_events'][i]['candidate'],old['candidates'][i])\nequal(a['initial_cursor_events'][-1]['completion'],old['completion'])\none=snapshot(a['after_first_placement']);selected_append(populated,one,a['first_forced_candidate'])\nequal(a['first_forced_candidate'],a['first_actual_decision']['candidate'])\nm1=transfer(populated,one,3,origin[3]);s1=transfer(populated,one,5,origin[5])\nequal(m1,a['first_MANY_transfer']);equal(s1,a['first_SINGLETON_transfer'])\nfive=snapshot(a['before_second_placement']);equal(five['state'],one['state'])\nequal(cert(five,3),m1);equal(cert(five,5),s1)\nassert a['second_actual_decision']['kind']=='FORCED' and a['second_actual_decision']['row']==5\nequal(a['second_actual_decision']['candidate'],s1['sole_candidate']);equal(a['second_forced_candidate'],s1['sole_candidate'])\ntwo=snapshot(a['after_second_placement']);selected_append(five,two,a['second_forced_candidate'])\nm2=transfer(five,two,3,origin[3]);equal(m2,a['second_MANY_transfer']);assert len(m2['transfer_chain'])==2 and 5 not in dict(two['certificates'])\nfor current in(one,two):\n    s=slot(current,3)\n    equal(s['context_archive'],[{k:old[k]for k in('context','keys','candidates','completion')}])\n    for k in('context','keys','completion'):equal(s[k],old[k])\n    for oldc,newc in zip(old['candidates'],s['candidates']):equal(core(oldc),core(newc))\n    assert all(o['occupied']is True for c in s['candidates']for o in c['read_obligations'])\n    assert s['candidate_packets_state_sha256']==sha(current['state'])\nassert sorted(o['occupied']for c in old['candidates']for o in c['read_obligations'])==[False,True]\nroot=snapshot(a['search_before']);equal(root['state'],two['state'])\nassert a['actual_branch_decision']=={'kind':'BRANCH','row':3}\nassert all(v['status']in('MANY','TWO_OR_MORE')for r,v in root['certificates'])\nfound=a['controlled_search_result'];interruption=a['actual_interruption'];equal(a['actual_log']['interruptions'],[interruption])\nassert found['status']=='UNKNOWN' and found['reason']=='StageC native-first actual-child degree interruption'\nassert found['found']is None and found['root_restored']is found['stack_restored']is True and found['trace_complete']is False\nevents=found['events'];assert [x['event']for x in events]==list(range(len(events))) and 0<len(events)<=2000\ntries=[x for x in events if x['kind']=='TRY'];assert tries\nassert any(x['kind']=='PLACE'and x['event']>tries[0]['event']for x in events)\nassert not any(x['kind']=='EXCLUDE'for x in events)\nassert interruption['kind']=='DECLARED_ACTUAL_CHILD_DEGREE_INTERRUPTION'\nassert type(interruption['row'])is int and 0<=interruption['row']<24\nassert type(interruption['native_ns'])is int and g<=interruption['native_ns']<body['joint_deadline_ns']\nassert interruption['joint_began_ns']==g and interruption['joint_deadline_ns']==body['joint_deadline_ns']\nassert interruption['selected_count']==len(interruption['state']['selected'])>len(root['state']['selected'])\nequal(found['last_observed_state'],interruption['state']);state(interruption['state'])\nassert found['counts']['branches']>=1 and found['counts']['restores']>=1 and found['counts']['nodes']<=128\nequal(a['search_restored'],root);equal(a['outer_after'],populated)\nassert found['root_snapshot_sha256']==sha(root)==found['final_snapshot_sha256']\nfor k in('logical_proof_accepted','exact_point_board_accepted','complete_candidate_graph_accepted','trajectory_accepted','GCTS_advantage_accepted','RL_accepted','ROOT_resource_accepted'):assert found[k]is False\n\nfor k in('target_search_performed','failure_marking_activated','logical_proof_accepted','exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','RL_accepted','GCTS_advantage_claimed','ROOT_resource_accepted'):assert data[k]is False\nassert data['controlled_child_search_performed']is(mode=='stageC-batched-main')\n"
+        },
+        {
+          "new_end": 31210,
+          "new_start": 30908,
+          "new_utf8": "for k in('logical_proof_accepted','ROOT_resource_accepted'):assert stdout[k]is False\nfor k in('ROOT_resource_accepted','ROOT_primary_accepted'):assert native[k]is observation[k]is False\n\ndisposition=dict(schema='ROOT-marked-aware-calibration-endpoint-disposition-v1',mode=mode,purpose=plan['purpose'],\n",
+          "old_end": 31573,
+          "old_start": 31463,
+          "old_utf8": "disposition=dict(schema='ROOT-channel4-stageC-batched-main-disposition-v1',mode=mode,purpose=plan['purpose'],\n"
+        },
+        {
+          "new_end": 31823,
+          "new_start": 31342,
+          "new_utf8": " outputs=outputs,native_evidence=native_refs(external),tool_bracket=pin(HERE/('ROOT-MA-'+mode+'-tool-bracket-v1.json')),\n lossless_transport_concordance=pin(HERE/('ROOT-MA-'+mode+'-transport-concordance-v1.json')),raw_expanded=pin(expanded_path),\n complete_wire_verified=True,native_terminal_closed=True,native_resources_qualified=True,complete_returned_record=True,\n native_deadline_confirmed=False,original20_positive_native_gate_failed=False,owned_output_directory_exists=True,\n",
+          "old_end": 32034,
+          "old_start": 31705,
+          "old_utf8": " outputs=outputs,native_evidence=native_refs(external),tool_bracket=pin(HERE/('ROOT-'+mode+'-tool-bracket-v1.json')),lossless_transport_concordance=pin(HERE/('ROOT-'+mode+'-transport-concordance-v1.json')),\n raw_expanded=pin(expanded_path),complete_wire_verified=True,native_terminal_closed=True,native_resources_qualified=True,\n"
+        },
+        {
+          "new_end": 32338,
+          "new_start": 32217,
+          "new_utf8": " case_names=expected,endpoint_controls_literal_concordance_accepted=True,whole_calibration_qualification_accepted=False,\n",
+          "old_end": 32665,
+          "old_start": 32428,
+          "old_utf8": " case_names=expected,endpoint_controls_literal_concordance_accepted=True,whole_StageC_qualification_accepted=False,\n        same_controller_all_nine_qualified=False,original_v1_four_endpoint_suite_qualified=False,current_main_only=True,\n"
+        },
+        {
+          "new_end": 32654,
+          "new_start": 32422,
+          "new_utf8": " closure_helper=pin(Path(__file__).resolve()),reconciliation_scope='Saved native/wire/full literal state/proposal/new receipt/census/negative-data concordance only; no scientific function, membership, fibre enumeration or replay.',\n",
+          "old_end": 32992,
+          "old_start": 32749,
+          "old_utf8": " closure_helper=pin(Path(__file__).resolve()),reconciliation_scope='Whole saved native/wire/typed literal state/receipt/transfer/cursor/restore concordance only; no scientific function, membership, relation scan, matcher or semantic replay.',\n"
+        },
+        {
+          "new_end": 33256,
+          "new_start": 32957,
+          "new_utf8": " remaining_gaps=['One endpoint only; all four distinct20 endpoints/six essential cases required for local calibration.','New local receipt not an engine11/c354 protocol; no graph/EOF/transfer/activation/search benefit/target proof qualification.'])\nout=HERE/('ROOT-MA-'+mode+'-disposition-v1.json')\n",
+          "old_end": 33759,
+          "old_start": 33295,
+          "old_utf8": " remaining_gaps=['Dedicated current MAIN3 only; old six cases remain qualified under original v1 Source, whose four-endpoint suite remains incomplete.','Any cumulative nine-case engine assessment must name distinct controller/setup versions and retain original failed MAIN; never same-controller-all9 or retroactive v1 pass.','No marked target result/benefit/full GCTS trajectory or general all-six EOF authority.'])\nout=HERE/('ROOT-'+mode+'-disposition-v1.json')\n"
+        }
+      ],
+      "full_raw_forward_inverse_verified": true,
+      "parent": {
+        "bytes": 33971,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_close_stageC_batched_main_saved_v1.py",
+        "sha256": "05a8ff8645f5e32eee37cf4a11f8bca10ba28a63159398baf3e1715d94564df7"
+      },
+      "patches": [
+        {
+          "bytes": 47916,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/closer-forward.patch",
+          "sha256": "9f90c8551621c8bc9fd2f5570dbbd39a5021fccb75306878cfade0f9ad89cef8"
+        },
+        {
+          "bytes": 47916,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/closer-full-inverse.patch",
+          "sha256": "f16b187d05ac7ec095b3e62090bc1e405eea73e295ed4f5d5572826e4d832300"
+        }
+      ],
+      "source": {
+        "bytes": 33468,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+        "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+      },
+      "unchanged_top_definitions_raw_AST": [
+        "canonical",
+        "check",
+        "equal",
+        "native_refs",
+        "pin",
+        "points",
+        "read",
+        "sha",
+        "state"
+      ]
+    },
+    "decoder": {
+      "actual_unified_forward_inverse_verified": true,
+      "edit_count": 5,
+      "edits": [
+        {
+          "new_end": 2211,
+          "new_start": 1600,
+          "new_utf8": "MODES=('zero','singleton','two','negative-protocol')\nneed(len(sys.argv)==2 and sys.argv[1] in MODES,'one saved calibration endpoint mode')\nmode=sys.argv[1];plan_path=HERE/('ROOT-MA-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)\nneed(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd5a0467432caaf18cba837b1bd72c83eeefd80c2763b64641786af34b26fb773', 'bytes': 27670},'fixed reviewed current calibration Source contract')\n",
+          "old_end": 2162,
+          "old_start": 1600,
+          "old_utf8": "need(len(sys.argv)==2 and sys.argv[1] == 'stageC-batched-main','one saved StageC endpoint mode')\nmode=sys.argv[1];plan_path=HERE/'ROOT-batched-main-plan-v1.json';plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)\nneed(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/Source-contract-v1.json', 'sha256': 'a433608ca59165c5d470513098fb383ebd4b8408d55a0dc98fa222f6fb45c257', 'bytes': 26891},'fixed reviewed current StageC Source contract')\n"
+        },
+        {
+          "new_end": 2519,
+          "new_start": 2265,
+          "new_utf8": "need(plan['schema']=='ROOT-marked-aware-calibration-plan-v1' and plan['purpose']=='unit-row-marked-aware-calibration-'+mode\n     and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current Source13/input8/purpose authority')\n",
+          "old_end": 2474,
+          "old_start": 2216,
+          "old_utf8": "need(plan['schema']=='ROOT-channel4-stageC-batched-main-plan-v1' and plan['purpose']=='unit-row-channel4-'+mode+'-controls' and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current per-mode Source11/input8/purpose authority')\n"
+        },
+        {
+          "new_end": 2757,
+          "new_start": 2672,
+          "new_utf8": "p=HERE/('MA-'+mode+'-owned-v1')/'engine-result.json';raw=read_bounded(p,ENCODED_CAP)\n",
+          "old_end": 2711,
+          "old_start": 2627,
+          "old_utf8": "p=HERE/'batched-main-owned-v1'/'engine-result.json';raw=read_bounded(p,ENCODED_CAP)\n"
+        },
+        {
+          "new_end": 4899,
+          "new_start": 4527,
+          "new_utf8": "need(canonical(result)+b'\\n'==expanded and result['schema']=='ROOT-unit-row-marked-aware-calibration-result-v1','whole original expanded result JSON')\nneed(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current executable Source13/input8/purpose')\nout=HERE/('ROOT-MA-'+mode+'-expanded-result-v1.json')\n",
+          "old_end": 4839,
+          "old_start": 4481,
+          "old_utf8": "need(canonical(result)+b'\\n'==expanded and result['schema']=='ROOT-unit-row-global-engine-result-v1','whole original expanded result JSON')\nneed(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current executable Source11/input8/purpose')\nout=HERE/('ROOT-'+mode+'-expanded-result-v1.json')\n"
+        },
+        {
+          "new_end": 5646,
+          "new_start": 5588,
+          "new_utf8": "q=HERE/('ROOT-MA-'+mode+'-transport-concordance-v1.json')\n",
+          "old_end": 5583,
+          "old_start": 5528,
+          "old_utf8": "q=HERE/('ROOT-'+mode+'-transport-concordance-v1.json')\n"
+        }
+      ],
+      "full_raw_forward_inverse_verified": true,
+      "parent": {
+        "bytes": 5830,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_decode_stageC_batched_main_saved_v1.py",
+        "sha256": "c48e87133ff88f9d6eaa416875300abdf86f73b1f2fa41bcdae7c6ae4bd1fc88"
+      },
+      "patches": [
+        {
+          "bytes": 4971,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/decoder-forward.patch",
+          "sha256": "e13ccf356846f4da806343a5c1518ca33949462f496cbf3daa45a5601d4f0090"
+        },
+        {
+          "bytes": 4971,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/decoder-full-inverse.patch",
+          "sha256": "0ed632ace6eaa373c15a481d6e048653ea84f9473f3565b5b4dc3ae3535e2d6e"
+        }
+      ],
+      "source": {
+        "bytes": 5893,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_decode_marked_aware_calibration_saved_v1.py",
+        "sha256": "6abb2e1a3e9b584059b6b7bff61cedd9073e2344d7d54563f64ed634936d2952"
+      },
+      "unchanged_top_definitions_raw_AST": [
+        "buffer_pin",
+        "canonical",
+        "checked_raw",
+        "constant",
+        "decode",
+        "finite",
+        "need",
+        "pairs",
+        "read_bounded"
+      ]
+    }
+  },
+  "positive_native_output_transport_prefix_path_schema_only": true,
+  "schema": "unit-row-marked-aware-calibration-saved-helpers-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0
+}

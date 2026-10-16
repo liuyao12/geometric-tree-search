@@ -1,0 +1,21 @@
+{
+  "parent": {
+    "bytes": 26662,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-parallel-fibres-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "c0183654f78fe13100360f920b1cc03557daf600f3ad787305a89f127f928423"
+  },
+  "previous_goal_turn": "progress",
+  "reviews": {
+    "checker": {
+      "bytes": 4110,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-checker-Source-review-v1.json",
+      "sha256": "996d21b4a66e00822048bc61b5813f23a90422c5994dd7c00b37af7e064a98f7"
+    },
+    "proposer": {
+      "bytes": 4719,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-proposer-Source-review-v1.json",
+      "sha256": "5cf72e44e391ae7d04e57b99dfc6ee8249d07d89edfaa2c9feb5bf001c935145"
+    }
+  },
+  "scientific_calls": 0
+}

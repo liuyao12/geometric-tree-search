@@ -1,0 +1,108 @@
+{
+  "actual_output_decode": false,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 11,
+  "checks": [
+    {
+      "detail": "Both helper bytes parsed/compiled, never executed/imported; no decoder or actual output read.",
+      "name": "compile_only",
+      "passed": true
+    },
+    {
+      "detail": {
+        "closer": 40,
+        "decoder": 5
+      },
+      "name": "full_raw_and_actual_patch_inverses",
+      "passed": true
+    },
+    {
+      "detail": [
+        "buffer_pin",
+        "canonical",
+        "checked_raw",
+        "constant",
+        "decode",
+        "finite",
+        "need",
+        "pairs",
+        "read_bounded"
+      ],
+      "name": "decoder9_unchanged",
+      "passed": true
+    },
+    {
+      "detail": [
+        "canonical",
+        "check",
+        "equal",
+        "native_refs",
+        "pin",
+        "points",
+        "read",
+        "sha",
+        "state"
+      ],
+      "name": "closer9_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "Entire native/output/transport positive prefix raw exact after declared path/body schema identities.",
+      "name": "native_positive_prefix",
+      "passed": true
+    },
+    {
+      "detail": "Caller5780335b/contractd5a046/Source13/input8/original17/input2 and currentreviews/once grant auth.",
+      "name": "fixed_current_capsules",
+      "passed": true
+    },
+    {
+      "detail": "4MiBencoded/16MiBexpanded; duplicate/nonfinite/canonicalLF/base64reencode/singlezlib/notails/fullhash.",
+      "name": "wire_caps",
+      "passed": true
+    },
+    {
+      "detail": "ZERO full0/census; SINGLE full1/sole; TWO full2 lowerbound; full three negative input mutation/reason joins.",
+      "name": "all6_literal_joins",
+      "passed": true
+    },
+    {
+      "detail": "Any clean nonzero retained native/once/reaped/Date metadata/no returnedrecord; countsNone/0qualified and opaque stderrfilepin. Deadline only exactliteral+native>=20. Never decode failed outputs.",
+      "name": "failure_scope",
+      "passed": true
+    },
+    {
+      "detail": "Four distinct IDs/plans/outputdirectories, all6 essential, no combined20/engine/target activation.",
+      "name": "aggregate_scope",
+      "passed": true
+    },
+    {
+      "detail": "Root byte-exactcopy both toactualHERE, nonoptimizedPython/assertions enabled; author no helper/science call.",
+      "name": "execution_requirements",
+      "passed": true
+    }
+  ],
+  "helper_execution": false,
+  "independent_review": false,
+  "schema": "unit-row-marked-aware-calibration-saved-helpers-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 51664,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "d8aaddffef61f13556ba136a35a8646a6371b0bd1845af6e27aa4b20cbc7e0fd"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 33468,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+      "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+    },
+    "decoder": {
+      "bytes": 5893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_decode_marked_aware_calibration_saved_v1.py",
+      "sha256": "6abb2e1a3e9b584059b6b7bff61cedd9073e2344d7d54563f64ed634936d2952"
+    }
+  }
+}

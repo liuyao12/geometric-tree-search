@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 23396,
+  "compressed_sha256": "df0077052f27064c8c1449a6cfa37df2b1c66d93f0cc7f068b2c0da61131ba12",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 31517,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/MA-two-owned-v1/engine-result.json",
+    "sha256": "00ac2deed3696ec7626b2f5533d798117d9c12536065f17157aab09539af306e"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 279036,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-two-expanded-result-v1.json",
+    "sha256": "37a3ba49a94d2161af5c7fe4758a92358aa2bc777de28f0b1ac4ebfe2a472184"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 8631,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-ROOT-20261016/ROOT-MA-two-plan-v1.json",
+    "sha256": "70c657f3a30031bc1872bcf56240c98bd462943ae3c1640ed81011485dfbaefe"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

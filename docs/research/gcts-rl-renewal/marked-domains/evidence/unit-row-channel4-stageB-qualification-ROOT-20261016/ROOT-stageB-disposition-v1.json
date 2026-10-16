@@ -1,0 +1,86 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes": 50593792,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "cached_degree_receipt_transfer_exercised": false,
+  "case_names": [
+    "unseen-remote-support-retains3-invalidates6",
+    "new-prototype-global-ledger-invalidates-frontier",
+    "remote-family-exact-outer-restore",
+    "repeated-retain-preserves-original-full-archive-and-refresh",
+    "fresh-full-prefix-replay-nonempty-inner-rollback-repeat",
+    "archive-family-exact-outer-restore",
+    "shared-channel4-two-refs-and-fixed-zero",
+    "shared-channel4-inner-exact-restore-one-ref",
+    "shared-channel4-outer-exact-restore-absence"
+  ],
+  "complete_Date_seconds": 8.77,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "current_goal_turn": "progress",
+  "engine_search_performed": false,
+  "exact_point_board_accepted": false,
+  "failure_marking_activated": false,
+  "family_count": 3,
+  "family_scope": {
+    "A": "Complete possible-support invalidation plus unchanged/new global ledger and exact owned restore; both1/4 change, no isolated4 claim.",
+    "B": "Occupancy refresh and literal old archive/current full-prefix replay/nonempty nested rollback; no degree receipt transfer.",
+    "C": "Actual matching mark reference counts and exact nested owned restore; not scheduled search."
+  },
+  "global_decision_or_scheduler_qualified": false,
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1502,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+    "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+  },
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "marking_sha256": "8d5f2c9c8ffa1de4c208e19da971b6cba73561ec4717caa54183e4799dc106df",
+  "native_launch_to_postprobe_ns": 8430321000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 8371375000,
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "outputs": [
+    {
+      "bytes": 162591,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    {
+      "bytes": 7572,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    }
+  ],
+  "passed_cases": 9,
+  "plan": {
+    "bytes": 7924,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+    "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved bytes/native/wire/full snapshot/context/cursor/archive/reference/restore literal joins only; no matcher/model/checker or scientific replay.",
+  "remaining_gaps": [
+    "Cached degree receipt transfer, global decisions/scheduler and UNKNOWN-child search restoration remain unqualified.",
+    "No fabricated true hash-collision test or valid isolated channel4-only transition.",
+    "No marked target proof, matched search advantage, trained RL, full reference conformance or universal finite Wang palette."
+  ],
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-channel4-stageB-disposition-v1",
+  "skipped_cases": 0,
+  "support_retention_archive_reference_controls_accepted": true,
+  "target_search_performed": false,
+  "terminal_T_bytes": 50593792,
+  "unknown_child_search_rollback_qualified": false,
+  "work_logs_and_counters_outside_semantic_rollback": true
+}

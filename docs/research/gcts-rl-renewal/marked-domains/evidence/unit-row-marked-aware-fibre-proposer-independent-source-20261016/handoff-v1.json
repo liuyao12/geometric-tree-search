@@ -1,0 +1,33 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_CONCRETE_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 15594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-independent-source-20261016/findings-v1.json",
+    "sha256": "257ebd505bbd893961659a8ff5628a0935680aa14561712db9d67b3832632199"
+  },
+  "fixture_challenge": {
+    "bytes": 4519,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-independent-source-20261016/fixture-challenge-v1.json",
+    "sha256": "d7b66957bab33f890d530b286d3b74bc1a2be66315141d217d16e909a5f2bb18"
+  },
+  "schema": "unit-row-marked-aware-fibre-proposer-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 14064,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+    "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+  },
+  "source_contract": {
+    "bytes": 24072,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/Source-contract-v1.json",
+    "sha256": "977a877f898d3fb9f9aa85a9b4d2343467996ef15849d0c733672905bea1e35c"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 4607,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "a57d8148de431900f571ec1f9589414baed94cb902905d2d9b7fcef247ba476a"
+  }
+}
