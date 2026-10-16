@@ -1,0 +1,112 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "all_top_functions_raw_AST_exact": [
+    "aggregate",
+    "auth_plan",
+    "canonical",
+    "certificate",
+    "check",
+    "core",
+    "cursor_stream",
+    "equal",
+    "failure_only",
+    "logged_receipt",
+    "native_receipt",
+    "native_refs",
+    "packet",
+    "pin",
+    "points",
+    "query_record",
+    "read",
+    "search_result",
+    "seed_join",
+    "selected_append",
+    "sha",
+    "snapshot",
+    "state",
+    "transfer_join"
+  ],
+  "decoder_raw_unchanged": {
+    "bytes": 6335,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+    "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+  },
+  "edit_count": 6,
+  "edits": [
+    {
+      "new_end": 22396,
+      "new_start": 21969,
+      "new_utf8": "expected_cases=tuple(contract['API']['purpose_modes_and_ordered_cases'][plan['purpose']])\nassert list(expected_cases)==EXPECTED_CASES[mode] and data['expected_cases']==list(expected_cases)\nassert data['control_count']==len(data['controls'])==len(expected_cases) and data['all_controls_completed'] is True\nassert [c['case']for c in data['controls']]==list(expected_cases) and all(c['status']=='PASSED'for c in data['controls'])\n",
+      "old_end": 22341,
+      "old_start": 21969,
+      "old_utf8": "expected=contract['API']['purpose_modes_and_ordered_cases'][plan['purpose']]\nassert expected==EXPECTED_CASES[mode] and data['expected_cases']==expected\nassert data['control_count']==len(data['controls'])==len(expected) and data['all_controls_completed'] is True\nassert [c['case']for c in data['controls']]==expected and all(c['status']=='PASSED'for c in data['controls'])\n"
+    },
+    {
+      "new_end": 43380,
+      "new_start": 43045,
+      "new_utf8": "        if i==0:name='ABSENT';expected_proposal=q['ZERO']['proposal'];reason='marked degree router: checked implication/absent route requires exact legacy proposal protocol'\n        elif i==1:name='ZERO';expected_proposal=q['ABSENT']['proposal'];reason='marked degree router: checked nonimp route requires exact new proposal protocol'\n",
+      "old_end": 43307,
+      "old_start": 42990,
+      "old_utf8": "        if i==0:name='ABSENT';expected=q['ZERO']['proposal'];reason='marked degree router: checked implication/absent route requires exact legacy proposal protocol'\n        elif i==1:name='ZERO';expected=q['ABSENT']['proposal'];reason='marked degree router: checked nonimp route requires exact new proposal protocol'\n"
+    },
+    {
+      "new_end": 43661,
+      "new_start": 43394,
+      "new_utf8": "            name='ZERO';expected_proposal=json.loads(canonical(q['ZERO']['proposal']));field=labels[i].removeprefix('FORGED_')\n            if field=='language_binding':expected_proposal[field]['language_epoch']='0'*64\n            else:expected_proposal[field]='0'*64\n",
+      "old_end": 43561,
+      "old_start": 43321,
+      "old_utf8": "            name='ZERO';expected=json.loads(canonical(q['ZERO']['proposal']));field=labels[i].removeprefix('FORGED_')\n            if field=='language_binding':expected[field]['language_epoch']='0'*64\n            else:expected[field]='0'*64\n"
+    },
+    {
+      "new_end": 43877,
+      "new_start": 43749,
+      "new_utf8": "        equal(bad['state'],q[name]['state']);assert bad['row']==q[name]['row'];equal(bad['failing_proposal'],expected_proposal)\n",
+      "old_end": 43768,
+      "old_start": 43649,
+      "old_utf8": "        equal(bad['state'],q[name]['state']);assert bad['row']==q[name]['row'];equal(bad['failing_proposal'],expected)\n"
+    },
+    {
+      "new_end": 52941,
+      "new_start": 52656,
+      "new_utf8": " reported_case_count=len(expected_cases),qualified_case_count=len(expected_cases),unqualified_case_count=0,passed_cases=len(expected_cases),skipped_cases=0,\n case_names=list(expected_cases),endpoint_controls_literal_concordance_accepted=True,whole_engine_qualification_accepted=False,\n",
+      "old_end": 52802,
+      "old_start": 52547,
+      "old_utf8": " reported_case_count=len(expected),qualified_case_count=len(expected),unqualified_case_count=0,passed_cases=len(expected),skipped_cases=0,\n case_names=expected,endpoint_controls_literal_concordance_accepted=True,whole_engine_qualification_accepted=False,\n"
+    },
+    {
+      "new_end": 54257,
+      "new_start": 54125,
+      "new_utf8": "print(json.dumps({'disposition':pin(out),'qualified_cases':len(expected_cases),'native_ns':probe-start,'scientific_replay':False}))\n",
+      "old_end": 54112,
+      "old_start": 53986,
+      "old_utf8": "print(json.dumps({'disposition':pin(out),'qualified_cases':len(expected),'native_ns':probe-start,'scientific_replay':False}))\n"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "immutable_case_binding_AST_stores": 1,
+  "parent_closer": {
+    "bytes": 54112,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+    "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+  },
+  "patches": [
+    {
+      "bytes": 5980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/closer-v2-to-v3-forward.patch",
+      "sha256": "84a21de48d90794786c521fc65cfb09a3eff8ffe19463dfd70d6d536dc96c3b1"
+    },
+    {
+      "bytes": 5980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/closer-v3-to-v2-full-inverse.patch",
+      "sha256": "3a673ee3a22ed64a3a975d734ec493df49f0a1960925db5d54c2d250afc94ed4"
+    }
+  ],
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-Source-delta-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54257,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v3.py",
+    "sha256": "8ab5cb05197c98e81916d41fd5b216b6f76e73d99332b7a62224b2616169a22e"
+  }
+}

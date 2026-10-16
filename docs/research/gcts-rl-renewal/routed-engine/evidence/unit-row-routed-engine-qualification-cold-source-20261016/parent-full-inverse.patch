@@ -1,0 +1,593 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/routed_engine_qualification_cold_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/marked_aware_calibration_cold_v1.py
+@@ -1,5 +1,6 @@
+-"""SOURCE ONLY: six separately granted routed-engine qualification endpoints.
+-Twelve essential control assertions; no benchmark target or inherited global suite acceptance.
++"""Prospective local marked-aware degree calibration only, Source unexecuted.
++Four separately granted original20 endpoints; six essential assertions total.
++New proposals/receipts never masquerade as engine11 or old c354 evidence.
+ """
+ import time
+ CLOCK=time.clock_gettime_ns
+@@ -24,12 +25,12 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-routed-engine-qualification-cold-v1'
+-SCOPE='unit-row-routed-engine-qualification-cold-Source'
++VERSION='unit-row-marked-aware-local-degree-calibration-cold-v1'
++SCOPE='unit-row-marked-aware-calibration-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+-QUALIFICATION_CASES_BY_PURPOSE={'unit-row-marked-aware-child-UNKNOWN-controls': ['MR-11-actual-child-native-first-declared-UNKNOWN', 'MR-12-UNKNOWN-no-exclusion-full-owned-rollback'], 'unit-row-marked-aware-global-forced-dead-controls': ['MR-03-global-forced-requery-dead-exhaustion', 'MR-04-owned-full-root-restoration'], 'unit-row-marked-aware-router-protocol-controls': ['MR-01-new-and-legacy-route-consumption', 'MR-02-wrong-route-and-context-rejected'], 'unit-row-marked-aware-short-EOF-controls': ['MR-09-real-short-stream-and-fresh-complete-keySET', 'MR-10-legacy-implication-EOF-remains-unaccepted'], 'unit-row-marked-aware-singleton-transfer-controls': ['MR-05-native-singleton-full-origin-transfer', 'MR-06-current-sole-consumption-and-owned-rollback'], 'unit-row-marked-aware-two-transfer-controls': ['MR-07-native-TWO-full-origin-transfer', 'MR-08-refreshed-witnesses-global-branch-and-owned-rollback']}
+-FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'decorator': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895', 'bytes': 12619}, 'marked_verifier': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a', 'bytes': 18475}, 'marked_adapter': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py', 'sha256': '821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9', 'bytes': 28980}, 'engine': {'bytes': 62810, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py', 'sha256': '8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389'}, 'fallback': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae', 'bytes': 24227}, 'marked_aware_proposer': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d', 'bytes': 14064}, 'marked_aware_checker': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188', 'bytes': 25783}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}}
++CALIBRATION_CASES_BY_PURPOSE={'unit-row-marked-aware-calibration-zero': ['MA-01-complete-marked-ZERO'], 'unit-row-marked-aware-calibration-singleton': ['MA-02-complete-marked-SINGLETON'], 'unit-row-marked-aware-calibration-two': ['MA-03-two-marked-witnesses-lower-bound-only'], 'unit-row-marked-aware-calibration-negative-protocol': ['MA-04-wrong-original-binding-provenance-rejected', 'MA-05-omitted-ordered-MP-fibre-rejected', 'MA-06-inconsistent-completion-flag-rejected']}
++FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'decorator': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895', 'bytes': 12619}, 'marked_verifier': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a', 'bytes': 18475}, 'marked_adapter': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py', 'sha256': '821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9', 'bytes': 28980}, 'engine': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py', 'sha256': 'fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476', 'bytes': 56207}, 'fallback': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae', 'bytes': 24227}, 'marked_aware_proposer': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d', 'bytes': 14064}, 'marked_aware_checker': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188', 'bytes': 25783}}
+ FIXED_INPUTS={'stageB_disposition': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e', 'bytes': 4574}, 'stageB_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009', 'bytes': 7924}, 'stageB_transport': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b', 'bytes': 1502}, 'stageB_expanded': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93', 'bytes': 1926833}, 'stageB_encoded': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca', 'bytes': 162591}, 'stageB_response': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e', 'bytes': 7572}, 'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+ 
+@@ -363,8 +364,8 @@
+     plan_raw=path.read_bytes();need(len(plan_raw)<=1048576,'whole bounded Root plan');plan=decode(plan_raw)
+     need(set(plan)=={'schema','invocation_id','purpose','output_directory','sources','inputs','source_contract',
+         'reviews','ROOT_authorization','runtime','limits','resource_rule'},'exact current plan12')
+-    need(plan['schema']=='ROOT-routed-engine-qualification-plan-v1'
+-         and plan['purpose'] in QUALIFICATION_CASES_BY_PURPOSE
++    need(plan['schema']=='ROOT-marked-aware-calibration-plan-v1'
++         and plan['purpose'] in CALIBRATION_CASES_BY_PURPOSE
+          and plan['resource_rule']=='single-owned-process-native-terminal-v1'
+          and plan['limits']==LIMITS and all(type(v) is int for v in plan['limits'].values()),'original six limits')
+     need(type(plan['invocation_id']) is str and 1<=len(plan['invocation_id'])<=128
+@@ -372,12 +373,12 @@
+     need(set(plan['sources'])=={'intake',*FIXED}
+          and all(plan['sources'][k]==v for k,v in FIXED.items())
+          and plan['sources']['intake']['path']==str(Path(__file__).resolve())
+-         and plan['inputs']==FIXED_INPUTS,'exact current executable Source14 and saved input8')
++         and plan['inputs']==FIXED_INPUTS,'exact current executable Source13 and saved input8')
+     need(sys.platform=='darwin' and Path(sys.executable).resolve()==Path(plan['runtime']['path']).resolve(),'native Darwin runtime')
+     read_pinned(plan['runtime'])
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='unit-row-routed-engine-qualification-cold-Source-contract-v1'
++    need(contract['schema']=='unit-row-marked-aware-calibration-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -385,15 +386,15 @@
+     need(set(plan['reviews'])=={'ROOT','peer'},'Root review and distinct whole-Source peer')
+     for role,ref in plan['reviews'].items():
+         review=decode(read_pinned(ref))
+-        need(review['scope']==SCOPE and review['author_identity']=='/root/hilbert_advice_controls'
++        need(review['scope']==SCOPE and review['author_identity']=='/root/arithmetic_induction'
+              and review['source']==plan['sources']['intake'] and review['sources']==plan['sources']
+              and review['source_contract']==plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and type(review['scientific_calls']) is int
+              and review['scientific_calls']==0 and review['scientific_acceptance'] is False
+-             and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] not in ('/root/hilbert_advice_controls','/root')),
++             and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] not in ('/root/arithmetic_induction','/root')),
+              'genuine current scoped Source reviews')
+     grant=decode(read_pinned(plan['ROOT_authorization']))
+-    need(grant['schema']=='ROOT-routed-engine-qualification-authorization-v1'
++    need(grant['schema']=='ROOT-marked-aware-calibration-authorization-v1'
+          and grant['author_identity']=='/root' and grant['actual_execution_authorized'] is True
+          and type(grant['maximum_actual_invocations']) is int and grant['maximum_actual_invocations']==1
+          and all(grant[k]==plan[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',
+@@ -522,7 +523,7 @@
+          'whole accepted frozen marking identity')
+     adapter, engine, fallback = (modules[k] for k in ('marked_adapter','engine','fallback'))
+     decorator, verifier = modules['decorator'], modules['marked_verifier']
+-    need(engine.VERSION == 'lazy-unit-row-global-engine-v12-routed-marked-aware-degree'
++    need(engine.VERSION == 'lazy-unit-row-global-engine-v11-channel4-global-original-key-collision'
+          and adapter.VERSION == 'unit-row-channel4-point-adapter-v1', 'current reviewed engine/adapter versions')
+     definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),
+         'semantics':semantics,'marking':copy.deepcopy(marking),'tick':tick})
+@@ -636,344 +637,186 @@
+         need(canonical(after) == canonical(before),'exact owned semantic/domain/cursor/archive/dependency restore')
+         return after
+ 
+-    degree_router = modules['degree_router']
+-    need(degree_router.VERSION == 'unit-row-channel4-marked-degree-router-v1', 'frozen degree router')
++    new_proposer, new_checker = modules['marked_aware_proposer'], modules['marked_aware_checker']
++    need(new_proposer.VERSION == 'unit-row-marked-aware-nonimp-fibre-proposer-v1'
++         and new_checker.VERSION == 'unit-row-independent-marked-aware-nonimp-fibre-checker-v1',
++         'exact new local-only proposer/checker versions')
+     marking_raw = canonical(marking)
+ 
+-    def routed(language):
+-        return degree_router.RoutedMarkedSemantics(point_semantics=marked_semantics(language),
+-            legacy_proposer=modules['proposer'],marked_aware_proposer=modules['marked_aware_proposer'],
+-            marked_aware_checker=modules['marked_aware_checker'],tick=tick)
+-
+-    def sha(value):return hashlib.sha256(canonical(value)).hexdigest()
+-
+-    def ax(row):
+-        return tile({'rule':'axiom','name':ax_name,'formula':copy.deepcopy(ax_formula)},[],[],row)
+-
+-    def deep_output():
+-        body = ['bot']
+-        for unused in range(41):body=['not',body]
+-        need(language.formula(body)==42,'declared complete small antecedent fibre')
+-        return body
+-
+-    def query(state,row,proposal=None):
+-        private_raw=canonical(state)
+-        if proposal is None:
+-            pl=fresh_language();ps=routed(pl)
+-            proposal=ps.propose_degree(language=pl,state=copy.deepcopy(state),row=row,tick=tick)
+-            del ps,pl
+-        cl=fresh_language();cs=routed(cl)
+-        receipt=cs.check_degree_evidence(language=cl,state=copy.deepcopy(state),row=row,
+-            proposal=copy.deepcopy(proposal),tick=tick)
+-        engine.validate_native_receipt(receipt=receipt,language=cl,semantics=cs,
+-            state=copy.deepcopy(state),row=row,tick=tick)
+-        need(canonical(state)==private_raw and canonical(marking)==marking_raw,'private inputs unchanged')
+-        return {'state':copy.deepcopy(state),'state_sha256':sha(state),'row':row,
+-            'proposal':proposal,'receipt':receipt}
+-
+-    def make_engine(state,log,interrupt=False):
+-        el=fresh_language();es=routed(el)
+-        initial_count=len(state['selected'])
+-        log.update(queries=[],original_cursors=[],marked_cursors=[],covers=[],interruptions=[])
+-        def proposer(**kw):
+-            native_ns=tick()
+-            if interrupt and len(kw['state']['selected'])>initial_count:
+-                log['interruptions'].append({'kind':'DECLARED_ACTUAL_CHILD_DEGREE_INTERRUPTION',
+-                    'native_ns':native_ns,'row':kw['row'],'state':copy.deepcopy(kw['state']),
+-                    'selected_count':len(kw['state']['selected']),'initial_selected_count':initial_count,
+-                    'joint_began_ns':EARLY_G,'joint_deadline_ns':end})
+-                raise ChildControlInterruption('routed qualification native-first actual child degree interruption')
+-            value=es.propose_degree(**kw)
+-            log['queries'].append({'row':kw['row'],'state':copy.deepcopy(kw['state']),
+-                'state_sha256':sha(kw['state']),'proposal':copy.deepcopy(value)})
+-            return value
+-        def original(**kw):
+-            real=fallback.open_fallback(**kw)
+-            record={'context':real.context(),'events':[]};log['original_cursors'].append(record)
+-            return ObservedCursor(real,record,kw['tick'])
+-        def filtered(**kw):
+-            real=adapter.open_fallback(language=kw['language'],semantics=es.point,state=kw['state'],
+-                row=kw['row'],base_fallback=original,tick=kw['tick'])
+-            record={'context':real.context(),'events':[]};log['marked_cursors'].append(record)
+-            return ObservedCursor(real,record,kw['tick'])
+-        def certifier(**kw):
+-            value=engine.certify_by_current_cover(**kw,degree_proposer=proposer,semantics=es)
+-            log['covers'].append({'state':copy.deepcopy(kw['state']),'row':kw['row'],
+-                'completion':copy.deepcopy(kw['completion']),
+-                'checked_candidates':copy.deepcopy(kw['checked_candidates']),'receipt':copy.deepcopy(value)})
+-            return value
+-        e=engine.LazyUnitRowEngine(language=el,degree_proposer=proposer,semantics=es,
+-            fallback=filtered,certify_fallback=certifier,transition_checker=degree_router.RoutedMarkedTransition(),
+-            tick=tick,initial_state=copy.deepcopy(state),maximum_nodes=128,maximum_events=2000,branch_tie='ROW')
+-        return {'engine':e,'language':el,'semantics':es,'proposer':proposer,'certifier':certifier}
+-
+-    def cert(value,row):return dict(value['certificates'])[row]
+-
+-    def expect_error(fn,expected):
+-        try:fn()
+-        except ValueError as error:
+-            need(type(error) is ValueError and str(error)==expected,'exact invalid-data error only')
+-            return {'exception_type':'ValueError','actual_reason':str(error),'expected_reason':expected,
+-                'rejected':True,'returned_receipt':None}
+-        raise ValueError('deliberately invalid protocol unexpectedly accepted')
+-
+-    def protocol_family():
+-        c=deep_output()
+-        zero_seeds=[ug(['all',variable,['bot']],1,3)]
+-        one_seeds=[ug(ax_formula,1,4),ug(c,3,5)]
+-        two_seeds=[ug(c,3,5)]
+-        records={}
+-        records['ZERO']=query(state_from(zero_seeds),1)
+-        records['ONE']=query(state_from(one_seeds),3)
+-        records['TWO']=query(state_from(two_seeds),3)
+-        records['ABSENT']=query(state_from([]),0)
+-        imp_seed=copy.deepcopy(records['ONE']['receipt']['sole_candidate']['base_tile'])
+-        records['IMPLICATION']=query(state_from([imp_seed]),0)
+-        family={'queries':records,'seeds':{'ZERO':zero_seeds,'ONE':one_seeds,'TWO':two_seeds,
+-            'ABSENT':[],'IMPLICATION':[imp_seed]},'failures':[]}
+-        families['ROUTING_PROTOCOL']=family
+-        for name,status,n in (('ZERO','ZERO',0),('ONE','SINGLETON',1),('TWO','TWO_OR_MORE',None)):
+-            p,r=records[name]['proposal'],records[name]['receipt']
+-            need(r['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1' and r['status']==status
+-                 and r['degree_exact']==n and r['complete_cover_checked'] is (n is not None)
+-                 and r['nonimp_fibre_cover_checked'] is (n is not None)
+-                 and p['schema']=='unit-row-marked-aware-nonimp-fibre-proposal-v1','native new route classification')
+-        for name in ('ABSENT','IMPLICATION'):
+-            p,r=records[name]['proposal'],records[name]['receipt']
+-            need(p['schema']=='unit-row-channel4-degree-evidence-proposal-v1'
+-                 and r['schema']=='unit-row-channel4-degree-evidence-check-v1'
+-                 and 'original_base_receipt' in r,'native old route unchanged')
+-        need(records['ABSENT']['receipt']['status']=='TWO_OR_MORE'
+-             and records['IMPLICATION']['receipt']['status']=='UNKNOWN'
+-             and records['IMPLICATION']['receipt']['complete_cover_checked'] is False,'safe absent and implication routes')
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][0],family='ROUTING_PROTOCOL')
+-        tests=[('NEW_ON_ABSENT','ABSENT',copy.deepcopy(records['ZERO']['proposal']),
+-                'marked degree router: checked implication/absent route requires exact legacy proposal protocol'),
+-               ('LEGACY_ON_NONIMP','ZERO',copy.deepcopy(records['ABSENT']['proposal']),
+-                'marked degree router: checked nonimp route requires exact new proposal protocol')]
+-        for field in ('language_binding','state_sha256','marking_id'):
+-            bad=copy.deepcopy(records['ZERO']['proposal'])
+-            if field=='language_binding':bad[field]['language_epoch']='0'*64
+-            else:bad[field]='0'*64
+-            tests.append(('FORGED_'+field,'ZERO',bad,'marked-aware fibre evidence: whole original/marked current context'))
+-        for label,name,bad,reason in tests:
+-            record=records[name]
+-            failure=expect_error(lambda:query(record['state'],record['row'],bad),reason)
+-            family['failures'].append(dict(failure,label=label,state=record['state'],row=record['row'],failing_proposal=bad))
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='ROUTING_PROTOCOL')
+-
+-    def global_family():
+-        c=deep_output();seeds=[ug(ax_formula,1,4),ug(c,3,5)];state=state_from(seeds);log={}
+-        handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()
+-        family={'seeds':seeds,'initial_state':state,'before':before,'actual_log':log}
+-        families['GLOBAL_FORCED_DEAD']=family
+-        try:
+-            result=e.search();after=snapshot(e)
+-            family.update(search_result=result,after=after)
+-            decisions=[v for v in result['events'] if v['kind']=='DECISION']
+-            need([v['decision']['kind'] for v in decisions]==['FORCED','FORCED','DEAD']
+-                 and [v['decision']['row'] for v in decisions]==[1,3,2]
+-                 and result['status']=='EXHAUSTED','actual whole-frontier forced/requery/dead fixture')
+-            places=[v for v in result['events'] if v['kind']=='PLACE']
+-            need([v['row'] for v in places]==[1,3] and all(canonical(v['key'])==canonical(d['decision']['candidate']['placement_key'])
+-                for v,d in zip(places,decisions[:2])),'actual sole decision candidates drive placements')
+-            origins=[q for q in log['queries'] if q['row']==3]
+-            need(len(origins)>=2 and origins[0]['state_sha256']!=origins[1]['state_sha256']
+-                 and all(q['proposal']['schema']=='unit-row-marked-aware-nonimp-fibre-proposal-v1' for q in origins),
+-                 'new AX ledger forces actual q3 requery, not transfer')
+-            invalidations=[v for v in result['events'] if v['kind']=='INVALIDATE']
+-            need(3 in invalidations[0]['rows'] and invalidations[0]['transition']['collision_ledger_equal'] is False,
+-                 'original absent AX prototype is not a stable transfer')
+-            dead_receipt=dict(decisions[-1]['evidence'])[2]
+-            family['actual_dead_receipt']=dead_receipt
+-            need(dead_receipt['status']=='ZERO' and dead_receipt['complete_cover_checked'] is True
+-                 and dead_receipt['degree_exact']==0 and dead_receipt['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1',
+-                 'new ZERO2 preempts unrelated implication UNKNOWN0')
+-            passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][0],family='GLOBAL_FORCED_DEAD')
+-            need(canonical(after)==canonical(before) and result['root_restored'] is True
+-                 and result['stack_restored'] is True and result['found'] is None
+-                 and result['root_snapshot_sha256']==sha(before)==result['final_snapshot_sha256']
+-                 and not any(v['kind']=='EXCLUDE' for v in result['events']),'forced exhaustion full root restore')
+-        finally:e.rollback(outer)
+-        family['outer_after']=snapshot(e)
+-        need(canonical(family['outer_after'])==canonical(before),'owned outer rollback')
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')
+-
+-    def transfer_family(single):
+-        d=['all',variable,copy.deepcopy(ax_formula)]
+-        seeds=([ug(ax_formula,0,2),ug(d,1,3),ax(22)] if single else
+-               [ug(ax_formula,1,4),ug(d,3,6),ax(22)])
+-        row=1 if single else 3;forced_row=0 if single else 1
+-        state=state_from(seeds);log={};handle=make_engine(state,log);e=handle['engine']
+-        before=snapshot(e);outer=e.checkpoint();name='SINGLETON_TRANSFER' if single else 'TWO_TRANSFER'
+-        family={'seeds':seeds,'initial_state':state,'queried_row':row,'before':before,'actual_log':log}
+-        families[name]=family
+-        try:
+-            first=e.decision();checked=snapshot(e);inner=e.checkpoint();origin=cert(checked,row)
+-            family.update(first_actual_decision=first,checked_snapshot=checked,original_receipt=origin)
+-            need(first['kind']=='FORCED' and first['row']==forced_row
+-                 and origin['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1'
+-                 and origin['status']==('SINGLETON' if single else 'TWO_OR_MORE')
+-                 and origin['complete_cover_checked'] is single,'actual initial schedule and native origin')
+-            e.place(first['candidate']);placed=snapshot(e);current=cert(placed,row);proof=rowproof(placed,row)
+-            family.update(forced_candidate=first['candidate'],after_placement=placed,transferred_receipt=current)
+-            need(proof['retain'] is True and placed['last_transition']['collision_ledger_equal'] is True
+-                 and current['schema']=='unit-row-channel4-transferred-domain-classification-v2'
+-                 and canonical(current['original_receipt'])==canonical(origin)
+-                 and current['previous_evidence_sha256']==sha(origin)
+-                 and current['state_sha256']==sha(placed['state'])
+-                 and current['origin_protocol']=={'schema':origin['schema'],'version':origin['version']}
+-                 and current['origin_coverage']=={'kind':'MARKED_AWARE_NONIMP_FIBRES','nonimp_fibre_cover_checked':single}
+-                 and canonical(current['candidate_keys'])==canonical(origin['candidate_keys']),
+-                 'full typed origin preserved by genuine sufficient transition')
+-            if single:
+-                old=origin['sole_candidate'];new=current['sole_candidate']
+-                family['current_packets']=[new]
+-                need(canonical(core(old))==canonical(core(new))
+-                     and [o['occupied'] for o in old['read_obligations']]==[False]
+-                     and [o['occupied'] for o in new['read_obligations']]==[True],'fresh current sole occupancy')
++    def check_new(state, row, proposal):
++        receipt = call(new_checker.check_degree_evidence,kwargs={
++            'language':fresh_language(),'base_semantics':semantics,'verifier':verifier,
++            'marking':copy.deepcopy(marking),'state':copy.deepcopy(state),'row':row,
++            'proposal':copy.deepcopy(proposal),'tick':tick})
++        need(canonical(marking) == marking_raw, 'private accepted marking unchanged')
++        return receipt
++
++    def new_query(state, row):
++        private_state_raw = canonical(state)
++        producer_language = fresh_language()
++        current = marked_semantics(producer_language)
++        proposal = call(new_proposer.propose_degree,kwargs={'language':producer_language,
++            'semantics':current,'state':copy.deepcopy(state),'row':row,'tick':tick})
++        del current, producer_language
++        need(canonical(state) == private_state_raw and canonical(marking) == marking_raw,
++             'producer cannot replace private current state or marking')
++        receipt = check_new(state,row,proposal)
++        need(proposal['schema'] == 'unit-row-marked-aware-nonimp-fibre-proposal-v1'
++             and receipt['schema'] == 'unit-row-marked-aware-nonimp-fibre-check-v1'
++             and receipt['version'] == new_checker.VERSION
++             and receipt['proposal_sha256'] == hashlib.sha256(canonical(proposal)).hexdigest()
++             and canonical(receipt['state']) == private_state_raw
++             and receipt['state_sha256'] == hashlib.sha256(private_state_raw).hexdigest()
++             and canonical(receipt['original_state']) == canonical(proposal['original_state'])
++             and receipt['original_state_sha256'] == proposal['original_state_sha256']
++             and receipt['row'] == row and receipt['input_epoch'] == ORIGINAL_BINDING['language_epoch']
++             and receipt['language_binding'] == ORIGINAL_BINDING
++             and receipt['marking_id'] == marking['marking_id']
++             and receipt['independent_marked_state_check']['marked_state_checked'] is True
++             and all(proposal[k] is False and receipt[k] is False for k in
++                 ('complete_candidate_graph_accepted','scheduler_or_rollback_accepted',
++                  'logical_proof_accepted','ROOT_resource_accepted')),
++             'fresh new typed local receipt/full context with all strong flags false')
++        return {'state':copy.deepcopy(state),'query_row':row,'proposal':proposal,'receipt':receipt}
++
++    def reads_of(candidate):
++        key = candidate['placement_key']
++        return [key['translation'][1]+d for d in key['type_preimage']['base_type_preimage']['ordered_offsets']]
++
++    def fixture(mode):
++        deep42 = ['bot']
++        for unused in range(41): deep42 = ['not',deep42]
++        carrier = None
++        if mode in ('singleton','two'):
++            need(language.formula(deep42) == 42, 'fresh deep42 bounded constructor size')
++            carrier = list(new_proposer.iter_bounded_formulas(language=language,maximum_nodes=1,tick=tick))
++            need(carrier == [['bot']], 'whole original size1 carrier exactly bot')
++        if mode == 'zero':
++            body = ['all',variable,['bot']]
++            seeds, row = [ug(body,1,3)], 1
++        elif mode == 'singleton':
++            seeds, row = [ug(ax_formula,1,4),ug(deep42,3,5)], 3
++        else:
++            need(mode == 'two','declared fixture mode')
++            seeds, row = [ug(deep42,3,5)], 3
++        state = state_from(seeds)
++        result = new_query(state,row)
++        p, r = result['proposal'], result['receipt']
++        need(state['excluded'] == [] and state['generation'] == [[[0,k],0] for k in range(24)]
++             and r['accepted_local_evidence'] is True
++             and canonical(p['candidates']) == canonical(r['checked_candidates'])
++             and r['candidate_keys'] == [c['placement_key'] for c in p['candidates']]
++             and r['checked_root_rejections'] == p['root_rejections'],
++             'actual fixture local evidence, empty exclusions and original roots0')
++        actual_reads = [reads_of(c) for c in p['candidates']]
++        if mode in ('zero','singleton'):
++            cover = r['checked_fibre_cover']
++            need(p['kind'] == 'COMPLETE_NONIMP_FIBRE_COVER' and p['complete_cover_proposed'] is True
++                 and r['complete_cover_checked'] is True and r['nonimp_fibre_cover_checked'] is True
++                 and canonical(cover) == canonical(p['fibre_cover']) and cover['completed'] is True
++                 and len(cover['UG_fibres']) == row and len(cover['ordered_MP_fibres']) == row*row
++                 and all(f['completed'] is True for f in cover['UG_fibres']+cover['ordered_MP_fibres']),
++                 'entire new independent complete finite nonimp census')
++            if mode == 'zero':
++                need(r['status'] == 'ZERO' and type(r['degree_exact']) is int and r['degree_exact'] == 0
++                     and r['candidate_keys'] == [] and r['sole_candidate'] is None
++                     and p['candidates'] == [] and cover['UG_fibres'][0]['examined'] == 1
++                     and cover['UG_fibres'][0]['rejections'] == 1
++                     and cover['ordered_MP_fibres'][0]['case'] == 'FINITE_AST_OCCURS_CHECK_EMPTY',
++                     'complete ZERO after genuine marked UG rejection and same-row MP occurs check')
+             else:
+-                observed={k:v['candidate'] for k,v in placed['exposed_candidates']}
+-                old=origin['checked_candidates'];new=[observed[canonical(k).decode()] for k in origin['candidate_keys']]
+-                family['current_packets']=new
+-                need(all(canonical(core(a))==canonical(core(b)) for a,b in zip(old,new))
+-                     and [o['occupied'] for p in old for o in p['read_obligations']]==[False,False]
+-                     and [o['occupied'] for p in new for o in p['read_obligations']]==[False,True]
+-                     and current['degree_exact'] is current['sole_candidate'] is None
+-                     and current['complete_cover_checked'] is False,'TWO stays lower bound with refreshed observed witnesses')
+-            need(all(o['fact_accepted'] is False for p in family['current_packets'] for o in p['read_obligations']),
+-                 'pending or occupied reads are not proof acceptance')
+-            passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][0],family=name)
+-            second=e.decision();family.update(second_actual_decision=second,after_second_decision=snapshot(e))
+-            if single:
+-                need(second['kind']=='FORCED' and second['row']==1
+-                     and canonical(second['candidate'])==canonical(current['sole_candidate']),
+-                     'actual global schedule consumes refreshed sole')
+-            else:need(second=={'kind':'BRANCH','row':0},'actual all-frontier ROW branch after forced placement')
+-            family['inner_after']=exact_restore(e,inner,checked)
+-        finally:e.rollback(outer)
+-        family['outer_after']=snapshot(e)
+-        need(canonical(family['outer_after'])==canonical(before),'full owned transfer outer restoration')
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family=name)
+-
+-    def stream_component(state,row):
+-        log={};handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);items=[];candidates=[]
+-        while True:
+-            item=e.next_alternative(row);items.append(item)
+-            if item['kind']=='EOF':break
+-            candidates.append(item['candidate'])
+-        completion=items[-1]['completion']
+-        receipt=handle['certifier'](language=handle['language'],state=copy.deepcopy(state),row=row,
+-            completion=completion,checked_candidates=candidates,tick=tick)
+-        record={'state':state,'row':row,'before':before,'after':snapshot(e),'items':items,
+-            'checked_candidates':candidates,'completion':completion,'fresh_cover_receipt':receipt,'actual_log':log}
+-        return record,handle
+-
+-    def eof_family():
+-        c=deep_output();zero_state=state_from([ug(['all',variable,['bot']],1,3)])
+-        one_state=state_from([ug(ax_formula,1,4),ug(c,3,5)])
+-        zero,zh=stream_component(zero_state,1);one,oh=stream_component(one_state,3)
+-        family={'ZERO':zero,'ONE':one,'failures':[]};families['SHORT_EOF']=family
+-        need([v['kind'] for v in zero['items']]==['EOF']
+-             and [v['kind'] for v in one['items']]==['CANDIDATE','EOF']
+-             and zero['fresh_cover_receipt']['status']=='ZERO'
+-             and one['fresh_cover_receipt']['status']=='SINGLETON'
+-             and all(v['fresh_cover_receipt']['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1'
+-                     and v['fresh_cover_receipt']['complete_cover_checked'] is True for v in (zero,one)),
+-             'actual short cursors matched fresh new complete covers')
+-        bads=[('MISSING_KEY',one,oh,copy.deepcopy(one['completion']),[]),
+-              ('EXTRA_KEY',zero,zh,copy.deepcopy(zero['completion']),copy.deepcopy(one['checked_candidates'])),
+-              ('DUPLICATE_KEY',one,oh,copy.deepcopy(one['completion']),one['checked_candidates']*2)]
+-        reason='lazy engine: fresh complete cover agrees with entire checked fallback stream'
+-        for label,record,handle,completion,candidates in bads:
+-            failure=expect_error(lambda:handle['certifier'](language=handle['language'],state=copy.deepcopy(record['state']),
+-                row=record['row'],completion=completion,checked_candidates=candidates,tick=tick),reason)
+-            family['failures'].append(dict(failure,label=label,completion=completion,checked_candidates=candidates,
+-                state=record['state'],row=record['row']))
+-        for field in ('state_sha256','marking_id'):
+-            completion=copy.deepcopy(one['completion']);completion[field]='0'*64
+-            reason='lazy engine: fresh completion/cover exact original context'
+-            failure=expect_error(lambda:oh['certifier'](language=oh['language'],state=copy.deepcopy(one_state),row=3,
+-                completion=completion,checked_candidates=one['checked_candidates'],tick=tick),reason)
+-            family['failures'].append(dict(failure,label='FORGED_'+field,completion=completion,
+-                checked_candidates=one['checked_candidates'],state=one_state,row=3))
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][0],family='SHORT_EOF')
+-        imp_seed=copy.deepcopy(one['fresh_cover_receipt']['sole_candidate']['base_tile'])
+-        imp_state=state_from([imp_seed]);imp,unused=stream_component(imp_state,0)
+-        family.update(IMPLICATION=imp,implication_seed=imp_seed,
+-            implication_standalone_query=query(imp_state,0))
+-        need([v['kind'] for v in imp['items']]==['EOF'] and imp['fresh_cover_receipt'] is None
+-             and family['implication_standalone_query']['receipt']['status']=='UNKNOWN'
+-             and family['implication_standalone_query']['receipt']['complete_cover_checked'] is False,
+-             'actual legacy implication EOF0 remains component-only unaccepted')
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='SHORT_EOF')
+-
+-    def child_family():
+-        state=state_from([]);log={};handle=make_engine(state,log,interrupt=True);e=handle['engine']
+-        before=snapshot(e);outer=e.checkpoint();family={'initial_state':state,'before':before,'actual_log':log}
+-        families['CHILD_UNKNOWN']=family
+-        try:
+-            result=e.search();after=snapshot(e);family.update(search_result=result,after=after)
+-            need(result['status']=='UNKNOWN' and result['reason']=='routed qualification native-first actual child degree interruption'
+-                 and len(log['interruptions'])==1,'declared actual-child stop returned UNKNOWN')
+-            stop=log['interruptions'][0];events=result['events'];tries=[v for v in events if v['kind']=='TRY']
+-            places=[v for v in events if v['kind']=='PLACE'];decisions=[v for v in events if v['kind']=='DECISION']
+-            need(decisions[0]['decision']=={'kind':'BRANCH','row':0} and len(places)>=1 and tries
+-                 and canonical(tries[0]['key'])==canonical(places[0]['key'])
+-                 and any(v['kind']=='CANDIDATE' and canonical(v['candidate']['placement_key'])==canonical(tries[0]['key'])
+-                         for cursor in log['marked_cursors'] for v in cursor['events'])
+-                 and stop['selected_count']==len(stop['state']['selected'])>0
+-                 and canonical(stop['state']['selected'][-1]['type_preimage'])==canonical(places[-1]['key']['type_preimage'])
+-                 and type(stop['native_ns']) is int and EARLY_G<=stop['native_ns']<end,
+-                 'actual global branch canonical child precedes native-first interruption')
+-            passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][0],family='CHILD_UNKNOWN')
+-            need(canonical(after)==canonical(before) and result['root_restored'] is True and result['stack_restored'] is True
+-                 and result['root_snapshot_sha256']==sha(before)==result['final_snapshot_sha256']
+-                 and result['trace_complete'] is False and result['found'] is None
+-                 and not any(v['kind']=='EXCLUDE' for v in events),'UNKNOWN restores without exhausted-child exclusion')
+-        finally:e.rollback(outer)
+-        family['outer_after']=snapshot(e)
+-        need(canonical(family['outer_after'])==canonical(before),'actual-child outer restore')
+-        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='CHILD_UNKNOWN')
++                need(r['status'] == 'SINGLETON' and type(r['degree_exact']) is int and r['degree_exact'] == 1
++                     and len(r['candidate_keys']) == 1 and actual_reads == [[2,0]]
++                     and canonical(r['sole_candidate']) == canonical(p['candidates'][0])
++                     and cover['output_nodes'] == 42 and cover['MP_antecedent_max_nodes'] == 1
++                     and sum(f['rejections'] for f in cover['ordered_MP_fibres']) >= 1,
++                     'complete fresh marked singleton from same oldC4 state, no old receipt replay')
++        else:
++            need(p['kind'] == 'TWO_LEGAL_WITNESSES' and p['complete_cover_proposed'] is False
++                 and p['fibre_cover']['completed'] is False and len(p['candidates']) == 2
++                 and r['status'] == 'TWO_OR_MORE' and r['complete_cover_checked'] is False
++                 and r['nonimp_fibre_cover_checked'] is False and r['degree_exact'] is None
++                 and r['sole_candidate'] is None and r['checked_fibre_cover'] is None
++                 and actual_reads == [[1,0],[1,2]]
++                 and canonical(r['candidate_keys'][0]) != canonical(r['candidate_keys'][1]),
++                 'two actual marked-legal witnesses only, no complete count or EOF authority')
++        result.update(seeds=seeds,size1_carrier=carrier,actual_candidate_reads=actual_reads,
++            evidence_scope='Local degree calibration only; pending read obligations are not installed facts.')
++        return result
++
++    def positive(mode):
++        data = fixture(mode)
++        families[mode.upper()] = data
++        passed(CALIBRATION_CASES_BY_PURPOSE[plan['purpose']][0],family=mode.upper())
++
++    def negative_protocol():
++        data = fixture('zero')
++        proposal, state, row = data['proposal'], data['state'], data['query_row']
++        failures = []
++        for index in range(3):
++            bad = copy.deepcopy(proposal)
++            if index == 0:
++                bad['language_binding']['language_epoch'] = '0'*64
++                mutation = 'language_binding.language_epoch replaced by a stale literal'
++                reason = 'whole original/marked current context'
++            elif index == 1:
++                need(len(bad['fibre_cover']['ordered_MP_fibres']) == 1,'ZERO has one actual ordered MP fibre')
++                omitted = bad['fibre_cover']['ordered_MP_fibres'].pop()
++                mutation = 'required complete ordered_MP_fibres[0] omitted'
++                reason = 'complete independent fibres/counts/hashes'
++            else:
++                bad['complete_cover_proposed'] = False
++                mutation = 'complete kind retained while completion flag falsely changed to partial'
++                reason = 'literal completion flag'
++            expected = 'marked-aware fibre evidence: '+reason
++            try:
++                check_new(state,row,bad)
++            except ValueError as error:
++                need(type(error) is ValueError and str(error) == expected,
++                     'only exact declared invalid-data rejection counts; callback/resource errors propagate')
++                failure = {'mutation':mutation,'failing_proposal':bad,'expected_reason':expected,
++                    'exception_type':'ValueError','actual_reason':str(error),'rejected':True,
++                    'returned_receipt':None}
++                if index == 1: failure['omitted_original_fibre'] = omitted
++                failures.append(failure)
++            else:
++                raise ValueError('new checker accepted deliberately invalid protocol data')
++            passed(CALIBRATION_CASES_BY_PURPOSE[plan['purpose']][index],family='NEGATIVE_PROTOCOL')
++        families['NEGATIVE_PROTOCOL'] = {'valid_zero_fixture':data,'failures':failures,
++            'scope':'Three invalid-data checks only; no callback/timeout is caught or treated as rejection.'}
+ 
+     need(ax_formula[0]=='all' and ax_formula[1] not in language.parameter_set
+          and ax_formula not in marking['definition']['certified_literals'],
+          'declaration-derived first named AX has required literal binder and no forbidden-literal match')
+-    handlers={
+-        'unit-row-marked-aware-router-protocol-controls':protocol_family,
+-        'unit-row-marked-aware-global-forced-dead-controls':global_family,
+-        'unit-row-marked-aware-singleton-transfer-controls':lambda:transfer_family(True),
+-        'unit-row-marked-aware-two-transfer-controls':lambda:transfer_family(False),
+-        'unit-row-marked-aware-short-EOF-controls':eof_family,
+-        'unit-row-marked-aware-child-UNKNOWN-controls':child_family}
+-    call(handlers[plan['purpose']])
+-    expected_controls = QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']]
++    suffix = plan['purpose'].removeprefix('unit-row-marked-aware-calibration-')
++    if suffix == 'negative-protocol': call(negative_protocol)
++    else: call(positive,(suffix,))
++    expected_controls = CALIBRATION_CASES_BY_PURPOSE[plan['purpose']]
+     need([c['case'] for c in controls] == expected_controls
+          and len(controls) == len(expected_controls) and all(c['status'] == 'PASSED' for c in controls),
+          'every essential local calibration assertion completed, without SKIP/substitution')
+-    qualification = {'schema':'ROOT-unit-row-routed-engine-qualification-payload-v1',
+-        'stage':'ROUTED_ENGINE_CONSUMER_QUALIFICATION_ONLY','endpoint_purpose':plan['purpose'],
+-        'separate_endpoint_count':6,'required_case_count':12,'whole_engine_qualification_accepted':False,
+-        'same_process_all_twelve_qualified':False,
++    calibration = {'schema':'ROOT-unit-row-marked-aware-calibration-payload-v1',
++        'stage':'LOCAL_NEW_MARKED_AWARE_NONIMP_DEGREE_ONLY','endpoint_purpose':plan['purpose'],
++        'separate_endpoint_count':4,'whole_calibration_qualification_accepted':False,
++        'same_process_all_six_qualified':False,
+         'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('stageB_')},
+         'original_model_sources':ORIGINAL_SOURCES,'original_model_binding':ORIGINAL_BINDING,
+         'marking':marking,'definition_check':definition_check,'families':families,
+         'controls':controls,'control_count':len(controls),'expected_cases':expected_controls,'all_controls_completed':True,
+-        'controlled_search_performed':plan['purpose'] in ('unit-row-marked-aware-global-forced-dead-controls',
+-            'unit-row-marked-aware-child-UNKNOWN-controls'),
+-        'target_benchmark_search_performed':False,'prior_StageC_suite_qualified':False,
++        'target_search_performed':False,'engine_or_fallback_queried':False,
++        'old_degree_proposal_or_receipt_replayed':False,'new_receipt_engine_compatibility_claimed':False,
+         'failure_marking_activated':False,'logical_proof_accepted':False,'exact_point_board_accepted':False,
+         'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,'RL_accepted':False,
+         'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}
+-    result_raw = canonical({'schema':'ROOT-unit-row-routed-engine-qualification-result-v1','purpose':plan['purpose'],
++    result_raw = canonical({'schema':'ROOT-unit-row-marked-aware-calibration-result-v1','purpose':plan['purpose'],
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+-        'controls':None,'search':None,'found_validation':None,'routed_engine_qualification':qualification,
++        'controls':None,'search':None,'found_validation':None,'marked_aware_calibration':calibration,
+         'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     result_raw=call(encode_result_transport,(result_raw,))
+     run=Path(plan['output_directory']);need(run.is_absolute() and run==run.resolve() and not run.exists(),'fresh canonical owned output')
+     run.mkdir(mode=0o700);result_pin=call(write_new,(run/'engine-result.json',result_raw))
+-    body={'schema':'ROOT-unit-row-routed-engine-qualification-response-body-v1','version':VERSION,
++    body={'schema':'ROOT-unit-row-marked-aware-calibration-response-body-v1','version':VERSION,
+         'status':'COMPLETE_WORKER_PENDING_EXTERNAL','invocation_id':plan['invocation_id'],'plan':raw_pin(plan_raw),
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,'original_model_binding':ORIGINAL_BINDING,
+         'outputs':[result_pin],'joint_began_ns':EARLY_G,'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,
+@@ -985,7 +828,7 @@
+         'exit_zero_and_coordinator_deadline_required':True}
+     response_pin=call(write_new,(run/'response.jsonl',body_raw+canonical(completion)+b'\n'))
+     need(sorted(p.name for p in run.iterdir())==['engine-result.json','response.jsonl'],'whole output2')
+-    final_raw=canonical({'schema':'ROOT-unit-row-routed-engine-qualification-final-observation-v1',
++    final_raw=canonical({'schema':'ROOT-unit-row-marked-aware-calibration-final-observation-v1',
+         'outputs':[result_pin,response_pin],'response':response_pin,'pending_external':True,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     boundary();offset=0

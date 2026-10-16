@@ -1,0 +1,482 @@
+{
+  "helpers": {
+    "closer": {
+      "actual_unified_forward_inverse_verified": true,
+      "added_top_definitions": [
+        "certificate",
+        "core",
+        "cursor_stream",
+        "logged_receipt",
+        "native_receipt",
+        "packet",
+        "search_result",
+        "seed_join",
+        "selected_append",
+        "snapshot",
+        "transfer_join"
+      ],
+      "changed_top_definitions": [
+        "aggregate",
+        "auth_plan",
+        "failure_only",
+        "query_record"
+      ],
+      "edit_count": 40,
+      "edits": [
+        {
+          "new_end": 160,
+          "new_start": 0,
+          "new_utf8": "\"\"\"Saved routed engine control concordance only; no scientific evaluation or replay.\nSix distinct original20 windows; no combined20/oldStageC/target promotion.\n",
+          "old_end": 158,
+          "old_start": 0,
+          "old_utf8": "\"\"\"Saved local calibration concordance only; no scientific evaluation or replay.\nFour distinct original20 windows, no combined20/engine/target qualification.\n"
+        },
+        {
+          "new_end": 2065,
+          "new_start": 653,
+          "new_utf8": "EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'dbe07d4eff585af988f052d7ed08ff164c3dc65ed8cdda2bac16be981db54941', 'bytes': 38188}\nMODE_PURPOSE={'router-protocol': 'unit-row-marked-aware-router-protocol-controls', 'global-forced-dead': 'unit-row-marked-aware-global-forced-dead-controls', 'singleton-transfer': 'unit-row-marked-aware-singleton-transfer-controls', 'two-transfer': 'unit-row-marked-aware-two-transfer-controls', 'short-EOF': 'unit-row-marked-aware-short-EOF-controls', 'child-UNKNOWN': 'unit-row-marked-aware-child-UNKNOWN-controls'}\nEXPECTED_CASES={'router-protocol': ['MR-01-new-and-legacy-route-consumption', 'MR-02-wrong-route-and-context-rejected'], 'global-forced-dead': ['MR-03-global-forced-requery-dead-exhaustion', 'MR-04-owned-full-root-restoration'], 'singleton-transfer': ['MR-05-native-singleton-full-origin-transfer', 'MR-06-current-sole-consumption-and-owned-rollback'], 'two-transfer': ['MR-07-native-TWO-full-origin-transfer', 'MR-08-refreshed-witnesses-global-branch-and-owned-rollback'], 'short-EOF': ['MR-09-real-short-stream-and-fresh-complete-keySET', 'MR-10-legacy-implication-EOF-remains-unaccepted'], 'child-UNKNOWN': ['MR-11-actual-child-native-first-declared-UNKNOWN', 'MR-12-UNKNOWN-no-exclusion-full-owned-rollback']}\n",
+          "old_end": 1503,
+          "old_start": 651,
+          "old_utf8": "EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd5a0467432caaf18cba837b1bd72c83eeefd80c2763b64641786af34b26fb773', 'bytes': 27670}\nMODE_PURPOSE={'negative-protocol': 'unit-row-marked-aware-calibration-negative-protocol', 'singleton': 'unit-row-marked-aware-calibration-singleton', 'two': 'unit-row-marked-aware-calibration-two', 'zero': 'unit-row-marked-aware-calibration-zero'}\nEXPECTED_CASES={'negative-protocol': ['MA-04-wrong-original-binding-provenance-rejected', 'MA-05-omitted-ordered-MP-fibre-rejected', 'MA-06-inconsistent-completion-flag-rejected'], 'singleton': ['MA-02-complete-marked-SINGLETON'], 'two': ['MA-03-two-marked-witnesses-lower-bound-only'], 'zero': ['MA-01-complete-marked-ZERO']}\n"
+        },
+        {
+          "new_end": 2610,
+          "new_start": 2500,
+          "new_utf8": "    assert plan['schema']=='ROOT-routed-engine-qualification-plan-v1' and plan['purpose']==MODE_PURPOSE[mode]\n",
+          "old_end": 2045,
+          "old_start": 1938,
+          "old_utf8": "    assert plan['schema']=='ROOT-marked-aware-calibration-plan-v1' and plan['purpose']==MODE_PURPOSE[mode]\n"
+        },
+        {
+          "new_end": 3125,
+          "new_start": 2904,
+          "new_utf8": "    assert len(plan['sources'])==14 and len(plan['inputs'])==8\n    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='38f8f86f5af3474a0eed6fac7ff89c5d9c2b327d1413a2164be24ca8d7ea6e60'\n",
+          "old_end": 2560,
+          "old_start": 2339,
+          "old_utf8": "    assert len(plan['sources'])==13 and len(plan['inputs'])==8\n    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817'\n"
+        },
+        {
+          "new_end": 3621,
+          "new_start": 3485,
+          "new_utf8": "        assert v['scope']=='unit-row-routed-engine-qualification-cold-Source' and v['author_identity']=='/root/hilbert_advice_controls'\n",
+          "old_end": 3050,
+          "old_start": 2920,
+          "old_utf8": "        assert v['scope']=='unit-row-marked-aware-calibration-cold-Source' and v['author_identity']=='/root/arithmetic_induction'\n"
+        },
+        {
+          "new_end": 4069,
+          "new_start": 3932,
+          "new_utf8": "        assert(v['reviewer_identity']=='/root'if role=='ROOT'else v['reviewer_identity']not in('/root','/root/hilbert_advice_controls'))\n",
+          "old_end": 3495,
+          "old_start": 3361,
+          "old_utf8": "        assert(v['reviewer_identity']=='/root'if role=='ROOT'else v['reviewer_identity']not in('/root','/root/arithmetic_induction'))\n"
+        },
+        {
+          "new_end": 4285,
+          "new_start": 4119,
+          "new_utf8": "    assert grant['schema']=='ROOT-routed-engine-qualification-authorization-v1' and grant['author_identity']=='/root' and grant['actual_execution_authorized']is True\n",
+          "old_end": 3708,
+          "old_start": 3545,
+          "old_utf8": "    assert grant['schema']=='ROOT-marked-aware-calibration-authorization-v1' and grant['author_identity']=='/root' and grant['actual_execution_authorized']is True\n"
+        },
+        {
+          "new_end": 4886,
+          "new_start": 4679,
+          "new_utf8": "    plan_path=HERE/('ROOT-MR-'+mode+'-plan-v1.json');plan=read(plan_path);pp=pin(plan_path)\n    contract=auth_plan(plan,pp,mode);owned=HERE/('MR-'+mode+'-owned-v1');external=HERE/('MR-'+mode+'-external-v1')\n",
+          "old_end": 4309,
+          "old_start": 4102,
+          "old_utf8": "    plan_path=HERE/('ROOT-MA-'+mode+'-plan-v1.json');plan=read(plan_path);pp=pin(plan_path)\n    contract=auth_plan(plan,pp,mode);owned=HERE/('MA-'+mode+'-owned-v1');external=HERE/('MA-'+mode+'-external-v1')\n"
+        },
+        {
+          "new_end": 5026,
+          "new_start": 4935,
+          "new_utf8": "    bracket_path=HERE/('ROOT-MR-'+mode+'-tool-bracket-v1.json');bracket=read(bracket_path)\n",
+          "old_end": 4449,
+          "old_start": 4358,
+          "old_utf8": "    bracket_path=HERE/('ROOT-MA-'+mode+'-tool-bracket-v1.json');bracket=read(bracket_path)\n"
+        },
+        {
+          "new_end": 7692,
+          "new_start": 7570,
+          "new_utf8": "    disposition=dict(schema='ROOT-routed-engine-qualification-endpoint-disposition-v1',mode=mode,purpose=plan['purpose'],\n",
+          "old_end": 7112,
+          "old_start": 6993,
+          "old_utf8": "    disposition=dict(schema='ROOT-marked-aware-calibration-endpoint-disposition-v1',mode=mode,purpose=plan['purpose'],\n"
+        },
+        {
+          "new_end": 8732,
+          "new_start": 8561,
+          "new_utf8": "        complete_returned_record=False,owned_output_directory_exists=owned.exists(),whole_engine_qualification_accepted=False,\n        prior_StageC_suite_qualified=False,\n",
+          "old_end": 8113,
+          "old_start": 7981,
+          "old_utf8": "        complete_returned_record=False,owned_output_directory_exists=owned.exists(),whole_calibration_qualification_accepted=False,\n"
+        },
+        {
+          "new_end": 9783,
+          "new_start": 9729,
+          "new_utf8": "    out=HERE/('ROOT-MR-'+mode+'-disposition-v1.json')\n",
+          "old_end": 9164,
+          "old_start": 9110,
+          "old_utf8": "    out=HERE/('ROOT-MA-'+mode+'-disposition-v1.json')\n"
+        },
+        {
+          "new_end": 10403,
+          "new_start": 10170,
+          "new_utf8": "        p=HERE/('ROOT-MR-'+mode+'-disposition-v1.json');v=read(p);refs[mode]=pin(p);records[mode]=v\n        assert v['schema']=='ROOT-routed-engine-qualification-endpoint-disposition-v1' and v['mode']==mode and v['purpose']==purpose\n",
+          "old_end": 9781,
+          "old_start": 9551,
+          "old_utf8": "        p=HERE/('ROOT-MA-'+mode+'-disposition-v1.json');v=read(p);refs[mode]=pin(p);records[mode]=v\n        assert v['schema']=='ROOT-marked-aware-calibration-endpoint-disposition-v1' and v['mode']==mode and v['purpose']==purpose\n"
+        },
+        {
+          "new_end": 10598,
+          "new_start": 10492,
+          "new_utf8": "        assert v['whole_engine_qualification_accepted']is False and v['case_names']==EXPECTED_CASES[mode]\n",
+          "old_end": 9981,
+          "old_start": 9870,
+          "old_utf8": "        assert v['whole_calibration_qualification_accepted']is False and v['case_names']==EXPECTED_CASES[mode]\n"
+        },
+        {
+          "new_end": 12488,
+          "new_start": 12420,
+          "new_utf8": "    assert len(set(ids))==len(set(plans))==len(set(directories))==6\n",
+          "old_end": 11871,
+          "old_start": 11803,
+          "old_utf8": "    assert len(set(ids))==len(set(plans))==len(set(directories))==4\n"
+        },
+        {
+          "new_end": 12703,
+          "new_start": 12550,
+          "new_utf8": "    complete=len(qualified)==12 and not unqualified\n    result=dict(schema='ROOT-routed-engine-qualification-disposition-v1',endpoint_dispositions=refs,\n",
+          "old_end": 12082,
+          "old_start": 11933,
+          "old_utf8": "    complete=len(qualified)==6 and not unqualified\n    result=dict(schema='ROOT-marked-aware-calibration-disposition-v1',endpoint_dispositions=refs,\n"
+        },
+        {
+          "new_end": 13067,
+          "new_start": 12943,
+          "new_utf8": "        all_six_endpoints_closed=True,separate_endpoint_count=6,required_case_count=12,qualified_case_count=len(qualified),\n",
+          "old_end": 12446,
+          "old_start": 12322,
+          "old_utf8": "        all_four_endpoints_closed=True,separate_endpoint_count=4,required_case_count=6,qualified_case_count=len(qualified),\n"
+        },
+        {
+          "new_end": 13392,
+          "new_start": 13172,
+          "new_utf8": "        routed_engine_qualification_accepted=complete,combined20_suite_claimed=False,\n        same_process_all_twelve_qualified=False,bounded_routed_engine_controls_qualified=complete,prior_StageC_suite_qualified=False,\n",
+          "old_end": 12722,
+          "old_start": 12551,
+          "old_utf8": "        local_marked_aware_calibration_qualified=complete,combined20_suite_claimed=False,\n        same_process_all_six_qualified=False,engine_integration_qualified=False,\n"
+        },
+        {
+          "new_end": 13881,
+          "new_start": 13824,
+          "new_utf8": "    out=HERE/'ROOT-MR-qualification-disposition-v1.json'\n",
+          "old_end": 13209,
+          "old_start": 13154,
+          "old_utf8": "    out=HERE/'ROOT-MA-calibration-disposition-v1.json'\n"
+        },
+        {
+          "new_end": 14125,
+          "new_start": 13966,
+          "new_utf8": "    print(json.dumps({'disposition':pin(out),'qualified_cases':len(qualified),'bounded_routed_engine_controls_qualified':complete,'scientific_replay':False}))\n",
+          "old_end": 13440,
+          "old_start": 13294,
+          "old_utf8": "    print(json.dumps({'disposition':pin(out),'qualified_cases':len(qualified),'local_calibration_qualified':complete,'scientific_replay':False}))\n"
+        },
+        {
+          "new_end": 14355,
+          "new_start": 14265,
+          "new_utf8": "if read(HERE/('MR-'+mode+'-external-v1')/'native-terminal.json')['caller_returncode']!=0:\n",
+          "old_end": 13670,
+          "old_start": 13580,
+          "old_utf8": "if read(HERE/('MA-'+mode+'-external-v1')/'native-terminal.json')['caller_returncode']!=0:\n"
+        },
+        {
+          "new_end": 14618,
+          "new_start": 14391,
+          "new_utf8": "plan_path=HERE/('ROOT-MR-'+mode+'-plan-v1.json');plan=read(plan_path);pp=pin(plan_path)\nowned=HERE/('MR-'+mode+'-owned-v1');external=HERE/('MR-'+mode+'-external-v1')\nbracket=read(HERE/('ROOT-MR-'+mode+'-tool-bracket-v1.json'))\n",
+          "old_end": 13933,
+          "old_start": 13706,
+          "old_utf8": "plan_path=HERE/('ROOT-MA-'+mode+'-plan-v1.json');plan=read(plan_path);pp=pin(plan_path)\nowned=HERE/('MA-'+mode+'-owned-v1');external=HERE/('MA-'+mode+'-external-v1')\nbracket=read(HERE/('ROOT-MA-'+mode+'-tool-bracket-v1.json'))\n"
+        },
+        {
+          "new_end": 15641,
+          "new_start": 15502,
+          "new_utf8": "assert body['schema']=='ROOT-unit-row-routed-engine-qualification-response-body-v1' and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'\n",
+          "old_end": 14953,
+          "old_start": 14817,
+          "old_utf8": "assert body['schema']=='ROOT-unit-row-marked-aware-calibration-response-body-v1' and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'\n"
+        },
+        {
+          "new_end": 17632,
+          "new_start": 17560,
+          "new_utf8": "transport=read(HERE/('ROOT-MR-'+mode+'-transport-concordance-v1.json'))\n",
+          "old_end": 16944,
+          "old_start": 16872,
+          "old_utf8": "transport=read(HERE/('ROOT-MA-'+mode+'-transport-concordance-v1.json'))\n"
+        },
+        {
+          "new_end": 18573,
+          "new_start": 18225,
+          "new_utf8": "data=result['routed_engine_qualification'];contract=read(check(plan['source_contract']))\nassert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-routed-engine-qualification-cold-Source-contract-v1'\nassert len(plan['sources'])==14 and len(plan['inputs'])==8 and plan['schema']=='ROOT-routed-engine-qualification-plan-v1'\n",
+          "old_end": 17876,
+          "old_start": 17537,
+          "old_utf8": "data=result['marked_aware_calibration'];contract=read(check(plan['source_contract']))\nassert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-marked-aware-calibration-cold-Source-contract-v1'\nassert len(plan['sources'])==13 and len(plan['inputs'])==8 and plan['schema']=='ROOT-marked-aware-calibration-plan-v1'\n"
+        },
+        {
+          "new_end": 19030,
+          "new_start": 18855,
+          "new_utf8": "assert contract['source']['sha256']=='38f8f86f5af3474a0eed6fac7ff89c5d9c2b327d1413a2164be24ca8d7ea6e60'\nassert body['version']=='unit-row-routed-engine-qualification-cold-v1'\n",
+          "old_end": 18343,
+          "old_start": 18158,
+          "old_utf8": "assert contract['source']['sha256']=='5780335b8f384dabe79062787771cc48a24d19464e8d51c10cc1e4579e1b1817'\nassert body['version']=='unit-row-marked-aware-local-degree-calibration-cold-v1'\n"
+        },
+        {
+          "new_end": 19710,
+          "new_start": 19339,
+          "new_utf8": "assert data['schema']=='ROOT-unit-row-routed-engine-qualification-payload-v1'\nassert data['stage']=='ROUTED_ENGINE_CONSUMER_QUALIFICATION_ONLY'\nassert data['endpoint_purpose']==plan['purpose'] and data['separate_endpoint_count']==6 and data['required_case_count']==12\nassert data['whole_engine_qualification_accepted']is data['same_process_all_twelve_qualified']is False\n",
+          "old_end": 18986,
+          "old_start": 18652,
+          "old_utf8": "assert data['schema']=='ROOT-unit-row-marked-aware-calibration-payload-v1'\nassert data['stage']=='LOCAL_NEW_MARKED_AWARE_NONIMP_DEGREE_ONLY'\nassert data['endpoint_purpose']==plan['purpose'] and data['separate_endpoint_count']==4\nassert data['whole_calibration_qualification_accepted']is data['same_process_all_six_qualified']is False\n"
+        },
+        {
+          "new_end": 20355,
+          "new_start": 20213,
+          "new_utf8": "    assert review['scope']=='unit-row-routed-engine-qualification-cold-Source' and review['author_identity']=='/root/hilbert_advice_controls'\n",
+          "old_end": 19625,
+          "old_start": 19489,
+          "old_utf8": "    assert review['scope']=='unit-row-marked-aware-calibration-cold-Source' and review['author_identity']=='/root/arithmetic_induction'\n"
+        },
+        {
+          "new_end": 20853,
+          "new_start": 20708,
+          "new_utf8": "    assert (review['reviewer_identity']=='/root' if role=='ROOT'else review['reviewer_identity']not in('/root','/root/hilbert_advice_controls'))\n",
+          "old_end": 20120,
+          "old_start": 19978,
+          "old_utf8": "    assert (review['reviewer_identity']=='/root' if role=='ROOT'else review['reviewer_identity']not in('/root','/root/arithmetic_induction'))\n"
+        },
+        {
+          "new_end": 21013,
+          "new_start": 20899,
+          "new_utf8": "assert grant['schema']=='ROOT-routed-engine-qualification-authorization-v1' and grant['author_identity']=='/root'\n",
+          "old_end": 20277,
+          "old_start": 20166,
+          "old_utf8": "assert grant['schema']=='ROOT-marked-aware-calibration-authorization-v1' and grant['author_identity']=='/root'\n"
+        },
+        {
+          "new_end": 23204,
+          "new_start": 23038,
+          "new_utf8": "assert result['schema']=='ROOT-unit-row-routed-engine-qualification-result-v1' and stdout['schema']=='ROOT-unit-row-routed-engine-qualification-final-observation-v1'\n",
+          "old_end": 22462,
+          "old_start": 22302,
+          "old_utf8": "assert result['schema']=='ROOT-unit-row-marked-aware-calibration-result-v1' and stdout['schema']=='ROOT-unit-row-marked-aware-calibration-final-observation-v1'\n"
+        },
+        {
+          "new_end": 25241,
+          "new_start": 24831,
+          "new_utf8": "ENGINE_VERSION='lazy-unit-row-global-engine-v12-routed-marked-aware-degree'\nNEW_SCHEMA='unit-row-marked-aware-nonimp-fibre-check-v1'\nNEW_VERSION='unit-row-independent-marked-aware-nonimp-fibre-checker-v1'\nRULES=['axiom','assumption','instantiate','eq_subst','mp','generalize']\nFALSE_FLAGS=('complete_candidate_graph_accepted','scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted')\n",
+          "old_end": 26714,
+          "old_start": 24089,
+          "old_utf8": "def query_record(record):\n    s=state(record['state']);row=record['query_row'];p=record['proposal'];r=record['receipt']\n    assert type(row)is int and 0<=row<24 and points(s['t'])[(0,row)]==0\n    assert p['schema']=='unit-row-marked-aware-nonimp-fibre-proposal-v1' and p['version']=='unit-row-marked-aware-nonimp-fibre-proposer-v1'\n    assert r['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1' and r['version']=='unit-row-independent-marked-aware-nonimp-fibre-checker-v1'\n    for v in(p,r):\n        equal(v['state'],s);assert v['state_sha256']==sha(s) and v['row']==row\n        assert v['input_epoch']==binding['language_epoch'] and v['language_binding']==binding and v['marking_id']==mid\n        assert v['original_state_sha256']==sha(v['original_state'])\n        for k in('complete_candidate_graph_accepted','scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted'):assert v[k]is False\n    equal(p['original_state'],r['original_state'])\n    equal(r['checked_candidates'],p['candidates']);equal(r['candidate_keys'],[c['placement_key']for c in p['candidates']])\n    assert r['proposal_sha256']==sha(p) and r['marking_sha256']==sha(data['marking'])\n    check=r['independent_marked_state_check'];assert check['marked_state_checked']is check['projection_literals_rechecked']is True\n    assert check['original_binding']==binding and check['original_state_sha256']==p['original_state_sha256'] and check['marking_id']==mid\n    equal(p['output_formula'],r['output_formula'])\n    equal(points(s['m'])[(1,row)],['formula',canonical(p['output_formula']).decode()])\n    assert p['untrusted']is True and r['accepted_local_evidence']is True\n    assert len(record['seeds'])==len(s['selected'])\n    for seed,selected in zip(record['seeds'],s['selected']):\n        equal(seed['placement_key']['type_preimage'],selected['type_preimage']['base_type_preimage'])\n        equal(seed['placement_key']['translation'],selected['translation'])\n    actual=[]\n    for c in p['candidates']:\n        key=c['placement_key'];pre=key['type_preimage'];base=pre['base_type_preimage']\n        assert key['translation']==[0,row] and pre['marking_id']==mid and base['input_epoch']==binding['language_epoch']\n        assert base['primitive_witness']['rule']=='mp'\n        actual.append([row+d for d in base['ordered_offsets']])\n        equal(c['base_tile']['placement_key']['type_preimage'],base)\n        equal(c['base_tile']['placement_key']['translation'],key['translation'])\n    equal(actual,record['actual_candidate_reads'])\n    assert len({canonical(k)for k in r['candidate_keys']})==len(r['candidate_keys'])\n    return p,r\n"
+        },
+        {
+          "new_end": 26282,
+          "new_start": 25242,
+          "new_utf8": "def packet(value,current):\n    key=value['placement_key'];row=key['translation'][1];pre=key['type_preimage'];base=pre['base_type_preimage']\n    assert key['translation']==[0,row] and type(row)is int and 0<=row<24\n    assert pre['schema']=='unit-row-row0-decorated-type-v1' and pre['marking_id']==mid and base['input_epoch']==binding['language_epoch']\n    equal(value['base_tile']['placement_key']['type_preimage'],base)\n    equal(value['base_tile']['placement_key']['translation'],key['translation'])\n    equal(value['global_t_values'],[[[0,row],1]])\n    equal(value['selection_record'],dict(key,generation=1))\n    offsets=base['ordered_offsets'];premises=base['ordered_premise_formulas'];obs=value['read_obligations']\n    assert len(offsets)==len(premises)==len(obs) and all(type(d)is int and -23<=d<0 and 0<=row+d<row for d in offsets)\n    totals=points(current['t'])\n    for d,formula,o in zip(offsets,premises,obs):\n        equal(o,{'row':row+d,'formula':formula,'occupied':totals[(0,row+d)]==1,'fact_accepted':False})\n    return value\n",
+          "old_end": 27627,
+          "old_start": 26715,
+          "old_utf8": "def complete_zero(record):\n    p,r=query_record(record);f=p['fibre_cover']\n    assert record['query_row']==1 and record['size1_carrier']is None\n    assert p['kind']=='COMPLETE_NONIMP_FIBRE_COVER' and p['complete_cover_proposed']is True\n    assert r['status']=='ZERO' and type(r['degree_exact'])is int and r['degree_exact']==0\n    assert r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is True\n    assert r['candidate_keys']==p['candidates']==[] and r['sole_candidate']is None\n    equal(f,r['checked_fibre_cover']);assert f['completed']is True and len(f['UG_fibres'])==len(f['ordered_MP_fibres'])==1\n    assert f['UG_fibres'][0]['examined']==f['UG_fibres'][0]['rejections']==1\n    assert f['ordered_MP_fibres'][0]['rows']==[0,0] and f['ordered_MP_fibres'][0]['case']=='FINITE_AST_OCCURS_CHECK_EMPTY'\n    assert all(x['completed']is True for x in f['UG_fibres']+f['ordered_MP_fibres'])\n    return p,r\n"
+        },
+        {
+          "new_end": 48237,
+          "new_start": 26283,
+          "new_utf8": "def native_receipt(value,current,row,proposal=None):\n    state(current)\n    assert value['input_epoch']==binding['language_epoch'] and value['marking_id']==mid\n    assert value['state_sha256']==sha(current) and type(value['row'])is int and value['row']==row\n    assert all(value[k]is False for k in FALSE_FLAGS)\n    keys=value['candidate_keys'];assert type(keys)is list and len({canonical(k)for k in keys})==len(keys)\n    covered=value['complete_cover_checked'];assert type(covered)is bool\n    if covered:\n        n=value['degree_exact'];assert type(n)is int and n==len(keys)\n        assert value['status']==('ZERO'if n==0 else'SINGLETON'if n==1 else'MANY')\n        if n==1:packet(value['sole_candidate'],current);equal(value['sole_candidate']['placement_key'],keys[0])\n        else:assert value['sole_candidate']is None\n    else:\n        assert value['degree_exact']is value['sole_candidate']is None\n        assert(value['status']=='TWO_OR_MORE'and len(keys)>=2)or(value['status']=='UNKNOWN'and len(keys)<=1)\n    assert value['accepted_local_evidence']is(value['status']!='UNKNOWN')\n    if value['schema']==NEW_SCHEMA:\n        assert value['version']==NEW_VERSION and value['nonimp_fibre_cover_checked']is covered\n        equal(value['state'],current);assert value['original_state_sha256']==sha(value['original_state'])\n        assert value['language_binding']==binding and value['marking_sha256']==sha(data['marking'])\n        equal(points(current['m'])[(1,row)],['formula',canonical(value['output_formula']).decode()])\n        assert value['output_formula'][0]!='imp' and 'original_base_receipt'not in value\n        equal(value['candidate_keys'],[c['placement_key']for c in value['checked_candidates']])\n        for c in value['checked_candidates']:packet(c,current)\n        chk=value['independent_marked_state_check']\n        assert chk['marked_state_checked']is chk['projection_literals_rechecked']is True\n        assert chk['original_binding']==binding and chk['marking_id']==mid and chk['original_state_sha256']==value['original_state_sha256']\n        if covered:assert type(value['checked_fibre_cover'])is dict and value['checked_fibre_cover']['completed']is True\n        else:assert value['checked_fibre_cover']is None\n        if proposal is not None:\n            assert proposal['schema']=='unit-row-marked-aware-nonimp-fibre-proposal-v1'\n            assert proposal['version']=='unit-row-marked-aware-nonimp-fibre-proposer-v1'\n            assert value['proposal_sha256']==sha(proposal)\n            equal(proposal['state'],current);equal(proposal['original_state'],value['original_state'])\n            assert proposal['state_sha256']==sha(current) and proposal['original_state_sha256']==value['original_state_sha256']\n            assert proposal['language_binding']==binding and proposal['marking_id']==mid and proposal['row']==row\n            equal(proposal['candidates'],value['checked_candidates'])\n            equal(proposal['root_rejections'],value['checked_root_rejections'])\n            assert proposal['complete_cover_proposed']is covered and proposal['untrusted']is True\n            if covered:equal(proposal['fibre_cover'],value['checked_fibre_cover'])\n            else:assert proposal['fibre_cover']['completed']is False\n    else:\n        assert value['schema']=='unit-row-channel4-degree-evidence-check-v1'\n        assert value['version']=='unit-row-channel4-filtered-degree-semantics-v1'\n        assert type(value['original_base_receipt'])is dict and type(value['missing_mark_cover_checked'])is bool\n        if proposal is not None:\n            assert proposal['schema']=='unit-row-channel4-degree-evidence-proposal-v1' and proposal['version']=='unit-row-channel4-point-adapter-v1'\n            equal(proposal['state'],current);assert proposal['state_sha256']==sha(current)\n            assert proposal['language_binding']==binding and proposal['marking_id']==mid and proposal['row']==row\n            equal(proposal['marked_rejections'],value['marked_rejections'])\n            equal([c['placement_key']for c in proposal['candidates']],keys)\n            for c in proposal['candidates']:packet(c,current)\n            b=proposal['original_proposal'];r=value['original_base_receipt']\n            assert r['state_sha256']==sha(b['state'])==b['state_sha256'] and r['row']==b['row']==row\n            assert r['input_epoch']==b['input_epoch']==binding['language_epoch']\n    if proposal is not None:assert all(proposal[k]is False for k in FALSE_FLAGS)\n    return value\n\ndef query_record(q):\n    assert q['state_sha256']==sha(q['state'])\n    return native_receipt(q['receipt'],q['state'],q['row'],q['proposal'])\n\ndef logged_receipt(log,value,current,row):\n    matches=[q for q in log['queries']if q['row']==row and q['state_sha256']==sha(current)\n        and sha(q['proposal'])==value['proposal_sha256']]\n    assert matches\n    for q in matches:\n        equal(q['state'],current);native_receipt(value,current,row,q['proposal'])\n\ndef snapshot(v):\n    state(v['state']);assert v['schema']=='unit-row-channel4-routed-engine-snapshot-v1' and v['version']==ENGINE_VERSION\n    assert v['marking_id']==mid and v['scheduler_policy']['branch_tie']=='ROW' and v['pending_preferences']is None\n    assert len({r for r,c in v['certificates']})==len(v['certificates'])\n    assert len({r for r,c in v['cursors']})==len(v['cursors'])\n    return v\n\ndef certificate(v,row):return dict(v['certificates'])[row]\ndef core(v):return {k:x for k,x in v.items()if k!='read_obligations'}\n\ndef selected_append(before,after,tile):\n    packet(tile,before)\n    equal(after['selected'],before['selected']+[tile['selection_record']])\n    row=tile['placement_key']['translation'][1];old,new=points(before['t']),points(after['t'])\n    assert old[(0,row)]==0 and new[(0,row)]==1\n    equal({str(k):v for k,v in old.items()if k!=(0,row)},{str(k):v for k,v in new.items()if k!=(0,row)})\n    state(after)\n\ndef search_result(f,status):\n    before=snapshot(f['before']);after=snapshot(f['after']);equal(after,before);equal(f['outer_after'],before)\n    equal(before['state'],f['initial_state']);r=f['search_result']\n    assert r['schema']=='unit-row-channel4-routed-lazy-global-search-result-v1' and r['version']==ENGINE_VERSION\n    assert r['status']==status and r['root_restored']is r['stack_restored']is True and r['found']is None\n    assert r['root_snapshot_sha256']==sha(before)==r['final_snapshot_sha256']\n    assert r['marking_id']==mid and r['input_epoch']==binding['language_epoch'] and r['branch_advice_enabled']is False\n    equal(r['scheduler_policy'],before['scheduler_policy'])\n    ev=r['events'];assert [x['event']for x in ev]==list(range(len(ev))) and 0<len(ev)<=2000\n    assert not any(x['kind']=='EXCLUDE'for x in ev)\n    for k in('logical_proof_accepted','exact_point_board_accepted','complete_candidate_graph_accepted','trajectory_accepted','GCTS_advantage_accepted','RL_accepted','ROOT_resource_accepted'):assert r[k]is False\n    return r,ev\n\ndef seed_join(seeds,current):\n    assert len(seeds)==len(current['selected'])\n    for seed,chosen in zip(seeds,current['selected']):\n        equal(seed['placement_key']['type_preimage'],chosen['type_preimage']['base_type_preimage'])\n        equal(seed['placement_key']['translation'],chosen['translation'])\n\ndef transfer_join(f,single):\n    before=snapshot(f['before']);checked=snapshot(f['checked_snapshot']);placed=snapshot(f['after_placement'])\n    equal(before['state'],f['initial_state']);equal(checked['state'],before['state']);seed_join(f['seeds'],before['state'])\n    row=f['queried_row'];assert row==(1 if single else 3)\n    origin=f['original_receipt'];equal(origin,certificate(checked,row));logged_receipt(f['actual_log'],origin,checked['state'],row)\n    assert origin['status']==('SINGLETON'if single else'TWO_OR_MORE') and origin['complete_cover_checked']is single\n    first=f['first_actual_decision'];assert first['kind']=='FORCED' and first['row']==(0 if single else 1)\n    equal(first['candidate'],certificate(checked,first['row'])['sole_candidate']);equal(f['forced_candidate'],first['candidate'])\n    assert all(v['status']!='UNKNOWN'for r,v in checked['certificates'])\n    assert set(dict(checked['certificates']))=={p[1]for p,v in points(checked['state']['t']).items()if v==0}\n    selected_append(checked['state'],placed['state'],f['forced_candidate'])\n    transition=placed['last_transition'];proof=next(p for p in transition['rows']if p['row']==row)\n    assert transition['schema']=='unit-row-channel4-checked-domain-transition-v2' and transition['version']=='unit-row-channel4-routed-support-transition-v2'\n    assert transition['before_state_sha256']==sha(checked['state']) and transition['after_state_sha256']==sha(placed['state'])\n    assert transition['marking_id']==mid and transition['input_epoch']==binding['language_epoch']\n    assert transition['collision_ledger_equal']is proof['retain']is True\n    assert transition['before_collision_ledger_sha256']==transition['after_collision_ledger_sha256']\n    assert proof['before_projection_sha256']==proof['after_projection_sha256']\n    cur=f['transferred_receipt'];equal(cur,certificate(placed,row))\n    assert cur['schema']=='unit-row-channel4-transferred-domain-classification-v2' and cur['version']==ENGINE_VERSION\n    assert cur['state_sha256']==sha(placed['state']) and cur['row']==row and cur['marking_id']==mid\n    equal(cur['original_receipt'],origin)\n    equal(cur['origin_protocol'],{'schema':origin['schema'],'version':origin['version']})\n    equal(cur['origin_coverage'],{'kind':'MARKED_AWARE_NONIMP_FIBRES','nonimp_fibre_cover_checked':single})\n    for k in('status','accepted_local_evidence','complete_cover_checked','degree_exact','candidate_keys'):equal(cur[k],origin[k])\n    assert cur['previous_evidence_sha256']==sha(origin)\n    equal(cur['transfer_chain'],[{'before_state_sha256':sha(checked['state']),'after_state_sha256':sha(placed['state']),'transition_sha256':sha(transition)}])\n    equal(cur['transition'],dict(transition,rows=[proof]))\n    old=origin['checked_candidates'];new=f['current_packets'];assert len(old)==len(new)==(1 if single else 2)\n    for a,b in zip(old,new):equal(core(a),core(b));packet(b,placed['state'])\n    assert [o['occupied']for c in old for o in c['read_obligations']]==([False]if single else[False,False])\n    assert [o['occupied']for c in new for o in c['read_obligations']]==([True]if single else[False,True])\n    if single:equal(cur['sole_candidate'],new[0])\n    else:\n        assert cur['degree_exact']is cur['sole_candidate']is None and cur['complete_cover_checked']is False\n        observed=dict(placed['exposed_candidates'])\n        for key,c in zip(cur['candidate_keys'],new):equal(observed[canonical(key).decode()]['candidate'],c)\n    second=f['second_actual_decision'];after=snapshot(f['after_second_decision']);equal(after['state'],placed['state'])\n    equal(certificate(after,row),cur)\n    assert set(dict(after['certificates']))=={p[1]for p,v in points(after['state']['t']).items()if v==0}\n    assert all(v['status']not in('UNKNOWN','ZERO')for r,v in after['certificates'])\n    if single:assert second['kind']=='FORCED'and second['row']==1;equal(second['candidate'],new[0])\n    else:equal(second,{'kind':'BRANCH','row':0})\n    equal(f['inner_after'],checked);equal(f['outer_after'],before)\n    assert all(cur[k]is False for k in FALSE_FLAGS)\n\ndef cursor_stream(record):\n    current=state(record['state']);row=record['row'];before=snapshot(record['before']);after=snapshot(record['after'])\n    equal(before['state'],current);equal(after['state'],current)\n    marked=record['actual_log']['marked_cursors'];original=record['actual_log']['original_cursors']\n    assert len(marked)==len(original)==1\n    mc,oc=marked[0]['context'],original[0]['context'];equal(mc['state'],current)\n    equal(mc['original_context'],oc);assert mc['state_sha256']==sha(current)\n    assert mc['context_sha256']==sha({k:v for k,v in mc.items()if k!='context_sha256'})\n    assert oc['context_sha256']==sha({k:v for k,v in oc.items()if k!='context_sha256'})\n    assert mc['row']==oc['row']==row and mc['marking_id']==mid and mc['language_binding']==oc['language_binding']==binding\n    assert mc['input_epoch']==oc['input_epoch']==binding['language_epoch'] and oc['state_sha256']==sha(oc['state'])\n    assert mc['schema']=='unit-row-channel4-fallback-context-v1'and mc['version']=='unit-row-channel4-filtered-six-rule-fallback-v1'\n    assert oc['schema']=='unit-row-all-six-fallback-context-v1'and oc['version']=='unit-row-complete-lazy-six-rule-fallback-v1'\n    for log,ctx,marked_level in((marked[0],mc,True),(original[0],oc,False)):\n        events=log['events'];assert events and events[-1]['kind']=='EOF' and all(v['kind']=='CANDIDATE'for v in events[:-1])\n        for i,v in enumerate(events[:-1]):\n            assert v['context_sha256']==ctx['context_sha256'] and v['ordinal']==i and v['independently_checked']is False\n        c=events[-1]['completion'];assert events[-1]['context_sha256']==ctx['context_sha256']\n        assert c['context_sha256']==ctx['context_sha256'] and c['state_sha256']==ctx['state_sha256']\n        assert c['row']==row and c['input_epoch']==binding['language_epoch'] and c['yielded_candidates']==len(events)-1 and c['rules_completed']==RULES\n        assert c['complete_fallback_proposed']is True\n        for k in('independently_checked','degree_zero_or_singleton_accepted',*FALSE_FLAGS):assert c[k]is False\n        if marked_level:assert c['marking_id']==mid\n    me,oe=marked[0]['events'],original[0]['events'];mcands=[x['candidate']for x in me[:-1]]\n    equal(record['items'],[{'kind':'CANDIDATE','candidate':c}for c in mcands]+[{'kind':'EOF','completion':me[-1]['completion']}])\n    equal(record['checked_candidates'],mcands);equal(record['completion'],me[-1]['completion'])\n    equal(record['completion']['original_completion'],oe[-1]['completion'])\n    basekeys=[canonical(x['candidate']['placement_key'])for x in oe[:-1]];positions=[]\n    for c in mcands:\n        packet(c,current);key=canonical(c['base_tile']['placement_key']);assert basekeys.count(key)==1\n        i=basekeys.index(key);positions.append(i);equal(c['base_tile'],core(oe[i]['candidate']))\n    assert positions==sorted(positions)\n    slot=dict(after['cursors'])[row];equal(slot['context'],mc);equal(slot['completion'],record['completion'])\n    equal(slot['candidates'],mcands);equal(slot['keys'],[c['placement_key']for c in mcands])\n    cover=record['actual_log']['covers'][0]\n    equal(cover['state'],current);assert cover['row']==row\n    equal(cover['completion'],record['completion']);equal(cover['checked_candidates'],mcands)\n    equal(cover['receipt'],record['fresh_cover_receipt'])\n    r=record['fresh_cover_receipt']\n    if r is not None:\n        logged_receipt(record['actual_log'],r,current,row);assert r['complete_cover_checked']is True\n        actual=[canonical(c['placement_key'])for c in mcands];expected=[canonical(k)for k in r['candidate_keys']]\n        assert len(actual)==len(set(actual))and len(expected)==len(set(expected))and set(actual)==set(expected)\n    return me,oe\n\nfamilies=data['families']\nif mode=='router-protocol':\n    assert set(families)=={'ROUTING_PROTOCOL'};f=families['ROUTING_PROTOCOL'];q=f['queries']\n    assert set(q)=={'ZERO','ONE','TWO','ABSENT','IMPLICATION'}\n    for name,record in q.items():query_record(record);seed_join(f['seeds'][name],record['state'])\n    for name,status,n in(('ZERO','ZERO',0),('ONE','SINGLETON',1),('TWO','TWO_OR_MORE',None)):\n        r=q[name]['receipt'];assert r['schema']==NEW_SCHEMA and r['status']==status and r['degree_exact']==n\n        assert r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is(n is not None)\n    for name in('ABSENT','IMPLICATION'):assert q[name]['receipt']['schema']=='unit-row-channel4-degree-evidence-check-v1'\n    assert q['ABSENT']['receipt']['status']=='TWO_OR_MORE'and q['IMPLICATION']['receipt']['status']=='UNKNOWN'\n    equal(f['seeds']['IMPLICATION'],[q['ONE']['receipt']['sole_candidate']['base_tile']])\n    labels=['NEW_ON_ABSENT','LEGACY_ON_NONIMP','FORGED_language_binding','FORGED_state_sha256','FORGED_marking_id']\n    assert [v['label']for v in f['failures']]==labels\n    for i,bad in enumerate(f['failures']):\n        if i==0:name='ABSENT';expected=q['ZERO']['proposal'];reason='marked degree router: checked implication/absent route requires exact legacy proposal protocol'\n        elif i==1:name='ZERO';expected=q['ABSENT']['proposal'];reason='marked degree router: checked nonimp route requires exact new proposal protocol'\n        else:\n            name='ZERO';expected=json.loads(canonical(q['ZERO']['proposal']));field=labels[i].removeprefix('FORGED_')\n            if field=='language_binding':expected[field]['language_epoch']='0'*64\n            else:expected[field]='0'*64\n            reason='marked-aware fibre evidence: whole original/marked current context'\n        equal(bad['state'],q[name]['state']);assert bad['row']==q[name]['row'];equal(bad['failing_proposal'],expected)\n        assert bad['exception_type']=='ValueError'and bad['rejected']is True and bad['returned_receipt']is None\n        assert bad['actual_reason']==bad['expected_reason']==reason\nelif mode=='global-forced-dead':\n    assert set(families)=={'GLOBAL_FORCED_DEAD'};f=families['GLOBAL_FORCED_DEAD'];r,ev=search_result(f,'EXHAUSTED')\n    seed_join(f['seeds'],f['initial_state']);assert r['trace_complete']is True\n    lineage=[x for x in ev if x['kind']in('DECISION','TRY','PLACE','RESTORE')]\n    assert [x['kind']for x in lineage]==['DECISION','TRY','PLACE','DECISION','TRY','PLACE','DECISION','RESTORE','RESTORE']\n    d1,t1,p1,d3,t3,p3,d2,u3,u1=lineage\n    assert [d['decision']['kind']for d in(d1,d3,d2)]==['FORCED','FORCED','DEAD']\n    assert [d['decision']['row']for d in(d1,d3,d2)]==[1,3,2]\n    for d,t,p,depth,row in((d1,t1,p1,0,1),(d3,t3,p3,1,3)):\n        assert t['depth']==depth and t['row']==p['row']==row and t['mode']=='FORCED'\n        equal(t['key'],p['key']);equal(t['key'],d['decision']['candidate']['placement_key'])\n        equal(d['decision']['candidate'],dict(d['evidence'])[row]['sole_candidate'])\n        assert t['state_sha256']==d['state_sha256']\n    for u,t,depth,row in((u3,t3,1,3),(u1,t1,0,1)):\n        assert u['depth']==depth and u['row']==row and u['child_status']=='EXHAUSTED';equal(u['key'],t['key'])\n    assert u3['state_sha256']==d3['state_sha256']and u1['state_sha256']==sha(f['initial_state'])\n    states={sha(f['initial_state']):f['initial_state']}\n    for q in f['actual_log']['queries']:assert q['state_sha256']==sha(q['state']);states[q['state_sha256']]=q['state']\n    for d in(d1,d3,d2):assert d['state_sha256']in states\n    selected_append(states[d1['state_sha256']],states[d3['state_sha256']],d1['decision']['candidate'])\n    selected_append(states[d3['state_sha256']],states[d2['state_sha256']],d3['decision']['candidate'])\n    assert p1['state_sha256']==d3['state_sha256']and p3['state_sha256']==d2['state_sha256']\n    for d in(d1,d3):\n        s=states[d['state_sha256']];assert set(dict(d['evidence']))=={p[1]for p,v in points(s['t']).items()if v==0}\n        assert all(v['status']!='UNKNOWN'for row,v in d['evidence'])\n    dead=f['actual_dead_receipt'];equal(dead,dict(d2['evidence'])[2]);logged_receipt(f['actual_log'],dead,states[d2['state_sha256']],2)\n    assert dead['status']=='ZERO'and dead['degree_exact']==0 and dead['complete_cover_checked']is True\n    q3=[q for q in f['actual_log']['queries']if q['row']==3];assert len(q3)>=2 and q3[0]['state_sha256']!=q3[1]['state_sha256']\n    invalid=[x for x in ev if x['kind']=='INVALIDATE'];assert 3 in invalid[0]['rows']and invalid[0]['transition']['collision_ledger_equal']is False\n    assert r['counts']['forced']==r['counts']['placements']==2 and r['counts']['branches']==0\nelif mode in('singleton-transfer','two-transfer'):\n    name='SINGLETON_TRANSFER'if mode=='singleton-transfer'else'TWO_TRANSFER';assert set(families)=={name};transfer_join(families[name],mode=='singleton-transfer')\nelif mode=='short-EOF':\n    assert set(families)=={'SHORT_EOF'};f=families['SHORT_EOF']\n    z,_=cursor_stream(f['ZERO']);o,_=cursor_stream(f['ONE']);i,_=cursor_stream(f['IMPLICATION'])\n    assert [v['kind']for v in z]==['EOF']and [v['kind']for v in o]==['CANDIDATE','EOF']and [v['kind']for v in i]==['EOF']\n    assert f['ZERO']['fresh_cover_receipt']['status']=='ZERO'and f['ONE']['fresh_cover_receipt']['status']=='SINGLETON'\n    assert f['IMPLICATION']['fresh_cover_receipt']is None\n    query_record(f['implication_standalone_query']);equal(f['implication_standalone_query']['state'],f['IMPLICATION']['state'])\n    assert f['implication_standalone_query']['receipt']['schema']=='unit-row-channel4-degree-evidence-check-v1'\n    assert f['implication_standalone_query']['receipt']['status']=='UNKNOWN'and f['implication_standalone_query']['receipt']['complete_cover_checked']is False\n    equal(f['implication_seed'],f['ONE']['fresh_cover_receipt']['sole_candidate']['base_tile'])\n    seed_join([f['implication_seed']],f['IMPLICATION']['state'])\n    labels=['MISSING_KEY','EXTRA_KEY','DUPLICATE_KEY','FORGED_state_sha256','FORGED_marking_id']\n    assert [v['label']for v in f['failures']]==labels\n    for n,bad in enumerate(f['failures']):\n        record=f['ZERO']if n==1 else f['ONE'];completion=json.loads(canonical(record['completion']))\n        candidates=[]if n==0 else f['ONE']['checked_candidates']*2 if n==2 else f['ONE']['checked_candidates']\n        reason='lazy engine: fresh complete cover agrees with entire checked fallback stream'\n        if n>=3:completion[labels[n].removeprefix('FORGED_')]='0'*64;reason='lazy engine: fresh completion/cover exact original context'\n        equal(bad['state'],record['state']);assert bad['row']==record['row'];equal(bad['completion'],completion);equal(bad['checked_candidates'],candidates)\n        assert bad['exception_type']=='ValueError'and bad['rejected']is True and bad['returned_receipt']is None\n        assert bad['actual_reason']==bad['expected_reason']==reason\n",
+          "old_end": 29211,
+          "old_start": 27628,
+          "old_utf8": "if mode=='zero':\n    assert set(data['families'])=={'ZERO'};complete_zero(data['families']['ZERO'])\nelif mode=='singleton':\n    assert set(data['families'])=={'SINGLETON'};record=data['families']['SINGLETON'];p,r=query_record(record);f=p['fibre_cover']\n    assert record['query_row']==3 and record['size1_carrier']==[['bot']] and record['actual_candidate_reads']==[[2,0]]\n    assert p['kind']=='COMPLETE_NONIMP_FIBRE_COVER' and p['complete_cover_proposed']is True\n    assert r['status']=='SINGLETON' and type(r['degree_exact'])is int and r['degree_exact']==1 and len(p['candidates'])==1\n    assert r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is True\n    equal(r['sole_candidate'],p['candidates'][0]);equal(f,r['checked_fibre_cover'])\n    assert f['completed']is True and f['output_nodes']==42 and f['MP_antecedent_max_nodes']==1\n    assert len(f['UG_fibres'])==3 and len(f['ordered_MP_fibres'])==9\n    assert all(x['completed']is True for x in f['UG_fibres']+f['ordered_MP_fibres'])\nelif mode=='two':\n    assert set(data['families'])=={'TWO'};record=data['families']['TWO'];p,r=query_record(record)\n    assert record['query_row']==3 and record['size1_carrier']==[['bot']] and record['actual_candidate_reads']==[[1,0],[1,2]]\n    assert p['kind']=='TWO_LEGAL_WITNESSES' and p['complete_cover_proposed']is p['fibre_cover']['completed']is False\n    assert r['status']=='TWO_OR_MORE' and r['complete_cover_checked']is r['nonimp_fibre_cover_checked']is False\n    assert len(p['candidates'])==2 and r['degree_exact']is r['sole_candidate']is r['checked_fibre_cover']is None\n"
+        },
+        {
+          "new_end": 50071,
+          "new_start": 48243,
+          "new_utf8": "    assert mode=='child-UNKNOWN'and set(families)=={'CHILD_UNKNOWN'};f=families['CHILD_UNKNOWN'];r,ev=search_result(f,'UNKNOWN')\n    assert f['initial_state']['selected']==[]and sum(points(f['initial_state']['t']).values())==0\n    assert r['reason']=='routed qualification native-first actual child degree interruption'and r['trace_complete']is False\n    stops=f['actual_log']['interruptions'];assert len(stops)==1;stop=stops[0];state(stop['state'])\n    assert stop['kind']=='DECLARED_ACTUAL_CHILD_DEGREE_INTERRUPTION'and stop['initial_selected_count']==0\n    assert stop['selected_count']==len(stop['state']['selected'])>0 and type(stop['native_ns'])is int and g<=stop['native_ns']<body['joint_deadline_ns']\n    assert stop['joint_began_ns']==g and stop['joint_deadline_ns']==body['joint_deadline_ns'];equal(r['last_observed_state'],stop['state'])\n    decisions=[v for v in ev if v['kind']=='DECISION'];tries=[v for v in ev if v['kind']=='TRY'];places=[v for v in ev if v['kind']=='PLACE']\n    equal(decisions[0]['decision'],{'kind':'BRANCH','row':0});assert tries and places\n    assert tries[0]['depth']==0 and tries[0]['row']==places[0]['row']==0 and tries[0]['mode']=='BRANCH'\n    equal(tries[0]['key'],places[0]['key'])\n    cursors=[v for v in f['actual_log']['marked_cursors']if v['context']['row']==0 and v['context']['state_sha256']==sha(f['initial_state'])]\n    assert cursors and cursors[0]['events'][0]['kind']=='CANDIDATE'and cursors[0]['events'][0]['ordinal']==0\n    equal(cursors[0]['events'][0]['candidate']['placement_key'],tries[0]['key'])\n    assert decisions[0]['event']<tries[0]['event']<places[0]['event']\n    equal(stop['state']['selected'][-1],dict(places[-1]['key'],generation=1));assert places[-1]['state_sha256']==sha(stop['state'])\n    assert r['counts']['branches']>=1 and r['counts']['restores']>=1\n",
+          "old_end": 30158,
+          "old_start": 29217,
+          "old_utf8": "    assert set(data['families'])=={'NEGATIVE_PROTOCOL'};record=data['families']['NEGATIVE_PROTOCOL']\n    p,r=complete_zero(record['valid_zero_fixture']);failures=record['failures'];assert len(failures)==3\n    reasons=['whole original/marked current context','complete independent fibres/counts/hashes','literal completion flag']\n    for i,failure in enumerate(failures):\n        bad=json.loads(canonical(p))\n        if i==0:bad['language_binding']['language_epoch']='0'*64\n        elif i==1:\n            omitted=bad['fibre_cover']['ordered_MP_fibres'].pop();equal(omitted,failure['omitted_original_fibre'])\n        else:bad['complete_cover_proposed']=False\n        equal(bad,failure['failing_proposal'])\n        assert failure['expected_reason']==failure['actual_reason']=='marked-aware fibre evidence: '+reasons[i]\n        assert failure['exception_type']=='ValueError' and failure['rejected']is True and failure['returned_receipt']is None\n"
+        },
+        {
+          "new_end": 50475,
+          "new_start": 50072,
+          "new_utf8": "for k in('target_benchmark_search_performed','prior_StageC_suite_qualified','failure_marking_activated','logical_proof_accepted','exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','RL_accepted','GCTS_advantage_claimed','ROOT_resource_accepted'):assert data[k]is False\nassert data['controlled_search_performed']is(mode in('global-forced-dead','child-UNKNOWN'))\n",
+          "old_end": 30543,
+          "old_start": 30159,
+          "old_utf8": "for k in('target_search_performed','engine_or_fallback_queried','old_degree_proposal_or_receipt_replayed','new_receipt_engine_compatibility_claimed','failure_marking_activated','logical_proof_accepted','exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','RL_accepted','GCTS_advantage_claimed','ROOT_resource_accepted'):assert data[k]is False\n"
+        },
+        {
+          "new_end": 51146,
+          "new_start": 51027,
+          "new_utf8": "\ndisposition=dict(schema='ROOT-routed-engine-qualification-endpoint-disposition-v1',mode=mode,purpose=plan['purpose'],\n",
+          "old_end": 31210,
+          "old_start": 31095,
+          "old_utf8": "disposition=dict(schema='ROOT-marked-aware-calibration-endpoint-disposition-v1',mode=mode,purpose=plan['purpose'],\n"
+        },
+        {
+          "new_end": 51525,
+          "new_start": 51278,
+          "new_utf8": " outputs=outputs,native_evidence=native_refs(external),tool_bracket=pin(HERE/('ROOT-MR-'+mode+'-tool-bracket-v1.json')),\n lossless_transport_concordance=pin(HERE/('ROOT-MR-'+mode+'-transport-concordance-v1.json')),raw_expanded=pin(expanded_path),\n",
+          "old_end": 31589,
+          "old_start": 31342,
+          "old_utf8": " outputs=outputs,native_evidence=native_refs(external),tool_bracket=pin(HERE/('ROOT-MA-'+mode+'-tool-bracket-v1.json')),\n lossless_transport_concordance=pin(HERE/('ROOT-MA-'+mode+'-transport-concordance-v1.json')),raw_expanded=pin(expanded_path),\n"
+        },
+        {
+          "new_end": 52885,
+          "new_start": 52153,
+          "new_utf8": " case_names=expected,endpoint_controls_literal_concordance_accepted=True,whole_engine_qualification_accepted=False,\n prior_StageC_suite_qualified=False,marking_id=mid,marking_sha256=sha(data['marking']),original_model_binding=binding,\n closure_helper=pin(Path(__file__).resolve()),reconciliation_scope='Saved native/wire/literal routed proposals/native receipts/full origin transfers/current packets/cursor and actual trace/checkpoint concordance only; no scientific function, membership, relation enumeration or semantic replay.',\n controlled_fixture_search_performed=data['controlled_search_performed'],target_search_performed=False,\n failure_marking_activated=False,logical_proof_accepted=False,exact_point_board_accepted=False,\n",
+          "old_end": 32780,
+          "old_start": 32217,
+          "old_utf8": " case_names=expected,endpoint_controls_literal_concordance_accepted=True,whole_calibration_qualification_accepted=False,\n marking_id=mid,marking_sha256=sha(data['marking']),original_model_binding=binding,\n closure_helper=pin(Path(__file__).resolve()),reconciliation_scope='Saved native/wire/full literal state/proposal/new receipt/census/negative-data concordance only; no scientific function, membership, fibre enumeration or replay.',\n target_search_performed=False,failure_marking_activated=False,logical_proof_accepted=False,exact_point_board_accepted=False,\n"
+        },
+        {
+          "new_end": 53367,
+          "new_start": 53062,
+          "new_utf8": " remaining_gaps=['One purpose only; all six distinct20 windows/twelve essential cases must strictly close.','Original StageC6/9 and both failedMAIN attempts remain unchanged; no target discovery/marking activation/completeGCTS/causal benefit/RL claim.'])\nout=HERE/('ROOT-MR-'+mode+'-disposition-v1.json')\n",
+          "old_end": 33256,
+          "old_start": 32957,
+          "old_utf8": " remaining_gaps=['One endpoint only; all four distinct20 endpoints/six essential cases required for local calibration.','New local receipt not an engine11/c354 protocol; no graph/EOF/transfer/activation/search benefit/target proof qualification.'])\nout=HERE/('ROOT-MA-'+mode+'-disposition-v1.json')\n"
+        }
+      ],
+      "full_raw_forward_inverse_verified": true,
+      "parent": {
+        "bytes": 33468,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+        "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+      },
+      "patches": [
+        {
+          "bytes": 59113,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/closer-forward.patch",
+          "sha256": "aa182170ef2d5a408e9831edf0bdc78fa581b2cf69a643bdfd2832285c95db35"
+        },
+        {
+          "bytes": 59113,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/closer-full-inverse.patch",
+          "sha256": "3a1ff442199c0711c832bcc2805da87576860e5fd2f6ab0035b3a47772ba6290"
+        }
+      ],
+      "source": {
+        "bytes": 53579,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+        "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+      },
+      "unchanged_top_definitions_raw_AST": [
+        "canonical",
+        "check",
+        "equal",
+        "native_refs",
+        "pin",
+        "points",
+        "read",
+        "sha",
+        "state"
+      ]
+    },
+    "decoder": {
+      "actual_unified_forward_inverse_verified": true,
+      "added_top_definitions": [],
+      "changed_top_definitions": [],
+      "edit_count": 6,
+      "edits": [
+        {
+          "new_end": 1716,
+          "new_start": 1600,
+          "new_utf8": "MODES=('router-protocol', 'global-forced-dead', 'singleton-transfer', 'two-transfer', 'short-EOF', 'child-UNKNOWN')\n",
+          "old_end": 1653,
+          "old_start": 1600,
+          "old_utf8": "MODES=('zero','singleton','two','negative-protocol')\n"
+        },
+        {
+          "new_end": 2278,
+          "new_start": 1802,
+          "new_utf8": "mode=sys.argv[1];plan_path=HERE/('ROOT-MR-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)\nneed(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'dbe07d4eff585af988f052d7ed08ff164c3dc65ed8cdda2bac16be981db54941', 'bytes': 38188},'fixed reviewed routed qualification Source contract')\n",
+          "old_end": 2211,
+          "old_start": 1739,
+          "old_utf8": "mode=sys.argv[1];plan_path=HERE/('ROOT-MA-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)\nneed(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd5a0467432caaf18cba837b1bd72c83eeefd80c2763b64641786af34b26fb773', 'bytes': 27670},'fixed reviewed current calibration Source contract')\n"
+        },
+        {
+          "new_end": 2958,
+          "new_start": 2332,
+          "new_utf8": "need(plan['schema']=='ROOT-routed-engine-qualification-plan-v1' and plan['purpose']=={'router-protocol': 'unit-row-marked-aware-router-protocol-controls', 'global-forced-dead': 'unit-row-marked-aware-global-forced-dead-controls', 'singleton-transfer': 'unit-row-marked-aware-singleton-transfer-controls', 'two-transfer': 'unit-row-marked-aware-two-transfer-controls', 'short-EOF': 'unit-row-marked-aware-short-EOF-controls', 'child-UNKNOWN': 'unit-row-marked-aware-child-UNKNOWN-controls'}[mode]\n     and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current Source14/input8/purpose authority')\n",
+          "old_end": 2519,
+          "old_start": 2265,
+          "old_utf8": "need(plan['schema']=='ROOT-marked-aware-calibration-plan-v1' and plan['purpose']=='unit-row-marked-aware-calibration-'+mode\n     and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current Source13/input8/purpose authority')\n"
+        },
+        {
+          "new_end": 3196,
+          "new_start": 3111,
+          "new_utf8": "p=HERE/('MR-'+mode+'-owned-v1')/'engine-result.json';raw=read_bounded(p,ENCODED_CAP)\n",
+          "old_end": 2757,
+          "old_start": 2672,
+          "old_utf8": "p=HERE/('MA-'+mode+'-owned-v1')/'engine-result.json';raw=read_bounded(p,ENCODED_CAP)\n"
+        },
+        {
+          "new_end": 5341,
+          "new_start": 4966,
+          "new_utf8": "need(canonical(result)+b'\\n'==expanded and result['schema']=='ROOT-unit-row-routed-engine-qualification-result-v1','whole original expanded result JSON')\nneed(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current executable Source14/input8/purpose')\nout=HERE/('ROOT-MR-'+mode+'-expanded-result-v1.json')\n",
+          "old_end": 4899,
+          "old_start": 4527,
+          "old_utf8": "need(canonical(result)+b'\\n'==expanded and result['schema']=='ROOT-unit-row-marked-aware-calibration-result-v1','whole original expanded result JSON')\nneed(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current executable Source13/input8/purpose')\nout=HERE/('ROOT-MA-'+mode+'-expanded-result-v1.json')\n"
+        },
+        {
+          "new_end": 6088,
+          "new_start": 6030,
+          "new_utf8": "q=HERE/('ROOT-MR-'+mode+'-transport-concordance-v1.json')\n",
+          "old_end": 5646,
+          "old_start": 5588,
+          "old_utf8": "q=HERE/('ROOT-MA-'+mode+'-transport-concordance-v1.json')\n"
+        }
+      ],
+      "full_raw_forward_inverse_verified": true,
+      "parent": {
+        "bytes": 5893,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_decode_marked_aware_calibration_saved_v1.py",
+        "sha256": "6abb2e1a3e9b584059b6b7bff61cedd9073e2344d7d54563f64ed634936d2952"
+      },
+      "patches": [
+        {
+          "bytes": 5398,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/decoder-forward.patch",
+          "sha256": "aef04c43fc012f9b228d2716034d1f55028c9d02e97519caeb207c166a447554"
+        },
+        {
+          "bytes": 5398,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/decoder-full-inverse.patch",
+          "sha256": "1457070a3750db82f2ba18bf0d4386f5c7138529b693fd3512fc6c7a94a1a8bc"
+        }
+      ],
+      "source": {
+        "bytes": 6335,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+        "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+      },
+      "unchanged_top_definitions_raw_AST": [
+        "buffer_pin",
+        "canonical",
+        "checked_raw",
+        "constant",
+        "decode",
+        "finite",
+        "need",
+        "pairs",
+        "read_bounded"
+      ]
+    }
+  },
+  "literal_body": {
+    "bytes": 26195,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/saved_literal_joins.py.in",
+    "sha256": "b42bec4351be60a1643d7f27905450474286bcd76b8b3a42284c17367326a5b9"
+  },
+  "positive_native_output_transport_prefix_path_schema_only": true,
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0
+}

@@ -1,0 +1,85 @@
+{
+  "actual_output_decode": false,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 6,
+  "checks": [
+    {
+      "detail": "AST/compile only, no helper/scientific execution or actual output decoding.",
+      "name": "compile_only",
+      "passed": true
+    },
+    {
+      "detail": "expected_cases has exactlyoneASTStore, value tuple declared byfixedcurrentcontract; allpositivecounts andcase_names deriveonlyit. Routernegative proposals useexpected_proposal; remainingexpected name is cursor_stream-local only.",
+      "name": "case_variable_flow",
+      "passed": true
+    },
+    {
+      "detail": [
+        "aggregate",
+        "auth_plan",
+        "canonical",
+        "certificate",
+        "check",
+        "core",
+        "cursor_stream",
+        "equal",
+        "failure_only",
+        "logged_receipt",
+        "native_receipt",
+        "native_refs",
+        "packet",
+        "pin",
+        "points",
+        "query_record",
+        "read",
+        "search_result",
+        "seed_join",
+        "selected_append",
+        "sha",
+        "snapshot",
+        "state",
+        "transfer_join"
+      ],
+      "name": "all_functions_unchanged",
+      "passed": true
+    },
+    {
+      "detail": 6,
+      "name": "full_raw_and_patch_inverse",
+      "passed": true
+    },
+    {
+      "detail": "Only top-levelcasebinding/negative-comparison variable names/finalcounts andcasenames changed. Native/session/wire/source/once/fullrecordscience joins/failure/aggregate function rawexact; decoderexact.",
+      "name": "all_science_native_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "V1/V2 Sources unchanged; Rootquarantines V2sixdispositions and reruns only new savedcloser onoriginalactuals. No cold actual or transport mutation; no aggregatepreviouslyaccepted.",
+      "name": "preserved_actuals_and_bad_saved_records",
+      "passed": true
+    }
+  ],
+  "helper_execution": false,
+  "independent_review": false,
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-author-static-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 6328,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-delta-v3.json",
+    "sha256": "2ff7f4763a72fb6cda7f046bc6d61673eb9db382aa6116e2807aad2e0fc2b7f7"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 54257,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v3.py",
+      "sha256": "8ab5cb05197c98e81916d41fd5b216b6f76e73d99332b7a62224b2616169a22e"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "actual_output_decode": false,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 16,
+  "checks": [
+    {
+      "detail": "Both bytes AST parsed/compiled only; no helper/import/output decode or scientific function execution.",
+      "name": "syntax_only",
+      "passed": true
+    },
+    {
+      "detail": {
+        "closer": 40,
+        "decoder": 6
+      },
+      "name": "both_full_raw_and_actual_patch_inverses",
+      "passed": true
+    },
+    {
+      "detail": [
+        "buffer_pin",
+        "canonical",
+        "checked_raw",
+        "constant",
+        "decode",
+        "finite",
+        "need",
+        "pairs",
+        "read_bounded"
+      ],
+      "name": "decoder9_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "detail": [
+        "canonical",
+        "check",
+        "equal",
+        "native_refs",
+        "pin",
+        "points",
+        "read",
+        "sha",
+        "state"
+      ],
+      "name": "closer9_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "detail": "Exact parent prefix after only declared ROOT-MR/MR paths and response schema.",
+      "name": "whole_positive_native_wire_prefix",
+      "passed": true
+    },
+    {
+      "detail": "Caller38f8/dbe07d/current14/input8/original17/input2, exact controls-author/Root+peer once/review/grant joins; limits unchanged.",
+      "name": "current_and_original_authority",
+      "passed": true
+    },
+    {
+      "detail": "4MiBencoded16MiBexpanded, canonicalJSONLF/base64reencoded/singlezlib/eof/notails/fullhash; twoLF native response and oneLF stdout.",
+      "name": "strict_wire_caps",
+      "passed": true
+    },
+    {
+      "detail": {
+        "unit-row-marked-aware-child-UNKNOWN-controls": [
+          "MR-11-actual-child-native-first-declared-UNKNOWN",
+          "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+        ],
+        "unit-row-marked-aware-global-forced-dead-controls": [
+          "MR-03-global-forced-requery-dead-exhaustion",
+          "MR-04-owned-full-root-restoration"
+        ],
+        "unit-row-marked-aware-router-protocol-controls": [
+          "MR-01-new-and-legacy-route-consumption",
+          "MR-02-wrong-route-and-context-rejected"
+        ],
+        "unit-row-marked-aware-short-EOF-controls": [
+          "MR-09-real-short-stream-and-fresh-complete-keySET",
+          "MR-10-legacy-implication-EOF-remains-unaccepted"
+        ],
+        "unit-row-marked-aware-singleton-transfer-controls": [
+          "MR-05-native-singleton-full-origin-transfer",
+          "MR-06-current-sole-consumption-and-owned-rollback"
+        ],
+        "unit-row-marked-aware-two-transfer-controls": [
+          "MR-07-native-TWO-full-origin-transfer",
+          "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+        ]
+      },
+      "name": "six_modes12_essential",
+      "passed": true
+    },
+    {
+      "detail": "Five full actual native route queries with distinct new/legacy protocols, exact full wrong-route/context mutation/rejection records.",
+      "name": "MR01_02",
+      "passed": true
+    },
+    {
+      "detail": "All nine literal filtered events FORCE1/TRY0/PLACE1/FORCE3/TRY1/PLACE3/DEAD2/RESTORE1/RESTORE0; sole keys/depths/EXHAUSTED/restored stateSHA and full snapshots; q3 ledgerinvalidated/requery/full newZERO2.",
+      "name": "MR03_04",
+      "passed": true
+    },
+    {
+      "detail": "Full initial native origin and loggedproposalSHA; transition+full literal original_receipt/coverage/keys/chain preserved, currentsole/observed packets occupancychanged, actual nextschedule/full innerouter restore.",
+      "name": "MR05_08",
+      "passed": true
+    },
+    {
+      "detail": "Actual original+marked contexts/whole events/candidates/completions and full freshcoverlog/keySET join. Canonical survivor orderchecked against original stream, no censusorderimposition. LegacyimpEOF0+freshNone only component; full independent standingquery remains UNKNOWN.",
+      "name": "MR09_10",
+      "passed": true
+    },
+    {
+      "detail": "Emptyroot actualfirstcanonicalBRANCH0/TRY/PLACE key fromreturnedcursor, dedicated native-first childstate/sample insideowning20, noEXCLUDE, fullroot/outerrestore/foundNone.",
+      "name": "MR11_12",
+      "passed": true
+    },
+    {
+      "detail": "Any clean nonzero adminfailure pins raw metadata/opaque stderr only; no decoder/result parsing/count/move/transfer/rollback inference. CountsNone/0qualified/bothmodecasesunqualified. Native deadline only exactoriginalTimeout+native>=20.",
+      "name": "no_return",
+      "passed": true
+    },
+    {
+      "detail": "Six distinct plans/IDs/outputdirs, all12 required; any failure keeps qualificationFalse, no combined20 or priorStageC9/target/marking/benefit/RL promotion.",
+      "name": "aggregate_scope",
+      "passed": true
+    },
+    {
+      "detail": "Root byteexactcopies both toactualHERE; nonoptimizedPython/assertions enabled; Rootalone runs savedhelpers afterwholepeer+Rootreview.",
+      "name": "execution_requirement",
+      "passed": true
+    }
+  ],
+  "helper_execution": false,
+  "independent_review": false,
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 62747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "fabd529218a89eb6e9b2e4fe603e224cbf53709d6ab5ea0fe33ee873932817af"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 53579,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+      "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  }
+}

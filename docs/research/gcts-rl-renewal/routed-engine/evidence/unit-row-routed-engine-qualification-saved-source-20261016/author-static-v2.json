@@ -1,0 +1,84 @@
+{
+  "actual_output_decode": false,
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 6,
+  "checks": [
+    {
+      "detail": "Raw Source compiled/AST parsed only, no helper/output/science execution.",
+      "name": "compile_only",
+      "passed": true
+    },
+    {
+      "detail": "Only positive/failure bracket-session guards differ; exit code/nativewait4/allreaped/once/Date/limits and all12 literal scientificrecord joins unchanged.",
+      "name": "exact_two_guards",
+      "passed": true
+    },
+    {
+      "detail": "Accept bothNone OR both exactint withsamepositivesessionID. Excludesbool/missing/mixed/zero/negative/mismatch; terminal/native gates stillrequired.",
+      "name": "session_pair_types",
+      "passed": true
+    },
+    {
+      "detail": 2,
+      "name": "full_raw_and_actual_patch_inverse",
+      "passed": true
+    },
+    {
+      "detail": [
+        "aggregate",
+        "auth_plan",
+        "canonical",
+        "certificate",
+        "check",
+        "core",
+        "cursor_stream",
+        "equal",
+        "logged_receipt",
+        "native_receipt",
+        "native_refs",
+        "packet",
+        "pin",
+        "points",
+        "query_record",
+        "read",
+        "search_result",
+        "seed_join",
+        "selected_append",
+        "sha",
+        "snapshot",
+        "state",
+        "transfer_join"
+      ],
+      "name": "all_other_functions_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "detail": "No old Source/contract/helper/plan/bracket/actual edited; one yieldedhandle maytruthfully remain recordedafterterminalpoll. No rerun.",
+      "name": "v1_and_actual_preserved",
+      "passed": true
+    }
+  ],
+  "helper_execution": false,
+  "independent_review": false,
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 3605,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-delta-v2.json",
+    "sha256": "120ab7083fd6fd95546844d7c1a9dd60d3c658d8bd48a86c56eb0e965b9c5ec9"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 54112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+      "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  }
+}

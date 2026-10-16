@@ -1,0 +1,55 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v3.py
+@@ -231,10 +231,10 @@
+ assert grant['actual_execution_authorized'] is True and type(grant['maximum_actual_invocations'])is int and grant['maximum_actual_invocations']==1
+ for k in('invocation_id','purpose','sources','inputs','source_contract','reviews','runtime','limits','resource_rule','output_directory'):assert grant[k]==plan[k]
+ assert Path(plan['output_directory'])==owned and plan['resource_rule']=='single-owned-process-native-terminal-v1'
+-expected=contract['API']['purpose_modes_and_ordered_cases'][plan['purpose']]
+-assert expected==EXPECTED_CASES[mode] and data['expected_cases']==expected
+-assert data['control_count']==len(data['controls'])==len(expected) and data['all_controls_completed'] is True
+-assert [c['case']for c in data['controls']]==expected and all(c['status']=='PASSED'for c in data['controls'])
++expected_cases=tuple(contract['API']['purpose_modes_and_ordered_cases'][plan['purpose']])
++assert list(expected_cases)==EXPECTED_CASES[mode] and data['expected_cases']==list(expected_cases)
++assert data['control_count']==len(data['controls'])==len(expected_cases) and data['all_controls_completed'] is True
++assert [c['case']for c in data['controls']]==list(expected_cases) and all(c['status']=='PASSED'for c in data['controls'])
+ assert data['prior_acceptance']=={k:v for k,v in plan['inputs'].items()if k.startswith('stageB_')}
+ prior=read(check(plan['inputs']['stageB_expanded']))['channel4_stageB']
+ prior_admission=read(check(plan['inputs']['stageB_disposition']))
+@@ -513,14 +513,14 @@
+     labels=['NEW_ON_ABSENT','LEGACY_ON_NONIMP','FORGED_language_binding','FORGED_state_sha256','FORGED_marking_id']
+     assert [v['label']for v in f['failures']]==labels
+     for i,bad in enumerate(f['failures']):
+-        if i==0:name='ABSENT';expected=q['ZERO']['proposal'];reason='marked degree router: checked implication/absent route requires exact legacy proposal protocol'
+-        elif i==1:name='ZERO';expected=q['ABSENT']['proposal'];reason='marked degree router: checked nonimp route requires exact new proposal protocol'
++        if i==0:name='ABSENT';expected_proposal=q['ZERO']['proposal'];reason='marked degree router: checked implication/absent route requires exact legacy proposal protocol'
++        elif i==1:name='ZERO';expected_proposal=q['ABSENT']['proposal'];reason='marked degree router: checked nonimp route requires exact new proposal protocol'
+         else:
+-            name='ZERO';expected=json.loads(canonical(q['ZERO']['proposal']));field=labels[i].removeprefix('FORGED_')
+-            if field=='language_binding':expected[field]['language_epoch']='0'*64
+-            else:expected[field]='0'*64
++            name='ZERO';expected_proposal=json.loads(canonical(q['ZERO']['proposal']));field=labels[i].removeprefix('FORGED_')
++            if field=='language_binding':expected_proposal[field]['language_epoch']='0'*64
++            else:expected_proposal[field]='0'*64
+             reason='marked-aware fibre evidence: whole original/marked current context'
+-        equal(bad['state'],q[name]['state']);assert bad['row']==q[name]['row'];equal(bad['failing_proposal'],expected)
++        equal(bad['state'],q[name]['state']);assert bad['row']==q[name]['row'];equal(bad['failing_proposal'],expected_proposal)
+         assert bad['exception_type']=='ValueError'and bad['rejected']is True and bad['returned_receipt']is None
+         assert bad['actual_reason']==bad['expected_reason']==reason
+ elif mode=='global-forced-dead':
+@@ -611,8 +611,8 @@
+  native_deadline_confirmed=False,original20_positive_native_gate_failed=False,owned_output_directory_exists=True,
+  native_launch_to_postprobe_ns=probe-start,native_worker_lifetime_ns=terminal-start,aggregate_B_bytes=peak,terminal_T_bytes=peak,
+  complete_Date_seconds=date,resource_rule='single-owned-process-native-terminal-v1; B=T',actual_closed=True,all_reaped=True,
+- reported_case_count=len(expected),qualified_case_count=len(expected),unqualified_case_count=0,passed_cases=len(expected),skipped_cases=0,
+- case_names=expected,endpoint_controls_literal_concordance_accepted=True,whole_engine_qualification_accepted=False,
++ reported_case_count=len(expected_cases),qualified_case_count=len(expected_cases),unqualified_case_count=0,passed_cases=len(expected_cases),skipped_cases=0,
++ case_names=list(expected_cases),endpoint_controls_literal_concordance_accepted=True,whole_engine_qualification_accepted=False,
+  prior_StageC_suite_qualified=False,marking_id=mid,marking_sha256=sha(data['marking']),original_model_binding=binding,
+  closure_helper=pin(Path(__file__).resolve()),reconciliation_scope='Saved native/wire/literal routed proposals/native receipts/full origin transfers/current packets/cursor and actual trace/checkpoint concordance only; no scientific function, membership, relation enumeration or semantic replay.',
+  controlled_fixture_search_performed=data['controlled_search_performed'],target_search_performed=False,
+@@ -622,4 +622,4 @@
+  remaining_gaps=['One purpose only; all six distinct20 windows/twelve essential cases must strictly close.','Original StageC6/9 and both failedMAIN attempts remain unchanged; no target discovery/marking activation/completeGCTS/causal benefit/RL claim.'])
+ out=HERE/('ROOT-MR-'+mode+'-disposition-v1.json')
+ with out.open('x')as f:json.dump(disposition,f,indent=2,sort_keys=True);f.write('\n')
+-print(json.dumps({'disposition':pin(out),'qualified_cases':len(expected),'native_ns':probe-start,'scientific_replay':False}))
++print(json.dumps({'disposition':pin(out),'qualified_cases':len(expected_cases),'native_ns':probe-start,'scientific_replay':False}))

@@ -1,0 +1,81 @@
+{
+  "Source_constraints": [
+    "Minimal successor of578 caller with original17helpers/CodeSeal/native/final transport ancestry and exact inverses. Runtime14 separate from original17/input2; input8 frozen.",
+    "No supplied proof word or route; conditional seeds are declared controls only, actual decisions/TRY/PLACE observed before assertions.",
+    "Router/native receipt validation is after fresh independent mathematical checking, not a verifier for arbitrary receipts.",
+    "EOF component uses actual engine cursor wire checks before fresh cover. A direct fresh-cover call is not a standalone EOF context wire validator; negative completion tests must target fields it actually owns.",
+    "All science only within fresh Root-owned actual after whole caller Root/distinct peer review and once grants; all costs charged.",
+    "Both old failedMAINs and old global6/9 retained; current local6 not promoted."
+  ],
+  "Source_implementation_authorized": true,
+  "actual_execution_authorized": false,
+  "all_six_endpoints_required": true,
+  "all_twelve_cases_essential": true,
+  "author_identity": "/root",
+  "combined20_suite_claimed": false,
+  "design": {
+    "bytes": 15573,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-engine-qualification-design-source-20261016/qualification-design-v2.json",
+    "sha256": "735a030c78a24b1544ccb3afa865648c27f653895f0f5033119c0ca939351f3c"
+  },
+  "endpoint_purpose_cases": {
+    "unit-row-marked-aware-child-UNKNOWN-controls": [
+      "MR-11-actual-child-native-first-declared-UNKNOWN",
+      "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+    ],
+    "unit-row-marked-aware-global-forced-dead-controls": [
+      "MR-03-global-forced-requery-dead-exhaustion",
+      "MR-04-owned-full-root-restoration"
+    ],
+    "unit-row-marked-aware-router-protocol-controls": [
+      "MR-01-new-and-legacy-route-consumption",
+      "MR-02-wrong-route-and-context-rejected"
+    ],
+    "unit-row-marked-aware-short-EOF-controls": [
+      "MR-09-real-short-stream-and-fresh-complete-keySET",
+      "MR-10-legacy-implication-EOF-remains-unaccepted"
+    ],
+    "unit-row-marked-aware-singleton-transfer-controls": [
+      "MR-05-native-singleton-full-origin-transfer",
+      "MR-06-current-sole-consumption-and-owned-rollback"
+    ],
+    "unit-row-marked-aware-two-transfer-controls": [
+      "MR-07-native-TWO-full-origin-transfer",
+      "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+    ]
+  },
+  "engine_Source_reviews": {
+    "ROOT": {
+      "bytes": 8786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-router-engine-Source-review-v1.json",
+      "sha256": "adacd538fabc93f90b0f1454afdef58ea1b3cffdfe9c4a6aa6717825a4ac8e78"
+    },
+    "peer": {
+      "bytes": 6577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "b0f769ec6ab873905053471055bbf3c2e77630a2e5dbe7261d6092ec88f2673b"
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "parent_checkpoint": {
+    "bytes": 48601,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "54bfe41b3e70e458f7ebb3feda6e60c108f6da4e08a498a4c32316285d62a2af"
+  },
+  "previous_goal_turn": "progress",
+  "schema": "ROOT-routed-engine-qualification-choice-v1",
+  "strong_claims": {
+    "RL": false,
+    "advantage": false,
+    "complete_GCTS": false,
+    "engine_integration_qualified": false,
+    "proof": false
+  }
+}

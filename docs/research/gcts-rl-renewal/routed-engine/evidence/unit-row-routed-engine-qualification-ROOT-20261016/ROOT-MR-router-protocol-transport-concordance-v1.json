@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 35383,
+  "compressed_sha256": "898c06878ed8514b57d9cc8bae21c7c4427968e1649140299bc33df7ecb6d111",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 47501,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-router-protocol-owned-v1/engine-result.json",
+    "sha256": "db67971444e7d2a9aa87e4dee45346ad651b101243bf2d9cc8d5d5c9f4707923"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 540784,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-router-protocol-expanded-result-v1.json",
+    "sha256": "d851e9252c1cdc4ee705c5d283d556044ef7d2314680ea1f234d2798e48c8a29"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 9021,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-router-protocol-plan-v1.json",
+    "sha256": "258850cee1d8f69970496252d853b1bd037fa3ac2cbc70fe4437203314ab655f"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

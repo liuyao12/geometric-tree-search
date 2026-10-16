@@ -1,0 +1,81 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "changed_named_functions": [
+    "failure_only"
+  ],
+  "decoder_raw_unchanged": {
+    "bytes": 6335,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+    "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+  },
+  "edit_count": 2,
+  "edits": [
+    {
+      "new_end": 5509,
+      "new_start": 5113,
+      "new_utf8": "    assert type(bracket['tool_exit_code'])is int and 0<bracket['tool_exit_code']<256 and ((bracket['tool_session_id'] is None and bracket['observed_session_id'] is None)\n        or (type(bracket['tool_session_id']) is int and bracket['tool_session_id'] > 0\n            and type(bracket['observed_session_id']) is int\n            and bracket['observed_session_id'] == bracket['tool_session_id']))\n",
+      "old_end": 5236,
+      "old_start": 5113,
+      "old_utf8": "    assert type(bracket['tool_exit_code'])is int and 0<bracket['tool_exit_code']<256 and bracket['tool_session_id']is None\n"
+    },
+    {
+      "new_end": 15309,
+      "new_start": 14974,
+      "new_utf8": "assert bracket['tool_exit_code']==0 and ((bracket['tool_session_id'] is None and bracket['observed_session_id'] is None)\n    or (type(bracket['tool_session_id']) is int and bracket['tool_session_id'] > 0\n        and type(bracket['observed_session_id']) is int\n        and bracket['observed_session_id'] == bracket['tool_session_id']))\n",
+      "old_end": 14776,
+      "old_start": 14701,
+      "old_utf8": "assert bracket['tool_exit_code']==0 and bracket['tool_session_id'] is None\n"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent_closer": {
+    "bytes": 53579,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+    "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+  },
+  "patches": [
+    {
+      "bytes": 2317,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/closer-v1-to-v2-forward.patch",
+      "sha256": "1ed8ee027ae4db1f8101c278149962ef1c6dad47e58c504fb286802538cabc98"
+    },
+    {
+      "bytes": 2317,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/closer-v2-to-v1-full-inverse.patch",
+      "sha256": "87533c02bc509285fbf75c889be7cf99da14f29af3fb17a463e1e8025c85611c"
+    }
+  ],
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54112,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+    "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+  },
+  "unchanged_named_functions_raw_AST": [
+    "aggregate",
+    "auth_plan",
+    "canonical",
+    "certificate",
+    "check",
+    "core",
+    "cursor_stream",
+    "equal",
+    "logged_receipt",
+    "native_receipt",
+    "native_refs",
+    "packet",
+    "pin",
+    "points",
+    "query_record",
+    "read",
+    "search_result",
+    "seed_join",
+    "selected_append",
+    "sha",
+    "snapshot",
+    "state",
+    "transfer_join"
+  ]
+}

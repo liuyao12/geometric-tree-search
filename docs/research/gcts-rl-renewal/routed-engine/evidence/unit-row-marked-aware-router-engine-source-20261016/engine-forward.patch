@@ -1,0 +1,223 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py
+@@ -7,13 +7,13 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v11-channel4-global-original-key-collision'
+-VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'
+-MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION'
++VERSION = 'lazy-unit-row-global-engine-v12-routed-marked-aware-degree'
++VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'
++MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'
+ BRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')
+-SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
++SEMANTICS_VERSION = 'unit-row-channel4-routed-nonimp-degree-semantics-v2'
+ FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
+-TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
++TRANSITION_VERSION = 'unit-row-channel4-routed-support-transition-v2'
+ ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'
+ ADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'
+ ADVICE_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+@@ -83,6 +83,99 @@
+     return {'kind': 'BRANCH', 'row': row}
+ 
+ 
++def validate_native_receipt(*, receipt, language, semantics, state, row, tick, require_cover=False):
++    """Protocol/context checks only; never call this on engine-owned transfers/prefixes."""
++    tick()
++    flags = {'complete_candidate_graph_accepted','scheduler_or_rollback_accepted',
++             'logical_proof_accepted','ROOT_resource_accepted'}
++    common = {'schema','version','status','accepted_local_evidence','input_epoch',
++        'marking_id','state_sha256','row','complete_cover_checked','degree_exact',
++        'candidate_keys','sole_candidate','scope'} | flags
++    legacy = common | {'missing_mark_cover_checked','original_base_receipt','marked_rejections'}
++    new = common | {'nonimp_fibre_cover_checked','checked_candidates','checked_root_rejections',
++        'checked_fibre_cover','state','original_state','original_state_sha256',
++        'output_formula','language_binding','marking_sha256','independent_marked_state_check','proposal_sha256'}
++    need(type(receipt) is dict, 'native local receipt dictionary')
++    is_new = receipt.get('schema') == 'unit-row-marked-aware-nonimp-fibre-check-v1'
++    need((is_new and set(receipt) == new
++              and receipt['version'] == 'unit-row-independent-marked-aware-nonimp-fibre-checker-v1')
++         or (not is_new and set(receipt) == legacy
++              and receipt.get('schema') == 'unit-row-channel4-degree-evidence-check-v1'
++              and receipt['version'] == 'unit-row-channel4-filtered-degree-semantics-v1'),
++         'exact native receipt union, never a normalized or transferred header')
++    need(receipt['marking_id'] == state['marking_id']
++         and receipt['state_sha256'] == digest(state)
++         and receipt['input_epoch'] == state['input_epoch'] == language.binding['language_epoch']
++         and type(receipt['row']) is int and receipt['row'] == row
++         and all(receipt[k] is False for k in flags), 'checked local receipt exact current context')
++    status, covered, keys = receipt['status'], receipt['complete_cover_checked'], receipt['candidate_keys']
++    need(type(status) is str and status in ('ZERO','SINGLETON','MANY','TWO_OR_MORE','UNKNOWN')
++         and receipt['accepted_local_evidence'] is (status != 'UNKNOWN')
++         and type(covered) is bool and type(keys) is list, 'literal status/completion/key list')
++    encoded = []
++    for key in keys:
++        tick()
++        need(type(key) is dict and set(key) == {'tile_type_id','type_preimage','translation'}
++             and key['translation'] == [0,row], 'full incident native candidate key')
++        pre = key['type_preimage']
++        need(type(pre) is dict and set(pre) == {'schema','base_type_preimage','marking_id'}
++             and pre['schema'] == 'unit-row-row0-decorated-type-v1'
++             and pre['marking_id'] == state['marking_id']
++             and pre['base_type_preimage']['input_epoch'] == state['input_epoch'],
++             'unchanged decorated/original key provenance')
++        encoded.append(canonical(key))
++    need(len(encoded) == len(set(encoded)), 'unique full native candidate keys')
++    count, sole = receipt['degree_exact'], receipt['sole_candidate']
++    if covered:
++        need(type(count) is int and count == len(keys)
++             and status == ('ZERO' if count == 0 else 'SINGLETON' if count == 1 else 'MANY'),
++             'complete native count/classification coherence')
++        if count == 1:
++            need(type(sole) is dict and canonical(sole['placement_key']) == encoded[0],
++                 'complete current sole packet/key')
++        else:
++            need(sole is None, 'no sole packet outside exact singleton')
++    else:
++        need(count is None and sole is None
++             and ((status == 'TWO_OR_MORE' and len(keys) >= 2)
++                  or (status == 'UNKNOWN' and len(keys) <= 1)), 'partial bound is not completion')
++    if is_new:
++        original = semantics.base_state(language, state, tick)
++        model_check = semantics.check_marking(language, tick)
++        need(canonical(receipt['state']) == canonical(state)
++             and canonical(receipt['original_state']) == canonical(original)
++             and receipt['original_state_sha256'] == digest(original)
++             and canonical(receipt['language_binding']) == canonical(language.binding)
++             and receipt['marking_sha256'] == digest(model_check['marking']),
++             'new receipt literal marked/original state, authority and full marking digest')
++        need(receipt['nonimp_fibre_cover_checked'] is covered
++             and type(receipt['checked_candidates']) is list
++             and [canonical(c['placement_key']) for c in receipt['checked_candidates']] == encoded
++             and type(receipt['checked_root_rejections']) is list,
++             'new native checked candidate packets and nonimp coverage flag')
++        if covered:
++            need(type(receipt['checked_fibre_cover']) is dict
++                 and receipt['checked_fibre_cover']['completed'] is True,
++                 'new completed census retained in native receipt')
++        else:
++            need(receipt['checked_fibre_cover'] is None and len(keys) == (2 if status == 'TWO_OR_MORE' else len(keys)),
++                 'new partial transcript is not independently completed census')
++        output = receipt['output_formula']
++        need(type(output) is list and output and output[0] != 'imp'
++             and [v for p,v in state['m'] if p == [1,row]] == [['formula',canonical(output)]],
++             'new native evidence belongs to current assigned nonimp route')
++        check = receipt['independent_marked_state_check']
++        need(check['marked_state_checked'] is True and check['marking_id'] == state['marking_id']
++             and check['original_state_sha256'] == digest(original), 'new full independent marked state check')
++    else:
++        need(type(receipt['missing_mark_cover_checked']) is bool
++             and type(receipt['original_base_receipt']) is dict
++             and type(receipt['marked_rejections']) is list, 'legacy native origin remains legacy')
++    if require_cover:
++        need(covered and status in ('ZERO','SINGLETON','MANY'), 'independent completed cover required')
++    tick()
++
++
+ def certify_by_current_cover(*, language, state, row, completion,
+                              checked_candidates, degree_proposer, semantics, tick):
+     """Fresh restricted cover only. No blanket all-six EOF authority is granted."""
+@@ -90,11 +183,14 @@
+     proposal = degree_proposer(language=language, state=state, row=row, tick=tick)
+     receipt = semantics.check_degree_evidence(language=language, state=state,
+                                              row=row, proposal=proposal, tick=tick)
++    validate_native_receipt(receipt=receipt, language=language, semantics=semantics,
++        state=state, row=row, tick=tick)
+     if not receipt['accepted_local_evidence'] or not receipt['complete_cover_checked']:
+         return None
+     actual = [canonical(c['placement_key']) for c in checked_candidates]
+     expected = [canonical(k) for k in receipt['candidate_keys']]
+-    need(len(actual) == len(set(actual)) and set(actual) == set(expected),
++    need(len(actual) == len(set(actual)) and len(expected) == len(set(expected))
++         and set(actual) == set(expected),
+          'fresh complete cover agrees with entire checked fallback stream')
+     need(completion['state_sha256'] == digest(state)
+          and receipt['state_sha256'] == digest(state) and receipt['row'] == row
+@@ -194,7 +290,8 @@
+                                 state_sha256=digest(self._state), **diagnostic_copy(data)))
+ 
+     def _snapshot_value(self):
+-        return {'state': self._state, 'revision': self._revision,
++        return {'schema': 'unit-row-channel4-routed-engine-snapshot-v1', 'version': VERSION,
++            'state': self._state, 'revision': self._revision,
+             'row_versions': list(self._versions),
+             'mark_reference_counts': [[list(p), n] for p, n in sorted(self._refs.items())],
+             'certificates': [[r, v] for r, v in sorted(self._certs.items())],
+@@ -245,16 +342,30 @@
+             'immutable original authority; no cache reuse across authority changes')
+ 
+     def _transfer_receipt(self, receipt, row, transition, refreshed):
+-        # Engine-private already checked evidence is the premise. This is a new
+-        # transfer schema, never a c354 receipt with a replaced state SHA.
++        # Only engine-owned checked origins enter here; native headers stay literal.
+         original = receipt.get('original_receipt', receipt)
++        protocol = {'schema': original['schema'], 'version': original.get('version')}
++        if protocol == {'schema':'unit-row-marked-aware-nonimp-fibre-check-v1',
++                        'version':'unit-row-independent-marked-aware-nonimp-fibre-checker-v1'}:
++            coverage = {'kind':'MARKED_AWARE_NONIMP_FIBRES',
++                'nonimp_fibre_cover_checked':original['nonimp_fibre_cover_checked']}
++        elif protocol == {'schema':'unit-row-channel4-degree-evidence-check-v1',
++                          'version':'unit-row-channel4-filtered-degree-semantics-v1'}:
++            coverage = {'kind':'LEGACY_ORIGINAL_COVER_AND_MARKED_FILTER',
++                'missing_mark_cover_checked':original['missing_mark_cover_checked']}
++        else:
++            need(protocol == {'schema':'unit-row-channel4-checked-prefix-classification-v1','version':None}
++                 and original['status'] == 'TWO_OR_MORE'
++                 and original['complete_cover_checked'] is False,
++                 'owned fallback prefix is a distinct lower-bound protocol')
++            coverage = {'kind':'CHECKED_CANONICAL_FALLBACK_PREFIX'}
+         current = transition['after_state_sha256']
+         need(receipt['state_sha256'] == transition['before_state_sha256']
+              and receipt['row'] == row and receipt['input_epoch'] == self._state['input_epoch'],
+              'owned checked cache at exact preceding state')
+         proof = next(v for v in transition['rows'] if v['row'] == row)
+         need(proof['retain'] is True, 'checked sufficient domain equality')
+-        return {'schema': 'unit-row-channel4-transferred-domain-classification-v1',
++        return {'schema': 'unit-row-channel4-transferred-domain-classification-v2',
+             'marking_id': self._state['marking_id'],
+             'version': VERSION, 'state_sha256': current, 'row': row,
+             'input_epoch': self._state['input_epoch'],
+@@ -262,7 +373,7 @@
+             'accepted_local_evidence': receipt['accepted_local_evidence'],
+             'complete_cover_checked': receipt['complete_cover_checked'],
+             'degree_exact': receipt['degree_exact'],
+-            'missing_mark_cover_checked': receipt.get('missing_mark_cover_checked', False),
++            'origin_protocol': protocol, 'origin_coverage': coverage,
+             'candidate_keys': self._copy(receipt['candidate_keys']),
+             'sole_candidate': (self._copy(refreshed[canonical(receipt['sole_candidate']['placement_key'])])
+                                if receipt['sole_candidate'] is not None else None),
+@@ -608,20 +719,9 @@
+             return receipt
+ 
+     def _validate_receipt(self, receipt, row, require_cover=False):
+-        need(type(receipt) is dict and receipt.get('schema') == 'unit-row-channel4-degree-evidence-check-v1'
+-             and receipt.get('version') == SEMANTICS_VERSION
+-             and receipt.get('marking_id') == self._state['marking_id']
+-             and receipt.get('state_sha256') == digest(self._state)
+-             and receipt.get('input_epoch') == self._state['input_epoch']
+-             and type(receipt.get('row')) is int and receipt['row'] == row
+-             and all(receipt.get(k) is False for k in ('complete_candidate_graph_accepted',
+-                  'scheduler_or_rollback_accepted', 'logical_proof_accepted', 'ROOT_resource_accepted')),
+-             'checked local receipt exact current context')
+-        need(receipt['status'] in ('ZERO', 'SINGLETON', 'MANY', 'TWO_OR_MORE', 'UNKNOWN')
+-             and receipt['accepted_local_evidence'] is (receipt['status'] != 'UNKNOWN'), 'checked local status')
+-        if require_cover:
+-            need(receipt['complete_cover_checked'] is True
+-                 and receipt['status'] in ('ZERO', 'SINGLETON', 'MANY'), 'independent completed cover required')
++        return validate_native_receipt(receipt=receipt, language=self.language,
++            semantics=self.semantics, state=self._state, row=row, tick=self.tick,
++            require_cover=require_cover)
+ 
+     def decision(self):
+         self.tick()
+@@ -946,7 +1046,7 @@
+             reason = 'unresolved local degree or unaccepted fallback completion'
+         if status != 'UNKNOWN':
+             self.tick()
+-        return {'schema': 'unit-row-channel4-lazy-global-search-result-v1', 'version': VERSION,
++        return {'schema': 'unit-row-channel4-routed-lazy-global-search-result-v1', 'version': VERSION,
+             'marking_id': self._state['marking_id'],
+             'variant': VARIANT if self.branch_tie == 'ROW' else MARK_VARIANT,
+             'scheduler_policy': self._policy_snapshot(),

@@ -1,0 +1,34 @@
+{
+  "author_identity": "/root",
+  "authority": "Only Root strict saved dispositions supply qualification and counts. Native lifetimes come from the corresponding actual launch-to-postprobe record. Pending or missing data stays null, never zero. No browser generator/matcher/checker.",
+  "data_fields": [
+    "lead",
+    "overall",
+    "conclusion",
+    "endpoints",
+    "links"
+  ],
+  "endpoint_fields": [
+    "id",
+    "title",
+    "qualified",
+    "qualifiedCount",
+    "nativeSeconds",
+    "actualComplete",
+    "scope",
+    "controls",
+    "events",
+    "frames",
+    "record",
+    "links"
+  ],
+  "events": "Literal returned engine events, in saved order. Timeline selects DECISION/TRY/PLACE/RESTORE/EXCLUDE while full record remains accessible. No expected move/path appears as an observation.",
+  "frames": "Each frame.state is a whole literal saved marked state from the same endpoint. No placement replay, added point inference, invented empty rows or receipt-state relabeling. May join an event to an already saved native receipt state by exact stored state hash, with its provenance recorded.",
+  "layers": "Render raw t and selected placement rule/formula at actual saved row; m channels1/2/3/4 retain literal values, missing distinct from assigned0. Formula AST translated to LaTeX only; literal chains shortened for display. Translation only.",
+  "presentation_only": true,
+  "preview_and_live_required": true,
+  "resource_scope": "Six separate native20/512 endpoints, all12 required cases retained. No combined20, oldStageC promotion, theorem discovery or speedup from qualified controls.",
+  "schema": "ROOT-routed-engine-reader-data-contract-v1",
+  "scientific_replay": false,
+  "status": "SOURCE_PRESENTATION_AWAITING_CURRENT_ACTUAL_DATA_AND_ROOT_QA"
+}

@@ -1,0 +1,13 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "proposal": {
+    "bytes": 15076,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-reuse-proposal-source-20261016/independent-proposal-v1.json",
+    "sha256": "fc63e326e3f1591fc819d39bd2f5ff8f1d4e24b3c2525e50351d3fe460e43607"
+  },
+  "schema": "unit-row-decision-context-reuse-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "summary": "Narrow engine-only stack-local decision checked-context reuse is conditionally sound; keep all independent reconstruction/candidate legality/ledgers/cursor/place/transition/rollback fresh paths, same scopes/gates. Source duplicate established, actual cost share/fit unmeasured. No implementation or actual by author."
+}

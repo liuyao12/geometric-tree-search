@@ -1,0 +1,26 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py
+@@ -53,10 +53,7 @@
+     assert Path(plan['output_directory'])==owned
+     bracket_path=HERE/('ROOT-MR-'+mode+'-tool-bracket-v1.json');bracket=read(bracket_path)
+     assert bracket['plan_sha256']==pp['sha256'] and bracket['plan_bytes']==pp['bytes']
+-    assert type(bracket['tool_exit_code'])is int and 0<bracket['tool_exit_code']<256 and ((bracket['tool_session_id'] is None and bracket['observed_session_id'] is None)
+-        or (type(bracket['tool_session_id']) is int and bracket['tool_session_id'] > 0
+-            and type(bracket['observed_session_id']) is int
+-            and bracket['observed_session_id'] == bracket['tool_session_id']))
++    assert type(bracket['tool_exit_code'])is int and 0<bracket['tool_exit_code']<256 and bracket['tool_session_id']is None
+     date=(bracket['ended_Date_ms']-bracket['began_Date_ms'])/1000
+     assert date==bracket['complete_Date_seconds'] and 0<=date<=60 and date+1<=90
+     native=read(external/'native-terminal.json');observation=read(external/'observation.json');once=read(external/'ONCE.json')
+@@ -160,10 +157,7 @@
+ owned=HERE/('MR-'+mode+'-owned-v1');external=HERE/('MR-'+mode+'-external-v1')
+ bracket=read(HERE/('ROOT-MR-'+mode+'-tool-bracket-v1.json'))
+ assert bracket['plan_sha256']==pp['sha256'] and bracket['plan_bytes']==pp['bytes']
+-assert bracket['tool_exit_code']==0 and ((bracket['tool_session_id'] is None and bracket['observed_session_id'] is None)
+-    or (type(bracket['tool_session_id']) is int and bracket['tool_session_id'] > 0
+-        and type(bracket['observed_session_id']) is int
+-        and bracket['observed_session_id'] == bracket['tool_session_id']))
++assert bracket['tool_exit_code']==0 and bracket['tool_session_id'] is None
+ date=(bracket['ended_Date_ms']-bracket['began_Date_ms'])/1000
+ assert date==bracket['complete_Date_seconds'] and 0<=date<=60 and date+1<=90
+ assert sorted(p.name for p in owned.iterdir())==['engine-result.json','response.jsonl']

@@ -1,0 +1,97 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 18,
+  "checks": [
+    {
+      "name": "compile_AST_only_no_evaluation",
+      "passed": true
+    },
+    {
+      "name": "all17_top_helpers_raw_AST",
+      "passed": true
+    },
+    {
+      "name": "all20_core_nested_helpers_raw_AST",
+      "passed": true
+    },
+    {
+      "name": "whole_two_classes_raw_AST",
+      "passed": true
+    },
+    {
+      "name": "whole_native_exit_topfailure_tail_raw",
+      "passed": true
+    },
+    {
+      "edit_count": 25,
+      "name": "whole_full_byte_forward_inverse",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_patches_both_inverse",
+      "passed": true
+    },
+    {
+      "name": "exact_casechoice_six_purposes_twelve_essential",
+      "passed": true
+    },
+    {
+      "name": "current_Runtime14_input8_separate_original17",
+      "passed": true
+    },
+    {
+      "name": "original_maps_binding_and_limits_unchanged",
+      "passed": true
+    },
+    {
+      "name": "whole_raw_sources_inputs_pinned",
+      "passed": true,
+      "unique_paths": 33
+    },
+    {
+      "name": "new_science_full_FunctionType_handler_delegation",
+      "passed": true
+    },
+    {
+      "name": "same_native_imports_no_new_clock_or_framework",
+      "passed": true
+    },
+    {
+      "name": "no_engine_private_cache_assignments",
+      "passed": true
+    },
+    {
+      "name": "native_first_fixed_child_stop_and_same_certifier_callback",
+      "passed": true
+    },
+    {
+      "name": "specific_builtin_ValueError_reason_only",
+      "passed": true
+    },
+    {
+      "name": "direct_cover_negatives_only_owned_context_and_keysets",
+      "passed": true
+    },
+    {
+      "name": "full_typed_origin_and_current_sole_or_TWOpackets",
+      "passed": true
+    }
+  ],
+  "independent_review": false,
+  "native_fit": "UNMEASURED",
+  "runtime_executed": false,
+  "schema": "unit-row-routed-engine-qualification-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 78151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/routed_engine_qualification_cold_v1.py",
+    "sha256": "38f8f86f5af3474a0eed6fac7ff89c5d9c2b327d1413a2164be24ca8d7ea6e60"
+  },
+  "source_delta": {
+    "bytes": 51060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "8c1a39ab31db85485a3b728ae6853d7c586515c3b448d53e9b0cc91edd9cca80"
+  },
+  "source_only": true
+}

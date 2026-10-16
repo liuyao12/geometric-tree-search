@@ -1,0 +1,103 @@
+{
+  "all12essential": true,
+  "endpoints": [
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-router-protocol-external-v1",
+      "mode": "router-protocol",
+      "ordered_cases": [
+        "MR-01-new-and-legacy-route-consumption",
+        "MR-02-wrong-route-and-context-rejected"
+      ],
+      "plan": {
+        "bytes": 9021,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-router-protocol-plan-v1.json",
+        "sha256": "258850cee1d8f69970496252d853b1bd037fa3ac2cbc70fe4437203314ab655f"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-global-forced-dead-external-v1",
+      "mode": "global-forced-dead",
+      "ordered_cases": [
+        "MR-03-global-forced-requery-dead-exhaustion",
+        "MR-04-owned-full-root-restoration"
+      ],
+      "plan": {
+        "bytes": 9033,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-global-forced-dead-plan-v1.json",
+        "sha256": "e2ada1baea349551cdb3c1e77beedeed04120568191cb2b360816b9fdfb335a9"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-singleton-transfer-external-v1",
+      "mode": "singleton-transfer",
+      "ordered_cases": [
+        "MR-05-native-singleton-full-origin-transfer",
+        "MR-06-current-sole-consumption-and-owned-rollback"
+      ],
+      "plan": {
+        "bytes": 9033,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-singleton-transfer-plan-v1.json",
+        "sha256": "14ebe1fa4e20ee4bb8c144f7139cc47b607b3d277e0974ca264ba3590b564674"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-two-transfer-external-v1",
+      "mode": "two-transfer",
+      "ordered_cases": [
+        "MR-07-native-TWO-full-origin-transfer",
+        "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+      ],
+      "plan": {
+        "bytes": 9009,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-two-transfer-plan-v1.json",
+        "sha256": "3a85a45a4f20393434d35223f585b0293678adc774347dcb9f2373c982d58706"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-short-EOF-external-v1",
+      "mode": "short-EOF",
+      "ordered_cases": [
+        "MR-09-real-short-stream-and-fresh-complete-keySET",
+        "MR-10-legacy-implication-EOF-remains-unaccepted"
+      ],
+      "plan": {
+        "bytes": 8997,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-short-EOF-plan-v1.json",
+        "sha256": "19944f7e466bba86766fd74e5e7b6187860f6c1d1e2e39f614b6ffa13f30cf7f"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/MR-child-UNKNOWN-external-v1",
+      "mode": "child-UNKNOWN",
+      "ordered_cases": [
+        "MR-11-actual-child-native-first-declared-UNKNOWN",
+        "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+      ],
+      "plan": {
+        "bytes": 9013,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-child-UNKNOWN-plan-v1.json",
+        "sha256": "e8bfb7910e25eeb055f56e02ff62d29a9003d5c50f3169853b992f8c0af7ebdf"
+      }
+    }
+  ],
+  "new_module_reviews": {
+    "ROOT": {
+      "bytes": 8786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-router-engine-Source-review-v1.json",
+      "sha256": "adacd538fabc93f90b0f1454afdef58ea1b3cffdfe9c4a6aa6717825a4ac8e78"
+    },
+    "peer": {
+      "bytes": 6577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "b0f769ec6ab873905053471055bbf3c2e77630a2e5dbe7261d6092ec88f2673b"
+    }
+  },
+  "no_combined20_claim": true,
+  "protocol_choice": {
+    "bytes": 3915,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-qualification-choice-v1.json",
+    "sha256": "0e6e7ec255a054ee72cf8d7ecde22e82e9a1384ccd4161a8b675fa92a6029950"
+  },
+  "schema": "ROOT-routed-engine-qualification-preflight-v1",
+  "scientific_calls": 0
+}

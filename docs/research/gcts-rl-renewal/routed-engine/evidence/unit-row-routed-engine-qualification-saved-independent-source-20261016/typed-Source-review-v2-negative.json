@@ -1,0 +1,61 @@
+{
+  "actual_output_decode": false,
+  "author_identity": "/root/arithmetic_induction",
+  "concrete_blockers": [
+    {
+      "finding": "In preserved V2 the module-level expected declared-case list is rebound to a proposal dictionary by the router-negative loop. Final len(expected) and case_names=expected therefore describe the last mutated proposal, not the two declared case names. Root reported 22 fields/dict in the saved router disposition. This is a concrete reconciliation defect; all six V2 dispositions are quarantined by Root and no aggregate was accepted. No actual data or bracket should be changed.",
+      "id": "ROUTED-SAVED-DECLARED-CASE-SHADOWING-1",
+      "reviewer_miss": "The earlier V2 conditional Source pass missed this top-level flow. That historical review is preserved, but its no-scoped-blocker conclusion is superseded by this genuine negative. Session-continuity repair remains valid; current scientific Sources/actuals are unchanged.",
+      "source_lines": [
+        234,
+        237,
+        516,
+        523,
+        614,
+        615,
+        625
+      ]
+    }
+  ],
+  "disposition": "SOURCE_NEGATIVE_DECLARED_CASE_BINDING_OVERWRITTEN",
+  "findings": {
+    "bytes": 3088,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-independent-source-20261016/findings-v2-negative.json",
+    "sha256": "00d0474bc90418e5df47927d24daffa5578e45381e16bc3d56fe23e2c9d49bb0"
+  },
+  "helper_execution": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-routed-engine-qualification-saved-helpers-Source",
+  "source": {
+    "bytes": 54112,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+    "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+  },
+  "source_contract": {
+    "bytes": 24764,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-contract-v2.json",
+    "sha256": "042c356a7541e5ad1ce1c335c11600afc853a03fc0a3eee10ebb946fb423d6e2"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "closer": {
+      "bytes": 54112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+      "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  },
+  "supersedes_historical_pass": {
+    "bytes": 3016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "5ba72df9d2b45d0d2b50ceee3069f7b739a8c809c53f72184baa1f5a2ec7cd09"
+  }
+}

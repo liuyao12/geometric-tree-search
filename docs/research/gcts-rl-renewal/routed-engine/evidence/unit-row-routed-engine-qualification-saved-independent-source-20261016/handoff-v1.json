@@ -1,0 +1,27 @@
+{
+  "findings": {
+    "bytes": 3108,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "f09645c3e0e822a5a6b32ca33d40487494cf787f3d130f576f58b3c6b3b3f770"
+  },
+  "review": {
+    "bytes": 2337,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "7764b24ae84cd6cf5ee01f8f5830b1f842ac313995b1abfe0b4d84f1715972cb"
+  },
+  "schema": "unit-row-routed-engine-qualification-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53579,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+    "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+  },
+  "source_contract": {
+    "bytes": 23632,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "fdfa9ceada51756a09cc4d7a0ec302786af18e87d31adbde750855ea85316ebf"
+  },
+  "source_only": true,
+  "source_review_passed": false
+}

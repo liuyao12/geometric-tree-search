@@ -1,0 +1,87 @@
+{
+  "decoder_rerun": false,
+  "reason": "Router global expected variable shadowed by failing proposal: invalid final count22 and dict case_names. No aggregate run or accepted result. Preserve all6 V2 saved dispositions before V3 closure.",
+  "records": [
+    {
+      "mode": "router-protocol",
+      "original": {
+        "bytes": 40217,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-router-protocol-disposition-v1.json",
+        "sha256": "f72e5ab65b0a111a858affaa1bca9b40b28c96e768756fb26981e3c1dbb21f35"
+      },
+      "preserved": {
+        "bytes": 40217,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/superseded-saved-v2/ROOT-MR-router-protocol-disposition-v1.json",
+        "sha256": "f72e5ab65b0a111a858affaa1bca9b40b28c96e768756fb26981e3c1dbb21f35"
+      }
+    },
+    {
+      "mode": "global-forced-dead",
+      "original": {
+        "bytes": 13402,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-global-forced-dead-disposition-v1.json",
+        "sha256": "874e654bbb8850e82706915c9f7c76357d5f19f02962b69a3894ef6153351901"
+      },
+      "preserved": {
+        "bytes": 13402,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/superseded-saved-v2/ROOT-MR-global-forced-dead-disposition-v1.json",
+        "sha256": "874e654bbb8850e82706915c9f7c76357d5f19f02962b69a3894ef6153351901"
+      }
+    },
+    {
+      "mode": "singleton-transfer",
+      "original": {
+        "bytes": 13418,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-singleton-transfer-disposition-v1.json",
+        "sha256": "f04f91ceb6f1c8571f3ebf02a9d7e321647e553ca9ee25a9b67ba06c3dd78bac"
+      },
+      "preserved": {
+        "bytes": 13418,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/superseded-saved-v2/ROOT-MR-singleton-transfer-disposition-v1.json",
+        "sha256": "f04f91ceb6f1c8571f3ebf02a9d7e321647e553ca9ee25a9b67ba06c3dd78bac"
+      }
+    },
+    {
+      "mode": "two-transfer",
+      "original": {
+        "bytes": 13343,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-two-transfer-disposition-v1.json",
+        "sha256": "7cee3233f64196d152efb5322d593250e40b531b2ae1558f85311db4a006bccf"
+      },
+      "preserved": {
+        "bytes": 13343,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/superseded-saved-v2/ROOT-MR-two-transfer-disposition-v1.json",
+        "sha256": "7cee3233f64196d152efb5322d593250e40b531b2ae1558f85311db4a006bccf"
+      }
+    },
+    {
+      "mode": "short-EOF",
+      "original": {
+        "bytes": 14541,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-short-EOF-disposition-v1.json",
+        "sha256": "8a93bc6b1b9f8d1ef5755241827236f5ad7a8d158f8539bffdab916dcbba2d37"
+      },
+      "preserved": {
+        "bytes": 14541,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/superseded-saved-v2/ROOT-MR-short-EOF-disposition-v1.json",
+        "sha256": "8a93bc6b1b9f8d1ef5755241827236f5ad7a8d158f8539bffdab916dcbba2d37"
+      }
+    },
+    {
+      "mode": "child-UNKNOWN",
+      "original": {
+        "bytes": 14602,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-child-UNKNOWN-disposition-v1.json",
+        "sha256": "72f420d3f3e80bea0414d0fcb7bcbc1e73ed74ee9d28758914ac0130f6a335a8"
+      },
+      "preserved": {
+        "bytes": 14602,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/superseded-saved-v2/ROOT-MR-child-UNKNOWN-disposition-v1.json",
+        "sha256": "72f420d3f3e80bea0414d0fcb7bcbc1e73ed74ee9d28758914ac0130f6a335a8"
+      }
+    }
+  ],
+  "schema": "ROOT-routed-saved-v2-quarantine-v1",
+  "scientific_actuals_changed": false,
+  "scientific_rerun": false
+}

@@ -1,0 +1,50 @@
+{
+  "actual_output_decode": false,
+  "actuals_or_dispositions_modified": false,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored currentcaller38f8/proposer4316 and sharedmembership/c960/fallback/decorator, not these savedhelpers; this is raw saved-closure Source review, not independent mathematical replay.",
+  "concrete_blockers": [
+    {
+      "classification": "FALSE_NEGATIVE_SAVED_METADATA_ASSUMPTION",
+      "evidence_scope": "Actual session detail supplied directly by Root; reviewer did not execute helpers or decode/read current owned results. Source predicate independently inspected.",
+      "finding": "Positive helper requires tool_session_id None. Root reports router-protocol actual was polled on one real handle94167, with truthful tool_session_id==observed_session_id==94167 and terminal exit0/allreaped. Current predicate rejects that legitimate terminal bracket. Neither falsify saved bracket nor rerun actual. Preserve v1 and narrowly accept bothNone or same positive exact builtin int IDs, retaining every existing native/terminal/Date gate.",
+      "id": "SAVED-TOOL-SESSION-CONTINUITY-1",
+      "source_line": 160
+    }
+  ],
+  "helper_execution": false,
+  "parse_compile_only": true,
+  "raw_pin_paths": 41,
+  "review_limit": "Other whole Source paths read without concrete blocker; no positive Source or runtime admission while this blocker remains.",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-routed-engine-qualification-saved-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-routed-engine-qualification-saved-helpers-Source",
+  "source": {
+    "bytes": 53579,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+    "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+  },
+  "source_contract": {
+    "bytes": 23632,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "fdfa9ceada51756a09cc4d7a0ec302786af18e87d31adbde750855ea85316ebf"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "closer": {
+      "bytes": 53579,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+      "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  },
+  "whole_contract_read": true,
+  "whole_source_read": true
+}

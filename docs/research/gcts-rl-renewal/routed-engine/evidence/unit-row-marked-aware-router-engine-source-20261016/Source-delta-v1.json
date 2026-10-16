@@ -1,0 +1,546 @@
+{
+  "check_transition_only_schema_literal_diff": true,
+  "copied_support_raw_AST_exact": [
+    "MarkedTransition._projection ->RoutedMarkedTransition._projection",
+    "MarkedTransition.refresh_candidates ->RoutedMarkedTransition.refresh_candidates"
+  ],
+  "engine_core_raw_AST_exact": [
+    "select_schedule",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine.decision"
+  ],
+  "native_receipt_field_sets_match_source_returns": {
+    "legacy_fields": [
+      "ROOT_resource_accepted",
+      "accepted_local_evidence",
+      "candidate_keys",
+      "complete_candidate_graph_accepted",
+      "complete_cover_checked",
+      "degree_exact",
+      "input_epoch",
+      "logical_proof_accepted",
+      "marked_rejections",
+      "marking_id",
+      "missing_mark_cover_checked",
+      "original_base_receipt",
+      "row",
+      "scheduler_or_rollback_accepted",
+      "schema",
+      "scope",
+      "sole_candidate",
+      "state_sha256",
+      "status",
+      "version"
+    ],
+    "new_fields": [
+      "ROOT_resource_accepted",
+      "accepted_local_evidence",
+      "candidate_keys",
+      "checked_candidates",
+      "checked_fibre_cover",
+      "checked_root_rejections",
+      "complete_candidate_graph_accepted",
+      "complete_cover_checked",
+      "degree_exact",
+      "independent_marked_state_check",
+      "input_epoch",
+      "language_binding",
+      "logical_proof_accepted",
+      "marking_id",
+      "marking_sha256",
+      "nonimp_fibre_cover_checked",
+      "original_state",
+      "original_state_sha256",
+      "output_formula",
+      "proposal_sha256",
+      "row",
+      "scheduler_or_rollback_accepted",
+      "schema",
+      "scope",
+      "sole_candidate",
+      "state",
+      "state_sha256",
+      "status",
+      "version"
+    ]
+  },
+  "schema": "unit-row-marked-aware-router-engine-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "sources": {
+    "degree_router": {
+      "actual_unified_forward_inverse_verified": true,
+      "added_named_regions": [
+        "RoutedMarkedSemantics",
+        "RoutedMarkedSemantics.__init__",
+        "RoutedMarkedSemantics._check_components",
+        "RoutedMarkedSemantics._current_route",
+        "RoutedMarkedSemantics.agree",
+        "RoutedMarkedSemantics.base_state",
+        "RoutedMarkedSemantics.check_collision",
+        "RoutedMarkedSemantics.check_degree_evidence",
+        "RoutedMarkedSemantics.check_marking",
+        "RoutedMarkedSemantics.initial_state",
+        "RoutedMarkedSemantics.legality",
+        "RoutedMarkedSemantics.marking_id",
+        "RoutedMarkedSemantics.point",
+        "RoutedMarkedSemantics.point_map",
+        "RoutedMarkedSemantics.private_state",
+        "RoutedMarkedSemantics.propose_degree",
+        "RoutedMarkedSemantics.rebuild_tile",
+        "RoutedMarkedSemantics.routing_policy",
+        "RoutedMarkedSemantics.tree",
+        "RoutedMarkedSemantics.with_obligations",
+        "RoutedMarkedTransition",
+        "RoutedMarkedTransition._projection",
+        "RoutedMarkedTransition.authority_snapshot",
+        "RoutedMarkedTransition.check_transition",
+        "RoutedMarkedTransition.refresh_candidates"
+      ],
+      "changed_named_regions": [
+        "require"
+      ],
+      "edit_count": 27,
+      "edits": [
+        {
+          "new_end": 70,
+          "new_start": 0,
+          "new_utf8": "\"\"\"SOURCE ONLY: explicit composition router, never a new point model.\n",
+          "old_end": 80,
+          "old_start": 0,
+          "old_utf8": "\"\"\"SOURCE ONLY: frozen channel4 point semantics, filtered cursor and retention.\n"
+        },
+        {
+          "new_end": 315,
+          "new_start": 71,
+          "new_utf8": "Original Source17/input2 language and821fe point instance are caller-authenticated.\nAssigned non-implication uses4316/8f7a; implication/absent retains the legacy safe\npath. Native receipt protocols remain literal. No project imports or clocks.\n",
+          "old_end": 391,
+          "old_start": 81,
+          "old_utf8": "No project imports, source loader, clocks, target route or search. The caller\nauthenticates the separate original Source17 language and current executable\nSources. Independent marked reconstruction is injected, never inferred from\nthis adapter's own constructor. EOF is untrusted until a fresh complete cover.\n"
+        },
+        {
+          "new_end": 853,
+          "new_start": 347,
+          "new_utf8": "VERSION = 'unit-row-channel4-marked-degree-router-v1'\nSEMANTICS_VERSION = 'unit-row-channel4-routed-nonimp-degree-semantics-v2'\nTRANSITION_VERSION = 'unit-row-channel4-routed-support-transition-v2'\nPOINT_SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'\nLEGACY_PROPOSER_VERSION = 'unit-row-implicit-degree-evidence-v3-missing-marks'\nNEW_PROPOSER_VERSION = 'unit-row-marked-aware-nonimp-fibre-proposer-v1'\nNEW_CHECKER_VERSION = 'unit-row-independent-marked-aware-nonimp-fibre-checker-v1'\n",
+          "old_end": 602,
+          "old_start": 423,
+          "old_utf8": "VERSION = 'unit-row-channel4-point-adapter-v1'\nSEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'\nTRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'\n"
+        },
+        {
+          "new_end": 922,
+          "new_start": 922,
+          "new_utf8": "",
+          "old_end": 888,
+          "old_start": 671,
+          "old_utf8": "BASE_SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'\nBASE_FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'\nDECORATOR_VERSION = 'unit-row-certified-row0-point-mark-decorator-v1'\n"
+        },
+        {
+          "new_end": 1276,
+          "new_start": 991,
+          "new_utf8": "LEGACY_PROPOSAL_SCHEMA = 'unit-row-channel4-degree-evidence-proposal-v1'\nLEGACY_PROPOSAL_VERSION = 'unit-row-channel4-point-adapter-v1'\nNEW_PROPOSAL_SCHEMA = 'unit-row-marked-aware-nonimp-fibre-proposal-v1'\nROUTE_POLICY = 'CHECKED_ASSIGNED_NONIMP_ELSE_LEGACY_NO_EXCEPTION_FALLTHROUGH'\n",
+          "old_end": 1291,
+          "old_start": 957,
+          "old_utf8": "STATE_SCHEMA = 'unit-row-channel4-private-state-v1'\nRECEIPT_SCHEMA = 'unit-row-channel4-degree-evidence-check-v1'\nRULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']\nFLAGS = ('complete_candidate_graph_accepted', 'scheduler_or_rollback_accepted',\n         'logical_proof_accepted', 'ROOT_resource_accepted')\n"
+        },
+        {
+          "new_end": 1378,
+          "new_start": 1318,
+          "new_utf8": "        raise ValueError('marked degree router: ' + reason)\n",
+          "old_end": 1389,
+          "old_start": 1333,
+          "old_utf8": "        raise ValueError('channel4 adapter: ' + reason)\n"
+        },
+        {
+          "new_end": 1649,
+          "new_start": 1620,
+          "new_utf8": "class RoutedMarkedSemantics:\n",
+          "old_end": 1654,
+          "old_start": 1631,
+          "old_utf8": "class MarkedSemantics:\n"
+        },
+        {
+          "new_end": 3618,
+          "new_start": 1682,
+          "new_utf8": "    def __init__(self, *, point_semantics, legacy_proposer,\n                 marked_aware_proposer, marked_aware_checker, tick):\n        self._point = point_semantics\n        self._legacy = legacy_proposer\n        self._new_proposer, self._new_checker = marked_aware_proposer, marked_aware_checker\n        self.base = point_semantics.base\n        self._marking = None\n        self._frozen_marking = None\n        # No language is constructed or authority rebased here. The first public\n        # check_marking binds the full already-authenticated point model.\n        self._check_components(tick)\n\n    @property\n    def point(self):\n        \"\"\"Exact legacy point object for4316 and the unchanged filtered cursor.\"\"\"\n        return self._point\n\n    @property\n    def marking_id(self):\n        return self._point.marking_id\n\n    def _check_components(self, tick):\n        tick()\n        require(self._point.VERSION == POINT_SEMANTICS_VERSION\n                and self._legacy.VERSION == LEGACY_PROPOSER_VERSION\n                and self._new_proposer.VERSION == NEW_PROPOSER_VERSION\n                and self._new_checker.VERSION == NEW_CHECKER_VERSION\n                and self.base is self._point.base, 'exact immutable injected version coupling')\n\n    def routing_policy(self, tick):\n        self._check_components(tick)\n        return {'schema': 'unit-row-channel4-degree-route-policy-v1',\n            'router_version': VERSION, 'semantics_version': SEMANTICS_VERSION,\n            'point_semantics_version': POINT_SEMANTICS_VERSION,\n            'legacy_proposer_version': LEGACY_PROPOSER_VERSION,\n            'new_proposer_version': NEW_PROPOSER_VERSION,\n            'new_checker_version': NEW_CHECKER_VERSION, 'route_policy': ROUTE_POLICY,\n            'legacy_receipt': ['unit-row-channel4-degree-evidence-check-v1',POINT_SEMANTICS_VERSION],\n            'new_receipt': ['unit-row-marked-aware-nonimp-fibre-check-v1',NEW_CHECKER_VERSION]}\n",
+          "old_end": 2286,
+          "old_start": 1687,
+          "old_utf8": "    def __init__(self, *, language, base_semantics, decorator, verifier, marking, tick):\n        require(base_semantics.VERSION == BASE_SEMANTICS_VERSION\n                and decorator.VERSION == DECORATOR_VERSION\n                and verifier.VERSION == VERIFIER_VERSION, 'exact injected component versions')\n        self.base, self.decorator, self.verifier = base_semantics, decorator, verifier\n        self._marking = base_semantics.tree(marking, tick)\n        self._frozen = canonical(self._marking)\n        self.marking_id = self._marking['marking_id']\n        self.check_marking(language, tick)\n"
+        },
+        {
+          "new_end": 3697,
+          "new_start": 3652,
+          "new_utf8": "        return self._point.tree(value, tick)\n",
+          "old_end": 2363,
+          "old_start": 2320,
+          "old_utf8": "        return self.base.tree(value, tick)\n"
+        },
+        {
+          "new_end": 3790,
+          "new_start": 3738,
+          "new_utf8": "        return self._point.point_map(entries, tick)\n",
+          "old_end": 2454,
+          "old_start": 2404,
+          "old_utf8": "        return self.base.point_map(entries, tick)\n"
+        },
+        {
+          "new_end": 3889,
+          "new_start": 3834,
+          "new_utf8": "        return self._point.agree(values, point, value)\n",
+          "old_end": 2551,
+          "old_start": 2498,
+          "old_utf8": "        return self.base.agree(values, point, value)\n"
+        },
+        {
+          "new_end": 4396,
+          "new_start": 3935,
+          "new_utf8": "        self._check_components(tick)\n        check = self._point.check_marking(language, tick)\n        current = canonical(check['marking'])\n        if self._frozen_marking is None:\n            self._marking = self.tree(check['marking'], tick)\n            self._frozen_marking = current\n        require(current == self._frozen_marking and canonical(self._marking) == current,\n                'same full frozen point marking, no constructor-table substitution')\n",
+          "old_end": 3113,
+          "old_start": 2597,
+          "old_utf8": "        require(canonical(self._marking) == self._frozen\n                and self._marking['marking_id'] == self.marking_id, 'frozen full marking')\n        check = self.verifier.check_marking(language=language, semantics=self.base,\n                                           marking=self._marking, tick=tick)\n        require(check['marking_checked'] is True\n                and check['marking_id'] == self.marking_id\n                and canonical(check['marking']) == self._frozen, 'independent full marking check')\n"
+        },
+        {
+          "new_end": 4418,
+          "new_start": 4418,
+          "new_utf8": "",
+          "old_end": 4164,
+          "old_start": 3135,
+          "old_utf8": "    def _base_key(self, language, key, selected, tick):\n        fields = {'tile_type_id', 'type_preimage', 'translation'}\n        require(type(key) is dict and set(key) == fields | ({'generation'} if selected else set()),\n                'exact decorated key/record')\n        pre = key['type_preimage']\n        require(type(pre) is dict and set(pre) == {'schema', 'base_type_preimage', 'marking_id'}\n                and pre['schema'] == 'unit-row-row0-decorated-type-v1'\n                and pre['marking_id'] == self.marking_id, 'decorated preimage and frozen model')\n        tile = self.base.rebuild_tile(language, pre['base_type_preimage'], key['translation'], tick)\n        rebuilt = self.rebuild_tile(language, pre, key['translation'], tick)\n        expected = rebuilt['selection_record'] if selected else rebuilt['placement_key']\n        require(canonical(key) == canonical(expected), 'complete literal decorated key, no digest-only identity')\n        return tile['selection_record'] if selected else tile['placement_key']\n\n"
+        },
+        {
+          "new_end": 4528,
+          "new_start": 4467,
+          "new_utf8": "        return self._point.base_state(language, state, tick)\n",
+          "old_end": 5319,
+          "old_start": 4213,
+          "old_utf8": "        s = self.tree(state, tick)\n        require(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't',\n                'm', 'selected', 'excluded', 'generation', 'marking_id'}\n                and s['schema'] == STATE_SCHEMA and s['marking_id'] == self.marking_id,\n                'new exact marked state fields/schema/marking identity')\n        require(type(s['m']) is list and type(s['selected']) is list\n                and type(s['excluded']) is list, 'full state arrays')\n        marks = self.point_map(s['m'], tick)\n        require(all(p[0] in (1, 2, 3, 4) for p in marks), 'declared full mark channels')\n        base = {k: self.tree(s[k], tick) for k in ('input_epoch', 'height', 't', 'generation')}\n        base.update(schema='unit-row-implicit-private-state-v1',\n            m=[[list(p), v] for p, v in sorted(marks.items()) if p[0] != 4],\n            selected=[self._base_key(language, k, True, tick) for k in s['selected']],\n            excluded=[self._base_key(language, k, False, tick) for k in s['excluded']])\n        return self.base.private_state(language, base, tick)[0]\n"
+        },
+        {
+          "new_end": 4674,
+          "new_start": 4617,
+          "new_utf8": "        return self._point.initial_state(language, tick)\n",
+          "old_end": 5935,
+          "old_start": 5408,
+          "old_utf8": "        epoch = language.binding['language_epoch']\n        marks = {(1, k): ['outside', epoch] for k in range(-23, 0)}\n        marks[(1, 23)] = ['formula', canonical(language.target)]\n        marks[(4, 0)] = 0\n        return {'schema': STATE_SCHEMA, 'marking_id': self.marking_id,\n            'input_epoch': epoch, 'height': 24, 't': [[[0, r], 0] for r in range(24)],\n            'm': [[list(p), v] for p, v in sorted(marks.items())], 'selected': [],\n            'excluded': [], 'generation': [[[0, r], 0] for r in range(24)]}\n"
+        },
+        {
+          "new_end": 4821,
+          "new_start": 4742,
+          "new_utf8": "        return self._point.rebuild_tile(language, preimage, translation, tick)\n",
+          "old_end": 6996,
+          "old_start": 6003,
+          "old_utf8": "        require(type(preimage) is dict and set(preimage) == {'schema', 'base_type_preimage', 'marking_id'}\n                and preimage['schema'] == 'unit-row-row0-decorated-type-v1'\n                and preimage['marking_id'] == self.marking_id, 'exact marked prototype preimage')\n        base = self.base.rebuild_tile(language, preimage['base_type_preimage'], translation, tick)\n        packet = self.decorator.decorate_prototype(marking=self._marking, base_tile=base, tick=tick)\n        checked = self.verifier.check_decorated_tile(language=language, semantics=self.base,\n            marking=self._marking, tile=packet, tick=tick)\n        require(canonical(packet) == canonical(checked), 'complete independently rebuilt marked prototype')\n        # Engine-facing packet preserves the full independently checked nested\n        # packet. Selection_record is explicitly derived, not a decorator field.\n        return dict(checked, selection_record=dict(checked['placement_key'], generation=1))\n"
+        },
+        {
+          "new_end": 4938,
+          "new_start": 4874,
+          "new_utf8": "        return self._point.private_state(language, state, tick)\n",
+          "old_end": 8770,
+          "old_start": 7049,
+          "old_utf8": "        s = self.tree(state, tick)\n        base = self.base_state(language, s, tick)\n        _, t, _, _, _, base_names = self.base.private_state(language, base, tick)\n        packets, selected, excluded, names = [], set(), set(), dict(base_names)\n        for category in ('selected', 'excluded'):\n            for record in s[category]:\n                tick()\n                tile = self.rebuild_tile(language, record['type_preimage'], record['translation'], tick)\n                self.check_collision(tile, names)\n                key = canonical(tile['placement_key'])\n                require(key not in selected and key not in excluded, 'no duplicate/overlapping decorated key')\n                (selected if category == 'selected' else excluded).add(key)\n                if category == 'selected':\n                    packets.append({k: v for k, v in tile.items() if k != 'selection_record'})\n        full_marks = self.point_map(s['m'], tick)\n        packet = {'schema': 'unit-row-row0-decorated-state-v1', 'version': DECORATOR_VERSION,\n            'marking_id': self.marking_id, 'base_state': base, 'decorated_selected': packets,\n            'global_t_values': s['t'], 'global_m_values': s['m'],\n            'added_m_values': [[list(p), v] for p, v in sorted(full_marks.items()) if p[0] == 4],\n            **{k: False for k in self.verifier.DATA_FLAGS}}\n        check = self.verifier.check_marked_state(language=language, semantics=self.base,\n            marking=self._marking, state=packet, tick=tick)\n        require(check['marked_state_checked'] is True and check['marking_id'] == self.marking_id,\n                'independent complete marked state union')\n        return s, t, full_marks, selected, excluded, names\n"
+        },
+        {
+          "new_end": 5039,
+          "new_start": 4983,
+          "new_utf8": "        return self._point.check_collision(tile, names)\n",
+          "old_end": 9143,
+          "old_start": 8815,
+          "old_utf8": "        self.base.check_collision(tile['base_tile'], names)\n        key = tile['placement_key']\n        pre = canonical(key['type_preimage'])\n        require(key['tile_type_id'] not in names or names[key['tile_type_id']] == pre,\n                'decorated hash/full-preimage collision')\n        names[key['tile_type_id']] = pre\n"
+        },
+        {
+          "new_end": 5182,
+          "new_start": 5105,
+          "new_utf8": "        return self._point.legality(tile, totals, marks, selected, excluded)\n",
+          "old_end": 9363,
+          "old_start": 9209,
+          "old_utf8": "        # The ordinary whole-point comparison now sees actual channel4 values.\n        return self.base.legality(tile, totals, marks, selected, excluded)\n"
+        },
+        {
+          "new_end": 5299,
+          "new_start": 5235,
+          "new_utf8": "        return self._point.with_obligations(tile, totals, tick)\n",
+          "old_end": 9806,
+          "old_start": 9416,
+          "old_utf8": "        row = tile['placement_key']['translation'][1]\n        pre = tile['placement_key']['type_preimage']['base_type_preimage']\n        tile['read_obligations'] = [{'row': row+d, 'formula': self.tree(f, tick),\n            'occupied': totals[(0, row+d)] == 1, 'fact_accepted': False}\n            for d, f in zip(pre['ordered_offsets'], pre['ordered_premise_formulas'])]\n        return tile\n"
+        },
+        {
+          "new_end": 5735,
+          "new_start": 5300,
+          "new_utf8": "    def _current_route(self, language, state, row, tick):\n        self.check_marking(language, tick)\n        s, totals, marks, _, _, _ = self._point.private_state(language, state, tick)\n        require(type(row) is int and 0 <= row < 24 and totals[(0,row)] == 0,\n                'current unfilled query row')\n        output = self.base.formula_at(language, marks, row, tick)\n        return s, output is not None and output[0] != 'imp'\n",
+          "old_end": 12109,
+          "old_start": 9807,
+          "old_utf8": "    def _filter(self, language, state, originals, tick):\n        _, t, m, selected, excluded, names = self.private_state(language, state, tick)\n        base_state = self.base_state(language, state, tick)\n        _, bt, bm, bs, be, _ = self.base.private_state(language, base_state, tick)\n        require(type(originals) is list, 'whole original candidate list')\n        checked, removed, used = [], [], set()\n        for raw in originals:\n            tick()\n            key = raw['placement_key']\n            bare = self.base.rebuild_tile(language, key['type_preimage'], key['translation'], tick)\n            require(self.base.legality(bare, bt, bm, bs, be) is None, 'original candidate whole legality')\n            original = self.base.with_obligations(self.tree(bare, tick), bt, tick)\n            require(canonical(raw) == canonical(original), 'entire original candidate packet')\n            pre = {'schema': 'unit-row-row0-decorated-type-v1',\n                   'base_type_preimage': key['type_preimage'], 'marking_id': self.marking_id}\n            tile = self.rebuild_tile(language, pre, key['translation'], tick)\n            self.check_collision(tile, names)\n            identity = canonical(tile['placement_key'])\n            require(identity not in used, 'distinct complete decorated candidate keys')\n            used.add(identity)\n            reason = self.legality(tile, t, m, selected, excluded)\n            if reason is None:\n                checked.append(self.with_obligations(tile, t, tick))\n            else:\n                # Only an actual full point comparison removes a candidate.\n                require(reason == 'whole_remote_or_metadata_mark_conflict',\n                        'base-legal candidate can only lose marked agreement')\n                conflicts = [[p, self.tree(m[tuple(p)], tick), self.tree(v, tick)]\n                    for p, v in tile['global_m_values'] if tuple(p) in m\n                    and canonical(m[tuple(p)]) != canonical(v)]\n                require(conflicts and all(p[0] == 4 for p, _, _ in conflicts),\n                        'explicit channel4 conflict points')\n                removed.append({'placement_key': tile['placement_key'], 'reason': reason,\n                                'conflicting_points': conflicts})\n        return checked, removed\n"
+        },
+        {
+          "new_end": 6171,
+          "new_start": 5736,
+          "new_utf8": "    def propose_degree(self, *, language, state, row, tick):\n        s, nonimp = self._current_route(language, state, row, tick)\n        if nonimp:\n            return self._new_proposer.propose_degree(language=language,\n                semantics=self._point, state=s, row=row, tick=tick)\n        return self._point.propose_degree(language=language, state=s, row=row,\n            tick=tick, degree_proposer=self._legacy.propose_degree)\n",
+          "old_end": 12892,
+          "old_start": 12110,
+          "old_utf8": "    def propose_degree(self, *, language, state, row, tick, degree_proposer):\n        s = self.private_state(language, state, tick)[0]\n        original = degree_proposer(language=language, state=self.base_state(language, s, tick), row=row, tick=tick)\n        candidates, removed = self._filter(language, s, original['candidates'], tick)\n        return {'schema': 'unit-row-channel4-degree-evidence-proposal-v1', 'version': VERSION,\n            'state': s, 'state_sha256': sha(s), 'input_epoch': s['input_epoch'],\n            'marking_id': self.marking_id, 'language_binding': self.tree(language.binding, tick),\n            'row': row, 'original_proposal': original, 'candidates': candidates,\n            'marked_rejections': removed, 'untrusted': True, **{k: False for k in FLAGS}}\n"
+        },
+        {
+          "new_end": 7307,
+          "new_start": 6250,
+          "new_utf8": "        s, nonimp = self._current_route(language, state, row, tick)\n        require(type(proposal) is dict, 'literal proposal, never a supplied receipt')\n        if nonimp:\n            require(proposal.get('schema') == NEW_PROPOSAL_SCHEMA\n                    and proposal.get('version') == NEW_PROPOSER_VERSION,\n                    'checked nonimp route requires exact new proposal protocol')\n            return self._new_checker.check_degree_evidence(language=language,\n                base_semantics=self.base, verifier=self._point.verifier,\n                marking=self.tree(self._marking, tick), state=s, row=row,\n                proposal=proposal, tick=tick)\n        require(proposal.get('schema') == LEGACY_PROPOSAL_SCHEMA\n                and proposal.get('version') == LEGACY_PROPOSAL_VERSION,\n                'checked implication/absent route requires exact legacy proposal protocol')\n        return self._point.check_degree_evidence(language=language, state=s,\n                                                row=row, proposal=proposal, tick=tick)\n",
+          "old_end": 15585,
+          "old_start": 12971,
+          "old_utf8": "        s = self.private_state(language, state, tick)[0]\n        p = self.tree(proposal, tick)\n        fields = {'schema', 'version', 'state', 'state_sha256', 'input_epoch', 'marking_id',\n            'language_binding', 'row', 'original_proposal', 'candidates', 'marked_rejections', 'untrusted'} | set(FLAGS)\n        require(type(p) is dict and set(p) == fields\n                and p['schema'] == 'unit-row-channel4-degree-evidence-proposal-v1'\n                and p['version'] == VERSION and p['untrusted'] is True\n                and all(p[k] is False for k in FLAGS), 'exact untrusted marked proposal')\n        require(canonical(p['state']) == canonical(s) and p['state_sha256'] == sha(s)\n                and p['input_epoch'] == s['input_epoch'] and p['marking_id'] == self.marking_id\n                and canonical(p['language_binding']) == canonical(language.binding)\n                and type(p['row']) is int and p['row'] == row, 'full marked proposal context')\n        # Check the FULL original proposal first, not its copied receipt.\n        original_receipt = self.base.check_degree_evidence(language=language,\n            state=self.base_state(language, s, tick), row=row, proposal=p['original_proposal'], tick=tick)\n        candidates, removed = self._filter(language, s, p['original_proposal']['candidates'], tick)\n        require(canonical(p['candidates']) == canonical(candidates)\n                and canonical(p['marked_rejections']) == canonical(removed), 'complete independent marked filtering')\n        covered = original_receipt['complete_cover_checked'] is True\n        count = len(candidates) if covered else None\n        status = ('ZERO' if count == 0 else 'SINGLETON' if count == 1 else 'MANY') if covered else (\n            'TWO_OR_MORE' if len(candidates) >= 2 else 'UNKNOWN')\n        tick()\n        return {'schema': RECEIPT_SCHEMA, 'version': SEMANTICS_VERSION,\n            'status': status, 'accepted_local_evidence': status != 'UNKNOWN',\n            'input_epoch': s['input_epoch'], 'marking_id': self.marking_id,\n            'state_sha256': sha(s), 'row': row, 'complete_cover_checked': covered,\n            'degree_exact': count, 'missing_mark_cover_checked': original_receipt['missing_mark_cover_checked'],\n            'candidate_keys': [c['placement_key'] for c in candidates],\n            'sole_candidate': candidates[0] if count == 1 else None,\n            'original_base_receipt': original_receipt, 'marked_rejections': removed,\n            'scope': 'Fresh original cover/bound plus full independently rebuilt channel4 point filtering.',\n            **{k: False for k in FLAGS}}\n"
+        },
+        {
+          "new_end": 7339,
+          "new_start": 7309,
+          "new_utf8": "class RoutedMarkedTransition:\n",
+          "old_end": 15611,
+          "old_start": 15587,
+          "old_utf8": "class MarkedTransition:\n"
+        },
+        {
+          "new_end": 8280,
+          "new_start": 8124,
+          "new_utf8": "            marking=check['marking'], independent_marked_verifier_version=VERIFIER_VERSION,\n            degree_route_policy=semantics.routing_policy(tick))\n",
+          "old_end": 16488,
+          "old_start": 16396,
+          "old_utf8": "            marking=check['marking'], independent_marked_verifier_version=VERIFIER_VERSION)\n"
+        },
+        {
+          "new_end": 10938,
+          "new_start": 10831,
+          "new_utf8": "        return {'schema': 'unit-row-channel4-checked-domain-transition-v2', 'version': TRANSITION_VERSION,\n",
+          "old_end": 19146,
+          "old_start": 19039,
+          "old_utf8": "        return {'schema': 'unit-row-channel4-checked-domain-transition-v1', 'version': TRANSITION_VERSION,\n"
+        },
+        {
+          "new_end": 12779,
+          "new_start": 12779,
+          "new_utf8": "",
+          "old_end": 28980,
+          "old_start": 20987,
+          "old_utf8": "\nclass FilteredCursor:\n    \"\"\"Order-preserving filter; original and marked EOF remain untrusted.\"\"\"\n    VERSION = FALLBACK_VERSION\n\n    def __init__(self, *, language, semantics, state, row, base_fallback, tick):\n        self._semantics, self._language, self._tick = semantics, language, tick\n        self._failed, self._done = False, False\n        self._raw_count, self._count, self._removed = 0, 0, 0\n        self._names = dict(semantics.private_state(language, state, tick)[5])\n        self._state = semantics.tree(state, tick)\n        base = semantics.base_state(language, state, tick)\n        self._cursor = base_fallback(language=language, state=base, row=row, tick=tick)\n        original = self._cursor.context()\n        require(original['schema'] == 'unit-row-all-six-fallback-context-v1'\n                and original['version'] == BASE_FALLBACK_VERSION\n                and canonical(original['state']) == canonical(base)\n                and original['state_sha256'] == sha(base)\n                and original['input_epoch'] == state['input_epoch']\n                and canonical(original['language_binding']) == canonical(language.binding)\n                and type(original['row']) is int and original['row'] == row\n                and original['context_sha256'] == sha({k: v for k, v in original.items()\n                    if k != 'context_sha256'}), 'complete original cursor context')\n        context = {'schema': 'unit-row-channel4-fallback-context-v1', 'version': FALLBACK_VERSION,\n            'input_epoch': state['input_epoch'], 'language_binding': semantics.tree(language.binding, tick),\n            'marking_id': semantics.marking_id, 'row': row, 'state': self._state,\n            'state_sha256': sha(self._state), 'original_context': semantics.tree(original, tick)}\n        context['context_sha256'] = sha(context)\n        self._context, self._completion = context, None\n\n    def context(self):\n        if self._failed:\n            raise RuntimeError('marked fallback poisoned')\n        try:\n            return self._semantics.tree(self._context, self._tick)\n        except BaseException:\n            self._failed = True\n            raise\n\n    def abort(self):\n        self._failed = True\n        self._cursor.abort()\n\n    def advance(self):\n        if self._failed:\n            raise RuntimeError('marked fallback poisoned; no EOF')\n        try:\n            if not self._done:\n                while True:\n                    self._tick()\n                    event = self._cursor.advance()\n                    original = self._context['original_context']\n                    require(event['schema'] == 'unit-row-all-six-fallback-event-v1'\n                            and event['context_sha256'] == original['context_sha256'], 'original event context')\n                    if event['kind'] == 'CANDIDATE':\n                        require(set(event) == {'schema', 'kind', 'context_sha256', 'ordinal', 'candidate',\n                                'independently_checked'} and type(event['ordinal']) is int\n                                and event['ordinal'] == self._raw_count and event['independently_checked'] is False,\n                                'original stream literal ordinal and flags')\n                        candidates, removed = self._semantics._filter(self._language, self._state,\n                                                                     [event['candidate']], self._tick)\n                        # Full original and decorated collision ledgers span ALL\n                        # observed original candidates, including removed ones.\n                        key = event['candidate']['placement_key']\n                        pre = {'schema': 'unit-row-row0-decorated-type-v1',\n                            'base_type_preimage': key['type_preimage'], 'marking_id': self._semantics.marking_id}\n                        tile = self._semantics.rebuild_tile(self._language, pre, key['translation'], self._tick)\n                        self._semantics.check_collision(tile, self._names)\n                        self._raw_count += 1\n                        self._removed += len(removed)\n                        if not candidates:\n                            continue\n                        result = {'schema': 'unit-row-channel4-fallback-event-v1', 'kind': 'CANDIDATE',\n                            'context_sha256': self._context['context_sha256'], 'ordinal': self._count,\n                            'candidate': candidates[0], 'independently_checked': False}\n                        self._count += 1\n                        return self._semantics.tree(result, self._tick)\n                    require(event['kind'] == 'EOF' and set(event) == {'schema', 'kind', 'context_sha256', 'completion'},\n                            'original explicit EOF')\n                    completion = event['completion']\n                    expected_fields = {'schema', 'version', 'context_sha256', 'state_sha256', 'input_epoch',\n                        'row', 'yielded_candidates', 'rules_completed', 'stats', 'complete_fallback_proposed',\n                        'independently_checked', 'degree_zero_or_singleton_accepted', 'complete_candidate_graph_accepted',\n                        'scheduler_or_rollback_accepted', 'logical_proof_accepted', 'ROOT_resource_accepted'}\n                    require(type(completion) is dict and set(completion) == expected_fields\n                            and completion['schema'] == 'unit-row-all-six-fallback-completion-v1'\n                            and completion['version'] == BASE_FALLBACK_VERSION\n                            and completion['context_sha256'] == original['context_sha256']\n                            and completion['state_sha256'] == original['state_sha256']\n                            and completion['input_epoch'] == original['input_epoch']\n                            and type(completion['row']) is int and completion['row'] == original['row']\n                            and type(completion['yielded_candidates']) is int\n                            and completion['yielded_candidates'] == self._raw_count\n                            and completion['rules_completed'] == RULES and type(completion['stats']) is dict\n                            and completion['complete_fallback_proposed'] is True\n                            and all(completion[k] is False for k in ('independently_checked',\n                                'degree_zero_or_singleton_accepted') + FLAGS), 'untrusted complete original six-rule EOF')\n                    self._completion = {'schema': 'unit-row-channel4-fallback-completion-v1',\n                        'version': FALLBACK_VERSION, 'context_sha256': self._context['context_sha256'],\n                        'state_sha256': self._context['state_sha256'], 'input_epoch': self._state['input_epoch'],\n                        'marking_id': self._semantics.marking_id, 'row': self._context['row'],\n                        'yielded_candidates': self._count, 'rules_completed': RULES,\n                        'stats': {'original_yielded_candidates': self._raw_count, 'marked_removed': self._removed},\n                        'original_completion': self._semantics.tree(completion, self._tick),\n                        'complete_fallback_proposed': True, 'independently_checked': False,\n                        'degree_zero_or_singleton_accepted': False, **{k: False for k in FLAGS}}\n                    self._done = True\n                    break\n            return {'schema': 'unit-row-channel4-fallback-event-v1', 'kind': 'EOF',\n                'context_sha256': self._context['context_sha256'],\n                'completion': self._semantics.tree(self._completion, self._tick)}\n        except BaseException:\n            self._failed = True\n            raise\n\n\ndef open_fallback(*, language, semantics, state, row, base_fallback, tick):\n    return FilteredCursor(language=language, semantics=semantics, state=state,\n                          row=row, base_fallback=base_fallback, tick=tick)\n"
+        }
+      ],
+      "full_raw_forward_inverse_verified": true,
+      "parent": {
+        "bytes": 28980,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+        "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+      },
+      "patches": [
+        {
+          "bytes": 32108,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/degree_router-forward.patch",
+          "sha256": "a8025a7b48c9b220158b7635699248a3773b2f5ce9faea7734417afe88781c20"
+        },
+        {
+          "bytes": 32108,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/degree_router-full-inverse.patch",
+          "sha256": "21ef39c0cf5a2fdd0f6d6d8e594522598eee6ca98946e98c9365f2a5e2695079"
+        }
+      ],
+      "source": {
+        "bytes": 12779,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+        "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+      },
+      "unchanged_named_regions_raw_AST": [
+        "canonical",
+        "sha"
+      ]
+    },
+    "engine": {
+      "actual_unified_forward_inverse_verified": true,
+      "added_named_regions": [
+        "validate_native_receipt"
+      ],
+      "changed_named_regions": [
+        "LazyUnitRowEngine",
+        "LazyUnitRowEngine._snapshot_value",
+        "LazyUnitRowEngine._transfer_receipt",
+        "LazyUnitRowEngine._validate_receipt",
+        "LazyUnitRowEngine.search",
+        "certify_by_current_cover"
+      ],
+      "edit_count": 13,
+      "edits": [
+        {
+          "new_end": 613,
+          "new_start": 320,
+          "new_utf8": "VERSION = 'lazy-unit-row-global-engine-v12-routed-marked-aware-degree'\nVARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'\nMARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'\n",
+          "old_end": 579,
+          "old_start": 320,
+          "old_utf8": "VERSION = 'lazy-unit-row-global-engine-v11-channel4-global-original-key-collision'\nVARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'\nMARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION'\n"
+        },
+        {
+          "new_end": 737,
+          "new_start": 663,
+          "new_utf8": "SEMANTICS_VERSION = 'unit-row-channel4-routed-nonimp-degree-semantics-v2'\n",
+          "old_end": 698,
+          "old_start": 629,
+          "old_utf8": "SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'\n"
+        },
+        {
+          "new_end": 876,
+          "new_start": 806,
+          "new_utf8": "TRANSITION_VERSION = 'unit-row-channel4-routed-support-transition-v2'\n",
+          "old_end": 830,
+          "old_start": 767,
+          "old_utf8": "TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'\n"
+        },
+        {
+          "new_end": 10281,
+          "new_start": 4113,
+          "new_utf8": "def validate_native_receipt(*, receipt, language, semantics, state, row, tick, require_cover=False):\n    \"\"\"Protocol/context checks only; never call this on engine-owned transfers/prefixes.\"\"\"\n    tick()\n    flags = {'complete_candidate_graph_accepted','scheduler_or_rollback_accepted',\n             'logical_proof_accepted','ROOT_resource_accepted'}\n    common = {'schema','version','status','accepted_local_evidence','input_epoch',\n        'marking_id','state_sha256','row','complete_cover_checked','degree_exact',\n        'candidate_keys','sole_candidate','scope'} | flags\n    legacy = common | {'missing_mark_cover_checked','original_base_receipt','marked_rejections'}\n    new = common | {'nonimp_fibre_cover_checked','checked_candidates','checked_root_rejections',\n        'checked_fibre_cover','state','original_state','original_state_sha256',\n        'output_formula','language_binding','marking_sha256','independent_marked_state_check','proposal_sha256'}\n    need(type(receipt) is dict, 'native local receipt dictionary')\n    is_new = receipt.get('schema') == 'unit-row-marked-aware-nonimp-fibre-check-v1'\n    need((is_new and set(receipt) == new\n              and receipt['version'] == 'unit-row-independent-marked-aware-nonimp-fibre-checker-v1')\n         or (not is_new and set(receipt) == legacy\n              and receipt.get('schema') == 'unit-row-channel4-degree-evidence-check-v1'\n              and receipt['version'] == 'unit-row-channel4-filtered-degree-semantics-v1'),\n         'exact native receipt union, never a normalized or transferred header')\n    need(receipt['marking_id'] == state['marking_id']\n         and receipt['state_sha256'] == digest(state)\n         and receipt['input_epoch'] == state['input_epoch'] == language.binding['language_epoch']\n         and type(receipt['row']) is int and receipt['row'] == row\n         and all(receipt[k] is False for k in flags), 'checked local receipt exact current context')\n    status, covered, keys = receipt['status'], receipt['complete_cover_checked'], receipt['candidate_keys']\n    need(type(status) is str and status in ('ZERO','SINGLETON','MANY','TWO_OR_MORE','UNKNOWN')\n         and receipt['accepted_local_evidence'] is (status != 'UNKNOWN')\n         and type(covered) is bool and type(keys) is list, 'literal status/completion/key list')\n    encoded = []\n    for key in keys:\n        tick()\n        need(type(key) is dict and set(key) == {'tile_type_id','type_preimage','translation'}\n             and key['translation'] == [0,row], 'full incident native candidate key')\n        pre = key['type_preimage']\n        need(type(pre) is dict and set(pre) == {'schema','base_type_preimage','marking_id'}\n             and pre['schema'] == 'unit-row-row0-decorated-type-v1'\n             and pre['marking_id'] == state['marking_id']\n             and pre['base_type_preimage']['input_epoch'] == state['input_epoch'],\n             'unchanged decorated/original key provenance')\n        encoded.append(canonical(key))\n    need(len(encoded) == len(set(encoded)), 'unique full native candidate keys')\n    count, sole = receipt['degree_exact'], receipt['sole_candidate']\n    if covered:\n        need(type(count) is int and count == len(keys)\n             and status == ('ZERO' if count == 0 else 'SINGLETON' if count == 1 else 'MANY'),\n             'complete native count/classification coherence')\n        if count == 1:\n            need(type(sole) is dict and canonical(sole['placement_key']) == encoded[0],\n                 'complete current sole packet/key')\n        else:\n            need(sole is None, 'no sole packet outside exact singleton')\n    else:\n        need(count is None and sole is None\n             and ((status == 'TWO_OR_MORE' and len(keys) >= 2)\n                  or (status == 'UNKNOWN' and len(keys) <= 1)), 'partial bound is not completion')\n    if is_new:\n        original = semantics.base_state(language, state, tick)\n        model_check = semantics.check_marking(language, tick)\n        need(canonical(receipt['state']) == canonical(state)\n             and canonical(receipt['original_state']) == canonical(original)\n             and receipt['original_state_sha256'] == digest(original)\n             and canonical(receipt['language_binding']) == canonical(language.binding)\n             and receipt['marking_sha256'] == digest(model_check['marking']),\n             'new receipt literal marked/original state, authority and full marking digest')\n        need(receipt['nonimp_fibre_cover_checked'] is covered\n             and type(receipt['checked_candidates']) is list\n             and [canonical(c['placement_key']) for c in receipt['checked_candidates']] == encoded\n             and type(receipt['checked_root_rejections']) is list,\n             'new native checked candidate packets and nonimp coverage flag')\n        if covered:\n            need(type(receipt['checked_fibre_cover']) is dict\n                 and receipt['checked_fibre_cover']['completed'] is True,\n                 'new completed census retained in native receipt')\n        else:\n            need(receipt['checked_fibre_cover'] is None and len(keys) == (2 if status == 'TWO_OR_MORE' else len(keys)),\n                 'new partial transcript is not independently completed census')\n        output = receipt['output_formula']\n        need(type(output) is list and output and output[0] != 'imp'\n             and [v for p,v in state['m'] if p == [1,row]] == [['formula',canonical(output)]],\n             'new native evidence belongs to current assigned nonimp route')\n        check = receipt['independent_marked_state_check']\n        need(check['marked_state_checked'] is True and check['marking_id'] == state['marking_id']\n             and check['original_state_sha256'] == digest(original), 'new full independent marked state check')\n    else:\n        need(type(receipt['missing_mark_cover_checked']) is bool\n             and type(receipt['original_base_receipt']) is dict\n             and type(receipt['marked_rejections']) is list, 'legacy native origin remains legacy')\n    if require_cover:\n        need(covered and status in ('ZERO','SINGLETON','MANY'), 'independent completed cover required')\n    tick()\n\n\n",
+          "old_end": 4067,
+          "old_start": 4067,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 10897,
+          "new_start": 10771,
+          "new_utf8": "    validate_native_receipt(receipt=receipt, language=language, semantics=semantics,\n        state=state, row=row, tick=tick)\n",
+          "old_end": 4557,
+          "old_start": 4557,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 11267,
+          "new_start": 11143,
+          "new_utf8": "    need(len(actual) == len(set(actual)) and len(expected) == len(set(expected))\n         and set(actual) == set(expected),\n",
+          "old_end": 4878,
+          "old_start": 4803,
+          "old_utf8": "    need(len(actual) == len(set(actual)) and set(actual) == set(expected),\n"
+        },
+        {
+          "new_end": 16512,
+          "new_start": 16357,
+          "new_utf8": "        return {'schema': 'unit-row-channel4-routed-engine-snapshot-v1', 'version': VERSION,\n            'state': self._state, 'revision': self._revision,\n",
+          "old_end": 10034,
+          "old_start": 9968,
+          "old_utf8": "        return {'state': self._state, 'revision': self._revision,\n"
+        },
+        {
+          "new_end": 19749,
+          "new_start": 19664,
+          "new_utf8": "        # Only engine-owned checked origins enter here; native headers stay literal.\n",
+          "old_end": 13341,
+          "old_start": 13186,
+          "old_utf8": "        # Engine-private already checked evidence is the premise. This is a new\n        # transfer schema, never a c354 receipt with a replaced state SHA.\n"
+        },
+        {
+          "new_end": 20934,
+          "new_start": 19809,
+          "new_utf8": "        protocol = {'schema': original['schema'], 'version': original.get('version')}\n        if protocol == {'schema':'unit-row-marked-aware-nonimp-fibre-check-v1',\n                        'version':'unit-row-independent-marked-aware-nonimp-fibre-checker-v1'}:\n            coverage = {'kind':'MARKED_AWARE_NONIMP_FIBRES',\n                'nonimp_fibre_cover_checked':original['nonimp_fibre_cover_checked']}\n        elif protocol == {'schema':'unit-row-channel4-degree-evidence-check-v1',\n                          'version':'unit-row-channel4-filtered-degree-semantics-v1'}:\n            coverage = {'kind':'LEGACY_ORIGINAL_COVER_AND_MARKED_FILTER',\n                'missing_mark_cover_checked':original['missing_mark_cover_checked']}\n        else:\n            need(protocol == {'schema':'unit-row-channel4-checked-prefix-classification-v1','version':None}\n                 and original['status'] == 'TWO_OR_MORE'\n                 and original['complete_cover_checked'] is False,\n                 'owned fallback prefix is a distinct lower-bound protocol')\n            coverage = {'kind':'CHECKED_CANONICAL_FALLBACK_PREFIX'}\n",
+          "old_end": 13401,
+          "old_start": 13401,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 21448,
+          "new_start": 21364,
+          "new_utf8": "        return {'schema': 'unit-row-channel4-transferred-domain-classification-v2',\n",
+          "old_end": 13915,
+          "old_start": 13831,
+          "old_utf8": "        return {'schema': 'unit-row-channel4-transferred-domain-classification-v1',\n"
+        },
+        {
+          "new_end": 21937,
+          "new_start": 21867,
+          "new_utf8": "            'origin_protocol': protocol, 'origin_coverage': coverage,\n",
+          "old_end": 14426,
+          "old_start": 14334,
+          "old_utf8": "            'missing_mark_cover_checked': receipt.get('missing_mark_cover_checked', False),\n"
+        },
+        {
+          "new_end": 42820,
+          "new_start": 42617,
+          "new_utf8": "        return validate_native_receipt(receipt=receipt, language=self.language,\n            semantics=self.semantics, state=self._state, row=row, tick=self.tick,\n            require_cover=require_cover)\n",
+          "old_end": 36224,
+          "old_start": 35106,
+          "old_utf8": "        need(type(receipt) is dict and receipt.get('schema') == 'unit-row-channel4-degree-evidence-check-v1'\n             and receipt.get('version') == SEMANTICS_VERSION\n             and receipt.get('marking_id') == self._state['marking_id']\n             and receipt.get('state_sha256') == digest(self._state)\n             and receipt.get('input_epoch') == self._state['input_epoch']\n             and type(receipt.get('row')) is int and receipt['row'] == row\n             and all(receipt.get(k) is False for k in ('complete_candidate_graph_accepted',\n                  'scheduler_or_rollback_accepted', 'logical_proof_accepted', 'ROOT_resource_accepted')),\n             'checked local receipt exact current context')\n        need(receipt['status'] in ('ZERO', 'SINGLETON', 'MANY', 'TWO_OR_MORE', 'UNKNOWN')\n             and receipt['accepted_local_evidence'] is (receipt['status'] != 'UNKNOWN'), 'checked local status')\n        if require_cover:\n            need(receipt['complete_cover_checked'] is True\n                 and receipt['status'] in ('ZERO', 'SINGLETON', 'MANY'), 'independent completed cover required')\n"
+        },
+        {
+          "new_end": 61834,
+          "new_start": 61731,
+          "new_utf8": "        return {'schema': 'unit-row-channel4-routed-lazy-global-search-result-v1', 'version': VERSION,\n",
+          "old_end": 55231,
+          "old_start": 55135,
+          "old_utf8": "        return {'schema': 'unit-row-channel4-lazy-global-search-result-v1', 'version': VERSION,\n"
+        }
+      ],
+      "full_raw_forward_inverse_verified": true,
+      "parent": {
+        "bytes": 56207,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+        "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+      },
+      "patches": [
+        {
+          "bytes": 14934,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/engine-forward.patch",
+          "sha256": "d4605da89bffc388211e2944c73204d9cabe4c21ee1083a19e38f20eb649d443"
+        },
+        {
+          "bytes": 14934,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/engine-full-inverse.patch",
+          "sha256": "de09b34080cda8e451abc2fa6ceac3a8884720f6062fc022c2c024db9350d0f7"
+        }
+      ],
+      "source": {
+        "bytes": 62810,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+        "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+      },
+      "unchanged_named_regions_raw_AST": [
+        "LazyUnitRowEngine.__init__",
+        "LazyUnitRowEngine._adopt_branch",
+        "LazyUnitRowEngine._advance",
+        "LazyUnitRowEngine._archive_context",
+        "LazyUnitRowEngine._candidate",
+        "LazyUnitRowEngine._check_authority",
+        "LazyUnitRowEngine._checked_advice",
+        "LazyUnitRowEngine._copy",
+        "LazyUnitRowEngine._emit",
+        "LazyUnitRowEngine._exclude_exhausted",
+        "LazyUnitRowEngine._fallback_degree",
+        "LazyUnitRowEngine._has_archived_context",
+        "LazyUnitRowEngine._install",
+        "LazyUnitRowEngine._install.remember",
+        "LazyUnitRowEngine._observe",
+        "LazyUnitRowEngine._open",
+        "LazyUnitRowEngine._policy_snapshot",
+        "LazyUnitRowEngine._reference_counts",
+        "LazyUnitRowEngine._select_branch",
+        "LazyUnitRowEngine._word",
+        "LazyUnitRowEngine.branch_tie",
+        "LazyUnitRowEngine.checkpoint",
+        "LazyUnitRowEngine.decision",
+        "LazyUnitRowEngine.next_alternative",
+        "LazyUnitRowEngine.place",
+        "LazyUnitRowEngine.rollback",
+        "LazyUnitRowEngine.search.walk",
+        "LazyUnitRowEngine.state_snapshot",
+        "Unresolved",
+        "_Checkpoint",
+        "_Checkpoint.__init__",
+        "canonical",
+        "diagnostic_copy",
+        "digest",
+        "need",
+        "select_schedule"
+      ]
+    }
+  }
+}

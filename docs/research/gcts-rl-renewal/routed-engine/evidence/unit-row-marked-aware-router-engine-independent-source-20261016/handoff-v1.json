@@ -1,0 +1,36 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored8f7a marked-aware independent checker and9fd6 full marked-state verifier, earlier advice consumer/harness and portions of prior checker infrastructure. Reviewer did not author current router/engine12, old821fe/engine11/c354,4316 proposer or frozen decorator. Wire coordination/shared original primitives disclosed; this is distinct integration Source review, not self-review of8f7a/9fd6 nor an unrelated mathematical implementation.",
+  "findings": {
+    "bytes": 32829,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-independent-source-20261016/findings-v1.json",
+    "sha256": "0de5bc2aa5eb9b2e92fd046ae09b10f80a11c6c12aaeaad3e0e88a793356967a"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "router_source": {
+    "bytes": 12779,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+    "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+  },
+  "schema": "unit-row-marked-aware-router-engine-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-marked-aware-router-engine-Source",
+  "source": {
+    "bytes": 62810,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+    "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+  },
+  "source_contract": {
+    "bytes": 25201,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "221429b1197ba7489073260a06c882b2ca450dd97868a20a019e7ae3a7d3eade"
+  },
+  "source_only": true,
+  "summary": "Genuine whole router/engine12 conditional Source pass;16checks, exact27+13 full raw inverses/four actual patch inverses;34 inherited callables exact. No concrete scoped blocker; trusted-origin protocol gate, distinct new completion/census provenance, old canonical fallback and owned rollback preserved. No scientific execution or runtime qualification.",
+  "typed_source_review": {
+    "bytes": 6577,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "b0f769ec6ab873905053471055bbf3c2e77630a2e5dbe7261d6092ec88f2673b"
+  }
+}

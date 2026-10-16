@@ -1,0 +1,653 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored8f7a marked-aware independent checker and9fd6 full marked-state verifier, earlier advice consumer/harness and portions of prior checker infrastructure. Reviewer did not author current router/engine12, old821fe/engine11/c354,4316 proposer or frozen decorator. Wire coordination/shared original primitives disclosed; this is distinct integration Source review, not self-review of8f7a/9fd6 nor an unrelated mathematical implementation.",
+  "blockers": [],
+  "check_count": 16,
+  "checks": [
+    {
+      "finding": "Whole current router and engine, whole operative contract/handoff and raw metadata read. Primary Source/contract/Review_ABI/sources12 maps and all original17/input2 raw capsules reauthenticated; original map is not executed or substituted.",
+      "id": "CURRENT-CAPSULE",
+      "passed": true,
+      "references": []
+    },
+    {
+      "finding": "Independently reconstructed all27 router and13 engine raw edit regions forward/inverse. Separately parsed and applied each actual unified forward/inverse patch as text in memory, exactly reconstructing both whole raw Sources and parents.",
+      "id": "FULL-REVERSIBLE-DELTA",
+      "passed": true,
+      "references": []
+    },
+    {
+      "finding": "34 inherited callables plus2 class regions raw and AST exact. Five inherited callables changed and one native protocol helper added. Whole inherited global scan/scheduler/candidate/collision/install/cursor/checkpoint/rollback/search inner walk read; no unexplained code edits.",
+      "id": "INHERITED-CORE",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 777,
+          "line": 726,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.decision"
+        },
+        {
+          "end_line": 1030,
+          "line": 974,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.search.walk"
+        }
+      ]
+    },
+    {
+      "finding": "Both public proposal and checking paths call _current_route, which independently checks frozen marking, entire marked state and original projection before deriving output with c354 formula_at. Only actual assigned non-implication chooses new4316/8f; absent/implication uses old821fe/c960. Raised errors do not trigger fallback.",
+      "id": "FULL-CURRENT-ROUTE",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 130,
+          "line": 124,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedSemantics._current_route"
+        },
+        {
+          "end_line": 138,
+          "line": 132,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedSemantics.propose_degree"
+        },
+        {
+          "end_line": 155,
+          "line": 140,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedSemantics.check_degree_evidence"
+        }
+      ]
+    },
+    {
+      "finding": "Router constructs no language, rewrites no original binding/key/epoch and mutates no point VERSION. Read-only point accessor exposes exact old821fe instance for old filtered fallback/new proposer. New routed transition authority additionally binds policy and versions while retaining complete original Source17/input2 language plus effective name sets and frozen marking.",
+      "id": "ORIGINAL-AUTHORITY-SEPARATION",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 57,
+          "line": 55,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedSemantics.point"
+        },
+        {
+          "end_line": 173,
+          "line": 161,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedTransition.authority_snapshot"
+        }
+      ]
+    },
+    {
+      "finding": "Exact20-field legacy and29-field new native protocols, current hash/epoch/row/marking, literal completion/status/count/unique full keys/sole and strong false flags are checked. Gate is protocol/context only AFTER actual router independent checker; not a mathematical verifier of arbitrary supplied receipts. Only pinned callback returns enter native path; owned prefix/transfer receipts never impersonate native input. Future caller must preserve this boundary.",
+      "id": "NATIVE-UNION-TRUSTED-ORIGIN",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 176,
+          "line": 86,
+          "source_role": "engine",
+          "symbol": "validate_native_receipt"
+        },
+        {
+          "end_line": 724,
+          "line": 721,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine._validate_receipt"
+        }
+      ]
+    },
+    {
+      "finding": "New receipt retains and compares whole marked state, current original projection, both hashes, full binding and freshly checked model digest; checked candidate keys, sole shape, independently returned marked-state check, actual assigned nonimp formula and completed census flag agree. Independent8f full reconstruction supplies mathematical authority. No synthetic original_base_receipt or normalizing native rewrite.",
+      "id": "NEW-WHOLE-STATE-CENSUS",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 176,
+          "line": 86,
+          "source_role": "engine",
+          "symbol": "validate_native_receipt"
+        }
+      ]
+    },
+    {
+      "finding": "Partial TWO retains degree_exact=None, sole=None, nonimp coverageFalse and checked_fibre_cover=None. UNKNOWN cannot classify0/1 and is not transferred. Legacy partial2 filtered to0/1 remains UNKNOWN. New complete MANY is exact only from independently finished8f relation; its native record stays distinct.",
+      "id": "LOWER-BOUND-NOT-COMPLETION",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 176,
+          "line": 86,
+          "source_role": "engine",
+          "symbol": "validate_native_receipt"
+        },
+        {
+          "end_line": 502,
+          "line": 426,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine._install"
+        }
+      ]
+    },
+    {
+      "finding": "Copied _projection and refresh_candidates independently raw/AST exact to821fe. check_transition differs only its explicit new schema literal. Possible support includes every channel1/4 row0..query, own2/3 metadata, positive t/rootgen/local exclusions and complete original/decorated collision ledger. Equal support preserves routing class and candidate relation; read occupancy may refresh only obligation flags.",
+      "id": "CONDITIONAL-RETENTION",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 188,
+          "line": 175,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedTransition._projection"
+        },
+        {
+          "end_line": 220,
+          "line": 190,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedTransition.check_transition"
+        },
+        {
+          "end_line": 239,
+          "line": 222,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedTransition.refresh_candidates"
+        }
+      ]
+    },
+    {
+      "finding": "Distinct transfer-v2 wrapper preserves complete literal original_receipt, including full8f original/marked states, complete census/checked candidates and source-state hashes. Explicit origin_protocol and origin_coverage distinguish nonimp_fibre_cover_checked from legacy missing_mark_cover_checked and owned canonical prefix. Current sole packet is refreshed separately; previous evidence hash/whole transition chain recorded. No historical census or source state is SHA-relabeled.",
+      "id": "WHOLE-ORIGIN-TRANSFER",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 388,
+          "line": 344,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine._transfer_receipt"
+        },
+        {
+          "end_line": 502,
+          "line": 426,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine._install"
+        }
+      ]
+    },
+    {
+      "finding": "Old fallback/context/event/completion protocols remain unchanged. Caller must use old open_fallback with router.point. New witnesses update only checked local/exposed evidence; branch choice remains original surviving cursor order. Full old context/prefix/candidates/EOF archive, fresh prefix replay and original/decorated collision checks remain literal inherited code.",
+      "id": "CURSOR-ORDER-AND-ARCHIVE",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 689,
+          "line": 637,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.next_alternative"
+        },
+        {
+          "end_line": 1030,
+          "line": 974,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.search.walk"
+        }
+      ]
+    },
+    {
+      "finding": "Fresh certifier obtains actual routed proposal and independent check, validates native union, demands completed accepted cover, rejects duplicates in BOTH actual stream and receipt and compares entire current full key SET. Census order is not imposed on canonical cursor order. _open/_advance own full context/ordinal/EOF flags checks; helper alone is not a standalone arbitrary EOF-wire verifier. No cover/None means UNKNOWN.",
+      "id": "EOF-CURRENT-WHOLE-KEY-SET",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 202,
+          "line": 179,
+          "source_role": "engine",
+          "symbol": "certify_by_current_cover"
+        },
+        {
+          "end_line": 719,
+          "line": 691,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine._fallback_degree"
+        },
+        {
+          "end_line": 635,
+          "line": 601,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine._advance"
+        }
+      ]
+    },
+    {
+      "finding": "Inherited entire-frontier local scan can certify later DEAD before unresolved fallback; unresolved entries block forced/branch; global forced precedes earliest generation with declared ROW or assigned-output tie. All24 roots remain0. No proposal list substitutes for complete degree; unknown child is never excluded.",
+      "id": "SCHEDULER-AND-UNKNOWN",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 83,
+          "line": 51,
+          "source_role": "engine",
+          "symbol": "select_schedule"
+        },
+        {
+          "end_line": 777,
+          "line": 726,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.decision"
+        },
+        {
+          "end_line": 1030,
+          "line": 974,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.search.walk"
+        }
+      ]
+    },
+    {
+      "finding": "Unchanged COW checkpoint includes state/revisions/refs/certs/cursors/observed/reverse/transition/preferences. Child and root finally restore on success, unknown and timeout; owned current transfers and archives stay in checkpoint graph. Public place remains policy-independent transaction requiring caller-owned checkpoint; only search guarantees scheduler/child ownership.",
+      "id": "OWNED-ROLLBACK",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 324,
+          "line": 320,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.checkpoint"
+        },
+        {
+          "end_line": 332,
+          "line": 326,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.rollback"
+        },
+        {
+          "end_line": 1063,
+          "line": 968,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.search"
+        }
+      ]
+    },
+    {
+      "finding": "No new catches/router exception fallback, clocks, model loaders or work/cap reductions. TimeoutError propagates through router/new checking; search handles original UNKNOWN plus exact restoration. New native context validation consumes same owning tick. Original20s/512MiB/55/60/90+1 custody is future caller responsibility, not asserted by these modules; nodes<=128/events<=2000/adviceNone unchanged.",
+      "id": "ERROR-BUDGET-PROPAGATION",
+      "passed": true,
+      "references": [
+        {
+          "end_line": 155,
+          "line": 140,
+          "source_role": "degree_router",
+          "symbol": "RoutedMarkedSemantics.check_degree_evidence"
+        },
+        {
+          "end_line": 256,
+          "line": 213,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.__init__"
+        },
+        {
+          "end_line": 1063,
+          "line": 968,
+          "source_role": "engine",
+          "symbol": "LazyUnitRowEngine.search"
+        }
+      ]
+    },
+    {
+      "finding": "Both new whole Sources parsed/compiled without evaluation; imports only hashlib/json. No module/helper/scientific functions, models, clocks, tests or actuals executed. Source pass supplies no current engine runtime/graph/trajectory/proof/mark activation/fit/speed or RL acceptance; prior partial and failed MAIN evidence remains unchanged.",
+      "id": "STATIC-ONLY-AND-GAPS",
+      "passed": true,
+      "references": []
+    }
+  ],
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_CONCRETE_SCOPED_BLOCKER",
+  "raw_reference_count": 37,
+  "raw_references": [
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    {
+      "bytes": 26435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-contract-v2.json",
+      "sha256": "822af60d570a3dca2fad23cec441109802fa7322b29e63262ce444d1bd695683"
+    },
+    {
+      "bytes": 56207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+    },
+    {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "bytes": 25783,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    {
+      "bytes": 25201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "221429b1197ba7489073260a06c882b2ca450dd97868a20a019e7ae3a7d3eade"
+    },
+    {
+      "bytes": 56125,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/Source-delta-v1.json",
+      "sha256": "d9b312743ae1bd1876bf4bd792fe17935aba67ddffc6d8f689a01c0104d84c41"
+    },
+    {
+      "bytes": 9598,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/author-static-v1.json",
+      "sha256": "7306551a721dd94f05ec1e2d2e07c64688f842892bbdb3471136544692cbdf8d"
+    },
+    {
+      "bytes": 32108,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/degree_router-forward.patch",
+      "sha256": "a8025a7b48c9b220158b7635699248a3773b2f5ce9faea7734417afe88781c20"
+    },
+    {
+      "bytes": 32108,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/degree_router-full-inverse.patch",
+      "sha256": "21ef39c0cf5a2fdd0f6d6d8e594522598eee6ca98946e98c9365f2a5e2695079"
+    },
+    {
+      "bytes": 14934,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/engine-forward.patch",
+      "sha256": "d4605da89bffc388211e2944c73204d9cabe4c21ee1083a19e38f20eb649d443"
+    },
+    {
+      "bytes": 14934,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/engine-full-inverse.patch",
+      "sha256": "de09b34080cda8e451abc2fa6ceac3a8884720f6062fc022c2c024db9350d0f7"
+    },
+    {
+      "bytes": 16589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/handoff-v1.json",
+      "sha256": "98a13e285951710dc15f21397025edbc993ef8cf51bccb0f6c6f300ba2a57482"
+    },
+    {
+      "bytes": 62810,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+      "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+    },
+    {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    {
+      "bytes": 55852,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "bytes": 31931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "bytes": 55152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "bytes": 130156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "router_source": {
+    "bytes": 12779,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+    "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+  },
+  "runtime_controls_needed": [
+    "Fresh Root-owned loader/seals and original17/input2 versus current executable map separation; no arbitrary receipt/private-cache injection.",
+    "Actual nonimp ZERO/ONE/TWO and genuine legacy absent/implication UNKNOWN routes, wrong native schema/version/route/census/count/keys/context negatives; distinguish mathematical checker rejection from protocol-only gates.",
+    "Actual canonical filtered EOF with independently finished current whole key set, ordered survivors, duplicate/missing/stale-key negatives; incomplete/large fibre and callback exhaustion remain UNKNOWN.",
+    "Nonempty native complete ZERO/SINGLETON/MANY origins and owned TWO-prefix transfers, preserved complete origin/census at both steps, current sole occupancy refresh, whole cursor archive and fresh full-prefix replay.",
+    "Current global DEAD/UNKNOWN/FORCED/generation/branch variant and owned UNKNOWN-child exact rollback qualification; old local calibration or prior StageB cannot substitute.",
+    "Root alone chooses actual gates; no predicted fit or new target search claim, no inherited failed MAIN promotion."
+  ],
+  "runtime_executed": false,
+  "schema": "unit-row-marked-aware-router-engine-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-marked-aware-router-engine-Source",
+  "source": {
+    "bytes": 62810,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+    "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+  },
+  "source_contract": {
+    "bytes": 25201,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "221429b1197ba7489073260a06c882b2ca450dd97868a20a019e7ae3a7d3eade"
+  },
+  "source_delta": {
+    "bytes": 56125,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "d9b312743ae1bd1876bf4bd792fe17935aba67ddffc6d8f689a01c0104d84c41"
+  },
+  "source_handoff": {
+    "bytes": 16589,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/handoff-v1.json",
+    "sha256": "98a13e285951710dc15f21397025edbc993ef8cf51bccb0f6c6f300ba2a57482"
+  },
+  "source_only": true,
+  "sources": {
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_router": {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    "engine": {
+      "bytes": 62810,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+      "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "marked_aware_checker": {
+      "bytes": 25783,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    "marked_aware_proposer": {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "static_evidence": {
+    "all_four_actual_unified_patches_exact": true,
+    "copied_projection_refresh_raw_AST_exact": true,
+    "engine_added_callable": "validate_native_receipt",
+    "engine_changed_named_regions": [
+      "LazyUnitRowEngine",
+      "LazyUnitRowEngine._snapshot_value",
+      "LazyUnitRowEngine._transfer_receipt",
+      "LazyUnitRowEngine._validate_receipt",
+      "LazyUnitRowEngine.search",
+      "certify_by_current_cover"
+    ],
+    "engine_inherited_raw_AST_exact_callables": [
+      "LazyUnitRowEngine.__init__",
+      "LazyUnitRowEngine._adopt_branch",
+      "LazyUnitRowEngine._advance",
+      "LazyUnitRowEngine._archive_context",
+      "LazyUnitRowEngine._candidate",
+      "LazyUnitRowEngine._check_authority",
+      "LazyUnitRowEngine._checked_advice",
+      "LazyUnitRowEngine._copy",
+      "LazyUnitRowEngine._emit",
+      "LazyUnitRowEngine._exclude_exhausted",
+      "LazyUnitRowEngine._fallback_degree",
+      "LazyUnitRowEngine._has_archived_context",
+      "LazyUnitRowEngine._install",
+      "LazyUnitRowEngine._install.remember",
+      "LazyUnitRowEngine._observe",
+      "LazyUnitRowEngine._open",
+      "LazyUnitRowEngine._policy_snapshot",
+      "LazyUnitRowEngine._reference_counts",
+      "LazyUnitRowEngine._select_branch",
+      "LazyUnitRowEngine._word",
+      "LazyUnitRowEngine.branch_tie",
+      "LazyUnitRowEngine.checkpoint",
+      "LazyUnitRowEngine.decision",
+      "LazyUnitRowEngine.next_alternative",
+      "LazyUnitRowEngine.place",
+      "LazyUnitRowEngine.rollback",
+      "LazyUnitRowEngine.search.walk",
+      "LazyUnitRowEngine.state_snapshot",
+      "_Checkpoint.__init__",
+      "canonical",
+      "diagnostic_copy",
+      "digest",
+      "need",
+      "select_schedule"
+    ],
+    "engine_inherited_raw_AST_exact_class_regions": [
+      "Unresolved",
+      "_Checkpoint"
+    ],
+    "engine_raw_edit_count": 13,
+    "modules_evaluated": 0,
+    "new_sources_AST_compile_only": true,
+    "raw_forward_and_inverse_exact": true,
+    "router_raw_edit_count": 27,
+    "transition_method_only_schema_literal_changed": true
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Root read whole decoder/current closer through complete V1 and exact two-guard V2 delta, current contract and all record joins. Root found V1 same-session false negative. Arithmetic authors helpers; controls separately reviews while disclosing caller authorship. No mathematical model/checker or helper executed by this review.",
+  "checks": [
+    "Strict 4/16MiB canonical JSON/LF/duplicate/nonfinite/base64/single-zlib/notails/fullhash and complete wire unchanged.",
+    "Native20/512/wait4/PID/reaped/once/Date/caller/runtime14/input8/original17 guards preserved. Only truthful same-positive-integer tool handle continuity additionally recognized; no bracket relabeling or actual rerun.",
+    "Whole native receipts/proposals/state/origin/census/current packet/actual cursor/fresh cover and search snapshot/lineage joins are literal saved-data concordance only.",
+    "MR04 demands actual depth/key/status lineage and no exclusion; no expected path replaces an observed trace.",
+    "Three no-return modes get countsNone, qualified0/unqualified2, no decoder/move/transfer/rollback inference. All12 across6 required; aggregate stays false for current failures.",
+    "No full GCTS, target theorem, learned constraint, RL or advantage from these controls."
+  ],
+  "concrete_blockers": [],
+  "helpers_executed": false,
+  "peer_review": {
+    "bytes": 3016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "5ba72df9d2b45d0d2b50ceee3069f7b739a8c809c53f72184baa1f5a2ec7cd09"
+  },
+  "raw_inverse_findings": {
+    "closer-v1": {
+      "edit_count": 40,
+      "exact_region_and_actual_patch_inverses": true,
+      "parent": {
+        "bytes": 33468,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_close_marked_aware_calibration_saved_v1.py",
+        "sha256": "be1c3ce03aedb1c63a701abd2e823df8dd738374576309cffe7049f4c7e5fcc0"
+      },
+      "source": {
+        "bytes": 53579,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+        "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+      }
+    },
+    "closer-v2": {
+      "edit_count": 2,
+      "exact_region_and_actual_patch_inverses": true,
+      "parent": {
+        "bytes": 53579,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v1.py",
+        "sha256": "a7889af5dd97fb3a4fe509e8baebe555ae0fbf5d0cc76f4e350ee4391efc4a97"
+      },
+      "source": {
+        "bytes": 54112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+        "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+      }
+    },
+    "decoder-v1": {
+      "edit_count": 6,
+      "exact_region_and_actual_patch_inverses": true,
+      "parent": {
+        "bytes": 5893,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-calibration-saved-source-20261016/ROOT_decode_marked_aware_calibration_saved_v1.py",
+        "sha256": "6abb2e1a3e9b584059b6b7bff61cedd9073e2344d7d54563f64ed634936d2952"
+      },
+      "source": {
+        "bytes": 6335,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+        "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+      }
+    }
+  },
+  "reviewer_identity": "/root",
+  "schema": "unit-row-routed-engine-qualification-saved-helpers-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-routed-engine-qualification-saved-helpers-Source",
+  "source": {
+    "bytes": 54112,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+    "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+  },
+  "source_contract": {
+    "bytes": 24764,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-contract-v2.json",
+    "sha256": "042c356a7541e5ad1ce1c335c11600afc853a03fc0a3eee10ebb946fb423d6e2"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 54112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v2.py",
+      "sha256": "6ce0155899ddc649c5b82abdf4eebb4b6e20166086e03036a6546b94019a749b"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  },
+  "whole_two_helpers_and_contract_read": true
+}
