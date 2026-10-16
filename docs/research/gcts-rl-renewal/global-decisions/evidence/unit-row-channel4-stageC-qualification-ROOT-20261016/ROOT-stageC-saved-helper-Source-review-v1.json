@@ -1,0 +1,96 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Root authored prior saved framework and reviewed entire current decoder/closer. Current adaptations authored by arithmetic. This is conditional saved-only Source review; independent peer review is also required before Root use.",
+  "checks": [
+    "Strict decoder retains canonical duplicate/nonfinite-safe bounded JSON, base64 re-encoding, one full zlib stream/no tails, compressed/expanded hashes and full records; same4MiB/16MiB caps.",
+    "Success path preserves complete original native/wait4/Date/probe gates, whole output2/response2LF/current11/input8 and original17 binding. New literal checks join real current origin receipts, ZERO transfer wrapper/chain, full states and exact rollback.",
+    "Natural UNKNOWN path retains real ordered original2/marked1 streams/EOF, normal fresh certifier None and unchanged actual unresolved frontier; no raw EOF completion authority or candidate/proof-rule replay.",
+    "Scheduler data remains NONLOGICAL and exact all9 statuses accounted. Failure main explicitly takes separate administrative closure, exact nativeTimeout/exit2/reaped/noowned; all C5-C7 countsNone and zero qualified, no inferred partial progress or positive resource/trajectory.",
+    "Aggregate requires four unique closed plans/invocations/output dirs and shared current Sources/marking/originalepoch; reports six qualified only if three positive closures pass and leaves all9/StageC false. No combined20 claim, replay, new clock/process or scientific acceptance."
+  ],
+  "concrete_blockers": [],
+  "helpers_executed": false,
+  "raw_inverse_findings": {
+    "closer": {
+      "AST_compile_only": true,
+      "actual_unified_forward_inverse": true,
+      "edit_count": 24,
+      "full_raw_forward_inverse": true,
+      "parent": {
+        "bytes": 19796,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT_close_stageB_saved_v1.py",
+        "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+      },
+      "source": {
+        "bytes": 45102,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+        "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+      },
+      "unchanged_functions": [
+        "canonical",
+        "check",
+        "pin",
+        "read"
+      ],
+      "whole_Source_read": true
+    },
+    "decoder": {
+      "AST_compile_only": true,
+      "actual_unified_forward_inverse": true,
+      "edit_count": 3,
+      "full_raw_forward_inverse": true,
+      "parent": {
+        "bytes": 5208,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT_decode_saved_transport_v7.py",
+        "sha256": "fd287e7d6b5f8c5767965bb7766df67c165dd949d20060db0b0462714d753c11"
+      },
+      "source": {
+        "bytes": 5875,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_decode_stageC_saved_v1.py",
+        "sha256": "945beedecf3ec86ecafadaba0d90ff5f9b1d8b4f11557b34d98c189ce01ad473"
+      },
+      "unchanged_functions": [
+        "buffer_pin",
+        "canonical",
+        "checked_raw",
+        "constant",
+        "decode",
+        "finite",
+        "need",
+        "pairs",
+        "read_bounded"
+      ],
+      "whole_Source_read": true
+    }
+  },
+  "reviewer_identity": "/root",
+  "schema": "unit-row-channel4-stageC-saved-helpers-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-channel4-stageC-saved-helpers-Source",
+  "source": {
+    "bytes": 45102,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+    "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+  },
+  "source_contract": {
+    "bytes": 10799,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "70e82eb5cebe8438e7fe12759afaf339ba2ad9e8dc8cf664da53b6b9d093d304"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 45102,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+      "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+    },
+    "decoder": {
+      "bytes": 5875,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_decode_stageC_saved_v1.py",
+      "sha256": "945beedecf3ec86ecafadaba0d90ff5f9b1d8b4f11557b34d98c189ce01ad473"
+    }
+  },
+  "whole_two_helpers_and_contract_read": true
+}

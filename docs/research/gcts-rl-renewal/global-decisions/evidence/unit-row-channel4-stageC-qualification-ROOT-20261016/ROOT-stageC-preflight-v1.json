@@ -1,0 +1,68 @@
+{
+  "all9_required": true,
+  "current_Source11_input8_original_Source17_verified": true,
+  "endpoints": [
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1",
+      "mode": "stageC-dead-transfer",
+      "ordered_cases": [
+        "C1-marking-created-complete-ZERO-global-DEAD",
+        "C3-owned-complete-ZERO-transfer-original-marked-wrapper",
+        "C2-later-complete-ZERO-before-earlier-complete-SINGLETON"
+      ],
+      "plan": {
+        "bytes": 7991,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-plan-v1.json",
+        "sha256": "55a2925434a95afcbb78d09ceee5342b4dd0a347b05d2529aa611a9f0980b03b"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-natural-unknown-external-v1",
+      "mode": "stageC-natural-unknown",
+      "ordered_cases": [
+        "C4-natural-partial-filter-real-EOF-UNKNOWN-blocks-FORCED"
+      ],
+      "plan": {
+        "bytes": 7999,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-natural-unknown-plan-v1.json",
+        "sha256": "2c5d3e42d37b20d64217a2153328a971e5fccf93e1cf505be1e6ee371a6957a9"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-forced-transfer-child-external-v1",
+      "mode": "stageC-forced-transfer-child",
+      "ordered_cases": [
+        "C5-genuine-all-frontier-FORCED-before-BRANCH",
+        "C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH",
+        "C7-actual-child-native-first-UNKNOWN-full-restoration"
+      ],
+      "plan": {
+        "bytes": 8023,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-forced-transfer-child-plan-v1.json",
+        "sha256": "8f098454aa8aa45ab7f8dc99c56ef8d7b1fb65aeee9f7fe6b021ca119f82ba58"
+      }
+    },
+    {
+      "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-scheduler-external-v1",
+      "mode": "stageC-scheduler",
+      "ordered_cases": [
+        "C8-NONLOGICAL-kernel-global-priority",
+        "C9-NONLOGICAL-kernel-earliest-generation-explicit-ties"
+      ],
+      "plan": {
+        "bytes": 7975,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-scheduler-plan-v1.json",
+        "sha256": "f20328ba10f4432b9cd5cfd883918f52664ecb72fa8c6480bf7c58944ded861b"
+      }
+    }
+  ],
+  "fresh_distinct_owned_and_external_outputs": true,
+  "no_combined20_claim": true,
+  "protocol_choice": {
+    "bytes": 22393,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-choice-v1.json",
+    "sha256": "8c5025b61390af533f23b6dac972b639bb04a4313bb5e0a759192d09346dc194"
+  },
+  "schema": "ROOT-channel4-stageC-preflight-v1",
+  "scientific_calls": 0
+}

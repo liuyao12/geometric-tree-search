@@ -1,0 +1,179 @@
+{
+  "check_count": 20,
+  "checks": [
+    {
+      "check": "current-parent-rawpins-and-AST-compile-only",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "all17-tophelpers-raw-AST-exact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "ObservedCursor-whole-raw-AST-exact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "complete-native-response-transport-failuretail-exact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "full-byte-forward-inverse",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "actual-unified-patches-forward-inverse",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "Source11-input8-original17-input2-pins",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "original17-epoch-map-unmodified",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "original-six-limits-exact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "four-purpose-modes-nine-unique-essential-labels",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "no-new-imports-no-project-evaluation",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "public-engine-APIs-only-no-private-attributes",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "all-whole-families-FunctionType-through-call",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "fresh-complete-ZERO-MANY-SINGLETON-wrapper-lineage-assertions",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "normal-c960-c354-partial-real-EOF-UNKNOWN-no-suppression",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "same-fixed-constructor-proposer-used-by-fresh-cover",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "native-first-actual-child-context-no-exact-first-child-assertion",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "whole-original-and-marked-stream-observation-only",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "all-target-proof-trajectory-benefit-flags-false",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    },
+    {
+      "check": "no-C0",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or author manual Source reasoning only; no scientific functions/tests."
+    }
+  ],
+  "expected_cases_by_purpose": {
+    "unit-row-channel4-stageC-dead-transfer-controls": [
+      "C1-marking-created-complete-ZERO-global-DEAD",
+      "C3-owned-complete-ZERO-transfer-original-marked-wrapper",
+      "C2-later-complete-ZERO-before-earlier-complete-SINGLETON"
+    ],
+    "unit-row-channel4-stageC-forced-transfer-child-controls": [
+      "C5-genuine-all-frontier-FORCED-before-BRANCH",
+      "C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH",
+      "C7-actual-child-native-first-UNKNOWN-full-restoration"
+    ],
+    "unit-row-channel4-stageC-natural-unknown-controls": [
+      "C4-natural-partial-filter-real-EOF-UNKNOWN-blocks-FORCED"
+    ],
+    "unit-row-channel4-stageC-scheduler-controls": [
+      "C8-NONLOGICAL-kernel-global-priority",
+      "C9-NONLOGICAL-kernel-earliest-generation-explicit-ties"
+    ]
+  },
+  "nested_raw_AST_preserved": [
+    "archived",
+    "boundary",
+    "call",
+    "candidate",
+    "core",
+    "exact_restore",
+    "fresh_language",
+    "guard",
+    "maps",
+    "marked_semantics",
+    "passed",
+    "place_base",
+    "root_state",
+    "rowproof",
+    "slot",
+    "snapshot",
+    "state_from",
+    "tick",
+    "tile",
+    "ug"
+  ],
+  "schema": "unit-row-channel4-stageC-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 77482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/channel4_stageC_cold_v1.py",
+    "sha256": "af02a6fd7e145c326eed47f1ddf1df7968ea52c5c470e01ab6a3d3ef5d71eb43"
+  },
+  "source_delta": {
+    "bytes": 59410,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "4fc4e6ab8c328912a03c3cfe88e9dda020f4bc0612a0af506bbfaca63925d615"
+  },
+  "source_only": true,
+  "unchanged_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

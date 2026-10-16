@@ -1,0 +1,44 @@
+{
+  "actual_outputs_decoded": false,
+  "author_identity": "/root/arithmetic_induction",
+  "findings": {
+    "bytes": 26758,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "4e93936f195ed9d2fd80e7ee2ac630bbca9d0d99845f7f8d9dbe61ddaae2d05e"
+  },
+  "helpers_executed": false,
+  "review": {
+    "bytes": 2977,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "15caed3787fd81bf2f01cd2d36c4b67cce108dde5acde3ef64cb009e45947f60"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-channel4-stageC-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-channel4-stageC-saved-helpers-Source",
+  "source": {
+    "bytes": 45102,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+    "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+  },
+  "source_contract": {
+    "bytes": 10799,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "70e82eb5cebe8438e7fe12759afaf339ba2ad9e8dc8cf664da53b6b9d093d304"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 45102,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+      "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+    },
+    "decoder": {
+      "bytes": 5875,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_decode_stageC_saved_v1.py",
+      "sha256": "945beedecf3ec86ecafadaba0d90ff5f9b1d8b4f11557b34d98c189ce01ad473"
+    }
+  }
+}

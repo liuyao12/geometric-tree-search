@@ -1,0 +1,32 @@
+{
+  "StageC_qualified": false,
+  "actual_execution_authorized": false,
+  "author_identity": "/root/arithmetic_induction",
+  "findings": {
+    "bytes": 35638,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-independent-source-20261016/findings-v1.json",
+    "sha256": "978986ed9c3ef013fffde750daf57a906808cf67bca3a29e58baea06b499f409"
+  },
+  "review": {
+    "bytes": 5670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "46e24f7f82fe18d1088b31d4a872e3cd63b9acccdf9b20d9a4367f37b1e710e7"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-channel4-stageC-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-channel4-stageC-cold-Source",
+  "source": {
+    "bytes": 77482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/channel4_stageC_cold_v1.py",
+    "sha256": "af02a6fd7e145c326eed47f1ddf1df7968ea52c5c470e01ab6a3d3ef5d71eb43"
+  },
+  "source_contract": {
+    "bytes": 26294,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "b6e97354241cb1f367575080011136344fa93311d9a55b089794d1754fbdecba"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

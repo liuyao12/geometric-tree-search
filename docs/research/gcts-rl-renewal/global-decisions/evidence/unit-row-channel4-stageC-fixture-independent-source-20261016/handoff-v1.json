@@ -1,0 +1,22 @@
+{
+  "StageC_qualified": false,
+  "controller_review_passed": false,
+  "disposition": "NO_CONCRETE_UNRESOLVED_FIXTURE_BLOCKER_FOUND",
+  "findings": {
+    "bytes": 16926,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-fixture-independent-source-20261016/StageC-independent-fixture-challenge-v1.json",
+    "sha256": "e6540783c8ea39fe59e4e0855eb862ce4162733bcb608b073941bfff24835305"
+  },
+  "proposal": {
+    "bytes": 27639,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-fixture-design-source-20261016/StageC-fixture-proposal-v1.json",
+    "sha256": "51b51f7c70cf4699db198f404b456cc2022e4c1bc2b3349c5cf320d29285f027"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-channel4-StageC-independent-fixture-challenge-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Source-only fixture challenge, with dependent code authorship disclosed; not controller or runtime qualification.",
+  "source_only": true,
+  "unresolved_concrete_fixture_blockers": []
+}

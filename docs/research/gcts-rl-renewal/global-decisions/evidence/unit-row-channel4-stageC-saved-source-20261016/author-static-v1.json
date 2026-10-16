@@ -1,0 +1,122 @@
+{
+  "check_count": 19,
+  "checks": [
+    {
+      "check": "two-current-raw-pins-and-AST-compile-only",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "both-full-byte-forward-and-inverse",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "both-actual-unified-patches-forward-and-inverse",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "all9-decoder-helper-functions-raw-AST-exact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "closer-canonical-pin-read-check-raw-AST-exact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "positive-whole-native-wire-prefix-path-only",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "decoder-4MiB-16MiB-canonical-base64-one-zlib-stream-unchanged",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "fixed-b6e9-currentcontract-af02-controller-and-current11-input8-original17-authority",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "four-explicit-purpose-modes-own-native20-no-combined-budget",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "complete-ZERO-MANY-SINGLETON-transfer-full-origin-and-chain-literal-joins",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "natural-UNKNOWN-real-original2-marked1-stream-normal-None-no-suppression",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "positive-child-only-dedicated-reason-real-TRY-PLACE-noEXCLUDE-full-root-restore",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "NONLOGICAL-kernel-inputs-outputs-explicit",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "exact-failure-native2-wait512-noowned-Timeout-no-casecounts-or-positiveauthority",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "aggregate-checks-all4-distinct-plan-grant-invocation-output-pins",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "current-failed-mode-contributes-zero-qualified-three-unqualified-no-progress-inference",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "stdlib-only-no-scientific-import-call-clock-helper-execution",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "no-C0-controls",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    },
+    {
+      "check": "all-strong-proof-trajectory-resource-benefit-flags-false",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source inspection only; no helper/scientific execution."
+    }
+  ],
+  "helpers_executed": false,
+  "schema": "unit-row-channel4-stageC-saved-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 65668,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "8c2b457a2a4843d0c54ddfd99a192fd4bbf47b614a3f5189cf7a8256905709c9"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 45102,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+      "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+    },
+    "decoder": {
+      "bytes": 5875,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_decode_stageC_saved_v1.py",
+      "sha256": "945beedecf3ec86ecafadaba0d90ff5f9b1d8b4f11557b34d98c189ce01ad473"
+    }
+  }
+}

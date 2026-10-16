@@ -1,0 +1,256 @@
+"""Whole saved evidence/resource concordance only. No degree or logical replay."""
+import hashlib
+import json
+from pathlib import Path
+
+HERE=Path(__file__).resolve().parent
+def canonical(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()
+def pin(p):
+    raw=p.read_bytes();return {'path':str(p),'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)}
+def read(p):return json.loads(p.read_bytes())
+def check(ref):
+    p=Path(ref['path']);assert p.is_absolute() and p==p.resolve() and pin(p)==ref;return p
+mode='stageB'
+plan_path=HERE/'ROOT-stageB-plan-v1.json';plan=read(plan_path);pp=pin(plan_path)
+owned=HERE/'stageB-owned-v1';external=HERE/'stageB-external-v1'
+bracket=read(HERE/'ROOT-stageB-tool-bracket-v1.json')
+assert bracket['plan_sha256']==pp['sha256'] and bracket['plan_bytes']==pp['bytes']
+assert bracket['tool_exit_code']==0 and bracket['tool_session_id'] is None
+date=(bracket['ended_Date_ms']-bracket['began_Date_ms'])/1000
+assert date==bracket['complete_Date_seconds'] and 0<=date<=60 and date+1<=90
+assert sorted(p.name for p in owned.iterdir())==['engine-result.json','response.jsonl']
+outputs=[pin(owned/n) for n in ('engine-result.json','response.jsonl')]
+lines=(owned/'response.jsonl').read_bytes().splitlines(keepends=True)
+assert len(lines)==2 and all(x.endswith(b'\n') for x in lines)
+body,completion=map(json.loads,lines)
+assert completion['body_sha256']==hashlib.sha256(lines[0]).hexdigest() and completion['body_bytes']==len(lines[0])
+assert completion['schema']=='Q-clean-verifier-response-completion-v1' and completion['exit_zero_and_coordinator_deadline_required'] is True
+assert body['schema']=='ROOT-unit-row-global-engine-response-body-v1' and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+assert body['plan']=={k:pp[k] for k in ('sha256','bytes')} and body['sources']==plan['sources'] and body['inputs']==plan['inputs']
+assert body['invocation_id']==plan['invocation_id'] and body['limits']==plan['limits'] and body['outputs']==outputs[:1]
+for ref in [*plan['sources'].values(),*plan['inputs'].values(),plan['source_contract'],plan['ROOT_authorization'],*plan['reviews'].values(),plan['runtime']]:check(ref)
+stdout_raw=(external/'meter-stdout.txt').read_bytes();assert stdout_raw.endswith(b'\n') and len(stdout_raw.splitlines())==1
+stdout=json.loads(stdout_raw);assert stdout['outputs']==outputs and stdout['response']==outputs[-1] and stdout['pending_external'] is True
+assert not (external/'meter-stderr.txt').read_bytes() and not (external/'postterminal-probe-stderr.txt').read_bytes()
+native=read(external/'native-terminal.json');observation=read(external/'observation.json');once=read(external/'ONCE.json')
+for v in (observation,once):assert v['plan_sha256']==pp['sha256'] and v['plan_bytes']==pp['bytes'] and v['invocation_id']==plan['invocation_id']
+assert observation['meter_returncode']==observation['probe_returncode']==0
+probe=int((external/'postterminal-probe-stdout.txt').read_bytes());assert probe==observation['postterminal_native_probe_ns']
+assert native['caller_returncode']==native['wait4_status']==0 and native['all_reaped'] is True
+assert native['caller_pid']==native['wait4_pid'] and native['error'] is None and native['interrupted'] is False and native['cancellation_forwarded'] is False
+start=native['caller_launch_began_ns'];terminal=native['caller_terminal_observed_ns'];g=body['joint_began_ns']
+assert start<=g<terminal<=probe and body['joint_deadline_ns']==g+20000000000
+assert terminal-start==native['caller_kernel_elapsed_ns'] and 0<probe-start<20000000000
+peak=native['wait4_usage'][2];assert type(peak) is int and peak==native['caller_kernel_peak_bytes'] and 0<peak<=536870912
+transport=read(HERE/'ROOT-stageB-transport-concordance-v1.json')
+assert transport['plan']==pp and transport['encoded_file']==outputs[0] and transport['all_full_record_bytes_retained'] is True
+result=read(check(transport['expanded_file']));data=result['channel4_stageB'];contract=read(check(plan['source_contract']))
+assert len(plan['sources'])==11 and len(plan['inputs'])==8 and plan['purpose']=='unit-row-channel4-retention-archive-refs-controls'
+assert result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose']
+assert contract['sources']==plan['sources'] and contract['inputs']==plan['inputs']
+binding=contract['original_model_binding']
+assert result['language_binding']==body['language_binding']==body['original_model_binding']==binding
+assert body['version']=='unit-row-channel4-retention-archive-refs-cold-v1'
+assert result['controls'] is result['search'] is result['found_validation'] is None
+assert data['schema']=='ROOT-unit-row-channel4-stageB-payload-v1'
+assert data['stage']=='SUPPORT_RETENTION_ARCHIVE_REFRESH_POINT_REFS_ONLY'
+assert data['original_model_sources']==contract['original_model_sources'] and data['original_model_binding']==binding
+for ref in data['original_model_sources'].values():check(ref)
+assert len(data['original_model_sources'])==17
+expected=['unseen-remote-support-retains3-invalidates6',
+ 'new-prototype-global-ledger-invalidates-frontier','remote-family-exact-outer-restore',
+ 'repeated-retain-preserves-original-full-archive-and-refresh',
+ 'fresh-full-prefix-replay-nonempty-inner-rollback-repeat','archive-family-exact-outer-restore',
+ 'shared-channel4-two-refs-and-fixed-zero','shared-channel4-inner-exact-restore-one-ref',
+ 'shared-channel4-outer-exact-restore-absence']
+assert data['control_count']==len(data['controls'])==9 and data['all_controls_completed'] is True
+assert [c['case']for c in data['controls']]==data['expected_cases']==contract['expected_cases']==expected
+assert [c['family']for c in data['controls']]==['A']*3+['B']*3+['C']*3
+assert all(c['status']=='PASSED'for c in data['controls'])
+assert data['prior_acceptance']=={k:v for k,v in plan['inputs'].items()if k.startswith('stageA_')}
+prior=read(check(plan['inputs']['stageA_expanded']))['channel4_stageA']
+prior_admission=read(check(plan['inputs']['stageA_disposition']))
+assert prior_admission['actual_closed'] is prior_admission['all_reaped'] is prior_admission['native_resources_qualified'] is True
+assert prior_admission['passed_cases']==23 and prior_admission['skipped_cases']==0
+assert prior_admission['later_engine_stages_qualified'] is False
+assert data['marking']==prior['marking'] and data['marking']['marking_id']==prior_admission['marking_id']
+assert data['definition_check']['marking_checked'] is data['definition_check']['projection_literals_rechecked'] is True
+assert data['definition_check']['marking']==data['marking']
+assert data['definition_check']['marking_sha256']==hashlib.sha256(canonical(data['marking'])).hexdigest()
+mid=data['marking']['marking_id']
+
+def equal(left,right):
+    # Full canonical literal equality, including bool versus int; no matcher.
+    assert canonical(left)==canonical(right)
+
+def points(entries):
+    assert type(entries) is list
+    out={}
+    for point,value in entries:
+        assert type(point) is list and len(point)==2 and all(type(x) is int for x in point)
+        key=tuple(point);assert key not in out;out[key]=value
+    return out
+
+def snapshot(value):
+    assert value['marking_id']==value['state']['marking_id']==mid
+    assert value['state']['input_epoch']==binding['language_epoch'] and value['state']['height']==24
+    equal(value['state']['generation'],[[[0,r],0]for r in range(24)])
+    assert value['scheduler_policy']['branch_tie']=='ROW' and value['pending_preferences'] is None
+    assert value['certificates']==[]  # No degree query/decision in this stage.
+    assert type(value['row_versions']) is list and len(value['row_versions'])==24
+    return value
+
+def slot(value,row):
+    entries=value['cursors'];assert len({r for r,_ in entries})==len(entries)
+    return dict(entries)[row]
+
+def rowproof(value,row):
+    entries=value['last_transition']['rows'];assert [x['row']for x in entries]==list(range(24))
+    return entries[row]
+
+def core(packet):return {k:v for k,v in packet.items()if k!='read_obligations'}
+
+def context(value,state):
+    equal(value['state'],state)
+    assert value['state_sha256']==hashlib.sha256(canonical(state)).hexdigest()
+    assert value['context_sha256']==hashlib.sha256(canonical({k:v for k,v in value.items()if k!='context_sha256'})).hexdigest()
+    assert value['marking_id']==mid and value['input_epoch']==binding['language_epoch']
+    equal(value['language_binding'],binding)
+
+def archive_entry(original):return {k:original[k]for k in('context','keys','candidates','completion')}
+
+def exact_archive(current,original):
+    equal(current['context_archive'],[archive_entry(original)])
+    assert set(current['context_archive'][0])=={'context','keys','candidates','completion'}
+
+def logged_prefix(log,current,state):
+    context(log['context'],state);equal(log['context'],current['context'])
+    events=log['events'];assert [x['kind']for x in events]==['CANDIDATE','CANDIDATE','EOF']
+    assert [x['ordinal']for x in events[:-1]]==[0,1]
+    for index,event in enumerate(events[:-1]):
+        assert event['context_sha256']==log['context']['context_sha256'] and event['independently_checked'] is False
+        equal(event['candidate'],current['candidates'][index])
+        equal(event['candidate']['placement_key'],current['keys'][index])
+    assert events[-1]['context_sha256']==log['context']['context_sha256']
+    equal(events[-1]['completion'],current['completion'])
+    completion=current['completion']
+    assert completion['context_sha256']==log['context']['context_sha256']
+    assert completion['state_sha256']==log['context']['state_sha256'] and completion['yielded_candidates']==2
+    assert completion['marking_id']==mid and completion['independently_checked'] is False
+    assert completion['degree_zero_or_singleton_accepted'] is False
+    assert all(completion[k]is False for k in('complete_candidate_graph_accepted',
+        'scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted'))
+
+families=data['families'];assert set(families)=={'A','B','C'}
+for family in families.values():
+    snapshot(family['outer_before']);snapshot(family['outer_after'])
+    equal(family['outer_before']['state'],family['initial_state'])
+    equal(family['outer_after'],family['outer_before'])
+
+a=families['A']
+before=snapshot(a['before_remote']);after=snapshot(a['after_remote'])
+for row,name in((3,'first3'),(6,'first6')):
+    event=a[name];assert event['kind']=='CANDIDATE'
+    equal(event['candidate'],slot(before,row)['candidates'][0])
+    equal(event['candidate']['placement_key'],slot(before,row)['keys'][0])
+    assert event['candidate']['base_tile']['placement_key']['type_preimage']['primitive_witness']['rule']=='axiom'
+k3=a['first3']['candidate']['base_tile']['placement_key'];k6=a['first6']['candidate']['base_tile']['placement_key']
+assert k3['tile_type_id']==k6['tile_type_id'] and k3['translation']!=k6['translation'];equal(k3['type_preimage'],k6['type_preimage'])
+assert a['unseen_legality_before'] is None and a['unseen_legality_after']=='whole_remote_or_metadata_mark_conflict'
+equal(a['unseen_candidate_before'],a['unseen_candidate_after'])
+assert all(canonical(a['unseen_candidate_before']['placement_key'])!=canonical(a[n]['candidate']['placement_key'])for n in('first3','first6'))
+equal(after['state']['selected'][-1],a['remote_placement']['selection_record'])
+oldmarks,newmarks=points(before['state']['m']),points(after['state']['m'])
+changed=sorted(p for p in set(oldmarks)|set(newmarks)if p not in oldmarks or p not in newmarks or canonical(oldmarks[p])!=canonical(newmarks[p]))
+equal(a['changed_mark_points'],[list(p)for p in changed]);assert (4,4)in changed
+support={tuple(p)for p,v in a['first6']['candidate']['global_t_values']+a['first6']['candidate']['global_m_values']}
+assert not set(changed).intersection(support)
+assert after['last_transition']['collision_ledger_equal'] is True
+assert rowproof(after,3)['retain'] is True and rowproof(after,6)['retain'] is False
+assert rowproof(after,6)['reason']=='possible_full_channel4_support_changed'
+assert after['row_versions'][3]==before['row_versions'][3] and after['row_versions'][6]>before['row_versions'][6]
+assert 3 in dict(after['cursors']) and 6 not in dict(after['cursors'])
+exact_archive(slot(after,3),slot(before,3))
+requery=snapshot(a['after_requery']);assert a['fresh_row6']['kind']=='CANDIDATE'
+context(slot(requery,6)['context'],after['state']);equal(slot(requery,6)['candidates'][0],a['fresh_row6']['candidate'])
+new=snapshot(a['after_new_prototype']);equal(new['state']['selected'][-1],a['new_far_prototype']['selection_record'])
+assert new['last_transition']['collision_ledger_equal'] is False and not any(x['retain']for x in new['last_transition']['rows'])
+assert rowproof(new,3)['reason']==rowproof(new,6)['reason']=='global_collision_ledger_changed'
+assert len(a['actual_cursor_log'])==3
+for log,current,state in((a['actual_cursor_log'][0],slot(before,3),before['state']),
+ (a['actual_cursor_log'][1],slot(before,6),before['state']),
+ (a['actual_cursor_log'][2],slot(requery,6),after['state'])):
+    context(log['context'],state);equal(log['context'],current['context'])
+    assert len(log['events'])==1 and log['events'][0]['kind']=='CANDIDATE' and log['events'][0]['ordinal']==0
+    equal(log['events'][0]['candidate'],current['candidates'][0])
+
+b=families['B'];old=b['original_slot'];before=snapshot(b['before_retention'])
+equal(old,slot(before,3));assert len(old['keys'])==len(old['candidates'])==2
+assert [x['kind']for x in b['original_events']]==['CANDIDATE','CANDIDATE','EOF']
+for index in range(2):equal(b['original_events'][index]['candidate'],old['candidates'][index])
+equal(b['original_events'][-1]['completion'],old['completion'])
+assert sorted(x['occupied']for c in old['candidates']for x in c['read_obligations'])==[False,True]
+first=snapshot(b['first_retained_snapshot']);second=snapshot(b['second_retained_snapshot'])
+one,two=slot(first,3),slot(second,3)
+for current in(first,second):
+    assert rowproof(current,3)['retain'] is True and current['last_transition']['collision_ledger_equal'] is True
+    value=slot(current,3);exact_archive(value,old)
+    for field in('context','keys','completion'):equal(value[field],old[field])
+assert rowproof(first,3)['read_occupancy_changes']==[1]
+equal(first['state']['selected'][-1],b['fill1']['selection_record']);equal(second['state']['selected'][-1],b['fill22']['selection_record'])
+for oldpacket,newpacket in zip(old['candidates'],one['candidates']):equal(core(oldpacket),core(newpacket))
+assert all(x['occupied'] is True for c in one['candidates']for x in c['read_obligations'])
+equal(two['candidates'],one['candidates']);equal(b['inner_before'],second);equal(b['inner_after'],b['inner_before'])
+continued=snapshot(b['first_continued_snapshot']);repeated=snapshot(b['repeated_snapshot'])
+for current in(continued,repeated):
+    value=slot(current,3);context(value['context'],second['state']);exact_archive(value,old)
+    equal(value['keys'],old['keys']);equal(value['candidates'],two['candidates'])
+logged_prefix(b['first_replay_log'],slot(continued,3),second['state'])
+logged_prefix(b['repeated_replay_log'],slot(repeated,3),second['state'])
+equal(b['first_replay_log'],b['repeated_replay_log']);equal(continued,repeated)
+assert b['first_continuation']['kind']==b['repeated_continuation']['kind']=='EOF'
+equal(b['first_continuation']['completion'],slot(continued,3)['completion']);equal(b['first_continuation'],b['repeated_continuation'])
+assert len(b['actual_cursor_log'])==3
+logged_prefix(b['actual_cursor_log'][0],old,before['state'])
+equal(b['actual_cursor_log'][1],b['first_replay_log']);equal(b['actual_cursor_log'][2],b['repeated_replay_log'])
+
+c=families['C'];one=snapshot(c['one_reference']);two=snapshot(c['two_references'])
+equal(one['state']['selected'][-1],c['first']['selection_record']);equal(two['state']['selected'][-1],c['second']['selection_record'])
+assert len(one['state']['selected'])==1 and len(two['state']['selected'])==2
+for current,n in((one,1),(two,2)):
+    refs,marks=points(current['mark_reference_counts']),points(current['state']['m'])
+    assert type(refs[(4,0)]) is type(refs[(4,1)]) is int and refs[(4,0)]==1 and refs[(4,1)]==n
+    assert type(marks[(4,0)]) is type(marks[(4,1)]) is int and marks[(4,0)]==0 and marks[(4,1)]==1
+equal(c['inner_after'],one)
+outer=c['outer_after'];assert (4,1)not in points(outer['mark_reference_counts']) and (4,1)not in points(outer['state']['m'])
+assert points(outer['mark_reference_counts'])[(4,0)]==1 and c['actual_cursor_log']==[]
+
+for key in('cached_degree_receipt_transfer_exercised','global_decision_or_scheduler_qualified',
+ 'unknown_child_search_rollback_qualified','target_search_performed','failure_marking_activated',
+ 'engine_search_performed','logical_proof_accepted','exact_point_board_accepted','complete_GCTS_model_accepted',
+ 'GCTS_search_trajectory_accepted','RL_accepted','GCTS_advantage_claimed','ROOT_resource_accepted'):assert data[key] is False
+for key in('complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','logical_proof_accepted','ROOT_resource_accepted'):assert result[key] is False
+for key in('ROOT_resource_accepted','logical_proof_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',
+ 'failure_marking_activated','RL_accepted','GCTS_advantage_claimed'):assert body[key] is False
+disposition=dict(schema='ROOT-channel4-stageB-disposition-v1',previous_goal_turn='progress',current_goal_turn='progress',
+ plan=pp,outputs=outputs,lossless_transport_concordance=pin(HERE/'ROOT-stageB-transport-concordance-v1.json'),
+ complete_wire_verified=True,native_resources_qualified=True,native_launch_to_postprobe_ns=probe-start,
+ native_worker_lifetime_ns=terminal-start,aggregate_B_bytes=peak,terminal_T_bytes=peak,complete_Date_seconds=date,
+ resource_rule='single-owned-process-native-terminal-v1; B=T',actual_closed=True,all_reaped=True,passed_cases=9,skipped_cases=0,
+ support_retention_archive_reference_controls_accepted=True,family_count=3,case_names=expected,
+ marking_id=mid,marking_sha256=hashlib.sha256(canonical(data['marking'])).hexdigest(),original_model_binding=binding,
+ reconciliation_scope='Whole saved bytes/native/wire/full snapshot/context/cursor/archive/reference/restore literal joins only; no matcher/model/checker or scientific replay.',
+ family_scope={'A':'Complete possible-support invalidation plus unchanged/new global ledger and exact owned restore; both1/4 change, no isolated4 claim.',
+ 'B':'Occupancy refresh and literal old archive/current full-prefix replay/nonempty nested rollback; no degree receipt transfer.',
+ 'C':'Actual matching mark reference counts and exact nested owned restore; not scheduled search.'},
+ work_logs_and_counters_outside_semantic_rollback=True,cached_degree_receipt_transfer_exercised=False,
+ global_decision_or_scheduler_qualified=False,unknown_child_search_rollback_qualified=False,
+ target_search_performed=False,engine_search_performed=False,failure_marking_activated=False,
+ logical_proof_accepted=False,exact_point_board_accepted=False,RL_accepted=False,GCTS_advantage_claimed=False,
+ complete_GCTS_model_accepted=False,broad_goal_complete=False,
+ remaining_gaps=['Cached degree receipt transfer, global decisions/scheduler and UNKNOWN-child search restoration remain unqualified.',
+ 'No fabricated true hash-collision test or valid isolated channel4-only transition.',
+ 'No marked target proof, matched search advantage, trained RL, full reference conformance or universal finite Wang palette.'])
+p=HERE/'ROOT-stageB-disposition-v1.json'
+with p.open('x')as f:json.dump(disposition,f,indent=2,sort_keys=True);f.write('\n')
+print(json.dumps(dict(disposition=pin(p),passed_cases=9,families=3,native_ns=probe-start,aggregate_B_bytes=peak,scientific_replay=False)))

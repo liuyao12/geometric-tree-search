@@ -1,0 +1,232 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes": 49872896,
+  "all_reaped": true,
+  "case_names": [
+    "C1-marking-created-complete-ZERO-global-DEAD",
+    "C3-owned-complete-ZERO-transfer-original-marked-wrapper",
+    "C2-later-complete-ZERO-before-earlier-complete-SINGLETON"
+  ],
+  "closure_helper": {
+    "bytes": 45102,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT_close_stageC_saved_v1.py",
+    "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+  },
+  "complete_Date_seconds": 10.438,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "endpoint_controls_literal_concordance_accepted": true,
+  "exact_point_board_accepted": false,
+  "failure_marking_activated": false,
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "stageB_disposition": {
+      "bytes": 4574,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+    },
+    "stageB_encoded": {
+      "bytes": 162591,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    "stageB_expanded": {
+      "bytes": 1926833,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+    },
+    "stageB_plan": {
+      "bytes": 7924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+    },
+    "stageB_response": {
+      "bytes": 7572,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    },
+    "stageB_transport": {
+      "bytes": 1502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+    }
+  },
+  "invocation_id": "channel4-stageC-dead-transfer-qualification-20261016-v1",
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1541,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-transport-concordance-v1.json",
+    "sha256": "0a52ed5aca12c517b5ace76fb3facb05869b5f53955ff409d4f9766942729297"
+  },
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "marking_sha256": "8d5f2c9c8ffa1de4c208e19da971b6cba73561ec4717caa54183e4799dc106df",
+  "mode": "stageC-dead-transfer",
+  "native_evidence": {
+    "ONCE.json": {
+      "bytes": 277,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/ONCE.json",
+      "sha256": "4cbdbee1770c57177eb1c9843330a960131db880099feb0cd20e23db51b463c4"
+    },
+    "meter-stderr.txt": {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "meter-stdout.txt": {
+      "bytes": 992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/meter-stdout.txt",
+      "sha256": "6b1959081f9361a4e27a0c3343fc19281a479cc0c918765a1fd96adb6252b1b9"
+    },
+    "native-terminal.json": {
+      "bytes": 1698,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/native-terminal.json",
+      "sha256": "8f7c70ed50457f4fd01e5e8309d5930b4c35ed89a8752859072f6a18702fa266"
+    },
+    "observation.json": {
+      "bytes": 494,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/observation.json",
+      "sha256": "3899a7d0faa5515c4580d12cc05eb61fa38bb5437b59a97ea355bd5da111691f"
+    },
+    "postterminal-probe-stderr.txt": {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "postterminal-probe-stdout.txt": {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "1959b24540b55f41a47fa9267d22a729fc77d7434c37dacdb50311d0c3c6b918"
+    }
+  },
+  "native_launch_to_postprobe_ns": 3037209000,
+  "native_resources_qualified": true,
+  "native_terminal_closed": true,
+  "native_worker_lifetime_ns": 2996614000,
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "outputs": [
+    {
+      "bytes": 62429,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-owned-v1/engine-result.json",
+      "sha256": "2f634f8a755a21c5d086405c3f07ad48e1da76cf37e1d9025d5b5a254cf1bfa9"
+    },
+    {
+      "bytes": 7634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-owned-v1/response.jsonl",
+      "sha256": "141f02a0d907cdab7df8d44f9e811e73799a97671c8e42a535c0a86394e0fe4b"
+    }
+  ],
+  "passed_cases": 3,
+  "plan": {
+    "bytes": 7991,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-plan-v1.json",
+    "sha256": "55a2925434a95afcbb78d09ceee5342b4dd0a347b05d2529aa611a9f0980b03b"
+  },
+  "purpose": "unit-row-channel4-stageC-dead-transfer-controls",
+  "qualified_case_count": 3,
+  "raw_expanded": {
+    "bytes": 549900,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-expanded-result-v1.json",
+    "sha256": "08e4ab67233027923c88f09b15262286a38cc654813743ae88b948baffa82d6a"
+  },
+  "reconciliation_scope": "Whole saved native/wire/typed literal state/receipt/transfer/cursor/restore concordance only; no scientific function, membership, relation scan, matcher or semantic replay.",
+  "remaining_gaps": [
+    "Other StageC endpoints/all9 essential current-source findings still required; no combined20 claim.",
+    "No marked target result/benefit/full GCTS trajectory or general all-six EOF authority."
+  ],
+  "reported_case_count": 3,
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-channel4-stageC-endpoint-disposition-v1",
+  "scientific_replay": false,
+  "skipped_cases": 0,
+  "source_contract": {
+    "bytes": 26294,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "b6e97354241cb1f367575080011136344fa93311d9a55b089794d1754fbdecba"
+  },
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 56207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 77482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/channel4_stageC_cold_v1.py",
+      "sha256": "af02a6fd7e145c326eed47f1ddf1df7968ea52c5c470e01ab6a3d3ef5d71eb43"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "target_search_performed": false,
+  "terminal_T_bytes": 49872896,
+  "tool_bracket": {
+    "bytes": 384,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-tool-bracket-v1.json",
+    "sha256": "c40dd79999db95aad04719a3e71d72265e99c31941ede4a893bae7d4bf128ae8"
+  },
+  "unqualified_case_count": 0,
+  "whole_StageC_qualification_accepted": false
+}

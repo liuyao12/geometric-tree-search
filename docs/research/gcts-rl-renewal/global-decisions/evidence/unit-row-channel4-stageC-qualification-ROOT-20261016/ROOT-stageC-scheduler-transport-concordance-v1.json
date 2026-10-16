@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 12198,
+  "compressed_sha256": "6feb5b3ec84b0a23df18a292e6e2e1f46abc073e0afdc1dd91635050f3515094",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 16585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-scheduler-owned-v1/engine-result.json",
+    "sha256": "eebafe1b5bceddcd464ef5b247de430afaeb511fa718f33e9d5031a3adfae5b6"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 188928,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-scheduler-expanded-result-v1.json",
+    "sha256": "2aad336ba632b9337e8e25c4327540ebf2fc89b51c721d2c7e62ef1ad1fe1db7"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 7975,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-scheduler-plan-v1.json",
+    "sha256": "f20328ba10f4432b9cd5cfd883918f52664ecb72fa8c6480bf7c58944ded861b"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

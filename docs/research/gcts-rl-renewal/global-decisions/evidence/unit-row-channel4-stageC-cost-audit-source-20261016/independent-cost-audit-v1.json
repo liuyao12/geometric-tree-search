@@ -1,0 +1,155 @@
+{
+  "acceptance_flags": {
+    "GCTS_advantage_claimed": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "StageC_qualified": false,
+    "actual_authorized": false,
+    "implementation_authorized": false,
+    "runtime_fit_claimed": false,
+    "target_proof_accepted": false
+  },
+  "actual_boundary": "Root reports MAIN failed its original20s gate with no owned result; three other endpoints completed. This note does not independently close that actual and cannot identify whether any C5/C6/C7 assertion was reached. A missing record is not evidence that a particular method failed to return or dominated cost.",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship": "Reviewer authored verifier9fd6 and earlier controls/saved-helper ancestors, not StageC controlleraf02, engine11/adapter821fe, c354/c960, kernel43bc, membership5d1f or clean support4645. This proposal is not an independent semantic execution or performance result.",
+  "concrete_low_risk_proposal": {
+    "budget_caveat": "membership constructs a QChecker with maximum_visits5000000; visits are cumulative on that object. One object across five seeds gives a stricter cumulative allowance than five fresh objects. Never reset visits or extend the deadline to recover the old per-object resets. If the batch cannot finish, return UNKNOWN. Exact runtime and fit remain unmeasured.",
+    "change": "Within the MAIN family only, obtain one new private fixture language and use it for the existing five seed-tile rebuilds; return only the full original bare tile packets. Discard that language before calling the unchanged state_from and make_stageC_engine. Do not share the later engine or checker language with this constructor.",
+    "preserved": "Keep identical witnesses, ordered premises, offsets, translations, input2/original17 binding, all five full packet results and state_from rechecks. Keep existing immediate fresh_language factory invoke and the enclosing full family invoke, all unchanged helper checks, native-first tick and deadline, independent marking/state reconstruction, current receipt/packet rebuilds, original cursor+EOF checks, every C5-C7 assertion, full snapshots, exact rollback, output and native ownership. No proofword, route or future placement is added.",
+    "review_needed": "Any implementation is an immutable successor requiring exact changed-region/inverse review and a new Root decision. The old failed actual and all nine essential StageC cases remain unchanged. Do not infer a passing fixture merely because the Source still parses.",
+    "why_conditional_sound": "Language object identity is not a mathematical input to primitive membership or full placement identity: their preimages bind the complete original input/source epoch and actual syntax. The isolated constructor never delegates its language to search/adviser callbacks; a separate fresh state reconstruction still checks the returned data. This is batching construction, not reusing an old checked-degree receipt."
+  },
+  "disposition": "ONE_NARROW_SETUP_BATCH_CANDIDATE; NO_MEASURED_CAUSE_OR_FIT_PREDICTION",
+  "judgment": "The constructor batch is a concrete, bounded Source change worth reviewing if Root elects to pursue MAIN qualification. Source alone cannot establish that it removes enough work. I found no defensible basis for a larger reconstruction/guard removal while preserving the current verifier interfaces unchanged.",
+  "not_recommended": [
+    "Do not silently split, omit, weaken or relabel C5-C7 or convert the ordinary20 timeout into the declared child-interruption pass.",
+    "Do not change the C7 interruption threshold to force an earlier desired callback or exclude an UNKNOWN child.",
+    "Do not cache full degree/model receipts by SHA alone, remove independently reconstructed sole candidates, disable guard endpoints or substitute diagnostic output for a completed control record.",
+    "Do not infer that guard overhead, whole marking rechecks, setup or search was the actual bottleneck. No current result localizes cost.",
+    "Do not raise limits or rerun the failed unchanged Source. Outstanding correctness qualification and proposed marked-aware fibre search capability remain distinct next decisions."
+  ],
+  "other_small_candidate": {
+    "limits": "This can remove repeated file/hash work but gives no expected saving. Do not replace fresh raw input reauthentication at fresh_language, remove old provenance checks or weaken any trust split. It is not a sufficient measured reason to retry a failed endpoint alone.",
+    "proposal": "During initial intake, reuse an already retained authenticated raw Source buffer when the complete raw capsule/path is literally identical in the current11, original17 and prior StageB maps; keep all full maps and explicit raw equality joins. Authenticate each distinct file/capsule at least once before using its same bytes. Avoid a new global cache or digest-only admission.",
+    "source_lines": [
+      398,
+      405,
+      482,
+      492
+    ]
+  },
+  "schema": "unit-row-stageC-cold-cost-independent-source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_findings": [
+    {
+      "finding": "The MAIN seed list constructs two original AX tiles and three UG tiles before state_from and engine creation. Every tile()/ug()/ax() path calls fresh_language() independently.",
+      "lines": [
+        835,
+        840
+      ],
+      "source": "controller"
+    },
+    {
+      "finding": "fresh_language reauthenticates the exact original raw input2, invokes the original membership factory through unchanged full pre/post guard, and verifies original binding. Native deadline is shared, not reset.",
+      "lines": [
+        443,
+        453
+      ],
+      "source": "controller"
+    },
+    {
+      "finding": "After seed construction, state_from separately constructs another fresh language, rebuilds every offered full original tile, checks actual original legality/union, constructs decorated packets and independently checks the whole marked state. These checks must remain.",
+      "lines": [
+        549,
+        580
+      ],
+      "source": "controller"
+    },
+    {
+      "finding": "Engine construction, actual degree proposals and fresh cover certification are separate from seed building. The same interruption-aware proposer is used for current coverage; a quiet/cached delegate would change C7 and is not proposed.",
+      "lines": [
+        646,
+        691
+      ],
+      "source": "controller"
+    },
+    {
+      "finding": "The whole MAIN transaction is itself invoked through full guard. There is no extra CodeSeal boundary per recipe/candidate in its deep direct calls. Full guards around each fresh_language factory are real, but their time is unmeasured.",
+      "lines": [
+        951,
+        956
+      ],
+      "source": "controller"
+    },
+    {
+      "finding": "MarkedSemantics construction independently rechecks the full frozen marking. private_state/rebuild_tile then invoke full base/decorated reconstruction repeatedly.",
+      "lines": [
+        62,
+        69
+      ],
+      "source": "adapter"
+    },
+    {
+      "finding": "checked_marking reconstructs the original authority, full row0 projection certificates, evidence and marking definition, then rechecks authority. This is actual work, not a Source timing measurement. It is part of the current verification contract; bypassing it is not a caller-only optimization.",
+      "lines": [
+        153,
+        192
+      ],
+      "source": "verifier"
+    }
+  ],
+  "source_only": true,
+  "sources": {
+    "adapter": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "contract": {
+      "bytes": 26294,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/Source-contract-v1.json",
+      "sha256": "b6e97354241cb1f367575080011136344fa93311d9a55b089794d1754fbdecba"
+    },
+    "controller": {
+      "bytes": 77482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/channel4_stageC_cold_v1.py",
+      "sha256": "af02a6fd7e145c326eed47f1ddf1df7968ea52c5c470e01ab6a3d3ef5d71eb43"
+    },
+    "engine": {
+      "bytes": 56207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+    },
+    "handoff": {
+      "bytes": 16498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/handoff-v1.json",
+      "sha256": "5ce24c8df05bb6bd51929f1ec8382fe00e190dd759d4fd1937c20f5d8a462fd0"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    }
+  }
+}

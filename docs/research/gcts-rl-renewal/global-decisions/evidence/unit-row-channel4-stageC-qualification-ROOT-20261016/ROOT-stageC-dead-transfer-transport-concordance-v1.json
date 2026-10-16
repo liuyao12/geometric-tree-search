@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 46581,
+  "compressed_sha256": "5bbf45dffdb372224e7dd6496c9b71cc2c927161181126ae16f578eca4403274",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 62429,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/stageC-dead-transfer-owned-v1/engine-result.json",
+    "sha256": "2f634f8a755a21c5d086405c3f07ad48e1da76cf37e1d9025d5b5a254cf1bfa9"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 549900,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-expanded-result-v1.json",
+    "sha256": "08e4ab67233027923c88f09b15262286a38cc654813743ae88b948baffa82d6a"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 7991,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-qualification-ROOT-20261016/ROOT-stageC-dead-transfer-plan-v1.json",
+    "sha256": "55a2925434a95afcbb78d09ceee5342b4dd0a347b05d2529aa611a9f0980b03b"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}
