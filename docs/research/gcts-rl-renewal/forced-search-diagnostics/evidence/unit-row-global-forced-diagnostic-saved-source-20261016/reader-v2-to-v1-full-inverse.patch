@@ -1,0 +1,46 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py
+@@ -5,7 +5,7 @@
+ from pathlib import Path
+ HERE=Path(__file__).resolve().parent
+ EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/Source-contract-v1.json', 'sha256': '06e873d471df980c4c0f5591679090cf254cf94be02e992477a28c07f0652595', 'bytes': 47082}
+-VERSION='unit-row-global-forced-saved-diagnostic-reader-v2'
++VERSION='unit-row-global-forced-saved-diagnostic-reader-v1'
+ PURPOSE='unit-row-marked-aware-global-forced-dead-controls'
+ INVOCATION='global-forced-diagnostic-20261016-v1'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -13,7 +13,7 @@
+ LABELS=('GF_BEFORE_SEED_STATE_GROUP','GF_BEFORE_ENGINE_ROOT_GROUP','GF_BEFORE_SEARCH_SNAPSHOT_GROUP','GF_AFTER_SEARCH_SNAPSHOT_GROUP','GF_AFTER_ASSERTIONS_GROUP','GF_AFTER_OUTER_RESTORE_GROUP','GF_BEFORE_TRANSPORT_GROUP')
+ ROLES=('proposer','fallback','completion','validator')
+ ERROR_PREFIX=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: '
+-TICK_TIMEOUT_LINE=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\n'
++DEADLINE_LINE=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\n'
+ def need(value,reason):
+     if not value:raise ValueError('saved GF diagnostic: '+reason)
+ def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()
+@@ -109,13 +109,7 @@
+     peak=native['caller_kernel_peak_bytes'];need(type(peak)is int and peak==native['wait4_usage'][2]and 0<peak<=536870912,'whole owned peak512')
+     stderr=raw['meter-stderr.txt'];need(len(stderr)<=672+2200 and stderr.isascii(),'bounded ASCII diagnostic stderr')
+     samples=[];error_line=None;last=-1;marker_bytes=0
+-    stderr_lines=stderr.splitlines(keepends=True);trailing_stderr_fragment=b''
+-    if stderr_lines and not stderr_lines[-1].endswith(b'\n'):
+-        trailing_stderr_fragment=stderr_lines.pop()
+-        need(len(trailing_stderr_fragment)<=2200,'bounded final incomplete stderr fragment')
+-    # This final non-LF fragment remains raw ASCII only: no label, error or
+-    # timestamp is recognized from it. Complete lines keep their exact grammar.
+-    for line in stderr_lines:
++    for line in stderr.splitlines(keepends=True):
+         need(line.endswith(b'\n'),'whole stderr line LF')
+         if line.startswith(ERROR_PREFIX):
+             need(error_line is None and len(line)<=2200,'one separate bounded existing error line')
+@@ -188,9 +182,7 @@
+       'classification':classification,'plan':plan_ref,'authorization':plan['ROOT_authorization'],'source_contract':EXPECTED_CONTRACT,'sources':plan['sources'],'inputs':plan['inputs'],
+       'original_model_sources':contract['original_model_sources'],'original_model_inputs':contract['original_model_inputs'],'original_model_binding':contract['original_model_binding'],
+       'tool_bracket':bracket_ref,'native_evidence':refs,'terminal_exit_code':code,'all_reaped':True,'native_terminal_closed':True,'native_worker_lifetime_ns':terminal-start,'native_launch_to_postprobe_ns':probe-start,'aggregate_B_bytes':peak,'complete_Date_seconds':duration,
+-      'raw_stderr':refs['meter-stderr.txt'],'stderr_error_line':error_line,
+-      'stderr_uninterpreted_trailing_fragment':trailing_stderr_fragment.decode('ascii')if trailing_stderr_fragment else None,'stderr_trailing_fragment_bytes':len(trailing_stderr_fragment),'stderr_trailing_fragment_interpreted':False,
+-      'native_tick_timeout_line_observed':error_line==TICK_TIMEOUT_LINE.decode('ascii'),'caller_lifetime_at_least20':terminal-start>=20000000000,'failure_cause_established':False,
++      'raw_stderr':refs['meter-stderr.txt'],'stderr_error_line':error_line,'native_deadline_confirmed':stderr.endswith(DEADLINE_LINE)and terminal-start>=20000000000,
+       'phase_samples':samples,'phase_marker_wire_bytes':marker_bytes,'first_reached_boundary':samples[0]['label']if samples else None,'latest_reached_boundary':samples[-1]['label']if samples else None,'inclusive_group_intervals':intervals,
+       'original20_clock_context':clock_context,'latest_callback_entry_observations':slots,'diagnostic_status':diagnostic_status,'failure_diagnostic_files':diagnostic_refs,'raw_output_files':outputs,'raw_scientific_output_files':scientific_outputs,'owned_output_directory_exists':owned.exists(),
+       'successful_payload_requires_separate_reconciliation':code==0,'reader':buffer_pin(Path(__file__).resolve(),read_raw(Path(__file__).resolve(),1048576)),

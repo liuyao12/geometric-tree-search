@@ -1,0 +1,150 @@
+{
+  "edit_count": 13,
+  "edits": [
+    {
+      "label": "own_VERSION_SCOPE",
+      "new_end": 661,
+      "new_start": 556,
+      "new_utf8": "VERSION='unit-row-global-forced-diagnostic-cold-v1'\nSCOPE='unit-row-global-forced-diagnostic-cold-Source'",
+      "old_end": 673,
+      "old_start": 556,
+      "old_utf8": "VERSION='unit-row-decision-context-qualification-cold-v1'\nSCOPE='unit-row-decision-context-qualification-cold-Source'"
+    },
+    {
+      "label": "consumed_contract_schema",
+      "new_end": 33150,
+      "new_start": 33071,
+      "new_utf8": "contract['schema']=='unit-row-global-forced-diagnostic-cold-Source-contract-v1'",
+      "old_end": 33168,
+      "old_start": 33083,
+      "old_utf8": "contract['schema']=='unit-row-decision-context-qualification-cold-Source-contract-v1'"
+    },
+    {
+      "label": "fixed_global_flag_and_four_latest_slots",
+      "new_end": 51437,
+      "new_start": 51215,
+      "new_utf8": "    marking_raw = canonical(marking)\n    diagnostic_global = plan['purpose']=='unit-row-marked-aware-global-forced-dead-controls'\n    latest_callbacks = {'proposer':None,'fallback':None,'completion':None,'validator':None}\n",
+      "old_end": 51270,
+      "old_start": 51233,
+      "old_utf8": "    marking_raw = canonical(marking)\n"
+    },
+    {
+      "label": "latest_proposer_existing_native_sample",
+      "new_end": 53801,
+      "new_start": 53199,
+      "new_utf8": "        def proposer(**kw):\n            native_ns=tick()\n            if diagnostic_global:\n                diagnostic_row=kw.get('row')\n                diagnostic_state=kw.get('state')\n                diagnostic_selected=diagnostic_state.get('selected') if type(diagnostic_state) is dict else None\n                latest_callbacks['proposer']=('PROPOSER_NATIVE_STEP',\n                    diagnostic_row if type(diagnostic_row) is int and 0<=diagnostic_row<24 else -1,\n                    len(diagnostic_selected) if type(diagnostic_selected) is list and len(diagnostic_selected)<=24 else -1,native_ns)\n",
+      "old_end": 53089,
+      "old_start": 53032,
+      "old_utf8": "        def proposer(**kw):\n            native_ns=tick()\n"
+    },
+    {
+      "label": "latest_fallback_entry_native_sample",
+      "new_end": 55430,
+      "new_start": 54824,
+      "new_utf8": "        def filtered(**kw):\n            if diagnostic_global:\n                native_ns=tick()\n                diagnostic_row=kw.get('row')\n                diagnostic_state=kw.get('state')\n                diagnostic_selected=diagnostic_state.get('selected') if type(diagnostic_state) is dict else None\n                latest_callbacks['fallback']=('FALLBACK_NATIVE_STEP',\n                    diagnostic_row if type(diagnostic_row) is int and 0<=diagnostic_row<24 else -1,\n                    len(diagnostic_selected) if type(diagnostic_selected) is list and len(diagnostic_selected)<=24 else -1,native_ns)\n",
+      "old_end": 54140,
+      "old_start": 54112,
+      "old_utf8": "        def filtered(**kw):\n"
+    },
+    {
+      "label": "latest_completion_entry_native_sample",
+      "new_end": 56365,
+      "new_start": 55754,
+      "new_utf8": "        def certifier(**kw):\n            if diagnostic_global:\n                native_ns=tick()\n                diagnostic_row=kw.get('row')\n                diagnostic_state=kw.get('state')\n                diagnostic_selected=diagnostic_state.get('selected') if type(diagnostic_state) is dict else None\n                latest_callbacks['completion']=('COMPLETION_NATIVE_STEP',\n                    diagnostic_row if type(diagnostic_row) is int and 0<=diagnostic_row<24 else -1,\n                    len(diagnostic_selected) if type(diagnostic_selected) is list and len(diagnostic_selected)<=24 else -1,native_ns)\n",
+      "old_end": 54493,
+      "old_start": 54464,
+      "old_utf8": "        def certifier(**kw):\n"
+    },
+    {
+      "label": "phase_before_seed_state_group",
+      "new_end": 61140,
+      "new_start": 60821,
+      "new_utf8": "    def global_family():\n        phase_native_ns=tick()\n        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n            raise ValueError('bounded original native phase sample')\n        print('GF_BEFORE_SEED_STATE_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n        tick()\n",
+      "old_end": 58974,
+      "old_start": 58949,
+      "old_utf8": "    def global_family():\n"
+    },
+    {
+      "label": "phase_before_engine_root_group",
+      "new_end": 61624,
+      "new_start": 61232,
+      "new_utf8": "        phase_native_ns=tick()\n        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n            raise ValueError('bounded original native phase sample')\n        print('GF_BEFORE_ENGINE_ROOT_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n        tick()\n        handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()\n",
+      "old_end": 59163,
+      "old_start": 59066,
+      "old_utf8": "        handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()\n"
+    },
+    {
+      "label": "phase_around_whole_search_snapshot_compound",
+      "new_end": 62454,
+      "new_start": 61756,
+      "new_utf8": "        try:\n            phase_native_ns=tick()\n            if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n                raise ValueError('bounded original native phase sample')\n            print('GF_BEFORE_SEARCH_SNAPSHOT_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n            tick()\n            result=e.search();after=snapshot(e)\n            phase_native_ns=tick()\n            if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n                raise ValueError('bounded original native phase sample')\n            print('GF_AFTER_SEARCH_SNAPSHOT_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n            tick()\n",
+      "old_end": 59356,
+      "old_start": 59295,
+      "old_utf8": "        try:\n            result=e.search();after=snapshot(e)\n"
+    },
+    {
+      "label": "phase_after_assertions_before_existing_finally",
+      "new_end": 64997,
+      "new_start": 64568,
+      "new_utf8": "                 and not any(v['kind']=='EXCLUDE' for v in result['events']),'forced exhaustion full root restore')\n            phase_native_ns=tick()\n            if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n                raise ValueError('bounded original native phase sample')\n            print('GF_AFTER_ASSERTIONS_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n            tick()\n",
+      "old_end": 61586,
+      "old_start": 61470,
+      "old_utf8": "                 and not any(v['kind']=='EXCLUDE' for v in result['events']),'forced exhaustion full root restore')\n"
+    },
+    {
+      "label": "phase_after_existing_outer_restore_and_case_statement",
+      "new_end": 65553,
+      "new_start": 65162,
+      "new_utf8": "        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')\n        phase_native_ns=tick()\n        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n            raise ValueError('bounded original native phase sample')\n        print('GF_AFTER_OUTER_RESTORE_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n        tick()\n",
+      "old_end": 61846,
+      "old_start": 61751,
+      "old_utf8": "        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')\n"
+    },
+    {
+      "label": "outer_exact_TimeoutError_existing_failure55_writer",
+      "new_end": 79579,
+      "new_start": 77082,
+      "new_utf8": "    if diagnostic_global:\n        diagnostic_run=Path(plan['output_directory'])\n        need(diagnostic_run.is_absolute() and diagnostic_run==diagnostic_run.resolve()\n             and not diagnostic_run.exists(),'fresh canonical global diagnostic output before delegation')\n        diagnostic_path=str(diagnostic_run)\n        diagnostic_context=canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],\n            'plan':raw_pin(plan_raw),'source_contract':plan['source_contract'],\n            'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,\n            'joint_began_ns':EARLY_G,'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})\n        need(type(diagnostic_context) is bytes and len(diagnostic_context)<=65536,'bounded predelegation diagnostic context')\n        failure_writer=save_failure_diagnostic\n        failure_writer_state=anchor_fn(failure_writer)\n        controls_timeout_type=TimeoutError\n        try:\n            call(handlers[plan['purpose']])\n        except BaseException as control_error:\n            if type(control_error) is controls_timeout_type:\n                try:\n                    if (save_failure_diagnostic is not failure_writer\n                            or type(failure_writer) is not types.FunctionType\n                            or failure_writer.__code__ is not failure_writer_state[1]\n                            or failure_writer.__globals__ is not failure_writer_state[2]\n                            or failure_writer.__defaults__ is not failure_writer_state[3]\n                            or failure_writer.__kwdefaults__ is not failure_writer_state[4]\n                            or failure_writer.__closure__ is not None\n                            or tuple((k,id(v)) for k,v in sorted((failure_writer.__kwdefaults__ or {}).items()))\n                                != tuple((k,token) for k,token,value in failure_writer_state[6])\n                            or any(failure_writer.__kwdefaults__[k] is not value\n                                   for k,token,value in failure_writer_state[6])):\n                        raise RuntimeError('original captured builtin-only failure writer changed')\n                    failure_writer(diagnostic_path,diagnostic_context,latest_callbacks,\n                        'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)\n                except BaseException:\n                    pass\n            raise\n    else:\n        call(handlers[plan['purpose']])\n",
+      "old_end": 73411,
+      "old_start": 73375,
+      "old_utf8": "    call(handlers[plan['purpose']])\n"
+    },
+    {
+      "label": "global_only_phase_before_transport",
+      "new_end": 82053,
+      "new_start": 81675,
+      "new_utf8": "    if diagnostic_global:\n        phase_native_ns=tick()\n        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:\n            raise ValueError('bounded original native phase sample')\n        print('GF_BEFORE_TRANSPORT_GROUP',phase_native_ns,file=sys.stderr,flush=True)\n        tick()\n    result_raw=call(encode_result_transport,(result_raw,))\n",
+      "old_end": 75566,
+      "old_start": 75507,
+      "old_utf8": "    result_raw=call(encode_result_transport,(result_raw,))\n"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "patches": [
+    {
+      "bytes": 13029,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/parent-to-current-forward.patch",
+      "sha256": "0b4572735af762544fd0832bc7bf554a79fe27a0684a41b814d70644ee4a1655"
+    },
+    {
+      "bytes": 13029,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/current-to-parent-full-inverse.patch",
+      "sha256": "545373b4797d4bed2c0794c854682ab845c8bfafeeb7ba1ada73564234854330"
+    }
+  ],
+  "schema": "unit-row-global-forced-diagnostic-cold-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 84646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py",
+    "sha256": "28953cad70c4d51c9e18be583c2a3d95356676763f73bb580d28e48603b75608"
+  },
+  "source_only": true,
+  "whole_AST_inverse_verified": true
+}

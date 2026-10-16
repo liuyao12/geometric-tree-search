@@ -1,0 +1,30 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "findings": {
+    "bytes": 29150,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-independent-source-20261016/findings-v1.json",
+    "sha256": "e938c463c21608791e79af5312cbfa3baf75b42b3dc636b5d6e50c0ee55d9e17"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-global-forced-diagnostic-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-global-forced-diagnostic-cold-Source",
+  "source": {
+    "bytes": 84646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py",
+    "sha256": "28953cad70c4d51c9e18be583c2a3d95356676763f73bb580d28e48603b75608"
+  },
+  "source_contract": {
+    "bytes": 47082,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "06e873d471df980c4c0f5591679090cf254cf94be02e992477a28c07f0652595"
+  },
+  "source_only": true,
+  "summary": "Genuine conditional whole Source pass;14checks/13rawinverse+twoactualpatches. Preserved full science/17helpers/writer/nativeguards,7bounded charged sites and4entry slots, exact late capturedwriter/token guards and no late project/mathcalls. No concrete blocker. Diagnostics do not qualify cases/resources/proof; partial absence/catch boundaries explicit. No scientific execution.",
+  "typed_source_review": {
+    "bytes": 7163,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "3443fc418322f2292b9c2be3cc5b357db5862aae761304db97c147a9a1b2d328"
+  }
+}

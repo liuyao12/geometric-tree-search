@@ -1,0 +1,30 @@
+{
+  "authorization": {
+    "bytes": 9243,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-ROOT-20261016/ROOT-GF-authorization-v1.json",
+    "sha256": "97d3631d5a356b627f062a50621b4361bb5de59f2667a5c0e3e69391c2af995f"
+  },
+  "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-ROOT-20261016/GF-external-v1",
+  "meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "old_failures_retained": true,
+  "once_helper": {
+    "bytes": 4357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+    "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+  },
+  "only_one_new_diagnostic_actual": true,
+  "other_five_rerun": false,
+  "plan": {
+    "bytes": 8935,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-ROOT-20261016/ROOT-GF-plan-v1.json",
+    "sha256": "170d4fde06bc17ffe261072585ca777f9239629e25fc25cff4c907d38094bc48"
+  },
+  "saved_reader_execution_requires_whole_root_and_peer_review": true,
+  "schema": "ROOT-global-forced-diagnostic-preflight-v1",
+  "scientific_calls": 0,
+  "source_changed": true
+}

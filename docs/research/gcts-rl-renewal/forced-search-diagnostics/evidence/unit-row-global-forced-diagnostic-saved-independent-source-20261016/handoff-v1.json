@@ -1,0 +1,27 @@
+{
+  "findings": {
+    "bytes": 3615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "9fbef8673565615964ad255440f4bdf83d85b8230d6bc5316aa87c66d541bfc5"
+  },
+  "schema": "unit-row-global-forced-diagnostic-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+    "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+  },
+  "source_contract": {
+    "bytes": 22344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "4d27c50870a746950881bf92e9e3d1402b9924d4a4466490e4fd588953832cf9"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "typed_review": {
+    "bytes": 2338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "477c01c5d8fef127bfec0430dabd1e3650b19dcf936e66152bde0217ada29e65"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "reviewer_identity": "Distinct reviewer determines",
+    "schema": "unit-row-global-forced-diagnostic-saved-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-global-forced-diagnostic-saved-Source",
+    "source": {
+      "bytes": 22540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+      "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+    },
+    "source_contract": {
+      "bytes": 22344,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-contract-v1.json",
+      "sha256": "4d27c50870a746950881bf92e9e3d1402b9924d4a4466490e4fd588953832cf9"
+    },
+    "source_only": true,
+    "source_review_passed": "Only genuine distinct whole Source/contract reviewer determines",
+    "sources": {
+      "reader": {
+        "bytes": 22540,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+        "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+      }
+    }
+  },
+  "actual_unified_patches": {
+    "addition_forward": {
+      "bytes": 22948,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/reader-addition-forward.patch",
+      "sha256": "370371a12f1b9bad7882e8b45dd3960143aa25ab6a9bd781e575e3a8cb85c5b8"
+    },
+    "addition_full_inverse": {
+      "bytes": 22948,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/reader-addition-full-inverse.patch",
+      "sha256": "3c362b595dc7473ad890147ae1bea14909f60c537e6f5ff238fa693a21aeb81a"
+    }
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 3508,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/author-static-v1.json",
+    "sha256": "76c40ac0e0bb67c3a3da953a40da78a6e6a13ecd9fb66a01444587fa01867fff"
+  },
+  "authorship": "Arithmetic authors reader and prior saved helpers plus engine13/router/adapter/c354 dependencies. Controls authors the diagnostic cold caller/new proposer/decorator. Diagnosis authors proposal and8f7a/9fd6, independently reviews current caller/reader. Root owns grants/actuals/saved reader execution/publication. Static author checks are not distinct review or scientific acceptance.",
+  "caller_source": {
+    "bytes": 84646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py",
+    "sha256": "28953cad70c4d51c9e18be583c2a3d95356676763f73bb580d28e48603b75608"
+  },
+  "caller_source_contract": {
+    "bytes": 47082,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "06e873d471df980c4c0f5591679090cf254cf94be02e992477a28c07f0652595"
+  },
+  "compile_calls": 0,
+  "flags": {
+    "GCTS_advantage_claimed": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "exhaustion_accepted": false,
+    "logical_proof_accepted": false,
+    "marking_activated": false,
+    "qualification_accepted": false,
+    "restoration_accepted": false,
+    "scientific_replay": false,
+    "trajectory_accepted": false
+  },
+  "helper_executions": 0,
+  "py_compile_calls": 0,
+  "remaining_gates": [
+    "Distinct whole current reader/contract and Root Source review before Root copies/executes this reader.",
+    "Root alone owns new once actual under unchanged20/512/55/60/90+1 and current Source14/input8/original17 epoch.",
+    "Any successful scientific payload requires a separately reviewed complete saved reconciliation; this diagnostic reader never qualifies it."
+  ],
+  "saved_output_decodes": 0,
+  "schema": "unit-row-global-forced-diagnostic-saved-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-global-forced-diagnostic-saved-Source",
+  "source": {
+    "bytes": 22540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+    "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+  },
+  "source_contract": {
+    "bytes": 22344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "4d27c50870a746950881bf92e9e3d1402b9924d4a4466490e4fd588953832cf9"
+  },
+  "source_delta": {
+    "bytes": 25497,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "5291c5a3cfedfe31741b88c0e1a0c4a65ed409402d0f505bec33b6ebcf1eeabe"
+  },
+  "source_only": true,
+  "sources": {
+    "reader": {
+      "bytes": 22540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+      "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+    }
+  },
+  "status": "SOURCE_ONLY_READER_NOT_EXECUTED"
+}

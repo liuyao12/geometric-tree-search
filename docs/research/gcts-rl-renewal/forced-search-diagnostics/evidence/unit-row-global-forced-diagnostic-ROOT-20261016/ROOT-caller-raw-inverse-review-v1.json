@@ -1,0 +1,34 @@
+{
+  "Root_read_all_added_regions_and_whole_parent_Source": true,
+  "all_original_global_need_assertions_AST_exact": true,
+  "all_semantic_maps_inputs_limits_cases_exact": true,
+  "compile_without_evaluation": true,
+  "contract_review_or_actual_authorization_supplied": false,
+  "current13_delegated_sources_original17_input2_verified": true,
+  "delta": {
+    "bytes": 12541,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "65a6f461976855c6e6b022be51c24b1decae5a5384f94ec2402a830a90a252a2"
+  },
+  "direct_nested32_raw_AST_exact": true,
+  "exact13region_full_raw_and_actual_patch_inverse": true,
+  "existing_failure_writer_raw_exact": true,
+  "original_native_exit_and_top_level_failure_suffix_raw_exact": true,
+  "parent": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "schema": "ROOT-global-forced-diagnostic-raw-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "seven_unique_fixed_marker_sites": true,
+  "source": {
+    "bytes": 84646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py",
+    "sha256": "28953cad70c4d51c9e18be583c2a3d95356676763f73bb580d28e48603b75608"
+  },
+  "source_only": true,
+  "top17_helpers_raw_AST_exact": true,
+  "two_classes_raw_exact": true
+}

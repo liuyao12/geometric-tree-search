@@ -1,0 +1,101 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "changed_functions": [
+    "main"
+  ],
+  "checks": [
+    {
+      "name": "exact_immutable_parent_current_raw_pins",
+      "passed": true
+    },
+    {
+      "name": "AST_only_no_compile_or_evaluation",
+      "passed": true
+    },
+    {
+      "name": "full_four_region_raw_forward_and_inverse",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_patch_both_directions_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_AST_inverse_exact",
+      "passed": true
+    },
+    {
+      "name": "only_main_function_changes_all_helpers_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "all_complete_line_parser_grammar_order_native_checks_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_plan_grant_source_native_session_once_prefix_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_optional_failure_pair_scalar_context_block_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "bounded_final_nonLF_fragment_uninterpreted_only",
+      "passed": true
+    },
+    {
+      "name": "old_deadline_cause_field_absent",
+      "passed": true
+    },
+    {
+      "name": "timeout_line_and_lifetime_observations_separate_causeFalse",
+      "passed": true
+    },
+    {
+      "name": "caller_contract_maps_binding_limits_unchanged",
+      "passed": true
+    },
+    {
+      "name": "all_authority_maps_literal_equal_frozen_V1_and_current_caller_contract",
+      "passed": true
+    },
+    {
+      "name": "no_reader_helper_outputdecode_model_clock_actual_or_py_compile",
+      "passed": true
+    }
+  ],
+  "compile_calls": 0,
+  "py_compile_calls": 0,
+  "reader_functions_executed": 0,
+  "saved_output_decodes": 0,
+  "schema": "unit-row-global-forced-diagnostic-saved-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 23290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v2.py",
+    "sha256": "7f77ab7b2ac03ea3053d256f1a89773c70c314ae0402d28e288700a57155f1d6"
+  },
+  "source_delta": {
+    "bytes": 4033,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-delta-v2.json",
+    "sha256": "f237e25eaed54d03f4b889113e9b529d7b05514ebaa4d16100e9dce34f711d49"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "unchanged_functions_raw_AST": [
+    "need",
+    "canonical",
+    "unique",
+    "reject",
+    "finite",
+    "decode",
+    "buffer_pin",
+    "read_raw",
+    "pinned",
+    "saved_json",
+    "exact_int",
+    "same"
+  ]
+}

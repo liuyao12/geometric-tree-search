@@ -1,0 +1,108 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 21,
+  "checks": [
+    {
+      "name": "AST_compile_only_no_evaluation",
+      "passed": true
+    },
+    {
+      "name": "all_scientific_roles_input8_original17_input2_epoch_limits_cases_exact",
+      "passed": true
+    },
+    {
+      "name": "all13_sequential_full_byte_forward_inverse_AST_erasure",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_forward_full_inverse",
+      "passed": true
+    },
+    {
+      "name": "all17_top_helpers_including_writer_invoke_anchors_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_ObservedCursor_and_ChildControlInterruption_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "all_other32_direct_nested_functions_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_positive_encode_to_native_exit_and_failure_tail_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_original_top_exception_stderr_exit_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "existing_search_snapshot_compound_and_finally_outer_rollback_intact",
+      "passed": true
+    },
+    {
+      "name": "no_new_clock_import_or_framework",
+      "passed": true
+    },
+    {
+      "name": "seven_fixed_signed64_checked_direct_native_tick_print_tick_sites",
+      "passed": true
+    },
+    {
+      "name": "all_seven_marker_ancestries_outside_loop_handler_finally",
+      "passed": true
+    },
+    {
+      "name": "proposer_original_delegation_once_kwargs_return_identity_preserved",
+      "passed": true
+    },
+    {
+      "name": "filtered_original_delegation_once_kwargs_return_identity_preserved",
+      "passed": true
+    },
+    {
+      "name": "certifier_original_delegation_once_kwargs_return_identity_preserved",
+      "passed": true
+    },
+    {
+      "name": "four_fixed_slots_no_added_semantic_snapshot_model_sampling",
+      "passed": true
+    },
+    {
+      "name": "outer_failure_catch_after_original_call_invoke_finally",
+      "passed": true
+    },
+    {
+      "name": "late_path_only_plain_builtins_and_existing_captured_failure_writer",
+      "passed": true
+    },
+    {
+      "name": "writer_kwdefault_key_identity_and_value_token_checks_literal",
+      "passed": true
+    },
+    {
+      "name": "all_raw_mathematical_source_input_capsules_exact",
+      "passed": true,
+      "unique_paths": 32
+    }
+  ],
+  "independent_review": false,
+  "native_fit": "UNMEASURED",
+  "runtime_executed": false,
+  "schema": "unit-row-global-forced-diagnostic-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 84646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py",
+    "sha256": "28953cad70c4d51c9e18be583c2a3d95356676763f73bb580d28e48603b75608"
+  },
+  "source_delta": {
+    "bytes": 12541,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "65a6f461976855c6e6b022be51c24b1decae5a5384f94ec2402a830a90a252a2"
+  },
+  "source_only": true
+}

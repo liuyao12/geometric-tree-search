@@ -1,0 +1,23 @@
+{
+  "actual_invocations": 1,
+  "actual_restarted": false,
+  "author_metadata_exit_code": 130,
+  "author_metadata_sessions_interrupted": [
+    82858,
+    31795
+  ],
+  "live_scientific_processes": 0,
+  "read_only_stack_sample_session": 12062,
+  "reader_restarted": false,
+  "reader_wait_interpretation": "Reader was observed live and later completed; no scientific run repeated. No file-I/O cause inferred from last output or sampling.",
+  "saved_reader_invocations": 1,
+  "saved_reader_reaped": true,
+  "saved_reader_session": 13874,
+  "saved_reader_terminal_exit": 0,
+  "schema": "ROOT-global-forced-diagnostic-process-closure-v1",
+  "scientific_session": 27307,
+  "scientific_session_reaped": true,
+  "scientific_session_terminal_exit": 2,
+  "stack_sample_reaped": true,
+  "stack_sample_terminal_exit": 0
+}

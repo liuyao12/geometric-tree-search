@@ -1,0 +1,71 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "blockers": [
+    {
+      "finding": "Every splitlines fragment must end LF, but the frozen caller stderr policy permits an optional partial final line. A bounded trailing fragment must be preserved only as uninterpreted raw diagnostics, without sample/error/phase inference. Complete-line grammar/order/native joins must remain strict.",
+      "id": "GF-SAVED-PARTIAL-TAIL-1",
+      "lines": [
+        112,
+        124
+      ],
+      "severity": "blocks_current_contract_conformance"
+    },
+    {
+      "caller_lines": [
+        351,
+        360
+      ],
+      "finding": "native_deadline_confirmed combines a shared native tick TimeoutError line with total terminal lifetime. The same tick error message covers cancellation, original time window and 500MiB reserve; late failure-only writing follows the throw. These observations cannot establish the cause or throw time. Preserve separate literal message-observed and caller-lifetime fields, diagnostic-only.",
+      "id": "GF-SAVED-DEADLINE-ATTRIBUTION-1",
+      "lines": [
+        185
+      ],
+      "severity": "blocks_honest_diagnostic_interpretation"
+    }
+  ],
+  "caller_source": {
+    "bytes": 84646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py",
+    "sha256": "28953cad70c4d51c9e18be583c2a3d95356676763f73bb580d28e48603b75608"
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "not_performed": [
+    "Source evaluation",
+    "helper execution",
+    "actual output decoding",
+    "semantic replay",
+    "project imports or calls",
+    "clocks",
+    "tests",
+    "actuals",
+    "py_compile"
+  ],
+  "positive_scope": [
+    "Whole Source is saved raw JSON/ASCII metadata only; stdlib imports and no scientific module evaluation.",
+    "Same-buffer bounded regular native reads, raw capsule SHA/size/EOF, fixed plan/purpose/runtime/grant/reviews and current14/input8/original17/input2 joins.",
+    "Exact complete failure two-file hash/bytes/LF/context/native-window/four-slot joins; malformed complete pair may remain failclosed.",
+    "Fixed complete marker labels/canonical decimal/order/subsequence/int64/source/native checks; all positive case/proof/restore/exhaustion/resource flags remain false.",
+    "Exit0 raw scientific output is opaque and requires separate complete qualification reconciliation."
+  ],
+  "requested_successor": "Additive V2 preserving V1 bytes/contract; no decoder/helper execution by reviewer.",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-global-forced-diagnostic-saved-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+    "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+  },
+  "source_contract": {
+    "bytes": 22344,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "4d27c50870a746950881bf92e9e3d1402b9924d4a4466490e4fd588953832cf9"
+  },
+  "source_only": true,
+  "whole_source_read": true
+}

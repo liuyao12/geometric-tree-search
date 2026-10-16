@@ -1,0 +1,84 @@
+{
+  "actual_patch_forward_exact": true,
+  "actual_patch_inverse_exact": true,
+  "actual_unified_patches": {
+    "forward": {
+      "bytes": 4944,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/reader-v1-to-v2-forward.patch",
+      "sha256": "361b60cdd5548aa2dfe6c8775387bba7bb33745037b2e5bf7f167a3e32404265"
+    },
+    "full_inverse": {
+      "bytes": 4944,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/reader-v2-to-v1-full-inverse.patch",
+      "sha256": "76723f86617db9448dcad8567bf3d6333fa83519f4227a7e7a7225bb79a77eb4"
+    }
+  },
+  "changed_functions": [
+    "main"
+  ],
+  "edits": [
+    {
+      "new": "VERSION='unit-row-global-forced-saved-diagnostic-reader-v2'\n",
+      "new_end": 614,
+      "new_start": 554,
+      "old": "VERSION='unit-row-global-forced-saved-diagnostic-reader-v1'\n",
+      "old_end": 614,
+      "old_start": 554
+    },
+    {
+      "new": "TICK_TIMEOUT_LINE=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\\n'\n",
+      "new_end": 1404,
+      "new_start": 1270,
+      "old": "DEADLINE_LINE=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\\n'\n",
+      "old_end": 1400,
+      "old_start": 1270
+    },
+    {
+      "new": "    stderr_lines=stderr.splitlines(keepends=True);trailing_stderr_fragment=b''\n    if stderr_lines and not stderr_lines[-1].endswith(b'\\n'):\n        trailing_stderr_fragment=stderr_lines.pop()\n        need(len(trailing_stderr_fragment)<=2200,'bounded final incomplete stderr fragment')\n    # This final non-LF fragment remains raw ASCII only: no label, error or\n    # timestamp is recognized from it. Complete lines keep their exact grammar.\n    for line in stderr_lines:\n",
+      "new_end": 11693,
+      "new_start": 11221,
+      "old": "    for line in stderr.splitlines(keepends=True):\n",
+      "old_end": 11267,
+      "old_start": 11217
+    },
+    {
+      "new": "      'raw_stderr':refs['meter-stderr.txt'],'stderr_error_line':error_line,\n      'stderr_uninterpreted_trailing_fragment':trailing_stderr_fragment.decode('ascii')if trailing_stderr_fragment else None,'stderr_trailing_fragment_bytes':len(trailing_stderr_fragment),'stderr_trailing_fragment_interpreted':False,\n      'native_tick_timeout_line_observed':error_line==TICK_TIMEOUT_LINE.decode('ascii'),'caller_lifetime_at_least20':terminal-start>=20000000000,'failure_cause_established':False,\n",
+      "new_end": 21191,
+      "new_start": 20701,
+      "old": "      'raw_stderr':refs['meter-stderr.txt'],'stderr_error_line':error_line,'native_deadline_confirmed':stderr.endswith(DEADLINE_LINE)and terminal-start>=20000000000,\n",
+      "old_end": 20441,
+      "old_start": 20275
+    }
+  ],
+  "parent": {
+    "bytes": 22540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+    "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+  },
+  "raw_forward_exact": true,
+  "raw_inverse_exact": true,
+  "schema": "unit-row-global-forced-diagnostic-saved-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 23290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v2.py",
+    "sha256": "7f77ab7b2ac03ea3053d256f1a89773c70c314ae0402d28e288700a57155f1d6"
+  },
+  "source_only": true,
+  "unchanged_functions_raw_AST": [
+    "need",
+    "canonical",
+    "unique",
+    "reject",
+    "finite",
+    "decode",
+    "buffer_pin",
+    "read_raw",
+    "pinned",
+    "saved_json",
+    "exact_int",
+    "same"
+  ],
+  "whole_AST_inverse_exact": true
+}

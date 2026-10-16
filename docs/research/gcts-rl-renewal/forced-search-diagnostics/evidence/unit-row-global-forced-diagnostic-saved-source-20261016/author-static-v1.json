@@ -1,0 +1,126 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "checks": [
+    {
+      "name": "exact_current_caller_contract_and_source_raw_pins",
+      "passed": true
+    },
+    {
+      "name": "AST_parse_only_no_compile_or_evaluation",
+      "passed": true
+    },
+    {
+      "name": "stdlib_metadata_import_allowlist_only",
+      "passed": true
+    },
+    {
+      "name": "no_exec_eval_compile_dynamic_import_model_or_clock_calls",
+      "passed": true
+    },
+    {
+      "name": "complete_addition_raw_forward_inverse",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_addition_and_full_inverse_apply",
+      "passed": true
+    },
+    {
+      "name": "all7_marker_labels_exact_current_caller_source_order",
+      "passed": true
+    },
+    {
+      "name": "exact4_scalar_slots_and_uninstrumented_validator_None",
+      "passed": true
+    },
+    {
+      "name": "strict_plan12_current14_input8_original17_input2_binding_authority",
+      "passed": true
+    },
+    {
+      "name": "all_current_original_and_input_raw_caps_verified",
+      "passed": true
+    },
+    {
+      "name": "Root_grant_reviews_once_native2_terminal_sessions_wait4_probe_Date_55_512_join",
+      "passed": true
+    },
+    {
+      "name": "strict_marker_ASCII_canonical_int64_ordered_subsequence_672_cap",
+      "passed": true
+    },
+    {
+      "name": "separate_existing_error_line_no_phase_or_cost_attribution",
+      "passed": true
+    },
+    {
+      "name": "complete_diagnostic_two_file_LF_hash_context_and_scalar_checks",
+      "passed": true
+    },
+    {
+      "name": "absent_incomplete_writer_preserved_not_zero_or_success",
+      "passed": true
+    },
+    {
+      "name": "same_native_clock_original20_bounds_when_complete_context_available",
+      "passed": true
+    },
+    {
+      "name": "all_qualification_proof_restore_exhaustion_and_active_frame_inference_rejected",
+      "passed": true
+    },
+    {
+      "name": "scientific_output_opaque_refs_only_separate_complete_reconciliation_required",
+      "passed": true
+    },
+    {
+      "name": "no_Root_actual_folder_write_or_output_decode_or_helper_execution",
+      "passed": true
+    }
+  ],
+  "compile_calls": 0,
+  "import_allowlist": [
+    "hashlib",
+    "json",
+    "math",
+    "os",
+    "stat",
+    "sys",
+    "re",
+    "pathlib"
+  ],
+  "py_compile_calls": 0,
+  "reader_functions_executed": 0,
+  "saved_output_decodes": 0,
+  "schema": "unit-row-global-forced-diagnostic-saved-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v1.py",
+    "sha256": "4092c6869f028f09d7dbeee754894b41a7c3848fc71ca2f2a7ccc46b89d11f3e"
+  },
+  "source_delta": {
+    "bytes": 25497,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "5291c5a3cfedfe31741b88c0e1a0c4a65ed409402d0f505bec33b6ebcf1eeabe"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "static_scope": "Checks of Source structure/literals/raw bytes only; no fixture execution or runtime acceptance.",
+  "top_level_functions": [
+    "need",
+    "canonical",
+    "unique",
+    "reject",
+    "finite",
+    "decode",
+    "buffer_pin",
+    "read_raw",
+    "pinned",
+    "saved_json",
+    "exact_int",
+    "same",
+    "main"
+  ]
+}

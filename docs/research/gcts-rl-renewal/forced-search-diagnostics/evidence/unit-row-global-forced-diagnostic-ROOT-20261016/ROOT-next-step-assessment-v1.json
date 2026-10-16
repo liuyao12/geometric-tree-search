@@ -1,0 +1,38 @@
+{
+  "Root_read_whole_proposal": true,
+  "Source_finding_verified_by_Root": [
+    "marked_unit_row_adapter_v1.py base_state lines86-103 freshly checks base projection and returns tuple0",
+    "private_state lines125-129 immediately repeats that original state validation before separate independent marked-state verification",
+    "independent_unit_row_missing_mark_checker_v2.py private_state lines100-148 returns complete literal state/totals/mark/keysets/collision names; equality/idempotence and copy boundaries require exact successor review"
+  ],
+  "Source_proposal": {
+    "bytes": 11787,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-next-step-proposal-source-20261016/independent-proposal-v1.json",
+    "sha256": "f34f01cf6b2be56639c9d72ae8b41537578c25f25feb5097367689ed9f4db647"
+  },
+  "bottleneck_attribution": false,
+  "diagnostic_scope": "Authenticated fixed boundary writes and latest entry scalars only. Group intervals are inclusive; no active-frame, completed callback, move, restoration, exhaustion or proof inference.",
+  "historical_control_count": {
+    "inherited_by_diagnostic": false,
+    "qualified": 10,
+    "required": 12
+  },
+  "implementation_performed": false,
+  "measured_benefit": false,
+  "new_actual_authorized": false,
+  "new_qualification": false,
+  "next_action_selected": "Review a new adapter-only private fresh base projection helper returning the complete already checked tuple, keeping public projection data, independent marked-state/degree checks and all native/reference scheduler/rollback semantics.",
+  "readout": {
+    "bytes": 22051,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-ROOT-20261016/ROOT-GF-diagnostic-readout-v1.json",
+    "sha256": "27ae146ec22f8673084dc396e7b2c59872613515eb1eb996082fe52093e65d6a"
+  },
+  "requirements": [
+    "Original17/input2/semantic epoch and full candidate universe unchanged.",
+    "No cross-call cache, hidden warming, proposer/checker data sharing, target proof word or supplied move.",
+    "Keep full type/preimage/collision/marking/read/generation/rollback checks and all six control scopes/twelve scientific meanings.",
+    "New Source/composite/version/receipt coupling and genuine independent reviews before any fresh once grants.",
+    "Keep original20/512/55/60/90+1 and all historical failures; do not count current10of12 for changed Sources without new qualification."
+  ],
+  "schema": "ROOT-global-forced-diagnostic-next-step-assessment-v1"
+}

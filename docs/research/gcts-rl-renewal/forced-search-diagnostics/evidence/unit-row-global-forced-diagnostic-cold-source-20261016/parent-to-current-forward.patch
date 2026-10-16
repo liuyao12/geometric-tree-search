@@ -1,0 +1,185 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/global_forced_diagnostic_cold_v1.py
+@@ -24,8 +24,8 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-decision-context-qualification-cold-v1'
+-SCOPE='unit-row-decision-context-qualification-cold-Source'
++VERSION='unit-row-global-forced-diagnostic-cold-v1'
++SCOPE='unit-row-global-forced-diagnostic-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ QUALIFICATION_CASES_BY_PURPOSE={'unit-row-marked-aware-child-UNKNOWN-controls': ['MR-11-actual-child-native-first-declared-UNKNOWN', 'MR-12-UNKNOWN-no-exclusion-full-owned-rollback'], 'unit-row-marked-aware-global-forced-dead-controls': ['MR-03-global-forced-requery-dead-exhaustion', 'MR-04-owned-full-root-restoration'], 'unit-row-marked-aware-router-protocol-controls': ['MR-01-new-and-legacy-route-consumption', 'MR-02-wrong-route-and-context-rejected'], 'unit-row-marked-aware-short-EOF-controls': ['MR-09-real-short-stream-and-fresh-complete-keySET', 'MR-10-legacy-implication-EOF-remains-unaccepted'], 'unit-row-marked-aware-singleton-transfer-controls': ['MR-05-native-singleton-full-origin-transfer', 'MR-06-current-sole-consumption-and-owned-rollback'], 'unit-row-marked-aware-two-transfer-controls': ['MR-07-native-TWO-full-origin-transfer', 'MR-08-refreshed-witnesses-global-branch-and-owned-rollback']}
+@@ -377,7 +377,7 @@
+     read_pinned(plan['runtime'])
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='unit-row-decision-context-qualification-cold-Source-contract-v1'
++    need(contract['schema']=='unit-row-global-forced-diagnostic-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -639,6 +639,8 @@
+     degree_router = modules['degree_router']
+     need(degree_router.VERSION == 'unit-row-channel4-marked-degree-router-v1', 'frozen degree router')
+     marking_raw = canonical(marking)
++    diagnostic_global = plan['purpose']=='unit-row-marked-aware-global-forced-dead-controls'
++    latest_callbacks = {'proposer':None,'fallback':None,'completion':None,'validator':None}
+ 
+     def routed(language):
+         return degree_router.RoutedMarkedSemantics(point_semantics=marked_semantics(language),
+@@ -677,6 +679,13 @@
+         log.update(queries=[],original_cursors=[],marked_cursors=[],covers=[],interruptions=[])
+         def proposer(**kw):
+             native_ns=tick()
++            if diagnostic_global:
++                diagnostic_row=kw.get('row')
++                diagnostic_state=kw.get('state')
++                diagnostic_selected=diagnostic_state.get('selected') if type(diagnostic_state) is dict else None
++                latest_callbacks['proposer']=('PROPOSER_NATIVE_STEP',
++                    diagnostic_row if type(diagnostic_row) is int and 0<=diagnostic_row<24 else -1,
++                    len(diagnostic_selected) if type(diagnostic_selected) is list and len(diagnostic_selected)<=24 else -1,native_ns)
+             if interrupt and len(kw['state']['selected'])>initial_count:
+                 log['interruptions'].append({'kind':'DECLARED_ACTUAL_CHILD_DEGREE_INTERRUPTION',
+                     'native_ns':native_ns,'row':kw['row'],'state':copy.deepcopy(kw['state']),
+@@ -692,11 +701,27 @@
+             record={'context':real.context(),'events':[]};log['original_cursors'].append(record)
+             return ObservedCursor(real,record,kw['tick'])
+         def filtered(**kw):
++            if diagnostic_global:
++                native_ns=tick()
++                diagnostic_row=kw.get('row')
++                diagnostic_state=kw.get('state')
++                diagnostic_selected=diagnostic_state.get('selected') if type(diagnostic_state) is dict else None
++                latest_callbacks['fallback']=('FALLBACK_NATIVE_STEP',
++                    diagnostic_row if type(diagnostic_row) is int and 0<=diagnostic_row<24 else -1,
++                    len(diagnostic_selected) if type(diagnostic_selected) is list and len(diagnostic_selected)<=24 else -1,native_ns)
+             real=adapter.open_fallback(language=kw['language'],semantics=es.point,state=kw['state'],
+                 row=kw['row'],base_fallback=original,tick=kw['tick'])
+             record={'context':real.context(),'events':[]};log['marked_cursors'].append(record)
+             return ObservedCursor(real,record,kw['tick'])
+         def certifier(**kw):
++            if diagnostic_global:
++                native_ns=tick()
++                diagnostic_row=kw.get('row')
++                diagnostic_state=kw.get('state')
++                diagnostic_selected=diagnostic_state.get('selected') if type(diagnostic_state) is dict else None
++                latest_callbacks['completion']=('COMPLETION_NATIVE_STEP',
++                    diagnostic_row if type(diagnostic_row) is int and 0<=diagnostic_row<24 else -1,
++                    len(diagnostic_selected) if type(diagnostic_selected) is list and len(diagnostic_selected)<=24 else -1,native_ns)
+             value=engine.certify_by_current_cover(**kw,degree_proposer=proposer,semantics=es)
+             log['covers'].append({'state':copy.deepcopy(kw['state']),'row':kw['row'],
+                 'completion':copy.deepcopy(kw['completion']),
+@@ -763,12 +788,32 @@
+         passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='ROUTING_PROTOCOL')
+ 
+     def global_family():
++        phase_native_ns=tick()
++        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++            raise ValueError('bounded original native phase sample')
++        print('GF_BEFORE_SEED_STATE_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++        tick()
+         c=deep_output();seeds=[ug(ax_formula,1,4),ug(c,3,5)];state=state_from(seeds);log={}
++        phase_native_ns=tick()
++        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++            raise ValueError('bounded original native phase sample')
++        print('GF_BEFORE_ENGINE_ROOT_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++        tick()
+         handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()
+         family={'seeds':seeds,'initial_state':state,'before':before,'actual_log':log}
+         families['GLOBAL_FORCED_DEAD']=family
+         try:
++            phase_native_ns=tick()
++            if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++                raise ValueError('bounded original native phase sample')
++            print('GF_BEFORE_SEARCH_SNAPSHOT_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++            tick()
+             result=e.search();after=snapshot(e)
++            phase_native_ns=tick()
++            if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++                raise ValueError('bounded original native phase sample')
++            print('GF_AFTER_SEARCH_SNAPSHOT_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++            tick()
+             family.update(search_result=result,after=after)
+             decisions=[v for v in result['events'] if v['kind']=='DECISION']
+             need([v['decision']['kind'] for v in decisions]==['FORCED','FORCED','DEAD']
+@@ -794,10 +839,20 @@
+                  and result['stack_restored'] is True and result['found'] is None
+                  and result['root_snapshot_sha256']==sha(before)==result['final_snapshot_sha256']
+                  and not any(v['kind']=='EXCLUDE' for v in result['events']),'forced exhaustion full root restore')
++            phase_native_ns=tick()
++            if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++                raise ValueError('bounded original native phase sample')
++            print('GF_AFTER_ASSERTIONS_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++            tick()
+         finally:e.rollback(outer)
+         family['outer_after']=snapshot(e)
+         need(canonical(family['outer_after'])==canonical(before),'owned outer rollback')
+         passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')
++        phase_native_ns=tick()
++        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++            raise ValueError('bounded original native phase sample')
++        print('GF_AFTER_OUTER_RESTORE_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++        tick()
+ 
+     def transfer_family(single):
+         d=['all',variable,copy.deepcopy(ax_formula)]
+@@ -946,7 +1001,43 @@
+         'unit-row-marked-aware-two-transfer-controls':lambda:transfer_family(False),
+         'unit-row-marked-aware-short-EOF-controls':eof_family,
+         'unit-row-marked-aware-child-UNKNOWN-controls':child_family}
+-    call(handlers[plan['purpose']])
++    if diagnostic_global:
++        diagnostic_run=Path(plan['output_directory'])
++        need(diagnostic_run.is_absolute() and diagnostic_run==diagnostic_run.resolve()
++             and not diagnostic_run.exists(),'fresh canonical global diagnostic output before delegation')
++        diagnostic_path=str(diagnostic_run)
++        diagnostic_context=canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],
++            'plan':raw_pin(plan_raw),'source_contract':plan['source_contract'],
++            'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
++            'joint_began_ns':EARLY_G,'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})
++        need(type(diagnostic_context) is bytes and len(diagnostic_context)<=65536,'bounded predelegation diagnostic context')
++        failure_writer=save_failure_diagnostic
++        failure_writer_state=anchor_fn(failure_writer)
++        controls_timeout_type=TimeoutError
++        try:
++            call(handlers[plan['purpose']])
++        except BaseException as control_error:
++            if type(control_error) is controls_timeout_type:
++                try:
++                    if (save_failure_diagnostic is not failure_writer
++                            or type(failure_writer) is not types.FunctionType
++                            or failure_writer.__code__ is not failure_writer_state[1]
++                            or failure_writer.__globals__ is not failure_writer_state[2]
++                            or failure_writer.__defaults__ is not failure_writer_state[3]
++                            or failure_writer.__kwdefaults__ is not failure_writer_state[4]
++                            or failure_writer.__closure__ is not None
++                            or tuple((k,id(v)) for k,v in sorted((failure_writer.__kwdefaults__ or {}).items()))
++                                != tuple((k,token) for k,token,value in failure_writer_state[6])
++                            or any(failure_writer.__kwdefaults__[k] is not value
++                                   for k,token,value in failure_writer_state[6])):
++                        raise RuntimeError('original captured builtin-only failure writer changed')
++                    failure_writer(diagnostic_path,diagnostic_context,latest_callbacks,
++                        'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)
++                except BaseException:
++                    pass
++            raise
++    else:
++        call(handlers[plan['purpose']])
+     expected_controls = QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']]
+     need([c['case'] for c in controls] == expected_controls
+          and len(controls) == len(expected_controls) and all(c['status'] == 'PASSED' for c in controls),
+@@ -970,6 +1061,12 @@
+         'controls':None,'search':None,'found_validation':None,'routed_engine_qualification':qualification,
+         'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
++    if diagnostic_global:
++        phase_native_ns=tick()
++        if type(phase_native_ns) is not int or not 0<=phase_native_ns<=9223372036854775807:
++            raise ValueError('bounded original native phase sample')
++        print('GF_BEFORE_TRANSPORT_GROUP',phase_native_ns,file=sys.stderr,flush=True)
++        tick()
+     result_raw=call(encode_result_transport,(result_raw,))
+     run=Path(plan['output_directory']);need(run.is_absolute() and run==run.resolve() and not run.exists(),'fresh canonical owned output')
+     run.mkdir(mode=0o700);result_pin=call(write_new,(run/'engine-result.json',result_raw))
