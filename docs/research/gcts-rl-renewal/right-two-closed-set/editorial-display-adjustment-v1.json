@@ -1,0 +1,19 @@
+{
+  "after": {
+    "bytes": 28177,
+    "sha256": "d960bbda3b2d14af483ac4f495aabab6045b57d9763d520135284523f53aa344",
+    "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-publication-ROOT-20261015/reader-v3.html"
+  },
+  "before": {
+    "bytes": 28177,
+    "sha256": "48d45606a8041070957a6795eaa290d6977cd0c3137a2bf95e9bebb589a6bc3d",
+    "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-report-source-20261015/reader-v2.html"
+  },
+  "exact_edit": {
+    "after": ".setfigure>svg{display:block;width:100%;height:auto}",
+    "before": ".setfigure svg{display:block;width:100%;height:auto}"
+  },
+  "frozen_original_public_path": "docs/research/gcts-rl-renewal/right-two-closed-set/reader-source-v2.html",
+  "reason": "Browser inspection exposed diagram SVG sizing applied to nested MathJax glyph SVGs. Scope sizing to the direct diagram child. No mathematical text, certificate, data, Source or controls changed.",
+  "schema": "ROOT-closed-set-editorial-display-adjustment-v1"
+}

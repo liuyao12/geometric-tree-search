@@ -1,0 +1,42 @@
+{
+  "Q_decodes": 0,
+  "actual_LF_byte_literals_checked": true,
+  "all_nonmain_definitions_AST_equal": true,
+  "clocks_tests_actuals": 0,
+  "compile_only": true,
+  "original_parent": {
+    "bytes": 26854,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v3.py",
+    "sha256": "741d88d0d54b90aeadc6ad193d8906daa8a02eaa5ca5d63255997a358bb6683f"
+  },
+  "pre_actual_control_correction": "V2 moves immediate invoking-code validation into finally and checks exact error categories plus a full boundary outside expected-negative catch. V1 never reviewed/granted/run.",
+  "schema": "ROOT-closed-set-intake-author-static-v1",
+  "scientific_calls": 0,
+  "selected_source": {
+    "bytes": 40960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+    "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+  },
+  "unchanged_nonmain_definitions": [
+    "ParseBudget",
+    "anchor",
+    "canonical",
+    "decode",
+    "finite_float",
+    "invoke",
+    "load_module",
+    "need",
+    "raw_pin",
+    "read_pinned",
+    "reject_constant",
+    "same",
+    "unique",
+    "write_new"
+  ],
+  "unconditional_text_release": true,
+  "unexecuted_draft": {
+    "bytes": 39200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v1.py",
+    "sha256": "f70d95b00beae3d77333b19810b433874853e4f21111c3df614a41bdf37ec687"
+  }
+}

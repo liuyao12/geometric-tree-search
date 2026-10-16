@@ -1,0 +1,153 @@
+{
+  "schema": "right-two-closed-set-reader-presentation-checks-v1",
+  "presentation_only": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "check_count": 25,
+  "checks": [
+    {
+      "id": "Root-finite-negative-admission",
+      "passed": true,
+      "detail": "Root actual closed disposition, not a recreated checker verdict."
+    },
+    {
+      "id": "counts-small-records-agree",
+      "passed": true,
+      "detail": "Only small saved metadata; no full preparation decode."
+    },
+    {
+      "id": "zero-input-records-correct",
+      "passed": true,
+      "detail": "Record count only; no claim distinct outputs or derived-member subtraction."
+    },
+    {
+      "id": "target-excluded",
+      "passed": true,
+      "detail": "No Boolean/semantic replay of bit vector; status follows saved actual checker."
+    },
+    {
+      "id": "seven-actual-controls",
+      "passed": true,
+      "detail": "Seven actual named rejections, no N/A or synthetic success substituted."
+    },
+    {
+      "id": "whole-output-pins",
+      "passed": true,
+      "detail": "Complete small raw files hashed to EOF."
+    },
+    {
+      "id": "binding-join",
+      "passed": true,
+      "detail": "Current declaration/model/authority/registry; no cross-model result."
+    },
+    {
+      "id": "value-SHA-distinct-raw",
+      "passed": true,
+      "detail": "Canonical certificate-value digest differs from raw canonical JSON plus LF file digest."
+    },
+    {
+      "id": "no-leastness-claim",
+      "passed": true,
+      "detail": "Producer least-closure/sweeps/visits diagnostic remains untrusted."
+    },
+    {
+      "id": "all-higher-flags-false",
+      "passed": true,
+      "detail": "Finite encoded unreachability only; no original arithmetic/point/advantage/RL claim."
+    },
+    {
+      "id": "native-costs-exact",
+      "passed": true,
+      "detail": "Native and terminal one-worker B=T metrics; no preexit or substitute memory rule."
+    },
+    {
+      "id": "Date-not-native",
+      "passed": true,
+      "detail": "Separate orchestration-inclusive tool Date bracket; not search time."
+    },
+    {
+      "id": "required-anchors",
+      "passed": true,
+      "detail": "All Root index anchors present exactly once."
+    },
+    {
+      "id": "internal-anchors-close",
+      "passed": true,
+      "detail": "Every local reader navigation anchor resolves statically."
+    },
+    {
+      "id": "download-map-complete",
+      "passed": true,
+      "detail": "Every relative download has exact current source map or declared existing sibling route."
+    },
+    {
+      "id": "mapped-small-files-exact",
+      "passed": true,
+      "detail": "All task-owned small public file aliases whole raw bytes/SHA close; large old model archive not reopened or duplicated."
+    },
+    {
+      "id": "C0-clean",
+      "passed": true,
+      "detail": "No forbidden control bytes from LaTeX escapes."
+    },
+    {
+      "id": "math-renderer-and-delimiters",
+      "passed": true,
+      "detail": "Established MathJax SVG renderer and balanced inline/display delimiters."
+    },
+    {
+      "id": "math-overflow-contained",
+      "passed": true,
+      "detail": "Responsive display-math horizontal scrolling is explicit; Root browser/layout QA still required."
+    },
+    {
+      "id": "SVG-labels-typeset",
+      "passed": true,
+      "detail": "Code-native SVG contains no raw mathematical text; HTML labels use MathJax."
+    },
+    {
+      "id": "no-unresolved-placeholders",
+      "passed": true,
+      "detail": "All presentation slots replaced with actual saved values or explicit completed scope."
+    },
+    {
+      "id": "proper-closed-set-interpretation",
+      "passed": true,
+      "detail": "Membership/zero-record count/leastness/word scope/old UNKNOWN cautions are visible."
+    },
+    {
+      "id": "correct-graph-count-partition",
+      "passed": true,
+      "detail": "Only saved scalar arithmetic used to partition the graphic."
+    },
+    {
+      "id": "cost-scope-visible",
+      "passed": true,
+      "detail": "Whole-stage native and tool-wall costs distinguished, earlier preparation/audit separate."
+    },
+    {
+      "id": "no-large-model-runtime",
+      "passed": true,
+      "detail": "Only small saved JSON/hash and report generation, no project/checker/codec/helper/search/native calls."
+    }
+  ],
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-report-source-20261015/reader.html",
+    "sha256": "0572ad1c35993e9c6310fcf067ede935812a5b34fe9a5da004d31c8ca8aeabdb",
+    "bytes": 28166
+  },
+  "report_data": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-report-source-20261015/report-data.json",
+    "sha256": "a7a9e22655d440bae3ecb9c623be447574a0244736604509b5a48ede21627d23",
+    "bytes": 11980
+  },
+  "public_alias_map": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-report-source-20261015/public-alias-map-v1.json",
+    "sha256": "e8625630c6dd4e32c54ac4d42fccb18e8989575281c7b7f48d2543d2e2f4749c",
+    "bytes": 8881
+  },
+  "scientific_or_Source_calls": 0,
+  "large_Q_payload_decodes": 0,
+  "clocks_tests_actuals": 0,
+  "browser_MathJax_runtime_checks": 0,
+  "scope": "Static saved-display concordance. No independent closure/semantics replay or current Source review is implied."
+}

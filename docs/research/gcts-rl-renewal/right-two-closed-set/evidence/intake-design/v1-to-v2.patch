@@ -1,0 +1,56 @@
+--- closed_set_intake_v1.py
++++ closed_set_intake_v2.py
+@@ -24,7 +24,7 @@
+ import types
+ 
+ EXIT=os._exit
+-VERSION='right-two-finite-Horn-closed-set-intake-v1'
++VERSION='right-two-finite-Horn-closed-set-intake-v2'
+ SCOPE='right-two-finite-Horn-closed-set-intake-Source'
+ FIXED={'checker': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py', 'sha256': 'f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857', 'bytes': 12589}, 'saturation': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py', 'sha256': '3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13', 'bytes': 3498}, 'codec': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py', 'sha256': 'd0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df', 'bytes': 5806}, 'clean_support': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba', 'bytes': 48584}}
+ FIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'preparation': {'bytes': 38957245, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json', 'sha256': '1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e'}, 'producer_plan': {'bytes': 4464, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json', 'sha256': '3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389'}, 'catalogue_admission': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-audit-disposition-v1.json', 'sha256': '14ad69316169c62445700940024e90150cb5172d44998a5b5f71313cb233b564', 'bytes': 9778}, 'audit_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-plan-v1.json', 'sha256': 'c591627430d4aad3f5381baa4af968658013725ff14c5feee0daf4d47db12935', 'bytes': 7052}, 'audit_result': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-owned-v1/audit-result.json', 'sha256': '848f67a03c16f681bd2587f4155b84382fe4f6d88d10c835a8ac98e349f69066', 'bytes': 5595}}
+@@ -331,19 +331,35 @@
+     if derived is not None:
+         changed=decode(canonical(candidate));mutated=bytearray(bits);mutated[derived//8]&=255^(1<<(derived%8))
+         changed['bits_hex']=bytes(mutated).hex();cases.append(('nonzero-input-closure-violation',changed))
++    expected_errors={'truncated-bits':'canonical exact-length lower-case bitvector',
++        'stale-binding':'exact candidate schema and actual caller authority',
++        'boolean-formula-count':'complete counts/target, no Boolean indices or truncated arrays',
++        'target-included':'declared target bit must be false',
++        'missing-zero-input-output':'Horn closure violation at original recipe ',
++        'nonzero-padding':'zero high padding bits',
++        'nonzero-input-closure-violation':'Horn closure violation at original recipe '}
+     controls=[]
+     for label,changed in cases:
+-        rejected=False
++        rejected=False;rejection=None
+         try:
+-            if (invoke is not invoke_fn or invoke_fn.__code__ is not invoke_code or invoke_fn.__defaults__ is not None or invoke_fn.__kwdefaults__ is not None or invoke_fn.__closure__ is not None or anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code or same is not same_fn or same_fn.__code__ is not same_code):
+-                raise RuntimeError('original immediate closed-set caller changed')
+-            invoke_fn(checker.check_closed_set,(),{'view':original_view,'expected_binding':expected_binding,'declared_target':declared_target,'candidate':changed,'tick':tick},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+-            if (invoke is not invoke_fn or invoke_fn.__code__ is not invoke_code or invoke_fn.__defaults__ is not None or invoke_fn.__kwdefaults__ is not None or invoke_fn.__closure__ is not None or anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code or same is not same_fn or same_fn.__code__ is not same_code):
+-                raise RuntimeError('original immediate closed-set caller changed')
+-        except ValueError:
+-            rejected=True
++            try:
++                if (invoke is not invoke_fn or invoke_fn.__code__ is not invoke_code or invoke_fn.__defaults__ is not None or invoke_fn.__kwdefaults__ is not None or invoke_fn.__closure__ is not None or anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code or same is not same_fn or same_fn.__code__ is not same_code):
++                    raise RuntimeError('original immediate closed-set caller changed')
++                invoke_fn(checker.check_closed_set,(),{'view':original_view,'expected_binding':expected_binding,'declared_target':declared_target,'candidate':changed,'tick':tick},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
++            finally:
++                if (invoke is not invoke_fn or invoke_fn.__code__ is not invoke_code or invoke_fn.__defaults__ is not None or invoke_fn.__kwdefaults__ is not None or invoke_fn.__closure__ is not None or anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code or same is not same_fn or same_fn.__code__ is not same_code):
++                    raise RuntimeError('original immediate closed-set caller changed')
++        except ValueError as error:
++            need(str(error).startswith(expected_errors[label]),'unexpected control rejection category')
++            rejected=True;rejection=str(error)
++        # A custody/native fault must never count as a successful negative control.
++        if (invoke is not invoke_fn or invoke_fn.__code__ is not invoke_code or invoke_fn.__defaults__ is not None or invoke_fn.__kwdefaults__ is not None or invoke_fn.__closure__ is not None or anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code or same is not same_fn or same_fn.__code__ is not same_code):
++            raise RuntimeError('original immediate closed-set caller changed')
++        invoke_fn(boundary,(),{},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
++        if (invoke is not invoke_fn or invoke_fn.__code__ is not invoke_code or invoke_fn.__defaults__ is not None or invoke_fn.__kwdefaults__ is not None or invoke_fn.__closure__ is not None or anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code or same is not same_fn or same_fn.__code__ is not same_code):
++            raise RuntimeError('original immediate closed-set caller changed')
+         need(rejected,'actual malformed/invalid certificate accepted:'+label)
+-        controls.append({'control':label,'rejected':True})
++        controls.append({'control':label,'rejected':True,'rejection':rejection})
+     if derived is None:controls.append({'control':'nonzero-input-closure-violation','not_applicable':True,'reason':'No suitable actual nonroot noncyclic derivation edge; no fixture substituted.'})
+     need(canonical(expected_binding)==original_binding_raw and canonical(declared_target)==target_raw,'original private checker authority remains unchanged')
+     result={'schema':'right-two-finite-Horn-closed-set-result-v1','invocation_id':plan['invocation_id'],

@@ -1,0 +1,38 @@
+{
+  "actual_activation": false,
+  "check_count": 26,
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 17813,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/findings-v1.json",
+    "sha256": "dc9c4ccca4a991dd029b1c2044cd8b6cd9b133573e9ab473123fffda58d09da9"
+  },
+  "raw_reference_count": 18,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "generic-finite-Horn-closed-set-certificate-independent-handoff-v1",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 11739,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/Source-contract-v1.json",
+    "sha256": "b42a1516077d5fdfb201b8a3c5eb8924d8667cf12edc8ba8f70bbfa0bef3d16a"
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "untrusted_producer": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  },
+  "typed_review": {
+    "bytes": 2987,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "7715be85e8fc3db15ace03ed5d770f26db030470bac163106f136330b1ae35b7"
+  },
+  "unique_raw_paths": 10
+}

@@ -1,0 +1,194 @@
+{
+  "API": {
+    "check_closed_set": {
+      "algorithm": "Independent complete single relation scan, no saturation/search. Validate exact candidate wire/counts/binding, target bit zero, every zero-port output present and every all-inputs-present implication closed. Rehash the full registry/relation; retain original target.",
+      "exact_counts": [
+        "formula_count",
+        "recipe_count",
+        "target_code",
+        "set_member_count",
+        "zero_port_records_checked",
+        "closure_relations_checked"
+      ],
+      "exception": "ValueError rejects invalid candidate or malformed binding/view; enclosing tick errors propagate. No partial receipt is returned on failure.",
+      "false_flags": [
+        "original_target_proved",
+        "arithmetic_nonprovability_accepted",
+        "point_state_accepted",
+        "trajectory_accepted",
+        "full24_accepted",
+        "native_accepted",
+        "ROOT_resource_accepted",
+        "RL_accepted"
+      ],
+      "other_fields": [
+        "schema",
+        "version",
+        "binding",
+        "relation_sha256",
+        "candidate_sha256",
+        "scope"
+      ],
+      "return_schema": "finite-horn-closed-set-check-result-v1",
+      "signature": "check_closed_set(*, view, expected_binding, declared_target, candidate, tick)",
+      "success_properties": [
+        "closed_set_verified",
+        "target_excluded",
+        "finite_horn_unreachable",
+        "whole_supplied_recipe_array_checked"
+      ]
+    },
+    "prepare_view": {
+      "authority_work": "Recompute raw declaration SHA, registry SHA, canonical declaration/context/authority SHA, all original recipe identity preimages/IDs and exact original model epoch. Formula order, every recipe and every ordered/repeated input occurrence are retained.",
+      "immutability": "Only builtin tuple/str/int descendants are returned. No mutable catalogue, declaration, source binding dictionary, target or authority object reaches producer through this view. Caller must retain its original view and private inputs, not accept producer-returned replacements.",
+      "inputs": "Complete caller-authenticated original catalogue; exact immutable small declaration bytes (at most 1MiB); private four-field binding and exact original target; mandatory enclosing checked-budget callback.",
+      "return_tuple_slots": [
+        "audited-finite-horn-view-v1",
+        "tuple of binding pairs in BINDING_KEYS order",
+        "canonical declaration-value SHA256",
+        "tuple of canonical formula strings in original registry order",
+        "tuple of (original recipe id, output code, tuple of ordered premise codes)",
+        "declared target code",
+        "whole ordered relation SHA256"
+      ],
+      "signature": "prepare_view(*, catalogue, declaration_raw, expected_binding, declared_target, tick)"
+    },
+    "propose_least_closure": {
+      "algorithm": "Start all bits false, scan ALL recipes in original order on every forward sweep, add output only when all ordered input bits are present, stop only after a complete no-change sweep. No target shortcut, recipe filter or word-length ceiling.",
+      "candidate_location": "result[\"closed_set_candidate\"]",
+      "return_keys": [
+        "schema",
+        "version",
+        "closed_set_candidate",
+        "target_in_set_claimed",
+        "least_fixed_point_claimed",
+        "known_count_claimed",
+        "complete_sweeps_claimed",
+        "recipe_visits_claimed",
+        "declaration_value_sha256",
+        "finite_horn_unreachable_accepted",
+        "proof_accepted",
+        "arithmetic_nonprovability_accepted",
+        "point_state_accepted",
+        "trajectory_accepted",
+        "full24_accepted",
+        "native_accepted",
+        "ROOT_resource_accepted",
+        "RL_accepted"
+      ],
+      "return_schema": "untrusted-finite-horn-least-closure-result-v1",
+      "signature": "propose_least_closure(*, view, tick)",
+      "untrusted": "Every producer diagnostic is a claim. A candidate may include the target; independent check then rejects it as an exclusion certificate. Producer cannot call/import checker and receives no private authority or mutable model."
+    }
+  },
+  "ROOT_prospective_protocol": {
+    "bytes": 3822,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "2d59a7f60bba39505051cf1d84f3536e9565d2b7e3a94353e92fc81a7d8482c2"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "candidate": {
+    "binding_exact_keys": [
+      "declaration_sha256",
+      "model_epoch",
+      "primitive_authority_epoch",
+      "formula_registry_sha256"
+    ],
+    "bits": "bit_order is lsb0-formula-code. bits_hex is exact lowercase hexadecimal, exactly 2*ceil(formula_count/8) characters; bit code uses byte code//8, position code%8. All unused high bits of final byte must be zero. No prefix, whitespace, truncation or extra bytes.",
+    "exact_keys": [
+      "schema",
+      "binding",
+      "formula_count",
+      "recipe_count",
+      "target_code",
+      "bit_order",
+      "bits_hex",
+      "relation_sha256"
+    ],
+    "indices": "formula_count, recipe_count and target_code are exact int (bool rejected). Codes are original zero-based registry indices.",
+    "relation_digest": "SHA256 over original-order records; each record is canonical UTF-8 JSON [zero-based index, original recipe id, output code, ordered input code list] followed by LF. JSON keys sorted, compact separators, ensure_ascii=False, allow_nan=False.",
+    "schema": "finite-horn-closed-set-candidate-v1"
+  },
+  "cold_boundary_obligations": [
+    "ROOT alone authenticates whole preparation raw bytes and exact EOF and genuine independent whole catalogue admission before prepare_view; this Source packet does not parse preparation or grant admission.",
+    "Keep private original view/binding/target; producer receives only the immutable view and checked tick. No producer object may replace authority after return.",
+    "Caller must guard actual loaded Source/module/builtin/parser/hash endpoints and all callable code/default/keyword-default entries/closure/native tick custody across delegated operations; synchronous reviewed Python scope, not hostile VM isolation.",
+    "All authentication/load/parse/immutable construction/saturation/check/controls/output/exit costs charged to the original shared native clock. No internal clock or budget reset exists in these modules.",
+    "Root integrates exact one-process/no-children B=T resource protocol, complete canonical certificate/result/two-line output with raw EOF, native terminal/postprobe and original limits; no external scope or plan is supplied here.",
+    "Required candidate mutation controls are Root-owned as listed in prospective protocol. Source review/compile is neither execution nor resource acceptance."
+  ],
+  "complexity_and_fit": "Prepare retains immutable canonical registry plus all recipe-code tuples while caller may still retain decoded catalogue. Producer full-sweep saturation is finite but may require many sweeps; no practical resource fit is claimed. Checker performs one full relation scan with budget ticks and no target-specific shortcut.",
+  "context_Source_only": {
+    "fresh_independent_primitive_auditor": {
+      "bytes": 46327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+      "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa"
+    },
+    "original_catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "original_point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "current_acceptance": {
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "actual_executed": false,
+    "arithmetic_nonprovability_accepted": false,
+    "finite_horn_unreachable_accepted": false,
+    "full24_accepted": false,
+    "independent_Source_review_passed": false,
+    "native_accepted": false,
+    "original_target_proved": false,
+    "point_state_accepted": false,
+    "source_authoring_complete": true,
+    "trajectory_accepted": false
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "pending": [
+    "Genuine distinct Source review",
+    "Root exact cold integration/plan/grant",
+    "Actual controls and complete whole result within original native/caller/memory limits",
+    "Independent saved reconciliation"
+  ],
+  "purpose": "Generic exact finite-Horn closed-set certificate, with checker-owned deeply immutable preparation and separately untrusted saturation. No expected closure or target answer is bundled.",
+  "schema": "finite-Horn-closed-set-certificate-Source-contract-v1",
+  "scientific_calls": 0,
+  "soundness": {
+    "context": "Private raw declaration, theory, original occurrence-ordered Gamma, parameters, target and four epochs must be authenticated by caller; no added axiom, fact, operand, recipe, seed, learned library or rank.",
+    "leastness": "The checker need not prove leastness. Any such closed superset excluding the target is sufficient. Producer computes a least-closure claim by a different algorithm.",
+    "math": "If Z contains every zero-port output and (\\forall i\\in\\mathrm{inputs}(r),\\ i\\in Z)\\Rightarrow\\mathrm{output}(r)\\in Z for every original recipe r, then every finite primitive-recipe derivation lies in Z. Therefore target\\notin Z implies no finite word in this exact audited Horn graph reaches target.",
+    "primitive_scope": "Whole primitive/grammar audit is a mandatory external assumption. View authentication proves correspondence to the supplied exact model, not independent soundness/completeness of its mathematical recipe generation.",
+    "word_scope": "For the audited indexed primitive interface, a proof word uses only original zero-port witnesses and ordered prior-premise recipes. The abstract Horn relaxation permits arbitrary finite reuse; impossibility in that relaxation also rules out words of at most 24 rows. No point-board, strict-row trajectory or arithmetic nonprovability is asserted."
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "untrusted_producer": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  },
+  "unchanged_limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  }
+}

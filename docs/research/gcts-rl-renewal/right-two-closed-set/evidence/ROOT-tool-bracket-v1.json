@@ -1,0 +1,19 @@
+{
+  "schema": "ROOT-right-two-closed-set-tool-bracket-v1",
+  "began_ms": 1792111066283,
+  "ended_ms": 1792111089347,
+  "calls": [
+    {
+      "session_id": 63325,
+      "exit_code": null
+    },
+    {
+      "chunk_id": "791b6a",
+      "wall_time_seconds": 0.000005709,
+      "exit_code": 0,
+      "original_token_count": 126,
+      "output": "{\"ROOT_primary_accepted\": false, \"ROOT_resource_accepted\": false, \"external_began_ns\": 450874353023000, \"invocation_id\": \"right-two-finite-Horn-closed-set-20261015-v1\", \"measurement_only\": true, \"meter_returncode\": 0, \"plan_bytes\": 7247, \"plan_sha256\": \"9ee81adca9fd3c37a0f86d56befd849c4c74f20fc21a922f66ff5f650b8d9593\", \"postterminal_native_probe_ns\": 450882269830000, \"probe_returncode\": 0, \"purpose\": \"right-two-finite-Horn-closed-set-certificate\", \"schema\": \"ROOT-ordinary-external-observation-v1\"}\n"
+    }
+  ],
+  "scope": "One once-only invocation and terminal observation of the same handle; no restart."
+}

@@ -1,0 +1,23 @@
+{
+  "Q_decodes": 0,
+  "actual_started": false,
+  "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/closed-set-external-v1",
+  "external_driver": {
+    "bytes": 4357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+    "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+  },
+  "native_meter": {
+    "bytes": 6734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+  },
+  "plan": {
+    "bytes": 7247,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "9ee81adca9fd3c37a0f86d56befd849c4c74f20fc21a922f66ff5f650b8d9593"
+  },
+  "schema": "ROOT-right-two-finite-Horn-closed-set-metadata-closure-v1",
+  "scientific_calls": 0,
+  "scope": "Only generic current whole-graph closed-set generation/check/controls; no theorem route, no old negative promotion, no model or clock reset."
+}

@@ -1,0 +1,23 @@
+{
+  "actual_admission": false,
+  "check_count": 12,
+  "concrete_blockers": [],
+  "conditional_argument_supported": true,
+  "diagnosis": {
+    "bytes": 11126,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-finite-grammar-diagnosis-source-20261015/diagnosis-v2.json",
+    "sha256": "66c641c7d0dd2f407cf90b5de46aa7b2820a54dbd1d7e2245df34a74e72deca9"
+  },
+  "raw_reference_count": 8,
+  "review": {
+    "bytes": 11316,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-finite-grammar-diagnosis-independent-source-20261015/logical-review-v1.json",
+    "sha256": "d0b4c4cbe1c0f684c23316aa0a57121aef3ab184742ffb7534999642a77facd0"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "right-two-finite-grammar-obstruction-independent-handoff-v1",
+  "scientific_calls": 0,
+  "scope_limit": "Restricted compiled Horn recipe graph only; no actual exhaustion, FOL/arithmetic unprovability, retroactive UNKNOWN relabel or closed-set machine certificate.",
+  "source_only": true,
+  "unique_raw_paths": 8
+}

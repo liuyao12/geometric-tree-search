@@ -1,0 +1,65 @@
+{
+  "check_count": 12,
+  "checks": [
+    {
+      "id": "Root-finite-negative-admission",
+      "passed": true,
+      "detail": "Root actual closed disposition, not a recreated checker verdict."
+    },
+    {
+      "id": "counts-small-records-agree",
+      "passed": true,
+      "detail": "Only small saved metadata; no full preparation decode."
+    },
+    {
+      "id": "zero-input-records-correct",
+      "passed": true,
+      "detail": "Record count only; no claim distinct outputs or derived-member subtraction."
+    },
+    {
+      "id": "target-excluded",
+      "passed": true,
+      "detail": "No Boolean/semantic replay of bit vector; status follows saved actual checker."
+    },
+    {
+      "id": "seven-actual-controls",
+      "passed": true,
+      "detail": "Seven actual named rejections, no N/A or synthetic success substituted."
+    },
+    {
+      "id": "whole-output-pins",
+      "passed": true,
+      "detail": "Complete small raw files hashed to EOF."
+    },
+    {
+      "id": "binding-join",
+      "passed": true,
+      "detail": "Current declaration/model/authority/registry; no cross-model result."
+    },
+    {
+      "id": "value-SHA-distinct-raw",
+      "passed": true,
+      "detail": "Canonical certificate-value digest differs from raw canonical JSON plus LF file digest."
+    },
+    {
+      "id": "no-leastness-claim",
+      "passed": true,
+      "detail": "Producer least-closure/sweeps/visits diagnostic remains untrusted."
+    },
+    {
+      "id": "all-higher-flags-false",
+      "passed": true,
+      "detail": "Finite encoded unreachability only; no original arithmetic/point/advantage/RL claim."
+    },
+    {
+      "id": "native-costs-exact",
+      "passed": true,
+      "detail": "Native and terminal one-worker B=T metrics; no preexit or substitute memory rule."
+    },
+    {
+      "id": "Date-not-native",
+      "passed": true,
+      "detail": "Separate orchestration-inclusive tool Date bracket; not search time."
+    }
+  ]
+}

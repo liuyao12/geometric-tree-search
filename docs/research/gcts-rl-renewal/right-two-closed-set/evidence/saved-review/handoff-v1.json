@@ -1,0 +1,25 @@
+{
+  "ROOT_disposition": {
+    "bytes": 12038,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-closed-set-disposition-v1.json",
+    "sha256": "6f6c991f79cbbc72442729d76c50ad0fadedebc9647781f6d26afd68d2c343cf"
+  },
+  "all_checks_passed": true,
+  "authorship_disclosed": true,
+  "check_count": 92,
+  "discrepancies": [],
+  "findings": {
+    "bytes": 44749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-saved-independent-20261015/findings-v1.json",
+    "sha256": "947156844e38fd687fe1da86764bf77b80f3668d47f45a0b308f1242ea0795a9"
+  },
+  "new_mathematical_admission": false,
+  "raw_reference_count": 47,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "saved_data_only": true,
+  "schema": "right-two-closed-set-saved-review-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Raw hashes/EOF and small saved correspondence; module-author reviewer, no independent closure verification, Source execution or new run.",
+  "semantic_replay": false,
+  "unique_authenticated_raw_paths": 40
+}

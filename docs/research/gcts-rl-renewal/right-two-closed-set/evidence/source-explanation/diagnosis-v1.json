@@ -1,0 +1,123 @@
+{
+  "Q_payload_decodes": 0,
+  "argument": [
+    {
+      "reason": "Without assuming G, named axioms and their two UI rounds produce only AZ/AS instances I (and the AS one-quantifier prefixes). Target is inserted in the formula basis, not as a zero-port fact.",
+      "step": "UI seeds"
+    },
+    {
+      "reason": "An equality used as the first eq_subst input must have BOTH sides in P. An atom used as its second input must have one side in P and the other in P or S(P), because only identity/successor hole contexts and a P-valued other operand exist.",
+      "step": "When transport can use an atom"
+    },
+    {
+      "reason": "For u in P, u+0 lies in P only for u=0 or u=n. Every other u+0 has add at its root and lies in neither P nor S(P). Thus all other AZ instances can serve as neither transport input. The two usable instances lie inside Z.",
+      "step": "AZ inert cases"
+    },
+    {
+      "reason": "For u,v in P, S(u+v) is never in P. The other side u+S(v) is in P only for u=n,v=S(0), when it is A. In that sole case the right side is S(B), outside P union S(P). Hence EVERY AS instance can serve as neither equality-input nor formula-input of transport. This rules out indirect AS-based detours too.",
+      "step": "AS inert cases"
+    },
+    {
+      "reason": "Every side of a Z equality is one of 0,n,0+0,n+0, so none begins with succ. Successor-context transport cannot use a Z atom as its second input. Identity-context transport using a Z equality merely replaces an endpoint by another term in the same class; its result remains in Z. Inert I atoms cannot enter a transport step. Thus I union Z is closed under every reachable equality transport.",
+      "step": "Closure of Z"
+    },
+    {
+      "reason": "Generalization adds forall n F only from an already reachable equality F. UI recipes were frozen before those generalized formulae were added. Their only n-bound antecedent that could bootstrap the target is G itself; the other UI antecedents are the original x-bound axioms and y-bound AS prefixes. Those supply only I. Since E is not in I union Z, G cannot be first reached via generalization; G-guarded target-instance licences cannot initiate that cycle.",
+      "step": "No quantified bootstrap"
+    },
+    {
+      "reason": "Induct on strict-prior primitive commands, or equivalently use the propositional Horn countervaluation described below. All reachable atoms remain in I union Z, E is absent, and so G is absent at every finite stage. The argument does not depend on24 or20 seconds.",
+      "step": "Finite-word induction"
+    }
+  ],
+  "assumptions": [
+    "Exactly AZ and AS, empty original Gamma, sole parameter n, the literal right-two declaration and unchanged2db compiler.",
+    "The operand pool freezes before UI; terms of at most3 nodes plus parameter-scoped target/axiom subterms only.",
+    "Equality templates are exactly h=u, u=h, S(h)=u or u=S(h), with u and both equality operands in that frozen pool.",
+    "Only generated zero-port axioms/UI/equality licences, unary generalization and ordered MP; no reflexivity/induction/tautology/extra assumptions or external lemmas.",
+    "UI has two rounds before generalization recipes are added; formula equality is literal capture-safe syntax, not an alpha-equivalence quotient.",
+    "Any eventual claim about saved recipes requires independent complete source-to-catalogue conformance and authenticated epochs/whole EOF."
+  ],
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "I authored the original producer kernel/catalogue and the new goal core/point consumer. This is a mathematical Source diagnosis, not independent audit of my implementations or a new actual verification.",
+  "benchmark_recommendation": "Treat unchanged right-two as a prospective finite-grammar negative/eligibility control, not a credible positive-transfer target under the stated invariant. First independently check the closed-set certificate if ROOT wants to settle it. A positive family-transfer benchmark needs a separately declared grammar/recipient choice; do not handpatch this one or feed it a known route.",
+  "conclusion": "Under the exact frozen compiler/declaration, the obstruction is stronger than one missing family binding: no finite primitive word from this generated Horn recipe grammar reaches the closed right-two target. This is a Source-level inductive argument conditional on exact complete catalogue conformance. It is not a new checked closed-set certificate, a runtime exhaustion result, or unprovability in arithmetic.",
+  "counterpossibilities_and_limits": [
+    "Merely observing B missing would NOT prove this conclusion; the inert-AS and closed-Z arguments are required to exclude alternate recipe chains.",
+    "Some generic family instances can still be licensed with P-valued roles and PENDING inputs. Their existence or a nonzero match count does not imply those inputs are reachable. No actual instance count is predicted here.",
+    "A different compiler phase order, expanded operand pool, additional contexts, assumptions, axioms or rules falls outside the argument. No such change is authorized or made.",
+    "No arithmetic or unrestricted six-rule unprovability claim follows. A finite formula/recipe restriction can omit a theorem of its underlying theory.",
+    "No current timed UNKNOWN may be retrospectively relabeled EXHAUSTED or accepted. A separately scoped independently checked finite-grammar certificate would be a different result."
+  ],
+  "countervaluation": {
+    "implication_labels": "Evaluate generated implication syntax by ordinary material implication under those atom/universal label values.",
+    "scope": "A valuation of generated formula labels, NOT a first-order arithmetic model.",
+    "true_atoms": "I union Z.",
+    "true_universal_labels": "AZ, AS, all forall y AS(u,y) for u in P, and forall n F for F in I union Z.",
+    "why_closed": "All UI/equality zero-port licences are true by the preceding closure/case split; every generated MP edge preserves truth, and every generalization edge from a true atom has a true universal output. G is false. This is a Horn-language separation, not a model of universal quantification in arithmetic."
+  },
+  "grammar_or_Source_changes": false,
+  "line_references": {
+    "auditor_literal_substitution": "same Source formula:171-201 and substitute:239-270 explicitly no alpha-equivalence quotient.",
+    "auditor_reconstruction": "independent_right_two_semantics_v2.py reconstruct_grammar:405-509.",
+    "compiler_UG_MP": "same Source generalization then MP generation:126-136.",
+    "compiler_UI_and_transports": "same Source UI phase:98-107; context/templates/all operand pairs:109-125.",
+    "compiler_pool_and_freeze": "arithmetic_q_catalog_v1.py terms:29-43; prepare pool/seed subterms:60-96."
+  },
+  "native_clock_calls": 0,
+  "notation": {
+    "atomic_invariant_latex": "\\(\\text{Every reachable equality atom belongs to }I\\cup Z.\\)",
+    "base_instances_latex": "\\(I=\\{\\,u+0=u:u\\in P\\,\\}\\ \\cup\\ \\{\\,u+S(v)=S(u+v):u,v\\in P\\,\\}.\\)",
+    "missing_latex": "\\(B=n+S(0)\\notin P,\\quad S(B)\\notin P\\cup S(P).\\)",
+    "operand_pool_latex": "\\(P=\\{0,n,S(0),S(n),S(S(0)),S(S(n)),0+0,0+n,n+0,n+n,A\\},\\quad A=n+S(S(0)).\\)",
+    "pool_scope": "This explicit P is deduced from Source size/subterm rules; no prepared formula/recipe payload was decoded or generated.",
+    "small_classes_latex": "\\(C_0=\\{0,0+0\\},\\quad C_n=\\{n,n+0\\},\\quad Z=(C_0\\times C_0)\\cup(C_n\\times C_n).\\)"
+  },
+  "project_or_helper_imports": 0,
+  "references": {
+    "auditor": {
+      "bytes": 46327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+      "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa"
+    },
+    "auditor_contract": {
+      "bytes": 5798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/Source-contract-v1.json",
+      "sha256": "45fe3cd4d2fee479df741e682196c95278321de1d119013817478a457160223d"
+    },
+    "compiler": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    }
+  },
+  "schema": "right-two-finite-Horn-grammar-Source-diagnosis-v1",
+  "scientific_calls": 0,
+  "smallest_future_closed_set_certificate": {
+    "checker": "A small independent one-pass raw recipe/bitset checker can verify these implications. It need not run search, compute the least fixed point, or contain expected target answers.",
+    "conditions": [
+      "Target code bit is0.",
+      "For EVERY recipe, if every ordered input bit is1 then output bit is1. Zero-port recipes therefore require output bit1.",
+      "No missing/duplicate/truncated formula or recipe rows: exact authenticated complete registry/recipe pins and EOF.",
+      "Original primitive witness/preimage conformance must already be independently established; certificate does not replace that audit."
+    ],
+    "format": "Authenticated declaration/model/authority/registry bindings plus a fixed-length bit vector K over the WHOLE formula registry; optional Source argument label for human explanation.",
+    "producer": "A future ROOT-granted finite saturation may emit its full known-formula bitset; alternatively emit any closed superset satisfying the conditions. Current ordinary result only reports a known count, so it is not already this certificate.",
+    "scope": "Proves target unreachable in this exact finite Horn recipe graph at ANY word length. Does not certify full arithmetic nonprovability or a point search trajectory.",
+    "size": "One bit per formula, plus small exact bindings; no proof word or giant trace needed."
+  },
+  "source_only": true,
+  "status": "SOURCE_LEVEL_CONDITIONAL_MATHEMATICAL_ARGUMENT_NOT_AN_ACTUAL_ADMISSION",
+  "target_latex": "\\(G=\\forall n\\;E,\\qquad E:\\ n+S(S(0))=S(S(n)).\\)",
+  "tests_or_actuals": 0
+}

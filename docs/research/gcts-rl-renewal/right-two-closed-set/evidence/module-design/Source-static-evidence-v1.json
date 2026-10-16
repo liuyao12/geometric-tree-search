@@ -1,0 +1,92 @@
+{
+  "Q_payload_reads": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "authored_function_calls": 0,
+  "check_count": 15,
+  "checks": [
+    {
+      "check": "checker syntax/compile-only",
+      "passed": true
+    },
+    {
+      "check": "checker only hashlib/json imports",
+      "passed": true
+    },
+    {
+      "check": "checker no top-level expression calls",
+      "passed": true
+    },
+    {
+      "check": "checker no project import or filesystem/clock/process name",
+      "passed": true
+    },
+    {
+      "check": "checker no fixed right-two answer/declaration literal",
+      "passed": true
+    },
+    {
+      "check": "checker mandatory keyword-only view/tick",
+      "passed": true
+    },
+    {
+      "check": "untrusted_producer syntax/compile-only",
+      "passed": true
+    },
+    {
+      "check": "untrusted_producer only hashlib/json imports",
+      "passed": true
+    },
+    {
+      "check": "untrusted_producer no top-level expression calls",
+      "passed": true
+    },
+    {
+      "check": "untrusted_producer no project import or filesystem/clock/process name",
+      "passed": true
+    },
+    {
+      "check": "untrusted_producer no fixed right-two answer/declaration literal",
+      "passed": true
+    },
+    {
+      "check": "untrusted_producer mandatory keyword-only view/tick",
+      "passed": true
+    },
+    {
+      "check": "distinct algorithms: checker no while; producer while fixed-point loop",
+      "passed": true
+    },
+    {
+      "check": "no checker function imported/called by producer",
+      "passed": true
+    },
+    {
+      "check": "contract exact Source pins",
+      "passed": true
+    }
+  ],
+  "meaning": "Author static structural/AST/compile-only assertions plus Source argument. Not independent review, execution, tests, semantic certificate or fit. No new module code was evaluated.",
+  "native_clock_calls": 0,
+  "project_imports": 0,
+  "runtime_tests": 0,
+  "schema": "finite-Horn-closed-set-Source-static-evidence-v1",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 11739,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/Source-contract-v1.json",
+    "sha256": "b42a1516077d5fdfb201b8a3c5eb8924d8667cf12edc8ba8f70bbfa0bef3d16a"
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "untrusted_producer": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  }
+}

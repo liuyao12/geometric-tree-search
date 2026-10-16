@@ -1,0 +1,53 @@
+{
+  "API": {
+    "checker": "check_closed_set(*, view, expected_binding, declared_target, candidate, tick)",
+    "prepare_view": "prepare_view(*, catalogue, declaration_raw, expected_binding, declared_target, tick)",
+    "producer": "propose_least_closure(*, view, tick); take result[\"closed_set_candidate\"]"
+  },
+  "ROOT_prospective_protocol": {
+    "bytes": 3822,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "2d59a7f60bba39505051cf1d84f3536e9565d2b7e3a94353e92fc81a7d8482c2"
+  },
+  "actual_status": "UNEXECUTED; no Source/scientific functions, tests, clocks, Q payload reads, plans or output directories. Source review, Root integration and all actual admissions remain pending.",
+  "author_identity": "/root/arithmetic_induction",
+  "review_request": {
+    "checklist": [
+      "Exact immutable view contains no mutable caller authority/model descendants",
+      "Whole original registry, all recipe preimages/IDs/ordered repeated ports and model epoch authenticated",
+      "Strict canonical exact-count/length/padding/binding/target-bit candidate acceptance",
+      "Every zero-root and complete Horn relation scanned, no leastness needed",
+      "No expected target answer, supplied closure, injected axiom/term, word proof or arithmetic unprovability claim",
+      "Different producer/checker algorithms; no producer mutation of private view",
+      "Mandatory budget tick and caller/Source/EOF/native resource obligations explicit"
+    ],
+    "reviewer_must_be_distinct": true,
+    "scope": "generic-finite-Horn-closed-set-certificate-Source"
+  },
+  "schema": "finite-Horn-closed-set-certificate-Source-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Generic finite-Horn immutable-view preparation, untrusted least-closure proposal and independent single-scan closed-set checker; exact audited graph only.",
+  "source_contract": {
+    "bytes": 11739,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/Source-contract-v1.json",
+    "sha256": "b42a1516077d5fdfb201b8a3c5eb8924d8667cf12edc8ba8f70bbfa0bef3d16a"
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "untrusted_producer": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  },
+  "static_evidence": {
+    "bytes": 2967,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/Source-static-evidence-v1.json",
+    "sha256": "dd334e094ed2dd06d640aec6d13ea4dd7f8b3ce3482a4cd668512f1cceba01ee"
+  }
+}

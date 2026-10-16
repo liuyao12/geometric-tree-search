@@ -1,0 +1,778 @@
+{
+  "actual_activation": false,
+  "actual_invoke_call_sites": [
+    {
+      "endpoint": "support.project_local_float_deadline",
+      "line": 246
+    },
+    {
+      "endpoint": "boundary",
+      "line": 253
+    },
+    {
+      "endpoint": "boundary",
+      "line": 259
+    },
+    {
+      "endpoint": "codec.parse_lossless_preparation_text",
+      "line": 264
+    },
+    {
+      "endpoint": "checker.prepare_view",
+      "line": 274
+    },
+    {
+      "endpoint": "saturation.propose_least_closure",
+      "line": 288
+    },
+    {
+      "endpoint": "checker.check_closed_set",
+      "line": 299
+    },
+    {
+      "endpoint": "checker.check_closed_set",
+      "line": 348
+    },
+    {
+      "endpoint": "boundary",
+      "line": 358
+    },
+    {
+      "endpoint": "write_new",
+      "line": 375
+    },
+    {
+      "endpoint": "write_new",
+      "line": 380
+    },
+    {
+      "endpoint": "write_new",
+      "line": 394
+    },
+    {
+      "endpoint": "boundary",
+      "line": 402
+    },
+    {
+      "endpoint": "boundary",
+      "line": 411
+    }
+  ],
+  "advisories": [
+    "Native resource-only ticks are explicit guidance within the pure modules; Source integrity is established by original pre/post delegation guards, not by a full seal at each row.",
+    "The inherited local float projection is computed but its result is not mathematical authority here; the Horn modules use original native resource guidance and external global20 remains decisive.",
+    "ProducerSource6 are authenticated provenance records in fixed original plans/audit, not executed compiler/kernel/point code or additional Source5 roles.",
+    "Timing/resource fit of one complete parse, view preimage traversal, saturation, all mutation controls and output remains unmeasured. This pass supplies no actual authorization or outcome."
+  ],
+  "all_checks_passed": true,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored cf7c auditor declaration/provenance binding successor and other ordinary/custody code, and independently reviewed f441/3f7 pure Horn modules. Root authored this selected intake. Reviewer did not author these Horn modules or current intake and executed none of them.",
+  "check_count": 30,
+  "checks": [
+    {
+      "finding": "Whole selected40960B V2, current11732B contract, handoff, all5 Sources and existing exact module peer read/bound. Unselected draftV1 is not promoted.",
+      "id": "SOURCE",
+      "passed": true
+    },
+    {
+      "finding": "All embedded raw references reauthenticated to whole SHA/EOF, including38,957,245B preparation by raw streaming only; no Q data parsed.",
+      "id": "PINS",
+      "passed": true
+    },
+    {
+      "finding": "Selected Source parses/compile-only; actual14 inherited auditV3 non-main definitions AST-exact, no omitted definition.",
+      "id": "AST",
+      "passed": true
+    },
+    {
+      "finding": "AST literal FIXED Source4 plus intake exactly current Source5; FIXED_INPUTS exactly input6; LIMITS exactly current six original caps.",
+      "id": "MAPS",
+      "passed": true
+    },
+    {
+      "finding": "TOP module captures native G immediately after import time before project Source/metadata/data handling; external native launch/postprobe still covers startup/compile before that capture.",
+      "id": "EARLY",
+      "passed": true
+    },
+    {
+      "finding": "Exact plan13 purpose/resource rule/full Source/input/contract, genuine author+distinct peer Source records and exact Root authorization required before mathematical work.",
+      "id": "PLAN",
+      "passed": true
+    },
+    {
+      "finding": "Regular canonical pinned inputs read to actual EOF; parsed authority buffers are the exact hashed buffers, not reopened unhashed data.",
+      "id": "RAW",
+      "passed": true
+    },
+    {
+      "finding": "Fixed admitted audit plan/result bind exact original prep/declaration/producer plan and honest Source6. Compiler/kernel/graph/controls roles remain provenance, not executed mathematical producer modules.",
+      "id": "PROVENANCE",
+      "passed": true
+    },
+    {
+      "finding": "Independent result/current admission/Source6 census and distinct raw declaration versus canonical VALUE hash/fresh model/registry/primitive epochs reconcile before view construction.",
+      "id": "EPOCHS",
+      "passed": true
+    },
+    {
+      "finding": "Only clean_support/codec/saturation/checker execute as authenticated same-buffer fresh registered modules. No ordinary/point search compiler, candidate proof, family or expected closure input.",
+      "id": "LOAD",
+      "passed": true
+    },
+    {
+      "finding": "Original CodeSeal covers module/code/default/constant namespaces and actual JSON decoder/scanner; own anchor/same/invoke code and actual callback cells are prechecked at direct delegation boundaries.",
+      "id": "SEAL",
+      "passed": true
+    },
+    {
+      "finding": "All14 invoke_fn Source call sites read. Immediate caller anchors wrap actual endpoints pre/post; exceptional path finally still rechecks endpoint/boundary; original guard and boundary live function state remain fixed.",
+      "id": "CALLERS",
+      "passed": true
+    },
+    {
+      "finding": "Complete raw prep EOF/authentication before lossless decode; raw released before single unchanged generic parse; text released after return. ParseBudget retains full boundary, not native-only tick.",
+      "id": "PARSER",
+      "passed": true
+    },
+    {
+      "finding": "Trusted checker prepare_view called before producer with original declaration bytes/private binding/target and full pre/post seals. Whole recipe/registry identity/model validation is covered by distinct genuine generic module Source pass.",
+      "id": "VIEW",
+      "passed": true
+    },
+    {
+      "finding": "Every view descendant explicitly traversed: only exact builtin tuple/str/int accepted. No bool/container/class/mutable input object is exposed through the view.",
+      "id": "DEEP",
+      "passed": true
+    },
+    {
+      "finding": "Original view retained by identity; full parsed prepared object dropped before producer; no mutable catalogue/authority/Gamma/target is passed to saturation.",
+      "id": "STORAGE",
+      "passed": true
+    },
+    {
+      "finding": "Actual prepare_view/propose_least_closure/check_closed_set keyword tick is native resource guidance. Full Source/caller boundaries still enclose each delegation; parser fullguard and final native gates unchanged.",
+      "id": "TICKS",
+      "passed": true
+    },
+    {
+      "finding": "After producer, original view identity plus independently retained binding/target canonical bytes revalidated; checker receives ORIGINAL view/private objects, not producer-returned replacements.",
+      "id": "PRIVATE_AUTHORITY",
+      "passed": true
+    },
+    {
+      "finding": "Whole proposal capped1MiB, canonicalized and newly decoded; candidate independently canonicalized/newly decoded again before trusted check.",
+      "id": "ISOLATION",
+      "passed": true
+    },
+    {
+      "finding": "Full independent closure/target exclusion/whole array flag/counts/candidate digest required against current census/epochs; checker leastness is not assumed.",
+      "id": "POSITIVE_CHECK",
+      "passed": true
+    },
+    {
+      "finding": "Actual candidate mutations cover truncated bits, stale model, bool count, target included, missing actual root, padding when applicable, actual nonroot noncyclic closure edge when available.",
+      "id": "CONTROLS",
+      "passed": true
+    },
+    {
+      "finding": "Only ValueError with correct expected category counts; original invoke caller check in finally, then full boundary OUTSIDE catch. Runtime/resource/custody faults cannot be counted as successful negative controls.",
+      "id": "CATCH",
+      "passed": true
+    },
+    {
+      "finding": "Derived-output mutation requires all original premise bits true, output nonroot and not in its own input tuple. Clearing output leaves that actual row antecedent true. Missing eligible edge is explicit not-applicable, no invented fixture.",
+      "id": "DERIVED_CONTROL",
+      "passed": true
+    },
+    {
+      "finding": "Controls copy canonical candidate each time, leave accepted original certificate unchanged, and revalidate private binding/target before result/output.",
+      "id": "ORIGINAL_REMAINS",
+      "passed": true
+    },
+    {
+      "finding": "Complete exclusive3-file inventory. Canonical body firstLF included in completion SHA/size, completion secondLF, full stdout receipt and later full Source boundary; no accepted prefix.",
+      "id": "OUTPUT",
+      "passed": true
+    },
+    {
+      "finding": "Final original native checks follow output/full boundary and last resource sample, then captured os._exit in live main. Final clock-after-resource check and external true terminal/postprobe/Date gates remain necessary.",
+      "id": "FINAL",
+      "passed": true
+    },
+    {
+      "finding": "BaseException yields bounded failure55 stderr then native exit2. No successful receipt/partial file becomes admission on timeout, signal/nonzero exit or late terminal.",
+      "id": "FAILURE",
+      "passed": true
+    },
+    {
+      "finding": "One owned process/no children => prospective B=T true wait4 terminal peak.512MiB external admission unchanged; internal500 reserve, shared20/failure55/owned60/caller90+1 not relaxed.",
+      "id": "RESOURCES",
+      "passed": true
+    },
+    {
+      "finding": "Result/response Root resource/finite-Horn admission and arithmetic/nonproof/point/full24/trajectory/nativeWang/RL/GCTS activation/advantage flags remain false. Current review is Source-only.",
+      "id": "CLAIMS",
+      "passed": true
+    },
+    {
+      "finding": "Closure result, if later admitted, concerns exact audited finite Horn recipe graph at any word length. No arithmetic/FOL nonprovability or retrospective UNKNOWN relabel; actual controls/resources/closed result not run.",
+      "id": "SCOPE",
+      "passed": true
+    }
+  ],
+  "concrete_blockers": [],
+  "dependency_peer": {
+    "bytes": 2987,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "7715be85e8fc3db15ace03ed5d770f26db030470bac163106f136330b1ae35b7"
+  },
+  "execution": {
+    "Q_payload_decodes": 0,
+    "Source_execs": 0,
+    "native_clock_calls": 0,
+    "project_imports": 0,
+    "tests_or_actuals": 0
+  },
+  "raw_reference_count": 53,
+  "raw_references": [
+    {
+      "location": "contract/Root_protocol",
+      "record": {
+        "bytes": 3822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-protocol-choice-v1.json",
+        "sha256": "2d59a7f60bba39505051cf1d84f3536e9565d2b7e3a94353e92fc81a7d8482c2"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/author_static",
+      "record": {
+        "bytes": 1628,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/author-static-v1.json",
+        "sha256": "508e37f93c7fde33048acbddcc829c46af2a6b478927ce07077a8432c9cebc81"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/inputs/audit_plan",
+      "record": {
+        "bytes": 7052,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "c591627430d4aad3f5381baa4af968658013725ff14c5feee0daf4d47db12935"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/inputs/audit_result",
+      "record": {
+        "bytes": 5595,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-owned-v1/audit-result.json",
+        "sha256": "848f67a03c16f681bd2587f4155b84382fe4f6d88d10c835a8ac98e349f69066"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/inputs/catalogue_admission",
+      "record": {
+        "bytes": 9778,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-audit-disposition-v1.json",
+        "sha256": "14ad69316169c62445700940024e90150cb5172d44998a5b5f71313cb233b564"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/inputs/declaration",
+      "record": {
+        "bytes": 2925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/inputs/preparation",
+      "record": {
+        "bytes": 38957245,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+        "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/inputs/producer_plan",
+      "record": {
+        "bytes": 4464,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/module_contract",
+      "record": {
+        "bytes": 11739,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/Source-contract-v1.json",
+        "sha256": "b42a1516077d5fdfb201b8a3c5eb8924d8667cf12edc8ba8f70bbfa0bef3d16a"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/module_peer",
+      "record": {
+        "bytes": 2987,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "7715be85e8fc3db15ace03ed5d770f26db030470bac163106f136330b1ae35b7"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/producer_sources/catalogue",
+      "record": {
+        "bytes": 10187,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/producer_sources/clean_support",
+      "record": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/producer_sources/controls",
+      "record": {
+        "bytes": 19742,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/producer_sources/intake",
+      "record": {
+        "bytes": 41739,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/producer_sources/kernel",
+      "record": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/producer_sources/point_graph",
+      "record": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/runtime",
+      "record": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/source",
+      "record": {
+        "bytes": 40960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+        "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/sources/checker",
+      "record": {
+        "bytes": 12589,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+        "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/sources/clean_support",
+      "record": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/sources/codec",
+      "record": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/sources/intake",
+      "record": {
+        "bytes": 40960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+        "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "contract/sources/saturation",
+      "record": {
+        "bytes": 3498,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+        "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/Root_protocol",
+      "record": {
+        "bytes": 3822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-protocol-choice-v1.json",
+        "sha256": "2d59a7f60bba39505051cf1d84f3536e9565d2b7e3a94353e92fc81a7d8482c2"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/author_static",
+      "record": {
+        "bytes": 1628,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/author-static-v1.json",
+        "sha256": "508e37f93c7fde33048acbddcc829c46af2a6b478927ce07077a8432c9cebc81"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/inputs/audit_plan",
+      "record": {
+        "bytes": 7052,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "c591627430d4aad3f5381baa4af968658013725ff14c5feee0daf4d47db12935"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/inputs/audit_result",
+      "record": {
+        "bytes": 5595,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-owned-v1/audit-result.json",
+        "sha256": "848f67a03c16f681bd2587f4155b84382fe4f6d88d10c835a8ac98e349f69066"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/inputs/catalogue_admission",
+      "record": {
+        "bytes": 9778,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-audit-disposition-v1.json",
+        "sha256": "14ad69316169c62445700940024e90150cb5172d44998a5b5f71313cb233b564"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/inputs/declaration",
+      "record": {
+        "bytes": 2925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/inputs/preparation",
+      "record": {
+        "bytes": 38957245,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+        "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/inputs/producer_plan",
+      "record": {
+        "bytes": 4464,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/module_peer",
+      "record": {
+        "bytes": 2987,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "7715be85e8fc3db15ace03ed5d770f26db030470bac163106f136330b1ae35b7"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/producer_sources/catalogue",
+      "record": {
+        "bytes": 10187,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/producer_sources/clean_support",
+      "record": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/producer_sources/controls",
+      "record": {
+        "bytes": 19742,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/producer_sources/intake",
+      "record": {
+        "bytes": 41739,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/producer_sources/kernel",
+      "record": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/producer_sources/point_graph",
+      "record": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/runtime",
+      "record": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/source",
+      "record": {
+        "bytes": 40960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+        "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/source_contract",
+      "record": {
+        "bytes": 11732,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/Source-contract-v1.json",
+        "sha256": "9a9c72798dfb9d14a58ff537383908c6ef5709b5a4978bae03987a1f723fce27"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/sources/checker",
+      "record": {
+        "bytes": 12589,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+        "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/sources/clean_support",
+      "record": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/sources/codec",
+      "record": {
+        "bytes": 5806,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/sources/intake",
+      "record": {
+        "bytes": 40960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+        "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "handoff/sources/saturation",
+      "record": {
+        "bytes": 3498,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+        "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "author_static/original_parent",
+      "record": {
+        "bytes": 26854,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v3.py",
+        "sha256": "741d88d0d54b90aeadc6ad193d8906daa8a02eaa5ca5d63255997a358bb6683f"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "author_static/selected_source",
+      "record": {
+        "bytes": 40960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+        "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "author_static/unexecuted_draft",
+      "record": {
+        "bytes": 39200,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v1.py",
+        "sha256": "f70d95b00beae3d77333b19810b433874853e4f21111c3df614a41bdf37ec687"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "whole/handoff",
+      "record": {
+        "bytes": 7420,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/handoff-v1.json",
+        "sha256": "075281a9beb286f75645ce4bfe41f50ad853a4714c53afa8f600aca23f03631c"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "whole/contract",
+      "record": {
+        "bytes": 11732,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/Source-contract-v1.json",
+        "sha256": "9a9c72798dfb9d14a58ff537383908c6ef5709b5a4978bae03987a1f723fce27"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "whole/module-peer",
+      "record": {
+        "bytes": 2987,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "7715be85e8fc3db15ace03ed5d770f26db030470bac163106f136330b1ae35b7"
+      },
+      "whole_SHA_EOF_equal": true
+    },
+    {
+      "location": "whole/parent-audit-intake",
+      "record": {
+        "bytes": 26854,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v3.py",
+        "sha256": "741d88d0d54b90aeadc6ad193d8906daa8a02eaa5ca5d63255997a358bb6683f"
+      },
+      "whole_SHA_EOF_equal": true
+    }
+  ],
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "right-two-finite-Horn-closed-set-intake-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "right-two-finite-Horn-closed-set-intake-Source",
+  "scope_limit": "Finite-Horn any-length recipe-word exclusion only after actual Root resource/wire closure. No positive theorem, arithmetic/FOL nonprovability, current point/trajectory/full24/Wang/GCTS marking activation/RL/advantage. Fixed reviewed synchronous Source/Darwin runtime, not a hostile VM/OS guarantee.",
+  "source": {
+    "bytes": 40960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+    "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+  },
+  "source_contract": {
+    "bytes": 11732,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/Source-contract-v1.json",
+    "sha256": "9a9c72798dfb9d14a58ff537383908c6ef5709b5a4978bae03987a1f723fce27"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "intake": {
+      "bytes": 40960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+      "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+    },
+    "saturation": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  },
+  "unchanged_original_definitions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "ParseBudget"
+  ],
+  "unique_raw_paths": 25
+}

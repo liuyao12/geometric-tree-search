@@ -1,0 +1,203 @@
+{
+  "schema": "right-two-closed-set-reader-saved-data-v1",
+  "presentation_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Authored original checker/codec/family and right-two preparation dependencies, not this closed-set checker, producer or Root intake. This reader uses small saved output/status; it does not rerun closure, semantics or search.",
+  "Root_disposition": {
+    "pin": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/ROOT-closed-set-disposition-v1.json",
+      "sha256": "6f6c991f79cbbc72442729d76c50ad0fadedebc9647781f6d26afd68d2c343cf",
+      "bytes": 12038
+    },
+    "scope": "No finite word over this exact independently audited Horn recipe graph can reach its declared target. Any closed set containing all zero-input outputs and closed under all original rules excludes every possible derivation of an excluded target. This is a finite encoding limitation, not arithmetic/FOL nonprovability or a point-search trajectory.",
+    "flags": {
+      "certificate_verified": true,
+      "finite_Horn_unreachability_admitted": true,
+      "resource_accepted": true,
+      "leastness_verified": false,
+      "arithmetic_nonprovability_accepted": false,
+      "target_proof_accepted": false,
+      "recipient_family_accepted": false,
+      "GCTS_marking_activated": false,
+      "GCTS_advantage_claimed": false,
+      "RL_accepted": false,
+      "full24_solution_accepted": false,
+      "trajectory_accepted": false,
+      "native_Wang_palette_accepted": false,
+      "goal_complete": false
+    }
+  },
+  "observed_counts": {
+    "formula_labels": 11149,
+    "closed_set_members": 5896,
+    "excluded_formula_labels": 5253,
+    "all_relations_checked": 16201,
+    "zero_input_recipe_records": 5480,
+    "target_code": 186
+  },
+  "result": {
+    "GCTS_advantage_claimed": false,
+    "GCTS_marking_activated": false,
+    "RL_accepted": false,
+    "ROOT_finite_Horn_unreachability_admitted": false,
+    "ROOT_resource_accepted": false,
+    "all_applicable_controls_rejected": true,
+    "checker_result": {
+      "RL_accepted": false,
+      "ROOT_resource_accepted": false,
+      "arithmetic_nonprovability_accepted": false,
+      "binding": {
+        "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "formula_registry_sha256": "9977d671409f105cea8aab1999ea400c04ba98cfceb6ffe0893d7a0a65c26aab",
+        "model_epoch": "3fc552c0febf60a7817dcce0abce1bc3c0fa7b19b2a9498b37803b6d6a212d52",
+        "primitive_authority_epoch": "5bc648a9a454250b20bfb93ac018e3691b992443c773dd04ba07ec81a584ea52"
+      },
+      "candidate_sha256": "bd35275ed802ca6964dc9eedbd1c66d8bb2ccab4e964d98cc989b844bad9d0ee",
+      "closed_set_verified": true,
+      "closure_relations_checked": 16201,
+      "finite_horn_unreachable": true,
+      "formula_count": 11149,
+      "full24_accepted": false,
+      "native_accepted": false,
+      "original_target_proved": false,
+      "point_state_accepted": false,
+      "recipe_count": 16201,
+      "relation_sha256": "02c7eb2fa745d0bd7b2c8902ce11cd064f1ea9ff36cdd7646be14fd905880580",
+      "schema": "finite-horn-closed-set-check-result-v1",
+      "scope": "Exact audited finite Horn recipe graph at any word length only; not arithmetic nonprovability, bounded search exhaustion or point trajectory.",
+      "set_member_count": 5896,
+      "target_code": 186,
+      "target_excluded": true,
+      "trajectory_accepted": false,
+      "version": "audited-finite-Horn-closed-set-checker-Source-v1",
+      "whole_supplied_recipe_array_checked": true,
+      "zero_port_records_checked": 5480
+    },
+    "context_binding": {
+      "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "formula_registry_sha256": "9977d671409f105cea8aab1999ea400c04ba98cfceb6ffe0893d7a0a65c26aab",
+      "model_epoch": "3fc552c0febf60a7817dcce0abce1bc3c0fa7b19b2a9498b37803b6d6a212d52",
+      "primitive_authority_epoch": "5bc648a9a454250b20bfb93ac018e3691b992443c773dd04ba07ec81a584ea52"
+    },
+    "controls": [
+      {
+        "control": "truncated-bits",
+        "rejected": true,
+        "rejection": "canonical exact-length lower-case bitvector"
+      },
+      {
+        "control": "stale-binding",
+        "rejected": true,
+        "rejection": "exact candidate schema and actual caller authority"
+      },
+      {
+        "control": "boolean-formula-count",
+        "rejected": true,
+        "rejection": "complete counts/target, no Boolean indices or truncated arrays"
+      },
+      {
+        "control": "target-included",
+        "rejected": true,
+        "rejection": "declared target bit must be false"
+      },
+      {
+        "control": "missing-zero-input-output",
+        "rejected": true,
+        "rejection": "Horn closure violation at original recipe 10721"
+      },
+      {
+        "control": "nonzero-padding",
+        "rejected": true,
+        "rejection": "zero high padding bits"
+      },
+      {
+        "control": "nonzero-input-closure-violation",
+        "rejected": true,
+        "rejection": "Horn closure violation at original recipe 11"
+      }
+    ],
+    "full24_accepted": false,
+    "immutable_view_only_exposed_to_producer": true,
+    "invocation_id": "right-two-finite-Horn-closed-set-20261015-v1",
+    "native_Wang_palette_accepted": false,
+    "producer_observations_untrusted": {
+      "RL_accepted": false,
+      "ROOT_resource_accepted": false,
+      "arithmetic_nonprovability_accepted": false,
+      "complete_sweeps_claimed": 4,
+      "declaration_value_sha256": "ae8aacb2b659ba2d2438c5bc640ae1f6e7fccb8b056f138bde6a6d1e2151449f",
+      "finite_horn_unreachable_accepted": false,
+      "full24_accepted": false,
+      "known_count_claimed": 5896,
+      "least_fixed_point_claimed": true,
+      "native_accepted": false,
+      "point_state_accepted": false,
+      "proof_accepted": false,
+      "recipe_visits_claimed": 64804,
+      "schema": "untrusted-finite-horn-least-closure-result-v1",
+      "target_in_set_claimed": false,
+      "trajectory_accepted": false,
+      "version": "untrusted-finite-Horn-least-closure-Source-v1"
+    },
+    "recipient_family_accepted": false,
+    "schema": "right-two-finite-Horn-closed-set-result-v1",
+    "scope": "Checked finite-Horn closed set only; any-length recipe-word exclusion, not arithmetic nonprovability, point search exhaustion or a positive theorem.",
+    "target_proof_accepted": false,
+    "trajectory_accepted": false
+  },
+  "certificate": {
+    "binding": {
+      "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "formula_registry_sha256": "9977d671409f105cea8aab1999ea400c04ba98cfceb6ffe0893d7a0a65c26aab",
+      "model_epoch": "3fc552c0febf60a7817dcce0abce1bc3c0fa7b19b2a9498b37803b6d6a212d52",
+      "primitive_authority_epoch": "5bc648a9a454250b20bfb93ac018e3691b992443c773dd04ba07ec81a584ea52"
+    },
+    "bit_order": "lsb0-formula-code",
+    "bits_hex": "fffedffffb7fffeffffdbffff7fffedf01000200e00f1080030008000000000000000000000000000000000000000000000800c0ffffeffffdbffff7fffedffffb7fffefff1d00200000fe000138008000000000000000000000000000000000000000000000800000fcffffffffffffffffffffffffffffffffffff1f4000fdffffffff1f0000fdffffffff3f0000faffffffff7f0002f4ffffffffff0000e8ffffffffff01040000001000000000000000fdffffffff3f000000fdffffffff3f001000fdffffffff3f002000fdffffffff3f8000faffffffff7f0002f4ffffffffff0004e0ffffffffff0100c0ffffffffff0100c0ffffffffff032080ffffffffff070000ffffffffff0f200000008000000000000000e0ffffffffff010000e0ffffffffff010001e0ffffffffff010002e0ffffffffff0108c0ffffffffff032080ffffffffff074000ffffffffff0f0000feffffffff1f0000fcffffffff1f0002fcffffffff3f0000f8ffffffff7f00010000000400000000000000ffffffffff0f000000ffffffffff0f001000ffffffffff0f002000ffffffffff0f8000feffffffff1f0002fcffffffff3f0004fcffffffff7f0000f8ffffffffff0000f0ffffffffff0140e0ffffffffff0100e0ffffffffff03080000002000000000000000fcffffffff7f000000fcffffffff7f000001fcffffffff7f000002fcffffffff7f0008f8ffffffffff0020f0ffffffffff0140c0ffffffffff030080ffffffffff070000ffffffffff0f0004feffffffff1f0000fcffffffff1f400000000001000000000000c0ffffffffff030000c0ffffffffff030010c0ffffffffff030020c0ffffffffff038080ffffffffff070002ffffffffff0f20000108400002108000042000010800000000000000000000000000000000000000000000000000000000000000021080000420000108400002108000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000081ffffffffff07000080ffffffffff07000080ffffffffff07000082ffffffffff07000080ffffffffff0710000000400000000000000000f8ffffffff3f00000000feffffffff1f00008000ffffffffff0f00008080ffffffffff07000081ffffffffff07000082ffffffffff07000082ffffffffff07000080ffffffffff07000080ffffffffff07000084ffffffffff07000080ffffffffff0710000000400000000000000000f8ffffffff7f00000000fcffffffff1f00000001ffffffffff0f00000081ffffffffff07000082ffffffffff07000084ffffffffff07000284ffffffffff07000480ffffffffff07000880ffffffffff07001088ffffffffff07002080ffffffffff0710000000400000000000000004f8ffffffff7f00000004fcffffffff3f00000004feffffffff01000040f0ffffffffff000080f0ffffffffff000000f1ffffffffff008000f1ffffffffff000001f0ffffffffff000002f0ffffffffff000004f2ffffffffff000008f0ffffffffff0002000000080000000000000001ffffffffff0f00000081ffffffffff07000000c1ffffffffff03000000e1ffffffff1f000020feffffffff1f000040feffffffff1f4080fcffffffff3f0001f8ffffffff7f0004f0ffffffffff0010e8ffffffffff0140c0ffffffffff03080000002000000000000010f8ffffffff7f000020f8ffffffff7f000040f8ffffffff7f000080f8ffffffff7f0000f2ffffffff0f0080feffffffff1f8000fdffffffff3f0002f8ffffffff7f0008f0ffffffffff0020f0ffffffffff0180c0ffffffffff03080000002000000000000020f8ffffffff7f000040f8ffffffff7f000080f8ffffffff7f000000f9ffffffff7f0000f4ffffffffff0000f0ffffffff1f",
+    "formula_count": 11149,
+    "recipe_count": 16201,
+    "relation_sha256": "02c7eb2fa745d0bd7b2c8902ce11cd064f1ea9ff36cdd7646be14fd905880580",
+    "schema": "finite-horn-closed-set-candidate-v1",
+    "target_code": 186
+  },
+  "output_raw_pins": [
+    {
+      "bytes": 3398,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/closed-set-owned-v1/closed-set-certificate.json",
+      "sha256": "3a7cd7db1adfce4545109b4c6d7cd1350afb295dfda501f6a8884434f78c1308"
+    },
+    {
+      "bytes": 3811,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/closed-set-owned-v1/closed-set-result.json",
+      "sha256": "82e3ada780aa90c281606b4c119e7e204f40b6dcdb08c82ac412babfdc0147ae"
+    },
+    {
+      "bytes": 6568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-ROOT-20261015/closed-set-owned-v1/response.jsonl",
+      "sha256": "1751b91940bd3f1fab9b451959f9e6cb917f8be0535ca4c82f08d2dfce6b0a5c"
+    }
+  ],
+  "observed_costs": {
+    "native_caller_elapsed_ns": 7822328000,
+    "native_launch_to_postprobe_ns": 7849861000,
+    "native_single_worker_peak_bytes": 340312064,
+    "tool_date_elapsed_ms": 23064
+  },
+  "prior_separate_stage_postprobe_ns": {
+    "preparation": 12031477000,
+    "independent_catalogue_audit": 18438472000
+  },
+  "source_obstruction_note": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-finite-grammar-diagnosis-source-20261015/diagnosis-v2.json",
+    "sha256": "66c641c7d0dd2f407cf90b5de46aa7b2820a54dbd1d7e2245df34a74e72deca9",
+    "bytes": 11126
+  },
+  "source_obstruction_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-finite-grammar-diagnosis-independent-source-20261015/logical-review-v1.json",
+    "sha256": "d0b4c4cbe1c0f684c23316aa0a57121aef3ab184742ffb7534999642a77facd0",
+    "bytes": 11316
+  },
+  "scientific_or_Source_calls": 0,
+  "Q_payload_decodes": 0,
+  "clocks_tests_actuals": 0
+}

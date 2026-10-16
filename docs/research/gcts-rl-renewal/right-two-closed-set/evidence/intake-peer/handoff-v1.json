@@ -1,0 +1,58 @@
+{
+  "actual_activation": false,
+  "check_count": 30,
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 34776,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-independent-source-20261015/findings-v1.json",
+    "sha256": "a91775d3826fa28d3eb3bb9eeef2012fd1b86befcd30c23f7be4b4168d58c09d"
+  },
+  "raw_reference_count": 53,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "right-two-finite-Horn-closed-set-intake-independent-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 40960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+    "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+  },
+  "source_contract": {
+    "bytes": 11732,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/Source-contract-v1.json",
+    "sha256": "9a9c72798dfb9d14a58ff537383908c6ef5709b5a4978bae03987a1f723fce27"
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "intake": {
+      "bytes": 40960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-source-20261015/closed_set_intake_v2.py",
+      "sha256": "96e27192243fd6ce51fbe93461feeafdde2055be34f0623f8d4f47c6b20342dd"
+    },
+    "saturation": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  },
+  "typed_review": {
+    "bytes": 3637,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-closed-set-intake-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "0d3c04262b3b8cbfa8b0496ef5aa70878e5e42fc8e2dbfd7fd9c732b13ec449e"
+  },
+  "unique_raw_paths": 25
+}

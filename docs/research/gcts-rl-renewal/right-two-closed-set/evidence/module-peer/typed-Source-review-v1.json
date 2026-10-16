@@ -1,0 +1,46 @@
+{
+  "actual_activation": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored only the cf7c declaration/provenance auditor binding successor, ordinary consumers and related prior custody code. Reviewer did not author these generic Horn modules, original2db/43bc/1717 algorithms or Root cold integration. Prior logical obstruction review is not the basis for accepting any candidate.",
+  "check_count": 26,
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 17813,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-independent-source-20261015/findings-v1.json",
+    "sha256": "dc9c4ccca4a991dd029b1c2044cd8b6cd9b133573e9ab473123fffda58d09da9"
+  },
+  "mathematical_condition": "If a future actual independent checker accepts a whole authenticated closed set excluding target, it proves target unreachable in that exact finite Horn recipe graph at any word length. This Source pass is not that acceptance.",
+  "raw_reference_count": 18,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "generic-finite-Horn-closed-set-certificate-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "generic-finite-Horn-closed-set-certificate-Source",
+  "scope_limit": "Complete pure-module Source logic/custody ABI only; original private immutable view/authority, whole authenticated primitive catalogue and caller Source/native boundaries mandatory. No function execution, actual closed certificate, resource admission, point/full24/trajectory or arithmetic nonprovability.",
+  "source": {
+    "bytes": 12589,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+    "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+  },
+  "source_contract": {
+    "bytes": 11739,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/Source-contract-v1.json",
+    "sha256": "b42a1516077d5fdfb201b8a3c5eb8924d8667cf12edc8ba8f70bbfa0bef3d16a"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "checker": {
+      "bytes": 12589,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/finite_horn_closed_set_checker_v1.py",
+      "sha256": "f4411df325e0ae2994335458e2e2d27955748c82fd3c36cdd49cc056744d2857"
+    },
+    "untrusted_producer": {
+      "bytes": 3498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/finite-horn-closed-set-certificate-source-20261015/untrusted_finite_horn_closure_v1.py",
+      "sha256": "3f7b0c69ce17659bcfd2ae52f31e205318cb6ef45f7751d559149685d080cc13"
+    }
+  },
+  "unique_raw_paths": 10
+}
