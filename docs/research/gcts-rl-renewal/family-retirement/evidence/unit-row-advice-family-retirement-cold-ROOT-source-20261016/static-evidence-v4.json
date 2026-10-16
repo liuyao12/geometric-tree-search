@@ -1,0 +1,39 @@
+{
+  "Source17_input2_sixlimits": true,
+  "all_nested_functions_AST_exact": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 5,
+  "metadata_recovery": "Initial helper expected old controls cases field; current capsule declares new_cases plus preserved22/API expected30. Corrected metadata assembly and recovered byte-identical already-written Source; no scientific execution or Source change.",
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+    "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+  },
+  "source_contract": {
+    "bytes": 27591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/Source-contract-v4.json",
+    "sha256": "439d2d6dcb3b6ae3d20a8247709b3d1c04ab27ab26a640c3c9cabe1fd0b5e59e"
+  },
+  "top_level_helpers_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

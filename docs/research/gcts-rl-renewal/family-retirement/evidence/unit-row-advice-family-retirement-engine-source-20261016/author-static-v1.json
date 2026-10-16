@@ -1,0 +1,87 @@
+{
+  "actuals": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "base": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "checks": [
+    {
+      "id": "current_exact_source",
+      "passed": true
+    },
+    {
+      "id": "whole_AST_compile_only",
+      "passed": true
+    },
+    {
+      "id": "full_raw_forward_and_inverse",
+      "passed": true
+    },
+    {
+      "id": "exact_three_changed_methods",
+      "passed": true
+    },
+    {
+      "id": "no_added_removed_callables",
+      "passed": true
+    },
+    {
+      "id": "thirty_two_other_callable_AST_and_body_bytes_exact",
+      "passed": true
+    },
+    {
+      "id": "unchanged_global_decision_and_scheduler",
+      "passed": true
+    },
+    {
+      "id": "unchanged_search_checkpoint_rollback",
+      "passed": true
+    },
+    {
+      "id": "unchanged_domain_c354_receipt_fallback_transition_provenance",
+      "passed": true
+    },
+    {
+      "id": "any_rejection_precedes_old_selected_continuation",
+      "passed": true
+    },
+    {
+      "id": "definite_rejection_pure_plan_clears_family",
+      "passed": true
+    },
+    {
+      "id": "at_most_one_fresh_adviser_call_per_branch",
+      "passed": true
+    },
+    {
+      "id": "no_preference_store_in_selector",
+      "passed": true
+    },
+    {
+      "id": "no_new_exception_catch",
+      "passed": true
+    },
+    {
+      "id": "same_imports_no_clocks_project_donor",
+      "passed": true
+    },
+    {
+      "id": "all_original_resources_and_functions_unexecuted",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "meaning": "Source/raw/AST assertions only; no runtime behavior or fit qualification.",
+  "project_imports": 0,
+  "schema": "unit-row-advice-family-retirement-engine-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "source_only": true,
+  "tests": 0
+}

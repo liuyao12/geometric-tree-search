@@ -1,0 +1,27 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored membership/fallback and prior diagnostic components, not adviser/c354; details in findings.",
+  "disposition": "CONDITIONAL_SOURCE_PASS_EXTERNAL_BRANCH_ANCHOR_AND_FALLBACK_REQUIRED",
+  "findings": {
+    "bytes": 13073,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-independent-source-20261016/findings-v1.json",
+    "sha256": "1d0ec06465a54ab670b40739d9a44fe83ca6d5337b225a7d25dfe10a7c0dbddb"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-goal-branch-adviser-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-generic-goal-branch-adviser-Source",
+  "source": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "source_contract": {
+    "bytes": 12193,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+    "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

@@ -1,0 +1,110 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_adviser_return": {
+    "independently_validated": true,
+    "limits": {
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "proposals": 6,
+    "reason": null,
+    "status": "READY",
+    "work": {
+      "candidate_members_checked": 12,
+      "definite_profile_rejections": 0,
+      "demand_count": 5,
+      "descriptor_steps": 18,
+      "duplicate_anchors": 1,
+      "fallback_prefix_candidates": 3,
+      "guarded_steps": 9526,
+      "incompatible_unions": 0,
+      "rounds": 3,
+      "term_count": 1,
+      "unique_anchors": 6,
+      "universal_count": 5
+    }
+  },
+  "actual_closed": true,
+  "additional_coverage_gaps": [],
+  "aggregate_B_bytes": 59899904,
+  "all_advice_consumer_gates_qualified": true,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 13.635,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "No full reference graph/trajectory conformance or arbitrary all-six EOF authority.",
+    "Fixed24unit rows, no fractional/shared positive support or universal fixed Wang palette.",
+    "Hand-written advice only, no learned/RL/lemma inventory result."
+  ],
+  "controls_accepted": true,
+  "current_goal_turn": "progress",
+  "family_retirement_evidence": {
+    "abandoned_pending_keys": 2,
+    "abandonment_event_sha256": "cb367e684df15a58ad3603267f84382ae2b6a21d559d2a2d0e08b6d96a0cd3d8",
+    "actual_rejected_keys": 1,
+    "all_eight_new_cases_reconciled": true,
+    "different_legal_future_key_checked": true,
+    "later_fresh_calls": 2,
+    "new_nonempty_READY_replacement_not_directly_exercised": true,
+    "same_branch_fresh_calls": 1
+  },
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "46086a07cc3837920753dc5f55da9214ebc4e8ac9c554eae9d816ad6f581009f",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "8c6610637e6584fc7c43089766f7b3c06e1d3d6a9cc0cc52c70b3b7ac0e397cd"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+    "sha256": "f61fa46210603cfa669be9461b564c2525d37f18199d5a9268d2ca17f56f6d97"
+  },
+  "native_launch_to_postprobe_ns": 13460077000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 13429467000,
+  "old_UNKNOWNs_and_skips_preserved": true,
+  "outputs": [
+    {
+      "bytes": 320867,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "sha256": "ca8752bae5af5dc64ef2c8ad1473c5aa3f80c21dbfaa172132719bb5a23c9aea"
+    },
+    {
+      "bytes": 7073,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+      "sha256": "4cceb11b70e0477e9f09bb7e6032bef6fa87511cdb4cd3288321621dd2e07106"
+    }
+  ],
+  "passed_cases": 30,
+  "plan": {
+    "bytes": 7996,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "aaa73750a5c84cd27c7ef8fb4fa90ca5ca92d47e47c8fd65153dc7a06127a1ca"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved canonical records/native/source/wire/receipt hashes and observed field equality only; no late project/checker/engine/model/word replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-advice-consumer-controls-disposition-v4",
+  "scope": "Constructed original-language30-case adviser/currentconsumer controls, genuine READY independently checked wholebatch, anchor-only placement, pending selection, remote rejection/canonical fallback, forced-fill retirement and owned snapshot rollback. Explicit malformed/interruption/hint-suppression seams; no target discovery/full trajectory conformance.",
+  "selected_family": {
+    "anchor_row": 0,
+    "future_rows": [
+      2,
+      8
+    ],
+    "scheme": "GENERIC_UI_MP",
+    "snapshot_sha256": "091d425d67fbfbbc95d04111df82e0edeb824e06f8251b1bd011ae6678de8f9f"
+  },
+  "skipped_cases": 0,
+  "status": "QUALIFIED_LOCAL_CONSUMER_CONTROLS",
+  "terminal_T_bytes": 59899904
+}

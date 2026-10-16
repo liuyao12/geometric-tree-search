@@ -1,0 +1,37 @@
+{
+  "edits": [
+    {
+      "after": "{'bytes': 52581, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py', 'sha256': '0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8'}",
+      "before": "{'bytes': 51786, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py', 'sha256': 'dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84'}"
+    },
+    {
+      "after": "{'bytes': 48798, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py', 'sha256': '183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e'}",
+      "before": "{'bytes': 33442, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py', 'sha256': 'dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3'}"
+    },
+    {
+      "after": "VERSION='unit-row-advice-family-retirement-cold-v4'",
+      "before": "VERSION='unit-row-advised-domain-horizon-cold-v3'"
+    },
+    {
+      "after": "SCOPE='unit-row-advice-family-retirement-cold-Source'",
+      "before": "SCOPE='unit-row-advised-domain-horizon-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-advice-family-retirement-cold-Source-contract-v4'",
+      "before": "contract['schema'] == 'unit-row-advised-domain-horizon-cold-Source-contract-v3'"
+    }
+  ],
+  "entire_inverse_recovers_parent": true,
+  "parent": {
+    "bytes": 49585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/unit_row_advised_domain_horizon_cold_v3.py",
+    "sha256": "98524052a3682a3374d7cf4988e7e74856c6e12e2de7b5f4a4973664ff411097"
+  },
+  "schema": "ROOT-family-retirement-cold-Source-delta-v4",
+  "scope": "Two component pins, own VERSION/SCOPE/consumed schema only. All adviser adapter defaults, model, native gates and checking unchanged.",
+  "source": {
+    "bytes": 49615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+    "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+  }
+}

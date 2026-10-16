@@ -1,0 +1,13 @@
+{
+  "schema": "ROOT-saved-console-count-correction-v1",
+  "scope": "Saved metadata only, no scientific rerun or record mutation.",
+  "reason": "Adapted closure's final diagnostic print retained the old literal passed22. Its full30-case assertions and saved disposition passed_cases30 were already correct. Preserve executed helper unchanged; this note corrects only that console summary.",
+  "authoritative_disposition": {
+    "sha256": "bf90e7779818c1109f4d152957dd0d44b0fe2cf671a7931afc9cb55d01338c47",
+    "bytes": 4864,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-disposition-v1.json"
+  },
+  "passed": 30,
+  "skipped": 0,
+  "scientific_execution": false
+}

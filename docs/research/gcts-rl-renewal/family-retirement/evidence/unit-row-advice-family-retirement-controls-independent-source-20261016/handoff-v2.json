@@ -1,0 +1,39 @@
+{
+  "authorship_disclosure": "Engine6/c6fc/c354/transition dependency author, not harness author.",
+  "checks": 27,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_RUNTIME_ADMISSION",
+  "findings": {
+    "bytes": 21585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/findings-v2.json",
+    "sha256": "42a0b8065d5c6de1de00db2d68fa6b0d8f1217cdebb7bde592d90f4f81226910"
+  },
+  "metadata_correction": "Whole Source line count734->709 in check wording only; exact Source bytes and current conditional PASS unchanged.",
+  "preserved_handoff": {
+    "bytes": 1836,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/handoff-v1.json",
+    "sha256": "73529846de4d6049221bc0a05a85c7e488aaa8594d0ae767341201491e13c9db"
+  },
+  "remaining": "Fresh Root all30 actual/no essential gaps/current caller and unchanged resource/wire gates; no fit/target prediction.",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-advice-family-retirement-controls-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advice-family-retirement-controls-Source",
+  "scoped_blockers": 0,
+  "source": {
+    "bytes": 48798,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+    "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+  },
+  "source_contract": {
+    "bytes": 11706,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "73cb71dd586ef336182443f9d7277583f500bf53a49b636177d00da476d8a0b9"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 6816,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "2d2fd107c28fb83c0fb37ae6a08c084f59c9361d310d72a36d8dbd2069838345"
+  }
+}

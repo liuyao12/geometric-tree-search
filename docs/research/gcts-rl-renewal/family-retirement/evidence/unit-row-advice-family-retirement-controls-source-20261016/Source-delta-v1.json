@@ -1,0 +1,104 @@
+{
+  "offset_edits": [
+    {
+      "after": "",
+      "before": "goal-",
+      "new_end": 359,
+      "new_start": 359,
+      "old_end": 364,
+      "old_start": 359
+    },
+    {
+      "after": "whole-f",
+      "before": "",
+      "new_end": 373,
+      "new_start": 366,
+      "old_end": 371,
+      "old_start": 371
+    },
+    {
+      "after": "mily-r",
+      "before": "dv",
+      "new_end": 380,
+      "new_start": 374,
+      "old_end": 374,
+      "old_start": 372
+    },
+    {
+      "after": "ti",
+      "before": "",
+      "new_end": 383,
+      "new_start": 381,
+      "old_end": 375,
+      "old_start": 375
+    },
+    {
+      "after": "ement",
+      "before": "sarial",
+      "new_end": 389,
+      "new_start": 384,
+      "old_end": 382,
+      "old_start": 376
+    },
+    {
+      "after": "1",
+      "before": "3-smaller-generic-horizon",
+      "new_end": 401,
+      "new_start": 400,
+      "old_end": 418,
+      "old_start": 393
+    },
+    {
+      "after": "\n# Preserve the ENTIRE reviewed 22-case function above, including all assertions.\n# The observing callbacks below are control-only data collection/fault seams.\n_run_prior_controls = run_controls\n\n\ndef run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,\n                 fallback,certify_fallback,tick):\n  \"\"\"Run the unchanged22 then eight prospective whole-family lifecycle checks.\n\n  Reuse actual old remote/continuation work; no duplicate root adoption/search.\n  Only three short public searches are added, from a genuinely owned checkpoint\n  captured at a completed independent pending-rejection callback. No private\n  cache/family mutation, fabricated candidate universe or EOF is used.\n  \"\"\"\n  records=[];extra=[];evidence={}\n  local='Actual original-language independent pending rejection and public owned transaction; no proof, graph, trajectory or benefit authority.'\n  seam='Explicit native-first callback observation/fault/quota control, never candidate/degree/EOF or logical authority.'\n  labels=('whole-family-abandoned-with-different-future-key-remaining',\n    'one-fresh-batch-at-same-rejected-BRANCH',\n    'abandoned-future-members-never-installed-or-excluded',\n    'successful-pending-continuity-preserved',\n    'rejection-parent-and-owned-inner-rollback-exact',\n    'fresh-replacement-ValueError-propagates-without-family-commit',\n    'fresh-replacement-Timeout-UNKNOWN-no-exclusion',\n    'later-BRANCH-reconsiders-fresh-advice-after-abandonment')\n  def passed(name,value,scope=local):\n    tick();extra.append({'case':name,'status':'PASSED','observed':copy.deepcopy(value),'scope':scope})\n  def skip(name,reason):\n    extra.append({'case':name,'status':'SKIPPED','observed':{'reason':str(reason)},\n      'scope':'Essential family-retirement coverage not exercised; unqualified.'})\n  def observing_factory(*,initial_state=None,degree_proposer=degree_proposer,\n                        fallback=fallback,certify_fallback=certify_fallback,\n                        branch_adviser=None,validate_advice=None,tick):\n    if branch_adviser is None:\n      return engine_factory(initial_state=initial_state,degree_proposer=degree_proposer,\n        fallback=fallback,certify_fallback=certify_fallback,\n        branch_adviser=None,validate_advice=None,tick=tick)\n    record={'mode':'PRIOR22','engine':None,'adviser_calls':[], 'validations':[],\n      'token':None,'snapshot':None,'checkpoint_call_index':None,'later_calls':[], 'stop_snapshot':None}\n    records.append(record)\n    prior_degree,prior_adviser,prior_validator=degree_proposer,branch_adviser,validate_advice\n    def observed_degree(**kwargs):\n      tick()\n      if record['mode']=='PRIOR22':return prior_degree(**kwargs)\n      if record['mode']=='LATER' and len(record['later_calls'])>=2:\n        record['stop_snapshot']=record['engine'].state_snapshot()\n        raise CallbackExhausted('declared stop after two real fresh advised/fallback branches')\n      # Genuine original degree endpoint after the completed old harness; this\n      # bypasses only its now-finished observer, never the candidate language.\n      return degree_proposer_endpoint(**kwargs)\n    def observed_adviser(**kwargs):\n      tick();entry={'mode':record['mode'],'state':copy.deepcopy(kwargs['state']),\n        'decision':copy.deepcopy(kwargs['decision'])}\n      record['adviser_calls'].append(entry)\n      if record['mode']=='VALUE_ERROR':\n        raise ValueError('declared replacement adviser ValueError after definite rejection')\n      if record['mode']=='TIMEOUT':\n        raise CallbackExhausted('declared replacement adviser Timeout after definite rejection')\n      if record['mode']=='LATER':\n        value=adviser(**kwargs,maximum_work=1,maximum_terms=1,\n          maximum_demands=1,maximum_rounds=1,maximum_proposals=1)\n        need(value['status']=='UNKNOWN','genuine quota batch diagnostic only')\n        record['later_calls'].append(entry)\n      else:value=prior_adviser(**kwargs)\n      entry['actual_return']=copy.deepcopy(value)\n      return value\n    def observed_validator(**kwargs):\n      tick();value=prior_validator(**kwargs) if record['mode']=='PRIOR22' else validate_advice_endpoint(**kwargs)\n      entry={'mode':record['mode'],'state':copy.deepcopy(kwargs['state']),\n        'decision':copy.deepcopy(kwargs['decision']),'batch':copy.deepcopy(kwargs['batch']),\n        'actual_receipt':copy.deepcopy(value),'adviser_calls_before':len(record['adviser_calls'])}\n      record['validations'].append(entry)\n      if (record['mode']=='PRIOR22' and value['mode']=='PENDING_KEYS' and value['rejections']\n          and record['token'] is None):\n        # Read-only public calls at stable pure branch-selection boundary. Do\n        # not place/rollback/reenter search while this callback is active.\n        record['snapshot']=record['engine'].state_snapshot()\n        record['token']=record['engine'].checkpoint()\n        record['checkpoint_call_index']=len(record['validations'])-1\n      return value\n    engine=engine_factory(initial_state=initial_state,degree_proposer=observed_degree,\n      fallback=fallback,certify_fallback=certify_fallback,\n      branch_adviser=observed_adviser,validate_advice=observed_validator,tick=tick)\n    record['engine']=engine\n    return engine\n\n  degree_proposer_endpoint=degree_proposer\n  validate_advice_endpoint=validate_advice\n  result=_run_prior_controls(language=language,engine_factory=observing_factory,adviser=adviser,\n    validate_advice=validate_advice,degree_proposer=degree_proposer,fallback=fallback,\n    certify_fallback=certify_fallback,tick=tick)\n  need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')\n  candidates=[r for r in records if r['token'] is not None]\n  reason=None\n  if len(candidates)!=1:reason='Need one genuine current pending-rejection checkpoint from original remote case.'\n  for name in ('remote_search','remote_receipts','remote_fixture','pending_continuation_search'):\n    if name not in result['artifacts']:reason='Original22 did not produce required actual '+name+'; no fabricated family.'\n  if reason is not None:\n    for label in labels:skip(label,reason)\n  else:\n    record=candidates[0];engine=record['engine'];outer=engine.checkpoint();outer_snapshot=engine.state_snapshot()\n    inner=record['snapshot'];token=record['token']\n    rejection=record['validations'][record['checkpoint_call_index']]\n    pending=inner['pending_preferences'];request=rejection['batch'];receipt=rejection['actual_receipt']\n    family_id=pending['family_id'];rejected={canonical(x['key']) for x in receipt['rejections']}\n    remaining=[k for k in pending['pending_keys'] if canonical(k) not in rejected]\n    remote=result['artifacts']['remote_search'];continuity=result['artifacts']['pending_continuation_search']\n    events=[x for x in remote['events'] if x['kind']=='ADVICE' and x['abandoned_family'] is not None]\n    need(events,'actual engine emitted abandonment inside normal child adoption')\n    event=events[-1];abandoned=event['abandoned_family']\n    need(abandoned['schema']=='unit-row-advisory-family-abandonment-v1'\n      and abandoned['family_id']==family_id and abandoned['branch_row']==request['decision']['row']\n      and abandoned['reason']=='DEFINITE_CURRENT_PENDING_MEMBER_REJECTION'\n      and {canonical(k) for k in abandoned['pending_keys']}=={canonical(k) for k in pending['pending_keys']}\n      and {canonical(k) for k in abandoned['rejected_keys']}==rejected and remaining,\n      'rejection abandons ALL actual still-pending keys including a different future key')\n    # Establish literal current legality of a different future key, without\n    # claiming that its row was selected by the global scheduler now.\n    later=remaining[0];later_row=later['translation'][1]\n    later_request={'schema':'unit-row-pending-preference-request-v1','binding':copy.deepcopy(language.binding),\n      'state_sha256':digest(rejection['state']),'decision':{'kind':'BRANCH','row':later_row},\n      'family_id':family_id,'keys':[copy.deepcopy(later)]}\n    later_receipt=validate_advice(state=copy.deepcopy(rejection['state']),decision=later_request['decision'],\n      batch=later_request,tick=tick)\n    need(later_receipt['selection'] is not None and later_receipt['rejections']==[],\n      'different unfilled future key still whole-point legal; family abandonment is advisory cleanup')\n    evidence['actual_rejection']={**rejection,'owned_inner_snapshot':inner,'abandonment_event':event,\n      'different_future_key_component_check':{'request':later_request,'receipt':later_receipt,\n        'scope':'Component point legality only; not current global scheduling authority.'}}\n    passed(labels[0],{'artifact':'family_retirement.actual_rejection','old_family_keys':len(pending['pending_keys']),\n      'actually_rejected_keys':len(rejected),'different_legal_key':later})\n    calls=record['adviser_calls'][rejection['adviser_calls_before']:]\n    matching=[x for x in calls if x['mode']=='PRIOR22' and canonical(x['state'])==canonical(rejection['state'])\n      and canonical(x['decision'])==canonical(rejection['decision'])]\n    need(len(matching)==1 and 'actual_return' in matching[0],\n      'exactly one real fresh advice callback after definite rejection at same selected BRANCH')\n    need(event['mode']=='CANONICAL_FALLBACK' and event['pending_preferences'] is None,\n      'actual old control suppresses fresh hints, whole abandoned family absent in child plan')\n    evidence['same_branch_fresh_batch']=matching[0]\n    passed(labels[1],{'artifact':'family_retirement.same_branch_fresh_batch','fresh_calls':len(matching)})\n    need(not any(x['kind']=='EXCLUDE' for x in remote['events']), 'no rejection/UNKNOWN child exclusion')\n    actual_last=remote['last_observed_state'];rebuilt=[]\n    for r in actual_last['selected']:\n      p=r['type_preimage'];row=r['translation'][1]\n      rebuilt.append(tile(language,p['primitive_witness'],p['ordered_premise_formulas'],\n        [row+d for d in p['ordered_offsets']],row,tick))\n    need(canonical(state(language,rebuilt,tick,actual_last['excluded']))==canonical(actual_last),\n      'actual observed child point state independently recomposes selected placements only')\n    need(all(not any(canonical(k)==canonical({f:r[f] for f in ('tile_type_id','type_preimage','translation')})\n      for r in actual_last['selected']) for k in remaining),'no other future key silently installed')\n    passed(labels[2],{'remote_search_artifact':'remote_search','actual_child_state':actual_last,\n      'remaining_keys_never_installed':remaining,'EXCLUDE_events':0})\n    successful=[x for x in continuity['events'] if x['kind']=='ADVICE' and x['mode']=='PENDING_KEYS']\n    need(successful and all(x['abandoned_family'] is None for x in successful),\n      'genuine successful continuation retained, not whole-family abandonment on ordinary progress')\n    passed(labels[3],{'continuity_artifact':'pending_continuation_search','actual_successful_events':successful})\n    engine.rollback(token);need(canonical(engine.state_snapshot())==canonical(inner),'owned nonempty inner token restores exactly')\n    before=engine.state_snapshot()\n    need(remote['root_snapshot_sha256']==remote['final_snapshot_sha256'], 'old remote search whole-root rollback')\n    passed(labels[4],{'inner_snapshot_sha256':digest(inner),'restored_sha256':digest(before),\n      'remote_search_root_sha256':remote['root_snapshot_sha256']})\n    try:\n      for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):\n        engine.rollback(token);before=engine.state_snapshot();start=len(record['adviser_calls']);record['mode']=mode\n        if mode=='VALUE_ERROR':\n          error=None\n          try:engine.search()\n          except ValueError as ex:\n            if type(ex) is not ValueError:raise\n            error=str(ex)\n          need(error=='declared replacement adviser ValueError after definite rejection','exact fresh replacement error propagates')\n          observed={'exception_type':'ValueError','reason':error}\n        else:\n          value=engine.search()\n          need(value['status']=='UNKNOWN' and value['found'] is None\n            and value['root_restored'] is True and value['stack_restored'] is True,\n            'replacement callback Timeout remains UNKNOWN and restores')\n          need(not any(x['kind']=='EXCLUDE' for x in value['events']),'replacement UNKNOWN never excludes original candidate')\n          observed={'actual_result':value}\n        new_calls=record['adviser_calls'][start:]\n        need(len(new_calls)==1 and canonical(new_calls[0]['decision'])==canonical(rejection['decision'])\n          and canonical(new_calls[0]['state'])==canonical(rejection['state']),\n          'one fresh replacement callback at same branch, no recursive advice retry')\n        after=engine.state_snapshot();need(canonical(after)==canonical(before),'full parent restored despite pre-adoption failure')\n        need(canonical(after['pending_preferences'])==canonical(pending), 'failed pure plan cannot leak abandoned family state')\n        observed.update(before_sha256=digest(before),after_sha256=digest(after),actual_callback=new_calls[0])\n        passed(label,observed,seam)\n      engine.rollback(token);before=engine.state_snapshot();record['mode']='LATER';record['later_calls']=[]\n      follow=engine.search();after=engine.state_snapshot()\n      need(follow['status']=='UNKNOWN' and follow['found'] is None and canonical(after)==canonical(before)\n        and not any(x['kind']=='EXCLUDE' for x in follow['events']), 'later real branch continuation exact rollback without exclusion')\n      calls=record['later_calls'];need(len(calls)==2 and calls[0]['decision']==rejection['decision']\n        and calls[1]['decision']['kind']=='BRANCH' and calls[1]['decision']['row']>calls[0]['decision']['row'],\n        'fresh batch reconsidered at rejected branch then a genuinely later global branch')\n      need(record['stop_snapshot'] is not None and record['stop_snapshot']['pending_preferences'] is None,\n        'real quota UNKNOWN does not execute partial family or leave stale preferences')\n      evidence['follow_on_search']={'actual_result':follow,'actual_adviser_calls':calls,\n        'actual_child_snapshot':record['stop_snapshot'],'before_sha256':digest(before),'after_sha256':digest(after)}\n      passed(labels[7],{'artifact':'family_retirement.follow_on_search'},seam)\n    finally:\n      record['mode']='PRIOR22';engine.rollback(outer)\n      need(canonical(engine.state_snapshot())==canonical(outer_snapshot),'restore actual finished old-harness outer state')\n  need(len(extra)==8 and {x['case'] for x in extra}==set(labels),'all eight new gates retained')\n  result['cases'].extend(extra);result['artifacts']['family_retirement']=evidence\n  need(len(result['cases'])==30 and len({x['case'] for x in result['cases']})==30,'all thirty distinct declared gates exactly once')\n  result['version']=VERSION;result['declared_cases']=30\n  result['passed']=sum(x['status']=='PASSED' for x in result['cases'])\n  result['skipped']=sum(x['status']=='SKIPPED' for x in result['cases'])\n  result['unqualified_consumer_gates']=[x['case'] for x in result['cases'] if x['status']=='SKIPPED']\n  result['all_advice_consumer_gates_qualified']=not result['unqualified_consumer_gates'] and not result['additional_coverage_gaps']\n  result['family_retirement_control_scope']=local\n  tick();return result\n\n",
+      "before": "",
+      "new_end": 48798,
+      "new_start": 33425,
+      "old_end": 33442,
+      "old_start": 33442
+    }
+  ],
+  "old22_entire_function_body_raw_AST_exact": true,
+  "parent_source": {
+    "bytes": 33442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+    "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+  },
+  "patches": {
+    "controls-family-to-v3-full-inverse.patch": {
+      "bytes": 16159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/controls-family-to-v3-full-inverse.patch",
+      "sha256": "d1073e97a169ff83a8e5a103767794303fbdd5113187da3d5592e350ebcc437b"
+    },
+    "controls-v3-to-family-forward.patch": {
+      "bytes": 16159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/controls-v3-to-family-forward.patch",
+      "sha256": "bfb5d19ab996022fc3410d1971b8615d7e1ec68885e292e7418c9a33b45ad0a9"
+    }
+  },
+  "schema": "unit-row-family-retirement-controls-delta-v1",
+  "scientific_calls": 0,
+  "semantic_edits": [
+    "VERSION",
+    "Append observing-factory/8case wrapper; original22body intact"
+  ],
+  "source": {
+    "bytes": 48798,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+    "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+  },
+  "unchanged_whole_raw_AST_definitions": [
+    "Unavailable",
+    "CallbackExhausted",
+    "need",
+    "canonical",
+    "digest",
+    "tile",
+    "state",
+    "ug",
+    "obligations",
+    "run_controls"
+  ],
+  "whole_forward_exact": true,
+  "whole_inverse_exact": true,
+  "wrapper_alias": "_run_prior_controls = run_controls before new same-API run_controls definition"
+}

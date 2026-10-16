@@ -1,0 +1,33 @@
+{
+  "authorship_disclosure": "Engine6/c6fc/c354/transition dependency author, not harness author.",
+  "checks": 27,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_RUNTIME_ADMISSION",
+  "findings": {
+    "bytes": 21035,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "66ab9f822c6e689dd536d04fb3935a1a97b87a5ddcd99dab6141b85f30a10ab4"
+  },
+  "remaining": "Fresh Root all30 actual/no essential gaps/current caller and unchanged resource/wire gates; no fit/target prediction.",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-advice-family-retirement-controls-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advice-family-retirement-controls-Source",
+  "scoped_blockers": 0,
+  "source": {
+    "bytes": 48798,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+    "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+  },
+  "source_contract": {
+    "bytes": 11706,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "73cb71dd586ef336182443f9d7277583f500bf53a49b636177d00da476d8a0b9"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 6670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "a332270505c77ba5d8a742a7fd40658119769c8b8be44d35f79e90b2479b011d"
+  }
+}

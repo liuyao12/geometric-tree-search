@@ -1,0 +1,130 @@
+{
+  "changed_callables": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch"
+  ],
+  "parent_source": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "raw_replacement_regions": [
+    {
+      "new_end": 393,
+      "new_start": 317,
+      "new_utf8": "VERSION = 'lazy-unit-row-global-engine-v6-abandon-rejected-advisory-family'\n",
+      "old_end": 386,
+      "old_start": 317,
+      "old_utf8": "VERSION = 'lazy-unit-row-global-engine-v5-retire-filled-preferences'\n"
+    },
+    {
+      "new_end": 1303,
+      "new_start": 1209,
+      "new_utf8": "ADVICE_FAMILY_REJECTION_POLICY = 'ABANDON_WHOLE_FAMILY_ON_DEFINITE_CURRENT_PENDING_REJECTION'\n",
+      "old_end": 1202,
+      "old_start": 1202,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 6613,
+      "new_start": 6470,
+      "new_utf8": "                           pending_rejected=0, pending_retired=0, family_abandonments=0,\n                           fallback_branch_choices=0)\n",
+      "old_end": 6462,
+      "old_start": 6369,
+      "old_utf8": "                           pending_rejected=0, pending_retired=0, fallback_branch_choices=0)\n"
+    },
+    {
+      "new_end": 40957,
+      "new_start": 40906,
+      "new_utf8": "        dropped, retired, abandoned = [], [], None\n",
+      "old_end": 40789,
+      "old_start": 40755,
+      "old_utf8": "        dropped, retired = [], []\n"
+    },
+    {
+      "new_end": 43052,
+      "new_start": 42410,
+      "new_utf8": "                if rejected:\n                    # This retires advice, never a base candidate or point mark.\n                    abandoned = {'schema': 'unit-row-advisory-family-abandonment-v1',\n                        'family_id': preferences['family_id'], 'branch_row': row,\n                        'reason': 'DEFINITE_CURRENT_PENDING_MEMBER_REJECTION',\n                        'pending_keys': self._copy(preferences['pending_keys']),\n                        'rejected_keys': self._copy(dropped)}\n                    self.counts['family_abandonments'] += 1\n                    preferences = None\n                elif selected is not None:\n",
+      "old_end": 42481,
+      "old_start": 42242,
+      "old_utf8": "                preferences = dict(preferences, pending_keys=[k for k in preferences['pending_keys']\n                                                               if canonical(k) not in rejected])\n                if selected is not None:\n"
+    },
+    {
+      "new_end": 44085,
+      "new_start": 43875,
+      "new_utf8": "                        'rejected_keys': dropped, 'retired_keys': retired,\n                        'abandoned_family': abandoned}\n                if preferences is not None and not preferences['pending_keys']:\n",
+      "old_end": 43431,
+      "old_start": 43304,
+      "old_utf8": "                        'rejected_keys': dropped, 'retired_keys': retired}\n                if not preferences['pending_keys']:\n"
+    },
+    {
+      "new_end": 46316,
+      "new_start": 46168,
+      "new_utf8": "                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired,\n                        'abandoned_family': abandoned}\n",
+      "old_end": 45607,
+      "old_start": 45514,
+      "old_utf8": "                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired}\n"
+    },
+    {
+      "new_end": 47056,
+      "new_start": 46934,
+      "new_utf8": "            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired,\n            'abandoned_family': abandoned}\n",
+      "old_end": 46304,
+      "old_start": 46225,
+      "old_utf8": "            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired}\n"
+    },
+    {
+      "new_end": 47792,
+      "new_start": 47698,
+      "new_utf8": "            abandoned_family=plan['abandoned_family'], pending_preferences=self._preferences)\n",
+      "old_end": 46997,
+      "old_start": 46946,
+      "old_utf8": "            pending_preferences=self._preferences)\n"
+    }
+  ],
+  "schema": "unit-row-family-retirement-engine-independent-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "source_only": true,
+  "unchanged32whole_raw_AST_callables": [
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine.search"
+  ],
+  "whole_forward_exact": true,
+  "whole_inverse_exact": true
+}

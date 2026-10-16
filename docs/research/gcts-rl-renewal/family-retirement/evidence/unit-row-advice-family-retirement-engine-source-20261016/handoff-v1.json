@@ -1,0 +1,65 @@
+{
+  "API": {
+    "branch_adviser": "Injected endpoint branch_adviser(*,state,decision,tick); Root supplies authenticated original c6fc module dependencies. Only actual unchanged global BRANCH can invoke it.",
+    "callbacks": "Both optional callbacks absent or both callable. No new public transaction/control injection. Existing factory can override degree_proposer plus optional callbacks for labeled controls; original semantics/transition authority remains caller-owned.",
+    "engine": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,transition_checker,tick,initial_state=None,maximum_nodes=128,maximum_events=2000,branch_adviser=None,validate_advice=None)",
+    "preserved_public_methods": [
+      "state_snapshot",
+      "checkpoint",
+      "rollback",
+      "decision",
+      "place",
+      "next_alternative",
+      "search"
+    ],
+    "validate_advice": "Injected endpoint validate_advice(*,state,decision,batch,tick). Public f668 module adds language,semantics (six total keywords; engine closure receives four). Same callback handles READY batch and pending request."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 2317,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/author-static-v1.json",
+    "sha256": "ee271e9647ae5616f1cfac8b8dd71fde7060e022cba363805f209d44743d2483"
+  },
+  "base_contract": {
+    "bytes": 22207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/Source-contract-v2.json",
+    "sha256": "c24b0137b5a0372bd9999c0670317935fa1d6cfa716f590e34c9f2c3cf0877cf"
+  },
+  "base_source": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "changed_callables": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch"
+  ],
+  "event_change": "ADVICE.abandoned_family None or six-field record with full old pending keys separately from definite rejected keys. New work counter family_abandonments.",
+  "policy": "ABANDON_WHOLE_FAMILY_ON_DEFINITE_CURRENT_PENDING_REJECTION",
+  "remaining": "No activation/functions/tests/models/clocks/actuals. Root cold integration/controls/review/grant and all original resource gates required.",
+  "review_schema": "unit-row-goal-advice-engine-typed-Source-review-v1",
+  "review_scope": "unit-row-goal-advice-global-engine-Source",
+  "schema": "unit-row-advice-family-retirement-engine-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "source_contract": {
+    "bytes": 17749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "b331df934f4c522ad8d97819529fa4c0cf8d2e311f70d62bd9c9e248214d8c6a"
+  },
+  "source_delta": {
+    "bytes": 12436,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "1804160d7cce4e3b7f6849558969f3b225fd9d30a78f65eab97095ff68a405cc"
+  },
+  "source_only": true,
+  "status": "SOURCE_ONLY_UNEXECUTED_PENDING_GENUINE_REVIEW_CONTROLS_AND_ROOT_CHOICE",
+  "unchanged_callable_count": 32,
+  "version": "lazy-unit-row-global-engine-v6-abandon-rejected-advisory-family"
+}

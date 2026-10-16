@@ -1,0 +1,124 @@
+{
+  "diagnostic_path": "../cluster-consumer/evidence/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+  "evidence": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current30 qualified disposition"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "label": "Whole current consumer record"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Current original17 controls"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Current retention17 controls"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Original17 lossless full record"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Retention17 lossless full record"
+    },
+    {
+      "href": "evidence/ROOT-same-Source-comparison-v1.json",
+      "label": "Same-Source comparison"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-canonical-search-disposition-v1.json",
+      "label": "Canonical UNKNOWN disposition"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+      "label": "Advised UNKNOWN disposition"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/canonical-search-owned-v1/unknown-diagnostic.json",
+      "label": "All returned canonical diagnostic events"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json",
+      "label": "All returned advised diagnostic events"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-cold-ROOT-source-20261016/Source-contract-v4.json",
+      "label": "Current whole caller contract"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent whole caller review"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-engine-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent engine review"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-controls-independent-source-20261016/typed-Source-review-v2.json",
+      "label": "Independent expanded controls review"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-quality-diagnosis-source-20261016/Source-note-v1.json",
+      "label": "Separate quality analysis and unimplemented policy"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-controls-closure-console-correction-v1.json",
+      "label": "Closure console-count correction"
+    },
+    {
+      "href": "../cluster-consumer/reader.html#results",
+      "label": "Previous milestone and preserved earlier failures"
+    },
+    {
+      "href": "../shared-bounded-proofs/reader.html#reader",
+      "label": "Earlier independently checked conventional proof"
+    }
+  ],
+  "ready_path": "evidence/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+  "schema": "family-retirement-saved-reader-v1",
+  "stages": [
+    {
+      "label": "Original controls",
+      "native_launch_to_postprobe_ns": 5971621000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed",
+      "peak_bytes": 42582016
+    },
+    {
+      "label": "Retention controls",
+      "native_launch_to_postprobe_ns": 4661072000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed",
+      "peak_bytes": 63012864
+    },
+    {
+      "label": "Consumer controls",
+      "native_launch_to_postprobe_ns": 13460077000,
+      "native_resources_qualified": true,
+      "outcome": "\\(30\\) passed; no skips",
+      "peak_bytes": 59899904
+    },
+    {
+      "label": "Canonical target",
+      "native_launch_to_postprobe_ns": 20108987000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN",
+      "peak_bytes": 48218112
+    },
+    {
+      "label": "Advised target",
+      "native_launch_to_postprobe_ns": 20131396000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN",
+      "peak_bytes": 44482560
+    }
+  ]
+}

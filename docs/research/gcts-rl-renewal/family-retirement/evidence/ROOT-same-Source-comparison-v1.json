@@ -1,0 +1,51 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "actuals_this_turn": 5,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_control_gates": {
+    "consumer": 30,
+    "original": 17,
+    "retention": 17,
+    "skipped": 0
+  },
+  "current_goal_turn": "progress",
+  "diagnostic_counts_qualification": "UNQUALIFIED_PRODUCER_OBSERVATIONS_ONLY",
+  "dispositions": {
+    "advice-controls": {
+      "bytes": 4864,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "bf90e7779818c1109f4d152957dd0d44b0fe2cf671a7931afc9cb55d01338c47"
+    },
+    "advised-search": {
+      "bytes": 6784,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+      "sha256": "7daa649815f6e0da486d12c1e9135ddcc46124973df4a3abe8832e972313031b"
+    },
+    "canonical-search": {
+      "bytes": 6806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-canonical-search-disposition-v1.json",
+      "sha256": "58c7dbb37f744fa4b376f1d97a78ab2b29ae77d7228dfc4020693c9e54682b68"
+    },
+    "domain-controls": {
+      "bytes": 3450,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "e1b3615b2b3bf6402772748b5fbaca8b1ebca7609cfd0df230082f5f29819ec5"
+    },
+    "original-controls": {
+      "bytes": 3264,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "b39a8cc3ccb6af7fbc925e0c0b07a53dc8496317f5461abd251f43b1ef1b1f67"
+    }
+  },
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_reviews_runtime_limits": true,
+  "schema": "ROOT-family-retirement-same-Source-comparison-v1",
+  "scientific_replay": false,
+  "target_outcomes": {
+    "advised": "UNKNOWN",
+    "canonical": "UNKNOWN"
+  },
+  "target_word_or_donor_supplied": false
+}

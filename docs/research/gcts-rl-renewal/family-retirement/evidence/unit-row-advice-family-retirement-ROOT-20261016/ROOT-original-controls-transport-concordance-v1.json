@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 78848,
+  "compressed_sha256": "4053ed76560b9133265a3076a57aa91d222057d094eaebe4a214a3c95e419d34",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 105454,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+    "sha256": "df1ba4545eb28b186ea59596effbff5bdfb907d2a7484aedbea32821af0b5579"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 1942727,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-original-controls-expanded-result-v1.json",
+    "sha256": "637f62f8fe00bd6b086729edcc015a267d526f5f98b6a3d168ba8fb752924d2b"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 8004,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+    "sha256": "0d672105a9a85e23b4ca0e47e0e646651519e750b13564405f1720cb7fa261c4"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

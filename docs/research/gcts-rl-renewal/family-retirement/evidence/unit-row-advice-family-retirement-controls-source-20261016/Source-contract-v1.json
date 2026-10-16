@@ -1,0 +1,171 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 30,
+    "factory": "Same actual Root factory language/semantics/transition/limits; optional callback args unchanged. Observing factory passes original callbacks through with native-first collection; later modes use real original degree endpoint and actual independent validator, never scripted degrees/candidates/EOF.",
+    "keyword_count": 8,
+    "new_cases": 8,
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 22,
+    "qualification": "All30 PASSED0SKIP and no additional_coverage_gaps plus other current Root controls required before targets; all stronger proof/graph/trajectory/RL/resource flags remainFalse."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-advice-family-retirement-controls-Source",
+    "source": {
+      "bytes": 48798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+      "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+    },
+    "source_contract": "exact current raw capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct genuine reviewer decides",
+    "sources": "exact current full map"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 6090,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/author-static-v1.json",
+    "sha256": "b11d2ee252b4fc09a79ad48bd7bedeb6f615b9a03e7ead4759001a2a2df3960d"
+  },
+  "authorship_disclosure": "Author wrote inherited earlier controls/membership/proposer/fallback, not engine6 or independent validator/adviser/c354. New controls will receive distinct peer review. Root owns current Source cold integration/once grants/actual terminal closure.",
+  "controls": {
+    "observing_factory": "Collect actual adviser requests/returns and independent validator requests/receipts. At actual pending-rejection callback return, after genuine full engine BRANCH, capture public state_snapshot/checkpoint; read-only stable pure branch selection, no reentrant place/rollback/search. Store native object/token privately only, never in JSON.",
+    "reused_evidence": "Original actual remote/continuation results and callback records verify abandonment ofALL pendingkeys despite another still-legal unfilled futurekey; exact one fresh currentstate+decision advice call; old control suppressed actual READY hints, so real canonical fallback. Component check of different laterkey is explicitly local point legality, not global scheduling authority.",
+    "same_branch_replacement_limit": "At most one fresh batch per selectedBRANCH. Extra error/quota searches test no recursive retries and no leaked pre-adoption family changes. This control does not establish a newly nonempty READY replacement family adoption; original positive adoption/continuation remains separately exercised.",
+    "successful_continuity": "Original positive pending continuation ADVICE PENDING_KEYS must remain un-abandoned; ordinary progress must not retire whole family.",
+    "transaction": "Restore genuinely owned inner token publicly after oldsearch ends; three short searches only: exact adviser ValueError after rejection; native-first TimeoutUNKNOWN/noEXCLUDE; actual quotaUNKNOWN at rejected branch then later actual branch, stop after second placement. Each full parent snapshot/root pendingfamily restored, final actual oldharness outer token restored. No private mutation/native budget reset.",
+    "unchanged22": "Entire previous10 definitions (9helpers+run_controls) unchanged raw/AST, stored under stable _run_prior_controls alias. Same original fixture/horizon/old assertions; new exported same-API wrapper calls that once. No old case replacement/reduction."
+  },
+  "costs_and_limits": {
+    "aggregate_owned_bytes": 536870912,
+    "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+    "caller_seconds": 90,
+    "encoded_output_bytes": 4194304,
+    "expanded_output_bytes": 16777216,
+    "failure_only_seconds": 55,
+    "finish_seconds": 1,
+    "height": 24,
+    "joint_seconds": 20,
+    "maximum_events": 2000,
+    "maximum_nodes": 128,
+    "owned_seconds": 60,
+    "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+  },
+  "engine_contract": {
+    "bytes": 17749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "b331df934f4c522ad8d97819529fa4c0cf8d2e311f70d62bd9c9e248214d8c6a"
+  },
+  "engine_handoff": {
+    "bytes": 3973,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/handoff-v1.json",
+    "sha256": "7c83a0fab7ee6d813beb44694dc37a596e2ee29d227d476c93b852319f074db7"
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "new_cases": [
+    "whole-family-abandoned-with-different-future-key-remaining",
+    "one-fresh-batch-at-same-rejected-BRANCH",
+    "abandoned-future-members-never-installed-or-excluded",
+    "successful-pending-continuity-preserved",
+    "rejection-parent-and-owned-inner-rollback-exact",
+    "fresh-replacement-ValueError-propagates-without-family-commit",
+    "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+    "later-BRANCH-reconsiders-fresh-advice-after-abandonment"
+  ],
+  "parent_contract": {
+    "bytes": 20035,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/Source-contract-v3.json",
+    "sha256": "e9d05cc430406f926fa5f7a31e7ed654ef6270bfc1f96bd54109572ced3a97cc"
+  },
+  "parent_source": {
+    "bytes": 33442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+    "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+  },
+  "remaining_gates": [
+    "Distinct whole current controls review; genuine independent engine6Source review.",
+    "Exact current Root cold Source/input/authority/callback/caller/native guards; no activation here.",
+    "All30 noSKIP/no subcasegap plus all other required current stages and unchanged native/wire gates; no inherited runtimequalification.",
+    "No proof/GCTS fullgraph/trajectory/RL/benefit/resource/runtime claim or positive target admission."
+  ],
+  "schema": "unit-row-advice-family-retirement-controls-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advice-family-retirement-controls-Source",
+  "seams": [
+    "Observing callback wrappers retain original current endpoints and native tick first. They are control data collection, not Source/authority spoofing.",
+    "Three injected callback-mode searches after finished base22 use actual original degree+validator; exact ValueError/native-first Timeout/real adviser quota1 are explicitly labeled failures/UNKNOWN. No timer is manufactured.",
+    "One later-key component check passes BRANCH-shaped data solely for literal point legality; actual current globalBRANCH proof is from real engine pending callback."
+  ],
+  "source": {
+    "bytes": 48798,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+    "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+  },
+  "source_delta": {
+    "bytes": 18619,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/Source-delta-v1.json",
+    "sha256": "5d6da88a1964fbad62581eef2b3208ff93dc7563ea164548f5ee22f25cbca255"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "controls": {
+      "bytes": 48798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+      "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52581,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+      "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "version": "unit-row-advice-whole-family-retirement-controls-v1"
+}

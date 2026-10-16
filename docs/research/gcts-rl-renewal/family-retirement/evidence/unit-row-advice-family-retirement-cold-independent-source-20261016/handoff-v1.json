@@ -1,0 +1,39 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored reused f668 independent advice validator, dac89 horizon-control changes, earlier d7b0/d1dc control fixtures/harnesses, original1717 checker and earlier codec/family work. Reviewer did not author this Root caller, c6fc adviser, engine0b45, current c354/transition or new183a retirement controls. Current component peer reviews are reauthenticated; this is an independent whole-caller integration review, not a second independent mathematical implementation or self-review of reused dependencies.",
+  "checks": 23,
+  "disposition": "CONDITIONAL_WHOLE_CURRENT_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 26098,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-independent-source-20261016/findings-v1.json",
+    "sha256": "8fb12e0ae80baf0f59584b9c3ed4173a5b256a00f274cd963644c66bed4e1f77"
+  },
+  "independent_delta": {
+    "bytes": 11671,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "16aba15850d7abb64e2b8a05a929802c347099a5fd66c14c48117557687fa4ee"
+  },
+  "raw_paths": 45,
+  "runtime_and_target_gates_pending": true,
+  "schema": "unit-row-advice-family-retirement-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Whole current Root cold caller integration and exact five-edit delta; current dependency peers, no semantic replay or runtime admission.",
+  "source": {
+    "bytes": 49615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+    "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+  },
+  "source_contract": {
+    "bytes": 27591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/Source-contract-v4.json",
+    "sha256": "439d2d6dcb3b6ae3d20a8247709b3d1c04ab27ab26a640c3c9cabe1fd0b5e59e"
+  },
+  "source_only": true,
+  "typed_Source_review": {
+    "bytes": 8161,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "f6f5edc4403bc71b60997e4caabee8636e91ed23830854b4e25f7fb0a7968c2c"
+  }
+}

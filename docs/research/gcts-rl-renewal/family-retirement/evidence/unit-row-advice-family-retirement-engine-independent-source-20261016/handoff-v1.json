@@ -1,0 +1,35 @@
+{
+  "checks": 17,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 13640,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/findings-v1.json",
+    "sha256": "fbaa8dad901f31074b573b00de4f82cf3aad236c8ec636ac9cb56a9d7c2e9233"
+  },
+  "independent_delta": {
+    "bytes": 5875,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "b6785fd4edb99d02c73d3706254e545a6c9ac20927fe856e398dafa71123d7e1"
+  },
+  "raw_unique_paths": 25,
+  "schema": "unit-row-family-retirement-engine-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-goal-advice-global-engine-Source",
+  "source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "source_contract": {
+    "bytes": 17749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "b331df934f4c522ad8d97819529fa4c0cf8d2e311f70d62bd9c9e248214d8c6a"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 2318,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "37348afa667cd84934679b205c7c53740a3a063369e1dbe1c178406a2fd867b5"
+  }
+}

@@ -1,0 +1,99 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v6-abandon-rejected-advisory-family'
++VERSION = 'lazy-unit-row-global-engine-v5-retire-filled-preferences'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+ FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+@@ -19,7 +19,6 @@
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+ HINT_REJECTION_REASONS = ('already_selected', 'branch_excluded_complete_key',
+     'whole_support_capacity', 'whole_remote_or_metadata_mark_conflict')
+-ADVICE_FAMILY_REJECTION_POLICY = 'ABANDON_WHOLE_FAMILY_ON_DEFINITE_CURRENT_PENDING_REJECTION'
+ RULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']
+ 
+ 
+@@ -127,8 +126,7 @@
+                            retained_domains=0, invalidated_domains=0, retained_queries=0,
+                            retained_prefixes=0, advice_calls=0, advice_unknown=0,
+                            advice_selected=0, pending_checks=0, pending_selected=0,
+-                           pending_rejected=0, pending_retired=0, family_abandonments=0,
+-                           fallback_branch_choices=0)
++                           pending_rejected=0, pending_retired=0, fallback_branch_choices=0)
+         epoch = language.binding['language_epoch']
+         if initial_state is None:
+             marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]
+@@ -706,7 +704,7 @@
+         """Pure with respect to preference state; called only after global BRANCH."""
+         need(decision['kind'] == 'BRANCH', 'advice cannot bypass global scheduler')
+         row, preferences = decision['row'], self._copy(self._preferences)
+-        dropped, retired, abandoned = [], [], None
++        dropped, retired = [], []
+         if preferences is not None:
+             # The real global decision already validated this owned point state.
+             # Occupied rows need no future preference, even if globally forced.
+@@ -731,16 +729,9 @@
+                 selected, rejected = self._checked_advice(decision, request, 'PENDING_KEYS')
+                 dropped = [self._copy(k) for k in keys if canonical(k) in rejected]
+                 self.counts['pending_rejected'] += len(dropped)
+-                if rejected:
+-                    # This retires advice, never a base candidate or point mark.
+-                    abandoned = {'schema': 'unit-row-advisory-family-abandonment-v1',
+-                        'family_id': preferences['family_id'], 'branch_row': row,
+-                        'reason': 'DEFINITE_CURRENT_PENDING_MEMBER_REJECTION',
+-                        'pending_keys': self._copy(preferences['pending_keys']),
+-                        'rejected_keys': self._copy(dropped)}
+-                    self.counts['family_abandonments'] += 1
+-                    preferences = None
+-                elif selected is not None:
++                preferences = dict(preferences, pending_keys=[k for k in preferences['pending_keys']
++                                                               if canonical(k) not in rejected])
++                if selected is not None:
+                     anchor = selected['anchor']
+                     chosen = canonical(anchor['placement_key'])
+                     remaining = [k for k in preferences['pending_keys'] if canonical(k) != chosen]
+@@ -751,9 +742,8 @@
+                     return {'candidate': anchor, 'mode': 'PENDING_KEYS',
+                         'preferences': preferences if remaining else None,
+                         'family_id': request['family_id'], 'origin': selected['origin'],
+-                        'rejected_keys': dropped, 'retired_keys': retired,
+-                        'abandoned_family': abandoned}
+-                if preferences is not None and not preferences['pending_keys']:
++                        'rejected_keys': dropped, 'retired_keys': retired}
++                if not preferences['pending_keys']:
+                     preferences = None
+         # Preserve one chosen family across intervening canonical branches.
+         # A new unrelated batch cannot replace an unconsumed family.
+@@ -783,8 +773,7 @@
+                             'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]}
+                     return {'candidate': anchor, 'mode': 'ADVICE_BATCH',
+                         'preferences': family if future else None, 'family_id': family_id,
+-                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired,
+-                        'abandoned_family': abandoned}
++                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired}
+         self.counts['fallback_branch_choices'] += 1
+         slot = self._slots.get(row)
+         if slot is not None and slot['candidates']:
+@@ -796,8 +785,7 @@
+             candidate = item['candidate']
+         return {'candidate': candidate, 'mode': 'CANONICAL_FALLBACK',
+             'preferences': preferences, 'family_id': None if preferences is None else preferences['family_id'],
+-            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired,
+-            'abandoned_family': abandoned}
++            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired}
+ 
+     def _adopt_branch(self, plan):
+         """Called INSIDE the owned child try/finally; no future mark is imposed."""
+@@ -810,7 +798,7 @@
+         self._emit('ADVICE', mode=plan['mode'], family_id=plan['family_id'],
+             key=plan['candidate']['placement_key'], origin=plan['origin'],
+             rejected_keys=plan['rejected_keys'], retired_keys=plan['retired_keys'],
+-            abandoned_family=plan['abandoned_family'], pending_preferences=self._preferences)
++            pending_preferences=self._preferences)
+ 
+     def search(self):
+         """Full rollback on FOUND/UNKNOWN too; only exhausted child permits exclusion."""

@@ -1,0 +1,436 @@
+{
+  "actual_execution_authorized": false,
+  "all_checks_passed": true,
+  "authorship_disclosure": "Reviewer authored reused f668 independent advice validator, dac89 horizon-control changes, earlier d7b0/d1dc control fixtures/harnesses, original1717 checker and earlier codec/family work. Reviewer did not author this Root caller, c6fc adviser, engine0b45, current c354/transition or new183a retirement controls. Current component peer reviews are reauthenticated; this is an independent whole-caller integration review, not a second independent mathematical implementation or self-review of reused dependencies.",
+  "blockers": [],
+  "check_count": 23,
+  "checks": [
+    {
+      "detail": "Exact five literal replacements are unique in each direction and reconstruct the entire raw parent/current modules.",
+      "id": "D01",
+      "method": "raw/AST metadata assertions",
+      "passed": true
+    },
+    {
+      "detail": "All 17 non-main top-level helper bodies and all 30 nested callable regions are byte and AST identical.",
+      "id": "D02",
+      "method": "raw/AST metadata assertions",
+      "passed": true
+    },
+    {
+      "detail": "Current and parent modules compile without execution; response/stdout/native-exit suffix identical.",
+      "id": "D03",
+      "method": "compile-only and raw metadata assertions",
+      "passed": true
+    },
+    {
+      "detail": "Current source/contract/handoff/delta capsules, complete Source17 and input2 plus all referenced raw capsules authenticate without decoding model or declaration data.",
+      "id": "M01",
+      "method": "whole raw hashes",
+      "passed": true
+    },
+    {
+      "detail": "Only source roles intake,engine,advice_controls differ from the parent; current FIXED maps, Review_ABI, consumed schema and handoff agree.",
+      "id": "M02",
+      "method": "AST literals and metadata equality",
+      "passed": true
+    },
+    {
+      "detail": "Reviewed 9852 parent binds exact original source/contract; distinct current engine and control peers bind 0b45/183a and current contracts.",
+      "id": "M03",
+      "method": "typed review metadata and raw hashes",
+      "passed": true
+    },
+    {
+      "detail": "New control contract has 22 preserved plus eight new distinct cases, total30, same eight-keyword callable ABI.",
+      "id": "M04",
+      "method": "metadata equality",
+      "passed": true
+    },
+    {
+      "detail": "Current target gate requires all30/noSKIP/no additional essential gaps plus current original17 and retention17. Historical inherited22 fields describe preserved provenance, not a weaker current grant.",
+      "id": "M05",
+      "method": "whole contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Unchanged adviser policies are controls5demands/1term/3rounds and target5demands/16terms/3rounds, with8proposals/50000work. No family-quality/ranking repair enters this caller.",
+      "id": "M06",
+      "method": "AST literals and current component contract",
+      "passed": true
+    },
+    {
+      "detail": "Early global native G is captured before remaining imports/auth/setup; unchanged native clock/type/ID/resource/exit and cancellation gates use G+20, with conservative internal500MiB reserve.",
+      "id": "A01",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Sole plan12 exactly binds source17/input2/current contract/current scoped Root+distinct peer reviews/runtime/limits/once authorization. Current review is not a concrete plan/grant.",
+      "id": "A02",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Full bounded native read_pinned returns the same length/SHA/EOF-authenticated buffers. All imported private modules are registered before CodeSeal and strong function anchors capture effective functions/defaults/closures.",
+      "id": "A03",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "invoke guards ordinary and exceptional delegation with complete pre/post Source/native/authority checks; same original helper defaults/cells are protected. This is surrounding-delegation custody, not per-yield or hostile-OS isolation.",
+      "id": "A04",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Fresh original language is reconstructed from reauthenticated complete declaration/profile for engine, proposer, fallback, certifier, transition, adviser, validator and positive endpoints. Native tick precedes injected seam tick.",
+      "id": "A05",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Search always begins initial_state=None with original24 roots0, bounded128nodes/2000events; canonical mode disables both advice callbacks, advised mode uses current c6fc/f668 without supplied word/library/route input.",
+      "id": "A06",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Current engine contract preserves complete base fallback, actual global BRANCH gating, full current independent pending legality and transactional uninstalled preferences. New retirement drops preferences only, not point marks/candidates/exclusions/EOF authority; error propagation and rollback are engine obligations covered by separate peers.",
+      "id": "A07",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Control dispatch joins actual original17/domain17/advice30 entrypoints with coherent kwargs and output schemas. Worker schema/all_declared completion alone is not all30 qualification; Root must inspect case statuses/coverage gaps and native outputs.",
+      "id": "A08",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Only a returned POINT_BOARD_PROPOSAL with found data triggers fresh full24 membership, unchanged1717 on freshly raw-read original theory/parameters/Gamma/target, independently rebuilt99b3 board and found-state joins, all inside original cold20.",
+      "id": "P01",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Positive commands/state are immutable canonical buffers; checked packet_raw supplies both expected selected keys and returned board. Fresh c354 fullstate plus exact selected records/t/m match independently checked point receipt; no live converter object authority.",
+      "id": "P02",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Whole canonical result+LF passes unchanged zlib6/base64 envelope with expanded16MiB and encoded4MiB caps; original invoke gates compression before/after. No result/trace trimming or inherited raw4MiB fit claim.",
+      "id": "O01",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Fresh exclusive output2, full response body+completion SHA/length and final stdout receipt are guarded; fresh poststdout boundary/tick immediately precede captured native exit0. Body remains pending external native wait4/postprobe20/T512/Date60/90+1.",
+      "id": "O02",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Late exception path retains only bounded builtin raw diagnostics under failure55; no late Source/semantic callback or positive20/proof/trajectory/resource admission. Original failure and exit2 remain even if diagnostic write fails.",
+      "id": "F01",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    },
+    {
+      "detail": "Master exact t/m, all24 roots0/ROW-TIE and degree/cursor/retention limitations remain explicit. No inference, learned marking, RL, graph/trajectory conformance, performance or positive prediction is supplied by this review.",
+      "id": "S01",
+      "method": "manual whole Source/contract assessment",
+      "passed": true
+    }
+  ],
+  "current_component_reviews": {
+    "controls": {
+      "bytes": 6816,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/typed-Source-review-v2.json",
+      "sha256": "2d2fd107c28fb83c0fb37ae6a08c084f59c9361d310d72a36d8dbd2069838345"
+    },
+    "engine": {
+      "bytes": 2318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "37348afa667cd84934679b205c7c53740a3a063369e1dbe1c178406a2fd867b5"
+    }
+  },
+  "disposition": "CONDITIONAL_WHOLE_CURRENT_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "independent_delta": {
+    "bytes": 11671,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "16aba15850d7abb64e2b8a05a929802c347099a5fd66c14c48117557687fa4ee"
+  },
+  "limitations": [
+    "Source-only conditional integration pass, not activation or runtime fit. Root needs genuine current author review, exact fresh plan/once grant and true terminal saved closure.",
+    "Require separately qualified current original17, retention17 and all30 consumer cases with zeroSKIP/no essential gap before any target grant; no previous control/UNKNOWN status is promoted.",
+    "Full body/EOF/hash/native wait4/postterminal global20/T<=512MiB and whole wall60/caller90+1 must be established from actual saved evidence. The worker internal500MiB reserve is not a replacement for terminal T.",
+    "Current control peer explicitly leaves newly nonempty READY replacement-family adoption and mixed valid+rejected same-row receipt as unexecuted dynamic coverage; original adoption/continuity remains separately tested and current families have distinct rows.",
+    "Uncovered arbitrary all-six EOF and full reference incremental/global graph conformance remain pending; fixed unit-row specialization does not qualify fractional/shared positive support, general growing targets or fixed universal Wang compilation.",
+    "Target-restating adviser quality and finite enumeration starvation remain unchanged; new family retirement is ordering/lifecycle only. No speed, useful-pruning, RL or learned-marking claim.",
+    "Nested adapters and cursor methods are covered by surrounding guarded calls, not a new per-yield/hard isolation framework. Historical metadata recovery and inherited22 sections are disclosed provenance only."
+  ],
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "metadata_recovery_disclosure": "Initial helper expected old controls cases field; current capsule declares new_cases plus preserved22/API expected30. Corrected metadata assembly and recovered byte-identical already-written Source; no scientific execution or Source change.",
+  "parent_read_method": "Entire parent raw buffer plus exact five-edit forward/inverse; every inherited line assessed in whole current Source. No parent or current module imported or executed.",
+  "parent_review": {
+    "bytes": 7608,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-independent-source-20261016/typed-Source-review-v3.json",
+    "sha256": "ae692411e9128647a161e5c7945f22dcb8bfe13517fc2944f91dcd774a7b1d14"
+  },
+  "parent_source": {
+    "bytes": 49585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/unit_row_advised_domain_horizon_cold_v3.py",
+    "sha256": "98524052a3682a3374d7cf4988e7e74856c6e12e2de7b5f4a4973664ff411097"
+  },
+  "raw_references": [
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "bytes": 4114,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "24c1669578e78ddccdc5e52b0236a95060789d90b5a2b2e9f987810eecba17a1"
+    },
+    {
+      "bytes": 27591,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/Source-contract-v4.json",
+      "sha256": "439d2d6dcb3b6ae3d20a8247709b3d1c04ab27ab26a640c3c9cabe1fd0b5e59e"
+    },
+    {
+      "bytes": 2562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/Source-delta-v4.json",
+      "sha256": "1d38aaf8b249955422ca0859d21634c7a917365edb694d4fd8966494539eaa21"
+    },
+    {
+      "bytes": 49615,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+      "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+    },
+    {
+      "bytes": 21585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/findings-v2.json",
+      "sha256": "42a0b8065d5c6de1de00db2d68fa6b0d8f1217cdebb7bde592d90f4f81226910"
+    },
+    {
+      "bytes": 6816,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-independent-source-20261016/typed-Source-review-v2.json",
+      "sha256": "2d2fd107c28fb83c0fb37ae6a08c084f59c9361d310d72a36d8dbd2069838345"
+    },
+    {
+      "bytes": 11706,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/Source-contract-v1.json",
+      "sha256": "73cb71dd586ef336182443f9d7277583f500bf53a49b636177d00da476d8a0b9"
+    },
+    {
+      "bytes": 48798,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+      "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+    },
+    {
+      "bytes": 6920,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/handoff-v1.json",
+      "sha256": "4ccc0638f9ddb10f9fef0551267b87a9f48adfd265108070ae74d53ed52fd4a8"
+    },
+    {
+      "bytes": 13640,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/findings-v1.json",
+      "sha256": "fbaa8dad901f31074b573b00de4f82cf3aad236c8ec636ac9cb56a9d7c2e9233"
+    },
+    {
+      "bytes": 5875,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/independent-Source-delta-v1.json",
+      "sha256": "b6785fd4edb99d02c73d3706254e545a6c9ac20927fe856e398dafa71123d7e1"
+    },
+    {
+      "bytes": 2318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "37348afa667cd84934679b205c7c53740a3a063369e1dbe1c178406a2fd867b5"
+    },
+    {
+      "bytes": 17749,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "b331df934f4c522ad8d97819529fa4c0cf8d2e311f70d62bd9c9e248214d8c6a"
+    },
+    {
+      "bytes": 3973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/handoff-v1.json",
+      "sha256": "7c83a0fab7ee6d813beb44694dc37a596e2ee29d227d476c93b852319f074db7"
+    },
+    {
+      "bytes": 52581,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+      "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+    },
+    {
+      "bytes": 22727,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/Source-contract-v3.json",
+      "sha256": "29ac934db17f88711763cfcd29e7f322e3037ebb52facfcc2c6ad2d3643bc1cf"
+    },
+    {
+      "bytes": 49585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/unit_row_advised_domain_horizon_cold_v3.py",
+      "sha256": "98524052a3682a3374d7cf4988e7e74856c6e12e2de7b5f4a4973664ff411097"
+    },
+    {
+      "bytes": 35127,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-independent-source-20261016/findings-v3.json",
+      "sha256": "54383e431a47c6603a428a4c8ba5213f27a5d23b2f1eb00d26d251a9e89461d0"
+    },
+    {
+      "bytes": 3138,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-independent-source-20261016/independent-Source-delta-v3.json",
+      "sha256": "80cdba99952037d4d9df22a1d2d05592538b66dea09418b5d28dace82123deda"
+    },
+    {
+      "bytes": 7608,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-independent-source-20261016/typed-Source-review-v3.json",
+      "sha256": "ae692411e9128647a161e5c7945f22dcb8bfe13517fc2944f91dcd774a7b1d14"
+    },
+    {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 11597,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-cluster-consumer-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+      "sha256": "b474e3dc0e11c05abce32eb57f51a8cbf98a35abca3b61001e265f4c86eeb52e"
+    },
+    {
+      "bytes": 20035,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/Source-contract-v3.json",
+      "sha256": "e9d05cc430406f926fa5f7a31e7ed654ef6270bfc1f96bd54109572ced3a97cc"
+    },
+    {
+      "bytes": 33442,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+      "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+    },
+    {
+      "bytes": 8256,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/handoff-v3.json",
+      "sha256": "325a670b6accb1a0f9156b54611e19738d656322bf502464733ef4c4f8c0d6a8"
+    },
+    {
+      "bytes": 16901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v2.json",
+      "sha256": "6bcd7f183347888df4b1076f9f50894aa01508d775727cf99844fb20ce697e05"
+    },
+    {
+      "bytes": 33448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+      "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+    },
+    {
+      "bytes": 9244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/handoff-v2.json",
+      "sha256": "293b60d17f679cb9b47419578d0226776d96f4c18989269a790c2df1cd5da7c3"
+    },
+    {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    },
+    {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "schema": "unit-row-advice-family-retirement-cold-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 49615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+    "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+  },
+  "source_contract": {
+    "bytes": 27591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/Source-contract-v4.json",
+    "sha256": "439d2d6dcb3b6ae3d20a8247709b3d1c04ab27ab26a640c3c9cabe1fd0b5e59e"
+  },
+  "source_only": true,
+  "unique_raw_reference_count": 45,
+  "whole_current_Source_lines": 742,
+  "whole_current_Source_read": true,
+  "whole_current_contract_read": true
+}
