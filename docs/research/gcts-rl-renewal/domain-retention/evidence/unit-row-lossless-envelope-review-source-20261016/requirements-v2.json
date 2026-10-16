@@ -1,0 +1,99 @@
+{
+  "Source_review_focus": [
+    "New base64/zlib/import dependencies loaded before existing CodeSeal capture; exact version/pins prevent mixed old/new schemas. Existing delegate/output guards and late diagnostic failure branch remain explicit.",
+    "Encoded4MiB/expanded16MiB are output representation caps only; original six-rule mathematical language, candidate graph, scheduler/rollback, work ceilings and all case evidence unchanged.",
+    "Code/read branch must never allocate an unbounded expansion before checking the cap; require native stream eof, no tail and exact raw buffer joins."
+  ],
+  "actual_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Author wrote old/new harnesses and earlier checker/codec/family dependencies. This is a separately authored transport/saved-reconciliation design, not independent mathematical validation or implementation of Root decoder.",
+  "boundary_sources": {
+    "engine": {
+      "bytes": 39803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    "previous_contract": {
+      "bytes": 12076,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v1.json",
+      "sha256": "c528edb0337cf6e8e34ab02969bfb7ae9212d120289ab80c997939658ab7ce84"
+    },
+    "previous_intake": {
+      "bytes": 37377,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v1.py",
+      "sha256": "264211f1415b5908f765a14630722e5456cf520327d73ebf5b7f1323df47c352"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "selected_contract": {
+      "bytes": 13867,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v2.json",
+      "sha256": "bc84dcb706d42a37c43538605294b27ad6f667c64431a69eaceb41c264242ffa"
+    },
+    "selected_handoff": {
+      "bytes": 5281,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/handoff-v2.json",
+      "sha256": "380126bd9e9145fb17a5f432aaf14af36ea1954b7148c1e2cfe8b9e9b41fc380"
+    },
+    "selected_intake": {
+      "bytes": 38433,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+      "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+    }
+  },
+  "execution": {
+    "Source_functions": 0,
+    "actuals": 0,
+    "clocks": 0,
+    "models_or_Q_decoded": 0,
+    "tests": 0
+  },
+  "independent_saved_decode_requirements": [
+    "Authenticate complete outer file bytes against current response output pin/inventory; bound before parsing, require full EOF and one exact canonical outer JSON object plus final LF. Reject duplicate keys, unknown fields, invalid schema/encoding, malformed digests and Boolean-as-integer lengths.",
+    "Require standard ASCII base64 with strict decoding AND canonical re-encoding equality. Reject whitespace, alternate alphabets/padding aliases, non-ASCII or ignored garbage. Compute compressed length and SHA over all decoded compressed bytes; require declared exact match.",
+    "Use one RFC1950 zlib stream (MAX_WBITS), bounded decompress with maximum output expanded_limit+1. Require len(output)<=expanded_limit, eof=True, unused_data empty and unconsumed_tail empty. Reject truncation, concatenated streams, trailing bytes, invalid checksum and overrun. Do not use an unbounded decompression or flush; a flush buffer-length argument is not an output ceiling.",
+    "Compute expanded length/SHA over the exact full expanded raw bytes including final LF, not reserialized JSON or a decoded prefix. Require declared exact match before interpreting fields. Then require strict UTF-8, duplicate-key rejection, complete canonical expected inner JSON+LF/EOF using the existing canonical configuration. Preserve all existing finite-diagnostic-number rules; transport may not change formula/AST grammar.",
+    "Reconcile the FULL decoded record against its current purpose, nonce, Source11/input2 map, language binding/epoch, expected result schema, all case IDs/statuses/proposals/receipts/snapshots/archives and strong false flags. Exactly separate old17/new17 purposes; all_declared_cases_completed alone is insufficient. Count all actual PASSED/SKIPPED and reject missing/duplicate cases or partial decoded data.",
+    "Authenticate ordinary complete response body+completion two-LF wire and exact EOF, including body hash over its LF. Its output pin identifies the OUTER envelope bytes; expanded/compressed hashes identify different exact buffers. If saving a decoded derivative, put it outside the original worker inventory and label/pin it as derived from the outer file, not native-worker output.",
+    "No decoder fallback to raw JSON/gzip/another stream after a declared-envelope failure. Reject the whole transport/result on error; preserve raw failed evidence. Never accept an individually decoded case/prefix or promote nested producer flags.",
+    "Compression/full serialization/output work remains inside original native20/512 and current same-process T-only accounting. Root retains original failure55/owned60/caller90+1, native launch-to-postprobe and true terminal checks. Saved decoding grants no native/resource/trajectory/proof admission, no clock reset, model trim or changed actual namespace. Record saved-only reconciliation separately from worker costs."
+  ],
+  "meaningful_rejection_classes_not_executed": [
+    "outer duplicate/unknown keys; noncanonical base64; compressed length/hash mismatch; truncated or concatenated stream/trailing garbage; expansion beyond16MiB; expanded length/hash mismatch; UTF8/JSON/EOF/canonical failure; wrong purpose/epoch/Source map; incomplete case inventory; mismatched outer pin or response trailer"
+  ],
+  "minimal_wire": {
+    "byte_limits": {
+      "whole_expanded_with_final_LF": 16777216,
+      "whole_outer_with_final_LF": 4194304
+    },
+    "cap_scope": "Explicit new lossless output representation: expanded16MiB differs from former raw4MiB. Encoded outer4MiB and all mathematical/native budgets unchanged.",
+    "compression": "Standard zlib MAX_WBITS stream, compression level6. No gzip/raw/alternate compression fallback.",
+    "encoding": "zlib+base64",
+    "exact_fields": [
+      "schema",
+      "encoding",
+      "expanded_bytes",
+      "expanded_sha256",
+      "compressed_bytes",
+      "compressed_sha256",
+      "payload_base64"
+    ],
+    "hash_scope": "Expanded hash covers the entire canonical inner JSON plus its finalLF; compressed hash covers entire zlib stream; whole outer JSON+LF pinned externally by response/manifest.",
+    "proposed_only": false,
+    "schema": "ROOT-unit-row-lossless-result-envelope-v1"
+  },
+  "parent_requirements": {
+    "bytes": 6747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v1.json",
+    "sha256": "4d93389b11f5f42283a16641fbf0ec6bec83d5e3632918501e121a80f6de1b14"
+  },
+  "prior_failure": "Root reported old17 qualified and separate new17 terminated at whole-output bound before result directory. This note has not read/reclassified actual files. No control count, accepted prefix, result or admission is inferred for that failed attempt.",
+  "schema": "unit-row-lossless-envelope-decoder-requirements-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "EXACT_FROZEN_ROOT_WIRE_BOUND_SAVED_DECODER_SOURCE_REVIEW_PENDING"
+}

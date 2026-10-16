@@ -1,0 +1,167 @@
+{
+  "Source_execution": false,
+  "actual_authorized": false,
+  "check_count": 17,
+  "checks": [
+    {
+      "check": "full-forward-and-inverse",
+      "detail": "All bytes independently reconstructed both directions; no inherited case result.",
+      "passed": true
+    },
+    {
+      "check": "nine-exact-inherited-fixture-helpers",
+      "detail": "Original fixture classes/functions plus obligations unchanged; old qualified17 Source/evidence remain untouched.",
+      "passed": true
+    },
+    {
+      "check": "exact-nine-keyword-callable-API",
+      "detail": "Root agreed callable wrappers; no module authority exposure.",
+      "passed": true
+    },
+    {
+      "check": "stdlib-only-definition-module",
+      "detail": "No project import, top-level semantic/control invocation, clock, process, runner or grant.",
+      "passed": true
+    },
+    {
+      "check": "no-automatic-search-call",
+      "detail": "This harness does not call original target search; only decision/public transaction/cursor surfaces.",
+      "passed": true
+    },
+    {
+      "check": "no-private-engine-hook",
+      "detail": "No private cache/invalidation/exclusion mutation or privileged test hook.",
+      "passed": true
+    },
+    {
+      "check": "all-original-generations-zero",
+      "detail": "No synthetic model/generation replacement.",
+      "passed": true
+    },
+    {
+      "check": "archives-full-literals-checked",
+      "detail": "Actual four-field original archive compared literally, not hashes or relabeled current values.",
+      "passed": true
+    },
+    {
+      "check": "both-prefix-continuation-forms",
+      "detail": "Actual fresh full prefix required before either a new candidate or current EOF.",
+      "passed": true
+    },
+    {
+      "check": "repeated-retention-before-replay-covered",
+      "detail": "Two transitions before replay must preserve one original actual context/candidate/EOF entry.",
+      "passed": true
+    },
+    {
+      "check": "original-receipt-not-rehashed",
+      "detail": "Distinct transfer wrapper/current state, unchanged original receipt raw value/state SHA.",
+      "passed": true
+    },
+    {
+      "check": "only-fixture-membership-can-SKIP",
+      "detail": "Exact OutsideLanguage only in prepared fixture helper; endpoint/resource/callback errors otherwise propagate except exact declared replay seam.",
+      "passed": true
+    },
+    {
+      "check": "interrupt-never-synthesizes-wire",
+      "detail": "Real context/events delegated, one declared abort-and-Timeout seam only; no forged EOF/finite universe.",
+      "passed": true
+    },
+    {
+      "check": "every-place-owned-by-finally-rollback",
+      "detail": "Includes resource failure after install; original Root20 consumed budget is never rewound.",
+      "passed": true
+    },
+    {
+      "check": "no-forbidden-C0-bytes",
+      "detail": "Raw Source textual custody only.",
+      "passed": true
+    },
+    {
+      "check": "all-sixteen-case-labels-present",
+      "detail": "Runtime derives actual PASSED/SKIPPED; no inherited old17 pass.",
+      "passed": true
+    },
+    {
+      "check": "strict-result-and-false-higher-scopes",
+      "detail": "Cases/full observed evidence retained; Root owns all qualification.",
+      "passed": true
+    }
+  ],
+  "complete_forward_patch": {
+    "bytes": 39212,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/parent-to-retained-controls-full.patch",
+    "sha256": "81506375d9ccc4ae7b22ed1c167046d987cfec3dcf3936992f6ce6b92c3d59ac"
+  },
+  "complete_inverse_patch": {
+    "bytes": 39158,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained-controls-to-parent-full-inverse.patch",
+    "sha256": "a99ba19de9dc5cd737853387630a1a70c7cb074a1cdc8b1eb909216e10b6be35"
+  },
+  "inherited_helper_regions": [
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "Unavailable",
+      "region_sha256": "0633d4c830dca042342e9e90385b150644cc55294a6029ec8150623e6e0eb9c7"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "CallbackExhausted",
+      "region_sha256": "ed63a8ff8458cf3d9d5b7afc535250eb000815c95fbf417f6bc1377e2ed9f4c2"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "need",
+      "region_sha256": "cfb2359a99fb5844db1d9b7610758d828c86945b044bc352c78ced9fece32556"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "canonical",
+      "region_sha256": "3d0cba3e5232ca23a7129b2da6af51a68c34121ca073948fd18e8f2e9bb68268"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "digest",
+      "region_sha256": "ba4b204365b99acc82629d44da79e9b2995d4460b992169519341d4d48275144"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "tile",
+      "region_sha256": "180bb27f6de2b574c473adf86ff7da20370081febb16f8b31208c12babe95fa5"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "state",
+      "region_sha256": "95664cf1567b15500aadafc08511edcf6f032a3e5f368560a1fa70f579ef9a83"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "ug",
+      "region_sha256": "910adb314f1decffc2b619dd735712322b77359ddb74287834903f1d5ca55210"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "name": "obligations",
+      "region_sha256": "5187bbb0dae876a54662dfda6fcdf995c80289791aaa8ace629e6894e249eac0"
+    }
+  ],
+  "native_clock_calls": 0,
+  "schema": "unit-row-retained-domain-controls-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "tests_or_controls_run": false
+}

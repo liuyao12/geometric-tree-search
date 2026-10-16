@@ -1,0 +1,117 @@
+{
+  "all_checks_passed": true,
+  "applicable_design_requirements": {
+    "bytes": 8250,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v2.json",
+    "sha256": "36f82e92fbf4433114dc5d2d6c1f54bdda8eac635348683a34a4ef0345306e4a"
+  },
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored both harnesses and earlier checker/codec/family dependencies, not either Root decoder Source. This current whole review is independent transport Source inspection, not a second mathematical implementation.",
+  "blockers": [],
+  "check_count": 12,
+  "checks": [
+    {
+      "check": "exact-whole-current-Source",
+      "detail": "Whole74line Source read; AST/compile only.",
+      "passed": true
+    },
+    {
+      "check": "independent-full-forward-and-inverse",
+      "detail": "Every literal changed byte independently applied both directions; V1/negative preserved.",
+      "passed": true
+    },
+    {
+      "check": "six-JSON-and-assertion-helpers-exact",
+      "detail": "Duplicate-key, finitefloat, canonical configuration and exact assertion logic AST unchanged.",
+      "passed": true
+    },
+    {
+      "check": "all-transport-acceptance-bytes-exact",
+      "detail": "Entire outer7field/schema/canonical/base64/bothlen+hash/zlibEOF+tails/expandedJSON/Source11input2purpose acceptance segment byte-identical.",
+      "passed": true
+    },
+    {
+      "check": "bounded-regular-canonical-native-reader",
+      "detail": "Bounded cap+1 read with actual EOF and complete accumulated raw buffer; oversized/growing files reject before parsing/decoding.",
+      "passed": true
+    },
+    {
+      "check": "contract-auth-parse-same-buffer",
+      "detail": "SAVED-ENVELOPE-SAME-BUFFER-1 repaired for authenticated contract.",
+      "passed": true
+    },
+    {
+      "check": "all-file-pins-exact-retained-buffers",
+      "detail": "Consumed/produced bytes named directly; no later file reread can relabel decoded data. Metadata raw emitted bytes also pinned.",
+      "passed": true
+    },
+    {
+      "check": "bounded-inputs-before-parsing",
+      "detail": "SAVED-ENVELOPE-RAW-CAP-1 repaired for plan, contract and envelope. Expanded cap checked before inner JSON parse.",
+      "passed": true
+    },
+    {
+      "check": "stream-and-full-buffer-clauses-current",
+      "detail": "Only one bounded complete zlib stream; no partial tail or unbounded flush accepted.",
+      "passed": true
+    },
+    {
+      "check": "exclusive-derived-files-same-output-buffers",
+      "detail": "Derived files outside original owned inventory; exclusive mode, original expanded bytes and exact meta_raw bytes.",
+      "passed": true
+    },
+    {
+      "check": "only-stdlib-no-science-clock-import",
+      "detail": "No project/kernel/parser/solver/checker/scientific/native-clock imports or semantic replay.",
+      "passed": true
+    },
+    {
+      "check": "all-admission-flags-remain-false",
+      "detail": "This is saved-byte concordance only; Root saved closer retains response/native/case/epoch/full coverage authority.",
+      "passed": true
+    }
+  ],
+  "closed_blockers": [
+    "SAVED-ENVELOPE-SAME-BUFFER-1",
+    "SAVED-ENVELOPE-RAW-CAP-1"
+  ],
+  "delta": {
+    "bytes": 8289,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-Source-delta-v2.json",
+    "sha256": "f3854f1323a587ae7076316e2c33e5f5ad0d45a09a273ba097b8a5b6c516b9d5"
+  },
+  "execution": {
+    "Source_functions": 0,
+    "actuals": 0,
+    "clocks": 0,
+    "decoder_calls": 0,
+    "models_or_Q_decoded": 0,
+    "tests": 0
+  },
+  "limits": [
+    "No decoder/data functions or tests run; no actual envelope, plan or result decoded.",
+    "Bounded raw transport and same-buffer provenance only. Actual response/native/case/epoch/complete record reconciliation remains separate Root saved closer.",
+    "No scientific replay, trajectory/proof/resource/benefit admission or prior failed-run reclassification."
+  ],
+  "parent_findings": {
+    "bytes": 5561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v1.json",
+    "sha256": "d0ab9e3d1e2853fbb8e02f6a5c7362e100bc5e83ed3ba9f17ea402ff7f1e289f"
+  },
+  "parent_negative": {
+    "bytes": 1279,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-typed-Source-review-v1.json",
+    "sha256": "a94eaa3be2095c763d720b680ab99b4c48fa0d566d84b246c2d273609b2a9625"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-lossless-saved-decoder-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 5270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+    "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

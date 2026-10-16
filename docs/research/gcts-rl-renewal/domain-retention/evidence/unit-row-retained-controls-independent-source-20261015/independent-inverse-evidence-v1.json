@@ -1,0 +1,51 @@
+{
+  "contract_case_count": 16,
+  "entry_keyword_only_arguments": [
+    "language",
+    "engine_factory",
+    "degree_proposer",
+    "fallback",
+    "certify_fallback",
+    "transition",
+    "refresh",
+    "tick"
+  ],
+  "forward_hunks": 3,
+  "forward_patch": {
+    "bytes": 39212,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/parent-to-retained-controls-full.patch",
+    "sha256": "81506375d9ccc4ae7b22ed1c167046d987cfec3dcf3936992f6ce6b92c3d59ac"
+  },
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "inverse_hunks": 3,
+  "inverse_patch": {
+    "bytes": 39158,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained-controls-to-parent-full-inverse.patch",
+    "sha256": "a99ba19de9dc5cd737853387630a1a70c7cb074a1cdc8b1eb909216e10b6be35"
+  },
+  "new_source": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "old_source": {
+    "bytes": 21896,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+    "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+  },
+  "schema": "retained-controls-independent-raw-inverse-v1",
+  "scientific_calls": 0,
+  "source_compile_only": true,
+  "unchanged9_helper_regions": [
+    "Unavailable",
+    "CallbackExhausted",
+    "need",
+    "canonical",
+    "digest",
+    "tile",
+    "state",
+    "ug",
+    "obligations"
+  ]
+}

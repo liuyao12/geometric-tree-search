@@ -1,0 +1,750 @@
+{
+  "current": {
+    "bytes": 37377,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v1.py",
+    "sha256": "264211f1415b5908f765a14630722e5456cf520327d73ebf5b7f1323df47c352"
+  },
+  "entire_positive_output_and_exit_tail_exact": true,
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "parent": {
+    "bytes": 34766,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/unit_row_search_failure_diagnostic_cold_v2.py",
+    "sha256": "0b6c980f2310cac5788876e6837b9213305482bb838dfca47f63f8ae34771db4"
+  },
+  "raw_edits": [
+    {
+      "new": "r",
+      "new_end": 525,
+      "new_start": 524,
+      "old": "s",
+      "old_end": 525,
+      "old_start": 524
+    },
+    {
+      "new": "t",
+      "new_end": 527,
+      "new_start": 526,
+      "old": "arch-f",
+      "old_end": 532,
+      "old_start": 526
+    },
+    {
+      "new": "n",
+      "new_end": 530,
+      "new_start": 529,
+      "old": "lur",
+      "old_end": 537,
+      "old_start": 534
+    },
+    {
+      "new": "d",
+      "new_end": 532,
+      "new_start": 531,
+      "old": "",
+      "old_end": 538,
+      "old_start": 538
+    },
+    {
+      "new": "oma",
+      "new_end": 537,
+      "new_start": 534,
+      "old": "",
+      "old_end": 540,
+      "old_start": 540
+    },
+    {
+      "new": "",
+      "new_end": 538,
+      "new_start": 538,
+      "old": "ag",
+      "old_end": 543,
+      "old_start": 541
+    },
+    {
+      "new": "",
+      "new_end": 539,
+      "new_start": 539,
+      "old": "ostic",
+      "old_end": 549,
+      "old_start": 544
+    },
+    {
+      "new": "1",
+      "new_end": 547,
+      "new_start": 546,
+      "old": "2",
+      "old_end": 557,
+      "old_start": 556
+    },
+    {
+      "new": "r",
+      "new_end": 566,
+      "new_start": 565,
+      "old": "s",
+      "old_end": 576,
+      "old_start": 575
+    },
+    {
+      "new": "t",
+      "new_end": 568,
+      "new_start": 567,
+      "old": "arch-f",
+      "old_end": 583,
+      "old_start": 577
+    },
+    {
+      "new": "n",
+      "new_end": 571,
+      "new_start": 570,
+      "old": "lur",
+      "old_end": 588,
+      "old_start": 585
+    },
+    {
+      "new": "d",
+      "new_end": 573,
+      "new_start": 572,
+      "old": "",
+      "old_end": 589,
+      "old_start": 589
+    },
+    {
+      "new": "oma",
+      "new_end": 578,
+      "new_start": 575,
+      "old": "",
+      "old_end": 591,
+      "old_start": 591
+    },
+    {
+      "new": "",
+      "new_end": 579,
+      "new_start": 579,
+      "old": "ag",
+      "old_end": 594,
+      "old_start": 592
+    },
+    {
+      "new": "",
+      "new_end": 580,
+      "new_start": 580,
+      "old": "ostic",
+      "old_end": 600,
+      "old_start": 595
+    },
+    {
+      "new": "39",
+      "new_end": 2376,
+      "new_start": 2374,
+      "old": "27",
+      "old_end": 2396,
+      "old_start": 2394
+    },
+    {
+      "new": "03",
+      "new_end": 2379,
+      "new_start": 2377,
+      "old": "65",
+      "old_end": 2399,
+      "old_start": 2397
+    },
+    {
+      "new": "ret",
+      "new_end": 2476,
+      "new_start": 2473,
+      "old": "l",
+      "old_end": 2494,
+      "old_start": 2493
+    },
+    {
+      "new": "ined",
+      "new_end": 2481,
+      "new_start": 2477,
+      "old": "zy",
+      "old_end": 2497,
+      "old_start": 2495
+    },
+    {
+      "new": "d",
+      "new_end": 2483,
+      "new_start": 2482,
+      "old": "gl",
+      "old_end": 2500,
+      "old_start": 2498
+    },
+    {
+      "new": "m",
+      "new_end": 2485,
+      "new_start": 2484,
+      "old": "b",
+      "old_end": 2502,
+      "old_start": 2501
+    },
+    {
+      "new": "in",
+      "new_end": 2488,
+      "new_start": 2486,
+      "old": "l",
+      "old_end": 2504,
+      "old_start": 2503
+    },
+    {
+      "new": "3",
+      "new_end": 2542,
+      "new_start": 2541,
+      "old": "1",
+      "old_end": 2558,
+      "old_start": 2557
+    },
+    {
+      "new": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970",
+      "new_end": 2605,
+      "new_start": 2559,
+      "old": "",
+      "old_end": 2575,
+      "old_start": 2575
+    },
+    {
+      "new": "275a6",
+      "new_end": 2612,
+      "new_start": 2607,
+      "old": "d4b3eb9e",
+      "old_end": 2585,
+      "old_start": 2577
+    },
+    {
+      "new": "c",
+      "new_end": 2614,
+      "new_start": 2613,
+      "old": "",
+      "old_end": 2586,
+      "old_start": 2586
+    },
+    {
+      "new": "a43",
+      "new_end": 2619,
+      "new_start": 2616,
+      "old": "852",
+      "old_end": 2591,
+      "old_start": 2588
+    },
+    {
+      "new": "",
+      "new_end": 2622,
+      "new_start": 2622,
+      "old": "ce629d7619d6c3241cc0046a",
+      "old_end": 2618,
+      "old_start": 2594
+    },
+    {
+      "new": "",
+      "new_end": 2623,
+      "new_start": 2623,
+      "old": "e3852ec9423af9f5197e",
+      "old_end": 2639,
+      "old_start": 2619
+    },
+    {
+      "new": "'}, 'transition': {'bytes': 8134, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py', 'sha256': '2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491'}, 'retained_controls': {'bytes': 25338, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py', 'sha256': 'd1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb",
+      "new_end": 3467,
+      "new_start": 2901,
+      "old": "",
+      "old_end": 2917,
+      "old_start": 2917
+    },
+    {
+      "new": "retained-",
+      "new_end": 18805,
+      "new_start": 18796,
+      "old": "gl",
+      "old_end": 18248,
+      "old_start": 18246
+    },
+    {
+      "new": "ri",
+      "new_end": 18808,
+      "new_start": 18806,
+      "old": "bal-en",
+      "old_end": 18255,
+      "old_start": 18249
+    },
+    {
+      "new": "al",
+      "new_end": 18813,
+      "new_start": 18811,
+      "old": "e",
+      "old_end": 18259,
+      "old_start": 18258
+    },
+    {
+      "new": "ret",
+      "new_end": 18837,
+      "new_start": 18834,
+      "old": "glob",
+      "old_end": 18284,
+      "old_start": 18280
+    },
+    {
+      "new": "",
+      "new_end": 18838,
+      "new_start": 18838,
+      "old": "l-eng",
+      "old_end": 18290,
+      "old_start": 18285
+    },
+    {
+      "new": "d-domain-controls','unit-row-retained-target",
+      "new_end": 18885,
+      "new_start": 18841,
+      "old": "",
+      "old_end": 18293,
+      "old_start": 18293
+    },
+    {
+      "new": "r",
+      "new_end": 19935,
+      "new_start": 19934,
+      "old": "s",
+      "old_end": 19343,
+      "old_start": 19342
+    },
+    {
+      "new": "t",
+      "new_end": 19937,
+      "new_start": 19936,
+      "old": "arch-f",
+      "old_end": 19350,
+      "old_start": 19344
+    },
+    {
+      "new": "n",
+      "new_end": 19940,
+      "new_start": 19939,
+      "old": "lur",
+      "old_end": 19355,
+      "old_start": 19352
+    },
+    {
+      "new": "d",
+      "new_end": 19942,
+      "new_start": 19941,
+      "old": "",
+      "old_end": 19356,
+      "old_start": 19356
+    },
+    {
+      "new": "oma",
+      "new_end": 19947,
+      "new_start": 19944,
+      "old": "",
+      "old_end": 19358,
+      "old_start": 19358
+    },
+    {
+      "new": "",
+      "new_end": 19948,
+      "new_start": 19948,
+      "old": "ag",
+      "old_end": 19361,
+      "old_start": 19359
+    },
+    {
+      "new": "",
+      "new_end": 19949,
+      "new_start": 19949,
+      "old": "ostic",
+      "old_end": 19367,
+      "old_start": 19362
+    },
+    {
+      "new": "",
+      "new_end": 20408,
+      "new_start": 20408,
+      "old": "/hilbert_advice_controls",
+      "old_end": 19850,
+      "old_start": 19826
+    },
+    {
+      "new": "!=",
+      "new_end": 20934,
+      "new_start": 20932,
+      "old": "not",
+      "old_end": 20377,
+      "old_start": 20374
+    },
+    {
+      "new": "",
+      "new_end": 20935,
+      "new_start": 20935,
+      "old": "in (",
+      "old_end": 20382,
+      "old_start": 20378
+    },
+    {
+      "new": "",
+      "new_end": 20942,
+      "new_start": 20942,
+      "old": ",'/root/hilbert_advice_controls')",
+      "old_end": 20422,
+      "old_start": 20389
+    },
+    {
+      "new": "transition_checker=modules['transition'],\n            ",
+      "new_end": 28064,
+      "new_start": 28010,
+      "old": "",
+      "old_end": 27490,
+      "old_start": 27490
+    },
+    {
+      "new": ")\n    def transition_adapter(*,before,after,rows,tick):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original transition authority')\n        snapshot = invoke_fn(modules['transition'].authority_snapshot,(),{\n            'language':private,'semantics':modules['degree_checker'],'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        return invoke_fn(modules['transition'].check_transition,(),{\n            'language':private,'semantics':modules['degree_checker'],\n            'before':copy.deepcopy(before),'after':copy.deepcopy(after),'rows':copy.deepcopy(rows),\n            'authority':canonical(snapshot).decode('utf8'),'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def refresh_adapter(*,state,candidates,tick):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original known-packet refresh authority')\n        return invoke_fn(modules['transition'].refresh_candidates,(),{\n            'language':private,'semantics':modules['degree_checker'],\n            'state':copy.deepcopy(state),'candidates':copy.deepcopy(candidates),'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code",
+      "new_end": 29750,
+      "new_start": 28219,
+      "old": "",
+      "old_end": 27645,
+      "old_start": 27645
+    },
+    {
+      "new": "!",
+      "new_end": 30702,
+      "new_start": 30701,
+      "old": "=",
+      "old_end": 28597,
+      "old_start": 28596
+    },
+    {
+      "new": "ret",
+      "new_end": 30717,
+      "new_start": 30714,
+      "old": "glob",
+      "old_end": 28613,
+      "old_start": 28609
+    },
+    {
+      "new": "",
+      "new_end": 30718,
+      "new_start": 30718,
+      "old": "l-eng",
+      "old_end": 28619,
+      "old_start": 28614
+    },
+    {
+      "new": "d",
+      "new_end": 30722,
+      "new_start": 30721,
+      "old": "",
+      "old_end": 28622,
+      "old_start": 28622
+    },
+    {
+      "new": "target-sear",
+      "new_end": 30734,
+      "new_start": 30723,
+      "old": "",
+      "old_end": 28623,
+      "old_start": 28623
+    },
+    {
+      "new": "h",
+      "new_end": 30736,
+      "new_start": 30735,
+      "old": "ontrols",
+      "old_end": 28631,
+      "old_start": 28624
+    },
+    {
+      "new": "is_origin",
+      "new_end": 30775,
+      "new_start": 30766,
+      "old": "p",
+      "old_end": 28662,
+      "old_start": 28661
+    },
+    {
+      "new": "",
+      "new_end": 30776,
+      "new_start": 30776,
+      "old": "y",
+      "old_end": 28664,
+      "old_start": 28663
+    },
+    {
+      "new": "",
+      "new_end": 30777,
+      "new_start": 30777,
+      "old": "oad",
+      "old_end": 28668,
+      "old_start": 28665
+    },
+    {
+      "new": "plan['purpose'] == 'unit-row-reta",
+      "new_end": 30813,
+      "new_start": 30780,
+      "old": "",
+      "old_end": 28671,
+      "old_start": 28671
+    },
+    {
+      "new": "ed-",
+      "new_end": 30818,
+      "new_start": 30815,
+      "old": "v",
+      "old_end": 28674,
+      "old_start": 28673
+    },
+    {
+      "new": "riginal-controls'\n        s",
+      "new_end": 30846,
+      "new_start": 30819,
+      "old": "k",
+      "old_end": 28676,
+      "old_start": 28675
+    },
+    {
+      "new": "lected",
+      "new_end": 30853,
+      "new_start": 30847,
+      "old": "",
+      "old_end": 28677,
+      "old_start": 28677
+    },
+    {
+      "new": "co",
+      "new_end": 30856,
+      "new_start": 30854,
+      "old": "f",
+      "old_end": 28679,
+      "old_start": 28678
+    },
+    {
+      "new": "trols = ",
+      "new_end": 30865,
+      "new_start": 30857,
+      "old": "(",
+      "old_end": 28681,
+      "old_start": 28680
+    },
+    {
+      "new": " if is_o",
+      "new_end": 30892,
+      "new_start": 30884,
+      "old": ".",
+      "old_end": 28701,
+      "old_start": 28700
+    },
+    {
+      "new": "iginal else mod",
+      "new_end": 30908,
+      "new_start": 30893,
+      "old": "",
+      "old_end": 28702,
+      "old_start": 28702
+    },
+    {
+      "new": "les['retai",
+      "new_end": 30919,
+      "new_start": 30909,
+      "old": "",
+      "old_end": 28703,
+      "old_start": 28703
+    },
+    {
+      "new": "ed",
+      "new_end": 30922,
+      "new_start": 30920,
+      "old": "",
+      "old_end": 28704,
+      "old_start": 28704
+    },
+    {
+      "new": "']\n        control_kwargs = ",
+      "new_end": 30959,
+      "new_start": 30931,
+      "old": ",(),",
+      "old_end": 28717,
+      "old_start": 28713
+    },
+    {
+      "new": "",
+      "new_end": 30988,
+      "new_start": 30988,
+      "old": "\n            ",
+      "old_end": 28759,
+      "old_start": 28746
+    },
+    {
+      "new": "\n            ",
+      "new_end": 31033,
+      "new_start": 31020,
+      "old": "",
+      "old_end": 28791,
+      "old_start": 28791
+    },
+    {
+      "new": "",
+      "new_end": 31068,
+      "new_start": 31068,
+      "old": "\n            ",
+      "old_end": 28839,
+      "old_start": 28826
+    },
+    {
+      "new": "\n            ",
+      "new_end": 31109,
+      "new_start": 31096,
+      "old": "",
+      "old_end": 28867,
+      "old_start": 28867
+    },
+    {
+      "new": "'tick':tick}\n        if is_original:",
+      "new_end": 31180,
+      "new_start": 31144,
+      "old": "",
+      "old_end": 28902,
+      "old_start": 28902
+    },
+    {
+      "new": "control_kwargs[",
+      "new_end": 31208,
+      "new_start": 31193,
+      "old": "",
+      "old_end": 28915,
+      "old_start": 28915
+    },
+    {
+      "new": "] = ",
+      "new_end": 31223,
+      "new_start": 31219,
+      "old": ":",
+      "old_end": 28927,
+      "old_start": 28926
+    },
+    {
+      "new": "\n        else:\n            control_kwargs.update(transi",
+      "new_end": 31295,
+      "new_start": 31240,
+      "old": ",'",
+      "old_end": 28946,
+      "old_start": 28944
+    },
+    {
+      "new": "on=transi",
+      "new_end": 31306,
+      "new_start": 31297,
+      "old": "ck':",
+      "old_end": 28952,
+      "old_start": 28948
+    },
+    {
+      "new": "on_adapter,refresh=refresh_adapter)\n        payload = invoke_fn(sele",
+      "new_end": 31376,
+      "new_start": 31308,
+      "old": "",
+      "old_end": 28954,
+      "old_start": 28954
+    },
+    {
+      "new": "ted_controls.run_controls,(),control_",
+      "new_end": 31414,
+      "new_start": 31377,
+      "old": "",
+      "old_end": 28955,
+      "old_start": 28955
+    },
+    {
+      "new": "wargs",
+      "new_end": 31420,
+      "new_start": 31415,
+      "old": "}",
+      "old_end": 28957,
+      "old_start": 28956
+    },
+    {
+      "new": "expected_schema = ('unit-row-lazy-global-controls-v1' if is_original\n                           else 'unit-row-retained-domain-controls-v1')\n        ",
+      "new_end": 31657,
+      "new_start": 31508,
+      "old": "",
+      "old_end": 29045,
+      "old_start": 29045
+    },
+    {
+      "new": "expec",
+      "new_end": 31714,
+      "new_start": 31709,
+      "old": "'uni",
+      "old_end": 29101,
+      "old_start": 29097
+    },
+    {
+      "new": "ed_schem",
+      "new_end": 31723,
+      "new_start": 31715,
+      "old": "-row-l",
+      "old_end": 29108,
+      "old_start": 29102
+    },
+    {
+      "new": "",
+      "new_end": 31724,
+      "new_start": 31724,
+      "old": "zy-global-controls-v1'",
+      "old_end": 29131,
+      "old_start": 29109
+    },
+    {
+      "new": "selecte",
+      "new_end": 31854,
+      "new_start": 31847,
+      "old": "a",
+      "old_end": 29255,
+      "old_start": 29254
+    },
+    {
+      "new": " o",
+      "new_end": 31857,
+      "new_start": 31855,
+      "old": "versa",
+      "old_end": 29261,
+      "old_start": 29256
+    },
+    {
+      "new": "gin",
+      "new_end": 31862,
+      "new_start": 31859,
+      "old": "",
+      "old_end": 29263,
+      "old_start": 29263
+    },
+    {
+      "new": " or retained",
+      "new_end": 31876,
+      "new_start": 31864,
+      "old": "",
+      "old_end": 29265,
+      "old_start": 29265
+    }
+  ],
+  "schema": "retained-cold-independent-whole-raw-delta-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged15_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors"
+  ],
+  "unchanged_failure_writer": true
+}

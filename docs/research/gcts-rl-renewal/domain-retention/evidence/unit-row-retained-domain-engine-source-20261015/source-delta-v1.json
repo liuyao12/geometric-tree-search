@@ -1,0 +1,861 @@
+{
+  "AST_added_definitions": [
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt"
+  ],
+  "AST_changed_definitions": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine.rollback"
+  ],
+  "AST_unchanged_definitions": [
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.state_snapshot",
+    "_Checkpoint.__init__",
+    "canonical",
+    "certify_by_current_cover",
+    "diagnostic_copy",
+    "digest",
+    "need",
+    "select_schedule"
+  ],
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "new_source": {
+    "bytes": 37497,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+    "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+  },
+  "new_standalone_checker": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  },
+  "no_deleted_definitions": [],
+  "old_source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "raw_edits": [
+    {
+      "new_end": 160,
+      "new_start": 107,
+      "new_utf8": "Source-only successor with checked domain retention.\n",
+      "old_end": 107,
+      "old_start": 107,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 380,
+      "new_start": 362,
+      "new_utf8": "2-retained-domains",
+      "old_end": 310,
+      "old_start": 309,
+      "old_utf8": "1"
+    },
+    {
+      "new_end": 457,
+      "new_start": 439,
+      "new_utf8": "-SUPPORT-RETENTION",
+      "old_end": 369,
+      "old_start": 369,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 652,
+      "new_start": 591,
+      "new_utf8": "-v1'\nTRANSITION_VERSION = 'unit-row-domain-transition-checker",
+      "old_end": 503,
+      "old_start": 503,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4006,
+      "new_start": 3986,
+      "new_utf8": "ransition_checker, t",
+      "old_end": 3837,
+      "old_start": 3837,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4916,
+      "new_start": 4593,
+      "new_utf8": "need(transition_checker.VERSION == TRANSITION_VERSION, 'selected transition checker')\n        self.transition_checker = transition_checker\n        self._authority = canonical(transition_checker.authority_snapshot(\n            language=language, semantics=semantics, tick=tick))\n        self._last_transition = None\n        ",
+      "old_end": 4424,
+      "old_start": 4424,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 5326,
+      "new_start": 5188,
+      "new_utf8": "s=0,\n                           retained_domains=0, invalidated_domains=0, retained_queries=0,\n                           retained_prefixe",
+      "old_end": 4696,
+      "old_start": 4696,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 7840,
+      "new_start": 7694,
+      "new_utf8": "last_transition': self._last_transition,\n            'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),\n            '",
+      "old_end": 7064,
+      "old_start": 7064,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 7909,
+      "new_start": 7878,
+      "new_utf8": "_POSSIBLE_UNIT_ROW_SUPPORT_PLUS",
+      "old_end": 7104,
+      "old_start": 7102,
+      "old_utf8": "24"
+    },
+    {
+      "new_end": 7918,
+      "new_start": 7912,
+      "new_utf8": "LLISIO",
+      "old_end": 7107,
+      "old_start": 7107,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 7921,
+      "new_start": 7919,
+      "new_utf8": "_L",
+      "old_end": 7109,
+      "old_start": 7108,
+      "old_utf8": "T"
+    },
+    {
+      "new_end": 7925,
+      "new_start": 7922,
+      "new_utf8": "DGE",
+      "old_end": 7113,
+      "old_start": 7110,
+      "old_utf8": "XT_"
+    },
+    {
+      "new_end": 7926,
+      "new_start": 7926,
+      "new_utf8": "",
+      "old_end": 7119,
+      "old_start": 7114,
+      "old_utf8": "EBIND"
+    },
+    {
+      "new_end": 8278,
+      "new_start": 8075,
+      "new_utf8": ",\n                          'read_occupancy': [[0, k] for k in range(r)],\n                          'local_full_key_exclusions': r,\n                          'global_full_preimage_collision_ledger': True",
+      "old_end": 7268,
+      "old_start": 7268,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 8832,
+      "new_start": 8797,
+      "new_utf8": ",\n            self._last_transition",
+      "old_end": 7787,
+      "old_start": 7787,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 9188,
+      "new_start": 9165,
+      "new_utf8": ", self._last_transition",
+      "old_end": 8120,
+      "old_start": 8120,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 11705,
+      "new_start": 9298,
+      "new_utf8": "check_authority(self):\n        need(canonical(self.transition_checker.authority_snapshot(\n            language=self.language, semantics=self.semantics, tick=self.tick)) == self._authority,\n            'immutable original authority; no cache reuse across authority changes')\n\n    def _transfer_receipt(self, receipt, row, transition, refreshed):\n        # Engine-private already checked evidence is the premise. This is a new\n        # transfer schema, never a c354 receipt with a replaced state SHA.\n        original = receipt.get('original_receipt', receipt)\n        current = transition['after_state_sha256']\n        need(receipt['state_sha256'] == transition['before_state_sha256']\n             and receipt['row'] == row and receipt['input_epoch'] == self._state['input_epoch'],\n             'owned checked cache at exact preceding state')\n        proof = next(v for v in transition['rows'] if v['row'] == row)\n        need(proof['retain'] is True, 'checked sufficient domain equality')\n        return {'schema': 'unit-row-transferred-domain-classification-v1',\n            'version': VERSION, 'state_sha256': current, 'row': row,\n            'input_epoch': self._state['input_epoch'],\n            'status': receipt['status'],\n            'accepted_local_evidence': receipt['accepted_local_evidence'],\n            'complete_cover_checked': receipt['complete_cover_checked'],\n            'degree_exact': receipt['degree_exact'],\n            'missing_mark_cover_checked': receipt.get('missing_mark_cover_checked', False),\n            'candidate_keys': self._copy(receipt['candidate_keys']),\n            'sole_candidate': (self._copy(refreshed[canonical(receipt['sole_candidate']['placement_key'])])\n                               if receipt['sole_candidate'] is not None else None),\n            'original_receipt': self._copy(original),\n            'previous_evidence_sha256': digest(receipt),\n            'transfer_chain': self._copy(receipt.get('transfer_chain', [])) + [{\n                'before_state_sha256': transition['before_state_sha256'],\n                'after_state_sha256': current, 'transition_sha256': digest(transition)}],\n            'transition': dict(transition, rows=[self._copy(proof)]),\n            'complete_candidate_graph_accepted': False,\n            'scheduler_or_rollback_accepted': False, 'logical_proof_accepted': False,\n            'ROOT_resource_accepted': False}\n\n    def _",
+      "old_end": 8230,
+      "old_start": 8230,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 12118,
+      "new_start": 11734,
+      "new_utf8": "\n        # Prepare everything before installation. Each kept domain has a\n        # literal sufficient-dependency proof, including unseen candidates.\n        transition = self.transition_checker.check_transition(\n            language=self.language, semantics=self.semantics, before=self._state,\n            after=state, rows=list(range(24)), authority=self._authority, tick=self.tick)",
+      "old_end": 8259,
+      "old_start": 8259,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15305,
+      "new_start": 12257,
+      "new_utf8": "kept = {v['row'] for v in transition['rows'] if v['retain']}\n        known = {}\n\n        def remember(tile):\n            self.tick()\n            encoded = canonical(tile['placement_key'])\n            need(encoded not in known or canonical(known[encoded]) == canonical(tile),\n                 'same full key has one preceding-state packet')\n            known[encoded] = tile\n\n        for record in self._observed.values():\n            if record['row'] in kept:\n                remember(record['candidate'])\n        for r, slot in self._slots.items():\n            if r in kept:\n                for tile in slot['candidates']:\n                    remember(tile)\n        for r, receipt in self._certs.items():\n            if r in kept and receipt.get('sole_candidate') is not None:\n                remember(receipt['sole_candidate'])\n        refreshed = self.transition_checker.refresh_candidates(\n            language=self.language, semantics=self.semantics, state=checked,\n            candidates=list(known.values()), tick=self.tick)\n        refreshed = {canonical(tile['placement_key']): tile for tile in refreshed}\n        need(set(refreshed) == set(known), 'full retained known-key set refreshed')\n        certs = {r: self._transfer_receipt(v, r, transition, refreshed)\n                 for r, v in self._certs.items() if r in kept and v['status'] != 'UNKNOWN'}\n        slots = {}\n        for r, slot in self._slots.items():\n            self.tick()\n            if r in kept:\n                # Preserve original context/EOF bytes; no context SHA relabel.\n                # Resume opens the genuine new context and checks the ENTIRE\n                # retained prefix again before requesting its next element.\n                slots[r] = dict(slot,\n                    retention_current_state_sha256=transition['after_state_sha256'],\n                    retention_current_state=checked,\n                    original_prefix_candidates=slot.get('original_prefix_candidates', slot['candidates']),\n                    candidates=[refreshed[canonical(tile['placement_key'])] for tile in slot['candidates']],\n                    candidate_packets_state_sha256=transition['after_state_sha256'],\n                    retention_transition=self._copy(transition),\n                    retention_chain=self._copy(slot.get('retention_chain', [])) + [{\n                        'before_state_sha256': transition['before_state_sha256'],\n                        'after_state_sha256': transition['after_state_sha256'],\n                        'transition_sha256': digest(transition)}])\n        observed = {k: dict(v, candidate=refreshed[k])\n                    for k, v in self._observed.items() if v['row'] in kept}\n        reverse = {}\n        for key, record in observed.items():\n            self.tick()\n            for raw_point in record['dependencies']:\n                point = tuple(raw_point)\n                reverse[point] = reverse.get(point, frozenset()) | {key}\n        versions = tuple(v if r in kept else v+1 for r, v in enumerate(self._versions))\n        ",
+      "old_end": 8398,
+      "old_start": 8398,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15398,
+      "new_start": 15398,
+      "new_utf8": "",
+      "old_end": 8516,
+      "old_start": 8491,
+      "old_utf8": "tuple(v+1 for v in self._"
+    },
+    {
+      "new_end": 15406,
+      "new_start": 15406,
+      "new_utf8": "",
+      "old_end": 8745,
+      "old_start": 8524,
+      "old_utf8": ")\n        # Exact whole-state-bound certificates include unseen placements. The\n        # conservative dependency guard invalidates ALL24 on every change,\n        # including removal/revival and changed exclusion context."
+    },
+    {
+      "new_end": 15478,
+      "new_start": 15470,
+      "new_utf8": " = certs",
+      "old_end": 8809,
+      "old_start": 8809,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15512,
+      "new_start": 15479,
+      "new_utf8": " slots, observed, reverse\n       ",
+      "old_end": 8810,
+      "old_start": 8810,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15564,
+      "new_start": 15528,
+      "new_utf8": "  # Native generators are disposable",
+      "old_end": 8826,
+      "old_start": 8826,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15569,
+      "new_start": 15566,
+      "new_utf8": "not",
+      "old_end": 8831,
+      "old_start": 8828,
+      "old_utf8": "{},"
+    },
+    {
+      "new_end": 15576,
+      "new_start": 15570,
+      "new_utf8": "domain",
+      "old_end": 8835,
+      "old_start": 8832,
+      "old_utf8": "{},"
+    },
+    {
+      "new_end": 15588,
+      "new_start": 15577,
+      "new_utf8": "authority.\n",
+      "old_end": 8839,
+      "old_start": 8836,
+      "old_utf8": "{},"
+    },
+    {
+      "new_end": 15797,
+      "new_start": 15589,
+      "new_utf8": "       self._last_transition = transition\n        self.counts['retained_domains'] += len(kept)\n        self.counts['invalidated_domains'] += 24-len(kept)\n        self.counts['retained_prefixes'] += len(slots)",
+      "old_end": 8842,
+      "old_start": 8840,
+      "old_utf8": "{}"
+    },
+    {
+      "new_end": 17327,
+      "new_start": 16917,
+      "new_utf8": "\n        name = tile['placement_key']['tile_type_id']\n        preimage = canonical(tile['placement_key']['type_preimage'])\n        for record in self._observed.values():\n            self.tick()\n            old = record['candidate']['placement_key']\n            need(old['tile_type_id'] != name or canonical(old['type_preimage']) == preimage,\n                 'exposed prototype digest/full-preimage collision')",
+      "old_end": 9962,
+      "old_start": 9962,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19077,
+      "new_start": 19068,
+      "new_utf8": "hecked de",
+      "old_end": 11705,
+      "old_start": 11703,
+      "old_utf8": "om"
+    },
+    {
+      "new_end": 19078,
+      "new_start": 19078,
+      "new_utf8": "",
+      "old_end": 11707,
+      "old_start": 11706,
+      "old_utf8": "l"
+    },
+    {
+      "new_end": 19081,
+      "new_start": 19079,
+      "new_utf8": "nd",
+      "old_end": 11709,
+      "old_start": 11708,
+      "old_utf8": "t"
+    },
+    {
+      "new_end": 19085,
+      "new_start": 19082,
+      "new_utf8": "ncy",
+      "old_end": 11710,
+      "old_start": 11710,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19087,
+      "new_start": 19086,
+      "new_utf8": "s",
+      "old_end": 11714,
+      "old_start": 11711,
+      "old_utf8": "imp"
+    },
+    {
+      "new_end": 19090,
+      "new_start": 19090,
+      "new_utf8": "",
+      "old_end": 11724,
+      "old_start": 11717,
+      "old_utf8": "it cont"
+    },
+    {
+      "new_end": 19092,
+      "new_start": 19091,
+      "new_utf8": "s",
+      "old_end": 11727,
+      "old_start": 11725,
+      "old_utf8": "xt"
+    },
+    {
+      "new_end": 19106,
+      "new_start": 19094,
+      "new_utf8": "\n           ",
+      "old_end": 11729,
+      "old_start": 11729,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19133,
+      "new_start": 19112,
+      "new_utf8": "[v['row'] for v in se",
+      "old_end": 11735,
+      "old_start": 11735,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19139,
+      "new_start": 19134,
+      "new_utf8": "f._la",
+      "old_end": 11737,
+      "old_start": 11736,
+      "old_utf8": "i"
+    },
+    {
+      "new_end": 19143,
+      "new_start": 19141,
+      "new_utf8": "_t",
+      "old_end": 11740,
+      "old_start": 11739,
+      "old_utf8": "("
+    },
+    {
+      "new_end": 19172,
+      "new_start": 19146,
+      "new_utf8": "sition['rows'] if not v['r",
+      "old_end": 11744,
+      "old_start": 11743,
+      "old_utf8": "g"
+    },
+    {
+      "new_end": 19318,
+      "new_start": 19173,
+      "new_utf8": "tain']],\n            retained_rows=[v['row'] for v in self._last_transition['rows'] if v['retain']],\n            transition=self._last_transition",
+      "old_end": 11750,
+      "old_start": 11745,
+      "old_utf8": "(24))"
+    },
+    {
+      "new_end": 19697,
+      "new_start": 19695,
+      "new_utf8": "ch",
+      "old_end": 12129,
+      "old_start": 12127,
+      "old_utf8": "fr"
+    },
+    {
+      "new_end": 19700,
+      "new_start": 19698,
+      "new_utf8": "ck",
+      "old_end": 12136,
+      "old_start": 12130,
+      "old_utf8": "sh par"
+    },
+    {
+      "new_end": 19702,
+      "new_start": 19701,
+      "new_utf8": "d",
+      "old_end": 12139,
+      "old_start": 12137,
+      "old_utf8": "nt"
+    },
+    {
+      "new_end": 19721,
+      "new_start": 19713,
+      "new_utf8": "dependen",
+      "old_end": 12150,
+      "old_start": 12150,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19723,
+      "new_start": 19722,
+      "new_utf8": "i",
+      "old_end": 12154,
+      "old_start": 12151,
+      "old_utf8": "ont"
+    },
+    {
+      "new_end": 19725,
+      "new_start": 19724,
+      "new_utf8": "s",
+      "old_end": 12157,
+      "old_start": 12155,
+      "old_utf8": "xt"
+    },
+    {
+      "new_end": 19739,
+      "new_start": 19727,
+      "new_utf8": "\n           ",
+      "old_end": 12159,
+      "old_start": 12159,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19766,
+      "new_start": 19745,
+      "new_utf8": "[v['row'] for v in se",
+      "old_end": 12165,
+      "old_start": 12165,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19772,
+      "new_start": 19767,
+      "new_utf8": "f._la",
+      "old_end": 12167,
+      "old_start": 12166,
+      "old_utf8": "i"
+    },
+    {
+      "new_end": 19776,
+      "new_start": 19774,
+      "new_utf8": "_t",
+      "old_end": 12170,
+      "old_start": 12169,
+      "old_utf8": "("
+    },
+    {
+      "new_end": 19805,
+      "new_start": 19779,
+      "new_utf8": "sition['rows'] if not v['r",
+      "old_end": 12174,
+      "old_start": 12173,
+      "old_utf8": "g"
+    },
+    {
+      "new_end": 19951,
+      "new_start": 19806,
+      "new_utf8": "tain']],\n            retained_rows=[v['row'] for v in self._last_transition['rows'] if v['retain']],\n            transition=self._last_transition",
+      "old_end": 12180,
+      "old_start": 12175,
+      "old_utf8": "(24))"
+    },
+    {
+      "new_end": 23750,
+      "new_start": 23749,
+      "new_utf8": "K",
+      "old_end": 15979,
+      "old_start": 15978,
+      "old_utf8": "R"
+    },
+    {
+      "new_end": 23751,
+      "new_start": 23751,
+      "new_utf8": "",
+      "old_end": 15987,
+      "old_start": 15980,
+      "old_utf8": "turn ch"
+    },
+    {
+      "new_end": 23753,
+      "new_start": 23752,
+      "new_utf8": "p",
+      "old_end": 16032,
+      "old_start": 15988,
+      "old_utf8": "cked candidate or untrusted EOF, retaining a"
+    },
+    {
+      "new_end": 23803,
+      "new_start": 23762,
+      "new_utf8": "prefixes; replay into a genuine new full ",
+      "old_end": 16041,
+      "old_start": 16041,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23804,
+      "new_start": 23804,
+      "new_utf8": "",
+      "old_end": 16045,
+      "old_start": 16042,
+      "old_utf8": "urs"
+    },
+    {
+      "new_end": 23810,
+      "new_start": 23805,
+      "new_utf8": "ntext",
+      "old_end": 16047,
+      "old_start": 16046,
+      "old_utf8": "r"
+    },
+    {
+      "new_end": 23846,
+      "new_start": 23814,
+      "new_utf8": "\n        self._check_authority()",
+      "old_end": 16051,
+      "old_start": 16051,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23977,
+      "new_start": 23962,
+      "new_utf8": "current_sha = d",
+      "old_end": 16167,
+      "old_start": 16167,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23986,
+      "new_start": 23978,
+      "new_utf8": "gest(sel",
+      "old_end": 16168,
+      "old_start": 16168,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 24018,
+      "new_start": 23987,
+      "new_utf8": "._state)\n        same_context =",
+      "old_end": 16169,
+      "old_start": 16169,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 24125,
+      "new_start": 24035,
+      "new_utf8": " and canonical(slot['context']['state']) == canonical(self._state)\n        if same_context",
+      "old_end": 16186,
+      "old_start": 16186,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 24543,
+      "new_start": 24506,
+      "new_utf8": "if same_context:\n                    ",
+      "old_end": 16567,
+      "old_start": 16567,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 24903,
+      "new_start": 24628,
+      "new_utf8": "')\n                else:\n                    need(slot.get('retention_current_state_sha256') == current_sha\n                         and canonical(slot.get('retention_current_state')) == canonical(self._state),\n                         'owned checked cursor-domain transition",
+      "old_end": 16652,
+      "old_start": 16652,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 25231,
+      "new_start": 25144,
+      "new_utf8": "\n                         and canonical(tile) == canonical(slot['candidates'][ordinal])",
+      "old_end": 16893,
+      "old_start": 16893,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 25288,
+      "new_start": 25275,
+      "new_utf8": "ordered full ",
+      "old_end": 16937,
+      "old_start": 16937,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 25292,
+      "new_start": 25291,
+      "new_utf8": "d",
+      "old_end": 16942,
+      "old_start": 16940,
+      "old_utf8": "on"
+    },
+    {
+      "new_end": 25294,
+      "new_start": 25293,
+      "new_utf8": "d",
+      "old_end": 16944,
+      "old_start": 16943,
+      "old_utf8": "c"
+    },
+    {
+      "new_end": 25297,
+      "new_start": 25295,
+      "new_utf8": "te",
+      "old_end": 16953,
+      "old_start": 16945,
+      "old_utf8": "l cursor"
+    },
+    {
+      "new_end": 25331,
+      "new_start": 25304,
+      "new_utf8": " in genuine current context",
+      "old_end": 16960,
+      "old_start": 16960,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 25695,
+      "new_start": 25388,
+      "new_utf8": "\n                # Old context/completion is provenance only. Even a retained\n                # old EOF must now be observed from the new authentic cursor.\n                slot = dict(slot, context=context, completion=None,\n                    replayed_from_context_sha256=slot['context']['context_sha256'])",
+      "old_end": 17017,
+      "old_start": 17017,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 27035,
+      "new_start": 26956,
+      "new_utf8": "chema': 'unit-row-checked-prefix-classification-v2',\n                        's",
+      "old_end": 18278,
+      "old_start": 18278,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 27160,
+      "new_start": 27093,
+      "new_utf8": ",\n                        'input_epoch': self._state['input_epoch']",
+      "old_end": 18336,
+      "old_start": 18336,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 27581,
+      "new_start": 27404,
+      "new_utf8": ",\n                        'prefix_context_state_sha256': slot['context']['state_sha256'],\n                        'domain_transfer': self._copy(slot.get('retention_transition'))",
+      "old_end": 18580,
+      "old_start": 18580,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 29551,
+      "new_start": 29519,
+      "new_utf8": "elf._check_authority()\n        s",
+      "old_end": 20518,
+      "old_start": 20518,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 29864,
+      "new_start": 29811,
+      "new_utf8": "r: v for r, v in self._certs.items() if r in frontier",
+      "old_end": 20778,
+      "old_start": 20778,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 29903,
+      "new_start": 29899,
+      "new_utf8": "cked",
+      "old_end": 20815,
+      "old_start": 20813,
+      "old_utf8": "ap"
+    },
+    {
+      "new_end": 30515,
+      "new_start": 30077,
+      "new_utf8": "receipt = certificates.get(row)\n            if receipt is not None and receipt['status'] != 'UNKNOWN':\n                need(receipt['state_sha256'] == digest(self._state)\n                     and receipt['row'] == row and receipt['input_epoch'] == self._state['input_epoch'],\n                     'engine-owned current checked or transferred domain')\n                self.counts['retained_queries'] += 1\n            else:\n                ",
+      "old_end": 20989,
+      "old_start": 20989,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 30575,
+      "new_start": 30571,
+      "new_utf8": "    ",
+      "old_end": 21045,
+      "old_start": 21045,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 30663,
+      "new_start": 30659,
+      "new_utf8": "    ",
+      "old_end": 21129,
+      "old_start": 21129,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 30738,
+      "new_start": 30734,
+      "new_utf8": "    ",
+      "old_end": 21200,
+      "old_start": 21200,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 30845,
+      "new_start": 30841,
+      "new_utf8": "    ",
+      "old_end": 21303,
+      "old_start": 21303,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 30886,
+      "new_start": 30886,
+      "new_utf8": "",
+      "old_end": 21392,
+      "old_start": 21344,
+      "old_utf8": "        certificates[row] = self._copy(receipt)\n"
+    },
+    {
+      "new_end": 30953,
+      "new_start": 30949,
+      "new_utf8": "    ",
+      "old_end": 21455,
+      "old_start": 21455,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 31044,
+      "new_start": 30992,
+      "new_utf8": ")\n            certificates[row] = self._copy(receipt",
+      "old_end": 21494,
+      "old_start": 21494,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 35942,
+      "new_start": 35930,
+      "new_utf8": ". Unaffected",
+      "old_end": 26381,
+      "old_start": 26380,
+      "old_utf8": ";"
+    },
+    {
+      "new_end": 35950,
+      "new_start": 35945,
+      "new_utf8": "mains",
+      "old_end": 26384,
+      "old_start": 26384,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 35957,
+      "new_start": 35951,
+      "new_utf8": "may be",
+      "old_end": 26388,
+      "old_start": 26385,
+      "old_utf8": "not"
+    },
+    {
+      "new_end": 35994,
+      "new_start": 35960,
+      "new_utf8": "tained only\n                # thro",
+      "old_end": 26391,
+      "old_start": 26391,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 36000,
+      "new_start": 35995,
+      "new_utf8": "gh ch",
+      "old_end": 26393,
+      "old_start": 26392,
+      "old_utf8": "s"
+    },
+    {
+      "new_end": 36005,
+      "new_start": 36001,
+      "new_utf8": "cked",
+      "old_end": 26394,
+      "old_start": 26394,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 36011,
+      "new_start": 36006,
+      "new_utf8": "equal",
+      "old_end": 26395,
+      "old_start": 26395,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 36015,
+      "new_start": 36013,
+      "new_utf8": "y;",
+      "old_end": 26398,
+      "old_start": 26397,
+      "old_utf8": "s"
+    },
+    {
+      "new_end": 36021,
+      "new_start": 36020,
+      "new_utf8": "n",
+      "old_end": 26404,
+      "old_start": 26403,
+      "old_utf8": "p"
+    },
+    {
+      "new_end": 36025,
+      "new_start": 36022,
+      "new_utf8": "tiv",
+      "old_end": 26406,
+      "old_start": 26405,
+      "old_utf8": "r"
+    },
+    {
+      "new_end": 36026,
+      "new_start": 36026,
+      "new_utf8": "",
+      "old_end": 26409,
+      "old_start": 26407,
+      "old_utf8": "nt"
+    },
+    {
+      "new_end": 36050,
+      "new_start": 36035,
+      "new_utf8": "s are discarded",
+      "old_end": 26418,
+      "old_start": 26418,
+      "old_utf8": ""
+    }
+  ],
+  "schema": "unit-row-retained-domain-source-delta-v1",
+  "scientific_calls": 0,
+  "source_only": true
+}

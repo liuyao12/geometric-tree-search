@@ -1,0 +1,560 @@
+--- retained_domain_controls_v1.py
++++ lazy_engine_adversarial_controls_v1.py
+@@ -1,13 +1,13 @@
+-"""SOURCE ONLY genuine original-language retained-domain adversarial controls.
+-
+-No proof word/donor/library, project imports, clocks, runner or activation.
+-Transition/refresh are caller-authenticated callables with fresh authority.
++"""SOURCE ONLY adversarial controls; original-language fixtures and labeled seams.
++
++No project imports, saved word/donor/library, native clock, runner or grant.
++Root supplies authenticated callable endpoints and the original language.
+ """
+ import copy
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-retained-domain-controls-v1'
++VERSION = 'unit-row-lazy-global-adversarial-controls-v1'
+ 
+ class Unavailable(Exception):
+   pass
+@@ -70,6 +70,7 @@
+   return tile(language,{'rule':'generalize','variable':variable,'formula':['all',variable,copy.deepcopy(body)]},
+         [body],[source],row,tick)
+ 
++
+ def obligations(item, s):
+   value=copy.deepcopy(item);row=value['placement_key']['translation'][1]
+   pre=value['placement_key']['type_preimage'];totals={tuple(p):v for p,v in s['t']}
+@@ -79,292 +80,269 @@
+   return value
+ 
+ 
+-class LoggedCursor:
+-  """Records REAL events; optional replay interruption never manufactures EOF."""
+-  def __init__(self,real,record,limit):
+-    self.real,self.record,self.limit,self.count=real,record,limit,0
++class InterruptedCursor:
++  """Control-only interruption of a REAL cursor; never synthesizes EOF/data."""
++  def __init__(self, real, limit, log):
++    self.real,self.limit,self.log,self.seen=real,limit,log,0
+   def context(self):
+     return self.real.context()
+   def advance(self):
+-    if self.limit is not None and self.count>=self.limit:
+-      self.real.abort();self.record['interrupted_after_candidates']=self.count
+-      raise CallbackExhausted('declared retained-prefix replay interruption')
+-    value=self.real.advance();self.record['events'].append(copy.deepcopy(value))
+-    if value['kind']=='CANDIDATE':self.count+=1
+-    return value
++    if self.seen>=self.limit:
++      self.real.abort();self.log.append({'kind':'CONTROL_INTERRUPT','after_candidates':self.seen})
++      raise CallbackExhausted('declared real-cursor transport interruption')
++    event=self.real.advance();self.log.append(copy.deepcopy(event))
++    if event['kind']=='CANDIDATE':self.seen+=1
++    return event
+   def abort(self):
+     return self.real.abort()
+ 
+ 
+-def run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,transition,refresh,tick):
++def run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick):
++  """No automatic target search; one explicitly incomplete bounded search seam."""
+   cases=[];outside=language.OutsideLanguage
+-  scope='Original-language local domain/transaction controls; no theorem, search trajectory or benefit claim.'
+-  def passed(name,observed,local_scope=scope):
+-    tick();cases.append({'case':name,'status':'PASSED','observed':copy.deepcopy(observed),'scope':local_scope})
+-  def skip(name,reason):
+-    cases.append({'case':name,'status':'SKIPPED','observed':{'reason':reason},'scope':'Unavailable original fixture; gap retained.'})
++  local='Original-language unit placements/pending obligations; no logical proof.'
++  seam='CONTROL-ONLY incomplete real-cursor/proposal transport; no completeness evidence.'
++  def passed(name,observed,scope=local):
++    tick();cases.append({'case':name,'status':'PASSED','observed':copy.deepcopy(observed),'scope':scope})
++  def skipped(name,reason):
++    cases.append({'case':name,'status':'SKIPPED','observed':{'reason':reason},'scope':'Unavailable fixture; gap retained.'})
+   def prepared(fn,*args):
+     try:return fn(*args)
+     except outside as error:
+       if type(error) is not outside:raise
+       raise Unavailable('Original fixture membership exclusion: '+str(error))
+-  def make(s,fb=fallback):
+-    return engine_factory(initial_state=copy.deepcopy(s),degree_proposer=degree_proposer,fallback=fb,
+-      certify_fallback=certify_fallback,tick=tick)
+-  def snap(e):
+-    result=e.state_snapshot()
+-    need(result['state']['generation']==[[[0,r],0] for r in range(24)],'original root generations0')
+-    return result
+-  def restored(e,before):
+-    after=snap(e);need(canonical(after)==canonical(before),'exact retained-domain/checkpoint/archive rollback')
++  def make(s,dp=None,fb=None,cert='CURRENT'):
++    return engine_factory(initial_state=copy.deepcopy(s),degree_proposer=degree_proposer if dp is None else dp,
++      fallback=fallback if fb is None else fb,certify_fallback=certify_fallback if cert=='CURRENT' else cert,tick=tick)
++  def snapshot(e):
++    value=e.state_snapshot()
++    need(value['state']['generation']==[[[0,r],0] for r in range(24)],'all original root generations zero')
++    return value
++  def unchanged(e,before,name):
++    after=snapshot(e);need(canonical(after)==canonical(before),name+' exact full logical rollback')
+     return after
+-  def rowproof(snapshot,row):
+-    return next(p for p in snapshot['last_transition']['rows'] if p['row']==row)
+-  def cursor(snapshot,row):
+-    return dict(snapshot['cursors'])[row]
+-  def cert(snapshot,row):
+-    return dict(snapshot['certificates'])[row]
+-  def rejected(fn,reason_substring):
++  def drain(e,row,limit=4):
++    values=[]
++    for _ in range(limit):
++      tick();event=e.next_alternative(row)
++      if event['kind']=='EOF':return values,event['completion']
++      need(event['kind']=='CANDIDATE','literal cursor event');values.append(event['candidate'])
++    raise AssertionError('fixture cursor did not reach real EOF within declared tiny bound')
++  def expected_value_error(name,call,contains=None):
+     reason=None
+-    try:fn()
++    try:call()
+     except ValueError as error:
+       if type(error) is not ValueError:raise
+       reason=str(error)
+-    need(reason is not None and reason_substring in reason,'exact independent rejection edge')
+-    tick();return {'exception_type':'ValueError','reason':reason}
+-  def logged(log,before_sha=None,limit=None):
++    need(reason is not None,name+' genuine ValueError rejection')
++    if contains is not None:need(contains in reason,name+' expected rejection edge')
++    return {'exception_type':'ValueError','reason':reason}
++  def unknown_hint(**kwargs):
++    # Suppression only: preserve complete current binding/state/false flags.
++    p=copy.deepcopy(degree_proposer(**kwargs));p['kind']='UNKNOWN';p['candidates']=[]
++    p['coverage']=None;p['rejections']=[];p['complete_cover_proposed']=False
++    if p['fibre_cover'] is not None:p['fibre_cover']['completed']=False
++    return p
++  def interrupted(limit,log,only_child=False):
+     def open_cursor(**kwargs):
+-      real=fallback(**kwargs);context=real.context()
+-      record={'context':copy.deepcopy(context),'events':[]};log.append(record)
+-      cap=limit if before_sha is not None and context['state_sha256']!=before_sha else None
+-      return LoggedCursor(real,record,cap)
++      real=fallback(**kwargs)
++      if only_child and not kwargs['state']['selected']:return real
++      return InterruptedCursor(real,limit,log)
+     return open_cursor
+-  def drain(e,row,limit=8):
+-    candidates=[]
+-    for _ in range(limit):
+-      event=e.next_alternative(row)
+-      if event['kind']=='EOF':return candidates,event['completion']
+-      need(event['kind']=='CANDIDATE','actual candidate/EOF');candidates.append(event['candidate'])
+-    raise AssertionError('declared tiny original fixture did not reach real EOF')
+-  def core_without_occupancy(value):
+-    result=copy.deepcopy(value)
+-    for o in result['read_obligations']:o.pop('occupied')
+-    return result
+-  def archive_matches(slot,old_slot):
+-    # Immutable four-field entries retain actual packets from that context.
+-    entries=slot['context_archive']
+-    return any(canonical(x['context'])==canonical(old_slot['context'])
+-      and canonical(x['completion'])==canonical(old_slot['completion'])
+-      and canonical(x['keys'])==canonical(old_slot['keys'])
+-      and canonical(x['candidates'])==canonical(old_slot['candidates']) for x in entries)
+-
++
++  initial=state(language,[],tick)
+   names=sorted(language.theory['axioms']);variables=[v for v in language.parameters if v not in language.forbidden]
+-  group=['retained-domain-refreshes-only-read-occupancy','old-receipt-unchanged-explicit-transfer',
+-    'fresh-full-prefix-replay-before-current-EOF','multiple-transitions-preserve-literal-context-EOF-archives',
+-    'refresh-independent-current-packets-input-unchanged','refresh-forged-core-rejected','refresh-duplicate-full-key-rejected',
+-    'repeated-retention-before-replay-does-not-relabel-archive','fresh-prefix-replay-before-new-candidate',
+-    'interrupted-retained-replay-never-EOF']
+-  main=None
+-  if not names or not variables:
+-    for name in group:skip(name,'Need original AX and Gamma-eligible parameter.')
++  roots=list(language.theory['axioms'].values())+list(language.gamma)
++  bot=['bot'];bottom_absent=not any(f==bot for f in roots)
++  if not variables or not names:
++    for name in ('late-global-ZERO-before-earlier-singleton','global-forced-before-branch',
++      'real-EOF-singleton-without-independent-cover-UNKNOWN','real-EOF-singleton-current-cover-FORCED',
++      'interrupted-zero-prefix-not-ZERO','interrupted-one-prefix-not-SINGLETON'):
++      skipped(name,'No original named AX or Gamma-eligible parameter.')
+   else:
+-    a=copy.deepcopy(language.theory['axioms'][names[0]]);v=variables[0]
++    v=variables[0];a=copy.deepcopy(language.theory['axioms'][names[0]])
++    root_count=sum(f==a for f in roots)
+     try:
+-      if a[0]=='imp':raise Unavailable('Original chosen AX must be non-imp for tiny completed cover.')
+-      roots=list(language.theory['axioms'].values())+list(language.gamma)
+-      if sum(f==a for f in roots)!=1:raise Unavailable('Need unique original AX/Gamma occurrence for pending row1.')
+-      d=['all',v,copy.deepcopy(a)]
+-      if any(f==d for f in roots):raise Unavailable('Extra original root matches two-UG fixture output.')
+-      ax=prepared(tile,language,{'rule':'axiom','name':names[0],'formula':a},[],[],0,tick)
+-      u2=prepared(ug,language,a,v,1,2,tick);u5=prepared(ug,language,d,v,3,5,tick)
+-      base=state(language,[ax,u2,u5],tick)
+-      fill1=obligations(prepared(tile,language,{'rule':'axiom','name':names[0],'formula':a},[],[],1,tick),base)
+-      fill4=obligations(prepared(tile,language,{'rule':'axiom','name':names[0],'formula':a},[],[],4,tick),base)
+-      fill6=obligations(prepared(tile,language,{'rule':'axiom','name':names[0],'formula':a},[],[],6,tick),base)
+-      main=(base,fill1,fill4,fill6,ax,u2,a,v)
++      single_s=state(language,[prepared(ug,language,a,v,0,1,tick)],tick)
++      if root_count!=1:raise Unavailable('Chosen original formula has multiple AX/Gamma occurrences.')
++      if not bottom_absent:raise Unavailable('Original bottom root blocks late ZERO fixture.')
++      late_s=state(language,[prepared(ug,language,a,v,0,1,tick),prepared(ug,language,bot,v,2,4,tick)],tick)
++      e=make(late_s);before=snapshot(e);d=e.decision();after=snapshot(e)
++      certs=dict(after['certificates'])
++      need(d=={'kind':'DEAD','row':2} and certs[0]['status']=='SINGLETON'
++        and certs[2]['status']=='ZERO','global later zero beats earlier singleton')
++      need(canonical(before['state'])==canonical(after['state']),'decision does not place singleton')
++      passed('late-global-ZERO-before-earlier-singleton',{'decision':d,'before':before,'after':after})
++      e=make(single_s);before=snapshot(e);d=e.decision();after=snapshot(e)
++      need(d['kind']=='FORCED' and d['row']==0,'global forced move before any branch')
++      need(canonical(before['state'])==canonical(after['state']),'decision only classifies')
++      passed('global-forced-before-branch',{'decision':d,'before':before,'after':after})
++
++      # Exact real EOF is still not its own 0/1 authority.
++      e=make(single_s,dp=unknown_hint,cert=None);d=e.decision();after=snapshot(e)
++      slot=dict(after['cursors'])[0]
++      need(d['kind']=='UNKNOWN' and len(slot['keys'])==1 and slot['completion'] is not None,
++        'real singleton EOF without independent cover remains UNKNOWN')
++      passed('real-EOF-singleton-without-independent-cover-UNKNOWN',{'decision':d,'snapshot':after},seam)
++      e=make(single_s,dp=unknown_hint);d=e.decision();after=snapshot(e)
++      need(d['kind']=='FORCED' and d['row']==0 and dict(after['certificates'])[0]['complete_cover_checked'] is True,
++        'fresh completed independent cover permits singleton after real EOF')
++      passed('real-EOF-singleton-current-cover-FORCED',{'decision':d,'snapshot':after},seam)
++      for cap,label in ((0,'interrupted-zero-prefix-not-ZERO'),(1,'interrupted-one-prefix-not-SINGLETON')):
++        log=[];e=make(single_s,dp=unknown_hint,fb=interrupted(cap,log));reason=None
++        try:e.decision()
++        except CallbackExhausted as error:
++          if type(error) is not CallbackExhausted:raise
++          reason=str(error)
++        need(reason is not None and not any(x['kind']=='EOF' for x in log),'interruption cannot synthesize EOF')
++        need(sum(x['kind']=='CANDIDATE' for x in log)==cap,'exact declared interruption prefix')
++        passed(label,{'exception_type':'CallbackExhausted','reason':reason,'actual_cursor_events':log,
++          'snapshot':snapshot(e)},seam)
+     except Unavailable as error:
+-      for name in group:skip(name,str(error))
+-
+-  if main is not None:
+-    base,fill1,fill4,fill6,ax,u2,a,v=main;log=[];e=make(base,logged(log));root=snap(e);token=e.checkpoint()
++      for name in ('late-global-ZERO-before-earlier-singleton','global-forced-before-branch',
++        'real-EOF-singleton-without-independent-cover-UNKNOWN','real-EOF-singleton-current-cover-FORCED',
++        'interrupted-zero-prefix-not-ZERO','interrupted-one-prefix-not-SINGLETON'):
++        if not any(c['case']==name for c in cases):skipped(name,type(error).__name__+': '+str(error))
++
++  if not variables or not bottom_absent:
++    for name in ('unseen-remote-key-invalidated','remote-singleton-stream-cover-key-agreement',
++      'rollback-revives-unseen-key-and-cursor-position','exact-ordered-child-alternatives-and-restoration',
++      'omitted-stream-survivor-rejected','assumed-exclusions-change-context-not-universe'):
++      skipped(name,'Need eligible original parameter and no original bottom root.')
++  else:
++    v=variables[0];c=bot
++    for _ in range(41):c=['not',c]
+     try:
+-      decision=e.decision();classified=snap(e);original_receipt=copy.deepcopy(cert(classified,3))
+-      need(original_receipt['schema']=='unit-row-degree-evidence-check-v2' and original_receipt['status']=='MANY'
+-        and original_receipt['degree_exact']==2,'two complete original UG occurrence keys')
+-      items,completion=drain(e,3);before=snap(e);old_slot=copy.deepcopy(cursor(before,3))
+-      need(len(items)==2 and old_slot['completion'] is not None,'complete old real two-key stream')
+-      need(sorted(o['occupied'] for c in items for o in c['read_obligations'])==[False,True],
+-        'one pending versus one occupied original read')
+-      e.place(fill1);after=snap(e);retained=copy.deepcopy(cursor(after,3))
+-      proof=rowproof(after,3)
+-      need(proof['retain'] is True and after['last_transition']['collision_ledger_equal'] is True
+-        and proof['read_occupancy_changes']==[1],'same full relation/prototype ledger, only read1 occupancy changed')
+-      need(after['row_versions'][3]==before['row_versions'][3] and after['row_versions'][1]>before['row_versions'][1],
+-        'retained row version stable, newly occupied row invalidated')
+-      need(canonical(retained['keys'])==canonical(old_slot['keys']) and canonical(retained['context'])==canonical(old_slot['context'])
+-        and canonical(retained['completion'])==canonical(old_slot['completion']),'old context/EOF not relabeled at transition')
+-      need(all(canonical(core_without_occupancy(x))==canonical(core_without_occupancy(y)) for x,y in zip(items,retained['candidates']))
+-        and all(o['occupied'] is True for c in retained['candidates'] for o in c['read_obligations']),
+-        'only occupancy refreshes; complete keys/core/ordered obligations preserved')
+-      passed('retained-domain-refreshes-only-read-occupancy',{'decision':decision,'before':before,'after':after})
+-      transferred=copy.deepcopy(cert(after,3))
+-      need(transferred['schema']=='unit-row-transferred-domain-classification-v1'
+-        and canonical(transferred['original_receipt'])==canonical(original_receipt)
+-        and transferred['state_sha256']==digest(after['state'])
+-        and original_receipt['state_sha256']==digest(base)
+-        and transferred['state_sha256']!=original_receipt['state_sha256'],
+-        'new explicit proof wrapper keeps exact original checked receipt/state SHA')
+-      passed('old-receipt-unchanged-explicit-transfer',{'original_receipt':original_receipt,'current_transfer':transferred})
+-      raw_before=canonical(items)
+-      fresh=refresh(state=copy.deepcopy(after['state']),candidates=copy.deepcopy(items),tick=tick)
+-      need(canonical(items)==raw_before and canonical(fresh)==canonical(retained['candidates']),
+-        'independent refresh agrees exactly and never mutates original packets')
+-      passed('refresh-independent-current-packets-input-unchanged',{'old':items,'current':fresh},
+-        'Refresh premise is previously c354-checked engine-owned candidates, not arbitrary old read metadata.')
+-      bad=copy.deepcopy(items);bad[0]['global_m_values'][0][1]=['CONTROL_FORGED']
+-      passed('refresh-forged-core-rejected',rejected(lambda:refresh(state=copy.deepcopy(after['state']),candidates=bad,tick=tick),
+-        'unchanged entire core'))
+-      passed('refresh-duplicate-full-key-rejected',rejected(lambda:refresh(state=copy.deepcopy(after['state']),
+-        candidates=[copy.deepcopy(items[0]),copy.deepcopy(items[0])],tick=tick),'unique known full keys'))
+-      e.place(fill4);before_replay=snap(e);unreplayed=cursor(before_replay,3)
+-      need(canonical(unreplayed['context'])==canonical(old_slot['context'])
+-        and canonical(unreplayed['completion'])==canonical(old_slot['completion'])
+-        and archive_matches(unreplayed,old_slot)
+-        and sum(canonical(x['context'])==canonical(old_slot['context']) for x in unreplayed['context_archive'])==1,
+-        'repeated retention without replay preserves single original actual archive entry, not refreshed old-context packets')
+-      passed('repeated-retention-before-replay-does-not-relabel-archive',{'old_slot':old_slot,'after_two_transitions':before_replay})
+-      previous_replays=e.counts['cursor_replays'];start=len(log);event=e.next_alternative(3);current=snap(e)
+-      need(event['kind']=='EOF' and len(log)==start+1,'retained old EOF triggers genuine fresh cursor')
+-      observed=log[-1];need(observed['context']['state_sha256']==digest(before_replay['state'])
+-        and [x['kind'] for x in observed['events']]==['CANDIDATE','CANDIDATE','EOF']
+-        and [x['ordinal'] for x in observed['events'][:-1]]==[0,1]
+-        and e.counts['cursor_replays']==previous_replays+2,'every actual full prefix precedes fresh EOF')
+-      current_slot=copy.deepcopy(cursor(current,3))
+-      need(current_slot['context']['state_sha256']==digest(before_replay['state']) and archive_matches(current_slot,old_slot),
+-        'exact original full context/EOF/prefix archive survives current context installation')
+-      passed('fresh-full-prefix-replay-before-current-EOF',{'actual_new_cursor':observed,'new_slot':current_slot,'returned':event})
+-      before_second=snap(e);second_old=copy.deepcopy(cursor(before_second,3));e.place(fill6);second=snap(e)
+-      need(rowproof(second,3)['retain'] is True and second['last_transition']['collision_ledger_equal'] is True,
+-        'second existing AX prototype outside q3 support also retains q3')
+-      second_event=e.next_alternative(3);second_final=snap(e);second_slot=cursor(second_final,3)
+-      need(second_event['kind']=='EOF' and archive_matches(second_slot,old_slot) and archive_matches(second_slot,second_old),
+-        'both full original contexts/completions/prefixes survive multiple transitions and actual replay')
+-      second_receipt=cert(second_final,3)
+-      need(canonical(second_receipt['original_receipt'])==canonical(original_receipt)
+-        and len(second_receipt['transfer_chain'])==3,'multi-hop transfer keeps original receipt, explicit chain')
+-      passed('multiple-transitions-preserve-literal-context-EOF-archives',{'before_second':before_second,
+-        'after_second':second_final,'returned':second_event})
+-    finally:e.rollback(token)
+-    restored(e,root)
+-
+-    # A retained one-key prefix must replay before a new candidate too, not only EOF.
+-    log=[];e=make(base,logged(log));root=snap(e);token=e.checkpoint()
+-    try:
+-      e.decision();first=e.next_alternative(3);old=snap(e);e.place(fill1);changed=snap(e)
+-      need(first['kind']=='CANDIDATE' and len(cursor(old,3)['keys'])==1,'one actual saved prefix key')
+-      start=len(log);replays=e.counts['cursor_replays'];second=e.next_alternative(3);after=snap(e)
+-      need(second['kind']=='CANDIDATE' and len(log)==start+1
+-        and [x['kind'] for x in log[-1]['events']]==['CANDIDATE','CANDIDATE']
+-        and [x['ordinal'] for x in log[-1]['events']]==[0,1]
+-        and log[-1]['context']['state_sha256']==digest(changed['state'])
+-        and e.counts['cursor_replays']==replays+1,'replay entire saved prefix before returning next original candidate')
+-      need(second['candidate']['placement_key']!=first['candidate']['placement_key']
+-        and second['candidate']['read_obligations'][0]['occupied'] is True
+-        and archive_matches(cursor(after,3),cursor(old,3)),'next original ordered key and occupied metadata/current archive')
+-      passed('fresh-prefix-replay-before-new-candidate',{'first':first,'before':old,'changed':changed,
+-        'actual_new_cursor':log[-1],'second':second,'after':after})
+-    finally:e.rollback(token)
+-    restored(e,root)
+-
+-    # Real replay interrupted after the first of two required saved keys.
+-    log=[];e=make(base,logged(log,digest(base),1));root=snap(e);token=e.checkpoint()
+-    try:
+-      e.decision();drain(e,3);e.place(fill1);before=snap(e);start=len(log);reason=None
+-      try:e.next_alternative(3)
+-      except CallbackExhausted as error:
+-        if type(error) is not CallbackExhausted:raise
+-        reason=str(error)
+-      need(reason is not None and len(log)==start+1 and len(log[-1]['events'])==1
+-        and log[-1]['events'][0]['kind']=='CANDIDATE' and log[-1]['interrupted_after_candidates']==1,
+-        'actual prefix interrupted after one, no candidate/EOF return shortcut')
+-      after=snap(e);need(canonical(after)==canonical(before),'interrupted replay does not replace logical slot/context/archives')
+-      passed('interrupted-retained-replay-never-EOF',{'before':before,'after':after,'actual_cursor':log[-1],
+-        'exception_type':'CallbackExhausted','reason':reason},
+-        'CONTROL-ONLY interruption of real current cursor after one of two mandatory prefix events; no fake EOF/universe.')
+-    finally:e.rollback(token)
+-    restored(e,root)
+-
+-  remote_group=['same-UG-prototype-remote-marks-retain-earlier-invalidate-affected','current-illegal-old-candidate-refresh-rejected',
+-    'local-exclusion-stable-ledger-invalidates-own-row','new-global-prototype-ledger-invalidates-all-domains']
+-  remote=None
+-  if main is not None:
+-    base,fill1,fill4,fill6,ax,u2,a,v=main
+-    try:
+-      small=state(language,[ax,u2],tick)
+-      remote_tile=obligations(prepared(ug,language,a,v,3,4,tick),small)
+-      need(canonical(remote_tile['placement_key']['type_preimage'])==canonical(u2['placement_key']['type_preimage']),
+-        'translated same UG offset/body/epoch prototype')
+-      remote=(small,remote_tile)
++      # Fixed original bounds imply antecedent maximum1 here; no bounded model is replaced.
++      need(prepared(language.formula,copy.deepcopy(c))==42,'deep fixture exact formula nodes42')
++      if any(f==c for f in roots):raise Unavailable('Deep fixture coincides with original AX/Gamma root.')
++      if language.theory.get('predicates'):raise Unavailable('Tiny two-MP reference requires no original predicates.')
++      deep_s=state(language,[prepared(ug,language,c,v,2,3,tick)],tick)
++      mp=[]
++      for i,j in ((0,1),(1,0)):
++        witness={'rule':'mp','formula':copy.deepcopy(c)}
++        mp.append(obligations(prepared(tile,language,witness,[bot,['imp',bot,copy.deepcopy(c)]],[i,j],2,tick),deep_s))
++      e=make(deep_s);first=e.next_alternative(2)
++      need(first['kind']=='CANDIDATE' and canonical(first['candidate'])==canonical(mp[0]),'first exact ordered MP key')
++      before=snapshot(e);token=e.checkpoint()
++      need(len(before['exposed_candidates'])==1 and len(dict(before['cursors'])[2]['keys'])==1,'reverse key is genuinely unseen')
++      remote=obligations(prepared(ug,language,bot,v,0,4,tick),deep_s)
++      e.place(remote);changed=snapshot(e)
++      need(changed['revision']==before['revision']+1 and all(b==a+1 for a,b in zip(before['row_versions'],changed['row_versions'])),
++        'remote change invalidates every implicit context version')
++      need(changed['cursors']==[] and changed['certificates']==[] and changed['exposed_candidates']==[],
++        'unseen alternatives cannot survive stale cached context')
++      rejection=expected_value_error('remote old reverse key',lambda:e.place(mp[1]),'whole original point legality')
++      passed('unseen-remote-key-invalidated',{'first_checked':first,'before':before,'remote':remote,
++        'after':changed,'stale_reverse_rejection':rejection})
++      survivors,completion=drain(e,2)
++      need(len(survivors)==1 and canonical(survivors[0]['placement_key'])==canonical(mp[0]['placement_key']),
++        'remote bottom mark removes exactly reversed read placement')
++      current=snapshot(e)['state']
++      receipt=certify_fallback(language=language,state=copy.deepcopy(current),row=2,
++        completion=copy.deepcopy(completion),checked_candidates=copy.deepcopy(survivors),tick=tick)
++      need(receipt is not None and receipt['status']=='SINGLETON' and receipt['complete_cover_checked'] is True,
++        'real EOF one survives only with fresh independent completed cover')
++      passed('remote-singleton-stream-cover-key-agreement',{'state':current,'checked_candidates':survivors,
++        'completion':completion,'independent_receipt':receipt})
++      rejection=expected_value_error('omitted stream survivor',lambda:certify_fallback(language=language,
++        state=copy.deepcopy(current),row=2,completion=copy.deepcopy(completion),checked_candidates=[],tick=tick),
++        'complete cover agrees')
++      passed('omitted-stream-survivor-rejected',rejection)
++      e.rollback(token);after=unchanged(e,before,'remote child')
++      second=e.next_alternative(2)
++      need(second['kind']=='CANDIDATE' and canonical(second['candidate'])==canonical(mp[1]),'rollback replays saved prefix then unseen reverse')
++      final=e.next_alternative(2);need(final['kind']=='EOF','actual two-key stream EOF')
++      passed('rollback-revives-unseen-key-and-cursor-position',{'restored':after,'second':second,'EOF':final,
++        'cursor_replays_observed':e.counts['cursor_replays']},'Original membership/transaction mechanics; EOF alone not exact-degree authority.')
++
++      e=make(deep_s);children=[]
++      for expected in mp:
++        event=e.next_alternative(2);need(event['kind']=='CANDIDATE' and canonical(event['candidate'])==canonical(expected),
++          'canonical ordered parent alternatives')
++        before=snapshot(e);token=e.checkpoint();e.place(event['candidate']);d=e.decision()
++        need(d['kind']=='DEAD','each bottom-obligation child has a fresh certified global dead row')
++        child=snapshot(e);e.rollback(token);after=unchanged(e,before,'ordered child')
++        children.append({'alternative':event,'decision':d,'child':child,'before':before,'restored':after})
++      need(e.next_alternative(2)['kind']=='EOF','two real ordered alternatives then EOF')
++      passed('exact-ordered-child-alternatives-and-restoration',{'children':children},
++        'Policy-independent public place/rollback mechanics; not a reference-scheduled branch trace.')
++      excluded=copy.deepcopy(deep_s);excluded['excluded']=[copy.deepcopy(mp[1]['placement_key'])]
++      e=make(excluded);items,comp=drain(e,2)
++      need(len(items)==1 and canonical(items[0]['placement_key'])==canonical(mp[0]['placement_key']),
++        'exact full-key branch exclusion only')
++      need(comp['state_sha256']==digest(excluded) and comp['state_sha256']!=digest(deep_s),'exclusion binds new full context')
++      passed('assumed-exclusions-change-context-not-universe',{'state':excluded,'stream':items,'completion':comp},
++        'Assumed branch-local exclusion control; justification is not asserted.')
+     except Unavailable as error:
+-      for name in remote_group:skip(name,str(error))
++      for name in ('unseen-remote-key-invalidated','remote-singleton-stream-cover-key-agreement',
++        'rollback-revives-unseen-key-and-cursor-position','exact-ordered-child-alternatives-and-restoration',
++        'omitted-stream-survivor-rejected','assumed-exclusions-change-context-not-universe'):
++        if not any(x['case']==name for x in cases):skipped(name,type(error).__name__+': '+str(error))
++
++  # This is the only search() call: a declared incomplete child-transport seam.
++  if len(names)<2:skipped('UNKNOWN-child-never-excluded','Need two original named AX witnesses.')
+   else:
+-    for name in remote_group:skip(name,'Primary original AX/UG fixture unavailable.')
+-  if remote is not None:
+-    small,remote_tile=remote;e=make(small);root=snap(e);token=e.checkpoint()
+-    try:
+-      e.decision();before=snap(e)
+-      old_bad=[r['candidate'] for _,r in before['exposed_candidates'] if r['row']==3
+-        and r['candidate']['placement_key']['type_preimage']['primitive_witness']['formula']!=a]
+-      e.place(remote_tile);after=snap(e)
+-      need(after['last_transition']['collision_ledger_equal'] is True and rowproof(after,1)['retain'] is True
+-        and all(rowproof(after,r)['retain'] is False for r in (3,4,5)),
+-        'existing translated prototype preserves earlier support but remote marks invalidate affected/later supports')
+-      need(after['row_versions'][1]==before['row_versions'][1]
+-        and after['row_versions'][3]>before['row_versions'][3],'retained and invalidated row versions')
+-      need(3 not in dict(after['certificates']) and cert(after,1)['schema']=='unit-row-transferred-domain-classification-v1',
+-        'affected old receipt removed, earlier checked receipt transferred')
+-      passed('same-UG-prototype-remote-marks-retain-earlier-invalidate-affected',{'before':before,'placement':remote_tile,'after':after})
+-      if old_bad:
+-        passed('current-illegal-old-candidate-refresh-rejected',rejected(lambda:refresh(state=copy.deepcopy(after['state']),
+-          candidates=[copy.deepcopy(old_bad[0])],tick=tick),'retained candidate whole current legality'))
+-      else:skip('current-illegal-old-candidate-refresh-rejected','No genuinely exposed alternative with distinct formula at3.')
+-    finally:e.rollback(token)
+-    restored(e,root)
+-    excluded_key=prepared(tile,language,{'rule':'axiom','name':names[0],'formula':a},[],[],1,tick)['placement_key']
+-    excluded=state(language,[ax,u2],tick,excluded=[excluded_key])
+-    receipt=transition(before=copy.deepcopy(small),after=copy.deepcopy(excluded),rows=[1,3],tick=tick)
+-    rows={x['row']:x for x in receipt['rows']}
+-    need(receipt['collision_ledger_equal'] is True and rows[1]['retain'] is False and rows[3]['retain'] is True,
+-      'local exact excluded key changes own domain; remote pending facts do not borrow row1 proof')
+-    passed('local-exclusion-stable-ledger-invalidates-own-row',{'before':small,'after':excluded,'transition':receipt},
+-      'Exact branch-local exclusion assumed as input, no justification of pruning asserted.')
+-    other=next((n for n in names if language.theory['axioms'][n]!=a),None)
+-    if other is None:skip('new-global-prototype-ledger-invalidates-all-domains','No other distinct original AX prototype.')
+-    else:
+-      b=copy.deepcopy(language.theory['axioms'][other]);e=make(small);root=snap(e);token=e.checkpoint()
+-      try:
+-        new_tile=obligations(prepared(tile,language,{'rule':'axiom','name':other,'formula':b},[],[],4,tick),small)
+-        e.decision();before=snap(e);e.place(new_tile);after=snap(e)
+-        need(after['last_transition']['collision_ledger_equal'] is False
+-          and all(x['retain'] is False for x in after['last_transition']['rows']),
+-          'new global full-preimage ledger invalidates all rows conservatively')
+-        need(after['certificates']==after['cursors']==after['exposed_candidates']==[]
+-          and all(y==x+1 for x,y in zip(before['row_versions'],after['row_versions'])),
+-          'no stale domain/prefix survives global ledger change')
+-        passed('new-global-prototype-ledger-invalidates-all-domains',{'before':before,'placement':new_tile,'after':after})
+-      finally:e.rollback(token)
+-      restored(e,root)
+-
+-  initial=state(language,[],tick);bad=copy.deepcopy(initial);bad['input_epoch']='CONTROL_STALE_EPOCH'
+-  passed('transition-stale-epoch-rejected',rejected(lambda:transition(before=copy.deepcopy(initial),after=bad,rows=[0],tick=tick),
+-    'private epoch/profile'))
+-  passed('transition-Boolean-row-rejected',rejected(lambda:transition(before=copy.deepcopy(initial),after=copy.deepcopy(initial),
+-    rows=[True],tick=tick),'literal sorted distinct queried rows'))
+-  need(len({c['case'] for c in cases})==len(cases),'unique separately counted control IDs')
++    log=[]
++    def child_unknown(**kwargs):
++      return unknown_hint(**kwargs) if kwargs['state']['selected'] else degree_proposer(**kwargs)
++    e=make(initial,dp=child_unknown,fb=interrupted(0,log,only_child=True))
++    before=snapshot(e);result=e.search();after=unchanged(e,before,'UNKNOWN search child')
++    need(result['schema']=='unit-row-lazy-global-search-result-v1' and result['status']=='UNKNOWN'
++      and result['found'] is None and result['root_restored'] is True,'incomplete child returns UNKNOWN, not exhaustion')
++    need(result['counts']['branches']>=1 and any(x['kind']=='TRY' for x in result['events'])
++      and any(x['kind']=='CONTROL_INTERRUPT' for x in log),'a real original child was attempted before interruption')
++    need(not any(x['kind']=='EXCLUDE' for x in result['events']) and after['state']['excluded']==[],
++      'UNKNOWN child never becomes proved parent exclusion')
++    passed('UNKNOWN-child-never-excluded',{'before':before,'restored':after,'actual_cursor_events':log,
++      'bounded_search_result':result},seam+' One intentionally interrupted engine search; not target discovery.')
++
++  # Original cursor lifetime mechanics, without replacing native tick or EOF.
++  gate={'armed':False}
++  def injected_tick():
++    tick()
++    if gate['armed']:raise CallbackExhausted('declared cursor callback exhaustion')
++  real=fallback(language=language,state=copy.deepcopy(initial),row=0,tick=injected_tick)
++  context=real.context();gate['armed']=True;first_reason=None
++  try:real.advance()
++  except CallbackExhausted as error:
++    if type(error) is not CallbackExhausted:raise
++    first_reason=str(error)
++  gate['armed']=False;second_reason=None
++  try:real.advance()
++  except RuntimeError as error:
++    if type(error) is not RuntimeError:raise
++    second_reason=str(error)
++  need(first_reason is not None and second_reason is not None,'failed cursor cannot later produce EOF')
++  passed('callback-exhaustion-poisons-real-cursor',{'context':context,'first':first_reason,'later':second_reason},seam)
++  real=fallback(language=language,state=copy.deepcopy(initial),row=0,tick=tick);context=real.context();real.abort();reason=None
++  try:real.advance()
++  except RuntimeError as error:
++    if type(error) is not RuntimeError:raise
++    reason=str(error)
++  need(reason is not None,'aborted cursor cannot later produce EOF')
++  passed('abort-poisons-real-cursor',{'context':context,'reason':reason},seam)
++
++  # Isolated scheduler inputs are NOT altered production generations or fake certificates.
++  evidence={0:{'status':'MANY','degree_exact':10},1:{'status':'MANY','degree_exact':2}}
++  d=scheduler(evidence=copy.deepcopy(evidence),generations={0:0,1:1},tick=tick)
++  need(d=={'kind':'BRANCH','row':0},'earliest generation outranks later smaller degree')
++  tied=scheduler(evidence=copy.deepcopy(evidence),generations={0:0,1:0},tick=tick)
++  need(tied=={'kind':'BRANCH','row':0},'named ROW-TIE, not historical min-count tie')
++  passed('synthetic-varied-generation-and-ROW-TIE',{'abstract_evidence':evidence,'generations':[[0,0],[1,1]],
++    'decision':d,'same_generation_decision':tied},'NONLOGICAL pure scheduler kernel; no original-model varied generations.')
++  d=scheduler(evidence={0:{'status':'SINGLETON'},1:{'status':'ZERO'}},generations={0:0,1:9},tick=tick)
++  need(d=={'kind':'DEAD','row':1},'synthetic global dead before forced')
++  u=scheduler(evidence={0:{'status':'SINGLETON'},1:{'status':'UNKNOWN'}},generations={0:0,1:9},tick=tick)
++  need(u['kind']=='UNKNOWN','unresolved frontier prevents forced decision')
++  passed('synthetic-global-priority-with-UNKNOWN',{'dead_decision':d,'unresolved_decision':u},
++    'NONLOGICAL scheduler status mechanics, separate from genuine original-language fixtures.')
++  need(len({x['case'] for x in cases})==len(cases),'unique declared case names')
+   tick()
+-  return {'schema':'unit-row-retained-domain-controls-v1','version':VERSION,'cases':cases,'all_declared_cases_completed':True,
+-    'original_height':24,'original_root_generations':0,'no_target_search_call':True,
+-    'scope':'Source-only controls until Root actual; original mathematical fixtures plus one explicitly interrupted replay seam.',
+-    'complete_candidate_graph_accepted':False,'scheduler_or_rollback_accepted':False,'logical_proof_accepted':False,
+-    'exact_point_board_accepted':False,'trajectory_accepted':False,'GCTS_advantage_accepted':False,
+-    'RL_accepted':False,'ROOT_resource_accepted':False}
++  return {'schema':'unit-row-lazy-global-controls-v1','version':VERSION,'cases':cases,
++    'all_declared_cases_completed':True,'original_height':24,'original_root_generations':0,
++    'variant':'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE',
++    'scope':'Genuine original-language transactions plus explicitly labeled adversarial seams; no target search result.',
++    'complete_candidate_graph_accepted':False,'scheduler_or_rollback_accepted':False,
++    'logical_proof_accepted':False,'exact_point_board_accepted':False,'GCTS_advantage_accepted':False,
++    'trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}

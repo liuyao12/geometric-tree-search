@@ -1,0 +1,116 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Author wrote both control harnesses and earlier checker/codec/family dependencies; current engine/transition checker authored arithmetic. Distinct new harness peer review is pinned. No source functions or scientific data were evaluated.",
+  "check_count": 9,
+  "checks": [
+    {
+      "check": "unchanged-current-capsules",
+      "evidence": "Exact current raw full buffers only; no actual/model/word decoded.",
+      "passed": true
+    },
+    {
+      "check": "old-remote-new-ledger-case",
+      "evidence": "Old selected prototype has body Csize42/read offset-1; newly selected remote prototype has body bottom/read offset-4. Full preimages differ, so selected global ledger changes. Exposed MP prefix is not selected-ledger membership.",
+      "passed": true
+    },
+    {
+      "check": "global-ledger-change-invalidates-all",
+      "evidence": "Literal complete prototype ledger is required for any row retention; old all24 version/cache invalidation assertions remain applicable. SHA collision does not authorize retention: c354 rejects incompatible preimages.",
+      "passed": true
+    },
+    {
+      "check": "old-UNKNOWN-empty-root-new-AX-case",
+      "evidence": "Empty selected/excluded prototype ledger changes upon first real AX at root0. Therefore retained initial TWO certificates cannot bypass child UNKNOWN-hint/real-cursor interruption.",
+      "passed": true
+    },
+    {
+      "check": "no-UNKNOWN-retention-upgrade",
+      "evidence": "Unknown cache state itself cannot become retained proof of nonzero/singleton.",
+      "passed": true
+    },
+    {
+      "check": "two-callable-harness-interfaces-distinct",
+      "evidence": "Old purpose requires scheduler; new purpose requires transition+refresh. Root selects exact kwargs and injects new transition module/private same Source11 authority in the shared five-keyword engine factory.",
+      "passed": true
+    },
+    {
+      "check": "both-separate17case-protocols",
+      "evidence": "Old schema unit-row-lazy-global-controls-v1 and new unit-row-retained-domain-controls-v1 both retain cases/all_declared_cases_completed; actual PASSED/SKIPPED counts must be independently derived and kept separate.",
+      "passed": true
+    },
+    {
+      "check": "fresh-epochs-no-hardcoded-instance-keys",
+      "evidence": "Fixture keys derive at actual time from Root-injected original language. Source11 binding epoch differs from previous Source9 actual legitimately; no saved target word or donor is read.",
+      "passed": true
+    },
+    {
+      "check": "old-variant-label-observed",
+      "evidence": "Reporting caution only: old harness fixed variant is scheduler label; use current actual engine Source/variant for retention mode. No Source semantic mismatch found.",
+      "passed": true
+    }
+  ],
+  "code_changed": false,
+  "concrete_blockers": [],
+  "execution": {
+    "Source_functions": 0,
+    "actuals": 0,
+    "clocks": 0,
+    "models_or_Q_decoded": 0,
+    "tests": 0
+  },
+  "practical_limits": [
+    "No Source-level guarantee that either complete Source11 result fits 4MiB or native20. Keep fixed full output gate; any overflow/budget failure remains UNKNOWN. Do not trim candidate model, silently drop observations or borrow old runtime qualification.",
+    "Keep old17 and retained17 separate once-only purposes/results. all_declared_cases_completed does not mean all PASSED: retain every actual SKIPPED/gap and exact error.",
+    "Both current modules must be loaded/authenticated before existing CodeSeal capture; fresh per-endpoint languages use the identical actual Source11 map. Final caller/plan is still independently reviewed, not assessed here.",
+    "These suites do not dynamically exhaust the maximum archive entry ceiling or certify arbitrary implication/absent-output all-six EOF. Complete graph/reference incremental/positive proof/resource/advantage scopes remain separate.",
+    "Only after both new Source-bound control actuals qualify may Root separately choose/grant original-root target search. No inherited old accepted trajectory/UNKNOWN reinterpretation."
+  ],
+  "refs": {
+    "engine": {
+      "bytes": 39803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "old_contract": {
+      "bytes": 13405,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "d18049198f584f08b6ce350c03ddac9a6ec39694e66742c10d203b7c2a0ee869"
+    },
+    "old_controls": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "retained_contract": {
+      "bytes": 14481,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v2.json",
+      "sha256": "2290c598eac6d39e8e164787668971cda88962f3b689353169038919dd8dff63"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "retained_peer": {
+      "bytes": 1586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "907a2b2ff3bcd0e9176618f6fd2975236fc164c8eab3ebb1c567a4e7492518ce"
+    },
+    "transition_checker": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    }
+  },
+  "schema": "unit-row-retained-controls-compatibility-assessment-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Bounded Source-level compatibility assessment only, not new independent review of own control semantics or actual readiness.",
+  "source_assessment_passed": true,
+  "source_only": true
+}

@@ -1,0 +1,177 @@
+{
+  "API": {
+    "authority_snapshot": "authority_snapshot(*,language,semantics,tick) -> complete builtin semantic authority value; engine captures immutable canonical string once.",
+    "caller": "Root must authenticate new checker Source as an additional executed module and preserve all prior original language/kernel/effective-function/native/callback/authority guards. No new actual plan, caller, framework, grant or resource scope supplied here.",
+    "engine": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,transition_checker,tick,initial_state=None,maximum_nodes=128,maximum_events=2000)",
+    "preserved_public_methods": [
+      "state_snapshot",
+      "checkpoint",
+      "rollback",
+      "decision",
+      "place",
+      "next_alternative",
+      "search"
+    ],
+    "refresh": "refresh_candidates(*,language,semantics,state,candidates,tick) -> complete freshly rebuilt current packets in input order, with identical full keys/core and current read occupancy; unique known keys only.",
+    "transition": "check_transition(*,language,semantics,before,after,rows,authority,tick) -> unit-row-checked-domain-transition-v1; rows must be sorted distinct integer0..23; no degree/EOF acceptance."
+  },
+  "Review_ABI": {
+    "engine": {
+      "author_identity": "/root/arithmetic_induction",
+      "schema": "unit-row-retained-domain-engine-typed-Source-review-v1",
+      "scientific_acceptance": false,
+      "scientific_calls": 0,
+      "scope": "unit-row-retained-domain-engine-Source",
+      "source": {
+        "bytes": 37497,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+        "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+      },
+      "source_contract": "Exact current shared contract raw capsule",
+      "source_only": true
+    },
+    "transition_checker": {
+      "author_identity": "/root/arithmetic_induction",
+      "schema": "unit-row-domain-transition-checker-typed-Source-review-v1",
+      "scientific_acceptance": false,
+      "scientific_calls": 0,
+      "scope": "unit-row-domain-transition-checker-Source",
+      "source": {
+        "bytes": 8134,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+        "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+      },
+      "source_contract": "Exact current shared contract raw capsule",
+      "source_only": true
+    }
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 4559,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/author-static-v1.json",
+    "sha256": "7efd6fcb5e2877bca6542350edc3f701e6602f7d9cbe5fc9b2f166b168606eb6"
+  },
+  "checker_source": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  },
+  "delta": {
+    "bytes": 28386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/source-delta-v1.json",
+    "sha256": "38c9be00fd42f1aba0e21ceee3320afa3799efc4de90bd6a6d1cce541c1d65c1"
+  },
+  "evidence": {
+    "UNKNOWN": "UNKNOWN hints are not retained as accepted evidence or upgraded. Unresolved degrees/uncertified EOF still block forced/branch and cannot cause exclusion.",
+    "cursor": "Retain old full context/keys, original prefix packets and EOF bytes as provenance; refresh current known packets separately. No old full-state context or completion is relabeled. Drop native iterators. Before continuation, open a genuine fresh cursor and replay every saved ordered key AND current full packet; only a newly observed EOF has current context. Two retained independently checked witnesses can still prove a lower bound without continuing the cursor.",
+    "graph": "Preserve exposed candidates/incidences for retained rows, update their refreshed candidate packets and rebuild exact reverse indexes. Retain row version only for proven equal domains; invalidate all other certificates/slots/observations. Whole implicit dependency guard covers never-generated placements.",
+    "premise": "Only engine-private evidence obtained by its prior c354 check, checked two witnesses, or current independent EOF certifier is transferable. Transition checker accepts no supplied degree receipt and cannot turn arbitrary JSON into old evidence.",
+    "rollback": "Owned copy-on-write checkpoint now includes last transition plus all prior semantic containers. Live iterators remain disposable and prefix replay is charged. Counts/events/consumed resource budget remain monotone, not rolled back. Public place still needs caller-owned checkpoint/finally even on resource failure after install.",
+    "transfer": "A new unit-row-transferred-domain-classification-v1 wrapper contains the original receipt unchanged with its original state SHA, new checked transition, previous-evidence digest and explicit transfer chain. It is not a fresh c354 receipt in the new state and has no standalone external certificate admission."
+  },
+  "master4_status": "This successor replaces unconditional ALL24 clearing with proved sufficient-domain retention. It retains unaffected logical domains under this criterion, but conservatively drops all rows when the global collision ledger changes and drops native iterator objects. Full reference incremental conformance, broader minimal dependency retention, controls/runtime and independent trajectory admission remain unqualified; no acceleration claimed.",
+  "preserved": "Original declaration/theory/Gamma/target, bounded B12/N44 six-rule language, fixed24 board semantics, no supplied word/donor/library/rank/RL. Entire search/scheduler/word projection and fresh EOF certifier ASTs unchanged. Branches still full canonical fallback, global dead before forced before earliest-generation ROW-TIE; UNKNOWN never excludes.",
+  "raw_references": {
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "degree_proposer_contract": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    "degree_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_semantics_contract": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "fallback_contract": {
+      "bytes": 14336,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+      "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+    },
+    "language": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "previous_contract": {
+      "bytes": 16287,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v2.json",
+      "sha256": "a7356f8f0f977fe8acaa514d2003991ba71f6db7960d5404846ad65fe09bedb0"
+    },
+    "previous_engine": {
+      "bytes": 27865,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+      "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+    },
+    "previous_peer": {
+      "bytes": 1586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "72cb702f5b8cd2a5a29b8c72494a1d6d9b6c3147e9cf52112310660b23712e40"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "relation": {
+    "all_possible_support_latex": "At row \\(r\\), positive support is \\(\\{(0,r)\\}\\); marking support is contained in \\(\\{(1,k):0\\leq k\\leq r\\}\\cup\\{(2,r),(3,r)\\}\\). Strict negative offsets and the fixed outside boundary exclude every other read.",
+    "assumptions": "Exact original c354 and fallback69b4 Sources, fixed original unit24 private state, six-rule language/authority fixed. Both full states are recomposed/validated by c354; malformed states or changed authority reject.",
+    "collision_caveat": "Changing the global selected/excluded type-id/full-preimage map conservatively invalidates every row, even when physical supports are remote. No injectivity of SHA256 is assumed. Exposed candidates are also checked mutually for same-id/different-preimage collisions.",
+    "generation_and_order": "Both states retain original all24 roots generation0 and selected tile generation1. Changed selected order/reference multiplicities are retained in new whole state/refcounts, not overwritten by a domain cache.",
+    "literal_equalities": "Compare assigned presence and full values on every possible m point, t at the queried row, complete local selected/excluded records, root generation, and the complete global tile-id/full-preimage ledger. Compare literal canonical data before using hashes as provenance.",
+    "metadata_refresh": "Earlier t occupancy is not a legality dependency. It can change read_obligations. Every retained known sole/prefix/exposed candidate is rechecked by c354 rebuild_tile/check_collision/legality and with_obligations in the new full state. Only occupied fields may differ; every other full packet field must remain identical.",
+    "scope_of_equality": "A true row proof suffices for equality of the complete original candidate full-key relation and its canonical fallback order, including never-generated or previously rejected candidates. It is a sufficient support/collision test, not a minimal dependency oracle."
+  },
+  "remaining_gates": [
+    "Distinct whole transition-checker and successor-engine Source review.",
+    "Fresh adversarial transition controls: remote mark changes, stable-support retention, read-occupancy refresh, exclusions, collisions, stale receipt/context/epoch, repeated rollback, interrupted replay and genuine EOF handling.",
+    "Frozen cold caller binds both new Sources and all effective original APIs before Root actual grant.",
+    "General independent all-six EOF authority remains unavailable beyond current fresh completed-cover scope.",
+    "No actual success, proof, complete graph, trajectory, learned/RL advantage, resource fit or speed comparison accepted."
+  ],
+  "resources": "Original native20 success,512MiB,failure55,owned60,caller90+1 remain mandatory. All new validation/refresh/replay/provenance/serialization/output costs charged; no clock or runtime work executed here. No speedup or actual bottleneck inference from previous resultless UNKNOWN.",
+  "result": "Same unit-row-lazy-global-search-result-v1 and statuses; changed VERSION/variant; new transition/evidence schemas and monotone counters retained_domains,invalidated_domains,retained_queries,retained_prefixes. retained_queries includes cache hits in an unchanged state, not only a cross-state transfer. These are observations only, no point/proof/resource/GCTS acceptance.",
+  "schema": "unit-row-retained-domain-engine-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 37497,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+    "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+  },
+  "source_only": true,
+  "sources": {
+    "engine": {
+      "bytes": 37497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+      "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+    },
+    "transition_checker": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    }
+  },
+  "variant": "GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION",
+  "version": "lazy-unit-row-global-engine-v2-retained-domains"
+}

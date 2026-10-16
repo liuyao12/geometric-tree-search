@@ -1,0 +1,90 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 16,
+  "checker_source": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  },
+  "checks": [
+    {
+      "id": "frozen_v2_preserved",
+      "passed": true
+    },
+    {
+      "id": "compile_only_current_AST",
+      "passed": true
+    },
+    {
+      "id": "full_forward_and_inverse",
+      "passed": true
+    },
+    {
+      "id": "only_two_existing_methods_changed",
+      "passed": true
+    },
+    {
+      "id": "only_two_archive_helpers_added",
+      "passed": true
+    },
+    {
+      "id": "unchanged_transition_checker",
+      "passed": true
+    },
+    {
+      "id": "archive_exact_four_fields",
+      "passed": true
+    },
+    {
+      "id": "capture_before_candidate_refresh",
+      "passed": true
+    },
+    {
+      "id": "no_recursive_archive_entry",
+      "passed": true
+    },
+    {
+      "id": "repeated_retention_keeps_true_source",
+      "passed": true
+    },
+    {
+      "id": "pre_overwrite_archive_gate",
+      "passed": true
+    },
+    {
+      "id": "existing_event_ceiling_bounds_archive",
+      "passed": true
+    },
+    {
+      "id": "tick_each_archive_lookup_entry",
+      "passed": true
+    },
+    {
+      "id": "whole_search_scheduler_checkpoint_rollback_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "original_receipt_transfer_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "no_new_imports",
+      "passed": true
+    }
+  ],
+  "delta": {
+    "bytes": 6069,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/source-delta-v2.json",
+    "sha256": "41080761581143ee6a7da1ddcf32a006b37b3050a03f5707ffe939242ace52fd"
+  },
+  "no_runtime_or_test_calls": true,
+  "not_independent_review": true,
+  "schema": "unit-row-retained-cursor-provenance-author-static-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "source_only": true
+}

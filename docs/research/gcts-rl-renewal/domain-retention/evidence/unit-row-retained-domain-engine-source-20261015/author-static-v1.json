@@ -1,0 +1,167 @@
+{
+  "AST_added_definitions": [
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt"
+  ],
+  "AST_changed_definitions": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine.rollback"
+  ],
+  "AST_unchanged_definitions": [
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.state_snapshot",
+    "_Checkpoint.__init__",
+    "canonical",
+    "certify_by_current_cover",
+    "diagnostic_copy",
+    "digest",
+    "need",
+    "select_schedule"
+  ],
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 26,
+  "checks": [
+    {
+      "id": "raw_old_ebd4_preserved",
+      "passed": true
+    },
+    {
+      "id": "AST_compile_only_both",
+      "passed": true
+    },
+    {
+      "id": "stdlib_only_imports_both",
+      "passed": true
+    },
+    {
+      "id": "complete_forward_and_inverse_raw_bytes",
+      "passed": true
+    },
+    {
+      "id": "entire_search_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "pure_scheduler_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "full_candidate_rebuild_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "word_projection_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "fresh_EOF_certifier_AST_unchanged",
+      "passed": true
+    },
+    {
+      "id": "full_old_current_c354_versions_retained",
+      "passed": true
+    },
+    {
+      "id": "original_fallback_version_retained",
+      "passed": true
+    },
+    {
+      "id": "full_before_after_c354_validation",
+      "passed": true
+    },
+    {
+      "id": "literal_global_collision_ledger_equality",
+      "passed": true
+    },
+    {
+      "id": "literal_projection_not_hash_equality",
+      "passed": true
+    },
+    {
+      "id": "presence_and_local_key_projection",
+      "passed": true
+    },
+    {
+      "id": "fresh_current_member_full_legality_refresh",
+      "passed": true
+    },
+    {
+      "id": "original_receipt_not_rewritten",
+      "passed": true
+    },
+    {
+      "id": "new_context_full_prefix_packet_replay",
+      "passed": true
+    },
+    {
+      "id": "old_context_and_completion_not_rebound",
+      "passed": true
+    },
+    {
+      "id": "literal_full_state_cursor_comparison",
+      "passed": true
+    },
+    {
+      "id": "retained_incidence_and_reverse_index",
+      "passed": true
+    },
+    {
+      "id": "retained_row_versions_not_incremented",
+      "passed": true
+    },
+    {
+      "id": "checkpoint_restores_transition_state",
+      "passed": true
+    },
+    {
+      "id": "all_live_generators_discarded_on_transition",
+      "passed": true
+    },
+    {
+      "id": "all_existing_caps_unchanged",
+      "passed": true
+    },
+    {
+      "id": "transition_no_degree_or_EOF_authority",
+      "passed": true
+    }
+  ],
+  "delta": {
+    "bytes": 28386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/source-delta-v1.json",
+    "sha256": "38c9be00fd42f1aba0e21ceee3320afa3799efc4de90bd6a6d1cce541c1d65c1"
+  },
+  "schema": "unit-row-retained-domain-author-static-v1",
+  "scientific_calls": 0,
+  "scope": "Raw/AST/compile-only author assertions, not independent Source review, runtime controls, semantic replay or tests. No Source module or defined function executed.",
+  "source_only": true,
+  "sources": {
+    "engine": {
+      "bytes": 37497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+      "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+    },
+    "transition_checker": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    }
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "added_functions": [
+    "buffer_pin",
+    "checked_raw",
+    "read_bounded"
+  ],
+  "current": {
+    "bytes": 5270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+    "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+  },
+  "forward_patch": {
+    "bytes": 4338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-v1-to-v2-full.patch",
+    "sha256": "32678d2d9ec57eaf71f8e0642a7db236558399bde09aa4dfc0673ce9dc6c10af"
+  },
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "inverse_patch": {
+    "bytes": 4338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-v2-to-v1-full-inverse.patch",
+    "sha256": "6514cf9248886df5b2ab9595bc3936c286f8f27967cde1b0d9b1ac95a0bda159"
+  },
+  "parent": {
+    "bytes": 4551,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v1.py",
+    "sha256": "7067a58cd439851086095b761a6a49e4e6a57d2075d2206d4a0906f9f5a4a6ad"
+  },
+  "raw_edits": [
+    {
+      "new": ",os,stat",
+      "new_end": 125,
+      "new_start": 117,
+      "old": "",
+      "old_end": 117,
+      "old_start": 117
+    },
+    {
+      "new": "buffer_",
+      "new_end": 775,
+      "new_start": 768,
+      "old": "",
+      "old_end": 760,
+      "old_start": 760
+    },
+    {
+      "new": ",b",
+      "new_end": 782,
+      "new_start": 780,
+      "old": "",
+      "old_end": 765,
+      "old_start": 765
+    },
+    {
+      "new": "",
+      "new_end": 789,
+      "new_start": 789,
+      "old": "b=p.read_bytes();",
+      "old_end": 789,
+      "old_start": 772
+    },
+    {
+      "new": "r",
+      "new_end": 871,
+      "new_start": 870,
+      "old": "ch",
+      "old_end": 872,
+      "old_start": 870
+    },
+    {
+      "new": "ad_bound",
+      "new_end": 880,
+      "new_start": 872,
+      "old": "ck",
+      "old_end": 875,
+      "old_start": 873
+    },
+    {
+      "new": "p,cap",
+      "new_end": 888,
+      "new_start": 883,
+      "old": "r",
+      "old_end": 879,
+      "old_start": 878
+    },
+    {
+      "new": "",
+      "new_end": 895,
+      "new_start": 895,
+      "old": "p=Path(r['path']);",
+      "old_end": 904,
+      "old_start": 886
+    },
+    {
+      "new": ",'c",
+      "new_end": 937,
+      "new_start": 934,
+      "old": " ",
+      "old_end": 944,
+      "old_start": 943
+    },
+    {
+      "new": "onical",
+      "new_end": 945,
+      "new_start": 939,
+      "old": "d",
+      "old_end": 947,
+      "old_start": 946
+    },
+    {
+      "new": "sav",
+      "new_end": 949,
+      "new_start": 946,
+      "old": "pin(p)==r,'whole current pinn",
+      "old_end": 977,
+      "old_start": 948
+    },
+    {
+      "new": " path",
+      "new_end": 965,
+      "new_start": 960,
+      "old": "",
+      "old_end": 988,
+      "old_start": 988
+    },
+    {
+      "new": "\n    fd=os.open(str(p),os.O_RDONLY|os.O_NOFOLLOW)\n    try:\n        info=os.fstat(fd)\n        need(stat.S_ISREG(info.st_mode) and 0<=info.st_size<=cap,'bounded regular saved file')\n        chunks=[]",
+      "new_end": 1164,
+      "new_start": 967,
+      "old": "",
+      "old_end": 990,
+      "old_start": 990
+    },
+    {
+      "new": "total=0\n        while True:\n            block=os.read(fd,min(65536,cap+1-total))\n            if not block:break\n            chunks.append(block);total+=len(block)\n            need(total<=cap,'whole saved file cap/EOF')\n        ",
+      "new_end": 1392,
+      "new_start": 1165,
+      "old": "",
+      "old_end": 991,
+      "old_start": 991
+    },
+    {
+      "new": "b''.join(chunks)\n    finally:os.close(fd)\ndef checked_raw(r):\n    ",
+      "new_end": 1465,
+      "new_start": 1399,
+      "old": "",
+      "old_end": 998,
+      "old_start": 998
+    },
+    {
+      "new": "=Path(r['path']);raw=read_bounded(p,1048576)\n    need(buffer_pin(p,raw)==r,'same authenticated saved metadata buffer')\n    return raw",
+      "new_end": 1599,
+      "new_start": 1466,
+      "old": "",
+      "old_end": 999,
+      "old_start": 999
+    },
+    {
+      "new": "_raw=read_bounded(plan_path,1048576);plan",
+      "new_end": 1825,
+      "new_start": 1784,
+      "old": "",
+      "old_end": 1184,
+      "old_start": 1184
+    },
+    {
+      "new": "r",
+      "new_end": 1839,
+      "new_start": 1838,
+      "old": "p",
+      "old_end": 1198,
+      "old_start": 1197
+    },
+    {
+      "new": "w",
+      "new_end": 1841,
+      "new_start": 1840,
+      "old": "th.read_bytes()",
+      "old_end": 1214,
+      "old_start": 1199
+    },
+    {
+      "new": "_raw",
+      "new_end": 1870,
+      "new_start": 1866,
+      "old": "",
+      "old_end": 1239,
+      "old_start": 1239
+    },
+    {
+      "new": "",
+      "new_end": 1894,
+      "new_start": 1894,
+      "old": ").read_bytes(",
+      "old_end": 1276,
+      "old_start": 1263
+    },
+    {
+      "new": "",
+      "new_end": 2134,
+      "new_start": 2134,
+      "old": "p.",
+      "old_end": 1518,
+      "old_start": 1516
+    },
+    {
+      "new": "ound",
+      "new_end": 2144,
+      "new_start": 2140,
+      "old": "yt",
+      "old_end": 1526,
+      "old_start": 1524
+    },
+    {
+      "new": "d",
+      "new_end": 2146,
+      "new_start": 2145,
+      "old": "s",
+      "old_end": 1528,
+      "old_start": 1527
+    },
+    {
+      "new": "p,ENCODED_CAP",
+      "new_end": 2160,
+      "new_start": 2147,
+      "old": "",
+      "old_end": 1529,
+      "old_start": 1529
+    },
+    {
+      "new": "buffer_",
+      "new_end": 4398,
+      "new_start": 4391,
+      "old": "",
+      "old_end": 3760,
+      "old_start": 3760
+    },
+    {
+      "new": ",plan_raw",
+      "new_end": 4420,
+      "new_start": 4411,
+      "old": "",
+      "old_end": 3773,
+      "old_start": 3773
+    },
+    {
+      "new": "buffer_",
+      "new_end": 4444,
+      "new_start": 4437,
+      "old": "",
+      "old_end": 3790,
+      "old_start": 3790
+    },
+    {
+      "new": ",raw",
+      "new_end": 4453,
+      "new_start": 4449,
+      "old": "",
+      "old_end": 3795,
+      "old_start": 3795
+    },
+    {
+      "new": "buffer_",
+      "new_end": 4478,
+      "new_start": 4471,
+      "old": "",
+      "old_end": 3813,
+      "old_start": 3813
+    },
+    {
+      "new": ",expanded",
+      "new_end": 4494,
+      "new_start": 4485,
+      "old": "",
+      "old_end": 3820,
+      "old_start": 3820
+    },
+    {
+      "new": "meta_ra",
+      "new_end": 5030,
+      "new_start": 5023,
+      "old": "",
+      "old_end": 4349,
+      "old_start": 4349
+    },
+    {
+      "new": "=",
+      "new_end": 5032,
+      "new_start": 5031,
+      "old": "ith q.open",
+      "old_end": 4360,
+      "old_start": 4350
+    },
+    {
+      "new": "",
+      "new_end": 5033,
+      "new_start": 5033,
+      "old": "'x') as f:",
+      "old_end": 4371,
+      "old_start": 4361
+    },
+    {
+      "new": "s",
+      "new_end": 5043,
+      "new_start": 5042,
+      "old": "",
+      "old_end": 4380,
+      "old_start": 4380
+    },
+    {
+      "new": "",
+      "new_end": 5048,
+      "new_start": 5048,
+      "old": ",f",
+      "old_end": 4387,
+      "old_start": 4385
+    },
+    {
+      "new": "+'\\n').encode()\nwith q.open('xb') as f:",
+      "new_end": 5112,
+      "new_start": 5073,
+      "old": ";",
+      "old_end": 4413,
+      "old_start": 4412
+    },
+    {
+      "new": "meta_raw",
+      "new_end": 5128,
+      "new_start": 5120,
+      "old": "'\\n'",
+      "old_end": 4425,
+      "old_start": 4421
+    },
+    {
+      "new": "buffer_",
+      "new_end": 5169,
+      "new_start": 5162,
+      "old": "",
+      "old_end": 4459,
+      "old_start": 4459
+    },
+    {
+      "new": ",meta_raw",
+      "new_end": 5183,
+      "new_start": 5174,
+      "old": "",
+      "old_end": 4464,
+      "old_start": 4464
+    }
+  ],
+  "removed_functions": [
+    "checked",
+    "pin"
+  ],
+  "schema": "unit-row-lossless-saved-decoder-independent-delta-v2",
+  "scientific_calls": 0,
+  "source_only": true,
+  "transport_acceptance_segment_byte_exact": true,
+  "unchanged_functions": [
+    "canonical",
+    "constant",
+    "decode",
+    "finite",
+    "need",
+    "pairs"
+  ]
+}

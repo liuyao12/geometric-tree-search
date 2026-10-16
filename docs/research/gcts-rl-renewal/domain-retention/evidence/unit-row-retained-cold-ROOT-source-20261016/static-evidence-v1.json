@@ -1,0 +1,20 @@
+{
+  "all15_helpers_raw_AST_exact": true,
+  "compile_only": true,
+  "failure_writer_raw_exact": true,
+  "input_count": 2,
+  "positive_tail_raw_exact": true,
+  "schema": "ROOT-retained-caller-static-evidence-v1",
+  "scientific_execution": false,
+  "source": {
+    "bytes": 37377,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v1.py",
+    "sha256": "264211f1415b5908f765a14630722e5456cf520327d73ebf5b7f1323df47c352"
+  },
+  "source_contract": {
+    "bytes": 12076,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "c528edb0337cf6e8e34ab02969bfb7ae9212d120289ab80c997939658ab7ce84"
+  },
+  "source_count": 11
+}

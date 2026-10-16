@@ -1,0 +1,42 @@
+{
+  "API": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,transition,refresh,tick)",
+  "all_declared_cases_completed_field": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static_evidence": {
+    "bytes": 5988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v1.json",
+    "sha256": "d6cb166a2f8ea81c0a98739b91420258fe1855c45fe2c0fb5b0ad14998687ff8"
+  },
+  "engine": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "engine_contract": {
+    "bytes": 18063,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7559112bf6669c453aedad5cb78e4dacf5cf237849b9cab192b8286f00cd39c"
+  },
+  "prospective_cases": 16,
+  "remaining": "Current distinct Source review and Root existing caller binding/actual grant/native closure; original17 and priorUNKNOWN unchanged.",
+  "result_schema": "unit-row-retained-domain-controls-v1",
+  "schema": "unit-row-retained-domain-controls-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "source_contract": {
+    "bytes": 12380,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "80555add0fd245bf434bc33f2ba518366c39098904ae411d44e34d3de3bedf39"
+  },
+  "source_only": true,
+  "transition_checker": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  }
+}

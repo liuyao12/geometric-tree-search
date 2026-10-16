@@ -1,0 +1,115 @@
+{
+  "AST_added_definitions": [
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._has_archived_context"
+  ],
+  "AST_changed_definitions": [
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine.next_alternative"
+  ],
+  "AST_unchanged_definitions": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.state_snapshot",
+    "_Checkpoint.__init__",
+    "canonical",
+    "certify_by_current_cover",
+    "diagnostic_copy",
+    "digest",
+    "need",
+    "select_schedule"
+  ],
+  "checker_unchanged": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  },
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "new_source": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "old_source": {
+    "bytes": 37497,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+    "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+  },
+  "preserved_negative": {
+    "bytes": 1912,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/engine-typed-Source-review-v1.json",
+    "sha256": "0d062e6b46bc235e72e188f345b98e48d60a218b0a4b0c0c10d4d1b7ce2b786d"
+  },
+  "raw_edits": [
+    {
+      "new_end": 392,
+      "new_start": 322,
+      "new_utf8": "VERSION = 'lazy-unit-row-global-engine-v3-retained-cursor-provenance'\n",
+      "old_end": 382,
+      "old_start": 322,
+      "old_utf8": "VERSION = 'lazy-unit-row-global-engine-v2-retained-domains'\n"
+    },
+    {
+      "new_end": 13405,
+      "new_start": 11706,
+      "new_utf8": "    def _has_archived_context(self, slot):\n        for entry in slot.get('context_archive', []):\n            self.tick()\n            if (canonical(entry['context']) == canonical(slot['context'])\n                    and canonical(entry['keys']) == canonical(slot['keys'])\n                    and canonical(entry['completion']) == canonical(slot['completion'])):\n                self.tick()\n                return True\n        self.tick()\n        return False\n\n    def _archive_context(self, slot):\n        \"\"\"Archive actual old packets before refreshing them, without nesting.\"\"\"\n        self.tick()\n        archive = list(slot.get('context_archive', []))\n        context = slot['context']\n        packet_state = slot.get('retention_current_state', context['state'])\n        if canonical(packet_state) != canonical(context['state']):\n            # A second retention can precede replay. Its active packets have\n            # already been refreshed, so only the first genuine source entry\n            # may represent the old cursor. Do not archive refreshed packets\n            # under that cursor's old full context.\n            need(self._has_archived_context(slot), 'old full context/prefix/EOF already archived')\n            self.tick()\n            return archive, 0\n        entry = {name: self._copy(slot[name])\n                 for name in ('context', 'keys', 'candidates', 'completion')}\n        encoded = canonical(entry)\n        for previous in archive:\n            self.tick()\n            if canonical(previous) == encoded:\n                return archive, 0\n        self.tick()\n        # Only these four literal fields: never a slot, archive or history.\n        return archive + [entry], 1\n\n",
+      "old_end": 11696,
+      "old_start": 11696,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15484,
+      "new_start": 15348,
+      "new_utf8": "        archive_total = sum(len(v.get('context_archive', []))\n                            for r, v in self._slots.items() if r in kept)\n",
+      "old_end": 13639,
+      "old_start": 13639,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 15836,
+      "new_start": 15578,
+      "new_utf8": "                archive, added = self._archive_context(slot)\n                if archive_total + added > self.maximum_events:\n                    raise Unresolved('cursor archive entry ceiling; no exhausted conclusion')\n                archive_total += added\n",
+      "old_end": 13733,
+      "old_start": 13733,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 16131,
+      "new_start": 16068,
+      "new_utf8": "                slots[r] = dict(slot, context_archive=archive,\n",
+      "old_end": 14003,
+      "old_start": 13965,
+      "old_utf8": "                slots[r] = dict(slot,\n"
+    },
+    {
+      "new_end": 27212,
+      "new_start": 27034,
+      "new_utf8": "                    need(self._has_archived_context(slot),\n                         'retained original context/prefix/EOF survives fresh replay')\n                    self.tick()\n",
+      "old_end": 24906,
+      "old_start": 24906,
+      "old_utf8": ""
+    }
+  ],
+  "schema": "unit-row-retained-cursor-provenance-delta-v2",
+  "scientific_calls": 0,
+  "source_only": true
+}

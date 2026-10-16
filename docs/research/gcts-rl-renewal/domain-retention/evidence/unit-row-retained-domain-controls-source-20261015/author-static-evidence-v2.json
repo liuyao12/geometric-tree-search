@@ -1,0 +1,84 @@
+{
+  "Source_execution": false,
+  "actual_authorized": false,
+  "all_checks_passed": true,
+  "check_count": 11,
+  "checks": [
+    {
+      "check": "complete-four-edit-forward-and-inverse",
+      "detail": "Version, one declared case label, inner checkpoint, one new continuation-control block only; exact whole byte inverse.",
+      "passed": true
+    },
+    {
+      "check": "ten-other-definitions-exact",
+      "detail": "Every helper/class other than run_controls AST unchanged; no fixture/runtime algorithm change.",
+      "passed": true
+    },
+    {
+      "check": "exact-eight-keyword-API",
+      "detail": "Actual coherent8 keyword arguments; V1 descriptive nine-word label retained historically, corrected here.",
+      "passed": true
+    },
+    {
+      "check": "nonempty-archive-before-inner-checkpoint",
+      "detail": "Original genuine changed snapshot has archived original context/prefix before checkpoint.",
+      "passed": true
+    },
+    {
+      "check": "full-snapshot-restored-before-repeat",
+      "detail": "Existing restored compares entire canonical logical snapshot incl archive, contexts, keys, packets, completion, receipt chain and dependencies.",
+      "passed": true
+    },
+    {
+      "check": "same-current-key-and-whole-packet",
+      "detail": "Not key/hash-only continuation equality.",
+      "passed": true
+    },
+    {
+      "check": "actual-new-cursor-and-full-prefix-repeat",
+      "detail": "Fresh actual cursor logs replay ordinal0 then new ordinal1; native budget not rewound.",
+      "passed": true
+    },
+    {
+      "check": "full-archive-stays-identical",
+      "detail": "Archive literal bytes/value unchanged after inner rollback and repeat.",
+      "passed": true
+    },
+    {
+      "check": "existing16-declared-cases-retained",
+      "detail": "Old Source/peer untouched; no inherited runtime acceptance for currentSource.",
+      "passed": true
+    },
+    {
+      "check": "no-search-no-clock-project-import",
+      "detail": "AST/compile only; no project imports or actual control calls.",
+      "passed": true
+    },
+    {
+      "check": "all-other-module-statements-exact",
+      "detail": "Only VERSION and run_controls AST differ; class/fixtures/imports all exact.",
+      "passed": true
+    }
+  ],
+  "clocks": 0,
+  "schema": "unit-row-retained-domain-controls-static-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+    "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+  },
+  "tests_or_controls_run": false,
+  "unchanged_top_definitions": [
+    "CallbackExhausted",
+    "LoggedCursor",
+    "Unavailable",
+    "canonical",
+    "digest",
+    "need",
+    "obligations",
+    "state",
+    "tile",
+    "ug"
+  ]
+}

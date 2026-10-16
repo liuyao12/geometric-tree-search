@@ -1,0 +1,47 @@
+--- retained_domain_controls_v2.py
++++ retained_domain_controls_v1.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-retained-domain-controls-v2'
++VERSION = 'unit-row-retained-domain-controls-v1'
+ 
+ class Unavailable(Exception):
+   pass
+@@ -163,7 +163,6 @@
+     'fresh-full-prefix-replay-before-current-EOF','multiple-transitions-preserve-literal-context-EOF-archives',
+     'refresh-independent-current-packets-input-unchanged','refresh-forged-core-rejected','refresh-duplicate-full-key-rejected',
+     'repeated-retention-before-replay-does-not-relabel-archive','fresh-prefix-replay-before-new-candidate',
+-    'nonempty-archive-checkpoint-rollback-and-repeat-continuation',
+     'interrupted-retained-replay-never-EOF']
+   main=None
+   if not names or not variables:
+@@ -263,8 +262,6 @@
+     try:
+       e.decision();first=e.next_alternative(3);old=snap(e);e.place(fill1);changed=snap(e)
+       need(first['kind']=='CANDIDATE' and len(cursor(old,3)['keys'])==1,'one actual saved prefix key')
+-      need(cursor(changed,3)['context_archive'],'inner checkpoint has a genuinely nonempty archive')
+-      inner=e.checkpoint()
+       start=len(log);replays=e.counts['cursor_replays'];second=e.next_alternative(3);after=snap(e)
+       need(second['kind']=='CANDIDATE' and len(log)==start+1
+         and [x['kind'] for x in log[-1]['events']]==['CANDIDATE','CANDIDATE']
+@@ -276,18 +273,6 @@
+         and archive_matches(cursor(after,3),cursor(old,3)),'next original ordered key and occupied metadata/current archive')
+       passed('fresh-prefix-replay-before-new-candidate',{'first':first,'before':old,'changed':changed,
+         'actual_new_cursor':log[-1],'second':second,'after':after})
+-      e.rollback(inner);inner_restored=restored(e,changed)
+-      start=len(log);replays=e.counts['cursor_replays'];repeat=e.next_alternative(3);again=snap(e)
+-      need(canonical(repeat)==canonical(second),'identical full key/current packet after nonempty-archive rollback')
+-      need(len(log)==start+1 and [x['kind'] for x in log[-1]['events']]==['CANDIDATE','CANDIDATE']
+-        and [x['ordinal'] for x in log[-1]['events']]==[0,1]
+-        and log[-1]['context']['state_sha256']==digest(changed['state'])
+-        and e.counts['cursor_replays']==replays+1,'rollback discards live cursor and genuinely replays full saved prefix')
+-      need(canonical(cursor(again,3)['context_archive'])==canonical(cursor(changed,3)['context_archive']),
+-        'original literal archive unchanged after rollback and repeated continuation')
+-      passed('nonempty-archive-checkpoint-rollback-and-repeat-continuation',{'checkpoint_snapshot':changed,
+-        'restored_snapshot':inner_restored,'original_continuation':second,'repeated_continuation':repeat,
+-        'actual_fresh_cursor':log[-1],'after_repeated_continuation':again})
+     finally:e.rollback(token)
+     restored(e,root)
+ 

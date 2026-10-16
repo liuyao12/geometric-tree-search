@@ -1,0 +1,23 @@
+{
+  "blocker": "RETAINED-CURSOR-PROVENANCE-1; one concrete engine provenance blocker, no execution.",
+  "controls": "Original-language retained-domain adversarial harness being authored separately; Root only actual owner.",
+  "engine_review": {
+    "bytes": 1912,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/engine-typed-Source-review-v1.json",
+    "sha256": "0d062e6b46bc235e72e188f345b98e48d60a218b0a4b0c0c10d4d1b7ce2b786d"
+  },
+  "findings": {
+    "bytes": 19637,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/findings-v1.json",
+    "sha256": "05d6eabed835db20b1a3e7c2bffe0cf025730e8707ff11a3bcddf18f480a024e"
+  },
+  "schema": "unit-row-retained-domain-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "transition_checker_review": {
+    "bytes": 1957,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/transition_checker-typed-Source-review-v1.json",
+    "sha256": "bb0bba797a41b32206b49b9927b36e6236eb15ec406e2a30c7006350f191367a"
+  }
+}

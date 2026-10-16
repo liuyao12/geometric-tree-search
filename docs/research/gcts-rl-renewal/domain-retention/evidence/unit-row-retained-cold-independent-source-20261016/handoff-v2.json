@@ -1,0 +1,99 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "findings": {
+    "bytes": 25722,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/findings-v2.json",
+    "sha256": "cdf08d6ba21c72dbb2986ab4200bcb20d9b8e7a83e3fe5e4f2f1ca398e12d573"
+  },
+  "preserved_prior_peer": {
+    "bytes": 4807,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "097551d025aeaee018da2aec6d13f22a2a313f09ccd72e3e1803df8199857331"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-retained-cold-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-retained-domain-cold-Source",
+  "source": {
+    "bytes": 38433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+    "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+  },
+  "source_contract": {
+    "bytes": 13867,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "bc84dcb706d42a37c43538605294b27ad6f667c64431a69eaceb41c264242ffa"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 39803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 38433,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+      "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    }
+  },
+  "summary": "Whole current lossless transport caller reviewed. Complete raw canonical payload+LF compressed without trimming, exact dual lengths/hashes/7fields, expanded16MiB/encoded4MiB, sealed native codec path and original native20/failure55/final exit preserved. No scoped blocker; current fresh controls/codec closure/runtime remain unqualified.",
+  "typed_review": {
+    "bytes": 5049,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "14f1262f131431226b6f2e983d4b15c0071d3308a3c9ddfebcc311a82dd7be52"
+  },
+  "whole_raw_delta_and_inverse": {
+    "bytes": 3159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/independent-Source-delta-v2.json",
+    "sha256": "8d86298561b9367cd36d1698a0349e8174f9cb217d7831d168c973d4067520e1"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "API": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,transition,refresh,tick)",
+  "all_declared_cases_completed_field": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "delta": {
+    "bytes": 4163,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-delta-v2.json",
+    "sha256": "d3ea07fd1a0bcbadab75f47022984923f1d0fdf4d64b5bd91b9bd1233379751f"
+  },
+  "genuine_parent_peer": {
+    "bytes": 1457,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "36269226bd477296f4e515db636ac8613db0c9e134c7bff79252b5e1e970ccd0"
+  },
+  "parent_handoff": {
+    "bytes": 2379,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/handoff-v1.json",
+    "sha256": "01cb2160e041be4caf5a4b8bfd69ddfc4ce15c647e61259fc1bfcab390e461ad"
+  },
+  "prospective_cases": 17,
+  "remaining": "Distinct currentSource review and Root exact caller/current grant/actual closure; no current activation or new search result.",
+  "result_schema": "unit-row-retained-domain-controls-v1",
+  "schema": "unit-row-retained-domain-controls-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+    "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+  },
+  "source_contract": {
+    "bytes": 14481,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v2.json",
+    "sha256": "2290c598eac6d39e8e164787668971cda88962f3b689353169038919dd8dff63"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 2877,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v2.json",
+    "sha256": "03ca9f6c3c045c91fbddc79f8d575554ad38dc58cccf91a9e2c1b95f84cff7d5"
+  }
+}

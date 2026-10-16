@@ -1,0 +1,70 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes_observed": 61063168,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 4.657,
+  "complete_control_record_available": false,
+  "controls_accepted": false,
+  "current_goal_turn": "progress",
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 4497144000,
+  "native_resources_qualified": false,
+  "native_worker_lifetime_ns": 4446539000,
+  "new17_harness_unqualified": true,
+  "next_action": "Preserve cap failure. Freeze lossless bounded wire envelope without trimming any mathematical/control evidence; fresh Source-bound review and original17/new17 actuals before any search. No unchanged actual restart.",
+  "original17_stage_preserved": true,
+  "passed_cases": null,
+  "plan": {
+    "bytes": 6038,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-plan-v1.json",
+    "sha256": "8e1115a27e6078e19a9b9919eaf0d4ccf023193b267976632ac2c2d940c09bde"
+  },
+  "previous_goal_turn": "progress",
+  "raw_evidence": [
+    {
+      "bytes": 253,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/ONCE.json",
+      "sha256": "89afd65d86d977bc7d50e7b03de9fbe91cfe2d4d85b05d678da5d6847bf67e29"
+    },
+    {
+      "bytes": 79,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/meter-stderr.txt",
+      "sha256": "9e7bc77f43e1eb004b296773040cae98c0d8dba103c1b48ba07a5448da2ccc98"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1687,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/native-terminal.json",
+      "sha256": "a2bad1b9dbf6a4449bd16fc9bc5ddc80191b11a0754f6db7c87f5f4bf0c930ea"
+    },
+    {
+      "bytes": 470,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/observation.json",
+      "sha256": "d23dd1e8cda665e13b945a14027c60fe284eb59f6561da82f3662966dee8ff56"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "a9b2dbf77c6e4b6b34cabd2c176fbeaa0b16f73e54b16336f568039091b2b98d"
+    }
+  ],
+  "reason": "Whole canonical control result exceeded original4MiB raw output limit; exit2 before owned output creation. No counts or control-pass qualification inferred.",
+  "reconciliation_scope": "Saved native/wire/source metadata only; no mathematical/control function replay.",
+  "schema": "ROOT-retained-controls-output-cap-UNKNOWN-v1",
+  "skipped_cases": null,
+  "status": "UNKNOWN",
+  "terminal_T_bytes_observed": 61063168
+}

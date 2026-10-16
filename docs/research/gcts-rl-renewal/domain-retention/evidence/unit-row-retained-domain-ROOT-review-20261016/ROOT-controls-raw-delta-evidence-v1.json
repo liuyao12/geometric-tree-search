@@ -1,0 +1,18 @@
+{
+  "compile_only": true,
+  "full_forward_inverse": true,
+  "schema": "ROOT-retained-controls-raw-delta-v1",
+  "scientific_execution": false,
+  "source": {
+    "bytes": 25338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+    "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+  },
+  "source_contract": {
+    "bytes": 14481,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v2.json",
+    "sha256": "2290c598eac6d39e8e164787668971cda88962f3b689353169038919dd8dff63"
+  },
+  "whole_current_contract_and_four_edit_delta_read": true,
+  "whole_parent_Source_read": true
+}

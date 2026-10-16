@@ -1,0 +1,33 @@
+{
+  "actual_execution_authorized": false,
+  "checker_source": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  },
+  "remaining_gate": "Whole current new controls contract/immutable17case successor review, new Source-bound cold caller and genuine independent review, Root-owned actual controls. No unchanged search restart.",
+  "reviews": {
+    "engine": {
+      "bytes": 3674,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-engine-Source-review-v1.json",
+      "sha256": "2feccd7ebee87e574bd254f777cab3763412ed8c5e471713db76f7ee6398e175"
+    },
+    "transition_checker": {
+      "bytes": 3686,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-transition_checker-Source-review-v1.json",
+      "sha256": "152e2a2242c146892d501c91d09214dcc05674d879e6970efe621df192f5a268"
+    }
+  },
+  "schema": "ROOT-retained-domain-review-handoff-v1",
+  "scientific_execution": false,
+  "source": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "source_contract": {
+    "bytes": 18063,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7559112bf6669c453aedad5cb78e4dacf5cf237849b9cab192b8286f00cd39c"
+  }
+}

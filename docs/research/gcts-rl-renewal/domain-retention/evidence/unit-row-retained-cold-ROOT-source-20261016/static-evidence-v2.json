@@ -1,0 +1,20 @@
+{
+  "Source11": true,
+  "all15_helpers_and_failure_writer_raw_AST_exact": true,
+  "compile_only": true,
+  "input2_and_six_limits_unchanged": true,
+  "new_function": "encode_result_transport",
+  "positive_tail_exact_after_removing_only_encoder_call": true,
+  "schema": "ROOT-retained-lossless-caller-static-v2",
+  "scientific_execution": false,
+  "source": {
+    "bytes": 38433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+    "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+  },
+  "source_contract": {
+    "bytes": 13867,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "bc84dcb706d42a37c43538605294b27ad6f667c64431a69eaceb41c264242ffa"
+  }
+}

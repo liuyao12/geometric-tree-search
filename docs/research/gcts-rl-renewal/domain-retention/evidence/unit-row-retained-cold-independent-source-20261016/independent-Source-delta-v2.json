@@ -1,0 +1,87 @@
+{
+  "current": {
+    "bytes": 38433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+    "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+  },
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "new_function": "encode_result_transport",
+  "parent": {
+    "bytes": 37377,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v1.py",
+    "sha256": "264211f1415b5908f765a14630722e5456cf520327d73ebf5b7f1323df47c352"
+  },
+  "positive_tail_exact_after_removing_only_guarded_encoder_call": true,
+  "raw_edits": [
+    {
+      "new": "\nimport base64\nimport binascii\nimport zlib",
+      "new_end": 304,
+      "new_start": 262,
+      "old": "",
+      "old_end": 262,
+      "old_start": 262
+    },
+    {
+      "new": "2-lossless-wire",
+      "new_end": 603,
+      "new_start": 588,
+      "old": "1",
+      "old_end": 547,
+      "old_start": 546
+    },
+    {
+      "new": "encode_result_transport(expanded_raw):\n    \"\"\"Lossless transport only; caller invoke charges original20 pre/post gates.\"\"\"\n    need(type(expanded_raw) is bytes and len(expanded_raw) <= 16*1048576,\n         'whole expanded lossless result output cap')\n    compressed = zlib.compress(expanded_raw, 6)\n    envelope = {'schema':'ROOT-unit-row-lossless-result-envelope-v1',\n        'encoding':'zlib+base64', 'expanded_bytes':len(expanded_raw),\n        'expanded_sha256':hashlib.sha256(expanded_raw).hexdigest(),\n        'compressed_bytes':len(compressed),\n        'compressed_sha256':hashlib.sha256(compressed).hexdigest(),\n        'payload_base64':base64.b64encode(compressed).decode('ascii')}\n    encoded = canonical(envelope) + b'\\n'\n    need(len(encoded) <= 4*1048576, 'whole encoded lossless result output cap')\n    return encoded\n\ndef ",
+      "new_end": 18083,
+      "new_start": 17247,
+      "old": "",
+      "old_end": 17191,
+      "old_start": 17191
+    },
+    {
+      "new": "2",
+      "new_end": 20865,
+      "new_start": 20864,
+      "old": "1",
+      "old_end": 19973,
+      "old_start": 19972
+    },
+    {
+      "new": ",base64,binascii,zlib",
+      "new_end": 23389,
+      "new_start": 23368,
+      "old": "",
+      "old_end": 22476,
+      "old_start": 22476
+    },
+    {
+      "new": "result_raw = invoke_fn(encode_result_transport,(result_raw,),{},\n        boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    ",
+      "new_end": 35632,
+      "new_start": 35489,
+      "old": "",
+      "old_end": 34576,
+      "old_start": 34576
+    }
+  ],
+  "schema": "retained-cold-lossless-independent-whole-delta-v2",
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged15_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors"
+  ],
+  "unchanged_failure_writer": true
+}

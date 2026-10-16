@@ -1,0 +1,57 @@
+{
+  "compile_only": true,
+  "current": {
+    "bytes": 25338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+    "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+  },
+  "delta": {
+    "bytes": 4163,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-delta-v2.json",
+    "sha256": "d3ea07fd1a0bcbadab75f47022984923f1d0fdf4d64b5bd91b9bd1233379751f"
+  },
+  "entry_keyword_only_arguments": [
+    "language",
+    "engine_factory",
+    "degree_proposer",
+    "fallback",
+    "certify_fallback",
+    "transition",
+    "refresh",
+    "tick"
+  ],
+  "forward_hunks": 4,
+  "full_forward_patch": {
+    "bytes": 2890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/controls-v1-to-v2-full.patch",
+    "sha256": "8e03d2ed549c979bb0fa7bb3d37be137c591e9e5accbb3e9af19aef0f620d2c7"
+  },
+  "full_inverse_patch": {
+    "bytes": 2890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/controls-v2-to-v1-full-inverse.patch",
+    "sha256": "603ed6c777252f3506bde0544c41694200074cf7d29d9fcd1b61a926dd11e6d4"
+  },
+  "full_raw_forward_exact": true,
+  "full_raw_inverse_exact": true,
+  "inverse_hunks": 4,
+  "parent": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "raw_edit_count": 4,
+  "schema": "retained-controls-independent-raw-inverse-v2",
+  "scientific_calls": 0,
+  "unchanged10_whole_definitions": [
+    "CallbackExhausted",
+    "LoggedCursor",
+    "Unavailable",
+    "canonical",
+    "digest",
+    "need",
+    "obligations",
+    "state",
+    "tile",
+    "ug"
+  ]
+}

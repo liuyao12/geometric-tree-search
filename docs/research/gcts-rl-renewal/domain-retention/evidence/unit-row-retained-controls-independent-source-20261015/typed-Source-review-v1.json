@@ -1,0 +1,27 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Prior language/proposer/fallback/diagnostic caller authorship disclosed in findings; current harness not authored by reviewer.",
+  "disposition": "CONDITIONAL_WHOLE_SOURCE_PASS_RUNTIME_PENDING",
+  "findings": {
+    "bytes": 20420,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/findings-v1.json",
+    "sha256": "a4b4eea3fb8c415ebbf57be3b3c410937c11025ee35dc707e12dd5611ba08b30"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-retained-domain-controls-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-retained-domain-adversarial-controls-Source",
+  "source": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "source_contract": {
+    "bytes": 12380,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "80555add0fd245bf434bc33f2ba518366c39098904ae411d44e34d3de3bedf39"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

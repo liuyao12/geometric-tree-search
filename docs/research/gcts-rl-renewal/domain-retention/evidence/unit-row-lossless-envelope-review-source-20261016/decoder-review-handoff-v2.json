@@ -1,0 +1,33 @@
+{
+  "delta": {
+    "bytes": 8289,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-Source-delta-v2.json",
+    "sha256": "f3854f1323a587ae7076316e2c33e5f5ad0d45a09a273ba097b8a5b6c516b9d5"
+  },
+  "findings": {
+    "bytes": 5186,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v2.json",
+    "sha256": "fdda0351504d72e3b4091403ffa4ae98b30ac60a2f2c5d6ec4ddf60b9c71f975"
+  },
+  "next": "Root may use the decoder only under its saved-metadata scope; complete actual disposition remains Root-owned.",
+  "parent_negative_preserved": {
+    "bytes": 1131,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-review-handoff-v1.json",
+    "sha256": "13a6e7f11a8067594df198f5f654035fb0c1d5b882efee7744a8fe482ea46922"
+  },
+  "review": {
+    "bytes": 1281,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-typed-Source-review-v2.json",
+    "sha256": "a4de3739f70dfac7c6ceef3ae86482e752c88d89aa19801c9145faf2e9c86c05"
+  },
+  "schema": "unit-row-lossless-saved-decoder-review-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 5270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+    "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

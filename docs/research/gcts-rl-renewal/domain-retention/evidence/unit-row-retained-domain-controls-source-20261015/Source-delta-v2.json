@@ -1,0 +1,76 @@
+{
+  "changed_definitions": [
+    "run_controls"
+  ],
+  "current": {
+    "bytes": 25338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+    "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+  },
+  "full_forward_exact": true,
+  "full_forward_patch": {
+    "bytes": 2890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/controls-v1-to-v2-full.patch",
+    "sha256": "8e03d2ed549c979bb0fa7bb3d37be137c591e9e5accbb3e9af19aef0f620d2c7"
+  },
+  "full_inverse_exact": true,
+  "full_inverse_patch": {
+    "bytes": 2890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/controls-v2-to-v1-full-inverse.patch",
+    "sha256": "603ed6c777252f3506bde0544c41694200074cf7d29d9fcd1b61a926dd11e6d4"
+  },
+  "parent": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "raw_edits": [
+    {
+      "new": "VERSION = 'unit-row-retained-domain-controls-v2'",
+      "new_end": 324,
+      "new_start": 276,
+      "old": "VERSION = 'unit-row-retained-domain-controls-v1'",
+      "old_end": 324,
+      "old_start": 276
+    },
+    {
+      "new": "'repeated-retention-before-replay-does-not-relabel-archive','fresh-prefix-replay-before-new-candidate',\n    'nonempty-archive-checkpoint-rollback-and-repeat-continuation',",
+      "new_end": 8339,
+      "new_start": 8168,
+      "old": "'repeated-retention-before-replay-does-not-relabel-archive','fresh-prefix-replay-before-new-candidate',",
+      "old_end": 8271,
+      "old_start": 8168
+    },
+    {
+      "new": "      need(first['kind']=='CANDIDATE' and len(cursor(old,3)['keys'])==1,'one actual saved prefix key')\n      need(cursor(changed,3)['context_archive'],'inner checkpoint has a genuinely nonempty archive')\n      inner=e.checkpoint()\n",
+      "new_end": 16531,
+      "new_start": 16300,
+      "old": "      need(first['kind']=='CANDIDATE' and len(cursor(old,3)['keys'])==1,'one actual saved prefix key')\n",
+      "old_end": 16335,
+      "old_start": 16232
+    },
+    {
+      "new": "        'actual_new_cursor':log[-1],'second':second,'after':after})\n      e.rollback(inner);inner_restored=restored(e,changed)\n      start=len(log);replays=e.counts['cursor_replays'];repeat=e.next_alternative(3);again=snap(e)\n      need(canonical(repeat)==canonical(second),'identical full key/current packet after nonempty-archive rollback')\n      need(len(log)==start+1 and [x['kind'] for x in log[-1]['events']]==['CANDIDATE','CANDIDATE']\n        and [x['ordinal'] for x in log[-1]['events']]==[0,1]\n        and log[-1]['context']['state_sha256']==digest(changed['state'])\n        and e.counts['cursor_replays']==replays+1,'rollback discards live cursor and genuinely replays full saved prefix')\n      need(canonical(cursor(again,3)['context_archive'])==canonical(cursor(changed,3)['context_archive']),\n        'original literal archive unchanged after rollback and repeated continuation')\n      passed('nonempty-archive-checkpoint-rollback-and-repeat-continuation',{'checkpoint_snapshot':changed,\n        'restored_snapshot':inner_restored,'original_continuation':second,'repeated_continuation':repeat,\n        'actual_fresh_cursor':log[-1],'after_repeated_continuation':again})\n",
+      "new_end": 18596,
+      "new_start": 17413,
+      "old": "        'actual_new_cursor':log[-1],'second':second,'after':after})\n",
+      "old_end": 17285,
+      "old_start": 17217
+    }
+  ],
+  "schema": "unit-row-retained-controls-delta-v2",
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged10_definitions": [
+    "CallbackExhausted",
+    "LoggedCursor",
+    "Unavailable",
+    "canonical",
+    "digest",
+    "need",
+    "obligations",
+    "state",
+    "tile",
+    "ug"
+  ]
+}

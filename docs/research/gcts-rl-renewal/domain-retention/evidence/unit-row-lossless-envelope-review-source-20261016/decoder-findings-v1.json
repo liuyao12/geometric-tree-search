@@ -1,0 +1,114 @@
+{
+  "applicable_design_requirements": {
+    "bytes": 8250,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v2.json",
+    "sha256": "36f82e92fbf4433114dc5d2d6c1f54bdda8eac635348683a34a4ef0345306e4a"
+  },
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored both harnesses and earlier checker/codec/family dependencies, not this Root saved metadata decoder. No independent mathematical implementation or replay claimed.",
+  "blockers": [
+    {
+      "finding": "Authentication and parsing use different reads: checked() compares pin(p) then returns Path, line24 rereads contract. Output metadata hashes envelope/plan/derived files by later reread rather than pinning exact buffers consumed/produced.",
+      "id": "SAVED-ENVELOPE-SAME-BUFFER-1",
+      "lines": [
+        20,
+        24,
+        50
+      ],
+      "narrow_repair": "Have checked/read helper return exact bounded authenticated raw bytes; parse that buffer. Derive raw file pins from retained plan_raw/outer_raw/expanded buffers (with explicit path field) that were actually parsed/decompressed/written. No proof/authority framework needed."
+    },
+    {
+      "finding": "Whole raw file is allocated by read_bytes before4MiB cap is checked; this does not independently enforce a bounded encoded intake.",
+      "id": "SAVED-ENVELOPE-RAW-CAP-1",
+      "lines": [
+        23,
+        26,
+        27
+      ],
+      "narrow_repair": "Use a minimal bounded cap+1 read with completeEOF predicate for encoded file, and existing reasonable bounded metadata read for plan/contract. Reject oversize before JSON/base64/decompression; preserve all failed bytes/files externally, no partial output acceptance."
+    }
+  ],
+  "check_count": 11,
+  "checks": [
+    {
+      "check": "whole-Source-authenticated-and-compile-only",
+      "detail": "Entire57line Source read; AST/compile only, no decoder functions/module executed.",
+      "passed": true
+    },
+    {
+      "check": "exact-seven-fields-and-canonical-outer",
+      "detail": "Schema/encoding exact; duplicate keys/nonfinite rejected; full canonical outerJSON+LF.",
+      "passed": true
+    },
+    {
+      "check": "strict-byte-length-and-digest-fields",
+      "detail": "Boolean length rejected; literal SHA256 fields bounded.",
+      "passed": true
+    },
+    {
+      "check": "strict-canonical-base64",
+      "detail": "No whitespace/alternate padding/ignored bytes accepted.",
+      "passed": true
+    },
+    {
+      "check": "complete-compressed-buffer-hash",
+      "detail": "Actual decoded compressed bytes bothlen/hash.",
+      "passed": true
+    },
+    {
+      "check": "bounded-single-zlib-stream",
+      "detail": "16MiB+1 bounded inflate, EOF and all tails rejected; no unbounded flush/gzip fallback.",
+      "passed": true
+    },
+    {
+      "check": "expanded-complete-hash-and-canonical-JSON-LF",
+      "detail": "Exact all expanded bytes including finalLF; no prefix acceptance or rehash of alternate serialization.",
+      "passed": true
+    },
+    {
+      "check": "Source-map-input-purpose-join",
+      "detail": "Explicit Source/input/purpose map join; no scientific language-binding recomputation.",
+      "passed": true
+    },
+    {
+      "check": "same-buffer-authentication-and-provenance-pins",
+      "detail": "checked(ref) returns a Path after pin() read; caller parses a second unverified read. Meta pin(p)/pin(plan_path) rereads files rather than pinning exact retained buffers. Thus metadata may identify different bytes from those actually parsed/decoded.",
+      "passed": false
+    },
+    {
+      "check": "bounded-file-intake-before-allocation",
+      "detail": "raw=p.read_bytes() precedes outer4MiB check. The encoded intake allocation itself is not bounded; plan/contract read_bytes also precede bounded parsing. Use cap+1 read and EOF, not only post-allocation length.",
+      "passed": false
+    },
+    {
+      "check": "derived-output-exclusive-no-science-admission",
+      "detail": "Derived files outside worker-owned inventory, exclusivecreation and false acceptance flags. No scientific/kernel imports; native/response/case validation remains Rootcloser.",
+      "passed": true
+    }
+  ],
+  "execution": {
+    "Source_functions": 0,
+    "actuals": 0,
+    "clocks": 0,
+    "decoder_calls": 0,
+    "models_or_Q_decoded": 0,
+    "tests": 0
+  },
+  "passed_checks": 9,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-lossless-saved-decoder-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope_observations": [
+    "This decoder checks byte-transport concordance, not complete scientific/native admission. It does not itself authenticate the ordinary response output pin/trailer or inspect full case/native/epoch evidence; Root saved closer must perform those joins separately.",
+    "Both raw buffers and decoded object currently remain untrusted metadata. No inferred currentcasecounts or promotion of old failed output actual.",
+    "No hostile OS/VM guarantee asserted; same-buffer provenance and bounded reads are direct stated transport requirements, not a new custody framework."
+  ],
+  "source": {
+    "bytes": 4551,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v1.py",
+    "sha256": "7067a58cd439851086095b761a6a49e4e6a57d2075d2206d4a0906f9f5a4a6ad"
+  },
+  "source_only": true,
+  "source_review_passed": false
+}

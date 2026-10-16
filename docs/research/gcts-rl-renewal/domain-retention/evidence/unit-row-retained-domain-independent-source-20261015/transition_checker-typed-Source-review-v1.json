@@ -1,0 +1,38 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "disposition": "CONDITIONAL_SOURCE_PASS_ENGINE_OWNED_PRIOR_PACKET_PREMISE_RUNTIME_PENDING",
+  "findings": {
+    "bytes": 19637,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/findings-v1.json",
+    "sha256": "05d6eabed835db20b1a3e7c2bffe0cf025730e8707ff11a3bcddf18f480a024e"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-domain-transition-checker-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-domain-transition-checker-Source",
+  "source": {
+    "bytes": 8134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+    "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+  },
+  "source_contract": {
+    "bytes": 14521,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v1.json",
+    "sha256": "a878628a079556bb2516ada991ff2e89eed5130373fcb81fcbe1ccb0f44dec41"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "engine": {
+      "bytes": 37497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+      "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+    },
+    "transition_checker": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    }
+  }
+}

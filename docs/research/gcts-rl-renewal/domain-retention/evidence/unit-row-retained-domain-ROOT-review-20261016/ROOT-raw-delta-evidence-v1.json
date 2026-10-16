@@ -1,0 +1,29 @@
+{
+  "added_definitions": [
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._has_archived_context"
+  ],
+  "changed_definitions": [
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine.next_alternative"
+  ],
+  "compile_only": true,
+  "full_forward_inverse_verified": true,
+  "schema": "ROOT-retained-source-raw-delta-evidence-v1",
+  "scientific_execution": false,
+  "source": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "source_contract": {
+    "bytes": 18063,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7559112bf6669c453aedad5cb78e4dacf5cf237849b9cab192b8286f00cd39c"
+  },
+  "unchanged_callable_AST_count": 28,
+  "whole_checker_read": true,
+  "whole_six_edit_delta_read": true,
+  "whole_v1_v2_contracts_read": true,
+  "whole_v2_read": true
+}

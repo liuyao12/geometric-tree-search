@@ -1,0 +1,26 @@
+{
+  "applicable_design_requirements": {
+    "bytes": 8250,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v2.json",
+    "sha256": "36f82e92fbf4433114dc5d2d6c1f54bdda8eac635348683a34a4ef0345306e4a"
+  },
+  "author_identity": "/root",
+  "disposition": "CONDITIONAL_CURRENT_SOURCE_PASS_SAVED_TRANSPORT_ONLY",
+  "findings": {
+    "bytes": 5186,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v2.json",
+    "sha256": "fdda0351504d72e3b4091403ffa4ae98b30ac60a2f2c5d6ec4ddf60b9c71f975"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-lossless-saved-decoder-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-lossless-saved-transport-decoder-Source",
+  "source": {
+    "bytes": 5270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+    "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

@@ -1,0 +1,28 @@
+{
+  "actual_authorized": false,
+  "next": "Read exact Root saved-only decoder Source once supplied; no decoding, new Source semantic execution or actual by this author.",
+  "parent_handoff": {
+    "bytes": 615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/handoff-v1.json",
+    "sha256": "3836fb1f74af187a448e3d380ed8b402de0f4b533f233394840149d731962bf8"
+  },
+  "requirements": {
+    "bytes": 8250,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v2.json",
+    "sha256": "36f82e92fbf4433114dc5d2d6c1f54bdda8eac635348683a34a4ef0345306e4a"
+  },
+  "schema": "unit-row-lossless-envelope-requirements-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "selected_contract": {
+    "bytes": 13867,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "bc84dcb706d42a37c43538605294b27ad6f667c64431a69eaceb41c264242ffa"
+  },
+  "selected_intake": {
+    "bytes": 38433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+    "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+  },
+  "source_only": true
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "retained-cursor-provenance-correction-scope-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "issue": "RETAINED-CURSOR-PROVENANCE-1",
+  "chosen_archive": "context_archive: flat entries with exactly context, keys, candidates, completion",
+  "capture_boundary": "Before retained candidate occupancy refresh in _install; confirm capture before context replacement in next_alternative.",
+  "repeat_without_replay": "Reuse the existing literal old context/prefix/completion archive; never label refreshed packets as emitted by the old context.",
+  "after_replay": "The next retention archives the newly genuine current context, ordered prefix and completion separately.",
+  "bounds": "At most maximum_events active archive entries across retained cursor slots; tick-charged deep copies and comparisons; exhaustion raises Unresolved/UNKNOWN, never pruning. Original native memory/time gates remain mandatory.",
+  "nonrecursive": "Entries contain no slots, archives, transfer chains or other entries.",
+  "rollback": "Archive is inside the existing copy-on-write slot checkpoint/snapshot payload."
+}

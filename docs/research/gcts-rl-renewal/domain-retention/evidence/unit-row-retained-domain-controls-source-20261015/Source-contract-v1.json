@@ -1,0 +1,189 @@
+{
+  "API": {
+    "engine_factory": "CALLABLE(*,initial_state,degree_proposer,fallback,certify_fallback,tick) -> current engineV3. Root injects independently authenticated original language/current c354/new transition module; no mutable module exposure or private mutation hooks.",
+    "entry": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,transition,refresh,tick)",
+    "other_callables": "Existing original-language degree_proposer/fallback/certify_fallback kwargs unchanged. Native tick must precede injected callback even in interruption controls; all delegation and Source custody belongs to Root existing caller.",
+    "refresh": "CALLABLE(*,state,candidates,tick) -> current freshly rebuilt packets. Input premise: engine-owned previously c354-checked candidates. Does not independently authenticate arbitrary old read_obligations.",
+    "transition": "CALLABLE(*,before,after,rows,tick) -> current checked transition. Root freshly reconstructs original authority and c354 and captures exact canonical authority snapshot. No arbitrary old degree receipt passed."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "schema": "unit-row-retained-domain-controls-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-retained-domain-adversarial-controls-Source",
+    "source": {
+      "bytes": 24027,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+      "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+    },
+    "source_contract": "Exact current raw contract capsule.",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer decides."
+  },
+  "archive_ABI": "Each slot['context_archive'] contains flat four-field entries {context,keys,candidates,completion}; complete literal old packets compared including occupied metadata. After fresh continuation current context/EOF differs and original archive remains unchanged. Repeated transitions before replay may not archive refreshed packets under old context.",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship": "This agent authored old/new fixture harness and old checker/codec/family dependencies, not new engine/transition checker/current c354/proposer/fallback. This is author Source, not independent acceptance.",
+  "cases": [
+    {
+      "case": "retained-domain-refreshes-only-read-occupancy",
+      "meaning": "AX0 +UG2(A@1)+UG5(all(v,A)@3), fillAX1 same existing ledger: query3 keys/relation stable, pending occupancy becomes true."
+    },
+    {
+      "case": "old-receipt-unchanged-explicit-transfer",
+      "meaning": "Original c354 MANY receipt/state SHA archived literally; new explicit transfer wrapper current SHA differs."
+    },
+    {
+      "case": "refresh-independent-current-packets-input-unchanged",
+      "meaning": "Fresh direct refresh agrees with current engine packets; original checked packet list unchanged."
+    },
+    {
+      "case": "refresh-forged-core-rejected",
+      "meaning": "Changed global mark rejected at whole original core/member comparison, exact ValueError reason."
+    },
+    {
+      "case": "refresh-duplicate-full-key-rejected",
+      "meaning": "Same previously checked key duplicated in known array rejected, exact ValueError reason."
+    },
+    {
+      "case": "repeated-retention-before-replay-does-not-relabel-archive",
+      "meaning": "Second existing AX placement before replay keeps original actual context/prefix/EOF, not refreshed packets under old SHA."
+    },
+    {
+      "case": "fresh-full-prefix-replay-before-current-EOF",
+      "meaning": "Real new cursor logs complete ordered two-candidate replay then new EOF; full original context/completion remains archived."
+    },
+    {
+      "case": "multiple-transitions-preserve-literal-context-EOF-archives",
+      "meaning": "Third stable-support placement after replay yields another real context/EOF archive and three-hop transfer with unchanged original receipt."
+    },
+    {
+      "case": "fresh-prefix-replay-before-new-candidate",
+      "meaning": "One-key retained prefix actually replays before next original key is returned; occupancy metadata current."
+    },
+    {
+      "case": "interrupted-retained-replay-never-EOF",
+      "meaning": "Only declared seam: real fresh replay aborts after first of two saved keys, propagates exact CallbackExhausted, logical snapshot unchanged."
+    },
+    {
+      "case": "same-UG-prototype-remote-marks-retain-earlier-invalidate-affected",
+      "meaning": "Same offset/body UG translated2→4, global ledger unchanged; earlier query1 retained, new remote marks3/4 invalidate queries3/4/5."
+    },
+    {
+      "case": "current-illegal-old-candidate-refresh-rejected",
+      "meaning": "A genuinely old c354-checked exposed candidate now conflicts with remote assigned output; fresh legality rejects."
+    },
+    {
+      "case": "local-exclusion-stable-ledger-invalidates-own-row",
+      "meaning": "Assumed exact AX1 key exclusion has existing prototype ledger: row1 invalidated, row3 relation retained. No pruning justification asserted."
+    },
+    {
+      "case": "new-global-prototype-ledger-invalidates-all-domains",
+      "meaning": "New original named AX at4 changes global full-preimage ledger; every row version invalidated/cache removed conservatively."
+    },
+    {
+      "case": "transition-stale-epoch-rejected",
+      "meaning": "Full stale-state epoch invalid, not absence or nonretained classification."
+    },
+    {
+      "case": "transition-Boolean-row-rejected",
+      "meaning": "Boolean row is not literal integer coordinate/query."
+    }
+  ],
+  "dependencies": {
+    "engine": {
+      "bytes": 39803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    "engine_contract": {
+      "bytes": 18063,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+      "sha256": "a7559112bf6669c453aedad5cb78e4dacf5cf237849b9cab192b8286f00cd39c"
+    },
+    "engine_handoff": {
+      "bytes": 4363,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/handoff-v2.json",
+      "sha256": "5a6e98b4b449717924f60511793eb50ec834336089abb49c3eb83b7a174fbed9"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "parent_fixture_Source": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "transition_checker": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    }
+  },
+  "exclusion_scope": "Exact branch-local excluded key is explicitly assumed input, not newly justified pruning. It affects own local key set; pending read premises are not facts and do not borrow another row proof.",
+  "interruption_scope": "One control-only real-cursor abort during fresh prefix replay. It does not manufacture context/candidate/EOF or replace original universe. Callback/native budget and original authority remain active.",
+  "prior_evidence": "Original qualified17 controls and earlier UNKNOWN search untouched; new changed engine/control Sources inherit no runtime acceptance or performance evidence.",
+  "remaining_gates": [
+    "Distinct whole control Source review and corrected engine/checker Source review.",
+    "New exact Source-bound existing caller integration/Root-only actual grant and saved/native closure; no plan/caller supplied here.",
+    "Every actual SKIP preserves that control gap, no fabricated fixture or expected proof count.",
+    "Complete arbitrary all-six EOF authority, minimal incremental reference conformance, positive full word/board and proof/RL/benefit claims remain separate."
+  ],
+  "resources": "No clocks/semantic/control execution. Original20/512MiB/failure55/owned60/caller90+1 and engine128nodes/2000events unchanged. Archive cap charged by engine; no memory/time fit prediction.",
+  "result": {
+    "all_declared_cases_completed": true,
+    "cases": "Complete {case,status PASSED|SKIPPED,observed,scope} list; full actual snapshots/old receipts/current packets/context archives/raw cursor events and exact rejection reasons.",
+    "errors": "Assertion mismatch raises, not pass. Definite original fixture membership exclusion may be SKIPPED. All other endpoint/resources propagate except exact declared callback-interruption negative.",
+    "false_flags": [
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "exact_point_board_accepted",
+      "trajectory_accepted",
+      "GCTS_advantage_accepted",
+      "RL_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "prospective_case_count": 16,
+    "schema": "unit-row-retained-domain-controls-v1"
+  },
+  "schema": "unit-row-retained-domain-controls-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-retained-domain-adversarial-controls-Source",
+  "source": {
+    "bytes": 24027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+    "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+  },
+  "source_model": "Original authenticated fixed24 unit-row declaration/profile, complete t/m/fixed original target/outside union, all24 root generations0, selected generations1. Original AX and UG only build state fixtures; no saved word/donor/library, synthetic theorem or search route.",
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 5988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v1.json",
+    "sha256": "d6cb166a2f8ea81c0a98739b91420258fe1855c45fe2c0fb5b0ad14998687ff8"
+  },
+  "transaction_scope": "Public place is policy-independent and every call is enclosed in checkpoint/finally rollback; actual global reference scheduler trajectory not inferred from manual fixture placement. Full semantic snapshot restoration asserted; counts/resource budget not rewound."
+}

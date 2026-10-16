@@ -1,0 +1,1075 @@
+{
+  "files": [
+    {
+      "bytes": 14521,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/Source-contract-v1.json",
+      "sha256": "a878628a079556bb2516ada991ff2e89eed5130373fcb81fcbe1ccb0f44dec41"
+    },
+    {
+      "bytes": 18063,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+      "sha256": "a7559112bf6669c453aedad5cb78e4dacf5cf237849b9cab192b8286f00cd39c"
+    },
+    {
+      "bytes": 4559,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/author-static-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/author-static-v1.json",
+      "sha256": "7efd6fcb5e2877bca6542350edc3f701e6602f7d9cbe5fc9b2f166b168606eb6"
+    },
+    {
+      "bytes": 2430,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/author-static-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/author-static-v2.json",
+      "sha256": "7854362695b1164a02bbb9c8056ffb92cf74d30a382734f42fe15ae9f78c44b1"
+    },
+    {
+      "bytes": 3361,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/handoff-v1.json",
+      "sha256": "df4d390ffb85a49543b3f87aeb1b6c268043688fda76d2233cc182286757b1ea"
+    },
+    {
+      "bytes": 4363,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/handoff-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/handoff-v2.json",
+      "sha256": "5a6e98b4b449717924f60511793eb50ec834336089abb49c3eb83b7a174fbed9"
+    },
+    {
+      "bytes": 37497,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v2.py",
+      "sha256": "4ddd50a1eb56cc6bb26b66e3095cb1d8b3b86d1a88c1cac17cd48837bf8e5fa6"
+    },
+    {
+      "bytes": 39803,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    {
+      "bytes": 1114,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/provenance-correction-scope-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/provenance-correction-scope-v1.json",
+      "sha256": "40771b68b934c6fb89a2b8071c0c7eee32af5b1f04414fcaecb807570ff6bf09"
+    },
+    {
+      "bytes": 28386,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/source-delta-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/source-delta-v1.json",
+      "sha256": "38c9be00fd42f1aba0e21ceee3320afa3799efc4de90bd6a6d1cce541c1d65c1"
+    },
+    {
+      "bytes": 6069,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/source-delta-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/source-delta-v2.json",
+      "sha256": "41080761581143ee6a7da1ddcf32a006b37b3050a03f5707ffe939242ace52fd"
+    },
+    {
+      "bytes": 8134,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "public_path": "evidence/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "bytes": 12380,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "80555add0fd245bf434bc33f2ba518366c39098904ae411d44e34d3de3bedf39"
+    },
+    {
+      "bytes": 14481,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/Source-contract-v2.json",
+      "sha256": "2290c598eac6d39e8e164787668971cda88962f3b689353169038919dd8dff63"
+    },
+    {
+      "bytes": 4163,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-delta-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/Source-delta-v2.json",
+      "sha256": "d3ea07fd1a0bcbadab75f47022984923f1d0fdf4d64b5bd91b9bd1233379751f"
+    },
+    {
+      "bytes": 5988,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v1.json",
+      "sha256": "d6cb166a2f8ea81c0a98739b91420258fe1855c45fe2c0fb5b0ad14998687ff8"
+    },
+    {
+      "bytes": 2877,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/author-static-evidence-v2.json",
+      "sha256": "03ca9f6c3c045c91fbddc79f8d575554ad38dc58cccf91a9e2c1b95f84cff7d5"
+    },
+    {
+      "bytes": 2890,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/controls-v1-to-v2-full.patch",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/controls-v1-to-v2-full.patch",
+      "sha256": "8e03d2ed549c979bb0fa7bb3d37be137c591e9e5accbb3e9af19aef0f620d2c7"
+    },
+    {
+      "bytes": 2890,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/controls-v2-to-v1-full-inverse.patch",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/controls-v2-to-v1-full-inverse.patch",
+      "sha256": "603ed6c777252f3506bde0544c41694200074cf7d29d9fcd1b61a926dd11e6d4"
+    },
+    {
+      "bytes": 2379,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/handoff-v1.json",
+      "sha256": "01cb2160e041be4caf5a4b8bfd69ddfc4ce15c647e61259fc1bfcab390e461ad"
+    },
+    {
+      "bytes": 2340,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/handoff-v2.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/handoff-v2.json",
+      "sha256": "428e18fa59978bb355c186546be2d15bb81ccd0a5ed7d27d4ae3edc17a2cec09"
+    },
+    {
+      "bytes": 39212,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/parent-to-retained-controls-full.patch",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/parent-to-retained-controls-full.patch",
+      "sha256": "81506375d9ccc4ae7b22ed1c167046d987cfec3dcf3936992f6ce6b92c3d59ac"
+    },
+    {
+      "bytes": 39158,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained-controls-to-parent-full-inverse.patch",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/retained-controls-to-parent-full-inverse.patch",
+      "sha256": "a99ba19de9dc5cd737853387630a1a70c7cb074a1cdc8b1eb909216e10b6be35"
+    },
+    {
+      "bytes": 24027,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v1.py",
+      "sha256": "bbc7a178cd3633c8f5ac98c63cf6063b631b977f44e34bf8fd9fd4015642ad86"
+    },
+    {
+      "bytes": 25338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "public_path": "evidence/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "bytes": 1912,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/engine-typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-independent-source-20261015/engine-typed-Source-review-v1.json",
+      "sha256": "0d062e6b46bc235e72e188f345b98e48d60a218b0a4b0c0c10d4d1b7ce2b786d"
+    },
+    {
+      "bytes": 19637,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/findings-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-independent-source-20261015/findings-v1.json",
+      "sha256": "05d6eabed835db20b1a3e7c2bffe0cf025730e8707ff11a3bcddf18f480a024e"
+    },
+    {
+      "bytes": 1288,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-independent-source-20261015/handoff-v1.json",
+      "sha256": "eb02a9290839ed7838703a85a1d3c354490b1b35c10453ab207404129af9cba3"
+    },
+    {
+      "bytes": 1957,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-independent-source-20261015/transition_checker-typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-independent-source-20261015/transition_checker-typed-Source-review-v1.json",
+      "sha256": "bb0bba797a41b32206b49b9927b36e6236eb15ec406e2a30c7006350f191367a"
+    },
+    {
+      "bytes": 2270,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-peer-source-20261015/engine-typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-peer-source-20261015/engine-typed-Source-review-v1.json",
+      "sha256": "4d31719255abd045a8aa4791b4902f38be43d93131816468323798c272390487"
+    },
+    {
+      "bytes": 32359,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-peer-source-20261015/findings-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-peer-source-20261015/findings-v1.json",
+      "sha256": "b7ec0308d27c22359b0ac8b837bb65f244b76d624f0c374f9775704d347450ba"
+    },
+    {
+      "bytes": 2828,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-peer-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-peer-source-20261015/handoff-v1.json",
+      "sha256": "969ba4c96e593e5ca9b23b6f109539e1d35d8f3addb25d52524b97af22d2c418"
+    },
+    {
+      "bytes": 2282,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-peer-source-20261015/transition_checker-typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-controls-peer-source-20261015/transition_checker-typed-Source-review-v1.json",
+      "sha256": "21a2d858e1c7ca2f05313a1e602a648aac13c03303c954fc55ec1565ee9c8fe4"
+    },
+    {
+      "bytes": 20420,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/findings-v1.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/findings-v1.json",
+      "sha256": "a4b4eea3fb8c415ebbf57be3b3c410937c11025ee35dc707e12dd5611ba08b30"
+    },
+    {
+      "bytes": 21947,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/findings-v2.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/findings-v2.json",
+      "sha256": "6958df0904e2b7be590f9ee2a21122eccc5aba9d6b7791a094e8387e6477906a"
+    },
+    {
+      "bytes": 2194,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/handoff-v1.json",
+      "sha256": "2bdb769291e1447c060158928432bc3e61f84081c689b6dc53d37af612804358"
+    },
+    {
+      "bytes": 2490,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/handoff-v2.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/handoff-v2.json",
+      "sha256": "69833703e0cac8b2bcc28849faf959d058e7fd790b6e74d5b9e01c92017747b8"
+    },
+    {
+      "bytes": 1826,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/independent-inverse-evidence-v1.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/independent-inverse-evidence-v1.json",
+      "sha256": "83f2e41fc71f373a24a0c3276c98ebdeb3a7af988552fe8d11890096a646dcc7"
+    },
+    {
+      "bytes": 2100,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/independent-inverse-evidence-v2.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/independent-inverse-evidence-v2.json",
+      "sha256": "f797175f2650d0c7d1585c036dd9f0d88c8c8fbec86ddbeae99a042d7ba777dc"
+    },
+    {
+      "bytes": 1457,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "36269226bd477296f4e515db636ac8613db0c9e134c7bff79252b5e1e970ccd0"
+    },
+    {
+      "bytes": 1586,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/typed-Source-review-v2.json",
+      "public_path": "evidence/unit-row-retained-controls-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "907a2b2ff3bcd0e9176618f6fd2975236fc164c8eab3ebb1c567a4e7492518ce"
+    },
+    {
+      "bytes": 6887,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-compatibility-source-20261015/assessment-v1.json",
+      "public_path": "evidence/unit-row-retained-controls-compatibility-source-20261015/assessment-v1.json",
+      "sha256": "ef86e4a8454917884e456c9710854b8f6439c2d946d8308ed82ee620080dd25c"
+    },
+    {
+      "bytes": 617,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-compatibility-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-controls-compatibility-source-20261015/handoff-v1.json",
+      "sha256": "e4c237715970627823e3c80471d46b66ffa1acd3019c316bf433959f9b162a91"
+    },
+    {
+      "bytes": 3031,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-controls-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-ROOT-review-20261016/ROOT-controls-Source-review-v1.json",
+      "sha256": "b0c892b51dc42609068cb0689aadb469063b235f8d7c300b55ca71eb4003273e"
+    },
+    {
+      "bytes": 820,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-controls-raw-delta-evidence-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-ROOT-review-20261016/ROOT-controls-raw-delta-evidence-v1.json",
+      "sha256": "4cc49eb2bc91d647d2b1ebc9aff38356e2a8ba9a83560fdce2eb1c7827fb4fe4"
+    },
+    {
+      "bytes": 3674,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-engine-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-ROOT-review-20261016/ROOT-engine-Source-review-v1.json",
+      "sha256": "2feccd7ebee87e574bd254f777cab3763412ed8c5e471713db76f7ee6398e175"
+    },
+    {
+      "bytes": 1133,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-raw-delta-evidence-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-ROOT-review-20261016/ROOT-raw-delta-evidence-v1.json",
+      "sha256": "4294f291b3eff031b882850535d1d17b187e23f4682cf2a0fa3a465264479b38"
+    },
+    {
+      "bytes": 3686,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/ROOT-transition_checker-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-ROOT-review-20261016/ROOT-transition_checker-Source-review-v1.json",
+      "sha256": "152e2a2242c146892d501c91d09214dcc05674d879e6970efe621df192f5a268"
+    },
+    {
+      "bytes": 1866,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-ROOT-review-20261016/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-domain-ROOT-review-20261016/handoff-v1.json",
+      "sha256": "a29760cd2f46941dd82b66a68eb44280a6822e80072431161da27b38a7671312"
+    },
+    {
+      "bytes": 12076,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v1.json",
+      "sha256": "c528edb0337cf6e8e34ab02969bfb7ae9212d120289ab80c997939658ab7ce84"
+    },
+    {
+      "bytes": 13867,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/Source-contract-v2.json",
+      "sha256": "bc84dcb706d42a37c43538605294b27ad6f667c64431a69eaceb41c264242ffa"
+    },
+    {
+      "bytes": 11449,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/build_source_v1.py",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/build_source_v1.py",
+      "sha256": "c40256d36ecaaa637c878a0c225b346ab68eed575bc23552f58db41cbbe0b3a8"
+    },
+    {
+      "bytes": 6238,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/build_source_v2.py",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/build_source_v2.py",
+      "sha256": "2723c686da7741bf7b19c043c3916f7dbed5143c14251ac6428a630eb624ff01"
+    },
+    {
+      "bytes": 4996,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/handoff-v1.json",
+      "sha256": "0840a8d1b7c669b809e04a46276e166dd8fc83e48dc84f28411428b8591848c7"
+    },
+    {
+      "bytes": 5281,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/handoff-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/handoff-v2.json",
+      "sha256": "380126bd9e9145fb17a5f432aaf14af36ea1954b7148c1e2cfe8b9e9b41fc380"
+    },
+    {
+      "bytes": 842,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/static-evidence-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/static-evidence-v1.json",
+      "sha256": "765f6a0d5b6c2073db7303f11aef0a207f99d0a78f9007d042f6b42bcfee5213"
+    },
+    {
+      "bytes": 920,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/static-evidence-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/static-evidence-v2.json",
+      "sha256": "f78235a292d0c41367a3690b1cf018e3e98c05056c7e095f037158249dd4c941"
+    },
+    {
+      "bytes": 37377,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v1.py",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v1.py",
+      "sha256": "264211f1415b5908f765a14630722e5456cf520327d73ebf5b7f1323df47c352"
+    },
+    {
+      "bytes": 38433,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+      "public_path": "evidence/unit-row-retained-cold-ROOT-source-20261016/unit_row_retained_domain_cold_v2.py",
+      "sha256": "3cb4edbfcb0dfafd712f97f4319f0b0b5ccb74e1a31f20077cd747f73558a3a4"
+    },
+    {
+      "bytes": 27981,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/findings-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/findings-v1.json",
+      "sha256": "0c57ac6036a3ac2b4295236cb5de2fa6cc064e1ccd00017b9beee263315d1890"
+    },
+    {
+      "bytes": 25722,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/findings-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/findings-v2.json",
+      "sha256": "cdf08d6ba21c72dbb2986ab4200bcb20d9b8e7a83e3fe5e4f2f1ca398e12d573"
+    },
+    {
+      "bytes": 5516,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/handoff-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/handoff-v1.json",
+      "sha256": "660164e5aef5d1db4c92b8143434fbe332744d025bd297baba1d43058dd83014"
+    },
+    {
+      "bytes": 5863,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/handoff-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/handoff-v2.json",
+      "sha256": "d39e90aac0f30c10e4751452881cec64229f99675a95753ce5413c7581c21f93"
+    },
+    {
+      "bytes": 17238,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/independent-Source-delta-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/independent-Source-delta-v1.json",
+      "sha256": "fc61117ecf342f542c97fe18eef8dca310015e8f8854d95e51a1d7292051b865"
+    },
+    {
+      "bytes": 3159,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/independent-Source-delta-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/independent-Source-delta-v2.json",
+      "sha256": "8d86298561b9367cd36d1698a0349e8174f9cb217d7831d168c973d4067520e1"
+    },
+    {
+      "bytes": 4807,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "097551d025aeaee018da2aec6d13f22a2a313f09ccd72e3e1803df8199857331"
+    },
+    {
+      "bytes": 5049,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-cold-independent-source-20261016/typed-Source-review-v2.json",
+      "public_path": "evidence/unit-row-retained-cold-independent-source-20261016/typed-Source-review-v2.json",
+      "sha256": "14f1262f131431226b6f2e983d4b15c0071d3308a3c9ddfebcc311a82dd7be52"
+    },
+    {
+      "bytes": 8289,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-Source-delta-v2.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-Source-delta-v2.json",
+      "sha256": "f3854f1323a587ae7076316e2c33e5f5ad0d45a09a273ba097b8a5b6c516b9d5"
+    },
+    {
+      "bytes": 5561,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v1.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v1.json",
+      "sha256": "d0ab9e3d1e2853fbb8e02f6a5c7362e100bc5e83ed3ba9f17ea402ff7f1e289f"
+    },
+    {
+      "bytes": 5186,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v2.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-findings-v2.json",
+      "sha256": "fdda0351504d72e3b4091403ffa4ae98b30ac60a2f2c5d6ec4ddf60b9c71f975"
+    },
+    {
+      "bytes": 1131,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-review-handoff-v1.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-review-handoff-v1.json",
+      "sha256": "13a6e7f11a8067594df198f5f654035fb0c1d5b882efee7744a8fe482ea46922"
+    },
+    {
+      "bytes": 1759,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-review-handoff-v2.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-review-handoff-v2.json",
+      "sha256": "d7c11fcf1e422d48dec6ae79096212dfb27e5b0b0e82c1aadcf50bcbeb90d096"
+    },
+    {
+      "bytes": 1279,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-typed-Source-review-v1.json",
+      "sha256": "a94eaa3be2095c763d720b680ab99b4c48fa0d566d84b246c2d273609b2a9625"
+    },
+    {
+      "bytes": 1281,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-typed-Source-review-v2.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-typed-Source-review-v2.json",
+      "sha256": "a4de3739f70dfac7c6ceef3ae86482e752c88d89aa19801c9145faf2e9c86c05"
+    },
+    {
+      "bytes": 4338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-v1-to-v2-full.patch",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-v1-to-v2-full.patch",
+      "sha256": "32678d2d9ec57eaf71f8e0642a7db236558399bde09aa4dfc0673ce9dc6c10af"
+    },
+    {
+      "bytes": 4338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/decoder-v2-to-v1-full-inverse.patch",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/decoder-v2-to-v1-full-inverse.patch",
+      "sha256": "6514cf9248886df5b2ab9595bc3936c286f8f27967cde1b0d9b1ac95a0bda159"
+    },
+    {
+      "bytes": 615,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/handoff-v1.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/handoff-v1.json",
+      "sha256": "3836fb1f74af187a448e3d380ed8b402de0f4b533f233394840149d731962bf8"
+    },
+    {
+      "bytes": 1472,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/handoff-v2.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/handoff-v2.json",
+      "sha256": "80ef77d5073a3305c6eab3774b304d6ebaa6605a61b62db27e0a1450090a2c6a"
+    },
+    {
+      "bytes": 6747,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v1.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/requirements-v1.json",
+      "sha256": "4d93389b11f5f42283a16641fbf0ec6bec83d5e3632918501e121a80f6de1b14"
+    },
+    {
+      "bytes": 8250,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lossless-envelope-review-source-20261016/requirements-v2.json",
+      "public_path": "evidence/unit-row-lossless-envelope-review-source-20261016/requirements-v2.json",
+      "sha256": "36f82e92fbf4433114dc5d2d6c1f54bdda8eac635348683a34a4ef0345306e4a"
+    },
+    {
+      "bytes": 5834,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-caller-author-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-caller-author-Source-review-v1.json",
+      "sha256": "988cf71158e4a9b577253c44d5ab046c5112ffe6e05f1cf489e17b58c5f9465c"
+    },
+    {
+      "bytes": 8648,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-authorization-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-authorization-v1.json",
+      "sha256": "6371247796f807a3c68ca16ff19ea0d9315cc8745ff7e0f36c867c2a3b515757"
+    },
+    {
+      "bytes": 3695,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "dcbc34d793b74ea4e8456a7cfc8dd116accf440d4a20707fc9fce34a3c11a6ca"
+    },
+    {
+      "bytes": 6038,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-plan-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-plan-v1.json",
+      "sha256": "8e1115a27e6078e19a9b9919eaf0d4ccf023193b267976632ac2c2d940c09bde"
+    },
+    {
+      "bytes": 437,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-preflight-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-preflight-v1.json",
+      "sha256": "c69603579c093e84a20d4ab7a0ab5d5efcadf2839e569bb8100fcbd49f7b070e"
+    },
+    {
+      "bytes": 5312,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-protocol-choice-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-protocol-choice-v1.json",
+      "sha256": "c5ae54baa64444282d2a4b338b2afa183148aeac3474fda8990bc48dec30a95e"
+    },
+    {
+      "bytes": 319,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-tool-bracket-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-domain-controls-tool-bracket-v1.json",
+      "sha256": "79cb25c9c8e47d683164d261ba0932bdd52997552267ab8df2f0c2add582023e"
+    },
+    {
+      "bytes": 8656,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-authorization-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-authorization-v1.json",
+      "sha256": "dca6c0938c950901f46911986cb8ba51f7617db9a79d80ad28075df139bbd4d4"
+    },
+    {
+      "bytes": 2904,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "0dc131e1fa5e174b4ee00eeab154677dc9d3076d8ef4cf74db01405f0f5f1678"
+    },
+    {
+      "bytes": 6046,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+      "sha256": "f2e62a07941c84122116210ed77b404c49fddbf48a149b9906a263aff9c50bd1"
+    },
+    {
+      "bytes": 439,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-preflight-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-preflight-v1.json",
+      "sha256": "7a36acb02f2e0c4ca5816081d5fc75f1cfae4cc644bf7e6fd623146c1aba7fc6"
+    },
+    {
+      "bytes": 5314,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-protocol-choice-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-protocol-choice-v1.json",
+      "sha256": "da97ab71f6bdf5098d8d5734c642fd2c4f6cc59ba829fa5ea12eaf1e61653a77"
+    },
+    {
+      "bytes": 318,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-tool-bracket-v1.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT-original-controls-tool-bracket-v1.json",
+      "sha256": "6b9ef2450d9f47eb004cc316bf8d901d8e684f1dce16a2946a98cacdabb63f41"
+    },
+    {
+      "bytes": 10213,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+      "sha256": "6668d5ee8f174c79de79c42a4a5903b1f72f0f815b4e9de92527eae382751745"
+    },
+    {
+      "bytes": 8143,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/ROOT_prepare_v1.py",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/ROOT_prepare_v1.py",
+      "sha256": "e65fd172f2d496a0c349487f47448697fcc67f3860642d11bed799cf4cb0df9c"
+    },
+    {
+      "bytes": 253,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/ONCE.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/ONCE.json",
+      "sha256": "89afd65d86d977bc7d50e7b03de9fbe91cfe2d4d85b05d678da5d6847bf67e29"
+    },
+    {
+      "bytes": 79,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/meter-stderr.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/meter-stderr.txt",
+      "sha256": "9e7bc77f43e1eb004b296773040cae98c0d8dba103c1b48ba07a5448da2ccc98"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/meter-stdout.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1687,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/native-terminal.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/native-terminal.json",
+      "sha256": "a2bad1b9dbf6a4449bd16fc9bc5ddc80191b11a0754f6db7c87f5f4bf0c930ea"
+    },
+    {
+      "bytes": 470,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/observation.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/observation.json",
+      "sha256": "d23dd1e8cda665e13b945a14027c60fe284eb59f6561da82f3662966dee8ff56"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stderr.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stdout.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "a9b2dbf77c6e4b6b34cabd2c176fbeaa0b16f73e54b16336f568039091b2b98d"
+    },
+    {
+      "bytes": 257,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/ONCE.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/ONCE.json",
+      "sha256": "003a671f4d97f685c23739b3b101366b63ca198170f6fcc57eedd6cbab8b0074"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/meter-stderr.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 943,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/meter-stdout.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/meter-stdout.txt",
+      "sha256": "1adfdfbd6680cd7b5b6e4b4340d17c6e79cbb76afc64990cdb6023c90dd4315e"
+    },
+    {
+      "bytes": 1688,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/native-terminal.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/native-terminal.json",
+      "sha256": "bba6860e687bf8a4cdde669affa11fdf5663e55b55f9a6e38e8f72a573240c8e"
+    },
+    {
+      "bytes": 474,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/observation.json",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/observation.json",
+      "sha256": "7556b2323c9366f0739af248c16c54e5e5ebdecdaa660c2139670e6e909ba167"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/postterminal-probe-stderr.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/postterminal-probe-stdout.txt",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "376f90ba62e87e58efee4b4c7d204f24f463ea288e1a15ab47a18e8222bba4e7"
+    },
+    {
+      "bytes": 5371,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-owned-v1/response.jsonl",
+      "public_path": "evidence/unit-row-retained-engine-ROOT-20261016/original-controls-owned-v1/response.jsonl",
+      "sha256": "05eb21909ae8a5fc43d84eba7b7dd37f7c076cb75f3d19423c76ab76a61bd042"
+    },
+    {
+      "bytes": 5899,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-caller-author-Source-review-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-caller-author-Source-review-v1.json",
+      "sha256": "d51df0b42c9a1b8c8b44ed27047eef8d7f317445eac627d728d756e05b59c832"
+    },
+    {
+      "bytes": 8655,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-authorization-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-authorization-v1.json",
+      "sha256": "a6863c74f9bb11abe3c6f6b18ef5e11d562e38fe08eb2efeee3aed73dd147916"
+    },
+    {
+      "bytes": 3414,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "2945b4e369ceeb693b1808ea9db4828c6e2f841e11f009cf8e53247f6cbe27a4"
+    },
+    {
+      "bytes": 4541799,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-expanded-result-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-expanded-result-v1.json",
+      "sha256": "fad90b84390becec5d8ab9334f56a8e7f4a08661d47b4304709a19ae92d6b40c"
+    },
+    {
+      "bytes": 6045,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-plan-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-plan-v1.json",
+      "sha256": "1edbfa00a8539010cacd018b7c3cfbd0fb62797c0a04ef8f4d54f9733664863c"
+    },
+    {
+      "bytes": 437,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-preflight-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-preflight-v1.json",
+      "sha256": "f6cf6630c18b8d95bcbe1324aa7fba9f98fbe33ba6791e516dba21249b046510"
+    },
+    {
+      "bytes": 5530,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-protocol-choice-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-protocol-choice-v1.json",
+      "sha256": "c5d2a52afe4392c8f1f9e18b498ba7dcc619544a069bb65e6875243a31c9fc0c"
+    },
+    {
+      "bytes": 319,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-tool-bracket-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-tool-bracket-v1.json",
+      "sha256": "3b40f7f8e989cc7676d6f389676c61dfe30e69725a4a9abb1859d8241bf2ba87"
+    },
+    {
+      "bytes": 1487,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-transport-concordance-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-domain-controls-transport-concordance-v1.json",
+      "sha256": "0703433d5c95b945630b525b4b190151f92b81319d33078c5f775f0888abe81a"
+    },
+    {
+      "bytes": 8663,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-authorization-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-authorization-v1.json",
+      "sha256": "b2f635de789e6f883c3bf24a188176e8d4d360c90c6f94684a0aa9c1520877d3"
+    },
+    {
+      "bytes": 3228,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "828cabc93e381b2feb72f7103f95d52e7f455245374379a5f0986fef1caa156d"
+    },
+    {
+      "bytes": 6053,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+      "sha256": "c7fc8980318dc9dce1518548ed1c47e943e0cfae9649e9cf653a4b87d8746261"
+    },
+    {
+      "bytes": 439,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-preflight-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-preflight-v1.json",
+      "sha256": "f8495bf37cca971bb086d69528f19450615dc2a193f648b54d5d184e6e8d235b"
+    },
+    {
+      "bytes": 5532,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-protocol-choice-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-protocol-choice-v1.json",
+      "sha256": "8686a0d3d98550b22cd0a842c56f60c3090e1c4c212e9a179ea5e364a6d78335"
+    },
+    {
+      "bytes": 319,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-tool-bracket-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-tool-bracket-v1.json",
+      "sha256": "54041c6a04b800652af154d8224d92f2291ded007b870e90fbe36ee4f6a637b9"
+    },
+    {
+      "bytes": 1492,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-transport-concordance-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-transport-concordance-v1.json",
+      "sha256": "1e810d695dded6f52d7e98e0e6934dfd2aaeb751452298da8c9192e05ee200af"
+    },
+    {
+      "bytes": 8626,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-search-authorization-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-search-authorization-v1.json",
+      "sha256": "290c1db3494bf6cd699673770493108359b0ce9a437ba67497be2e58af008b97"
+    },
+    {
+      "bytes": 6333,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-search-disposition-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-search-disposition-v1.json",
+      "sha256": "549bd1845967ede8e4bb2842b0e3ef3572f14dd25c517a542c04829d3e3f8342"
+    },
+    {
+      "bytes": 6016,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-search-plan-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-search-plan-v1.json",
+      "sha256": "3898cf7352c2087b2d05f2d3cc08c69ebdb9dec5d3c2e78f90fec3a5926d4f29"
+    },
+    {
+      "bytes": 428,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-search-preflight-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-search-preflight-v1.json",
+      "sha256": "205a44b8eff689ede878f520e1242fc8b1fb7d5e1dab9d5eb4475dd897846f8e"
+    },
+    {
+      "bytes": 5523,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-search-protocol-choice-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-search-protocol-choice-v1.json",
+      "sha256": "f2df34c518b55c38cd3a84429e2e2e9b8ae0f7ab33aa6e220725fbac31ab226e"
+    },
+    {
+      "bytes": 319,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-search-tool-bracket-v1.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT-search-tool-bracket-v1.json",
+      "sha256": "d193c4e71afa88b106153f0f8268d83a430f8cd075f8e7275ed117e792721830"
+    },
+    {
+      "bytes": 12195,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_close_domain_controls_saved_v1.py",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT_close_domain_controls_saved_v1.py",
+      "sha256": "33dd05ee7900de617ccad94ac59a29524b54b0ee98134c190c979b1e2f6d836c"
+    },
+    {
+      "bytes": 10533,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+      "sha256": "9abd1da80b064b28de7793d319b76f44acc8f4ee361d71de69e805b313726253"
+    },
+    {
+      "bytes": 8002,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_close_search_saved_v1.py",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT_close_search_saved_v1.py",
+      "sha256": "3bbcc763ccfc342ac017ff86bc4e1c14b1fe776f2d894de682aab126e5e628cf"
+    },
+    {
+      "bytes": 4551,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v1.py",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v1.py",
+      "sha256": "7067a58cd439851086095b761a6a49e4e6a57d2075d2206d4a0906f9f5a4a6ad"
+    },
+    {
+      "bytes": 5270,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+      "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+    },
+    {
+      "bytes": 8425,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_prepare_v1.py",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/ROOT_prepare_v1.py",
+      "sha256": "7a8ea1120003f090d20cd03641ca2c7289364ae224af2e0c50a85fee4a594566"
+    },
+    {
+      "bytes": 260,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/ONCE.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/ONCE.json",
+      "sha256": "31ffb67b8f0f6bf69a1b80d8fc3f2253baba8826db0d2d6c7ffd72c50ca18f45"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/meter-stderr.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 936,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/meter-stdout.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/meter-stdout.txt",
+      "sha256": "0ab070deb35e4f4ec5f948ae5fb0ef5914bfdb9d78a53d815fc3d58054615a6e"
+    },
+    {
+      "bytes": 1684,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/native-terminal.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/native-terminal.json",
+      "sha256": "f3a6631a6bace4922709c9351185c4c84b8b18eca02e0ce77a1eb9054d969472"
+    },
+    {
+      "bytes": 477,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/observation.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/observation.json",
+      "sha256": "3160f4d870946c5596ce65e9fa23540c9c7b8e480654e50400f7af581505f339"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stderr.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stdout.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "44a8da75a8af396bccdee4cfc584150734c9717b21a2b16e032040f045d28848"
+    },
+    {
+      "bytes": 267623,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "sha256": "39138afe4174e056605adf094ddc2ebdac9c502767efe5f74716f261097bd85b"
+    },
+    {
+      "bytes": 5387,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/domain-controls-owned-v1/response.jsonl",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/domain-controls-owned-v1/response.jsonl",
+      "sha256": "9b6e311457a0bb42036f3be027721b8abd48c3f9197936d894600b0478ad08b4"
+    },
+    {
+      "bytes": 264,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/ONCE.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/ONCE.json",
+      "sha256": "6ea6f242d1dbcbd496b0227c4eec58b22060ad2268128d7ef7b888835f6af350"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/meter-stderr.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 942,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/meter-stdout.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/meter-stdout.txt",
+      "sha256": "956c49a3782465a9c1803097a8caaefe10f871e26c47fc23367be2c650202cfe"
+    },
+    {
+      "bytes": 1687,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/native-terminal.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/native-terminal.json",
+      "sha256": "ebc41b277a13173ab737ce81c89d67ff466b3a15eca08561ab46abc00ed9c91f"
+    },
+    {
+      "bytes": 481,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/observation.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/observation.json",
+      "sha256": "ffdb486c5a2a8c0b97f0999a3436ac13d9a73fa3319d2769c1082d6a728fe8f4"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/postterminal-probe-stderr.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/postterminal-probe-stdout.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "617ed5b44358ad6cdd52b5955d30b532c508572d04dc2da7507f2763d1434ff3"
+    },
+    {
+      "bytes": 104522,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "sha256": "22e08d47c606b0ecd99d1e42a28b5df6b32b4f042b96fae34dc6087cc8d4f0c8"
+    },
+    {
+      "bytes": 5391,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/original-controls-owned-v1/response.jsonl",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/original-controls-owned-v1/response.jsonl",
+      "sha256": "cce85da26895cb90271c6535f683fd171bd365cb84ca4ec207f2c80aed3f613d"
+    },
+    {
+      "bytes": 249,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/ONCE.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/ONCE.json",
+      "sha256": "549ad7dbc6633bdf5deef56a496db2cc7d89abbd6ba24c4ac082a1fd464add61"
+    },
+    {
+      "bytes": 111,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/meter-stderr.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/meter-stderr.txt",
+      "sha256": "ab20fdad9385dfef8fdc9502376b649f5a165abcd9958855bb7695c519919115"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/meter-stdout.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1679,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/native-terminal.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/native-terminal.json",
+      "sha256": "ff5b678396917ef5135fd5a517ec89416521db1320043f0ee016c38ecf8ceb45"
+    },
+    {
+      "bytes": 466,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/observation.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/observation.json",
+      "sha256": "4d9e4642b3c6f01766ae10a9db4d90c3e5298ff932d70cb6c116280345785ce3"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/postterminal-probe-stderr.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-external-v1/postterminal-probe-stdout.txt",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "82a5cf6d2a3af70dcbb6f9cad83204424dce1b679837eb7f77252589e2d062ee"
+    },
+    {
+      "bytes": 338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-owned-v1/diagnostic-completion.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-owned-v1/diagnostic-completion.json",
+      "sha256": "46c640c244bee833bdc6787d1aec9a125d3e16f8acea080b7e6d9a72b9979479"
+    },
+    {
+      "bytes": 1260190,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/search-owned-v1/unknown-diagnostic.json",
+      "public_path": "evidence/unit-row-retained-packed-ROOT-20261016/search-owned-v1/unknown-diagnostic.json",
+      "sha256": "3a52a6f5380ca0bb7aec0602b9a1adb701c368b5c665567c61b4851d3d445f84"
+    },
+    {
+      "bytes": 48584,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "public_path": "evidence/original-authority/clean_support/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 21896,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "public_path": "evidence/original-authority/controls/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    {
+      "bytes": 27553,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "public_path": "evidence/original-authority/degree_checker/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 24227,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "public_path": "evidence/original-authority/fallback/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 10323,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "public_path": "evidence/original-authority/kernel/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 20112,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "public_path": "evidence/original-authority/membership/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 22030,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "public_path": "evidence/original-authority/proposer/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 2925,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "public_path": "evidence/original-authority/declaration/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "public_path": "evidence/original-authority/profile/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 4357,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+      "public_path": "evidence/measurement/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "bytes": 6734,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "public_path": "evidence/measurement/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    }
+  ],
+  "omission_reason": "Current original-controls expanded record is fully preserved in its published lossless envelope; older first-caller original-controls result remains local with disposition and complete native/wire metadata published. No retention-control or failed-search data is trimmed.",
+  "omitted_public_duplicate_records": [
+    {
+      "bytes": 1940286,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-engine-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "sha256": "bc687be38ca52d6b71f1c667f9570e6d2e9b1ffa00fb1543f2180c13f692bc45"
+    },
+    {
+      "bytes": 1940286,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT-original-controls-expanded-result-v1.json",
+      "sha256": "2e8647652092e1de4e02cdca8aec2daad2ed8901f379a631778a554815ce6ac5"
+    }
+  ],
+  "schema": "unit-row-retention-evidence-manifest-v1",
+  "scope": "Exact retained engine/controls/caller/decoder versions and reviews, five closed actuals including raw-cap UNKNOWN, original authority and measurement. Proposed adviser/witness code excluded."
+}
