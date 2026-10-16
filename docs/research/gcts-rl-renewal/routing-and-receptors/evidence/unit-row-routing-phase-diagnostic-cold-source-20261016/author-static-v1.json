@@ -1,0 +1,92 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 16,
+  "checks": [
+    {
+      "name": "compile_and_AST_without_candidate_evaluation",
+      "passed": true
+    },
+    {
+      "name": "choice_exact_parent_master_limits_no_actual_authorization",
+      "passed": true
+    },
+    {
+      "name": "component13_input8_original17_input2_epoch_limits_six_families_twelve_cases_exact",
+      "passed": true
+    },
+    {
+      "name": "17_complete_raw_edit_forward_inverse_and_AST_inverse",
+      "passed": true
+    },
+    {
+      "name": "both_actual_unified_patches_full_inverse",
+      "passed": true
+    },
+    {
+      "name": "all17_top_helpers_and_all_classes_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "33_other_nested_definitions_including_guards_callbacks_five_families_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "16_literal_sites_unique_in_runtime_order_outside_loops_try_finally",
+      "passed": true
+    },
+    {
+      "name": "literal_whitelist_exact_and_exact_native_signed64_write_guard",
+      "passed": true
+    },
+    {
+      "name": "bounded_native_partial_write_progress_pre_post_no_catch_or_semantic_calls",
+      "passed": true
+    },
+    {
+      "name": "exact_choice93_line1321_total_finite_marker_bounds",
+      "passed": true
+    },
+    {
+      "name": "whole_AST_marker_capture_writer_erasure_recovers_parent_independently",
+      "passed": true
+    },
+    {
+      "name": "whole_result_transport_response_stdout_nativeexit_failure_tail_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "all_original_imports_and_early_clock_and_native_tick_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "all_frozen_raw_source_input_capsules_match",
+      "passed": true,
+      "unique_paths": 32
+    },
+    {
+      "name": "current_fresh13_composite_and_distinct_root_peer_raw_authority_exact",
+      "passed": true
+    }
+  ],
+  "independent_review": false,
+  "parent_source": {
+    "bytes": 78278,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py",
+    "sha256": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb"
+  },
+  "runtime_executed": false,
+  "schema": "unit-row-routing-phase-diagnostic-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 81356,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+    "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+  },
+  "source_delta": {
+    "bytes": 10628,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "5e9022ccaff4734079db6bc50ae79a1d519a43bd7ec339c850a549439f850ecd"
+  },
+  "source_only": true
+}

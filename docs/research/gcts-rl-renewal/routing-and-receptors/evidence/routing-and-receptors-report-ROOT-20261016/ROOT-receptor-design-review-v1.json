@@ -1,0 +1,36 @@
+{
+  "audit": {
+    "bytes": 16383,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/audit-findings-v1.json",
+    "sha256": "2b56d3a8a616c85d6dc92f1781d6175036793be750a674f05fc7676d1b85e8ca"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "concrete_design_blockers": [],
+  "contract": {
+    "bytes": 41188,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+    "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+  },
+  "design_only_pass": true,
+  "implementation_complete": false,
+  "library_activated": false,
+  "limitations": [
+    "Structural descriptor schema is not an implemented semantic validator.",
+    "Legacy block envelope differs from current six-rule primitive rows; full expansion and actual host checks are required.",
+    "All-port capture-safe matching, complete union, original fallback/global order and exact rollback remain implementation gates.",
+    "Human two-MP illustration is infrastructure design only; automatically extracted families and independently checked new search proofs are later experiments."
+  ],
+  "new_theorem_accepted": false,
+  "peer": {
+    "bytes": 4386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "d3616610a83e74c63eab7a3986e60f060fce1c3986c98013382952679b10bcf0"
+  },
+  "reviewer_identity": "/root",
+  "schema": "ROOT-receptor-family-design-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "source_pins19_authenticated": true,
+  "whole_contract_and_visual_read": true
+}

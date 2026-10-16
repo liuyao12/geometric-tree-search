@@ -1,0 +1,27 @@
+{
+  "findings": {
+    "bytes": 2745,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "193e664511b4cb6b8141da0bc30877ad5e219e623af9a039243dadb30879f4b5"
+  },
+  "schema": "unit-row-routing-phase-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 20200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+    "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+  },
+  "source_contract": {
+    "bytes": 6367,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "e9688fad26d97e14df3b325f2feb7f591ce9b0337e8e5b9346e79d1f7ef6288c"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "typed_review": {
+    "bytes": 2264,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "4efe77ca405b6cb2ef697948bcb4d5b3e1e8e0ab5f9549345314b1a8fbdb7496"
+  }
+}

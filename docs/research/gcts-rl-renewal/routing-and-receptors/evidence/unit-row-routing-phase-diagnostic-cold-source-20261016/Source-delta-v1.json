@@ -1,0 +1,186 @@
+{
+  "edit_count": 17,
+  "edits": [
+    {
+      "label": "own_VERSION_SCOPE",
+      "new_end": 661,
+      "new_start": 556,
+      "new_utf8": "VERSION='unit-row-routing-phase-diagnostic-cold-v1'\nSCOPE='unit-row-routing-phase-diagnostic-cold-Source'",
+      "old_end": 673,
+      "old_start": 556,
+      "old_utf8": "VERSION='unit-row-fresh-projection-qualification-cold-v1'\nSCOPE='unit-row-fresh-projection-qualification-cold-Source'"
+    },
+    {
+      "label": "captured_writer_and_marker_NATIVE_READY_BEFORE_PLAN",
+      "new_end": 33916,
+      "new_start": 31451,
+      "new_utf8": "    tick();signal.signal(signal.SIGINT,cancel);signal.signal(signal.SIGTERM,cancel)\n    routing_phase_tick,routing_phase_tick_code,routing_phase_write=tick,tick.__code__,os.write\n    routing_phase_labels=('NATIVE_READY_BEFORE_PLAN', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_CURRENT_AUTHORITY_CHECKS', 'BEFORE_FIXED_INPUT_READS', 'BEFORE_MODULE_LOAD_AND_SEAL', 'BEFORE_PRIOR_STAGEB_AUTHENTICATION', 'BEFORE_FRESH_MARKING_CHECK', 'AFTER_FRESH_MARKING_CHECK', 'BEFORE_ROUTING_SETUP', 'BEFORE_ZERO_QUERY', 'BEFORE_ONE_QUERY', 'BEFORE_TWO_QUERY', 'BEFORE_ABSENT_QUERY', 'BEFORE_IMPLICATION_QUERY', 'BEFORE_ROUTING_ASSERTIONS', 'AFTER_ROUTING_PROTOCOL')\n    def routing_phase(stage):\n        if (routing_phase is not routing_phase_fn or routing_phase_fn.__code__ is not routing_phase_code\n                or routing_phase_fn.__defaults__ is not None or routing_phase_fn.__kwdefaults__ is not None\n                or tick is not routing_phase_tick or routing_phase_tick.__code__ is not routing_phase_tick_code\n                or routing_phase_tick.__defaults__ is not None or routing_phase_tick.__kwdefaults__ is not None\n                or os.write is not routing_phase_write or type(routing_phase_write) is not types.BuiltinFunctionType):\n            raise RuntimeError('routing phase diagnostic native writer changed')\n        native_ns=routing_phase_tick()\n        if (type(stage) is not str or stage not in routing_phase_labels\n                or type(native_ns) is not int or not 0<=native_ns<2**63):\n            raise RuntimeError('routing phase diagnostic literal/native sample')\n        raw=('UNQUALIFIED_ROUTING_PHASE_OBSERVATION '+stage+' '+str(native_ns)+'\\n').encode('ascii')\n        offset=0\n        while offset<len(raw):\n            if offset:routing_phase_tick()\n            if os.write is not routing_phase_write:\n                raise RuntimeError('routing phase diagnostic native write endpoint changed')\n            count=routing_phase_write(2,raw[offset:])\n            if type(count) is not int or not 0<count<=len(raw)-offset:\n                raise RuntimeError('routing phase diagnostic incomplete native write')\n            routing_phase_tick()\n            if os.write is not routing_phase_write:\n                raise RuntimeError('routing phase diagnostic native write endpoint changed on return')\n            offset+=count\n    routing_phase_fn,routing_phase_code=routing_phase,routing_phase.__code__\n    routing_phase('NATIVE_READY_BEFORE_PLAN')\n",
+      "old_end": 31547,
+      "old_start": 31463,
+      "old_utf8": "    tick();signal.signal(signal.SIGINT,cancel);signal.signal(signal.SIGTERM,cancel)\n"
+    },
+    {
+      "label": "marker_BEFORE_CURRENT_SOURCE_READS",
+      "new_end": 35443,
+      "new_start": 35315,
+      "new_utf8": "    routing_phase('BEFORE_CURRENT_SOURCE_READS')\n    source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}\n",
+      "old_end": 33025,
+      "old_start": 32946,
+      "old_utf8": "    source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}\n"
+    },
+    {
+      "label": "marker_BEFORE_CURRENT_AUTHORITY_CHECKS_and_consumed_schema",
+      "new_end": 35643,
+      "new_start": 35501,
+      "new_utf8": "    routing_phase('BEFORE_CURRENT_AUTHORITY_CHECKS')\n    need(contract['schema']=='unit-row-routing-phase-diagnostic-cold-Source-contract-v1'\n",
+      "old_end": 33178,
+      "old_start": 33083,
+      "old_utf8": "    need(contract['schema']=='unit-row-fresh-projection-qualification-cold-Source-contract-v1'\n"
+    },
+    {
+      "label": "marker_BEFORE_FIXED_INPUT_READS",
+      "new_end": 37583,
+      "new_start": 37444,
+      "new_utf8": "    routing_phase('BEFORE_FIXED_INPUT_READS')\n    inputs_raw={role:read_pinned(ref,4*1048576+131072) for role,ref in FIXED_INPUTS.items()}\n",
+      "old_end": 35072,
+      "old_start": 34979,
+      "old_utf8": "    inputs_raw={role:read_pinned(ref,4*1048576+131072) for role,ref in FIXED_INPUTS.items()}\n"
+    },
+    {
+      "label": "marker_BEFORE_MODULE_LOAD_AND_SEAL",
+      "new_end": 38617,
+      "new_start": 38496,
+      "new_utf8": "    routing_phase('BEFORE_MODULE_LOAD_AND_SEAL')\n    modules={role:load_module(role,source_raw[role]) for role in FIXED}\n",
+      "old_end": 36057,
+      "old_start": 35985,
+      "old_utf8": "    modules={role:load_module(role,source_raw[role]) for role in FIXED}\n"
+    },
+    {
+      "label": "marker_BEFORE_PRIOR_STAGEB_AUTHENTICATION",
+      "new_end": 41840,
+      "new_start": 41709,
+      "new_utf8": "    routing_phase('BEFORE_PRIOR_STAGEB_AUTHENTICATION')\n    # Authenticate the WHOLE prior StageB result. Its receipts are inputs,\n",
+      "old_end": 39224,
+      "old_start": 39149,
+      "old_utf8": "    # Authenticate the WHOLE prior StageB result. Its receipts are inputs,\n"
+    },
+    {
+      "label": "marker_BEFORE_FRESH_MARKING_CHECK",
+      "new_end": 47636,
+      "new_start": 47500,
+      "new_utf8": "    routing_phase('BEFORE_FRESH_MARKING_CHECK')\n    definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),\n",
+      "old_end": 44972,
+      "old_start": 44884,
+      "old_utf8": "    definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),\n"
+    },
+    {
+      "label": "marker_AFTER_FRESH_MARKING_CHECK",
+      "new_end": 47956,
+      "new_start": 47877,
+      "new_utf8": "    routing_phase('AFTER_FRESH_MARKING_CHECK')\n    controls, families = [], {}\n",
+      "old_end": 45245,
+      "old_start": 45213,
+      "old_utf8": "    controls, families = [], {}\n"
+    },
+    {
+      "label": "marker_BEFORE_ROUTING_SETUP",
+      "new_end": 58709,
+      "new_start": 58639,
+      "new_utf8": "        routing_phase('BEFORE_ROUTING_SETUP')\n        c=deep_output()\n",
+      "old_end": 55952,
+      "old_start": 55928,
+      "old_utf8": "        c=deep_output()\n"
+    },
+    {
+      "label": "marker_BEFORE_ZERO_QUERY",
+      "new_end": 58960,
+      "new_start": 58861,
+      "new_utf8": "        routing_phase('BEFORE_ZERO_QUERY')\n        records['ZERO']=query(state_from(zero_seeds),1)\n",
+      "old_end": 56160,
+      "old_start": 56104,
+      "old_utf8": "        records['ZERO']=query(state_from(zero_seeds),1)\n"
+    },
+    {
+      "label": "marker_BEFORE_ONE_QUERY",
+      "new_end": 59056,
+      "new_start": 58960,
+      "new_utf8": "        routing_phase('BEFORE_ONE_QUERY')\n        records['ONE']=query(state_from(one_seeds),3)\n",
+      "old_end": 56214,
+      "old_start": 56160,
+      "old_utf8": "        records['ONE']=query(state_from(one_seeds),3)\n"
+    },
+    {
+      "label": "marker_BEFORE_TWO_QUERY",
+      "new_end": 59152,
+      "new_start": 59056,
+      "new_utf8": "        routing_phase('BEFORE_TWO_QUERY')\n        records['TWO']=query(state_from(two_seeds),3)\n",
+      "old_end": 56268,
+      "old_start": 56214,
+      "old_utf8": "        records['TWO']=query(state_from(two_seeds),3)\n"
+    },
+    {
+      "label": "marker_BEFORE_ABSENT_QUERY",
+      "new_end": 59247,
+      "new_start": 59152,
+      "new_utf8": "        routing_phase('BEFORE_ABSENT_QUERY')\n        records['ABSENT']=query(state_from([]),0)\n",
+      "old_end": 56318,
+      "old_start": 56268,
+      "old_utf8": "        records['ABSENT']=query(state_from([]),0)\n"
+    },
+    {
+      "label": "marker_BEFORE_IMPLICATION_QUERY",
+      "new_end": 59449,
+      "new_start": 59336,
+      "new_utf8": "        routing_phase('BEFORE_IMPLICATION_QUERY')\n        records['IMPLICATION']=query(state_from([imp_seed]),0)\n",
+      "old_end": 56470,
+      "old_start": 56407,
+      "old_utf8": "        records['IMPLICATION']=query(state_from([imp_seed]),0)\n"
+    },
+    {
+      "label": "marker_BEFORE_ROUTING_ASSERTIONS",
+      "new_end": 59802,
+      "new_start": 59652,
+      "new_utf8": "        routing_phase('BEFORE_ROUTING_ASSERTIONS')\n        for name,status,n in (('ZERO','ZERO',0),('ONE','SINGLETON',1),('TWO','TWO_OR_MORE',None)):\n",
+      "old_end": 56772,
+      "old_start": 56673,
+      "old_utf8": "        for name,status,n in (('ZERO','ZERO',0),('ONE','SINGLETON',1),('TWO','TWO_OR_MORE',None)):\n"
+    },
+    {
+      "label": "marker_AFTER_ROUTING_PROTOCOL",
+      "new_end": 62145,
+      "new_start": 62004,
+      "new_utf8": "        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='ROUTING_PROTOCOL')\n        routing_phase('AFTER_ROUTING_PROTOCOL')\n",
+      "old_end": 59067,
+      "old_start": 58974,
+      "old_utf8": "        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='ROUTING_PROTOCOL')\n"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent": {
+    "bytes": 78278,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py",
+    "sha256": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb"
+  },
+  "patches": [
+    {
+      "bytes": 10291,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/parent-to-current-forward.patch",
+      "sha256": "168bd538cf7711155ba2f8dda480b2ddbe22ead08c5674dd287b458bc2dd4fe8"
+    },
+    {
+      "bytes": 10291,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/current-to-parent-full-inverse.patch",
+      "sha256": "9879ce3018d761221adf715e604cb6b0a44e09f748cf3543b7ff7e6277672da4"
+    }
+  ],
+  "schema": "unit-row-routing-phase-diagnostic-cold-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 81356,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+    "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+  },
+  "source_only": true,
+  "whole_AST_inverse_verified": true
+}

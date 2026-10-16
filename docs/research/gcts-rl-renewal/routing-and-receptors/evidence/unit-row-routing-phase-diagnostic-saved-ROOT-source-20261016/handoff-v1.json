@@ -1,0 +1,55 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root",
+    "reviewer_identity": "Distinct reviewer determines",
+    "schema": "unit-row-routing-phase-saved-diagnostic-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-routing-phase-saved-diagnostic-Source",
+    "source": {
+      "bytes": 20200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+      "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+    },
+    "source_contract": {
+      "bytes": 6367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v1.json",
+      "sha256": "e9688fad26d97e14df3b325f2feb7f591ce9b0337e8e5b9346e79d1f7ef6288c"
+    },
+    "source_only": true,
+    "source_review_passed": "Only genuine whole-Source reviewer determines",
+    "sources": {
+      "reader": {
+        "bytes": 20200,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+        "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+      }
+    }
+  },
+  "author_identity": "/root",
+  "executed": false,
+  "parent": {
+    "bytes": 23290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v2.py",
+    "sha256": "7f77ab7b2ac03ea3053d256f1a89773c70c314ae0402d28e288700a57155f1d6"
+  },
+  "schema": "unit-row-routing-phase-saved-diagnostic-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 20200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+    "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+  },
+  "source_contract": {
+    "bytes": 6367,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "e9688fad26d97e14df3b325f2feb7f591ce9b0337e8e5b9346e79d1f7ef6288c"
+  },
+  "source_delta": {
+    "bytes": 1931,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-delta-v1.json",
+    "sha256": "d550b889fdf65ee09be33be216756f59d6da85b4c041f27a1d32e00c1777d7da"
+  },
+  "source_only": true
+}

@@ -1,0 +1,733 @@
+{
+  "API": {
+    "CLI": "One absolute canonical plan path, exact12 plan fields and exactly one of six purpose values; Root-owned once native process per purpose. No combined20 claim. This successor is diagnostic only; Root choice limits the prospective grant to one ROUTING purpose, never grants any execution itself.",
+    "EOF": "Public engine.next_alternative owns original+marked context/ordinal/EOF wire validation. Direct fresh certifier compares actual whole checked keys and its owned stateSHA/marking context; never claims standalone EOF-wire validation. Negatives mutate missing/extra/duplicate key lists or state_sha256/marking_id only.",
+    "completion_schema": "Q-clean-verifier-response-completion-v1",
+    "delegation": "Every family is executed under original FunctionType invoke/full pre/post Source+native boundaries. Internal model/cursor/check callbacks use captured native tick only. No per-method Source seal claim. Both real cursor levels use inherited ObservedCursor class, included in CodeSeal and strong anchors.",
+    "diagnostic_stderr": "ASCII prefix SP exact_whitelisted_stage SP canonical_nonnegative_decimal_native_ns LF",
+    "expanded_result_schema": "ROOT-unit-row-routed-engine-qualification-result-v1",
+    "final_schema": "ROOT-unit-row-routed-engine-qualification-final-observation-v1",
+    "grant_author_identity": "/root",
+    "grant_schema": "ROOT-routed-engine-qualification-authorization-v1",
+    "output_files": [
+      "engine-result.json",
+      "response.jsonl"
+    ],
+    "payload_field": "routed_engine_qualification",
+    "payload_schema": "ROOT-unit-row-routed-engine-qualification-payload-v1",
+    "plan_schema": "ROOT-routed-engine-qualification-plan-v1",
+    "point_API": "Public adapter/semantics/receipt/cursor/transition versions and data are unchanged; new adapter IMPLEMENTATION_VERSION=unit-row-channel4-point-adapter-fresh-projection-v2 is checked independently. Engine13/router original public APIs and schema IDs stay exact.",
+    "purpose_modes_and_ordered_cases": {
+      "unit-row-marked-aware-child-UNKNOWN-controls": [
+        "MR-11-actual-child-native-first-declared-UNKNOWN",
+        "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+      ],
+      "unit-row-marked-aware-global-forced-dead-controls": [
+        "MR-03-global-forced-requery-dead-exhaustion",
+        "MR-04-owned-full-root-restoration"
+      ],
+      "unit-row-marked-aware-router-protocol-controls": [
+        "MR-01-new-and-legacy-route-consumption",
+        "MR-02-wrong-route-and-context-rejected"
+      ],
+      "unit-row-marked-aware-short-EOF-controls": [
+        "MR-09-real-short-stream-and-fresh-complete-keySET",
+        "MR-10-legacy-implication-EOF-remains-unaccepted"
+      ],
+      "unit-row-marked-aware-singleton-transfer-controls": [
+        "MR-05-native-singleton-full-origin-transfer",
+        "MR-06-current-sole-consumption-and-owned-rollback"
+      ],
+      "unit-row-marked-aware-two-transfer-controls": [
+        "MR-07-native-TWO-full-origin-transfer",
+        "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+      ]
+    },
+    "response_schema": "ROOT-unit-row-routed-engine-qualification-response-body-v1",
+    "review_scope": "unit-row-routing-phase-diagnostic-cold-Source",
+    "stop": "Fixed constructor proposer native tick first; empty-root actualselected_count>0 raises inherited ChildControlInterruption with exact dedicated reason. Same fixed callback used by ordinary query/fresh certifier. This is declared test seam, not native deadline or forced failure evidence.",
+    "transport": "Whole canonical expanded+LF<=16MiB, zlib6/base64 envelope<=4MiB, response exactly2LF, final observation oneLF, unchanged native/fullSource output/exit/unknown path. All setup/imports/marking/model/delegation/check/output/exit charged. No trimming."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "reviewer_identity": "Distinct reviewer determines",
+    "schema": "unit-row-routing-phase-diagnostic-cold-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-routing-phase-diagnostic-cold-Source",
+    "source": {
+      "bytes": 81356,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+      "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+    },
+    "source_contract": "Exact raw current Source-contract-v1.json capsule",
+    "source_only": true,
+    "source_review_passed": "Only genuine whole current Source/contract reviewer determines",
+    "sources": {
+      "clean_support": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "decorator": {
+        "bytes": 12619,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+        "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+      },
+      "degree_checker": {
+        "bytes": 27553,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      },
+      "degree_router": {
+        "bytes": 12779,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+        "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+      },
+      "engine": {
+        "bytes": 66670,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+        "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+      },
+      "fallback": {
+        "bytes": 24227,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+        "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+      },
+      "intake": {
+        "bytes": 81356,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+        "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+      },
+      "kernel": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "marked_adapter": {
+        "bytes": 29197,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+        "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+      },
+      "marked_aware_checker": {
+        "bytes": 25783,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+        "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+      },
+      "marked_aware_proposer": {
+        "bytes": 14064,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+        "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+      },
+      "marked_verifier": {
+        "bytes": 18475,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+        "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+      },
+      "membership": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "proposer": {
+        "bytes": 22030,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+        "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+      }
+    }
+  },
+  "artifact_API": {
+    "CHILD_UNKNOWN": "initial_state,before,actual_log,search_result,after,outer_after; full actual interruption in actual_log. Actual canonical stream key joins firstTRY/PLACE and selected growth; no inferred firstchild from counter alone.",
+    "GLOBAL_FORCED_DEAD": "seeds,initial_state,before,actual_log,search_result,after,actual_dead_receipt,outer_after. Full normal search result/events saved; q3 native proposals show different full currentstate and actual invalidation ledger. DEAD2 fullnew receipt retained.",
+    "ROUTING_PROTOCOL": "queries{ZERO,ONE,TWO,ABSENT,IMPLICATION}:each{state,state_sha256,row,proposal,receipt}; seeds samekeys list of original baretiles; failures[{label,state,row,failing_proposal,exception_type,actual_reason,expected_reason,rejected,returned_receipt}]. Five positive shapes and five malformed proposal cases.",
+    "SHORT_EOF": "ZERO,ONE,IMPLICATION each{state,row,before,after,items,checked_candidates,completion,fresh_cover_receipt,actual_log}; failures full negative args+exact errors; implication_seed; implication_standalone_query fullfresh legacy proposal/receipt. None from certifier is not claimed to expose its internally discarded partial receipt.",
+    "SINGLETON_TRANSFER_and_TWO_TRANSFER": "seeds,initial_state,queried_row,before,actual_log,first_actual_decision,checked_snapshot,original_receipt,forced_candidate,after_placement,transferred_receipt,current_packets,second_actual_decision,after_second_decision,inner_after,outer_after. Origin and current packets distinct; all owned checkpoints genuine and never serialized/fabricated.",
+    "actual_log": "queries[{row,state,state_sha256,proposal}], original_cursors/marked_cursors[{context,events}], covers[{state,row,completion,checked_candidates,receipt}], interruptions[{kind,native_ns,row,state,selected_count,initial_selected_count,joint_began_ns,joint_deadline_ns}]. No invented EOF/receipt. All actual returned objects retained before assertions."
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 3043,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/author-static-v1.json",
+    "sha256": "d9ef738e7e4151429a645e64460630486fd70786b223bb5814c48eb6bdb40335"
+  },
+  "authorship": "Controls authors this caller and prior membership/c960/fallback/decorator/new4316 and design. Arithmetic authors engine12/router/adapter/c354; diagnosis authors independent8f7a/9fd6 and will review caller distinctly. Author static is not peer review. Root owns all grants, actuals, resource/saved closure and publication. Current caller author retains prior control/membership/proposer/fallback/decorator overlap, not engine13 authorship; distinct engine and caller peers required. New caller author did not author adapter v2; fresh composite Root and distinct peer Source reviews bind current13 composition, not historical engine13 adapterv1 context. Same caller author adds fixed native-only phase instrumentation; this author-static is not an independent review. No mathematical implementation is changed.",
+  "component_handoff": {
+    "bytes": 17694,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/handoff-v1.json",
+    "sha256": "d355d98390b2c4135fb3265c3b4c14762fa1b9b14acc8b709d1458f6d4df09e0"
+  },
+  "component_reviews": {
+    "ROOT": {
+      "bytes": 6944,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-ROOT-20261016/ROOT-adapter-composite-Source-review-v1.json",
+      "sha256": "e363e684ad88039e3bd8c679e5befe6387717bef28523781991e707db9d3c58a"
+    },
+    "peer": {
+      "bytes": 6956,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "3c77320f1aa512cd3c3e4cfff2d1959b7cca376656f801f9308ef16cf8a4e72d"
+    }
+  },
+  "component_source_contract": {
+    "bytes": 35295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/Source-contract-v1.json",
+    "sha256": "8db81c755e0ade5eae2aa5d04ec68eb012be05a89b4ef092616a4343340fc040"
+  },
+  "diagnostic": {
+    "invocation_scope": "First8 setup sites occur before six-way dispatch, first early site precedes plan/Source authentication. Last8 only occur inside ordinary routing handler. Root choice permits prospective one routing-purpose actual only; no other purpose grant or cold rerun is created here.",
+    "maximum_decimal_digits": 19,
+    "maximum_line_bytes": 93,
+    "maximum_lines": 16,
+    "maximum_total_marker_bytes": 1321,
+    "observation_limits": [
+      "A label records a successful reached native write only; it authenticates no Source review, phase entry/return, case, placement, degree, rollback, exhaustion or proof. Early setup writes precede full Source authentication.",
+      "Sample differences are inclusive same-clock intervals between reached writes, including guards/sampling/formatting/native IO and intervening setup/science; no exclusive-method cost, active fault frame, blocking syscall or cause attribution. Missing writes do not establish phase absence/nonreturn or prior completion.",
+      "All costs, including Source/input reads, module load, original guards, marker checks/writes and output, remain in unchanged original20/512/native windows. A syscall can return late and the next original tick rejects it; this does not extend positive admission.",
+      "Even exit0/full old producer record remains diagnostic only. Saved diagnostic disposition must keep reported/accepted case counts null, qualified0 and all engine/target/proof/RL/GCTS gain/resource-positive authority false; raw scientific record may be retained only for separately authorized full reconciliation."
+    ],
+    "ordered_labels": [
+      "NATIVE_READY_BEFORE_PLAN",
+      "BEFORE_CURRENT_SOURCE_READS",
+      "BEFORE_CURRENT_AUTHORITY_CHECKS",
+      "BEFORE_FIXED_INPUT_READS",
+      "BEFORE_MODULE_LOAD_AND_SEAL",
+      "BEFORE_PRIOR_STAGEB_AUTHENTICATION",
+      "BEFORE_FRESH_MARKING_CHECK",
+      "AFTER_FRESH_MARKING_CHECK",
+      "BEFORE_ROUTING_SETUP",
+      "BEFORE_ZERO_QUERY",
+      "BEFORE_ONE_QUERY",
+      "BEFORE_TWO_QUERY",
+      "BEFORE_ABSENT_QUERY",
+      "BEFORE_IMPLICATION_QUERY",
+      "BEFORE_ROUTING_ASSERTIONS",
+      "AFTER_ROUTING_PROTOCOL"
+    ],
+    "partial_write_policy": "Retain whole raw stderr. Incomplete or malformed line, including partial phase bytes followed by unchanged final error line, remains raw/unparsed or fails reader closed; do not broaden masks, trim, repair, or promote it. Native write/tick/resource/guard errors propagate through original invoke exceptional guards and unchanged failure tail.",
+    "positions": [
+      {
+        "following_group": "Original main native tick exists and its initial tick/signal setup returned; next group includes plan path/read/decode/runtime/plan-shape checks before Source reads.",
+        "maximum_line_bytes": 83,
+        "source_line": 389,
+        "stage": "NATIVE_READY_BEFORE_PLAN",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Current Source14 raw reads plus current contract raw read/decode, inclusive; no original-model interpretation here.",
+        "maximum_line_bytes": 86,
+        "source_line": 406,
+        "stage": "BEFORE_CURRENT_SOURCE_READS",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole current contract/Root+peer reviews/once grant authentication before fixed inputs.",
+        "maximum_line_bytes": 90,
+        "source_line": 409,
+        "stage": "BEFORE_CURRENT_AUTHORITY_CHECKS",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Fixed input8 plus original Source17 raw reads, raw-equality checks, input2 and binding/context canonicalization; inclusive through next site.",
+        "maximum_line_bytes": 83,
+        "source_line": 431,
+        "stage": "BEFORE_FIXED_INPUT_READS",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Current13 module loading, original CodeSeal/anchors/guard/boundary setup, local deadline and fresh-language function definition; no added model call.",
+        "maximum_line_bytes": 86,
+        "source_line": 443,
+        "stage": "BEFORE_MODULE_LOAD_AND_SEAL",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole saved prior StageB accepted input/plan/transport/full result/raw Source/input/review/grant joins and frozen marking extraction/version gates; inclusive.",
+        "maximum_line_bytes": 93,
+        "source_line": 485,
+        "stage": "BEFORE_PRIOR_STAGEB_AUTHENTICATION",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Existing fresh_language argument evaluation and independent check_marking call, plus its existing result assertion, until next site.",
+        "maximum_line_bytes": 85,
+        "source_line": 562,
+        "stage": "BEFORE_FRESH_MARKING_CHECK",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Fresh marking check and assertion reached their following fixed write; ensuing ordinary setup includes existing declaration-derived language/fixture definitions before handler call.",
+        "maximum_line_bytes": 84,
+        "source_line": 567,
+        "stage": "AFTER_FRESH_MARKING_CHECK",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Beginning of existing protocol-family body before deep output and seed construction; reached write only.",
+        "maximum_line_bytes": 79,
+        "source_line": 758,
+        "stage": "BEFORE_ROUTING_SETUP",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole original ZERO query compound statement: state_from plus fresh proposer/checker/native-receipt check.",
+        "maximum_line_bytes": 76,
+        "source_line": 764,
+        "stage": "BEFORE_ZERO_QUERY",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole original ONE query compound statement, including state construction and independent calls.",
+        "maximum_line_bytes": 75,
+        "source_line": 766,
+        "stage": "BEFORE_ONE_QUERY",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole original TWO query compound statement, including state construction and independent calls.",
+        "maximum_line_bytes": 75,
+        "source_line": 768,
+        "stage": "BEFORE_TWO_QUERY",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole original ABSENT query compound statement plus existing implication-seed extraction before next site.",
+        "maximum_line_bytes": 78,
+        "source_line": 770,
+        "stage": "BEFORE_ABSENT_QUERY",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Whole original IMPLICATION query compound statement, then existing family registration before next site.",
+        "maximum_line_bytes": 83,
+        "source_line": 773,
+        "stage": "BEFORE_IMPLICATION_QUERY",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Existing positive assertions, case-record append, five malformed protocol negative tests and second case-record append, inclusive.",
+        "maximum_line_bytes": 84,
+        "source_line": 778,
+        "stage": "BEFORE_ROUTING_ASSERTIONS",
+        "unqualified_reached_write_only": true
+      },
+      {
+        "following_group": "Following last original protocol statement, still inside original call(handler) pre/post guard; later whole output/encoding/native exit unchanged and charged.",
+        "maximum_line_bytes": 81,
+        "source_line": 808,
+        "stage": "AFTER_ROUTING_PROTOCOL",
+        "unqualified_reached_write_only": true
+      }
+    ],
+    "prefix": "UNQUALIFIED_ROUTING_PHASE_OBSERVATION",
+    "regex": "^UNQUALIFIED_ROUTING_PHASE_OBSERVATION ([A-Z_]+) (0|[1-9][0-9]{0,18})\\n$",
+    "result_policy": "One diagnostic actual only; neither markers nor exit0 promote engine, case, target theorem, rollback, exhaustion or performance acceptance. Reported case count remains null and qualified0. Positive scientific outputs raw retained for separate full reconciliation, not automatically accepted.",
+    "runtime_order": "Each literal site has one static call and no loop/finally placement. Intended ROUTING execution reaches the16 sites in listed order; failures can truncate. Saved readers may accept only exact unique increasing whitelisted complete lines as an unqualified ordered subsequence; never synthesize a missing mate/line or infer nonreturn/completion.",
+    "sample": "Existing direct main.tick return; exact builtin int, bool excluded, 0 <= native_ns < 2**63; no added clock or G reset. Original tick separately enforces original20/500MiB reserve and native endpoint continuity.",
+    "schema": "unit-row-routing-phase-diagnostic-stderr-v1",
+    "wire": "ASCII prefix SP exact_whitelisted_stage SP canonical_nonnegative_decimal_native_ns LF",
+    "worst_case_partial_write_bound": {
+      "basis": "Each exact positive count advances offset by at least1; raw lines total<=1321. Sampling is first pre-tick; every partial retry has pre-tick and every successful os.write has post-tick. No measured latency or performance inference.",
+      "normal_full_line_write_calls": 16,
+      "normal_original_tick_calls": 32,
+      "total_original_tick_calls_at_most": 2642,
+      "total_positive_write_calls_at_most": 1321
+    },
+    "writer": "One nested writer; immutable tuple whitelist, captured original os.write builtin, original tick function/code/default identities and own code/default identities checked. Original clock/resource/exit checks are unchanged inside tick. No phase history/counter/reset, semantic formatting, extra model/snapshot/delegation, profiler or persistent state."
+  },
+  "endpoint_count": 6,
+  "essential_case_count": 12,
+  "fixture_scope": [
+    {
+      "assertions": [
+        "Actual router proposals and checker receipts use exact new protocols for assigned nonimp0/1/TWO; ZERO/SINGLETON complete flags/degree/sole and TWO lower-bound flags are coherent. Engine13 initial receipt recognition is also exercised by the later genuine decisions, not merely constructor version checks.",
+        "Absent and implication route stays exact old821fe/c960/c354; implication UNKNOWN incomplete is not rewritten as new evidence. Full checked current state/output, original state/binding/marking and all false flags retained.",
+        "Wrong-route proposal copies in both directions and forged schema/binding/state/marking are fresh invalid-data calls with exact current declared builtinValueError reasons. Recompute route from private actual state, not proposal tag. Native/custody/callback/other failures propagate; no negative test may accept TimeoutError. Exact reasons freeze only after current router Source is read."
+      ],
+      "cases": [
+        "MR-01-new-and-legacy-route-consumption",
+        "MR-02-wrong-route-and-context-rejected"
+      ],
+      "fixture": "Fresh separate qualified-local ZERO, ONE and TWO shapes: UG3(all(v,bot)@1) queried1; UG4(A@1)+UG5(C@3) queried3; UG5(C@3) queried3. Legacy absent query0 uses fresh root state. Legacy implication query0 uses a separately declared valid selected original MP3(C;reads2,0), imposing bot at2 and I at0; pending reads remain fact=false.",
+      "purpose": "unit-row-marked-aware-router-protocol-controls"
+    },
+    {
+      "assertions": [
+        "Require actual returned trace to establish globalFORCED1 AXA, later globalFORCED3 soleMP(2,0), then globalDEAD2, and local fixture EXHAUSTED. These are post-hoc assertions on ordinary decisions/candidates, never instructions to engine. Every selected key must match actual checked sole receipt and ordinary PLACE.",
+        "AX1 introduces previously absent AX prototype; q3 must be invalidated/requeried, not labeled retained. After MP3, q2 demands bot while prior0=I and1=A: AX/Gamma none, UG cannotoutputbot, MP00/11 occurs-empty and MP01/10 literal mismatches. This new complete ZERO2 preempts legacyUNKNOWN0 in engine all-frontier first pass.",
+        "Exact entire root snapshot/checkpoint restoration, actual TRY/PLACE/RESTORE lineage, no unjustified EXCLUDE and strong flags false. This fixture has extra boundary hypotheses; EXHAUSTED is not original target impossibility or completed original StageC9."
+      ],
+      "cases": [
+        "MR-03-global-forced-requery-dead-exhaustion",
+        "MR-04-owned-full-root-restoration"
+      ],
+      "fixture": "Exact oldC4 two seeds UG4(A@1)+UG5(C@3), fresh engine13. One normal owned search, no caller placement or supplied path.",
+      "purpose": "unit-row-marked-aware-global-forced-dead-controls"
+    },
+    {
+      "assertions": [
+        "One genuine globaldecision must choose FORCED0 AXA. Save initial native new q1 receipt in complete engine snapshot. Take real owned populated checkpoint; publicplace exactly actual forcedcandidate0.",
+        "AX prototype already exists at22, so full collision ledger remains equal; q1 possible1/4 marks and ownmeta/exclusions/generation unchanged. Require actual transition.retain=True; preserve entire native new origin/state/census byteexact in typed transferwrapper with correct previous evidence/chain. Current soleUGread0 changes occupiedFalse\u2192True, fact_acceptedFalse.",
+        "Second actual globaldecision must be FORCED1 and use the exact refreshed sole packet. Restore populated checkpoint then outer checkpoint literally, including domain/cursor/observed/dependency/refcount state; no private insert/edit and no reused token across engines. Monotone counters/events stay charged."
+      ],
+      "cases": [
+        "MR-05-native-singleton-full-origin-transfer",
+        "MR-06-current-sole-consumption-and-owned-rollback"
+      ],
+      "fixture": "Three seeds UG2(A@0)+UG3(D@1)+AXA22. Query0=A is namedAX singleton; query1=D is only UGread0 (MP00 occurs-empty, no matchingAX/Gamma/UI/Eq).",
+      "purpose": "unit-row-marked-aware-singleton-transfer-controls"
+    },
+    {
+      "assertions": [
+        "One genuine globaldecision must choose FORCED1 AXA. Save native new q3 TWO receipt/observed full packets and populated checkpoint, then publicplace its actual candidate. Same prototype already at22; q3 complete possible support and full ledger unchanged.",
+        "Require genuine retain proof and full original partial receipt unchanged; current UGread1 occupancyFalse\u2192True, UGread0 stays pendingFalse and fact_acceptedFalse. Distinct full original/decorated key identities remain unchanged. No degree_exact/sole/complete claim introduced by transfer.",
+        "Second actual globalROW decision must be BRANCH0 after all frontier statuses checked, with no artificial degree or candidate restriction. Do not place a supplied branch alternative. Exact populated/outer rollback; original canonical fallback remains the branch source, not the two proposal witnesses."
+      ],
+      "cases": [
+        "MR-07-native-TWO-full-origin-transfer",
+        "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+      ],
+      "fixture": "Three seeds UG4(A@1)+UG6(D@3)+AXA22. Query3=D has actual first marked-legal UGread0 andUGread1; prior2 absent so native evidence is partial TWO, not exact2.",
+      "purpose": "unit-row-marked-aware-two-transfer-controls"
+    },
+    {
+      "assertions": [
+        "Exhaust actual full original69\u2192821fe filtered streams with real context/ordinal/fullpacket logs: ZERO yields0+EOF; ONE yields soleMP(2,0)+EOF. Fresh engine13 certifier must independently obtain new complete0/1 cover at the exact state/row/epoch/marking and compare ALL actual checked full-key survivors as a unique SET. No copied old receipt/partial observations/rawEOF acceptance.",
+        "Canonical stream order and full retained prefix replay remain original; census order is not imposed on cursor. Fresh certifier negatives use copied malformed completion context or missing/extra/different key lists and exact expected errors, never invented positiveEOF.",
+        "For query0 I, actual stream EOF0 is finite: no namedAX/Gamma match, instantiate antecedent is notall, EqSubst antecedent is noteq, no priorMP/UG. Fresh routed legacy receipt remains incompleteUNKNOWN and certifier returnsNone. This is COMPONENT-only lack of EOF authority, not a globalUNKNOWN decision (another row may be ZERO2)."
+      ],
+      "cases": [
+        "MR-09-real-short-stream-and-fresh-complete-keySET",
+        "MR-10-legacy-implication-EOF-remains-unaccepted"
+      ],
+      "fixture": "Separate valid local ZERO and oldC4 ONE states above, plus a separately declared valid original MP3 imposing I@0/bot@2 for the legacy implication component. Each gets its own engine-owned genuine public cursor, no decision/search needed for component stream scope.",
+      "purpose": "unit-row-marked-aware-short-EOF-controls"
+    },
+    {
+      "assertions": [
+        "Run ordinary engine.search from root. Require actual globalBRANCH0/TRY/canonical-fallback PLACE before observed callback state grows. Do not supply the child key: join the actual TRY and PLACE to the real returned first canonical candidate. The new selected prototype invalidates prior domain ledger, making a genuine child degree delegation the prospective stop boundary. Interruption is a native-first declared test seam, not native exhaustion; child identity and path remain actual observations.",
+        "Require returnedUNKNOWN with dedicated reason, actual selected-state/key/event joins and native sample inside original20, foundNone/trace_completeFalse, no EXCLUDE/child-exhausted pruning, exact full root/stack/checkpoint restoration. If native deadline wins before this path/whole output, no case qualifies. No globalUnknown claim is inferred from missing callback or diagnostic prefix."
+      ],
+      "cases": [
+        "MR-11-actual-child-native-first-declared-UNKNOWN",
+        "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+      ],
+      "fixture": "Original empty marked root (original target boundary at23, no selected tiles), fresh engine13/adviceNone/ROW. Fixed constructor degree callback is used consistently for ordinary and fresh-cover calls. On callback entry call original captured native tick first; only if actual selected_count>0, record bounded actual context and raise dedicated ChildControlInterruption. Never rebind Source/callback or inject degree/state.",
+      "purpose": "unit-row-marked-aware-child-UNKNOWN-controls"
+    }
+  ],
+  "historical_parent_component_authority": {
+    "engine13_contract": {
+      "bytes": 26243,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "7cd85361fb73f70154c7b738f65c17accaf7e2ad14deadcd41f0efb736cf4e83"
+    },
+    "engine13_handoff": {
+      "bytes": 13174,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/handoff-v1.json",
+      "sha256": "51a88a94663e5e0dc1064fd1bb5b94375e5895d4a2be6ef3c217bd1a4f3f6acf"
+    },
+    "note": "Historical adapterv1/engine13 composition only; not current Source-map review authority.",
+    "reviews": {
+      "ROOT": {
+        "bytes": 7031,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-engine-Source-review-v1.json",
+        "sha256": "1eae0f034b8b1e1ec5fbb9062ff3e5651b4573b74b5590dddb71aa61b31793d1"
+      },
+      "peer": {
+        "bytes": 6477,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-independent-source-20261016/typed-Source-review-v1.json",
+        "sha256": "3ca77dd071fddc434fe58847dc104fb774d9df601ee3fdee2e5a792c19355a79"
+      }
+    }
+  },
+  "implementation_choice": {
+    "bytes": 4975,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-diagnostic-choice-v1.json",
+    "sha256": "1108a874ec3a6b0243e2a65434095505d02e558e0506bda2fab401ec4a271222"
+  },
+  "implementation_scope": {
+    "activation": "No Root plan, grant, actual, decoder/closer, mathematical function, runtime clock or project import executed by author.",
+    "adapter_tag": "unit-row-channel4-point-adapter-fresh-projection-v2",
+    "caller_delta": "OwnVERSION/SCOPE/consumedcontractschema plus one captured native writer and16 literal sites only. No new scientific API, family, assertion, log container, cache, model snapshot, hidden setup or output representation. Current intake capsule changes; all other13 executable roles are exact.",
+    "current_composition": "Current fresh13 composite8db81c/current Root e363e6 and peer3c7732 apply unchanged; old engine13/adapterv1 composition contracts/reviews remain explicitly historical only."
+  },
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "stageB_disposition": {
+      "bytes": 4574,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+    },
+    "stageB_encoded": {
+      "bytes": 162591,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    "stageB_expanded": {
+      "bytes": 1926833,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+    },
+    "stageB_plan": {
+      "bytes": 7924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+    },
+    "stageB_response": {
+      "bytes": 7572,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    },
+    "stageB_transport": {
+      "bytes": 1502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "original_model_inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "original_model_sources": {
+    "advice_controls": {
+      "bytes": 130156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    "advice_validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 31931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    "converter": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 55152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 55852,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_checker": {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "word_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "parent_checkpoint": {
+    "bytes": 6683,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "7a4b42ba62ed980bf6e97d0d690e2f4ebc8bf2cab3f8527b8b0ba01d5fbad206"
+  },
+  "parent_handoff": {
+    "bytes": 21863,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/handoff-v1.json",
+    "sha256": "eaa53467f142a23f107db12f76470230e770f1acba4b729ffda9021b14929ea4"
+  },
+  "parent_source": {
+    "bytes": 78278,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py",
+    "sha256": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb"
+  },
+  "parent_source_contract": {
+    "bytes": 41202,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "d87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282"
+  },
+  "qualification": "DIAGNOSTIC_ONLY regardless of exit0/full producer record. All six scientific families/all12 assertions remain exact after declared marker erasure; no historical8/12 or10/12/current case/engine qualification transfers. Any future qualification requires a separate explicit Root decision and full current native/wire/saved reconciliation.",
+  "remaining_gaps": [
+    "Root whole current Source review and genuine distinct current Source review before any prospective once grant. Source-only static work supplies no runtime fit or positive qualification.",
+    "Root alone may grant one new instrumented ROUTING diagnostic actual; no unchanged retry or other scope/target actual authorized here. Native20/512/55/60/90+1 unchanged.",
+    "All scientific six-family/all12 expectations remain, but this instrumented actual stays diagnostic only even if it emits a complete record. No accepted case count, engine promotion, proof, target route, trajectory, rollback, resource-positive, RL or gain claim from markers.",
+    "Raw stderr must be retained and separately authenticated by saved-only metadata reader; a missing/partial/malformed line is not failure-cause or exclusive cost evidence."
+  ],
+  "schema": "unit-row-routing-phase-diagnostic-cold-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-routing-phase-diagnostic-cold-Source",
+  "source": {
+    "bytes": 81356,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+    "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+  },
+  "source_delta": {
+    "bytes": 10628,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "5e9022ccaff4734079db6bc50ae79a1d519a43bd7ec339c850a549439f850ecd"
+  },
+  "source_only": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_router": {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    "engine": {
+      "bytes": 66670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 81356,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+      "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 29197,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    "marked_aware_checker": {
+      "bytes": 25783,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    "marked_aware_proposer": {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "status": "FROZEN_SOURCE_ONLY_UNEXECUTED_DIAGNOSTIC_PENDING_ROOT_AND_DISTINCT_PEER",
+  "unchanged_custody": "All17 top helpers, both whole classes,33 other nested definitions (including native tick/fullguards/callbacks/five family bodies), original17/input2/epoch/input8/sixlimits and whole result/transport/nativeexit/failure tail rawexact to007b. The routing body and main recover exact raw+AST parent after declared writer/captures/literal-site and ownID/schema erasure; no scientific compound statement changed.",
+  "version": "unit-row-routing-phase-diagnostic-cold-v1"
+}

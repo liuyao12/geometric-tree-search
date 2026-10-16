@@ -1,0 +1,708 @@
+{
+  "files": [
+    {
+      "bytes": 6734,
+      "href": "../routed-engine/evidence/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "reused_exact_published_file": true,
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    {
+      "bytes": 48584,
+      "href": "../routed-engine/evidence/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "reused_exact_published_file": true,
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 46514,
+      "href": "../routed-engine/evidence/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 4357,
+      "href": "../routed-engine/evidence/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "bytes": 10323,
+      "href": "../routed-engine/evidence/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 2925,
+      "href": "../routed-engine/evidence/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 2411,
+      "href": "evidence/receptor-lemma-family-design-independent-source-20261016/handoff-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "d6f4eb63d4a3efe55274c0c32f600ecbb6c612784b3739d56a5334d719379ad2"
+    },
+    {
+      "bytes": 11831,
+      "href": "evidence/receptor-lemma-family-design-independent-source-20261016/review-findings-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "d859b6042e264a668a0dde535debd1798bf21e6f12889d01e936763516393140"
+    },
+    {
+      "bytes": 4386,
+      "href": "evidence/receptor-lemma-family-design-independent-source-20261016/typed-Source-review-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "d3616610a83e74c63eab7a3986e60f060fce1c3986c98013382952679b10bcf0"
+    },
+    {
+      "bytes": 16383,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/audit-findings-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "2b56d3a8a616c85d6dc92f1781d6175036793be750a674f05fc7676d1b85e8ca"
+    },
+    {
+      "bytes": 8388,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/design-reader.html",
+      "reused_exact_published_file": false,
+      "sha256": "4b61b457e1b0e682ddaccced49abbab67fc869cb3d069f31421614ba60634d69"
+    },
+    {
+      "bytes": 1941,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/handoff-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "5cf509dadb026d3fe8a6531679e43c7ed31dfb274fba5dc93ffb5ed3a13dcc22"
+    },
+    {
+      "bytes": 2877,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/human-two-mp-family-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "65bcfcc307158bd09005694da629206e96c4f5e967bce84ebce8578ef9595628"
+    },
+    {
+      "bytes": 41188,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+    },
+    {
+      "bytes": 31688,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/write_design_v1.py",
+      "reused_exact_published_file": false,
+      "sha256": "9ac9aaba1dff769d2beda360e2e64e2e0dee89b4558643ef232ed062173f32a0"
+    },
+    {
+      "bytes": 3716,
+      "href": "evidence/routing-and-receptors-reader-ROOT-source-20261016/reader.css",
+      "reused_exact_published_file": false,
+      "sha256": "04a36cf85661f2ae7f13173f311b0899040d2e171d813977a8cb8b5a21c3ec5e"
+    },
+    {
+      "bytes": 7468,
+      "href": "evidence/routing-and-receptors-reader-ROOT-source-20261016/reader.html",
+      "reused_exact_published_file": false,
+      "sha256": "52e78ddbc767511d3229dc96539f5842021345443c1d4107b60c3091081b29a0"
+    },
+    {
+      "bytes": 1685,
+      "href": "evidence/routing-and-receptors-reader-ROOT-source-20261016/reader.js",
+      "reused_exact_published_file": false,
+      "sha256": "fca35621bddaef37513eee93d0c8454c532d267a752c595b1922721b4ec3a52d"
+    },
+    {
+      "bytes": 1845,
+      "href": "evidence/routing-and-receptors-report-ROOT-20261016/ROOT-receptor-design-review-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "c6ab6fb69a8348699cf3bb246a15ec90467fadfe3a9894bdd9d70bec1ee4b565"
+    },
+    {
+      "bytes": 11718,
+      "href": "evidence/routing-and-receptors-report-ROOT-20261016/ROOT_package_publication_v1.py",
+      "reused_exact_published_file": false,
+      "sha256": "15ac7bd3a8ace40bdc8ad75e32d509de70576c8ce892f5b433fd3d21aa215c39"
+    },
+    {
+      "bytes": 8773,
+      "href": "../routed-engine/evidence/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "reused_exact_published_file": true,
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 20112,
+      "href": "../routed-engine/evidence/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "reused_exact_published_file": true,
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 10201,
+      "href": "../routed-engine/evidence/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "bytes": 5528,
+      "href": "../routed-engine/evidence/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "bytes": 24227,
+      "href": "../routed-engine/evidence/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 12619,
+      "href": "../routed-engine/evidence/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    {
+      "bytes": 4574,
+      "href": "../routed-engine/evidence/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+    },
+    {
+      "bytes": 1926833,
+      "href": "../routed-engine/evidence/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+    },
+    {
+      "bytes": 7924,
+      "href": "../routed-engine/evidence/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+    },
+    {
+      "bytes": 1502,
+      "href": "../routed-engine/evidence/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+    },
+    {
+      "bytes": 162591,
+      "href": "../routed-engine/evidence/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "reused_exact_published_file": true,
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    {
+      "bytes": 7572,
+      "href": "../routed-engine/evidence/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "reused_exact_published_file": true,
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    },
+    {
+      "bytes": 18475,
+      "href": "../routed-engine/evidence/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    {
+      "bytes": 26007,
+      "href": "../routed-engine/evidence/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "reused_exact_published_file": true,
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "bytes": 16299,
+      "href": "../routed-engine/evidence/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "reused_exact_published_file": true,
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "bytes": 66670,
+      "href": "../decision-context/evidence/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+      "reused_exact_published_file": true,
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+    },
+    {
+      "bytes": 5822,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "5807b75f7063f367fba0a216e0b1d2bb3a4a88b5e610e6f37489597a12a52679"
+    },
+    {
+      "bytes": 6944,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-adapter-composite-Source-review-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "e363e684ad88039e3bd8c679e5befe6387717bef28523781991e707db9d3c58a"
+    },
+    {
+      "bytes": 6956,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-adapter-independent-source-20261016/typed-Source-review-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "3c77320f1aa512cd3c3e4cfff2d1959b7cca376656f801f9308ef16cf8a4e72d"
+    },
+    {
+      "bytes": 35295,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-adapter-source-20261016/Source-contract-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "8db81c755e0ade5eae2aa5d04ec68eb012be05a89b4ef092616a4343340fc040"
+    },
+    {
+      "bytes": 29197,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+      "reused_exact_published_file": true,
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    {
+      "bytes": 41202,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json",
+      "reused_exact_published_file": true,
+      "sha256": "d87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282"
+    },
+    {
+      "bytes": 78278,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb"
+    },
+    {
+      "bytes": 6683,
+      "href": "evidence/unit-row-fresh-projection-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "7a4b42ba62ed980bf6e97d0d690e2f4ebc8bf2cab3f8527b8b0ba01d5fbad206"
+    },
+    {
+      "bytes": 25783,
+      "href": "../routed-engine/evidence/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    {
+      "bytes": 14064,
+      "href": "../routed-engine/evidence/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    {
+      "bytes": 12779,
+      "href": "../routed-engine/evidence/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    {
+      "bytes": 55852,
+      "href": "../routed-engine/evidence/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "reused_exact_published_file": true,
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "bytes": 31931,
+      "href": "../routed-engine/evidence/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "reused_exact_published_file": true,
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "bytes": 55152,
+      "href": "../routed-engine/evidence/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "reused_exact_published_file": true,
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "bytes": 27553,
+      "href": "../routed-engine/evidence/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "reused_exact_published_file": true,
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 22030,
+      "href": "../routed-engine/evidence/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "reused_exact_published_file": true,
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 25338,
+      "href": "../routed-engine/evidence/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "reused_exact_published_file": true,
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "bytes": 8134,
+      "href": "../routed-engine/evidence/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "reused_exact_published_file": true,
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "bytes": 9270,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-RP-authorization-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "3f882004058bf8b5a66cdedd7f013a6469c86c8674596e00330ac6f738c3f802"
+    },
+    {
+      "bytes": 24990,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-RP-diagnostic-readout-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "bb99226dfd7215ea86c4b3ca54d0cd145b09e7861617030a116cbb7396ee3d3b"
+    },
+    {
+      "bytes": 8941,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-RP-plan-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "a822da3254af4cb2dab5ae74f6d48263d0e72e6d2c88134bc723423fa0371072"
+    },
+    {
+      "bytes": 382,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-RP-tool-bracket-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "2b35cd9157d13d3de56266d1c84341cb6c06d100586e7be104b862f40f27008a"
+    },
+    {
+      "bytes": 6675,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-caller-Source-review-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "f489eb8b5c362086a601eb0bcaf7fa7cdbe5e8c065777fc1e0fb3758c998ee0d"
+    },
+    {
+      "bytes": 1333,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-caller-raw-inverse-review-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "71194064987404b2afa30501102f7a67125dbe794ee9e2723076863a9e8c067a"
+    },
+    {
+      "bytes": 4975,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-diagnostic-choice-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "1108a874ec3a6b0243e2a65434095505d02e558e0506bda2fab401ec4a271222"
+    },
+    {
+      "bytes": 1745,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-next-step-assessment-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "4c22e704b22fbf077516792051cb5d1fd58e2c4f070aaa69c62f4b3367fd67a2"
+    },
+    {
+      "bytes": 2158,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-saved-reader-self-review-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "38d6f90d52d623eff73e0f5621644b507497109730c9dde9880008f1c06800c2"
+    },
+    {
+      "bytes": 10064,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT_prepare_routing_diagnostic_v1.py",
+      "reused_exact_published_file": false,
+      "sha256": "a307f58e45b14288c778142355b8c0b459fd82466172d0a2bbe595ae4e66b886"
+    },
+    {
+      "bytes": 20225,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+      "reused_exact_published_file": false,
+      "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+    },
+    {
+      "bytes": 257,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/ONCE.json",
+      "reused_exact_published_file": false,
+      "sha256": "caa7307fafabfaca0c4b05b55eb3784f18f9abf9591f1e62f75703fceba102c2"
+    },
+    {
+      "bytes": 1257,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/meter-stderr.txt",
+      "reused_exact_published_file": false,
+      "sha256": "f53f9c5c4c791b27abbdd33d918380c1e745015b1e8768699bab8edb567cef02"
+    },
+    {
+      "bytes": 937,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/meter-stdout.txt",
+      "reused_exact_published_file": false,
+      "sha256": "f434e6f23cd0191b117dfff4cdbbacdd015dbfa5c722ebf2eb31fc59a2a46ea2"
+    },
+    {
+      "bytes": 1692,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/native-terminal.json",
+      "reused_exact_published_file": false,
+      "sha256": "0aab3ff939949197261388617e66a2ecfd5a6cc2b12e1eaa2e884f332125561d"
+    },
+    {
+      "bytes": 474,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/observation.json",
+      "reused_exact_published_file": false,
+      "sha256": "0085f922c1ad530856ca5a55e199b2a011c76a7dcb1afcb40472eae5c72739ff"
+    },
+    {
+      "bytes": 0,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/postterminal-probe-stderr.txt",
+      "reused_exact_published_file": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-external-v1/postterminal-probe-stdout.txt",
+      "reused_exact_published_file": false,
+      "sha256": "0be906d5edc772db13a1adb797b706b0132bdfaf88676e0484b34cfc9c9e49dd"
+    },
+    {
+      "bytes": 47537,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-owned-v1/engine-result.json",
+      "reused_exact_published_file": false,
+      "sha256": "a8871b858afa783c5e1fc8cac3ebe23ee9379b3668e4099f16124277e070e796"
+    },
+    {
+      "bytes": 8484,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/RP-owned-v1/response.jsonl",
+      "reused_exact_published_file": false,
+      "sha256": "5b9fc7e1e44b228d146bbab901f88af2f0b0c5583fbcb9d869ccabd58b49cdbe"
+    },
+    {
+      "bytes": 21436,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-independent-source-20261016/findings-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "66a8fc2e0b23275ab19ae1f3be23bcb3cd68dbdfa3237d1bd2452b73d34cc831"
+    },
+    {
+      "bytes": 5827,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-independent-source-20261016/handoff-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "0246ca3589775c6c30c3ba8de144d1a18d3f6b90c78c7c6460a3c3d69d91c92b"
+    },
+    {
+      "bytes": 7617,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "9f6f5b00ee41f9e6c8f3ad822896bf48b5531b7c28f0049c268e3aa63ce29ff1"
+    },
+    {
+      "bytes": 52221,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/Source-contract-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "b75016984df98895c6429491d9bb1cc3039be2042b3816d72c5f749d3473fc06"
+    },
+    {
+      "bytes": 10628,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/Source-delta-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "5e9022ccaff4734079db6bc50ae79a1d519a43bd7ec339c850a549439f850ecd"
+    },
+    {
+      "bytes": 3043,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/author-static-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "d9ef738e7e4151429a645e64460630486fd70786b223bb5814c48eb6bdb40335"
+    },
+    {
+      "bytes": 10291,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/current-to-parent-full-inverse.patch",
+      "reused_exact_published_file": false,
+      "sha256": "9879ce3018d761221adf715e604cb6b0a44e09f748cf3543b7ff7e6277672da4"
+    },
+    {
+      "bytes": 30193,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/handoff-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "c4b456bf136344f2bb24f249d086bac2dbf0414451932c94dbe64da298d8502a"
+    },
+    {
+      "bytes": 10291,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/parent-to-current-forward.patch",
+      "reused_exact_published_file": false,
+      "sha256": "168bd538cf7711155ba2f8dda480b2ddbe22ead08c5674dd287b458bc2dd4fe8"
+    },
+    {
+      "bytes": 81356,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py",
+      "reused_exact_published_file": false,
+      "sha256": "dbb8b6d6285fd6e69b6b7d69fc43f95f3e0ce8c18385ffabee5e880703442f00"
+    },
+    {
+      "bytes": 20200,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+      "reused_exact_published_file": false,
+      "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+    },
+    {
+      "bytes": 20225,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+      "reused_exact_published_file": false,
+      "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+    },
+    {
+      "bytes": 6367,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "e9688fad26d97e14df3b325f2feb7f591ce9b0337e8e5b9346e79d1f7ef6288c"
+    },
+    {
+      "bytes": 7022,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "a2fed2f6b706d2428b09336728c9ce00ff2b639db9d06697520610de3c8b09d9"
+    },
+    {
+      "bytes": 1931,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-delta-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "d550b889fdf65ee09be33be216756f59d6da85b4c041f27a1d32e00c1777d7da"
+    },
+    {
+      "bytes": 1997,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-delta-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "350acfc369d4880851d5921daf4476facbb2e6bef6618d06688acebbbfcfa7bd"
+    },
+    {
+      "bytes": 2847,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/handoff-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "e4e393d63a30a0992134d44db81b59700d3c564e0129da651b64404a1a5b926e"
+    },
+    {
+      "bytes": 2861,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/handoff-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "2a53abf5e67b97da3c9423bb2f34830b4f1a78d081a0a832517d08a8eba02455"
+    },
+    {
+      "bytes": 29592,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-forward.patch",
+      "reused_exact_published_file": false,
+      "sha256": "f349f9fbc71640553545b42467cc1c85dbe6e31a702cb49647c24f149b1f9347"
+    },
+    {
+      "bytes": 29592,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-full-inverse.patch",
+      "reused_exact_published_file": false,
+      "sha256": "e732eea41a9f52f90f670663388a98680e6d72e1e6aeae66f618a087a05b94b1"
+    },
+    {
+      "bytes": 1649,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-v1-to-v2-forward.patch",
+      "reused_exact_published_file": false,
+      "sha256": "ca69689c11fde5b4d51a6ae0d5d321723b5a17f47688b44e213095bc3438b0f1"
+    },
+    {
+      "bytes": 1649,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-v2-to-v1-full-inverse.patch",
+      "reused_exact_published_file": false,
+      "sha256": "6ac90cfb9b0838aeab7c3e4932ed8e294837d366cc7dfd7e8e08f80d688972b5"
+    },
+    {
+      "bytes": 2745,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/findings-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "193e664511b4cb6b8141da0bc30877ad5e219e623af9a039243dadb30879f4b5"
+    },
+    {
+      "bytes": 10061,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/findings-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "0ca07f1fbc37eab1c3f246b3c51e1d7033eaa519e5bbca2b7a0d58aff56b1dfd"
+    },
+    {
+      "bytes": 1409,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/handoff-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "3f3cd136baf51874357041b2e9d43f563dc16b49fabe23d3f1fc856d7c8c79c5"
+    },
+    {
+      "bytes": 2173,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/handoff-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "eb0f1adbd60a9a98dc85cc760b6b53d6f2e1324b1e716b421a86e8ea3c213342"
+    },
+    {
+      "bytes": 2264,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v1.json",
+      "reused_exact_published_file": false,
+      "sha256": "4efe77ca405b6cb2ef697948bcb4d5b3e1e8e0ab5f9549345314b1a8fbdb7496"
+    },
+    {
+      "bytes": 3744,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v2.json",
+      "reused_exact_published_file": false,
+      "sha256": "b0566689203f4813fecdc5c34844f601212199217741ae5972cb82a3736286f5"
+    },
+    {
+      "bytes": 130156,
+      "href": "../routed-engine/evidence/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "reused_exact_published_file": true,
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "bytes": 21657,
+      "href": "../routed-engine/evidence/measurement/basic-tiling-algorithm.md",
+      "reused_exact_published_file": true,
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 14615,
+      "href": "evidence/project-source/docs/research/gcts-rl-renewal/first-order-families.html",
+      "reused_exact_published_file": false,
+      "sha256": "905de26f221dd6f86e0d8d2e668fc626d9296f47d5b7cfc1413968ba42cc2fd1"
+    },
+    {
+      "bytes": 15753,
+      "href": "evidence/project-source/docs/research/gcts-rl-renewal/semantic-inventory.html",
+      "reused_exact_published_file": false,
+      "sha256": "1ff2aac808d99b293282498d2272bf737d2f40f3bba38ed3fdf7ede825eb26f7"
+    },
+    {
+      "bytes": 22775,
+      "href": "evidence/project-source/research/gcts-rl-renewal/audit_first_order_families.py",
+      "reused_exact_published_file": false,
+      "sha256": "ea0e915f7b6c37186df6294f27827608bef8cbe1bd49adb9162c7f2f9cc7fcc7"
+    },
+    {
+      "bytes": 11512,
+      "href": "evidence/project-source/research/gcts-rl-renewal/audit_serialized_kernel.py",
+      "reused_exact_published_file": false,
+      "sha256": "59b6f2ab488c221576392054d8f72df193335554011847b33ab3dca3328b757c"
+    },
+    {
+      "bytes": 8801,
+      "href": "evidence/project-source/research/gcts-rl-renewal/first_order_families.py",
+      "reused_exact_published_file": false,
+      "sha256": "4f3a58bed036ecac7e342fb794ef926fe5d5e0616e5c3a6a373d850c7ea131b1"
+    },
+    {
+      "bytes": 4699,
+      "href": "evidence/project-source/research/gcts-rl-renewal/first_order_family_points.py",
+      "reused_exact_published_file": false,
+      "sha256": "54c87bd5886c40cffd5ee8b5235c5f74ef124a5c03693c68bd0b7c193187eb3d"
+    },
+    {
+      "bytes": 19983,
+      "href": "evidence/project-source/research/gcts-rl-renewal/hierarchical_lemma_tiles.py",
+      "reused_exact_published_file": false,
+      "sha256": "db48a069f517dab7ccf76bc31140c18703f2a64373b17afe608652270c517050"
+    },
+    {
+      "bytes": 10087,
+      "href": "evidence/project-source/research/gcts-rl-renewal/hilbert_quantified_tiles.py",
+      "reused_exact_published_file": false,
+      "sha256": "666a3f8df271eb1a722ac99f2ac07af59d23f8d9f786b5f6132aa7def2407aab"
+    },
+    {
+      "bytes": 10808,
+      "href": "evidence/project-source/research/gcts-rl-renewal/logic.py",
+      "reused_exact_published_file": false,
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 4011,
+      "href": "evidence/project-source/research/gcts-rl-renewal/quantified_proof_rules.py",
+      "reused_exact_published_file": false,
+      "sha256": "567c6c7893e9cf0e4fb032a7521c6e82b5f3b0fea23519caa5948a30d37af506"
+    },
+    {
+      "bytes": 7196,
+      "href": "evidence/project-source/research/gcts-rl-renewal/semantic_lemma_inventory.py",
+      "reused_exact_published_file": false,
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 7409,
+      "href": "evidence/project-source/research/gcts-rl-renewal/semantic_receptor_points.py",
+      "reused_exact_published_file": false,
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 13977,
+      "href": "evidence/project-source/research/gcts-rl-renewal/serialized_kernel.py",
+      "reused_exact_published_file": false,
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+    }
+  ],
+  "schema": "ROOT-routing-and-receptors-evidence-manifest-v1",
+  "scientific_replay": false
+}

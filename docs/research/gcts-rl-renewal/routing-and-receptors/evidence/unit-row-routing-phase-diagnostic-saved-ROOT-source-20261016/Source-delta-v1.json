@@ -1,0 +1,44 @@
+{
+  "actual_patches": [
+    {
+      "bytes": 29592,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-forward.patch",
+      "sha256": "f349f9fbc71640553545b42467cc1c85dbe6e31a702cb49647c24f149b1f9347"
+    },
+    {
+      "bytes": 29592,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-full-inverse.patch",
+      "sha256": "e732eea41a9f52f90f670663388a98680e6d72e1e6aeae66f618a087a05b94b1"
+    }
+  ],
+  "changed_functions": [
+    "need",
+    "reject",
+    "main"
+  ],
+  "parent": {
+    "bytes": 23290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v2.py",
+    "sha256": "7f77ab7b2ac03ea3053d256f1a89773c70c314ae0402d28e288700a57155f1d6"
+  },
+  "schema": "unit-row-routing-phase-saved-reader-Source-delta-v1",
+  "scientific_calls": 0,
+  "scope": "Existing7f77 Source/native/once/tool/session/whole-file metadata framework; own authority/version/labels, new bounded phase wire and raw-positive metadata branch. No last-context/failurewriter decoder, no model/candidate/member/proof replay. Unparsed ASCII preserved; no cause/phase-result or positive qualification authority.",
+  "source": {
+    "bytes": 20200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+    "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+  },
+  "unchanged_helper_AST": [
+    "canonical",
+    "unique",
+    "finite",
+    "decode",
+    "buffer_pin",
+    "read_raw",
+    "pinned",
+    "saved_json",
+    "exact_int",
+    "same"
+  ]
+}

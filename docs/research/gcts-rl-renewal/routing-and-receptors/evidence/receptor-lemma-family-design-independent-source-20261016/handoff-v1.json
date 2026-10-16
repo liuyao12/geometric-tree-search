@@ -1,0 +1,47 @@
+{
+  "activation_authorized": false,
+  "audit": {
+    "bytes": 16383,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/audit-findings-v1.json",
+    "sha256": "2b56d3a8a616c85d6dc92f1781d6175036793be750a674f05fc7676d1b85e8ca"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "concrete_design_blockers": [],
+  "contract": {
+    "bytes": 41188,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+    "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+  },
+  "findings": {
+    "bytes": 11831,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-independent-source-20261016/review-findings-v1.json",
+    "sha256": "d859b6042e264a668a0dde535debd1798bf21e6f12889d01e936763516393140"
+  },
+  "illustrative_schema": {
+    "bytes": 2877,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/human-two-mp-family-v1.json",
+    "sha256": "65bcfcc307158bd09005694da629206e96c4f5e967bce84ebce8578ef9595628"
+  },
+  "review": {
+    "bytes": 4386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "d3616610a83e74c63eab7a3986e60f060fce1c3986c98013382952679b10bcf0"
+  },
+  "reviewed_handoff": {
+    "bytes": 1941,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/handoff-v1.json",
+    "sha256": "5cf509dadb026d3fe8a6531679e43c7ed31dfb274fba5dc93ffb5ed3a13dcc22"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "receptor-lemma-family-design-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-lemma-family-design-Source",
+  "source_only": true,
+  "source_review_passed": true,
+  "visual_source": {
+    "bytes": 8388,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/design-reader.html",
+    "sha256": "4b61b457e1b0e682ddaccced49abbab67fc869cb3d069f31421614ba60634d69"
+  }
+}

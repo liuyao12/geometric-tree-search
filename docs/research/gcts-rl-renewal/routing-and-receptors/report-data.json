@@ -1,0 +1,163 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 52199424,
+  "complete_marker_line_count": 16,
+  "current_controls_qualified": 8,
+  "diagnostic_qualified_case_count": 0,
+  "evidence": [
+    {
+      "bytes": 24990,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-RP-diagnostic-readout-v1.json",
+      "label": "Bounded routing diagnostic: saved readout",
+      "sha256": "bb99226dfd7215ea86c4b3ca54d0cd145b09e7861617030a116cbb7396ee3d3b"
+    },
+    {
+      "bytes": 1745,
+      "href": "evidence/unit-row-routing-phase-diagnostic-ROOT-20261016/ROOT-next-step-assessment-v1.json",
+      "label": "Root assessment and next experiment",
+      "sha256": "4c22e704b22fbf077516792051cb5d1fd58e2c4f070aaa69c62f4b3367fd67a2"
+    },
+    {
+      "bytes": 5822,
+      "href": "../fresh-projection/evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+      "label": "Current unchanged control qualification",
+      "sha256": "5807b75f7063f367fba0a216e0b1d2bb3a4a88b5e610e6f37489597a12a52679"
+    },
+    {
+      "bytes": 41188,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+      "label": "Typed receptor-family contract",
+      "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+    },
+    {
+      "bytes": 16383,
+      "href": "evidence/receptor-lemma-family-design-source-20261016/audit-findings-v1.json",
+      "label": "Source audit: implemented paths and missing integration",
+      "sha256": "2b56d3a8a616c85d6dc92f1781d6175036793be750a674f05fc7676d1b85e8ca"
+    },
+    {
+      "bytes": 4386,
+      "href": "evidence/receptor-lemma-family-design-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent conceptual family review",
+      "sha256": "d3616610a83e74c63eab7a3986e60f060fce1c3986c98013382952679b10bcf0"
+    },
+    {
+      "bytes": 1845,
+      "href": "evidence/routing-and-receptors-report-ROOT-20261016/ROOT-receptor-design-review-v1.json",
+      "label": "Root family design review",
+      "sha256": "c6ab6fb69a8348699cf3bb246a15ec90467fadfe3a9894bdd9d70bec1ee4b565"
+    },
+    {
+      "bytes": 7617,
+      "href": "evidence/unit-row-routing-phase-diagnostic-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent routing caller review",
+      "sha256": "9f6f5b00ee41f9e6c8f3ad822896bf48b5531b7c28f0049c268e3aa63ce29ff1"
+    },
+    {
+      "bytes": 3744,
+      "href": "evidence/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v2.json",
+      "label": "Independent saved-reader review and preserved negative",
+      "sha256": "b0566689203f4813fecdc5c34844f601212199217741ae5972cb82a3736286f5"
+    }
+  ],
+  "intervals": [
+    {
+      "exclusive_method_cost": false,
+      "from_label": "NATIVE_READY_BEFORE_PLAN",
+      "inclusive_native_ns": 402000,
+      "to_label": "BEFORE_CURRENT_SOURCE_READS"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_CURRENT_SOURCE_READS",
+      "inclusive_native_ns": 1068000,
+      "to_label": "BEFORE_CURRENT_AUTHORITY_CHECKS"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_CURRENT_AUTHORITY_CHECKS",
+      "inclusive_native_ns": 269000,
+      "to_label": "BEFORE_FIXED_INPUT_READS"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_FIXED_INPUT_READS",
+      "inclusive_native_ns": 2385000,
+      "to_label": "BEFORE_MODULE_LOAD_AND_SEAL"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_MODULE_LOAD_AND_SEAL",
+      "inclusive_native_ns": 35067000,
+      "to_label": "BEFORE_PRIOR_STAGEB_AUTHENTICATION"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_PRIOR_STAGEB_AUTHENTICATION",
+      "inclusive_native_ns": 35583000,
+      "to_label": "BEFORE_FRESH_MARKING_CHECK"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_FRESH_MARKING_CHECK",
+      "inclusive_native_ns": 21244000,
+      "to_label": "AFTER_FRESH_MARKING_CHECK"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "AFTER_FRESH_MARKING_CHECK",
+      "inclusive_native_ns": 11210000,
+      "to_label": "BEFORE_ROUTING_SETUP"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_ROUTING_SETUP",
+      "inclusive_native_ns": 38041000,
+      "to_label": "BEFORE_ZERO_QUERY"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_ZERO_QUERY",
+      "inclusive_native_ns": 307818000,
+      "to_label": "BEFORE_ONE_QUERY"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_ONE_QUERY",
+      "inclusive_native_ns": 551290000,
+      "to_label": "BEFORE_TWO_QUERY"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_TWO_QUERY",
+      "inclusive_native_ns": 414597000,
+      "to_label": "BEFORE_ABSENT_QUERY"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_ABSENT_QUERY",
+      "inclusive_native_ns": 199913000,
+      "to_label": "BEFORE_IMPLICATION_QUERY"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_IMPLICATION_QUERY",
+      "inclusive_native_ns": 470646000,
+      "to_label": "BEFORE_ROUTING_ASSERTIONS"
+    },
+    {
+      "exclusive_method_cost": false,
+      "from_label": "BEFORE_ROUTING_ASSERTIONS",
+      "inclusive_native_ns": 371757000,
+      "to_label": "AFTER_ROUTING_PROTOCOL"
+    }
+  ],
+  "native_launch_to_postprobe_ns": 2622771000,
+  "native_worker_lifetime_ns": 2568629000,
+  "new_theorem_accepted": false,
+  "qualification_accepted": false,
+  "schema": "ROOT-routing-and-receptors-public-report-v1",
+  "scientific_payload_decoded": false,
+  "total_controls_required": 12
+}

@@ -1,0 +1,20 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py
+@@ -5,7 +5,7 @@
+ from pathlib import Path
+ HERE=Path(__file__).resolve().parent
+ EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/Source-contract-v1.json', 'sha256': 'b75016984df98895c6429491d9bb1cc3039be2042b3816d72c5f749d3473fc06', 'bytes': 52221}
+-VERSION='unit-row-routing-phase-saved-diagnostic-reader-v1'
++VERSION='unit-row-routing-phase-saved-diagnostic-reader-v2'
+ PURPOSE='unit-row-marked-aware-router-protocol-controls'
+ INVOCATION='routing-phase-diagnostic-20261016-v1'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -115,7 +115,7 @@
+     if lines and not lines[-1].endswith(b'\n'):
+         tail=lines.pop();need(len(tail)<=2200,'bounded final incomplete ASCII fragment')
+     for line in lines:
+-        if wire_recognizing and line.startswith(ERROR_PREFIX):
++        if wire_recognizing and line.endswith(b'\n') and line.startswith(ERROR_PREFIX):
+             need(error_line is None and len(line)<=2200,'one original complete error line')
+             error_line=line.decode('ascii');wire_recognizing=False;continue
+         match=re.fullmatch(re.escape(PHASE_PREFIX)+rb'([A-Z0-9_]+) (0|[1-9][0-9]*)\n',line)if wire_recognizing else None

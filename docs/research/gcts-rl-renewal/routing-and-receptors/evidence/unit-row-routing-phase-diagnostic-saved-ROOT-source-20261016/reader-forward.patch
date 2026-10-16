@@ -1,0 +1,239 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-saved-source-20261016/ROOT_read_global_forced_diagnostic_saved_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py
+@@ -4,24 +4,26 @@
+ import hashlib,json,math,os,stat,sys,re
+ from pathlib import Path
+ HERE=Path(__file__).resolve().parent
+-EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-cold-source-20261016/Source-contract-v1.json', 'sha256': '06e873d471df980c4c0f5591679090cf254cf94be02e992477a28c07f0652595', 'bytes': 47082}
+-VERSION='unit-row-global-forced-saved-diagnostic-reader-v2'
+-PURPOSE='unit-row-marked-aware-global-forced-dead-controls'
+-INVOCATION='global-forced-diagnostic-20261016-v1'
++EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/Source-contract-v1.json', 'sha256': 'b75016984df98895c6429491d9bb1cc3039be2042b3816d72c5f749d3473fc06', 'bytes': 52221}
++VERSION='unit-row-routing-phase-saved-diagnostic-reader-v1'
++PURPOSE='unit-row-marked-aware-router-protocol-controls'
++INVOCATION='routing-phase-diagnostic-20261016-v1'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ LIMITS={'aggregate_owned_bytes':536870912,'caller_finish_reserve_seconds':1,'caller_seconds':90,'failure_only_seconds':55,'joint_seconds':20,'owned_seconds':60}
+-LABELS=('GF_BEFORE_SEED_STATE_GROUP','GF_BEFORE_ENGINE_ROOT_GROUP','GF_BEFORE_SEARCH_SNAPSHOT_GROUP','GF_AFTER_SEARCH_SNAPSHOT_GROUP','GF_AFTER_ASSERTIONS_GROUP','GF_AFTER_OUTER_RESTORE_GROUP','GF_BEFORE_TRANSPORT_GROUP')
+-ROLES=('proposer','fallback','completion','validator')
++LABELS=('NATIVE_READY_BEFORE_PLAN', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_CURRENT_AUTHORITY_CHECKS', 'BEFORE_FIXED_INPUT_READS', 'BEFORE_MODULE_LOAD_AND_SEAL', 'BEFORE_PRIOR_STAGEB_AUTHENTICATION', 'BEFORE_FRESH_MARKING_CHECK', 'AFTER_FRESH_MARKING_CHECK', 'BEFORE_ROUTING_SETUP', 'BEFORE_ZERO_QUERY', 'BEFORE_ONE_QUERY', 'BEFORE_TWO_QUERY', 'BEFORE_ABSENT_QUERY', 'BEFORE_IMPLICATION_QUERY', 'BEFORE_ROUTING_ASSERTIONS', 'AFTER_ROUTING_PROTOCOL')
++PHASE_PREFIX=b'UNQUALIFIED_ROUTING_PHASE_OBSERVATION '
++MAX_MARKER_BYTES=1321
++MAX_LINE_BYTES=93
+ ERROR_PREFIX=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: '
+ TICK_TIMEOUT_LINE=b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\n'
+ def need(value,reason):
+-    if not value:raise ValueError('saved GF diagnostic: '+reason)
++    if not value:raise ValueError('saved routing phase diagnostic: '+reason)
+ def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()
+ def unique(items):
+     value={}
+     for key,child in items:need(key not in value,'duplicate JSON key');value[key]=child
+     return value
+-def reject(value):raise ValueError('saved GF diagnostic: nonfinite JSON constant')
++def reject(value):raise ValueError('saved routing phase diagnostic: nonfinite JSON constant')
+ def finite(value):
+     result=float(value);need(math.isfinite(result),'finite JSON number');return result
+ def decode(raw):return json.loads(raw,object_pairs_hook=unique,parse_constant=reject,parse_float=finite)
+@@ -53,13 +55,13 @@
+ 
+ def main():
+     need(len(sys.argv)==1,'no extra arguments or scientific inputs')
+-    plan_path=HERE/'ROOT-GF-plan-v1.json';plan,plan_ref=saved_json(plan_path)
++    plan_path=HERE/'ROOT-RP-plan-v1.json';plan,plan_ref=saved_json(plan_path)
+     need(type(plan)is dict and set(plan)=={'schema','invocation_id','purpose','output_directory','sources','inputs','source_contract','reviews','ROOT_authorization','runtime','limits','resource_rule'},'exact plan12')
+     need(plan['schema']=='ROOT-routed-engine-qualification-plan-v1'and plan['purpose']==PURPOSE and plan['invocation_id']==INVOCATION,'one declared diagnostic endpoint')
+     same(plan['limits'],LIMITS);need(all(type(x)is int for x in plan['limits'].values()),'literal unchanged limits')
+     need(plan['resource_rule']=='single-owned-process-native-terminal-v1','native resource rule')
+     same(plan['source_contract'],EXPECTED_CONTRACT);contract=decode(pinned(EXPECTED_CONTRACT))
+-    need(contract['schema']=='unit-row-global-forced-diagnostic-cold-Source-contract-v1','current caller contract schema')
++    need(contract['schema']=='unit-row-routing-phase-diagnostic-cold-Source-contract-v1','current caller contract schema')
+     same(contract['sources'],plan['sources']);same(contract['inputs'],plan['inputs']);same(contract['limits'],LIMITS)
+     need(len(plan['sources'])==14 and len(plan['inputs'])==8 and len(contract['original_model_sources'])==17 and len(contract['original_model_inputs'])==2,'current14/input8 and original17/input2')
+     same(contract['source'],plan['sources']['intake'])
+@@ -68,16 +70,16 @@
+     same(contract['original_model_inputs'],{k:plan['inputs'][k]for k in('declaration','profile')})
+     pinned(plan['runtime']);need(set(plan['reviews'])=={'ROOT','peer'},'two distinct Source reviews')
+     for role,ref in plan['reviews'].items():
+-        review=decode(pinned(ref));need(review['scope']=='unit-row-global-forced-diagnostic-cold-Source'and review['author_identity']=='/root/hilbert_advice_controls','current author and review scope')
++        review=decode(pinned(ref));need(review['scope']=='unit-row-routing-phase-diagnostic-cold-Source'and review['author_identity']=='/root/hilbert_advice_controls','current author and review scope')
+         same(review['source'],contract['source']);same(review['source_contract'],EXPECTED_CONTRACT);same(review['sources'],plan['sources'])
+         need(review['source_only']is review['source_review_passed']is True and type(review['scientific_calls'])is int and review['scientific_calls']==0 and review['scientific_acceptance']is False,'genuine Source-only pass')
+         need(review['reviewer_identity']=='/root'if role=='ROOT'else review['reviewer_identity']not in('/root','/root/hilbert_advice_controls'),'distinct reviewer identity')
+-    need(Path(plan['ROOT_authorization']['path'])==HERE/'ROOT-GF-authorization-v1.json','fixed Root grant file')
++    need(Path(plan['ROOT_authorization']['path'])==HERE/'ROOT-RP-authorization-v1.json','fixed Root grant file')
+     grant=decode(pinned(plan['ROOT_authorization']))
+     need(grant['schema']=='ROOT-routed-engine-qualification-authorization-v1'and grant['author_identity']=='/root'and grant['actual_execution_authorized']is True and type(grant['maximum_actual_invocations'])is int and grant['maximum_actual_invocations']==1,'once Root grant')
+     for key in('invocation_id','purpose','sources','inputs','source_contract','reviews','runtime','limits','resource_rule','output_directory'):same(grant[key],plan[key])
+-    external=HERE/'GF-external-v1';owned=HERE/'GF-owned-v1';need(Path(plan['output_directory'])==owned,'fixed owned directory')
+-    bracket,bracket_ref=saved_json(HERE/'ROOT-GF-tool-bracket-v1.json')
++    external=HERE/'RP-external-v1';owned=HERE/'RP-owned-v1';need(Path(plan['output_directory'])==owned,'fixed owned directory')
++    bracket,bracket_ref=saved_json(HERE/'ROOT-RP-tool-bracket-v1.json')
+     need(bracket['schema']=='ROOT-complete-tool-Date-bracket-v1'and bracket['plan_sha256']==plan_ref['sha256']and bracket['plan_bytes']==plan_ref['bytes'],'same plan tool bracket')
+     code=bracket['tool_exit_code'];need(exact_int(code,0,255),'terminal literal tool exit')
+     sid,seen=bracket['tool_session_id'],bracket['observed_session_id']
+@@ -107,97 +109,75 @@
+     start,terminal=native['caller_launch_began_ns'],native['caller_terminal_observed_ns']
+     need(all(exact_int(x,0,2**63-1)for x in(start,terminal,probe,native['meter_began_ns'],native['observed_before_output_ns'],observation['external_began_ns']))and observation['external_began_ns']<=native['meter_began_ns']<=start<terminal<=native['observed_before_output_ns']<=probe and type(native['caller_kernel_elapsed_ns'])is int and terminal-start==native['caller_kernel_elapsed_ns']and probe-start<55000000000,'complete native failure55 closure')
+     peak=native['caller_kernel_peak_bytes'];need(type(peak)is int and peak==native['wait4_usage'][2]and 0<peak<=536870912,'whole owned peak512')
+-    stderr=raw['meter-stderr.txt'];need(len(stderr)<=672+2200 and stderr.isascii(),'bounded ASCII diagnostic stderr')
+-    samples=[];error_line=None;last=-1;marker_bytes=0
+-    stderr_lines=stderr.splitlines(keepends=True);trailing_stderr_fragment=b''
+-    if stderr_lines and not stderr_lines[-1].endswith(b'\n'):
+-        trailing_stderr_fragment=stderr_lines.pop()
+-        need(len(trailing_stderr_fragment)<=2200,'bounded final incomplete stderr fragment')
+-    # This final non-LF fragment remains raw ASCII only: no label, error or
+-    # timestamp is recognized from it. Complete lines keep their exact grammar.
+-    for line in stderr_lines:
+-        need(line.endswith(b'\n'),'whole stderr line LF')
+-        if line.startswith(ERROR_PREFIX):
+-            need(error_line is None and len(line)<=2200,'one separate bounded existing error line')
+-            error_line=line.decode('ascii');continue
+-        need(error_line is None and len(line)<=96,'sample before error, bounded marker')
+-        match=re.fullmatch(rb'([A-Z0-9_]+) (0|[1-9][0-9]*)\n',line);need(match is not None,'fixed label canonical unsigned decimal LF')
+-        label=match.group(1).decode('ascii');need(label in LABELS,'one fixed marker label');index=LABELS.index(label)
+-        need(index>last,'unique ordered marker subsequence');last=index
+-        sample=int(match.group(2));need(exact_int(sample,0,2**63-1)and start<=sample<terminal<=probe,'same-clock launch/sample/terminal/probe')
+-        need(not samples or samples[-1]['native_ns']<=sample,'nondecreasing native samples')
+-        marker_bytes+=len(line);samples.append({'label':label,'native_ns':sample})
+-    need(len(samples)<=7 and marker_bytes<=672,'seven marker wire cap')
+-    diagnostic=None;diagnostic_status='ABSENT';diagnostic_refs={};outputs=[];scientific_outputs=[]
++    stderr=raw['meter-stderr.txt'];need(len(stderr)<=MAX_MARKER_BYTES+2200 and stderr.isascii(),'bounded ASCII phase/error wire')
++    samples=[];error_line=None;marker_bytes=0;unparsed=[];wire_recognizing=True
++    lines=stderr.splitlines(keepends=True);tail=b''
++    if lines and not lines[-1].endswith(b'\n'):
++        tail=lines.pop();need(len(tail)<=2200,'bounded final incomplete ASCII fragment')
++    for line in lines:
++        if wire_recognizing and line.startswith(ERROR_PREFIX):
++            need(error_line is None and len(line)<=2200,'one original complete error line')
++            error_line=line.decode('ascii');wire_recognizing=False;continue
++        match=re.fullmatch(re.escape(PHASE_PREFIX)+rb'([A-Z0-9_]+) (0|[1-9][0-9]*)\n',line)if wire_recognizing else None
++        if match is None:
++            unparsed.append(line.decode('ascii'));wire_recognizing=False;continue
++        need(len(line)<=MAX_LINE_BYTES,'fixed label whole-line bound')
++        label=match.group(1).decode('ascii');need(len(samples)<len(LABELS)and label==LABELS[len(samples)],'literal single-use ordered prefix')
++        ns=int(match.group(2));need(exact_int(ns,0,2**63-1)and start<=ns<terminal<=probe,'same native launch/sample/terminal/probe clock')
++        need(not samples or samples[-1]['native_ns']<=ns,'nondecreasing native reads')
++        marker_bytes+=len(line);samples.append(dict(label=label,native_ns=ns))
++    need(len(samples)<=16 and marker_bytes<=MAX_MARKER_BYTES,'finite sixteen-site total marker bound')
++    outputs=[];output_raw={}
+     if owned.exists():
+-        need(owned.is_dir()and not owned.is_symlink(),'owned regular directory')
+-        permitted={'unknown-diagnostic.json':16384,'diagnostic-completion.json':1024,'engine-result.json':4194304,'response.jsonl':1048576}
++        need(owned.is_dir()and not owned.is_symlink(),'owned directory')
+         for path in sorted(owned.iterdir()):
+-            need(path.name in permitted,'only current diagnostic or scientific raw output files')
+-            content=read_raw(path,permitted[path.name]);ref=buffer_pin(path,content);outputs.append(ref)
+-            if path.name in('unknown-diagnostic.json','diagnostic-completion.json'):diagnostic_refs[path.name]=ref
+-            else:scientific_outputs.append(ref)
+-        need(not diagnostic_refs or not scientific_outputs,'separate current failure-writer and scientific output routes')
+-        present=set(diagnostic_refs)
+-        if present:
+-            diagnostic_status='INCOMPLETE_WRITER_OUTPUT'
+-            if present=={'unknown-diagnostic.json','diagnostic-completion.json'}:
+-                diagnostic_raw=pinned(diagnostic_refs['unknown-diagnostic.json'],16384)
+-                completion_raw=pinned(diagnostic_refs['diagnostic-completion.json'],1024)
+-                need(diagnostic_raw.endswith(b'\n')and diagnostic_raw.count(b'\n')==1 and completion_raw.endswith(b'\n')and completion_raw.count(b'\n')==1,'whole diagnostic/completion single JSON LF')
+-                diagnostic=decode(diagnostic_raw);completion=decode(completion_raw)
+-                need(set(completion)=={'schema','file','sha256','bytes','diagnostic_only','positive_joint_gate_accepted','ROOT_resource_accepted','terminal_exit2_and_external_failure_closure_required'},'whole completion fields')
+-                need(completion['schema']=='unit-row-controls-last-context-completion-v1'and completion['file']=='unknown-diagnostic.json'and completion['sha256']==diagnostic_refs['unknown-diagnostic.json']['sha256']and completion['bytes']==diagnostic_refs['unknown-diagnostic.json']['bytes'],'diagnostic full hash/bytes join')
+-                need(completion['diagnostic_only']is completion['terminal_exit2_and_external_failure_closure_required']is True and completion['positive_joint_gate_accepted']is completion['ROOT_resource_accepted']is False,'completion diagnostic-only flags')
+-                need(code==2 and error_line is not None and error_line.startswith('UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: '),'failure writer exact exception/terminal route')
+-                need(type(diagnostic)is dict and set(diagnostic)=={'context','diagnostic','last_observations'},'exact whole scalar diagnostic envelope')
+-                same(diagnostic['diagnostic'],{'schema':'unit-row-controls-last-context-diagnostic-v1','diagnostic_only':True,'qualification':'UNQUALIFIED_LAST_ADAPTER_NATIVE_OBSERVATIONS','failure_kind':'TimeoutError','returned_control_record':False,'callback_context':'ENTRY_ARGUMENT_ROW_AND_SELECTED_COUNT_AT_LAST_SUCCESSFUL_EXISTING_NATIVE_CHECK','last_observation_is_active_failure_frame':False,'live_state_or_proof_trajectory_accepted':False,'positive_joint_gate_accepted':False,'logical_proof_accepted':False,'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False})
+-                context=diagnostic['context']
+-                need(type(context)is dict and set(context)=={'purpose','invocation_id','plan','source_contract','sources','inputs','language_binding','joint_began_ns','joint_deadline_ns','CLOCK_DOMAIN','limits'},'exact predelegation context fields')
+-                same(context['plan'],{k:plan_ref[k]for k in('sha256','bytes')});same(context['source_contract'],EXPECTED_CONTRACT)
+-                same(context['sources'],plan['sources']);same(context['inputs'],plan['inputs']);same(context['limits'],LIMITS)
+-                same(context['language_binding'],contract['original_model_binding'])
+-                need(context['purpose']==PURPOSE and context['invocation_id']==INVOCATION and context['CLOCK_DOMAIN']==CLOCK_DOMAIN,'same predelegation purpose/invocation/clock')
+-                began,deadline=context['joint_began_ns'],context['joint_deadline_ns']
+-                need(exact_int(began,0,2**63-1)and exact_int(deadline,0,2**63-1)and start<=began<terminal and deadline==began+20000000000,'original20 G/D and native lifetime')
+-                observations=diagnostic['last_observations'];need(type(observations)is dict and set(observations)==set(ROLES),'fixed four scalar slots')
+-                need(observations['validator']is None,'validator explicitly uninstrumented')
+-                for role,value in observations.items():
+-                    if value is None:continue
+-                    need(type(value)is dict and set(value)=={'stage','row','selected_count','native_ns'},'exact scalar entry packet')
+-                    need(type(value['stage'])is str and value['stage']==role.upper()+'_NATIVE_STEP'and exact_int(value['row'],-1,23)and exact_int(value['selected_count'],-1,24),'entry scalar literal types/ranges')
+-                    need(exact_int(value['native_ns'],0,2**63-1)and began<=value['native_ns']<deadline and start<=value['native_ns']<terminal<=probe,'entry sample same original clock/window')
+-                diagnostic_status='COMPLETE_HASH_JOINED_FAILURE_ONLY_DIAGNOSTIC'
+-    clock_context=None;slots=None
+-    if diagnostic_status=='COMPLETE_HASH_JOINED_FAILURE_ONLY_DIAGNOSTIC':
+-        clock_context={key:diagnostic['context'][key]for key in('joint_began_ns','joint_deadline_ns','CLOCK_DOMAIN')}
+-        slots=diagnostic['last_observations']
+-        need(all(clock_context['joint_began_ns']<=value['native_ns']<clock_context['joint_deadline_ns']for value in samples),'all markers in same original positive window')
+-    intervals=[{'from':left['label'],'to':right['label'],'inclusive_read_to_read_ns':right['native_ns']-left['native_ns'],'includes_all_between_observed_reads':True,'exclusive_method_cost':False}for left,right in zip(samples,samples[1:])]
++            need(path.name in('engine-result.json','response.jsonl'),'no late diagnostic/context files in this caller')
++            content=read_raw(path,4194304 if path.name=='engine-result.json'else 1048576)
++            output_raw[path.name]=content;outputs.append(buffer_pin(path,content))
++    clock_context=None;positive_wire_metadata_checked=False
+     if code==0:
+-        need(error_line is None and not diagnostic_refs and {Path(ref['path']).name for ref in scientific_outputs}=={'engine-result.json','response.jsonl'},'success keeps both raw outputs and no failure line for separate reconciliation')
+-        stdout=raw['meter-stdout.txt'];need(stdout.endswith(b'\n')and stdout.count(b'\n')==1,'complete positive final metadata LF')
+-        final=decode(stdout);need(canonical(final)+b'\n'==stdout and final['schema']=='ROOT-unit-row-routed-engine-qualification-final-observation-v1','existing final raw-output metadata')
+-        same(final['outputs'],scientific_outputs);same(final['response'],scientific_outputs[-1])
+-        need(final['pending_external']is True and final['logical_proof_accepted']is final['ROOT_resource_accepted']is False,'positive metadata still pending separate closure')
+-        classification='NEEDS_SEPARATE_COMPLETE_QUALIFICATION_RECONCILIATION'
++        need(len(samples)==16 and error_line is None and not tail and not unparsed,'zero exit reaches all sixteen complete markers')
++        need(set(output_raw)=={'engine-result.json','response.jsonl'},'whole existing output2')
++        stdout=raw['meter-stdout.txt'];need(stdout.endswith(b'\n')and stdout.count(b'\n')==1,'single existing final metadata LF')
++        final=decode(stdout);need(canonical(final)+b'\n'==stdout,'canonical whole final metadata')
++        same(sorted(final),sorted(['schema','outputs','response','pending_external','logical_proof_accepted','ROOT_resource_accepted']))
++        need(final['schema']=='ROOT-unit-row-routed-engine-qualification-final-observation-v1'and final['pending_external']is True,'existing final metadata schema')
++        same(final['outputs'],outputs);same(final['response'],outputs[-1])
++        need(final['logical_proof_accepted']is final['ROOT_resource_accepted']is False,'pending final acceptance')
++        response=output_raw['response.jsonl'].splitlines(keepends=True)
++        need(len(response)==2 and all(x.endswith(b'\n')for x in response),'whole response2LF')
++        body,completion=map(decode,response)
++        need(canonical(body)+b'\n'==response[0]and canonical(completion)+b'\n'==response[1],'canonical entire response')
++        same(sorted(completion),sorted(['schema','body_sha256','body_bytes','exit_zero_and_coordinator_deadline_required']))
++        need(completion['schema']=='Q-clean-verifier-response-completion-v1'and completion['body_sha256']==hashlib.sha256(response[0]).hexdigest()and completion['body_bytes']==len(response[0])and completion['exit_zero_and_coordinator_deadline_required']is True,'full response completion hash/size')
++        need(body['schema']=='ROOT-unit-row-routed-engine-qualification-response-body-v1'and body['version']=='unit-row-routing-phase-diagnostic-cold-v1'and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL','current body schema/version')
++        same(body['plan'],{k:plan_ref[k]for k in('sha256','bytes')});same(body['sources'],plan['sources']);same(body['inputs'],plan['inputs']);same(body['outputs'],outputs[:1]);same(body['limits'],LIMITS)
++        same(body['language_binding'],contract['original_model_binding']);same(body['original_model_binding'],contract['original_model_binding'])
++        need(body['invocation_id']==INVOCATION and body['resource_rule']==plan['resource_rule']and body['CLOCK_DOMAIN']==CLOCK_DOMAIN,'same current invocation/resource/clock')
++        for k in('ROOT_resource_accepted','logical_proof_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','failure_marking_activated','RL_accepted','GCTS_advantage_claimed'):need(body[k]is False,'body strong flags pending')
++        began,deadline=body['joint_began_ns'],body['joint_deadline_ns']
++        need(exact_int(began,0,2**63-1)and exact_int(deadline,0,2**63-1)and start<=began<terminal and deadline==began+20000000000,'original internal clock and deadline metadata')
++        need(all(began<=s['native_ns']<deadline for s in samples),'all markers in original internal window')
++        clock_context={k:body[k]for k in('joint_began_ns','joint_deadline_ns','CLOCK_DOMAIN')}
++        positive_wire_metadata_checked=True
++        classification='DIAGNOSTIC_EXIT_ZERO_NO_CASE_QUALIFICATION'
+     else:
+-        need(raw['meter-stdout.txt']==b'','no fabricated positive stdout for nonzero terminal')
+-        classification='UNQUALIFIED_FAILURE_DIAGNOSTIC_ONLY'
+-    result={'schema':'ROOT-global-forced-saved-diagnostic-readout-v1','version':VERSION,'diagnostic_only':True,
+-      'classification':classification,'plan':plan_ref,'authorization':plan['ROOT_authorization'],'source_contract':EXPECTED_CONTRACT,'sources':plan['sources'],'inputs':plan['inputs'],
+-      'original_model_sources':contract['original_model_sources'],'original_model_inputs':contract['original_model_inputs'],'original_model_binding':contract['original_model_binding'],
+-      'tool_bracket':bracket_ref,'native_evidence':refs,'terminal_exit_code':code,'all_reaped':True,'native_terminal_closed':True,'native_worker_lifetime_ns':terminal-start,'native_launch_to_postprobe_ns':probe-start,'aggregate_B_bytes':peak,'complete_Date_seconds':duration,
+-      'raw_stderr':refs['meter-stderr.txt'],'stderr_error_line':error_line,
+-      'stderr_uninterpreted_trailing_fragment':trailing_stderr_fragment.decode('ascii')if trailing_stderr_fragment else None,'stderr_trailing_fragment_bytes':len(trailing_stderr_fragment),'stderr_trailing_fragment_interpreted':False,
+-      'native_tick_timeout_line_observed':error_line==TICK_TIMEOUT_LINE.decode('ascii'),'caller_lifetime_at_least20':terminal-start>=20000000000,'failure_cause_established':False,
+-      'phase_samples':samples,'phase_marker_wire_bytes':marker_bytes,'first_reached_boundary':samples[0]['label']if samples else None,'latest_reached_boundary':samples[-1]['label']if samples else None,'inclusive_group_intervals':intervals,
+-      'original20_clock_context':clock_context,'latest_callback_entry_observations':slots,'diagnostic_status':diagnostic_status,'failure_diagnostic_files':diagnostic_refs,'raw_output_files':outputs,'raw_scientific_output_files':scientific_outputs,'owned_output_directory_exists':owned.exists(),
+-      'successful_payload_requires_separate_reconciliation':code==0,'reader':buffer_pin(Path(__file__).resolve(),read_raw(Path(__file__).resolve(),1048576)),
+-      'reported_case_count':None,'qualified_case_count':0,'case_completion_inferred':False,'qualification_accepted':False,'original20_positive_gate_accepted':False,'native_resource_success_accepted':False,'logical_proof_accepted':False,'exact_point_board_accepted':False,'restoration_accepted':False,'exhaustion_accepted':False,'trajectory_accepted':False,'marking_activated':False,'GCTS_advantage_claimed':False,'RL_accepted':False,'scientific_replay':False,
+-      'interpretation':'Observed reached writes and callback entry arguments only. Inclusive read-to-read groups include guards, nested work, marker IO and gaps; no exclusive cost, current active frame, completed callback, move/count, restored root, proof or exhaustion is inferred. Missing slots or writes are unavailable, never zero/absence evidence. Original20 positive acceptance requires separate full scientific-record closure; failure55 data supplies diagnostics only.'}
+-    path=HERE/'ROOT-GF-diagnostic-readout-v1.json';raw_result=json.dumps(result,sort_keys=True,indent=2,ensure_ascii=True,allow_nan=False).encode()+b'\n'
+-    need(len(raw_result)<=131072,'bounded metadata-only readout128KiB')
+-    with path.open('xb')as stream:stream.write(raw_result)
+-    print(json.dumps({'readout':buffer_pin(path,raw_result),'classification':classification,'qualification_accepted':False,'scientific_replay':False}))
++        need(raw['meter-stdout.txt']==b'','nonzero has no fabricated positive final wire')
++        classification='UNQUALIFIED_FAILURE_PHASE_DIAGNOSTIC_ONLY'
++    intervals=[dict(from_label=x['label'],to_label=y['label'],inclusive_native_ns=y['native_ns']-x['native_ns'],exclusive_method_cost=False)for x,y in zip(samples,samples[1:])]
++    result=dict(schema='ROOT-routing-phase-saved-diagnostic-readout-v1',version=VERSION,classification=classification,diagnostic_only=True,
++        plan=plan_ref,authorization=plan['ROOT_authorization'],source_contract=EXPECTED_CONTRACT,sources=plan['sources'],inputs=plan['inputs'],original_model_sources=contract['original_model_sources'],original_model_inputs=contract['original_model_inputs'],original_model_binding=contract['original_model_binding'],
++        tool_bracket=bracket_ref,native_evidence=refs,terminal_exit_code=code,all_reaped=True,native_terminal_closed=True,native_worker_lifetime_ns=terminal-start,native_launch_to_postprobe_ns=probe-start,aggregate_B_bytes=peak,complete_Date_seconds=duration,
++        raw_stderr=refs['meter-stderr.txt'],stderr_error_line=error_line,stderr_unparsed_complete_lines=unparsed,stderr_uninterpreted_trailing_fragment=tail.decode('ascii')if tail else None,stderr_partial_or_unparsed_bytes_interpreted=False,
++        native_tick_timeout_line_observed=error_line==TICK_TIMEOUT_LINE.decode('ascii'),caller_lifetime_at_least20=terminal-start>=20000000000,failure_cause_established=False,
++        phase_samples=samples,phase_marker_wire_bytes=marker_bytes,declared_phase_labels=list(LABELS),complete_marker_line_count=len(samples),latest_reached_boundary=samples[-1]['label']if samples else None,
++        inclusive_group_intervals=intervals,original20_clock_context=clock_context,positive_wire_metadata_checked=positive_wire_metadata_checked,original20_native_time_bound_observed=probe-start<20000000000,
++        owned_output_directory_exists=owned.exists(),raw_output_files=outputs,scientific_payload_decoded=False,successful_payload_requires_separate_reconciliation=code==0,
++        reader=buffer_pin(Path(__file__).resolve(),read_raw(Path(__file__).resolve(),1048576)),reported_case_count=None,qualified_case_count=0,case_completion_inferred=False,qualification_accepted=False,engine_promoted=False,
++        original20_positive_gate_accepted=False,native_resource_success_accepted=False,logical_proof_accepted=False,exact_point_board_accepted=False,restoration_accepted=False,exhaustion_accepted=False,trajectory_accepted=False,marking_activated=False,GCTS_advantage_claimed=False,RL_accepted=False,scientific_replay=False,
++        interpretation='Fixed reached writes only. Inclusive groups include guards, fixture/state construction, IO, nested work and gaps; no exclusive cost, active failure frame, returned query, mathematical result or cause is inferred. Partial or unparsed ASCII stays raw and stops further recognition. Even exit0 and complete positive metadata confer no case/engine qualification; scientific payload remains opaque. No retroactive explanation of the older failure.')
++    out=HERE/'ROOT-RP-diagnostic-readout-v1.json';raw_result=json.dumps(result,sort_keys=True,indent=2,ensure_ascii=True,allow_nan=False).encode()+b'\n'
++    need(len(raw_result)<=131072,'bounded metadata readout128KiB')
++    with out.open('xb')as f:f.write(raw_result)
++    print(json.dumps(dict(readout=buffer_pin(out,raw_result),classification=classification,qualification_accepted=False,scientific_replay=False)))
+ if __name__=='__main__':main()

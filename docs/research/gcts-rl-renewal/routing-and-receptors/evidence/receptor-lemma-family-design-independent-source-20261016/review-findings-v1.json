@@ -1,0 +1,288 @@
+{
+  "audit": {
+    "bytes": 16383,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/audit-findings-v1.json",
+    "sha256": "2b56d3a8a616c85d6dc92f1781d6175036793be750a674f05fc7676d1b85e8ca"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "checked_source_refs": {
+    "all_capsules_verified": true,
+    "contract": {
+      "bytes": 41188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+      "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+    },
+    "json_pointer": "/source_refs",
+    "raw_source_count": 19
+  },
+  "concrete_design_blockers": [],
+  "contract": {
+    "bytes": 41188,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+    "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+  },
+  "findings": [
+    {
+      "finding": "The audit matches the pinned implementations. Legacy serialized blocks are ground-local sequents with exact ordered premises, dependency registration and separate expansion. Their primitive dialect includes rules absent from the current arithmetic kernel. Flattening a legacy block alone cannot make unsupported refl/tautology/distribute/induction lines current arithmetic authority. The contract correctly requires host-specific membership and OUTSIDE/UNKNOWN handling, not theorem import.",
+      "id": "RFD-01",
+      "refs": [
+        {
+          "lines": [
+            163,
+            239
+          ],
+          "role": "legacy_native"
+        },
+        {
+          "lines": [
+            45,
+            138
+          ],
+          "role": "legacy_expander"
+        },
+        {
+          "lines": [
+            118,
+            161
+          ],
+          "role": "current_primitive_kernel"
+        },
+        {
+          "contract_path": "first_implementation_acceptance.gates.F0/F3"
+        }
+      ],
+      "severity": "SCOPE_CONFIRMED",
+      "topic": "Host separation and full primitive expansion"
+    },
+    {
+      "finding": "The full symbolic body is two ordered original MP applications. Every external port participates: the first antecedent and implication produce the first internal node, which is the ordered antecedent of the second MP with the third input. The output refers to that second node. All three formula abstractions have empty formal/free-variable lists, so this illustration is restricted to closed formula bindings. No row allocation, target route or ground proof instance is supplied or validated here.",
+      "id": "RFD-02",
+      "refs": [
+        {
+          "json_paths": [
+            "parameters",
+            "inputs",
+            "body",
+            "outputs",
+            "provenance"
+          ],
+          "role": "illustrative_schema"
+        },
+        {
+          "lines": [
+            124,
+            151
+          ],
+          "role": "current_primitive_kernel"
+        },
+        {
+          "lines": [
+            62,
+            97
+          ],
+          "role": "current_point_checker"
+        }
+      ],
+      "severity": "DESIGN_CONFIRMED_NOT_RUNTIME_CHECKED",
+      "topic": "Single illustrative family"
+    },
+    {
+      "finding": "Existing semantic/typed binders jointly match every premise and conclusion over their finite catalog, preserving repeated-hole consistency; they do not implement the proposed binder-aware formula abstractions. The new contract correctly requires one typed environment, exact ordered source identities, lexical binder IDs, full original Gamma, explicit renaming and native-name/profile checks. Structural JSON Schema alone is insufficient: a future semantic validator must reject duplicate/undefined IDs, wrong reference kind/order, missing abstractions/arguments, cycles, capture and invalid host feature/rule fields before returning READY.",
+      "id": "RFD-03",
+      "refs": [
+        {
+          "lines": [
+            53,
+            113
+          ],
+          "role": "semantic_family"
+        },
+        {
+          "lines": [
+            50,
+            129
+          ],
+          "role": "typed_family"
+        },
+        {
+          "contract_path": "family_descriptor_schema/substitution_and_hygiene/F1/F2/F3"
+        }
+      ],
+      "severity": "IMPLEMENTATION_GATE",
+      "topic": "All-port matching and scope"
+    },
+    {
+      "finding": "Local primitive membership and a compatible cluster establish conditional point compatibility only. Unoccupied inputs remain false for fact_accepted and cannot become extra axioms or a fabricated Gamma. Current point reconstruction validates complete preimages, ordered strictly earlier offsets and full selected unions. The original whole-target primitive verifier remains required for theorem acceptance; per-ground native block admission does not prove an unrestricted template or an arithmetic target.",
+      "id": "RFD-04",
+      "refs": [
+        {
+          "lines": [
+            62,
+            157
+          ],
+          "role": "current_point_checker"
+        },
+        {
+          "lines": [
+            118,
+            161
+          ],
+          "role": "current_primitive_kernel"
+        },
+        {
+          "contract_path": "instance_packet.pending_rule/proposed_interfaces.check_complete_proof"
+        }
+      ],
+      "severity": "SCOPE_CONFIRMED",
+      "topic": "Pending obligations are not facts"
+    },
+    {
+      "finding": "The proposed first integration is consistent with the master: wait for an actual global BRANCH, select one current-legal incident primitive anchor, leave remaining keys as advisory preferences, and revalidate at each later scheduler choice. Full primitive fallback, exact base identities and complete remote support remain. The pinned engine has inherited transactional preference code and UNKNOWN restoration, but its constructor explicitly disables advice in this marked lane. Therefore this packet is not directly pluggable into current engine13; a future independently checked marked consumer/engine integration and owned rollback controls are required.",
+      "id": "RFD-05",
+      "refs": [
+        {
+          "lines": [
+            81,
+            126
+          ],
+          "role": "master"
+        },
+        {
+          "lines": [
+            213,
+            233
+          ],
+          "role": "current_engine"
+        },
+        {
+          "lines": [
+            320,
+            333
+          ],
+          "role": "current_engine"
+        },
+        {
+          "lines": [
+            931,
+            1123
+          ],
+          "role": "current_engine"
+        },
+        {
+          "contract_path": "attachment_and_tiling.first_integration/F4/F5"
+        }
+      ],
+      "severity": "IMPLEMENTATION_GATE",
+      "topic": "Scheduler, complete fallback and rollback"
+    },
+    {
+      "finding": "The descriptor preserves full original member keys separately from family and instance identities, and explicitly rejects digest-only merging. A future marked adapter must additionally bind the active marking/current state and independently rebuild all decorated points and collision preimages, including remote reads and shared nodes. The declared full-union/dependency obligations cover this requirement; neither alpha-normalized indexing nor historical native_accepted fields are sufficient authority.",
+      "id": "RFD-06",
+      "refs": [
+        {
+          "lines": [
+            77,
+            157
+          ],
+          "role": "current_point_checker"
+        },
+        {
+          "lines": [
+            55,
+            90
+          ],
+          "role": "factored_receptors"
+        },
+        {
+          "contract_path": "identity/overlap_dedup_and_cost/attachment_and_tiling.dependencies/F5"
+        }
+      ],
+      "severity": "IMPLEMENTATION_GATE",
+      "topic": "Full point union, identities and marking scope"
+    },
+    {
+      "finding": "This is a useful specification for a reusable typed matcher/expander and all-receptor interface; it avoids substituting a theorem label or a one-cell legacy block for primitive search. The sole closed two-MP pattern is deliberately modest. No matching implementation, marked consumer, useful generated ground family, current target theorem, cold cost reduction or matched search advantage is established. Expansion/matching/hygiene and independent verification can add cost, so the next bounded component work should test wrong-port/capture/host/profile/union/rollback counterexamples before any unchanged-universe ordering comparison.",
+      "id": "RFD-07",
+      "refs": [
+        {
+          "contract_path": "minimal_next_implementation/first_implementation_acceptance/overlap_dedup_and_cost"
+        },
+        {
+          "lines": [
+            235,
+            289
+          ],
+          "role": "master"
+        }
+      ],
+      "severity": "USEFULNESS_LIMIT",
+      "topic": "Progress toward proof search"
+    },
+    {
+      "finding": "The reader labels existing historical ground interfaces separately from proposed current primitive-row advice, notes advice is disabled, uses a generic LaTeX illustration and disclaims activation/proof/performance/RL. Existing inventory-reader pages were treated as pinned location metadata, not empirical proof/result evidence. Source design status is consistent across contract, audit, illustration and visual.",
+      "id": "RFD-08",
+      "refs": [
+        {
+          "role": "visual_source"
+        },
+        {
+          "json_paths": [
+            "summary",
+            "verification_scope",
+            "boundaries"
+          ],
+          "role": "audit"
+        }
+      ],
+      "severity": "REPORT_SCOPE_CONFIRMED",
+      "topic": "Audit and visual claims"
+    }
+  ],
+  "illustrative_schema": {
+    "bytes": 2877,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/human-two-mp-family-v1.json",
+    "sha256": "65bcfcc307158bd09005694da629206e96c4f5e967bce84ebce8578ef9595628"
+  },
+  "raw_metadata_check_count": 7,
+  "raw_metadata_checks": [
+    {
+      "name": "exact_handoff_contract_audit_illustration_visual_capsules",
+      "passed": true
+    },
+    {
+      "name": "all19_source_refs_raw_capsules_and_audit_map_equal",
+      "passed": true
+    },
+    {
+      "name": "one_human_design_only_no_ground_instance_or_accepted_result",
+      "passed": true
+    },
+    {
+      "name": "illustration_full_descriptor_identity_recomputed_as_metadata",
+      "passed": true
+    },
+    {
+      "name": "illustration_explicit_two_ordered_MP_nodes_and_output_reference",
+      "passed": true
+    },
+    {
+      "name": "cited_current_host_has_exact_six_rule_map_and_no_advice_current_lane",
+      "passed": true
+    },
+    {
+      "name": "seven_future_gates_and_no_actual_or_activation_claim",
+      "passed": true
+    }
+  ],
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "receptor-lemma-family-design-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Independent conceptual and cited-Source-path review only. No blanket whole-program audit, stored admission/proof/result recheck, semantic implementation or instance test. No donor/result data files, target proof words or publication index were read or changed.",
+  "source_only": true,
+  "visual_source": {
+    "bytes": 8388,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/design-reader.html",
+    "sha256": "4b61b457e1b0e682ddaccced49abbab67fc869cb3d069f31421614ba60634d69"
+  }
+}

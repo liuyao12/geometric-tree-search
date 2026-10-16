@@ -1,0 +1,134 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-cold-source-20261016/routing_phase_diagnostic_cold_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py
+@@ -24,8 +24,8 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-routing-phase-diagnostic-cold-v1'
+-SCOPE='unit-row-routing-phase-diagnostic-cold-Source'
++VERSION='unit-row-fresh-projection-qualification-cold-v1'
++SCOPE='unit-row-fresh-projection-qualification-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ QUALIFICATION_CASES_BY_PURPOSE={'unit-row-marked-aware-child-UNKNOWN-controls': ['MR-11-actual-child-native-first-declared-UNKNOWN', 'MR-12-UNKNOWN-no-exclusion-full-owned-rollback'], 'unit-row-marked-aware-global-forced-dead-controls': ['MR-03-global-forced-requery-dead-exhaustion', 'MR-04-owned-full-root-restoration'], 'unit-row-marked-aware-router-protocol-controls': ['MR-01-new-and-legacy-route-consumption', 'MR-02-wrong-route-and-context-rejected'], 'unit-row-marked-aware-short-EOF-controls': ['MR-09-real-short-stream-and-fresh-complete-keySET', 'MR-10-legacy-implication-EOF-remains-unaccepted'], 'unit-row-marked-aware-singleton-transfer-controls': ['MR-05-native-singleton-full-origin-transfer', 'MR-06-current-sole-consumption-and-owned-rollback'], 'unit-row-marked-aware-two-transfer-controls': ['MR-07-native-TWO-full-origin-transfer', 'MR-08-refreshed-witnesses-global-branch-and-owned-rollback']}
+@@ -359,34 +359,6 @@
+             raise TimeoutError('complete marking data controls original20/500 reserve unfinished')
+         return now
+     tick();signal.signal(signal.SIGINT,cancel);signal.signal(signal.SIGTERM,cancel)
+-    routing_phase_tick,routing_phase_tick_code,routing_phase_write=tick,tick.__code__,os.write
+-    routing_phase_labels=('NATIVE_READY_BEFORE_PLAN', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_CURRENT_AUTHORITY_CHECKS', 'BEFORE_FIXED_INPUT_READS', 'BEFORE_MODULE_LOAD_AND_SEAL', 'BEFORE_PRIOR_STAGEB_AUTHENTICATION', 'BEFORE_FRESH_MARKING_CHECK', 'AFTER_FRESH_MARKING_CHECK', 'BEFORE_ROUTING_SETUP', 'BEFORE_ZERO_QUERY', 'BEFORE_ONE_QUERY', 'BEFORE_TWO_QUERY', 'BEFORE_ABSENT_QUERY', 'BEFORE_IMPLICATION_QUERY', 'BEFORE_ROUTING_ASSERTIONS', 'AFTER_ROUTING_PROTOCOL')
+-    def routing_phase(stage):
+-        if (routing_phase is not routing_phase_fn or routing_phase_fn.__code__ is not routing_phase_code
+-                or routing_phase_fn.__defaults__ is not None or routing_phase_fn.__kwdefaults__ is not None
+-                or tick is not routing_phase_tick or routing_phase_tick.__code__ is not routing_phase_tick_code
+-                or routing_phase_tick.__defaults__ is not None or routing_phase_tick.__kwdefaults__ is not None
+-                or os.write is not routing_phase_write or type(routing_phase_write) is not types.BuiltinFunctionType):
+-            raise RuntimeError('routing phase diagnostic native writer changed')
+-        native_ns=routing_phase_tick()
+-        if (type(stage) is not str or stage not in routing_phase_labels
+-                or type(native_ns) is not int or not 0<=native_ns<2**63):
+-            raise RuntimeError('routing phase diagnostic literal/native sample')
+-        raw=('UNQUALIFIED_ROUTING_PHASE_OBSERVATION '+stage+' '+str(native_ns)+'\n').encode('ascii')
+-        offset=0
+-        while offset<len(raw):
+-            if offset:routing_phase_tick()
+-            if os.write is not routing_phase_write:
+-                raise RuntimeError('routing phase diagnostic native write endpoint changed')
+-            count=routing_phase_write(2,raw[offset:])
+-            if type(count) is not int or not 0<count<=len(raw)-offset:
+-                raise RuntimeError('routing phase diagnostic incomplete native write')
+-            routing_phase_tick()
+-            if os.write is not routing_phase_write:
+-                raise RuntimeError('routing phase diagnostic native write endpoint changed on return')
+-            offset+=count
+-    routing_phase_fn,routing_phase_code=routing_phase,routing_phase.__code__
+-    routing_phase('NATIVE_READY_BEFORE_PLAN')
+     path=Path(argv[0]);need(path.is_absolute() and path==path.resolve(),'canonical Root plan path')
+     plan_raw=path.read_bytes();need(len(plan_raw)<=1048576,'whole bounded Root plan');plan=decode(plan_raw)
+     need(set(plan)=={'schema','invocation_id','purpose','output_directory','sources','inputs','source_contract',
+@@ -403,11 +375,9 @@
+          and plan['inputs']==FIXED_INPUTS,'exact current executable Source14 and saved input8')
+     need(sys.platform=='darwin' and Path(sys.executable).resolve()==Path(plan['runtime']['path']).resolve(),'native Darwin runtime')
+     read_pinned(plan['runtime'])
+-    routing_phase('BEFORE_CURRENT_SOURCE_READS')
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    routing_phase('BEFORE_CURRENT_AUTHORITY_CHECKS')
+-    need(contract['schema']=='unit-row-routing-phase-diagnostic-cold-Source-contract-v1'
++    need(contract['schema']=='unit-row-fresh-projection-qualification-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -428,7 +398,6 @@
+          and type(grant['maximum_actual_invocations']) is int and grant['maximum_actual_invocations']==1
+          and all(grant[k]==plan[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',
+              'reviews','runtime','limits','resource_rule','output_directory')),'exact once-only Root actual grant')
+-    routing_phase('BEFORE_FIXED_INPUT_READS')
+     inputs_raw={role:read_pinned(ref,4*1048576+131072) for role,ref in FIXED_INPUTS.items()}
+     original_raw={role:read_pinned(ref) for role,ref in ORIGINAL_SOURCES.items()}
+     for role in ('clean_support','kernel','membership','proposer','degree_checker','fallback'):
+@@ -440,7 +409,6 @@
+     authority_raw=canonical({'declaration':decode(declaration_raw),'policy':decode(profile_raw),
+         'source_bindings':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING})
+     original_context_raw=canonical({'sources':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING,'inputs':ORIGINAL_INPUTS,'accepted_inputs':FIXED_INPUTS})
+-    routing_phase('BEFORE_MODULE_LOAD_AND_SEAL')
+     modules={role:load_module(role,source_raw[role]) for role in FIXED}
+     support,kernel,membership,semantics=(modules[k] for k in ('clean_support','kernel','membership','degree_checker'))
+     decoder=json.JSONDecoder(object_pairs_hook=unique,parse_float=finite_float,parse_constant=reject_constant)
+@@ -482,7 +450,6 @@
+             'source_bindings':copy.deepcopy(ORIGINAL_SOURCES),'kernel_module':kernel,'local_deadline':local_deadline,'tick':tick})
+         need(canonical(language.binding)==canonical(ORIGINAL_BINDING),'exact original model epoch without rebasing')
+         return language
+-    routing_phase('BEFORE_PRIOR_STAGEB_AUTHENTICATION')
+     # Authenticate the WHOLE prior StageB result. Its receipts are inputs,
+     # never substituted for the fresh checks in this current native window.
+     accepted = decode(inputs_raw['stageB_disposition'])
+@@ -559,12 +526,10 @@
+          and adapter.VERSION == 'unit-row-channel4-point-adapter-v1'
+          and adapter.IMPLEMENTATION_VERSION == 'unit-row-channel4-point-adapter-fresh-projection-v2',
+          'current reviewed engine/adapter versions')
+-    routing_phase('BEFORE_FRESH_MARKING_CHECK')
+     definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),
+         'semantics':semantics,'marking':copy.deepcopy(marking),'tick':tick})
+     need(definition_check['marking_checked'] is True and definition_check['marking_id'] == marking['marking_id'],
+          'fresh independent whole marking check')
+-    routing_phase('AFTER_FRESH_MARKING_CHECK')
+     controls, families = [], {}
+     def passed(name, **data):
+         tick(); controls.append(dict(case=name,status='PASSED',**data))
+@@ -755,27 +720,20 @@
+         raise ValueError('deliberately invalid protocol unexpectedly accepted')
+ 
+     def protocol_family():
+-        routing_phase('BEFORE_ROUTING_SETUP')
+         c=deep_output()
+         zero_seeds=[ug(['all',variable,['bot']],1,3)]
+         one_seeds=[ug(ax_formula,1,4),ug(c,3,5)]
+         two_seeds=[ug(c,3,5)]
+         records={}
+-        routing_phase('BEFORE_ZERO_QUERY')
+         records['ZERO']=query(state_from(zero_seeds),1)
+-        routing_phase('BEFORE_ONE_QUERY')
+         records['ONE']=query(state_from(one_seeds),3)
+-        routing_phase('BEFORE_TWO_QUERY')
+         records['TWO']=query(state_from(two_seeds),3)
+-        routing_phase('BEFORE_ABSENT_QUERY')
+         records['ABSENT']=query(state_from([]),0)
+         imp_seed=copy.deepcopy(records['ONE']['receipt']['sole_candidate']['base_tile'])
+-        routing_phase('BEFORE_IMPLICATION_QUERY')
+         records['IMPLICATION']=query(state_from([imp_seed]),0)
+         family={'queries':records,'seeds':{'ZERO':zero_seeds,'ONE':one_seeds,'TWO':two_seeds,
+             'ABSENT':[],'IMPLICATION':[imp_seed]},'failures':[]}
+         families['ROUTING_PROTOCOL']=family
+-        routing_phase('BEFORE_ROUTING_ASSERTIONS')
+         for name,status,n in (('ZERO','ZERO',0),('ONE','SINGLETON',1),('TWO','TWO_OR_MORE',None)):
+             p,r=records[name]['proposal'],records[name]['receipt']
+             need(r['schema']=='unit-row-marked-aware-nonimp-fibre-check-v1' and r['status']==status
+@@ -805,7 +763,6 @@
+             failure=expect_error(lambda:query(record['state'],record['row'],bad),reason)
+             family['failures'].append(dict(failure,label=label,state=record['state'],row=record['row'],failing_proposal=bad))
+         passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='ROUTING_PROTOCOL')
+-        routing_phase('AFTER_ROUTING_PROTOCOL')
+ 
+     def global_family():
+         c=deep_output();seeds=[ug(ax_formula,1,4),ug(c,3,5)];state=state_from(seeds);log={}

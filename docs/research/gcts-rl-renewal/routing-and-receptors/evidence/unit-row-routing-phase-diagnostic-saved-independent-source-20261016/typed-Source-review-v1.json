@@ -1,0 +1,41 @@
+{
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored8f7a/9fd6 dependent checkers and prior proposals/controls/reviews, and reviewed callerdbb8/currenta197 composition/parent7f77; did not author this Root reader. Distinct saved-helper Source review, not mathematical replay or self-review of dependencies.",
+  "blockers": [
+    "RP-SAVED-COMPLETE-ERROR-LF-1"
+  ],
+  "conditions": [
+    "CurrentV1 remains immutable; exact corrected successor/contract still requires genuine current review.",
+    "No reader/helper/actual science run by reviewer; no qualification or grant implied."
+  ],
+  "disposition": "SOURCE_REVIEW_NEGATIVE_NARROW_COMPLETE_ERROR_LINE_CONTRACT",
+  "findings": {
+    "bytes": 2745,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "193e664511b4cb6b8141da0bc30877ad5e219e623af9a039243dadb30879f4b5"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-routing-phase-saved-diagnostic-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-routing-phase-saved-diagnostic-Source",
+  "source": {
+    "bytes": 20200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+    "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+  },
+  "source_contract": {
+    "bytes": 6367,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "e9688fad26d97e14df3b325f2feb7f591ce9b0337e8e5b9346e79d1f7ef6288c"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "reader": {
+      "bytes": 20200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+      "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+    }
+  }
+}

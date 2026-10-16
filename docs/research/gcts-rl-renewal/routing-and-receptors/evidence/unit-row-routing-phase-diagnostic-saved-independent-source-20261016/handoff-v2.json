@@ -1,0 +1,43 @@
+{
+  "compile_calls": 0,
+  "findings": {
+    "bytes": 10061,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/findings-v2.json",
+    "sha256": "0ca07f1fbc37eab1c3f246b3c51e1d7033eaa519e5bbca2b7a0d58aff56b1dfd"
+  },
+  "helper_executions": 0,
+  "preserved_negative": {
+    "bytes": 2264,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "4efe77ca405b6cb2ef697948bcb4d5b3e1e8e0ab5f9549345314b1a8fbdb7496"
+  },
+  "py_compile_calls": 0,
+  "saved_output_decodes": 0,
+  "schema": "unit-row-routing-phase-saved-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 20225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+    "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+  },
+  "source_contract": {
+    "bytes": 7022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "a2fed2f6b706d2428b09336728c9ce00ff2b639db9d06697520610de3c8b09d9"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "reader": {
+      "bytes": 20225,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+      "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+    }
+  },
+  "typed_review": {
+    "bytes": 3744,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "b0566689203f4813fecdc5c34844f601212199217741ae5972cb82a3736286f5"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "body": [
+    {
+      "arguments": {},
+      "formula": {
+        "arguments": [],
+        "node": "formula_meta",
+        "parameter": "B"
+      },
+      "id": "mp_first",
+      "kind": "PRIMITIVE",
+      "ordered_inputs": [
+        {
+          "input": "in_a"
+        },
+        {
+          "input": "in_ab"
+        }
+      ],
+      "rule": "mp"
+    },
+    {
+      "arguments": {},
+      "formula": {
+        "arguments": [],
+        "node": "formula_meta",
+        "parameter": "C"
+      },
+      "id": "mp_second",
+      "kind": "PRIMITIVE",
+      "ordered_inputs": [
+        {
+          "step": "mp_first"
+        },
+        {
+          "input": "in_bc"
+        }
+      ],
+      "rule": "mp"
+    }
+  ],
+  "dependencies": [],
+  "family_id": "422fcf77ab3b588b0c29cec9fbd7526013d73352035c3e761bbe7d6accb48585",
+  "hypotheses": [],
+  "inputs": [
+    {
+      "formula": {
+        "arguments": [],
+        "node": "formula_meta",
+        "parameter": "A"
+      },
+      "id": "in_a",
+      "ordered_role": "first_antecedent",
+      "sharing": "ALLOW_SAME_EXACT_PRIOR_SOURCE"
+    },
+    {
+      "formula": {
+        "left": {
+          "arguments": [],
+          "node": "formula_meta",
+          "parameter": "A"
+        },
+        "node": "imp",
+        "right": {
+          "arguments": [],
+          "node": "formula_meta",
+          "parameter": "B"
+        }
+      },
+      "id": "in_ab",
+      "ordered_role": "first_implication",
+      "sharing": "ALLOW_SAME_EXACT_PRIOR_SOURCE"
+    },
+    {
+      "formula": {
+        "left": {
+          "arguments": [],
+          "node": "formula_meta",
+          "parameter": "B"
+        },
+        "node": "imp",
+        "right": {
+          "arguments": [],
+          "node": "formula_meta",
+          "parameter": "C"
+        }
+      },
+      "id": "in_bc",
+      "ordered_role": "second_implication",
+      "sharing": "ALLOW_SAME_EXACT_PRIOR_SOURCE"
+    }
+  ],
+  "origin": "HUMAN_SPECIFIED",
+  "outputs": [
+    {
+      "formula": {
+        "arguments": [],
+        "node": "formula_meta",
+        "parameter": "C"
+      },
+      "id": "out_c",
+      "source": {
+        "step": "mp_second"
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "allowed_external_free_variables": [],
+      "formal_variables": [],
+      "id": "A",
+      "kind": "FORMULA"
+    },
+    {
+      "allowed_external_free_variables": [],
+      "formal_variables": [],
+      "id": "B",
+      "kind": "FORMULA"
+    },
+    {
+      "allowed_external_free_variables": [],
+      "formal_variables": [],
+      "id": "C",
+      "kind": "FORMULA"
+    }
+  ],
+  "provenance": {
+    "discovered": false,
+    "project_verifier_executed": false,
+    "status": "DESIGN_ONLY",
+    "theorem_or_target_instance": null
+  },
+  "required_host_features": [
+    "FORMULA",
+    "IMPLICATION",
+    "ORDERED_MP"
+  ],
+  "schema": "receptor-lemma-family-v1",
+  "side_conditions": []
+}

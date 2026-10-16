@@ -1,0 +1,44 @@
+{
+  "all_four_actual_patch_directions_verified": true,
+  "author_identity": "/root",
+  "authorship_disclosure": "Root authored this reader; this is author whole-source self-review, supplemented by genuine distinct diagnosis review, not independent self-review.",
+  "blockers": [],
+  "compile_without_evaluation_only": true,
+  "peer": {
+    "bytes": 3744,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "b0566689203f4813fecdc5c34844f601212199217741ae5972cb82a3736286f5"
+  },
+  "qualification_accepted": false,
+  "qualified_case_count": 0,
+  "reported_case_count": null,
+  "reviewer_identity": "/root",
+  "schema": "unit-row-routing-phase-saved-diagnostic-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_payload_opaque": true,
+  "scope": "unit-row-routing-phase-saved-diagnostic-Source",
+  "source": {
+    "bytes": 20225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+    "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+  },
+  "source_contract": {
+    "bytes": 7022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "a2fed2f6b706d2428b09336728c9ce00ff2b639db9d06697520610de3c8b09d9"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "reader": {
+      "bytes": 20225,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+      "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+    }
+  },
+  "two_V2_edits_only": true,
+  "unchanged10_parent_helper_AST": true,
+  "unchanged12_V1_helper_AST": true,
+  "whole_Source_and_contract_read": true
+}

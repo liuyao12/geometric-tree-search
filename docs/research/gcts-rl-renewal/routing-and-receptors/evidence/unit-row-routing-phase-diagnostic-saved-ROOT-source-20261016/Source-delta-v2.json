@@ -1,0 +1,38 @@
+{
+  "actual_patches": [
+    {
+      "bytes": 1649,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-v1-to-v2-forward.patch",
+      "sha256": "ca69689c11fde5b4d51a6ae0d5d321723b5a17f47688b44e213095bc3438b0f1"
+    },
+    {
+      "bytes": 1649,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/reader-v2-to-v1-full-inverse.patch",
+      "sha256": "6ac90cfb9b0838aeab7c3e4932ed8e294837d366cc7dfd7e8e08f80d688972b5"
+    }
+  ],
+  "edits": [
+    {
+      "new": "VERSION='unit-row-routing-phase-saved-diagnostic-reader-v2'",
+      "old": "VERSION='unit-row-routing-phase-saved-diagnostic-reader-v1'"
+    },
+    {
+      "new": "if wire_recognizing and line.endswith(b'\\n') and line.startswith(ERROR_PREFIX):",
+      "old": "if wire_recognizing and line.startswith(ERROR_PREFIX):"
+    }
+  ],
+  "parent": {
+    "bytes": 20200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+    "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+  },
+  "parent_executed": false,
+  "schema": "unit-row-routing-phase-saved-reader-LF-repair-delta-v1",
+  "scientific_calls": 0,
+  "scope": "RequireLF before recognizing complete error line because splitlines also splits bareCR/VT/FF. Otherwise preserve whole fragment as unparsed and stop recognition. No body/authority/native/wire/false flags or payload behavior changed.",
+  "source": {
+    "bytes": 20225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v2.py",
+    "sha256": "29633d3f3af0948af158e309ab84ecfd36ef91dd628a3ebcf511b4c59d4d4820"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "blockers": [
+    {
+      "acceptance_risk_limit": "Current causeFalse/exact tick-line equality/countnull/0qual already prevent this fragment from qualifying science or proving timeoutcause.",
+      "finding": "ERROR_PREFIX branch recognizes a splitlines fragment without checking LF. bytes.splitlines also splits bare CR/VT/FF, so an internal non-LF ASCII fragment starting ERROR_PREFIX can be labeled stderr_error_line and stop recognition as a complete error line. The declared malformed/incomplete policy requires that fragment remain raw/unparsed.",
+      "id": "RP-SAVED-COMPLETE-ERROR-LF-1",
+      "minimal_correction": "Require LF before recognizing the error branch, otherwise fall through to the existing raw/unparsed recognition-stop path. Keep all Source/native/positive/counts/cause gates unchanged.",
+      "severity": "narrow declared diagnostic parser contract mismatch",
+      "source_lines": [
+        117,
+        123
+      ]
+    }
+  ],
+  "not_performed": [
+    "reader/helper execution",
+    "scientific/project imports/calls",
+    "actual output decoding",
+    "semantic replay",
+    "clocks",
+    "tests",
+    "actuals",
+    "compile",
+    "py_compile"
+  ],
+  "positive_scope": [
+    "Whole183-line Source/currentcontract read; stdlib metadata only, no scientific paths.",
+    "Both actual full patch directions independently regenerated from7f77/current raw Source;10 helpers raw+AST exact, need/reject prefix changes only.",
+    "Bounded regular same-buffer raw reads, SHA/bytes/EOF, Root/current14input8/original17input2/epoch/reviews/once/native/session/Date/failure55/512 joins retained.",
+    "Exact markerprefix/int64/order/bounds and opaque rawenginepayload, positive1LFstdout+2LFresponse/hash/currentbinding/G-D joins; no oldlatest4slot orfailurewriterinterpretation.",
+    "All reportednull/qualified0/no enginepromotion/proof/resourcepositive/cause/performance flags remainfalse evenexit0."
+  ],
+  "schema": "unit-row-routing-phase-saved-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 20200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/ROOT_read_routing_phase_diagnostic_saved_v1.py",
+    "sha256": "6977d523a796b39bf602b56e8278edacf3a4cf3cf0eecee85daa2ccd79126b06"
+  },
+  "source_contract": {
+    "bytes": 6367,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routing-phase-diagnostic-saved-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "e9688fad26d97e14df3b325f2feb7f591ce9b0337e8e5b9346e79d1f7ef6288c"
+  },
+  "source_only": true,
+  "whole_source_and_contract_read": true
+}
