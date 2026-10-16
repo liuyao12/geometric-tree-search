@@ -1,0 +1,212 @@
+{
+  "AST_or_compile_only": true,
+  "Source_functions_executed": 0,
+  "actual_plans_grants_or_output_directories_created": false,
+  "author_review_is_not_independent": true,
+  "check_count": 28,
+  "checks": [
+    {
+      "name": "current Source parses and compiles only",
+      "passed": true
+    },
+    {
+      "name": "all 15 inherited helper whole text and AST exact",
+      "passed": true
+    },
+    {
+      "name": "full raw forward and inverse exact",
+      "passed": true
+    },
+    {
+      "name": "eight dependency capsules exact",
+      "passed": true
+    },
+    {
+      "name": "full fixed input2 exact",
+      "passed": true
+    },
+    {
+      "name": "all six caps exact",
+      "passed": true
+    },
+    {
+      "name": "entire positive output/final exit/top-level failure tail byte exact",
+      "passed": true
+    },
+    {
+      "name": "existing search invocation retains native postboundary",
+      "passed": true
+    },
+    {
+      "name": "only returned engine payload captured",
+      "passed": true
+    },
+    {
+      "name": "failure diagnostic schema is independent from successful wire",
+      "passed": true
+    },
+    {
+      "name": "failure writer does not call scientific endpoints",
+      "passed": true
+    },
+    {
+      "name": "exact string keys checked before metadata comparison and lookup",
+      "passed": true
+    },
+    {
+      "name": "writer original code/default/closure anchor checked",
+      "passed": true
+    },
+    {
+      "name": "failure catch preserves original exception",
+      "passed": true
+    },
+    {
+      "name": "diagnostic writes exclusive and no-follow",
+      "passed": true
+    },
+    {
+      "name": "failure resource calculation precedes native deadline observation",
+      "passed": true
+    },
+    {
+      "name": "no changed existing engine Source dependency",
+      "passed": true
+    },
+    {
+      "name": "raw current clean_support Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current controls Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current degree_checker Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current engine Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current fallback Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current intake Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current kernel Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current membership Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current proposer Source pin",
+      "passed": true
+    },
+    {
+      "name": "raw current declaration input pin",
+      "passed": true
+    },
+    {
+      "name": "raw current profile input pin",
+      "passed": true
+    }
+  ],
+  "raw_reference_count": 15,
+  "raw_references": [
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 25792,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/unit_row_global_engine_cold_v1.py",
+      "sha256": "4e83784213ae01805648bac7ba8787842db846fabf037b8f3f6a56d5978d6ff2"
+    },
+    {
+      "bytes": 10879,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/Source-contract-v1.json",
+      "sha256": "1dc66c42243725e0f27b3c6172bce11249835717f5749b86ed015d19f3843b7b"
+    },
+    {
+      "bytes": 34766,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/unit_row_search_failure_diagnostic_cold_v2.py",
+      "sha256": "0b6c980f2310cac5788876e6837b9213305482bb838dfca47f63f8ae34771db4"
+    },
+    {
+      "bytes": 34327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/unit_row_search_failure_diagnostic_cold_v1.py",
+      "sha256": "932e69d6e5f720cfed5e52e4b300732c0d671f4591da39121c91d51ae1dda2bb"
+    },
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 27865,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+      "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+    },
+    {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  ],
+  "runtime_fit_accepted": false,
+  "schema": "unit-row-search-failure-diagnostic-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 34766,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/unit_row_search_failure_diagnostic_cold_v2.py",
+    "sha256": "0b6c980f2310cac5788876e6837b9213305482bb838dfca47f63f8ae34771db4"
+  },
+  "source_contract": {
+    "bytes": 15073,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "427f618ae2f2748e7e5c994a6815d721172b8c97ca9b9b12848216109122622b"
+  }
+}

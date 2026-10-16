@@ -1,0 +1,29 @@
+{
+  "check_count": 19,
+  "findings": {
+    "bytes": 21535,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "b9453df65304145c278f2082296dbd585e3abf49d2c0a280f85af807dab75cd4"
+  },
+  "raw_paths": 17,
+  "review": {
+    "bytes": 4152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "57ebf2e10649f09db4ce838ba5a991a40416dd22c8e4d55f372998affe56d235"
+  },
+  "schema": "unit-row-search-failure-diagnostic-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 34766,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/unit_row_search_failure_diagnostic_cold_v2.py",
+    "sha256": "0b6c980f2310cac5788876e6837b9213305482bb838dfca47f63f8ae34771db4"
+  },
+  "source_contract": {
+    "bytes": 15073,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "427f618ae2f2748e7e5c994a6815d721172b8c97ca9b9b12848216109122622b"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_ROOT_ACTUAL_OWNER"
+}

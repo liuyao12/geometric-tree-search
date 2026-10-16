@@ -1,0 +1,224 @@
+--- current
++++ parent
+@@ -21,8 +21,8 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-search-failure-diagnostic-cold-v2'
+-SCOPE='unit-row-search-failure-diagnostic-cold-Source'
++VERSION='unit-row-global-engine-cold-v1'
++SCOPE='unit-row-global-engine-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'engine': {'bytes': 27865, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py', 'sha256': 'ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e'}, 'controls': {'bytes': 21896, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py', 'sha256': 'd7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7'}}
+@@ -148,126 +148,6 @@
+                             for fn in (member.fget,member.fset,member.fdel):retain(fn)
+                         else:retain(member)
+     return tuple(functions)
+-
+-def save_failure_diagnostic(output_path, context_raw, capture, failure_kind, began_ns, *,
+-        _clock=CLOCK, _clock_id=CLOCK_ID, _usage=resource.getrusage, _self_id=resource.RUSAGE_SELF,
+-        _open=os.open, _mkdir=os.mkdir, _write=os.write, _close=os.close,
+-        _escape=json.encoder.encode_basestring_ascii, _hash=hashlib.sha256,
+-        _flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW):
+-    """Best-effort raw builtin data ONLY. No late authority or scientific calls.
+-
+-    This helper never supplies a positive result. A complete two-file diagnostic
+-    still requires Root's separate terminal/failure-window reconciliation.
+-    """
+-    def failure_gate():
+-        # Captured native endpoints; no original20 Source callback is invoked.
+-        peak = _usage(_self_id).ru_maxrss
+-        now = _clock(_clock_id)
+-        if (type(_clock) is not types.BuiltinFunctionType or type(_clock_id) is not int
+-                or type(_escape) is not types.BuiltinFunctionType
+-                or peak >= 524288000 or not began_ns <= now < began_ns+55000000000):
+-            raise TimeoutError('failure-only diagnostic window/resource unfinished')
+-        return now
+-    def encoded(value, maximum):
+-        # Exact builtin containers only: no arbitrary iterator/property/default
+-        # hook, repr, __str__, or project encoder can execute on this path.
+-        chunks = []; size = 0; nodes = 0
+-        def append(raw):
+-            nonlocal size
+-            size += len(raw)
+-            if size > maximum: raise ValueError('diagnostic byte bound')
+-            chunks.append(raw)
+-        def visit(item, depth):
+-            nonlocal nodes
+-            nodes += 1
+-            if nodes > 200000 or depth > 128: raise ValueError('diagnostic structure bound')
+-            if nodes % 64 == 1: failure_gate()
+-            kind = type(item)
+-            if item is None: append(b'null')
+-            elif kind is bool: append(b'true' if item else b'false')
+-            elif kind is int:
+-                if item.bit_length() > 4096: raise ValueError('diagnostic integer bound')
+-                append(str(item).encode('ascii'))
+-            elif kind is str:
+-                if len(item) > 262144: raise ValueError('diagnostic string bound')
+-                append(_escape(item).encode('ascii'))
+-            elif kind is list or kind is dict:
+-                append(b'[' if kind is list else b'{')
+-                for index, entry in enumerate(item if kind is list else item.items()):
+-                    if index: append(b',')
+-                    if kind is dict:
+-                        key, child = entry
+-                        if type(key) is not str: raise ValueError('diagnostic string key required')
+-                        visit(key, depth+1); append(b':'); visit(child, depth+1)
+-                    else: visit(entry, depth+1)
+-                append(b']' if kind is list else b'}')
+-            else: raise ValueError('non-builtin diagnostic value')
+-        visit(value, 0); failure_gate()
+-        return b''.join(chunks)
+-    failure_gate()
+-    # context_raw was encoded before the untrusted search delegation.
+-    if type(context_raw) is not bytes or len(context_raw) > 65536:
+-        raise ValueError('bounded predelegation diagnostic context')
+-    available = capture['returned'] is True
+-    value = capture['payload'] if available else None
+-    metadata = None; metadata_saved = False; total_events = None; event_raw = []
+-    prefix_reason = 'NO_RETURNED_RECORD'; metadata_reason = None
+-    if type(value) is dict and all(type(key) is str for key in value):
+-        try:
+-            metadata = encoded({key: item for key,item in value.items() if key != 'events'}, 1048576)
+-            metadata_saved = True
+-        except ValueError:
+-            metadata_reason = 'BUILTIN_METADATA_OUTPUT_BOUND_OR_TYPE'
+-        events = value.get('events')
+-        if type(events) is list:
+-            total_events = len(events); used = 0; prefix_reason = 'ALL_RETURNED_EVENTS_SAVED'
+-            for event in events:
+-                if len(event_raw) >= 2000:
+-                    prefix_reason = 'DIAGNOSTIC_EVENT_PREFIX_LIMIT'; break
+-                try: raw = encoded(event, 262144)
+-                except ValueError:
+-                    prefix_reason = 'NEXT_EVENT_OUTPUT_BOUND_OR_TYPE'; break
+-                if used+len(raw)+1 > 3*1048576:
+-                    prefix_reason = 'DIAGNOSTIC_EVENT_BYTE_LIMIT'; break
+-                event_raw.append(raw); used += len(raw)+1
+-        else: prefix_reason = 'RETURNED_EVENTS_NOT_BUILTIN_LIST'
+-    elif available: metadata_reason = 'RETURNED_VALUE_NOT_BUILTIN_STRING_KEY_DICT'
+-    # These labels are caller observations, never claims trusted from the payload.
+-    labels = encoded({'schema':'unit-row-search-failure-diagnostic-v1',
+-        'diagnostic_only':True,'qualification':'UNQUALIFIED_UNKNOWN_RAW_PREFIX',
+-        'capture_available':available,'capture_is_builtin_dict':type(value) is dict,
+-        'engine_return_observed_ns':capture['returned_ns'], 'failure_kind':failure_kind,
+-        'metadata_saved':metadata_saved,'metadata_omission_reason':metadata_reason,
+-        'returned_event_count':total_events,'saved_event_count':len(event_raw),
+-        'omitted_event_count':None if total_events is None else total_events-len(event_raw),
+-        'event_prefix_reason':prefix_reason,'may_include_post_deadline_unwind':True,
+-        'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
+-        'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+-        'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}, 65536)
+-    raw = (b'{"context":'+context_raw+b',"diagnostic":'+labels+b',"returned_metadata":'
+-           +(metadata if metadata_saved else b'null')+b',"events_prefix":['
+-           +b','.join(event_raw)+b']}\n')
+-    if len(raw) > 4*1048576+131072: raise ValueError('whole diagnostic output bound')
+-    def write(name, content):
+-        failure_gate()
+-        fd = _open(output_path+'/'+name, _flags, 0o600)
+-        try:
+-            offset = 0
+-            while offset < len(content):
+-                failure_gate()
+-                count = _write(fd,content[offset:offset+65536])
+-                if count <= 0: raise OSError('diagnostic output unfinished')
+-                offset += count
+-        finally: _close(fd)
+-        failure_gate()
+-    failure_gate(); _mkdir(output_path, 0o700)
+-    write('unknown-diagnostic.json',raw)
+-    marker = encoded({'schema':'unit-row-search-failure-diagnostic-completion-v1',
+-        'file':'unknown-diagnostic.json','sha256':_hash(raw).hexdigest(),'bytes':len(raw),
+-        'diagnostic_only':True,'positive_joint_gate_accepted':False,
+-        'ROOT_resource_accepted':False,'terminal_exit2_and_external_failure_closure_required':True}, 1024)+b'\n'
+-    write('diagnostic-completion.json',marker)
+-    failure_gate()
+ 
+ def main(argv):
+     need(__name__ == '__main__' and len(argv) == 1, 'one Root actual plan')
+@@ -308,19 +188,19 @@
+     read_pinned(plan['runtime'])
+     source_raw = {role: read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract = decode(read_pinned(plan['source_contract']))
+-    need(contract['schema'] == 'unit-row-search-failure-diagnostic-cold-Source-contract-v1'
++    need(contract['schema'] == 'unit-row-global-engine-cold-Source-contract-v1'
+         and contract['sources'] == plan['sources'] and contract['inputs'] == FIXED_INPUTS
+         and contract['limits'] == LIMITS, 'whole exact current Source contract')
+     need(set(plan['reviews']) == {'ROOT','peer'}, 'author review and distinct whole-Source peer')
+     for role,ref in plan['reviews'].items():
+         review = decode(read_pinned(ref))
+-        need(review['scope'] == SCOPE and review['author_identity'] == '/root/hilbert_advice_controls'
++        need(review['scope'] == SCOPE and review['author_identity'] == '/root'
+             and review['source'] == plan['sources']['intake'] and review['sources'] == plan['sources']
+             and review['source_contract'] == plan['source_contract'] and review['source_only'] is True
+             and review['source_review_passed'] is True and type(review['scientific_calls']) is int
+             and review['scientific_calls'] == 0 and review['scientific_acceptance'] is False
+             and (review['reviewer_identity'] == '/root' if role == 'ROOT'
+-                 else review['reviewer_identity'] not in ('/root','/root/hilbert_advice_controls')), 'genuine current scoped Source reviews')
++                 else review['reviewer_identity'] not in ('/root',)), 'genuine current scoped Source reviews')
+     grant = decode(read_pinned(plan['ROOT_authorization']))
+     need(grant['schema'] == 'ROOT-unit-row-global-engine-authorization-v1'
+         and grant['author_identity'] == '/root' and grant['actual_execution_authorized'] is True
+@@ -441,16 +321,9 @@
+         return invoke_fn(modules['engine'].select_schedule,(),{
+             'evidence':copy.deepcopy(evidence),'generations':copy.deepcopy(generations),'tick':step},
+             boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+-    search_capture = {'returned':False,'payload':None,'returned_ns':None}
+     def run_original_search():
+         engine = engine_factory(initial_state=None,tick=tick)
+-        value = engine.search()
+-        # Save ONLY an actual returned payload before invoke's unchanged
+-        # postboundary may reject it. Never call engine methods after failure.
+-        search_capture['payload'] = value
+-        search_capture['returned'] = True
+-        search_capture['returned_ns'] = clock(clock_id)
+-        return value
++        return engine.search()
+     is_controls = plan['purpose'] == 'unit-row-global-engine-controls'
+     if is_controls:
+         payload = invoke_fn(modules['controls'].run_controls,(),{'language':fixture_language,
+@@ -462,36 +335,12 @@
+             and payload['all_declared_cases_completed'] is True and type(payload['cases']) is list,
+             'complete adversarial control record; scopes remain distinct')
+     else:
+-        diagnostic_run = Path(plan['output_directory'])
+-        need(diagnostic_run.is_absolute() and diagnostic_run == diagnostic_run.resolve()
+-            and not diagnostic_run.exists(), 'fresh canonical search output before delegation')
+-        diagnostic_path = str(diagnostic_run)
+-        diagnostic_context = canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],
+-            'plan':raw_pin(plan_raw),'sources':plan['sources'],'inputs':plan['inputs'],
+-            'language_binding':decode(binding_raw),'joint_began_ns':EARLY_G,
+-            'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})
+-        failure_writer = save_failure_diagnostic
+-        failure_writer_state = anchor_fn(failure_writer)
+-        try:
+-            payload = invoke_fn(run_original_search,(),{},
+-                boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+-            need(type(payload) is dict and payload['schema'] == 'unit-row-lazy-global-search-result-v1'
+-                and payload['status'] in ('POINT_BOARD_PROPOSAL','EXHAUSTED','UNKNOWN')
+-                and payload['root_restored'] is True and payload['stack_restored'] is True,
+-                'fresh original-root search result, not an accepted proof')
+-        except BaseException as search_error:
+-            # Failure-only raw retention never replaces the original fault,
+-            # original20 gate, or exit2. Any partial diagnostic is inventory only.
+-            failure_kind = 'TimeoutError' if type(search_error) is TimeoutError else 'SOURCE_OR_RUNTIME_FAILURE'
+-            try:
+-                if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code
+-                        or same is not same_fn or same_fn.__code__ is not same_code
+-                        or not same_fn(failure_writer,failure_writer_state)):
+-                    raise RuntimeError('original raw diagnostic writer changed')
+-                failure_writer(diagnostic_path,diagnostic_context,search_capture,failure_kind,EARLY_G)
+-            except BaseException:
+-                pass
+-            raise
++        payload = invoke_fn(run_original_search,(),{},
++            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
++        need(type(payload) is dict and payload['schema'] == 'unit-row-lazy-global-search-result-v1'
++            and payload['status'] in ('POINT_BOARD_PROPOSAL','EXHAUSTED','UNKNOWN')
++            and payload['root_restored'] is True and payload['stack_restored'] is True,
++            'fresh original-root search result, not an accepted proof')
+     result_raw = canonical({'schema':'ROOT-unit-row-global-engine-result-v1',
+         'purpose':plan['purpose'],'controls':payload if is_controls else None,
+         'search':None if is_controls else payload,'search_work_bounds':{'maximum_nodes':128,'maximum_events':2000},

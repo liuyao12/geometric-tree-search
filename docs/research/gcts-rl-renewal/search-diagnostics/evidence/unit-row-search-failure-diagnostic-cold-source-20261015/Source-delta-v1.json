@@ -1,0 +1,349 @@
+{
+  "current": {
+    "bytes": 34327,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-search-failure-diagnostic-cold-source-20261015/unit_row_search_failure_diagnostic_cold_v1.py",
+    "sha256": "932e69d6e5f720cfed5e52e4b300732c0d671f4591da39121c91d51ae1dda2bb"
+  },
+  "edits": [
+    {
+      "new": "search-failure-dia",
+      "old": "",
+      "old_end": 524,
+      "old_start": 524
+    },
+    {
+      "new": "n",
+      "old": "l",
+      "old_end": 526,
+      "old_start": 525
+    },
+    {
+      "new": "st",
+      "old": "bal-eng",
+      "old_end": 534,
+      "old_start": 527
+    },
+    {
+      "new": "c",
+      "old": "ne",
+      "old_end": 537,
+      "old_start": 535
+    },
+    {
+      "new": "search-failure-dia",
+      "old": "",
+      "old_end": 563,
+      "old_start": 563
+    },
+    {
+      "new": "n",
+      "old": "l",
+      "old_end": 565,
+      "old_start": 564
+    },
+    {
+      "new": "st",
+      "old": "bal-eng",
+      "old_end": 573,
+      "old_start": 566
+    },
+    {
+      "new": "c",
+      "old": "ne",
+      "old_end": 576,
+      "old_start": 574
+    },
+    {
+      "new": "save_failure_diagnostic(output_path, context_raw, capture, failure_kind, began_ns, *,\n        _clock=CLOCK, _clock_id=CLOCK_ID, _usage=resource.getrusage, _self_id=resource.RUSAGE_SELF,\n        _open=os.open, _mkdir=os.mkdir, _write=os.write, _close=os.close,\n        _escape=json.encoder.encode_basestring_ascii, _hash=hashlib.sha256,\n        _flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW):\n    \"\"\"Best-effort raw builtin data ONLY. No late authority or scientific calls.\n\n    This helper never supplies a positive result. A complete two-file diagnostic\n    still requires Root's separate terminal/failure-window reconciliation.\n    \"\"\"\n    def failure_gate():\n        # Captured native endpoints; no original20 Source callback is invoked.\n        peak = _usage(_self_id).ru_maxrss\n        now = _clock(_clock_id)\n        if (type(_clock) is not types.BuiltinFunctionType or type(_clock_id) is not int\n                or type(_escape) is not types.BuiltinFunctionType\n                or peak >= 524288000 or not began_ns <= now < began_ns+55000000000):\n            raise TimeoutError('failure-only diagnostic window/resource unfinished')\n        return now\n    def encoded(value, maximum):\n        # Exact builtin containers only: no arbitrary iterator/property/default\n        # hook, repr, __str__, or project encoder can execute on this path.\n        chunks = []; size = 0; nodes = 0\n        def append(raw):\n            nonlocal size\n            size += len(raw)\n            if size > maximum: raise ValueError('diagnostic byte bound')\n            chunks.append(raw)\n        def visit(item, depth):\n            nonlocal nodes\n            nodes += 1\n            if nodes > 200000 or depth > 128: raise ValueError('diagnostic structure bound')\n            if nodes % 64 == 1: failure_gate()\n            kind = type(item)\n            if item is None: append(b'null')\n            elif kind is bool: append(b'true' if item else b'false')\n            elif kind is int:\n                if item.bit_length() > 4096: raise ValueError('diagnostic integer bound')\n                append(str(item).encode('ascii'))\n            elif kind is str:\n                if len(item) > 262144: raise ValueError('diagnostic string bound')\n                append(_escape(item).encode('ascii'))\n            elif kind is list or kind is dict:\n                append(b'[' if kind is list else b'{')\n                for index, entry in enumerate(item if kind is list else item.items()):\n                    if index: append(b',')\n                    if kind is dict:\n                        key, child = entry\n                        if type(key) is not str: raise ValueError('diagnostic string key required')\n                        visit(key, depth+1); append(b':'); visit(child, depth+1)\n                    else: visit(entry, depth+1)\n                append(b']' if kind is list else b'}')\n            else: raise ValueError('non-builtin diagnostic value')\n        visit(value, 0); failure_gate()\n        return b''.join(chunks)\n    failure_gate()\n    # context_raw was encoded before the untrusted search delegation.\n    if type(context_raw) is not bytes or len(context_raw) > 65536:\n        raise ValueError('bounded predelegation diagnostic context')\n    available = capture['returned'] is True\n    value = capture['payload'] if available else None\n    metadata = None; metadata_saved = False; total_events = None; event_raw = []\n    prefix_reason = 'NO_RETURNED_RECORD'; metadata_reason = None\n    if type(value) is dict:\n        try:\n            metadata = encoded({key: item for key,item in value.items() if key != 'events'}, 1048576)\n            metadata_saved = True\n        except ValueError:\n            metadata_reason = 'BUILTIN_METADATA_OUTPUT_BOUND_OR_TYPE'\n        events = value.get('events')\n        if type(events) is list:\n            total_events = len(events); used = 0; prefix_reason = 'ALL_RETURNED_EVENTS_SAVED'\n            for event in events:\n                if len(event_raw) >= 2000:\n                    prefix_reason = 'DIAGNOSTIC_EVENT_PREFIX_LIMIT'; break\n                try: raw = encoded(event, 262144)\n                except ValueError:\n                    prefix_reason = 'NEXT_EVENT_OUTPUT_BOUND_OR_TYPE'; break\n                if used+len(raw)+1 > 3*1048576:\n                    prefix_reason = 'DIAGNOSTIC_EVENT_BYTE_LIMIT'; break\n                event_raw.append(raw); used += len(raw)+1\n        else: prefix_reason = 'RETURNED_EVENTS_NOT_BUILTIN_LIST'\n    elif available: metadata_reason = 'RETURNED_VALUE_NOT_BUILTIN_DICT'\n    # These labels are caller observations, never claims trusted from the payload.\n    labels = encoded({'schema':'unit-row-search-failure-diagnostic-v1',\n        'diagnostic_only':True,'qualification':'UNQUALIFIED_UNKNOWN_RAW_PREFIX',\n        'capture_available':available,'capture_is_builtin_dict':type(value) is dict,\n        'engine_return_observed_ns':capture['returned_ns'], 'failure_kind':failure_kind,\n        'metadata_saved':metadata_saved,'metadata_omission_reason':metadata_reason,\n        'returned_event_count':total_events,'saved_event_count':len(event_raw),\n        'omitted_event_count':None if total_events is None else total_events-len(event_raw),\n        'event_prefix_reason':prefix_reason,'may_include_post_deadline_unwind':True,\n        'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n        'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n        'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}, 65536)\n    raw = (b'{\"context\":'+context_raw+b',\"diagnostic\":'+labels+b',\"returned_metadata\":'\n           +(metadata if metadata_saved else b'null')+b',\"events_prefix\":['\n           +b','.join(event_raw)+b']}\\n')\n    if len(raw) > 4*1048576+131072: raise ValueError('whole diagnostic output bound')\n    def write(name, content):\n        failure_gate()\n        fd = _open(output_path+'/'+name, _flags, 0o600)\n        try:\n            offset = 0\n            while offset < len(content):\n                failure_gate()\n                count = _write(fd,content[offset:offset+65536])\n                if count <= 0: raise OSError('diagnostic output unfinished')\n                offset += count\n        finally: _close(fd)\n        failure_gate()\n    failure_gate(); _mkdir(output_path, 0o700)\n    write('unknown-diagnostic.json',raw)\n    marker = encoded({'schema':'unit-row-search-failure-diagnostic-completion-v1',\n        'file':'unknown-diagnostic.json','sha256':_hash(raw).hexdigest(),'bytes':len(raw),\n        'diagnostic_only':True,'positive_joint_gate_accepted':False,\n        'ROOT_resource_accepted':False,'terminal_exit2_and_external_failure_closure_required':True}, 1024)+b'\\n'\n    write('diagnostic-completion.json',marker)\n    failure_gate()\n\ndef ",
+      "old": "",
+      "old_end": 9743,
+      "old_start": 9743
+    },
+    {
+      "new": "search-failure-dia",
+      "old": "",
+      "old_end": 12444,
+      "old_start": 12444
+    },
+    {
+      "new": "n",
+      "old": "l",
+      "old_end": 12446,
+      "old_start": 12445
+    },
+    {
+      "new": "st",
+      "old": "bal-eng",
+      "old_end": 12454,
+      "old_start": 12447
+    },
+    {
+      "new": "c",
+      "old": "ne",
+      "old_end": 12457,
+      "old_start": 12455
+    },
+    {
+      "new": "/hilbert_advice_controls",
+      "old": "",
+      "old_end": 12916,
+      "old_start": 12916
+    },
+    {
+      "new": "'/root/hilbert_advice_controls'",
+      "old": "",
+      "old_end": 13456,
+      "old_start": 13456
+    },
+    {
+      "new": "search_capture = {'returned':False,'payload':None,'returned_ns':None}\n    ",
+      "old": "",
+      "old_end": 21089,
+      "old_start": 21089
+    },
+    {
+      "new": "valu",
+      "old": "r",
+      "old_end": 21187,
+      "old_start": 21186
+    },
+    {
+      "new": " =",
+      "old": "turn",
+      "old_end": 21192,
+      "old_start": 21188
+    },
+    {
+      "new": "\n        # Save ONLY an actual returned payload before invoke's unchanged\n        # postboundary may reject it. Never call engine methods after failure.\n        search_capture['payload'] = value\n        search_capture['returned'] = True\n        search_capture['returned_ns'] = clock(clock_id)\n        return value",
+      "old": "",
+      "old_end": 21208,
+      "old_start": 21208
+    },
+    {
+      "new": "diagnostic_run = Path(plan['output_directory'])\n        need(diagnostic_run.is_absolute() and diagnostic_run == diagnostic_run.resolve()\n            and not diagnostic_run.exists(), 'fresh canonical search output before delegation')\n        diagnostic_path = str(diagnostic_run)\n        diagnostic_context = canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],\n            'plan':raw_pin(plan_raw),'sources':plan['sources'],'inputs':plan['inputs'],\n            'language_binding':decode(binding_raw),'joint_began_ns':EARLY_G,\n            'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})\n        failure_writer = save_failure_diagnostic\n        try:\n            ",
+      "old": "",
+      "old_end": 21972,
+      "old_start": 21972
+    },
+    {
+      "new": "    ",
+      "old": "",
+      "old_end": 22019,
+      "old_start": 22019
+    },
+    {
+      "new": "    ",
+      "old": "",
+      "old_end": 22097,
+      "old_start": 22097
+    },
+    {
+      "new": "    ",
+      "old": "",
+      "old_end": 22209,
+      "old_start": 22209
+    },
+    {
+      "new": "    ",
+      "old": "",
+      "old_end": 22281,
+      "old_start": 22281
+    },
+    {
+      "new": "    ",
+      "old": "",
+      "old_end": 22381,
+      "old_start": 22381
+    },
+    {
+      "new": "\n        except BaseException as search_error:\n            # Failure-only raw retention never replaces the original fault,\n            # original20 gate, or exit2. Any partial diagnostic is inventory only.\n            failure_kind = 'TimeoutError' if type(search_error) is TimeoutError else 'SOURCE_OR_RUNTIME_FAILURE'\n            try:\n                failure_writer(diagnostic_path,diagnostic_context,search_capture,failure_kind,EARLY_G)\n            except BaseException:\n                pass\n            raise",
+      "old": "",
+      "old_end": 22440,
+      "old_start": 22440
+    }
+  ],
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "inverse_edits": [
+    {
+      "new": "search-failure-dia",
+      "new_end": 542,
+      "new_start": 524,
+      "old": ""
+    },
+    {
+      "new": "n",
+      "new_end": 544,
+      "new_start": 543,
+      "old": "l"
+    },
+    {
+      "new": "st",
+      "new_end": 547,
+      "new_start": 545,
+      "old": "bal-eng"
+    },
+    {
+      "new": "c",
+      "new_end": 549,
+      "new_start": 548,
+      "old": "ne"
+    },
+    {
+      "new": "search-failure-dia",
+      "new_end": 593,
+      "new_start": 575,
+      "old": ""
+    },
+    {
+      "new": "n",
+      "new_end": 595,
+      "new_start": 594,
+      "old": "l"
+    },
+    {
+      "new": "st",
+      "new_end": 598,
+      "new_start": 596,
+      "old": "bal-eng"
+    },
+    {
+      "new": "c",
+      "new_end": 600,
+      "new_start": 599,
+      "old": "ne"
+    },
+    {
+      "new": "save_failure_diagnostic(output_path, context_raw, capture, failure_kind, began_ns, *,\n        _clock=CLOCK, _clock_id=CLOCK_ID, _usage=resource.getrusage, _self_id=resource.RUSAGE_SELF,\n        _open=os.open, _mkdir=os.mkdir, _write=os.write, _close=os.close,\n        _escape=json.encoder.encode_basestring_ascii, _hash=hashlib.sha256,\n        _flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW):\n    \"\"\"Best-effort raw builtin data ONLY. No late authority or scientific calls.\n\n    This helper never supplies a positive result. A complete two-file diagnostic\n    still requires Root's separate terminal/failure-window reconciliation.\n    \"\"\"\n    def failure_gate():\n        # Captured native endpoints; no original20 Source callback is invoked.\n        peak = _usage(_self_id).ru_maxrss\n        now = _clock(_clock_id)\n        if (type(_clock) is not types.BuiltinFunctionType or type(_clock_id) is not int\n                or type(_escape) is not types.BuiltinFunctionType\n                or peak >= 524288000 or not began_ns <= now < began_ns+55000000000):\n            raise TimeoutError('failure-only diagnostic window/resource unfinished')\n        return now\n    def encoded(value, maximum):\n        # Exact builtin containers only: no arbitrary iterator/property/default\n        # hook, repr, __str__, or project encoder can execute on this path.\n        chunks = []; size = 0; nodes = 0\n        def append(raw):\n            nonlocal size\n            size += len(raw)\n            if size > maximum: raise ValueError('diagnostic byte bound')\n            chunks.append(raw)\n        def visit(item, depth):\n            nonlocal nodes\n            nodes += 1\n            if nodes > 200000 or depth > 128: raise ValueError('diagnostic structure bound')\n            if nodes % 64 == 1: failure_gate()\n            kind = type(item)\n            if item is None: append(b'null')\n            elif kind is bool: append(b'true' if item else b'false')\n            elif kind is int:\n                if item.bit_length() > 4096: raise ValueError('diagnostic integer bound')\n                append(str(item).encode('ascii'))\n            elif kind is str:\n                if len(item) > 262144: raise ValueError('diagnostic string bound')\n                append(_escape(item).encode('ascii'))\n            elif kind is list or kind is dict:\n                append(b'[' if kind is list else b'{')\n                for index, entry in enumerate(item if kind is list else item.items()):\n                    if index: append(b',')\n                    if kind is dict:\n                        key, child = entry\n                        if type(key) is not str: raise ValueError('diagnostic string key required')\n                        visit(key, depth+1); append(b':'); visit(child, depth+1)\n                    else: visit(entry, depth+1)\n                append(b']' if kind is list else b'}')\n            else: raise ValueError('non-builtin diagnostic value')\n        visit(value, 0); failure_gate()\n        return b''.join(chunks)\n    failure_gate()\n    # context_raw was encoded before the untrusted search delegation.\n    if type(context_raw) is not bytes or len(context_raw) > 65536:\n        raise ValueError('bounded predelegation diagnostic context')\n    available = capture['returned'] is True\n    value = capture['payload'] if available else None\n    metadata = None; metadata_saved = False; total_events = None; event_raw = []\n    prefix_reason = 'NO_RETURNED_RECORD'; metadata_reason = None\n    if type(value) is dict:\n        try:\n            metadata = encoded({key: item for key,item in value.items() if key != 'events'}, 1048576)\n            metadata_saved = True\n        except ValueError:\n            metadata_reason = 'BUILTIN_METADATA_OUTPUT_BOUND_OR_TYPE'\n        events = value.get('events')\n        if type(events) is list:\n            total_events = len(events); used = 0; prefix_reason = 'ALL_RETURNED_EVENTS_SAVED'\n            for event in events:\n                if len(event_raw) >= 2000:\n                    prefix_reason = 'DIAGNOSTIC_EVENT_PREFIX_LIMIT'; break\n                try: raw = encoded(event, 262144)\n                except ValueError:\n                    prefix_reason = 'NEXT_EVENT_OUTPUT_BOUND_OR_TYPE'; break\n                if used+len(raw)+1 > 3*1048576:\n                    prefix_reason = 'DIAGNOSTIC_EVENT_BYTE_LIMIT'; break\n                event_raw.append(raw); used += len(raw)+1\n        else: prefix_reason = 'RETURNED_EVENTS_NOT_BUILTIN_LIST'\n    elif available: metadata_reason = 'RETURNED_VALUE_NOT_BUILTIN_DICT'\n    # These labels are caller observations, never claims trusted from the payload.\n    labels = encoded({'schema':'unit-row-search-failure-diagnostic-v1',\n        'diagnostic_only':True,'qualification':'UNQUALIFIED_UNKNOWN_RAW_PREFIX',\n        'capture_available':available,'capture_is_builtin_dict':type(value) is dict,\n        'engine_return_observed_ns':capture['returned_ns'], 'failure_kind':failure_kind,\n        'metadata_saved':metadata_saved,'metadata_omission_reason':metadata_reason,\n        'returned_event_count':total_events,'saved_event_count':len(event_raw),\n        'omitted_event_count':None if total_events is None else total_events-len(event_raw),\n        'event_prefix_reason':prefix_reason,'may_include_post_deadline_unwind':True,\n        'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n        'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n        'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}, 65536)\n    raw = (b'{\"context\":'+context_raw+b',\"diagnostic\":'+labels+b',\"returned_metadata\":'\n           +(metadata if metadata_saved else b'null')+b',\"events_prefix\":['\n           +b','.join(event_raw)+b']}\\n')\n    if len(raw) > 4*1048576+131072: raise ValueError('whole diagnostic output bound')\n    def write(name, content):\n        failure_gate()\n        fd = _open(output_path+'/'+name, _flags, 0o600)\n        try:\n            offset = 0\n            while offset < len(content):\n                failure_gate()\n                count = _write(fd,content[offset:offset+65536])\n                if count <= 0: raise OSError('diagnostic output unfinished')\n                offset += count\n        finally: _close(fd)\n        failure_gate()\n    failure_gate(); _mkdir(output_path, 0o700)\n    write('unknown-diagnostic.json',raw)\n    marker = encoded({'schema':'unit-row-search-failure-diagnostic-completion-v1',\n        'file':'unknown-diagnostic.json','sha256':_hash(raw).hexdigest(),'bytes':len(raw),\n        'diagnostic_only':True,'positive_joint_gate_accepted':False,\n        'ROOT_resource_accepted':False,'terminal_exit2_and_external_failure_closure_required':True}, 1024)+b'\\n'\n    write('diagnostic-completion.json',marker)\n    failure_gate()\n\ndef ",
+      "new_end": 16587,
+      "new_start": 9767,
+      "old": ""
+    },
+    {
+      "new": "search-failure-dia",
+      "new_end": 19306,
+      "new_start": 19288,
+      "old": ""
+    },
+    {
+      "new": "n",
+      "new_end": 19308,
+      "new_start": 19307,
+      "old": "l"
+    },
+    {
+      "new": "st",
+      "new_end": 19311,
+      "new_start": 19309,
+      "old": "bal-eng"
+    },
+    {
+      "new": "c",
+      "new_end": 19313,
+      "new_start": 19312,
+      "old": "ne"
+    },
+    {
+      "new": "/hilbert_advice_controls",
+      "new_end": 19796,
+      "new_start": 19772,
+      "old": ""
+    },
+    {
+      "new": "'/root/hilbert_advice_controls'",
+      "new_end": 20367,
+      "new_start": 20336,
+      "old": ""
+    },
+    {
+      "new": "search_capture = {'returned':False,'payload':None,'returned_ns':None}\n    ",
+      "new_end": 28074,
+      "new_start": 28000,
+      "old": ""
+    },
+    {
+      "new": "valu",
+      "new_end": 28175,
+      "new_start": 28171,
+      "old": "r"
+    },
+    {
+      "new": " =",
+      "new_end": 28178,
+      "new_start": 28176,
+      "old": "turn"
+    },
+    {
+      "new": "\n        # Save ONLY an actual returned payload before invoke's unchanged\n        # postboundary may reject it. Never call engine methods after failure.\n        search_capture['payload'] = value\n        search_capture['returned'] = True\n        search_capture['returned_ns'] = clock(clock_id)\n        return value",
+      "new_end": 28507,
+      "new_start": 28194,
+      "old": ""
+    },
+    {
+      "new": "diagnostic_run = Path(plan['output_directory'])\n        need(diagnostic_run.is_absolute() and diagnostic_run == diagnostic_run.resolve()\n            and not diagnostic_run.exists(), 'fresh canonical search output before delegation')\n        diagnostic_path = str(diagnostic_run)\n        diagnostic_context = canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],\n            'plan':raw_pin(plan_raw),'sources':plan['sources'],'inputs':plan['inputs'],\n            'language_binding':decode(binding_raw),'joint_began_ns':EARLY_G,\n            'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})\n        failure_writer = save_failure_diagnostic\n        try:\n            ",
+      "new_end": 29976,
+      "new_start": 29271,
+      "old": ""
+    },
+    {
+      "new": "    ",
+      "new_end": 30027,
+      "new_start": 30023,
+      "old": ""
+    },
+    {
+      "new": "    ",
+      "new_end": 30109,
+      "new_start": 30105,
+      "old": ""
+    },
+    {
+      "new": "    ",
+      "new_end": 30225,
+      "new_start": 30221,
+      "old": ""
+    },
+    {
+      "new": "    ",
+      "new_end": 30301,
+      "new_start": 30297,
+      "old": ""
+    },
+    {
+      "new": "    ",
+      "new_end": 30405,
+      "new_start": 30401,
+      "old": ""
+    },
+    {
+      "new": "\n        except BaseException as search_error:\n            # Failure-only raw retention never replaces the original fault,\n            # original20 gate, or exit2. Any partial diagnostic is inventory only.\n            failure_kind = 'TimeoutError' if type(search_error) is TimeoutError else 'SOURCE_OR_RUNTIME_FAILURE'\n            try:\n                failure_writer(diagnostic_path,diagnostic_context,search_capture,failure_kind,EARLY_G)\n            except BaseException:\n                pass\n            raise",
+      "new_end": 30975,
+      "new_start": 30464,
+      "old": ""
+    }
+  ],
+  "parent": {
+    "bytes": 25792,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/unit_row_global_engine_cold_v1.py",
+    "sha256": "4e83784213ae01805648bac7ba8787842db846fabf037b8f3f6a56d5978d6ff2"
+  },
+  "schema": "unit-row-search-failure-diagnostic-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged15_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors"
+  ]
+}
