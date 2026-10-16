@@ -1,0 +1,82 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py
+@@ -7,9 +7,8 @@
+ import copy
+ import hashlib
+ import json
+-import sys
+-
+-VERSION = 'unit-row-phase-diagnostic-controls-v3'
++
++VERSION = 'unit-row-observation-reuse-controls-v2'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -896,12 +895,10 @@
+     record['engine']=e
+     return e
+   degree_endpoint=degree_proposer;validator_endpoint=fresh_validate
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30',file=sys.stderr,flush=True);tick()
+   result=_run_prior30_controls(language=language,engine_factory=observing_factory,adviser=actual_adviser,
+     validate_advice=fresh_validate,degree_proposer=degree_proposer,fallback=fallback,
+     certify_fallback=certify_fallback,tick=tick)
+   need(result['declared_cases']==30 and len(result['cases'])==30,'all prior30 run exactly once unchanged')
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30',file=sys.stderr,flush=True);tick()
+ 
+   # Two explicitly declared component calibrations only. They are never inputs
+   # to the original-root theorem search. The real engine chooses the BRANCH;
+@@ -944,7 +941,6 @@
+       e.rollback(outer)
+       need(canonical(e.state_snapshot())==canonical(before),'exact owned component rollback, no hidden family or member')
+       attempt['restored_sha256']=digest(e.state_snapshot())
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING',file=sys.stderr,flush=True);tick()
+   component_reason=None
+   try:
+     eligible=[v for v in sorted(language.parameters) if v not in language.forbidden]
+@@ -962,8 +958,6 @@
+   except Unavailable as ex:component_reason=str(ex)
+   if component_reason is not None:
+     component_attempts['root_reopening']={'eligibility_gap':component_reason,'authority_accepted':False}
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING',file=sys.stderr,flush=True);tick()
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED',file=sys.stderr,flush=True);tick()
+   occupied_reason=None
+   try:
+     original_fixture=result['artifacts'].get('fixture')
+@@ -1023,7 +1017,6 @@
+   if occupied_reason is not None:
+     component_attempts['occupied_compatible_UI_source']={'eligibility_gap':occupied_reason,'authority_accepted':False}
+   evidence['component_attempts']=component_attempts
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED',file=sys.stderr,flush=True);tick()
+ 
+   # Recompute from full candidate ports and actual state, independently of the
+   # proposal's feature diagnostics. The actual independent validator separately
+@@ -1084,7 +1077,6 @@
+       reason=str(ex)
+     tick();need(reason=='advice consumer: '+expected,'exact malformed rejection, not resource/custody failure')
+     return {'exception_type':'ValueError','reason':reason,'malformed_batch_sha256':digest(b)}
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS',file=sys.stderr,flush=True);tick()
+   fixture=result['artifacts'].get('fixture')
+   if fixture is None:
+     for label in labels[:7]:skip(label,'No genuine returned READY fixture; no fabricated quality or generation evidence.')
+@@ -1154,7 +1146,6 @@
+       'distinct_returned_universals':len(universals),'distinct_returned_terms':len(terms),
+       'scope':'Observed returned universal diversity only; no multi-term fairness, complete generation or absence claim.'})
+ 
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT',file=sys.stderr,flush=True);tick()
+   candidates=[r for r in records if r['token'] is not None]
+   if len(candidates)!=1:
+     for label in labels[7:]:skip(label,'No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.')
+@@ -1311,7 +1302,6 @@
+     passed(fibre_labels[2],{'artifact':'fair_interface.missing_source'})
+ 
+   need(len(extra)==13 and {x['case'] for x in extra}==set(labels+fibre_labels),'all thirteen new declared gates retained exactly once')
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT',file=sys.stderr,flush=True);tick()
+   used_origins={x['origin_fresh_call'] for x in reuse_log};unique_authorities={};used_entries=[]
+   for key,entry in report_receipts.items():
+     tick()
+@@ -1336,5 +1326,4 @@
+   result['fair_interface_scope']=local
+   result['no_generation_claim_from_topk_absence']=True
+   result['control_only_real_order_preserving_suppression_never_target_policy']=True
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN',file=sys.stderr,flush=True);tick()
+   tick();return result

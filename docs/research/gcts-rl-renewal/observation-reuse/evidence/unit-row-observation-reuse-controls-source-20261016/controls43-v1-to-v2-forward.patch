@@ -1,0 +1,304 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-compatible-source-fibres-controls-v1'
++VERSION = 'unit-row-observation-reuse-controls-v2'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -731,6 +731,61 @@
+     'replacement-installs-anchor-only-not-future-obligations',
+     'replacement-owned-nonempty-inner-and-parent-rollback-exact')
+   records=[];extra=[];evidence={};returned={}
++  # In-invocation control REPORT reuse only. The always-fresh delegate below is
++  # still used by every engine, mutation, injected callback and replacement.
++  # Canonical bytes are immutable and distinguish bool/int and absence/zero.
++  report_receipts={};reuse_log=[]
++  reuse_counts={'fresh_calls':0,'recorded_unique_receipts':0,'report_hits':0,'report_misses':0}
++  consumer_version='unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'
++  def authority_bytes():
++    tick()
++    return canonical({'binding':language.binding,'source_bindings':language.source_bindings,
++      'declaration':language.declaration,'policy':language.policy,'theory':language.theory,
++      'parameters':language.parameters,'Gamma':language.gamma,'target':language.target,
++      'forbidden':sorted(language.forbidden),'parameter_set':sorted(language.parameter_set),
++      'input_names':sorted(language.input_names),'binder_names':sorted(language.binder_names),
++      'hole':language.hole,'validator_version':consumer_version}).encode('utf8')
++  def request_bytes(s,d,b):
++    tick();value=(authority_bytes(),canonical(s).encode('utf8'),
++      canonical(d).encode('utf8'),canonical(b).encode('utf8'))
++    tick();return value
++  def fresh_validate(**kwargs):
++    before=request_bytes(kwargs['state'],kwargs['decision'],kwargs['batch'])
++    reuse_counts['fresh_calls']+=1
++    receipt=validate_advice(**kwargs)  # ALWAYS actual fresh guarded Root endpoint.
++    tick();after=request_bytes(kwargs['state'],kwargs['decision'],kwargs['batch'])
++    need(before==after,'full authority/request canonical bytes stable across actual independent delegation')
++    if (kwargs['batch'].get('schema')=='unit-row-goal-branch-advice-batch-v1'
++        and kwargs['batch'].get('status')=='READY' and receipt['mode']=='ADVICE_BATCH'):
++      need(receipt['version']==consumer_version
++        and canonical(receipt['binding']).encode('utf8')==canonical(language.binding).encode('utf8')
++        and canonical(receipt['decision']).encode('utf8')==before[2]
++        and receipt['state_sha256']==digest(kwargs['state'])
++        and receipt['input_sha256']==digest(kwargs['batch'])
++        and all(receipt[k] is False for k in STRONG_FLAGS),'completed current full receipt exact request/authority join')
++      raw=canonical(receipt).encode('utf8');tick()
++      if before in report_receipts:
++        need(report_receipts[before]['receipt']==raw,'same whole request has same complete independent receipt')
++      else:
++        report_receipts[before]={'receipt':raw,'origin_fresh_call':reuse_counts['fresh_calls']}
++        reuse_counts['recorded_unique_receipts']+=1
++    tick();return receipt
++  def report_receipt(s,d,b,site):
++    before=request_bytes(s,d,b);entry=report_receipts.get(before)
++    if entry is None:
++      reuse_counts['report_misses']+=1
++      # Misses remain actual validation, not READY from remember(raw return).
++      value=fresh_validate(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)
++      entry=report_receipts.get(before)
++      need(entry is not None,'report requires one completed full current independent receipt')
++      hit=False
++    else:
++      reuse_counts['report_hits']+=1
++      value=json.loads(entry['receipt'].decode('utf8'));hit=True
++    tick();need(before==request_bytes(s,d,b),'full report request/authority bytes unchanged during reuse')
++    reuse_log.append({'site':site,'reused':hit,'origin_fresh_call':entry['origin_fresh_call'],
++      'state_sha256':digest(s),'decision_sha256':digest(d),'batch_sha256':digest(b),'receipt_sha256':digest(value)})
++    tick();return value
+   local='Genuine current original-language returned-batch and owned-search controls; no degree, proof, speed, learned marking or RL authority.'
+   seam='CONTROL ONLY: malformed literal packets or order-preserving suppression after whole real-batch validation; never used by target search.'
+   def passed(name,value,scope=local):
+@@ -742,8 +797,13 @@
+     tick()
+     if b.get('status')=='READY' and b.get('proposals'):
+       key=digest(b)
+-      if key not in returned:
+-        returned[key]={'state':copy.deepcopy(s),'decision':copy.deepcopy(d),'batch':copy.deepcopy(b)}
++      captured=request_bytes(s,d,b)
++      if key in returned:
++        prior=returned[key]
++        need(prior['request_bytes']==captured,'digest bucket deduplicates only exact whole request/authority bytes')
++      else:
++        returned[key]={'state':copy.deepcopy(s),'decision':copy.deepcopy(d),'batch':copy.deepcopy(b),
++          'request_bytes':captured}
+   def actual_adviser(**kwargs):
+     tick();b=adviser(**kwargs)
+     remember(kwargs['state'],kwargs['decision'],b)
+@@ -757,7 +817,7 @@
+         branch_adviser=None,validate_advice=None,tick=tick)
+     record={'mode':'PRIOR30','engine':None,'token':None,'snapshot':None,
+       'rejection':None,'replacement':None,'replacement_attempt':None,'child_token':None,'child_snapshot':None,
+-      'fresh_calls':0}
++      'fresh_calls':0,'accepted_context':None}
+     records.append(record)
+     prior_degree,prior_adviser,prior_validator=degree_proposer,branch_adviser,validate_advice
+     def observed_degree(**kwargs):
+@@ -811,15 +871,32 @@
+         record['rejection']={'state':copy.deepcopy(kwargs['state']),
+           'decision':copy.deepcopy(kwargs['decision']),'request':copy.deepcopy(kwargs['batch']),
+           'receipt':copy.deepcopy(receipt)}
++      if (record['mode']=='PRIOR30' and record['accepted_context'] is None
++          and receipt['mode']=='PENDING_KEYS' and receipt['selection'] is not None
++          and receipt['rejections']==[]):
++        current=record['engine'].state_snapshot()
++        need(canonical(current['state'])==canonical(kwargs['state'])
++          and kwargs['decision'].get('kind')=='BRANCH'
++          and canonical(receipt['decision'])==canonical(kwargs['decision'])
++          and receipt['state_sha256']==digest(kwargs['state'])
++          and receipt['input_sha256']==digest(kwargs['batch'])
++          and canonical(receipt['binding'])==canonical(language.binding),
++          'actual engine pending callback exact selected global BRANCH/request/whole snapshot')
++        # This registered engine callback runs after its global decision and
++        # before child adoption/place. Only read-only public capture occurs.
++        record['accepted_context']={'snapshot':current,'token':record['engine'].checkpoint(),
++          'state':copy.deepcopy(kwargs['state']),'decision':copy.deepcopy(kwargs['decision']),
++          'request':copy.deepcopy(kwargs['batch']),'receipt':copy.deepcopy(receipt),
++          'authority':authority_bytes()}
+       return receipt
+     e=engine_factory(initial_state=initial_state,degree_proposer=observed_degree,
+       fallback=fallback,certify_fallback=certify_fallback,
+       branch_adviser=observed_adviser,validate_advice=observed_validator,tick=tick)
+     record['engine']=e
+     return e
+-  degree_endpoint=degree_proposer;validator_endpoint=validate_advice
++  degree_endpoint=degree_proposer;validator_endpoint=fresh_validate
+   result=_run_prior30_controls(language=language,engine_factory=observing_factory,adviser=actual_adviser,
+-    validate_advice=validate_advice,degree_proposer=degree_proposer,fallback=fallback,
++    validate_advice=fresh_validate,degree_proposer=degree_proposer,fallback=fallback,
+     certify_fallback=certify_fallback,tick=tick)
+   need(result['declared_cases']==30 and len(result['cases'])==30,'all prior30 run exactly once unchanged')
+ 
+@@ -854,7 +931,7 @@
+       if b['status']!='READY':
+         attempt['eligibility_gap']='Actual bounded component adviser is '+str(b['status'])+'; partial data diagnostic only.'
+         return attempt
+-      receipt=validate_advice(state=copy.deepcopy(after['state']),decision=copy.deepcopy(d),
++      receipt=fresh_validate(state=copy.deepcopy(after['state']),decision=copy.deepcopy(d),
+         batch=copy.deepcopy(b),tick=tick)
+       need(all(receipt[k] is False for k in STRONG_FLAGS),'whole component independent false authority flags')
+       attempt['whole_actual_receipt']=copy.deepcopy(receipt)
+@@ -884,22 +961,58 @@
+   occupied_reason=None
+   try:
+     original_fixture=result['artifacts'].get('fixture')
+-    if original_fixture is None:raise Unavailable('No actual original30 fixture to derive an occupied AX source.')
++    if original_fixture is None:raise Unavailable('No actual original30 fixture to identify its occupied original AX source.')
+     ax_name=original_fixture['derived_from']['AX_name'];u=copy.deepcopy(language.theory['axioms'][ax_name])
+-    selected_tiles=[]
+-    for r in original_fixture['state']['selected']:
+-      pre=r['type_preimage'];row=r['translation'][1]
+-      selected_tiles.append(tile(language,pre['primitive_witness'],pre['ordered_premise_formulas'],
+-        [row+d for d in pre['ordered_offsets']],row,tick))
+-    occupied_ax=tile(language,{'rule':'axiom','name':ax_name,'formula':u},[],[],1,tick)
+-    compatible_state=state(language,selected_tiles+[occupied_ax],tick)
+-    component(compatible_state,'occupied_compatible_UI_source')
+-    component_attempts['occupied_compatible_UI_source']['declaration']={
+-      'AX_name_from_actual_original_fixture':ax_name,'selected_original_AX':occupied_ax,
+-      'source_row':1,'not_target_proof_route':True}
++    matching=[]
++    for rec in records:
++      captured=rec['accepted_context']
++      if captured is None:continue
++      st=captured['state'];d=captured['decision'];selection=captured['receipt']['selection']
++      pre=selection['anchor']['placement_key']['type_preimage'];row=d['row']
++      actual_ax=[x for x in st['selected'] if x['translation']==[0,1]
++        and canonical(x['type_preimage']['primitive_witness'])==canonical({'rule':'axiom','name':ax_name,'formula':u})]
++      if (pre['primitive_witness']['rule']=='mp' and row+pre['ordered_offsets'][0]==1
++          and canonical(pre['ordered_premise_formulas'][0])==canonical(u) and len(actual_ax)==1):
++        matching.append((rec,captured,actual_ax[0]))
++    if not matching:
++      raise Unavailable('No suitable actual accepted pending BRANCH with matching original AX occupied at source1; no reconstructed parent or scratch replacement.')
++    rec,captured,actual_ax=matching[0];e=rec['engine']
++    outer=e.checkpoint();finished=e.state_snapshot()
++    attempt={'scope':'Component adviser observation at an actually selected prior30 pending BRANCH; active family left unchanged, not executed replacement or target trajectory.',
++      'authority_accepted':False,'declaration':{'AX_name_from_actual_original_fixture':ax_name,
++        'selected_original_AX_record':copy.deepcopy(actual_ax),'source_row':1,
++        'not_target_proof_route':True},
++      'actual_callback':{'snapshot':copy.deepcopy(captured['snapshot']),
++        'decision':copy.deepcopy(captured['decision']),'request':copy.deepcopy(captured['request']),
++        'receipt':copy.deepcopy(captured['receipt']),'before_child_adoption_and_placement':True},
++      'finished_outer_before':copy.deepcopy(finished)}
++    component_attempts['occupied_compatible_UI_source']=attempt
++    try:
++      e.rollback(captured['token']);before=e.state_snapshot()
++      need(canonical(before)==canonical(captured['snapshot']) and authority_bytes()==captured['authority'],
++        'same owned engine whole accepted-callback snapshot and authority restored exactly')
++      st=before['state'];d=captured['decision']
++      attempt.update(state=copy.deepcopy(st),before=copy.deepcopy(before),
++        actual_decision=copy.deepcopy(d),after_decision=copy.deepcopy(before))
++      b=adviser(state=copy.deepcopy(st),decision=copy.deepcopy(d),tick=tick,
++        maximum_work=50000,maximum_terms=1,maximum_demands=5,maximum_rounds=3,maximum_proposals=8)
++      attempt['whole_actual_batch']=copy.deepcopy(b);remember(st,d,b)
++      if b['status']!='READY':
++        attempt['eligibility_gap']='Actual bounded scheduled-context adviser is '+str(b['status'])+'; partial data diagnostic only.'
++      else:
++        receipt=fresh_validate(state=copy.deepcopy(st),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)
++        need(all(receipt[k] is False for k in STRONG_FLAGS),'whole scheduled component false authority flags')
++        attempt['whole_actual_receipt']=copy.deepcopy(receipt)
++        need(canonical(e.state_snapshot())==canonical(before),
++          'component call installs nothing and leaves genuine active pending family unchanged')
++    finally:
++      e.rollback(outer);final_finished=e.state_snapshot()
++      need(canonical(final_finished)==canonical(finished),'exact finished prior30 outer state restored after component observation')
++      attempt['finished_outer_after']=copy.deepcopy(final_finished)
++      attempt['restored_sha256']=digest(final_finished)
+   except language.OutsideLanguage as ex:
+     if type(ex) is not language.OutsideLanguage:raise
+-    occupied_reason='Definite original-profile exclusion of occupied-source fixture: '+str(ex)
++    occupied_reason='Definite original-profile exclusion of scheduled occupied-source component: '+str(ex)
+   except Unavailable as ex:occupied_reason=str(ex)
+   if occupied_reason is not None:
+     component_attempts['occupied_compatible_UI_source']={'eligibility_gap':occupied_reason,'authority_accepted':False}
+@@ -953,7 +1066,7 @@
+     return {'features':f,'score':score,'distinct_unoccupied_external_pairs':[[r,json.loads(x)] for r,x in sorted(interfaces)],
+       'unoccupied_external_port_occurrences':external_occurrences}
+   def check(s,d,b):
+-    tick();r=validate_advice(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)
++    tick();r=fresh_validate(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)
+     need(all(r[k] is False for k in STRONG_FLAGS),'independent receipt stronger flags all false')
+     return r
+   def reject(s,d,b,expected):
+@@ -970,7 +1083,7 @@
+   else:
+     s,d,b=fixture['state'],fixture['decision'],fixture['batch']
+     need(b['version']=='unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres','actual current fair-interface adviser version')
+-    receipt=check(s,d,b);rows=[features(s,d,p) for p in b['proposals']]
++    receipt=report_receipt(s,d,b,'fixture-scoring');rows=[features(s,d,p) for p in b['proposals']]
+     order=[(tuple(-v for v in p['score']),canonical(p['anchor_full_key'])) for p in b['proposals']]
+     need(order==sorted(order),'actual whole returned batch has exact score5/full-anchor tie order')
+     evidence['scoring']={'source_artifact':'fixture.batch','actual_batch_sha256':digest(b),
+@@ -1005,7 +1118,7 @@
+     reopening=[];diversity=[];universals=set();terms=set()
+     for batch_sha,entry in returned.items():
+       tick();batch=entry['batch'];st=entry['state'];dec=entry['decision']
+-      observed_receipt=check(st,dec,batch)
++      observed_receipt=report_receipt(st,dec,batch,'returned-batch-observation')
+       for index,p in enumerate(batch['proposals']):
+         observed=features(st,dec,p)
+         for m in p['members']:
+@@ -1022,10 +1135,10 @@
+       'limitations':'Returned top-k only; best-per-full-anchor and top-k discard descriptors. Absence never proves nongeneration. terms1 controls cannot establish multi-term runtime fairness; finite-index scheduling has static review only.'}
+     if not reopening:skip(labels[5],'No genuine returned root-reopening proposal; lawful generation/demotion runtime coverage remains a gap, never fabricated.')
+     else:
+-      sha,entry,index,observed=reopening[0];r=check(entry['state'],entry['decision'],entry['batch'])
++      sha,entry,index,observed=reopening[0];r=report_receipt(entry['state'],entry['decision'],entry['batch'],'reopening-observation')
+       need(observed['features']['quality_class']==0 and entry['batch']['proposals'][index]['installed'] is False,
+         'literal open-root debt remains legal but class0, not pruned or installed')
+-      evidence['reopening']={'actual_batch':entry,'proposal_index':index,'recomputed':observed,'independent_receipt':r}
++      evidence['reopening']={'actual_batch':{k:copy.deepcopy(entry[k]) for k in ('state','decision','batch')},'proposal_index':index,'recomputed':observed,'independent_receipt':r}
+       passed(labels[5],{'artifact':'fair_interface.reopening','actual_returned_class':0})
+     if len(universals)<2:
+       skip(labels[6],'Fewer than two distinct UI universal descriptors genuinely returned. No inference about unseen generation/top-k; terms1 horizon unchanged.')
+@@ -1109,7 +1222,7 @@
+   if 'whole_actual_receipt' not in occupied:
+     skip(fibre_labels[0],occupied.get('eligibility_gap','No complete occupied-source actual READY batch.'))
+   else:
+-    matches=[];source_formula=occupied['declaration']['selected_original_AX']['placement_key']['type_preimage']['primitive_witness']['formula']
++    matches=[];source_formula=occupied['declaration']['selected_original_AX_record']['type_preimage']['primitive_witness']['formula']
+     for index,p in enumerate(occupied['whole_actual_batch']['proposals']):
+       tick()
+       if p['scheme']!='GENERIC_UI_MP':continue
+@@ -1130,7 +1243,7 @@
+     tick();rejection=rec['rejection'];st=rejection['state'];d=rejection['decision']
+     actuals=[x for x in returned.values() if canonical(x['state'])==canonical(st) and canonical(x['decision'])==canonical(d)]
+     if not actuals:continue
+-    entry=actuals[0];batch=entry['batch'];rr=check(st,d,batch)
++    entry=actuals[0];batch=entry['batch'];rr=report_receipt(st,d,batch,'incompatible-read-observation')
+     marks={tuple(p):v for p,v in st['m']};conflicts=[]
+     for rejected in rejection['receipt']['rejections']:
+       key=rejected['key'];pre=key['type_preimage'];row=key['translation'][1]
+@@ -1176,8 +1289,8 @@
+             and o['occupied'] is False and (1,o['row']) not in marks):
+           need(totals[(0,o['row'])]==0 and o['status']=='PENDING' and o['fact_accepted'] is False,
+             'truly absent source output/mark remains unproved PENDING obligation')
+-          receipt=check(st,entry['decision'],entry['batch'])
+-          missing={'actual_batch':entry,'whole_actual_receipt':receipt,'proposal_index':pi,
++          receipt=report_receipt(st,entry['decision'],entry['batch'],'missing-source-observation')
++          missing={'actual_batch':{k:copy.deepcopy(entry[k]) for k in ('state','decision','batch')},'whole_actual_receipt':receipt,'proposal_index':pi,
+             'obligation_index':oi,'missing_literal_point':[1,o['row']],
+             'scope':'Generated compatible missing-read preference, never evidence its premise is a fact.'}
+           break
+@@ -1189,6 +1302,20 @@
+     passed(fibre_labels[2],{'artifact':'fair_interface.missing_source'})
+ 
+   need(len(extra)==13 and {x['case'] for x in extra}==set(labels+fibre_labels),'all thirteen new declared gates retained exactly once')
++  used_origins={x['origin_fresh_call'] for x in reuse_log};unique_authorities={};used_entries=[]
++  for key,entry in report_receipts.items():
++    tick()
++    if entry['origin_fresh_call'] not in used_origins:continue
++    a,st,dec,batch=key;ah=hashlib.sha256(a).hexdigest()
++    if ah in unique_authorities:need(unique_authorities[ah]==a,'whole authority equality before unique output reference')
++    else:unique_authorities[ah]=a
++    used_entries.append({'origin_fresh_call':entry['origin_fresh_call'],'authority_sha256':ah,
++      'state':json.loads(st.decode('utf8')),'decision':json.loads(dec.decode('utf8')),
++      'batch':json.loads(batch.decode('utf8')),'receipt':json.loads(entry['receipt'].decode('utf8'))})
++  evidence['report_observation_reuse']={'counts':copy.deepcopy(reuse_counts),'sites':reuse_log,
++    'authorities':[{'sha256':h,'value':json.loads(b.decode('utf8'))} for h,b in unique_authorities.items()],
++    'entries':used_entries,
++    'scope':'Same-invocation report observations only; exact whole request/effective authority bytes compared, every engine/negative/injected/replacement delegate stays fresh. One full input/receipt per report-used origin and authority, not every fresh call.'}
+   result['cases'].extend(extra);result['artifacts']['fair_interface']=evidence
+   need(len(result['cases'])==43 and len({x['case'] for x in result['cases']})==43,'all forty-three unique cases, no old gate replaced')
+   result['version']=VERSION;result['declared_cases']=43

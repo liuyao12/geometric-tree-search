@@ -1,0 +1,29 @@
+{
+  "check_count": 12,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 26151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-independent-source-20261016/findings-v8.json",
+    "sha256": "5794f0bf4b5a40ca7a9d6ddf5fc2b7a048c0d926d9e58211b8a2e7e8bee3fdf2"
+  },
+  "raw_reference_count": 63,
+  "schema": "phase-diagnostic-cold-independent-handoff-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 49581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-ROOT-source-20261016/unit_row_phase_diagnostic_cold_v8.py",
+    "sha256": "8d0244a3051ecb48fa249e73cadf8603825842d922df9ce33a755628b1365682"
+  },
+  "source_contract": {
+    "bytes": 52801,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-ROOT-source-20261016/Source-contract-v8.json",
+    "sha256": "582ad2eef4c04fd3a5ac4d4e7b24b8270ae438f17fc5a9a0f565f0aa27ffc842"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 7800,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-independent-source-20261016/typed-Source-review-v8.json",
+    "sha256": "d064976c4d3f6eb96adb3c67fd3c69fa9fcd9722986650fd55d4e705534d3a75"
+  }
+}

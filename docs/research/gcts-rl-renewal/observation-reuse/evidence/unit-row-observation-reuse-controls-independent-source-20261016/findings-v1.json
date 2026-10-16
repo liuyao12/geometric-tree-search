@@ -1,0 +1,270 @@
+{
+  "schema": "unit-row-observation-reuse-controls-independent-findings-v1",
+  "scope": "unit-row-observation-reuse-controls-Source",
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored the current advice consumer/validator and its constant-only successors, earlier control-harness/horizon changes, and older logical-checker/codec/family work. Reviewer did not author this controls successor, compatible-fibres adviser, retained engine, c960 or c354. This is a distinct review of controls implementation and dependency joins, not a second mathematical implementation or self-review of the consumer.",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 92136,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+    "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+  },
+  "source_contract": {
+    "bytes": 19089,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "5110142c261225feccb368bf9a44df3c0d0c5e9472347c4ab83e2744e9f5ce28"
+  },
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 92136,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+      "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS_NO_CONCRETE_SCOPED_BLOCKER",
+  "blockers": [],
+  "raw_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-independent-source-20261016/independent-raw-conformance-v1.json",
+    "sha256": "08153d37ee33140a8a1d31a44d136e8819ad3270c8489c3bf3ba1e8e561b6339",
+    "bytes": 16206
+  },
+  "manual_checks": [
+    {
+      "id": "WHOLE-DELTA",
+      "passed": true,
+      "lines": [
+        1,
+        1329
+      ],
+      "finding": "Whole parent43 and current successor read, current contract/handoff and all19 actual literal edits reviewed. Independently checked sequential and unified full forward/inverse bytes, entire AST restoration, all11 earlier definitions and complete22/30 functions. Only ownVERSION/finalwrapper differ. All43 ordered labels and inherited assertions remain."
+    },
+    {
+      "id": "REPORT-ADMISSION",
+      "passed": true,
+      "lines": [
+        734,
+        787
+      ],
+      "finding": "fresh_validate always calls the original Root endpoint with the supplied callback. Before/after full canonical bytes include complete state/decision/batch and binding/full Source map/declaration/policy/effective theory/parameters/Gamma/target/hole/frozen name sets/current consumer version. Only a successful current READY ADVICE_BATCH receipt with exact joins and false strong flags is stored as immutable bytes. Resource, callback, invalidity or postguard failure cannot create a reusable receipt; an existing cache entry cannot bypass this fresh path."
+    },
+    {
+      "id": "REPORT-LOOKUP",
+      "passed": true,
+      "lines": [
+        768,
+        787
+      ],
+      "finding": "The dict key is the entire tuple of canonical byte strings; lookup does not rely on receipt/state hashes or Python bool/int-coercing JSON equality. A miss performs fresh validation. Native tick brackets capture/comparison/reuse. All five consumers are report-only fixture scoring, returned observations, reopening, incompatible-read and missing-source reporting. Local features/order/read assertions remain live."
+    },
+    {
+      "id": "FRESH-CONTROLS",
+      "passed": true,
+      "lines": [
+        817,
+        907
+      ],
+      "finding": "Every engine validation in unchanged old22/30 delegates through fresh_validate; pending checks remain actual independent calls. All malformed/ranking/port/version/later-proposal negatives, injected callback errors, full replacement batch before suppression, changed subsequence and engine revalidation stay fresh. No cache read is on engine selection, pruning, degree, fallback or EOF paths."
+    },
+    {
+      "id": "OBSERVATION-PROVENANCE",
+      "passed": true,
+      "lines": [
+        795,
+        807,
+        1301,
+        1317
+      ],
+      "finding": "remember(raw READY) is observation only. Digest-bucket reuse additionally requires exact full request/authority bytes, otherwise raises. Report entries retain original complete request and immutable receipt with origin call IDs; output includes the used full authority once and full input/receipt per used origin. Private byte tuples, owner tokens and engine objects stay outside serialized artifacts. Counts describe observations/calls, not saved scientific work or causal reuse."
+    },
+    {
+      "id": "ACTUAL-CALLBACK",
+      "passed": true,
+      "lines": [
+        864,
+        897
+      ],
+      "finding": "Only the registered engine validator callback after a successful PENDING_KEYS selection with no rejections captures state_snapshot/checkpoint. Snapshot state/request/decision/receipt/binding joins are checked, kind is BRANCH, and current engine search/_select_branch lifecycle reaches this callback after the real global decision but before child checkpoint/adoption/place. Capture itself only reads public state and stores its owned token; it does not reenter search/decision/place/rollback."
+    },
+    {
+      "id": "OCCUPIED-COMPONENT",
+      "passed": true,
+      "lines": [
+        960,
+        1015
+      ],
+      "finding": "Uses a suitable accepted current callback with an actual original AX occupied at source1 and matching pending MP premise. It restores that same engine token, requires whole snapshot and effective authority equality, calls real adviser plus fresh whole independent validation at the captured decision, installs nothing and preserves the active family. No new global scan is claimed. The component is explicitly different from the old scratch row0 state; actual UI_MP source matching remains mandatory, absence/UNKNOWN is SKIP."
+    },
+    {
+      "id": "ROLLBACK-LIFECYCLE",
+      "passed": true,
+      "lines": [
+        985,
+        1015
+      ],
+      "finding": "Records actual_callback.snapshot/decision/request/receipt, restored inner before/after_decision and complete finished_outer_before/after. The finally block restores the actual finished owner token and compares the whole public snapshot even after interruption; restored_sha256 correctly names the finished outer state. Earlier parent/child transaction tests remain unchanged; no snapshot reverse-edit or historical token is used."
+    },
+    {
+      "id": "PENDING-NOT-ACTIVE-MARK",
+      "passed": true,
+      "lines": [
+        180,
+        198,
+        326,
+        348,
+        864,
+        897
+      ],
+      "finding": "Static correction note is consistent with the code: the original selected UG9 writes its output at9 and read mark at8. A proposed future MP2/UG8 remains uninstalled preference data; installing UI0 and original AX1 need not mark2. Therefore a new UI licence at a later unmarked branch can be legal in principle. The withdrawn claim that a pending universal result necessarily forbids every UI_MP anchor is not a current defect or runtime conclusion. Full current snapshot/consumer legality and actual returned matching determine eligibility."
+    },
+    {
+      "id": "MODEL-AND-QUALIFICATION",
+      "passed": true,
+      "lines": [
+        1217,
+        1329
+      ],
+      "finding": "Same8-callable ABI/schema, all43 exact meanings and noSKIP/no-gap qualification; other9 Sources, input2, original24 root generations, full base fallback/scheduler/candidate identity and all native limits unchanged. Independent feature7/score5/order/read assertions still run. No raw READY/UNKNOWN becomes executable evidence, no proof route or supplied library is added, and no target trajectory or full graph/learned/RL advantage is claimed."
+    }
+  ],
+  "all_case_names": [
+    "genuine-READY-whole-independent-validation",
+    "pending-obligations-never-facts",
+    "malformed-batch-controls",
+    "later-ranked-malformed-proposal-rejected",
+    "genuine-quota-UNKNOWN-diagnostic-only",
+    "UNKNOWN-rejected-by-executable-validator",
+    "empty-hints-preserve-canonical-choice",
+    "quota-UNKNOWN-preserves-canonical-choice",
+    "adviser-Timeout-UNKNOWN-no-exclusion",
+    "adviser-ValueError-propagates",
+    "validator-ValueError-propagates",
+    "actual-anchor-only-no-future-preinstallation",
+    "first-search-exact-root-restoration",
+    "public-rollback-restores-genuine-nonempty-pending",
+    "pending-key-real-current-row-selection",
+    "pending-search-exact-inner-root-restoration",
+    "remote-mark-invalidates-pending-key",
+    "rejected-pending-hint-preserves-canonical-choice",
+    "pending-request-malformed-controls",
+    "global-forced-fill-retires-family-before-fresh-advice",
+    "global-DEAD-overrides-advice",
+    "global-FORCED-overrides-advice",
+    "whole-family-abandoned-with-different-future-key-remaining",
+    "one-fresh-batch-at-same-rejected-BRANCH",
+    "abandoned-future-members-never-installed-or-excluded",
+    "successful-pending-continuity-preserved",
+    "rejection-parent-and-owned-inner-rollback-exact",
+    "fresh-replacement-ValueError-propagates-without-family-commit",
+    "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+    "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "design_note": {
+    "bytes": 11878,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row43-timeout-diagnosis-source-20261016/controls-note-v1.json",
+    "sha256": "2a2dad97fcf464808ab59e35b0321828609532a9a8f30cb1b1738a37e6e84f93"
+  },
+  "guardrails_note": {
+    "bytes": 6631,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-guardrails-source-20261016/guardrails-v1.json",
+    "sha256": "30ed9d484cd10d1b1578691374b3e40d027378423f778e9b56a8c8622493dd82"
+  },
+  "static_context_correction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/static-context-review-correction-v1.json",
+    "sha256": "0a32f88d1d6d8776466ee29ad77922b51ac6b51f6723229a81e6c3eab74cb0f6",
+    "bytes": 2874
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+    "caller_seconds": 90,
+    "encoded_output_bytes": 4194304,
+    "expanded_output_bytes": 16777216,
+    "failure_only_seconds": 55,
+    "finish_seconds": 1,
+    "height": 24,
+    "joint_seconds": 20,
+    "maximum_events": 2000,
+    "maximum_nodes": 128,
+    "owned_seconds": 60,
+    "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+  },
+  "remaining_gates": [
+    "Current Root caller Source/protocol/plan/native integration and once authorization are separate. This review authorizes no actual.",
+    "Fresh full43 result must show43PASSED0SKIP/no additional gaps with all original17/retention17 current prerequisites and complete raw output/native20/512MiB/failure55/owned60/caller90+1 before any target grant.",
+    "All canonical comparison/copy/cache serialization/output remains charged. This Source review predicts no speed or fit and identifies no measured timeout phase. Prior no-record UNKNOWN remains unchanged."
+  ],
+  "bounded_reporting_note": "API.factory wording says engine3 version8; operative current_versions/sources unambiguously pin engine8. This descriptive shorthand supplies no alternate dependency authority.",
+  "not_claimed": {
+    "runtime_controls_qualified": false,
+    "resource_accepted": false,
+    "target_or_proof_accepted": false,
+    "complete_graph_or_GCTS_trajectory": false,
+    "learned_marking_or_RL_benefit": false
+  }
+}

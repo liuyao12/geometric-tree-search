@@ -1,0 +1,276 @@
+{
+  "all43_case_names": [
+    "genuine-READY-whole-independent-validation",
+    "pending-obligations-never-facts",
+    "malformed-batch-controls",
+    "later-ranked-malformed-proposal-rejected",
+    "genuine-quota-UNKNOWN-diagnostic-only",
+    "UNKNOWN-rejected-by-executable-validator",
+    "empty-hints-preserve-canonical-choice",
+    "quota-UNKNOWN-preserves-canonical-choice",
+    "adviser-Timeout-UNKNOWN-no-exclusion",
+    "adviser-ValueError-propagates",
+    "validator-ValueError-propagates",
+    "actual-anchor-only-no-future-preinstallation",
+    "first-search-exact-root-restoration",
+    "public-rollback-restores-genuine-nonempty-pending",
+    "pending-key-real-current-row-selection",
+    "pending-search-exact-inner-root-restoration",
+    "remote-mark-invalidates-pending-key",
+    "rejected-pending-hint-preserves-canonical-choice",
+    "pending-request-malformed-controls",
+    "global-forced-fill-retires-family-before-fresh-advice",
+    "global-DEAD-overrides-advice",
+    "global-FORCED-overrides-advice",
+    "whole-family-abandoned-with-different-future-key-remaining",
+    "one-fresh-batch-at-same-rejected-BRANCH",
+    "abandoned-future-members-never-installed-or-excluded",
+    "successful-pending-continuity-preserved",
+    "rejection-parent-and-owned-inner-rollback-exact",
+    "fresh-replacement-ValueError-propagates-without-family-commit",
+    "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+    "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "edits": [
+    {
+      "after_utf8": "VERSION = 'unit-row-observation-reuse-controls-v2'",
+      "before_utf8": "VERSION = 'unit-row-compatible-source-fibres-controls-v1'",
+      "forward_offset_at_this_step": 339
+    },
+    {
+      "after_utf8": "  records=[];extra=[];evidence={};returned={}\n  # In-invocation control REPORT reuse only. The always-fresh delegate below is\n  # still used by every engine, mutation, injected callback and replacement.\n  # Canonical bytes are immutable and distinguish bool/int and absence/zero.\n  report_receipts={};reuse_log=[]\n  reuse_counts={'fresh_calls':0,'recorded_unique_receipts':0,'report_hits':0,'report_misses':0}\n  consumer_version='unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'\n  def authority_bytes():\n    tick()\n    return canonical({'binding':language.binding,'source_bindings':language.source_bindings,\n      'declaration':language.declaration,'policy':language.policy,'theory':language.theory,\n      'parameters':language.parameters,'Gamma':language.gamma,'target':language.target,\n      'forbidden':sorted(language.forbidden),'parameter_set':sorted(language.parameter_set),\n      'input_names':sorted(language.input_names),'binder_names':sorted(language.binder_names),\n      'hole':language.hole,'validator_version':consumer_version}).encode('utf8')\n  def request_bytes(s,d,b):\n    tick();value=(authority_bytes(),canonical(s).encode('utf8'),\n      canonical(d).encode('utf8'),canonical(b).encode('utf8'))\n    tick();return value\n  def fresh_validate(**kwargs):\n    before=request_bytes(kwargs['state'],kwargs['decision'],kwargs['batch'])\n    reuse_counts['fresh_calls']+=1\n    receipt=validate_advice(**kwargs)  # ALWAYS actual fresh guarded Root endpoint.\n    tick();after=request_bytes(kwargs['state'],kwargs['decision'],kwargs['batch'])\n    need(before==after,'full authority/request canonical bytes stable across actual independent delegation')\n    if (kwargs['batch'].get('schema')=='unit-row-goal-branch-advice-batch-v1'\n        and kwargs['batch'].get('status')=='READY' and receipt['mode']=='ADVICE_BATCH'):\n      need(receipt['version']==consumer_version\n        and canonical(receipt['binding']).encode('utf8')==canonical(language.binding).encode('utf8')\n        and canonical(receipt['decision']).encode('utf8')==before[2]\n        and receipt['state_sha256']==digest(kwargs['state'])\n        and receipt['input_sha256']==digest(kwargs['batch'])\n        and all(receipt[k] is False for k in STRONG_FLAGS),'completed current full receipt exact request/authority join')\n      raw=canonical(receipt).encode('utf8');tick()\n      if before in report_receipts:\n        need(report_receipts[before]['receipt']==raw,'same whole request has same complete independent receipt')\n      else:\n        report_receipts[before]={'receipt':raw,'origin_fresh_call':reuse_counts['fresh_calls']}\n        reuse_counts['recorded_unique_receipts']+=1\n    tick();return receipt\n  def report_receipt(s,d,b,site):\n    before=request_bytes(s,d,b);entry=report_receipts.get(before)\n    if entry is None:\n      reuse_counts['report_misses']+=1\n      # Misses remain actual validation, not READY from remember(raw return).\n      value=fresh_validate(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)\n      entry=report_receipts.get(before)\n      need(entry is not None,'report requires one completed full current independent receipt')\n      hit=False\n    else:\n      reuse_counts['report_hits']+=1\n      value=json.loads(entry['receipt'].decode('utf8'));hit=True\n    tick();need(before==request_bytes(s,d,b),'full report request/authority bytes unchanged during reuse')\n    reuse_log.append({'site':site,'reused':hit,'origin_fresh_call':entry['origin_fresh_call'],\n      'state_sha256':digest(s),'decision_sha256':digest(d),'batch_sha256':digest(b),'receipt_sha256':digest(value)})\n    tick();return value\n  local=",
+      "before_utf8": "  records=[];extra=[];evidence={};returned={}\n  local=",
+      "forward_offset_at_this_step": 49950
+    },
+    {
+      "after_utf8": "      captured=request_bytes(s,d,b)\n      if key in returned:\n        prior=returned[key]\n        need(prior['request_bytes']==captured,'digest bucket deduplicates only exact whole request/authority bytes')\n      else:\n        returned[key]={'state':copy.deepcopy(s),'decision':copy.deepcopy(d),'batch':copy.deepcopy(b),\n          'request_bytes':captured}",
+      "before_utf8": "      if key not in returned:\n        returned[key]={'state':copy.deepcopy(s),'decision':copy.deepcopy(d),'batch':copy.deepcopy(b)}",
+      "forward_offset_at_this_step": 54354
+    },
+    {
+      "after_utf8": "'fresh_calls':0,'accepted_context':None}\n    records.append(record)",
+      "before_utf8": "'fresh_calls':0}\n    records.append(record)",
+      "forward_offset_at_this_step": 55496
+    },
+    {
+      "after_utf8": "      if (record['mode']=='PRIOR30' and record['accepted_context'] is None\n          and receipt['mode']=='PENDING_KEYS' and receipt['selection'] is not None\n          and receipt['rejections']==[]):\n        current=record['engine'].state_snapshot()\n        need(canonical(current['state'])==canonical(kwargs['state'])\n          and kwargs['decision'].get('kind')=='BRANCH'\n          and canonical(receipt['decision'])==canonical(kwargs['decision'])\n          and receipt['state_sha256']==digest(kwargs['state'])\n          and receipt['input_sha256']==digest(kwargs['batch'])\n          and canonical(receipt['binding'])==canonical(language.binding),\n          'actual engine pending callback exact selected global BRANCH/request/whole snapshot')\n        # This registered engine callback runs after its global decision and\n        # before child adoption/place. Only read-only public capture occurs.\n        record['accepted_context']={'snapshot':current,'token':record['engine'].checkpoint(),\n          'state':copy.deepcopy(kwargs['state']),'decision':copy.deepcopy(kwargs['decision']),\n          'request':copy.deepcopy(kwargs['batch']),'receipt':copy.deepcopy(receipt),\n          'authority':authority_bytes()}\n      return receipt\n    e=engine_factory(initial_state=initial_state,degree_proposer=observed_degree,",
+      "before_utf8": "      return receipt\n    e=engine_factory(initial_state=initial_state,degree_proposer=observed_degree,",
+      "forward_offset_at_this_step": 59025
+    },
+    {
+      "after_utf8": "degree_endpoint=degree_proposer;validator_endpoint=fresh_validate",
+      "before_utf8": "degree_endpoint=degree_proposer;validator_endpoint=validate_advice",
+      "forward_offset_at_this_step": 60524
+    },
+    {
+      "after_utf8": "result=_run_prior30_controls(language=language,engine_factory=observing_factory,adviser=actual_adviser,\n    validate_advice=fresh_validate,",
+      "before_utf8": "result=_run_prior30_controls(language=language,engine_factory=observing_factory,adviser=actual_adviser,\n    validate_advice=validate_advice,",
+      "forward_offset_at_this_step": 60592
+    },
+    {
+      "after_utf8": "      receipt=fresh_validate(state=copy.deepcopy(after['state']),decision=copy.deepcopy(d),\n        batch=copy.deepcopy(b),tick=tick)",
+      "before_utf8": "      receipt=validate_advice(state=copy.deepcopy(after['state']),decision=copy.deepcopy(d),\n        batch=copy.deepcopy(b),tick=tick)",
+      "forward_offset_at_this_step": 62871
+    },
+    {
+      "after_utf8": "  occupied_reason=None\n  try:\n    original_fixture=result['artifacts'].get('fixture')\n    if original_fixture is None:raise Unavailable('No actual original30 fixture to identify its occupied original AX source.')\n    ax_name=original_fixture['derived_from']['AX_name'];u=copy.deepcopy(language.theory['axioms'][ax_name])\n    matching=[]\n    for rec in records:\n      captured=rec['accepted_context']\n      if captured is None:continue\n      st=captured['state'];d=captured['decision'];selection=captured['receipt']['selection']\n      pre=selection['anchor']['placement_key']['type_preimage'];row=d['row']\n      actual_ax=[x for x in st['selected'] if x['translation']==[0,1]\n        and canonical(x['type_preimage']['primitive_witness'])==canonical({'rule':'axiom','name':ax_name,'formula':u})]\n      if (pre['primitive_witness']['rule']=='mp' and row+pre['ordered_offsets'][0]==1\n          and canonical(pre['ordered_premise_formulas'][0])==canonical(u) and len(actual_ax)==1):\n        matching.append((rec,captured,actual_ax[0]))\n    if not matching:\n      raise Unavailable('No suitable actual accepted pending BRANCH with matching original AX occupied at source1; no reconstructed parent or scratch replacement.')\n    rec,captured,actual_ax=matching[0];e=rec['engine']\n    outer=e.checkpoint();finished=e.state_snapshot()\n    attempt={'scope':'Component adviser observation at an actually selected prior30 pending BRANCH; active family left unchanged, not executed replacement or target trajectory.',\n      'authority_accepted':False,'declaration':{'AX_name_from_actual_original_fixture':ax_name,\n        'selected_original_AX_record':copy.deepcopy(actual_ax),'source_row':1,\n        'not_target_proof_route':True},\n      'actual_callback':{'snapshot':copy.deepcopy(captured['snapshot']),\n        'decision':copy.deepcopy(captured['decision']),'request':copy.deepcopy(captured['request']),\n        'receipt':copy.deepcopy(captured['receipt']),'before_child_adoption_and_placement':True},\n      'finished_outer_before':copy.deepcopy(finished)}\n    component_attempts['occupied_compatible_UI_source']=attempt\n    try:\n      e.rollback(captured['token']);before=e.state_snapshot()\n      need(canonical(before)==canonical(captured['snapshot']) and authority_bytes()==captured['authority'],\n        'same owned engine whole accepted-callback snapshot and authority restored exactly')\n      st=before['state'];d=captured['decision']\n      attempt.update(state=copy.deepcopy(st),before=copy.deepcopy(before),\n        actual_decision=copy.deepcopy(d),after_decision=copy.deepcopy(before))\n      b=adviser(state=copy.deepcopy(st),decision=copy.deepcopy(d),tick=tick,\n        maximum_work=50000,maximum_terms=1,maximum_demands=5,maximum_rounds=3,maximum_proposals=8)\n      attempt['whole_actual_batch']=copy.deepcopy(b);remember(st,d,b)\n      if b['status']!='READY':\n        attempt['eligibility_gap']='Actual bounded scheduled-context adviser is '+str(b['status'])+'; partial data diagnostic only.'\n      else:\n        receipt=fresh_validate(state=copy.deepcopy(st),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)\n        need(all(receipt[k] is False for k in STRONG_FLAGS),'whole scheduled component false authority flags')\n        attempt['whole_actual_receipt']=copy.deepcopy(receipt)\n        need(canonical(e.state_snapshot())==canonical(before),\n          'component call installs nothing and leaves genuine active pending family unchanged')\n    finally:\n      e.rollback(outer);final_finished=e.state_snapshot()\n      need(canonical(final_finished)==canonical(finished),'exact finished prior30 outer state restored after component observation')\n      attempt['finished_outer_after']=copy.deepcopy(final_finished)\n      attempt['restored_sha256']=digest(final_finished)\n  except language.OutsideLanguage as ex:\n    if type(ex) is not language.OutsideLanguage:raise\n    occupied_reason='Definite original-profile exclusion of scheduled occupied-source component: '+str(ex)\n  except Unavailable as ex:occupied_reason=str(ex)\n  if occupied_reason is not None:\n    component_attempts['occupied_compatible_UI_source']={'eligibility_gap':occupied_reason,'authority_accepted':False}\n",
+      "before_utf8": "  occupied_reason=None\n  try:\n    original_fixture=result['artifacts'].get('fixture')\n    if original_fixture is None:raise Unavailable('No actual original30 fixture to derive an occupied AX source.')\n    ax_name=original_fixture['derived_from']['AX_name'];u=copy.deepcopy(language.theory['axioms'][ax_name])\n    selected_tiles=[]\n    for r in original_fixture['state']['selected']:\n      pre=r['type_preimage'];row=r['translation'][1]\n      selected_tiles.append(tile(language,pre['primitive_witness'],pre['ordered_premise_formulas'],\n        [row+d for d in pre['ordered_offsets']],row,tick))\n    occupied_ax=tile(language,{'rule':'axiom','name':ax_name,'formula':u},[],[],1,tick)\n    compatible_state=state(language,selected_tiles+[occupied_ax],tick)\n    component(compatible_state,'occupied_compatible_UI_source')\n    component_attempts['occupied_compatible_UI_source']['declaration']={\n      'AX_name_from_actual_original_fixture':ax_name,'selected_original_AX':occupied_ax,\n      'source_row':1,'not_target_proof_route':True}\n  except language.OutsideLanguage as ex:\n    if type(ex) is not language.OutsideLanguage:raise\n    occupied_reason='Definite original-profile exclusion of occupied-source fixture: '+str(ex)\n  except Unavailable as ex:occupied_reason=str(ex)\n  if occupied_reason is not None:\n    component_attempts['occupied_compatible_UI_source']={'eligibility_gap':occupied_reason,'authority_accepted':False}\n",
+      "forward_offset_at_this_step": 64553
+    },
+    {
+      "after_utf8": "    tick();r=fresh_validate(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)\n    need(all(r[k] is False for k in STRONG_FLAGS),'independent receipt stronger flags all false')",
+      "before_utf8": "    tick();r=validate_advice(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)\n    need(all(r[k] is False for k in STRONG_FLAGS),'independent receipt stronger flags all false')",
+      "forward_offset_at_this_step": 71686
+    },
+    {
+      "after_utf8": "receipt=report_receipt(s,d,b,'fixture-scoring');rows=[features(s,d,p) for p in b['proposals']]",
+      "before_utf8": "receipt=check(s,d,b);rows=[features(s,d,p) for p in b['proposals']]",
+      "forward_offset_at_this_step": 72685
+    },
+    {
+      "after_utf8": "observed_receipt=report_receipt(st,dec,batch,'returned-batch-observation')",
+      "before_utf8": "observed_receipt=check(st,dec,batch)",
+      "forward_offset_at_this_step": 75842
+    },
+    {
+      "after_utf8": "sha,entry,index,observed=reopening[0];r=report_receipt(entry['state'],entry['decision'],entry['batch'],'reopening-observation')",
+      "before_utf8": "sha,entry,index,observed=reopening[0];r=check(entry['state'],entry['decision'],entry['batch'])",
+      "forward_offset_at_this_step": 77262
+    },
+    {
+      "after_utf8": "source_formula=occupied['declaration']['selected_original_AX_record']['type_preimage']['primitive_witness']['formula']",
+      "before_utf8": "source_formula=occupied['declaration']['selected_original_AX']['placement_key']['type_preimage']['primitive_witness']['formula']",
+      "forward_offset_at_this_step": 84147
+    },
+    {
+      "after_utf8": "entry=actuals[0];batch=entry['batch'];rr=report_receipt(st,d,batch,'incompatible-read-observation')",
+      "before_utf8": "entry=actuals[0];batch=entry['batch'];rr=check(st,d,batch)",
+      "forward_offset_at_this_step": 85838
+    },
+    {
+      "after_utf8": "receipt=report_receipt(st,entry['decision'],entry['batch'],'missing-source-observation')",
+      "before_utf8": "receipt=check(st,entry['decision'],entry['batch'])",
+      "forward_offset_at_this_step": 89122
+    },
+    {
+      "after_utf8": "evidence['reopening']={'actual_batch':{k:copy.deepcopy(entry[k]) for k in ('state','decision','batch')},",
+      "before_utf8": "evidence['reopening']={'actual_batch':entry,",
+      "forward_offset_at_this_step": 77594
+    },
+    {
+      "after_utf8": "missing={'actual_batch':{k:copy.deepcopy(entry[k]) for k in ('state','decision','batch')},",
+      "before_utf8": "missing={'actual_batch':entry,",
+      "forward_offset_at_this_step": 89281
+    },
+    {
+      "after_utf8": "  used_origins={x['origin_fresh_call'] for x in reuse_log};unique_authorities={};used_entries=[]\n  for key,entry in report_receipts.items():\n    tick()\n    if entry['origin_fresh_call'] not in used_origins:continue\n    a,st,dec,batch=key;ah=hashlib.sha256(a).hexdigest()\n    if ah in unique_authorities:need(unique_authorities[ah]==a,'whole authority equality before unique output reference')\n    else:unique_authorities[ah]=a\n    used_entries.append({'origin_fresh_call':entry['origin_fresh_call'],'authority_sha256':ah,\n      'state':json.loads(st.decode('utf8')),'decision':json.loads(dec.decode('utf8')),\n      'batch':json.loads(batch.decode('utf8')),'receipt':json.loads(entry['receipt'].decode('utf8'))})\n  evidence['report_observation_reuse']={'counts':copy.deepcopy(reuse_counts),'sites':reuse_log,\n    'authorities':[{'sha256':h,'value':json.loads(b.decode('utf8'))} for h,b in unique_authorities.items()],\n    'entries':used_entries,\n    'scope':'Same-invocation report observations only; exact whole request/effective authority bytes compared, every engine/negative/injected/replacement delegate stays fresh. One full input/receipt per report-used origin and authority, not every fresh call.'}\n  result['cases'].extend(extra);result['artifacts']['fair_interface']=evidence\n  need(len(result['cases'])==43",
+      "before_utf8": "  result['cases'].extend(extra);result['artifacts']['fair_interface']=evidence\n  need(len(result['cases'])==43",
+      "forward_offset_at_this_step": 90080
+    }
+  ],
+  "forward_reconstructs_entire_source": true,
+  "inverse_reconstructs_entire_parent": true,
+  "parent_source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "report_only_call_sites": [
+    {
+      "line": 1086,
+      "site": "fixture-scoring"
+    },
+    {
+      "line": 1246,
+      "site": "incompatible-read-observation"
+    },
+    {
+      "line": 1121,
+      "site": "returned-batch-observation"
+    },
+    {
+      "line": 1138,
+      "site": "reopening-observation"
+    },
+    {
+      "line": 1292,
+      "site": "missing-source-observation"
+    }
+  ],
+  "schema": "unit-row-observation-reuse-controls-sequential-byte-delta-v2",
+  "scientific_calls": 0,
+  "sequential_regions": 19,
+  "source": {
+    "bytes": 92136,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+    "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+  },
+  "unchanged_nested_functions": [
+    {
+      "name": "features",
+      "raw_AST_exact": true,
+      "sha256": "518435dcb0d9b607158a6a6c98ed1bdf00a97c7b10ce83189f7d5ef41ebfa3a5"
+    },
+    {
+      "name": "nodes",
+      "raw_AST_exact": true,
+      "sha256": "70caddde3c63924d241c3346a4529fdd150f5a0b9d51fef9dda9d9233ff6ff46"
+    },
+    {
+      "name": "reject",
+      "raw_AST_exact": true,
+      "sha256": "26ac5302476ef8c9b18c8824e0b3a867a5a2d66a0f889e02b9fecc6647e93aaa"
+    },
+    {
+      "name": "observed_adviser",
+      "raw_AST_exact": true,
+      "sha256": "16750d828ff787fa291c4b3d33b7d747675b0fca5e814926edd4bc1eafb26788"
+    },
+    {
+      "name": "observed_degree",
+      "raw_AST_exact": true,
+      "sha256": "9a6593d785a332eb830b9a670f1ca82fda23f56e52e6da08a0734da8c2b36de6"
+    }
+  ],
+  "unchanged_old30_definitions": [
+    {
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_AST_exact": true,
+      "raw_sha256": "1bfb3ab02870cf57260ad49ecd68159e8b9fab808d71399e50f30533562c0bfd"
+    },
+    {
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_AST_exact": true,
+      "raw_sha256": "b8658becece9d36bfc66968f086ccedfc08495b54261b2104206d07c09a1bb36"
+    },
+    {
+      "name": "need",
+      "ordinal": 2,
+      "raw_AST_exact": true,
+      "raw_sha256": "aa140feb98f72734704d885983d92f08a327fe22bec968da0dc273a63f817f91"
+    },
+    {
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_AST_exact": true,
+      "raw_sha256": "164d176a437c1e1bc2358db13b42955e38cf8c8c8e003ad2d57c3d3ed0929d06"
+    },
+    {
+      "name": "digest",
+      "ordinal": 4,
+      "raw_AST_exact": true,
+      "raw_sha256": "f3e8c46a05bd8e4a89e9d087fdc05177b18ce63355e98c2350b27b10297bf681"
+    },
+    {
+      "name": "tile",
+      "ordinal": 5,
+      "raw_AST_exact": true,
+      "raw_sha256": "9b7a29e4366e4ef2bae556ee54a0adbfbb2784d5bba7383d70dc677de226c377"
+    },
+    {
+      "name": "state",
+      "ordinal": 6,
+      "raw_AST_exact": true,
+      "raw_sha256": "7ebc944c5c72d82549784d9051c6ecb0ad426c64613fa95960e0dc7cfaccecb0"
+    },
+    {
+      "name": "ug",
+      "ordinal": 7,
+      "raw_AST_exact": true,
+      "raw_sha256": "a7556b0c378b78803e4cf134869efe9624382976258d649bb1d93d99eb9df113"
+    },
+    {
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_AST_exact": true,
+      "raw_sha256": "3814781b8ba1395c5622f7fcd2ba094e7e90c19740adb2b5242fdb358149b7f0"
+    },
+    {
+      "name": "run_controls",
+      "ordinal": 9,
+      "raw_AST_exact": true,
+      "raw_sha256": "5866800ad90e7f541bd7a542ef8db7438f549f924dd8f98d8edcd2c40394d424"
+    },
+    {
+      "name": "run_controls",
+      "ordinal": 10,
+      "raw_AST_exact": true,
+      "raw_sha256": "de7a80b7793a56a218094a846d80b171720266b4129f6ace5515b9bc2364ee2f"
+    }
+  ]
+}

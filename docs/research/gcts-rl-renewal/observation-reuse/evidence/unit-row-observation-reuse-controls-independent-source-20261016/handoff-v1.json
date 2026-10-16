@@ -1,0 +1,41 @@
+{
+  "schema": "unit-row-observation-reuse-controls-independent-handoff-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source_review_passed": true,
+  "scope": "unit-row-observation-reuse-controls-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "bytes": 92136,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+    "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+  },
+  "source_contract": {
+    "bytes": 19089,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "5110142c261225feccb368bf9a44df3c0d0c5e9472347c4ab83e2744e9f5ce28"
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "79c7348902ba9b368372a11edab2933c60650aa07948d03b27ece0c42b97f9a4",
+    "bytes": 6345
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "60f361241bf630e7e9e5bcb3d0c96561947ccbd4bd122656eb76617fe2356c07",
+    "bytes": 16029
+  },
+  "raw_conformance": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-independent-source-20261016/independent-raw-conformance-v1.json",
+    "sha256": "08153d37ee33140a8a1d31a44d136e8819ad3270c8489c3bf3ba1e8e561b6339",
+    "bytes": 16206
+  },
+  "authorship_disclosure": "Reviewer authored the current advice consumer/validator and its constant-only successors, earlier control-harness/horizon changes, and older logical-checker/codec/family work. Reviewer did not author this controls successor, compatible-fibres adviser, retained engine, c960 or c354. This is a distinct review of controls implementation and dependency joins, not a second mathematical implementation or self-review of the consumer.",
+  "summary": "No concrete scoped blocker after whole Source/contract and both19-edit/full-patch inverse review. All43 case meanings preserved; report-only exact-input reuse and real owned accepted-PENDING capture remain separate from fresh engine/control validation. No execution or actual grant.",
+  "remaining_gates": [
+    "Current Root caller Source/protocol/plan/native integration and once authorization are separate. This review authorizes no actual.",
+    "Fresh full43 result must show43PASSED0SKIP/no additional gaps with all original17/retention17 current prerequisites and complete raw output/native20/512MiB/failure55/owned60/caller90+1 before any target grant.",
+    "All canonical comparison/copy/cache serialization/output remains charged. This Source review predicts no speed or fit and identifies no measured timeout phase. Prior no-record UNKNOWN remains unchanged."
+  ]
+}

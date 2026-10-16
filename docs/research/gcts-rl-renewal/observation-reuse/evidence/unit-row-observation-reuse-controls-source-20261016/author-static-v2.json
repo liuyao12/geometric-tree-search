@@ -1,0 +1,360 @@
+{
+  "all_author_static_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 20,
+  "checks": [
+    {
+      "check": "AST parse and compile only",
+      "evidence": "Compiled object never executed. No scientific imports/functions/models/kernels/tests/clocks/actuals.",
+      "passed": true
+    },
+    {
+      "check": "selected immutable Source pin",
+      "evidence": {
+        "bytes": 92136,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+        "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+      },
+      "passed": true
+    },
+    {
+      "check": "entire Source sequential forward/inverse",
+      "evidence": {
+        "parent": {
+          "bytes": 82817,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+          "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+        },
+        "sequential_regions": 19
+      },
+      "passed": true
+    },
+    {
+      "check": "old30 eleven definitions raw/AST exact",
+      "evidence": [
+        {
+          "name": "Unavailable",
+          "ordinal": 0,
+          "raw_AST_exact": true,
+          "raw_sha256": "1bfb3ab02870cf57260ad49ecd68159e8b9fab808d71399e50f30533562c0bfd"
+        },
+        {
+          "name": "CallbackExhausted",
+          "ordinal": 1,
+          "raw_AST_exact": true,
+          "raw_sha256": "b8658becece9d36bfc66968f086ccedfc08495b54261b2104206d07c09a1bb36"
+        },
+        {
+          "name": "need",
+          "ordinal": 2,
+          "raw_AST_exact": true,
+          "raw_sha256": "aa140feb98f72734704d885983d92f08a327fe22bec968da0dc273a63f817f91"
+        },
+        {
+          "name": "canonical",
+          "ordinal": 3,
+          "raw_AST_exact": true,
+          "raw_sha256": "164d176a437c1e1bc2358db13b42955e38cf8c8c8e003ad2d57c3d3ed0929d06"
+        },
+        {
+          "name": "digest",
+          "ordinal": 4,
+          "raw_AST_exact": true,
+          "raw_sha256": "f3e8c46a05bd8e4a89e9d087fdc05177b18ce63355e98c2350b27b10297bf681"
+        },
+        {
+          "name": "tile",
+          "ordinal": 5,
+          "raw_AST_exact": true,
+          "raw_sha256": "9b7a29e4366e4ef2bae556ee54a0adbfbb2784d5bba7383d70dc677de226c377"
+        },
+        {
+          "name": "state",
+          "ordinal": 6,
+          "raw_AST_exact": true,
+          "raw_sha256": "7ebc944c5c72d82549784d9051c6ecb0ad426c64613fa95960e0dc7cfaccecb0"
+        },
+        {
+          "name": "ug",
+          "ordinal": 7,
+          "raw_AST_exact": true,
+          "raw_sha256": "a7556b0c378b78803e4cf134869efe9624382976258d649bb1d93d99eb9df113"
+        },
+        {
+          "name": "obligations",
+          "ordinal": 8,
+          "raw_AST_exact": true,
+          "raw_sha256": "3814781b8ba1395c5622f7fcd2ba094e7e90c19740adb2b5242fdb358149b7f0"
+        },
+        {
+          "name": "run_controls",
+          "ordinal": 9,
+          "raw_AST_exact": true,
+          "raw_sha256": "5866800ad90e7f541bd7a542ef8db7438f549f924dd8f98d8edcd2c40394d424"
+        },
+        {
+          "name": "run_controls",
+          "ordinal": 10,
+          "raw_AST_exact": true,
+          "raw_sha256": "de7a80b7793a56a218094a846d80b171720266b4129f6ace5515b9bc2364ee2f"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "all43 case names and count preserved",
+      "evidence": [
+        "genuine-READY-whole-independent-validation",
+        "pending-obligations-never-facts",
+        "malformed-batch-controls",
+        "later-ranked-malformed-proposal-rejected",
+        "genuine-quota-UNKNOWN-diagnostic-only",
+        "UNKNOWN-rejected-by-executable-validator",
+        "empty-hints-preserve-canonical-choice",
+        "quota-UNKNOWN-preserves-canonical-choice",
+        "adviser-Timeout-UNKNOWN-no-exclusion",
+        "adviser-ValueError-propagates",
+        "validator-ValueError-propagates",
+        "actual-anchor-only-no-future-preinstallation",
+        "first-search-exact-root-restoration",
+        "public-rollback-restores-genuine-nonempty-pending",
+        "pending-key-real-current-row-selection",
+        "pending-search-exact-inner-root-restoration",
+        "remote-mark-invalidates-pending-key",
+        "rejected-pending-hint-preserves-canonical-choice",
+        "pending-request-malformed-controls",
+        "global-forced-fill-retires-family-before-fresh-advice",
+        "global-DEAD-overrides-advice",
+        "global-FORCED-overrides-advice",
+        "whole-family-abandoned-with-different-future-key-remaining",
+        "one-fresh-batch-at-same-rejected-BRANCH",
+        "abandoned-future-members-never-installed-or-excluded",
+        "successful-pending-continuity-preserved",
+        "rejection-parent-and-owned-inner-rollback-exact",
+        "fresh-replacement-ValueError-propagates-without-family-commit",
+        "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+        "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+        "real-returned-interface-features-score-and-order",
+        "forged-interface-feature-and-score-rejections",
+        "Boolean-versus-integer-feature-and-score-rejections",
+        "obsolete-adviser-version-rejected",
+        "later-ranked-quality-defect-and-order-rejected",
+        "real-returned-root-reopening-remains-legal-and-demoted",
+        "real-returned-universal-diversity-with-declared-term-horizon",
+        "nonempty-READY-replacement-adopted-after-definite-rejection",
+        "replacement-installs-anchor-only-not-future-obligations",
+        "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+        "compatible-occupied-UI-source-fibre-returned-and-validated",
+        "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+        "missing-UI-source-remains-PENDING-not-a-fact"
+      ],
+      "passed": true
+    },
+    {
+      "check": "same eight kwargs/API/result schema",
+      "evidence": [
+        "language",
+        "engine_factory",
+        "adviser",
+        "validate_advice",
+        "degree_proposer",
+        "fallback",
+        "certify_fallback",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "existing features/reject/replacement adviser/degree bodies raw exact",
+      "evidence": [
+        {
+          "name": "features",
+          "raw_AST_exact": true,
+          "sha256": "518435dcb0d9b607158a6a6c98ed1bdf00a97c7b10ce83189f7d5ef41ebfa3a5"
+        },
+        {
+          "name": "nodes",
+          "raw_AST_exact": true,
+          "sha256": "70caddde3c63924d241c3346a4529fdd150f5a0b9d51fef9dda9d9233ff6ff46"
+        },
+        {
+          "name": "reject",
+          "raw_AST_exact": true,
+          "sha256": "26ac5302476ef8c9b18c8824e0b3a867a5a2d66a0f889e02b9fecc6647e93aaa"
+        },
+        {
+          "name": "observed_adviser",
+          "raw_AST_exact": true,
+          "sha256": "16750d828ff787fa291c4b3d33b7d747675b0fca5e814926edd4bc1eafb26788"
+        },
+        {
+          "name": "observed_degree",
+          "raw_AST_exact": true,
+          "sha256": "9a6593d785a332eb830b9a670f1ca82fda23f56e52e6da08a0734da8c2b36de6"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "five report-only callsites",
+      "evidence": [
+        {
+          "line": 1086,
+          "site": "fixture-scoring"
+        },
+        {
+          "line": 1246,
+          "site": "incompatible-read-observation"
+        },
+        {
+          "line": 1121,
+          "site": "returned-batch-observation"
+        },
+        {
+          "line": 1138,
+          "site": "reopening-observation"
+        },
+        {
+          "line": 1292,
+          "site": "missing-source-observation"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "reject never consults report cache",
+      "evidence": "Unchanged reject calls check, whose only validation is fresh_validate. Engine callbacks and full/restricted replacement use always-fresh validator_endpoint; old30 receives fresh_validate too.",
+      "passed": true
+    },
+    {
+      "check": "actual fresh delegate before any successful receipt record",
+      "evidence": "fresh_validate always invokes the original Root endpoint without cache lookup. Actual delegate/guard/error/UNKNOWN failures yield no completed receipt. Current READY mode/version/full decision/binding/falseflags and immutable before/after input bytes checked before record.",
+      "passed": true
+    },
+    {
+      "check": "full authority, not hash-only",
+      "evidence": "Canonical bytes include binding, entire Source capsule map, declaration/policy, effective theory/parameters/Gamma/target, forbidden/parameter_set/input_names/binder_names/hole and current validator version. Full state/decision/batch are separate immutable canonical bytes.",
+      "passed": true
+    },
+    {
+      "check": "report exact full tuple equality and stability",
+      "evidence": "Native-first full canonical byte tuple cache; full after-report tuple equality, bool/int/absence/assigned-zero/order preserved. Returned digest bucket also requires identical full tuple; collision/different request raises, never silently deduplicates.",
+      "passed": true
+    },
+    {
+      "check": "raw READY memory not validation authority",
+      "evidence": "remember only saves actual return; report miss always calls real fresh_validate, and only completed current whole independent receipt can satisfy report reuse. Unmasked, empty, subsequence, different authority/state/decision/batch cannot match.",
+      "passed": true
+    },
+    {
+      "check": "fresh accepted pending callback read-only capture",
+      "evidence": "Registered actual engine callback only, receipt selection nonnull/no rejections; full actual decision/request/state/receipt join; public snapshot/checkpoint before child adoption/place; no reentrant mutation or invented branch.",
+      "passed": true
+    },
+    {
+      "check": "occupied component no second scratch decision",
+      "evidence": "Only reopening still calls component(...). Occupied component selects a genuine captured owned accepted pending state with matching selected original AX source1; exact whole snapshot+authority restoration before adviser, no new decision/degree/engine. Absence ->SKIP.",
+      "passed": true
+    },
+    {
+      "check": "full callback/inner/finished-outer provenance",
+      "evidence": "actual_callback contains full snapshot/decision/request/receipt; restored before equals captured snapshot; finished_outer_before/after complete values and restored_sha are outer joins. Final restore runs in finally; active family never executed/changed by component observation.",
+      "passed": true
+    },
+    {
+      "check": "compact report-used output only",
+      "evidence": "One full authority per unique actual used authority, one full state/decision/batch/receipt per report-used origin, site list references actual original fresh call. Private tuple bytes/native token/engine never emitted. All old full actual batch artifacts retained.",
+      "passed": true
+    },
+    {
+      "check": "all other current Source9 exact",
+      "evidence": {
+        "adviser": {
+          "bytes": 26007,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+          "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+        },
+        "controls": {
+          "bytes": 92136,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+          "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+        },
+        "degree_checker": {
+          "bytes": 27553,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+          "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+        },
+        "degree_proposer": {
+          "bytes": 22030,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+          "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+        },
+        "engine": {
+          "bytes": 52627,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+          "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+        },
+        "fallback": {
+          "bytes": 24227,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+          "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+        },
+        "kernel": {
+          "bytes": 10323,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+          "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+        },
+        "membership": {
+          "bytes": 20112,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+          "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+        },
+        "transition": {
+          "bytes": 8134,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+          "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+        },
+        "validator": {
+          "bytes": 16299,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+          "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "original limits/quota/model unchanged",
+      "evidence": {
+        "aggregate_owned_bytes": 536870912,
+        "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+        "caller_seconds": 90,
+        "encoded_output_bytes": 4194304,
+        "expanded_output_bytes": 16777216,
+        "failure_only_seconds": 55,
+        "finish_seconds": 1,
+        "height": 24,
+        "joint_seconds": 20,
+        "maximum_events": 2000,
+        "maximum_nodes": 128,
+        "owned_seconds": 60,
+        "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+      },
+      "passed": true
+    },
+    {
+      "check": "all current old/new gaps strict",
+      "evidence": "All43 mandatory; SKIP/unavailable callback/READY/futurefamily remains unqualified. No previous count/qualification/target/runtime inheritance, no fit or timing attribution.",
+      "passed": true
+    }
+  ],
+  "distinct_review_required": true,
+  "schema": "unit-row-observation-reuse-controls-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92136,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+    "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+  },
+  "source_only": true
+}

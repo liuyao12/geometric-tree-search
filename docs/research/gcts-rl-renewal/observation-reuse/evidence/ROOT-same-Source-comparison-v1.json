@@ -1,0 +1,68 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "across_versions_changed_sources": [
+    "advice_controls",
+    "intake"
+  ],
+  "across_versions_same_input_runtime_limits": true,
+  "actuals_this_turn": 6,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_control_gates": {
+    "consumer_case_or_completed_phase_coverage_known": false,
+    "consumer_declared": 43,
+    "consumer_passed": null,
+    "consumer_record_returned": false,
+    "consumer_skipped": null,
+    "original": 17,
+    "retention": 17
+  },
+  "current_goal_turn": "progress",
+  "dispositions": {
+    "observation-reuse": {
+      "advice-controls": {
+        "bytes": 4046,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+        "sha256": "302f9bed7339a267870a907e21db0a910fe50dba1fa32fe7928e78b9558bd08b"
+      },
+      "domain-controls": {
+        "bytes": 3422,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+        "sha256": "c5e1541e15157e2aa90f0a7f6f534ac3d42e582abb0d6c255db24d34a88a85be"
+      },
+      "original-controls": {
+        "bytes": 3236,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+        "sha256": "61ccc7d135efe8bddfd87fc4aa1f9f60103f40a591259d6b99633a1e2a685b7a"
+      }
+    },
+    "phase-diagnostic": {
+      "advice-controls": {
+        "bytes": 4505,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+        "sha256": "581de1d203afa7e145d1b37c130103b138cb60ab37f087a4dd5e6b95526a62e3"
+      },
+      "domain-controls": {
+        "bytes": 3418,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+        "sha256": "3bd17509daad83e4e6a1b044b9dad226f1bfcaa63665ac096bb5f47eb611b8e2"
+      },
+      "original-controls": {
+        "bytes": 3232,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+        "sha256": "9a92616b85652791df6d6913692c1a2adb9a7fc6186663c0ddb7fbd91b83eaff"
+      }
+    }
+  },
+  "previous_actual_phase_attribution": false,
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_reviews_runtime_limits_within_each_version": true,
+  "schema": "ROOT-observation-reuse-and-phase-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": false,
+  "target_word_or_route_or_donor_supplied": false,
+  "unqualified_current_phase_prefix": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30"
+  ]
+}

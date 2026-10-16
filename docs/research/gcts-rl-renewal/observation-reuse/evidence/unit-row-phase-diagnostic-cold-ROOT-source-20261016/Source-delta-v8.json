@@ -1,0 +1,33 @@
+{
+  "edits": [
+    {
+      "after": "{'bytes': 93129, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py', 'sha256': '0065aab7baf7e69439a1ca7579cf4333756f4b3ca864f466eb91bd5717460156'}",
+      "before": "{'bytes': 92136, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py', 'sha256': '8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f'}"
+    },
+    {
+      "after": "VERSION='unit-row-phase-diagnostic-cold-v8'",
+      "before": "VERSION='unit-row-observation-reuse-cold-v7'"
+    },
+    {
+      "after": "SCOPE='unit-row-phase-diagnostic-cold-Source'",
+      "before": "SCOPE='unit-row-observation-reuse-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-phase-diagnostic-cold-Source-contract-v8'",
+      "before": "contract['schema'] == 'unit-row-observation-reuse-cold-Source-contract-v7'"
+    }
+  ],
+  "entire_inverse_recovers_parent": true,
+  "parent": {
+    "bytes": 49585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-cold-ROOT-source-20261016/unit_row_observation_reuse_cold_v7.py",
+    "sha256": "5fdc91cc0078f02fb1c2c13b86204cff3310ae9e6456b95189a06b0ffb7c4f45"
+  },
+  "schema": "ROOT-phase-diagnostic-cold-Source-delta-v8",
+  "scope": "One controls pin and own VERSION/SCOPE/consumed schema only; all17 helpers/nestedfunctions/output-nativeexit exact.",
+  "source": {
+    "bytes": 49581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-ROOT-source-20261016/unit_row_phase_diagnostic_cold_v8.py",
+    "sha256": "8d0244a3051ecb48fa249e73cadf8603825842d922df9ce33a755628b1365682"
+  }
+}

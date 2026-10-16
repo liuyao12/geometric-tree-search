@@ -1,0 +1,158 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 43,
+    "factory": "Existing Root callbacks/engine3 version8/consumer3/adviser3; no new public method/degree wrapper/caller format.",
+    "keyword_count": 8,
+    "new_cases": 0,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 43,
+    "qualification": "All43 PASSED0SKIP/no other gap plus current original17/retention17 and unchanged full native/wire gates; targets stay withheld until genuine current qualification."
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 11332,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/author-static-v3.json",
+    "sha256": "b7a9370c74bfaf0b8516c066ec005b694e6a98cb717cce8cb1cdc644c99f4fa6"
+  },
+  "author_static_checks": 15,
+  "authorship_disclosure": "Author wrote controls/membership/degree/fallback; not adviser3/consumer3/engine8/c354/transition. Source-only author evidence; diagnosis reviewer authors consumer. Root owns caller/native/once/actual/disposition/publication.",
+  "dependency_contracts": {
+    "adviser": {
+      "bytes": 15617,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048"
+    },
+    "engine": {
+      "bytes": 7403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091"
+    },
+    "validator": {
+      "bytes": 10250,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658"
+    }
+  },
+  "forward_patch": {
+    "bytes": 4960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/controls2-to-phase3-forward.patch",
+    "sha256": "df38bf38e41a76e3e4a24d5116cd90cc5f44d4b10a64b41bafcc22c93a8a48eb"
+  },
+  "full_inverse_patch": {
+    "bytes": 4960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/phase3-to-controls2-full-inverse.patch",
+    "sha256": "2b35620576cc0bafd4ff87e189f63c2108b93a9cfc3ef45c85478e3ce95f5d18"
+  },
+  "new_cases": [],
+  "phase_stderr": {
+    "failure": "Only bounded complete-line prefix and possible partial last line/raw error evidence; no case pass/skip count, phase duration, helper/cache hit, component return or positive resource/proof/target result inferred. Missing markers do not prove Source work was absent.",
+    "maximum_emissions": 10,
+    "maximum_full_sequence_bytes": 463,
+    "ordered_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "positions": {
+      "AFTER_OCCUPIED": "After genuine captured-context component/gap and outer restoration handling, not successful returned-family coverage.",
+      "AFTER_PRIOR30": "After prior function returned, not a certified casecount/result/output.",
+      "AFTER_REOPENING": "After component/gap handling, not successful eligibility.",
+      "BEFORE_OUTPUT": "Before controls provenance/result construction, not before/after actual caller serialization/output.",
+      "BEFORE_RETURN": "Before harness final tick/return; caller postdelegation/native/output/exit gates still remaining."
+    },
+    "prefix": "UNQUALIFIED_PHASE_OBSERVATION ",
+    "successful_controls_endpoint": "All10 markers can occur if the function completes; this alone never accepts controls. Root must separately require full43 record/wire and all unchanged gates. Other endpoints need not invoke this controls function.",
+    "timing": "Original native precheck must succeed before each print; write/flush can itself fail or stall and then postcheck fails. No marker-specific native time or completed-before-D guarantee is claimed. Nothing intentionally logs after a failed tick, in finally or in failure55.",
+    "wire": "ASCII literal plus LF, print(file=sys.stderr,flush=True); each inside original tick pre/post. No dynamic fields/timestamps or framework."
+  },
+  "remaining_gates": [
+    "Distinct exact Source/contract/delta peer review plus Root read.",
+    "Root caller8 must authenticate current module/sys/native endpoints and preserve bounded stderr separately; no plan/grant/actual here.",
+    "Fresh actual original17/retention17/43 gates and complete43 record/allPASS0SKIP, native20/512/55/60/90+1 unchanged before targets.",
+    "All failure markers unqualified raw position observations only; no accepted prefix, phase timing attribution, proof/RL/fullGCTS/native-positive or fit prediction."
+  ],
+  "schema": "unit-row-phase-diagnostic-controls-handoff-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-phase-diagnostic-controls-Source",
+  "source": {
+    "bytes": 93129,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py",
+    "sha256": "0065aab7baf7e69439a1ca7579cf4333756f4b3ca864f466eb91bd5717460156"
+  },
+  "source_contract": {
+    "bytes": 16086,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/Source-contract-v3.json",
+    "sha256": "57475f21524e739521ebda8191e21f278bb4ab7ef25cea82f7e53e9a896e7864"
+  },
+  "source_delta": {
+    "bytes": 7274,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/Source-delta-v3.json",
+    "sha256": "b5e22f37506d7ad8d3252d54eb20893db25f9afcf5a35d4b9896aab94ab0e3ea"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 93129,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py",
+      "sha256": "0065aab7baf7e69439a1ca7579cf4333756f4b3ca864f466eb91bd5717460156"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "unchanged_old30_definitions": 11,
+  "whole_module_AST_inverse": true
+}

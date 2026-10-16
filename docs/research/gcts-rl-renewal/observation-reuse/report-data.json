@@ -1,0 +1,151 @@
+{
+  "assessment": "The next diagnosis must distinguish the existing thirty-case call\u2019s entry, internal work and return boundary. Removing report-only duplicate validation has not yet produced a qualified expanded control stage. No proof-search improvement, new theorem, learned marking or RL result is established.",
+  "consumer_passed": null,
+  "consumer_skipped": null,
+  "control_record": null,
+  "evidence": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current instrumented UNKNOWN disposition"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/advice-controls-external-v1/meter-stderr.txt",
+      "label": "Actual phase prefix and worker error"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "label": "Current native terminal/reaping"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/advice-controls-external-v1/ONCE.json",
+      "label": "Current once invocation"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "label": "Current postterminal observation"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/ROOT-advice-controls-tool-bracket-v1.json",
+      "label": "Current tool time bracket"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Current original17 controls"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Current retention17 controls"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Current original17 lossless record"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Current retention17 lossless record"
+    },
+    {
+      "href": "evidence/unit-row-observation-reuse-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Uninstrumented reuse attempt"
+    },
+    {
+      "href": "evidence/ROOT-same-Source-comparison-v1.json",
+      "label": "Both versions and all six invocations"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-cold-ROOT-source-20261016/Source-contract-v8.json",
+      "label": "Current caller contract"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-controls-source-20261016/Source-contract-v3.json",
+      "label": "Exact phase-marker contract"
+    },
+    {
+      "href": "../compatible-fibres/reader.html#results",
+      "label": "Prior milestone and immutable earlier timeout"
+    },
+    {
+      "href": "../fair-interface/reader.html#family",
+      "label": "Earlier actual tile rows"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-controls-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent controls review"
+    },
+    {
+      "href": "evidence/unit-row-phase-diagnostic-cold-independent-source-20261016/typed-Source-review-v8.json",
+      "label": "Independent caller review"
+    }
+  ],
+  "lead": "A phase trace narrows the next diagnosis. The expanded control stage still remains UNKNOWN.",
+  "observed_phases": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30"
+  ],
+  "outcome": "Both reviewed versions pass their separate original search and retention suites. Both expanded stages reached the original time limit without returning case records. No target run was admitted.",
+  "phase_explanation": "The instrumented worker emitted BEFORE_PRIOR30 and no later marker. The unresolved interval starts with the observed write\u2019s postcheck and includes the call, its returned-shape checks and the next marker precheck. The postcheck can fail before entry. This is not a duration or a certificate of entry, return or nonreturn. No earlier uninstrumented attempt receives a retrospective phase attribution.",
+  "phase_literals": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+  ],
+  "phase_stderr": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30\nUNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete local-degree controls original20/500 reserve unfinished\n",
+  "qualification": "No expanded-stage case count, completed phase, reuse count or component coverage is accepted. The single recorded phase marker is a diagnostic observation only. Its memory observation does not qualify the failed stage.",
+  "reuse_record": null,
+  "schema": "observation-reuse-saved-reader-v1",
+  "stage_native_qualified": false,
+  "stages": [
+    {
+      "label": "Reuse / original controls",
+      "native_launch_to_postprobe_ns": 6204486000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 45826048
+    },
+    {
+      "label": "Reuse / domain controls",
+      "native_launch_to_postprobe_ns": 4626052000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 66617344
+    },
+    {
+      "label": "Reuse / advice controls",
+      "native_launch_to_postprobe_ns": 20107002000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN; no case record",
+      "peak_bytes": 46661632
+    },
+    {
+      "label": "Phase trace / original controls",
+      "native_launch_to_postprobe_ns": 6026110000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 45957120
+    },
+    {
+      "label": "Phase trace / domain controls",
+      "native_launch_to_postprobe_ns": 4710889000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 66732032
+    },
+    {
+      "label": "Phase trace / advice controls",
+      "native_launch_to_postprobe_ns": 20095474000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN; no case record",
+      "peak_bytes": 46923776
+    }
+  ]
+}

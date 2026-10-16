@@ -1,0 +1,54 @@
+{
+  "Source_changes": false,
+  "author_identity": "/root/arithmetic_induction",
+  "concrete_repeated_report_work": [
+    "The final fixture check revalidates the same whole fixture already checked by old22.",
+    "The returned-observation loop can repeat successful full component/replacement batch validation; reopening then calls check again on a batch already in that loop. Incompatible/missing-source checks can repeat that same exact report batch. Raw remember() observations alone are NOT necessarily previously validated: an actual full return may later be suppressed or interrupted before validation.",
+    "features() reconstructs identical current root subtrees and selected-output set once PER proposal, then again for the same returned batch. These report-only common inputs can be reused once per exact immutable state/decision; the independent consumer must still recompute/check its own ranking.",
+    "Large whole batches/receipts occur in component, replacement_attempt, replacement and reopening artifacts as copied report data. This is potential serialization/copy overhead, not measured time. Preserve one complete actual return before eligibility and explicit literal artifact references if the author chooses to avoid report duplicates; do not silently drop evidence."
+  ],
+  "not_established": "Previous no-output timeout gives no phase/case count; none of these duplicate paths is known to have been reached or responsible. No fit, saving, completed control case, target/proof, GCTS/learned/RL or resource claim follows. Actual comparison requires frozen distinct review and Root grant under unchanged full43 and20/55/60/512MiB/90+1.",
+  "receipt_reuse_guardrails": [
+    "Admit reuse only AFTER an original guarded validator call returns successfully. Never cache raw READY, a partial UNKNOWN, failure, exception, stale Source or an unreturned guard result as accepted evidence.",
+    "Join complete literal state, decision, batch and original binding plus exact current Source/version context; require full canonical bytes/preimages, not digest-only identity or Python bool/int-coercing dictionary equality. Matching digest with different full bytes cannot be a cache hit. Existing canonical/copy helpers suffice; no new authority layer.",
+    "A reused receipt must retain the original input/state hashes, decision, binding and exact current version with all strong flags false. Do not rewrite it as a newly computed receipt or relabel another state/batch. Keep clear originating artifact/call provenance.",
+    "Reuse stays local to report analysis of this one authenticated run. A bounded entry miss or eviction means fresh report validation, never assumed success. Guarded native tick and final original20/output/terminal checks remain live.",
+    "Never replace the live engine anchor/pending validation, every malformed-clone negative call, or full original batch validation before control-only subselection. The restricted executable batch is a different input and still passes its own full checks. New state, binding, preference lineage or packet mutation always requires corresponding current validation."
+  ],
+  "references": {
+    "current_contract": {
+      "bytes": 15817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/Source-contract-v1.json",
+      "sha256": "696a323d10c963817b59975d3c9d0ece42926200c27894a737e5b37785fa5ffd"
+    },
+    "current_controls": {
+      "bytes": 82817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+      "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "timeout_diagnosis": {
+      "bytes": 7389,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row43-timeout-diagnosis-source-20261016/arithmetic-note-v1.json",
+      "sha256": "f2f36c8b92796a94a5346747a744fca8dda7d2f87191a1ff5757acac52dd16c1"
+    }
+  },
+  "review_disclosure": "Author wrote paired adviser/engine/c354/transition and previously independently Source-reviewed2737 controls. This note is not a peer verdict on the moving controls successor or future Root caller7, and executes no project/helper/kernel/model/Q/word/clock/test/actual.",
+  "scheduled_occupied_source_guardrails": [
+    "Capture only at an actual engine-owned completed global BRANCH callback. Record originating engine identity/public snapshot, full state and actual decision, with a public owned checkpoint. BRANCH-shaped data fabricated by the harness is not scheduling evidence.",
+    "Inside the callback, collection is read-only. Do not reenter decision/search/place/rollback, fill a row, alter preferences or mutate endpoints. Later restore the token on the SAME engine and compare the whole public snapshot, including domains/cursors/exclusions/generations/preferences/provenance, before advisory observation; finally restore the prior outer token.",
+    "Retain whole actual current READY batch and successful independent receipt for that exact callback/restored context. Occupied-source pass still needs a genuinely returned UI_MP universal read at a matching occupied original source with occupied=True and fact_accepted=False; absence or UNKNOWN is SKIP. No early selected fact, supplied family or proof route.",
+    "Label this observed control context by its originating scheduled callback. Do not upgrade it to reachability/proof/trajectory evidence for the original target or claim a fresh global scan if one was deliberately reused.",
+    "Preserve all43 exact case meanings and essential-gap qualification. Resource/callback/guard exceptions propagate under existing semantics; no skipped observation is accepted on an arbitrary error."
+  ],
+  "schema": "unit-row-observation-reuse-Source-guardrails-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Review proposed report-only reuse and real scheduled-callback observation against frozen2737. Adviser3/engine8/consumer3, all43 case obligations, full fallback/native limits and old timeout remain unchanged. No adviser memo implementation recommended for this turn.",
+  "source_only": true,
+  "status": "SOURCE_ADVICE_ONLY_NOT_REVIEW_OF_UNFROZEN_SUCCESSOR_OR_CURRENT_RUNTIME_QUALIFICATION"
+}

@@ -1,0 +1,367 @@
+{
+  "schema": "unit-row-observation-reuse-independent-raw-conformance-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "checks": [
+    {
+      "id": "PACKET",
+      "passed": true,
+      "detail": "Exact current source+contract/handoff raw pins."
+    },
+    {
+      "id": "RAW-CLOSURE",
+      "passed": true,
+      "detail": "27 unique direct raw paths matched; declaration/profile hash-only."
+    },
+    {
+      "id": "FORWARD",
+      "passed": true,
+      "detail": "All19 literal edits reconstruct entire current Source."
+    },
+    {
+      "id": "INVERSE",
+      "passed": true,
+      "detail": "Reverse edits reconstruct complete parent raw bytes and AST."
+    },
+    {
+      "id": "FULL-PATCHES",
+      "passed": true,
+      "detail": "Both supplied unified patches independently applied to raw buffers only."
+    },
+    {
+      "id": "OLD30-EXACT",
+      "passed": true,
+      "detail": "All11 prior top-level definitions exact, including entire22/30 functions."
+    },
+    {
+      "id": "MODULE-BOUNDARY",
+      "passed": true,
+      "detail": "Only VERSION and final run_controls change; imports/flags/aliases exact."
+    },
+    {
+      "id": "ASSERTIONS-EXACT",
+      "passed": true,
+      "detail": "All five qualification/independent-feature/negative helpers unchanged; actual_adviser also raw exact."
+    },
+    {
+      "id": "43-CASES",
+      "passed": true,
+      "detail": "All ordered43 literal labels and essential gap qualification retained."
+    },
+    {
+      "id": "API",
+      "passed": true,
+      "detail": "Same eight callable kwargs and original result schema."
+    },
+    {
+      "id": "5-SITES",
+      "passed": true,
+      "detail": "Only five report observations read memo; all execution/control paths fresh."
+    },
+    {
+      "id": "DEPS",
+      "passed": true,
+      "detail": "Other9 Sources/input2 unchanged; no proof/donor/library."
+    }
+  ],
+  "source": {
+    "bytes": 92136,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+    "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f"
+  },
+  "parent_source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "source_contract": {
+    "bytes": 19089,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "5110142c261225feccb368bf9a44df3c0d0c5e9472347c4ab83e2744e9f5ce28"
+  },
+  "handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/handoff-v2.json",
+    "sha256": "6c9c4e8d50d146ca89e392ea75b1ac94a17a361678ee1709a646b58ab40ac3ea",
+    "bytes": 11376
+  },
+  "delta": {
+    "bytes": 23734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/Source-delta-v2.json",
+    "sha256": "0b2d379805b9ca179af4ae848da69a18a55e83e98c67d2531d77bf3957ca6f77"
+  },
+  "unchanged_old30_definitions": [
+    {
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_sha256": "0633d4c830dca042342e9e90385b150644cc55294a6029ec8150623e6e0eb9c7"
+    },
+    {
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_sha256": "ed63a8ff8458cf3d9d5b7afc535250eb000815c95fbf417f6bc1377e2ed9f4c2"
+    },
+    {
+      "name": "need",
+      "ordinal": 2,
+      "raw_sha256": "cfb2359a99fb5844db1d9b7610758d828c86945b044bc352c78ced9fece32556"
+    },
+    {
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_sha256": "3d0cba3e5232ca23a7129b2da6af51a68c34121ca073948fd18e8f2e9bb68268"
+    },
+    {
+      "name": "digest",
+      "ordinal": 4,
+      "raw_sha256": "ba4b204365b99acc82629d44da79e9b2995d4460b992169519341d4d48275144"
+    },
+    {
+      "name": "tile",
+      "ordinal": 5,
+      "raw_sha256": "180bb27f6de2b574c473adf86ff7da20370081febb16f8b31208c12babe95fa5"
+    },
+    {
+      "name": "state",
+      "ordinal": 6,
+      "raw_sha256": "95664cf1567b15500aadafc08511edcf6f032a3e5f368560a1fa70f579ef9a83"
+    },
+    {
+      "name": "ug",
+      "ordinal": 7,
+      "raw_sha256": "910adb314f1decffc2b619dd735712322b77359ddb74287834903f1d5ca55210"
+    },
+    {
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_sha256": "5187bbb0dae876a54662dfda6fcdf995c80289791aaa8ace629e6894e249eac0"
+    },
+    {
+      "name": "run_controls",
+      "ordinal": 9,
+      "raw_sha256": "dd758cd1e8696f920eb9b45346ba9e0f8e62124709bdd92b486cd705d0b23985"
+    },
+    {
+      "name": "run_controls",
+      "ordinal": 10,
+      "raw_sha256": "485265dd4eff2c5bf0db58fa91c01f39f53c5badce1e1cc96df5f0e09b2fbee5"
+    }
+  ],
+  "unchanged_direct_nested_functions": [
+    "passed",
+    "skip",
+    "actual_adviser",
+    "nodes",
+    "features",
+    "reject"
+  ],
+  "all_case_names": [
+    "genuine-READY-whole-independent-validation",
+    "pending-obligations-never-facts",
+    "malformed-batch-controls",
+    "later-ranked-malformed-proposal-rejected",
+    "genuine-quota-UNKNOWN-diagnostic-only",
+    "UNKNOWN-rejected-by-executable-validator",
+    "empty-hints-preserve-canonical-choice",
+    "quota-UNKNOWN-preserves-canonical-choice",
+    "adviser-Timeout-UNKNOWN-no-exclusion",
+    "adviser-ValueError-propagates",
+    "validator-ValueError-propagates",
+    "actual-anchor-only-no-future-preinstallation",
+    "first-search-exact-root-restoration",
+    "public-rollback-restores-genuine-nonempty-pending",
+    "pending-key-real-current-row-selection",
+    "pending-search-exact-inner-root-restoration",
+    "remote-mark-invalidates-pending-key",
+    "rejected-pending-hint-preserves-canonical-choice",
+    "pending-request-malformed-controls",
+    "global-forced-fill-retires-family-before-fresh-advice",
+    "global-DEAD-overrides-advice",
+    "global-FORCED-overrides-advice",
+    "whole-family-abandoned-with-different-future-key-remaining",
+    "one-fresh-batch-at-same-rejected-BRANCH",
+    "abandoned-future-members-never-installed-or-excluded",
+    "successful-pending-continuity-preserved",
+    "rejection-parent-and-owned-inner-rollback-exact",
+    "fresh-replacement-ValueError-propagates-without-family-commit",
+    "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+    "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "report_only_sites": [
+    {
+      "line": 1086,
+      "site": "fixture-scoring"
+    },
+    {
+      "line": 1246,
+      "site": "incompatible-read-observation"
+    },
+    {
+      "line": 1121,
+      "site": "returned-batch-observation"
+    },
+    {
+      "line": 1138,
+      "site": "reopening-observation"
+    },
+    {
+      "line": 1292,
+      "site": "missing-source-observation"
+    }
+  ],
+  "references": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/compatible_fibres_controls_v2.py",
+      "sha256": "8e11e8a75bcd3ff09b92ba90dbe2ef0eaac9dd64b533d20c77893744aea5c11f",
+      "bytes": 92136
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/author-static-v2.json",
+      "sha256": "5f4378d26ab1ca22761ce224535aae1419ffffd69463f690fcc14dd0f7c579c5",
+      "bytes": 16175
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048",
+      "bytes": 15617
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091",
+      "bytes": 7403
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658",
+      "bytes": 10250
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row43-timeout-diagnosis-source-20261016/controls-note-v1.json",
+      "sha256": "2a2dad97fcf464808ab59e35b0321828609532a9a8f30cb1b1738a37e6e84f93",
+      "bytes": 11878
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-guardrails-source-20261016/guardrails-v1.json",
+      "sha256": "30ed9d484cd10d1b1578691374b3e40d027378423f778e9b56a8c8622493dd82",
+      "bytes": 6631
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "bytes": 2925
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "bytes": 8773
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+      "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e",
+      "bytes": 48798
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/Source-contract-v1.json",
+      "sha256": "696a323d10c963817b59975d3c9d0ece42926200c27894a737e5b37785fa5ffd",
+      "bytes": 15817
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+      "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45",
+      "bytes": 82817
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "50a1f63a59c95accd4422c2a0683ba7db2505b9416b016a43d671081d500429b",
+      "bytes": 4046
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/Source-delta-v2.json",
+      "sha256": "0b2d379805b9ca179af4ae848da69a18a55e83e98c67d2531d77bf3957ca6f77",
+      "bytes": 23734
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "bytes": 26007
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6",
+      "bytes": 52627
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "bytes": 24227
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "bytes": 8134
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "bytes": 16299
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/controls43-v1-to-v2-forward.patch",
+      "sha256": "bf0730e09168b9b38f56331b19444ef5f7cf12ec71c2fdab952422baf403568e",
+      "bytes": 21377
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/controls43-v2-to-v1-full-inverse.patch",
+      "sha256": "2641a28783093bb91beff83abbbced1822939d788fd654a93c2b1dc001bd5f48",
+      "bytes": 21377
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/Source-contract-v2.json",
+      "sha256": "5110142c261225feccb368bf9a44df3c0d0c5e9472347c4ab83e2744e9f5ce28",
+      "bytes": 19089
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-controls-source-20261016/static-context-review-correction-v1.json",
+      "sha256": "0a32f88d1d6d8776466ee29ad77922b51ac6b51f6723229a81e6c3eab74cb0f6",
+      "bytes": 2874
+    }
+  ],
+  "method": "Stdlib raw/JSON/hash/AST/compile/patch only. Preliminary metadata attempts stopped before writes on a print-script parenthesis, a hardcoded VERSION index, and an overrestrictive expected nested-name set; corrected using inspected AST targets/actual names. No Source evaluation, semantic functions, imports, models, clocks, tests or actuals."
+}

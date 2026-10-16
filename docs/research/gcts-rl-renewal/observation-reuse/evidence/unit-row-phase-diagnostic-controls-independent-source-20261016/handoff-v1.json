@@ -1,0 +1,42 @@
+{
+  "schema": "unit-row-phase-diagnostic-controls-independent-handoff-v1",
+  "scope": "unit-row-phase-diagnostic-controls-Source",
+  "source": {
+    "bytes": 93129,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py",
+    "sha256": "0065aab7baf7e69439a1ca7579cf4333756f4b3ca864f466eb91bd5717460156"
+  },
+  "source_contract": {
+    "bytes": 16086,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/Source-contract-v3.json",
+    "sha256": "57475f21524e739521ebda8191e21f278bb4ab7ef25cea82f7e53e9a896e7864"
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "542b1f2323d1b9de191bb7d478c40edf1fa7b5dd07d64d63d9690a3ee61a64f7",
+    "bytes": 6071
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "4dc762b531e43895797bfd05c8e2522497438a242aafcb755aed1d64046d9a1b",
+    "bytes": 9997
+  },
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "acb1d483a120fde0750e92ba740233fdfe21b090053dacef5f801cfddfe4c2d4",
+    "bytes": 11869
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored current advice consumer/validator and constant-only successors, earlier control-harness/horizon edits and older logical-checker/codec/family work. Reviewer did not author these controls2/3, adviser, engine, c960 or c354. Prior whole controls2 review is retained, not self-review or runtime qualification.",
+  "summary": "Ten fixed tick-bracketed stderr markers only; whole raw/AST parent restoration and both full patch inverses checked. All43/reuse/inner-outer lifecycle unchanged. No runtime or fit prediction; no actual grant.",
+  "remaining_gates": [
+    "Distinct exact Source/contract/delta peer review plus Root read.",
+    "Root caller8 must authenticate current module/sys/native endpoints and preserve bounded stderr separately; no plan/grant/actual here.",
+    "Fresh actual original17/retention17/43 gates and complete43 record/allPASS0SKIP, native20/512/55/60/90+1 unchanged before targets.",
+    "All failure markers unqualified raw position observations only; no accepted prefix, phase timing attribution, proof/RL/fullGCTS/native-positive or fit prediction."
+  ]
+}

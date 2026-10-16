@@ -1,0 +1,39 @@
+{
+  "Source17_input2_sixlimits": true,
+  "all_nested_functions_AST_exact": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 4,
+  "metadata_note": "Adapt existing AST-located literal pin assembly to one control pin and own identifiers only; no scientific execution.",
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-ROOT-source-20261016/unit_row_phase_diagnostic_cold_v8.py",
+    "sha256": "8d0244a3051ecb48fa249e73cadf8603825842d922df9ce33a755628b1365682"
+  },
+  "source_contract": {
+    "bytes": 52801,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-cold-ROOT-source-20261016/Source-contract-v8.json",
+    "sha256": "582ad2eef4c04fd3a5ac4d4e7b24b8270ae438f17fc5a9a0f565f0aa27ffc842"
+  },
+  "top_level_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

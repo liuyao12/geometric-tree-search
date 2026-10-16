@@ -1,0 +1,78 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes_observed": 46661632,
+  "all_advice_consumer_gates_qualified": false,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "case_counts_accepted": false,
+  "complete_Date_seconds": 20.272,
+  "complete_GCTS_model_accepted": false,
+  "controls_accepted": false,
+  "current_goal_turn": "progress",
+  "declared_cases": 43,
+  "failure_lifecycle_verified": true,
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 20107002000,
+  "native_resources_qualified": false,
+  "native_worker_lifetime_ns": 20033761000,
+  "next_action": "Preserve this actual; do not restart unchanged or increase limits/remove cases. Diagnose/optimize a separately frozen reviewed Source successor under same endpoint, keeping full43 qualification and target scope.",
+  "nonprovability_claimed": false,
+  "passed_cases": null,
+  "plan": {
+    "bytes": 7938,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "911b9099668016e1d78d982ff5ef9e43063c8a0225dbcba6340046dd1d6efa68"
+  },
+  "previous_goal_turn": "progress",
+  "raw_evidence": [
+    {
+      "bytes": 261,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/ONCE.json",
+      "sha256": "517a6cc59f73f5fe4003152623d75fe9a0a15a7d421107866ced38edd9aac7b3"
+    },
+    {
+      "bytes": 111,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/meter-stderr.txt",
+      "sha256": "ab20fdad9385dfef8fdc9502376b649f5a165abcd9958855bb7695c519919115"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1701,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "sha256": "61dd718579b3e1c9135286e56231a2bd5116f20a1cc31bcae65ffa96c3b03d9a"
+    },
+    {
+      "bytes": 478,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "sha256": "0f095e6d6ea4ddc08a10cf342e016bd938ade7eca52f9e4b1591be0e2a09be06"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-observation-reuse-ROOT-20261016/advice-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "dbf1e2c3104238d9a69f66124d9be32bf565452834c5fca43d784a94cad2bf96"
+    }
+  ],
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "returned_control_record": false,
+  "schema": "ROOT-observation-reuse-consumer-timeout-disposition-v1",
+  "scientific_replay": false,
+  "scope": "Fresh43-case currentSource17 stage did not complete original native20 gate; no encoded/expanded control record returned. No case pass/skip count, useful proposal, logical proof, trajectory or native-positive admission inferred.",
+  "skipped_cases": null,
+  "stage_or_phase_coverage_known": false,
+  "status": "UNKNOWN_NATIVE20_NO_RETURNED_CONTROL_RECORD",
+  "target_actuals_launched": 0,
+  "target_admission_qualified": false,
+  "target_plans_issued": 0,
+  "terminal_T_bytes_observed": 46661632
+}
