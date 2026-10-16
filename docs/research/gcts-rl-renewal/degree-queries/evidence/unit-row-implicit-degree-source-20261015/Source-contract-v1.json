@@ -1,0 +1,117 @@
+{
+  "API": "propose_degree(*,language,state,row,tick) -> unit-row-degree-evidence-proposal-v1",
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "unit-row-degree-evidence-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-implicit-degree-evidence-proposer-Source",
+    "source": {
+      "bytes": 13960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+      "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+    },
+    "source_contract": "Exact current raw contract capsule; no self hash.",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer alone decides."
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "candidate_semantics": "Same baefa unit support/local and translated formula/offset marks, integer translations only. Complete ordered/repeated ports remain occurrences. Prototype input epoch+exact witness+ordered premise formulas+ordered offsets gives full key. Every candidate primitive is checked by supplied language; internal duplicate marks, full current t/m overlaps, capacity, selected multiplicity and exact branch exclusions are checked. No placement legality anywhere is ignored.",
+  "conformance_gaps": [
+    "No distinct degree evidence checker/runtime yet.",
+    "No complete fallback for implication output or missing earlier formula marks; must remain UNKNOWN unless two witnesses.",
+    "No complete frontier/candidate/reverse dependency graph, global dead-before-forced/earliest-generation scheduler, minimum-count tie authority, selected shared-key transactions or rollback/exclusion lifecycle engine.",
+    "No GCTS search/RL/marking/count/trajectory/finite Wang/resource/benefit admission.",
+    "No new cold/plan/custody/experiment or altered mathematical model/caps."
+  ],
+  "cover_argument": "Use exact six original rules. UI/EqSubst licences have outer imp; AX/Gamma/UG/MP exhaust possible non-imp outputs. Strict negative offsets exclude current/future rows. Full fixed outside sentinels disagree with any formula read at a negative absolute row; thus remaining possible reads are exactly earlier target rows. Constructor only emits these surviving alignments. Prior formula marks can be unoccupied pending obligations, not facts. Full assigned prefix permits finite exact occurrence/pair enumeration; no full syntax carrier enumeration is claimed.",
+  "coverage_fields": [
+    "axiom_labels_seen",
+    "Gamma_occurrences_seen",
+    "UG_prior_rows_seen",
+    "ordered_MP_pairs_seen"
+  ],
+  "exceptions": "Only exact captured language.OutsideLanguage marks a proposed candidate definitely out of profile. Native/resource/callback/typing-budget/other exceptions propagate to caller UNKNOWN/failure; no catch converts incomplete work to zero. Invalid supplied selected/excluded/internal duplicate state aborts, never yields cover.",
+  "future_controls": [
+    "Duplicate namedAX/formula and duplicate indexedGamma preserve distinct keys.",
+    "Repeated ordered MP ports remain occurrences; conflicting internal duplicate marks reject, agreeing duplicates do not double select.",
+    "Far metadata/remote formula conflict and branch exclusion filter whole candidates.",
+    "Earlier assigned unoccupied formulas permit cover without being asserted as facts.",
+    "Imp output/missing prefix with zero/one hints remains UNKNOWN.",
+    "Timeout on last cover item prevents any completed-cover return.",
+    "Assigned zero/absent distinction and malformed bool coordinates/weights/generations cannot collapse state.",
+    "Stale epoch/preimage, duplicate selection/overfill and incomplete t/m/root generation state reject."
+  ],
+  "hints": "Try matching AX/Gamma (including all zeroport originals for absent output), UG from assigned earlier formula marks, MP from assigned earlier A and assigned compatible implication or another unassigned earlier row receiving imp(A,C) when output C is fixed. Full bounds and point legality still apply. These hints are not the complete fallback for other query classes.",
+  "language_and_tick": "Caller must authenticate exact membership5d1f/policy227b, complete original logical input, current full binding/epoch and original resource tick. This module imports/calls no project endpoint itself other than that provided language API; full Source seals and original20/512/55/60/90+1 remain caller obligations. No kernel/model/profile limits are changed.",
+  "outcomes": {
+    "NON_IMP_ASSIGNED_PREFIX_COVER": "Only when output has an assigned canonical literal NON-imp formula C and every earlier output has an assigned canonical literal formula. Enumerate every named AX matching C, each indexed Gamma occurrence matching C, every prior-row UG occurrence licensed by original parameters/Gamma with output C, and every ordered earlier MP pair including repeated rows. Full validity/legality filtering is mandatory and unfinished checks propagate. Complete proposal binds full state/exclusions/binding and carries all matching survivors/rejection observations and complete row/pair census. No UI/EqSubst case can output non-imp C.",
+    "TWO_LEGAL_WITNESSES": "Exactly two distinct whole-state-legal incident candidates, full keys/prototypes/membership receipts/t/m/read obligations. This is an untrusted positive lower-bound proposal, no exact degree/cardinality/graph claim.",
+    "UNKNOWN": "Any other query whose hint list yields fewer than two legal candidates. A zero/one shortlist is never a dead/forced claim. Missing marks are not zero, and malformed state/mark/type or unfinished membership does not fabricate cover."
+  },
+  "private_state": {
+    "exact_fields": [
+      "schema",
+      "input_epoch",
+      "height",
+      "t",
+      "m",
+      "selected",
+      "excluded",
+      "generation"
+    ],
+    "excluded": "List of full key records {tile_type_id,type_preimage,translation}, unique/disjoint selected. These are provided branch-local exclusions, not proved by this component. Caller must authenticate their justification/context/lifecycle; no global exclusion learned here.",
+    "generation": "Complete24 root point entries [[0,row],0]. This fixed target activates all obligations at root0, so every selected unit tile has growth generation1. No other/growing target or generalized generation model is claimed.",
+    "height": 24,
+    "input_epoch": "Exact current language.binding['language_epoch'].",
+    "m": "Every assigned marking point/value including original fixed boundary and all selected marks; absence by dictionary membership, never truthiness. Profile emits tagged formula/offset/outside values. Arbitrary bare zero markings are outside this exact profile rather than interpreted as absent.",
+    "retention": "Response retains full private state value, canonical SHA, current binding and query. It mutates no input and provides no engine cache/rollback implementation.",
+    "schema": "unit-row-implicit-private-state-v1",
+    "selected": "List of exact full key records {tile_type_id,type_preimage,translation,generation:1}. Type preimage has input_epoch,primitive_witness,ordered_premise_formulas,ordered_offsets. No digest-only authority. Full primitive membership and exact rows/marks reconstructed.",
+    "t": "Complete24 pairs [integer point [0,row],literal int total0or1], no missing target row/duplicate/bool.",
+    "validation": "Clone exact builtin tree; rebuild original outside sentinel at channel1 negative rows and exact target at last row, all selected primitive prototypes/support/marks; reject if full provided t/m differs. Selected keys once, exclusion keys exact, complete preimages/collision detection, incompatible duplicate marks or overfill reject. Query must be an unfilled required row."
+  },
+  "raw_references": {
+    "cover_argument": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_prototype": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "receipt_flags": "complete_cover_proposed is an UNTRUSTED proposal completion flag; degree_zero_or_singleton_accepted,degree_ge_two_accepted,complete_candidate_graph_accepted,scheduler_or_rollback_accepted,logical_proof_accepted,ROOT_resource_accepted remainfalse. Candidates/receipts must be independently checked before use.",
+  "schema": "unit-row-implicit-degree-evidence-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-implicit-degree-evidence-proposer-Source",
+  "source": {
+    "bytes": 13960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+    "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 6671,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/author-static-evidence-v1.json",
+    "sha256": "6c712642eca470e7710663e64dba34c9353fd04bb601c7dd45cdc78132dfe2e5"
+  }
+}

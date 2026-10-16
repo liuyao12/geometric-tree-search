@@ -1,0 +1,32 @@
+'use strict';
+// Saved-data rendering only; no proof, degree or point code executes here.
+const $=id=>document.getElementById(id), math=s=>`\\(${s}\\)`;
+const esc=s=>String(s).replace(/[\\{}_%&#$]/g,c=>'\\'+c);
+function term(t){if(t[0]==='var')return esc(t[1]);const a=t[2].map(term);if(['0','zero'].includes(t[1])&&!a.length)return '0';if(['S','succ'].includes(t[1])&&a.length===1)return `S(${a[0]})`;if(['+','add'].includes(t[1])&&a.length===2)return `(${a[0]}+${a[1]})`;return `\\operatorname{${esc(t[1])}}${a.length?'('+a.join(',')+')':''}`;}
+function formula(f){switch(f[0]){case'eq':return `${term(f[1])}=${term(f[2])}`;case'pred':return `\\operatorname{${esc(f[1])}}(${f[2].map(term).join(',')})`;case'all':return `\\forall ${esc(f[1])}\\;\\bigl(${formula(f[2])}\\bigr)`;case'imp':return `\\bigl(${formula(f[1])}\\bigr)\\Rightarrow\\bigl(${formula(f[2])}\\bigr)`;case'and':return `\\bigl(${formula(f[1])}\\bigr)\\land\\bigl(${formula(f[2])}\\bigr)`;case'or':return `\\bigl(${formula(f[1])}\\bigr)\\lor\\bigl(${formula(f[2])}\\bigr)`;case'not':return `\\neg\\bigl(${formula(f[1])}\\bigr)`;case'bot':return '\\bot';default:throw Error('Unknown saved formula tag');}}
+let queue=Promise.resolve();
+function typeset(nodes){queue=queue.then(async()=>{if(window.MathJax?.startup?.promise){await MathJax.startup.promise;MathJax.typesetClear(nodes);await MathJax.typesetPromise(nodes);}});return queue;}
+function node(tag,text,className){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(className)el.className=className;return el;}
+function card(label,value,detail){const c=node('div',undefined,'card');c.append(node('span',label,'eyebrow'),node('strong',math(value)),node('span',detail,'muted'));$('summary').append(c);}
+function candidate(c,number,checked){const box=node('div',undefined,'candidate'),portrait=node('div',undefined,'portrait');for(const kind of ['support','output',...(c.read_obligations?.length?['input','offset']:[])])portrait.append(node('span',undefined,'dot '+kind));box.append(portrait);
+  const pre=c.placement_key.type_preimage,w=pre.primitive_witness;
+  box.append(node('strong',`${checked?'Checked':'Submitted'} candidate ${math(String(number))} · ${w.rule}`));box.append(node('p',math(formula(w.formula))));
+  for(const [i,ob]of(c.read_obligations||[]).entries())box.append(node('p',`Ordered input ${math(String(i+1))} requires ${math(formula(ob.formula))} at row ${math(String(ob.row+1))}; ${ob.occupied?'occupied output':'unfilled obligation'}, no fact acceptance.`));
+  if(!c.read_obligations?.length)box.append(node('p','This primitive has no premise ports.'));
+  box.append(node('p',`Translation ${math(`(0,${c.placement_key.translation[1]})`)}; prototype ${c.placement_key.tile_type_id.slice(0,30)}…`,'caption'));return box;}
+async function showCase(c){$('case-result').textContent=c.status+' · '+(c.observed.receipt?.status||c.observed.exception_type||'Unavailable');$('case-scope').textContent=c.scope+(c.observed.reason?' '+c.observed.reason:'');$('case-json').textContent=JSON.stringify(c,null,2);$('root-grid').replaceChildren();$('candidates').replaceChildren();
+  const o=c.observed,s=o.state,receipt=o.receipt,submitted=o.proposal?.candidates||[];
+  if(s){const totals=new Map(s.t.map(([p,v])=>[p[1],v])),marks=new Map(s.m.filter(([p])=>p[0]===1).map(([p,v])=>[p[1],v]));for(let r=0;r<24;r++){const el=node('div',math(String(r+1)),'root-point'+(totals.get(r)===1?' filled':'')+(marks.has(r)?' marked':'')+(o.row===r?' queried':''));const v=marks.get(r);el.title=v?JSON.stringify(v):'Unassigned output';$('root-grid').append(el);}}
+  else $('root-grid').append(node('p','This case records an exception or an unavailable fixture; no displayed private state.'));
+  $('candidate-title').textContent=receipt?.accepted_local_evidence?'Independently checked candidates':'Untrusted submitted candidates';
+  for(const[cIndex,cand]of submitted.entries())$('candidates').append(candidate(cand,cIndex+1,Boolean(receipt?.accepted_local_evidence)));
+  if(!submitted.length)$('candidates').append(node('p',receipt?.status==='ZERO'?'The completed restricted census has no surviving candidate.':'No candidates displayed; this alone establishes no degree.'));
+  await typeset([$('case-result'),$('root-grid'),$('candidates')]);}
+async function main(){const response=await fetch('report-data.json');if(!response.ok)throw Error('Saved report unavailable');const data=await response.json(),d=data.actual,cases=data.result.controls.cases;
+  $('lead').textContent='Measured local controls now distinguish complete zero/one/multiple covers, verified two-candidate lower bounds, and unknown queries. This is a component for future GCTS search, not another discovered theorem.';
+  card('Passed controls',String(d.passed_cases),'Unavailable cases remain separate.');card('Unavailable cases',String(d.skipped_cases),'No skipped case is counted as a pass.');card('Complete native stage',(d.native_launch_to_postprobe_ns/1e9).toFixed(6)+'\\,\\mathrm{s}','Launch through fresh postterminal observation.');card('Owned peak memory',(d.aggregate_B_bytes/1048576).toFixed(6)+'\\,\\mathrm{MiB}','One owned process, true terminal peak.');
+  $('outcome').textContent='The independently checked local classifications and malformed-evidence controls completed within the original resource gates. The two unknown fixtures stay unknown. The queried-row metadata-conflict fixture is unreachable in this unit-row model and is explicitly skipped; callback controls establish propagation at the caller seam, not a late-cover deadline branch.';
+  for(const [i,c]of cases.entries()){const option=node('option',c.case+' · '+c.status);option.value=i;$('case-select').append(option);const tr=node('tr');tr.append(node('td',c.case),node('td',c.status+(c.observed.receipt?' · '+c.observed.receipt.status:'')));$('case-table').append(tr);}
+  for(const item of data.evidence){const li=node('li'),a=node('a',item.label);a.href=item.href;li.append(a);$('evidence-links').append(li);}
+  $('case-select').addEventListener('change',()=>showCase(cases[Number($('case-select').value)]));const first=cases.findIndex(c=>c.case==='initial-final-universal-two-pending-UG');$('case-select').value=String(first<0?0:first);await showCase(cases[Number($('case-select').value)]);await typeset([$('summary')]);document.body.dataset.savedReaderReady='true';}
+main().catch(error=>{$('lead').textContent='Saved report failed to load: '+error.message;document.body.dataset.savedReaderFailed='true';});

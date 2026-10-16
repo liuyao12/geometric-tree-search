@@ -1,0 +1,20 @@
+--- v1
++++ v2
+@@ -4,7 +4,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-implicit-degree-evidence-v1'
++VERSION = 'unit-row-implicit-degree-evidence-v2'
+ PORTS = {'axiom': 0, 'assumption': 0, 'instantiate': 0,
+          'eq_subst': 0, 'generalize': 1, 'mp': 2}
+ 
+@@ -253,6 +253,8 @@
+         tick()
+         if cover and output[0] == 'all':
+             coverage['UG_prior_rows_seen'].append(r)
++        if not cover and output is not None and output[0] == 'all':
++            formula = output[2]
+         if formula is None:
+             continue
+         for variable in language.parameters:

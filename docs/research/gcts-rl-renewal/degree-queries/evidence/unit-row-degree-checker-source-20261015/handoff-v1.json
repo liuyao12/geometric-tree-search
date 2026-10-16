@@ -1,0 +1,26 @@
+{
+  "API": "check_degree_evidence(*, language, state, row, proposal, tick) -> unit-row-degree-evidence-check-v1",
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 9060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/author-static-v1.json",
+    "sha256": "0850e1d45ff4005bf8403e92ddad3ac21bf0717e4484eb0a5d7567b70a0b01c9"
+  },
+  "next": "Root genuine independent Source review; diagnosis bounded controls use exact callable API. No actual/function/clock/Q/model/word/test execution. No graph/proof/resource acceptance.",
+  "review_scope": "unit-row-implicit-degree-evidence-checker-Source",
+  "schema": "unit-row-degree-checker-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+    "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+  },
+  "source_contract": {
+    "bytes": 9694,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/Source-contract-v1.json",
+    "sha256": "6c819fcb4c7eccfa96a5dd9c49b1e34323c438ddee91ab559f18314b9b012b44"
+  },
+  "source_only": true,
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING"
+}

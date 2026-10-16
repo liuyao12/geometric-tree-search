@@ -1,0 +1,192 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 20,
+  "checks": [
+    {
+      "check": "Raw immutable Source pin and syntax",
+      "evidence": "Exact28e84/16276 buffer parsed/compiled only; no exec/import of this module.",
+      "id": "C01",
+      "passed": true
+    },
+    {
+      "check": "Minimal dependencies/API",
+      "evidence": "Only json/hashlib;13 top-level functions; keyword-only language,state,row,proposal,tick; no proposer import/call.",
+      "id": "C02",
+      "passed": true
+    },
+    {
+      "check": "Independent implementation provenance",
+      "evidence": "Authored new state/point reconstruction and descriptor-list/full-scan verification, not wrappers around proposer functions. Same literal encoding is the declared protocol, not a learned proof route.",
+      "id": "C03",
+      "passed": true
+    },
+    {
+      "check": "Private exact state clone",
+      "evidence": "Builtin JSON-only copy, exact8 fields, original24 roots/height, current private language epoch, literal integer coordinates/capacities/generations.",
+      "id": "C04",
+      "passed": true
+    },
+    {
+      "check": "Full selected/exclusion validation",
+      "evidence": "Every full key independently membership-checked and reconstructed; full preimage, strict ordered offsets, translation/generation, multiplicity, digest/preimage collision and exclusions checked.",
+      "id": "C05",
+      "passed": true
+    },
+    {
+      "check": "Complete state union",
+      "evidence": "Recompose target and complete negative outside boundary plus every selected support/mark; compare whole t/m arrays including metadata, not just local output.",
+      "id": "C06",
+      "passed": true
+    },
+    {
+      "check": "Exact proposal custody",
+      "evidence": "Exact field set/schema/version1or2/private state digest/binding/row, true untrusted marker, six false authority flags and scope marker; rejects changed state or authority labels.",
+      "id": "C07",
+      "passed": true
+    },
+    {
+      "check": "Independent candidate reconstruction",
+      "evidence": "Supplied prototype/t/m/member/read arrays never act as authority; build them from original primitive witness/ordered premises, then compare entire supplied candidate.",
+      "id": "C08",
+      "passed": true
+    },
+    {
+      "check": "Strict physical port legality",
+      "evidence": "Negative bounded offsets imply nonnegative strict-prior absolute rows; port order/repeats preserved; duplicate internal marks must agree.",
+      "id": "C09",
+      "passed": true
+    },
+    {
+      "check": "Whole candidate filter",
+      "evidence": "Check current positive capacity, all read/output/metadata point marks, full selected/exclusion keys; candidates must touch exact query row.",
+      "id": "C10",
+      "passed": true
+    },
+    {
+      "check": "Witness mode",
+      "evidence": "Exactly two distinct complete legal keys, no exact degree claim. Shared placement repetition rejects; prototype digest collision mismatches reject.",
+      "id": "C11",
+      "passed": true
+    },
+    {
+      "check": "UNKNOWN mode",
+      "evidence": "Only zero/one independently checked hints allowed, coverageNone/false cover; accepted_local_evidence false and degree_exactNone, never dead/forced.",
+      "id": "C12",
+      "passed": true
+    },
+    {
+      "check": "Restricted cover hypotheses",
+      "evidence": "Assigned canonical non-imp output and every earlier channel1 output a typed formula; pending unoccupied formulas allowed, no facts accepted.",
+      "id": "C13",
+      "passed": true
+    },
+    {
+      "check": "All original root/assumption occurrences",
+      "evidence": "Independent descriptor list retains all matching AX labels and occurrence-indexed Gamma witnesses even equal formulas.",
+      "id": "C14",
+      "passed": true
+    },
+    {
+      "check": "All UG occurrences",
+      "evidence": "For literal universal output, every matching prior formula row and original parameter checked by unchanged membership/full Gamma/bounds.",
+      "id": "C15",
+      "passed": true
+    },
+    {
+      "check": "All ordered MP pairs",
+      "evidence": "Independent entire Cartesian product includes repeated indices; only exact original implication antecedent/conclusion matches contribute descriptors.",
+      "id": "C16",
+      "passed": true
+    },
+    {
+      "check": "Independent full cover filtering/comparison",
+      "evidence": "Every descriptor checked; complete ordered survivors, definite exclusions, and full label/index/row/pair census compared to proposal. Missing, added, duplicate, wrong witness/offset or order rejects.",
+      "id": "C17",
+      "passed": true
+    },
+    {
+      "check": "No incomplete-work certification",
+      "evidence": "Only exact captured OutsideLanguage catches definite membership exclusion within cover; callback/time/other errors propagate without a classification.",
+      "id": "C18",
+      "passed": true
+    },
+    {
+      "check": "Scoped receipt flags",
+      "evidence": "Local ZERO/SINGLETON/MANY only complete cover, TWO_OR_MORE lower bound, UNKNOWN nonclassifying; no fullgraph/scheduler/rollback/proof/resource authority.",
+      "id": "C19",
+      "passed": true
+    },
+    {
+      "check": "No execution or target input",
+      "evidence": "No scientific/helper/project/clock/Q/model/word/test calls, actuals or grants; no target symbols, saved word, donor/library, route or count answers supplied.",
+      "id": "C20",
+      "passed": true
+    }
+  ],
+  "imports": [
+    "hashlib",
+    "json"
+  ],
+  "raw_references": {
+    "cover_note": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_prototype": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "preserved_addendum": {
+      "bytes": 2994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-two-witness-feasibility-source-20261015/addendum-v1.json",
+      "sha256": "f970f5dad4ee291e4edc883cdb01f00368354d5a8213f3fe36e206635ea2a205"
+    },
+    "preserved_feasibility": {
+      "bytes": 4497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-two-witness-feasibility-source-20261015/feasibility-v1.json",
+      "sha256": "84edf9c41fd08db7f77847b7f232beb1f77127551a6b9c6abd504bc268c96fa5"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "proposal_protocol_v2": {
+      "bytes": 12403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+    },
+    "proposer_source_v2_reference_only": {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    }
+  },
+  "schema": "unit-row-degree-checker-author-static-v1",
+  "scientific_calls": 0,
+  "scope": "Author raw/AST/compile and Source reasoning only; no independent review or dynamic conformance.",
+  "source": {
+    "bytes": 16276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+    "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+  },
+  "source_only": true,
+  "top_level_function_count": 13
+}

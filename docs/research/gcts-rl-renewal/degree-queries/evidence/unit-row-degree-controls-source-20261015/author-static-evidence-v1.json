@@ -1,0 +1,32 @@
+{
+  "schema": "unit-row-degree-controls-author-static-v1",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+    "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368",
+    "bytes": 13982
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "2a37f4253068752320f6dd5f72eefe2ec9afaca754ffb8c7d7c10273f73ae1c2",
+    "bytes": 7568
+  },
+  "checks": {
+    "size_under14000": true,
+    "parse_compile_only": true,
+    "exact_callable_run_API": true,
+    "stdlib_imports_only": true,
+    "no_file_clock_process_word_input": true,
+    "only_original_membership_fixture_delegate": true,
+    "independent_full_fixed_state": true,
+    "full_positive_negative_evidence": true,
+    "unknown_not_degree_zero": true,
+    "remote_legality_control_two_mode": true,
+    "resource_errors_not_negative_passes": true,
+    "conditional_skip_preserves_gaps": true
+  },
+  "count": 12,
+  "all_checks_passed": true,
+  "Source_functions": 0,
+  "clocks_tests_plans_actuals": 0
+}

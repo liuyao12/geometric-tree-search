@@ -1,0 +1,65 @@
+{
+  "API": "propose_degree(*,language,state,row,tick) -> unit-row-degree-evidence-proposal-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 12,
+  "delta": {
+    "bytes": 1696,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-delta-v2.json",
+    "sha256": "520ac664715edf3246dd4b8ca6fe94f65905dd168b9350dddaac6ac9ceffcf23"
+  },
+  "next": "Arithmetic distinct current Source review; diagnosis uses unchanged API/receipt for bounded controls. No activation.",
+  "parent_handoff": {
+    "bytes": 2816,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/handoff-v1.json",
+    "sha256": "494476c4f9f97a2776b213cd9c5f29415d6c5a315912b2a9350a15fa38dc3729"
+  },
+  "raw_references": {
+    "cover_argument": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_prototype": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "remaining_scope": "Untrusted degree subcomponent only. No global graph/scheduler/rollback/count/GCTS/RL/runtime admission; future distinct checker and controls remain separate.",
+  "schema": "unit-row-implicit-degree-evidence-Source-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 14060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+    "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+  },
+  "source_contract": {
+    "bytes": 12403,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+    "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+  },
+  "static_evidence": {
+    "bytes": 6041,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/author-static-evidence-v2.json",
+    "sha256": "6bce5805ee1da754a1819f6ca2b150109feaa0e1759b6e7186bbbcf46e71dfe2"
+  },
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING",
+  "typed_review_schema": "unit-row-degree-evidence-typed-Source-review-v1",
+  "typed_review_scope": "unit-row-implicit-degree-evidence-proposer-Source"
+}

@@ -1,0 +1,435 @@
+{
+  "all_checks_passed": true,
+  "check_count": 29,
+  "checks": [
+    {
+      "check": "Exact frozen packet and dependency pins",
+      "evidence": "Source/contract/handoff/static map and every named raw reference authenticated; no authored functions invoked.",
+      "id": "D01",
+      "passed": true,
+      "source_lines": []
+    },
+    {
+      "check": "Whole Source and contract read",
+      "evidence": "All ten top-level functions and nested helpers read, not only proposed cover loop; contract/API/19 author assertions read.",
+      "id": "D02",
+      "passed": true,
+      "source_lines": [
+        1,
+        285
+      ]
+    },
+    {
+      "check": "AST compile-only/import/API",
+      "evidence": "Only hashlib/json imports; exact keyword-only language,state,row,tick API and six arities verified with stdlib AST. Compiled but not executed.",
+      "id": "D03",
+      "passed": true,
+      "source_lines": [
+        4,
+        9,
+        171
+      ]
+    },
+    {
+      "check": "Private builtin clone and strict point schema",
+      "evidence": "No foreign object coercion; literal integer coordinates exclude bool, duplicates reject, complete t and root-generation arrays cover all24 rows.",
+      "id": "D04",
+      "passed": true,
+      "source_lines": [
+        26,
+        46,
+        87,
+        101
+      ]
+    },
+    {
+      "check": "Current binding and fixed unit-row profile",
+      "evidence": "Height24, epoch from current language binding, translations [0,row], strict negative offsets [-23,-1] and nonnegative absolute prior rows.",
+      "id": "D05",
+      "passed": true,
+      "source_lines": [
+        58,
+        69,
+        92,
+        104
+      ]
+    },
+    {
+      "check": "Selected/excluded full original primitive validation",
+      "evidence": "Every supplied key is rebuilt using supplied current membership, full witness/premises/offsets/translation, exact canonical key, generation and collision-preimage checks.",
+      "id": "D06",
+      "passed": true,
+      "source_lines": [
+        107,
+        126,
+        128,
+        141
+      ]
+    },
+    {
+      "check": "Whole state recomposition",
+      "evidence": "Rebuild all outside sentinels, fixed final target, selected unit supports and every formula/offset mark; compare complete supplied t/m, not only query-local points.",
+      "id": "D07",
+      "passed": true,
+      "source_lines": [
+        102,
+        145
+      ]
+    },
+    {
+      "check": "Inventory/multiplicity/exclusions",
+      "evidence": "Selected full keys once; overfill rejects; exclusions unique/disjoint selected and compared by complete placement key, not digest or formula alone.",
+      "id": "D08",
+      "passed": true,
+      "source_lines": [
+        128,
+        141,
+        201,
+        204
+      ]
+    },
+    {
+      "check": "Generation scope",
+      "evidence": "All24 target obligations are declared roots of generation0, so selected single-support tiles generation1 is coherent for this profile; no general growth engine claim.",
+      "id": "D09",
+      "passed": true,
+      "source_lines": [
+        97,
+        112
+      ]
+    },
+    {
+      "check": "Point encoding agrees with literal converter",
+      "evidence": "Same input_epoch/witness/ordered-premises/offset preimage, tile prefix, output/read/port mark coordinates and unit positive support as baefa converter; no converter import/call.",
+      "id": "D10",
+      "passed": true,
+      "source_lines": [
+        64,
+        84
+      ]
+    },
+    {
+      "check": "Strict complete physical port occurrences",
+      "evidence": "Rule arity, ordered offsets and ordered premise count agree. Repeated references remain mark occurrences; internal duplicate disagreement aborts.",
+      "id": "D11",
+      "passed": true,
+      "source_lines": [
+        58,
+        80
+      ]
+    },
+    {
+      "check": "Canonical marked formula parsing",
+      "evidence": "No float/nonfinite or duplicate key; full canonical label equality and bounded formula typing. Missing is None; occupied is not required to read a formula obligation.",
+      "id": "D12",
+      "passed": true,
+      "source_lines": [
+        149,
+        168
+      ]
+    },
+    {
+      "check": "Non-implication and full-prefix cover gate",
+      "evidence": "Output assigned, literal outer tag !=imp, every earlier output mark a typed formula; otherwise not a cover proposal.",
+      "id": "D13",
+      "passed": true,
+      "source_lines": [
+        180,
+        185
+      ]
+    },
+    {
+      "check": "Six-rule exclusion argument",
+      "evidence": "Original43bc UI/EqSubst outputs have outer imp. Literal non-imp outputs leave only AX, indexed Gamma, UG and MP; no alpha or semantic-formula merging.",
+      "id": "D14",
+      "passed": true,
+      "source_lines": [
+        8,
+        9,
+        284
+      ]
+    },
+    {
+      "check": "Every named axiom identity",
+      "evidence": "All labels in deterministic name order; exact matching output, separate primitive witnesses even equal formulas. Complete cover never short-circuits after two survivors.",
+      "id": "D15",
+      "passed": true,
+      "source_lines": [
+        236,
+        243
+      ]
+    },
+    {
+      "check": "Every indexed original Gamma occurrence",
+      "evidence": "Every occurrence index visited, exact matching output, no formula deduplication of distinct assumptions.",
+      "id": "D16",
+      "passed": true,
+      "source_lines": [
+        244,
+        251
+      ]
+    },
+    {
+      "check": "Every eligible UG row occurrence",
+      "evidence": "All earlier formula marks and original parameter names considered; exact output match, full bounded membership/kernel enforces whole original Gamma side condition.",
+      "id": "D17",
+      "passed": true,
+      "source_lines": [
+        252,
+        263
+      ]
+    },
+    {
+      "check": "Every ordered MP pair",
+      "evidence": "Full earlier-row Cartesian product includes repeated indices; exact implication/antecedent/conclusion comparison; full membership verifies both ordered premises.",
+      "id": "D18",
+      "passed": true,
+      "source_lines": [
+        264,
+        283
+      ]
+    },
+    {
+      "check": "No required premise is treated as a proved fact",
+      "evidence": "Occupied and pending rows can supply formula obligations; every reported read has fact_accepted false. Missing implication hints become required reads only.",
+      "id": "D19",
+      "passed": true,
+      "source_lines": [
+        215,
+        216,
+        252,
+        281
+      ]
+    },
+    {
+      "check": "Full candidate membership and legality",
+      "evidence": "Every proposal is member-checked and reconstructed, then filtered by selected/excluded identity, all positive support capacity and every remote/metadata m overlap.",
+      "id": "D20",
+      "passed": true,
+      "source_lines": [
+        187,
+        217
+      ]
+    },
+    {
+      "check": "Distinct positive witnesses",
+      "evidence": "Canonical complete key deduplication; only after >=2 survivors may incomplete search return exactly two. No exact count follows from that shortlist.",
+      "id": "D21",
+      "passed": true,
+      "source_lines": [
+        195,
+        220,
+        228
+      ]
+    },
+    {
+      "check": "Restricted cover finishes its entire census",
+      "evidence": "finished() is false for cover; all AX/Gamma/UG and ordered MP loops finish before complete_cover_proposed can return.",
+      "id": "D22",
+      "passed": true,
+      "source_lines": [
+        219,
+        224,
+        236,
+        285
+      ]
+    },
+    {
+      "check": "Incomplete work is not zero/singleton evidence",
+      "evidence": "Only exact captured OutsideLanguage is a definite proposed-member exclusion. Resource/timeout/other callback errors propagate; caller must record UNKNOWN/failure, not cover.",
+      "id": "D23",
+      "passed": true,
+      "source_lines": [
+        174,
+        194,
+        224,
+        234
+      ]
+    },
+    {
+      "check": "Unknown hint incompleteness is honest",
+      "evidence": "No full syntax generator or missing-UG-premise synthesis; insufficient hints return UNKNOWN with no cover and no zero/one claim.",
+      "id": "D24",
+      "passed": true,
+      "source_lines": [
+        256,
+        257,
+        269,
+        274,
+        284
+      ]
+    },
+    {
+      "check": "Input state is not updated by this component",
+      "evidence": "Private copy rebuilt and returned with state digest/binding. No place/exclude mutation, graph cache, scheduling or rollback operation.",
+      "id": "D25",
+      "passed": true,
+      "source_lines": [
+        26,
+        33,
+        87,
+        88,
+        225,
+        234
+      ]
+    },
+    {
+      "check": "All acceptance flags remain false",
+      "evidence": "Cover completion and witnesses are untrusted data. Zero/singleton, >=2, complete graph, scheduler/rollback, logical proof and Root resource flags remain false.",
+      "id": "D26",
+      "passed": true,
+      "source_lines": [
+        230,
+        234
+      ]
+    },
+    {
+      "check": "No target route or word input",
+      "evidence": "Generic supplied logical language and state only; target appears only as the fixed original final mark. No saved word, donor, library, arithmetic symbol or reference-route input.",
+      "id": "D27",
+      "passed": true,
+      "source_lines": [
+        171,
+        181,
+        236,
+        281
+      ]
+    },
+    {
+      "check": "Caller and integration obligations preserved",
+      "evidence": "Contract retains authenticated language5d1f/policy227b/private original input and tick; no Source/native/cap authority here. Independent evidence checker, all-frontier graph, fallback, scheduler and exact rollback remain open.",
+      "id": "D28",
+      "passed": true,
+      "source_lines": []
+    },
+    {
+      "check": "Prior feasibility and critical-gap notes preserved",
+      "evidence": "Both prior note pins are unchanged; sufficient witness conditions do not erase absent witnesses, premature singleton or other unresolved frontier obligations.",
+      "id": "D29",
+      "passed": true,
+      "source_lines": []
+    }
+  ],
+  "concrete_blockers": [],
+  "decision": "CONDITIONAL_SOURCE_PASS_ONLY: no scoped blocker in the current local untrusted proposer; no dynamic or mathematical acceptance.",
+  "limitations": [
+    {
+      "detail": "Missing unmarked UG premise is not synthesized. Other implication/missing-prefix query classes may have many legal candidates yet return UNKNOWN. This is not complete base fallback or language exhaustion.",
+      "id": "L1",
+      "kind": "intentional_incompleteness"
+    },
+    {
+      "detail": "All candidates/cover/census are untrusted proposals. Separate independent state/member/identity/full-legality/cover checking is required before any degree>=2, dead or forced use. Exclusion justifications/context/lifecycle are caller authority, not proved here.",
+      "id": "L2",
+      "kind": "trust_boundary"
+    },
+    {
+      "detail": "No complete frontier incidence/dependency graph, global dead then forced then earliest-generation scheduler, exact tie count, placement/rollback engine or resource-qualified cold runtime is implemented. No GCTS or count admission.",
+      "id": "L3",
+      "kind": "integration_pending"
+    },
+    {
+      "detail": "Caller must supply exact authenticated language and private state plus an anchored resource-only tick. It must preserve Source/default/closure/native custody and original final20/512/55/60/90+1 gates. A propagated error is never a completed-cover result.",
+      "id": "L4",
+      "kind": "caller_assumptions"
+    },
+    {
+      "detail": "Response retains complete copied state, candidate/member data and restricted pair census. No measured runtime, memory fit or speed advantage follows from static review.",
+      "id": "L5",
+      "kind": "retention_and_cost"
+    }
+  ],
+  "provenance": {
+    "distinct_from_component_author": true,
+    "overlap_disclosed": "Reviewer authored prior feasibility/addendum and the independent point-board checker, and reviewed Root converter/current membership earlier. Reviewer did not author this proposer, original43bc kernel, membership5d1f, Root converter or policy. This is a new whole component review, not a fresh independent proof of every dependency.",
+    "reviewer": "/root/arithmetic_induction",
+    "source_author": "/root/hilbert_advice_controls"
+  },
+  "raw_references": {
+    "author_handoff": {
+      "bytes": 2816,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/handoff-v1.json",
+      "sha256": "494476c4f9f97a2776b213cd9c5f29415d6c5a315912b2a9350a15fa38dc3729"
+    },
+    "author_static": {
+      "bytes": 6671,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/author-static-evidence-v1.json",
+      "sha256": "6c712642eca470e7710663e64dba34c9353fd04bb601c7dd45cdc78132dfe2e5"
+    },
+    "cover_argument": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_prototype": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "preserved_addendum": {
+      "bytes": 2994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-two-witness-feasibility-source-20261015/addendum-v1.json",
+      "sha256": "f970f5dad4ee291e4edc883cdb01f00368354d5a8213f3fe36e206635ea2a205"
+    },
+    "preserved_feasibility": {
+      "bytes": 4497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-two-witness-feasibility-source-20261015/feasibility-v1.json",
+      "sha256": "84edf9c41fd08db7f77847b7f232beb1f77127551a6b9c6abd504bc268c96fa5"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "source": {
+      "bytes": 13960,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+      "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+    },
+    "source_contract": {
+      "bytes": 10463,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "e21c5022a198b52d263eeb9eafaf4b53a527ae0ff4378af65104838672a40d98"
+    }
+  },
+  "schema": "unit-row-degree-evidence-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-implicit-degree-evidence-proposer-Source",
+  "source": {
+    "bytes": 13960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+    "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+  },
+  "source_contract": {
+    "bytes": 10463,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v1.json",
+    "sha256": "e21c5022a198b52d263eeb9eafaf4b53a527ae0ff4378af65104838672a40d98"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "static_syntax": {
+    "compile_without_exec": true,
+    "imports": [
+      "hashlib",
+      "json"
+    ],
+    "top_level_functions": 10
+  },
+  "whole_raw_paths": 12
+}

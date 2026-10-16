@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GCTS proof tiles · checked local degree queries</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="../shared-bounded-proofs/reader.css"><link rel="stylesheet" href="reader.css"><script defer src="reader.js"></script></head>
+<body><main><header><div class="eyebrow">GCTS integration · local evidence · independent checking</div>
+<h1>Which proof tiles can fill this point?</h1><p class="lead" id="lead">Loading saved local-degree controls.</p>
+<nav><a href="#results">Measured result</a><a href="#inspector">Inspect a case</a><a href="#meaning">What was established</a><a href="#evidence">Evidence</a><a href="../shared-bounded-proofs/reader.html#reader">Discovered arithmetic proof</a><a href="../index.html">Research notebook</a></nav></header>
+<section id="results"><h2>A component needed before proof-tile search</h2><div id="summary" class="cards"></div>
+<p>The original arithmetic axioms, target, bounded six-rule language and fixed \(24\)-row point model are unchanged. These are deliberately constructed control states, with no saved proof word, donor proof or lemma library as input. They test candidate evidence rather than theorem discovery.</p>
+<div class="twocol"><div><h3>Two witnesses give a lower bound</h3><p>Two distinct, fully legal candidate placements establish \(\deg(p)\ge2\). The checker reconstructs their primitive instances, complete point values, remote markings, full identities and current exclusions. This does not require an exact count.</p></div><div><h3>Zero and one require coverage</h3><p>When the output formula is assigned, its outer constructor is not implication, and every earlier output mark is assigned, the checker can enumerate every matching original axiom, hypothesis occurrence, generalization occurrence and ordered modus-ponens pair. Only a completed census supports \(\deg(p)=0\) or \(\deg(p)=1\).</p></div></div>
+<p>Instantiation and equality-substitution tiles produce implication licences, so they cannot supply a non-implication output. Missing marks or other uncovered cases remain unknown unless two legal witnesses are checked.</p></section>
+<section id="inspector"><h2>Inspect the actual saved control states</h2><label for="case-select">Control case</label> <select id="case-select"></select>
+<div class="notice" id="case-result"></div><p id="case-scope"></p>
+<div class="legend"><span>Filled unit support: dark</span><span>Assigned output mark: purple dot</span><span>Queried frontier point: teal outline</span></div>
+<div id="root-grid" aria-label="All twenty-four required unit points"></div><p class="caption">Every required row is an initial root obligation. An assigned formula at an unfilled row is a pending requirement. It is not a logical fact. Outside sentinels and the final target remain in the complete saved state.</p>
+<h3 id="candidate-title">Submitted candidate tiles</h3><div id="candidates"></div>
+<details><summary>Complete saved state, proposal and independent receipt</summary><pre id="case-json"></pre></details></section>
+<section id="meaning"><h2>What this establishes for GCTS</h2><p id="outcome"></p>
+<p>This is a checked local interface, not an integrated GCTS proof search. The remaining work is a complete implicit frontier/candidate relation with reverse marking dependencies and fallback, global dead-end checks before forced moves, earliest-generation branching, and exact rollback. No GCTS or RL advantage follows from these controls.</p>
+<p>Exclusion fixtures assume a particular branch context. They test whether exact excluded keys are respected; they do not prove that those exclusions may be learned or applied globally. Unavailable or unreachable cases are recorded separately from passed controls.</p>
+<p>The proposer, independent checker and control harness have different authors. The coordinator reviewed the checker and harness, owned the measured activation and reused the existing native meter and cold-run helpers. Each proposer and checker call receives a separately reconstructed original language object.</p></section>
+<section id="evidence"><h2>Reproducible saved evidence</h2><p>This page displays saved JSON only. It runs no prover, candidate generator or checker.</p><ul id="evidence-links"></ul><details><summary>All control outcomes</summary><div class="tablewrap"><table><thead><tr><th>Case</th><th>Outcome</th></tr></thead><tbody id="case-table"></tbody></table></div></details></section>
+<footer>Active research · original UNKNOWN and finite-negative results preserved · local degree evidence is separate from a proof or a search trajectory.</footer></main></body></html>

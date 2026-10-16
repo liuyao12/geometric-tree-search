@@ -1,0 +1,168 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root",
+    "reviewer_identity": "Actual reviewer decides; Root author check disclosed separately.",
+    "schema": "unit-row-degree-controls-cold-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-degree-controls-cold-Source",
+    "source": {
+      "bytes": 22168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+      "sha256": "212ea04d6ff212256f1b0195ead617a4e6b3eccdd775874387e0d1848a157c1d"
+    },
+    "source_contract": "Exact current complete raw contract capsule; no self hash.",
+    "source_only": true,
+    "source_review_passed": "Actual reviewer decides.",
+    "sources": {
+      "clean_support": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "controls": {
+        "bytes": 13982,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+        "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368"
+      },
+      "degree_checker": {
+        "bytes": 16276,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+        "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+      },
+      "intake": {
+        "bytes": 22168,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+        "sha256": "212ea04d6ff212256f1b0195ead617a4e6b3eccdd775874387e0d1848a157c1d"
+      },
+      "kernel": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "membership": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "proposer": {
+        "bytes": 14060,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+        "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+      }
+    }
+  },
+  "author_identity": "/root",
+  "endpoint": "Complete local-degree control evidence only; no proof discovery/point search/graph/scheduler/rollback/marking/RL benefit.",
+  "fresh_authority": "Each proposer/checker call receives a separate freshly constructed original membership object after reauthentication of whole original declaration/profile. Full Source binding remains unchanged. Native tick retained even for injected callback controls.",
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "provenance": {
+    "checker_handoff": {
+      "bytes": 1464,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/handoff-v1.json",
+      "sha256": "2d6babfaf516d30c23a7423eac38163f2150ee978ecfd7a4dc515d61d9e9821d"
+    },
+    "controls_handoff": {
+      "bytes": 2816,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/handoff-v1.json",
+      "sha256": "ec1db97c7e8d0cecb4a9c80a1e190096c50bda7db36a63396e6ad24ebc410477"
+    },
+    "copied15_helpers": [
+      "need",
+      "canonical",
+      "raw_pin",
+      "unique",
+      "reject_constant",
+      "finite_float",
+      "decode",
+      "read_pinned",
+      "load_module",
+      "write_new",
+      "anchor",
+      "same",
+      "invoke",
+      "cancel",
+      "all_function_anchors"
+    ],
+    "new_source_scope": "New local-control main/adapters, original early native gates and two-line wire. No new external measurement or custody framework.",
+    "parent_intake": {
+      "bytes": 55225,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+      "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2"
+    },
+    "proposer_handoff": {
+      "bytes": 3672,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/handoff-v2.json",
+      "sha256": "d847d71a6e4121f95a20cf0c703287288ce1b75d422afaf00617c46968fcae65"
+    }
+  },
+  "resource_rule": "single-owned-process-native-terminal-v1",
+  "schema": "unit-row-degree-controls-cold-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-degree-controls-cold-Source",
+  "scope_limits": [
+    "Fixed reviewed synchronous Darwin Sources, not hostile Python/OS/VM assurance.",
+    "Complete root target24 and current six-rule unit-row inventory only.",
+    "Caller-supplied branch exclusions are fixtures, not justified search failures.",
+    "Primitive membership shares the reviewed original kernel; this is distinct local geometric/census checking, not another1717 whole-proof acceptance.",
+    "Any unfinished callback/check/runtime work prevents successful completion; no false zero/singleton."
+  ],
+  "source_only": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 13982,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+      "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368"
+    },
+    "degree_checker": {
+      "bytes": 16276,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+    },
+    "intake": {
+      "bytes": 22168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+      "sha256": "212ea04d6ff212256f1b0195ead617a4e6b3eccdd775874387e0d1848a157c1d"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    }
+  }
+}

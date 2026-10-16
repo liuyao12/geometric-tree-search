@@ -1,0 +1,148 @@
+{
+  "API": "check_degree_evidence(*, language, state, row, proposal, tick) -> unit-row-degree-evidence-check-v1",
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "unit-row-degree-checker-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-implicit-degree-evidence-checker-Source",
+    "source": {
+      "bytes": 16276,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+    },
+    "source_contract": "Exact final raw Source-contract-v1 capsule, not a self hash.",
+    "source_only": true,
+    "source_review_passed": "Genuine distinct reviewer decides; no author self-pass."
+  },
+  "algorithms": {
+    "cover": "Require assigned NON-imp output and all earlier formula marks. Independently construct every matching named AX and indexed Gamma, eligible literal UG row occurrence, every ordered MP pair incl repeated rows. Original UI/EqSubst outerimp licences excluded by literal shape. Re-check every descriptor/member/full legality, compare entire ordered candidate list, rejection list and complete census.",
+    "state": "New independent rebuild from original rule membership and full exact preimages; selected capacity/mark union, duplicates/collisions and full exclusions validated. No proposer imports/calls.",
+    "unknown": "Validate supplied zero/one hints and all top-level custody/flags, but return no degree conclusion. Hint rejection diagnostics are not independently certified and do not contribute to any acceptance. No general missing-prefix/imp-output fallback.",
+    "witness": "Independently reconstruct all supplied candidate fields/member receipts, check whole capacity/marks/exclusions and exactly2 distinct incident full keys. Does not need completeness of hints."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 9060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/author-static-v1.json",
+    "sha256": "0850e1d45ff4005bf8403e92ddad3ac21bf0717e4484eb0a5d7567b70a0b01c9"
+  },
+  "authority": "Exact separately caller-authenticated ORIGINAL language object/current binding/private state and query are authority. Proposal may not supply replacement language, declaration, target, state, exclusions or epochs. Authenticate original membership5d1f/policy227b/kernel43bc and Source/FD/native/default/closure custody externally. No Q payload or word required.",
+  "errors": "Malformed state/evidence is rejected by ValueError (including definite language OutsideLanguage on invalid supplied members). Resource/timeout/other callback/unfinished membership errors propagate to caller UNKNOWN/failure; no classification is returned. Trusted resource tick must not impersonate the membership OutsideLanguage exclusion class. No unchecked prefix accepted.",
+  "private_state": "Same unit-row-implicit-private-state-v1 exact8 fields: schema,input_epoch,height24,t,m,selected,excluded,generation. All24 unit points root0, selected unit tiles growthgen1. Whole fixed target/outside boundary plus selected keys must recompose complete private t/m. Earlier formula marks may be pending outputs, never facts. Exclusion context/justification/lifecycle are caller assumptions, not proved by this component.",
+  "proposal_protocol": {
+    "markers": "Exact field set and false authority flags. Proposed state/binding/epoch/query must match private values. Same baefa literal type preimages/translation/formula/offset marks; no alpha quotient or digest-only authority.",
+    "schema": "unit-row-degree-evidence-proposal-v1",
+    "versions": [
+      "unit-row-implicit-degree-evidence-v1",
+      "unit-row-implicit-degree-evidence-v2"
+    ]
+  },
+  "raw_references": {
+    "cover_note": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_prototype": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "preserved_addendum": {
+      "bytes": 2994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-two-witness-feasibility-source-20261015/addendum-v1.json",
+      "sha256": "f970f5dad4ee291e4edc883cdb01f00368354d5a8213f3fe36e206635ea2a205"
+    },
+    "preserved_feasibility": {
+      "bytes": 4497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-two-witness-feasibility-source-20261015/feasibility-v1.json",
+      "sha256": "84edf9c41fd08db7f77847b7f232beb1f77127551a6b9c6abd504bc268c96fa5"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "proposal_protocol_v2": {
+      "bytes": 12403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+    },
+    "proposer_source_v2_reference_only": {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    }
+  },
+  "receipt": {
+    "accepted_local_evidence": "True except UNKNOWN. This is conditional local evidence only, not a branch/placement operation.",
+    "candidate_keys": "All independently checked full3-field placement keys in declared order.",
+    "degree_exact": "Integer only if complete_cover_checked; else None.",
+    "false_flags": [
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "fields": [
+      "schema",
+      "version",
+      "status",
+      "accepted_local_evidence",
+      "input_epoch",
+      "state_sha256",
+      "row",
+      "complete_cover_checked",
+      "degree_exact",
+      "candidate_keys",
+      "sole_candidate",
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "schema": "unit-row-degree-evidence-check-v1",
+    "sole_candidate": "Full compatible candidate including original member receipt/read obligations only when exact degree1, else None.",
+    "status": {
+      "MANY": "Complete checked restricted cover, exact localdegree>=2.",
+      "SINGLETON": "Complete checked restricted cover, exact local1 and full sole_candidate.",
+      "TWO_OR_MORE": "Exactly2 checked witnesses, lower bound only; degree_exactNone.",
+      "UNKNOWN": "No local degree acceptance; degree_exactNone.",
+      "ZERO": "Complete checked restricted cover, exact local0."
+    }
+  },
+  "remaining_gates": [
+    "Genuine distinct Source review and bounded controls before Root actual.",
+    "Private authority/binding/Source/parser/native/type/FD/EOF custody and original20/512/55/60/90+1 costs are external. No cold framework added.",
+    "Every frontier needs checked degree evidence, complete graph/incidence/dependencies and fallback. Check ALL globaldead before forced before earliest generation; exact tie policy/counts remain caller obligations.",
+    "Exact shared-key placement/mark-refcount/generation/exclusion/cursor rollback and rule lifecycle not implemented.",
+    "No proof/word/wholeboard/trajectory/GCTS/RL/nativeWang/count/speed admission from local evidence."
+  ],
+  "schema": "unit-row-independent-degree-checker-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-implicit-degree-evidence-checker-Source",
+  "source": {
+    "bytes": 16276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+    "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+  },
+  "source_only": true,
+  "version": "independent-unit-row-degree-evidence-check-v1"
+}

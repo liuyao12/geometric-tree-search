@@ -1,0 +1,51 @@
+{
+  "schema": "unit-row-degree-controls-Source-handoff-v1",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+    "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368",
+    "bytes": 13982
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "2a37f4253068752320f6dd5f72eefe2ec9afaca754ffb8c7d7c10273f73ae1c2",
+    "bytes": 7568
+  },
+  "author_static": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/author-static-evidence-v1.json",
+    "sha256": "007e9aa2986462ed09c9617648875e750f20c35c8e0a14e3fc5f3206ea8b39a5",
+    "bytes": 1260
+  },
+  "API": "run_controls(*,language,proposer,checker,tick) -> complete JSON control result",
+  "dependency_API_pins": {
+    "proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1",
+      "bytes": 14060
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6",
+      "bytes": 16276
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    }
+  },
+  "source_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "scope": "Local-degree mechanics controls only, original language; full proposals/receipts, unavailable cases explicitly skipped; no theorem/graph/search/resource acceptance.",
+  "remaining": [
+    "Root whole Source/API review",
+    "Root-only cold guarded fresh-language wrappers/plan/grant and complete native output/resource closure",
+    "Actual cases and skips must be counted from whole returned JSON; no expected positive outcome supplied"
+  ],
+  "scientific_calls": 0,
+  "actual_activation": false
+}

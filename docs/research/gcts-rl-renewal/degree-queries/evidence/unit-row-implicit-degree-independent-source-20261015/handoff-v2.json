@@ -1,0 +1,32 @@
+{
+  "check_count": 40,
+  "current_checks": 12,
+  "findings": {
+    "bytes": 10471,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/findings-v2.json",
+    "sha256": "1a570fb47ffe7a697beb21d20d787636a9bce62243be201631c49b86111ab940"
+  },
+  "no_scoped_blocker": true,
+  "remaining": "Separate independent degree checker/control/runtime/global graph/scheduler/rollback; UNKNOWN incompleteness preserved. V1 review/Source unchanged.",
+  "retained_checks": 28,
+  "schema": "unit-row-degree-evidence-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 14060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+    "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+  },
+  "source_contract": {
+    "bytes": 12403,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+    "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_ONLY",
+  "typed_review": {
+    "bytes": 2586,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v2.json",
+    "sha256": "d595b0fadedb96fd2adad777c5b030904e3979fc3e6dd6ee70dc98bfdcda0bf9"
+  }
+}

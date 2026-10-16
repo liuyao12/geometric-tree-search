@@ -1,0 +1,141 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 19,
+  "checks": [
+    {
+      "check": "whole raw AST compile-only under14k",
+      "evidence": {
+        "bytes": 13960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+        "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+      },
+      "passed": true
+    },
+    {
+      "check": "only needed stdlib imports",
+      "evidence": "No project/solver/checker imports or top-level function calls",
+      "passed": true
+    },
+    {
+      "check": "exact keyword data API",
+      "evidence": "External authenticated language and resource-only tick, no catalogue/saved word/library/plan argument",
+      "passed": true
+    },
+    {
+      "check": "complete immutable state copy and exact schema",
+      "evidence": "Caller data cloned via exact builtin trees; every t/m/selected/excluded/root generation retained in response plus full canonical state SHA",
+      "passed": true
+    },
+    {
+      "check": "original height24/current binding only",
+      "evidence": "No alteration of Source5d1f/policy227b or legacy model/profile",
+      "passed": true
+    },
+    {
+      "check": "root generations and selected tile generations exact",
+      "evidence": "All24 obligations activated root0; unit support exposes no new positive points, selected tile growth generation1",
+      "passed": true
+    },
+    {
+      "check": "full selected-state t/m recomposition",
+      "evidence": "Complete original target/outside fixed boundary included; not only candidate local bounding support",
+      "passed": true
+    },
+    {
+      "check": "complete ordered prototype and translation identity",
+      "evidence": "Same baefa canonical prototype; full preimage and placement key retained, strict type checks, hash collision mismatches reject",
+      "passed": true
+    },
+    {
+      "check": "whole primitive membership and exact strict-prior bounds",
+      "evidence": "All proposed/selected/excluded records validate primitive/ordered arity and legal translation; negative absolute alignments cannot survive full outside formula conflict",
+      "passed": true
+    },
+    {
+      "check": "all point legality and internal duplicate checks",
+      "evidence": "Internal equal repeated ports merge; incompatible duplicate assignments abort unresolved work, never certify zero. Full state t/m and exact exclusions checked.",
+      "passed": true
+    },
+    {
+      "check": "nonimp and entire assigned literal prefix gates",
+      "evidence": "Output and all prior marks decoded canonically and language-formula validated; occupancy never used as a premise selector",
+      "passed": true
+    },
+    {
+      "check": "all AX labels and Gamma occurrences retained",
+      "evidence": "Equal formulas with different names/indexes have distinct witnesses/keys",
+      "passed": true
+    },
+    {
+      "check": "UG occurrences and ordered MP pairs incl repeats",
+      "evidence": "No i!=j filter; exact member enforces full original Gamma side conditions and bounded whole formulas",
+      "passed": true
+    },
+    {
+      "check": "pending read marks never facts",
+      "evidence": "Unassigned prior j may receive required implication as tile obligation. Both occupied and unoccupied formula marks are syntax obligations, never accepted logical premises.",
+      "passed": true
+    },
+    {
+      "check": "shortlists cannot supply zero or singleton",
+      "evidence": "Exactly two distinct whole legal witnesses suffice for positive lower-bound proposal; partial zero/one stays UNKNOWN",
+      "passed": true
+    },
+    {
+      "check": "resource exceptions never become candidate exclusion",
+      "evidence": "Only exact externally authenticated language.OutsideLanguage caught. Native callback/timeout/other failures propagate; selected-state errors do not create a degree claim.",
+      "passed": true
+    },
+    {
+      "check": "generic no target-symbol or proof-route literals",
+      "evidence": "Only six rule/AST/data tags; target used only to reconstruct original fixed output boundary",
+      "passed": true
+    },
+    {
+      "check": "all graph/accepted-count/proof/resource flags false",
+      "evidence": "No engine state mutation, global scheduler, rollback, cold caller, source/cap authority or runtime success",
+      "passed": true
+    },
+    {
+      "check": "no Source/functions/Q/clock/tests/actual execution",
+      "evidence": "Only raw named Source/small note/profile metadata and AST/compile-without-exec. No large model/candidate data read; all scientific calls0.",
+      "passed": true
+    }
+  ],
+  "raw_references": {
+    "cover_argument": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_prototype": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "schema": "unit-row-degree-evidence-author-static-v1",
+  "scientific_calls": 0,
+  "scope": "Author Source/AST evidence only, no independent review or dynamic conformance.",
+  "source": {
+    "bytes": 13960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+    "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+  },
+  "source_only": true
+}

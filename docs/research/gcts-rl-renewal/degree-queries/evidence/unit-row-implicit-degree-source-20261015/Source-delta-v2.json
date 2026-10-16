@@ -1,0 +1,52 @@
+{
+  "after": {
+    "bytes": 14060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+    "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+  },
+  "before": {
+    "bytes": 13960,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+    "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+  },
+  "change_inventory": [
+    "VERSION v1 to v2",
+    "Only in non-cover mode with literal assigned universal output, use its body as the proposed UG premise at every earlier row, including absent or conflicting marks. Original membership and whole-state legality filter it."
+  ],
+  "changed_top_definitions": [
+    "propose_degree"
+  ],
+  "edits": [
+    {
+      "after_end": 236,
+      "after_start": 235,
+      "after_utf8": "2",
+      "before_end": 236,
+      "before_start": 235,
+      "before_utf8": "1"
+    },
+    {
+      "after_end": 12752,
+      "after_start": 12652,
+      "after_utf8": "not cover and output is not None and output[0] == 'all':\n            formula = output[2]\n        if ",
+      "before_end": 12652,
+      "before_start": 12652,
+      "before_utf8": ""
+    }
+  ],
+  "full_byte_forward_and_inverse": true,
+  "no_scientific_execution": true,
+  "schema": "unit-row-degree-evidence-Source-delta-v2",
+  "unchanged_top_definitions": [
+    "need",
+    "canonical",
+    "digest",
+    "clone",
+    "pairs",
+    "merge",
+    "prototype",
+    "validate_state",
+    "marked_formula"
+  ],
+  "whole_AST_inverse": true
+}

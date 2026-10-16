@@ -1,0 +1,36 @@
+{
+  "schema": "unit-row-degree-checker-typed-Source-review-v1",
+  "scope": "unit-row-implicit-degree-evidence-checker-Source",
+  "author_identity": "/root/arithmetic_induction",
+  "reviewer_identity": "/root",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+    "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6",
+    "bytes": 16276
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/Source-contract-v1.json",
+    "sha256": "6c819fcb4c7eccfa96a5dd9c49b1e34323c438ddee91ab559f18314b9b012b44",
+    "bytes": 9694
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "authorship_disclosure": "Root authored selected policy, earlier untrusted point converter and new cold caller; not this checker, current proposer, membership or original kernel. Whole16,276B checker and9,694B contract read; original dependency reviews remain conditional.",
+  "checks": [
+    "Independent Source imports stdlib only; no proposer call or import.",
+    "Full exact builtin private state rebuilt from original target/outside boundary plus every selected full key; all24 totals/root generations, duplicates/collisions/exclusions checked.",
+    "Primitive point data rebuilt from exact rule membership, strict negative/earlier offsets and full literal preimages; ordered/repeated ports preserved.",
+    "TWO witnesses independently rebuilt including all supplied receipts/marks/obligations, distinct full keys and whole remote legality. No exact degree inferred.",
+    "Non-imp assigned-prefix cover independently enumerates original namedAX/indexedGamma/all eligible UG occurrences/all ordered MP pairs; UI and EqSubst licences excluded by output shape.",
+    "Entire coverage, rejection observations and ordered survivor list compared; no shortlist supplies zero/singleton.",
+    "Pending formula marks are obligations; occupancy is not used as established-premise authority.",
+    "UNKNOWN validates supplied hints without certifying rejection diagnostics or a completed census.",
+    "Literal bool/int/array/dictionary distinctions, state/binding/epoch/query/false authority flags checked through exact JSON tree and field constraints.",
+    "Only completed OutsideLanguage exclusions are filtered; timeout/callback/other exceptions propagate; resource tick must not impersonate OutsideLanguage.",
+    "Local degree classifications do not implement global graph/fallback/scheduler/transactions/rollback, or accept a logical proof."
+  ],
+  "concrete_blockers": [],
+  "runtime_or_degree_evidence_accepted": false
+}

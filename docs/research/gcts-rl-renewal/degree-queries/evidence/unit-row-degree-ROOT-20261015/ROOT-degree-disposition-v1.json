@@ -1,0 +1,63 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_marking_activated": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 23003136,
+  "broad_goal_complete": false,
+  "callback_exhaustions_propagated": 2,
+  "complete_Date_seconds": 0.73,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "invalid_evidence_rejections": 9,
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "e9db69472781e5be23b423125eaca4e65e301aad0d5ed6108a4d68cdee9bbeae",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "2bcb31bd9a5945e6205d596d249ac18f07a22c628ed50f50eb2b917042374382"
+  },
+  "local_controls_accepted": true,
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 559009000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 507757000,
+  "old_UNKNOWNs_and_finite_negative_preserved": true,
+  "outputs": [
+    {
+      "bytes": 339394,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-owned-v1/degree-controls.json",
+      "sha256": "c2ced97fb131c93bbf9b4b84082fb7fef80991fb4a4ee797efb17ccab805d823"
+    },
+    {
+      "bytes": 4221,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-owned-v1/response.jsonl",
+      "sha256": "96c34be6860fd31a6d08ac50ff708207fce4177e17c376c81ed1a5f16ffb1a8f"
+    }
+  ],
+  "passed_cases": 20,
+  "plan": {
+    "bytes": 4709,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "bdc661596fc67680d2ca171875f76f7ec276609f13e2d6f42a6a6754915383e0"
+  },
+  "positive_or_unknown_classifications": {
+    "assumed-exclusions-to-singleton": "SINGLETON",
+    "assumed-exclusions-to-zero": "ZERO",
+    "covered-many-UG-occurrences": "MANY",
+    "covered-original-AX-count": "SINGLETON",
+    "covered-zero": "ZERO",
+    "imp-output-UNKNOWN": "UNKNOWN",
+    "initial-final-universal-two-pending-UG": "TWO_OR_MORE",
+    "initial-row0-two-named-AX": "TWO_OR_MORE",
+    "missing-prefix-UNKNOWN": "UNKNOWN"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved raw bytes, complete receipts/wire/native/caller metadata only; no Source/kernel/checker/model/word/degree replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-unit-row-local-degree-controls-disposition-v1",
+  "scope": "Constructed original-theory local-degree fixtures; pending reads are obligations, exclusions are assumed branch contexts. No theorem discovery or GCTS proof search.",
+  "skipped_cases": 1,
+  "terminal_T_bytes": 23003136
+}

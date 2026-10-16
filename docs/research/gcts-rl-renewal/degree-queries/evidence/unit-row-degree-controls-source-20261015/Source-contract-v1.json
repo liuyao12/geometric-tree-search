@@ -1,0 +1,82 @@
+{
+  "schema": "unit-row-degree-controls-Source-contract-v1",
+  "scope": "unit-row-degree-controls-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+    "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368",
+    "bytes": 13982
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "API": "run_controls(*,language,proposer,checker,tick) -> complete JSON control result",
+  "arguments": {
+    "language": "Fresh fixture-only complete authenticated original membership language; original theory/parameters/Gamma/target/binding only. No donor/library/catalogue/saved word.",
+    "proposer": "CALLABLE: proposer(*,language,state,row,tick) -> frozen unit-row-degree-evidence-proposal-v1",
+    "checker": "CALLABLE: checker(*,language,state,row,proposal,tick) -> unit-row-degree-evidence-check-v1",
+    "tick": "Original live budget/cancellation callback. No native clock or reset in this module."
+  },
+  "Root_caller_requirement": "Root supplies reviewed Source/native boundary wrappers that reconstruct a fresh authenticated membership language separately for each proposer/checker invocation. A proposer-mutated language must never reach fixture or checker authority. Harness retains private state copies; caller handles Source/default/callback/native/wire/outputs and full resource closure. No new framework here.",
+  "dependency_API_pins": {
+    "proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1",
+      "bytes": 14060
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6",
+      "bytes": 16276
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    }
+  },
+  "result": {
+    "schema": "unit-row-degree-controls-v1",
+    "cases": "Complete list of {case,status=PASSED|SKIPPED,observed,scope}; all positive proposals+checker receipts and private fixture state/row retained, negatives retain rejected proposal/state and exact exception/reason.",
+    "all_declared_cases_completed": true,
+    "failure": "A genuine assertion, native/resource/cancellation/typing-UNKNOWN/callback failure propagates; it cannot become a case pass. Only declared original-theory fixture unavailability or exact original OutsideLanguage is SKIPPED.",
+    "flags": "All logical proof/complete graph/scheduler/rollback/GCTS/RL/Root resource flags remain false. Local checker receipts retain their exact separate acceptance scope."
+  },
+  "fixtures": [
+    "Empty whole24 fixed target/outside state, queried row0: two distinct original AX names if available.",
+    "Empty initial final-row universal: two actual UG witnesses whose premise rows are unoccupied obligations; conditional original binder/Gamma and no competing original target AX/Gamma.",
+    "Pending bottom atrow0 from selected UG atrow1 gives exact zero only if no original AX/Gamma outputs bottom.",
+    "Original first sorted namedAX output atrow0 imposed by a future UG; exact AX/Gamma occurrence multiplicity derived from original input.",
+    "Same namedAX placements atrows0/1 plus future UG atrow3 imposes a doubly universal output atrow2; two actual UG source occurrences yield complete MANY if original bounds allow.",
+    "Exact-key branch exclusions reduce complete MANY toone thenzero, explicitly assumed contexts rather than proved pruning.",
+    "Admissible implication output atrow0 withatmostone original hint and non-imp output atrow1 withmissing earlier mark stay UNKNOWN."
+  ],
+  "negative_controls": [
+    "Duplicate complete-cover candidate; forged proof/degree flags; stale state digest; Boolean coordinate; stale exclusion preimage; forged candidate marks; missing sole survivor.",
+    "Remote formula conflict: separately original-member-valid MP tile withsame output and real earlier-mark conflict is proposed in TWO mode withone valid witness. Require exact checker reason containing whole candidate legality, reaching that candidate-legality branch.",
+    "Proposer/checker supplied-callable callback exhaustion after17 tick calls propagates exact CallbackExhausted(TimeoutError); original tick is still called every time. A valid initial proposal is passed to checker. This proves callable-boundary propagation, not a claimed internal phase if Root wrapper setup consumes callbacks."
+  ],
+  "unreachable_scope": "Metadata conflict at the queried unfilled unit row is SKIPPED: offset metadata originates only from a selected tile at that row, which would make it filled. Remote formula-mark conflict is feasible and tested separately.",
+  "unavailability": "No fixture is fabricated or theory changed. No eligible parameter, missing AX, original bottom/implication facts or failed bounded membership can leave zero/one/many controls SKIPPED with reason. A skipped case remains a named control gap even when result completes.",
+  "mathematics": "Fixture selection records can be legal partial point tilings while their reads remain unoccupied. They are not logical derivations. The harness does not prove a full target, complete global graph, fallback, generation scheduler or rollback; original24 roots generation0 and selected singleton units generation1 are only this declared specialization.",
+  "Source_scope": "Only stdlib copy/hash/JSON; no project imports, file IO, clock, process, CLI, parser/model/word replay or actual plan. Runtime caller and resources are mandatory separate integration; no controls executed during authoring.",
+  "authorship_disclosure": "Harness and original1717/codec/family/intake dependencies authored by diagnosis; degree proposer/membership by controls, independent degree checker by arithmetic. This module independently composes fixtures but does not implement the independent degree algorithm.",
+  "provenance": {
+    "cover_note": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613",
+      "bytes": 3941
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  },
+  "authoring_note": "Unfrozen authoring drafts exceeded the14k cap and stopped at size assertions; final prose/spacing compacted before Source freeze. No Source functions executed."
+}

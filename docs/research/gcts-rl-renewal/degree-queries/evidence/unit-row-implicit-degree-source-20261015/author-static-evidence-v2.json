@@ -1,0 +1,146 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 12,
+  "checks": [
+    {
+      "check": "whole Source raw pin and AST/compile-only",
+      "evidence": {
+        "bytes": 14060,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+        "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+      },
+      "passed": true
+    },
+    {
+      "check": "two exact semantic edits only",
+      "evidence": [
+        {
+          "after_end": 236,
+          "after_start": 235,
+          "after_utf8": "2",
+          "before_end": 236,
+          "before_start": 235,
+          "before_utf8": "1"
+        },
+        {
+          "after_end": 12752,
+          "after_start": 12652,
+          "after_utf8": "not cover and output is not None and output[0] == 'all':\n            formula = output[2]\n        if ",
+          "before_end": 12652,
+          "before_start": 12652,
+          "before_utf8": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "complete byte forward and inverse plus whole AST inverse",
+      "evidence": {
+        "bytes": 1696,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-delta-v2.json",
+        "sha256": "520ac664715edf3246dd4b8ca6fe94f65905dd168b9350dddaac6ac9ceffcf23"
+      },
+      "passed": true
+    },
+    {
+      "check": "all other top definitions unchanged",
+      "evidence": [
+        "need",
+        "canonical",
+        "digest",
+        "clone",
+        "pairs",
+        "merge",
+        "prototype",
+        "validate_state",
+        "marked_formula"
+      ],
+      "passed": true
+    },
+    {
+      "check": "complete-cover true path unchanged",
+      "evidence": "New condition explicitly requires not cover; all namedAX/indexedGamma/UG/all ordered MP cover code is unchanged.",
+      "passed": true
+    },
+    {
+      "check": "UG hint covers every earlier row including absent marks",
+      "evidence": "Existing enumerate(earlier) complete row loop now uses the assigned universal body before the absent-mark skip in non-cover mode.",
+      "passed": true
+    },
+    {
+      "check": "membership and full t/m/exclusion/internal-duplicate legality unchanged",
+      "evidence": "Same consider/prototype/validate_state definitions and direct consider call.",
+      "passed": true
+    },
+    {
+      "check": "pending read never becomes fact and shortlist never zero/one",
+      "evidence": "Unchanged read_obligations.fact_accepted=False and response logic; no new classification flag.",
+      "passed": true
+    },
+    {
+      "check": "API/state/receipt schema/all output fields unchanged",
+      "evidence": "Only module VERSION changes; receipt schema v1, exact state v1 and fields remain.",
+      "passed": true
+    },
+    {
+      "check": "all current dependency raw references exact",
+      "evidence": {
+        "cover_argument": {
+          "bytes": 3941,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+          "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+        },
+        "master": {
+          "bytes": 21657,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+          "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+        },
+        "membership": {
+          "bytes": 20112,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+          "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+        },
+        "point_prototype": {
+          "bytes": 5528,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+          "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+        },
+        "profile": {
+          "bytes": 8773,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+          "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "only exact OutsideLanguage caught; all callback/resource failures propagate",
+      "evidence": "Exception handling unchanged.",
+      "passed": true
+    },
+    {
+      "check": "no Source functions, project imports, Q parsing, tests, clocks, plans or actuals",
+      "evidence": "Only named raw Source and small metadata, AST parse/compile without exec.",
+      "passed": true
+    }
+  ],
+  "delta": {
+    "bytes": 1696,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-delta-v2.json",
+    "sha256": "520ac664715edf3246dd4b8ca6fe94f65905dd168b9350dddaac6ac9ceffcf23"
+  },
+  "parent_evidence": {
+    "bytes": 6671,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/author-static-evidence-v1.json",
+    "sha256": "6c712642eca470e7710663e64dba34c9353fd04bb601c7dd45cdc78132dfe2e5"
+  },
+  "schema": "unit-row-degree-evidence-author-static-v2",
+  "scientific_calls": 0,
+  "scope": "Author raw/AST/compile-only evidence, not independent review/runtime conformance.",
+  "source": {
+    "bytes": 14060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+    "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+  },
+  "source_only": true
+}

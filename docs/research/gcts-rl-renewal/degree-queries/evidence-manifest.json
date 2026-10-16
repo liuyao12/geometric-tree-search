@@ -1,0 +1,384 @@
+{
+  "files": [
+    {
+      "bytes": 10463,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "e21c5022a198b52d263eeb9eafaf4b53a527ae0ff4378af65104838672a40d98"
+    },
+    {
+      "bytes": 12403,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+    },
+    {
+      "bytes": 1696,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-delta-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/Source-delta-v2.json",
+      "sha256": "520ac664715edf3246dd4b8ca6fe94f65905dd168b9350dddaac6ac9ceffcf23"
+    },
+    {
+      "bytes": 6671,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/author-static-evidence-v1.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/author-static-evidence-v1.json",
+      "sha256": "6c712642eca470e7710663e64dba34c9353fd04bb601c7dd45cdc78132dfe2e5"
+    },
+    {
+      "bytes": 6041,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/author-static-evidence-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/author-static-evidence-v2.json",
+      "sha256": "6bce5805ee1da754a1819f6ca2b150109feaa0e1759b6e7186bbbcf46e71dfe2"
+    },
+    {
+      "bytes": 2816,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/handoff-v1.json",
+      "sha256": "494476c4f9f97a2776b213cd9c5f29415d6c5a315912b2a9350a15fa38dc3729"
+    },
+    {
+      "bytes": 3672,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/handoff-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/handoff-v2.json",
+      "sha256": "d847d71a6e4121f95a20cf0c703287288ce1b75d422afaf00617c46968fcae65"
+    },
+    {
+      "bytes": 602,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/proposer-v1-to-v2-forward.patch",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/proposer-v1-to-v2-forward.patch",
+      "sha256": "eaeebe2bd9304970bf29d0b554c7f4cd9dd7152c0aed4843122589ffaee71c8b"
+    },
+    {
+      "bytes": 602,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/proposer-v2-to-v1-full-inverse.patch",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/proposer-v2-to-v1-full-inverse.patch",
+      "sha256": "6acda5672657ce359757f0bb371caadc4ede5749c87d94a15919b3fdd5bb5baf"
+    },
+    {
+      "bytes": 13960,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v1.py",
+      "sha256": "4392910b431c0cc92bd6b6d34cc284834b610fa0274503321f8a11c9b5d2feb0"
+    },
+    {
+      "bytes": 14060,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "public_path": "evidence/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    },
+    {
+      "bytes": 16919,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/findings-v1.json",
+      "public_path": "evidence/unit-row-implicit-degree-independent-source-20261015/findings-v1.json",
+      "sha256": "6cd91f6f350a2021cb503785320ebd54305ae6fe2041bfbeacd47a5f920020f4"
+    },
+    {
+      "bytes": 10471,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/findings-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-independent-source-20261015/findings-v2.json",
+      "sha256": "1a570fb47ffe7a697beb21d20d787636a9bce62243be201631c49b86111ab940"
+    },
+    {
+      "bytes": 1639,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-implicit-degree-independent-source-20261015/handoff-v1.json",
+      "sha256": "a3e2017daf74ecc46a7ff054617694fd5de76404b474adf62a2e83aa82ef30a6"
+    },
+    {
+      "bytes": 1596,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/handoff-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-independent-source-20261015/handoff-v2.json",
+      "sha256": "bf0c13655d4679f7d4a23b986978ceb579b185e678ce6bcd3b9258c3f161b1fc"
+    },
+    {
+      "bytes": 2288,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "3e5e818b60c196664221c639d00452ac0553f668b225fc9a11faeb533efc58e6"
+    },
+    {
+      "bytes": 2586,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v2.json",
+      "public_path": "evidence/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "d595b0fadedb96fd2adad777c5b030904e3979fc3e6dd6ee70dc98bfdcda0bf9"
+    },
+    {
+      "bytes": 2815,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/ROOT-typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-degree-checker-source-20261015/ROOT-typed-Source-review-v1.json",
+      "sha256": "dde6273a8e38c3a3d781f7c20e98086b7db2f6bebaeb74ddf471427599906ec7"
+    },
+    {
+      "bytes": 9694,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-degree-checker-source-20261015/Source-contract-v1.json",
+      "sha256": "6c819fcb4c7eccfa96a5dd9c49b1e34323c438ddee91ab559f18314b9b012b44"
+    },
+    {
+      "bytes": 9060,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/author-static-v1.json",
+      "public_path": "evidence/unit-row-degree-checker-source-20261015/author-static-v1.json",
+      "sha256": "0850e1d45ff4005bf8403e92ddad3ac21bf0717e4484eb0a5d7567b70a0b01c9"
+    },
+    {
+      "bytes": 1464,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-degree-checker-source-20261015/handoff-v1.json",
+      "sha256": "2d6babfaf516d30c23a7423eac38163f2150ee978ecfd7a4dc515d61d9e9821d"
+    },
+    {
+      "bytes": 16276,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "public_path": "evidence/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+    },
+    {
+      "bytes": 7568,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-degree-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "2a37f4253068752320f6dd5f72eefe2ec9afaca754ffb8c7d7c10273f73ae1c2"
+    },
+    {
+      "bytes": 1260,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/author-static-evidence-v1.json",
+      "public_path": "evidence/unit-row-degree-controls-source-20261015/author-static-evidence-v1.json",
+      "sha256": "007e9aa2986462ed09c9617648875e750f20c35c8e0a14e3fc5f3206ea8b39a5"
+    },
+    {
+      "bytes": 2816,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-degree-controls-source-20261015/handoff-v1.json",
+      "sha256": "ec1db97c7e8d0cecb4a9c80a1e190096c50bda7db36a63396e6ad24ebc410477"
+    },
+    {
+      "bytes": 13982,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+      "public_path": "evidence/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+      "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368"
+    },
+    {
+      "bytes": 8831,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/Source-contract-v1.json",
+      "public_path": "evidence/unit-row-degree-cold-ROOT-source-20261015/Source-contract-v1.json",
+      "sha256": "0ff823ef165bfbc2f3d78ae8a90a0ff3d181eeb72d30c188fa94d3cb8475dc4f"
+    },
+    {
+      "bytes": 3530,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/author-static-evidence-v1.json",
+      "public_path": "evidence/unit-row-degree-cold-ROOT-source-20261015/author-static-evidence-v1.json",
+      "sha256": "dabaa48560f734d3a4ce39817f6ae13402dcb419688b3f6c2653f5bb90d1a016"
+    },
+    {
+      "bytes": 6414,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/build_source_v1.py",
+      "public_path": "evidence/unit-row-degree-cold-ROOT-source-20261015/build_source_v1.py",
+      "sha256": "776dd056409430fda5c6df7a6b3c2b946619a393b0c9e0bfd75dcd5389fcb334"
+    },
+    {
+      "bytes": 3709,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-degree-cold-ROOT-source-20261015/handoff-v1.json",
+      "sha256": "285ac8bd808b2ebc0dbbcebc691f989b9dbd74f521d6b3e0fc5fc13e5a4ffa61"
+    },
+    {
+      "bytes": 22168,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+      "public_path": "evidence/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+      "sha256": "212ea04d6ff212256f1b0195ead617a4e6b3eccdd775874387e0d1848a157c1d"
+    },
+    {
+      "bytes": 13023,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/worker_main_v1.py.in",
+      "public_path": "evidence/unit-row-degree-cold-ROOT-source-20261015/worker_main_v1.py.in",
+      "sha256": "4dd9e10fa02b339bba44f93c012f28a3c72bc9408c46d7ac9ffaac097b2148fd"
+    },
+    {
+      "bytes": 26128,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/findings-v1.json",
+      "public_path": "evidence/unit-row-degree-cold-independent-source-20261015/findings-v1.json",
+      "sha256": "d6a866b5edf50efee3c91e647e59777154eac66e6fb51c162a6237f6d79939c7"
+    },
+    {
+      "bytes": 1874,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/handoff-v1.json",
+      "public_path": "evidence/unit-row-degree-cold-independent-source-20261015/handoff-v1.json",
+      "sha256": "604806dbc7a3cb0761a7780787869720587412e61b77891d718aa814162ea7f2"
+    },
+    {
+      "bytes": 4329,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "public_path": "evidence/unit-row-degree-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "771b52f84cc045389e48c6f1f6879aa337ab255cf94a1f81205b63da7262c51a"
+    },
+    {
+      "bytes": 5730,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-authorization-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-authorization-v1.json",
+      "sha256": "5cac04db674c5738e146e41227e636660ea81fe18b97c8074456f482b380507c"
+    },
+    {
+      "bytes": 3906,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-caller-author-Source-review-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-caller-author-Source-review-v1.json",
+      "sha256": "dff94c005ce5dfeb48858dabf0f82af99fd877531e391e9508dcf5cc6f587e99"
+    },
+    {
+      "bytes": 1966,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-controls-Source-review-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-controls-Source-review-v1.json",
+      "sha256": "29daa423e64d9155782c3ebb20bcf238b3eda6247cebc8ffb46c3fa4e216638c"
+    },
+    {
+      "bytes": 3037,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-degree-disposition-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-degree-disposition-v1.json",
+      "sha256": "c5f004b128eb199b6cd9940daff0c4421452b8fc22251cc269f33767b7e02884"
+    },
+    {
+      "bytes": 4709,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-plan-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-plan-v1.json",
+      "sha256": "bdc661596fc67680d2ca171875f76f7ec276609f13e2d6f42a6a6754915383e0"
+    },
+    {
+      "bytes": 405,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-preflight-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-preflight-v1.json",
+      "sha256": "cdf9c5b0f6a953653995c5ff84a32923629b2ab93ae013ff10ce304054ec7b34"
+    },
+    {
+      "bytes": 3380,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-protocol-choice-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-protocol-choice-v1.json",
+      "sha256": "6c34e2c900040970bb355bf8d8362681048455250ba53928b4f851805233ef50"
+    },
+    {
+      "bytes": 807,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT-tool-bracket-v1.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT-tool-bracket-v1.json",
+      "sha256": "249d84bb30b74f9d39a2374c452aaf506caa73207313a4f754b134697a56827b"
+    },
+    {
+      "bytes": 7657,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT_prepare_v1.py",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT_prepare_v1.py",
+      "sha256": "7e93215eeed22e42d6324401e7e21d61bc45e126969334842d64be7677762d67"
+    },
+    {
+      "bytes": 7167,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/ROOT_reconcile_saved_v1.py",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/ROOT_reconcile_saved_v1.py",
+      "sha256": "e20a3294c6eb23cb94f434deacf2be253765109a8f6ddd2771622b9149d0aed7"
+    },
+    {
+      "bytes": 247,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/ONCE.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/ONCE.json",
+      "sha256": "a7ba2e91aa07726464467e5bbf95a888e86a8495a0bfbbafbc3a8858f99b3a17"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/meter-stderr.txt",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 886,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/meter-stdout.txt",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/meter-stdout.txt",
+      "sha256": "73db0e7980f2ee761c1cb2e6541ddf10a27967d0bee21d616a65dd8e834991cf"
+    },
+    {
+      "bytes": 1655,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/native-terminal.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/native-terminal.json",
+      "sha256": "05a87da7c587ff4d6deb74e4e059a496d2b80b7fe547d137bca0a1b7d4695c86"
+    },
+    {
+      "bytes": 464,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/observation.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/observation.json",
+      "sha256": "d43290dc167e8e2d0f2b4f45121dfb0bbf852ef7dac5fd0fded43da85a1a2e1f"
+    },
+    {
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/postterminal-probe-stderr.txt",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-external-v1/postterminal-probe-stdout.txt",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "9e16c72b716bfd3ffbc33cc342ee50f6487447353a1159245f66e9b24dcac736"
+    },
+    {
+      "bytes": 339394,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-owned-v1/degree-controls.json",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-owned-v1/degree-controls.json",
+      "sha256": "c2ced97fb131c93bbf9b4b84082fb7fef80991fb4a4ee797efb17ccab805d823"
+    },
+    {
+      "bytes": 4221,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-ROOT-20261015/degree-owned-v1/response.jsonl",
+      "public_path": "evidence/unit-row-degree-ROOT-20261015/degree-owned-v1/response.jsonl",
+      "sha256": "96c34be6860fd31a6d08ac50ff708207fce4177e17c376c81ed1a5f16ffb1a8f"
+    },
+    {
+      "bytes": 545,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/handoff-v1.json",
+      "public_path": "evidence/shared-bounded-nonimp-cover-note-source-20261015/handoff-v1.json",
+      "sha256": "3dcd7677ab101c11b1a446e051fadd9d8f9102937717cb3f44d8b677769bcad8"
+    },
+    {
+      "bytes": 3941,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "public_path": "evidence/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    {
+      "bytes": 48584,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "public_path": "evidence/original-authority/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 10323,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "public_path": "evidence/original-authority/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 20112,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "public_path": "evidence/original-authority/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 2925,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "public_path": "evidence/original-authority/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "public_path": "evidence/original-authority/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 4357,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+      "public_path": "evidence/measurement/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "bytes": 6734,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "public_path": "evidence/measurement/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    }
+  ],
+  "schema": "unit-row-degree-evidence-manifest-v1",
+  "scope": "Exact current saved experiment, Sources, contracts and reviews; no semantic replay."
+}

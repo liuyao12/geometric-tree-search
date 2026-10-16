@@ -1,0 +1,36 @@
+{
+  "check_count": 16,
+  "findings": {
+    "bytes": 26128,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "d6a866b5edf50efee3c91e647e59777154eac66e6fb51c162a6237f6d79939c7"
+  },
+  "next": "Root owns any exact actual authorization/plan/native invocation and full saved closure. No activation or broader GCTS admission from this Source pass.",
+  "raw_reference_paths": 41,
+  "schema": "unit-row-degree-controls-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-degree-controls-cold-Source",
+  "source": {
+    "bytes": 22168,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+    "sha256": "212ea04d6ff212256f1b0195ead617a4e6b3eccdd775874387e0d1848a157c1d"
+  },
+  "source_contract": {
+    "bytes": 8831,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/Source-contract-v1.json",
+    "sha256": "0ff823ef165bfbc2f3d78ae8a90a0ff3d181eeb72d30c188fa94d3cb8475dc4f"
+  },
+  "source_handoff": {
+    "bytes": 3709,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/handoff-v1.json",
+    "sha256": "285ac8bd808b2ebc0dbbcebc691f989b9dbd74f521d6b3e0fc5fc13e5a4ffa61"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_ONLY",
+  "typed_review": {
+    "bytes": 4329,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "771b52f84cc045389e48c6f1f6879aa337ab255cf94a1f81205b63da7262c51a"
+  }
+}
