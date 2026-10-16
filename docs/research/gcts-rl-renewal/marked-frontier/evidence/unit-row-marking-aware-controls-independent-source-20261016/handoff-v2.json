@@ -1,0 +1,39 @@
+{
+  "findings": {
+    "bytes": 5085,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-independent-source-20261016/findings-v2.json",
+    "sha256": "691182466068e913e804a2d29f91f6e954c08316dba984217b8540d7aaccc3f7"
+  },
+  "reviewed_handoff": {
+    "bytes": 5995,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/handoff-v2.json",
+    "sha256": "0cf94f530230f0e9fdfc1ab3a3cf1066e1032a7d04752944b2fbe26195e3e016"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-marking-aware-controls-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 31931,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+    "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+  },
+  "source_contract": {
+    "bytes": 10700,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "c8e26475c06427cae289726b851a2b6d51943f58224c3829a8b8b00c71db8397"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "static_evidence": {
+    "bytes": 8093,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-independent-source-20261016/independent-static-v2.json",
+    "sha256": "dc049b428ba7e743b1dd86724d8d59f44cefc72ef930ba2fed7a9ee3c627b1d5"
+  },
+  "status": "GENUINE_CONDITIONAL_SOURCE_PASS_ONLY_NO_ACTUAL_OR_TARGET_ADMISSION",
+  "typed_review": {
+    "bytes": 4505,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "0518cc68d6d70c42bf7167f49a0d195821ba107881f0aa29ca25f3f3e6069f31"
+  }
+}

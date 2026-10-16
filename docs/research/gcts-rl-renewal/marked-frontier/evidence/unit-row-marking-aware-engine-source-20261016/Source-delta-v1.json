@@ -1,0 +1,188 @@
+{
+  "added_regions": [
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot"
+  ],
+  "changed_regions": [
+    "select_schedule",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.search"
+  ],
+  "edits": [
+    {
+      "after": "\"\"\"SOURCE ONLY unit-row engine, explicit owned earliest-generation BRANCH tie.\n",
+      "before": "\"\"\"SOURCE ONLY original unit-row engine, named EARLIEST-GENERATION-ROW-TIE.\n",
+      "new_offset": 0,
+      "old_offset": 0
+    },
+    {
+      "after": "VERSION = 'lazy-unit-row-global-engine-v9-marking-aware-branch-tie'\n",
+      "before": "VERSION = 'lazy-unit-row-global-engine-v8-compatible-fibres-versions'\n",
+      "new_offset": 320,
+      "old_offset": 317
+    },
+    {
+      "after": "MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION'\nBRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')\n",
+      "before": "",
+      "new_offset": 465,
+      "old_offset": 464
+    },
+    {
+      "after": "def select_schedule(*, evidence, generations, tick, branch_tie='ROW',\n                    assigned_output_rows=None):\n    \"\"\"Only BRANCH ties use marks; varied-generation controls are NONLOGICAL.\"\"\"\n",
+      "before": "def select_schedule(*, evidence, generations, tick):\n    \"\"\"Pure scheduler kernel; varied-generation controls are NONLOGICAL only.\"\"\"\n",
+      "new_offset": 2109,
+      "old_offset": 1959
+    },
+    {
+      "after": "    need(type(branch_tie) is str and branch_tie in BRANCH_TIES, 'named branch tie')\n",
+      "before": "",
+      "new_offset": 2319,
+      "old_offset": 2104
+    },
+    {
+      "after": "    assigned_output_rows = [] if assigned_output_rows is None else assigned_output_rows\n    need(type(assigned_output_rows) is list\n         and all(type(r) is int and r in evidence for r in assigned_output_rows)\n         and len(assigned_output_rows) == len(set(assigned_output_rows)),\n         'literal distinct assigned-output frontier rows')\n    assigned = set(assigned_output_rows)\n",
+      "before": "",
+      "new_offset": 2696,
+      "old_offset": 2397
+    },
+    {
+      "after": "    if forced:\n        return {'kind': 'FORCED',\n                'row': min(forced, key=lambda r: (generations[r], r))}\n    row = min(evidence, key=lambda r: (generations[r],\n        0 if branch_tie == 'ASSIGNED-OUTPUT-THEN-ROW' and r in assigned else 1, r))\n    return {'kind': 'BRANCH', 'row': row}\n",
+      "before": "    row = min(forced if forced else evidence, key=lambda r: (generations[r], r))\n    return {'kind': 'FORCED' if forced else 'BRANCH', 'row': row}\n",
+      "new_offset": 3746,
+      "old_offset": 3060
+    },
+    {
+      "after": "                 branch_adviser=None, validate_advice=None, branch_tie='ROW'):\n",
+      "before": "                 branch_adviser=None, validate_advice=None):\n",
+      "new_offset": 5620,
+      "old_offset": 4780
+    },
+    {
+      "after": "        need(type(branch_tie) is str and branch_tie in BRANCH_TIES, 'named branch tie')\n        self._branch_tie = branch_tie\n",
+      "before": "",
+      "new_offset": 5714,
+      "old_offset": 4856
+    },
+    {
+      "after": "        self._scheduler_policy = canonical({'schema': 'unit-row-owned-branch-tie-policy-v1',\n            'branch_tie': branch_tie, 'original_authority': self._authority})\n",
+      "before": "",
+      "new_offset": 6922,
+      "old_offset": 5938
+    },
+    {
+      "after": "\n    @property\n    def branch_tie(self):\n        \"\"\"Fixed per engine; checkpoint rollback never selects another policy.\"\"\"\n        return self._branch_tie\n\n    def _policy_snapshot(self):\n        return {'schema': 'unit-row-owned-branch-tie-policy-v1',\n            'branch_tie': self.branch_tie,\n            'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),\n            'policy_sha256': hashlib.sha256(self._scheduler_policy.encode('utf8')).hexdigest()}\n",
+      "before": "",
+      "new_offset": 8654,
+      "old_offset": 7499
+    },
+    {
+      "after": "            'scheduler_policy': self._policy_snapshot(),\n",
+      "before": "",
+      "new_offset": 10756,
+      "old_offset": 9117
+    },
+    {
+      "after": "        need(type(self._branch_tie) is str and self._branch_tie in BRANCH_TIES\n             and self._scheduler_policy == canonical({\n                 'schema': 'unit-row-owned-branch-tie-policy-v1',\n                 'branch_tie': self._branch_tie, 'original_authority': self._authority}),\n             'immutable owned branch policy and original authority binding')\n",
+      "before": "",
+      "new_offset": 12446,
+      "old_offset": 10750
+    },
+    {
+      "after": "                self._emit('DECISION', decision=result, branch_tie=self.branch_tie,\n",
+      "before": "                self._emit('DECISION', decision=result,\n",
+      "new_offset": 36975,
+      "old_offset": 34912
+    },
+    {
+      "after": "        # Mark presence is an obligation, never an occupied/proved output.\n        assigned = [r for r in frontier\n                    if (1, r) in marks and marks[(1, r)][0] == 'formula']\n",
+      "before": "",
+      "new_offset": 37525,
+      "old_offset": 35434
+    },
+    {
+      "after": "            generations={r: 0 for r in frontier}, tick=self.tick,\n            branch_tie=self.branch_tie, assigned_output_rows=assigned)\n",
+      "before": "            generations={r: 0 for r in frontier}, tick=self.tick)\n",
+      "new_offset": 37770,
+      "old_offset": 35490
+    },
+    {
+      "after": "        self._emit('DECISION', decision=result, branch_tie=self.branch_tie,\n                   assigned_output_rows=assigned, statuses=[[r, v['status']] for r, v in certificates.items()],\n",
+      "before": "        self._emit('DECISION', decision=result,\n                   statuses=[[r, v['status']] for r, v in certificates.items()],\n",
+      "new_offset": 38038,
+      "old_offset": 35687
+    },
+    {
+      "after": "            'variant': VARIANT if self.branch_tie == 'ROW' else MARK_VARIANT,\n            'scheduler_policy': self._policy_snapshot(),\n            'status': status, 'reason': reason,\n",
+      "before": "            'variant': VARIANT, 'status': status, 'reason': reason,\n",
+      "new_offset": 54229,
+      "old_offset": 51819
+    }
+  ],
+  "forward_complete_raw_exact": true,
+  "inverse_complete_raw_exact": true,
+  "parent_source": {
+    "bytes": 52627,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+    "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+  },
+  "patches": {
+    "forward.patch": {
+      "bytes": 8983,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/forward.patch",
+      "sha256": "0d6c285563edc77d3c05cdb601e855a2c53abc640e17169f99f0929dfeb83fb0"
+    },
+    "inverse.patch": {
+      "bytes": 8983,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/inverse.patch",
+      "sha256": "8a496295335ade54b1fcd0b8e71204f3684b37ae40f1948675646f268c2c912f"
+    }
+  },
+  "removed_regions": [],
+  "schema": "unit-row-marking-aware-engine-complete-raw-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+    "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search.walk"
+  ]
+}

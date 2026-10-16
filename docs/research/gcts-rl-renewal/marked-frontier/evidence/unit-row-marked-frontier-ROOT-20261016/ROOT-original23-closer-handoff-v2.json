@@ -1,0 +1,77 @@
+{
+  "activation": "Root whole Source review first; author did not execute. Only complete current23PASS0SKIP/fullwire/native/bindings close, no target admission.",
+  "author_identity": "/root/arithmetic_induction",
+  "capsules": {
+    "caller": {
+      "bytes": 55852,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    "caller_contract": {
+      "bytes": 90350,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/Source-contract-v17.json",
+      "sha256": "d3c64248137d442dc45a16052a6038ad6de5cbdf56582dff111469bb0b70c1e2"
+    },
+    "controls": {
+      "bytes": 31931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    "controls_contract": {
+      "bytes": 10700,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/Source-contract-v2.json",
+      "sha256": "c8e26475c06427cae289726b851a2b6d51943f58224c3829a8b8b00c71db8397"
+    },
+    "controls_handoff": {
+      "bytes": 5995,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/handoff-v2.json",
+      "sha256": "0cf94f530230f0e9fdfc1ab3a3cf1066e1032a7d04752944b2fbe26195e3e016"
+    },
+    "engine": {
+      "bytes": 55152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    "engine_contract": {
+      "bytes": 14679,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "5a69b3df71d87b8041d63cdce44f249bddcbb21d625afbb2039aef59811af2f6"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  },
+  "delta": {
+    "bytes": 15551,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-original23-closer-delta-v2.json",
+    "sha256": "9467e3a69c3ff1d80f3c65649432e714eb4168f0382426bbe2d760523a78ad54"
+  },
+  "helper_executed": false,
+  "independent_review_passed": false,
+  "parent_source": {
+    "bytes": 10571,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+    "sha256": "e88013350375f2fed9e1d217c619b01e653f1ef9b2c971be3151f2e8aebce39d"
+  },
+  "schema": "ROOT-original23-saved-closer-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 18668,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT_close_original_controls_saved_v2.py",
+    "sha256": "40c6d6d79b5ff09316f1a5a59d06d685af5c6e2ffa62ad212c72c173d2db10ff"
+  },
+  "source_contract": {
+    "bytes": 6351,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-original23-closer-Source-contract-v2.json",
+    "sha256": "4610e12c45999e7cf27fa71bd72f1f459e09dedd7e837e932f2f83efd4cafeda"
+  },
+  "source_only": true,
+  "static": {
+    "bytes": 1905,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-original23-closer-author-static-v2.json",
+    "sha256": "4297d69cdb450c5bc5004eda50968d51ec207498701f4b5b0ca0f713c6728700"
+  }
+}

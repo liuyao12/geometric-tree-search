@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 516335,
+  "compressed_sha256": "6f3160fa1c3c19efab2addeee3f2a3c07bc21ab3db3dd4b07bc03ba0ca9afc18",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 688771,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+    "sha256": "d9de371a3f6ab73f18bf36b484b1180f60a07458c3c214723aa7cf05e9829d96"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 8403675,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+    "sha256": "d796e29c0c807fc836f064a397926c3e1d4bc8fbcd41bdd712eb2d3aac2328e0"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 7922,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "9de02603dcf17827dfde5de65781f46df8ef2379080adae49471abb2ebe69b65"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

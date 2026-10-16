@@ -1,0 +1,118 @@
+{
+  "affected_nested_functions": [
+    "engine_factory",
+    "scheduler_adapter",
+    "run_original_search"
+  ],
+  "edits": [
+    {
+      "after": "{'bytes': 55152, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py', 'sha256': '54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146'}",
+      "before": "{'bytes': 52627, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py', 'sha256': 'e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6'}",
+      "forward_offset_at_this_step": 2413
+    },
+    {
+      "after": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py', 'sha256': '50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a', 'bytes': 31931}",
+      "before": "{'bytes': 21896, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py', 'sha256': 'd7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7'}",
+      "forward_offset_at_this_step": 2686
+    },
+    {
+      "after": "VERSION='unit-row-marked-frontier-cold-v17'",
+      "before": "VERSION='unit-row-selective-multikey-cold-v16'",
+      "forward_offset_at_this_step": 548
+    },
+    {
+      "after": "SCOPE='unit-row-marked-frontier-cold-Source'",
+      "before": "SCOPE='unit-row-selective-multikey-cold-Source'",
+      "forward_offset_at_this_step": 592
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-marked-frontier-cold-Source-contract-v17'",
+      "before": "contract['schema'] == 'unit-row-selective-multikey-cold-Source-contract-v16'",
+      "forward_offset_at_this_step": 24988
+    },
+    {
+      "after": "            branch_adviser=None,validate_advice=None,tick,branch_tie='ROW'):",
+      "before": "            branch_adviser=None,validate_advice=None,tick):",
+      "forward_offset_at_this_step": 34086
+    },
+    {
+      "after": "            branch_adviser=branch_adviser,validate_advice=validate_advice,branch_tie=branch_tie,\n            initial_state=",
+      "before": "            branch_adviser=branch_adviser,validate_advice=validate_advice,\n            initial_state=",
+      "forward_offset_at_this_step": 34848
+    },
+    {
+      "after": "    def scheduler_adapter(*,evidence,generations,tick,branch_tie='ROW',assigned_output_rows=None):",
+      "before": "    def scheduler_adapter(*,evidence,generations,tick):",
+      "forward_offset_at_this_step": 36570
+    },
+    {
+      "after": "            'evidence':copy.deepcopy(evidence),'generations':copy.deepcopy(generations),'tick':step,\n            'branch_tie':branch_tie,'assigned_output_rows':copy.deepcopy(assigned_output_rows)},",
+      "before": "            'evidence':copy.deepcopy(evidence),'generations':copy.deepcopy(generations),'tick':step},",
+      "forward_offset_at_this_step": 36836
+    },
+    {
+      "after": "        engine = engine_factory(initial_state=None,tick=tick,branch_tie='ASSIGNED-OUTPUT-THEN-ROW',\n            branch_adviser=",
+      "before": "        engine = engine_factory(initial_state=None,tick=tick,\n            branch_adviser=",
+      "forward_offset_at_this_step": 46012
+    }
+  ],
+  "native_failure_fullproof_output_tail_raw_exact": true,
+  "parent": {
+    "bytes": 55645,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-cold-ROOT-source-20261016/unit_row_selective_multikey_cold_v16.py",
+    "sha256": "05da14dfe2a6d18cc29bd7a582f60bbbac49caf38336dbbf421b84d2b746ca02"
+  },
+  "schema": "ROOT-marked-frontier-caller-Source-delta-v17",
+  "source": {
+    "bytes": 55852,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+    "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+  },
+  "unchanged_raw_AST_function_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport",
+    "retain",
+    "failure_gate",
+    "encoded",
+    "write",
+    "tick",
+    "guard",
+    "boundary",
+    "fresh_language",
+    "proposer_adapter",
+    "fallback_adapter",
+    "certify_adapter",
+    "transition_adapter",
+    "refresh_adapter",
+    "adviser_adapter",
+    "validate_advice_adapter",
+    "validate_found",
+    "append",
+    "visit",
+    "step",
+    "step",
+    "step",
+    "step",
+    "step",
+    "step",
+    "step",
+    "step",
+    "step"
+  ],
+  "whole_raw_inverse_recovers_parent": true
+}

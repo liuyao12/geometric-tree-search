@@ -1,0 +1,80 @@
+{
+  "schema": "unit-row-marking-aware-controls-author-static-v2",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+    "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+    "bytes": 31931
+  },
+  "parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+    "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7",
+    "bytes": 21896
+  },
+  "checks": [
+    {
+      "name": "AST parse and compile only",
+      "passed": true
+    },
+    {
+      "name": "three exact raw edits forward and inverse",
+      "passed": true
+    },
+    {
+      "name": "entire retained raw prefix restored",
+      "passed": true
+    },
+    {
+      "name": "all parent callable regions raw and AST retained after entry rename",
+      "passed": true
+    },
+    {
+      "name": "exact seven-keyword public ABI",
+      "passed": true
+    },
+    {
+      "name": "six distinct additional case names",
+      "passed": true
+    },
+    {
+      "name": "stdlib imports unchanged; no project imports",
+      "passed": true
+    },
+    {
+      "name": "no forbidden control bytes",
+      "passed": true
+    }
+  ],
+  "retained_regions": [
+    "Unavailable",
+    "CallbackExhausted",
+    "need",
+    "canonical",
+    "digest",
+    "tile",
+    "state",
+    "ug",
+    "obligations",
+    "InterruptedCursor",
+    "run_controls"
+  ],
+  "entry_keywords": [
+    "language",
+    "engine_factory",
+    "degree_proposer",
+    "fallback",
+    "certify_fallback",
+    "scheduler",
+    "tick"
+  ],
+  "new_case_names": [
+    "mark-tie-synthetic-generation-and-row",
+    "mark-tie-synthetic-global-priority",
+    "mark-tie-original-ROW-versus-assigned-output-BRANCH",
+    "mark-tie-original-readonly-decision-and-checkpoint",
+    "mark-tie-original-occupied-output-retie-and-rollback",
+    "mark-tie-original-global-DEAD-and-FORCED"
+  ],
+  "scientific_calls": 0,
+  "runtime_acceptance": false,
+  "note": "These are Source/AST/raw checks, not executed semantic controls. Assertions in Source are prospective."
+}

@@ -1,0 +1,1141 @@
+{
+  "actual_adviser_return": {
+    "independently_validated": true,
+    "limits": {
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "proposals": 8,
+    "reason": null,
+    "status": "READY",
+    "work": {
+      "candidate_members_checked": 25,
+      "definite_profile_rejections": 0,
+      "demand_count": 5,
+      "descriptor_steps": 14,
+      "duplicate_anchors": 6,
+      "fallback_prefix_candidates": 3,
+      "guarded_steps": 15448,
+      "incompatible_unions": 0,
+      "rounds": 3,
+      "term_count": 1,
+      "unique_anchors": 8,
+      "universal_count": 5
+    }
+  },
+  "actual_closed": true,
+  "additional_coverage_gaps": [],
+  "aggregate_B_bytes": 108118016,
+  "all_advice_consumer_gates_qualified": true,
+  "all_reaped": true,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author owns paired adviser/engine/c354 and saved closer antecedents. This helper checks saved literal wire/resource/fixture lineage; no independent semantic replay or new scientific acceptance.",
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 45.594,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "No full graph/trajectory conformance or arbitrary all-six EOF authority.",
+    "Fixed24unit rows, no fractional/shared positive support or universal fixed Wang palette.",
+    "Hand-written advice, no learned/RL/lemma inventory or proof-search gain.",
+    "Finite heuristic pools/rounds plus one-best-anchor dedup can omit interfaces."
+  ],
+  "continuation_pairing_claimed": false,
+  "continuation_record_cap": 24,
+  "controls_accepted": true,
+  "current_goal_turn": "progress",
+  "declared_cases": 43,
+  "fair_interface_evidence": {
+    "actual_returned_batch_sha256": "93687df830c1571a9786b484d3e29ddd56d4a39a27806a9853422e3f6d5ed761",
+    "finite_index_dynamic_calibration": false,
+    "multi_term_control_calibration": false,
+    "new_source_case_names": [
+      "compatible-occupied-UI-source-fibre-returned-and-validated",
+      "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+      "missing-UI-source-remains-PENDING-not-a-fact"
+    ],
+    "no_generation_inferred_from_topk_absence": true,
+    "prior_quality_case_names": [
+      "real-returned-interface-features-score-and-order",
+      "forged-interface-feature-and-score-rejections",
+      "Boolean-versus-integer-feature-and-score-rejections",
+      "obsolete-adviser-version-rejected",
+      "later-ranked-quality-defect-and-order-rejected",
+      "real-returned-root-reopening-remains-legal-and-demoted",
+      "real-returned-universal-diversity-with-declared-term-horizon",
+      "nonempty-READY-replacement-adopted-after-definite-rejection",
+      "replacement-installs-anchor-only-not-future-obligations",
+      "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+    ],
+    "replacement_passed": true,
+    "source_scoring_rows_reconciled": true
+  },
+  "family_retirement_evidence": {
+    "abandoned_pending_keys": 2,
+    "abandonment_event_sha256": "e5138b5985b967762476fcca7a6e666c2578bc0db79efd8cfcca4690a6d684a5",
+    "actual_rejected_keys": 1,
+    "all_eight_prior_lifecycle_cases_reconciled": true,
+    "different_legal_future_key_checked": true,
+    "later_fresh_calls": 2,
+    "same_branch_fresh_calls": 1
+  },
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "lossless_transport_concordance": {
+    "bytes": 1487,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+    "sha256": "5c55340efda9639c4a724e4f7ca670d139e28bd7147f6e7931d3c2083c899bf0"
+  },
+  "native_launch_to_postprobe_ns": 19500415000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 19433368000,
+  "observation_reuse_evidence": {
+    "all_saved_raw_joins_verified": true,
+    "counts": {
+      "fresh_calls": 54,
+      "recorded_unique_receipts": 9,
+      "report_hits": 8,
+      "report_misses": 1
+    },
+    "full_authorities": 1,
+    "full_used_origins": 5,
+    "occupied_context_saved_joins_verified": true,
+    "report_sites": 9,
+    "scientific_replay": false
+  },
+  "outputs": [
+    {
+      "bytes": 688771,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "sha256": "d9de371a3f6ab73f18bf36b484b1180f60a07458c3c214723aa7cf05e9829d96"
+    },
+    {
+      "bytes": 7025,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+      "sha256": "c67bc5396ffffb18af8c8364b515f82af7801783905b6a213f37cef5f3a90e4e"
+    }
+  ],
+  "paired_fixture_evidence": {
+    "actual_pending_calls": 1,
+    "distinct_control_contexts": true,
+    "family_id": "4e4f5d3d34af552ecb46e604cb2d9ce4634bb9a7722e4db27c433cd698978b0f",
+    "fixture_ref": "pending_success_fixture",
+    "future_rows": [
+      3,
+      8
+    ],
+    "inner_and_outer_restored": true,
+    "inner_snapshot_sha256": "c4e3ea2060fe0cfa065a149e08313e211990049a3394f329383dd50e08c4da2a",
+    "literal_event_joins": [
+      {
+        "ADVICE_index": 8,
+        "DECISION_index": 6,
+        "PLACE_index": 10,
+        "TRY_index": 7,
+        "callback_state_sha256": "212e79457316c4be7fd4c77ce1c3a221bbf52f7f207acad4e056882e1f3a376d",
+        "decision": {
+          "kind": "BRANCH",
+          "row": 3
+        },
+        "key": {
+          "tile_type_id": "bounded-point-tile-c78ec3081141a755874d15ff19d2ef3f0bd64c0188ea89200b42985d31ff4c5b",
+          "translation": [
+            0,
+            3
+          ],
+          "type_preimage": {
+            "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+            "ordered_offsets": [
+              -2,
+              -3
+            ],
+            "ordered_premise_formulas": [
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "n"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "y",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        },
+        "receipt_sha256": "77957b9c4861c0bdba8683edd2065e23ddcd0667e3781b703dbc2946dbeea91d",
+        "request_sha256": "3f182113960e32638033b384e3923674554011b79d5a97ebee3d89c0cc6072d9"
+      }
+    ],
+    "original_fixture_ref": "fixture",
+    "scientific_replay": false,
+    "seed_candidates_sha256": "f119b8eb9956b2cd965f4befc949d6ad7c6721f7fea418f761b2859a87ef5638",
+    "seed_state_sha256": "a8aacaa36cd5d47aea566b0a841d5e32f614113605782688d5712fc734014773",
+    "successful_pending_calls": 1,
+    "whole_actual_batch_sha256": "e58eb9d468947b6470a616570c5c099d76dcf43c27162b47feea97897c3e1bc0",
+    "whole_actual_receipt_sha256": "cbe2cb0099b04ffa61b9b98d435355127b6a0a050d02638093d1fd3edb5aeb1e"
+  },
+  "passed_cases": 43,
+  "plan": {
+    "bytes": 7922,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "9de02603dcf17827dfde5de65781f46df8ef2379080adae49471abb2ebe69b65"
+  },
+  "previous_goal_turn": "progress",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-advice-consumer-controls-disposition-v16-ABC",
+  "scientific_replay": false,
+  "scope": "Current original-language43-case controls: explicit A first-ranked adoption, B pending success and control-only C selective remote/forced contexts; all case names/checks preserved, exact whole report-only receipt reuse and genuine accepted scheduled context component; actual skips unqualified. No target or theorem discovery/full trajectory claim.",
+  "selected_family": {
+    "anchor_row": 0,
+    "fixture_ref": "fixture",
+    "future_rows": [
+      8
+    ],
+    "role": "original first-ranked batch and anchor-only adoption",
+    "scheme": "GENERIC_UI_MP",
+    "snapshot_sha256": "dae3b0d1d2eeeb39ae58663aab18ad0af1f697e0e9aac1315db9338d765a76b7"
+  },
+  "selective_C_fixture_evidence": {
+    "adoption_qualified": true,
+    "anchor_only_adoption": true,
+    "artifact_present": true,
+    "control_only_original_order_subselection": true,
+    "executed_receipt_sha256": "206f8897b062911af1549af349d78cde4ca83c58e5b91d95d6d08c438a81a3f6",
+    "executed_subset_sha256": "98979227116fd6cd79b398ec5ba26f46b4865ea61c346681ca20e843134104a9",
+    "family_id": "c7c4afdd580ad6be6df49752dc100295c10ffde362055d5fcb2cd6a9a01c1a6c",
+    "fixture_ref": "selective_C_fixture",
+    "future_rows": [
+      2,
+      8
+    ],
+    "inner_snapshot_sha256": "b58733e9ad55db796c0d683df34879acddf878db309fdcb07bd487892d4f38ed",
+    "own_inner_and_outer_restored": true,
+    "remote": {
+      "artifact_present": true,
+      "component_is_scheduler_authority": false,
+      "eligible_actual_branch": true,
+      "engine_lifecycle_accepted_here": false,
+      "family_id": "c7c4afdd580ad6be6df49752dc100295c10ffde362055d5fcb2cd6a9a01c1a6c",
+      "fixture_ref": "selective_C_fixture",
+      "fresh_event_start": 6,
+      "fresh_events": 12,
+      "live_rejection_reported": true,
+      "normal_search_started": true,
+      "normalization_placements": 1,
+      "scientific_replay": false,
+      "whole_artifact_sha256": "7e46b524024df22bfaf42222ed6ff5552ea005e698c736ab254ee49efabe0259"
+    },
+    "retirement_fresh_event_start": 18,
+    "retirement_fresh_events": 28,
+    "scientific_replay": false,
+    "selected_original_index": 1,
+    "whole_actual_batch_sha256": "93687df830c1571a9786b484d3e29ddd56d4a39a27806a9853422e3f6d5ed761",
+    "whole_actual_receipt_sha256": "c2e8ecf77f9c9b43432657797832ac7e7a837caf3ef761e038542fbb0161a6f9",
+    "whole_artifact_sha256": "5a256c985ed896ccbd2cae103ea27abd88aaaa44e8a1b9cc09cb5d7c63a06d57"
+  },
+  "skipped_cases": 0,
+  "status": "QUALIFIED_LOCAL_CONSUMER_CONTROLS",
+  "target_admission_qualified": true,
+  "terminal_T_bytes": 108118016,
+  "unqualified_continuation_observations": [
+    {
+      "kind": "continuation",
+      "native_ns": 503886839846000,
+      "ordinal": 1,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886844095000,
+      "ordinal": 2,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886844110000,
+      "ordinal": 3,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886872312000,
+      "ordinal": 4,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886885361000,
+      "ordinal": 5,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886890062000,
+      "ordinal": 6,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886890081000,
+      "ordinal": 7,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886909656000,
+      "ordinal": 8,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886922775000,
+      "ordinal": 9,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886928060000,
+      "ordinal": 10,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886928073000,
+      "ordinal": 11,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886948470000,
+      "ordinal": 12,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886967331000,
+      "ordinal": 13,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886973011000,
+      "ordinal": 14,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886973031000,
+      "ordinal": 15,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503886992550000,
+      "ordinal": 16,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887005622000,
+      "ordinal": 17,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887011753000,
+      "ordinal": 18,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887011769000,
+      "ordinal": 19,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887030763000,
+      "ordinal": 20,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887043909000,
+      "ordinal": 21,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887050748000,
+      "ordinal": 22,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887050760000,
+      "ordinal": 23,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 503887077503000,
+      "ordinal": 24,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    }
+  ],
+  "unqualified_native_timeline": [
+    {
+      "elapsed_from_launch_ns": 137774000,
+      "interval_since_previous_ns": 137774000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "native_ns": 503879839268000
+    },
+    {
+      "elapsed_from_launch_ns": 137830000,
+      "interval_since_previous_ns": 56000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "native_ns": 503879839324000
+    },
+    {
+      "elapsed_from_launch_ns": 138295000,
+      "interval_since_previous_ns": 465000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "native_ns": 503879839789000
+    },
+    {
+      "elapsed_from_launch_ns": 763244000,
+      "interval_since_previous_ns": 624949000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "native_ns": 503880464738000
+    },
+    {
+      "elapsed_from_launch_ns": 823517000,
+      "interval_since_previous_ns": 60273000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "native_ns": 503880525011000
+    },
+    {
+      "elapsed_from_launch_ns": 869380000,
+      "interval_since_previous_ns": 45863000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "native_ns": 503880570874000
+    },
+    {
+      "elapsed_from_launch_ns": 1364863000,
+      "interval_since_previous_ns": 495483000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "native_ns": 503881066357000
+    },
+    {
+      "elapsed_from_launch_ns": 4888954000,
+      "interval_since_previous_ns": 3524091000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "native_ns": 503884590448000
+    },
+    {
+      "elapsed_from_launch_ns": 4899734000,
+      "interval_since_previous_ns": 10780000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "native_ns": 503884601228000
+    },
+    {
+      "elapsed_from_launch_ns": 5906469000,
+      "interval_since_previous_ns": 1006735000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "native_ns": 503885607963000
+    },
+    {
+      "elapsed_from_launch_ns": 5915755000,
+      "interval_since_previous_ns": 9286000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 503885617249000
+    },
+    {
+      "elapsed_from_launch_ns": 7138352000,
+      "interval_since_previous_ns": 1222597000,
+      "kind": "continuation",
+      "native_ns": 503886839846000,
+      "ordinal": 1,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 7142601000,
+      "interval_since_previous_ns": 4249000,
+      "kind": "continuation",
+      "native_ns": 503886844095000,
+      "ordinal": 2,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 7142616000,
+      "interval_since_previous_ns": 15000,
+      "kind": "continuation",
+      "native_ns": 503886844110000,
+      "ordinal": 3,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7170818000,
+      "interval_since_previous_ns": 28202000,
+      "kind": "continuation",
+      "native_ns": 503886872312000,
+      "ordinal": 4,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7183867000,
+      "interval_since_previous_ns": 13049000,
+      "kind": "continuation",
+      "native_ns": 503886885361000,
+      "ordinal": 5,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 7188568000,
+      "interval_since_previous_ns": 4701000,
+      "kind": "continuation",
+      "native_ns": 503886890062000,
+      "ordinal": 6,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 7188587000,
+      "interval_since_previous_ns": 19000,
+      "kind": "continuation",
+      "native_ns": 503886890081000,
+      "ordinal": 7,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7208162000,
+      "interval_since_previous_ns": 19575000,
+      "kind": "continuation",
+      "native_ns": 503886909656000,
+      "ordinal": 8,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7221281000,
+      "interval_since_previous_ns": 13119000,
+      "kind": "continuation",
+      "native_ns": 503886922775000,
+      "ordinal": 9,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 7226566000,
+      "interval_since_previous_ns": 5285000,
+      "kind": "continuation",
+      "native_ns": 503886928060000,
+      "ordinal": 10,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 7226579000,
+      "interval_since_previous_ns": 13000,
+      "kind": "continuation",
+      "native_ns": 503886928073000,
+      "ordinal": 11,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7246976000,
+      "interval_since_previous_ns": 20397000,
+      "kind": "continuation",
+      "native_ns": 503886948470000,
+      "ordinal": 12,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7265837000,
+      "interval_since_previous_ns": 18861000,
+      "kind": "continuation",
+      "native_ns": 503886967331000,
+      "ordinal": 13,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 7271517000,
+      "interval_since_previous_ns": 5680000,
+      "kind": "continuation",
+      "native_ns": 503886973011000,
+      "ordinal": 14,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 7271537000,
+      "interval_since_previous_ns": 20000,
+      "kind": "continuation",
+      "native_ns": 503886973031000,
+      "ordinal": 15,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7291056000,
+      "interval_since_previous_ns": 19519000,
+      "kind": "continuation",
+      "native_ns": 503886992550000,
+      "ordinal": 16,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7304128000,
+      "interval_since_previous_ns": 13072000,
+      "kind": "continuation",
+      "native_ns": 503887005622000,
+      "ordinal": 17,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 7310259000,
+      "interval_since_previous_ns": 6131000,
+      "kind": "continuation",
+      "native_ns": 503887011753000,
+      "ordinal": 18,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 7310275000,
+      "interval_since_previous_ns": 16000,
+      "kind": "continuation",
+      "native_ns": 503887011769000,
+      "ordinal": 19,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7329269000,
+      "interval_since_previous_ns": 18994000,
+      "kind": "continuation",
+      "native_ns": 503887030763000,
+      "ordinal": 20,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7342415000,
+      "interval_since_previous_ns": 13146000,
+      "kind": "continuation",
+      "native_ns": 503887043909000,
+      "ordinal": 21,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 7349254000,
+      "interval_since_previous_ns": 6839000,
+      "kind": "continuation",
+      "native_ns": 503887050748000,
+      "ordinal": 22,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 7349266000,
+      "interval_since_previous_ns": 12000,
+      "kind": "continuation",
+      "native_ns": 503887050760000,
+      "ordinal": 23,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7376009000,
+      "interval_since_previous_ns": 26743000,
+      "kind": "continuation",
+      "native_ns": 503887077503000,
+      "ordinal": 24,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 8150492000,
+      "interval_since_previous_ns": 774483000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 503887851986000
+    },
+    {
+      "elapsed_from_launch_ns": 8150533000,
+      "interval_since_previous_ns": 41000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "native_ns": 503887852027000
+    },
+    {
+      "elapsed_from_launch_ns": 15632419000,
+      "interval_since_previous_ns": 7481886000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "native_ns": 503895333913000
+    },
+    {
+      "elapsed_from_launch_ns": 15721080000,
+      "interval_since_previous_ns": 88661000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "native_ns": 503895422574000
+    },
+    {
+      "elapsed_from_launch_ns": 17047457000,
+      "interval_since_previous_ns": 1326377000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "native_ns": 503896748951000
+    },
+    {
+      "elapsed_from_launch_ns": 17047496000,
+      "interval_since_previous_ns": 39000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "native_ns": 503896748990000
+    },
+    {
+      "elapsed_from_launch_ns": 17983037000,
+      "interval_since_previous_ns": 935541000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "native_ns": 503897684531000
+    },
+    {
+      "elapsed_from_launch_ns": 17983080000,
+      "interval_since_previous_ns": 43000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "native_ns": 503897684574000
+    },
+    {
+      "elapsed_from_launch_ns": 18199960000,
+      "interval_since_previous_ns": 216880000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "native_ns": 503897901454000
+    },
+    {
+      "elapsed_from_launch_ns": 18199997000,
+      "interval_since_previous_ns": 37000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "native_ns": 503897901491000
+    },
+    {
+      "elapsed_from_launch_ns": 18816476000,
+      "interval_since_previous_ns": 616479000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "native_ns": 503898517970000
+    },
+    {
+      "elapsed_from_launch_ns": 19293752000,
+      "interval_since_previous_ns": 477276000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "native_ns": 503898995246000
+    },
+    {
+      "elapsed_from_launch_ns": 19296418000,
+      "interval_since_previous_ns": 2666000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN",
+      "native_ns": 503898997912000
+    }
+  ]
+}

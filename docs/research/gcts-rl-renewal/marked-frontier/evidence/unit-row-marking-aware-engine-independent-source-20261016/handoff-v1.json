@@ -1,0 +1,28 @@
+{
+  "schema": "unit-row-marking-aware-engine-independent-review-handoff-v1",
+  "source": {
+    "bytes": 55152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+    "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+  },
+  "source_contract": {
+    "bytes": 14679,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "5a69b3df71d87b8041d63cdce44f249bddcbb21d625afbb2039aef59811af2f6"
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "65807d2891685e5b677a485768ba13d908aaf64ccd736fb5219d82014990233b",
+    "bytes": 4762
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-independent-source-20261016/findings-v1.json",
+    "sha256": "62bce90b3358e73115a0581355b55da7ecab21927aed8966512e1faf073f3c2e",
+    "bytes": 8086
+  },
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "runtime_qualification": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis"
+}

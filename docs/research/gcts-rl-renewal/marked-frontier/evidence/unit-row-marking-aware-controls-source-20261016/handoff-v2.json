@@ -1,0 +1,100 @@
+{
+  "schema": "unit-row-marking-aware-controls-Source-handoff-v2",
+  "scope": "unit-row-marking-aware-adversarial-controls-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+    "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+    "bytes": 31931
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "c8e26475c06427cae289726b851a2b6d51943f58224c3829a8b8b00c71db8397",
+    "bytes": 10700
+  },
+  "source_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/Source-delta-v2.json",
+    "sha256": "b9496bc038f460529f63eccedfa74b8fd8174ba6fa7ca7117e0ddabef8f4de0c",
+    "bytes": 12593
+  },
+  "author_static_evidence": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/author-static-evidence-v2.json",
+    "sha256": "34759ed74834a6ddd154fa47b9c6c872f9c686612da769f6a2babb4cc52f36b6",
+    "bytes": 2276
+  },
+  "patches": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/parent-to-marking-controls-v2.patch",
+      "sha256": "c5dc9b86b16d6d6b7a491c78f2022ccc7a149a335c49b9871a56b081045e9da3",
+      "bytes": 11259
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking-controls-v2-to-parent.patch",
+      "sha256": "82761a2063846fc295bb02dd21b7d2aa15c428c0e02593a64dc3d95df80843ba",
+      "bytes": 11259
+    }
+  ],
+  "dependencies": {
+    "engine": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "bytes": 55152
+    },
+    "degree_proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030
+    },
+    "degree_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "fallback": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "bytes": 24227
+    },
+    "transition": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "bytes": 8134
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  },
+  "API": {
+    "entry": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick)",
+    "engine_factory": "Original keyword-only callable plus optional branch_tie default ROW. Inject fresh authenticated original language/current semantics/transition. New tests explicitly pass ASSIGNED-OUTPUT-THEN-ROW; all original17 calls omit policy and keep ROW. No private mutation hooks.",
+    "scheduler": "select_schedule(*,evidence,generations,tick,branch_tie=ROW,assigned_output_rows=None). Explicit assigned rows are list[int], unique frontier subset. Only abstract NONLOGICAL tests supply them. Original two kernel cases remain default ROW.",
+    "other_endpoints": "Unchanged parent7-keyword callable authority, degree proposer, fallback, current cover certifier and native/injected tick semantics. Endpoint exceptions/resources propagate. Only exact original fixture OutsideLanguage caught narrowly at prepared constructor calls becomes SKIPPED."
+  },
+  "prospective_case_count": 23,
+  "original_case_count": 17,
+  "new_policy_case_count": 6,
+  "new_case_names": [
+    "mark-tie-synthetic-generation-and-row",
+    "mark-tie-synthetic-global-priority",
+    "mark-tie-original-ROW-versus-assigned-output-BRANCH",
+    "mark-tie-original-readonly-decision-and-checkpoint",
+    "mark-tie-original-occupied-output-retie-and-rollback",
+    "mark-tie-original-global-DEAD-and-FORCED"
+  ],
+  "runtime_qualification": false,
+  "target_fit_prediction": false,
+  "scientific_calls": 0,
+  "remaining_gates": [
+    "Distinct whole controls review and Source-bound caller integration still required.",
+    "Actual23 controls and resource/output closure remain unmeasured.",
+    "No full general GCTS graph/reference trajectory, arbitrary all-six independent EOF, fractional/shared positive support/general-growth qualification.",
+    "No target success, speedup, learned marking or RL claim."
+  ]
+}

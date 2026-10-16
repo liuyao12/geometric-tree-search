@@ -1,0 +1,166 @@
+{
+  "added_named_regions": [
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot"
+  ],
+  "author_identity": "/root/hilbert_advice_controls",
+  "changed_named_regions": [
+    "select_schedule",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.search"
+  ],
+  "checks": [
+    {
+      "check": "parent exact e2be",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "whole forward raw reconstruction",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "whole inverse raw reconstruction",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "AST parse and compile only",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "only original imports hashlib/json",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "exact changed named region inventory",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "exact added named region inventory",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "search.walk whole raw and AST unchanged",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "owned checkpoint and rollback whole raw/AST unchanged",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "complete fallback and EOF gates whole raw/AST unchanged",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "placement exclusion and retention whole raw/AST unchanged",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "advice validator selection and transaction whole raw/AST unchanged",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "no removed named regions",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "getter only property no setter",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "strict two policy literals",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "live fixed0 generation mapping exact",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "all six original rules unchanged",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "native and model clocks not imported",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    },
+    {
+      "check": "exact master and current checkpoint authenticated",
+      "method": "raw/AST/compile-only; no module/function execution",
+      "passed": true
+    }
+  ],
+  "checks_count": 19,
+  "module_lines": 948,
+  "schema": "unit-row-marking-aware-engine-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+    "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+  },
+  "source_delta": {
+    "bytes": 9009,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "0f784d97c6f62fa4190f4bd92bd3bbba59b7f69e07f9799949f86ae1f1e64ac4"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search.walk"
+  ],
+  "whole_parent_and_current_source_read": true,
+  "whole_source_imported_or_executed": false
+}

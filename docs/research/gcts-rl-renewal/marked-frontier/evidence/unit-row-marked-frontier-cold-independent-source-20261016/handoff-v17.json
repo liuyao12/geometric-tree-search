@@ -1,0 +1,29 @@
+{
+  "actual_execution_authorized": false,
+  "checks": 18,
+  "findings": {
+    "bytes": 16714,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-independent-source-20261016/findings-v17.json",
+    "sha256": "614179953a119f8c135b4c45b611114b6ef6992bf9f52f1be23199255b7bf309"
+  },
+  "raw_paths": 34,
+  "schema": "unit-row-marked-frontier-cold-independent-handoff-v17",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55852,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+    "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+  },
+  "source_contract": {
+    "bytes": 90350,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/Source-contract-v17.json",
+    "sha256": "d3c64248137d442dc45a16052a6038ad6de5cbdf56582dff111469bb0b70c1e2"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 7648,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-independent-source-20261016/typed-Source-review-v17.json",
+    "sha256": "55f1199398aeef9ec5ab4fe12ecec75d905cbf6958f19a81b5345d8f16faaa6a"
+  }
+}

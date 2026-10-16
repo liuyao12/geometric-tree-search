@@ -1,0 +1,150 @@
+{
+  "schema": "unit-row-marking-aware-engine-independent-findings-v1",
+  "source": {
+    "bytes": 55152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+    "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+  },
+  "source_contract": {
+    "bytes": 14679,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "5a69b3df71d87b8041d63cdce44f249bddcbb21d625afbb2039aef59811af2f6"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_review_passed": true,
+  "blockers": [],
+  "review_scope": "Complete current raw module coverage by full parent/current reversible18-edit comparison, all changed/new executable bodies inspected,33 unchanged raw/AST regions retained against reviewed engine8 lineage. Current full contract/handoff/API/source maps checked. This is Source review, not semantic execution or general engine proof.",
+  "authorship": "I authored the unchanged consumer3 and earlier controls/horizon/checker/codec/family dependencies, plus new23 control Source. I did not author engine8/engine9 or current c960/c354/transition/fallback. My authored controls are not self-reviewed by this record.",
+  "static_checks": {
+    "complete_forward_and_inverse_bytes": true,
+    "edits": 18,
+    "unchanged_raw_AST_regions": [
+      "LazyUnitRowEngine._adopt_branch",
+      "LazyUnitRowEngine._advance",
+      "LazyUnitRowEngine._archive_context",
+      "LazyUnitRowEngine._candidate",
+      "LazyUnitRowEngine._checked_advice",
+      "LazyUnitRowEngine._copy",
+      "LazyUnitRowEngine._emit",
+      "LazyUnitRowEngine._exclude_exhausted",
+      "LazyUnitRowEngine._fallback_degree",
+      "LazyUnitRowEngine._has_archived_context",
+      "LazyUnitRowEngine._install",
+      "LazyUnitRowEngine._install.remember",
+      "LazyUnitRowEngine._observe",
+      "LazyUnitRowEngine._open",
+      "LazyUnitRowEngine._reference_counts",
+      "LazyUnitRowEngine._select_branch",
+      "LazyUnitRowEngine._transfer_receipt",
+      "LazyUnitRowEngine._validate_receipt",
+      "LazyUnitRowEngine._word",
+      "LazyUnitRowEngine.checkpoint",
+      "LazyUnitRowEngine.next_alternative",
+      "LazyUnitRowEngine.place",
+      "LazyUnitRowEngine.rollback",
+      "LazyUnitRowEngine.search.walk",
+      "LazyUnitRowEngine.state_snapshot",
+      "Unresolved",
+      "_Checkpoint",
+      "_Checkpoint.__init__",
+      "canonical",
+      "certify_by_current_cover",
+      "diagnostic_copy",
+      "digest",
+      "need"
+    ],
+    "changed_regions": [
+      "LazyUnitRowEngine",
+      "LazyUnitRowEngine.__init__",
+      "LazyUnitRowEngine._check_authority",
+      "LazyUnitRowEngine._snapshot_value",
+      "LazyUnitRowEngine.decision",
+      "LazyUnitRowEngine.search",
+      "select_schedule"
+    ],
+    "added_regions": [
+      "LazyUnitRowEngine._policy_snapshot",
+      "LazyUnitRowEngine.branch_tie"
+    ],
+    "AST_parse_compile_without_evaluation": true,
+    "exact_scheduler_keyword_ABI": [
+      "evidence",
+      "generations",
+      "tick",
+      "branch_tie",
+      "assigned_output_rows"
+    ],
+    "default_policy": "ROW",
+    "imports": [
+      "hashlib",
+      "json"
+    ],
+    "all_current_capsules_raw_match": true,
+    "Source_maps_equal_contract_handoff": true
+  },
+  "manual_findings": [
+    {
+      "area": "master scope",
+      "finding": "New tie lies only within earliest generation. Complete frontier status priority stays ZERO, then UNKNOWN blocking unsafe classification, then global SINGLETON, then BRANCH. Forced tie remains generation,row; no minimum-count claim. All actual24 generations remain zero; synthetic varied generations are separate."
+    },
+    {
+      "area": "exact ranking",
+      "finding": "ROW uses generation plus constant class plus row, equivalent to former generation,row. MARK uses generation, assigned-class,row. Assigned rows are literal unique integer frontier members; bool, duplicates, non-list and non-frontier reject. No formula body/target symbol/axiom label/proof route or degree count enters ranking."
+    },
+    {
+      "area": "private current markings",
+      "finding": "Live decision first reconstructs current state through unchanged independent private_state. Formula-tag presence at current output point is derived from its validated marks map. Pending unoccupied outputs can rank earlier; that neither fills t nor establishes a fact. No proposal list supplies degree authority."
+    },
+    {
+      "area": "owned policy",
+      "finding": "Constructor validates exact literal mode; public branch_tie property has only getter. Full canonical _scheduler_policy includes exact original canonical authority string. Existing authority gates compare the complete literals and then unchanged original authority_snapshot, not output hashes alone. This is an engine-owned invariant under caller custody, not a hostile-object sandbox."
+    },
+    {
+      "area": "branch/advice boundaries",
+      "finding": "Nested decision packets preserve kind,row shapes. Policy fields occur in events/snapshot/result only. Existing adviser/consumer version coupling and whole-batch/pending logic are unchanged; no advice/candidate pruning/EOF authority is added."
+    },
+    {
+      "area": "fallback/rollback",
+      "finding": "Candidate legality, placement, exclusions, support/collision retention, complete context archive and genuine prefix replay, certifier, checkpoint/rollback and search.walk are raw/AST exact. Fixed per-engine policy is not a branch-local variable; owned checkpoint token cannot switch engine. Existing unresolved/UNKNOWN and independent cover gates remain."
+    },
+    {
+      "area": "reporting/costs",
+      "finding": "ROW remains default with original ROW variant. MARK is separately named in result; scheduler_policy and DECISION metadata add charged work/bytes. Existing ceilings and false flags retained. Historical17/17/43 and timed-out targets are not automatically promoted; new23 controls/caller/resource closure remain required."
+    }
+  ],
+  "remaining_gates": [
+    "Distinct current23 controls Source review and current caller/source bindings.",
+    "Root-owned actual current conformance controls and unchanged native20/512MiB/failure55/owned60/caller90+1 resource/output closure.",
+    "Both future target arms must share MARK policy/model/information/caps; no success, speedup, learned marking, RL or full reference graph conformance follows from Source."
+  ],
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "runtime_qualification": false,
+  "evidence": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/handoff-v1.json",
+      "sha256": "63131fd3dbb33ab546843c26d80737cfcfc45bcaf0b0cb03000e44358466fe91",
+      "bytes": 7602
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "5a69b3df71d87b8041d63cdce44f249bddcbb21d625afbb2039aef59811af2f6",
+      "bytes": 14679
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/Source-delta-v1.json",
+      "sha256": "0f784d97c6f62fa4190f4bd92bd3bbba59b7f69e07f9799949f86ae1f1e64ac4",
+      "bytes": 9009
+    },
+    {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ]
+}

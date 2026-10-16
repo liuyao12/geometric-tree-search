@@ -1,0 +1,324 @@
+{
+  "edits": [
+    {
+      "after": "23",
+      "before": "17",
+      "new_offset": 4269,
+      "old_offset": 4269
+    },
+    {
+      "after": "23",
+      "before": "17",
+      "new_offset": 4309,
+      "old_offset": 4309
+    },
+    {
+      "after": "23",
+      "before": "17",
+      "new_offset": 4436,
+      "old_offset": 4436
+    },
+    {
+      "after": "[:17]",
+      "before": "",
+      "new_offset": 5204,
+      "old_offset": 5204
+    },
+    {
+      "after": "# Six added policy cases are saved literal observations. Never replay degree,\n# members",
+      "before": "result_out={'sc",
+      "new_offset": 8717,
+      "old_offset": 8712
+    },
+    {
+      "after": "ip, a point model, or a primitive word in this closer.\ncontract_current=read(check(plan['source_contract']))\nassert len(plan['sources'])==17 and len(plan['inputs'])==2\nassert contract_current['sources']==plan['sources'] and contract_current['inputs']==plan['inputs'] and contract_current['limits']==plan['limits']\nassert contract_current['Review_ABI']['sources']==plan['sources'] and contract_current['Review_ABI']['source']==plan['sources']['intake']\npolicy_spec=contract_current['marked_frontier_successor']\ncontrol_contract=read(check(policy_spec['components']['controls']['source_contract']))\nassert policy_spec['components']['controls']['source']==plan['sources']['controls'] and policy_spec['components']['engine']['source']==plan['sources']['engine']\nadded=[x['case'] for x in control_contract['additional_cases']]\nassert len(added)==6 and [x['case'] for x in cases]==expected+added\nassert controls['schema']=='unit-row-lazy-global-controls-v1' and controls['version']==control_contract['result']['version']\nassert controls['original_case_count']==17 and controls['new_policy_case_count']==6 and controls['prospective_case_count']==23\nassert policy_spec['original_control_cases']==23 and policy_spec['retention_control_cases']==17 and policy_spec['advice_control_cases']==43\nassert controls['variant']=='ROW-BASELINE-AND-ASSIGNED-OUTPUT-BRANCH-TIE-CONTROLS'\nassert all(result[k] is False for k in ('complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','logical_proof_accepted',",
+      "before": "ema':",
+      "new_offset": 8805,
+      "old_offset": 8728
+    },
+    {
+      "after": "_resource_accepted'))\nassert all(body[k] is False for k in ('ROOT_resource_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','logical_proof_accepted','RL_accepted','GCTS_advantage_claimed'))\nmark='ASSIGNED",
+      "before": "",
+      "new_offset": 10305,
+      "old_offset": 8738
+    },
+    {
+      "after": "OUTPUT-THEN-ROW'\ndef policy(snapshot,mode):\n p=snapshot['scheduler_policy']\n assert set(p)=={'schema','branch_tie','authority_sha256','policy_sha256'}\n assert p['schema']=='",
+      "before": "",
+      "new_offset": 10536,
+      "old_offset": 8739
+    },
+    {
+      "after": "owned-",
+      "before": "glo",
+      "new_offset": 10718,
+      "old_offset": 8748
+    },
+    {
+      "after": "ranch",
+      "before": "al",
+      "new_offset": 10725,
+      "old_offset": 8752
+    },
+    {
+      "after": "ti",
+      "before": "engin",
+      "new_offset": 10731,
+      "old_offset": 8755
+    },
+    {
+      "after": "policy",
+      "before": "controls-disposition",
+      "new_offset": 10735,
+      "old_offset": 8762
+    },
+    {
+      "after": " and p['branch_tie']==mode and p['authority_sha256']==snapshot['authority_sha256']\n for k in ('authority_sha256'",
+      "before": "",
+      "new_offset": 10745,
+      "old_offset": 8786
+    },
+    {
+      "after": "olicy_sha256')",
+      "before": "lan'",
+      "new_offset": 10860,
+      "old_offset": 8789
+    },
+    {
+      "after": "\n  assert type(p[k]) is str and len(p[k])==64 and all(c in '0123456789abcdef' for c in p[k])\n assert snapshot['state']['generation']==[[[0",
+      "before": "pp",
+      "new_offset": 10875,
+      "old_offset": 8794
+    },
+    {
+      "after": "r],0] for r in range(24)]\n assert snapshot['state']['input_epoch']==body['language_binding']['language_epoch']\n return p\nabstract=by[added[0]]\nassert abstract['abstract_evidence']=={'0",
+      "before": "'outputs",
+      "new_offset": 11014,
+      "old_offset": 8797
+    },
+    {
+      "after": "{'status':'MANY'",
+      "before": "outputs",
+      "new_offset": 11200,
+      "old_offset": 8807
+    },
+    {
+      "after": "'degree_exact",
+      "before": "\n 'controls_accepted':True,'passed_cases",
+      "new_offset": 11217,
+      "old_offset": 8815
+    },
+    {
+      "after": "0}",
+      "before": "7",
+      "new_offset": 11233,
+      "old_offset": 8858
+    },
+    {
+      "after": "1':{'status':'MANY','degree_exact':2},'2':{'status':'TWO_OR_MORE','degree_exact':None}}\nassert abstract['earlier_generation']=={'",
+      "before": "s",
+      "new_offset": 11237,
+      "old_offset": 8861
+    },
+    {
+      "after": "nd':'BRANCH','row",
+      "before": "pped_cases",
+      "new_offset": 11368,
+      "old_offset": 8864
+    },
+    {
+      "after": "} and abstract['assigned_same_generation']=={'kind':'BRANCH'",
+      "before": "",
+      "new_offset": 11388,
+      "old_offset": 8877
+    },
+    {
+      "after": "ro",
+      "before": "complete_",
+      "new_offset": 11450,
+      "old_offset": 8879
+    },
+    {
+      "after": "",
+      "before": "ire_verified",
+      "new_offset": 11453,
+      "old_offset": 8889
+    },
+    {
+      "after": "2}\nassert abstract['two_assigned']=={'kind':'BRANCH'",
+      "before": "True",
+      "new_offset": 11455,
+      "old_offset": 8903
+    },
+    {
+      "after": "row",
+      "before": "native_resources_qualified",
+      "new_offset": 11509,
+      "old_offset": 8909
+    },
+    {
+      "after": "1} and abstract['all_absent']=={'kind':'BRANCH'",
+      "before": "True",
+      "new_offset": 11514,
+      "old_offset": 8937
+    },
+    {
+      "after": "'ro",
+      "before": "\n 'native_",
+      "new_offset": 11562,
+      "old_offset": 8942
+    },
+    {
+      "after": "",
+      "before": "orker_lifetime_ns",
+      "new_offset": 11566,
+      "old_offset": 8953
+    },
+    {
+      "after": "0}\npriority=",
+      "before": "terminal-start,'native_launch_to_postprobe_ns':probe-start,'aggregate_B_",
+      "new_offset": 11568,
+      "old_offset": 8972
+    },
+    {
+      "after": "[added[1]]\nassert priority=={'dead",
+      "before": "tes",
+      "new_offset": 11582,
+      "old_offset": 9046
+    },
+    {
+      "after": "{'",
+      "before": "pea",
+      "new_offset": 11618,
+      "old_offset": 9051
+    },
+    {
+      "after": "ind':'DEAD'",
+      "before": "",
+      "new_offset": 11621,
+      "old_offset": 9055
+    },
+    {
+      "after": "row",
+      "before": "terminal_T_bytes",
+      "new_offset": 11634,
+      "old_offset": 9057
+    },
+    {
+      "after": "1},'forced':{'",
+      "before": "pea",
+      "new_offset": 11639,
+      "old_offset": 9075
+    },
+    {
+      "after": "ind':'FORCED'",
+      "before": "",
+      "new_offset": 11654,
+      "old_offset": 9079
+    },
+    {
+      "after": "'row",
+      "before": "\n 'complete_Date_seconds",
+      "new_offset": 11668,
+      "old_offset": 9080
+    },
+    {
+      "after": "1}",
+      "before": "date",
+      "new_offset": 11674,
+      "old_offset": 9106
+    },
+    {
+      "after": "unresolved",
+      "before": "language_binding",
+      "new_offset": 11678,
+      "old_offset": 9112
+    },
+    {
+      "after": "{'kind':'UNKNOWN'",
+      "before": "body['language_binding']",
+      "new_offset": 11690,
+      "old_offset": 9130
+    },
+    {
+      "after": "ow",
+      "before": "esource_rule",
+      "new_offset": 11710,
+      "old_offset": 9157
+    },
+    {
+      "after": "None,'unresolved_r",
+      "before": "'single-",
+      "new_offset": 11714,
+      "old_offset": 9171
+    },
+    {
+      "after": "s':[",
+      "before": "ned-process-native-terminal-v",
+      "new_offset": 11734,
+      "old_offset": 9181
+    },
+    {
+      "after": "]}}\nassert all('",
+      "before": "; B=T',\n 'scope':'Original17 controls on current retained-domain engine; constructed original-language global/remote/cursor/rollback cases, declared incomplete transport seams and two separate ",
+      "new_offset": 11739,
+      "old_offset": 9211
+    },
+    {
+      "after": "' in c['scope'] for c in cases[17:19])\ncomparison=by[added[2]];initial=comparison['initial_state'];seeds=comparison['seed'];row_snaps",
+      "before": " sc",
+      "new_offset": 11765,
+      "old_offset": 9414
+    },
+    {
+      "after": "ot=comparison['ROW_snapshot'];warm=comparison['MARK_snapshot']\nassert len(seeds)==4 and [x['placement_key']['translation'] for x in seeds]==[[0,1],[0,2],[0,4],[0,7]]\nassert canonical(initial['selected'])==canonical([x['selection_record'] for x in seeds])\nassert canonical(row_snapshot['state'])==canonical(initial)==canonical(warm['state'])\nassert comparison['ROW_decision']=={'kind':'BRANCH','row':0} and comparison['MARK_decision']=={'kind':'BRANCH','row':3}\nrow_policy=policy(row_snapshot,'ROW');mark_policy=policy(warm,mark)\nassert row_policy['authority_sha256']==mark_policy['authority_sha256']\ndeclaration=read(check(plan['inputs']['declaration']));first_ax=sorted(declaration['theory']['axioms'])[0];formula=declaration['theory']['axioms'][first_ax]\nfor seed in seeds[:2]:\n pre=seed['placement_key']['type_preimage'];assert pre['primitive_witness']=={'rule':'axiom','name':first_ax,'formula':formula}\n assert pre['ordered_premise_formulas']==pre['ordered_offsets']==[]\n assert canonical(seed['selection_record'])==canonical(dict(seed['placement_key'],generation=1))\nfor seed,read_row in zip(seeds[2:],(3,6)):\n pre=seed['placement_key']['type_preimage'];w=pre['primitive_witness']\n assert w['rule']=='generalize' and pre['ordered_offsets']==[-1] and len(pre['ordered_premise_formulas'])==1\n assert seed['placement_key']['translation'][1]-1==read_row and w['formula'][0]=='all'\n assert canonical(w['formula'][2])==canonical(pre['ordered_premise_formulas'][0])\nmarks={tuple(p):v for p,v in initial['m']};totals={tuple(p):v for p,v in initial['t']}\nassert (1,0) not in marks and marks[(1,3)]==marks[(1,6)]==['formula',canonical(seeds[2]['placement_key']['type_preimage']['ordered_premise_formulas'][0]).decode()]\nassert all(totals[(0,r)]==0 for r in (0,3,6))\nassert marks[(1,23)]==['formula',canonical(declaration['target']).decode()]\ncertificates=dict(warm['certificates']);assert set(certificates)=={r for r in range(24) if totals[(0,r)]==0}\nassert all(x['status'] in ('MANY','TWO_OR_MORE') for x in certificates.values())\nreadonly=",
+      "before": "eduler cali",
+      "new_offset": 11899,
+      "old_offset": 9418
+    },
+    {
+      "after": "y[added[3]]\nassert canonical(readonly['warm'])==canonical(warm)==canonical(readonly['repeated_snapshot'])==canonical(readonly['restored_warm'])\nassert canonical(readonly['cold']['state'])==canonical(initial) and readonly['repeated_decision']==comparison['MARK_decision']\nassert policy(readonly['cold'],mark)==mark_policy\nretie=by[added[4]];fill=retie['fill'];changed=retie['changed'];classified=retie['classified']\nassert retie['next_decision']=={'kind':'BRANCH','row':6} and retie['restored_decision']==comparison['MARK_decision']\nassert fill['placement_key']['translation']==[0,3] and fill['placement_key']['type_preimage']['primitive_witness']['rule']=='generalize'\nassert fill['placement_key']['type_preimage']['ordered_offsets']==[-2]\nassert canonical(fill['placement_key']['type_preimage']['ordered_premise_formulas'])==canonical([formula])\nassert canonical(changed['state']['selected'])==canonical(initial['selected']+[fill['selection_record']])\nassert canonical(classified['state'])==canonical(changed['state']) and canonical(retie['restored'])==canonical(warm)\nassert dict((tuple(p),v) for p,v in changed['state']['t'])[(0,3)]==1 and dict((tuple(p),v) for p,v in changed['state']['t'])[(0,6)]==0\nassert policy(changed,mark)==policy(classified,mark)==mark_policy\nobserved_priority=by[added[5]]['decisions'];assert len(observed_priority)==2\nfor record,decision in zip(observed_priority,({'kind':'DEAD','row':2},{'kind':'FORCED','row':0})):\n assert {k:record['decision'][k] for k in ('kind','row')}==decision and canonical(record['before']['state'])==canonical(record['after']['state'])\n assert policy(record['before'],mark)==policy(record['after'],mark)==mark_policy\nactual_dead=dict(observed_priority[0]['after']['certificates']);actual_forced=dict(observed_priority[1]['after']['certificates'])\nassert actual_dead[0]['status']=='SINGLETON' and actual_dead[2]['status']=='ZERO' and actual_forced[0]['status']=='SINGLETON'\nassert canonical(observed_priority[1]['decision']['candidate'])==canonical(actual_forced[0]['sole_candidate'])\npolicy_evidence={'old17_checks_preserved':True,'new_policy_case_names':added,'default_ROW_and_MARK_saved_joined':True,'ROW_initial_row':0,'MARK_initial_row':3,'MARK_after_fill_row':6,'MARK_after_rollback_row':3,'fixed24_root_generations':0,'new_cases_are_separate':True,'synthetic_cases_nonlogical':True,'original_language_cases_not_a_search_trajectory':True,'whole_warm_snapshot_restored':True,'scientific_replay':False}\n\nresult_out={'schema':'ROOT-unit-row-global-engine-controls-disposition-v2-original23','plan':pp,'outputs':outputs,\n 'controls_accepted':True,'passed_cases':23,'skipped_cases':0,'complete_wire_verified':True,'native_resources_qualified':True,\n 'native_worker_lifetime_ns':terminal-start,'native_launch_to_postprobe_ns':probe-start,'aggregate_B_bytes':peak,'terminal_T_bytes':peak,\n 'complete_Date_seconds':date,'language_binding':body['language_binding'],'resource_rule':'single-owned-process-native-terminal-v1; B=T',\n 'scope':'Current original23 = seventeen preserved ROW controls plus six separately counted marking-aware BRANCH tie control",
+      "before": "ration",
+      "new_offset": 13937,
+      "old_offset": 9430
+    },
+    {
+      "after": "Literal full snapshots/current receipts/native wire only, no model/de",
+      "before": "No tar",
+      "new_offset": 17046,
+      "old_offset": 9439
+    },
+    {
+      "after": "ree/word replay, target result or full",
+      "before": "et",
+      "new_offset": 17116,
+      "old_offset": 9446
+    },
+    {
+      "after": "trajectory",
+      "before": "in this endpoint",
+      "new_offset": 17162,
+      "old_offset": 9456
+    },
+    {
+      "after": "policy_evidence']=policy_evidence\nresult_out['original_case_count']=17;result_out['new_policy_case_count']=6\nresult_out['author_identity']='/root/arithmetic_induction'\nresult_out['author_overlap']='Author owns inherited engine8/adviser/c354/transition and earlier saved closers, not engine9/originalcontrols2/Rootcaller17; no independent semantic replay or own scientific acceptance.'\nresult_out['",
+      "before": "",
+      "new_offset": 17870,
+      "old_offset": 10170
+    }
+  ],
+  "parent": {
+    "bytes": 10571,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+    "sha256": "e88013350375f2fed9e1d217c619b01e653f1ef9b2c971be3151f2e8aebce39d"
+  },
+  "schema": "ROOT-original23-closer-byte-delta-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 18668,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT_close_original_controls_saved_v2.py",
+    "sha256": "40c6d6d79b5ff09316f1a5a59d06d685af5c6e2ffa62ad212c72c173d2db10ff"
+  },
+  "source_only": true,
+  "whole_forward_inverse_exact": true
+}

@@ -1,0 +1,158 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py
+@@ -1,4 +1,4 @@
+-"""SOURCE ONLY original unit-row engine, named EARLIEST-GENERATION-ROW-TIE.
++"""SOURCE ONLY unit-row engine, explicit owned earliest-generation BRANCH tie.
+ 
+ No project imports or clocks. Optional post-BRANCH goal-ordering preferences.
+ Caller authenticates language, current semantics,
+@@ -7,8 +7,10 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v8-compatible-fibres-versions'
++VERSION = 'lazy-unit-row-global-engine-v9-marking-aware-branch-tie'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'
++MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION'
++BRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+ FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+ TRANSITION_VERSION = 'unit-row-domain-transition-checker-v1'
+@@ -46,13 +48,21 @@
+     return json.loads(canonical(value))
+ 
+ 
+-def select_schedule(*, evidence, generations, tick):
+-    """Pure scheduler kernel; varied-generation controls are NONLOGICAL only."""
++def select_schedule(*, evidence, generations, tick, branch_tie='ROW',
++                    assigned_output_rows=None):
++    """Only BRANCH ties use marks; varied-generation controls are NONLOGICAL."""
+     tick()
++    need(type(branch_tie) is str and branch_tie in BRANCH_TIES, 'named branch tie')
+     need(type(evidence) is dict and type(generations) is dict
+          and set(evidence) == set(generations), 'entire frontier evidence/generations')
+     need(all(type(r) is int and type(generations[r]) is int and generations[r] >= 0
+              for r in evidence), 'literal row/generation')
++    assigned_output_rows = [] if assigned_output_rows is None else assigned_output_rows
++    need(type(assigned_output_rows) is list
++         and all(type(r) is int and r in evidence for r in assigned_output_rows)
++         and len(assigned_output_rows) == len(set(assigned_output_rows)),
++         'literal distinct assigned-output frontier rows')
++    assigned = set(assigned_output_rows)
+     allowed = ('ZERO', 'SINGLETON', 'MANY', 'TWO_OR_MORE', 'UNKNOWN')
+     need(all(type(v) is dict and v.get('status') in allowed for v in evidence.values()),
+          'checked or explicitly unresolved local status')
+@@ -65,8 +75,12 @@
+     if unknown:
+         return {'kind': 'UNKNOWN', 'row': None, 'unresolved_rows': unknown}
+     forced = [r for r in evidence if evidence[r]['status'] == 'SINGLETON']
+-    row = min(forced if forced else evidence, key=lambda r: (generations[r], r))
+-    return {'kind': 'FORCED' if forced else 'BRANCH', 'row': row}
++    if forced:
++        return {'kind': 'FORCED',
++                'row': min(forced, key=lambda r: (generations[r], r))}
++    row = min(evidence, key=lambda r: (generations[r],
++        0 if branch_tie == 'ASSIGNED-OUTPUT-THEN-ROW' and r in assigned else 1, r))
++    return {'kind': 'BRANCH', 'row': row}
+ 
+ 
+ def certify_by_current_cover(*, language, state, row, completion,
+@@ -101,8 +115,10 @@
+     def __init__(self, *, language, degree_proposer, semantics, fallback,
+                  certify_fallback, transition_checker, tick, initial_state=None,
+                  maximum_nodes=128, maximum_events=2000,
+-                 branch_adviser=None, validate_advice=None):
++                 branch_adviser=None, validate_advice=None, branch_tie='ROW'):
+         tick()
++        need(type(branch_tie) is str and branch_tie in BRANCH_TIES, 'named branch tie')
++        self._branch_tie = branch_tie
+         need(semantics.VERSION == SEMANTICS_VERSION, 'selected independent semantics API')
+         need(type(maximum_nodes) is int and 0 < maximum_nodes <= 128
+              and type(maximum_events) is int and 0 < maximum_events <= 2000,
+@@ -119,6 +135,8 @@
+         self.transition_checker = transition_checker
+         self._authority = canonical(transition_checker.authority_snapshot(
+             language=language, semantics=semantics, tick=tick))
++        self._scheduler_policy = canonical({'schema': 'unit-row-owned-branch-tie-policy-v1',
++            'branch_tie': branch_tie, 'original_authority': self._authority})
+         self._last_transition = None
+         self.maximum_nodes, self.maximum_events = maximum_nodes, maximum_events
+         self.events = []
+@@ -144,6 +162,17 @@
+         self._live = {}
+         self._refs = self._reference_counts(self._state)
+ 
++    @property
++    def branch_tie(self):
++        """Fixed per engine; checkpoint rollback never selects another policy."""
++        return self._branch_tie
++
++    def _policy_snapshot(self):
++        return {'schema': 'unit-row-owned-branch-tie-policy-v1',
++            'branch_tie': self.branch_tie,
++            'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),
++            'policy_sha256': hashlib.sha256(self._scheduler_policy.encode('utf8')).hexdigest()}
++
+     def _copy(self, value):
+         return self.semantics.tree(value, self.tick)
+ 
+@@ -176,6 +205,7 @@
+             'reverse_dependencies': [[list(p), sorted(keys)] for p, keys in sorted(self._reverse.items())],
+             'last_transition': self._last_transition,
+             'pending_preferences': self._preferences,
++            'scheduler_policy': self._policy_snapshot(),
+             'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),
+             'implicit_dependencies': {'scope': 'ALL_POSSIBLE_UNIT_ROW_SUPPORT_PLUS_COLLISION_LEDGER',
+                 'rows': [{'row': r, 'positive': [0, r], 'output': [1, r],
+@@ -204,6 +234,11 @@
+         self._live = {}  # Lazily reopen and verify the saved full prefix on use.
+ 
+     def _check_authority(self):
++        need(type(self._branch_tie) is str and self._branch_tie in BRANCH_TIES
++             and self._scheduler_policy == canonical({
++                 'schema': 'unit-row-owned-branch-tie-policy-v1',
++                 'branch_tie': self._branch_tie, 'original_authority': self._authority}),
++             'immutable owned branch policy and original authority binding')
+         need(canonical(self.transition_checker.authority_snapshot(
+             language=self.language, semantics=self.semantics, tick=self.tick)) == self._authority,
+             'immutable original authority; no cache reuse across authority changes')
+@@ -604,7 +639,7 @@
+             if receipt['status'] == 'ZERO':
+                 self._certs = certificates
+                 result = {'kind': 'DEAD', 'row': row}
+-                self._emit('DECISION', decision=result,
++                self._emit('DECISION', decision=result, branch_tie=self.branch_tie,
+                            statuses=[[r, v['status']] for r, v in certificates.items()],
+                            evidence=[[r, v] for r, v in certificates.items()])
+                 return result
+@@ -614,12 +649,16 @@
+                 if certificates[row]['status'] == 'ZERO':
+                     break
+         self._certs = certificates
++        # Mark presence is an obligation, never an occupied/proved output.
++        assigned = [r for r in frontier
++                    if (1, r) in marks and marks[(1, r)][0] == 'formula']
+         result = select_schedule(evidence=certificates,
+-            generations={r: 0 for r in frontier}, tick=self.tick)
++            generations={r: 0 for r in frontier}, tick=self.tick,
++            branch_tie=self.branch_tie, assigned_output_rows=assigned)
+         if result['kind'] == 'FORCED':
+             result['candidate'] = self._copy(certificates[result['row']]['sole_candidate'])
+-        self._emit('DECISION', decision=result,
+-                   statuses=[[r, v['status']] for r, v in certificates.items()],
++        self._emit('DECISION', decision=result, branch_tie=self.branch_tie,
++                   assigned_output_rows=assigned, statuses=[[r, v['status']] for r, v in certificates.items()],
+                    evidence=[[r, v] for r, v in certificates.items()])
+         return result
+ 
+@@ -894,7 +933,9 @@
+         if status != 'UNKNOWN':
+             self.tick()
+         return {'schema': 'unit-row-lazy-global-search-result-v1', 'version': VERSION,
+-            'variant': VARIANT, 'status': status, 'reason': reason,
++            'variant': VARIANT if self.branch_tie == 'ROW' else MARK_VARIANT,
++            'scheduler_policy': self._policy_snapshot(),
++            'status': status, 'reason': reason,
+             'branch_advice_enabled': self.branch_adviser is not None,
+             'input_epoch': self._state['input_epoch'], 'root_restored': True,
+             'stack_restored': True, 'last_observed_state': last_state,

@@ -1,0 +1,187 @@
+--- lazy_engine_adversarial_controls_v1.py
++++ marking_aware_adversarial_controls_v2.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-lazy-global-adversarial-controls-v1'
++VERSION = 'unit-row-marking-aware-adversarial-controls-v2'
+ 
+ class Unavailable(Exception):
+   pass
+@@ -97,7 +97,7 @@
+     return self.real.abort()
+ 
+ 
+-def run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick):
++def _run_original_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick):
+   """No automatic target search; one explicitly incomplete bounded search seam."""
+   cases=[];outside=language.OutsideLanguage
+   local='Original-language unit placements/pending obligations; no logical proof.'
+@@ -346,3 +346,166 @@
+     'complete_candidate_graph_accepted':False,'scheduler_or_rollback_accepted':False,
+     'logical_proof_accepted':False,'exact_point_board_accepted':False,'GCTS_advantage_accepted':False,
+     'trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}
++
++
++def run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick):
++  """Original seventeen ROW controls plus six separately counted policy controls.
++
++  No target discovery call is added. All original-language decisions retain the
++  complete current degree/fallback/independent-checker path. Pure kernel inputs
++  below are explicitly NONLOGICAL, not substituted live certificates.
++  """
++  result=_run_original_controls(language=language,engine_factory=engine_factory,
++    degree_proposer=degree_proposer,fallback=fallback,certify_fallback=certify_fallback,
++    scheduler=scheduler,tick=tick)
++  cases=result['cases'];need(len(cases)==17,'all original seventeen cases retained')
++  original_names=[c['case'] for c in cases]
++  policy='ASSIGNED-OUTPUT-THEN-ROW'
++  new_names=('mark-tie-synthetic-generation-and-row',
++    'mark-tie-synthetic-global-priority',
++    'mark-tie-original-ROW-versus-assigned-output-BRANCH',
++    'mark-tie-original-readonly-decision-and-checkpoint',
++    'mark-tie-original-occupied-output-retie-and-rollback',
++    'mark-tie-original-global-DEAD-and-FORCED')
++  local='Original AX/UG unit placements and pending formula constraints; no logical proof or target trajectory.'
++  abstract='NONLOGICAL pure scheduler inputs; no production generations/certificates are replaced.'
++  def passed(name,observed,scope=local):
++    tick();cases.append({'case':name,'status':'PASSED','observed':copy.deepcopy(observed),'scope':scope})
++  def skipped(name,reason):
++    tick();cases.append({'case':name,'status':'SKIPPED','observed':{'reason':reason},
++      'scope':'Definite original fixture ineligibility; new policy coverage gap retained.'})
++  def make(s,branch_tie):
++    return engine_factory(initial_state=copy.deepcopy(s),degree_proposer=degree_proposer,
++      fallback=fallback,certify_fallback=certify_fallback,tick=tick,branch_tie=branch_tie)
++  def snap(e):
++    value=e.state_snapshot()
++    need(value['state']['generation']==[[[0,r],0] for r in range(24)],'original roots remain generation zero')
++    return value
++  def same(a,b,reason):
++    need(canonical(a)==canonical(b),reason)
++  def logical_same(before,after):
++    same(before['state'],after['state'],'decision is logically read-only, not a placement')
++  def schedule(evidence,generations,assigned):
++    return scheduler(evidence=copy.deepcopy(evidence),generations=copy.deepcopy(generations),
++      branch_tie=policy,assigned_output_rows=copy.deepcopy(assigned),tick=tick)
++
++  evidence={0:{'status':'MANY','degree_exact':10},1:{'status':'MANY','degree_exact':2},
++    2:{'status':'TWO_OR_MORE','degree_exact':None}}
++  early=schedule(evidence,{0:0,1:1,2:1},[1,2])
++  marked=schedule(evidence,{0:0,1:0,2:0},[2])
++  tied=schedule(evidence,{0:0,1:0,2:0},[1,2])
++  absent=schedule(evidence,{0:0,1:0,2:0},[])
++  need(early=={'kind':'BRANCH','row':0},'assigned later generation cannot outrank earliest absent')
++  need(marked=={'kind':'BRANCH','row':2},'assigned output wins only within earliest generation')
++  need(tied=={'kind':'BRANCH','row':1} and absent=={'kind':'BRANCH','row':0},
++    'literal row resolves assigned/absent class ties, not minimum degree')
++  passed(new_names[0],{'abstract_evidence':evidence,'earlier_generation':early,
++    'assigned_same_generation':marked,'two_assigned':tied,'all_absent':absent},abstract)
++  dead=schedule({0:{'status':'SINGLETON'},1:{'status':'ZERO'}},{0:0,1:9},[0])
++  forced=schedule({0:{'status':'MANY'},1:{'status':'SINGLETON'}},{0:0,1:9},[0])
++  unresolved=schedule({0:{'status':'SINGLETON'},1:{'status':'UNKNOWN'}},{0:0,1:9},[0])
++  need(dead=={'kind':'DEAD','row':1},'global dead before marked forced')
++  need(forced=={'kind':'FORCED','row':1},'global forced before earlier marked branch')
++  need(unresolved=={'kind':'UNKNOWN','row':None,'unresolved_rows':[1]},'unknown does not become forced')
++  passed(new_names[1],{'dead':dead,'forced':forced,'unresolved':unresolved},abstract)
++
++  outside=language.OutsideLanguage
++  def prepared(fn,*args):
++    try:return fn(*args)
++    except outside as error:
++      if type(error) is not outside:raise
++      raise Unavailable('Original fixture membership exclusion: '+str(error))
++  names=sorted(language.theory['axioms'])
++  variables=[v for v in language.parameters if v not in language.forbidden]
++  try:
++    if len(names)<2 or not variables:
++      raise Unavailable('Need two original named AX witnesses and an eligible original parameter.')
++    v=variables[0];a=copy.deepcopy(language.theory['axioms'][names[0]])
++    d=['all',v,copy.deepcopy(a)]
++    # Rows 0 and 5 stay absent. Distinct original AX occurrences at 1 and 2
++    # give actual UG alternatives for the pending outputs at rows 3 and 6.
++    seed=[prepared(tile,language,{'rule':'axiom','name':names[0],'formula':copy.deepcopy(a)},[],[],r,tick)
++      for r in (1,2)]
++    seed.extend([prepared(ug,language,d,v,3,4,tick),prepared(ug,language,d,v,6,7,tick)])
++    initial=state(language,seed,tick)
++    row_engine=make(initial,'ROW');row_before=snap(row_engine)
++    row_decision=row_engine.decision();row_after=snap(row_engine)
++    logical_same(row_before,row_after)
++    need(row_decision=={'kind':'BRANCH','row':0},'actual original ROW baseline selects unmarked row zero')
++    e=make(initial,policy);cold=snap(e);outer=e.checkpoint()
++    try:
++      mark_decision=e.decision();warm=snap(e)
++      logical_same(cold,warm)
++      need(mark_decision=={'kind':'BRANCH','row':3},'actual current global MARK branch selects first assigned output')
++      marks={tuple(p):value for p,value in warm['state']['m']}
++      need((1,0) not in marks and marks[(1,3)]==['formula',canonical(d)]
++        and marks[(1,6)]==['formula',canonical(d)],'genuine absent-versus-assigned formula distinction')
++      certificates=dict(warm['certificates'])
++      need(certificates[0]['status'] in ('MANY','TWO_OR_MORE')
++        and certificates[3]['status'] in ('MANY','TWO_OR_MORE')
++        and certificates[6]['status'] in ('MANY','TWO_OR_MORE'),
++        'real independently checked local lower bounds, no fabricated degree')
++      passed(new_names[2],{'seed':seed,'initial_state':initial,'ROW_decision':row_decision,
++        'ROW_snapshot':row_after,'MARK_decision':mark_decision,'MARK_snapshot':warm})
++      inner=e.checkpoint()
++      try:
++        again=e.decision();again_snapshot=snap(e)
++        need(again==mark_decision,'same current decision on repeated read')
++        same(again_snapshot,warm,'warm full logical/cache snapshot unchanged by repeated classification')
++      finally:
++        e.rollback(inner)
++      same(snap(e),warm,'owned warm checkpoint exact cache/context/receipt restoration')
++      passed(new_names[3],{'cold':cold,'warm':warm,'repeated_decision':again,
++        'repeated_snapshot':again_snapshot,'restored_warm':snap(e)},
++        local+' Decision may populate caches/counters/events; the logical state is read-only and public snapshot excludes cumulative diagnostics.')
++      token=e.checkpoint()
++      fill=obligations(prepared(ug,language,a,v,1,3,tick),warm['state'])
++      try:
++        e.place(fill);changed=snap(e);next_decision=e.decision();classified=snap(e)
++        need(next_decision=={'kind':'BRANCH','row':6},'occupied assigned row removed, next assigned output selected')
++        logical_same(changed,classified)
++      finally:
++        e.rollback(token)
++      restored=snap(e);same(restored,warm,'whole warm snapshot restored after legal fill')
++      final_decision=e.decision();same(snap(e),warm,'rollback continuation keeps exact current classification cache')
++      need(final_decision==mark_decision,'restored assigned output wins again')
++      passed(new_names[4],{'fill':fill,'changed':changed,'next_decision':next_decision,
++        'classified':classified,'restored':restored,'restored_decision':final_decision},
++        local+' Policy-independent public place transaction, not a claimed scheduled search trajectory.')
++    finally:
++      e.rollback(outer)
++    same(snap(e),cold,'owned cold checkpoint restores whole initial snapshot after all decision work')
++  except Unavailable as error:
++    for name in new_names[2:5]:
++      if not any(c['case']==name for c in cases):skipped(name,str(error))
++
++  try:
++    if not names or not variables:raise Unavailable('Need original AX and eligible original parameter.')
++    v=variables[0];a=copy.deepcopy(language.theory['axioms'][names[0]])
++    roots=list(language.theory['axioms'].values())+list(language.gamma)
++    if sum(f==a for f in roots)!=1 or any(f==['bot'] for f in roots):
++      raise Unavailable('Need one exact original AX/Gamma occurrence and no bottom root.')
++    forced_state=state(language,[prepared(ug,language,a,v,0,1,tick)],tick)
++    dead_state=state(language,[prepared(ug,language,a,v,0,1,tick),prepared(ug,language,['bot'],v,2,4,tick)],tick)
++    observed=[]
++    for s,kind,row in ((dead_state,'DEAD',2),(forced_state,'FORCED',0)):
++      e=make(s,policy);before=snap(e);token=e.checkpoint()
++      try:
++        decision=e.decision();after=snap(e)
++        need(decision['kind']==kind and decision['row']==row,'actual MARK global dead/forced priority')
++        logical_same(before,after)
++        observed.append({'before':before,'decision':decision,'after':after})
++      finally:
++        e.rollback(token)
++      same(snap(e),before,'priority decision owned checkpoint restores full snapshot')
++    passed(new_names[5],{'decisions':observed})
++  except Unavailable as error:
++    skipped(new_names[5],str(error))
++  need([c['case'] for c in cases[:17]]==original_names,'original case meanings/order retained')
++  need(len(cases)==23 and {c['case'] for c in cases[17:]}==set(new_names),'separate six controls, no relabeled pass')
++  need(len({c['case'] for c in cases})==23,'unique prospective case names')
++  result.update(version=VERSION,variant='ROW-BASELINE-AND-ASSIGNED-OUTPUT-BRANCH-TIE-CONTROLS',
++    original_case_count=17,new_policy_case_count=6,prospective_case_count=23,
++    scope='Seventeen unchanged ROW controls plus six separately counted marking-aware policy controls; no target result.')
++  tick()
++  return result

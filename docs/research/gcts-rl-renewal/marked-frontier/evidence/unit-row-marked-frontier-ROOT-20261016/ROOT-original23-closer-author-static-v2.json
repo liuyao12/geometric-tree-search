@@ -1,0 +1,72 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "native-wire-prefix-whole-raw-exact",
+      "passed": true
+    },
+    {
+      "check": "all-original17-literal-check-body-raw-exact",
+      "passed": true
+    },
+    {
+      "check": "original17-names-and-order-preserved",
+      "passed": true
+    },
+    {
+      "check": "original17-prefix-and-all23-order-exact",
+      "passed": true
+    },
+    {
+      "check": "all23PASS-no-SKIP-required",
+      "passed": true
+    },
+    {
+      "check": "new6-declared-current-contract-not-invented",
+      "passed": true
+    },
+    {
+      "check": "separate-source17-input2-maps",
+      "passed": true
+    },
+    {
+      "check": "policy-not-mathematical-state",
+      "passed": true
+    },
+    {
+      "check": "literal-policy-new6-observations",
+      "passed": true
+    },
+    {
+      "check": "forced-candidate-joins-full-receipt",
+      "passed": true
+    },
+    {
+      "check": "stdlib-only-and-no-exec",
+      "passed": true
+    },
+    {
+      "check": "no-C0-controls",
+      "passed": true
+    },
+    {
+      "check": "complete-byte-forward-inverse",
+      "passed": true
+    }
+  ],
+  "current_source": {
+    "bytes": 18668,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT_close_original_controls_saved_v2.py",
+    "sha256": "40c6d6d79b5ff09316f1a5a59d06d685af5c6e2ffa62ad212c72c173d2db10ff"
+  },
+  "helper_executed": false,
+  "parent_source": {
+    "bytes": 10571,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_original_controls_saved_v1.py",
+    "sha256": "e88013350375f2fed9e1d217c619b01e653f1ef9b2c971be3151f2e8aebce39d"
+  },
+  "schema": "ROOT-original23-closer-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

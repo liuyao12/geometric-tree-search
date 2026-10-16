@@ -1,0 +1,86 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_marking_activated": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 65011712,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author owns inherited engine8/adviser/c354/transition and earlier saved closers, not engine9/originalcontrols2/Rootcaller17; no independent semantic replay or own scientific acceptance.",
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 10.121,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "Current sufficient retention with conservative global-ledger invalidation, no full reference conformance.",
+    "General all-six independent EOF/exhaustion certifier absent.",
+    "Specialized24unit rows only."
+  ],
+  "controls_accepted": true,
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1493,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-original-controls-transport-concordance-v1.json",
+    "sha256": "85469934e2f01c0865d585b1d773b9ed5b93c0637f752a723bf71663653ecb5f"
+  },
+  "native_launch_to_postprobe_ns": 9946475000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 9890356000,
+  "new_policy_case_count": 6,
+  "old_UNKNOWNs_and_finite_negative_preserved": true,
+  "original_case_count": 17,
+  "outputs": [
+    {
+      "bytes": 210531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "sha256": "f6e6b14eae3d98cbe0ee827be63643f2cbba6eea7a7cfa63944a2478cc7efb89"
+    },
+    {
+      "bytes": 7029,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/original-controls-owned-v1/response.jsonl",
+      "sha256": "f8582f5888398d1cb99b788fed9d3f7d128be79e3a3f91c3b888487b208742cf"
+    }
+  ],
+  "passed_cases": 23,
+  "plan": {
+    "bytes": 7930,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+    "sha256": "3dd3cefa43751d102bfbe8e9b1b0875cc2ab5276a409d8a30a720c38aec9e4fb"
+  },
+  "policy_evidence": {
+    "MARK_after_fill_row": 6,
+    "MARK_after_rollback_row": 3,
+    "MARK_initial_row": 3,
+    "ROW_initial_row": 0,
+    "default_ROW_and_MARK_saved_joined": true,
+    "fixed24_root_generations": 0,
+    "new_cases_are_separate": true,
+    "new_policy_case_names": [
+      "mark-tie-synthetic-generation-and-row",
+      "mark-tie-synthetic-global-priority",
+      "mark-tie-original-ROW-versus-assigned-output-BRANCH",
+      "mark-tie-original-readonly-decision-and-checkpoint",
+      "mark-tie-original-occupied-output-retie-and-rollback",
+      "mark-tie-original-global-DEAD-and-FORCED"
+    ],
+    "old17_checks_preserved": true,
+    "original_language_cases_not_a_search_trajectory": true,
+    "scientific_replay": false,
+    "synthetic_cases_nonlogical": true,
+    "whole_warm_snapshot_restored": true
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved raw bytes, complete receipts/wire/native/caller metadata only; no Source/kernel/checker/model/word/degree replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-unit-row-global-engine-controls-disposition-v2-original23",
+  "scope": "Current original23 = seventeen preserved ROW controls plus six separately counted marking-aware BRANCH tie controls. Literal full snapshots/current receipts/native wire only, no model/degree/word replay, target result or full search trajectory.",
+  "skipped_cases": 0,
+  "terminal_T_bytes": 65011712
+}

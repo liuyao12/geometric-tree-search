@@ -1,0 +1,169 @@
+{
+  "schema": "unit-row-marking-aware-adversarial-controls-Source-contract-v2",
+  "scope": "unit-row-marking-aware-adversarial-controls-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+    "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+    "bytes": 31931
+  },
+  "parent_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+    "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7",
+    "bytes": 21896
+  },
+  "parent_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "d18049198f584f08b6ce350c03ddac9a6ec39694e66742c10d203b7c2a0ee869",
+    "bytes": 13405
+  },
+  "authorship": "This agent authored parent17 controls, earlier consumer/horizon/checker/codec/family dependencies and this controls successor, not engine9, current c960/c354, fallback or transition. This authored Source is not independent semantic or runtime validation.",
+  "API": {
+    "entry": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick)",
+    "engine_factory": "Original keyword-only callable plus optional branch_tie default ROW. Inject fresh authenticated original language/current semantics/transition. New tests explicitly pass ASSIGNED-OUTPUT-THEN-ROW; all original17 calls omit policy and keep ROW. No private mutation hooks.",
+    "scheduler": "select_schedule(*,evidence,generations,tick,branch_tie=ROW,assigned_output_rows=None). Explicit assigned rows are list[int], unique frontier subset. Only abstract NONLOGICAL tests supply them. Original two kernel cases remain default ROW.",
+    "other_endpoints": "Unchanged parent7-keyword callable authority, degree proposer, fallback, current cover certifier and native/injected tick semantics. Endpoint exceptions/resources propagate. Only exact original fixture OutsideLanguage caught narrowly at prepared constructor calls becomes SKIPPED."
+  },
+  "preservation": {
+    "original_case_count": 17,
+    "method": "Entire original module prefix identical after only VERSION restoration and private entry name restoration; all original cases remain first17 in original order with no new runtime pass inferred. Original one intentionally incomplete search seam remains the only search() call.",
+    "unchanged_regions": [
+      "Unavailable",
+      "CallbackExhausted",
+      "need",
+      "canonical",
+      "digest",
+      "tile",
+      "state",
+      "ug",
+      "obligations",
+      "InterruptedCursor",
+      "run_controls"
+    ],
+    "raw_inverse": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/Source-delta-v2.json",
+      "sha256": "b9496bc038f460529f63eccedfa74b8fd8174ba6fa7ca7117e0ddabef8f4de0c",
+      "bytes": 12593
+    },
+    "static_evidence": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/author-static-evidence-v2.json",
+      "sha256": "34759ed74834a6ddd154fa47b9c6c872f9c686612da769f6a2babb4cc52f36b6",
+      "bytes": 2276
+    }
+  },
+  "additional_cases": [
+    {
+      "case": "mark-tie-synthetic-generation-and-row",
+      "scope": "NONLOGICAL",
+      "requirement": "Earlier absent generation outranks later assigned; assigned wins same generation; assigned class/absent class row ties, not min candidate count."
+    },
+    {
+      "case": "mark-tie-synthetic-global-priority",
+      "scope": "NONLOGICAL",
+      "requirement": "Global ZERO before marked singleton; later singleton before earlier marked branch; UNKNOWN blocks unsafe forced classification."
+    },
+    {
+      "case": "mark-tie-original-ROW-versus-assigned-output-BRANCH",
+      "scope": "ORIGINAL_LANGUAGE",
+      "requirement": "Actual current independent global decisions on legal named AX duplicate1,2 plus UG4(read3) and UG7(read6). Row0 is absent; pending rows3/6 have literal all(v,AX) output constraints and genuine >=2 legal UG alternatives. Default ROW chooses0; MARK chooses3. Full state/receipts retained; hypothetical argument alone never passes."
+    },
+    {
+      "case": "mark-tie-original-readonly-decision-and-checkpoint",
+      "scope": "ORIGINAL_LANGUAGE",
+      "requirement": "Decision never changes logical state. First decision may populate caches/observations; repeated warm decision retains entire public logical/cache snapshot. Warm and cold owned checkpoint/finally restoration asserted exactly. Cumulative counts/events are deliberately outside public state_snapshot and not claimed read-only."
+    },
+    {
+      "case": "mark-tie-original-occupied-output-retie-and-rollback",
+      "scope": "ORIGINAL_LANGUAGE",
+      "requirement": "Public lawful UG at3 consumes AX1, filling first assigned output. Actual subsequent MARK decision chooses6; full warm snapshot restored, repeated decision chooses3 again. Policy-independent transaction mechanics, not a search trajectory."
+    },
+    {
+      "case": "mark-tie-original-global-DEAD-and-FORCED",
+      "scope": "ORIGINAL_LANGUAGE",
+      "requirement": "Fresh actual MARK decisions on original AX/UG fixtures: pending singleton row0 versus later exact bottom ZERO2 must DEAD2; singleton0 otherwise FORCED0. Full snapshots and owned rollback; unique original AX/Gamma occurrence/no bottom root checked from input."
+    }
+  ],
+  "model": "Same authenticated original declaration/profile/theory/parameters/Gamma/target, all six bounded rules, complete fixed outside target and original24 roots0. No proof word, route, donor, library, new marking, trimmed universe or supplied degree/EOF. Pending formula values do not become facts.",
+  "result": {
+    "schema": "unit-row-lazy-global-controls-v1",
+    "version": "unit-row-marking-aware-adversarial-controls-v2",
+    "prospective_case_count": 23,
+    "original_case_count": 17,
+    "new_policy_case_count": 6,
+    "fields": "Existing all_declared_cases_completed/cases entries PASSED|SKIPPED/observed/scope and eight strong false flags retained; adds explicit group counts.",
+    "false_flags": [
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "exact_point_board_accepted",
+      "GCTS_advantage_accepted",
+      "trajectory_accepted",
+      "RL_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "qualification": "Every declared case must actually pass under current Source/budgets. Any essential SKIP is a gap; all_declared_cases_completed means reporting completed, not all passed. Assertion or unexpected callback/authority/resource failure raises, not a successful record."
+  },
+  "limits": "Original native20s/512MiB/failure55s/owned60s/caller90+1, engine128nodes/2000events unchanged. Root owns separate fresh plans/grants/actuals. No fit prediction or inherited current43 MARK qualification.",
+  "remaining_gaps": [
+    "Distinct whole controls review and Source-bound caller integration still required.",
+    "Actual23 controls and resource/output closure remain unmeasured.",
+    "No full general GCTS graph/reference trajectory, arbitrary all-six independent EOF, fractional/shared positive support/general-growth qualification.",
+    "No target success, speedup, learned marking or RL claim."
+  ],
+  "dependencies": {
+    "engine": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "bytes": 55152
+    },
+    "degree_proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030
+    },
+    "degree_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "fallback": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "bytes": 24227
+    },
+    "transition": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "bytes": 8134
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "Review_ABI": {
+    "schema": "unit-row-marking-aware-adversarial-controls-typed-Source-review-v2",
+    "scope": "unit-row-marking-aware-adversarial-controls-Source",
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "Distinct reviewer, not author.",
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+      "bytes": 31931
+    },
+    "source_contract": "Exact raw selected contract capsule; no self-hash.",
+    "source_only": true,
+    "source_review_passed": "Reviewer decides genuinely.",
+    "scientific_calls": 0,
+    "scientific_acceptance": false
+  }
+}
