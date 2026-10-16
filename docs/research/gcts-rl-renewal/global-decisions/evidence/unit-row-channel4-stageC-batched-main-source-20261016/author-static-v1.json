@@ -1,0 +1,170 @@
+{
+  "all17_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "all_other_parent_main_nested_raw_AST_exact": [
+    "archived",
+    "ax",
+    "boundary",
+    "call",
+    "candidate",
+    "cert",
+    "checked_query",
+    "core",
+    "dead_and_zero_transfer",
+    "exact_restore",
+    "fresh_language",
+    "full_transfer",
+    "guard",
+    "make_stageC_engine",
+    "maps",
+    "marked_semantics",
+    "natural_unknown",
+    "new_log",
+    "nonlogical_scheduler",
+    "passed",
+    "place_base",
+    "root_state",
+    "rowproof",
+    "sha",
+    "slot",
+    "snapshot",
+    "state_from",
+    "tick",
+    "tile",
+    "ug"
+  ],
+  "check_count": 20,
+  "checks": [
+    {
+      "check": "parentaf02-current404f-rawpin-ASTcompile-only",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "all17-tophelpers-raw-ASTexact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "all20-StageB-inheritednestedhelpers-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "all-other-parent-mainnestedfunctions-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "wholeObservedCursor-andChildControlInterruption-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "wholeC5-C7body-only-seed-callreplacement",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "batchtile-AX-UG-AST-normalized-to-oldhelpers",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "samefive-seed-order-witnesses-premises-offsets-translation-ASTexact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "exactlyone-private-freshfixturelanguage",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "finallydeletes-fixturelanguage-before-return-to-state_from",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "no-parser-counter-or-deadline-write-reset",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "all-state_from-engine-candidate-coverage-proposer-interruption-helpers-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "sameSource11-input8-original17-input2-limits-allrawpins",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "onepurpose-threeessentialcases-no-otherdispatch",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "whole-native-guard-transport-output-failuretail-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "fullraw-forward-and-inverse",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "actual-unifiedpatches-bothdirections",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "samecontroller-all9false-originalv1suitefalse",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "noimports-evaluation-model-helper-science-clock-test-oractual",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    },
+    {
+      "check": "noC0-nativefitunmeasured",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only; no scientific/helper execution."
+    }
+  ],
+  "schema": "unit-row-channel4-stageC-batched-main-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 77932,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/channel4_stageC_batched_main_cold_v1.py",
+    "sha256": "404f81265bd2c25cee9609d6602eeef20d074c3bdfa88302cb20cff50f1f5623"
+  },
+  "source_delta": {
+    "bytes": 9134,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/Source-delta-v1.json",
+    "sha256": "34e985c577a86c2bf43f82595acb2a169eee7120e769eda9b5ea4291fa4e15dd"
+  },
+  "source_only": true
+}

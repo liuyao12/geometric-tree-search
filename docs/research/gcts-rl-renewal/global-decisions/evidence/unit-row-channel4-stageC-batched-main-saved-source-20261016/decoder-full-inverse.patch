@@ -1,0 +1,21 @@
+--- batched-main-saved/decoder.py
++++ StageC-saved/decoder.py
+@@ -35,13 +35,13 @@
+     p=Path(r['path']);raw=read_bounded(p,1048576)
+     need(buffer_pin(p,raw)==r,'same authenticated saved metadata buffer')
+     return raw
+-need(len(sys.argv)==2 and sys.argv[1] == 'stageC-batched-main','one saved StageC endpoint mode')
+-mode=sys.argv[1];plan_path=HERE/'ROOT-batched-main-plan-v1.json';plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)
+-need(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/Source-contract-v1.json', 'sha256': 'a433608ca59165c5d470513098fb383ebd4b8408d55a0dc98fa222f6fb45c257', 'bytes': 26891},'fixed reviewed current StageC Source contract')
++need(len(sys.argv)==2 and sys.argv[1] in ('stageC-dead-transfer','stageC-natural-unknown','stageC-forced-transfer-child','stageC-scheduler'),'one saved StageC endpoint mode')
++mode=sys.argv[1];plan_path=HERE/('ROOT-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)
++need(plan['source_contract']=={'path':'/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/Source-contract-v1.json','sha256':'b6e97354241cb1f367575080011136344fa93311d9a55b089794d1754fbdecba','bytes':26294},'fixed reviewed current StageC Source contract')
+ contract=decode(checked_raw(plan['source_contract']))
+-need(plan['schema']=='ROOT-channel4-stageC-batched-main-plan-v1' and plan['purpose']=='unit-row-channel4-'+mode+'-controls' and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current per-mode Source11/input8/purpose authority')
++need(plan['schema']=='ROOT-channel4-stageC-plan-v1' and plan['purpose']=='unit-row-channel4-'+mode+'-controls' and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current per-mode Source11/input8/purpose authority')
+ need(type(contract['API']['transport']) is str and bool(contract['API']['transport']),'pinned current transport contract; explicit caps enforced below')
+-p=HERE/'batched-main-owned-v1'/'engine-result.json';raw=read_bounded(p,ENCODED_CAP)
++p=HERE/(mode+'-owned-v1')/'engine-result.json';raw=read_bounded(p,ENCODED_CAP)
+ need(0<len(raw)<=ENCODED_CAP and raw.endswith(b'\n'),'whole bounded encoded file/LF')
+ env=decode(raw)
+ need(type(env) is dict and set(env)=={'schema','encoding','expanded_bytes','expanded_sha256','compressed_bytes','compressed_sha256','payload_base64'},'exact envelope7')

@@ -1,0 +1,25 @@
+{
+  "all_three_essential": true,
+  "endpoint": {
+    "external_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-ROOT-20261016/batched-main-external-v1",
+    "ordered_cases": [
+      "C5-genuine-all-frontier-FORCED-before-BRANCH",
+      "C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH",
+      "C7-actual-child-native-first-UNKNOWN-full-restoration"
+    ],
+    "plan": {
+      "bytes": 8026,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-ROOT-20261016/ROOT-batched-main-plan-v1.json",
+      "sha256": "898da494bbd07e045e4c44bab042ac6dbadd54b5f17f2651d051e61464909727"
+    }
+  },
+  "old_six_not_requalified": true,
+  "original_v1_suite_remains_incomplete": true,
+  "protocol_choice": {
+    "bytes": 3166,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-ROOT-20261016/ROOT-batched-main-choice-v1.json",
+    "sha256": "3a8b1c4bb473210300ffa859341e33cfd2f0bb80807ed4dd647e42f7b1b6b10c"
+  },
+  "schema": "ROOT-channel4-batched-main-preflight-v1",
+  "scientific_calls": 0
+}

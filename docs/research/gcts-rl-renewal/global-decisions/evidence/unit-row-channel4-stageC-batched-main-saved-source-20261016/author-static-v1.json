@@ -1,0 +1,112 @@
+{
+  "check_count": 17,
+  "checks": [
+    {
+      "check": "bothcurrentraw-and-ASTcompile-only",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "bothfullbyteforwardinverse",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "bothactualunifiedpatchforwardinverse",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "9decoderhelpers-rawASTexact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "21closerhelpers-rawASTexact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "wholepositive-native-wire-prefix-onlypathschange",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "wholeC5-C7-savedliteralbody-exact-after-dedent",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "solemode-mainonly3-noaggregate-no-other6-branches",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "fixed404f-a433-currentSource11-input8-original17-input2",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "mixedRootpaths-plan-dirs-vs-stageC-bracket-resultsexact",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "same4MiB16MiBcanonical-base64-zlib-hash-nativelimits",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "complete-receipt-transfer-chain-origins-archive-sole-occupancy-preserved",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "dedicated-actualchild-reason-TRY-PLACE-noEXCLUDE-restores-preserved",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "failure-only-noowned-originalTimeout-countsNone-qualified0-noinferredprogress",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "samecontrollerall9false-originalv1suitefalse-bothpaths",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "stdlibonly-nohelpers-outputdecode-model-science-orclocks-executed",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    },
+    {
+      "check": "noC0controls",
+      "passed": true,
+      "scope": "Raw bytes/AST/compile or manual Source reasoning only; no helper/scientific/output execution."
+    }
+  ],
+  "helpers_executed": false,
+  "schema": "unit-row-channel4-stageC-batched-main-saved-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 39514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "40b449135b0e20502c67f4d8fbf6f37ebe8b232a27007c8236379a4748b2b322"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 33971,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_close_stageC_batched_main_saved_v1.py",
+      "sha256": "05a8ff8645f5e32eee37cf4a11f8bca10ba28a63159398baf3e1715d94564df7"
+    },
+    "decoder": {
+      "bytes": 5830,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_decode_stageC_batched_main_saved_v1.py",
+      "sha256": "c48e87133ff88f9d6eaa416875300abdf86f73b1f2fa41bcdae7c6ae4bd1fc88"
+    }
+  }
+}

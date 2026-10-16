@@ -1,0 +1,253 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "edit_count": 26,
+  "edits": [
+    {
+      "new_end": 235,
+      "new_start": 0,
+      "new_utf8": "\"\"\"Untrusted marked-aware finite non-implication fibre evidence, Source only.\n\nNo project imports, clock, saved word, target route or checker delegation.\nCaller authenticates original language and injected marked semantics separately.\n",
+      "old_end": 157,
+      "old_start": 0,
+      "old_utf8": "\"\"\"SOURCE ONLY local degree proposals. Pending reads are obligations, not facts.\nWhole private state/language/tick are external; incomplete work propagates.\n"
+    },
+    {
+      "new_end": 661,
+      "new_start": 267,
+      "new_utf8": "VERSION = 'unit-row-marked-aware-nonimp-fibre-proposer-v1'\nSEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'\nSCOPE = 'Local marked-aware non-implication fibre evidence only; independent checking/global graph/fallback still required.'\nFLAGS = ('complete_candidate_graph_accepted', 'scheduler_or_rollback_accepted',\n         'logical_proof_accepted', 'ROOT_resource_accepted')\n",
+      "old_end": 358,
+      "old_start": 189,
+      "old_utf8": "VERSION = 'unit-row-implicit-degree-evidence-v3-missing-marks'\nPORTS = {'axiom': 0, 'assumption': 0, 'instantiate': 0,\n         'eq_subst': 0, 'generalize': 1, 'mp': 2}\n"
+    },
+    {
+      "new_end": 767,
+      "new_start": 663,
+      "new_utf8": "def need(value, reason):\n    if not value:\n        raise ValueError('marked-aware proposer: ' + reason)\n",
+      "old_end": 430,
+      "old_start": 360,
+      "old_utf8": "def need(ok, reason):\n    if not ok:\n        raise ValueError(reason)\n"
+    },
+    {
+      "new_end": 1010,
+      "new_start": 1010,
+      "new_utf8": "",
+      "old_end": 7289,
+      "old_start": 673,
+      "old_utf8": "\n\ndef clone(value, tick):\n    tick()\n    if type(value) in (str, int, bool) or value is None:\n        return value\n    if type(value) is list:\n        return [clone(x, tick) for x in value]\n    need(type(value) is dict and all(type(k) is str for k in value), 'builtin JSON tree only')\n    return {k: clone(v, tick) for k, v in value.items()}\n\n\ndef pairs(raw, tick):\n    need(type(raw) is list, 'complete point-value array')\n    result = {}\n    for entry in raw:\n        tick()\n        need(type(entry) is list and len(entry) == 2 and type(entry[0]) is list\n             and len(entry[0]) == 2 and all(type(x) is int for x in entry[0]), 'literal integer point')\n        point = tuple(entry[0])\n        need(point not in result, 'duplicate state point')\n        result[point] = entry[1]\n    return result\n\n\ndef merge(markings, point, value):\n    need(point not in markings or canonical(markings[point]) == canonical(value),\n         'incompatible internal or selected markings')\n    markings[point] = value\n\n\ndef prototype(language, witness, premises, offsets, row, tick):\n    \"\"\"Validate full primitive/ordered offsets and reconstruct unchanged point data.\"\"\"\n    tick()\n    need(type(row) is int and 0 <= row < 24 and type(offsets) is list\n         and all(type(d) is int and -23 <= d < 0 and 0 <= row+d < row for d in offsets),\n         'strict prior nonnegative absolute rows; negative offsets only')\n    member = language.primitive(witness, premises)\n    need(witness['rule'] in PORTS and len(offsets) == PORTS[witness['rule']] == len(premises),\n         'complete ordered physical ports')\n    preimage = {'input_epoch': language.binding['language_epoch'],\n                'primitive_witness': clone(witness, tick),\n                'ordered_premise_formulas': clone(premises, tick),\n                'ordered_offsets': list(offsets)}\n    key = {'tile_type_id': 'bounded-point-tile-'+digest(preimage),\n           'type_preimage': preimage, 'translation': [0, row]}\n    local = [[[1, 0], ['formula', canonical(witness['formula'])]]]\n    global_marks = [[[1, row], ['formula', canonical(witness['formula'])]]]\n    for port, (formula, delta) in enumerate(zip(premises, offsets)):\n        tick()\n        value = ['formula', canonical(formula)]\n        local.extend([[[1, delta], value], [[2+port, 0], ['offset', delta]]])\n        global_marks.extend([[[1, row+delta], clone(value, tick)],\n                             [[2+port, row], ['offset', delta]]])\n    internal = {}\n    for point, value in global_marks:\n        merge(internal, tuple(point), value)\n    return {'placement_key': key, 'selection_record': dict(key, generation=1),\n            'local_t_values': [[[0, 0], 1]], 'local_m_values': local,\n            'global_t_values': [[[0, row], 1]], 'global_m_values': global_marks,\n            'membership': member}\n\n\ndef validate_state(language, state, tick):\n    s = clone(state, tick)\n    need(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't', 'm',\n         'selected', 'excluded', 'generation'} and s['schema'] == 'unit-row-implicit-private-state-v1',\n         'whole private state fields')\n    epoch = language.binding['language_epoch']\n    need(type(s['input_epoch']) is str and s['input_epoch'] == epoch\n         and type(s['height']) is int and s['height'] == 24, 'current epoch/original height24')\n    totals, marks, generations = pairs(s['t'], tick), pairs(s['m'], tick), pairs(s['generation'], tick)\n    points = {(0, r) for r in range(24)}\n    need(set(totals) == set(generations) == points\n         and all(type(v) is int and v in (0, 1) for v in totals.values())\n         and all(type(v) is int and v == 0 for v in generations.values()),\n         'whole unit target/root generations; zero is assigned, not absent')\n    need(type(s['selected']) is list and type(s['excluded']) is list, 'whole placement/exclusion inventories')\n    rebuilt_t = {p: 0 for p in points}\n    rebuilt_m = {(1, y): ['outside', epoch] for y in range(-23, 0)}\n    rebuilt_m[(1, 23)] = ['formula', canonical(language.target)]\n    identities, excluded, prototypes = set(), set(), {}\n\n    def record(raw, selected):\n        tick()\n        fields = {'tile_type_id', 'type_preimage', 'translation'} | ({'generation'} if selected else set())\n        need(type(raw) is dict and set(raw) == fields, 'full placement preimage/translation fields')\n        if selected:\n            need(type(raw['generation']) is int and raw['generation'] == 1, 'selected tile generation from root0')\n        pre, transform = raw['type_preimage'], raw['translation']\n        need(type(pre) is dict and set(pre) == {'input_epoch', 'primitive_witness',\n             'ordered_premise_formulas', 'ordered_offsets'} and pre['input_epoch'] == epoch\n             and type(transform) is list and len(transform) == 2\n             and all(type(x) is int for x in transform) and transform[0] == 0,\n             'current prototype and integer translation')\n        tile = prototype(language, pre['primitive_witness'], pre['ordered_premise_formulas'],\n                         pre['ordered_offsets'], transform[1], tick)\n        expected = tile['selection_record'] if selected else tile['placement_key']\n        need(canonical(raw) == canonical(expected), 'exact full prototype identity, not digest-only')\n        name, value = raw['tile_type_id'], canonical(pre)\n        need(name not in prototypes or prototypes[name] == value, 'prototype digest/preimage collision')\n        prototypes[name] = value\n        return tile, canonical(tile['placement_key'])\n\n    for raw in s['selected']:\n        tile, key = record(raw, True)\n        need(key not in identities, 'selected shared key only once')\n        identities.add(key)\n        for point, weight in tile['global_t_values']:\n            p = tuple(point)\n            rebuilt_t[p] += weight\n            need(rebuilt_t[p] <= 1, 'selected support overfill')\n        for point, value in tile['global_m_values']:\n            merge(rebuilt_m, tuple(point), value)\n    for raw in s['excluded']:\n        tile, key = record(raw, False)\n        need(key not in excluded and key not in identities, 'unique branch exclusions disjoint from selected')\n        excluded.add(key)\n    need(canonical(sorted([[list(k), v] for k, v in totals.items()])) ==\n         canonical(sorted([[list(k), v] for k, v in rebuilt_t.items()])), 'whole selected t recomposition')\n    need(canonical(sorted([[list(k), v] for k, v in marks.items()])) ==\n         canonical(sorted([[list(k), v] for k, v in rebuilt_m.items()])), 'whole fixed-plus-selected m recomposition')\n    return s, totals, marks, identities, excluded, prototypes\n"
+    },
+    {
+      "new_end": 2065,
+      "new_start": 1966,
+      "new_utf8": "    need(type(maximum_nodes) is int and 0 <= maximum_nodes <= 44, 'whole formula size bound0..44')\n",
+      "old_end": 8344,
+      "old_start": 8245,
+      "old_utf8": "    need(type(maximum_nodes) is int and 1 <= maximum_nodes <= 44, 'whole formula size bound1..44')\n"
+    },
+    {
+      "new_end": 4900,
+      "new_start": 4759,
+      "new_utf8": "def propose_degree(*, language, semantics, state, row, tick):\n    \"\"\"Untrusted full non-implication fibres; count only marked-legal members.\n",
+      "old_end": 11167,
+      "old_start": 11038,
+      "old_utf8": "def propose_degree(*, language, state, row, tick):\n    \"\"\"Return two legal witnesses, an untrusted restricted cover, or UNKNOWN.\n"
+    },
+    {
+      "new_end": 5065,
+      "new_start": 4901,
+      "new_utf8": "    An owning budget/callback/authority error propagates. Complete degree claims\n    require a separately authored checker; a stream or transcript is no authority.\n",
+      "old_end": 11329,
+      "old_start": 11168,
+      "old_utf8": "    Callback/typing budgets propagate. No zero/singleton decision, graph update,\n    pruning, placement, branch preference or rollback is performed by this API.\n"
+    },
+    {
+      "new_end": 5168,
+      "new_start": 5073,
+      "new_utf8": "    tick()\n    need(semantics.VERSION == SEMANTICS_VERSION, 'exact injected marked point API')\n",
+      "old_end": 11337,
+      "old_start": 11337,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 5699,
+      "new_start": 5207,
+      "new_utf8": "    s, totals, marks, selected, excluded, names = semantics.private_state(language, state, tick)\n    base = semantics.base_state(language, s, tick)\n    _, bt, bm, bs, be, bn = semantics.base.private_state(language, base, tick)\n    need(all(name in names and names[name] == pre for name, pre in bn.items()),\n         'both original and decorated full collision ledgers')\n    need(type(row) is int and 0 <= row < 24 and totals[(0, row)] == 0,\n         'queried unfilled original required row')\n",
+      "old_end": 11573,
+      "old_start": 11376,
+      "old_utf8": "    s, totals, marks, selected, excluded, prototypes = validate_state(language, state, tick)\n    need(type(row) is int and 0 <= row < 24 and totals[(0, row)] == 0, 'queried unfilled required row')\n"
+    },
+    {
+      "new_end": 6236,
+      "new_start": 5755,
+      "new_utf8": "    earlier = [marked_formula(marks, k, language, tick) for k in range(row)]\n    eligible = output is not None and output[0] != 'imp'\n    all_assigned = all(f is not None for f in earlier)\n    candidates, seen, root_rejections = [], set(), []\n    fibres = None\n    if eligible:\n        nodes = language.formula(output)\n        fibres = {'schema': 'unit-row-marked-aware-nonimp-fibres-v1', 'completed': False,\n            'output_nodes': nodes, 'MP_antecedent_max_nodes': 43-nodes,\n",
+      "old_end": 12172,
+      "old_start": 11629,
+      "old_utf8": "    earlier = [marked_formula(marks, r, language, tick) for r in range(row)]\n    cover = output is not None and output[0] != 'imp' and all(f is not None for f in earlier)\n    missing_cover = output is not None and output[0] != 'imp' and not cover\n    missing_complete = False\n    fibre_cover = None\n    if missing_cover:\n        output_nodes = language.formula(output)\n        fibre_cover = {'schema': 'unit-row-missing-mark-fibres-v1', 'completed': False,\n            'output_nodes': output_nodes, 'MP_antecedent_max_nodes': 43-output_nodes,\n"
+    },
+    {
+      "new_end": 6766,
+      "new_start": 6639,
+      "new_utf8": "            'carrier_materialized': False, 'independently_accepted': False,\n            'UI_EqSubst_excluded_by_nonimp': True}\n",
+      "old_end": 12842,
+      "old_start": 12575,
+      "old_utf8": "            'carrier_materialized': False, 'independently_accepted': False}\n    candidates, seen, rejections = [], set(), []\n    coverage = {'axiom_labels_seen': [], 'Gamma_occurrences_seen': [],\n                'UG_prior_rows_seen': [], 'ordered_MP_pairs_seen': []}\n"
+    },
+    {
+      "new_end": 6801,
+      "new_start": 6767,
+      "new_utf8": "    def response(complete=False):\n",
+      "old_end": 12910,
+      "old_start": 12843,
+      "old_utf8": "    def consider(witness, premises, reads, retain_rejection=True):\n"
+    },
+    {
+      "new_end": 8309,
+      "new_start": 6816,
+      "new_utf8": "        return {'schema': 'unit-row-marked-aware-nonimp-fibre-proposal-v1', 'version': VERSION,\n            'kind': ('COMPLETE_NONIMP_FIBRE_COVER' if complete else\n                     'TWO_LEGAL_WITNESSES' if len(candidates) >= 2 else 'UNKNOWN'),\n            'state': s, 'state_sha256': digest(s),\n            'original_state': base, 'original_state_sha256': digest(base),\n            'input_epoch': s['input_epoch'], 'language_binding': semantics.tree(language.binding, tick),\n            'marking_id': s['marking_id'], 'row': row, 'output_formula': output,\n            'candidates': candidates, 'root_rejections': root_rejections, 'fibre_cover': fibres,\n            'complete_cover_proposed': complete, 'untrusted': True, 'scope': SCOPE,\n            **{k: False for k in FLAGS}}\n\n    # The additive integration router keeps the old safe proposer/checker for\n    # implication or absent output. This narrow module never calls that path or\n    # a checker, and never asserts a complete six-rule cover in these domains.\n    if not eligible:\n        return response()\n\n    def consider(witness, premises, reads):\n        tick()\n        pre = {'input_epoch': s['input_epoch'], 'primitive_witness': witness,\n               'ordered_premise_formulas': premises, 'ordered_offsets': [k-row for k in reads]}\n        transform = [0, row]\n        # Catch definite original primitive exclusion ONLY. Errors while checking\n        # marking authority or reconstructing decorated data are not exclusions.\n",
+      "old_end": 12925,
+      "old_start": 12925,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 8401,
+      "new_start": 8322,
+      "new_utf8": "            bare = semantics.base.rebuild_tile(language, pre, transform, tick)\n",
+      "old_end": 13031,
+      "old_start": 12938,
+      "old_utf8": "            tile = prototype(language, witness, premises, [r-row for r in reads], row, tick)\n"
+    },
+    {
+      "new_end": 9436,
+      "new_start": 8434,
+      "new_utf8": "            return {'rule': witness['rule'], 'reads': list(reads),\n                    'reason': error.reason, 'kind': 'definite_membership_exclusion'}\n        semantics.base.check_collision(bare, names)\n        tile = semantics.rebuild_tile(language, {'schema': 'unit-row-row0-decorated-type-v1',\n            'base_type_preimage': pre, 'marking_id': s['marking_id']}, transform, tick)\n        need(canonical(tile['base_tile']) == canonical(bare), 'whole original candidate reconstruction')\n        semantics.check_collision(tile, names)\n        original_reason = semantics.base.legality(bare, bt, bm, bs, be)\n        reason = semantics.legality(tile, totals, marks, selected, excluded)\n        need(original_reason is None or reason == original_reason,\n             'decorated point test preserves every original restriction')\n        if reason is not None:\n            return {'rule': witness['rule'], 'reads': list(reads), 'kind': reason,\n                    'placement_key': tile['placement_key']}\n",
+      "old_end": 13321,
+      "old_start": 13064,
+      "old_utf8": "            result = {'rule': witness['rule'], 'reads': list(reads),\n                      'reason': error.reason, 'kind': 'definite_membership_exclusion'}\n            if retain_rejection:\n                rejections.append(result)\n            return result\n"
+    },
+    {
+      "new_end": 9693,
+      "new_start": 9483,
+      "new_utf8": "        if key in seen:\n            return {'kind': 'duplicate_full_key'}\n        seen.add(key)\n        candidates.append(semantics.with_obligations(tile, totals, tick))\n        return {'kind': 'new_survivor'}\n",
+      "old_end": 14901,
+      "old_start": 13368,
+      "old_utf8": "        name = tile['placement_key']['tile_type_id']\n        pre = canonical(tile['placement_key']['type_preimage'])\n        need(name not in prototypes or prototypes[name] == pre, 'prototype digest/preimage collision')\n        # Full preimage is identity. Do not cache a carrier of rejected keys.\n        if not missing_cover:\n            prototypes[name] = pre\n        reason = None\n        if key in selected:\n            reason = 'already_selected'\n        elif key in excluded:\n            reason = 'branch_excluded_complete_key'\n        elif any(totals.get(tuple(p), 1)+v > 1 for p, v in tile['global_t_values']):\n            reason = 'whole_support_capacity'\n        elif any(tuple(p) in marks and canonical(marks[tuple(p)]) != canonical(v)\n                 for p, v in tile['global_m_values']):\n            reason = 'whole_remote_or_metadata_mark_conflict'\n        if reason:\n            result = {'rule': witness['rule'], 'reads': list(reads), 'kind': reason,\n                      'placement_key': tile['placement_key']}\n            if retain_rejection:\n                rejections.append(result)\n            return result\n        if key not in seen:\n            seen.add(key)\n            prototypes[name] = pre\n            tile['read_obligations'] = [{'row': r, 'formula': clone(f, tick),\n                 'occupied': totals[(0, r)] == 1, 'fact_accepted': False} for r, f in zip(reads, premises)]\n            candidates.append(tile)\n            return {'kind': 'new_survivor'}\n        return {'kind': 'duplicate_full_key'}\n"
+    },
+    {
+      "new_end": 9934,
+      "new_start": 9694,
+      "new_utf8": "    def stop_two():\n        # Preserve the original fully assigned-prefix complete census/MANY path.\n        # Missing-prefix early TWO is only a lower bound after full marked tests.\n        return not all_assigned and len(candidates) >= 2\n",
+      "old_end": 16139,
+      "old_start": 14902,
+      "old_utf8": "    def finished():\n        return not cover and len(candidates) >= 2\n\n    def response():\n        tick()\n        kind = ('NON_IMP_ASSIGNED_PREFIX_COVER' if cover else\n                'NON_IMP_MISSING_MARK_COVER' if missing_complete else\n                'TWO_LEGAL_WITNESSES' if len(candidates) >= 2 else 'UNKNOWN')\n        return {'schema': 'unit-row-degree-evidence-proposal-v2', 'version': VERSION,\n                'kind': kind, 'state': s, 'state_sha256': digest(s),\n                'input_epoch': s['input_epoch'], 'language_binding': clone(language.binding, tick),\n                'row': row, 'candidates': candidates if cover else candidates[:2],\n                'coverage': coverage if cover else None, 'rejections': rejections,\n                'complete_cover_proposed': cover or missing_complete, 'fibre_cover': fibre_cover, 'untrusted': True,\n                'degree_zero_or_singleton_accepted': False, 'degree_ge_two_accepted': False,\n                'complete_candidate_graph_accepted': False, 'scheduler_or_rollback_accepted': False,\n                'logical_proof_accepted': False, 'ROOT_resource_accepted': False,\n                'scope': 'Local evidence only; independent checker/global graph/fallback still required.'}\n"
+    },
+    {
+      "new_end": 10339,
+      "new_start": 10018,
+      "new_utf8": "        fibres['axiom_labels_seen'].append(name)\n        if formula == output:\n            result = consider({'rule': 'axiom', 'name': name, 'formula': formula}, [], [])\n            if result['kind'] not in ('new_survivor', 'duplicate_full_key'):\n                root_rejections.append(result)\n            if stop_two():\n",
+      "old_end": 16537,
+      "old_start": 16223,
+      "old_utf8": "        if cover:\n            coverage['axiom_labels_seen'].append(name)\n        if missing_cover:\n            fibre_cover['axiom_labels_seen'].append(name)\n        if output is None or formula == output:\n            consider({'rule': 'axiom', 'name': name, 'formula': formula}, [], [])\n            if finished():\n"
+    },
+    {
+      "new_end": 10775,
+      "new_start": 10441,
+      "new_utf8": "        fibres['Gamma_occurrences_seen'].append(index)\n        if formula == output:\n            result = consider({'rule': 'assumption', 'index': index, 'formula': formula}, [], [])\n            if result['kind'] not in ('new_survivor', 'duplicate_full_key'):\n                root_rejections.append(result)\n            if stop_two():\n",
+      "old_end": 16972,
+      "old_start": 16639,
+      "old_utf8": "        if cover:\n            coverage['Gamma_occurrences_seen'].append(index)\n        if missing_cover:\n            fibre_cover['Gamma_occurrences_seen'].append(index)\n        if output is None or formula == output:\n            consider({'rule': 'assumption', 'index': index, 'formula': formula}, [], [])\n            if finished():\n"
+    },
+    {
+      "new_end": 10809,
+      "new_start": 10809,
+      "new_utf8": "",
+      "old_end": 17999,
+      "old_start": 17006,
+      "old_utf8": "    if missing_cover:\n        def fibre(witnesses, descriptor):\n            examined, rejected, legal_before = 0, 0, len(candidates)\n            transcript, decisions = hashlib.sha256(), hashlib.sha256()\n            for witness, premises, reads in witnesses:\n                tick()\n                transcript.update((canonical([witness, premises, reads])+'\\n').encode('utf8'))\n                examined += 1\n                result = consider(witness, premises, reads, False)\n                decisions.update((canonical(result)+'\\n').encode('utf8'))\n                rejected += result['kind'] not in ('new_survivor', 'duplicate_full_key')\n                if finished():\n                    return False\n            descriptor.update(completed=True, examined=examined,\n                new_survivors=len(candidates)-legal_before, rejections=rejected,\n                examined_preimages_sha256=transcript.hexdigest(),\n                decisions_sha256=decisions.hexdigest())\n            return True\n"
+    },
+    {
+      "new_end": 11154,
+      "new_start": 10810,
+      "new_utf8": "    def fibre(witnesses, descriptor):\n        transcript, decisions = hashlib.sha256(), hashlib.sha256()\n        descriptor.update(completed=False, examined=0, new_survivors=0, rejections=0,\n            examined_preimages_sha256=transcript.hexdigest(), decisions_sha256=decisions.hexdigest())\n        for witness, premises, reads in witnesses:\n",
+      "old_end": 18045,
+      "old_start": 18000,
+      "old_utf8": "        for k, marked in enumerate(earlier):\n"
+    },
+    {
+      "new_end": 11908,
+      "new_start": 11173,
+      "new_utf8": "            transcript.update((canonical([witness, premises, reads])+'\\n').encode('utf8'))\n            result = consider(witness, premises, reads)\n            decisions.update((canonical(result)+'\\n').encode('utf8'))\n            descriptor['examined'] += 1\n            descriptor['new_survivors'] += result['kind'] == 'new_survivor'\n            descriptor['rejections'] += result['kind'] not in ('new_survivor', 'duplicate_full_key')\n            descriptor['examined_preimages_sha256'] = transcript.hexdigest()\n            descriptor['decisions_sha256'] = decisions.hexdigest()\n            if stop_two():\n                return False\n        descriptor['completed'] = True\n        return True\n\n    for k, marked in enumerate(earlier):\n",
+      "old_end": 20346,
+      "old_start": 18064,
+      "old_utf8": "            descriptor = {'row': k, 'inverse': 'UG', 'completed': False}\n            fibre_cover['UG_fibres'].append(descriptor)\n            proposals = ()\n            if output[0] == 'all' and (marked is None or marked == output[2]):\n                proposals = (({'rule': 'generalize', 'variable': output[1],\n                              'formula': output}, [output[2]], [k]),)\n                descriptor['case'] = 'missing_or_matching_body'\n            else:\n                descriptor['case'] = 'not_universal_or_assigned_body_mismatch'\n            if not fibre(proposals, descriptor):\n                return response()\n        for i, left in enumerate(earlier):\n            for j, implication in enumerate(earlier):\n                tick()\n                descriptor = {'rows': [i, j], 'inverse': 'MP', 'completed': False}\n                fibre_cover['ordered_MP_fibres'].append(descriptor)\n                if i == j:\n                    descriptor.update(case='FINITE_AST_OCCURS_CHECK_EMPTY',\n                        equation=['A', ['imp', 'A', 'C']], positive_output_nodes=output_nodes)\n                    proposals = ()\n                elif left is not None:\n                    descriptor['case'] = 'antecedent_assigned'\n                    required = ['imp', left, output]\n                    proposals = (({'rule': 'mp', 'formula': output}, [left, required], [i, j]),) if implication is None or implication == required else ()\n                elif implication is not None:\n                    descriptor['case'] = 'only_implication_assigned'\n                    proposals = (({'rule': 'mp', 'formula': output}, [implication[1], implication], [i, j]),) if implication[0] == 'imp' and implication[2] == output else ()\n                else:\n                    descriptor['case'] = 'both_absent_full_scoped_carrier'\n                    maximum = fibre_cover['MP_antecedent_max_nodes']\n                    proposals = (({'rule': 'mp', 'formula': output},\n                                  [a, ['imp', a, output]], [i, j])\n                        for a in iter_bounded_formulas(language=language,\n                            maximum_nodes=maximum, tick=tick)) if maximum >= 1 else ()\n                if not fibre(proposals, descriptor):\n                    return response()\n"
+    },
+    {
+      "new_end": 12479,
+      "new_start": 11923,
+      "new_utf8": "        descriptor = {'row': k, 'inverse': 'UG'}\n        fibres['UG_fibres'].append(descriptor)\n        proposals = ()\n        if output[0] == 'all' and (marked is None or marked == output[2]):\n            descriptor['case'] = 'missing_or_matching_body'\n            proposals = (({'rule': 'generalize', 'variable': output[1], 'formula': output},\n                          [output[2]], [k]),)\n        else:\n            descriptor['case'] = 'not_universal_or_assigned_body_mismatch'\n        if not fibre(proposals, descriptor):\n            return response()\n",
+      "old_end": 21091,
+      "old_start": 20361,
+      "old_utf8": "        missing_complete = True\n        fibre_cover['completed'] = True\n        return response()\n\n    for r, formula in enumerate(earlier):\n        tick()\n        if cover and output[0] == 'all':\n            coverage['UG_prior_rows_seen'].append(r)\n        if not cover and output is not None and output[0] == 'all':\n            formula = output[2]\n        if formula is None:\n            continue\n        for variable in language.parameters:\n            conclusion = ['all', variable, formula]\n            if output is None or conclusion == output:\n                consider({'rule': 'generalize', 'variable': variable, 'formula': conclusion}, [formula], [r])\n                if finished():\n                    return response()\n"
+    },
+    {
+      "new_end": 13503,
+      "new_start": 12587,
+      "new_utf8": "            descriptor = {'rows': [i, j], 'inverse': 'MP'}\n            fibres['ordered_MP_fibres'].append(descriptor)\n            if i == j:\n                descriptor.update(case='FINITE_AST_OCCURS_CHECK_EMPTY',\n                    equation=['A', ['imp', 'A', 'C']], positive_output_nodes=fibres['output_nodes'])\n                proposals = ()\n            elif left is not None:\n                descriptor['case'] = 'antecedent_assigned'\n                required = ['imp', left, output]\n                proposals = (({'rule': 'mp', 'formula': output}, [left, required], [i, j]),) if implication is None or implication == required else ()\n            elif implication is not None:\n                descriptor['case'] = 'only_implication_assigned'\n                proposals = (({'rule': 'mp', 'formula': output}, [implication[1], implication], [i, j]),) if implication[0] == 'imp' and implication[2] == output else ()\n",
+      "old_end": 21736,
+      "old_start": 21199,
+      "old_utf8": "            if cover:\n                coverage['ordered_MP_pairs_seen'].append([i, j])\n            if left is None:\n                continue\n            if implication is None:\n                if output is None:\n                    continue\n                conclusion, premise = output, ['imp', left, output]\n            elif implication[0] == 'imp' and implication[1] == left:\n                conclusion, premise = implication[2], implication\n                if output is not None and conclusion != output:\n                    continue\n"
+    },
+    {
+      "new_end": 13953,
+      "new_start": 13521,
+      "new_utf8": "                descriptor['case'] = 'both_absent_full_scoped_carrier'\n                maximum = fibres['MP_antecedent_max_nodes']\n                proposals = (({'rule': 'mp', 'formula': output},\n                    [a, ['imp', a, output]], [i, j]) for a in iter_bounded_formulas(\n                        language=language, maximum_nodes=maximum, tick=tick)) if maximum >= 1 else ()\n            if not fibre(proposals, descriptor):\n",
+      "old_end": 21891,
+      "old_start": 21754,
+      "old_utf8": "                continue\n            consider({'rule': 'mp', 'formula': conclusion}, [left, premise], [i, j])\n            if finished():\n"
+    },
+    {
+      "new_end": 14064,
+      "new_start": 13987,
+      "new_utf8": "    tick()\n    fibres['completed'] = True\n    return response(complete=True)\n",
+      "old_end": 22030,
+      "old_start": 21925,
+      "old_utf8": "    # UI/transport licences have outer imp; other incomplete queries stay UNKNOWN.\n    return response()\n"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 28448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/c960-to-marked-aware-forward.patch",
+    "sha256": "f047a0e44a9689bc2e843d9c67c48f8577e0862abd9ea757a0b3bf9be08af75c"
+  },
+  "helper_evidence": {
+    "iter_bounded_formulas": {
+      "c960_whole_raw_inverse_after_only_bound0_extension": true,
+      "new_literal": "0 <= maximum_nodes <= 44, 'whole formula size bound0..44'",
+      "no_body_scope_constructor_or_order_change": true,
+      "old_literal": "1 <= maximum_nodes <= 44, 'whole formula size bound1..44'",
+      "source_line": 52
+    },
+    "marked_formula": {
+      "sha256": "419b4f9d30e92854fcb4af58958a7d2ed4f47f6d6d5244a6e04b80aeb9d3f4d0",
+      "source_line": 30,
+      "whole_raw_and_AST_exact_to_c960": true
+    }
+  },
+  "inverse_patch": {
+    "bytes": 28448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked-aware-to-c960-full-inverse.patch",
+    "sha256": "44acfbaf41ba0aaf79372c91146b2d67824c08b17d33b4f85717d7990f850cff"
+  },
+  "parent": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "schema": "unit-row-marked-aware-fibre-proposer-full-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 14064,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+    "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+  },
+  "source_only": true,
+  "whole_forward_inverse_verified": true
+}

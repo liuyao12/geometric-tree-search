@@ -1,0 +1,112 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Root authored prior saved framework and reviewed entire current decoder/closer. Current adaptations authored by arithmetic. This is conditional saved-only Source review; independent peer review is also required before Root use.",
+  "checks": [
+    "Strict decoder4MiB/16MiB canonical/duplicate/nonfinite/base64/singlezlib/notails/wholebytes retained. No decoder invoked for current failure.",
+    "Root read whole two current helpers/contract; exact3+23region and actualpatch inverses;21closer and9decoder raw-identical helpers verified.",
+    "Failure requires exact nativeTimeout stderr, exit2/wait512/allreaped/noowned, failedoriginal20, probe and Date/512 gates; countsNone/zeroqualified/no inferredprogress.",
+    "Positive C5-C7 exact inherited after dedent; old aggregate and other6 modes removed. No all9/samecontroller/v1 promotion or semantic replay."
+  ],
+  "concrete_blockers": [],
+  "helpers_executed": false,
+  "raw_inverse_findings": {
+    "closer": {
+      "AST_compile_only": true,
+      "actual_unified_forward_inverse": true,
+      "edit_count": 23,
+      "full_raw_forward_inverse": true,
+      "parent": {
+        "bytes": 45102,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_close_stageC_saved_v1.py",
+        "sha256": "7751bed68d9663e344eeb79ca4a819d9ba4fa40beff68d2532529b7b4ea4dfb5"
+      },
+      "source": {
+        "bytes": 33971,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_close_stageC_batched_main_saved_v1.py",
+        "sha256": "05a8ff8645f5e32eee37cf4a11f8bca10ba28a63159398baf3e1715d94564df7"
+      },
+      "unchanged_functions": [
+        "canonical",
+        "cert",
+        "check",
+        "context",
+        "core",
+        "equal",
+        "logged_origin",
+        "native_refs",
+        "pin",
+        "points",
+        "proposal_join",
+        "read",
+        "receipt",
+        "rowproof",
+        "selected_append",
+        "sha",
+        "slot",
+        "snapshot",
+        "state",
+        "stream",
+        "transfer"
+      ],
+      "whole_Source_read": true
+    },
+    "decoder": {
+      "AST_compile_only": true,
+      "actual_unified_forward_inverse": true,
+      "edit_count": 3,
+      "full_raw_forward_inverse": true,
+      "parent": {
+        "bytes": 5875,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-saved-source-20261016/ROOT_decode_stageC_saved_v1.py",
+        "sha256": "945beedecf3ec86ecafadaba0d90ff5f9b1d8b4f11557b34d98c189ce01ad473"
+      },
+      "source": {
+        "bytes": 5830,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_decode_stageC_batched_main_saved_v1.py",
+        "sha256": "c48e87133ff88f9d6eaa416875300abdf86f73b1f2fa41bcdae7c6ae4bd1fc88"
+      },
+      "unchanged_functions": [
+        "buffer_pin",
+        "canonical",
+        "checked_raw",
+        "constant",
+        "decode",
+        "finite",
+        "need",
+        "pairs",
+        "read_bounded"
+      ],
+      "whole_Source_read": true
+    }
+  },
+  "reviewer_identity": "/root",
+  "schema": "unit-row-channel4-stageC-batched-main-saved-helpers-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-channel4-stageC-batched-main-saved-helpers-Source",
+  "source": {
+    "bytes": 33971,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_close_stageC_batched_main_saved_v1.py",
+    "sha256": "05a8ff8645f5e32eee37cf4a11f8bca10ba28a63159398baf3e1715d94564df7"
+  },
+  "source_contract": {
+    "bytes": 8170,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "d8e9031a536caebd3229febac352a518b5bc66582b00c84ac582783f756aa00b"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 33971,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_close_stageC_batched_main_saved_v1.py",
+      "sha256": "05a8ff8645f5e32eee37cf4a11f8bca10ba28a63159398baf3e1715d94564df7"
+    },
+    "decoder": {
+      "bytes": 5830,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-saved-source-20261016/ROOT_decode_stageC_batched_main_saved_v1.py",
+      "sha256": "c48e87133ff88f9d6eaa416875300abdf86f73b1f2fa41bcdae7c6ae4bd1fc88"
+    }
+  },
+  "whole_two_helpers_and_contract_read": true
+}

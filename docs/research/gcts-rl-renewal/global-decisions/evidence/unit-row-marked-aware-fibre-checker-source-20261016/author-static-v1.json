@@ -1,0 +1,77 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "check_count": 15,
+  "checks": [
+    {
+      "check": "new Source exact frozen pin",
+      "pass": true
+    },
+    {
+      "check": "AST parse and compile-only",
+      "pass": true
+    },
+    {
+      "check": "stdlib-only imports",
+      "pass": true
+    },
+    {
+      "check": "no module-level function invocation",
+      "pass": true
+    },
+    {
+      "check": "public keyword-only exact API",
+      "pass": true
+    },
+    {
+      "check": "no proposer/adapter import or delegated enumeration",
+      "pass": true
+    },
+    {
+      "check": "own independent carrier nested syntax AST exact to frozen c354",
+      "pass": true
+    },
+    {
+      "check": "only declared OutsideLanguage and iterator EOF caught",
+      "pass": true
+    },
+    {
+      "check": "no clock/process/source-loader/test or eval/exec call",
+      "pass": true
+    },
+    {
+      "check": "new receipt schema, no original_base_receipt impersonation",
+      "pass": true
+    },
+    {
+      "check": "whole states and independent full census comparisons present",
+      "pass": true
+    },
+    {
+      "check": "separate complete-prefix MANY and missing-prefix early-two protocol",
+      "pass": true
+    },
+    {
+      "check": "four inherited strong flags false",
+      "pass": true
+    },
+    {
+      "check": "new addition/removal full line payload inverses",
+      "pass": true
+    },
+    {
+      "check": "no forbidden C0 bytes",
+      "pass": true
+    }
+  ],
+  "new_module_addition": true,
+  "schema": "unit-row-marked-aware-fibre-checker-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Literal/AST/compile-only authoring checks, not distinct Source review or semantic tests.",
+  "source": {
+    "bytes": 25783,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+    "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+  },
+  "source_only": true
+}

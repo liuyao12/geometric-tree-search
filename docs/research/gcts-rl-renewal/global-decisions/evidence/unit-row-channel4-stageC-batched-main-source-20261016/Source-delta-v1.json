@@ -1,0 +1,178 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "all17_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "all_other_parent_main_nested_raw_AST_exact": [
+    "archived",
+    "ax",
+    "boundary",
+    "call",
+    "candidate",
+    "cert",
+    "checked_query",
+    "core",
+    "dead_and_zero_transfer",
+    "exact_restore",
+    "fresh_language",
+    "full_transfer",
+    "guard",
+    "make_stageC_engine",
+    "maps",
+    "marked_semantics",
+    "natural_unknown",
+    "new_log",
+    "nonlogical_scheduler",
+    "passed",
+    "place_base",
+    "root_state",
+    "rowproof",
+    "sha",
+    "slot",
+    "snapshot",
+    "state_from",
+    "tick",
+    "tile",
+    "ug"
+  ],
+  "both_whole_classes_raw_AST_exact": [
+    "ObservedCursor",
+    "ChildControlInterruption"
+  ],
+  "edit_count": 11,
+  "edits": [
+    {
+      "new_end": 240,
+      "new_start": 0,
+      "new_utf8": "\"\"\"Prospective dedicated StageC MAIN: one private five-seed constructor language.\nOriginal v1 four-endpoint suite stays immutable/incomplete; no six-case rerun.\nAll later checks/assertions/native20 remain; no fit or combined qualification.\n",
+      "old_end": 249,
+      "old_start": 0,
+      "old_utf8": "\"\"\"Prospective StageC: original-language global priorities and complete-degree transfer.\nFour distinct cold purpose modes, each original20; all9 essential cases required.\nOnly declared actual-child interruption and NONLOGICAL scheduler calibration.\n"
+    },
+    {
+      "new_end": 737,
+      "new_start": 623,
+      "new_utf8": "VERSION='unit-row-channel4-stageC-batched-main-cold-v1'\nSCOPE='unit-row-channel4-stageC-batched-main-cold-Source'\n",
+      "old_end": 744,
+      "old_start": 632,
+      "old_utf8": "VERSION='unit-row-channel4-degree-transfer-priority-child-cold-v1'\nSCOPE='unit-row-channel4-stageC-cold-Source'\n"
+    },
+    {
+      "new_end": 1055,
+      "new_start": 812,
+      "new_utf8": "STAGEC_CASES_BY_PURPOSE={'unit-row-channel4-stageC-batched-main-controls': ['C5-genuine-all-frontier-FORCED-before-BRANCH', 'C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH', 'C7-actual-child-native-first-UNKNOWN-full-restoration']}\n",
+      "old_end": 1553,
+      "old_start": 819,
+      "old_utf8": "STAGEC_CASES_BY_PURPOSE={'unit-row-channel4-stageC-dead-transfer-controls': ['C1-marking-created-complete-ZERO-global-DEAD', 'C3-owned-complete-ZERO-transfer-original-marked-wrapper', 'C2-later-complete-ZERO-before-earlier-complete-SINGLETON'], 'unit-row-channel4-stageC-natural-unknown-controls': ['C4-natural-partial-filter-real-EOF-UNKNOWN-blocks-FORCED'], 'unit-row-channel4-stageC-forced-transfer-child-controls': ['C5-genuine-all-frontier-FORCED-before-BRANCH', 'C6-complete-MANY-SINGLETON-transfer-then-reference-BRANCH', 'C7-actual-child-native-first-UNKNOWN-full-restoration'], 'unit-row-channel4-stageC-scheduler-controls': ['C8-NONLOGICAL-kernel-global-priority', 'C9-NONLOGICAL-kernel-earliest-generation-explicit-ties']}\n"
+    },
+    {
+      "new_end": 30530,
+      "new_start": 30461,
+      "new_utf8": "    need(plan['schema']=='ROOT-channel4-stageC-batched-main-plan-v1'\n",
+      "old_end": 31015,
+      "old_start": 30959,
+      "old_utf8": "    need(plan['schema']=='ROOT-channel4-stageC-plan-v1'\n"
+    },
+    {
+      "new_end": 31664,
+      "new_start": 31571,
+      "new_utf8": "    need(contract['schema']=='unit-row-channel4-stageC-batched-main-cold-Source-contract-v1'\n",
+      "old_end": 32136,
+      "old_start": 32056,
+      "old_utf8": "    need(contract['schema']=='unit-row-channel4-stageC-cold-Source-contract-v1'\n"
+    },
+    {
+      "new_end": 33034,
+      "new_start": 32955,
+      "new_utf8": "    need(grant['schema']=='ROOT-channel4-stageC-batched-main-authorization-v1'\n",
+      "old_end": 33493,
+      "old_start": 33427,
+      "old_utf8": "    need(grant['schema']=='ROOT-channel4-stageC-authorization-v1'\n"
+    },
+    {
+      "new_end": 64131,
+      "new_start": 62899,
+      "new_utf8": "    def main_seed_batch(d):\n        # Constructor-local only. Its parser budget is CUMULATIVE over all five\n        # seeds; it is never reset/reused by state_from, search or coverage.\n        fixture_language=fresh_language()\n        def seed_tile(witness, premises, reads, row):\n            pre = {'input_epoch':ORIGINAL_BINDING['language_epoch'],'primitive_witness':copy.deepcopy(witness),\n                'ordered_premise_formulas':copy.deepcopy(premises),'ordered_offsets':[k-row for k in reads]}\n            return semantics.rebuild_tile(fixture_language,pre,[0,row],tick)\n        def seed_ax(row):\n            return seed_tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],row)\n        def seed_ug(body, source, row):\n            return seed_tile({'rule':'generalize','variable':variable,'formula':['all',variable,copy.deepcopy(body)]},\n                        [body],[source],row)\n        try:\n            return [seed_ax(0),seed_ax(4),seed_ug(ax_formula,1,2),seed_ug(d,3,6),seed_ug(ax_formula,5,8)]\n        finally:\n            # Neither the language nor its nested constructor closures escape;\n            # only original bare JSON tile packets reach independent rebuilding.\n            del fixture_language\n\n",
+      "old_end": 63358,
+      "old_start": 63358,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 64250,
+      "new_start": 64217,
+      "new_utf8": "        seeds=main_seed_batch(d)\n",
+      "old_end": 63520,
+      "old_start": 63444,
+      "old_utf8": "        seeds=[ax(0),ax(4),ug(ax_formula,1,2),ug(d,3,6),ug(ax_formula,5,8)]\n"
+    },
+    {
+      "new_end": 73405,
+      "new_start": 73373,
+      "new_utf8": "    call(forced_transfer_child)\n",
+      "old_end": 72994,
+      "old_start": 72643,
+      "old_utf8": "    if plan['purpose']=='unit-row-channel4-stageC-dead-transfer-controls':call(dead_and_zero_transfer)\n    elif plan['purpose']=='unit-row-channel4-stageC-natural-unknown-controls':call(natural_unknown)\n    elif plan['purpose']=='unit-row-channel4-stageC-forced-transfer-child-controls':call(forced_transfer_child)\n    else:call(nonlogical_scheduler)\n"
+    },
+    {
+      "new_end": 74048,
+      "new_start": 73718,
+      "new_utf8": "    stageC={'schema':'ROOT-unit-row-channel4-stageC-batched-main-payload-v1','stage':'BATCHED_MAIN_SEEDS_FORCED_TRANSFER_CHILD_ONLY',\n        'endpoint_purpose':plan['purpose'],'current_main_only':True,'essential_case_count':3,\n        'original_v1_four_endpoint_suite_qualified':False,'same_controller_all_nine_qualified':False,\n",
+      "old_end": 73528,
+      "old_start": 73307,
+      "old_utf8": "    stageC={'schema':'ROOT-unit-row-channel4-stageC-payload-v1','stage':'GLOBAL_DEGREE_TRANSFER_PRIORITY_UNKNOWN_CHILD_OR_NONLOGICAL_KERNEL',\n        'endpoint_purpose':plan['purpose'],'all_four_endpoints_required':True,\n"
+    },
+    {
+      "new_end": 74614,
+      "new_start": 74564,
+      "new_utf8": "        'controlled_child_search_performed':True,\n",
+      "old_end": 74164,
+      "old_start": 74044,
+      "old_utf8": "        'controlled_child_search_performed':plan['purpose']=='unit-row-channel4-stageC-forced-transfer-child-controls',\n"
+    }
+  ],
+  "forced_transfer_child_exact_after_only_seed_call_replacement": true,
+  "forward_patch": {
+    "bytes": 13695,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/parent-to-batched-main-forward.patch",
+    "sha256": "b67b851d0277d530ece477264adbf181f6d8be27a4a3138569efeb6ea8f41cab"
+  },
+  "full_byte_forward_inverse_verified": true,
+  "inverse_patch": {
+    "bytes": 13695,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/batched-main-to-parent-full-inverse.patch",
+    "sha256": "856a0e82a275fdd20a1c4fe335d746c504eb6479b056cdfc9290720bc45d9f71"
+  },
+  "parent": {
+    "bytes": 77482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-cold-source-20261016/channel4_stageC_cold_v1.py",
+    "sha256": "af02a6fd7e145c326eed47f1ddf1df7968ea52c5c470e01ab6a3d3ef5d71eb43"
+  },
+  "same_ordered_five_seed_descriptor_list_AST_exact_after_renames": true,
+  "schema": "unit-row-channel4-stageC-batched-main-full-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "seed_tile_ax_ug_AST_equal_after_only_private_language_dispatch_renames": true,
+  "source": {
+    "bytes": 77932,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageC-batched-main-source-20261016/channel4_stageC_batched_main_cold_v1.py",
+    "sha256": "404f81265bd2c25cee9609d6602eeef20d074c3bdfa88302cb20cff50f1f5623"
+  },
+  "source_only": true,
+  "whole_transport_native_response_failure_suffix_raw_exact": true
+}
