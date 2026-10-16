@@ -1,0 +1,166 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes": 29671424,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 1.111,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "constructed_marking_data_accepted": true,
+  "current_goal_turn": "progress",
+  "engine_activated": false,
+  "independent_marking_data_check_accepted": true,
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1466,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-transport-concordance-v1.json",
+    "sha256": "ef50dd4c265bc843ebda31174948abbbb9fb67e68bf800acddfdd2ca6d00c7f1"
+  },
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "marking_sha256": "8d5f2c9c8ffa1de4c208e19da971b6cba73561ec4717caa54183e4799dc106df",
+  "native_launch_to_postprobe_ns": 979628000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 920177000,
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "outputs": [
+    {
+      "bytes": 46337,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/marking-owned-v1/engine-result.json",
+      "sha256": "6c20a05df94f985d3e5ab4052af75aee155a10cab5ab90a927825cefa61e1b63"
+    },
+    {
+      "bytes": 7079,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/marking-owned-v1/response.jsonl",
+      "sha256": "8099df1a00f8395c5d7cd026ba942723b59149cfc5a679f146c352fb1ffc5aca"
+    }
+  ],
+  "passed_cases": 16,
+  "plan": {
+    "bytes": 7353,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-plan-v1.json",
+    "sha256": "32c2b9e377b3ebbc353ac17b1dd808fb5b85a5ab21a456d97fddee63ae0e2240"
+  },
+  "point_comparison_fixtures": [
+    {
+      "added_global_m_values": [
+        [
+          [
+            4,
+            0
+          ],
+          1
+        ]
+      ],
+      "added_local_m_values": [
+        [
+          [
+            4,
+            -23
+          ],
+          1
+        ]
+      ],
+      "arm": "canonical",
+      "conflict_points": [
+        {
+          "point": [
+            4,
+            0
+          ],
+          "state_value": 0,
+          "tile_value": 1
+        }
+      ],
+      "marked_point_compatible": false,
+      "original_base_legal": true
+    },
+    {
+      "added_global_m_values": [
+        [
+          [
+            4,
+            0
+          ],
+          1
+        ]
+      ],
+      "added_local_m_values": [
+        [
+          [
+            4,
+            -23
+          ],
+          1
+        ]
+      ],
+      "arm": "advised",
+      "conflict_points": [
+        {
+          "point": [
+            4,
+            0
+          ],
+          "state_value": 0,
+          "tile_value": 1
+        }
+      ],
+      "marked_point_compatible": false,
+      "original_base_legal": true
+    },
+    {
+      "added_global_m_values": [],
+      "added_local_m_values": [],
+      "arm": "AX0",
+      "conflict_points": [],
+      "marked_point_compatible": true,
+      "original_base_legal": true
+    },
+    {
+      "added_global_m_values": [
+        [
+          [
+            4,
+            1
+          ],
+          1
+        ]
+      ],
+      "added_local_m_values": [
+        [
+          [
+            4,
+            -22
+          ],
+          1
+        ]
+      ],
+      "arm": "UG23-read1",
+      "conflict_points": [],
+      "marked_point_compatible": true,
+      "original_base_legal": true
+    }
+  ],
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved literal bytes/response/native/identity/receipt joins only; no scientific model, point matcher or checker replay.",
+  "remaining_gaps": [
+    "No current marked graph/degree/fallback/dependency/rollback qualification or target search.",
+    "Only two externally certified literal formulas and first-row boundary; no arbitrary-row generalization.",
+    "Current unit-row specialization lacks full reference conformance and universal finite Wang palette.",
+    "Turtle/Penrose/PA/Hilbert/RL/infinite-plane/substitution goals remain open."
+  ],
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-certified-row0-marking-disposition-v1",
+  "skipped_cases": 0,
+  "target_search_performed": false,
+  "terminal_T_bytes": 29671424,
+  "verifier_scope": "Separately authored verifier reconstructs original17 model and six-rule row0 certificates plus all added points; not a second mathematical kernel."
+}

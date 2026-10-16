@@ -1,0 +1,51 @@
+{
+  "AST_compile_only": true,
+  "delta": {
+    "bytes": 207789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "76bc50f8924eef6b8d2b87cfa3012ed064b9673804ffb8dd57014ec43f97f863"
+  },
+  "forward_edits": 751,
+  "forward_raw_reconstruction_exact": true,
+  "helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "inverse_edits": 751,
+  "inverse_raw_reconstruction_exact": true,
+  "parent": {
+    "bytes": 56338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+    "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+  },
+  "schema": "unit-row-certified-row0-marking-cold-independent-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 63489,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/certify_row0_marking_cold_v1.py",
+    "sha256": "c1c246e55bcc3de57c2434e2747e017688af3c4ce27b4ed88cb2cb04928725ef"
+  },
+  "source_contract": {
+    "bytes": 31657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "f015b99fbb684545ed76d6a6ebcf0207802a989acd6f95a06c08dc4e097d33aa"
+  },
+  "source_evaluated": false,
+  "whole_output_to_native_exit_tail_exact": true
+}

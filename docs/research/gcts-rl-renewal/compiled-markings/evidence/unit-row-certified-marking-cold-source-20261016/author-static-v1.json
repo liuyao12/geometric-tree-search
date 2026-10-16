@@ -1,0 +1,226 @@
+{
+  "actual_execution_authorized": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 40,
+  "checks": [
+    {
+      "check": "parse_and_compile_only",
+      "detail": "No import, exec, project call, test, model, scientific helper or clock executed.",
+      "passed": true
+    },
+    {
+      "check": "same_exact_17_whole_helper_ASTs",
+      "detail": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "save_failure_diagnostic",
+        "encode_result_transport"
+      ],
+      "passed": true
+    },
+    {
+      "check": "same_exact_17_whole_helper_raw_Source",
+      "passed": true
+    },
+    {
+      "check": "only_main_plus_inherited_helpers",
+      "passed": true
+    },
+    {
+      "check": "two_parent_extraction_helpers_removed",
+      "passed": true
+    },
+    {
+      "check": "unchanged_ORIGINAL_SOURCES",
+      "passed": true
+    },
+    {
+      "check": "unchanged_ORIGINAL_INPUTS",
+      "passed": true
+    },
+    {
+      "check": "unchanged_ORIGINAL_BINDING",
+      "passed": true
+    },
+    {
+      "check": "unchanged_LIMITS",
+      "passed": true
+    },
+    {
+      "check": "current_Source_intake",
+      "passed": true
+    },
+    {
+      "check": "current_Source_clean_support",
+      "passed": true
+    },
+    {
+      "check": "current_Source_kernel",
+      "passed": true
+    },
+    {
+      "check": "current_Source_membership",
+      "passed": true
+    },
+    {
+      "check": "current_Source_proposer",
+      "passed": true
+    },
+    {
+      "check": "current_Source_degree_checker",
+      "passed": true
+    },
+    {
+      "check": "current_Source_row0_projection",
+      "passed": true
+    },
+    {
+      "check": "current_Source_decorator",
+      "passed": true
+    },
+    {
+      "check": "current_Source_marked_verifier",
+      "passed": true
+    },
+    {
+      "check": "current_input_certification_disposition",
+      "passed": true
+    },
+    {
+      "check": "current_input_certification_encoded",
+      "passed": true
+    },
+    {
+      "check": "current_input_certification_expanded",
+      "passed": true
+    },
+    {
+      "check": "current_input_certification_plan",
+      "passed": true
+    },
+    {
+      "check": "current_input_certification_response",
+      "passed": true
+    },
+    {
+      "check": "current_input_certification_transport",
+      "passed": true
+    },
+    {
+      "check": "current_input_declaration",
+      "passed": true
+    },
+    {
+      "check": "current_input_profile",
+      "passed": true
+    },
+    {
+      "check": "current_Source9_exact",
+      "passed": true
+    },
+    {
+      "check": "current_input8_exact",
+      "passed": true
+    },
+    {
+      "check": "exact16_distinct_control_names",
+      "detail": [
+        "external-certified-table-and-independent-definition",
+        "root-boundary-assigned-zero",
+        "canonical-consumer-zero-read-mark-conflict",
+        "advised-consumer-zero-read-mark-conflict",
+        "original-AX-rowzero-compatible",
+        "same-certified-literal-readrowone-compatible",
+        "all-base-and-added-point-data-preserved",
+        "absence-is-unassigned-on-unmatched-ports",
+        "forged-certified-literal-table-rejected",
+        "forged-certificate-data-rejected",
+        "forged-decorated-key-rejected",
+        "forged-added-support-rejected",
+        "missing-guard-rejected",
+        "forged-full-marked-union-rejected",
+        "forged-original-base-state-rejected",
+        "native-first-callback-timeout-propagates"
+      ],
+      "passed": true
+    },
+    {
+      "check": "actual_consumed_literal_ROOT-certified-row0-marking-data-plan-v1",
+      "passed": true
+    },
+    {
+      "check": "actual_consumed_literal_ROOT-certified-row0-marking-data-authorization-v1",
+      "passed": true
+    },
+    {
+      "check": "actual_consumed_literal_unit-row-certified-row0-marking-cold-Source-contract-v1",
+      "passed": true
+    },
+    {
+      "check": "actual_consumed_literal_unit-row-certified-row0-marking-data-controls",
+      "passed": true
+    },
+    {
+      "check": "entire_positive_output_to_nativeexit_and_error_tail_raw_exact",
+      "passed": true
+    },
+    {
+      "check": "error55_tail_raw_exact",
+      "passed": true
+    },
+    {
+      "check": "same_sealed_module_tuple",
+      "passed": true
+    },
+    {
+      "check": "no_engine_or_search_delegation",
+      "passed": true
+    },
+    {
+      "check": "same_original20_native_deadline_literal",
+      "passed": true
+    },
+    {
+      "check": "forward_whole_bytes_exact",
+      "passed": true
+    },
+    {
+      "check": "inverse_whole_bytes_exact",
+      "passed": true
+    }
+  ],
+  "parent_source": {
+    "bytes": 56338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+    "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+  },
+  "schema": "unit-row-certified-marking-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Raw bytes, AST, compile-only, current pinned-file hashes and inverse reconstruction; no runtime outcome.",
+  "source": {
+    "bytes": 63489,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/certify_row0_marking_cold_v1.py",
+    "sha256": "c1c246e55bcc3de57c2434e2747e017688af3c4ce27b4ed88cb2cb04928725ef"
+  },
+  "source_delta": {
+    "bytes": 207789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "76bc50f8924eef6b8d2b87cfa3012ed064b9673804ffb8dd57014ec43f97f863"
+  },
+  "source_only": true
+}

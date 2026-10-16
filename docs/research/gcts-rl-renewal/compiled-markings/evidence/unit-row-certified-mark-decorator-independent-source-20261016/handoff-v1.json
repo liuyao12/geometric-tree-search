@@ -1,0 +1,36 @@
+{
+  "authorship": "Reviewer diagnosis authored the new independent verifier and prior consumer/controls/1717/codec/family work, not this decorator, c354, membership, kernel or projection. Reused original semantics remain shared dependencies; this review is not a second independent kernel.",
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "findings": {
+    "bytes": 8811,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-independent-source-20261016/findings-v1.json",
+    "sha256": "16f7c2002997046eff100d510eaf96d2305c2b27d193e2e58d68d59be08f9e50"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-certified-row0-mark-decorator-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12619,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+    "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+  },
+  "source_contract": {
+    "bytes": 14800,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/Source-contract-v1.json",
+    "sha256": "cfdf9dc0f39fd96f7565c5d0028a7d546cce7d013b994de7d2f4a88730d63427"
+  },
+  "source_only": true,
+  "sources": {
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    }
+  },
+  "typed_review": {
+    "bytes": 2343,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "b60ce31334d1466b779a8c47a045d1b782063bd9dc61b62d40e015c18c9ae952"
+  }
+}

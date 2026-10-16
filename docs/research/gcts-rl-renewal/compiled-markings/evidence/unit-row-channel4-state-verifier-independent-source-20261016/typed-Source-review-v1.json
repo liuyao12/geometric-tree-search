@@ -1,0 +1,49 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-channel4-state-verifier-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-independent-channel4-state-verifier-Source",
+  "source": {
+    "bytes": 18475,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+    "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/Source-contract-v1.json",
+    "sha256": "8d0215d9fccd8b8112f44dec730bc0300d19f2361144843d993a279f3c835e43",
+    "bytes": 14503
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    }
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-independent-source-20261016/findings-v1.json",
+    "sha256": "ae2c785ec5ba0fda50e47aba2172edbd203112e50468687fabe76bc36b3e415f",
+    "bytes": 8140
+  },
+  "authorship_disclosure": "Genuine distinct review of this verifier; reviewer authored c354, engine predecessors and current marked integration, not the reviewed verifier. It is not an independent second arithmetic kernel.",
+  "conditional_scope": "Whole current Source and logical reconstruction only; all runtime/admission gates pending."
+}

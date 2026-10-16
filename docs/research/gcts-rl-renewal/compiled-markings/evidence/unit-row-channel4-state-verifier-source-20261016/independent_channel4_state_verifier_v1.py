@@ -1,0 +1,291 @@
+"""SOURCE ONLY independent reconstruction of a frozen auxiliary marking.
+
+No decorator/projection import, engine, search, clocks, loader or activation.
+The caller authenticates current executable Sources, the frozen marking and
+the separate original Source17/raw inputs, and supplies a fresh private language.
+"""
+import hashlib
+import json
+
+VERSION = 'unit-row-independent-channel4-state-verifier-v1'
+DECORATOR_VERSION = 'unit-row-certified-row0-point-mark-decorator-v1'
+PROJECTION_VERSION = 'unit-row-row-zero-rule-projection-v1'
+SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+KERNEL_VERSION = 'arithmetic-open-parameter-six-rule-Q-v1'
+PROFILE_SHA256 = '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'
+PROFILE_NAME = 'shared-bounded-six-rule-B12-N44-v2'
+ARITIES = {'axiom': 0, 'assumption': 0, 'instantiate': 0,
+           'eq_subst': 0, 'mp': 2, 'generalize': 1}
+ORIGINAL_CODE = {
+    'kernel': ('43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9', 10323),
+    'membership': ('5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332', 20112),
+    'degree_checker': ('c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d', 27553)}
+DATA_FLAGS = ('independently_checked', 'logical_proof_accepted', 'exact_point_board_accepted',
+    'complete_GCTS_model_accepted', 'marking_activated', 'trajectory_accepted',
+    'GCTS_advantage_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+PROJECTION_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+    'target_impossibility_accepted', 'complete_GCTS_model_accepted',
+    'marking_activation_accepted', 'trajectory_accepted', 'GCTS_advantage_accepted',
+    'RL_accepted', 'ROOT_resource_accepted')
+
+
+def require(ok, reason):
+    if not ok:
+        raise ValueError('channel4 verifier: ' + reason)
+
+
+def clone(value, tick):
+    tick()
+    if type(value) in (str, int, bool) or value is None:
+        return value
+    if type(value) is list:
+        return [clone(v, tick) for v in value]
+    require(type(value) is dict and all(type(k) is str for k in value), 'builtin JSON only')
+    return {k: clone(v, tick) for k, v in value.items()}
+
+
+def encoded(value, ascii_only=False):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'),
+                      ensure_ascii=ascii_only, allow_nan=False).encode('ascii' if ascii_only else 'utf8')
+
+
+def digest(value, ascii_only=False):
+    return hashlib.sha256(encoded(value, ascii_only)).hexdigest()
+
+
+def identical(a, b, reason):
+    require(encoded(a) == encoded(b), reason)
+
+
+def private_authority(language, semantics, tick):
+    """Caller owns raw/code custody; compare all effective semantic inputs."""
+    tick()
+    require(semantics.VERSION == SEMANTICS_VERSION
+            and language.kernel_module.VERSION == KERNEL_VERSION
+            and encoded(language.kernel_module.ARITIES) == encoded(ARITIES), 'original semantic APIs')
+    authority = {k: clone(getattr(language, k), tick)
+                 for k in ('declaration', 'policy', 'source_bindings', 'binding')}
+    declaration, binding, policy = authority['declaration'], authority['binding'], authority['policy']
+    require(type(declaration['height']) is int and declaration['height'] == 24
+            and len(authority['source_bindings']) == 17
+            and binding['profile_sha256'] == PROFILE_SHA256, 'original height/profile/Source17')
+    require(set(binding) == {'profile_name', 'profile_sha256', 'declaration_sha256',
+                'logical_input_sha256', 'source_bindings_sha256', 'language_epoch'}
+            and binding['profile_name'] == PROFILE_NAME
+            and policy['schema'] == 'ROOT-shared-bounded-six-rule-language-policy-v2'
+            and policy['profile_name'] == PROFILE_NAME
+            and type(policy['syntax']['maximum_term_nodes']) is int
+            and policy['syntax']['maximum_term_nodes'] == 12
+            and type(policy['syntax']['maximum_whole_formula_nodes']) is int
+            and policy['syntax']['maximum_whole_formula_nodes'] == 44, 'complete original policy and binding fields')
+    for role, (sha, size) in ORIGINAL_CODE.items():
+        capsule = authority['source_bindings'][role]
+        require(capsule['sha256'] == sha and type(capsule['bytes']) is int
+                and capsule['bytes'] == size, 'original mathematical Source pin')
+    for name, original in (('theory', declaration['theory']), ('parameters', declaration['parameters']),
+                           ('gamma', declaration['ordered_Gamma']), ('target', declaration['target'])):
+        identical(clone(getattr(language, name), tick), original, 'effective language ' + name)
+    identical(clone(language.kernel.theory, tick), declaration['theory'], 'effective kernel theory')
+    require(type(language.kernel.parameters) is tuple
+            and list(language.kernel.parameters) == declaration['parameters'], 'effective kernel parameters')
+    identical(clone(language.kernel.gamma, tick), declaration['ordered_Gamma'], 'effective kernel Gamma')
+    require(type(language.parameter_set) is frozenset
+            and language.parameter_set == frozenset(declaration['parameters']), 'effective parameter scope')
+    logical = {'theory': declaration['theory'], 'parameters': declaration['parameters'],
+               'ordered_Gamma': declaration['ordered_Gamma'], 'target': declaration['target'], 'height': 24}
+    require(binding['logical_input_sha256'] == digest(logical, True)
+            and binding['source_bindings_sha256'] == digest(authority['source_bindings'], True)
+            and binding['language_epoch'] == digest({k: v for k, v in binding.items() if k != 'language_epoch'}, True),
+            'complete original binding, no epoch rebasing')
+    return authority
+
+
+def projection_certificate(language, authority, literal, tick):
+    """Independent source-scoped six-rule/census recheck, no old ZERO input."""
+    tick()
+    nodes = language.formula(literal)
+    require(type(nodes) is int and 1 <= nodes <= 44 and literal[0] != 'imp', 'forbidden literal in projection family')
+    axioms, gamma = [], []
+    for name, formula in sorted(authority['declaration']['theory']['axioms'].items()):
+        tick()
+        member = language.primitive({'rule': 'axiom', 'name': name, 'formula': clone(formula, tick)}, [])
+        axioms.append({'name': name, 'formula': clone(formula, tick),
+                       'equals_demand': encoded(formula) == encoded(literal), 'primitive_membership': clone(member, tick)})
+    for index, formula in enumerate(authority['declaration']['ordered_Gamma']):
+        tick()
+        member = language.primitive({'rule': 'assumption', 'index': index, 'formula': clone(formula, tick)}, [])
+        gamma.append({'index': index, 'formula': clone(formula, tick),
+                      'equals_demand': encoded(formula) == encoded(literal), 'primitive_membership': clone(member, tick)})
+    require(not any(v['equals_demand'] for v in axioms + gamma), 'literal matches original AX or Gamma')
+    reasons = [('axiom', 'COMPLETE_NAMED_AXIOM_CENSUS'),
+               ('assumption', 'COMPLETE_OCCURRENCE_ORDERED_GAMMA_CENSUS'),
+               ('instantiate', 'PINNED_UI_CONCLUSION_HAS_OUTER_IMP'),
+               ('eq_subst', 'PINNED_EQUALITY_TRANSPORT_CONCLUSION_HAS_OUTER_IMP'),
+               ('mp', 'NO_NONNEGATIVE_STRICT_PRIOR_ABSOLUTE_ROW'),
+               ('generalize', 'NO_NONNEGATIVE_STRICT_PRIOR_ABSOLUTE_ROW')]
+    rules = []
+    for rule, reason in reasons:
+        entry = {'rule': rule, 'ordered_arity': ARITIES[rule], 'excluded': True, 'reason': reason}
+        if rule == 'axiom': entry['matching_names'] = []
+        elif rule == 'assumption': entry['matching_indices'] = []
+        elif rule in ('instantiate', 'eq_subst'): entry['required_outer_tag'] = 'imp'
+        else: entry['allowed_read_rows'] = []
+        rules.append(entry)
+    return {'schema': 'unit-row-row-zero-projection-certificate-v1', 'version': PROJECTION_VERSION,
+        'status': 'FORBIDDEN', 'reason': 'ALL_SIX_PRIMITIVE_FIBRES_EMPTY',
+        'model_authority': clone(authority, tick), 'model_authority_sha256': digest(authority, True),
+        'literal': clone(literal, tick), 'literal_sha256': digest(literal, True), 'row': 0, 'height': 24,
+        'assumptions': {'original_source_pins': {role: {'sha256': sha, 'bytes': size}
+            for role, (sha, size) in ORIGINAL_CODE.items()}, 'six_rules_and_ordered_arities': dict(ARITIES),
+            'whole_formula_nodes': nodes, 'outer_tag': literal[0], 'nonimplication': True,
+            'unit_positive_support': [[[0, 0], 1]], 'translation': [0, 0], 'read_offset_bounds': [-23, -1],
+            'strict_prior_reads': True, 'nonnegative_absolute_reads': True, 'available_prior_absolute_rows': [],
+            'point_read_condition': '0 <= row + offset < row; row = 0',
+            'point_inventory_scope': 'Original pinned c354 unit-row translation/arity contract'},
+        'named_axiom_census': axioms, 'ordered_Gamma_census': gamma, 'rule_exclusions': rules,
+        'projection': {'kind': 'NO_ORIGINAL_TILE_AT_ROW_ZERO_WITH_THIS_OUTPUT_LITERAL',
+            'complete_exact_board_cannot_assign_this_literal_at_output_zero': True,
+            'remote_markings_used': False, 'selected_placements_used': False,
+            'branch_exclusions_used': False, 'saved_ZERO_receipts_used': False},
+        'independently_checked': False, **{k: False for k in PROJECTION_FLAGS}}
+
+
+def checked_marking(language, semantics, marking, tick):
+    model = clone(marking, tick)
+    authority = private_authority(language, semantics, tick)
+    entries = model['certificate_evidence']
+    require(type(entries) is list and entries, 'nonempty complete frozen evidence')
+    proofs, literals = {}, {}
+    for entry in entries:
+        tick()
+        require(type(entry) is dict and set(entry) == {'certificate', 'projection_check'}, 'complete evidence pair')
+        cert = projection_certificate(language, authority, entry['certificate']['literal'], tick)
+        identical(entry['certificate'], cert, 'full independently rederived projection certificate')
+        identity = digest(cert, True)
+        check = {'schema': 'unit-row-row-zero-projection-check-v1', 'version': PROJECTION_VERSION,
+            'certificate_sha256': identity, 'compared_full_certificate': True,
+            'recomputed_certificate': cert, 'projection_accepted': True, 'independently_checked': True,
+            **{k: False for k in PROJECTION_FLAGS}}
+        identical(entry['projection_check'], check, 'full original projection receipt')
+        require(identity not in proofs or encoded(proofs[identity]) == encoded(entry), 'full evidence collision agreement')
+        proofs[identity] = entry
+        literals[encoded(cert['literal'])] = cert['literal']
+    definition = {'schema': 'unit-row-certified-row0-marking-definition-v1',
+        'recipe_version': DECORATOR_VERSION, 'original_binding': authority['binding'], 'height': 24,
+        'original_model_authority_sha256': digest(authority, True),
+        'certified_literals': [literals[k] for k in sorted(literals)], 'certificate_sha256': sorted(proofs),
+        'point_domain': {'base_positive_channel': 0, 'base_mark_channels': [1, 2, 3],
+            'new_mark_channel': 4, 'local_mark_offset_interval': [-23, 0],
+            'global_mark_row_interval': [0, 23], 'required_t_points_unchanged': True},
+        'action': {'allowed_translations': [[0, r] for r in range(24)],
+            'point_action': '[channel,d] -> [channel,d+row]', 'value_action': 'IDENTITY',
+            'rotations_or_reflections': False},
+        'values': {'matched_original_formula_port': 1, 'fixed_boundary': [[[4, 0], 0]],
+            'unmatched_port': 'ABSENT', 'fixed_formula_ports_decorated': False},
+        'projection_scope': 'EXACT_BOARDS_OF_THIS_ORIGINAL_INPUT_ONLY_ROW0_OUTPUT_LEMMA',
+        'evidence_custody': 'CALLER_AUTHENTICATES_PRIOR_ROOT_ACCEPTED_INPUTS; NO_PROOF_REPLAY_HERE'}
+    expected = {'schema': 'unit-row-certified-row0-marking-v1', 'version': DECORATOR_VERSION,
+        'marking_id': 'row0-marking-' + digest(definition), 'definition': definition,
+        'certificate_evidence': [proofs[k] for k in sorted(proofs)], **{k: False for k in DATA_FLAGS}}
+    identical(model, expected, 'whole frozen marking definition/evidence/identity')
+    identical(private_authority(language, semantics, tick), authority, 'original authority unchanged during model check')
+    return expected, authority
+
+
+def rebuilt_packet(language, semantics, model, record, tick):
+    tick()
+    base = semantics.rebuild_tile(language, record['type_preimage'], record['translation'], tick)
+    identical(base['selection_record'], record, 'exact original selected key projection')
+    table = {encoded(v).decode('utf8') for v in model['definition']['certified_literals']}
+    support = set()
+    for point, value in base['local_m_values']:
+        tick()
+        if point[0] == 1 and value[1] in table:
+            support.add((4, point[1]))
+    local = [[list(p), 1] for p in sorted(support)]
+    row = record['translation'][1]
+    glob = [[[p[0], p[1] + row], value] for p, value in local]
+    pre = {'schema': 'unit-row-row0-decorated-type-v1',
+           'base_type_preimage': record['type_preimage'], 'marking_id': model['marking_id']}
+    return {'schema': 'unit-row-row0-decorated-tile-v1', 'version': DECORATOR_VERSION,
+        'marking_id': model['marking_id'], 'base_tile': base,
+        'placement_key': {'tile_type_id': 'row0-decorated-tile-' + digest(pre),
+            'type_preimage': pre, 'translation': record['translation']},
+        'local_t_values': base['local_t_values'], 'global_t_values': base['global_t_values'],
+        'local_m_values': base['local_m_values'] + local,
+        'global_m_values': base['global_m_values'] + glob,
+        'added_local_m_values': local, 'added_global_m_values': glob,
+        **{k: False for k in DATA_FLAGS}}
+
+
+def check_marking(*, language, semantics, marking, tick):
+    """Recheck the full frozen model, including its input-scoped row-zero lemma."""
+    model, authority = checked_marking(language, semantics, marking, tick)
+    tick()
+    return {'schema': 'unit-row-channel4-marking-check-v1', 'version': VERSION,
+        'marking': model, 'marking_id': model['marking_id'], 'marking_sha256': digest(model),
+        'original_binding': authority['binding'], 'marking_checked': True,
+        'projection_literals_rechecked': True,
+        **{k: False for k in DATA_FLAGS if k != 'independently_checked'},
+        'degree_or_EOF_accepted': False}
+
+
+def check_decorated_tile(*, language, semantics, marking, tile, tick):
+    """Return the full reconstructed packet, without current-state legality.
+
+    A caller filters candidates by comparing these actual t/m values with the
+    whole checked current state. Malformed data and resource failures propagate.
+    """
+    model, authority = checked_marking(language, semantics, marking, tick)
+    offered = clone(tile, tick)
+    record = offered['base_tile']['selection_record']
+    expected = rebuilt_packet(language, semantics, model, record, tick)
+    identical(offered, expected, 'whole independently rebuilt decorated tile')
+    identical(private_authority(language, semantics, tick), authority, 'original authority unchanged after tile check')
+    tick()
+    return expected
+
+
+def check_marked_state(*, language, semantics, marking, state, tick):
+    """Verify actual point data; no engine-domain or marking activation claim."""
+    model, authority = checked_marking(language, semantics, marking, tick)
+    packet = clone(state, tick)
+    base, totals, base_marks, _, _, _ = semantics.private_state(language, packet['base_state'], tick)
+    require(base['input_epoch'] == model['definition']['original_binding']['language_epoch'], 'original base epoch')
+    supplied = packet['decorated_selected']
+    require(type(supplied) is list and len(supplied) == len(base['selected']), 'all selected decorated packets')
+    selected, extras, ids = [], {(4, 0): 0}, {}
+    for record, offered in zip(base['selected'], supplied):
+        tile = rebuilt_packet(language, semantics, model, record, tick)
+        identical(offered, tile, 'entire independently rebuilt decorated selected packet')
+        key = tile['placement_key']
+        pre = encoded(key['type_preimage'])
+        require(key['tile_type_id'] not in ids or ids[key['tile_type_id']] == pre, 'decorated id/full-preimage collision')
+        ids[key['tile_type_id']] = pre
+        for point, value in tile['added_global_m_values']:
+            tick()
+            p = tuple(point)
+            require(p not in extras or encoded(extras[p]) == encoded(value), 'channel4 point agreement')
+            extras[p] = value
+        selected.append(tile)
+    require(not set(base_marks).intersection(extras), 'fresh channel, no original mark overwritten')
+    full = dict(base_marks)
+    full.update(extras)
+    expected = {'schema': 'unit-row-row0-decorated-state-v1', 'version': DECORATOR_VERSION,
+        'marking_id': model['marking_id'], 'base_state': base, 'decorated_selected': selected,
+        'global_t_values': base['t'], 'global_m_values': [[list(p), v] for p, v in sorted(full.items())],
+        'added_m_values': [[list(p), v] for p, v in sorted(extras.items())], **{k: False for k in DATA_FLAGS}}
+    identical(packet, expected, 'whole original plus extra marking state/union')
+    identical(private_authority(language, semantics, tick), authority, 'original authority unchanged after state check')
+    tick()
+    return {'schema': 'unit-row-channel4-marked-state-check-v1', 'version': VERSION,
+        'marking_id': model['marking_id'], 'marking_sha256': digest(model),
+        'original_binding': authority['binding'], 'original_state_sha256': digest(base),
+        'marked_state_sha256': digest(expected), 'selected_count': len(selected),
+        'added_mark_points': len(extras), 'all_required_t_filled': all(v == 1 for v in totals.values()),
+        'marked_state_checked': True, 'projection_literals_rechecked': True,
+        'scope': 'Full checked original unit-row state plus literal channel4 boundary/selected union only.',
+        'logical_proof_accepted': False, 'exact_point_board_accepted': False,
+        'complete_GCTS_model_accepted': False, 'marking_activated': False,
+        'trajectory_accepted': False, 'degree_or_EOF_accepted': False,
+        'GCTS_advantage_accepted': False, 'RL_accepted': False, 'ROOT_resource_accepted': False}

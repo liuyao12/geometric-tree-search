@@ -1,0 +1,122 @@
+{
+  "addition_patch": {
+    "bytes": 18967,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/Source-addition-v1.patch",
+    "sha256": "b36f7d48761dfd855352e9c57231fbbf4082af16ab5dc847c564fc4f5df7540b"
+  },
+  "check_count": 12,
+  "checks": [
+    {
+      "check": "raw-frozen-source",
+      "evidence": "Entire raw SHA/bytes match immutable code-only notice.",
+      "passed": true
+    },
+    {
+      "check": "AST-and-compile-only",
+      "evidence": "ast.parse and compile objects only; no Source evaluation or imports.",
+      "passed": true
+    },
+    {
+      "check": "only-stdlib-imports",
+      "evidence": "No project/decorator/projection imports.",
+      "passed": true
+    },
+    {
+      "check": "no-exception-conversion",
+      "evidence": "All resource, membership, authority, malformed-input and collision errors propagate.",
+      "passed": true
+    },
+    {
+      "check": "exact-three-keyword-APIs",
+      "evidence": {
+        "check_decorated_tile": [
+          "language",
+          "semantics",
+          "marking",
+          "tile",
+          "tick"
+        ],
+        "check_marked_state": [
+          "language",
+          "semantics",
+          "marking",
+          "state",
+          "tick"
+        ],
+        "check_marking": [
+          "language",
+          "semantics",
+          "marking",
+          "tick"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check": "no-C0-bytes",
+      "evidence": "UTF8 Source contains no forbidden C0 bytes.",
+      "passed": true
+    },
+    {
+      "check": "original-projection-unchanged",
+      "evidence": "All referenced Sources raw-read only; no edits.",
+      "passed": true
+    },
+    {
+      "check": "full-private-authority-and-no-rebase",
+      "evidence": {
+        "function": "private_authority",
+        "line": 60,
+        "manual": "Exact profile/binding fields, whole private original Source17 map and logical-input/epoch recomputation; caller raw/code custody remains required."
+      },
+      "passed": true
+    },
+    {
+      "check": "independent-complete-row0-reconstruction",
+      "evidence": {
+        "function": "projection_certificate",
+        "line": 103,
+        "manual": "Every named AX and Gamma occurrence via original primitive membership; all six rule exclusions and full offered certificate/check compared, no projection function call."
+      },
+      "passed": true
+    },
+    {
+      "check": "full-model-data-not-digest-only",
+      "evidence": {
+        "function": "checked_marking",
+        "line": 153,
+        "manual": "Entire definition/evidence/flags/identity reconstructed; evidence hash collisions require full equality."
+      },
+      "passed": true
+    },
+    {
+      "check": "independent-bare-tile-and-full-array-reconstruction",
+      "evidence": {
+        "function": "rebuilt_packet",
+        "line": 195,
+        "manual": "Original c354 primitive/ordered offsets/full key and all original arrays retained; independent table compilation adds actual channel4 values."
+      },
+      "passed": true
+    },
+    {
+      "check": "actual-union-conflict-before-wrapper-comparison",
+      "evidence": {
+        "function": "check_marked_state",
+        "line": 249,
+        "manual": "c354 validates full base state, all selected packets rebuilt, guard zero composed with selected ones; actual disagreement fails before entire wrapper comparison."
+      },
+      "passed": true
+    }
+  ],
+  "declaration_or_model_decoding": false,
+  "notes": "New independently authored module, no prior verifier to inverse. Full addition patch only; existing Sources unchanged. Manual author checks are not independent peer acceptance.",
+  "schema": "unit-row-channel4-verifier-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 18475,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+    "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+  },
+  "source_only": true
+}

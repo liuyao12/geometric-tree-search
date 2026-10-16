@@ -1,0 +1,51 @@
+{
+  "author_identity": "/root",
+  "authorship": "Reviewer diagnosis authored the marked verifier9fd60 and earlier consumer/controls/1717/codec/family dependencies, not these Root saved-only decoder/closer helpers. This review checks transport and saved evidence use; it is not a second mathematical kernel or a new scientific verification run.",
+  "blockers": [],
+  "checks": 11,
+  "context_contract": {
+    "bytes": 31657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "f015b99fbb684545ed76d6a6ebcf0207802a989acd6f95a06c08dc4e097d33aa"
+  },
+  "decoder_source": {
+    "bytes": 5292,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT_decode_saved_transport_v5.py",
+    "sha256": "c97ba7e8d50db5bdc70476e02aa6c4552822125ef217fd6d2dd5fbb6f9988120"
+  },
+  "disposition": "CONDITIONAL_SOURCE_PASS_AND_SAVED_LITERAL_CONCORDANCE",
+  "findings": {
+    "bytes": 8533,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-saved-independent-20261016/findings-v1.json",
+    "sha256": "715e5bb5d4e58525a6afc3cc927673d175d175080a3b36be71f0b32bd7bfebcc"
+  },
+  "helpers_already_run_by_Root": true,
+  "post_hoc_review": true,
+  "remaining_gap": "No marked engine integration or target/GCTS/RL/gain admission.",
+  "reviewer_executed_helpers": false,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-certified-marking-saved-concordance-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "scope": "unit-row-certified-marking-saved-JSON-concordance-Source",
+  "source": {
+    "bytes": 11817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT_close_marking_saved_v1.py",
+    "sha256": "b026843a2becfff98e84a677dcc2dc45374642eeeebf0c26c8ff421e5d074991"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 11817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT_close_marking_saved_v1.py",
+      "sha256": "b026843a2becfff98e84a677dcc2dc45374642eeeebf0c26c8ff421e5d074991"
+    },
+    "decoder": {
+      "bytes": 5292,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT_decode_saved_transport_v5.py",
+      "sha256": "c97ba7e8d50db5bdc70476e02aa6c4552822125ef217fd6d2dd5fbb6f9988120"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "API": {
+    "base_state": "Whole unchanged original c354 private_state schema/epoch/t/m/selected/excluded/generation. Independent verifier must freshly validate complete original projection; constructor performs point-data shape/agreement only.",
+    "base_tile": "Exactly seven fields of original c354.rebuild_tile: placement_key,selection_record,local_t_values,local_m_values,global_t_values,global_m_values,membership. Search read_obligations absent; no extra fields silently dropped. Independent verifier must rebuild this original primitive/ordered-offset/translation object.",
+    "errors": "ValueError for explicit inconsistent data/point conflicts; malformed missing fields may raise builtin errors. No catch converts errors/timeouts into absence/exhaustion/accepted output. Captured resource tick charged inside pure data construction, full external Source/authority guards unchanged.",
+    "evidence": "Nonempty finite paired list of externally authenticated prior Root-accepted original row0 certificates+checked data, same exact original authority and binding. Root/controller authenticates whole accepted result/closure/provenance; this builder checks data joins/schema/status/hash/full recomputation data only. It never turns claimed flags into scientific acceptance.",
+    "freeze": "freeze_marking(*,original_binding,certificates,projection_checks,tick) -> unit-row-certified-row0-marking-v1",
+    "prototype": "decorate_prototype(*,marking,base_tile,tick) -> unit-row-row0-decorated-tile-v1",
+    "selected": "Complete decorated packet list in identical base_state.selected order; exact original selection records/full packets must agree. Empty list with original empty-selected root serves boundary construction.",
+    "state": "decorate_state(*,marking,base_state,decorated_selected,tick) -> unit-row-row0-decorated-state-v1"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 3135,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/author-static-v1.json",
+    "sha256": "cff291e95564b7821244032bd81adf55bfee802f0ba80190ffdb449f20be8986"
+  },
+  "references": {
+    "accepted_certification_disposition": {
+      "bytes": 4857,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-disposition-v1.json",
+      "sha256": "f5a7ea6c285faf0d99402dcb83ee42df54d5a9bd95a00a536d509d411e73214e"
+    },
+    "engine_integration_seam_note": {
+      "bytes": 9897,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-seam-source-20261016/integration-seam-v1.json",
+      "sha256": "17024af0dcbb698dae8f591447769897e2d212b3b8cd1e4da71429161bc3c415"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "original_point_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "projection_contract": {
+      "bytes": 13159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/Source-contract-v1.json",
+      "sha256": "686a09b276c2d377353a01ad005b275d95333db6b698f4a5053f63b3c57f3c4d"
+    },
+    "projection_module": {
+      "bytes": 11074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    }
+  },
+  "review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "unit-row-certified-row0-mark-decorator-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-frozen-certified-row0-point-mark-decorator-Source",
+    "source": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "source_contract": "Exact current raw contract pin",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer determines"
+  },
+  "schema": "unit-row-certified-row0-mark-decorator-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-frozen-certified-row0-point-mark-decorator-Source",
+  "source": {
+    "bytes": 12619,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+    "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+  },
+  "source_contract": {
+    "bytes": 14800,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/Source-contract-v1.json",
+    "sha256": "cfdf9dc0f39fd96f7565c5d0028a7d546cce7d013b994de7d2f4a88730d63427"
+  },
+  "source_only": true,
+  "sources": {
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    }
+  },
+  "status": "FROZEN_SOURCE_ONLY_UNEXECUTED_PENDING_INDEPENDENT_VERIFIER_REVIEW_AND_ROOT_ACTUAL"
+}

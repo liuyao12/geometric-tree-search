@@ -1,0 +1,681 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-cold-source-20261016/certify_row0_marking_cold_v1.py
+@@ -1,5 +1,5 @@
+-"""SOURCE ONLY: fresh certification of two first saved DEAD0 contexts.
+-Current executable Source7 is separate from authenticated original Model Source17.
++"""Prospective cold data controls for an externally certified point marking.
++Current executable Source9 is separate from authenticated original Model Source17.
+ No engine/search/target proof or marking activation is performed.
+ """
+ import time
+@@ -25,12 +25,12 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-first-DEAD0-certification-cold-v1'
+-SCOPE='unit-row-first-DEAD0-certification-cold-Source'
++VERSION='unit-row-certified-row0-marking-cold-v1'
++SCOPE='unit-row-certified-row0-marking-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+-FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'row0_projection': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py', 'sha256': 'cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab', 'bytes': 11074}}
+-FIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'canonical_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-canonical-search-plan-v1.json', 'sha256': 'b5d28b6269cf6fd19394850c8de833e185529568a66dffc84c2477a6af565366', 'bytes': 7926}, 'canonical_prefix': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/canonical-search-owned-v1/unknown-diagnostic.json', 'sha256': 'af53a1a7fc531107c5f8dfdd6ecd2f3bc534a9c7ee5bf66a7d8fde812bbca9b4', 'bytes': 967331}, 'canonical_completion': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/canonical-search-owned-v1/diagnostic-completion.json', 'sha256': '6140ae4d0aa61f61ac9a3a8f1d11d6c80756fb449f63590d93bdff94a16ec190', 'bytes': 337}, 'advised_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-advised-search-plan-v1.json', 'sha256': '118cd141b9c45a7592e965c959ece6acfc49b0a4b4cbb15e2e9ccf5d62e8c7c1', 'bytes': 7917}, 'advised_prefix': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json', 'sha256': '95156ef6f9b73eef97188a09d67a8c4b93ada761e7ccf9a69d9abbd6b7e0025d', 'bytes': 980523}, 'advised_completion': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advised-search-owned-v1/diagnostic-completion.json', 'sha256': '12d234026b2929daf831dcd6cc91c3aa409cd2cba8065b3a93eef4f7c2310515', 'bytes': 337}}
++FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'row0_projection': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py', 'sha256': 'cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab', 'bytes': 11074}, 'decorator': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895', 'bytes': 12619}, 'marked_verifier': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a', 'bytes': 18475}}
++FIXED_INPUTS={'certification_disposition': {'bytes': 4857, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-disposition-v1.json', 'sha256': 'f5a7ea6c285faf0d99402dcb83ee42df54d5a9bd95a00a536d509d411e73214e'}, 'certification_encoded': {'bytes': 43357, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/certification-owned-v1/engine-result.json', 'sha256': '9b152865766b25f5b823132c97d33f160b9b8f4262570dfc5a6a29812793412c'}, 'certification_expanded': {'bytes': 257089, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-expanded-result-v1.json', 'sha256': '58fd7d7f61a0e198d7525ac0b80be05832a49d60549debceab0315ac99427a62'}, 'certification_plan': {'bytes': 6722, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-plan-v1.json', 'sha256': 'd4da8ae35d852cb53e6b252233b40d7ddf2610d843cddc99cc5e2fcfc9f39e8f'}, 'certification_response': {'bytes': 6512, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/certification-owned-v1/response.jsonl', 'sha256': '07e8cf1050c9d09f64a73429f4010e36287aa6153fb8cf471cee573503363d01'}, 'certification_transport': {'bytes': 1484, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-transport-concordance-v1.json', 'sha256': 'a74b4a75e4041d761870d65b1894589e2ab6fd482a591ed58532d7df43055729'}, 'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+ 
+ ORIGINAL_SOURCES={'advice_controls': {'bytes': 130156, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py', 'sha256': '0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3'}, 'advice_validator': {'bytes': 16299, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py', 'sha256': '8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1'}, 'adviser': {'bytes': 26007, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py', 'sha256': '6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98'}, 'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'controls': {'bytes': 31931, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py', 'sha256': '50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a'}, 'converter': {'bytes': 5528, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py', 'sha256': 'baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'engine': {'bytes': 55152, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py', 'sha256': '54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'intake': {'bytes': 55852, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py', 'sha256': '652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'point_checker': {'bytes': 10201, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py', 'sha256': '99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'retained_controls': {'bytes': 25338, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py', 'sha256': 'd1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb'}, 'transition': {'bytes': 8134, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py', 'sha256': '2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491'}, 'word_checker': {'bytes': 46514, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py', 'sha256': '1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3'}}
+@@ -323,82 +323,9 @@
+     need(len(encoded) <= 4*1048576, 'whole encoded lossless result output cap')
+     return encoded
+ 
+-def extract_first_dead0(document, original_plan, original_plan_pin, expected_purpose, tick):
+-    """Select a bounded saved proposal, never accept its old degree claims."""
+-    tick()
+-    need(type(document) is dict and set(document)=={'context','diagnostic','returned_metadata','events_prefix'},
+-         'whole saved diagnostic fields')
+-    context=document['context'];diagnostic=document['diagnostic'];events=document['events_prefix']
+-    need(context['plan']=={k:original_plan_pin[k] for k in ('sha256','bytes')}
+-         and context['sources']==ORIGINAL_SOURCES and context['inputs']==ORIGINAL_INPUTS
+-         and context['language_binding']==ORIGINAL_BINDING and context['limits']==LIMITS
+-         and context['invocation_id']==original_plan['invocation_id']
+-         and context['purpose']==original_plan['purpose']==expected_purpose,
+-         'whole original saved context and model binding')
+-    need(diagnostic['schema']=='unit-row-search-failure-diagnostic-v1'
+-         and diagnostic['qualification']=='UNQUALIFIED_UNKNOWN_RAW_PREFIX'
+-         and diagnostic['diagnostic_only'] is True and diagnostic['capture_available'] is True
+-         and diagnostic['positive_joint_gate_accepted'] is False
+-         and diagnostic['ROOT_resource_accepted'] is False,
+-         'saved data are unqualified proposals only')
+-    need(type(events) is list and 0<len(events)<=2000
+-         and diagnostic['saved_event_count']==len(events), 'bounded complete saved prefix')
+-    index=None
+-    for ordinal,event in enumerate(events):
+-        tick()
+-        need(type(event) is dict and type(event.get('event')) is int
+-             and event['event']==ordinal and type(event.get('kind')) is str,
+-             'literal ordered saved events')
+-        decision=event.get('decision')
+-        if index is None and event['kind']=='DECISION' and type(decision) is dict and decision.get('kind')=='DEAD':
+-            need(set(decision)=={'kind','row'} and type(decision['row']) is int,'strict saved DEAD decision fields')
+-            if decision['row']==0:index=ordinal
+-    need(index is not None, 'saved prefix has a first DEAD0 proposal')
+-    prefix=events[:index+1];tries=[];places=[]
+-    for event in prefix:
+-        tick()
+-        need(event['kind'] in ('DECISION','FALLBACK','TRY','ADVICE','INVALIDATE','PLACE'),
+-             'root one-placement prefix only')
+-        if event['kind']=='TRY':tries.append(event)
+-        if event['kind']=='PLACE':places.append(event)
+-    need(len(tries)==len(places)==1 and 0<tries[0]['event']<places[0]['event']<index,
+-         'one preceding root TRY and PLACE')
+-    trial,place=tries[0],places[0];root=prefix[0]
+-    need(trial['mode']=='BRANCH' and type(trial['depth']) is int and trial['depth']==0
+-         and root['kind']=='DECISION' and root['decision']=={'kind':'BRANCH','row':trial['row']}
+-         and type(trial['row']) is int and 0<=trial['row']<24
+-         and place['row']==trial['row'] and canonical(trial['key'])==canonical(place['key'])
+-         and trial['state_sha256']==root['state_sha256']
+-         and place['state_sha256']==prefix[-1]['state_sha256'],
+-         'exact root branch and single full-key placement join')
+-    key=copy.deepcopy(place['key'])
+-    need(type(key) is dict and set(key)=={'tile_type_id','type_preimage','translation'}
+-         and key['translation']==[0,trial['row']], 'complete selected placement key')
+-    # All evidence/status arrays and returned_metadata are deliberately unused.
+-    tick()
+-    return {'schema':'first-DEAD0-context-extraction-v1','dead_event_index':index,
+-        'try_event_index':trial['event'],'place_event_index':place['event'],
+-        'selected_key':key,'expected_root_state_sha256':root['state_sha256'],
+-        'expected_state_sha256':place['state_sha256'],'selected_prefix_events':copy.deepcopy(prefix),
+-        'saved_receipts_accepted':False,'trajectory_accepted':False}
+-
+-
+-def require_fresh_zero(receipt, state):
+-    need(type(receipt) is dict and receipt['schema']=='unit-row-degree-evidence-check-v2'
+-         and receipt['version']=='independent-unit-row-missing-mark-degree-check-v2'
+-         and receipt['status']=='ZERO' and receipt['accepted_local_evidence'] is True
+-         and receipt['complete_cover_checked'] is True and type(receipt['degree_exact']) is int
+-         and receipt['degree_exact']==0 and receipt['candidate_keys']==[]
+-         and receipt['sole_candidate'] is None and type(receipt['row']) is int and receipt['row']==0
+-         and receipt['input_epoch']==state['input_epoch']
+-         and receipt['state_sha256']==hashlib.sha256(canonical(state)).hexdigest()
+-         and all(receipt[k] is False for k in ('complete_candidate_graph_accepted',
+-             'scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted')),
+-         'fresh independently completed ZERO required')
+-
+ 
+ def main(argv):
+-    need(__name__=='__main__' and len(argv)==1,'one Root local-certification plan')
++    need(__name__=='__main__' and len(argv)==1,'one Root certified-marking data plan')
+     end=EARLY_G+20000000000
+     usage,self_id,clock,clock_id,exit_fn=resource.getrusage,resource.RUSAGE_SELF,CLOCK,CLOCK_ID,EXIT
+     def tick():
+@@ -409,15 +336,15 @@
+             raise RuntimeError('original native clock/resource/exit endpoints changed')
+         peak=usage(self_id).ru_maxrss;now=clock(clock_id)
+         if CANCELLED or not EARLY_G<=now<end or peak>=524288000:
+-            raise TimeoutError('complete local certification original20/500 reserve unfinished')
++            raise TimeoutError('complete marking data controls original20/500 reserve unfinished')
+         return now
+     tick();signal.signal(signal.SIGINT,cancel);signal.signal(signal.SIGTERM,cancel)
+     path=Path(argv[0]);need(path.is_absolute() and path==path.resolve(),'canonical Root plan path')
+     plan_raw=path.read_bytes();need(len(plan_raw)<=1048576,'whole bounded Root plan');plan=decode(plan_raw)
+     need(set(plan)=={'schema','invocation_id','purpose','output_directory','sources','inputs','source_contract',
+         'reviews','ROOT_authorization','runtime','limits','resource_rule'},'exact current plan12')
+-    need(plan['schema']=='ROOT-first-DEAD0-certification-plan-v1'
+-         and plan['purpose']=='unit-row-first-DEAD0-certification'
++    need(plan['schema']=='ROOT-certified-row0-marking-data-plan-v1'
++         and plan['purpose']=='unit-row-certified-row0-marking-data-controls'
+          and plan['resource_rule']=='single-owned-process-native-terminal-v1'
+          and plan['limits']==LIMITS and all(type(v) is int for v in plan['limits'].values()),'original six limits')
+     need(type(plan['invocation_id']) is str and 1<=len(plan['invocation_id'])<=128
+@@ -425,12 +352,12 @@
+     need(set(plan['sources'])=={'intake',*FIXED}
+          and all(plan['sources'][k]==v for k,v in FIXED.items())
+          and plan['sources']['intake']['path']==str(Path(__file__).resolve())
+-         and plan['inputs']==FIXED_INPUTS,'exact current executable Source7 and saved input8')
++         and plan['inputs']==FIXED_INPUTS,'exact current executable Source9 and saved input8')
+     need(sys.platform=='darwin' and Path(sys.executable).resolve()==Path(plan['runtime']['path']).resolve(),'native Darwin runtime')
+     read_pinned(plan['runtime'])
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='unit-row-first-DEAD0-certification-cold-Source-contract-v1'
++    need(contract['schema']=='unit-row-certified-row0-marking-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -438,15 +365,15 @@
+     need(set(plan['reviews'])=={'ROOT','peer'},'Root review and distinct whole-Source peer')
+     for role,ref in plan['reviews'].items():
+         review=decode(read_pinned(ref))
+-        need(review['scope']==SCOPE and review['author_identity']=='/root/arithmetic_induction'
++        need(review['scope']==SCOPE and review['author_identity']=='/root/hilbert_advice_controls'
+              and review['source']==plan['sources']['intake'] and review['sources']==plan['sources']
+              and review['source_contract']==plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and type(review['scientific_calls']) is int
+              and review['scientific_calls']==0 and review['scientific_acceptance'] is False
+-             and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] not in ('/root/arithmetic_induction','/root')),
++             and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] not in ('/root/hilbert_advice_controls','/root')),
+              'genuine current scoped Source reviews')
+     grant=decode(read_pinned(plan['ROOT_authorization']))
+-    need(grant['schema']=='ROOT-first-DEAD0-certification-authorization-v1'
++    need(grant['schema']=='ROOT-certified-row0-marking-data-authorization-v1'
+          and grant['author_identity']=='/root' and grant['actual_execution_authorized'] is True
+          and type(grant['maximum_actual_invocations']) is int and grant['maximum_actual_invocations']==1
+          and all(grant[k]==plan[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',
+@@ -456,38 +383,12 @@
+     for role in ('clean_support','kernel','membership','proposer','degree_checker'):
+         need(FIXED[role]==ORIGINAL_SOURCES[role] and source_raw[role]==original_raw[role],
+              'current delegated mathematical role raw-identical to original model')
+-    old_plans={}
+-    for arm,purpose in (('canonical','unit-row-advised-canonical-search'),('advised','unit-row-advised-target-search')):
+-        old=decode(inputs_raw[arm+'_plan']);old_plans[arm]=old
+-        need(old['schema']=='ROOT-unit-row-global-engine-plan-v1' and old['purpose']==purpose
+-             and old['sources']==ORIGINAL_SOURCES and old['inputs']==ORIGINAL_INPUTS
+-             and old['limits']==LIMITS and old['resource_rule']==plan['resource_rule'],
+-             'separately authenticated original Source17 plan')
+-        old_contract=decode(read_pinned(old['source_contract']))
+-        need(old_contract['sources']==ORIGINAL_SOURCES and old_contract['inputs']==ORIGINAL_INPUTS,
+-             'original whole source contract')
+-        old_grant=decode(read_pinned(old['ROOT_authorization']))
+-        need(old_grant['author_identity']=='/root' and old_grant['actual_execution_authorized'] is True
+-             and old_grant['maximum_actual_invocations']==1
+-             and all(old_grant[k]==old[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',
+-                 'reviews','runtime','limits','resource_rule','output_directory')),'original fixed Root grant provenance only')
+-        for role,ref in old['reviews'].items():
+-            rv=decode(read_pinned(ref));need(rv['source']==ORIGINAL_SOURCES['intake']
+-                and rv['sources']==ORIGINAL_SOURCES and rv['source_contract']==old['source_contract']
+-                and rv['source_only'] is True and rv['source_review_passed'] is True,'original Source review provenance only')
+-        marker=decode(inputs_raw[arm+'_completion'])
+-        need(marker['schema']=='unit-row-search-failure-diagnostic-completion-v1'
+-             and marker['file']=='unknown-diagnostic.json'
+-             and {k:marker[k] for k in ('sha256','bytes')}==raw_pin(inputs_raw[arm+'_prefix'])
+-             and marker['diagnostic_only'] is True and marker['positive_joint_gate_accepted'] is False
+-             and marker['ROOT_resource_accepted'] is False
+-             and marker['terminal_exit2_and_external_failure_closure_required'] is True,'whole original raw diagnostic completion')
+     declaration_raw,profile_raw=inputs_raw['declaration'],inputs_raw['profile']
+     need(FIXED_INPUTS['declaration']==ORIGINAL_INPUTS['declaration'] and FIXED_INPUTS['profile']==ORIGINAL_INPUTS['profile'],
+          'same original raw input2')
+     authority_raw=canonical({'declaration':decode(declaration_raw),'policy':decode(profile_raw),
+         'source_bindings':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING})
+-    original_context_raw=canonical({'sources':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING,'inputs':ORIGINAL_INPUTS,'plans':old_plans})
++    original_context_raw=canonical({'sources':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING,'inputs':ORIGINAL_INPUTS,'accepted_inputs':FIXED_INPUTS})
+     modules={role:load_module(role,source_raw[role]) for role in FIXED}
+     support,kernel,membership,semantics=(modules[k] for k in ('clean_support','kernel','membership','degree_checker'))
+     decoder=json.JSONDecoder(object_pairs_hook=unique,parse_float=finite_float,parse_constant=reject_constant)
+@@ -511,7 +412,7 @@
+             if any(not same_fn(fn,state) for fn,state in strong_functions):
+                 raise RuntimeError('original Source code/defaults/cells changed')
+         need(canonical(plan)==plan_raw_value and canonical({'sources':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING,
+-             'inputs':ORIGINAL_INPUTS,'plans':old_plans})==original_context_raw,'current plan and private original authority unchanged')
++             'inputs':ORIGINAL_INPUTS,'accepted_inputs':FIXED_INPUTS})==original_context_raw,'current plan and private original authority unchanged')
+     guard_state=anchor_fn(guard)
+     def boundary():
+         if not same_fn(guard,guard_state):raise RuntimeError('original immediate boundary guard changed')
+@@ -529,130 +430,347 @@
+             'source_bindings':copy.deepcopy(ORIGINAL_SOURCES),'kernel_module':kernel,'local_deadline':local_deadline,'tick':tick})
+         need(canonical(language.binding)==canonical(ORIGINAL_BINDING),'exact original model epoch without rebasing')
+         return language
+-    def rebuild_sample(extraction,language):
+-        tick();epoch=ORIGINAL_BINDING['language_epoch']
+-        root={'schema':'unit-row-implicit-private-state-v1','input_epoch':epoch,'height':24,
+-            't':[[[0,r],0] for r in range(24)],
+-            'm':[[[1,k],['outside',epoch]] for k in range(-23,0)]+[[[1,23],['formula',canonical(language.target).decode('utf8')]]],
+-            'selected':[],'excluded':[],'generation':[[[0,r],0] for r in range(24)]}
+-        need(hashlib.sha256(canonical(root)).hexdigest()==extraction['expected_root_state_sha256'],'exact saved root state SHA')
+-        key=copy.deepcopy(extraction['selected_key'])
+-        need(key['type_preimage']['input_epoch']==epoch,'selected original epoch required')
+-        _,totals,marks,selected,excluded,names=semantics.private_state(language,root,tick)
+-        candidate=semantics.rebuild_tile(language,key['type_preimage'],key['translation'],tick)
+-        need(canonical(candidate['placement_key'])==canonical(key),'selected original full key without rewriting')
+-        semantics.check_collision(candidate,names)
+-        need(semantics.legality(candidate,totals,marks,selected,excluded) is None,'selected whole original placement legal')
+-        for point,value in candidate['global_t_values']:
+-            tick();point=tuple(point);need(point in totals,'selected support within fixed target');totals[point]+=value
+-        for point,value in candidate['global_m_values']:
+-            tick();point=tuple(point)
+-            need(point not in marks or canonical(marks[point])==canonical(value),'selected literal marking agreement')
+-            marks[point]=copy.deepcopy(value)
+-        state=dict(root,t=sorted([[list(p),v] for p,v in totals.items()]),m=sorted([[list(p),v] for p,v in marks.items()]),
+-            selected=[candidate['selection_record']])
+-        checked=semantics.private_state(language,state,tick)[0]
+-        need(canonical(checked)==canonical(state) and state['excluded']==[]
+-             and dict((tuple(p),v) for p,v in state['t'])[(0,0)]==0,'unfilled row0 exact reconstructed state')
+-        need(hashlib.sha256(canonical(state)).hexdigest()==extraction['expected_state_sha256'],'exact saved rebuilt state SHA')
+-        return state
+-    def check_proposal(state,proposal):
+-        language=fresh_language()
+-        return call(semantics.check_degree_evidence,kwargs={'language':language,'state':copy.deepcopy(state),
+-            'row':0,'proposal':copy.deepcopy(proposal),'tick':tick})
+-    controls=[]
+-    def negative(name,fn,reason):
+-        tick();caught=None
+-        try:call(fn)
++    # Prior Root acceptance is a separate fixed INPUT, never current execution.
++    accepted = decode(inputs_raw['certification_disposition'])
++    prior = decode(inputs_raw['certification_plan'])
++    transport = decode(inputs_raw['certification_transport'])
++    expanded = decode(inputs_raw['certification_expanded'])
++    need(accepted['schema'] == 'ROOT-row0-failure-certification-disposition-v1'
++         and accepted['actual_closed'] is True and accepted['all_reaped'] is True
++         and accepted['native_resources_qualified'] is True and accepted['complete_wire_verified'] is True
++         and accepted['passed_cases'] == 12 and accepted['skipped_cases'] == 0
++         and accepted['fresh_local_contexts_accepted'] == 2
++         and accepted['input_scoped_row0_projection_certificates_accepted'] == 2,
++         'fixed prior Root acceptance of exactly two certified literals')
++    need(accepted['plan'] == FIXED_INPUTS['certification_plan']
++         and accepted['lossless_transport_concordance'] == FIXED_INPUTS['certification_transport']
++         and accepted['outputs'] == [FIXED_INPUTS['certification_encoded'], FIXED_INPUTS['certification_response']]
++         and transport['plan'] == FIXED_INPUTS['certification_plan']
++         and transport['encoded_file'] == FIXED_INPUTS['certification_encoded']
++         and transport['expanded_file'] == FIXED_INPUTS['certification_expanded']
++         and transport['all_full_record_bytes_retained'] is True,
++         'whole authenticated prior disposition/plan/transport/output joins')
++    need(canonical(expanded) + b'\n' == inputs_raw['certification_expanded']
++         and expanded['sources'] == prior['sources'] and expanded['inputs'] == prior['inputs']
++         and expanded['purpose'] == prior['purpose'] == 'unit-row-first-DEAD0-certification'
++         and expanded['language_binding'] == accepted['original_model_binding'] == ORIGINAL_BINDING,
++         'whole canonical accepted result and original semantic binding')
++    old_contract = decode(read_pinned(prior['source_contract']))
++    need(old_contract['sources'] == prior['sources'] and old_contract['inputs'] == prior['inputs']
++         and old_contract['original_model_sources'] == ORIGINAL_SOURCES
++         and old_contract['original_model_binding'] == ORIGINAL_BINDING,
++         'accepted original7 verification and semantic17 provenance')
++    for ref in prior['sources'].values():
++        read_pinned(ref)
++    for ref in prior['inputs'].values():
++        read_pinned(ref, 4*1048576+131072)
++    old_grant = decode(read_pinned(prior['ROOT_authorization']))
++    need(old_grant['author_identity'] == '/root' and old_grant['actual_execution_authorized'] is True
++         and old_grant['maximum_actual_invocations'] == 1
++         and all(old_grant[k] == prior[k] for k in ('invocation_id', 'purpose', 'sources', 'inputs',
++             'source_contract', 'reviews', 'runtime', 'limits', 'resource_rule', 'output_directory')),
++         'prior fixed Root grant provenance only')
++    for ref in prior['reviews'].values():
++        review = decode(read_pinned(ref))
++        need(review['source'] == prior['sources']['intake'] and review['sources'] == prior['sources']
++             and review['source_contract'] == prior['source_contract'] and review['source_only'] is True
++             and review['source_review_passed'] is True, 'prior exact Source review provenance')
++    lines = inputs_raw['certification_response'].splitlines(keepends=True)
++    need(len(lines) == 2 and all(v.endswith(b'\n') for v in lines), 'prior whole response twoLF')
++    old_body, old_completion = map(decode, lines)
++    need(old_completion['body_sha256'] == hashlib.sha256(lines[0]).hexdigest()
++         and old_completion['body_bytes'] == len(lines[0])
++         and old_body['plan'] == raw_pin(inputs_raw['certification_plan'])
++         and old_body['sources'] == prior['sources'] and old_body['inputs'] == prior['inputs']
++         and old_body['outputs'] == [FIXED_INPUTS['certification_encoded']],
++         'accepted complete prior body/output bytes')
++    previous = expanded['certification']
++    need(previous['schema'] == 'ROOT-first-DEAD0-certification-payload-v1'
++         and previous['sample_count'] == 2 and previous['control_count'] == 12
++         and previous['original_model_sources'] == ORIGINAL_SOURCES
++         and previous['original_model_binding'] == ORIGINAL_BINDING
++         and [s['arm'] for s in previous['samples']] == ['canonical', 'advised']
++         and len(previous['controls']) == 12 and all(c['status'] == 'PASSED' for c in previous['controls']),
++         'exact external accepted sample/certificate data')
++    samples = previous['samples']
++    for sample, summary in zip(samples, accepted['samples']):
++        need(sample['arm'] == summary['arm']
++             and sample['state_sha256'] == summary['state_sha256']
++             and canonical(sample['literal']) == canonical(summary['literal'])
++             and sample['projection_check']['certificate_sha256'] == summary['projection_certificate_sha256']
++             and sample['projection_check']['projection_accepted'] is True
++             and sample['projection_certificate']['status'] == 'FORBIDDEN',
++             'each whole external accepted certificate/sample binding')
++    need(all(accepted[k] is False for k in ('logical_proof_accepted', 'target_impossibility_accepted',
++        'old_trajectory_accepted', 'failure_marking_activated', 'RL_accepted', 'GCTS_advantage_claimed',
++        'complete_GCTS_model_accepted')), 'prior narrow acceptance only, no activation or proof')
++
++    def root_state(language):
++        epoch = ORIGINAL_BINDING['language_epoch']
++        return {'schema': 'unit-row-implicit-private-state-v1', 'input_epoch': epoch, 'height': 24,
++            't': [[[0,r],0] for r in range(24)],
++            'm': [[[1,k],['outside',epoch]] for k in range(-23,0)]
++                 + [[[1,23],['formula',canonical(language.target).decode('utf8')]]],
++            'selected': [], 'excluded': [], 'generation': [[[0,r],0] for r in range(24)]}
++
++    def original_tile(key):
++        language = fresh_language()
++        value = semantics.rebuild_tile(language, copy.deepcopy(key['type_preimage']),
++                                       copy.deepcopy(key['translation']), tick)
++        need(canonical(value['placement_key']) == canonical(key), 'original whole base key without rewriting')
++        return value
++
++    def original_state(tiles):
++        language = fresh_language()
++        state = root_state(language)
++        for tile in tiles:
++            _, totals, marks, selected, excluded, names = semantics.private_state(language, state, tick)
++            rebuilt = semantics.rebuild_tile(language, tile['placement_key']['type_preimage'],
++                                             tile['placement_key']['translation'], tick)
++            need(canonical(rebuilt) == canonical(tile), 'whole fresh original bare tile')
++            semantics.check_collision(rebuilt, names)
++            need(semantics.legality(rebuilt, totals, marks, selected, excluded) is None,
++                 'fixture base placement whole-point legal')
++            for point, value in rebuilt['global_t_values']:
++                totals[tuple(point)] += value
++            for point, value in rebuilt['global_m_values']:
++                semantics.agree(marks, tuple(point), value)
++            state = dict(state, t=sorted([[list(p),v] for p,v in totals.items()]),
++                m=sorted([[list(p),v] for p,v in marks.items()]),
++                selected=state['selected'] + [rebuilt['selection_record']])
++        return semantics.private_state(language, state, tick)[0]
++
++    def decorate_tile(tile):
++        return call(decorator.decorate_prototype, kwargs={
++            'marking': copy.deepcopy(marking), 'base_tile': copy.deepcopy(tile), 'tick': tick})
++
++    def check_tile(packet):
++        language = fresh_language()
++        rebuilt = call(verifier.check_decorated_tile, kwargs={'language': language, 'semantics': semantics,
++            'marking': copy.deepcopy(marking), 'tile': copy.deepcopy(packet), 'tick': tick})
++        need(canonical(rebuilt) == canonical(packet), 'independent entire decorated tile equals constructor')
++        return rebuilt
++
++    def compose(base, packets):
++        return call(decorator.decorate_state, kwargs={'marking': copy.deepcopy(marking),
++            'base_state': copy.deepcopy(base), 'decorated_selected': copy.deepcopy(packets), 'tick': tick})
++
++    def check_state(value, selected_marking=None, endpoint_tick=None):
++        receipt = call(verifier.check_marked_state, kwargs={'language': fresh_language(), 'semantics': semantics,
++            'marking': copy.deepcopy(marking if selected_marking is None else selected_marking),
++            'state': copy.deepcopy(value), 'tick': tick if endpoint_tick is None else endpoint_tick})
++        need(receipt['schema'] == 'unit-row-channel4-marked-state-check-v1'
++             and receipt['version'] == 'unit-row-independent-channel4-state-verifier-v1'
++             and receipt['marked_state_checked'] is True and receipt['projection_literals_rechecked'] is True
++             and receipt['original_binding'] == ORIGINAL_BINDING
++             and receipt['original_state_sha256'] == hashlib.sha256(canonical(value['base_state'])).hexdigest()
++             and receipt['marked_state_sha256'] == hashlib.sha256(canonical(value)).hexdigest()
++             and all(receipt[k] is False for k in ('logical_proof_accepted','exact_point_board_accepted',
++                 'complete_GCTS_model_accepted','marking_activated','trajectory_accepted',
++                 'degree_or_EOF_accepted','GCTS_advantage_accepted','RL_accepted','ROOT_resource_accepted')),
++             'narrow full marked-state verification receipt, not board or graph acceptance')
++        return receipt
++
++    def point_comparison(base, packet):
++        # Measured original legality plus PURE point-value matching, not a rule
++        # classifier and not a candidate graph/degree/trajectory certificate.
++        language = fresh_language()
++        _, totals, marks, selected, excluded, names = semantics.private_state(language, base_root, tick)
++        semantics.check_collision(base, names)
++        reason = semantics.legality(base, totals, marks, selected, excluded)
++        left = {tuple(p):v for p,v in marked_root['global_m_values']}
++        right = {tuple(p):v for p,v in packet['global_m_values']}
++        shared = sorted(set(left) & set(right))
++        conflicts = [{'point':list(p),'state_value':left[p],'tile_value':right[p]}
++            for p in shared if canonical(left[p]) != canonical(right[p])]
++        aux = sorted(p for p in set(left) | set(right) if p[0] == 4)
++        capacity = [{'point':point,'state_value':totals.get(tuple(point),0), 'tile_value':value,
++            'sum':totals.get(tuple(point),0)+value} for point,value in packet['global_t_values']]
++        return {'schema':'measured-pure-point-mark-comparison-v1', 'original_base_tile':base,
++            'full_decorated_tile':packet, 'base_root_state':base_root,'marked_root_state':marked_root,
++            'original_base_legality_reason':reason,'original_base_legal':reason is None,
++            'all_shared_mark_points':[{'point':list(p),'state_value':left[p],'tile_value':right[p]} for p in shared],
++            'shared_added_channel_points':[{'point':list(p),'state_value':left[p],'tile_value':right[p]}
++                for p in shared if p[0] == 4],
++            'all_added_channel_points':[{'point':list(p),'state_assigned':p in left,
++                'state_value':left[p] if p in left else None,'tile_assigned':p in right,
++                'tile_value':right[p] if p in right else None} for p in aux],
++            'conflict_points':conflicts,'t_capacity':capacity,
++            'compatible':not conflicts and all(v['sum']<=1 for v in capacity),
++            'scope':'Actual supplied point arrays only; no graph, degree, scheduler or target proof.'}
++
++    def passed(name, **observed):
++        tick()
++        controls.append(dict(case=name, status='PASSED', **observed))
++
++    def negative(name, fn, exact_reason):
++        reason = None
++        try:
++            call(fn)
++        except ValueError as error:
++            if type(error) is not ValueError:
++                raise
++            reason = str(error)
++        need(reason == exact_reason, 'exact scoped marking negative, no swallowed authority/resource failure')
++        passed(name, reason=reason)
++        return reason
++
++    decorator, verifier = modules['decorator'], modules['marked_verifier']
++    controls = []
++    marking = call(decorator.freeze_marking, kwargs={'original_binding': copy.deepcopy(ORIGINAL_BINDING),
++        'certificates': [copy.deepcopy(s['projection_certificate']) for s in samples],
++        'projection_checks': [copy.deepcopy(s['projection_check']) for s in samples], 'tick': tick})
++    definition_check = call(verifier.check_marking, kwargs={'language': fresh_language(), 'semantics': semantics,
++        'marking': copy.deepcopy(marking), 'tick': tick})
++    need(definition_check['schema']=='unit-row-channel4-marking-check-v1'
++         and definition_check['version']=='unit-row-independent-channel4-state-verifier-v1'
++         and definition_check['marking_id']==marking['marking_id']
++         and definition_check['marking_sha256']==hashlib.sha256(canonical(marking)).hexdigest()
++         and all(definition_check[k] is False for k in ('logical_proof_accepted','exact_point_board_accepted',
++             'complete_GCTS_model_accepted','marking_activated','trajectory_accepted','degree_or_EOF_accepted',
++             'GCTS_advantage_accepted','RL_accepted','ROOT_resource_accepted'))
++         and definition_check['marking_checked'] is True and definition_check['projection_literals_rechecked'] is True
++         and canonical(definition_check['marking']) == canonical(marking)
++         and definition_check['original_binding'] == ORIGINAL_BINDING, 'full independently checked definition')
++    passed('external-certified-table-and-independent-definition', receipt=definition_check)
++    base_root = call(original_state, ([],))
++    marked_root = compose(base_root, [])
++    root_receipt = check_state(marked_root)
++    need(marked_root['added_m_values'] == [[[4,0],0]]
++         and dict((tuple(p),v) for p,v in marked_root['global_m_values'])[(4,0)] == 0,
++         'root guard is actually assigned integer zero')
++    passed('root-boundary-assigned-zero', state=marked_root, receipt=root_receipt)
++    consumers = []
++    for sample in samples:
++        base = call(original_tile, (sample['selection']['selected_key'],))
++        base_state = call(original_state, ([base],))
++        need(canonical(base_state) == canonical(sample['state']), 'exact prior baselegal consumer projection')
++        packet = check_tile(decorate_tile(base))
++        need([[4,0],1] in packet['added_global_m_values'], 'actual compiled forbidden read at absolute zero')
++        comparison = call(point_comparison, (base,packet))
++        need(comparison['original_base_legal'] is True and comparison['compatible'] is False
++             and {'point':[4,0],'state_value':0,'tile_value':1} in comparison['conflict_points'],
++             'actual pure point mismatch, separate from reconstruction checks')
++        builder_reason = None
++        try:
++            compose(base_state,[packet])
+         except ValueError as error:
+             if type(error) is not ValueError:raise
+-            caught=str(error)
+-        need(caught==reason,'exact declared negative rejection, never callback/authority/resource failure')
+-        tick();controls.append({'case':name,'status':'PASSED','reason':caught})
+-    samples=[]
+-    for arm,purpose in (('canonical','unit-row-advised-canonical-search'),('advised','unit-row-advised-target-search')):
+-        tick();document=decode(inputs_raw[arm+'_prefix']);old=old_plans[arm]
+-        extraction=call(extract_first_dead0,(document,old,FIXED_INPUTS[arm+'_plan'],purpose,tick))
+-        language=fresh_language();state=call(rebuild_sample,(extraction,language))
+-        proposal=call(modules['proposer'].propose_degree,kwargs={'language':fresh_language(),
+-            'state':copy.deepcopy(state),'row':0,'tick':tick})
+-        receipt=check_proposal(state,proposal);call(require_fresh_zero,(receipt,state))
+-        literal=decode(dict((tuple(p),v) for p,v in state['m'])[(1,0)][1])
+-        projection=call(modules['row0_projection'].certify_row_zero_projection,kwargs={
+-            'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(literal),'tick':tick})
+-        projection_check=call(modules['row0_projection'].check_row_zero_projection,kwargs={
+-            'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(literal),
+-            'certificate':copy.deepcopy(projection),'tick':tick})
+-        need(projection['schema']=='unit-row-row-zero-projection-certificate-v1' and projection['status']=='FORBIDDEN'
+-             and projection_check['schema']=='unit-row-row-zero-projection-check-v1'
+-             and projection_check['projection_accepted'] is True
+-             and projection_check['certificate_sha256']==hashlib.sha256(json.dumps(projection,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode('ascii')).hexdigest()
+-             and canonical(projection_check['recomputed_certificate'])==canonical(projection),'fresh input-scoped row0 projection check')
+-        samples.append({'arm':arm,'selection':extraction,'state':state,'state_sha256':hashlib.sha256(canonical(state)).hexdigest(),
+-            'original_model_binding':copy.deepcopy(ORIGINAL_BINDING),'fresh_proposal':proposal,'fresh_receipt':receipt,
+-            'literal':literal,'projection_certificate':projection,'projection_check':projection_check,
+-            'saved_receipts_accepted':False,'old_trajectory_accepted':False})
+-        controls.append({'case':arm+'-fresh-complete-ZERO-and-projection','status':'PASSED'})
+-        if arm=='canonical':
+-            bad=copy.deepcopy(extraction);bad['expected_state_sha256']='0'*64
+-            negative('changed-saved-state-hash-rejected',lambda:rebuild_sample(bad,fresh_language()),'exact saved rebuilt state SHA')
+-            bad_epoch=copy.deepcopy(extraction);bad_epoch['selected_key']['type_preimage']['input_epoch']='stale'
+-            negative('selected-stale-epoch-rejected',lambda:rebuild_sample(bad_epoch,fresh_language()),'selected original epoch required')
+-            bad_doc=copy.deepcopy(document);bad_doc['events_prefix'][0]['kind']='EXCLUDE'
+-            negative('root-exclusion-prefix-rejected',lambda:extract_first_dead0(bad_doc,old,FIXED_INPUTS[arm+'_plan'],purpose,tick),'root one-placement prefix only')
+-            old_receipt=dict(document['events_prefix'][extraction['dead_event_index']]['evidence'])[0]
+-            negative('copied-old-ZERO-is-not-a-proposal',lambda:check_proposal(state,old_receipt),'degree evidence: exact proposal fields')
+-            forged=copy.deepcopy(proposal);forged['coverage']['axiom_labels_seen']=[]
+-            negative('forged-complete-cover-census-rejected',lambda:check_proposal(state,forged),'degree evidence: complete occurrence/pair census')
+-            unknown=copy.deepcopy(proposal);unknown.update(kind='UNKNOWN',complete_cover_proposed=False,candidates=[],coverage=None,fibre_cover=None,rejections=[])
+-            unknown_receipt=check_proposal(state,unknown)
+-            need(unknown_receipt['status']=='UNKNOWN' and unknown_receipt['complete_cover_checked'] is False,'honest incomplete query remains UNKNOWN')
+-            negative('UNKNOWN-never-certified-ZERO',lambda:require_fresh_zero(unknown_receipt,state),'fresh independently completed ZERO required')
+-    projection_flags=('logical_proof_accepted','exact_point_board_accepted','target_impossibility_accepted',
+-        'complete_GCTS_model_accepted','marking_activation_accepted','trajectory_accepted','GCTS_advantage_accepted','RL_accepted','ROOT_resource_accepted')
+-    for sample in samples:
+-        need(all(sample['projection_certificate'][k] is False and sample['projection_check'][k] is False for k in projection_flags),
+-             'projection is narrow input-scoped lemma only')
+-    ax_name=sorted(decode(authority_raw)['declaration']['theory']['axioms'])[0]
+-    ax_literal=copy.deepcopy(decode(authority_raw)['declaration']['theory']['axioms'][ax_name])
+-    ax_certificate=call(modules['row0_projection'].certify_row_zero_projection,kwargs={
+-        'language':fresh_language(),'authority':decode(authority_raw),'literal':ax_literal,'tick':tick})
+-    ax_check=call(modules['row0_projection'].check_row_zero_projection,kwargs={
+-        'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(ax_literal),
+-        'certificate':copy.deepcopy(ax_certificate),'tick':tick})
+-    need(ax_certificate['status']=='NOT_CERTIFIED' and ax_check['projection_accepted'] is False,
+-         'actual original named AX cannot yield a forbidden projection certificate')
+-    controls.append({'case':'original-AX-is-not-forbidden','status':'PASSED','AX_name':ax_name,
+-        'certificate':ax_certificate,'check':ax_check})
+-    reference=samples[0]
+-    def check_projection(certificate):
+-        return call(modules['row0_projection'].check_row_zero_projection,kwargs={
+-            'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(reference['literal']),
+-            'certificate':certificate,'tick':tick})
+-    for mutation in ('census','binding','literal'):
+-        forged_projection=copy.deepcopy(reference['projection_certificate'])
+-        if mutation=='census':forged_projection['named_axiom_census']=[]
+-        elif mutation=='binding':forged_projection['model_authority']['binding']['language_epoch']='stale'
+-        else:forged_projection['literal']=copy.deepcopy(ax_literal)
+-        negative('projection-forged-'+mutation+'-rejected',lambda:check_projection(forged_projection),
+-            'row-zero projection: complete certificate matches original authority/literal/census/six-rule reasons')
+-    expected_controls=['canonical-fresh-complete-ZERO-and-projection','changed-saved-state-hash-rejected',
+-        'selected-stale-epoch-rejected','root-exclusion-prefix-rejected','copied-old-ZERO-is-not-a-proposal',
+-        'forged-complete-cover-census-rejected','UNKNOWN-never-certified-ZERO',
+-        'advised-fresh-complete-ZERO-and-projection','original-AX-is-not-forbidden',
+-        'projection-forged-census-rejected','projection-forged-binding-rejected','projection-forged-literal-rejected']
+-    need([v['case'] for v in controls]==expected_controls and all(v['status']=='PASSED' for v in controls)
+-         and len(samples)==2,'all two samples and twelve explicit local controls completed')
+-    certification={'schema':'ROOT-first-DEAD0-certification-payload-v1',
+-        'original_model_sources':ORIGINAL_SOURCES,'original_model_binding':ORIGINAL_BINDING,
+-        'samples':samples,'controls':controls,'sample_count':len(samples),'control_count':len(controls),
+-        'all_controls_completed':True,'local_contexts_freshly_checked':True,
+-        'row0_projection_certificates_checked':True,'saved_receipts_accepted':False,
+-        'logical_proof_accepted':False,'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+-        'failure_marking_activated':False,'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}
++            builder_reason = str(error)
++        need(builder_reason == 'certified point marking: channel4 point-mark conflict',
++             'builder actual point disagreement, no generic malformed packet')
++        # Explicitly inconsistent component attempt: preserve BOTH conflicting
++        # assignments. It is not claimed to be a valid composed marked state.
++        attempt = dict(copy.deepcopy(marked_root), base_state=base_state, decorated_selected=[packet],
++            global_t_values=base_state['t'],
++            global_m_values=base_state['m'] + [[[4,0],0]] + packet['added_global_m_values'],
++            added_m_values=[[[4,0],0]] + packet['added_global_m_values'])
++        independent_reason = negative(sample['arm']+'-consumer-zero-read-mark-conflict', lambda: check_state(attempt),
++                                     'channel4 verifier: channel4 point agreement')
++        consumers.append({'arm': sample['arm'], 'base_state': base_state,
++            'decorated_tile': packet, 'conflicting_state_attempt': attempt, 'point_comparison':comparison,
++            'builder_rejection':builder_reason,'independent_state_rejection':independent_reason})
++    language = fresh_language();name=sorted(language.theory['axioms'])[0]
++    ax_pre={'input_epoch':ORIGINAL_BINDING['language_epoch'], 'primitive_witness':{
++        'rule':'axiom','name':name,'formula':copy.deepcopy(language.theory['axioms'][name])},
++        'ordered_premise_formulas':[],'ordered_offsets':[]}
++    ax=call(semantics.rebuild_tile,(language,ax_pre,[0,0],tick))
++    ax_packet=check_tile(decorate_tile(ax));ax_base=call(original_state,([ax],))
++    ax_state=compose(ax_base,[ax_packet]);ax_receipt=check_state(ax_state)
++    ax_comparison=call(point_comparison,(ax,ax_packet))
++    need(ax_comparison['original_base_legal'] is True and ax_comparison['compatible'] is True,
++         'actual declared AX at zero remains point-compatible')
++    passed('original-AX-rowzero-compatible',state=ax_state,receipt=ax_receipt)
++    key=copy.deepcopy(samples[1]['selection']['selected_key'])
++    need(key['type_preimage']['primitive_witness']['rule']=='generalize'
++         and key['translation']==[0,23] and key['type_preimage']['ordered_offsets']==[-23],
++         'derive later-read control from actual unary consumer preimage')
++    key['type_preimage']['ordered_offsets']=[-22]
++    language=fresh_language()
++    later=call(semantics.rebuild_tile,(language,key['type_preimage'],key['translation'],tick))
++    later_packet=check_tile(decorate_tile(later));later_base=call(original_state,([later],))
++    later_state=compose(later_base,[later_packet]);later_receipt=check_state(later_state)
++    later_comparison=call(point_comparison,(later,later_packet))
++    need(later_comparison['original_base_legal'] is True and later_comparison['compatible'] is True
++         and [[4,1],1] in later_packet['added_global_m_values']
++         and canonical(later['placement_key']) != canonical(samples[1]['selection']['selected_key']),
++         'same certified literal allowed away from rowzero; new original offset identity')
++    passed('same-certified-literal-readrowone-compatible',state=later_state,receipt=later_receipt)
++    fixtures=consumers+[
++        {'arm':'AX0','base_state':ax_base,'decorated_tile':ax_packet,'state':ax_state,
++         'independent_state_receipt':ax_receipt,'point_comparison':ax_comparison},
++        {'arm':'UG23-read1','base_state':later_base,'decorated_tile':later_packet,'state':later_state,
++         'independent_state_receipt':later_receipt,'point_comparison':later_comparison}]
++    for fixture in fixtures:
++        packet=fixture['decorated_tile'];base=packet['base_tile']
++        need(packet['local_t_values']==base['local_t_values'] and packet['global_t_values']==base['global_t_values']
++             and packet['local_m_values']==base['local_m_values']+packet['added_local_m_values']
++             and packet['global_m_values']==base['global_m_values']+packet['added_global_m_values'],
++             'complete base/added point arrays and exact translations preserved')
++    passed('all-base-and-added-point-data-preserved',fixture_refs=[f['arm'] for f in fixtures])
++    need(ax_packet['added_local_m_values']==[] and ax_packet['added_global_m_values']==[]
++         and (4,0) not in {tuple(p) for p,v in ax_packet['global_m_values']}
++         and (4,0) in {tuple(p) for p,v in marked_root['global_m_values']},
++         'unmatched port absent, boundaryzero explicitly assigned, AX not falsely forbidden')
++    passed('absence-is-unassigned-on-unmatched-ports',tile=ax_packet,guard=marked_root['added_m_values'])
++    forged=copy.deepcopy(marking);forged['definition']['certified_literals']=[]
++    negative('forged-certified-literal-table-rejected',lambda:check_state(marked_root,forged),
++             'channel4 verifier: whole frozen marking definition/evidence/identity')
++    forged=copy.deepcopy(marking);forged['certificate_evidence'][0]['certificate']['named_axiom_census']=[]
++    negative('forged-certificate-data-rejected',lambda:check_state(marked_root,forged),
++             'channel4 verifier: full independently rederived projection certificate')
++    forged_tile=copy.deepcopy(ax_packet);forged_tile['placement_key']['tile_type_id']='forged'
++    negative('forged-decorated-key-rejected',lambda:check_tile(forged_tile),
++             'channel4 verifier: whole independently rebuilt decorated tile')
++    forged_tile=copy.deepcopy(later_packet);forged_tile['added_global_m_values']=[]
++    negative('forged-added-support-rejected',lambda:check_tile(forged_tile),
++             'channel4 verifier: whole independently rebuilt decorated tile')
++    bad=copy.deepcopy(marked_root);bad['global_m_values']=bad['base_state']['m'];bad['added_m_values']=[]
++    negative('missing-guard-rejected',lambda:check_state(bad),
++             'channel4 verifier: whole original plus extra marking state/union')
++    bad=copy.deepcopy(marked_root);bad['global_m_values'].append([[4,5],1])
++    negative('forged-full-marked-union-rejected',lambda:check_state(bad),
++             'channel4 verifier: whole original plus extra marking state/union')
++    bad=copy.deepcopy(marked_root);bad['base_state']['t'][0][1]=1
++    negative('forged-original-base-state-rejected',lambda:check_state(bad),
++             'degree evidence: whole selected t equality')
++    def injected_tick():
++        tick()
++        raise TimeoutError('declared native-first marking callback exhaustion')
++    timeout_reason=None
++    try:
++        check_state(marked_root,endpoint_tick=injected_tick)
++    except TimeoutError as error:
++        if type(error) is not TimeoutError:raise
++        timeout_reason=str(error)
++    need(timeout_reason=='declared native-first marking callback exhaustion',
++         'only explicit injected interruption control, native authority failures never pass')
++    passed('native-first-callback-timeout-propagates',reason=timeout_reason,
++        scope='Declared callback seam only; resource/guard gate remains original.')
++    expected_controls=['external-certified-table-and-independent-definition','root-boundary-assigned-zero',
++        'canonical-consumer-zero-read-mark-conflict','advised-consumer-zero-read-mark-conflict',
++        'original-AX-rowzero-compatible','same-certified-literal-readrowone-compatible',
++        'all-base-and-added-point-data-preserved','absence-is-unassigned-on-unmatched-ports',
++        'forged-certified-literal-table-rejected','forged-certificate-data-rejected',
++        'forged-decorated-key-rejected','forged-added-support-rejected','missing-guard-rejected',
++        'forged-full-marked-union-rejected','forged-original-base-state-rejected',
++        'native-first-callback-timeout-propagates']
++    need([v['case'] for v in controls]==expected_controls and all(v['status']=='PASSED' for v in controls),
++         'all sixteen marking-data controls completed without gaps')
++    marking_data={'schema':'ROOT-certified-row0-marking-data-payload-v1',
++        'original_model_binding':ORIGINAL_BINDING,'original_model_sources':ORIGINAL_SOURCES,
++        'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('certification_')},
++        'marking':marking,'definition_check':definition_check,'base_root':base_root,
++        'marked_root':marked_root,'root_check':root_receipt,'fixtures':fixtures,
++        'controls':controls,'control_count':len(controls),'all_controls_completed':True,
++        'constructed_marking_data':True,'independent_marking_data_checked':True,
++        'engine_activated':False,'failure_marking_activated':False,'target_search_performed':False,
++        'logical_proof_accepted':False,'exact_point_board_accepted':False,
++        'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
++        'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}
+     result_raw=canonical({'schema':'ROOT-unit-row-global-engine-result-v1','purpose':plan['purpose'],
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+-        'controls':None,'search':None,'found_validation':None,'certification':certification,
++        'controls':None,'search':None,'found_validation':None,'marking_data':marking_data,
+         'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     result_raw=call(encode_result_transport,(result_raw,))

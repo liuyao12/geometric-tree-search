@@ -1,0 +1,108 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": [
+    {
+      "check": "parse/compile-only; no Source import/exec or scientific calls",
+      "passed": true
+    },
+    {
+      "check": "only stdlib hashlib/json, no file/process/clock/project import",
+      "passed": true
+    },
+    {
+      "check": "exact three public keyword-only APIs",
+      "passed": true
+    },
+    {
+      "check": "no exception handler can convert resource/error into acceptance",
+      "passed": true
+    },
+    {
+      "check": "no bot/E/AS/AZ/arithmetic term/target-route literal or loaded saved model in Source",
+      "passed": true
+    },
+    {
+      "check": "certificate hashing explicitly original ASCII, model/base/decorated identity UTF8c354 convention",
+      "passed": true
+    },
+    {
+      "check": "marking definition records literal domain/action/boundary/projection/absent policy",
+      "passed": true
+    },
+    {
+      "check": "complete accepted evidence data and full one-model authority equality, no scientific proof replay",
+      "passed": true
+    },
+    {
+      "check": "full prototype data retained with separate decorated key/base type preimage and unchanged translation",
+      "passed": true
+    },
+    {
+      "check": "dedicated channel4 matched literal1, fixed guard0; unmatched has no assignment",
+      "passed": true
+    },
+    {
+      "check": "no t support/frontier addition; exact unitbase t arrays retained",
+      "passed": true
+    },
+    {
+      "check": "full selected projection/order and reconstructed packet agreement required by state composer",
+      "passed": true
+    },
+    {
+      "check": "new state disagreement uses only point-map equality and channel namespaces",
+      "passed": true
+    },
+    {
+      "check": "no kernel/checker/search/carrier/state predicate delegated",
+      "passed": true
+    },
+    {
+      "check": "all builder receipts hold9 higherflags false; not independent acceptance",
+      "passed": true
+    }
+  ],
+  "checks_count": 15,
+  "functions": [
+    "need",
+    "tree",
+    "canonical",
+    "sha",
+    "certificate_sha",
+    "freeze_marking",
+    "_marking",
+    "_points",
+    "decorate_prototype",
+    "decorate_state"
+  ],
+  "public_API": {
+    "decorate_prototype": [
+      "marking",
+      "base_tile",
+      "tick"
+    ],
+    "decorate_state": [
+      "marking",
+      "base_state",
+      "decorated_selected",
+      "tick"
+    ],
+    "freeze_marking": [
+      "original_binding",
+      "certificates",
+      "projection_checks",
+      "tick"
+    ]
+  },
+  "schema": "unit-row-certified-mark-decorator-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12619,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+    "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+  },
+  "source_lines": 219,
+  "source_only": true,
+  "static_method": "Raw bytes/AST/compile only, never import/execute. No fixture/kernel/model/test/clock/actual calls."
+}

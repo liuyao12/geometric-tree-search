@@ -1,0 +1,28 @@
+{
+  "schema": "unit-row-channel4-state-verifier-independent-handoff-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source_review_passed": true,
+  "source": {
+    "bytes": 18475,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+    "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/Source-contract-v1.json",
+    "sha256": "8d0215d9fccd8b8112f44dec730bc0300d19f2361144843d993a279f3c835e43",
+    "bytes": 14503
+  },
+  "review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "9bc147c0dda82be7937c9aa0bba851eb79680da0bf324bc0521c164f1edd5638",
+    "bytes": 2851
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-independent-source-20261016/findings-v1.json",
+    "sha256": "ae2c785ec5ba0fda50e47aba2172edbd203112e50468687fabe76bc36b3e415f",
+    "bytes": 8140
+  },
+  "authorship_disclosure": "Genuine distinct review of this verifier; reviewer authored c354, engine predecessors and current marked integration, not the reviewed verifier. It is not an independent second arithmetic kernel."
+}

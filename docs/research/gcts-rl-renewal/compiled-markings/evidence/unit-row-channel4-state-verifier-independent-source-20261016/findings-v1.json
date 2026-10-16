@@ -1,0 +1,156 @@
+{
+  "schema": "unit-row-channel4-state-verifier-independent-findings-v1",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 18475,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+    "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/Source-contract-v1.json",
+    "sha256": "8d0215d9fccd8b8112f44dec730bc0300d19f2361144843d993a279f3c835e43",
+    "bytes": 14503
+  },
+  "references": {
+    "decorator": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895",
+      "bytes": 12619
+    },
+    "decorator_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/Source-contract-v1.json",
+      "sha256": "cfdf9dc0f39fd96f7565c5d0028a7d546cce7d013b994de7d2f4a88730d63427",
+      "bytes": 14800
+    },
+    "degree_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "engine_seam": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-seam-source-20261016/integration-seam-v1.json",
+      "sha256": "17024af0dcbb698dae8f591447769897e2d212b3b8cd1e4da71429161bc3c415",
+      "bytes": 9897
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "projection": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab",
+      "bytes": 11074
+    },
+    "projection_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/Source-contract-v1.json",
+      "sha256": "686a09b276c2d377353a01ad005b275d95333db6b698f4a5053f63b3c57f3c4d",
+      "bytes": 13159
+    },
+    "source_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/Source-contract-v1.json",
+      "sha256": "8d0215d9fccd8b8112f44dec730bc0300d19f2361144843d993a279f3c835e43",
+      "bytes": 14503
+    },
+    "handoff": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/handoff-v1.json",
+      "sha256": "5d41ed6a8e745e3e3cbfc82e3cefcf859cc9b0053919b073623defc1e82e4a75",
+      "bytes": 8513
+    }
+  },
+  "check_count": 12,
+  "checks": [
+    {
+      "id": 1,
+      "passed": true,
+      "check": "whole-current-code-and-contract",
+      "finding": "Whole 291-line verifier, full14,503-byte contract, handoff, author static and referenced projection/decorator math read; raw pins checked."
+    },
+    {
+      "id": 2,
+      "passed": true,
+      "check": "source-only",
+      "finding": "AST/compile only; no Source evaluation, semantic delegates, clocks, model/word/Q decoding or experiments."
+    },
+    {
+      "id": 3,
+      "passed": true,
+      "check": "private-original-authority",
+      "finding": "Lines60\u2013100 compare effective original theory/parameters/Gamma/target/kernel, fixed profile/bounds/Source3 and entire17 map hashing/epoch. Full raw17/input2 authentication remains caller duty; current runtime map is separate."
+    },
+    {
+      "id": 4,
+      "passed": true,
+      "check": "row-zero-six-rule-proof",
+      "finding": "Lines103\u2013150 independently reconstruct every AX name/Gamma occurrence via primitive membership; UI/equality outputs have outer implication, MP/UG need a strict-prior nonnegative read, impossible at row0. Nonimp membership and no matching AX/Gamma required."
+    },
+    {
+      "id": 5,
+      "passed": true,
+      "check": "literal-not-context-classifier",
+      "finding": "Full original-input-scoped certificate/census is recomputed. No current selected rows/old ZERO receipts or runtime failure classifiers supply the proof."
+    },
+    {
+      "id": 6,
+      "passed": true,
+      "check": "whole-model-and-collision",
+      "finding": "Lines153\u2013192 reconstruct full evidence/definition/flags/literal table, ASCII certificate hashes vs UTF8 model hash, full collision equality and frozen identity."
+    },
+    {
+      "id": 7,
+      "passed": true,
+      "check": "independent-prototype-construction",
+      "finding": "Lines195\u2013219 use original c354 bare rebuild/selection record and independently construct channel4 ports, full decorated identity and actual arrays. No decorator or projection imports/calls."
+    },
+    {
+      "id": 8,
+      "passed": true,
+      "check": "actual-marked-state-union",
+      "finding": "Lines249\u2013291 validate original full base state, every selected decorated packet/order, zero guard and all added ones; disagreement and missing/additional marks reject by full union comparison."
+    },
+    {
+      "id": 9,
+      "passed": true,
+      "check": "absence-zero-and-full-support",
+      "finding": "Channels remain distinct; guard assigned zero is not absence. Formula ports at every strict-prior/read/output offset can add points. Fixed original formula boundary is not decorated."
+    },
+    {
+      "id": 10,
+      "passed": true,
+      "check": "typed-full-comparison",
+      "finding": "Builtin clone disallows custom/float values; full encoded equality distinguishes booleans from integers and validates complete keys/arrays/flags."
+    },
+    {
+      "id": 11,
+      "passed": true,
+      "check": "failure-discipline",
+      "finding": "No catches convert callback/resource/membership/authority/collision failures into legality or acceptance. Tile check returns reconstruction only; current-state candidate legality remains external."
+    },
+    {
+      "id": 12,
+      "passed": true,
+      "check": "scope-and-gates",
+      "finding": "No engine/frontier/count/scheduler/rollback/trajectory/mark activation/proof/benefit/resource qualification; new callers and controls remain required."
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "Genuine distinct review of this verifier; reviewer authored c354, engine predecessors and current marked integration, not the reviewed verifier. It is not an independent second arithmetic kernel.",
+    "Source conditional argument only. No runtime fit, positive marked state, engine correctness or activation is accepted.",
+    "Full original raw authority/code custody and fresh original language must be enforced by the caller."
+  ]
+}

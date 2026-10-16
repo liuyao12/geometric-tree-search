@@ -1,0 +1,39 @@
+{
+  "actual_disposition": {
+    "bytes": 5271,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-disposition-v1.json",
+    "sha256": "46a04787501db397fc9993118ebd5800a301ddc7898398a386438a905a415f77"
+  },
+  "authorship": "Reviewer diagnosis authored the marked verifier9fd60 and earlier consumer/controls/1717/codec/family dependencies, not these Root saved-only decoder/closer helpers. This review checks transport and saved evidence use; it is not a second mathematical kernel or a new scientific verification run.",
+  "blockers": [],
+  "findings": {
+    "bytes": 8533,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-saved-independent-20261016/findings-v1.json",
+    "sha256": "715e5bb5d4e58525a6afc3cc927673d175d175080a3b36be71f0b32bd7bfebcc"
+  },
+  "helpers_already_run_by_Root": true,
+  "post_hoc_review": true,
+  "reviewer_executed_helpers": false,
+  "schema": "unit-row-certified-marking-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 11817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT_close_marking_saved_v1.py",
+      "sha256": "b026843a2becfff98e84a677dcc2dc45374642eeeebf0c26c8ff421e5d074991"
+    },
+    "decoder": {
+      "bytes": 5292,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT_decode_saved_transport_v5.py",
+      "sha256": "c97ba7e8d50db5bdc70476e02aa6c4552822125ef217fd6d2dd5fbb6f9988120"
+    }
+  },
+  "typed_review": {
+    "bytes": 2749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-saved-independent-20261016/typed-Source-review-v1.json",
+    "sha256": "f4a5d666f525482f5a6dc8f49cb0299fea49b07c468d572c6f6fd0362ef08a22"
+  }
+}
