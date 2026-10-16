@@ -84,7 +84,8 @@ the current patch. All other tiles stay fixed. Breadth-first exploration is
 bounded to 300 expanded states; the animation follows a longest discovered
 shortest path without repeated states. This is a finite-patch experiment, not a
 claim of an infinite trefoil walk or the longest possible path. Restart grows a
-new random seed. The displayed lifting path is illustrative, not a physical
+new random seed. In this mode, Run and Step each perform one paired move and
+pause when it lands; the growth modes retain continuous Run. The displayed lifting path is illustrative, not a physical
 collision certificate for reliefs/connectors or board fit.
 
 `tests/test_printable_pair_moves.mjs` independently reconstructs all occupancy

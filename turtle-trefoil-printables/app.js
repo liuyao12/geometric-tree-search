@@ -108,7 +108,7 @@ export function mount(THREE,data){
    if(f.kind==='in')f.o.position.z+=75*Math.pow(1-t,3);
    else{const eased=t*t*(3-2*t);f.o.position.z+=75*eased;f.o.position.x+=18*eased;}}
    render();
-   if(t===1){if(f.kind==='pair'){moveCount=f.e.moveCount;lastAction=f.e.kind==='flip'?'Pair flipped':'Pair turned';if(moveCount===moveTotal){finished=true;running=false;lastAction='Sequence complete';}}sync(f.e.placements);inFlight=null;drawConnectors(connectorsFor(placed));ensureBoardCoverage();if(autoZoom)fitView(Math.max(260,distance));stepping=false;controls();render();}
+   if(t===1){if(f.kind==='pair'){running=false;moveCount=f.e.moveCount;lastAction=f.e.kind==='flip'?'Pair flipped':'Pair turned';if(moveCount===moveTotal){finished=true;running=false;lastAction='Sequence complete';}}sync(f.e.placements);inFlight=null;drawConnectors(connectorsFor(placed));ensureBoardCoverage();if(autoZoom)fitView(Math.max(260,distance));stepping=false;controls();render();}
   }
   pump();requestId=requestAnimationFrame(tick);
  }
