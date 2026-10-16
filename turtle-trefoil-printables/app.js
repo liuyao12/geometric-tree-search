@@ -24,10 +24,12 @@ export function mount(THREE,data,samples){
  let distance=500,initialDistance=500,live=false,worker=null,queue=[],batchPending=false,running=false,stepping=false,finished=false,inFlight=null,requestId=0,randomSeed=10,lastTime=0;
  let tileObjects=new Map(),boardObjects=[],connectorObjects=[],placed=[],nodes=0,backtracks=0,lastAction='Ready',autoZoom=true;
  const matrix=a=>new THREE.Matrix4().set(...a.flat());
- function object(type,m){const o=new THREE.Mesh(geometry[type],opaque);if(m)o.applyMatrix4(matrix(m));if(edges[type])o.add(new THREE.LineSegments(edges[type],edgeMaterial));content.add(o);return o;}
+ // Turn the entire patch over about the middle of its 4 mm bodies.
+ const faceFlip=matrix([[1,0,0,0],[0,-1,0,0],[0,0,-1,4],[0,0,0,1]]);
+ function object(type,m){const o=new THREE.Mesh(geometry[type],opaque);if(m)o.applyMatrix4(matrix(m));if(type!=='board')o.applyMatrix4(faceFlip);if(edges[type])o.add(new THREE.LineSegments(edges[type],edgeMaterial));content.add(o);return o;}
  function render(){camera.position.set(0,-distance*.48,distance*.88);camera.lookAt(0,0,0);renderer.render(scene,camera);}
  function resize(){const w=viewport.clientWidth,h=viewport.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();render();}
- function boards(centers){for(const o of boardObjects)content.remove(o);boardObjects=centers.map(c=>{const o=object('board');o.position.set(...c);o.material=$('boardTransparent').checked?transparent:opaque;return o;});}
+ function boards(centers){for(const o of boardObjects)content.remove(o);boardObjects=centers.map(c=>{const o=object('board');o.position.set(c[0],-c[1],c[2]);o.scale.y=-1;o.material=$('boardTransparent').checked?transparent:opaque;return o;});}
  function clearConnectors(){for(const o of connectorObjects)content.remove(o);connectorObjects=[];}
  function drawConnectors(matrices){clearConnectors();connectorObjects=matrices.map(m=>object('connector',m));}
  // Display only upper-face connections. Endpoint matching here is a drawing
@@ -36,12 +38,12 @@ export function mount(THREE,data,samples){
   const groups=new Map(),result=[];
   for(const t of tiles){const m=matrix(t.matrix);
    for(const [a,b,side] of stripes[t.tile]){
-    const normal=side*t.matrix[2][2];if(normal<0)continue;
+    const normal=side*t.matrix[2][2];if(normal>0)continue;
     const ends=[a,b].map(i=>new THREE.Vector3(...project(loops[t.tile][i]),side>0?4:0).applyMatrix4(m));
     const dir=ends[1].clone().sub(ends[0]).normalize();
     for(let i=0;i<2;i++){const p=ends[i],d=dir.clone().multiplyScalar(i?-1:1),key=[p.x,p.y,p.z].map(n=>n.toFixed(4)).join(',');
      const prior=groups.get(key)||[];
-     for(const other of prior)if(other.id!==t.id&&other.d.dot(d)<-.999999){const n=new THREE.Vector3(-d.y,d.x,0);result.push([[d.x,n.x,0,p.x],[d.y,n.y,0,p.y],[0,0,1,p.z],[0,0,0,1]]);}
+     for(const other of prior)if(other.id!==t.id&&other.d.dot(d)<-.999999){const n=new THREE.Vector3(-d.y*normal,d.x*normal,0);result.push([[d.x,n.x,0,p.x],[d.y,n.y,0,p.y],[0,0,normal,p.z],[0,0,0,1]]);}
      prior.push({id:t.id,d});groups.set(key,prior);
     }
    }
@@ -108,7 +110,7 @@ export function mount(THREE,data,samples){
    worker.onerror=e=>{if(worker!==activeWorker)return;finished=true;running=false;lastAction='Search could not start. Reload to retry.';controls();};
    worker.postMessage({type:'start',mode:$('sample').value.slice(5),seed:randomSeed});
   }else{
-   const s=samples.find(s=>s.id===$('sample').value);boards(s.boards||[[0,0,0]]);sync(s.tiles.map((t,i)=>({...t,id:String(i)})));drawConnectors(s.connectors||[]);fitView(260);
+   const s=samples.find(s=>s.id===$('sample').value);boards(s.boards||[[0,0,0]]);sync(s.tiles.map((t,i)=>({...t,id:String(i)})));drawConnectors(connectorsFor(placed));fitView(260);
   }
   controls();resize();
  }
