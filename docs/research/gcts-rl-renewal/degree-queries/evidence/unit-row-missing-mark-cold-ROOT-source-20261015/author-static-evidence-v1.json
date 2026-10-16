@@ -1,0 +1,30 @@
+{
+  "AST_compile_only": true,
+  "helpers_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors"
+  ],
+  "independent_review_pending": true,
+  "main_inverse_AST_exact": true,
+  "schema": "missing-mark-degree-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 23048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+    "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "missing-mark-degree-controls-author-static-v2",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+    "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5",
+    "bytes": 20072
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "8e0e33e64cb1e4c61f57c52d6cd4453e697dab3446a9813618eddf558c9859e1",
+    "bytes": 8367
+  },
+  "checks": {
+    "AST_compile_only": true,
+    "same8_nonrun_definitions_raw_AST": true,
+    "whole_AST_inverse_only_run_VERSION": true,
+    "exact6_keyword_API": true,
+    "all4_API_Source_capsules_match": true,
+    "schema1_result_schema2_receipt": true,
+    "changed_missing_prefix_expectation": true,
+    "carrier1_2_full_list_reference": true,
+    "deep42_43_generic_only": true,
+    "complete_missing_fibres_required": true,
+    "new_fibre_negative_cases_present": true,
+    "callback_carrier_included": true,
+    "no_new_imports": true
+  },
+  "count": 13,
+  "all_checks_passed": true,
+  "Source_functions": 0,
+  "Q_model_word_decodes": 0,
+  "clocks_tests_plans_actuals": 0,
+  "authoring_provenance_note": "Zero execution is a session/provenance declaration in separate fields, not an AST predicate. The prior constantTrue label is preserved in unselected v1; all13 retained checks inspect actual Source/AST/raw inputs."
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "lazy-unit-row-engine-design-handoff-v2",
+  "source_only": true,
+  "note": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/lazy-unit-row-engine-design-v2.json",
+    "sha256": "273a1a9420eccbe020b956d6ff743f59ce332b3e36301f4b8efd3e0b873418d7",
+    "bytes": 5990
+  },
+  "preserved_v1": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/lazy-unit-row-engine-design-v1.json",
+    "sha256": "192595ac79bbc4357f3982501e3e2e6a4378917a293c947187e4f9ad7887eb41",
+    "bytes": 5927
+  },
+  "clarification": "Removing a zero-producing placement can unassign prefix marks and invalidate a singleton cover. Forced propagation is tested only in a separately validated assigned-prefix state; intermediate unresolved states return UNKNOWN.",
+  "scope": "Bounded design only; no implementation/runner/plan/actual grant.",
+  "Source_functions": 0,
+  "scientific_acceptance": false
+}

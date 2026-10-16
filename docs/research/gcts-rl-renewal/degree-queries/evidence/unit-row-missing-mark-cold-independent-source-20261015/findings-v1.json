@@ -1,0 +1,404 @@
+{
+  "author_identity": "/root",
+  "checks": [
+    {
+      "check": "whole current caller/contract/handoff and exact raw reference authentication",
+      "evidence": "Complete buffers and current Source7/input2/caps/Review_ABI consumed schema verified. Source AST compile-only; no execution.",
+      "passed": true
+    },
+    {
+      "check": "whole caller read plus exact15 helper bytes/ASTs",
+      "evidence": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors"
+      ],
+      "passed": true
+    },
+    {
+      "check": "main exact AST inverse after two integration additions",
+      "evidence": "Remove nested carrier_adapter and carrier key passed to controls: entire main equals reviewed212e. No timing/authority/native/output/exception/finaltail changes.",
+      "passed": true
+    },
+    {
+      "check": "current dependencies and exact callable APIs",
+      "evidence": "Whole current checker c354 and harness4fc9 read as caller dependencies; proposer c960 reviewer-authored and separately reviewed arithmetic a5a98. Current Source/contract roles and proposal-v2/check-v2/carrier kwargs align.",
+      "passed": true
+    },
+    {
+      "check": "fresh private original authority per every endpoint",
+      "evidence": "Proposer/checker/carrier each reauthenticate complete raw declaration/profile and construct private membership with same Source7 epoch. Supplied fixture language is ignored as endpoint authority; states/proposals copied.",
+      "passed": true
+    },
+    {
+      "check": "carrier bound restriction is controls-only",
+      "evidence": "Literal int maximum1 or2 accepted, not bool. Full module still has carrier bound44 for scientific inverse relation; direct list cap1000 applies only tiny controls. TimeoutError propagates if a1001st item exists, never returns truncated complete prefix.",
+      "passed": true
+    },
+    {
+      "check": "real generator exhaustion inside full guarded delegation",
+      "evidence": "Carrier adapter loops through iterator to EOF and returns afterward. It runs wholly inside inherited invoke(controls.run_controls) pre/post/finally guard; all authenticated module bindings/CodeSeal/code/default/cells/native checks therefore bracket actual entire iteration. No independent per-yield Source-seal claim.",
+      "passed": true
+    },
+    {
+      "check": "native-plus-injected callback retained for carrier",
+      "evidence": "Every carrier step first calls captured native_tick then harness injected callback; private constructor and yielded item steps use it. Callback sentinel/error survives normal/exception guarded return, not coerced to accepted carrier/zero.",
+      "passed": true
+    },
+    {
+      "check": "exact small-carrier and missing-fibre controls are observed data",
+      "evidence": "Harness compares full bound1/2 outputs only under applicable signature; fixed original declaration/profile unchanged. Deep42/43 fixture assumptions/membership enforced; exclusion zero/one are explicitly assumed contexts. Partial fibre arrays never establish counts; complete checker recomputes full fibres.",
+      "passed": true
+    },
+    {
+      "check": "complete output wire/native resource and directexit retained",
+      "evidence": "Original result4MiB/output2/two-line LF body hash/final receipt and final memory-before-clock/cancel check/direct native exit AST exact. No children in fixed path; B=T remains separately externally observed, not locally accepted.",
+      "passed": true
+    },
+    {
+      "check": "module role independence and author disclosure",
+      "evidence": "Reviewer authored membership/proposer and prior caller review, not Root caller or arithmetic checker/diagnosis harness. Root module reviews remain separate; this Source pass covers actual caller integration, not self-issued independent proposer/generator proof.",
+      "passed": true
+    },
+    {
+      "check": "scoped lower flags and actual gaps retained",
+      "evidence": "No graph/globaldead/forced/scheduler/generation tie/reverse dependency/rollback/search/proof/RL/count/advantage admission. New actual case statuses/skips, complete bytes/EOF/exit/native terminal/postprobe/Date gates must be reconciled separately.",
+      "passed": true
+    },
+    {
+      "check": "no scientific or actual activity",
+      "evidence": "Raw named Source/small metadata plus AST/compile only. No project/new function imports/execution, Q/model decode, clocks/tests/probes/plans/grants/owned outputs/actuals/publication.",
+      "passed": true
+    }
+  ],
+  "concrete_blockers": [],
+  "current_check_count": 13,
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "limitations": [
+    "Fixed reviewed synchronous Darwin code scope; no hostile Python/OS/VM guarantee.",
+    "Full carrier/degree generator semantics are reviewer-authored dependencies; arithmetic distinct Source review is preserved, not replaced. Root independently reviews new checker/harness.",
+    "Carrier directly limited to1/2 nodes and1000 values for controls only; no change to complete scientific inverse carrier. Overflow/incomplete work aborts, no positive prefix.",
+    "New caller is Source-only. No Source acceptance predicts actual statuses or native/resource fit. No old20control or proof/search/GCTS/RL/count claim."
+  ],
+  "module_contracts": {
+    "controls": {
+      "bytes": 8367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "8e0e33e64cb1e4c61f57c52d6cd4453e697dab3446a9813618eddf558c9859e1"
+    },
+    "degree_checker": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    "proposer": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    }
+  },
+  "proposer_current_peer": {
+    "bytes": 2731,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+  },
+  "raw_reference_paths": 41,
+  "raw_references": [
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "bytes": 9694,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/Source-contract-v1.json",
+      "sha256": "6c819fcb4c7eccfa96a5dd9c49b1e34323c438ddee91ab559f18314b9b012b44"
+    },
+    {
+      "bytes": 16276,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+    },
+    {
+      "bytes": 22168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-ROOT-source-20261015/unit_row_degree_controls_cold_v1.py",
+      "sha256": "212ea04d6ff212256f1b0195ead617a4e6b3eccdd775874387e0d1848a157c1d"
+    },
+    {
+      "bytes": 26128,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/findings-v1.json",
+      "sha256": "d6a866b5edf50efee3c91e647e59777154eac66e6fb51c162a6237f6d79939c7"
+    },
+    {
+      "bytes": 4329,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "771b52f84cc045389e48c6f1f6879aa337ab255cf94a1f81205b63da7262c51a"
+    },
+    {
+      "bytes": 7568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "2a37f4253068752320f6dd5f72eefe2ec9afaca754ffb8c7d7c10273f73ae1c2"
+    },
+    {
+      "bytes": 13982,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+      "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368"
+    },
+    {
+      "bytes": 2586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "d595b0fadedb96fd2adad777c5b030904e3979fc3e6dd6ee70dc98bfdcda0bf9"
+    },
+    {
+      "bytes": 12403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+    },
+    {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    },
+    {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    {
+      "bytes": 28890,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-delta-v2.json",
+      "sha256": "badd8caf624d1985ebc40ad44bf871aa104a3afddf0a140384ecb4f70813ad4d"
+    },
+    {
+      "bytes": 10167,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/author-static-v2.json",
+      "sha256": "9afaacf6234af0663708987b520648a15c93d798dfc7388cf44edefd64564065"
+    },
+    {
+      "bytes": 1804,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/handoff-v2.json",
+      "sha256": "909043f39e795f7472ae946952aba57ad66a17df756527b2e766a206c46136e8"
+    },
+    {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 9065,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/Source-contract-v1.json",
+      "sha256": "827f85dd6a45f82fef698deb10c8c41543a555475fc0971ae5707c7a36a73f0c"
+    },
+    {
+      "bytes": 797,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/author-static-evidence-v1.json",
+      "sha256": "00b74d685d6d5b8f1067c4ddc955fa5138839a0543768d06d21129505ed30c4c"
+    },
+    {
+      "bytes": 23048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+      "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+    },
+    {
+      "bytes": 8367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "8e0e33e64cb1e4c61f57c52d6cd4453e697dab3446a9813618eddf558c9859e1"
+    },
+    {
+      "bytes": 1595,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/author-static-evidence-v2.json",
+      "sha256": "2c50f57c189199ea502c3c6cd71ab30c4b0a3ab8a30922c19f6cca3feb8b14bb"
+    },
+    {
+      "bytes": 10070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/controls-v1-to-missing-v2.patch",
+      "sha256": "ba0cdd310273b080c2267375df3ae34f3d7118cf31a2d2bf852c3688f0d5c99b"
+    },
+    {
+      "bytes": 3096,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/handoff-v1.json",
+      "sha256": "0fb4fe08e8b8422894643bc010efca359c0c416f6823571d8eb57c3b8fe5c795"
+    },
+    {
+      "bytes": 3410,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/handoff-v2.json",
+      "sha256": "9c66494f893bdea7c35c4639b87faebae893c9ac9ed7da5cf556dbeedfd6456d"
+    },
+    {
+      "bytes": 10070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing-v2-to-controls-v1-full-inverse.patch",
+      "sha256": "ea2e62e36b292e65fb5222bdad7f6d062a3e3aaea8d23cefe67805e88fd8ebc0"
+    },
+    {
+      "bytes": 20072,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+      "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5"
+    },
+    {
+      "bytes": 9060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cover-spec-source-20261015/missing-mark-cover-v1.json",
+      "sha256": "0a92ec2de0490887ec3d89166fea6335ec0bb3aec896fea1fdc165e7be3bcced"
+    },
+    {
+      "bytes": 15122,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/findings-v1.json",
+      "sha256": "15b236f5df99f6248610f45bfdb2c360f080c0bfb99588e68e85e180179e2988"
+    },
+    {
+      "bytes": 2731,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+    },
+    {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    {
+      "bytes": 14658,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-delta-v1.json",
+      "sha256": "27f4bd2480052e68697342545e52069f4e6770233a9917a07d2251a1a13fb621"
+    },
+    {
+      "bytes": 10322,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/author-static-evidence-v1.json",
+      "sha256": "a211f9dc049c8da0f8e5a796702e7ef8dfd98302116fcacd60664a6b247be332"
+    },
+    {
+      "bytes": 5057,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/handoff-v1.json",
+      "sha256": "f44f12cfdac1b134a435be1835fa16b50416764d9648318c2f9086b74c7043cf"
+    },
+    {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "retained_prior_checks": {
+    "basis": "Exact current main AST inverse and15 helpers byte/AST equality; whole current Source read. Prior mechanics retained only after current raw authentication; old actual20case outcomes not promoted.",
+    "check_count": 16,
+    "findings": {
+      "bytes": 26128,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/findings-v1.json",
+      "sha256": "d6a866b5edf50efee3c91e647e59777154eac66e6fb51c162a6237f6d79939c7"
+    },
+    "typed_review": {
+      "bytes": 4329,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-cold-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "771b52f84cc045389e48c6f1f6879aa337ab255cf94a1f81205b63da7262c51a"
+    }
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-missing-mark-cold-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-missing-mark-degree-controls-cold-Source",
+  "source": {
+    "bytes": 23048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+    "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+  },
+  "source_contract": {
+    "bytes": 9065,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/Source-contract-v1.json",
+    "sha256": "827f85dd6a45f82fef698deb10c8c41543a555475fc0971ae5707c7a36a73f0c"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 20072,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+      "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "intake": {
+      "bytes": 23048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+      "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  }
+}

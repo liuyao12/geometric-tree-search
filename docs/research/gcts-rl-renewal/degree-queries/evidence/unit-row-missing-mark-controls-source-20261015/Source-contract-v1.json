@@ -1,0 +1,87 @@
+{
+  "schema": "unit-row-degree-controls-Source-contract-v1",
+  "scope": "Local evidence and tiny generator mechanics only. No full GCTS graph/fallback/global scheduler/rollback proof, complete registry/counts, new theorem/trajectory/nativeWang/marking/RL/advantage/resource admission.",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+    "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5",
+    "bytes": 20072
+  },
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "API": "run_controls(*,language,proposer,checker,carrier,tick) -> unit-row-degree-controls-v1 with distinct VERSION",
+  "callables": {
+    "proposer": "proposer(*,language,state,row,tick) -> unit-row-degree-evidence-proposal-v2",
+    "checker": "checker(*,language,state,row,proposal,tick) -> unit-row-degree-evidence-check-v2, old statuses/fields plus missing_mark_cover_checked",
+    "carrier": "carrier(*,language,maximum_nodes,tick) -> complete builtin list; Root fresh authenticated language, literal maximum_nodes1 or2 only, original tick, <=1000 entries or unresolved failure. It consumes actual generator EOF before returning; this control adapter does NOT narrow public profile44 generator."
+  },
+  "dependency_API_pins": {
+    "proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    }
+  },
+  "caller": "Root supplies current guarded callable wrappers, each reconstructing separate fresh original language. Fixture language supplies original authenticated theory/params/target/Gamma/binding and original bounded primitive membership. No mutable proposer language becomes checker authority. Native20/512MiB/55failure/60owned/90+1 and all cold work/outputs remain outside this harness integration, never reset.",
+  "result": "Same unit-row-degree-controls-v1 fields cases/list with PASSED|SKIPPED, all_declared_cases_completed true; full positive state/row/proposal/checker receipt and exact negative rejection state/proposal/reason retained. Case counts are derived after actual, no expected totals or inherited pass.",
+  "preserved_controls": "Old first-stage Source/actual immutable. All common controls execute anew against current schema2 Sources: initial2AX/final2pendingUG, assigned-prefix zero/AX-count/many, exact assumed exclusions, implication UNKNOWN, fullstate/key/flag/remote legality/missing survivor/duplicate negatives and callback propagation. Former missing-prefix-UNKNOWN becomes separately labeled missing-prefix-now-ZERO; prior observed UNKNOWN is not relabeled.",
+  "new_controls": [
+    "Tiny carrier1 exactlybot and carrier2 bot/notbot/all(b,bot) for EVERY original literal binder_name in generator order, only if predicates empty. Function terms cannot form a formula ofsize<=2; nonempty predicates explicitly skip this simple reference. Compare entire list, counts and value hashes, not just a prefix. No full44 formula registry/count claim.",
+    "Generic Csize42=41 nested not constructors aroundbot, selected original UG atrow3 reads C atqueryrow2, earlier0/1absent. Original language membership and no original AX/Gamma output collision required; otherwise skip withreason. The bound maxA1 yields exactlybot: pending ordered MP reads(0,1) and(1,0) give TWO, never facts.",
+    "Exclude exactone/all returned keys as explicit branch assumptions, not proved pruning; require current complete missing-fibre SINGLETON/ZERO receipts.",
+    "Csize43=42nots(bot), sameUGconstruction, boundmaxA0: entire positive antecedent-size interval empty, completeZERO after allpair/occurs/root checks.",
+    "From genuine complete42 all-excluded outcome: omit pair, forge occurs-case/count/preimage-hash/decision-hash, remove a completed carrier-fibre transcript outcome, or forge bound; every one must reject through current independent checker. Forge complete=True/kind on partial earlyTWO and require rejection too. Counts/hashes are untrusted until independent re-enumeration.",
+    "All three supplied callable endpoints propagate declared CallbackExhausted(TimeoutError); original native tick is stillcalled. Proposer/checker17-callback test retained, carrier first-callback exhaustion added. These locate callable-boundary propagation, not hidden setup/internal phase."
+  ],
+  "unavailable_cases": "Only exact original OutsideLanguage/declared fixture Unavailable become SKIPPED; resource/time/depth/callback/programming failures propagate. Metadata conflict on unfilled unit row stays explicitly unreachable. SKIPPED remains a gap and no original theory/profile/symbol is changed.",
+  "authority": "All point states independently composed by the eight unchanged fixture helper/class definitions, using original AX/UG/MP primitive membership. Complete required24 roots generation0, selected units generation1, full fixedtarget/outside plus selected markings. No saved model/word/donor/library/replay; partial tiling constraints with pending inputs are not logical proofs.",
+  "provenance": {
+    "parent_source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+      "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368",
+      "bytes": 13982
+    },
+    "parent_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/Source-contract-v1.json",
+      "sha256": "2a37f4253068752320f6dd5f72eefe2ec9afaca754ffb8c7d7c10273f73ae1c2",
+      "bytes": 7568
+    },
+    "full_forward_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/controls-v1-to-missing-v2.patch",
+      "sha256": "ba0cdd310273b080c2267375df3ae34f3d7118cf31a2d2bf852c3688f0d5c99b",
+      "bytes": 10070
+    },
+    "full_inverse_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing-v2-to-controls-v1-full-inverse.patch",
+      "sha256": "ea2e62e36b292e65fb5222bdad7f6d062a3e3aaea8d23cefe67805e88fd8ebc0",
+      "bytes": 10070
+    },
+    "proposer_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310",
+      "bytes": 13319
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  },
+  "authorship": "New harness and old fixture helpers by diagnosis; proposer/membership by controls, independent new checker by arithmetic. Not an independent second implementation of that checker. Source/AST/compile-only; no modules imported/executed, functions/clocks/Q/model/word/test/plan/actuals."
+}

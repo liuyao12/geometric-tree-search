@@ -1,0 +1,45 @@
+{
+  "ROOT_resource_accepted": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 25,
+  "complete_candidate_graph_accepted": false,
+  "concrete_blockers": [],
+  "degree_evidence_accepted": false,
+  "findings": {
+    "bytes": 15122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/findings-v1.json",
+    "sha256": "15b236f5df99f6248610f45bfdb2c360f080c0bfb99588e68e85e180179e2988"
+  },
+  "limitations": [
+    "The stream is finite but may be enormous/recomputed repeatedly; no practical time or memory fit/speed claim. Resource failure remains UNKNOWN/failure.",
+    "Rolling digests/counts/completion observations are not independently checked certificates. New receipt requires a separately authored checker and fresh controls/caller reviews; old20controls do not transfer.",
+    "Implication or absent-output query classes remain incomplete hints; no complete general base fallback, all-frontier graph, incidence/dependencies, global scheduler or exact rollback engine.",
+    "Caller owns private original logical input/current binding/Source/native/default/closure custody, exclusion justification/lifecycle and original20/512/55/60/90+1 gates. Resource tick cannot impersonate OutsideLanguage."
+  ],
+  "logical_proof_accepted": false,
+  "provenance": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "distinct_source_authorship": true,
+    "overlap": "Reviewer authored missing-mark feasibility spec and original independent checker28e8, and reviewed prior proposer. Did not author this proposer/generator, original kernel/membership, Root converter or policy. New checker not self-reviewed.",
+    "reviewer_identity": "/root/arithmetic_induction"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_acceptance": false,
+  "schema": "unit-row-missing-mark-degree-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-missing-mark-degree-evidence-proposer-Source",
+  "source": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "source_contract": {
+    "bytes": 13319,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+    "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

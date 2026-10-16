@@ -1,0 +1,37 @@
+{
+  "current_checks": 13,
+  "findings": {
+    "bytes": 22805,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "808ed94b10764bc98edceb6bdfb1159ca18ef39484fbdc7a72c8b222595c85ac"
+  },
+  "next": "Root owns any current plan/grant/invocation and independent full saved/native closure. No activation from review.",
+  "raw_reference_paths": 41,
+  "retained_prior_checks": 16,
+  "schema": "unit-row-missing-mark-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-missing-mark-degree-controls-cold-Source",
+  "source": {
+    "bytes": 23048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+    "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+  },
+  "source_contract": {
+    "bytes": 9065,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/Source-contract-v1.json",
+    "sha256": "827f85dd6a45f82fef698deb10c8c41543a555475fc0971ae5707c7a36a73f0c"
+  },
+  "source_handoff": {
+    "bytes": 3787,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/handoff-v1.json",
+    "sha256": "ba88c71d73efaf3c7b9014ae549ac0fe020ba232f16a67ae24ef466855533e89"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_ONLY",
+  "typed_review": {
+    "bytes": 4380,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "a802878153870c096921c3241dd596f81d6332347884b3442a4778a3a5157d63"
+  }
+}

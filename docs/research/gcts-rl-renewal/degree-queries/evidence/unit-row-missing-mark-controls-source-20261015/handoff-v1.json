@@ -1,0 +1,55 @@
+{
+  "schema": "missing-mark-degree-controls-Source-handoff-v1",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+    "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5",
+    "bytes": 20072
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "8e0e33e64cb1e4c61f57c52d6cd4453e697dab3446a9813618eddf558c9859e1",
+    "bytes": 8367
+  },
+  "author_static": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/author-static-evidence-v1.json",
+    "sha256": "e751b283d2db2f8233d911ac50342a4b0fdc781fb4c8b6bfae53a7368c48fcb6",
+    "bytes": 1401
+  },
+  "API": "run_controls(*,language,proposer,checker,carrier,tick) -> unit-row-degree-controls-v1 with distinct VERSION",
+  "dependency_API_pins": {
+    "proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    }
+  },
+  "source_only": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "remaining": [
+    "Root whole current Source/API review and exact new checker review; no inherited scope",
+    "Root fresh-language guarded carrier/proposer/checker callable adapters and actual native/wire/output closure",
+    "Actual counts/skips/costs measured separately; no prior UNKNOWN relabel or full-language count/graph/proof claim"
+  ],
+  "preserved_parent_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-controls-source-20261015/local_degree_controls_v1.py",
+    "sha256": "df570db28c26c16e78721e4d1526dcc7f1999558b4bd80c7eeaeb1a8cda9f368",
+    "bytes": 13982
+  },
+  "scientific_calls": 0,
+  "actual_activation": false
+}

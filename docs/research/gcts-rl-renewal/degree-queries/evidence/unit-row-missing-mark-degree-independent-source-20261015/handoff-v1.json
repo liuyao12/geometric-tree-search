@@ -1,0 +1,29 @@
+{
+  "check_count": 25,
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 15122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/findings-v1.json",
+    "sha256": "15b236f5df99f6248610f45bfdb2c360f080c0bfb99588e68e85e180179e2988"
+  },
+  "next": "Root may select separately reviewed independent checker/control/caller successors. All frozen firstactual results unchanged.",
+  "schema": "unit-row-missing-mark-degree-independent-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "source_contract": {
+    "bytes": 13319,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+    "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_NO_RUNTIME_DEGREE_GRAPH_ADMISSION",
+  "typed_review": {
+    "bytes": 2731,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "added_top_definitions": [
+    "iter_bounded_formulas"
+  ],
+  "after": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "before": {
+    "bytes": 14060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+    "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+  },
+  "changed_top_definitions": [
+    "propose_degree"
+  ],
+  "edits": [
+    {
+      "after_end": 250,
+      "after_start": 235,
+      "after_utf8": "3-missing-marks",
+      "before_end": 236,
+      "before_start": 235,
+      "before_utf8": "2"
+    },
+    {
+      "after_end": 11042,
+      "after_start": 8102,
+      "after_utf8": "iter_bounded_formulas(*, language, maximum_nodes, tick):\n    \"\"\"Lazy literal size-ordered carrier; no cache, quotient or partial-body gate.\"\"\"\n    need(type(maximum_nodes) is int and 1 <= maximum_nodes <= 44, 'whole formula size bound1..44')\n    outside = language.OutsideLanguage\n    functions = tuple(sorted(language.theory['functions'].items()))\n    predicates = tuple(sorted(language.theory['predicates'].items()))\n    binders = tuple(sorted(language.binder_names))\n    scope = frozenset(language.parameter_set)\n\n    def compositions(total, count):\n        tick()\n        if count == 0:\n            if total == 0:\n                yield ()\n            return\n        for first in range(1, total-count+2):\n            for rest in compositions(total-first, count-1):\n                yield (first,) + rest\n\n    def children(sizes, names, term_children):\n        tick()\n        if not sizes:\n            yield []\n            return\n        stream = terms if term_children else formulas\n        for first in stream(sizes[0], names):\n            for rest in children(sizes[1:], names, term_children):\n                yield [first] + rest\n\n    def terms(size, names):\n        tick()\n        if not 1 <= size <= 12:\n            return\n        if size == 1:\n            for name in sorted(names):\n                tick()\n                yield ['var', name]\n        for name, arity in functions:\n            for sizes in compositions(size-1, arity):\n                for args in children(sizes, names, True):\n                    tick()\n                    yield ['fun', name, args]\n\n    def formulas(size, names):\n        tick()\n        if size == 1:\n            yield ['bot']\n        for name, arity in predicates:\n            for sizes in compositions(size-1, arity):\n                for args in children(sizes, names, True):\n                    tick()\n                    yield ['pred', name, args]\n        for sizes in compositions(size-1, 2):\n            for args in children(sizes, names, True):\n                tick()\n                yield ['eq', args[0], args[1]]\n        if size >= 2:\n            for body in formulas(size-1, names):\n                tick()\n                yield ['not', body]\n            for name in binders:\n                for body in formulas(size-1, names | {name}):\n                    tick()\n                    yield ['all', name, body]\n        for tag in ('imp', 'and', 'or'):\n            for sizes in compositions(size-1, 2):\n                for args in children(sizes, names, False):\n                    tick()\n                    yield [tag, args[0], args[1]]\n\n    for size in range(1, maximum_nodes+1):\n        for formula in formulas(size, scope):\n            tick()\n            try:\n                actual_size = language.formula(formula)\n            except outside:\n                continue\n            need(actual_size == size, 'complete literal constructor-size agreement')\n            yield formula\n\n\ndef ",
+      "before_end": 8088,
+      "before_start": 8088,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12655,
+      "after_start": 11804,
+      "after_utf8": "missing_cover = output is not None and output[0] != 'imp' and not cover\n    missing_complete = False\n    fibre_cover = None\n    if missing_cover:\n        output_nodes = language.formula(output)\n        fibre_cover = {'schema': 'unit-row-missing-mark-fibres-v1', 'completed': False,\n            'output_nodes': output_nodes, 'MP_antecedent_max_nodes': 43-output_nodes,\n            'assigned_prior_rows': [k for k, f in enumerate(earlier) if f is not None],\n            'absent_prior_rows': [k for k, f in enumerate(earlier) if f is None],\n            'axiom_labels_seen': [], 'Gamma_occurrences_seen': [],\n            'UG_fibres': [], 'ordered_MP_fibres': [],\n            'carrier_order': 'size; bot,pred,eq,not,all,imp,and,or; literal names; positive size compositions',\n            'carrier_materialized': False, 'independently_accepted': False}\n    ",
+      "before_end": 8850,
+      "before_start": 8850,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12907,
+      "after_start": 12884,
+      "after_utf8": ", retain_rejection=True",
+      "before_end": 9079,
+      "before_start": 9079,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 13081,
+      "after_start": 13078,
+      "after_utf8": "sul",
+      "before_end": 9253,
+      "before_start": 9250,
+      "before_utf8": "jec"
+    },
+    {
+      "after_end": 13085,
+      "after_start": 13082,
+      "after_utf8": " = ",
+      "before_end": 9266,
+      "before_start": 9254,
+      "before_utf8": "ions.append("
+    },
+    {
+      "after_end": 13133,
+      "after_start": 13133,
+      "after_utf8": "",
+      "before_end": 9323,
+      "before_start": 9314,
+      "before_utf8": "         "
+    },
+    {
+      "after_end": 13293,
+      "after_start": 13219,
+      "after_utf8": "\n            if retain_rejection:\n                rejections.append(result",
+      "before_end": 9409,
+      "before_start": 9409,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 13320,
+      "after_start": 13313,
+      "after_utf8": " result",
+      "before_end": 9429,
+      "before_start": 9429,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 13700,
+      "after_start": 13588,
+      "after_utf8": "        # Full preimage is identity. Do not cache a carrier of rejected keys.\n        if not missing_cover:\n    ",
+      "before_end": 9697,
+      "before_start": 9697,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14269,
+      "after_start": 14266,
+      "after_utf8": "sul",
+      "before_end": 10266,
+      "before_start": 10263,
+      "before_utf8": "jec"
+    },
+    {
+      "after_end": 14273,
+      "after_start": 14270,
+      "after_utf8": " = ",
+      "before_end": 10279,
+      "before_start": 10267,
+      "before_utf8": "ions.append("
+    },
+    {
+      "after_end": 14359,
+      "after_start": 14359,
+      "after_utf8": "",
+      "before_end": 10374,
+      "before_start": 10365,
+      "before_utf8": "         "
+    },
+    {
+      "after_end": 14472,
+      "after_start": 14398,
+      "after_utf8": "\n            if retain_rejection:\n                rejections.append(result",
+      "before_end": 10413,
+      "before_start": 10413,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14487,
+      "after_start": 14482,
+      "after_utf8": "    r",
+      "before_end": 10423,
+      "before_start": 10423,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14497,
+      "after_start": 14488,
+      "after_utf8": "turn resu",
+      "before_end": 10424,
+      "before_start": 10424,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14508,
+      "after_start": 14498,
+      "after_utf8": "t\n        ",
+      "before_end": 10425,
+      "before_start": 10425,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14588,
+      "after_start": 14553,
+      "after_utf8": "\n            prototypes[name] = pre",
+      "before_end": 10470,
+      "before_start": 10470,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14901,
+      "after_start": 14811,
+      "after_utf8": "            return {'kind': 'new_survivor'}\n        return {'kind': 'duplicate_full_key'}\n",
+      "before_end": 10693,
+      "before_start": 10693,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15024,
+      "after_start": 15023,
+      "after_utf8": "(",
+      "before_end": 10815,
+      "before_start": 10815,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15070,
+      "after_start": 15069,
+      "after_utf8": "\n",
+      "before_end": 10860,
+      "before_start": 10860,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15156,
+      "after_start": 15071,
+      "after_utf8": "               'NON_IMP_MISSING_MARK_COVER' if missing_complete else\n                ",
+      "before_end": 10862,
+      "before_start": 10861,
+      "before_utf8": "("
+    },
+    {
+      "after_end": 15281,
+      "after_start": 15280,
+      "after_utf8": "2",
+      "before_end": 10987,
+      "before_start": 10986,
+      "before_utf8": "1"
+    },
+    {
+      "after_end": 15730,
+      "after_start": 15682,
+      "after_utf8": "cover or missing_complete, 'fibre_cover': fibre_",
+      "before_end": 11388,
+      "before_start": 11388,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16391,
+      "after_start": 16307,
+      "after_utf8": "missing_cover:\n            fibre_cover['axiom_labels_seen'].append(name)\n        if ",
+      "before_end": 11965,
+      "before_start": 11965,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16819,
+      "after_start": 16729,
+      "after_utf8": "missing_cover:\n            fibre_cover['Gamma_occurrences_seen'].append(index)\n        if ",
+      "before_end": 12303,
+      "before_start": 12303,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20459,
+      "after_start": 17005,
+      "after_utf8": "\n    if missing_cover:\n        def fibre(witnesses, descriptor):\n            examined, rejected, legal_before = 0, 0, len(candidates)\n            transcript, decisions = hashlib.sha256(), hashlib.sha256()\n            for witness, premises, reads in witnesses:\n                tick()\n                transcript.update((canonical([witness, premises, reads])+'\\n').encode('utf8'))\n                examined += 1\n                result = consider(witness, premises, reads, False)\n                decisions.update((canonical(result)+'\\n').encode('utf8'))\n                rejected += result['kind'] not in ('new_survivor', 'duplicate_full_key')\n                if finished():\n                    return False\n            descriptor.update(completed=True, examined=examined,\n                new_survivors=len(candidates)-legal_before, rejections=rejected,\n                examined_preimages_sha256=transcript.hexdigest(),\n                decisions_sha256=decisions.hexdigest())\n            return True\n\n        for k, marked in enumerate(earlier):\n            tick()\n            descriptor = {'row': k, 'inverse': 'UG', 'completed': False}\n            fibre_cover['UG_fibres'].append(descriptor)\n            proposals = ()\n            if output[0] == 'all' and (marked is None or marked == output[2]):\n                proposals = (({'rule': 'generalize', 'variable': output[1],\n                              'formula': output}, [output[2]], [k]),)\n                descriptor['case'] = 'missing_or_matching_body'\n            else:\n                descriptor['case'] = 'not_universal_or_assigned_body_mismatch'\n            if not fibre(proposals, descriptor):\n                return response()\n        for i, left in enumerate(earlier):\n            for j, implication in enumerate(earlier):\n                tick()\n                descriptor = {'rows': [i, j], 'inverse': 'MP', 'completed': False}\n                fibre_cover['ordered_MP_fibres'].append(descriptor)\n                if i == j:\n                    descriptor.update(case='FINITE_AST_OCCURS_CHECK_EMPTY',\n                        equation=['A', ['imp', 'A', 'C']], positive_output_nodes=output_nodes)\n                    proposals = ()\n                elif left is not None:\n                    descriptor['case'] = 'antecedent_assigned'\n                    required = ['imp', left, output]\n                    proposals = (({'rule': 'mp', 'formula': output}, [left, required], [i, j]),) if implication is None or implication == required else ()\n                elif implication is not None:\n                    descriptor['case'] = 'only_implication_assigned'\n                    proposals = (({'rule': 'mp', 'formula': output}, [implication[1], implication], [i, j]),) if implication[0] == 'imp' and implication[2] == output else ()\n                else:\n                    descriptor['case'] = 'both_absent_full_scoped_carrier'\n                    maximum = fibre_cover['MP_antecedent_max_nodes']\n                    proposals = (({'rule': 'mp', 'formula': output},\n                                  [a, ['imp', a, output]], [i, j])\n                        for a in iter_bounded_formulas(language=language,\n                            maximum_nodes=maximum, tick=tick)) if maximum >= 1 else ()\n                if not fibre(proposals, descriptor):\n                    return response()\n        tick()\n        missing_complete = True\n        fibre_cover['completed'] = True\n        return response()\n",
+      "before_end": 12489,
+      "before_start": 12489,
+      "before_utf8": ""
+    }
+  ],
+  "legacy_UG_MP_hint_and_complete_assigned_prefix_tail_exact": true,
+  "patches": {
+    "missing-v3-to-proposer-v2-full-inverse.patch": {
+      "bytes": 12915,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/missing-v3-to-proposer-v2-full-inverse.patch",
+      "sha256": "75a5683c404ce0987b570abc7ad9faff3406c85956330efc97bd3b00ac7aea70"
+    },
+    "proposer-v2-to-missing-v3-forward.patch": {
+      "bytes": 12915,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/proposer-v2-to-missing-v3-forward.patch",
+      "sha256": "d9b5d3f21cb70b4decb16e4aa10d415eec10c35f942fd0185cf19c8b19bdaacf"
+    }
+  },
+  "schema": "unit-row-missing-mark-degree-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_top_definitions": [
+    "need",
+    "canonical",
+    "digest",
+    "clone",
+    "pairs",
+    "merge",
+    "prototype",
+    "validate_state",
+    "marked_formula"
+  ],
+  "whole_AST_inverse": true,
+  "whole_byte_forward_and_inverse": true
+}

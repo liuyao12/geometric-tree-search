@@ -1,0 +1,270 @@
+--- before
++++ after
+@@ -4,7 +4,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-implicit-degree-evidence-v3-missing-marks'
++VERSION = 'unit-row-implicit-degree-evidence-v2'
+ PORTS = {'axiom': 0, 'assumption': 0, 'instantiate': 0,
+          'eq_subst': 0, 'generalize': 1, 'mp': 2}
+ 
+@@ -168,87 +168,6 @@
+     return formula
+ 
+ 
+-def iter_bounded_formulas(*, language, maximum_nodes, tick):
+-    """Lazy literal size-ordered carrier; no cache, quotient or partial-body gate."""
+-    need(type(maximum_nodes) is int and 1 <= maximum_nodes <= 44, 'whole formula size bound1..44')
+-    outside = language.OutsideLanguage
+-    functions = tuple(sorted(language.theory['functions'].items()))
+-    predicates = tuple(sorted(language.theory['predicates'].items()))
+-    binders = tuple(sorted(language.binder_names))
+-    scope = frozenset(language.parameter_set)
+-
+-    def compositions(total, count):
+-        tick()
+-        if count == 0:
+-            if total == 0:
+-                yield ()
+-            return
+-        for first in range(1, total-count+2):
+-            for rest in compositions(total-first, count-1):
+-                yield (first,) + rest
+-
+-    def children(sizes, names, term_children):
+-        tick()
+-        if not sizes:
+-            yield []
+-            return
+-        stream = terms if term_children else formulas
+-        for first in stream(sizes[0], names):
+-            for rest in children(sizes[1:], names, term_children):
+-                yield [first] + rest
+-
+-    def terms(size, names):
+-        tick()
+-        if not 1 <= size <= 12:
+-            return
+-        if size == 1:
+-            for name in sorted(names):
+-                tick()
+-                yield ['var', name]
+-        for name, arity in functions:
+-            for sizes in compositions(size-1, arity):
+-                for args in children(sizes, names, True):
+-                    tick()
+-                    yield ['fun', name, args]
+-
+-    def formulas(size, names):
+-        tick()
+-        if size == 1:
+-            yield ['bot']
+-        for name, arity in predicates:
+-            for sizes in compositions(size-1, arity):
+-                for args in children(sizes, names, True):
+-                    tick()
+-                    yield ['pred', name, args]
+-        for sizes in compositions(size-1, 2):
+-            for args in children(sizes, names, True):
+-                tick()
+-                yield ['eq', args[0], args[1]]
+-        if size >= 2:
+-            for body in formulas(size-1, names):
+-                tick()
+-                yield ['not', body]
+-            for name in binders:
+-                for body in formulas(size-1, names | {name}):
+-                    tick()
+-                    yield ['all', name, body]
+-        for tag in ('imp', 'and', 'or'):
+-            for sizes in compositions(size-1, 2):
+-                for args in children(sizes, names, False):
+-                    tick()
+-                    yield [tag, args[0], args[1]]
+-
+-    for size in range(1, maximum_nodes+1):
+-        for formula in formulas(size, scope):
+-            tick()
+-            try:
+-                actual_size = language.formula(formula)
+-            except outside:
+-                continue
+-            need(actual_size == size, 'complete literal constructor-size agreement')
+-            yield formula
+-
+-
+ def propose_degree(*, language, state, row, tick):
+     """Return two legal witnesses, an untrusted restricted cover, or UNKNOWN.
+ 
+@@ -261,40 +180,23 @@
+     output = marked_formula(marks, row, language, tick)
+     earlier = [marked_formula(marks, r, language, tick) for r in range(row)]
+     cover = output is not None and output[0] != 'imp' and all(f is not None for f in earlier)
+-    missing_cover = output is not None and output[0] != 'imp' and not cover
+-    missing_complete = False
+-    fibre_cover = None
+-    if missing_cover:
+-        output_nodes = language.formula(output)
+-        fibre_cover = {'schema': 'unit-row-missing-mark-fibres-v1', 'completed': False,
+-            'output_nodes': output_nodes, 'MP_antecedent_max_nodes': 43-output_nodes,
+-            'assigned_prior_rows': [k for k, f in enumerate(earlier) if f is not None],
+-            'absent_prior_rows': [k for k, f in enumerate(earlier) if f is None],
+-            'axiom_labels_seen': [], 'Gamma_occurrences_seen': [],
+-            'UG_fibres': [], 'ordered_MP_fibres': [],
+-            'carrier_order': 'size; bot,pred,eq,not,all,imp,and,or; literal names; positive size compositions',
+-            'carrier_materialized': False, 'independently_accepted': False}
+     candidates, seen, rejections = [], set(), []
+     coverage = {'axiom_labels_seen': [], 'Gamma_occurrences_seen': [],
+                 'UG_prior_rows_seen': [], 'ordered_MP_pairs_seen': []}
+ 
+-    def consider(witness, premises, reads, retain_rejection=True):
++    def consider(witness, premises, reads):
+         tick()
+         try:
+             tile = prototype(language, witness, premises, [r-row for r in reads], row, tick)
+         except outside as error:
+-            result = {'rule': witness['rule'], 'reads': list(reads),
+-                      'reason': error.reason, 'kind': 'definite_membership_exclusion'}
+-            if retain_rejection:
+-                rejections.append(result)
+-            return result
++            rejections.append({'rule': witness['rule'], 'reads': list(reads),
++                               'reason': error.reason, 'kind': 'definite_membership_exclusion'})
++            return
+         key = canonical(tile['placement_key'])
+         name = tile['placement_key']['tile_type_id']
+         pre = canonical(tile['placement_key']['type_preimage'])
+         need(name not in prototypes or prototypes[name] == pre, 'prototype digest/preimage collision')
+-        # Full preimage is identity. Do not cache a carrier of rejected keys.
+-        if not missing_cover:
+-            prototypes[name] = pre
++        prototypes[name] = pre
+         reason = None
+         if key in selected:
+             reason = 'already_selected'
+@@ -306,34 +208,26 @@
+                  for p, v in tile['global_m_values']):
+             reason = 'whole_remote_or_metadata_mark_conflict'
+         if reason:
+-            result = {'rule': witness['rule'], 'reads': list(reads), 'kind': reason,
+-                      'placement_key': tile['placement_key']}
+-            if retain_rejection:
+-                rejections.append(result)
+-            return result
+-        if key not in seen:
++            rejections.append({'rule': witness['rule'], 'reads': list(reads), 'kind': reason,
++                               'placement_key': tile['placement_key']})
++        elif key not in seen:
+             seen.add(key)
+-            prototypes[name] = pre
+             tile['read_obligations'] = [{'row': r, 'formula': clone(f, tick),
+                  'occupied': totals[(0, r)] == 1, 'fact_accepted': False} for r, f in zip(reads, premises)]
+             candidates.append(tile)
+-            return {'kind': 'new_survivor'}
+-        return {'kind': 'duplicate_full_key'}
+ 
+     def finished():
+         return not cover and len(candidates) >= 2
+ 
+     def response():
+         tick()
+-        kind = ('NON_IMP_ASSIGNED_PREFIX_COVER' if cover else
+-                'NON_IMP_MISSING_MARK_COVER' if missing_complete else
+-                'TWO_LEGAL_WITNESSES' if len(candidates) >= 2 else 'UNKNOWN')
+-        return {'schema': 'unit-row-degree-evidence-proposal-v2', 'version': VERSION,
++        kind = 'NON_IMP_ASSIGNED_PREFIX_COVER' if cover else ('TWO_LEGAL_WITNESSES' if len(candidates) >= 2 else 'UNKNOWN')
++        return {'schema': 'unit-row-degree-evidence-proposal-v1', 'version': VERSION,
+                 'kind': kind, 'state': s, 'state_sha256': digest(s),
+                 'input_epoch': s['input_epoch'], 'language_binding': clone(language.binding, tick),
+                 'row': row, 'candidates': candidates if cover else candidates[:2],
+                 'coverage': coverage if cover else None, 'rejections': rejections,
+-                'complete_cover_proposed': cover or missing_complete, 'fibre_cover': fibre_cover, 'untrusted': True,
++                'complete_cover_proposed': cover, 'untrusted': True,
+                 'degree_zero_or_singleton_accepted': False, 'degree_ge_two_accepted': False,
+                 'complete_candidate_graph_accepted': False, 'scheduler_or_rollback_accepted': False,
+                 'logical_proof_accepted': False, 'ROOT_resource_accepted': False,
+@@ -343,8 +237,6 @@
+         tick()
+         if cover:
+             coverage['axiom_labels_seen'].append(name)
+-        if missing_cover:
+-            fibre_cover['axiom_labels_seen'].append(name)
+         if output is None or formula == output:
+             consider({'rule': 'axiom', 'name': name, 'formula': formula}, [], [])
+             if finished():
+@@ -353,74 +245,10 @@
+         tick()
+         if cover:
+             coverage['Gamma_occurrences_seen'].append(index)
+-        if missing_cover:
+-            fibre_cover['Gamma_occurrences_seen'].append(index)
+         if output is None or formula == output:
+             consider({'rule': 'assumption', 'index': index, 'formula': formula}, [], [])
+             if finished():
+                 return response()
+-    if missing_cover:
+-        def fibre(witnesses, descriptor):
+-            examined, rejected, legal_before = 0, 0, len(candidates)
+-            transcript, decisions = hashlib.sha256(), hashlib.sha256()
+-            for witness, premises, reads in witnesses:
+-                tick()
+-                transcript.update((canonical([witness, premises, reads])+'\n').encode('utf8'))
+-                examined += 1
+-                result = consider(witness, premises, reads, False)
+-                decisions.update((canonical(result)+'\n').encode('utf8'))
+-                rejected += result['kind'] not in ('new_survivor', 'duplicate_full_key')
+-                if finished():
+-                    return False
+-            descriptor.update(completed=True, examined=examined,
+-                new_survivors=len(candidates)-legal_before, rejections=rejected,
+-                examined_preimages_sha256=transcript.hexdigest(),
+-                decisions_sha256=decisions.hexdigest())
+-            return True
+-
+-        for k, marked in enumerate(earlier):
+-            tick()
+-            descriptor = {'row': k, 'inverse': 'UG', 'completed': False}
+-            fibre_cover['UG_fibres'].append(descriptor)
+-            proposals = ()
+-            if output[0] == 'all' and (marked is None or marked == output[2]):
+-                proposals = (({'rule': 'generalize', 'variable': output[1],
+-                              'formula': output}, [output[2]], [k]),)
+-                descriptor['case'] = 'missing_or_matching_body'
+-            else:
+-                descriptor['case'] = 'not_universal_or_assigned_body_mismatch'
+-            if not fibre(proposals, descriptor):
+-                return response()
+-        for i, left in enumerate(earlier):
+-            for j, implication in enumerate(earlier):
+-                tick()
+-                descriptor = {'rows': [i, j], 'inverse': 'MP', 'completed': False}
+-                fibre_cover['ordered_MP_fibres'].append(descriptor)
+-                if i == j:
+-                    descriptor.update(case='FINITE_AST_OCCURS_CHECK_EMPTY',
+-                        equation=['A', ['imp', 'A', 'C']], positive_output_nodes=output_nodes)
+-                    proposals = ()
+-                elif left is not None:
+-                    descriptor['case'] = 'antecedent_assigned'
+-                    required = ['imp', left, output]
+-                    proposals = (({'rule': 'mp', 'formula': output}, [left, required], [i, j]),) if implication is None or implication == required else ()
+-                elif implication is not None:
+-                    descriptor['case'] = 'only_implication_assigned'
+-                    proposals = (({'rule': 'mp', 'formula': output}, [implication[1], implication], [i, j]),) if implication[0] == 'imp' and implication[2] == output else ()
+-                else:
+-                    descriptor['case'] = 'both_absent_full_scoped_carrier'
+-                    maximum = fibre_cover['MP_antecedent_max_nodes']
+-                    proposals = (({'rule': 'mp', 'formula': output},
+-                                  [a, ['imp', a, output]], [i, j])
+-                        for a in iter_bounded_formulas(language=language,
+-                            maximum_nodes=maximum, tick=tick)) if maximum >= 1 else ()
+-                if not fibre(proposals, descriptor):
+-                    return response()
+-        tick()
+-        missing_complete = True
+-        fibre_cover['completed'] = True
+-        return response()
+-
+     for r, formula in enumerate(earlier):
+         tick()
+         if cover and output[0] == 'all':

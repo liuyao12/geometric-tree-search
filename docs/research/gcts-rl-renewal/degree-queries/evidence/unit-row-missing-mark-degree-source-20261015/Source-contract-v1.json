@@ -1,0 +1,178 @@
+{
+  "API": {
+    "iter_bounded_formulas": "iter_bounded_formulas(*,language,maximum_nodes,tick) -> lazy eligible literal whole formulas in exact size/constructor/name/composition order; maximum_nodes literal1..44",
+    "propose_degree": "propose_degree(*,language,state,row,tick) -> unit-row-degree-evidence-proposal-v2"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "unit-row-missing-mark-degree-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-missing-mark-degree-evidence-proposer-Source",
+    "source": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "source_contract": "Exact current raw contract capsule; no self hash.",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer alone decides."
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "delta": {
+    "bytes": 14658,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-delta-v1.json",
+    "sha256": "27f4bd2480052e68697342545e52069f4e6770233a9917a07d2251a1a13fb621"
+  },
+  "exceptions": "Only exact authenticated language.OutsideLanguage is definite exclusion. All native/callback/typing-depth/visit/time/memory/programming exceptions propagate; generator or last-fibre interruption yields no complete-cover result. Callback contract forbids semantic-exclusion impersonation.",
+  "fibre_cover": {
+    "complete_descriptors": "Every UG row0..r-1 and every ordered MP pair(i,j) in row-major order, including i=j. Each finished descriptor records case/completed/examined/new_survivors/rejections and hashes. An interrupted/early2 current descriptor may retain completed=False without final counts/hashes; no unseen rows are claimed.",
+    "fields": [
+      "completed",
+      "output_nodes",
+      "MP_antecedent_max_nodes",
+      "assigned_prior_rows",
+      "absent_prior_rows",
+      "axiom_labels_seen",
+      "Gamma_occurrences_seen",
+      "UG_fibres",
+      "ordered_MP_fibres",
+      "carrier_order",
+      "carrier_materialized",
+      "independently_accepted"
+    ],
+    "hashes": "examined_preimages_sha256 hashes canonical([witness,premises,reads])+LF per examined instance. decisions_sha256 hashes canonical(decision)+LF: exact definite membership or full legality rejection record, new_survivor or duplicate_full_key. These untrusted hashes/counts require independent re-enumeration/checking; they are not certificates by themselves.",
+    "identity_memory": "Full literal prototype preimages/translation are authoritative identities. Hash names are never sole key/dedup authority. Name collisions with current state or retained survivors abort; rejected streamed prototypes are not cached as a carrier.",
+    "rejections_array": "Legacy paths unchanged. New missing path retains finite zero-port rejection diagnostics; UG/MP per-instance rejections are streamed into descriptor counts/hashes, not collected into the old array. All survivor receipts remain complete.",
+    "schema": "unit-row-missing-mark-fibres-v1"
+  },
+  "generator": {
+    "MP_stream_bound": "For both missing distinct rows, size1..43-language.formula(C); empty interval emits no candidate. This is derived implication size, never a cap change.",
+    "depth": "For generated whole size<=44, literal AST depth<=43; original membership still checks depth64 and all other limits.",
+    "finiteness_argument": "Finite symbols/arities and scope at each node; positive compositions strictly reduce child node budgets; induction on exact size enumerates every well-scoped literal constructor AST once. Final membership finishes for each yielded A. No finite cardinality or practical runtime fit is asserted.",
+    "memory_scope": "No full term/formula carrier cache/materialization. Recursive current ASTs, finite alphabets, per-row/pair metadata/digests, supplied private state and at most2 new surviving keys remain. Generator recomputation can be enormous and resource failure is UNKNOWN.",
+    "order": "Whole node size ascending. Root order bot,pred by symbol,eq,not,all by literal binder,imp,and,or. Terms var by scoped name then fun by symbol. Positive child-size compositions first part ascending, ordered child Cartesian products. No alpha quotient or dedup of different literal binders/arguments.",
+    "scope": "Whole outer free scope exactly parameter_set. Under all(x,B), generate B under scope union{x}; do not standalone-filter the contextual B. Binders exactly original binder_names. Every final A passes whole original formula membership.",
+    "term_bound": 12,
+    "whole_formula_bound": 44
+  },
+  "inverse_rules": {
+    "AX_Gamma": "Every named AX/indexed Gamma matching exact C; distinct occurrence identity retained.",
+    "MP_both_missing": "For i!=j and both absent, stream every bounded eligible whole A and construct imp(A,C), then original MP membership and complete point legality/exclusions.",
+    "MP_fixed": "For every i,j, if i!=j and A at i assigned, required implication imp(A,C) either matches j or fills missing j. If only j assigned, require outer imp and consequent C and take its antecedent. Both assigned disagreement is empty.",
+    "MP_same_row": "Every i=j included as completed empty: same marking would require finite AST A=imp(A,C), contradicting |A|=1+|A|+|C| with |C|>=1.",
+    "UG": "If C=all(x,B), each prior row k gives witness generalize(x,C), premise B, offset k-r, provided missing or matching mark. Original parameter/Gamma/membership may reject; pending read not fact. Otherwise empty.",
+    "other_rules": "Original UI/eq_subst outputs outer imp, impossible for fixed nonimp C. Complete outside sentinel and negative inventory offsets restrict surviving reads to0..r-1."
+  },
+  "preserved_and_changed": "All prior Sources, controls and actuals frozen. Nine state/prototype helpers exact, legacy complete assigned-prefix tail exact. New generator, missing-prefix branch, schema/version/cover evidence and bounded streaming diagnostics are explicit Source deltas. No target-specific symbol/route constants.",
+  "private_state": "Exact original unit-row-implicit-private-state-v1 schema, root generation0 all24, selected unit generation1, fixed outside negative rows and exact target last row; complete recomposition, full selected/excluded preimages and current epoch. Exclusion justification/lifecycle is external. Invalid/other markings abort rather than becoming absent.",
+  "raw_references": {
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "parent_contract": {
+      "bytes": 12403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+    },
+    "parent_peer_review": {
+      "bytes": 2586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "d595b0fadedb96fd2adad777c5b030904e3979fc3e6dd6ee70dc98bfdcda0bf9"
+    },
+    "parent_proposer": {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    },
+    "point_encoding": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "prior_nonimp_note": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "specification": {
+      "bytes": 9060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cover-spec-source-20261015/missing-mark-cover-v1.json",
+      "sha256": "0a92ec2de0490887ec3d89166fea6335ec0bb3aec896fea1fdc165e7be3bcced"
+    }
+  },
+  "receipt": {
+    "false_flags": "All six prior accepted flags remain literalFalse. complete_cover_proposed is only an untrusted completion observation. fibre_cover.independently_accepted staysFalse.",
+    "fibre_cover_none": "None for legacy all-assigned cover and non-nonimp/unassigned hint paths.",
+    "kinds": {
+      "NON_IMP_ASSIGNED_PREFIX_COVER": "Same original complete assigned-prefix occurrence/pair enumeration and full survivor order, legacy coverage arrays retained; response schema/version differ.",
+      "NON_IMP_MISSING_MARK_COVER": "Only fixed nonimp output with some missing earlier marks, after every inverse fibre finishes. Due early2 stopping, this completed path has at most one survivor; no classification accepted by proposer.",
+      "TWO_LEGAL_WITNESSES": "Exactly two completed distinct full-state legal keys; may stop missing-prefix enumeration early, complete_cover_proposed=False and fibre_cover.completed=False.",
+      "UNKNOWN": "Other hint classes with <2 legal candidates; not zero/singleton. Incomplete missing-prefix traversal raises unresolved error rather than fabricating complete classification."
+    },
+    "new_field": "fibre_cover",
+    "old_fields_retained": [
+      "version",
+      "kind",
+      "state",
+      "state_sha256",
+      "input_epoch",
+      "language_binding",
+      "row",
+      "candidates",
+      "coverage",
+      "rejections",
+      "complete_cover_proposed",
+      "untrusted",
+      "degree_zero_or_singleton_accepted",
+      "degree_ge_two_accepted",
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "ROOT_resource_accepted",
+      "scope"
+    ],
+    "schema": "unit-row-degree-evidence-proposal-v2"
+  },
+  "remaining_gaps": [
+    "Distinct whole current Source review pending.",
+    "No independently implemented new receipt-v2/missing-fibre checker or actual conformance controls yet. Old checker28e84 rejects schema/version; it is not silently reused.",
+    "Rolling digests and completion fields are untrusted observations, not an independent exhaustion proof.",
+    "No complete GCTS graph/global scheduling/reverse dependency/rollback/branch-exclusion justification/full implication-output fallback/search/trajectory/count/RL/proof/resource or benefit admission.",
+    "No new cold caller/plan/grant/actual/publication. Native20/512MiB/55/60/90+1 remain prospective caller obligations; no fit prediction."
+  ],
+  "schema": "unit-row-missing-mark-degree-evidence-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-missing-mark-degree-evidence-proposer-Source",
+  "source": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 10322,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/author-static-evidence-v1.json",
+    "sha256": "a211f9dc049c8da0f8e5a796702e7ef8dfd98302116fcacd60664a6b247be332"
+  },
+  "unchanged_inputs": "No catalogue, old model, word, family library, target route or witness input. Caller supplies exact authenticated original membership5d1f/policy227b/current full private state and resource-only tick. Original height24 and profile/native caps unchanged.",
+  "version": "unit-row-implicit-degree-evidence-v3-missing-marks"
+}

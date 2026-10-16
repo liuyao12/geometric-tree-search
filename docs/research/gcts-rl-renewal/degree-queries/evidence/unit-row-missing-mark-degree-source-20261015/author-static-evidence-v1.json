@@ -1,0 +1,184 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 18,
+  "checks": [
+    {
+      "check": "exact whole Source/AST compile-only and full inverse",
+      "evidence": {
+        "delta": {
+          "bytes": 14658,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-delta-v1.json",
+          "sha256": "27f4bd2480052e68697342545e52069f4e6770233a9917a07d2251a1a13fb621"
+        },
+        "source": {
+          "bytes": 22030,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+          "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "nine original whole state/point/membership helpers AST unchanged",
+      "evidence": [
+        "need",
+        "canonical",
+        "digest",
+        "clone",
+        "pairs",
+        "merge",
+        "prototype",
+        "validate_state",
+        "marked_formula"
+      ],
+      "passed": true
+    },
+    {
+      "check": "legacy UG/MP complete assigned-prefix loop tail byte exact",
+      "evidence": "All-assigned root loops add only false missing_cover diagnostic conditions; consider preserves legacy retention/filters/survivors. New response schema/version/fibre_cover differ explicitly.",
+      "passed": true
+    },
+    {
+      "check": "finite exact-size ordered syntax induction",
+      "evidence": "Every whole size1..maximum; positive child-size compositions; ordered Cartesian products; finite signature and literal scoped names; no cache/truncation/top-k or target grammar filter.",
+      "passed": true
+    },
+    {
+      "check": "all original term/formula constructors and zero arities",
+      "evidence": "Terms: var and every declared fun of arity0..4, term root size<=12. Formulas: bot, every declared pred inclarity0, eq,not,all,imp,and,or. Repeated child arguments remain possible.",
+      "passed": true
+    },
+    {
+      "check": "bound scope and literal identity retained",
+      "evidence": "Outer scope exact parameters; each all extends only its lexical child scope. Shadowing/binder spelling retained, all original finite binder_names. No whole-formula membership call on a still-contextual child.",
+      "passed": true
+    },
+    {
+      "check": "whole generated A validation and exact node count",
+      "evidence": "Every final whole A passes original language.formula; exact computed size must match requested size. Only exact OutsideLanguage omitted; UNKNOWN/resource/callback/other exceptions propagate.",
+      "passed": true
+    },
+    {
+      "check": "exact MP antecedent bound with no ceiling change",
+      "evidence": "Constructed implication has1+|A|+|C|<=44, so1<=|A|<=43-|C|; terms12 unchanged. Size<=44 implies AST depth<=43<64; final original membership still enforces all actual limits.",
+      "passed": true
+    },
+    {
+      "check": "whole current state/identity/point/exclusion legality unchanged",
+      "evidence": "Same prototype and private-state reconstruction; every attempted primitive full membership and t/m support/remote/internal-duplicate/selected/exclusion checks before witness retention. Full canonical preimage remains decisive, not hash-only identity.",
+      "passed": true
+    },
+    {
+      "check": "complete nonimp inverse families",
+      "evidence": "All named AX and indexed Gamma, every prior UG row with matching/missing body, all r*r ordered MP fibres: fixed antecedent, fixed implication, both fixed, both absent. UI/EqSubst impossible outer-imp outputs.",
+      "passed": true
+    },
+    {
+      "check": "repeated same-row MP fibre explicitly accounted",
+      "evidence": "i=j recorded completed empty using finite literal AST occurs-size equation A=imp(A,C), positive |C|. No ban on repeated ports in other relations; all ordered pair records retained.",
+      "passed": true
+    },
+    {
+      "check": "two witness early return is positive only",
+      "evidence": "Both legal distinct full keys completed in same state; missing fibre cover remains completed=False and complete_cover_proposed=False. No unseen fibre/exactdegree/branch/zero/singleton claim.",
+      "passed": true
+    },
+    {
+      "check": "zero/one complete cover requires finished fibres",
+      "evidence": "New missing_complete flag set only after all zero-port roots, every UG and ordered MP fibre; each complete descriptor carries visited counts/rolling preimage+decision digests. Final resource tick may still abort, never yields false cover.",
+      "passed": true
+    },
+    {
+      "check": "lazy memory retains no rejected carrier",
+      "evidence": "Both-absent generator keeps current recursive constructor ASTs only; stream decisions update rolling digests, do not append each rejection or cache each rejected prototype. Current private key identities and <=2 surviving keys retained; root/UG/pair metadata finite. Time can still be enormous; resource failure remains unresolved.",
+      "passed": true
+    },
+    {
+      "check": "only exact member exclusion caught",
+      "evidence": "Same language.OutsideLanguage identity in consider and generator; callback must be authenticated resource-only and cannot impersonate semantic exclusion. Native/resource/typing-budget/programming errors propagate without completed cover.",
+      "passed": true
+    },
+    {
+      "check": "new schema and independent-check gap explicit",
+      "evidence": "Receipt-v2/Version-v3-missing-marks adds fibre_cover and missing-cover kind; old checker28e84 accepts only receipt-v1, so cannot certify this new module. Old controls/cold Sources unchanged and inapplicable until additive checker/integration reviews.",
+      "passed": true
+    },
+    {
+      "check": "all authority flags remain false/no new engine",
+      "evidence": "No graph/reverse dependencies/global dead/forced scheduling/generation tie/rollback/fullfallback/count/RL/proof/physical palette/benefit/resource authority. All work is prospective local degree evidence.",
+      "passed": true
+    },
+    {
+      "check": "no Source/function/Q/runtime/test execution",
+      "evidence": "Only named raw Source/small metadata reads and standard AST/compile without exec. No scientific imports/calls, payload parse, clocks, tests, actual plans/grants/output namespaces or publication.",
+      "passed": true
+    }
+  ],
+  "delta": {
+    "bytes": 14658,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-delta-v1.json",
+    "sha256": "27f4bd2480052e68697342545e52069f4e6770233a9917a07d2251a1a13fb621"
+  },
+  "raw_references": {
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "parent_contract": {
+      "bytes": 12403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/Source-contract-v2.json",
+      "sha256": "0d99b66299bde9e5a1dbefd884ffbaab16fd6e7f64ee6c456c5f2f3f4a2e3e2f"
+    },
+    "parent_peer_review": {
+      "bytes": 2586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "d595b0fadedb96fd2adad777c5b030904e3979fc3e6dd6ee70dc98bfdcda0bf9"
+    },
+    "parent_proposer": {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    },
+    "point_encoding": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "prior_nonimp_note": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "specification": {
+      "bytes": 9060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cover-spec-source-20261015/missing-mark-cover-v1.json",
+      "sha256": "0a92ec2de0490887ec3d89166fea6335ec0bb3aec896fea1fdc165e7be3bcced"
+    }
+  },
+  "schema": "unit-row-missing-mark-degree-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Author static/structural evidence only; independent Source review and implemented checker/controls remain separate.",
+  "source": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "source_only": true
+}

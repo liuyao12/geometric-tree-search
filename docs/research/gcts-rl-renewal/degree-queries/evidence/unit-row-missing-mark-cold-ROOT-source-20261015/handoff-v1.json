@@ -1,0 +1,68 @@
+{
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "schema": "missing-mark-degree-cold-Source-handoff-v1",
+  "source": {
+    "bytes": 23048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+    "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+  },
+  "source_contract": {
+    "bytes": 9065,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/Source-contract-v1.json",
+    "sha256": "827f85dd6a45f82fef698deb10c8c41543a555475fc0971ae5707c7a36a73f0c"
+  },
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 20072,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+      "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "intake": {
+      "bytes": 23048,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/missing_mark_degree_controls_cold_v1.py",
+      "sha256": "cbf39e7381dda8e637e6ad1bac85a94c217937415116151d988546563a5458c3"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "static_evidence": {
+    "bytes": 797,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-cold-ROOT-source-20261015/author-static-evidence-v1.json",
+    "sha256": "00b74d685d6d5b8f1067c4ddc955fa5138839a0543768d06d21129505ed30c4c"
+  },
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING"
+}

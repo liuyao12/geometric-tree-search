@@ -1,0 +1,31 @@
+{
+  "API": "check_degree_evidence(*, language, state, row, proposal, tick) -> unit-row-degree-evidence-check-v2",
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 10167,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/author-static-v2.json",
+    "sha256": "9afaacf6234af0663708987b520648a15c93d798dfc7388cf44edefd64564065"
+  },
+  "delta": {
+    "bytes": 28890,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-delta-v2.json",
+    "sha256": "badd8caf624d1985ebc40ad44bf871aa104a3afddf0a140384ecb4f70813ad4d"
+  },
+  "next": "Root genuine distinct review; diagnosis new harness metadata pins exact receipt-v2/new bool. No functions/clocks/tests/Q/model/word/plans/actuals; original checker/current20controls unchanged.",
+  "review_scope": "unit-row-missing-mark-degree-evidence-checker-Source",
+  "schema": "unit-row-missing-mark-independent-checker-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27553,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+    "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+  },
+  "source_contract": {
+    "bytes": 11994,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+    "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+  },
+  "source_only": true,
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING"
+}

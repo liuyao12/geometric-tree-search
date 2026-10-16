@@ -1,0 +1,61 @@
+{
+  "MP_inverse_latex": "For EVERY ordered pair \\((i,j)\\in\\{0,\\ldots,r-1\\}^{2}\\), MP requires ordered premises \\([A,I]\\), where \\(I=\\operatorname{imp}(A,C)\\), and offsets \\([i-r,j-r]\\). Assigned mark at \\(i\\) fixes \\(A\\); assigned mark at \\(j\\) must be literal \\(\\operatorname{imp}(A,C)\\). If only the implication mark is assigned, it must have outer imp and consequent exactly \\(C\\), fixing \\(A\\) to its antecedent. If both are assigned, these tests either give that single instance or an empty fibre. If neither is assigned and \\(i\\ne j\\), stream all eligible whole \\(A\\), constructing \\(I\\) and checking every complete candidate.",
+  "UG_inverse_latex": "Only \\(C=\\forall x\\,B\\) permits UG. For every \\(k<r\\), propose exact witness generalize(x,C), ordered premise \\([B]\\), offset \\([k-r]\\). An assigned source mark must equal \\(B\\); an absent source acquires the pending obligation \\(B\\). The original parameter/whole-\\(\\Gamma\\) condition and bounded membership must finish. No occupancy or proved-fact filter applies; a forbidden binder gives no UG instance.",
+  "answer": "Yes, a complete local inverse relation can be streamed without materializing a whole formula registry. Only the both-missing MP fibre needs a bounded formula carrier; it can be enormous. Two independently checked legal witnesses permit early positive degree evidence, but not complete zero/one evidence.",
+  "assumptions_latex": "Fix the unchanged finite signature, original \\(\\Gamma\\), parameters, B12/N44 membership and literal identity, height \\(H=24\\), query row \\(0\\le r<H\\), assigned output \\(C\\) with outer tag other than \\(\\operatorname{imp}\\). Every earlier output mark is either absent or an exact bounded formula; complete private state, original target/outside sentinels and exclusions are authenticated. Offsets are negative and bounded; full legality forces reads \\(0\\le k<r\\). Malformed/other marks do not become absent or a completed empty domain.",
+  "author_identity": "/root/arithmetic_induction",
+  "complete_cover_argument": "The six rule tags are exhaustive. Zero-port roots, UG and MP are covered above; UI/equality licence outputs cannot match non-imp C. Negative offsets and the full disjoint outside boundary leave exactly prior rows. Assigned read marks determine the corresponding formula; the remaining both-absent MP case is exactly the stated finite carrier. Therefore, after every fibre is completely traversed and every member/full-legality decision finishes, the unique surviving full keys exhaust the local domain. Completeness is conditional on implementing and independently checking that enumerator/cover, not on an observed shortlist.",
+  "constructive_enumerator": "Enumerate exact constructor size ascending. Use a fixed declared constructor/name/child order; finite original signature and binder namespace; original parameters as outer free scope; extend lexical scope only under an explicit binder. Split child sizes by all integer compositions, construct all declared term/formula constructors and all argument tuples, preserving literal binder spelling/shadowing. Terms obey size12; whole A obeys its derived bound. Require completed original membership for A, I and the exact MP primitive; no alpha quotient, target backcone, known-fact filter, cache shortlist or heuristic language-exhaustion claim. One AST and its current candidate can be retained at a time; full survivor receipts may need bounded streaming output. The spec does not certify an implemented generator or practical fit.",
+  "early_two_and_unknown": "Stop an untrusted proposal as soon as two distinct candidates have each passed complete membership and full legality in the SAME authenticated state/version. Independent checking of those two proves only degree>=2 and needs no unseen fibre enumeration. It neither chooses a branch nor gives exact tie counts. If fewer than two survive, zero/one requires completed coverage of ALL fibres; any unfinished typing, callback/resource work, generator traversal or output means UNKNOWN/failure. Exclusions/mark constraints may remove either easy witness; never infer two merely from absent marks or syntactic variety.",
+  "full_legality_and_identity": "For every occurrence retain epoch, exact primitive witness, ordered premise formulas and offsets, integer translation and full preimage. Validate type/collision identity, internal repeated marking agreement, unit positive support/capacity, EVERY fixed/selected/read/offset/remote mark, selected multiplicity and justified branch-local exclusions. Different row references or AX/Gamma identities remain distinct even if formulas coincide. Deduplicate only an identical full placement key. Pending formulas never become accepted facts, and local legality does not promise an eventual extension.",
+  "raw_references": {
+    "frozen_current_checker": {
+      "bytes": 16276,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-degree-checker-source-20261015/unit_row_degree_checker_v1.py",
+      "sha256": "28e84ee48646fc929f35ed9ad27c250795606463b4d2bb657e8268c50abd01e6"
+    },
+    "frozen_current_proposer": {
+      "bytes": 14060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-implicit-degree-source-20261015/unit_row_degree_evidence_v2.py",
+      "sha256": "aa0ab9cd36666ea648d1b4b730912887aca8c8bac13c2bf39462a26167fd44a1"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_encoding": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "prior_nonimp_cover": {
+      "bytes": 3941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-nonimp-cover-note-source-20261015/nonimp-local-cover-v1.json",
+      "sha256": "fd62dda5438235c4f890243ba9c96914730becf00e3a5d97d9e13945bd93d613"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "repeated_port_occurs_check_latex": "Keep the ordered \\(i=j\\) case in the cover census. Its two reads address the SAME output mark, so full agreement requires the finite literal tree equation \\(A=\\operatorname{imp}(A,C)\\). Constructor size implies \\(|A|=1+|A|+|C|\\), impossible since \\(|C|\\ge1\\). Thus this fibre is proved empty, not silently deduplicated. This does not ban repeated ports in other declared rule relations or change placement identity.",
+  "schema": "unit-row-missing-mark-nonimp-cover-spec-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "PROSPECTIVE_MATHEMATICAL_SPECIFICATION_NO_IMPLEMENTATION_OR_ACTUAL",
+  "streaming_bound_latex": "For the both-absent, distinct-row MP fibre, \\(|I|=1+|A|+|C|\\le44\\), so \\(1\\le|A|\\le43-|C|\\). If this interval is empty there is no instance. All complete terms still satisfy the original bound \\(12\\), with original scoped names/depth and whole-formula membership. This is a local bound deduction, not a changed ceiling or supplied intermediate.",
+  "unchanged_scope": "Current frozen proposerV2/checkerV1 cover gate remains all earlier marks assigned; this note does not change it or qualify a new case. No Source/functions/Q/model/word/clock/test/plan/actual execution. No global frontier graph, scheduler/generation/rollback/fallback, exact ground counts, proof/discovery, GCTS/RL/Wang or resource/speed acceptance. Root-owned future implementation/control/actual choices remain separate.",
+  "zero_port_cases": "Enumerate each original named axiom and occurrence-indexed Gamma entry whose literal output equals C. Retain distinct labels/indices even for equal formulas. Original instantiate/eq_subst licences have outer imp and cannot output C. All proposed roots still pass full primitive membership and whole point legality."
+}
