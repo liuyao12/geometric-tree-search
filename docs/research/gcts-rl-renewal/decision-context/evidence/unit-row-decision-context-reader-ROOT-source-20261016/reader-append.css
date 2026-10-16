@@ -1,0 +1,2 @@
+/* Preserve the color of each assigned-zero layer. Missing layers have no dot. */
+.mark-dot.ch2{color:var(--ch2)}.mark-dot.ch3{color:var(--ch3)}.mark-dot.ch4{color:var(--ch4)}.mark-dot.zero{background:white;border:3px solid currentColor}

@@ -1,0 +1,160 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v13-decision-local-checked-state'
++VERSION = 'lazy-unit-row-global-engine-v12-routed-marked-aware-degree'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'
+ MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'
+ BRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')
+@@ -518,32 +518,6 @@
+         need(canonical(raw) == canonical(tile), 'exact entire candidate/member/point receipt')
+         return tile
+ 
+-    def _candidate_from_decision_context(self, raw, row, checked, current):
+-        """Only the immediate fresh-proposal loop owns this checked tuple/guard."""
+-        current()
+-        raw = self._copy(raw)
+-        current()
+-        need(type(raw) is dict and type(raw.get('placement_key')) is dict, 'full candidate')
+-        key = raw['placement_key']
+-        need(set(key) == {'tile_type_id', 'type_preimage', 'translation'}
+-             and key['translation'] == [0, row], 'query incident candidate')
+-        state, t, m, selected, excluded, names = checked
+-        tile = self.semantics.rebuild_tile(self.language, key['type_preimage'],
+-                                           key['translation'], self.tick)
+-        current()
+-        # Fresh _candidate rebuilt this ledger for each candidate. Do not let one
+-        # offered candidate change the checked state ledger for the next one.
+-        self.semantics.check_collision(tile, dict(names))
+-        current()
+-        need(self.semantics.legality(tile, t, m, selected, excluded) is None,
+-             'whole original point legality')
+-        current()
+-        tile = self.semantics.with_obligations(tile, t, self.tick)
+-        current()
+-        need(canonical(raw) == canonical(tile), 'exact entire candidate/member/point receipt')
+-        current()
+-        return tile
+-
+     def _observe(self, tile):
+         encoded = canonical(tile['placement_key'])
+         row = tile['placement_key']['translation'][1]
+@@ -752,84 +726,37 @@
+     def decision(self):
+         self.tick()
+         self._check_authority()
+-        # Stack-local, engine-owned data only. The full authority literal already
+-        # contains the independently checked frozen marking and route policy.
+-        # No producer/checker receives this tuple or its guard, and no checkpoint
+-        # or engine field retains either after the first pass.
+-        owner = self
+-        state_object, state_literal = self._state, canonical(self._state)
+-        revision = self._revision
+-        language, semantics = self.language, self.semantics
+-        transition, native_tick = self.transition_checker, self.tick
+-        proposer = self.degree_proposer
+-        binding_literal = canonical(language.binding)
+-        marking_id = self._state['marking_id']
+-        authority, policy, branch_tie = self._authority, self._scheduler_policy, self._branch_tie
+-        checked, active = None, True
+-
+-        def current():
+-            # Trusted synchronous pinned Sources: compare owned literals and
+-            # identities here; rebuild/checker calls still do their full math.
+-            native_tick()
+-            need(active and self is owner and self._state is state_object
+-                 and canonical(self._state) == state_literal and self._revision == revision
+-                 and self.language is language and self.semantics is semantics
+-                 and self.transition_checker is transition and self.tick is native_tick
+-                 and self.degree_proposer is proposer
+-                 and canonical(language.binding) == binding_literal
+-                 and self._state['marking_id'] == marking_id and semantics.marking_id == marking_id
+-                 and self._authority == authority and self._scheduler_policy == policy
+-                 and self._branch_tie == branch_tie
+-                 and (checked is None or canonical(checked[0]) == state_literal),
+-                 'current decision-local checked state/object/revision/authority')
+-
+-        try:
+-            current()
+-            checked = semantics.private_state(language, state_object, native_tick)
+-            current()
+-            state, totals, marks, selected, excluded, names = checked
+-            frontier = [r for r in range(24) if totals[(0, r)] == 0]
+-            self.counts['global_scans'] += 1
+-            certificates = {r: v for r, v in self._certs.items() if r in frontier}
+-            # First inspect every checked local query, so a later certified dead
+-            # point is not hidden behind an earlier unresolved fallback.
+-            for row in frontier:
+-                current()
+-                receipt = certificates.get(row)
+-                if receipt is not None and receipt['status'] != 'UNKNOWN':
+-                    need(receipt['state_sha256'] == digest(self._state)
+-                         and receipt['row'] == row and receipt['input_epoch'] == self._state['input_epoch'],
+-                         'engine-owned current checked or transferred domain')
+-                    self.counts['retained_queries'] += 1
+-                else:
+-                    offered_state = self._copy(self._state)
+-                    current()
+-                    proposal = proposer(language=language,
+-                        state=offered_state, row=row, tick=native_tick)
+-                    current()
+-                    receipt_state = self._copy(self._state)
+-                    current()
+-                    receipt = semantics.check_degree_evidence(language=language,
+-                        state=receipt_state, row=row, proposal=proposal, tick=native_tick)
+-                    current()
+-                    self._validate_receipt(receipt, row)
+-                    current()
+-                    for raw in proposal['candidates']:
+-                        tile = self._candidate_from_decision_context(raw, row, checked, current)
+-                        self._observe(tile)
+-                        current()
+-                certificates[row] = self._copy(receipt)
+-                current()
+-                if receipt['status'] == 'ZERO':
+-                    self._certs = certificates
+-                    result = {'kind': 'DEAD', 'row': row}
+-                    self._emit('DECISION', decision=result, branch_tie=self.branch_tie,
+-                               statuses=[[r, v['status']] for r, v in certificates.items()],
+-                               evidence=[[r, v] for r, v in certificates.items()])
+-                    current()
+-                    return result
+-        finally:
+-            active = False
++        state, totals, marks, selected, excluded, names = self.semantics.private_state(
++            self.language, self._state, self.tick)
++        frontier = [r for r in range(24) if totals[(0, r)] == 0]
++        self.counts['global_scans'] += 1
++        certificates = {r: v for r, v in self._certs.items() if r in frontier}
++        # First inspect every checked local query, so a later certified dead point
++        # is not hidden behind an earlier unresolved fallback.
++        for row in frontier:
++            self.tick()
++            receipt = certificates.get(row)
++            if receipt is not None and receipt['status'] != 'UNKNOWN':
++                need(receipt['state_sha256'] == digest(self._state)
++                     and receipt['row'] == row and receipt['input_epoch'] == self._state['input_epoch'],
++                     'engine-owned current checked or transferred domain')
++                self.counts['retained_queries'] += 1
++            else:
++                proposal = self.degree_proposer(language=self.language,
++                    state=self._copy(self._state), row=row, tick=self.tick)
++                receipt = self.semantics.check_degree_evidence(language=self.language,
++                    state=self._copy(self._state), row=row, proposal=proposal, tick=self.tick)
++                self._validate_receipt(receipt, row)
++                for raw in proposal['candidates']:
++                    self._observe(self._candidate(raw, row))
++            certificates[row] = self._copy(receipt)
++            if receipt['status'] == 'ZERO':
++                self._certs = certificates
++                result = {'kind': 'DEAD', 'row': row}
++                self._emit('DECISION', decision=result, branch_tie=self.branch_tie,
++                           statuses=[[r, v['status']] for r, v in certificates.items()],
++                           evidence=[[r, v] for r, v in certificates.items()])
++                return result
+         for row in frontier:
+             if certificates[row]['status'] == 'UNKNOWN':
+                 certificates[row] = self._fallback_degree(row)

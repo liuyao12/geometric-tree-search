@@ -1,0 +1,30 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "findings": {
+    "bytes": 24013,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-independent-source-20261016/findings-v1.json",
+    "sha256": "009d043ff27fa6333127cb8a534a6270571fc4697473abca6d8139a618c09a2d"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-decision-context-engine-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-decision-context-engine-Source",
+  "source": {
+    "bytes": 66670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+    "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+  },
+  "source_contract": {
+    "bytes": 26243,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "7cd85361fb73f70154c7b738f65c17accaf7e2ad14deadcd41f0efb736cf4e83"
+  },
+  "source_only": true,
+  "summary": "Genuine whole conditional Source pass,14checks/3rawregions/fullforwardinverse+twoactualpatches,37direct+2nestedexistingcallables exact. No concrete blocker. Stack-only guarded checked context and per-candidate full math/ledgers retained; all fresh nondecision/independent paths unchanged. Same6/all12 normal lifecycle evidence necessary, no private/hostile/ABA scope or runtime fit. No science executed.",
+  "typed_source_review": {
+    "bytes": 6477,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "3ca77dd071fddc434fe58847dc104fb774d9df601ee3fdee2e5a792c19355a79"
+  }
+}

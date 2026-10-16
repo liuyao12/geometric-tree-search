@@ -1,0 +1,48 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "baseline_caller": {
+    "bytes": 78151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/routed_engine_qualification_cold_v1.py",
+    "sha256": "38f8f86f5af3474a0eed6fac7ff89c5d9c2b327d1413a2164be24ca8d7ea6e60"
+  },
+  "baseline_engine": {
+    "bytes": 62810,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+    "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+  },
+  "broad_goal_status": "active",
+  "constraints": [
+    "Bind context to exact engine/state object and full literal state, revision, language/semantics, original binding, marking and captured authority. Check current context across external callbacks; mismatch fails closed, never grants zero/one/exhaustion.",
+    "No persistent/public/delegated/retained/checkpoint context. Do not use engine context as independent degree or marking authority. All router/checker/projection/transition/fallback/cursor/place/rollback paths remain fresh and raw exact except strictly necessary engine-private decomposition.",
+    "Preserve Source17/input2 original logical binding/epoch and distinct runtime Source14/input8. Keep full candidate universe, canonical fallback, global DEAD/UNKNOWN/FORCED/earliest generation, ROW tie, adviceNone, collision ledgers, exact rollback, and original20s/512MiB/55/60/90+1/native gates.",
+    "Freeze a prospective new-source qualification of the same six endpoint scopes/all12 essential assertions. New staleness/lifetime evidence may be required; do not silently reduce the original controls. Previous three failures stay unqualified and opaque. No unchanged actual reruns or budget change.",
+    "All agents Source/AST/metadata/compile-without-evaluation only. Root reads/reviews the whole affected code and owns any separately granted measured actual and saved closure. Reuse existing once/meter2/CodeSeal/17helper framework; no custody rewrite.",
+    "Report measured benefits only from actuals. Static duplicate is not a profile or guaranteed speedup; this successor may still time out. No new theorem, RL, universal palette or full-GCTS claim from controls."
+  ],
+  "implementation_authorized": true,
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "original_result": {
+    "bytes": 5897,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+    "sha256": "88b8f7696431119c6a088b108f95b861366e1ae7438269430c5a5f40e4c43aaa"
+  },
+  "parent_checkpoint": {
+    "bytes": 58909,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "e64bfe8d47a13e4b51e64a03cf8e022450fb5679087b56fdbf561dfc611aeb70"
+  },
+  "previous_goal_turn": "progress",
+  "proposal": {
+    "bytes": 15076,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-reuse-proposal-source-20261016/independent-proposal-v1.json",
+    "sha256": "fc63e326e3f1591fc819d39bd2f5ff8f1d4e24b3c2525e50351d3fe460e43607"
+  },
+  "schema": "ROOT-unit-row-decision-context-implementation-choice-v1",
+  "scientific_calls_authorized_here": 0,
+  "scope": "Engine13 Source successor only: stack-local checked context for the immediate fresh proposal witness loop of one synchronous mutation-free decision. Fresh _candidate remains for every other path; preserve all independent semantics, candidate rebuild/membership, complete t/m legality, read obligations, full packet comparisons and per-candidate ledger copy plus unchanged exposed collision ledgers."
+}

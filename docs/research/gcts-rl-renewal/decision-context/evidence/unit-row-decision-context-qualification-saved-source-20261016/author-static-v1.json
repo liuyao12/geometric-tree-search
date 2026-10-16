@@ -1,0 +1,152 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "checks": [
+    {
+      "name": "corrected_parent_V3_and_decoder_raw_pins",
+      "passed": true
+    },
+    {
+      "name": "compile_only_no_helper_evaluation",
+      "passed": true
+    },
+    {
+      "name": "only_declared_authority_literal_substitutions",
+      "passed": true
+    },
+    {
+      "name": "complete_raw_forward_inverse_both_helpers",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_forward_inverse_all_four_patches",
+      "passed": true
+    },
+    {
+      "name": "whole_AST_inverse_both_helpers",
+      "passed": true
+    },
+    {
+      "name": "decoder_all9_functions_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "closer_all24_functions_accounted_only_auth_plan_authorities_change",
+      "passed": true
+    },
+    {
+      "name": "failure_and_aggregate_and_mathrecord_functions_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "immutable_expected_cases_one_store_expected_proposal_separate",
+      "passed": true
+    },
+    {
+      "name": "truthful_session_None_or_matching_positive_exactint_gates_unchanged",
+      "passed": true
+    },
+    {
+      "name": "native_wire_canonical_zlib_caps_response_output_gates_unchanged",
+      "passed": true
+    },
+    {
+      "name": "all_six_modes_twelve_cases_and_schema_ids_unchanged",
+      "passed": true
+    },
+    {
+      "name": "current14_only_intake_engine_changed",
+      "passed": true
+    },
+    {
+      "name": "input8_original17_input2_binding_limits_exact_unchanged",
+      "passed": true
+    },
+    {
+      "name": "all_current_original_input_caps_raw_verified",
+      "passed": true
+    },
+    {
+      "name": "no_root_actual_folder_writes_or_helper_output_decoding",
+      "passed": true
+    },
+    {
+      "name": "no_scientific_import_evaluation_function_model_clock_actual",
+      "passed": true
+    }
+  ],
+  "function_preservation": {
+    "closer": {
+      "all_functions_raw_AST_exact_after_authority_literal_inverse": true,
+      "changed": [
+        "auth_plan"
+      ],
+      "function_count": 24,
+      "unchanged_raw_AST": [
+        "canonical",
+        "pin",
+        "read",
+        "check",
+        "native_refs",
+        "failure_only",
+        "aggregate",
+        "equal",
+        "sha",
+        "points",
+        "state",
+        "packet",
+        "native_receipt",
+        "query_record",
+        "logged_receipt",
+        "snapshot",
+        "certificate",
+        "core",
+        "selected_append",
+        "search_result",
+        "seed_join",
+        "transfer_join",
+        "cursor_stream"
+      ]
+    },
+    "decoder": {
+      "all_functions_raw_AST_exact_after_authority_literal_inverse": true,
+      "changed": [],
+      "function_count": 9,
+      "unchanged_raw_AST": [
+        "need",
+        "canonical",
+        "pairs",
+        "constant",
+        "finite",
+        "decode",
+        "buffer_pin",
+        "read_bounded",
+        "checked_raw"
+      ]
+    }
+  },
+  "helper_executions": 0,
+  "note": "Author Source/raw/AST checks only; not independent review or runtime/scientific acceptance.",
+  "saved_output_decodes": 0,
+  "schema": "unit-row-decision-context-qualification-saved-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 10031,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "d5a0952ac3536d80378101c9cbf89a925b3ba67943a988050fd1ad606ee3f606"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "closer": {
+      "bytes": 54274,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+      "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+    },
+    "decoder": {
+      "bytes": 6338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_decode_decision_context_qualification_saved_v1.py",
+      "sha256": "f1c6a1bb42c04478e0cff1a4924169c2ed92c8333a5362375409bf90b7ba5ec6"
+    }
+  }
+}

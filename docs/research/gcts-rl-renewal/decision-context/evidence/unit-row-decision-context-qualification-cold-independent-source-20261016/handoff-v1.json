@@ -1,0 +1,30 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "findings": {
+    "bytes": 26373,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-independent-source-20261016/findings-v1.json",
+    "sha256": "05a25a96f8ee107b5767947ecf1b75df30a9d3a24f1c377c289f13299b33cb53"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-decision-context-qualification-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-decision-context-qualification-cold-Source",
+  "source": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "source_contract": {
+    "bytes": 39735,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd"
+  },
+  "source_only": true,
+  "summary": "Genuine whole current conditional Source pass,9checks. Exact5literal/fullraw+AST/twoactualpatch inverses; all scientific family/helper/native/guard/output/rollback bodies unchanged. Same6/all12, original17/input2 distinct current14/input8; no runtime/fit or hostilecontext claim. Ownproposal/checker/verifier overlap disclosed; no science executed.",
+  "typed_source_review": {
+    "bytes": 6961,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "32d97f073bd5394e036ee8f3305b7311c40795961dd1eee408ec42da87fedfd2"
+  }
+}

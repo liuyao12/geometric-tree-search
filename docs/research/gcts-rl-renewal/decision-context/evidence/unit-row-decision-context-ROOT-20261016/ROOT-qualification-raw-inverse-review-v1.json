@@ -1,0 +1,36 @@
+{
+  "AST_compile_only": true,
+  "current14_input8_original17_input2_verified": true,
+  "exact5region_and_actualpatch_inverse": true,
+  "helpers17_nested34_classes2_raw_AST_exact": true,
+  "native_final_exit_and_failure_suffix_exact": true,
+  "new_module_reviews": {
+    "ROOT": {
+      "bytes": 7031,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-engine-Source-review-v1.json",
+      "sha256": "1eae0f034b8b1e1ec5fbb9062ff3e5651b4573b74b5590dddb71aa61b31793d1"
+    },
+    "peer": {
+      "bytes": 6477,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "3ca77dd071fddc434fe58847dc104fb774d9df601ee3fdee2e5a792c19355a79"
+    }
+  },
+  "parent": {
+    "bytes": 78151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/routed_engine_qualification_cold_v1.py",
+    "sha256": "38f8f86f5af3474a0eed6fac7ff89c5d9c2b327d1413a2164be24ca8d7ea6e60"
+  },
+  "schema": "ROOT-decision-context-qualification-raw-inverse-review-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "source_contract": {
+    "bytes": 39735,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd"
+  }
+}

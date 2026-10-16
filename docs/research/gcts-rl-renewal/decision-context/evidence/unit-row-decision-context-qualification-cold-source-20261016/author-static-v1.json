@@ -1,0 +1,85 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 15,
+  "checks": [
+    {
+      "name": "compile_AST_only_no_evaluation",
+      "passed": true
+    },
+    {
+      "name": "same_all_six_purposes_twelve_cases",
+      "passed": true
+    },
+    {
+      "name": "only_current_engine_role_changed",
+      "passed": true
+    },
+    {
+      "name": "original17_input2_epoch_and_current_input8_limits_exact",
+      "passed": true
+    },
+    {
+      "name": "engine13_current_contract_handoff_and_reviews_bound",
+      "passed": true
+    },
+    {
+      "name": "five_literal_full_raw_and_AST_both_inverse",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_forward_full_inverse",
+      "passed": true
+    },
+    {
+      "name": "all17_top_helpers_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_CodeSeal_ObservedCursor_Child_exception_ancestry_raw_AST",
+      "passed": true
+    },
+    {
+      "name": "every_nested_helper_and_all_science_families_raw_AST_exact",
+      "nested_count": 34,
+      "passed": true
+    },
+    {
+      "name": "whole_result_encode_response_stdout_native_exit_failure_tail_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "whole_top_failure_tail_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "all_imports_and_original_clock_exact",
+      "passed": true
+    },
+    {
+      "name": "no_new_private_context_or_metadata_in_caller",
+      "passed": true
+    },
+    {
+      "name": "whole_raw_source_input_pin_check",
+      "passed": true,
+      "unique_paths": 32
+    }
+  ],
+  "independent_review": false,
+  "native_fit": "UNMEASURED",
+  "runtime_executed": false,
+  "schema": "unit-row-decision-context-qualification-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "source_delta": {
+    "bytes": 3357,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "03e82b10c2ea331b3f73b5a1628eafee9c6a00647c01d7b0c8c3ec5746eb3f10"
+  },
+  "source_only": true
+}

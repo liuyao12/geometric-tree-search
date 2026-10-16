@@ -1,0 +1,72 @@
+{
+  "edit_count": 5,
+  "edits": [
+    {
+      "new_end": 613,
+      "new_start": 556,
+      "new_utf8": "VERSION='unit-row-decision-context-qualification-cold-v1'",
+      "old_end": 610,
+      "old_start": 556,
+      "old_utf8": "VERSION='unit-row-routed-engine-qualification-cold-v1'"
+    },
+    {
+      "new_end": 673,
+      "new_start": 614,
+      "new_utf8": "SCOPE='unit-row-decision-context-qualification-cold-Source'",
+      "old_end": 667,
+      "old_start": 611,
+      "old_utf8": "SCOPE='unit-row-routed-engine-qualification-cold-Source'"
+    },
+    {
+      "new_end": 4203,
+      "new_start": 3940,
+      "new_utf8": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py', 'sha256': '40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10', 'bytes': 66670}",
+      "old_end": 4200,
+      "old_start": 3934,
+      "old_utf8": "{'bytes': 62810, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py', 'sha256': '8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389'}"
+    },
+    {
+      "new_end": 33168,
+      "new_start": 33083,
+      "new_utf8": "contract['schema']=='unit-row-decision-context-qualification-cold-Source-contract-v1'",
+      "old_end": 33162,
+      "old_start": 33080,
+      "old_utf8": "contract['schema']=='unit-row-routed-engine-qualification-cold-Source-contract-v1'"
+    },
+    {
+      "new_end": 44650,
+      "new_start": 44570,
+      "new_utf8": "engine.VERSION == 'lazy-unit-row-global-engine-v13-decision-local-checked-state'",
+      "old_end": 44642,
+      "old_start": 44564,
+      "old_utf8": "engine.VERSION == 'lazy-unit-row-global-engine-v12-routed-marked-aware-degree'"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent": {
+    "bytes": 78151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/routed_engine_qualification_cold_v1.py",
+    "sha256": "38f8f86f5af3474a0eed6fac7ff89c5d9c2b327d1413a2164be24ca8d7ea6e60"
+  },
+  "patches": [
+    {
+      "bytes": 12799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/caller-parent-to-current-forward.patch",
+      "sha256": "f278810983a5617cbe267890d3155af979f1d26c001767caf3dee4af957c5aec"
+    },
+    {
+      "bytes": 12799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/caller-current-to-parent-full-inverse.patch",
+      "sha256": "c89b9ae2b7dafe70d49a973aaadede9e97187135503c71419422f18599036fbe"
+    }
+  ],
+  "schema": "unit-row-decision-context-qualification-cold-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "whole_AST_inverse_verified": true
+}

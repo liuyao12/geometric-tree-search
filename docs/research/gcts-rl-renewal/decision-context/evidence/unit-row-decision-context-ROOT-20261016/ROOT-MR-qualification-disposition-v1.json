@@ -1,0 +1,133 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "all_six_endpoints_closed": true,
+  "bounded_routed_engine_controls_qualified": false,
+  "closure_helper": {
+    "bytes": 54274,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+    "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+  },
+  "combined20_suite_claimed": false,
+  "complete_GCTS_model_accepted": false,
+  "endpoint_dispositions": {
+    "child-UNKNOWN": {
+      "bytes": 14460,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-MR-child-UNKNOWN-disposition-v1.json",
+      "sha256": "4fe4b1fe0a6e6c00937fd817059eb396ed42e1b8a37e87c0160b0c94306d874f"
+    },
+    "global-forced-dead": {
+      "bytes": 13293,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-MR-global-forced-dead-disposition-v1.json",
+      "sha256": "39b5d9193d070d9cd0de6d203bb912573a2771e0633ce9f5e978a36f07705d51"
+    },
+    "router-protocol": {
+      "bytes": 14474,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-MR-router-protocol-disposition-v1.json",
+      "sha256": "b1ccc0e3e40bd40bd6f07ad8fae044948d8ab0352812578e7437f39a233d768a"
+    },
+    "short-EOF": {
+      "bytes": 14399,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-MR-short-EOF-disposition-v1.json",
+      "sha256": "395173d767570904e66f7a95ff6b566a51314fc1c17eb2b2f4849d74cd8c8820"
+    },
+    "singleton-transfer": {
+      "bytes": 14543,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-MR-singleton-transfer-disposition-v1.json",
+      "sha256": "c5ee6db9b80c23ffbfa417234fb3681ebac2a517e4888022ec14ba8078e51950"
+    },
+    "two-transfer": {
+      "bytes": 14450,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-ROOT-20261016/ROOT-MR-two-transfer-disposition-v1.json",
+      "sha256": "e702f8b13692744babac04ec4105dd4b79f25262ab7946c9410f073892dc05dd"
+    }
+  },
+  "endpoint_summaries": {
+    "child-UNKNOWN": {
+      "aggregate_B_bytes": 55066624,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 4639092000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-child-UNKNOWN-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "global-forced-dead": {
+      "aggregate_B_bytes": 55853056,
+      "complete_wire_verified": false,
+      "native_launch_to_postprobe_ns": 20090303000,
+      "native_resources_qualified": false,
+      "purpose": "unit-row-marked-aware-global-forced-dead-controls",
+      "qualified_case_count": 0,
+      "unqualified_case_count": 2
+    },
+    "router-protocol": {
+      "aggregate_B_bytes": 52051968,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 2814003000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-router-protocol-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "short-EOF": {
+      "aggregate_B_bytes": 54673408,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 5006299000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-short-EOF-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "singleton-transfer": {
+      "aggregate_B_bytes": 52854784,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 19008723000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-singleton-transfer-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "two-transfer": {
+      "aggregate_B_bytes": 67977216,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 19332476000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-two-transfer-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    }
+  },
+  "exact_point_board_accepted": false,
+  "failure_marking_activated": false,
+  "logical_proof_accepted": false,
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "prior_StageC_suite_qualified": false,
+  "qualified_case_count": 10,
+  "qualified_cases": [
+    "MR-01-new-and-legacy-route-consumption",
+    "MR-02-wrong-route-and-context-rejected",
+    "MR-05-native-singleton-full-origin-transfer",
+    "MR-06-current-sole-consumption-and-owned-rollback",
+    "MR-07-native-TWO-full-origin-transfer",
+    "MR-08-refreshed-witnesses-global-branch-and-owned-rollback",
+    "MR-09-real-short-stream-and-fresh-complete-keySET",
+    "MR-10-legacy-implication-EOF-remains-unaccepted",
+    "MR-11-actual-child-native-first-declared-UNKNOWN",
+    "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+  ],
+  "required_case_count": 12,
+  "routed_engine_qualification_accepted": false,
+  "same_process_all_twelve_qualified": false,
+  "schema": "ROOT-routed-engine-qualification-disposition-v1",
+  "scientific_replay": false,
+  "separate_endpoint_count": 6,
+  "target_search_performed": false,
+  "unqualified_case_count": 2,
+  "unqualified_cases": [
+    "MR-03-global-forced-requery-dead-exhaustion",
+    "MR-04-owned-full-root-restoration"
+  ]
+}

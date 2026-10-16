@@ -1,0 +1,11 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_decode_decision_context_qualification_saved_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py
+@@ -38,7 +38,7 @@
+ MODES=('router-protocol', 'global-forced-dead', 'singleton-transfer', 'two-transfer', 'short-EOF', 'child-UNKNOWN')
+ need(len(sys.argv)==2 and sys.argv[1] in MODES,'one saved calibration endpoint mode')
+ mode=sys.argv[1];plan_path=HERE/('ROOT-MR-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)
+-need(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': '105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd', 'bytes': 39735},'fixed reviewed routed qualification Source contract')
++need(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'dbe07d4eff585af988f052d7ed08ff164c3dc65ed8cdda2bac16be981db54941', 'bytes': 38188},'fixed reviewed routed qualification Source contract')
+ contract=decode(checked_raw(plan['source_contract']))
+ need(plan['schema']=='ROOT-routed-engine-qualification-plan-v1' and plan['purpose']=={'router-protocol': 'unit-row-marked-aware-router-protocol-controls', 'global-forced-dead': 'unit-row-marked-aware-global-forced-dead-controls', 'singleton-transfer': 'unit-row-marked-aware-singleton-transfer-controls', 'two-transfer': 'unit-row-marked-aware-two-transfer-controls', 'short-EOF': 'unit-row-marked-aware-short-EOF-controls', 'child-UNKNOWN': 'unit-row-marked-aware-child-UNKNOWN-controls'}[mode]
+      and contract['sources']==plan['sources'] and contract['inputs']==plan['inputs'],'current Source14/input8/purpose authority')

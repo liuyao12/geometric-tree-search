@@ -1,0 +1,144 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "reviewer_identity": "Distinct reviewer determines",
+    "schema": "unit-row-decision-context-qualification-saved-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-decision-context-qualification-saved-helpers-Source",
+    "source": {
+      "bytes": 54274,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+      "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+    },
+    "source_contract": {
+      "bytes": 26499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/Source-contract-v1.json",
+      "sha256": "81f6353a6c9aa6b931516d4f6c9faf8698e942d55737b8c294944a7af78faac6"
+    },
+    "source_only": true,
+    "source_review_passed": "Only genuine distinct whole current helper/contract reviewer determines",
+    "sources": {
+      "closer": {
+        "bytes": 54274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+        "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+      },
+      "decoder": {
+        "bytes": 6338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_decode_decision_context_qualification_saved_v1.py",
+        "sha256": "f1c6a1bb42c04478e0cff1a4924169c2ed92c8333a5362375409bf90b7ba5ec6"
+      }
+    }
+  },
+  "actual_unified_patches": {
+    "closer": {
+      "forward": {
+        "bytes": 6776,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/closer-forward.patch",
+        "sha256": "dde7a7f7583640296caa6f1f674dc4786bbae545cf03ee3369e7e32f7b466431"
+      },
+      "inverse": {
+        "bytes": 6776,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/closer-full-inverse.patch",
+        "sha256": "c77e905aa781ab7f90db89a72cf189c4609a9549c87b87f49149a959f30639f0"
+      }
+    },
+    "decoder": {
+      "forward": {
+        "bytes": 2118,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/decoder-forward.patch",
+        "sha256": "34c6f8dbe37055b4c21d33205b6b1315a7c1892359d83d35d91b774c04af76c6"
+      },
+      "inverse": {
+        "bytes": 2118,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/decoder-full-inverse.patch",
+        "sha256": "fa025802d4966fdd379a7331d86b19f763b61f1ab83053d448c8b5b701ee9d03"
+      }
+    }
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 4322,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/author-static-v1.json",
+    "sha256": "5de2bdaa4570c84b9e9041adfbef194da2311b21ab7ce91538fd97d45285dcb1"
+  },
+  "authorship": "Arithmetic authors these saved helper successors and their corrected V3 ancestry, engine13/engine12/router/oldadapter/c354. Controls authors the current cold caller and new proposer; diagnosis authors new checker/verifier and decision-context proposal. A distinct reviewer must disclose these dependencies. Root alone owns actuals, grants, output decoding, saved closure and publication. No author helper/scientific execution or data decoding.",
+  "caller_source": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "caller_source_contract": {
+    "bytes": 39735,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd"
+  },
+  "flags": {
+    "GCTS_advantage_claimed": false,
+    "GCTS_search_trajectory_accepted": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "complete_GCTS_model_accepted": false,
+    "logical_proof_accepted": false,
+    "marking_activated": false,
+    "scientific_replay": false
+  },
+  "helper_executions": 0,
+  "parent_helpers": {
+    "closer": {
+      "bytes": 54257,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_close_routed_engine_qualification_saved_v3.py",
+      "sha256": "8ab5cb05197c98e81916d41fd5b216b6f76e73d99332b7a62224b2616169a22e"
+    },
+    "decoder": {
+      "bytes": 6335,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/ROOT_decode_routed_engine_qualification_saved_v1.py",
+      "sha256": "8fd713fbde2a867a800ded0aa584fb57d1e67bec524ac748bf80e56d2193bbf8"
+    }
+  },
+  "parent_source_contract": {
+    "bytes": 26052,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-routed-engine-qualification-saved-source-20261016/Source-contract-v3.json",
+    "sha256": "eab5c3988beb571b7e5e12024ef6a08a445fac4a140fb0680804c2da725252f3"
+  },
+  "remaining_gates": [
+    "Distinct whole current helper/contract peer and Root reviews before any Root copy/use.",
+    "Root alone may decode positive complete-owned records and run saved closure against fresh current Source-bound actuals.",
+    "All six endpoint administrative closures/all twelve positive cases needed for current scoped engine qualification; old failed actuals and aggregates never relabeled."
+  ],
+  "saved_output_decodes": 0,
+  "schema": "unit-row-decision-context-qualification-saved-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-decision-context-qualification-saved-helpers-Source",
+  "source": {
+    "bytes": 54274,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+    "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+  },
+  "source_contract": {
+    "bytes": 26499,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "81f6353a6c9aa6b931516d4f6c9faf8698e942d55737b8c294944a7af78faac6"
+  },
+  "source_delta": {
+    "bytes": 10031,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "d5a0952ac3536d80378101c9cbf89a925b3ba67943a988050fd1ad606ee3f606"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 54274,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+      "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+    },
+    "decoder": {
+      "bytes": 6338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_decode_decision_context_qualification_saved_v1.py",
+      "sha256": "f1c6a1bb42c04478e0cff1a4924169c2ed92c8333a5362375409bf90b7ba5ec6"
+    }
+  },
+  "status": "SOURCE_ONLY_NOT_EXECUTED"
+}

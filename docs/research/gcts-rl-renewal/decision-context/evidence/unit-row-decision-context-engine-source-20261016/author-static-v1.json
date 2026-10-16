@@ -1,0 +1,148 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship": "Author static evidence, not distinct peer review or runtime qualification.",
+  "checks": [
+    {
+      "name": "exact_parent_and_frozen_engine_capsules",
+      "passed": true
+    },
+    {
+      "name": "compile_only_no_evaluation",
+      "passed": true
+    },
+    {
+      "name": "three_complete_raw_regions_forward_and_inverse",
+      "passed": true
+    },
+    {
+      "name": "actual_unified_forward_and_inverse_patches_apply",
+      "passed": true
+    },
+    {
+      "name": "whole_AST_inverse_restores_parent",
+      "passed": true
+    },
+    {
+      "name": "only_existing_decision_method_changed",
+      "passed": true
+    },
+    {
+      "name": "one_new_private_checked_witness_helper",
+      "passed": true
+    },
+    {
+      "count": 37,
+      "name": "all_other_existing_callables_raw_AST_exact",
+      "names": [
+        "need",
+        "canonical",
+        "digest",
+        "diagnostic_copy",
+        "select_schedule",
+        "validate_native_receipt",
+        "certify_by_current_cover",
+        "_Checkpoint.__init__",
+        "LazyUnitRowEngine.__init__",
+        "LazyUnitRowEngine.branch_tie",
+        "LazyUnitRowEngine._policy_snapshot",
+        "LazyUnitRowEngine._copy",
+        "LazyUnitRowEngine._reference_counts",
+        "LazyUnitRowEngine._emit",
+        "LazyUnitRowEngine._snapshot_value",
+        "LazyUnitRowEngine.state_snapshot",
+        "LazyUnitRowEngine.checkpoint",
+        "LazyUnitRowEngine.rollback",
+        "LazyUnitRowEngine._check_authority",
+        "LazyUnitRowEngine._transfer_receipt",
+        "LazyUnitRowEngine._has_archived_context",
+        "LazyUnitRowEngine._archive_context",
+        "LazyUnitRowEngine._install",
+        "LazyUnitRowEngine._candidate",
+        "LazyUnitRowEngine._observe",
+        "LazyUnitRowEngine.place",
+        "LazyUnitRowEngine._exclude_exhausted",
+        "LazyUnitRowEngine._open",
+        "LazyUnitRowEngine._advance",
+        "LazyUnitRowEngine.next_alternative",
+        "LazyUnitRowEngine._fallback_degree",
+        "LazyUnitRowEngine._validate_receipt",
+        "LazyUnitRowEngine._word",
+        "LazyUnitRowEngine._checked_advice",
+        "LazyUnitRowEngine._select_branch",
+        "LazyUnitRowEngine._adopt_branch",
+        "LazyUnitRowEngine.search"
+      ],
+      "passed": true
+    },
+    {
+      "name": "ordinary_candidate_original_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "firstpass_only_one_checked_helper_callsite",
+      "passed": true
+    },
+    {
+      "name": "decision_fallback_schedule_emit_suffix_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "helper_no_private_state_reconstruction",
+      "passed": true
+    },
+    {
+      "name": "per_candidate_names_copy_and_full_validation_preserved",
+      "passed": true
+    },
+    {
+      "name": "context_no_engine_attribute_store",
+      "passed": true
+    },
+    {
+      "name": "finally_disables_firstpass_context",
+      "passed": true
+    },
+    {
+      "count": 11,
+      "name": "independent_router_checker_and_current_other_sources_raw_pins",
+      "passed": true
+    },
+    {
+      "name": "original17_input2_raw_pins_and_binding_unchanged",
+      "passed": true
+    },
+    {
+      "name": "imports_unchanged_hashlib_json_only",
+      "passed": true
+    },
+    {
+      "name": "public_constructor_receipt_cursor_snapshot_result_schemas_unchanged",
+      "passed": true
+    },
+    {
+      "name": "no_scientific_import_evaluation_function_clock_model_or_actual",
+      "passed": true
+    }
+  ],
+  "parent": {
+    "bytes": 62810,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/lazy_unit_row_global_engine_v12.py",
+    "sha256": "8eda904fc55622796a8641d6ba33f6aab5bf108715eafaea6cbfdb6e176e4389"
+  },
+  "runtime_fit": "UNMEASURED; original20 unchanged; no cost or benefit claim",
+  "schema": "unit-row-decision-context-engine-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 66670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+    "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+  },
+  "source_delta": {
+    "bytes": 13872,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "09f486cc94cf04c455550d2fe9b111e9e953a16edf85e08469789f4c6a3c5992"
+  },
+  "source_only": true,
+  "source_review_passed": false
+}
