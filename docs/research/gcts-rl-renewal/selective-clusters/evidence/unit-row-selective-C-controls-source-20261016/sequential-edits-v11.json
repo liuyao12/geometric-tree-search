@@ -1,0 +1,20 @@
+[
+  {
+    "description": "Own successor version",
+    "forward_offset_at_this_step": 350,
+    "before_utf8": "VERSION = 'unit-row-selective-multikey-C-controls-v10'",
+    "after_utf8": "VERSION = 'unit-row-selective-multikey-C-controls-v11-repaired'"
+  },
+  {
+    "description": "Repair exact C owning outer baseline NameError without changing rollback",
+    "forward_offset_at_this_step": 61396,
+    "before_utf8": "finally:ce.rollback(c_outer);restored(ce,beforce)",
+    "after_utf8": "finally:ce.rollback(c_outer);restored(ce,c_outer_before)"
+  },
+  {
+    "description": "Missing B continuity/old30 follow prefix remains an essential outer replacement gap even with a C rejection token",
+    "forward_offset_at_this_step": 114877,
+    "before_utf8": "  if len(candidates)!=1:\n    for label in labels[7:]:skip(label,'No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.')\n",
+    "after_utf8": "  replacement_gap=None\n  if len(candidates)!=1:\n    replacement_gap='No unique genuine completed C pending-rejection checkpoint; no synthetic replacement family.'\n  elif 'follow_on_search' not in result['artifacts']['family_retirement']:\n    replacement_gap='No actual completed same-C old30 follow-on trace; replacement fresh-prefix gate remains unqualified.'\n  if replacement_gap is not None:\n    for label in labels[7:]:skip(label,replacement_gap)\n"
+  }
+]

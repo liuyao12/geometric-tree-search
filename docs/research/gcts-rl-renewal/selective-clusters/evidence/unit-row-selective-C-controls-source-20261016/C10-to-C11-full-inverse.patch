@@ -1,0 +1,35 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v10.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-selective-multikey-C-controls-v11-repaired'
++VERSION = 'unit-row-selective-multikey-C-controls-v10'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -810,7 +810,7 @@
+             'new_adviser_calls':c_holder['retirement_calls'],'filler_AX':filler,'selected_UG_constraint':constrain}
+           passed(common_names[19],{'artifact':'forced_retirement','retired_keys':events[-1]['retired_keys']})
+         except Unavailable as error:skip(common_names[19],error)
+-        finally:ce.rollback(c_outer);restored(ce,c_outer_before)
++        finally:ce.rollback(c_outer);restored(ce,beforce)
+ 
+   # Same actual global scheduler, original AX/UG states. Forbidden adviser
+   # asserts it cannot run on DEAD or before a forced placement.
+@@ -1546,13 +1546,8 @@
+   candidates=[r for r in records if r['token'] is not None and c_context is not None
+     and c_context.get('adoption_qualified') is True
+     and r['snapshot']['pending_preferences']['family_id']==c_context['family_id']]
+-  replacement_gap=None
+   if len(candidates)!=1:
+-    replacement_gap='No unique genuine completed C pending-rejection checkpoint; no synthetic replacement family.'
+-  elif 'follow_on_search' not in result['artifacts']['family_retirement']:
+-    replacement_gap='No actual completed same-C old30 follow-on trace; replacement fresh-prefix gate remains unqualified.'
+-  if replacement_gap is not None:
+-    for label in labels[7:]:skip(label,replacement_gap)
++    for label in labels[7:]:skip(label,'No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.')
+   else:
+     record=candidates[0];e=record['engine'];outer=e.checkpoint();outer_snapshot=e.state_snapshot()
+     inner=record['snapshot'];old_pending=inner['pending_preferences'];reason=None

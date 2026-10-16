@@ -1,0 +1,55 @@
+{
+  "caller_peer": {
+    "bytes": 7505,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-cold-independent-source-20261016/typed-Source-review-v16.json",
+    "sha256": "0b75dfcb26db936d6658c6471196ce8fa1c3d69a3502c73a076e72be84ec3dc2"
+  },
+  "dependency_reviews": {
+    "advice_controls": {
+      "bytes": 6684,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT-controls-Source-review-v1.json",
+      "sha256": "1b694d1f0b26e595d8b6d3178c550e4fe73e5a0a13711bedbac292622e4e8598"
+    },
+    "advice_controls_peer": {
+      "bytes": 7690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v11.json",
+      "sha256": "da0129b321cf8611b47c923ff5a31114a8741fc64bf97618590b63a7337b4744"
+    },
+    "advice_validator": {
+      "bytes": 3390,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-review-20261016/ROOT-consumer-v3-Source-review-v1.json",
+      "sha256": "cd5fc4c6a4cab31c2322dc4e53124ddd80c1e1df0914ed8eadade633fa68de28"
+    },
+    "advice_validator_peer": {
+      "bytes": 2973,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "59f96dd914b11fd47d58aa82cc035411ef5ca8ab97a5bd97a62fcd6520f7aa27"
+    },
+    "adviser": {
+      "bytes": 2836,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-review-20261016/ROOT-adviser-Source-review-v1.json",
+      "sha256": "deb5732f57ddf75196a263b07a034d447cef3ddb879a4d1f2e11e2eb6ddd92dc"
+    },
+    "adviser_peer": {
+      "bytes": 3018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-components-independent-source-20261016/adviser-typed-Source-review-v1.json",
+      "sha256": "128438d64448080873f0283eb05224eefd52eec02b605a6c0cf933d6b46dc359"
+    },
+    "engine": {
+      "bytes": 2021,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-review-20261016/ROOT-engine-Source-review-v1.json",
+      "sha256": "e6ff898ca04ceeeef6272b1cb43a9a4ec059390f59a9cf4e109b2dff60be545c"
+    },
+    "engine_peer": {
+      "bytes": 3020,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-components-independent-source-20261016/engine-typed-Source-review-v1.json",
+      "sha256": "7d74991e714fa9e7b156197701fb8e52f0c09dd1ba5e41a4f7a1067c3ebfe082"
+    }
+  },
+  "handoff": {
+    "bytes": 7227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-cold-ROOT-source-20261016/handoff-v16.json",
+    "sha256": "d12c5a6f40950514ed95e5ff83ace93c95225502fde84e474b7d7cb0909626d7"
+  },
+  "schema": "ROOT-current-review-pins-v1"
+}

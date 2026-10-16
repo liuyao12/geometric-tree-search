@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 79523,
+  "compressed_sha256": "3d0e9155e9be9b8e5cca940074e328c566eeea5e481bc495b092eb42aa4709fd",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 106354,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+    "sha256": "305580ac3f5d105b53d8909dd1b901fba86c884d6ccede2be8a01b3773823c48"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 1942697,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT-original-controls-expanded-result-v1.json",
+    "sha256": "9141bdb9274622eadeb6a87822168aacc946abe19523f55a64f2734e9692788c"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 7954,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+    "sha256": "1b6707a0f279dd97008f019be1179663136fbc1f4a6508d3fc224a12d80663c6"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

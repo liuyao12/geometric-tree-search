@@ -1,0 +1,58 @@
+{
+  "schema": "unit-row-selective-C-controls-independent-handoff-v11",
+  "scope": "unit-row-selective-C-controls-Source",
+  "source": {
+    "bytes": 130156,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+    "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/Source-contract-v11.json",
+    "sha256": "3ca98e999239bea549efe6b133efee01710b2c216b518fd46a0ccc6c4c99388b",
+    "bytes": 40226
+  },
+  "source_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/handoff-v11.json",
+    "sha256": "c0fe0798e92a9a30791b4a40384e5ce6275fa64391197cf2392c4f671b0c82f2",
+    "bytes": 32644
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v11.json",
+    "sha256": "da0129b321cf8611b47c923ff5a31114a8741fc64bf97618590b63a7337b4744",
+    "bytes": 7690
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/findings-v11.json",
+    "sha256": "d5e2e888f42deeb71db96f3219b0f828c8be459413536d4f1fe5b4c7c44107a4",
+    "bytes": 9152
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/independent-Source-checks-v11.json",
+    "sha256": "73134d1e892d4c3a2dbfb1782b1100a7fbcb9646ca9da6384bd77ac747bd7c24",
+    "bytes": 17362
+  },
+  "historical_prose_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/inherited-paired-prose-erratum-v1.json",
+    "sha256": "05bcde9c220db0176e47967b80a18fa0de855ff06170a3b420da2853e29ea12a",
+    "bytes": 3796
+  },
+  "preserved_negative": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v10.json",
+    "sha256": "a750c9cf260b2d343cdebc99e1944882314776cae44fce5db14d4328b2948b68",
+    "bytes": 5406
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "checks_summary": {
+    "independent_raw_AST": 34,
+    "manual": 12,
+    "raw_paths_in_checks": 34
+  },
+  "actual_execution_authorized": false,
+  "next": "Root owns current caller/plan/once grant and measurement; all43 and original native gates remain."
+}

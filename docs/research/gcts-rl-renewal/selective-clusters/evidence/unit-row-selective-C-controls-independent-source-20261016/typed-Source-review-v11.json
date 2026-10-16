@@ -1,0 +1,112 @@
+{
+  "schema": "unit-row-selective-C-controls-typed-Source-review-v1",
+  "scope": "unit-row-selective-C-controls-Source",
+  "source": {
+    "bytes": 130156,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+    "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/Source-contract-v11.json",
+    "sha256": "3ca98e999239bea549efe6b133efee01710b2c216b518fd46a0ccc6c4c99388b",
+    "bytes": 40226
+  },
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 130156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier validators and earlier controls/horizon/logical-checker/codec/family work; not controls10/11, adviser3, engine8, c960/c354 or Root caller. Distinct controls implementation/current repair review retaining exact Source9 dependencies; no consumer self-review or independent semantic replay.",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "summary": "No remaining scoped blocker. Two genuine Source10 negatives preserved and current three repairs close them. Whole C selector/ownership/normalization/current-survivor/live-rejection/fresh-event/gap propagation reviewed, original A/B/API/43/native limits retained. 34 independent raw/AST checks plus12 manual findings; immediate3/base13 complete inverses/four patches.",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/findings-v11.json",
+    "sha256": "d5e2e888f42deeb71db96f3219b0f828c8be459413536d4f1fe5b4c7c44107a4",
+    "bytes": 9152
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/independent-Source-checks-v11.json",
+    "sha256": "73134d1e892d4c3a2dbfb1782b1100a7fbcb9646ca9da6384bd77ac747bd7c24",
+    "bytes": 17362
+  },
+  "preserved_genuine_negative": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v10.json",
+    "sha256": "a750c9cf260b2d343cdebc99e1944882314776cae44fce5db14d4328b2948b68",
+    "bytes": 5406
+  },
+  "historical_prose_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/inherited-paired-prose-erratum-v1.json",
+    "sha256": "05bcde9c220db0176e47967b80a18fa0de855ff06170a3b420da2853e29ea12a",
+    "bytes": 3796
+  },
+  "conditions": [
+    "Root independently binds/reviews current cold caller16/Source11/contract11/full A-B-C artifact joins/diagnostic return ABI/input2; no plan/grant/actual authorized by this review.",
+    "Require current original17/retention17 and all43 PASSED0SKIP/no essential gap plus complete original native20/512MiB/failure55/owned60/caller90+1/lossless4MiBencoded/16MiBexpanded gates before targets; no inherited qualification.",
+    "C subset suppression remains CONTROL ONLY from whole actual validated batch in original order; no fixed rank/body/route or changed target advice policy. Components never enter executable receipt holders; real global decisions and normal live rejection/fallback/owned rollback remain decisive.",
+    "Preflight/normalization are stateful charged control work, not an identical unmodified search trajectory/counter sequence. Preserve exact before/after snapshots, cumulative raw event prefixes and honest exceptions/essential gaps.",
+    "Keep exact contract3ca98e/handoffc0fe/Source079086 unchanged. Disclose inherited paired_fixture as historical8/9 via additive erratum; current C_policy/artifact_API and executable Source are operative.",
+    "Preserve Source10/negative, actual15 partial28PASS15SKIP and all earlier UNKNOWNs. No fit/eligibility/43/target/proof/complete-GCTS/learning/RL advantage predicted."
+  ],
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

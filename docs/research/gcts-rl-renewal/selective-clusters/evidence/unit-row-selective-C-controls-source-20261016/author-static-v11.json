@@ -1,0 +1,245 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": [
+    {
+      "check": "complete immediate three-edit whole forward/inverse",
+      "evidence": {
+        "parent": {
+          "bytes": 129847,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v10.py",
+          "sha256": "9907bc9c91b2aa4e8af2e61c67ba6fe7ca7f2b8d7ecfc6281daa03f40345fa70"
+        },
+        "source": {
+          "bytes": 130156,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+          "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "complete Source9->11 whole13-edit forward/inverse",
+      "evidence": {
+        "base": {
+          "bytes": 118016,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+          "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+        },
+        "current": {
+          "bytes": 130156,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+          "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "compile/AST only",
+      "evidence": "Generated module never imported/executed; compile is syntax evidence only.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 0 Unavailable",
+      "evidence": {
+        "new_line": 17,
+        "old_line": 17
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 1 CallbackExhausted",
+      "evidence": {
+        "new_line": 20,
+        "old_line": 20
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 2 need",
+      "evidence": {
+        "new_line": 23,
+        "old_line": 23
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 3 canonical",
+      "evidence": {
+        "new_line": 27,
+        "old_line": 27
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 4 digest",
+      "evidence": {
+        "new_line": 30,
+        "old_line": 30
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 5 tile",
+      "evidence": {
+        "new_line": 33,
+        "old_line": 33
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 6 state",
+      "evidence": {
+        "new_line": 52,
+        "old_line": 52
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 7 ug",
+      "evidence": {
+        "new_line": 74,
+        "old_line": 74
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 8 obligations",
+      "evidence": {
+        "new_line": 78,
+        "old_line": 78
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact immediate definition 10 run_controls",
+      "evidence": {
+        "new_line": 856,
+        "old_line": 856
+      },
+      "passed": true
+    },
+    {
+      "check": "all three wrapper8keyword APIs exact",
+      "evidence": [
+        "language",
+        "engine_factory",
+        "adviser",
+        "validate_advice",
+        "degree_proposer",
+        "fallback",
+        "certify_fallback",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "all case declarations exact common_names",
+      "evidence": "No case added/removed/renamed.",
+      "passed": true
+    },
+    {
+      "check": "all case declarations exact scheduler_names",
+      "evidence": "No case added/removed/renamed.",
+      "passed": true
+    },
+    {
+      "check": "all case declarations exact labels",
+      "evidence": "No case added/removed/renamed.",
+      "passed": true
+    },
+    {
+      "check": "all case declarations exact fibre_labels",
+      "evidence": "No case added/removed/renamed.",
+      "passed": true
+    },
+    {
+      "check": "whole callback/selector raw+AST exact watched_validator",
+      "evidence": "No selector/normalization/delegation change in repair.",
+      "passed": true
+    },
+    {
+      "check": "whole callback/selector raw+AST exact capture_degree",
+      "evidence": "No selector/normalization/delegation change in repair.",
+      "passed": true
+    },
+    {
+      "check": "whole callback/selector raw+AST exact watched_adviser",
+      "evidence": "No selector/normalization/delegation change in repair.",
+      "passed": true
+    },
+    {
+      "check": "whole callback/selector raw+AST exact lifecycle_callbacks",
+      "evidence": "No selector/normalization/delegation change in repair.",
+      "passed": true
+    },
+    {
+      "check": "whole callback/selector raw+AST exact c_component",
+      "evidence": "No selector/normalization/delegation change in repair.",
+      "passed": true
+    },
+    {
+      "check": "whole callback/selector raw+AST exact c_capture_adviser",
+      "evidence": "No selector/normalization/delegation change in repair.",
+      "passed": true
+    },
+    {
+      "check": "all diagnostic raw lines exact UNQUALIFIED_PHASE_OBSERVATION ",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "all diagnostic raw lines exact UNQUALIFIED_CONTINUATION_OBSERVATION ",
+      "evidence": 6,
+      "passed": true
+    },
+    {
+      "check": "undefined baseline occurrence removed",
+      "evidence": "The exact owning Couter baseline already exists before the try and is now referenced.",
+      "passed": true
+    },
+    {
+      "check": "missing same-C follow prefix gated before replacement work",
+      "evidence": "replacement_gap SKIPs all3 rather than fabricated or wrong-engine prefix.",
+      "passed": true
+    },
+    {
+      "check": "conservative first-wrapper free-name inventory no unidentified loads",
+      "evidence": [],
+      "passed": true
+    },
+    {
+      "check": "other9 scientific Sources/input2 raw exact",
+      "evidence": {
+        "inputs": 2,
+        "sources": 10
+      },
+      "passed": true
+    }
+  ],
+  "checks_count": 30,
+  "limitations": "Author raw/AST/compile and conservative name checks only, not independent semantic review or runtime success. No generated-module import/exec/function/model/kernel/checker/search/clock/test/actual calls.",
+  "parent": {
+    "bytes": 129847,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v10.py",
+    "sha256": "9907bc9c91b2aa4e8af2e61c67ba6fe7ca7f2b8d7ecfc6281daa03f40345fa70"
+  },
+  "preserved_genuine_negative": {
+    "bytes": 5406,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v10.json",
+    "sha256": "a750c9cf260b2d343cdebc99e1944882314776cae44fce5db14d4328b2948b68"
+  },
+  "retained_whole_construction_static": {
+    "bytes": 5498,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/author-static-v10.json",
+    "sha256": "c937077a5ae32a076f963cbcf3a821108b2472723c88b9041751a4d9186b95a3"
+  },
+  "schema": "unit-row-selective-C-author-static-v11",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 130156,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+    "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+  },
+  "source_only": true
+}

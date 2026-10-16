@@ -1,0 +1,477 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-remote-eligibility-controls-v9'
++VERSION = 'unit-row-selective-multikey-C-controls-v11-repaired'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -542,83 +542,199 @@
+       # Derive one remote conflict from an actual pending key, not from a
+       # supplied target route. It must leave that pending output row unfilled.
+       phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE',phase_native_ns,file=sys.stderr,flush=True);tick()
+-      e2.rollback(token);remote_error=None
+-      try:
+-        family=inner2['pending_preferences'];remote=None;bad_key=None
+-        occupied={r['translation'][1] for r in inner2['state']['selected']}
+-        marks={tuple(p):v for p,v in inner2['state']['m']}
+-        for k in family['pending_keys']:
+-          pre=k['type_preimage'];row=k['translation'][1]
+-          for formula,offset in zip(pre['ordered_premise_formulas'],pre['ordered_offsets']):
+-            read=row+offset
++      # A remains the genuine first-ranked adoption context. Its engine is
++      # finished here; C never borrows its inner token or selected family.
++      e2.rollback(outer2);artifacts['original_A_finished_restoration']=restored(e2,before2)
++      c_error=None;ce=None;c_outer=None;c_token=None;c_inner=None
++      c_fixture={'schema':'unit-row-selective-multikey-C-fixture-v1','original_A_fixture_ref':'fixture',
++        'scope':'CONTROL ONLY first structurally eligible actual proposal; never target policy.',
++        'selection_criteria':{'minimum_future_keys':2,'unoccupied_external_read':True,
++          'exact_remote_conflict':True,'first_different_future_key_legal':True,
++          'original_proposal_order':True,'no_rank_formula_row_or_word_literal':True},
++        'seeds':[copy.deepcopy(future)],'state':copy.deepcopy(s),
++        'selector_attempts':[],'adoption_qualified':False}
++      artifacts['selective_C_fixture']=c_fixture
++      def c_component(st,key,family_id):
++        d={'kind':'BRANCH','row':key['translation'][1]}
++        request={'schema':'unit-row-pending-preference-request-v1','binding':copy.deepcopy(language.binding),
++          'state_sha256':digest(st),'decision':copy.deepcopy(d),'family_id':family_id,'keys':[copy.deepcopy(key)]}
++        receipt=receipt_flags(check(st,d,request))
++        need(receipt['mode']=='PENDING_KEYS','component pending protocol only, not scheduler authority')
++        return {'state':copy.deepcopy(st),'decision':d,'request':request,'receipt':copy.deepcopy(receipt),
++          'component_only':True,'scheduler_authority':False}
++      def c_capture_adviser(**kwargs):
++        if c_holder['phase']!='capture':return c_default_adviser(**kwargs)
++        tick();whole=current_advice(**kwargs)
++        c_fixture['whole_actual_batch']=copy.deepcopy(whole)
++        if whole['status']!='READY' or not whole['proposals']:
++          raise Unavailable('Actual C bounded adviser has no completed READY batch; no partial proposal executed.')
++        whole_receipt=receipt_flags(check(kwargs['state'],kwargs['decision'],whole))
++        c_fixture['whole_actual_receipt']=copy.deepcopy(whole_receipt)
++        for index,proposal in enumerate(whole['proposals']):
++          tick();attempt={'original_index':index,'eligible':False};c_fixture['selector_attempts'].append(attempt)
++          anchor=proposal['anchor_full_key']
++          futures=[m['candidate']['placement_key'] for m in proposal['members']
++            if canonical(m['candidate']['placement_key'])!=canonical(anchor)]
++          if len(futures)<2:
++            attempt['reason']='fewer_than_two_actual_future_keys';continue
++          external=[o for o in proposal['ordered_PENDING_obligations'] if o['occupied'] is False]
++          if not external:
++            attempt['reason']='no_actual_unoccupied_external_port';continue
++          subset=copy.deepcopy(whole);subset['proposals']=[copy.deepcopy(proposal)]
++          subset_receipt=receipt_flags(check(kwargs['state'],kwargs['decision'],subset))
++          chosen=subset_receipt['selection']
++          need(chosen is not None and len(chosen['future_keys'])>=2,'fresh actual C subset has multiple future keys')
++          hypothetical=state(language,[future,chosen['anchor']],tick)
++          occupied={r['translation'][1] for r in hypothetical['selected']}
++          marks={tuple(p):value for p,value in hypothetical['m']}
++          for port in external:
++            key=proposal['members'][port['member_index']]['candidate']['placement_key'];read=port['row']
++            if not any(canonical(key)==canonical(k) for k in chosen['future_keys']):continue
+             if read in occupied or (1,read) in marks:continue
++            survivor=next(k for k in chosen['future_keys'] if canonical(k)!=canonical(key))
+             for ax_name in names:
+               other=language.theory['axioms'][ax_name]
+-              if canonical(other)==canonical(formula):continue
++              if canonical(other)==canonical(port['formula']):continue
+               for out in range(23,read,-1):
+-                if out in occupied or out==row:continue
++                if out in occupied or out==key['translation'][1]:continue
+                 try:
+-                  candidate=prepared(ug,language,other,v,read,out,tick)
+-                  proposed=state(language,[future,selection['anchor'],candidate],tick)
++                  remote=prepared(ug,language,other,v,read,out,tick)
++                  remote_state=state(language,[future,chosen['anchor'],remote],tick)
+                 except Unavailable:continue
+-                remote=candidate;bad_key=k;break
+-              if remote is not None:break
+-            if remote is not None:break
+-          if remote is not None:break
+-        if remote is None:raise Unavailable('No legal original remote UG conflict for an actual absent pending read.')
+-        e2.place(obligations(remote,inner2['state']));remote_before=snap(e2)
+-        # COMPONENT validation is not the live engine callback and never supplies
+-        # its receipt holder. Only the real scheduler can qualify the search.
+-        h['phase']='remote';h['receipts']=[]
+-        bad_row=bad_key['translation'][1]
+-        component_decision={'kind':'BRANCH','row':bad_row}
+-        component_request={'schema':'unit-row-pending-preference-request-v1',
+-          'binding':copy.deepcopy(language.binding),'state_sha256':digest(remote_before['state']),
+-          'decision':copy.deepcopy(component_decision),'family_id':family['family_id'],
+-          'keys':[copy.deepcopy(bad_key)]}
+-        remote_eligibility={'schema':'unit-row-remote-rejection-eligibility-v1',
+-          'original_fixture_ref':'fixture','scope':'COMPONENT rejection plus real global decision; neither replaces normal engine rejection/fallback/rollback.',
+-          'remote':copy.deepcopy(remote),'bad_key':copy.deepcopy(bad_key),
+-          'before_decision':copy.deepcopy(remote_before),'component_request':copy.deepcopy(component_request),
+-          'component_decision_is_scheduler_authority':False,'eligible_actual_branch':False,
+-          'normal_search_started':False}
+-        artifacts['remote_eligibility']=remote_eligibility
+-        component_receipt=receipt_flags(check(remote_before['state'],component_decision,component_request))
+-        remote_eligibility['component_receipt']=copy.deepcopy(component_receipt)
+-        need(component_receipt['mode']=='PENDING_KEYS' and component_receipt['selection'] is None
+-          and len(component_receipt['rejections'])==1
+-          and canonical(component_receipt['rejections'][0]['key'])==canonical(bad_key)
+-          and component_receipt['rejections'][0]['reason']=='whole_remote_or_metadata_mark_conflict',
+-          'component independently rejects exact whole pending key for the intended remote mark')
+-        need(h['receipts']==[],'component receipt never enters live pending holder or observer')
+-        actual_remote_decision=e2.decision();after_remote_decision=snap(e2)
+-        remote_eligibility.update(actual_global_decision=copy.deepcopy(actual_remote_decision),
+-          after_decision=copy.deepcopy(after_remote_decision))
+-        need(canonical(after_remote_decision['state'])==canonical(remote_before['state'])
+-          and canonical(after_remote_decision['pending_preferences'])==canonical(remote_before['pending_preferences']),
+-          'real eligibility decision changes no selected point state or pending family')
+-        need(h['receipts']==[],'real decision does not fabricate a live pending rejection')
+-        if actual_remote_decision!={'kind':'BRANCH','row':bad_row}:
+-          remote_eligibility['eligibility_gap']='Actual global decision is not BRANCH at the invalidated pending row; no unrelated-scheduling wait or fabricated rejection.'
+-          raise Unavailable(remote_eligibility['eligibility_gap'])
+-        remote_eligibility['eligible_actual_branch']=True
+-        # Real decision may advance caches/events/counts. Search restores this
+-        # exact postdecision snapshot; all preflight work remains charged.
+-        remote_before=after_remote_decision
+-        remote_eligibility['normal_search_started']=True
+-        h['phase']='remote';h['receipts']=[];remote_search=e2.search();unknown_result(e2,remote_before,remote_search)
+-        rejected=[x for x in h['receipts'] if x['rejections']]
+-        if not rejected:raise Unavailable('Actual scheduler did not reach conflicting pending row before independent UNKNOWN.')
+-        need(any(canonical(k['key'])==canonical(bad_key) and k['reason']=='whole_remote_or_metadata_mark_conflict'
+-          for x in rejected for k in x['rejections']),'actual full pending key rejected by whole remote mark')
+-        artifacts['remote_search']=remote_search;artifacts['remote_receipts']=h['receipts']
+-        artifacts['remote_fixture']={'remote':remote,'before':remote_before,'invalidated_pending_key':bad_key}
+-        passed(common_names[16],{'search':'remote_search','receipts':'remote_receipts','fixture':'remote_fixture'})
+-        advice_events=[x for x in remote_search['events'] if x['kind']=='ADVICE' and x.get('rejected_keys')]
+-        need(advice_events and advice_events[-1]['mode']=='CANONICAL_FALLBACK','rejected key not executed and fallback retained')
+-        passed(common_names[17],{'actual_fallback_event':advice_events[-1], 'search':'remote_search'})
+-      except Unavailable as error:remote_error=str(error)
+-      finally:e2.rollback(outer2);restored(e2,before2)
++                # Intake-shaped requests are component checks only. The engine
++                # receives none of these receipts or hypothetical point states.
++                bad_check=c_component(remote_state,key,'C-selector-component')
++                br=bad_check['receipt']
++                if not (br['selection'] is None and len(br['rejections'])==1
++                    and canonical(br['rejections'][0]['key'])==canonical(key)
++                    and br['rejections'][0]['reason']=='whole_remote_or_metadata_mark_conflict'):continue
++                survivor_check=c_component(remote_state,survivor,'C-selector-component')
++                if survivor_check['receipt']['selection'] is None or survivor_check['receipt']['rejections']:continue
++                attempt.update(eligible=True,reason='first_actual_selectively_conflicting_external_port')
++                c_fixture.update(selected_original_index=index,executed_batch=copy.deepcopy(subset),
++                  executed_receipt=copy.deepcopy(subset_receipt),selection=copy.deepcopy(chosen),
++                  selector_component={'hypothetical_inner_state':hypothetical,'remote':remote,
++                    'bad_key':copy.deepcopy(key),'survivor_key':copy.deepcopy(survivor),
++                    'bad_check':bad_check,'survivor_check':survivor_check,
++                    'no_future_member_installed':True,'component_only':True})
++                return subset
++          attempt['reason']='no_selective_legal_remote_for_actual_external_ports'
++        raise Unavailable('Actual whole C batch has no structurally eligible selective multi-key proposal.')
++      try:
++        c_holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}
++        c_degree,c_default_adviser,c_validator=lifecycle_callbacks(c_holder)
++        ce=make(s,c_degree,c_capture_adviser,c_validator);c_holder['engine']=ce
++        c_outer=ce.checkpoint();c_outer_before=snap(ce)
++        c_decision=ce.decision();c_fixture.update(outer_before=copy.deepcopy(c_outer_before),
++          actual_initial_decision=copy.deepcopy(c_decision))
++        if c_decision!={'kind':'BRANCH','row':0}:raise Unavailable('Actual C initial scheduler is not BRANCH0.')
++        c_before=snap(ce);c_adoption=ce.search();unknown_result(ce,c_before,c_adoption)
++        c_fixture.update(search_before=copy.deepcopy(c_before),adoption_search=c_adoption)
++        c_inner=c_holder['inner_snapshot'];c_token=c_holder['inner_token']
++        if c_inner is None or c_token is None:
++          raise Unavailable('Actual C search did not capture a genuine nonempty owned child.')
++        c_selection=c_fixture['selection']
++        c_expected=state(language,[future,c_selection['anchor']],tick)
++        need(canonical(c_inner['state'])==canonical(c_expected)
++          and len(c_inner['state']['selected'])==len(s['selected'])+1,
++          'C actual child contains only declared seed and independently selected anchor')
++        need(canonical(c_inner['pending_preferences']['pending_keys'])==canonical(c_selection['future_keys']),
++          'C actual owned future preferences are exactly executed subset receipt keys')
++        installed={canonical({f:r[f] for f in ('tile_type_id','type_preimage','translation')})
++          for r in c_inner['state']['selected']}
++        need(all(canonical(k) not in installed for k in c_selection['future_keys']), 'C future members never preinstalled')
++        ce.rollback(c_token);need(canonical(snap(ce))==canonical(c_inner),'C own inner token restores exactly')
++        c_fixture.update(inner_snapshot=copy.deepcopy(c_inner),adoption_qualified=True,
++          family_id=c_inner['pending_preferences']['family_id'],adoption_restoration=restored(ce,c_inner))
++      except Unavailable as error:c_error=str(error);c_fixture['eligibility_gap']=c_error
++      finally:
++        if ce is not None and c_outer is not None:ce.rollback(c_outer)
++      if ce is not None and c_outer is not None:
++        c_fixture['outer_after']=snap(ce);c_fixture['outer_restoration']=restored(ce,c_outer_before)
++      remote_error=c_error
++      if c_error is None:
++        try:
++          ce.rollback(c_token);family=c_inner['pending_preferences']
++          remote=c_fixture['selector_component']['remote'];bad_key=c_fixture['selector_component']['bad_key']
++          survivor=c_fixture['selector_component']['survivor_key'];bad_row=bad_key['translation'][1]
++          ce.place(obligations(remote,c_inner['state']));remote_before=snap(ce)
++          c_holder['phase']='remote';c_holder['receipts']=[]
++          remote_eligibility={'schema':'unit-row-remote-rejection-eligibility-v2-C-normalization',
++            'fixture_ref':'selective_C_fixture','family_id':family['family_id'],
++            'remote':copy.deepcopy(remote),'bad_key':copy.deepcopy(bad_key),'survivor_key':copy.deepcopy(survivor),
++            'before_decision':copy.deepcopy(remote_before),'normalization':[],
++            'component_decision_is_scheduler_authority':False,'eligible_actual_branch':False,
++            'normal_search_started':False,'component_only':True}
++          artifacts['remote_eligibility']=remote_eligibility
++          bad_check=c_component(remote_before['state'],bad_key,family['family_id'])
++          survivor_check=c_component(remote_before['state'],survivor,family['family_id'])
++          remote_eligibility.update(component_request=bad_check['request'],component_receipt=bad_check['receipt'],
++            initial_survivor_check=survivor_check)
++          need(bad_check['receipt']['selection'] is None and len(bad_check['receipt']['rejections'])==1
++            and bad_check['receipt']['rejections'][0]['reason']=='whole_remote_or_metadata_mark_conflict'
++            and canonical(bad_check['receipt']['rejections'][0]['key'])==canonical(bad_key)
++            and survivor_check['receipt']['selection'] is not None and survivor_check['receipt']['rejections']==[],
++            'C actual anchor state reproduces selective remote conflict and different first survivor')
++          need(c_holder['receipts']==[],'C component receipts never enter live observers')
++          while True:
++            tick();normal_before=snap(ce)
++            totals={tuple(p):n for p,n in normal_before['state']['t']}
++            if any(totals[(0,k['translation'][1])]!=0 for k in family['pending_keys']):
++              raise Unavailable('Actual C forced normalization filled a pending row; selective-rejection gate remains unqualified.')
++            decision=ce.decision();normal_after_decision=snap(ce)
++            need(canonical(normal_after_decision['state'])==canonical(normal_before['state'])
++              and canonical(normal_after_decision['pending_preferences'])==canonical(c_inner['pending_preferences']),
++              'normalization decision changes caches only, not C point state or owned family')
++            remote_eligibility.update(actual_global_decision=copy.deepcopy(decision),
++              after_decision=copy.deepcopy(normal_after_decision))
++            if decision['kind']=='FORCED':
++              candidate=decision['candidate'];before_count=len(normal_after_decision['state']['selected'])
++              ce.place(candidate);normal_after=snap(ce)
++              need(len(normal_after['state']['selected'])==before_count+1,
++                'one actual checked forced unit-row placement, structural termination within height24')
++              remote_eligibility['normalization'].append({'actual_decision':copy.deepcopy(decision),
++                'before':normal_before,'after_decision':normal_after_decision,
++                'candidate':copy.deepcopy(candidate),'after':normal_after})
++              continue
++            if decision!={'kind':'BRANCH','row':bad_row}:
++              raise Unavailable('Actual C normalized decision is not BRANCH at bad-key row; unrelated scheduling is not skipped.')
++            remote_before=normal_after_decision;break
++          final_bad=c_component(remote_before['state'],bad_key,family['family_id'])
++          final_survivor=c_component(remote_before['state'],survivor,family['family_id'])
++          remote_eligibility.update(final_bad_check=final_bad,final_survivor_check=final_survivor,
++            normalization_complete=True)
++          need(final_bad['receipt']['selection'] is None and len(final_bad['receipt']['rejections'])==1
++            and final_bad['receipt']['rejections'][0]['reason']=='whole_remote_or_metadata_mark_conflict'
++            and canonical(final_bad['receipt']['rejections'][0]['key'])==canonical(bad_key),
++            'normalized exact bad-key mark rejection still holds')
++          if final_survivor['receipt']['selection'] is None or final_survivor['receipt']['rejections']:
++            raise Unavailable('First different C pending key is not independently whole-point legal after normalization.')
++          need(c_holder['receipts']==[],'C final component checks never create live pending receipts')
++          remote_eligibility.update(eligible_actual_branch=True,normal_search_started=True,
++            normal_search_before=copy.deepcopy(remote_before))
++          remote_search=ce.search();unknown_result(ce,remote_before,remote_search)
++          prefix=c_adoption['events'];need(canonical(remote_search['events'][:len(prefix)])==canonical(prefix),
++            'C remote result retains exact actual adoption-event prefix')
++          remote_events=remote_search['events'][len(prefix):]
++          rejected=[x for x in c_holder['receipts'] if x['rejections']]
++          if not rejected:raise Unavailable('Actual C search did not produce a live pending rejection before UNKNOWN.')
++          need(any(canonical(k['key'])==canonical(bad_key) and k['reason']=='whole_remote_or_metadata_mark_conflict'
++            for x in rejected for k in x['rejections']),'actual C full pending key rejected by remote mark')
++          artifacts['remote_search']=remote_search;artifacts['remote_receipts']=copy.deepcopy(c_holder['receipts'])
++          artifacts['remote_fixture']={'fixture_ref':'selective_C_fixture','family_id':family['family_id'],
++            'remote':remote,'before':remote_before,'invalidated_pending_key':bad_key,
++            'surviving_pending_key':survivor,'event_prefix_ref':'selective_C_fixture.adoption_search.events',
++            'event_prefix_count':len(prefix),'fresh_event_start':len(prefix)}
++          passed(common_names[16],{'search':'remote_search','receipts':'remote_receipts','fixture':'remote_fixture'})
++          advice_events=[x for x in remote_events if x['kind']=='ADVICE' and x.get('rejected_keys')]
++          need(advice_events and advice_events[-1]['mode']=='CANONICAL_FALLBACK',
++            'current C rejected key not executed and original fallback retained')
++          passed(common_names[17],{'actual_fallback_event':advice_events[-1],'search':'remote_search'})
++        except Unavailable as error:
++          remote_error=str(error)
++          if 'remote_eligibility' in artifacts:artifacts['remote_eligibility']['eligibility_gap']=remote_error
++        finally:
++          ce.rollback(c_outer);c_fixture['remote_outer_restoration']=restored(ce,c_outer_before)
+       if remote_error is not None:
+         skip(common_names[16],remote_error);skip(common_names[17],remote_error)
+ 
+@@ -642,50 +758,59 @@
+       # predecessor except one pending output is filled with the original AX;
+       # a selected later UG imposes the remaining output formula. No pending
+       # member is directly installed, and no custom scheduler/degree is used.
+-      try:
+-        e2.rollback(token);family=inner['pending_preferences']
+-        pending=family['pending_keys'];pending_rows=sorted(k['translation'][1] for k in pending)
+-        if len(pending_rows)!=2 or pending_rows[-1]>=22:
+-          raise Unavailable('Forced-fill fixture needs actual two-key family below the last two rows.')
+-        low,high=pending_rows
+-        low_key=next(k for k in pending if k['translation'][1]==low)
+-        low_formula=copy.deepcopy(low_key['type_preimage']['primitive_witness']['formula'])
+-        filler=[]
+-        for row in range(high):
+-          current=snap(e2)['state'];occupied={r['translation'][1] for r in current['selected']}
+-          if row in occupied or row in pending_rows:continue
+-          candidate=prepared(tile,language,{'rule':'axiom','name':name,'formula':u},[],[],row,tick)
+-          # Literal independent fixture recomposition detects incompatible
+-          # premises before public place; absence never means occupied/fact.
+-          selected_tiles=[tile(language,r['type_preimage']['primitive_witness'],
+-              r['type_preimage']['ordered_premise_formulas'],
+-              [r['translation'][1]+d for d in r['type_preimage']['ordered_offsets']],r['translation'][1],tick)
+-              for r in current['selected']]
+-          state(language,selected_tiles+[candidate],tick)
+-          e2.place(obligations(candidate,current));filler.append(candidate)
+-        current=snap(e2)['state'];occupied={r['translation'][1] for r in current['selected']}
+-        later=next((r for r in range(high+1,23) if r not in occupied),None)
+-        if later is None:raise Unavailable('No unused later row for a genuine UG pending-output constraint.')
+-        constrain=prepared(ug,language,low_formula,v,low,later,tick)
+-        e2.place(obligations(constrain,current));forced_before=snap(e2)
+-        need(all(dict((tuple(p),n) for p,n in forced_before['state']['t'])[(0,r)]==0 for r in pending_rows),
+-          'both future family rows genuinely unoccupied before global forced propagation')
+-        h['phase']='forced-retirement';h['retirement_calls']=[];h['receipts']=[]
+-        forced_retirement=e2.search();unknown_result(e2,forced_before,forced_retirement)
+-        if not h['retirement_calls']:
+-          raise Unavailable('Actual global state did not reach later BRANCH after forced filling before independent UNKNOWN.')
+-        observed=h['retirement_calls'][0];totals={tuple(p):n for p,n in observed['state']['t']}
+-        need(all(totals[(0,r)]==1 for r in pending_rows),'fresh advice called only after all old preference rows filled')
+-        events=[x for x in forced_retirement['events'] if x['kind']=='ADVICE' and x['retired_keys']]
+-        need(events and {canonical(k) for k in events[-1]['retired_keys']}=={canonical(k) for k in pending}
+-          and events[-1]['pending_preferences'] is None,'actual branch retires exactly occupied hints, fresh UNKNOWN then canonical fallback')
+-        forced_rows={x['row'] for x in forced_retirement['events'] if x['kind']=='TRY' and x['mode']=='FORCED'}
+-        need(set(pending_rows)<=forced_rows,'original global forced moves filled both pending rows, not adviser macro')
+-        artifacts['forced_retirement']={'search':forced_retirement,'before':forced_before,
+-          'new_adviser_calls':h['retirement_calls'],'filler_AX':filler,'selected_UG_constraint':constrain}
+-        passed(common_names[19],{'artifact':'forced_retirement','retired_keys':events[-1]['retired_keys']})
+-      except Unavailable as error:skip(common_names[19],error)
+-      finally:e2.rollback(outer2);restored(e2,before2)
++      if c_error is not None:skip(common_names[19],c_error)
++      else:
++        try:
++          ce.rollback(c_token);family=c_inner['pending_preferences']
++          pending=family['pending_keys'];pending_rows=sorted(k['translation'][1] for k in pending)
++          if len(pending_rows)!=2 or pending_rows[-1]>=22:
++            raise Unavailable('Forced-fill fixture needs actual two-key family below the last two rows.')
++          low,high=pending_rows
++          low_key=next(k for k in pending if k['translation'][1]==low)
++          low_formula=copy.deepcopy(low_key['type_preimage']['primitive_witness']['formula'])
++          filler=[]
++          for row in range(high):
++            current=snap(ce)['state'];occupied={r['translation'][1] for r in current['selected']}
++            if row in occupied or row in pending_rows:continue
++            candidate=prepared(tile,language,{'rule':'axiom','name':name,'formula':u},[],[],row,tick)
++            # Literal independent fixture recomposition detects incompatible
++            # premises before public place; absence never means occupied/fact.
++            selected_tiles=[tile(language,r['type_preimage']['primitive_witness'],
++                r['type_preimage']['ordered_premise_formulas'],
++                [r['translation'][1]+d for d in r['type_preimage']['ordered_offsets']],r['translation'][1],tick)
++                for r in current['selected']]
++            state(language,selected_tiles+[candidate],tick)
++            ce.place(obligations(candidate,current));filler.append(candidate)
++          current=snap(ce)['state'];occupied={r['translation'][1] for r in current['selected']}
++          later=next((r for r in range(high+1,23) if r not in occupied),None)
++          if later is None:raise Unavailable('No unused later row for a genuine UG pending-output constraint.')
++          constrain=prepared(ug,language,low_formula,v,low,later,tick)
++          ce.place(obligations(constrain,current));forced_before=snap(ce)
++          need(all(dict((tuple(p),n) for p,n in forced_before['state']['t'])[(0,r)]==0 for r in pending_rows),
++            'both future family rows genuinely unoccupied before global forced propagation')
++          c_holder['phase']='forced-retirement';c_holder['retirement_calls']=[];c_holder['receipts']=[]
++          forced_retirement=ce.search();unknown_result(ce,forced_before,forced_retirement)
++          prefix=artifacts.get('remote_search',c_adoption)['events']
++          need(canonical(forced_retirement['events'][:len(prefix)])==canonical(prefix),
++            'C retirement retains exact last returned C trace prefix')
++          forced_events=forced_retirement['events'][len(prefix):]
++          if not c_holder['retirement_calls']:
++            raise Unavailable('Actual global state did not reach later BRANCH after forced filling before independent UNKNOWN.')
++          observed=c_holder['retirement_calls'][0];totals={tuple(p):n for p,n in observed['state']['t']}
++          need(all(totals[(0,r)]==1 for r in pending_rows),'fresh advice called only after all old preference rows filled')
++          events=[x for x in forced_events if x['kind']=='ADVICE' and x['retired_keys']]
++          need(events and {canonical(k) for k in events[-1]['retired_keys']}=={canonical(k) for k in pending}
++            and events[-1]['pending_preferences'] is None,'actual branch retires exactly occupied hints, fresh UNKNOWN then canonical fallback')
++          forced_rows={x['row'] for x in forced_events if x['kind']=='TRY' and x['mode']=='FORCED'}
++          need(set(pending_rows)<=forced_rows,'original global forced moves filled both pending rows, not adviser macro')
++          artifacts['forced_retirement']={'fixture_ref':'selective_C_fixture','family_id':family['family_id'],
++            'event_prefix_ref':'remote_search.events' if 'remote_search' in artifacts else 'selective_C_fixture.adoption_search.events',
++            'event_prefix_count':len(prefix),'fresh_event_start':len(prefix),
++            'search':forced_retirement,'before':forced_before,
++            'new_adviser_calls':c_holder['retirement_calls'],'filler_AX':filler,'selected_UG_constraint':constrain}
++          passed(common_names[19],{'artifact':'forced_retirement','retired_keys':events[-1]['retired_keys']})
++        except Unavailable as error:skip(common_names[19],error)
++        finally:ce.rollback(c_outer);restored(ce,c_outer_before)
+ 
+   # Same actual global scheduler, original AX/UG states. Forbidden adviser
+   # asserts it cannot run on DEAD or before a forced placement.
+@@ -816,7 +941,10 @@
+     certify_fallback=certify_fallback,tick=tick)
+   phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN',phase_native_ns,file=sys.stderr,flush=True);tick()
+   need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')
+-  candidates=[r for r in records if r['token'] is not None]
++  c_context=result['artifacts'].get('selective_C_fixture')
++  candidates=[r for r in records if r['token'] is not None and c_context is not None
++    and c_context.get('adoption_qualified') is True
++    and r['snapshot']['pending_preferences']['family_id']==c_context['family_id']]
+   reason=None
+   if len(candidates)!=1:reason='Need one genuine current pending-rejection checkpoint from original remote case.'
+   for name in ('remote_search','remote_receipts','remote_fixture','pending_continuation_search'):
+@@ -850,7 +978,12 @@
+       batch=later_request,tick=tick)
+     need(later_receipt['selection'] is not None and later_receipt['rejections']==[],
+       'different unfilled future key still whole-point legal; family abandonment is advisory cleanup')
+-    evidence['actual_rejection']={**rejection,'owned_inner_snapshot':inner,'abandonment_event':event,
++    c_context=result['artifacts']['selective_C_fixture']
++    need(c_context['adoption_qualified'] is True and family_id==c_context['family_id']
++      and result['artifacts']['remote_fixture']['fixture_ref']=='selective_C_fixture'
++      and canonical(rejection['actual_receipt']['binding'])==canonical(c_context['executed_receipt']['binding']),
++      'old30 rejection belongs to independently selected owned C lineage, never A or B')
++    evidence['actual_rejection']={**rejection,'fixture_ref':'selective_C_fixture','owned_inner_snapshot':inner,'abandonment_event':event,
+       'different_future_key_component_check':{'request':later_request,'receipt':later_receipt,
+         'scope':'Component point legality only; not current global scheduling authority.'}}
+     passed(labels[0],{'artifact':'family_retirement.actual_rejection','old_family_keys':len(pending['pending_keys']),
+@@ -894,7 +1027,7 @@
+     passed(labels[3],{'continuity_artifact':'pending_continuation_search','actual_successful_events':successful,
+       'fixture_ref':'pending_success_fixture','lineage':copy.deepcopy(continuity_lineage)})
+     evidence['successful_continuity_context']={'fixture_ref':'pending_success_fixture',
+-      'lineage':copy.deepcopy(continuity_lineage),'original_rejection_fixture_ref':'fixture',
++      'lineage':copy.deepcopy(continuity_lineage),'original_rejection_fixture_ref':'selective_C_fixture',
+       'distinct_control_contexts':True}
+     engine.rollback(token);need(canonical(engine.state_snapshot())==canonical(inner),'owned nonempty inner token restores exactly')
+     before=engine.state_snapshot()
+@@ -1409,9 +1542,17 @@
+       'scope':'Observed returned universal diversity only; no multi-term fairness, complete generation or absence claim.'})
+ 
+   phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT',phase_native_ns,file=sys.stderr,flush=True);tick()
+-  candidates=[r for r in records if r['token'] is not None]
++  c_context=result['artifacts'].get('selective_C_fixture')
++  candidates=[r for r in records if r['token'] is not None and c_context is not None
++    and c_context.get('adoption_qualified') is True
++    and r['snapshot']['pending_preferences']['family_id']==c_context['family_id']]
++  replacement_gap=None
+   if len(candidates)!=1:
+-    for label in labels[7:]:skip(label,'No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.')
++    replacement_gap='No unique genuine completed C pending-rejection checkpoint; no synthetic replacement family.'
++  elif 'follow_on_search' not in result['artifacts']['family_retirement']:
++    replacement_gap='No actual completed same-C old30 follow-on trace; replacement fresh-prefix gate remains unqualified.'
++  if replacement_gap is not None:
++    for label in labels[7:]:skip(label,replacement_gap)
+   else:
+     record=candidates[0];e=record['engine'];outer=e.checkpoint();outer_snapshot=e.state_snapshot()
+     inner=record['snapshot'];old_pending=inner['pending_preferences'];reason=None
+@@ -1434,7 +1575,11 @@
+           need(canonical(replacement['state'])==canonical(record['rejection']['state'])
+             and canonical(replacement['decision'])==canonical(record['rejection']['decision']),
+             'fresh READY replacement at exact same actual independently rejected BRANCH')
+-          events=[x for x in r['events'] if x['kind']=='ADVICE' and x['abandoned_family'] is not None]
++          prior_events=result['artifacts']['family_retirement']['follow_on_search']['actual_result']['events']
++          need(canonical(r['events'][:len(prior_events)])==canonical(prior_events),
++            'replacement result retains exact actual old30 cumulative prefix')
++          fresh_events=r['events'][len(prior_events):]
++          events=[x for x in fresh_events if x['kind']=='ADVICE' and x['abandoned_family'] is not None]
+           need(len(events)==1 and events[0]['mode']=='ADVICE_BATCH'
+             and events[0]['abandoned_family']['family_id']==old_pending['family_id'],
+             'whole old family abandoned then genuine replacement adopted inside same child')
+@@ -1443,7 +1588,10 @@
+             and canonical(fresh)==canonical(events[0]['pending_preferences'])
+             and {canonical(k) for k in fresh['pending_keys']}=={canonical(k) for k in selection['future_keys']},
+             'actual new nonempty advisory family, never fabricated pending state')
+-          evidence['replacement']={**replacement,'actual_rejection':record['rejection'],
++          evidence['replacement']={**replacement,'fixture_ref':'selective_C_fixture',
++            'event_prefix_ref':'family_retirement.follow_on_search.actual_result.events',
++            'event_prefix_count':len(prior_events),'fresh_event_start':len(prior_events),
++            'actual_rejection':record['rejection'],
+             'before':before,'child':child,'actual_result':r,'after':after}
+           passed(labels[7],{'artifact':'fair_interface.replacement','same_branch_fresh_calls':record['fresh_calls']},seam)
+           anchor=selection['anchor'];selected_before={canonical(x) for x in before['state']['selected']}
+@@ -1500,7 +1648,9 @@
+     if not matches:skip(fibre_labels[0],'No genuine returned UI_MP uses the compatible occupied AX source; no generated-family inference.')
+     else:passed(fibre_labels[0],{'artifact':'fair_interface.component_attempts.occupied_compatible_UI_source',
+       'actual_matches':matches,'scope':'Real global BRANCH+whole returned batch independently checked; occupied AX source, not a supplied proof.'})
+-  bad_contexts=[rec for rec in records if rec['rejection'] is not None]
++  bad_contexts=[rec for rec in records if rec['rejection'] is not None
++    and c_context is not None and c_context.get('adoption_qualified') is True
++    and rec['snapshot']['pending_preferences']['family_id']==c_context['family_id']]
+   incompatible_evidence=None
+   for rec in bad_contexts:
+     tick();rejection=rec['rejection'];st=rejection['state'];d=rejection['decision']

@@ -1,0 +1,522 @@
+{
+  "RL_accepted": false,
+  "assessment": "The control-only C family exercises selective rejection and restoration successfully. The paired target runs still discover no proof. The advised producer reports choosing advice at every observed branch, with no pending-key continuation check before interruption. Fewer observed branches do not establish a benefit when neither arm reaches a checked proof.",
+  "broad_goal_complete": false,
+  "calibration": {
+    "actual_global_decision": {
+      "kind": "BRANCH",
+      "row": 2
+    },
+    "eligible_actual_branch": true,
+    "family_id": "8b6625d5da6270e78300b636df6111520596bec6f9b818136daf9c865b415055",
+    "fixture_ref": "selective_C_fixture",
+    "forced_normalization_steps": 1,
+    "normal_search_started": true,
+    "normalization_complete": true,
+    "schema": "unit-row-remote-rejection-eligibility-v2-C-normalization"
+  },
+  "calibration_text": "The diagram translates the actual saved C boundary. Component legality and actual global scheduling are recorded separately. Every normalization placement follows a real global FORCED decision; an unrelated decision or occupied pending row leaves an essential gap.",
+  "case_note": "All \\(43\\) returned outcomes are shown. Full observations are in the expanded record. A partial closer, when present, checks complete wire, native resources and literal saved joins without independently accepting reported PASSED semantics.",
+  "cases": [
+    {
+      "case": "genuine-READY-whole-independent-validation",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "pending-obligations-never-facts",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "malformed-batch-controls",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "later-ranked-malformed-proposal-rejected",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "genuine-quota-UNKNOWN-diagnostic-only",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "UNKNOWN-rejected-by-executable-validator",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "empty-hints-preserve-canonical-choice",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "quota-UNKNOWN-preserves-canonical-choice",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "adviser-Timeout-UNKNOWN-no-exclusion",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "adviser-ValueError-propagates",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "validator-ValueError-propagates",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "actual-anchor-only-no-future-preinstallation",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "first-search-exact-root-restoration",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "public-rollback-restores-genuine-nonempty-pending",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "pending-key-real-current-row-selection",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "pending-search-exact-inner-root-restoration",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "remote-mark-invalidates-pending-key",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "rejected-pending-hint-preserves-canonical-choice",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "pending-request-malformed-controls",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "global-forced-fill-retires-family-before-fresh-advice",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "global-DEAD-overrides-advice",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "global-FORCED-overrides-advice",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "whole-family-abandoned-with-different-future-key-remaining",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "one-fresh-batch-at-same-rejected-BRANCH",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "abandoned-future-members-never-installed-or-excluded",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "successful-pending-continuity-preserved",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "rejection-parent-and-owned-inner-rollback-exact",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "fresh-replacement-ValueError-propagates-without-family-commit",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "real-returned-interface-features-score-and-order",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "forged-interface-feature-and-score-rejections",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "Boolean-versus-integer-feature-and-score-rejections",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "obsolete-adviser-version-rejected",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "later-ranked-quality-defect-and-order-rejected",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "real-returned-root-reopening-remains-legal-and-demoted",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "real-returned-universal-diversity-with-declared-term-horizon",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "nonempty-READY-replacement-adopted-after-definite-rejection",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "replacement-installs-anchor-only-not-future-obligations",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "compatible-occupied-UI-source-fibre-returned-and-validated",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+      "observed": {},
+      "status": "PASSED"
+    },
+    {
+      "case": "missing-UI-source-remains-PENDING-not-a-fact",
+      "observed": {},
+      "status": "PASSED"
+    }
+  ],
+  "conflict": {
+    "assigned_formula": [
+      "all",
+      "x",
+      [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "x"
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        [
+          "var",
+          "x"
+        ]
+      ]
+    ],
+    "decision": {
+      "kind": "BRANCH",
+      "row": 2
+    },
+    "pending_row": 2,
+    "pending_rule": "MP",
+    "point": [
+      1,
+      1
+    ],
+    "remote_row": 22,
+    "required_formula": [
+      "all",
+      "x",
+      [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "lead": "Three independently owned boundaries separate first-ranked adoption, successful continuation and selective rejection.",
+  "links": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Complete current disposition"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "label": "Complete expanded control record"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "label": "Lossless result envelope"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+      "label": "Transport concordance"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "label": "Native terminal and reaping"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "label": "Fresh postterminal observation"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Original controls disposition"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Retained-state controls disposition"
+    },
+    {
+      "href": "evidence/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v11.json",
+      "label": "Independent controls review"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-cold-independent-source-20261016/typed-Source-review-v16.json",
+      "label": "Independent caller review"
+    },
+    {
+      "href": "evidence/unit-row-selective-C-controls-source-20261016/Source-contract-v11.json",
+      "label": "Control contract"
+    },
+    {
+      "href": "evidence/unit-row-selective-C-controls-source-20261016/inherited-paired-prose-erratum-v1.json",
+      "label": "Historical prose erratum"
+    },
+    {
+      "href": "evidence/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v10.json",
+      "label": "Preserved pre-activation negative review"
+    },
+    {
+      "href": "../remote-eligibility/reader.html#results",
+      "label": "Previous complete partial result"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-canonical-search-disposition-v1.json",
+      "label": "canonical-search complete failure disposition"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/canonical-search-owned-v1/unknown-diagnostic.json",
+      "label": "canonical-search raw saved producer diagnostic"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+      "label": "advised-search complete failure disposition"
+    },
+    {
+      "href": "evidence/unit-row-selective-multikey-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json",
+      "label": "advised-search raw saved producer diagnostic"
+    },
+    {
+      "href": "../shared-bounded-proofs/reader.html#reader",
+      "label": "Earlier ordinary proof, line by line"
+    }
+  ],
+  "next_step": "The earlier ordinary producer already found an independently checked proof of this arithmetic statement. Its representation and work caps differ, so its timing is not a matched speed ratio. The next experiment should diagnose the advised choices and compare total verified-proof cost. These unit-row controls do not establish the full reference graph, fractional/shared support, a universal Wang palette, learned failure markings or RL.",
+  "outcome": "Original and retained-state controls each pass all \\(17\\) tests. The expanded suite reports \\(43\\) passed and \\(0\\) skipped cases. Complete control qualification is accepted. All processes are closed and reaped.",
+  "proof_accepted": false,
+  "schema": "selective-cluster-saved-reader-v1",
+  "stages": [
+    {
+      "label": "original controls",
+      "native_ns": 6444802000,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 48644096,
+      "qualified": true
+    },
+    {
+      "label": "domain controls",
+      "native_ns": 4772668000,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 69451776,
+      "qualified": true
+    },
+    {
+      "label": "advice controls",
+      "native_ns": 19446009000,
+      "outcome": "\\(43\\) reported passed; \\(0\\) skipped",
+      "peak_bytes": 107855872,
+      "qualified": true
+    },
+    {
+      "label": "canonical search",
+      "native_ns": 20150319000,
+      "outcome": "UNKNOWN; original deadline",
+      "peak_bytes": 53936128,
+      "qualified": false
+    },
+    {
+      "label": "advised search",
+      "native_ns": 20126532000,
+      "outcome": "UNKNOWN; original deadline",
+      "peak_bytes": 50102272,
+      "qualified": false
+    }
+  ],
+  "survivor_text": "After normalization, an independent component check still accepts the first different pending key at \\(r=8\\). It remains an uninstalled option.",
+  "target": [
+    "all",
+    "n",
+    [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "n"
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "succ",
+        [
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "n"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "target_diagnostics": [
+    {
+      "advice_selected": 0,
+      "arm": "canonical-search",
+      "backtracks": 20,
+      "branches": 42,
+      "nodes": 63,
+      "pending_checks": 0
+    },
+    {
+      "advice_selected": 22,
+      "arm": "advised-search",
+      "backtracks": 0,
+      "branches": 22,
+      "nodes": 23,
+      "pending_checks": 0
+    }
+  ],
+  "target_text": "Both point-search arms reach the original \\(20\\,\\mathrm{s}\\) deadline without a proof. The complete failure records are closed and reaped. Their saved producer counts below are unqualified diagnostics, not accepted trajectories or positive resource results.",
+  "trace": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30 501473958150000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP 501473958210000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION 501473958678000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE 501474587659000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK 501474646913000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS 501474694669000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES 501475189218000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE 501478694956000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP 501478705750000\nUNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP 501479728614000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP 501479737644000\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 1 501480972992000 3 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 2 501480977334000 3 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 3 501480977355000 3 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 4 501480996635000 3 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 5 501481009778000 4 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 6 501481014427000 4 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 7 501481014440000 4 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 8 501481039590000 4 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 9 501481052604000 5 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 10 501481057721000 5 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 11 501481057737000 5 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 12 501481076856000 5 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 13 501481089449000 6 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 14 501481094944000 6 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 15 501481094956000 6 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 16 501481114073000 6 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 17 501481126770000 7 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 18 501481132728000 7 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 19 501481132739000 7 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 20 501481157674000 7 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 21 501481170388000 8 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 22 501481177033000 8 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 23 501481177050000 8 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 24 501481197200000 8 4 -1 -1\nUNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP 501481969821000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE 501481969861000\nUNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN 501489368767000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS 501489459260000\nUNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30 501490809803000\nUNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING 501490809843000\nUNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING 501491714807000\nUNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED 501491714849000\nUNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED 501491936857000\nUNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS 501491936899000\nUNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT 501492559873000\nUNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT 501493031035000\nUNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN 501493033491000\n"
+}

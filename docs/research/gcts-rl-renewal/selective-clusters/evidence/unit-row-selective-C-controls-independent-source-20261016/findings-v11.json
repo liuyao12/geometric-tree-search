@@ -1,0 +1,150 @@
+{
+  "schema": "unit-row-selective-C-controls-independent-findings-v11",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 130156,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+    "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/Source-contract-v11.json",
+    "sha256": "3ca98e999239bea549efe6b133efee01710b2c216b518fd46a0ccc6c4c99388b",
+    "bytes": 40226
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "blockers": [],
+  "closed_blocker_ids": [
+    "C-RETIREMENT-BASELINE-NAME-1",
+    "C-REPLACEMENT-PREFIX-GAP-1"
+  ],
+  "preserved_genuine_negative": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/typed-Source-review-v10.json",
+    "sha256": "a750c9cf260b2d343cdebc99e1944882314776cae44fce5db14d4328b2948b68",
+    "bytes": 5406
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/independent-Source-checks-v11.json",
+    "sha256": "73134d1e892d4c3a2dbfb1782b1100a7fbcb9646ca9da6384bd77ac747bd7c24",
+    "bytes": 17362
+  },
+  "manual_findings": [
+    {
+      "id": "C11-1",
+      "lines": [
+        565,
+        622
+      ],
+      "finding": "C obtains an actual fresh completed bounded whole READY batch and fresh whole independent receipt before original-order scan. It suppresses to exactly one actually returned proposal only under the separately declared CONTROL-ONLY seam; fresh subset receipt and normal engine validation remain. No known index/formula/body/word/fixed future layout or target ranking change."
+    },
+    {
+      "id": "C11-2",
+      "lines": [
+        573,
+        619
+      ],
+      "finding": "Candidate requires at least2 future full keys and an unoccupied external port. ordered_PENDING_obligations are external-only under unchanged adviser278-281 and whole validator checks. Generic original UG remote is legal under full hypothetical seed+anchor state. Exact bad full-key remote conflict and FIRST different future component legality establish selector eligibility; repeated ordered ports/full identities retained."
+    },
+    {
+      "id": "C11-3",
+      "lines": [
+        557,
+        564,
+        606,
+        618
+      ],
+      "finding": "All trial/final components call direct copied independent endpoint, bypassing both observer wrappers and live holders. Their BRANCH shape is intake only; selector family label opaque and not adopted. No component receipt authorizes a global branch, degree, EOF or actual rejection. Exceptions/guard/authority/collision/resource failures propagate; only declared control Unavailable gaps caught."
+    },
+    {
+      "id": "C11-4",
+      "lines": [
+        547,
+        555,
+        623,
+        653,
+        741,
+        755
+      ],
+      "finding": "A adoption/common11-13 and malformed18 remain first-ranked A, explicitly restored before C. B pending14/15/continuity/occupied remains original B. C owns distinct engine/holder/outer/inner tokens even with identical seed state. Genuine BRANCH0 and normal owned anchor-only capture must match subset receipt full state/keys; future members stay uninstalled. C actual outer/inner snapshots restore, no token borrowing/reverse edit."
+    },
+    {
+      "id": "C11-5",
+      "lines": [
+        657,
+        715
+      ],
+      "finding": "After actual remote placement, normalize only each freshly returned real global FORCED via validated public place, recording full before/decision/after chain and one new unit row. Any pending row occupied, unrelated BRANCH, DEAD or UNKNOWN is essential gap. Exact bad-row BRANCH and fresh bad/FIRST survivor checks in final current state are mandatory. No counters/events reset, manual TRY/FORCED assertion or implicit search trajectory; all work under same original bounds."
+    },
+    {
+      "id": "C11-6",
+      "lines": [
+        715,
+        739
+      ],
+      "finding": "Normal search starts at exact final cached snapshot. Only actual live rejection receipts plus fresh canonical-fallback ADVICE event can pass16/17; component lists never copied into holder. Returned adoption prefix is whole-value checked before fresh suffix use; no private events/clearing/fabricated prefix. Root/stack/noEXCLUDE and owning C outer rollback remain."
+    },
+    {
+      "id": "C11-7",
+      "lines": [
+        760,
+        813
+      ],
+      "finding": "Old19 is separate C-inner fork with original exact-two shape gate/filler/UG constraints and actual normal-search FORCED/retired-family/quota-fallback assertions. It does not count manual normalization as FORCED search. Known returned same-C trace prefix guards fresh suffix. Baseline repair uses existing owning c_outer_before, closing NameError; membership/shape gaps remain unqualified."
+    },
+    {
+      "id": "C11-8",
+      "lines": [
+        944,
+        1035
+      ],
+      "finding": "Old30 filters actual C family/owned rejection checkpoint, compares real callback and abandonment fields, and rechecks FIRST remaining current-legal key. No pending rows normalized filled, so unchanged full-family snapshot premise holds. B successful continuity remains distinct, explicitly joined to C rejection lineage. Missing required artifacts still produces8 essential SKIPs."
+    },
+    {
+      "id": "C11-9",
+      "lines": [
+        1544,
+        1628
+      ],
+      "finding": "Outer replacement requires actual C token and actual same-C old30 follow-on prefix before attempt; missing prefix yields explicit essential3 SKIPs, closing KeyError gap. Existing fresh READY replacement executes unchanged; whole old prefix checked, only unique NEW abandonment may qualify. Actual child anchor-only/new nonempty family and full parent/child owned rollback remain. Incompatible observations likewise require current C rejection."
+    },
+    {
+      "id": "C11-10",
+      "finding": "Full Source9-to11 thirteen-edit raw/AST inverse, immediate10-to11 three-edit inverse and four patches checked. Nine initial helper/class regions, all non-run nested/helper functions in repair, all43 case arrays/API/input2/other9 Sources/numeric caps and all24+6 diagnostic writes preserved. Shared max24 continuation counter remains one lexical scalar; C capture/remote/forced phases add no continue diagnostics."
+    },
+    {
+      "id": "C11-11",
+      "finding": "Source10 genuine negative retained for C-RETIREMENT-BASELINE-NAME-1 and C-REPLACEMENT-PREFIX-GAP-1. Author alternate second label C-REPLACEMENT-FOLLOW-PREFIX-GAP-2 is descriptive alias, clarified by exact additive erratum. Current contract paired_fixture is inherited8/9 prose; operative C_policy/artifact_API/Source define current A/B/C and selector. No contract/handoff/Source overwritten."
+    },
+    {
+      "id": "C11-12",
+      "finding": "The selector sees only the finite actual returned bounded batch, not a complete family universe. It may find none; normalization/retirement/follow-on/replacement may remain ineligible or exceed native/output limits. No current43/fit/target/proof/trajectory/benefit prediction. Source-bound full-key ties and all prior partial/UNKNOWN results remain unchanged."
+    }
+  ],
+  "manual_finding_count": 12,
+  "historical_prose_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/inherited-paired-prose-erratum-v1.json",
+    "sha256": "05bcde9c220db0176e47967b80a18fa0de855ff06170a3b420da2853e29ea12a",
+    "bytes": 3796
+  },
+  "retained_whole_scope": "Whole Source10/C delta reviewed against genuinely passed Source9; Source10 itself failed exactly two blockers. Current11 exact three repairs close those negatives, with retained whole current C/old9 scope. No false Source10 pass or current mathematical/runtime replay.",
+  "prior_Source9_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/typed-Source-review-v9.json",
+    "sha256": "72bfb5a90453eea0f1233218688d62e47bd6b565570978b5f7c8aa2d316a6274",
+    "bytes": 7113
+  },
+  "preserved_actual15_partial": {
+    "bytes": 55920,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT-advice-controls-partial-disposition-v1.json",
+    "sha256": "59e6286061aecd8763937f3eebab28a4f22dc3f2fbcbab19e6bd1f19e5d35720"
+  },
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

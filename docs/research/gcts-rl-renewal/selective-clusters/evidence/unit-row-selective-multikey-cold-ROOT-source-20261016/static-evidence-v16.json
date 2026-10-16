@@ -1,0 +1,20 @@
+{
+  "15otherSources_input2_limits_exact": true,
+  "all_helpers_nestedfunctions_raw_AST_exact": true,
+  "compile_only": true,
+  "literal_edits": 4,
+  "response_proof_nativeexit_tail_exact": true,
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55645,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-cold-ROOT-source-20261016/unit_row_selective_multikey_cold_v16.py",
+    "sha256": "05da14dfe2a6d18cc29bd7a582f60bbbac49caf38336dbbf421b84d2b746ca02"
+  },
+  "source_contract": {
+    "bytes": 81646,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-cold-ROOT-source-20261016/Source-contract-v16.json",
+    "sha256": "c3c1b026b51cd273f575ca70d475727f05c239d371881e771f248e4e1f85ed98"
+  },
+  "whole_raw_AST_inverse": true
+}

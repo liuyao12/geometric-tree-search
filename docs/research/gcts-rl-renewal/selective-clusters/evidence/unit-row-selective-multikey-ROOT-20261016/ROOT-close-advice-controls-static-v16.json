@@ -1,0 +1,118 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "positive-AST-compile-only",
+      "passed": true
+    },
+    {
+      "check": "positive-stdlib-only",
+      "passed": true
+    },
+    {
+      "check": "positive-no-source-execution-primitives",
+      "passed": true
+    },
+    {
+      "check": "positive-no-controlcharacters",
+      "passed": true
+    },
+    {
+      "check": "partial-AST-compile-only",
+      "passed": true
+    },
+    {
+      "check": "partial-stdlib-only",
+      "passed": true
+    },
+    {
+      "check": "partial-no-source-execution-primitives",
+      "passed": true
+    },
+    {
+      "check": "partial-no-controlcharacters",
+      "passed": true
+    },
+    {
+      "check": "positive-whole-native-wire-prefix-raw-exact",
+      "passed": true
+    },
+    {
+      "check": "partial-whole-native-wire-prefix-and-counts-raw-exact",
+      "passed": true
+    },
+    {
+      "check": "B-full-success-block-raw-exact",
+      "passed": true
+    },
+    {
+      "check": "partial-B-positive-alias-block-raw-exact",
+      "passed": true
+    },
+    {
+      "check": "A-first-ranked-remains",
+      "passed": true
+    },
+    {
+      "check": "A-hardcoded-future-rows-removed",
+      "passed": true
+    },
+    {
+      "check": "C-three-join-functions-identical-both-helpers",
+      "passed": true
+    },
+    {
+      "check": "C-current-Source11-only",
+      "passed": true
+    },
+    {
+      "check": "C-fresh-remote-retirement-replacement-prefixes-present",
+      "passed": true
+    },
+    {
+      "check": "partial-always-controls-target-false",
+      "passed": true
+    },
+    {
+      "check": "partial-requires-complete43-and-gaps",
+      "passed": true
+    },
+    {
+      "check": "positive-all43-labels-counts-gates-retained",
+      "passed": true
+    },
+    {
+      "check": "positive-whole-forward-inverse-exact",
+      "passed": true
+    },
+    {
+      "check": "partial-whole-forward-inverse-exact",
+      "passed": true
+    }
+  ],
+  "helper_executed": false,
+  "partial": {
+    "bytes": 33239,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_advice_controls_partial_saved_v16.py",
+    "sha256": "8981090677b7cfd20440dd2590a8f488d227c82eba36b731ebe908598f7e3fa4"
+  },
+  "positive": {
+    "bytes": 63333,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_advice_controls_saved_v16.py",
+    "sha256": "b1dd23f9a4e7880de33f73d381035c080e96f1227f69ef6a742b8dec37b5eec6"
+  },
+  "preserved_partial15": {
+    "bytes": 20518,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT_close_advice_controls_partial_saved_v15.py",
+    "sha256": "cf41fff0e679705f50bfc02681dcbb1f8a40ab964ddc36b79a1a144cce81dbf5"
+  },
+  "preserved_positive14": {
+    "bytes": 43300,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT_close_advice_controls_saved_v14.py",
+    "sha256": "062a1e18fdff2b4ac5565f718229e8b16b1c69146fb47669ec940ae98bf88425"
+  },
+  "schema": "ROOT-ABC-saved-closers-author-static-v16",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

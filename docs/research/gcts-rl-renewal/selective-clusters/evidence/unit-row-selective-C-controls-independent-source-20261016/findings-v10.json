@@ -1,0 +1,54 @@
+{
+  "schema": "unit-row-selective-C-controls-independent-findings-v10",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 129847,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v10.py",
+    "sha256": "9907bc9c91b2aa4e8af2e61c67ba6fe7ca7f2b8d7ecfc6281daa03f40345fa70"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/Source-contract-v10.json",
+    "sha256": "9f464ca7277ad78ae8ac676c631707640b17d6d990dcbbfbf4a5279e45bd878a",
+    "bytes": 37292
+  },
+  "source_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/handoff-v10.json",
+    "sha256": "373a9c8c54803ae09cb486c3c25f61aaa946650131667597037ce623bf6210aa",
+    "bytes": 29690
+  },
+  "verdict": "SOURCE_BLOCKED",
+  "blockers": [
+    {
+      "id": "C-RETIREMENT-BASELINE-NAME-1",
+      "line": 813,
+      "finding": "Old19 finally calls restored(ce,beforce), but beforce has no definition. Any C-adoption-qualified path reaching this finally raises NameError even when old19 intended to return or SKIP. This is unexecuted Source defect, not an actual outcome.",
+      "required_repair": "Use the existing owning c_outer_before baseline after ce.rollback(c_outer), in a separately frozen successor."
+    },
+    {
+      "id": "C-REPLACEMENT-PREFIX-GAP-1",
+      "line": 1573,
+      "related_lines": [
+        950,
+        953,
+        1545,
+        1550
+      ],
+      "finding": "Outer replacement assumes family_retirement.follow_on_search exists. If B continuation is unavailable, old30 skips its8 via missing-artifact guard, while C may still supply a genuine rejection token and execute outer replacement. Successful replacement then indexes missing follow_on_search and raises KeyError instead of preserving essential gap.",
+      "required_repair": "Explicit essential-gap precondition when no actual old30 follow-on result/prefix exists, as selected by Root; do not fabricate/borrow a prefix or read/clear private engine events."
+    }
+  ],
+  "retained_current_scope": "Whole current changed regions reviewed against reviewed9 and full ten-edit inverse. No third concrete blocker found. Generic C selector full/subset fresh validation, isolated components, own anchors/tokens, forced-only normalization with all-pending-unoccupied gap, fresh first-survivor recheck and A/B/C joins are coherent subject to these fixes and actual eligibility. This is not a positive Source10 or runtime result.",
+  "checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-independent-source-20261016/independent-negative-checks-v10.json",
+    "sha256": "484699bc8766522ce59c8fa2e2dc07ef3ebd95306e7d32368570d82822145167",
+    "bytes": 8632
+  },
+  "author_acknowledgment": "Author agreed both concrete defects, preserved9907/contract9f46/handoff373a unchanged; Root selected minimal next repair baseline plus explicit missing-prefix gap. No Source10 actual authorized/executed here.",
+  "prior_whole_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/typed-Source-review-v9.json",
+    "sha256": "72bfb5a90453eea0f1233218688d62e47bd6b565570978b5f7c8aa2d316a6274",
+    "bytes": 7113
+  }
+}

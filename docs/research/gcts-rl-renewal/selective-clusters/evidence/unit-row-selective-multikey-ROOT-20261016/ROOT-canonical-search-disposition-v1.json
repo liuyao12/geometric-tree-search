@@ -1,0 +1,184 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "advice_enabled_observed": false,
+  "aggregate_B_bytes_observed": 53936128,
+  "all_reaped": true,
+  "arm": "canonical-search",
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 27.303,
+  "complete_GCTS_model_accepted": false,
+  "complete_diagnostic_bytes_and_marker_verified": true,
+  "current_goal_turn": "progress",
+  "diagnostic_only": true,
+  "failure_lifecycle_verified": true,
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 20150319000,
+  "native_resources_qualified": false,
+  "native_worker_lifetime_ns": 20078963000,
+  "next_action": "Preserve UNKNOWN and late-data qualification. Current3control stages qualified; preserve finite-prefix and one-best-anchor diversity limitations, no unchanged actual restart.",
+  "nonprovability_claimed": false,
+  "observations": {
+    "counts": {
+      "advice_calls": 0,
+      "advice_selected": 0,
+      "advice_unknown": 0,
+      "backtracks": 20,
+      "branches": 42,
+      "cursor_replays": 0,
+      "fallback_advances": 42,
+      "fallback_branch_choices": 0,
+      "family_abandonments": 0,
+      "forced": 0,
+      "global_scans": 63,
+      "invalidated_domains": 1487,
+      "nodes": 63,
+      "pending_checks": 0,
+      "pending_rejected": 0,
+      "pending_retired": 0,
+      "pending_selected": 0,
+      "placements": 42,
+      "restores": 42,
+      "retained_domains": 1,
+      "retained_prefixes": 0,
+      "retained_queries": 1
+    },
+    "decision_kinds": {
+      "BRANCH": 42,
+      "DEAD": 20
+    },
+    "event_count": 290,
+    "event_kinds": {
+      "DECISION": 62,
+      "EXCLUDE": 20,
+      "FALLBACK": 42,
+      "INVALIDATE": 62,
+      "PLACE": 42,
+      "RESTORE": 20,
+      "TRY": 42
+    },
+    "interrupted_axiom_names": [
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS"
+    ],
+    "interrupted_excluded_count": 20,
+    "interrupted_rule_counts": {
+      "axiom": 22
+    },
+    "interrupted_selected_rows": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "producer_final_snapshot_sha256": "c283c97b851111447f63e25987c21aa23440e053f356dc08c64a7eace1e8945e",
+    "producer_root_restored": true,
+    "producer_root_snapshot_sha256": "c283c97b851111447f63e25987c21aa23440e053f356dc08c64a7eace1e8945e",
+    "producer_stack_restored": true,
+    "qualification": "UNQUALIFIED_PRODUCER_OBSERVATIONS_ONLY"
+  },
+  "original_trace_free_UNKNOWN_preserved": true,
+  "outputs": [
+    {
+      "bytes": 1184686,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-owned-v1/unknown-diagnostic.json",
+      "sha256": "d5268adfa6c5705bd432e926803a3dfa468683dc3a80445a6c1f98946959ddc4"
+    },
+    {
+      "bytes": 338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-owned-v1/diagnostic-completion.json",
+      "sha256": "5678d945eb02b8233ff93c566226711af49c6b1f929f4828d3d176a82d8803b7"
+    }
+  ],
+  "plan": {
+    "bytes": 7950,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT-canonical-search-plan-v1.json",
+    "sha256": "9bb0c250fdcfedc6b236d2a26e6f5f65a4fd7d767036df1b5f18f9fe859c36dd"
+  },
+  "previous_goal_turn": "progress",
+  "raw_evidence": [
+    {
+      "bytes": 265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/ONCE.json",
+      "sha256": "86feae03edc9c3b745a3310e123002023facc9074beb81915c5edeb3b5fb8503"
+    },
+    {
+      "bytes": 111,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/meter-stderr.txt",
+      "sha256": "ab20fdad9385dfef8fdc9502376b649f5a165abcd9958855bb7695c519919115"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1704,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/native-terminal.json",
+      "sha256": "f82bcb64f1181921ba498846fe19081cdfc204a2baa690fd57727979799d20f4"
+    },
+    {
+      "bytes": 482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/observation.json",
+      "sha256": "adbbc7887ddc2e48f55898438597c26a3ef117faf3399a68c8f2f678e25ef728"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/canonical-search-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "2afad05d929123700c57eb245eb5ccd7c38b421249e2e4f763fe9d53616195ee"
+    }
+  ],
+  "reason": "Original native20s deadline; inherited failure-only path saved actual returned raw producer data then rethrew exit2. No success/proof/trajectory admission.",
+  "reconciliation_scope": "Whole saved bytes/marker/context/source pins/native lifecycle only. No model, checker, search, word, proof or trajectory replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "root_or_stack_restoration_runtime_verified": false,
+  "schema": "ROOT-unit-row-diagnostic-search-UNKNOWN-disposition-v1",
+  "scope": "CurrentSource17 phase-diagnostic callerV8, same original right-two target/profile/all-six inventory/24root points. Original success20s. Canonical/advised stages separately owned; no word/donor/library/proof route.",
+  "status": "UNKNOWN",
+  "terminal_T_bytes_observed": 53936128
+}

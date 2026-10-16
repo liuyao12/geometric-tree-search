@@ -1,0 +1,17 @@
+{
+  "schema": "ROOT-completed-tool-handle-field-correction-v1",
+  "reason": "Root initially recorded originating yielded session in final active-session field. Final readout returned exit0 with no active session. Native terminal independently confirms same owned process reaped. Preserve original record and elapsed bracket; no scientific invocation or time/resource value changed.",
+  "original_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT-advice-controls-tool-bracket-originating-session-v1.json",
+    "sha256": "232b666db28a5d8589a5b66c459d55907fed1a7bb6e56738637e9e8128a4fe32",
+    "bytes": 305
+  },
+  "current_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT-advice-controls-tool-bracket-v1.json",
+    "sha256": "7363d1b2f1da388dbefa74560e185b05c645556b359b1be666ec5a90c27d0a1c",
+    "bytes": 388
+  },
+  "originating_tool_session_id": 75604,
+  "final_active_tool_session_id": null,
+  "scientific_actuals_added": 0
+}

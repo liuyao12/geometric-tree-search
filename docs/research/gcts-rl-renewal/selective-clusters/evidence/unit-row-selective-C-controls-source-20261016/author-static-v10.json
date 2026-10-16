@@ -1,0 +1,171 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": [
+    {
+      "check": "whole ten-edit byte forward",
+      "evidence": 10,
+      "passed": true
+    },
+    {
+      "check": "whole ten-edit byte inverse",
+      "evidence": {
+        "bytes": 118016,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+        "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+      },
+      "passed": true
+    },
+    {
+      "check": "compile/AST only and whole AST inverse",
+      "evidence": "No generated code imported/executed.",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper Unavailable",
+      "evidence": "Unavailable",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper CallbackExhausted",
+      "evidence": "CallbackExhausted",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper need",
+      "evidence": "need",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper canonical",
+      "evidence": "canonical",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper digest",
+      "evidence": "digest",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper tile",
+      "evidence": "tile",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper state",
+      "evidence": "state",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper ug",
+      "evidence": "ug",
+      "passed": true
+    },
+    {
+      "check": "raw/AST same helper obligations",
+      "evidence": "obligations",
+      "passed": true
+    },
+    {
+      "check": "three wrappers same eight-keyword API",
+      "evidence": [
+        "language",
+        "engine_factory",
+        "adviser",
+        "validate_advice",
+        "degree_proposer",
+        "fallback",
+        "certify_fallback",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "unchanged case declarations common_names",
+      "evidence": "43 names/meanings; contexts explicitly split, no extra count.",
+      "passed": true
+    },
+    {
+      "check": "unchanged case declarations scheduler_names",
+      "evidence": "43 names/meanings; contexts explicitly split, no extra count.",
+      "passed": true
+    },
+    {
+      "check": "unchanged case declarations labels",
+      "evidence": "43 names/meanings; contexts explicitly split, no extra count.",
+      "passed": true
+    },
+    {
+      "check": "unchanged case declarations fibre_labels",
+      "evidence": "43 names/meanings; contexts explicitly split, no extra count.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST callback same watched_validator",
+      "evidence": "C reuses actual public callback lifecycle; no engine hooks.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST callback same capture_degree",
+      "evidence": "C reuses actual public callback lifecycle; no engine hooks.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST callback same watched_adviser",
+      "evidence": "C reuses actual public callback lifecycle; no engine hooks.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST callback same lifecycle_callbacks",
+      "evidence": "C reuses actual public callback lifecycle; no engine hooks.",
+      "passed": true
+    },
+    {
+      "check": "A11-13 and B14-15 complete raw lifecycle unchanged",
+      "evidence": "A first selection/anchor and B duplicate-source pending capture preserved.",
+      "passed": true
+    },
+    {
+      "check": "unchanged raw diagnostic groups UNQUALIFIED_PHASE_OBSERVATION ",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "unchanged raw diagnostic groups UNQUALIFIED_CONTINUATION_OBSERVATION ",
+      "evidence": 6,
+      "passed": true
+    },
+    {
+      "check": "other9 Sources/input2 raw pins exact",
+      "evidence": {
+        "inputs": 2,
+        "sources": 10
+      },
+      "passed": true
+    }
+  ],
+  "known_blockers": [
+    {
+      "finding": "Undefined beforce in old19 finally; correct owned baseline is c_outer_before. Frozen Source10 is unactivated and must not be run; genuine reviewer discovered this before any actual.",
+      "id": "C-RETIREMENT-BASELINE-NAME-1",
+      "scientific_status": "Code blocker. Structural static checks below do not constitute a semantic pass.",
+      "source_line": 813
+    }
+  ],
+  "method": "Only raw bytes, hash/JSON/difflib, AST/compile. No generated code/project functions/kernel/checker/search/model/clock/test calls. Compile-only does not find all undefined names; retain genuine negative.",
+  "parent": {
+    "bytes": 118016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+    "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+  },
+  "schema": "unit-row-selective-C-author-static-v10",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 129847,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v10.py",
+    "sha256": "9907bc9c91b2aa4e8af2e61c67ba6fe7ca7f2b8d7ecfc6281daa03f40345fa70"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "structural_checks_count": 25
+}

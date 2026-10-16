@@ -1,0 +1,33 @@
+{
+  "edits": [
+    {
+      "after": "{'bytes': 130156, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py', 'sha256': '0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3'}",
+      "before": "{'bytes': 118016, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py', 'sha256': 'b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476'}"
+    },
+    {
+      "after": "VERSION='unit-row-selective-multikey-cold-v16'",
+      "before": "VERSION='unit-row-remote-eligibility-cold-v15'"
+    },
+    {
+      "after": "SCOPE='unit-row-selective-multikey-cold-Source'",
+      "before": "SCOPE='unit-row-remote-eligibility-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-selective-multikey-cold-Source-contract-v16'",
+      "before": "contract['schema'] == 'unit-row-remote-eligibility-cold-Source-contract-v15'"
+    }
+  ],
+  "parent": {
+    "bytes": 55651,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-ROOT-source-20261016/unit_row_remote_eligibility_cold_v15.py",
+    "sha256": "451b484879c56bb31404ca942a47566f029f548ef16a2d38ecfe890738b711e2"
+  },
+  "schema": "ROOT-selective-multikey-caller-Source-delta-v16",
+  "scope": "One controls pin/own3IDs only; all17helpers/every nestedfunction/failurewriter/nativepositive/proof/output paths exact.",
+  "source": {
+    "bytes": 55645,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-cold-ROOT-source-20261016/unit_row_selective_multikey_cold_v16.py",
+    "sha256": "05da14dfe2a6d18cc29bd7a582f60bbbac49caf38336dbbf421b84d2b746ca02"
+  },
+  "whole_raw_AST_inverse_recovers_parent": true
+}

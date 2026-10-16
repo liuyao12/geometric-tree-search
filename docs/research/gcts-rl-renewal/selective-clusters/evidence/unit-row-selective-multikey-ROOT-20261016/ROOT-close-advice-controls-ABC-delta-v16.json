@@ -1,0 +1,1859 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "modules": [
+    {
+      "edits": [
+        {
+          "after": "S",
+          "before": "Whole s",
+          "new_offset": 3,
+          "old_offset": 3
+        },
+        {
+          "after": " literal A/B/C",
+          "before": "",
+          "new_offset": 8,
+          "old_offset": 14
+        },
+        {
+          "after": " and ",
+          "before": "/",
+          "new_offset": 31,
+          "old_offset": 23
+        },
+        {
+          "after": ";",
+          "before": ".",
+          "new_offset": 61,
+          "old_offset": 49
+        },
+        {
+          "after": "n",
+          "before": "N",
+          "new_offset": 63,
+          "old_offset": 51
+        },
+        {
+          "after": "sci",
+          "before": "d",
+          "new_offset": 66,
+          "old_offset": 54
+        },
+        {
+          "after": "ntif",
+          "before": "gree or log",
+          "new_offset": 70,
+          "old_offset": 56
+        },
+        {
+          "after": "",
+          "before": "al",
+          "new_offset": 76,
+          "old_offset": 69
+        },
+        {
+          "after": "strong=('logical_proof_accepted','exact_point_board_accepted','degree_or_EOF_accepted','scheduler_accepted','complete_GCTS_model_accepted','trajectory_accepted','learned_marking_accepted','RL_accepted','ROOT_resource_accepted')\n# Saved literal C joins only. These routines never call a scientific endpoint.\ndef C_component(component,key,family_id,binding,*,rejected):\n st=component['state'];decision={'kind':'BRANCH','row':key['translation'][1]}\n request={'schema':'unit-row-pending-preference-request-v1','binding':binding,'state_sha256':sha(st),'decision':decision,'family_id':family_id,'keys':[key]}\n assert component['component_only'] is True and component['scheduler_authority'] is False\n assert component['decision']==decision and component['request']==request\n receipt=component['receipt']\n assert receipt['schema']=='unit-row-advice-validation-v1' and receipt['mode']=='PENDING_KEYS'\n assert receipt['binding']==binding and receipt['decision']==decision and receipt['state_sha256']==sha(st) and receipt['input_sha256']==sha(request)\n assert all(receipt[k] is False for k in strong)\n if rejected:\n  assert receipt['selection'] is None and receipt['rejections']==[{'key':key,'reason':'whole_remote_or_metadata_mark_conflict'}]\n else:\n  assert receipt['rejections']==[] and receipt['selection'] is not None\n  assert canonical(receipt['selection']['anchor']['placement_key'])==canonical(key)\n return receipt\n\ndef C_fixture_join(art,binding,*,required):\n if 'selective_C_fixture' not in art:\n  assert not required\n  return None,{'artifact_present':False,'scientific_replay':False}\n c=art['selective_C_fixture'];a=art['fixture'];assert c['schema']=='unit-row-selective-multikey-C-fixture-v1'\n assert c['original_A_fixture_ref']=='fixture' and type(c['adoption_qualified']) is bool\n assert c['selection_criteria']=={'minimum_future_keys':2,'unoccupied_external_read':True,'exact_remote_conflict':True,'first_different_future_key_legal':True,'original_proposal_order':True,'no_rank_formula_row_or_word_literal':True}\n assert canonical(c['state'])==canonical(a['state'])\n assert canonical(c['seeds'])==canonical([a['derived_from']['selected_future_UG']])\n assert canonical(c['state']['selected'])==canonical([x['selection_record'] for x in c['seeds']])\n assert c['state']['input_epoch']==binding['language_epoch'] and c['state']['height']==24\n summary={'artifact_present':True,'fixture_ref':'selective_C_fixture','whole_artifact_sha256':sha(c),'adoption_qualified':c['adoption_qualified'],'control_only_original_order_subselection':True,'scientific_replay':False}\n if 'whole_actual_batch' in c:\n  whole=c['whole_actual_batch'];assert whole['binding']==binding and whole['state_sha256']==sha(c['state'])\n  assert whole['decision']=={'kind':'BRANCH','row':0} and all(whole[k] is False for k in strong)\n if 'whole_actual_receipt' in c:\n  wr=c['whole_actual_receipt'];assert whole['status']=='READY' and whole['reason'] is None and whole['proposals']\n  assert wr['mode']=='ADVICE_BATCH' and wr['binding']==binding and wr['state_sha256']==sha(c['state']) and wr['input_sha256']==sha(whole)\n  assert wr['decision']==whole['decision'] and wr['rejections']==[] and all(wr[k] is False for k in strong)\n if 'selected_original_index' in c:\n  index=c['selected_original_index'];assert type(index) is int and 0<=index<len(whole['proposals'])\n  attempts=c['selector_attempts'];assert [x['original_index'] for x in attempts]==list(range(index+1))\n  assert all(x['eligible'] is False and type(x['reason']) is str and x['reason'] for x in attempts[:-1])\n  assert attempts[-1]['eligible'] is True and attempts[-1]['reason']=='first_actual_selectively_conflicting_external_port'\n  executed=c['executed_batch'];assert set(executed)==set(whole) and canonical(executed['proposals'])==canonical([whole['proposals'][index]])\n  for k in whole:\n   if k!='proposals':assert canonical(executed[k])==canonical(whole[k])\n  er=c['executed_receipt'];selection=c['selection'];assert er['mode']=='ADVICE_BATCH' and er['rejections']==[]\n  assert er['binding']==binding and er['state_sha256']==sha(c['state']) and er['decision']==whole['decision'] and er['input_sha256']==sha(executed)\n  assert all(er[k] is False for k in strong) and canonical(selection)==canonical(er['selection'])\n  anchor=selection['anchor'];anchor_key=anchor['placement_key'];future=selection['future_keys'];proposal=executed['proposals'][0]\n  assert canonical(anchor_key)==canonical(proposal['anchor_full_key'])\n  assert canonical(future)==canonical([m['candidate']['placement_key'] for m in proposal['members'] if canonical(m['candidate']['placement_key'])!=canonical(anchor_key)]) and len(future)>=2\n  assert all(p['installed'] is False and p['logical_proof_accepted'] is False for p in executed['proposals'])\n  assert all(o['status']=='PENDING' and o['fact_accepted'] is False for o in proposal['ordered_PENDING_obligations'])\n  component=c['selector_component'];bad=component['bad_key'];survivor=component['survivor_key']\n  assert component['component_only'] is True and component['no_future_member_installed'] is True\n  assert canonical(bad) in {canonical(k) for k in future} and canonical(survivor)==canonical(next(k for k in future if canonical(k)!=canonical(bad)))\n  assert canonical(component['bad_check']['state'])==canonical(component['survivor_check']['state'])\n  assert canonical(component['bad_check']['state']['selected'])==canonical(component['hypothetical_inner_state']['selected']+[component['remote']['selection_record']])\n  C_component(component['bad_check'],bad,'C-selector-component',binding,rejected=True)\n  C_component(component['survivor_check'],survivor,'C-selector-component',binding,rejected=False)\n  summary.update(selected_original_index=index,whole_actual_batch_sha256=sha(whole),whole_actual_receipt_sha256=sha(wr),executed_subset_sha256=sha(executed),executed_receipt_sha256=sha(er),future_rows=[k['translation'][1] for k in future])\n if not c['adoption_qualified']:\n  assert not required\n  assert type(c['eligibility_gap']) is str and c['eligibility_gap']\n  return c,summary\n assert 'selected_original_index' in c\n before=c['outer_before'];search_before=c['search_before'];inner=c['inner_snapshot'];pending=inner['pending_preferences'];family=c['family_id']\n assert c['actual_initial_decision']==whole['decision'] and canonical(before['state'])==canonical(c['state'])==canonical(search_before['state'])\n assert canonical(before)==canonical(c['outer_after'])\n assert c['outer_restoration']['before_sha256']==c['outer_restoration']['after_sha256']==sha(before)\n assert canonical(inner['state'])==canonical(component['hypothetical_inner_state'])\n assert canonical(inner['state']['selected'])==canonical(c['state']['selected']+[anchor['selection_record']])\n assert canonical(pending['pending_keys'])==canonical(future) and canonical(pending['anchor_key'])==canonical(anchor_key)\n assert pending['binding']==binding and pending['origin']==selection['origin']\n assert family==pending['family_id']==sha({'binding':binding,'origin':selection['origin'],'anchor_key':anchor_key,'future_keys':future})\n assert pending['lineage']==[{'mode':'ADVICE_BATCH','key':anchor_key,'state_sha256':sha(c['state'])}]\n installed={canonical({k:r[k] for k in ('tile_type_id','type_preimage','translation')}) for r in inner['state']['selected']}\n assert all(canonical(k) not in installed for k in future)\n adoption=c['adoption_search'];assert adoption['status']=='UNKNOWN' and adoption['found'] is None and adoption['root_restored'] is True and adoption['stack_restored'] is True\n assert adoption['root_snapshot_sha256']==adoption['final_snapshot_sha256']==sha(search_before)\n assert canonical(adoption['last_observed_state'])==canonical(inner['state']) and not any(e['kind']=='EXCLUDE' for e in adoption['events'])\n tries=[(i,e) for i,e in enumerate(adoption['events']) if e['kind']=='TRY'];advice=[(i,e) for i,e in enumerate(adoption['events']) if e['kind']=='ADVICE'];places=[(i,e) for i,e in enumerate(adoption['events']) if e['kind']=='PLACE']\n assert len(tries)==len(advice)==len(places)==1 and tries[0][0]<advice[0][0]<places[0][0]\n assert tries[0][1]['mode']=='BRANCH' and tries[0][1]['row']==places[0][1]['row']==whole['decision']['row']\n assert all(canonical(x[1]['key'])==canonical(anchor_key) for x in (tries[0],advice[0],places[0]))\n assert advice[0][1]['mode']=='ADVICE_BATCH' and advice[0][1]['family_id']==family and canonical(advice[0][1]['pending_preferences'])==canonical(pending)\n assert c['adoption_restoration']['before_sha256']==c['adoption_restoration']['after_sha256']==sha(inner)\n if 'remote_outer_restoration' in c:assert c['remote_outer_restoration']['before_sha256']==c['remote_outer_restoration']['after_sha256']==sha(before)\n summary.update(family_id=family,inner_snapshot_sha256=sha(inner),anchor_only_adoption=True,own_inner_and_outer_restored=True)\n return c,summary\n\ndef C_remote_join(art,binding,c,case_records,*,required):\n names=('remote-mark-invalidates-pending-key','rejected-pending-hint-preserves-canonical-choice')\n assert case_records[names[0]]['status']==case_records[names[1]]['status']\n summary={'artifact_present':'remote_eligibility' in art,'fixture_ref':'selective_C_fixture','component_is_scheduler_authority':False,'engine_lifecycle_accepted_here':False,'scientific_replay':False}\n if 'remote_eligibility' not in art:\n  assert not required and all(case_records[n]['status']=='SKIPPED' for n in names)\n  assert all(k not in art for k in ('remote_search','remote_receipts','remote_fixture'))\n  return summary,[]\n calibration=art['remote_eligibility'];assert c is not None and c['adoption_qualified'] is True\n inner=c['inner_snapshot'];family=inner['pending_preferences'];fid=family['family_id'];pending=family['pending_keys']\n before=calibration['before_decision'];bad=calibration['bad_key'];survivor=calibration['survivor_key'];remote=calibration['remote']\n assert calibration['schema']=='unit-row-remote-rejection-eligibility-v2-C-normalization' and calibration['fixture_ref']=='selective_C_fixture' and calibration['family_id']==fid\n assert calibration['component_only'] is True and calibration['component_decision_is_scheduler_authority'] is False\n assert canonical(bad)==canonical(c['selector_component']['bad_key']) and canonical(survivor)==canonical(c['selector_component']['survivor_key']) and canonical(remote)==canonical(c['selector_component']['remote'])\n assert canonical(before['state']['selected'])==canonical(inner['state']['selected']+[remote['selection_record']]) and canonical(before['pending_preferences'])==canonical(family)\n initial={'state':before['state'],'decision':calibration['component_request']['decision'],'request':calibration['component_request'],'receipt':calibration['component_receipt'],'component_only':True,'scheduler_authority':False}\n C_component(initial,bad,fid,binding,rejected=True)\n assert canonical(calibration['initial_survivor_check']['state'])==canonical(before['state'])\n C_component(calibration['initial_survivor_check'],survivor,fid,binding,rejected=False)\n previous=before;normalization=calibration['normalization'];assert type(normalization) is list and len(normalization)<=24\n for step in normalization:\n  assert set(step)=={'actual_decision','before','after_decision','candidate','after'} and canonical(step['before'])==canonical(previous)\n  decision=step['actual_decision'];assert decision['kind']=='FORCED' and canonical(decision['candidate'])==canonical(step['candidate'])\n  assert canonical(step['after_decision']['state'])==canonical(step['before']['state'])\n  assert canonical(step['after_decision']['pending_preferences'])==canonical(family)==canonical(step['after']['pending_preferences'])\n  assert canonical(step['after']['state']['selected'])==canonical(step['before']['state']['selected']+[step['candidate']['selection_record']])\n  assert step['candidate']['placement_key']['translation'][1]==decision['row']\n  previous=step['after']\n if 'after_decision' in calibration:\n  after=calibration['after_decision'];decision=calibration['actual_global_decision']\n  assert canonical(after['pending_preferences'])==canonical(family) and type(decision) is dict and decision['kind'] in ('DEAD','FORCED','BRANCH','UNKNOWN','SOLVED')\n  if calibration['eligible_actual_branch'] or not normalization or decision['kind']!='FORCED':\n   assert canonical(after['state'])==canonical(previous['state'])\n  else:\n   assert canonical(after)==canonical(normalization[-1]['after_decision']) and canonical(decision)==canonical(normalization[-1]['actual_decision'])\n assert type(calibration['eligible_actual_branch']) is bool and type(calibration['normal_search_started']) is bool\n if calibration['eligible_actual_branch']:\n  assert calibration['normalization_complete'] is True and decision=={'kind':'BRANCH','row':bad['translation'][1]}\n  assert calibration['normal_search_started'] is True and canonical(calibration['normal_search_before'])==canonical(after)\n  for field,key,rejected in (('final_bad_check',bad,True),('final_survivor_check',survivor,False)):\n   assert canonical(calibration[field]['state'])==canonical(after['state']);C_component(calibration[field],key,fid,binding,rejected=rejected)\n else:\n  assert not required and calibration['normal_search_started'] is False\n if 'eligibility_gap' in calibration:assert type(calibration['eligibility_gap']) is str and calibration['eligibility_gap']\n fresh=[]\n if case_records[names[0]]['status']=='PASSED':\n  assert calibration['eligible_actual_branch'] is True and 'eligibility_gap' not in calibration\n  search=art['remote_search'];fixture=art['remote_fixture'];receipts=art['remote_receipts'];prefix=c['adoption_search']['events']\n  assert fixture['fixture_ref']=='selective_C_fixture' and fixture['family_id']==fid\n  assert canonical(fixture['before'])==canonical(after) and canonical(fixture['remote'])==canonical(remote) and canonical(fixture['invalidated_pending_key'])==canonical(bad) and canonical(fixture['surviving_pending_key'])==canonical(survivor)\n  assert fixture['event_prefix_ref']=='selective_C_fixture.adoption_search.events' and fixture['event_prefix_count']==fixture['fresh_event_start']==len(prefix)\n  assert canonical(search['events'][:len(prefix)])==canonical(prefix);fresh=search['events'][len(prefix):]\n  assert search['status']=='UNKNOWN' and search['found'] is None and search['root_restored'] is True and search['stack_restored'] is True\n  assert search['root_snapshot_sha256']==search['final_snapshot_sha256']==sha(after) and not any(e['kind']=='EXCLUDE' for e in search['events'])\n  assert any(canonical(x['key'])==canonical(bad) and x['reason']=='whole_remote_or_metadata_mark_conflict' for r in receipts for x in r['rejections'])\n  fallback=case_records[names[1]]['observed']['actual_fallback_event'];assert any(canonical(e)==canonical(fallback) for e in fresh)\n  assert fallback['kind']=='ADVICE' and fallback['mode']=='CANONICAL_FALLBACK' and fallback['rejected_keys']\n  assert fallback['abandoned_family']['family_id']==fid and canonical(fallback['abandoned_family']['pending_keys'])==canonical(pending)\n else:\n  assert not required and all(k not in art for k in ('remote_search','remote_receipts','remote_fixture'))\n summary.update(whole_artifact_sha256=sha(calibration),eligible_actual_branch=calibration['eligible_actual_branch'],normal_search_started=calibration['normal_search_started'],normalization_placements=len(normalization),live_rejection_reported=case_records[names[0]]['status']=='PASSED',fresh_event_start=len(c['adoption_search']['events']),fresh_events=len(fresh),family_id=fid)\n return summary,fresh\n\n",
+          "before": "",
+          "new_offset": 8864,
+          "old_offset": 8859
+        },
+        {
+          "after": "fu",
+          "before": "[k['",
+          "new_offset": 25484,
+          "old_offset": 9940
+        },
+        {
+          "after": "u",
+          "before": "",
+          "new_offset": 25487,
+          "old_offset": 9945
+        },
+        {
+          "after": "e ",
+          "before": "",
+          "new_offset": 25489,
+          "old_offset": 9946
+        },
+        {
+          "after": "d ",
+          "before": "s",
+          "new_offset": 25493,
+          "old_offset": 9948
+        },
+        {
+          "after": "en({c",
+          "before": "",
+          "new_offset": 25496,
+          "old_offset": 9950
+        },
+        {
+          "after": "n",
+          "before": "ti",
+          "new_offset": 25502,
+          "old_offset": 9951
+        },
+        {
+          "after": "ical(k)",
+          "before": "'][1]",
+          "new_offset": 25505,
+          "old_offset": 9955
+        },
+        {
+          "after": "})",
+          "before": "]",
+          "new_offset": 25528,
+          "old_offset": 9976
+        },
+        {
+          "after": "len(future)",
+          "before": "[2,8]",
+          "new_offset": 25532,
+          "old_offset": 9979
+        },
+        {
+          "after": "# C is an explicitly control-only structural subselection with its own receipt,\n# family and engine snapshots. Equal seed point states do not merge A and C.\nassert len(plan['sources'])==17 and len(plan['inputs'])==2\nassert contract_current['sources']==plan['sources'] and contract_current['inputs']==plan['inputs'] and contract_current['limits']==plan['limits']\nassert contract_current['Review_ABI']['sources']==plan['sources'] and contract_current['Review_ABI']['source']==plan['sources']['intake']\ncase_records={x['case']:x for x in cases}\nc_fixture,c_join=C_fixture_join(art,body['language_binding'],required=True)\nc_remote_join,remote_events=C_remote_join(art,body['language_binding'],c_fixture,case_records,required=True)\nc_inner=c_fixture['inner_snapshot'];c_family=c_fixture['family_id'];c_future=c_fixture['selection']['future_keys']\n",
+          "before": "",
+          "new_offset": 38166,
+          "old_offset": 22607
+        },
+        {
+          "after": "",
+          "before": "\nassert any(canonical(x['key'])==canonical(bad) and x['reason']=='whole_remote_or_metadata_mark_conflict' for r in rr for x in r['rejections'])",
+          "new_offset": 39086,
+          "old_offset": 22685
+        },
+        {
+          "after": "",
+          "before": ";assert fb['mode']=='CANONICAL_FALLBACK' and fb['rejected_keys']",
+          "new_offset": 39169,
+          "old_offset": 22911
+        },
+        {
+          "after": "fr['fixture_ref']=='selective_C_fixture' and fr['family_id']==c_family\nassert ",
+          "before": "",
+          "new_offset": 39220,
+          "old_offset": 23026
+        },
+        {
+          "after": "found'] is None and r['",
+          "before": "",
+          "new_offset": 39328,
+          "old_offset": 23056
+        },
+        {
+          "after": " is True",
+          "before": "",
+          "new_offset": 39366,
+          "old_offset": 23071
+        },
+        {
+          "after": "is True\n",
+          "before": "",
+          "new_offset": 39399,
+          "old_offset": 23096
+        },
+        {
+          "after": "ssert",
+          "before": "nd",
+          "new_offset": 39408,
+          "old_offset": 23097
+        },
+        {
+          "after": "==sha(fr['before']) and not any(e['kind']=='EXCLUDE' for e in r['events'])\nassert canonical(fr['before']['pending_preferences'])==canonical(c_inner['pending_preferences'])\nforced_prefix=art['remote_search']['events'];assert fr['event_prefix_ref']=='remote_search.events'\nassert fr['event_prefix_count']==fr['fresh_event_start']==len(forced_prefix) and canonical(r['events'][:len(forced_prefix)])==canonical(forced_prefix)\nforced_events=r['events'][len(forced_prefix):]\nc_rows={k['translation'][1] for k in c_future}",
+          "before": "",
+          "new_offset": 39467,
+          "old_offset": 23153
+        },
+        {
+          "after": "fo",
+          "before": "",
+          "new_offset": 40009,
+          "old_offset": 23180
+        },
+        {
+          "after": "ced_",
+          "before": "['",
+          "new_offset": 40012,
+          "old_offset": 23181
+        },
+        {
+          "after": "",
+          "before": "']",
+          "new_offset": 40022,
+          "old_offset": 23189
+        },
+        {
+          "after": "c_rows",
+          "before": "{2,8}",
+          "new_offset": 40069,
+          "old_offset": 23238
+        },
+        {
+          "after": "c_",
+          "before": "",
+          "new_offset": 40223,
+          "old_offset": 23391
+        },
+        {
+          "after": "c_",
+          "before": "",
+          "new_offset": 40334,
+          "old_offset": 23500
+        },
+        {
+          "after": "fo",
+          "before": "",
+          "new_offset": 40390,
+          "old_offset": 23554
+        },
+        {
+          "after": "ced_",
+          "before": "['",
+          "new_offset": 40393,
+          "old_offset": 23555
+        },
+        {
+          "after": ")\nassert fr['new_adviser_calls",
+          "before": "",
+          "new_offset": 40403,
+          "old_offset": 23563
+        },
+        {
+          "after": " and all(dict((tuple(p),v) for p,v in call['state']['t'])[(0,row)]==1 for call in fr['new_adviser_calls'] for row in c_rows",
+          "before": "",
+          "new_offset": 40435,
+          "old_offset": 23565
+        },
+        {
+          "after": "rejection['fixture_ref']=='selective_C_fixture' and pending['family_id']==c_family\nassert canonical(pending)==canonical(c_inner['pending_preferences'])\nassert canonical(inner_before['state'])==canonical(art['remote_fixture']['before']['state']) and canonical(inner_before['pending_preferences'])==canonical(art['remote_fixture']['before']['pending_preferences'])\nassert ",
+          "before": "",
+          "new_offset": 41025,
+          "old_offset": 24032
+        },
+        {
+          "after": "",
+          "before": "art['",
+          "new_offset": 41449,
+          "old_offset": 24086
+        },
+        {
+          "after": "",
+          "before": "search']['",
+          "new_offset": 41456,
+          "old_offset": 24098
+        },
+        {
+          "after": "",
+          "before": "']",
+          "new_offset": 41462,
+          "old_offset": 24114
+        },
+        {
+          "after": "selective_C_",
+          "before": "",
+          "new_offset": 44349,
+          "old_offset": 27003
+        },
+        {
+          "after": "assert all(result[k] is False for k in ('complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','logical_proof_accepted','ROOT_resource_accepted'))\nassert all(body[k] is False for k in ('ROOT_resource_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted','logical_proof_accepted','RL_accepted','GCTS_advantage_claimed'))\n",
+          "before": "",
+          "new_offset": 46415,
+          "old_offset": 29057
+        },
+        {
+          "after": ")\n assert replacement['fixture_ref']=='selective_C_fixture' and replacement['before']['pending_preferences']['family_id']==c_family\n assert canonical(replacement['actual_rejection']['state'])==canonical(rejection['state']) and replacement['actual_rejection']['decision']==rejection['decision']\n replacement_prefix=life['follow_on_search']['actual_result']['events']\n assert replacement['event_prefix_ref']=='family_retirement.follow_on_search.actual_result.events'\n assert replacement['event_prefix_count']==replacement['fresh_event_start']==len(replacement_prefix)\n assert canonical(replacement['actual_result']['events'][:len(replacement_prefix)])==canonical(replacement_prefix)\n replacement_events=replacement['actual_result']['events'][len(replacement_prefix):]\n replacement_advice=[e for e in replacement_events if e['kind']=='ADVICE' and e['abandoned_family'] is not None]\n assert len(replacement_advice)==1 and replacement_advice[0]['mode']=='ADVICE_BATCH' and replacement_advice[0]['abandoned_family']['family_id']==c_family\n assert canonical(replacement_advice[0]['pending_preferences'])==canonical(replacement['child']['pending_preferences'])\n replacement_selection=replacement['executed_receipt']['selection'];replacement_pending=replacement['child']['pending_preferences']\n assert replacement_selection['origin']==replacement_pending['origin'] and canonical(replacement_selection['anchor']['placement_key'])==canonical(replacement_pending['anchor_key'])\n assert canonical(replacement_selection['future_keys'])==canonical(replacement_pending['pending_keys']) and replacement_pending['family_id']!=c_family\n assert canonical(replacement['child']['state']['selected'])==canonical(replacement['before']['state']['selected']+[replacement_selection['anchor']['selection_record']]",
+          "before": "",
+          "new_offset": 48508,
+          "old_offset": 30799
+        },
+        {
+          "after": "6-ABC",
+          "before": "4",
+          "new_offset": 58618,
+          "old_offset": 39124
+        },
+        {
+          "after": "fi",
+          "before": "",
+          "new_offset": 59842,
+          "old_offset": 40344
+        },
+        {
+          "after": "st-rank",
+          "before": "",
+          "new_offset": 59845,
+          "old_offset": 40345
+        },
+        {
+          "after": "d ba",
+          "before": "mo",
+          "new_offset": 59853,
+          "old_offset": 40346
+        },
+        {
+          "after": "",
+          "before": "e reje",
+          "new_offset": 59858,
+          "old_offset": 40349
+        },
+        {
+          "after": "h",
+          "before": "tion",
+          "new_offset": 59859,
+          "old_offset": 40356
+        },
+        {
+          "after": "anch",
+          "before": "f",
+          "new_offset": 59865,
+          "old_offset": 40365
+        },
+        {
+          "after": "-only a",
+          "before": "ce",
+          "new_offset": 59871,
+          "old_offset": 40368
+        },
+        {
+          "after": "op",
+          "before": " re",
+          "new_offset": 59879,
+          "old_offset": 40371
+        },
+        {
+          "after": "o",
+          "before": "reme",
+          "new_offset": 59883,
+          "old_offset": 40376
+        },
+        {
+          "after": "",
+          "before": "t",
+          "new_offset": 59885,
+          "old_offset": 40381
+        },
+        {
+          "after": "selection['anchor']['placement_key']['translation'][1]",
+          "before": "0",
+          "new_offset": 59900,
+          "old_offset": 40397
+        },
+        {
+          "after": "k['translation'][1] for k in future",
+          "before": "2,8",
+          "new_offset": 59970,
+          "old_offset": 40414
+        },
+        {
+          "after": ",\n 'selective_C_fixture_evidence':dict(c_join,remote=c_remote_join,retirement_fresh_event_start=len(forced_prefix),retirement_fresh_events=len(forced_events))",
+          "before": "",
+          "new_offset": 60077,
+          "old_offset": 40489
+        },
+        {
+          "after": "A first-ranked ad",
+          "before": "",
+          "new_offset": 60929,
+          "old_offset": 41183
+        },
+        {
+          "after": "pt",
+          "before": "r",
+          "new_offset": 60947,
+          "old_offset": 41184
+        },
+        {
+          "after": "on, B pend",
+          "before": "g",
+          "new_offset": 60950,
+          "old_offset": 41186
+        },
+        {
+          "after": "g success ",
+          "before": "",
+          "new_offset": 60962,
+          "old_offset": 41189
+        },
+        {
+          "after": "nd contro",
+          "before": "",
+          "new_offset": 60973,
+          "old_offset": 41190
+        },
+        {
+          "after": "-only C selective",
+          "before": "",
+          "new_offset": 60983,
+          "old_offset": 41191
+        },
+        {
+          "after": "",
+          "before": " and distinct paired pending-success",
+          "new_offset": 61014,
+          "old_offset": 41205
+        },
+        {
+          "after": ",'author_identity':'/root/arithmetic_induction','author_overlap':'Author owns paired adviser/engine/c354 and saved closer antecedents. This helper checks saved literal wire/resource/fixture lineage; no independent semantic replay or new scientific acceptance.'",
+          "before": "",
+          "new_offset": 62759,
+          "old_offset": 42986
+        }
+      ],
+      "parent": {
+        "bytes": 43300,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT_close_advice_controls_saved_v14.py",
+        "sha256": "062a1e18fdff2b4ac5565f718229e8b16b1c69146fb47669ec940ae98bf88425"
+      },
+      "role": "positive",
+      "source": {
+        "bytes": 63333,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_advice_controls_saved_v16.py",
+        "sha256": "b1dd23f9a4e7880de33f73d381035c080e96f1227f69ef6a742b8dec37b5eec6"
+      },
+      "whole_forward_and_inverse_exact": true
+    },
+    {
+      "edits": [
+        {
+          "after": "# Saved literal C joins only. These routines never call a scientific endpoint.\n",
+          "before": "",
+          "new_offset": 10899,
+          "old_offset": 10899
+        },
+        {
+          "after": "C_component(component,key,family_id,binding,*,rejected):\n st=component['state'];decision={'kind':'BRANCH','row':key['translation'][1]}\n request={'schema':'unit-row-pending-preference-request-v1','binding':binding,'state_sha256':",
+          "before": "",
+          "new_offset": 10982,
+          "old_offset": 10903
+        },
+        {
+          "after": "st),'decision':decision,'family_id':family_id,'keys':[key]}\n assert component['component_only'] is True and component['scheduler_authority'] is False\n assert component['decision']==decision and component['request']==request\n receipt=component['receipt']\n assert receipt['schema']=='unit-row-advice-",
+          "before": "",
+          "new_offset": 11214,
+          "old_offset": 10907
+        },
+        {
+          "after": "idation-v1' and receipt['mode']=='PENDING_KEYS'\n assert receipt['binding']==binding and receipt['decision']==decision and receipt['state_sha256']==sha(st) and receipt['input_sha256']==sha(req",
+          "before": "",
+          "new_offset": 11515,
+          "old_offset": 10910
+        },
+        {
+          "after": "st",
+          "before": "",
+          "new_offset": 11708,
+          "old_offset": 10912
+        },
+        {
+          "after": "\n assert all(receipt[k] is False for k in strong)\n if rejected",
+          "before": "",
+          "new_offset": 11711,
+          "old_offset": 10913
+        },
+        {
+          "after": "\n  assert receipt['selection'] is None and receipt['rejections']==[{'key':key,'reason':'whole_remote_or_metadata_mark_conflict'}]\n else:\n  assert receipt['rejections']==[] and receipt['selection'] is not None\n  assert canonical(receipt['selection']['anchor']['placement_key'])==canonical(key)\n ",
+          "before": "",
+          "new_offset": 11774,
+          "old_offset": 10914
+        },
+        {
+          "after": "receipt\n\ndef C_fixture_join(art,binding,*,required):\n if 'selective_C_fixture' not in art:\n  ",
+          "before": "h",
+          "new_offset": 12075,
+          "old_offset": 10921
+        },
+        {
+          "after": "sert not required\n  return None,{'artifact_present':False,'scientific_replay':False}\n c=art['selective_C_fixture'];a=art['fixture'];assert c['sc",
+          "before": "",
+          "new_offset": 12170,
+          "old_offset": 10924
+        },
+        {
+          "after": "ema']=='unit-row-selective-multikey-C-fixture-v1'\n assert c['original_A_fixture_ref']=='fixture' and type(c['adoption_qua",
+          "before": "",
+          "new_offset": 12315,
+          "old_offset": 10925
+        },
+        {
+          "after": "fied']) is ",
+          "before": "",
+          "new_offset": 12438,
+          "old_offset": 10927
+        },
+        {
+          "after": "ool\n assert c['selection_criteria']=={'minimum_future_keys':2,'unoccupied_external_read':True,'exact_remote_conflict':True,'first_different_future_key_legal':True,'original_proposal_order':True,'no_rank_formula_row_or_word_literal':True}\n assert canonical(c['state'])==canonical(a['state'])\n assert canonical(c['seeds'])==canonical([a['derived_from']['selected_future_UG']])\n assert canonical(c['state']['selected'])==canonical([x['selection_record'] for x in c['seeds']])\n assert c['state']['input_epoch']==binding['language_epoch'] and c['state']['height']==24\n summary={'artifact_present':True,'fixture_ref':'selective_C_fixture','whole_artifact_",
+          "before": ".",
+          "new_offset": 12450,
+          "old_offset": 10928
+        },
+        {
+          "after": "':sha(c),'adoption_qualified':c['adoption_qualified'],'control_only_original_order_subselection':True,'scientific_replay':False}\n if 'whole_actual_batch' in c:\n  whole=c['whole_actual_batch'];assert whole['binding']==binding and whole['state_sha256']==sha(c['state'])\n  assert whole['decision']=={'kind':'BRANCH','row':0} and all(whole[k] is False for k in strong)\n if 'whole_actual_receipt' in c:\n  wr=c['whole_actual_receipt'];assert whole['status']=='READY' and whole['reason'] is None and whole['proposals']\n  assert wr['mode']=='ADVICE_BATCH' and wr['binding']==binding and wr['state_sha256']==sha(c['state']) and wr['input_sha256']==sha(whole)\n  assert wr['decision']==whole['decision'] and wr['rejections']==[] and all(wr[k] is False for k in strong)\n if 'selected_original_index' in c:\n  index=c['selected_original_index'];assert type(index) is int and 0<=index<len(whole['proposals'])\n  attempts=c['selector_attempts'];assert [x['original_index'] for x in attempts]==list(range(index+1))\n  assert all(x['eligible'] is False and type(x['reason']) is str and x['reason'] for x in attempts[:-1])\n  assert attempts[-1]['eligible'] is True and attempts[-1]['reason']=='first_actual_selectively_conflicting_external_port'\n  executed=c['executed_batch'];assert set(executed)==set(whole) and canonical(executed['proposals'])==canonical([whole['proposals'][index]])\n  for k in whole:\n   if k!='proposals':assert canonical(executed[k])==canonical(whole[k])\n  er=c['executed_receipt'];selection=c['selection'];assert er['mode']=='ADVICE_BATCH' and er['rejections']==[]\n  assert er['binding']==binding and er['state_sha256']==sha(c['state']) and er['decision']==whole['decision'] and er['input_sha256']==sha(executed)\n  assert all(er[k] is False for k in strong) and canonical(selection)==canonical(er['selection'])\n  anchor=selection['anchor'];anchor_key=anchor['placement_key'];future=selection['future_keys'];proposal=executed['proposals'][0]\n  assert canonical(anchor_key)==canonical(proposal['anchor_full_key'])\n  assert canonical(future)==canonical([m['candidate']['placement_key'] for m in proposal['members'] if canonical(m['candidate']['placement_key'])!=canonical(anchor_key)]) and len(future)>=2\n  assert all(p['installed'] is False and p['logical_proof_accepted'] is False for p in executed['proposals'])\n  assert all(o['status']=='PENDING' and o['fact_accepted'] is False for o in proposal['ordered_PENDING_obligations'])\n  component=c['selector_component'];bad=component['bad_key'];survivor=component['survivor_key']\n  assert component['component_only'] is True and component['no_future_member_installed'] is True\n  assert canonical(bad) in {canonical(k) for k in future} and canonical(survivor)==canonical(next(k for k in future if canonical(k)!=canonical(bad)))\n  assert canonical(component['bad_check']['state'])==canonical(component['survivor_check']['state'])\n  assert canonical(component['bad_check']['state']['selected'])==canonical(component['hypothetical_inner_state']['selected']+[component['remote']['selection_record']])\n  C_component(component['bad_check'],bad,'C-selector-component',binding,rejected=True)\n  C_component(component['survivor_check'],survivor,'C-selector-component',binding,rejected=False)\n  summary.update(selected_original_index=index,whole_actual_batch_sha256=sha(whole),whole_actual_receipt_sha256=sha(wr),executed_subset_sha256=sha(executed),executed_receipt_sha256=sha(er),future_rows=[k['translation'][1] for k in future])\n if not c['adoption_qualified']:\n  assert not required\n  assert type(c['eligibility_gap']) is str and c['eligibility_gap']\n  return c,summary\n assert 'selected_original_index' in c\n before=c['outer_before'];search_before=c['search_before'];inner=c['inner_snapshot'];pending=inner['pending_preferences'];family=c['family_id']\n assert c['actual_initial_decision']==whole['decision'] and canonical(before['state'])==canonical(c['state'])==canonical(search_before['state'])\n assert canonical(before)==canonical(c['outer_after'])\n assert c['outer_restoration']['before_sha256']==c['outer_restoration']['after_sha256']==sha(before)\n assert canonical(inner['state'])==canonical(component['hypothetical_inner_state'])\n assert canonical(inner['state']['selected'])==canonical(c['state']['selected']+[anchor['selection_record']])\n assert canonical(pending['pending_keys'])==canonical(future) and canonical(pending['anchor_key'])==canonical(anchor_key)\n assert pending['binding']==binding and pending['origin']==selection['origin']\n assert family==pending['family_id']==sha({'binding':binding,'origin':selection['origin'],'anchor_key':anchor_key,'future_keys':future})\n assert pending['lineage']==[{'mode':'ADVICE_BATCH','key':anchor_key,'state_sha256':sha(c['state'])}]\n installed={canonical({k:r[k] for k in ('tile_type_id','type_preimage','translation')}) for r in inner['state']['selected']}\n assert all",
+          "before": "",
+          "new_offset": 13105,
+          "old_offset": 10935
+        },
+        {
+          "after": "k) not in inst",
+          "before": "v",
+          "new_offset": 17981,
+          "old_offset": 10946
+        },
+        {
+          "after": "led for k in f",
+          "before": "",
+          "new_offset": 17997,
+          "old_offset": 10949
+        },
+        {
+          "after": "tur",
+          "before": "",
+          "new_offset": 18012,
+          "old_offset": 10950
+        },
+        {
+          "after": "\n adoption=c['adoption_searc",
+          "before": ").",
+          "new_offset": 18017,
+          "old_offset": 10952
+        },
+        {
+          "after": "'];ass",
+          "before": "",
+          "new_offset": 18046,
+          "old_offset": 10955
+        },
+        {
+          "after": "rt a",
+          "before": "x",
+          "new_offset": 18053,
+          "old_offset": 10956
+        },
+        {
+          "after": "opt",
+          "before": "",
+          "new_offset": 18058,
+          "old_offset": 10958
+        },
+        {
+          "after": "on['status']=='UNKNOWN' and adoption['found'] is None and adoption['root_r",
+          "before": "g",
+          "new_offset": 18062,
+          "old_offset": 10959
+        },
+        {
+          "after": "ored'] is True and adoption['stack_restored'] is True\n assert adoption['root_snapshot_sha256']==adoption['final_snapshot_sha256']==sha",
+          "before": "",
+          "new_offset": 18139,
+          "old_offset": 10963
+        },
+        {
+          "after": "search_before",
+          "before": "",
+          "new_offset": 18274,
+          "old_offset": 10964
+        },
+        {
+          "after": " assert canonical(adoption['last_observed_state'])==canonical(inner['state']) and not any(e['kind']=='EXCLUDE' for e in adoption['events'])\n tries=[(i,e) for i,e in enumerate(adoption['events']) if e['kind']=='TRY'];advice=[(i,e) for i,e in enumerate(adoption['events']) if e['kind']=='ADVICE'];places=[(i,e) for i,e in enumerate(adoption['events']) if e['kind']=='PLACE']\n assert len(tries)==len(advice)==len(places)==1 and tries[0][0]<advice[0][0]<places[0][0]\n assert tries[0][1]['mode']=='BRANCH' and tries[0][1]['row']==places[0][1]['row']==whole['decision']['row']\n assert all(canonical(x[1]['key'])==canonical(anchor_key) for x in (tries[0],advice[0],places[0]))\n assert advice[0][1]['mode']=='ADVICE_BATCH' and advice[0][1]['family_id']==family and canonical(advice[0][1]['pending_preferences'])==canonical(pending)\n assert c['adoption_restoration']['before_sha256']==c['adoption_restoration']['after_sha256']==sha(inner)\n if '",
+          "before": "",
+          "new_offset": 18289,
+          "old_offset": 10966
+        },
+        {
+          "after": "outer_restoration' in c:assert c['remote_outer_restoration']['before_sha256']==c['remote_outer_restoration']['after_sha256']==sha(before)\n summary.update(family_id=family,inner_snapshot_sha256=sha(inner),anchor_only_adoption=True,own_inner_and_outer_restored=True)\n return c,summary\n\ndef C_remote_join(art,binding,c,case_records,*,required):\n ",
+          "before": "",
+          "new_offset": 19231,
+          "old_offset": 10973
+        },
+        {
+          "after": "",
+          "before": "case_records={x['case']:x",
+          "new_offset": 19671,
+          "old_offset": 11070
+        },
+        {
+          "after": "",
+          "before": "for x in cases}\n",
+          "new_offset": 19672,
+          "old_offset": 11096
+        },
+        {
+          "after": "",
+          "before": "remote_",
+          "new_offset": 19692,
+          "old_offset": 11132
+        },
+        {
+          "after": "",
+          "before": "remote_",
+          "new_offset": 19726,
+          "old_offset": 11173
+        },
+        {
+          "after": " summa",
+          "before": "",
+          "new_offset": 19746,
+          "old_offset": 11200
+        },
+        {
+          "after": "y",
+          "before": "emote_join",
+          "new_offset": 19753,
+          "old_offset": 11201
+        },
+        {
+          "after": "f",
+          "before": "eng",
+          "new_offset": 19804,
+          "old_offset": 11261
+        },
+        {
+          "after": "xtur",
+          "before": "n",
+          "new_offset": 19806,
+          "old_offset": 11265
+        },
+        {
+          "after": "ref':'se",
+          "before": "",
+          "new_offset": 19812,
+          "old_offset": 11268
+        },
+        {
+          "after": "",
+          "before": "if",
+          "new_offset": 19821,
+          "old_offset": 11269
+        },
+        {
+          "after": "tiv",
+          "before": "ycl",
+          "new_offset": 19823,
+          "old_offset": 11273
+        },
+        {
+          "after": "C_fixtur",
+          "before": "acc",
+          "new_offset": 19828,
+          "old_offset": 11278
+        },
+        {
+          "after": "",
+          "before": "pted",
+          "new_offset": 19837,
+          "old_offset": 11282
+        },
+        {
+          "after": "",
+          "before": ":False",
+          "new_offset": 19838,
+          "old_offset": 11287
+        },
+        {
+          "after": "engine_lifecycle_accepted_here':False,'",
+          "before": "",
+          "new_offset": 19881,
+          "old_offset": 11336
+        },
+        {
+          "after": " ",
+          "before": "",
+          "new_offset": 19946,
+          "old_offset": 11362
+        },
+        {
+          "after": "not ",
+          "before": "",
+          "new_offset": 19971,
+          "old_offset": 11386
+        },
+        {
+          "after": "\n  assert not required and all(case_records[n]['status']=='SKIPPED' for n in names)\n  assert all(k not in art for k in ('remote_search','remote_receipts','remote_fixture'))\n  return summary,[]",
+          "before": "",
+          "new_offset": 19982,
+          "old_offset": 11393
+        },
+        {
+          "after": "assert c is not None and c['adoption_qualified'] is True\n inner=c['inner_snapshot'];family=inner['pending_preferences'];fid=family['family_id'];pending=family['pending_keys']\n ",
+          "before": "",
+          "new_offset": 20214,
+          "old_offset": 11433
+        },
+        {
+          "after": "",
+          "before": "after=calibration['after_decision']\n req=calibration['component_request'];rec=calibration['component_receipt'];",
+          "new_offset": 20428,
+          "old_offset": 11471
+        },
+        {
+          "after": "_key'];survivor=calibration['survivor",
+          "before": "",
+          "new_offset": 20448,
+          "old_offset": 11602
+        },
+        {
+          "after": "",
+          "before": "'];decision=calibration['actual_global_decision']\n original=art['fixture'];original_inner=art['genuine_inner_snapshot'];family=original_inner['pending_preferences",
+          "new_offset": 20518,
+          "old_offset": 11635
+        },
+        {
+          "after": "2-C-normalization",
+          "before": "1",
+          "new_offset": 20592,
+          "old_offset": 11871
+        },
+        {
+          "after": "",
+          "before": "original_",
+          "new_offset": 20628,
+          "old_offset": 11891
+        },
+        {
+          "after": "selective_C_",
+          "before": "",
+          "new_offset": 20644,
+          "old_offset": 11916
+        },
+        {
+          "after": " and calibration['family_id']==fid",
+          "before": "",
+          "new_offset": 20664,
+          "old_offset": 11924
+        },
+        {
+          "after": " calibration['component_only'] is True and",
+          "before": "",
+          "new_offset": 20706,
+          "old_offset": 11932
+        },
+        {
+          "after": "\n assert canonical(bad)==canonical(c['selector_component']['bad_key']) and canonical(survivor)==canonical(c['selector_component']['survivor_key']) and canonical(remote)==canonical(c['selector_component']['remote'])\n assert canonical(before['state']['selected'])==canonical(inner['state']['selected']+[remote['selection_record']]) and canonical(before['pending_preferences'])==canonical(family)\n initial={'state':before['state'],'decision':calibration['component_request']['decision'],'request':calibration['component_request'],'receipt':calibration['component_receipt'],'component_only':True,'scheduler_authority':False}\n C_component(initial,bad,fid,binding,rejected=True)\n assert canonical(calibration['initial_survivor_check']['state'])==canonical(before['state'])\n C_component(calibration['initial_survivor_check'],survivor,fid,binding,rejected=False)\n previous=before;normalization=calibration['normalization'];assert type(normalization) is list and len(normalization)<=24\n for step in normalization:\n  assert set(step)=={'actual_decision','before','after_decision','candidate','after'} and canonical(step['before'])==canonical(previous)\n  decision=step['actual_decision'];assert decision['kind']=='FORCED' and canonical(decision['candidate'])==canonical(step['candidate'])\n  assert canonical(step['after_decision']['state'])==canonical(step['before']['state'])\n  assert canonical(step['after_decision']['pending_preferences'])==canonical(family)==canonical(step['after']['pending_preferences'])\n  assert canonical(step['after']['state']['selected'])==canonical(step['before']['state']['selected']+[step['candidate']['selection_record']])\n  assert step['candidate']['placement_key']['translation'][1]==decision['row']\n  previous=step['after']\n if 'after_decision' in calibration:\n  after=calibration['after_decision'];decision=calibration['actual_global_decision']\n  assert canonical(after['pending_preferences'])==canonical(family) and type(decision) is dict and decision['kind'] in ('DEAD','FORCED','BRANCH','UNKNOWN','SOLVED')\n  if calibration['eligible_actual_branch'] or not normalization or decision['kind']!='FORCED':\n   assert canonical(after['state'])==canonical(previous['state'])\n  else:\n   assert canonical(after)==canonical(normalization[-1]['after_decision']) and canonical(decision)==canonical(normalization[-1]['actual_decision'])",
+          "before": "",
+          "new_offset": 20814,
+          "old_offset": 11998
+        },
+        {
+          "after": "if",
+          "before": "assert",
+          "new_offset": 23281,
+          "old_offset": 12115
+        },
+        {
+          "after": "librati",
+          "before": "n",
+          "new_offset": 23286,
+          "old_offset": 12124
+        },
+        {
+          "after": "['el",
+          "before": "",
+          "new_offset": 23295,
+          "old_offset": 12127
+        },
+        {
+          "after": "gible_a",
+          "before": "",
+          "new_offset": 23300,
+          "old_offset": 12128
+        },
+        {
+          "after": "tu",
+          "before": "",
+          "new_offset": 23308,
+          "old_offset": 12129
+        },
+        {
+          "after": "_",
+          "before": "(",
+          "new_offset": 23312,
+          "old_offset": 12131
+        },
+        {
+          "after": "r",
+          "before": "ad) in {c",
+          "new_offset": 23314,
+          "old_offset": 12133
+        },
+        {
+          "after": "",
+          "before": "oni",
+          "new_offset": 23317,
+          "old_offset": 12144
+        },
+        {
+          "after": "h",
+          "before": "al(k) for k in family['pending_keys",
+          "new_offset": 23318,
+          "old_offset": 12148
+        },
+        {
+          "after": ":",
+          "before": "}",
+          "new_offset": 23321,
+          "old_offset": 12185
+        },
+        {
+          "after": " ",
+          "before": "",
+          "new_offset": 23323,
+          "old_offset": 12187
+        },
+        {
+          "after": "l",
+          "before": "non",
+          "new_offset": 23334,
+          "old_offset": 12197
+        },
+        {
+          "after": "",
+          "before": "cal(",
+          "new_offset": 23336,
+          "old_offset": 12201
+        },
+        {
+          "after": "",
+          "before": "efore['pending_preferences'])==canonical(family)==canonical(after['pending_preferences'])\n assert canonical(before['state'])==canonical(after['state'])\n assert canonical(before['state']['selected'])==canonical(original_inner['state']['selected']+[remote['selection_record']])\n assert canonical(original_inner['state'])==canonical(art['adoption_search']['last_observed_state'])\n assert art['adoption_search']['root_snapshot_sha256']==art['adoption_search']['final_snapshot_sha256']\n assert by['first-search-exact-root-resto",
+          "new_offset": 23337,
+          "old_offset": 12206
+        },
+        {
+          "after": "",
+          "before": "']",
+          "new_offset": 23343,
+          "old_offset": 12734
+        },
+        {
+          "after": "n",
+          "before": "bef",
+          "new_offset": 23345,
+          "old_offset": 12738
+        },
+        {
+          "after": "m",
+          "before": "e_sh",
+          "new_offset": 23348,
+          "old_offset": 12743
+        },
+        {
+          "after": "l",
+          "before": "256']==by['f",
+          "new_offset": 23350,
+          "old_offset": 12748
+        },
+        {
+          "after": "z",
+          "before": "rst-search-exact-root-restor",
+          "new_offset": 23352,
+          "old_offset": 12761
+        },
+        {
+          "after": "_comple",
+          "before": "']['af",
+          "new_offset": 23358,
+          "old_offset": 12794
+        },
+        {
+          "after": "",
+          "before": "r_sha256']\n assert canonical(by['public-rollback-restores-genuine-nonempty-pending']['actual_pending_keys'])==canonical(family['pending_keys'])\n assert before['state']['input_epoch']==after['state']['input_epoch']==body['language_binding']['language_epoch']\n assert req=={'schema':'unit-row-pending-preference-request-v1','binding':body['language_binding'],'state_sha256':sha(before['state']),'decision':{'kind':'BRANCH','row':bad['translation'][1]},'family_id':family['family_id'],'keys':[bad]}\n assert rec['schema']=='unit-row-advice-validation-v1' and rec['mode']=='PENDING_KEYS' and rec['selection",
+          "new_offset": 23367,
+          "old_offset": 12802
+        },
+        {
+          "after": "Tru",
+          "before": "Non",
+          "new_offset": 23373,
+          "old_offset": 13409
+        },
+        {
+          "after": "",
+          "before": "\n assert rec['binding']==body['language_binding']",
+          "new_offset": 23377,
+          "old_offset": 13413
+        },
+        {
+          "after": "",
+          "before": "rec['decision']==req['decision'] and rec['state_sha256']==sha(before['state']) and rec['input_sha256']==sha(req)\n assert rec['rejections']==[{'key':bad,'reason':'whole_remote_or_metadata_mark_conflict'}] and all(rec[k] is False for k in strong)\n assert type(decision) is dict and decision['kind'] in ('DEAD','FORCED','BRANCH','UNKNOWN','SOLVED')\n eligible=",
+          "new_offset": 23382,
+          "old_offset": 13467
+        },
+        {
+          "after": " ",
+          "before": "",
+          "new_offset": 23439,
+          "old_offset": 13880
+        },
+        {
+          "after": "norm",
+          "before": "eligible_actu",
+          "new_offset": 23460,
+          "old_offset": 13900
+        },
+        {
+          "after": "sea",
+          "before": "b",
+          "new_offset": 23467,
+          "old_offset": 13916
+        },
+        {
+          "after": "",
+          "before": "an",
+          "new_offset": 23471,
+          "old_offset": 13918
+        },
+        {
+          "after": "_started",
+          "before": "",
+          "new_offset": 23473,
+          "old_offset": 13922
+        },
+        {
+          "after": "True and canonical(calibration['normal_search_before'])==canonical(after)\n  for fi",
+          "before": "",
+          "new_offset": 23487,
+          "old_offset": 13928
+        },
+        {
+          "after": "d,key,rejected ",
+          "before": "",
+          "new_offset": 23571,
+          "old_offset": 13930
+        },
+        {
+          "after": "n (('final_bad_check',bad,True),('final_survivor_check',survivor,False)):\n   assert canonical(cal",
+          "before": "g",
+          "new_offset": 23587,
+          "old_offset": 13931
+        },
+        {
+          "after": "ration[fie",
+          "before": "",
+          "new_offset": 23686,
+          "old_offset": 13934
+        },
+        {
+          "after": "d]['stat",
+          "before": "",
+          "new_offset": 23697,
+          "old_offset": 13935
+        },
+        {
+          "after": "'])==canonical(after['state']);C_component(calibration[field],key,fid,binding,rejected=rejected)\n else:\n  assert not required",
+          "before": "",
+          "new_offset": 23706,
+          "old_offset": 13936
+        },
+        {
+          "after": "False\n if '",
+          "before": "",
+          "new_offset": 23876,
+          "old_offset": 13981
+        },
+        {
+          "after": "i",
+          "before": "",
+          "new_offset": 23893,
+          "old_offset": 13987
+        },
+        {
+          "after": "ity_gap'",
+          "before": "e\n",
+          "new_offset": 23895,
+          "old_offset": 13988
+        },
+        {
+          "after": "n",
+          "before": "f",
+          "new_offset": 23905,
+          "old_offset": 13992
+        },
+        {
+          "after": "ca",
+          "before": "not e",
+          "new_offset": 23907,
+          "old_offset": 13994
+        },
+        {
+          "after": "brat",
+          "before": "g",
+          "new_offset": 23911,
+          "old_offset": 14001
+        },
+        {
+          "after": "on",
+          "before": "ble",
+          "new_offset": 23916,
+          "old_offset": 14003
+        },
+        {
+          "after": "",
+          "before": "\n  ",
+          "new_offset": 23919,
+          "old_offset": 14007
+        },
+        {
+          "after": "f",
+          "before": " assert all(case_",
+          "new_offset": 24006,
+          "old_offset": 14097
+        },
+        {
+          "after": "",
+          "before": "cord",
+          "new_offset": 24009,
+          "old_offset": 14116
+        },
+        {
+          "after": "h=",
+          "before": "",
+          "new_offset": 24010,
+          "old_offset": 14121
+        },
+        {
+          "after": "",
+          "before": "name",
+          "new_offset": 24013,
+          "old_offset": 14122
+        },
+        {
+          "after": "\n",
+          "before": "['status']=='SKIPPED'",
+          "new_offset": 24014,
+          "old_offset": 14127
+        },
+        {
+          "after": "if",
+          "before": "and",
+          "new_offset": 24016,
+          "old_offset": 14149
+        },
+        {
+          "after": "s[0]",
+          "before": "",
+          "new_offset": 24036,
+          "old_offset": 14170
+        },
+        {
+          "after": "",
+          "before": "ob",
+          "new_offset": 24043,
+          "old_offset": 14173
+        },
+        {
+          "after": "t",
+          "before": "erved']['re",
+          "new_offset": 24044,
+          "old_offset": 14176
+        },
+        {
+          "after": "tu",
+          "before": "",
+          "new_offset": 24046,
+          "old_offset": 14188
+        },
+        {
+          "after": "",
+          "before": "on",
+          "new_offset": 24049,
+          "old_offset": 14189
+        },
+        {
+          "after": "'PASSED':\n  assert ",
+          "before": "",
+          "new_offset": 24053,
+          "old_offset": 14195
+        },
+        {
+          "after": "",
+          "before": "i",
+          "new_offset": 24091,
+          "old_offset": 14214
+        },
+        {
+          "after": "e_ac",
+          "before": "i",
+          "new_offset": 24092,
+          "old_offset": 14216
+        },
+        {
+          "after": "ual",
+          "before": "y",
+          "new_offset": 24097,
+          "old_offset": 14218
+        },
+        {
+          "after": "br",
+          "before": "g",
+          "new_offset": 24101,
+          "old_offset": 14220
+        },
+        {
+          "after": "nch",
+          "before": "p",
+          "new_offset": 24104,
+          "old_offset": 14222
+        },
+        {
+          "after": "is T",
+          "before": "fo",
+          "new_offset": 24110,
+          "old_offset": 14226
+        },
+        {
+          "after": "u",
+          "before": " nam",
+          "new_offset": 24115,
+          "old_offset": 14229
+        },
+        {
+          "after": "a",
+          "before": "i",
+          "new_offset": 24118,
+          "old_offset": 14235
+        },
+        {
+          "after": "d",
+          "before": " remote_names)\n  assert all(name not in art for name in ('remote_search','remote_receipts','remote_fixture'))\n else:\n  assert",
+          "new_offset": 24120,
+          "old_offset": 14237
+        },
+        {
+          "after": "",
+          "before": "  if case_records[remote_names[0]]['status']=='PASSED':\n ",
+          "new_offset": 24159,
+          "old_offset": 14400
+        },
+        {
+          "after": ";prefix=c['adoption_search']['events']",
+          "before": "",
+          "new_offset": 24250,
+          "old_offset": 14548
+        },
+        {
+          "after": " assert fixture['fixture_ref']=='selective_C_fixture' and fixture['family_id']==fid\n",
+          "before": "",
+          "new_offset": 24290,
+          "old_offset": 14550
+        },
+        {
+          "after": " and canonical(fixture['surviving_pending_key'])==canonical(survivor)",
+          "before": "",
+          "new_offset": 24547,
+          "old_offset": 14723
+        },
+        {
+          "after": " assert fixture['event_prefix_ref']=='selective_C_fixture.adoption_search.events' and fixture['event_prefix_count']==fixture['fresh_event_start']==len(prefix)\n  assert canonical(search['events'][:len(prefix)])==canonical(prefix);fresh=search['events'][len(prefix):]\n",
+          "before": "",
+          "new_offset": 24618,
+          "old_offset": 14725
+        },
+        {
+          "after": "",
+          "before": " ",
+          "new_offset": 25022,
+          "old_offset": 14863
+        },
+        {
+          "after": "",
+          "before": " ",
+          "new_offset": 25167,
+          "old_offset": 15009
+        },
+        {
+          "after": "fa",
+          "before": "e",
+          "new_offset": 25320,
+          "old_offset": 15163
+        },
+        {
+          "after": "lback=ca",
+          "before": "",
+          "new_offset": 25323,
+          "old_offset": 15165
+        },
+        {
+          "after": "_records[names[1]]['observed']['actual_fallback_event'];assert any(canonical(e)==canonical(fallback) for e in fresh)",
+          "before": ":",
+          "new_offset": 25333,
+          "old_offset": 15167
+        },
+        {
+          "after": "",
+          "before": " ",
+          "new_offset": 25450,
+          "old_offset": 15169
+        },
+        {
+          "after": "fallback['kind']=='ADVICE' and fallback['mode']=='CANONICAL_FALLBACK' and fallback['rejected_keys']\n  assert fallback['abandoned_family']['family_id']==fid and canonical(fallback['abandoned_family']['pending_keys'])==canonical(pending)\n else:\n  assert not required and ",
+          "before": "",
+          "new_offset": 25459,
+          "old_offset": 15179
+        },
+        {
+          "after": "k",
+          "before": "name",
+          "new_offset": 25732,
+          "old_offset": 15183
+        },
+        {
+          "after": "k",
+          "before": "name",
+          "new_offset": 25749,
+          "old_offset": 15203
+        },
+        {
+          "after": "summa",
+          "before": "",
+          "new_offset": 25809,
+          "old_offset": 15266
+        },
+        {
+          "after": "y",
+          "before": "emote_join",
+          "new_offset": 25815,
+          "old_offset": 15267
+        },
+        {
+          "after": "whole_artif",
+          "before": "",
+          "new_offset": 25824,
+          "old_offset": 15285
+        },
+        {
+          "after": "_sha256=sha(c",
+          "before": "u",
+          "new_offset": 25838,
+          "old_offset": 15288
+        },
+        {
+          "after": "i",
+          "before": "_glo",
+          "new_offset": 25853,
+          "old_offset": 15291
+        },
+        {
+          "after": "r",
+          "before": "",
+          "new_offset": 25855,
+          "old_offset": 15296
+        },
+        {
+          "after": "t",
+          "before": "l_decis",
+          "new_offset": 25857,
+          "old_offset": 15297
+        },
+        {
+          "after": ")",
+          "before": "=decision",
+          "new_offset": 25861,
+          "old_offset": 15307
+        },
+        {
+          "after": "calibration['",
+          "before": "",
+          "new_offset": 25886,
+          "old_offset": 15340
+        },
+        {
+          "after": "_actual_branch']",
+          "before": "",
+          "new_offset": 25907,
+          "old_offset": 15348
+        },
+        {
+          "after": "n",
+          "before": "family_id=family['family_id'],bad_key=bad,bef",
+          "new_offset": 25983,
+          "old_offset": 15408
+        },
+        {
+          "after": "maliz",
+          "before": "e_st",
+          "new_offset": 25986,
+          "old_offset": 15455
+        },
+        {
+          "after": "i",
+          "before": "e_sha256=sha(before['state']),after_state_sha256=sha(after['state']),comp",
+          "new_offset": 25993,
+          "old_offset": 15461
+        },
+        {
+          "after": "_placem",
+          "before": "",
+          "new_offset": 25996,
+          "old_offset": 15536
+        },
+        {
+          "after": "",
+          "before": "_reque",
+          "new_offset": 26006,
+          "old_offset": 15539
+        },
+        {
+          "after": "",
+          "before": "t_sha256",
+          "new_offset": 26007,
+          "old_offset": 15546
+        },
+        {
+          "after": "l",
+          "before": "sha(req),compon",
+          "new_offset": 26008,
+          "old_offset": 15555
+        },
+        {
+          "after": "(no",
+          "before": "t_",
+          "new_offset": 26011,
+          "old_offset": 15572
+        },
+        {
+          "after": "m",
+          "before": "eceipt_sha256=sha(rec),whole_artifact_sha256=sha(c",
+          "new_offset": 26015,
+          "old_offset": 15575
+        },
+        {
+          "after": "z",
+          "before": "br",
+          "new_offset": 26019,
+          "old_offset": 15628
+        },
+        {
+          "after": "liv",
+          "before": "sourc",
+          "new_offset": 26027,
+          "old_offset": 15637
+        },
+        {
+          "after": "rejection_repo",
+          "before": "a",
+          "new_offset": 26032,
+          "old_offset": 15644
+        },
+        {
+          "after": "",
+          "before": "ifact='controls.artifacts.remote_eligibility',literal_joins_verifi",
+          "new_offset": 26048,
+          "old_offset": 15647
+        },
+        {
+          "after": "",
+          "before": "True)\nelse:\n assert all(",
+          "new_offset": 26051,
+          "old_offset": 15716
+        },
+        {
+          "after": "s[0]",
+          "before": "",
+          "new_offset": 26068,
+          "old_offset": 15757
+        },
+        {
+          "after": "PA",
+          "before": "",
+          "new_offset": 26086,
+          "old_offset": 15771
+        },
+        {
+          "after": "S",
+          "before": "KIPP",
+          "new_offset": 26089,
+          "old_offset": 15772
+        },
+        {
+          "after": ",fresh_event_start=len(c['adoption_search']['events']),fresh_events=len(fresh),family_id=fid)\n return summary,fresh\n\ncase_records={x['case']:x",
+          "before": "",
+          "new_offset": 26093,
+          "old_offset": 15779
+        },
+        {
+          "after": "x",
+          "before": "name",
+          "new_offset": 26240,
+          "old_offset": 15784
+        },
+        {
+          "after": "cases}\nc_fixture,c_join=C_fixture_join(art,body['language_binding'],required=False)\n",
+          "before": "",
+          "new_offset": 26245,
+          "old_offset": 15792
+        },
+        {
+          "after": "joi",
+          "before": "",
+          "new_offset": 26336,
+          "old_offset": 15799
+        },
+        {
+          "after": ",remote_events=C_remote_join(art,body['language_binding'],c_fixture,case_records,required=False)\n# Returned C lineage remains recorded even when any other required case skips.\n# These are saved concordance checks, not independent point/degree semantics.\nif 'f",
+          "before": "",
+          "new_offset": 26340,
+          "old_offset": 15800
+        },
+        {
+          "after": "ily_r",
+          "before": "",
+          "new_offset": 26601,
+          "old_offset": 15802
+        },
+        {
+          "after": "tirement' in art and 'actual_rejection' in art['family_retirement']:\n rejection=art['family_retirement']['actual_rejection']",
+          "before": "s)",
+          "new_offset": 26607,
+          "old_offset": 15803
+        },
+        {
+          "after": "c_fixtur",
+          "before": "all(nam",
+          "new_offset": 26740,
+          "old_offset": 15814
+        },
+        {
+          "after": " is",
+          "before": "",
+          "new_offset": 26749,
+          "old_offset": 15822
+        },
+        {
+          "after": "No",
+          "before": "i",
+          "new_offset": 26757,
+          "old_offset": 15827
+        },
+        {
+          "after": "e",
+          "before": "",
+          "new_offset": 26760,
+          "old_offset": 15829
+        },
+        {
+          "after": "nd c_fixture['adoption_qualified'] is True\n asse",
+          "before": "",
+          "new_offset": 26763,
+          "old_offset": 15831
+        },
+        {
+          "after": "",
+          "before": "for name in ('",
+          "new_offset": 26814,
+          "old_offset": 15834
+        },
+        {
+          "after": "jecti",
+          "before": "m",
+          "new_offset": 26816,
+          "old_offset": 15850
+        },
+        {
+          "after": "n['fix",
+          "before": "",
+          "new_offset": 26822,
+          "old_offset": 15852
+        },
+        {
+          "after": "u",
+          "before": "e_sea",
+          "new_offset": 26829,
+          "old_offset": 15853
+        },
+        {
+          "after": "",
+          "before": "ch','remot",
+          "new_offset": 26831,
+          "old_offset": 15859
+        },
+        {
+          "after": "f']=='selective_C_fixture' and rejection['owned_inner_snapshot']['pending_preferen",
+          "before": "",
+          "new_offset": 26835,
+          "old_offset": 15873
+        },
+        {
+          "after": "",
+          "before": "ipt",
+          "new_offset": 26919,
+          "old_offset": 15875
+        },
+        {
+          "after": "]['family_id']==c_fixture['family_id']\n assert canonical(rejection['owned_inner_snapshot']['state'])==canonical(art[",
+          "before": ",",
+          "new_offset": 26921,
+          "old_offset": 15880
+        },
+        {
+          "after": "]['before']['state']",
+          "before": "",
+          "new_offset": 27053,
+          "old_offset": 15897
+        },
+        {
+          "after": " and canonical(rejection['owned_inner_snapshot']['pending_preferences'])==canonical(art['remote_fixture']['before']['pending_preferences']",
+          "before": "",
+          "new_offset": 27074,
+          "old_offset": 15898
+        },
+        {
+          "after": " assert any(canonical(e)==canonical(rejection['abandonment_event']) for e in",
+          "before": "",
+          "new_offset": 27214,
+          "old_offset": 15900
+        },
+        {
+          "after": "events)\nif 'f",
+          "before": "j",
+          "new_offset": 27298,
+          "old_offset": 15908
+        },
+        {
+          "after": "rced_retirement' ",
+          "before": "",
+          "new_offset": 27312,
+          "old_offset": 15910
+        },
+        {
+          "after": " art:\n fr=art",
+          "before": "",
+          "new_offset": 27331,
+          "old_offset": 15912
+        },
+        {
+          "after": "forced_",
+          "before": "",
+          "new_offset": 27346,
+          "old_offset": 15914
+        },
+        {
+          "after": "tirement'];",
+          "before": "",
+          "new_offset": 27355,
+          "old_offset": 15916
+        },
+        {
+          "after": "sert c_fixture is not N",
+          "before": "",
+          "new_offset": 27368,
+          "old_offset": 15918
+        },
+        {
+          "after": "e and c_fixture['adoption_qualified'] is True\n assert fr['fixture_ref",
+          "before": "",
+          "new_offset": 27393,
+          "old_offset": 15920
+        },
+        {
+          "after": "=",
+          "before": "",
+          "new_offset": 27465,
+          "old_offset": 15923
+        },
+        {
+          "after": "",
+          "before": "No ",
+          "new_offset": 27467,
+          "old_offset": 15924
+        },
+        {
+          "after": "electi",
+          "before": "a",
+          "new_offset": 27468,
+          "old_offset": 15928
+        },
+        {
+          "after": "_C_fixture' an",
+          "before": "",
+          "new_offset": 27476,
+          "old_offset": 15931
+        },
+        {
+          "after": "fr['family_id']==c_fixture['family_id']\n prefix=art['",
+          "before": "",
+          "new_offset": 27492,
+          "old_offset": 15933
+        },
+        {
+          "after": "_search']['events']",
+          "before": "",
+          "new_offset": 27551,
+          "old_offset": 15939
+        },
+        {
+          "after": "if 'remote_sear",
+          "before": "",
+          "new_offset": 27571,
+          "old_offset": 15940
+        },
+        {
+          "after": "h' ",
+          "before": "al",
+          "new_offset": 27587,
+          "old_offset": 15941
+        },
+        {
+          "after": "",
+          "before": "bratio",
+          "new_offset": 27591,
+          "old_offset": 15944
+        },
+        {
+          "after": " else c_f",
+          "before": "",
+          "new_offset": 27596,
+          "old_offset": 15955
+        },
+        {
+          "after": "xture['adoption_search']['events']\n assert fr['event_prefix_ref']==('remote_search.events' if 'remote_search' in art else 'selective_C_fixture.adoption_search.events')\n assert fr['event_prefix_count']==fr['fresh_event_start']==len(prefix) and canonical(fr['search']['events'][:len(prefix)])==canonical(prefix)\n assert fr['search']['root_snapshot_sha256']==fr['search']['final_snapshot_sha256']==sha(fr['before'])\nif 'fair_inter",
+          "before": "",
+          "new_offset": 27606,
+          "old_offset": 15956
+        },
+        {
+          "after": "e' in ar",
+          "before": "",
+          "new_offset": 28036,
+          "old_offset": 15959
+        },
+        {
+          "after": " and 'replacement' in art['fair_interface']:\n replacement=art['fair_interface']['replacement']",
+          "before": "",
+          "new_offset": 28045,
+          "old_offset": 15960
+        },
+        {
+          "after": "as",
+          "before": " u",
+          "new_offset": 28140,
+          "old_offset": 15961
+        },
+        {
+          "after": "rt",
+          "before": "",
+          "new_offset": 28144,
+          "old_offset": 15965
+        },
+        {
+          "after": "c_fix",
+          "before": "",
+          "new_offset": 28147,
+          "old_offset": 15966
+        },
+        {
+          "after": "ur",
+          "before": "h",
+          "new_offset": 28153,
+          "old_offset": 15967
+        },
+        {
+          "after": "is not Non",
+          "before": "",
+          "new_offset": 28157,
+          "old_offset": 15970
+        },
+        {
+          "after": "\n assert replacement['fi",
+          "before": "",
+          "new_offset": 28168,
+          "old_offset": 15971
+        },
+        {
+          "after": "ture_ref']=='selective_C_fixture' and replacement['before']['pending_preferences']['family_id']==c_fixture['family_id']\n prefix=art['family_retirement']['follow_on_search']['",
+          "before": "",
+          "new_offset": 28193,
+          "old_offset": 15972
+        },
+        {
+          "after": "ual_result']['events']\n",
+          "before": "",
+          "new_offset": 28370,
+          "old_offset": 15975
+        },
+        {
+          "after": "assert",
+          "before": "SKIP",
+          "new_offset": 28394,
+          "old_offset": 15976
+        },
+        {
+          "after": "pl",
+          "before": "",
+          "new_offset": 28403,
+          "old_offset": 15983
+        },
+        {
+          "after": "ceme",
+          "before": "so",
+          "new_offset": 28406,
+          "old_offset": 15984
+        },
+        {
+          "after": "t['",
+          "before": "s, n",
+          "new_offset": 28411,
+          "old_offset": 15987
+        },
+        {
+          "after": "nt_p",
+          "before": "",
+          "new_offset": 28417,
+          "old_offset": 15994
+        },
+        {
+          "after": "ef",
+          "before": " ",
+          "new_offset": 28422,
+          "old_offset": 15995
+        },
+        {
+          "after": "x_re",
+          "before": "n",
+          "new_offset": 28425,
+          "old_offset": 15997
+        },
+        {
+          "after": "']=='family_r",
+          "before": "",
+          "new_offset": 28430,
+          "old_offset": 15999
+        },
+        {
+          "after": "ti",
+          "before": "",
+          "new_offset": 28444,
+          "old_offset": 16000
+        },
+        {
+          "after": "e",
+          "before": " a co",
+          "new_offset": 28447,
+          "old_offset": 16001
+        },
+        {
+          "after": "",
+          "before": "pon",
+          "new_offset": 28449,
+          "old_offset": 16007
+        },
+        {
+          "after": ".f",
+          "before": " ",
+          "new_offset": 28452,
+          "old_offset": 16013
+        },
+        {
+          "after": "llow_on_sea",
+          "before": "",
+          "new_offset": 28455,
+          "old_offset": 16015
+        },
+        {
+          "after": "ch.actua",
+          "before": " ",
+          "new_offset": 28467,
+          "old_offset": 16016
+        },
+        {
+          "after": "_result.e",
+          "before": "i",
+          "new_offset": 28476,
+          "old_offset": 16018
+        },
+        {
+          "after": "nts'\n",
+          "before": "",
+          "new_offset": 28487,
+          "old_offset": 16021
+        },
+        {
+          "after": "assert rep",
+          "before": "",
+          "new_offset": 28493,
+          "old_offset": 16022
+        },
+        {
+          "after": "acement['event_pref",
+          "before": "",
+          "new_offset": 28504,
+          "old_offset": 16023
+        },
+        {
+          "after": "x_count']==replacement['",
+          "before": "",
+          "new_offset": 28524,
+          "old_offset": 16024
+        },
+        {
+          "after": "r",
+          "before": "",
+          "new_offset": 28549,
+          "old_offset": 16025
+        },
+        {
+          "after": "sh_event_start']==",
+          "before": "cyc",
+          "new_offset": 28551,
+          "old_offset": 16026
+        },
+        {
+          "after": "n(prefix)\n assert canonical(replacement[",
+          "before": ".",
+          "new_offset": 28571,
+          "old_offset": 16031
+        },
+        {
+          "after": "actual_result']['events'][:len(prefix)])==canonical(prefix)",
+          "before": "",
+          "new_offset": 28612,
+          "old_offset": 16033
+        },
+        {
+          "after": "6-ABC",
+          "before": "5",
+          "new_offset": 30637,
+          "old_offset": 17999
+        },
+        {
+          "after": "selective_C_fixture_saved_concordance':c_join,'",
+          "before": "",
+          "new_offset": 31664,
+          "old_offset": 19022
+        },
+        {
+          "after": "ositive_closer16_used':False,'p",
+          "before": "",
+          "new_offset": 32176,
+          "old_offset": 19487
+        },
+        {
+          "after": "",
+          "before": "positive ",
+          "new_offset": 32390,
+          "old_offset": 19670
+        },
+        {
+          "after": " antecedents",
+          "before": "14",
+          "new_offset": 32396,
+          "old_offset": 19685
+        }
+      ],
+      "parent": {
+        "bytes": 20518,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT_close_advice_controls_partial_saved_v15.py",
+        "sha256": "cf41fff0e679705f50bfc02681dcbb1f8a40ab964ddc36b79a1a144cce81dbf5"
+      },
+      "role": "partial",
+      "source": {
+        "bytes": 33239,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-multikey-ROOT-20261016/ROOT_close_advice_controls_partial_saved_v16.py",
+        "sha256": "8981090677b7cfd20440dd2590a8f488d227c82eba36b731ebe908598f7e3fa4"
+      },
+      "whole_forward_and_inverse_exact": true
+    }
+  ],
+  "schema": "ROOT-ABC-saved-closers-raw-delta-v16",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}
