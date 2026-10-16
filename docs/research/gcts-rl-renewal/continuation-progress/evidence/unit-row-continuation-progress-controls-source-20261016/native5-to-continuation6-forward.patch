@@ -1,0 +1,114 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-native-samples-controls-v5'
++VERSION = 'unit-row-continuation-progress-controls-v6'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -302,13 +302,65 @@
+       for label in common_names[11:]:skip(label,'Actual first selected family has no future keys; consumer gate remains unqualified.')
+     else:
+       phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE',phase_native_ns,file=sys.stderr,flush=True);tick()
+-      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}
++      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[],'continuation_records':0}
+       def watched_validator(**kwargs):
++        if holder['phase']=='continue' and holder['continuation_records']<24:
++          continuation_native_ns=tick()
++          continuation_row=kwargs['decision']['row']
++          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,
++            'builtin continuation diagnostic state')
++          continuation_selected=len(kwargs['state']['selected'])
++          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807
++            and type(continuation_row) is int and 0<=continuation_row<24
++            and type(continuation_selected) is int and 0<=continuation_selected<=24,
++            'bounded direct native continuation diagnostic integers')
++          holder['continuation_records']+=1
++          print('UNQUALIFIED_CONTINUATION_OBSERVATION VALIDATOR_ENTRY',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)
++          tick()
+         tick();value=validate_advice(**kwargs)
++        if holder['phase']=='continue' and holder['continuation_records']<24:
++          continuation_native_ns=tick()
++          continuation_row=kwargs['decision']['row']
++          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,
++            'builtin continuation diagnostic state')
++          continuation_selected=len(kwargs['state']['selected'])
++          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807
++            and type(continuation_row) is int and 0<=continuation_row<24
++            and type(continuation_selected) is int and 0<=continuation_selected<=24,
++            'bounded direct native continuation diagnostic integers')
++          holder['continuation_records']+=1
++          print('UNQUALIFIED_CONTINUATION_OBSERVATION VALIDATOR_AFTER_DELEGATE',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,int(value['selection'] is not None),file=sys.stderr,flush=True)
++          tick()
+         if value['mode']=='PENDING_KEYS':holder['receipts'].append(copy.deepcopy(value))
+         return value
+       def capture_degree(**kwargs):
++        if holder['phase']=='continue' and holder['continuation_records']<24:
++          continuation_native_ns=tick()
++          continuation_row=kwargs['row']
++          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,
++            'builtin continuation diagnostic state')
++          continuation_selected=len(kwargs['state']['selected'])
++          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807
++            and type(continuation_row) is int and 0<=continuation_row<24
++            and type(continuation_selected) is int and 0<=continuation_selected<=24,
++            'bounded direct native continuation diagnostic integers')
++          holder['continuation_records']+=1
++          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)
++          tick()
+         tick();current=snap(holder['engine'])
++        if holder['phase']=='continue' and holder['continuation_records']<24:
++          continuation_native_ns=tick()
++          continuation_row=kwargs['row']
++          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,
++            'builtin continuation diagnostic state')
++          continuation_selected=len(kwargs['state']['selected'])
++          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807
++            and type(continuation_row) is int and 0<=continuation_row<24
++            and type(continuation_selected) is int and 0<=continuation_selected<=24,
++            'bounded direct native continuation diagnostic integers')
++          holder['continuation_records']+=1
++          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,int(current['pending_preferences'] is not None),-1,file=sys.stderr,flush=True)
++          tick()
+         if holder['phase']=='capture' and current['pending_preferences'] is not None:
+           holder['inner_token']=holder['engine'].checkpoint();holder['inner_snapshot']=current
+           raise CallbackExhausted('declared stable child checkpoint capture after real anchor placement')
+@@ -318,7 +370,34 @@
+           holder['after']=current;raise CallbackExhausted('declared stop after rejected hint and actual fallback placement')
+         if holder['phase']=='forced-retirement' and holder['retirement_calls']:
+           holder['after']=current;raise CallbackExhausted('declared stop after forced-fill retirement and later canonical branch')
+-        return degree_proposer(**kwargs)
++        if holder['phase']=='continue' and holder['continuation_records']<24:
++          continuation_native_ns=tick()
++          continuation_row=kwargs['row']
++          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,
++            'builtin continuation diagnostic state')
++          continuation_selected=len(kwargs['state']['selected'])
++          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807
++            and type(continuation_row) is int and 0<=continuation_row<24
++            and type(continuation_selected) is int and 0<=continuation_selected<=24,
++            'bounded direct native continuation diagnostic integers')
++          holder['continuation_records']+=1
++          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)
++          tick()
++        continuation_value=degree_proposer(**kwargs)
++        if holder['phase']=='continue' and holder['continuation_records']<24:
++          continuation_native_ns=tick()
++          continuation_row=kwargs['row']
++          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,
++            'builtin continuation diagnostic state')
++          continuation_selected=len(kwargs['state']['selected'])
++          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807
++            and type(continuation_row) is int and 0<=continuation_row<24
++            and type(continuation_selected) is int and 0<=continuation_selected<=24,
++            'bounded direct native continuation diagnostic integers')
++          holder['continuation_records']+=1
++          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)
++          tick()
++        return continuation_value
+       def watched_adviser(**kwargs):
+         tick()
+         if holder['phase']=='forced-retirement':

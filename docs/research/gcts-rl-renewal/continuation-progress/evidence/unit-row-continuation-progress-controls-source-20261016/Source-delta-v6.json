@@ -1,0 +1,159 @@
+{
+  "diagnostic_erasure_equivalent_definitions": [
+    {
+      "diagnostic_erasure_AST_exact": true,
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 9
+    }
+  ],
+  "edits": [
+    {
+      "after_utf8": "VERSION = 'unit-row-continuation-progress-controls-v6'",
+      "before_utf8": "VERSION = 'unit-row-native-samples-controls-v5'",
+      "forward_offset_at_this_step": 350
+    },
+    {
+      "after_utf8": "      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[],'continuation_records':0}",
+      "before_utf8": "      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}",
+      "forward_offset_at_this_step": 20355
+    },
+    {
+      "after_utf8": "        if holder['phase']=='continue' and holder['continuation_records']<24:\n          continuation_native_ns=tick()\n          continuation_row=kwargs['decision']['row']\n          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,\n            'builtin continuation diagnostic state')\n          continuation_selected=len(kwargs['state']['selected'])\n          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807\n            and type(continuation_row) is int and 0<=continuation_row<24\n            and type(continuation_selected) is int and 0<=continuation_selected<=24,\n            'bounded direct native continuation diagnostic integers')\n          holder['continuation_records']+=1\n          print('UNQUALIFIED_CONTINUATION_OBSERVATION VALIDATOR_ENTRY',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)\n          tick()\n        tick();value=validate_advice(**kwargs)\n        if holder['phase']=='continue' and holder['continuation_records']<24:\n          continuation_native_ns=tick()\n          continuation_row=kwargs['decision']['row']\n          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,\n            'builtin continuation diagnostic state')\n          continuation_selected=len(kwargs['state']['selected'])\n          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807\n            and type(continuation_row) is int and 0<=continuation_row<24\n            and type(continuation_selected) is int and 0<=continuation_selected<=24,\n            'bounded direct native continuation diagnostic integers')\n          holder['continuation_records']+=1\n          print('UNQUALIFIED_CONTINUATION_OBSERVATION VALIDATOR_AFTER_DELEGATE',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,int(value['selection'] is not None),file=sys.stderr,flush=True)\n          tick()\n",
+      "before_utf8": "        tick();value=validate_advice(**kwargs)\n",
+      "forward_offset_at_this_step": 20521
+    },
+    {
+      "after_utf8": "        if holder['phase']=='continue' and holder['continuation_records']<24:\n          continuation_native_ns=tick()\n          continuation_row=kwargs['row']\n          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,\n            'builtin continuation diagnostic state')\n          continuation_selected=len(kwargs['state']['selected'])\n          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807\n            and type(continuation_row) is int and 0<=continuation_row<24\n            and type(continuation_selected) is int and 0<=continuation_selected<=24,\n            'bounded direct native continuation diagnostic integers')\n          holder['continuation_records']+=1\n          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)\n          tick()\n        tick();current=snap(holder['engine'])\n        if holder['phase']=='continue' and holder['continuation_records']<24:\n          continuation_native_ns=tick()\n          continuation_row=kwargs['row']\n          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,\n            'builtin continuation diagnostic state')\n          continuation_selected=len(kwargs['state']['selected'])\n          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807\n            and type(continuation_row) is int and 0<=continuation_row<24\n            and type(continuation_selected) is int and 0<=continuation_selected<=24,\n            'bounded direct native continuation diagnostic integers')\n          holder['continuation_records']+=1\n          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,int(current['pending_preferences'] is not None),-1,file=sys.stderr,flush=True)\n          tick()\n",
+      "before_utf8": "        tick();current=snap(holder['engine'])\n",
+      "forward_offset_at_this_step": 22704
+    },
+    {
+      "after_utf8": "        if holder['phase']=='continue' and holder['continuation_records']<24:\n          continuation_native_ns=tick()\n          continuation_row=kwargs['row']\n          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,\n            'builtin continuation diagnostic state')\n          continuation_selected=len(kwargs['state']['selected'])\n          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807\n            and type(continuation_row) is int and 0<=continuation_row<24\n            and type(continuation_selected) is int and 0<=continuation_selected<=24,\n            'bounded direct native continuation diagnostic integers')\n          holder['continuation_records']+=1\n          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)\n          tick()\n        continuation_value=degree_proposer(**kwargs)\n        if holder['phase']=='continue' and holder['continuation_records']<24:\n          continuation_native_ns=tick()\n          continuation_row=kwargs['row']\n          need(type(kwargs['state']) is dict and type(kwargs['state'].get('selected')) is list,\n            'builtin continuation diagnostic state')\n          continuation_selected=len(kwargs['state']['selected'])\n          need(type(continuation_native_ns) is int and 0<=continuation_native_ns<=9223372036854775807\n            and type(continuation_row) is int and 0<=continuation_row<24\n            and type(continuation_selected) is int and 0<=continuation_selected<=24,\n            'bounded direct native continuation diagnostic integers')\n          holder['continuation_records']+=1\n          print('UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE',holder['continuation_records'],continuation_native_ns,continuation_row,continuation_selected,-1,-1,file=sys.stderr,flush=True)\n          tick()\n        return continuation_value\n",
+      "before_utf8": "        return degree_proposer(**kwargs)\n",
+      "forward_offset_at_this_step": 25650
+    }
+  ],
+  "existing24_phase_groups_byte_exact": true,
+  "forward_reconstructs_entire_source": true,
+  "inverse_reconstructs_entire_parent": true,
+  "parent_source": {
+    "bytes": 98770,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py",
+    "sha256": "1c332075d25b00ad31642c1f20b8e62415633aec2821fefa99235ffc4ec6f1be"
+  },
+  "schema": "unit-row-continuation-progress-controls-sequential-byte-delta-v6",
+  "scientific_calls": 0,
+  "sequential_regions": 5,
+  "six_sites": [
+    {
+      "source_line": 318,
+      "stage": "VALIDATOR_ENTRY"
+    },
+    {
+      "source_line": 332,
+      "stage": "VALIDATOR_AFTER_DELEGATE"
+    },
+    {
+      "source_line": 348,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "source_line": 362,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "source_line": 384,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "source_line": 398,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    }
+  ],
+  "source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "unchanged_raw_definitions": [
+    {
+      "kind": "ClassDef",
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_AST_exact": true,
+      "raw_sha256": "0633d4c830dca042342e9e90385b150644cc55294a6029ec8150623e6e0eb9c7"
+    },
+    {
+      "kind": "ClassDef",
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_AST_exact": true,
+      "raw_sha256": "ed63a8ff8458cf3d9d5b7afc535250eb000815c95fbf417f6bc1377e2ed9f4c2"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "need",
+      "ordinal": 2,
+      "raw_AST_exact": true,
+      "raw_sha256": "cfb2359a99fb5844db1d9b7610758d828c86945b044bc352c78ced9fece32556"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_AST_exact": true,
+      "raw_sha256": "3d0cba3e5232ca23a7129b2da6af51a68c34121ca073948fd18e8f2e9bb68268"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "digest",
+      "ordinal": 4,
+      "raw_AST_exact": true,
+      "raw_sha256": "ba4b204365b99acc82629d44da79e9b2995d4460b992169519341d4d48275144"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "tile",
+      "ordinal": 5,
+      "raw_AST_exact": true,
+      "raw_sha256": "180bb27f6de2b574c473adf86ff7da20370081febb16f8b31208c12babe95fa5"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "state",
+      "ordinal": 6,
+      "raw_AST_exact": true,
+      "raw_sha256": "95664cf1567b15500aadafc08511edcf6f032a3e5f368560a1fa70f579ef9a83"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "ug",
+      "ordinal": 7,
+      "raw_AST_exact": true,
+      "raw_sha256": "910adb314f1decffc2b619dd735712322b77359ddb74287834903f1d5ca55210"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_AST_exact": true,
+      "raw_sha256": "5187bbb0dae876a54662dfda6fcdf995c80289791aaa8ace629e6894e249eac0"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 10,
+      "raw_AST_exact": true,
+      "raw_sha256": "642cef1a41beba8d90a9fb8a8b2462e8193755166ed20e795127f80b4c6c3977"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 11,
+      "raw_AST_exact": true,
+      "raw_sha256": "fe148df56c483d6d38d0af82526b0547415b92ee858b4348b77ab1feb62484a0"
+    }
+  ],
+  "whole_module_AST_semantic_erasure_recovers_parent": true
+}

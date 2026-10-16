@@ -1,0 +1,61 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 67289088,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 5.131,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "Conservative sufficient support/global-collision-ledger relation, no minimal dependency oracle or full reference incremental conformance.",
+    "No general independent all-six EOF/exhaustion cover.",
+    "Specialized fixed unit rows, no fractional/shared positive support or full mathematical logic."
+  ],
+  "controls_accepted": true,
+  "current_goal_turn": "progress",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "153acee535eeccf96043fcc7fc6753caad2541e6a8d52bb513e0aa4dfa24e8de",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "d92f39430e85dfc5df4fa65c38ea44d90552b157589778182678fb2c125e1142"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1505,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-ROOT-20261016/ROOT-domain-controls-transport-concordance-v1.json",
+    "sha256": "de8cf8e3aef531bfcdc8601f9c603fdc389f8a74e1e1d83f007fa3a6541c503d"
+  },
+  "native_launch_to_postprobe_ns": 4976633000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 4911410000,
+  "old_actuals_UNKNOWNs_and_finite_negatives_preserved": true,
+  "outputs": [
+    {
+      "bytes": 269799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "sha256": "619e7203d34c14ee2bcae1c73ca657025d2c147014f99dd8773eedb3a090c602"
+    },
+    {
+      "bytes": 7064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-ROOT-20261016/domain-controls-owned-v1/response.jsonl",
+      "sha256": "51b4bff2229e26250c4d76548d62d73c2c3eab20d7687fef8388389e6f91538b"
+    }
+  ],
+  "passed_cases": 17,
+  "plan": {
+    "bytes": 7979,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-ROOT-20261016/ROOT-domain-controls-plan-v1.json",
+    "sha256": "e45e2a54e739c3dc36a651966d959df44016051a2567489abfa9932df250d516"
+  },
+  "previous_goal_turn": "progress",
+  "prior_raw_cap_UNKNOWN_preserved": true,
+  "reconciliation_scope": "Whole saved decoded bytes, marker/wire/source/context/native and raw observed field concordance only; no mathematical/control/checker/kernel/search replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-retained-domain-controls-disposition-v1",
+  "scope": "Seventeen original-language retained-domain, full receipt/context/EOF archive, remote invalidation, known-packet refresh and exact rollback controls. One explicit real-replay interruption seam. Manual transactions, no target discovery or accepted full scheduler trajectory.",
+  "skipped_cases": 0,
+  "terminal_T_bytes": 67289088
+}

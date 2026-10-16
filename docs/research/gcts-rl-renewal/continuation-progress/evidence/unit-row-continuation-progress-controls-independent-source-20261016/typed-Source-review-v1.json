@@ -1,0 +1,126 @@
+{
+  "schema": "unit-row-continuation-progress-controls-typed-Source-review-v1",
+  "scope": "unit-row-continuation-progress-controls-Source",
+  "source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-contract-v6.json",
+    "sha256": "eae8374f8a7bec046921c0d6befad429a5de3230b5cc0a3b601bab493e87787f",
+    "bytes": 28536
+  },
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 104747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+      "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier consumer validators and earlier control-harness/horizon work, plus older logical-checker/codec/family work. Reviewer did not author controls2/3/4/5/6, adviser3/engine8, current c960/c354 or Root caller. This is independent controls implementation/delta review retaining exact whole Source5 review, not self-review of consumer3, a second mathematical implementation or runtime qualification.",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "a2e93bd3af2f85d6e35c6d6e916b34c9e7b4aef1f09060c57a1905eb5a30d9fd",
+    "bytes": 11749
+  },
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "97e89c2be1e164d725399987399b0ae5ea1fb0eba7cf23c93b5c6e94362bb02c",
+    "bytes": 22261
+  },
+  "prior_whole_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "13d7f6e9fd948868511f9c9597ca95a594939035657942633994a2c437b94922",
+    "bytes": 7800
+  },
+  "position_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/inherited-phase-position-erratum-v1.json",
+    "sha256": "f0b3ef662c8916b0582efdff49e8321e6c43327ea100f34066b4b3158ff4df50",
+    "bytes": 5159
+  },
+  "checks": {
+    "raw_and_AST": 13,
+    "manual": 7,
+    "unique_raw_paths": 39,
+    "sequential_byte_regions": 5,
+    "raw_exact_top_definitions": 11,
+    "erasure_exact_control_bodies": 1,
+    "new_static_sites": 6,
+    "shared_maximum_continuation_record_attempts": 24,
+    "maximum_continuation_ASCII_bytes": 2304,
+    "existing_phase_sites": 24,
+    "existing_phase_ASCII_bytes": 1766,
+    "maximum_combined_diagnostic_ASCII_bytes": 4070,
+    "retained_cases": 43
+  },
+  "summary": "No concrete operative Source blocker. Five byte regions/both full patches/whole independent raw+AST diagnostic erasure recover Source5. Same43/other9 Sources/input2/API/limits/fullfallback/qualification; existing24 sample groups byteexact. Six continuation sites share max24 diagnostic attempts, direct native-first records, six integer fields, 2304B plus old1766B. Original callback/stop/kwargs and same-object exactly-once degree return preserved. Inherited17 phase line numbers are descriptive parent anchors, explicitly corrected by additive erratum; no parser authority.",
+  "conditions": [
+    "Root separately binds/reviews current caller, exact original direct native tick int-return ABI, both bounded diagnostic wires and current Source map/once-plan. No execution is authorized by this Source review.",
+    "All43 PASSED0SKIP/no other gap plus fresh original17/retention17 and complete result/wire/original native20/512MiB/failure-only55/owned60/caller90+1 gates remain. Diagnostic cap never removes a scientific gate.",
+    "Treat continuation records as bounded unqualified observations only: shared ordinal attempts, conditional/recurrent stages, no call-ID/pair/completion/case/bottleneck/exclusive-method/positive authority. No retrospective attribution or fit prediction.",
+    "Retain the exact contract and additive inherited-phase-position erratum. Physical source_line parent anchors are descriptive only; operative parser uses current labels/order/types/bounds, not stale line numbers.",
+    "Preserve all prior Sources and UNKNOWN/SKIP/failures. No proof/board/degree/EOF/scheduler/trajectory/complete-GCTS/learned-marking/RL/resource admission here."
+  ],
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

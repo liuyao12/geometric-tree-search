@@ -1,0 +1,39 @@
+{
+  "Source17_input2_sixlimits": true,
+  "all_nested_functions_AST_exact": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 4,
+  "metadata_note": "Adapt existing AST-located literal pin assembly to one control pin and own identifiers only; no scientific execution.",
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49604,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-cold-ROOT-source-20261016/unit_row_continuation_progress_cold_v11.py",
+    "sha256": "9a04d3729b1317db3f1b0580d94c0b051700a7f499f9a76601ed4a8e03d7074f"
+  },
+  "source_contract": {
+    "bytes": 70723,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-cold-ROOT-source-20261016/Source-contract-v11.json",
+    "sha256": "ce31a1c47709bc8887df8da488a90313d336d7aaf46f40fd4fbf091cca6e13e7"
+  },
+  "top_level_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

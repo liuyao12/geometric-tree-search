@@ -1,0 +1,32 @@
+{
+  "actual_execution_authorized": false,
+  "checks_count": 18,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 30020,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-cold-independent-source-20261016/findings-v11.json",
+    "sha256": "47256dc10a6dc83ee66506ce42e4ca358ce0f0850b9847dcb7f42f69157ce0c1"
+  },
+  "packet_distinct_raw_paths_checked": 67,
+  "packet_reference_occurrences_checked": 169,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-continuation-progress-cold-independent-handoff-v11",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 49604,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-cold-ROOT-source-20261016/unit_row_continuation_progress_cold_v11.py",
+    "sha256": "9a04d3729b1317db3f1b0580d94c0b051700a7f499f9a76601ed4a8e03d7074f"
+  },
+  "source_contract": {
+    "bytes": 70723,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-cold-ROOT-source-20261016/Source-contract-v11.json",
+    "sha256": "ce31a1c47709bc8887df8da488a90313d336d7aaf46f40fd4fbf091cca6e13e7"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 7916,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-cold-independent-source-20261016/typed-Source-review-v11.json",
+    "sha256": "9a5df75598b0278b7945c5e784ac6f0fccaacf5b12cd63f005a0e9f46bd9e15b"
+  }
+}

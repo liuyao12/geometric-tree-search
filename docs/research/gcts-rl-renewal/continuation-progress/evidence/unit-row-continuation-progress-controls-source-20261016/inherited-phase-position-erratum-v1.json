@@ -1,0 +1,146 @@
+{
+  "Source_or_API_or_wire_change": false,
+  "acceptance": false,
+  "actuals_launched": 0,
+  "all_phase_sites": 24,
+  "author_identity": "/root/hilbert_advice_controls",
+  "changed_positions": 17,
+  "current_phase_positions": [
+    {
+      "inherited_source5_line": 172,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "source6_line": 172
+    },
+    {
+      "inherited_source5_line": 187,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "source6_line": 187
+    },
+    {
+      "inherited_source5_line": 190,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "source6_line": 190
+    },
+    {
+      "inherited_source5_line": 203,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "source6_line": 203
+    },
+    {
+      "inherited_source5_line": 234,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "source6_line": 234
+    },
+    {
+      "inherited_source5_line": 275,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "source6_line": 275
+    },
+    {
+      "inherited_source5_line": 304,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "source6_line": 304
+    },
+    {
+      "inherited_source5_line": 330,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "source6_line": 409
+    },
+    {
+      "inherited_source5_line": 332,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "source6_line": 411
+    },
+    {
+      "inherited_source5_line": 352,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "source6_line": 431
+    },
+    {
+      "inherited_source5_line": 354,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "source6_line": 433
+    },
+    {
+      "inherited_source5_line": 367,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "source6_line": 446
+    },
+    {
+      "inherited_source5_line": 601,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "source6_line": 680
+    },
+    {
+      "inherited_source5_line": 672,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "source6_line": 751
+    },
+    {
+      "inherited_source5_line": 913,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "source6_line": 992
+    },
+    {
+      "inherited_source5_line": 918,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "source6_line": 997
+    },
+    {
+      "inherited_source5_line": 961,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "source6_line": 1040
+    },
+    {
+      "inherited_source5_line": 979,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "source6_line": 1058
+    },
+    {
+      "inherited_source5_line": 980,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "source6_line": 1059
+    },
+    {
+      "inherited_source5_line": 1040,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "source6_line": 1119
+    },
+    {
+      "inherited_source5_line": 1101,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "source6_line": 1180
+    },
+    {
+      "inherited_source5_line": 1171,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "source6_line": 1250
+    },
+    {
+      "inherited_source5_line": 1328,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "source6_line": 1407
+    },
+    {
+      "inherited_source5_line": 1353,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN",
+      "source6_line": 1432
+    }
+  ],
+  "finding": "phase_stderr.positions source_line was inherited from Source5 while all24 literal groups remained byteexact. Those numbers are descriptive parent anchors, not operative current Source6 line authority. Seventeen positions shift after the79 inserted lines.",
+  "operative_scope": "Exact current Source6 pin plus actual fixed labels/order/types/byte bounds govern reviewed Source and diagnostic wire. No parser or scientific behavior is defined by these descriptive line numbers. continuation_stderr.positions were already computed from Source6.",
+  "preserved_contract": {
+    "bytes": 28536,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-contract-v6.json",
+    "sha256": "eae8374f8a7bec046921c0d6befad429a5de3230b5cc0a3b601bab493e87787f"
+  },
+  "schema": "unit-row-continuation-controls-inherited-phase-position-erratum-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "source_only": true
+}
