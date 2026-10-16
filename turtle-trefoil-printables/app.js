@@ -1,5 +1,5 @@
 import {loops,stripes,project} from './search/model.js';
-export function mount(THREE,data,samples){
+export function mount(THREE,data){
  const $=id=>document.getElementById(id),palette=['#4b9b64','#9bd4b2','#1763cb','#d8c8a9','#c58a45','#f1ce91'].map(v=>new THREE.Color(v));
  function load(encoded,type){
   const bytes=typeof encoded==='string'?Uint8Array.from(atob(encoded),c=>c.charCodeAt(0)):new Uint8Array(encoded),v=new DataView(bytes.buffer),count=v.getUint32(80,true),p=new Float32Array(count*9),c=new Float32Array(count*9);
@@ -22,7 +22,7 @@ export function mount(THREE,data,samples){
  const scene=new THREE.Scene();scene.add(new THREE.HemisphereLight(0xffffff,0x73867c,2));for(const [x,y,z,p] of [[-80,-80,180,2.5],[100,30,100,1]]){const l=new THREE.DirectionalLight(0xffffff,p);l.position.set(x,y,z);scene.add(l);}
  const camera=new THREE.PerspectiveCamera(34,1,.1,5000),root=new THREE.Group(),content=new THREE.Group();root.add(content);scene.add(root);
  let distance=500,initialDistance=500,live=false,worker=null,queue=[],batchPending=false,running=false,stepping=false,finished=false,inFlight=null,requestId=0,randomSeed=10,lastTime=0;
- let tileObjects=new Map(),boardObjects=[],connectorObjects=[],placed=[],nodes=0,backtracks=0,lastAction='Ready',autoZoom=true;
+ let tileObjects=new Map(),boardObjects=[],connectorObjects=[],placed=[],nodes=0,backtracks=0,lastAction='Ready',autoZoom=true,moveMode=false,moveCount=0,moveTotal=0;
  const matrix=a=>new THREE.Matrix4().set(...a.flat());
  // Turn the entire patch over about the middle of its 4 mm bodies.
  const faceFlip=matrix([[1,0,0,0],[0,-1,0,0],[0,0,-1,4],[0,0,0,1]]);
@@ -61,12 +61,12 @@ export function mount(THREE,data,samples){
   for(const id of ['run','step','restart','speed'])$(id).hidden=!live;
   $('run').textContent=running?'Pause':'Run';$('run').disabled=finished;
   $('step').disabled=running||stepping||finished;
-  $('caption').textContent=live?`${placed.length} ${placed.length===1?'tile':'tiles'} · ${backtracks} backtracks · ${lastAction}`:samples.find(s=>s.id===$('sample').value)?.label||'';
-  $('scope').textContent=live?'Live stripe-matching search. The board is a visual guide; physical board fit is not checked.':'';
+  $('caption').textContent=moveMode?`${placed.length} tiles · ${moveCount} / ${moveTotal} moves · ${lastAction}`:`${placed.length} ${placed.length===1?'tile':'tiles'} · ${backtracks} backtracks · ${lastAction}`;
+  $('scope').textContent=moveMode?'Paired flips and half-turns preserve the outline and point markings. The lifting motion is illustrative.':'Live stripe-matching search. The board is a visual guide; physical board fit is not checked.';
  }
  function sync(tiles){
   const ids=new Set(tiles.map(t=>t.id));for(const [id,o] of tileObjects)if(!ids.has(id)){content.remove(o);tileObjects.delete(id);}
-  for(const t of tiles)if(!tileObjects.has(t.id))tileObjects.set(t.id,object(t.tile,t.matrix));
+  for(const t of tiles){if(!tileObjects.has(t.id))tileObjects.set(t.id,object(t.tile,t.matrix));else faceFlip.clone().multiply(matrix(t.matrix)).decompose(tileObjects.get(t.id).position,tileObjects.get(t.id).quaternion,tileObjects.get(t.id).scale);}
   placed=tiles;
  }
  function ensureBoardCoverage(){
@@ -74,9 +74,16 @@ export function mount(THREE,data,samples){
   if(extent>105&&boardObjects.length===1){const a=[285.7883832488647,15,0],b=[129.9038105676658,255,0];boards([[0,0,0],a,b,[-a[0],-a[1],0],[-b[0],-b[1],0],[a[0]-b[0],a[1]-b[1],0],[b[0]-a[0],b[1]-a[1],0]]);}
  }
  function event(e){
-  nodes=e.nodes;backtracks=e.backtracks;
-  if(e.type==='finished'){finished=true;running=false;sync(e.placements);lastAction=e.result==='yes'?'Growth checkpoint reached':e.result==='no'?'This seed cannot extend under these markings':'Search budget reached';controls();render();return;}
-  if(e.type==='start'){sync(e.placements);lastAction='Ready';drawConnectors(connectorsFor(placed));fitView(260);controls();return;}
+  nodes=e.nodes;backtracks=e.backtracks;if(e.moveTotal!==undefined)moveTotal=e.moveTotal;
+  if(e.type==='finished'){finished=true;running=false;sync(e.placements);lastAction=e.result==='sequence'?'Sequence complete':e.result==='no-moves'?'No paired moves found in this patch':e.result==='yes'?'Growth checkpoint reached':e.result==='no'?'This seed cannot extend under these markings':'Search budget reached';controls();render();return;}
+  if(e.type==='start'){moveCount=0;sync(e.placements);lastAction=moveMode&&!moveTotal?'No paired moves found in this patch':'Ready';if(moveMode&&!moveTotal)finished=true;drawConnectors(connectorsFor(placed));ensureBoardCoverage();fitView(260);controls();return;}
+  if(e.type==='flip'){
+   const objects=e.ids.map(id=>tileObjects.get(id)),axis=new THREE.Vector3(...e.axis),center=new THREE.Vector3(...e.axisPoint);
+   const starts=objects.map(o=>{o.updateMatrix();return o.matrix.clone();});let lift=12;
+   for(const o of objects){const box=o.geometry.boundingBox;for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new THREE.Vector3(x,y,z).applyMatrix4(o.matrix).sub(center);v.addScaledVector(axis,-v.dot(axis));lift=Math.max(lift,v.length()+8);}}
+   drawConnectors(connectorsFor(placed.filter(t=>!e.ids.includes(t.id))));
+   inFlight={objects,starts,axis,center,lift,elapsed:0,kind:'pair',e};lastAction=e.kind==='flip'?'Flipping the pair':'Turning the pair';controls();return;
+  }
   const next=new Set(e.placements.map(t=>t.id)),added=e.placements.find(t=>!tileObjects.has(t.id)),removed=placed.find(t=>!next.has(t.id));
   if(removed)drawConnectors(connectorsFor(placed.filter(t=>t.id!==removed.id)));
   if(e.type==='placement'&&added){const o=object(added.tile,added.matrix);tileObjects.set(added.id,o);const target=o.position.clone();inFlight={o,target,elapsed:0,kind:'in',e};o.position.z+=75;lastAction=e.forced?'Forced placement':'Trying a branch';}
@@ -92,30 +99,32 @@ export function mount(THREE,data,samples){
  function tick(time){
   const dt=Math.min(80,time-lastTime||0);lastTime=time;
   if(inFlight&&(running||stepping)){
-   const f=inFlight;f.elapsed+=dt;const t=Math.min(1,f.elapsed/Number($('speed').value));
-   f.o.position.copy(f.target);
+   const f=inFlight;f.elapsed+=dt;const t=Math.min(1,f.elapsed/(Number($('speed').value)*(f.kind==='pair'?4.8:1)));
+   if(f.kind==='pair'){
+    const ease=v=>{v=Math.max(0,Math.min(1,v));return v*v*(3-2*v);},rise=ease(t/.2),fall=ease((1-t)/.2),angle=Math.PI*ease((t-.2)/.6);
+    const transform=new THREE.Matrix4().makeTranslation(f.center.x,f.center.y,f.center.z+f.lift*Math.min(rise,fall)).multiply(new THREE.Matrix4().makeRotationAxis(f.axis,angle)).multiply(new THREE.Matrix4().makeTranslation(-f.center.x,-f.center.y,-f.center.z));
+    f.objects.forEach((o,i)=>transform.clone().multiply(f.starts[i]).decompose(o.position,o.quaternion,o.scale));
+   }else{f.o.position.copy(f.target);
    if(f.kind==='in')f.o.position.z+=75*Math.pow(1-t,3);
-   else{const eased=t*t*(3-2*t);f.o.position.z+=75*eased;f.o.position.x+=18*eased;}
+   else{const eased=t*t*(3-2*t);f.o.position.z+=75*eased;f.o.position.x+=18*eased;}}
    render();
-   if(t===1){sync(f.e.placements);inFlight=null;drawConnectors(connectorsFor(placed));ensureBoardCoverage();if(autoZoom)fitView(Math.max(260,distance));stepping=false;controls();render();}
+   if(t===1){if(f.kind==='pair'){moveCount=f.e.moveCount;lastAction=f.e.kind==='flip'?'Pair flipped':'Pair turned';if(moveCount===moveTotal){finished=true;running=false;lastAction='Sequence complete';}}sync(f.e.placements);inFlight=null;drawConnectors(connectorsFor(placed));ensureBoardCoverage();if(autoZoom)fitView(Math.max(260,distance));stepping=false;controls();render();}
   }
   pump();requestId=requestAnimationFrame(tick);
  }
  function stop(){worker?.terminate();worker=null;queue=[];batchPending=false;running=false;stepping=false;finished=false;inFlight=null;}
  function show(){
   stop();content.clear();tileObjects=new Map();boardObjects=[];connectorObjects=[];placed=[];backtracks=0;nodes=0;autoZoom=true;root.rotation.set(0,0,0);content.position.set(0,0,0);
-  live=$('sample').value.startsWith('live-');lastAction='Preparing seed';
-  if(live){boards([[0,0,0]]);distance=initialDistance=300;worker=new Worker(new URL('./search/worker.js',import.meta.url),{type:'module'});
+  live=true;moveMode=$('sample').value==='live-moves';moveCount=0;moveTotal=0;lastAction=moveMode?'Growing a patch and finding moves…':'Preparing seed';
+  if(live){boards([[0,0,0]]);distance=initialDistance=300;worker=new Worker(new URL(moveMode?'./search/flip-worker.js':'./search/worker.js',import.meta.url),{type:'module'});
    const activeWorker=worker;worker.onmessage=({data})=>{if(worker!==activeWorker)return;if(data.type==='error'){finished=true;running=false;lastAction=data.message;controls();return;}queue.push(...data.events);batchPending=true;if(queue[0]?.type==='start')event(queue.shift());pump();};
    worker.onerror=e=>{if(worker!==activeWorker)return;finished=true;running=false;lastAction='Search could not start. Reload to retry.';controls();};
    worker.postMessage({type:'start',mode:$('sample').value.slice(5),seed:randomSeed});
-  }else{
-   const s=samples.find(s=>s.id===$('sample').value);boards(s.boards||[[0,0,0]]);sync(s.tiles.map((t,i)=>({...t,id:String(i)})));drawConnectors(connectorsFor(placed));fitView(260);
   }
   controls();resize();
  }
- const liveGroup=document.createElement('optgroup');liveGroup.label='Live tiling';for(const [id,label] of [['turtles','Turtles · live'],['trefoil','One trefoil surrounded by turtles · live'],['mixed','Turtles and trefoils · live']]){const o=new Option(label,'live-'+id);liveGroup.append(o);}$('sample').append(liveGroup);
- const gallery=document.createElement('optgroup');gallery.label='Sample tilings';for(const s of samples.filter(s=>s.tiles?.length)){gallery.append(new Option(s.label,s.id));}$('sample').append(gallery);$('sample').value='live-trefoil';
+ const liveGroup=document.createElement('optgroup');liveGroup.label='Live tiling';for(const [id,label] of [['turtles','Turtles · live'],['trefoil','One trefoil surrounded by turtles · live'],['mixed','Turtles and trefoils · live'],['moves','Trefoil walk · live moves']]){const o=new Option(label,'live-'+id);liveGroup.append(o);}$('sample').append(liveGroup);
+ $('sample').value='live-trefoil';
  $('sample').onchange=show;$('run').onclick=()=>{running=!running;stepping=false;controls();pump();};$('step').onclick=()=>{stepping=true;controls();pump();};$('restart').onclick=()=>{randomSeed++;show();};
  $('boardTransparent').onchange=()=>{for(const o of boardObjects)o.material=$('boardTransparent').checked?transparent:opaque;render();};
  $('reset').onclick=()=>{root.rotation.set(0,0,0);autoZoom=true;fitView(260);};

@@ -42,7 +42,7 @@ dead-point scan. The node budget is 20,000; budget exhaustion is unknown.
 
 ## Animation and controls
 
-Only actual solver placement and backtrack events move tiles. A worker retains
+In the three growth modes, only actual solver placement and backtrack events move tiles. A worker retains
 the DFS stack behind acknowledged event batches; Pause freezes the displayed
 motion and withholds the next acknowledgement. Step finishes exactly one tile
 arrival/removal. Restart and sample changes terminate the old worker; late events
@@ -68,3 +68,27 @@ snapshot was checked for polygon intersections and had none; this is a finite
 rendering check, not a new legality filter or a physical fitting certificate.
 Nominal clearances, board fit of arbitrary live patches, print tolerance and
 snap retention are not certified by the point search.
+
+## Paired move mode
+
+`flip-worker.js` grows a fresh 48-tile one-Trefoil patch with the same point
+engine, then explores its local rearrangement graph in `flips.js`. This is a
+separate, specialized rearrangement demonstration, not a frontier scheduler or
+a pruning rule. The three growth modes remain unchanged. No static sample
+placements or preselected move sequence are loaded.
+
+Each move applies a single lattice reflection or half-turn to one edge-adjacent
+Trefoil/Turtle pair. It must preserve the complete subdivided outline and exact
+integer point totals, and every resulting assigned marking must agree throughout
+the current patch. All other tiles stay fixed. Breadth-first exploration is
+bounded to 300 expanded states; the animation follows a longest discovered
+shortest path without repeated states. This is a finite-patch experiment, not a
+claim of an infinite trefoil walk or the longest possible path. Restart grows a
+new random seed. The displayed lifting path is illustrative, not a physical
+collision certificate for reliefs/connectors or board fit.
+
+`tests/test_printable_pair_moves.mjs` independently reconstructs all occupancy
+and marking assignments from prototypes at every move, verifies the unchanged
+exterior and aggregate occupancy, and checks the rigid 3D animation endpoint
+against the exact resulting CAD pose. Seed 10 gives eight distinct moves in a
+component of 18 states, including reflections and half-turns.
